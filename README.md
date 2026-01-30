@@ -1,4 +1,4 @@
-# Muhammad Arif Fazil                                                                                                                     
+# Arif Fazil                                                                                                                     
   **Geoscientist · AI Governance Architect · Penang, Malaysia**                                                                          
   
   ---
