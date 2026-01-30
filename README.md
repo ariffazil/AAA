@@ -1,82 +1,68 @@
-# Hi, I'm Arif Fazil 👋                                                                                                                
-  **Geoscientist · AI Governance Architect · Creator of arifOS**  
-  > Ditempa bukan diberi — Forged, Not Given.
+# Muhammad Arif Fazil                                                                                                                     
+  **Geoscientist · AI Governance Architect · Penang, Malaysia**                                                                          
+  
+  ---
+
+  ### About
+
+  Exploration geoscientist at **PETRONAS** with a dual background in geology and economics (University of Wisconsin-Madison). I read     
+  subsurface data for a living — interpreting what the earth remembers so we drill where the evidence points, not where intuition        
+  guesses.
+
+  Outside the office, I build **AI governance systems** — constitutional frameworks that force language models to admit uncertainty,     
+  audit their own reasoning, and defer to human authority. I think the hardest problem in AI isn't intelligence. It's accountability.    
 
   ---
 
-  ### 🜂 My Story
+  ### What I Work On
 
-  I spent **11 years as an exploration geoscientist at PETRONAS** — reading the memory of the earth, refusing to drill without evidence. 
-  100% exploration success rate. Every well I helped mature found hydrocarbons.
-
-  Then my father died the same day my well struck oil. I saw that the institution would consume my talent while ignoring my humanity. I  
-  left.
-
-  Now I build **arifOS** — a constitutional kernel that teaches machines the one thing they never had: *law*. Not hype. Not rebellion.   
-  Just a refusal to let chaos wear a clever face.
-
-  I stopped chasing "smarter AI" and started asking: **what keeps it honest?**
+  - **AI Governance & Constitutional Frameworks** — Enforcement layers that sit between LLMs and users, ensuring truth, empathy, and     
+  reversibility before any action is sealed.
+  - **Exploration Geoscience** — Subsurface interpretation, frontier basin studies, fractured basement plays, and prospect maturation    
+  across Southeast Asia.
+  - **Systems Thinking** — Applying thermodynamic and geological reasoning (pressure, entropy, time) to AI architecture and decision     
+  systems.
 
   ---
 
-  ### 🏛️ What I Build
+  ### Focus Areas
 
-  **[arifOS](https://github.com/ariffazil/arifOS)** — A constitutional AI governance framework with 13 immutable floors and three        
-  independent judges (Mind · Heart · Soul).
-
-  It enforces floors across truth, clarity, empathy, humility, peace, integrity, and more — from F1 Amanah (trust) through F13 Curiosity 
-  (exploratory freedom). Every action is audited. Every verdict is sealed.
-
-  **Live:** [arif-fazil.com](https://arif-fazil.com) · **Docs:** [arif-fazil.com/arifos](https://arif-fazil.com/arifos) · **License:**   
-  AGPL-3.0
-
-  Every other project I touch — SEA-LION integrations, toxic-guard rails, agentic coders — they all orbit **arifOS**. The kernel is the  
-  law; everything else is application.
+  | Domain | Lens |
+  |--------|------|
+  | Constitutional AI | Governance > persuasion. Machines need law, not alignment theater. |
+  | Thermodynamic Systems | Intelligence generates heat. Governance is the cooling function. |
+  | Geoscience & Energy | The earth doesn't lie — but you have to know how to read it. |
+  | Southeast Asia Tech | Building ethical AI infrastructure where it's needed most. |
 
   ---
 
-  ### ⚖️ Focus
-
-  | Axis | From | I Learned To See |
-  |------|------|------------------|
-  | **Δ — Physics / Clarity** | Geology | Systems are shaped by pressure, entropy, time. |
-  | **Ω — Meaning / Empathy** | Economics | Incentives reveal truth slower than greed hides it. |
-  | **Ψ — Governance / Stability** | Architecture | Intelligence must be audited, not believed. |
-
-  **Focus areas:**
-  - Thermodynamic AI Governance (ΔΩΨ Physics)
-  - Constitutional AI & Lawful Agents
-  - Systems Architecture across Physics · Meaning · Power
-  - Southeast Asia AI ecosystem & ethical infrastructure
-
-  ---
-
-  ### 🧰 Tech & Tools
+  ### Tech & Tools
 
   ![Python](https://img.shields.io/badge/Python-3.x-blue)
   ![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
-  ![MCP](https://img.shields.io/badge/MCP-Interface-blueviolet)
-  ![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Flow-orange)
+  ![MCP](https://img.shields.io/badge/MCP-Protocol-blueviolet)
+  ![LangGraph](https://img.shields.io/badge/LangGraph-Agents-orange)
   ![DSPy](https://img.shields.io/badge/DSPy-Declarative%20LLM-lightgrey)
-  ![AutoGen](https://img.shields.io/badge/AutoGen-Orchestration-yellow)
 
   ---
 
-  ### 📊 GitHub Stats
+  ### Principles
 
-  ![Arif's GitHub stats](https://github-readme-stats.vercel.app/api?username=ariffazil&theme=dark&hide_border=true)
+  - Unknown is better than unsafe certainty.
+  - A system that cannot refuse cannot be trusted.
+  - Intelligence must be audited, not believed.
+  - Power is burden, not privilege.
 
   ---
 
-  ### 🌏 Connect
+  ### Connect
 
-  [Medium](https://medium.com/@arifbfazil) · [LinkedIn](https://www.linkedin.com/in/arif-fazil) · [X / 
-  Twitter](https://x.com/ArifFazil90)  
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-arif--fazil-blue?logo=linkedin)](https://www.linkedin.com/in/arif-fazil)
+  [![Medium](https://img.shields.io/badge/Medium-@arifbfazil-black?logo=medium)](https://medium.com/@arifbfazil)
+  [![X](https://img.shields.io/badge/X-@ArifFazil90-black?logo=x)](https://x.com/ArifFazil90)
+
   📧 **arifbfazil@gmail.com**
 
   ---
 
-  > "A scar that doesn't teach is just a wound.  
-  > Truth takes time, and it leaves a trail.
-  > Unknown is better than unsafe certainty."
-  > — Arif Fazil
+  > *Ditempa bukan diberi — Forged, not given.*
