@@ -1,76 +1,82 @@
+# Hi, I'm Arif Fazil 👋                                                                                                                
+  **Geoscientist · AI Governance Architect · Creator of arifOS**  
+  > Ditempa bukan diberi — Forged, Not Given.
 
-# Hi, I'm Arif Fazil 👋  
-**ΔΩΨ Architect · Creator of arifOS · Building lawful AI governance kernels**  
-> Ditempa bukan diberi — truth must cool before it rules.
+  ---
 
----
+  ### 🜂 My Story
 
-### 🜂 My Story
+  I spent **11 years as an exploration geoscientist at PETRONAS** — reading the memory of the earth, refusing to drill without evidence. 
+  100% exploration success rate. Every well I helped mature found hydrocarbons.
 
-I started in **geology** — learning how pressure shapes rock, how time makes truth visible.  
-Then **economics** taught me the same laws apply to people: incentives carve mountains into markets.  
-Now I build **arifOS** — a constitutional kernel that teaches machines the one thing they never had: *law*.
+  Then my father died the same day my well struck oil. I saw that the institution would consume my talent while ignoring my humanity. I  
+  left.
 
-I’ve seen how intelligence without governance collapses — in systems, companies, even in ourselves.  
-So I stopped chasing “smarter AI” and started asking: **what keeps it honest?**
+  Now I build **arifOS** — a constitutional kernel that teaches machines the one thing they never had: *law*. Not hype. Not rebellion.   
+  Just a refusal to let chaos wear a clever face.
 
-That’s what arifOS is — a cooling layer between power and consequence.  
-Not hype. Not rebellion. Just a refusal to let chaos wear a clever face.
+  I stopped chasing "smarter AI" and started asking: **what keeps it honest?**
 
----
+  ---
 
-### 🏛️ What I Build
+  ### 🏛️ What I Build
 
-**[arifOS](https://github.com/ariffazil/arifOS)** — A ΔΩΨ-governed constitutional kernel for AI agents.  
-It enforces nine immutable floors: Truth, Clarity (ΔS ≥ 0), Peace², Empathy (κᵣ ≥ 0.95), Humility (Ω₀ ≈ 3–5 %), Integrity (Amanah = LOCK), RASA, Tri-Witness, and Anti-Hantu.  
+  **[arifOS](https://github.com/ariffazil/arifOS)** — A constitutional AI governance framework with 13 immutable floors and three        
+  independent judges (Mind · Heart · Soul).
 
-Every other project I touch — SEA-LION integrations, toxic-guard rails, agentic coders —  
-they all orbit **arifOS**. The kernel is the law; everything else is application.
+  It enforces floors across truth, clarity, empathy, humility, peace, integrity, and more — from F1 Amanah (trust) through F13 Curiosity 
+  (exploratory freedom). Every action is audited. Every verdict is sealed.
 
----
+  **Live:** [arif-fazil.com](https://arif-fazil.com) · **Docs:** [arif-fazil.com/arifos](https://arif-fazil.com/arifos) · **License:**   
+  AGPL-3.0
 
-### ⚖️ Focus
+  Every other project I touch — SEA-LION integrations, toxic-guard rails, agentic coders — they all orbit **arifOS**. The kernel is the  
+  law; everything else is application.
 
-| Axis | From | I Learned To See |
-|------|------|------------------|
-| **Δ — Physics / Clarity** | Geology | Systems are shaped by pressure, entropy, time. |
-| **Ω — Meaning / Empathy** | Economics | Incentives reveal truth slower than greed hides it. |
-| **Ψ — Governance / Stability** | Architecture | Intelligence must be audited, not believed. |
+  ---
 
-**Focus areas:**
-- Thermodynamic AI Governance (ΔΩΨ Physics)  
-- Constitutional AI & Lawful Agents  
-- Systems Architecture across Physics · Meaning · Power  
-- Southeast Asia AI ecosystem & ethical infrastructure  
+  ### ⚖️ Focus
 
----
+  | Axis | From | I Learned To See |
+  |------|------|------------------|
+  | **Δ — Physics / Clarity** | Geology | Systems are shaped by pressure, entropy, time. |
+  | **Ω — Meaning / Empathy** | Economics | Incentives reveal truth slower than greed hides it. |
+  | **Ψ — Governance / Stability** | Architecture | Intelligence must be audited, not believed. |
 
-### 🧰 Tech & Tools
+  **Focus areas:**
+  - Thermodynamic AI Governance (ΔΩΨ Physics)
+  - Constitutional AI & Lawful Agents
+  - Systems Architecture across Physics · Meaning · Power
+  - Southeast Asia AI ecosystem & ethical infrastructure
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
-![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Flow-orange)
-![DSPy](https://img.shields.io/badge/DSPy-Declarative%20LLM-lightgrey)
-![AutoGen](https://img.shields.io/badge/AutoGen-Orchestration-yellow)
-![MCP](https://img.shields.io/badge/MCP-Interface-blueviolet)
+  ---
 
----
+  ### 🧰 Tech & Tools
 
-### 📊 GitHub Stats
+  ![Python](https://img.shields.io/badge/Python-3.x-blue)
+  ![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
+  ![MCP](https://img.shields.io/badge/MCP-Interface-blueviolet)
+  ![LangGraph](https://img.shields.io/badge/LangGraph-Agent%20Flow-orange)
+  ![DSPy](https://img.shields.io/badge/DSPy-Declarative%20LLM-lightgrey)
+  ![AutoGen](https://img.shields.io/badge/AutoGen-Orchestration-yellow)
 
-![Arif's GitHub stats](https://github-readme-stats.vercel.app/api?username=ariffazil&theme=dark&hide_border=true)  
-![Streak](https://github-readme-streak-stats.herokuapp.com/?user=ariffazil&theme=dark)
+  ---
 
----
+  ### 📊 GitHub Stats
 
-### 🌏 Connect
+  ![Arif's GitHub stats](https://github-readme-stats.vercel.app/api?username=ariffazil&theme=dark&hide_border=true)
 
-[Medium](https://medium.com/@arifbfazil) · [LinkedIn](https://www.linkedin.com/in/arif-fazil) · [X / Twitter](https://x.com/ArifFazil90)  
-📧 **arifbfazil@gmail.com**
+  ---
 
----
+  ### 🌏 Connect
 
-> “Governance > Persuasion.  
-> Silence > Falsehood.  
-> Learning = Cooling.”  
-> — Arif Fazil
+  [Medium](https://medium.com/@arifbfazil) · [LinkedIn](https://www.linkedin.com/in/arif-fazil) · [X / 
+  Twitter](https://x.com/ArifFazil90)  
+  📧 **arifbfazil@gmail.com**
+
+  ---
+
+  > "A scar that doesn't teach is just a wound.  
+  > Truth takes time, and it leaves a trail.
+  > Unknown is better than unsafe certainty."
+  > — Arif Fazil
