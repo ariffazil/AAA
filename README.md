@@ -1,68 +1,104 @@
-# Arif Fazil                                                                                                                     
-  **Geoscientist · AI Governance Architect · Penang, Malaysia**                                                                          
-  
-  ---
+# arif-fazil.com (HUMAN — The Body)
 
-  ### About
+> The **Body** of the arifOS Trinity — a minimal, high-performance React application serving as the personal portfolio and digital presence of **ARIF FAZIL**.
 
-  Exploration geoscientist at **PETRONAS** with a dual background in geology and economics (University of Wisconsin-Madison). I read     
-  subsurface data for a living — interpreting what the earth remembers so we drill where the evidence points, not where intuition        
-  guesses.
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![Version](https://img.shields.io/badge/version-v55.3-red.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-  Outside the office, I build **AI governance systems** — constitutional frameworks that force language models to admit uncertainty,     
-  audit their own reasoning, and defer to human authority. I think the hardest problem in AI isn't intelligence. It's accountability.    
+## 📌 Overview
 
-  ---
+**arif-fazil.com** is the primary interface ("The Body" / Δ) in the [Trinity Architecture](https://arifos.arif-fazil.com), bridging human presence with the computational governance of **arifOS**.
 
-  ### What I Work On
+This site showcases:
+-   **Professional Portfolio**: Geoscientist, Economist, AI Governance Architect
+-   **Three Disciplines**: Geology, Economics, AI — with animated visual elements
+-   **Philosophy**: "Ditempa Bukan Diberi" (Forged, Not Given)
+-   **Trinity Navigation**: Seamless access to THEORY (apex) and APPS (arifos)
 
-  - **AI Governance & Constitutional Frameworks** — Enforcement layers that sit between LLMs and users, ensuring truth, empathy, and     
-  reversibility before any action is sealed.
-  - **Exploration Geoscience** — Subsurface interpretation, frontier basin studies, fractured basement plays, and prospect maturation    
-  across Southeast Asia.
-  - **Systems Thinking** — Applying thermodynamic and geological reasoning (pressure, entropy, time) to AI architecture and decision     
-  systems.
+## 🛠 Tech Stack
 
-  ---
+-   **Framework**: [React 19](https://react.dev/) + [Vite 7](https://vitejs.dev/)
+-   **Language**: TypeScript (strict mode)
+-   **Styling**: [TailwindCSS 3](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+-   **Typography**: Inter (body) + JetBrains Mono (monospace)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **Deployment**: Cloudflare Pages
 
-  ### Focus Areas
+## 🤖 AI Governance (`llms.txt`)
 
-  | Domain | Lens |
-  |--------|------|
-  | Constitutional AI | Governance > persuasion. Machines need law, not alignment theater. |
-  | Thermodynamic Systems | Intelligence generates heat. Governance is the cooling function. |
-  | Geoscience & Energy | The earth doesn't lie — but you have to know how to read it. |
-  | Southeast Asia Tech | Building ethical AI infrastructure where it's needed most. |
+This site complies with **arifOS Constitutional Governance** standards.
+It exposes structured context files for AI agents:
 
-  ---
+| File | Purpose | URL |
+|------|---------|-----|
+| `llms.txt` | Human-readable sovereign memory | [arif-fazil.com/llms.txt](https://arif-fazil.com/llms.txt) |
+| `llms.json` | Machine-readable structured data | [arif-fazil.com/llms.json](https://arif-fazil.com/llms.json) |
+| `humans.txt` | People behind the project | [arif-fazil.com/humans.txt](https://arif-fazil.com/humans.txt) |
+| `robots.txt` | Crawler rules | [arif-fazil.com/robots.txt](https://arif-fazil.com/robots.txt) |
+| `VISUAL_SCHEMA.md` | Design system documentation | [arif-fazil.com/VISUAL_SCHEMA.md](https://arif-fazil.com/VISUAL_SCHEMA.md)
 
-  ### Tech & Tools
+## 🚀 Getting Started
 
-  ![Python](https://img.shields.io/badge/Python-3.x-blue)
-  ![FastAPI](https://img.shields.io/badge/FastAPI-Framework-green)
-  ![MCP](https://img.shields.io/badge/MCP-Protocol-blueviolet)
-  ![LangGraph](https://img.shields.io/badge/LangGraph-Agents-orange)
-  ![DSPy](https://img.shields.io/badge/DSPy-Declarative%20LLM-lightgrey)
+### Prerequisites
 
-  ---
+-   Node.js (LTS recommended)
+-   npm or pnpm
 
-  ### Principles
+### Installation
 
-  - Unknown is better than unsafe certainty.
-  - A system that cannot refuse cannot be trusted.
-  - Intelligence must be audited, not believed.
-  - Power is burden, not privilege.
+```bash
+# Navigate to the HUMAN directory
+cd HUMAN
 
-  ---
+# Install dependencies
+npm install
+```
 
-  ### Connect
+### Development
 
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-arif--fazil-blue?logo=linkedin)](https://www.linkedin.com/in/arif-fazil)
-  [![Medium](https://img.shields.io/badge/Medium-@arifbfazil-black?logo=medium)](https://medium.com/@arifbfazil)
-  [![X](https://img.shields.io/badge/X-@ArifFazil90-black?logo=x)](https://x.com/ArifFazil90)
+```bash
+# Start the dev server
+npm run dev
+```
 
-  📧 **arifbfazil@gmail.com**
+### Build
 
-  ---
+```bash
+# Type-check and build for production
+npm run build
+```
 
-  > *Ditempa bukan diberi — Forged, not given.*
+## 📂 Project Structure
+
+```
+HUMAN/
+├── public/             # Static assets, llms.txt, canonical files
+│   ├── llms.txt        # AI context (canonical)
+│   ├── llms.json       # Structured AI context
+│   ├── humans.txt      # Human credits
+│   ├── robots.txt      # Crawler rules
+│   └── VISUAL_SCHEMA.md # Design system documentation
+├── src/
+│   ├── components/     # shadcn/ui components
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utilities
+│   ├── App.tsx         # Main application
+│   └── index.css       # Global styles + Forge theme
+├── index.html          # Entry HTML with fonts
+├── vite.config.ts      # Vite configuration
+└── tailwind.config.js  # Tailwind configuration
+```
+
+## ⚖️ License
+
+© 2026 ARIF FAZIL. All rights reserved.
+Licensed under the [MIT License](LICENSE).
+
+---
+
+**DITEMPA BUKAN DIBERI**
+*Forged, Not Given*
+# Logo deploy fix 1770116691
+# Force rebuild 1770117242
+# Build sequence trigger 1770118101
