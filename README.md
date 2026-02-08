@@ -36,7 +36,7 @@ Penang native based in Seri Kembangan, Selangor (UTC+8). Malaysian geoscientist 
 ## 📞 Contact
 - Telegram: [@ariffazil](https://t.me/ariffazil) (267378578)
 - Phone: +60167378578
-- Email: [arif@arif-fazil.com](mailto:arif@arif-fazil.com) (professional)
+- Email: [arifbfazil@gmail.com](mailto:arifbfazil@gmail.com)
 - GitHub Issues: [Open one](https://github.com/ariffazil/ariffazil/issues/new)
 
 © 2026 Muhammad Arif bin Fazil. All rights reserved. MIT License for code.
