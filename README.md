@@ -1,4 +1,4 @@
-# Muhammad Arif bin Fazil
+# ARIF FAZIL
 
 **Senior Exploration Geoscientist** | PETRONAS Carigali | arifOS Architect  
 *Bayan Lepas, Penang | 1990 | Ditempa Bukan Diberi*
@@ -17,7 +17,7 @@ Geologist, Geophysicist, Economist. 13+ years upstream exploration. **100% techn
   |-----------|--------------|
   | **Bekantan-1** | Shallowest flowing oil in Malay Basin history |
   | **Puteri Basement-1** | Key to PM318 PSC value |
-  | **Lebah Emas-1** | Frontier slope play success |
+  | **Lebah Emas-1** | Western hinge fault zone in Malay Basin |
 - **Skills**: Seismic interpretation, stratigraphy, structural geology, petroleum systems, risk/economics
 - **Education**: B.Sc. Double Major (Geology & Geophysics + Economics), University of Wisconsin-Madison (2009-2013). Full PETRONAS scholarship.
 
@@ -34,11 +34,10 @@ Geologist, Geophysicist, Economist. 13+ years upstream exploration. **100% techn
 Penang native based in Seri Kembangan, Selangor (UTC+8). Malaysian geoscientist with bilingual proficiency (Bahasa Malaysia-English). Philosophy: *Ditempa Bukan Diberi* — Forged, Not Given.
 
 ## 📞 Contact
-- Telegram: [@ariffazil](https://t.me/ariffazil) (267378578)
-- Phone: +60167378578
+- Telegram: [@ariffazil](https://t.me/ariffazil)
 - Email: [arifbfazil@gmail.com](mailto:arifbfazil@gmail.com)
 - GitHub Issues: [Open one](https://github.com/ariffazil/ariffazil/issues/new)
 
-© 2026 Muhammad Arif bin Fazil. All rights reserved. MIT License for code.
+© 2026 ARIF FAZIL. Profile content reserved. Code licenses: arifOS (AGPL-3.0), APEX Theory (CC0/Public Domain), sites (MIT).
 
 *Updated 2026-02-08*
