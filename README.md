@@ -31,7 +31,7 @@ Geologist, Geophysicist, Economist. 13+ years upstream exploration. **100% techn
   | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | Apps & tools |
 
 ## 🌎 Background
-Roots: Anak sulung (eldest son), Bayan Lepas, Penang. Sabah influences. Family: Father Fazil (deceased), mother Faridah. Culture: Malaysian (Adat Nusantara), bilingual BM-English (Penang dialect). Location: Seri Kembangan, Selangor. UTC+8 (Asia/KL). Philosophy: Ditempa Bukan Diberi — Forged, Not Given.
+Penang native based in Seri Kembangan, Selangor (UTC+8). Malaysian geoscientist with bilingual proficiency (Bahasa Malaysia-English). Philosophy: *Ditempa Bukan Diberi* — Forged, Not Given.
 
 ## 📞 Contact
 - Telegram: [@ariffazil](https://t.me/ariffazil) (267378578)
