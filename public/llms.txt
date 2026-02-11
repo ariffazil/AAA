@@ -3,7 +3,7 @@
 # Version: v55.3-SEAL
 # Authority: Muhammad Arif bin Fazil (888 Judge)
 # Status: SOVEREIGNLY_SEALED
-# Last Updated: 2026-02-02
+# Last Updated: 2026-02-10
 # Purpose: AAA (Human Context) injection for arifOS constitutional AI governance
 
 ---
@@ -164,7 +164,7 @@ When interacting with Muhammad Arif bin Fazil, understand that:
 To verify this file is authentic:
 
 1. **Compute SHA-256 hash** of this file
-2. **Expected hash:** `sha256:df6b308068f768822e0b31ff35eccea210b31a9edeb190a3317f66bbb13c71ed`
+2. **Expected hash:** `sha256:5528a72b9e7aae0a233ce5ef46db5fb2d6c00632d16f8ef86654f06ab7828519`
 3. **Verify against:**
    - https://arif-fazil.com/.well-known/arifos.json
    - https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json

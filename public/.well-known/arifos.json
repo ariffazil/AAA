@@ -3,16 +3,16 @@
   "layer": "HUMAN",
   "symbol": "Δ",
   "version": "v55.3",
-  "updated": "2026-02-03",
+  "updated": "2026-02-10",
   "authority": "Muhammad Arif bin Fazil",
   "files": {
     "llms_txt": {
       "path": "/llms.txt",
-      "hash_sha256": "df6b308068f768822e0b31ff35eccea210b31a9edeb190a3317f66bbb13c71ed"
+      "hash_sha256": "5528a72b9e7aae0a233ce5ef46db5fb2d6c00632d16f8ef86654f06ab7828519"
     },
     "llms_json": {
       "path": "/llms.json",
-      "hash_sha256": "0e01cfbbc89163f005e63e8b4292ed53d188961081d3f306695256499ea3c915"
+      "hash_sha256": "e44b4213ac0d908402d6623824eac44d7914b8654283619f2e3508910432cb3f"
     }
   },
   "verification": {
