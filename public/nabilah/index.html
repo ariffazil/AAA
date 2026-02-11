@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nabilah Fazil | Chemical Engineer & Educator</title>
+    <meta name="description" content="Nabilah Fazil - Chemical Engineer, Educator, and STEM Specialist with experience in wafer fabrication, carbon capture, and materials science.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --text: #f5f5f5;
+            --text-muted: #a0a0a0;
+            --border: #2d2d44;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+        
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .summary {
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .experience-item {
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            background: var(--secondary);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .job-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .company {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        .date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        
+        .experience-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .experience-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        
+        .experience-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .education-item {
+            margin-bottom: 1.25rem;
+            padding: 1rem;
+            background: var(--secondary);
+            border-radius: 8px;
+        }
+        
+        .degree {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .school {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .gpa {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .skill-category {
+            background: var(--secondary);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        
+        .skill-category h4 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .skill-tag {
+            background: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+        
+        .achievements {
+            display: grid;
+            gap: 0.75rem;
+        }
+        
+        .achievement {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background: var(--secondary);
+            border-radius: 6px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .achievement-year {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+            min-width: 50px;
+        }
+        
+        .achievement-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .languages {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .language {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .language-name {
+            font-weight: 500;
+        }
+        
+        .language-level {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .name {
+                font-size: 2rem;
+            }
+            
+            .contact-bar {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Nabilah Fazil</h1>
+            <p class="tagline">Chemical Engineer • Educator • STEM Specialist</p>
+            <div class="contact-bar">
+                <span class="contact-item">📍 Malaysia</span>
+                <span class="contact-item">🎓 University of Adelaide</span>
+                <span class="contact-item">💼 Engineering & Education</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">Profile</h2>
+            <div class="summary">
+                <p>Results-oriented, dedicated educator and progressive process integration engineer with experiences in materials science innovation, wafer fabrication, carbon capture and storage, energy and environmental science, membrane technology, gas separation, and R&D. Award-winning graduate with First-Class Honours in Chemical Engineering and Best TESL Student recognition. Fluent in English, Malay, and Korean (Hangul). Independent fast learner with excellent communication skills and 3D animation capabilities.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Professional Experience</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Chemistry Teacher</div>
+                        <div class="company">Sekolah Menengah Islam Al-Ikram</div>
+                    </div>
+                    <div class="date">Jan 2024 – Mar 2024</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Designing and developing curriculum plans, lesson plans, and instructional materials aligned with educational standards</li>
+                    <li>Supervising laboratory experiments and activities, ensuring safety protocols and proper laboratory techniques</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Technology Transfer Engineer</div>
+                        <div class="company">AT&S Austria Technologie & Systemtechnik (Malaysia)</div>
+                    </div>
+                    <div class="date">Jul 2022 – Jan 2024</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Supported wet etching line on installation qualification, tool qualification and product qualification</li>
+                    <li>Participated in TKC supplier training in Cheongju, Korea (3 weeks) for wet etching line processes</li>
+                    <li>Training coordinator for "I am expert" program across multiple engineering processes</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Research Assistant</div>
+                        <div class="company">Gwangju Institute of Science and Technology (GIST) - Korea</div>
+                    </div>
+                    <div class="date">May 2021 – May 2022</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Performed and analyzed production of formate from protein engineering of formate dehydrogenase for CO₂ utilization</li>
+                    <li>Conducted tutorial and laboratory demonstration sessions for Environmental Microbiology</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Graduate Assistantship</div>
+                        <div class="company">Universiti Teknologi PETRONAS (UTP)</div>
+                    </div>
+                    <div class="date">Jul 2018 – Apr 2021</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Research: Membrane technology innovation for CO₂/CH₄ gas separation using Pebax-1657/PES with MWCNTs</li>
+                    <li>Teaching: Conducted tutorials and labs for Chemistry II and Chemical Engineering Laboratory III</li>
+                    <li>Awarded Winner for Best Micrograph Award at MASS (Malaysia Solid State Science and Technology)</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="job-title">Process Integration Engineer</div>
+                        <div class="company">Infineon Technologies - Kedah, Malaysia</div>
+                    </div>
+                    <div class="date">Mar 2017 – Jul 2018</div>
+                </div>
+                <ul class="experience-list">
+                    <li>Owned processes and managed inline/PCM/yield issues to meet performance targets</li>
+                    <li>Formulated process improvement plans based on systematic analysis of yield data</li>
+                    <li>Executed systematic process transfers from mother fab for mass production ramping</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="degree">Postgraduate Diploma in Education (TESL)</div>
+                <div class="school">Ministry of Education Malaysia</div>
+                <div class="gpa">CGPA: 3.84/4.00 • Best TESL Student Award • Distinction (A+) in Teaching Practicum</div>
+            </div>
+
+            <div class="education-item">
+                <div class="degree">Bachelor of Chemical Engineering (First-Class Honours)</div>
+                <div class="school">University of Adelaide, Australia</div>
+                <div class="gpa">CGPA: 6.84/7.00 • Babcock Social Impact Award (Ingenuity 2016)</div>
+            </div>
+
+            <div class="education-item">
+                <div class="degree">Foundation in Science and Technology</div>
+                <div class="school">Universiti Kuala Lumpur (UniKL MICET), Malaysia</div>
+                <div class="gpa">CGPA: 3.78/4.0 • Silver Award at FASEF 2012</div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Engineering</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Aspen HYSYS</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">LabVIEW</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">Fusion 360</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Analysis</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">DSC Analysis</span>
+                        <span class="skill-tag">TGA Analysis</span>
+                        <span class="skill-tag">TEM Analysis</span>
+                        <span class="skill-tag">Process Integration</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Creative</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Adobe Photoshop</span>
+                        <span class="skill-tag">Blender 3D</span>
+                        <span class="skill-tag">Video Production</span>
+                        <span class="skill-tag">3D Animation</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Productivity</h4>
+                    <div class="skill-list">
+                        <span class="skill-tag">Microsoft Office</span>
+                        <span class="skill-tag">Mendeley</span>
+                        <span class="skill-tag">LaTeX</span>
+                        <span class="skill-tag">Research Writing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Languages</h2>
+            <div class="languages">
+                <div class="language">
+                    <span class="language-name">Bahasa Melayu</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Excellent (IELTS 6.5)</span>
+                </div>
+                <div class="language">
+                    <span class="language-name">Korean (Hangul)</span>
+                    <span class="language-level">Good</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Key Achievements</h2>
+            <div class="achievements">
+                <div class="achievement">
+                    <span class="achievement-year">2024</span>
+                    <span class="achievement-text">Best TESL Student Award — Ministry of Education Malaysia</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-year">2020</span>
+                    <span class="achievement-text">Leadership Award — UTP Postgraduate Engagement Ceremony</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-year">2019</span>
+                    <span class="achievement-text">Best Oral Presenter Award — Regional Conference on Solid State Science & Technology</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-year">2019</span>
+                    <span class="achievement-text">Winner — Best Micrograph Award (MASS)</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-year">2016</span>
+                    <span class="achievement-text">Babcock Social Impact Award — Ingenuity 2016, Australia ($1000 AUD)</span>
+                </div>
+                <div class="achievement">
+                    <span class="achievement-year">2012</span>
+                    <span class="achievement-text">Silver Award — FASEF Science Engineering Fair</span>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Nabilah Fazil | Chemical Engineer & Educator</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem;">Published via <a href="https://github.com/ariffazil" style="color: var(--accent); text-decoration: none;">ariffazil</a></p>
+        </footer>
+    </div>
+</body>
+</html>
