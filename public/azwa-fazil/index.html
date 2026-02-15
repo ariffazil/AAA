@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nur Azwa Safrina - Future Educator & STEM Advocate. Physical Science student at Kolej Matrikulasi Pulau Pinang with CGPA 4.00.">
+    <title>Nur Azwa Safrina | Future Educator & STEM Advocate</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6b2c5c;
+            --primary-light: #8b3a6b;
+            --accent: #d4af37;
+            --accent-light: #e8c547;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-alt: #faf7fc;
+            --border: #e8e0eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+        
+        .hero-content .summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            color: var(--text);
+            max-width: 400px;
+        }
+        
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .profile-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .profile-card .title {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            text-align: left;
+        }
+        
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .highlight-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .bg-alt {
+            background: var(--bg-alt);
+        }
+        
+        /* Education Section */
+        .education-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .education-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .edu-degree {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .edu-school {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+        
+        .edu-date {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .edu-achievements {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .edu-achievements li {
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        
+        .edu-achievements li::before {
+            content: '★';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 0.75rem;
+        }
+        
+        /* Leadership Section */
+        .experience-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .exp-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .exp-company {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .exp-date {
+            background: var(--bg-alt);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        /* Kokurikulum Section */
+        .achievements-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .achievement-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .achievement-year {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .achievement-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .achievement-org {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-name {
+            font-weight: 500;
+        }
+        
+        .skill-level {
+            display: flex;
+            gap: 0.25rem;
+        }
+        
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+        
+        .skill-dot.filled {
+            background: var(--accent);
+        }
+        
+        /* Kekuatan Diri Section */
+        .strengths-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .strength-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .strength-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .strength-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .strength-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* References Section */
+        .references-grid {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .reference-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+        }
+        
+        .reference-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .reference-title {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .reference-contact {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        /* Languages Section */
+        .languages-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .languages-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .language-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .language-level {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: white;
+        }
+        
+        .contact-section .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .profile-card {
+                max-width: 100%;
+            }
+            
+            .exp-header {
+                flex-direction: column;
+            }
+            
+            .skills-grid,
+            .education-grid,
+            .achievements-grid,
+            .references-grid,
+            .strengths-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Azwa Safrina</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#leadership">Leadership</a></li>
+                <li><a href="#kokurikulum">Kokurikulum</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Nur Azwa Safrina</h1>
+                <p class="tagline">Future Educator & STEM Advocate</p>
+                <p class="summary">Dedicated Physical Science student at Kolej Matrikulasi Pulau Pinang with a passion for education and STEM. Proven leadership track record with active involvement in student governance, mentorship programs, and community engagement. Committed to shaping the next generation through innovative teaching approaches and strong moral values.</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">4.00</div>
+                        <div class="stat-label">CGPA Matrikulasi</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Leadership Roles</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">Band 4</div>
+                        <div class="stat-label">MUET</div>
+                    </div>
+                </div>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                    <a href="azwa-safrina-cv.pdf" class="btn btn-secondary" download>Download CV</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="profile-card">
+                    <div class="profile-avatar">AS</div>
+                    <h3>Nur Azwa Safrina</h3>
+                    <p class="title">Future Educator & STEM Advocate</p>
+                    <div class="profile-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>CGPA 4.00 (Matrikulasi)</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>MRSM Beseri Alumni</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>STEM Club Secretary</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Math Mentor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-header">
+            <h2>Education Journey</h2>
+            <p>Academic excellence and continuous growth in science and education</p>
+        </div>
+        
+        <div class="education-grid">
+            <div class="education-card">
+                <div class="edu-degree">Physical Science (Sains Fizikal)</div>
+                <div class="edu-school">Kolej Matrikulasi Pulau Pinang (KMPP)</div>
+                <div class="edu-date">2024 - 2025</div>
+                <ul class="edu-achievements">
+                    <li>Current CGPA: 4.00/4.00</li>
+                    <li>Active member of Sekretariat Rukun Negara</li>
+                    <li>Jawatankuasa Pengurusan Hadiah Projek Kokurikulum</li>
+                    <li>Participant in Choir Malam Kemerdekaan 2024</li>
+                </ul>
+            </div>
+            
+            <div class="education-card">
+                <div class="edu-degree">Sijil Pelajaran Malaysia (SPM)</div>
+                <div class="edu-school">Maktab Rendah Sains MARA (MRSM) Beseri, Perlis</div>
+                <div class="edu-date">2019 - 2023</div>
+                <ul class="edu-achievements">
+                    <li>Results: 2A-, 2A, 1B+, 2B, 1C+, 1C</li>
+                    <li>Multiple Anugerah Pengetua (2020-2021)</li>
+                    <li>CGPA ranged from 3.54 to 3.80</li>
+                    <li>Active in leadership and cocurricular activities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="bg-alt">
+        <div class="section-header">
+            <h2>Leadership Experience</h2>
+            <p>Building tomorrow's leaders through active student governance</p>
+        </div>
+        
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Ahli Aktif</div>
+                        <div class="exp-company">Sekretariat Rukun Negara</div>
+                    </div>
+                    <span class="exp-date">2024</span>
+                </div>
+                <div class="exp-location">Kolej Matrikulasi Pulau Pinang</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Ahli Jawatankuasa Pengurusan Hadiah</div>
+                        <div class="exp-company">Projek Kokurikulum</div>
+                    </div>
+                    <span class="exp-date">2024</span>
+                </div>
+                <div class="exp-location">Kolej Matrikulasi Pulau Pinang</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Setiausaha</div>
+                        <div class="exp-company">Kelab Sains Teknologi Kejuruteraan Matematik (STEM)</div>
+                    </div>
+                    <span class="exp-date">2023</span>
+                </div>
+                <div class="exp-location">MRSM Beseri</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Mentor Subjek</div>
+                        <div class="exp-company">Matematik & Matematik Tambahan</div>
+                    </div>
+                    <span class="exp-date">2023</span>
+                </div>
+                <div class="exp-location">MRSM Beseri</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Lembaga Disiplin Pelajar</div>
+                        <div class="exp-company">Student Disciplinary Board</div>
+                    </div>
+                    <span class="exp-date">2023</span>
+                </div>
+                <div class="exp-location">MRSM Beseri</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Bendahari Kelas</div>
+                        <div class="exp-company">Class Treasurer</div>
+                    </div>
+                    <span class="exp-date">2020 - 2021</span>
+                </div>
+                <div class="exp-location">MRSM Beseri</div>
+            </div>
+            
+            <div class="experience-card">
+                <div class="exp-header">
+                    <div>
+                        <div class="exp-title">Penolong Ketua Kelas</div>
+                        <div class="exp-company">Assistant Class Monitor</div>
+                    </div>
+                    <span class="exp-date">2019</span>
+                </div>
+                <div class="exp-location">MRSM Beseri</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kokurikulum Section -->
+    <section id="kokurikulum">
+        <div class="section-header">
+            <h2>Kokurikulum & Participation</h2>
+            <p>Active engagement in diverse activities shaping well-rounded character</p>
+        </div>
+        
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <span class="achievement-year">2024</span>
+                <div class="achievement-title">Choir Malam Kemerdekaan</div>
+                <div class="achievement-org">KMPP</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2024</span>
+                <div class="achievement-title">Larian Kakom</div>
+                <div class="achievement-org">KMPP Sports Event</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2022</span>
+                <div class="achievement-title">SEM TYPE III</div>
+                <div class="achievement-org">MRSM Beseri</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2022</span>
+                <div class="achievement-title">In-House Training Sekretariat Kepimpinan</div>
+                <div class="achievement-org">Fasa 1</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2022</span>
+                <div class="achievement-title">Program Tadarus & Khatam Al-Quran</div>
+                <div class="achievement-org">Peringkat Negeri</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2022</span>
+                <div class="achievement-title">MRSM Code Wars</div>
+                <div class="achievement-org">Programming Competition</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2022</span>
+                <div class="achievement-title">Sukarelawan Kejohanan Tae Kwan Do</div>
+                <div class="achievement-org">Peringkat MRSM se-Malaysia</div>
+            </div>
+            
+            <div class="achievement-card">
+                <span class="achievement-year">2019-2022</span>
+                <div class="achievement-title">English Motivation Committee</div>
+                <div class="achievement-org">MRSM Beseri</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kekuatan Diri Section -->
+    <section class="bg-alt">
+        <div class="section-header">
+            <h2>Kekuatan Diri</h2>
+            <p>Personal strengths that drive success in education and leadership</p>
+        </div>
+        
+        <div class="strengths-grid">
+            <div class="strength-card">
+                <div class="strength-icon">💜</div>
+                <div class="strength-title">Sabar dan Empati</div>
+                <p>Understanding and ready to help peers in difficulty</p>
+            </div>
+            
+            <div class="strength-card">
+                <div class="strength-icon">👑</div>
+                <div class="strength-title">Kepimpinan</div>
+                <p>Ability to lead student activities and groups effectively</p>
+            </div>
+            
+            <div class="strength-card">
+                <div class="strength-icon">💡</div>
+                <div class="strength-title">Kreativiti dalam Pengajaran</div>
+                <p>Capability to plan engaging and interesting learning activities</p>
+            </div>
+            
+            <div class="strength-card">
+                <div class="strength-icon">✓</div>
+                <div class="strength-title">Dedikasi Tanggungjawab</div>
+                <p>Responsible in carrying out entrusted tasks</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-header">
+            <h2>Technical Skills</h2>
+            <p>Digital competencies for modern education and productivity</p>
+        </div>
+        
+        <div class="skills-container">
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Microsoft Office</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Microsoft Word</span>
+                            <div class="skill-level">
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Microsoft PowerPoint</span>
+                            <div class="skill-level">
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🎨 Creative Tools</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Canva</span>
+                            <div class="skill-level">
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot"></span>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">CapCut</span>
+                            <div class="skill-level">
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🐍 Programming</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Python (Basic)</span>
+                            <div class="skill-level">
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot filled"></span>
+                                <span class="skill-dot"></span>
+                                <span class="skill-dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section class="bg-alt">
+        <div class="section-header">
+            <h2>Languages</h2>
+            <p>Bilingual communication abilities</p>
+        </div>
+        
+        <div class="languages-container">
+            <div class="languages-grid">
+                <div class="language-item">
+                    <span class="language-name">Bahasa Melayu</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Excellent (MUET Band 4)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section>
+        <div class="section-header">
+            <h2>References</h2>
+            <p>Professional contacts who can attest to my character and abilities</p>
+        </div>
+        
+        <div class="references-grid">
+            <div class="reference-card">
+                <div class="reference-name">Puan Asiah binti Mat</div>
+                <div class="reference-title">Pengarah Kolej Matrikulasi Pulau Pinang</div>
+                <div class="reference-contact">
+                    Kolej Matrikulasi Pulau Pinang<br>
+                    Pongsu Seribu, 13200 Kepala Batas<br>
+                    Seberang Perai Utara, Pulau Pinang<br>
+                    📞 +604-5756090<br>
+                    ✉️ asiah@kmpp.matrik.edu.my
+                </div>
+            </div>
+            
+            <div class="reference-card">
+                <div class="reference-name">Dr. Zaliyatun Azlila binti Ahmad Johari</div>
+                <div class="reference-title">Timbalan Pengetua Pembangunan Pelajar<br>MRSM Beseri</div>
+                <div class="reference-contact">
+                    Maktab Rendah Sains MARA Beseri<br>
+                    Batu 8 1/2, Jalan Kaki Bukit, 02400 Beseri<br>
+                    Perlis, Malaysia<br>
+                    📞 +606-493-81488<br>
+                    ✉️ informrsm_beseri@mara.gov.my
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
+            <p>Interested in discussing education opportunities or collaborations? Let's connect.</p>
+        </div>
+        
+        <div class="contact-buttons">
+            <a href="mailto:azwafazil21@gmail.com" class="contact-btn">
+                <span>✉️</span> Email Me
+            </a>
+            <a href="tel:+60133430258" class="contact-btn">
+                <span>📞</span> Call/WhatsApp
+            </a>
+            <a href="azwa-safrina-cv.pdf" class="contact-btn" download>
+                <span>📄</span> Download CV
+            </a>
+        </div>
+        
+        <div style="margin-top: 2rem; opacity: 0.8;">
+            <p>📍 No 17, Jalan Seri Indah, Taman Seri Indah<br>
+            13200 Kepala Batas, Pulau Pinang</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Nur Azwa Safrina. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Future Educator & STEM Advocate</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
