@@ -36,11 +36,23 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    line-height: 1.6;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
   }
-  code, pre, .font-mono {
-    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  p {
+    @apply mb-4;
+  }
+  code,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
   }
 }
 
@@ -74,13 +86,45 @@
 /* Sierpinski-style triangular grid */
 .triangle-bg {
   background-color: #050505;
-  background-image: 
-    linear-gradient(30deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1)),
-    linear-gradient(150deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1)),
-    linear-gradient(30deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1)),
-    linear-gradient(150deg, rgba(139, 0, 0, 0.1) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.1) 87.5%, rgba(139, 0, 0, 0.1));
+  background-image:
+    linear-gradient(
+      30deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    );
   background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+  background-position:
+    0 0,
+    0 0,
+    40px 70px,
+    40px 70px;
 }
 
 /* Fractal noise overlay */
@@ -118,7 +162,7 @@
 
 /* === ECONOMICS ELEMENT - Market Geometry === */
 .market-grid {
-  background-image: 
+  background-image:
     linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px),
     linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 50px 30px;
@@ -139,18 +183,22 @@
 
 /* === AI ELEMENT - Neural/Circuit Patterns === */
 .neural-mesh {
-  background-image: 
+  background-image:
     linear-gradient(45deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%),
     linear-gradient(-45deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%),
     linear-gradient(45deg, transparent 75%, rgba(255, 0, 0, 0.05) 75%),
     linear-gradient(-45deg, transparent 75%, rgba(255, 0, 0, 0.05) 75%);
   background-size: 40px 40px;
-  background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+  background-position:
+    0 0,
+    0 20px,
+    20px -20px,
+    -20px 0px;
 }
 
 /* Circuit board traces */
 .circuit-traces {
-  background-image: 
+  background-image:
     linear-gradient(90deg, rgba(178, 34, 34, 0.2) 1px, transparent 1px),
     linear-gradient(rgba(178, 34, 34, 0.2) 1px, transparent 1px);
   background-size: 100px 100px;
@@ -158,10 +206,14 @@
 }
 
 .circuit-traces::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 0, 0, 0.3) 2px, transparent 2px);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.3) 2px,
+    transparent 2px
+  );
   background-size: 100px 100px;
   background-position: 50px 50px;
 }
@@ -171,22 +223,38 @@
   background-color: #050505;
   background-image: 
     /* Triangle layer */
-    linear-gradient(30deg, rgba(139, 0, 0, 0.08) 12%, transparent 12.5%, transparent 87%, rgba(139, 0, 0, 0.08) 87.5%, rgba(139, 0, 0, 0.08)),
+    linear-gradient(
+      30deg,
+      rgba(139, 0, 0, 0.08) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.08) 87.5%,
+      rgba(139, 0, 0, 0.08)
+    ),
     /* Strata layer */
-    linear-gradient(180deg, transparent 0%, rgba(139, 69, 19, 0.05) 50%, transparent 100%),
+    linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(139, 69, 19, 0.05) 50%,
+        transparent 100%
+      ),
     /* Circuit layer */
     linear-gradient(90deg, rgba(178, 34, 34, 0.1) 1px, transparent 1px);
-  background-size: 80px 140px, 100% 100%, 100px 100px;
+  background-size:
+    80px 140px,
+    100% 100%,
+    100px 100px;
 }
 
 /* === ANIMATIONS === */
 
 @keyframes pulse-red {
-  0%, 100% { 
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
     border-color: rgba(255, 0, 0, 0.5);
   }
-  50% { 
+  50% {
     box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
     border-color: rgba(255, 0, 0, 0.8);
   }
@@ -197,9 +265,24 @@
 }
 
 @keyframes fractal-shift {
-  0% { background-position: 0 0, 0 0, 0 0; }
-  50% { background-position: 40px 70px, 0 0, 50px 50px; }
-  100% { background-position: 0 0, 0 0, 0 0; }
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+  }
+  50% {
+    background-position:
+      40px 70px,
+      0 0,
+      50px 50px;
+  }
+  100% {
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+  }
 }
 
 .fractal-animate {
@@ -208,10 +291,18 @@
 
 /* Triangle rotation - Sacred geometry */
 @keyframes triangle-rotate {
-  0% { transform: rotate(0deg) scale(1); }
-  33% { transform: rotate(120deg) scale(1.1); }
-  66% { transform: rotate(240deg) scale(0.9); }
-  100% { transform: rotate(360deg) scale(1); }
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    transform: rotate(120deg) scale(1.1);
+  }
+  66% {
+    transform: rotate(240deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
 }
 
 .triangle-rotate {
@@ -222,7 +313,7 @@
 
 /* Gradient text - Blood red to crimson */
 .gradient-text-red {
-  background: linear-gradient(135deg, #8B0000 0%, #DC143C 50%, #FF0000 100%);
+  background: linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #ff0000 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -230,7 +321,7 @@
 
 /* Forge glow effect */
 .forge-glow {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(139, 0, 0, 0.4),
     0 0 40px rgba(139, 0, 0, 0.2),
     0 0 60px rgba(139, 0, 0, 0.1);
@@ -258,7 +349,7 @@
 }
 
 .strata-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
@@ -279,13 +370,13 @@
 }
 
 .market-card::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #8B0000, #DC143C, #8B0000);
+  background: linear-gradient(90deg, #8b0000, #dc143c, #8b0000);
 }
 
 /* Neural card - AI element */
@@ -296,10 +387,10 @@
 }
 
 .neural-card::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
-  background-image: 
+  background-image:
     linear-gradient(45deg, rgba(178, 34, 34, 0.05) 25%, transparent 25%),
     linear-gradient(-45deg, rgba(178, 34, 34, 0.05) 25%, transparent 25%);
   background-size: 20px 20px;
@@ -311,8 +402,9 @@
 /* Triangular divider */
 .triangle-divider {
   height: 60px;
-  background: linear-gradient(135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%),
-              linear-gradient(-135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%);
+  background:
+    linear-gradient(135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%),
+    linear-gradient(-135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%);
   background-size: 60px 60px;
   background-repeat: repeat-x;
 }
@@ -328,10 +420,10 @@
 
 /* Code blocks - Forge styling */
 .code-forge {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
   background: #0a0505;
   border: 1px solid #4a0000;
-  border-left: 3px solid #8B0000;
+  border-left: 3px solid #8b0000;
   padding: 1rem;
 }
 
@@ -347,13 +439,13 @@
 }
 
 .link-forge::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #8B0000, #DC143C);
+  background: linear-gradient(90deg, #8b0000, #dc143c);
   transition: width 0.3s ease;
 }
 
@@ -363,35 +455,50 @@
 
 /* === UTILITY CLASSES === */
 
-.text-blood { color: #8B0000; }
-.text-crimson { color: #DC143C; }
-.text-forge { color: #ff4444; }
+.text-blood {
+  color: #8b0000;
+}
+.text-crimson {
+  color: #dc143c;
+}
+.text-forge {
+  color: #ff4444;
+}
 
-.bg-void { background-color: #050505; }
-.bg-forge { background-color: #0a0505; }
-.bg-strata { background-color: #1a0f0a; }
+.bg-void {
+  background-color: #050505;
+}
+.bg-forge {
+  background-color: #0a0505;
+}
+.bg-strata {
+  background-color: #1a0f0a;
+}
 
-.border-blood { border-color: #8B0000; }
+.border-blood {
+  border-color: #8b0000;
+}
 
 /* === FORGE EMBERS ANIMATION === */
 @keyframes ember-float {
-  0%, 100% { 
-    transform: translateY(0) translateX(0) scale(0); 
-    opacity: 0; 
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
   }
   10% {
     opacity: 0.8;
   }
-  50% { 
-    transform: translateY(-50vh) translateX(20px) scale(1.5); 
-    opacity: 0.6; 
+  50% {
+    transform: translateY(-50vh) translateX(20px) scale(1.5);
+    opacity: 0.6;
   }
   90% {
     opacity: 0.2;
   }
-  100% { 
-    transform: translateY(-100vh) translateX(-10px) scale(0.5); 
-    opacity: 0; 
+  100% {
+    transform: translateY(-100vh) translateX(-10px) scale(0.5);
+    opacity: 0;
   }
 }
 
@@ -407,22 +514,62 @@
   position: absolute;
   width: 3px;
   height: 3px;
-  background: radial-gradient(circle, #FF4500 0%, #FF0000 40%, transparent 70%);
+  background: radial-gradient(circle, #ff4500 0%, #ff0000 40%, transparent 70%);
   border-radius: 50%;
   animation: ember-float 12s ease-out infinite;
-  box-shadow: 0 0 6px #FF4500;
+  box-shadow: 0 0 6px #ff4500;
 }
 
-.ember:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 10s; }
-.ember:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 14s; }
-.ember:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 11s; }
-.ember:nth-child(4) { left: 35%; animation-delay: 1s; animation-duration: 13s; }
-.ember:nth-child(5) { left: 45%; animation-delay: 3s; animation-duration: 10s; }
-.ember:nth-child(6) { left: 55%; animation-delay: 5s; animation-duration: 12s; }
-.ember:nth-child(7) { left: 65%; animation-delay: 0.5s; animation-duration: 15s; }
-.ember:nth-child(8) { left: 75%; animation-delay: 2.5s; animation-duration: 11s; }
-.ember:nth-child(9) { left: 85%; animation-delay: 4.5s; animation-duration: 13s; }
-.ember:nth-child(10) { left: 95%; animation-delay: 1.5s; animation-duration: 10s; }
+.ember:nth-child(1) {
+  left: 5%;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+.ember:nth-child(2) {
+  left: 15%;
+  animation-delay: 2s;
+  animation-duration: 14s;
+}
+.ember:nth-child(3) {
+  left: 25%;
+  animation-delay: 4s;
+  animation-duration: 11s;
+}
+.ember:nth-child(4) {
+  left: 35%;
+  animation-delay: 1s;
+  animation-duration: 13s;
+}
+.ember:nth-child(5) {
+  left: 45%;
+  animation-delay: 3s;
+  animation-duration: 10s;
+}
+.ember:nth-child(6) {
+  left: 55%;
+  animation-delay: 5s;
+  animation-duration: 12s;
+}
+.ember:nth-child(7) {
+  left: 65%;
+  animation-delay: 0.5s;
+  animation-duration: 15s;
+}
+.ember:nth-child(8) {
+  left: 75%;
+  animation-delay: 2.5s;
+  animation-duration: 11s;
+}
+.ember:nth-child(9) {
+  left: 85%;
+  animation-delay: 4.5s;
+  animation-duration: 13s;
+}
+.ember:nth-child(10) {
+  left: 95%;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
 
 /* Floor badge hover effects */
 .floor-badge {
@@ -440,28 +587,31 @@
 }
 
 .nav-active::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -4px;
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
   height: 4px;
-  background: #FF0000;
+  background: #ff0000;
   border-radius: 50%;
-  box-shadow: 0 0 8px #FF0000;
+  box-shadow: 0 0 8px #ff0000;
 }
-.border-crimson { border-color: #DC143C; }
+.border-crimson {
+  border-color: #dc143c;
+}
 
 /* === TRICOLOR LOGO STYLES === */
 /* Tricolor logo with vibrant primer colors */
 .tricolor-logo {
-  background: linear-gradient(135deg, 
-    rgba(0, 212, 255, 0.15) 0%, 
-    rgba(255, 184, 0, 0.15) 50%, 
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.15) 0%,
+    rgba(255, 184, 0, 0.15) 50%,
     rgba(255, 45, 45, 0.15) 100%
   );
-  box-shadow: 
+  box-shadow:
     0 0 15px rgba(255, 184, 0, 0.3),
     0 0 30px rgba(0, 212, 255, 0.2),
     0 0 45px rgba(255, 45, 45, 0.15);
@@ -469,7 +619,7 @@
 }
 
 .tricolor-logo:hover {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(255, 184, 0, 0.5),
     0 0 40px rgba(0, 212, 255, 0.3),
     0 0 60px rgba(255, 45, 45, 0.2);
@@ -477,7 +627,7 @@
 
 /* Tricolor text accents */
 .text-tricolor {
-  background: linear-gradient(90deg, #00D4FF 0%, #FFB800 50%, #FF2D2D 100%);
+  background: linear-gradient(90deg, #00d4ff 0%, #ffb800 50%, #ff2d2d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -485,7 +635,7 @@
 
 /* Tricolor glow for hero elements */
 .tricolor-glow {
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(255, 184, 0, 0.2),
     0 0 40px rgba(0, 212, 255, 0.15),
     0 0 60px rgba(255, 45, 45, 0.1);
