@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import TrinityNav from './components/TrinityNav';
 
 const ARTICLES = [
   { title: 'Prompt · Physics · Paradox', desc: 'What happens when you treat AI prompts like physics experiments', url: 'https://medium.com/@arifbfazil/prompt-physics-paradox-1f1581b95acb' },
@@ -200,7 +201,9 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-gray-200 font-sans selection:bg-red-900/30 selection:text-red-200">
+    <>
+      <TrinityNav />
+      <div className="min-h-screen bg-[#0a0a0a] text-gray-200 font-sans selection:bg-red-900/30 selection:text-red-200">
       {/* Navigation - Minimal */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0a0a0a]/90 backdrop-blur-md border-b border-gray-800/50' : ''}`}>
         <div className="max-w-3xl mx-auto px-6">
@@ -508,8 +511,8 @@ function App() {
           </div>
 
           {/* Trinity Table */}
-          <div className="rounded-xl border border-gray-800 overflow-hidden shadow-2xl">
-            <table className="w-full text-sm">
+          <div className="rounded-xl border border-gray-800 overflow-x-auto shadow-2xl">
+            <table className="w-full text-sm min-w-[500px]">
               <thead>
                 <tr className="border-b border-gray-800 bg-gray-900/30">
                   <th className="text-left px-6 py-4 text-gray-500 font-normal font-mono text-xs uppercase tracking-tighter">Layer</th>
@@ -651,45 +654,20 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-16 border-t border-gray-900">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-            <div>
-              <div className="flex items-center gap-4 mb-4">
-                <img 
-                  src="/images/arifos-logo.webp" 
-                  alt="arifOS Logo" 
-                  className="w-12 h-12 grayscale brightness-50"
-                />
-                <div>
-                  <p className="text-white font-bold text-xl tracking-tight">ARIF FAZIL</p>
-                  <p className="text-gray-600 text-sm font-mono tracking-tighter uppercase">Architect Ω Mind</p>
-                </div>
-              </div>
-              <p className="text-gray-700 text-xs tracking-[0.4em] uppercase font-mono">DITEMPA BUKAN DIBERI</p>
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <a href="https://github.com/ariffazil" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub" className="w-12 h-12 rounded-2xl bg-gray-900/50 border border-gray-800 flex items-center justify-center text-gray-500 hover:text-white hover:bg-gray-800 transition-all">
-                <Github className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com/in/arif-fazil" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn" className="w-12 h-12 rounded-2xl bg-gray-900/50 border border-gray-800 flex items-center justify-center text-gray-500 hover:text-white hover:bg-gray-800 transition-all">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="mailto:arifbfazil@gmail.com" title="Email" aria-label="Email" className="w-12 h-12 rounded-2xl bg-gray-900/50 border border-gray-800 flex items-center justify-center text-gray-500 hover:text-white hover:bg-gray-800 transition-all">
-                <Mail className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-          
-          <div className="mt-16 pt-8 border-t border-gray-900/50 text-center">
-            <p className="text-[10px] text-gray-800 font-mono tracking-widest uppercase mb-2">© 2013 – 2026 Sovereign Records</p>
-            <p className="text-[8px] text-gray-900 font-mono tracking-[0.5em] uppercase">All Axioms Grounded</p>
-          </div>
+      <footer className="trinity-footer mt-24">
+        <div className="links">
+          <a href="https://arif-fazil.com/"><b>HUMAN</b></a>
+          <a href="https://apex.arif-fazil.com/">THEORY</a>
+          <a href="https://arifos.arif-fazil.com/">APPS</a>
+        </div>
+        THE TRINITY • HUMAN • THEORY • APPS<br />
+        <b>Ditempa Bukan Diberi</b> • AGPL-3.0 • 2026.2.23
+        <div className="mt-8 text-[10px] opacity-30 uppercase tracking-[0.2em]">
+          Copyright © 2013 – 2026 Sovereign Records • LAST UPDATED: FEB 23, 2026
         </div>
       </footer>
     </div>
+    </>
   );
 }
 
