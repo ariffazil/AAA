@@ -51,4 +51,4 @@ Sitemap: https://arif-fazil.com/sitemap.xml
 #   - HUMAN:  https://arif-fazil.com          (This site — Biography)
 #   - THEORY: https://apex.arif-fazil.com     (Constitutional canon)
 #   - APPS:   https://arifos.arif-fazil.com   (Application stack)
-#   - MIND:   https://aaamcp.arif-fazil.com   (Runtime MCP endpoint)
+#   - BACKEND: https://arifosmcp.arif-fazil.com (MCP runtime)

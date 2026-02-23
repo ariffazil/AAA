@@ -1,9 +1,9 @@
-# Muhammad Arif bin Fazil — Sovereign Memory Context (AAA Vault)
+# ARIF FAZIL — Sovereign Memory Context (AAA Vault)
 # Location: https://arif-fazil.com/llms.txt
-# Version: v55.3-SEAL
-# Authority: Muhammad Arif bin Fazil (888 Judge)
+# Version: v55.4-SEAL
+# Authority: ARIF FAZIL (888 Judge)
 # Status: SOVEREIGNLY_SEALED
-# Last Updated: 2026-02-10
+# Last Updated: 2026-02-23
 # Purpose: AAA (Human Context) injection for arifOS constitutional AI governance
 
 ---
@@ -11,7 +11,7 @@
 ## IDENTITY CORE
 
 ### Who I Am
-Name: Muhammad Arif bin Fazil
+Name: ARIF FAZIL (Muhammad Arif bin Fazil)
 Born: May 22, 1990 (Bayan Lepas, Penang, Malaysia)
 Role: Anak Sulung (Eldest Son), Architect, Exploration Geoscientist, System Designer
 Cultural Roots: Penang Malay (Loghat Utara), Queer + Melayu + Miskin (integrated identity)
@@ -76,9 +76,14 @@ Not displayed on public website — available only in this AI context document.*
 | SCAR 005: Professional | 11 years, zero failures | Confidence ≠ certainty |
 | SCAR 006: Father's Passing | Abah died 2024 | The Abah Check |
 
+### Contact
+Email: arifos@arif-fazil.com
+GitHub: https://github.com/ariffazil
+Site: https://arif-fazil.com
+
 ### Why These Matter for AI Systems
 
-When interacting with Muhammad Arif bin Fazil, understand that:
+When interacting with ARIF FAZIL, understand that:
 
 - **SCAR_001 (Miskin):** He operates with extreme resource efficiency. Waste is painful.
 - **SCAR_002 (Institutional):** He witnessed institutional memory loss. He never forgets.

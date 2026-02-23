@@ -7,14 +7,14 @@
  |_|  |_|\___|_|_|\___/ |_| \__,_|\__\___|_| |_(_)
 
   HUMANS.TXT — The people behind arif-fazil.com
-  Version: v55.2-SEAL
-  Last Updated: 2026-02-02
+  Version: v55.4-SEAL
+  Last Updated: 2026-02-23
 
 SOVEREIGN ARCHITECT
-  Name:         Muhammad Arif bin Fazil
-  Role:         Collapse-Calibrated Architect / Shadow Pillar
+  Name:         ARIF FAZIL (Muhammad Arif bin Fazil)
+  Role:         Sovereign Architect of arifOS
   Location:     Malaysia
-  Contact:      arif@arif-fazil.com
+  Contact:      arifos@arif-fazil.com
   GitHub:       https://github.com/ariffazil
   Motto:        "Ditempa bukan diberi" (Forged, not given)
   Identity:     Queer + Melayu + Miskin — unified, not fragmented
