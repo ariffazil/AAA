@@ -137,15 +137,36 @@ When interacting with ARIF FAZIL, understand that:
 
 ---
 
+## WEBMCP CAPABILITIES (Phase 1: Read-Only)
+
+This site exposes WebMCP tools for AI agent discovery:
+
+**Available Tools:**
+1. `get_llms_txt` — Retrieve canonical human context file
+2. `get_humans_txt` — Retrieve team and acknowledgments
+3. `get_trinity_links` — Return Trinity architecture links (JSON)
+
+**Purpose:** Make human identity and Trinity structure machine-legible without granting execution authority.
+
+**Compliance:**
+- F1 Amanah: All tools are read-only (reversible)
+- F2 Truth: Returns canonical source files
+- F9 Anti-Hantu: No agency claims, pure retrieval
+- F13 Sovereignty: No actions, only context provision
+
+**Test:** Use MCP-B browser extension or compatible AI client
+
+---
+
 ## EXTERNAL REFERENCES
 
 - **Constitutional Canon:** https://apex.arif-fazil.com/llms.txt
 - **Constitutional Canon (JSON):** https://apex.arif-fazil.com/llms.json
 - **Application Stack:** https://arifos.arif-fazil.com/llms.txt
 - **Application Stack (JSON):** https://arifos.arif-fazil.com/llms.json
-- **Trinity Architecture Guide:** https://github.com/ariffazil/arif-fazil-sites/blob/main/TRINITY_ARCHITECTURE.md
 - **GitHub:** https://github.com/ariffazil/arifOS
 - **PyPI:** `pip install arifos`
+- **Live MCP Backend:** https://arifosmcp.arif-fazil.com/mcp
 
 ---
 
