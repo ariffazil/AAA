@@ -774,3 +774,63 @@
 .trinity-footer .links a b {
   color: #e6c25d;
 }
+
+/* Trinity primer contrast theme */
+:root {
+  --trinity-human: #ff4d4f;
+  --trinity-theory: #ffd24a;
+  --trinity-apps: #4da3ff;
+}
+
+.trinity-nav {
+  background: linear-gradient(90deg, rgba(20, 6, 8, 0.95), rgba(12, 12, 12, 0.95), rgba(6, 12, 20, 0.95));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.trinity-badge {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.82);
+  background: linear-gradient(90deg, rgba(255, 77, 79, 0.2), rgba(255, 210, 74, 0.2), rgba(77, 163, 255, 0.2));
+}
+
+.trinity-link {
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.trinity-link.trinity-human:hover,
+.trinity-link.trinity-human.active {
+  color: var(--trinity-human);
+  border-bottom-color: var(--trinity-human);
+}
+
+.trinity-link.trinity-theory:hover,
+.trinity-link.trinity-theory.active {
+  color: var(--trinity-theory);
+  border-bottom-color: var(--trinity-theory);
+}
+
+.trinity-link.trinity-apps:hover,
+.trinity-link.trinity-apps.active {
+  color: var(--trinity-apps);
+  border-bottom-color: var(--trinity-apps);
+}
+
+.trinity-enter {
+  color: var(--trinity-human) !important;
+}
+
+.trinity-right a:hover {
+  color: var(--trinity-apps);
+}
+
+@media (max-width: 900px) {
+  .trinity-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .trinity-badge,
+  .trinity-center {
+    display: none;
+  }
+}

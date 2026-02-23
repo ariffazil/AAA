@@ -412,9 +412,10 @@ function App() {
                 Identity Core
               </h3>
               <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8 text-gray-300">
-                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Name</strong> Muhammad Arif bin Fazil</p>
+                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Name</strong> ARIF FAZIL</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Born</strong> May 22, 1990 — Penang, MY</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Heritage</strong> Northern Malay / Loghat Utara</p>
+                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Email</strong> arifos@arif-fazil.com</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Creed</strong> "FORGED, NOT GIVEN"</p>
               </div>
             </div>

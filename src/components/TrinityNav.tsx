@@ -4,25 +4,22 @@ export default function TrinityNav() {
   return (
     <nav className="trinity-nav">
       <div className="trinity-container">
-        {/* Left: Logo + Trinity */}
         <div className="trinity-left">
           <a href="https://arif-fazil.com/" className="trinity-logo">
             <span className="arif">ARIF</span>
             <span className="os">OS</span>
           </a>
-          <div className="trinity-badge">THE TRINITY</div>
+          <div className="trinity-badge">HUMAN · THEORY · APPS</div>
         </div>
 
-        {/* Center: The 3 Pillars */}
         <div className="trinity-center">
-          <a href="https://arif-fazil.com/" className="trinity-link active">HUMAN</a>
-          <a href="https://apex.arif-fazil.com/" className="trinity-link">THEORY</a>
-          <a href="https://arifos.arif-fazil.com/" className="trinity-link">APPS</a>
+          <a href="https://arif-fazil.com/" className="trinity-link trinity-human active">HUMAN</a>
+          <a href="https://apex.arif-fazil.com/" className="trinity-link trinity-theory">THEORY</a>
+          <a href="https://arifos.arif-fazil.com/" className="trinity-link trinity-apps">APPS</a>
         </div>
 
-        {/* Right: Links */}
         <div className="trinity-right">
-          <a href="https://github.com/ariffazil/arifOS" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/ariffazil/ariffazil" target="_blank" rel="noopener noreferrer">
             GitHub
           </a>
           <a href="https://arif-fazil.com/" className="trinity-enter">
