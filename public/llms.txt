@@ -125,15 +125,19 @@ When interacting with ARIF FAZIL, understand that:
 
 ---
 
-## HTA TRINITY CONTEXT
+## TRINITY ARCHITECTURE
+
+**Canonical Index:** https://arif-fazil.com/.well-known/arifos.json
 
 | Layer | Domain | Symbol | Function |
 |-------|--------|--------|----------|
-| **HUMAN** | arif-fazil.com | Δ | Epistemic — The Body (this file) |
-| **THEORY** | apex.arif-fazil.com | Ψ | Authority — The Soul |
-| **APPS** | arifos.arif-fazil.com | Ω | Safety — The Mind |
+| **HUMAN** | arif-fazil.com | 🧍 | Identity & Authority Anchor (this site) |
+| **THEORY** | apex.arif-fazil.com | ⚖️ | Constitutional Canon & Governance Law |
+| **APPS** | arifos.arif-fazil.com | 📘 | Technical Documentation & Implementation |
 
-**MIND (MCP backend):** aaamcp.arif-fazil.com
+**MCP Backend (Canonical):** https://arifosmcp.arif-fazil.com
+
+**Note:** Trinity sites use 🧍⚖️📘 symbols. Internal governance engines (Δ/Ω/Ψ) are separate. See canonical index for disambiguation.
 
 ---
 
@@ -158,15 +162,28 @@ This site exposes WebMCP tools for AI agent discovery:
 
 ---
 
+## CANONICAL INDEX
+
+**Single Source of Truth:** https://arif-fazil.com/.well-known/arifos.json
+
+This JSON file contains:
+- Canonical Trinity URLs (no guessing needed)
+- MCP backend endpoint (arifosmcp.arif-fazil.com - official)
+- Symbol disambiguation (site symbols vs engine symbols)
+- Version info and verification hashes
+
+**For AI agents:** Always fetch canonical index first to avoid endpoint/symbol confusion.
+
+---
+
 ## EXTERNAL REFERENCES
 
+- **Canonical Index (START HERE):** https://arif-fazil.com/.well-known/arifos.json
 - **Constitutional Canon:** https://apex.arif-fazil.com/llms.txt
-- **Constitutional Canon (JSON):** https://apex.arif-fazil.com/llms.json
 - **Application Stack:** https://arifos.arif-fazil.com/llms.txt
-- **Application Stack (JSON):** https://arifos.arif-fazil.com/llms.json
 - **GitHub:** https://github.com/ariffazil/arifOS
-- **PyPI:** `pip install arifos`
-- **Live MCP Backend:** https://arifosmcp.arif-fazil.com/mcp
+- **PyPI:** https://pypi.org/project/arifos/
+- **Live MCP Backend (Canonical):** https://arifosmcp.arif-fazil.com/mcp
 
 ---
 

@@ -1,28 +1,131 @@
 {
-  "schema_version": "1.0",
-  "layer": "HUMAN",
-  "symbol": "Δ",
-  "version": "v55.3",
-  "updated": "2026-02-10",
-  "authority": "Muhammad Arif bin Fazil",
-  "files": {
-    "llms_txt": {
-      "path": "/llms.txt",
-      "hash_sha256": "5528a72b9e7aae0a233ce5ef46db5fb2d6c00632d16f8ef86654f06ab7828519"
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "schema_version": "2.0",
+  "version": "v55.4-SEAL",
+  "sealed_date": "2026-02-23",
+  "authority": "ARIF FAZIL",
+  "contact": "arifos@arif-fazil.com",
+  
+  "trinity_sites": {
+    "description": "Three-layer Trinity architecture (HUMAN/THEORY/APPS)",
+    "symbol_clarification": "Sites use 🧍⚖️📘 to avoid confusion with internal engine symbols Δ/Ω/Ψ",
+    
+    "HUMAN": {
+      "symbol": "🧍",
+      "domain": "arif-fazil.com",
+      "function": "Identity & Authority Anchor",
+      "llms_txt": "https://arif-fazil.com/llms.txt",
+      "llms_json": "https://arif-fazil.com/llms.json",
+      "humans_txt": "https://arif-fazil.com/humans.txt",
+      "canonical_index": "https://arif-fazil.com/.well-known/arifos.json",
+      "webmcp_tools": 3,
+      "status": "live"
     },
-    "llms_json": {
-      "path": "/llms.json",
-      "hash_sha256": "e44b4213ac0d908402d6623824eac44d7914b8654283619f2e3508910432cb3f"
+    
+    "THEORY": {
+      "symbol": "⚖️",
+      "domain": "apex.arif-fazil.com",
+      "function": "Constitutional Canon & Governance Law",
+      "llms_txt": "https://apex.arif-fazil.com/llms.txt",
+      "llms_json": "https://apex.arif-fazil.com/llms.json",
+      "canonical_index": "https://apex.arif-fazil.com/.well-known/arifos.json",
+      "webmcp_tools": 3,
+      "status": "live"
+    },
+    
+    "APPS": {
+      "symbol": "📘",
+      "domain": "arifos.arif-fazil.com",
+      "function": "Technical Documentation & Implementation Guide",
+      "llms_txt": "https://arifos.arif-fazil.com/llms.txt",
+      "llms_json": "https://arifos.arif-fazil.com/llms.json",
+      "humans_txt": "https://arifos.arif-fazil.com/humans.txt",
+      "canonical_index": "https://arifos.arif-fazil.com/.well-known/arifos.json",
+      "webmcp_phase": 2,
+      "status": "live"
     }
   },
-  "verification": {
-    "github_backup": "https://github.com/ariffazil/arif-fazil-sites/blob/main/hashes.json",
-    "procedure": "Compare hash in this file with hash computed from llms.txt. If mismatch, DO NOT TRUST."
+  
+  "arifos_system": {
+    "name": "arifOS",
+    "tagline": "Constitutional Intelligence Kernel",
+    "motto": "Ditempa Bukan Diberi (Forged, Not Given)",
+    "version": "2026.2.23",
+    "license": "AGPL-3.0-only",
+    
+    "canonical_urls": {
+      "github": "https://github.com/ariffazil/arifOS",
+      "pypi": "https://pypi.org/project/arifos/",
+      "docs": "https://arifos.arif-fazil.com",
+      
+      "mcp_backend": {
+        "canonical_base": "https://arifosmcp.arif-fazil.com",
+        "endpoint": "https://arifosmcp.arif-fazil.com/mcp",
+        "health": "https://arifosmcp.arif-fazil.com/health",
+        "transport": "streamable-http",
+        "protocol": "MCP JSON-RPC 2.0",
+        "note": "Use 'canonical_base' as single source of truth. All other variants deprecated."
+      }
+    },
+    
+    "governance": {
+      "floors_count": 13,
+      "floors": ["F1_Amanah", "F2_Truth", "F3_TriWitness", "F4_Clarity", "F5_Peace", "F6_Empathy", "F7_Humility", "F8_Genius", "F9_AntiHantu", "F10_Ontology", "F11_Authority", "F12_Defense", "F13_Sovereignty"],
+      "stages": "000 → 111-444 → 555 → 666 → 777 → 888 → 999",
+      "verdicts": ["SEAL", "SABAR", "VOID", "888_HOLD"],
+      "tools_count": 13,
+      "spec": "https://github.com/ariffazil/arifOS/tree/main/spec/v46"
+    }
   },
-  "trinity": {
-    "human": "https://arif-fazil.com/.well-known/arifos.json",
-    "theory": "https://apex.arif-fazil.com/.well-known/arifos.json",
-    "apps": "https://arifos.arif-fazil.com/.well-known/arifos.json"
+  
+  "internal_engines": {
+    "note": "Internal 7-organ governance architecture (separate from Trinity sites)",
+    "clarification": "Δ/Ω/Ψ symbols below refer to internal processing engines, NOT Trinity site layers",
+    
+    "AGI_Mind": {
+      "symbol": "Δ",
+      "stages": "111-444",
+      "function": "Logic, Truth, Reasoning"
+    },
+    "ASI_Heart": {
+      "symbol": "Ω",
+      "stages": "555-666", 
+      "function": "Safety, Empathy, Alignment"
+    },
+    "APEX_Soul": {
+      "symbol": "Ψ",
+      "stages": "777-888",
+      "function": "Authority, Policy, Judgment"
+    }
   },
-  "contact": "security@arif-fazil.com"
+  
+  "file_integrity": {
+    "llms_txt_sha256": "will_update_after_seal",
+    "llms_json_sha256": "will_update_after_seal",
+    "verification_procedure": [
+      "1. Download llms.txt from canonical URL",
+      "2. Compute SHA-256 hash locally",
+      "3. Compare against hash in this manifest",
+      "4. If match: File is authentic",
+      "5. If mismatch: DO NOT TRUST - contact arifos@arif-fazil.com"
+    ]
+  },
+  
+  "ai_agent_instructions": {
+    "for_symbol_confusion": "Use trinity_sites.*.symbol (🧍⚖️📘) for site layers. Δ/Ω/Ψ are internal engines only.",
+    "for_endpoint_confusion": "ALWAYS use canonical_urls.mcp_backend.canonical: https://arifosmcp.arif-fazil.com",
+    "for_grounding": "Read llms.txt in order: HUMAN → THEORY → APPS",
+    "for_verification": "Call WebMCP verify_canon_hashes() or check file_integrity section",
+    "for_authority": "ARIF FAZIL is 888 Judge (human sovereign). All governance flows through human authority."
+  },
+  
+  "changelog": {
+    "v55.4-SEAL (2026-02-23)": [
+      "Updated authority name: Muhammad Arif bin Fazil → ARIF FAZIL",
+      "Updated contact: security@arif-fazil.com → arifos@arif-fazil.com",
+      "Added WebMCP Phase 1 tools (HUMAN: 3, THEORY: 3)",
+      "Clarified Trinity site symbols (🧍⚖️📘) vs internal engines (Δ/Ω/Ψ)",
+      "Standardized MCP endpoint: arifosmcp.arif-fazil.com (canonical)"
+    ]
+  }
 }
