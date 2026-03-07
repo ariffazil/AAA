@@ -17,9 +17,9 @@ mkdir -p "${WORKSPACE}/logs"
 
 log "=== arifOS_bot workspace backup starting ==="
 
-# Check GH_TOKEN available
-if [ -z "${GH_TOKEN:-}" ]; then
-  log "ERROR: GH_TOKEN not set — cannot push to GitHub"
+# Check GITHUB_TOKEN available
+if [ -z "${GITHUB_TOKEN:-}" ]; then
+  log "ERROR: GITHUB_TOKEN not set — cannot push to GitHub"
   echo "{\"ts\":\"${TIMESTAMP}\",\"event\":\"backup_failed\",\"reason\":\"no_gh_token\",\"agent\":\"arifOS_bot\"}" >> "${AUDIT_FILE}"
   exit 1
 fi
@@ -27,7 +27,7 @@ fi
 cd "${WORKSPACE}"
 
 # Configure git auth via token
-git remote set-url origin "https://${GH_TOKEN}@github.com/ariffazil/openclaw-workspace.git"
+git remote set-url origin "https://${GITHUB_TOKEN}@github.com/ariffazil/openclaw-workspace.git"
 
 # Stage all changes (exclude .git internals, no secrets)
 git add \
