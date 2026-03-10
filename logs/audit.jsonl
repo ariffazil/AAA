@@ -3,3 +3,5 @@
 {"ts":"2026-03-07T10:34:23Z","event":"health_probe","source":"bootstrap","arifos_status":"healthy","tools_loaded":13,"openclaw_status":"healthy","disk_pct":"65%","ram_available":"12G","containers_ok":12,"agent":"arifOS_bot"}
 {"ts":"2026-03-07T10:34:23Z","event":"model_id_verified","primary":"kimi/kimi-k2.5","note_deleted":true,"fallbacks":12,"agent":"arifOS_bot"}
 {"ts":"2026-03-07T10:34:23Z","event":"backup_script_fixed","fix":"GH_TOKEN_env_var_corrected","agent":"arifOS_bot"}
+{"ts":"2026-03-10T04:07:11Z","event":"health_probe","source":"heartbeat","arifos_tools":0,"disk_pct":"77%","ram_avail_mb":12684,"status":"CRITICAL","agent":"arifOS_bot","summary":"arifOS MCP unreachable — container check needed"}
+{"ts":"2026-03-10T04:07:24Z","event":"action_proposal","source":"heartbeat","floors":["F1","F2","F11","F12"],"mode":"conservative","agent":"arifOS_bot","summary":"arifOS MCP container restart loop — requires docker compose restart arifosmcp_server","proposed_action":"docker compose -f /mnt/arifos/docker-compose.yml restart arifosmcp_server","risk_tier":"high","irreversible":false}
