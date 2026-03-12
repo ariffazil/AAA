@@ -2,9 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   Github,
   Linkedin,
-  Mail,
   ExternalLink,
-  MapPin,
   Mountain,
   TrendingUp,
   Cpu,
@@ -14,10 +12,8 @@ import {
   Code,
   Compass,
   Triangle,
-  Terminal,
   Bot
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import TrinityNav from './components/TrinityNav';
 
@@ -229,7 +225,6 @@ function App() {
                 <ExternalLink className="w-4 h-4" />
               </a>
               <div className="h-4 w-px bg-gray-800 mx-1" />
-              <a href="/llms.txt" className="px-3 py-1.5 rounded-md text-sm text-gray-400 hover:text-red-400 hover:bg-red-950/20 border border-transparent hover:border-red-800/50 transition-all font-mono">llms.txt</a>
             </div>
 
             {/* Trinity nav - pill style */}
@@ -257,7 +252,6 @@ function App() {
             <a href="#about" className="block px-3 py-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 border border-transparent hover:border-gray-700 transition-all" onClick={() => setMobileMenuOpen(false)}>about</a>
             <a href="#work" className="block px-3 py-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 border border-transparent hover:border-gray-700 transition-all" onClick={() => setMobileMenuOpen(false)}>work</a>
             <a href="#writing" className="block px-3 py-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800/50 border border-transparent hover:border-gray-700 transition-all" onClick={() => setMobileMenuOpen(false)}>writing</a>
-            <a href="/llms.txt" className="block px-3 py-2 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-950/20 border border-transparent hover:border-red-800/50 transition-all font-mono" onClick={() => setMobileMenuOpen(false)}>llms.txt</a>
             <Separator className="bg-gray-800 my-3" />
             <div className="flex gap-2">
               <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-red-500/20 text-red-400 text-xs border border-red-500/30">HUMAN</a>
@@ -388,8 +382,8 @@ function App() {
               </div>
               <h3 className="text-lg font-medium text-white mb-3">AI Governance</h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Developing the htaMind: constitutional safeguards and thermodynamic 
-                constraints for safety-critical AI decision systems.
+                Building practical AI governance so technology stays useful, grounded,
+                and responsible for real people.
               </p>
             </div>
           </div>
@@ -490,7 +484,7 @@ function App() {
             <span className="h-px w-8 bg-red-600/50" />
             <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest">Ecosystem</h2>
           </div>
-          <p className="text-gray-400 text-sm mb-12">The Trinity Architecture: Three layers of sovereign cognition.</p>
+          <p className="text-gray-400 text-sm mb-12">Three connected homes: personal work, theory, and applications.</p>
 
           {/* Trinity Links */}
           <div className="grid sm:grid-cols-2 gap-4 mb-12">
@@ -548,7 +542,7 @@ function App() {
         <div className="max-w-3xl mx-auto px-6">
           <div className="flex items-center gap-3 mb-8">
             <span className="h-px w-8 bg-red-600/50" />
-            <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest">System Highlight</h2>
+            <h2 className="text-sm font-mono text-gray-500 uppercase tracking-widest">Project Highlight</h2>
           </div>
 
           <div className="p-10 rounded-3xl border border-red-500/20 bg-gradient-to-br from-gray-900/40 to-red-950/10 relative overflow-hidden group">
@@ -560,20 +554,19 @@ function App() {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white tracking-tight">arifOS</h3>
-                <p className="text-xs font-mono text-red-500">v64.1-GAGI</p>
+                <p className="text-xs font-mono text-red-500">ongoing work</p>
               </div>
             </div>
             
             <p className="text-gray-300 text-lg leading-relaxed mb-8 font-light">
-              arifOS is a specialized operating system designed and forged to provide 
-              governance for AI agents. By integrating 13 constitutional floors (F1-F13) 
-              at the kernel level, arifOS ensures that AI cognition is bound by mathematical 
-              fidelity, thermodynamic stability, and human empathy.
+              arifOS is a long-term effort to keep AI systems accountable to human values.
+              The goal is simple: technology should help people without losing truth,
+              dignity, or responsibility.
             </p>
 
             <div className="flex flex-wrap gap-4">
               <a href="https://arifos.arif-fazil.com" className="px-6 py-3 rounded-2xl bg-white text-black font-semibold hover:bg-gray-200 transition-colors flex items-center gap-2">
-                <Terminal className="w-4 h-4" /> Documentation
+                <ExternalLink className="w-4 h-4" /> Visit Site
               </a>
               <a href="https://github.com/ariffazil/arifOS" title="View Source on GitHub" className="px-6 py-3 rounded-2xl bg-gray-900 border border-gray-700 text-white font-medium hover:bg-gray-800 transition-colors flex items-center gap-2">
                 <Github className="w-4 h-4" /> GitHub
@@ -629,32 +622,6 @@ function App() {
         </div>
       </section>
 
-      {/* For AI Agents */}
-      <section className="py-20 border-t border-gray-900/50 bg-[#080808]">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-6">
-            <Bot className="w-5 h-5 text-gray-600" />
-            <h2 className="text-xs font-mono text-gray-600 uppercase tracking-[0.3em]">Machine Context</h2>
-          </div>
-          <p className="text-gray-500 text-sm mb-10 font-light max-w-md italic">
-            "We build for the machines that will build with us."
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { id: 'llms.txt', url: '/llms.txt', icon: Terminal },
-              { id: 'llms.json', url: '/llms.json', icon: Terminal },
-              { id: 'humans.txt', url: '/humans.txt', icon: Code },
-              { id: 'robots.txt', url: '/robots.txt', icon: Bot },
-            ].map((file) => (
-              <a key={file.id} href={file.id} title={`Go to ${file.id}`} className="p-4 rounded-xl border border-gray-800 bg-[#0a0a0a] hover:border-red-600/40 hover:text-red-500 transition-all flex flex-col items-center gap-3">
-                <file.icon className="w-5 h-5 opacity-40" />
-                <span className="text-xs font-mono">{file.id}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <footer className="trinity-footer mt-24">
         <div className="links">
           <a href="https://arif-fazil.com/"><b>HUMAN</b></a>
@@ -662,9 +629,9 @@ function App() {
           <a href="https://arifos.arif-fazil.com/">APPS</a>
         </div>
         THE TRINITY • HUMAN • THEORY • APPS<br />
-        <b>Ditempa Bukan Diberi</b> • AGPL-3.0 • 2026.2.23
+        <b>Ditempa Bukan Diberi</b>
         <div className="mt-8 text-[10px] opacity-30 uppercase tracking-[0.2em]">
-          Copyright © 2013 – 2026 Sovereign Records • LAST UPDATED: FEB 23, 2026
+          Copyright © 2013 – 2026 • Last Updated: Mar 13, 2026
         </div>
       </footer>
     </div>

@@ -1,43 +1,73 @@
 # ARIF FAZIL
 
-**Senior Exploration Geoscientist** | PETRONAS Carigali | arifOS Architect  
-*Bayan Lepas, Penang | 1990 | Ditempa Bukan Diberi*
+Senior Exploration Geoscientist at PETRONAS Carigali and architect of arifOS.
 
-[![PETRONAS](https://img.shields.io/badge/PETRONAS-Carigali-blue)](https://www.petronas.com/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-ariffazil-blue)](https://linkedin.com/in/ariffazil) [![GitHub](https://img.shields.io/badge/GitHub-ariffazil-black)](https://github.com/ariffazil) [![Telegram](https://img.shields.io/badge/Telegram-@ariffazil-blue)](https://t.me/ariffazil)
+Location: Malaysia (Penang / Selangor)  
+Motto: Ditempa Bukan Diberi (Forged, Not Given)
 
-Geologist, Geophysicist, Economist. 13+ years upstream exploration. **100% technical success rate** (zero dry wells led).
+[LinkedIn](https://linkedin.com/in/ariffazil) | [GitHub](https://github.com/ariffazil) | [Telegram](https://t.me/ariffazil)
 
-## 🎯 Professional Highlights
+## About
 
-- **Current Role**: Senior/Lead Exploration Geoscientist, PETRONAS Carigali (joined ~2013)
-  - Basin analysis, prospect maturation, drilling decisions
-  - Focus: Malaysia (Sabah/Malay Basin)
-- **Key Discoveries**:
-  | Discovery | Significance |
-  |-----------|--------------|
-  | **Bekantan-1** | Shallowest flowing oil in Malay Basin history |
-  | **Puteri Basement-1** | Key to PM318 PSC value |
-  | **Lebah Emas-1** | Western hinge fault zone in Malay Basin |
-- **Skills**: Seismic interpretation, stratigraphy, structural geology, petroleum systems, risk/economics
-- **Education**: B.Sc. Double Major (Geology & Geophysics + Economics), University of Wisconsin-Madison (2009-2013). Full PETRONAS scholarship.
+I work at the intersection of geology, geophysics, and economics.
+My main focus is turning subsurface uncertainty into practical drilling decisions.
 
-## 🛠 Side Projects
-- **arifOS**: Constitutional AI governance framework (Python/MCP). [GitHub](https://github.com/ariffazil/arifOS) | [PyPI](https://pypi.org/project/arifos/)
-- **Sites**:
-  | Site | Purpose |
-  |------|---------|
-  | [arif-fazil.com](https://arif-fazil.com) | Personal portfolio (React/Vite) |
-  | [apex.arif-fazil.com](https://apex.arif-fazil.com) | AI theory/constitution |
-  | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | Apps & tools |
+## Work Summary
 
-## 🌎 Background
-Penang native based in Seri Kembangan, Selangor (UTC+8). Malaysian geoscientist with bilingual proficiency (Bahasa Malaysia-English). Philosophy: *Ditempa Bukan Diberi* — Forged, Not Given.
+- Senior/Lead Exploration Geoscientist at PETRONAS Carigali (since ~2013)
+- Main focus areas: Sabah and Malay Basin
+- Core work: basin analysis, prospect maturation, and well decision support
+- Track record: 13+ years in upstream exploration
 
-## 📞 Contact
-- Telegram: [@ariffazil](https://t.me/ariffazil)
-- Email: [arifbfazil@gmail.com](mailto:arifbfazil@gmail.com)
-- GitHub Issues: [Open one](https://github.com/ariffazil/ariffazil/issues/new)
+## Key Wells and Discoveries
 
-© 2026 ARIF FAZIL. Profile content reserved. Code licenses: arifOS (AGPL-3.0), APEX Theory (CC0/Public Domain), sites (MIT).
+| Well / Discovery | Why it matters |
+|---|---|
+| Bekantan-1 | Reported as the shallowest flowing oil in Malay Basin history |
+| Puteri Basement-1 | Important value driver for PM318 PSC |
+| Lebah Emas-1 | Expanded understanding of the western hinge fault zone |
+| BUNGA TASBIH-1 | Included here as a key well reference in the project profile |
 
-*Updated 2026-02-08*
+## Skills
+
+- Seismic interpretation
+- Stratigraphy and structural geology
+- Petroleum systems analysis
+- Exploration risk and economics
+
+## Education
+
+B.Sc. double major in Geology & Geophysics and Economics,
+University of Wisconsin-Madison (2009-2013), PETRONAS scholarship.
+
+## Side Projects
+
+- arifOS: constitutional AI governance framework (Python/MCP)
+  - GitHub: https://github.com/ariffazil/arifOS
+  - PyPI: https://pypi.org/project/arifos/
+
+- Sites:
+  - https://arif-fazil.com (personal portfolio)
+  - https://apex.arif-fazil.com (AI theory and constitution)
+  - https://arifos.arif-fazil.com (apps and tools)
+
+## Publishing Notes (Maintainers)
+
+This website is published through GitHub Pages for `arif-fazil.com`.
+
+- Source branch: `main`
+- Build output: `dist/`
+- Workflow: `.github/workflows/pages.yml`
+- Domain config: `public/CNAME`
+
+Backup deployment files (Docker/Railway) are kept only as fallback infrastructure notes.
+
+## Contact
+
+- Telegram: https://t.me/ariffazil
+- Email: arifbfazil@gmail.com
+- Issues: https://github.com/ariffazil/ariffazil/issues/new
+
+Copyright 2026 ARIF FAZIL.
+
+Updated: 2026-03-13

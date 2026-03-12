@@ -1,12 +1,18 @@
-# Dockerfile for arif-fazil.com portfolio
-# Serves static React build with nginx
+# Build stage
+FROM node:24-alpine AS build
+WORKDIR /app
 
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+# Runtime stage
 FROM nginx:alpine
 
-# Copy built static files to nginx html directory
-COPY . /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Copy custom nginx config
 RUN echo 'server { \
     listen 8080; \
     server_name localhost; \
@@ -19,13 +25,11 @@ RUN echo 'server { \
     \
     location /health { \
         access_log off; \
-        return 200 "healthy\n"; \
+        return 200 "healthy\\n"; \
         add_header Content-Type text/plain; \
     } \
 }' > /etc/nginx/conf.d/default.conf
 
-# Expose port 8080
 EXPOSE 8080
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
