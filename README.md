@@ -1,6 +1,8 @@
 # ARIF FAZIL
 
-Senior Exploration Geoscientist at PETRONAS Carigali and architect of arifOS.
+This repository powers the public site for Arif Fazil: `arif-fazil.com`.
+
+Arif is a Senior Exploration Geoscientist at PETRONAS Carigali and the architect of arifOS.
 
 Location: Malaysia (Penang / Selangor)  
 Motto: Ditempa Bukan Diberi (Forged, Not Given)
@@ -10,13 +12,13 @@ Motto: Ditempa Bukan Diberi (Forged, Not Given)
 ## About
 
 I work at the intersection of geology, geophysics, and economics.
-My main focus is turning subsurface uncertainty into practical drilling decisions.
+My focus is to turn subsurface uncertainty into disciplined, practical drilling decisions.
 
 ## Work Summary
 
 - Senior/Lead Exploration Geoscientist at PETRONAS Carigali (since ~2013)
-- Main focus areas: Sabah and Malay Basin
-- Core work: basin analysis, prospect maturation, and well decision support
+- Primary focus areas: Sabah and Malay Basin
+- Core responsibilities: basin analysis, prospect maturation, and well decision support
 - Track record: 13+ years in upstream exploration
 
 ## Key Wells and Discoveries
@@ -26,7 +28,7 @@ My main focus is turning subsurface uncertainty into practical drilling decision
 | Bekantan-1 | Reported as the shallowest flowing oil in Malay Basin history |
 | Puteri Basement-1 | Important value driver for PM318 PSC |
 | Lebah Emas-1 | Expanded understanding of the western hinge fault zone |
-| BUNGA TASBIH-1 | Included here as a key well reference in the project profile |
+| BUNGA TASBIH-1 | Included as a key reference well in this profile |
 
 ## Skills
 
@@ -38,7 +40,7 @@ My main focus is turning subsurface uncertainty into practical drilling decision
 ## Education
 
 B.Sc. double major in Geology & Geophysics and Economics,
-University of Wisconsin-Madison (2009-2013), PETRONAS scholarship.
+University of Wisconsin-Madison (2009-2013), under PETRONAS scholarship.
 
 ## Side Projects
 
@@ -53,14 +55,14 @@ University of Wisconsin-Madison (2009-2013), PETRONAS scholarship.
 
 ## Publishing Notes (Maintainers)
 
-This website is published through GitHub Pages for `arif-fazil.com`.
+This site is published through GitHub Pages for `arif-fazil.com`.
 
 - Source branch: `main`
 - Build output: `dist/`
 - Workflow: `.github/workflows/pages.yml`
 - Domain config: `public/CNAME`
 
-Backup deployment files (Docker/Railway) are kept only as fallback infrastructure notes.
+Backup deployment files (Docker/Railway) are retained only as fallback infrastructure.
 
 ## Contact
 
@@ -70,4 +72,4 @@ Backup deployment files (Docker/Railway) are kept only as fallback infrastructur
 
 Copyright 2026 ARIF FAZIL.
 
-Updated: 2026-03-13
+Updated: 2026-03-13 (professional language pass)
