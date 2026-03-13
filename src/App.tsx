@@ -235,7 +235,7 @@ function App() {
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-gray-400 text-xs font-medium border border-transparent hover:border-amber-500/30 hover:text-amber-400 hover:bg-amber-950/20 transition-all">
                 THEORY
               </a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-gray-400 text-xs font-medium border border-transparent hover:border-cyan-500/30 hover:text-cyan-400 hover:bg-cyan-950/20 transition-all">
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-gray-400 text-xs font-medium border border-transparent hover:border-blue-500/30 hover:text-blue-400 hover:bg-blue-950/20 transition-all">
                 APPS
               </a>
             </div>
@@ -256,7 +256,7 @@ function App() {
             <div className="flex gap-2">
               <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-red-500/20 text-red-400 text-xs border border-red-500/30">HUMAN</a>
               <a href="https://apex.arif-fazil.com" className="px-4 py-2 rounded-full text-amber-400 text-xs border border-amber-500/30 bg-amber-950/10">THEORY</a>
-              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full text-cyan-400 text-xs border border-cyan-500/30 bg-cyan-950/10">APPS</a>
+              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full text-blue-400 text-xs border border-blue-500/30 bg-blue-950/10">APPS</a>
             </div>
           </div>
         )}
@@ -409,7 +409,7 @@ function App() {
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Name</strong> ARIF FAZIL</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Born</strong> May 22, 1990 — Penang, MY</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Heritage</strong> Northern Malay / Loghat Utara</p>
-                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Email</strong> arifos@arif-fazil.com</p>
+                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Email</strong> arifOS@arif-fazil.com</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Creed</strong> "FORGED, NOT GIVEN"</p>
               </div>
             </div>
@@ -453,10 +453,10 @@ function App() {
                   <h4 className="text-white font-medium mb-4">Significant Discoveries</h4>
                   <div className="space-y-4">
                     {[
-                      { name: 'BEKANTAN-1', basin: 'Sabah Basin', note: 'Proved remaining potential in a basin the industry had written off as exhausted. Do not inherit other people\'s conclusions.' },
-                      { name: 'PUTERI BASEMENT-1', basin: 'Sabah Basin', note: 'Fractured basement play matured through rigorous structural analysis. Fundamental technique, rigorously applied.' },
-                      { name: 'LEBAH EMAS-1', basin: 'Sabah Basin', note: 'Fault geometry as law — the ways a system breaks are often the keys to where it holds.' },
-                      { name: 'BUNGA TASBIH-1', basin: 'Malay Basin', note: 'Quiet backbone of national energy security. Contributed to a Discovered Resource Opportunity cluster awarded via PETRONAS MBR+ Round I (July 2024) to Ping Petroleum & Duta Marine. Fifty years of exploration, and there are still fields worth finding — if you look carefully enough.' },
+                      { name: 'BEKANTAN-1', basin: 'Malay Basin', note: 'Structural play. Hydrocarbon discovery in a basin widely considered mature. Proved remaining potential through fresh prospect evaluation.' },
+                      { name: 'PUTERI BASEMENT-1', basin: 'Malay Basin', note: 'Fractured basement play matured through structural analysis. Demonstrated the viability of pre-Tertiary reservoirs in the Malay Basin.' },
+                      { name: 'LEBAH EMAS-1', basin: 'Malay Basin · Block PM6/12', note: 'New play concept. Wildcat well offshore Terengganu. Discovery that opened a new geological play and challenged the perception of Peninsular Malaysia as an exhausted basin.' },
+                      { name: 'BUNGA TASBIH-1', basin: 'Malay Basin', note: 'Structural / stratigraphic play. Contributed to a Discovered Resource Opportunity cluster. Field awarded under a Small Field Asset PSC via Malaysia Bid Round Plus (MBR+) Round I, July 2024.' },
                     ].map(({ name, basin, note }) => (
                       <div key={name} className="flex gap-3 p-4 rounded-xl bg-gray-900/30 border border-gray-800/50">
                         <div className="flex-shrink-0 mt-0.5">
@@ -523,9 +523,9 @@ function App() {
               <p className="text-xs text-gray-500 leading-relaxed">Constitutional canon, axioms, and philosophical grounding.</p>
             </a>
             
-            <a href="https://arifos.arif-fazil.com" className="group p-6 rounded-2xl border border-gray-800 hover:border-cyan-600/50 bg-gray-900/30 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-cyan-950/30 border border-cyan-800/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Code className="w-6 h-6 text-cyan-500" />
+            <a href="https://arifos.arif-fazil.com" className="group p-6 rounded-2xl border border-gray-800 hover:border-blue-600/50 bg-gray-900/30 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-blue-950/30 border border-blue-800/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Code className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="font-medium text-white mb-2 underline-offset-4 group-hover:underline">The Kernel</h3>
               <p className="text-xs text-gray-500 leading-relaxed">API, MCP tools, and technical implementation guides.</p>
@@ -545,7 +545,7 @@ function App() {
                 {[
                   { id: 'HUMAN', url: 'https://arif-fazil.com', site: 'arif-fazil.com', color: 'red' },
                   { id: 'THEORY', url: 'https://apex.arif-fazil.com', site: 'apex.arif-fazil.com', color: 'amber' },
-                  { id: 'APPS', url: 'https://arifos.arif-fazil.com', site: 'arifos.arif-fazil.com', color: 'cyan' },
+                  { id: 'APPS', url: 'https://arifos.arif-fazil.com', site: 'arifos.arif-fazil.com', color: 'blue' },
                 ].map((row) => (
                   <tr key={row.id} className="hover:bg-gray-900/30 transition-colors cursor-pointer" onClick={() => window.open(row.url, '_blank')}>
                     <td className="px-6 py-5">

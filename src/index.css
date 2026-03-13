@@ -779,7 +779,7 @@
 :root {
   --trinity-human: #ff4d4f;
   --trinity-theory: #ffd24a;
-  --trinity-apps: #4da3ff;
+  --trinity-apps: #2563eb;
 }
 
 .trinity-nav {
@@ -833,4 +833,354 @@
   .trinity-center {
     display: none;
   }
+}
+
+/* ============================================================
+   TACTILE & GLOW — Universal Button System
+   All interactive elements: press-down, glow on hover/active
+   ============================================================ */
+
+/* Base tactile mixin — applied to all interactive elements */
+.trinity-link,
+.trinity-enter,
+.trinity-right-link,
+.trinity-logo,
+.trinity-node {
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s, background 0.15s;
+  user-select: none;
+}
+
+/* ENTER button — red glow, press-down */
+.trinity-enter {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(255, 77, 79, 0.4);
+  border-radius: 4px;
+  background: rgba(255, 77, 79, 0.08);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--trinity-human) !important;
+  text-decoration: none !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.trinity-enter:hover {
+  background: rgba(255, 77, 79, 0.18);
+  border-color: rgba(255, 77, 79, 0.7);
+  box-shadow: 0 0 12px rgba(255, 77, 79, 0.35), 0 0 24px rgba(255, 77, 79, 0.15);
+  transform: translateY(-1px);
+  color: #ff6b6b !important;
+}
+.trinity-enter:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 6px rgba(255, 77, 79, 0.4);
+  background: rgba(255, 77, 79, 0.28);
+}
+
+/* GitHub link — subtle press */
+.trinity-right-link {
+  color: #888 !important;
+  font-size: 0.78rem;
+  text-decoration: none !important;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+}
+.trinity-right-link:hover {
+  color: #e2e2e5 !important;
+  background: rgba(255,255,255,0.06);
+}
+.trinity-right-link:active {
+  transform: scale(0.96);
+}
+
+/* Trinity nav links — color-coded glow */
+.trinity-link {
+  position: relative;
+}
+.trinity-link:hover,
+.trinity-link:focus-visible {
+  text-shadow: 0 0 10px currentColor;
+}
+.trinity-link:active {
+  transform: scale(0.95);
+}
+
+/* Trinity strip nodes (on portal/developer sites) — tactile */
+.trinity-node {
+  position: relative;
+  padding: 0.15rem 0.6rem 0.2rem;
+  border-radius: 3px;
+}
+.trinity-node:hover {
+  text-shadow: 0 0 8px currentColor;
+}
+.trinity-node:active {
+  transform: scale(0.94);
+}
+.trinity-human:hover  { text-shadow: 0 0 10px rgba(255, 77, 79, 0.8); }
+.trinity-theory:hover { text-shadow: 0 0 10px rgba(255, 210, 74, 0.8); }
+.trinity-apps:hover   { text-shadow: 0 0 10px rgba(37, 99, 235, 0.8); }
+
+/* Nav anchor links (#about, #work, etc.) — press feel */
+nav a[href^="#"],
+nav a[href^="https"] {
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+nav a[href^="#"]:active,
+nav a[href^="https"]:active {
+  transform: scale(0.95);
+}
+
+/* Hero CTA buttons — strong glow on hover */
+a[href^="https://github.com"].flex,
+a[href^="https://medium"].flex,
+a.flex {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Red-accented CTAs (primary actions on arif-fazil.com) */
+.border-red-500\/30:hover,
+.hover\:border-red-500:hover {
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+}
+.border-red-500\/30:active,
+.hover\:border-red-500:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+/* Mobile menu button */
+nav button[type="button"] {
+  transition: color 0.15s, transform 0.1s;
+  border-radius: 6px;
+  padding: 6px;
+}
+nav button[type="button"]:hover {
+  color: white;
+  background: rgba(255,255,255,0.06);
+}
+nav button[type="button"]:active {
+  transform: scale(0.9);
+}
+
+/* Social icon links */
+nav a[title] {
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
+}
+nav a[title]:hover {
+  background: rgba(255,255,255,0.06);
+  color: white;
+}
+nav a[title]:active {
+  transform: scale(0.88);
+}
+
+/* Trinity badge — subtle pulse hint */
+.trinity-badge {
+  cursor: default;
+  transition: box-shadow 0.2s;
+}
+.trinity-badge:hover {
+  box-shadow: 0 0 8px rgba(255,210,74,0.2), 0 0 16px rgba(255,77,79,0.1), 0 0 16px rgba(37,99,235,0.1);
+}
+
+/* ============================================================
+   UNIFIED HEADER SYSTEM — arif-fazil.com (HUMAN / RED)
+   Same structure as arifOS portal and arifosMCP developer site.
+   Trinity strip 33px · Nav 60px · Logo left · Links center · CTA right
+   ============================================================ */
+
+/* --- Trinity strip (top bar, 33px) --- */
+.unified-trinity-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 1.5rem;
+  height: 33px;
+  background: rgba(8, 4, 4, 0.97);
+  border-bottom: 1px solid rgba(255, 77, 79, 0.12);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.utn-node {
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 0.4;
+  transition: opacity 0.15s, text-shadow 0.15s, transform 0.1s;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+.utn-node:hover { opacity: 0.85; }
+.utn-node:active { transform: scale(0.93); }
+.utn-active { opacity: 1; }
+.utn-human  { color: #ff4d4f; }
+.utn-theory { color: #ffd24a; }
+.utn-apps   { color: #3b82f6; }
+.utn-human:hover  { text-shadow: 0 0 8px rgba(255,77,79,0.7); }
+.utn-theory:hover { text-shadow: 0 0 8px rgba(255,210,74,0.7); }
+.utn-apps:hover   { text-shadow: 0 0 8px rgba(59,130,246,0.7); }
+.utn-human.utn-active  { border-bottom: 1px solid rgba(255,77,79,0.5); }
+.utn-theory.utn-active { border-bottom: 1px solid rgba(255,210,74,0.5); }
+.utn-apps.utn-active   { border-bottom: 1px solid rgba(59,130,246,0.5); }
+.utn-div { color: rgba(255,255,255,0.15); font-size: 0.58rem; }
+.utn-sep  { flex: 1; }
+.utn-sig  { color: rgba(255,255,255,0.15); font-size: 0.58rem; letter-spacing: 0.06em; }
+
+/* --- Main nav (60px) --- */
+.unified-nav {
+  position: sticky;
+  top: 33px;
+  z-index: 1000;
+  height: 60px;
+  background: rgba(10, 10, 10, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.unified-nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo */
+.unified-logo {
+  flex-shrink: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.unified-logo-mark {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e2e2e5;
+  letter-spacing: -0.02em;
+  transition: color 0.15s;
+}
+.unified-logo-dot { color: #ff4d4f; }
+.unified-logo:hover .unified-logo-mark { color: #fff; }
+.unified-logo:active .unified-logo-mark { opacity: 0.7; }
+
+/* Center links */
+.unified-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 auto;
+}
+.unified-nav-link {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.unified-nav-link:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+}
+.unified-nav-link:active { transform: scale(0.95); }
+
+/* Right group */
+.unified-nav-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.unified-nav-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
+}
+.unified-nav-ghost:hover {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.05);
+}
+.unified-nav-ghost:active { transform: scale(0.93); }
+
+/* CTA button — accent-colored per site */
+.unified-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.38rem 0.9rem;
+  border-radius: 5px;
+  border: 1px solid;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.unified-nav-cta:hover {
+  transform: translateY(-1px);
+}
+.unified-nav-cta:active {
+  transform: translateY(1px) scale(0.96);
+}
+/* HUMAN = red */
+.unified-nav-cta--human {
+  color: #ff4d4f;
+  border-color: rgba(255,77,79,0.35);
+  background: rgba(255,77,79,0.08);
+}
+.unified-nav-cta--human:hover {
+  background: rgba(255,77,79,0.16);
+  border-color: rgba(255,77,79,0.6);
+  box-shadow: 0 0 14px rgba(255,77,79,0.3), 0 0 28px rgba(255,77,79,0.1);
+}
+/* THEORY = gold */
+.unified-nav-cta--theory {
+  color: #ffd24a;
+  border-color: rgba(255,210,74,0.35);
+  background: rgba(255,210,74,0.08);
+}
+.unified-nav-cta--theory:hover {
+  background: rgba(255,210,74,0.16);
+  border-color: rgba(255,210,74,0.6);
+  box-shadow: 0 0 14px rgba(255,210,74,0.3), 0 0 28px rgba(255,210,74,0.1);
+}
+/* APPS = blue */
+.unified-nav-cta--apps {
+  color: #3b82f6;
+  border-color: rgba(59,130,246,0.35);
+  background: rgba(59,130,246,0.08);
+}
+.unified-nav-cta--apps:hover {
+  background: rgba(59,130,246,0.16);
+  border-color: rgba(59,130,246,0.6);
+  box-shadow: 0 0 14px rgba(59,130,246,0.3), 0 0 28px rgba(59,130,246,0.1);
+}
+
+@media (max-width: 768px) {
+  .unified-nav-links { display: none; }
+  .unified-nav-inner { gap: 1rem; }
+  .utn-sig { display: none; }
 }
