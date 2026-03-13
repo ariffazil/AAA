@@ -453,10 +453,10 @@ function App() {
                   <h4 className="text-white font-medium mb-4">Significant Discoveries</h4>
                   <div className="space-y-4">
                     {[
-                      { name: 'BEKANTAN-1', basin: 'Sabah Basin', note: 'Proved remaining potential in a basin the industry had written off as exhausted. Do not inherit other people\'s conclusions.' },
-                      { name: 'PUTERI BASEMENT-1', basin: 'Sabah Basin', note: 'Fractured basement play matured through rigorous structural analysis. Fundamental technique, rigorously applied.' },
-                      { name: 'LEBAH EMAS-1', basin: 'Sabah Basin', note: 'Fault geometry as law — the ways a system breaks are often the keys to where it holds.' },
-                      { name: 'BUNGA TASBIH-1', basin: 'Malay Basin', note: 'Quiet backbone of national energy security. Contributed to a Discovered Resource Opportunity cluster awarded via PETRONAS MBR+ Round I (July 2024) to Ping Petroleum & Duta Marine. Fifty years of exploration, and there are still fields worth finding — if you look carefully enough.' },
+                      { name: 'BEKANTAN-1', basin: 'Malay Basin', note: 'Structural play. Hydrocarbon discovery in a basin widely considered mature. Proved remaining potential through fresh prospect evaluation.' },
+                      { name: 'PUTERI BASEMENT-1', basin: 'Malay Basin', note: 'Fractured basement play matured through structural analysis. Demonstrated the viability of pre-Tertiary reservoirs in the Malay Basin.' },
+                      { name: 'LEBAH EMAS-1', basin: 'Malay Basin · Block PM6/12', note: 'New play concept. Wildcat well offshore Terengganu. Discovery that opened a new geological play and challenged the perception of Peninsular Malaysia as an exhausted basin.' },
+                      { name: 'BUNGA TASBIH-1', basin: 'Malay Basin', note: 'Structural / stratigraphic play. Contributed to a Discovered Resource Opportunity cluster. Field awarded under a Small Field Asset PSC via Malaysia Bid Round Plus (MBR+) Round I, July 2024.' },
                     ].map(({ name, basin, note }) => (
                       <div key={name} className="flex gap-3 p-4 rounded-xl bg-gray-900/30 border border-gray-800/50">
                         <div className="flex-shrink-0 mt-0.5">
