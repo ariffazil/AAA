@@ -235,7 +235,7 @@ function App() {
               <a href="https://apex.arif-fazil.com" className="px-3 py-1.5 rounded-full text-gray-400 text-xs font-medium border border-transparent hover:border-amber-500/30 hover:text-amber-400 hover:bg-amber-950/20 transition-all">
                 THEORY
               </a>
-              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-gray-400 text-xs font-medium border border-transparent hover:border-cyan-500/30 hover:text-cyan-400 hover:bg-cyan-950/20 transition-all">
+              <a href="https://arifos.arif-fazil.com" className="px-3 py-1.5 rounded-full text-gray-400 text-xs font-medium border border-transparent hover:border-blue-500/30 hover:text-blue-400 hover:bg-blue-950/20 transition-all">
                 APPS
               </a>
             </div>
@@ -256,7 +256,7 @@ function App() {
             <div className="flex gap-2">
               <a href="https://arif-fazil.com" className="px-4 py-2 rounded-full bg-red-500/20 text-red-400 text-xs border border-red-500/30">HUMAN</a>
               <a href="https://apex.arif-fazil.com" className="px-4 py-2 rounded-full text-amber-400 text-xs border border-amber-500/30 bg-amber-950/10">THEORY</a>
-              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full text-cyan-400 text-xs border border-cyan-500/30 bg-cyan-950/10">APPS</a>
+              <a href="https://arifos.arif-fazil.com" className="px-4 py-2 rounded-full text-blue-400 text-xs border border-blue-500/30 bg-blue-950/10">APPS</a>
             </div>
           </div>
         )}
@@ -409,7 +409,7 @@ function App() {
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Name</strong> ARIF FAZIL</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Born</strong> May 22, 1990 — Penang, MY</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Heritage</strong> Northern Malay / Loghat Utara</p>
-                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Email</strong> arifos@arif-fazil.com</p>
+                <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Email</strong> arifOS@arif-fazil.com</p>
                 <p><strong className="text-gray-500 font-mono text-xs uppercase block mb-1">Creed</strong> "FORGED, NOT GIVEN"</p>
               </div>
             </div>
@@ -523,9 +523,9 @@ function App() {
               <p className="text-xs text-gray-500 leading-relaxed">Constitutional canon, axioms, and philosophical grounding.</p>
             </a>
             
-            <a href="https://arifos.arif-fazil.com" className="group p-6 rounded-2xl border border-gray-800 hover:border-cyan-600/50 bg-gray-900/30 transition-all">
-              <div className="w-12 h-12 rounded-xl bg-cyan-950/30 border border-cyan-800/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <Code className="w-6 h-6 text-cyan-500" />
+            <a href="https://arifos.arif-fazil.com" className="group p-6 rounded-2xl border border-gray-800 hover:border-blue-600/50 bg-gray-900/30 transition-all">
+              <div className="w-12 h-12 rounded-xl bg-blue-950/30 border border-blue-800/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <Code className="w-6 h-6 text-blue-500" />
               </div>
               <h3 className="font-medium text-white mb-2 underline-offset-4 group-hover:underline">The Kernel</h3>
               <p className="text-xs text-gray-500 leading-relaxed">API, MCP tools, and technical implementation guides.</p>
@@ -545,7 +545,7 @@ function App() {
                 {[
                   { id: 'HUMAN', url: 'https://arif-fazil.com', site: 'arif-fazil.com', color: 'red' },
                   { id: 'THEORY', url: 'https://apex.arif-fazil.com', site: 'apex.arif-fazil.com', color: 'amber' },
-                  { id: 'APPS', url: 'https://arifos.arif-fazil.com', site: 'arifos.arif-fazil.com', color: 'cyan' },
+                  { id: 'APPS', url: 'https://arifos.arif-fazil.com', site: 'arifos.arif-fazil.com', color: 'blue' },
                 ].map((row) => (
                   <tr key={row.id} className="hover:bg-gray-900/30 transition-colors cursor-pointer" onClick={() => window.open(row.url, '_blank')}>
                     <td className="px-6 py-5">
