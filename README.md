@@ -1,75 +1,69 @@
-# ARIF FAZIL
+<div align="center">
 
-This repository powers the public site for Arif Fazil: `arif-fazil.com`.
+<img src="https://raw.githubusercontent.com/ariffazil/arifOS/main/sites/library/static/img/banner_sovereign.png" width="100%" alt="arifOS Ecosystem Banner">
 
-Arif is a Senior Exploration Geoscientist at PETRONAS Carigali and the architect of arifOS.
+# 🌐 arifOS Ecosystem: THE SURFACE
+### **A space for human connection, professional discipline, and the quiet pursuit of excellence.**
 
-Location: Malaysia (Penang / Selangor)  
-Motto: Ditempa Bukan Diberi (Forged, Not Given)
+**[📚 THE MIND (Theory)](https://github.com/ariffazil/arifOS)** • **[🏛️ THE BODY (Engine)](https://github.com/ariffazil/arifosmcp)** • **[👤 THE SURFACE (Portal)](https://github.com/ariffazil/ariffazil)**
 
-[LinkedIn](https://linkedin.com/in/ariffazil) | [GitHub](https://github.com/ariffazil) | [Telegram](https://t.me/ariffazil)
+*Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]*
 
-## About
+---
 
-I work at the intersection of geology, geophysics, and economics.
-My focus is to turn subsurface uncertainty into disciplined, practical drilling decisions.
+[![Status](https://img.shields.io/badge/Status-Stationary%20%26%20Enforced-00ffcc.svg?style=flat-square)](https://arif-fazil.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue.svg?style=flat-square)](https://linkedin.com/in/ariffazil)
+[![Version](https://img.shields.io/badge/Release-2026.03.13--FORGED-blue.svg?style=flat-square)](https://github.com/ariffazil/ariffazil/commits/main)
+[![License: AGPL 3.0](https://img.shields.io/badge/License-AGPL%203.0-lightgrey.svg?style=flat-square)](./LICENSE)
 
-## Work Summary
+</div>
 
-- Senior/Lead Exploration Geoscientist at PETRONAS Carigali (since ~2013)
-- Primary focus areas: Sabah and Malay Basin
-- Core responsibilities: basin analysis, prospect maturation, and well decision support
-- Track record: 13+ years in upstream exploration
+---
 
-## Key Wells and Discoveries
+# 👤 SALAM, I AM ARIF FAZIL.
 
-| Well / Discovery | Why it matters |
-|---|---|
-| Bekantan-1 | Reported as the shallowest flowing oil in Malay Basin history |
-| Puteri Basement-1 | Important value driver for PM318 PSC |
-| Lebah Emas-1 | Expanded understanding of the western hinge fault zone |
-| BUNGA TASBIH-1 | Included as a key reference well in this profile |
+This repository is the humble digital home of my professional journey and the portal to the **arifOS** ecosystem. It is a space built on the belief that meaningful work requires both a disciplined mind and a resilient spirit.
 
-## Skills
+I am a **Senior Exploration Geoscientist at PETRONAS Carigali**. My life’s work involves listening to the Earth—interpreting the subtle, often fragmented signals of the subsurface to make high-stakes decisions under profound uncertainty. This same discipline—the constant need for grounding, verification, and humility in the face of the unknown—is what birthed **arifOS**.
 
-- Seismic interpretation
-- Stratigraphy and structural geology
-- Petroleum systems analysis
-- Exploration risk and economics
+---
 
-## Education
+## 🏛️ The Human Anchor
 
-B.Sc. double major in Geology & Geophysics and Economics,
-University of Wisconsin-Madison (2009-2013), under PETRONAS scholarship.
+My professional path has been one of exploration, not just of the physical earth, but of the systems we build to navigate it. I believe that whether we are drilling kilometers into the crust or architecting the future of intelligence, the fundamental requirement is **Amanah** (Trust/Integrity).
 
-## Side Projects
+I am not a believer in "Move Fast and Break Things." I am a builder of anchors. I seek to create systems that are stable, reversible, and deeply respectful of the human they serve.
 
-- arifOS: constitutional AI governance framework (Python/MCP)
-  - GitHub: https://github.com/ariffazil/arifOS
-  - PyPI: https://pypi.org/project/arifos/
+### Professional Path
+*   **Senior/Lead Exploration Geoscientist** at PETRONAS Carigali (13+ years).
+*   Deeply Rooted in the **Sabah and Malay Basins**.
+*   Focused on **Basin Analysis and Prospect Maturation**.
+*   Educated at the **University of Wisconsin-Madison** (Geology & Geophysics + Economics).
 
-- Sites:
-  - https://arif-fazil.com (personal portfolio)
-  - https://apex.arif-fazil.com (AI theory and constitution)
-  - https://arifos.arif-fazil.com (apps and tools)
+### Significant Discoveries
+I find the most satisfaction in the quiet successes—the wells that were matured through rigorous collaboration and an uncompromising commitment to factual grounding.
+*   **Bekantan-1**: A reminder that even in "mature" basins, hidden potential remains for those who look closer.
+*   **Puteri Basement-1**: A testament to the value of fundamental structural analysis.
+*   **Lebah Emas-1**: Insights into the faulting that defines our world.
 
-## Publishing Notes (Maintainers)
+---
 
-This site is published through GitHub Pages for `arif-fazil.com`.
+## 🧭 The Philosophy of the Surface
 
-- Source branch: `main`
-- Build output: `dist/`
-- Workflow: `.github/workflows/pages.yml`
-- Domain config: `public/CNAME`
+This "Surface" is intended to be a non-invasive bridge. It is where my personal history and professional discipline meet. It doesn't scream for attention; it simply exists as a steady point of contact.
 
-Backup deployment files (Docker/Railway) are retained only as fallback infrastructure.
+*   **THE MIND (Theory)**: Where the philosophy and laws are stored.
+*   **THE BODY (Engine)**: Where the practical tools are built.
+*   **THE SURFACE (This Portal)**: Where the human remains the center of gravity.
 
-## Contact
+---
 
-- Telegram: https://t.me/ariffazil
-- Email: arifbfazil@gmail.com
-- Issues: https://github.com/ariffazil/ariffazil/issues/new
+## 📧 Reach Out
+If you share an interest in geophysics, the philosophy of systems, or the ethical governance of the tools we create, I would be honored to connect.
 
-Copyright 2026 ARIF FAZIL.
+- [Telegram](https://t.me/ariffazil)
+- [LinkedIn Project](https://linkedin.com/in/ariffazil)
+- [Email](mailto:arifbfazil@gmail.com)
 
-Updated: 2026-03-13 (professional language pass)
+Copyright 2026 ARIF FAZIL.  
+*Ditempa Bukan Diberi.*
