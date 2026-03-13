@@ -450,6 +450,33 @@ function App() {
                 <Separator className="bg-gray-800/50" />
 
                 <div>
+                  <h4 className="text-white font-medium mb-4">Significant Discoveries</h4>
+                  <div className="space-y-4">
+                    {[
+                      { name: 'BEKANTAN-1', basin: 'Sabah Basin', note: 'Proved remaining potential in a basin the industry had written off as exhausted. Do not inherit other people\'s conclusions.' },
+                      { name: 'PUTERI BASEMENT-1', basin: 'Sabah Basin', note: 'Fractured basement play matured through rigorous structural analysis. Fundamental technique, rigorously applied.' },
+                      { name: 'LEBAH EMAS-1', basin: 'Sabah Basin', note: 'Fault geometry as law — the ways a system breaks are often the keys to where it holds.' },
+                      { name: 'BUNGA TASBIH-1', basin: 'Malay Basin', note: 'Quiet backbone of national energy security. Contributed to a Discovered Resource Opportunity cluster awarded via PETRONAS MBR+ Round I (July 2024) to Ping Petroleum & Duta Marine. Fifty years of exploration, and there are still fields worth finding — if you look carefully enough.' },
+                    ].map(({ name, basin, note }) => (
+                      <div key={name} className="flex gap-3 p-4 rounded-xl bg-gray-900/30 border border-gray-800/50">
+                        <div className="flex-shrink-0 mt-0.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-red-600 mt-1.5" />
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-sm font-mono font-semibold text-white">{name}</span>
+                            <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">{basin}</span>
+                          </div>
+                          <p className="text-xs text-gray-500 leading-relaxed font-light">{note}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <Separator className="bg-gray-800/50" />
+
+                <div>
                   <h4 className="text-white font-medium mb-3">Foundations</h4>
                   <p className="text-sm text-gray-400 font-light leading-relaxed">
                     Double Major in <strong className="text-white">Geology & Geophysics</strong> and <strong className="text-white">Economics</strong> from <strong className="text-white">UW-Madison</strong>. 
