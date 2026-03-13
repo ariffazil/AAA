@@ -281,13 +281,23 @@ function App() {
             </div>
           </div>
 
-          {/* Trinity Logo - Large & Glow */}
+          {/* Trinity Logo - Inline SVG (red arm = HUMAN accent) */}
           <div className="flex justify-center mb-10 scale-110 sm:scale-125">
-            <img 
-              src="/images/arifos-logo.webp" 
-              alt="arifOS Trinity Logo" 
-              className="w-40 h-40 object-contain drop-shadow-[0_0_50px_rgba(255,0,0,0.3)] hover:drop-shadow-[0_0_60px_rgba(255,0,0,0.5)] transition-all duration-700"
-            />
+            <svg width="160" height="160" viewBox="0 0 200 200" fill="none" aria-label="arifOS Trinity" className="drop-shadow-[0_0_40px_rgba(255,77,79,0.25)] hover:drop-shadow-[0_0_60px_rgba(255,77,79,0.45)] transition-all duration-700">
+              <defs>
+                <linearGradient id="hG" x1="50%" y1="0%" x2="50%" y2="100%"><stop offset="0%" stopColor="#ffe066"/><stop offset="100%" stopColor="#b8860b"/></linearGradient>
+                <linearGradient id="bG" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stopColor="#60a5fa"/><stop offset="100%" stopColor="#1e40af"/></linearGradient>
+                <linearGradient id="rG" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stopColor="#b91c1c"/><stop offset="100%" stopColor="#ff6060"/></linearGradient>
+              </defs>
+              <line x1="100" y1="104" x2="100" y2="22" stroke="url(#hG)" strokeWidth="22" strokeLinecap="round"/>
+              <circle cx="100" cy="20" r="16" fill="url(#hG)"/>
+              <line x1="96" y1="112" x2="28" y2="163" stroke="url(#bG)" strokeWidth="22" strokeLinecap="round"/>
+              <circle cx="26" cy="165" r="16" fill="url(#bG)"/>
+              <line x1="104" y1="112" x2="172" y2="163" stroke="url(#rG)" strokeWidth="22" strokeLinecap="round"/>
+              <circle cx="174" cy="165" r="16" fill="url(#rG)"/>
+              <circle cx="100" cy="108" r="30" fill="#0a0a0b"/>
+              <polygon points="100,93 85,121 115,121" fill="none" stroke="#e8e4de" strokeWidth="5" strokeLinejoin="round"/>
+            </svg>
           </div>
 
           {/* Name & Title */}
