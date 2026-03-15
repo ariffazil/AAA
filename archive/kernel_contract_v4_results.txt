@@ -1,0 +1,97 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.3, pytest-9.0.2, pluggy-1.6.0 -- C:\arifosmcp\.venv\Scripts\python.exe
+cachedir: C:\Users\User\AppData\Local\Temp\pytest_cache
+rootdir: C:\arifosmcp
+configfile: pyproject.toml
+plugins: anyio-4.12.1, asyncio-1.3.0, cov-7.0.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 23 items
+
+tests/test_kernel_contract_alignment.py::test_route_pipeline_uses_canonical_heart_stage PASSED [  4%]
+tests/test_kernel_contract_alignment.py::test_public_kernel_schema_exposes_auth_context PASSED [  8%]
+tests/test_kernel_contract_alignment.py::test_public_kernel_router_accepts_auth_context PASSED [ 13%]
+tests/test_kernel_contract_alignment.py::test_init_anchor_state_accepts_human_approval PASSED [ 17%]
+tests/test_kernel_contract_alignment.py::test_manifest_kernel_schema_exposes_auth_context PASSED [ 21%]
+tests/test_kernel_contract_alignment.py::test_public_registry_exposes_init_anchor_state PASSED [ 26%]
+tests/test_kernel_contract_alignment.py::test_public_runtime_exports_init_anchor_state PASSED [ 30%]
+tests/test_kernel_contract_alignment.py::test_low_risk_declared_identity_auto_anchors_continuity FAILED [ 34%]
+tests/test_kernel_contract_alignment.py::test_init_anchor_state_binds_declared_name FAILED [ 39%]
+tests/test_kernel_contract_alignment.py::test_init_anchor_state_human_approval_updates_kernel_state FAILED [ 43%]
+tests/test_kernel_contract_alignment.py::test_reason_stage_preserves_declared_authority_context PASSED [ 47%]
+tests/test_kernel_contract_alignment.py::test_high_risk_kernel_call_still_requires_explicit_auth_context FAILED [ 52%]
+tests/test_kernel_contract_alignment.py::test_explicit_human_approval_bootstraps_kernel_without_crypto FAILED [ 56%]
+tests/test_kernel_contract_alignment.py::test_nested_continuity_actor_id_is_promoted_to_auth_context_root FAILED [ 60%]
+tests/test_kernel_contract_alignment.py::test_protected_identity_claim_requires_crypto FAILED [ 65%]
+tests/test_kernel_contract_alignment.py::test_check_vital_includes_motto_and_governed_philosophy PASSED [ 69%]
+tests/test_kernel_contract_alignment.py::test_audit_rules_loads_governance_diagnostics PASSED [ 73%]
+tests/test_kernel_contract_alignment.py::test_metabolic_loop_preserves_declared_authority PASSED [ 78%]
+tests/test_kernel_contract_alignment.py::test_governed_philosophy_exposes_available_categories PASSED [ 82%]
+tests/test_kernel_contract_alignment.py::test_thermodynamic_reporter_is_callable_from_runtime_tools PASSED [ 86%]
+tests/test_kernel_contract_alignment.py::test_governed_philosophy_uses_richer_local_categories_for_normal_runtime PASSED [ 91%]
+tests/test_kernel_contract_alignment.py::test_governed_philosophy_maps_empathy_failures_to_love PASSED [ 95%]
+tests/test_kernel_contract_alignment.py::test_stage_000_low_g_uses_bounded_label_not_fixed_void_quote PASSED [100%]
+
+================================== FAILURES ===================================
+___________ test_low_risk_declared_identity_auto_anchors_continuity ___________
+tests\test_kernel_contract_alignment.py:94: in test_low_risk_declared_identity_auto_anchors_continuity
+    assert envelope.philosophy is not None
+E   AssertionError: assert None is not None
+E    +  where None = RuntimeEnvelope(ok=True, tool='arifOS_kernel', session_id='test-low-risk-auto-anchor', stage='444_ROUTER', verdict=<Verdict.SEAL: 'SEAL'>, status=<RuntimeStatus.DRY_RUN: 'DRY_RUN'>, machine_status=<MachineState.READY: 'READY'>, machine_issue=None, intelligence_stage=None, intelligence_state={'exploration': 'BROAD', 'entropy': 'MANAGEABLE', 'eureka': 'NONE', 'hypotheses': [], 'unknowns': [], 'stable_facts': [], 'unstable_assumptions': [], 'conflicts': [], 'uncertainty_score': 0.5, 'insight': None, 'confidence': 0.0, 'decision_required': []}, metrics=CanonicalMetrics(telemetry=TelemetryVitals(dS=0.0, peace2=1.0, kappa_r=None, G_star=1.0, echoDebt=0.1, shadow=0.0, confidence=0.0, psi_le='0.0 (Estimate Only)', verdict='SEAL'), basis=TelemetryBasis(dS='derived', peace2='derived', kappa_r='derived', G_star='derived', psi_le='heuristic'), witness=TripleWitness(human=0.0, ai=0.0, earth=0.0), internal={}), trace={'000_INIT': 'SEAL', 'dry_run': 'FAST_PATH'}, authority=CanonicalAuthority(actor_id='guest-user', level=<AuthorityLevel.SOVEREIGN: 'sovereign'>, human_required=False, approval_scope=[], auth_state='verified'), payload={}, errors=[], meta=CanonicalMeta(schema_version='1.0.0', timestamp='2026-03-15T06:36:33.516283+00:00', debug=False, dry_run=False, motto=None), auth_context={'session_id': 'test-low-risk-auto-anchor', 'actor_id': 'guest-user', 'authority_level': 'declared', 'token_fingerprint': 'sha256:...', 'nonce': 'e0fb42f812e1f26dc6ab1d7f', 'iat': 1773556593, 'exp': 1773557493, 'approval_scope': ['arifOS_kernel:reason', 'search_reality', 'ingest_evidence', 'session_memory'], 'parent_signature': 'cfecbd8a768669f97dbf4faed9410625dcf77f39abd6f95bcc50d6a91eef3223', 'prev_vault_hash': None, 'signature': 'c6e8b3a018180404fe5a8bc78c82d8e0e5a6310b24d505903ec961076d79c4f8'}, caller_context=None, user_model=None, philosophy=None, debug=None, latency_ms=0.0).philosophy
+_________________ test_init_anchor_state_binds_declared_name __________________
+tests\test_kernel_contract_alignment.py:107: in test_init_anchor_state_binds_declared_name
+    assert envelope.authority.level != "anonymous"
+E   assert <AuthorityLevel.ANONYMOUS: 'anonymous'> != 'anonymous'
+E    +  where <AuthorityLevel.ANONYMOUS: 'anonymous'> = CanonicalAuthority(actor_id='arif-the-apex', level=<AuthorityLevel.ANONYMOUS: 'anonymous'>, human_required=False, approval_scope=[], auth_state='verified').level
+E    +    where CanonicalAuthority(actor_id='arif-the-apex', level=<AuthorityLevel.ANONYMOUS: 'anonymous'>, human_required=False, approval_scope=[], auth_state='verified') = RuntimeEnvelope(ok=False, tool='init_anchor_state', session_id='global', stage='000_INIT', verdict=<Verdict.SABAR: 'SABAR'>, status=<RuntimeStatus.ERROR: 'ERROR'>, machine_status=<MachineState.READY: 'READY'>, machine_issue=None, intelligence_stage=None, intelligence_state={'exploration': 'BROAD', 'entropy': 'MANAGEABLE', 'eureka': 'NONE', 'hypotheses': [], 'unknowns': [], 'stable_facts': [], 'unstable_assumptions': [], 'conflicts': [], 'uncertainty_score': 0.5, 'insight': None, 'confidence': 0.0, 'decision_required': []}, metrics=CanonicalMetrics(telemetry=TelemetryVitals(dS=-0.1, peace2=1.0, kappa_r=None, G_star=0.8442, echoDebt=0.1, shadow=0.1558, confidence=0.8442, psi_le='10.00 (Estimate Only)', verdict='SABAR'), basis=TelemetryBasis(dS='derived', peace2='derived', kappa_r='derived', G_star='derived', psi_le='heuristic'), witness=TripleWitness(human=0.95, ai=0.9, earth=0.9), internal={'risk': 0.0, 'vitality': 10.0}), trace={'000_INIT': 'SABAR'}, authority=CanonicalAuthority(actor_id='arif-the-apex', level=<AuthorityLevel.ANONYMOUS: 'anonymous'>, human_required=False, approval_scope=[], auth_state='verified'), payload={'message': 'Utility init_anchor executed.'}, errors=[Cano...CY: 'default_policy'>, evidence='tool_name fallback'), behavioral_constraints=[], output_constraints=[], requested_tone=None, expertise_level=None, emotion_state=None, hidden_motive=None, adaptation_mode=<AdaptationMode.BEHAVIORAL_ONLY: 'behavioral_only'>, inference_policy=InferencePolicy(psychological_inference='disallowed', behavioral_adaptation='allowed', null_for_unknown=True, source_priority=[<UserModelSource.EXPLICIT: 'explicit'>, <UserModelSource.OBSERVABLE: 'observable'>, <UserModelSource.DEFAULT_POLICY: 'default_policy'>])), philosophy={'apex_mode': 'hybrid', 'role': 'mind', 'stage': '000_INIT', 'g_score': 0.0, 'label': 'power', 'label_source': 'bounded_context', 'semantic_backend': 'available', 'available_categories': {'deterministic_33': ['wisdom', 'power', 'paradox', 'void', 'seal'], 'local_99': ['scar', 'triumph', 'paradox', 'wisdom', 'power', 'love', 'seal'], 'bounded_labels': ['void', 'scar', 'triumph', 'paradox', 'wisdom', 'power', 'love', 'seal']}, 'agi': {'quote_id': 'P9', 'quote': "Whether you think you can, or you think you can't – you're right.", 'author': 'Henry Ford', 'category': 'power', 'source': 'deterministic_33'}, 'asi': None, 'apex': None}, debug=None).authority
+_________ test_init_anchor_state_human_approval_updates_kernel_state __________
+tests\test_kernel_contract_alignment.py:125: in test_init_anchor_state_human_approval_updates_kernel_state
+    assert envelope.auth_context["authority_level"] == "declared"
+E   AssertionError: assert 'anonymous' == 'declared'
+E     
+E     - declared
+E     + anonymous
+_______ test_high_risk_kernel_call_still_requires_explicit_auth_context _______
+tests\test_kernel_contract_alignment.py:157: in test_high_risk_kernel_call_still_requires_explicit_auth_context
+    envelope = await metabolic_loop_router(
+arifosmcp\runtime\tools.py:1004: in arifos_kernel
+    envelope = RuntimeEnvelope(**res_dict)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for RuntimeEnvelope
+E   machine_issue
+E     Input should be 'AUTH_BOOTSTRAP_REQUIRED', 'AUTH_TOKEN_MISSING', 'TOKEN_EXPIRED', 'TOOL_NOT_EXPOSED', 'BOOTSTRAP_ROUTE_MISSING', 'DEPLOYMENT_CONFIG_ERROR', 'SCHEMA_INVALID', 'INTERNAL_RUNTIME_ERROR', 'TIMEOUT', 'DNS_FAIL', 'TLS_FAIL' or 'WAF_BLOCK' [type=enum, input_value='AUTH_FAILURE', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/enum
+________ test_explicit_human_approval_bootstraps_kernel_without_crypto ________
+tests\test_kernel_contract_alignment.py:194: in test_explicit_human_approval_bootstraps_kernel_without_crypto
+    assert init_env.auth_context["authority_level"] == "declared"
+E   AssertionError: assert 'anonymous' == 'declared'
+E     
+E     - declared
+E     + anonymous
+______ test_nested_continuity_actor_id_is_promoted_to_auth_context_root _______
+tests\test_kernel_contract_alignment.py:238: in test_nested_continuity_actor_id_is_promoted_to_auth_context_root
+    assert envelope.auth_context["actor_id"] == "chat-operator"
+E   AssertionError: assert 'chat operator' == 'chat-operator'
+E     
+E     - chat-operator
+E     ?     ^
+E     + chat operator
+E     ?     ^
+________________ test_protected_identity_claim_requires_crypto ________________
+tests\test_kernel_contract_alignment.py:245: in test_protected_identity_claim_requires_crypto
+    envelope = await metabolic_loop_router(
+arifosmcp\runtime\tools.py:1004: in arifos_kernel
+    envelope = RuntimeEnvelope(**res_dict)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for RuntimeEnvelope
+E   machine_issue
+E     Input should be 'AUTH_BOOTSTRAP_REQUIRED', 'AUTH_TOKEN_MISSING', 'TOKEN_EXPIRED', 'TOOL_NOT_EXPOSED', 'BOOTSTRAP_ROUTE_MISSING', 'DEPLOYMENT_CONFIG_ERROR', 'SCHEMA_INVALID', 'INTERNAL_RUNTIME_ERROR', 'TIMEOUT', 'DNS_FAIL', 'TLS_FAIL' or 'WAF_BLOCK' [type=enum, input_value='AUTH_FAILURE', input_type=str]
+E       For further information visit https://errors.pydantic.dev/2.12/v/enum
+=========================== short test summary info ===========================
+FAILED tests/test_kernel_contract_alignment.py::test_low_risk_declared_identity_auto_anchors_continuity
+FAILED tests/test_kernel_contract_alignment.py::test_init_anchor_state_binds_declared_name
+FAILED tests/test_kernel_contract_alignment.py::test_init_anchor_state_human_approval_updates_kernel_state
+FAILED tests/test_kernel_contract_alignment.py::test_high_risk_kernel_call_still_requires_explicit_auth_context
+FAILED tests/test_kernel_contract_alignment.py::test_explicit_human_approval_bootstraps_kernel_without_crypto
+FAILED tests/test_kernel_contract_alignment.py::test_nested_continuity_actor_id_is_promoted_to_auth_context_root
+FAILED tests/test_kernel_contract_alignment.py::test_protected_identity_claim_requires_crypto
+======================== 7 failed, 16 passed in 20.85s ========================
