@@ -1,12 +1,12 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/ariffazil/arifOS/main/sites/library/static/img/banner_sovereign.png" width="100%" alt="ARIF FAZIL — THE SURFACE">
+<img src="https://raw.githubusercontent.com/ariffazil/arifOS/main/sites/library/static/img/banner_sovereign.png" width="100%" alt="ARIF FAZIL — THE SOUL">
 
 # ARIF FAZIL
 
 ### Geoscientist. Economist. Architect of arifOS.
 
-**[THE MIND](https://github.com/ariffazil/arifOS)** &nbsp;·&nbsp; **[THE BODY](https://github.com/ariffazil/arifosmcp)** &nbsp;·&nbsp; **[THE SURFACE](https://github.com/ariffazil/ariffazil)**
+**[THE MIND](https://github.com/ariffazil/arifOS)** &nbsp;·&nbsp; **[THE BODY](https://github.com/ariffazil/arifosmcp)** &nbsp;·&nbsp; **[THE SOUL](https://github.com/ariffazil/ariffazil)**
 
 *Ditempa Bukan Diberi — Forged, Not Given.*
 
@@ -26,7 +26,7 @@ Senior Exploration Geoscientist with 13+ years in the offshore hydrocarbon basin
 
 My work sits at the intersection of subsurface interpretation, economic risk, and system design. The discipline I built reading sedimentary records is the same one I now apply to artificial intelligence.
 
-This repository is **THE SURFACE** — the human layer of the arifOS Trinity.
+This repository is **THE SOUL** — the human layer of the arifOS Trinity.
 
 ---
 
@@ -55,7 +55,7 @@ The premise: the same principles that govern rigorous subsurface interpretation 
 |---|---|---|
 | **THE MIND** | Theory, axioms, constitutional canon | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) |
 | **THE BODY** | MCP server, 12 tools, runtime kernel | [arifosmcp.arif-fazil.com](https://arifosmcp.arif-fazil.com) |
-| **THE SURFACE** | This repository | [arif-fazil.com](https://arif-fazil.com) |
+| **THE SOUL** | This repository | [arif-fazil.com](https://arif-fazil.com) |
 
 ---
 
@@ -79,7 +79,7 @@ The premise: the same principles that govern rigorous subsurface interpretation 
 
 <div align="center">
 
-*ΔΩΨ — THE MIND · THE BODY · THE SURFACE*
+*ΔΩΨ — THE MIND · THE BODY · THE SOUL*
 
 *Copyright © 2013–2026 ARIF FAZIL · Ditempa Bukan Diberi*
 
