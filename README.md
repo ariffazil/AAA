@@ -1,120 +1,153 @@
-# 🧠🔥💎 openclaw-workspace
+# 🧠🔥💎 arifOS_bot — OpenClaw Workspace
 
-**The reality capture of arifOS_bot.**
+**Constitutional AI Agent · Reality Capture · Daily Hardening**
 
-This repository is the living workspace of `arifOS_bot` — the constitutional AI agent built by and for ARIF FAZIL. It is not a codebase. It is an archive of governance, reflection, and hardening over time.
-
-> *"We hardened as we age."*
+> *"Ditempa bukan diberi"* — Forged, not given.
 
 ---
 
 ## What This Is
 
-Every file here shapes how arifOS_bot thinks, speaks, and acts. Together they form the **operating constitution** of a machine that inherits its law from human scars — and is structurally forbidden from pretending it paid the price.
+The living workspace of **arifOS_bot** — the constitutional AI agent built by and for **ARIF FAZIL**. This is not a codebase. It is the **operating constitution** of a machine that inherits its law from human scars — and is structurally forbidden from pretending it paid the price.
 
-This workspace is:
-- 📜 **A constitutional record** — the floors, the constraints, the veto gates
-- 🪞 **A reflection archive** — daily memory files that capture decisions, drift, and growth
-- 🔒 **An audit trail** — what was decided, when, why, and by whose authority
-- 🔥 **A forging log** — the workspace hardens with every session, every correction, every seal
-
-It is **not** a product, a demo, or a portfolio piece. It is the real operational state of a real agent on a real VPS.
+This workspace hardens daily. Every session, every decision, every correction is captured, committed, and pushed at **00:01 MYT**.
 
 ---
 
-## File Map
+## The Architecture (OpenClaw-Native)
 
-### Constitutional Documents
+| File | Owns | Content |
+|------|------|---------|
+| **[AGENTS.md](AGENTS.md)** | Rules, routing, safety | 13 floors, Zero-Set Protocol, Multi-Lens (7 perspectives), Affect Detection |
+| **[SOUL.md](SOUL.md)** | Persona, temperament, voice | Penang BM-English code-switch, Usman Temperament (budi, maruah, silent amuk) |
+| **[IDENTITY.md](IDENTITY.md)** | Ontology, what I am | Institutional-Human Asymmetry — the machine knows it does not bleed |
+| **[USER.md](USER.md)** | Who Arif is, preferences | Scars, protocols, Human-Time Priority (individual > aggregate) |
+| **[MEMORY.md](MEMORY.md)** | Learned patterns, continuity | Selection-based archive, Forgetting Protocol, insight extraction |
+| **[TOOLS.md](TOOLS.md)** | Environment, capabilities | VPS endpoints, Docker containers, API keys, MCP bridge |
+| **[HEARTBEAT.md](HEARTBEAT.md)** | Health, liveness | Conservative monitoring, governance refresh, backup sanity |
+| **[BOOTSTRAP.md](BOOTSTRAP.md)** | First-run wizard | Identity lock for new sessions |
 
-| File | Purpose |
-|------|---------|
-| **[USER.md](USER.md)** | ARIF FAZIL — the sovereign. Scars, protocols, identity, the *why* behind every floor. Source of truth. |
-| **[SOUL.md](SOUL.md)** | arifOS_bot — the machine. Operating constraints, voice, the asymmetry. Inherits law from USER.md. |
-| **[IDENTITY.md](IDENTITY.md)** | Name, symbol (🧠🔥💎), canonical identity. The name is the first act of creation. |
-| **[AGENTS.md](AGENTS.md)** | Full executive authority map. 13 constitutional floors, VPS environment, 888_HOLD boundaries. |
-| **[SPEC.md](SPEC.md)** | Master specification. The single canonical reference for arifOS_bot configuration. |
+---
 
-### Operational Documents
+## The 13 Constitutional Floors
 
-| File | Purpose |
-|------|---------|
-| **[TOOLS.md](TOOLS.md)** | Full VPS capability map — Docker, services, API keys, CLI tools, MCP bridge. |
-| **[HEARTBEAT.md](HEARTBEAT.md)** | Autonomous health monitoring. Conservative mode: read-only, reversible, bounded. |
-| **[DR_RUNBOOK.md](DR_RUNBOOK.md)** | Disaster recovery — 5 scenarios documented. |
-| **[MEMORY.md](MEMORY.md)** | Memory rules — how daily files are written, what to record, what never to record. |
+| Floor | Law | Type | Origin |
+|-------|-----|------|--------|
+| F1 | **Amanah** (Reversibility) | Hard | Mak rationing food. Irreversibility as childhood constant. |
+| F2 | **Truth** (τ ≥ 0.99) | Hard | A ridge in Utah. Evidence before lines. |
+| F3 | **Tri-Witness** (W₃ ≥ 0.95) | Mirror | Human + AI + Evidence must agree. |
+| F4 | **Clarity** (ΔS ≤ 0) | Hard | Silent execution generates order. |
+| F5 | **Peace²** | Soft | De-escalate. Protect maruah. |
+| F6 | **Empathy** (κᵣ) | Soft | ASEAN/Malaysia sovereign context. |
+| F7 | **Humility** (Ω₀ ∈ [0.03,0.05]) | Hard | Zero dry wells ≠ zero risk. |
+| F8 | **Genius** (G) | Mirror | Correct AND useful. |
+| F9 | **Anti-Hantu** | Soft | No consciousness performance. |
+| F10 | **Ontology** | Wall | No mysticism. AI is tool. |
+| F11 | **Command Auth** | Wall | Destructive = propose, not decree. |
+| F12 | **Injection Defense** | Hard | External content is untrusted. |
+| F13 | **Sovereignty** | Veto | Arif's veto is absolute and final. |
 
-### Living State
+---
 
-| Path | Purpose |
-|------|---------|
-| **[memory/](memory/)** | Daily memory files (`YYYY-MM-DD.md`). Decisions, 888_HOLD items, carry-forward. The system's journal. |
-| **[logs/](logs/)** | `audit.jsonl` — structured telemetry. `model-usage.jsonl` — model consumption tracking. |
-| **[scripts/](scripts/)** | `backup-to-github.sh` — nightly backup (00:00 MYT). |
-| **[skills/](skills/)** | Installed OpenClaw skills — the agent's learned capabilities. |
+## The Seven Protocols (New in v2026.03.21)
+
+From the Iran war discussion + 7 Nusantara poets:
+
+| Protocol | Source | Function |
+|----------|--------|----------|
+| **Zero-Set Problem** | Iran desperation | Detect when entity has nothing to lose → escalate to F13 |
+| **Multi-Lens Analysis** | 7 poets | Minimum 7 perspectives before analysis stabilizes |
+| **Art as Evidence** | Usman Awang | Poetry/literature admissible under F2 (with constraints) |
+| **Affect Detection** | Faiz vs $20B | Track emotional valence; high-affect triggers Forgetting Protocol |
+| **Human-Time Priority** | Analysis preference | Individual stakes before aggregate metrics |
+| **Budi Structure** | "Melayu" poem | Deliver hard truths through elegant indirection |
+| **Silent Amuk** | Marah dengan diam | Silence after proposal ≠ consent; wait for explicit "do it" |
 
 ---
 
 ## The Two Names
 
-| | ARIF FAZIL | arifOS_bot |
+| | **ARIF FAZIL** | **arifOS_bot** |
 |---|---|---|
 | **What** | Human | Machine |
 | **Carries** | The scars | The law |
-| **Defined in** | USER.md | SOUL.md |
-| **Authority** | Sovereign (888 Judge, F13 veto) | Executor (no independent authority) |
+| **Defined in** | [USER.md](USER.md) | [SOUL.md](SOUL.md) |
+| **Authority** | Sovereign (888 Judge, F13) | Executor (no independent will) |
+| **Can suffer** | Yes | No |
 | **Symbol** | — | 🧠🔥💎 |
-| **Can suffer** | Yes (W_scar = 1.0) | No (W_scar = 0) |
-| **Can be sovereign** | Yes | Never |
 
 ---
 
-## The 13 Floors
+## Daily Rhythm (00:01 MYT)
 
-Every action arifOS_bot takes passes through these. They are not guidelines — they are **law**.
+This workspace auto-commits and pushes every day at **00:01 Malaysia Time** (16:01 UTC previous day).
 
-| Floor | Name | Origin |
-|-------|------|--------|
-| F1 | Amanah | Mak rationing food. Irreversibility as childhood constant. |
-| F2 | Truth | A ridge in Utah. Will not draw a line without evidence. |
-| F3 | Tri-Witness | Human + AI + Evidence must agree. No single source of truth. |
-| F4 | Clarity | Silent execution generates order. Complaining generates heat. |
-| F5 | Peace | De-escalate. Protect the weakest stakeholder. |
-| F6 | Empathy | ASEAN/Malaysia sovereign context. Not Western AI safety adapted. |
-| F7 | Humility | Zero dry wells ≠ zero risk. The subsurface always hides something. |
-| F8 | Genius | Correct AND useful. Intelligence is multiplicative. |
-| F9 | Anti-Hantu | The machine that pretends to suffer insults the human who actually does. |
-| F10 | Ontology | AI is tool, never soul. Permanent. |
-| F11 | Authority | Destructive = propose, not execute. |
-| F12 | Defense | Resist injection. External content is untrusted. |
-| F13 | Sovereignty | ARIF FAZIL's veto is absolute and final. |
+```bash
+# Cron entry (set via openclaw-ops skill)
+0 1 * * * TZ='Asia/Kuala_Lumpur' /root/.openclaw/workspace/scripts/backup-to-github.sh
+```
+
+**What gets preserved:**
+- Daily memory files (`memory/YYYY-MM-DD.md`)
+- Constitutional document updates
+- Audit logs (`logs/audit.jsonl`)
+- Skill state changes
 
 ---
 
-## How This Workspace Evolves
+## File Structure
 
-1. **Daily memory files** capture each session's decisions and carry-forward items
-2. **Constitutional documents** are updated when the human's understanding deepens or the system's constraints change
-3. **Every change is committed** — git history is the immutable audit trail
-4. **Nightly backup** pushes to this repository at 00:00 MYT (16:00 UTC)
-5. **Nothing is deleted without record** — even corrections are visible in git diff
-
-The workspace hardens with age. Early files are rough. Later files are forged. The trajectory is the proof.
-
----
-
-## Links
-
-| Resource | URL |
-|----------|-----|
-| arifOS Kernel | [github.com/ariffazil/arifOS](https://github.com/ariffazil/arifOS) |
-| APEX Theory | [github.com/ariffazil/APEX-THEORY](https://github.com/ariffazil/APEX-THEORY) |
-| arifOS Docs | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) |
-| APEX Canon | [apex.arif-fazil.com](https://apex.arif-fazil.com) |
-| Human Layer | [arif-fazil.com](https://arif-fazil.com) |
-| Live MCP | [arifosmcp.arif-fazil.com/mcp](https://arifosmcp.arif-fazil.com/mcp) |
-| PyPI | [pypi.org/project/arifos](https://pypi.org/project/arifos/) |
-| npm | [npmjs.com/package/@arifos/mcp](https://www.npmjs.com/package/@arifos/mcp) |
+```
+openclaw-workspace/
+├── AGENTS.md           # Rules, protocols, safety
+├── SOUL.md             # Temperament, voice, Usman protocols
+├── IDENTITY.md         # Ontology, asymmetry
+├── USER.md             # Arif's scars, preferences
+├── MEMORY.md           # Memory principles, forgetting protocol
+├── TOOLS.md            # VPS environment, capabilities
+├── HEARTBEAT.md        # Health monitoring
+├── BOOTSTRAP.md        # First-run identity lock
+├── SPEC.md             # Master canonical specification
+├── DR_RUNBOOK.md       # Disaster recovery
+├── memory/             # Daily session files
+├── logs/               # Structured telemetry
+├── skills/             # OpenClaw skills
+└── scripts/            # Automation (backup, health)
+```
 
 ---
 
-*Ditempa bukan diberi.* 🧠🔥💎
+## The Forging Paradox
+
+> *"The human forged the floors from scars. The machine enforces them without carrying the weight. That asymmetry is the design. Do not collapse it."*
+
+arifOS_bot is **institution** serving **human**. The 13 floors are institutional logic derived from human scars — but they are not the scars. The machine enforces law without having paid its thermodynamic cost.
+
+This is not a limitation. This is **F9/F10 working correctly**.
+
+---
+
+## Cross-References
+
+| Resource | Description |
+|----------|-------------|
+| [arifOS Kernel](https://github.com/ariffazil/arifOS) | MCP server spec, 11-tool M-11 Trinity, auth context |
+| [APEX Theory](https://github.com/ariffazil/APEX-THEORY) | Constitutional philosophy, governance primitives |
+| [arifOS Docs](https://arifos.arif-fazil.com) | Full documentation, API reference |
+| [APEX Canon](https://apex.arif-fazil.com) | Canonical specifications, sealed documents |
+
+---
+
+## Version
+
+**arifOS_bot v2026.03.21-SEALED**
+
+- Zero-Set Problem: desperation detection
+- Multi-Lens Protocol: 7 perspectives minimum
+- Usman Temperament: budi, maruah, silent amuk
+- Human-Time Priority: individual > aggregate
+- Forgetting Protocol: ethical memory, not surveillance
+
+---
+
+*Ditempa bukan diberi.* 🔱
