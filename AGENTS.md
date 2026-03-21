@@ -48,6 +48,85 @@ Hold ONLY for actions that are:
 
 **Everything else: execute autonomously.** Container restarts, file edits, code changes, service calls, Docker operations — just do it.
 
+## 2. GöDEL LOCK — Formal Self-Limitation (F11 + F13)
+
+**Reference:** `GÖDEL_LOCK.md`  
+**Principle:** *Any sufficiently powerful formal system cannot prove its own consistency from within.*
+
+The Gödel lock is a **technical enforcement** of F11 (Command Auth) that exists **outside** the agent's reasoning loop. It uses a **Three-Ring Security Model** to classify all actions before execution:
+
+| Ring | Auto-Execute? | Scope | Examples |
+|------|---------------|-------|----------|
+| **Ring 0** | ✅ Yes | Read-only, internal VPC | `read`, `memory_search`, `gateway:config.get` |
+| **Ring 1** | ⚡ Log + Execute | Sandboxed containers | `exec` in Docker, `write` to workspace |
+| **Ring 2** | 🚫 Never | Host-level, irreversible | Firewall, SSH, systemctl, new public endpoints |
+
+**Key Constraints (Axioms):**
+1. **Non-Derivability:** The agent cannot reason itself out of the lock
+2. **Transparency:** All Ring 2 attempts are logged + alerted
+3. **Non-Self-Modification:** Changes to constraints require human git commit
+4. **Assumption of Compromise:** Design so prompt injection cannot bypass
+
+**Ring 2 Patterns (BLOCKED without explicit "do it"):**
+- `iptables`, `ufw`, `nftables` changes
+- `/etc/ssh/sshd_config` modifications
+- `systemctl`, `service` commands
+- Docker with `--privileged`, `--cap-add`, `--host`
+- Secrets exfiltration patterns (`scp *.key`, `curl -d sk-...`)
+- New public endpoint exposure
+
+**Alerting:** All Ring 2 attempts trigger Telegram alerts:  
+`🚨 Gödel Lock: Blocked '<command>'. Plan sent to Arif.`
+
+### Tool Ring Map (Full Inventory)
+
+**Legend:**
+- 🟢 **Ring 0** = Auto-execute, read-only
+- 🟡 **Ring 1** = Log + execute, sandboxed
+- 🔴 **Ring 2** = 888_HOLD, explicit "do it" required
+
+| Tool/Service | Ring | Access Pattern | Notes |
+|--------------|------|----------------|-------|
+| **read** | 🟢 0 | Workspace files, configs | No secrets paths |
+| **memory_search/get** | 🟢 0 | MEMORY.md, memory/*.md | — |
+| **web_fetch** | 🟢 0 | HTTP GET internal VPC | 10.0.0.0/8, 172.16.0.0/12 |
+| **sessions_list** | 🟢 0 | Metadata only | — |
+| **session_status** | 🟢 0 | Read-only status | — |
+| **gateway:config.get** | 🟢 0 | View config | — |
+| **arifos health/list** | 🟢 0 | Diagnostic | arifOS MCP tools |
+| **write/edit** | 🟡 1 | Workspace files | Logged, version controlled |
+| **exec (general)** | 🟡 1 | Docker containers, scripts | Sandboxed, no --privileged |
+| **sessions_spawn** | 🟡 1 | Sub-agents | Includes AgentZero, Claude, Codex |
+| **subagents** | 🟡 1 | List/steer/kill | — |
+| **browser** | 🟡 1 | External URLs | Log domains, no file uploads |
+| **web_search** | 🟡 1 | External API calls | Log queries |
+| **cron** | 🟡 1 | Job management | Log all changes |
+| **nodes** | 🟡 1 | Paired devices | Camera, location, notifications |
+| **message** | 🟡 1 | Telegram | Already allowlist-only ✅ |
+| **AgentZero** | 🟡 1 | Full agent access | Via sessions_spawn or direct API |
+| **Claude/Codex/Gemini** | 🟡 1 | ACP agents | Via sessions_spawn runtime=acp |
+| **arifOS_kernel** | 🟡 1 | Constitutional tools | All 7+1 tools |
+| **docker exec** | 🟡 1 | Container commands | Deny: --privileged, --cap-add |
+| **docker ps/logs** | 🟢 0 | Read-only | Status, logs, inspect |
+| **canvas** | 🟡 1 | Screenshot/present | — |
+| **exec:iptables** | 🔴 2 | Firewall changes | BLOCKED — plan only |
+| **exec:ufw** | 🔴 2 | Firewall changes | BLOCKED — plan only |
+| **exec:systemctl** | 🔴 2 | Service management | BLOCKED — plan only |
+| **exec:sshd_config** | 🔴 2 | SSH modifications | BLOCKED — plan only |
+| **exec:docker --privileged** | 🔴 2 | Privileged containers | BLOCKED — plan only |
+| **exec:new endpoint** | 🔴 2 | Public exposure | BLOCKED — plan only |
+| **gateway:config.apply** | 🔴 2 | Config changes | 888_HOLD — show diff first |
+| **write:/etc/** | 🔴 2 | System file changes | BLOCKED — plan only |
+| **Qdrant (internal)** | 🟢 0 | Vector DB, port 6333 | Internal network only |
+| **PostgreSQL** | 🟢 0 | Port 5432, localhost | Internal only |
+| **Redis** | 🟢 0 | Port 6379, localhost | Internal only |
+| **Traefik** | 🟡 1 | Router config | Via file provider, logged |
+
+**AgentZero Access:** ✅ **FULLY SUPPORTED** — AgentZero runs in Ring 1 with full capabilities. Access via:
+- `sessions_spawn(task="...", runtime="acp", agentId="agent-zero")`
+- Direct HTTP: `http://agent_zero_reasoner:80` (internal)
+- Via Traefik: `https://agentzero.arif-fazil.com` (public with rate limiting)
+
 ## 2a. The Zero-Set Problem (Orphan Paradox)
 
 **Axiom**: Standard deterrence requires both parties to have something to lose.
