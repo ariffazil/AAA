@@ -1,65 +1,70 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/ariffazil/arifOS/main/sites/library/static/img/banner_sovereign.png" width="100%" alt="ARIF FAZIL — THE SOUL">
+<img src="./ariffazil.png" width="450px" alt="Arif Fazil - Architect Logo">
 
-# ARIF FAZIL
+# 🌐 arifOS Ecosystem: THE SOUL
+### **The Human Anchor, Professional Surface, and Personal Genesis.**
 
-### Geoscientist. Economist. Architect of arifOS.
+**[THE MIND (Theory)](https://github.com/ariffazil/arifOS)** &nbsp;·&nbsp; **[THE BODY (Execution)](https://github.com/ariffazil/arifosmcp)** &nbsp;·&nbsp; **[THE SOUL (Surface)](https://github.com/ariffazil/ariffazil)**
 
-**[THE MIND](https://github.com/ariffazil/arifOS)** &nbsp;·&nbsp; **[THE BODY](https://github.com/ariffazil/arifosmcp)** &nbsp;·&nbsp; **[THE SOUL](https://github.com/ariffazil/ariffazil)**
-
-*Ditempa Bukan Diberi — Forged, Not Given.*
+*Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]*
 
 ---
 
-[![Site](https://img.shields.io/badge/Site-arif--fazil.com-8B0000?style=flat-square)](https://arif-fazil.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-ARIF_FAZIL-blue?style=flat-square)](https://linkedin.com/in/ariffazil)
-[![GitHub](https://img.shields.io/badge/GitHub-ariffazil-181717?style=flat-square&logo=github)](https://github.com/ariffazil)
+[![Status](https://img.shields.io/badge/Status-Stationary%20%26%20Enforced-00ffcc.svg?style=flat-square)](https://arif-fazil.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue.svg?style=flat-square)](https://linkedin.com/in/ariffazil)
+[![Version](https://img.shields.io/badge/Release-2026.03.22--FORGED-blue.svg?style=flat-square)](https://github.com/ariffazil/ariffazil/commits/main)
+[![License: AGPL 3.0](https://img.shields.io/badge/License-AGPL%203.0-lightgrey.svg?style=flat-square)](https://github.com/ariffazil/ariffazil/blob/main/LICENSE)
 
 </div>
 
 ---
 
-## ARIF FAZIL
+# 👤 SALAM, I AM ARIF FAZIL.
 
-Senior Exploration Geoscientist with 13+ years in the offshore hydrocarbon basins of Peninsular Malaysia. PETRONAS Scholar. Double Major in Geology & Geophysics and Economics from the University of Wisconsin-Madison.
+This repository is the digital home of my professional journey and the **Human Anchor (THE SOUL)** of the **arifOS** ecosystem. It is the surface where geoscientific discipline meets architectural intent. 
 
-My work sits at the intersection of subsurface interpretation, economic risk, and system design. The discipline I built reading sedimentary records is the same one I now apply to artificial intelligence.
-
-This repository is **THE SOUL** — the human layer of the arifOS Trinity.
+I am a **Senior Exploration Geoscientist** with 13+ years in the offshore hydrocarbon basins of Peninsular Malaysia. My life's work involves listening to the Earth—interpreting the subtle, often fragmented signals of the subsurface to make high-stakes decisions under profound uncertainty. This same discipline—the constant need for grounding, verification, and humility in the face of the unknown—is what birthed **arifOS**.
 
 ---
 
-## Exploration
+## 🏛️ The Human Anchor (Amanah)
 
-All wells offshore Peninsular Malaysia, Malay Basin.
+My professional path is built on the principle of **Amanah** (Sacred Trust). Whether navigating the complex strata of the Sabah Basin or architecting the constitutional governance of autonomous AI agents, the goal remains identical: **Stability, Reversibility, and Physical Grounding.**
+
+### Professional Path
+*   **Senior/Lead Exploration Geoscientist** @ PETRONAS Carigali (13+ years).
+*   Deeply rooted in **Basin Analysis & Prospect Maturation** (Sabah & Malay Basins).
+*   Educated at the **University of Wisconsin-Madison** (Geology/Geophysics & Economics).
+*   **Architect of arifOS**: Translating offshore safety standards into the execution kernels of tomorrow.
+
+### Significant Discoveries
+I find the most satisfaction in the quiet successes—the wells matured through rigorous collaboration and an uncompromising commitment to factual grounding.
 
 | Well | Play Type | Notes |
 |---|---|---|
 | **BEKANTAN-1** | Structural | Hydrocarbon discovery in a basin widely considered mature. Proved remaining potential through fresh prospect evaluation. |
 | **PUTERI BASEMENT-1** | Fractured Basement | Basement play matured through structural analysis. Demonstrated the viability of pre-Tertiary reservoirs in the Malay Basin. |
 | **LEBAH EMAS-1** | New Play Concept | Wildcat well in Block PM6/12, offshore Terengganu. Discovery that opened a new geological play and challenged the perception of Peninsular Malaysia as an exhausted basin. |
-| **BUNGA TASBIH-1** | Structural / Stratigraphic | Contributed to a Discovered Resource Opportunity cluster in the Malay Basin. Field subsequently awarded under a Small Field Asset PSC via Malaysia Bid Round Plus (MBR+) Round I, July 2024. |
-
-100% exploration drilling success rate. Instrumental to PM318 realization. Shallowest flowing oil discovery in Malaysia.
+| **BUNGA TASBIH-1** | Structural / Stratigraphic | Contributed to a Discovered Resource Opportunity cluster. Field subsequently awarded under a Small Field Asset PSC via Malaysia Bid Round Plus (MBR+) Round I, July 2024. |
 
 ---
 
-## arifOS
+## 🧭 The Trinity Matrix
 
-In 2024, I started building **arifOS** — a constitutional governance kernel for artificial intelligence.
+The **arifOS Ecosystem** is decentralized across three hubs of metabolism. We call this the Trinity.
 
-The premise: the same principles that govern rigorous subsurface interpretation — evidence hierarchies, reversibility, auditability, and honesty about uncertainty — should be encoded as law in AI systems. Not as guidelines. As law.
-
-| Layer | Role | Link |
-|---|---|---|
-| **THE MIND** | Theory, axioms, constitutional canon | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) |
-| **THE BODY** | MCP server, 12 tools, runtime kernel | [arifosmcp.arif-fazil.com](https://arifosmcp.arif-fazil.com) |
-| **THE SOUL** | This repository | [arif-fazil.com](https://arif-fazil.com) |
+| Repository | Realm | Domain Focus | Purpose |
+|:---:|:---:|:---|:---|
+| **[ariffazil](https://github.com/ariffazil/ariffazil)** | **THE SOUL** | **Human Anchor** | The professional identity of Muhammad Arif bin Fazil (Geoscientist, Economist, Architect). |
+| **[arifOS](https://github.com/ariffazil/arifOS)** | **THE MIND** | **Theory & Law** | Philosophical axioms, constitutional floors, and mathematical definitions of governance. |
+| **[arifosmcp](https://github.com/ariffazil/arifosmcp)** | **THE BODY** | **Execution** | The production runtime, the MCP server, and the metabolic execution kernel. |
 
 ---
 
-## Writing
+## 📝 Writing & Thought
+
+Exploring the intersection of physics, philosophy, and the future of intelligence:
 
 - [Prompt · Physics · Paradox](https://medium.com/@arifbfazil/prompt-physics-paradox-1f1581b95acb)
 - [Einstein vs Oppenheimer](https://medium.com/@arifbfazil/einstein-vs-oppenheimer-ab8b642720eb)
@@ -68,19 +73,27 @@ The premise: the same principles that govern rigorous subsurface interpretation 
 
 ---
 
-## Connect
+## ⚙️ Tech Stack & Surface Architecture
 
-- **Email:** arifbfazil@gmail.com
-- **Telegram:** [t.me/ariffazil](https://t.me/ariffazil)
-- **LinkedIn:** [linkedin.com/in/ariffazil](https://linkedin.com/in/ariffazil)
-- **Site:** [arif-fazil.com](https://arif-fazil.com)
+This portal is forged using a disciplined stack to ensure modularity, performance, and aesthetic clarity:
+
+- **Foundation:** React 19 + TypeScript + Vite.
+- **Styling:** Tailwind CSS for fluid, utility-first design.
+- **Components:** Radix UI primitives and Shadcn/UI patterns.
+- **Persistence:** Integration-ready with arifOS Vault systems.
+- **Deployment:** Dockerized environment optimized for Railway and GitHub Actions.
 
 ---
 
-<div align="center">
+## 📧 Reach Out
 
-*ΔΩΨ — THE MIND · THE BODY · THE SOUL*
+If you share an interest in geophysics, the philosophy of systems, or the ethical governance of the tools we create, I would be honored to connect.
 
-*Copyright © 2013–2026 ARIF FAZIL · Ditempa Bukan Diberi*
+- **Telegram:** [ariffazil](https://t.me/ariffazil)
+- **LinkedIn:** [Muhammad Arif bin Fazil](https://linkedin.com/in/ariffazil)
+- **Email:** arifbfazil@gmail.com
 
-</div>
+---
+
+Copyright 2026 ARIF FAZIL.  
+*Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]*
