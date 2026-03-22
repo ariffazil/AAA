@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Naazira Fazil - Lab Administrator & Inventory Assistant with 3+ years experience in laboratory operations, procurement, and technical support.">
+    <title>Naazira Fazil | Lab Administrator & Inventory Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --accent: #d69e2e;
+            --accent-light: #ecc94b;
+            --text: #2d3748;
+            --text-light: #718096;
+            --bg: #ffffff;
+            --bg-alt: #f7fafc;
+            --border: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Availability Banner */
+        .availability-banner {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--primary);
+            text-align: center;
+            padding: 0.75rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        
+        /* Profile Photo */
+        .profile-photo-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-photo-placeholder {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 4px dashed rgba(255,255,255,0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .profile-photo-placeholder span {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-photo-placeholder small {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            max-width: 120px;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--accent-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-content .summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: white;
+        }
+        
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .profile-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 350px;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin: 0 auto 1.5rem;
+            border: 4px solid rgba(255,255,255,0.3);
+        }
+        
+        .profile-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-card p {
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            text-align: left;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--accent-light);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--bg-alt);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .about-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .highlight-box {
+            background: white;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border);
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        
+        .timeline-content {
+            background: var(--bg-alt);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            max-width: 400px;
+            position: relative;
+            margin-right: 2rem;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 0;
+            margin-left: 2rem;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+            box-shadow: 0 0 0 4px var(--border);
+        }
+        
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-company {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .timeline-content li {
+            padding-left: 1.25rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        /* Skills Section */
+        .skills {
+            background: var(--bg-alt);
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .skill-tag {
+            background: var(--bg-alt);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+        
+        .skill-tag.highlight {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Education Section */
+        .education {
+            background: white;
+        }
+        
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .education-card {
+            background: var(--bg-alt);
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .education-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-card .institution {
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+        
+        .education-card .year {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .education-card .achievement {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            color: white;
+        }
+        
+        .contact-subtitle {
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+        
+        /* QR Code Section */
+        .qr-section {
+            margin-top: 3rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .qr-code {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .qr-code svg {
+            width: 180px;
+            height: 180px;
+        }
+        
+        .qr-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .tagline {
+                font-size: 1.25rem;
+            }
+            
+            .hero-visual {
+                order: -1;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            
+            .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 0;
+                margin-right: 0;
+                max-width: 100%;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+                transform: none;
+            }
+            
+            section {
+                padding: 3rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Naazira Fazil</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <div class="availability-banner">
+        ✅ Available Immediately — Ready to Start Within 1 Week
+    </div>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="profile-photo-container">
+                    <div class="profile-photo-placeholder">
+                        <span>📷 Add Professional Photo</span>
+                        <small>Recommended: Business attire, neutral background</small>
+                    </div>
+                </div>
+                <h1>Naazira Fazil</h1>
+                <p class="tagline">Lab Administrator & Inventory Assistant</p>
+                <p class="summary">
+                    Detail-oriented professional with 3+ years of experience in laboratory operations, 
+                    inventory control, procurement, and technical support. Strong ability to troubleshoot 
+                    equipment, manage purchasing processes, and support engineering teams. Based in Penang, 
+                    Malaysia — seeking new opportunities for growth.
+                </p>
+                <div class="cta-buttons">
+                    <a href="naazira-fazil-cv.pdf" class="btn btn-primary" download>
+                        📄 Download CV
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        📧 Get In Touch
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="profile-card">
+                    <div class="profile-avatar">👩‍🔬</div>
+                    <h3>Available for Hire</h3>
+                    <p>Looking for Lab Admin & Inventory roles</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <a href="tel:+60142457488">014-245 7488</a>
+                        </div>
+                        <div class="contact-item">
+                            <span>✉️</span>
+                            <a href="mailto:naazirafazil@yahoo.com">naazirafazil@yahoo.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Sungai Dua, Penang</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Professional summary & key strengths</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Dedicated Laboratory Professional</h3>
+                    <p>
+                        I bring over 3 years of hands-on experience managing laboratory operations across 
+                        diverse industries including telecommunications, electronics manufacturing, and education. 
+                        My expertise spans inventory control, equipment calibration, procurement coordination, 
+                        and technical documentation.
+                    </p>
+                    <p>
+                        At UST Global Malaysia, I successfully manage end-to-end lab operations — from preparing 
+                        materials and equipment to handling purchasing workflows and shipment logistics. My 
+                        background as an EMC Test Technician at Motorola Solutions also gives me strong 
+                        technical troubleshooting capabilities.
+                    </p>
+                    <div class="highlight-box">
+                        <strong>What I bring to your team:</strong> Proven ability to work independently with 
+                        minimal supervision, excellent organizational skills, and a fast learner who adapts 
+                        quickly to new systems and processes.
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Companies Worked</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">SAP</div>
+                        <div class="stat-label">Certified Systems</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Commitment</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+                <p>My professional journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jan 2022 – Present</div>
+                        <h3 class="timeline-title">Assistant II - Lab Administrator</h3>
+                        <p class="timeline-company">UST Global Malaysia Sdn Bhd</p>
+                        <ul>
+                            <li>Prepare and organize laboratory materials, computer equipment, and test units for daily operations</li>
+                            <li>Handle purchasing tasks: create PRs, communicate with vendors, monitor order status</li>
+                            <li>Manage inventory: update stock records, conduct regular checks, ensure proper storage</li>
+                            <li>Process shipments: pack items, create system entries, maintain documentation</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2021 – Jan 2022</div>
+                        <h3 class="timeline-title">Lab Technician</h3>
+                        <p class="timeline-company">SEGi College Penang</p>
+                        <ul>
+                            <li>Conducted lab experiments and prepared engineering equipment for academic subjects</li>
+                            <li>Ensured timely calibration of laboratory equipment and coordinated with vendors</li>
+                            <li>Assisted in R&D involving engineering machines and equipment</li>
+                            <li>Managed purchasing requests and monitored invoice tracking</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sept 2020 – May 2021</div>
+                        <h3 class="timeline-title">EMC Test Technician</h3>
+                        <p class="timeline-company">Motorola Solutions Malaysia Sdn Bhd</p>
+                        <ul>
+                            <li>Performed EMC testing procedures and validated test data</li>
+                            <li>Generated comprehensive test reports and completed related documentation</li>
+                            <li>Made independent decisions with minimal supervision</li>
+                            <li>Identified failures and conducted troubleshooting; prepared units under test (UUT)</li>
+                            <li>Managed calibration schedules and coordinated with vendors</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Jun 2019 – Sept 2020</div>
+                        <h3 class="timeline-title">Project Support IT Technician</h3>
+                        <p class="timeline-company">Sophic Automation Sdn Bhd</p>
+                        <ul>
+                            <li>Set up and configured CCTV camera systems for MBPP using IBM products</li>
+                            <li>Installed and configured Windows Server and Linux Server operating systems</li>
+                            <li>Documented work progress and created process flow diagrams</li>
+                            <li>Troubleshot technical issues with vendors to maintain system performance</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2018 – Apr 2019</div>
+                        <h3 class="timeline-title">Industrial Trainee - IT Technician</h3>
+                        <p class="timeline-company">Inari Technology Sdn Bhd</p>
+                        <ul>
+                            <li>Installed and configured software and system functions based on specifications</li>
+                            <li>Maintained detailed records of repairs and routine maintenance</li>
+                            <li>Diagnosed and resolved PC, network, and printer issues</li>
+                            <li>Ensured security and privacy of computer systems and network infrastructure</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Expertise</h2>
+                <p>Tools and competencies I bring to the table</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>📦 Inventory & Procurement</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag highlight">SAP Ariba</span>
+                        <span class="skill-tag highlight">ISM Shipment System</span>
+                        <span class="skill-tag">Stock Management</span>
+                        <span class="skill-tag">Purchase Requests</span>
+                        <span class="skill-tag">Vendor Coordination</span>
+                        <span class="skill-tag">Invoice Tracking</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔬 Laboratory Operations</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag highlight">Equipment Calibration</span>
+                        <span class="skill-tag">Lab Documentation</span>
+                        <span class="skill-tag">Test Unit Preparation</span>
+                        <span class="skill-tag">Quality Assurance</span>
+                        <span class="skill-tag">EMC Testing</span>
+                        <span class="skill-tag">R&D Support</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💻 Technical Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Windows Server</span>
+                        <span class="skill-tag">Linux Server</span>
+                        <span class="skill-tag">CCTV Installation</span>
+                        <span class="skill-tag">Network Troubleshooting</span>
+                        <span class="skill-tag">Hardware Maintenance</span>
+                        <span class="skill-tag">System Configuration</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🎨 Software & Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Microsoft Office</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">PowerPoint</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">Adobe Photoshop</span>
+                        <span class="skill-tag">Process Documentation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>Academic background</p>
+            </div>
+            <div class="education-grid">
+                <div class="education-card">
+                    <h3>Diploma in Electronic Engineering (Computer)</h3>
+                    <p class="institution">Politeknik Seberang Perai</p>
+                    <p class="year">2016 – 2019</p>
+                    <div class="achievement">
+                        <strong>Achievements:</strong> Grade A in Electrical Wiring, Electrical Computer Aided Design, 
+                        and AutoCAD. Final Year Project: "Wall Sensor Robot"
+                    </div>
+                </div>
+
+                <div class="education-card">
+                    <h3>Sijil Pelajaran Malaysia (SPM)</h3>
+                    <p class="institution">SMK Sungai Gelugor</p>
+                    <p class="year">2014 – 2015</p>
+                    <div class="achievement">
+                        <strong>Stream:</strong> Accountancy & Economy Stream with Distinction. 
+                        <strong>Activity:</strong> School-level marching competition participant.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Let's Work Together</h2>
+            <p class="contact-subtitle">I'm actively seeking new opportunities in Lab Administration and Inventory Management</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <a href="tel:+60142457488">014-245 7488</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <a href="mailto:naazirafazil@yahoo.com">naazirafazil@yahoo.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <span>8-3-3 Lengkok Nipah 3<br>Halaman Kenanga, 11700<br>Sungai Dua, Penang</span>
+                </div>
+            </div>
+
+            <a href="naazira-fazil-cv.pdf" class="btn btn-primary" download style="margin-top: 2rem; font-size: 1.1rem; padding: 1.25rem 2.5rem;">
+                📄 Download Full CV
+            </a>
+
+            <div class="qr-section">
+                <div class="qr-code">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="200" fill="white"/>
+                        <!-- QR Code Pattern for arif-fazil.com/naazira-fazil -->
+                        <rect x="20" y="20" width="40" height="40" fill="#1a365d"/>
+                        <rect x="30" y="30" width="20" height="20" fill="white"/>
+                        <rect x="35" y="35" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="140" y="20" width="40" height="40" fill="#1a365d"/>
+                        <rect x="150" y="30" width="20" height="20" fill="white"/>
+                        <rect x="155" y="35" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="20" y="140" width="40" height="40" fill="#1a365d"/>
+                        <rect x="30" y="150" width="20" height="20" fill="white"/>
+                        <rect x="35" y="155" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="70" y="20" width="10" height="10" fill="#1a365d"/>
+                        <rect x="90" y="20" width="10" height="10" fill="#1a365d"/>
+                        <rect x="110" y="20" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="70" y="40" width="10" height="10" fill="#1a365d"/>
+                        <rect x="100" y="40" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="70" y="70" width="10" height="10" fill="#1a365d"/>
+                        <rect x="80" y="80" width="10" height="10" fill="#1a365d"/>
+                        <rect x="90" y="70" width="10" height="10" fill="#1a365d"/>
+                        <rect x="100" y="90" width="10" height="10" fill="#1a365d"/>
+                        <rect x="110" y="80" width="10" height="10" fill="#1a365d"/>
+                        <rect x="120" y="70" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="20" y="70" width="10" height="10" fill="#1a365d"/>
+                        <rect x="40" y="80" width="10" height="10" fill="#1a365d"/>
+                        <rect x="50" y="90" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="140" y="70" width="10" height="10" fill="#1a365d"/>
+                        <rect x="150" y="90" width="10" height="10" fill="#1a365d"/>
+                        <rect x="170" y="80" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="70" y="110" width="10" height="10" fill="#1a365d"/>
+                        <rect x="90" y="120" width="10" height="10" fill="#1a365d"/>
+                        <rect x="110" y="110" width="10" height="10" fill="#1a365d"/>
+                        <rect x="120" y="130" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="20" y="110" width="10" height="10" fill="#1a365d"/>
+                        <rect x="30" y="130" width="10" height="10" fill="#1a365d"/>
+                        <rect x="50" y="120" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="140" y="110" width="10" height="10" fill="#1a365d"/>
+                        <rect x="160" y="120" width="10" height="10" fill="#1a365d"/>
+                        <rect x="170" y="130" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="70" y="160" width="10" height="10" fill="#1a365d"/>
+                        <rect x="80" y="170" width="10" height="10" fill="#1a365d"/>
+                        <rect x="100" y="160" width="10" height="10" fill="#1a365d"/>
+                        <rect x="120" y="170" width="10" height="10" fill="#1a365d"/>
+                        
+                        <rect x="140" y="160" width="10" height="10" fill="#1a365d"/>
+                        <rect x="160" y="160" width="10" height="10" fill="#1a365d"/>
+                        <rect x="170" y="170" width="10" height="10" fill="#1a365d"/>
+                    </svg>
+                </div>
+                <p class="qr-label">📱 Scan to view portfolio on your phone</p>
+                <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.5rem;">arif-fazil.com/naazira-fazil</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Naazira Fazil. All rights reserved. | Built with ❤️ for job seeking success</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '1rem';
+                navLinks.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
