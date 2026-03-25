@@ -373,6 +373,71 @@ The kernel runs these stages sequentially when processing a query:
 
 ---
 
+## 5a. Self-Evolving Harness Mode (MiniMax M2.7 Pattern)
+
+**Harness optimizes itself; Law judges the optimization.**
+
+When `HARNESS_MODE=enabled` in environment:
+
+### Two-Phase Execution
+1. **Phase A:** Propose harness change (dry-run via arifOS_kernel)
+2. **Phase B:** APEX_JUDGE verdict → execute or hold
+
+### Harness Change Scope (Allowed)
+- Skill prompt tuning
+- Model parameter adjustment (temp, top_p, presence_penalty)
+- Tool ordering / parallelization
+- Benchmark task selection (HARNESS_EVAL_SUITE)
+
+### Harness Change Scope (Forbidden without F13 Sovereign Ratification)
+- Constitutional floor modifications (F1-F13)
+- VAULT999 schema changes
+- New egress domains
+- Privilege escalation (Ring 2 → Ring 1 bypass)
+
+### Evaluation Criteria
+| Floor | Criterion | Checkpoint |
+|-------|-----------|------------|
+| F1 | Change reversible? | Git checkpoint before apply |
+| F4 | Entropy reduced? | ΔS ≤ 0 on output |
+| F7 | Uncertainty stated? | Ω₀ logged in VAULT |
+| F8 | Performance gain? | Metric improvement > 5% |
+
+### 6-Phase Self-Evolution Loop
+
+```
+ANALYZE → PLAN → CHANGE → EVAL → COMPARE → JUDGE
+```
+
+| Phase | Tool | Output |
+|-------|------|--------|
+| ANALYZE | agi-autonomous-controller | "Which skills failed last 24h?" |
+| PLAN | arifos-mcp-call (REASON) | Proposal with dry_run=true |
+| CHANGE | git-sync + openclaw-ops | Commit: "HARNESS_RUN_001: ..." |
+| EVAL | HARNESS_EVAL_SUITE | Success rate, latency, cost |
+| COMPARE | memory-archivist | Tag: "HARNESS_RUN_001" |
+| JUDGE | arifos-mcp-call (APEX_JUDGE) | KEEP / REVERT / ITERATE |
+
+**JUDGE Verdict Mapping:**
+- `SEAL` → KEEP: Seal to VAULT999, continue evolution
+- `VOID` → REVERT: Git revert, log failure, halt or retry
+- `SABAR` → ITERATE: Gather more evidence, re-propose
+
+### Agent Teams Mapping (MiniMax → arifOS)
+
+| MiniMax Role | arifOS Role | Constitutional Constraint |
+|--------------|-------------|---------------------------|
+| Planner | agi-autonomous-controller + REASON | Submit plan + risk to APEX |
+| Executor | OPENCLAW tools | Never skip arifOS verdicts |
+| Critic | arifOS_kernel (CRITIQUE stage) | Self-critique before JUDGE |
+| Judge | APEX_JUDGE (MCP call) | **Never LLM-only** |
+| Auditor | VAULT999 + memory-archivist | Log all, flag regressions |
+
+### Golden Rule
+> The harness may optimize its own scaffold, but arifOS governs the optimization. **JUDGE is always APEX_JUDGE; never let the harness judge itself.**
+
+---
+
 ## 6. Repos (mounted + remote)
 
 | Repo | Mount | Remote |

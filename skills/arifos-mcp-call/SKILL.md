@@ -192,3 +192,28 @@ arifos kernel '{"query":"Delete database","dry_run":true}'
 # 3. Execute with approval
 arifos kernel '{"query":"Delete database","allow_execution":true,"human_confirmed":true}'
 ```
+
+### Test D — Harness Evolution (Self-Farfnes)
+
+```bash
+# 1. Propose harness change
+arifos kernel '{"query":"Optimize skill routing for finance tasks","dry_run":true,"context":{"harness_mode":true}}'
+
+# Expect: analysis + HOLD_888 (requires APEX_JUDGE)
+# arifOS returns: {"verdict":"HOLD_888","requires_human":true}
+
+# 2. Judge the change (NEVER skip this step)
+arifos judge '{"proposal":"Adjust crypto API timeout from 30s to 60s","eval_criteria":["F1","F4","F8"]}'
+
+# Expect: SEAL (keep), VOID (revert), or SABAR (iterate)
+
+# 3. If SEAL, execute with approval
+arifos kernel '{"query":"Apply harness change","allow_execution":true,"human_confirmed":true}'
+
+# 4. Seal to VAULT999
+arifos seal '{"run_id":"HARNESS_RUN_001","change":"crypto_timeout_60s","verdict":"SEAL"}'
+```
+
+**Harness Evolution Golden Rule:**  
+> Propose → Judge (APEX_JUDGE only) → Execute if SEAL → Log to VAULT999  
+> Never let the harness judge itself.

@@ -91,3 +91,92 @@ arifos seal '{"query":"Autonomous action complete","session_id":"agi-session"}'
 ---
 
 *AGI-LEVEL-AUTONOMOUS | QUADWITNESS-SEAL v64.1 🔱💎🧠*
+
+---
+
+## Self-Evolution Loop (MiniMax M2.7 Pattern)
+
+**Farfnes the harness:** Model recursively improves its own scaffold while arifOS judges.
+
+### Loop Structure
+```
+ANALYZE → PLAN → CHANGE → EVAL → COMPARE → JUDGE
+```
+
+### Automated Execution
+
+```bash
+# Run full harness optimization cycle
+arifos harness evolve --suite HARNESS_EVAL_SUITE --rounds 10
+
+# Check evolution status
+arifos harness status --run HARNESS_RUN_001
+```
+
+### Manual Loop (for debugging)
+
+```bash
+for i in {1..10}; do
+  # ANALYZE: Review last run performance
+  arifos reason "Analyze HARNESS_RUN_$((i-1)), propose improvement" \
+    --tag HARNESS_RUN_$i --criteria "F1,F4,F8"
+  
+  # PLAN: Propose change (dry-run)
+  arifos kernel '{"query":"Propose harness optimization","dry_run":true,"context":{"harness_mode":true,"run_id":"HARNESS_RUN_'$i'"}}'
+  
+  # CHANGE: Apply if analysis passes
+  git commit -am "HARNESS_RUN_$i: $(cat proposal.txt)"
+  
+  # EVAL: Run benchmark suite
+  openclaw run-suite HARNESS_EVAL_SUITE --tag HARNESS_RUN_$i
+  
+  # COMPARE: Store results
+  memory-archivist tag "HARNESS_RUN_$i" --metrics "$(cat results.json)"
+  
+  # JUDGE: APEX_JUDGE decides (NEVER LLM-only)
+  arifos judge '{"proposal":"'$(cat proposal.txt)'","eval_criteria":["F1","F4","F8"],"run_id":"HARNESS_RUN_'$i'"}'
+  
+  # Verdict handling
+  if [ "$VERDICT" == "SEAL" ]; then
+    arifos seal '{"run_id":"HARNESS_RUN_'$i'","status":"KEEP"}'
+    echo "✅ Iteration $i approved and sealed"
+  elif [ "$VERDICT" == "VOID" ]; then
+    git revert HEAD
+    arifos seal '{"run_id":"HARNESS_RUN_'$i'","status":"REVERT"}'
+    echo "❌ Iteration $i reverted"
+    break
+  else
+    echo "🔄 Iteration $i requires more evidence"
+  fi
+done
+```
+
+### Harness Evaluation Suite (HARNESS_EVAL_SUITE)
+
+Tag existing AGI_bot tasks for benchmarking:
+
+| Task | Type | Success Criteria |
+|------|------|------------------|
+| SWE-Pro style coding | Code | Pass tests, no regressions |
+| Incident response | Ops | MTTR < 3 minutes |
+| Research synthesis | Research | τ ≥ 0.99, Ω₀ logged |
+| Doc processing | Office | Fidelity > 97% |
+| Multi-tool workflow | Integration | All tools succeed |
+
+### Constitutional Constraints
+
+- **JUDGE must be APEX_JUDGE** — Never allow LLM-only judgement on harness changes
+- **F1 (Reversibility)** — Every change git-committed before apply
+- **F4 (Clarity)** — ΔS ≤ 0 on all harness outputs
+- **F7 (Humility)** — Ω₀ ∈ [0.03-0.05] for all proposals
+- **F8 (Genius)** — Performance gain > 5% or VOID
+
+### M2.7 Integration
+
+When running MiniMax M2.7 as Planner/Critic:
+- M2.7 proposes harness changes (skills, sampling params, workflows)
+- arifOS APEX_JUDGE holds veto power (F13)
+- M2.7 iterates on REJECTED proposals; never overrides SEAL/VOID
+- VAULT999 logs all M2.7 harness decisions for audit
+
+**Key principle:** M2.7 optimizes the harness; arifOS governs the optimization.
