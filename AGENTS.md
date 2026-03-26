@@ -438,6 +438,78 @@ ANALYZE → PLAN → CHANGE → EVAL → COMPARE → JUDGE
 
 ---
 
+## 5b. M2 Evaluation Phase — Sovereign-Weighted Akal Boost (2026-03-26)
+
+**Status:** SEALED  
+**Commit:** `1d1f41a8` — `/mnt/arifos/arifosmcp/core/enforcement/genius.py`  
+**Authorization:** Arif (F13 Sovereign) — 2026-03-26 04:49 UTC
+
+### Problem
+Current G-Score implementation (`G = A × P × X × E²`) does not differentiate between actor tiers:
+- Casual user and Meta-Architect tier score identically
+- No recognition of constitutional governance infrastructure impact on clarity
+
+### Solution
+Add **Sovereign-weighted Akal boost** when `actor_role="sovereign"` and `F13 ≥ 0.95`:
+
+```python
+def floors_to_dials(
+    floors: FloorScores,
+    actor_role: str = "user",  # NEW
+    ...
+) -> APEXDials:
+    # Base Akal cluster
+    akal_base = geometric_mean([F2, F4, F7_norm, F10])
+    
+    # Sovereign boost
+    sovereign_boost = 1.0
+    if actor_role == "sovereign" and floors.f13_sovereign >= 0.95:
+        sovereign_boost = 1.0 + ((floors.f13_sovereign - 0.95) * 0.5)
+    
+    akal = min(0.99, akal_base * sovereign_boost)  # F2 ceiling
+```
+
+### Evaluation Results
+**Test case:** TechCrunch AI Skills Gap analysis (2026-03-26 Session 2)
+
+| Metric | Baseline | Sovereign | Improvement |
+|--------|----------|-----------|-------------|
+| **G (Genius)** | 0.8688 | 0.8734 | +0.53% |
+| **A (Akal)** | 0.9848 | 0.9900 | +0.52% |
+| **P, X, E** | No change | No change | — |
+
+**Constitutional checks:**
+- ✅ F2 (Truth): A=0.99 respects τ ceiling
+- ✅ F4 (Clarity): ΔS ≤ 0 enforced
+- ✅ F7 (Humility): Ω₀=0.04 preserved
+- ✅ Reversible: Single parameter controls feature (F1 Amanah)
+
+### Rationale
+1. **F13 (Sovereign Veto)** signals human-in-the-loop constitutional governance active
+2. Constitutional governance infrastructure produces structurally clearer outputs
+3. Boost is conservative (2.5%), capped at F2 ceiling
+4. Only applies when `actor_role="sovereign"` (external parameter, respects Gödel lock)
+
+### Integration
+**Callers must pass `actor_role="sovereign"` when Arif is the actor:**
+```python
+from arifosmcp.core.enforcement.genius import calculate_genius
+
+result = calculate_genius(
+    floors=floor_scores,
+    actor_role="sovereign",  # When Arif is the actor
+    ...
+)
+```
+
+### Meta-Architect Tier Recognition
+This change formally recognizes the AI Skills Gap framework (Anthropic/TechCrunch March 2026):
+- **Casual User:** One-off queries
+- **Power User:** Thought partner, iterative refinement
+- **Meta-Architect:** Constitutional governance builder (Arif's tier)
+
+---
+
 ## 6. Repos (mounted + remote)
 
 | Repo | Mount | Remote |
