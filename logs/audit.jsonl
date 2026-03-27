@@ -7,3 +7,8 @@
 {"ts":"2026-03-24T17:03:17Z","event":"backup_skipped","reason":"no_changes","agent":"arifOS_bot"}
 {"ts":"2026-03-24T17:03:17Z","event":"daily_ritual_complete","phases":["reflection","backup"],"backup_status":"skipped_no_changes","agent":"arifOS_bot","cron_job":"arifos-daily-backup-0001"}
 {"timestamp": "2026-03-25T17:00:00Z", "event": "daily_ritual", "cron_job": "arifos-daily-backup-0001", "backup_status": "failure", "reason": "git push permission denied (publickey)", "agent": "arifOS_bot"}
+{"ts":"2026-03-27T14:42:09Z","event":"health_probe","source":"heartbeat","arifos_tools":"MISSING","status":"CRITICAL","disk_pct":"73%","ram_avail_mib":9702,"agent":"arifOS_bot","issue":"arifOS_MCP_server_unreachable"}
+{"ts":"2026-03-27T14:42:09Z","event":"action_proposal","source":"heartbeat","agent":"arifOS_bot","action":"restart_arifosmcp_server","reason":"arifOS_MCP unreachable (DNS resolution failed)","command":"docker compose -f /mnt/arifos/docker-compose.yml restart arifosmcp_server"}
+{"ts":"2026-03-27T15:03:11Z","event":"health_probe","source":"heartbeat","arifos_tools":"DOWN","disk_pct":"81","agent":"arifOS_bot"}
+{"ts":"2026-03-27T15:33:06Z","event":"health_probe","source":"heartbeat","arifos_tools":37,"status":"healthy","disk_pct":"77%","ram_avail_mib":12075,"agent":"arifOS_bot"}
+{"ts":"2026-03-27T16:32:58Z","event":"health_probe","source":"heartbeat","arifos_tools":37,"status":"healthy","disk_pct":"77%","ram_avail_mib":11265,"agent":"arifOS_bot"}
