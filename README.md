@@ -1,13 +1,13 @@
 <div align="center">
 
-<img src="./ariffazil.png" width="450px" alt="Arif Fazil - Architect Logo">
+# 🔴 arifOS Ecosystem: THE SOUL
 
-# 🌐 arifOS Ecosystem: THE SOUL
+> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) | **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
+> **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
+
 ### **The Human Anchor, Professional Surface, and Personal Genesis.**
 
 **[THE MIND (Theory)](https://github.com/ariffazil/arifOS)** &nbsp;·&nbsp; **[THE BODY (Execution)](https://github.com/ariffazil/arifosmcp)** &nbsp;·&nbsp; **[THE SOUL (Surface)](https://github.com/ariffazil/ariffazil)**
-
-*Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]*
 
 ---
 
