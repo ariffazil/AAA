@@ -1034,13 +1034,57 @@
             "maxTokens": 8192
           }
         ]
+      },
+      "kimi-coding": {
+        "baseUrl": "https://api.moonshot.cn/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "kimi-k2.5",
+            "name": "Kimi K2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 256000,
+            "maxTokens": 8192
+          }
+        ]
+      },
+      "opencode-go": {
+        "baseUrl": "https://opencode.ai/go/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "opencode/go",
+            "name": "OpenCode Go",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0.001,
+              "output": 0.001,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": 8192
+          }
+        ]
       }
     }
   },
   "agents": {
     "defaults": {
       "model": {
-        "primary": "openai-codex/gpt-5.1"
+        "primary": "minimax/MiniMax-Text-01"
       },
       "models": {
         "openrouter/openai/gpt-5.2-pro": {},
@@ -1113,13 +1157,28 @@
           "alias": "Opus"
         },
         "opencode/glm-4.7-free": {},
-        "opencode/minimax-m2.1-free": {}
+        "opencode/minimax-m2.1-free": {},
+        "kimi-coding/kimi-k2.5": {
+          "alias": "Kimi-K2.5"
+        },
+        "opencode-go/opencode/go": {
+          "alias": "OpenCode-Go"
+        }
       },
       "workspace": "/root",
       "elevatedDefault": "ask",
       "maxConcurrent": 4,
       "subagents": {
         "maxConcurrent": 8
+      },
+      "fallback_models": [
+        "minimax/MiniMax-Text-01",
+        "kimi-coding/kimi-k2.5",
+        "opencode-go/opencode/go"
+      ],
+      "retry": {
+        "on_failure": true,
+        "fallback_models": true
       }
     }
   },
