@@ -2,10 +2,6 @@
 	path = GEOX
 	url = https://github.com/ariffazil/GEOX.git
 
-[submodule "APEX-THEORY"]
-	path = APEX-THEORY
-	url = https://github.com/ariffazil/APEX-THEORY.git
-
 [submodule "arifOS"]
 	path = arifOS
 	url = https://github.com/ariffazil/arifOS.git
