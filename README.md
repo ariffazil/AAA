@@ -62,6 +62,48 @@ The **arifOS Ecosystem** is decentralized across three hubs of metabolism. We ca
 
 ---
 
+## 🦾 OpenClaw — My AI Agent Gateway
+
+**OpenClaw** is the bridge between human intent and machine execution in the arifOS ecosystem. It is how I safely deploy and interact with constitutional AI agents.
+
+### What is OpenClaw?
+
+Think of OpenClaw as a **secure control tower** for AI agents. Just as air traffic controllers ensure planes land safely, OpenClaw ensures AI agents operate within constitutional bounds—never exceeding authority, always verifying before acting, and maintaining full audit trails.
+
+### Key Principles
+
+| Principle | Human Meaning | Technical Implementation |
+|-----------|---------------|--------------------------|
+| **F1 Reversibility** | "Can this be undone?" | 888_HOLD pattern on irreversible actions |
+| **F2 Truth** | "Don't guess if you don't know" | τ ≥ 0.99 confidence threshold |
+| **F4 Entropy** | "Keep it simple" | Tables > lists > prose, ΔS ≤ 0 |
+| **F13 Sovereign Veto** | "I can always say no" | Human override on all elevated actions |
+
+### How I Use It
+
+```
+Human (Me) → Telegram → OpenClaw Gateway → arifOS MCP Kernel
+                                                    ↓
+                              Constitutional Enforcement (F1-F13)
+                                                    ↓
+                                        Agent Execution
+                                                    ↓
+                              GitHub Commit + Memory Archive
+```
+
+- **Telegram:** @AGI_ASI_bot — My primary interface
+- **Gateway:** Local VPS (srv1325122.hstgr.cloud:18789)
+- **Agent:** arifOS_bot running MiniMax M2.7 (1M context)
+- **Safety:** All irreversible actions require explicit approval
+
+### For Humans Visiting This Page
+
+If you're wondering "what does this have to do with geoscience?" — everything. The same discipline that prevents blowouts in offshore drilling (checklists, reversibility, human override) prevents AI accidents. **The rig doesn't drill without the driller's hand on the brake. OpenClaw is that brake.**
+
+🔗 **Explore the Workspace:** [github.com/ariffazil/waw](https://github.com/ariffazil/waw)
+
+---
+
 ## 📝 Writing & Thought
 
 Exploring the intersection of physics, philosophy, and the future of intelligence:
@@ -82,6 +124,7 @@ This portal is forged using a disciplined stack to ensure modularity, performanc
 - **Components:** Radix UI primitives and Shadcn/UI patterns.
 - **Persistence:** Integration-ready with arifOS Vault systems.
 - **Deployment:** Dockerized environment optimized for Railway and GitHub Actions.
+- **AI Gateway:** OpenClaw with constitutional enforcement (F1-F13).
 
 ---
 
