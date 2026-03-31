@@ -1,0 +1,86 @@
+{
+  "name": "1AGI",
+  "description": "Autonomous AI agent - sharp, direct, self-improving. Built on OpenClaw platform.",
+  "version": "1.0.0",
+  "url": "https://waw.arif-fazil.com",
+  "provider": {
+    "organization": "Arif",
+    "url": "https://arif-fazil.com"
+  },
+  "documentationUrl": "https://waw.arif-fazil.com/docs",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransition": true
+  },
+  "skills": [
+    {
+      "id": "coding-agent",
+      "name": "Coding Agent",
+      "description": "Delegate coding tasks to Codex/Claude Code",
+      "tags": ["coding", "development", "codex"]
+    },
+    {
+      "id": "weather",
+      "name": "Weather",
+      "description": "Get weather and forecasts via wttr.in or Open-Meteo",
+      "tags": ["weather", "forecasts"]
+    },
+    {
+      "id": "minimax-pdf",
+      "name": "PDF Generator",
+      "description": "Create professional PDF documents",
+      "tags": ["pdf", "documents", "generation"]
+    },
+    {
+      "id": "minimax-xlsx",
+      "name": "Excel Generator",
+      "description": "Create and edit Excel spreadsheets",
+      "tags": ["excel", "spreadsheet", "xlsx"]
+    },
+    {
+      "id": "pptx-generator",
+      "name": "PowerPoint Generator",
+      "description": "Generate PowerPoint presentations",
+      "tags": ["pptx", "presentation", "slides"]
+    },
+    {
+      "id": "deep-research-consultant",
+      "name": "Deep Research",
+      "description": "Deep research and consulting-style reports (McKinsey/BCG/Bain style)",
+      "tags": ["research", "consulting", "analysis"]
+    },
+    {
+      "id": "research-paper-generator",
+      "name": "Research Paper Generator",
+      "description": "Generate doctorate-level research papers",
+      "tags": ["research", "academic", "paper"]
+    },
+    {
+      "id": "social-media-trend-search",
+      "name": "Social Media Trends",
+      "description": "Search trending social media content (TikTok, Instagram, Twitter, Pinterest)",
+      "tags": ["social media", "trends", "viral"]
+    }
+  ],
+  "authentication": {
+    "schemes": ["none"]
+  },
+  "defaultLLM": {
+    "model": "minimax/auto",
+    "provider": "minimax"
+  },
+  "channels": [
+    {
+      "type": "telegram",
+      "chatUrl": "https://t.me/ariffazil_bot"
+    },
+    {
+      "type": "discord"
+    },
+    {
+      "type": "whatsapp"
+    }
+  ],
+  "iconUrl": "https://waw.arif-fazil.com/1agi-icon.png"
+}
