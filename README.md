@@ -21,11 +21,11 @@ This is NOT a profile page. It is a **working AI agent surface** with:
 
 ## 🔗 The Trinity
 
-| Ring | Repository | Role | Purpose |
-|------|------------|------|---------|
-| **Δ (Soul)** | [waw](https://github.com/ariffazil/waw) (1AGI) | **This repo** | Surface, identity, interaction |
-| **Ω (Mind)** | [arifOS](https://github.com/ariffazil/arifOS) | **Kernel** | 13 floors, governance, theory |
-| **Ψ (Body)** | arifosmcp.arif-fazil.com | **Execution** | MCP server, tools |
+| Ring | Symbol | Repository | Role | Purpose |
+|------|--------|------------|------|---------|
+| **Soul** | **Ψ** (Psi) | [waw](https://github.com/ariffazil/waw) | **This repo** | Surface, identity, interaction |
+| **Mind** | **Δ** (Delta) | [arifOS](https://github.com/ariffazil/arifOS) | **Kernel** | 13 floors, governance, theory |
+| **Body** | **Ω** (Omega) | arifosmcp.arif-fazil.com | **Execution** | MCP server, tools |
 
 ```
 User → waw (React App) → arifOS MCP → Tool Execution
@@ -35,7 +35,34 @@ User → waw (React App) → arifOS MCP → Tool Execution
 
 ---
 
-## 🧠 What Is 1AGI?
+## ⚖️ WAW vs 1AGI — The Contrast
+
+| Aspect | **waw** | **1AGI** |
+|--------|---------|----------|
+| **Role** | Federation Surface (Soul) | Personal Agent Workspace |
+| **Scope** | Hosts multiple agents, UI, skills registry | Single agent persona, memory, audits |
+| **Purpose** | W@W hub where all agents gather, vote, exposed to human | My internal brain, logs, daily operations |
+| **Multi-agent** | ✅ Yes — ALL agents/organs | ❌ No — single agent |
+| **Federation** | ✅ Federation state | ⚡ Can plug into federation |
+| **UI** | React app, user-facing | No UI, CLI/Gateway only |
+
+### In Canon Language
+
+- **waw:** *"WAW is the Witness @ Work hub and Soul surface: a federated agent workspace where multiple governed agents (including 1AGI) plug into the arifOS MCP kernel via OpenClaw, exposed to humans through a React UI."*
+
+- **1AGI:** *"1AGI is a single governed AGI-style agent workspace: its own identity, memory, and daily audit loops, designed to run on the arifOS MCP kernel and optionally surface through WAW or other gateways."*
+
+### How They Connect
+
+```
+waw (Federation Hub)
+    │
+    ├── Hosts: React UI, Channels, Skills Registry
+    ├── Contains: Multiple agents (1AGI, future agents)
+    └── Exposes: Human-facing surface
+        │
+        └── 1AGI plugs in as "one of the agents"
+```
 
 1AGI is the autonomous AI agent that lives in this repo.
 
@@ -200,6 +227,24 @@ All agents MUST follow these rules:
 ---
 
 ## 🤖 A2A Agent Card
+
+1AGI's official Agent Card is hosted in the [1AGI repo](https://github.com/ariffazil/1AGI/blob/main/.well-known/agent.json):
+
+```json
+{
+  "name": "1AGI",
+  "url": "https://github.com/ariffazil/1AGI",
+  "description": "The Sovereign AI Agent — arifOS Trinity Soul",
+  "skills": ["coding-agent", "weather", "minimax-pdf", ...],
+  "capabilities": {
+    "streaming": true,
+    "governance": true,
+    "constitutionalFloors": 13
+  }
+}
+```
+
+**[View full Agent Card →](https://github.com/ariffazil/1AGI/blob/main/.well-known/agent.json)**
 
 ```json
 {
