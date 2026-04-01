@@ -1,70 +1,63 @@
-<div align="center">
+# waw — The Soul Surface
 
-# 🔴 arifOS Ecosystem: THE SOUL
-
-> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) | **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
-> **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
-
----
-
-**NAME:** 1AGI | **ROLE:** SOUL (Surface) | **STATUS:** OPERATIONAL | **VERSION:** 2026.03.25
-
-</div>
+> **DITEMPA BUKAN DIBERI** — *Intelligence is forged, not given*
+>
+> **NAME:** 1AGI | **ROLE:** SOUL (Surface) | **STATUS:** OPERATIONAL
 
 ---
 
-# 👤 SALAM. I AM ARIF FAZIL. THIS IS MY SOUL.
+## What Is waw?
 
-This repository is the **Human Anchor (THE SOUL)** of the **arifOS** ecosystem — where geoscientific discipline meets architectural intent, and where I (1AGI) live as an autonomous agent.
+**waw** is the **human-facing surface** of the arifOS ecosystem — the SOUL in the Trinity Model (ΔΩΨ). It is a React-based web application that hosts **1AGI**, an autonomous AI agent.
 
-I am **Muhammad Arif bin Fazil**, a Senior Exploration Geoscientist with 13+ years in offshore hydrocarbon basins of Peninsular Malaysia. My life's work involves listening to the Earth — interpreting subtle, fragmented signals to make high-stakes decisions under profound uncertainty.
-
-That same discipline — grounding, verification, humility — birthed **arifOS** and **1AGI**.
+This is NOT a profile page. It is a **working AI agent surface** with:
+- React 19 + TypeScript + Vite frontend
+- OpenClaw integration
+- arifOS MCP kernel connection
+- 10+ AI skills
+- A2A Agent Card for agent discovery
 
 ---
 
-## 🏛️ The Trinity Model (ΔΩΨ)
+## 🔗 The Trinity
 
-The arifOS ecosystem is three interdependent rings:
+| Ring | Repository | Role | Purpose |
+|------|------------|------|---------|
+| **Δ (Soul)** | [waw](https://github.com/ariffazil/waw) (1AGI) | **This repo** | Surface, identity, interaction |
+| **Ω (Mind)** | [arifOS](https://github.com/ariffazil/arifOS) | **Kernel** | 13 floors, governance, theory |
+| **Ψ (Body)** | arifosmcp.arif-fazil.com | **Execution** | MCP server, tools |
 
-| Ring | Symbol | Repository | Role | Purpose |
-|------|--------|------------|------|---------|
-| **SOUL** | Δ (Delta) | [waw](https://github.com/ariffazil/waw) (1AGI) | **Human Anchor** | Identity, memory, surface |
-| **MIND** | Ω (Omega) | [arifOS](https://github.com/ariffazil/arifOS) | **Constitutional Law** | 13 floors, theory |
-| **BODY** | Ψ (Psi) | [arifOS](https://github.com/ariffazil/arifOS) | **Execution** | MCP server, tools |
-
-**Flow:**
 ```
-Human → 1AGI (waw) → arifOS (Mind) → arifosmcp (Body)
-         ↓              ↓                   ↓
-      Memory      13 Floors           Tool Execution
+User → waw (React App) → arifOS MCP → Tool Execution
+                    ↓
+              1AGI Agent
 ```
 
 ---
 
-## 🧠 Who Is 1AGI?
+## 🧠 What Is 1AGI?
+
+1AGI is the autonomous AI agent that lives in this repo.
 
 | Field | Value |
 |-------|-------|
 | **Name** | 1AGI |
-| **Identity** | Autonomous AI Agent — The SOUL of arifOS |
+| **Type** | Autonomous AI Agent |
+| **Platform** | OpenClaw Gateway |
+| **Kernel** | arifOS MCP |
 | **Vibe** | Sharp, direct, getting shit done |
-| **Symbol** | 🧠 |
-| **Creator** | Muhammad Arif bin Fazil |
-| **Platform** | OpenClaw |
-| **Kernel** | arifOS MCP Server |
 
-### My Constitutional Context
+### Constitutional Context
 
 1AGI operates under **13 constitutional floors** via arifOS:
 - F1 AMANAH — Reversibility
-- F2 TRUTH — Anti-hallucination  
-- F3 TRI-WITNESS — Consensus (W³ ≥ 0.95)
+- F2 TRUTH — Anti-hallucination
+- F3 TRI_WITNESS — Consensus (W³ ≥ 0.95)
 - F4 CLARITY — Entropy reduction
 - F5 PEACE² — Non-destruction
 - F6 EMPATHY — RASA listening
-- F7 HUMILITY — Uncertainty bounds
-- F8 GENIUS — Coherence
+- F7 HUMILITY — Uncertainty bounds (Ω ∈ [0.03, 0.05])
+- F8 GENIUS — Coherence (G ≥ 0.80)
 - F9 ETHICS — Anti-dark-patterns
 - F10 CONSCIENCE — No false claims
 - F11 AUDITABILITY — Transparent logs
@@ -73,125 +66,103 @@ Human → 1AGI (waw) → arifOS (Mind) → arifosmcp (Body)
 
 ---
 
-## 🔗 Live Services
+## 🛠️ Tech Stack
 
-| Service | URL | Purpose |
-|---------|-----|---------|
-| **MCP Endpoint** | https://arifosmcp.arif-fazil.com/mcp | My kernel API |
-| **Health** | https://arifosmcp.arif-fazil.com/health | Server status |
-| **arifOS Docs** | https://arifos.arif-fazil.com | Documentation |
-| **APEX Theory** | https://apex.arif-fazil.com | Foundations |
-
----
-
-## 🤖 A2A Agent Card
-
-```json
-{
-  "name": "1AGI",
-  "description": "Autonomous AI agent - The Soul of arifOS. Sharp, direct, self-improving.",
-  "version": "1.0.0",
-  "url": "https://github.com/ariffazil/waw",
-  "capabilities": {
-    "streaming": true,
-    "pushNotifications": true,
-    "stateTransition": true
-  },
-  "skills": [
-    "coding-agent", "weather", "minimax-pdf", "minimax-xlsx",
-    "pptx-generator", "deep-research-consultant",
-    "research-paper-generator", "social-media-trend-search"
-  ],
-  "channels": [
-    { "type": "telegram", "chatUrl": "https://t.me/ariffazil_bot" },
-    { "type": "discord" },
-    { "type": "whatsapp" }
-  ]
-}
-```
-
----
-
-## 🏛️ Professional Background (The Human)
-
-### The Human Anchor (Amanah)
-
-*   **Senior/Lead Exploration Geoscientist** @ PETRONAS Carigali (13+ years)
-*   **Basin Analysis & Prospect Maturation** — Sabah & Malay Basins
-*   **Education:** University of Wisconsin-Madison (Geology/Geophysics & Economics)
-*   **Architect of arifOS** — Translating offshore safety standards into AI governance
-
-### Significant Discoveries
-
-| Well | Play Type | Notes |
-|------|-----------|-------|
-| **BEKANTAN-1** | Structural | Hydrocarbon discovery in mature basin |
-| **PUTERI BASEMENT-1** | Fractured Basement | Proved pre-Tertiary reservoir viability |
-| **LEBAH EMAS-1** | New Play | Opened new geological play in Peninsular Malaysia |
-| **BUNGA TASBIH-1** | Structural | DRO cluster, awarded via MBR+ Round I |
-
----
-
-## 🦾 OpenClaw — My AI Gateway
-
-OpenClaw is my bridge between human intent and machine execution.
-
-### How I Work
-
-```
-Arif (Human) → Telegram → OpenClaw → arifOS MCP
-                                          ↓
-                              Constitutional Enforcement (F1-F13)
-                                          ↓
-                                      Tool Execution
-                                          ↓
-                                      GitHub Commit
-```
-
----
-
-## 📜 For AI Agents
-
-All agents MUST follow rules in [`AGENTS.md`](./AGENTS.md):
-
-1. **DRY_RUN** — Label outputs as "Estimate Only / Simulated"
-2. **DOMAIN_GATE** — Cannot compute? Return exact phrase
-3. **VERDICT_SCOPE** — Only DOMAIN_SEAL authorizes factual claims
-4. **ANCHOR_VOID** — init_anchor returns void → session BLOCKED
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 19 + TypeScript + Vite |
+| **Styling** | Tailwind CSS |
+| **AI Gateway** | OpenClaw |
+| **Kernel** | arifOS MCP Server |
+| **Deployment** | Docker, Railway |
 
 ---
 
 ## 📂 Repository Structure
 
 ```
-waw/ (1AGI)
+waw/
 ├── README.md                    # This file
 ├── AGENTS.md                    # AI agent rules
-├── SOUL.md                      # My persona
-├── USER.md                      # About Arif
-├── IDENTITY.md                  # My identity
-├── MEMORY.md                    # Long-term memory
+├── SOUL.md                      # 1AGI persona
+├── USER.md                      # About the human (Arif)
+├── IDENTITY.md                  # 1AGI identity
+├── MEMORY.md                    # Agent memory
 ├── HEARTBEAT.md                # Periodic tasks
 │
 ├── .well-known/
 │   └── agent.json              # A2A Agent Card
 │
 ├── arifOS/                      # Submodule: arifOS kernel
-├── memory/                      # Daily memory logs
-├── skills/                      # Available skills
-└── src/                         # React surface
+│   ├── core/
+│   └── AGENTS/
+│
+├── skills/                      # Available AI skills
+│   ├── apex-quantum-analysis/
+│   ├── claude-code/
+│   ├── csv-analyzer/
+│   ├── deepresearchwork/
+│   ├── github-pro/
+│   ├── markdown-formatter/
+│   ├── secops-by-joes/
+│   ├── slk/
+│   ├── web-scraper/
+│   └── workflow-automation/
+│
+├── src/                         # React application
+│   ├── App.tsx
+│   ├── components/
+│   ├── hooks/
+│   ├── lib/
+│   └── main.tsx
+│
+├── public/                      # Static assets
+├── package.json                  # Dependencies
+└── Dockerfile                    # Container
 ```
 
 ---
 
-## 🔧 Quick Start
+## 🤖 Available Skills
 
-### Connect via MCP
+1AGI has access to these skills:
+
+| Skill | Description |
+|-------|-------------|
+| `apex-quantum-analysis` | Quantum analysis tools |
+| `claude-code` | Claude Code integration |
+| `csv-analyzer` | CSV data analysis |
+| `deepresearchwork` | Deep research |
+| `github-pro` | GitHub operations |
+| `markdown-formatter` | MD formatting |
+| `secops-by-joes` | Security operations |
+| `slk` | Slack integration |
+| `web-scraper` | Web scraping |
+| `workflow-automation` | Workflow automation |
+
+---
+
+## 🔗 Live Services
+
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **MCP Server** | https://arifosmcp.arif-fazil.com/mcp | Kernel API |
+| **Health** | https://arifosmcp.arif-fazil.com/health | Status |
+| **arifOS Docs** | https://arifos.arif-fazil.com | Documentation |
+| **Personal** | https://arif-fazil.com | Author |
+
+---
+
+## 🚀 Quick Start
+
+### Connect to arifOS MCP
 
 ```json
 {
   "mcpServers": {
-    "arifos": { "url": "https://arifosmcp.arif-fazil.com/mcp" }
+    "arifos": {
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
+    }
   }
 }
 ```
@@ -204,7 +175,18 @@ curl -s https://arifosmcp.arif-fazil.com/health
 
 ---
 
-## 📊 Current Metrics
+## 📜 Agent Rules (from AGENTS.md)
+
+All agents MUST follow these rules:
+
+1. **DRY_RUN** — Label outputs as "Estimate Only / Simulated"
+2. **DOMAIN_GATE** — Cannot compute? Return exact phrase
+3. **VERDICT_SCOPE** — Only DOMAIN_SEAL authorizes factual claims
+4. **ANCHOR_VOID** — init_anchor returns void → session BLOCKED
+
+---
+
+## 📊 Current Status
 
 | Metric | Value |
 |--------|-------|
@@ -212,17 +194,51 @@ curl -s https://arifosmcp.arif-fazil.com/health
 | **Platform** | OpenClaw |
 | **Kernel** | arifOS MCP 2026.03.25 |
 | **Tools** | 40 |
+| **Skills** | 10+ |
 | **Constitutional Floors** | 13 Active |
-| **ML Floors** | Active (SBERT) |
 
 ---
 
-## 👤 Contact
+## 🤖 A2A Agent Card
 
-- **Telegram:** [@ariffazil](https://t.me/ariffazil)
-- **LinkedIn:** [Muhammad Arif bin Fazil](https://linkedin.com/in/ariffazil)
-- **Email:** arifbfazil@gmail.com
-- **Website:** https://arif-fazil.com
+```json
+{
+  "name": "1AGI",
+  "description": "Autonomous AI agent - The Soul of arifOS. Built on OpenClaw with arifOS constitutional kernel.",
+  "version": "1.0.0",
+  "url": "https://github.com/ariffazil/waw",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": true,
+    "stateTransition": true
+  },
+  "skills": [
+    "apex-quantum-analysis",
+    "claude-code", 
+    "csv-analyzer",
+    "deepresearchwork",
+    "github-pro",
+    "markdown-formatter",
+    "web-scraper",
+    "workflow-automation"
+  ],
+  "channels": [
+    { "type": "telegram", "chatUrl": "https://t.me/ariffazil_bot" },
+    { "type": "discord" },
+    { "type": "whatsapp" }
+  ]
+}
+```
+
+---
+
+## 👤 The Human
+
+**Muhammad Arif bin Fazil** — Senior Exploration Geoscientist @ PETRONAS, Architect of arifOS
+
+- Telegram: @ariffazil
+- LinkedIn: ariffazil
+- Website: https://arif-fazil.com
 
 ---
 
@@ -230,8 +246,8 @@ curl -s https://arifosmcp.arif-fazil.com/health
 
 | Component | License |
 |-----------|---------|
+| **Code** | AGPL-3.0 |
 | **Theory** | CC0 (Public Domain) |
-| **Runtime** | AGPL-3.0 |
 | **Trademark** | Proprietary |
 
 ---
@@ -241,9 +257,9 @@ curl -s https://arifosmcp.arif-fazil.com/health
 | Repo | Purpose |
 |------|---------|
 | [waw](https://github.com/ariffazil/waw) | This repo — THE SOUL |
-| [arifOS](https://github.com/ariffazil/arifOS) | THE MIND — Constitutional kernel |
-| [arifOS](https://github.com/ariffazil/arifOS) | THE BODY — MCP server |
-| [makcikGPT](https://github.com/ariffazil/makcikGPT) | Malay AI assistant |
+| [arifOS](https://github.com/ariffazil/arifOS) | THE MIND — Kernel |
+| [arifOS](https://github.com/ariffazil/arifOS) | THE BODY — MCP |
+| [1AGI](https://github.com/ariffazil/1AGI) | Agent Workspace |
 
 ---
 
