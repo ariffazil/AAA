@@ -1,1 +1,0 @@
-/root/SOUL.md

@@ -1,20 +1,16 @@
 {
-  "lastRun": "2026-04-01T09:51:00+08:00",
+  "lastRun": "2026-04-01T16:05:25Z",
   "status": "HEARTBEAT_OK",
   "checks": {
     "openclaw": "healthy",
-    "gateway": "running (pid 3405020)",
     "git": "synced",
-    "disk": "73%",
-    "memory": "normal (swap 67%)",
-    "telegram": "ok",
-    "symlinks": "intact"
+    "disk": "64%",
+    "memory": "10Gi avail, swap 1.8G"
   },
   "alerts": [],
   "notes": [
-    "swap at 67% - monitor",
-    "qmd index stats unavailable (non-critical)",
-    "VAULT999 not present - architecture may not be deployed"
-  ],
-  "nextIdleBuilder": null
+    "aaa.arif-fazil.com 403 FIXED",
+    "A2A Federation LIVE",
+    "QDF 0.517"
+  ]
 }
