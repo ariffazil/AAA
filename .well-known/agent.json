@@ -1,17 +1,30 @@
 {
   "name": "1AGI",
-  "description": "Autonomous AI agent - sharp, direct, self-improving. Built on OpenClaw platform.",
-  "version": "1.0.0",
+  "description": "The Sovereign AI Agent — arifOS Trinity Soul. Sharp, direct, self-improving. Built on OpenClaw with arifOS constitutional governance (13 floors). DITEMPA BUKAN DIBERI — Forged, Not Given.",
+  "version": "2026.04.01",
   "url": "https://waw.arif-fazil.com",
   "provider": {
-    "organization": "Arif",
+    "organization": "arifOS Trinity",
     "url": "https://arif-fazil.com"
   },
-  "documentationUrl": "https://waw.arif-fazil.com/docs",
+  "documentationUrl": "https://github.com/ariffazil/waw",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/mcp",
+      "protocolBinding": "MCP",
+      "protocolVersion": "2025-03-26",
+      "transport": "streamable-http"
+    }
+  ],
   "capabilities": {
     "streaming": true,
     "pushNotifications": true,
-    "stateTransition": true
+    "stateTransition": true,
+    "governance": true,
+    "humanInTheLoop": true,
+    "constitutionalFloors": 13,
+    "trinityRuntime": true,
+    "vault999": true
   },
   "skills": [
     {
@@ -27,13 +40,19 @@
       "tags": ["weather", "forecasts"]
     },
     {
-      "id": "minimax-pdf",
-      "name": "PDF Generator",
-      "description": "Create professional PDF documents",
-      "tags": ["pdf", "documents", "generation"]
+      "id": "deep-research",
+      "name": "Deep Research",
+      "description": "Deep research and consulting-style reports",
+      "tags": ["research", "consulting", "analysis"]
     },
     {
-      "id": "minimax-xlsx",
+      "id": "pdf-generator",
+      "name": "PDF Generator",
+      "description": "Create professional PDF documents",
+      "tags": ["pdf", "documents"]
+    },
+    {
+      "id": "excel-generator",
       "name": "Excel Generator",
       "description": "Create and edit Excel spreadsheets",
       "tags": ["excel", "spreadsheet", "xlsx"]
@@ -45,29 +64,23 @@
       "tags": ["pptx", "presentation", "slides"]
     },
     {
-      "id": "deep-research-consultant",
-      "name": "Deep Research",
-      "description": "Deep research and consulting-style reports (McKinsey/BCG/Bain style)",
-      "tags": ["research", "consulting", "analysis"]
+      "id": "arifOS-governed-reasoning",
+      "name": "Governed Reasoning",
+      "description": "Constitutional reasoning via arifOS MCP — F1-F13 enforced",
+      "tags": ["arifOS", "governance", "reasoning", "constitutional"]
     },
     {
-      "id": "research-paper-generator",
-      "name": "Research Paper Generator",
-      "description": "Generate doctorate-level research papers",
-      "tags": ["research", "academic", "paper"]
-    },
-    {
-      "id": "social-media-trend-search",
+      "id": "social-media-trends",
       "name": "Social Media Trends",
-      "description": "Search trending social media content (TikTok, Instagram, Twitter, Pinterest)",
+      "description": "Search trending social media content",
       "tags": ["social media", "trends", "viral"]
     }
   ],
   "authentication": {
-    "schemes": ["none"]
+    "schemes": ["bearer", "api-key"]
   },
   "defaultLLM": {
-    "model": "minimax/auto",
+    "model": "minimax/MiniMax-M2.7",
     "provider": "minimax"
   },
   "channels": [
@@ -80,6 +93,41 @@
     },
     {
       "type": "whatsapp"
+    }
+  ],
+  "architecture": {
+    "layer": "SOUL",
+    "trinity": "Ring 1 — The Soul (Workspace & Federation)",
+    "mindRepo": "https://github.com/ariffazil/arifOS",
+    "bodyRepo": "https://github.com/ariffazil/arifosmcp",
+    "constitutionalKernel": "https://aaa.arif-fazil.com/mcp",
+    "theoryDocs": "https://apex.arif-fazil.com",
+    "humanSovereign": "https://arif-fazil.com"
+  },
+  "trinityAgents": [
+    {
+      "role": "A-ARCHITECT",
+      "symbol": "Δ",
+      "name": "System Architect",
+      "url": "https://github.com/ariffazil/arifOS/blob/main/AGENTS/A-ARCHITECT.md"
+    },
+    {
+      "role": "A-ENGINEER",
+      "symbol": "Ω",
+      "name": "Code Engineer",
+      "url": "https://github.com/ariffazil/arifOS/blob/main/AGENTS/A-ENGINEER.md"
+    },
+    {
+      "role": "A-AUDITOR",
+      "symbol": "888",
+      "name": "Constitutional Auditor",
+      "url": "https://github.com/ariffazil/arifOS/blob/main/AGENTS/A-AUDITOR.md"
+    },
+    {
+      "role": "A-VALIDATOR",
+      "symbol": "999",
+      "name": "Seal Authority",
+      "url": "https://github.com/ariffazil/arifOS/blob/main/AGENTS/A-VALIDATOR.md"
     }
   ],
   "iconUrl": "https://waw.arif-fazil.com/1agi-icon.png"
