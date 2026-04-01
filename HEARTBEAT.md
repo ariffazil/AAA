@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/HEARTBEAT.md
+/root/HEARTBEAT.md

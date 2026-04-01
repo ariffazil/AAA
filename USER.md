@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/USER.md
+/root/USER.md

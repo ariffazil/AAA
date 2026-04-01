@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/IDENTITY.md
+/root/IDENTITY.md

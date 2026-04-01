@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/BOOT.md
+/root/BOOTSTRAP.md

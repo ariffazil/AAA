@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/AGENTS.md
+/root/AGENTS.md

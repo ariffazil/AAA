@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/MEMORY.md
+/root/waw/memory/MEMORY.md
