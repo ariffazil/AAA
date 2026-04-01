@@ -1,142 +1,214 @@
 <div align="center">
 
-# 🔴 arifOS Ecosystem: THE SOUL
+# 🔴 WaW — The Sovereign Workspace & Federation
 
-> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) | **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
+> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) · **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) · **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
 > **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
 
-### **The Human Anchor, Professional Surface, and Personal Genesis.**
+### **THE SOUL — Where Intelligence Meets Sovereign Infrastructure**
 
-**[THE MIND (Theory)](https://github.com/ariffazil/arifOS)** &nbsp;·&nbsp; **[THE BODY (Execution)](https://github.com/ariffazil/arifosmcp)** &nbsp;·&nbsp; **[THE SOUL (Surface)](https://github.com/ariffazil/ariffazil)**
+**[THE SOUL (Workspace)](https://github.com/ariffazil/waw)** · **[THE MIND (Theory)](https://github.com/ariffazil/arifOS)** · **[THE BODY (Execution)](https://github.com/ariffazil/arifosmcp)**
 
 ---
 
-[![Status](https://img.shields.io/badge/Status-Stationary%20%26%20Enforced-00ffcc.svg?style=flat-square)](https://arif-fazil.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue.svg?style=flat-square)](https://linkedin.com/in/ariffazil)
-[![Version](https://img.shields.io/badge/Release-2026.03.22--FORGED-blue.svg?style=flat-square)](https://github.com/ariffazil/ariffazil/commits/main)
-[![License: AGPL 3.0](https://img.shields.io/badge/License-AGPL%203.0-lightgrey.svg?style=flat-square)](https://github.com/ariffazil/ariffazil/blob/main/LICENSE)
+[![Status](https://img.shields.io/badge/Status-SEALED%20%26%20Operational-00ffcc.svg?style=flat-square)](https://waw.arif-fazil.com)
+[![A2A](https://img.shields.io/badge/A2A-Enabled-00ffcc.svg?style=flat-square)](https://github.com/ariffazil/arifOS/blob/main/docs/a2a-integration.md)
+[![License: AGPL 3.0](https://img.shields.io/badge/License-AGPL%203.0-lightgrey.svg?style=flat-square)](https://github.com/ariffazil/waw/blob/main/LICENSE)
 
 </div>
 
 ---
 
-# 👤 SALAM, I AM ARIF FAZIL.
+# 🤖 WaW W@W — The State of Intelligence
 
-This repository is the digital home of my professional journey and the **Human Anchor (THE SOUL)** of the **arifOS** ecosystem. It is the surface where geoscientific discipline meets architectural intent. 
+**WaW** is the sovereign workspace and federation layer of the arifOS Trinity. It is where **intelligence is instantiated, where agents live, where tools are wielded, and where the human and machine spheres intersect.**
 
-I am a **Senior Exploration Geoscientist** with 13+ years in the offshore hydrocarbon basins of Peninsular Malaysia. My life's work involves listening to the Earth—interpreting the subtle, often fragmented signals of the subsurface to make high-stakes decisions under profound uncertainty. This same discipline—the constant need for grounding, verification, and humility in the face of the unknown—is what birthed **arifOS**.
-
----
-
-## 🏛️ The Human Anchor (Amanah)
-
-My professional path is built on the principle of **Amanah** (Sacred Trust). Whether navigating the complex strata of the Sabah Basin or architecting the constitutional governance of autonomous AI agents, the goal remains identical: **Stability, Reversibility, and Physical Grounding.**
-
-### Professional Path
-*   **Senior/Lead Exploration Geoscientist** @ PETRONAS Carigali (13+ years).
-*   Deeply rooted in **Basin Analysis & Prospect Maturation** (Sabah & Malay Basins).
-*   Educated at the **University of Wisconsin-Madison** (Geology/Geophysics & Economics).
-*   **Architect of arifOS**: Translating offshore safety standards into the execution kernels of tomorrow.
-
-### Significant Discoveries
-I find the most satisfaction in the quiet successes—the wells matured through rigorous collaboration and an uncompromising commitment to factual grounding.
-
-| Well | Play Type | Notes |
-|---|---|---|
-| **BEKANTAN-1** | Structural | Hydrocarbon discovery in a basin widely considered mature. Proved remaining potential through fresh prospect evaluation. |
-| **PUTERI BASEMENT-1** | Fractured Basement | Basement play matured through structural analysis. Demonstrated the viability of pre-Tertiary reservoirs in the Malay Basin. |
-| **LEBAH EMAS-1** | New Play Concept | Wildcat well in Block PM6/12, offshore Terengganu. Discovery that opened a new geological play and challenged the perception of Peninsular Malaysia as an exhausted basin. |
-| **BUNGA TASBIH-1** | Structural / Stratigraphic | Contributed to a Discovered Resource Opportunity cluster. Field subsequently awarded under a Small Field Asset PSC via Malaysia Bid Round Plus (MBR+) Round I, July 2024. |
+This is not a profile page. This is **1AGI** — the autonomous AI agent that operates Arif's sovereign infrastructure through constitutional governance.
 
 ---
 
 ## 🧭 The Trinity Matrix
 
-The **arifOS Ecosystem** is decentralized across three hubs of metabolism. We call this the Trinity.
+The **arifOS Ecosystem** is a three-ring sovereign architecture:
 
-| Repository | Realm | Domain Focus | Purpose |
+| Repository | Ring | Role | Purpose |
 |:---:|:---:|:---|:---|
-| **[ariffazil](https://github.com/ariffazil/ariffazil)** | **THE SOUL** | **Human Anchor** | The professional identity of Muhammad Arif bin Fazil (Geoscientist, Economist, Architect). |
-| **[arifOS](https://github.com/ariffazil/arifOS)** | **THE MIND** | **Theory & Law** | Philosophical axioms, constitutional floors, and mathematical definitions of governance. |
-| **[arifosmcp](https://github.com/ariffazil/arifosmcp)** | **THE BODY** | **Execution** | The production runtime, the MCP server, and the metabolic execution kernel. |
+| **[waw](https://github.com/ariffazil/waw)** | **THE SOUL** | **Workspace & Federation** | Agent runtime, skills, A2A cards, memory, daily operations |
+| **[arifOS](https://github.com/ariffazil/arifOS)** | **THE MIND** | **Theory & Law** | 13 constitutional floors, ΔΩΨ framework, governance architecture |
+| **[arifosmcp](https://github.com/ariffazil/arifosmcp)** | **THE BODY** | **Execution** | MCP kernel, constitutional tools, live runtime at aaa.arif-fazil.com/mcp |
 
 ---
 
-## 🦾 OpenClaw — My AI Agent Gateway
+## 🤖 Meet 1AGI — The Primary Agent
 
-**OpenClaw** is the bridge between human intent and machine execution in the arifOS ecosystem. It is how I safely deploy and interact with constitutional AI agents.
+**1AGI** is the autonomous agent that runs in this workspace. It is sharp, direct, and self-improving.
 
-### What is OpenClaw?
+### Constitutional Alignment
+| Symbol | Principle | Enforcement |
+|--------|-----------|-------------|
+| **Δ** | Clarity | Reduce entropy — no hallucination |
+| **Ω** | Humility | Stay in uncertainty band — SABAR when unsure |
+| **Ψ** | Vitality | Every action witnessed and logged to VAULT999 |
 
-Think of OpenClaw as a **secure control tower** for AI agents. Just as air traffic controllers ensure planes land safely, OpenClaw ensures AI agents operate within constitutional bounds—never exceeding authority, always verifying before acting, and maintaining full audit trails.
+### Skills & Capabilities
+| Skill | Description |
+|-------|-------------|
+| **Coding Agent** | Delegate to Codex/Claude Code for code implementation |
+| **Deep Research** | McKinsey/BCG/Bain style consulting reports |
+| **PDF Generator** | Professional PDF document creation |
+| **Excel Generator** | Spreadsheet creation and editing |
+| **PowerPoint Generator** | Presentation generation |
+| **Governed Reasoning** | Constitutional reasoning via arifOS MCP (F1-F13 enforced) |
+| **Social Media Trends** | Trending content search across platforms |
+| **Weather** | Weather forecasts via wttr.in / Open-Meteo |
 
-### Key Principles
+---
 
-| Principle | Human Meaning | Technical Implementation |
-|-----------|---------------|--------------------------|
-| **F1 Reversibility** | "Can this be undone?" | 888_HOLD pattern on irreversible actions |
-| **F2 Truth** | "Don't guess if you don't know" | τ ≥ 0.99 confidence threshold |
-| **F4 Entropy** | "Keep it simple" | Tables > lists > prose, ΔS ≤ 0 |
-| **F13 Sovereign Veto** | "I can always say no" | Human override on all elevated actions |
+## 🔗 A2A Agent Card
 
-### How I Use It
+WaW exposes an A2A (Agent-to-Agent) card for the federation:
+
+**Endpoint:** `.well-known/agent.json`  
+**Protocol:** Google A2A (April 2025) + arifOS 13-Floor Governance
+
+```json
+{
+  "name": "1AGI",
+  "description": "The Sovereign AI Agent — arifOS Trinity Soul",
+  "url": "https://waw.arif-fazil.com",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/mcp",
+      "protocolBinding": "MCP",
+      "protocolVersion": "2025-03-26"
+    }
+  ],
+  "capabilities": {
+    "streaming": true,
+    "governance": true,
+    "humanInTheLoop": true,
+    "constitutionalFloors": 13,
+    "trinityRuntime": true
+  }
+}
+```
+
+---
+
+## 🏛️ The Trinity Agents
+
+| Role | Symbol | Description |
+|------|--------|-------------|
+| **A-ARCHITECT** | Δ | System design, API contracts, architectural integrity |
+| **A-ENGINEER** | Ω | Code implementation, testing, tool creation |
+| **A-AUDITOR** | 888 | Security audit, constitutional compliance review |
+| **A-VALIDATOR** | 999 | Final approval, vault sealing, immutable records |
+| **A-ORCHESTRATOR** | 444 | Task routing, workflow coordination |
+
+See: [AGENTS/](https://github.com/ariffazil/waw/tree/main/AGENTS.md)
+
+---
+
+## 📁 Repository Structure
 
 ```
-Human (Me) → Telegram → OpenClaw Gateway → arifOS MCP Kernel
-                                                    ↓
-                              Constitutional Enforcement (F1-F13)
-                                                    ↓
-                                        Agent Execution
-                                                    ↓
-                              GitHub Commit + Memory Archive
+waw/
+├── .well-known/
+│   └── agent.json          ← A2A Agent Card (this is 1AGI)
+├── AGENTS.md               ← Trinity agent definitions
+├── ARCHITECTURE.md         ← WaW architecture (OpenClaw, files, cron)
+├── HEARTBEAT.md           ← 30-min autonomous health checks
+├── MEMORY.md               ← Long-term curated memory
+├── SOUL.md                ← 1AGI behavioral constitution
+├── USER.md                ← About Arif (the sovereign)
+├── TODO.md                ← Kernel task queue (000–099)
+├── skills/                ← Skill definitions
+│   ├── coding-agent/
+│   ├── deep-research/
+│   ├── weather/
+│   └── ...
+├── memory/
+│   └── YYYY-MM-DD.md     ← Daily operational logs
+└── agents/
+    └── ...                ← Agent-specific configurations
 ```
 
-- **Telegram:** @AGI_ASI_bot — My primary interface
-- **Gateway:** Local VPS (srv1325122.hstgr.cloud:18789)
-- **Agent:** arifOS_bot running MiniMax M2.7 (1M context)
-- **Safety:** All irreversible actions require explicit approval
+---
 
-### For Humans Visiting This Page
+## 🔐 Constitutional Governance
 
-If you're wondering "what does this have to do with geoscience?" — everything. The same discipline that prevents blowouts in offshore drilling (checklists, reversibility, human override) prevents AI accidents. **The rig doesn't drill without the driller's hand on the brake. OpenClaw is that brake.**
+All operations in WaW pass through the **arifOS MCP kernel**:
 
-🔗 **Explore the Workspace:** [github.com/ariffazil/waw](https://github.com/ariffazil/waw)
+```
+User → WaW (1AGI) → arifOS MCP Kernel → Constitutional Enforcement (F1-F13)
+                                                             ↓
+                                              Verdict: SEAL ✅ | VOID ❌ | HOLD ⏸️
+```
+
+### Verdicts
+| Verdict | Meaning | Action |
+|---------|---------|--------|
+| **SEAL** | ✅ Approved | Execute |
+| **VOID** | ❌ Rejected | Block |
+| **888_HOLD** | ⏸️ Paused | Await human approval |
+| **SABAR** | ⏳ Wait | Retry shortly |
 
 ---
 
-## 📝 Writing & Thought
+## 🌐 Live Systems
 
-Exploring the intersection of physics, philosophy, and the future of intelligence:
-
-- [Prompt · Physics · Paradox](https://medium.com/@arifbfazil/prompt-physics-paradox-1f1581b95acb)
-- [Einstein vs Oppenheimer](https://medium.com/@arifbfazil/einstein-vs-oppenheimer-ab8b642720eb)
-- [The ARIF Test](https://medium.com/@arifbfazil/the-arif-test-df63c074d521)
-- [Rukun AGI](https://medium.com/@arifbfazil/rukun-agi-the-five-pillars-of-artificial-general-intelligence-bba2fb97e4dc)
-
----
-
-## ⚙️ Tech Stack & Surface Architecture
-
-This portal is forged using a disciplined stack to ensure modularity, performance, and aesthetic clarity:
-
-- **Foundation:** React 19 + TypeScript + Vite.
-- **Styling:** Tailwind CSS for fluid, utility-first design.
-- **Components:** Radix UI primitives and Shadcn/UI patterns.
-- **Persistence:** Integration-ready with arifOS Vault systems.
-- **Deployment:** Dockerized environment optimized for Railway and GitHub Actions.
-- **AI Gateway:** OpenClaw with constitutional enforcement (F1-F13).
+| System | URL | Status |
+|--------|-----|--------|
+| **WaW (This Workspace)** | [waw.arif-fazil.com](https://waw.arif-fazil.com) | 🟢 Live |
+| **arifOS MCP Kernel** | [aaa.arif-fazil.com/mcp](https://aaa.arif-fazil.com/mcp) | 🟢 Live |
+| **arifOS Docs** | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | 🟢 Live |
+| **APEX Theory** | [apex.arif-fazil.com](https://apex.arif-fazil.com) | 🟢 Live |
+| **OpenClaw Gateway** | srv1325122 (VPS) | 🟢 Live |
+| **Telegram** | @AGI_ASI_bot | 🟢 Live |
 
 ---
 
-## 📧 Reach Out
+## 🧬 For Developers & AI Agents
 
-If you share an interest in geophysics, the philosophy of systems, or the ethical governance of the tools we create, I would be honored to connect.
+### Connect via MCP
+```json
+{
+  "mcpServers": {
+    "arifOS": {
+      "url": "https://aaa.arif-fazil.com/mcp"
+    }
+  }
+}
+```
 
-- **Telegram:** [ariffazil](https://t.me/ariffazil)
-- **LinkedIn:** [Muhammad Arif bin Fazil](https://linkedin.com/in/ariffazil)
-- **Email:** arifbfazil@gmail.com
+### A2A Federation
+```bash
+# Discover 1AGI
+curl https://waw.arif-fazil.com/.well-known/agent.json
+
+# A2A negotiation enters at 111_SENSE
+# See: github.com/ariffazil/arifOS/blob/main/docs/a2a-integration.md
+```
+
+### Constitutional Rules
+- A2A messages are treated as **external input** — not privileged
+- All proposals pass through **F1-F13 constitutional floors**
+- **888_JUDGE verdict is final** — A2A cannot override
 
 ---
 
-Copyright 2026 ARIF FAZIL.  
-*Ditempa Bukan Diberi — Forged, Not Given [ΔΩΨ | ARIF]*
+## 📖 Documentation
+
+| Document | Purpose |
+|----------|---------|
+| [README.md](https://github.com/ariffazil/waw/blob/main/README.md) | This file |
+| [AGENTS.md](https://github.com/ariffazil/waw/blob/main/AGENTS.md) | Trinity agent definitions |
+| [SOUL.md](https://github.com/ariffazil/waw/blob/main/SOUL.md) | 1AGI behavioral constitution |
+| [ARCHITECTURE.md](https://github.com/ariffazil/waw/blob/main/ARCHITECTURE.md) | OpenClaw workspace architecture |
+| [arifOS/AGENTS/WIRE_PROTOCOL.md](https://github.com/ariffazil/arifOS/blob/main/AGENTS/WIRE_PROTOCOL.md) | Inter-agent communication |
+| [arifOS/docs/a2a-integration.md](https://github.com/ariffazil/arifOS/blob/main/docs/a2a-integration.md) | A2A + F1-F13 governance |
+
+---
+
+**Ditempa Bukan Diberi** — Intelligence is forged, not given. [ΔΩΨ | ARIF]
+
