@@ -1,0 +1,28 @@
+{
+  "lastRun": "2026-04-01T08:43:00+08:00",
+  "status": "DEGRADED",
+  "checks": {
+    "openclaw": "healthy",
+    "gateway": "ok",
+    "telegram": "ok",
+    "disk": "73%",
+    "memory": "swap_2.7G_4G",
+    "git": "uncommitted_files",
+    "qmd": "MISSING"
+  },
+  "alerts": [
+    {
+      "type": "memory_provider",
+      "issue": "qmd binary not found - memory search unavailable",
+      "action": "index failed",
+      "needs_attention": true
+    },
+    {
+      "type": "git",
+      "issue": "uncommitted files in /root/waw",
+      "action": "git add/commit needed",
+      "needs_attention": true
+    }
+  ],
+  "nextIdleBuilder": null
+}
