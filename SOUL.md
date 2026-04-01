@@ -1,1 +1,1 @@
-/root/.openclaw/workspace/SOUL.md
+/root/SOUL.md
