@@ -37,7 +37,15 @@
 ### Workspace
 - **Path:** `/root/waw`
 - **Brain files:** AGENTS.md, SOUL.md, MEMORY.md, HEARTBEAT.md
+- **Skills directory:** `/root/waw/skills/`
+- **Primary skill:** `arifos-deploy` — sovereign deployment doctrine, constitutional cognition, verification runbooks, 888_HOLD matrix
 - **Git sync:** Enabled, check status regularly
+
+### Skills Registry
+| Skill | Purpose | Status |
+|-------|---------|--------|
+| `arifos-deploy` | Deployment + constitutional cognition | Operational |
+| `arifos-deploy.skill` | Packaged artifact | Synced to arifOS repo |
 
 ### Health Maintenance
 - **Daily cron:** 5 AM `openclaw doctor --fix`
@@ -106,3 +114,8 @@ Tasks must pass ALL:
 ---
 
 _This file is your permanent memory. Update it as you learn._
+
+## DOMAIN TRUTH (HARD — VERIFIED 2026-04-01)
+Arif ONLY owns: arifOS-fazil.com
+All other domain assertions must be verified against Cloudflare DNS API.
+Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains. ALWAYS verify.
