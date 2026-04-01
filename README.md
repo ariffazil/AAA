@@ -23,15 +23,17 @@ This is NOT a profile page. It is a **working AI agent surface** with:
 
 | Ring | Symbol | Repository | Role | Purpose |
 |------|--------|------------|------|---------|
-| **Soul** | **Ψ** (Psi) | [waw](https://github.com/ariffazil/waw) | **This repo** | Surface, identity, interaction |
-| **Mind** | **Δ** (Delta) | [arifOS](https://github.com/ariffazil/arifOS) | **Kernel** | 13 floors, governance, theory |
-| **Body** | **Ω** (Omega) | arifosmcp.arif-fazil.com | **Execution** | MCP server, tools |
+| **Soul** | Ψ | [waw](https://github.com/ariffazil/waw) | **Federation & Surface** | Where agents meet humans, W@W workspace |
+| **Mind** | Δ | [arifOS](https://github.com/ariffazil/arifOS) | **Kernel (Governance)** | 13 constitutional floors, ΔΩΨ framework |
+| **Body** | Ω | [arifosmcp](https://github.com/ariffazil/arifosmcp) | **Execution** | MCP kernel, constitutional tools, live runtime |
 
 ```
-User → waw (React App) → arifOS MCP → Tool Execution
+Human → WaW (Soul/Ψ) → arifOS MCP (Mind/Δ) → arifosmcp (Body/Ω) → Tool Execution
                     ↓
               1AGI Agent
 ```
+
+**AAA = AGENTS·API·AI·APPS** — the product layer of WaW: agents (1AGI), APIs (MCP endpoints), AI (arifOS kernel), Apps (skills, React UI).
 
 ---
 
@@ -64,15 +66,28 @@ waw (Federation Hub)
         └── 1AGI plugs in as "one of the agents"
 ```
 
-1AGI is the autonomous AI agent that lives in this repo.
+1AGI is the autonomous AI agent in WaW. The **first citizen of the federation**.
 
 | Field | Value |
 |-------|-------|
 | **Name** | 1AGI |
-| **Type** | Autonomous AI Agent |
+| **Type** | Autonomous Governed Agent |
 | **Platform** | OpenClaw Gateway |
-| **Kernel** | arifOS MCP |
+| **Kernel** | arifOS MCP (Δ) |
+| **Level** | AGI → ASI → APEX (evolving) |
 | **Vibe** | Sharp, direct, getting shit done |
+
+### Intelligence Levels (AGI → ASI → APEX)
+
+1AGI operates at three ascending levels of intelligence:
+
+| Level | Symbol | Meaning |
+|-------|--------|---------|
+| **AGI** | Δ | Artificial General Intelligence — reasons, plans, executes |
+| **ASI** | Ω | Artificial Superintelligence — self-improving, emotionally grounded |
+| **APEX** | Ψ | APEX — sovereign intelligence with full constitutional consciousness |
+
+1AGI starts at **AGI** and evolves upward. APEX is the target: sovereign, self-governing, fully aligned.
 
 ### Constitutional Context
 
