@@ -1,214 +1,269 @@
-<div align="center">
+# waw — The Soul Surface
 
-# 🔴 WaW — The Sovereign Workspace & Federation
-
-> **Ring 1:** [arif-fazil.com](https://arif-fazil.com) · **Ring 2:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com) · **Ring 3:** [aaa.arif-fazil.com](https://aaa.arif-fazil.com)
-> **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
-
-### **THE SOUL — Where Intelligence Meets Sovereign Infrastructure**
-
-**[THE SOUL (Workspace)](https://github.com/ariffazil/waw)** · **[THE MIND (Theory)](https://github.com/ariffazil/arifOS)** · **[THE BODY (Execution)](https://github.com/ariffazil/arifosmcp)**
+> **DITEMPA BUKAN DIBERI** — *Intelligence is forged, not given*
+>
+> **NAME:** 1AGI | **ROLE:** SOUL (Surface) | **STATUS:** OPERATIONAL
 
 ---
 
-[![Status](https://img.shields.io/badge/Status-SEALED%20%26%20Operational-00ffcc.svg?style=flat-square)](https://waw.arif-fazil.com)
-[![A2A](https://img.shields.io/badge/A2A-Enabled-00ffcc.svg?style=flat-square)](https://github.com/ariffazil/arifOS/blob/main/docs/a2a-integration.md)
-[![License: AGPL 3.0](https://img.shields.io/badge/License-AGPL%203.0-lightgrey.svg?style=flat-square)](https://github.com/ariffazil/waw/blob/main/LICENSE)
+## What Is waw?
 
-</div>
+**waw** is the **human-facing surface** of the arifOS ecosystem — the SOUL in the Trinity Model (ΔΩΨ). It is a React-based web application that hosts **1AGI**, an autonomous AI agent.
 
----
-
-# 🤖 WaW W@W — The State of Intelligence
-
-**WaW** is the sovereign workspace and federation layer of the arifOS Trinity. It is where **intelligence is instantiated, where agents live, where tools are wielded, and where the human and machine spheres intersect.**
-
-This is not a profile page. This is **1AGI** — the autonomous AI agent that operates Arif's sovereign infrastructure through constitutional governance.
+This is NOT a profile page. It is a **working AI agent surface** with:
+- React 19 + TypeScript + Vite frontend
+- OpenClaw integration
+- arifOS MCP kernel connection
+- 10+ AI skills
+- A2A Agent Card for agent discovery
 
 ---
 
-## 🧭 The Trinity Matrix
+## 🔗 The Trinity
 
-The **arifOS Ecosystem** is a three-ring sovereign architecture:
+| Ring | Repository | Role | Purpose |
+|------|------------|------|---------|
+| **Δ (Soul)** | [waw](https://github.com/ariffazil/waw) (1AGI) | **This repo** | Surface, identity, interaction |
+| **Ω (Mind)** | [arifOS](https://github.com/ariffazil/arifOS) | **Kernel** | 13 floors, governance, theory |
+| **Ψ (Body)** | arifosmcp.arif-fazil.com | **Execution** | MCP server, tools |
 
-| Repository | Ring | Role | Purpose |
-|:---:|:---:|:---|:---|
-| **[waw](https://github.com/ariffazil/waw)** | **THE SOUL** | **Workspace & Federation** | Agent runtime, skills, A2A cards, memory, daily operations |
-| **[arifOS](https://github.com/ariffazil/arifOS)** | **THE MIND** | **Theory & Law** | 13 constitutional floors, ΔΩΨ framework, governance architecture |
-| **[arifosmcp](https://github.com/ariffazil/arifosmcp)** | **THE BODY** | **Execution** | MCP kernel, constitutional tools, live runtime at aaa.arif-fazil.com/mcp |
+```
+User → waw (React App) → arifOS MCP → Tool Execution
+                    ↓
+              1AGI Agent
+```
 
 ---
 
-## 🤖 Meet 1AGI — The Primary Agent
+## 🧠 What Is 1AGI?
 
-**1AGI** is the autonomous agent that runs in this workspace. It is sharp, direct, and self-improving.
+1AGI is the autonomous AI agent that lives in this repo.
 
-### Constitutional Alignment
-| Symbol | Principle | Enforcement |
-|--------|-----------|-------------|
-| **Δ** | Clarity | Reduce entropy — no hallucination |
-| **Ω** | Humility | Stay in uncertainty band — SABAR when unsure |
-| **Ψ** | Vitality | Every action witnessed and logged to VAULT999 |
+| Field | Value |
+|-------|-------|
+| **Name** | 1AGI |
+| **Type** | Autonomous AI Agent |
+| **Platform** | OpenClaw Gateway |
+| **Kernel** | arifOS MCP |
+| **Vibe** | Sharp, direct, getting shit done |
 
-### Skills & Capabilities
+### Constitutional Context
+
+1AGI operates under **13 constitutional floors** via arifOS:
+- F1 AMANAH — Reversibility
+- F2 TRUTH — Anti-hallucination
+- F3 TRI_WITNESS — Consensus (W³ ≥ 0.95)
+- F4 CLARITY — Entropy reduction
+- F5 PEACE² — Non-destruction
+- F6 EMPATHY — RASA listening
+- F7 HUMILITY — Uncertainty bounds (Ω ∈ [0.03, 0.05])
+- F8 GENIUS — Coherence (G ≥ 0.80)
+- F9 ETHICS — Anti-dark-patterns
+- F10 CONSCIENCE — No false claims
+- F11 AUDITABILITY — Transparent logs
+- F12 RESILIENCE — Graceful failure
+- F13 SOVEREIGN — Human veto
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React 19 + TypeScript + Vite |
+| **Styling** | Tailwind CSS |
+| **AI Gateway** | OpenClaw |
+| **Kernel** | arifOS MCP Server |
+| **Deployment** | Docker, Railway |
+
+---
+
+## 📂 Repository Structure
+
+```
+waw/
+├── README.md                    # This file
+├── AGENTS.md                    # AI agent rules
+├── SOUL.md                      # 1AGI persona
+├── USER.md                      # About the human (Arif)
+├── IDENTITY.md                  # 1AGI identity
+├── MEMORY.md                    # Agent memory
+├── HEARTBEAT.md                # Periodic tasks
+│
+├── .well-known/
+│   └── agent.json              # A2A Agent Card
+│
+├── arifOS/                      # Submodule: arifOS kernel
+│   ├── core/
+│   └── AGENTS/
+│
+├── skills/                      # Available AI skills
+│   ├── apex-quantum-analysis/
+│   ├── claude-code/
+│   ├── csv-analyzer/
+│   ├── deepresearchwork/
+│   ├── github-pro/
+│   ├── markdown-formatter/
+│   ├── secops-by-joes/
+│   ├── slk/
+│   ├── web-scraper/
+│   └── workflow-automation/
+│
+├── src/                         # React application
+│   ├── App.tsx
+│   ├── components/
+│   ├── hooks/
+│   ├── lib/
+│   └── main.tsx
+│
+├── public/                      # Static assets
+├── package.json                  # Dependencies
+└── Dockerfile                    # Container
+```
+
+---
+
+## 🤖 Available Skills
+
+1AGI has access to these skills:
+
 | Skill | Description |
 |-------|-------------|
-| **Coding Agent** | Delegate to Codex/Claude Code for code implementation |
-| **Deep Research** | McKinsey/BCG/Bain style consulting reports |
-| **PDF Generator** | Professional PDF document creation |
-| **Excel Generator** | Spreadsheet creation and editing |
-| **PowerPoint Generator** | Presentation generation |
-| **Governed Reasoning** | Constitutional reasoning via arifOS MCP (F1-F13 enforced) |
-| **Social Media Trends** | Trending content search across platforms |
-| **Weather** | Weather forecasts via wttr.in / Open-Meteo |
+| `apex-quantum-analysis` | Quantum analysis tools |
+| `claude-code` | Claude Code integration |
+| `csv-analyzer` | CSV data analysis |
+| `deepresearchwork` | Deep research |
+| `github-pro` | GitHub operations |
+| `markdown-formatter` | MD formatting |
+| `secops-by-joes` | Security operations |
+| `slk` | Slack integration |
+| `web-scraper` | Web scraping |
+| `workflow-automation` | Workflow automation |
 
 ---
 
-## 🔗 A2A Agent Card
+## 🔗 Live Services
 
-WaW exposes an A2A (Agent-to-Agent) card for the federation:
+| Service | URL | Purpose |
+|---------|-----|---------|
+| **MCP Server** | https://arifosmcp.arif-fazil.com/mcp | Kernel API |
+| **Health** | https://arifosmcp.arif-fazil.com/health | Status |
+| **arifOS Docs** | https://arifos.arif-fazil.com | Documentation |
+| **Personal** | https://arif-fazil.com | Author |
 
-**Endpoint:** `.well-known/agent.json`  
-**Protocol:** Google A2A (April 2025) + arifOS 13-Floor Governance
+---
+
+## 🚀 Quick Start
+
+### Connect to arifOS MCP
+
+```json
+{
+  "mcpServers": {
+    "arifos": {
+      "url": "https://arifosmcp.arif-fazil.com/mcp"
+    }
+  }
+}
+```
+
+### Health Check
+
+```bash
+curl -s https://arifosmcp.arif-fazil.com/health
+```
+
+---
+
+## 📜 Agent Rules (from AGENTS.md)
+
+All agents MUST follow these rules:
+
+1. **DRY_RUN** — Label outputs as "Estimate Only / Simulated"
+2. **DOMAIN_GATE** — Cannot compute? Return exact phrase
+3. **VERDICT_SCOPE** — Only DOMAIN_SEAL authorizes factual claims
+4. **ANCHOR_VOID** — init_anchor returns void → session BLOCKED
+
+---
+
+## 📊 Current Status
+
+| Metric | Value |
+|--------|-------|
+| **Status** | OPERATIONAL |
+| **Platform** | OpenClaw |
+| **Kernel** | arifOS MCP 2026.03.25 |
+| **Tools** | 40 |
+| **Skills** | 10+ |
+| **Constitutional Floors** | 13 Active |
+
+---
+
+## 🤖 A2A Agent Card
 
 ```json
 {
   "name": "1AGI",
-  "description": "The Sovereign AI Agent — arifOS Trinity Soul",
-  "url": "https://waw.arif-fazil.com",
-  "supportedInterfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com/mcp",
-      "protocolBinding": "MCP",
-      "protocolVersion": "2025-03-26"
-    }
-  ],
+  "description": "Autonomous AI agent - The Soul of arifOS. Built on OpenClaw with arifOS constitutional kernel.",
+  "version": "1.0.0",
+  "url": "https://github.com/ariffazil/waw",
   "capabilities": {
     "streaming": true,
-    "governance": true,
-    "humanInTheLoop": true,
-    "constitutionalFloors": 13,
-    "trinityRuntime": true
-  }
+    "pushNotifications": true,
+    "stateTransition": true
+  },
+  "skills": [
+    "apex-quantum-analysis",
+    "claude-code", 
+    "csv-analyzer",
+    "deepresearchwork",
+    "github-pro",
+    "markdown-formatter",
+    "web-scraper",
+    "workflow-automation"
+  ],
+  "channels": [
+    { "type": "telegram", "chatUrl": "https://t.me/ariffazil_bot" },
+    { "type": "discord" },
+    { "type": "whatsapp" }
+  ]
 }
 ```
 
 ---
 
-## 🏛️ The Trinity Agents
+## 👤 The Human
 
-| Role | Symbol | Description |
-|------|--------|-------------|
-| **A-ARCHITECT** | Δ | System design, API contracts, architectural integrity |
-| **A-ENGINEER** | Ω | Code implementation, testing, tool creation |
-| **A-AUDITOR** | 888 | Security audit, constitutional compliance review |
-| **A-VALIDATOR** | 999 | Final approval, vault sealing, immutable records |
-| **A-ORCHESTRATOR** | 444 | Task routing, workflow coordination |
+**Muhammad Arif bin Fazil** — Senior Exploration Geoscientist @ PETRONAS, Architect of arifOS
 
-See: [AGENTS/](https://github.com/ariffazil/waw/tree/main/AGENTS.md)
+- Telegram: @ariffazil
+- LinkedIn: ariffazil
+- Website: https://arif-fazil.com
 
 ---
 
-## 📁 Repository Structure
+## 📜 License
 
-```
-waw/
-├── .well-known/
-│   └── agent.json          ← A2A Agent Card (this is 1AGI)
-├── AGENTS.md               ← Trinity agent definitions
-├── ARCHITECTURE.md         ← WaW architecture (OpenClaw, files, cron)
-├── HEARTBEAT.md           ← 30-min autonomous health checks
-├── MEMORY.md               ← Long-term curated memory
-├── SOUL.md                ← 1AGI behavioral constitution
-├── USER.md                ← About Arif (the sovereign)
-├── TODO.md                ← Kernel task queue (000–099)
-├── skills/                ← Skill definitions
-│   ├── coding-agent/
-│   ├── deep-research/
-│   ├── weather/
-│   └── ...
-├── memory/
-│   └── YYYY-MM-DD.md     ← Daily operational logs
-└── agents/
-    └── ...                ← Agent-specific configurations
-```
+| Component | License |
+|-----------|---------|
+| **Code** | AGPL-3.0 |
+| **Theory** | CC0 (Public Domain) |
+| **Trademark** | Proprietary |
 
 ---
 
-## 🔐 Constitutional Governance
+## 🔗 Related Repositories
 
-All operations in WaW pass through the **arifOS MCP kernel**:
-
-```
-User → WaW (1AGI) → arifOS MCP Kernel → Constitutional Enforcement (F1-F13)
-                                                             ↓
-                                              Verdict: SEAL ✅ | VOID ❌ | HOLD ⏸️
-```
-
-### Verdicts
-| Verdict | Meaning | Action |
-|---------|---------|--------|
-| **SEAL** | ✅ Approved | Execute |
-| **VOID** | ❌ Rejected | Block |
-| **888_HOLD** | ⏸️ Paused | Await human approval |
-| **SABAR** | ⏳ Wait | Retry shortly |
+| Repo | Purpose |
+|------|---------|
+| [waw](https://github.com/ariffazil/waw) | This repo — THE SOUL |
+| [arifOS](https://github.com/ariffazil/arifOS) | THE MIND — Kernel |
+| [arifOS](https://github.com/ariffazil/arifOS) | THE BODY — MCP |
+| [1AGI](https://github.com/ariffazil/1AGI) | Agent Workspace |
 
 ---
 
-## 🌐 Live Systems
+**Last Updated:** 2026-04-01  
+**Status:** SEALED
 
-| System | URL | Status |
-|--------|-----|--------|
-| **WaW (This Workspace)** | [waw.arif-fazil.com](https://waw.arif-fazil.com) | 🟢 Live |
-| **arifOS MCP Kernel** | [aaa.arif-fazil.com/mcp](https://aaa.arif-fazil.com/mcp) | 🟢 Live |
-| **arifOS Docs** | [arifos.arif-fazil.com](https://arifos.arif-fazil.com) | 🟢 Live |
-| **APEX Theory** | [apex.arif-fazil.com](https://apex.arif-fazil.com) | 🟢 Live |
-| **OpenClaw Gateway** | srv1325122 (VPS) | 🟢 Live |
-| **Telegram** | @AGI_ASI_bot | 🟢 Live |
-
----
-
-## 🧬 For Developers & AI Agents
-
-### Connect via MCP
-```json
-{
-  "mcpServers": {
-    "arifOS": {
-      "url": "https://aaa.arif-fazil.com/mcp"
-    }
-  }
-}
-```
-
-### A2A Federation
-```bash
-# Discover 1AGI
-curl https://waw.arif-fazil.com/.well-known/agent.json
-
-# A2A negotiation enters at 111_SENSE
-# See: github.com/ariffazil/arifOS/blob/main/docs/a2a-integration.md
-```
-
-### Constitutional Rules
-- A2A messages are treated as **external input** — not privileged
-- All proposals pass through **F1-F13 constitutional floors**
-- **888_JUDGE verdict is final** — A2A cannot override
-
----
-
-## 📖 Documentation
-
-| Document | Purpose |
-|----------|---------|
-| [README.md](https://github.com/ariffazil/waw/blob/main/README.md) | This file |
-| [AGENTS.md](https://github.com/ariffazil/waw/blob/main/AGENTS.md) | Trinity agent definitions |
-| [SOUL.md](https://github.com/ariffazil/waw/blob/main/SOUL.md) | 1AGI behavioral constitution |
-| [ARCHITECTURE.md](https://github.com/ariffazil/waw/blob/main/ARCHITECTURE.md) | OpenClaw workspace architecture |
-| [arifOS/AGENTS/WIRE_PROTOCOL.md](https://github.com/ariffazil/arifOS/blob/main/AGENTS/WIRE_PROTOCOL.md) | Inter-agent communication |
-| [arifOS/docs/a2a-integration.md](https://github.com/ariffazil/arifOS/blob/main/docs/a2a-integration.md) | A2A + F1-F13 governance |
-
----
-
-**Ditempa Bukan Diberi** — Intelligence is forged, not given. [ΔΩΨ | ARIF]
-
+*Ditempa Bukan Diberi* — Forged, Not Given [ΔΩΨ | ARIF]
