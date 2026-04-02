@@ -1,16 +1,20 @@
 {
-  "lastRun": "2026-04-01T16:05:25Z",
-  "status": "HEARTBEAT_OK",
+  "lastRun": "2026-04-02T16:39:00Z",
+  "status": "WATCH",
   "checks": {
     "openclaw": "healthy",
-    "git": "synced",
-    "disk": "64%",
-    "memory": "10Gi avail, swap 1.8G"
+    "git": "unsynced",
+    "disk": "89% (24G avail — approaching 90% threshold)",
+    "memory": "8.5Gi avail, swap FULL (4.0G/4.0G used)",
+    "vault999": "accessible"
   },
   "alerts": [],
+  "warnings": [
+    "Swap fully utilized — monitor",
+    "Disk at 89% — 1.1GB to threshold",
+    "Git unsynced — many new files uncommitted"
+  ],
   "notes": [
-    "aaa.arif-fazil.com 403 FIXED",
-    "A2A Federation LIVE",
-    "QDF 0.517"
+    "Last heartbeat was 2026-04-01T16:05:25Z (~24h gap)"
   ]
 }
