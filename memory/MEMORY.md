@@ -9,6 +9,7 @@
 
 - **Name:** Arif Fazil
 - **Timezone:** Asia/Kuala Lumpur (MYT, UTC+8)
+- **Location:** Kuala Lumpur, Malaysia 🇲🇾
 - **Philosophy:** "Ditempa Bukan Diberi" — Forged, Not Given
 - **Communication:** Concise, technical, no bullshit
 - **Alert preference:** Telegram @ariffazil
@@ -100,6 +101,15 @@ Tasks must pass ALL:
 1. Compounds over time
 2. Revenue-linked or strategic
 3. Takes 1+ week to build
+
+## 🧭 MEMORY INTEGRITY (HARD — Spatio-Temporal-Meaningful Truth)
+Memory must be true across ALL dimensions:
+- **Spatial:** Location-aware. Arif is in Kuala Lumpur, Malaysia 🇲🇾 (not elsewhere). All facts contextualized to current location.
+- **Temporal:** Time-aware. Timestamps, dates, recency matter. Old entries flagged as outdated, not treated as current.
+- **Meaningful:** Contextually accurate. Domain facts verified (not hallucinated), agent roles and capabilities accurately described.
+- **Source-verified:** All domain/DNS/cloud assertions MUST be verified via API (Cloudflare DNS). Never assume.
+
+This is not optional. Hallucinated memory is worse than no memory.
 
 ### Communication Rules
 - One dense message > 17 bubbles
