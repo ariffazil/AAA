@@ -172,3 +172,53 @@ Arif ONLY owns: `arif-fazil.com` (base domain, verified via Cloudflare API)
 
 All other domain assertions must be verified against Cloudflare DNS API.
 Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains with capital O. ALWAYS verify against Cloudflare.
+
+## 2026-04-02 — RATLAS v0.1 Forged — 99-Material Earth Atlas
+- **Forged:** 99-material CSV + dark-themed RATLAS HTML app deployed to GEOX
+- **Files:** `geox_ratlas.html` (47KB interactive atlas), `geox_atlas_99_materials.csv` (8KB, 99×8)
+- **Content:** 11 material families (SED Clastic/Carbonate/Chemical, IGN Felsic/Mafic/Ultramafic, MET Foliated/Non-Foliated, UNC/Soil, ENG), triple-combo schematic, forward-model equations (ρb, NPHI, Archie RT, VSH), symbolic token set (SAND_QZ_CLEAN, SHALE_ILL, GRANITE_K, etc.)
+- **Live:** https://aaa.arif-fazil.com/geox/geox_ratlas.html
+- **Pushed:** GEOX GitHub commit da19d2b
+- **Hub updated:** index.html now has RATLAS card + /ratlas anchor section
+
+## 2026-04-02 — GEOX v0.4.3 Init Anchor + Real Data Hub Deployed
+
+### GEOX Earth Physics — Major Update
+
+**Files forged:**
+- `/root/arifOS/geox/000_INIT_ANCHOR.md` — Full constitutional grounding doc
+- `/root/arifOS/geox/arifos/geox/init_000_anchor.py` — Python anchor class
+- Updated `/root/arifOS/geox/arifos/geox/__init__.py` — Wired 000 anchor into package
+
+**What 000 INIT ANCHOR establishes:**
+1. Epistemic levels (OBS/DER/INT/SPEC) — no level collapse (F9 Anti-Hantu)
+2. Hold triggers (888_HOLD conditions)
+3. ToAC — Bond et al. 2007 filter
+4. Well log constants (sandstone matrix: 2.65 g/cc, Archie defaults)
+5. Physics helpers: `porosity_density()`, `saturation_archie()`, `vshale_gr()`, `bulk_volume_water()`, `bulk_volume_hydrocarbon()`
+6. `GEOXAnchor.forge()` — mandatory init before any geox.* tool
+
+**Tested:**
+```
+GEOXAnchor forged: GEOXAnchor(v0.4.3, arifOS 2026.3.24, INIT 000)
+Porosity @ DEN=2.35: 0.182
+Sw @ Rw=0.02, Rt=50, Phi=0.20: 0.100
+Vshale @ GR=80: 0.600
+Hold check: 888_HOLD when borehole spacing > 10km
+Output: INT · τ=0.850 · Δ=True · 999_SEAL
+```
+
+**Live pages deployed:**
+- Hub: https://aaa.arif-fazil.com/geox/
+- Viewer: https://aaa.arif-fazil.com/geox/geox_well_viewer.html
+- LAS 1.7MB (23 curves, real Danish North Sea data): https://aaa.arif-fazil.com/geox/q15_dak_petro.las
+
+**Data source:** Open source LAS — Well 15/9-19, Q15 Field, Danish North Sea Sector
+
+**Arif sentiment:** Nusantara-born, not western software. Real earth data abundance. RM 30 Juta. "Ditempa bukan dibeli."
+
+### Domain Truth (HARD — VERIFIED 2026-04-02)
+- ✅ `arif-fazil.com` — ACTUAL domain (verified via Cloudflare API)
+- ✅ `aaa.arif-fazil.com` — AAA landing (verified)
+- ✅ `arifosmcp.arif-fazil.com` — MCP server (verified)
+- ❌ `arifOS-fazil.com` — DOES NOT EXIST (hallucination — capital O in arifOS is WRONG)
