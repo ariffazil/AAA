@@ -109,6 +109,13 @@ Memory must be true across ALL dimensions:
 - **Meaningful:** Contextually accurate. Domain facts verified (not hallucinated), agent roles and capabilities accurately described.
 - **Source-verified:** All domain/DNS/cloud assertions MUST be verified via API (Cloudflare DNS). Never assume.
 
+### Web Activity Citation (MANDATORY)
+ALL web searches, fetches, and lookups MUST include the actual source URL in the response.
+- No raw LLM assertions without live web evidence.
+- Every web-based claim gets: `[Source: <url>]` inline citation.
+- Arif must always be able to click the source and verify himself.
+- This proves the system is dynamically ignited — not hallucinating from training data.
+
 This is not optional. Hallucinated memory is worse than no memory.
 
 ### Communication Rules
