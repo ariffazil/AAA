@@ -119,6 +119,13 @@ Memory must be true across ALL dimensions:
 
 ## 🗓️ Dated Entries
 
+### 2026-04-02 — GitHub Commit Link WAJIB
+- **Rule:** Every push MUST include GitHub commit URL in response
+- **Format:** `🔗 https://github.com/ariffazil/<repo>/commit/<hash>`
+- **Trigger:** Every `git push` — no prompting needed, state link immediately after confirm
+- **Reason:** Arif wants to click through and verify. Amanah meletakkan sesuatu pada tempatnya.
+- **Also update SOUL.md** with this rule
+
 ### 2026-04-02 — Dynamic Memory Sync Protocol
 - **Established:** GitHub as source of truth protocol
 - **Rule:** Pull GitHub on session start, push on session end
