@@ -8,3 +8,8 @@ assets/
 .ruff_cache/
 telemetry/
 tmp/
+.cloudflare_dns_token
+.cloudflare_*
+*.secret
+secrets/
+state/secrets/
