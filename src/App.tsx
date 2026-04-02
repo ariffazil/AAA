@@ -664,11 +664,18 @@ function App() {
           <a href="https://arif-fazil.com/"><b>HUMAN</b></a>
           <a href="https://apex.arif-fazil.com/">THEORY</a>
           <a href="https://arifos.arif-fazil.com/">APPS</a>
+          <a href="https://forge.arif-fazil.com/"><b>FORGE</b></a>
+          <a href="https://aaa.arif-fazil.com/">AAA</a>
+          <a href="https://arifosmcp.arif-fazil.com/mcp">MCP</a>
+          <a href="https://aaa.arif-fazil.com/geox">GEOX</a>
         </div>
-        THE TRINITY • HUMAN • THEORY • APPS<br />
+        THE TRINITY • HUMAN • THEORY • APPS • FORGE<br />
         <b>Ditempa Bukan Diberi</b>
-        <div className="mt-8 text-[10px] opacity-30 uppercase tracking-[0.2em]">
-          Copyright © 2013 – 2026 • Last Updated: Mar 13, 2026
+        <div className="mt-4 text-[9px] opacity-40 uppercase tracking-[0.15em]">
+          VPS: arifosmcp.arif-fazil.com | Cloud: arifosmcp.fastmcp.app | GEOX: geoxarifOS.fastmcp.app
+        </div>
+        <div className="mt-4 text-[9px] opacity-30 uppercase tracking-[0.15em]">
+          Copyright © 2013 – 2026 • Last Updated: Apr 2, 2026
         </div>
       </footer>
     </div>
