@@ -179,6 +179,8 @@ Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains with c
 - **Content:** 11 material families (SED Clastic/Carbonate/Chemical, IGN Felsic/Mafic/Ultramafic, MET Foliated/Non-Foliated, UNC/Soil, ENG), triple-combo schematic, forward-model equations (ρb, NPHI, Archie RT, VSH), symbolic token set (SAND_QZ_CLEAN, SHALE_ILL, GRANITE_K, etc.)
 - **Live:** https://aaa.arif-fazil.com/geox/geox_ratlas.html
 - **Pushed:** GEOX GitHub commit `7e37dd9` (physics-merged — negative NPHI for evaporites, correct mineralogy, computable RT values)
+- **geox_openclaw_context.json:** Canonical URL at `https://aaa.arif-fazil.com/geox/geox_openclaw_context.json`, version 2.1, 6 floors, 7 pipeline stages, 99 RATLAS materials, live well data, 6 sites
+- **MCP server wired:** `load_geox_context()` at startup, new resources `geox://context`, `geox://ratlas`, `geox://telemetry`, new tool `geox_get_context_summary()`. GitHub `32a2518`
 - **Hub updated:** index.html now has RATLAS card + /ratlas anchor section
 
 ## 2026-04-02 — GEOX v0.4.3 Init Anchor + Real Data Hub Deployed
