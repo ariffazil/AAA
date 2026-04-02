@@ -155,7 +155,12 @@ Tasks must pass ALL:
 
 _This file is your permanent memory. Update it as you learn. Push to GitHub frequently._
 
-## DOMAIN TRUTH (HARD — VERIFIED 2026-04-01)
-Arif ONLY owns: arifOS-fazil.com
+## DOMAIN TRUTH (HARD — VERIFIED 2026-04-02)
+Arif ONLY owns: `arif-fazil.com` (base domain, verified via Cloudflare API)
+- ✅ `arif-fazil.com` — ACTUAL domain (lowercase `arif`, no capital O)
+- ❌ `arifOS-fazil.com` — DOES NOT EXIST (hallucination — capital O in arifOS is WRONG)
+- ✅ `arifosmcp.arif-fazil.com` — MCP server subdomain
+- ✅ `aaa.arif-fazil.com` — AAA landing page subdomain
+
 All other domain assertions must be verified against Cloudflare DNS API.
-Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains. ALWAYS verify.
+Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains with capital O. ALWAYS verify against Cloudflare.
