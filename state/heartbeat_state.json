@@ -1,20 +1,14 @@
 {
-  "lastRun": "2026-04-02T16:39:00Z",
-  "status": "WATCH",
+  "lastRun": "2026-04-02T21:05:00+08:00",
+  "status": "HEARTBEAT_OK",
   "checks": {
     "openclaw": "healthy",
-    "git": "unsynced",
-    "disk": "89% (24G avail — approaching 90% threshold)",
-    "memory": "8.5Gi avail, swap FULL (4.0G/4.0G used)",
-    "vault999": "accessible"
+    "git": "modified local (state file)",
+    "disk": "87%",
+    "memory": "swap 60% used",
+    "symlinks": "OK",
+    "vault999": "OK"
   },
   "alerts": [],
-  "warnings": [
-    "Swap fully utilized — monitor",
-    "Disk at 89% — 1.1GB to threshold",
-    "Git unsynced — many new files uncommitted"
-  ],
-  "notes": [
-    "Last heartbeat was 2026-04-01T16:05:25Z (~24h gap)"
-  ]
+  "nextIdleBuilder": null
 }
