@@ -13,3 +13,5 @@ tmp/
 *.secret
 secrets/
 state/secrets/
+*.log
+arifOS-status/
