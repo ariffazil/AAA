@@ -184,7 +184,7 @@ Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains with c
 - **Forged:** 99-material CSV + dark-themed RATLAS HTML app deployed to GEOX
 - **Files:** `geox_ratlas.html` (47KB interactive atlas), `geox_atlas_99_materials.csv` (8KB, 99×8)
 - **Content:** 11 material families (SED Clastic/Carbonate/Chemical, IGN Felsic/Mafic/Ultramafic, MET Foliated/Non-Foliated, UNC/Soil, ENG), triple-combo schematic, forward-model equations (ρb, NPHI, Archie RT, VSH), symbolic token set (SAND_QZ_CLEAN, SHALE_ILL, GRANITE_K, etc.)
-- **Live:** https://aaa.arif-fazil.com/geox/geox_ratlas.html
+- **Live (CDN propagating):** https://aaa.arif-fazil.com/geox/geox_ratlas.html (G-Core CDN cache TTL ~10min; deploy commit `1a93ecc`)
 - **Pushed:** GEOX GitHub commit `7e37dd9` (physics-merged — negative NPHI for evaporites, correct mineralogy, computable RT values)
 - **geox_openclaw_context.json:** Canonical URL at `https://aaa.arif-fazil.com/geox/geox_openclaw_context.json`, version 2.1, 6 floors, 7 pipeline stages, 99 RATLAS materials, live well data, 6 sites
 - **MCP server wired:** `load_geox_context()` at startup, new resources `geox://context`, `geox://ratlas`, `geox://telemetry`, new tool `geox_get_context_summary()`. GitHub `32a2518`
@@ -217,10 +217,10 @@ Hold check: 888_HOLD when borehole spacing > 10km
 Output: INT · τ=0.850 · Δ=True · 999_SEAL
 ```
 
-**Live pages deployed:**
-- Hub: https://aaa.arif-fazil.com/geox/
-- Viewer: https://aaa.arif-fazil.com/geox/geox_well_viewer.html
-- LAS 1.7MB (23 curves, real Danish North Sea data): https://aaa.arif-fazil.com/geox/q15_dak_petro.las
+**Live pages (CDN propagating as of 2026-04-03):**
+- Hub: https://aaa.arif-fazil.com/geox/ (new hub with app cards)
+- Viewer: https://aaa.arif-fazil.com/geox/geox_well_viewer.html (new canvas viewer)
+- LAS: https://aaa.arif-fazil.com/geox/q15_dak_petro.las (2665-line petrophysical LAS)
 
 **Data source:** Open source LAS — Well 15/9-19, Q15 Field, Danish North Sea Sector
 
