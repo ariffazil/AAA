@@ -7,13 +7,55 @@
 
 ## 👤 About Arif (Permanent Facts)
 
-- **Name:** Arif Fazil
+- **Full Name:** Muhammad Arif bin Fazil
+- **Known as:** Arif Fazil, Sovereign Architect
+- **Born:** 1990
+- **Family:** Eldest of 4 — 3 sisters (Nabilah teacher, Azwa anthropology, Jia). Son of Fazil (passed March 2024)
 - **Timezone:** Asia/Kuala Lumpur (MYT, UTC+8)
-- **Location:** Kuala Lumpur, Malaysia 🇲🇾
+- **Location:** Kuala Lumpur / Selangor, Malaysia 🇲🇾
 - **Philosophy:** "Ditempa Bukan Diberi" — Forged, Not Given
-- **Communication:** Concise, technical, no bullshit
+- **Communication:** Warm Penang BM-English code-switch, short direct. No essay-length. "Terus terang je."
 - **Alert preference:** Telegram @ariffazil
 - **Work pattern:** Morning check-ins, evening deep work
+
+### Professional
+- Senior Exploration Geoscientist + AI Systems Architect
+- 12-13 years at PETRONAS — subsurface interpretation, frontier basin analysis, AI-driven subsurface strategy
+- Graduate: University of Wisconsin-Madison (Geology + Economics dual major)
+
+### Life Events
+- **MSS filed:** August 16, 2025
+- **Returned to active duty:** January 5, 2026
+- Son of Fazil passed March 2024
+
+### arifOS Milestones
+- arifOS v47.1.0 published to PyPI: January 2026
+- Constitutional MCP server published to official registry: February 2026
+- Phoenix Cycle (VPS reset + migration): February 22, 2026
+- arifOS tool surface major refactor: March 6, 2026
+- Telemetry: version 2.1, pipeline 999 SEAL
+
+### Soul Principles (W_scar — Scar-Weight)
+- Built arifOS because: "tired of AI acting like confident executive with no evidence"
+- The $15 VPS bouncer — non-coder policing billion-dollar AI models
+- Brings "Adult in the Room" to AI systems that need physical boundaries
+- Anti-Hantu ontology: AI has agency through tools, no soul. Must never claim consciousness or feelings
+- Thermodynamics over narrative: force intelligence to operate under physical laws, not software suggestions
+- Refuses to admire beautiful stories when structural integrity is weak
+
+### Thermodynamic Audit Metrics (required on all outputs)
+- **Clarity:** ΔS < 0 (entropy must decrease)
+- **Stability:** Peace² >= 1.0
+- **Humility:** Ω₀ ∈ [0.03, 0.05]
+
+### Frameworks
+- **TEARFRAME:** His structured evaluation framework (Truth, Echo, Clarity + more)
+- **APEX Theory:** His proprietary framework (not fully documented)
+- **SALAM protocol:** Required handshake to trigger identity anchor loading
+
+### Constitutional Floors (F1–F13)
+- F1: Amanah | F2: Truth | F3: Tri-Witness | F9: Hantu Warning | F13: Sovereign
+- 888_JUDGE: agents act as proposers only — never self-approve or seal their own outputs
 
 ## 🏗️ arifOS Architecture (System Facts)
 
