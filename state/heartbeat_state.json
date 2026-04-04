@@ -1,14 +1,18 @@
 {
-  "lastRun": "2026-04-02T21:05:00+08:00",
+  "lastRun": "2026-04-04T15:22:00+08:00",
   "status": "HEARTBEAT_OK",
   "checks": {
     "openclaw": "healthy",
-    "git": "modified local (state file)",
-    "disk": "87%",
-    "memory": "swap 60% used",
-    "symlinks": "OK",
-    "vault999": "OK"
+    "gateway": "loopback:18789",
+    "git": "synced",
+    "disk": "88%",
+    "memory": "4.4Gi normal"
   },
   "alerts": [],
-  "nextIdleBuilder": null
+  "notes": [
+    "All 14 URLs verified — 13/14 @ 200",
+    "apex.arif-fazil.com 301 (CF edge cache, self-healing)",
+    "DNS restored, VPS nginx + Traefik subdomain routing active",
+    "arifOS infra committed: ab07185"
+  ]
 }
