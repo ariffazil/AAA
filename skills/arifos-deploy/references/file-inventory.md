@@ -6,7 +6,7 @@
 
 ## Machine Discovery Files (Must Be at Root, Canonical Paths)
 
-These files must always be served at these exact paths on arifOS-fazil.com. No redirects, no SPA routing, no path changes.
+These files must always be served at these exact paths on arif-fazil.com. No redirects, no SPA routing, no path changes.
 
 ### `/llms.txt`
 - **Purpose:** LLM context injection for AI agents reading this site
@@ -43,11 +43,11 @@ These files must always be served at these exact paths on arifOS-fazil.com. No r
 
 ### Hub Root Files
 ```
-sites/arifOS-fazil.com-source/
+sites/arif-fazil.com-source/
 ├── pages/
-│   └── index.html          → https://arifOS-fazil.com/ (homepage)
+│   └── index.html          → https://arif-fazil.com/ (homepage)
 ├── assets/
-│   └── style.css           → https://arifOS-fazil.com/assets/style.css
+│   └── style.css           → https://arif-fazil.com/assets/style.css
 └── stack/
     └── architecture.json   → (optional architecture manifest)
 ```
@@ -68,7 +68,7 @@ pages/
 
 ## Build Output
 
-When `deploy-hub.yml` runs, it uploads the entire `sites/arifOS-fazil.com-source/` directory as the GitHub Pages artifact. No separate build step — files are served as-is.
+When `deploy-hub.yml` runs, it uploads the entire `sites/arif-fazil.com-source/` directory as the GitHub Pages artifact. No separate build step — files are served as-is.
 
 If a build step is added later (e.g., minification, image processing), the output directory becomes the Pages artifact, not the source.
 

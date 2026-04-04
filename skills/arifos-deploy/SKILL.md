@@ -16,9 +16,10 @@ These are constitutional-level constraints. No tool, command, or convenience may
 ### The Three Surfaces
 
 ```
-arifOS-fazil.com     → Hub (identity, summaries, machine discovery)
-arifos.arifOS-fazil.com → Docs (full technical content)
-arifOS:8080/mcp     → Runtime (constitutional tool execution)
+arif-fazil.com             → Ring 1 — THE SOUL (identity, philosophy, human witness)
+arifos.arif-fazil.com     → Ring 2 — THE MIND (constitutional kernel, ΔΩΨ, 13 floors)
+aaa.arif-fazil.com        → Ring 3 — THE BODY (AAA runtime, agents, tools, execution)
+arifosmcp.arif-fazil.com  → VPS MCP runtime (37 constitutional tools, health-checked)
 ```
 
 **Role rule:** Hub never hosts full docs content. Docs never hosts hub content. Runtime is never a static site. These boundaries never swap.
@@ -79,7 +80,7 @@ Every deploy MUST produce a documented rollback path before executing. Rollback 
 
 ### When to Deploy Hub
 
-Hub deploys when files in `sites/arifOS-fazil.com-source/pages/`, `assets/`, machine files, or `deploy-hub.yml` workflow change.
+Hub deploys when files in `sites/arif-fazil.com-source/pages/`, `assets/`, machine files, or `deploy-hub.yml` workflow change.
 
 ### When to Deploy Docs
 

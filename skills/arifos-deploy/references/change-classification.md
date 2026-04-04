@@ -77,9 +77,9 @@ Every request to this skill must be classified before any action is taken. This 
 **Definition:** Changes to how traffic is routed — DNS records, CNAME records, URL redirects, path-based routing.
 
 **Examples:**
-- Change CNAME for arifOS-fazil.com
+- Change CNAME for arif-fazil.com
 - Add DNS record for new subdomain
-- Configure redirect from apex.arifOS-fazil.com
+- Configure redirect from apex.arif-fazil.com
 - Change routing rules
 
 **Required gates:** 000 → 111 → 333 → 555 → 777 → **888** → 999
@@ -239,7 +239,7 @@ Every request to this skill must be classified before any action is taken. This 
 **Definition:** Migrating from one hosting platform to another (e.g., GitHub Pages → Cloudflare Pages).
 
 **Examples:**
-- Migrate arifOS-fazil.com from GitHub Pages to Cloudflare Pages
+- Migrate arif-fazil.com from GitHub Pages to Cloudflare Pages
 - Move docs from GitHub Pages to Cloudflare Pages
 - Change CDN provider
 
