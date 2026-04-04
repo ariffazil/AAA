@@ -232,6 +232,15 @@ Domain naming bias: ARIF-MAIN will hallucinate "arifOS" prefix in domains with c
 - **MCP server wired:** `load_geox_context()` at startup, new resources `geox://context`, `geox://ratlas`, `geox://telemetry`, new tool `geox_get_context_summary()`. GitHub `32a2518`
 - **Hub updated:** index.html now has RATLAS card + /ratlas anchor section
 
+## 2026-04-04 — GEOX v0.4.4 — Leaflet Malay Basin Map Overlay
+- **Map feature:** [Map] button in geox_well_viewer.html topbar toggles OSM map panel
+- **Leaflet 1.9.4** via unpkg.com CDN — no API key needed
+- **6 reference wells** plotted: Q15 Danish + 5 Malaysian basin wells
+- **CSP fix:** `_headers` updated — added unpkg.com to script-src/style-src, *.tile.openstreetmap.org to img-src/connect-src
+- **Files changed:** `geox_well_viewer.html` (+1915 lines), `_headers` CSP hardening
+- **Deploy repos:** arif-sites (Cloudflare Pages auto-deploys from main)
+- **Commit:** a361e25 🔗 https://github.com/ariffazil/arif-sites/commit/a361e25
+
 ## 2026-04-02 — GEOX v0.4.3 Init Anchor + Real Data Hub Deployed
 
 ### GEOX Earth Physics — Major Update
