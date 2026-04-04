@@ -6,30 +6,30 @@ auto_trigger: false
 
 # Web Scraper Service
 
-汎用ウェブスクレイピングサービス。任意のサイトから構造化データを抽出。
+Configurable web scraping service. Extract structured data from any website — e-commerce, real estate, jobs, and more.
 
-## 収益ポテンシャル
+## Revenue Potential
 
-- **単発プロジェクト**: $200-2,000
-- **月額保守契約**: $50-200/月
-- **月収目安**: $1,000-8,000/月
+- **Per-project**: $200–2,000
+- **Monthly retainer**: $50–200/month
+- **Monthly target**: $1,000–8,000/month
 
-## 対応スクレイピング
+## Supported Scraping Types
 
-### Eコマース
+### E-commerce
 ```
-商品情報（名前、価格、画像、説明）
-在庫状況
-レビュー・評価
-価格履歴
+Product info (name, price, images, description)
+Stock availability
+Reviews and ratings
+Price history
 ```
 
-### 不動産
+### Real Estate
 ```
-物件リスト
-価格・面積・間取り
-連絡先情報
-エリア統計
+Property listings
+Price, size, floor plan
+Contact information
+Area statistics
 ```
 
 ### 求人

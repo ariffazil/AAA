@@ -4,82 +4,82 @@ These are the exact verification steps for each surface. Run these in order. Eve
 
 ---
 
-## Hub — arifOS-fazil.com
+## Hub — arif-fazil.com
 
 ### Step 1: Homepage Verification
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}" https://arifOS-fazil.com/
+curl -s -o /dev/null -w "%{http_code}" https://arif-fazil.com/
 # Expected: 200
-curl -s https://arifOS-fazil.com/ | grep -o "<title>.*</title>"
+curl -s https://arif-fazil.com/ | grep -o "<title>.*</title>"
 # Expected: <title>arifOS — Constitutional Intelligence Kernel</title>
 ```
 
 ### Step 2: Machine File — llms.txt
 
 ```bash
-curl -s -o /dev/null -w "%{http_code} %{content_type}" https://arifOS-fazil.com/llms.txt
+curl -s -o /dev/null -w "%{http_code} %{content_type}" https://arif-fazil.com/llms.txt
 # Expected: 200 text/plain; charset=utf-8
-curl -s https://arifOS-fazil.com/llms.txt | head -5
+curl -s https://arif-fazil.com/llms.txt | head -5
 # Expected: First lines of llms.txt, plain text
 ```
 
 ### Step 3: Machine File — agent.json
 
 ```bash
-curl -s -o /dev/null -w "%{http_code} %{content type}" https://arifOS-fazil.com/.well-known/agent.json
+curl -s -o /dev/null -w "%{http_code} %{content type}" https://arif-fazil.com/.well-known/agent.json
 # Expected: 200 application/json
-curl -s https://arifOS-fazil.com/.well-known/agent.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['name'], d['version'])"
+curl -s https://arif-fazil.com/.well-known/agent.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d['name'], d['version'])"
 # Expected: arifOS 2026.03.25
 ```
 
 ### Step 4: Machine File — robots.txt
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}" https://arifOS-fazil.com/robots.txt
+curl -s -o /dev/null -w "%{http_code}" https://arif-fazil.com/robots.txt
 # Expected: 200
-curl -s https://arifOS-fazil.com/robots.txt | grep -i sitemap
-# Expected: Sitemap: https://arifOS-fazil.com/sitemap.xml
+curl -s https://arif-fazil.com/robots.txt | grep -i sitemap
+# Expected: Sitemap: https://arif-fazil.com/sitemap.xml
 ```
 
 ### Step 5: Machine File — sitemap.xml
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}" https://arifOS-fazil.com/sitemap.xml
+curl -s -o /dev/null -w "%{http_code}" https://arif-fazil.com/sitemap.xml
 # Expected: 200
-curl -s https://arifOS-fazil.com/sitemap.xml | grep -o '<?xml'
+curl -s https://arif-fazil.com/sitemap.xml | grep -o '<?xml'
 # Expected: <?xml
 ```
 
 ### Step 6: CSS Asset
 
 ```bash
-curl -s -o /dev/null -w "%{http_code} %{content type}" https://arifOS-fazil.com/assets/style.css
+curl -s -o /dev/null -w "%{http_code} %{content type}" https://arif-fazil.com/assets/style.css
 # Expected: 200 text/css
 ```
 
 ### Step 7: Links to Docs — Outbound Check
 
 ```bash
-curl -s https://arifOS-fazil.com/ | grep -o 'https://arifos.arifOS-fazil.com[^"]*'
+curl -s https://arif-fazil.com/ | grep -o 'https://arifos.arif-fazil.com[^"]*'
 # Expected: Links to docs domain appear
 ```
 
 ---
 
-## Docs — arifos.arifOS-fazil.com
+## Docs — arifos.arif-fazil.com
 
 ### Step 1: Homepage Verification
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}" https://arifos.arifOS-fazil.com/
+curl -s -o /dev/null -w "%{http_code}" https://arifos.arif-fazil.com/
 # Expected: 200
 ```
 
 ### Step 2: Docs Content Check
 
 ```bash
-curl -s https://arifos.arifOS-fazil.com/ | grep -o "<title>.*</title>"
+curl -s https://arifos.arif-fazil.com/ | grep -o "<title>.*</title>"
 # Expected: Title reflects docs content, not hub content
 ```
 
@@ -87,27 +87,27 @@ curl -s https://arifos.arifOS-fazil.com/ | grep -o "<title>.*</title>"
 
 ```bash
 # Docs should NOT contain full hub-style summaries
-curl -s https://arifos.arifOS-fazil.com/ | grep -i "I build governed AI"
+curl -s https://arifos.arif-fazil.com/ | grep -i "I build governed AI"
 # Expected: No match (hub content, not docs content)
 ```
 
 ---
 
-## Runtime — arifOS:8080/mcp
+## Runtime — arifosmcp.arif-fazil.com
 
 ### Step 1: Health Check
 
 ```bash
-curl -s https://arifOSmcp.arifOS-fazil.com/health
+curl -s https://arifosmcp.arif-fazil.com/health
 # Expected: JSON with status, tools_loaded, version
-curl -s -o /dev/null -w "%{http_code}" https://arifOSmcp.arifOS-fazil.com/health
+curl -s -o /dev/null -w "%{http_code}" https://arifosmcp.arif-fazil.com/health
 # Expected: 200
 ```
 
 ### Step 2: MCP Endpoint
 
 ```bash
-curl -s -X POST https://arifOSmcp.arifOS-fazil.com/mcp \
+curl -s -X POST https://arifosmcp.arif-fazil.com/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"init_anchor","arguments":{"mode":"status","declared_name":"TestAgent"}},"id":1}'
 # Expected: JSON response with verdict field
