@@ -50,8 +50,8 @@ Every action in this matrix requires explicit human approval before proceeding. 
 
 | Action | Why Hold | Required Input |
 |--------|---------|----------------|
-| Migrate arifOS-fazil.com to new platform | Old and new both serve during TTL window | Human confirms cutover plan |
-| Migrate arifos.arifOS-fazil.com to new platform | Docs temporarily unavailable | Human confirms cutover plan |
+| Migrate arif-fazil.com to new platform | Old and new both serve during TTL window | Human confirms cutover plan |
+| Migrate arifos.arif-fazil.com to new platform | Docs temporarily unavailable | Human confirms cutover plan |
 | Point new domain to existing platform | Creates new surface | Human confirms new domain and purpose |
 | Remove domain pointing to platform | Domain no longer serves content | Human confirms domain retired |
 | Switch from GitHub Pages to Cloudflare Pages | CDN and caching behavior changes | Human confirms migration plan and rollback |

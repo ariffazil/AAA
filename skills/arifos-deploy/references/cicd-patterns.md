@@ -11,7 +11,7 @@
 See: `.github/workflows/deploy-hub.yml` in `ariffazil/arifOS` repo.
 
 Key patterns:
-- Trigger: path filter on `sites/arifOS-fazil.com-source/**`
+- Trigger: path filter on `sites/arif-fazil.com-source/**`
 - Pages upload: `actions/upload-pages-artifact@v3`
 - Deploy: `actions/deploy-pages@v4`
 - Validation step: verify index.html, style.css, llms.txt exist before upload
