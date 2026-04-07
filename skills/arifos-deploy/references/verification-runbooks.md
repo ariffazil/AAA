@@ -109,7 +109,7 @@ curl -s -o /dev/null -w "%{http_code}" https://arifosmcp.arif-fazil.com/health
 ```bash
 curl -s -X POST https://arifosmcp.arif-fazil.com/mcp \
   -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"init_anchor","arguments":{"mode":"status","declared_name":"TestAgent"}},"id":1}'
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"arifos.init","arguments":{"mode":"status","declared_name":"TestAgent"}},"id":1}'
 # Expected: JSON response with verdict field
 ```
 
