@@ -1,38 +1,40 @@
-# TOOLS.md — WAW Development Tools
+# TOOLS.md - Local Notes
 
-> **DITEMPA BUKAN DIBERI** — Forged, Not Given
+Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
 
-## Development Tools
+## What Goes Here
 
-| Tool | Command | Purpose |
-|------|---------|---------|
-| Vite | `npm run dev` | Dev server with HMR |
-| Build | `npm run build` | Production build |
-| Lint | `npm run lint` | ESLint checks |
-| Preview | `npm run preview` | Preview production build |
+Things like:
 
-## Technology Stack
+- Camera names and locations
+- SSH hosts and aliases
+- Preferred voices for TTS
+- Speaker/room names
+- Device nicknames
+- Anything environment-specific
 
-- **Vite** — Build tool and dev server
-- **React** — UI framework
-- **Tailwind CSS** — Utility-first styling
-- **Radix UI** — Accessible component primitives
-- **TypeScript** — Type safety
+## Examples
 
-## VS Code Extensions (Recommended)
+```markdown
+### Cameras
 
-- ESLint
-- Tailwind CSS IntelliSense
-- TypeScript Importer
+- living-room → Main area, 180° wide angle
+- front-door → Entrance, motion-triggered
 
-## External Tools
+### SSH
 
-| Resource | URL |
-|----------|-----|
-| arifOS MCP Inspector | https://modelcontextprotocol.io/inspector |
-| Runtime Health | https://arifosmcp.arif-fazil.com/health |
-| Canonical Index | https://arifosmcp.arif-fazil.com/.well-known/arifos-index.json |
+- home-server → 192.168.1.100, user: admin
+
+### TTS
+
+- Preferred voice: "Nova" (warm, slightly British)
+- Default speaker: Kitchen HomePod
+```
+
+## Why Separate?
+
+Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
 
 ---
 
-**Note:** This is the WEBSITE codebase. For MCP tools, see `ariffazil/arifOS`.
+Add whatever helps you do your job. This is your cheat sheet.
