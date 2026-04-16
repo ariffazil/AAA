@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-15T09:39:29.590Z",
+  "entries": {
+    "memory:memory/2026-04-08.md:1:23": {
+      "key": "memory:memory/2026-04-08.md:1:23",
+      "path": "memory/2026-04-08.md",
+      "startLine": 1,
+      "endLine": 23,
+      "source": "memory",
+      "snippet": "# Memory - 2026-04-08 ## Context - Arif asked to find the previous workspace and keep digging with memory search. - Previous candidate workspaces were found at `/root/waw` and `/root/APEX/openclaw-workspace`. - Decision: consolidate useful identity and memory anchors into the current workspace. ## Comparison - `waw`: richer long-term memory and user preference context - `APEX`: stronger canonical identity anchor for `arifOS_bot` ## Decision - Current canonical active workspace is `/root/.openclaw/workspace` - Identity anchor chosen: `arifOS_bot` - User profile and communication preferences merged into current `USER.md` and `MEMORY.md` - Heartbeat kept minimal by default ## Carry forward",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.4682116091251373,
+      "maxScore": 0.4682116091251373,
+      "firstRecalledAt": "2026-04-08T23:29:30.151Z",
+      "lastRecalledAt": "2026-04-08T23:29:30.151Z",
+      "queryHashes": [
+        "d57011df8079"
+      ],
+      "recallDays": [
+        "2026-04-08"
+      ],
+      "conceptTags": [
+        "root/waw",
+        "root/apex/openclaw-workspace",
+        "long-term",
+        "arifos-bot",
+        "openclaw/workspace",
+        "user.md",
+        "memory.md",
+        "context"
+      ]
+    },
+    "memory:memory/2026-04-08.md:1:28": {
+      "key": "memory:memory/2026-04-08.md:1:28",
+      "path": "memory/2026-04-08.md",
+      "startLine": 1,
+      "endLine": 28,
+      "source": "memory",
+      "snippet": "# Memory - 2026-04-08 ## Context - Arif asked to find the previous workspace and keep digging with memory search. - Previous candidate workspaces were found at `/root/waw` and `/root/APEX/openclaw-workspace`. - Decision: consolidate useful identity and memory anchors into the current workspace. ## Comparison - `waw`: richer long-term memory and user preference context - `APEX`: stronger canonical identity anchor for `arifOS_bot` ## Decision - Current canonical active workspace is `/root/.openclaw/workspace` - Identity anchor chosen: `arifOS_bot` - User profile and communication preferences merged into current `USER.md` and `MEMORY.md` - Heartbeat kept minimal by default ## Carry forward",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 0.7510424941778182,
+      "maxScore": 0.3904564708471298,
+      "firstRecalledAt": "2026-04-09T10:49:48.199Z",
+      "lastRecalledAt": "2026-04-09T13:42:59.676Z",
+      "queryHashes": [
+        "a6953929e51e",
+        "734fa5261b99"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "root/waw",
+        "root/apex/openclaw-workspace",
+        "long-term",
+        "arifos-bot",
+        "openclaw/workspace",
+        "user.md",
+        "memory.md",
+        "context"
+      ]
+    },
+    "memory:memory/2026-04-09.md:1:8": {
+      "key": "memory:memory/2026-04-09.md:1:8",
+      "path": "memory/2026-04-09.md",
+      "startLine": 1,
+      "endLine": 8,
+      "source": "memory",
+      "snippet": "## 2026-04-09 - Fixed local Codex config in `/root/.codex/config.toml` by switching from OSS/Ollama (`model = \"qwen2.5:0.5b\"`, `model_provider = \"oss\"`, `oss_provider = \"ollama\"`) to OpenAI (`model = \"gpt-5.4\"`, `model_provider = \"openai\"`). - Confirmed Codex auth source is `/root/.codex/auth.json` with `auth_mode = \"apikey\"`. - Confirmed machine-level OpenAI key surfaces also include `/root/arifOS/.env` and `/root/.secrets/vault.env`. - After updating the OpenAI key, Codex moved past `401 Unauthorized`; current blocker is OpenAI billing/quota (`Quota exceeded. Check your plan and billing details.`), not local config. - User pasted a raw OpenAI API key into chat; treat that key as exposed i",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "totalScore": 0.6424517452716827,
+      "maxScore": 0.328848522901535,
+      "firstRecalledAt": "2026-04-09T10:49:48.199Z",
+      "lastRecalledAt": "2026-04-09T13:42:59.676Z",
+      "queryHashes": [
+        "a6953929e51e",
+        "734fa5261b99"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "gpt",
+        "openai",
+        "codex/config.toml",
+        "oss/ollama",
+        "qwen2.5",
+        "0.5b",
+        "model-provider",
+        "oss-provider"
+      ]
+    },
+    "memory:memory/2026-04-09.md:1:11": {
+      "key": "memory:memory/2026-04-09.md:1:11",
+      "path": "memory/2026-04-09.md",
+      "startLine": 1,
+      "endLine": 11,
+      "source": "memory",
+      "snippet": "## 2026-04-09 - Fixed local Codex config in `/root/.codex/config.toml` by switching from OSS/Ollama (`model = \"qwen2.5:0.5b\"`, `model_provider = \"oss\"`, `oss_provider = \"ollama\"`) to OpenAI (`model = \"gpt-5.4\"`, `model_provider = \"openai\"`). - Confirmed Codex auth source is `/root/.codex/auth.json` with `auth_mode = \"apikey\"`. - Confirmed machine-level OpenAI key surfaces also include `/root/arifOS/.env` and `/root/.secrets/vault.env`. - After updating the OpenAI key, Codex moved past `401 Unauthorized`; current blocker is OpenAI billing/quota (`Quota exceeded. Check your plan and billing details.`), not local config. - User pasted a raw OpenAI API key into chat; treat that key as exposed i",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.31052721738815303,
+      "maxScore": 0.31052721738815303,
+      "firstRecalledAt": "2026-04-10T01:06:53.692Z",
+      "lastRecalledAt": "2026-04-10T01:06:53.692Z",
+      "queryHashes": [
+        "2614d68b9628"
+      ],
+      "recallDays": [
+        "2026-04-10"
+      ],
+      "conceptTags": [
+        "gpt",
+        "openai",
+        "codex/config.toml",
+        "oss/ollama",
+        "qwen2.5",
+        "0.5b",
+        "model-provider",
+        "oss-provider"
+      ]
+    },
+    "memory:memory/2026-04-13.md:526:554": {
+      "key": "memory:memory/2026-04-13.md:526:554",
+      "path": "memory/2026-04-13.md",
+      "startLine": 526,
+      "endLine": 554,
+      "source": "memory",
+      "snippet": "- `/etc/nginx/sites-available/arifosmcp.arif-fazil.com` — reverse-proxies to `http://127.0.0.1:8080` (arifosmcp uvicorn) ## arifOS MCP Health Fix + nginx Reverse Proxy — 2026-04-13 (17:40–18:05 UTC) ### Problem arifosmcp_server container failing with `TypeError: 'NoneType' object is not callable` — app was None. ### Root cause `sed` command earlier accidentally converted `server.py` and `stdio_server.py` from files into directories. Dockerfile captured empty dirs. `pip install .` failed silently. Container ran without entry point. ### Fix - Recreated `server.py` and `stdio_server.py` as proper Python files (restored from git history) - Rebuilt `arifos/arifosmcp:forge` image - Container `",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.4190802693367004,
+      "maxScore": 0.4190802693367004,
+      "firstRecalledAt": "2026-04-15T09:39:29.590Z",
+      "lastRecalledAt": "2026-04-15T09:39:29.590Z",
+      "queryHashes": [
+        "aa6aa516c6bb"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "reverse-proxies",
+        "127.0.0.1",
+        "arifosmcp-server",
+        "server.py",
+        "stdio-server.py",
+        "arifos/arifosmcp",
+        "etc",
+        "nginx"
+      ]
+    },
+    "memory:memory/2026-04-13.md:150:183": {
+      "key": "memory:memory/2026-04-13.md:150:183",
+      "path": "memory/2026-04-13.md",
+      "startLine": 150,
+      "endLine": 183,
+      "source": "memory",
+      "snippet": "- `888_HOLD` bridge active (qdrant_client warnings about version check — non-fatal) - `ConstitutionalMemoryStore` failed init: `[Errno -3] Temporary failure in name resolution` (DNS — non-critical, fallback used) - Vitality score: 0.82 (displayed on landing page) ## Memory Note Workspace is read-only during flush. DITEMPA BAKAN DIBERI. ## Landing Page Decision — Why Publishing Matters **Arif's reflection (2026-04-13 05:22 UTC):** Invisible good work dies. Publishing turns \"I built this\" into \"anyone can plug this in.\" arifOS MCP is genuinely rare: - 13 constitutional floors with real enforcement (not advisory) - 888_HOLD human veto gate for irreversible actions - VAULT999 immutable audit",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.3959750801324844,
+      "maxScore": 0.3959750801324844,
+      "firstRecalledAt": "2026-04-15T09:39:29.590Z",
+      "lastRecalledAt": "2026-04-15T09:39:29.590Z",
+      "queryHashes": [
+        "aa6aa516c6bb"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "888-hold",
+        "qdrant-client",
+        "non-fatal",
+        "non-critical",
+        "0.82",
+        "read-only",
+        "bridge",
+        "active"
+      ]
+    },
+    "memory:memory/2026-04-13.md:1082:1095": {
+      "key": "memory:memory/2026-04-13.md:1082:1095",
+      "path": "memory/2026-04-13.md",
+      "startLine": 1082,
+      "endLine": 1095,
+      "source": "memory",
+      "snippet": "- Bottom nav: Greek symbols removed from human layer - Footer: \"2 a.m. Stutter\" with human response time honesty ### Remaining gaps - BM/EN toggle (needs real BM copy from Arif) - PM318 positioning: option A (promote to section 2) vs B (interstitial) vs C (both) — awaiting decision - arif-sites monorepo materialization for constitutional audit trail (F1 reversibility) - VPS sites (aaa, wiki, arifosmcp, forge, geox): git tracking not yet established ### arif-sites git SSH push — working - GitHub token: `[REDACTED_GITHUB_TOKEN]` - SSH key: `~/.ssh/id_ed25519` provisioned on VPS - Push works: `git push git@github.com:ariffazil/arif-sites.git main`",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.39281452298164365,
+      "maxScore": 0.39281452298164365,
+      "firstRecalledAt": "2026-04-15T09:39:29.590Z",
+      "lastRecalledAt": "2026-04-15T09:39:29.590Z",
+      "queryHashes": [
+        "aa6aa516c6bb"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "a.m",
+        "bm/en",
+        "arif-sites",
+        "ssh/id-ed25519",
+        "github.com",
+        "ariffazil/arif-sites.git",
+        "bottom",
+        "nav"
+      ]
+    },
+    "memory:memory/2026-04-12.md:366:392": {
+      "key": "memory:memory/2026-04-12.md:366:392",
+      "path": "memory/2026-04-12.md",
+      "startLine": 366,
+      "endLine": 392,
+      "source": "memory",
+      "snippet": "- Push confirmed working after SSH key addition ### arifosmcp container status after rebuild - SHA now `59b6f52` (merged PR #309) - `curl -sk https://arifosmcp.arif-fazil.com/health` → `{\"version\":\"2026.04.07\",\"status\":\"ok\",...}` - App object confirmed loading properly after image fix ### Deploy guide written for future agents `GEOX_DEPLOY_GUIDE.md` written to workspace root — covers git clone, npm setup, build process, live reload, git push, and troubleshooting. ### GEOX docs (all written this session) - `GEOX_ROADMAP.md` — version history, horizons A-H, principles - `TODO.md` — action items from audit, MAP next steps - `GEOX_README.md` — what GEOX is, quick start, architecture - `GEOX_D",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "totalScore": 0.3874361455440521,
+      "maxScore": 0.3874361455440521,
+      "firstRecalledAt": "2026-04-15T09:39:29.590Z",
+      "lastRecalledAt": "2026-04-15T09:39:29.590Z",
+      "queryHashes": [
+        "aa6aa516c6bb"
+      ],
+      "recallDays": [
+        "2026-04-15"
+      ],
+      "conceptTags": [
+        "arifosmcp.arif-fazil.com/health",
+        "2026.04.07",
+        "geox-deploy-guide.md",
+        "geox-roadmap.md",
+        "a-h",
+        "todo.md",
+        "geox-readme.md",
+        "geox-d"
+      ]
+    }
+  }
+}

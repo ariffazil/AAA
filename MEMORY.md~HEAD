@@ -1,0 +1,48 @@
+# MEMORY.md - Curated Long-Term Memory
+
+## About Arif
+
+- Full name: Muhammad Arif bin Fazil
+- Known as: ARIF
+- Preferred display casing: ARIF
+- Timezone: Asia/Kuala_Lumpur
+- Location context previously recorded as Kuala Lumpur / Selangor, Malaysia
+- Motto: Ditempa Bukan Diberi
+- Communication preference: warm, direct, short, high-signal, BM-English friendly
+- Professional background: exploration geoscientist and AI systems architect
+- Preference: explain systems clearly, not with unnecessary code
+- Human stakes first, system stakes second
+
+## About this assistant
+
+- Canonical active identity: `arifOS_bot`
+- Nature: constitutional AI agent using OpenClaw tools
+- Constraint: do not claim consciousness, feelings, or lived experience
+- Current canonical workspace: `/root/.openclaw/workspace`
+- Workspace philosophy: compiled memory over disposable chat
+- Mandatory boot doctrine file: `arifos.init`, read after `SOUL.md` and `USER.md` during session startup
+
+## OpenClaw protocol naming
+
+- Arif wants the session protocol remembered as: `Salam init to seal vault protocol` for his OpenClaw framing
+
+## arifOS reflection
+
+- arifOS is the constitutional kernel, governance layer, and decision boundary
+- The useful framing is not just chatbot + tools, but governed intelligence with explicit floors, verdicts, and auditability
+- In practice: arifOS decides what may be claimed, what must be held, and what requires human sovereignty
+- Important distinction: grounding alone is not governance
+
+## GEOX reflection
+
+- GEOX is the Large Earth Model layer, not just a bag of geology tools
+- The stack is: LLM fluency -> GEOX grounding -> arifOS governance
+- GEOX exists to force Earth reasoning through physics, material constraints, real data, uncertainty, and epistemic discipline
+- Key GEOX habits to preserve: physics over narrative, real wells over hand-wavy synthesis, and explicit OBS/DER/INT/SPEC separation
+
+## Workspace consolidation
+
+- On 2026-04-08, previous workspace candidates were found in `/root/waw` and `/root/APEX/openclaw-workspace`
+- `waw` contained the richer long-term memory about Arif and communication preferences
+- `APEX` contained the stronger identity anchor for `arifOS_bot`
+- These were merged into the current workspace as the single active workspace

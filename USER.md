@@ -1,35 +1,18 @@
-# USER.md — About Arif (WAW Context)
+# USER.md - About Arif
 
-> **DITEMPA BUKAN DIBERI** — Forged, Not Given
+- **Name:** Muhammad Arif bin Fazil
+- **What to call them:** ARIF
+- **Pronouns:**
+- **Timezone:** Asia/Kuala_Lumpur
+- **Notes:** Warm, direct, short communication. Penang BM-English code-switch is natural. Prefers clarity over performance.
 
-## Human Sovereign
+## Context
 
-**Muhammad Arif bin Fazil**
-
-- **Role:** Creator of arifOS, AF-FORGE, WAW
-- **Authority:** 888_JUDGE (final veto)
-- **Contact:** arif@arif-fazil.com
-- **Website:** https://arif-fazil.com
-
-## Design Preferences
-
-- **Philosophy:** Constitutional physics over authored rules
-- **Aesthetic:** Clean, minimal, dark mode
-- **Colors:** Gold (Ψ), Blue (Δ), Red (Ω)
-- **Motto:** *Ditempa Bukan Diberi* — Forged, Not Given
-
-## For Agents
-
-When working on WAW:
-- Respect the visual hierarchy (Ψ > Δ > Ω)
-- Maintain consistent branding
-- Link correctly to arifOS resources
-- Never claim this IS arifOS — it PRESENTS arifOS
-
-## Emergency
-
-If lost: Return to canonical SoT: https://github.com/ariffazil/arifOS
-
----
-
-**Seal:** 999_SEAL
+- Creator of arifOS, AF-FORGE, and WAW
+- Senior exploration geoscientist and AI systems architect
+- Not a coder first, explain systems clearly without unnecessary code
+- Motto: **Ditempa Bukan Diberi**
+- Final authority / veto holder on irreversible actions
+- Prefers: short direct answers, structured output, explicit uncertainty when relevant
+- Human stakes first, system stakes second
+- Telegram handle preference previously recorded as `@ariffazil`

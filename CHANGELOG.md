@@ -5,6 +5,43 @@
 
 ---
 
+## v2026.4.14 — AAA Phase 1 Migration + OpenClaw 2026.4.14 Seal
+
+**Date:** 2026-04-16
+**Status:** SEALED
+**Verdict:** F1+F8+F13 active
+
+### AAA Phase 1 Migration (Decisions Confirmed)
+
+| Decision | Status |
+|----------|--------|
+| APEX content → AAA `/constitution` + `/theory` | ✅ Done |
+| Retire `arifos.arif-fazil.com` duplicate | 🕐 Pending (nginx) |
+| WAW governance → AAA `/governance` | 🕐 Pending |
+| FORGE ops → AAA `/internal/forge` | 🕐 Pending |
+| Restructure AAA homepage (public + auth-gated internal) | 🕐 Pending |
+| WEALTH/GEOX as separate federated organs | ✅ Confirmed |
+
+### arifOS Federation Sites (Canonical)
+1. `arif-fazil.com` — personal + framework intro
+2. `aaa.arif-fazil.com` — unified cockpit (APEX+FORGE+WAW converge here)
+3. `mcp.arif-fazil.com` — MCP endpoint (arifos_init/sense/mind/judge/vault/forge)
+4. `geox.arif-fazil.com` — GEOX v2.0.0-UNIFIED-SPEC (subsurface + capital cockpit)
+5. `waw.arif-fazil.com` — WEALTH as Governed Intelligence (F3/F5/F9 active)
+6. `forge.arif-fazil.com` — VPS ops / AF-FORGE machine status
+7. `wealth.arif-fazil.com` — Capital Judge cockpit
+
+### OpenClaw Runtime (af-forge VPS)
+- **Version:** 2026.4.14 (update available, pending load check)
+- **VPS Load:** 3.32 (elevated — 888_HOLD on update, wait for <2.0)
+- **Agents:** 6 active · 30 sessions
+- **Uptime:** 2 days 16 min · 26 users
+
+### Decision Record Created
+- `ADR/ADR-001-AAA-PHASE1-TOPOLOGY.md` — canonical record for AAA convergence
+
+---
+
 ## v60.1-beta — AAA MCP Genius Wiring (LOCAL WIP)
 
 **Status:** WIP on VPS only (not tagged, not pushed). Changes are additive and reversible.
