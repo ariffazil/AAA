@@ -1,128 +1,108 @@
-# TODO.md — Kernel Task Queue (000–099)
-> **Rule:** All tasks MUST pass the Kernel Filter
+# TODO.md — GEOX · 2026-04-12
+
+## PRIORITY 1 — Immediate (Before Next Session)
+
+### arifosmcp server.json fix
+- [ ] Regenerate `server.json` — tool count says "7" but /tools shows 17
+- [ ] Version mismatch — runtime is `2026.04.07`, server.json has `2026.03.10`
+- [ ] Location: `/opt/arifos/sites/arif-fazil.com/arifosmcp/` or wherever it lives
+
+### /a2a surface claim
+- [ ] Returns HTML fallback, not JSON agent routes
+- [ ] Either wire it properly or remove from public surfaces list
+- [ ] Apply 888 HOLD — do not claim LIVE if not confirmed
+
+### /prompts surface
+- [ ] Returns HTML fallback, not prompts list
+- [ ] Either wire it or remove from surfaces
+
+### SEO layer for geox-site
+- [ ] Generate `sitemap.xml` for geox-site
+- [ ] Add `robots.txt`
+- [ ] Add canonical URLs to all pages
+- [ ] Add OpenGraph meta tags to map/index.html
+
+### status.json for geox-site
+- [ ] Generate `/opt/arifos/sites/arif-fazil.com/geox/status.json`
+- [ ] Auto-refresh via cron or on deploy
 
 ---
 
-## 🔧 Kernel Filter Criteria (000–099 Band)
+## PRIORITY 2 — MAP Enhancements
 
-Before working on ANY task, verify ALL are true:
-- [ ] **Compounds:** Effect builds over time
-- [ ] **Strategic:** Revenue-linked or mission-critical
-- [ ] **Substantial:** Takes 1+ week to build properly
+### Click chain end-to-end test
+- [ ] User clicks a point in Borneo → inspector shows geology + quakes + coords
+- [ ] Verify / Context / Signals modes each fire correctly
+- [ ] Bottom tray logs each MCP call with timestamp
 
-**If ANY fail → SKIP, move to next task**
+### GEBCO deep zoom quality
+- [ ] WMS tiles grainy at zoom 10+
+- [ ] Consider tile caching or alternative tile source
+- [ ] Add GEBCO attribution to map attribution layer
 
----
+### Transform tool proj4 wiring
+- [ ] Wire `transformCoords()` to actual proj4 library or backend MCP tool
+- [ ] Add EPSG:3857 ↔ 4326 bidirectional transform
+- [ ] Show input/output CRS labels in inspector
 
-## 🎯 Active Queue (Prioritized)
+### Faults layer resolution
+- [ ] Document why USGS Quaternary Faults is BLOCKED
+- [ ] Find alternative service path or honest label
+- [ ] GEM Global Active Faults same
 
-### 1. 🟢 Implement LobsterLock Security Monitor
-**Status:** Ready to start
-**Compound:** Yes — continuously protects
-**Strategic:** Yes — security is foundational
-**Substantial:** Yes — multi-layer system
-
-**Description:**
-Create event-driven security monitoring for OpenClaw using semantic reasoning:
-- Collector layer: audit, logs, fs-watcher
-- Signal buffer for context accumulation
-- Claude reasoning on triggers (not polling)
-- Verdicts: CLEAR | WATCH | ALERT | KILL
-
-**Next Action:**
-Create `/root/waw/scripts/lobsterlock-monitor.js`
+### Layer toggles on mobile
+- [ ] Verify all layer checkboxes toggle correctly on mobile
+- [ ] Test GEBCO toggle on mobile — does it add/remove correctly?
 
 ---
 
-### 2. 🟡 arifOS Kernel Documentation
-**Status:** Pending
-**Compound:** Yes — docs enable scaling
-**Strategic:** Yes — onboarding & sovereignty
-**Substantial:** Yes — comprehensive system docs
+## PRIORITY 3 — Platform Pages
 
-**Description:**
-Document arifOS Trinity architecture for future agents:
-- 000–999 infrastructure band specifications
-- Meta-Agent orchestration patterns
-- Constitutional enforcement mechanisms
-- VAULT999 audit trail format
+### /prospect audit
+- [ ] Check for stale data or broken links
+- [ ] Verify layer status honest
+- [ ] Check 888 HOLD triggers
 
-**Next Action:**
-Create `/root/waw/docs/arifOS-kernel-spec.md`
+### /wiki audit
+- [ ] Cross-check against UNIFIED_ROADMAP.md for accuracy
+- [ ] Update if roadmap has drifted from wiki
+- [ ] Fix any broken internal links
 
----
-
-### 3. 🟡 Git Auto-Sync for waw
-**Status:** Pending
-**Compound:** Yes — prevents future breakage
-**Strategic:** Yes — workspace integrity
-**Substantial:** Yes — robust sync system
-
-**Description:**
-Implement bidirectional git sync for waw workspace:
-- Pre-commit symlink verification
-- Auto-resolve common conflicts
-- Health check integration
-- Rollback on sync failure
-
-**Next Action:**
-Create `/root/waw/scripts/git-sync-guard.sh`
+### /tools audit
+- [ ] Verify skills/index.html wired to actual skills registry
+- [ ] Check MCP tools listed match actual /tools endpoint
 
 ---
 
-### 4. 🟠 Model Routing Optimization
-**Status:** Pending
-**Compound:** Yes — saves money continuously
-**Strategic:** Yes — cost efficiency
-**Substantial:** Yes — intelligent routing logic
+## PRIORITY 4 — Architecture
 
-**Description:**
-Optimize LLM usage by task type:
-- Reasoning → Opus
-- Code gen → Codex
-- Bulk/heartbeat → MiniMax
-- Fallback chain on rate limits
+### Git push for geox map
+- [ ] Add SSH key to this machine OR push from machine that has it
+- [ ] Push commits f7b04819 and c9dc827c to GitHub
 
-**Next Action:**
-Update `openclaw.json` with task-based routing
+### Traefik routing for geox.arif-fazil.com
+- [ ] Currently returns 404 via traefik
+- [ ] Direct IP:port works — fix routing
+
+### arifOS MCP GitHub push
+- [ ] Same SSH key issue — resolve once
 
 ---
 
-### 5. 🔴 VAULT999 Integration
-**Status:** Pending
-**Compound:** Yes — audit trail accumulates
-**Strategic:** Yes — constitutional requirement
-**Substantial:** Yes — Merkle-sealed system
-
-**Description:**
-Integrate OpenClaw actions with VAULT999:
-- Log significant actions with hashes
-- Merkle tree for tamper evidence
-- Periodic seal operations
-- Query interface for audits
-
-**Next Action:**
-Design VAULT999 logging schema
+## Done (2026-04-12)
+- [x] GEOX MAP v4 — GEBCO WMS fixed, probe working, real geology data
+- [x] Mobile CSS — sidebar top bar, map 55vh, inspector bottom slide
+- [x] Visual polish — margins, tray height 110px, active tab green underline
+- [x] Inspector 7 sections live
+- [x] Bottom tray 3 tabs live
+- [x] MCP chains wired
+- [x] 10-layer catalog with honest status
+- [x] Commits f7b04819 + c9dc827c
 
 ---
 
-## ✅ Completed (Archive Pattern)
-
-### 2026-03-31 — OpenClaw Autonomous Recovery
-- [x] Fixed broken symlinks from git sync
-- [x] Implemented 4-file brain (AGENTS, SOUL, MEMORY, HEARTBEAT)
-- [x] Configured compaction (prevents crashes)
-- [x] Set up 30min heartbeat with silent mode
-- [x] Created daily 5 AM self-heal cron
-- [x] Aligned with arifOS Trinity principles
-- [x] Restored from vanilla state
-
----
-
-## 🗂️ Archive
-
-Move completed tasks here after 30 days. Keeps queue focused.
-
----
-
-**Motto:** *Kernel tasks forge infrastructure. Everything else is noise.* [000–099 | ΔΩΨ]
+## Principles
+- **DITEMPA BUKAN DIBERI** — forged, not given
+- **888 HOLD** before claiming anything LIVE that isn't confirmed
+- **Provenance always visible** — source, license, status per layer
+- **Federate don't mirror** — prefer BBOX queries, tiles, WMS over local copies

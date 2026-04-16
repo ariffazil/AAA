@@ -1,8 +1,11 @@
 # ARCHITECTURE.md - OpenClaw File System Canon
 
-**Authority:** Muhammad Arif bin Fazil (888 Judge)  
-**Version:** v1.0  
-**Sealed:** 2026-02-09
+**Authority:** Muhammad Arif bin Fazil (888 Judge)
+**Version:** v1.1 — AAA Phase 1 Migration Stamp
+**Sealed:** 2026-04-16
+**ADR:** ADR-001-AAA-PHASE1-TOPOLOGY
+
+> ⚠️ **Legacy Path Notice:** Physical VPS paths below (`/root/APEX-THEORY/`, `/root/arifOS/`, `/root/WORKFLOWS/`, `/root/openclaw-arif/`) are historical. The canonical workspace is now `/root/.openclaw/workspace` (git: `ariffazil/waw`). These legacy paths are kept for VPS-side reference only.
 
 ---
 
@@ -26,7 +29,7 @@
 ### 🔴 PHYSICS LAYER (What IS Possible)
 **Location:** `/root/APEX-THEORY/`
 
-| File | Purpose | W³ Weight |
+| File | Purpose | W3 Weight |
 |------|---------|-----------|
 | `000_THEORY.md` | 99 foundational theories, Strange Loop | 0.98 |
 | `000_CONSTITUTION.md` | 13 Floors, Lagrangian enforcement | 0.97 |
@@ -104,9 +107,9 @@ The `/root/HEARTBEAT.md` is for **human reference only**.
 
 ## REDUNDANCIES ELIMINATED
 
-✅ **SOUL.md multiplicity** — Removed copy from `.openclaw/workspace/`  
-✅ **WORKFLOW absence** — Created 7 missing workflow files  
-✅ **HEARTBEAT confusion** — Documented correct location
+✅ **SOUL.md multiplicity** - Removed copy from `.openclaw/workspace/`
+✅ **WORKFLOW absence** - Created 7 missing workflow files
+✅ **HEARTBEAT confusion** - Documented correct location
 
 ---
 
@@ -158,5 +161,34 @@ The `/root/HEARTBEAT.md` is for **human reference only**.
 
 ---
 
-*Ditempa bukan diberi* 💎🔥🧠  
+## AAA PHASE 1 MIGRATION STATUS (2026-04-16)
+
+**ADR:** ADR-001-AAA-PHASE1-TOPOLOGY
+
+| Milestone | Status | Notes |
+|-----------|--------|-------|
+| APEX → AAA `/constitution` + `/theory` | ✅ Done | Content migrated |
+| Retire `arifos.arif-fazil.com` | 🕐 Pending | Arif: edit nginx config |
+| FORGE → AAA `/internal/forge` | 🕐 Pending | |
+| WAW → AAA `/governance` | 🕐 Pending | |
+| AAA homepage restructure | 🕐 Pending | |
+| WEALTH as federated organ | ✅ Confirmed | Separate from WAW governance |
+| GEOX as federated organ | ✅ Confirmed | Remains at geox.arif-fazil.com |
+
+### Current Federation (Canonical)
+
+```
+arif-fazil.com (hub)
+├── aaa.arif-fazil.com         ← unified cockpit [MIGRATE HERE]
+├── arifos.arif-fazil.com      ← retire → aaa [PENDING]
+├── forge.arif-fazil.com       ← legacy ops [PENDING → aaa/internal]
+├── waw.arif-fazil.com         ← legacy governance [PENDING → aaa/gov]
+├── mcp.arif-fazil.com         ← MCP tools ✅
+├── geox.arif-fazil.com         ← GEOX ✅ federated
+└── wealth.arif-fazil.com      ← WEALTH ✅ federated
+```
+
+---
+
+*Ditempa bukan diberi* 💎🔥🧠
 *Architecture forged, not given*
