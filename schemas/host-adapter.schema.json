@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/host-adapter.schema.json",
+  "title": "AAA Host Adapter Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "host_contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "name": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "host_class": {
+            "type": "string",
+            "enum": [
+              "gateway",
+              "cli",
+              "ide",
+              "domain-witness"
+            ]
+          },
+          "runtime_type": {
+            "type": "string",
+            "enum": [
+              "acp",
+              "native-mcp",
+              "custom"
+            ]
+          },
+          "transport": {
+            "type": "string",
+            "enum": [
+              "stdio",
+              "http",
+              "sse",
+              "streamable-http",
+              "websocket"
+            ]
+          },
+          "config_paths": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "install_method": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "supported_protocols": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "mcp",
+                "a2a",
+                "webmcp"
+              ]
+            }
+          },
+          "platform_support": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "enum": [
+                "windows",
+                "macos",
+                "linux",
+                "browser"
+              ]
+            }
+          },
+          "session_contract": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "schema_ref": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "template_root": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "required_for_agent_sessions": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "schema_ref",
+              "template_root",
+              "required_for_agent_sessions"
+            ]
+          },
+          "generated_artifacts": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "auth_modes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "permission_profiles": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "$ref": "./common.schema.json#/$defs/id"
+                },
+                "default": {
+                  "type": "boolean"
+                },
+                "approval_policy": {
+                  "$ref": "./common.schema.json#/$defs/approvalPolicy"
+                },
+                "max_risk_tier": {
+                  "$ref": "./common.schema.json#/$defs/riskTier"
+                },
+                "remote_execution_enabled": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "id",
+                "default",
+                "approval_policy",
+                "max_risk_tier",
+                "remote_execution_enabled"
+              ]
+            }
+          },
+          "governance": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "requires_arifos_judgment_for": {
+                "type": "array",
+                "items": {
+                  "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                }
+              },
+              "requires_vault_seal_for": {
+                "type": "array",
+                "items": {
+                  "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                }
+              },
+              "deny_if_unsealed": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "requires_arifos_judgment_for",
+              "requires_vault_seal_for",
+              "deny_if_unsealed"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "host_class",
+          "runtime_type",
+          "transport",
+          "config_paths",
+          "install_method",
+          "supported_protocols",
+          "platform_support",
+          "session_contract",
+          "generated_artifacts",
+          "auth_modes",
+          "permission_profiles",
+          "governance"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "host_contracts"
+  ]
+}

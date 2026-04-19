@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/audit-event.schema.json",
+  "title": "AAA Audit Event",
+  "allOf": [
+    {
+      "$ref": "./event.schema.json"
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "SEAL",
+            "HOLD",
+            "PARTIAL",
+            "CAUTION",
+            "VOID"
+          ]
+        },
+        "witnesses": {
+          "type": "array",
+          "items": {
+            "$ref": "./common.schema.json#/$defs/witness"
+          },
+          "uniqueItems": true
+        },
+        "separation_of_duties": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "proposer_agent_id": {
+              "$ref": "./common.schema.json#/$defs/id"
+            },
+            "approver_agent_id": {
+              "$ref": "./common.schema.json#/$defs/id"
+            },
+            "distinct": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "proposer_agent_id",
+            "approver_agent_id",
+            "distinct"
+          ]
+        }
+      },
+      "required": [
+        "verdict",
+        "witnesses",
+        "separation_of_duties"
+      ]
+    }
+  ]
+}

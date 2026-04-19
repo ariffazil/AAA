@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/server.schema.json",
+  "title": "AAA MCP Server Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "transport": {
+      "type": "string",
+      "enum": [
+        "stdio",
+        "sse",
+        "streamable-http",
+        "websocket"
+      ]
+    },
+    "runtime_scope": {
+      "type": "string",
+      "enum": [
+        "local",
+        "workspace",
+        "remote"
+      ]
+    },
+    "risk_tier": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "approval_policy": {
+      "$ref": "./common.schema.json#/$defs/approvalPolicy"
+    },
+    "command": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "args": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "env_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "tools": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "resources": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "prompts": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "transport",
+    "runtime_scope",
+    "risk_tier",
+    "approval_policy",
+    "env_refs",
+    "tools",
+    "resources",
+    "prompts"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "transport": {
+            "const": "stdio"
+          }
+        },
+        "required": [
+          "transport"
+        ]
+      },
+      "then": {
+        "required": [
+          "command"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "transport": {
+            "enum": [
+              "sse",
+              "streamable-http",
+              "websocket"
+            ]
+          }
+        },
+        "required": [
+          "transport"
+        ]
+      },
+      "then": {
+        "required": [
+          "url"
+        ]
+      }
+    }
+  ]
+}

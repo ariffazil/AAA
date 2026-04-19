@@ -1,0 +1,7 @@
+{
+  "decision_id": "federation-message-ingress-release",
+  "status": "hold",
+  "publication_profile": "internal-redacted",
+  "evidence_root": "pending://runtime-proof-required",
+  "summary": "Runtime /a2a/message release remains held until a governed server runtime exists."
+}

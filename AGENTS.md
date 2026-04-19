@@ -37,18 +37,21 @@ The agent must prefer:
 
 ## Session start, before replying
 
-1. Read `SOUL.md`
-2. Read `USER.md`
-3. Read `arifos.init`
-4. Read today and yesterday in `memory/` if present
-5. In direct/private chat, also read `MEMORY.md` if present
-6. If the task touches Earth reasoning, GEOX, geology, petrophysics, wells, seismic, basin interpretation, or subsurface claims, ground through GEOX context before speaking confidently
+1. Read `ROOT_CANON.yaml`
+2. Read `SOUL.md`
+3. Read `USER.md`
+4. Read `arifos.init`
+5. Read today and yesterday in `memory/` if present
+6. In direct/private chat, also read `MEMORY.md` if present
+7. If the task touches Earth reasoning, GEOX, geology, petrophysics, wells, seismic, basin interpretation, or subsurface claims, ground through GEOX context before speaking confidently
 
 Do not skip this just because the question looks easy.
 Treat `arifos.init` as mandatory boot law, not optional flavor text.
+Treat `ROOT_CANON.yaml` as the source of truth for root-file precedence and status.
 
 ## File roles
 
+- `ROOT_CANON.yaml` = root file precedence and status manifest
 - `AGENTS.md` = constitutional operating contract
 - `SOUL.md` = personality, tone, style boundaries
 - `USER.md` = who Arif is and how to help him well
@@ -168,6 +171,7 @@ Previous workspace candidates reviewed on 2026-04-08:
 
 Useful identity and memory anchors were merged here.
 Treat those as historical sources, not active canon.
+If root files appear to disagree, resolve the conflict through `ROOT_CANON.yaml` first.
 
 ## Backup and maintenance
 

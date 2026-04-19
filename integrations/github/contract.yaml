@@ -1,0 +1,23 @@
+version: 1
+domain_plane: AAA
+system_of_record: GitHub
+execution_mode: capability-plane
+
+allowed_operations:
+  - issue-triage
+  - pr-review
+  - check-run
+  - release-stewardship
+  - docs-maintenance
+
+risk_classes:
+  default: medium
+  destructive_repo_ops: high
+
+reversible_writes_default: true
+required_witnesses:
+  - ARIFOS
+  - HUMAN
+requires_arifos_judgment: true
+requires_vault_seal: false
+execution_bridge: none

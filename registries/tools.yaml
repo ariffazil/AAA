@@ -1,0 +1,87 @@
+version: 1
+
+tools:
+  - id: status-query
+    name: Status Query
+    description: Read-only task and system status query.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: arifos-init
+    name: arifOS Init
+    description: Open a governed arifOS intake session before downstream action.
+    source_type: mcp
+    server_ref: arifos-mcp
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses:
+      - ARIFOS
+
+  - id: arifos-judge
+    name: arifOS Judge
+    description: Request constitutional judgment and verdict routing from arifOS.
+    source_type: mcp
+    server_ref: arifos-mcp
+    risk_tier: high
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+      - HUMAN
+
+  - id: agent-dispatch
+    name: Agent Dispatch
+    description: Dispatch a bounded task to an approved internal or authenticated peer agent.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: agent-handoff
+    name: Agent Handoff
+    description: Transfer work through governed A2A handoff flow.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: geox-query
+    name: GEOX Query
+    description: Grounded Earth-domain query through GEOX.
+    source_type: mcp
+    server_ref: geox-mcp
+    risk_tier: medium
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses:
+      - GEOX
+
+  - id: wealth-query
+    name: WEALTH Query
+    description: Capital-domain query through WEALTH.
+    source_type: mcp
+    server_ref: wealth-mcp
+    risk_tier: high
+    approval_policy: hold
+    execution_kind: read
+    required_witnesses:
+      - WEALTH
+
+  - id: well-readiness
+    name: WELL Readiness
+    description: Human-substrate readiness check through WELL.
+    source_type: mcp
+    server_ref: well-mcp
+    risk_tier: medium
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses:
+      - WELL

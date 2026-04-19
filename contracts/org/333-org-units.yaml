@@ -1,0 +1,93 @@
+version: 1
+id: aaa-org-topology-333
+name: AAA 333 Org Topology
+stage: "333"
+domain_plane: AAA
+purpose: Describe AAA org units, agent membership, and topology edges for governed delegation.
+
+org_units:
+  - id: aaa-control-plane
+    name: AAA Control Plane
+    type: control-plane
+    parent_org_unit: null
+    trust_tier: internal
+    lead_agent: aaa-gateway
+    members:
+      - aaa-gateway
+    owned_domain_planes:
+      - AAA
+    workflow_scope:
+      - local-a2a-handoff
+      - remote-peer-handoff
+    notes: Primary control-plane unit responsible for orchestration, routing, and approval posture.
+
+  - id: arifos-law-upstream
+    name: arifOS Law Upstream
+    type: upstream-law
+    parent_org_unit: null
+    trust_tier: internal
+    lead_agent: null
+    members: []
+    owned_domain_planes:
+      - ARIFOS
+    workflow_scope: []
+    notes: Upstream law authority surface; referenced for governance, not local execution membership.
+
+  - id: geox-witness-cell
+    name: GEOX Witness Cell
+    type: witness
+    parent_org_unit: aaa-control-plane
+    trust_tier: internal
+    lead_agent: geox-witness
+    members:
+      - geox-witness
+    owned_domain_planes:
+      - GEOX
+    workflow_scope:
+      - local-a2a-handoff
+    notes: Earth-domain witness cell delegated through the AAA control plane.
+
+  - id: wealth-witness-cell
+    name: WEALTH Witness Cell
+    type: witness
+    parent_org_unit: aaa-control-plane
+    trust_tier: internal
+    lead_agent: wealth-witness
+    members:
+      - wealth-witness
+    owned_domain_planes:
+      - WEALTH
+    workflow_scope:
+      - local-a2a-handoff
+      - remote-peer-handoff
+    notes: Capital-domain witness cell delegated through the AAA control plane.
+
+topology_edges:
+  - id: aaa-governed-by-arifos
+    from_org_unit: aaa-control-plane
+    to_org_unit: arifos-law-upstream
+    relation: governed-by
+    workflow_refs:
+      - local-a2a-handoff
+      - remote-peer-handoff
+    trust_tier: internal
+    rationale: AAA remains downstream from arifOS for constitutional authority and approval posture.
+
+  - id: aaa-delegates-geox
+    from_org_unit: aaa-control-plane
+    to_org_unit: geox-witness-cell
+    relation: delegates-to
+    workflow_refs:
+      - local-a2a-handoff
+    trust_tier: internal
+    rationale: The control plane can route Earth-domain tasks to GEOX witness capacity.
+
+  - id: aaa-delegates-wealth
+    from_org_unit: aaa-control-plane
+    to_org_unit: wealth-witness-cell
+    relation: delegates-to
+    workflow_refs:
+      - local-a2a-handoff
+      - remote-peer-handoff
+    trust_tier: internal
+    rationale: The control plane can route finance-sensitive tasks to WEALTH witness capacity.

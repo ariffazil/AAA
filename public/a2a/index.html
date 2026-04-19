@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AAA A2A Federation Surface</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: Arial, sans-serif;
+        background: #0b1220;
+        color: #e5e7eb;
+      }
+
+      main {
+        max-width: 880px;
+        margin: 0 auto;
+      }
+
+      code,
+      pre {
+        font-family: "Courier New", monospace;
+      }
+
+      a {
+        color: #7dd3fc;
+      }
+
+      .hold {
+        color: #fbbf24;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>AAA A2A Federation Surface</h1>
+      <p>
+        AAA publishes discovery assets here. Message ingress is
+        <span class="hold">888_HOLD</span> until a server runtime exposes the governed bridge.
+      </p>
+      <h2>Discovery</h2>
+      <ul>
+        <li><a href="./agent-card.json">/a2a/agent-card.json</a></li>
+        <li><a href="./agent.json">/a2a/agent.json</a></li>
+        <li><a href="./status.json">/a2a/status.json</a></li>
+        <li><a href="/.well-known/agent-card.json">/.well-known/agent-card.json</a></li>
+        <li><a href="/.well-known/agent.json">/.well-known/agent.json</a></li>
+      </ul>
+      <h2>Ingress posture</h2>
+      <pre>{
+  "path": "/a2a/message",
+  "status": "888_HOLD",
+  "reason": "Static AAA deployment does not implement POST message handling in this repo.",
+  "runtime_bridge_ref": "openclaw/a2a/bridge.yaml"
+}</pre>
+    </main>
+  </body>
+</html>

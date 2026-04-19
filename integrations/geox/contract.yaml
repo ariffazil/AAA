@@ -1,0 +1,21 @@
+version: 1
+domain_plane: GEOX
+system_of_record: GEOX
+execution_mode: domain-witness
+
+allowed_operations:
+  - grounded-domain-read
+  - spatial-analysis
+  - prospect-evaluation
+
+risk_classes:
+  default: medium
+  irreversible: high
+
+reversible_writes_default: true
+required_witnesses:
+  - GEOX
+  - ARIFOS
+requires_arifos_judgment: true
+requires_vault_seal: false
+execution_bridge: none

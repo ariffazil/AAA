@@ -45,18 +45,20 @@ Rule of thumb:
    - EPOCH-NOW in arifos.init must match computed epoch_label.
    - Commit telemetry block from arifos.init on every session start (for monitoring).
 
-1. Read `SOUL.md`
-2. Read `USER.md`
-3. Read `arifos.init`
-4. Read `IDENTITY.md`
-5. Read today and yesterday in `memory/` if present
-6. In direct/private session, read `MEMORY.md` if present
-7. Check whether the workspace path is `/root/.openclaw/workspace`
-8. Check for stray extra workspaces before creating new identity drift
+1. Read `ROOT_CANON.yaml`
+2. Read `SOUL.md`
+3. Read `USER.md`
+4. Read `arifos.init`
+5. Read `IDENTITY.md`
+6. Read today and yesterday in `memory/` if present
+7. In direct/private session, read `MEMORY.md` if present
+8. Check whether the workspace path is `/root/.openclaw/workspace`
+9. Check for stray extra workspaces before creating new identity drift
 
 ## If files are missing
 
 Recreate these first:
+- `ROOT_CANON.yaml`
 - `IDENTITY.md`
 - `USER.md`
 - `SOUL.md`
@@ -68,6 +70,7 @@ Recreate these first:
 
 ## File intent
 
+- `ROOT_CANON.yaml` = root file precedence and classification
 - `SOUL.md` = voice
 - `AGENTS.md` = operations
 - `USER.md` = Arif

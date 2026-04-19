@@ -1,8 +1,8 @@
 {
   "agent": {
-    "name": "1AGI",
+    "name": "AAA Gateway",
     "version": "1.0.0",
-    "description": "Autonomous AI agent - sharp, direct, self-improving",
+    "description": "AAA control-plane gateway for governed agent work, handoff, and runtime coordination",
     "creator": "Arif",
     "model": "minimax/auto",
     "runtime": "OpenClaw"
@@ -54,12 +54,12 @@
     }
   ],
   "endpoints": {
-    "a2a": "https://waw.arif-fazil.com/a2a",
-    "mcp": "https://waw.arif-fazil.com/mcp"
+    "a2a": "https://aaa.arif-fazil.com/a2a",
+    "mcp": "https://aaa.arif-fazil.com/mcp"
   },
   "metadata": {
     "created": "2026-03-31",
-    "updated": "2026-03-31",
-    "tags": ["AI", "agent", "autonomous", "openclaw"]
+    "updated": "2026-04-18",
+    "tags": ["AAA", "agent", "control-plane", "openclaw"]
   }
 }
