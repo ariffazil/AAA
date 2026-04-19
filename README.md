@@ -1,12 +1,15 @@
-# WAW — arifOS Website & Documentation Portal
+# AAA — Canonical Repo Identity
 
 > **DITEMPA BUKAN DIBERI** — *Intelligence is forged, not given.*
 
-> **⚠️ THIS IS THE WEBSITE / PRESENTATION LAYER**
+> **⚠️ LEGACY IDENTITY NOTICE**
 > 
-> **Canonical Source of Truth for arifOS:** [`ariffazil/arifOS`](https://github.com/ariffazil/arifOS)
+> This repository previously operated under the **WAW** legacy name, but its canonical identity is now **AAA**, the agent workspace and control plane.
 > 
-> **TypeScript Runtime Shell:** [`ariffazil/af-forge`](https://github.com/ariffazil/af-forge)
+> - **AAA charter:** [`AAA_CHARTER.md`](./AAA_CHARTER.md)
+> - **OpenClaw seed extraction:** [`AAA_OPENCLAW_SEED.md`](./AAA_OPENCLAW_SEED.md)
+> - **Canonical source of truth for governance:** [`ariffazil/arifOS`](https://github.com/ariffazil/arifOS)
+> - **Execution shell:** [`ariffazil/af-forge`](https://github.com/ariffazil/af-forge)
 
 ```
 WEBSITE_VERSION: 55.2.0
@@ -17,9 +20,19 @@ AUTHORITY: 888_JUDGE
 
 ---
 
-## What is WAW?
+## What is this repo now?
 
-WAW (World Agent Web) is the **frontend presentation layer** for arifOS — the website, documentation portal, and user interface that civilization interacts with.
+Historically, `waw` was treated as the frontend presentation layer for arifOS.
+
+That is now legacy framing only.
+
+This repo is now **AAA**:
+
+- the future **agent workspace**
+- the future **control plane**
+- the home of agent identity, contracts, skills, workflows, host adapters, and governance surfaces
+
+Public website concerns are expected to migrate toward **`arif-sites`** over time.
 
 **Live Site:** https://arif-fazil.com  
 **MCP Runtime:** https://arifosmcp.arif-fazil.com
@@ -28,10 +41,15 @@ WAW (World Agent Web) is the **frontend presentation layer** for arifOS — the 
 
 | Directory | Purpose |
 |-----------|---------|
-| `src/` | React/Vite source code |
+| `src/` | Legacy React/Vite surface still present during migration |
 | `memory/` | Long-term curated memory |
 | `.well-known/` | Discovery endpoints |
+| `openclaw/` | OpenClaw authority plane: gateway, ACP, MCP, plugins, A2A, exports |
+| `schemas/` | Contract schemas for AAA and OpenClaw runtime artifacts |
 | `AGENTS.md` | Agent behavior rules for this codebase |
+| `ROOT_CANON.yaml` | Root file precedence and status manifest |
+| `AAA_CHARTER.md` | Canonical future direction and ownership boundaries |
+| `AAA_OPENCLAW_SEED.md` | Extracted OpenClaw seed for AAA bootstrap |
 
 ## Ecosystem Hierarchy
 
@@ -45,8 +63,13 @@ WAW (World Agent Web) is the **frontend presentation layer** for arifOS — the 
 │  ├── ariffazil/af-forge (TypeScript agent workbench)        │
 │  └── arifosmcp/ (MCP server, HTTP transport)                │
 ├─────────────────────────────────────────────────────────────┤
-│  PRESENTATION (THIS REPO)                                    │
-│  └── ariffazil/waw — Website, docs portal, UI               │
+│  CONTROL-PLANE SEED (THIS REPO)                              │
+│  ├── ariffazil/waw (legacy alias) → AAA                     │
+│  │   (canonical agent workspace + control plane)            │
+│  └── legacy website/frontend content pending migration       │
+├─────────────────────────────────────────────────────────────┤
+│  PUBLIC SURFACES                                             │
+│  └── ariffazil/arif-sites (sites, rendering, docs portals)  │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -72,6 +95,21 @@ npm run build
 # Preview production build
 npm run preview
 ```
+
+## 111 Federation Status
+
+- **Discovery:** live as publishable static assets under `/a2a/` and `/.well-known/`
+- **Message ingress:** **888_HOLD** in this repo until a server runtime exposes `/a2a/message`
+
+## 222 / 333 Institutional Model
+
+- **222:** canonical Goal -> Task -> Verdict chain lives under `contracts/goals/`
+- **333:** canonical OrgUnit + topology graph lives under `contracts/org/`
+
+## 666 / 777 / 888 / 999 Governance Trail
+
+- **666 / 777:** governance gates and budget policies live under `contracts/governance/`
+- **888 / 999:** decision objects and vault export mapping live under `contracts/decisions/` and `vault/decisions/`
 
 ## Constitutional Alignment
 

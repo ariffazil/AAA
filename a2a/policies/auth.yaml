@@ -1,0 +1,32 @@
+version: 1
+default_policy: deny
+https_required: true
+
+peer_classes:
+  internal:
+    allowed_schemes:
+      - gateway-token
+    require_mtls: false
+    notes: Same-operator or same-boundary trusted peers.
+
+  federated:
+    allowed_schemes:
+      - oauth2
+    require_mtls: false
+    notes: User-linked or delegated enterprise/federated peers.
+
+  infrastructure:
+    allowed_schemes:
+      - api-key
+      - mtls
+    require_mtls: true
+    notes: Fixed machine peers or infra-to-infra trust lanes.
+
+task_endpoint:
+  allow_none_auth: false
+  require_https: true
+  reject_before_body_processing: true
+
+remote_write_policy:
+  default: hold
+  operator_approval_required: true

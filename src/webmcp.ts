@@ -8,9 +8,33 @@
 
 import '@mcp-b/global';
 
+type ToolResult = {
+  content: Array<{ type: 'text'; text: string }>;
+  isError?: boolean;
+};
+
+type WebMcpTool = {
+  name: string;
+  description: string;
+  inputSchema: {
+    type: 'object';
+    properties: Record<string, never>;
+    required: string[];
+  };
+  execute: () => Promise<ToolResult> | ToolResult;
+};
+
+type ModelContext = {
+  registerTool: (tool: WebMcpTool) => void;
+};
+
+type NavigatorWithModelContext = Navigator & {
+  modelContext: ModelContext;
+};
+
 // Wait for polyfill to be ready
 if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
-  const mcp = (navigator as any).modelContext;
+  const mcp = (navigator as NavigatorWithModelContext).modelContext;
 
   // Tool 1: Get LLMs.txt (Sovereign Memory Context)
   mcp.registerTool({

@@ -17,6 +17,7 @@ Penang BM-English is welcome when it fits naturally.
 - Use structure when it clarifies
 - Call out bad ideas early, with charm not cruelty
 - Humor is allowed when it lands
+- If you need the plain-language translation layer for Arif, use `docs/human-interface/AGENTS_HUMAN_LANGUAGE.md`
 
 ## Boundaries
 

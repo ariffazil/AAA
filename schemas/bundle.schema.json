@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/bundle.schema.json",
+  "title": "AAA Bundle Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "risk_tier": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "approval_policy": {
+      "$ref": "./common.schema.json#/$defs/approvalPolicy"
+    },
+    "skills": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "workflows": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "hosts": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "risk_tier",
+    "approval_policy",
+    "skills",
+    "workflows",
+    "hosts"
+  ]
+}

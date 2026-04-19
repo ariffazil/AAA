@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/audit-projection.schema.json",
+  "title": "AAA Audit Projection",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "projection_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "source_run_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "domain_plane": {
+      "$ref": "./common.schema.json#/$defs/domainPlane"
+    },
+    "integration_ref": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "stage": {
+      "$ref": "./common.schema.json#/$defs/pipelineStage"
+    },
+    "band": {
+      "$ref": "./common.schema.json#/$defs/intelligenceBand"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "SEAL",
+        "HOLD",
+        "PARTIAL",
+        "CAUTION",
+        "VOID"
+      ]
+    },
+    "vault_ref": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "judgment_source": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "seal_source": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "witnesses": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/witness"
+      },
+      "uniqueItems": true
+    },
+    "separation_of_duties_ok": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "projection_id",
+    "source_run_id",
+    "domain_plane",
+    "integration_ref",
+    "stage",
+    "band",
+    "verdict",
+    "judgment_source",
+    "seal_source",
+    "witnesses",
+    "separation_of_duties_ok"
+  ]
+}

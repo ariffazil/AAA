@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/openclaw-acp-session.schema.json",
+  "title": "AAA OpenClaw ACP Session Template",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "host_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "agent_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "working_directory": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "transport": {
+      "type": "string",
+      "enum": [
+        "stdio",
+        "http",
+        "websocket"
+      ]
+    },
+    "permission_profile": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "model": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "timeout_sec": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "approval_policy": {
+      "$ref": "./common.schema.json#/$defs/approvalPolicy"
+    }
+  },
+  "required": [
+    "id",
+    "host_id",
+    "agent_id",
+    "working_directory",
+    "transport",
+    "permission_profile",
+    "model",
+    "timeout_sec",
+    "approval_policy"
+  ]
+}

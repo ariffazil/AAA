@@ -1,0 +1,26 @@
+version: 1
+tool_id: arifos.aaa_control_plane
+type: proposal-generator
+
+input_contract:
+  operation: required
+  risk_tier: required
+  irreversibility: required
+  domains_touched:
+    - GEOX
+    - WEALTH
+    - WELL
+    - OpenClaw
+    - GitHub
+
+output_contract:
+  proposed_changes: required
+  required_floors: required
+  required_witnesses: required
+  required_approvals: required
+  vault_required: required
+
+execution_rule:
+  AAA proposes
+  arifOS judges
+  VAULT999 seals

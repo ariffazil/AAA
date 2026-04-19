@@ -1,0 +1,70 @@
+version: 1
+
+skills:
+  - id: openclaw-a2a-bridge
+    name: OpenClaw A2A Bridge
+    version: "0.1.0"
+    description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
+    owner: AAA
+    risk_tier: medium
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    host_compatibility:
+      - openclaw-gateway
+      - claude-code
+      - codex
+      - copilot-cli
+    package_ref: openclaw-a2a-bridge
+    dependencies:
+      skills: []
+      servers:
+        - arifos-mcp
+      tools:
+        - agent-dispatch
+        - agent-handoff
+        - status-query
+    install_hooks:
+      - host_id: openclaw-gateway
+        method: generated-config
+        target_path: openclaw/a2a
+    examples:
+      - openclaw/OPENCLAW_INVENTORY.md
+    tests:
+      - schema-parse
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: geox-grounding
+    name: GEOX Grounding
+    version: "0.1.0"
+    description: Force Earth-sensitive reasoning through GEOX witness paths.
+    owner: AAA
+    risk_tier: medium
+    knowledge_basis:
+      physics: true
+      math: true
+      language: true
+    host_compatibility:
+      - openclaw-gateway
+      - claude-code
+    package_ref: geox-grounding
+    dependencies:
+      skills: []
+      servers:
+        - geox-mcp
+      tools:
+        - geox-query
+    install_hooks:
+      - host_id: openclaw-gateway
+        method: generated-config
+        target_path: skills/geox-grounding
+    examples:
+      - GEOX grounding example
+    tests:
+      - schema-parse
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending

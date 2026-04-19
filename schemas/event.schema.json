@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/event.schema.json",
+  "title": "AAA Append-Only Event Record",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "run_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "event_type": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "summary": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "domain_plane": {
+      "$ref": "./common.schema.json#/$defs/domainPlane"
+    },
+    "integration_ref": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "judgment_source": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "seal_source": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "role": {
+      "$ref": "./common.schema.json#/$defs/role"
+    },
+    "band": {
+      "$ref": "./common.schema.json#/$defs/intelligenceBand"
+    },
+    "intelligence_tier": {
+      "$ref": "./common.schema.json#/$defs/intelligenceTier"
+    },
+    "risk_tier": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "pipeline_stage": {
+      "$ref": "./common.schema.json#/$defs/pipelineStage"
+    },
+    "epistemic_label": {
+      "$ref": "./common.schema.json#/$defs/epistemicLabel"
+    },
+    "approvals": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/approvalRecord"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "vault_ref": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "event_id",
+    "run_id",
+    "timestamp",
+    "event_type",
+    "summary",
+    "role",
+    "band",
+    "intelligence_tier",
+    "risk_tier",
+    "pipeline_stage",
+    "epistemic_label",
+    "approvals",
+    "evidence_refs",
+    "metadata"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "pipeline_stage": {
+            "const": "999"
+          }
+        },
+        "required": [
+          "pipeline_stage"
+        ]
+      },
+      "then": {
+        "required": [
+          "vault_ref"
+        ],
+        "properties": {
+          "epistemic_label": {
+            "enum": [
+              "CLAIM",
+              "PLAUSIBLE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "risk_tier": {
+            "enum": [
+              "high",
+              "critical"
+            ]
+          }
+        },
+        "required": [
+          "risk_tier"
+        ]
+      },
+      "then": {
+        "properties": {
+          "approvals": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+version: 1
+
+workflows:
+  - id: local-a2a-handoff
+    name: Local A2A Handoff
+    description: Same-gateway governed handoff between AAA gateway and an approved witness agent.
+    contract_ref: local-a2a-handoff
+    risk_tier: medium
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    required_witnesses:
+      - ARIFOS
+    requires_arifos_judgment: false
+    requires_vault_seal: false
+    separation_of_duties:
+      proposer_must_differ_from_approver: true
+    steps:
+      - id: init
+        title: Initialize request
+        stage: "000"
+        role: operator
+        required_skills:
+          - openclaw-a2a-bridge
+        required_tools:
+          - status-query
+        required_servers:
+          - arifos-mcp
+        holds: []
+        inputs:
+          - task-summary
+        outputs:
+          - request-envelope
+        on_error: halt
+        retry_policy:
+          max_attempts: 0
+          backoff: none
+
+      - id: reason
+        title: Route to witness
+        stage: "777"
+        role: architect
+        required_skills:
+          - openclaw-a2a-bridge
+        required_tools:
+          - agent-handoff
+        required_servers:
+          - arifos-mcp
+        holds:
+          - role: validator
+            policy: hold
+            required: true
+        inputs:
+          - request-envelope
+        outputs:
+          - delegated-task
+        on_error: escalate
+        retry_policy:
+          max_attempts: 1
+          backoff: fixed
+
+  - id: remote-peer-handoff
+    name: Remote Peer Handoff
+    description: Fail-closed remote peer delegation template requiring audit before release.
+    contract_ref: remote-peer-handoff
+    risk_tier: high
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    required_witnesses:
+      - ARIFOS
+      - HUMAN
+    requires_arifos_judgment: true
+    requires_vault_seal: true
+    separation_of_duties:
+      proposer_must_differ_from_approver: true
+    steps:
+      - id: init
+        title: Initialize remote request
+        stage: "000"
+        role: operator
+        required_skills:
+          - openclaw-a2a-bridge
+        required_tools:
+          - status-query
+        required_servers:
+          - arifos-mcp
+        holds: []
+        inputs:
+          - task-summary
+        outputs:
+          - request-envelope
+        on_error: halt
+        retry_policy:
+          max_attempts: 0
+          backoff: none
+
+      - id: audit
+        title: Audit remote action
+        stage: "888"
+        role: auditor
+        required_skills: []
+        required_tools:
+          - status-query
+        required_servers:
+          - arifos-mcp
+        holds:
+          - role: validator
+            policy: human-required
+            required: true
+        inputs:
+          - request-envelope
+        outputs:
+          - audit-verdict
+        on_error: halt
+        retry_policy:
+          max_attempts: 0
+          backoff: none

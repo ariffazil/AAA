@@ -1,0 +1,36 @@
+version: 1
+bridge_id: aaa-openclaw-a2a
+bind_address: 127.0.0.1
+transport:
+  inbound: https-jsonrpc
+  streaming: sse
+
+auth:
+  source: a2a/policies/auth.yaml
+  gateway_auth_required: true
+  reject_unauthenticated: true
+
+bindings:
+  - agent_id: aaa-gateway
+    target_type: gateway
+    target_id: openclaw-gateway
+    session_mode: acp
+    approval_policy: hold
+
+  - agent_id: geox-witness
+    target_type: peer
+    target_id: geox-witness
+    session_mode: acp
+    approval_policy: hold
+
+  - agent_id: wealth-witness
+    target_type: peer
+    target_id: wealth-witness
+    session_mode: acp
+    approval_policy: hold
+
+runtime_policy:
+  remote_execution_enabled: false
+  same_gateway_handoff_enabled: true
+  push_notifications_enabled: false
+  drift_check_required: true
