@@ -11,7 +11,7 @@
     "test": "npm run lint && npm run build",
     "validate:aaa": "node scripts/validate-aaa.mjs",
     "export:aaa": "node scripts/export-aaa-json.mjs",
-    "a2a:server": "tsx src/lib/a2a/server.ts",
+    "a2a:server": "tsx src/gateway/server.ts",
     "a2a:dev": "tsx watch src/lib/a2a/server.ts",
     "a2a:test": "tsx src/lib/a2a/test.ts",
     "a2a:demo": "tsx src/lib/a2a/demo.ts"
