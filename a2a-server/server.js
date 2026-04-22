@@ -8,6 +8,7 @@
 
 const express = require('express');
 const crypto = require('crypto');
+const { writeSeal, writeVoid, checkHealth: checkVaultHealth } = require('./vault');
 
 const app = express();
 app.use(express.json());
@@ -236,8 +237,16 @@ app.get('/agent.json', (req, res) => {
   res.json(AAA_AGENT_CARD);
 });
 
-app.get('/health', (req, res) => {
-  res.json({ status: 'healthy', protocol: 'A2A', version: '0.3.0', gateway: 'AAA', motto: 'Ditempa Bukan Diberi' });
+app.get('/health', async (req, res) => {
+  const vaultHealthy = await checkVaultHealth();
+  res.json({
+    status: 'healthy',
+    protocol: 'A2A',
+    version: '0.3.0',
+    gateway: 'AAA',
+    motto: 'Ditempa Bukan Diberi',
+    vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED'
+  });
 });
 
 app.get('/', (req, res) => {
@@ -309,6 +318,15 @@ app.post('/a2a/message/send', jsonRpcValidate, async (req, res) => {
     await executeTask(taskId, contextId, message);
 
     const updatedTask = taskStore.get(taskId);
+    const skill = updatedTask.metadata?.skill || 'general';
+
+    // Write SEAL to Vault999 (async, non-blocking)
+    writeSeal(updatedTask, 'aaa-gateway', `a2a.${skill}`, {
+      routing: 'direct_mcp_simulation',
+      task_id: taskId,
+      context_id: contextId
+    }).catch(err => console.error('[VAULT999] SEAL write failed:', err.message));
+
     res.json(createJSONRPCResponse(id, {
       id: taskId, contextId,
       status: updatedTask.status,
