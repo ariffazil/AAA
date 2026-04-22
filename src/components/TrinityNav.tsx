@@ -10,7 +10,7 @@ export default function TrinityNav() {
     <>
       {/* Trinity strip — unified arifOS ecosystem */}
       <div className="unified-trinity-strip">
-        <a href="https://arif-fazil.com" className="utn-node utn-human utn-active">HUMAN</a>
+        <a href="https://arif-fazil.com" className="utn-node utn-human">HUMAN</a>
         <span className="utn-div">·</span>
         <a href="https://arifos.arif-fazil.com" className="utn-node utn-theory">THEORY</a>
         <span className="utn-div">·</span>
@@ -18,7 +18,7 @@ export default function TrinityNav() {
         <span className="utn-div">·</span>
         <a href="https://forge.arif-fazil.com" className="utn-node utn-apps">FORGE</a>
         <span className="utn-div">·</span>
-        <a href="https://aaa.arif-fazil.com" className="utn-node utn-apps">AAA</a>
+        <a href="https://aaa.arif-fazil.com" className="utn-node utn-apps utn-active">AAA</a>
         <span className="utn-div">·</span>
         <a href="https://aaa.arif-fazil.com/geox" className="utn-node utn-apps">GEOX</a>
         <span className="utn-sep" />

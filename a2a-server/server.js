@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 /**
- * A2A Server for AAA Gateway
+ * A2A Server for AAA Gateway — Hardened
  * Standalone production server - no build step required
- * 
- * Usage: node server.js [--port 3001]
- * 
+ *
  * DITEMPA BUKAN DIBERI — Forged, Not Given
  */
 
@@ -14,11 +12,19 @@ const crypto = require('crypto');
 const app = express();
 app.use(express.json());
 
-// In-memory stores
+// === CONFIG ===
+const A2A_TOKEN = process.env.A2A_TOKEN || 'aaa-a2a-token-dev';      // Bearer token
+const A2A_API_KEY = process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev'; // x-a2a-key
+const NONCE_CACHE_TTL_MS = 5 * 60 * 1000; // 5-minute nonce window
+const REPLAY_CACHE_TTL_MS = 30 * 60 * 1001; // 30-minute replay window
+
+// === IN-MEMORY STORES ===
 const taskStore = new Map();
 const eventBus = new Map();
+const nonceStore = new Map();   // nonce → { ts, used }
+const replayStore = new Map();   // payloadHash → { ts }
 
-// A2A Agent Card
+// === A2A Agent Card ===
 const AAA_AGENT_CARD = {
   protocol_version: '0.3.0',
   id: 'aaa-gateway',
@@ -30,23 +36,14 @@ const AAA_AGENT_CARD = {
     transport: 'sse',
     url: 'https://aaa.arif-fazil.com/a2a/subscribe'
   }],
-  provider: {
-    organization: 'arifOS',
-    system: 'AAA',
-    runtime: 'OpenClaw',
-  },
+  provider: { organization: 'arifOS', system: 'AAA', runtime: 'OpenClaw' },
   version: '0.1.0',
-  capabilities: {
-    streaming: true,
-    push_notifications: false,
-    authenticated_extended_card: false,
-  },
+  capabilities: { streaming: true, push_notifications: false, authenticated_extended_card: false },
   security_schemes: [
     { id: 'gateway-token', type: 'bearer', description: 'Gateway bearer token for internal trusted peers.' },
-    { id: 'oauth2', type: 'oauth2', description: 'OAuth/OIDC for user-linked or federated callers.' },
     { id: 'api-key', type: 'apiKey', description: 'API key for fixed infrastructure peers.' },
   ],
-  security: [['gateway-token'], ['oauth2'], ['api-key']],
+  security: [['gateway-token'], ['api-key']],
   default_input_modes: ['text/plain', 'application/json'],
   default_output_modes: ['text/plain', 'application/json'],
   skills: [
@@ -57,15 +54,20 @@ const AAA_AGENT_CARD = {
   supports_authenticated_extended_card: false,
 };
 
-const EXTENDED_AGENT_CARD = {
-  ...AAA_AGENT_CARD,
-  description: 'AAA Gateway with full capabilities. arifOS F1-F13 constitutional floors.',
-  capabilities: { streaming: true, push_notifications: true, authenticated_extended_card: true },
+// === ERROR CODES ===
+const ERROR_CODES = {
+  INVALID_REQUEST: -32600,
+  METHOD_NOT_FOUND: -32601,
+  TASK_NOT_FOUND: -32001,
+  INTERNAL_ERROR: -32603,
+  UNAUTHORIZED: -32002,
+  NONCE_INVALID: -32003,
+  NONCE_REPLAY: -32004,
+  TIMESTAMP_EXPIRED: -32005,
 };
 
-function generateId() {
-  return crypto.randomUUID();
-}
+// === HELPERS ===
+function generateId() { return crypto.randomUUID(); }
 
 function createJSONRPCResponse(id, result) {
   return { jsonrpc: '2.0', id, result };
@@ -75,14 +77,82 @@ function createJSONRPCError(id, code, message) {
   return { jsonrpc: '2.0', id, error: { code, message } };
 }
 
-const ERROR_CODES = {
-  INVALID_REQUEST: -32600,
-  METHOD_NOT_FOUND: -32601,
-  TASK_NOT_FOUND: -32001,
-  INTERNAL_ERROR: -32603,
-};
+function hashPayload(payload) {
+  return crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+}
 
-// Event bus helpers
+function now() { return Date.now(); }
+
+// === AUTH MIDDLEWARE ===
+function authMiddleware(req, res, next) {
+  const bearer = req.headers['authorization'];
+  const apiKey = req.headers['x-a2a-key'];
+
+  if (bearer && bearer.startsWith('Bearer ') && bearer.slice(7) === A2A_TOKEN) {
+    req.auth = { scheme: 'bearer', valid: true };
+    return next();
+  }
+  if (apiKey && apiKey === A2A_API_KEY) {
+    req.auth = { scheme: 'apikey', valid: true };
+    return next();
+  }
+
+  res.setHeader('Content-Type', 'application/json');
+  res.status(401).json(createJSONRPCError(0, ERROR_CODES.UNAUTHORIZED, 'Unauthorized: provide Bearer token or x-a2a-key'));
+}
+
+// === SCHEMA VALIDATION ===
+const ALLOWED_METHODS = new Set([
+  'message/send', 'message/stream', 'tasks/get', 'tasks/cancel', 'tasks/subscribe',
+  'agent.dispatch', 'agent.handoff', 'status.query',
+  'kernel.handshake', 'kernel.ping'
+]);
+
+function validateEnvelope(body) {
+  if (!body || typeof body !== 'object') return { valid: false, code: ERROR_CODES.INVALID_REQUEST, message: 'Request body must be a JSON object' };
+  if (body.jsonrpc !== '2.0') return { valid: false, code: ERROR_CODES.INVALID_REQUEST, message: 'jsonrpc must be "2.0"' };
+  if (!body.id && body.id !== 0) return { valid: false, code: ERROR_CODES.INVALID_REQUEST, message: 'id is required' };
+  if (!body.method || typeof body.method !== 'string') return { valid: false, code: ERROR_CODES.INVALID_REQUEST, message: 'method must be a string' };
+  return { valid: true };
+}
+
+function validateMessage(message) {
+  if (!message || typeof message !== 'object') return { valid: false, message: 'message must be an object' };
+  if (!message.parts || !Array.isArray(message.parts)) return { valid: false, message: 'message.parts must be an array' };
+  for (const part of message.parts) {
+    if (!part.kind) return { valid: false, message: 'Each message part must have a kind' };
+    if (part.kind === 'text' && typeof part.text !== 'string') return { valid: false, message: 'text parts must have string text' };
+  }
+  return { valid: true };
+}
+
+function validateNonce(nonce, ts) {
+  if (!nonce || typeof nonce !== 'string') return { valid: false, code: ERROR_CODES.NONCE_INVALID, message: 'nonce must be a non-empty string' };
+  if (nonce.length < 4 || nonce.length > 128) return { valid: false, code: ERROR_CODES.NONCE_INVALID, message: 'nonce length must be 4–128 chars' };
+  if (!/^[A-Za-z0-9_-]+$/.test(nonce)) return { valid: false, code: ERROR_CODES.NONCE_INVALID, message: 'nonce must be alphanumeric with _-' };
+  if (ts && Math.abs(now() - ts) > NONCE_CACHE_TTL_MS) return { valid: false, code: ERROR_CODES.TIMESTAMP_EXPIRED, message: 'Timestamp outside acceptable window' };
+  if (nonceStore.has(nonce)) return { valid: false, code: ERROR_CODES.NONCE_REPLAY, message: 'nonce already used' };
+  return { valid: true };
+}
+
+function checkReplay(payloadHash) {
+  if (replayStore.has(payloadHash)) return true;
+  replayStore.set(payloadHash, { ts: now() });
+  setTimeout(() => replayStore.delete(payloadHash), REPLAY_CACHE_TTL_MS);
+  return false;
+}
+
+function pruneNonceStore() {
+  const cutoff = now() - NONCE_CACHE_TTL_MS;
+  for (const [k, v] of nonceStore) {
+    if (v.ts < cutoff) nonceStore.delete(k);
+  }
+}
+
+// Prune every 5 minutes
+setInterval(pruneNonceStore, NONCE_CACHE_TTL_MS);
+
+// === EVENT BUS ===
 function subscribe(taskId, callback) {
   if (!eventBus.has(taskId)) eventBus.set(taskId, new Set());
   eventBus.get(taskId).add(callback);
@@ -99,7 +169,7 @@ function publish(event) {
   }
 }
 
-// Skill detection
+// === SKILL DETECTION ===
 function detectSkill(text) {
   const lower = text.toLowerCase();
   if (lower.includes('dispatch') || lower.includes('send') || lower.includes('task')) return 'agent-dispatch';
@@ -112,7 +182,7 @@ function extractText(message) {
   return (message.parts || []).filter(p => p.kind === 'text').map(p => p.text).join(' ');
 }
 
-// Execute task
+// === EXECUTE TASK ===
 async function executeTask(taskId, contextId, message) {
   const userText = extractText(message);
   const skill = detectSkill(userText);
@@ -120,19 +190,20 @@ async function executeTask(taskId, contextId, message) {
   let task = taskStore.get(taskId);
   if (!task) return;
 
-  // Update to working
-  task.status = { state: 'working', message: { role: 'agent', parts: [{ kind: 'text', text: 'Processing your request...' }], messageId: generateId(), taskId, contextId }, timestamp: new Date().toISOString() };
+  task.status = {
+    state: 'working',
+    message: { role: 'agent', parts: [{ kind: 'text', text: 'Processing your request...' }], messageId: generateId(), taskId, contextId },
+    timestamp: new Date().toISOString()
+  };
   taskStore.set(taskId, task);
   publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
-  // Simulate processing
   await new Promise(r => setTimeout(r, 300));
 
-  // Build response
   let responseText;
   switch (skill) {
     case 'agent-dispatch':
-      responseText = `[AAA Gateway] Task dispatched to appropriate agent.\nSkill: ${skill}\nQuery: ${userText}`;
+      responseText = `[AAA Gateway] Task dispatched.\nSkill: ${skill}\nQuery: ${userText}`;
       break;
     case 'agent-handoff':
       responseText = `[AAA Gateway] Context handoff initiated.\nSkill: ${skill}\nQuery: ${userText}`;
@@ -141,16 +212,20 @@ async function executeTask(taskId, contextId, message) {
       responseText = `[AAA Gateway] Status query processed.\nSkill: ${skill}\nQuery: ${userText}`;
       break;
     default:
-      responseText = `[AAA Gateway] Received: "${userText}"\nThis is an A2A-enabled AAA gateway. Skills: agent-dispatch, agent-handoff, status-query.`;
+      responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query.`;
   }
 
-  const completedStatus = { state: 'completed', message: { role: 'agent', parts: [{ kind: 'text', text: responseText }], messageId: generateId(), taskId, contextId }, timestamp: new Date().toISOString() };
+  const completedStatus = {
+    state: 'completed',
+    message: { role: 'agent', parts: [{ kind: 'text', text: responseText }], messageId: generateId(), taskId, contextId },
+    timestamp: new Date().toISOString()
+  };
   task.status = completedStatus;
   taskStore.set(taskId, task);
   publish({ kind: 'status-update', taskId, contextId, status: completedStatus, final: true });
 }
 
-// Routes
+// === PUBLIC ROUTES (no auth) ===
 app.get('/.well-known/agent.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.json(AAA_AGENT_CARD);
@@ -162,19 +237,14 @@ app.get('/agent.json', (req, res) => {
 });
 
 app.get('/health', (req, res) => {
-  res.json({
-    status: 'healthy',
-    protocol: 'A2A',
-    version: '0.3.0',
-    gateway: 'AAA',
-    motto: 'Ditempa Bukan Diberi'
-  });
+  res.json({ status: 'healthy', protocol: 'A2A', version: '0.3.0', gateway: 'AAA', motto: 'Ditempa Bukan Diberi' });
 });
 
 app.get('/', (req, res) => {
   res.json({
     service: 'AAA A2A Gateway',
     version: '0.1.0',
+    auth: 'required',
     endpoints: {
       agentCard: '/.well-known/agent.json',
       messageSend: '/message/send',
@@ -185,13 +255,44 @@ app.get('/', (req, res) => {
   });
 });
 
-app.post('/message/send', async (req, res) => {
-  try {
-    const { jsonrpc, id, method, params } = req.body;
-    if (jsonrpc !== '2.0') return res.status(400).json(createJSONRPCError(id || 0, ERROR_CODES.INVALID_REQUEST, 'Invalid JSON-RPC version'));
+// === PROTECTED ROUTES ===
+app.use('/a2a', authMiddleware);
 
+// === JSON-RPC VALIDATION MIDDLEWARE ===
+function jsonRpcValidate(req, res, next) {
+  const body = req.body;
+  const env = validateEnvelope(body);
+  if (!env.valid) return res.status(400).json(createJSONRPCError(body?.id || 0, env.code, env.message));
+  req.jsonrpc = { id: body.id, method: body.method, params: body.params };
+  next();
+}
+
+// === MESSAGE/SEND ===
+app.post('/a2a/message/send', jsonRpcValidate, async (req, res) => {
+  try {
+    const { id, method, params } = req.jsonrpc;
     const message = params.message;
-    if (!message) return res.status(400).json(createJSONRPCError(id || 0, ERROR_CODES.INVALID_REQUEST, 'message is required'));
+    const msgValidation = validateMessage(message);
+    if (!msgValidation.valid) {
+      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, msgValidation.message));
+    }
+
+    // Nonce check (optional, from params.identity if present)
+    const identity = params.identity || {};
+    const nonce = identity.nonce;
+    const ts = identity.timestamp ? new Date(identity.timestamp).getTime() : null;
+    if (nonce) {
+      const nonceCheck = validateNonce(nonce, ts);
+      if (!nonceCheck.valid) return res.status(400).json(createJSONRPCError(id, nonceCheck.code, nonceCheck.message));
+      nonceStore.set(nonce, { ts: now() });
+      setTimeout(() => nonceStore.delete(nonce), NONCE_CACHE_TTL_MS);
+    }
+
+    // Replay check
+    const payloadHash = hashPayload(req.body);
+    if (checkReplay(payloadHash)) {
+      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
+    }
 
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
     const contextId = params.contextId || generateId();
@@ -205,7 +306,6 @@ app.post('/message/send', async (req, res) => {
     };
     taskStore.set(taskId, task);
 
-    // Execute synchronously
     await executeTask(taskId, contextId, message);
 
     const updatedTask = taskStore.get(taskId);
@@ -223,13 +323,20 @@ app.post('/message/send', async (req, res) => {
   }
 });
 
-app.post('/message/stream', async (req, res) => {
+// === MESSAGE/STREAM ===
+app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
   try {
-    const { jsonrpc, id, method, params } = req.body;
-    if (jsonrpc !== '2.0') return res.status(400).json(createJSONRPCError(id || 0, ERROR_CODES.INVALID_REQUEST, 'Invalid JSON-RPC version'));
-
+    const { id, params } = req.jsonrpc;
     const message = params.message;
-    if (!message) return res.status(400).json(createJSONRPCError(id || 0, ERROR_CODES.INVALID_REQUEST, 'message is required'));
+    const msgValidation = validateMessage(message);
+    if (!msgValidation.valid) {
+      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, msgValidation.message));
+    }
+
+    const payloadHash = hashPayload(req.body);
+    if (checkReplay(payloadHash)) {
+      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
+    }
 
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
     const contextId = params.contextId || generateId();
@@ -248,7 +355,6 @@ app.post('/message/stream', async (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     res.setHeader('X-Accel-Buffering', 'no');
 
-    // Send initial task event
     res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id, result: { kind: 'task', task } })}\n\n`);
 
     const unsubscribe = subscribe(taskId, (event) => {
@@ -257,7 +363,6 @@ app.post('/message/stream', async (req, res) => {
 
     req.on('close', () => { unsubscribe(); });
 
-    // Execute async
     executeTask(taskId, contextId, message).catch(console.error);
 
   } catch (error) {
@@ -266,19 +371,29 @@ app.post('/message/stream', async (req, res) => {
   }
 });
 
-app.get('/tasks/:taskId', (req, res) => {
+// === TASKS/:taskId ===
+app.get('/a2a/tasks/:taskId', jsonRpcValidate, (req, res) => {
   const task = taskStore.get(req.params.taskId);
-  if (!task) return res.status(404).json(createJSONRPCError(0, ERROR_CODES.TASK_NOT_FOUND, `Task ${req.params.taskId} not found`));
-  res.json(createJSONRPCResponse(0, { id: task.id, contextId: task.contextId, status: task.status, artifacts: task.artifacts, history: task.history, kind: 'task', metadata: task.metadata }));
+  if (!task) return res.status(404).json(createJSONRPCError(req.jsonrpc.id, ERROR_CODES.TASK_NOT_FOUND, `Task ${req.params.taskId} not found`));
+  res.json(createJSONRPCResponse(req.jsonrpc.id, {
+    id: task.id, contextId: task.contextId, status: task.status,
+    artifacts: task.artifacts, history: task.history, kind: 'task', metadata: task.metadata
+  }));
 });
 
-app.post('/tasks/:taskId/cancel', (req, res) => {
+// === TASKS/:taskId/CANCEL ===
+app.post('/a2a/tasks/:taskId/cancel', jsonRpcValidate, (req, res) => {
   const task = taskStore.get(req.params.taskId);
-  if (task) { task.status.state = 'canceled'; task.updated_at = new Date().toISOString(); taskStore.set(req.params.taskId, task); }
-  res.json(createJSONRPCResponse(req.body?.id || 0, { success: true, message: 'Task cancelled', task }));
+  if (task) {
+    task.status.state = 'canceled';
+    task.updated_at = new Date().toISOString();
+    taskStore.set(req.params.taskId, task);
+  }
+  res.json(createJSONRPCResponse(req.jsonrpc.id, { success: true, message: 'Task cancelled', task }));
 });
 
-app.get('/tasks/:taskId/subscribe', (req, res) => {
+// === TASKS/:taskId/SUBSCRIBE ===
+app.get('/a2a/tasks/:taskId/subscribe', jsonRpcValidate, (req, res) => {
   const taskId = req.params.taskId;
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
@@ -286,23 +401,25 @@ app.get('/tasks/:taskId/subscribe', (req, res) => {
   res.setHeader('X-Accel-Buffering', 'no');
 
   const task = taskStore.get(taskId);
-  if (task) res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id: 0, result: { kind: 'task', task } })}\n\n`);
+  if (task) res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id: req.jsonrpc.id, result: { kind: 'task', task } })}\n\n`);
 
   const unsubscribe = subscribe(taskId, (event) => {
-    res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id: 0, result: event })}\n\n`);
+    res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id: req.jsonrpc.id, result: event })}\n\n`);
   });
 
   req.on('close', () => { unsubscribe(); });
 });
 
-// 404 handler
+// === 404 HANDLER ===
 app.use((req, res) => {
   res.status(404).json(createJSONRPCError(0, ERROR_CODES.METHOD_NOT_FOUND, `Endpoint ${req.path} not found`));
 });
 
+// === START ===
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`[AAA A2A] Server running on port ${PORT}`);
+  console.log(`[AAA A2A] Hardened server running on port ${PORT}`);
+  console.log(`[AAA A2A] Auth: Bearer token = '${A2A_TOKEN}' | API key = '${A2A_API_KEY}'`);
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
 });
