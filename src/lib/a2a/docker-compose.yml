@@ -1,0 +1,59 @@
+# A2A Server Docker Compose
+version: '3.8'
+
+services:
+  a2a-server:
+    build:
+      context: .
+      dockerfile: src/lib/a2a/Dockerfile
+    container_name: aaa-a2a-server
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+    networks:
+      - aaa-network
+
+  # Example: A2A client agent (GEOX)
+  geox-agent:
+    build:
+      context: ../geox
+      dockerfile: Dockerfile
+    container_name: geox-agent
+    ports:
+      - "3002:3002"
+    environment:
+      - A2A_PORT=3002
+      - NODE_ENV=production
+    depends_on:
+      - a2a-server
+    networks:
+      - aaa-network
+
+  # Example: A2A client agent (WEALTH)
+  wealth-agent:
+    build:
+      context: ../wealth
+      dockerfile: Dockerfile
+    container_name: wealth-agent
+    ports:
+      - "3003:3003"
+    environment:
+      - A2A_PORT=3003
+      - NODE_ENV=production
+    depends_on:
+      - a2a-server
+    networks:
+      - aaa-network
+
+networks:
+  aaa-network:
+    driver: bridge
