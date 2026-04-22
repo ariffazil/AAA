@@ -195,7 +195,7 @@ export default function Cockpit() {
       </main>
 
       <footer className="max-w-6xl mx-auto px-6 pt-20 border-t border-white/5 text-center text-[10px] font-mono tracking-[0.2em] text-white/20">
-        Δ AAA COCKPIT · arifOS v2026.3.24 · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
+        Δ AAA COCKPIT · arifOS v2026.4.22 · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
       </footer>
     </div>
   );
