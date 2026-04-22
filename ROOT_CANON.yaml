@@ -11,6 +11,19 @@ domains:
     - integrations/
     - contracts/
     - schemas/
+    # OpenClaw plane — AAA authors, OpenClaw consumes
+    - openclaw/gateway/         # model providers, channels, security
+    - openclaw/acp/            # host adapter session templates
+    - openclaw/mcp/            # MCP server catalogs
+    - openclaw/plugins/        # approved plugin allowlist
+    - openclaw/channels/       # message routing and authorization
+    - openclaw/a2a/            # A2A peer contracts and agent cards
+    - openclaw/agents/         # agent definitions and runtime bindings
+    - openclaw/exports/        # generated JSON artifacts for runtime
+    # MaxHermes agent workspace
+    - agents/maxhermes/
+    # Skills registry
+    - skills/
   generated:
     - dist/
     - package-lock.json
@@ -115,6 +128,106 @@ files:
     status: canonical
     role: agent discovery surface
     notes: Current AAA external identity and endpoint envelope.
+
+  - path: agents/maxhermes/IDENTITY.md
+    status: canonical
+    role: MaxHermes identity anchor
+    notes: MaxHermes-specific identity — who MaxHermes is, domain ownership, stack alignment.
+
+  - path: agents/maxhermes/SOUL.md
+    status: canonical
+    role: MaxHermes voice contract
+    notes: MaxHermes voice, style, and behavioral boundaries. Grounded geophysics, warm direct.
+
+  - path: agents/maxhermes/AGENTS.md
+    status: canonical
+    role: MaxHermes behavioral contract
+    notes: MaxHermes constitutional operating contract — verdict before force, Earth-domain rules.
+
+  - path: agents/maxhermes/USER.md
+    status: canonical
+    role: MaxHermes human anchor
+    notes: Who Arif is for MaxHermes specifically.
+
+  - path: agents/maxhermes/BOOTSTRAP.md
+    status: canonical
+    role: MaxHermes recovery ritual
+    notes: Fresh/reset recovery ritual for MaxHermes workspace.
+
+  - path: agents/maxhermes/HEARTBEAT.md
+    status: canonical
+    role: MaxHermes recurring checklist
+    notes: GEOX-specific and arifOS-specific recurring checks for every session.
+
+  - path: agents/maxhermes/MEMORY.md
+    status: canonical
+    role: MaxHermes durable memory
+    notes: Curated long-term memory for MaxHermes — durable truths, not chat exhaust.
+
+  - path: agents/maxhermes/TOOLS.md
+    status: canonical
+    role: MaxHermes tool manifest
+    notes: Exhaustive GEOX + arifOS + WELL tool registry with epistemic policy.
+
+  - path: agents/maxhermes/memory/
+    status: runtime
+    role: MaxHermes session memory
+    notes: Daily session logs YYYY-MM-DD.md for MaxHermes.
+
+  - path: skills/maxhermes-hermes/SKILL.md
+    status: canonical
+    role: MaxHermes Hermes skill
+    notes: Core tool orchestration and session management skill.
+
+  - path: skills/maxhermes-arifos-sense/SKILL.md
+    status: canonical
+    role: MaxHermes arifOS Sense skill
+    notes: Floors F1-F13 constitutional judgment and F9 Anti-Hantu enforcement.
+
+  - path: skills/maxhermes-geox-ground/SKILL.md
+    status: canonical
+    role: MaxHermes GEOX Grounding skill
+    notes: Earth-domain physics grounding, AC_Risk, ClaimTag, vault receipts.
+
+  - path: registries/openclaw/maxhermes-agent.yaml
+    status: canonical
+    role: MaxHermes agent record (OpenClaw)
+    notes: OpenClaw-aligned agent record for MaxHermes with full schema fields.
+
+  - path: openclaw/agents/maxhermes/workspace.yaml
+    status: canonical
+    role: MaxHermes OpenClaw workspace config
+    notes: Runtime consumable artifact for MaxHermes OpenClaw workspace.
+
+  - path: openclaw/agents/maxhermes/binding.json
+    status: canonical
+    role: MaxHermes OpenClaw agent binding
+    notes: OpenClaw agent binding — host, channels, plugins, session mode.
+
+  - path: openclaw/agents/maxhermes/agent-card.yaml
+    status: canonical
+    role: MaxHermes A2A discovery card
+    notes: A2A + MCP public discovery surface for MaxHermes.
+
+  - path: openclaw/a2a/maxhermes-bridge.yaml
+    status: canonical
+    role: MaxHermes A2A bridge contract
+    notes: A2A peer communication contracts: aaa-gateway, geox-witness, arifos-kernel.
+
+  - path: contracts/goals/maxhermes-222-goals.yaml
+    status: canonical
+    role: MaxHermes goal/task/verdict chain
+    notes: 222 goal chain contract — well-log, seismic, prospect, volume estimation.
+
+  - path: contracts/org/maxhermes-333-org.yaml
+    status: canonical
+    role: MaxHermes org topology
+    notes: 333 org unit contract — MaxHermes placement in AAA organism.
+
+  - path: contracts/governance/maxhermes-666-777-gates.yaml
+    status: canonical
+    role: MaxHermes governance gates + budget
+    notes: 666/777 governance gates and budget policies for MaxHermes.
 
   - path: AAA_OPENCLAW_SEED.md
     status: generated

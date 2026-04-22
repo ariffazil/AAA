@@ -1,0 +1,95 @@
+version: 1
+
+description: ACP session templates for OpenClaw host adapters
+
+sessions:
+  - id: acp-claude-code
+    host_id: claude-code
+    agent_id: maxhermes
+    working_directory: /workspace/AAA
+    transport: stdio
+    permission_profile: default
+    model: anthropic/claude-sonnet-4
+    timeout_sec: 1800
+    approval_policy: on-demand
+
+  - id: acp-cursor
+    host_id: cursor
+    agent_id: maxhermes
+    working_directory: /workspace/AAA
+    transport: stdio
+    permission_profile: default
+    model: openrouter/google/gemini-2.5-flash
+    timeout_sec: 1800
+    approval_policy: on-demand
+
+  - id: acp-codex
+    host_id: codex
+    agent_id: maxhermes
+    working_directory: /workspace/AAA
+    transport: stdio
+    permission_profile: default
+    model: openai/gpt-4o
+    timeout_sec: 1800
+    approval_policy: on-demand
+
+  - id: acp-copilot-cli
+    host_id: copilot-cli
+    agent_id: maxhermes
+    working_directory: /workspace/AAA
+    transport: stdio
+    permission_profile: default
+    model: openai/gpt-4o
+    timeout_sec: 1800
+    approval_policy: on-demand
+
+  - id: acp-gemini-cli
+    host_id: gemini-cli
+    agent_id: maxhermes
+    working_directory: /workspace/AAA
+    transport: stdio
+    permission_profile: default
+    model: google/gemini-2.0-flash
+    timeout_sec: 1800
+    approval_policy: on-demand
+
+  - id: acp-opencode
+    host_id: opencode
+    agent_id: maxhermes
+    working_directory: /workspace/AAA
+    transport: stdio
+    permission_profile: default
+    model: openrouter/google/gemini-2.5-flash
+    timeout_sec: 1800
+    approval_policy: on-demand
+
+  - id: acp-geox
+    host_id: geox-acp
+    agent_id: maxhermes
+    working_directory: /workspace/GEOX
+    transport: stdio
+    permission_profile: domain-witness
+    model: minimax/auto
+    timeout_sec: 3600
+    approval_policy: on-demand
+
+  - id: acp-wealth
+    host_id: wealth-acp
+    agent_id: maxhermes
+    working_directory: /workspace/WEALTH
+    transport: stdio
+    permission_profile: domain-witness
+    model: minimax/auto
+    timeout_sec: 3600
+    approval_policy: hold
+
+  - id: acp-maxhermes
+    host_id: openclaw-maxhermes
+    agent_id: maxhermes
+    working_directory: /workspace/AAA/agents/maxhermes
+    transport: streamable-http
+    permission_profile: strict
+    model: minimax/auto
+    timeout_sec: 7200
+    approval_policy: on-demand
+

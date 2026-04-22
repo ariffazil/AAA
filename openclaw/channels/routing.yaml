@@ -1,0 +1,98 @@
+version: 1
+
+description: Message routing and authorization policy for AAA OpenClaw channels
+
+routing:
+  - channel_id: telegram
+    incoming:
+      enabled: true
+      allowed_agents:
+        - maxhermes
+        - geox-witness
+        - arifos-kernel
+      require_auth: true
+      approval_policy: on-demand
+    outgoing:
+      enabled: true
+      allowed_agents:
+        - maxhermes
+      require_auth: false
+      rate_limit_per_min: 60
+
+  - channel_id: terminal
+    incoming:
+      enabled: true
+      allowed_agents:
+        - maxhermes
+      require_auth: false
+      approval_policy: none
+    outgoing:
+      enabled: true
+      allowed_agents:
+        - maxhermes
+      require_auth: false
+      rate_limit_per_min: 1000
+
+  - channel_id: cli
+    incoming:
+      enabled: true
+      allowed_agents:
+        - maxhermes
+      require_auth: false
+      approval_policy: none
+    outgoing:
+      enabled: true
+      allowed_agents:
+        - maxhermes
+      require_auth: false
+      rate_limit_per_min: 1000
+
+  - channel_id: http-webhook
+    incoming:
+      enabled: false
+      allowed_agents: []
+      require_auth: true
+      approval_policy: hold
+    outgoing:
+      enabled: false
+      allowed_agents: []
+      require_auth: true
+      rate_limit_per_min: 10
+
+risk_routing:
+  - risk_tier: low
+    allowed_channels:
+      - telegram
+      - terminal
+      - cli
+    approval_policy: on-demand
+
+  - risk_tier: medium
+    allowed_channels:
+      - telegram
+      - terminal
+    approval_policy: on-demand
+
+  - risk_tier: high
+    allowed_channels:
+      - terminal
+    approval_policy: hold
+
+  - risk_tier: critical
+    allowed_channels: []
+    approval_policy: human-required
+
+domain_channels:
+  GEOX:
+    - telegram
+    - terminal
+  ARIFOS:
+    - terminal
+  AAA:
+    - telegram
+    - terminal
+    - cli
+  WEALTH:
+    - terminal
+    - cli
+

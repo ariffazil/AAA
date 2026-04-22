@@ -1,0 +1,78 @@
+version: 1
+
+agents:
+  - id: maxhermes
+    name: MaxHermes
+    description: >
+      Arif's personal geophysics agent. Earth intelligence grounded by GEOX,
+      governed by arifOS, and wired into AAA control plane. Primary domain:
+      well-log analysis, seismic interpretation, petrophysics, AC_Risk adjudication,
+      and GEOX tool orchestration for exploration geoscience.
+    role: domain-specialist
+    intelligence_tier: ASI
+    intelligence_band: ASI
+    risk_tier: medium
+    authority_level: propose
+    approval_policy: on-demand
+    knowledge_basis:
+      physics: true
+      math: true
+      language: true
+    host_binding: openclaw-maxhermes
+    allowed_tools:
+      - geox-query
+      - geox-vault-read
+      - arifos-judge
+      - arifos-init
+      - status-query
+      - web-search
+      - terminal
+      - file-read
+      - file-write
+    allowed_servers:
+      - geox-mcp
+      - arifos-mcp
+      - well-mcp
+    a2a_exposure: authenticated
+    allowed_peers:
+      - aaa-gateway
+      - geox-witness
+      - arifos-kernel
+    required_auth:
+      - gateway-token
+      - api-key+mtls
+    separation_of_duties:
+      cannot_self_seal: true
+      requires_distinct_approver_for_high_risk: true
+    max_risk_tier_for_remote: medium
+    required_witnesses:
+      - GEOX
+      - ARIFOS
+      - HUMAN
+    runtime:
+      model: minimax/auto
+      temperature: 0
+      context_budget: 64000
+      transport: streamable-http
+    escalation_rules:
+      - when: AC_Risk > 0.75 or claim-grade interpretation requested
+        to_role: auditor
+        via: approval-queue
+      - when: irreversible structural change to GEOX state
+        to_role: validator
+        via: aaa-gateway
+      - when: non-earth domain task detected
+        to_role: architect
+        via: aaa-gateway
+      - when: arifOS constitutional question (F1-F13)
+        to_role: auditor
+        via: arifos-mcp
+    epistemic_policy:
+      min_claim_threshold: 0.85
+      claim_tag_scale:
+        0.85: CLAIM
+        0.65: PLAUSIBLE
+        0.40: HYPOTHESIS
+        0.01: ESTIMATE
+        0.00: UNKNOWN
+      void_on_physics_violation: true

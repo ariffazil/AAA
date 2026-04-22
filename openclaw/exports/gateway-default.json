@@ -1,0 +1,19 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-gateway.schema.json",
+  "id": "aaa-gateway-default",
+  "providers": [
+    { "id": "minimax", "default_model": "minimax/auto", "enabled": true },
+    { "id": "anthropic", "default_model": "anthropic/claude-sonnet-4", "enabled": false },
+    { "id": "openrouter", "default_model": "openrouter/google/gemini-2.5-flash", "enabled": false }
+  ],
+  "channels": [
+    { "id": "telegram", "enabled": true, "approval_policy": "on-demand" },
+    { "id": "terminal", "enabled": true, "approval_policy": "none" },
+    { "id": "cli", "enabled": true, "approval_policy": "none" }
+  ],
+  "security": {
+    "fail_closed": true,
+    "require_auth": true,
+    "audit_events": true
+  }
+}
