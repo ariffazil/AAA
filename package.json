@@ -10,9 +10,15 @@
     "preview": "vite preview",
     "test": "npm run lint && npm run build",
     "validate:aaa": "node scripts/validate-aaa.mjs",
-    "export:aaa": "node scripts/export-aaa-json.mjs"
+    "export:aaa": "node scripts/export-aaa-json.mjs",
+    "a2a:server": "tsx src/lib/a2a/server.ts",
+    "a2a:dev": "tsx watch src/lib/a2a/server.ts",
+    "a2a:test": "tsx src/lib/a2a/test.ts",
+    "a2a:demo": "tsx src/lib/a2a/demo.ts"
   },
   "dependencies": {
+    "@a2a-js/sdk": "^0.1.0",
+    "express": "^4.21.0",
     "@hookform/resolvers": "^5.2.2",
     "@mcp-b/global": "^1.6.0",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -62,10 +68,11 @@
     "zod-to-json-schema": "^3.25.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.1",
+    "@types/express": "^4.17.21",
     "@types/node": "^24.10.9",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",
+    "tsx": "^4.19.0",
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.23",
     "eslint": "^9.39.1",

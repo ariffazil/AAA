@@ -132,6 +132,112 @@ npm run preview
 - **111 Discovery:** live as publishable static assets under `/a2a/` and `/.well-known/`
 - **Message ingress:** `888_HOLD` in this repo until a server runtime exposes `/a2a/message`
 
+## A2A Server (FULLY IMPLEMENTED)
+
+AAA now has a production-ready A2A server implementing the Linux Foundation Agent2Agent protocol v0.3.0.
+
+```bash
+# Start A2A server
+npm run a2a:server
+
+# Development mode with watch
+npm run a2a:dev
+
+# Run tests
+npm run a2a:test
+
+# Run demo client
+npm run a2a:demo
+```
+
+### Full Endpoint List
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| GET | `/.well-known/agent.json` | Public | Agent Card discovery |
+| GET | `/agent.json` | Public | Agent Card alias |
+| GET | `/a2a/agent/authenticatedExtendedCard` | Required | Extended capabilities card |
+| POST | `/message/send` | Optional | Submit task (blocking) |
+| POST | `/message/stream` | Optional | Submit task (SSE streaming) |
+| GET | `/tasks/:taskId` | Optional | Get task status |
+| GET | `/tasks` | Optional | List tasks with filters |
+| POST | `/tasks/:taskId/cancel` | Optional | Cancel a task |
+| POST | `/tasks/:taskId/pushNotificationConfig/set` | Optional | Configure push notifications |
+| GET | `/tasks/:taskId/pushNotificationConfig/get` | Optional | Get push notification config |
+| GET | `/tasks/:taskId/subscribe` | Optional | SSE subscribe to task updates |
+| GET | `/health` | Public | Health check |
+
+### Authentication
+
+- **Bearer Token**: `Authorization: Bearer <token>`
+- **API Key**: `X-API-Key: <key>`
+- **OAuth 2.0**: Via authorization flow
+- **None**: Development mode
+
+### Skills
+
+| Skill ID | Triggers | Description |
+|----------|----------|-------------|
+| `agent-dispatch` | "dispatch", "send", "task" | Task dispatch to specialists |
+| `agent-handoff` | "handoff", "transfer", "delegate" | Context handoff |
+| `status-query` | "status", "check", "query" | Read-only status |
+
+### Example Request
+
+```bash
+curl -X POST http://localhost:3001/message/send \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your-token" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "message/send",
+    "params": {
+      "message": {
+        "role": "user",
+        "parts": [{"kind": "text", "text": "dispatch a task to planner"}],
+        "messageId": "test-123"
+      }
+    }
+  }'
+```
+
+### Example Response
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "id": "aaa-abc123def456",
+    "contextId": "550e8400-e29b-41d4-a716-446655440000",
+    "status": {
+      "state": "completed",
+      "message": {
+        "role": "agent",
+        "parts": [{"kind": "text", "text": "[AAA Gateway] Task dispatched..."}],
+        "messageId": "resp-456"
+      },
+      "timestamp": "2026-04-22T12:00:00.000Z"
+    },
+    "kind": "task"
+  }
+}
+```
+
+### Deploy with Docker
+
+```bash
+# Build and run
+docker build -f src/lib/a2a/Dockerfile -t aaa-a2a-server .
+docker run -p 3001:3001 aaa-a2a-server
+
+# Or use docker-compose
+docker-compose -f src/lib/a2a/docker-compose.yml up -d
+```
+
+See [`src/lib/a2a/README.md`](./src/lib/a2a/README.md) for full documentation.
+
 ---
 
 ## Institutional model
