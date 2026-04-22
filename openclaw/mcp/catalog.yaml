@@ -1,0 +1,31 @@
+version: 1
+
+id: aaa-mcp-catalog-v1
+description: MCP server catalog for AAA OpenClaw runtime
+
+servers:
+  - server_id: arifos-mcp
+    enabled: true
+    auto_start: true
+    approval_policy: on-demand
+
+  - server_id: geox-mcp
+    enabled: true
+    auto_start: true
+    approval_policy: on-demand
+
+  - server_id: well-mcp
+    enabled: true
+    auto_start: true
+    approval_policy: on-demand
+
+  - server_id: wealth-mcp
+    enabled: false
+    auto_start: false
+    approval_policy: hold
+
+  - server_id: afwell-mcp
+    enabled: true
+    auto_start: true
+    approval_policy: on-demand
+
