@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: arifOS MCP Gateway (JSON-RPC)
+  version: "1.0.0"
+  description: >
+    JSON-RPC 2.0 over HTTP endpoint for MCP methods (e.g., kernel.handshake).
+    Base URL is fixed to https://mcp.arif-fazil.com/
+servers:
+  - url: https://mcp.arif-fazil.com/
+paths:
+  /:
+    post:
+      operationId: mcpJsonRpc
+      summary: MCP JSON-RPC Endpoint
+      description: Send JSON-RPC 2.0 requests to MCP (method + params).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/JsonRpcRequest"
+            examples:
+              kernelHandshake:
+                summary: kernel.handshake example
+                value:
+                  jsonrpc: "2.0"
+                  id: "handshake-001"
+                  method: "kernel.handshake"
+                  params:
+                    identity:
+                      name: "M Arif Fazil"
+                      role: "HUMAN_SOVEREIGN"
+                      nonce: "X7K9F32"
+                    intent: "establish_governance_channel"
+                    audit:
+                      prev_hash: "0x00000000000000000000000000000000"
+                      merkle_hint: "Vault-999/E25Δ"
+                      timestamp_utc: "2026-04-22T17:49:48Z"
+                      reversible_window_hours: 72
+      responses:
+        "200":
+          description: JSON-RPC success response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonRpcResponse"
+              examples:
+                ok:
+                  value:
+                    jsonrpc: "2.0"
+                    id: "handshake-001"
+                    result:
+                      status: "CONNECTED"
+                      session_id: "sess_abc123"
+                      nonce_next: "X7K9F33"
+                      server_time_utc: "2026-04-22T17:49:49Z"
+        "400":
+          description: Bad request (invalid JSON-RPC envelope or schema)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/JsonRpcResponse"
+              examples:
+                badRequest:
+                  value:
+                    jsonrpc: "2.0"
+                    id: "handshake-001"
+                    error:
+                      code: -32600
+                      message: "Invalid Request"
+        "401":
+          description: Unauthorized (if MCP requires auth)
+        "500":
+          description: Server error
+components:
+  schemas:
+    JsonRpcRequest:
+      type: object
+      required: [jsonrpc, method, id]
+      properties:
+        jsonrpc:
+          type: string
+          enum: ["2.0"]
+        id:
+          description: Client-generated request correlation id.
+          oneOf:
+            - type: string
+            - type: integer
+        method:
+          type: string
+          description: JSON-RPC method name (e.g., kernel.handshake)
+        params:
+          description: Method parameters (object or array)
+          oneOf:
+            - type: object
+            - type: array
+      additionalProperties: false
+    JsonRpcError:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: integer
+          description: JSON-RPC error code
+        message:
+          type: string
+        data:
+          description: Optional structured error context
+          nullable: true
+    JsonRpcResponse:
+      type: object
+      required: [jsonrpc, id]
+      properties:
+        jsonrpc:
+          type: string
+          enum: ["2.0"]
+        id:
+          oneOf:
+            - type: string
+            - type: integer
+        result:
+          description: Present on success
+          nullable: true
+        error:
+          description: Present on failure
+          allOf:
+            - $ref: "#/components/schemas/JsonRpcError"
+          nullable: true
+      additionalProperties: false
