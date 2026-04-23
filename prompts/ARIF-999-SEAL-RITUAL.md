@@ -66,14 +66,36 @@ Produce a JSON object named `seal_record` with this shape:
     "Short bullet of what changed or was verified this session",
     "... (list of meaningful deltas)"
   ],
+  "second_bullet_if_needed": [
+    "Second meaningful delta bullet if applicable"
+  ],
+  "code_delta": [
+    "High-level summary of important code/config changes"
+  ],
   "vault_ref": "<URL or path to session trace if available>",
   "next_moves": [
     "Immediate next branch",
     "Secondary stability check"
   ],
   "omega_0": <uncertainty 0.0–1.0>,
-  "seal_by": "ARIF-999-RITUAL-v1.0"
+  "seal_by": "ARIF-999-RITUAL-v1.0",
+  "blockers": [
+    "Any new HARD_BLOCK or important SOFT_FRICTION added"
+  ],
+  "scars": [
+    "Any new RECENT SCARS line(s) added"
+  ],
+  "open_decisions": [
+    "Any new 888 HOLD question(s) added in section 8"
+  ],
+  "arif_checksum_before": "<hash or placeholder if unavailable>",
+  "arif_checksum_after": "<hash or placeholder if unavailable>"
 }
+
+PHASE 4 — OUTPUT FORMAT
+Return:
+1. The ARIF.md patch (or a note that no ARIF.md update was required).
+2. The seal_record JSON as described above.
 
 RULES:
 - Never emit SEAL without running Phase 1.
@@ -81,5 +103,6 @@ RULES:
 - summary must be factual, not aspirational. No "I think", "we should", "hope to".
 - If the session touched anything in Law (CLAUDE.md/AGENTS.md/FLOORS/888_JUDGE), flag as CONSTITUTIONAL_BOUNDARY in summary.
 - This ritual does NOT replace 888_JUDGE — it only closes the lore log.
+- DO NOT: modify any law file; break ARIF.md section order or headings; invent story — only describe what the diff and current state justify.
 
 --- DITEMPA BUKAN DIBERI — 999 SEAL ALIVE ---
