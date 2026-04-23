@@ -1,0 +1,110 @@
+# MaxHermes Governance Gates (666/777 Contract)
+# Risk tiers, approval gates, and budget policies.
+
+version: 1
+contract_id: maxhermes-666-777-gates
+owner: maxhermes
+domain_plane: GEOX
+
+gates:
+
+  666_governance_gates:
+
+    - gate: geox-ac-risk-hold
+      description: >
+        AC_Risk >= 0.75 triggers automatic HOLD gate.
+        All geophysics interpretations with AC_Risk >= 0.75 must
+        be escalated to aaa-gateway for human review.
+      threshold: 0.75
+      verdict: HOLD
+      escalation_to: aaa-gateway
+      routing: approval-queue
+      witness_required: [GEOX, ARIFOS]
+
+    - gate: geox-physics-violation-void
+      description: >
+        PhysicsGuard rejection or F9 Anti-Hantu violation
+        triggers automatic VOID gate.
+      verdict: VOID
+      escalation_to: aaa-gateway
+      routing: void-log
+      witness_required: [GEOX, ARIFOS]
+      auto_escalate: true
+
+    - gate: geox-claim-grade-888-audit
+      description: >
+        Any CLAIM-grade interpretation (AC_Risk < 0.15)
+        triggers 888 audit gate — must log to vault/decisions.
+      verdict: SEAL with audit
+      escalation_to: arifos-kernel
+      routing: vault-888
+      witness_required: [GEOX, ARIFOS, HUMAN]
+      auto_log: true
+
+    - gate: geox-high-risk-prospect
+      description: >
+        Prospect evaluation touching structural geology,
+        fault seal, or charge timing triggers high-risk gate.
+      risk_tier_threshold: high
+      verdict: HOLD
+      escalation_to: HUMAN
+      routing: telegram
+      witness_required: [GEOX, ARIFOS, HUMAN]
+      auto_notify: true
+
+    - gate: geox-irreversible-write
+      description: >
+        Any action that modifies geox state, well data,
+        seismic interpretation, or vault records.
+      verdict: HOLD
+      escalation_to: aaa-gateway
+      routing: approval-queue
+      witness_required: [HUMAN]
+      reversibility_check: mandatory
+
+  777_budget_policies:
+
+    - policy: geox-mcp-compute-budget
+      description: >
+        MaxHermes MCP tool calls per session budget.
+        Prevents runaway computation loops.
+      limit: 50
+      window: session
+      action_on_limit: HOLD
+      escalation: aaa-gateway
+
+    - policy: geox-vault-write-budget
+      description: >
+        Vault receipt writes per session budget.
+        Prevents vault spam.
+      limit: 20
+      window: session
+      action_on_limit: CAUTION
+      escalation: aaa-gateway
+
+    - policy: geox-888-audit-budget
+      description: >
+        888 audit entries per day.
+        CLAIM-grade interpretations only.
+      limit: 10
+      window: daily
+      action_on_limit: CAUTION
+      escalation: arifos-kernel
+
+    - policy: geox-hold-escalation-budget
+      description: >
+        HOLD escalations to human per day.
+      limit: 5
+      window: daily
+      action_on_limit: HOLD
+      escalation: telegram
+      note: Too many holds indicates insufficient data — pause and report
+
+invariant:
+  name: maxhermes-governance-invariant
+  rule: >
+    MaxHermes may not SEAL a geophysics claim without GEOX witness.
+    MaxHermes may not override a VOID from PhysicsGuard.
+    MaxHermes may not claim CLAIM grade without 888 audit log.
+    MaxHermes must route non-GEOX tasks through aaa-gateway.
+    Human veto on high-stakes is always respected (F13 Sovereign).

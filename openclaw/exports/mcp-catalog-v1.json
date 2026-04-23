@@ -1,0 +1,11 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-mcp-catalog.schema.json",
+  "id": "aaa-mcp-catalog-v1",
+  "version": "1",
+  "servers": [
+    { "server_id": "arifos-mcp", "enabled": true, "auto_start": true, "approval_policy": "on-demand" },
+    { "server_id": "geox-mcp", "enabled": true, "auto_start": true, "approval_policy": "on-demand" },
+    { "server_id": "well-mcp", "enabled": true, "auto_start": true, "approval_policy": "on-demand" },
+    { "server_id": "wealth-mcp", "enabled": false, "auto_start": false, "approval_policy": "hold" }
+  ]
+}

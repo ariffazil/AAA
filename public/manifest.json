@@ -1,7 +1,7 @@
 {
-  "name": "Arif Fazil — Forged in Red",
-  "short_name": "Arif Fazil",
-  "description": "Personal portfolio of Muhammad Arif bin Fazil. Forged in red — where earth, economics, and AI converge.",
+  "name": "AAA Cockpit - Evidence-Based Industrialism",
+  "short_name": "AAA Cockpit",
+  "description": "AAA Cockpit is the operations surface of arifOS - evidence-based industrialism for governed execution, agent supervision, and constitutional runtime control.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050505",
@@ -9,7 +9,7 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
-  "categories": ["portfolio", "technology", "AI"],
+  "categories": ["technology", "productivity", "operations"],
   "icons": [
     {
       "src": "/forge-background.jpg",

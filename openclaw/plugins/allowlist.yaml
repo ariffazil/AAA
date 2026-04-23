@@ -1,0 +1,126 @@
+version: 1
+
+description: Approved plugins and policy for AAA OpenClaw runtime
+
+plugins:
+  - id: maxhermes-hermes
+    name: maxhermes-hermes
+    source: skills/maxhermes-hermes/SKILL.md
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: none
+    permissions:
+      - terminal
+      - file-read
+      - file-write
+      - web-search
+      - execute_code
+    hosts:
+      - openclaw-maxhermes
+      - claude-code
+      - cursor
+      - codex
+
+  - id: maxhermes-arifos-sense
+    name: maxhermes-arifos-sense
+    source: skills/maxhermes-arifos-sense/SKILL.md
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: none
+    permissions:
+      - terminal
+      - file-read
+      - arifos-judge
+      - arifos-init
+    hosts:
+      - openclaw-maxhermes
+      - claude-code
+      - cursor
+
+  - id: maxhermes-geox-ground
+    name: maxhermes-geox-ground
+    source: skills/maxhermes-geox-ground/SKILL.md
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: none
+    permissions:
+      - geox-query
+      - geox-vault-read
+      - file-read
+    hosts:
+      - openclaw-maxhermes
+
+  - id: geox-grounding
+    name: GEOX Grounding
+    source: plugins/geox-grounding
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: on-demand
+    permissions:
+      - geox-query
+      - file-read
+    hosts:
+      - openclaw-maxhermes
+      - geox-acp
+
+  - id: arifos-deploy
+    name: arifOS Deploy
+    source: plugins/arifos-deploy
+    version: 1.0.0
+    pinned: false
+    enabled: true
+    approval_policy: on-demand
+    permissions:
+      - terminal
+      - file-read
+      - http-request
+    hosts:
+      - openclaw-maxhermes
+
+  - id: self-verify
+    name: Self-Verification
+    source: plugins/self-verify
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: none
+    permissions:
+      - file-read
+      - memory-query
+    hosts:
+      - openclaw-maxhermes
+      - claude-code
+      - cursor
+      - codex
+
+  - id: mcp-tools
+    name: MCP Tools Bridge
+    source: plugins/mcp-tools
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: on-demand
+    permissions:
+      - mcp-invoke
+      - file-read
+    hosts:
+      - openclaw-maxhermes
+
+  - id: a2a-peer
+    name: A2A Peer Communication
+    source: plugins/a2a-peer
+    version: 1.0.0
+    pinned: true
+    enabled: true
+    approval_policy: hold
+    permissions:
+      - a2a-send
+      - a2a-receive
+      - a2a-discover
+    hosts:
+      - openclaw-maxhermes
+
