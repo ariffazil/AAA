@@ -1,0 +1,79 @@
+version: 1
+
+id: maxhermes-workspace
+agent_id: maxhermes
+host_id: openclaw-maxhermes
+
+description: >
+  MaxHermes workspace — Arif's personal geophysics domain agent.
+  Grounded by GEOX, governed by arifOS, wired into AAA control plane.
+
+skills:
+  - id: maxhermes-hermes
+    path: skills/maxhermes-hermes/SKILL.md
+    enabled: true
+
+  - id: maxhermes-arifos-sense
+    path: skills/maxhermes-arifos-sense/SKILL.md
+    enabled: true
+
+  - id: maxhermes-geox-ground
+    path: skills/maxhermes-geox-ground/SKILL.md
+    enabled: true
+
+mcp_servers:
+  - id: geox-mcp
+    url: https://geox.arif-fazil.com/mcp
+    enabled: true
+
+  - id: arifos-mcp
+    url: https://arifosmcp.arif-fazil.com/mcp
+    enabled: true
+
+  - id: well-mcp
+    url: https://afwell.fastmcp.app/mcp
+    enabled: true
+
+a2a_peers:
+  - agent_id: aaa-gateway
+    direction: bidirectional
+    protocol: a2a-v1
+
+  - agent_id: geox-witness
+    direction: receive
+    protocol: a2a-v1
+
+  - agent_id: arifos-kernel
+    direction: send
+    protocol: a2a-v1
+
+memory:
+  session_search_enabled: true
+  durable_memory_path: agents/maxhermes/memory
+  rollback_session_log: agents/maxhermes/memory/rollback.md
+
+approval_policy: on-demand
+max_risk_tier: medium
+
+allowed_tools:
+  - geox-query
+  - geox-vault-read
+  - arifos-judge
+  - arifos-init
+  - status-query
+  - web-search
+  - terminal
+  - file-read
+  - file-write
+
+runtime:
+  model: minimax/auto
+  temperature: 0
+  context_budget: 64000
+  transport: streamable-http
+
+host_binding:
+  id: openclaw-maxhermes
+  type: acp
+  channels: ["telegram", "terminal", "cli"]
+

@@ -1,0 +1,137 @@
+# MaxHermes Goal → Task → Verdict Chain (222 Contract)
+# Governed by arifOS Floors F1-F13, executed under AAA control plane.
+
+version: 1
+contract_id: maxhermes-222-goals
+owner: maxhermes
+domain_plane: GEOX
+witness: GEOX
+
+goal_chain:
+
+  - goal: geox-well-log-analysis
+    description: >
+      Analyze wireline log data (GR, SP, resistivity, density, neutron,
+      sonic) to derive lithology, porosity, water saturation, and permeability.
+    epistemic_policy:
+      min_claim_threshold: 0.85
+      claim_tag_scale:
+        0.85: CLAIM
+        0.65: PLAUSIBLE
+        0.40: HYPOTHESIS
+        0.01: ESTIMATE
+      void_on_physics_violation: true
+    tasks:
+      - task: geox-load-well-log
+        tool: geox_mcp:geox_load_well_log
+        epistemic_input: OBSERVED
+        vault_required: true
+      - task: geox-compute-archie-sw
+        tool: geox_mcp:geox_archie_sw
+        epistemic_input: COMPUTED
+        vault_required: true
+        ac_risk_threshold: 0.25
+      - task: geox-compute-kozeny-porosity
+        tool: geox_mcp:geox_kozeny_carman_phi
+        epistemic_input: COMPUTED
+        vault_required: true
+      - task: geox-adjudicate-ac-risk
+        tool: arifos_mcp:arifos_compute_risk
+        epistemic_input: CLAIM
+        hold_conditions:
+          - ac_risk >= 0.75
+          - missing_core_data
+          - uncertain_input_parameters
+    verdict_policy:
+      CLAIM: ac_risk < 0.15, grade AAA, 3+ independent measurements
+      PLAUSIBLE: ac_risk < 0.75, grade BBB, physics model validated
+      HYPOTHESIS: ac_risk < 0.95, grade CCC, limited data
+      VOID: ac_risk >= 0.95 or PhysicsGuard rejected
+
+  - goal: geox-seismic-interpretation
+    description: >
+      Interpret seismic reflection data for structural mapping, stratigraphic
+      analysis, and prospect identification.
+    epistemic_policy:
+      min_claim_threshold: 0.85
+      void_on_physics_violation: true
+    tasks:
+      - task: geox-load-seismic-cube
+        tool: geox_mcp:geox_load_seismic
+        epistemic_input: OBSERVED
+      - task: geox-extract-attribute
+        tool: geox_mcp:geox_seismic_attribute
+        epistemic_input: COMPUTED
+      - task: geox-pick-horizon
+        tool: geox_mcp:geox_horizon_pick
+        epistemic_input: INTERPRETED
+        hold_conditions:
+          - low_signal_to_noise
+          - fault_complex_zone
+          - below_resolution
+      - task: geox-adjudicate-seismic-risk
+        tool: arifos_mcp:arifos_compute_risk
+        epistemic_input: CLAIM
+        ac_risk_threshold: 0.25
+    verdict_policy:
+      CLAIM: ac_risk < 0.15, 2D+3D validation, check-shot correction applied
+      PLAUSIBLE: ac_risk < 0.75, single dataset, reasonable ties
+      HYPOTHESIS: ac_risk < 0.95, sparse control, velocity uncertainty
+
+  - goal: geox-prospect-evaluation
+    description: >
+      Evaluate exploration prospect: trap, reservoir, seal, source, timing,
+      charge, and risked in-place volume.
+    epistemic_policy:
+      min_claim_threshold: 0.85
+      required_witnesses: [GEOX, ARIFOS, HUMAN]
+      void_on_physics_violation: true
+    tasks:
+      - task: geox-prospect-structural
+        tool: geox_mcp:geox_structural_mapping
+        epistemic_input: CLAIM
+        hold_conditions:
+          - complex_structural_history
+          - insufficient_depth_control
+      - task: geox-prospect-reservoir
+        tool: geox_mcp:geox_reservoir_quality
+        epistemic_input: PLAUSIBLE
+        hold_conditions:
+          - no_core_data
+          - uncertain_facies
+      - task: geox-prospect-charge
+        tool: geox_mcp:geox_charge_analysis
+        epistemic_input: HYPOTHESIS
+        hold_conditions:
+          - no_geochemical_data
+          - uncertain_kitchen_area
+      - task: geox-volume-estimate
+        tool: geox_mcp:geox_monte_carlo_volume
+        epistemic_input: ESTIMATE
+        vault_required: true
+        hold_conditions:
+          - wide_porosity_range
+          - untested_prospect
+      - task: geox-final-verdict
+        tool: arifos_mcp:arifos_judge
+        verdict_domain: prospect
+        required_verdict: SEAL
+        hold_on: [HOLD, VOID]
+    verdict_policy:
+      CLAIM: all components CLAIM grade, AC_Risk < 0.15
+      PLAUSIBLE: dominant components PLAUSIBLE, AC_Risk < 0.75
+      HYPOTHESIS: any critical component HYPOTHESIS or lower
+
+escalation:
+  - when: goal.ac_risk >= 0.75
+    escalate_to: aaa-gateway
+    route: approval-queue
+    policy: hold
+  - when: goal requires human decision
+    escalate_to: HUMAN
+    route: telegram
+    policy: human-required
+  - when: goal involves non-GEOX domain
+    escalate_to: aaa-gateway
+    route: domain-routing
+    policy: on-demand

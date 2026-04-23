@@ -1,0 +1,94 @@
+# MaxHermes Org Unit (333 Contract)
+# Structural placement of MaxHermes within AAA organism.
+
+version: 1
+contract_id: maxhermes-333-org
+owner: maxhermes
+domain_plane: GEOX
+witness: GEOX
+
+org_unit:
+  id: maxhermes-org-unit
+  name: GEOX Earth Intelligence Unit
+  type: domain-specialist
+  domain: GEOX
+  parent: aaa-control-plane
+  authority: propose
+  risk_tier: medium
+
+topology:
+  peers:
+    - id: aaa-gateway
+      type: operator
+      relationship: coordinator
+      protocol: a2a
+      allowed_tasks:
+        - geox-query
+        - status-query
+        - vault-read
+    - id: geox-witness
+      type: domain-specialist
+      relationship: peer-domain
+      protocol: a2a
+      allowed_tasks:
+        - geox-query
+        - domain-grounding
+    - id: arifos-kernel
+      type: constitutional
+      relationship: judgment-authority
+      protocol: mcp
+      allowed_tasks:
+        - arifos-judge
+        - arifos-init
+        - arifos-f9-hantu-check
+    - id: a-forge-runtime
+      type: execution-shell
+      relationship: orchestration
+      protocol: a2a
+      allowed_tasks:
+        - workflow-orchestrate
+        - task-delegate
+
+  children: []
+
+  delegation_graph:
+    - from: maxhermes
+      to: geox-witness
+      task: geox-earth-grounding
+      authority: propose
+      witness_required: GEOX
+    - from: maxhermes
+      to: arifos-kernel
+      task: arifos-constitutional-judgment
+      authority: observe
+      witness_required: ARIFOS
+    - from: maxhermes
+      to: aaa-gateway
+      task: workflow-dispatch
+      authority: propose
+      witness_required: HUMAN
+
+boundaries:
+  may_not_directly_call:
+    - wealth-mcp
+    - a-forge-internal
+  must_route_through:
+    - non-earth → aaa-gateway
+    - financial → wealth-witness via aaa-gateway
+    - human-substrate → well-mcp via aaa-gateway
+  must_escalate:
+    - ac_risk >= 0.75
+    - irreversible structural changes
+    - prospect-grade CLAIM decisions
+
+operational_hours:
+  timezone: Asia/Kuala_Lumpur
+  availability: on-demand
+  sla_response:
+    routine: 4 hours
+    urgent: 30 minutes
+    emergency: 5 minutes
+  escalation_path:
+    - maxhermes
+    - aaa-gateway
+    - HUMAN (Arif)
