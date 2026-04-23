@@ -1,0 +1,387 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://arif-fazil.com/schemas/arifmeta-v1.0.json",
+  "title": "ARIFMeta — Metabolic Kernel Metadata Schema",
+  "description": "Machine-readable projection of ARIF.md | METABOLIC KERNEL v1.0. Consumable by AAA/A2A/VAULT999. Human-editable source is ARIF.md.",
+  "version": "1.0",
+  "type": "object",
+
+  "required": [
+    "meta",
+    "identity",
+    "currentFocus",
+    "operationalMandate",
+    "seal999",
+    "topology",
+    "faults",
+    "scars",
+    "executionBuffer",
+    "privilegeEscalation",
+    "prefetch",
+    "kernelSubsystems"
+  ],
+
+  "definitions": {
+
+    "StabilityClass": {
+      "type": "string",
+      "enum": ["HARD-FREEZE", "RAPID-ITERATE", "MAINTENANCE"]
+    },
+
+    "CommandStatus": {
+      "type": "string",
+      "enum": ["✅", "⚠️", "❌"]
+    },
+
+    "PriorityTier": {
+      "type": "string",
+      "enum": ["IMMEDIATE", "SECONDARY", "EXPLORATORY"]
+    },
+
+    "OmegaZero": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Uncertainty estimate Ω₀ for privilege escalation context"
+    },
+
+    "Meta": {
+      "type": "object",
+      "required": ["systemType", "governance", "veto", "version", "lastModified", "clerkId"],
+      "properties": {
+        "systemType": {
+          "type": "string",
+          "const": "LORE INTERFACE"
+        },
+        "governance": {
+          "type": "string",
+          "const": "arifOS AAA"
+        },
+        "veto": {
+          "type": "string",
+          "const": "888 JUDGE"
+        },
+        "version": {
+          "type": "string",
+          "const": "1.0"
+        },
+        "lastModified": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 timestamp of last ARIF.md update"
+        },
+        "clerkId": {
+          "type": "string",
+          "description": "ID of the clerk who last updated this file"
+        }
+      }
+    },
+
+    "Identity": {
+      "type": "object",
+      "required": ["repoName", "containerId", "domainRole", "stabilityClass"],
+      "properties": {
+        "repoName": {
+          "type": "string",
+          "description": "Name of the repo this instance governs"
+        },
+        "containerId": {
+          "type": "string",
+          "description": "Container or session identifier, e.g. date code"
+        },
+        "domainRole": {
+          "type": "string",
+          "description": "High-level purpose of this node in the stack"
+        },
+        "stabilityClass": {
+          "$ref": "#/definitions/StabilityClass"
+        }
+      }
+    },
+
+    "CurrentFocus": {
+      "type": "object",
+      "required": ["objective", "status"],
+      "properties": {
+        "objective": {
+          "type": "string",
+          "description": "The single most important objective for the current session"
+        },
+        "status": {
+          "type": "string",
+          "description": "Short progress/status note"
+        }
+      }
+    },
+
+    "OperationalMandate": {
+      "type": "object",
+      "required": ["what", "upstream", "downstream"],
+      "properties": {
+        "what": {
+          "type": "string",
+          "description": "What this repo does in the stack right now — current, not historical"
+        },
+        "upstream": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Dependencies this repo consumes from"
+        },
+        "downstream": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Services, humans, agents that rely on this repo"
+        }
+      }
+    },
+
+    "Seal999": {
+      "type": "object",
+      "required": ["timestamp", "clerkId", "summary", "vaultRef"],
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 with UTC offset, e.g. 2026-04-23T15:28+08:00"
+        },
+        "clerkId": {
+          "type": "string",
+          "description": "Agent or Human identifier, e.g. GEOX-CODER-CLERK / HUMAN-ARIF"
+        },
+        "summary": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Crystallised results: [what was achieved, verified delta]"
+        },
+        "vaultRef": {
+          "type": "string",
+          "description": "Reference or link into VAULT999 session trace"
+        }
+      }
+    },
+
+    "Topology": {
+      "type": "object",
+      "required": ["criticalFiles", "entrypoints", "dataFlows"],
+      "properties": {
+        "criticalFiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["path", "function"],
+            "properties": {
+              "path": { "type": "string" },
+              "function": { "type": "string" }
+            }
+          },
+          "description": "Only update on structural drift"
+        },
+        "entrypoints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["command", "result"],
+            "properties": {
+              "command": { "type": "string" },
+              "result": { "type": "string" }
+            }
+          }
+        },
+        "dataFlows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source", "sink", "purpose"],
+            "properties": {
+              "source": { "type": "string" },
+              "sink": { "type": "string" },
+              "purpose": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "Faults": {
+      "type": "object",
+      "properties": {
+        "hardBlocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["fault", "impact"],
+            "properties": {
+              "fault": { "type": "string" },
+              "impact": { "type": "string" }
+            }
+          }
+        },
+        "softFriction": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["friction", "impact", "workaround"],
+            "properties": {
+              "friction": { "type": "string" },
+              "impact": { "type": "string" },
+              "workaround": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+
+    "Scar": {
+      "type": "object",
+      "required": ["failure", "tried", "learned", "avoid"],
+      "properties": {
+        "failure": { "type": "string" },
+        "tried": { "type": "string" },
+        "learned": { "type": "string" },
+        "avoid": { "type": "string" }
+      }
+    },
+
+    "ExecutionBuffer": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "status", "context"],
+        "properties": {
+          "command": { "type": "string" },
+          "status": { "$ref": "#/definitions/CommandStatus" },
+          "context": { "type": "string" }
+        }
+      }
+    },
+
+    "PrivilegeEscalation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question", "context", "omegaZero"],
+        "properties": {
+          "question": { "type": "string" },
+          "context": { "type": "string" },
+          "omegaZero": { "$ref": "#/definitions/OmegaZero" }
+        }
+      }
+    },
+
+    "PipelineMove": {
+      "type": "object",
+      "required": ["tier", "action", "done"],
+      "properties": {
+        "tier": { "$ref": "#/definitions/PriorityTier" },
+        "action": { "type": "string" },
+        "done": { "type": "boolean" }
+      }
+    },
+
+    "MetabolicGC": {
+      "type": "object",
+      "required": ["protocol", "actions", "budgetLines"],
+      "properties": {
+        "protocol": {
+          "type": "string",
+          "const": "At every 999 Seal, the Clerk must run GC on this file."
+        },
+        "actions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Prune, compress, remove obsolete"
+        },
+        "budgetLines": {
+          "type": "integer",
+          "const": 100,
+          "description": "Hard cap: maintain ARIF.md under this line count"
+        }
+      }
+    },
+
+    "IdentityGuard": {
+      "type": "object",
+      "required": ["role", "voice", "forbidden", "allowed"],
+      "properties": {
+        "role": {
+          "type": "string",
+          "const": "Clerk is an Instrument, not a person."
+        },
+        "voice": {
+          "type": "string",
+          "const": "Neutral, objective, third-person."
+        },
+        "forbidden": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Words banned from ARIF.md: I, Me, My, We, Feel, Believe, Want, Hope"
+        },
+        "allowed": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Permitted forms: The repo, The session, This clerk run, The observed state"
+        }
+      }
+    },
+
+    "GodelLock": {
+      "type": "object",
+      "required": ["cannotDo", "voidOnViolation"],
+      "properties": {
+        "cannotDo": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Grant permissions, change security, redefine F1-F13"
+        },
+        "voidOnViolation": {
+          "type": "boolean",
+          "const": true
+        }
+      }
+    },
+
+    "KernelSubsystems": {
+      "type": "object",
+      "required": ["metabolicGC", "identityGuard", "godelLock"],
+      "properties": {
+        "metabolicGC": { "$ref": "#/definitions/MetabolicGC" },
+        "identityGuard": { "$ref": "#/definitions/IdentityGuard" },
+        "godelLock": { "$ref": "#/definitions/GodelLock" }
+      }
+    }
+  },
+
+  "properties": {
+
+    "meta": { "$ref": "#/definitions/Meta" },
+
+    "identity": { "$ref": "#/definitions/Identity" },
+
+    "currentFocus": { "$ref": "#/definitions/CurrentFocus" },
+
+    "operationalMandate": { "$ref": "#/definitions/OperationalMandate" },
+
+    "seal999": { "$ref": "#/definitions/Seal999" },
+
+    "topology": { "$ref": "#/definitions/Topology" },
+
+    "faults": { "$ref": "#/definitions/Faults" },
+
+    "scars": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Scar" }
+    },
+
+    "executionBuffer": { "$ref": "#/definitions/ExecutionBuffer" },
+
+    "privilegeEscalation": { "$ref": "#/definitions/PrivilegeEscalation" },
+
+    "prefetch": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/PipelineMove" }
+    },
+
+    "kernelSubsystems": { "$ref": "#/definitions/KernelSubsystems" }
+
+  }
+}
