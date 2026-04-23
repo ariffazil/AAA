@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-15T09:39:29.590Z",
+  "updatedAt": "2026-04-23T08:13:58.844Z",
   "entries": {
     "memory:memory/2026-04-08.md:1:23": {
       "key": "memory:memory/2026-04-08.md:1:23",
@@ -11,6 +11,7 @@
       "snippet": "# Memory - 2026-04-08 ## Context - Arif asked to find the previous workspace and keep digging with memory search. - Previous candidate workspaces were found at `/root/waw` and `/root/APEX/openclaw-workspace`. - Decision: consolidate useful identity and memory anchors into the current workspace. ## Comparison - `waw`: richer long-term memory and user preference context - `APEX`: stronger canonical identity anchor for `arifOS_bot` ## Decision - Current canonical active workspace is `/root/.openclaw/workspace` - Identity anchor chosen: `arifOS_bot` - User profile and communication preferences merged into current `USER.md` and `MEMORY.md` - Heartbeat kept minimal by default ## Carry forward",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.4682116091251373,
       "maxScore": 0.4682116091251373,
       "firstRecalledAt": "2026-04-08T23:29:30.151Z",
@@ -41,6 +42,7 @@
       "snippet": "# Memory - 2026-04-08 ## Context - Arif asked to find the previous workspace and keep digging with memory search. - Previous candidate workspaces were found at `/root/waw` and `/root/APEX/openclaw-workspace`. - Decision: consolidate useful identity and memory anchors into the current workspace. ## Comparison - `waw`: richer long-term memory and user preference context - `APEX`: stronger canonical identity anchor for `arifOS_bot` ## Decision - Current canonical active workspace is `/root/.openclaw/workspace` - Identity anchor chosen: `arifOS_bot` - User profile and communication preferences merged into current `USER.md` and `MEMORY.md` - Heartbeat kept minimal by default ## Carry forward",
       "recallCount": 2,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.7510424941778182,
       "maxScore": 0.3904564708471298,
       "firstRecalledAt": "2026-04-09T10:49:48.199Z",
@@ -72,6 +74,7 @@
       "snippet": "## 2026-04-09 - Fixed local Codex config in `/root/.codex/config.toml` by switching from OSS/Ollama (`model = \"qwen2.5:0.5b\"`, `model_provider = \"oss\"`, `oss_provider = \"ollama\"`) to OpenAI (`model = \"gpt-5.4\"`, `model_provider = \"openai\"`). - Confirmed Codex auth source is `/root/.codex/auth.json` with `auth_mode = \"apikey\"`. - Confirmed machine-level OpenAI key surfaces also include `/root/arifOS/.env` and `/root/.secrets/vault.env`. - After updating the OpenAI key, Codex moved past `401 Unauthorized`; current blocker is OpenAI billing/quota (`Quota exceeded. Check your plan and billing details.`), not local config. - User pasted a raw OpenAI API key into chat; treat that key as exposed i",
       "recallCount": 2,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.6424517452716827,
       "maxScore": 0.328848522901535,
       "firstRecalledAt": "2026-04-09T10:49:48.199Z",
@@ -103,6 +106,7 @@
       "snippet": "## 2026-04-09 - Fixed local Codex config in `/root/.codex/config.toml` by switching from OSS/Ollama (`model = \"qwen2.5:0.5b\"`, `model_provider = \"oss\"`, `oss_provider = \"ollama\"`) to OpenAI (`model = \"gpt-5.4\"`, `model_provider = \"openai\"`). - Confirmed Codex auth source is `/root/.codex/auth.json` with `auth_mode = \"apikey\"`. - Confirmed machine-level OpenAI key surfaces also include `/root/arifOS/.env` and `/root/.secrets/vault.env`. - After updating the OpenAI key, Codex moved past `401 Unauthorized`; current blocker is OpenAI billing/quota (`Quota exceeded. Check your plan and billing details.`), not local config. - User pasted a raw OpenAI API key into chat; treat that key as exposed i",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.31052721738815303,
       "maxScore": 0.31052721738815303,
       "firstRecalledAt": "2026-04-10T01:06:53.692Z",
@@ -133,6 +137,7 @@
       "snippet": "- `/etc/nginx/sites-available/arifosmcp.arif-fazil.com` — reverse-proxies to `http://127.0.0.1:8080` (arifosmcp uvicorn) ## arifOS MCP Health Fix + nginx Reverse Proxy — 2026-04-13 (17:40–18:05 UTC) ### Problem arifosmcp_server container failing with `TypeError: 'NoneType' object is not callable` — app was None. ### Root cause `sed` command earlier accidentally converted `server.py` and `stdio_server.py` from files into directories. Dockerfile captured empty dirs. `pip install .` failed silently. Container ran without entry point. ### Fix - Recreated `server.py` and `stdio_server.py` as proper Python files (restored from git history) - Rebuilt `arifos/arifosmcp:forge` image - Container `",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.4190802693367004,
       "maxScore": 0.4190802693367004,
       "firstRecalledAt": "2026-04-15T09:39:29.590Z",
@@ -163,6 +168,7 @@
       "snippet": "- `888_HOLD` bridge active (qdrant_client warnings about version check — non-fatal) - `ConstitutionalMemoryStore` failed init: `[Errno -3] Temporary failure in name resolution` (DNS — non-critical, fallback used) - Vitality score: 0.82 (displayed on landing page) ## Memory Note Workspace is read-only during flush. DITEMPA BAKAN DIBERI. ## Landing Page Decision — Why Publishing Matters **Arif's reflection (2026-04-13 05:22 UTC):** Invisible good work dies. Publishing turns \"I built this\" into \"anyone can plug this in.\" arifOS MCP is genuinely rare: - 13 constitutional floors with real enforcement (not advisory) - 888_HOLD human veto gate for irreversible actions - VAULT999 immutable audit",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.3959750801324844,
       "maxScore": 0.3959750801324844,
       "firstRecalledAt": "2026-04-15T09:39:29.590Z",
@@ -193,6 +199,7 @@
       "snippet": "- Bottom nav: Greek symbols removed from human layer - Footer: \"2 a.m. Stutter\" with human response time honesty ### Remaining gaps - BM/EN toggle (needs real BM copy from Arif) - PM318 positioning: option A (promote to section 2) vs B (interstitial) vs C (both) — awaiting decision - arif-sites monorepo materialization for constitutional audit trail (F1 reversibility) - VPS sites (aaa, wiki, arifosmcp, forge, geox): git tracking not yet established ### arif-sites git SSH push — working - GitHub token: `[REDACTED_GITHUB_TOKEN]` - SSH key: `~/.ssh/id_ed25519` provisioned on VPS - Push works: `git push git@github.com:ariffazil/arif-sites.git main`",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.39281452298164365,
       "maxScore": 0.39281452298164365,
       "firstRecalledAt": "2026-04-15T09:39:29.590Z",
@@ -223,6 +230,7 @@
       "snippet": "- Push confirmed working after SSH key addition ### arifosmcp container status after rebuild - SHA now `59b6f52` (merged PR #309) - `curl -sk https://arifosmcp.arif-fazil.com/health` → `{\"version\":\"2026.04.07\",\"status\":\"ok\",...}` - App object confirmed loading properly after image fix ### Deploy guide written for future agents `GEOX_DEPLOY_GUIDE.md` written to workspace root — covers git clone, npm setup, build process, live reload, git push, and troubleshooting. ### GEOX docs (all written this session) - `GEOX_ROADMAP.md` — version history, horizons A-H, principles - `TODO.md` — action items from audit, MAP next steps - `GEOX_README.md` — what GEOX is, quick start, architecture - `GEOX_D",
       "recallCount": 1,
       "dailyCount": 0,
+      "groundedCount": 0,
       "totalScore": 0.3874361455440521,
       "maxScore": 0.3874361455440521,
       "firstRecalledAt": "2026-04-15T09:39:29.590Z",
@@ -242,6 +250,68 @@
         "todo.md",
         "geox-readme.md",
         "geox-d"
+      ]
+    },
+    "memory:memory/2026-04-04.md:51:87": {
+      "key": "memory:memory/2026-04-04.md:51:87",
+      "path": "memory/2026-04-04.md",
+      "startLine": 51,
+      "endLine": 87,
+      "source": "memory",
+      "snippet": "- `ariffazil/arif-sites` — static sites (primary deploy repo) - `ariffazil/arifOS` — arifOS OS/system code + Cloudflare Pages for arifOS.arif-fazil.com - `ariffazil/arifOS-model-registry` — model configs - `ariffazil/geox` — GEOX Earth physics ### Machine Readable Files (all live) - llms.txt, page.json, llms.json, sitemap.xml, robots.txt — all 6 sites - .well-known/agent.json — arifOS.arif-fazil.com + forge.arif-fazil.com ### APEX Theory - Content: `geox/public/docs/apex-theory.html` (copied from arifOS Pages repo) - Deployed to: `/var/www/html/geox/docs/apex-theory.html` on VPS - Live at: https://geox.arif-fazil.com/docs/apex-theory.html ### GEOX Earth Physics - RATLAS: 99 materials, tri",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4130084931850433,
+      "maxScore": 0.4130084931850433,
+      "firstRecalledAt": "2026-04-23T08:13:58.844Z",
+      "lastRecalledAt": "2026-04-23T08:13:58.844Z",
+      "queryHashes": [
+        "e4cfb3c90683"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "ariffazil/arif-sites",
+        "ariffazil/arifos",
+        "os/system",
+        "arifos.arif-fazil.com",
+        "ariffazil/arifos-model-registry",
+        "ariffazil/geox",
+        "llms.txt",
+        "page.json"
+      ]
+    },
+    "memory:memory/2026-04-01.md:216:246": {
+      "key": "memory:memory/2026-04-01.md:216:246",
+      "path": "memory/2026-04-01.md",
+      "startLine": 216,
+      "endLine": 246,
+      "source": "memory",
+      "snippet": "- verification-runbooks.md — exact curl commands per surface - change-classification.md — 11 change types with required gates - 888-hold-matrix.md — mandatory holds + refusals ``` **Cultural layer encoded:** - Physics over narrative - Maruah over convenience - Evidence thresholds for all claims - Anti-mystical framing rules - Never \"it thinks\", never \"consciousness\", never AGI overclaim ### Sites Live Status (UNVERIFIED — Arif to check) - https://arifOS-fazil.com — hub or old docs? ( Arif to verify) - https://arifOS-fazil.com/llms.txt — text or HTML? (Arif to verify) - https://arifos.arifOS-fazil.com — docs or hub? (Arif to verify) ### Deferred - Phase 3: Delete theory files from ar",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3833433449268341,
+      "maxScore": 0.3833433449268341,
+      "firstRecalledAt": "2026-04-23T08:13:58.844Z",
+      "lastRecalledAt": "2026-04-23T08:13:58.844Z",
+      "queryHashes": [
+        "e4cfb3c90683"
+      ],
+      "recallDays": [
+        "2026-04-23"
+      ],
+      "conceptTags": [
+        "verification-runbooks.md",
+        "change-classification.md",
+        "888-hold-matrix.md",
+        "anti-mystical",
+        "arifos-fazil.com",
+        "arifos-fazil.com/llms.txt",
+        "arifos.arifos-fazil.com",
+        "verification"
       ]
     }
   }
