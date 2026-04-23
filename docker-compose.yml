@@ -1,0 +1,156 @@
+# docker-compose.yml
+# arifOS Observability Stack — Prometheus + Grafana
+# Purpose: Read-only monitoring of arifOS endpoints (metrics/json, /api/status)
+#
+# Axiom: Prometheus is OBSERVABILITY ONLY.
+# Governance lives in arifOS. Prometheus has no write access to any system.
+#
+# Usage:
+#   cp .env.example .env   # fill in YOUR Grafana admin password
+#   docker compose up -d prometheus grafana
+#   docker compose up -d    # full stack including app (if applicable)
+#
+# Ports exposed:
+#   Prometheus:  :9090
+#   Grafana:     :3000
+#   App (nginx): :8080
+#
+# To add new scrape targets: edit observability/prometheus/prometheus.yml
+
+services:
+
+  # ── Prometheus ─────────────────────────────────────────────────────────────
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    container_name: prometheus-arifOS
+    restart: unless-stopped
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=30d'
+      - '--web.enable-lifecycle'         # Hot-reload via POST :9090/-/reload
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-admin-api'        # Allow admin API (read-only monitoring)
+    ports:
+      - "127.0.0.1:9090:9090"           # Bind to localhost only — no public exposure
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observability/prometheus/nine_signal_alerts.yml:/etc/prometheus/nine_signal_alerts.yml:ro
+      - prometheus-data:/prometheus
+    networks:
+      - arifOS-observability
+    labels:
+      service: prometheus
+      stack: observability
+      access: read-only-monitoring
+      observability_layer: prometheus-observability-only
+    # Resource limits — Prometheus is lightweight
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 2G
+        reservations:
+          cpus: '0.25'
+          memory: 512M
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9090/-/healthy"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+  # ── Grafana ─────────────────────────────────────────────────────────────────
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: grafana-arifOS
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"           # Bind to localhost only
+    environment:
+      # Grafana security — change ADMIN_PASSWORD in .env
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-changeme-in-env}
+      GF_SECURITY_ADMIN_EMAIL: arif@arif-fazil.com
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_USERS_ALLOW_GRAVATAR: "false"
+      GF_FEATURE_TOGGLES_ENABLE: "publicDashboards"
+      GF_SMTP_ENABLED: "false"
+      # Performance
+      GF_ANALYTICS_REPORTING_ENABLED: "false"
+      GF_ANALYTICS_CHECK_FOR_UPDATES: "false"
+      # Security
+      GF_SERVER_ROOT_URL: "http://localhost:3000"
+      GF_SERVER_DOMAIN: "localhost:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
+    networks:
+      - arifOS-observability
+    labels:
+      service: grafana
+      stack: observability
+      access: read-only-monitoring
+      observability_layer: prometheus-observability-only
+    depends_on:
+      prometheus:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:3000/api/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── app (nginx static frontend) ──────────────────────────────────────────────
+  # This is the existing static site. Replace with your actual app service.
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: arifOS-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    networks:
+      - arifOS-observability
+    labels:
+      service: app
+      stack: application
+      observability_layer: prometheus-observability-only
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8080/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# ── Networks ─────────────────────────────────────────────────────────────────
+
+networks:
+  arifOS-observability:
+    name: arifOS-observability
+    driver: bridge
+    labels:
+      network: arifOS-observability
+      purpose: monitoring
+      access: internal-only   # No public exposure of monitoring ports
+
+# ── Volumes ───────────────────────────────────────────────────────────────────
+
+volumes:
+  prometheus-data:
+    name: prometheus-arifOS-data
+    driver: local
+  grafana-data:
+    name: grafana-arifOS-data
+    driver: local

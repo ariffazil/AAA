@@ -1,0 +1,303 @@
+# nine_signal_alerts.yml
+# arifOS Nine-Signal Alerting Rules
+# Watches: DELTA (dS entropy), PSI (vitality), OMEGA (humility/uncertainty), FLOOR, VERDICT drift
+#
+# Axiom: Prometheus alerts are OBSERVATION only.
+# Governance actions (HOLD, SEAL, VOID) are decided by arifOS — never by Prometheus.
+# Prometheus's job is to make Floor/plane drift visible to operators.
+#
+# Nine-Signal field definitions (from arifOS kernel):
+#   delta / dS   — entropy change. Positive = more uncertain. Target: dS <= 0
+#   psi          — vitality/liveliness. Low psi = degraded / stuck. Target: psi >= 0.7
+#   omega / Ω    — humility/uncertainty. High omega = high uncertainty acknowledged. Target: omega <= 0.3
+#   floor        — constitutional Floor that was evaluated
+#   verdict      — SEAL / HOLD / CAUTION / VOID / CLAIM_ONLY
+#   plane        — domain plane: governance / geoscience / wealth / aforge
+#   kappa_r      — session entropy index
+#   peace_squared — system peace² metric. Target: >= 1.0
+#
+# Alert severity guide:
+#   critical  — governance frozen or verdict=HOLD on high-risk action
+#   warning   — entropy rising, psi dropping, floor drift detected
+#   info      — CAUTION verdict, deferred floors, omega rising
+
+groups:
+  - name: "arifOS-Nine-Signal"
+    interval: 30s
+    rules:
+
+      # ── DELTA (Entropy) ──────────────────────────────────────────────────
+      - alert: "EntropyRising"
+        expr: 'delta > 0.1'
+        for: "5m"
+        labels:
+          severity: "warning"
+          signal: "delta"
+          domain: "governance"
+        annotations:
+          summary: "Entropy rising (dS > 0.1)"
+          description: |
+            Entropy has been rising for 5+ minutes.
+            dS = {{ $value | printf "%.3f" }}
+            Target: dS <= 0 (Ditempa Bukan Diberi — reduce entropy)
+            Possible cause: conflicting evidence, ambiguous session context, or adversarial input.
+          runbook_url: "https://arifOS/docs/runbooks/entropy-rising.md"
+
+      - alert: "EntropyCritical"
+        expr: 'delta > 0.5'
+        for: "2m"
+        labels:
+          severity: "critical"
+          signal: "delta"
+          domain: "governance"
+        annotations:
+          summary: "Entropy critically high"
+          description: |
+            dS = {{ $value | printf "%.3f" }} — exceeds critical threshold 0.5.
+            Governance coherence at risk. Session may need 888_HOLD escalation.
+            Check: kappa_r, evidence bundle coherence, adversarial input patterns.
+
+      # ── PSI (Vitality) ──────────────────────────────────────────────────
+      - alert: "VitalityLow"
+        expr: 'psi < 0.7'
+        for: "10m"
+        labels:
+          severity: "warning"
+          signal: "psi"
+          domain: "governance"
+        annotations:
+          summary: "System vitality low (psi < 0.7)"
+          description: |
+            psi = {{ $value | printf "%.3f" }}
+            Target: psi >= 0.7 (F4 Keterbukaan — vitality and openness)
+            Low vitality = agent/session may be degraded, stuck, or loop-reactive.
+            Investigate: session history, tool call frequency, memory state.
+
+      - alert: "VitalityCritical"
+        expr: 'psi < 0.3'
+        for: "3m"
+        labels:
+          severity: "critical"
+          signal: "psi"
+          domain: "governance"
+        annotations:
+          summary: "System vitality critically low"
+          description: |
+            psi = {{ $value | printf "%.3f" }} — near-zero vitality.
+            Session may be non-responsive or in a loop.
+            Immediate action: review session state, consider session reset.
+
+      # ── OMEGA (Humility / Uncertainty) ──────────────────────────────────
+      - alert: "UncertaintyHigh"
+        expr: 'omega > 0.3'
+        for: "10m"
+        labels:
+          severity: "warning"
+          signal: "omega"
+          domain: "governance"
+        annotations:
+          summary: "High uncertainty acknowledged (omega > 0.3)"
+          description: |
+            omega = {{ $value | printf "%.3f" }}
+            Target: omega <= 0.3 (F7 Keadilan — stay within uncertainty band)
+            Agent is explicitly acknowledging high uncertainty. Verify evidence basis.
+            This is healthy behavior if accurate — do NOT suppress this alert.
+
+      - alert: "UncertaintyTooLow"
+        expr: 'omega < 0.01'
+        for: "5m"
+        labels:
+          severity: "warning"
+          signal: "omega"
+          domain: "governance"
+          alert_type: "anti-hantu"   # F9: no false certainty signals
+        annotations:
+          summary: "Uncertainty suspiciously low — possible hantu pattern"
+          description: |
+            omega = {{ $value | printf "%.4f" }}
+            F9 Anti-Hantu: AGI must never claim absolute certainty.
+            omega < 0.01 may indicate metric spoofing or false confidence.
+            Investigate: tri_witness_score coherence, evidence bundle integrity.
+
+      # ── PEACE² ─────────────────────────────────────────────────────────
+      - alert: "PeaceSquaredDegraded"
+        expr: 'peace_squared < 1.0'
+        for: "5m"
+        labels:
+          severity: "warning"
+          signal: "peace_squared"
+          domain: "governance"
+        annotations:
+          summary: "peace² degraded below 1.0"
+          description: |
+            peace_squared = {{ $value | printf "%.3f" }}
+            Target: peace_squared >= 1.0
+            System constitutional coherence is degraded.
+            Possible cause: conflicting Floors, high delta, governance drift.
+
+      # ── FLOOR / VERDICT ─────────────────────────────────────────────────
+      - alert: "FloorHOLDActive"
+        expr: 'verdict == "HOLD"'
+        for: "0m"     # Immediate — no persistence required
+        labels:
+          severity: "warning"
+          signal: "verdict"
+          domain: "governance"
+        annotations:
+          summary: "HOLD verdict issued"
+          description: |
+            Verdict = HOLD on Floor: {{ $labels.floor }}
+            Session: {{ $labels.session_id | default "unknown" }}
+            Plane: {{ $labels.plane | default "unknown" }}
+            Action: Awaiting human review. arifOS governance is working correctly.
+
+      - alert: "FloorVOIDActive"
+        expr: 'verdict == "VOID"'
+        for: "0m"
+        labels:
+          severity: "critical"
+          signal: "verdict"
+          domain: "governance"
+        annotations:
+          summary: "VOID verdict issued — action blocked"
+          description: |
+            Verdict = VOID on Floor: {{ $labels.floor }}
+            arifOS has blocked this action.
+            Reason: {{ $labels.reason | default "unspecified" }}
+            Do NOT override without Arif's explicit sign-off (F13 Sovereign).
+
+      - alert: "FloorDeferred"
+        expr: 'floors_deferred_count > 0'
+        for: "5m"
+        labels:
+          severity: "info"
+          signal: "floor"
+          domain: "governance"
+        annotations:
+          summary: "Constitutional Floors deferred"
+          description: |
+            {{ $value }} floor(s) deferred on session {{ $labels.session_id | default "unknown" }}.
+            Deferred floors: {{ $labels.floors_deferred | default "[]" }}
+            Verify: deferred floors do not include F1, F13, or F9.
+
+      # ── FLOOR DRIFT ─────────────────────────────────────────────────────
+      - alert: "FloorDrift"
+        expr: |
+          count by (floor) (
+            (delta > 0.1 and on(session_id) floors_evaluated)
+          ) > 3
+        for: "15m"
+        labels:
+          severity: "warning"
+          signal: "floor"
+          domain: "governance"
+        annotations:
+          summary: "Floor drift detected — entropy rising on same Floor"
+          description: |
+            Floor {{ $labels.floor }} has seen elevated entropy (dS > 0.1)
+            more than 3 times in 15 minutes.
+            Possible cause: repeated failed evaluations, adversarial session, or
+            evidence bundle instability.
+            Investigate session history for patterns.
+
+      # ── PLANE DRIFT ──────────────────────────────────────────────────────
+      - alert: "PlaneDrift"
+        expr: |
+          count by (plane) (
+            (delta > 0.15 and on(session_id) verdict != "CLAIM_ONLY")
+          ) > 2
+        for: "10m"
+        labels:
+          severity: "warning"
+          signal: "plane"
+          domain: "governance"
+        annotations:
+          summary: "Domain plane instability detected"
+          description: |
+            Plane: {{ $labels.plane }}
+            Non-CLAIM_ONLY verdicts with elevated entropy (> 0.15)
+            detected more than 2 times in 10 minutes.
+            Planes: GEOX (subsurface), WEALTH (economics), WELL (wellness), AAA (agent)
+
+      # ── TRI-WITNESS ─────────────────────────────────────────────────────
+      - alert: "TriWitnessScoreLow"
+        expr: 'tri_witness_score < 0.6'
+        for: "5m"
+        labels:
+          severity: "warning"
+          signal: "tri_witness_score"
+          domain: "governance"
+        annotations:
+          summary: "Tri-witness consensus low (F3)"
+          description: |
+            tri_witness_score = {{ $value | printf "%.3f" }}
+            Target: >= 0.6 for normal operations
+            F3 Tri-Witness: human/AI/earth evidence consensus is weak.
+            Review witness{human, ai, earth} breakdown for divergence.
+
+      - alert: "TriWitnessMetricSpoofingSuspected"
+        expr: |
+          abs(
+            tri_witness_score_scalar
+            - (witness_human * witness_ai * witness_earth) ^ 0.3333
+          ) > 0.05
+        for: "2m"
+        labels:
+          severity: "critical"
+          signal: "f3-spoofing"
+          domain: "governance"
+          alert_type: "anti-hantu"   # F9 Anti-Hantu — flag potential metric gaming
+        annotations:
+          summary: "F3 scalar/dict coherence gap — possible metric spoofing"
+          description: |
+            F3 coherence check failed.
+            Scalar tri_witness_score: {{ $value | printf "%.3f" }}
+            Geometric mean of witness dict: see description.
+            Gap > 0.05 tolerance — may indicate metric inflation or hantu pattern.
+            Refer to canonical_schema_contract.json §f3_scalar_dict_coherence.
+
+      # ── KAPPA_R (Session Entropy Index) ─────────────────────────────────
+      - alert: "KappaRHigh"
+        expr: 'kappa_r > 0.8'
+        for: "5m"
+        labels:
+          severity: "warning"
+          signal: "kappa_r"
+          domain: "governance"
+        annotations:
+          summary: "Session entropy index high (kappa_r > 0.8)"
+          description: |
+            kappa_r = {{ $value | printf "%.3f" }}
+            High session entropy. Agent may be drifting from declared intent.
+            Consider: session reset, VAULT999 intent drift audit.
+
+      # ── OBSERVABILITY PIPELINE ───────────────────────────────────────────
+      - alert: "PrometheusTargetDown"
+        expr: 'up{observability_layer="prometheus-observability-only"} == 0'
+        for: "2m"
+        labels:
+          severity: "critical"
+          signal: "pipeline"
+          domain: "observability"
+        annotations:
+          summary: "Prometheus scrape target down"
+          description: |
+            Target {{ $labels.job }} ({{ $labels.instance }}) has been down
+            for more than 2 minutes.
+            arifOS observability pipeline is degraded.
+            Investigate: endpoint health, network connectivity, TLS certs.
+
+      - alert: "PrometheusNoMetrics"
+        expr: |
+          time() - prometheus_last_request_success_timestamp < 60
+        for: "3m"
+        labels:
+          severity: "warning"
+          signal: "pipeline"
+          domain: "observability"
+        annotations:
+          summary: "No metrics received in last 3 minutes"
+          description: |
+            Prometheus is not receiving metrics from arifOS endpoints.
+            Check: mcp.arif-fazil.com/metrics/json health,
+            network path to Prometheus, scrape config reload.
