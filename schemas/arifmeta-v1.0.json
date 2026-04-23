@@ -1,8 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://arif-fazil.com/schemas/arifmeta-v1.0.json",
+  "$id": "https://gist.github.com/ariffazil/81314f6cda1ea898f9feb88ce8f8959b#arifmeta-v1.0.json",
   "title": "ARIFMeta — Metabolic Kernel Metadata Schema",
   "description": "Machine-readable projection of ARIF.md | METABOLIC KERNEL v1.0. Consumable by AAA/A2A/VAULT999. Human-editable source is ARIF.md.",
+  "canonicalSource": "https://gist.github.com/ariffazil/81314f6cda1ea898f9feb88ce8f8959b",
   "version": "1.0",
   "type": "object",
 
