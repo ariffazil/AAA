@@ -130,7 +130,12 @@ curl https://arifOS.arif-fazil.com/health
 - Core imports: zero FastMCP
 - SEAL authority: `888_JUDGE` only
 - Transport: MCP via `adapters/mcp/`, interchangeable
-- Live public MCP surface: **13 tools** on `/mcp`
+- Canonical tool registry: **13 tools** (SEALED v2026-04-19 manifest)
+  - arifOS core: 12 tools (init, sense, mind, route, kernel, memory, heart, ops, judge, vault, forge, health)
+  - 13th slot: reserved for `arifos_plan` (Planning Organ, DRAFT spec committed)
+  - MCP aggregate: 33 tools across all registered servers
+- Canonical version: `v2026-04-19-13TOOL-SEALED` (see T000 versioning)
+- Extended registry: 33 tools across all MCP servers (capability surface, not canonical count)
 - Live health endpoint: `http://localhost:8080/health`
 - `arifos_222_witness` web-search path is normalized for empty/error MiniMax bridge payloads; missing web evidence now degrades honestly instead of raising `NoneType` errors
 - Baseline: **2026.04.20 — Sovereign core/adapter architecture**
@@ -143,7 +148,7 @@ AGPL-3.0 | CC0 (theory/doctrine)
 
 ---
 
-## Canonical Tool Registry (33 Tool LOCK — 2026-04-21)
+## Canonical Tool Registry (13-Tool SEAL — v2026-04-19)
 
 | Stage | Tool | Floor | Purpose |
 |-------|------|-------|---------|
