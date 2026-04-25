@@ -27,8 +27,20 @@ def scan_tool_registry(repo_root: Path) -> dict:
     with open(registry_path) as f:
         d = json.load(f)
 
-    tools = d.get("tools", [])
-    tool_names = [t.get("function", {}).get("name", "?") for t in tools]
+    tools_data = d.get("tools", [])
+    # Handle both list format (MCP) and dict format (CANONICAL_TOOLS)
+    if isinstance(tools_data, dict):
+        tool_names = sorted(tools_data.keys())
+        tool_count = len(tools_data)
+    elif isinstance(tools_data, list):
+        tool_names = sorted([
+            t.get("function", {}).get("name", "?") if isinstance(t, dict) else str(t)
+            for t in tools_data
+        ])
+        tool_count = len(tools_data)
+    else:
+        tool_names = []
+        tool_count = 0
 
     return {
         "found": True,
@@ -37,8 +49,8 @@ def scan_tool_registry(repo_root: Path) -> dict:
         "build_timestamp": d.get("build_timestamp"),
         "system": d.get("system"),
         "description": d.get("description"),
-        "tool_count": len(tools),
-        "tool_names": sorted(tool_names),
+        "tool_count": tool_count,
+        "tool_names": tool_names,
         "floor_count": d.get("governance", {}).get("floor_count"),
     }
 
@@ -218,7 +230,7 @@ def audit_repo(repo_path: str, repo_name: str) -> dict:
     server_path = repo_root / "arifosmcp" / "server.py"
     if server_path.exists() and claims["found"]:
         server_content = server_path.read_text()
-        found_endpoints = re.findall(r'["\'](/[\w-]+)["\']', server_content)
+        found_endpoints = re.findall(r'["\'](/[\w.-]+)["\']', server_content)
         found_endpoints = sorted(set(found_endpoints))
         if claims["endpoints"]:
             claimed_eps = set(e.strip() for e in claims["endpoints"])
