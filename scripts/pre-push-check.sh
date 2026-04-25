@@ -56,9 +56,37 @@ if [[ "$PUSH_TO" == "$DEFAULT_BRANCH" && "$CURRENT_BRANCH" != "$DEFAULT_BRANCH" 
     echo "   This is a non-ff push. Ensure you have verified the diff."
 fi
 
-# ── 5. Check for critical path silent modifications ──────────────────────────
+# ── 5. F1 REVERSIBILITY CHECKLIST ──────────────────────────────────────────
 echo ""
-echo "Checking critical path files..."
+echo "=== F1 AMANAH: REVERSIBILITY CHECK ==="
+
+# Check 1: Branch naming pattern (reversibility signal)
+if [[ "$CURRENT_BRANCH" =~ ^(feature/|hotfix/|experiment/|fix/|refactor/|$DEFAULT_BRANCH$) ]]; then
+    echo "✅ F1: Branch naming follows constitutional pattern"
+else
+    echo "⚠️  F1: Branch '$CURRENT_BRANCH' doesn't follow feature/|hotfix/|experiment/|fix/|refactor/ pattern"
+fi
+
+# Check 2: Are there rollback-capable commits in recent history?
+HAS_REVERT=$(git log --oneline -5 | grep -i "revert\|Revert" | wc -l)
+if [[ "$HAS_REVERT" -gt 0 ]]; then
+    echo "✅ F1: Recent revert commits detected — reversibility pattern present"
+else
+    echo "   F1: No recent revert commits (consider if changes are safely revertable)"
+fi
+
+# Check 3: Destructive file changes (require 888_HOLD approval)
+DESTRUCTIVE_FILES=$(git diff --name-only HEAD~1 2>/dev/null | grep -iE "delete|remove|drop|truncate" | grep -v "README|CHANGELOG|LICENSE" || true)
+if [[ -n "$DESTRUCTIVE_FILES" ]]; then
+    echo "⚠️  888_HOLD: Destructive file changes detected — verify 888_JUDGE approval:"
+    echo "   $DESTRUCTIVE_FILES"
+else
+    echo "✅ F1: No destructive file changes in last commit"
+fi
+
+# ── 6. Check for critical path silent modifications ──────────────────────────
+echo ""
+echo "=== CRITICAL PATH CHECK ==="
 
 CRITICAL_FILES=(
     "arifosmcp/constitutional_map.py"
@@ -84,7 +112,29 @@ if [[ -n "$CHANGED_CRITICAL" ]]; then
     echo "   Verify these changes are intentional before pushing."
 fi
 
-# ── 6. README SOT audit (if audit tool available) ───────────────────────────
+# ── 7. F11 AUTHORITY CHECK ────────────────────────────────────────────────
+echo ""
+echo "=== F11 AUTHORITY: SECRETS + IDENTITY CHECK ==="
+
+# Check: no hardcoded secrets in tracked files (F11 authority)
+FOUND_SECRET=0
+for f in $(git diff --name-only HEAD 2>/dev/null); do
+    [[ -f "$f" ]] || continue
+    # Skip binary/non-text files
+    [[ "$(file -b --mime-type "$f" 2>/dev/null)" == text/* ]] || continue
+    if grep -nE "ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AIza[A-Za-z0-9_-]{20,}| Bearer [A-Za-z0-9_-]{20,}" "$f" 2>/dev/null; then
+        echo "⚠️  F11: Hardcoded secret detected in: $f"
+        FOUND_SECRET=1
+    fi
+done
+
+if [[ "$FOUND_SECRET" -eq 1 ]]; then
+    echo "   888_HOLD — Remove secrets before pushing. Use \${ENV_VAR} references."
+else
+    echo "✅ F11: No hardcoded secrets detected in staged changes"
+fi
+
+# ── 8. README SOT audit (if audit tool available) ───────────────────────────
 if [[ -f "README.md" ]] && grep -q "SOT:tool_surface\|SOT:version_info" README.md 2>/dev/null; then
     echo ""
     echo "Running README SOT audit..."
@@ -109,7 +159,7 @@ if [[ -f "README.md" ]] && grep -q "SOT:tool_surface\|SOT:version_info" README.m
     fi
 fi
 
-# ── 7. Summary ────────────────────────────────────────────────────────────────
+# ── 9. Summary ────────────────────────────────────────────────────────────────
 echo ""
 echo "=== PRE-PUSH SUMMARY ==="
 echo "Default branch: $DEFAULT_BRANCH"
