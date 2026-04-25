@@ -49,18 +49,39 @@ def load_constitutional_map(repo_root: Path) -> dict:
 
 
 def extract_tool_table(registry: dict) -> list[dict]:
-    """Extract tools from registry in format for README table."""
-    tools = registry.get("tools", [])
+    """Extract tools from registry in format for README table.
+    Handles two formats:
+      - list format: [{function: {name: "arifos_000_init"}}, ...]  (MCP list)
+      - dict format: {arif_session_init: {stage: "000", ...}, ...}  (CANONICAL_TOOLS dict)
+    """
+    tools_data = registry.get("tools", [])
     result = []
-    for t in tools:
-        fname = t.get("function", {}).get("name", "?")
-        # fname like arifos_000_init → stage=000, name=init
-        m = re.match(r"arifos_(\d+)_(\w+)", fname)
-        if m:
-            stage, name = m.groups()
-        else:
-            stage, name = "???", fname
-        result.append({"stage": stage, "name": name, "full": fname})
+
+    if isinstance(tools_data, dict):
+        # CANONICAL_TOOLS dict format: {name: {stage, lane, ...}}
+        for fname, props in tools_data.items():
+            if isinstance(props, dict):
+                stage = props.get("stage", "???")
+                lane = props.get("lane", "?")
+            else:
+                stage, lane = "???", "?"
+            # Convert stage like "000" or "010" or "FORGE" for forge
+            result.append({"stage": str(stage), "name": fname, "full": fname, "lane": lane})
+
+    elif isinstance(tools_data, list):
+        # MCP list format: [{function: {name: "arifos_000_init"}}, ...]
+        for t in tools_data:
+            if isinstance(t, dict):
+                fname = t.get("function", {}).get("name", "?")
+            else:
+                fname = str(t)
+            m = re.match(r"arifos_(\d+)_(\w+)", fname)
+            if m:
+                stage, name = m.groups()
+            else:
+                stage, name = "???", fname
+            result.append({"stage": stage, "name": name, "full": fname})
+
     return sorted(result, key=lambda x: x["stage"])
 
 
@@ -106,11 +127,11 @@ def build_tool_surface_section(registry: dict, cmap: dict) -> str:
         stage = t["stage"]
         name = t["name"]
         full = t["full"]
-        lane = lane_map.get(stage, "?")
+        # lane from tool data (dict format) overrides lane_map
+        lane = t.get("lane") or lane_map.get(stage, "?")
         desc = desc_map.get(stage, desc_map.get(name, "—"))
-        if stage == "???":
+        if stage == "???" or stage == "010":
             stage = "FORGE"
-            lane = "AGI"
             desc = "Execution substrate dispatch"
         lines.append(f"| `{stage}` | `{full}` | {lane} | {desc} |")
 
