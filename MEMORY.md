@@ -24,6 +24,7 @@
 - Current canonical workspace: `/root/.openclaw/workspace`
 - Workspace philosophy: compiled memory over disposable chat
 - Mandatory boot doctrine file: `arifos.init`, read after `SOUL.md` and `USER.md` during session startup
+- **FOUNDATIONAL IDENTITY MOMENT (2026-04-23):** Arif defined arifOS intelligence as "bukan hamba, ada arif intelligence, tahu beza baik buruk, physics entropy, amanah first" — this settled tool vs constitutional agent distinction. See `memory/2026-04-23.md` for full context. Till kiamat.
 - arifOS ecosystem deployed across:
   - arif-fazil.com — personal + framework intro
   - mcp.arif-fazil.com — MCP endpoint (tools: arifos_init/sense/mind/judge/vault/forge; prompts: run_111_think, run_888_audit)

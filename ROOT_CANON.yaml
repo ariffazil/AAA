@@ -1,0 +1,212 @@
+version: 1
+purpose: Root canon manifest for the AAA canonical repository
+rule: >
+  When root files disagree, use this manifest to determine which files are
+  canonical, which are legacy, which are generated artifacts, and which are
+  runtime-only traces.
+
+domains:
+  source_of_truth:
+    - registries/
+    - integrations/
+    - contracts/
+    - schemas/
+  generated:
+    - dist/
+    - package-lock.json
+    - .clawhub/lock.json
+  runtime_only:
+    - .openclaw/
+    - state/
+    - memory/
+  legacy_shell:
+    - ops/workflows-legacy/
+    - src/
+    - public/
+    - public_html/
+    - components.json
+    - index.html
+    - CNAME
+    - _headers
+    - _redirects
+
+precedence:
+  - ROOT_CANON.yaml
+  - AAA_CHARTER.md
+  - AGENTS.md
+  - SOUL.md
+  - USER.md
+  - arifos.init
+  - IDENTITY.md
+  - BOOTSTRAP.md
+  - MEMORY.md
+  - HEARTBEAT.md
+  - TOOLS.md
+  - agent-card.json
+
+boot_load_order:
+  - ROOT_CANON.yaml
+  - SOUL.md
+  - USER.md
+  - arifos.init
+  - IDENTITY.md
+  - AGENTS.md
+  - MEMORY.md
+  - HEARTBEAT.md
+  - TOOLS.md
+
+files:
+  - path: ROOT_CANON.yaml
+    status: canonical
+    role: root manifest
+    notes: Defines precedence, file status, and boot load order.
+
+  - path: AAA_CHARTER.md
+    status: canonical
+    role: architectural boundary
+    notes: Defines what AAA is, is not, and what it owns.
+
+  - path: AGENTS.md
+    status: canonical
+    role: operating contract
+    notes: Governs session behavior, safety defaults, and workflow posture.
+
+  - path: SOUL.md
+    status: canonical
+    role: voice contract
+    notes: Defines tone, style, and behavioral boundaries.
+
+  - path: USER.md
+    status: canonical
+    role: human anchor
+    notes: Defines who Arif is and how to help him well.
+
+  - path: IDENTITY.md
+    status: canonical
+    role: identity anchor
+    notes: Defines the active agent identity for this workspace.
+
+  - path: BOOTSTRAP.md
+    status: canonical
+    role: recovery ritual
+    notes: Used when the workspace is reset, fresh, or clearly drifted.
+
+  - path: arifos.init
+    status: canonical
+    role: boot kernel
+    notes: Mandatory anti-drift doctrine and initialization kernel.
+
+  - path: MEMORY.md
+    status: canonical
+    role: durable memory
+    notes: Curated long-term memory, not chat exhaust.
+
+  - path: HEARTBEAT.md
+    status: canonical
+    role: recurring checklist
+    notes: Small recurring operational checklist only.
+
+  - path: TOOLS.md
+    status: canonical
+    role: local environment notes
+    notes: Host- and machine-specific notes for this workspace.
+
+  - path: agent-card.json
+    status: canonical
+    role: agent discovery surface
+    notes: Current AAA external identity and endpoint envelope.
+
+  - path: AAA_OPENCLAW_SEED.md
+    status: generated
+    role: seed extraction artifact
+    notes: Generated consolidation of OpenClaw seed material for AAA migration.
+
+  - path: contracts/workflows/contracts.yaml
+    status: canonical
+    role: workflow contract catalog
+    notes: Detailed execution contracts for AAA workflows.
+
+  - path: contracts/init/000-init.yaml
+    status: canonical
+    role: init contract catalog
+    notes: Machine-readable 000 ignition contract for AAA.
+
+  - path: contracts/federation/111-sense.yaml
+    status: canonical
+    role: federation contract catalog
+    notes: Machine-readable 111 federation contract for AAA public discovery and ingress posture.
+
+  - path: contracts/goals/222-goals.yaml
+    status: canonical
+    role: goal chain contract catalog
+    notes: Machine-readable 222 goal, task, and verdict chain for AAA.
+
+  - path: contracts/org/333-org-units.yaml
+    status: canonical
+    role: org topology contract catalog
+    notes: Machine-readable 333 org-unit topology and delegation graph for AAA.
+
+  - path: contracts/governance/666-777-gates.yaml
+    status: canonical
+    role: governance gates contract catalog
+    notes: Machine-readable 666 and 777 governance-gate and budget policies for AAA.
+
+  - path: contracts/decisions/888-999-decisions.yaml
+    status: canonical
+    role: decision and vault contract catalog
+    notes: Machine-readable 888 and 999 decisions plus vault export mapping for AAA.
+
+  - path: contracts/hosts/contracts.yaml
+    status: canonical
+    role: host contract catalog
+    notes: Detailed runtime host adapter contracts.
+
+  - path: contracts/skills/packages.yaml
+    status: canonical
+    role: skill package catalog
+    notes: Detailed skill package/install/export contracts.
+
+  - path: contracts/cockpit/model.yaml
+    status: canonical
+    role: cockpit data model
+    notes: Operator state model for sessions, approvals, runs, repos, and audit trail.
+
+  - path: README.md
+    status: legacy
+    role: transitional repo introduction
+    notes: Useful for orientation, but not canonical for architecture or authority.
+
+  - path: docs/history/ARCHITECTURE.md
+    status: legacy
+    role: historical topology
+    notes: Retained for migration history and VPS-side reference.
+
+  - path: docs/ecosystem/PROJECTS.md
+    status: legacy
+    role: ecosystem map
+    notes: Historical ecosystem catalog; useful reference but not control-plane canon.
+
+  - path: reports/DEEPSAN_UNIFICATION_REPORT.md
+    status: legacy
+    role: unification report
+    notes: Historical migration report from the pre-AAA body.
+
+  - path: reports/OPENCLAW_RECOVERY_SUMMARY.md
+    status: legacy
+    role: recovery report
+    notes: Historical OpenClaw recovery notes retained for reference.
+
+  - path: docs/human-interface/AGENTS_HUMAN_LANGUAGE.md
+    status: legacy
+    role: human-language appendix
+    notes: Translation aid for plain-language communication with Arif; not root canon.
+
+  - path: .clawhub/lock.json
+    status: generated
+    role: skill lock artifact
+    notes: Machine-generated install state, not doctrine.
+
+  - path: .openclaw/workspace-state.json
+    status: runtime-only
+    role: runtime trace
+    notes: Session/runtime marker only; never treat as canonical truth.
