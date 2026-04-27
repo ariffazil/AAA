@@ -38,18 +38,33 @@ class AAAGatewayExecutor {
       // 2. Risk-Based Routing (The Adapter)
       const result = await this.adapter.routeIntent(message);
 
-      // 3. Completion
+      // 3. Completion or Hold
+      const state = result.status === 'HOLD' ? 'input-required' : 'completed';
+      
+      let text = `[AAA] Result from ${result.source}: ${result.status}`;
+      if (result.status === 'HOLD') {
+        text = `[AAA] HUMAN CONFIRMATION REQUIRED. Risk: ${result.riskLevel}. ${result.reason}. Bond: ${result.irreversibilityBond}`;
+      }
+
       await taskStore.updateTask(taskId, {
         status: { 
-          state: 'completed', 
+          state, 
           message: {
             role: 'agent',
-            parts: [{ kind: 'text', text: `[AAA] Result from ${result.source}: ${result.status}` }],
+            parts: [{ 
+              kind: 'text', 
+              text 
+            }],
             messageId: generateId(),
             taskId,
             contextId
           },
           timestamp: new Date().toISOString() 
+        },
+        metadata: {
+          ...result.proof,
+          riskLevel: result.riskLevel,
+          irreversibilityBond: result.irreversibilityBond
         }
       });
 
@@ -115,6 +130,60 @@ export function createApp(): express.Application {
       gateway: 'AAA',
       auth: (req as any).authContext?.authenticated ? 'enabled' : 'development',
     });
+  });
+
+  // ── Operator Interface ───────────────────────────────────────────────────
+  app.get('/operator/tasks', async (req, res) => {
+    const state = req.query.state as string;
+    const tasks = await taskStore.listTasks(state ? { state: state as any } : undefined);
+    res.json({ ok: true, tasks });
+  });
+
+  app.post('/operator/tasks/:taskId/approve', async (req, res) => {
+    const { taskId } = req.params;
+    const { humanId, signature } = req.body;
+    
+    const task = await taskStore.getTask(taskId);
+    if (!task || task.status.state !== 'input-required') {
+      return res.status(404).json({ ok: false, error: 'Task not found or not awaiting approval' });
+    }
+
+    // Record human approval in metadata
+    await taskStore.updateTask(taskId, {
+      status: { state: 'working', timestamp: new Date().toISOString() },
+      metadata: {
+        ...task.metadata,
+        approvedBy: humanId,
+        humanSignature: signature,
+        approvedAt: new Date().toISOString()
+      }
+    });
+
+    // Execute via A-FORGE now that we have human confirmation
+    await executor.execute(taskId, task.contextId, task.history[0], eventBus, taskStore);
+    
+    res.json({ ok: true, message: 'Task approved and execution resumed via A-FORGE' });
+  });
+
+  app.post('/operator/tasks/:taskId/reject', async (req, res) => {
+    const { taskId } = req.params;
+    const { reason } = req.body;
+
+    await taskStore.updateTask(taskId, {
+      status: { 
+        state: 'rejected', 
+        timestamp: new Date().toISOString(),
+        message: {
+          role: 'agent',
+          parts: [{ kind: 'text', text: `Rejected by human operator: ${reason}` }],
+          messageId: generateId(),
+          taskId,
+          contextId: (await taskStore.getTask(taskId))?.contextId || ''
+        }
+      }
+    });
+
+    res.json({ ok: true, message: 'Task rejected' });
   });
 
   // ── Message Ingress (Critical Trust Boundary) ───────────────────────────

@@ -3,27 +3,50 @@ import { TaskMessage, Task } from '../gateway/schema';
 export type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 
 export interface RoutingDecision {
-  path: 'MCP' | 'KERNEL' | 'HOLD';
+  path: 'FORGE' | 'HOLD';
   reason: string;
   riskLevel: RiskLevel;
+  requiresConfirmation: boolean;
+  irreversibilityBond?: string;
 }
 
 export class GovernanceAdapter {
+  private afForgeUrl = process.env.AF_FORGE_URL || 'http://af-forge:7071';
+
   async assessRisk(message: TaskMessage): Promise<RoutingDecision> {
-    const text = this.extractText(message).toLowerCase();
+    const prompt = this.extractText(message);
     
-    // 1. Critical/High Risk detection
-    if (text.includes('delete') || text.includes('destroy') || text.includes('override') || text.includes('seal')) {
-      return { path: 'HOLD', reason: 'High-risk destructive or sovereign action detected', riskLevel: 'CRITICAL' };
-    }
+    try {
+      // Call A-FORGE /sense for authoritative risk assessment
+      const response = await fetch(`${this.afForgeUrl}/sense`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, version: '0.1.0' })
+      });
+      
+      const data = await response.json();
+      const riskTier = data.judge?.verdict === 'SEAL' ? 'LOW' : 
+                       (data.judge?.verdict === 'SABAR' ? 'MEDIUM' : 'HIGH');
+      
+      const requiresConfirmation = riskTier !== 'LOW';
 
-    // 2. Medium Risk - requires Kernel mediation (content generation, judgment)
-    if (text.includes('judge') || text.includes('evaluate') || text.includes('predict') || text.includes('reason')) {
-      return { path: 'KERNEL', reason: 'Constitutional judgment required', riskLevel: 'MEDIUM' };
-    }
+      return {
+        path: requiresConfirmation ? 'HOLD' : 'FORGE',
+        reason: data.judge?.reason || 'A-FORGE risk assessment completed',
+        riskLevel: riskTier as RiskLevel,
+        requiresConfirmation,
+        irreversibilityBond: requiresConfirmation ? `Required for ${riskTier} risk operations` : undefined
+      };
 
-    // 3. Low Risk - Direct to MCP (read-only, status checks)
-    return { path: 'MCP', reason: 'Low-risk operational query', riskLevel: 'LOW' };
+    } catch (error) {
+      console.error('[Adapter] A-FORGE sense error, failing closed to HOLD:', error);
+      return { 
+        path: 'HOLD', 
+        reason: 'A-FORGE connectivity failure - manual review required', 
+        riskLevel: 'CRITICAL',
+        requiresConfirmation: true
+      };
+    }
   }
 
   private extractText(message: TaskMessage): string {
@@ -37,25 +60,34 @@ export class GovernanceAdapter {
     const decision = await this.assessRisk(message);
     console.log(`[Adapter] Risk Assessment: ${decision.riskLevel} -> Path: ${decision.path} (${decision.reason})`);
     
-    switch (decision.path) {
-      case 'HOLD':
-        throw new Error(`888_HOLD: ${decision.reason}`);
-      case 'KERNEL':
-        return this.mediateViaKernel(message);
-      case 'MCP':
-        return this.executeDirectMCP(message);
+    if (decision.requiresConfirmation) {
+      // Return a hold state that the UI will use to request human approval
+      return { 
+        status: 'HOLD', 
+        source: 'A-FORGE', 
+        reason: decision.reason,
+        riskLevel: decision.riskLevel,
+        irreversibilityBond: decision.irreversibilityBond,
+        requiresHuman: true
+      };
     }
+
+    return this.executeViaForge(message);
   }
 
-  private async mediateViaKernel(message: TaskMessage) {
-    // In production, this calls the arifOS Kernel API
-    console.log('[Adapter] Routing to Kernel for Floor validation...');
-    return { status: 'mediated', source: 'KERNEL' };
-  }
-
-  private async executeDirectMCP(message: TaskMessage) {
-    // In production, this calls the MCP tool directly
-    console.log('[Adapter] Routing directly to MCP capability...');
-    return { status: 'executed', source: 'MCP' };
+  private async executeViaForge(message: TaskMessage) {
+    // Architectural Law: All tool calls must route via A-FORGE
+    console.log('[Adapter] Routing to A-FORGE for execution...');
+    
+    // In this phase, we return the intent to route to forge
+    return { 
+      status: 'authorized', 
+      source: 'A-FORGE',
+      proof: {
+        witness_type: 'agent',
+        signature: 'af-forge-sig-' + Date.now(),
+        timestamp: new Date().toISOString()
+      }
+    };
   }
 }
