@@ -437,7 +437,7 @@ app.use((req, res) => {
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`[AAA A2A] Hardened server running on port ${PORT}`);
-  console.log(`[AAA A2A] Auth: Bearer token = '${A2A_TOKEN}' | API key = '${A2A_API_KEY}'`);
+  console.log(`[AAA A2A] Auth: configured (bearer + api-key)`);
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
 });
