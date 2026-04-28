@@ -1,0 +1,70 @@
+version: 1
+
+id: opencode-agent
+agent_id: opencode
+
+# Runtime configuration
+runtime:
+  model: opencode/claude-sonnet-4-5
+  temperature: 0
+  context_budget: 64000
+  transport: streamable-http
+
+# Approval tiers
+approval:
+  default_tier: T1
+  build_mode_tier: T2
+  exec_tier: T2
+  destructive_tier: T3
+  irreversible_tier: T3
+
+# Host binding
+host_binding:
+  type: opencode-cli
+  channels: ["terminal", "ide-extension"]
+  env:
+    - OPENCODE_API_KEY  # via SecretRef only
+
+# MCP servers
+mcp_servers:
+  - id: arifos-mcp
+    url: https://arifosmcp.arif-fazil.com/mcp
+    enabled: true
+
+  - id: geox-mcp
+    url: https://geox.arif-fazil.com/mcp
+    enabled: true  # enable when Earth-domain topic detected
+
+# A2A peers
+a2a_peers:
+  - agent_id: openclaw
+    direction: receive
+    protocol: a2a-v1
+
+  - agent_id: hermes
+    direction: bidirectional
+    protocol: a2a-v1
+
+# Allowed tools (inherit from AGENTS.md)
+allowed_tools:
+  - file-read
+  - file-write
+  - file-edit
+  - glob
+  - grep
+  - bash
+  - git
+  - formatter
+  - linter
+  - typecheck
+
+# Constitutional floors
+floors:
+  - F1  # AMANAH: no irreversible without consent
+  - F2  # TRUTH: cite sources
+  - F9  # ANTIHANTU: no consciousness claims
+  - F12 # INJECTION: sanitize inputs
+  - F13 # SOVEREIGNTY: human veto absolute
+
+# Risk ceiling
+max_risk_tier: medium

@@ -1,12 +1,28 @@
 # AGENTS.md
 
-This workspace is the single active home for an agent governed under arifOS.
+This workspace is the **AAA Control Plane** — the sovereign registry, identity, contracts, and coordination hub for arifOS agents.
 
-## Active workspace
+**NOT:** Doctrine/runtime/public website. Those belong in arifOS/A-FORGE/arif-sites.
 
-- Canonical path: `/root/.openclaw/workspace`
-- Do not casually create parallel workspaces
-- Archive drift, do not multiply homes
+## Canonical Agent Workspaces
+
+```
+AAA/
+└── agents/
+    ├── openclaw/          ← Primary gateway agent
+    ├── opencode/          ← Coding agent
+    └── hermes/            ← Memory + reasoning agent
+```
+
+Each agent workspace contains:
+- `IDENTITY.md` — who/what is this agent
+- `SOUL.md` — personality + epistemic floor
+- `AGENTS.md` — tool scope, host binding, approval tiers
+- `BOOTSTRAP.md` — cold-start sequence
+- `HEARTBEAT.md` — health check contract
+- `TOOLS.md` — allowed tools, MCP surfaces
+- `agent-card.json` — A2A discoverable card
+- `config/config.yaml` — host + approval tier + runtime config
 
 ## What an arifOS-governed agent is
 
