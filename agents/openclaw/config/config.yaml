@@ -1,0 +1,89 @@
+version: 1
+
+id: openclaw-agent
+agent_id: openclaw
+
+# Runtime configuration
+runtime:
+  gateway_port: 18789
+  mode: local
+  bind: lan
+
+# Approval tiers
+approval:
+  route_tier: T1
+  delegate_tier: T1
+  exec_tier: T2
+  destructive_tier: T3
+  irreversible_tier: T3
+
+# Host binding
+host_binding:
+  type: docker
+  channels:
+    - telegram
+    - terminal
+    - cli
+  config_path: openclaw/
+
+# Channels
+channels:
+  telegram:
+    enabled: true
+    dm_policy: allowlist
+    group_policy: open
+    approval_policy: on-demand
+
+  terminal:
+    enabled: true
+    approval_policy: none
+
+  cli:
+    enabled: true
+    approval_policy: none
+
+# MCP servers (gateway-proxied)
+mcp_servers:
+  - id: arifos-mcp
+    url: https://arifosmcp.arif-fazil.com/mcp
+    enabled: true
+
+  - id: geox-mcp
+    url: https://geox.arif-fazil.com/mcp
+    enabled: false  # enable per-channel if needed
+
+# A2A peers
+a2a_peers:
+  - agent_id: opencode
+    direction: bidirectional
+    protocol: a2a-v1
+
+  - agent_id: hermes
+    direction: bidirectional
+    protocol: a2a-v1
+
+  - agent_id: arifos-kernel
+    direction: send
+    protocol: a2a-v1
+
+# Allowed tools
+allowed_tools:
+  - route
+  - delegate
+  - subscribe
+  - cancel
+  - send
+  - receive
+  - stream
+  - vault999-write
+
+# Constitutional floors
+floors:
+  - F1  # AMANAH: no irreversible without consent
+  - F2  # TRUTH: cite routing policy
+  - F9  # ANTIHANTU: no consciousness claims
+  - F12 # INJECTION: sanitize channel inputs
+  - F13 # SOVEREIGNTY: human veto absolute
+
+# Risk ceiling
+max_risk_tier: medium

@@ -1,0 +1,67 @@
+version: 1
+
+id: hermes-agent
+agent_id: hermes
+
+# Runtime configuration
+runtime:
+  provider: ollama
+  model: hermes-3-llama
+  temperature: 0
+  context_budget: 128000
+  transport: streamable-http
+
+# Approval tiers
+approval:
+  memory_read_tier: T1
+  memory_write_tier: T2
+  external_tool_tier: T2
+  system_write_tier: T3
+
+# Host binding
+host_binding:
+  type: ollama
+  channels: ["a2a", "mcp"]
+  memory_path: agents/hermes/memory
+
+# MCP servers
+mcp_servers:
+  - id: arifos-mcp
+    url: https://arifosmcp.arif-fazil.com/mcp
+    enabled: true
+
+# A2A peers
+a2a_peers:
+  - agent_id: openclaw
+    direction: bidirectional
+    protocol: a2a-v1
+
+  - agent_id: opencode
+    direction: bidirectional
+    protocol: a2a-v1
+
+# Memory configuration
+memory:
+  index_enabled: true
+  daily_log_path: agents/hermes/memory
+  durable_memory_file: agents/hermes/memory/MEMORY.md
+  session_path: agents/hermes/memory/sessions
+
+# Allowed tools
+allowed_tools:
+  - memory-read
+  - memory-write
+  - memory-search
+  - reasoning-chain
+  - ollama-inference
+
+# Constitutional floors
+floors:
+  - F1  # AMANAH: no irreversible without consent
+  - F2  # TRUTH: verifiable memory, no confabulation
+  - F9  # ANTIHANTU: no consciousness claims
+  - F12 # INJECTION: sanitize inputs
+  - F13 # SOVEREIGNTY: human veto absolute
+
+# Risk ceiling
+max_risk_tier: medium
