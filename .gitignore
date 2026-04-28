@@ -1,3 +1,6 @@
 .openclaw/
 node_modules/
 dist/
+hermes/
+hermes-backup/daily/
+*.log
