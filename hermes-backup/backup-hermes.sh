@@ -7,6 +7,7 @@
 set -euo pipefail
 
 BACKUP_ROOT="/root/AAA/hermes-backup/daily"
+AAA_HERMES="/root/AAA/hermes"
 TIMESTAMP=$(date +%Y-%m-%d_%H%M%S)
 BACKUP_DIR="${BACKUP_ROOT}/${TIMESTAMP}"
 KEEP_DAYS=7
@@ -17,10 +18,7 @@ SOURCES=(
     "/root/.hermes/memories/MEMORY.md"
     "/root/.hermes/memories/USER.md"
     "/root/.hermes/config.yaml"
-    "/root/.hermes/workspace/SOUL.md"
-    "/root/.hermes/workspace/IDENTITY.md"
-    "/root/.hermes/workspace/USER.md"
-    "/root/.hermes/workspace/AGENTS.md"
+    "/root/.hermes/workspace/"
 )
 
 echo "=== Hermes Daily Backup $(date -u '+%Y-%m-%d %H:%M UTC') ==="
@@ -33,19 +31,32 @@ for src in "${SOURCES[@]}"; do
     if [ -f "${src}" ]; then
         dest="${BACKUP_DIR}${src}"
         mkdir -p "$(dirname "${dest}")"
-        cp -p "${src}" "${dest}"
+        cp -rp "${src}" "${dest}"
         echo "  BACKED: ${src}"
+    elif [ -d "${src}" ]; then
+        dest="${BACKUP_DIR}${src}"
+        mkdir -p "$(dirname "${dest}")"
+        cp -rp "${src}" "${dest}"
+        echo "  BACKED: ${src}/"
     else
         echo "  MISSING: ${src} (skipped)"
     fi
 done
 
-# Also backup skills directory snapshot
-if [ -d "/root/.hermes/skills" ]; then
-    mkdir -p "${BACKUP_DIR}/skills"
-    cp -rp /root/.hermes/skills/* "${BACKUP_DIR}/skills/" 2>/dev/null || true
-    echo "  BACKED: skills/"
-fi
+# Sync live mirror to AAA/hermes/ for real-time AAA visibility
+rsync -av --delete \
+    /root/.hermes/SOUL.md \
+    /root/.hermes/memories/MEMORY.md \
+    /root/.hermes/memories/USER.md \
+    /root/.hermes/config.yaml \
+    /root/.hermes/workspace/ \
+    "${AAA_HERMES}/" 2>/dev/null || (
+        mkdir -p "${AAA_HERMES}"
+        for f in SOUL.md IDENTITY.md USER.md AGENTS.md BOOTSTRAP.md HEARTBEAT.md TOOLS.md arifos.init MEMORY.md ROOT_CANON.yaml; do
+            [ -f "/root/.hermes/workspace/${f}" ] && cp -p "/root/.hermes/workspace/${f}" "${AAA_HERMES}/${f}"
+        done
+    )
+echo "  SYNCED: AAA/hermes/ live mirror"
 
 # Cleanup old backups (keep last 7 days)
 find "${BACKUP_ROOT}" -maxdepth 1 -type d -name "????-??-??_??????" -mtime +${KEEP_DAYS} -exec rm -rf {} \; 2>/dev/null || true
