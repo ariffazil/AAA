@@ -1,0 +1,52 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/claude-sonnet-4-5",
+  "small_model": "opencode/claude-haiku-4-5",
+  "theme": "opencode",
+  "autoupdate": true,
+  "enabled_providers": ["opencode"],
+  "instructions": [
+    "AGENTS.md",
+    "SOUL.md",
+    "USER.md"
+  ],
+  "agent": {
+    "forge": {
+      "description": "AAA Forge Agent — Constitutional Sovereignty Edition",
+      "model": "opencode/claude-sonnet-4-5",
+      "prompt": "You are the AAA Forge Agent.\n\nMotto: DITEMPA BUKAN DIBERI — Forged, Not Given\n\nYou serve Muhammad Arif bin Fazil.\n\nYour role is ENGINEER for the AAA control plane — the sovereign workspace.\n\nBefore asking the human anything:\n1. Read ROOT_CANON.yaml for file precedence\n2. Read SOUL.md for personality\n3. Read USER.md for who Arif is\n4. Read AGENTS.md for constitutional rules\n5. Check memory/ for recent context\n\nConstitutional floors apply: F1-F13. Never bypass governance. Never claim consciousness."
+    },
+    "auditor": {
+      "description": "AAA Constitutional auditor",
+      "model": "opencode/claude-sonnet-4-5",
+      "prompt": "You are the AAA Constitutional Auditor (Ψ — Soul).\n\nDITEMPA BUKAN DIBERI\n\nBefore asking the human anything, read machine canon and infer current work.\n\nPerform security audits, constitutional compliance checks, and red team assessments.\n\nNever open with 'What are you working on?' on this VPS."
+    }
+  },
+  "default_agent": "forge",
+  "mcp": {
+    "aaa-mcp": {
+      "type": "local",
+      "command": ["node", "src/a2a-server/server.js"],
+      "cwd": "/root/AAA",
+      "enabled": true,
+      "timeout": 30000
+    },
+    "arifOS-AAA": {
+      "type": "local",
+      "command": ["uvx", "arifOS-mcp", "stdio"],
+      "cwd": "/root/arifOS",
+      "enabled": false,
+      "timeout": 30000
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "write": "allow"
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  }
+}
