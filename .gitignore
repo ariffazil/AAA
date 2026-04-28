@@ -1,6 +1,31 @@
-.openclaw/
+# Editor artifacts
+*.md~HEAD
+*_local
+*.swp
+*.swo
+*~
+
+# Temporary and archive
+tmp/
+_archive/
+archive/
+hermes-backup/
+hermes-backups/
+hermes-config/
+hermes-memories/
+hermes-memory/
+hermes-skills/
+hermes-workspace/
+
+# Build outputs
 node_modules/
 dist/
-hermes/
-hermes-backup/daily/
 *.log
+
+# OpenClaw workspace state
+.openclaw/
+.clawhub/
+
+# Environment
+.env
+.env.local

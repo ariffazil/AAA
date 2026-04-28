@@ -1,0 +1,52 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-a2a-agent-card.schema.json",
+  "id": "openclaw",
+  "name": "OpenClaw",
+  "description": "Primary gateway agent. Message routing, task delegation, and channel coordination for AAA control plane.",
+  "url": "https://aaa.arif-fazil.com/a2a/openclaw",
+  "preferred_transport": "jsonrpc-http",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "runtime": "openclaw"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false
+  },
+  "capabilities_input_modes": ["text/plain", "application/json"],
+  "capabilities_output_modes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "agent-dispatch",
+      "name": "Agent Dispatch",
+      "description": "Non-blocking supervised task dispatch to approved internal agents",
+      "tags": ["dispatch", "task", "coordination"],
+      "examples": ["dispatch a coding task to opencode", "send work to hermes for memory search"]
+    },
+    {
+      "id": "agent-handoff",
+      "name": "Agent Handoff",
+      "description": "Delegation to approved agents through governed handoff workflows",
+      "tags": ["handoff", "delegation", "transfer"],
+      "examples": ["handoff to opencode for feature build", "transfer context to hermes for deep recall"]
+    },
+    {
+      "id": "status-query",
+      "name": "Status Query",
+      "description": "Read-only task and run status retrieval",
+      "tags": ["query", "status", "read-only"],
+      "examples": ["check task status", "get current state of task 123"]
+    },
+    {
+      "id": "gateway-routing",
+      "name": "Gateway Routing",
+      "description": "Route messages from external channels to appropriate agents",
+      "tags": ["route", "gateway", "channel"],
+      "examples": ["route Telegram message to opencode", "route memory query to hermes"]
+    }
+  ],
+  "supports_authenticated_extended_card": false
+}
