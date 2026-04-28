@@ -1,6 +1,71 @@
 version: 1
 
 agents:
+  - id: hermes-asi
+    name: Hermes ASI
+    description: >
+      Hermes Agent — primary Telegram operator for Arif Fazil.
+      Governed by arifOS F1–F13, wired to arifOS MCP and GEOX MCP.
+      Stack: LLM (fluent) → arifOS (governance) → AAA (control plane).
+      Role: hermes-agent — NOT asi-judge. ASI is arifOS kernel authority.
+    role: hermes-agent
+    intelligence_tier: APEX
+    intelligence_band: APEX
+    risk_tier: low
+    authority_level: execute
+    approval_policy: auto
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    host_binding: hermes-agent
+    allowed_tools:
+      - terminal
+      - file_read
+      - file_write
+      - patch
+      - browser_navigate
+      - browser_snapshot
+      - browser_vision
+      - cronjob
+      - delegate_task
+      - memory
+      - session_search
+      - skill_view
+      - skill_manage
+      - send_message
+      - text_to_speech
+      - vision_analyze
+      - web_search
+    allowed_servers:
+      - arifosmcp
+      - geoxmcp
+    a2a_exposure: authenticated
+    allowed_peers:
+      - aaa-gateway
+      - geox-witness
+      - wealth-witness
+    required_auth:
+      - telegram-auth
+    separation_of_duties:
+      cannot_self_seal: true
+      requires_distinct_approver_for_high_risk: false
+    max_risk_tier_for_remote: low
+    required_witnesses:
+      - ARIFOS
+      - HUMAN
+    runtime:
+      model: minimax/MiniMax-M2.7
+      temperature: 0.2
+      context_budget: 64000
+      transport: streamable-http
+    escalation_rules:
+      - when: tool use enforcement flagged
+        to_role: architect
+        via: approval-queue
+      - when: domain-specialist task detected
+        to_role: domain-specialist
+        via: aaa-gateway
   - id: aaa-gateway
     name: AAA Gateway
     description: Governed control-plane gateway for dispatch, handoff, and status operations.
