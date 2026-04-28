@@ -1,4 +1,4 @@
-import { Request, Response, Next Mediterranean } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { ERROR_CODES } from './schema';
 
 export interface AuthContext {
