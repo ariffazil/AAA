@@ -9,8 +9,7 @@
 tmp/
 _archive/
 archive/
-hermes-backup/
-hermes-backups/
+# hermes-backup/ is NOT ignored — intentionally versioned
 hermes-config/
 hermes-memories/
 hermes-memory/

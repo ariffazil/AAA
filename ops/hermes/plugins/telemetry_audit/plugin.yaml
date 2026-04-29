@@ -1,0 +1,45 @@
+name: telemetry_audit
+version: 1.0.0
+description: AAA telemetry and audit spine — post_tool_call, subagent_stop, session lifecycle hooks
+entry: telemetry_audit:TelemetryAuditPlugin
+runtime: python3.11
+hooks:
+  post_tool_call:
+    - log_tool_result
+  subagent_stop:
+    - log_delegation_event
+  pre_approval_request:
+    - forward_approval_request
+  post_approval_response:
+    - log_approval_decision
+  on_session_start:
+    - init_session_telemetry
+  on_session_end:
+    - flush_session_telemetry
+  on_session_finalize:
+    - finalize_session_record
+config:
+  audit_path:
+    type: string
+    default: "/root/VAULT999/outcomes.jsonl"
+    description: Append-only audit trail
+  metrics_path:
+    type: string
+    default: "/root/AAA/ops/hermes/telemetry/metrics.jsonl"
+    description: Tool usage metrics
+  delegation_log_path:
+    type: string
+    default: "/root/AAA/ops/hermes/telemetry/delegation.jsonl"
+    description: Delegation audit log
+  approval_log_path:
+    type: string
+    default: "/root/AAA/ops/hermes/telemetry/approvals.jsonl"
+    description: Approval telemetry
+  session_log_path:
+    type: string
+    default: "/root/AAA/ops/hermes/telemetry/sessions.jsonl"
+    description: Session lifecycle log
+  alert_webhook_url:
+    type: string
+    default: ""
+    description: Optional webhook for T3 alert notifications
