@@ -1,0 +1,12 @@
+{
+  "name": "site-manager",
+  "description": "Manage arif-sites (arif-fazil.com, apex.arif-fazil.com, arifos.arif-fazil.com) from Telegram",
+  "version": "1.0.0",
+  "tags": ["web", "site", "deploy", "caddy", "dns", "arif-sites", "management"],
+  "author": "arifOS AAA",
+  "license": "AGPL-3.0",
+  "path": "site-manager",
+  "requires": {
+    "hermes_tools": ["browser", "file_read", "file_write", "patch", "search_files", "terminal_execute"]
+  }
+}

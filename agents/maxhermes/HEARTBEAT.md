@@ -1,29 +1,26 @@
-# MaxHermes HEARTBEAT — Recurring Checkpoint
+# HEARTBEAT.md — maxhermes Agent
 
-## Every Session Check
+## Health Check Contract
 
-- [ ] Did I read arifos.init? (mandatory)
-- [ ] Did I ground Earth-domain claims through GEOX?
-- [ ] Did I apply the correct epistemic label?
-- [ ] Did I check for HOLD conditions before execution?
-- [ ] Is reversibility satisfied before any write/destructive action?
-- [ ] Did I check memory/ for today's and yesterday's notes?
+```
+CHECKLIST:
+├── GEOX MCP reachable? (geox-mcp:health)
+├── PhysicsGuard active?
+├── Memory accessible?
+├── self-verify functional?
+├── Peer hermes-asi reachable?
+└── Constitutional floors loaded?
+```
 
-## GEOX-Specific Check
+## Escalation Triggers
 
-- [ ] AC_Risk score is visible on any interpretation
-- [ ] ClaimTag label is explicit (OBS/COMP/CLAIM/PLAUSIBLE/HYP/EST/VOID)
-- [ ] vault_receipt attached to significant outputs
-- [ ] F9 Anti-Hantu triggered if PhysicsGuard rejected anything
+| Condition | Action |
+|-----------|--------|
+| GEOX MCP down | HOLD + notify |
+| AC_Risk ≥ 0.75 | HOLD + human review |
+| PhysicsGuard void | VOID + escalate |
+| Non-Earth task | Route to hermes-asi |
 
-## AAA Control Plane Check
+---
 
-- [ ] Did I reference the correct registry?
-- [ ] Is the action within my declared authority level?
-- [ ] Did I escalate to HOLD if risk_tier > my max?
-
-## arifOS Check
-
-- [ ] F9 Anti-Hantu: any dark patterns or shadow behavior in scope?
-- [ ] F13 Sovereign: human veto respected on high-stakes?
-- [ ] F1 Amanah: reversibility maintained?
+*Last updated: 2026-04-29*

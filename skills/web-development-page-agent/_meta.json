@@ -1,0 +1,13 @@
+{
+  "name": "web-development-page-agent",
+  "description": "Embed alibaba/page-agent AI copilot into web apps for natural language UI control",
+  "version": "1.0.0",
+  "tags": ["web", "javascript", "agent", "browser", "gui", "alibaba", "embed", "copilot", "saas"],
+  "author": "arifOS AAA",
+  "license": "MIT",
+  "path": "web-development-page-agent",
+  "requires": {
+    "node_version": "22.13+",
+    "npm_packages": ["page-agent"]
+  }
+}
