@@ -534,5 +534,146 @@
       </footer>
     </div>
 
-  </body>
+  <!-- WebMCP: Browser-side agent tool registration -->
+  <script>
+    (function() {
+      // Detect WebMCP via navigator.modelContext (Chrome Canary / W3C incubation)
+      var MC = navigator.modelContext;
+      if (!MC) {
+        console.log('[WebMCP] navigator.modelContext not available — tools not registered (browser agent may use A2A API instead)');
+        return;
+      }
+
+      function reg(name, desc, schema, execute) {
+        try {
+          MC.registerTool({ name: name, description: desc, inputSchema: schema, execute: execute });
+        } catch(e) {
+          console.error('[WebMCP] failed to register', name, e);
+        }
+      }
+
+      // Tool: get_aaa_agent_card
+      reg(
+        'get_aaa_agent_card',
+        'Retrieve the AAA Gateway A2A v1.0.0 agent card — capabilities, skills, auth schemes, governance posture',
+        { type: 'object', properties: {}, required: [] },
+        async function() {
+          try {
+            var r = await fetch('/a2a/agent-card.json');
+            var card = await r.json();
+            return { content: [{ type: 'text', text: JSON.stringify(card, null, 2) }] };
+          } catch(e) {
+            return { content: [{ type: 'text', text: 'Error: ' + e.message }], isError: true };
+          }
+        }
+      );
+
+      // Tool: discover_a2a_skills
+      reg(
+        'discover_a2a_skills',
+        'List all available A2A skills on the AAA Gateway — agent-dispatch, agent-handoff, status-query',
+        { type: 'object', properties: {}, required: [] },
+        async function() {
+          try {
+            var r = await fetch('/a2a/agent-card.json');
+            var card = await r.json();
+            var skills = card.skills || [];
+            var out = skills.map(function(s) {
+              return '## ' + s.name + '\nID: ' + s.id + '\n' + s.description + '\nTags: ' + (s.tags || []).join(', ') + '\nExamples: ' + (s.examples || []).join(' | ');
+            }).join('\n\n');
+            return { content: [{ type: 'text', text: out }] };
+          } catch(e) {
+            return { content: [{ type: 'text', text: 'Error: ' + e.message }], isError: true };
+          }
+        }
+      );
+
+      // Tool: explain_aaa_governance
+      reg(
+        'explain_aaa_governance',
+        'Explain the AAA Gateway governance model — 13 constitutional floors, 888_JUDGE verdicts, VAULT999 audit',
+        { type: 'object', properties: {}, required: [] },
+        function() {
+          var g = {
+            summary: 'AAA enforces arifOS Floors F1-F13 on all A2A routing. No agent self-approves consequential actions.',
+            floors: {
+              F1_AMANAH: 'No irreversible without human ack', F2_TRUTH: 'Cite or declare UNKNOWN',
+              F3_TRIWITNESS: 'human+AI+earth signal', F4_CLARITY: 'Scale/CRS/provenance explicit',
+              F5_PEACE: 'Harm >= 1.0', F6_EMPATHY: 'Stakeholder safety >= 0.90',
+              F7_HUMILITY: 'Confidence in [0.03,0.15]', F8_GENIUS: 'Quality >= threshold',
+              F9_ANTIHANTU: 'Zero hallucination — physics or VOID', F10_ONTOLOGY: 'AI=tool, Model!=Reality',
+              F11_AUDIT: 'Full provenance logged', F12_RESILIENCE: 'Graceful degradation',
+              F13_SOVEREIGN: 'Human final veto — supreme'
+            },
+            verdicts: {
+              SEAL: 'Approved — execute (888_JUDGE only)', HOLD_888: 'Human review required',
+              VOID: 'Constitutional violation — rejected', SABAR: 'Cooling required',
+              CLAIM_ONLY: 'Claim only — requires ratification'
+            },
+            vault: 'VAULT999 — append-only constitutional ledger',
+            invariant: 'Protocol != Authority. A2A coordinates. Permission is separate.'
+          };
+          return { content: [{ type: 'text', text: JSON.stringify(g, null, 2) }] };
+        }
+      );
+
+      // Tool: submit_draft_task
+      reg(
+        'submit_draft_task',
+        'Prepare an A2A task. DRAFT ONLY — requires 888_JUDGE SEAL before execution. POST to /tasks with bearer auth.',
+        {
+          type: 'object',
+          properties: {
+            skill_id: { type: 'string', description: 'agent-dispatch | agent-handoff | status-query' },
+            message: { type: 'string', description: 'Task description' }
+          },
+          required: ['skill_id', 'message']
+        },
+        function() {
+          return { content: [{ type: 'text', text: '## DRAFT ONLY — Human Approval Required\n\nThis prepares a task packet. To submit:\n1. POST to https://aaa.arif-fazil.com/tasks (bearer auth)\n2. Wait for 888_JUDGE verdict\n3. Execution only after SEAL\n\nstatus-query: on-demand. agent-dispatch/agent-handoff: MUST receive SEAL.' }] };
+        }
+      );
+
+      // Tool: get_federation_manifest
+      reg(
+        'get_federation_manifest',
+        'Retrieve the arifOS federation peer manifest — registered agents, constitutional floors, governance root',
+        { type: 'object', properties: {}, required: [] },
+        async function() {
+          try {
+            var r = await fetch('/.well-known/arifos-federation.json');
+            var m = await r.json();
+            return { content: [{ type: 'text', text: JSON.stringify(m, null, 2) }] };
+          } catch(e) {
+            return { content: [{ type: 'text', text: 'Error: ' + e.message }], isError: true };
+          }
+        }
+      );
+
+      // Tool: explain_a2a_protocol
+      reg(
+        'explain_a2a_protocol',
+        'Explain A2A v1.0.0 — agent collaboration protocol vs MCP tool-calling vs arifOS governance',
+        { type: 'object', properties: {}, required: [] },
+        function() {
+          var e = {
+            protocol: 'A2A v1.0.0 — Agent-to-Agent',
+            what: 'Enables task delegation, status sharing, handoff, streaming between agents',
+            vs_MCP: 'A2A = who talks to whom. MCP = what agent can do. arifOS = what is allowed.',
+            endpoints: {
+              POST_tasks: 'Create task', GET_tasks_id: 'Retrieve task',
+              GET_tasks_id_stream: 'SSE stream', POST_tasks_id_cancel: 'Cancel task',
+              GET_tasks_id_subscribe: 'SSE subscription'
+            },
+            governance: 'A2A enables coordination. 888_JUDGE required for consequential actions. Auth: bearer or x-a2a-key.'
+          };
+          return { content: [{ type: 'text', text: JSON.stringify(e, null, 2) }] };
+        }
+      );
+
+      console.log('[WebMCP] AAA Gateway tools registered — 6 discovery + draft tools');
+    })();
+  </script>
+
+</body>
 </html>
