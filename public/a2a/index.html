@@ -3,57 +3,536 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AAA A2A Federation Surface</title>
+    <title>AAA — Governed Agent Federation | arifOS</title>
+    <meta name="description" content="AAA is a governed A2A federation gateway for multi-agent coordination. A2A for collaboration. MCP for capability. arifOS for governance. 888 Judge for authority." />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aaa.arif-fazil.com/" />
+    <meta property="og:title" content="AAA — Governed Agent Federation" />
+    <meta property="og:description" content="A2A for coordination. MCP for capability. arifOS for governance. You remain the judge." />
+    <meta property="og:site_name" content="AAA Gateway" />
+
+    <!-- Discovery -->
+    <link rel="alternate" type="application/json" href="/a2a/agent-card.json" title="A2A Agent Card" />
+    <link rel="alternate" type="application/json" href="/.well-known/agent-card.json" title="A2A Agent Card (canonical)" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
     <style>
+      :root {
+        --bg: #0b1220;
+        --surface: #131c2e;
+        --border: #1e2d47;
+        --text: #e5e7eb;
+        --muted: #7b8fa8;
+        --blue: #7dd3fc;
+        --gold: #f59e0b;
+        --green: #34d399;
+        --red: #f87171;
+        --purple: #a78bfa;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
       body {
-        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Inter', system-ui, sans-serif;
+        line-height: 1.7;
+      }
+
+      a { color: var(--blue); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      code, pre {
+        font-family: 'JetBrains Mono', monospace;
+        background: var(--surface);
+        border-radius: 6px;
+      }
+      code { padding: 2px 6px; font-size: 0.875em; }
+      pre { padding: 1.25rem; overflow-x: auto; font-size: 0.85rem; line-height: 1.6; }
+
+      .container { max-width: 860px; margin: 0 auto; padding: 0 1.5rem; }
+
+      header {
+        padding: 3rem 0 2rem;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 3rem;
+      }
+
+      header .motto {
+        font-size: 0.75rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.75rem;
+      }
+
+      h1 { font-size: 2.25rem; font-weight: 700; line-height: 1.2; margin-bottom: 1rem; }
+      h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 1rem; color: var(--text); }
+      h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+
+      p { color: var(--muted); margin-bottom: 1rem; max-width: 68ch; }
+
+      .tag {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border-radius: 4px;
+        margin-right: 0.5rem;
+      }
+      .tag.gov { background: #7dd3fc22; color: var(--blue); border: 1px solid #7dd3fc44; }
+      .tag.earth { background: #34d39922; color: var(--green); border: 1px solid #34d39944; }
+      .tag.capital { background: #f59e0b22; color: var(--gold); border: 1px solid #f59e0b44; }
+      .tag.human { background: #a78bfa22; color: var(--purple); border: 1px solid #a78bfa44; }
+
+      section { margin-bottom: 3.5rem; }
+
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.25rem;
+      }
+      .card h3 { font-size: 1rem; }
+      .card p { font-size: 0.875rem; margin-bottom: 0; }
+
+      .diagram {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
         padding: 2rem;
-        font-family: Arial, sans-serif;
-        background: #0b1220;
-        color: #e5e7eb;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.9;
+        overflow-x: auto;
+      }
+      .diagram .arrow { color: var(--gold); }
+      .diagram .node { color: var(--text); }
+      .diagram .comment { color: var(--muted); font-style: italic; }
+      .diagram .key { color: var(--blue); }
+
+      .endpoint-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+        margin-top: 1rem;
+      }
+      .endpoint-table th, .endpoint-table td {
+        text-align: left;
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .endpoint-table th { color: var(--muted); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+      .endpoint-table code { font-size: 0.8rem; }
+
+      .verdict-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .verdict-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+      }
+      .verdict-item .code { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.25rem; }
+      .verdict-item .desc { font-size: 0.8rem; color: var(--muted); }
+
+      .try-api {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-top: 1rem;
       }
 
-      main {
-        max-width: 880px;
-        margin: 0 auto;
+      .federation-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+        margin-top: 1rem;
+      }
+      .federation-table th, .federation-table td {
+        text-align: left;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+      .federation-table th { color: var(--muted); font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+      .trust-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .trust-item {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1rem;
+      }
+      .trust-item .icon { font-size: 1.25rem; flex-shrink: 0; }
+      .trust-item h4 { font-size: 0.875rem; margin-bottom: 0.25rem; }
+      .trust-item p { font-size: 0.8rem; margin-bottom: 0; }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 2rem 0;
+        margin-top: 3rem;
+        color: var(--muted);
+        font-size: 0.8rem;
       }
 
-      code,
-      pre {
-        font-family: "Courier New", monospace;
-      }
+      .anchor { scroll-margin-top: 2rem; }
 
-      a {
-        color: #7dd3fc;
-      }
-
-      .hold {
-        color: #fbbf24;
+      @media (max-width: 600px) {
+        h1 { font-size: 1.75rem; }
+        .grid-3, .verdict-grid, .trust-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>AAA A2A Federation Surface</h1>
-      <p>
-        AAA publishes discovery assets here. Message ingress is
-        <span class="hold">888_HOLD</span> until a server runtime exposes the governed bridge.
-      </p>
-      <h2>Discovery</h2>
-      <ul>
-        <li><a href="./agent-card.json">/a2a/agent-card.json</a></li>
-        <li><a href="./agent.json">/a2a/agent.json</a></li>
-        <li><a href="./status.json">/a2a/status.json</a></li>
-        <li><a href="/.well-known/agent-card.json">/.well-known/agent-card.json</a></li>
-        <li><a href="/.well-known/agent.json">/.well-known/agent.json</a></li>
-      </ul>
-      <h2>Ingress posture</h2>
-      <pre>{
-  "path": "/a2a/message",
-  "status": "888_HOLD",
-  "reason": "Static AAA deployment does not implement POST message handling in this repo.",
-  "runtime_bridge_ref": "openclaw/a2a/bridge.yaml"
-}</pre>
-    </main>
+
+    <div class="container">
+      <header>
+        <p class="motto">DITEMPA BUKAN DIBERI — Forged, Not Given</p>
+        <h1>AAA — Governed Agent Federation</h1>
+        <p>
+          AAA enables agents to collaborate across domains — geoscience, capital allocation, and human wellness — with constitutional governance at every step.
+        </p>
+        <p style="margin-bottom: 0;">
+          <strong style="color: var(--text);">A2A coordinates. MCP grounds. arifOS governs. You remain the judge.</strong>
+        </p>
+      </header>
+
+      <!-- ============================================================ -->
+      <section id="what">
+        <h2 class="anchor">What is AAA?</h2>
+        <p>
+          AAA is not a chatbot. It is a <strong style="color: var(--text);">governed coordination layer for multi-agent systems</strong>. It routes tasks between specialist agents, ensures every action passes constitutional Floors F1–F13, and requires human approval before irreversible decisions.
+        </p>
+        <p>
+          The federation includes four MCP domains — each prevents a different failure mode:
+        </p>
+        <div class="grid-3">
+          <div class="card">
+            <span class="tag gov">Governance</span>
+            <h3>arifOS MCP</h3>
+            <p>Constitutional kernel. Decides what is allowed, what requires human approval, and what must be audited.</p>
+          </div>
+          <div class="card">
+            <span class="tag earth">Earth</span>
+            <h3>GEOX MCP</h3>
+            <p>Geoscience intelligence. Anchors the system to physical reality — rocks, wells, faults, basins.</p>
+          </div>
+          <div class="card">
+            <span class="tag capital">Capital</span>
+            <h3>WEALTH MCP</h3>
+            <p>Economic intelligence. Forces every plan through cost, value, risk, and opportunity cost discipline.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="how">
+        <h2 class="anchor">How It Works</h2>
+        <div class="diagram">
+<span class="comment"># The governance flow — every task passes through constitutional Floors</span>
+
+<span class="node">User / Operator</span>
+  <span class="arrow">↓</span>
+<span class="node">AAA A2A Agent</span>  <span class="comment">← coordination endpoint</span>
+  <span class="arrow">↓</span>
+<span class="node">arifOS MCP</span>  <span class="comment">← governance kernel (F1–F13)</span>
+  <span class="arrow">↓</span>
+<span class="key">888_JUDGE</span>  <span class="comment">← human verdict required for irreversible actions</span>
+  <span class="arrow">↓</span>
+<span class="node">Specialist Agents</span>  <span class="comment">GEOX / WEALTH / WELL</span>
+  <span class="arrow">↓</span>
+<span class="node">MCP Tools</span>  <span class="comment">data, models, systems, evidence</span>
+  <span class="arrow">↓</span>
+<span class="key">VAULT999</span>  <span class="comment">← append-only audit ledger</span>
+  <span class="arrow">↓</span>
+<span class="node">Result → Human Approval (if required)</span>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="governance">
+        <h2 class="anchor">Governance Model</h2>
+        <p>
+          Every task in the AAA federation is governed by the 13 constitutional Floors. No agent can approve its own consequential actions. No irreversible step occurs without human verdict.
+        </p>
+        <div class="verdict-grid">
+          <div class="verdict-item">
+            <div class="code" style="color: var(--green);">SEAL</div>
+            <div class="desc">Approved. Safe to execute. 888_JUDGE has ruled.</div>
+          </div>
+          <div class="verdict-item">
+            <div class="code" style="color: var(--gold);">HOLD_888</div>
+            <div class="desc">Human review required. Do not proceed until 888_JUDGE approves.</div>
+          </div>
+          <div class="verdict-item">
+            <div class="code" style="color: var(--red);">VOID</div>
+            <div class="desc">Constitutional violation. Action rejected. Never executed.</div>
+          </div>
+          <div class="verdict-item">
+            <div class="code" style="color: var(--blue);">SABAR</div>
+            <div class="desc">Cooling required. Pause, re-ground, and retry.</div>
+          </div>
+        </div>
+        <p style="margin-top: 1.25rem;">
+          <strong style="color: var(--text);">Core invariant:</strong> Protocol ≠ Authority. A2A enables coordination. It does not grant permission. Every handoff is audited.
+        </p>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="federation">
+        <h2 class="anchor">The arifOS Federation</h2>
+        <table class="federation-table">
+          <thead>
+            <tr>
+              <th>Agent / MCP</th>
+              <th>Domain</th>
+              <th>Key Question</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: var(--text);">arifOS MCP</strong></td>
+              <td>Governance</td>
+              <td>Is it lawful within the constitution?</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--text);">GEOX MCP</strong></td>
+              <td>Earth / Geoscience</td>
+              <td>Is it real? Is it physically possible?</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--text);">WEALTH MCP</strong></td>
+              <td>Capital / Economics</td>
+              <td>Is it worth it? What is the opportunity cost?</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--text);">WELL MCP</strong></td>
+              <td>Human Wellness</td>
+              <td>Is the human steady enough to judge now?</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="usecases">
+        <h2 class="anchor">Example Workflows</h2>
+
+        <h3 style="margin-top: 1.5rem;">Multi-Agent Field Analysis</h3>
+        <div class="diagram">
+<span class="node">Task:</span> Evaluate whether to proceed with a marginal field opportunity.
+
+<span class="arrow">↓</span>
+<span class="key">AAA</span> classifies as high-impact advisory.
+<span class="arrow">↓</span>
+<span class="key">GEOX</span> → trap risk, reservoir quality, seal integrity, uncertainty range
+<span class="arrow">↓</span>
+<span class="key">WEALTH</span> → development cost, price sensitivity, risked value, opportunity cost
+<span class="arrow">↓</span>
+<span class="key">WELL</span> → operator load, decision readiness, pause recommendation
+<span class="arrow">↓</span>
+<span class="key">888_JUDGE</span> → human approves, rejects, pauses, or requests more evidence
+        </div>
+
+        <h3 style="margin-top: 1.5rem;">Safe Automation</h3>
+        <p>
+          Tasks that generate output and send it externally require explicit human approval before delivery. No silent execution. Every action is auditable.
+        </p>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="skills">
+        <h2 class="anchor">Skills</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Agent Dispatch</h3>
+            <p>Route a task to an approved internal agent with audit logging, permission checks, and human approval if required.</p>
+          </div>
+          <div class="card">
+            <h3>MCP Capability Bridge</h3>
+            <p>Discover what tools, data, and resources are available across the arifOS federation — GEOX, WEALTH, WELL.</p>
+          </div>
+          <div class="card">
+            <h3>Federation Discovery</h3>
+            <p>Explore registered agents and what each can do. Query capability surfaces without triggering execution.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="trust">
+        <h2 class="anchor">Trust &amp; Safety</h2>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <span class="icon">📋</span>
+            <div>
+              <h4>No Hidden Actions</h4>
+              <p>Every task is visible and auditable. Nothing executes without a ledger entry.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="icon">🚫</span>
+            <div>
+              <h4>No Silent Execution</h4>
+              <p>High-risk or irreversible actions require explicit human approval via 888_JUDGE.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="icon">🔒</span>
+            <div>
+              <h4>No Data Leakage</h4>
+              <p>Agent cards contain no secrets. Authentication uses standard bearer and API key schemes.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <span class="icon">🔍</span>
+            <div>
+              <h4>Full Traceability</h4>
+              <p>Every decision can be reconstructed from VAULT999 append-only audit logs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="try">
+        <h2 class="anchor">Try the API</h2>
+        <div class="try-api">
+          <p>Discover federation agents:</p>
+          <pre>curl https://aaa.arif-fazil.com/.well-known/agent-card.json \
+  -H "Authorization: Bearer YOUR_KEY"</pre>
+
+          <p style="margin-top: 1rem;">Send a task (requires authentication):</p>
+          <pre>curl -X POST https://aaa.arif-fazil.com/tasks \
+  -H "Authorization: Bearer YOUR_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "method": "tasks/send",
+    "params": {
+      "skillId": "status-query",
+      "message": {
+        "role": "user",
+        "parts": [{"kind": "text", "text": "List federation members"}]
+      }
+    },
+    "id": "1"
+  }'</pre>
+        </div>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="endpoints">
+        <h2 class="anchor">A2A v1.0.0 Endpoints</h2>
+        <table class="endpoint-table">
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Path</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GET</td>
+              <td><code>/.well-known/agent-card.json</code></td>
+              <td>A2A v1.0.0 agent card (canonical)</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/.well-known/arifos-federation.json</code></td>
+              <td>Federation peer manifest</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/health</code></td>
+              <td>Gateway health + vault status</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td><code>/tasks</code></td>
+              <td>Create task (888_JUDGE gate for hold skills)</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/tasks/:taskId</code></td>
+              <td>Retrieve task by ID</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/tasks/:taskId/stream</code></td>
+              <td>SSE task stream</td>
+            </tr>
+            <tr>
+              <td>POST</td>
+              <td><code>/tasks/:taskId/cancel</code></td>
+              <td>Cancel a task</td>
+            </tr>
+            <tr>
+              <td>GET</td>
+              <td><code>/tasks/:taskId/subscribe</code></td>
+              <td>SSE task subscription</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ============================================================ -->
+      <section id="doctrine">
+        <h2 class="anchor">The Doctrine</h2>
+        <div class="diagram" style="font-size: 0.9rem;">
+<span class="key">GEOX:</span>  <span class="comment">"Is it real?"</span>
+<span class="key">WEALTH:</span> <span class="comment">"Is it worth it?"</span>
+<span class="key">WELL:</span>   <span class="comment">"Is the human steady?"</span>
+<span class="key">arifOS:</span> <span class="comment">"Is it governed?"</span>
+<span class="key">888_JUDGE:</span> <span class="comment">"Do I approve?"</span>
+
+<span class="arrow">↓</span>
+
+<span class="node">A2A coordinates. MCP grounds. VAULT999 remembers. 888_JUDGE decides.</span>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          AAA is part of the <a href="https://github.com/ariffazil/arifOS">arifOS Constitutional Federation</a>.
+          arifOS MCP · GEOX MCP · WEALTH MCP · WELL MCP.
+        </p>
+        <p style="margin-bottom: 0;">
+          DITEMPA BUKAN DIBERI — Intelligence is forged, not given.
+        </p>
+      </footer>
+    </div>
+
   </body>
 </html>
