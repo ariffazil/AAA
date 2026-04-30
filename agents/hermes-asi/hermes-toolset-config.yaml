@@ -1,0 +1,52 @@
+# HERMES 3-AGENT TOOLSET CONFIG
+# Minimal orthogonal toolset per agent
+# Load this into /root/.hermes/config.yaml toolsets section
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HERMES-ASI (WISDOM) — Generalist, memory, routing
+# ═══════════════════════════════════════════════════════════════════════════
+hermes-asi:
+  description: Generalist — memory, reasoning, routing
+  skills:
+    - hermes-hermes          # self-memory, session continuity
+    - arifOS-sense           # constitutional grounding
+    - chain-reason           # logical reasoning
+    - self-verify           # claim verification
+    - delta-logger           # VAULT999 audit trail
+    - oracle                 # decision support
+
+# ═══════════════════════════════════════════════════════════════════════════
+# MAXHERMES (GEOX) — Earth Specialist, physics, geology
+# ═══════════════════════════════════════════════════════════════════════════
+maxhermes:
+  description: GEOX Earth Intelligence Specialist
+  skills:
+    - maxhermes-geox-ground    # GEOX Earth grounding
+    - maxhermes-arifos-sense   # arifOS constitutional
+    - maxhermes-hermes         # self-memory
+    - geox-ground              # physics grounding
+    - consequence-classifier    # risk classification
+    - self-verify             # claim verification
+
+# ═══════════════════════════════════════════════════════════════════════════
+# HERMES-OPS (OPERATOR) — Execution, DevOps, workflows
+# ═══════════════════════════════════════════════════════════════════════════
+hermes-ops:
+  description: Operator — execution, DevOps, workflows
+  skills:
+    - claude-code              # code execution
+    - github-pro               # git operations
+    - github-repo-manager      # repo management
+    - workflow-automation      # workflow execution
+    - mcporter                # MCP tooling
+    - arifos-deploy            # arifOS deployment
+    - delta-logger             # VAULT999 audit trail
+
+# ═══════════════════════════════════════════════════════════════════════════
+# INSTALLATION
+# ═══════════════════════════════════════════════════════════════════════════
+# To apply:
+# 1. Copy toolsets section to /root/.hermes/config.yaml
+# 2. Set toolsets: [hermes-asi] or whichever agent
+# 3. Restart hermes-gateway
+# 4. Verify with: hermes skills list

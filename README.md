@@ -1,8 +1,20 @@
 # arifOS — Constitutional Intelligence Kernel (F0–F13)
 
-A transport-independent governance runtime for AI agents built on explicit, auditable constitutional constraints.
+**AAA** (ArifOS Agent Architecture) is the sovereign identity, control-plane, and A2A federation gateway for the arifOS constitutional kernel. AAA exposes governed delegation and coordination surfaces to external agents via the A2A v1.0.0 protocol, while arifOS provides the constitutional Floors F1–F13 that constrain all operations.
 
 *DITEMPA BUKAN DIBERI — Forged, Not Given*
+
+---
+
+## What AAA Is
+
+AAA is the top-level identity and federation layer. It:
+
+- Exposes the A2A v1.0.0 gateway (`POST /tasks`, `GET /tasks/:id`, `GET /tasks/:id/stream`) at `a2a-server/`
+- Registers peer agents (MaxHermes, GEOX, WEALTH) in the federation manifest at `/.well-known/arifos-federation.json`
+- Enforces 888_JUDGE gating for `agent-dispatch` and `agent-handoff` skills before execution
+- Writes all task outcomes to VAULT999 via the immutable ledger
+- Operates under arifOS constitutional Floors F1–F13 — no silent self-approval, no irreversible action without human acknowledgment
 
 ---
 
@@ -15,6 +27,39 @@ arifOS enforces constitutional Floors on all AI tool executions. It separates re
 - No tool can self-approve.
 - No action bypasses audit.
 - No claim becomes fact without constitutional ratification.
+
+---
+
+## AAA + arifOS Architecture
+
+```
+External Agent (A2A v1.0.0)
+    ↓ POST /tasks
+AAA Gateway (a2a-server/server.js)
+    ├── 888_JUDGE gate (hold skills require constitutional verdict)
+    ├── F9 Anti-Hallucination check
+    ├── VAULT999 audit (writeSeal)
+    └── arifOS Constitutional Floors F1–F13
+         ↓
+    Peer Agent (MaxHermes / GEOX / WEALTH)
+```
+
+---
+
+## A2A v1.0.0 Endpoints (AAA Gateway)
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/.well-known/agent-card.json` | A2A v1.0.0 agent card |
+| `GET` | `/.well-known/arifos-federation.json` | Federation peer manifest |
+| `GET` | `/health` | Health + vault status |
+| `POST` | `/tasks` | Create task (888_JUDGE gate) |
+| `GET` | `/tasks/:taskId` | Get task by ID |
+| `GET` | `/tasks/:taskId/stream` | SSE task stream |
+| `POST` | `/tasks/:taskId/cancel` | Cancel task |
+| `GET` | `/tasks/:taskId/subscribe` | SSE task subscription |
+
+Legacy v0.3.0 endpoints under `/a2a/` maintained for backward compat.
 
 ---
 
