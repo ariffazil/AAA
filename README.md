@@ -3,7 +3,7 @@
 > **Identity. Control. Federation.**
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
-[![AAA](https://img.shields.io/badge/AAA-v2026.04.30-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
+[![AAA](https://img.shields.io/badge/AAA-v1.0.0-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
 [![arifOS](https://img.shields.io/badge/arifOS-F1%E2%80%93F13_Governed-FF6B00?style=flat-square)](https://github.com/ariffazil/arifOS)
 [![A2A](https://img.shields.io/badge/A2A-v1.0.0-00D4FF?style=flat-square)](https://github.com/ariffazil/AAA)
 [![License](https://img.shields.io/badge/License-AGPL_V3-4EAF0C?style=flat-square)](./LICENSE)
@@ -43,7 +43,7 @@ AAA sits at the **federation boundary** — it is the front door and the gatekee
 | Field | Value |
 |-------|-------|
 | Canonical repository | `https://github.com/ariffazil/AAA` |
-| Version | `v2026.04.30` |
+| Package version | `1.0.0` |
 | Governing kernel | `arifOS F1–F13` |
 | Protocol | A2A v1.0.0 |
 | Endpoint | `http://localhost:3001` |
