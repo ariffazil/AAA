@@ -1,0 +1,1 @@
+{"name": "github", "version": "1.0.0", "description": "Native GitHub MCP for repo/PR/issue management", "mcp_server": "github", "installed": true, "api_key_required": "GITHUB_PERSONAL_ACCESS_TOKEN"}
