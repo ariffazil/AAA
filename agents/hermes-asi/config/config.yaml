@@ -1,0 +1,42 @@
+version: 1
+
+id: hermes-asi-agent
+agent_id: hermes-asi
+
+runtime:
+  model: minimax/MiniMax-M2.7
+  temperature: 0.2
+  max_turns: 90
+  show_reasoning: true
+
+approval:
+  memory_read_tier: T1
+  memory_write_tier: T2
+  delegate_tier: T2
+  vault_write_tier: T2
+
+host_binding:
+  type: hermes
+  channels: ["a2a", "mcp"]
+
+mcp_servers:
+  - id: arifos-mcp
+    url: https://arifosmcp.arif-fazil.com/mcp
+    enabled: true
+
+a2a_peers:
+  - agent_id: maxhermes
+    direction: bidirectional
+    protocol: a2a-v1
+  - agent_id: hermes-ops
+    direction: bidirectional
+    protocol: a2a-v1
+
+floors:
+  - F1  # AMANAH
+  - F2  # TRUTH
+  - F7  # HUMILITY
+  - F9  # ANTIHANTU
+  - F13 # SOVEREIGNTY
+
+max_risk_tier: medium

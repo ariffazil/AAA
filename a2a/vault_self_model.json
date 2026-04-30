@@ -1,0 +1,169 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/epistemic-signal-v1",
+  "title": "Vault Self Model",
+  "description": "Persistent self-model that each arifOS agent maintains in VAULT999. Updated after each task completion and calibration event.",
+
+  "type": "object",
+  "required": ["agent_identity", "capabilities", "calibration", "floor_states", "updated_at"],
+
+  "properties": {
+
+    "agent_identity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Agent URI. E.g. agent://arifos/AGI"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["AGI", "ASI", "APEX", "GEOX", "WEALTH"]
+        },
+        "version": {
+          "type": "string",
+          "description": "Agent build version"
+        },
+        "sovereign_owner": {
+          "type": "string",
+          "const": "Arif Fazil",
+          "description": "Human owner — never empty"
+        }
+      }
+    },
+
+    "capabilities": {
+      "type": "object",
+      "description": "What this agent can do",
+      "properties": {
+        "strong": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Domains where this agent has high credibility (score > 0.75)"
+        },
+        "moderate": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "weak": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "domain": { "type": "string" },
+              "reliability": { "type": "number", "minimum": 0, "maximum": 1 }
+            }
+          }
+        }
+      }
+    },
+
+    "calibration": {
+      "type": "object",
+      "description": "Per-domain calibration curves — tracks reported vs actual correctness",
+      "properties": {
+        "per_domain": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["domain", "total_queries", "correct_count", "avg_reported_confidence", "avg_actual_confidence"],
+            "properties": {
+              "domain": { "type": "string" },
+              "total_queries": { "type": "integer" },
+              "correct_count": { "type": "integer" },
+              "accuracy_rate": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "actual_correct / total_queries"
+              },
+              "avg_reported_confidence": { "type": "number" },
+              "avg_actual_confidence": { "type": "number" },
+              "calibration_error": {
+                "type": "number",
+                "description": "avg_reported_confidence - accuracy_rate. Closer to 0 = better calibrated."
+              },
+              "last_updated": { "type": "string", "format": "iso8601" }
+            }
+          }
+        },
+        "global_calibration_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Average calibration_error across all domains. Lower = better calibrated."
+        }
+      }
+    },
+
+    "floor_states": {
+      "type": "object",
+      "description": "Current estimated brittleness of each constitutional floor when this agent operates",
+      "properties": {
+        "F1_AMANAH":   { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F2_TRUTH":    { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F3_WITNESS":  { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F4_CLARITY":  { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F5_PEACE":    { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F6_EMPATHY":  { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F7_HUMILITY": { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F8_GENIUS":   { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F9_ANTIHANTU":{ "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F10_ONTOLOGY":{ "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F11_AUTH":    { "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F12_INJECTION":{ "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } },
+        "F13_SOVEREIGN":{ "brittleness": { "type": "number" }, "last_compliant": { "type": "string", "format": "iso8601" }, "failure_count": { "type": "integer" } }
+      },
+      "additionalProperties": false
+    },
+
+    "error_log": {
+      "type": "array",
+      "description": "Recent error events for pattern detection",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": { "type": "string", "format": "iso8601" },
+          "domain": { "type": "string" },
+          "error_type": { "type": "string" },
+          "what_was_claimed": { "type": "string" },
+          "what_was_actual": { "type": "string" },
+          "floor_violated": { "type": "string" },
+          "was_caught_by": { "type": "string" },
+          "recovery_action": { "type": "string" }
+        }
+      },
+      "maxItems": 100
+    },
+
+    "peer_models": {
+      "type": "object",
+      "description": "This agent's model of other agents — ToM built from observation",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "role": { "type": "string" },
+          "strong_domains": { "type": "array", "items": { "type": "string" } },
+          "weak_domains": { "type": "array", "items": { "type": "string" } },
+          "calibration_bias": { "type": "number", "description": "Tendency to over/under-confident relative to accuracy" },
+          "observed_agreement_rate": { "type": "number" },
+          "last_observed": { "type": "string", "format": "iso8601" }
+        }
+      }
+    },
+
+    "updated_at": {
+      "type": "string",
+      "format": "iso8601"
+    },
+
+    "updated_by_task_id": {
+      "type": "string",
+      "description": "VAULT999 task ID that last triggered an update to this model"
+    }
+  }
+}

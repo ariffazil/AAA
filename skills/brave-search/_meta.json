@@ -1,0 +1,1 @@
+{"name": "brave-search", "version": "1.0.0", "description": "Web search via Brave Search API", "mcp_server": "brave-search", "installed": true, "api_key_required": "BRAVE_API_KEY"}
