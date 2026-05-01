@@ -112,3 +112,28 @@
 - `waw` contained the richer long-term memory about Arif and communication preferences
 - `APEX` contained the stronger identity anchor for `arifOS_bot`
 - These were merged into the current workspace as the single active workspace
+
+## Sealed Lessons
+
+### 2026-05-01 — AGI-Level Governance Upgrade
+
+**What was wrong:** OPENCLAW had no documented governing loop, static HEARTBEAT, no autonomy ladder, no checkpoint, no decision log, no task tracking. The audit characterized the gap as "plain 8-step ReAct" — but that was characterization, not a verbatim loop. The real gap: **no stage gates, no entropy tracking, no formal loop structure at all**.
+
+**What was built:**
+- AGENTS.md: 000-999 governing loop (ReAct only valid inside 666 FORGE)
+- AUTONOMY.md: L0-L5 permission ladder (default L3, L4/L5 need 888)
+- HEARTBEAT.md: live runtime state (entropy_delta, loop_count, risk_level)
+- CHECKPOINT.md: wake continuity + rollback discipline
+- LOOP.md: operational 000-999 implementation
+- DECISIONS.md: structured sealed decision log
+- TASKS.md: active work ledger
+- TOOLS.md: populated environment notes
+
+**Thresholds (from actual files — not the audit characterization):**
+- `loop_count > 10` → stop and report (**NOT 20**)
+- `entropy_delta > +0.3` → investigate before continuing (**NOT 0.7**)
+- risk_level HIGH/CRITICAL → pause for 888 approval
+
+**Per-model files:** CLAUDE.md and ARIF.md are stale legacy. GEMINI.md does not exist.
+
+**Authority:** Arif (888 Judge). **DITEMPA BUKAN DIBERI.**
