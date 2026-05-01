@@ -42,6 +42,11 @@ precedence:
   - MEMORY.md
   - HEARTBEAT.md
   - TOOLS.md
+  - AUTONOMY.md
+  - CHECKPOINT.md
+  - LOOP.md
+  - DECISIONS.md
+  - TASKS.md
   - agent-card.json
 
 boot_load_order:
@@ -54,6 +59,11 @@ boot_load_order:
   - MEMORY.md
   - HEARTBEAT.md
   - TOOLS.md
+  - AUTONOMY.md
+  - CHECKPOINT.md
+  - LOOP.md
+  - DECISIONS.md
+  - TASKS.md
 
 files:
   - path: ROOT_CANON.yaml
@@ -103,13 +113,38 @@ files:
 
   - path: HEARTBEAT.md
     status: canonical
-    role: recurring checklist
-    notes: Small recurring operational checklist only.
+    role: live runtime state
+    notes: Live operational state — updated before and after every major action.
 
   - path: TOOLS.md
     status: canonical
     role: local environment notes
     notes: Host- and machine-specific notes for this workspace.
+
+  - path: AUTONOMY.md
+    status: canonical
+    role: permission ladder
+    notes: L0–L5 autonomy levels, approval requirements, forbidden actions.
+
+  - path: CHECKPOINT.md
+    status: canonical
+    role: wake continuity
+    notes: Stateless wake survival, rollback discipline, session recovery.
+
+  - path: LOOP.md
+    status: canonical
+    role: operational loop
+    notes: 000–999 implementation, stage inputs/outputs/gates, tool use per stage.
+
+  - path: DECISIONS.md
+    status: canonical
+    role: decision log
+    notes: Sealed decision audit trail, structured entries for consequential acts.
+
+  - path: TASKS.md
+    status: canonical
+    role: task ledger
+    notes: Active work ledger, goal persistence across stateless wakes.
 
   - path: agent-card.json
     status: canonical
