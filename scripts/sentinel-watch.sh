@@ -10,7 +10,7 @@ REPOS=(
   "/root/WEALTH:ariffazil/WEALTH:master"
   "/root/geox:ariffazil/GEOX:main"
   "/root/A-FORGE:ariffazil/A-FORGE:main"
-  "/root/arif-sites-work:ariffazil/arif-sites:main"
+  "/root/arif-sites:ariffazil/arif-sites:main"
   "/root/.openclaw/workspace:ariffazil/AAA:master"
 )
 
