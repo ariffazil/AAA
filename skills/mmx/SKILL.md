@@ -2,11 +2,21 @@
 name: mmx
 description: Full multimodal generation via MiniMax CLI (mmx). Covers text chat, image generation, video synthesis, TTS speech, music composition, vision analysis, and web search. Activates when Arif wants to generate content or analyze images. Prerequisites: mmx auth login with API key. NOT for deep research loops (use mmx-text-researcher skill instead).
 metadata: {"openclaw": {"emoji": "🎨", "requires": {"bins": ["mmx"]}}}
+setup_needed: true
 ---
 
 # MMX — MiniMax Multimodal CLI
 
-Full reference for `mmx` CLI. For deep research workflows, use `mmx-text-researcher` skill instead.
+## ⚠️ CRITICAL: Wrong Package Trap
+
+**`minimax-mcp` (pip) ≠ `mmx-cli` (npm)** — completely different packages:
+- `minimax-mcp` on PyPI = Claude config helper, **NOT** the CLI ❌
+- `mmx-cli` on npm = Actual MiniMax CLI, installs as `mmx` binary ✅
+- `pip install mmx` → fails (no such package)
+- `npm install @minimax/mmx` → fails (not in registry)
+- **Fix:** `npm install -g mmx-cli`
+
+For deep research workflows, use `mmx-text-researcher` skill instead.
 
 ## Auth Check (First)
 
