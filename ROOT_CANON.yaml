@@ -255,3 +255,50 @@ files:
     status: legacy
     role: stale constitution reference
     notes: Old 13-floor constitution. Not active governance. Superseded by 000_CONSTITUTION.md and arifOS/000/ directory.
+
+# ─── Agent Registry ───────────────────────────────────────────────────────────
+# Tier key: AGI = bounded operator (gateway, specialist). ASI = Advanced Specialist Intelligence (generalist, memory, deep reasoning).
+
+agents:
+  openclaw:
+    tier: AGI
+    role: Primary gateway + orchestrator
+    identity: agents/openclaw/IDENTITY.md
+    soul: agents/openclaw/SOUL.md
+    agents: agents/openclaw/AGENTS.md
+    heartbeat: agents/openclaw/HEARTBEAT.md
+
+  hermes-asi:
+    tier: ASI
+    role: Generalist reasoning + routing + coordination
+    identity: agents/hermes-asi/IDENTITY.md
+    soul: agents/hermes-asi/SOUL.md
+    agents: agents/hermes-asi/AGENTS.md
+
+  hermes:
+    tier: ASI
+    role: Memory engine + deep recall
+    identity: agents/hermes/IDENTITY.md
+    soul: agents/hermes/SOUL.md
+    agents: agents/hermes/AGENTS.md
+
+  maxhermes:
+    tier: AGI
+    role: GEOX Earth Intelligence specialist
+    identity: agents/maxhermes/IDENTITY.md
+    soul: agents/maxhermes/SOUL.md
+    agents: agents/maxhermes/AGENTS.md
+
+  opencode:
+    tier: AGI
+    role: Coding specialist
+    identity: agents/opencode/IDENTITY.md
+    soul: agents/opencode/SOUL.md
+    agents: agents/opencode/AGENTS.md
+
+  hermes-ops:
+    tier: AGI
+    role: Execution specialist (DevOps, workflows, deployment)
+    identity: agents/hermes-ops/IDENTITY.md
+    soul: agents/hermes-ops/SOUL.md
+    agents: agents/hermes-ops/AGENTS.md

@@ -7,7 +7,7 @@
 **Role:** Memory engine + deep reasoning; tool-calling specialist
 **Host binding:** Local inference / Ollama / Fireworks / OpenRouter
 **Domain plane:** WISDOM (memory, recall, reasoning chains)
-**Intelligence tier:** ASI (advanced specialist intelligence)
+**Intelligence tier:** ASI (Advanced Specialist Intelligence — memory engine, deep recall)
 
 ## Authority
 
