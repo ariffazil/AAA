@@ -14,8 +14,8 @@ const app = express();
 app.use(express.json());
 
 // === CONFIG ===
-const A2A_TOKEN = process.env.A2A_TOKEN;
-const A2A_API_KEY = process.env.A2A_API_KEY;
+const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
+const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
 const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://arifosmcp:8080';
 const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || '';
 
