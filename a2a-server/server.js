@@ -16,8 +16,8 @@ app.use(express.json());
 // === CONFIG ===
 const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
 const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
-const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://arifosmcp:8080';
-const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || '';
+const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://hermes-agent:3002';
+const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || 'hermes-agent-apikey-dev';
 
 // Fail fast if tokens not configured — no silent dev fallback (F1 AMANAH)
 if (!A2A_TOKEN || !A2A_API_KEY) {
@@ -40,8 +40,9 @@ const VERDICT = {
 // === SKILL APPROVAL POLICIES ===
 const SKILL_APPROVAL_POLICY = {
   'agent-dispatch': 'hold',   // requires 888_JUDGE before dispatch
-  'agent-handoff': 'hold',   // requires 888_JUDGE before handoff
-  'status-query': 'on-demand' // just process directly
+  'agent-handoff': 'hold',    // requires 888_JUDGE before handoff
+  'general': 'hold',           // ALL actions default to judgment gate — safe unless explicitly status-query
+  'status-query': 'on-demand'  // only pure read-only queries bypass
 };
 
 // === RISK TIERS ===
@@ -308,12 +309,83 @@ function extractText(message) {
 }
 
 // === EXECUTE TASK ===
-async function executeTask(taskId, contextId, message) {
-  const userText = extractText(message);
-  const skill = detectSkill(userText);
-
+async function executeTask(taskId, contextId, message, targetAgent) {
   let task = taskStore.get(taskId);
   if (!task) return;
+
+  const userText = extractText(message);
+  const skill = detectSkill(userText);
+  task.metadata = task.metadata || {};
+  task.metadata.skill = skill;
+
+  // === REAL AGENT DISPATCH — route to Hermes ASI ===
+  if (targetAgent === 'hermes') {
+    task.status = {
+      state: 'working',
+      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to Hermes ASI 888_JUDGMENT...' }], messageId: generateId(), taskId, contextId },
+      timestamp: new Date().toISOString()
+    };
+    taskStore.set(taskId, task);
+    publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
+
+    try {
+      const body = JSON.stringify({
+        jsonrpc: '2.0', id: 1, method: 'message/send',
+        params: { message, taskId, contextId }
+      });
+      const res = await fetch(`http://hermes-agent:3002/tasks`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        signal: AbortSignal.timeout(30000)
+      });
+      if (!res.ok) throw new Error(`Hermes returned ${res.status}`);
+      const data = await res.json();
+      const hermesResult = data.result || {};
+
+      // F9 Anti-Hallucination check on Hermes response
+      const responseText = extractText(hermesResult.status?.message || {});
+      const f9 = await invokeF9Check(responseText, taskId);
+      if (!f9.clean) {
+        const rejectedStatus = {
+          state: 'rejected',
+          message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA→Hermes] F9 Anti-Hallucination check failed on response. Hermes verdict rejected.' }], messageId: generateId(), taskId, contextId },
+          timestamp: new Date().toISOString()
+        };
+        task.status = rejectedStatus;
+        taskStore.set(taskId, task);
+        publish({ kind: 'status-update', taskId, contextId, status: rejectedStatus, final: true });
+        return;
+      }
+
+      task.status = {
+        state: hermesResult.status?.state || 'completed',
+        message: {
+          role: 'agent',
+          parts: [{ kind: 'text', text: `[AAA→Hermes ASI]\n${responseText}` }],
+          messageId: generateId(), taskId, contextId
+        },
+        timestamp: new Date().toISOString()
+      };
+      task.artifacts = hermesResult.artifacts || [];
+      task.history = hermesResult.history || [message];
+      taskStore.set(taskId, task);
+      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
+      return;
+    } catch (err) {
+      const errorStatus = {
+        state: 'failed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→Hermes ASI] Dispatch failed: ${err.message}. Falling back to local echo.` }], messageId: generateId(), taskId, contextId },
+        timestamp: new Date().toISOString()
+      };
+      task.status = errorStatus;
+      taskStore.set(taskId, task);
+      publish({ kind: 'status-update', taskId, contextId, status: errorStatus, final: true });
+      return;
+    }
+  }
+
+  // === LOCAL PROCESSING (no targetAgent or non-hermes) ===
 
   task.status = {
     state: 'working',
@@ -420,7 +492,8 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
     protocol: 'A2A v1.0.0',
     agents: [
       { id: 'aaa-gateway', url: 'https://aaa.arif-fazil.com', registered: true },
-      { id: 'maxhermes', url: 'https://aaa.arif-fazil.com/hermes', registered: false }
+      { id: 'maxhermes', url: 'https://aaa.arif-fazil.com/hermes', registered: false },
+      { id: 'hermes-asi', url: 'http://hermes-agent:3002', registered: true }
     ],
     constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
     governance_root: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json'
@@ -509,7 +582,7 @@ app.post('/a2a/message/send', jsonRpcValidate, async (req, res) => {
     };
     taskStore.set(taskId, task);
 
-    await executeTask(taskId, contextId, message);
+    await executeTask(taskId, contextId, message, params.agent_id);
 
     const updatedTask = taskStore.get(taskId);
     const skill = updatedTask.metadata?.skill || 'general';
@@ -575,7 +648,7 @@ app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
 
     req.on('close', () => { unsubscribe(); });
 
-    executeTask(taskId, contextId, message).catch(console.error);
+    executeTask(taskId, contextId, message, params.agent_id).catch(console.error);
 
   } catch (error) {
     console.error('[A2A] message/stream error:', error);
@@ -676,7 +749,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, async (req, res) => {
     };
     taskStore.set(taskId, task);
 
-    await executeTask(taskId, contextId, message);
+    await executeTask(taskId, contextId, message, params.agent_id);
 
     const updatedTask = taskStore.get(taskId);
 
