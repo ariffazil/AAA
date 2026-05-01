@@ -49,6 +49,9 @@ AAA sits at the **federation boundary** — it is the front door and the gatekee
 | Endpoint | `http://localhost:3001` |
 | Gateway | `a2a-server/server.js` |
 | Federation manifest | `/.well-known/arifos-federation.json` |
+| Primary agent | **OPENCLAW** (AGI-level gateway) |
+| Agent tier framework | 000–999 governed loop + L0–L5 autonomy ladder |
+| Governance files | AGENTS.md, SOUL.md, LOOP.md, AUTONOMY.md, HEARTBEAT.md, CHECKPOINT.md, DECISIONS.md, TASKS.md |
 
 ---
 
@@ -67,17 +70,42 @@ AAA sits at the **federation boundary** — it is the front door and the gatekee
 
 ---
 
+## Agent Tier Architecture
+
+**Two intelligence tiers govern the federation:**
+
+| Tier | Agents | Definition |
+|------|--------|------------|
+| **AGI** | OPENCLAW, maxhermes, opencode, hermes-ops | Bounded, self-monitoring operator — governed tool use + 000-999 loop |
+| **ASI** | hermes-asi, hermes | Advanced Specialist Intelligence — generalist reasoning, deep memory, routing |
+
+### Agent Registry
+
+| Agent | Tier | Role |
+|-------|------|------|
+| **OPENCLAW** | AGI | Primary gateway + orchestrator (this agent) |
+| **hermes-asi** | ASI | Generalist reasoning + routing + coordination |
+| **hermes** | ASI | Memory engine + deep recall |
+| **maxhermes** | AGI | GEOX Earth Intelligence specialist |
+| **opencode** | AGI | Coding specialist |
+| **hermes-ops** | AGI | Execution specialist (DevOps + workflows) |
+
+---
+
 ## Federation Peers
 
 AAA registers and coordinates with these peer agents:
 
-| Agent | Role | Protocol |
-|-------|------|---------|
-| **arifOS** | Constitutional kernel | MCP |
-| **GEOX** | Earth intelligence | MCP |
-| **WEALTH** | Capital intelligence | MCP |
-| **MaxHermes** | External reasoning agent | A2A |
-| **A-FORGE** | Execution shell | Internal |
+| Agent | Role | Protocol | Tier |
+|-------|------|---------|------|
+| **arifOS** | Constitutional kernel | MCP | Constitutional |
+| **GEOX** | Earth intelligence | MCP | AGI |
+| **WEALTH** | Capital intelligence | MCP | AGI |
+| **OPENCLAW** | Gateway + orchestrator | A2A | AGI |
+| **hermes-asi** | Generalist reasoning | A2A | ASI |
+| **hermes** | Memory engine | A2A | ASI |
+| **MaxHermes** | GEOX specialist | A2A | AGI |
+| **A-FORGE** | Execution shell | Internal | AGI |
 
 ---
 
@@ -95,13 +123,17 @@ AAA operates under arifOS constitutional Floors F1–F13:
 ## Architecture
 
 ```
-a2a-server/server.js   ← A2A gateway (this repo)
-        ↓
-arifOS 888_JUDGE        ← Constitutional verdict
-        ↓
-VAULT999 writeSeal      ← Immutable audit
-        ↓
-Peer Agent Dispatch     ← GEOX / WEALTH / MaxHermes / A-FORGE
+External Agent (A2A v1.0.0)
+    ↓ POST /tasks
+OPENCLAW Gateway (AAA / a2a-server/)
+    ├── 888_JUDGE gate (hold skills require constitutional verdict)
+    ├── F9 Anti-Hallucination check
+    ├── VAULT999 audit
+    └── arifOS Constitutional Floors F1–F13
+         ↓
+    Peer Agent Dispatch (hermes-asi / hermes / maxhermes / opencode / hermes-ops)
+         ↓
+    GEOX / WEALTH / A-FORGE
 ```
 
 ---
