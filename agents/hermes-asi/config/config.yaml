@@ -25,6 +25,9 @@ mcp_servers:
     enabled: true
 
 a2a_peers:
+  - agent_id: aaa-gateway
+    direction: send
+    protocol: a2a-v1
   - agent_id: maxhermes
     direction: bidirectional
     protocol: a2a-v1
