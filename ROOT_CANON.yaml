@@ -245,3 +245,13 @@ files:
     status: runtime-only
     role: runtime trace
     notes: Session/runtime marker only; never treat as canonical truth.
+
+  - path: CLAUDE.md
+    status: legacy
+    role: stale governance artifact
+    notes: Old lore protocol reference. Not active governance. Superseded by AGENTS.md + SOUL.md + LOOP.md.
+
+  - path: ARIF.md
+    status: legacy
+    role: stale constitution reference
+    notes: Old 13-floor constitution. Not active governance. Superseded by 000_CONSTITUTION.md and arifOS/000/ directory.
