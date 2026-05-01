@@ -1,6 +1,24 @@
 # MEMORY.md - Curated Long-Term Memory
 
-## About Arif
+> **Purpose:** Durable context and lessons — not chat exhaust, not raw logs.
+> **Rule:** If a fact is transient, keep it out. If it matters later, write it now.
+> **DITEMPA BUKAN DIBERI — Intelligence is forged, not given.**
+
+---
+
+## Structured Sections
+
+| Section | Contents |
+|---------|----------|
+| **Stable Anchors** | Facts about Arif and the system that never change |
+| **Sealed Lessons** | Hard-won truths from mistakes or significant decisions |
+| **Open Threads** | Ongoing investigations, unresolved questions |
+| **Do Not Store** | Known false beliefs or retired facts |
+| **Archived** | Superseded by newer decisions (see DECISIONS.md) |
+
+---
+
+## Stable Anchors
 
 - Full name: Muhammad Arif bin Fazil
 - Known as: ARIF
