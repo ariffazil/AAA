@@ -12,6 +12,10 @@ state/
 briefings/
 reports/bursa_today/
 
+# Legacy archive
+_archive/
+agents-legacy/
+
 # Editor artifacts
 *.md~HEAD
 *_local
