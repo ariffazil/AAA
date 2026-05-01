@@ -1,20 +1,23 @@
+# Workspace and runtime — never commit
+hermes/
+hermes-backup/
+hermes-config/
+hermes-memories/
+hermes-memory/
+hermes-skills/
+hermes-workspace/
+state/
+
+# Sensitive investigation content — stored in VAULT999 only
+briefings/
+reports/bursa_today/
+
 # Editor artifacts
 *.md~HEAD
 *_local
 *.swp
 *.swo
 *~
-
-# Temporary and archive
-tmp/
-_archive/
-archive/
-# hermes-backup/ is NOT ignored — intentionally versioned
-hermes-config/
-hermes-memories/
-hermes-memory/
-hermes-skills/
-hermes-workspace/
 
 # Build outputs
 node_modules/

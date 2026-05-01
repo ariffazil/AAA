@@ -7,7 +7,7 @@
 **Role:** Coding agent — code analysis, feature building, refactoring, `/init`, `/undo`
 **Host binding:** Terminal / Docker / IDE extension on dev machine
 **Domain plane:** THEORY (coding intelligence)
-**Intelligence tier:** Tool-calling LLM
+**Intelligence tier:** AGI (specialist — coding agent)
 
 ## Authority
 
