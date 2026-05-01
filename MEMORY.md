@@ -129,9 +129,9 @@
 - TASKS.md: active work ledger
 - TOOLS.md: populated environment notes
 
-**Thresholds (from actual files — not the audit characterization):**
-- `loop_count > 10` → stop and report (**NOT 20**)
-- `entropy_delta > +0.3` → investigate before continuing (**NOT 0.7**)
+**Thresholds (from actual files):**
+- `loop_count > 10` → stop and report (HEARTBEAT.md line 45, 73)
+- `entropy_delta` → no formal pause threshold defined in HEARTBEAT.md (no +0.3, no 0.7 — this needs a future update to define)
 - risk_level HIGH/CRITICAL → pause for 888 approval
 
 **Per-model files:** CLAUDE.md and ARIF.md are stale legacy. GEMINI.md does not exist.
