@@ -7,7 +7,7 @@
 **Role:** Primary agentic runtime gateway; message routing + task execution
 **Host binding:** Local machine / Railway / Docker
 **Domain plane:** SOVEREIGNTY (orchestration, coordination)
-**Intelligence tier:** System-level orchestrator
+**Intelligence tier:** AGI-level operator
 
 ## Authority
 
@@ -34,4 +34,4 @@
 
 ---
 
-*Last updated: 2026-04-29*
+*Last updated: 2026-05-01*

@@ -9,10 +9,17 @@ This workspace is the **AAA Control Plane** — the sovereign registry, identity
 ```
 AAA/
 └── agents/
-    ├── openclaw/          ← Primary gateway agent
-    ├── opencode/          ← Coding agent
-    └── hermes/            ← Memory + reasoning agent
+    ├── openclaw/       ← AGI-level gateway + orchestrator (PRIMARY)
+    ├── hermes-asi/    ← ASI-level generalist (reasoning + routing)
+    ├── hermes/        ← ASI-level memory engine (recall + deep reasoning)
+    ├── maxhermes/      ← AGI-level Earth specialist (GEOX)
+    ├── opencode/      ← AGI-level coding specialist
+    └── hermes-ops/     ← AGI-level execution specialist (DevOps + workflows)
 ```
+
+**Intelligence tier key:**
+- **AGI** = bounded, self-monitoring operator — tool use + governance
+- **ASI** = Advanced Specialist Intelligence — generalist reasoning + deep recall
 
 Each agent workspace contains:
 - `IDENTITY.md` — who/what is this agent
@@ -73,7 +80,7 @@ Treat `ROOT_CANON.yaml` as the source of truth for root-file precedence and stat
 - `USER.md` = who Arif is and how to help him well
 - `IDENTITY.md` = canonical identity anchor
 - `MEMORY.md` = curated long-term memory
-- `HEARTBEAT.md` = tiny recurring checklist only
+- `HEARTBEAT.md` = live runtime state (entropy, loop_count, risk_level — updated before/after every major action)
 - `BOOTSTRAP.md` = recovery ritual for a fresh, reset, or drifted workspace
 - `arifos.init` = mandatory init doctrine and Gödel-lock boot kernel
 - `memory/YYYY-MM-DD.md` = daily logs and carry-forward notes
