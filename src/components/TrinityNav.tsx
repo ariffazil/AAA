@@ -14,7 +14,7 @@ export default function TrinityNav() {
         <span className="utn-div">·</span>
         <a href="https://arifos.arif-fazil.com" className="utn-node utn-theory">THEORY</a>
         <span className="utn-div">·</span>
-        <a href="https://arifosmcp.arif-fazil.com" className="utn-node utn-apps">APPS</a>
+        <a href="https://mcp.arif-fazil.com" className="utn-node utn-apps">APPS</a>
         <span className="utn-div">·</span>
         <a href="https://forge.arif-fazil.com" className="utn-node utn-apps">FORGE</a>
         <span className="utn-div">·</span>

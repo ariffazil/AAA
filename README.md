@@ -150,12 +150,19 @@ OPENCLAW Gateway (AAA / a2a-server/)
 
 ---
 
-## Live Sites
+## The Trinity (ΔΩΨ) & Live Surfaces
 
-| Surface | URL |
-|---------|-----|
-| arifOS | https://arifosmcp.arif-fazil.com/ |
-| Human | https://arif-fazil.com/ |
+AAA sits at the federation boundary, fulfilling the **BODY (Ψ)** role alongside A-FORGE, while arifOS serves as the **MIND (Ω)** and the human sovereign as the **SOUL (Δ)**.
+
+| Surface | Role | URL |
+|---------|------|-----|
+| **Human** | SOUL (Δ) | `https://arif-fazil.com/` |
+| **arifOS** | MIND (Ω) | `https://arifos.arif-fazil.com/` |
+| **AAA / A-FORGE** | BODY (Ψ) | `https://aaa.arif-fazil.com/` |
+| **MCP Canonical** | BODY (Ψ) | `https://mcp.arif-fazil.com/` |
+| **GEOX** | Earth | `https://geox.arif-fazil.com/` |
+
+> **Note:** `arifosmcp.arif-fazil.com` is a legacy 301 redirect to the canonical `mcp.arif-fazil.com` endpoint.
 
 *AAA identifies. arifOS adjudicates. The federation is forged through disciplined coordination.*
 *DITEMPA BUKAN DIBERI — Identity is forged through constitutional discipline.*

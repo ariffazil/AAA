@@ -7,7 +7,7 @@ servers:
     runtime_scope: remote
     risk_tier: medium
     approval_policy: on-demand
-    url: https://arifosmcp.arif-fazil.com/mcp
+    url: https://mcp.arif-fazil.com/mcp
     env_refs: []
     tools:
       - arifos-init

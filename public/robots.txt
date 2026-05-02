@@ -52,8 +52,8 @@ Allow: /
 #   llms.json: https://arifos.arif-fazil.com/llms.json
 #
 #   LAYER 3 — APPS (arifOS Runtime, API Docs, MCP)
-#   llms.txt:  https://arifosmcp.arif-fazil.com/llms.txt
-#   llms.json: https://arifosmcp.arif-fazil.com/llms.json
+#   llms.txt:  https://mcp.arif-fazil.com/llms.txt
+#   llms.json: https://mcp.arif-fazil.com/llms.json
 #
 #   CANONICAL INDEX (single source of truth):
 #   https://arif-fazil.com/.well-known/arifos.json

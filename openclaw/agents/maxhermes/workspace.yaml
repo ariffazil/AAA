@@ -27,7 +27,7 @@ mcp_servers:
     enabled: true
 
   - id: arifos-mcp
-    url: https://arifosmcp.arif-fazil.com/mcp
+    url: https://mcp.arif-fazil.com/mcp
     enabled: true
 
   - id: well-mcp

@@ -26,7 +26,7 @@ On pull_request, GitHub Actions creates a preview URL. The exact mechanism depen
 
 After runtime deploy, add a step:
 ```bash
-curl -sf https://arifosmcp.arif-fazil.com/health || exit 1
+curl -sf https://mcp.arif-fazil.com/health || exit 1
 ```
 
 If this fails, the workflow should exit with failure and not mark deploy complete.
