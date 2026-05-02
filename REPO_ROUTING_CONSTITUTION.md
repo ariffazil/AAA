@@ -1,14 +1,15 @@
 # REPO_ROUTING_CONSTITUTION.md
-
 > **DITEMPA BUKAN DIBERI** — Routing intelligence is earned, not assumed.
 > **Amanah clause:** Never route faster than certainty. Refuse over misroute.
+> **Version:** 2026.05.02-KANON | **Authority:** Human Architect (Arif) | **Enforcement:** VPS workspace isolation + GitHub branch protection
 
 ---
 
 ## MISSION
 
-Put every piece of work into the **correct repository** on VPS and GitHub.
+Put every piece of work into the **correct repository** — on VPS and on GitHub.
 Prefer refusal over misrouting. Never trade correctness for speed.
+Autonomy is permitted only under these rules. Without them, stop.
 
 ---
 
@@ -16,141 +17,103 @@ Prefer refusal over misrouting. Never trade correctness for speed.
 
 | Repo | Domain Charter | VPS Workspace | GitHub |
 |------|---------------|---------------|--------|
-| **AAA** | Agent workspace, governance, ADRs, orchestration canon | `/root/AAA/` | `github.com/ariffazil/AAA` |
-| **arifOS** | Constitutional kernel, F1–F13 floors, 9-Organ Canon, MCP runtime | `/root/arifOS/` | `github.com/ariffazil/arifOS` |
-| **WEALTH** | Capital intelligence, finance, NPV/EMV, credit, portfolio | `/root/WEALTH/` | `github.com/ariffazil/wealth` |
-| **GEOX** | Earth domain, geoscience, petrophysics, seismic, mapping | `/root/geox/` | `github.com/ariffazil/geox` |
-| **A-FORGE** | TypeScript execution bridge, planning twin, agent engine | `/root/A-FORGE/` | `github.com/ariffazil/A-FORGE` |
-| **arif-sites** | Websites, static pages, web-facing assets | `/root/arif-sites/` | `github.com/ariffazil/arif-sites` |
-| **ariffazil** | Personal profile, public meta root | `/root/repos/ariffazil/` | `github.com/ariffazil/ariffazil` |
+| **AAA** | Agent workspace, governance ADRs, orchestration canon, routing policy | `/root/AAA/` | `github.com/ariffazil/AAA` |
+| **WEALTH** | Capital intelligence, portfolio, finance, macro/micro economic tooling | `/root/WEALTH/` | `github.com/ariffazil/wealth` |
+| **GEOX** | Earth domain, geo/terrain/maps, well logs, subsurface, planetary tooling | `/root/GEOX/` | `github.com/ariffazil/geox` |
+| **arifOS** | Constitutional kernel, F1–F13 floors, 9-Organ Canon, MCP runtime, 13-tool surface | `/root/arifOS/` | `github.com/ariffazil/arifOS` |
+| **A-FORGE** | Planning twin, design, architecture, prefrontal build logic, engine–cockpit bridge | `/root/A-FORGE/` | `github.com/ariffazil/A-FORGE` |
+| **arif-sites** | Website/static/web-facing assets, public surface | `/root/arif-sites/` | `github.com/ariffazil/arif-sites` |
+| **ariffazil** | Personal/profile/meta public root | `/root/ariffazil/` | `github.com/ariffazil/ariffazil` |
+
+**OpenClaw workspace:** `/srv/openclaw/workspace/` — AGI agent operative home.
+**Hermes workspace:** `/root/.hermes/workspace/` — ASI agent operative home.
+**VPS repos at:** `/root/{AAA,WEALTH,GEOX,arifOS,A-FORGE,arif-sites,ariffazil}/`
 
 ---
 
-## MANDATORY DECISION PROCEDURE
+## CLASSIFICATION RULES
 
-Before **any** write, branch, or push:
+Before any write, commit, or push — determine destination:
+
+1. **Read the file's domain.** Finance/portfolio code → WEALTH. MCP server/floors → arifOS. Earth/subsurface → GEOX. Agent governance/routing policy → AAA. Planning/design/architecture → A-FORGE. Web assets → arif-sites.
+2. **Check existing repo content.** If the file you're editing already lives in a repo, it stays there.
+3. **Cross-repo moves require explicit human confirmation (888_HOLD).** Never silently move code between repos.
+4. **If confidence < 0.8, stop and ask.** Don't guess. Amanah > convenience.
+
+**Confidence check protocol:**
+- `high` (≥0.9): proceed with branch → PR
+- `medium` (0.7–0.89): open draft PR, flag for review
+- `low` (<0.7): refuse, explain, ask Arif
+
+---
+
+## PUSH GATE RULES
+
+### Never
+- ❌ `git push origin main` directly
+- ❌ Push to any protected branch without a PR
+- ❌ Cross-repo code movement without 888_HOLD
+- ❌ Silent commit and push (no PR)
+
+### Always
+- ✅ `git checkout -b repo/feature-name` — branch naming: `{repo}/{short-description}`
+- ✅ `git commit` with descriptive message referencing domain
+- ✅ `git push origin repo/feature-name`
+- ✅ Open PR with description
+
+---
+
+## AUTONOMOUS CAPABILITIES (within rules)
+
+The agent **may** without asking:
+- Read and analyze files in any repo
+- Create branches in any repo
+- Commit with descriptive messages
+- Open PRs to any target branch
+- Run tests, lint, build verification
+
+The agent **must not** without 888_HOLD human confirmation:
+- Push directly to main/master
+- Move code between repos
+- Delete files or history
+- Modify branch protection rules
+
+---
+
+## LOW-CONFIDENCE PROTOCOL
 
 ```
-1. CLASSIFY → State exactly one primary repo
-2. FORMAT  → REPO=<name>; CONFIDENCE=<0.00–1.00>; BASIS=<short reason>
-3. VERIFY → Confirm git remote URL and working directory match target repo
-4. CHECK  → confidence < 0.90? → STOP. Ask for confirmation.
-5. BRANCH → Always create feature branch. Never touch main directly.
-6. COMMIT → Include REPO= trailer in commit message
-7. PR     → Open PR with: why this repo is correct target
+STOP — do not route
+Reason: [explain why classification failed]
+Ask: "Arif — which repo does this belong to?"
 ```
 
-**If workspace and remote do not match → STOP. Do not patch files in wrong checkout.**
+Never fill ambiguity with convenience. "Close enough" is a violation of F08 GENIUS.
 
 ---
 
-## CONFIDENCE THRESHOLDS
+## VPS → GitHub SYNC RULES
 
-| Score | Action |
-|-------|--------|
-| ≥ 0.95 | Proceed autonomously |
-| 0.90–0.94 | Proceed, note uncertainty in PR |
-| 0.80–0.89 | Proceed with explicit Arif confirmation |
-| < 0.90 + multi-repo | 888_HOLD. Produce split plan. |
-| < 0.80 | Refuse. Escalate. |
-
----
-
-## CROSS-REPO RULES
-
-- **Single-task**: One primary repo. Pick the most specific fit.
-- **Multi-repo**: Stop. Produce one PR per repo. Do not merge scopes.
-- **"None fit"**: Never create a new repo for convenience. Escalate.
-- **"Temporarily in AAA"**: Only for governance, ADR, or routing policy material.
+| Action | Rule |
+|--------|------|
+| New feature work | Branch in VPS repo → PR to GitHub |
+| Hotfix | Branch → fast-track PR → merge |
+| Config changes | Branch → PR → require CI pass |
+| Cross-repo coordination | 888_HOLD before touching second repo |
 
 ---
 
-## COMMIT/PUSH RULES
+## ROUTING EXAMPLES
 
-### ✅ Allowed autonomously
-- Read, classify, branch, edit, test, commit, open PR
-- Switch workspaces safely (git stash + cd)
-- Create routing constitution / skill files
+| Work item | Target repo | Branch pattern |
+|-----------|-------------|----------------|
+| New MCP tool for wealth | arifOS (tool lives in runtime) | `arifOS/wealth-mcp-tool` |
+| Finance calculation library | WEALTH | `wealth/fin-calc-lib` |
+| GEOX well correlation panel | GEOX | `geox/well-correlation-v2` |
+| Constitutional floor fix | arifOS | `arifos/floor-F07-fix` |
+| A-FORGE planning twin | A-FORGE | `aforge/planning-twin-v3` |
+| Website asset | arif-sites | `arif-sites/[feature]` |
+| AAA governance ADR | AAA | `aaa/adr-[number]-[topic]` |
+| Mixed: arifOS + WEALTH | STOP → 888_HOLD | Requires human |
 
-### 🚫 NOT allowed autonomously
-- Direct push to `main` / `master`
-- Force push (`git push --force`)
-- Secret, credential, or `.env` changes
-- Org/repo settings changes
-- Cross-repo migrations
-- Delete operations (`rm -rf`, `DROP TABLE`)
-- Any action where `REPO=` does not match the actual remote
-
-### 🛑 888_HOLD trigger conditions
-- Ambiguous repo classification
-- Cross-repo scope detected
-- Any irreversible or secret-adjacent action
-- VPS workspace switch mid-task
-
----
-
-## OUTPUT FORMAT — MANDATORY BEFORE ANY WRITE
-
-```
-══════════════════════════════════════
-REPO=          ← exact repo name
-CONFIDENCE=    ← 0.00–1.00
-REMOTE_OK=     ← yes | no (remote URL matches REPO)
-WORKTREE_OK=   ← yes | no (pwd matches REPO workspace)
-ACTION=        ← proceed | hold | escalate
-══════════════════════════════════════
-```
-
----
-
-## PRE-PUSH HOOK (mechanical backstop)
-
-A `pre-push` git hook validates:
-1. `REPO=` trailer present in commit message
-2. Remote URL repo matches declared `REPO=`
-3. Not pushing directly to main
-
-Hook location: `.git/hooks/pre-push` (or CI-gated equivalent)
-If hook fails → push rejected, agent reports mismatch.
-
----
-
-## OPENCLAW AGENT BINDINGS
-
-| Agent | Default Workspace | Scope |
-|-------|-----------------|-------|
-| `governor` | `/root/AAA/` | Routing policy, governance, ADRs |
-| `builder-arifos` | `/root/arifOS/` | arifOS kernel, floors, MCP tools |
-| `builder-wealth` | `/root/WEALTH/` | Capital intelligence tools |
-| `builder-geox` | `/root/geox/` | Earth domain tools |
-| `builder-forge` | `/root/A-FORGE/` | TypeScript bridge, agent engine |
-| `builder-sites` | `/root/arif-sites/` | Web assets, static pages |
-
-Each builder **may not** operate outside its designated workspace unless routed through `governor`.
-
----
-
-## HERMES PROFILE CLUSTERS
-
-| Profile | Repo Focus | Skills |
-|---------|-----------|--------|
-| `hermes-arifos` | arifOS | arifos, arifos-deploy, vault999 |
-| `hermes-wealth` | WEALTH | wealth, finance |
-| `hermes-geox` | GEOX | geox, geo-vision |
-| `hermes-forge` | A-FORGE | a-forge-*, claude-code |
-| `hermes-sites` | arif-sites | site-manager, cloudflare-pages |
-
----
-
-## FAILSAFE
-
-If wrong-repo risk exists at any point:
-1. Do nothing except the mismatch report
-2. Propose correct repo/path
-3. Wait for Arif confirmation before proceeding
-
-**No guessing. No "close enough." No silent corrections.**
-
----
-
-*Last updated: 2026-05-02. Routing intelligence — DITEMPA BUKAN DIBERI.*
+**Ditempa Bukan Diberi — Routing intelligence is forged, not given.**
