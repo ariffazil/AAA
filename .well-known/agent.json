@@ -2,12 +2,7 @@
   "name": "AAA Cockpit",
   "description": "Governed agentic cockpit for arifOS federation monitoring and delegated execution.",
   "version": "2026.05.03",
-  "url": "https://aaa.arif-fazil.com",
-  "provider": {
-    "organization": "arifOS",
-    "system": "AAA"
-  },
-  "protocol_version": "1.0.0",
+  "authority": "Human sovereign final validator; arifOS governance machine; AAA execution cockpit.",
   "capabilities": [
     "agent_status",
     "approval_queue",
@@ -25,9 +20,7 @@
     "vault": "VAULT999",
     "irreversible_requires_human": true,
     "self_approval_forbidden": true,
-    "federation_trust_model": "untrusted_peers",
-    "nist_ai_rmf": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
-    "owasp_genai": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+    "federation_trust_model": "untrusted_peers"
   },
   "a2a_endpoints": {
     "send_task": "POST /tasks",
@@ -38,7 +31,12 @@
   },
   "proof": {
     "build_hash": "c1d451b",
+    "vaul999_seal_latest": "see /status.json",
     "governance_version": "KANON v2026.05",
     "did_vc_proof": "https://arif-fazil.com/999"
+  },
+  "external_anchors": {
+    "nist_ai_rmf": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+    "owasp_genai": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
   }
 }
