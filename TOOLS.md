@@ -14,7 +14,7 @@
 
 | Service | Host | Port | Notes |
 |---------|------|------|-------|
-| arifOS MCP | arifosmcp | 8080 | Constitutional kernel, 13 tools |
+| arifOS MCP | mcp.arif-fazil.com | 8080 | Constitutional kernel, 13 tools |
 | GEOX MCP | geox | 8081 | Earth intelligence |
 | WEALTH MCP | wealth-organ | 8082 | Capital intelligence |
 | WELL MCP | well | 8083 | Biological substrate |

@@ -16,3 +16,5 @@
 - Prefers: short direct answers, structured output, explicit uncertainty when relevant
 - Human stakes first, system stakes second
 - Telegram handle preference previously recorded as `@ariffazil`
+- **Question budget:** 1 per task. If more needed, ASI failed.
+- **Language:** Full human language only. No jargon, no code unless asked. Penang BM-English mix naturally.

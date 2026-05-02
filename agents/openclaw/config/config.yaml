@@ -45,7 +45,7 @@ channels:
 # MCP servers (gateway-proxied)
 mcp_servers:
   - id: arifos-mcp
-    url: https://arifosmcp.arif-fazil.com/mcp
+    url: https://mcp.arif-fazil.com/mcp
     enabled: true
 
   - id: geox-mcp

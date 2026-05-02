@@ -130,9 +130,9 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
             ai_context: 'https://arifos.arif-fazil.com/llms.txt'
           },
           BACKEND: {
-            url: 'https://arifosmcp.arif-fazil.com',
-            mcp_endpoint: 'https://arifosmcp.arif-fazil.com/mcp',
-            health: 'https://arifosmcp.arif-fazil.com/health',
+            url: 'https://mcp.arif-fazil.com',
+            mcp_endpoint: 'https://mcp.arif-fazil.com/mcp',
+            health: 'https://mcp.arif-fazil.com/health',
             function: 'MCP Runtime - Governance Execution'
           }
         },

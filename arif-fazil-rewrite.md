@@ -219,7 +219,7 @@ subsurface decisions. It is not a startup product.
 It is a discipline, shipped.
 
 Built on: FastMCP · 17 tools · AGPL-3.0 · Self-hosted
-Live at: arifosmcp.arif-fazil.com
+Live at: mcp.arif-fazil.com
 Source: github.com/ariffazil/arifOS
 ```
 
@@ -453,7 +453,7 @@ let the evidence decide, keep human authority architectural.
   "url": "https://arif-fazil.com",
   "sameAs": [
     "https://github.com/ariffazil",
-    "https://arifosmcp.arif-fazil.com"
+    "https://mcp.arif-fazil.com"
   ]
 }
 ```

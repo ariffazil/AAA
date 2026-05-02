@@ -104,8 +104,8 @@ docker-compose build && docker-compose up -d
 
 ### Verify MCP is live
 ```bash
-curl -sk https://arifosmcp.arif-fazil.com/health | python3 -m json.tool
-curl -sk https://arifosmcp.arif-fazil.com/tools | python3 -m json.tool | head -50
+curl -sk https://mcp.arif-fazil.com/health | python3 -m json.tool
+curl -sk https://mcp.arif-fazil.com/tools | python3 -m json.tool | head -50
 ```
 
 ---
@@ -150,8 +150,8 @@ openclaw status
 | Service | URL |
 |---------|-----|
 | GEOX Map | `https://geox.arif-fazil.com/map/index.html` |
-| arifOS MCP health | `https://arifosmcp.arif-fazil.com/health` |
-| arifOS MCP tools | `https://arifosmcp.arif-fazil.com/tools` |
+| arifOS MCP health | `https://mcp.arif-fazil.com/health` |
+| arifOS MCP tools | `https://mcp.arif-fazil.com/tools` |
 | GEOX Platform | `https://geox.arif-fazil.com/` |
 | OpenClaw gateway | `openclaw gateway status` |
 

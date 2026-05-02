@@ -179,8 +179,8 @@
     "license": "AGPL-3.0-only",
     "github": "https://github.com/ariffazil/arifOS",
     "pypi": "https://pypi.org/project/arifos/",
-    "mcp_endpoint": "https://arifosmcp.arif-fazil.com/mcp",
-    "mcp_health": "https://arifosmcp.arif-fazil.com/health",
+    "mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "mcp_health": "https://mcp.arif-fazil.com/health",
     "floors_count": 13,
     "tools_count": 12,
     "floors": [
@@ -241,13 +241,13 @@
         "llms_json": "https://arifos.arif-fazil.com/llms.json"
       },
       "APPS": {
-        "domain": "arifosmcp.arif-fazil.com",
+        "domain": "mcp.arif-fazil.com",
         "color": "#2563eb",
         "color_name": "Blue",
         "symbol": "📘",
         "function": "Developer Portal · API Docs · MCP Runtime",
-        "llms_txt": "https://arifosmcp.arif-fazil.com/llms.txt",
-        "llms_json": "https://arifosmcp.arif-fazil.com/llms.json"
+        "llms_txt": "https://mcp.arif-fazil.com/llms.txt",
+        "llms_json": "https://mcp.arif-fazil.com/llms.json"
       }
     },
     "canonical_index": "https://arif-fazil.com/.well-known/arifos.json"
