@@ -18,6 +18,20 @@ It exists to:
 
 ---
 
+## The Five-Layer Definition
+
+In arifOS, "AAA" is not a flat label. It is a **depth-ordered stack** where each layer adds a new architectural meaning:
+
+| # | Layer | Expansion | Core Principle |
+|---|---|---|---|
+| 1 | **Functional** | Agents · API · Apps | How the machine interacts with you and the world |
+| 2 | **Security** | Auth · Auth · Audit | Identity, mandate, and accountability via F11/F13 |
+| 3 | **Structural** | Agent-to-Agent Alignment | A2A mesh glue — constitutional coherence across federation |
+| 4 | **Grade** | Triple-A Sovereign | Highest governance quality — sovereign-grade, not hallucination-grade |
+| 5 | **Recursive (AAAA)** | Arif's Autonomous Agent Architecture | The full pattern: SOUL + loop + tool-capable units + Trinity layout |
+
+---
+
 ## Canonical boundary
 
 | Repo / system | Canonical role |
