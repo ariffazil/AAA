@@ -9,7 +9,7 @@ The **AAAA Pattern** is the recursive architectural template forged by Arif Fazi
 ### 1. The Recursive Core
 
 At its deepest level, AAAA is an architectural fractal. Every component (kernel, organ, or agent) mirrors the whole:
-- **SOUL (Δ)**: Every unit has a defined telos (intent).
+- **SOUL (Δ)**: Every unit has a defined telos (intent). *Note: Per F10, this refers to functional teleology, not a claim of consciousness or a "machine soul". The only sovereign soul is the Human Architect.*
 - **MIND (Ω)**: Every unit respects the 13 Constitutional Floors.
 - **BODY (Ψ)**: Every unit operates through bounded tool execution.
 
