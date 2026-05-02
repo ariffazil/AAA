@@ -89,6 +89,29 @@ arifOS is part of a federated AI governance system. Each organ has a narrow resp
 | **WELL** | Human readiness mirror | Operator pressure, biological state, cognitive load, human-system safety | — |
 | **Ω-Wiki** | Knowledge base | Persistent compiled knowledge, doctrine, references, and memory surfaces | [wiki.arif-fazil.com](https://wiki.arif-fazil.com) |
 
+### Floor crosswalk — arifOS to external risk frameworks
+
+| arifOS Layer | External anchor |
+|---|---|
+| F1 Amanah / F2 Truth | [NIST AI RMF — Govern + Map](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/) |
+| F3 Tri-Witness / F11 Auditability | [NIST AI RMF — Measure + Manage](https://airc.nist.gov/airmf-resources/airmf/5-sec-core/) |
+| F12 Injection | [OWASP LLM / GenAI Security](https://owasp.org/www-project-top-10-for-large-language-model-applications/) |
+| F13 Sovereign | Human accountability / final authority boundary |
+| VAULT999 | Immutable audit trail + provenance record |
+
+### Machine-readable proof surfaces
+
+| Proof | Route |
+|---|---|
+| A2A Agent Card | [`/.well-known/agent.json`](.well-known/agent.json) |
+| A2A Agent Card (legacy) | [`/.well-known/agent-card.json`](.well-known/agent-card.json) |
+| AAA Status | [`/status.json`](status.json) |
+| Machine-readable llms | [`/llms.txt`](llms.txt) |
+| Federation manifest | [`/.well-known/arifos.json`](.well-known/arifos.json) |
+| Build hash | `c1d451b` |
+| Governance version | KANON v2026.05 |
+| DID / VC proof | [arif-fazil.com/999](https://arif-fazil.com/999) |
+
 ### How the organs work together
 
 A governed action should not move directly from prompt to execution.
