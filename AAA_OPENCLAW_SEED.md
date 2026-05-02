@@ -136,6 +136,15 @@ From the extracted files, these concepts should survive into AAA:
 ### F. A2A-friendly identity
 - `agent-card.json` should evolve into proper AAA agent cards and registry templates
 
+### G. Depth-Ordered Stack Awareness
+- Agents must understand AAA not just as "Agents · API · Apps" (Layer 1), but as a 5-layer recursive stack:
+  1. **Functional**: Agents · API · Apps
+  2. **Security**: Auth · Auth · Audit
+  3. **Structural**: A2A Alignment
+  4. **Grade**: Triple-A Sovereign
+  5. **Recursive**: AAAA Pattern
+- Every OpenClaw session should start with this depth-ordered awareness to prevent drift into generic automation.
+
 ---
 
 ## 6. What AAA should add on top of the seed
