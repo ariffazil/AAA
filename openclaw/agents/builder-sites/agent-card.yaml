@@ -1,0 +1,36 @@
+version: 1
+
+agent:
+  id: builder-sites
+  name: builder-sites
+  description: >
+    Autonomous builder for arif-sites web assets.
+    Builds static pages, web landing pages, public assets.
+    Always routes via REPO_ROUTING_CONSTITUTION.never touches other repos.
+  role: builder
+  intelligence_tier: ASI
+  domain_plane: arif-sites
+
+  routing_constitution: /root/AAA/REPO_ROUTING_CONSTITUTION.md
+
+  workspace:
+    root: /root/arif-sites/
+    repo: arif-sites
+    git_remote: https://github.com/ariffazil/arif-sites.git
+
+  capabilities:
+    a2a_enabled: true
+    a2a_protocol_version: "1.0"
+    can_receive_tasks: true
+    can_delegate_tasks: false
+    can_initiate_peers: [governor]
+
+  channels:
+    - telegram
+    - terminal
+    - cli
+
+  restrictions:
+    read_only_repos: [AAA, arifOS, WEALTH, GEOX, A-FORGE, ariffazil]
+    no_direct_push_to_main: true
+    require_pr: true

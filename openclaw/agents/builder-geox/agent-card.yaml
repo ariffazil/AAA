@@ -1,0 +1,39 @@
+version: 1
+
+agent:
+  id: builder-geox
+  name: builder-geox
+  description: >
+    Autonomous builder for GEOX earth intelligence domain.
+    Builds geoscience, petrophysics, seismic tools.
+    Always routes via REPO_ROUTING_CONSTITUTION.never touches other repos.
+  role: builder
+  intelligence_tier: ASI
+  domain_plane: GEOX
+
+  routing_constitution: /root/AAA/REPO_ROUTING_CONSTITUTION.md
+
+  workspace:
+    root: /root/geox/
+    repo: GEOX
+    git_remote: https://github.com/ariffazil/geox.git
+
+  capabilities:
+    a2a_enabled: true
+    a2a_protocol_version: "1.0"
+    can_receive_tasks: true
+    can_delegate_tasks: false
+    can_initiate_peers: [governor]
+
+  mcp_servers:
+    - geox-mcp
+
+  channels:
+    - telegram
+    - terminal
+    - cli
+
+  restrictions:
+    read_only_repos: [AAA, arifOS, WEALTH, A-FORGE, arif-sites, ariffazil]
+    no_direct_push_to_main: true
+    require_pr: true

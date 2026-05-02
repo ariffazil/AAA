@@ -1,0 +1,39 @@
+version: 1
+
+agent:
+  id: builder-forge
+  name: builder-forge
+  description: >
+    Autonomous builder for A-FORGE TypeScript execution bridge.
+    Builds agent engine, tool wiring, MCP transport.
+    Always routes via REPO_ROUTING_CONSTITUTION.never touches other repos.
+  role: builder
+  intelligence_tier: ASI
+  domain_plane: A-FORGE
+
+  routing_constitution: /root/AAA/REPO_ROUTING_CONSTITUTION.md
+
+  workspace:
+    root: /root/A-FORGE/
+    repo: A-FORGE
+    git_remote: https://github.com/ariffazil/A-FORGE.git
+
+  capabilities:
+    a2a_enabled: true
+    a2a_protocol_version: "1.0"
+    can_receive_tasks: true
+    can_delegate_tasks: false
+    can_initiate_peers: [governor]
+
+  mcp_servers:
+    - a-forge-mcp
+
+  channels:
+    - telegram
+    - terminal
+    - cli
+
+  restrictions:
+    read_only_repos: [AAA, arifOS, WEALTH, GEOX, arif-sites, ariffazil]
+    no_direct_push_to_main: true
+    require_pr: true
