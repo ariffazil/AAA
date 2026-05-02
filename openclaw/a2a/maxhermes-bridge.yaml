@@ -49,7 +49,7 @@ a2a_peers:
   - peer: arifos-kernel
     protocol: mcp
     transport: streamable-http
-    endpoint: https://arifosmcp.arif-fazil.com/mcp
+    endpoint: https://mcp.arif-fazil.com/mcp
     auth_required:
       - gateway-token
     allowed_tasks:

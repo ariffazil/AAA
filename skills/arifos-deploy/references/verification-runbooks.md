@@ -93,21 +93,21 @@ curl -s https://arifos.arif-fazil.com/ | grep -i "I build governed AI"
 
 ---
 
-## Runtime — arifosmcp.arif-fazil.com
+## Runtime — mcp.arif-fazil.com
 
 ### Step 1: Health Check
 
 ```bash
-curl -s https://arifosmcp.arif-fazil.com/health
+curl -s https://mcp.arif-fazil.com/health
 # Expected: JSON with status, tools_loaded, version
-curl -s -o /dev/null -w "%{http_code}" https://arifosmcp.arif-fazil.com/health
+curl -s -o /dev/null -w "%{http_code}" https://mcp.arif-fazil.com/health
 # Expected: 200
 ```
 
 ### Step 2: MCP Endpoint
 
 ```bash
-curl -s -X POST https://arifosmcp.arif-fazil.com/mcp \
+curl -s -X POST https://mcp.arif-fazil.com/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"arifos.init","arguments":{"mode":"status","declared_name":"TestAgent"}},"id":1}'
 # Expected: JSON response with verdict field
