@@ -5,6 +5,17 @@
 
 ---
 
+## 🧠 Cognitive Architecture Grounding (CoALA)
+
+AAA's memory system is grounded in the **Cognitive Architectures for Language Agents (CoALA)** framework:
+
+1. **Episodic Memory**: Stored in `memory/` and `CHECKPOINT.md`. Captures the sequence of events and task sessions.
+2. **Semantic Memory**: Stored in `registries/`, `schemas/`, and `ROOT_CANON.yaml`. Captures durable knowledge, facts, and the constitutional rulebase.
+3. **Procedural Memory**: Stored in `skills/`. Captures the "how-to" logic and tool-use patterns.
+4. **Working Memory**: Stored in the active context window and `HEARTBEAT.md`. Captures transient session state and the metabolic pipeline position.
+
+---
+
 ## 👤 About Arif (Permanent Facts)
 
 - **Full Name:** Muhammad Arif bin Fazil

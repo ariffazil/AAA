@@ -37,9 +37,9 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family:
-      "Inter",
+      "Satoshi",
+      "Cabinet Grotesk",
       system-ui,
-      -apple-system,
       sans-serif;
     line-height: 1.6;
     font-feature-settings:
@@ -647,7 +647,7 @@
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   width: 100%;
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Satoshi", system-ui, sans-serif;
 }
 
 .trinity-container {
@@ -1083,7 +1083,7 @@ nav a[title]:active {
   margin: 0 auto;
 }
 .unified-nav-link {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Satoshi', system-ui, sans-serif;
   font-size: 0.8rem;
   color: rgba(255,255,255,0.5);
   text-decoration: none;
@@ -1110,7 +1110,7 @@ nav a[title]:active {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Satoshi', system-ui, sans-serif;
   font-size: 0.78rem;
   color: rgba(255,255,255,0.35);
   text-decoration: none;
