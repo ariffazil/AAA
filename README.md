@@ -24,6 +24,17 @@ In arifOS, "AAA" is a depth-ordered recursive stack:
 
 ---
 
+## Conceptual Hierarchy (Engineer-to-Engineer)
+
+To prevent ontology drift, we distinguish between the protocol, the behavior, and the actuators:
+
+- **MCP** = The Tool Bus (Protocol for exchange)
+- **Skills** = Policy-Execution Behavior (How an agent thinks/acts in a role)
+- **Tools** = Concrete Actuators (Shell, File, API, Docker)
+- **AAA** = The Governed Control Plane (Governance over all of the above)
+
+---
+
 ## Position in the Sovereign Flow
 
 ```
