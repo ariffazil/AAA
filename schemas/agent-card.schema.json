@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Card Schema (AAAA v1.0)",
+  "type": "object",
+  "required": ["id", "tier", "role", "layer_awareness"],
+  "properties": {
+    "id": { "type": "string", "description": "Unique agent identifier" },
+    "tier": { "enum": ["AGI", "ASI"], "description": "Intelligence level" },
+    "role": { "type": "string", "description": "Functional role (engineer, architect, auditor, etc.)" },
+    "layer_awareness": {
+      "type": "object",
+      "required": ["functional", "security", "structural", "grade", "recursive_pattern"],
+      "properties": {
+        "functional": { "type": "boolean", "default": true },
+        "security": { "type": "boolean", "description": "Layer 2: Auth/Audit awareness" },
+        "structural": { "type": "boolean", "description": "Layer 3: A2A Alignment awareness" },
+        "grade": { "type": "boolean", "description": "Layer 4: Sovereign Grade awareness" },
+        "recursive_pattern": { "type": "boolean", "description": "Layer 5: AAAA fractal awareness" }
+      }
+    },
+    "identity_scope": { "type": "array", "items": { "type": "string" } },
+    "audit_scope": { "type": "array", "items": { "type": "string" } },
+    "federation_scope": { "type": "array", "items": { "type": "string" } },
+    "grade_target": { "type": "string", "default": "Triple-A Sovereign" }
+  }
+}
