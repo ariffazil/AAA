@@ -1,3 +1,16 @@
+const FEDERATION_LINKS = [
+  { label: 'arif-fazil.com', href: 'https://arif-fazil.com/', icon: '🏛️' },
+  { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com/', icon: 'Δ', active: true },
+  { label: 'Observatory', href: 'https://arifos.arif-fazil.com/', icon: 'Ω' },
+  { label: 'Dashboard v2', href: 'https://arifos.arif-fazil.com/dashboard-v2.html', icon: '📊' },
+  { label: 'GEOX', href: 'https://geox.arif-fazil.com/', icon: 'Φ' },
+  { label: 'WEALTH', href: 'https://wealth.arif-fazil.com/', icon: 'Ξ' },
+  { label: 'WELL', href: 'https://well.arif-fazil.com/', icon: 'Ω★' },
+  { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com/', icon: '🔌' },
+  { label: 'Ω-Wiki', href: 'https://wiki.arif-fazil.com/', icon: '📖' },
+  { label: 'APEX', href: 'https://apex.arif-fazil.com/', icon: '⚡' },
+];
+
 export default function TrinityNav() {
   const handleEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -8,39 +21,30 @@ export default function TrinityNav() {
 
   return (
     <>
-      {/* Trinity strip — unified arifOS ecosystem */}
+      {/* Federation strip — 33px identifier bar */}
       <div className="unified-trinity-strip">
-        <a href="https://arif-fazil.com" className="utn-node utn-human">HUMAN</a>
+        <a href="https://arif-fazil.com" className="utn-node">arif-fazil.com</a>
         <span className="utn-div">·</span>
-        <a href="https://arifos.arif-fazil.com" className="utn-node utn-theory">THEORY</a>
+        <a href="https://aaa.arif-fazil.com" className="utn-node utn-active">AAA</a>
         <span className="utn-div">·</span>
-        <a href="https://mcp.arif-fazil.com" className="utn-node utn-apps">APPS</a>
-        <span className="utn-div">·</span>
-        <a href="https://forge.arif-fazil.com" className="utn-node utn-apps">FORGE</a>
-        <span className="utn-div">·</span>
-        <a href="https://aaa.arif-fazil.com" className="utn-node utn-apps utn-active">AAA</a>
-        <span className="utn-div">·</span>
-        <a href="https://aaa.arif-fazil.com/geox" className="utn-node utn-apps">GEOX</a>
+        <a href="https://arifos.arif-fazil.com" className="utn-node">Observatory</a>
         <span className="utn-sep" />
         <span className="utn-sig">ΔΩΨ — DITEMPA BUKAN DIBERI</span>
       </div>
 
-      {/* Main nav — unified 60px height */}
+      {/* Main nav — 60px */}
       <nav className="unified-nav">
         <div className="unified-nav-inner">
-          {/* Left: Logo */}
           <a href="https://arif-fazil.com/" className="unified-logo">
             <span className="unified-logo-mark">arif<span className="unified-logo-dot">.</span>fazil</span>
           </a>
 
-          {/* Center: Links */}
           <div className="unified-nav-links">
             <a href="#about"   className="unified-nav-link">about</a>
             <a href="#work"    className="unified-nav-link">work</a>
             <a href="#writing" className="unified-nav-link">writing</a>
           </div>
 
-          {/* Right: GitHub + CTA */}
           <div className="unified-nav-right">
             <a
               href="https://github.com/ariffazil"
@@ -64,6 +68,26 @@ export default function TrinityNav() {
           </div>
         </div>
       </nav>
+
+      {/* Federation Navigator — 10-chip strip */}
+      <div style={{ padding: '1rem 1.5rem 0', maxWidth: '1140px', margin: '0 auto' }}>
+        <div className="nav-row">
+          {FEDERATION_LINKS.map((link) => (
+            <a
+              key={link.href}
+              className={`nav-chip${link.active ? ' active' : ''}`}
+              href={link.href}
+            >
+              {link.dot ? (
+                <span className={`dot ${link.dot}`} />
+              ) : (
+                <span className="icon">{link.icon}</span>
+              )}
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
     </>
   );
 }
