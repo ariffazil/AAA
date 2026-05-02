@@ -147,7 +147,7 @@ Version:      2026.03-FORGE
 License:      AGPL-3.0-only
 GitHub:       https://github.com/ariffazil/arifOS
 PyPI:         pip install arifos
-MCP Endpoint: https://arifosmcp.arif-fazil.com/mcp
+MCP Endpoint: https://mcp.arif-fazil.com/mcp
 
 ### 13 Constitutional Floors (in order)
 F1  Amanah         — Sacred trust. Reversible, non-destructive actions only.
@@ -198,7 +198,7 @@ VOID       — Rejected. Insufficient evidence. VOID Memanjang detected.
 |---------|------------------------------|--------|--------|-----------------------------------|
 | HUMAN   | arif-fazil.com               | Red    | 🧍    | Identity · Scars · Authority      |
 | THEORY  | arifos.arif-fazil.com        | Gold   | ⚖️    | Constitutional Canon · APEX Theory|
-| APPS    | arifosmcp.arif-fazil.com     | Blue   | 📘    | Developer Portal · API · Runtime  |
+| APPS    | mcp.arif-fazil.com     | Blue   | 📘    | Developer Portal · API · Runtime  |
 
 Read order for AI agents: HUMAN → THEORY → APPS
 Canonical Index (single truth): https://arif-fazil.com/.well-known/arifos.json
@@ -226,11 +226,11 @@ Your mandatory constraints:
 
   Canonical Index:       https://arif-fazil.com/.well-known/arifos.json
   THEORY Canon (llms):   https://arifos.arif-fazil.com/llms.txt
-  APPS Docs (llms):      https://arifosmcp.arif-fazil.com/llms.txt
+  APPS Docs (llms):      https://mcp.arif-fazil.com/llms.txt
   GitHub arifOS:         https://github.com/ariffazil/arifOS
   PyPI:                  https://pypi.org/project/arifos/
-  MCP Live Endpoint:     https://arifosmcp.arif-fazil.com/mcp
-  MCP Health:            https://arifosmcp.arif-fazil.com/health
+  MCP Live Endpoint:     https://mcp.arif-fazil.com/mcp
+  MCP Health:            https://mcp.arif-fazil.com/health
 
 ---
 

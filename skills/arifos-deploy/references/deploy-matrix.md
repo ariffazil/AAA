@@ -10,7 +10,7 @@
 |---------|----------|-------------|---------|---------|
 | arif-fazil.com (hub) | GitHub Pages (State A) / Cloudflare Pages (State B) | `deploy-hub.yml` | `sites/arif-fazil.com-source/**`, `.github/workflows/deploy-hub.yml` | Yes (PR deploy) |
 | arifos.arif-fazil.com (docs) | GitHub Pages | `deploy-sites.yml` | `arifOSmcp/sites/developer/**`, `.github/workflows/deploy-sites.yml` | Yes |
-| arifosmcp.arif-fazil.com (runtime) | VPS Docker | `deploy-vps.yml` | `arifOSmcp/**`, `docker-compose.yml`, `Dockerfile` | No |
+| mcp.arif-fazil.com (runtime) | VPS Docker | `deploy-vps.yml` | `arifOSmcp/**`, `docker-compose.yml`, `Dockerfile` | No |
 | Machine files (llms.txt etc.) | GitHub Pages (same as hub) | `deploy-hub.yml` | `**/llms.txt`, `**/.well-known/**`, `**/robots.txt`, `**/sitemap.xml` | No |
 
 ---
@@ -21,7 +21,7 @@
 |--------|-----------|-----------|-----|
 | arif-fazil.com | CNAME | github.com → Cloudflare → GitHub Pages | Cloudflare Full |
 | arifos.arif-fazil.com | CNAME | github.com → Cloudflare → GitHub Pages | Cloudflare Full |
-| arifosmcp.arif-fazil.com | A | 72.62.71.199 (VPS IP) | Cloudflare Full |
+| mcp.arif-fazil.com | A | 72.62.71.199 (VPS IP) | Cloudflare Full |
 | apex.arif-fazil.com | — | DEPRECATED — remove | — |
 
 **Note:** All domains proxied through Cloudflare. DNS changes via Cloudflare dashboard or `wrangler`.

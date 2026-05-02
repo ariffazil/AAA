@@ -19,7 +19,7 @@ These are constitutional-level constraints. No tool, command, or convenience may
 arif-fazil.com             → Ring 1 — THE SOUL (identity, philosophy, human witness)
 arifos.arif-fazil.com     → Ring 2 — THE MIND (constitutional kernel, ΔΩΨ, 13 floors)
 aaa.arif-fazil.com        → Ring 3 — THE BODY (AAA runtime, agents, tools, execution)
-arifosmcp.arif-fazil.com  → VPS MCP runtime (37 constitutional tools, health-checked)
+mcp.arif-fazil.com  → VPS MCP runtime (37 constitutional tools, health-checked)
 ```
 
 **Role rule:** Hub never hosts full docs content. Docs never hosts hub content. Runtime is never a static site. These boundaries never swap.

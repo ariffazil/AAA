@@ -59,9 +59,9 @@
       "docs": "https://arifos.arif-fazil.com",
       
       "mcp_backend": {
-        "canonical_base": "https://arifosmcp.arif-fazil.com",
-        "endpoint": "https://arifosmcp.arif-fazil.com/mcp",
-        "health": "https://arifosmcp.arif-fazil.com/health",
+        "canonical_base": "https://mcp.arif-fazil.com",
+        "endpoint": "https://mcp.arif-fazil.com/mcp",
+        "health": "https://mcp.arif-fazil.com/health",
         "transport": "streamable-http",
         "protocol": "MCP JSON-RPC 2.0",
         "note": "Use 'canonical_base' as single source of truth. All other variants deprecated."
@@ -113,7 +113,7 @@
   
   "ai_agent_instructions": {
     "for_symbol_confusion": "Use trinity_sites.*.symbol (🧍⚖️📘) for site layers. Δ/Ω/Ψ are internal engines only.",
-    "for_endpoint_confusion": "ALWAYS use canonical_urls.mcp_backend.canonical: https://arifosmcp.arif-fazil.com",
+    "for_endpoint_confusion": "ALWAYS use canonical_urls.mcp_backend.canonical: https://mcp.arif-fazil.com",
     "for_grounding": "Read llms.txt in order: HUMAN → THEORY → APPS",
     "for_verification": "Call WebMCP verify_canon_hashes() or check file_integrity section",
     "for_authority": "ARIF FAZIL is 888 Judge (human sovereign). All governance flows through human authority."
@@ -125,7 +125,7 @@
       "Updated contact: security@arif-fazil.com → arifos@arif-fazil.com",
       "Added WebMCP Phase 1 tools (HUMAN: 3, THEORY: 3)",
       "Clarified Trinity site symbols (🧍⚖️📘) vs internal engines (Δ/Ω/Ψ)",
-      "Standardized MCP endpoint: arifosmcp.arif-fazil.com (canonical)"
+      "Standardized MCP endpoint: mcp.arif-fazil.com (canonical)"
     ]
   }
 }
