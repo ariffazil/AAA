@@ -1,158 +1,71 @@
-# AAA — Arif Agent Architecture
+# AAA — Agents · API · Apps
 
-> **Identity. Control. Federation.**
-> **DITEMPA BUKAN DIBERI — Forged, Not Given.**
+> **Legal Definition · Identity · Federation · Control Plane**
+> **DITEMPA BUKAN DIBERI — Intelligence is forged, not given.**
 
-[![AAA](https://img.shields.io/badge/AAA-v1.0.0-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
-[![arifOS](https://img.shields.io/badge/arifOS-F1%E2%80%93F13_Governed-FF6B00?style=flat-square)](https://github.com/ariffazil/arifOS)
-[![A2A](https://img.shields.io/badge/A2A-v1.0.0-00D4FF?style=flat-square)](https://github.com/ariffazil/AAA)
+[![AAA](https://img.shields.io/badge/AAA-v1.1.0-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
+[![arifOS](https://img.shields.io/badge/arifOS-MIND_Ω-FF6B00?style=flat-square)](https://github.com/ariffazil/arifOS)
+[![A-FORGE](https://img.shields.io/badge/A--FORGE-BODY_Ψ-FF6B35?style=flat-square)](https://github.com/ariffazil/A-FORGE)
 [![License](https://img.shields.io/badge/License-AGPL_V3-4EAF0C?style=flat-square)](./LICENSE)
 
 ---
 
-## What AAA Is
+## The AAA Mandate: Legal Definition
 
-AAA is the **sovereign identity layer, control plane, and A2A federation gateway** for the arifOS constitutional kernel. It exposes governed delegation and coordination surfaces to external agents via the A2A v1.0.0 protocol, while arifOS provides the constitutional Floors F1–F13 that constrain all operations.
+AAA is the **physiological control plane** of the arifOS organism. It provides the **Legal Definition** of every agent in the federation. While arifOS translates intent into Law, AAA defines the *obligations, permissions, and identity* that allow an agent to exist and act.
 
-AAA does not adjudicate. It **identifies, authenticates, and routes**. The constitutional verdict belongs to arifOS.
-
----
-
-## Position in the arifOS Trinity
-
-```
-External Agent (A2A v1.0.0)
-    ↓ POST /tasks
-AAA Gateway (a2a-server/)
-    ├── 888_JUDGE gate (hold skills require constitutional verdict)
-    ├── F9 Anti-Hallucination check
-    ├── VAULT999 audit
-    └── arifOS Constitutional Floors F1–F13
-         ↓
-    Peer Agent (arifOS / GEOX / WEALTH / A-FORGE)
-    
-YOU ARE HERE ──────────────────────────────── ↑
-```
-
-AAA sits at the **federation boundary** — it is the front door and the gatekeeper.
+### The Five-Layer Stack
+In arifOS, "AAA" is a depth-ordered recursive stack:
+1. **Functional (Agents · API · Apps)** — How the machine interacts with you.
+2. **Security (Auth · Auth · Audit)** — F11/F13 identity and VAULT999 accounting.
+3. **Structural (A2A Alignment)** — Mesh coherence; shared truth propagation.
+4. **Grade (Triple-A Sovereign)** — Highest governance standard; zero hallucination.
+5. **Recursive (AAAA Pattern)** — The fractal ΔΩΨ pattern governing all organs.
 
 ---
 
-## Current Source of Truth
+## Position in the Sovereign Flow
+
+```
+SOUL (Human Δ) → MIND (arifOS Ω) → BODY (AAA/A-FORGE Ψ) → VAULT999 (Seal)
+                     ↓               ↑
+               Constitutional   Legal Definition
+                Translation     & Enforcement
+```
+
+AAA sits at the **federation boundary** — it is the registrar of contracts and the gateway for coordinated action.
+
+---
+
+## Current Source of Truth (v2026.05.02.2)
 
 | Field | Value |
 |-------|-------|
-| Canonical repository | `https://github.com/ariffazil/AAA` |
-| Package version | `1.0.0` |
-| Governing kernel | `arifOS F1–F13` |
-| Protocol | A2A v1.0.0 |
-| Endpoint | `http://localhost:3001` |
-| Gateway | `a2a-server/server.js` |
-| Federation manifest | `/.well-known/arifos-federation.json` |
-| Primary agent | **OPENCLAW** (AGI-level gateway) |
-| Agent tier framework | 000–999 governed loop + L0–L5 autonomy ladder |
-| Governance files | AGENTS.md, SOUL.md, LOOP.md, AUTONOMY.md, HEARTBEAT.md, CHECKPOINT.md, DECISIONS.md, TASKS.md |
-
----
-
-## A2A v1.0.0 Endpoints
-
-| Method | Path | Description |
-|--------|------|-------------|
-| `GET` | `/.well-known/agent-card.json` | A2A v1.0.0 agent card |
-| `GET` | `/.well-known/arifos-federation.json` | Federation peer manifest |
-| `GET` | `/health` | Health + vault status |
-| `POST` | `/tasks` | Create task (888_JUDGE gate) |
-| `GET` | `/tasks/:taskId` | Get task by ID |
-| `GET` | `/tasks/:taskId/stream` | SSE task stream |
-| `POST` | `/tasks/:taskId/cancel` | Cancel task |
-| `GET` | `/tasks/:taskId/subscribe` | SSE task subscription |
+| Role | **Legal Definition** of agents |
+| Governing kernel | `arifOS MIND (Ω)` |
+| Registry Standard | `Agent Card Schema v1.0` |
+| Autonomy Ladder | L0 (Manual) to L5 (Governed Autonomy) |
+| Canonical MCP | `mcp.arif-fazil.com` |
 
 ---
 
 ## Agent Tier Architecture
 
-**Two intelligence tiers govern the federation:**
+| Tier | Agents | Legal Obligation |
+|------|--------|------------------|
+| **AGI** | OPENCLAW, opencode, hermes-ops | Bounded execution; F1 Reversibility enforced. |
+| **ASI** | hermes-asi, hermes | Reasoning synthesis; deep memory; routing logic. |
 
-| Tier | Agents | Definition |
-|------|--------|------------|
-| **AGI** | OPENCLAW, maxhermes, opencode, hermes-ops | Bounded, self-monitoring operator — governed tool use + 000-999 loop |
-| **ASI** | hermes-asi, hermes | Advanced Specialist Intelligence — generalist reasoning, deep memory, routing |
-
-### Agent Registry
-
-| Agent | Tier | Role |
-|-------|------|------|
-| **OPENCLAW** | AGI | Primary gateway + orchestrator (this agent) |
-| **hermes-asi** | ASI | Generalist reasoning + routing + coordination |
-| **hermes** | ASI | Memory engine + deep recall |
-| **maxhermes** | AGI | GEOX Earth Intelligence specialist |
-| **opencode** | AGI | Coding specialist |
-| **hermes-ops** | AGI | Execution specialist (DevOps + workflows) |
-
----
-
-## Federation Peers
-
-AAA registers and coordinates with these peer agents:
-
-| Agent | Role | Protocol | Tier |
-|-------|------|---------|------|
-| **arifOS** | Constitutional kernel | MCP | Constitutional |
-| **GEOX** | Earth intelligence | MCP | AGI |
-| **WEALTH** | Capital intelligence | MCP | AGI |
-| **OPENCLAW** | Gateway + orchestrator | A2A | AGI |
-| **hermes-asi** | Generalist reasoning | A2A | ASI |
-| **hermes** | Memory engine | A2A | ASI |
-| **MaxHermes** | GEOX specialist | A2A | AGI |
-| **A-FORGE** | Execution shell | Internal | AGI |
-
----
-
-## Constitutional Posture
-
-AAA operates under arifOS constitutional Floors F1–F13:
-
-- **No silent self-approval** — every skill route requires constitutional check
-- **No irreversible action without human acknowledgment**
-- **No bypass of VAULT999 audit trail**
-- **888_JUDGE gate** enforced before `agent-dispatch` and `agent-handoff`
-
----
-
-## Architecture
-
-```
-External Agent (A2A v1.0.0)
-    ↓ POST /tasks
-OPENCLAW Gateway (AAA / a2a-server/)
-    ├── 888_JUDGE gate (hold skills require constitutional verdict)
-    ├── F9 Anti-Hallucination check
-    ├── VAULT999 audit
-    └── arifOS Constitutional Floors F1–F13
-         ↓
-    Peer Agent Dispatch (hermes-asi / hermes / maxhermes / opencode / hermes-ops)
-         ↓
-    GEOX / WEALTH / A-FORGE
-```
-
----
-
-## Sibling Organ READMEs
-
-| Organ | One-liner |
-|-------|----------|
-| [`arifOS`](https://github.com/ariffazil/arifOS) | Constitutional kernel — F1–F13 floors, 13 tools, VAULT999 |
-| [`A-FORGE`](https://github.com/ariffazil/A-FORGE) | Execution shell, orchestration, and operator observability |
-| [`GEOX`](https://github.com/ariffazil/geox) | Governed earth intelligence — seismic, petrophysics, basin analysis |
-| [`WEALTH`](https://github.com/ariffazil/wealth) | Capital intelligence — NPV, IRR, EMV, crisis triage |
-| [`WELL`](https://github.com/ariffazil/well) | Biological substrate governance — human readiness mirroring |
+### Execution Contracts
+Every agent in AAA operates under explicit contracts (see `/contracts` and `/schemas`):
+- **Agent Card**: Defines identity, tier, and layer-awareness.
+- **Layer-Awareness Contract**: Mandates L2 (Security), L3 (Structural), and L4 (Grade) compliance.
 
 ---
 
 ## The Trinity (ΔΩΨ) & Live Surfaces
 
-AAA sits at the federation boundary, fulfilling the **BODY (Ψ)** role alongside A-FORGE, while arifOS serves as the **MIND (Ω)** and the human sovereign as the **SOUL (Δ)**.
+AAA anchors the **BODY (Ψ)** role alongside A-FORGE.
 
 | Surface | Role | URL |
 |---------|------|-----|
@@ -160,9 +73,8 @@ AAA sits at the federation boundary, fulfilling the **BODY (Ψ)** role alongside
 | **arifOS** | MIND (Ω) | `https://arifos.arif-fazil.com/` |
 | **AAA / A-FORGE** | BODY (Ψ) | `https://aaa.arif-fazil.com/` |
 | **MCP Canonical** | BODY (Ψ) | `https://mcp.arif-fazil.com/` |
-| **GEOX** | Earth | `https://geox.arif-fazil.com/` |
 
 > **Note:** `arifosmcp.arif-fazil.com` is a legacy 301 redirect to the canonical `mcp.arif-fazil.com` endpoint.
 
-*AAA identifies. arifOS adjudicates. The federation is forged through disciplined coordination.*
+*AAA identifies. arifOS adjudicates. A-FORGE executes.*
 *DITEMPA BUKAN DIBERI — Identity is forged through constitutional discipline.*
