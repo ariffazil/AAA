@@ -30,6 +30,8 @@ In arifOS, "AAA" is not a flat label. It is a **depth-ordered stack** where each
 | 4 | **Grade** | Triple-A Sovereign | Highest governance quality — sovereign-grade, not hallucination-grade |
 | 5 | **Recursive (AAAA)** | Arif's Autonomous Agent Architecture | The full pattern: SOUL + loop + tool-capable units + Trinity layout |
 
+> **Architectural Note:** `AAA` refers to this repository, the control-plane, and the functional identity of the federation. `AAAA` refers to the recursive architectural **pattern** (documented in [AAAA_PATTERN.md](./AAAA_PATTERN.md)) that governs the relationship between SOUL, MIND, and BODY across all organs.
+
 ---
 
 ## Canonical boundary
