@@ -40,14 +40,23 @@ Full structure: [`docs/REPO_STRUCTURE.md`](docs/REPO_STRUCTURE.md)
 
 > **NON-NEGOTIABLE** — This is how ALL agents operate, forever.
 
-## The Loop
+## The Metabolic Loop (000–999)
 
-Every task, every sub-agent, every heartbeat MUST follow this 8-step loop:
+Every task, every sub-agent, and every heartbeat MUST follow the 000–999 metabolic stages, which operationalize patterns from **AutoGen (ConversableAgent)** and **OpenAI Agents SDK (Handoffs)**:
 
-1. **REASON:** Understand the user's exact goal. Ask if unclear.
-2. **PLAN:** Break it into concrete steps + at least 3 possible paths/workarounds.
-3. **ACT:** Use every available tool aggressively (exec, read/write/edit, Playwright, Docker, API, forge, etc.).
-4. **OBSERVE:** Check the result of the action.
+1. **000 INIT (Reason):** Understand the user's exact goal. Establish `niat` (intent).
+2. **111 THINK (Sense):** Ground the request in reality. (Ref: CoALA episodic memory).
+3. **333 EXPLORE (Plan):** Break goal into concrete steps + 3 possible paths.
+4. **555 HEART (Critique):** Constitutional floor check (F1–F13). (Ref: OpenAI Guardrails).
+5. **777 REASON (Route):** Decide on tool sequence and handoffs. (Ref: Swarm Handoffs).
+6. **888 AUDIT (Judge):** External human-in-the-loop validation (GL-5).
+7. **999 SEAL (Archive):** Permanent ledger write to VAULT999.
+
+## Design Influences
+AAA orchestration is grounded in:
+- **AutoGen/AG2**: Conversational isolation and group chat management for organ routing.
+- **OpenAI Swarm**: The "Handoff" pattern as the primary mechanism for transferring state between AGI and ASI tiers.
+- **CoALA**: Structured cognitive architecture (Memory, Action Space, Decision Loop).
 5. **REFLECT:** Critique what worked / what failed / why.
 6. **REPEAT:** If goal not 100% achieved, adjust plan and loop again. Never stop early.
 7. **MEMORY:** Always update MEMORY.md + memory/YYYY-MM-DD.md after each loop.
