@@ -1,8 +1,8 @@
 {
   "protocol_version": "0.3.0",
   "id": "aaa-gateway",
-  "name": "AAA Gateway",
-  "description": "Governed agent gateway for AAA. Exposes only approved delegation and coordination surfaces.",
+  "name": "AAA Cockpit",
+  "description": "Governed agentic cockpit for arifOS federation — monitors agents, tools, constitutional floors, approvals, health, and VAULT999 events.",
   "url": "https://aaa.arif-fazil.com/a2a",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [
@@ -16,7 +16,7 @@
     "system": "AAA",
     "runtime": "OpenClaw"
   },
-  "version": "0.1.0",
+  "version": "2026.05.03",
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
@@ -69,5 +69,20 @@
       "examples": ["check task status", "get current state of task 123"]
     }
   ],
-  "supports_authenticated_extended_card": false
+  "supports_authenticated_extended_card": false,
+  "governance": {
+    "constitutional_floors": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+    "verdict_authority": "888_JUDGE",
+    "vault": "VAULT999",
+    "irreversible_requires_human": true,
+    "self_approval_forbidden": true,
+    "federation_trust_model": "untrusted_peers",
+    "nist_ai_rmf": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+    "owasp_genai": "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+  },
+  "proof": {
+    "build_hash": "c1d451b",
+    "governance_version": "KANON v2026.05",
+    "did_vc_proof": "https://arif-fazil.com/999"
+  }
 }
