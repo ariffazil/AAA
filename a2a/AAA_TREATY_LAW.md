@@ -362,6 +362,98 @@ Deviations from protocol MUST be declared in the agent's card under `extensions`
 
 ---
 
+## Part XI — A-Roles (A-rchitect, A-engineer, A-auditor)
+
+The three A-roles are the operational layer inside the MESH/AGI/ASI/APEX taxonomy.
+Each role maps to one or more agent cards and has explicit skills, power bands, and forbidden acts.
+
+### Role Architecture
+
+```
+A-rchitect (AGI lane)
+  → Designs: task schemas, skill exposure, mesh topology, treaties
+  → Cannot execute, dispatch, or judge
+
+A-engineer (AGI lane)
+  → Executes: runs tasks, dispatches to downstream, streams progress
+  → Cannot self-approve, emit receipts, or judge
+
+A-auditor (ASI lane)
+  → Judges: evaluates delegation, enforces floors, emits receipts
+  → Cannot execute, design schemas, or dispatch
+```
+
+### Card Registry
+
+| A-Role | Card File | Lane | Power Band |
+|---|---|---|---|
+| A-rchitect | `aaa-architect.json` | AGI | Design only |
+| A-engineer | `aaa-engineer.json` | AGI | Execution only |
+| A-auditor | `aaa-auditor.json` | ASI | Judgment only |
+
+### Power Bands
+
+| | A-rchitect | A-engineer | A-auditor | Human |
+|---|---|---|---|---|
+| **Design schemas/cards** | ✅ | ❌ | ❌ | ✅ |
+| **Execute tasks** | ❌ | ✅ | ❌ | ✅ |
+| **Dispatch to agents** | ❌ | ✅ (via hold) | ❌ | ✅ |
+| **Judge / HOLD / VOID** | ❌ | ❌ | ✅ | ✅ |
+| **Emit VAULT999 receipts** | ❌ | ❌ | ✅ | ✅ |
+| **Change treaties** | Proposes | ❌ | Reviews | ✅ Final |
+
+### Forbidden Per Role
+
+**A-rchitect:**
+- Cannot execute tasks or call MCP tools
+- Cannot dispatch directly to downstream agents
+- Cannot seal to VAULT999
+- Cannot override constitutional floors
+
+**A-engineer:**
+- Cannot self-approve a hold or dispatch
+- Cannot emit VAULT999 receipts (only records intent for A-auditor)
+- Cannot judge floor compliance
+- Cannot change task schemas designed by A-rchitect
+
+**A-auditor:**
+- Cannot execute tasks or call MCP tools
+- Cannot dispatch to downstream agents
+- Cannot design task schemas or skill exposure
+- Cannot claim independent sovereignty — all verdicts are floor-bound
+
+### Skill Map Per Role
+
+**A-rchitect skills:**
+- `design-task-schema` — define canonical task structure
+- `propose-agent-mesh` — propose discovery targets and treaties
+- `update-skill-exposure` — change public/auth/forbidden classification
+- `design-handoff-object` — define context/authority transfer structure
+- `evaluate-treaty` — review treaty for floor violations
+
+**A-engineer skills:**
+- `run-task` — execute locally via MCP
+- `dispatch-task` — A2A dispatch to downstream (gated by A-auditor hold)
+- `stream-progress` — SSE event emission for long tasks
+- `manage-task-lifecycle` — state transitions submitted→working→completed/etc.
+- `receive-handoff` — accept inbound context transfer
+
+**A-auditor skills:**
+- `evaluate-delegation` — issue PROCEED/HOLD/VOID verdict (888_JUDGE core)
+- `verify-agent-card` — verify remote card identity and F09 ANTIHANTU compliance
+- `emit-receipt` — write VAULT999 receipt for high-stakes actions
+- `check-floor-compliance` — per-floor evaluation F01–F13
+- `audit-task-history` — reconstruct full task trace for audit
+- `issue-hold` — formal HOLD with reason and freeze
+
+### Treaty Integration
+
+A-rchitect, A-engineer, and A-auditor are bound by this treaty.
+Their cards reference `treaty_id: AAA-TREATY-v1.0.0` and `governance_uri` pointing to this document.
+Any card that violates its power band enters VOID state — all active tasks suspended.
+
+---
+
 ## Part X — Amendment
 
 This treaty is ratified by arifOS Constitution. Amendment requires:
