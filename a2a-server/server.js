@@ -107,8 +107,13 @@ const AAA_AGENT_CARD = {
   }
 };
 
+// === A-ROLE AGENT CARDS ===
+const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
+const ENGINEER_CARD = require('./agent-cards/aaa-engineer.json');
+const AUDITOR_CARD = require('./agent-cards/aaa-auditor.json');
+
 // === ERROR CODES ===
-const ERROR_CODES = {
+const ERROR_CDES = {
   INVALID_REQUEST: -32600,
   METHOD_NOT_FOUND: -32601,
   TASK_NOT_FOUND: -32001,
@@ -486,22 +491,63 @@ app.get('/.well-known/agent.json', (req, res) => {
 // Federation manifest — public discovery of peer agents
 app.get('/.well-known/arifos-federation.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.json({
     federation: 'arifOS AAA',
     version: '1.0.0',
     protocol: 'A2A v1.0.0',
+    treaty: 'AAA-TREATY-v1.0.0',
+    treaty_uri: 'https://aaa.arif-fazil.com/aaa-card-treaty',
     agents: [
-      { id: 'aaa-gateway', url: 'https://aaa.arif-fazil.com', registered: true },
-      { id: 'maxhermes', url: 'https://aaa.arif-fazil.com/hermes', registered: false },
-      { id: 'hermes-asi', url: 'http://hermes-agent:3002', registered: true }
+      { id: 'aaa-gateway', url: 'https://aaa.arif-fazil.com/a2a', registered: true, role: 'gateway', a_role: null },
+      { id: 'aaa-architect', url: 'https://aaa.arif-fazil.com/a2a/architect', registered: true, role: 'internal', a_role: 'A-rchitect', lane: 'AGI' },
+      { id: 'aaa-engineer', url: 'https://aaa.arif-fazil.com/a2a/engineer', registered: true, role: 'internal', a_role: 'A-engineer', lane: 'AGI' },
+      { id: 'aaa-auditor', url: 'https://aaa.arif-fazil.com/a2a/auditor', registered: true, role: 'internal', a_role: 'A-auditor', lane: 'ASI' },
+      { id: 'geox-witness', url: 'https://geox.arif-fazil.com/a2a', registered: true, role: 'mesh', organ: 'GEOX' },
+      { id: 'wealth-witness', url: 'https://wealth.arif-fazil.com/a2a', registered: true, role: 'mesh', organ: 'WEALTH' }
     ],
     constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
     governance_root: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json'
   });
 });
 
+// A-ROLE AGENT CARD ROUTES
+app.get('/a2a/architect/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(ARCHITECT_CARD);
+});
+
+app.get('/a2a/engineer/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(ENGINEER_CARD);
+});
+
+app.get('/a2a/auditor/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(AUDITOR_CARD);
+});
+
+// Treaty route — links to the full treaty law
+app.get('/aaa-card-treaty', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({
+    treaty_id: 'AAA-TREATY-v1.0.0',
+    issued_by: 'arifOS Constitutional Kernel',
+    kanon_lock: '2026.05.03-HERMES',
+    status: 'ACTIVE',
+    canonical_source: 'https://github.com/ariffazil/AAA/blob/main/a2a/AAA_TREATY_LAW.md',
+    note: 'Full treaty law committed to AAA repo. Agent cards and this treaty are the binding contracts.'
+  });
+});
+
 app.get('/health', async (req, res) => {
   const vaultHealthy = await checkVaultHealth();
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
   res.json({
     status: 'healthy',
     protocol: 'A2A',
@@ -510,6 +556,58 @@ app.get('/health', async (req, res) => {
     motto: 'Ditempa Bukan Diberi',
     vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED'
   });
+});
+
+app.get('/operator/holds', (req, res) => {
+  const all = Array.from(taskStore.values());
+  const pending = all.filter(t => t.status.state === 'input-required');
+  const auth = all.filter(t => t.status.state === 'auth-required');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.json({
+    ok: true,
+    holds: pending.length + auth.length,
+    breakdown: {
+      'input-required': pending.length,
+      'auth-required': auth.length,
+    }
+  });
+});
+
+app.get('/operator/tasks', (req, res) => {
+  const state = req.query.state;
+  let tasks = Array.from(taskStore.values());
+  if (state) tasks = tasks.filter(t => t.status.state === state);
+  tasks.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.json({ ok: true, tasks });
+});
+
+app.get('/operator/seals', (req, res) => {
+  const http = require('http');
+  const r = http.request({ hostname: 'vault999-writer', port: 5001, path: '/health', method: 'GET', timeout: 5000 }, (r2) => {
+    let body = '';
+    r2.on('data', c => { body += c; });
+    r2.on('end', () => {
+      try {
+        const d = JSON.parse(body);
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.json({ ok: true, seals: d.vault_seals_count || 0, pending_holds: d.pending_holds || 0 });
+      } catch (_) {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.json({ ok: true, seals: 0, pending_holds: 0 });
+      }
+    });
+  });
+  r.on('error', () => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.json({ ok: true, seals: 0, pending_holds: 0 });
+  });
+  r.end();
 });
 
 app.get('/', (req, res) => {
