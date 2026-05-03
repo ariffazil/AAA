@@ -20,8 +20,10 @@
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
-    "authenticated_extended_card": false
+    "authenticated_extended_card": false,
+    "reply_mode_support": true
   },
+  "reply_modes": ["HEALTH", "INCIDENT", "PROPOSAL", "ESCALATION", "AUDIT", "PLAN", "EXPLAIN", "DENY", "META"],
   "security_schemes": [
     {
       "id": "gateway-token",
