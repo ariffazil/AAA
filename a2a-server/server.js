@@ -113,7 +113,7 @@ const ENGINEER_CARD = require('./agent-cards/aaa-engineer.json');
 const AUDITOR_CARD = require('./agent-cards/aaa-auditor.json');
 
 // === ERROR CODES ===
-const ERROR_CDES = {
+const ERROR_CODES = {
   INVALID_REQUEST: -32600,
   METHOD_NOT_FOUND: -32601,
   TASK_NOT_FOUND: -32001,
@@ -127,34 +127,106 @@ const ERROR_CDES = {
 };
 
 // === 888_JUDGE INTEGRATION ===
+// Calls hermes-agent A2A skill: 888-judgment
+// Wraps the call in A2A protocol: POST /tasks → poll GET /tasks/{id}
 
 async function callArifJudge(candidate, taskId, contextId, skill) {
+  const judgmentTaskId = `jg-${taskId}-${Date.now()}`;
+  const HERMES_URL = ARIFOS_JUDGE_URL.replace('/judge', ''); // strip broken /judge suffix
+
   try {
-    const response = await fetch(`${ARIFOS_JUDGE_URL}/judge`, {
+    // Step 1: Submit judgment task to hermes-agent via A2A
+    const submitRes = await fetch(`${HERMES_URL}/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${ARIFOS_API_KEY}`,
-        'User-Agent': 'AAA-A2A-Gateway/1.0'
+        'Authorization': `Bearer ${A2A_TOKEN}`,
+        'x-a2a-key': A2A_API_KEY
       },
       body: JSON.stringify({
-        candidate,
-        task_id: taskId,
-        context_id: contextId,
-        skill,
-        session_id: `aaa-a2a-${taskId}`,
-        actor_id: 'aaa-gateway'
+        jsonrpc: '2.0',
+        id: judgmentTaskId,
+        method: 'tasks/send',
+        params: {
+          skill: '888-judgment',
+          input: {
+            candidate,
+            task_id: taskId,
+            context_id: contextId,
+            skill,
+            actor_id: 'aaa-gateway',
+            source: 'AAA-A2A-Gateway'
+          },
+          sender: { agent_id: 'aaa-gateway' },
+          nonce: judgmentTaskId,
+          timestamp: new Date().toISOString()
+        }
       }),
-      signal: AbortSignal.timeout(10000)
+      signal: AbortSignal.timeout(15000)
     });
 
-    if (!response.ok) {
-      console.error(`[888_JUDGE] returned ${response.status}`);
+    if (!submitRes.ok) {
+      console.error(`[888_JUDGE] A2A submit failed: ${submitRes.status}`);
       return VERDICT.HOLD_888;
     }
 
-    const data = await response.json();
-    return data.verdict || VERDICT.HOLD_888;
+    const submitData = await submitRes.json();
+    // A2A returns either direct result or { result: { task: { id } }
+    const returnedTaskId = submitData.result?.task?.id || submitData.result?.id || submitData.id;
+    if (!returnedTaskId) {
+      console.error('[888_JUDGE] No taskId returned from hermes-agent');
+      return VERDICT.HOLD_888;
+    }
+
+    // Step 2: Poll until completed / failed / timeout
+    const deadline = Date.now() + 20000; // 20s max
+    let verdict = VERDICT.HOLD_888;
+
+    while (Date.now() < deadline) {
+      await new Promise(r => setTimeout(r, 1000)); // 1s poll interval
+
+      const pollRes = await fetch(`${HERMES_URL}/tasks/${returnedTaskId}`, {
+        headers: {
+          'Authorization': `Bearer ${A2A_TOKEN}`,
+          'x-a2a-key': A2A_API_KEY
+        },
+        signal: AbortSignal.timeout(5000)
+      });
+
+      if (!pollRes.ok) continue;
+
+      const pollData = await pollRes.json();
+      const task = pollData.result || pollData;
+      const state = task.status?.state || task.state;
+
+      if (state === 'completed') {
+        // Extract verdict from task artifacts/messages
+        const msgs = task.messages || [];
+        for (let i = msgs.length - 1; i >= 0; i--) {
+          const parts = msgs[i].parts || [];
+          for (const p of parts) {
+            if (p.kind === 'text') {
+              const t = p.text || '';
+              if (t.includes('SEAL') || t.includes('PROCEED')) { verdict = 'SEAL'; break; }
+              if (t.includes('HOLD') || t.includes('HOLD_888')) { verdict = VERDICT.HOLD_888; break; }
+              if (t.includes('VOID')) { verdict = 'VOID'; break; }
+            }
+          }
+          if (verdict !== VERDICT.HOLD_888) break;
+        }
+        break;
+      }
+
+      if (state === 'failed' || state === 'rejected' || state === 'canceled') {
+        console.error(`[888_JUDGE] hermes-agent task ended: ${state}`);
+        verdict = 'VOID';
+        break;
+      }
+    }
+
+    console.log(`[888_JUDGE] Task ${judgmentTaskId} → ${verdict}`);
+    return verdict;
+
   } catch (error) {
     console.error(`[888_JUDGE] call failed: ${error.message} — defaulting to HOLD_888`);
     return VERDICT.HOLD_888;
