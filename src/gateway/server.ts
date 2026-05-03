@@ -123,6 +123,8 @@ export function createApp(): express.Application {
   app.get('/agent.json', (req, res) => res.json(getAgentCard()));
 
   app.get('/health', (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
     res.json({
       status: 'healthy',
       protocol: 'A2A',
@@ -137,6 +139,19 @@ export function createApp(): express.Application {
     const state = req.query.state as string;
     const tasks = await taskStore.listTasks(state ? { state: state as any } : undefined);
     res.json({ ok: true, tasks });
+  });
+
+  app.get('/operator/holds', async (req, res) => {
+    const pending = await taskStore.listTasks({ state: 'input-required' });
+    const auth = await taskStore.listTasks({ state: 'auth-required' });
+    res.json({
+      ok: true,
+      holds: pending.length + auth.length,
+      breakdown: {
+        'input-required': pending.length,
+        'auth-required': auth.length,
+      }
+    });
   });
 
   app.post('/operator/tasks/:taskId/approve', async (req, res) => {
