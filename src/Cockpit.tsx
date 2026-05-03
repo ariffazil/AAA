@@ -37,6 +37,17 @@ const AGENTS = [
 export default function Cockpit() {
   const [tasks, setTasks] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [kernelStatus, setKernelStatus] = useState<'ONLINE' | 'OFFLINE'>('OFFLINE');
+  const [lastCheck, setLastCheck] = useState<string>('never');
+  const [latency, setLatency] = useState<number | null>(null);
+  const [kernelHealth, setKernelHealth] = useState<'READY' | 'OFFLINE'>('OFFLINE');
+  const [kernelLastCheck, setKernelLastCheck] = useState<string>('never');
+  const [kernelLatency, setKernelLatency] = useState<number | null>(null);
+  const [holdsCount, setHoldsCount] = useState<number>(0);
+  const [holdsBreakdown, setHoldsBreakdown] = useState<{ 'input-required': number; 'auth-required': number }>({ 'input-required': 0, 'auth-required': 0 });
+  const [sealsCount, setSealsCount] = useState<number>(0);
+  const [vaultConnected, setVaultConnected] = useState<boolean>(false);
+  const [toolRegistry, setToolRegistry] = useState<string[]>([]);
 
   const fetchTasks = async () => {
     try {
@@ -53,6 +64,112 @@ export default function Cockpit() {
   useEffect(() => {
     fetchTasks();
     const interval = setInterval(fetchTasks, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const checkKernelHealth = async () => {
+      const start = Date.now();
+      try {
+        const res = await fetch('/health');
+        const ms = Date.now() - start;
+        setLatency(ms);
+        const now = new Date().toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        setLastCheck(now);
+        if (res.ok) {
+          const data = await res.json();
+          setKernelStatus(data.status === 'healthy' ? 'ONLINE' : 'OFFLINE');
+        } else {
+          setKernelStatus('OFFLINE');
+        }
+      } catch {
+        setKernelStatus('OFFLINE');
+        setLatency(null);
+      }
+    };
+    checkKernelHealth();
+    const interval = setInterval(checkKernelHealth, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const checkArifOSHealth = async () => {
+      const start = Date.now();
+      try {
+        const res = await fetch('https://arifos.arif-fazil.com/health');
+        const ms = Date.now() - start;
+        setKernelLatency(ms);
+        const now = new Date().toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        setKernelLastCheck(now);
+        if (res.ok) {
+          setKernelHealth('READY');
+        } else {
+          setKernelHealth('OFFLINE');
+        }
+      } catch {
+        setKernelHealth('OFFLINE');
+        setKernelLatency(null);
+      }
+    };
+    checkArifOSHealth();
+    const interval = setInterval(checkArifOSHealth, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const checkHolds = async () => {
+      try {
+        const res = await fetch('/operator/holds');
+        if (res.ok) {
+          const data = await res.json();
+          setHoldsCount(data.holds);
+          setHoldsBreakdown(data.breakdown);
+        }
+      } catch { /* ignore */ }
+    };
+    checkHolds();
+    const interval = setInterval(checkHolds, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const checkSeals = async () => {
+      try {
+        const res = await fetch('/operator/seals');
+        if (res.ok) {
+          const data = await res.json();
+          setSealsCount(data.seals);
+          setVaultConnected(data.seals !== '?');
+        }
+      } catch { /* ignore */ }
+    };
+    const checkStatus = async () => {
+      try {
+        const res = await fetch('https://af-bridge.arif-fazil.com/status');
+        if (res.ok) {
+          const data = await res.json();
+          setHoldsCount(data.metabolic?.open_holds ?? holdsCount);
+        }
+      } catch { /* ignore */ }
+    };
+    checkSeals();
+    checkStatus();
+    const interval = setInterval(() => { checkSeals(); checkStatus(); }, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const checkTools = async () => {
+      try {
+        const res = await fetch('https://arifos.arif-fazil.com/tools');
+        if (res.ok) {
+          const data = await res.json();
+          setToolRegistry(data.tools || []);
+        }
+      } catch { /* ignore */ }
+    };
+    checkTools();
+    const interval = setInterval(checkTools, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -102,10 +219,22 @@ export default function Cockpit() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-             <div className="flex items-center gap-2 px-3 py-1 bg-red-950/20 border border-red-500/30 rounded text-[9px] font-mono text-red-500">
-                <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
-                KERNEL: OFFLINE
-             </div>
+              <div className="flex items-center gap-3">
+              <div className={`flex flex-col gap-1 px-3 py-1 border rounded text-[9px] font-mono ${kernelStatus === 'ONLINE' ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-500' : 'bg-red-950/20 border-red-500/30 text-red-500'}`}>
+                 <div className="flex items-center gap-2">
+                   <div className={`w-1.5 h-1.5 rounded-full ${kernelStatus === 'ONLINE' ? 'bg-emerald-500' : 'bg-red-500 animate-pulse'}`} />
+                   A2A: {kernelStatus}
+                 </div>
+                 <div className="text-white/40">Last: {lastCheck} {latency !== null ? `· ${latency}ms` : ''}</div>
+              </div>
+              <div className={`flex flex-col gap-1 px-3 py-1 border rounded text-[9px] font-mono ${kernelHealth === 'READY' ? 'bg-blue-950/20 border-blue-500/30 text-blue-400' : 'bg-red-950/20 border-red-500/30 text-red-500'}`}>
+                 <div className="flex items-center gap-2">
+                   <div className={`w-1.5 h-1.5 rounded-full ${kernelHealth === 'READY' ? 'bg-blue-400' : 'bg-red-500 animate-pulse'}`} />
+                   KERNEL: {kernelHealth}
+                 </div>
+                 <div className="text-white/40">Last: {kernelLastCheck} {kernelLatency !== null ? `· ${kernelLatency}ms` : ''}</div>
+              </div>
+              </div>
              <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60">
                 VAULT999: CONNECTED
              </div>
@@ -238,8 +367,8 @@ export default function Cockpit() {
         <section className="mb-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <HealthMetric label="Integrity" value="100%" sub="Validated" color="text-red-500" />
-            <HealthMetric label="Holds Open" value="0" sub="Critical" color="text-white" />
-            <HealthMetric label="Seals" value="0" sub="VAULT999" color="text-white" />
+            <HealthMetric label="Holds Open" value={String(holdsCount)} sub={holdsCount > 0 ? `${holdsBreakdown['input-required']} pending · ${holdsBreakdown['auth-required']} auth` : "None"} color={holdsCount > 0 ? "text-amber-500" : "text-white"} />
+            <HealthMetric label="Seals" value={String(sealsCount)} sub={vaultConnected ? "VAULT999" : "Vault Unreachable"} color={vaultConnected ? "text-emerald-500" : "text-red-500"} />
             <HealthMetric label="Uptime" value="99.9%" sub="Live" color="text-blue-500" />
           </div>
         </section>
@@ -275,11 +404,7 @@ export default function Cockpit() {
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Tool Registry</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              'geox. well_viewer', 'geox. interpret_las', 
-              'forge. check_governance', 'forge. run_agent',
-              'forge. hold_action', 'forge. recall_memory'
-            ].map(t => (
+            {(toolRegistry.length > 0 ? toolRegistry : ['geox.well_viewer', 'geox.interpret_las', 'forge.check_governance', 'forge.run_agent', 'forge.hold_action', 'forge.recall_memory']).map(t => (
               <div key={t} className="p-4 border border-white/5 hover:border-white/20 transition-all flex justify-between items-center group">
                 <code className="text-xs font-mono text-white/60 group-hover:text-white transition-colors">{t}</code>
                 <div className="w-1 h-1 bg-white/20 rounded-full group-hover:bg-red-500" />
