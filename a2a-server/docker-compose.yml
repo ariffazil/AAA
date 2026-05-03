@@ -1,0 +1,40 @@
+# docker-compose.yml — AAA A2A Gateway
+# arifOS Federation Mesh Node
+#
+# Usage:
+#   docker compose up -d        # start
+#   docker compose restart      # restart after config change
+
+services:
+  aaa-a2a:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aaa-a2a
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3001:3001"
+    environment:
+      - PORT=3001
+      - A2A_TOKEN=${A2A_TOKEN:-aaa-a2a-token-dev}
+      - A2A_API_KEY=${A2A_API_KEY:-aaa-a2a-apikey-dev}
+      - ARIFOS_JUDGE_URL=${ARIFOS_JUDGE_URL:-http://hermes-agent:3002}
+      - ARIFOS_API_KEY=${ARIFOS_API_KEY:-hermes-agent-apikey-dev}
+    networks:
+      - arifos_core_network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    labels:
+      service: aaa-a2a
+      stack: aaa
+      purpose: a2a-gateway
+      access: authenticated
+
+networks:
+  arifos_core_network:
+    name: arifos_core_network
+    external: true
