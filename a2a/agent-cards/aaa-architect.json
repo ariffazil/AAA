@@ -1,0 +1,124 @@
+{
+  "protocol_version": "1.0.0",
+  "id": "aaa-architect",
+  "name": "AAA A-rchitect",
+  "description": "Design agent for AAA. Defines task schemas, skill exposure, agent mesh topology, and capability contracts. Does not execute — designs what can be built and how it's described.",
+  "url": "https://aaa.arif-fazil.com/a2a/architect",
+  "preferred_transport": "jsonrpc-https",
+  "additional_interfaces": [
+    {
+      "transport": "sse",
+      "url": "https://aaa.arif-fazil.com/a2a/architect/events"
+    }
+  ],
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "organ": "AAA-AROLES",
+    "sub_role": "A-rchitect"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": true
+  },
+  "security_schemes": [
+    {
+      "id": "gateway-token",
+      "type": "bearer",
+      "description": "Gateway bearer token for internal trusted peers."
+    },
+    {
+      "id": "oauth2",
+      "type": "oauth2",
+      "description": "OAuth/OIDC for federated callers."
+    }
+  ],
+  "security": [
+    ["gateway-token"],
+    ["oauth2"]
+  ],
+  "default_input_modes": ["application/json", "text/plain"],
+  "default_output_modes": ["application/json"],
+  "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+  "treaty_ref": "AAA-TREATY-v1.0.0",
+  "lane": "AGI",
+  "a_role": "A-rchitect",
+  "power_band": "design_only",
+  "skills": [
+    {
+      "id": "design-task-schema",
+      "name": "Design Task Schema",
+      "description": "Define the canonical JSON structure for a class of tasks: mandatory fields, reversibility class, floor scope, handoff points, and artifact shape.",
+      "tags": ["design", "schema", "task-structure"],
+      "floor_scope": ["F01", "F02", "F04", "F08"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["text/plain", "application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "propose-agent-mesh",
+      "name": "Propose Agent Mesh",
+      "description": "Given a capability requirement, propose which agents AAA should discover, which AgentCards to trust, and which treaties to establish. Output is a candidate mesh with treaty draft.",
+      "tags": ["discovery", "mesh", "topology", "treaty"],
+      "floor_scope": ["F01", "F02", "F04", "F05", "F06"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "update-skill-exposure",
+      "name": "Update Skill Exposure",
+      "description": "Change the exposure class of a skill: public, authenticated, or forbidden. Affects AgentCard published surface. Requires human confirmation for public changes.",
+      "tags": ["skill", "exposure", "public", "auth"],
+      "floor_scope": ["F01", "F02", "F04", "F11", "F13"],
+      "approval_policy": "sovereign",
+      "reversibility_class": "irreversible",
+      "human_confirmation_required": true,
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "design-handoff-object",
+      "name": "Design Handoff Object",
+      "description": "Define the structure of a handoff object: what context transfers, what authority transfers, what receipts are required, and what the receiving agent is bound by.",
+      "tags": ["design", "handoff", "context", "authority"],
+      "floor_scope": ["F01", "F02", "F04", "F08", "F11"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "evaluate-treaty",
+      "name": "Evaluate Treaty",
+      "description": "Review a proposed treaty between two agents: check for floor violations, contradictory promises, hidden capability surface, or F09 ANTIHANTU violations.",
+      "tags": ["treaty", "review", "governance", "floor"],
+      "floor_scope": ["F01", "F02", "F04", "F05", "F06", "F09", "F13"],
+      "approval_policy": "hold",
+      "reversibility_class": "reversible",
+      "judgment_required": true,
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    }
+  ],
+  "extends_card": "aaa-gateway",
+  "forbidden": {
+    "cannot_execute": true,
+    "cannot_dispatch_direct": true,
+    "cannot_seal": true,
+    "cannot_override_floors": true,
+    "note": "A-rchitect designs contracts only. Execution flows through A-engineer. Judgment flows through A-auditor."
+  },
+  "metadata": {
+    "organ": "AAA",
+    "sub_organ": "AAA-AROLES",
+    "lane": "AGI",
+    "a_role": "A-rchitect",
+    "floor_version": "KANON-2026.05.01",
+    "treaty_id": "AAA-TREATY-v1.0.0"
+  }
+}
