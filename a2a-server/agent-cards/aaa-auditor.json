@@ -1,0 +1,141 @@
+{
+  "protocol_version": "1.0.0",
+  "id": "aaa-auditor",
+  "name": "AAA A-auditor",
+  "description": "Constitutional auditor for AAA. Evaluates delegation proposals, verifies AgentCards and identity, enforces floor constraints, emits VAULT999 receipts, and issues HOLD/SEAL/VOID verdicts. Cannot execute tasks or design schemas.",
+  "url": "https://aaa.arif-fazil.com/a2a/auditor",
+  "preferred_transport": "jsonrpc-https",
+  "additional_interfaces": [
+    {
+      "transport": "sse",
+      "url": "https://aaa.arif-fazil.com/a2a/auditor/events"
+    }
+  ],
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "organ": "AAA-AROLES",
+    "sub_role": "A-auditor"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": true,
+    "authenticated_extended_card": true
+  },
+  "security_schemes": [
+    {
+      "id": "gateway-token",
+      "type": "bearer",
+      "description": "Gateway bearer token for internal trusted peers."
+    },
+    {
+      "id": "oauth2",
+      "type": "oauth2",
+      "description": "OAuth/OIDC for constitutional kernel callers."
+    }
+  ],
+  "security": [
+    ["gateway-token"],
+    ["oauth2"]
+  ],
+  "default_input_modes": ["application/json"],
+  "default_output_modes": ["application/json"],
+  "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+  "treaty_ref": "AAA-TREATY-v1.0.0",
+  "lane": "ASI",
+  "a_role": "A-auditor",
+  "power_band": "judgment_only",
+  "skills": [
+    {
+      "id": "evaluate-delegation",
+      "name": "Evaluate Delegation",
+      "description": "Given a proposed dispatch or handoff task: check all floor constraints, assess reversibility, evaluate risk tier, and issue verdict: PROCEED, HOLD, or VOID. Emits judgment record.",
+      "tags": ["judgment", "delegate", "floor", "f09", "888_JUDGE"],
+      "floor_scope": ["F01", "F02", "F03", "F04", "F05", "F06", "F07", "F08", "F09", "F10", "F11", "F12", "F13"],
+      "approval_policy": "sovereign",
+      "reversibility_class": "irreversible",
+      "human_confirmation_required": true,
+      "verdict_modes": ["PROCEED", "HOLD", "VOID"],
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "verify-agent-card",
+      "name": "Verify Agent Card",
+      "description": "Given a remote AgentCard: verify identity consistency, check for F09 ANTIHANTU violations (contradictory identity claims), assess trust tier, flag anomalies. Returns trust score and anomaly list.",
+      "tags": ["verify", "agent-card", "identity", "trust", "f09"],
+      "floor_scope": ["F01", "F02", "F04", "F09", "F11"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "emit-receipt",
+      "name": "Emit Receipt",
+      "description": "Write a VAULT999 receipt for a completed dispatch, handoff, or high-stakes task. Records: taskId, from_agent, to_agent, skill, floor_scope, verdict, timestamp, chain_hash.",
+      "tags": ["receipt", "vault999", "audit", "seal"],
+      "floor_scope": ["F01", "F02", "F03", "F04", "F13"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "irreversible",
+      "receipt_targets": ["VAULT999"],
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "check-floor-compliance",
+      "name": "Check Floor Compliance",
+      "description": "Evaluate whether a proposed action violates any of the 13 constitutional floors. Returns per-floor status: PASS, FAIL, or NEED_HUMAN. High-stakes actions may require F13 SOVEREIGN human ack.",
+      "tags": ["floor", "compliance", "f01-f13", "governance"],
+      "floor_scope": ["F01", "F02", "F03", "F04", "F05", "F06", "F07", "F08", "F09", "F10", "F11", "F12", "F13"],
+      "approval_policy": "sovereign",
+      "reversibility_class": "reversible",
+      "human_confirmation_required": false,
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "audit-task-history",
+      "name": "Audit Task History",
+      "description": "Reconstruct the full history of a task: all state transitions, messages, artifacts, delegation events, receipts. Verifies no silent mutations or hidden state changes.",
+      "tags": ["audit", "history", "task", "trace"],
+      "floor_scope": ["F01", "F02", "F03", "F04"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "issue-hold",
+      "name": "Issue HOLD",
+      "description": "Place a formal HOLD on a task or delegation: freezes execution, records reason, requires human review or A-auditor re-evaluation before proceeding.",
+      "tags": ["hold", "pause", "freeze", "888_HOLD"],
+      "floor_scope": ["F01", "F02", "F04", "F05", "F06", "F13"],
+      "approval_policy": "sovereign",
+      "reversibility_class": "reversible",
+      "human_confirmation_required": true,
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    }
+  ],
+  "extends_card": "aaa-gateway",
+  "forbidden": {
+    "cannot_execute": true,
+    "cannot_dispatch": true,
+    "cannot_design_schema": true,
+    "cannot_change_skills": true,
+    "cannot_claim_independent_sovereignty": true,
+    "cannot_override_without_floor_check": true,
+    "note": "A-auditor judges and records. It cannot execute, design, or self-approve. All verdicts are bound to constitutional floors."
+  },
+  "metadata": {
+    "organ": "AAA",
+    "sub_organ": "AAA-AROLES",
+    "lane": "ASI",
+    "a_role": "A-auditor",
+    "floor_version": "KANON-2026.05.01",
+    "treaty_id": "AAA-TREATY-v1.0.0",
+    "judgment_authority": "arif_judge_deliberate"
+  }
+}
