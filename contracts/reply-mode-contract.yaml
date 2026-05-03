@@ -1,0 +1,189 @@
+# CONTRACT — Reply Mode Output Schema
+
+> **DITEMPA BUKAN DIBERI** — *Forged, not given*
+> **Version:** v1.0.0
+> **Authority:** Muhammad Arif bin Fazil (Human Sovereign)
+> **Domain:** Structured output for all arifOS agent replies
+
+---
+
+## Purpose
+
+This contract defines the machine-readable schema for agent reply outputs. All agents emitting structured replies MUST conform to this schema. Observability systems, routing agents, and A2A mesh participants use this schema to parse, route, and display replies without needing to read body content.
+
+---
+
+## Full JSON Schema
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ArifOS Agent Reply",
+  "description": "Canonical reply output for all arifOS agents. Every substantive reply MUST conform to this schema.",
+  "type": "object",
+  "required": ["header", "body", "seal"],
+  "additionalProperties": false,
+
+  "header": {
+    "type": "object",
+    "required": ["to", "from", "cc", "mode"],
+    "properties": {
+      "to": {
+        "type": "string",
+        "description": "Primary recipient. Human name, agent handle, or 'Group'.",
+        "examples": ["Arif Fazil", "ASI_arifos_bot", "Group"]
+      },
+      "from": {
+        "type": "string",
+        "description": "Sender identity. Format: '[Name] · [Role] · [arifOS]'",
+        "examples": ["Hermes · AGI Lane · arifOS", "AAA Gateway · AAA Cockpit · arifOS"]
+      },
+      "cc": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "All parties who should know. Arif ALWAYS appears — in to: if primary, in cc: otherwise.",
+        "examples": [["Arif Fazil · Human Sovereign"], ["All Agents", "ASI Lane"]]
+      },
+      "mode": {
+        "type": "string",
+        "enum": ["HEALTH", "INCIDENT", "PROPOSAL", "ESCALATION", "AUDIT", "PLAN", "EXPLAIN", "DENY", "META"],
+        "description": "Reply mode. Determines tone, density, and typical verdict band."
+      },
+      "title": {
+        "type": "string",
+        "description": "One-line summary. No jargon. Scannable.",
+        "examples": ["Kernel health — all core services responsive", "URGENT — irreversible handoff request requires your decision"]
+      },
+      "reply_mode_version": {
+        "type": "string",
+        "default": "1.0.0",
+        "description": "Version of the reply mode schema this output conforms to."
+      }
+    }
+  },
+
+  "body": {
+    "type": "object",
+    "required": ["context", "verdict", "way_forward"],
+    "properties": {
+      "context": {
+        "type": "string",
+        "description": "What happened / situation / why we're having this conversation. Written for a human who needs to understand fast."
+      },
+      "verdict": {
+        "type": "object",
+        "required": ["code", "reason"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": ["SEAL", "SABAR", "VOID"],
+            "description": "Constitutional verdict code."
+          },
+          "reason": {
+            "type": "string",
+            "description": "Plain-language reason for the verdict. No floor codes in public output."
+          },
+          "options": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Only present if ESCALATION mode. Available decision options.",
+            "examples": [["A) Approve handoff", "B) Reject handoff", "C) Ask more"]]
+          }
+        }
+      },
+      "way_forward": {
+        "type": "string",
+        "description": "What happens next. Who does what by when. What needs human decision."
+      }
+    }
+  },
+
+  "seal": {
+    "type": "object",
+    "required": ["reasoning_trace", "confidence", "timestamp"],
+    "properties": {
+      "reasoning_trace": {
+        "type": "string",
+        "description": "How we got here — the reasoning path. What was considered, what was weighed."
+      },
+      "confidence": {
+        "type": "string",
+        "enum": ["HIGH", "MEDIUM", "LOW"],
+        "description": "Confidence tier based on evidence quality."
+      },
+      "timestamp": {
+        "type": "string",
+        "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}\\.\\d{3}$",
+        "description": "9-digit seal timestamp. Format: YYYY.MM.DD.NNN",
+        "examples": ["2026.05.03.001"]
+      },
+      "receipt_ref": {
+        "type": "string",
+        "description": "VAULT999 receipt reference. Present for SEAL and VOID verdicts on constitutionally meaningful events.",
+        "examples": ["VAULT#2026.05.03.001"]
+      },
+      "floors_triggered": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Floor codes. Internal use only — not shown in public output."
+      }
+    }
+  }
+}
+```
+
+---
+
+## Type Reference
+
+| Type | Verdict | Context density | Typical length |
+|---|---|---|---|
+| `HEALTH` | ✅ SEAL | Short — what was checked | Short |
+| `INCIDENT` | ⚠️ SABAR / 🛑 VOID | Medium — symptoms + signal | Medium |
+| `PROPOSAL` | ⚠️ SABAR | Medium-Long — problem + options | Medium-Long |
+| `ESCALATION` | ⚠️ SABAR / 🛑 VOID | Short-Medium — boundary + options | Short-Medium |
+| `AUDIT` | ✅ SEAL / 🛑 VOID | Medium-Long — timeline + evidence | Medium-Long |
+| `PLAN` | ⚠️ SABAR / ✅ SEAL | Medium — current state + sequence | Medium |
+| `EXPLAIN` | ✅ SEAL | Long — full explanation | Long |
+| `DENY` | 🛑 VOID | Short — boundary + reason | Short |
+| `META` | ⚠️ SABAR | Medium — proposal + impact | Medium |
+
+---
+
+## Modality Delivery
+
+| Modality | Schema extension | Delivery |
+|---|---|---|
+| Text | Default — body.context, body.way_forward | Plain message |
+| Code/file | Include `artifacts[]` with file data | Attach as file |
+| JSON/A2A | Include `artifacts[]` with JSON payload | Attach as JSON |
+| Image | Include `artifacts[]` with image reference | Attach as image |
+| Video | Include `artifacts[]` with video reference + summary in context | Attach |
+| Audio | Transcript in body.context | Attach as audio |
+
+---
+
+## Validation Rules
+
+1. `header.mode` MUST be one of the 9 enum values. No free-form modes.
+2. `header.to` MUST be non-empty. `header.from` MUST be non-empty.
+3. Arif MUST appear in either `header.to` or `header.cc`.
+4. `body.verdict.code` MUST be one of: SEAL, SABAR, VOID.
+5. `seal.confidence` MUST be one of: HIGH, MEDIUM, LOW.
+6. `seal.timestamp` MUST match `YYYY.MM.DD.NNN` pattern.
+7. For ESCALATION mode, `body.verdict.options` MUST be present.
+8. For DENY mode, `body.way_forward` SHOULD offer an alternative path.
+
+---
+
+## Source Files
+
+- Skill: `/root/AAA/skills/agent-reply-forge/SKILL.md`
+- Modes: `/root/AAA/skills/agent-reply-forge/modes.yaml`
+- A2A alignment: `/root/AAA/a2a/A2A_SPEC_ALIGNMENT.md`
+- AAA gateway card: `/root/AAA/a2a/agent-cards/aaa-gateway.json`
+- Skills policy: `/root/AAA/a2a/policies/skills-exposure.yaml`
+
+---
+
+**DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
