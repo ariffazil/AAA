@@ -94,3 +94,52 @@ AAA/       → SKILLS_INDEX.md (this file — root registry)
 ```
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
+
+***
+
+## Skill: agent-reply-forge
+
+| Field | Value |
+|---|---|
+| Skill ID | `agent-reply-forge` |
+| Mindset | Clarity + Constitutional Discipline |
+| Primary Repo | `/root/AAA` |
+| Role | Standard reply output format for all agents — 9-mode dial, fixed skeleton, A2A wired |
+| Authority | Muhammad Arif bin Fazil (Human Sovereign) |
+| Created | 2026-05-03 |
+
+### What it does
+
+Defines how all arifOS agents forge their replies across all modalities (text, code, image, video, audio, JSON). Provides:
+- Fixed constitutional skeleton (To/From/CC/Title/Context/Verdict/Way Forward/Seal)
+- 9-mode variable dial (HEALTH, INCIDENT, PROPOSAL, ESCALATION, AUDIT, PLAN, EXPLAIN, DENY, META)
+- A2A reply_mode field wired into task status mapping
+- JSON schema for machine-readable output validation
+- Modality delivery rules per type
+
+### Files
+
+- Skill: `/root/AAA/skills/agent-reply-forge/SKILL.md`
+- Modes: `/root/AAA/skills/agent-reply-forge/modes.yaml`
+- Contract: `/root/AAA/contracts/reply-mode-contract.yaml`
+- A2A wired: `/root/AAA/a2a/A2A_SPEC_ALIGNMENT.md`
+- Gateway card: `/root/AAA/a2a/agent-cards/aaa-gateway.json`
+- Skills policy: `/root/AAA/a2a/policies/skills-exposure.yaml`
+
+### Inheritance
+
+All federated agents MUST honour this skill by default. Every substantive reply MUST carry a `mode` tag and conform to the fixed skeleton.
+
+```json
+{
+  "epoch":      "2026-05-03T15:45:00+08:00",
+  "artifact":   "agent-reply-forge",
+  "version":    "v1.0.0",
+  "authority":  "Muhammad Arif bin Fazil",
+  "verdict":    "SEALED",
+  "witness":    { "human": 1, "ai": 1, "earth": 0 },
+  "confidence": 0.98
+}
+```
+
+**DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**

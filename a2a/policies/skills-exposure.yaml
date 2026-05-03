@@ -13,4 +13,34 @@ forbidden_skills:
   - plugin-install
   - gateway-admin
 
-rule: Expose only gateway-safe delegation surfaces in Agent Cards.
+reply_mode_policy:
+  default_mode: HEALTH
+  modes:
+    HEALTH:
+      approval_policy: on-demand
+      description: All-clear status, no action required
+    INCIDENT:
+      approval_policy: on-demand
+      description: Degraded or broken state, mitigation in progress
+    PROPOSAL:
+      approval_policy: on-demand
+      description: Design or plan suggestion, awaiting human decision
+    ESCALATION:
+      approval_policy: on-demand
+      description: Human decision required, irreversible action
+    AUDIT:
+      approval_policy: on-demand
+      description: Post-incident or retrospective review
+    PLAN:
+      approval_policy: on-demand
+      description: Roadmap or forward-looking sequence
+    EXPLAIN:
+      approval_policy: on-demand
+      description: Teaching or clarification response
+    DENY:
+      approval_policy: on-demand
+      description: Boundary refusal, out of scope
+    META:
+      approval_policy: on-demand
+      description: Template or governance change proposal
+  rule: All modes are on-demand within AAA gateway. High-stakes modes (ESCALATION, DENY) must set task status to input_required or failed respectively.
