@@ -1,0 +1,131 @@
+{
+  "protocol_version": "1.0.0",
+  "id": "aaa-engineer",
+  "name": "AAA A-engineer",
+  "description": "Execution agent for AAA. Handles task lifecycle, A2A dispatch to downstream agents, tool execution via MCP, and SSE streaming. Operates within schemas designed by A-rchitect and gated by A-auditor.",
+  "url": "https://aaa.arif-fazil.com/a2a/engineer",
+  "preferred_transport": "jsonrpc-https",
+  "additional_interfaces": [
+    {
+      "transport": "sse",
+      "url": "https://aaa.arif-fazil.com/a2a/engineer/events"
+    }
+  ],
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "organ": "AAA-AROLES",
+    "sub_role": "A-engineer"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": true,
+    "authenticated_extended_card": true
+  },
+  "security_schemes": [
+    {
+      "id": "gateway-token",
+      "type": "bearer",
+      "description": "Gateway bearer token for internal trusted peers."
+    },
+    {
+      "id": "api-key",
+      "type": "apiKey",
+      "description": "API key for fixed infrastructure peers."
+    },
+    {
+      "id": "mtls",
+      "type": "mutualTLS",
+      "description": "mTLS for trusted machine-to-machine lanes."
+    }
+  ],
+  "security": [
+    ["gateway-token"],
+    ["api-key", "mtls"]
+  ],
+  "default_input_modes": ["application/json", "text/plain"],
+  "default_output_modes": ["application/json", "text/plain"],
+  "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+  "treaty_ref": "AAA-TREATY-v1.0.0",
+  "lane": "AGI",
+  "a_role": "A-engineer",
+  "power_band": "execution_only",
+  "skills": [
+    {
+      "id": "run-task",
+      "name": "Run Task",
+      "description": "Execute a task locally using MCP tools. Respects task schema from A-rchitect. Records execution intent for A-auditor review.",
+      "tags": ["execute", "mcp", "local", "task"],
+      "floor_scope": ["F01", "F02", "F04", "F05", "F06"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json", "text/plain"]
+    },
+    {
+      "id": "dispatch-task",
+      "name": "Dispatch Task",
+      "description": "Send a task to a downstream agent via A2A. Must pass A-auditor evaluate-delegation before dispatch. Returns taskId for tracking.",
+      "tags": ["dispatch", "a2a", "delegate", "downstream"],
+      "floor_scope": ["F01", "F02", "F05", "F06", "F09", "F12", "F13"],
+      "approval_policy": "hold",
+      "reversibility_class": "irreversible",
+      "judgment_required": true,
+      "judgment_skill": "evaluate-delegation",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "stream-progress",
+      "name": "Stream Progress",
+      "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress — truth in transit.",
+      "tags": ["stream", "sse", "progress", "events"],
+      "floor_scope": ["F01", "F02", "F04"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["text/event-stream"]
+    },
+    {
+      "id": "manage-task-lifecycle",
+      "name": "Manage Task Lifecycle",
+      "description": "Transition task through states: submitted→working→completed/failed/input_required/auth_required. Records timestamps and state reasons.",
+      "tags": ["task", "lifecycle", "state", "status"],
+      "floor_scope": ["F01", "F02", "F04"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    },
+    {
+      "id": "receive-handoff",
+      "name": "Receive Handoff",
+      "description": "Accept a handoff from a remote agent: receive context, validate schema, bind to session, record receipt. Must emit receipt to A-auditor.",
+      "tags": ["handoff", "receive", "context", "intake"],
+      "floor_scope": ["F01", "F02", "F04", "F05", "F11", "F12"],
+      "approval_policy": "hold",
+      "reversibility_class": "irreversible",
+      "judgment_required": true,
+      "input_modes": ["application/json"],
+      "output_modes": ["application/json"]
+    }
+  ],
+  "extends_card": "aaa-gateway",
+  "forbidden": {
+    "cannot_self_approve_hold": true,
+    "cannot_emit_receipt": true,
+    "cannot_judge": true,
+    "cannot_override_floors": true,
+    "cannot_change_schemas": true,
+    "note": "A-engineer executes what A-rchitect designed and A-auditor approved. Receipts and judgment are A-auditor domain."
+  },
+  "metadata": {
+    "organ": "AAA",
+    "sub_organ": "AAA-AROLES",
+    "lane": "AGI",
+    "a_role": "A-engineer",
+    "floor_version": "KANON-2026.05.01",
+    "treaty_id": "AAA-TREATY-v1.0.0"
+  }
+}
