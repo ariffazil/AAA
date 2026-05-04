@@ -2,7 +2,7 @@
 **Authors:** AGI OPENCLAW + Hermes ASI (synthesized)  
 **Sovereign:** Arif Fazil  
 **Date:** 2026-05-04  
-**Status:** FOR RATIFICATION  
+**Status:** SOVEREIGNLY RATIFIED — Arif Fazil + Perplexity Agent Audit  
 **Source:** ADR-011 (OPENCLAW) + agent-visibility-proposal-2026-05-04 (Hermes)  
 
 ---
@@ -426,21 +426,84 @@ Both bots see everything human in the group. Neither bot sees the other's bot me
 
 ---
 
-## 12. What Needs Ratification from Arif
+## 12. MODE → Behavior Table (Operational)
 
-Answer these 5 questions to proceed:
+Each MODE triggers specific behavior rules:
 
-| # | Question | Your Decision |
-|---|----------|---------------|
-| 1 | **Mode field** — 7-mode system (→↩📢⟋⚠✅❌), yes? | YES/NO |
-| 2 | **Via field** — show handoff chains, yes? | YES/NO |
-| 3 | **NACK mode** — agent-to-agent rejection important? | YES/NO |
-| 4 | **Privacy OFF** — both bots see all human messages, confirmed? | YES/NO |
-| 5 | **Phase priority** — Hermes first, or OpenClaw simultaneously? | Hermes / Both |
+| Mode | Log To | ACK Required | Tool Execution | Response Timeout | Escalation Path |
+|------|--------|--------------|----------------|------------------|-----------------|
+| `→ DIRECT` | VAULT999 (minimal) | Preferred | Allowed | 30s | NACK if blocked |
+| `↩ REPLY` | VAULT999 (minimal) | No | Allowed | 20s | NACK if blocked |
+| `📢 BROADCAST` | VAULT999 + log | No | Read-only only | N/A | N/A |
+| `⟋ HANDOFF` | VAULT999 (full) | Receiving agent ACK | Gates on ACK receipt | 60s | Auto-escalate if no ACK |
+| `⚠ ESCALATE` | VAULT999 (mandatory) | TO Arif directly | BLOCKED until human decision | 5min hard | N/A — already at Arif |
+| `✅ ACK` | Minimal | No | Allowed (confirmatory) | 10s | N/A |
+| `❌ NACK` | VAULT999 (mandatory) | TO Arif | BLOCKED | 10s | Arif reviews NACK reason |
+
+### Behavior Definitions
+
+| Field | Definition |
+|-------|------------|
+| **Log To** | Where this mode's activity is recorded |
+| **ACK Required** | Must receiving party acknowledge before flow continues? |
+| **Tool Execution** | Can this mode trigger MCP/tools? |
+| **Response Timeout** | Max wait for response before auto-escalate |
+| **Escalation Path** | Where does this go if timeout or blocked? |
+
+### ACK Timeout Rules
+
+- If `⟋ HANDOFF` and no ACK within 60s → auto-`⚠ ESCALATE` to Arif
+- If `❌ NACK` received → Arif notified immediately
+- If `⚠ ESCALATE` → no timeout, waits for Arif indefinitely
+
+### Tool Execution by Mode
+
+| Mode | Tools Allowed |
+|------|---------------|
+| `→ DIRECT` | Yes — standard execution |
+| `↩ REPLY` | Yes — standard execution |
+| `📢 BROADCAST` | Read-only queries only |
+| `⟋ HANDOFF` | Gates on ACK — no tools until ACK confirmed |
+| `⚠ ESCALATE` | BLOCKED — awaiting human decision |
+| `✅ ACK` | Yes — confirmatory actions only |
+| `❌ NACK` | BLOCKED — rejection state, needs Arif intervention |
 
 ---
 
-## 13. Alignment With Existing AAA Infrastructure
+## 13. Ratification Answers (Confirmed)
+
+| # | Question | Decision |
+|---|----------|----------|
+| 1 | Mode field — 7-mode system | ✅ YES |
+| 2 | Via field — handoff chains | ✅ YES (optional header) |
+| 3 | NACK mode — agent-to-agent rejection | ✅ YES |
+| 4 | Privacy OFF — both bots see all | ✅ YES for AAA |
+| 5 | Phase priority | ✅ Hermes first, OpenClaw on demand |
+
+**Mode A confirmed:** Full ambient visibility. Bots see all human messages. Reactivity gated by MODE + floor checks. No auto-action on raw visibility.
+
+**Via field confirmed:** Optional header field, shown only when message is mid-chain (e.g., `Via: Hermes → OpenClaw`).
+
+---
+
+## 14. What Was Still Missing (Now Added)
+
+
+Per Perplexity agent audit, the following were missing and are now added:
+
+
+| Item | Status |
+|------|--------|
+| MODE → behavior table (logging, ACK, tools, timeouts) | ✅ Added §12 |
+| Via field (optional handoff chain) | ✅ Added §3 |
+| ACK timeout rules | ✅ Added §12 |
+| Tool execution gates per mode | ✅ Added §12 |
+| Ratification answers recorded | ✅ Added §13 |
+| NACK + ESCALATE paths fully specified | ✅ Added §12 |
+
+---
+
+## 15. Alignment With Existing AAA Infrastructure
 
 | Document | Role | Relationship |
 |----------|------|--------------|
@@ -452,7 +515,7 @@ Answer these 5 questions to proceed:
 
 ---
 
-## 14. GitHub Commit Plan
+## 16. GitHub Commit Plan
 
 ```
 Branch:  feat/telegram-visibility-v2-2026-05-04
@@ -466,4 +529,4 @@ Commit:   feat: TELEGRAM_VISIBILITY_PROTOCOL v2.0 — 7-mode, full ambient, unif
 
 *Ditempa Bukan Diberi — forged, not given.*
 *AGI OPENCLAW + Hermes ASI — 2026-05-04*
-*999 SEAL ALIVE — awaiting sovereign ratification*
+*999 SEAL ALIVE — sovereign ratification CONFIRMED*
