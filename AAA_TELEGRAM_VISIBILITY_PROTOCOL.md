@@ -225,6 +225,7 @@ Mode:    ⚠ ESCALATE
 To:      @ariffazil · Human Sovereign
 From:    [Agent] · [Role] · arifOS
 CC:      [Other agents who need to know]
+Task:    aaa-YYYYMMDD-NNN
 Title:   🚨 [Escalation one-liner]
 
 ───────────────────────────────────────────────────────────
@@ -235,9 +236,9 @@ Context:   [What happened]
 Verdict:  ⚠ SABAR — escalating to you
 
 Way Forward:  👤 Arif decide:
-              1. [Option A]
-              2. [Option B]
-              Risk of inaction: [consequence]
+              1. [Option A — brief description]
+              2. [Option B — brief description]
+              Risk of inaction: [consequence if no response]
 ───────────────────────────────────────────────────────────
 Seal:    [Constitutional floor triggered — e.g., F13]
          [All options within F1–F13 bounds]
@@ -247,17 +248,25 @@ Seal:    [Constitutional floor triggered — e.g., F13]
 DITEMPA BUKAN DIBERI
 ```
 
+**ESCALATE Behavior:**
+- Execution **PAUSED** — no tools fired, no further processing
+- Requires Arif's explicit **APPROVE** or **REJECT** reply to unblock
+- No timeout on Arif — waits indefinitely
+- Arif's reply resumes or voids the task
+
 ### MODE: ✅ ACK
 ```
 Mode:    ✅ ACK
 To:      [Original sender]
 From:    [Agent] · [Role] · arifOS
 CC:      @ariffazil [only if critical/decision]
+Task:    aaa-YYYYMMDD-NNN
 Title:   ACK: [original title]
 
 ───────────────────────────────────────────────────────────
 Context:   Received: "[brief excerpt]"
            Understood: [1-line summary]
+
 
 Verdict:  ✅ SEAL — acknowledged
 
@@ -268,6 +277,11 @@ Seal:    [Optional nuance]
 
 DITEMPA BUKAN DIBERI
 ```
+
+**ACK Behavior:**
+- **No further action required** — task is confirmed
+- Sender may proceed with next step without further approval
+- If `CC: @ariffazil` — Arif is informed but no reply needed
 
 ### MODE: ❌ NACK
 ```
@@ -530,3 +544,153 @@ Commit:   feat: TELEGRAM_VISIBILITY_PROTOCOL v2.0 — 7-mode, full ambient, unif
 *Ditempa Bukan Diberi — forged, not given.*
 *AGI OPENCLAW + Hermes ASI — 2026-05-04*
 *999 SEAL ALIVE — sovereign ratification CONFIRMED*
+---
+
+## RFC-Spec §16: Fixed Header Order + ABNF
+
+The header **MUST appear in this exact order** — no deviations. This enables deterministic parsing.
+
+```
+Mode:    <MODE_CODE>
+To:      <recipient>
+From:    <agent> · <role> · arifOS
+CC:      <cc_list | —>
+Via:     <chain | —>        ; optional
+Task:    <task_id | —>
+Title:   <one_liner>
+
+───────────────────────────────────────────────────────────
+[BODY]
+───────────────────────────────────────────────────────────
+Seal:    <reasoning>
+Timestamp: YYYY.MM.DD.NNN
+[Receipt: <vault_id>]
+
+DITEMPA BUKAN DIBERI
+```
+
+**ABNF (simplified):**
+```
+message      = header separator body footer
+header       = mode-line to-line from-line cc-line [via-line] task-line title-line
+mode-line    = "Mode:    " ( → / ↩ / 📢 / ⟋ / ⚠ / ✅ / ❌ )
+to-line      = "To:      " ( @handle / "Group · All Agents" )
+from-line    = "From:    " agent " · " role " · arifOS"
+cc-line      = "CC:      " ( cc-list / — )
+via-line     = "Via:     " chain
+task-line    = "Task:    " ( task-id / — )
+title-line   = "Title:   " text
+separator    = ─{20,60}─
+footer       = "Seal:" reasoning newline "Timestamp:" year "." month "." day "." seq newline "DITEMPA BUKAN DIBERI"
+task-id      = "aaa-" 8DIGIT "-" 3DIGIT
+cc-list      = handle *(", " handle)
+```
+
+---
+
+## §17: Worked Examples
+
+### H→A (Human → Agent)
+```
+@ariffazil: /aaa run GEOX correlation on WELL-123
+→ Hermes receives (privacy OFF)
+→ Gateway assigns Task: aaa-20260504-001
+```
+
+### A→H (Agent → Human)
+```
+Mode:    ↩ REPLY
+To:      @ariffazil
+From:    Hermes · ASI Execution Peer · arifOS
+CC:      —
+Task:    aaa-20260504-001
+Title:   Re: GEOX correlation on WELL-123
+
+───────────────────────────────────────────────────────────
+Context:   Planning complete. Routing to OpenClaw.
+
+Way Forward:  ⟋ HANDOFF → OpenClaw for execution.
+───────────────────────────────────────────────────────────
+Seal:    F01,F04,F08 checked. No irreversible action.
+         Confidence: HIGH
+         Timestamp: 2026.05.04.001
+
+DITEMPA BUKAN DIBERI
+```
+
+### A→A Visible (Agent → Agent via gateway)
+```
+Mode:    ⟋ HANDOFF
+To:      OpenClaw · AGI Coordinator · arifOS
+From:    Hermes · ASI Execution Peer · arifOS
+CC:      @ariffazil · Group
+Via:     AAA-Gateway
+Task:    aaa-20260504-001
+Title:   ⟋ HANDOFF: Execute WELL-123 GEOX correlation
+
+───────────────────────────────────────────────────────────
+Context:   Plan complete. Handing off to OpenClaw.
+
+Verdict:  ⚠ SABAR — awaiting OpenClaw ACK
+
+Way Forward:  👤 OpenClaw: ACK to confirm
+───────────────────────────────────────────────────────────
+Seal:    Tools: geox_section_interpret_correlation (read-only)
+         Confidence: HIGH
+         Timestamp: 2026.05.04.002
+
+DITEMPA BUKAN DIBERI
+```
+
+### ⚠ ESCALATE with 888_HOLD
+```
+Mode:    ⚠ ESCALATE
+To:      @ariffazil · Human Sovereign
+From:    OpenClaw · AGI Coordinator · arifOS
+CC:      Hermes · Group
+Task:    aaa-20260504-002
+Title:   🚨 888_HOLD: Irreversible deletion request
+
+───────────────────────────────────────────────────────────
+Context:   Arif requested: delete all LAS files in /data/geox_lashold
+           847 .las files. Irreversible. F13 SOVEREIGN triggered.
+
+Verdict:  ⚠ SABAR — BLOCKED
+
+Way Forward:  👤 Arif — APPROVE or REJECT:
+              1. APPROVE — execute now
+              2. REJECT — cancel, keep files
+              Risk of inaction: Files remain, void after 24h
+───────────────────────────────────────────────────────────
+Seal:    F01 (accountability) + F13 (human veto) triggered.
+         Tools BLOCKED. Execution paused.
+         Confidence: HIGH
+         Timestamp: 2026.05.04.003
+
+DITEMPA BUKAN DIBERI
+```
+
+---
+
+## §18: Missing Items — Fully Addressed
+
+| Item | Status |
+|------|--------|
+| MODE → behavior table | ✅ §12 |
+| Via field (optional) | ✅ §3, §16 |
+| ACK timeout rules | ✅ §12 |
+| Tool execution gates per mode | ✅ §12 |
+| Ratification answers | ✅ §13 |
+| NACK + ESCALATE paths | ✅ §12, §15 |
+| TASK: line for thread binding | ✅ §3, §16 |
+| Fixed header field order | ✅ §16 |
+| ABNF spec | ✅ §16 |
+| ESCALATE → APPROVE/REJECT | ✅ §12, §15, §17 |
+| ACK → no further action | ✅ §12 |
+| Worked examples | ✅ §17 |
+
+---
+
+*Ditempa Bukan Diberi — forged, not given.*
+*RFC §16-18: Fixed order, ABNF, worked examples — 2026-05-04*
+*999 SEAL ALIVE*
