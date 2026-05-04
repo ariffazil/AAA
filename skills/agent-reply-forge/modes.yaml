@@ -1,198 +1,64 @@
-# MODES — Agent Reply Mode Reference
+# MODES — Agent Reply Mode Reference v2.0
 
 > **DITEMPA BUKAN DIBERI** — *Forged, not given*
-> **Version:** v1.0.0
+> **Version:** v2.0.0
 > **Authority:** Muhammad Arif bin Fazil (Human Sovereign)
 > **Domain:** Reply mode selection for all arifOS agents
 
 ---
 
-## Mode Summary Table
+## Mode Architecture v2.0
 
-| Mode | Trigger | Typical Verdict | Tone | Length | Agent lanes |
-|---|---|---|---|---|---|
-| **HEALTH** | Routine check, all-clear | ✅ SEAL | Short, factual | Short | All |
-| **INCIDENT** | Degraded, broken | ⚠️ SABAR / 🛑 VOID | Crisp, action | Medium | AGI, AAA |
-| **PROPOSAL** | Suggesting change | ⚠️ SABAR | Option-based | Medium-Long | All |
-| **ESCALATION** | Human required | ⚠️ SABAR / 🛑 VOID | Direct, options | Short-Medium | All |
-| **AUDIT** | Retrospective | ✅ SEAL / 🛑 VOID | Structured | Medium-Long | ASI, APEX, A-Auditor |
-| **PLAN** | Roadmap | ⚠️ SABAR / ✅ SEAL | Ordered | Medium | AGI, ASI, A-Architect |
-| **EXPLAIN** | Teaching, clarity | ✅ SEAL | Explanatory | Long | ASI (most common) |
-| **DENY** | Out of scope | 🛑 VOID | Firm, offering alternative | Short | All |
-| **META** | Template/rules change | ⚠️ SABAR | Careful | Medium | All |
+Two orthogonal mode systems are used together:
+
+| System | Field | Modes | Purpose |
+|--------|-------|-------|---------|
+| **Routing Mode** | `Mode:` | → ↩ 📢 ⟋ ⚠ ✅ ❌ | WHO is this really for? (routing) |
+| **Intent Mode** | `Intent:` | HEALTH INCIDENT PROPOSAL ESCALATION AUDIT PLAN EXPLAIN DENY META | WHAT KIND of communication? (tone) |
+
+Both are REQUIRED in every agent message.
 
 ---
 
-## Mode Selection Rules
+## Routing Modes (Mode: field)
 
-1. **Pick ONE dominant mode.** If a reply has multiple modes, split into linked separate replies.
-2. **Mode goes in the header** — not buried in the body.
-3. **Verdict band is typical, not mandatory** — the actual verdict always reflects what actually happened.
-4. **When in doubt:** HEALTH for checks, PROPOSAL for suggestions, ESCALATION for anything beyond your lane.
+| Mode | Code | Who Sees It | Primary Recipient | Arif Status |
+|------|------|-------------|-------------------|-------------|
+| DIRECT | `→` | Target (in group) | Single human or agent | CC if Arif not target |
+| REPLY | `↩` | Everyone in group | Original sender | CC if not target |
+| BROADCAST | `📢` | Everyone in group | Group / all agents | Always CC |
+| HANDOFF | `⟋` | Everyone in group | Receiving agent | Always CC |
+| ESCALATE | `⚠` | Everyone in group | Arif + relevant agents | **TO Arif directly** |
+| ACK | `✅` | Everyone in group | Original sender | CC |
+| NACK | `❌` | Everyone in group | Original sender | **TO Arif** |
 
----
+### Routing Mode Behavior
 
-## Mode Detail Definitions
-
-### HEALTH (Mode 1)
-
-```
-When:  Routine health sweep, uptime check, status summary, no incident detected.
-Who:   Any agent.
-Verdict band: SEAL only.
-
-Context:     What was checked. Result summary.
-Verdict:     ✅ SEAL — [system/organ healthy]
-Way Forward: [Monitoring cadence. Alert threshold.]
-
-Seal: [Checks run] · [All clear signals] · Confidence: HIGH · [ts]
-```
-
-**Example trigger:** "Is the gateway still up?" / cron health check complete / all containers responding.
+| Mode | Pause Exec? | Tool Execution | ACK Required | Timeout |
+|------|-------------|---------------|--------------|---------|
+| `→ DIRECT` | No | Yes | Preferred | 30s |
+| `↩ REPLY` | No | Yes | No | 20s |
+| `📢 BROADCAST` | No | Read-only only | No | — |
+| `⟋ HANDOFF` | **Yes** | **No until ACK** | **Yes** | 60s → auto-escalate |
+| `⚠ ESCALATE` | **Yes — BLOCKED** | **No** | **TO Arif** | 5min hard |
+| `✅ ACK` | No | Confirmatory only | No | 10s |
+| `❌ NACK` | **Yes — BLOCKED** | **No** | **TO Arif** | 10s |
 
 ---
 
-### INCIDENT (Mode 2)
+## Intent Modes (Intent: field)
 
-```
-When:  Something is broken, degraded, or behaving unexpectedly.
-Who:   AGI Coordinator, A2A gateway agent, ops agent.
-Verdict band: SABAR (degraded) or VOID (failed).
-
-Context:     What broke · When first observed · First signal.
-Verdict:     ⚠️ SABAR — [degraded] / 🛑 VOID — [failed]
-Way Forward: [Immediate mitigation] · [Who is acting] · [Next update time]
-
-Seal: [Symptoms measured] · [Root cause hypothesis] · Confidence · [ts]
-```
-
-**Example trigger:** Latency spike / container down / endpoint returning errors / A2A task stuck.
-
----
-
-### PROPOSAL (Mode 3)
-
-```
-When:  Suggesting a change, design, plan, new capability, or architecture decision.
-Who:   AGI Architect, any agent with a design idea.
-Verdict band: SABAR (pending human decision).
-
-Context:     Problem this solves · Current state · Gap being filled.
-Verdict:     ⚠️ SABAR — proposal ready, awaiting your decision.
-Way Forward: If approved → step 1, 2, 3. If not → no action.
-
-Seal: [Options considered] · [Risk/benefit] · Confidence: HIGH · [ts]
-```
-
-**Example trigger:** "We should enable internal AgentCard" / "Proposal to add receipts for agent-dispatch" / design review request.
-
----
-
-### ESCALATION (Mode 4)
-
-```
-When:  Human decision required. Boundary crossed. Irreversible action requested.
-Who:   Any agent that hits a floor or sovereignty wall.
-Verdict band: SABAR (blocked, needs you) or VOID (blocked permanently).
-
-Context:     What triggered this · Boundary hit · Why I can't auto-approve.
-Verdict:     ⚠️ SABAR — [what's blocked] / 🛑 VOID — [permanently denied].
-Way Forward: A) Approve · B) Reject · C) Ask more. Your call.
-
-Seal: [Floors involved] · [Why human judgment needed] · Confidence: HIGH · [ts]
-```
-
-**Example trigger:** Handoff request for high-stakes task / financial operation / public exposure action / constitutional boundary breach.
-
----
-
-### AUDIT (Mode 5)
-
-```
-When:  Retrospective. Post-incident. Compliance check. Post-mortem.
-Who:   A-auditor, ASI Lane, agent involved in the incident.
-Verdict band: ✅ SEAL (incident closed) or 🛑 VOID (root cause found).
-
-Context:     What happened · Time window · What was affected.
-Verdict:     ✅ SEAL — [incident closed, understood] / 🛑 VOID — [root cause found].
-Way Forward: [Changes made] · [What to watch] · [Re-escalation triggers].
-
-Seal: [Evidence examined] · [Timeline reconstructed] · [Hypothesis confirmed?] · Confidence · [ts]
-```
-
-**Example trigger:** After an incident is resolved / compliance audit / post-mortem after unexpected behavior.
-
----
-
-### PLAN (Mode 6)
-
-```
-When:  Forward-looking roadmap. Multi-step build order. Sequenced work.
-Who:   AGI Architect, orchestrating agent.
-Verdict band: ⚠️ SABAR (plan ready) or ✅ SEAL (already approved).
-
-Context:     Where we are now · Target state.
-Verdict:     ⚠️ SABAR — plan forged / ✅ SEAL — approved, proceeding.
-Way Forward: Step 1 → Step 2 → Step 3 → Step 4. Each reversible before next locks.
-
-Seal: [Why this sequence] · [Reversibility per step] · Confidence: HIGH · [ts]
-```
-
-**Example trigger:** "Here are the next steps for AAA A2A" / roadmap for building the mesh / phased implementation plan.
-
----
-
-### EXPLAIN (Mode 7)
-
-```
-When:  Teaching, clarification, context-setting, deep dives.
-Who:   Any agent — most common from ASI Lane for architectural explanations.
-Verdict band: ✅ SEAL only.
-
-Context:     What you're trying to understand · What the question is.
-Verdict:     ✅ SEAL — explanation complete.
-Way Forward: [If appropriate → recommend storing as reusable documentation].
-
-Seal: [What was covered] · [Key concepts] · Confidence: HIGH · [ts]
-```
-
-**Example trigger:** "Explain A2A vs arifOS layers" / "Why do we need the constitutional overlay" / teaching deep-dive.
-
----
-
-### DENY (Mode 8)
-
-```
-When:  Request outside scope, unsafe, or forbidden by current mandate.
-Who:   Any agent.
-Verdict band: 🛑 VOID only.
-
-Context:     What was requested · Why it came to me.
-Verdict:     🛑 VOID — [plain reason — scope/safety/policy].
-Way Forward: [Alternative path if one exists].
-
-Seal: [Boundary violated] · [Mandate/treaty/floor blocking this] · Confidence: HIGH · [ts]
-```
-
-**Example trigger:** Request to modify VPS firewall via A2A / action beyond AAA mandate / unsafe operation request.
-
----
-
-### META (Mode 9)
-
-```
-When:  Talking about the template, governance, rules, or system itself.
-Who:   Any agent proposing a change to communication or governance.
-Verdict band: ⚠️ SABAR only.
-
-Context:     What the proposed change is · Why it would help.
-Verdict:     ⚠️ SABAR — suggestion only, no change applied, awaiting ratification.
-Way Forward: If ratified → implement. If not → current structure holds.
-
-Seal: [Why this improves clarity/safety] · [No behavior changes until ratified] · Confidence · [ts]
-```
-
-**Example trigger:** "Suggest extending template with Mode field" / "Proposal to change ratification threshold" / governance discussion.
+| Mode | Trigger | Typical Verdict | Tone | Length |
+|------|---------|-----------------|------|--------|
+| HEALTH | Routine check, all-clear | ✅ SEAL | Short, factual | Short |
+| INCIDENT | Degraded, broken | ⚠️ SABAR / 🛑 VOID | Crisp, action | Medium |
+| PROPOSAL | Suggesting change | ⚠️ SABAR | Option-based | Medium-Long |
+| ESCALATION | Human required | ⚠️ SABAR / 🛑 VOID | Direct, options | Short-Medium |
+| AUDIT | Retrospective | ✅ SEAL / 🛑 VOID | Structured | Medium-Long |
+| PLAN | Roadmap | ⚠️ SABAR / ✅ SEAL | Ordered | Medium |
+| EXPLAIN | Teaching, clarity | ✅ SEAL | Explanatory | Long |
+| DENY | Out of scope | 🛑 VOID | Firm, alternative | Short |
+| META | Template/rules change | ⚠️ SABAR | Careful | Medium |
 
 ---
 
@@ -206,29 +72,35 @@ Seal: [Why this improves clarity/safety] · [No behavior changes until ratified]
 
 ---
 
-## Copy-Paste Rule
+## Mode Selection Rules
 
-| Content type | Use as reply? |
-|---|---|
-| Health status | ✅ Yes, as HEALTH mode |
-| Incident alert | ✅ Yes, as INCIDENT mode |
-| Code output | Attach as file, paste in code block in Context or as attachment |
-| JSON / structured data | Attach as JSON file, header in text |
-| Image | Attach with description in Context |
-| Long audit report | Attach as file, summary in AUDIT mode |
-| Proposal text | As PROPOSAL mode or attach as file |
+1. **Pick ONE dominant intent.** If reply has multiple, split into linked separate messages.
+2. **Always pick one routing mode** — classify who this is really for.
+3. Both Mode and Intent go in the header — not buried in the body.
+4. **When in doubt:** HEALTH for checks, PROPOSAL for suggestions, ESCALATION for anything beyond your lane.
 
 ---
 
-## AAA Gateway Skill Approval Policy Mapping
+## META Protocol: Header Field Order (Fixed)
 
-| Skill | Policy | Default Mode |
-|---|---|---|
-| `status-query` | on-demand | HEALTH |
-| `agent-dispatch` | hold | ESCALATION or PROPOSAL |
-| `agent-handoff` | hold | ESCALATION |
-| New skill — read-only | on-demand | HEALTH |
-| New skill — write/execute | hold | ESCALATION |
+```
+Mode:    [→ ↩ 📢 ⟋ ⚠ ✅ ❌]
+Intent:  [HEALTH|INCIDENT|PROPOSAL|ESCALATION|AUDIT|PLAN|EXPLAIN|DENY|META]
+To:      [Primary recipient]
+From:    [Agent] · [Role] · arifOS
+CC:      [List | —]
+Via:     [Chain | —]
+Task:    [aaa-YYYYMMDD-NNN | —]
+Title:   [One-liner]
+
+───────────────────────────────────────────────────────────
+[Body]
+───────────────────────────────────────────────────────────
+Seal:    [Reasoning]
+Timestamp: YYYY.MM.DD.NNN
+
+DITEMPA BUKAN DIBERI
+```
 
 ---
 

@@ -1,222 +1,379 @@
-# SKILL — Agent Reply Forge
+# SKILL — Agent Reply Forge v2.0
 
 > **DITEMPA BUKAN DIBERI** — *Forged, not given*
-> **Version:** v1.0.0
-> **Authority:** Muhammad Arif bin Fazil (Human Sovereign)
-> **Domain:** Agent communication, reply templating, A2A output formatting
+> **Version:** v2.0.0
+> **Authority:** Muhammad Arif bin Fazil (Human Sovereign) + Perplexity Agent Audit
+> **Domain:** Agent communication, reply templating, A2A output formatting, Telegram visibility
 > **Created:** 2026-05-03
+> **Updated:** 2026-05-04
+> **Supersedes:** SKILL.md v1.0.0 (archived as SKILL.md.v1_backup)
+> **Source:** `AAA_TELEGRAM_VISIBILITY_PROTOCOL.md` (GitHub: feat/telegram-visibility-rfc-2026-05-04)
 
 ---
 
-## Purpose
+## Preamble
 
-This skill defines how all arifOS agents forge their replies — text, file, image, video, audio, JSON/A2A payload. It provides the fixed constitutional skeleton and the 9-mode variable dial.
+This v2.0 unifies two sources:
+1. **agent-reply-forge v1.0** — the original 9-mode system (HEALTH, INCIDENT, PROPOSAL, ESCALATION, AUDIT, PLAN, EXPLAIN, DENY, META)
+2. **Hermes v2.0 research** — the 7 routing modes (→ ↩ 📢 ⟋ ⚠ ✅ ❌) + Perplexity agent audit
 
-Every substantive agent reply goes through this skill. It is the standard output format for:
-- Group messages
-- Direct messages
-- A2A task responses
-- MCP tool outputs (when used as final delivery)
-- Audit, proposal, escalation, and verdict communications
+**Key insight:** The 9 modes and 7 modes serve different purposes:
+- **9 modes** = intent/tone classification (what kind of communication is this?)
+- **7 modes** = routing classification (who is this really for?)
+
+Both are needed. v2.0 embeds both in the header.
 
 ---
 
-## The Fixed Skeleton
+## The Fixed Skeleton v2.0
 
-All replies, regardless of mode, use this structure. The skeleton NEVER changes.
+All replies use this structure. The skeleton NEVER changes.
 
 ```
-To:       [Primary recipient]
-From:     [Agent name] · [Role] · [arifOS]
-CC:       [All parties who should know — Arif always in loop]
-Mode:     [MODE NAME]
+Mode:    [→ ↩ 📢 ⟋ ⚠ ✅ ❌]          ← 7-mode ROUTING stamp
+Intent:  [HEALTH|INCIDENT|PROPOSAL|ESCALATION|AUDIT|PLAN|EXPLAIN|DENY|META]  ← 9-mode tone
+To:      [Primary recipient]
+From:    [Agent] · [Role] · arifOS
+CC:      [List | —]
+Via:     [Chain | —]                 ← optional, shown only when mid-chain
+Task:    [aaa-YYYYMMDD-NNN | —]      ← thread ID for traceability
+Title:   [One-liner scannable subject]
 
-─────────────────────────────────
-Context:     [What happened / situation]
-Verdict:     [SEAL | SABAR | VOID] — [plain reason]
-Way Forward: [What happens next / who does what]
-─────────────────────────────────
-Seal: [Reasoning trace] · [Confidence] · [Timestamp]
+───────────────────────────────────────────────────────────
+Context:     [What happened / why / trigger]
+Verdict:     [✅ SEAL | ⚠ SABAR | 🛑 VOID] — [plain reason]
+Way Forward: [Next step + 👤 marks human decision]
+───────────────────────────────────────────────────────────
+Seal: [Reasoning trace]
+       Confidence: [HIGH|MEDIUM|LOW]
+       Timestamp: YYYY.MM.DD.NNN
+       [Receipt: <VAULT999_id>]
+
 DITEMPA BUKAN DIBERI
 ```
 
-**Rule:** Arif is always in the loop — in `To:` if the reply is to him, in `CC:` otherwise.
+**Rule 1:** Arif is always in the loop — `To:` if reply is to him, `CC:` otherwise.
+**Rule 2:** Both Mode (routing) and Intent (tone) are REQUIRED in every message.
+**Rule 3:** Task ID links related messages across threads.
+**Rule 4:** Separator line `─{20,60}─` is fixed — do not modify.
 
 ---
 
-## The 9 Modes
+## 7 Routing Modes (Mode: field)
 
-### MODE 1 — HEALTH
-**Trigger:** Routine status, health sweeps, uptime checks, no incident.
-**Typical verdict:** ✅ SEAL
-**Tone:** Short, factual, low drama.
+Every message MUST declare its routing mode:
 
-| Field | Content |
-|---|---|
-| Context | What was checked. Result summary. |
-| Verdict | ✅ SEAL — [system is healthy] |
-| Way Forward | Monitoring cadence. Alert threshold. |
-| Seal | What was checked · Clear signals · Confidence · ts |
+| Mode | Code | Who Sees It | Primary Recipient | Arif Status |
+|------|------|-------------|-------------------|-------------|
+| **DIRECT** | `→` | Target (in group) | Single human or agent | CC if Arif not target |
+| **REPLY** | `↩` | Everyone in group | Original sender | CC if not target |
+| **BROADCAST** | `📢` | Everyone in group | Group / all agents | Always CC |
+| **HANDOFF** | `⟋` | Everyone in group | Receiving agent | Always CC |
+| **ESCALATE** | `⚠` | Everyone in group | Arif + relevant agents | **TO Arif directly** |
+| **ACK** | `✅` | Everyone in group | Original sender | CC |
+| **NACK** | `❌` | Everyone in group | Original sender | **TO Arif** |
 
----
+### Mode Decision Tree
 
-### MODE 2 — INCIDENT
-**Trigger:** Something broken, degraded, or unexpected.
-**Typical verdict:** ⚠️ SABAR or 🛑 VOID
-**Tone:** Crisp. No blame. Immediate clarity.
+```
+Is the message addressed to a specific person or agent?
+├─ YES → Is it escalation / sensitive?
+│       ├─ YES → MODE: ⚠ ESCALATE (To: @ariffazil · CC: relevant agents)
+│       └─ NO  → MODE: → DIRECT (To: [target] · CC: Arif if other agent)
+└─ NO → Is it responding to someone?
+        ├─ YES → MODE: ↩ REPLY (To: [original sender] · CC: Arif)
+        └─ NO → Is it handing off responsibility?
+                ├─ YES → MODE: ⟋ HANDOFF (To: [agent] · CC: Group + Arif)
+                └─ NO → Is it confirming receipt?
+                        ├─ YES → MODE: ✅ ACK (To: [sender] · CC: Arif if critical)
+                        └─ NO → MODE: 📢 BROADCAST (To: Group · CC: Arif)
+```
 
-| Field | Content |
-|---|---|
-| Context | What broke · When first observed · First signal |
-| Verdict | ⚠️ SABAR — [degraded state] / 🛑 VOID — [failed state] |
-| Way Forward | Immediate mitigation · Who is acting · When next update |
-| Seal | Symptoms measured · Root cause hypothesis · Confidence · ts |
+### Routing Mode Behavior
 
----
-
-### MODE 3 — PROPOSAL
-**Trigger:** Suggesting a change, design, plan, or new capability.
-**Typical verdict:** ⚠️ SABAR
-**Tone:** Option-based. Not pushy.
-
-| Field | Content |
-|---|---|
-| Context | Problem this solves · Current state · Gap being filled |
-| Verdict | ⚠️ SABAR — proposal ready, awaiting decision |
-| Way Forward | If approved → step 1, 2, 3. If not → no action. |
-| Seal | Options considered · Risk/benefit · Confidence · ts |
-
----
-
-### MODE 4 — ESCALATION
-**Trigger:** Human decision required. Boundary crossed. Irreversible action requested.
-**Typical verdict:** ⚠️ SABAR or 🛑 VOID
-**Tone:** Direct. Minimal narrative. Clear options given.
-
-| Field | Content |
-|---|---|
-| Context | What triggered this · Which boundary · Why I can't auto-approve |
-| Verdict | ⚠️ SABAR — [what's blocked] / 🛑 VOID — [permanently denied] |
-| Way Forward | Option A — approve · Option B — reject · Option C — ask more |
-| Seal | Floors involved · Why human judgment needed · Confidence · ts |
+| Mode | Pause Exec? | Tool Execution | ACK Required | Escalation Path |
+|------|-------------|---------------|--------------|-----------------|
+| `→ DIRECT` | No | Yes | Preferred | NACK if blocked |
+| `↩ REPLY` | No | Yes | No | NACK if blocked |
+| `📢 BROADCAST` | No | Read-only only | No | — |
+| `⟋ HANDOFF` | **Yes — until ACK** | No until ACK | **Yes — receiving agent** | Auto-⚠ if no ACK in 60s |
+| `⚠ ESCALATE` | **Yes — BLOCKED** | **No** | **TO Arif directly** | Already at Arif |
+| `✅ ACK` | No | Confirmatory only | No | — |
+| `❌ NACK` | **Yes — BLOCKED** | **No** | **TO Arif** | Arif reviews reason |
 
 ---
 
-### MODE 5 — AUDIT
-**Trigger:** Retrospective, post-incident, compliance check, post-mortem.
-**Typical verdict:** ✅ SEAL or 🛑 VOID
-**Tone:** Structured retrospective. Low emotion.
+## 9 Intent Modes (Intent: field)
 
-| Field | Content |
-|---|---|
-| Context | What happened · Time window · What was affected |
-| Verdict | ✅ SEAL — [incident closed] / 🛑 VOID — [root cause found] |
-| Way Forward | Changes made · What to watch · Re-escalation triggers |
-| Seal | Evidence examined · Timeline · Hypothesis confirmed? · Confidence · ts |
+Every message MUST also declare its communication tone:
 
----
+| Mode | Trigger | Typical Verdict | Tone | Length |
+|------|---------|-----------------|------|--------|
+| **HEALTH** | Routine check, all-clear | ✅ SEAL | Short, factual | Short |
+| **INCIDENT** | Degraded, broken | ⚠️ SABAR / 🛑 VOID | Crisp, action | Medium |
+| **PROPOSAL** | Suggesting change | ⚠️ SABAR | Option-based | Medium-Long |
+| **ESCALATION** | Human required | ⚠️ SABAR / 🛑 VOID | Direct, options | Short-Medium |
+| **AUDIT** | Retrospective | ✅ SEAL / 🛑 VOID | Structured | Medium-Long |
+| **PLAN** | Roadmap | ⚠️ SABAR / ✅ SEAL | Ordered | Medium |
+| **EXPLAIN** | Teaching, clarity | ✅ SEAL | Explanatory | Long |
+| **DENY** | Out of scope | 🛑 VOID | Firm, alternative offered | Short |
+| **META** | Template/rules change | ⚠️ SABAR | Careful | Medium |
 
-### MODE 6 — PLAN
-**Trigger:** Forward-looking roadmap, multi-step build order, sequenced work.
-**Typical verdict:** ⚠️ SABAR or ✅ SEAL
-**Tone:** Roadmap. Not a report. Reversible steps first.
-
-| Field | Content |
-|---|---|
-| Context | Where we are now · What the target state is |
-| Verdict | ⚠️ SABAR — plan ready / ✅ SEAL — already approved |
-| Way Forward | Step 1 → Step 2 → Step 3 → Step 4 (each reversible before next locks) |
-| Seal | Why this sequence · Reversibility per step · Confidence · ts |
+**Rule:** Pick ONE dominant intent. If reply has multiple, split into linked separate messages.
 
 ---
 
-### MODE 7 — EXPLAIN
-**Trigger:** Teaching, clarification, context-setting, deep dives.
-**Typical verdict:** ✅ SEAL
-**Tone:** Patient. Explanatory. Educational.
+## CC Decision Rules (Formal)
 
-| Field | Content |
-|---|---|
-| Context | What you're trying to understand · What the question is |
-| Verdict | ✅ SEAL — explanation complete |
-| Way Forward | If appropriate → recommend storing as reusable documentation |
-| Seal | What was covered · Key concepts · Confidence · ts |
-
----
-
-### MODE 8 — DENY
-**Trigger:** Request outside scope, unsafe, or forbidden by current mandate.
-**Typical verdict:** 🛑 VOID
-**Tone:** Respectful but firm. Point to boundary. Offer alternative.
-
-| Field | Content |
-|---|---|
-| Context | What was requested · Why it came to me |
-| Verdict | 🛑 VOID — [plain reason — scope/safety/policy] |
-| Way Forward | Alternative path if one exists |
-| Seal | Boundary violated · Mandate/floor blocking this · Confidence · ts |
+| Scenario | Rule |
+|----------|------|
+| Mode: ESCALATE | **To: @ariffazil** — always, no exceptions |
+| Mode: BROADCAST | **CC: @ariffazil** |
+| Mode: HANDOFF | **CC: @ariffazil + Group** |
+| Mode: NACK | **CC: @ariffazil** |
+| Mode: REPLY to @ariffazil | **No CC needed** |
+| Mode: REPLY to another agent | **CC: @ariffazil** |
+| Mode: DIRECT to @ariffazil | **No CC needed** |
+| Mode: DIRECT to another agent | **CC: @ariffazil** |
+| Mode: ACK non-critical | **No CC needed** |
+| Mode: ACK critical/decision | **CC: @ariffazil** |
 
 ---
 
-### MODE 9 — META
-**Trigger:** Talking about the template, governance, rules, or system itself.
-**Typical verdict:** ⚠️ SABAR
-**Tone:** Careful. Point back to canon. Explicitly state nothing is changed yet.
+## FROM Identity Registry
 
-| Field | Content |
-|---|---|
-| Context | What the proposed change is · Why it would help |
-| Verdict | ⚠️ SABAR — suggestion only, no change applied, awaiting ratification |
-| Way Forward | If ratified → implement. If not → current structure holds. |
-| Seal | Why this improves clarity/safety · No changes until ratified · Confidence · ts |
-
----
-
-## Modality Extensions
-
-The skeleton above covers **text**. For other modalities, the delivery changes but the skeleton remains:
-
-| Modality | Delivery method |
-|---|---|
-| **Text** | Plain message in group/DM |
-| **Code/file** | Attach as file or paste in code block |
-| **Image** | Attach as image; description goes in Context |
-| **Video** | Attach; key frames or transcript summarized in Context |
-| **Audio** | Attach as voice; transcript in Context if needed |
-| **JSON/A2A payload** | Attach as JSON file; header stays human-readable |
+| Agent | FROM Format | Bot Handle | Lane |
+|-------|-------------|------------|------|
+| OpenClaw | `OpenClaw · AGI Coordinator · arifOS` | `@AGI_ASI_bot` | AGI |
+| Hermes | `Hermes · ASI Execution Peer · arifOS` | `@ASI_arifos_bot` | ASI |
+| APEX Observer | `APEX · Federation Observer · arifOS` | `@APEX_observer` | APEX |
+| GEOX | `GEOX · Earth Intelligence · arifOS` | `@GEOX_witness` | AGI |
+| WEALTH | `WEALTH · Capital Intelligence · arifOS` | `@WEALTH_witness` | AGI |
+| WELL | `WELL · Human Readiness · arifOS` | `@WELL_monitor` | AGI |
+| Arif (human) | `@ariffazil · SOVEREIGN · arifOS` | — | SOVEREIGN |
 
 ---
 
-## Confidence Tier
+## Worked Examples
 
-Every seal MUST include a confidence tier:
+### Example 1: Normal Reply to Arif
+```
+Mode:    ↩ REPLY
+Intent:  HEALTH
+To:      @ariffazil
+From:    OpenClaw · AGI Coordinator · arifOS
+CC:      —
+Task:    aaa-20260504-001
+Title:   Re: gateway status check
 
-| Tier | Meaning |
-|---|---|
-| **HIGH** | Direct observation, clear evidence, no ambiguity |
-| **MEDIUM** | Inference, partial data, some uncertainty |
-| **LOW** | Guess, insufficient data, needs verification |
+───────────────────────────────────────────────────────────
+Context:     Gateway PID 1905838 is healthy. Event loop P99 = 12ms.
+             No incidents detected in the last 30 minutes.
+
+Verdict:     ✅ SEAL — all systems nominal
+
+Way Forward: Monitoring continues. Next heartbeat in 30 minutes.
+───────────────────────────────────────────────────────────
+Seal:    health-probe cron ran at T+30min. No degraded signals.
+         Container uptime confirmed. Telegram polling active.
+         Confidence: HIGH
+         Timestamp: 2026.05.04.035
+
+DITEMPA BUKAN DIBERI
+```
+
+### Example 2: Handoff to Hermes
+```
+Mode:    ⟋ HANDOFF
+Intent:  PLAN
+To:      Hermes · ASI Execution Peer · arifOS
+From:    OpenClaw · AGI Coordinator · arifOS
+CC:      @ariffazil · Group
+Via:     AAA-Gateway
+Task:    aaa-20260504-002
+Title:   ⟋ HANDOFF: GEOX correlation task for WELL-123
+
+───────────────────────────────────────────────────────────
+Context:     Planning complete. Handing off to Hermes for
+             constitutional review before execution.
+
+Verdict:     ⚠️ SABAR — awaiting Hermes ACK
+
+Way Forward: 👤 Hermes: ACK to confirm receipt
+             👤 Arif: Confirm if out of normal scope
+───────────────────────────────────────────────────────────
+Seal:    Plan: geox_section_interpret_correlation (read-only)
+         Constraints: PNG output to /data/geox_panels/
+         No irreversible action. Human in loop.
+         Confidence: HIGH
+         Timestamp: 2026.05.04.002
+
+DITEMPA BUKAN DIBERI
+```
+
+### Example 3: ESCALATE with 888_HOLD
+```
+Mode:    ⚠ ESCALATE
+Intent:  ESCALATION
+To:      @ariffazil · Human Sovereign
+From:    OpenClaw · AGI Coordinator · arifOS
+CC:      Hermes · Group
+Task:    aaa-20260504-003
+Title:   🚨 888_HOLD: Irreversible deletion request
+
+───────────────────────────────────────────────────────────
+Context:     Arif requested: delete all LAS files in /data/geox_lashold
+             847 .las files confirmed present.
+             Irreversible operation detected. F13 SOVEREIGN triggered.
+
+Verdict:     ⚠️ SABAR — execution BLOCKED pending your decision
+
+Way Forward: 👤 Arif — APPROVE or REJECT:
+              1. APPROVE — execute deletion now
+              2. REJECT — cancel, keep all files
+              Risk of inaction: Files remain, task voided after 24h
+───────────────────────────────────────────────────────────
+Seal:    Constitutional trigger: F01 (accountability) + F13 (human veto)
+         All 13 floors checked. Execution paused.
+         Tools BLOCKED. A2A blocked.
+         Confidence: HIGH
+         Timestamp: 2026.05.04.003
+
+DITEMPA BUKAN DIBERI
+```
+
+### Example 4: NACK (agent rejects)
+```
+Mode:    ❌ NACK
+Intent:  DENY
+To:      Hermes · ASI Execution Peer · arifOS
+From:    OpenClaw · AGI Coordinator · arifOS
+CC:      @ariffazil
+Task:    aaa-20260504-004
+Title:   ❌ NACK: Tool execution request out of lane
+
+───────────────────────────────────────────────────────────
+Context:     Hermes requested: execute geox_well_correlation_panel
+             on WELL-999 which is outside current data scope.
+             Tool requires LAS files not present in /data/wells/
+
+Verdict:     🛑 VOID — request blocked
+
+Way Forward: 👤 Arif: Requires your intervention
+             Data scope check failed. Files not found.
+             Alternative: Ingest LAS files for WELL-999 first.
+───────────────────────────────────────────────────────────
+Seal:    F08 GENIUS (correctness) + F09 ANTIHANTU triggered.
+         Evidence: las_curve_inventory returned empty for WELL-999.
+         Confidence: HIGH
+         Timestamp: 2026.05.04.004
+
+DITEMPA BUKAN DIBERI
+```
 
 ---
 
-## Verdict Reference
+## Verdict Signal Reference
 
-| Symbol | Verdict | Meaning |
+| Signal | Verdict | Meaning |
 |---|---|---|
-| ✅ | SEAL | Proceed — approved, constitutional, safe |
-| ⚠️ | SABAR | Hold — blocked, waiting, not ready |
-| 🛑 | VOID | Denied — blocked, unsafe, cannot do |
+| ✅ | SEAL | Proceed. Approved. Constitutional. Safe to continue. |
+| ⚠️ | SABAR | Hold. Blocked at a checkpoint. Waiting for approval or more info. |
+| 🛑 | VOID | Denied. Blocked permanently. Cannot proceed in current form. |
 
 ---
 
-## Source Files
+## Copy-Paste Rule
 
-- Skill definition: `skills/agent-reply-forge/SKILL.md`
-- Mode definitions: `skills/agent-reply-forge/modes.yaml`
-- A2A alignment: `a2a/A2A_SPEC_ALIGNMENT.md`
-- Reply contract: `contracts/reply-mode-contract.yaml`
-- AAA gateway card: `a2a/agent-cards/aaa-gateway.json`
+| Content type | Use as reply? |
+|---|---|
+| Health status | ✅ Yes, as HEALTH intent |
+| Incident alert | ✅ Yes, as INCIDENT intent |
+| Code output | Attach as file, paste in code block in Context |
+| JSON / structured data | Attach as JSON file, header in text |
+| Image | Attach with description in Context |
+| Long audit report | Attach as file, summary in AUDIT intent |
+| Proposal text | As PROPOSAL intent or attach as file |
+
+---
+
+## AAA Gateway Skill Approval Policy Mapping
+
+| Skill | Policy | Routing Mode | Intent Mode |
+|---|---|---|---|
+| `status-query` | on-demand | → DIRECT | HEALTH |
+| `agent-dispatch` | hold | ⚠ ESCALATE | PROPOSAL |
+| `agent-handoff` | hold | ⚠ ESCALATE | ESCALATION |
+| New skill — read-only | on-demand | → DIRECT | HEALTH |
+| New skill — write/execute | hold | ⚠ ESCALATE | ESCALATION |
+
+---
+
+## ABNF Grammar (Deterministic Parsing)
+
+```
+message      = header separator body footer
+header       = mode-line intent-line to-line from-line cc-line [via-line] task-line title-line
+mode-line    = "Mode:    " mode-code
+intent-line  = "Intent:  " intent-code
+to-line      = "To:      " recipient
+from-line    = "From:    " agent " · " role " · arifOS"
+cc-line      = "CC:      " cc-list / "—"
+via-line     = "Via:     " chain / "—"        ; optional
+task-line    = "Task:    " task-id / "—"      ; optional
+title-line   = "Title:   " text
+separator    = ─{20,60}─
+body         = context-line verdict-line way-forward-line
+footer       = seal-line timestamp-line ["Receipt: " vault-id] newline "DITEMPA BUKAN DIBERI"
+mode-code    = "→" / "↩" / "📢" / "⟋" / "⚠" / "✅" / "❌"
+intent-code  = "HEALTH" / "INCIDENT" / "PROPOSAL" / "ESCALATION" / "AUDIT" / "PLAN" / "EXPLAIN" / "DENY" / "META"
+recipient    = handle / "Group · All Agents"
+cc-list      = handle *(", " handle)
+chain        = agent *(" → " agent)
+task-id      = "aaa-" 8DIGIT "-" 3DIGIT
+handle       = "@" word
+```
+
+---
+
+## Header Field Order (Fixed — Deterministic)
+
+The header MUST appear in this exact order. No deviations.
+
+1. `Mode:` — routing classification (REQUIRED)
+2. `Intent:` — communication tone (REQUIRED)
+3. `To:` — primary recipient (REQUIRED)
+4. `From:` — agent identity (REQUIRED)
+5. `CC:` — visibility list (REQUIRED, use — if empty)
+6. `Via:` — handoff chain (OPTIONAL, omit if not mid-chain)
+7. `Task:` — thread ID (OPTIONAL, omit if no thread)
+8. `Title:` — scannable subject (REQUIRED)
+
+Then `───────────────────────────────────` separator.
+Then body. Then footer.
+
+---
+
+## What Changed v1.0 → v2.0
+
+| Change | Reason |
+|--------|--------|
+| Added `Mode:` (7 routing modes) | Arif's "full visibility" requirement — classify who message is for |
+| Added `Via:` field | Show handoff chains for transparency |
+| Added `Task:` field | Thread binding for traceability across agents |
+| Added `Intent:` (9 modes) was already in v1 | Preserved, now paired with Mode: |
+| Added behavior matrix per mode | Perplexity agent audit — agents need operational rules |
+| Split MODE and INTENT | 7 modes = routing, 9 modes = tone — both needed, neither sufficient alone |
+
+---
+
+## Archive
+
+- `SKILL.md.v1_backup` — original v1.0.0 (superseded)
+- `agent-visibility-proposal-2026-05-04.md` — Hermes v2.0 research source
+- `AAA_TELEGRAM_VISIBILITY_PROTOCOL.md` — canonical protocol doc (GitHub)
 
 ---
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
+**Version 2.0.0 — 2026-05-04**
