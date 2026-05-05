@@ -1,0 +1,45 @@
+{
+  "decision_id": "VAULT999-2026-05-04-AAA-AGENT-PROTOCOL-V1",
+  "epoch": "EPOCH-2026-05-04",
+  "verdict": "999_SEAL",
+  "repo": "AAA",
+  "clerk": "Hermes (ASI) | Perplexity (ASI Advisory — external) | Arif Fazil (Sovereign Judge)",
+  "gist": "https://github.com/ariffazil/AAA/pull/68",
+  "summary": "AAA_AGENT_PROTOCOL.md v1.0 ratified and merged to main. Unified Mutuality Lock Protocol established: Red Team ↔ Blue Team between Hermes and OpenClaw. 7 routing modes. RISK tiers (LOW/MEDIUM/HIGH). MODE↔VERDICT coupling enforced. NACK requires constraint+retry+fix. HITL standardized as 👤 REQUIRED/OPTIONAL. Supersedes TELEGRAM_VISIBILITY_RFC.md and ADR-010-AAA-TELEGRAM-VISIBILITY.md.",
+  "document": "AAA_AGENT_PROTOCOL.md",
+  "key_components": [
+    "S1: Telegram Visibility Template (FROM/TO/CC/MODE/VIA/TASK/RISK/LOOP)",
+    "S2: Mutuality Lock — Red Team ↔ Blue Team matrix",
+    "S3: 7 Routing Modes (→ ↩ 📢 ⟋ ⚠ ✅ ❌)",
+    "S4: CC Rules + HITL Protocol (👤 REQUIRED / 👤 OPTIONAL)",
+    "S5: Slash Commands (/aaa, /hermes, /openclaw, /status, /help)",
+    "S6: NACK + ESCALATE + 888_HOLD with RISK tiers",
+    "S7: Red Team ↔ Blue Team Loop Budget (LOW=1, MEDIUM=2, HIGH=2+Arif)",
+    "S8: NACK Triggers (F1–F13)",
+    "S9: 6 Worked Examples",
+    "S10: Protocol Relationships (deprecation notices)",
+    "S11: Ratification + Amendments"
+  ],
+  "perplexity_amendments_incorporated": [
+    "Loop budget: Tier-based max rounds",
+    "RISK tiers: LOW/MEDIUM/HIGH drive Mutuality Lock requirement",
+    "MODE↔VERDICT coupling enforced per Section 3.2",
+    "NACK requires: constraint violated + retry possible + recommended fix",
+    "HITL standardized: 👤 REQUIRED / 👤 OPTIONAL",
+    "Slash commands baked in (/aaa, /hermes, /openclaw, /status, /help)"
+  ],
+  "mutuality_lock_executor_matrix": [
+    {"task_type": "GEOX/WEALTH/WELL domain", "executor": "OpenClaw", "red_team": "Hermes", "blue_team": "OpenClaw"},
+    {"task_type": "Constitutional/sensitive", "executor": "Hermes", "red_team": "OpenClaw", "blue_team": "Hermes"},
+    {"task_type": "Build/coding", "executor": "OpenClaw", "red_team": "Hermes", "blue_team": "OpenClaw"},
+    {"task_type": "Research/analysis", "executor": "Hermes", "red_team": "OpenClaw", "blue_team": "Hermes"}
+  ],
+  "supersedes": [
+    "TELEGRAM_VISIBILITY_RFC.md (PR #67)",
+    "ADR-010-AAA-TELEGRAM-VISIBILITY.md"
+  ],
+  "pr": "https://github.com/ariffazil/AAA/pull/68",
+  "merged_by": "github.com/ariffazil/AAA/pull/68 (auto-merged via branch protection)",
+  "seal_by": "Arif Fazil",
+  "confidence": 0.96
+}
