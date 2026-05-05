@@ -14,6 +14,10 @@ const app = express();
 app.use(express.json());
 
 // === CONFIG ===
+// === AGENT A2A ADAPTER URLs (host network) ===
+const HERMES_A2A_URL = process.env.HERMES_A2A_URL || 'http://172.19.0.1:18001';
+const OPENCLAW_A2A_URL = process.env.OPENCLAW_A2A_URL || 'http://172.19.0.1:18002';
+
 const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
 const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
 const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://hermes-agent:3002';
@@ -410,7 +414,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
         jsonrpc: '2.0', id: 1, method: 'message/send',
         params: { message, taskId, contextId }
       });
-      const res = await fetch(`http://hermes-agent:3002/tasks`, {
+      const res = await fetch(`${HERMES_A2A_URL}/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body,
@@ -462,7 +466,60 @@ async function executeTask(taskId, contextId, message, targetAgent) {
     }
   }
 
-  // === LOCAL PROCESSING (no targetAgent or non-hermes) ===
+
+  // === ROUTE TO OPENCLAW (AGI) ===
+  if (targetAgent === 'openclaw') {
+    task.status = {
+      state: 'working',
+      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to OpenClaw AGI...' }], messageId: generateId(), taskId, contextId },
+      timestamp: new Date().toISOString()
+    };
+    taskStore.set(taskId, task);
+    publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
+
+    try {
+      const body = JSON.stringify({
+        jsonrpc: '2.0', id: 1, method: 'message/send',
+        params: { message, taskId, contextId }
+      });
+      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        signal: AbortSignal.timeout(60000)
+      });
+      if (!res.ok) throw new Error(`OpenClaw returned ${res.status}`);
+      const data = await res.json();
+      const ocResult = data.result || {};
+
+      task.status = {
+        state: ocResult.status?.state || 'completed',
+        message: {
+          role: 'agent',
+          parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI]\n${extractText(ocResult.status?.message || {})}` }],
+          messageId: generateId(), taskId, contextId
+        },
+        timestamp: new Date().toISOString()
+      };
+      task.artifacts = ocResult.artifacts || [];
+      task.history = ocResult.history || [message];
+      taskStore.set(taskId, task);
+      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
+      return;
+    } catch (err) {
+      const errorStatus = {
+        state: 'failed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI] Dispatch failed: ${err.message}.` }], messageId: generateId(), taskId, contextId },
+        timestamp: new Date().toISOString()
+      };
+      task.status = errorStatus;
+      taskStore.set(taskId, task);
+      publish({ kind: 'status-update', taskId, contextId, status: errorStatus, final: true });
+      return;
+    }
+  }
+
+  // === LOCAL PROCESSING (no targetAgent or unrecognised) ===
 
   task.status = {
     state: 'working',
