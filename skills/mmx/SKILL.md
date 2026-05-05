@@ -1,9 +1,50 @@
 ---
 name: mmx
-description: Full multimodal generation via MiniMax CLI (mmx). Covers text chat, image generation, video synthesis, TTS speech, music composition, vision analysis, and web search. Activates when Arif wants to generate content or analyze images. Prerequisites: mmx auth login with API key. NOT for deep research loops (use mmx-text-researcher skill instead).
+description: Full multimodal generation via MiniMax CLI (mmx). Covers text chat, image generation, video synthesis, TTS speech, music composition, vision analysis, and web search. ACTIVATES ON EVERY IMAGE ANALYSIS REQUEST from Arif. Prerequisites: mmx auth login with API key. NOT for deep research loops (use mmx-text-researcher skill instead).
 metadata: {"openclaw": {"emoji": "🎨", "requires": {"bins": ["mmx"]}}}
 setup_needed: true
+user-invocable: true
 ---
+
+## 🚨 CRITICAL: Vision Analysis — MANDATORY EXEC PATH
+
+**When Arif sends a photo, screenshot, or asks about any image — you MUST use this pipe:**
+
+```bash
+mmx vision describe --image <file-path-or-url> --prompt "<Arif's question>"
+```
+
+**Verified working syntax (mmx 1.0.12):**
+```
+mmx vision describe --image /tmp/vision.jpg --prompt "What is shown?"
+mmx vision describe --image https://example.com/img.jpg --prompt "What breed?"
+mmx vision describe --image /tmp/geo.jpg --prompt "What formation is this?"
+```
+
+**Example flow:**
+1. Arif sends photo → "what's in this image?"
+2. Save the image to a temp path (e.g. /tmp/vision.jpg)
+3. Call: `exec(command="mmx vision describe --image /tmp/vision.jpg --prompt 'What is shown in this image?'", timeout=30)`
+4. Parse JSON stdout → return the `"content"` field as your answer
+
+**The mmx vision CLI is pre-authenticated. Do NOT try any other path. This is the only correct vision pipe.**
+
+**Quick test:**
+```bash
+exec(command="mmx vision describe --image /tmp/test.jpg --prompt 'What is this?'", timeout=30)
+```
+
+## ⚠️ DO NOT USE these tools for local image analysis:
+- `vision_analyze` — broken pipe, does not call mmx
+- `image` tool with local file paths — path restrictions will cause failure
+
+**ONLY use:** `exec(command="mmx vision <path> --prompt '<question>'", timeout=30)`
+
+**Quick test you can run anytime:**
+```bash
+exec(command="mmx auth status", timeout=10)
+```
+
 
 # MMX — MiniMax Multimodal CLI
 
@@ -128,14 +169,16 @@ mmx music cover --prompt "Indie folk" --audio https://example.com/song.mp3 --out
 ## Vision / Image Understanding
 
 ```bash
-# Local file
+# Local file — shorthand (uses default prompt "Describe the image.")
 mmx vision photo.jpg
 
-# Describe with custom prompt
+# Describe with custom prompt — CORRECT SYNTAX (requires 'describe' subcommand)
+mmx vision describe --image photo.jpg --prompt "What breed?"
+mmx vision describe --image /tmp/screenshot.png --prompt "What is shown in this screenshot?"
 mmx vision describe --image https://example.com/img.jpg --prompt "What breed?"
 
-# From file-id
-mmx vision describe --file-id file-123
+# From file-id (pre-uploaded)
+mmx vision describe --file-id file-123 --prompt "Extract all text"
 ```
 
 ## Web Search
