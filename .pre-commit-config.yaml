@@ -1,0 +1,19 @@
+# ============================================================
+# PRE-COMMIT CONFIG — arifOS AAA (detect-secrets native)
+# ============================================================
+# This repo uses .git/hooks/pre-commit (native git hook).
+# This file documents the config for detect-secrets integration.
+# ============================================================
+
+# For pre-commit framework users, install with:
+#   pip install pre-commit
+#   pre-commit install --hook-type pre-commit
+#   pre-commit install --hook-type commit-msg
+
+repos:
+  - repo: https://github.com/Yura-Flutter/detect-secrets-hook
+    rev: v1.4.0
+    hooks:
+      - id: detect-secrets
+        args: ['--baseline', '.secrets.baseline']
+        exclude: '(^_archive/|^memory/|^secrets/|^skills/.+_meta\\.json$)'
