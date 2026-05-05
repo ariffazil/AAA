@@ -6,7 +6,16 @@
  * DITEMPA BUKAN DIBERI — Forged, Not Given
  */
 
-const VAULT_WRITER_URL = process.env.VAULT_WRITER_URL || 'http://vault999-writer:5001';
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+
+const VAULT_DIR = path.join(os.homedir(), '.arifos');
+const VAULT_FILE = path.join(VAULT_DIR, 'vault.jsonl');
+
+// Vault999 service endpoint (health + future seal proxy)
+// Fallback chain: env var → Docker DNS (vault999:8100) → localhost fallback
+const VAULT_WRITER_URL = process.env.VAULT_WRITER_URL || 'http://vault999:8100';
 
 function createSealPayload(task, agentId, action, metadata) {
   const now = new Date().toISOString();
@@ -50,43 +59,59 @@ async function writeVoid(task, agentId, action, reason, metadata) {
   return writeRecord('/seal', payload);
 }
 
+async function _writeLocalFallback(payload) {
+  // Append seal to local JSONL when remote vault writer is unavailable.
+  try {
+    if (!fs.existsSync(VAULT_DIR)) {
+      fs.mkdirSync(VAULT_DIR, { recursive: true });
+    }
+    const line = JSON.stringify({ ...payload, _source: 'local_fallback', _written_at: new Date().toISOString() }) + '\n';
+    fs.appendFileSync(VAULT_FILE, line, 'utf8');
+    console.log(`[VAULT999] Local fallback written: ${VAULT_FILE}`);
+    return { ok: true, source: 'local_fallback', file: VAULT_FILE };
+  } catch (err) {
+    console.error(`[VAULT999] Local fallback ALSO failed: ${err.message}`);
+    return { ok: false, error: err.message };
+  }
+}
+
 async function writeRecord(endpoint, payload) {
-  const path = `${VAULT_WRITER_URL}${endpoint}`;
+  const remotePath = `${VAULT_WRITER_URL}${endpoint}`;
 
   const auditLine = `[VAULT999] AUDIT intent: agent=${payload.agent_id} action=${payload.action} verdict=${payload.verdict} epoch=${payload.epoch} task_id=${payload.payload.task_id} context_id=${payload.payload.context_id} routing=${payload.payload.routing}`;
 
+  // 1. Try remote vault writer first
   try {
-    const response = await fetch(path, {
+    const response = await fetch(remotePath, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': 'AAA-A2A-Gateway/1.0'
       },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(5000)
+      signal: AbortSignal.timeout(3000)
     });
 
     const body = await response.text();
 
     if (!response.ok) {
-      console.error(`[VAULT999] Write failed (${response.status}) — AUDIT INTENT LOGGED: ${auditLine}`);
-      console.error(`[VAULT999] Response: ${body}`);
-      return { ok: false, status: response.status, error: body, auditLogged: true };
+      console.error(`[VAULT999] Write failed (${response.status}) — falling back to local JSONL: ${auditLine}`);
+      return _writeLocalFallback(payload);
     }
 
     let data;
     try { data = JSON.parse(body); } catch { data = body; }
 
-    console.log(`[VAULT999] SEAL written: action=${payload.action}, agent=${payload.agent_id}`);
-    return { ok: true, data };
+    console.log(`[VAULT999] SEAL written remotely: action=${payload.action}, agent=${payload.agent_id}`);
+    return { ok: true, source: 'remote', data };
   } catch (error) {
-    console.error(`[VAULT999] Write error — AUDIT INTENT LOGGED: ${auditLine}`);
+    console.error(`[VAULT999] Remote write error — falling back to local JSONL: ${auditLine}`);
     if (error.name === 'TimeoutError') {
-      console.error('[VAULT999] Write timed out — continuing without audit');
+      console.error('[VAULT999] Remote timed out — local fallback active');
     } else {
-      console.error(`[VAULT999] Error: ${error.message}`);
+      console.error(`[VAULT999] Remote error: ${error.message}`);
     }
-    return { ok: false, error: error.message, auditLogged: true };
+    return _writeLocalFallback(payload);
   }
 }
 

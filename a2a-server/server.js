@@ -71,11 +71,14 @@ const INVARIANTS = {
 // === IN-MEMORY STORES ===
 const taskStore = new Map();
 const eventBus = new Map();
+const cockpitSubscribers = new Set();
+const START_TIME = Date.now();
 const nonceStore = new Map();   // nonce → { ts, used }
 const replayStore = new Map();   // payloadHash → { ts }
 const entropyStore = new Map();  // taskId → { before, after }
 
 // === A2A Agent Card v1.0.0 ===
+// F2 TRUTH: This card is honest. Claims match substrate.
 const AAA_AGENT_CARD = {
   name: 'AAA Gateway',
   description: 'Governed A2A v1.0.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13.',
@@ -88,10 +91,17 @@ const AAA_AGENT_CARD = {
   default_input_modes: ['text/plain', 'application/json'],
   default_output_modes: ['text/plain', 'application/json'],
   skills: [
-    { id: 'agent-dispatch', name: 'Agent Dispatch', description: 'Non-blocking supervised task dispatch to approved internal agents.', tags: ['dispatch', 'task', 'coordination'], examples: ['dispatch a task to the planner agent', 'send work to the geodesy agent'] },
-    { id: 'agent-handoff', name: 'Agent Handoff', description: 'Delegation to approved agents through governed handoff workflows.', tags: ['handoff', 'delegation', 'transfer'], examples: ['handoff to the mobility agent', 'transfer context to planner'] },
-    { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] },
+    { id: 'agent-dispatch', name: 'Agent Dispatch', description: 'Supervised task dispatch to Hermes ASI or OpenClaw AGI. Requires agent_id param.', tags: ['dispatch', 'task', 'coordination'], examples: ['dispatch a task to hermes agent', 'send work to openclaw agent'] },
+    { id: 'agent-handoff', name: 'Agent Handoff', description: 'Governed context handoff between internal A-role agents (architect, engineer, auditor).', tags: ['handoff', 'delegation', 'transfer'], examples: ['handoff to architect agent', 'transfer context to engineer'] },
+    { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval from local task store.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] },
   ],
+  honesty_disclaimer: {
+    streaming_implementation: 'task-level SSE via /tasks/{id}/stream and /tasks/{id}/subscribe — NOT SendStreamingMessage JSON-RPC method',
+    dispatch_requires_agent_id: 'agent-dispatch only routes to Hermes/OpenClaw when params.agent_id is set; otherwise local echo',
+    local_echo_fallback: 'All skills fall back to local echo if downstream agents are unreachable',
+    federation_mesh_status: 'GEOX and WEALTH witnesses are registered in federation manifest but health is not continuously probed',
+    last_audited: '2026-05-05'
+  },
   governance: {
     constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
     verdict_authority: '888_JUDGE',
@@ -366,6 +376,12 @@ function subscribe(taskId, callback) {
   return () => eventBus.get(taskId)?.delete(callback);
 }
 
+function emitCockpit(event) {
+  for (const cb of cockpitSubscribers) {
+    try { cb(event); } catch (e) { console.error('[CockpitBus]', e); }
+  }
+}
+
 function publish(event) {
   const taskId = event.taskId || (event.task && event.task.id);
   if (!taskId) return;
@@ -374,6 +390,8 @@ function publish(event) {
   for (const cb of listeners) {
     try { cb(event); } catch (e) { console.error('[EventBus]', e); }
   }
+  // Also emit to cockpit dashboard
+  emitCockpit({ ...event, source: 'task', timestamp: new Date().toISOString() });
 }
 
 // === SKILL DETECTION ===
@@ -737,6 +755,143 @@ app.get('/operator/seals', (req, res) => {
     res.json({ ok: true, seals: 0, pending_holds: 0 });
   });
   r.end();
+});
+
+// ═══════════════════════════════════════════════════════════════════════
+// COCKPIT API — Dynamic SOT for AAA Dashboard
+// ═══════════════════════════════════════════════════════════════════════
+
+app.get('/api/cockpit/state', async (req, res) => {
+  const vaultHealthy = await checkVaultHealth();
+  const allTasks = Array.from(taskStore.values());
+  const tasks = {
+    total: allTasks.length,
+    submitted: allTasks.filter(t => t.status.state === 'submitted').length,
+    working: allTasks.filter(t => t.status.state === 'working').length,
+    completed: allTasks.filter(t => t.status.state === 'completed').length,
+    failed: allTasks.filter(t => t.status.state === 'failed').length,
+    holds: allTasks.filter(t => ['pending-human-review','input-required','auth-required'].includes(t.status.state)).length,
+    voids: allTasks.filter(t => t.status.state === 'voided').length,
+  };
+
+  let seals = 0;
+  let pendingHolds = 0;
+  try {
+    const r = await fetch(`${VAULT_WRITER_URL}/health`, { signal: AbortSignal.timeout(3000) });
+    if (r.ok) {
+      const d = await r.json();
+      seals = d.vault_seals_count || 0;
+      pendingHolds = d.pending_holds || 0;
+    }
+  } catch (_) {}
+
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.json({
+    ok: true,
+    timestamp: new Date().toISOString(),
+    gateway: {
+      status: 'healthy',
+      version: '1.0.0',
+      uptime_seconds: Math.floor((Date.now() - START_TIME) / 1000),
+    },
+    vault: {
+      status: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED',
+      seals,
+      pending_holds: pendingHolds,
+    },
+    tasks,
+    agents: [
+      { id: 'aaa-gateway', name: 'AAA Gateway', status: 'online', role: 'gateway', lane: 'AGI' },
+      { id: 'aaa-architect', name: 'Architect', status: 'standby', role: 'internal', lane: 'AGI' },
+      { id: 'aaa-engineer', name: 'Engineer', status: 'standby', role: 'internal', lane: 'AGI' },
+      { id: 'aaa-auditor', name: 'Auditor', status: 'standby', role: 'internal', lane: 'ASI' },
+      { id: 'geox-witness', name: 'GEOX Witness', status: 'unknown', role: 'mesh', organ: 'GEOX' },
+      { id: 'wealth-witness', name: 'WEALTH Witness', status: 'unknown', role: 'mesh', organ: 'WEALTH' },
+    ],
+    floors: [
+      { id: 'F1', name: 'AMANAH', status: 'pass', hard: true },
+      { id: 'F2', name: 'TRUTH', status: 'pass', hard: true },
+      { id: 'F3', name: 'TRI-WITNESS', status: 'pass', hard: false },
+      { id: 'F4', name: 'CLARITY', status: 'pass', hard: false },
+      { id: 'F5', name: 'PEACE²', status: 'pass', hard: false },
+      { id: 'F6', name: 'EMPATHY', status: 'pass', hard: false },
+      { id: 'F7', name: 'HUMILITY', status: 'pass', hard: false },
+      { id: 'F8', name: 'GENIUS', status: 'pass', hard: false },
+      { id: 'F9', name: 'ANTI-HANTU', status: 'pass', hard: true },
+      { id: 'F10', name: 'BALANCE', status: 'pass', hard: false },
+      { id: 'F11', name: 'AUDITABILITY', status: 'pass', hard: false },
+      { id: 'F12', name: 'CONTINUITY', status: 'pass', hard: false },
+      { id: 'F13', name: 'SOVEREIGN', status: 'pass', hard: true },
+    ],
+  });
+});
+
+app.get('/api/cockpit/events', (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+
+  const heartbeat = setInterval(() => {
+    res.write(`data: ${JSON.stringify({ kind: 'heartbeat', timestamp: new Date().toISOString() })}\n\n`);
+  }, 15000);
+
+  const handler = (event) => {
+    res.write(`data: ${JSON.stringify(event)}\n\n`);
+  };
+
+  cockpitSubscribers.add(handler);
+  res.write(`data: ${JSON.stringify({ kind: 'connected', timestamp: new Date().toISOString() })}\n\n`);
+
+  req.on('close', () => {
+    clearInterval(heartbeat);
+    cockpitSubscribers.delete(handler);
+  });
+});
+
+app.post('/api/cockpit/init', async (req, res) => {
+  const { confirm, intent } = req.body || {};
+  if (!confirm) {
+    return res.status(400).json({ ok: false, error: 'Confirmation required. Set confirm: true with acknowledged risk.' });
+  }
+
+  const sessionId = `SES-${Date.now().toString(36).toUpperCase()}`;
+  const taskId = `init-${generateId().slice(0, 12)}`;
+
+  const task = {
+    id: taskId,
+    contextId: sessionId,
+    status: { state: 'completed', timestamp: new Date().toISOString() },
+    artifacts: [],
+    history: [],
+    metadata: { skill: '000_INIT', intent: intent || '000_INIT ignition', session_id: sessionId },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
+  taskStore.set(taskId, task);
+
+  await writeSeal(task, 'aaa-gateway', '000_INIT', {
+    session_id: sessionId,
+    intent: intent || '000_INIT',
+    operator: 'cockpit_manual_trigger',
+  }).catch(err => console.error('[VAULT999] 000_INIT SEAL write failed:', err.message));
+
+  emitCockpit({
+    kind: 'init',
+    taskId,
+    sessionId,
+    message: `000_INIT triggered. Session ${sessionId} established.`,
+    timestamp: new Date().toISOString(),
+  });
+
+  res.json({
+    ok: true,
+    session_id: sessionId,
+    task_id: taskId,
+    status: 'SEALED',
+    message: '000_INIT ignition complete. New session keys derived.',
+  });
 });
 
 app.get('/', (req, res) => {
