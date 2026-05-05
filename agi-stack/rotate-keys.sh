@@ -87,9 +87,9 @@ cat << 'KEYS'
     Action: Generate new token at https://github.com/settings/tokens
 
 15. TELEGRAM_BOT_TOKEN
-    Current: 8149595687:AAFzuUinflxbus...
-    Status: EXPOSED in chat
-    Action: Revoke and regenerate via @BotFather
+    Current: ***REVOKED***
+    Status: WAS EXPOSED in chat — already revoked by BotFather
+    Action: Get new token from @BotFather → /mybots → @AGI_ASI_bot → API Token
 
 16. BROWSERLESS_TOKEN
     Current: sfLnosV5jRzzgjeAspPrbf226...
