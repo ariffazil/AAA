@@ -1077,11 +1077,6 @@ app.get('/a2a/tasks/:taskId/subscribe', jsonRpcValidate, (req, res) => {
   req.on('close', () => { unsubscribe(); });
 });
 
-// === 404 HANDLER ===
-app.use((req, res) => {
-  res.status(404).json(createJSONRPCError(0, ERROR_CODES.METHOD_NOT_FOUND, `Endpoint ${req.path} not found`));
-});
-
 // =======================
 // A2A v1.0.0 SPEC ENDPOINTS
 // =======================
@@ -1092,6 +1087,7 @@ app.use((req, res) => {
 //   POST /tasks/:id/cancel → cancel task
 //   GET  /tasks/:id/subscribe → SSE subscription
 // =======================
+// NOTE: 404 handler moved to after all valid routes
 
 function extractMessageFromParams(params) {
   if (!params) return null;
@@ -1223,6 +1219,12 @@ app.get('/tasks/:taskId/subscribe', authMiddleware, (req, res) => {
 // =======================
 // END A2A v1.0.0 SPEC ENDPOINTS
 // =======================
+
+// === 404 FALLBACK HANDLER ===
+// Placed AFTER all valid routes so only truly unknown paths hit this
+app.use((req, res) => {
+  res.status(404).json(createJSONRPCError(0, ERROR_CODES.METHOD_NOT_FOUND, `Endpoint ${req.path} not found`));
+});
 
 // === START ===
 const PORT = process.env.PORT || 3001;
