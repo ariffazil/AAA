@@ -91,6 +91,22 @@ mmx text chat --message "Extract key facts as JSON" --output json
 cat messages.json | mmx text chat --messages-file - --output json
 ```
 
+### ⚠️ NON-INTERACTIVE / CI / AGENT MODE — REQUIRED FLAG
+
+If running in a script, cron job, delegate_task subagent, or any non-TTY environment, **you MUST add `--non-interactive`** or the CLI silently returns exit code 2 with `"Missing required argument: --message"` even when `--message` IS provided:
+
+```bash
+# WRONG — fails silently in non-TTY:
+mmx text chat --model kimi --message "Hello"
+mmx text chat --model kimi --yolo --print --no-think --message "Hello"
+
+# RIGHT — works in all environments (scripts, cron, subagents):
+mmx text chat --model kimi --non-interactive --message "Hello"
+mmx text chat --model kimi --yolo --print --no-think --non-interactive --message "Hello"
+```
+
+Discovered through trial and error — the CLI accepts the flags but silently rejects them without `--non-interactive` in headless/CI environments.
+
 ### Models
 - `MiniMax-M2.7` — standard
 - `MiniMax-M2.7-highspeed` — faster response
