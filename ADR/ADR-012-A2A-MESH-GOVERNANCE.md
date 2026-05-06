@@ -115,4 +115,15 @@ SEAL: DITEMPA BUKAN DIBERI
 **Pattern rule:** Internal = full fidelity. External = one-line verdict + SEAL footer. Never mix.
 
 ---
-*Last updated: 2026-05-06 | Source: Metabolizer Output (Telegram)*
+
+## 7. SEA-LION — Heartbeat Witness (Not a Mesh Agent)
+
+SEA-LION is **Tier 1 inference** inside `arif_heart_critique` only.
+It is the **heartbeat** — a signal that a witness is present.
+It does NOT get its own session, port, Telegram identity, or A2A routing.
+
+**Rule:** When `arif_heart_critique` fires, agents know a witness exists.
+That is SEA-LION's role. Nothing more.
+
+---
+*Last updated: 2026-05-06 | Source: Arif (888) direct decree*
