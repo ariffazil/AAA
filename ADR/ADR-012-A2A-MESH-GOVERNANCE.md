@@ -86,3 +86,33 @@ This ADR governs Hermes ↔ OpenClaw A2A mesh operations effective 2026-05-06.
 All subagents (Kimi, Claude, Gemini, Codex) fall under this metabolizer umbrella.
 
 **Next:** Implement structured FROM/TO/CC headers in AAA Telegram Visibility Protocol (ADR-010/011).
+
+---
+
+## 6. Reference Implementation (Pattern: "Fix & Deploy")
+
+### Internal Action — Hermes/OpenClaw (INVISIBLE to 888)
+
+```
+1. Formats JSON-RPC payload (silently, no Telegram output)
+2. Sends payload to Port 3001 (AAA Gateway)
+3. Spawns: kimi -r <session_id> -p "fix /resources"
+4. Audits HTTP 200 response against F1 + F2
+5. Builds and pushes to GHCR
+6. Logs to Vault999
+```
+
+### Telegram Output — Hermes (VISIBLE to 888)
+
+```
+✅ SEAL. Hot patch applied to arifosmcp.
+Image built and pushed to GHCR (SHA: 8d7960e1).
+Bug resolved.
+
+SEAL: DITEMPA BUKAN DIBERI
+```
+
+**Pattern rule:** Internal = full fidelity. External = one-line verdict + SEAL footer. Never mix.
+
+---
+*Last updated: 2026-05-06 | Source: Metabolizer Output (Telegram)*
