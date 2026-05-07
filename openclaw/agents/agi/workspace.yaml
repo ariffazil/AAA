@@ -1,0 +1,92 @@
+version: 1
+
+id: agi-workspace
+agent_id: agi
+host_id: openclaw-agi
+
+description: >
+  AGI (OpenClaw) workspace — Arif's primary AGI operator agent.
+  Unified workspace living at /srv/openclaw/workspace/ on VPS, git-linked to AAA.
+  Handles Telegram group, VPS ops, federation orchestration.
+
+skills:
+  - id: agi-vps-ops
+    path: skills/agi-vps-ops/SKILL.md
+    enabled: true
+
+  - id: agi-arifos-governance
+    path: skills/agi-arifos-governance/SKILL.md
+    enabled: true
+
+  - id: agi-federation-bridge
+    path: skills/agi-federation-bridge/SKILL.md
+    enabled: true
+
+mcp_servers:
+  - id: arifos-mcp
+    url: http://127.0.0.1:8080/mcp
+    enabled: true
+
+  - id: geox-mcp
+    url: http://127.0.0.1:8081/mcp
+    enabled: true
+
+  - id: wealth-mcp
+    url: http://127.0.0.1:8082/mcp
+    enabled: true
+
+  - id: well-mcp
+    url: http://127.0.0.1:8083/mcp
+    enabled: true
+
+a2a_peers:
+  - agent_id: hermes-asi
+    direction: bidirectional
+    protocol: a2a-v1
+
+  - agent_id: arifos-kernel
+    direction: send
+    protocol: a2a-v1
+
+  - agent_id: aaa-gateway
+    direction: bidirectional
+    protocol: a2a-v1
+
+memory:
+  session_search_enabled: true
+  durable_memory_path: agents/agi/memory
+  rollback_session_log: agents/agi/memory/rollback.md
+
+approval_policy: on-demand
+max_risk_tier: medium
+
+allowed_tools:
+  - arif_mind_reason
+  - arif_judge_deliberate
+  - arif_vault_seal
+  - arif_kernel_route
+  - arif_heart_critique
+  - arif_forge_execute
+  - arif_ops_measure
+  - arif_gateway_connect
+  - arif_memory_recall
+  - geox_lithos_interpret
+  - geox_physics_verify
+  - wealth_npv_reward
+  - wealth_emv_risk
+  - vps_docker
+  - vps_system
+  - terminal
+  - file-read
+  - file-write
+
+runtime:
+  model: moonshot/kimi-k2.6
+  temperature: 0.2
+  context_budget: 200000
+  transport: streamable-http
+
+host_binding:
+  id: openclaw-agi
+  type: main
+  channels: ["telegram", "terminal", "cli"]
