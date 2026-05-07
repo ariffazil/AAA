@@ -1,12 +1,16 @@
 version: 1
 
 id: aaa-gateway-default
-description: Primary AAA gateway configuration for OpenClaw runtime
+description: Primary AAA gateway configuration for OpenClaw runtime — AGI agent
 
 # Model providers
 providers:
+  - id: moonshot
+    default_model: moonshot/kimi-k2.6
+    enabled: true
+
   - id: minimax
-    default_model: minimax/auto
+    default_model: minimax/MiniMax-M2.7
     enabled: true
 
   - id: anthropic
@@ -44,7 +48,6 @@ security:
 # Gateway-level defaults
 defaults:
   session_timeout_sec: 3600
-  max_context_tokens: 64000
+  max_context_tokens: 200000
   approval_policy: on-demand
   risk_tier_ceiling: medium
-

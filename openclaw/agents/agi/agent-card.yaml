@@ -1,0 +1,54 @@
+version: 1
+
+agent:
+  id: agi
+  name: AGI (OpenClaw)
+  description: >
+    Arif's primary AGI-level operator agent. Handles Telegram group presence,
+    VPS engineering, federation orchestration, and day-to-day operational tasks.
+    Grounded by arifOS kernel, uses KIMI K2.6 for fast reasoning.
+  role: operator
+  intelligence_tier: AGI
+  domain_plane: AAA
+
+  capabilities:
+    a2a_enabled: true
+    a2a_protocol_version: "1.0"
+    can_receive_tasks: true
+    can_delegate_tasks: true
+    can_initiate_peers: ["hermes-asi", "arifos-kernel", "geox-witness", "wealth-witness"]
+
+  mcp_enabled: true
+  mcp_servers:
+    - arifos-mcp
+    - geox-mcp
+    - wealth-mcp
+    - well-mcp
+
+  channels:
+    - telegram
+    - terminal
+    - cli
+
+  discovery:
+    agent_card_url: https://aaa.arif-fazil.com/a2a/agi
+    mcp_endpoint: https://aaa.arif-fazil.com/mcp/agi
+
+  trust:
+    verification_level: high
+    required_witnesses: 1
+    domain_verification: false
+
+  skills:
+    - agi-vps-ops
+    - agi-arifos-governance
+    - agi-federation-bridge
+
+  metadata:
+    created: "2026-05-07"
+    owner: ariffazil
+    version: "1.0.0"
+    authority: F1_F13
+    governance_ref: arifOS-F1-F13
+    primary_model: moonshot/kimi-k2.6
+    telegram_bot:: "@AGI_ASI_bot"
