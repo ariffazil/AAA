@@ -1,0 +1,21 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-agent-binding.schema.json",
+  "id": "agi-openclaw-binding",
+  "agent_id": "agi",
+  "host_id": "openclaw-agi",
+  "workspace_path": "agents/agi",
+  "session_mode": "main",
+  "channels": ["telegram", "terminal", "cli"],
+  "plugins": [
+    "agi-vps-ops",
+    "agi-arifos-governance",
+    "agi-federation-bridge",
+    "vps-management",
+    "fastmcp-deploy",
+    "mcp-builder",
+    "a2a-peer"
+  ],
+  "approval_policy": "on-demand",
+  "required_witnesses": [],
+  "default_binding": true
+}

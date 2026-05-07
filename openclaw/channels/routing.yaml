@@ -7,6 +7,8 @@ routing:
     incoming:
       enabled: true
       allowed_agents:
+        - main
+        - agi
         - maxhermes
         - geox-witness
         - arifos-kernel
@@ -15,7 +17,8 @@ routing:
     outgoing:
       enabled: true
       allowed_agents:
-        - maxhermes
+        - main
+        - agi
       require_auth: false
       rate_limit_per_min: 60
 
@@ -23,12 +26,16 @@ routing:
     incoming:
       enabled: true
       allowed_agents:
+        - main
+        - agi
         - maxhermes
       require_auth: false
       approval_policy: none
     outgoing:
       enabled: true
       allowed_agents:
+        - main
+        - agi
         - maxhermes
       require_auth: false
       rate_limit_per_min: 1000
@@ -37,12 +44,16 @@ routing:
     incoming:
       enabled: true
       allowed_agents:
+        - main
+        - agi
         - maxhermes
       require_auth: false
       approval_policy: none
     outgoing:
       enabled: true
       allowed_agents:
+        - main
+        - agi
         - maxhermes
       require_auth: false
       rate_limit_per_min: 1000
@@ -95,4 +106,7 @@ domain_channels:
   WEALTH:
     - terminal
     - cli
-
+  AGI:
+    - telegram
+    - terminal
+    - cli
