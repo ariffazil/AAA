@@ -11,7 +11,7 @@ export interface RoutingDecision {
 }
 
 export class GovernanceAdapter {
-  private afForgeUrl = process.env.AF_FORGE_URL || 'http://af-forge:7071';
+  private afForgeUrl = process.env.AF_FORGE_URL || 'http://af-bridge-prod:7071';
 
   async assessRisk(message: TaskMessage): Promise<RoutingDecision> {
     const prompt = this.extractText(message);

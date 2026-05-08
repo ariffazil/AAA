@@ -98,7 +98,8 @@ const AAA_AGENT_CARD = {
     vault: 'VAULT999',
     irreversible_requires_human: true,
     self_approval_forbidden: true,
-    federation_trust_model: 'untrusted_peers'
+    federation_trust_model: 'untrusted_peers',
+    enforcefloors: true
   },
   a2a_endpoints: {
     send_task: 'POST /tasks',
