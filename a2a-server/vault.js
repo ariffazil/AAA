@@ -7,6 +7,7 @@
  */
 
 const VAULT_WRITER_URL = process.env.VAULT_WRITER_URL || 'http://vault999-writer:5001';
+const VAULT_WRITER_TOKEN = process.env.VAULT_WRITER_TOKEN || '';
 
 function createSealPayload(task, agentId, action, metadata) {
   const now = new Date().toISOString();
@@ -55,13 +56,18 @@ async function writeRecord(endpoint, payload) {
 
   const auditLine = `[VAULT999] AUDIT intent: agent=${payload.agent_id} action=${payload.action} verdict=${payload.verdict} epoch=${payload.epoch} task_id=${payload.payload.task_id} context_id=${payload.payload.context_id} routing=${payload.payload.routing}`;
 
+  const headers = {
+    'Content-Type': 'application/json',
+    'User-Agent': 'AAA-A2A-Gateway/1.0'
+  };
+  if (VAULT_WRITER_TOKEN) {
+    headers['X-Writer-Token'] = VAULT_WRITER_TOKEN;
+  }
+
   try {
     const response = await fetch(path, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'User-Agent': 'AAA-A2A-Gateway/1.0'
-      },
+      headers,
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(5000)
     });
