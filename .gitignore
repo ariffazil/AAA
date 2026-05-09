@@ -11,27 +11,77 @@ state/
 # Sensitive investigation content — stored in VAULT999 only
 briefings/
 reports/bursa_today/
-
 # Legacy archive
 _archive/
 agents-legacy/
-
 # Editor artifacts
 *.md~HEAD
 *_local
 *.swp
 *.swo
 *~
-
 # Build outputs
 node_modules/
 dist/
 *.log
-
 # OpenClaw workspace state
 .openclaw/
 .clawhub/
-
 # Environment
 .env
 .env.local
+# ── Agent runtime workspaces — managed by AAA, not committed ──
+.hermes/
+.opencode/
+.kimi/
+.codex/
+.claude/
+.gemini/
+.copilot/
+# ── Agent secrets and credentials ──
+*.env
+*.env.local
+.env.*
+auth.json
+.credentials.json
+gemini-credentials.json
+google_accounts.json
+device_id
+session-store.db
+mcp-oauth-config/
+# ── Agent sessions and logs (privacy) ──
+sessions/
+session-state/
+session-env/
+session-delivery-queue/
+logs/
+log/
+history/
+history.jsonl
+user-history/
+telemetry/
+shell_snapshots/
+file-history/
+projects/
+pastes/
+temp_vision_images/
+# ── Agent runtime state ──
+state.db
+state.db-*
+*.pid
+*.lock
+models_dev_cache.json
+models_cache.json
+channel_directory.json
+update-check.json
+update-check.json.*
+exec-approvals.json
+temporal-state.json
+installation_id
+# ── Agent cache and build artifacts ──
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+cache/
+__pycache__/
+venv/
