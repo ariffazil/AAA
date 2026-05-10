@@ -1,15 +1,23 @@
 import { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
-  Lock, 
   Zap, 
   Activity,
   ArrowUpRight,
   ShieldAlert,
   Check,
-  X,
-  Clock
+  X
 } from 'lucide-react';
+import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
+
+type OperatorTask = {
+  id: string;
+  history: Array<{ parts: Array<{ text?: string }> }>;
+  metadata: {
+    riskLevel?: string;
+    irreversibilityBond?: string;
+  };
+};
 
 const FLOORS = [
   { id: 'F1', name: 'Amanah', status: 'PASS' },
@@ -35,8 +43,7 @@ const AGENTS = [
 ];
 
 export default function Cockpit() {
-  const [tasks, setTasks] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [tasks, setTasks] = useState<OperatorTask[]>([]);
   const [kernelStatus, setKernelStatus] = useState<'ONLINE' | 'OFFLINE'>('OFFLINE');
   const [lastCheck, setLastCheck] = useState<string>('never');
   const [latency, setLatency] = useState<number | null>(null);
@@ -48,6 +55,8 @@ export default function Cockpit() {
   const [sealsCount, setSealsCount] = useState<number>(0);
   const [vaultConnected, setVaultConnected] = useState<boolean>(false);
   const [toolRegistry, setToolRegistry] = useState<string[]>([]);
+  const [sessionManifest, setSessionManifest] = useState<SessionManifest | null>(null);
+  const [showConsentDialog, setShowConsentDialog] = useState(false);
 
   const fetchTasks = async () => {
     try {
@@ -56,13 +65,11 @@ export default function Cockpit() {
       setTasks(data.tasks || []);
     } catch (error) {
       console.error('Failed to fetch tasks:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchTasks();
+    queueMicrotask(fetchTasks);
     const interval = setInterval(fetchTasks, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -148,7 +155,7 @@ export default function Cockpit() {
         const res = await fetch('https://af-bridge.arif-fazil.com/status');
         if (res.ok) {
           const data = await res.json();
-          setHoldsCount(data.metabolic?.open_holds ?? holdsCount);
+          setHoldsCount((previous) => data.metabolic?.open_holds ?? previous);
         }
       } catch { /* ignore */ }
     };
@@ -173,6 +180,24 @@ export default function Cockpit() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    if (!sessionManifest || sessionManifest.state !== 'TEMPORAL' || !sessionManifest.valid_until) {
+      return;
+    }
+
+    const checkExpiry = () => {
+      if (new Date(sessionManifest.valid_until!) < new Date()) {
+        setSessionManifest((prev) =>
+          prev ? { ...prev, state: 'EXPIRED' } : null
+        );
+      }
+    };
+
+    checkExpiry();
+    const interval = setInterval(checkExpiry, 30000);
+    return () => clearInterval(interval);
+  }, [sessionManifest]);
+
   const handleApprove = async (taskId: string) => {
     try {
       await fetch(`/operator/tasks/${taskId}/approve`, {
@@ -181,7 +206,7 @@ export default function Cockpit() {
         body: JSON.stringify({ humanId: 'Arif-Sovereign', signature: 'SIG-' + Date.now() })
       });
       fetchTasks();
-    } catch (error) {
+    } catch {
       alert('Approval failed');
     }
   };
@@ -194,7 +219,7 @@ export default function Cockpit() {
         body: JSON.stringify({ reason: 'Sovereign Veto' })
       });
       fetchTasks();
-    } catch (error) {
+    } catch {
       alert('Rejection failed');
     }
   };
@@ -235,9 +260,13 @@ export default function Cockpit() {
                  <div className="text-white/40">Last: {kernelLastCheck} {kernelLatency !== null ? `· ${kernelLatency}ms` : ''}</div>
               </div>
               </div>
-             <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60">
-                VAULT999: CONNECTED
-             </div>
+<div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60">
+                 VAULT999: CONNECTED
+              </div>
+              <SessionBadge
+                manifest={sessionManifest}
+                onRevoke={() => setSessionManifest(null)}
+              />
              <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60">
                 MCP: v1.0.0-FORGED
              </div>
@@ -259,7 +288,10 @@ export default function Cockpit() {
           <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-10">
             Real-time constitutional monitoring for the arifOS federation. Every floor, every agent, every tool.
           </p>
-          <button className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black text-sm tracking-tighter hover:bg-red-500 hover:text-white transition-all group">
+          <button
+            onClick={() => setShowConsentDialog(true)}
+            className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black text-sm tracking-tighter hover:bg-red-500 hover:text-white transition-all group"
+          >
             <Zap className="w-4 h-4 fill-current" />
             000_INIT IGNITION
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -442,6 +474,15 @@ export default function Cockpit() {
         </section>
 
       </main>
+
+      <ConsentDialog
+        isOpen={showConsentDialog}
+        onClose={() => setShowConsentDialog(false)}
+        onConsent={(manifest) => {
+          setSessionManifest(manifest);
+          setShowConsentDialog(false);
+        }}
+      />
 
       <footer className="max-w-6xl mx-auto px-6 pt-20 border-t border-white/5 text-center text-[10px] font-mono tracking-[0.2em] text-white/20">
         Δ AAA COCKPIT · arifOS v2026.4.22 · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
