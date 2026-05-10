@@ -79,7 +79,7 @@ const entropyStore = new Map();  // taskId → { before, after }
 const AAA_AGENT_CARD = {
   name: 'AAA Gateway',
   description: 'Governed A2A v1.0.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13.',
-  url: 'https://aaa.arif-fazil.com',
+  url: 'https://aaa.arif-fazil.com/a2a',
   provider: { organization: 'arifOS', system: 'AAA' },
   version: '1.0.0',
   protocol_version: '1.0.0',
