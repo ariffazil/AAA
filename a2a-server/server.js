@@ -923,11 +923,6 @@ app.get('/a2a/tasks/:taskId/subscribe', jsonRpcValidate, (req, res) => {
   req.on('close', () => { unsubscribe(); });
 });
 
-// === 404 HANDLER ===
-app.use((req, res) => {
-  res.status(404).json(createJSONRPCError(0, ERROR_CODES.METHOD_NOT_FOUND, `Endpoint ${req.path} not found`));
-});
-
 // =======================
 // A2A v1.0.0 SPEC ENDPOINTS
 // =======================
@@ -1069,6 +1064,11 @@ app.get('/tasks/:taskId/subscribe', authMiddleware, (req, res) => {
 // =======================
 // END A2A v1.0.0 SPEC ENDPOINTS
 // =======================
+
+// === 404 HANDLER ===
+app.use((req, res) => {
+  res.status(404).json(createJSONRPCError(0, ERROR_CODES.METHOD_NOT_FOUND, `Endpoint ${req.path} not found`));
+});
 
 // === START ===
 const PORT = process.env.PORT || 3001;
