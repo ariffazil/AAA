@@ -3,9 +3,6 @@ name: Publish AAA A2A Image
 on:
   push:
     branches: [main]
-    paths:
-      - "a2a-server/**"
-      - ".github/workflows/publish-a2a-image.yml"
   workflow_dispatch:
 
 permissions:
