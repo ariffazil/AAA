@@ -1,108 +1,125 @@
-# TODO.md — GEOX · 2026-04-12
+# TODO — AAA Control Plane
 
-## PRIORITY 1 — Immediate (Before Next Session)
-
-### arifosmcp server.json fix
-- [ ] Regenerate `server.json` — tool count says "7" but /tools shows 17
-- [ ] Version mismatch — runtime is `2026.04.07`, server.json has `2026.03.10`
-- [ ] Location: `/opt/arifos/sites/arif-fazil.com/arifosmcp/` or wherever it lives
-
-### /a2a surface claim
-- [ ] Returns HTML fallback, not JSON agent routes
-- [ ] Either wire it properly or remove from public surfaces list
-- [ ] Apply 888 HOLD — do not claim LIVE if not confirmed
-
-### /prompts surface
-- [ ] Returns HTML fallback, not prompts list
-- [ ] Either wire it or remove from surfaces
-
-### SEO layer for geox-site
-- [ ] Generate `sitemap.xml` for geox-site
-- [ ] Add `robots.txt`
-- [ ] Add canonical URLs to all pages
-- [ ] Add OpenGraph meta tags to map/index.html
-
-### status.json for geox-site
-- [ ] Generate `/opt/arifos/sites/arif-fazil.com/geox/status.json`
-- [ ] Auto-refresh via cron or on deploy
+> **Last Updated:** 2026-05-10  
+> **Session:** Governance Attestation + Federation Mesh Hardening  
+> **Seal:** DITEMPA BUKAN DIBERI
 
 ---
 
-## PRIORITY 2 — MAP Enhancements
+## ⚠️ CRITICAL NOTE
 
-### Click chain end-to-end test
-- [ ] User clicks a point in Borneo → inspector shows geology + quakes + coords
-- [ ] Verify / Context / Signals modes each fire correctly
-- [ ] Bottom tray logs each MCP call with timestamp
-
-### GEBCO deep zoom quality
-- [ ] WMS tiles grainy at zoom 10+
-- [ ] Consider tile caching or alternative tile source
-- [ ] Add GEBCO attribution to map attribution layer
-
-### Transform tool proj4 wiring
-- [ ] Wire `transformCoords()` to actual proj4 library or backend MCP tool
-- [ ] Add EPSG:3857 ↔ 4326 bidirectional transform
-- [ ] Show input/output CRS labels in inspector
-
-### Faults layer resolution
-- [ ] Document why USGS Quaternary Faults is BLOCKED
-- [ ] Find alternative service path or honest label
-- [ ] GEM Global Active Faults same
-
-### Layer toggles on mobile
-- [ ] Verify all layer checkboxes toggle correctly on mobile
-- [ ] Test GEBCO toggle on mobile — does it add/remove correctly?
+The previous `TODO.md` in this repo contained **GEOX content** (GEBCO WMS, seismic layers, etc.) — a clear copy-paste error from an earlier session. That file has been replaced with the actual AAA task list below.
 
 ---
 
-## PRIORITY 3 — Platform Pages
+## ✅ Completed This Session
 
-### /prospect audit
-- [ ] Check for stale data or broken links
-- [ ] Verify layer status honest
-- [ ] Check 888 HOLD triggers
-
-### /wiki audit
-- [ ] Cross-check against UNIFIED_ROADMAP.md for accuracy
-- [ ] Update if roadmap has drifted from wiki
-- [ ] Fix any broken internal links
-
-### /tools audit
-- [ ] Verify skills/index.html wired to actual skills registry
-- [ ] Check MCP tools listed match actual /tools endpoint
+- [x] **AAA frontend deployed** to `/var/www/aaa.arif-fazil.com/` via rsync
+- [x] **A2A agent cards** pushed to `sites/aaa.arif-fazil.com/.well-known/`
+- [x] **Caddy routing** updated for `/a2a`, `/tasks`, `.well-known/agent-card.json`
+- [x] **arifOS embodiment contracts** deployed — AAA benefits from kernel-level tool gating
 
 ---
 
-## PRIORITY 4 — Architecture
+## 🔴 P0 — Critical (Before Next Session)
 
-### Git push for geox map
-- [ ] Add SSH key to this machine OR push from machine that has it
-- [ ] Push commits f7b04819 and c9dc827c to GitHub
+### 56 Open Issues Triage
+The AAA repo has **56 open issues** — the highest-risk surface in the federation.
 
-### Traefik routing for geox.arif-fazil.com
-- [ ] Currently returns 404 via traefik
-- [ ] Direct IP:port works — fix routing
+- [ ] **Categorize** all 56 issues into P0–P4
+- [ ] **Identify unknown failure modes** — A2A handshake, session state loss, token refresh races, MCP discovery inconsistency
+- [ ] **Create reproduction steps** for every P0/P1 — no reproduction = not P0
+- [ ] **Target:** 56 → <10 critical within 30 days
 
-### arifOS MCP GitHub push
-- [ ] Same SSH key issue — resolve once
+### Auto-Deploy Pipeline
+Current AAA frontend deploy is **manual rsync**. This is error-prone and violates F3 Witness.
 
----
+- [ ] **CI/CD for VPS static host** — GitHub Action that builds `npm run build` + rsyncs to `/var/www/aaa.arif-fazil.com/`
+- [ ] **Build verification** — health check after deploy
+- [ ] **Rollback path** — preserve last N dist/ backups
 
-## Done (2026-04-12)
-- [x] GEOX MAP v4 — GEBCO WMS fixed, probe working, real geology data
-- [x] Mobile CSS — sidebar top bar, map 55vh, inspector bottom slide
-- [x] Visual polish — margins, tray height 110px, active tab green underline
-- [x] Inspector 7 sections live
-- [x] Bottom tray 3 tabs live
-- [x] MCP chains wired
-- [x] 10-layer catalog with honest status
-- [x] Commits f7b04819 + c9dc827c
+**Blocked by:** Needs sovereign approval for GitHub Actions secrets (server SSH key).
 
 ---
 
-## Principles
-- **DITEMPA BUKAN DIBERI** — forged, not given
-- **888 HOLD** before claiming anything LIVE that isn't confirmed
-- **Provenance always visible** — source, license, status per layer
-- **Federate don't mirror** — prefer BBOX queries, tiles, WMS over local copies
+## 🟠 P1 — High (Next 7 Days)
+
+### A2A Mutual Authentication v1.1
+Current A2A uses token-based auth. Needs mTLS + capability attenuation.
+
+- [ ] **mTLS transport** — client certificates signed by AAA CA, rotated every 24h
+- [ ] **Capability attenuation** — token includes `allowed_tools: string[]` claim
+- [ ] **Scope validation** — A-FORGE validates tool call against token scope before execution
+- [ ] **arifOS 888_JUDGE issues scoped tokens** — sovereign authority over delegation boundaries
+
+### Command Center Retest
+The Command Center GUI was not retested after the identity registry fixes.
+
+- [ ] **Session init flow** — verify cockpit can create and validate sessions
+- [ ] **Tool orchestration** — verify 13 canonical tools are callable via UI
+- [ ] **Health dashboard** — verify `/health` data maps correctly to cockpit widgets
+- [ ] **Embodiment visualization** — show agent_card, lane, tier, risk leash in UI
+
+### Session Continuity Across Reboot
+AAA must persist in-flight session state to VAULT999.
+
+- [ ] **Persist session state** before every stage transition
+- [ ] **Reconstruct on restart** — read VAULT999 for active sessions
+- [ ] **Checkpoint schema:** session_id, current_stage, verdict_so_far, floor_scores, pending_messages
+
+---
+
+## 🟡 P2 — Medium (Next 30 Days)
+
+### Federation Mesh Visualization
+- [ ] **Topology map** — live graph of all federation nodes (arifOS, GEOX, WEALTH, WELL, A-FORGE, HERMES)
+- [ ] **Health overlay** — color nodes by health status (green/yellow/red)
+- [ ] **A2A handshake status** — show which agents have verified treaties
+- [ ] **Latency matrix** — round-trip times between all node pairs
+
+### Operator Override Latency
+F13 veto path must complete in <2 seconds.
+
+- [ ] **Latency budget per segment:**
+  - Telegram → OpenClaw: 200ms
+  - OpenClaw → arifOS: 300ms
+  - arifOS F13 evaluation: 500ms
+  - arifOS → A-FORGE kill: 200ms
+  - A-FORGE halt: 300ms
+- [ ] **Total target:** <1500ms (500ms headroom)
+
+### MCP Endpoint Registry v2.0
+Unified namespace for all federation tools.
+
+- [ ] **Namespace convention:** `<organ>_<noun>_<verb>`
+- [ ] **Collision detection** in CI
+- [ ] **Deprecation path** for tool renames
+- [ ] **Reconcile tool counts:** arifOS 13, WEALTH 48, WELL 45, GEOX 15
+
+---
+
+## 🟢 P3 — Backlog (H2 2026)
+
+### Operator Panel Governance
+- [ ] **Multi-operator panel** — aggregate readiness across panel members
+- [ ] **Response aggregation** — unanimous / majority / consensus modes
+- [ ] **Unavailability handling** — graceful degradation when operators offline
+
+### Third-Party Organ Conformance
+- [ ] **Standardized A2A + MCP conformance tests**
+- [ ] **Certification gate** — third-party organs cannot join without passing
+
+---
+
+## Risk Register
+
+| Risk | Probability | Impact | Mitigation |
+|------|------------|--------|------------|
+| 56 issues block federation hardening | High | High | Triage session this week |
+| A2A handshake unknown failures | Medium | Critical | mTLS + capability attenuation |
+| Manual deploy causes downtime | High | Medium | Auto-deploy pipeline |
+| Session continuity fails on reboot | Medium | High | VAULT999 checkpointing |
+
+---
+
+**DITEMPA BUKAN DIBERI — Control plane sovereignty is forged, not given.**
