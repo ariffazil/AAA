@@ -57,6 +57,16 @@ AAA sits at the **federation boundary** — it is the registrar of contracts and
 | Registry Standard | `Agent Card Schema v1.0` |
 | Autonomy Ladder | L0 (Manual) to L5 (Governed Autonomy) |
 | Canonical MCP | `mcp.arif-fazil.com` |
+| Public A2A gateway | `https://aaa.arif-fazil.com/a2a` |
+
+---
+
+## What Changed (2026-05-10)
+
+- arifOS embodiment contracts now gate AAA-routed tool calls at the kernel boundary.
+- The control-plane docs were corrected after a prior copy-paste drift in `TODO.md`.
+- Discovery surfaces are centered on the A2A gateway under `/.well-known/`.
+- Manual rsync remains the current deploy path; auto-deploy is still the immediate frontier.
 
 ---
 
@@ -103,12 +113,12 @@ arifOS is part of a federated AI governance system. Each organ has a narrow resp
 
 | Proof | Route |
 |---|---|
-| A2A Agent Card | [`/.well-known/agent.json`](.well-known/agent.json) |
-| A2A Agent Card (legacy) | [`/.well-known/agent-card.json`](.well-known/agent-card.json) |
+| A2A Agent Card | [`/.well-known/agent-card.json`](.well-known/agent-card.json) |
+| A2A Agent Card (legacy alias) | [`/.well-known/agent.json`](.well-known/agent.json) |
 | AAA Status | [`/status.json`](status.json) |
 | Machine-readable llms | [`/llms.txt`](llms.txt) |
-| Federation manifest | [`/.well-known/arifos.json`](.well-known/arifos.json) |
-| Build hash | `e52c143` |
+| Federation manifest | `/.well-known/arifos-federation.json` |
+| Build hash | `66d6ea3` |
 | Governance version | EMBODIED v2026.05.10 |
 | DID / VC proof | [arif-fazil.com/999](https://arif-fazil.com/999) |
 
