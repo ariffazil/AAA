@@ -3,7 +3,7 @@
 > **Legal Definition · Identity · Federation · Control Plane**
 > **DITEMPA BUKAN DIBERI — Intelligence is forged, not given.**
 
-[![AAA](https://img.shields.io/badge/AAA-v1.1.0-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
+[![AAA](https://img.shields.io/badge/AAA-v2026.05.10-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
 [![arifOS](https://img.shields.io/badge/arifOS-MIND_Ω-FF6B00?style=flat-square)](https://github.com/ariffazil/arifOS)
 [![A-FORGE](https://img.shields.io/badge/A--FORGE-BODY_Ψ-FF6B35?style=flat-square)](https://github.com/ariffazil/A-FORGE)
 [![License](https://img.shields.io/badge/License-AGPL_V3-4EAF0C?style=flat-square)](./LICENSE)
@@ -48,7 +48,7 @@ AAA sits at the **federation boundary** — it is the registrar of contracts and
 
 ---
 
-## Current Source of Truth (v2026.05.02.2)
+## Current Source of Truth (v2026.05.10)
 
 | Field | Value |
 |-------|-------|
@@ -108,8 +108,8 @@ arifOS is part of a federated AI governance system. Each organ has a narrow resp
 | AAA Status | [`/status.json`](status.json) |
 | Machine-readable llms | [`/llms.txt`](llms.txt) |
 | Federation manifest | [`/.well-known/arifos.json`](.well-known/arifos.json) |
-| Build hash | `c1d451b` |
-| Governance version | KANON v2026.05 |
+| Build hash | `e52c143` |
+| Governance version | EMBODIED v2026.05.10 |
 | DID / VC proof | [arif-fazil.com/999](https://arif-fazil.com/999) |
 
 ### How the organs work together
