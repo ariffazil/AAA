@@ -1,6 +1,7 @@
 # Workspace and runtime — never commit
 hermes/
 hermes-backup/
+hermes-backups/
 hermes-config/
 hermes-memories/
 hermes-memory/
