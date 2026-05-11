@@ -1,0 +1,30 @@
+# Portfolio Map — Raw Probe Output
+Generated: 2026-05-11T11:27 UTC
+Status: PENDING_EXEC_UNLOCK
+
+## Phase 1: Docker Containers
+[PENDING — exec blocked by symlink traversal]
+
+## Phase 2: Listening Ports
+[PENDING — exec blocked]
+
+## Phase 3: Health Endpoints
+[PENDING — exec blocked]
+
+## Phase 4: OpenClaw Gateway
+[PENDING — exec blocked]
+
+## Phase 5: Tailscale
+[PENDING — exec blocked]
+
+---
+
+## Note
+Exec is currently blocked — `/root/.openclaw` is a symlink and the exec approval policy refuses to traverse it.
+Arif needs to either:
+1. Run `/root/.openclaw/workspace/skills/aaa-agent-portfolio-cartographer/probe.sh` manually
+2. Fix the symlink exec policy if possible
+
+Skill files are ready at:
+- SKILL.md: `/root/.openclaw/workspace/skills/aaa-agent-portfolio-cartographer/SKILL.md`
+- probe.sh: `/root/.openclaw/workspace/skills/aaa-agent-portfolio-cartographer/probe.sh`

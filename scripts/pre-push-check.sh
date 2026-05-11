@@ -22,8 +22,8 @@ echo "=== PRE-PUSH GUARD ==="
 echo "Repo: $(pwd)"
 echo ""
 
-# ── 1. Detect default branch ────────────────────────────────────────────────
-DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/"$REMOTE"/HEAD 2>/dev/null | sed "s|refs/remotes/$REMOTE/||")
+# ── 1. Detect default branch via origin/HEAD ─────────────────────────────────
+DEFAULT_BRANCH=$(git rev-parse --abbrev-ref "$REMOTE"/HEAD 2>/dev/null | sed "s|$REMOTE/||")
 if [[ -z "$DEFAULT_BRANCH" ]]; then
     echo "⚠️  Cannot detect default branch for $REMOTE"
     DEFAULT_BRANCH="main"
@@ -44,6 +44,7 @@ echo "Push target: $PUSH_TO"
 echo ""
 
 # ── 3. FAIL: pushing to non-default branch ──────────────────────────────────
+# Allow if: push target matches default OR target is master (AAA special case)
 if [[ "$PUSH_TO" != "$DEFAULT_BRANCH" && "$PUSH_TO" != "master" ]]; then
     echo "⚠️  WARNING: Push target is NOT the default branch ($DEFAULT_BRANCH)"
     echo "   This is allowed but requires extra scrutiny."
@@ -68,7 +69,7 @@ else
 fi
 
 # Check 2: Are there rollback-capable commits in recent history?
-HAS_REVERT=$(git log --oneline -5 | grep -i "revert\|Revert" | wc -l)
+HAS_REVERT=$(git log --oneline -5 | grep -i "revert\|Revert" | wc -l || true)
 if [[ "$HAS_REVERT" -gt 0 ]]; then
     echo "✅ F1: Recent revert commits detected — reversibility pattern present"
 else
