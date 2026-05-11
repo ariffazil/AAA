@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/common.schema.json",
+  "title": "AAA Common Definitions",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[-_][a-z0-9]+)*$"
+    },
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "architect",
+        "engineer",
+        "auditor",
+        "validator",
+        "operator",
+        "domain-specialist"
+      ]
+    },
+    "intelligenceTier": {
+      "type": "string",
+      "enum": [
+        "AGI",
+        "ASI",
+        "APEX"
+      ]
+    },
+    "intelligenceBand": {
+      "type": "string",
+      "enum": [
+        "AGI",
+        "ASI",
+        "APEX"
+      ]
+    },
+    "riskTier": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ]
+    },
+    "authorityLevel": {
+      "type": "string",
+      "enum": [
+        "observe",
+        "propose",
+        "execute",
+        "approve",
+        "seal"
+      ]
+    },
+    "pipelineStage": {
+      "type": "string",
+      "enum": [
+        "000",
+        "111",
+        "222",
+        "333",
+        "555",
+        "666",
+        "777",
+        "888",
+        "999"
+      ]
+    },
+    "epistemicLabel": {
+      "type": "string",
+      "enum": [
+        "CLAIM",
+        "PLAUSIBLE",
+        "HYPOTHESIS",
+        "ESTIMATE",
+        "UNKNOWN"
+      ]
+    },
+    "approvalPolicy": {
+      "type": "string",
+      "enum": [
+        "none",
+        "on-demand",
+        "hold",
+        "human-required"
+      ]
+    },
+    "witness": {
+      "type": "string",
+      "enum": [
+        "GEOX",
+        "WEALTH",
+        "WELL",
+        "ARIFOS",
+        "HUMAN"
+      ]
+    },
+    "domainPlane": {
+      "type": "string",
+      "enum": [
+        "ARIFOS",
+        "A_FORGE",
+        "GEOX",
+        "WEALTH",
+        "WELL",
+        "AAA",
+        "ARIF_SITES"
+      ]
+    },
+    "witnessType": {
+      "type": "string",
+      "enum": [
+        "human",
+        "ai",
+        "earth",
+        "domain"
+      ]
+    },
+    "knowledgeBasis": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "physics": {
+          "type": "boolean"
+        },
+        "math": {
+          "type": "boolean"
+        },
+        "language": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "physics",
+        "math",
+        "language"
+      ]
+    },
+    "stringIdArray": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/id"
+      },
+      "uniqueItems": true
+    },
+    "approvalRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "$ref": "#/$defs/role"
+        },
+        "policy": {
+          "$ref": "#/$defs/approvalPolicy"
+        },
+        "required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "role",
+        "policy",
+        "required"
+      ]
+    }
+  }
+}

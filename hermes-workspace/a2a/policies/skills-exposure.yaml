@@ -1,0 +1,16 @@
+version: 1
+
+public_skills:
+  - status-query
+
+authenticated_skills:
+  - agent-dispatch
+  - agent-handoff
+
+forbidden_skills:
+  - raw-shell
+  - unrestricted-write
+  - plugin-install
+  - gateway-admin
+
+rule: Expose only gateway-safe delegation surfaces in Agent Cards.

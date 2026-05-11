@@ -1,0 +1,61 @@
+version: 1
+
+servers:
+  - id: arifos-mcp
+    name: arifOS MCP
+    transport: streamable-http
+    runtime_scope: remote
+    risk_tier: medium
+    approval_policy: on-demand
+    url: https://arifosmcp.arif-fazil.com/mcp
+    env_refs: []
+    tools:
+      - arifos-init
+      - arifos-judge
+    resources:
+      - arifos-doctrine
+      - arifos-session
+    prompts:
+      - run-888-audit
+
+  - id: geox-mcp
+    name: GEOX MCP
+    transport: streamable-http
+    runtime_scope: remote
+    risk_tier: medium
+    approval_policy: on-demand
+    url: https://geox.arif-fazil.com/mcp
+    env_refs: []
+    tools:
+      - geox-query
+    resources:
+      - geox-atlas
+    prompts: []
+
+  - id: wealth-mcp
+    name: WEALTH MCP
+    transport: streamable-http
+    runtime_scope: remote
+    risk_tier: high
+    approval_policy: hold
+    url: https://wealth.arif-fazil.com/mcp
+    env_refs: []
+    tools:
+      - wealth-query
+    resources:
+      - wealth-ledger
+    prompts: []
+
+  - id: well-mcp
+    name: WELL MCP
+    transport: streamable-http
+    runtime_scope: remote
+    risk_tier: medium
+    approval_policy: on-demand
+    url: https://afwell.fastmcp.app/mcp
+    env_refs: []
+    tools:
+      - well-readiness
+    resources:
+      - well-state
+    prompts: []

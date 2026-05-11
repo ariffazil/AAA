@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/openclaw-mcp-catalog.schema.json",
+  "title": "AAA OpenClaw MCP Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "version": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "servers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "server_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "auto_start": {
+            "type": "boolean"
+          },
+          "approval_policy": {
+            "$ref": "./common.schema.json#/$defs/approvalPolicy"
+          }
+        },
+        "required": [
+          "server_id",
+          "enabled",
+          "auto_start",
+          "approval_policy"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "version",
+    "servers"
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/host.schema.json",
+  "title": "AAA Host Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "version": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "runtime_type": {
+      "type": "string",
+      "enum": [
+        "acp",
+        "native-mcp",
+        "custom"
+      ]
+    },
+    "transport": {
+      "type": "string",
+      "enum": [
+        "stdio",
+        "http",
+        "sse",
+        "streamable-http",
+        "websocket"
+      ]
+    },
+    "config_paths": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "contract_path": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "install_method": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "supported_protocols": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "mcp",
+          "a2a",
+          "webmcp"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "permission_profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "default": {
+            "type": "boolean"
+          },
+          "approval_policy": {
+            "$ref": "./common.schema.json#/$defs/approvalPolicy"
+          }
+        },
+        "required": [
+          "id",
+          "default",
+          "approval_policy"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "version",
+    "runtime_type",
+    "transport",
+    "config_paths",
+    "contract_path",
+    "install_method",
+    "supported_protocols",
+    "permission_profiles"
+  ]
+}

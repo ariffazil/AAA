@@ -1,0 +1,104 @@
+version: 1
+id: aaa-sense-111
+name: AAA 111 SENSE Federation Contract
+stage: "111"
+domain_plane: AAA
+purpose: Publish honest A2A discovery surfaces and govern ingress posture for AAA federation.
+
+deployment:
+  hosting_model: static-site
+  public_base_url: https://aaa.arif-fazil.com
+  runtime_bridge_ref: openclaw/a2a/bridge.yaml
+  notes: Static deployment can publish discovery assets, but live message ingress remains held until a runtime bridge is exposed.
+
+public_surfaces:
+  - id: a2a-root
+    path: public/a2a/index.html
+    url: https://aaa.arif-fazil.com/a2a/
+    media_type: text/html
+    status: live
+    role: Human-readable federation landing surface.
+
+  - id: a2a-agent-card
+    path: public/a2a/agent-card.json
+    url: https://aaa.arif-fazil.com/a2a/agent-card.json
+    media_type: application/json
+    status: live
+    role: Canonical A2A agent card.
+    source_path: a2a/agent-cards/aaa-gateway.json
+
+  - id: a2a-agent-legacy
+    path: public/a2a/agent.json
+    url: https://aaa.arif-fazil.com/a2a/agent.json
+    media_type: application/json
+    status: live
+    role: Legacy-compatible A2A agent card alias.
+    source_path: a2a/agent-cards/aaa-gateway.json
+
+  - id: well-known-agent-card
+    path: public/.well-known/agent-card.json
+    url: https://aaa.arif-fazil.com/.well-known/agent-card.json
+    media_type: application/json
+    status: live
+    role: Well-known A2A agent card.
+    source_path: a2a/agent-cards/aaa-gateway.json
+
+  - id: well-known-agent-legacy
+    path: public/.well-known/agent.json
+    url: https://aaa.arif-fazil.com/.well-known/agent.json
+    media_type: application/json
+    status: live
+    role: Legacy-compatible well-known agent card alias.
+    source_path: a2a/agent-cards/aaa-gateway.json
+
+  - id: a2a-status
+    path: public/a2a/status.json
+    url: https://aaa.arif-fazil.com/a2a/status.json
+    media_type: application/json
+    status: live
+    role: Honest federation posture report for discovery and ingress.
+
+trust_tiers:
+  - id: internal
+    auth_schemes:
+      - gateway-token
+    require_mtls: false
+    write_policy: hold
+
+  - id: federated
+    auth_schemes:
+      - oauth2
+    require_mtls: false
+    write_policy: hold
+
+  - id: infrastructure
+    auth_schemes:
+      - api-key
+      - mtls
+    require_mtls: true
+    write_policy: hold
+
+ingress_surfaces:
+  - id: a2a-message
+    path: /a2a/message
+    transport: jsonrpc-https
+    status: hold
+    auth_policy_ref: a2a/policies/auth.yaml
+    allowed_peers_ref: a2a/policies/allowed-peers.yaml
+    skills_exposure_ref: a2a/policies/skills-exposure.yaml
+    registry_ref: a2a/registry/agents.yaml
+    runtime_bridge_ref: openclaw/a2a/bridge.yaml
+    hold_reason: Static AAA deployment publishes discovery assets only; POST message ingress is not implemented in this repo.
+
+invariants:
+  - id: discovery-surfaces-live
+    rule: Public discovery files must exist and stay publishable from static hosting.
+
+  - id: ingress-honesty
+    rule: If deployment.hosting_model is static-site, ingress_surfaces statuses cannot be live.
+
+  - id: source-card-parity
+    rule: Published A2A card aliases must match a2a/agent-cards/aaa-gateway.json byte-for-byte after JSON parse.
+
+  - id: remote-execution-disabled
+    rule: openclaw/a2a/bridge.yaml must keep runtime_policy.remote_execution_enabled=false.

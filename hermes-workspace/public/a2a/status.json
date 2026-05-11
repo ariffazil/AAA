@@ -1,0 +1,43 @@
+{
+  "id": "aaa-111-status",
+  "stage": "111",
+  "federation_status": "discovery-live",
+  "public_base_url": "https://aaa.arif-fazil.com",
+  "public_surfaces": {
+    "a2a_root": "/a2a/",
+    "agent_card": "/a2a/agent-card.json",
+    "agent_legacy": "/a2a/agent.json",
+    "well_known_agent_card": "/.well-known/agent-card.json",
+    "well_known_agent_legacy": "/.well-known/agent.json"
+  },
+  "message_ingress": {
+    "path": "/a2a/message",
+    "status": "888_HOLD",
+    "reason": "Static AAA deployment does not implement POST message handling in this repo.",
+    "runtime_bridge_ref": "openclaw/a2a/bridge.yaml"
+  },
+  "trust_tiers": [
+    {
+      "id": "internal",
+      "auth_schemes": [
+        "gateway-token"
+      ],
+      "write_policy": "hold"
+    },
+    {
+      "id": "federated",
+      "auth_schemes": [
+        "oauth2"
+      ],
+      "write_policy": "hold"
+    },
+    {
+      "id": "infrastructure",
+      "auth_schemes": [
+        "api-key",
+        "mtls"
+      ],
+      "write_policy": "hold"
+    }
+  ]
+}

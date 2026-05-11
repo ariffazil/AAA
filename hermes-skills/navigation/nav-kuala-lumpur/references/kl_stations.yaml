@@ -1,0 +1,651 @@
+# Kuala Lumpur Transit Station Graph
+# Line Codes: SBK=MRT Kajang (Red), KG=MRT Putrajaya (Purple),
+#              PH=LRT Ampang, PE=LRT Kelana Jaya, SP=LRT Sri Petaling,
+#              KT=KTM Komuter, MO=KL Monorail
+
+stations:
+  # ── MRT KAJANG LINE (SBK) ──────────────────────────────────────────────
+  Kajang:
+    code: "SBK 01"
+    lines: [SBK]
+    lat: 2.9568
+    lon: 101.7075
+    aliases: [kajang terminal, kajang station]
+    neighbors: [Sungai_Besi]
+
+  Sungai_Besi:
+    code: "SBK 02"
+    lines: [SBK]
+    lat: 2.9625
+    lon: 101.7154
+    aliases: [sungai besi]
+    neighbors: [Kajang, Tasik_Selatan]
+
+  Tasik_Selatan:
+    code: "SBK 03"
+    lines: [SBK, KT]
+    lat: 3.0090
+    lon: 101.7150
+    aliases: [tasik selatan, lake south, lrt tasik selatan]
+    neighbors: [Sungai_Besi, Sri_Petaling, Bandar_Tun_Hussein_Onn]
+
+  Sri_Petaling:
+    code: "SBK 04"
+    lines: [SBK, SP]
+    lat: 3.0217
+    lon: 101.7134
+    aliases: [sri petaling lrt, sri petaling interchange]
+    neighbors: [Tasik_Selatan, Bandar_Tun_Hussein_Onn]
+
+  Bandar_Tun_Hussein_Onn:
+    code: "SBK 05"
+    lines: [SBK]
+    lat: 3.0468
+    lon: 101.7203
+    aliases: [bandar tun hussein onn, btho, serdang, serdang raya, serdang area]
+    neighbors: [Sri_Petaling, Taman_Connaught]
+
+  Taman_Connaught:
+    code: "SBK 06"
+    lines: [SBK]
+    lat: 3.0620
+    lon: 101.7268
+    aliases: [taman connaught, connaught]
+    neighbors: [Bandar_Tun_Hussein_Onn, Cheras_Utara]
+
+  Cheras_Utara:
+    code: "SBK 07"
+    lines: [SBK]
+    lat: 3.0760
+    lon: 101.7340
+    aliases: [cheras utara, northern cheras]
+    neighbors: [Taman_Connaught, Maluri]
+
+  Maluri:
+    code: "SBK 08"
+    lines: [SBK]
+    lat: 3.0900
+    lon: 101.7300
+    aliases: [maluri, maluri mrt, serdang raya utara, serdang utara]
+    neighbors: [Cheras_Utara, Cochrane]
+
+  Cochrane:
+    code: "SBK 09"
+    lines: [SBK]
+    lat: 3.0980
+    lon: 101.7280
+    aliases: [cochrane]
+    neighbors: [Maluri, Tun_Razak_Exchange]
+
+  Tun_Razak_Exchange:
+    code: "SBK 10"
+    lines: [SBK]
+    lat: 3.1080
+    lon: 101.7220
+    aliases: [tun razak exchange, tronox]
+    neighbors: [Cochrane, TRX_City]
+
+  TRX_City:
+    code: "SBK 11"
+    lines: [SBK, KG]
+    lat: 3.1180
+    lon: 101.7170
+    aliases: [trx, trx city, exchange, trx exchange, tun razak exchange city]
+    neighbors: [Tun_Razak_Exchange, Muzium_Negara]
+
+  Muzium_Negara:
+    code: "SBK 12"
+    lines: [SBK, KG, KT]
+    lat: 3.1230
+    lon: 101.7100
+    aliases: [muzium negara, national museum, museum]
+    neighbors: [TRX_City, Hang_Tuah, Kuala_Lumpur]
+
+  Hang_Tuah:
+    code: "SBK 13"
+    lines: [SBK, PH, MO]
+    lat: 3.1280
+    lon: 101.7030
+    aliases: [hang tuah, hang tuah interchange]
+    neighbors: [Muzium_Negara, Imbi]
+
+  Imbi:
+    code: "SBK 14"
+    lines: [SBK]
+    lat: 3.1310
+    lon: 101.6940
+    aliases: [imbi]
+    neighbors: [Hang_Tuah, Bukit_Bintang]
+
+  Bukit_Bintang:
+    code: "SBK 15"
+    lines: [SBK, KG]
+    lat: 3.1360
+    lon: 101.6890
+    aliases: [bukit bintang, bintang, bb]
+    neighbors: [Imbi, Raja_Chulan]
+
+  Raja_Chulan:
+    code: "SBK 16"
+    lines: [SBK]
+    lat: 3.1410
+    lon: 101.6850
+    aliases: [raja chulan, pavilion]
+    neighbors: [Bukit_Bintang, Kampong_Bahu]
+
+  Kampong_Bahu:
+    code: "SBK 17"
+    lines: [SBK]
+    lat: 3.1460
+    lon: 101.6810
+    aliases: [kampong bahu, kg bahu]
+    neighbors: [Raja_Chulan, Kuala_Lumpur]
+
+  Kuala_Lumpur:
+    code: "SBK 18"
+    lines: [SBK, KT]
+    lat: 3.1490
+    lon: 101.6780
+    aliases: [kl sentral, kuala lumpur station, main station]
+    neighbors: [Kampong_Bahu, Muzium_Negara, Bank_Bergamo]
+
+  Bank_Bergamo:
+    code: "SBK 19"
+    lines: [SBK]
+    lat: 3.1540
+    lon: 101.6820
+    aliases: [bank bergamo]
+    neighbors: [Kuala_Lumpur, Sultan_Ismail]
+
+  Sultan_Ismail:
+    code: "SBK 20"
+    lines: [SBK]
+    lat: 3.1590
+    lon: 101.6880
+    aliases: [sultan ismail]
+    neighbors: [Bank_Bergamo, PWTC]
+
+  PWTC:
+    code: "SBK 21"
+    lines: [SBK]
+    lat: 3.1640
+    lon: 101.6950
+    aliases: [pwtc, putrajaya wire]
+    neighbors: [Sultan_Ismail, Titi_Wangsan]
+
+  Titi_Wangsan:
+    code: "SBK 22"
+    lines: [SBK]
+    lat: 3.1710
+    lon: 101.7000
+    aliases: [titi wangsan]
+    neighbors: [PWTC, Ampang_Park]
+
+  Ampang_Park:
+    code: "SBK 23"
+    lines: [SBK]
+    lat: 3.1780
+    lon: 101.7050
+    aliases: [ampang park]
+    neighbors: [Titi_Wangsan, Kerry_Express]
+
+  Kerry_Express:
+    code: "SBK 24"
+    lines: [SBK]
+    lat: 3.1850
+    lon: 101.7080
+    aliases: [kerry express]
+    neighbors: [Ampang_Park, Kas_Harmon]
+
+  Kas_Harmon:
+    code: "SBK 25"
+    lines: [SBK]
+    lat: 3.1930
+    lon: 101.7100
+    aliases: [kas harmoni]
+    neighbors: [Kerry_Express, Dutamas]
+
+  Dutamas:
+    code: "SBK 26"
+    lines: [SBK]
+    lat: 3.2010
+    lon: 101.7120
+    aliases: [dutamas]
+    neighbors: [Kas_Harmon, Solaris]
+
+  Solaris:
+    code: "SBK 27"
+    lines: [SBK]
+    lat: 3.2090
+    lon: 101.7150
+    aliases: [solaris]
+    neighbors: [Dutamas, Mont_Kiara]
+
+  Mont_Kiara:
+    code: "SBK 28"
+    lines: [SBK]
+    lat: 3.2170
+    lon: 101.7180
+    aliases: [mont kiara, kiara]
+    neighbors: [Solaris, Sentul_Utara]
+
+  Sentul_Utara:
+    code: "SBK 29"
+    lines: [SBK]
+    lat: 3.2250
+    lon: 101.7210
+    aliases: [sentul utara, northern sentul]
+    neighbors: [Mont_Kiara, K_Kompleks]
+
+  K_Kompleks:
+    code: "SBK 30"
+    lines: [SBK]
+    lat: 3.2330
+    lon: 101.7250
+    aliases: [k kompleks]
+    neighbors: [Sentul_Utara,metro_K]
+
+  Metro_K:
+    code: "SBK 31"
+    lines: [SBK]
+    lat: 3.2410
+    lon: 101.7290
+    aliases: [metro k]
+    neighbors: [K_Kompleks, Kwasa_Damansara]
+
+  Kwasa_Damansara:
+    code: "SBK 32"
+    lines: [SBK, KG]
+    lat: 3.2500
+    lon: 101.7330
+    aliases: [kwasa damansara, kwasa]
+    neighbors: [Metro_K, Sungai_Buloh_SBK]
+
+  Sungai_Buloh_SBK:
+    code: "SBK 33"
+    lines: [SBK]
+    lat: 3.2600
+    lon: 101.7380
+    aliases: [sungai buloh]
+    neighbors: [Kwasa_Damansara]
+
+  # ── MRT PUTRAJAYA LINE (KG) — partial key stations ────────────────────
+  Kwasa_Damansara_KG:
+    code: "KG 01"
+    lines: [KG]
+    lat: 3.2500
+    lon: 101.7330
+    aliases: [kwasa damansara putrajaya]
+    neighbors: [Kampung_Bahu_KG]
+
+  Kampong_Bahu_KG:
+    code: "KG 02"
+    lines: [KG]
+    lat: 3.1460
+    lon: 101.6810
+    aliases: [kampong bahu putrajaya]
+    neighbors: [Kwasa_Damansara_KG, Sultan_Mohammed]
+
+  Sultan_Mohammed:
+    code: "KG 03"
+    lines: [KG]
+    lat: 3.1390
+    lon: 101.6760
+    aliases: [sultan mohammed]
+    neighbors: [Kampong_Bahu_KG, Bandar_Baru_Selatan]
+
+  Bandar_Baru_Selatan:
+    code: "KG 04"
+    lines: [KG]
+    lat: 3.1330
+    lon: 101.6690
+    aliases: [bandar baru selatan]
+    neighbors: [Sultan_Mohammed, Titi_S牺牲]
+
+  # Continuing to TRX / city center interchanges
+  TRX_KG:
+    code: "KG 10"
+    lines: [KG]
+    lat: 3.1180
+    lon: 101.7170
+    aliases: [trx putrajaya line]
+    neighbors: [Muzium_Negara_KG]
+
+  Muzium_Negara_KG:
+    code: "KG 11"
+    lines: [KG]
+    lat: 3.1230
+    lon: 101.7100
+    aliases: [muzium negara putrajaya line]
+    neighbors: [TRX_KG, Hang_Tuah_KG]
+
+  Hang_Tuah_KG:
+    code: "KG 12"
+    lines: [KG]
+    lat: 3.1280
+    lon: 101.7030
+    aliases: [hang tuah putrajaya]
+    neighbors: [Muzium_Negara_KG, Bukit_Bintang_KG]
+
+  Bukit_Bintang_KG:
+    code: "KG 13"
+    lines: [KG]
+    lat: 3.1360
+    lon: 101.6890
+    aliases: [bukit bintang putrajaya]
+    neighbors: [Hang_Tuah_KG]
+
+  # ── LRT AMPANG LINE (PH) ───────────────────────────────────────────────
+  Ampang:
+    code: "PH 01"
+    lines: [PH]
+    lat: 3.0500
+    lon: 101.7300
+    aliases: [ampang terminal]
+    neighbors: [Cempaka]
+
+  Cempaka:
+    code: "PH 02"
+    lines: [PH]
+    lat: 3.0560
+    lon: 101.7270
+    aliases: [cempaka]
+    neighbors: [Ampang, Cahaya]
+
+  Cahaya:
+    code: "PH 03"
+    lines: [PH]
+    lat: 3.0620
+    lon: 101.7230
+    aliases: [cahaya]
+    neighbors: [Cempaka, Ampang_LRT]
+
+  Ampang_LRT:
+    code: "PH 04"
+    lines: [PH]
+    lat: 3.0680
+    lon: 101.7180
+    aliases: [ampang lrt station]
+    neighbors: [Cahaya, Sultan_Ismail_LRT]
+
+  Sultan_Ismail_LRT:
+    code: "PH 05"
+    lines: [PH]
+    lat: 3.0750
+    lon: 101.7120
+    aliases: [sultan ismail lrt]
+    neighbors: [Ampang_LRT, Hang_Tuah_LRT]
+
+  Hang_Tuah_LRT:
+    code: "PH 06"
+    lines: [PH, MO]
+    lat: 3.1280
+    lon: 101.7030
+    aliases: [hang tuah lrt, hang tuah ph]
+    neighbors: [Sultan_Ismail_LRT, Masjid_Jamek_LRT]
+
+  Masjid_Jamek_LRT:
+    code: "PH 07"
+    lines: [PH, PE]
+    lat: 3.1450
+    lon: 101.6910
+    aliases: [masjid jamek lrt, mosque jamek]
+    neighbors: [Hang_Tuah_LRT, Bandaraya]
+
+  Bandaraya:
+    code: "PH 08"
+    lines: [PH]
+    lat: 3.1500
+    lon: 101.6950
+    aliases: [bandaraya]
+    neighbors: [Masjid_Jamek_LRT, Damai_LRT]
+
+  # ── LRT KELANA JAYA LINE (PE) ──────────────────────────────────────────
+  Kelana_Jaya:
+    code: "PE 01"
+    lines: [PE]
+    lat: 3.1070
+    lon: 101.6030
+    aliases: [kelana jaya terminal]
+    neighbors: [Subang_Masy]
+
+  Subang_Masy:
+    code: "PE 02"
+    lines: [PE]
+    lat: 3.1030
+    lon: 101.6100
+    aliases: [subang masy]
+    neighbors: [Kelana_Jaya, Glen_Marie]
+
+  Glen_Marie:
+    code: "PE 03"
+    lines: [PE]
+    lat: 3.0960
+    lon: 101.6170
+    aliases: [glen marie]
+    neighbors: [Subang_Masy, Taman_MLC]
+
+  Taman_MLC:
+    code: "PE 04"
+    lines: [PE]
+    lat: 3.0880
+    lon: 101.6250
+    aliases: [taman mlc]
+    neighbors: [Glen_Marie, Aloha]
+
+  Aloha:
+    code: "PE 05"
+    lines: [PE]
+    lat: 3.0800
+    lon: 101.6320
+    aliases: [aloha]
+    neighbors: [Taman_MLC, Wawasan]
+
+  Wawasan:
+    code: "PE 06"
+    lines: [PE]
+    lat: 3.0730
+    lon: 101.6390
+    aliases: [wawasan]
+    neighbors: [Aloha, USJ_7]
+
+  USJ_7:
+    code: "PE 07"
+    lines: [PE]
+    lat: 3.0650
+    lon: 101.6470
+    aliases: [usj 7]
+    neighbors: [Wawasan, Taipan]
+
+  Taipan:
+    code: "PE 08"
+    lines: [PE]
+    lat: 3.0580
+    lon: 101.6530
+    aliases: [taipan]
+    neighbors: [USJ_7, W_Promenade]
+
+  W_Promenade:
+    code: "PE 09"
+    lines: [PE]
+    lat: 3.0530
+    lon: 101.6590
+    aliases: [w promenade]
+    neighbors: [Taipan, SS_18]
+
+  SS_18:
+    code: "PE 10"
+    lines: [PE]
+    lat: 3.0460
+    lon: 101.6650
+    aliases: [ss 18]
+    neighbors: [W_Promenade, SS_15]
+
+  SS_15:
+    code: "PE 11"
+    lines: [PE]
+    lat: 3.0390
+    lon: 101.6710
+    aliases: [ss 15]
+    neighbors: [SS_18, Dewan_Besar]
+
+  Dewan_Besar:
+    code: "PE 12"
+    lines: [PE]
+    lat: 3.0330
+    lon: 101.6760
+    aliases: [dewan besar]
+    neighbors: [SS_15, KG_16]
+
+  KG_16:
+    code: "PE 13"
+    lines: [PE]
+    lat: 3.0270
+    lon: 101.6810
+    aliases: [kelana jaya line station]
+    neighbors: [Dewan_Besar, Pasar_Senen]
+
+  Pasar_Senen:
+    code: "PE 14"
+    lines: [PE, PH, KG]
+    lat: 3.0200
+    lon: 101.6880
+    aliases: [pasar senen, senen]
+    neighbors: [KG_16, Ampang_Kelana_Jaya]
+
+  Ampang_Kelana_Jaya:
+    code: "PE 15"
+    lines: [PE]
+    lat: 3.0140
+    lon: 101.6940
+    aliases: [ampang kelana jaya]
+    neighbors: [Pasar_Senen, KLCC_KJ]
+
+  KLCC_KJ:
+    code: "PE 16"
+    lines: [PE]
+    lat: 3.0080
+    lon: 101.7010
+    aliases: [klcc, petronas towers]
+    neighbors: [Ampang_Kelana_Jaya, Kampong_Bahu_KJ]
+
+  Kampong_Bahu_KJ:
+    code: "PE 17"
+    lines: [PE]
+    lat: 3.0030
+    lon: 101.7080
+    aliases: [kampong bahu kelana jaya]
+    neighbors: [KLCC_KJ, Masjid_Jamek_KJ]
+
+  Masjid_Jamek_KJ:
+    code: "PE 18"
+    lines: [PE]
+    lat: 3.1450
+    lon: 101.6910
+    aliases: [masjid jamek kelana jaya]
+    neighbors: [Kampong_Bahu_KJ, Bandaraya_KJ]
+
+  Bandaraya_KJ:
+    code: "PE 19"
+    lines: [PE]
+    lat: 3.1500
+    lon: 101.6950
+    aliases: [bandaraya kelana jaya]
+    neighbors: [Masjid_Jamek_KJ]
+
+  # ── LRT SRI PETALING LINE (SP) ─────────────────────────────────────────
+  Sri_Petaling_Terminal:
+    code: "SP 01"
+    lines: [SP]
+    lat: 3.0217
+    lon: 101.7134
+    aliases: [sri petaling lrt terminal]
+    neighbors: [Bukit_Gombak_SP]
+
+  Bukit_Gombak_SP:
+    code: "SP 02"
+    lines: [SP]
+    lat: 3.0300
+    lon: 101.7200
+    aliases: [bukit gombak]
+    neighbors: [Sri_Petaling_Terminal, Batu_Misk]
+
+  # ── KTM KOMUTER (KT) ───────────────────────────────────────────────────
+  Kuala_Lumpur_KT:
+    code: "KT 01"
+    lines: [KT]
+    lat: 3.1490
+    lon: 101.6780
+    aliases: [kl sentral kt, sentral komuter]
+    neighbors: [Kuala_Lumpur]  # shares with SBK
+
+  Muzium_Negara_KT:
+    code: "KT 02"
+    lines: [KT]
+    lat: 3.1230
+    lon: 101.7100
+    aliases: [muzium negara komuter]
+    neighbors: [Kuala_Lumpur_KT]
+
+  # ── MONORAIL (MO) ──────────────────────────────────────────────────────
+  Hang_Tuah_MO:
+    code: "MO 01"
+    lines: [MO]
+    lat: 3.1280
+    lon: 101.7030
+    aliases: [hang tuah monorail]
+    neighbors: [Imbi_MO]
+
+  Imbi_MO:
+    code: "MO 02"
+    lines: [MO]
+    lat: 3.1310
+    lon: 101.6940
+    aliases: [imbi monorail]
+    neighbors: [Hang_Tuah_MO, Bukit_Bintang_MO]
+
+  Bukit_Bintang_MO:
+    code: "MO 03"
+    lines: [MO]
+    lat: 3.1360
+    lon: 101.6890
+    aliases: [bukit bintang monorail]
+    neighbors: [Imbi_MO]
+
+# Line metadata
+lines:
+  SBK:
+    name: "MRT Kajang"
+    color: "Red"
+    operator: "MRT Corp"
+    mode: "mrt"
+  KG:
+    name: "MRT Putrajaya"
+    color: "Purple"
+    operator: "MRT Corp"
+    mode: "mrt"
+  PH:
+    name: "LRT Ampang"
+    color: "Grey"
+    operator: "Rapid Rail"
+    mode: "lrt"
+  PE:
+    name: "LRT Kelana Jaya"
+    color: "Grey"
+    operator: "Rapid Rail"
+    mode: "lrt"
+  SP:
+    name: "LRT Sri Petaling"
+    color: "Orange"
+    operator: "Rapid Rail"
+    mode: "lrt"
+  KT:
+    name: "KTM Komuter"
+    color: "Blue"
+    operator: "KTMB"
+    mode: "ktm"
+  MO:
+    name: "KL Monorail"
+    color: "Green"
+    operator: "Rapid Rail"
+    mode: "monorail"

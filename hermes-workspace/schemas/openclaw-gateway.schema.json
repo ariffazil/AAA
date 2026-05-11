@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/openclaw-gateway.schema.json",
+  "title": "AAA OpenClaw Gateway Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "default_model": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "default_model",
+          "enabled"
+        ]
+      }
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "approval_policy": {
+            "$ref": "./common.schema.json#/$defs/approvalPolicy"
+          }
+        },
+        "required": [
+          "id",
+          "enabled",
+          "approval_policy"
+        ]
+      }
+    },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fail_closed": {
+          "type": "boolean"
+        },
+        "require_auth": {
+          "type": "boolean"
+        },
+        "audit_events": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "fail_closed",
+        "require_auth",
+        "audit_events"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "providers",
+    "channels",
+    "security"
+  ]
+}

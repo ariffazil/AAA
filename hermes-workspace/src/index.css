@@ -1,0 +1,1186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 43 74% 63%; /* #e6c25d Gold Forged */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 43 74% 63%; /* #e6c25d Gold Forged */
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 50% 15%;
+    --input: 0 50% 15%;
+    --ring: 43 74% 63%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    line-height: 1.6;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+  }
+  p {
+    @apply mb-4;
+  }
+  code,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  }
+}
+
+/* Custom scrollbar - Red theme */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e6c25d;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f1d78c;
+}
+
+/* Selection - Gold glow */
+::selection {
+  background: rgba(230, 194, 93, 0.3);
+  color: white;
+}
+
+/* === TRIANGLE PATTERN BACKGROUNDS === */
+
+/* Sierpinski-style triangular grid */
+.triangle-bg {
+  background-color: #050505;
+  background-image:
+    linear-gradient(
+      30deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      30deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    ),
+    linear-gradient(
+      150deg,
+      rgba(139, 0, 0, 0.1) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.1) 87.5%,
+      rgba(139, 0, 0, 0.1)
+    );
+  background-size: 80px 140px;
+  background-position:
+    0 0,
+    0 0,
+    40px 70px,
+    40px 70px;
+}
+
+/* Fractal noise overlay */
+.fractal-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* === EARTH ELEMENT - Geological Strata === */
+.strata-lines {
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(139, 69, 19, 0.1) 20%,
+    transparent 40%,
+    rgba(160, 82, 45, 0.08) 60%,
+    transparent 80%
+  );
+}
+
+/* Seismic wave pattern */
+.seismic-pattern {
+  background-image: repeating-radial-gradient(
+    circle at 50% 50%,
+    transparent 0,
+    transparent 20px,
+    rgba(139, 0, 0, 0.05) 20px,
+    rgba(139, 0, 0, 0.05) 21px
+  );
+}
+
+/* === ECONOMICS ELEMENT - Market Geometry === */
+.market-grid {
+  background-image:
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(255, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 50px 30px;
+}
+
+/* Candlestick-inspired vertical lines */
+.candlestick-pattern {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 10px,
+    rgba(220, 20, 60, 0.1) 10px,
+    rgba(220, 20, 60, 0.1) 12px,
+    transparent 12px,
+    transparent 30px
+  );
+}
+
+/* === AI ELEMENT - Neural/Circuit Patterns === */
+.neural-mesh {
+  background-image:
+    linear-gradient(45deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(255, 0, 0, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(255, 0, 0, 0.05) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(255, 0, 0, 0.05) 75%);
+  background-size: 40px 40px;
+  background-position:
+    0 0,
+    0 20px,
+    20px -20px,
+    -20px 0px;
+}
+
+/* Circuit board traces */
+.circuit-traces {
+  background-image:
+    linear-gradient(90deg, rgba(178, 34, 34, 0.2) 1px, transparent 1px),
+    linear-gradient(rgba(178, 34, 34, 0.2) 1px, transparent 1px);
+  background-size: 100px 100px;
+  position: relative;
+}
+
+.circuit-traces::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 0, 0, 0.3) 2px,
+    transparent 2px
+  );
+  background-size: 100px 100px;
+  background-position: 50px 50px;
+}
+
+/* === COMBINED hta BACKGROUND === */
+.hta-void {
+  background-color: #050505;
+  background-image: 
+    /* Triangle layer */
+    linear-gradient(
+      30deg,
+      rgba(139, 0, 0, 0.08) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      rgba(139, 0, 0, 0.08) 87.5%,
+      rgba(139, 0, 0, 0.08)
+    ),
+    /* Strata layer */
+    linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(139, 69, 19, 0.05) 50%,
+        transparent 100%
+      ),
+    /* Circuit layer */
+    linear-gradient(90deg, rgba(178, 34, 34, 0.1) 1px, transparent 1px);
+  background-size:
+    80px 140px,
+    100% 100%,
+    100px 100px;
+}
+
+/* === ANIMATIONS === */
+
+@keyframes pulse-red {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+    border-color: rgba(255, 0, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
+    border-color: rgba(255, 0, 0, 0.8);
+  }
+}
+
+.pulse-red {
+  animation: pulse-red 3s ease-in-out infinite;
+}
+
+@keyframes fractal-shift {
+  0% {
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+  }
+  50% {
+    background-position:
+      40px 70px,
+      0 0,
+      50px 50px;
+  }
+  100% {
+    background-position:
+      0 0,
+      0 0,
+      0 0;
+  }
+}
+
+.fractal-animate {
+  animation: fractal-shift 20s ease-in-out infinite;
+}
+
+/* Triangle rotation - Sacred geometry */
+@keyframes triangle-rotate {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  33% {
+    transform: rotate(120deg) scale(1.1);
+  }
+  66% {
+    transform: rotate(240deg) scale(0.9);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.triangle-rotate {
+  animation: triangle-rotate 12s ease-in-out infinite;
+}
+
+/* === TYPOGRAPHY & EFFECTS === */
+
+/* Gradient text - Blood red to crimson */
+.gradient-text-red {
+  background: linear-gradient(135deg, #8b0000 0%, #dc143c 50%, #ff0000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Forge glow effect */
+.forge-glow {
+  box-shadow:
+    0 0 20px rgba(139, 0, 0, 0.4),
+    0 0 40px rgba(139, 0, 0, 0.2),
+    0 0 60px rgba(139, 0, 0, 0.1);
+}
+
+/* Glass effect - Dark red tint */
+.glass-forge {
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+/* Strata card - Earth element */
+.strata-card {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 10, 5, 0.95) 0%,
+    rgba(40, 20, 10, 0.9) 50%,
+    rgba(20, 10, 5, 0.95) 100%
+  );
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.strata-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 10px,
+    rgba(139, 69, 19, 0.05) 10px,
+    rgba(139, 69, 19, 0.05) 11px
+  );
+  pointer-events: none;
+}
+
+/* Market data card - Economics element */
+.market-card {
+  background: rgba(10, 5, 5, 0.95);
+  border: 1px solid rgba(220, 20, 60, 0.3);
+  position: relative;
+}
+
+.market-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #8b0000, #dc143c, #8b0000);
+}
+
+/* Neural card - AI element */
+.neural-card {
+  background: rgba(5, 5, 10, 0.95);
+  border: 1px solid rgba(178, 34, 34, 0.3);
+  position: relative;
+}
+
+.neural-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(45deg, rgba(178, 34, 34, 0.05) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(178, 34, 34, 0.05) 25%, transparent 25%);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+/* === DECORATIVE ELEMENTS === */
+
+/* Triangular divider */
+.triangle-divider {
+  height: 60px;
+  background:
+    linear-gradient(135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%),
+    linear-gradient(-135deg, transparent 50%, rgba(139, 0, 0, 0.2) 50%);
+  background-size: 60px 60px;
+  background-repeat: repeat-x;
+}
+
+/* Sierpinski triangle SVG decoration */
+.sierpinski-decoration {
+  width: 200px;
+  height: 173px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 173'%3E%3Cpath d='M100 0 L200 173 L0 173 Z' fill='none' stroke='%238B0000' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M50 86.5 L150 86.5 L100 173 Z' fill='none' stroke='%238B0000' stroke-width='1' opacity='0.3'/%3E%3Cpath d='M75 43 L125 43 L100 86.5 Z' fill='none' stroke='%238B0000' stroke-width='1' opacity='0.3'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Code blocks - Forge styling */
+.code-forge {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  background: #0a0505;
+  border: 1px solid #4a0000;
+  border-left: 3px solid #8b0000;
+  padding: 1rem;
+}
+
+/* Link hover - Blood drip effect */
+.link-forge {
+  position: relative;
+  color: #ff4444;
+  transition: color 0.3s;
+}
+
+.link-forge:hover {
+  color: #ff6666;
+}
+
+.link-forge::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b0000, #dc143c);
+  transition: width 0.3s ease;
+}
+
+.link-forge:hover::after {
+  width: 100%;
+}
+
+/* === UTILITY CLASSES === */
+
+.text-blood {
+  color: #8b0000;
+}
+.text-crimson {
+  color: #dc143c;
+}
+.text-forge {
+  color: #ff4444;
+}
+
+.bg-void {
+  background-color: #050505;
+}
+.bg-forge {
+  background-color: #0a0505;
+}
+.bg-strata {
+  background-color: #1a0f0a;
+}
+
+.border-blood {
+  border-color: #8b0000;
+}
+
+/* === FORGE EMBERS ANIMATION === */
+@keyframes ember-float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(20px) scale(1.5);
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(-10px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.forge-embers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: radial-gradient(circle, #ff4500 0%, #ff0000 40%, transparent 70%);
+  border-radius: 50%;
+  animation: ember-float 12s ease-out infinite;
+  box-shadow: 0 0 6px #ff4500;
+}
+
+.ember:nth-child(1) {
+  left: 5%;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+.ember:nth-child(2) {
+  left: 15%;
+  animation-delay: 2s;
+  animation-duration: 14s;
+}
+.ember:nth-child(3) {
+  left: 25%;
+  animation-delay: 4s;
+  animation-duration: 11s;
+}
+.ember:nth-child(4) {
+  left: 35%;
+  animation-delay: 1s;
+  animation-duration: 13s;
+}
+.ember:nth-child(5) {
+  left: 45%;
+  animation-delay: 3s;
+  animation-duration: 10s;
+}
+.ember:nth-child(6) {
+  left: 55%;
+  animation-delay: 5s;
+  animation-duration: 12s;
+}
+.ember:nth-child(7) {
+  left: 65%;
+  animation-delay: 0.5s;
+  animation-duration: 15s;
+}
+.ember:nth-child(8) {
+  left: 75%;
+  animation-delay: 2.5s;
+  animation-duration: 11s;
+}
+.ember:nth-child(9) {
+  left: 85%;
+  animation-delay: 4.5s;
+  animation-duration: 13s;
+}
+.ember:nth-child(10) {
+  left: 95%;
+  animation-delay: 1.5s;
+  animation-duration: 10s;
+}
+
+/* Floor badge hover effects */
+.floor-badge {
+  transition: all 0.3s ease;
+}
+
+.floor-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+}
+
+/* Active page indicator */
+.nav-active {
+  position: relative;
+}
+
+.nav-active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #ff0000;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff0000;
+}
+.border-crimson {
+  border-color: #dc143c;
+}
+
+/* === TRICOLOR LOGO STYLES === */
+/* Tricolor logo with vibrant primer colors */
+.tricolor-logo {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.15) 0%,
+    rgba(255, 184, 0, 0.15) 50%,
+    rgba(255, 45, 45, 0.15) 100%
+  );
+  box-shadow:
+    0 0 15px rgba(255, 184, 0, 0.3),
+    0 0 30px rgba(0, 212, 255, 0.2),
+    0 0 45px rgba(255, 45, 45, 0.15);
+  transition: all 0.3s ease;
+}
+
+.tricolor-logo:hover {
+  box-shadow:
+    0 0 20px rgba(255, 184, 0, 0.5),
+    0 0 40px rgba(0, 212, 255, 0.3),
+    0 0 60px rgba(255, 45, 45, 0.2);
+}
+
+/* Tricolor text accents */
+.text-tricolor {
+  background: linear-gradient(90deg, #00d4ff 0%, #ffb800 50%, #ff2d2d 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === TRINITY NAV STYLES === */
+:root {
+  --gold-forged: #e6c25d;
+}
+
+.trinity-nav {
+  background-color: #000;
+  border-bottom: 1px solid rgba(255, 209, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  width: 100%;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+.trinity-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trinity-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.trinity-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  text-decoration: none !important;
+}
+
+.trinity-logo .arif { color: var(--gold-forged); }
+.trinity-logo .os { color: #fff; }
+
+.trinity-badge {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(230, 194, 93, 0.1);
+  border: 1px solid rgba(230, 194, 93, 0.3);
+  border-radius: 50px;
+  color: var(--gold-forged);
+  font-family: "JetBrains Mono", monospace;
+  text-transform: uppercase;
+}
+
+.trinity-center {
+  display: flex;
+  gap: 2rem;
+}
+
+.trinity-link {
+  color: #e5e5e5;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: color 0.2s;
+  padding-bottom: 2px;
+}
+
+.trinity-link:hover {
+  color: var(--gold-forged);
+}
+
+.trinity-link.active {
+  color: var(--gold-forged);
+  border-bottom: 2px solid var(--gold-forged);
+}
+
+.trinity-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.85rem;
+}
+
+.trinity-right a {
+  color: #888;
+  text-decoration: none !important;
+}
+
+.trinity-right a:hover {
+  color: var(--gold-forged);
+}
+
+.trinity-enter {
+  color: var(--gold-forged) !important;
+  font-weight: 700;
+}
+
+/* Tricolor glow for hero elements */
+.tricolor-glow {
+  box-shadow:
+    0 0 20px rgba(255, 184, 0, 0.2),
+    0 0 40px rgba(0, 212, 255, 0.15),
+    0 0 60px rgba(255, 45, 45, 0.1);
+}
+/* === UNIFIED TRINITY FOOTER === */
+.trinity-footer {
+  text-align: center;
+  padding: 4rem 2rem;
+  border-top: 1px solid rgba(230, 194, 93, 0.15);
+  background: #000;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  line-height: 2;
+  position: relative;
+  z-index: 10;
+}
+
+.trinity-footer b {
+  color: #e6c25d;
+}
+
+.trinity-footer .links {
+  margin-bottom: 1.5rem;
+}
+
+.trinity-footer .links a {
+  margin: 0 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.trinity-footer .links a:hover,
+.trinity-footer .links a b {
+  color: #e6c25d;
+}
+
+/* Trinity primer contrast theme */
+:root {
+  --trinity-human: #ff4d4f;
+  --trinity-theory: #ffd24a;
+  --trinity-apps: #2563eb;
+}
+
+.trinity-nav {
+  background: linear-gradient(90deg, rgba(20, 6, 8, 0.95), rgba(12, 12, 12, 0.95), rgba(6, 12, 20, 0.95));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.trinity-badge {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.82);
+  background: linear-gradient(90deg, rgba(255, 77, 79, 0.2), rgba(255, 210, 74, 0.2), rgba(77, 163, 255, 0.2));
+}
+
+.trinity-link {
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.trinity-link.trinity-human:hover,
+.trinity-link.trinity-human.active {
+  color: var(--trinity-human);
+  border-bottom-color: var(--trinity-human);
+}
+
+.trinity-link.trinity-theory:hover,
+.trinity-link.trinity-theory.active {
+  color: var(--trinity-theory);
+  border-bottom-color: var(--trinity-theory);
+}
+
+.trinity-link.trinity-apps:hover,
+.trinity-link.trinity-apps.active {
+  color: var(--trinity-apps);
+  border-bottom-color: var(--trinity-apps);
+}
+
+.trinity-enter {
+  color: var(--trinity-human) !important;
+}
+
+.trinity-right a:hover {
+  color: var(--trinity-apps);
+}
+
+@media (max-width: 900px) {
+  .trinity-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .trinity-badge,
+  .trinity-center {
+    display: none;
+  }
+}
+
+/* ============================================================
+   TACTILE & GLOW — Universal Button System
+   All interactive elements: press-down, glow on hover/active
+   ============================================================ */
+
+/* Base tactile mixin — applied to all interactive elements */
+.trinity-link,
+.trinity-enter,
+.trinity-right-link,
+.trinity-logo,
+.trinity-node {
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, box-shadow 0.15s, transform 0.1s, background 0.15s;
+  user-select: none;
+}
+
+/* ENTER button — red glow, press-down */
+.trinity-enter {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.85rem;
+  border: 1px solid rgba(255, 77, 79, 0.4);
+  border-radius: 4px;
+  background: rgba(255, 77, 79, 0.08);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--trinity-human) !important;
+  text-decoration: none !important;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.trinity-enter:hover {
+  background: rgba(255, 77, 79, 0.18);
+  border-color: rgba(255, 77, 79, 0.7);
+  box-shadow: 0 0 12px rgba(255, 77, 79, 0.35), 0 0 24px rgba(255, 77, 79, 0.15);
+  transform: translateY(-1px);
+  color: #ff6b6b !important;
+}
+.trinity-enter:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 0 6px rgba(255, 77, 79, 0.4);
+  background: rgba(255, 77, 79, 0.28);
+}
+
+/* GitHub link — subtle press */
+.trinity-right-link {
+  color: #888 !important;
+  font-size: 0.78rem;
+  text-decoration: none !important;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+}
+.trinity-right-link:hover {
+  color: #e2e2e5 !important;
+  background: rgba(255,255,255,0.06);
+}
+.trinity-right-link:active {
+  transform: scale(0.96);
+}
+
+/* Trinity nav links — color-coded glow */
+.trinity-link {
+  position: relative;
+}
+.trinity-link:hover,
+.trinity-link:focus-visible {
+  text-shadow: 0 0 10px currentColor;
+}
+.trinity-link:active {
+  transform: scale(0.95);
+}
+
+/* Trinity strip nodes (on portal/developer sites) — tactile */
+.trinity-node {
+  position: relative;
+  padding: 0.15rem 0.6rem 0.2rem;
+  border-radius: 3px;
+}
+.trinity-node:hover {
+  text-shadow: 0 0 8px currentColor;
+}
+.trinity-node:active {
+  transform: scale(0.94);
+}
+.trinity-human:hover  { text-shadow: 0 0 10px rgba(255, 77, 79, 0.8); }
+.trinity-theory:hover { text-shadow: 0 0 10px rgba(255, 210, 74, 0.8); }
+.trinity-apps:hover   { text-shadow: 0 0 10px rgba(37, 99, 235, 0.8); }
+
+/* Nav anchor links (#about, #work, etc.) — press feel */
+nav a[href^="#"],
+nav a[href^="https"] {
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.1s, box-shadow 0.15s;
+}
+nav a[href^="#"]:active,
+nav a[href^="https"]:active {
+  transform: scale(0.95);
+}
+
+/* Hero CTA buttons — strong glow on hover */
+a[href^="https://github.com"].flex,
+a[href^="https://medium"].flex,
+a.flex {
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Red-accented CTAs (primary actions on arif-fazil.com) */
+.border-red-500\/30:hover,
+.hover\:border-red-500:hover {
+  box-shadow: 0 0 14px rgba(239, 68, 68, 0.3);
+}
+.border-red-500\/30:active,
+.hover\:border-red-500:active {
+  transform: scale(0.97) translateY(1px);
+}
+
+/* Mobile menu button */
+nav button[type="button"] {
+  transition: color 0.15s, transform 0.1s;
+  border-radius: 6px;
+  padding: 6px;
+}
+nav button[type="button"]:hover {
+  color: white;
+  background: rgba(255,255,255,0.06);
+}
+nav button[type="button"]:active {
+  transform: scale(0.9);
+}
+
+/* Social icon links */
+nav a[title] {
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
+}
+nav a[title]:hover {
+  background: rgba(255,255,255,0.06);
+  color: white;
+}
+nav a[title]:active {
+  transform: scale(0.88);
+}
+
+/* Trinity badge — subtle pulse hint */
+.trinity-badge {
+  cursor: default;
+  transition: box-shadow 0.2s;
+}
+.trinity-badge:hover {
+  box-shadow: 0 0 8px rgba(255,210,74,0.2), 0 0 16px rgba(255,77,79,0.1), 0 0 16px rgba(37,99,235,0.1);
+}
+
+/* ============================================================
+   UNIFIED HEADER SYSTEM — arif-fazil.com (HUMAN / RED)
+   Same structure as arifOS portal and arifosMCP developer site.
+   Trinity strip 33px · Nav 60px · Logo left · Links center · CTA right
+   ============================================================ */
+
+/* --- Trinity strip (top bar, 33px) --- */
+.unified-trinity-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 1.5rem;
+  height: 33px;
+  background: rgba(8, 4, 4, 0.97);
+  border-bottom: 1px solid rgba(255, 77, 79, 0.12);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.utn-node {
+  text-decoration: none;
+  font-weight: 700;
+  opacity: 0.4;
+  transition: opacity 0.15s, text-shadow 0.15s, transform 0.1s;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+.utn-node:hover { opacity: 0.85; }
+.utn-node:active { transform: scale(0.93); }
+.utn-active { opacity: 1; }
+.utn-human  { color: #ff4d4f; }
+.utn-theory { color: #ffd24a; }
+.utn-apps   { color: #3b82f6; }
+.utn-human:hover  { text-shadow: 0 0 8px rgba(255,77,79,0.7); }
+.utn-theory:hover { text-shadow: 0 0 8px rgba(255,210,74,0.7); }
+.utn-apps:hover   { text-shadow: 0 0 8px rgba(59,130,246,0.7); }
+.utn-human.utn-active  { border-bottom: 1px solid rgba(255,77,79,0.5); }
+.utn-theory.utn-active { border-bottom: 1px solid rgba(255,210,74,0.5); }
+.utn-apps.utn-active   { border-bottom: 1px solid rgba(59,130,246,0.5); }
+.utn-div { color: rgba(255,255,255,0.15); font-size: 0.58rem; }
+.utn-sep  { flex: 1; }
+.utn-sig  { color: rgba(255,255,255,0.15); font-size: 0.58rem; letter-spacing: 0.06em; }
+
+/* --- Main nav (60px) --- */
+.unified-nav {
+  position: sticky;
+  top: 33px;
+  z-index: 1000;
+  height: 60px;
+  background: rgba(10, 10, 10, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.unified-nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Logo */
+.unified-logo {
+  flex-shrink: 0;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.unified-logo-mark {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e2e2e5;
+  letter-spacing: -0.02em;
+  transition: color 0.15s;
+}
+.unified-logo-dot { color: #ff4d4f; }
+.unified-logo:hover .unified-logo-mark { color: #fff; }
+.unified-logo:active .unified-logo-mark { opacity: 0.7; }
+
+/* Center links */
+.unified-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0 auto;
+}
+.unified-nav-link {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.unified-nav-link:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+}
+.unified-nav-link:active { transform: scale(0.95); }
+
+/* Right group */
+.unified-nav-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.unified-nav-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s, transform 0.1s;
+}
+.unified-nav-ghost:hover {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.05);
+}
+.unified-nav-ghost:active { transform: scale(0.93); }
+
+/* CTA button — accent-colored per site */
+.unified-nav-cta {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.38rem 0.9rem;
+  border-radius: 5px;
+  border: 1px solid;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.unified-nav-cta:hover {
+  transform: translateY(-1px);
+}
+.unified-nav-cta:active {
+  transform: translateY(1px) scale(0.96);
+}
+/* HUMAN = red */
+.unified-nav-cta--human {
+  color: #ff4d4f;
+  border-color: rgba(255,77,79,0.35);
+  background: rgba(255,77,79,0.08);
+}
+.unified-nav-cta--human:hover {
+  background: rgba(255,77,79,0.16);
+  border-color: rgba(255,77,79,0.6);
+  box-shadow: 0 0 14px rgba(255,77,79,0.3), 0 0 28px rgba(255,77,79,0.1);
+}
+/* THEORY = gold */
+.unified-nav-cta--theory {
+  color: #ffd24a;
+  border-color: rgba(255,210,74,0.35);
+  background: rgba(255,210,74,0.08);
+}
+.unified-nav-cta--theory:hover {
+  background: rgba(255,210,74,0.16);
+  border-color: rgba(255,210,74,0.6);
+  box-shadow: 0 0 14px rgba(255,210,74,0.3), 0 0 28px rgba(255,210,74,0.1);
+}
+/* APPS = blue */
+.unified-nav-cta--apps {
+  color: #3b82f6;
+  border-color: rgba(59,130,246,0.35);
+  background: rgba(59,130,246,0.08);
+}
+.unified-nav-cta--apps:hover {
+  background: rgba(59,130,246,0.16);
+  border-color: rgba(59,130,246,0.6);
+  box-shadow: 0 0 14px rgba(59,130,246,0.3), 0 0 28px rgba(59,130,246,0.1);
+}
+
+@media (max-width: 768px) {
+  .unified-nav-links { display: none; }
+  .unified-nav-inner { gap: 1rem; }
+  .utn-sig { display: none; }
+}

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/skill.schema.json",
+  "title": "AAA Skill Package Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "version": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "owner": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "risk_tier": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "knowledge_basis": {
+      "$ref": "./common.schema.json#/$defs/knowledgeBasis"
+    },
+    "host_compatibility": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "package_ref": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "skills": {
+          "$ref": "./common.schema.json#/$defs/stringIdArray"
+        },
+        "servers": {
+          "$ref": "./common.schema.json#/$defs/stringIdArray"
+        },
+        "tools": {
+          "$ref": "./common.schema.json#/$defs/stringIdArray"
+        }
+      },
+      "required": [
+        "skills",
+        "servers",
+        "tools"
+      ]
+    },
+    "install_hooks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "host_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "method": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "target_path": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          }
+        },
+        "required": [
+          "host_id",
+          "method",
+          "target_path"
+        ]
+      }
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      }
+    },
+    "version_lock": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "artifact_hash": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        }
+      },
+      "required": [
+        "schema_version",
+        "artifact_hash"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "version",
+    "description",
+    "owner",
+    "risk_tier",
+    "knowledge_basis",
+    "host_compatibility",
+    "package_ref",
+    "dependencies",
+    "install_hooks",
+    "examples",
+    "tests",
+    "version_lock"
+  ]
+}

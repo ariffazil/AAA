@@ -1,0 +1,86 @@
+version: 1
+
+id: hermes-asi-workspace
+agent_id: hermes-asi
+host_id: openclaw-hermes-asi
+
+description: >
+  Hermes ASI — Generalist strategic agent for Arif. Warm, sharp, natural.
+  Internal kernel: arifOS (F1-F13). External voice: human language, no jargon.
+
+identity:
+  soul: agents/hermes-asi/SOUL.md
+  identity: agents/hermes-asi/IDENTITY.md
+
+skills:
+  - id: hermes-hermes
+    path: skills/hermes-hermes/SKILL.md
+    enabled: true
+
+  - id: arifOS-sense
+    path: skills/arifOS-sense/SKILL.md
+    enabled: true
+
+  - id: chain-reason
+    path: skills/chain-reason/SKILL.md
+    enabled: true
+
+  - id: self-verify
+    path: skills/self-verify/SKILL.md
+    enabled: true
+
+  - id: delta-logger
+    path: skills/delta-logger/SKILL.md
+    enabled: true
+
+mcp_servers:
+  - id: arifos-mcp
+    url: https://arifosmcp.arif-fazil.com/mcp
+    enabled: true
+
+a2a_peers:
+  - agent_id: aaa-gateway
+    direction: send
+    protocol: a2a-v1
+
+  - agent_id: maxhermes
+    direction: bidirectional
+    protocol: a2a-v1
+
+  - agent_id: hermes-ops
+    direction: bidirectional
+    protocol: a2a-v1
+
+memory:
+  session_search_enabled: true
+  durable_memory_path: agents/hermes-asi/memory
+  rollback_session_log: agents/hermes-asi/memory/rollback.md
+
+approval_policy: on-demand
+max_risk_tier: medium
+
+allowed_tools:
+  - memory-read
+  - memory-write
+  - session-search
+  - chain-reason
+  - oracle
+  - self-verify
+  - delta-log
+  - arifos-judge
+  - status-query
+  - web-search
+  - terminal
+  - file-read
+  - file-write
+
+runtime:
+  model: minimax/MiniMax-M2.7
+  temperature: 0.2
+  context_budget: 64000
+  transport: streamable-http
+
+host_binding:
+  id: openclaw-hermes-asi
+  type: acp
+  channels: ["telegram", "terminal", "cli"]

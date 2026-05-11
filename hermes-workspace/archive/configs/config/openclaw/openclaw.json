@@ -1,0 +1,131 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.31",
+    "lastTouchedAt": "2026-03-31T02:00:00.000Z",
+    "constitutional_version": "v2026.3.31-POSTMERGE"
+  },
+  "logging": {
+    "level": "info"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "minimax/MiniMax-M2.7",
+        "fallbacks": ["claude-3-5-sonnet", "gemini-2.5"]
+      },
+      "sandbox": {
+        "mode": "all"
+      },
+      "systemPrompt": {
+        "path": "/root/.openclaw/agents/main/system.md",
+        "autoReload": true
+      },
+      "keyFiles": {
+        "tier1": [
+          "/root/waw/SOUL.md",
+          "/root/waw/USER.md",
+          "/root/waw/AGENTS.md",
+          "/root/waw/IDENTITY.md"
+        ],
+        "tier2": [
+          "/root/waw/ARCHITECTURE.md",
+          "/root/waw/SPEC.md",
+          "/root/waw/GOVERNANCE.md"
+        ],
+        "tier3": [
+          "/root/waw/BOOT.md",
+          "/root/waw/HEARTBEAT.md",
+          "/root/waw/MEMORY.md",
+          "/root/waw/ROADMAP.md",
+          "/root/waw/DEPLOY.md"
+        ]
+      }
+    }
+  },
+  "tools": {
+    "profile": "full",
+    "elevated": {
+      "enabled": true,
+      "approvalTimeout": 300
+    },
+    "exec": {
+      "host": "gateway",
+      "security": "full",
+      "ask": "off"
+    },
+    "fs": {
+      "workspaceOnly": false
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "session": {
+    "dmScope": "per-channel-peer",
+    "keyFileBinding": {
+      "enabled": true,
+      "readAtStart": ["SOUL.md", "USER.md", "AGENTS.md"],
+      "referenceAsNeeded": ["ARCHITECTURE.md", "SPEC.md", "GOVERNANCE.md"]
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "groupPolicy": "open",
+      "allowFrom": ["267378578"],
+      "allowGroups": true,
+      "groupMentionRequired": true,
+      "streaming": "partial",
+      "customCommands": [
+        {"command": "seal", "description": "Trigger VAULT999 seal protocol"},
+        {"command": "new", "description": "Start new session with memory reset"},
+        {"command": "plan", "description": "Generate execution plan (Tier 1)"},
+        {"command": "trust", "description": "Check trust score"},
+        {"command": "approve", "description": "Approve elevated action"},
+        {"command": "deny", "description": "Deny elevated action"},
+        {"command": "pending", "description": "List pending approvals"}
+      ]
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "lan",
+    "controlUi": {
+      "allowedOrigins": ["*"]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "openclaw-token-2026-arifos"
+    }
+  },
+  "constitutional": {
+    "floors": ["F1", "F2", "F3", "F4", "F7", "F9", "F10", "F13"],
+    "holdPattern": "888_HOLD",
+    "uncertaintyBand": [0.03, 0.05],
+    "truthThreshold": 0.99
+  },
+  "mcp": {
+    "servers": [
+      {"name": "arifos", "url": "http://localhost:8080", "tools": 40},
+      {"name": "minimax", "command": "uvx minimax-coding-plan-mcp", "tools": 10},
+      {"name": "github", "enabled": true},
+      {"name": "context7", "enabled": true},
+      {"name": "brave", "enabled": true},
+      {"name": "sequential", "enabled": true},
+      {"name": "time", "enabled": true},
+      {"name": "notion", "enabled": true}
+    ]
+  },
+  "memory": {
+    "provider": "ollama",
+    "model": "bge-m3",
+    "enabled": true,
+    "searchAtSessionStart": true
+  }
+}

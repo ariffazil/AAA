@@ -1,0 +1,21 @@
+# Grafana Prometheus Datasource Provisioning
+# Grafana looks for files in /etc/grafana/provisioning/datasources/
+apiVersion: 1
+
+datasources:
+  - name: "arifOS Prometheus"
+    type: prometheus
+    access: proxy      # proxy = via server (not browser). Use 'browser' for CORS.
+    url: http://prometheus:9090
+    isDefault: true
+    editable: false     # Prevent UI edits — manage via git + reprovisioning
+    jsonData:
+      httpMethod: POST
+      timeInterval: "15s"
+      queryTimeout: "60s"
+      httpHeaders:
+        # Add auth headers here if Prometheus requires them
+        # Authorization: "Bearer your-token"
+    version: 1
+    # Prevent accidental deletion from UI
+    uid: "arifOS-prometheus"

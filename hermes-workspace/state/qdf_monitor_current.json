@@ -1,0 +1,14 @@
+{
+  "lastRun": "2026-04-01T16:01:04Z",
+  "qdf": 0.585,
+  "dimensions": {
+    "a2a_federation": 1.0,
+    "vault999": 0.5,
+    "self_audit": 0.4,
+    "memory_qdrant": 0.7,
+    "arifos_deploy": 0.3,
+    "idle_builder": 0.5
+  },
+  "raw": { "a2a_sessions": "" },
+  "status": "NOMINAL"
+}

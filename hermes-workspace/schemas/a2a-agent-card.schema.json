@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/a2a-agent-card.schema.json",
+  "title": "AAA A2A Agent Card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "protocol_version": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "preferred_transport": {
+      "type": "string",
+      "enum": [
+        "jsonrpc-https"
+      ]
+    },
+    "additional_interfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "transport": {
+            "type": "string",
+            "enum": [
+              "sse",
+              "websocket"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "required": [
+          "transport",
+          "url"
+        ]
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "organization": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "system": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "runtime": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        }
+      },
+      "required": [
+        "organization",
+        "system",
+        "runtime"
+      ]
+    },
+    "version": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "streaming": {
+          "type": "boolean"
+        },
+        "push_notifications": {
+          "type": "boolean"
+        },
+        "authenticated_extended_card": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "streaming",
+        "push_notifications",
+        "authenticated_extended_card"
+      ]
+    },
+    "security_schemes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "bearer",
+              "oauth2",
+              "apiKey",
+              "mutualTLS"
+            ]
+          },
+          "description": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "description"
+        ]
+      }
+    },
+    "security": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "$ref": "./common.schema.json#/$defs/id"
+        },
+        "minItems": 1,
+        "uniqueItems": true
+      },
+      "minItems": 1
+    },
+    "default_input_modes": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      },
+      "minItems": 1
+    },
+    "default_output_modes": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      },
+      "minItems": 1
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "name": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "description": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "approval_policy": {
+            "$ref": "./common.schema.json#/$defs/approvalPolicy"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "approval_policy"
+        ]
+      }
+    },
+    "supports_authenticated_extended_card": {
+      "type": "boolean"
+    },
+    "openclaw_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gateway_target": {
+          "$ref": "./common.schema.json#/$defs/id"
+        },
+        "bridge_ref": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "session_mode": {
+          "type": "string",
+          "enum": [
+            "native",
+            "acp"
+          ]
+        },
+        "approval_policy": {
+          "$ref": "./common.schema.json#/$defs/approvalPolicy"
+        }
+      },
+      "required": [
+        "gateway_target",
+        "bridge_ref",
+        "session_mode",
+        "approval_policy"
+      ]
+    }
+  },
+  "required": [
+    "protocol_version",
+    "id",
+    "name",
+    "description",
+    "url",
+    "preferred_transport",
+    "additional_interfaces",
+    "provider",
+    "version",
+    "capabilities",
+    "security_schemes",
+    "security",
+    "default_input_modes",
+    "default_output_modes",
+    "skills",
+    "supports_authenticated_extended_card",
+    "openclaw_binding"
+  ]
+}

@@ -1,0 +1,22 @@
+version: 1
+domain_plane: WEALTH
+system_of_record: WEALTH
+execution_mode: domain-witness
+
+allowed_operations:
+  - financial-analysis
+  - reward-evaluation
+  - capital-scenario
+
+risk_classes:
+  default: high
+  irreversible: critical
+
+reversible_writes_default: false
+required_witnesses:
+  - WEALTH
+  - ARIFOS
+  - HUMAN
+requires_arifos_judgment: true
+requires_vault_seal: true
+execution_bridge: arifos.forge

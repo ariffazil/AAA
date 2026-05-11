@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/skill-package.schema.json",
+  "title": "AAA Skill Package Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "skill_packages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "skill_ref": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "package_format": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "version": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "description": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "owner": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "risk_tier": {
+                "$ref": "./common.schema.json#/$defs/riskTier"
+              },
+              "knowledge_basis": {
+                "$ref": "./common.schema.json#/$defs/knowledgeBasis"
+              },
+              "maturity": {
+                "type": "string",
+                "enum": [
+                  "experimental",
+                  "candidate",
+                  "stable"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "description",
+              "owner",
+              "risk_tier",
+              "knowledge_basis",
+              "maturity"
+            ]
+          },
+          "dependencies": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "skills": {
+                "$ref": "./common.schema.json#/$defs/stringIdArray"
+              },
+              "servers": {
+                "$ref": "./common.schema.json#/$defs/stringIdArray"
+              },
+              "tools": {
+                "$ref": "./common.schema.json#/$defs/stringIdArray"
+              }
+            },
+            "required": [
+              "skills",
+              "servers",
+              "tools"
+            ]
+          },
+          "host_compatibility": {
+            "$ref": "./common.schema.json#/$defs/stringIdArray"
+          },
+          "install_hooks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "host_id": {
+                  "$ref": "./common.schema.json#/$defs/id"
+                },
+                "method": {
+                  "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                },
+                "target_path": {
+                  "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                }
+              },
+              "required": [
+                "host_id",
+                "method",
+                "target_path"
+              ]
+            }
+          },
+          "source_paths": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "runtime_exports": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "examples": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "tests": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "version_lock": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "schema_version": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "artifact_hash": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "lock_file": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              },
+              "export_format": {
+                "$ref": "./common.schema.json#/$defs/nonEmptyString"
+              }
+            },
+            "required": [
+              "schema_version",
+              "artifact_hash",
+              "lock_file",
+              "export_format"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "skill_ref",
+          "package_format",
+          "version",
+          "metadata",
+          "dependencies",
+          "host_compatibility",
+          "install_hooks",
+          "source_paths",
+          "runtime_exports",
+          "examples",
+          "tests",
+          "version_lock"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "skill_packages"
+  ]
+}

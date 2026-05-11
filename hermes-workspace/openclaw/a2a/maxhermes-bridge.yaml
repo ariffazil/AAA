@@ -1,0 +1,99 @@
+# MaxHermes A2A Bridge Contract
+# Governed A2A bridge for MaxHermes → AAA gateway, GEOX witness, arifOS kernel
+
+version: 1
+contract_id: maxhermes-a2a-bridge
+owner: maxhermes
+domain_plane: GEOX
+
+description: >
+  A2A bridge contract defining how MaxHermes communicates with
+  peers: aaa-gateway, geox-witness, arifos-kernel, and a-forge-runtime.
+  Governed under arifOS Floors F1-F13.
+
+a2a_peers:
+
+  - peer: aaa-gateway
+    protocol: a2a
+    transport: streamable-http
+    endpoint: https://aaa.arif-fazil.com/a2a
+    auth_required:
+      - gateway-token
+      - api-key+mtls
+    allowed_tasks:
+      - geox-query
+      - status-query
+      - vault-read
+      - workflow-dispatch
+      - agent-handoff
+    routing_policy:
+      non_earth_tasks: route_through
+      high_risk_tasks: escalate
+      cross_domain_tasks: route_through
+
+  - peer: geox-witness
+    protocol: a2a
+    transport: stdio
+    endpoint: local
+    auth_required:
+      - gateway-token
+    allowed_tasks:
+      - geox-earth-grounding
+      - domain-physics-check
+      - ac-risk-adjudication
+    routing_policy:
+      earth_tasks: delegate_to_peer
+      physics_guard: invoke_before_claim
+      vault_generation: request_from_peer
+
+  - peer: arifos-kernel
+    protocol: mcp
+    transport: streamable-http
+    endpoint: https://arifosmcp.arif-fazil.com/mcp
+    auth_required:
+      - gateway-token
+    allowed_tasks:
+      - arifos-judge
+      - arifos-init
+      - arifos-f9-hantu-check
+      - arifos-compute-risk
+    routing_policy:
+      constitutional_tasks: delegate_to_peer
+      verdict_requests: delegate_to_peer
+      f9_checks: mandatory_before_void
+
+  - peer: a-forge-runtime
+    protocol: a2a
+    transport: streamable-http
+    endpoint: https://a-forge.arif-fazil.com/a2a
+    auth_required:
+      - gateway-token
+    allowed_tasks:
+      - workflow-orchestrate
+      - task-delegate
+      - observability-log
+    routing_policy:
+      execution_tasks: delegate_to_peer
+      long_running_tasks: delegate_to_peer
+
+discovery:
+  agent_card_path: openclaw/agents/maxhermes/agent-card.yaml
+  a2a_endpoint: https://aaa.arif-fazil.com/a2a/maxhermes
+  advertised_capabilities:
+    - geox-earth-grounding
+    - ac-risk-adjudication
+    - vault-receipt-generation
+    - well-log-analysis
+    - seismic-interpretation
+    - petrophysical-modeling
+
+handoff:
+  protocol: a2a-task-handoff
+ 矜持:
+    - Always attach vault_receipt on handoff
+    - Always attach ClaimTag label on handoff
+    - Always log epistemic_status on handoff
+  forbidden:
+    - Handoff without epistemic label
+    - Handoff without AC_Risk score
+    - Handoff without arifos.init confirmation

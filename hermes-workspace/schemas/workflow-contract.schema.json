@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/workflow-contract.schema.json",
+  "title": "AAA Workflow Contract Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "workflow_contracts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "workflow_ref": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "execution_class": {
+            "type": "string",
+            "enum": [
+              "handoff",
+              "approval-gated",
+              "domain-routing"
+            ]
+          },
+          "trigger_mode": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "event-driven",
+              "scheduled"
+            ]
+          },
+          "preconditions": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          },
+          "risk_tier": {
+            "$ref": "./common.schema.json#/$defs/riskTier"
+          },
+          "knowledge_basis": {
+            "$ref": "./common.schema.json#/$defs/knowledgeBasis"
+          },
+          "required_witnesses": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/witness"
+            },
+            "uniqueItems": true
+          },
+          "requires_arifos_judgment": {
+            "type": "boolean"
+          },
+          "requires_vault_seal": {
+            "type": "boolean"
+          },
+          "separation_of_duties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "proposer_must_differ_from_approver": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "proposer_must_differ_from_approver"
+            ]
+          },
+          "step_contracts": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "$ref": "./common.schema.json#/$defs/id"
+                },
+                "title": {
+                  "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                },
+                "stage": {
+                  "$ref": "./common.schema.json#/$defs/pipelineStage"
+                },
+                "role": {
+                  "$ref": "./common.schema.json#/$defs/role"
+                },
+                "required_skills": {
+                  "$ref": "./common.schema.json#/$defs/stringIdArray"
+                },
+                "required_tools": {
+                  "$ref": "./common.schema.json#/$defs/stringIdArray"
+                },
+                "required_servers": {
+                  "$ref": "./common.schema.json#/$defs/stringIdArray"
+                },
+                "holds": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "./common.schema.json#/$defs/approvalRecord"
+                  }
+                },
+                "approval_hooks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "trigger": {
+                        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                      },
+                      "role": {
+                        "$ref": "./common.schema.json#/$defs/role"
+                      },
+                      "policy": {
+                        "$ref": "./common.schema.json#/$defs/approvalPolicy"
+                      }
+                    },
+                    "required": [
+                      "trigger",
+                      "role",
+                      "policy"
+                    ]
+                  }
+                },
+                "inputs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                  }
+                },
+                "outputs": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                  }
+                },
+                "on_error": {
+                  "type": "string",
+                  "enum": [
+                    "halt",
+                    "retry",
+                    "rollback",
+                    "escalate"
+                  ]
+                },
+                "retry_policy": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "max_attempts": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "backoff": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "fixed",
+                        "exponential"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "max_attempts",
+                    "backoff"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "stage",
+                "role",
+                "required_skills",
+                "required_tools",
+                "required_servers",
+                "holds",
+                "approval_hooks",
+                "inputs",
+                "outputs",
+                "on_error",
+                "retry_policy"
+              ]
+            }
+          },
+          "rollback_strategy": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "mode": {
+                "type": "string",
+                "enum": [
+                  "none",
+                  "compensating-action",
+                  "deny-release"
+                ]
+              },
+              "owner_role": {
+                "$ref": "./common.schema.json#/$defs/role"
+              },
+              "compensating_actions": {
+                "type": "array",
+                "items": {
+                  "$ref": "./common.schema.json#/$defs/nonEmptyString"
+                }
+              }
+            },
+            "required": [
+              "mode",
+              "owner_role",
+              "compensating_actions"
+            ]
+          },
+          "emitted_events": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "workflow_ref",
+          "execution_class",
+          "trigger_mode",
+          "preconditions",
+          "risk_tier",
+          "knowledge_basis",
+          "required_witnesses",
+          "requires_arifos_judgment",
+          "requires_vault_seal",
+          "separation_of_duties",
+          "step_contracts",
+          "rollback_strategy",
+          "emitted_events"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "workflow_contracts"
+  ]
+}
