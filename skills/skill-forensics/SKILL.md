@@ -1,7 +1,9 @@
 ---
 name: skill-forensics
-description: Auto-derives constitutional risk profile from any SKILL.md or tool before enabling or using it. Activates when: (1) a new skill is installed; (2) before any exec or tool call that is new or unfamiliar; (3) when Arif asks "what can this skill do, what are the risks". Reads the SKILL.md, extracts: capabilities, risks, irreversible operations, required floors, and generates an arifOS-ready risk brief.
-metadata: {"openclaw": {"emoji": "🔍"}}
+description: "Auto-derives constitutional risk profile from any SKILL.md or tool before enabling or using it. Activates when: (1) a new skill is installed; (2) before any exec or tool call that is new or unfamiliar; (3) when Arif asks what can this skill do / what are the risks. Reads the SKILL.md, extracts capabilities, risks, irreversible operations, required floors, and generates an arifOS-ready risk brief."
+metadata:
+  openclaw:
+    emoji: "🔍"
 ---
 
 # Skill Forensics — Auto-Constitutional Analysis
@@ -14,6 +16,28 @@ Before enabling any new skill or running any unfamiliar tool, run forensics. Thi
 - Before using any exec command that modifies state
 - When Arif asks: "what are the risks of this skill"
 - When a plugin or tool has no SKILL.md
+- **After `hermes skills install`** (any optional skill) — must verify it landed in the right skills dir and is visible in `hermes skills list`
+
+## Common Failure: Skill Installed But Not Landing
+
+Optional skills installed via `hermes skills install official/<category>/<skill>` are quarantine-scanned then copied to `~/.hermes/skills/`. For arifOS federation, the canonical target is `/root/AAA/skills/<category>/`.
+
+**Always verify after install:**
+```bash
+# 1. Check where it landed
+ls ~/.hermes/skills/<category>/<skill>/ 2>/dev/null || echo "NOT_IN_HERMES_DIR"
+
+# 2. Check if visible to Hermes
+hermes skills list | grep <skill>
+
+# 3. If landed in ~/.hermes but should be in /root/AAA/skills/
+mv ~/.hermes/skills/<category>/<skill> /root/AAA/skills/<category>/
+
+# 4. Verify skills_list picks it up
+hermes skills list | grep <skill>
+```
+
+**Known pattern: `native-mcp` directory exists but no SKILL.md inside** — the skill dir was created but the skill file is missing. Fix with `hermes skills reset native-mcp --restore`.
 
 ## Forensics Checklist
 

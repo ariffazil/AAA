@@ -70,6 +70,52 @@ _, msgs = mail.search(None, 'SUBJECT "keyword"')
 
 # Search by sender
 _, msgs = mail.search(None, 'FROM "someone@gmail.com"')
+
+# Search by date range (IMAP date format: "dd-Mon-yyyy")
+_, msgs = mail.search(None, 'SINCE "1-Apr-2026"')
+```
+
+### Gmail IMAP Search Pitfalls (CRITICAL)
+
+**Gmail IMAP does NOT support OR operators in search criteria.**
+```python
+# WRONG — BAD command error:
+_, msgs = mail.search(None, 'FROM "hetzner" OR SUBJECT "server"')
+
+# CORRECT — run separate searches and union the results:
+_, hetzner_ids = mail.search(None, 'FROM "support@hetzner.com"')
+_, server_ids = mail.search(None, 'SUBJECT "server"')
+all_ids = set(hetzner_ids[0].split()) | set(server_ids[0].split())
+```
+
+**Each mail.search() call requires mail.select() first.**
+```python
+# WRONG — "command SEARCH illegal in state AUTH" after logout/re-login:
+mail.logout()
+mail = imaplib.IMAP4_SSL("imap.gmail.com")
+mail.login(user, password)
+mail.search(None, "ALL")  # FAILS — not in SELECTED state
+
+# CORRECT — always select folder before searching:
+mail.logout()
+mail = imaplib.IMAP4_SSL("imap.gmail.com")
+mail.login(user, password)
+mail.select("INBOX")  # ← MUST select before search
+_, msgs = mail.search(None, "ALL")
+```
+
+**Folder names with spaces or special chars must be quoted:**
+```python
+mail.select('"[Gmail]/Sent Mail"')   # correct
+mail.select('"INBOX"')                # correct
+mail.select("INBOX")                  # also correct (no spaces)
+```
+
+## Folder Listing
+```python
+_, folders = mail.list()
+for f in folders:
+    print(f.decode())  # e.g., (HasNoChildren) / "INBOX"
 ```
 
 ## Actions

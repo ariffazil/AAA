@@ -13,21 +13,21 @@ openclaw doctor --fix >> $LOG_FILE 2>&1
 echo "Running health check..." >> $LOG_FILE
 openclaw health >> $LOG_FILE 2>&1
 
-# Git status in waw
-echo "Checking git status in waw..." >> $LOG_FILE
-cd /root/waw && git status >> $LOG_FILE 2>&1
+# Verify workspace integrity (canonical path)
+echo "Checking workspace..." >> $LOG_FILE
+if [ -d /root/.openclaw/workspace ]; then
+    echo "✓ workspace OK" >> $LOG_FILE
+else
+    echo "✗ workspace MISSING" >> $LOG_FILE
+fi
 
-# Verify symlinks
-echo "Verifying symlinks..." >> $LOG_FILE
-cd /root/waw
-for link in AGENTS.md SOUL.md USER.md HEARTBEAT.md IDENTITY.md TOOLS.md BOOT.md; do
-    if [ -L "$link" ]; then
-        target=$(readlink "$link")
-        if [ -e "$target" ]; then
-            echo "✓ $link -> $target" >> $LOG_FILE
-        else
-            echo "✗ $link -> $target (BROKEN)" >> $LOG_FILE
-        fi
+# Verify active MCP servers
+echo "Checking MCP servers..." >> $LOG_FILE
+for port in 8080 8081 8082; do
+    if curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:$port/health | grep -q "200"; then
+        echo "✓ MCP:$port healthy" >> $LOG_FILE
+    else
+        echo "✗ MCP:$port DOWN" >> $LOG_FILE
     fi
 done
 
