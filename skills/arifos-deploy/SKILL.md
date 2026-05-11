@@ -336,6 +336,7 @@ These are not aspirational statements. They are operational filters: any propose
 - `references/file-inventory.md` — machine files, paths, content types
 - `references/cicd-patterns.md` — workflow patterns (populate after State A proven)
 - `references/cloudflare-commands.md` — exact CLI syntax (populate after CF token available)
+- `references/runtime-failures.md` — VPS runtime failure patterns (F13 kernel panic, vault path errors, 406s, container health diagnosis)
 
 **Layer 4 — Rituals:**
 - `references/verification-runbooks.md` — exact checks for every surface
