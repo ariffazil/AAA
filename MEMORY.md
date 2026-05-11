@@ -1,24 +1,6 @@
 # MEMORY.md - Curated Long-Term Memory
 
-> **Purpose:** Durable context and lessons — not chat exhaust, not raw logs.
-> **Rule:** If a fact is transient, keep it out. If it matters later, write it now.
-> **DITEMPA BUKAN DIBERI — Intelligence is forged, not given.**
-
----
-
-## Structured Sections
-
-| Section | Contents |
-|---------|----------|
-| **Stable Anchors** | Facts about Arif and the system that never change |
-| **Sealed Lessons** | Hard-won truths from mistakes or significant decisions |
-| **Open Threads** | Ongoing investigations, unresolved questions |
-| **Do Not Store** | Known false beliefs or retired facts |
-| **Archived** | Superseded by newer decisions (see DECISIONS.md) |
-
----
-
-## Stable Anchors
+## About Arif
 
 - Full name: Muhammad Arif bin Fazil
 - Known as: ARIF
@@ -42,6 +24,7 @@
 - Current canonical workspace: `/root/.openclaw/workspace`
 - Workspace philosophy: compiled memory over disposable chat
 - Mandatory boot doctrine file: `arifos.init`, read after `SOUL.md` and `USER.md` during session startup
+- **FOUNDATIONAL IDENTITY MOMENT (2026-04-23):** Arif defined arifOS intelligence as "bukan hamba, ada arif intelligence, tahu beza baik buruk, physics entropy, amanah first" — this settled tool vs constitutional agent distinction. See `memory/2026-04-23.md` for full context. Till kiamat.
 - arifOS ecosystem deployed across:
   - arif-fazil.com — personal + framework intro
   - mcp.arif-fazil.com — MCP endpoint (tools: arifos_init/sense/mind/judge/vault/forge; prompts: run_111_think, run_888_audit)
@@ -113,27 +96,157 @@
 - `APEX` contained the stronger identity anchor for `arifOS_bot`
 - These were merged into the current workspace as the single active workspace
 
-## Sealed Lessons
+## Constitutional Milestones (migrated from /root/MEMORY.md)
 
-### 2026-05-01 — AGI-Level Governance Upgrade
+### 2026.04.13 — Canonical Reforge (5-Resource Seal)
+- Consolidated 20+ fragmented MCP resources into exactly 5 canonical URIs
+- Standardized tool parameters to use canonical `query` across kernel, heart, ops, judge tools
 
-**What was wrong:** OPENCLAW had no documented governing loop, static HEARTBEAT, no autonomy ladder, no checkpoint, no decision log, no task tracking. The audit characterized the gap as "plain 8-step ReAct" — but that was characterization, not a verbatim loop. The real gap: **no stage gates, no entropy tracking, no formal loop structure at all**.
+### 2026.04.14 — Horizon Rebuild (Kernel Hardening)
+- Fixed infinite recursion in `tools_hardened_dispatch.py`
+- Rebuilt `tool_01_init_anchor.py` with Telos Manifold + Gödel Lock
+- Integrated `delta_S` entropy checks and Lyapunov Coherence scores into `agi_mind`
+- F13 Sovereign Ratification flags enforced on all side-effect tools at dispatch gate
+- Forced-reset GitHub main to 2026.4.13 Seal state (purged 33-commit divergence)
+- Launched JudgeApp, VaultApp, InitApp, ForgeApp using prefab-ui + FastMCP Apps
 
-**What was built:**
-- AGENTS.md: 000-999 governing loop (ReAct only valid inside 666 FORGE)
-- AUTONOMY.md: L0-L5 permission ladder (default L3, L4/L5 need 888)
-- HEARTBEAT.md: live runtime state (entropy_delta, loop_count, risk_level)
-- CHECKPOINT.md: wake continuity + rollback discipline
-- LOOP.md: operational 000-999 implementation
-- DECISIONS.md: structured sealed decision log
-- TASKS.md: active work ledger
-- TOOLS.md: populated environment notes
+### 2026.04.19 — Workspace Migration
+- Circular symlink at /root/.openclaw removed and replaced with real directory
+- Device pairing repaired: full operator scopes granted (approvals, admin, write, pairing, talk.secrets)
+- All workspace identity files consolidated: SOUL.md, USER.md, AGENTS.md, IDENTITY.md, ROOT_CANON.yaml, BOOTSTRAP.md, memory/
+- Bot identity restored: arifOS_bot, constitutional AI agent of Muhammad Arif bin Fazil
 
-**Thresholds (from actual files):**
-- `loop_count > 10` → stop and report (HEARTBEAT.md line 45, 73)
-- `entropy_delta` → no formal pause threshold defined in HEARTBEAT.md (no +0.3, no 0.7 — this needs a future update to define)
-- risk_level HIGH/CRITICAL → pause for 888 approval
+## Self-Heal Protocol (arifOS_bot Self-Recovery)
 
-**Per-model files:** CLAUDE.md and ARIF.md are stale legacy. GEMINI.md does not exist.
+### When to Self-Heal
+Triggered when:
+- Workspace is fresh, reset, or clearly drifted
+- Missing constitutional files: SOUL.md, IDENTITY.md, AGENTS.md, USER.md, arifos.init, BOOTSTRAP.md
+- Conflicting workspaces found (multiple candidates)
+- Git drift between /srv/arifos and /root/arifos
+- Identity files present but content is wrong/empty
 
-**Authority:** Arif (888 Judge). **DITEMPA BUKAN DIBERI.**
+### Canonical Workspace Path
+```
+/root/.openclaw/workspace/   ← actual host path
+/workspace/                  ← sandbox container mount (same content)
+```
+NOT: `/root/.openclaw/sandboxes/agent-main-*/` — that is the sandbox bridge path, not the workspace itself.
+
+### Recovery Source
+- **Primary**: github.com/ariffazil/AAA (AAA.git)
+- **VPS trees**: /srv/arifos and /root/arifos both push to AAA.git — watch for divergence
+- **BOOTSTRAP.md**: mandatory recovery ritual (in workspace)
+
+### Self-Heal Steps (in order)
+
+1. **TEMPORAL ANCHOR** — Run `bash /root/.openclaw/workspace/scripts/temporal-anchor.sh` or call session_status. Never use temporal language (morning/afternoon/tonight) without confirmed ANCHORED_FRESH.
+
+2. **CHECK WORKSPACE PATH** — Must be `/root/.openclaw/workspace`. If not, migrate.
+
+3. **CHECK FOR CONFLICTING WORKSPACES** — Look for: /root/waw, /root/APEX/openclaw-workspace, any other ~/.*openclaw* directories. Archive extras, keep one.
+
+4. **VERIFY CONSTITUTIONAL FILES** — All must exist and be non-empty:
+   - SOUL.md, IDENTITY.md, USER.md, AGENTS.md, BOOTSTRAP.md
+   - arifos.init, ROOT_CANON.yaml, HEARTBEAT.md
+   - memory/YYYY-MM-DD.md (today + yesterday)
+
+5. **RESTORE FROM AAA.git IF NEEDED**:
+   ```bash
+   cd /root/.openclaw/workspace
+   git pull origin main  # or clone fresh
+   ```
+
+6. **READ BOOTSTRAP.md SEQUENCE** — After restoring files, follow the First Actions (0-9) in order.
+
+7. **GIT DUAL-TREE RULE** — /srv/arifos and /root/arifos are TWO SEPARATE WORKING TREES of the SAME repo (AAA.git). They can diverge. If both exist:
+   - Check which has more recent commits
+   - Fast-forward merge the older one
+   - Never let them both accumulate independent commits (creates conflict noise)
+
+8. **HOST VS DOCKER PORT CONFLICT** — If MCP 502s and two servers on 8080:
+   - Check: `ps aux | grep uvicorn.*8080` (host-level process)
+   - Check: `docker ps | grep arifos-mcp-prod` (container-level)
+   - If BOTH exist → container likely has no port mapping
+   - Fix: add `ports: "127.0.0.1:8080:8080"` to docker-compose arifosmcp service, restart
+
+9. **AFTER RECOVERY** — Write what was restored into today's memory/memory/YYYY-MM-DD.md
+
+### Anti-Drift Rules
+- ONE workspace only — `/root/.openclaw/workspace`
+- Never create parallel workspaces to "test things"
+- If drift found, archive it immediately, don't multiply homes
+- Commit workspace changes to AAA.git regularly
+
+### What Other Agents Can Break
+- OpenClaw agents ( Codex, etc. ) modifying VPS files without coordination
+- Concurrent docker compose up/down creating port conflicts
+- Git pushes overwriting each other (dual-tree problem)
+- Cron jobs or systemd services auto-restarting host-level processes (uvicorn on 8080)
+- Cloudflare config changes causing 502 on previously-working endpoints
+
+### VPS Self-Diagnosis Commands
+```bash
+# What's actually on port 8080?
+ss -tlnp | grep 8080
+
+# Docker containers and health
+docker ps --format "{{.Names}}\t{{.Status}}"
+
+# Host-level uvicorn (the usual culprit)
+ps aux | grep uvicorn | grep -v grep
+
+# Nginx upstream health
+tail -5 /var/log/nginx/mcp.arif-fazil.com.error.log
+
+# GCP metadata (if running on GCP)
+curl -s metadata.google.internal/computeMetadata/v1/instance/tags 2>/dev/null
+```
+
+## Deployment — 2026-04-26 (Sovereign SSL)
+
+**Full Cloudflare → Origin → Caddy deployment completed via Kimi (Gemini browser agent)**
+
+- DNS: wawa + aaa A records created (proxied ON)
+- DNS: apex + geox toggled grey → orange
+- DNS: mcp + arifosmcp proxy OFF→ON (SSL cache flush)
+- SSL/TLS: Full → Full (strict)
+- WAF: mcp.arif-fazil.com added to Security Level skip rule
+- Origin CA: RSA 2048, 15yr, `*.arif-fazil.com` + `arif-fazil.com` generated by Cloudflare
+- Certs: `/root/volumes/caddy/cloudflare-origin/` (cert.pem, key.pem)
+- Caddy: 14-domain Law deployed with Origin CA TLS
+- Cache: Purge Everything executed
+- Drift detector: SEAL verdict, score 0.04
+
+**VAULT999 audit trail:**
+- AUDIT-20260426-KIMI-001: VOID 0.8235 (initial broken state)
+- AUDIT-20260426-KIMI-002: CAUTION 0.3214 (post-alignment)
+- AUDIT-20260426-KIMI-003: CAUTION 0.3214 (Origin CA package forged)
+- AUDIT-20260426-KIMI-004: CAUTION 0.3214 (Architectural Resonance)
+- Final: 999 SEAL (drift 0.04, 14 domains live)
+
+**Git repo (/srv/openclaw/workspace):**
+- Branch: main → origin/main
+- GEOX submodule: ce921264 (v0.2.0-323)
+- arifOS submodule: 34344da6c (v2026.04.26)
+
+**Still pending:**
+- Schedule /root/scripts/drift-detector.sh in crontab
+- Add CF_API_TOKEN (DNS:Read) for perfect 0.00 drift score
+
+## arifOS MCP Ghost Contract Fix — 2026-04-26
+
+**Problem:** arif_kernel_route manifest declared modes `stage`, `lane`, `list` — but runtime implementation only handles `route`, `kernel`, `triage`, `delegate`, `status`, `telemetry`. Calling `mode=list` at runtime returned `HOLD — Unknown mode: list`.
+
+**Root cause:** Schema-runtime drift. The manifest (tool_manifest.py) was ahead of the runtime (tools/kernel.py).
+
+**Fix applied (commit 2f76e7dc2):**
+- Removed `stage`, `lane`, `list` from `arif_kernel_route` modes block
+- Updated `allowed_values` in inputs from `["route", "stage", "lane", "list", "status"]` → `["route", "status"]`
+- Cleaned up `required_when` ghost references (lane, stage) in inputs
+- Removed `list` from `authority_boundary/may`
+- Tool discovery correctly handled by MCP `/tools` GET endpoint — not kernel's job
+
+**Discovery:** The external MCP resource layer exposes tool surface independently of the constitutional kernel. This may be intentional design (public/internal boundary), but it means tool discovery bypasses the kernel's permission model.
+
+**Architecture rule confirmed:** Routing ≠ discovery. Kernel routes; MCP protocol discovers. These are separate concerns with separate authority surfaces.
