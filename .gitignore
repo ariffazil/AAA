@@ -87,3 +87,10 @@ installation_id
 cache/
 __pycache__/
 venv/
+
+# ── AAA workspace/ (public constitutional docs — push to GitHub) ──
+# Override .openclaw/ block above — workspace at AAA root level is public
+!workspace/
+workspace/*.md
+workspace/memory/
+workspace/skills/
