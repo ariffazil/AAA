@@ -50,6 +50,7 @@ google_accounts.json
 device_id
 session-store.db
 mcp-oauth-config/
+secrets/
 # ── Agent sessions and logs (privacy) ──
 sessions/
 session-state/
