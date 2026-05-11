@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/tool.schema.json",
+  "title": "AAA Tool Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "builtin",
+        "plugin",
+        "mcp"
+      ]
+    },
+    "server_ref": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "risk_tier": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "approval_policy": {
+      "$ref": "./common.schema.json#/$defs/approvalPolicy"
+    },
+    "execution_kind": {
+      "type": "string",
+      "enum": [
+        "read",
+        "write",
+        "execute",
+        "admin"
+      ]
+    },
+    "required_witnesses": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/witness"
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "source_type",
+    "risk_tier",
+    "approval_policy",
+    "execution_kind",
+    "required_witnesses"
+  ]
+}

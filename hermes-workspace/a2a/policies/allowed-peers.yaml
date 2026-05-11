@@ -1,0 +1,27 @@
+version: 1
+default_action: deny
+
+peers:
+  - peer_id: aaa-internal
+    trust_level: internal
+    endpoint: https://aaa.arif-fazil.com/a2a
+    auth_scheme: gateway-token
+    allow_reads: true
+    allow_dispatch: true
+    allow_writes: false
+
+  - peer_id: geox-witness
+    trust_level: internal
+    endpoint: https://geox.arif-fazil.com/a2a
+    auth_scheme: gateway-token
+    allow_reads: true
+    allow_dispatch: true
+    allow_writes: false
+
+  - peer_id: wealth-witness
+    trust_level: internal
+    endpoint: https://wealth.arif-fazil.com/a2a
+    auth_scheme: gateway-token
+    allow_reads: true
+    allow_dispatch: true
+    allow_writes: false

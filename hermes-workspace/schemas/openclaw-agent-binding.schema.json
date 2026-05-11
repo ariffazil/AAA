@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/openclaw-agent-binding.schema.json",
+  "title": "AAA OpenClaw Agent Binding",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "agent_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "host_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "workspace_path": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "session_mode": {
+      "type": "string",
+      "enum": [
+        "native",
+        "acp"
+      ]
+    },
+    "channels": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "plugins": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "approval_policy": {
+      "$ref": "./common.schema.json#/$defs/approvalPolicy"
+    },
+    "required_witnesses": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/witness"
+      },
+      "uniqueItems": true
+    },
+    "default_binding": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "agent_id",
+    "host_id",
+    "workspace_path",
+    "session_mode",
+    "channels",
+    "plugins",
+    "approval_policy",
+    "required_witnesses",
+    "default_binding"
+  ]
+}

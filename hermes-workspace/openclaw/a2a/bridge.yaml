@@ -1,0 +1,26 @@
+version: 1
+
+description: A2A federation contract for AAA agents
+
+peers:
+  - agent_id: geox-witness
+    type: domain-witness
+    protocol_version: "1.0"
+    can_send_tasks: true
+    can_receive_results: true
+    auth_required: true
+
+  - agent_id: arifos-kernel
+    type: governance
+    protocol_version: "1.0"
+    can_send_tasks: true
+    can_receive_results: true
+    auth_required: true
+
+  - agent_id: aaa-gateway
+    type: control-plane
+    protocol_version: "1.0"
+    can_send_tasks: true
+    can_receive_results: true
+    auth_required: true
+

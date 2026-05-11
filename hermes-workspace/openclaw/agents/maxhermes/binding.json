@@ -1,0 +1,22 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-agent-binding.schema.json",
+  "id": "maxhermes-openclaw-binding",
+  "agent_id": "maxhermes",
+  "host_id": "openclaw-maxhermes",
+  "workspace_path": "agents/maxhermes",
+  "session_mode": "acp",
+  "channels": ["telegram", "terminal", "cli"],
+  "plugins": [
+    "maxhermes-hermes",
+    "maxhermes-arifos-sense",
+    "maxhermes-geox-ground",
+    "geox-grounding",
+    "arifos-deploy",
+    "self-verify",
+    "mcp-tools",
+    "a2a-peer"
+  ],
+  "approval_policy": "on-demand",
+  "required_witnesses": ["GEOX", "ARIFOS", "HUMAN"],
+  "default_binding": true
+}

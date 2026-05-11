@@ -1,0 +1,26 @@
+version: 1
+
+bundles:
+  - id: openclaw-core
+    name: OpenClaw Core
+    description: Core OpenClaw runtime governance bundle.
+    risk_tier: medium
+    approval_policy: hold
+    skills:
+      - openclaw-a2a-bridge
+    workflows:
+      - local-a2a-handoff
+    hosts:
+      - openclaw-gateway
+
+  - id: witness-pack
+    name: Witness Pack
+    description: Domain witness routing bundle for GEOX and WEALTH.
+    risk_tier: high
+    approval_policy: hold
+    skills:
+      - geox-grounding
+    workflows:
+      - remote-peer-handoff
+    hosts:
+      - openclaw-gateway

@@ -1,0 +1,164 @@
+version: 1
+
+hosts:
+  - id: openclaw-gateway
+    name: OpenClaw Gateway
+    version: "1"
+    runtime_type: custom
+    transport: http
+    config_paths:
+      - openclaw/gateway
+      - openclaw/exports
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: generated-config
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: strict
+        default: true
+        approval_policy: hold
+
+  - id: claude-code
+    name: Claude Code
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .claude
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+
+  - id: cursor
+    name: Cursor
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .cursor
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+
+  - id: codex
+    name: Codex
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .codex
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+
+  - id: copilot-cli
+    name: GitHub Copilot CLI
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .github
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+
+  - id: gemini-cli
+    name: Gemini CLI
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .gemini
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+
+  - id: opencode
+    name: OpenCode
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .opencode
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+
+  - id: geox-acp
+    name: GEOX ACP
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - GEOX
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: domain-witness
+        default: true
+        approval_policy: on-demand
+
+  - id: wealth-acp
+    name: WEALTH ACP
+    version: "1"
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - WEALTH
+      - openclaw/acp
+    contract_path: contracts/hosts/contracts.yaml
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    permission_profiles:
+      - id: domain-witness
+        default: true
+        approval_policy: hold

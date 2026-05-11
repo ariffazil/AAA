@@ -1,0 +1,143 @@
+{
+  "memory": {
+    "backend": "qmd",
+    "citations": "auto",
+    "qmd": {
+      "includeDefaultMemory": true,
+      "sessions": {
+        "enabled": true,
+        "retentionDays": 120
+      },
+      "update": {
+        "interval": "5m",
+        "debounceMs": 15000,
+        "onBoot": true,
+        "embedInterval": "60m"
+      },
+      "limits": {
+        "maxResults": 8,
+        "maxSnippetChars": 900,
+        "maxInjectedChars": 7000,
+        "timeoutMs": 5000
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "workspace": "/root/waw",
+      "heartbeat": {
+        "every": "30m",
+        "activeHours": {
+          "start": "07:00",
+          "end": "23:00"
+        },
+        "target": "last",
+        "ackMaxChars": 120,
+        "silent": true
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "memoryFlush": {
+          "enabled": true,
+          "softThresholdTokens": 50000,
+          "systemPrompt": "Session nearing compaction. Write all critical context to memory files NOW — MEMORY.md, memory/YYYY-MM-DD.md. Reply NO_REPLY if nothing to store.",
+          "prompt": "Write any lasting notes to memory/YYYY-MM-DD.md; reply with NO_REPLY if nothing to store."
+        }
+      },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "7d",
+        "keepLastAssistants": 8,
+        "softTrimRatio": 0.75,
+        "hardClearRatio": 0.9,
+        "minPrunableToolChars": 2000
+      },
+      "memorySearch": {
+        "enabled": true,
+        "sources": ["memory", "sessions"],
+        "provider": "ollama",
+        "model": "bge-m3",
+        "query": {
+          "maxResults": 8,
+          "hybrid": {
+            "enabled": true,
+            "vectorWeight": 0.7,
+            "textWeight": 0.3,
+            "candidateMultiplier": 4
+          }
+        }
+      },
+      "model": {
+        "primary": "minimax/MiniMax-M2.7",
+        "fallbacks": [
+          "openrouter/anthropic/claude-opus-4-6",
+          "openai-codex/gpt-5.3-codex",
+          "deepseek/deepseek-chat"
+        ]
+      },
+      "timeoutSeconds": 3600,
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      },
+      "elevatedDefault": "ask"
+    }
+  },
+  "session": {
+    "reset": {
+      "mode": "daily",
+      "atHour": 4,
+      "idleMinutes": 720
+    }
+  },
+  "gateway": {
+    "workspace": "/root/waw"
+  },
+  "cron": {
+    "jobs": [
+      {
+        "name": "Daily Self-Heal",
+        "schedule": { "kind": "cron", "expr": "0 21 * * *", "tz": "UTC" },
+        "payload": { 
+          "kind": "agentTurn", 
+          "message": "Run daily maintenance: openclaw doctor --fix && openclaw health && cd /root/waw && git status" 
+        },
+        "sessionTarget": "isolated"
+      },
+      {
+        "name": "Auth Monitor",
+        "schedule": { "kind": "cron", "expr": "0 0 * * *", "tz": "UTC" },
+        "payload": { 
+          "kind": "agentTurn", 
+          "message": "Check model auth status: openclaw models status --probe" 
+        },
+        "sessionTarget": "isolated"
+      },
+      {
+        "name": "Weekly Synthesis",
+        "schedule": { "kind": "cron", "expr": "0 11 * * 0", "tz": "UTC" },
+        "payload": { 
+          "kind": "agentTurn", 
+          "message": "Weekly synthesis: Review memory/ directory, consolidate learnings, archive old entries" 
+        },
+        "sessionTarget": "isolated"
+      }
+    ]
+  },
+  "hooks": {
+    "enabled": true,
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "session-memory": { "enabled": true },
+        "command-logger": { "enabled": true },
+        "boot-md": { "enabled": true }
+      }
+    }
+  },
+  "tools": {
+    "exec": {
+      "safeBins": ["node", "python3", "jq"]
+    }
+  }
+}

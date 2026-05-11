@@ -1,0 +1,98 @@
+version: 1
+
+skill_packages:
+  - id: openclaw-a2a-bridge
+    skill_ref: openclaw-a2a-bridge
+    package_format: aaa-skill-v1
+    version: "0.1.0"
+    metadata:
+      name: OpenClaw A2A Bridge
+      description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
+      owner: AAA
+      risk_tier: medium
+      knowledge_basis:
+        physics: false
+        math: true
+        language: true
+      maturity: candidate
+    dependencies:
+      skills: []
+      servers:
+        - arifos-mcp
+      tools:
+        - agent-dispatch
+        - agent-handoff
+        - status-query
+    host_compatibility:
+      - openclaw-gateway
+      - claude-code
+      - codex
+      - copilot-cli
+    install_hooks:
+      - host_id: openclaw-gateway
+        method: generated-config
+        target_path: openclaw/a2a
+    source_paths:
+      - openclaw/a2a/bridge.yaml
+      - a2a/policies/auth.yaml
+      - a2a/policies/allowed-peers.yaml
+      - a2a/policies/skills-exposure.yaml
+      - a2a/registry/agents.yaml
+    runtime_exports:
+      - openclaw/a2a
+      - a2a/agent-cards
+    examples:
+      - openclaw/OPENCLAW_INVENTORY.md
+    tests:
+      - schema-parse
+      - validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: skills-lock.json
+      export_format: json
+
+  - id: geox-grounding
+    skill_ref: geox-grounding
+    package_format: aaa-skill-v1
+    version: "0.1.0"
+    metadata:
+      name: GEOX Grounding
+      description: Force Earth-sensitive reasoning through GEOX witness paths.
+      owner: AAA
+      risk_tier: medium
+      knowledge_basis:
+        physics: true
+        math: true
+        language: true
+      maturity: candidate
+    dependencies:
+      skills: []
+      servers:
+        - geox-mcp
+      tools:
+        - geox-query
+    host_compatibility:
+      - openclaw-gateway
+      - claude-code
+    install_hooks:
+      - host_id: openclaw-gateway
+        method: generated-config
+        target_path: skills/geox-grounding
+    source_paths:
+      - registries/skills.yaml
+      - registries/integrations.yaml
+      - integrations/geox/contract.yaml
+    runtime_exports:
+      - skills/geox-grounding
+      - openclaw/exports
+    examples:
+      - GEOX grounding example
+    tests:
+      - schema-parse
+      - validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: skills-lock.json
+      export_format: json

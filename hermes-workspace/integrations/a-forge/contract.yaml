@@ -1,0 +1,21 @@
+version: 1
+domain_plane: A_FORGE
+system_of_record: A-FORGE
+execution_mode: post-seal-only
+
+allowed_operations:
+  - bounded-execution
+  - orchestration
+  - deployment-actuation
+
+risk_classes:
+  default: high
+  irreversible: critical
+
+reversible_writes_default: false
+required_witnesses:
+  - ARIFOS
+  - HUMAN
+requires_arifos_judgment: true
+requires_vault_seal: true
+execution_bridge: arifos.forge

@@ -1,0 +1,14 @@
+version: 1
+
+invariants:
+  - id: no-999-without-vault-ref
+    rule: No event at stage 999 may exist without a vault_ref.
+
+  - id: no-irreversible-aforge-without-judgment
+    rule: A_FORGE irreversible operations must require arifOS judgment and vault seal.
+
+  - id: no-irreversible-wealth-without-judgment
+    rule: WEALTH irreversible actions must require arifOS judgment and vault seal.
+
+  - id: no-cross-lane-without-target
+    rule: Cross-lane workflows must declare target_domain_plane and integration_ref.
