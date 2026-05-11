@@ -139,3 +139,14 @@ Human / Agent request
 > **AAA controls the session. arifOS judges. Domain organs provide evidence. A-FORGE executes. VAULT999 records. The human remains sovereign.**
 
 *DITEMPA BUKAN DIBERI — Identity is forged through constitutional discipline.*
+
+## Repo + MCP Stabilization
+
+Operational stabilization policy and weekly hygiene protocol:
+`docs/operations/repo-mcp-stabilization.md`
+
+Install severity-based pre-push guard:
+
+```bash
+bash scripts/hooks/install_hooks.sh
+```
