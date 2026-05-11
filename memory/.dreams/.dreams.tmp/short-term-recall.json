@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "updatedAt": "2026-05-11T12:33:34.045Z",
+  "entries": {
+    "memory:memory/2026-04-08.md:1:28": {
+      "key": "memory:memory/2026-04-08.md:1:28",
+      "path": "memory/2026-04-08.md",
+      "startLine": 1,
+      "endLine": 28,
+      "source": "memory",
+      "snippet": "# Memory - 2026-04-08 ## Context - Arif asked to find the previous workspace and keep digging with memory search. - Previous candidate workspaces were found at `/root/waw` and `/root/APEX/openclaw-workspace`. - Decision: consolidate useful identity and memory anchors into the current workspace. ## Comparison - `waw`: richer long-term memory and user preference context - `APEX`: stronger canonical identity anchor for `arifOS_bot` ## Decision - Current canonical active workspace is `/root/.openclaw/workspace` - Identity anchor chosen: `arifOS_bot` - User profile and communication preferences merged into current `USER.md` and `MEMORY.md` - Heartbeat kept minimal by default ## Carry forward",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3643774151802063,
+      "maxScore": 0.3643774151802063,
+      "firstRecalledAt": "2026-05-09T05:52:59.972Z",
+      "lastRecalledAt": "2026-05-09T05:52:59.972Z",
+      "queryHashes": [
+        "2de92b6a2d60"
+      ],
+      "recallDays": [
+        "2026-05-09"
+      ],
+      "conceptTags": [
+        "root/waw",
+        "root/apex/openclaw-workspace",
+        "long-term",
+        "arifos-bot",
+        "openclaw/workspace",
+        "user.md",
+        "memory.md",
+        "context"
+      ]
+    },
+    "memory:memory/2026-04-25.md:32:66": {
+      "key": "memory:memory/2026-04-25.md:32:66",
+      "path": "memory/2026-04-25.md",
+      "startLine": 32,
+      "endLine": 66,
+      "source": "memory",
+      "snippet": "### Active repos confirmed (Arif approved 2026-04-25): - arifos, AAA, A-FORGE, arif-sites, wealth, well, geox, arifOS-model-registry, APEX ### Pending migration actions: - [ ] **Push WEALTH** — `209ab6d` commit ready to push - [ ] **Push arifOS** — 3 commits: Truth enforcement + .gitignore + manifests - [ ] **Push AAA** — memory update commit - [ ] **arifOS-model-registry → arifos** — git submodule or pip reference (Arif: submodule preferred) - [ ] **APEX → arif-sites** — merge `APEX/sites/library/` as DOCS surface, archive APEX - [ ] **arifosmcp** — archive GitHub repo - [ ] **wealth/Makcikgpt** — Makcikgpt = DITING voice + Makcik² patterns already inside wealth repo, docs/legacy/makcikGPT",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36748143732547756,
+      "maxScore": 0.36748143732547756,
+      "firstRecalledAt": "2026-05-11T02:27:55.896Z",
+      "lastRecalledAt": "2026-05-11T02:27:55.896Z",
+      "queryHashes": [
+        "4cae5de06751"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "gpt",
+        "a-forge",
+        "arif-sites",
+        "arifos-model-registry",
+        "apex/sites/library",
+        "wealth/makcikgpt",
+        "docs/legacy/makcikgpt",
+        "active"
+      ]
+    },
+    "memory:memory/2026-04-03.md:457:504": {
+      "key": "memory:memory/2026-04-03.md:457:504",
+      "path": "memory/2026-04-03.md",
+      "startLine": 457,
+      "endLine": 504,
+      "source": "memory",
+      "snippet": "| Bitwarden unlock | Biometric on phone — no master password | | VPS secrets | `bw` CLI via bot query — password never in chat/MEMORY | | Petronas device | YubiKey physical key — no password to remember | ### Next action (pending Arif) - Set up Bitwarden + `bw` CLI on VPS - Or purchase + ship YubiKey to Arif --- ## Access Requests (Declined) ### Jackie Ngu (@ unknown) - Arif asked to give access to \"Jackie Ngu\" — no Telegram ID provided - Jackie not added to allowlist — needs Telegram user ID first ### TengkuTaufik999 - Asked to remember Petronas device password — declined - I don't store credentials, even passed in chat --- ## Domain Truth (HARD — Verified) - ✅ `arif-fazil.com` — ACT",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3756697505712509,
+      "maxScore": 0.3756697505712509,
+      "firstRecalledAt": "2026-05-11T12:33:34.045Z",
+      "lastRecalledAt": "2026-05-11T12:33:34.045Z",
+      "queryHashes": [
+        "662b4efe9c43"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "chat/memory",
+        "arif-fazil.com",
+        "bitwarden",
+        "unlock",
+        "biometric",
+        "phone",
+        "master",
+        "password"
+      ]
+    },
+    "memory:memory/2026-04-03.md:284:331": {
+      "key": "memory:memory/2026-04-03.md:284:331",
+      "path": "memory/2026-04-03.md",
+      "startLine": 284,
+      "endLine": 331,
+      "source": "memory",
+      "snippet": "| Bitwarden unlock | Biometric on phone — no master password | | VPS secrets | `bw` CLI via bot query — password never in chat/MEMORY | | Petronas device | YubiKey physical key — no password to remember | ### Next action (pending Arif) - Set up Bitwarden + `bw` CLI on VPS - Or purchase + ship YubiKey to Arif --- ## Access Requests (Declined) ### Jackie Ngu (@ unknown) - Arif asked to give access to \"Jackie Ngu\" — no Telegram ID provided - Jackie not added to allowlist — needs Telegram user ID first ### TengkuTaufik999 - Asked to remember Petronas device password — declined - I don't store credentials, even passed in chat --- ## Domain Truth (HARD — Verified) - ✅ `arif-fazil.com` — ACT",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3756697505712509,
+      "maxScore": 0.3756697505712509,
+      "firstRecalledAt": "2026-05-11T12:33:34.045Z",
+      "lastRecalledAt": "2026-05-11T12:33:34.045Z",
+      "queryHashes": [
+        "662b4efe9c43"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "chat/memory",
+        "arif-fazil.com",
+        "bitwarden",
+        "unlock",
+        "biometric",
+        "phone",
+        "master",
+        "password"
+      ]
+    }
+  }
+}

@@ -10,8 +10,8 @@ REPOS=(
   "/root/WEALTH:ariffazil/WEALTH:master"
   "/root/geox:ariffazil/GEOX:main"
   "/root/A-FORGE:ariffazil/A-FORGE:main"
-  "/root/arif-sites:ariffazil/arif-sites:main"
-  "/root/.openclaw/workspace:ariffazil/AAA:master"
+  "/root/arif-sites-work:ariffazil/arif-sites:main"
+  "/root/.openclaw/workspace:ariffazil/AAA"
 )
 
 REPORT_FILE="/root/.openclaw/workspace/memory/sentinel-watch.log"
@@ -28,8 +28,8 @@ for entry in "${REPOS[@]}"; do
     continue
   fi
   
-  # Run pre-push check
-  if bash /root/.openclaw/workspace/scripts/pre-push-check.sh "/$local_path" origin main > /tmp/sentinel_check_$$.out 2>&1; then
+  # Run pre-push check — let it auto-detect default branch from origin/HEAD
+  if bash /root/.openclaw/workspace/scripts/pre-push-check.sh "/$local_path" origin > /tmp/sentinel_check_$$.out 2>&1; then
     echo "PASS $repo" >> "$REPORT_FILE"
   else
     echo "VETO $repo" >> "$REPORT_FILE"
