@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/agent.schema.json",
+  "title": "AAA Agent Record",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "domain_plane": {
+      "$ref": "./common.schema.json#/$defs/domainPlane"
+    },
+    "allowed_domain_planes": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/domainPlane"
+      },
+      "uniqueItems": true
+    },
+    "role": {
+      "$ref": "./common.schema.json#/$defs/role"
+    },
+    "intelligence_tier": {
+      "$ref": "./common.schema.json#/$defs/intelligenceTier"
+    },
+    "intelligence_band": {
+      "$ref": "./common.schema.json#/$defs/intelligenceBand"
+    },
+    "risk_tier": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "authority_level": {
+      "$ref": "./common.schema.json#/$defs/authorityLevel"
+    },
+    "approval_policy": {
+      "$ref": "./common.schema.json#/$defs/approvalPolicy"
+    },
+    "knowledge_basis": {
+      "$ref": "./common.schema.json#/$defs/knowledgeBasis"
+    },
+    "host_binding": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "allowed_tools": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "allowed_servers": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "a2a_exposure": {
+      "type": "string",
+      "enum": [
+        "none",
+        "internal",
+        "public",
+        "authenticated"
+      ]
+    },
+    "allowed_peers": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    },
+    "required_auth": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "separation_of_duties": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cannot_self_seal": {
+          "type": "boolean"
+        },
+        "requires_distinct_approver_for_high_risk": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "cannot_self_seal",
+        "requires_distinct_approver_for_high_risk"
+      ]
+    },
+    "max_risk_tier_for_remote": {
+      "$ref": "./common.schema.json#/$defs/riskTier"
+    },
+    "required_witnesses": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/witness"
+      },
+      "uniqueItems": true
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "temperature": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 2
+        },
+        "context_budget": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "transport": {
+          "type": "string",
+          "enum": [
+            "native",
+            "stdio",
+            "sse",
+            "streamable-http",
+            "websocket"
+          ]
+        }
+      },
+      "required": [
+        "model",
+        "temperature",
+        "context_budget",
+        "transport"
+      ]
+    },
+    "escalation_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "when": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "to_role": {
+            "$ref": "./common.schema.json#/$defs/role"
+          },
+          "via": {
+            "$ref": "./common.schema.json#/$defs/id"
+          }
+        },
+        "required": [
+          "when",
+          "to_role",
+          "via"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "role",
+    "intelligence_tier",
+    "intelligence_band",
+    "risk_tier",
+    "authority_level",
+    "approval_policy",
+    "knowledge_basis",
+    "host_binding",
+    "allowed_tools",
+    "allowed_servers",
+    "a2a_exposure",
+    "allowed_peers",
+    "required_auth",
+    "separation_of_duties",
+    "max_risk_tier_for_remote",
+    "required_witnesses",
+    "runtime",
+    "escalation_rules"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "intelligence_tier": {
+            "const": "APEX"
+          }
+        },
+        "required": [
+          "intelligence_tier"
+        ]
+      },
+      "then": {
+        "properties": {
+          "intelligence_band": {
+            "const": "APEX"
+          },
+          "approval_policy": {
+            "enum": [
+              "hold",
+              "human-required"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "role": {
+            "const": "auditor"
+          }
+        },
+        "required": [
+          "role"
+        ]
+      },
+      "then": {
+        "properties": {
+          "intelligence_band": {
+            "const": "ASI"
+          },
+          "authority_level": {
+            "enum": [
+              "observe",
+              "approve"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "role": {
+            "const": "engineer"
+          }
+        },
+        "required": [
+          "role"
+        ]
+      },
+      "then": {
+        "properties": {
+          "separation_of_duties": {
+            "properties": {
+              "cannot_self_seal": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+version: 1
+authority: arifOS
+
+rules:
+  - arifOS is the constitutional kernel and sole source of Floors F1-F13.
+  - AAA cannot override Floors, verdict classes, or 000-999 stage authority.
+  - AAA performs inner work from 000 through 777 only.
+  - arifOS owns 888 JUDGE and 999 SEAL for high-stakes operations.
+  - VAULT999 is the only final ledger for sealed critical actions.
+  - If VAULT999 has no seal reference, AAA must treat the action as HOLD.
+
+pipeline_mapping:
+  "000": aaa-session-init
+  "111": aaa-grounding-and-context
+  "333": aaa-schema-and-constitutional-reasoning
+  "444": aaa-routing-for-tools-hosts-mcp-a2a
+  "555": aaa-memory-and-registry-reads
+  "666": aaa-risk-self-critique
+  "777": aaa-ops-cost-and-execution-limits
+  "888": arifos-judge
+  "999": arifos-vault
+
+accepted_verdicts:
+  - SEAL
+  - HOLD
+  - PARTIAL
+  - CAUTION
+  - VOID
+
+vault:
+  ledger: VAULT999
+  required_for_irreversible: true
+  reference_field: vault_ref

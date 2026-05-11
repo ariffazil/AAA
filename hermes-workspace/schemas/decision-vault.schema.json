@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/decision-vault.schema.json",
+  "title": "AAA Decision and Vault Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "minimum": 1 },
+    "id": { "$ref": "./common.schema.json#/$defs/id" },
+    "name": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+    "stage_band": { "const": "888-999" },
+    "domain_plane": { "$ref": "./common.schema.json#/$defs/domainPlane" },
+    "purpose": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "./common.schema.json#/$defs/id" },
+          "goal_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "gate_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "risk_class": { "$ref": "./common.schema.json#/$defs/riskTier" },
+          "status": {
+            "type": "string",
+            "enum": ["proposed", "approved", "hold", "sealed"]
+          },
+          "executor_org_unit": { "$ref": "./common.schema.json#/$defs/id" },
+          "required_signer_roles": {
+            "type": "array",
+            "items": { "$ref": "./common.schema.json#/$defs/role" },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "actual_signers": { "$ref": "./common.schema.json#/$defs/stringIdArray" },
+          "options_considered": {
+            "type": "array",
+            "items": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+            "minItems": 1
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+            "minItems": 1
+          },
+          "evidence_root": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "separation_of_duties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "proposer_must_differ_from_approver": { "type": "boolean" },
+              "executor_must_differ_from_approver": { "type": "boolean" }
+            },
+            "required": [
+              "proposer_must_differ_from_approver",
+              "executor_must_differ_from_approver"
+            ]
+          },
+          "vault_export_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "publication_profile": {
+            "type": "string",
+            "enum": ["internal", "internal-redacted", "public-redacted"]
+          }
+        },
+        "required": [
+          "id",
+          "goal_ref",
+          "gate_ref",
+          "risk_class",
+          "status",
+          "executor_org_unit",
+          "required_signer_roles",
+          "actual_signers",
+          "options_considered",
+          "evidence_refs",
+          "evidence_root",
+          "separation_of_duties",
+          "vault_export_ref",
+          "publication_profile"
+        ]
+      }
+    },
+    "vault_exports": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "./common.schema.json#/$defs/id" },
+          "decision_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "path": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "format": {
+            "type": "string",
+            "enum": ["json", "jsonl"]
+          },
+          "seal_status": {
+            "type": "string",
+            "enum": ["proposed", "hold", "sealed"]
+          },
+          "hash_algorithm": {
+            "type": "string",
+            "enum": ["sha256", "merkle-sha256"]
+          },
+          "redaction_profile": {
+            "type": "string",
+            "enum": ["internal", "internal-redacted", "public-redacted"]
+          },
+          "mutability": {
+            "type": "string",
+            "enum": ["append-only", "immutable-once-sealed"]
+          }
+        },
+        "required": [
+          "id",
+          "decision_ref",
+          "path",
+          "format",
+          "seal_status",
+          "hash_algorithm",
+          "redaction_profile",
+          "mutability"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "name",
+    "stage_band",
+    "domain_plane",
+    "purpose",
+    "decisions",
+    "vault_exports"
+  ]
+}

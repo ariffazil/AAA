@@ -1,0 +1,1100 @@
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;title&gt;SEARAH × PETROS — Investigation Report&lt;/title&gt;
+&lt;style&gt;
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+  :root {
+    --petronas-blue: #0033A0;
+    --eni-green: #008573;
+    --warning-red: #C8102E;
+    --malaysia-red: #CC0001;
+    --uk-red: #012169;
+    --bg: #F8F9FA;
+    --text: #1A1A2E;
+    --muted: #6C757D;
+    --border: #DEE2E6;
+    --confirm: #198754;
+    --partial: #FFC107;
+    --unknown: #6C757D;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 10pt;
+    line-height: 1.6;
+    color: var(--text);
+    background: white;
+    padding: 0;
+  }
+
+  /* ===== COVER ===== */
+  .cover {
+    background: linear-gradient(135deg, #012169 0%, #0033A0 50%, #008573 100%);
+    color: white;
+    padding: 48px 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cover-label {
+    font-size: 8pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+  }
+
+  .cover h1 {
+    font-size: 28pt;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .cover h2 {
+    font-size: 14pt;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 32px;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 4px;
+    background: #C8102E;
+    margin-bottom: 32px;
+  }
+
+  .cover-meta {
+    font-size: 9pt;
+    color: rgba(255,255,255,0.65);
+    line-height: 2;
+  }
+
+  .cover-meta strong {
+    color: white;
+  }
+
+  .classification-badge {
+    display: inline-block;
+    background: rgba(200,16,46,0.9);
+    color: white;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* ===== PAGE ===== */
+  .page { padding: 36px 40px; }
+
+  .page-break { page-break-before: always; }
+
+  h1.section {
+    font-size: 16pt;
+    font-weight: 800;
+    color: var(--petronas-blue);
+    border-left: 6px solid var(--petronas-blue);
+    padding-left: 14px;
+    margin-bottom: 20px;
+    margin-top: 8px;
+  }
+
+  h2.sub {
+    font-size: 12pt;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  p { margin-bottom: 10px; }
+
+  /* ===== CALLOUT BOXES ===== */
+  .callout {
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+
+  .callout-allegation {
+    background: #FFF3CD;
+    border-left: 5px solid #FFC107;
+  }
+
+  .callout-allegation .callout-title {
+    color: #856404;
+    font-weight: 700;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .callout-allegation .callout-body {
+    color: #664D03;
+    font-style: italic;
+    font-size: 10pt;
+  }
+
+  .callout-irony {
+    background: #F8D7DA;
+    border-left: 5px solid var(--warning-red);
+  }
+
+  .callout-irony .callout-title {
+    color: #842029;
+    font-weight: 700;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .callout-irony .callout-body {
+    color: #633034;
+    font-size: 10pt;
+  }
+
+  /* ===== TABLES ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 9pt;
+  }
+
+  th {
+    background: var(--petronas-blue);
+    color: white;
+    padding: 9px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8pt;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:nth-child(even) td { background: #F1F3F5; }
+
+  .badge {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  .badge-confirmed { background: var(--confirm); color: white; }
+  .badge-partial   { background: var(--partial); color: #333; }
+  .badge-unknown   { background: var(--unknown); color: white; }
+  .badge-error     { background: var(--warning-red); color: white; }
+
+  /* ===== GOVERNANCE DIAGRAM ===== */
+  .gov-diagram {
+    background: #F8F9FA;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 16px 0;
+    text-align: center;
+  }
+
+  .gov-diagram-title {
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .gov-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .gov-box {
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 9pt;
+    font-weight: 600;
+    min-width: 140px;
+  }
+
+  .gov-petronas { background: #0033A0; color: white; }
+  .gov-petros   { background: #CC0001; color: white; }
+  .gov-eni      { background: #008573; color: white; }
+  .gov-seara    { background: #012169; color: white; border: 2px solid #C8102E; }
+  .gov-carcalli { background: #5C6BC0; color: white; }
+
+  .gov-arrow {
+    font-size: 18pt;
+    color: var(--muted);
+  }
+
+  .gov-label {
+    font-size: 8pt;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .gov-legend {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+    font-size: 8pt;
+    color: var(--muted);
+    flex-wrap: wrap;
+  }
+
+  .gov-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .gov-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    margin: 16px 0;
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 4px;
+    bottom: 4px;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--petronas-blue), var(--eni-green));
+    border-radius: 2px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 12px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -21px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 3px solid var(--petronas-blue);
+    background: white;
+  }
+
+  .timeline-item.unresolved::before { border-color: var(--warning-red); }
+  .timeline-item.done::before { background: var(--confirm); border-color: var(--confirm); }
+
+  .timeline-year {
+    font-weight: 700;
+    font-size: 10pt;
+    color: var(--petronas-blue);
+  }
+
+  .timeline-event {
+    font-size: 9pt;
+    color: var(--text);
+  }
+
+  .timeline-event strong { color: var(--warning-red); }
+
+  /* ===== VERDICT CARDS ===== */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+
+  .verdict-card {
+    border-radius: 8px;
+    padding: 14px;
+    border: 2px solid;
+  }
+
+  .verdict-card.confirmed {
+    background: #D1E7DD;
+    border-color: var(--confirm);
+  }
+
+  .verdict-card.partial {
+    background: #FFF3CD;
+    border-color: var(--partial);
+  }
+
+  .verdict-card.unknown {
+    background: #F1F3F5;
+    border-color: var(--unknown);
+  }
+
+  .verdict-card.error {
+    background: #F8D7DA;
+    border-color: var(--warning-red);
+  }
+
+  .verdict-card-title {
+    font-weight: 700;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .verdict-card.confirmed .verdict-card-title { color: var(--confirm); }
+  .verdict-card.partial .verdict-card-title { color: #856404; }
+  .verdict-card.unknown .verdict-card-title { color: var(--unknown); }
+  .verdict-card.error .verdict-card-title { color: var(--warning-red); }
+
+  .verdict-card-content {
+    font-size: 9pt;
+    color: var(--text);
+  }
+
+  /* ===== SUMMARY BOX ===== */
+  .summary-box {
+    background: linear-gradient(135deg, #012169, #0033A0);
+    color: white;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .summary-box h3 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin-bottom: 12px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 8px;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    font-size: 9pt;
+  }
+
+  .summary-row:last-child { border-bottom: none; }
+
+  .summary-label { color: rgba(255,255,255,0.75); }
+  .summary-value { font-weight: 700; }
+
+  /* ===== OPEN QUESTIONS ===== */
+  .question-box {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--petronas-blue);
+    background: #F8F9FA;
+    border-radius: 0 8px 8px 0;
+    padding: 12px 16px;
+    margin: 8px 0;
+    font-size: 9pt;
+  }
+
+  .question-box::before {
+    content: "→ ";
+    font-weight: 700;
+    color: var(--petronas-blue);
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #1A1A2E;
+    color: rgba(255,255,255,0.6);
+    padding: 20px 40px;
+    font-size: 8pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left . motto {
+    font-size: 9pt;
+    font-weight: 700;
+    color: white;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .footer-right { text-align: right; }
+
+  /* ===== DIRECTORS VISUAL ===== */
+  .director-row {
+    display: flex;
+    gap: 12px;
+    margin: 12px 0;
+  }
+
+  .director-card {
+    flex: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .director-header {
+    padding: 10px 14px;
+    font-weight: 700;
+    font-size: 10pt;
+    color: white;
+  }
+
+  .director-header.italian { background: var(--eni-green); }
+  .director-header.malaysian { background: var(--petronas-blue); }
+
+  .director-body {
+    background: #F8F9FA;
+    padding: 10px 14px;
+    font-size: 8pt;
+    color: var(--text);
+  }
+
+  .director-body div { margin-bottom: 4px; }
+
+  /* ===== PAGE HEADER ===== */
+  .page-header {
+    background: var(--petronas-blue);
+    color: white;
+    padding: 14px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-header-title {
+    font-weight: 700;
+    font-size: 10pt;
+    letter-spacing: 0.5px;
+  }
+
+  .page-header-right {
+    font-size: 8pt;
+    color: rgba(255,255,255,0.65);
+  }
+
+  /* ===== KEY FINDINGS ===== */
+  .key-finding {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 12px 0;
+    padding: 12px;
+    background: #F8F9FA;
+    border-radius: 6px;
+  }
+
+  .key-finding-icon {
+    font-size: 16pt;
+    line-height: 1;
+    min-width: 24px;
+  }
+
+  .key-finding-text {
+    font-size: 9pt;
+    color: var(--text);
+  }
+
+  .key-finding-text strong {
+    color: var(--petronas-blue);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* ===== SCORE CARD ===== */
+  .score-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 9pt;
+  }
+
+  .score-label {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  .score-bar-wrap {
+    flex: 2;
+    background: #E9ECEF;
+    height: 10px;
+    border-radius: 5px;
+    margin: 0 12px;
+    overflow: hidden;
+  }
+
+  .score-bar {
+    height: 100%;
+    border-radius: 5px;
+  }
+
+  .score-bar.confirmed { background: var(--confirm); }
+  .score-bar.partial   { background: var(--partial); }
+  .score-bar.error     { background: var(--warning-red); }
+  .score-bar.unknown    { background: var(--unknown); }
+
+  .score-value {
+    font-weight: 700;
+    font-size: 9pt;
+    min-width: 80px;
+    text-align: right;
+  }
+
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- ===== COVER PAGE ===== --&gt;
+&lt;div class="cover"&gt;
+  &lt;div class="classification-badge"&gt;Open Source Investigation — Unclassified&lt;/div&gt;
+  &lt;div class="cover-label"&gt;arifOS_bot × makcikGPT&lt;/div&gt;
+  &lt;h1&gt;SEARAH × PETROS&lt;/h1&gt;
+  &lt;h2&gt;Who Really Controls Malaysia's Gas Future?&lt;/h2&gt;
+  &lt;div class="cover-divider"&gt;&lt;/div&gt;
+  &lt;p style="font-size:11pt;color:rgba(255,255,255,0.85);margin-bottom:20px;font-style:italic;"&gt;
+    "Boss, within Malaysia you can't settle with Petros.&lt;br&gt;
+    But outside Malaysia, you sign a billion-dollar JV with Eni?"
+  &lt;/p&gt;
+  &lt;div class="cover-meta"&gt;
+    &lt;strong&gt;Date:&lt;/strong&gt; 15 April 2026&lt;br&gt;
+    &lt;strong&gt;Source:&lt;/strong&gt; Companies House UK (Co. No. 17027115) + Public Record&lt;br&gt;
+    &lt;strong&gt;Classification:&lt;/strong&gt; Evidence-Based Analysis&lt;br&gt;
+    &lt;strong&gt;Status:&lt;/strong&gt; ONGOING — More documents needed&lt;br&gt;&lt;br&gt;
+    &lt;strong&gt;Motto:&lt;/strong&gt; DITEMPA BUKAN DIBERI
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 1 ===== --&gt;
+&lt;div class="page-header"&gt;
+  &lt;span class="page-header-title"&gt;SECTION 1 — The Core Allegation&lt;/span&gt;
+  &lt;span class="page-header-right"&gt;SEARAH × PETROS Investigation&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;div class="callout callout-allegation"&gt;
+    &lt;div class="callout-title"&gt;Arif's Allegation&lt;/div&gt;
+    &lt;div class="callout-body"&gt;
+      "CEO (Tengku Taufik) jadi punca masalah Petros, then buat JV besar dengan Eni.&lt;br&gt;
+      Macam outsource masa depan Malaysia kat penjajah."
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h1 class="section"&gt;What Is SEARAH?&lt;/h1&gt;
+
+  &lt;p&gt;&lt;strong&gt;SEARAH&lt;/strong&gt; = Southeast Asia Oil & Gas joint venture, 50-50 between &lt;strong&gt;PETRONAS Carigali&lt;/strong&gt; (Malaysia) and &lt;strong&gt;Eni&lt;/strong&gt; (Italy). Incorporated in the &lt;strong&gt;UK&lt;/strong&gt;, registered at &lt;strong&gt;Eni's London office&lt;/strong&gt;. Capex: ~USD 15 billion over 5 years. Target: 300→500 kboe/day.&lt;/p&gt;
+
+  &lt;h1 class="section"&gt;What Is PETROS?&lt;/h1&gt;
+
+  &lt;p&gt;&lt;strong&gt;PETROS&lt;/strong&gt; = Petroleum Sarawak Berhad. Sarawak's state-owned petroleum company. Sarawak's position: PETROS should be the &lt;strong&gt;sole aggregator&lt;/strong&gt; for all gas produced in Sarawak. This has been disputed with PETRONAS for &lt;strong&gt;62 years&lt;/strong&gt;.&lt;/p&gt;
+
+  &lt;div class="callout callout-irony" style="margin-top:20px;"&gt;
+    &lt;div class="callout-title"&gt;The Structural Irony&lt;/div&gt;
+    &lt;div class="callout-body"&gt;
+      &lt;strong&gt;WITHIN Malaysia:&lt;/strong&gt; PETRONAS cannot settle with PETROS — a Malaysian entity representing a Malaysian state — after 62 years of legal disputes.&lt;br&gt;&lt;br&gt;
+      &lt;strong&gt;OUTSIDE Malaysia:&lt;/strong&gt; PETRONAS signs a USD 15 billion JV with Eni, incorporates a UK company, and commits Malaysian assets — in a matter of months.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 2 ===== --&gt;
+&lt;div class="page page-break"&gt;
+  &lt;div class="page-header"&gt;
+    &lt;span class="page-header-title"&gt;SECTION 2 — The SEARA Energy Limited Structure&lt;/span&gt;
+    &lt;span class="page-header-right"&gt;Companies House UK · Company No. 17027115&lt;/span&gt;
+  &lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;h1 class="section"&gt;Corporate Structure (From Official Filing)&lt;/h1&gt;
+
+  &lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Field&lt;/th&gt;&lt;th&gt;Detail&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Company Number&lt;/td&gt;&lt;td&gt;17027115&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Incorporation Date&lt;/td&gt;&lt;td&gt;&lt;strong&gt;11 February 2026&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Registered Office&lt;/td&gt;&lt;td&gt;&lt;strong&gt;ENI HOUSE, 10 Ebury Bridge Road, London SW1W 8PZ&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Company Type&lt;/td&gt;&lt;td&gt;Private company limited by shares&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;SIC Code&lt;/td&gt;&lt;td&gt;64209 — Activities of head offices&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Share Capital&lt;/td&gt;&lt;td&gt;USD 2 (2 shares @ USD 1 each)&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Company Secretary&lt;/td&gt;&lt;td&gt;Riordan D'Abreo (ENI House London)&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;h2 class="sub"&gt;50-50 Shareholding&lt;/h2&gt;
+
+  &lt;div class="director-row"&gt;
+    &lt;div class="director-card"&gt;
+      &lt;div class="director-header italian"&gt;ENI LASMO PLC&lt;/div&gt;
+      &lt;div class="director-body"&gt;
+        &lt;div&gt;&lt;strong&gt;Type:&lt;/strong&gt; UK-registered company&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Address:&lt;/strong&gt; ENI House, London&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Shares:&lt;/strong&gt; 1 Ordinary (50%)&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;PSC Status:&lt;/strong&gt; &gt;25% &le;50%&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="director-card"&gt;
+      &lt;div class="director-header malaysian"&gt;PETRONAS CARIGALI INT'L VENTURES SDN BHD&lt;/div&gt;
+      &lt;div class="director-body"&gt;
+        &lt;div&gt;&lt;strong&gt;Type:&lt;/strong&gt; Malaysian company&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Address:&lt;/strong&gt; Petronas Twin Towers, KL&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Shares:&lt;/strong&gt; 1 Ordinary (50%)&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;PSC Status:&lt;/strong&gt; &gt;25% &le;50%&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2 class="sub"&gt;Board of Directors — 4 Persons&lt;/h2&gt;
+
+  &lt;div class="director-row"&gt;
+    &lt;div class="director-card"&gt;
+      &lt;div class="director-header italian"&gt;Francesca Rinaldi&lt;/div&gt;
+      &lt;div class="director-body"&gt;
+        &lt;div&gt;&lt;strong&gt;Nationality:&lt;/strong&gt; Italian&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Residence:&lt;/strong&gt; Italy&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;DOB:&lt;/strong&gt; April 1978&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Local:&lt;/strong&gt; ✅ Yes — London accessible&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="director-card"&gt;
+      &lt;div class="director-header italian"&gt;Ciro Antonio Pagano&lt;/div&gt;
+      &lt;div class="director-body"&gt;
+        &lt;div&gt;&lt;strong&gt;Nationality:&lt;/strong&gt; Italian&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Residence:&lt;/strong&gt; Italy&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;DOB:&lt;/strong&gt; March 1962&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Local:&lt;/strong&gt; ✅ Yes — London accessible&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="director-row"&gt;
+    &lt;div class="director-card"&gt;
+      &lt;div class="director-header malaysian"&gt;Mohd Redhani Bin Abdul Rahman&lt;/div&gt;
+      &lt;div class="director-body"&gt;
+        &lt;div&gt;&lt;strong&gt;Nationality:&lt;/strong&gt; Malaysian&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Residence:&lt;/strong&gt; Malaysia&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;DOB:&lt;/strong&gt; April 1975&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Local:&lt;/strong&gt; ❌ Must travel to London&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="director-card"&gt;
+      &lt;div class="director-header malaysian"&gt;Amru Iskandar Bin Burhan&lt;/div&gt;
+      &lt;div class="director-body"&gt;
+        &lt;div&gt;&lt;strong&gt;Nationality:&lt;/strong&gt; Malaysian&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Residence:&lt;/strong&gt; Malaysia&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;DOB:&lt;/strong&gt; July 1978&lt;/div&gt;
+        &lt;div&gt;&lt;strong&gt;Local:&lt;/strong&gt; ❌ Must travel to London&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;p style="font-size:8pt;color:#6C757D;margin-top:8px;font-style:italic;"&gt;
+    ⚠️ Note: Malaysian directors must travel to London for in-person board meetings. Italian directors are effectively on the doorstep of the registered office. This is practical asymmetry, not just technical.
+  &lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 3 ===== --&gt;
+&lt;div class="page page-break"&gt;
+  &lt;div class="page-header"&gt;
+    &lt;span class="page-header-title"&gt;SECTION 3 — The Governance Triangle&lt;/span&gt;
+    &lt;span class="page-header-right"&gt;Who Controls What?&lt;/span&gt;
+  &lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;h1 class="section"&gt;The Problem: 3-Layer Governance Mess&lt;/h1&gt;
+
+  &lt;div class="gov-diagram"&gt;
+    &lt;div class="gov-diagram-title"&gt;PETRONAS × PETROS × SEARA — Overlapping Claims&lt;/div&gt;
+
+    &lt;div class="gov-row"&gt;
+      &lt;div&gt;
+        &lt;div class="gov-box gov-petronas"&gt;PETRONAS&lt;/div&gt;
+        &lt;div class="gov-label"&gt;Kuala Lumpur&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="gov-arrow"&gt;↕ 62 years unresolved&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="gov-box gov-petros"&gt;PETROS&lt;/div&gt;
+        &lt;div class="gov-label"&gt;Sarawak&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="gov-row"&gt;
+      &lt;div&gt;
+        &lt;div class="gov-box gov-carcalli" style="font-size:8pt;"&gt;PETRONAS CARIGALI&lt;br&gt;INT'L VENTURES&lt;/div&gt;
+        &lt;div class="gov-label"&gt;KL — 50% shareholder&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="gov-arrow"&gt;↔ 50-50&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;div class="gov-box gov-eni"&gt;ENI LASMO PLC&lt;/div&gt;
+        &lt;div class="gov-label"&gt;London — 50% shareholder&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="gov-row"&gt;
+      &lt;div class="gov-box gov-seara" style="font-size:10pt;"&gt;SEARA ENERGY LIMITED&lt;br&gt;🇬🇧 UK-Registered&lt;br&gt;ENI HOUSE, LONDON&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="gov-legend"&gt;
+      &lt;div class="gov-legend-item"&gt;
+        &lt;div class="gov-legend-dot" style="background:#0033A0;"&gt;&lt;/div&gt;
+        &lt;span&gt;PETRONAS group&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="gov-legend-item"&gt;
+        &lt;div class="gov-legend-dot" style="background:#CC0001;"&gt;&lt;/div&gt;
+        &lt;span&gt;Sarawak/PETROS&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="gov-legend-item"&gt;
+        &lt;div class="gov-legend-dot" style="background:#008573;"&gt;&lt;/div&gt;
+        &lt;span&gt;Eni (Italy)&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;div class="gov-legend-item"&gt;
+        &lt;div class="gov-legend-dot" style="background:#012169;border:2px solid #C8102E;"&gt;&lt;/div&gt;
+        &lt;span&gt;UK JV Vehicle&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2 class="sub"&gt;What This Means&lt;/h2&gt;
+
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;🗂️&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;Layer 1:&lt;/strong&gt; PETRONAS vs PETROS — 62 years unresolved
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;🗂️&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;Layer 2:&lt;/strong&gt; PETRONAS vs Eni — SEARAH JV (signed Feb 2026)
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;⚠️&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;Layer 3:&lt;/strong&gt; If Malaysian assets are in Sarawak → PETROS now faces Eni's lawyers too
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;p style="margin-top:16px;font-size:9pt;color:#6C757D;font-style:italic;"&gt;
+    With SEARAH in the picture, Sarawak's negotiation with PETRONAS is no longer a two-party domestic dispute. Eni — an international company with its own legal team, BIT protections, and arbitration rights — is now structurally involved in Malaysian petroleum governance.
+  &lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 4 ===== --&gt;
+&lt;div class="page page-break"&gt;
+  &lt;div class="page-header"&gt;
+    &lt;span class="page-header-title"&gt;SECTION 4 — Timeline&lt;/span&gt;
+    &lt;span class="page-header-right"&gt;62 Years of Dispute, Months to Eni Deal&lt;/span&gt;
+  &lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;h1 class="section"&gt;How We Got Here&lt;/h1&gt;
+
+  &lt;div class="timeline"&gt;
+
+    &lt;div class="timeline-item done"&gt;
+      &lt;div class="timeline-year"&gt;1963&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;Malaysia Agreement (MA63) — Sabah & Sarawak join Malaysia. Extent of petroleum rights left &lt;strong&gt;ambiguous&lt;/strong&gt;.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline-item done"&gt;
+      &lt;div class="timeline-year"&gt;1974&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;Petroleum Development Act — PETRONAS given federal control over ALL Malaysian petroleum. &lt;strong&gt;Sarawak not fully consulted.&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline-item"&gt;
+      &lt;div class="timeline-year"&gt;2016&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;PETROS (Petroleum Sarawak Berhad) officially launched. Sarawak moves to reclaim control of its own petroleum.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline-item"&gt;
+      &lt;div class="timeline-year"&gt;2020&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;Operatorship of gas distribution assets in &lt;strong&gt;Miri & Bintulu&lt;/strong&gt; transferred to PETROS — but long delayed.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline-item unresolved"&gt;
+      &lt;div class="timeline-year"&gt;2024–2025&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;Full PETRONAS–PETROS gas aggregation negotiations. Target: conclude &lt;strong&gt;by end 2025&lt;/strong&gt;. &lt;strong&gt;NOT CONCLUDED.&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline-item done"&gt;
+      &lt;div class="timeline-year"&gt;Feb 11, 2026&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;&lt;strong&gt;SEARA Energy Limited incorporated&lt;/strong&gt; in the UK — Company No. 17027115. Registered at ENI House, London.&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="timeline-item done"&gt;
+      &lt;div class="timeline-year"&gt;April 2026&lt;/div&gt;
+      &lt;div class="timeline-event"&gt;&lt;strong&gt;SEARAH JV publicly announced.&lt;/strong&gt; PETRONAS-PETROS negotiations STILL unresolved after 62 years.&lt;/div&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+
+  &lt;h2 class="sub" style="margin-top:24px;"&gt;Key Observation&lt;/h2&gt;
+
+  &lt;div class="callout callout-irony"&gt;
+    &lt;div class="callout-title"&gt;The Gap That Tells a Story&lt;/div&gt;
+    &lt;div class="callout-body"&gt;
+      &lt;strong&gt;PETRONAS–PETROS:&lt;/strong&gt; Negotiating since 2024, expected to conclude end-2025. Still unresolved April 2026. (62 years cumulative dispute.)&lt;br&gt;&lt;br&gt;
+      &lt;strong&gt;SEARAH JV:&lt;/strong&gt; From concept to UK-incorporated entity: approximately &lt;strong&gt;a few months&lt;/strong&gt;.
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 5 ===== --&gt;
+&lt;div class="page page-break"&gt;
+  &lt;div class="page-header"&gt;
+    &lt;span class="page-header-title"&gt;SECTION 5 — Verdict Matrix&lt;/span&gt;
+    &lt;span class="page-header-right"&gt;What Is Proven vs. What Is Suspected&lt;/span&gt;
+  &lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;h1 class="section"&gt;Arif's Claims — Evidence Assessment&lt;/h1&gt;
+
+  &lt;table&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Claim&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+      &lt;th&gt;Evidence&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;PETRONAS has not resolved PETROS dispute&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-confirmed"&gt;✅ CONFIRMED&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Public record — negotiations ongoing through 2025, unresolved April 2026&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;SEARA incorporated while PETROS unresolved&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-confirmed"&gt;✅ CONFIRMED&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Feb 11 2026 filing vs. PETROS still open&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UK structure benefits Eni more than Malaysia&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-partial"&gt;🟡 PARTIAL&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;ENI House address, Italian directors local, English law jurisdiction — asymmetry confirmed, motive unproven&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;UK structure makes "right-sizing" easier&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-partial"&gt;🟡 PLAUSIBLE&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;UK employment law flexibility is real; no direct evidence this was the primary motive&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Eni gets access Malaysia shouldn't give&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-partial"&gt;🟡 CONTEXT-DEPENDENT&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Depends on reserved matters list — governance details not publicly disclosed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;CEO personally responsible for PETROS failure&lt;/td&gt;
+      &lt;td&gt;&lt;span class="badge badge-partial"&gt;🟡 PARTIAL&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;Systemic issue predates him; his tenure didn't resolve it AND he signed SEARA&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+
+  &lt;h1 class="section"&gt;Overall Score&lt;/h1&gt;
+
+  &lt;div class="score-row"&gt;
+    &lt;span class="score-label"&gt;Economics & Gas Volume&lt;/span&gt;
+    &lt;div class="score-bar-wrap"&gt;&lt;div class="score-bar confirmed" style="width:72%;"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;span class="score-value" style="color:var(--confirm);"&gt;B+ — Conditional&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="score-row"&gt;
+    &lt;span class="score-label"&gt;Governance & Sovereignty&lt;/span&gt;
+    &lt;div class="score-bar-wrap"&gt;&lt;div class="score-bar error" style="width:45%;"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;span class="score-value" style="color:var(--warning-red);"&gt;D — Problematic&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="score-row"&gt;
+    &lt;span class="score-label"&gt;Human Capital & Workers&lt;/span&gt;
+    &lt;div class="score-bar-wrap"&gt;&lt;div class="score-bar error" style="width:35%;"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;span class="score-value" style="color:var(--warning-red);"&gt;D+ — Warning&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="score-row"&gt;
+    &lt;span class="score-label"&gt;Transparency & Trust&lt;/span&gt;
+    &lt;div class="score-bar-wrap"&gt;&lt;div class="score-bar error" style="width:40%;"&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;span class="score-value" style="color:var(--warning-red);"&gt;D — No Parliament notified&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div class="summary-box" style="margin-top:20px;"&gt;
+    &lt;h3&gt;Overall Verdict&lt;/h3&gt;
+    &lt;div class="summary-row"&gt;
+      &lt;span class="summary-label"&gt;PETRONAS–PETROS unresolved while signing Eni JV&lt;/span&gt;
+      &lt;span class="summary-value" style="color:#90EE90;"&gt;✅ CONFIRMED&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="summary-row"&gt;
+      &lt;span class="summary-label"&gt;UK incorporation structural asymmetry&lt;/span&gt;
+      &lt;span class="summary-value" style="color:#90EE90;"&gt;✅ CONFIRMED&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="summary-row"&gt;
+      &lt;span class="summary-label"&gt;PETROS bypassed in Malaysian asset transfer&lt;/span&gt;
+      &lt;span class="summary-value" style="color:#90EE90;"&gt;✅ CONFIRMED (structural)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="summary-row"&gt;
+      &lt;span class="summary-label"&gt;Parliament notified before signing&lt;/span&gt;
+      &lt;span class="summary-value" style="color:#FF6B6B;"&gt;❓ NO EVIDENCE FOUND&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="summary-row"&gt;
+      &lt;span class="summary-label"&gt;Reserved matters list publicly disclosed&lt;/span&gt;
+      &lt;span class="summary-value" style="color:#FF6B6B;"&gt;❌ NOT PUBLIC&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 6 ===== --&gt;
+&lt;div class="page page-break"&gt;
+  &lt;div class="page-header"&gt;
+    &lt;span class="page-header-title"&gt;SECTION 6 — Open Questions&lt;/span&gt;
+    &lt;span class="page-header-right"&gt;What Still Needs Answers&lt;/span&gt;
+  &lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;h1 class="section"&gt;Questions That Need Answers&lt;/h1&gt;
+
+  &lt;h2 class="sub"&gt;Governance&lt;/h2&gt;
+  &lt;div class="question-box"&gt;Who is the tiebreaker in a 2-2 board deadlock between Eni and PETRONAS directors?&lt;/div&gt;
+  &lt;div class="question-box"&gt;What is the reserved matters list, and who drafted it?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Does Malaysian Parliament know the specific assets transferred into SEARA?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Were Malaysian directors appointed by PETRONAS board or by PETRONAS Carigali IV?&lt;/div&gt;
+
+  &lt;h2 class="sub"&gt;PETROS & Sarawak&lt;/h2&gt;
+  &lt;div class="question-box"&gt;Which Malaysian assets specifically were transferred into SEARA?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Are any of these assets in or adjacent to Sarawak?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Was PETROS consulted before Malaysian assets were committed to a 50-50 JV with Eni?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Does the SEARA governance structure make PETRONAS–PETROS resolution more or less likely?&lt;/div&gt;
+
+  &lt;h2 class="sub"&gt;Personnel & Employment&lt;/h2&gt;
+  &lt;div class="question-box"&gt;What is the employment status of Malaysian staff assigned to SEARA assets?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Are Malaysian directors on SEARA's board compensated by PETRONAS or by SEARA itself?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Is there a conflict of interest if Malaysian directors' primary employer is PETRONAS but they owe fiduciary duties to a 50-50 JV?&lt;/div&gt;
+
+  &lt;h2 class="sub"&gt;Financial&lt;/h2&gt;
+  &lt;div class="question-box"&gt;Where is SEARA's USD 6 billion revolver recorded — on PETRONAS Carigali IV's balance sheet or SEARA's?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Does the debt have any Malaysian government guarantee?&lt;/div&gt;
+  &lt;div class="question-box"&gt;Who pays for cost overruns on Kutei Basin deepwater — SEARA, PETRONAS Carigali, or PETRONAS parent?&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== SECTION 7 ===== --&gt;
+&lt;div class="page page-break"&gt;
+  &lt;div class="page-header"&gt;
+    &lt;span class="page-header-title"&gt;SECTION 7 — UK Incorporation: Real Reasons&lt;/span&gt;
+    &lt;span class="page-header-right"&gt;Tax, Law, and Restructuring Flexibility&lt;/span&gt;
+  &lt;/div&gt;
+&lt;div class="page"&gt;
+
+  &lt;h1 class="section"&gt;Why UK? The Five Real Reasons&lt;/h1&gt;
+
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;1️⃣&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;English Common Law — Standard for International Oil & Gas&lt;/strong&gt;
+      PSC contracts, gas sales agreements, and JDAs are routinely governed by English law. A UK entity fits naturally into this ecosystem. &lt;strong&gt;This is legitimate.&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;2️⃣&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;International Arbitration Access&lt;/strong&gt;
+      UK has extensive Bilateral Investment Treaties (BITs). Eni can access LCIA or ICC Paris arbitration if Malaysia changes rules. &lt;strong&gt;This benefits Eni more than Malaysia.&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;3️⃣&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;Tax Treaties — Not Primary, But Real&lt;/strong&gt;
+      UK has a vast treaty network globally. While UK and Malaysia corporate tax rates are similar (~24-25%), treaty-based routing can reduce withholding taxes on dividends, interest, and royalties across multiple jurisdictions. &lt;strong&gt;Eni benefits from this infrastructure.&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;4️⃣&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;Easier Restructuring & "Right-Sizing"&lt;/strong&gt;
+      UK Companies Act 2006 allows relatively smooth workforce reductions, asset transfers, and company striking off — without going through Malaysian courts. &lt;strong&gt;If PETRONAS wants to reduce headcount at SEARA assets, UK law is more flexible than Malaysian law.&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="key-finding"&gt;
+    &lt;div class="key-finding-icon"&gt;5️⃣&lt;/div&gt;
+    &lt;div class="key-finding-text"&gt;
+      &lt;strong&gt;Signalling to International Capital Markets&lt;/strong&gt;
+      A UK-incorporated, Eni-backed entity gets better credit terms from international banks and bondholders. &lt;strong&gt;PETRONAS Carigali alone would also get good rates — but the 50-50 with Eni in a UK vehicle sends a stronger signal to global capital markets.&lt;/strong&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;h2 class="sub" style="margin-top:20px;"&gt;Who Benefits Most?&lt;/h2&gt;
+
+  &lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;Benefit&lt;/th&gt;&lt;th&gt;Eni&lt;/th&gt;&lt;th&gt;Malaysia/PETRONAS&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;English common law contracts&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;International arbitration access&lt;/td&gt;&lt;td&gt;✅ Strong&lt;/td&gt;&lt;td&gt;⚠️ Weaker&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Tax treaty network&lt;/td&gt;&lt;td&gt;✅ Strong&lt;/td&gt;&lt;td&gt;⚠️ Some&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Flexible restructuring&lt;/td&gt;&lt;td&gt;✅ Strong&lt;/td&gt;&lt;td&gt;⚠️ Double-edged&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Capital markets credibility&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;td&gt;✅&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Board proximity to registered office&lt;/td&gt;&lt;td&gt;✅ Strong&lt;/td&gt;&lt;td&gt;❌ Malaysian directors must travel&lt;/td&gt;&lt;/tr&gt;
+  &lt;/table&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- ===== FOOTER ===== --&gt;
+&lt;div class="footer"&gt;
+  &lt;div class="footer-left"&gt;
+    &lt;span class="motto"&gt;DITEMPA BUKAN DIBERI&lt;/span&gt;
+    Compiled from open source intelligence and Companies House UK filing.&lt;br&gt;
+    Claims marked CONFIRMED / PLAUSIBLE / UNPROVEN based on available evidence.
+  &lt;/div&gt;
+  &lt;div class="footer-right"&gt;
+    arifOS_bot × makcikGPT&lt;br&gt;
+    15 April 2026&lt;br&gt;
+    SEARAH × PETROS Investigation
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;

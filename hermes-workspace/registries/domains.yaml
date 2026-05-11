@@ -1,0 +1,37 @@
+version: 1
+
+domains:
+  - id: ARIFOS
+    role: constitutional-kernel
+    witness_type: ai
+    description: Governing law, judgment, and vault authority.
+
+  - id: A_FORGE
+    role: execution-shell
+    witness_type: domain
+    description: Post-seal execution shell and orchestration bridge.
+
+  - id: GEOX
+    role: earth-lane
+    witness_type: earth
+    description: Spatial and physical-domain witness.
+
+  - id: WEALTH
+    role: finance-lane
+    witness_type: domain
+    description: Capital and financial witness lane.
+
+  - id: WELL
+    role: wellbeing-lane
+    witness_type: human
+    description: Human-substrate and readiness witness lane.
+
+  - id: AAA
+    role: control-plane
+    witness_type: ai
+    description: Agent workspace, registries, contracts, and routing plane.
+
+  - id: ARIF_SITES
+    role: public-surface
+    witness_type: domain
+    description: Public rendering and outward-facing sites.

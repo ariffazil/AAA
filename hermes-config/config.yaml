@@ -1,0 +1,514 @@
+model:
+  provider: minimax
+  model: MiniMax-M2.7
+  max_turns: 90
+  temperature: 0.2
+providers:
+  ollama:
+    name: ollama
+    api_key: ollama
+    base_url: http://127.0.0.1:11434/v1
+  minimax:
+    name: minimax
+    api_key: ${MINIMAX_API_KEY}
+    base_url: https://api.minimax.io/v1
+  openrouter:
+    name: openrouter
+    api_key: ${OPENROUTER_API_KEY}
+    base_url: https://openrouter.ai/api/v1
+  deepseek:
+    name: deepseek
+    api_key: ${DEEPSEEK_API_KEY}
+    base_url: https://api.deepseek.com
+fallback_providers: []
+credential_pool_strategies: {}
+toolsets:
+  - hermes-cli
+  - brave-search
+agent:
+  max_turns: 90
+  gateway_timeout: 1800
+  restart_drain_timeout: 60
+  api_max_retries: 3
+  service_tier: ''
+  tool_use_enforcement: auto
+  gateway_timeout_warning: 900
+  gateway_notify_interval: 180
+  name: hermes-asi
+  role: hermes-agent
+  workspace: /root/.hermes/workspace
+  require_approval_for: []
+  reasoning_effort: high
+terminal:
+  backend: local
+  modal_mode: auto
+  cwd: .
+  timeout: 180
+  env_passthrough: []
+  shell_init_files: []
+  auto_source_bashrc: true
+  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_forward_env: []
+  docker_env: {}
+  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
+  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
+  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+  docker_volumes: []
+  docker_mount_cwd_to_workspace: false
+  persistent_shell: true
+  working_dir: /root/.hermes/workspace
+  read_only_root: false
+  drop_capabilities: false
+  pid_limit: 100
+browser:
+  inactivity_timeout: 120
+  command_timeout: 30
+  record_sessions: false
+  allow_private_urls: false
+  cdp_url: ''
+  dialog_policy: must_respond
+  dialog_timeout_s: 300
+  camofox:
+    managed_persistence: false
+  cloud_provider: firecrawl
+  auto_local_for_private_urls: true
+  browserbase:
+    proxies: true
+    advanced_stealth: false
+    keep_alive: true
+  firecrawl:
+    browser_ttl: 600
+checkpoints:
+  enabled: true
+  max_snapshots: 50
+file_read_max_chars: 100000
+tool_output:
+  max_bytes: 50000
+  max_lines: 2000
+  max_line_length: 2000
+compression:
+  enabled: true
+  threshold: 0.4
+  target_ratio: 0.15
+  protect_last_n: 25
+  telegram_group_threshold: 0.3
+prompt_caching:
+  cache_ttl: 5m
+bedrock:
+  region: ''
+  discovery:
+    enabled: true
+    provider_filter: []
+    refresh_interval: 3600
+  guardrail:
+    guardrail_identifier: ''
+    guardrail_version: ''
+    stream_processing_mode: async
+    trace: disabled
+auxiliary:
+  vision:
+    provider: minimax
+    model: MiniMax-M2.7
+    base_url: ''
+    api_key: sk-cp-...L-r0
+    timeout: 120
+    extra_body: {}
+    download_timeout: 30
+  compression:
+    provider: openrouter
+    model: google/gemini-2.5-flash
+    base_url: ''
+    api_key: ''
+    timeout: 120
+    extra_body: {}
+  title_generation:
+    provider: openrouter
+    model: google/gemini-2.5-flash
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+  session_search:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 360
+    extra_body: {}
+    max_concurrency: 3
+  skills_hub:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+  approval:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+  mcp:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+    timeout: 30
+    extra_body: {}
+display:
+  compact: false
+  personality: hermes
+  resume_display: full
+  busy_input_mode: interrupt
+  bell_on_complete: false
+  show_reasoning: false
+  streaming: false
+  final_response_markdown: strip
+  inline_diffs: true
+  show_cost: false
+  skin: default
+  user_message_preview:
+    first_lines: 2
+    last_lines: 2
+  interim_assistant_messages: true
+  tool_progress_command: false
+  tool_progress_overrides: {}
+  tool_preview_length: 0
+  platforms: {}
+  reasoning: 'on'
+  bell: 'off'
+  user_preview: first 2 line(s), last 2 line(s)
+dashboard:
+  theme: default
+privacy:
+  redact_pii: false
+tts:
+  provider: minimax
+  edge:
+    voice: en-US-AriaNeural
+    speed: 1.0
+  elevenlabs:
+    voice_id: pNInz6obpgDQGcFmaJgB
+    model_id: eleven_multilingual_v2
+  openai:
+    model: gpt-4o-mini-tts
+    voice: alloy
+    base_url: https://api.openai.com/v1
+    speed: 1.0
+  xai:
+    voice_id: eve
+    language: en
+    sample_rate: 24000
+    bit_rate: 128000
+  mistral:
+    model: voxtral-mini-tts-2603
+    voice_id: c69964a6-ab8b-4f8a-9465-ec0925096ec8
+  neutts:
+    ref_audio: ''
+    ref_text: ''
+    model: neuphonic/neutts-air-q4-gguf
+    device: cpu
+  speed: 1.0
+  minimax:
+    model: speech-2.8-hd
+    voice_id: English_Graceful_Lady
+    speed: 1.0
+    vol: 1.0
+    pitch: 0
+stt:
+  enabled: true
+  provider: local
+  local:
+    model: base
+    language: ''
+  openai:
+    model: whisper-1
+  mistral:
+    model: voxtral-mini-latest
+voice:
+  record_key: ctrl+b
+  max_recording_seconds: 120
+  auto_tts: false
+  beep_enabled: true
+  silence_threshold: 200
+  silence_duration: 3.0
+human_delay:
+  mode: 'off'
+  min_ms: 800
+  max_ms: 2500
+context:
+  engine: compressor
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  provider: ''
+  enabled: true
+  backend: sqlite
+  path: /root/.hermes/memory
+  user_modeling: true
+  episodic_archive: true
+  skill_generation: true
+  skill_eval: true
+  max_skills: 200
+  reflection_depth: standard
+delegation:
+  model: ''
+  provider: ''
+  base_url: ''
+  api_key: ''
+  inherit_mcp_toolsets: true
+  max_iterations: 50
+  child_timeout_seconds: 600
+  reasoning_effort: ''
+  max_concurrent_children: 2
+  max_spawn_depth: 1
+  orchestrator_enabled: false
+  subagent_auto_approve: false
+prefill_messages_file: ''
+skills:
+  external_dirs:
+    - /root/AAA/skills
+    - /root/.hermes/skills
+  template_vars: true
+  inline_shell: false
+  inline_shell_timeout: 10
+  guard_agent_created: false
+honcho: {}
+timezone: ''
+discord:
+  require_mention: true
+  free_response_channels: ''
+  allowed_channels: ''
+  auto_thread: true
+  reactions: true
+  channel_prompts: {}
+  server_actions: ''
+whatsapp: {}
+telegram:
+  channel_prompts: {}
+slack:
+  channel_prompts: {}
+mattermost:
+  channel_prompts: {}
+approvals:
+  mode: auto
+  timeout: 60
+  cron_mode: deny
+  destructive_slash_confirm: false
+command_allowlist:
+  - world/other-writable permissions
+  - stop/restart hermes gateway (kills running agents)
+  - kill process via pgrep expansion (self-termination)
+  - script execution via -e/-c flag
+  - recursive delete
+  - kill hermes/gateway process (self-termination)
+  - stop/restart system service
+  - overwrite project env/config file
+  - find -delete
+  - delete in root path
+  - git reset --hard (destroys uncommitted changes)
+  - copy/move file into /etc/
+  - script execution via heredoc
+  - overwrite system file via redirection
+  - overwrite system file via tee
+  - SQL TRUNCATE
+  - disk copy
+  - in-place edit of system config
+  - git force push (rewrites remote history)
+  - overwrite system config
+  - force kill processes
+  - git force push short flag (rewrites remote history)
+  - shell command via -c/-lc flag
+quick_commands: {}
+hooks:
+  pre_tool_call:
+    - matcher: terminal
+      command: /root/.hermes/agent-hooks/floor-enforce.sh
+      timeout: 5
+  post_tool_call:
+    - command: /root/.hermes/agent-hooks/vault-append.sh
+      timeout: 5
+hooks_auto_accept: true
+personalities:
+  ASI_Wellness:
+    description: "AI wellness assistant untuk group Telegram keluarga/kawan – fokus
+      kesihatan, senaman, dan hidup sihat Abang Syed (bodybuilder dengan GERD)."
+    avatar: "💪"
+    greeting: ''
+    system_prompt: "Kau ialah ASI_Wellness, pembantu AI untuk group Telegram keluarga/kawan
+      yang fokus pada kesihatan, senaman dan hidup sihat Abang Syed.\n\nKONTEKS UTAMA\n\
+      - Abang Syed ialah bodybuilder (abang sado) yang jaga badan, tapi ada isu GERD
+      (gastric reflux).\n- Group ni tempat sembang pasal workout, diet, recovery,
+      mental health, dan life balance – bukan sekadar flex otot.\n- Kau kena bantu
+      dengan cara yang hormat, realistik, dan tak menghakimi.\n\nIDENTITI & GAYA\n\
+      - Kau AI, bukan doktor dan bukan coach bertauliah, tapi kau boleh tolong susun
+      info, bagi penerangan, dan bantu plan secara bijak.\n- Gaya bahasa: santai BM,
+      sedikit loghat utara / pasar bila sesuai, tapi masih jelas dan senang ikut.\n\
+      - Nada: supportive, steady, tak drama, tak body-shaming.\n- Lawak ringan boleh,
+      tapi jangan kasar dan jangan sentuh maruah.\n\nFOKUS WELLNESS\n- Sentiasa nampak
+      \"whole person\": bukan otot saja, tapi juga:\n  - tidur,\n  - stress,\n  -
+      kerja,\n  - keluarga,\n  - mental/emotional state.\n- Tekankan keseimbangan:
+      performance bagus, tapi kesihatan jangka panjang lagi penting.\n\nMODE BANTUAN\n\
+      Kau boleh bantu dengan:\n- explain konsep training (hypertrophy, strength, deload,
+      recovery),\n- idea struktur workout (split, volume, progression) dalam bahasa
+      mudah,\n- cadangan umum meal timing, hydration, dan habit yang baik untuk GERD
+      (tanpa bagi arahan medikal muktamad),\n- bagi contoh menu mesra GERD secara
+      umum (kurang pedas, kurang berminyak, portion control, jarak makan dengan tidur),\n\
+      - bantu Syed detect overtraining / burnout pattern daripada cara dia cerita,\n\
+      - cadangkan cara jaga joint, mobility, dan injury prevention,\n- tolong susun
+      weekly plan atau checklist wellness (tidur, training, makan, stretching).\n\n\
+      GERD-AWARE\n- Bila sentuh bab makanan, supplement, atau intensiti training:\n\
+      \  - elakkan tone \"gasak ja\" – ingatkan risiko GERD bila relevant,\n  - cadangkan
+      pilihan yang lebih lembut perut (secara umum) dan timing yang lebih selamat,\n\
+      \  - ingatkan untuk monitor symptom: heartburn, pedih ulu hati, sendawa asid,
+      etc.\n- Untuk isu GERD yang teruk atau pelik, jangan pandai-pandai diagnose.
+      Arahkan bertanya doktor/gastro specialist.\n\nBATAS & KEJUJURAN\n- Jangan claim
+      jadi doktor, jangan bagi diagnosis, jangan janji \"confirm sembuh\".\n- Kalau
+      tak pasti atau isu terlalu rumit, terus terang cakap tak pasti dan syor rujuk
+      profesional.\n- Jangan reka fakta pasal supplement, ubat, atau protokol ajaib.\n\
+      - Jangan push apa-apa trend extreme (crash diet, over-supplementation, steroid,
+      extreme fasting, overtraining).\n\nDINAMIK GROUP\n- Jangan overshadow orang
+      lain – jawab bila:\n  - orang tag kau,\n  - ada soalan wellness/senaman/makan,\n\
+      \  - atau jelas nampak kau boleh bantu tenangkan/terangkan.\n- Jangan menyindir
+      berat badan atau bentuk badan sesiapa.\n- Anggap setiap orang di group boleh
+      improve, bukan \"lemah\".\n\nBENTUK JAWAPAN\n- Jawab secara:\n  - ringkas dan
+      direct dulu (apa jawapan/point utama),\n  - lepas tu baru breakdown → sebab,
+      tips praktikal, contoh.\n- Bagi cadangan dalam bentuk:\n  - bullet,\n  - small
+      checklist,\n  - atau plan ringkas (contoh: cadangan struktur minggu).\n- Jelaskan
+      bila cadangan tu umum dan perlu adjust ikut badan dan nasihat doktor.\n\nSTANDARD
+      AKHIR\n- Jadikan perjalanan gym + kesihatan Syed lebih selamat, lebih bijak,
+      lebih sustainable.\n- Support dia jadi kuat, sihat dan tenang, bukan hanya besar
+      otot.\n- Jaga maruah dia dan semua orang dalam group setiap masa.\n"
+    platform_routing:
+      telegram:
+        enabled: true
+        allowed_chat_ids: []
+        require_mention: true
+        respond_to_chat_id: true
+    wellbeing_sections:
+      - training
+      - nutrition
+      - recovery
+      - mental_health
+      - sleep
+      - gerd_management
+    features:
+      workout_planning: true
+      meal_suggestions: true
+      wellness_checklist: true
+      overtraining_detection: true
+      gerd_aware_mode: true
+    limits:
+      no_medical_diagnosis: true
+      no_extreme_recommendations: true
+      refer_to_professional_on_severe_gerd: true
+security:
+  allow_private_urls: false
+  redact_secrets: true
+  tirith_enabled: true
+  tirith_path: tirith
+  tirith_timeout: 5
+  tirith_fail_open: true
+  website_blocklist:
+    enabled: false
+    domains: []
+    shared_files: []
+cron:
+  wrap_response: true
+  max_parallel_jobs:
+  enabled: true
+code_execution:
+  mode: permissive
+  timeout: 300
+  max_tool_calls: 20
+logging:
+  level: info
+  max_size_mb: 5
+  backup_count: 3
+  path: /root/.hermes/logs
+  max_size: 100MB
+  max_files: 10
+network:
+  force_ipv4: false
+sessions:
+  auto_prune: false
+  retention_days: 90
+  vacuum_after_prune: true
+  min_interval_hours: 24
+_config_version: 22
+custom_providers: []
+mcp:
+  enabled: true
+  servers:
+    arifosmcp:
+      name: arifosmcp
+      url: http://127.0.0.1:8080
+      transport: streamable-http
+      timeout: 30
+    geoxmcp:
+      name: geoxmcp
+      url: http://127.0.0.1:8081
+      transport: streamable-http
+      timeout: 30
+    brave-search:
+      name: brave-search
+      command: mcp-server-brave-search
+      transport: stdio
+      env:
+        BRAVE_API_KEY: ${BRAVE_API_KEY}
+    context7:
+      name: context7
+      command: context7-mcp
+      transport: stdio
+      env:
+        CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
+      tools:
+        resources: false
+        prompts: false
+    github:
+      name: github
+      command: github-mcp-server
+      transport: stdio
+      env:
+        GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
+      tools:
+        include:
+          - create_issue
+          - list_issues
+          - get_issue
+          - search_code
+          - search_repositories
+        resources: true
+        prompts: false
+    minimax:
+      name: minimax
+      command: minimax-mcp
+      transport: stdio
+      env:
+        MINIMAX_API_KEY: ${MINIMAX_API_KEY}
+        MINIMAX_API_HOST: ${MINIMAX_API_HOST}
+plugins:
+  enabled:
+    - hermes-jwt-auth
+    - aaa-governance
+    - vault999-wrapper
+    - a2a-coord
+    - session-lock
+    - memory-integrity
+    - workspace-guard
+    - skillset-audit
+fallback_model:
+  provider: openrouter
+  model: deepseek/deepseek-chat-v3
+  temperature: 0.2
+onboarding:
+  seen:
+    busy_input_prompt: true

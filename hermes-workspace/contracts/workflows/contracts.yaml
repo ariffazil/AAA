@@ -1,0 +1,157 @@
+version: 1
+
+workflow_contracts:
+  - id: local-a2a-handoff
+    workflow_ref: local-a2a-handoff
+    execution_class: handoff
+    trigger_mode: manual
+    preconditions:
+      - same-gateway handoff must be enabled
+      - target peer must already be in the approved peer registry
+    risk_tier: medium
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    required_witnesses:
+      - ARIFOS
+    requires_arifos_judgment: false
+    requires_vault_seal: false
+    separation_of_duties:
+      proposer_must_differ_from_approver: true
+    step_contracts:
+      - id: init
+        title: Initialize request
+        stage: "000"
+        role: operator
+        required_skills:
+          - openclaw-a2a-bridge
+        required_tools:
+          - status-query
+        required_servers:
+          - arifos-mcp
+        holds: []
+        approval_hooks: []
+        inputs:
+          - task-summary
+        outputs:
+          - request-envelope
+        on_error: halt
+        retry_policy:
+          max_attempts: 0
+          backoff: none
+      - id: reason
+        title: Route to witness
+        stage: "777"
+        role: architect
+        required_skills:
+          - openclaw-a2a-bridge
+        required_tools:
+          - agent-handoff
+        required_servers:
+          - arifos-mcp
+        holds:
+          - role: validator
+            policy: hold
+            required: true
+        approval_hooks:
+          - trigger: before-handoff
+            role: validator
+            policy: hold
+        inputs:
+          - request-envelope
+        outputs:
+          - delegated-task
+        on_error: escalate
+        retry_policy:
+          max_attempts: 1
+          backoff: fixed
+    rollback_strategy:
+      mode: compensating-action
+      owner_role: operator
+      compensating_actions:
+        - revoke delegated-task
+        - emit hold event
+        - return request to approval queue
+    emitted_events:
+      - workflow.started
+      - workflow.handoff.requested
+      - workflow.handoff.completed
+
+  - id: remote-peer-handoff
+    workflow_ref: remote-peer-handoff
+    execution_class: approval-gated
+    trigger_mode: manual
+    preconditions:
+      - remote peer must authenticate before any task release
+      - remote execution remains fail-closed until audit completes
+    risk_tier: high
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    required_witnesses:
+      - ARIFOS
+      - HUMAN
+    requires_arifos_judgment: true
+    requires_vault_seal: true
+    separation_of_duties:
+      proposer_must_differ_from_approver: true
+    step_contracts:
+      - id: init
+        title: Initialize remote request
+        stage: "000"
+        role: operator
+        required_skills:
+          - openclaw-a2a-bridge
+        required_tools:
+          - status-query
+        required_servers:
+          - arifos-mcp
+        holds: []
+        approval_hooks: []
+        inputs:
+          - task-summary
+        outputs:
+          - request-envelope
+        on_error: halt
+        retry_policy:
+          max_attempts: 0
+          backoff: none
+      - id: audit
+        title: Audit remote action
+        stage: "888"
+        role: auditor
+        required_skills: []
+        required_tools:
+          - status-query
+        required_servers:
+          - arifos-mcp
+        holds:
+          - role: validator
+            policy: human-required
+            required: true
+        approval_hooks:
+          - trigger: before-release
+            role: validator
+            policy: human-required
+        inputs:
+          - request-envelope
+        outputs:
+          - audit-verdict
+        on_error: halt
+        retry_policy:
+          max_attempts: 0
+          backoff: none
+    rollback_strategy:
+      mode: deny-release
+      owner_role: auditor
+      compensating_actions:
+        - stop remote dispatch
+        - retain request-envelope for review
+        - emit hold event
+    emitted_events:
+      - workflow.started
+      - workflow.audit.requested
+      - workflow.audit.completed
+      - workflow.remote.release.denied

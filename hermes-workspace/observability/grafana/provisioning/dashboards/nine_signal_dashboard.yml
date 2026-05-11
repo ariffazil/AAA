@@ -1,0 +1,17 @@
+# Grafana Dashboard Provisioning
+# Dashboards are loaded from /var/lib/grafana/dashboards/ or via API
+# This file tells Grafana where to find them
+apiVersion: 1
+
+providers:
+  - name: "arifOS Dashboards"
+    orgId: 1
+    folder: "arifOS"         # Folder must exist or be created
+    folderUid: "arifOS"
+    type: file
+    updateIntervalSeconds: 30
+    allowUiUpdates: true     # Allow edits in UI (saved back to folder)
+    options:
+      path: /var/lib/grafana/dashboards
+      # The actual dashboard JSON files sit at:
+      # observability/grafana/dashboards/nine_signal_overview.json

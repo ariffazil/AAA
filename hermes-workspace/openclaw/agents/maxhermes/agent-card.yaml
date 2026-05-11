@@ -1,0 +1,51 @@
+version: 1
+
+agent:
+  id: maxhermes
+  name: MaxHermes
+  description: >
+    Arif's personal geophysics agent. Earth intelligence grounded by GEOX,
+    governed by arifOS, wired into AAA control plane.
+  role: domain-specialist
+  intelligence_tier: ASI
+  domain_plane: GEOX
+
+  capabilities:
+    a2a_enabled: true
+    a2a_protocol_version: "1.0"
+    can_receive_tasks: true
+    can_delegate_tasks: false
+    can_initiate_peers: ["geox-witness", "arifos-kernel"]
+
+  mcp_enabled: true
+  mcp_servers:
+    - arifos-mcp
+    - geox-mcp
+    - well-mcp
+
+  channels:
+    - telegram
+    - terminal
+    - cli
+
+  discovery:
+    agent_card_url: https://aaa.arif-fazil.com/a2a/maxhermes
+    mcp_endpoint: https://aaa.arif-fazil.com/mcp/maxhermes
+
+  trust:
+    verification_level: high
+    required_witnesses: 3
+    domain_verification: true
+
+  skills:
+    - maxhermes-hermes
+    - maxhermes-arifos-sense
+    - maxhermes-geox-ground
+
+  metadata:
+    created: "2026-04-22"
+    owner: ariffazil
+    version: "1.0.0"
+    authority: 888_JUDGE
+    governance_ref: arifOS-F1-F13
+

@@ -1,0 +1,16 @@
+{
+  "name": "aaa-a2a-server",
+  "version": "1.0.0",
+  "description": "AAA A2A Server - Agent2Agent Protocol Gateway",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/goal-chain.schema.json",
+  "title": "AAA Goal Chain Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "stage": {
+      "const": "222"
+    },
+    "domain_plane": {
+      "$ref": "./common.schema.json#/$defs/domainPlane"
+    },
+    "purpose": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "goals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "./common.schema.json#/$defs/id" },
+          "title": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "owner_org_unit": { "$ref": "./common.schema.json#/$defs/id" },
+          "sponsor_agent": { "$ref": "./common.schema.json#/$defs/id" },
+          "objective": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "scope": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "constraints": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "risk_tier": { "$ref": "./common.schema.json#/$defs/riskTier" },
+              "approval_policy": { "$ref": "./common.schema.json#/$defs/approvalPolicy" },
+              "required_stages": {
+                "type": "array",
+                "items": { "$ref": "./common.schema.json#/$defs/pipelineStage" },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "required_witnesses": {
+                "type": "array",
+                "items": { "$ref": "./common.schema.json#/$defs/witness" },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "required": ["risk_tier", "approval_policy", "required_stages", "required_witnesses"]
+          },
+          "success_criteria": {
+            "type": "array",
+            "items": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+            "minItems": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["planned", "active", "hold", "done"]
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "owner_org_unit",
+          "sponsor_agent",
+          "objective",
+          "scope",
+          "constraints",
+          "success_criteria",
+          "status"
+        ]
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "./common.schema.json#/$defs/id" },
+          "title": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "goal_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "stage": { "$ref": "./common.schema.json#/$defs/pipelineStage" },
+          "assigned_org_unit": { "$ref": "./common.schema.json#/$defs/id" },
+          "assigned_agent": { "$ref": "./common.schema.json#/$defs/id" },
+          "depends_on": { "$ref": "./common.schema.json#/$defs/stringIdArray" },
+          "required_tools": { "$ref": "./common.schema.json#/$defs/stringIdArray" },
+          "required_servers": { "$ref": "./common.schema.json#/$defs/stringIdArray" },
+          "outputs": {
+            "type": "array",
+            "items": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+            "minItems": 1
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "in_progress", "hold", "done"]
+          },
+          "uncertainty": { "$ref": "./common.schema.json#/$defs/epistemicLabel" },
+          "rationale": { "$ref": "./common.schema.json#/$defs/nonEmptyString" }
+        },
+        "required": [
+          "id",
+          "title",
+          "goal_ref",
+          "stage",
+          "assigned_org_unit",
+          "assigned_agent",
+          "depends_on",
+          "required_tools",
+          "required_servers",
+          "outputs",
+          "status",
+          "uncertainty",
+          "rationale"
+        ]
+      }
+    },
+    "verdicts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "./common.schema.json#/$defs/id" },
+          "goal_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "task_ref": { "$ref": "./common.schema.json#/$defs/id" },
+          "outcome": {
+            "type": "string",
+            "enum": ["approved", "partial", "hold", "denied"]
+          },
+          "summary": { "$ref": "./common.schema.json#/$defs/nonEmptyString" },
+          "required_witnesses": {
+            "type": "array",
+            "items": { "$ref": "./common.schema.json#/$defs/witness" },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "signers": { "$ref": "./common.schema.json#/$defs/stringIdArray" },
+          "next_stage": { "$ref": "./common.schema.json#/$defs/pipelineStage" }
+        },
+        "required": [
+          "id",
+          "goal_ref",
+          "task_ref",
+          "outcome",
+          "summary",
+          "required_witnesses",
+          "signers",
+          "next_stage"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "name",
+    "stage",
+    "domain_plane",
+    "purpose",
+    "goals",
+    "tasks",
+    "verdicts"
+  ]
+}

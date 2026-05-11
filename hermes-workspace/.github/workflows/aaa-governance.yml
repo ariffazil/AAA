@@ -1,0 +1,85 @@
+name: AAA Governance Plane
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+      - edited
+      - reopened
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+jobs:
+  pr-review:
+    if: github.event_name == 'pull_request' || github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:aaa
+      - run: npm run export:aaa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aaa-contract-export
+          path: dist/aaa
+
+  issue-triage:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit triage surface
+        run: |
+          echo "AAA issue triage surface active for issue #${{ github.event.issue.number }}"
+          echo "title=${{ github.event.issue.title }}"
+
+  release-stewardship:
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:aaa
+      - run: npm run export:aaa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aaa-release-contracts
+          path: dist/aaa
+
+  docs-maintenance:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:aaa
+
+  security-compliance:
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm audit --omit=dev
+      - run: npm run validate:aaa

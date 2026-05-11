@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/openclaw-a2a-agent-card.schema.json",
+  "title": "AAA OpenClaw A2A Agent Card",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "agent_id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "description": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "endpoint": {
+      "type": "string",
+      "format": "uri"
+    },
+    "supported_protocols": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "a2a",
+          "mcp"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "supports_streaming": {
+      "type": "boolean"
+    },
+    "auth_schemes": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true
+    },
+    "capabilities": {
+      "$ref": "./common.schema.json#/$defs/stringIdArray"
+    }
+  },
+  "required": [
+    "agent_id",
+    "name",
+    "description",
+    "endpoint",
+    "supported_protocols",
+    "supports_streaming",
+    "auth_schemes",
+    "capabilities"
+  ]
+}

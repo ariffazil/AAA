@@ -1,0 +1,29 @@
+version: 1
+
+agents:
+  - agent_id: aaa-gateway
+    card_path: a2a/agent-cards/aaa-gateway.json
+    binding_type: openclaw-bridge
+    trust_level: internal
+    auth_scheme: gateway-token
+    streaming: true
+    push_notifications: false
+    openclaw_target: openclaw-gateway
+
+  - agent_id: geox-witness
+    card_path: external://geox.arif-fazil.com/a2a/.well-known/agent-card.json
+    binding_type: remote-peer
+    trust_level: internal
+    auth_scheme: gateway-token
+    streaming: false
+    push_notifications: false
+    openclaw_target: geox-witness
+
+  - agent_id: wealth-witness
+    card_path: external://wealth.arif-fazil.com/a2a/.well-known/agent-card.json
+    binding_type: remote-peer
+    trust_level: internal
+    auth_scheme: gateway-token
+    streaming: false
+    push_notifications: false
+    openclaw_target: wealth-witness

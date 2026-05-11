@@ -1,0 +1,325 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/cockpit-model.schema.json",
+  "title": "AAA Cockpit Model",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "active_agents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "agent_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "host_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "idle",
+              "running",
+              "hold",
+              "error"
+            ]
+          },
+          "current_workflow": {
+            "$ref": "./common.schema.json#/$defs/id"
+          }
+        },
+        "required": [
+          "agent_id",
+          "host_id",
+          "status",
+          "current_workflow"
+        ]
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "session_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "agent_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "transport": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "approval_policy": {
+            "$ref": "./common.schema.json#/$defs/approvalPolicy"
+          }
+        },
+        "required": [
+          "session_id",
+          "agent_id",
+          "transport",
+          "approval_policy"
+        ]
+      }
+    },
+    "approvals_queue": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "queue_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "workflow_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "required_role": {
+            "$ref": "./common.schema.json#/$defs/role"
+          },
+          "policy": {
+            "$ref": "./common.schema.json#/$defs/approvalPolicy"
+          }
+        },
+        "required": [
+          "queue_id",
+          "workflow_id",
+          "required_role",
+          "policy"
+        ]
+      }
+    },
+    "governance_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "gate_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "workflow_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "status": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "required_role": {
+            "$ref": "./common.schema.json#/$defs/role"
+          },
+          "estimated_cost_usd": {
+            "type": "number",
+            "minimum": 0
+          },
+          "budget_policy": {
+            "$ref": "./common.schema.json#/$defs/id"
+          }
+        },
+        "required": [
+          "gate_id",
+          "workflow_id",
+          "status",
+          "required_role",
+          "estimated_cost_usd",
+          "budget_policy"
+        ]
+      }
+    },
+    "budget_views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "budget_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "scope_ref": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "unit": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "utilization_ratio": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "status": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          }
+        },
+        "required": [
+          "budget_id",
+          "scope_ref",
+          "unit",
+          "utilization_ratio",
+          "status"
+        ]
+      }
+    },
+    "run_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "run_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "workflow_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "verdict": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          }
+        },
+        "required": [
+          "run_id",
+          "workflow_id",
+          "verdict"
+        ]
+      }
+    },
+    "heartbeat": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "watchdog_seconds": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "status",
+        "watchdog_seconds"
+      ]
+    },
+    "attached_repos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repo_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "plane": {
+            "$ref": "./common.schema.json#/$defs/domainPlane"
+          },
+          "mode": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          }
+        },
+        "required": [
+          "repo_id",
+          "plane",
+          "mode"
+        ]
+      }
+    },
+    "pending_decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "decision_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "risk_class": {
+            "$ref": "./common.schema.json#/$defs/riskTier"
+          },
+          "status": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "required_signer_roles": {
+            "type": "array",
+            "items": {
+              "$ref": "./common.schema.json#/$defs/role"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "decision_id",
+          "risk_class",
+          "status",
+          "required_signer_roles"
+        ]
+      }
+    },
+    "vault_exports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "export_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "decision_id": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "seal_status": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "path": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          }
+        },
+        "required": [
+          "export_id",
+          "decision_id",
+          "seal_status",
+          "path"
+        ]
+      }
+    },
+    "audit_trail": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_stream": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "projection": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "vault_required": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "event_stream",
+        "projection",
+        "vault_required"
+      ]
+    }
+  },
+  "required": [
+    "version",
+    "active_agents",
+    "sessions",
+    "approvals_queue",
+    "governance_gates",
+    "budget_views",
+    "run_history",
+    "heartbeat",
+    "attached_repos",
+    "pending_decisions",
+    "vault_exports",
+    "audit_trail"
+  ]
+}

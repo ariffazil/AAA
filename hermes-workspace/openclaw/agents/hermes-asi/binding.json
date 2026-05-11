@@ -1,0 +1,21 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-agent-binding.schema.json",
+  "id": "hermes-asi-openclaw-binding",
+  "agent_id": "hermes-asi",
+  "host_id": "openclaw-hermes-asi",
+  "workspace_path": "agents/hermes-asi",
+  "session_mode": "acp",
+  "channels": ["telegram", "terminal", "cli"],
+  "plugins": [
+    "hermes-hermes",
+    "arifOS-sense",
+    "chain-reason",
+    "self-verify",
+    "delta-logger",
+    "oracle",
+    "a2a-peer"
+  ],
+  "approval_policy": "on-demand",
+  "required_witnesses": ["ARIFOS", "HUMAN"],
+  "default_binding": false
+}

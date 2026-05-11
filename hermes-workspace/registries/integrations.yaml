@@ -1,0 +1,69 @@
+version: 1
+
+integrations:
+  - id: arifos
+    domain_plane: ARIFOS
+    system_of_record: arifOS
+    contract_path: integrations/arifos/contract.yaml
+    execution_mode: constitutional-kernel
+    requires_arifos_judgment: true
+    requires_vault_seal: true
+    default_risk_tier: high
+    default_holds:
+      - irreversible
+
+  - id: a-forge
+    domain_plane: A_FORGE
+    system_of_record: A-FORGE
+    contract_path: integrations/a-forge/contract.yaml
+    execution_mode: post-seal-only
+    requires_arifos_judgment: true
+    requires_vault_seal: true
+    default_risk_tier: high
+    default_holds:
+      - irreversible
+      - deploy
+
+  - id: geox
+    domain_plane: GEOX
+    system_of_record: GEOX
+    contract_path: integrations/geox/contract.yaml
+    execution_mode: domain-witness
+    requires_arifos_judgment: true
+    requires_vault_seal: false
+    default_risk_tier: medium
+    default_holds:
+      - low-confidence-domain-claim
+
+  - id: wealth
+    domain_plane: WEALTH
+    system_of_record: WEALTH
+    contract_path: integrations/wealth/contract.yaml
+    execution_mode: domain-witness
+    requires_arifos_judgment: true
+    requires_vault_seal: true
+    default_risk_tier: high
+    default_holds:
+      - irreversible-money-action
+
+  - id: well
+    domain_plane: WELL
+    system_of_record: WELL
+    contract_path: integrations/well/contract.yaml
+    execution_mode: substrate-witness
+    requires_arifos_judgment: true
+    requires_vault_seal: false
+    default_risk_tier: medium
+    default_holds:
+      - wellbeing-impact
+
+  - id: github
+    domain_plane: AAA
+    system_of_record: GitHub
+    contract_path: integrations/github/contract.yaml
+    execution_mode: capability-plane
+    requires_arifos_judgment: true
+    requires_vault_seal: false
+    default_risk_tier: medium
+    default_holds:
+      - destructive-repo-op
