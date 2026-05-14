@@ -161,10 +161,6 @@ files:
     role: host contract catalog
     notes: Detailed runtime host adapter contracts.
 
-  - path: contracts/skills/packages.yaml
-    status: canonical
-    role: skill package catalog
-    notes: Detailed skill package/install/export contracts.
 
   - path: contracts/cockpit/model.yaml
     status: canonical
