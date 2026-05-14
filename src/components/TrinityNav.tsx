@@ -40,6 +40,7 @@ export default function TrinityNav() {
           </a>
 
           <div className="unified-nav-links">
+            <a href="#ai"      className="unified-nav-link">ai</a>
             <a href="#about"   className="unified-nav-link">about</a>
             <a href="#work"    className="unified-nav-link">work</a>
             <a href="#writing" className="unified-nav-link">writing</a>

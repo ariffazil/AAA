@@ -9,19 +9,31 @@
 const express = require('express');
 const crypto = require('crypto');
 const { writeSeal, writeVoid, checkHealth: checkVaultHealth } = require('./vault');
+const { createClient } = require('redis');
+const { connect, StringCodec } = require('nats');
 
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '12mb' }));
 
 // === CONFIG ===
 // === AGENT A2A ADAPTER URLs (host network) ===
 const HERMES_A2A_URL = process.env.HERMES_A2A_URL || 'http://172.19.0.1:18001';
 const OPENCLAW_A2A_URL = process.env.OPENCLAW_A2A_URL || 'http://172.19.0.1:18002';
+const OLLAMA_URL = process.env.OLLAMA_URL || 'http://ollama-engine-prod:11434';
+const OPENWEBUI_API_KEY = process.env.OPENWEBUI_API_KEY || '';
+const OPENWEBUI_URL = process.env.OPENWEBUI_URL || '';
+const ARIFOS_LOCAL_URL = process.env.ARIFOS_LOCAL_URL || 'http://arifosmcp:8080';
+const QDRANT_URL = process.env.QDRANT_URL || 'http://qdrant:6333';
+const AAA_AI_COLLECTION = process.env.AAA_AI_COLLECTION || 'aaa_ai_docs';
+const AAA_AI_DEFAULT_MODEL = process.env.AAA_AI_DEFAULT_MODEL || 'qwen2.5:7b';
+const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
 
 const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
 const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
 const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://hermes-agent:3002';
 const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || 'hermes-agent-apikey-dev';
+const REDIS_URL = process.env.REDIS_URL || 'redis://redis:6379';
+const NATS_URL = process.env.NATS_URL || 'nats://nats:4222';
 
 // Fail fast if tokens not configured — no silent dev fallback (F1 AMANAH)
 if (!A2A_TOKEN || !A2A_API_KEY) {
@@ -74,6 +86,201 @@ const eventBus = new Map();
 const nonceStore = new Map();   // nonce → { ts, used }
 const replayStore = new Map();   // payloadHash → { ts }
 const entropyStore = new Map();  // taskId → { before, after }
+
+function writeSse(res, payload) {
+  res.write(`data: ${JSON.stringify(payload)}\n\n`);
+}
+
+function normalizeAiMessages(messages) {
+  if (!Array.isArray(messages)) return [];
+  return messages
+    .filter((message) => message && typeof message.content === 'string')
+    .map((message) => ({
+      role: ['system', 'assistant', 'user'].includes(message.role) ? message.role : 'user',
+      content: message.content.trim(),
+    }))
+    .filter((message) => message.content.length > 0);
+}
+
+function buildContextBlock(citations) {
+  if (!Array.isArray(citations) || citations.length === 0) return '';
+  return citations
+    .map((citation, index) => {
+      const filename = citation.filename || `source-${index + 1}`;
+      const content = typeof citation.content === 'string' ? citation.content : citation.snippet || '';
+      return `[Source ${index + 1}: ${filename}]\n${content}`;
+    })
+    .join('\n\n');
+}
+
+function flattenTranscript(messages) {
+  return messages
+    .map((message) => `${message.role.toUpperCase()}: ${message.content}`)
+    .join('\n\n');
+}
+
+function chunkDocument(text, chunkSize = 1200, overlap = 200) {
+  const normalized = text.replace(/\r\n/g, '\n').trim();
+  if (!normalized) return [];
+
+  const chunks = [];
+  let start = 0;
+
+  while (start < normalized.length) {
+    let end = Math.min(start + chunkSize, normalized.length);
+    if (end < normalized.length) {
+      const nextBreak = normalized.lastIndexOf('\n', end);
+      if (nextBreak > start + Math.floor(chunkSize * 0.6)) {
+        end = nextBreak;
+      }
+    }
+
+    const content = normalized.slice(start, end).trim();
+    if (content) chunks.push(content);
+    if (end >= normalized.length) break;
+    start = Math.max(end - overlap, start + 1);
+  }
+
+  return chunks;
+}
+
+async function readResponseText(response) {
+  const text = await response.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    return text;
+  }
+}
+
+async function embedTexts(texts) {
+  const cleaned = texts
+    .map((text) => (typeof text === 'string' ? text.trim() : ''))
+    .filter(Boolean);
+
+  if (cleaned.length === 0) {
+    throw new Error('No text available to embed');
+  }
+
+  const embedResponse = await fetch(`${OLLAMA_URL}/api/embed`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: AAA_AI_EMBED_MODEL,
+      input: cleaned,
+      truncate: true,
+    }),
+    signal: AbortSignal.timeout(30000),
+  });
+
+  if (embedResponse.ok) {
+    const payload = await embedResponse.json();
+    if (Array.isArray(payload.embeddings) && payload.embeddings.length > 0) {
+      return payload.embeddings;
+    }
+    if (Array.isArray(payload.embedding) && payload.embedding.length > 0) {
+      return [payload.embedding];
+    }
+  }
+
+  const fallbackEmbeddings = [];
+  for (const text of cleaned) {
+    const fallbackResponse = await fetch(`${OLLAMA_URL}/api/embeddings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: AAA_AI_EMBED_MODEL,
+        prompt: text,
+      }),
+      signal: AbortSignal.timeout(30000),
+    });
+
+    if (!fallbackResponse.ok) {
+      const details = await readResponseText(fallbackResponse);
+      throw new Error(`Ollama embedding request failed: ${fallbackResponse.status} ${JSON.stringify(details)}`);
+    }
+
+    const payload = await fallbackResponse.json();
+    if (!Array.isArray(payload.embedding)) {
+      throw new Error('Ollama embedding response did not contain an embedding vector');
+    }
+    fallbackEmbeddings.push(payload.embedding);
+  }
+
+  return fallbackEmbeddings;
+}
+
+async function ensureQdrantCollection(vectorSize) {
+  const collectionResponse = await fetch(`${QDRANT_URL}/collections/${AAA_AI_COLLECTION}`, {
+    signal: AbortSignal.timeout(10000),
+  });
+
+  if (collectionResponse.ok) return;
+  if (collectionResponse.status !== 404) {
+    const details = await readResponseText(collectionResponse);
+    throw new Error(`Qdrant collection probe failed: ${collectionResponse.status} ${JSON.stringify(details)}`);
+  }
+
+  const createResponse = await fetch(`${QDRANT_URL}/collections/${AAA_AI_COLLECTION}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      vectors: {
+        size: vectorSize,
+        distance: 'Cosine',
+      },
+    }),
+    signal: AbortSignal.timeout(15000),
+  });
+
+  if (!createResponse.ok) {
+    const details = await readResponseText(createResponse);
+    throw new Error(`Qdrant collection create failed: ${createResponse.status} ${JSON.stringify(details)}`);
+  }
+}
+
+async function searchRag(query, limit = 5) {
+  const collectionResponse = await fetch(`${QDRANT_URL}/collections/${AAA_AI_COLLECTION}`, {
+    signal: AbortSignal.timeout(10000),
+  });
+
+  if (collectionResponse.status === 404) {
+    return [];
+  }
+  if (!collectionResponse.ok) {
+    const details = await readResponseText(collectionResponse);
+    throw new Error(`Qdrant collection access failed: ${collectionResponse.status} ${JSON.stringify(details)}`);
+  }
+
+  const [embedding] = await embedTexts([query]);
+  const searchResponse = await fetch(`${QDRANT_URL}/collections/${AAA_AI_COLLECTION}/points/search`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      vector: embedding,
+      limit,
+      with_payload: true,
+    }),
+    signal: AbortSignal.timeout(15000),
+  });
+
+  if (!searchResponse.ok) {
+    const details = await readResponseText(searchResponse);
+    throw new Error(`Qdrant search failed: ${searchResponse.status} ${JSON.stringify(details)}`);
+  }
+
+  const payload = await searchResponse.json();
+  return (payload.result || []).map((point) => ({
+    id: point.id,
+    score: point.score,
+    filename: point.payload?.filename || 'document',
+    snippet: point.payload?.snippet || '',
+    content: point.payload?.content || '',
+    chunk_index: point.payload?.chunk_index ?? 0,
+    doc_id: point.payload?.doc_id || null,
+    uploaded_at: point.payload?.uploaded_at || null,
+  }));
+}
 
 // === A2A Agent Card v1.0.0 ===
 const AAA_AGENT_CARD = {
@@ -688,7 +895,410 @@ app.get('/health', async (req, res) => {
   });
 });
 
-app.get('/operator/holds', (req, res) => {
+app.get('/api/ai/health', async (req, res) => {
+  try {
+    const [ollamaResponse, arifosResponse] = await Promise.all([
+      fetch(`${OLLAMA_URL}/api/tags`, { signal: AbortSignal.timeout(5000) }),
+      fetch(`${ARIFOS_LOCAL_URL}/health`, { signal: AbortSignal.timeout(5000) }),
+    ]);
+
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.json({
+      ok: ollamaResponse.ok && arifosResponse.ok,
+      upstreams: {
+        ollama: ollamaResponse.ok ? 'healthy' : 'degraded',
+        arifos: arifosResponse.ok ? 'healthy' : 'degraded',
+        qdrant: 'configured',
+      },
+      defaults: {
+        provider: 'ollama',
+        chat_model: AAA_AI_DEFAULT_MODEL,
+        embed_model: AAA_AI_EMBED_MODEL,
+        rag_collection: AAA_AI_COLLECTION,
+      },
+    });
+  } catch (error) {
+    res.status(502).json({
+      ok: false,
+      error: error.message,
+    });
+  }
+});
+
+app.get('/api/ai/models', async (req, res) => {
+  try {
+    const upstream = await fetch(`${OLLAMA_URL}/api/tags`, {
+      signal: AbortSignal.timeout(10000),
+    });
+
+    if (!upstream.ok) {
+      const details = await readResponseText(upstream);
+      return res.status(502).json({ ok: false, error: details });
+    }
+
+    const payload = await upstream.json();
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.json({
+      ok: true,
+      models: (payload.models || []).map((model) => ({
+        name: model.name,
+        size: model.size || 0,
+        modified_at: model.modified_at || null,
+        digest: model.digest || null,
+      })),
+      defaults: {
+        provider: 'ollama',
+        model: AAA_AI_DEFAULT_MODEL,
+      },
+      providers: [
+        { id: 'ollama', label: 'Local Ollama' },
+        { id: 'arifos', label: 'arifOS governed' },
+        { id: 'openrouter', label: 'OpenRouter (365 models)' },
+      ],
+    });
+  } catch (error) {
+    res.status(502).json({
+      ok: false,
+      error: error.message,
+    });
+  }
+});
+
+app.post('/api/ai/rag/upload', async (req, res) => {
+  try {
+    const filename = typeof req.body?.filename === 'string' ? req.body.filename.trim() : '';
+    const content = typeof req.body?.content === 'string' ? req.body.content : '';
+    const mimeType = typeof req.body?.mimeType === 'string' ? req.body.mimeType : 'text/plain';
+
+    if (!filename || !content.trim()) {
+      return res.status(400).json({ ok: false, error: 'filename and content are required' });
+    }
+
+    const chunks = chunkDocument(content);
+    if (chunks.length === 0) {
+      return res.status(400).json({ ok: false, error: 'Document content is empty after normalization' });
+    }
+
+    const embeddings = await embedTexts(chunks);
+    await ensureQdrantCollection(embeddings[0].length);
+
+    const docId = crypto.randomUUID();
+    const uploadedAt = new Date().toISOString();
+    const points = chunks.map((chunk, index) => ({
+      id: crypto.randomUUID(),
+      vector: embeddings[index],
+      payload: {
+        doc_id: docId,
+        filename,
+        mimeType,
+        chunk_index: index,
+        content: chunk,
+        snippet: chunk.slice(0, 280),
+        uploaded_at: uploadedAt,
+      },
+    }));
+
+    const upsertResponse = await fetch(`${QDRANT_URL}/collections/${AAA_AI_COLLECTION}/points?wait=true`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ points }),
+      signal: AbortSignal.timeout(30000),
+    });
+
+    if (!upsertResponse.ok) {
+      const details = await readResponseText(upsertResponse);
+      return res.status(502).json({ ok: false, error: details });
+    }
+
+    res.json({
+      ok: true,
+      document: {
+        id: docId,
+        filename,
+        mimeType,
+        chunks: chunks.length,
+        uploaded_at: uploadedAt,
+        collection: AAA_AI_COLLECTION,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      error: error.message,
+    });
+  }
+});
+
+app.post('/api/ai/rag/query', async (req, res) => {
+  try {
+    const query = typeof req.body?.query === 'string' ? req.body.query.trim() : '';
+    const limit = Number.isFinite(req.body?.limit) ? Number(req.body.limit) : 5;
+
+    if (!query) {
+      return res.status(400).json({ ok: false, error: 'query is required' });
+    }
+
+    const citations = await searchRag(query, Math.max(1, Math.min(limit, 8)));
+    res.json({
+      ok: true,
+      query,
+      citations,
+      collection: AAA_AI_COLLECTION,
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      error: error.message,
+    });
+  }
+});
+
+app.post('/api/ai/chat', async (req, res) => {
+  const provider = req.body?.provider === 'arifos' ? 'arifos'
+    : req.body?.provider === 'openrouter' ? 'openrouter'
+    : 'ollama';
+  const model = typeof req.body?.model === 'string' && req.body.model.trim()
+    ? req.body.model.trim()
+    : AAA_AI_DEFAULT_MODEL;
+  const messages = normalizeAiMessages(req.body?.messages);
+  const citations = Array.isArray(req.body?.citations) ? req.body.citations : [];
+  const contextBlock = buildContextBlock(citations);
+
+  if (messages.length === 0) {
+    return res.status(400).json({ ok: false, error: 'messages are required' });
+  }
+
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+
+  const controller = new AbortController();
+  req.on('close', () => controller.abort());
+
+  try {
+    let fullText = '';
+
+    if (provider === 'arifos') {
+      const governedPrompt = [
+        'You are responding through AAA governed mode.',
+        'Stay precise, grounded, and useful.',
+        contextBlock ? `Use this retrieval context when relevant:\n\n${contextBlock}` : null,
+        'Conversation transcript:',
+        flattenTranscript(messages),
+      ]
+        .filter(Boolean)
+        .join('\n\n');
+
+      try {
+        const governedResponse = await fetch(`${ARIFOS_LOCAL_URL}/tools/arif_reply_compose`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: governedPrompt,
+            style: 'plain',
+          }),
+          signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
+        });
+
+        if (!governedResponse.ok) {
+          const details = await readResponseText(governedResponse);
+          writeSse(res, { type: 'error', error: details });
+          return res.end();
+        }
+
+        const payload = await governedResponse.json();
+        fullText = payload?.result?.composed || payload?.result?.result?.composed || '';
+      } catch (networkErr) {
+        const taskId = `arifos_chat_${Date.now()}`;
+        const queued = await queueTask(taskId, {
+          provider,
+          messages: req.body.messages,
+          contextBlock,
+          citations,
+        }, networkErr.message);
+        if (queued) {
+          fullText = `[HOLD] arifOS temporarily unreachable. Task queued (${taskId}). Retry worker active.`;
+        } else {
+          fullText = `[HOLD] arifOS unreachable and async backbone unavailable. Try again later.`;
+        }
+      }
+
+      writeSse(res, {
+        type: 'meta',
+        provider,
+        model: 'arif_reply_compose',
+        citations,
+      });
+      if (fullText) {
+        writeSse(res, {
+          type: 'chunk',
+          content: fullText,
+        });
+      }
+      writeSse(res, {
+        type: 'done',
+        provider,
+        model: 'arif_reply_compose',
+        content: fullText,
+        citations,
+      });
+      return res.end();
+    }
+
+    if (provider === 'openrouter') {
+      const orMessages = contextBlock
+        ? [{ role: 'system', content: `Ground the answer in the supplied sources when relevant.\n\n${contextBlock}` }, ...messages]
+        : messages;
+
+      const upstream = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${OPENWEBUI_API_KEY}`,
+          'HTTP-Referer': 'https://aaa.arif-fazil.com',
+          'X-Title': 'AAA AI Chat',
+        },
+        body: JSON.stringify({
+          model: model || 'openai/gpt-4o-mini',
+          messages: orMessages,
+          stream: true,
+        }),
+        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(60000)]),
+      });
+
+      if (!upstream.ok || !upstream.body) {
+        const details = await readResponseText(upstream);
+        writeSse(res, { type: 'error', error: details });
+        return res.end();
+      }
+
+      writeSse(res, { type: 'meta', provider: 'openrouter', model, citations });
+
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      for await (const chunk of upstream.body) {
+        buffer += decoder.decode(chunk, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed || trimmed === 'data: [DONE]') continue;
+          const data = trimmed.startsWith('data: ') ? trimmed.slice(6) : trimmed;
+          try {
+            const parsed = JSON.parse(data);
+            const delta = parsed?.choices?.[0]?.delta?.content || '';
+            if (delta) {
+              fullText += delta;
+              writeSse(res, { type: 'chunk', content: delta });
+            }
+            if (parsed?.choices?.[0]?.finish_reason === 'stop') {
+              writeSse(res, { type: 'done', provider: 'openrouter', model, content: fullText, citations });
+              return res.end();
+            }
+          } catch { /* skip partial */ }
+        }
+      }
+      writeSse(res, { type: 'done', provider: 'openrouter', model, content: fullText, citations });
+      return res.end();
+    }
+
+    const ollamaMessages = contextBlock
+      ? [{ role: 'system', content: `Ground the answer in the supplied sources when relevant.\n\n${contextBlock}` }, ...messages]
+      : messages;
+
+    const upstream = await fetch(`${OLLAMA_URL}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model,
+        messages: ollamaMessages,
+        stream: true,
+      }),
+      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(60000)]),
+    });
+
+    if (!upstream.ok || !upstream.body) {
+      const details = await readResponseText(upstream);
+      writeSse(res, { type: 'error', error: details });
+      return res.end();
+    }
+
+    writeSse(res, {
+      type: 'meta',
+      provider,
+      model,
+      citations,
+    });
+
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    for await (const chunk of upstream.body) {
+      buffer += decoder.decode(chunk, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+
+        const payload = JSON.parse(trimmed);
+        const delta = payload?.message?.content || '';
+        if (delta) {
+          fullText += delta;
+          writeSse(res, {
+            type: 'chunk',
+            content: delta,
+          });
+        }
+
+        if (payload.done) {
+          writeSse(res, {
+            type: 'done',
+            provider,
+            model,
+            content: fullText,
+            citations,
+          });
+          return res.end();
+        }
+      }
+    }
+
+    if (buffer.trim()) {
+      const payload = JSON.parse(buffer.trim());
+      const delta = payload?.message?.content || '';
+      if (delta) {
+        fullText += delta;
+        writeSse(res, {
+          type: 'chunk',
+          content: delta,
+        });
+      }
+    }
+
+    writeSse(res, {
+      type: 'done',
+      provider,
+      model,
+      content: fullText,
+      citations,
+    });
+    res.end();
+  } catch (error) {
+    writeSse(res, {
+      type: 'error',
+      error: error.name === 'AbortError' ? 'Request aborted' : error.message,
+    });
+    res.end();
+  }
+});
+
+function handleOperatorHolds(req, res) {
   const all = Array.from(taskStore.values());
   const pending = all.filter(t => t.status.state === 'input-required');
   const auth = all.filter(t => t.status.state === 'auth-required');
@@ -702,9 +1312,11 @@ app.get('/operator/holds', (req, res) => {
       'auth-required': auth.length,
     }
   });
-});
+}
 
-app.get('/operator/tasks', (req, res) => {
+app.get(['/operator/holds', '/api/operator/holds'], handleOperatorHolds);
+
+function handleOperatorTasks(req, res) {
   const state = req.query.state;
   let tasks = Array.from(taskStore.values());
   if (state) tasks = tasks.filter(t => t.status.state === state);
@@ -712,9 +1324,11 @@ app.get('/operator/tasks', (req, res) => {
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.json({ ok: true, tasks });
-});
+}
 
-app.get('/operator/seals', (req, res) => {
+app.get(['/operator/tasks', '/api/operator/tasks'], handleOperatorTasks);
+
+function handleOperatorSeals(req, res) {
   const http = require('http');
   const r = http.request({ hostname: 'vault999-writer', port: 5001, path: '/health', method: 'GET', timeout: 5000 }, (r2) => {
     let body = '';
@@ -730,7 +1344,7 @@ app.get('/operator/seals', (req, res) => {
         res.setHeader('Pragma', 'no-cache');
         res.json({ ok: true, seals: 0, pending_holds: 0 });
       }
-    });
+      });
   });
   r.on('error', () => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
@@ -738,7 +1352,9 @@ app.get('/operator/seals', (req, res) => {
     res.json({ ok: true, seals: 0, pending_holds: 0 });
   });
   r.end();
-});
+}
+
+app.get(['/operator/seals', '/api/operator/seals'], handleOperatorSeals);
 
 app.get('/', (req, res) => {
   res.json({
@@ -1072,15 +1688,110 @@ app.use((req, res) => {
   res.status(404).json(createJSONRPCError(0, ERROR_CODES.METHOD_NOT_FOUND, `Endpoint ${req.path} not found`));
 });
 
+// === ASYNC BACKBONE: Redis + NATS ===
+let redisClient = null;
+let natsConnection = null;
+const sc = StringCodec();
+
+async function initAsyncBackbone() {
+  try {
+    redisClient = createClient({ url: REDIS_URL });
+    redisClient.on('error', err => console.error('[redis] error:', err.message));
+    await redisClient.connect();
+    console.log('[redis] connected');
+  } catch (e) {
+    console.error('[redis] failed to connect:', e.message);
+  }
+
+  try {
+    natsConnection = await connect({ servers: NATS_URL });
+    console.log('[nats] connected');
+
+    const subVerdicts = natsConnection.subscribe('arifos.verdicts');
+    const subBreaches = natsConnection.subscribe('arifos.floor_breach');
+
+    (async () => {
+      for await (const msg of subVerdicts) {
+        console.log('[nats] arifos.verdicts:', sc.decode(msg.data));
+      }
+    })();
+
+    (async () => {
+      for await (const msg of subBreaches) {
+        console.log('[nats] arifos.floor_breach:', sc.decode(msg.data));
+      }
+    })();
+
+    setInterval(async () => {
+      if (!natsConnection || !redisClient) return;
+      const status = {
+        timestamp: new Date().toISOString(),
+        online_agents: taskStore.size,
+        queue_depth: parseInt(await redisClient.lLen('aaa:hold_queue') || '0'),
+      };
+      natsConnection.publish('aaa.mesh_status', sc.encode(JSON.stringify(status)));
+    }, 60000);
+  } catch (e) {
+    console.error('[nats] failed to connect:', e.message);
+  }
+}
+
+async function queueTask(taskId, payload, reason) {
+  if (!redisClient) return false;
+  const entry = { taskId, payload, reason, queuedAt: new Date().toISOString(), retryCount: 0 };
+  await redisClient.rPush('aaa:hold_queue', JSON.stringify(entry));
+  console.log(`[queue] ${taskId} queued: ${reason}`);
+  return true;
+}
+
+function startRetryWorker() {
+  setInterval(async () => {
+    if (!redisClient) return;
+    try {
+      const len = await redisClient.lLen('aaa:hold_queue');
+      if (len === 0) return;
+      const raw = await redisClient.lPop('aaa:hold_queue');
+      if (!raw) return;
+      const task = JSON.parse(raw);
+      task.retryCount = (task.retryCount || 0) + 1;
+
+      if (task.retryCount > 5) {
+        await redisClient.rPush('aaa:dead_letter', JSON.stringify(task));
+        console.log(`[retry] ${task.taskId} dead-lettered after 5 retries`);
+        return;
+      }
+
+      console.log(`[retry] ${task.taskId} attempt ${task.retryCount}`);
+      // For now, re-queue tasks that still fail. In production, call actual handler.
+      // Check if arifOS is back before re-queueing
+      try {
+        const probe = await fetch(`${ARIFOS_LOCAL_URL}/health`, { signal: AbortSignal.timeout(3000) });
+        if (probe.ok) {
+          console.log(`[retry] ${task.taskId} arifOS back online — task requires manual replay`);
+          await redisClient.rPush('aaa:hold_queue', JSON.stringify(task));
+        } else {
+          await redisClient.rPush('aaa:hold_queue', JSON.stringify(task));
+        }
+      } catch {
+        await redisClient.rPush('aaa:hold_queue', JSON.stringify(task));
+      }
+    } catch (e) {
+      console.error('[retry] worker error:', e.message);
+    }
+  }, 30000);
+}
+
 // === START ===
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`[AAA A2A] Hardened server running on port ${PORT}`);
   console.log(`[AAA A2A] Protocol: A2A v1.0.0`);
   console.log(`[AAA A2A] Auth: configured (bearer + api-key)`);
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent-card.json`);
   console.log(`[AAA A2A] Federation: http://localhost:${PORT}/.well-known/arifos-federation.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
+  await initAsyncBackbone();
+  startRetryWorker();
 });
 
 module.exports = { app };

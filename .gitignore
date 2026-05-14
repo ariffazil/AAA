@@ -37,8 +37,13 @@ dist/
 .kimi/
 .codex/
 .claude/
+.claude.bak/
 .gemini/
+.gemini.bak/
+.kimi/
+.kimi.bak/
 .copilot/
+.cursor/
 # ── Agent secrets and credentials ──
 *.env
 *.env.local
