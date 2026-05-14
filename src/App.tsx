@@ -1,20 +1,27 @@
 import { useEffect, useState } from 'react';
 import TrinityNav from './components/TrinityNav';
 import Cockpit from './Cockpit';
+import AiPanel from './ai/AiPanel';
 
-function App() {
-  const [scrolled, setScrolled] = useState(false);
+function useHashRoute() {
+  const [hash, setHash] = useState(() => window.location.hash.slice(1));
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const handler = () => setHash(window.location.hash.slice(1));
+    window.addEventListener('hashchange', handler);
+    return () => window.removeEventListener('hashchange', handler);
   }, []);
+
+  return hash;
+}
+
+function App() {
+  const route = useHashRoute();
 
   return (
     <>
       <TrinityNav />
-      <Cockpit />
+      {route === 'ai' ? <AiPanel /> : <Cockpit />}
     </>
   );
 }

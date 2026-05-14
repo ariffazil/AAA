@@ -4,9 +4,7 @@ import {
   Zap, 
   Activity,
   ArrowUpRight,
-  ShieldAlert,
-  Check,
-  X
+  ShieldAlert
 } from 'lucide-react';
 import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
 
@@ -42,6 +40,8 @@ const AGENTS = [
   { id: 'geox-witness', role: 'Earth physics verification', type: 'Witness' },
 ];
 
+const OPERATOR_API = '/api/operator';
+
 export default function Cockpit() {
   const [tasks, setTasks] = useState<OperatorTask[]>([]);
   const [kernelStatus, setKernelStatus] = useState<'ONLINE' | 'OFFLINE'>('OFFLINE');
@@ -60,7 +60,7 @@ export default function Cockpit() {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('/operator/tasks?state=input-required');
+      const response = await fetch(`${OPERATOR_API}/tasks?state=input-required`);
       const data = await response.json();
       setTasks(data.tasks || []);
     } catch (error) {
@@ -126,7 +126,7 @@ export default function Cockpit() {
   useEffect(() => {
     const checkHolds = async () => {
       try {
-        const res = await fetch('/operator/holds');
+        const res = await fetch(`${OPERATOR_API}/holds`);
         if (res.ok) {
           const data = await res.json();
           setHoldsCount(data.holds);
@@ -142,7 +142,7 @@ export default function Cockpit() {
   useEffect(() => {
     const checkSeals = async () => {
       try {
-        const res = await fetch('/operator/seals');
+        const res = await fetch(`${OPERATOR_API}/seals`);
         if (res.ok) {
           const data = await res.json();
           setSealsCount(data.seals);
@@ -150,18 +150,8 @@ export default function Cockpit() {
         }
       } catch { /* ignore */ }
     };
-    const checkStatus = async () => {
-      try {
-        const res = await fetch('https://af-bridge.arif-fazil.com/status');
-        if (res.ok) {
-          const data = await res.json();
-          setHoldsCount((previous) => data.metabolic?.open_holds ?? previous);
-        }
-      } catch { /* ignore */ }
-    };
     checkSeals();
-    checkStatus();
-    const interval = setInterval(() => { checkSeals(); checkStatus(); }, 30000);
+    const interval = setInterval(() => { checkSeals(); }, 30000);
     return () => clearInterval(interval);
   }, []);
 
@@ -197,32 +187,6 @@ export default function Cockpit() {
     const interval = setInterval(checkExpiry, 30000);
     return () => clearInterval(interval);
   }, [sessionManifest]);
-
-  const handleApprove = async (taskId: string) => {
-    try {
-      await fetch(`/operator/tasks/${taskId}/approve`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ humanId: 'Arif-Sovereign', signature: 'SIG-' + Date.now() })
-      });
-      fetchTasks();
-    } catch {
-      alert('Approval failed');
-    }
-  };
-
-  const handleReject = async (taskId: string) => {
-    try {
-      await fetch(`/operator/tasks/${taskId}/reject`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ reason: 'Sovereign Veto' })
-      });
-      fetchTasks();
-    } catch {
-      alert('Rejection failed');
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#e2e2e5] font-sans selection:bg-red-500/30 selection:text-white pb-20">
@@ -352,19 +316,10 @@ export default function Cockpit() {
                     </div>
                   </div>
 
-                  <div className="p-4 bg-red-500/5 flex justify-end gap-4">
-                    <button 
-                      onClick={() => handleReject(task.id)}
-                      className="px-4 py-2 flex items-center gap-2 text-[10px] font-bold text-white/40 hover:text-white transition-colors"
-                    >
-                      <X className="w-3 h-3" /> VETO ACTION
-                    </button>
-                    <button 
-                      onClick={() => handleApprove(task.id)}
-                      className="px-6 py-2 bg-red-500 text-black font-black text-[10px] tracking-widest hover:bg-white transition-all flex items-center gap-2"
-                    >
-                      <Check className="w-3 h-3" /> AUTHORIZE EXECUTION
-                    </button>
+                  <div className="p-4 bg-red-500/5 flex justify-end">
+                    <div className="rounded border border-red-500/20 bg-black/30 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.2em] text-white/45">
+                      Public cockpit is read-only. Sovereign approvals require an authenticated operator channel.
+                    </div>
                   </div>
                 </div>
               ))}
