@@ -1,12 +1,19 @@
 # Cloudflare Pages Headers Configuration
 
+# Explicit MIME types for built assets — prevents MIME-type rejection under strict checking
+/assets/*.js
+  Content-Type: application/javascript; charset=utf-8
+
+/assets/*.css
+  Content-Type: text/css; charset=utf-8
+
 # Security headers for all pages
 /*
-  X-Frame-Options: DENY
+  X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://aaamcp.arif-fazil.com
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https://api.fontshare.com https://fonts.gstatic.com; connect-src 'self' https://aaamcp.arif-fazil.com https://arifos.arif-fazil.com
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
 /llms.txt
