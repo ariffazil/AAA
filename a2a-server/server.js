@@ -80,12 +80,97 @@ const INVARIANTS = {
   allDelegationsAudited: true
 };
 
-// === IN-MEMORY STORES ===
-const taskStore = new Map();
+// === IN-MEMORY STORES (fallback until Redis connects) ===
+const _memTaskStore = new Map();
 const eventBus = new Map();
 const nonceStore = new Map();   // nonce → { ts, used }
 const replayStore = new Map();   // payloadHash → { ts }
 const entropyStore = new Map();  // taskId → { before, after }
+
+// === TASK STORE (Redis-backed with in-memory fallback) ===
+// Fails over to in-memory if Redis is unavailable.
+// Uses Redis hashes (task:{id}) + set (task:_index_) for listing.
+// TTL: 24h per task, refreshed on every update.
+const TASK_TTL_SECONDS = 86400;
+
+const taskStore = {
+  // Get a task by ID
+  async get(taskId) {
+    if (redisClient && redisClient.isReady) {
+      const data = await redisClient.hGetAll(`task:${taskId}`);
+      if (data && Object.keys(data).length > 0) {
+        // Rehydrate: stored as JSON strings
+        return {
+          id: data.id,
+          contextId: data.contextId,
+          status: JSON.parse(data.status || '{}'),
+          artifacts: JSON.parse(data.artifacts || '[]'),
+          history: JSON.parse(data.history || '[]'),
+          metadata: JSON.parse(data.metadata || '{}'),
+          created_at: data.created_at,
+          updated_at: data.updated_at,
+        };
+      }
+      return undefined;
+    }
+    return _memTaskStore.get(taskId);
+  },
+
+  // Set a task (create or update)
+  async set(taskId, taskData) {
+    const updated = { ...taskData, updated_at: new Date().toISOString() };
+    if (redisClient && redisClient.isReady) {
+      // Flatten nested objects into strings for Redis hash compatibility
+      await redisClient.hSet(`task:${taskId}`, {
+        id: updated.id || taskId,
+        contextId: updated.contextId || '',
+        status: JSON.stringify(updated.status || {}),
+        artifacts: JSON.stringify(updated.artifacts || []),
+        history: JSON.stringify(updated.history || []),
+        metadata: JSON.stringify(updated.metadata || {}),
+        created_at: updated.created_at || new Date().toISOString(),
+        updated_at: updated.updated_at || new Date().toISOString(),
+      });
+      await redisClient.expire(`task:${taskId}`, TASK_TTL_SECONDS);
+      await redisClient.sAdd('task:_index_', taskId);
+    } else {
+      _memTaskStore.set(taskId, updated);
+    }
+  },
+
+  // Delete a task
+  async delete(taskId) {
+    if (redisClient && redisClient.isReady) {
+      await redisClient.del(`task:${taskId}`);
+      await redisClient.sRem('task:_index_', taskId);
+    } else {
+      _memTaskStore.delete(taskId);
+    }
+  },
+
+  // Get number of tasks (used in mesh status)
+  get size() {
+    if (redisClient && redisClient.isReady) {
+      // Sync access not possible on async redis — approximate with in-memory fallback
+      return _memTaskStore.size;
+    }
+    return _memTaskStore.size;
+  },
+
+  // Get all tasks as array (used in operator handlers)
+  get values() {
+    return Array.from(_memTaskStore.values());
+  },
+
+  // Sync get for use in Express sync route handlers (non-async)
+  getSync(taskId) {
+    if (redisClient && redisClient.isReady) {
+      // Cannot await here — throw to signal caller to use async .get()
+      throw new Error('SYNC_GET_UNAVAILABLE');
+    }
+    return _memTaskStore.get(taskId);
+  }
+};
 
 function writeSse(res, payload) {
   res.write(`data: ${JSON.stringify(payload)}\n\n`);
@@ -412,19 +497,87 @@ async function callArifJudge(candidate, taskId, contextId, skill) {
       const state = task.status?.state || task.state;
 
       if (state === 'completed') {
-        // Extract verdict from task artifacts/messages
+        // STRUCTURED verdict extraction (F2 TRUTH) — check in order:
+        // 1. task.result.verdict (structured JSON from Hermes)
+        // 2. task.artifacts verdict object
+        // 3. task.messages structured verdict fields
+        // 4. Fallback: text keyword parsing (last resort — fragile)
+        const result = task.result || {};
+        const artifacts = task.artifacts || [];
         const msgs = task.messages || [];
-        for (let i = msgs.length - 1; i >= 0; i--) {
-          const parts = msgs[i].parts || [];
-          for (const p of parts) {
-            if (p.kind === 'text') {
-              const t = p.text || '';
-              if (t.includes('SEAL') || t.includes('PROCEED')) { verdict = 'SEAL'; break; }
-              if (t.includes('HOLD') || t.includes('HOLD_888')) { verdict = VERDICT.HOLD_888; break; }
-              if (t.includes('VOID')) { verdict = 'VOID'; break; }
+
+        // Priority 1: Structured verdict on result
+        if (result.verdict && typeof result.verdict === 'string') {
+          const v = result.verdict.toUpperCase();
+          if (v === 'SEAL' || v === 'PROCEED') verdict = VERDICT.SEAL;
+          else if (v === 'VOID') verdict = VERDICT.VOID;
+          else if (v === 'HOLD' || v === 'HOLD_888') verdict = VERDICT.HOLD_888;
+          console.log(`[888_JUDGE] Structured verdict from result: ${verdict}`);
+        }
+
+        // Priority 2: Check artifacts for verdict object
+        if (verdict === VERDICT.HOLD_888) {
+          for (const artifact of artifacts) {
+            const data = artifact?.data || artifact;
+            if (data?.verdict && typeof data.verdict === 'string') {
+              const v = data.verdict.toUpperCase();
+              if (v === 'SEAL' || v === 'PROCEED') { verdict = VERDICT.SEAL; break; }
+              if (v === 'VOID') { verdict = VERDICT.VOID; break; }
+              if (v === 'HOLD' || v === 'HOLD_888') { verdict = VERDICT.HOLD_888; break; }
             }
           }
-          if (verdict !== VERDICT.HOLD_888) break;
+        }
+
+        // Priority 3: Check messages for structured verdict fields
+        if (verdict === VERDICT.HOLD_888) {
+          for (let i = msgs.length - 1; i >= 0; i--) {
+            const msg = msgs[i];
+            const data = msg?.data || msg;
+            if (data?.verdict && typeof data.verdict === 'string') {
+              const v = data.verdict.toUpperCase();
+              if (v === 'SEAL' || v === 'PROCEED') { verdict = VERDICT.SEAL; break; }
+              if (v === 'VOID') { verdict = VERDICT.VOID; break; }
+              if (v === 'HOLD' || v === 'HOLD_888') { verdict = VERDICT.HOLD_888; break; }
+            }
+            // Also check parts for structured verdict objects
+            const parts = msg.parts || [];
+            for (const p of parts) {
+              if (p.kind === 'text') {
+                const t = p.text || '';
+                // Look for JSON object with verdict field embedded in text
+                const jsonMatch = t.match(/\{[^}]*"verdict"[^}]*\}/);
+                if (jsonMatch) {
+                  try {
+                    const parsed = JSON.parse(jsonMatch[0]);
+                    if (parsed.verdict && typeof parsed.verdict === 'string') {
+                      const v = parsed.verdict.toUpperCase();
+                      if (v === 'SEAL' || v === 'PROCEED') { verdict = VERDICT.SEAL; break; }
+                      if (v === 'VOID') { verdict = VERDICT.VOID; break; }
+                      if (v === 'HOLD' || v === 'HOLD_888') { verdict = VERDICT.HOLD_888; break; }
+                    }
+                  } catch { /* not valid JSON — skip */ }
+                }
+              }
+            }
+            if (verdict !== VERDICT.HOLD_888) break;
+          }
+        }
+
+        // Priority 4: Last-resort text keyword fallback (fragile — log as F2 TRUTH concern)
+        if (verdict === VERDICT.HOLD_888) {
+          for (let i = msgs.length - 1; i >= 0; i--) {
+            const parts = msgs[i].parts || [];
+            for (const p of parts) {
+              if (p.kind === 'text') {
+                const t = p.text || '';
+                if (t.includes('SEAL') || t.includes('PROCEED')) { verdict = VERDICT.SEAL; break; }
+                if (t.includes('HOLD') || t.includes('HOLD_888')) { verdict = VERDICT.HOLD_888; break; }
+                if (t.includes('VOID')) { verdict = VERDICT.VOID; break; }
+              }
+            }
+            if (verdict !== VERDICT.HOLD_888) break;
+          }
+          console.warn(`[888_JUDGE] F2 TRUTH WARNING: Verdict extracted via keyword fallback — Hermes should return structured JSON {verdict: 'SEAL'|'VOID'|'HOLD'} per AAA Treaty v1.0.0`);
         }
         break;
       }
@@ -585,6 +738,9 @@ function publish(event) {
 }
 
 // === SKILL DETECTION ===
+// Priority: 1. params.skill (explicit A2A skill field)  2. text-based keyword fallback
+const VALID_SKILLS = new Set(['agent-dispatch', 'agent-handoff', 'status-query', 'general']);
+
 function detectSkill(text) {
   const lower = text.toLowerCase();
   if (lower.includes('dispatch') || lower.includes('send') || lower.includes('task')) return 'agent-dispatch';
@@ -593,17 +749,35 @@ function detectSkill(text) {
   return 'general';
 }
 
+function resolveSkill(params, message) {
+  // Priority 1: explicit skill field in params (A2A spec-compliant)
+  if (params && params.skill && typeof params.skill === 'string') {
+    const s = params.skill.trim().toLowerCase();
+    if (VALID_SKILLS.has(s)) {
+      console.log(`[skill] resolved from params.skill: ${s}`);
+      return s;
+    }
+    console.warn(`[skill] invalid params.skill "${params.skill}" — falling back to text detection`);
+  }
+  // Priority 2: text-based keyword detection
+  const text = message ? extractText(message) : '';
+  const skill = detectSkill(text);
+  console.log(`[skill] resolved from text: ${skill}`);
+  return skill;
+}
+
 function extractText(message) {
   return (message.parts || []).filter(p => p.kind === 'text').map(p => p.text).join(' ');
 }
 
 // === EXECUTE TASK ===
-async function executeTask(taskId, contextId, message, targetAgent) {
-  let task = taskStore.get(taskId);
+// params may contain { skill: 'agent-dispatch' } for explicit A2A skill routing
+async function executeTask(taskId, contextId, message, targetAgent, params) {
+  let task = await taskStore.get(taskId);
   if (!task) return;
 
   const userText = extractText(message);
-  const skill = detectSkill(userText);
+  const skill = resolveSkill(params, message);
   task.metadata = task.metadata || {};
   task.metadata.skill = skill;
 
@@ -614,7 +788,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to Hermes ASI 888_JUDGMENT...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
-    taskStore.set(taskId, task);
+    await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
     try {
@@ -642,7 +816,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
           timestamp: new Date().toISOString()
         };
         task.status = rejectedStatus;
-        taskStore.set(taskId, task);
+        await taskStore.set(taskId, task);
         publish({ kind: 'status-update', taskId, contextId, status: rejectedStatus, final: true });
         return;
       }
@@ -658,7 +832,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
       };
       task.artifacts = hermesResult.artifacts || [];
       task.history = hermesResult.history || [message];
-      taskStore.set(taskId, task);
+      await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
     } catch (err) {
@@ -668,7 +842,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
         timestamp: new Date().toISOString()
       };
       task.status = errorStatus;
-      taskStore.set(taskId, task);
+      await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: errorStatus, final: true });
       return;
     }
@@ -682,7 +856,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to OpenClaw AGI...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
-    taskStore.set(taskId, task);
+    await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
     try {
@@ -711,7 +885,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
       };
       task.artifacts = ocResult.artifacts || [];
       task.history = ocResult.history || [message];
-      taskStore.set(taskId, task);
+      await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
     } catch (err) {
@@ -721,7 +895,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
         timestamp: new Date().toISOString()
       };
       task.status = errorStatus;
-      taskStore.set(taskId, task);
+      await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: errorStatus, final: true });
       return;
     }
@@ -734,7 +908,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
     message: { role: 'agent', parts: [{ kind: 'text', text: 'Processing your request...' }], messageId: generateId(), taskId, contextId },
     timestamp: new Date().toISOString()
   };
-  taskStore.set(taskId, task);
+  await taskStore.set(taskId, task);
   publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
   // F9 Anti-Hallucination check (always run)
@@ -746,7 +920,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
       timestamp: new Date().toISOString()
     };
     task.status = rejectedStatus;
-    taskStore.set(taskId, task);
+    await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: rejectedStatus, final: true });
     return;
   }
@@ -762,7 +936,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
         timestamp: new Date().toISOString()
       };
       task.status = voidStatus;
-      taskStore.set(taskId, task);
+      await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: voidStatus, final: true });
       return;
     }
@@ -773,7 +947,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
         timestamp: new Date().toISOString()
       };
       task.status = holdStatus;
-      taskStore.set(taskId, task);
+      await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: holdStatus, final: true });
       return;
     }
@@ -802,7 +976,7 @@ async function executeTask(taskId, contextId, message, targetAgent) {
     timestamp: new Date().toISOString()
   };
   task.status = completedStatus;
-  taskStore.set(taskId, task);
+  await taskStore.set(taskId, task);
   publish({ kind: 'status-update', taskId, contextId, status: completedStatus, final: true });
 }
 
@@ -1298,10 +1472,66 @@ app.post('/api/ai/chat', async (req, res) => {
   }
 });
 
-function handleOperatorHolds(req, res) {
-  const all = Array.from(taskStore.values());
-  const pending = all.filter(t => t.status.state === 'input-required');
-  const auth = all.filter(t => t.status.state === 'auth-required');
+// Redis task listing helper — falls back to in-memory
+// Supports cursor-based pagination: cursor = updated_at timestamp, limit = max results
+async function listAllTasks(stateFilter, cursor, limit) {
+  const DEFAULT_LIMIT = 50;
+  const MAX_LIMIT = 200;
+
+  if (redisClient && redisClient.isReady) {
+    const ids = await redisClient.sMembers('task:_index_');
+    const tasks = [];
+    for (const id of ids) {
+      const task = await taskStore.get(id);
+      if (task) {
+        if (!stateFilter || task.status?.state === stateFilter) {
+          tasks.push(task);
+        }
+      } else {
+        // Task expired or deleted — clean up index
+        await redisClient.sRem('task:_index_', id);
+      }
+    }
+    tasks.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+
+    // Cursor-based pagination: skip tasks older than cursor
+    if (cursor) {
+      const cursorTime = new Date(cursor).getTime();
+      tasks = tasks.filter(t => new Date(t.updated_at).getTime() < cursorTime);
+    }
+
+    // Apply limit
+    const safeLimit = Math.min(Math.max(1, Number.isFinite(limit) ? Number(limit) : DEFAULT_LIMIT), MAX_LIMIT);
+    const paged = tasks.slice(0, safeLimit);
+
+    // Next cursor = updated_at of last item in page (if more exist)
+    const nextCursor = tasks.length > safeLimit ? paged[paged.length - 1]?.updated_at : null;
+
+    return { tasks: paged, nextCursor, total: tasks.length };
+  }
+
+  // In-memory fallback
+  let tasks = Array.from(_memTaskStore.values());
+  if (stateFilter) tasks = tasks.filter(t => t.status?.state === stateFilter);
+  tasks.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+
+  if (cursor) {
+    const cursorTime = new Date(cursor).getTime();
+    tasks = tasks.filter(t => new Date(t.updated_at).getTime() < cursorTime);
+  }
+
+  const safeLimit = Math.min(Math.max(1, Number.isFinite(limit) ? Number(limit) : DEFAULT_LIMIT), MAX_LIMIT);
+  const paged = tasks.slice(0, safeLimit);
+  const nextCursor = tasks.length > safeLimit ? paged[paged.length - 1]?.updated_at : null;
+
+  return { tasks: paged, nextCursor, total: tasks.length };
+}
+
+async function handleOperatorHolds(req, res) {
+  const result = await listAllTasks();
+  const tasks = result.tasks;
+  const pending = tasks.filter(t => t.status.state === 'input-required');
+  const auth = tasks.filter(t => t.status.state === 'auth-required');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.json({
@@ -1316,14 +1546,23 @@ function handleOperatorHolds(req, res) {
 
 app.get(['/operator/holds', '/api/operator/holds'], handleOperatorHolds);
 
-function handleOperatorTasks(req, res) {
-  const state = req.query.state;
-  let tasks = Array.from(taskStore.values());
-  if (state) tasks = tasks.filter(t => t.status.state === state);
-  tasks.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+async function handleOperatorTasks(req, res) {
+  const state = req.query.state || null;
+  const cursor = req.query.cursor || null;
+  const limit = req.query.limit ? Number(req.query.limit) : 50;
+  const result = await listAllTasks(state, cursor, limit);
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
-  res.json({ ok: true, tasks });
+  res.json({
+    ok: true,
+    tasks: result.tasks,
+    pagination: {
+      cursor: result.nextCursor,
+      limit,
+      total: result.total,
+      hasMore: result.nextCursor !== null,
+    }
+  });
 }
 
 app.get(['/operator/tasks', '/api/operator/tasks'], handleOperatorTasks);
@@ -1424,11 +1663,11 @@ app.post('/a2a/message/send', jsonRpcValidate, async (req, res) => {
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     };
-    taskStore.set(taskId, task);
+    await taskStore.set(taskId, task);
 
-    await executeTask(taskId, contextId, message, params.agent_id);
+    await executeTask(taskId, contextId, message, params.agent_id, params);
 
-    const updatedTask = taskStore.get(taskId);
+    const updatedTask = await taskStore.get(taskId);
     const skill = updatedTask.metadata?.skill || 'general';
 
     // Write SEAL to Vault999 (async, non-blocking)
@@ -1477,7 +1716,7 @@ app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     };
-    taskStore.set(taskId, task);
+    await taskStore.set(taskId, task);
 
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
@@ -1492,7 +1731,7 @@ app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
 
     req.on('close', () => { unsubscribe(); });
 
-    executeTask(taskId, contextId, message, params.agent_id).catch(console.error);
+    executeTask(taskId, contextId, message, params.agent_id, params).catch(console.error);
 
   } catch (error) {
     console.error('[A2A] message/stream error:', error);
@@ -1501,8 +1740,8 @@ app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
 });
 
 // === TASKS/:taskId ===
-app.get('/a2a/tasks/:taskId', jsonRpcValidate, (req, res) => {
-  const task = taskStore.get(req.params.taskId);
+app.get('/a2a/tasks/:taskId', jsonRpcValidate, async (req, res) => {
+  const task = await taskStore.get(req.params.taskId);
   if (!task) return res.status(404).json(createJSONRPCError(req.jsonrpc.id, ERROR_CODES.TASK_NOT_FOUND, `Task ${req.params.taskId} not found`));
   res.json(createJSONRPCResponse(req.jsonrpc.id, {
     id: task.id, contextId: task.contextId, status: task.status,
@@ -1511,25 +1750,25 @@ app.get('/a2a/tasks/:taskId', jsonRpcValidate, (req, res) => {
 });
 
 // === TASKS/:taskId/CANCEL ===
-app.post('/a2a/tasks/:taskId/cancel', jsonRpcValidate, (req, res) => {
-  const task = taskStore.get(req.params.taskId);
+app.post('/a2a/tasks/:taskId/cancel', jsonRpcValidate, async (req, res) => {
+  const task = await taskStore.get(req.params.taskId);
   if (task) {
     task.status.state = 'canceled';
     task.updated_at = new Date().toISOString();
-    taskStore.set(req.params.taskId, task);
+    await taskStore.set(req.params.taskId, task);
   }
   res.json(createJSONRPCResponse(req.jsonrpc.id, { success: true, message: 'Task cancelled', task }));
 });
 
 // === TASKS/:taskId/SUBSCRIBE ===
-app.get('/a2a/tasks/:taskId/subscribe', jsonRpcValidate, (req, res) => {
+app.get('/a2a/tasks/:taskId/subscribe', jsonRpcValidate, async (req, res) => {
   const taskId = req.params.taskId;
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
   res.setHeader('X-Accel-Buffering', 'no');
 
-  const task = taskStore.get(taskId);
+  const task = await taskStore.get(taskId);
   if (task) res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id: req.jsonrpc.id, result: { kind: 'task', task } })}\n\n`);
 
   const unsubscribe = subscribe(taskId, (event) => {
@@ -1586,11 +1825,11 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, async (req, res) => {
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     };
-    taskStore.set(taskId, task);
+    await taskStore.set(taskId, task);
 
-    await executeTask(taskId, contextId, message, params.agent_id);
+    await executeTask(taskId, contextId, message, params.agent_id, params);
 
-    const updatedTask = taskStore.get(taskId);
+    const updatedTask = await taskStore.get(taskId);
 
     writeSeal(updatedTask, 'aaa-gateway', 'a2a.task', {
       routing: 'POST /tasks v1.0.0',
@@ -1613,8 +1852,8 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, async (req, res) => {
 });
 
 // GET /tasks/:taskId — A2A v1.0.0 spec task retrieval
-app.get('/tasks/:taskId', authMiddleware, (req, res) => {
-  const task = taskStore.get(req.params.taskId);
+app.get('/tasks/:taskId', authMiddleware, async (req, res) => {
+  const task = await taskStore.get(req.params.taskId);
   if (!task) {
     return res.status(404).json(createJSONRPCError(req.params.taskId, ERROR_CODES.TASK_NOT_FOUND, `Task ${req.params.taskId} not found`));
   }
@@ -1635,7 +1874,7 @@ app.get('/tasks/:taskId/stream', authMiddleware, async (req, res) => {
   res.setHeader('Connection', 'keep-alive');
   res.setHeader('X-Accel-Buffering', 'no');
 
-  const task = taskStore.get(taskId);
+  const task = await taskStore.get(taskId);
   if (task) {
     res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', result: { kind: 'task', task } })}\n\n`);
   }
@@ -1648,26 +1887,26 @@ app.get('/tasks/:taskId/stream', authMiddleware, async (req, res) => {
 });
 
 // POST /tasks/:taskId/cancel — A2A v1.0.0 spec task cancellation
-app.post('/tasks/:taskId/cancel', authMiddleware, jsonRpcValidate, (req, res) => {
-  const task = taskStore.get(req.params.taskId);
+app.post('/tasks/:taskId/cancel', authMiddleware, jsonRpcValidate, async (req, res) => {
+  const task = await taskStore.get(req.params.taskId);
   if (!task) {
     return res.status(404).json(createJSONRPCError(req.jsonrpc.id, ERROR_CODES.TASK_NOT_FOUND, `Task ${req.params.taskId} not found`));
   }
   task.status.state = 'canceled';
   task.updated_at = new Date().toISOString();
-  taskStore.set(req.params.taskId, task);
+  await taskStore.set(req.params.taskId, task);
   res.json(createJSONRPCResponse(req.jsonrpc.id, { id: task.id, status: task.status, kind: 'task' }));
 });
 
 // GET /tasks/:taskId/subscribe — A2A v1.0.0 spec SSE subscription
-app.get('/tasks/:taskId/subscribe', authMiddleware, (req, res) => {
+app.get('/tasks/:taskId/subscribe', authMiddleware, async (req, res) => {
   const taskId = req.params.taskId;
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
   res.setHeader('X-Accel-Buffering', 'no');
 
-  const task = taskStore.get(taskId);
+  const task = await taskStore.get(taskId);
   if (task) res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', result: { kind: 'task', task } })}\n\n`);
 
   const unsubscribe = subscribe(taskId, (event) => {

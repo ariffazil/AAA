@@ -6,16 +6,25 @@ services:
       dockerfile: Dockerfile
     container_name: aaa-a2a
     restart: unless-stopped
-    network_mode: host
+    networks:
+      - arifos_core_network
+    ports:
+      - "127.0.0.1:3001:3001"
     environment:
       - PORT=3001
-      - A2A_TOKEN=aaa-a2a-token-dev
-      - A2A_API_KEY=aaa-a2a-apikey-dev
-      - HERMES_A2A_URL=http://127.0.0.1:18001
-      - OPENCLAW_A2A_URL=http://127.0.0.1:18002
+      - A2A_TOKEN=${A2A_TOKEN:-aaa-a2a-token-dev}
+      - A2A_API_KEY=${A2A_API_KEY:-aaa-a2a-apikey-dev}
+      - HERMES_A2A_URL=${HERMES_A2A_URL:-http://hermes-agent:3002}
+      - OPENCLAW_A2A_URL=${OPENCLAW_A2A_URL:-http://agent-zero:50001}
+      - REDIS_URL=redis://redis:6379
+      - NATS_URL=nats://nats:4222
     healthcheck:
       test: ["CMD", "wget", "-q", "--spider", "http://localhost:3001/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 10s
+
+networks:
+  arifos_core_network:
+    external: true
