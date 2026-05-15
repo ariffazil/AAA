@@ -184,7 +184,14 @@ export default function Cockpit() {
         const res = await fetch('https://arifos.arif-fazil.com/tools');
         if (res.ok) {
           const data = await res.json();
-          setToolRegistry(data.tools || []);
+          const tools = Array.isArray(data.tools) ? data.tools : [];
+          setToolRegistry(
+            tools
+              .map((tool: unknown) =>
+                typeof tool === 'string' ? tool : (tool as { name?: string }).name
+              )
+              .filter((name: unknown): name is string => typeof name === 'string' && name.length > 0),
+          );
         }
       } catch { /* ignore */ }
     };
