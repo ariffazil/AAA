@@ -33,17 +33,23 @@ const FLOORS = [
   { id: 'F13', name: 'Sovereign', status: 'PASS' },
 ];
 
-const AGENTS = [
-  { id: 'forge-explorer', role: 'Codebase exploration and structural analysis', type: 'Explore' },
-  { id: 'forge-coordinator', role: 'Multi-agent task orchestration', type: 'Coordinator' },
-  { id: 'arifos-guardian', role: 'Constitutional floor enforcement', type: 'Guardian' },
-  { id: 'geox-witness', role: 'Earth physics verification', type: 'Witness' },
-];
+interface AgentInfo {
+  id: string;
+  role: string;
+  type: string;
+  domain: string;
+  ring: string;
+  status: string;
+  endpoint: string;
+}
 
 const OPERATOR_API = '/api/operator';
 
 export default function Cockpit() {
   const [tasks, setTasks] = useState<OperatorTask[]>([]);
+  const [agents, setAgents] = useState<AgentInfo[]>([]);
+  const [agentsLoading, setAgentsLoading] = useState(true);
+  const [agentsError, setAgentsError] = useState<string | null>(null);
   const [kernelStatus, setKernelStatus] = useState<'ONLINE' | 'OFFLINE'>('OFFLINE');
   const [lastCheck, setLastCheck] = useState<string>('never');
   const [latency, setLatency] = useState<number | null>(null);
@@ -58,6 +64,21 @@ export default function Cockpit() {
   const [sessionManifest, setSessionManifest] = useState<SessionManifest | null>(null);
   const [showConsentDialog, setShowConsentDialog] = useState(false);
 
+  const fetchAgents = async () => {
+    try {
+      setAgentsLoading(true);
+      const response = await fetch('/a2a/agents.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      setAgents(data.agents || []);
+      setAgentsError(null);
+    } catch (err) {
+      setAgentsError(err instanceof Error ? err.message : 'Unknown');
+    } finally {
+      setAgentsLoading(false);
+    }
+  };
+
   const fetchTasks = async () => {
     try {
       const response = await fetch(`${OPERATOR_API}/tasks?state=input-required`);
@@ -70,8 +91,10 @@ export default function Cockpit() {
 
   useEffect(() => {
     queueMicrotask(fetchTasks);
+    queueMicrotask(fetchAgents);
     const interval = setInterval(fetchTasks, 5000);
-    return () => clearInterval(interval);
+    const agentsInterval = setInterval(fetchAgents, 30000);
+    return () => { clearInterval(interval); clearInterval(agentsInterval); };
   }, []);
 
   useEffect(() => {
@@ -367,7 +390,13 @@ export default function Cockpit() {
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Live Agents</h2>
           </div>
           <div className="space-y-4">
-            {AGENTS.map(a => (
+            {agentsLoading && agents.length === 0 && (
+              <p className="text-white/30 font-mono text-xs">Discovering federation agents…</p>
+            )}
+            {agentsError && (
+              <p className="text-amber-500/60 font-mono text-xs">Agent discovery degraded — using cached registry. ({agentsError})</p>
+            )}
+            {agents.map(a => (
               <div key={a.id} className="group border-b border-white/5 pb-6 hover:border-red-500/50 transition-colors">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-lg font-bold text-white font-mono">{a.id}</h3>
@@ -375,9 +404,11 @@ export default function Cockpit() {
                 </div>
                 <p className="text-sm text-white/40 font-light mb-4">{a.role}</p>
                 <div className="flex items-center gap-4 text-[9px] font-mono tracking-tighter uppercase">
-                  <span className="text-emerald-500 flex items-center gap-1.5"><Activity className="w-3 h-3" /> State: Active</span>
+                  <span className={`flex items-center gap-1.5 ${a.status === 'active' ? 'text-emerald-500' : a.status === 'reflect_only' ? 'text-amber-400' : 'text-white/40'}`}>
+                    <Activity className="w-3 h-3" /> Status: {a.status.replace('_', ' ')}
+                  </span>
                   <span className="text-white/20">|</span>
-                  <span className="text-white/40 italic">Last Heartbeat: 1s ago</span>
+                  <span className="text-white/40">{a.domain} · {a.ring}</span>
                 </div>
               </div>
             ))}

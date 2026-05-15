@@ -1,0 +1,66 @@
+{
+  "version": "2026.05.14-FORGED",
+  "description": "Federation agent registry — dynamically discoverable by AAA Cockpit",
+  "agents": [
+    {
+      "id": "forge-explorer",
+      "role": "Codebase exploration and structural analysis across all federation repos",
+      "type": "Explore",
+      "domain": "A-FORGE",
+      "ring": "BODY",
+      "status": "active",
+      "endpoint": "https://forge.arif-fazil.com"
+    },
+    {
+      "id": "arifos-guardian",
+      "role": "Constitutional floor enforcement — F1-F13 runtime gatekeeper",
+      "type": "Guardian",
+      "domain": "arifOS",
+      "ring": "MIND",
+      "status": "active",
+      "endpoint": "https://arifos.arif-fazil.com/mcp"
+    },
+    {
+      "id": "geox-witness",
+      "role": "Earth physics verification — subsurface evidence preparation",
+      "type": "Witness",
+      "domain": "GEOX",
+      "ring": "MIND",
+      "status": "active",
+      "endpoint": "https://geox.arif-fazil.com/mcp"
+    },
+    {
+      "id": "wealth-sentinel",
+      "role": "Capital thermodynamics — NPV/IRR/EMV computation and risk scoring",
+      "type": "Sentinel",
+      "domain": "WEALTH",
+      "ring": "MIND",
+      "status": "active",
+      "endpoint": "https://wealth.arif-fazil.com/mcp"
+    },
+    {
+      "id": "well-mirror",
+      "role": "Biological substrate monitoring — operator cognitive pressure and thermodynamic WELL state",
+      "type": "Mirror",
+      "domain": "WELL",
+      "ring": "MIND",
+      "status": "reflect_only",
+      "endpoint": "https://well.arif-fazil.com/mcp"
+    },
+    {
+      "id": "hermes-relay",
+      "role": "ASI deliberation relay — cross-agent constitutional bridge",
+      "type": "Relay",
+      "domain": "HERMES",
+      "ring": "MIND",
+      "status": "active",
+      "endpoint": "https://hermes.arif-fazil.com"
+    }
+  ],
+  "governance": {
+    "final_authority": "ARIF",
+    "floors_active": 13,
+    "verdict_protocol": "888_JUDGE required for execution",
+    "note": "Agent discovery is public. Execution requires authenticated operator channel."
+  }
+}
