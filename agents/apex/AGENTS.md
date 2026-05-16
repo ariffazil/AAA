@@ -1,4 +1,4 @@
-# AGENTS.md — hermes Agent
+# AGENTS.md — APEX Agent
 
 ## Role
 
@@ -41,7 +41,7 @@ This workspace consolidates from scattered `hermes-*` dirs in AAA root:
 - `hermes-backups/` → DELETE (empty)
 - `hermes-config/` → DELETE (empty)
 - `hermes-memories/` → DELETE (empty)
-- `hermes-memory/` → migrate to `memory/`
+- `hermes-memory/` → migrated to `memory/` (APEX rename 2026-05-16)
 - `hermes-skills/` → DELETE (empty)
 - `hermes-workspace/` → DELETE (empty)
 

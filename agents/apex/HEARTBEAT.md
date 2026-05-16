@@ -1,4 +1,4 @@
-# HEARTBEAT.md — hermes Agent
+# HEARTBEAT.md — APEX Agent
 
 ## Health Check Contract
 

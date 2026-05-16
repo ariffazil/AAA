@@ -45,11 +45,11 @@ channels:
 # MCP servers (gateway-proxied)
 mcp_servers:
   - id: arifos-mcp
-    url: https://mcp.arif-fazil.com/mcp
+    url: http://arifosmcp:8080
     enabled: true
 
   - id: geox-mcp
-    url: https://geox.arif-fazil.com/mcp
+    url: http://geox:8081
     enabled: false  # enable per-channel if needed
 
 # A2A peers
@@ -68,6 +68,7 @@ a2a_peers:
 
 # Allowed tools
 allowed_tools:
+  # Gateway operations
   - route
   - delegate
   - subscribe
@@ -76,6 +77,18 @@ allowed_tools:
   - receive
   - stream
   - vault999-write
+  # arifOS MCP - Full constitutional governance access
+  - arif_session_init
+  - arif_sense_observe
+  - arif_kernel_route
+  - arif_gateway_connect
+  - arif_judge_deliberate
+  - arif_ops_measure
+  - arif_heart_critique
+  - arif_reply_compose
+  - arif_memory_recall
+  - arif_mind_reason
+  - arif_evidence_fetch
 
 # Constitutional floors
 floors:
