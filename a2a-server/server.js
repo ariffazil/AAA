@@ -45,6 +45,13 @@ if (!A2A_TOKEN || !A2A_API_KEY) {
 const NONCE_CACHE_TTL_MS = 5 * 60 * 1000;   // 5 minutes
 const REPLAY_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
+// === OPERATOR EVENT LOG (in-memory, last 200) ===
+const _eventLog = [];
+function logEvent(kind, taskId, msg) {
+  _eventLog.push({ id: Math.random().toString(36).slice(2, 10), ts: new Date().toISOString(), kind, taskId, msg });
+  if (_eventLog.length > 200) _eventLog.splice(0, 1);
+}
+
 // === VERDICT CODES (arifOS alignment) ===
 const VERDICT = {
   SEAL: 'SEAL',
@@ -781,6 +788,9 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   task.metadata = task.metadata || {};
   task.metadata.skill = skill;
 
+  logEvent('TASK_START', taskId, `Mission received — agent: ${targetAgent || 'auto'}, skill: ${skill}`);
+  logEvent('SENSE', taskId, 'Risk assessment initiated');
+
   // === REAL AGENT DISPATCH — route to Hermes ASI ===
   if (targetAgent === 'hermes') {
     task.status = {
@@ -941,6 +951,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     }
     if (verdict === VERDICT.HOLD_888) {
+      logEvent('888_HOLD', taskId, '888_JUDGE HOLD — human review required');
       const holdStatus = {
         state: 'pending-human-review',
         message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] HOLD_888 — human review required before execution.' }], messageId: generateId(), taskId, contextId },
@@ -970,6 +981,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query.`;
   }
 
+  logEvent('999_SEAL', taskId, 'Task completed — sealing to VAULT999');
   const completedStatus = {
     state: 'completed',
     message: { role: 'agent', parts: [{ kind: 'text', text: responseText }], messageId: generateId(), taskId, contextId },
@@ -1594,6 +1606,52 @@ function handleOperatorSeals(req, res) {
 }
 
 app.get(['/operator/seals', '/api/operator/seals'], handleOperatorSeals);
+
+// === OPERATOR EVENT LOG ===
+app.get(['/operator/events', '/api/operator/events'], (req, res) => {
+  const n = Math.min(parseInt(String(req.query.n || '50')), 100);
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({ ok: true, events: _eventLog.slice(-n).reverse() });
+});
+
+// === OPERATOR TASK STATE (for golden path polling) ===
+app.get(['/operator/tasks/:taskId', '/api/operator/tasks/:taskId'], async (req, res) => {
+  const task = await taskStore.get(req.params.taskId);
+  if (!task) return res.status(404).json({ ok: false, error: 'Task not found' });
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({ ok: true, task: { id: task.id, status: task.status, metadata: task.metadata } });
+});
+
+// === OPERATOR MISSION SUBMIT (unauthenticated — operator direct path) ===
+app.post(['/api/message/send'], async (req, res) => {
+  try {
+    const body = req.body;
+    const params = (body.params) || {};
+    const message = params.message || (typeof params.text === 'string' ? { role: 'user', parts: [{ kind: 'text', text: params.text }], messageId: Math.random().toString(36).slice(2) } : null);
+    if (!message) return res.status(400).json({ ok: false, error: 'params.message required' });
+
+    const taskId = params.taskId || `aaa-${Math.random().toString(36).slice(2, 14)}`;
+    const contextId = params.contextId || Math.random().toString(36).slice(2);
+
+    const task = {
+      id: taskId, contextId,
+      status: { state: 'submitted', timestamp: new Date().toISOString() },
+      artifacts: [], history: [message],
+      metadata: params.metadata || {},
+      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+    };
+    await taskStore.set(taskId, task);
+    logEvent('TASK_START', taskId, `Operator mission: "${(message.parts?.[0]?.text || '').slice(0, 60)}"`);
+
+    executeTask(taskId, contextId, message, params.agent_id || null, params).catch(err => {
+      logEvent('ERROR', taskId, `Mission failed: ${err.message}`);
+    });
+
+    res.json({ jsonrpc: '2.0', id: body.id || 0, result: { id: taskId, contextId, status: task.status } });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
 
 app.get('/', (req, res) => {
   res.json({
