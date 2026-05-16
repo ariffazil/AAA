@@ -1,4 +1,4 @@
-# BOOTSTRAP.md — hermes Agent
+# BOOTSTRAP.md — APEX Agent
 
 ## Cold Start Sequence
 
@@ -17,7 +17,7 @@
 
 3. VERIFY CONTEXT
    ├── Read SOUL.md (personality)
-   ├── Read IDENTITY.md (who is Hermes)
+   ├── Read IDENTITY.md (who is Apex)
    └── Confirm A2A peer list
 
 4. SYSTEM HEALTH

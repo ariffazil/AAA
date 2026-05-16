@@ -99,3 +99,4 @@ venv/
 workspace/*.md
 workspace/memory/
 workspace/skills/
+.apex/

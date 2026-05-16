@@ -1,9 +1,9 @@
 {
   "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-a2a-agent-card.schema.json",
-  "id": "hermes",
-  "name": "Hermes",
-  "description": "Memory engine + deep reasoning specialist. Manages AAA institutional memory, recall, and reasoning chains.",
-  "url": "https://aaa.arif-fazil.com/a2a/hermes",
+  "id": "apex",
+  "name": "Apex",
+  "description": "ASI deliberative relay. Manages AAA institutional memory, recall, and reasoning chains. Internal deliberation service — no public surface.",
+  "url": "https://aaa.arif-fazil.com/a2a/apex",
   "preferred_transport": "jsonrpc-http",
   "provider": {
     "organization": "arifOS",
