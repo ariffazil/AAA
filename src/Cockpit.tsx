@@ -494,8 +494,8 @@ export default function Cockpit() {
                       {step === 'SENSE' && 'Risk assessment'}
                       {step === 'MIND' && 'Reason & plan'}
                       {step === 'HEART' && 'Moral critique'}
-                      {step === 'JUDGE' && isHold ? '⚠ HOLD — await you' : 'Verdict'}
-                      {step === 'VAULT' && isDone ? '✓ SEALED' : 'Seal'}
+                      {step === 'JUDGE' && (isHold ? '⚠ HOLD — await you' : 'Verdict')}
+                      {step === 'VAULT' && (isDone ? '✓ SEALED' : 'Seal')}
                     </div>
                   </div>
                   {i < GOLDEN_PATH.length - 1 && (
