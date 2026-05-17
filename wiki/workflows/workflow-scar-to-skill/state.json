@@ -1,0 +1,12 @@
+{
+  "workflow_id": "workflow-scar-to-skill",
+  "status": "idle",
+  "current_step": null,
+  "completed_steps": [],
+  "artifacts": {},
+  "scar_id": null,
+  "scar_draft_path": null,
+  "skill_proposal_path": null,
+  "verdict": null,
+  "last_updated": null
+}

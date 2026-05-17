@@ -1,0 +1,13 @@
+{
+  "workflow_id": "workflow-session-cycle",
+  "status": "hold",
+  "current_step": "step-06",
+  "completed_steps": [
+    "step-06"
+  ],
+  "artifacts": {},
+  "error_log": [],
+  "reflect_attempts": 0,
+  "last_updated": "2026-05-17T08:32:49.064322+00:00",
+  "hold_reason": "loop_guard_reexecute_step-06"
+}

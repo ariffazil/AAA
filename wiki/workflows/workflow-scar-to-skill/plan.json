@@ -1,0 +1,190 @@
+{
+  "workflow_id": "workflow-scar-to-skill",
+  "version": "1.0.0",
+  "created": "2026-05-17",
+  "owner": "arif-fazil",
+  "summary": "Transform a scar (failure trace) into a skill update proposal via 888 judgment",
+  "risk_band": "high",
+  "domain": "governance",
+  "trigger_conditions": [
+    "same failure 3x within 7 days",
+    "explicit 888 HOLD scar trigger",
+    "Arif command: 'file scar'",
+    "skill promotion request from workflow"
+  ],
+  "steps": [
+    {
+      "step_id": "step-00",
+      "name": "TRIGGER_DETECT",
+      "tool": "internal",
+      "inputs": [
+        "failure_trace",
+        "trigger_source"
+      ],
+      "outputs": [
+        "scar_id",
+        "pattern_detected",
+        "confidence"
+      ],
+      "success_condition": "scar_id generated, pattern confirmed",
+      "verification": "test -f artifacts/scar-draft.md",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [
+        "no failure trace",
+        "pattern below confidence threshold 0.5"
+      ],
+      "gate": "gates/step-00.json",
+      "branch": {
+        "sufficient_pattern": "step-01",
+        "insufficient": "step-99"
+      }
+    },
+    {
+      "step_id": "step-01",
+      "name": "SCAR_DRAFT",
+      "tool": "arif_forge_execute",
+      "mode": "write",
+      "inputs": [
+        "scar_id",
+        "failure_trace",
+        "pattern_detected"
+      ],
+      "outputs": [
+        "scar_draft_path",
+        "root_cause",
+        "void_conditions"
+      ],
+      "success_condition": "scar-draft.md written to wiki/scars/",
+      "verification": "grep scar_id wiki/scars/scar-*.md",
+      "retry_budget": 2,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-01.json"
+    },
+    {
+      "step_id": "step-02",
+      "name": "SKILL_ANALYSIS",
+      "tool": "arif_mind_reason",
+      "mode": "reason",
+      "inputs": [
+        "scar_draft_path",
+        "affected_skill_list"
+      ],
+      "outputs": [
+        "skill_gaps",
+        "update_type",
+        "void_conditions_to_add"
+      ],
+      "success_condition": "skill gaps identified",
+      "verification": "test -f artifacts/skill-analysis.json",
+      "retry_budget": 1,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-02.json",
+      "branch": {
+        "skill_update_needed": "step-03",
+        "no_skill_update": "step-05"
+      }
+    },
+    {
+      "step_id": "step-03",
+      "name": "SKILL_UPDATE_PROPOSAL",
+      "tool": "arif_forge_execute",
+      "mode": "write",
+      "inputs": [
+        "skill_gaps",
+        "void_conditions",
+        "scar_id"
+      ],
+      "outputs": [
+        "skill_proposal_path",
+        "updated_procedure",
+        "verification_commands"
+      ],
+      "success_condition": "skill-proposal.md written to wiki/skills/",
+      "verification": "test -f artifacts/skill-proposal.md",
+      "retry_budget": 1,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-03.json"
+    },
+    {
+      "step_id": "step-04",
+      "name": "888_JUDGE",
+      "tool": "arif_judge_deliberate",
+      "mode": "judge",
+      "inputs": [
+        "skill_proposal_path",
+        "scar_draft_path"
+      ],
+      "outputs": [
+        "verdict",
+        "seal_required",
+        "confidence",
+        "arif_approval_needed"
+      ],
+      "success_condition": "verdict returned: SEAL/SABAR/HOLD/VOID",
+      "verification": "grep verdict state.json",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [
+        "verdict is VOID"
+      ],
+      "gate": "gates/step-04.json",
+      "branch": {
+        "SEAL": "step-05",
+        "SABAR": "step-99",
+        "HOLD": "step-99",
+        "VOID": "step-99"
+      }
+    },
+    {
+      "step_id": "step-05",
+      "name": "LOG_AND_SEAL",
+      "tool": "arif_vault_seal",
+      "mode": "seal",
+      "inputs": [
+        "scar_id",
+        "skill_proposal_path",
+        "verdict",
+        "workflow_id"
+      ],
+      "outputs": [
+        "entry_id",
+        "chain_hash",
+        "epoch_id"
+      ],
+      "success_condition": "VAULT999 entry appended",
+      "verification": "grep entry_id state.json",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-05.json"
+    },
+    {
+      "step_id": "step-99",
+      "name": "ARCHIVE",
+      "tool": "internal",
+      "inputs": [
+        "insufficient_flag",
+        "void_verdict"
+      ],
+      "outputs": [
+        "archive_path"
+      ],
+      "success_condition": "scar archived, not promoted",
+      "verification": "test -f artifacts/scar-archived.md",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-99.json"
+    }
+  ],
+  "recovery": {
+    "rule": "Scar-to-skill is append-only pipeline \u2014 no backtracking. If step-04 VOID, archive and exit.",
+    "method": "Read scar-draft.md, determine next step from gate status",
+    "artifact_dependency": true,
+    "state_dependency": true
+  }
+}
