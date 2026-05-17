@@ -1,0 +1,189 @@
+{
+  "workflow_id": "workflow-agent-onboarding",
+  "version": "1.0.0",
+  "created": "2026-05-17",
+  "owner": "arif-fazil",
+  "summary": "Onboard a new agent: spatial grounding \u2192 constitutional binding \u2192 skill registry \u2192 VAULT999 seal",
+  "risk_band": "high",
+  "domain": "federation",
+  "trigger_conditions": [
+    "New agent detected (new config file found)",
+    "Arif command: 'onboard <agent>'",
+    "Agent requests federation membership"
+  ],
+  "steps": [
+    {
+      "step_id": "step-00",
+      "name": "AGENT_DISCOVER",
+      "tool": "arif_sense_observe",
+      "mode": "search",
+      "inputs": [
+        "agent_name",
+        "config_locations"
+      ],
+      "outputs": [
+        "agent_type",
+        "config_path",
+        "existing_spatial_context"
+      ],
+      "success_condition": "agent config located and parsed",
+      "verification": "test -f <config_path>",
+      "retry_budget": 2,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "config not found",
+        "unknown agent type"
+      ],
+      "gate": "gates/step-00.json",
+      "branch": {
+        "has_spatial": "step-02",
+        "no_spatial": "step-01"
+      }
+    },
+    {
+      "step_id": "step-01",
+      "name": "SPATIAL_GROUNDING",
+      "tool": "arif_forge_execute",
+      "mode": "write",
+      "inputs": [
+        "agent_type",
+        "config_path",
+        "spatial_law_text"
+      ],
+      "outputs": [
+        "patched_config_path",
+        "spatial_context_file"
+      ],
+      "success_condition": "SPATIAL_LAW injected into agent config",
+      "verification": "grep '72.62.71.199\\|SPATIAL_LAW' <config_path>",
+      "retry_budget": 2,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "patch fails",
+        "config unreadable"
+      ],
+      "gate": "gates/step-01.json"
+    },
+    {
+      "step_id": "step-02",
+      "name": "CONSTITUTIONAL_BINDING",
+      "tool": "arif_session_init",
+      "mode": "init",
+      "inputs": [
+        "agent_id",
+        "actor_id",
+        "spatial_context"
+      ],
+      "outputs": [
+        "session_id",
+        "constitution_hash",
+        "authority_level"
+      ],
+      "success_condition": "agent bound to F1-F13 constitution",
+      "verification": "grep constitution_hash artifacts/binding-receipt.json",
+      "retry_budget": 1,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "binding fails",
+        "authority level unset"
+      ],
+      "gate": "gates/step-02.json"
+    },
+    {
+      "step_id": "step-03",
+      "name": "SKILL_REGISTRY",
+      "tool": "arif_memory_recall",
+      "mode": "store",
+      "inputs": [
+        "agent_id",
+        "session_id",
+        "capability_map"
+      ],
+      "outputs": [
+        "agent_registry_entry",
+        "assigned_skills"
+      ],
+      "success_condition": "agent entered in federation-entities.md",
+      "verification": "grep agent_id wiki/entities/federation-entities.md",
+      "retry_budget": 1,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-03.json"
+    },
+    {
+      "step_id": "step-04",
+      "name": "ADAPTER_GENERATION",
+      "tool": "arif_forge_execute",
+      "mode": "generate",
+      "inputs": [
+        "agent_type",
+        "canonical_skill_list"
+      ],
+      "outputs": [
+        "adapter_path",
+        "adapter_type"
+      ],
+      "success_condition": "Platform-specific adapter generated in AAA/skills/",
+      "verification": "test -f AAA/skills/<domain>/<agent_type>/SKILL.md",
+      "retry_budget": 1,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-04.json",
+      "branch": {
+        "has_adapter": "step-05",
+        "no_adapter_needed": "step-05"
+      }
+    },
+    {
+      "step_id": "step-05",
+      "name": "VERIFY_SPATIAL",
+      "tool": "arif_ops_measure",
+      "mode": "health",
+      "inputs": [
+        "agent_id",
+        "spatial_context"
+      ],
+      "outputs": [
+        "health_status",
+        "spatial_aware_flag"
+      ],
+      "success_condition": "spatial_aware_flag = true",
+      "verification": "grep spatial_aware_flag state.json",
+      "retry_budget": 2,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "spatial_aware_flag = false"
+      ],
+      "gate": "gates/step-05.json"
+    },
+    {
+      "step_id": "step-06",
+      "name": "SEAL_TO_VAULT",
+      "tool": "arif_vault_seal",
+      "mode": "seal",
+      "inputs": [
+        "agent_id",
+        "session_id",
+        "spatial_context_file",
+        "workflow_id"
+      ],
+      "outputs": [
+        "entry_id",
+        "chain_hash",
+        "epoch_id"
+      ],
+      "success_condition": "VAULT999 onboarding entry appended",
+      "verification": "grep entry_id state.json",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-06.json"
+    }
+  ],
+  "recovery": {
+    "rule": "Onboarding is idempotent \u2014 rerun from step-00, skip completed gates",
+    "method": "Read state.json, skip steps where gate passed=true",
+    "artifact_dependency": true,
+    "state_dependency": true
+  }
+}

@@ -2,7 +2,7 @@
 ## AAAA Skill Registry · Three-Skill Flow
 
 > **Canonical home:** `AAA/SKILLS_INDEX.md`
-> **Version:** v2026.05.02.1
+> **Version:** v2026.05.17.1
 > **Authority:** Muhammad Arif bin Fazil
 
 ***
@@ -141,5 +141,60 @@ All federated agents MUST honour this skill by default. Every substantive reply 
   "confidence": 0.98
 }
 ```
+
+**DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
+
+***
+
+## Wiki: Federation Knowledge Base
+
+**Location:** `/root/AAA/wiki/`
+
+The AAA wiki is the public compounding layer for the arifOS federation — where agents store operational learnings, scars, concepts, skills, and architecture documentation. It is the federation's long-term memory surface.
+
+### Recursive Learning Loop
+
+```
+AFTER novel fix → write one reusable artifact (skill or concept page)
+AFTER failure/fabrication → file scar page + append log.md
+AFTER repo/tool change → attach evidence to raw/ + link from synthesized page
+BEFORE non-trivial work → query wiki/index.md + relevant skill pages first
+```
+
+### Wiki Structure
+
+| Directory | Purpose |
+|-----------|---------|
+| `SCHEMA.md` | Conventions, page types, frontmatter, tag taxonomy, agent workflow |
+| `index.md` | Catalog of all pages |
+| `log.md` | Chronological append-only action record |
+| `raw/papers/` | Immutable academic papers, technical references |
+| `raw/repos/` | Source code configs, git diffs, architecture docs |
+| `raw/notes/` | Meeting notes, Telegram captures, raw observations |
+| `entities/` | Federation nodes, agents, services |
+| `concepts/` | Governance patterns, anti-patterns |
+| `skills/` | Reusable capability documents |
+| `comparisons/` | Side-by-side analyses |
+| `queries/` | Filed Q&A worth preserving |
+| `scar-*.md` | Incident records — most important learning artifacts |
+
+### F1 Rule Set (Federation-Wide)
+
+1. **Read before act:** `wiki/index.md` before non-trivial work
+2. **Write on novel fix:** one reusable artifact per new discovery
+3. **File on failure:** scar page + log entry on any failed claim or fabrication
+4. **Source capture:** attach evidence to `raw/` before synthesizing
+5. **Query first:** index + skill pages before starting new work
+6. **Redact before publish:** remove secrets, credentials, internal topology from scars
+
+### First Scar Filed
+
+`scar-hermes-fabrication-2026-05-17` — Hermes claimed artifact existence without verification (fabrication incident, 2026-05-17)
+
+### See Also
+
+- `wiki/SCHEMA.md` — full wiki governance and schema
+- `wiki/index.md` — live page catalog
+- `wiki/log.md` — action history
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**

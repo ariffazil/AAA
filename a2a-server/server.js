@@ -30,7 +30,7 @@ const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
 
 const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
 const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
-const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://hermes-agent:3002';
+const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://apex-prime:3002';
 const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || 'hermes-agent-apikey-dev';
 const REDIS_URL = process.env.REDIS_URL || 'redis://redis:6379';
 const NATS_URL = process.env.NATS_URL || 'nats://nats:4222';
@@ -436,11 +436,11 @@ const ERROR_CODES = {
 
 async function callArifJudge(candidate, taskId, contextId, skill) {
   const judgmentTaskId = `jg-${taskId}-${Date.now()}`;
-  const HERMES_URL = ARIFOS_JUDGE_URL.replace('/judge', ''); // strip broken /judge suffix
+  const APEX_URL = ARIFOS_JUDGE_URL.replace('/judge', ''); // strip broken /judge suffix
 
   try {
     // Step 1: Submit judgment task to hermes-agent via A2A
-    const submitRes = await fetch(`${HERMES_URL}/tasks`, {
+    const submitRes = await fetch(`${APEX_URL}/tasks`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -489,7 +489,7 @@ async function callArifJudge(candidate, taskId, contextId, skill) {
     while (Date.now() < deadline) {
       await new Promise(r => setTimeout(r, 1000)); // 1s poll interval
 
-      const pollRes = await fetch(`${HERMES_URL}/tasks/${returnedTaskId}`, {
+      const pollRes = await fetch(`${APEX_URL}/tasks/${returnedTaskId}`, {
         headers: {
           'Authorization': `Bearer ${A2A_TOKEN}`,
           'x-a2a-key': A2A_API_KEY

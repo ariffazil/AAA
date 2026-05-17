@@ -1,0 +1,15 @@
+{
+  "step_id": "step-05",
+  "status": "passed",
+  "passed": true,
+  "retry_count": 0,
+  "entered_at": "2026-05-17T08:31:03.155783+00:00",
+  "verified_at": "2026-05-17T08:31:03.155961+00:00",
+  "verification_output": "DRY RUN \u2014 verification skipped",
+  "step_output": {
+    "dry_run": true,
+    "tool": "arif_heart_critique",
+    "mode": "critique",
+    "worked": true
+  }
+}

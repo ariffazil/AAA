@@ -1,0 +1,13 @@
+{
+  "workflow_id": "workflow-agent-onboarding",
+  "status": "idle",
+  "current_step": null,
+  "completed_steps": [],
+  "artifacts": {},
+  "agent_id": null,
+  "agent_type": null,
+  "config_path": null,
+  "session_id": null,
+  "spatial_aware_flag": false,
+  "last_updated": null
+}
