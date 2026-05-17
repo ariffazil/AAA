@@ -1,0 +1,255 @@
+{
+  "workflow_id": "workflow-session-cycle",
+  "version": "1.0.0",
+  "created": "2026-05-17",
+  "owner": "arif-fazil",
+  "summary": "Standard session loop: REASON \u2192 PLAN \u2192 ACT \u2192 OBSERVE \u2192 REFLECT \u2192 REPEAT \u2192 MEMORY \u2192 PERSIST",
+  "risk_band": "medium",
+  "domain": "general",
+  "steps": [
+    {
+      "step_id": "step-00",
+      "name": "INIT",
+      "tool": "arif_session_init",
+      "inputs": [
+        "task_text",
+        "actor_id"
+      ],
+      "outputs": [
+        "session_id",
+        "constitution_hash",
+        "stage"
+      ],
+      "success_condition": "session_id generated, constitution_hash bound",
+      "verification": "grep session_id state.json",
+      "retry_budget": 1,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "session_id empty",
+        "constitution_hash mismatch"
+      ],
+      "gate": "gates/step-00.json"
+    },
+    {
+      "step_id": "step-01",
+      "name": "REASON",
+      "tool": "arif_mind_reason",
+      "mode": "reason",
+      "inputs": [
+        "task_text",
+        "session_id"
+      ],
+      "outputs": [
+        "goal_analysis",
+        "3_possible_paths"
+      ],
+      "success_condition": "goal decomposed, paths enumerated",
+      "verification": "test -f artifacts/step-01-reason.json",
+      "retry_budget": 2,
+      "escalation": "clarify",
+      "void_conditions": [
+        "goal ambiguous",
+        "no paths identified"
+      ],
+      "gate": "gates/step-01.json"
+    },
+    {
+      "step_id": "step-02",
+      "name": "PLAN",
+      "tool": "arif_mind_reason",
+      "mode": "plan",
+      "inputs": [
+        "goal_analysis",
+        "available_tools",
+        "recent_scars"
+      ],
+      "outputs": [
+        "plan_id",
+        "concrete_steps",
+        "fallback_paths"
+      ],
+      "success_condition": "plan_id generated, steps numbered",
+      "verification": "grep plan_id state.json",
+      "retry_budget": 1,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "plan_id missing",
+        "no fallback"
+      ],
+      "gate": "gates/step-02.json"
+    },
+    {
+      "step_id": "step-03",
+      "name": "ACT",
+      "tool": "arif_forge_execute",
+      "mode": "dry_run",
+      "inputs": [
+        "plan_id",
+        "first_step"
+      ],
+      "outputs": [
+        "execution_trace",
+        "artifact_ids"
+      ],
+      "success_condition": "step executed, artifact produced",
+      "verification": "ls artifacts/step-03-*",
+      "retry_budget": 3,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "execution fails",
+        "artifact missing"
+      ],
+      "gate": "gates/step-03.json"
+    },
+    {
+      "step_id": "step-04",
+      "name": "OBSERVE",
+      "tool": "arif_sense_observe",
+      "mode": "vitals",
+      "inputs": [
+        "execution_trace"
+      ],
+      "outputs": [
+        "result_status",
+        "stdout_tail",
+        "error_if_any"
+      ],
+      "success_condition": "result_status determined",
+      "verification": "grep result_status state.json",
+      "retry_budget": 1,
+      "escalation": "reflect",
+      "void_conditions": [],
+      "gate": "gates/step-04.json"
+    },
+    {
+      "step_id": "step-05",
+      "name": "REFLECT",
+      "tool": "arif_heart_critique",
+      "mode": "critique",
+      "inputs": [
+        "result_status",
+        "plan_id",
+        "execution_trace"
+      ],
+      "outputs": [
+        "critique_report",
+        "worked_flag",
+        "failed_flag",
+        "why_analysis"
+      ],
+      "success_condition": "critique report written",
+      "verification": "test -f artifacts/step-05-critique.md",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-05.json",
+      "branch": {
+        "worked": "step-06",
+        "failed": "step-07"
+      }
+    },
+    {
+      "step_id": "step-06",
+      "name": "REPEAT-LOOP",
+      "tool": "arif_kernel_route",
+      "mode": "stage",
+      "inputs": [
+        "goal_achieved",
+        "remaining_steps"
+      ],
+      "outputs": [
+        "next_step_id",
+        "continue_flag"
+      ],
+      "success_condition": "loop continues or exits cleanly",
+      "verification": "grep continue_flag state.json",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [
+        "infinite loop detected"
+      ],
+      "gate": "gates/step-06.json",
+      "branch": {
+        "continue": "step-03",
+        "exit": "step-08"
+      }
+    },
+    {
+      "step_id": "step-07",
+      "name": "FALLBACK",
+      "tool": "arif_mind_reason",
+      "mode": "plan",
+      "inputs": [
+        "failed_step",
+        "why_analysis",
+        "fallback_paths"
+      ],
+      "outputs": [
+        "revised_plan_id",
+        "alternative_steps"
+      ],
+      "success_condition": "revised plan generated",
+      "verification": "grep revised_plan_id state.json",
+      "retry_budget": 2,
+      "escalation": "888_HOLD",
+      "void_conditions": [
+        "no alternative found"
+      ],
+      "gate": "gates/step-07.json",
+      "branch": {
+        "has_alternative": "step-03",
+        "no_alternative": "step-08"
+      }
+    },
+    {
+      "step_id": "step-08",
+      "name": "MEMORY",
+      "tool": "arif_memory_recall",
+      "mode": "store",
+      "inputs": [
+        "session_id",
+        "artifact_ids",
+        "critique_report"
+      ],
+      "outputs": [
+        "memory_id",
+        "tier"
+      ],
+      "success_condition": "memory stored in appropriate tier",
+      "verification": "grep memory_id state.json",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-08.json"
+    },
+    {
+      "step_id": "step-09",
+      "name": "PERSIST",
+      "tool": "arif_vault_seal",
+      "mode": "seal",
+      "inputs": [
+        "session_id",
+        "memory_id",
+        "workflow_id",
+        "outcome"
+      ],
+      "outputs": [
+        "entry_id",
+        "chain_hash",
+        "epoch_id"
+      ],
+      "success_condition": "VAULT999 entry appended",
+      "verification": "grep entry_id state.json",
+      "retry_budget": 0,
+      "escalation": "NONE",
+      "void_conditions": [],
+      "gate": "gates/step-09.json"
+    }
+  ],
+  "recovery": {
+    "rule": "Resume from last validated gate",
+    "method": "Read state.json, find last completed step_id, replay from next",
+    "artifact_dependency": true,
+    "state_dependency": true
+  }
+}

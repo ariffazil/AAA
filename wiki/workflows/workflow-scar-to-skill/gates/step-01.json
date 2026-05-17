@@ -1,0 +1,10 @@
+{
+  "step_id": "step-01",
+  "status": "pending",
+  "entered_at": null,
+  "verified_at": null,
+  "passed": null,
+  "verification_output": null,
+  "retry_count": 0,
+  "escalation_triggered": false
+}
