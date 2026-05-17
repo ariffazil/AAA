@@ -1,0 +1,14 @@
+{
+  "step_id": "step-04",
+  "status": "passed",
+  "passed": true,
+  "retry_count": 0,
+  "entered_at": "2026-05-17T08:31:03.155050+00:00",
+  "verified_at": "2026-05-17T08:31:03.155451+00:00",
+  "verification_output": "DRY RUN \u2014 verification skipped",
+  "step_output": {
+    "dry_run": true,
+    "tool": "arif_sense_observe",
+    "mode": "vitals"
+  }
+}

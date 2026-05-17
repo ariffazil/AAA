@@ -1,0 +1,29 @@
+{
+  "version": "1.0.0",
+  "created": "2026-05-17",
+  "owner": "arif-fazil",
+  "description": "TREE777 Workflow Runtime Engine",
+  "engine_file": "tree777_executor.py",
+  "workflows_supported": [
+    "workflow-session-cycle",
+    "workflow-scar-to-skill",
+    "workflow-agent-onboarding"
+  ],
+  "artifacts_dir": "artifacts",
+  "gates_dir": "gates",
+  "reasoning_dir": "reasoning",
+  "state_file": "state.json",
+  "recovery": {
+    "rule": "Resume from last validated gate (gate.passed=true)",
+    "method": "Read state.json, find last step where gate.passed=true, replay from next",
+    "idempotent": true,
+    "safe_retry": true
+  },
+  "governance": {
+    "risk_bands": {
+      "low": "Execute without 888_HOLD",
+      "medium": "888_HOLD on escalation",
+      "high": "888_JUDGE verdict required before proceeding"
+    }
+  }
+}

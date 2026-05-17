@@ -1,0 +1,14 @@
+{
+  "step_id": "step-06",
+  "status": "passed",
+  "passed": true,
+  "retry_count": 0,
+  "entered_at": "2026-05-17T08:32:49.062978+00:00",
+  "verified_at": "2026-05-17T08:32:49.063318+00:00",
+  "verification_output": "DRY RUN \u2014 verification skipped",
+  "step_output": {
+    "dry_run": true,
+    "tool": "arif_kernel_route",
+    "mode": "stage"
+  }
+}

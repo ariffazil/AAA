@@ -14,7 +14,7 @@ services:
       - PORT=3001
       - A2A_TOKEN=${A2A_TOKEN:-aaa-a2a-token-dev}
       - A2A_API_KEY=${A2A_API_KEY:-aaa-a2a-apikey-dev}
-      - HERMES_A2A_URL=${HERMES_A2A_URL:-http://hermes-agent:3002}
+      - HERMES_A2A_URL=${HERMES_A2A_URL:-http://172.19.0.1:18001}
       - OPENCLAW_A2A_URL=${OPENCLAW_A2A_URL:-http://agent-zero:50001}
       - REDIS_URL=redis://redis:6379
       - NATS_URL=nats://nats:4222
