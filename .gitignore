@@ -15,6 +15,7 @@ reports/bursa_today/
 # Legacy archive
 _archive/
 agents-legacy/
+agents/*/runtime/
 # Editor artifacts
 *.md~HEAD
 *_local
