@@ -1,4 +1,14 @@
-﻿# AAA — Agent Interface & Session Cockpit
+﻿<!-- SOT-MANIFEST
+owner: Arif
+last_verified: 2026-05-19
+valid_from: 2026-05-19
+valid_until: 2026-06-19
+confidence: high
+scope: /root/AAA
+epistemic_status: CLAIM
+-->
+
+# AAA — Agent Interface & Session Cockpit
 
 > **Status:** OPERATIONAL | **Organ:** BODY (Ω) | **Authority:** arifOS
 > **Domain:** `aaa.arif-fazil.com`
