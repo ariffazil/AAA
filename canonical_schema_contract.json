@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "arifOS_CANONICAL_SCHEMA_CONTRACT_v1.0",
   "title": "arifOS Canonical Tool Output Schema",
-  "description": "Canonical output contract for all arifOS MCP tools. Every tool output must conform to this schema. Governs the public API layer (arifos_000_init, arifos_111_sense, arifos_222_witness, etc.) and defines the invariant block structure required for AGI-level constitutional intelligence.",
+  "description": "Canonical output contract for all arifOS MCP tools. Every tool output must conform to this schema. Governs the public API layer (arifos_000_init, arifos_111_sense, arifos_222_witness, etc.) and defines the invariant block structure required for constitutional tool output compliance.",
   "version": "1.0.0",
   "epoch": "EPOCH-2026-04-20",
   "created_by": "Constitutional Audit Agent v1",
@@ -128,7 +128,7 @@
         "cross_tool_continuity": { "type": "boolean", "const": true },
         "invariant_failures_count": { "type": "integer", "minimum": 0 }
       },
-      "description": "AGI self-awareness block. All fields must be true. Any false = invariant failure."
+      "description": "Constitutional self-model block. All fields must be true. Any false = invariant failure."
     },
 
     "metrics": {

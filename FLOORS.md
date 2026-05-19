@@ -52,6 +52,8 @@ APEX LANE: 010 FORGE → 999 VAULT
            FORGE only fires if cc_id present. VAULT999 = immutable.
 ```
 
+> **Note on lane names:** AGI / ASI / APEX are **governance lane labels**, not claims about artificial general intelligence or superintelligence. The federation does not claim AGI or ASI capability. It claims **governed agentic infrastructure with human-APEX oversight**.
+
 ---
 
 ## Sovereign Trinity
