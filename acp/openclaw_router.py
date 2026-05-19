@@ -19,7 +19,11 @@ Example in Telegram:
 """
 
 import asyncio
+import json
+import os
 import re
+import urllib.error
+import urllib.request
 from typing import Optional
 from AAA.acp.client import ACPClient
 from AAA.acp.router import ACPRouter, AGENT_ENDPOINTS
@@ -62,7 +66,7 @@ async def handle_hermes_dispatch(content: str) -> str:
                     result = status.result or "(no result)"
                     return (
                         f"🧠 **Hermes ACP Result**\n"
-                        f`└ Run ID: \`{task.id}\`\n`
+                        f"└ Run ID: `{task.id}`\n"
                         f"└ Skill: `{skill_id}`\n"
                         f"└ Status: ✅ completed\n\n"
                         f"{result}"
@@ -101,6 +105,16 @@ async def handle_explicit_a2a(parts: list[str]) -> str:
     
     if agent_id not in AGENT_ENDPOINTS:
         return f"Unknown agent: `{agent_id}`\nKnown agents: {', '.join(AGENT_ENDPOINTS.keys())}"
+
+    if agent_id == "opencode":
+        sealed, reason = await _judge_opencode_candidate(content)
+        if not sealed:
+            return (
+                "🛑 **OpenCode route blocked by 888_JUDGE**\n"
+                f"└ Verdict: HOLD/VOID\n"
+                f"└ Reason: {reason}\n"
+                "└ Action: revise prompt or route through /hermes first."
+            )
     
     router = ACPRouter()
     skill_id = _infer_skill(content)
@@ -168,6 +182,15 @@ async def _dispatch_to_agent(
 ) -> str:
     """Internal dispatch helper."""
     try:
+        if agent_id == "opencode":
+            sealed, reason = await _judge_opencode_candidate(content)
+            if not sealed:
+                return (
+                    "🛑 **OpenCode route blocked by 888_JUDGE**\n"
+                    f"└ Verdict: HOLD/VOID\n"
+                    f"└ Reason: {reason}"
+                )
+
         async with router.client_for(agent_id) as client:
             task = await client.send_message(
                 agent_id=agent_id,
@@ -196,6 +219,35 @@ async def _dispatch_to_agent(
     
     except Exception as e:
         return f"❌ ACP dispatch to `{agent_id}` failed: {str(e)}"
+
+
+def _judge_sync(candidate: str) -> tuple[bool, str]:
+    judge_url = os.getenv("APEX_JUDGE_URL", "http://127.0.0.1:3002/judge")
+    judge_token = os.getenv("APEX_JUDGE_TOKEN", "apex-prime-token-dev")
+    payload = json.dumps({"candidate": candidate}).encode("utf-8")
+    req = urllib.request.Request(
+        judge_url,
+        data=payload,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {judge_token}",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+            verdict = str(body.get("verdict", "")).upper()
+            rationale = str(body.get("rationale", "No rationale"))
+            return verdict == "SEAL", rationale
+    except urllib.error.HTTPError as e:
+        return False, f"Judge HTTP {e.code}"
+    except Exception as e:
+        return False, f"Judge unavailable: {e}"
+
+
+async def _judge_opencode_candidate(candidate: str) -> tuple[bool, str]:
+    return await asyncio.to_thread(_judge_sync, candidate)
 
 
 def _infer_skill(content: str) -> Optional[str]:
