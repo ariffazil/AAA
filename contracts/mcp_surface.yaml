@@ -1,0 +1,35 @@
+schema_version: 1
+kind: arifos.mcp_surface
+owner_repo: AAA
+status: contract
+last_verified: "2026-05-19"
+runtime_surface:
+  primary_role: control_plane
+  primary_port: 3001
+  public_domain: https://aaa.arif-fazil.com
+authority:
+  owns:
+    - cockpit_workflows
+    - a2a_gateway
+    - session_identity
+    - operator_visibility
+    - agent_cards
+  excludes:
+    - constitutional_judgment
+    - domain_calculation
+    - deployment_substrate
+    - final_seal
+expected_tools_or_routes:
+  - a2a_agent_card
+  - a2a_task_submit
+  - a2a_task_status
+  - cockpit_status
+  - operator_hold_queue
+artifact_policy:
+  machine_readable: required_for_a2a
+  human_readable: required_for_cockpit
+  secret_free_public_output: required
+hold_conditions:
+  - external_public_action
+  - hidden_governance_logic
+  - unapproved_root_or_secret_mutation
