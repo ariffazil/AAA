@@ -108,6 +108,45 @@ confidence: high
 
 ---
 
+---
+
+## [2026-05-19] create | Concept proposed: Physics9 as Shadow-Mirror
+
+- **Page:** [[concept-physics9-as-shadow-mirror]] (status: proposed)
+- **Who:** Kimi Code CLI (Constitutional Clerk)
+- **Trigger:** Sovereign (Arif) asked three questions in sequence:
+  1. "What is Physics9? Is it even real science?"
+  2. "Is the shadow concept related to Physics9?"
+  3. "Tell me the full context you understand, then update TREE777"
+
+### Conceptual Insight
+Physics9 is the **technical shadow-mirror for subsurface inference**.
+- Psychological shadow = unexamined bias, projection, map replacing territory
+- Geoscience shadow = phantom geology (treating derived properties as observed state)
+- Physics9 makes the AI's shadow **structurally visible** via the hard state/derived boundary
+- The 9 canonical variables (ρ, Vp, Vs, ρₑ, χ, k, P, T, φ) are the "owned" state
+- Everything else (K, μ, Sw, permeability) is "derived" — the unowned must be labeled
+- F9 (No Phantom Geology) + F7 (Ω humility cap) together prevent the Perilous Sage collapse
+
+### Codebase Finding: Import Path Drift
+- `/root/geox/apps/1_welldesk.py`, `2_seismic_vision.py`, `5_geoprobe.py` all import from `geox.core.physics9`
+- Live import test: `from geox.core.physics9 import Physics9State` → **ModuleNotFoundError**
+- File exists at `/root/geox/geox/core/physics9.py` (active) and `/root/geox/src/geox_core/core/physics9.py`
+- `.pyc` cache exists in `geox/core/__pycache__/` but import path may need `PYTHONPATH` or package restructuring
+- **Status:** Not fixed — documented here for 888 JUDGE or sovereign attention if apps are deployed
+
+### Actions Taken
+1. **Concept drafted:** `wiki/concepts/concept-physics9-as-shadow-mirror.md` (status: proposed)
+2. **Codebase audited:** physics9.py implementations compared, import paths tested, docs reviewed
+3. **Federation context updated:** TREE777 now contains the Physics9 ↔ Shadow mapping for all agents
+
+### Pending
+- 888 JUDGE review for canonical promotion of concept page
+- Fix geox app import paths if apps are actively deployed
+- Consider if this concept generalizes beyond geoscience (e.g., WEALTH state/derived boundaries, WELL metabolic state vectors)
+
+---
+
 *DITEMPA BUKAN DIBERI — Wiki log is append-only.*
 
 ---
