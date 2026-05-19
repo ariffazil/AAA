@@ -1,0 +1,81 @@
+# AAA Agent Workspace & Control Plane Tool Registry
+# SOT: ariffazil/AAA — Operator Cockpit / A2A Gateway
+# Last verified: 2026-05-19
+
+schema_version: "2026.05.19"
+organ: AAA
+authority: ariffazil/AAA
+# NOTE: AAA is primarily a React frontend + A2A gateway, not an MCP server in the same sense as arifOS/GEOX/WEALTH
+
+surfaces:
+  cockpit:
+    type: react_frontend
+    framework: React 19 + Vite 7
+    entry: src/main.tsx
+    dev_server: npm run dev
+    build: npm run build
+
+  a2a_gateway:
+    type: express_server
+    port: 3001
+    protocol: A2A v1.0.0
+    entry: a2a-server/server.js
+
+  adapter:
+    type: governance_adapter
+    runtime_surface: src/adapter/router.ts
+    description: Routes operator intent to A-FORGE / arifOS /sense endpoints
+
+# Tool-like capabilities (not MCP tools — UI actions and gateway endpoints)
+capabilities:
+  operator_dashboard:
+    category: cockpit
+    owner_repo: ariffazil/AAA
+    runtime_surface: src/Cockpit.tsx
+    status: live
+    description: Constitutional floors display, operator task queue, domain health
+
+  ai_chat_panel:
+    category: cockpit
+    owner_repo: ariffazil/AAA
+    runtime_surface: src/ai/
+    status: live
+    description: AI chat client (Ollama / arifOS / OpenRouter)
+
+  a2a_health:
+    category: gateway
+    owner_repo: ariffazil/AAA
+    runtime_surface: a2a-server/server.js
+    status: live
+    description: A2A mesh health check endpoint
+
+  a2a_task_submit:
+    category: gateway
+    owner_repo: ariffazil/AAA
+    runtime_surface: a2a-server/server.js
+    status: live
+    description: Submit task for agent-to-agent coordination
+
+  a2a_status_query:
+    category: gateway
+    owner_repo: ariffazil/AAA
+    runtime_surface: a2a-server/server.js
+    status: live
+    description: Query task status by task_id
+
+  skill_manifest:
+    category: seed_data
+    owner_repo: ariffazil/AAA
+    runtime_surface: src/skills/
+    status: live
+    description: Agent skills library and workflow definitions
+
+# Contracts exported
+exports:
+  - name: aaa_governance_contract
+    path: contracts/governance.yaml
+    description: AAA governance contract spec
+
+  - name: aaa_identity_schema
+    path: src/seed/IDENTITY.md
+    description: Canonical agent identity schema
