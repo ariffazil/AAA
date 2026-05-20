@@ -1,8 +1,8 @@
 ---
 title: "TREE777 — AAA Intelligence Tree"
 created: 2026-05-17
-updated: 2026-05-17
-version: 1.0.0
+updated: 2026-05-20
+version: 1.1.0
 type: concept
 tags: [tree, intelligence, governance, loop, recursive, skills, workflows, knowledge, memory, federation, TREE777]
 sources: [wiki/concepts/intelligence-tree.md, wiki/concepts/concept-memory-knowledge-paradox.md, wiki/concepts/concept-tools-and-embodiment.md, wiki/SCHEMA.md, wiki/skills/skill-spatial-grounding.md]
@@ -281,6 +281,41 @@ Analysis: is this a new pattern or a known one?
 ```
 
 This is why TREE777 is recursive: every loop run by any agent has the potential to improve the tree for all future agents.
+
+---
+
+## Current Growth State (2026-05-20 Snapshot)
+
+TREE777 is alive and expanding fast. Current health is strong, but governance metadata is lagging behind growth.
+
+| Signal | Current state | Reflection |
+|-------|---------------|------------|
+| Markdown knowledge surface | 111 pages | Strong growth and active compounding |
+| Total files under `/root/AAA/wiki/` | 149 files | Healthy density with evidence + workflows |
+| Skills layer | 51 pages | Mature capability coverage |
+| Workflows layer | 42 pages | Good orchestration depth |
+| Concepts layer | 19 pages | Ontology is broad enough to guide routing |
+| Freshness (updated ≤ 3 days) | 111/111 markdown pages | Very high recency |
+| `index.md` headline | still says 84 pages | Drift: public index under-reports tree size |
+| `tree-manifest.json` total_pages | 72/74 markers | Drift: manifest no longer mirrors reality |
+
+**Verdict:** TREE777 growth is excellent; current bottleneck is **registry/index drift**, not lack of content.
+
+---
+
+## Flourish Program (777 → 888 → 999)
+
+To make TREE777 flourish sustainably, run this operating pattern:
+
+1. **777 Health pulse (daily):** recalculate page counts + freshness + orphans, then publish a small telemetry block in `wiki/log.md`.
+2. **888 Promotion gate (twice weekly):** review proposed skills/concepts/scars and promote only evidence-backed patterns.
+3. **999 Memory anchor (weekly):** seal the weekly TREE777 growth report to VAULT999 and link receipt in the log.
+
+### Immediate actions (for this cycle)
+
+- Sync `index.md` headline to actual page count.
+- Regenerate `tree-manifest.json` so registry truth matches tree reality.
+- Keep agent-related governance and implementation decisions in AAA, then reflect into TREE777 pages and log.
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: AAA Wiki Index
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-05-20
 type: index
 tags: [federation, wiki, index]
 confidence: high
@@ -10,7 +10,7 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-05-17 | Total pages: 84
+> Last updated: 2026-05-20 | Total markdown pages: 111
 
 ---
 
