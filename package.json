@@ -1,7 +1,7 @@
 {
   "name": "aaa-control-plane",
   "private": true,
-  "version": "55.3.0",
+  "version": "55.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
