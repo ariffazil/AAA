@@ -1,0 +1,120 @@
+version: 1
+
+active_agents:
+  - agent_id: aaa-gateway
+    host_id: openclaw-gateway
+    status: running
+    current_workflow: local-a2a-handoff
+  - agent_id: geox-witness
+    host_id: geox-acp
+    status: idle
+    current_workflow: local-a2a-handoff
+  - agent_id: wealth-witness
+    host_id: wealth-acp
+    status: hold
+    current_workflow: remote-peer-handoff
+
+sessions:
+  - session_id: aaa-gateway-main
+    agent_id: aaa-gateway
+    transport: streamable-http
+    approval_policy: hold
+  - session_id: geox-witness-stdio
+    agent_id: geox-witness
+    transport: stdio
+    approval_policy: on-demand
+  - session_id: wealth-witness-stdio
+    agent_id: wealth-witness
+    transport: stdio
+    approval_policy: hold
+
+approvals_queue:
+  - queue_id: remote-peer-release
+    workflow_id: remote-peer-handoff
+    required_role: validator
+    policy: human-required
+
+governance_gates:
+  - gate_id: remote-peer-release
+    workflow_id: remote-peer-handoff
+    status: pending
+    required_role: validator
+    estimated_cost_usd: 75
+    budget_policy: aaa-control-plane-monthly
+  - gate_id: wealth-sensitive-dispatch
+    workflow_id: local-a2a-handoff
+    status: active
+    required_role: operator
+    estimated_cost_usd: 40
+    budget_policy: wealth-witness-monthly
+
+budget_views:
+  - budget_id: aaa-control-plane-monthly
+    scope_ref: aaa-control-plane
+    unit: usd
+    utilization_ratio: 0.32
+    status: healthy
+  - budget_id: geox-witness-monthly
+    scope_ref: geox-witness
+    unit: usd
+    utilization_ratio: 0.15
+    status: healthy
+  - budget_id: wealth-witness-monthly
+    scope_ref: wealth-witness
+    unit: usd
+    utilization_ratio: 0.48
+    status: healthy
+
+run_history:
+  - run_id: local-a2a-last
+    workflow_id: local-a2a-handoff
+    verdict: partial
+  - run_id: remote-peer-last
+    workflow_id: remote-peer-handoff
+    verdict: hold
+
+heartbeat:
+  status: alive
+  watchdog_seconds: 60
+
+attached_repos:
+  - repo_id: arifos
+    plane: ARIFOS
+    mode: upstream-law
+  - repo_id: aaa
+    plane: AAA
+    mode: control-plane
+  - repo_id: geox
+    plane: GEOX
+    mode: domain-witness
+  - repo_id: wealth
+    plane: WEALTH
+    mode: domain-witness
+
+pending_decisions:
+  - decision_id: federation-message-ingress-release
+    risk_class: high
+    status: hold
+    required_signer_roles:
+      - validator
+      - operator
+  - decision_id: institutional-model-adoption
+    risk_class: medium
+    status: approved
+    required_signer_roles:
+      - operator
+
+vault_exports:
+  - export_id: federation-message-ingress-release
+    decision_id: federation-message-ingress-release
+    seal_status: hold
+    path: vault/decisions/federation-message-ingress-release.json
+  - export_id: institutional-model-adoption
+    decision_id: institutional-model-adoption
+    seal_status: proposed
+    path: vault/decisions/institutional-model-adoption.json
+
+audit_trail:
+  event_stream: observability/events
+  projection: observability/projections
+  vault_required: true
