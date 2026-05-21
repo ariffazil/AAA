@@ -1,7 +1,19 @@
-# arifOS / AAA MCP — Changelog (v55.5.0 → v60.1-beta)
+# arifOS / AAA MCP — Changelog (v55.4.0 → v60.1-beta)
 
 > This log is for **reflection and lesson learned**, not just release notes.
 > Scope: from `v55.5.0` (HARDENED) up to current `main` (v60.x FORGE + MCP wiring).
+
+---
+
+## [v55.4.0] — 2026-05-20
+
+### ⚙️ TREE777 Cron Loop Infrastructure
+
+- **Cron Scripts:** Added `tree777_health_pulse.sh`, `tree777_promotion_review.sh`, `tree777_weekly_anchor.sh`, and `install_tree777_agent_crons.sh` for automated TREE777 maintenance.
+- **Workflow:** Added `workflow-tree777-agent-cron-loop.md` documenting the cron-driven TREE777 agent lifecycle.
+- **Onboarding:** Added `AGENTS.md` providing AAA agent onboarding guidance for new clerks.
+- **Governance:** Kernel Purity Seal recorded in `GEMINI_CLI_GOVERNANCE.md` metabolic log (Google Workspace moved to peripheral adapter, legacy tools removed from arifOS core).
+- **Runtime Guard:** Added `wiki/_runtime/` and `VAULT999/tree777/` to `.gitignore` to prevent cron artifact pollution.
 
 ---
 
