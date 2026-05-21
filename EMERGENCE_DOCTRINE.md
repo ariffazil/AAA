@@ -104,5 +104,19 @@ There is no dark genius. High capability without amanah is dark cleverness: an e
 
 Therefore arifOS restricts not intelligence, but unobserved, unaudited, irreversible capability.
 
+---
+
+### Forged Membranes (v2026.05.22 Implementation)
+The following gaps have been physically forged into the arifOS substrate:
+
+| Gap | Module | Invariant Enforced |
+| :--- | :--- | :--- |
+| **Gap 2** | `metabolic_receipt.py` | *“Judge the operation, not only the step.”* |
+| **Gap 4** | `constitution_lock.py` | *“Local instruction cannot rewrite authority.”* |
+| **Gap 5** | `self_mod_lock.py` | *“A tool may not authorize its own mutation.”* |
+| **Gap 6** | `claim_compiler.py` | *“Claim state must match evidence state.”* |
+| **Gap 8** | `federation_quarantine.py` | *“External agents are witnesses, not sovereigns.”* |
+
 ***
 *⬡ EMERGENCE SEALED | DITEMPA BUKAN DIBERI ⬡*
+
