@@ -85,3 +85,202 @@ tools:
     execution_kind: read
     required_witnesses:
       - WELL
+
+  - id: terminal
+    name: Terminal
+    description: Shell execution surface for bounded local commands.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: file_read
+    name: File Read
+    description: Read local files.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: file_write
+    name: File Write
+    description: Write local files.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: patch
+    name: Patch
+    description: Apply focused file edits.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: browser_navigate
+    name: Browser Navigate
+    description: Navigate browser pages.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: browser_snapshot
+    name: Browser Snapshot
+    description: Capture a browser snapshot.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: browser_vision
+    name: Browser Vision
+    description: Inspect browser content visually.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: cronjob
+    name: Cronjob
+    description: Schedule a bounded background job.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: delegate_task
+    name: Delegate Task
+    description: Delegate a bounded task to another agent.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: memory
+    name: Memory
+    description: Read or recall bounded memory state.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses:
+      - ARIFOS
+
+  - id: session_search
+    name: Session Search
+    description: Search session traces.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: skill_view
+    name: Skill View
+    description: View installed skill metadata.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: skill_manage
+    name: Skill Manage
+    description: Manage skill configuration.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: send_message
+    name: Send Message
+    description: Send a governed message to an agent or peer.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: text_to_speech
+    name: Text To Speech
+    description: Convert text into spoken output.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: execute
+    required_witnesses: []
+
+  - id: vision_analyze
+    name: Vision Analyze
+    description: Analyze visual input.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: web_search
+    name: Web Search
+    description: Search the web.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: web-search
+    name: Web Search Alias
+    description: Alias for web search.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: file-read
+    name: File Read Alias
+    description: Alias for reading local files.
+    source_type: builtin
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: file-write
+    name: File Write Alias
+    description: Alias for writing local files.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: hold
+    execution_kind: execute
+    required_witnesses:
+      - ARIFOS
+
+  - id: geox-vault-read
+    name: GEOX Vault Read
+    description: Read GEOX vault data.
+    source_type: builtin
+    risk_tier: medium
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses:
+      - GEOX
