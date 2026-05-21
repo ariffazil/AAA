@@ -1,0 +1,92 @@
+version: 1
+id: aaa-governance-gates-666-777
+name: AAA 666 777 Governance Gates and Budgets
+stage_band: "666-777"
+domain_plane: AAA
+purpose: Define governance gates and budget policies before high-impact delegation or release.
+
+governance_gates:
+  - id: remote-peer-release
+    title: Remote peer release gate
+    goal_ref: aaa-federation-surface-live
+    owner_org_unit: aaa-control-plane
+    workflow_ref: remote-peer-handoff
+    budget_policy_ref: aaa-control-plane-monthly
+    required_roles:
+      - validator
+    approval_policy: human-required
+    trigger_conditions:
+      - Remote peer execution or release is requested.
+      - A workflow needs 888 review before dispatch.
+    evidence_inputs:
+      - contracts/federation/111-sense.yaml
+      - contracts/goals/222-goals.yaml
+      - contracts/org/333-org-units.yaml
+    decision_outputs:
+      - remote release approved
+      - remote release denied
+      - remote release deferred
+    cost_estimate_required: true
+    weakest_stakeholder: human sovereign
+    status: pending
+
+  - id: wealth-sensitive-dispatch
+    title: Wealth-sensitive dispatch gate
+    goal_ref: aaa-institutional-object-model
+    owner_org_unit: aaa-control-plane
+    workflow_ref: local-a2a-handoff
+    budget_policy_ref: wealth-witness-monthly
+    required_roles:
+      - operator
+    approval_policy: hold
+    trigger_conditions:
+      - Capital-domain work carries medium or higher risk.
+      - Dispatch may consume scarce budget or external domain attention.
+    evidence_inputs:
+      - contracts/goals/222-goals.yaml
+      - contracts/org/333-org-units.yaml
+    decision_outputs:
+      - dispatch approved
+      - dispatch held
+    cost_estimate_required: true
+    weakest_stakeholder: downstream capital domain
+    status: active
+
+budgets:
+  - id: aaa-control-plane-monthly
+    scope_type: org-unit
+    scope_ref: aaa-control-plane
+    unit: usd
+    limit: 500
+    warning_threshold: 0.8
+    hard_stop_threshold: 1.0
+    reset_period: monthly
+    applies_to_agents:
+      - aaa-gateway
+      - geox-witness
+      - wealth-witness
+    enforcement_mode: human-required
+
+  - id: geox-witness-monthly
+    scope_type: agent
+    scope_ref: geox-witness
+    unit: usd
+    limit: 120
+    warning_threshold: 0.8
+    hard_stop_threshold: 1.0
+    reset_period: monthly
+    applies_to_agents:
+      - geox-witness
+    enforcement_mode: hold
+
+  - id: wealth-witness-monthly
+    scope_type: agent
+    scope_ref: wealth-witness
+    unit: usd
+    limit: 180
+    warning_threshold: 0.8
+    hard_stop_threshold: 1.0
+    reset_period: monthly
+    applies_to_agents:
+      - wealth-witness
+    enforcement_mode: hold

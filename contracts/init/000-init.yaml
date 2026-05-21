@@ -1,0 +1,112 @@
+version: 1
+id: aaa-init-000
+name: AAA 000 INIT
+purpose: Canonical ignition contract for AAA as a governed institutional control plane.
+
+required_root_canons:
+  - ROOT_CANON.yaml
+  - SOUL.md
+  - USER.md
+  - arifos.init
+  - IDENTITY.md
+  - AGENTS.md
+  - MEMORY.md
+  - HEARTBEAT.md
+  - TOOLS.md
+  - agent-card.json
+
+boot_sequence:
+  - step: root-canon
+    path: ROOT_CANON.yaml
+    required: true
+  - step: soul
+    path: SOUL.md
+    required: true
+  - step: user
+    path: USER.md
+    required: true
+  - step: init-kernel
+    path: arifos.init
+    required: true
+  - step: identity
+    path: IDENTITY.md
+    required: true
+  - step: operations
+    path: AGENTS.md
+    required: true
+  - step: memory
+    path: MEMORY.md
+    required: true
+  - step: heartbeat
+    path: HEARTBEAT.md
+    required: true
+  - step: tools
+    path: TOOLS.md
+    required: true
+  - step: agent-card
+    path: agent-card.json
+    required: true
+
+state_anchors:
+  - id: identity
+    required_fields:
+      - agent_id
+      - role
+      - runtime_class
+      - bounded_authority
+  - id: user
+    required_fields:
+      - sovereign
+      - style
+      - irreversible_authority
+  - id: temporal
+    required_fields:
+      - now_iso
+      - timezone
+      - continuity_band
+      - stale_context_detected
+  - id: spatial
+    required_fields:
+      - workspace_root
+      - environment
+      - channel
+      - blast_radius
+  - id: continuity
+    required_fields:
+      - soul_loaded
+      - user_loaded
+      - init_loaded
+      - carry_forward_confidence
+  - id: authority
+    required_fields:
+      - floors_active
+      - sovereign_veto_active
+      - escalation_policy
+
+outputs:
+  - session_manifest
+  - temporal_anchor
+  - authority_snapshot
+  - ignition_verdict
+
+hold_conditions:
+  - missing-root-canon
+  - unresolved-temporal-anchor
+  - wrong-workspace
+  - ambiguous-audience
+  - sovereign-authority-missing
+
+telemetry:
+  required: true
+  fields:
+    - epoch
+    - verdict
+    - dS
+    - peace2
+    - shadow
+
+invariants:
+  - session-required-before-tools
+  - temporal-anchor-required-before-temporal-claims
+  - wrong-workspace-is-hold
+  - sovereign-veto-must-exist

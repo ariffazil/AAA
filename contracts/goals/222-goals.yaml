@@ -1,0 +1,169 @@
+version: 1
+id: aaa-goal-chain-222
+name: AAA 222 Goal Chain
+stage: "222"
+domain_plane: AAA
+purpose: Represent institutional intent as goals, decomposed tasks, and provisional verdicts.
+
+goals:
+  - id: aaa-federation-surface-live
+    title: Keep AAA federation discovery honest and publishable
+    owner_org_unit: aaa-control-plane
+    sponsor_agent: aaa-gateway
+    objective: Publish real discovery surfaces while keeping runtime ingress claims fail-closed.
+    scope: A2A identity, discovery, and ingress posture for AAA.
+    constraints:
+      risk_tier: medium
+      approval_policy: hold
+      required_stages:
+        - "111"
+        - "222"
+        - "333"
+      required_witnesses:
+        - ARIFOS
+        - HUMAN
+    success_criteria:
+      - AAA publishes canonical agent discovery files under /a2a and /.well-known.
+      - Runtime message ingress remains held until a governed runtime bridge is actually exposed.
+    status: active
+
+  - id: aaa-institutional-object-model
+    title: Establish AAA institutional object model
+    owner_org_unit: aaa-control-plane
+    sponsor_agent: aaa-gateway
+    objective: Define the machine-readable goal, task, verdict, and topology objects needed for later governance layers.
+    scope: Institutional contracts for AAA control-plane planning, delegation, and decision scaffolding.
+    constraints:
+      risk_tier: medium
+      approval_policy: hold
+      required_stages:
+        - "222"
+        - "333"
+      required_witnesses:
+        - ARIFOS
+    success_criteria:
+      - AAA has canonical Goal, Task, and Verdict objects.
+      - AAA has canonical OrgUnit and topology contracts bound to registered agents and workflows.
+      - Validator and export include the institutional object model.
+    status: active
+
+tasks:
+  - id: publish-static-a2a-discovery
+    title: Publish static A2A discovery surfaces
+    goal_ref: aaa-federation-surface-live
+    stage: "111"
+    assigned_org_unit: aaa-control-plane
+    assigned_agent: aaa-gateway
+    depends_on: []
+    required_tools:
+      - status-query
+    required_servers:
+      - arifos-mcp
+    outputs:
+      - public/a2a/agent-card.json
+      - public/.well-known/agent-card.json
+      - public/a2a/status.json
+    status: done
+    uncertainty: CLAIM
+    rationale: Discovery surfaces exist and are publishable from static hosting.
+
+  - id: hold-runtime-a2a-ingress
+    title: Keep runtime A2A message ingress fail-closed
+    goal_ref: aaa-federation-surface-live
+    stage: "111"
+    assigned_org_unit: aaa-control-plane
+    assigned_agent: aaa-gateway
+    depends_on:
+      - publish-static-a2a-discovery
+    required_tools:
+      - status-query
+    required_servers:
+      - arifos-mcp
+    outputs:
+      - contracts/federation/111-sense.yaml
+      - public/a2a/index.html
+    status: hold
+    uncertainty: CLAIM
+    rationale: Static hosting cannot honestly expose POST /a2a/message in this repo.
+
+  - id: define-goal-task-verdict-chain
+    title: Define 222 goal-task-verdict objects
+    goal_ref: aaa-institutional-object-model
+    stage: "222"
+    assigned_org_unit: aaa-control-plane
+    assigned_agent: aaa-gateway
+    depends_on: []
+    required_tools:
+      - status-query
+    required_servers:
+      - arifos-mcp
+    outputs:
+      - contracts/goals/222-goals.yaml
+      - schemas/goal-chain.schema.json
+    status: done
+    uncertainty: CLAIM
+    rationale: AAA now has a canonical object chain for institutional intent and tasking.
+
+  - id: define-org-unit-topology
+    title: Define 333 org-unit topology
+    goal_ref: aaa-institutional-object-model
+    stage: "333"
+    assigned_org_unit: aaa-control-plane
+    assigned_agent: aaa-gateway
+    depends_on:
+      - define-goal-task-verdict-chain
+    required_tools:
+      - status-query
+    required_servers:
+      - arifos-mcp
+    outputs:
+      - contracts/org/333-org-units.yaml
+      - schemas/org-topology.schema.json
+    status: done
+    uncertainty: CLAIM
+    rationale: AAA now has canonical units and delegation paths for its registered agents.
+
+  - id: wire-object-model-export
+    title: Wire 222 and 333 into validation and export
+    goal_ref: aaa-institutional-object-model
+    stage: "333"
+    assigned_org_unit: aaa-control-plane
+    assigned_agent: aaa-gateway
+    depends_on:
+      - define-goal-task-verdict-chain
+      - define-org-unit-topology
+    required_tools:
+      - status-query
+    required_servers:
+      - arifos-mcp
+    outputs:
+      - scripts/validate-aaa.mjs
+      - scripts/export-aaa-json.mjs
+      - ROOT_CANON.yaml
+    status: done
+    uncertainty: CLAIM
+    rationale: The institutional object model is part of the canonical AAA bundle.
+
+verdicts:
+  - id: federation-discovery-posture
+    goal_ref: aaa-federation-surface-live
+    task_ref: hold-runtime-a2a-ingress
+    outcome: partial
+    summary: AAA discovery is live, but runtime message ingress remains 888_HOLD until a server runtime exists.
+    required_witnesses:
+      - ARIFOS
+      - HUMAN
+    signers:
+      - aaa-gateway
+    next_stage: "333"
+
+  - id: institutional-object-model-forged
+    goal_ref: aaa-institutional-object-model
+    task_ref: wire-object-model-export
+    outcome: approved
+    summary: AAA now has canonical institutional contracts for goals, tasks, verdicts, org units, and topology.
+    required_witnesses:
+      - ARIFOS
+    signers:
+      - aaa-gateway
+    next_stage: "666"

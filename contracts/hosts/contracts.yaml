@@ -1,0 +1,247 @@
+version: 1
+
+host_contracts:
+  - id: openclaw-gateway
+    name: OpenClaw Gateway
+    host_class: gateway
+    runtime_type: custom
+    transport: http
+    config_paths:
+      - openclaw/gateway
+      - openclaw/exports
+    install_method: generated-config
+    supported_protocols:
+      - mcp
+      - a2a
+    platform_support:
+      - windows
+      - macos
+      - linux
+    session_contract:
+      schema_ref: schemas/openclaw-acp-session.schema.json
+      template_root: openclaw/acp
+      required_for_agent_sessions: false
+    generated_artifacts:
+      - openclaw/gateway
+      - openclaw/exports
+      - a2a/agent-cards
+    auth_modes:
+      - gateway-token
+      - oauth2
+      - api-key+mtls
+    permission_profiles:
+      - id: strict
+        default: true
+        approval_policy: hold
+        max_risk_tier: high
+        remote_execution_enabled: false
+    governance:
+      requires_arifos_judgment_for:
+        - remote-write
+        - cross-lane-dispatch
+        - execution-request
+      requires_vault_seal_for:
+        - irreversible-execution
+        - deploy
+      deny_if_unsealed: true
+
+  - id: claude-code
+    name: Claude Code
+    host_class: ide
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .claude
+      - openclaw/acp
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    platform_support:
+      - windows
+      - macos
+      - linux
+    session_contract:
+      schema_ref: schemas/openclaw-acp-session.schema.json
+      template_root: openclaw/acp
+      required_for_agent_sessions: true
+    generated_artifacts:
+      - openclaw/acp
+      - .claude
+    auth_modes:
+      - workspace-session
+      - gateway-token
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+        max_risk_tier: medium
+        remote_execution_enabled: false
+    governance:
+      requires_arifos_judgment_for:
+        - remote-write
+        - cross-lane-approval
+      requires_vault_seal_for:
+        - irreversible-execution
+      deny_if_unsealed: true
+
+  - id: cursor
+    name: Cursor
+    host_class: ide
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .cursor
+      - openclaw/acp
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    platform_support:
+      - windows
+      - macos
+      - linux
+    session_contract:
+      schema_ref: schemas/openclaw-acp-session.schema.json
+      template_root: openclaw/acp
+      required_for_agent_sessions: true
+    generated_artifacts:
+      - openclaw/acp
+      - .cursor
+    auth_modes:
+      - workspace-session
+      - gateway-token
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+        max_risk_tier: medium
+        remote_execution_enabled: false
+    governance:
+      requires_arifos_judgment_for:
+        - remote-write
+        - cross-lane-approval
+      requires_vault_seal_for:
+        - irreversible-execution
+      deny_if_unsealed: true
+
+  - id: codex
+    name: Codex
+    host_class: cli
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .codex
+      - openclaw/acp
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    platform_support:
+      - windows
+      - macos
+      - linux
+    session_contract:
+      schema_ref: schemas/openclaw-acp-session.schema.json
+      template_root: openclaw/acp
+      required_for_agent_sessions: true
+    generated_artifacts:
+      - openclaw/acp
+      - .codex
+    auth_modes:
+      - workspace-session
+      - gateway-token
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+        max_risk_tier: medium
+        remote_execution_enabled: false
+    governance:
+      requires_arifos_judgment_for:
+        - remote-write
+        - cross-lane-approval
+      requires_vault_seal_for:
+        - irreversible-execution
+      deny_if_unsealed: true
+
+  - id: copilot-cli
+    name: GitHub Copilot CLI
+    host_class: cli
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .github
+      - openclaw/acp
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    platform_support:
+      - windows
+      - macos
+      - linux
+    session_contract:
+      schema_ref: schemas/openclaw-acp-session.schema.json
+      template_root: openclaw/acp
+      required_for_agent_sessions: true
+    generated_artifacts:
+      - openclaw/acp
+      - .github
+    auth_modes:
+      - workspace-session
+      - github-auth
+      - gateway-token
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+        max_risk_tier: medium
+        remote_execution_enabled: false
+    governance:
+      requires_arifos_judgment_for:
+        - remote-write
+        - github-destructive-op
+      requires_vault_seal_for:
+        - irreversible-execution
+      deny_if_unsealed: true
+
+  - id: gemini-cli
+    name: Gemini CLI
+    host_class: cli
+    runtime_type: acp
+    transport: stdio
+    config_paths:
+      - .gemini
+      - openclaw/acp
+    install_method: acp-session-template
+    supported_protocols:
+      - mcp
+      - a2a
+    platform_support:
+      - windows
+      - macos
+      - linux
+    session_contract:
+      schema_ref: schemas/openclaw-acp-session.schema.json
+      template_root: openclaw/acp
+      required_for_agent_sessions: true
+    generated_artifacts:
+      - openclaw/acp
+      - .gemini
+    auth_modes:
+      - workspace-session
+      - gateway-token
+    permission_profiles:
+      - id: default
+        default: true
+        approval_policy: on-demand
+        max_risk_tier: medium
+        remote_execution_enabled: false
+    governance:
+      requires_arifos_judgment_for:
+        - remote-write
+        - cross-lane-approval
+      requires_vault_seal_for:
+        - irreversible-execution
+      deny_if_unsealed: true
