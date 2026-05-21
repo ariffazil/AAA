@@ -1,9 +1,23 @@
-# arifOS / AAA MCP — Changelog (v55.4.0 → v60.1-beta)
+# arifOS / AAA MCP — Changelog (v55.5.0 → v60.1-beta)
 
 > This log is for **reflection and lesson learned**, not just release notes.
 > Scope: from `v55.5.0` (HARDENED) up to current `main` (v60.x FORGE + MCP wiring).
 
 ---
+
+## [v55.5.0] — 2026-05-21
+
+### 🌟 EMERGENCE DOCTRINE — 13 Forged Laws of Substrate Governance
+
+- **EMERGENCE DOCTRINE:** Added Section 4 to ARIF.md grounding the 13 laws in emergence doctrine — intelligence is forged through discipline, not granted by style.
+- **13 Forged Laws:** Codified the 13 laws governing change, boundary, and attestation in `EMERGENCE_DOCTRINE.md`.
+- **Forged Membranes:** Documented physical substrate implementation of Gap 2/4/5/6/8 in `EMERGENCE_DOCTRINE.md`:
+  - Gap 2: `metabolic_receipt.py` — "Judge the operation, not only the step."
+  - Gap 4: `constitution_lock.py` — "Local instruction cannot rewrite authority."
+  - Gap 5: `self_mod_lock.py` — "A tool may not authorize its own mutation."
+  - Gap 6: `claim_compiler.py` — "Claim state must match evidence state."
+  - Gap 8: `federation_quarantine.py` — "External agents are witnesses, not sovereigns."
+- **Local Notes:** Added `AAA_LOCAL_NOTES/2026_05_22_PARADOX_OF_NIAT.md` session notes.
 
 ## [v55.4.0] — 2026-05-20
 
