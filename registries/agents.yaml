@@ -260,3 +260,40 @@ agents:
       - when: non-earth domain task detected
         to_role: architect
         via: aaa-gateway
+
+  - id: arifos-kernel
+    name: arifOS Kernel
+    description: Governed constitutional peer for arifOS judgment routing.
+    role: governance
+    intelligence_tier: APEX
+    intelligence_band: APEX
+    risk_tier: low
+    authority_level: propose
+    approval_policy: on-demand
+    knowledge_basis:
+      physics: false
+      math: true
+      language: true
+    host_binding: openclaw-gateway
+    allowed_tools:
+      - status-query
+      - arifos-judge
+      - arifos-init
+    allowed_servers:
+      - arifos-mcp
+    a2a_exposure: internal
+    allowed_peers:
+      - aaa-gateway
+    required_auth:
+      - gateway-token
+    separation_of_duties:
+      cannot_self_seal: true
+      requires_distinct_approver_for_high_risk: true
+    max_risk_tier_for_remote: low
+    required_witnesses:
+      - ARIFOS
+    runtime:
+      model: minimax/auto
+      temperature: 0
+      context_budget: 32000
+      transport: streamable-http

@@ -59,3 +59,33 @@ servers:
     resources:
       - well-state
     prompts: []
+
+  - id: arifosmcp
+    name: arifosmcp
+    transport: streamable-http
+    runtime_scope: remote
+    risk_tier: medium
+    approval_policy: on-demand
+    url: https://mcp.arif-fazil.com/mcp
+    env_refs: []
+    tools:
+      - arifos-init
+      - arifos-judge
+    resources:
+      - arifos-doctrine
+      - arifos-session
+    prompts: []
+
+  - id: geoxmcp
+    name: geoxmcp
+    transport: streamable-http
+    runtime_scope: remote
+    risk_tier: medium
+    approval_policy: on-demand
+    url: https://geox.arif-fazil.com/mcp
+    env_refs: []
+    tools:
+      - geox-query
+    resources:
+      - geox-atlas
+    prompts: []
