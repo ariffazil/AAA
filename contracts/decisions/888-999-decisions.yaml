@@ -1,0 +1,74 @@
+version: 1
+id: aaa-decisions-888-999
+name: AAA 888 999 Decisions and Vault Exports
+stage_band: "888-999"
+domain_plane: AAA
+purpose: Define institutional decision objects and their vault export mapping.
+
+decisions:
+  - id: federation-message-ingress-release
+    goal_ref: aaa-federation-surface-live
+    gate_ref: remote-peer-release
+    risk_class: high
+    status: hold
+    executor_org_unit: aaa-control-plane
+    required_signer_roles:
+      - validator
+      - operator
+    actual_signers: []
+    options_considered:
+      - keep static discovery only
+      - add governed server runtime for /a2a/message
+    evidence_refs:
+      - contracts/federation/111-sense.yaml
+      - contracts/goals/222-goals.yaml
+      - contracts/governance/666-777-gates.yaml
+    evidence_root: pending://runtime-proof-required
+    separation_of_duties:
+      proposer_must_differ_from_approver: true
+      executor_must_differ_from_approver: true
+    vault_export_ref: federation-message-ingress-release
+    publication_profile: internal-redacted
+
+  - id: institutional-model-adoption
+    goal_ref: aaa-institutional-object-model
+    gate_ref: wealth-sensitive-dispatch
+    risk_class: medium
+    status: approved
+    executor_org_unit: aaa-control-plane
+    required_signer_roles:
+      - operator
+    actual_signers:
+      - aaa-gateway
+    options_considered:
+      - leave institutional model implicit in prose only
+      - adopt canonical contracts for goals, org units, gates, and decisions
+    evidence_refs:
+      - contracts/goals/222-goals.yaml
+      - contracts/org/333-org-units.yaml
+      - contracts/governance/666-777-gates.yaml
+    evidence_root: pending://seal-ready-after-human-review
+    separation_of_duties:
+      proposer_must_differ_from_approver: false
+      executor_must_differ_from_approver: false
+    vault_export_ref: institutional-model-adoption
+    publication_profile: internal-redacted
+
+vault_exports:
+  - id: federation-message-ingress-release
+    decision_ref: federation-message-ingress-release
+    path: vault/decisions/federation-message-ingress-release.json
+    format: json
+    seal_status: hold
+    hash_algorithm: sha256
+    redaction_profile: internal-redacted
+    mutability: immutable-once-sealed
+
+  - id: institutional-model-adoption
+    decision_ref: institutional-model-adoption
+    path: vault/decisions/institutional-model-adoption.json
+    format: json
+    seal_status: proposed
+    hash_algorithm: sha256
+    redaction_profile: internal-redacted
+    mutability: immutable-once-sealed
