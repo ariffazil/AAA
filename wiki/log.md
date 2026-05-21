@@ -462,3 +462,66 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-05-20T09:36:42Z
 
 ---
+
+## [2026-05-21] update | TREE777 777 health pulse (apex)
+
+- **Who:** cron:apex
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-apex-2026-05-21.json`
+- **When:** 2026-05-21T07:00:02Z
+
+---
+
+## [2026-05-21] update | TREE777 777 health pulse (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-maxhermes-2026-05-21.json`
+- **When:** 2026-05-21T07:21:02Z
+
+---
+
+## [2026-05-21] update | TREE777 777 health pulse (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-phoenix72-2026-05-21.json`
+- **When:** 2026-05-21T07:42:01Z
+
+---
+
+## [2026-05-21] update | TREE777 777 health pulse (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-asi-2026-05-21.json`
+- **When:** 2026-05-21T08:07:01Z
+
+---
+
+## [2026-05-21] update | TREE777 777 health pulse (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-openclaw-2026-05-21.json`
+- **When:** 2026-05-21T08:28:01Z
+
+---
+
+## [2026-05-21] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-05-21.json`
+- **When:** 2026-05-21T09:14:01Z
+
+---
+
+## [2026-05-21] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-05-21.json`
+- **When:** 2026-05-21T09:35:02Z
+
+---
