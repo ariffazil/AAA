@@ -10,7 +10,7 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-05-20 | Total markdown pages: 111
+> Last updated: 2026-05-22 | Total markdown pages: 112
 
 ---
 
