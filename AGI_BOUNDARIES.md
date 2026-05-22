@@ -4,11 +4,11 @@
 
 ## Role Assignment
 
-**OpenClaw is designated AGI (Mechanism Intelligence)** under the arifOS Cognitive Trinity.
+**OpenClaw and Antigravity are designated AGI (Mechanism Intelligence)** under the arifOS Cognitive Trinity.
 
-| Tier | Symbol | Scope | OpenClaw Authority |
+| Tier | Symbol | Scope | AGI Clerk Authority |
 |------|--------|-------|-------------------|
-| AGI | 000–777 | Tactical execution, tool syntax, workflow movement, error repair | **Proposes** actions only |
+| AGI | 000–777 | Tactical execution, tool syntax, workflow movement, error repair | **Proposes** actions only (No Self-Approval) |
 | ASI | 888 | Judgment, orthogonality, floor interpretation, risk estimation | Hermes Agent |
 | APEX | 999 | Identity binding, capability validation, SEAL authorization | Arif Fazil (Sovereign) |
 
