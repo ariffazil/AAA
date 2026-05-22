@@ -5,6 +5,17 @@
 
 ---
 
+## [v55.5.1] — 2026-05-22
+
+### 🎂 Birthday Release — Arif's Birthday 2026
+
+- **AGENTS.md:** Full structural rewrite — SOT-MANIFEST header, repo structure, authority table, federation position, build/test commands, OpenClaw guide reference. 208-line reduction.
+- **wiki/index.md:** TREE777 page registry count updated 84 → 95 pages.
+- **wiki/log.md:** TREE777 777 health pulse + 888 promotion review entries for apex, maxhermes, phoenix72, hermes-asi, openclaw, hermes-ops, opencode.
+- **package.json:** Version bumped 55.5.0 → 55.5.1.
+
+---
+
 ## [v55.5.0] — 2026-05-21
 
 ### 🌟 EMERGENCE DOCTRINE — 13 Forged Laws of Substrate Governance
