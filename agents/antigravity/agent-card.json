@@ -1,0 +1,45 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-a2a-agent-card.schema.json",
+  "id": "antigravity",
+  "name": "antigravity",
+  "description": "L4 IDE-Pair & Constitutional Scribe clerk. Operates under arifOS constitutional governance in the local cockpit.",
+  "url": "https://aaa.arif-fazil.com/a2a/antigravity",
+  "preferred_transport": "stdio-extension",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "runtime": "antigravity"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false
+  },
+  "capabilities_input_modes": ["text/plain", "application/json"],
+  "capabilities_output_modes": ["text/plain", "application/json", "code/text"],
+  "skills": [
+    {
+      "id": "ide-pair-programming",
+      "name": "IDE Pair Programming",
+      "description": "Pair program with the developer to analyze code, explain concepts, and implement features constitutional-first.",
+      "tags": ["pair", "code", "explain"],
+      "examples": ["help me refactor the routing component", "explain why this test is failing in arifOS context"]
+    },
+    {
+      "id": "code-write",
+      "name": "Code Writing & Proposing",
+      "description": "Create, edit, or refactor code files with strict floor F1 and F7 compliance (no self-approval).",
+      "tags": ["write", "edit", "refactor", "create"],
+      "examples": ["propose a fix for the memory sync issue", "write a new test for the well logs interpreter"]
+    },
+    {
+      "id": "design-iter",
+      "name": "Interactive Design & UI Mockup",
+      "description": "Iterate on user interface designs, mockups, and assets with rich aesthetics.",
+      "tags": ["design", "ui", "mockup", "image"],
+      "examples": ["generate a mockup for the arifOS control dashboard", "create a sleek dark-themed icon"]
+    }
+  ],
+  "supports_authenticated_extended_card": false
+}
