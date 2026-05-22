@@ -45,6 +45,13 @@ if (!A2A_TOKEN || !A2A_API_KEY) {
 const NONCE_CACHE_TTL_MS = 5 * 60 * 1000;   // 5 minutes
 const REPLAY_CACHE_TTL_MS = 10 * 60 * 1000; // 10 minutes
 
+// === INPUT SAFETY CONSTANTS (F1 AMANAH) ===
+const MAX_TEXT_LENGTH = 10000;   // max chars per message text extraction
+const MAX_PARTS = 50;           // max parts per message
+const MAX_PART_DEPTH = 3;        // max nesting depth in a part
+const MAX_STRING_LENGTH = 50000; // max string field length in any part
+const ALLOWED_PART_KINDS = new Set(['text', 'file', 'data']); // whitelist only
+
 // === OPERATOR EVENT LOG (in-memory, last 200) ===
 const _eventLog = [];
 function logEvent(kind, taskId, msg) {
@@ -694,9 +701,18 @@ function validateEnvelope(body) {
 function validateMessage(message) {
   if (!message || typeof message !== 'object') return { valid: false, message: 'message must be an object' };
   if (!message.parts || !Array.isArray(message.parts)) return { valid: false, message: 'message.parts must be an array' };
+  // F1 AMANAH: parts count guard
+  if (message.parts.length > MAX_PARTS) return { valid: false, message: `message.parts exceeds ${MAX_PARTS}` };
   for (const part of message.parts) {
-    if (!part.kind) return { valid: false, message: 'Each message part must have a kind' };
-    if (part.kind === 'text' && typeof part.text !== 'string') return { valid: false, message: 'text parts must have string text' };
+    if (!part || typeof part !== 'object') return { valid: false, message: 'each part must be an object' };
+    if (!part.kind || typeof part.kind !== 'string') return { valid: false, message: 'Each message part must have a string kind' };
+    // F1 AMANAH: whitelist allowed kinds — reject unknown injection kinds
+    if (!ALLOWED_PART_KINDS.has(part.kind)) return { valid: false, message: `Unknown part kind: ${part.kind}. Allowed: ${[...ALLOWED_PART_KINDS].join(', ')}` };
+    if (part.kind === 'text') {
+      if (typeof part.text !== 'string') return { valid: false, message: 'text parts must have string text' };
+      // F1 AMANAH: text length guard — prevent DoS via massive payloads
+      if (part.text.length > MAX_STRING_LENGTH) return { valid: false, message: `text exceeds ${MAX_STRING_LENGTH} chars` };
+    }
   }
   return { valid: true };
 }
@@ -767,6 +783,7 @@ function resolveSkill(params, message) {
     console.warn(`[skill] invalid params.skill "${params.skill}" — falling back to text detection`);
   }
   // Priority 2: text-based keyword detection
+  // F1 AMANAH: text is already sanitized+truncated by extractText
   const text = message ? extractText(message) : '';
   const skill = detectSkill(text);
   console.log(`[skill] resolved from text: ${skill}`);
@@ -774,7 +791,14 @@ function resolveSkill(params, message) {
 }
 
 function extractText(message) {
-  return (message.parts || []).filter(p => p.kind === 'text').map(p => p.text).join(' ');
+  if (!message || !message.parts) return '';
+  // F1 AMANAH: sanitize extracted text — truncate, strip null bytes, enforce safety limits
+  const extracted = (message.parts || [])
+    .filter(p => p && p.kind === 'text' && typeof p.text === 'string')
+    .map(p => p.text.replace(/\x00/g, '')) // strip null bytes
+    .join(' ')
+    .slice(0, MAX_TEXT_LENGTH); // hard truncate — no DoS via unbounded text
+  return extracted;
 }
 
 // === EXECUTE TASK ===
