@@ -134,7 +134,7 @@ confidence: high
 
 - [[SCHEMA.md]] — wiki governance and schema
 - [[log.md]] — action history
-- [[tree-manifest.json]] — page registry (84 pages)
+- [[tree-manifest.json]] — page registry (95 pages)
 
 ---
 
