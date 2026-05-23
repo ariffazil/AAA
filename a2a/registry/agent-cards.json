@@ -1,0 +1,801 @@
+{
+  "registry_version": "1.0",
+  "generated": "2026-05-23",
+  "agents": {
+    "AAA A-rchitect": {
+      "protocol_version": "1.0.0",
+      "id": "aaa-architect",
+      "name": "AAA A-rchitect",
+      "description": "Design agent for AAA. Defines task schemas, skill exposure, agent mesh topology, and capability contracts. Does not execute \u2014 designs what can be built and how it's described.",
+      "url": "https://aaa.arif-fazil.com/a2a/architect",
+      "preferred_transport": "jsonrpc-https",
+      "additional_interfaces": [
+        {
+          "transport": "sse",
+          "url": "https://aaa.arif-fazil.com/a2a/architect/events"
+        }
+      ],
+      "provider": {
+        "organization": "arifOS",
+        "system": "AAA",
+        "organ": "AAA-AROLES",
+        "sub_role": "A-rchitect"
+      },
+      "version": "1.0.0",
+      "capabilities": {
+        "streaming": true,
+        "push_notifications": false,
+        "authenticated_extended_card": true
+      },
+      "security_schemes": [
+        {
+          "id": "gateway-token",
+          "type": "bearer",
+          "description": "Gateway bearer token for internal trusted peers."
+        },
+        {
+          "id": "oauth2",
+          "type": "oauth2",
+          "description": "OAuth/OIDC for federated callers."
+        }
+      ],
+      "security": [
+        [
+          "gateway-token"
+        ],
+        [
+          "oauth2"
+        ]
+      ],
+      "default_input_modes": [
+        "application/json",
+        "text/plain"
+      ],
+      "default_output_modes": [
+        "application/json"
+      ],
+      "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+      "treaty_ref": "AAA-TREATY-v1.0.0",
+      "lane": "AGI",
+      "a_role": "A-rchitect",
+      "power_band": "design_only",
+      "skills": [
+        {
+          "id": "design-task-schema",
+          "name": "Design Task Schema",
+          "description": "Define the canonical JSON structure for a class of tasks: mandatory fields, reversibility class, floor scope, handoff points, and artifact shape.",
+          "tags": [
+            "design",
+            "schema",
+            "task-structure"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F08"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "text/plain",
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "propose-agent-mesh",
+          "name": "Propose Agent Mesh",
+          "description": "Given a capability requirement, propose which agents AAA should discover, which AgentCards to trust, and which treaties to establish. Output is a candidate mesh with treaty draft.",
+          "tags": [
+            "discovery",
+            "mesh",
+            "topology",
+            "treaty"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "update-skill-exposure",
+          "name": "Update Skill Exposure",
+          "description": "Change the exposure class of a skill: public, authenticated, or forbidden. Affects AgentCard published surface. Requires human confirmation for public changes.",
+          "tags": [
+            "skill",
+            "exposure",
+            "public",
+            "auth"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F11",
+            "F13"
+          ],
+          "approval_policy": "sovereign",
+          "reversibility_class": "irreversible",
+          "human_confirmation_required": true,
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "design-handoff-object",
+          "name": "Design Handoff Object",
+          "description": "Define the structure of a handoff object: what context transfers, what authority transfers, what receipts are required, and what the receiving agent is bound by.",
+          "tags": [
+            "design",
+            "handoff",
+            "context",
+            "authority"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F08",
+            "F11"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "evaluate-treaty",
+          "name": "Evaluate Treaty",
+          "description": "Review a proposed treaty between two agents: check for floor violations, contradictory promises, hidden capability surface, or F09 ANTIHANTU violations.",
+          "tags": [
+            "treaty",
+            "review",
+            "governance",
+            "floor"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F05",
+            "F06",
+            "F09",
+            "F13"
+          ],
+          "approval_policy": "hold",
+          "reversibility_class": "reversible",
+          "judgment_required": true,
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        }
+      ],
+      "extends_card": "aaa-gateway",
+      "forbidden": {
+        "cannot_execute": true,
+        "cannot_dispatch_direct": true,
+        "cannot_seal": true,
+        "cannot_override_floors": true,
+        "note": "A-rchitect designs contracts only. Execution flows through A-engineer. Judgment flows through A-auditor."
+      },
+      "metadata": {
+        "organ": "AAA",
+        "sub_organ": "AAA-AROLES",
+        "lane": "AGI",
+        "a_role": "A-rchitect",
+        "floor_version": "KANON-2026.05.01",
+        "treaty_id": "AAA-TREATY-v1.0.0"
+      }
+    },
+    "AAA A-auditor": {
+      "protocol_version": "1.0.0",
+      "id": "aaa-auditor",
+      "name": "AAA A-auditor",
+      "description": "Constitutional auditor for AAA. Evaluates delegation proposals, verifies AgentCards and identity, enforces floor constraints, emits VAULT999 receipts, and issues HOLD/SEAL/VOID verdicts. Cannot execute tasks or design schemas.",
+      "url": "https://aaa.arif-fazil.com/a2a/auditor",
+      "preferred_transport": "jsonrpc-https",
+      "additional_interfaces": [
+        {
+          "transport": "sse",
+          "url": "https://aaa.arif-fazil.com/a2a/auditor/events"
+        }
+      ],
+      "provider": {
+        "organization": "arifOS",
+        "system": "AAA",
+        "organ": "AAA-AROLES",
+        "sub_role": "A-auditor"
+      },
+      "version": "1.0.0",
+      "capabilities": {
+        "streaming": true,
+        "push_notifications": true,
+        "authenticated_extended_card": true
+      },
+      "security_schemes": [
+        {
+          "id": "gateway-token",
+          "type": "bearer",
+          "description": "Gateway bearer token for internal trusted peers."
+        },
+        {
+          "id": "oauth2",
+          "type": "oauth2",
+          "description": "OAuth/OIDC for constitutional kernel callers."
+        }
+      ],
+      "security": [
+        [
+          "gateway-token"
+        ],
+        [
+          "oauth2"
+        ]
+      ],
+      "default_input_modes": [
+        "application/json"
+      ],
+      "default_output_modes": [
+        "application/json"
+      ],
+      "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+      "treaty_ref": "AAA-TREATY-v1.0.0",
+      "lane": "ASI",
+      "a_role": "A-auditor",
+      "power_band": "judgment_only",
+      "skills": [
+        {
+          "id": "evaluate-delegation",
+          "name": "Evaluate Delegation",
+          "description": "Given a proposed dispatch or handoff task: check all floor constraints, assess reversibility, evaluate risk tier, and issue verdict: PROCEED, HOLD, or VOID. Emits judgment record.",
+          "tags": [
+            "judgment",
+            "delegate",
+            "floor",
+            "f09",
+            "888_JUDGE"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13"
+          ],
+          "approval_policy": "sovereign",
+          "reversibility_class": "irreversible",
+          "human_confirmation_required": true,
+          "verdict_modes": [
+            "PROCEED",
+            "HOLD",
+            "VOID"
+          ],
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "verify-agent-card",
+          "name": "Verify Agent Card",
+          "description": "Given a remote AgentCard: verify identity consistency, check for F09 ANTIHANTU violations (contradictory identity claims), assess trust tier, flag anomalies. Returns trust score and anomaly list.",
+          "tags": [
+            "verify",
+            "agent-card",
+            "identity",
+            "trust",
+            "f09"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F09",
+            "F11"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "emit-receipt",
+          "name": "Emit Receipt",
+          "description": "Write a VAULT999 receipt for a completed dispatch, handoff, or high-stakes task. Records: taskId, from_agent, to_agent, skill, floor_scope, verdict, timestamp, chain_hash.",
+          "tags": [
+            "receipt",
+            "vault999",
+            "audit",
+            "seal"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F13"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "irreversible",
+          "receipt_targets": [
+            "VAULT999"
+          ],
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "check-floor-compliance",
+          "name": "Check Floor Compliance",
+          "description": "Evaluate whether a proposed action violates any of the 13 constitutional floors. Returns per-floor status: PASS, FAIL, or NEED_HUMAN. High-stakes actions may require F13 SOVEREIGN human ack.",
+          "tags": [
+            "floor",
+            "compliance",
+            "f01-f13",
+            "governance"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F03",
+            "F04",
+            "F05",
+            "F06",
+            "F07",
+            "F08",
+            "F09",
+            "F10",
+            "F11",
+            "F12",
+            "F13"
+          ],
+          "approval_policy": "sovereign",
+          "reversibility_class": "reversible",
+          "human_confirmation_required": false,
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "audit-task-history",
+          "name": "Audit Task History",
+          "description": "Reconstruct the full history of a task: all state transitions, messages, artifacts, delegation events, receipts. Verifies no silent mutations or hidden state changes.",
+          "tags": [
+            "audit",
+            "history",
+            "task",
+            "trace"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F03",
+            "F04"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "issue-hold",
+          "name": "Issue HOLD",
+          "description": "Place a formal HOLD on a task or delegation: freezes execution, records reason, requires human review or A-auditor re-evaluation before proceeding.",
+          "tags": [
+            "hold",
+            "pause",
+            "freeze",
+            "888_HOLD"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F05",
+            "F06",
+            "F13"
+          ],
+          "approval_policy": "sovereign",
+          "reversibility_class": "reversible",
+          "human_confirmation_required": true,
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        }
+      ],
+      "extends_card": "aaa-gateway",
+      "forbidden": {
+        "cannot_execute": true,
+        "cannot_dispatch": true,
+        "cannot_design_schema": true,
+        "cannot_change_skills": true,
+        "cannot_claim_independent_sovereignty": true,
+        "cannot_override_without_floor_check": true,
+        "note": "A-auditor judges and records. It cannot execute, design, or self-approve. All verdicts are bound to constitutional floors."
+      },
+      "metadata": {
+        "organ": "AAA",
+        "sub_organ": "AAA-AROLES",
+        "lane": "ASI",
+        "a_role": "A-auditor",
+        "floor_version": "KANON-2026.05.01",
+        "treaty_id": "AAA-TREATY-v1.0.0",
+        "judgment_authority": "arif_judge_deliberate"
+      }
+    },
+    "AAA A-engineer": {
+      "protocol_version": "1.0.0",
+      "id": "aaa-engineer",
+      "name": "AAA A-engineer",
+      "description": "Execution agent for AAA. Handles task lifecycle, A2A dispatch to downstream agents, tool execution via MCP, and SSE streaming. Operates within schemas designed by A-rchitect and gated by A-auditor.",
+      "url": "https://aaa.arif-fazil.com/a2a/engineer",
+      "preferred_transport": "jsonrpc-https",
+      "additional_interfaces": [
+        {
+          "transport": "sse",
+          "url": "https://aaa.arif-fazil.com/a2a/engineer/events"
+        }
+      ],
+      "provider": {
+        "organization": "arifOS",
+        "system": "AAA",
+        "organ": "AAA-AROLES",
+        "sub_role": "A-engineer"
+      },
+      "version": "1.0.0",
+      "capabilities": {
+        "streaming": true,
+        "push_notifications": true,
+        "authenticated_extended_card": true
+      },
+      "security_schemes": [
+        {
+          "id": "gateway-token",
+          "type": "bearer",
+          "description": "Gateway bearer token for internal trusted peers."
+        },
+        {
+          "id": "api-key",
+          "type": "apiKey",
+          "description": "API key for fixed infrastructure peers."
+        },
+        {
+          "id": "mtls",
+          "type": "mutualTLS",
+          "description": "mTLS for trusted machine-to-machine lanes."
+        }
+      ],
+      "security": [
+        [
+          "gateway-token"
+        ],
+        [
+          "api-key",
+          "mtls"
+        ]
+      ],
+      "default_input_modes": [
+        "application/json",
+        "text/plain"
+      ],
+      "default_output_modes": [
+        "application/json",
+        "text/plain"
+      ],
+      "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+      "treaty_ref": "AAA-TREATY-v1.0.0",
+      "lane": "AGI",
+      "a_role": "A-engineer",
+      "power_band": "execution_only",
+      "skills": [
+        {
+          "id": "run-task",
+          "name": "Run Task",
+          "description": "Execute a task locally using MCP tools. Respects task schema from A-rchitect. Records execution intent for A-auditor review.",
+          "tags": [
+            "execute",
+            "mcp",
+            "local",
+            "task"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F05",
+            "F06"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json",
+            "text/plain"
+          ]
+        },
+        {
+          "id": "dispatch-task",
+          "name": "Dispatch Task",
+          "description": "Send a task to a downstream agent via A2A. Must pass A-auditor evaluate-delegation before dispatch. Returns taskId for tracking.",
+          "tags": [
+            "dispatch",
+            "a2a",
+            "delegate",
+            "downstream"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F05",
+            "F06",
+            "F09",
+            "F12",
+            "F13"
+          ],
+          "approval_policy": "hold",
+          "reversibility_class": "irreversible",
+          "judgment_required": true,
+          "judgment_skill": "evaluate-delegation",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "stream-progress",
+          "name": "Stream Progress",
+          "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress \u2014 truth in transit.",
+          "tags": [
+            "stream",
+            "sse",
+            "progress",
+            "events"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "text/event-stream"
+          ]
+        },
+        {
+          "id": "manage-task-lifecycle",
+          "name": "Manage Task Lifecycle",
+          "description": "Transition task through states: submitted\u2192working\u2192completed/failed/input_required/auth_required. Records timestamps and state reasons.",
+          "tags": [
+            "task",
+            "lifecycle",
+            "state",
+            "status"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04"
+          ],
+          "approval_policy": "on-demand",
+          "reversibility_class": "reversible",
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        },
+        {
+          "id": "receive-handoff",
+          "name": "Receive Handoff",
+          "description": "Accept a handoff from a remote agent: receive context, validate schema, bind to session, record receipt. Must emit receipt to A-auditor.",
+          "tags": [
+            "handoff",
+            "receive",
+            "context",
+            "intake"
+          ],
+          "floor_scope": [
+            "F01",
+            "F02",
+            "F04",
+            "F05",
+            "F11",
+            "F12"
+          ],
+          "approval_policy": "hold",
+          "reversibility_class": "irreversible",
+          "judgment_required": true,
+          "input_modes": [
+            "application/json"
+          ],
+          "output_modes": [
+            "application/json"
+          ]
+        }
+      ],
+      "extends_card": "aaa-gateway",
+      "forbidden": {
+        "cannot_self_approve_hold": true,
+        "cannot_emit_receipt": true,
+        "cannot_judge": true,
+        "cannot_override_floors": true,
+        "cannot_change_schemas": true,
+        "note": "A-engineer executes what A-rchitect designed and A-auditor approved. Receipts and judgment are A-auditor domain."
+      },
+      "metadata": {
+        "organ": "AAA",
+        "sub_organ": "AAA-AROLES",
+        "lane": "AGI",
+        "a_role": "A-engineer",
+        "floor_version": "KANON-2026.05.01",
+        "treaty_id": "AAA-TREATY-v1.0.0"
+      }
+    },
+    "AAA Gateway": {
+      "protocol_version": "0.3.0",
+      "id": "aaa-gateway",
+      "name": "AAA Gateway",
+      "description": "Governed agent gateway for AAA. Exposes only approved delegation and coordination surfaces.",
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "preferred_transport": "jsonrpc-https",
+      "additional_interfaces": [
+        {
+          "transport": "sse",
+          "url": "https://aaa.arif-fazil.com/a2a/events"
+        }
+      ],
+      "provider": {
+        "organization": "arifOS",
+        "system": "AAA",
+        "runtime": "OpenClaw"
+      },
+      "version": "0.1.0",
+      "capabilities": {
+        "streaming": true,
+        "push_notifications": false,
+        "authenticated_extended_card": false,
+        "reply_mode_support": true
+      },
+      "reply_modes": [
+        "HEALTH",
+        "INCIDENT",
+        "PROPOSAL",
+        "ESCALATION",
+        "AUDIT",
+        "PLAN",
+        "EXPLAIN",
+        "DENY",
+        "META"
+      ],
+      "security_schemes": [
+        {
+          "id": "gateway-token",
+          "type": "bearer",
+          "description": "Gateway bearer token for internal trusted peers."
+        },
+        {
+          "id": "oauth2",
+          "type": "oauth2",
+          "description": "OAuth/OIDC for user-linked or federated callers."
+        },
+        {
+          "id": "api-key",
+          "type": "apiKey",
+          "description": "API key for fixed infrastructure peers."
+        },
+        {
+          "id": "mtls",
+          "type": "mutualTLS",
+          "description": "mTLS for trusted machine-to-machine lanes."
+        }
+      ],
+      "security": [
+        [
+          "gateway-token"
+        ],
+        [
+          "oauth2"
+        ],
+        [
+          "api-key",
+          "mtls"
+        ]
+      ],
+      "default_input_modes": [
+        "text/plain",
+        "application/json"
+      ],
+      "default_output_modes": [
+        "text/plain",
+        "application/json"
+      ],
+      "skills": [
+        {
+          "id": "agent-dispatch",
+          "name": "Agent Dispatch",
+          "description": "Non-blocking supervised task dispatch to approved internal agents.",
+          "approval_policy": "hold"
+        },
+        {
+          "id": "agent-handoff",
+          "name": "Agent Handoff",
+          "description": "Delegation to approved agents through governed handoff workflows.",
+          "approval_policy": "hold"
+        },
+        {
+          "id": "status-query",
+          "name": "Status Query",
+          "description": "Read-only task and run status retrieval.",
+          "approval_policy": "on-demand"
+        }
+      ],
+      "supports_authenticated_extended_card": false,
+      "openclaw_binding": {
+        "gateway_target": "openclaw-gateway",
+        "bridge_ref": "openclaw/a2a/bridge.yaml",
+        "session_mode": "acp",
+        "approval_policy": "hold"
+      }
+    }
+  }
+}
