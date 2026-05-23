@@ -714,3 +714,12 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-05-23T09:14:05Z
 
 ---
+
+## [2026-05-23] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-05-23.json`
+- **When:** 2026-05-23T09:35:18Z
+
+---
