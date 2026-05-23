@@ -1,0 +1,14 @@
+{
+  "scope_name": "AAA_WIKI",
+  "repo_path": "/root/AAA/wiki",
+  "created_at_unix": 1779448940,
+  "files_indexed": 170,
+  "chunks_indexed": 371,
+  "languages": {
+    "markdown": 112,
+    "json": 57,
+    "python": 1
+  },
+  "index_path": "/root/AAA/wiki/.arifos/wiki_index.jsonl",
+  "files_path": "/root/AAA/wiki/.arifos/wiki_files.jsonl"
+}
