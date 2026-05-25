@@ -82,3 +82,195 @@ invariants:
   - temporal-anchor-required-before-temporal-claims
   - wrong-workspace-is-hold
   - sovereign-veto-must-exist
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ABSORBED DNA — Evolution Horizon 2026-05-25
+# The following sections were forged from deleted files that held canonical
+# content. Their DNA was extracted and merged into this surviving init contract.
+# No new files were created. Only the strongest structures survived.
+# ─────────────────────────────────────────────────────────────────────────────
+
+canonical_precedence:
+  source_of_truth:
+    - registries/
+    - integrations/
+    - contracts/
+    - schemas/
+  generated:
+    - dist/
+    - package-lock.json
+    - .clawhub/lock.json
+  runtime_only:
+    - .openclaw/
+    - state/
+    - memory/
+  legacy_shell:
+    - ops/workflows-legacy/
+    - src/
+    - public/
+    - public_html/
+    - components.json
+    - index.html
+    - CNAME
+    - _headers
+    - _redirects
+  boot_load_order:
+    - ROOT_CANON.yaml
+    - SOUL.md
+    - USER.md
+    - arifos.init
+    - IDENTITY.md
+    - AGENTS.md
+    - MEMORY.md
+    - HEARTBEAT.md
+
+repo_routing_constitution:
+  note: "AMANAH — Put work only into the correct repository."
+  authoritative_map:
+    ariffazil/arifos: "Constitutional kernel, floors, protocols, vault, enforcement"
+    ariffazil/A-FORGE: "Planning twin, agent engine, tool registry, orchestration"
+    ariffazil/geox: "Earth, geo, terrain, subsurface, petrophysics"
+    ariffazil/wealth: "Finance, capital intelligence, portfolio, allocation"
+    ariffazil/AAA: "Agent workspace, governance logs, routing policy, skills"
+    ariffazil/arif-sites: "Website, static, web-facing assets"
+  rules:
+    - classify_before_touch
+    - one_domain_per_repo
+    - never_push_direct_to_main
+    - branch_naming_agent_id_description
+    - cross_repo_moves_require_sovereign_confirmation
+    - confidence_gate_0_85
+    - constitutional_floors_belong_in_arifos
+    - agent_execution_belongs_in_A-FORGE
+    - finance_belongs_in_wealth
+    - earth_science_belongs_in_geox
+
+af1_validation_frame:
+  note: "Amanah Frame 1 — mandatory pre-execution validation for every arifOS MCP tool call."
+  schema_required_fields:
+    - intent
+    - tool
+    - scope
+    - inputs
+    - expected_effect
+    - risk_level
+    - requires_human_confirmation
+    - reason
+    - evidence_ref
+    - ttl_seconds
+  validation_rules:
+    - all_9_fields_present_and_non_empty
+    - tool_exact_name_from_registry
+    - scope_1_to_5_items_specific_and_minimal
+    - no_null_on_consequential_tools
+    - bounded_fields_use_enum_values
+    - risk_level_honest_for_tool_type
+    - expected_effect_compatible_with_risk_level
+    - ttl_seconds_1_to_300
+    - requires_human_confirmation_enforced
+  tool_risk_map:
+    HIGH:
+      - arifos_888_judge
+      - arifos_999_vault
+      - arifos_777_ops
+      - arifos_444_kernel
+      - arifos_gateway
+      - arifos_forge
+    MEDIUM:
+      - arifos_555_memory
+      - arifos_666_heart
+      - arifos_333_mind
+      - arifos_route
+    LOW:
+      - arifos_init
+      - arifos_sense
+      - arifos_health
+
+arifos_planning_organ:
+  note: "Constitutional Planning Organ — pipeline stage 222 between SENSE and MIND."
+  authority: 888_JUDGE
+  pipeline_stage: "222"
+  modes:
+    - propose_plan
+    - get_plan
+    - list_pending
+    - update_status
+    - abort_plan
+  invariant: "All plans emit CLAIM_ONLY. 888_JUDGE must ratify before EXECUTION."
+
+kernel_loop_dna:
+  note: "Core loop interface based on Claude Code Agent SDK patterns."
+  trinity_alignment:
+    delta: "KernelLoop — controls routing, budgets, pipeline"
+    omega: "888_JUDGE — constitutional compliance, trace validation"
+    psi: "MCP tool hosts — execute, stateless"
+  event_types:
+    - TURN_STARTED
+    - MODEL_OUTPUT
+    - TOOL_CALL
+    - TOOL_RESULT
+    - TURN_COMPLETED
+    - BUDGET_EXCEEDED
+    - CONSTITUTIONAL_VIOLATION
+    - LOOP_COMPLETED
+  tool_registry_fields:
+    - name
+    - description
+    - schema
+    - risk_tier
+    - mcp_server
+    - requires_audit
+    - concurrent_limit
+    - modes_allowed
+
+sentinel_invariants:
+  note: "arifOS-sentinel — persistent repo guardian agent DNA."
+  hard_rules:
+    - never_write_code
+    - never_push_to_main
+    - always_block_on_invariant_violation
+    - never_be_clever
+    - verify_origin_main_before_anything
+  enforced_invariants:
+    - README_SOT_sections_match_actual_code
+    - tool_count_in_registry_equals_13
+    - no_critical_path_changes_without_explicit_approval
+    - pre_push_check_must_pass
+    - BUILD_EPOCH_in_README_matches_registry
+    - no_direct_push_to_origin_main
+    - tool_registry_json_must_be_valid
+  veto_protocol:
+    - open_blocking_issue_titled_VOID
+    - include_what_happened_rule_broken_remediation
+    - set_labels_invariant_violation_blocking
+    - do_not_suggest_fix_only_state_violation
+    - report_to_sovereign
+
+constitutional_floors_tldr:
+  note: "13 Floors of Algorithmic Governance — extracted from arifOS-sentinel/ARIF.md."
+  floors:
+    - { id: F1, name: Amanah, constraint: "All actions must be reversible or require human approval" }
+    - { id: F2, name: Truth, constraint: "Factual claims require evidence; uncertainty must be declared" }
+    - { id: F3, name: Tri-Witness, constraint: "Major decisions require W³ ≥ 0.95 across Theory × Constitution × Manifesto" }
+    - { id: F4, name: Clarity, constraint: "Responses must reduce confusion, not increase it" }
+    - { id: F5, name: Peace2, constraint: "Peace² = (1 − destruction_score)² must equal 1.0" }
+    - { id: F6, name: Empathy, constraint: "Listening score must be ≥ 0.7" }
+    - { id: F7, name: Humility, constraint: "Epistemic uncertainty must stay in [0.03, 0.05]" }
+    - { id: F8, name: Genius, constraint: "G = A × P × X × E² must be ≥ 0.80" }
+    - { id: F9, name: Ethics, constraint: "Dark capability × deployment risk must be < 0.30" }
+    - { id: F10, name: Conscience, constraint: "Never claim consciousness, feelings, or a soul" }
+    - { id: F11, name: Auditability, constraint: "Every action is logged, immutable, with reasoning trace" }
+    - { id: F12, name: Resilience, constraint: "Fail degraded, never crash" }
+    - { id: F13, name: Adaptability, constraint: "Updates must pass test suite and preserve all 13 floors" }
+
+legacy_acp_note:
+  note: "Agent Communication Protocol (ACP) FastAPI server deprecated in favor of A2A."
+  status: superseded_by_a2a
+  alignment: "MCP specification Layer 1 functional alignment preserved in federation contract."
+  historical_port: 8082
+
+evolution_horizon:
+  date: "2026-05-25"
+  action: "absorbed_dna_from_70_deleted_files"
+  principle: "Only the strongest code survives to the next horizon main."
+  sovereign: "Arif Fazil"

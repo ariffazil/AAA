@@ -102,3 +102,63 @@ invariants:
 
   - id: remote-execution-disabled
     rule: a2a/federation-bridge.yaml must keep runtime_policy.remote_execution_enabled=false.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# ABSORBED DNA — Evolution Horizon 2026-05-25
+# ─────────────────────────────────────────────────────────────────────────────
+
+legacy_acp_alignment:
+  note: "Anthropic MCP Specification Alignment — ACP bridge DNA merged into federation contract."
+  canonical_reference: "modelcontextprotocol/specification — GitHub (Functional Layer 1)"
+  alignment_points:
+    - "Tool Calling: all domain organs exposed via MCP servers"
+    - "Context Injection: MCP resource templates for dynamic context anchoring"
+    - "Capability Negotiation: agents and hosts negotiate during MCP handshake"
+    - "Transport: stdio and sse transports per MCP spec"
+  implementation_status: "ACP server (port 8082) superseded by A2A gateway. Alignment preserved as contract clause."
+
+openclaw_peer_bindings:
+  note: "OpenClaw A2A federation bridge bindings — absorbed from openclaw/a2a/bridge.yaml."
+  runtime_policy:
+    remote_execution_enabled: false
+  bindings:
+    - agent_id: aaa-gateway
+      host_binding: openclaw-gateway
+      type: control-plane
+      protocol_version: "1.0"
+      can_send_tasks: true
+      can_receive_results: true
+      auth_required: true
+    - agent_id: geox-witness
+      host_binding: geox-acp
+      type: domain-witness
+      protocol_version: "1.0"
+      can_send_tasks: true
+      can_receive_results: true
+      auth_required: true
+    - agent_id: wealth-witness
+      host_binding: wealth-acp
+      type: domain-witness
+      protocol_version: "1.0"
+      can_send_tasks: true
+      can_receive_results: true
+      auth_required: true
+  peers:
+    - agent_id: geox-witness
+      type: domain-witness
+      protocol_version: "1.0"
+      can_send_tasks: true
+      can_receive_results: true
+      auth_required: true
+    - agent_id: arifos-kernel
+      type: governance
+      protocol_version: "1.0"
+      can_send_tasks: true
+      can_receive_results: true
+      auth_required: true
+    - agent_id: aaa-gateway
+      type: control-plane
+      protocol_version: "1.0"
+      can_send_tasks: true
+      can_receive_results: true
+      auth_required: true

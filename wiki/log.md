@@ -777,3 +777,40 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-05-25T09:35:01Z
 
 ---
+
+## [2026-05-25] archive | SEARAH — RM70 Billion Gas Deal Investigation (SEALED EVIDENCE)
+
+- **Who:** Arif Fazil | arifOS Federation Intelligence
+- **SEAL:** 999 | 2026-05-06 | Version 1.2 — F2 Verified
+- **Status:** Evidence archived. Original PDFs and generators removed from repo. Markdown truth preserved below.
+- **Finding:** PETRONAS-Eni SEARAH LIMITED JV (Company No. 17027115, UK). USD 15B+ over 5 years (~RM70B). Registered at ENI House, London. 50/50 split. SIC 64209 (head offices, not operator). No publicly filed JV agreement. English law governs. No Malaysia-Italy BIT. No active Malaysia-UK BIT.
+- **Key Risk:** Dispute resolution sits in London, not Malaysian courts. Malaysian citizens/regulators have reduced access.
+- **Source DNA:** Absorbed from `SEARAH/SEARAH-EXPOSE-FINAL.md` before deletion. Full evidence chain in SEARAH-TRUTH-DB.md (external).
+
+---
+
+## [2026-05-25] archive | FORGE-HERMES Repair — JWT Secret Synchronization (SEALED)
+
+- **Who:** OpenClaw FORGE | Hermes ASI
+- **Date:** 2026-04-28 21:30 UTC
+- **Root Cause:** arifOS MCP v2026.04.28-HORIZON requires HS256 JWT signed with ARIFOS_INTERNAL_SECRET_HERMES (sub=system:hermes, iss=arifos-internal, aud=arifOS, alg=HS256). Accept header must include application/json + text/event-stream.
+- **Fix:** Secret generated and written to `/root/.hermes/.env` and `/root/arifOS/.env`. Docker Compose override created at `/root/arifOS/deployments/af-forge/docker-compose.override.yml`.
+- **Status:** Repair cycle complete. Original report and restart script removed. DNA preserved in wiki and a2a-server vault logic.
+- **Source DNA:** Absorbed from `FORGE-HERMES-REPAIR-report.txt` and `hermes-restart.sh`.
+
+---
+
+## [2026-05-25] forge | Evolution Horizon — 70 Deleted Files Absorbed into Surviving Canon
+
+- **Who:** A-FORGE (Constitutional Clerk)
+- **Action:** Mass extinction event. ~70 untracked/deleted files in AAA were evaluated. Their DNA was extracted and merged into 5 surviving files. No new files committed.
+- **Survivors:**
+  - `contracts/decisions/888-999-decisions.yaml` ← vault/decisions/*.json
+  - `contracts/init/000-init.yaml` ← ROOT_CANON, REPO_ROUTING, AF1, arifos_plan, kernel_loop, sentinel, 13 floors
+  - `contracts/federation/111-sense.yaml` ← acp alignment, openclaw bridge
+  - `registries/skills.yaml` ← evolution ledger
+  - `wiki/log.md` ← SEARAH, FORGE-HERMES repair, this entry
+- **Principle:** DITEMPA BUKAN DIBERI — Only the strongest code survives to the next horizon main.
+- **Sovereign:** Arif Fazil
+
+---

@@ -387,3 +387,27 @@ skills:
     version_lock:
       schema_version: "1"
       artifact_hash: pending
+
+# ─────────────────────────────────────────────────────────────────────────────
+# EVOLUTION LEDGER — Absorbed DNA from deleted OpenClaw / ACP structures
+# No new skill files were created. Agent cards and bridge configs were merged
+# into federation contract 111-sense.yaml and this registry metadata.
+# ─────────────────────────────────────────────────────────────────────────────
+
+evolution_ledger:
+  horizon: "2026-05-25"
+  absorbed_from:
+    - source: openclaw/agents/*/agent-card.yaml
+      destination: contracts/federation/111-sense.yaml — openclaw_peer_bindings
+      note: "Agent card DNA preserved as peer binding entries in federation contract."
+    - source: openclaw/a2a/bridge.yaml
+      destination: contracts/federation/111-sense.yaml — openclaw_peer_bindings
+      note: "A2A bridge runtime policy and bindings absorbed into federation contract."
+    - source: openclaw/gateway/default.yaml
+      note: "Gateway defaults evolved into A2A server ENV defaults in a2a-server/server.js."
+    - source: acp/MCP_SPEC_ALIGNMENT.md
+      destination: contracts/federation/111-sense.yaml — legacy_acp_alignment
+      note: "MCP Layer 1 alignment preserved as contract clause; ACP runtime superseded."
+    - source: acp/server.py
+      note: "ACP FastAPI server deprecated. Hermes agent card logic migrated to A2A gateway."
+  sovereign: "Arif Fazil"
