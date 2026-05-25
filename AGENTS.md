@@ -1,13 +1,16 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-05-22
-valid_from: 2026-05-22
-valid_until: 2026-06-22
+last_verified: 2026-05-25
+valid_from: 2026-05-25
+valid_until: 2026-06-25
 confidence: high
 scope: /root/AAA
 -->
 
-# AGENTS.md — AAA | Control Plane Agent Gateway
+# AGENTS.md — AAA | Federation Control Plane
+
+> **Canonical Identity:** Agent Operations Cockpit / Federation Control Plane
+> **Authoritative Doc:** `FEDERATION_COCKPIT.md`
 
 > **DITEMPA BUKAN DIBERI** — Control is forged, not given.
 
@@ -19,7 +22,8 @@ Arif. This is the **AAA** organ of the arifOS federation — the Control Plane A
 
 ## What This Repo Is
 
-The human-facing control plane and A2A agent gateway. AAA provides:
+The human-facing control plane and A2A agent gateway for the arifOS Federation.
+AAA provides:
 - **React 19 dashboard** (Cockpit) — constitutional floors, domain health, operator tasks
 - **A2A v1.0.0 TypeScript server** — Agent-to-Agent mesh protocol (port 3001)
 - **shadcn/ui component library** — 50+ Radix + Tailwind primitives
