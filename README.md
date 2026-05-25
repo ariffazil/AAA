@@ -3,6 +3,11 @@
 > **Repository:** https://github.com/ariffazil/AAA
 > **Purpose:** Agent control plane for arifOS Federation
 
+> ⚠️ **CANONICAL AUTHORITY NOTICE:**
+> AAA is the **control plane / cockpit**, not a constitutional authority.
+> The sovereign constitution and F1-F13 floors live in `ariffazil/arifOS`.
+> For live federation status, see `ariffazil/arifOS/FEDERATION_STATUS.md`.
+
 ---
 
 ## What is AAA?
@@ -304,4 +309,4 @@ This repository is a core organ of the **arifOS Federation**:
 *   **Biological Substrate (WELL):** [C:\ariffazil\well](file:///C:/Users/User/../ariffazil/well)
 *   **Informational Surfaces (arif-sites):** [C:\ariffazil\arif-sites](file:///C:/Users/User/../ariffazil/arif-sites)
 
-*Unified under the arifOS Sovereign Constitution (F1�F13).*
+*Unified under the arifOS Sovereign Constitution (F1�F13).*
