@@ -27,7 +27,6 @@ decisions:
     separation_of_duties:
       proposer_must_differ_from_approver: true
       executor_must_differ_from_approver: true
-    vault_export_ref: federation-message-ingress-release
     publication_profile: internal-redacted
 
   - id: institutional-model-adoption
@@ -51,24 +50,6 @@ decisions:
     separation_of_duties:
       proposer_must_differ_from_approver: false
       executor_must_differ_from_approver: false
-    vault_export_ref: institutional-model-adoption
     publication_profile: internal-redacted
 
-vault_exports:
-  - id: federation-message-ingress-release
-    decision_ref: federation-message-ingress-release
-    path: vault/decisions/federation-message-ingress-release.json
-    format: json
-    seal_status: hold
-    hash_algorithm: sha256
-    redaction_profile: internal-redacted
-    mutability: immutable-once-sealed
-
-  - id: institutional-model-adoption
-    decision_ref: institutional-model-adoption
-    path: vault/decisions/institutional-model-adoption.json
-    format: json
-    seal_status: proposed
-    hash_algorithm: sha256
-    redaction_profile: internal-redacted
-    mutability: immutable-once-sealed
+vault_exports: []

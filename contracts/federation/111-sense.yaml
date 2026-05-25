@@ -8,7 +8,7 @@ purpose: Publish honest A2A discovery surfaces and govern ingress posture for AA
 deployment:
   hosting_model: static-site
   public_base_url: https://aaa.arif-fazil.com
-  runtime_bridge_ref: openclaw/a2a/bridge.yaml
+  runtime_bridge_ref: a2a/federation-bridge.yaml
   notes: Static deployment can publish discovery assets, but live message ingress remains held until a runtime bridge is exposed.
 
 public_surfaces:
@@ -87,7 +87,7 @@ ingress_surfaces:
     allowed_peers_ref: a2a/policies/allowed-peers.yaml
     skills_exposure_ref: a2a/policies/skills-exposure.yaml
     registry_ref: a2a/registry/agents.yaml
-    runtime_bridge_ref: openclaw/a2a/bridge.yaml
+    runtime_bridge_ref: a2a/federation-bridge.yaml
     hold_reason: Static AAA deployment publishes discovery assets only; POST message ingress is not implemented in this repo.
 
 invariants:
@@ -101,4 +101,4 @@ invariants:
     rule: Published A2A card aliases must match a2a/agent-cards/aaa-gateway.json byte-for-byte after JSON parse.
 
   - id: remote-execution-disabled
-    rule: openclaw/a2a/bridge.yaml must keep runtime_policy.remote_execution_enabled=false.
+    rule: a2a/federation-bridge.yaml must keep runtime_policy.remote_execution_enabled=false.
