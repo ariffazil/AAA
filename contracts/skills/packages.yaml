@@ -7,7 +7,7 @@ skill_packages:
     version: "0.1.0"
     metadata:
       name: OpenClaw A2A Bridge
-      description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
+      description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch. Legacy skill — retained for workflow compatibility.
       owner: AAA
       risk_tier: medium
       knowledge_basis:
@@ -31,15 +31,14 @@ skill_packages:
     install_hooks:
       - host_id: openclaw-gateway
         method: generated-config
-        target_path: openclaw/a2a
+        target_path: skills/openclaw-a2a-bridge
     source_paths:
       - registries/skills.yaml
-      - registries/workflows.yaml
-      - a2a/policies/auth.yaml
+      - skills/openclaw-a2a-bridge/SKILL.md
     runtime_exports:
-      - openclaw/exports/agent-binding-maxhermes.json
+      - skills/openclaw-a2a-bridge/SKILL.md
     examples:
-      - openclaw/OPENCLAW_INVENTORY.md
+      - OpenClaw-to-AAA gateway handoff
     tests:
       - npm run validate:aaa
     version_lock:
@@ -54,7 +53,7 @@ skill_packages:
     version: "0.1.0"
     metadata:
       name: GEOX Grounding
-      description: Force Earth-sensitive reasoning through GEOX witness paths.
+      description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure geological claims are grounded in evidence.
       owner: AAA
       risk_tier: medium
       knowledge_basis:
@@ -77,11 +76,426 @@ skill_packages:
         target_path: skills/geox-grounding
     source_paths:
       - registries/skills.yaml
-      - openclaw/plugins/allowlist.yaml
+      - skills/geox-grounding/SKILL.md
     runtime_exports:
-      - openclaw/exports/agent-binding-maxhermes.json
+      - skills/geox-grounding/SKILL.md
     examples:
-      - GEOX grounding example
+      - Validate subsurface claim against GEOX well data
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: repo-hygiene-audit
+    skill_ref: repo-hygiene-audit
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: Repository Hygiene Audit
+      description: Inspect a GitHub repo for structural chaos, authority conflicts, and cleanup needs. Produce an audit report and remediation plan.
+      owner: AAA
+      risk_tier: medium
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - terminal
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/repo-hygiene-audit/SKILL.md
+      - skills/repo-hygiene-audit/examples.md
+    runtime_exports:
+      - skills/repo-hygiene-audit/SKILL.md
+    examples:
+      - Audit ariffazil/AAA for constitutional leaks and debris
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: mcp-smoke-test
+    skill_ref: mcp-smoke-test
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: MCP Server Smoke Test
+      description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors.
+      owner: AAA
+      risk_tier: low
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - status-query
+        - delegate_task
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/mcp-smoke-test/SKILL.md
+    runtime_exports:
+      - skills/mcp-smoke-test/SKILL.md
+    examples:
+      - Daily federation health check across all organs
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: agent-onboarding
+    skill_ref: agent-onboarding
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: Agent Onboarding
+      description: Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent card, registry entry, and SOUL.md.
+      owner: AAA
+      risk_tier: medium
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - file-write
+        - patch
+        - file-read
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/agent-onboarding/SKILL.md
+    runtime_exports:
+      - skills/agent-onboarding/SKILL.md
+    examples:
+      - Onboard a new "security-auditor" agent into AAA
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: github-pr-review
+    skill_ref: github-pr-review
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: GitHub PR Governance Review
+      description: Governed checklist for reviewing GitHub pull requests in the arifOS federation. Ensures PRs meet constitutional, structural, and safety standards before merge.
+      owner: AAA
+      risk_tier: medium
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills:
+        - repo-hygiene-audit
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - patch
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/github-pr-review/SKILL.md
+    runtime_exports:
+      - skills/github-pr-review/SKILL.md
+    examples:
+      - Review a cross-repo architectural PR before merge
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: service-health-triage
+    skill_ref: service-health-triage
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: Federation Service Health Triage
+      description: Diagnose which federation services are up, down, or drifting. Produce a prioritized remediation plan.
+      owner: AAA
+      risk_tier: low
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills:
+        - mcp-smoke-test
+      servers: []
+      tools:
+        - status-query
+        - terminal
+        - file-read
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/service-health-triage/SKILL.md
+    runtime_exports:
+      - skills/service-health-triage/SKILL.md
+    examples:
+      - Morning federation status check
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: secret-safety-scan
+    skill_ref: secret-safety-scan
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: Secret Safety Scan
+      description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Produce a findings report with remediation steps.
+      owner: AAA
+      risk_tier: high
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - session_search
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/secret-safety-scan/SKILL.md
+    runtime_exports:
+      - skills/secret-safety-scan/SKILL.md
+    examples:
+      - Pre-commit secret sweep on AAA repo
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: readme-truth-check
+    skill_ref: readme-truth-check
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: README Truth Check
+      description: Verify that a repo's README accurately describes its current structure, ports, dependencies, and authority boundaries. Detect drift between docs and reality.
+      owner: AAA
+      risk_tier: low
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills:
+        - repo-hygiene-audit
+      servers: []
+      tools:
+        - file-read
+        - terminal
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/readme-truth-check/SKILL.md
+    runtime_exports:
+      - skills/readme-truth-check/SKILL.md
+    examples:
+      - Verify AAA README matches actual directory structure
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: parallel-authority-detection
+    skill_ref: parallel-authority-detection
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: Parallel Authority Detection
+      description: Detect when two or more repos claim the same authority, responsibility, or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
+      owner: AAA
+      risk_tier: high
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills:
+        - repo-hygiene-audit
+      servers: []
+      tools:
+        - web_search
+        - file-read
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/parallel-authority-detection/SKILL.md
+    runtime_exports:
+      - skills/parallel-authority-detection/SKILL.md
+    examples:
+      - Detect both AAA and arifOS claiming 888_JUDGE authority
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: pr-review-governance
+    skill_ref: pr-review-governance
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: PR Review Governance
+      description: High-level governance layer for pull request review across the federation. Ensures separation of duties, required signers, and constitutional compliance before merge.
+      owner: AAA
+      risk_tier: high
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills:
+        - github-pr-review
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - send_message
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/pr-review-governance/SKILL.md
+    runtime_exports:
+      - skills/pr-review-governance/SKILL.md
+    examples:
+      - Govern a high-risk PR touching multiple organs
+    tests:
+      - npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+      lock_file: contracts/skills/packages.yaml
+      export_format: yaml
+
+  - id: incident-escalation
+    skill_ref: incident-escalation
+    package_format: yaml
+    version: "1.0.0"
+    metadata:
+      name: Incident Escalation Protocol
+      description: Standard protocol for responding to federation incidents — service outages, security breaches, constitutional violations, or agent misbehavior.
+      owner: AAA
+      risk_tier: critical
+      knowledge_basis:
+        physics: false
+        math: false
+        language: true
+      maturity: active
+    dependencies:
+      skills:
+        - service-health-triage
+        - secret-safety-scan
+      servers: []
+      tools:
+        - status-query
+        - send_message
+        - delegate_task
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    install_hooks: []
+    source_paths:
+      - registries/skills.yaml
+      - skills/incident-escalation/SKILL.md
+    runtime_exports:
+      - skills/incident-escalation/SKILL.md
+    examples:
+      - Hermes agent starts sending unauthorized messages
     tests:
       - npm run validate:aaa
     version_lock:
