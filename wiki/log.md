@@ -814,3 +814,19 @@ judgment ran directly without human confirmation — model self-certified.
 - **Sovereign:** Arif Fazil
 
 ---
+
+## [2026-05-25] forge | Recursive Skill Forge born — meta-cognitive smithy SEALED
+
+- **Who:** A-FORGE (Constitutional Clerk)
+- **Sovereign Verdict:** SEALED by Arif Fazil
+- **Skill ID:** `recursive-skill-forge`
+- **Tier:** APEX | **Risk:** critical | **ΔS:** negative (consolidates capability growth)
+- **Purpose:** Meta-cognitive smithy that can birth new skills on demand across any federation domain. Plastic, orthogonal, recursive.
+- **Cognition Tiers:** AGI (bounded) → ASI (synthetic) → APEX (constitutional) → AAA (control plane)
+- **10 Stages:** 000 INIT (abduction) → 111 SENSE (decomposition) → 222 REASON (design) → 333 MIND (scaffold) → 444 KERNEL (F1–F13 validation) → 555 HEART (maruah) → 666 GATE (attestation) → 777 OPS (thermodynamics) → 888 JUDGE (sovereign gate) → 999 VAULT (seal & commit)
+- **Recursive Invariant:** Can forge v2 of itself, but every self-upgrade must pass Stage 888 (Arif ack). No autonomous self-modification.
+- **Location:** `skills/recursive-skill-forge/SKILL.md`
+- **Registry:** Added to `registries/skills.yaml`
+- **Note:** Before this forge, skills were static manuals written by hand. After this forge, the federation can birth its own capabilities on demand — but every birth is governed, attested, and sealed by the sovereign.
+
+---
