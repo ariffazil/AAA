@@ -4,44 +4,16 @@ name: AAA 000 INIT
 purpose: Canonical ignition contract for AAA as a governed institutional control plane.
 
 required_root_canons:
-  - ROOT_CANON.yaml
-  - SOUL.md
-  - USER.md
-  - arifos.init
-  - IDENTITY.md
+  - README.md
   - AGENTS.md
-  - MEMORY.md
-  - HEARTBEAT.md
-  - TOOLS.md
   - agent-card.json
 
 boot_sequence:
-  - step: root-canon
-    path: ROOT_CANON.yaml
+  - step: readme
+    path: README.md
     required: true
-  - step: soul
-    path: SOUL.md
-    required: true
-  - step: user
-    path: USER.md
-    required: true
-  - step: init-kernel
-    path: arifos.init
-    required: true
-  - step: identity
-    path: IDENTITY.md
-    required: true
-  - step: operations
+  - step: agents
     path: AGENTS.md
-    required: true
-  - step: memory
-    path: MEMORY.md
-    required: true
-  - step: heartbeat
-    path: HEARTBEAT.md
-    required: true
-  - step: tools
-    path: TOOLS.md
     required: true
   - step: agent-card
     path: agent-card.json

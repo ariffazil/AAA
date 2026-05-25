@@ -422,6 +422,7 @@ const AAA_AGENT_CARD = {
 const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
 const ENGINEER_CARD = require('./agent-cards/aaa-engineer.json');
 const AUDITOR_CARD = require('./agent-cards/aaa-auditor.json');
+const HERMES_CARD = require('./agent-cards/hermes-asi.json');
 
 // === ERROR CODES ===
 const ERROR_CODES = {
@@ -1050,6 +1051,7 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
       { id: 'aaa-architect', url: 'https://aaa.arif-fazil.com/a2a/architect', registered: true, role: 'internal', a_role: 'A-rchitect', lane: 'AGI' },
       { id: 'aaa-engineer', url: 'https://aaa.arif-fazil.com/a2a/engineer', registered: true, role: 'internal', a_role: 'A-engineer', lane: 'AGI' },
       { id: 'aaa-auditor', url: 'https://aaa.arif-fazil.com/a2a/auditor', registered: true, role: 'internal', a_role: 'A-auditor', lane: 'ASI' },
+      { id: 'hermes-asi', url: 'https://aaa.arif-fazil.com/a2a/hermes-asi', registered: true, role: 'external', a_role: 'Hermes-ASI', lane: 'ASI' },
       { id: 'geox-witness', url: 'https://geox.arif-fazil.com/a2a', registered: true, role: 'mesh', organ: 'GEOX' },
       { id: 'wealth-witness', url: 'https://wealth.arif-fazil.com/a2a', registered: true, role: 'mesh', organ: 'WEALTH' }
     ],
@@ -1075,6 +1077,12 @@ app.get('/a2a/auditor/agent-card.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.json(AUDITOR_CARD);
+});
+
+app.get('/a2a/hermes-asi/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(HERMES_CARD);
 });
 
 // Treaty route — links to the full treaty law

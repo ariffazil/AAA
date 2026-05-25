@@ -4,7 +4,7 @@ skills:
   - id: openclaw-a2a-bridge
     name: OpenClaw A2A Bridge
     version: "0.1.0"
-    description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
+    description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch. Legacy skill — retained for workflow compatibility.
     owner: AAA
     risk_tier: medium
     knowledge_basis:
@@ -28,9 +28,9 @@ skills:
     install_hooks:
       - host_id: openclaw-gateway
         method: generated-config
-        target_path: openclaw/a2a
+        target_path: skills/openclaw-a2a-bridge
     examples:
-      - openclaw/OPENCLAW_INVENTORY.md
+      - OpenClaw-to-AAA gateway handoff
     tests:
       - schema-parse
     version_lock:
@@ -40,7 +40,7 @@ skills:
   - id: geox-grounding
     name: GEOX Grounding
     version: "0.1.0"
-    description: Force Earth-sensitive reasoning through GEOX witness paths.
+    description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure geological claims are grounded in evidence.
     owner: AAA
     risk_tier: medium
     knowledge_basis:
@@ -62,9 +62,328 @@ skills:
         method: generated-config
         target_path: skills/geox-grounding
     examples:
-      - GEOX grounding example
+      - Validate subsurface claim against GEOX well data
     tests:
       - schema-parse
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: repo-hygiene-audit
+    name: Repository Hygiene Audit
+    version: "1.0.0"
+    description: Inspect a GitHub repo for structural chaos, authority conflicts, and cleanup needs. Produce an audit report and remediation plan.
+    owner: AAA
+    risk_tier: medium
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: repo-hygiene-audit
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - terminal
+    install_hooks: []
+    examples:
+      - Audit ariffazil/AAA for constitutional leaks and debris
+    tests:
+      - Detect duplicate authority files in wrong repos
+      - Detect stale references to moved directories
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: mcp-smoke-test
+    name: MCP Server Smoke Test
+    version: "1.0.0"
+    description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors.
+    owner: AAA
+    risk_tier: low
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: mcp-smoke-test
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - status-query
+        - delegate_task
+    install_hooks: []
+    examples:
+      - Daily federation health check across all organs
+    tests:
+      - arifOS port 8088 responds with 13 tools
+      - GEOX port 18081 responds with petrophysics tools
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: agent-onboarding
+    name: Agent Onboarding
+    version: "1.0.0"
+    description: Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent card, registry entry, and SOUL.md.
+    owner: AAA
+    risk_tier: medium
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: agent-onboarding
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - file-write
+        - patch
+        - file-read
+    install_hooks: []
+    examples:
+      - Onboard a new "security-auditor" agent into AAA
+    tests:
+      - Agent directory created with all required files
+      - Registry entry validates with npm run validate:aaa
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: github-pr-review
+    name: GitHub PR Governance Review
+    version: "1.0.0"
+    description: Governed checklist for reviewing GitHub pull requests in the arifOS federation. Ensures PRs meet constitutional, structural, and safety standards before merge.
+    owner: AAA
+    risk_tier: medium
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: github-pr-review
+    dependencies:
+      skills:
+        - repo-hygiene-audit
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - patch
+    install_hooks: []
+    examples:
+      - Review a cross-repo architectural PR before merge
+    tests:
+      - Detect constitutional file changes in non-arifOS repos
+      - Verify REPO= trailer in commit messages
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: service-health-triage
+    name: Federation Service Health Triage
+    version: "1.0.0"
+    description: Diagnose which federation services are up, down, or drifting. Produce a prioritized remediation plan.
+    owner: AAA
+    risk_tier: low
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: service-health-triage
+    dependencies:
+      skills:
+        - mcp-smoke-test
+      servers: []
+      tools:
+        - status-query
+        - terminal
+        - file-read
+    install_hooks: []
+    examples:
+      - Morning federation status check
+    tests:
+      - Detect mismatch between systemd claims and actual ports
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: secret-safety-scan
+    name: Secret Safety Scan
+    version: "1.0.0"
+    description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Produce a findings report with remediation steps.
+    owner: AAA
+    risk_tier: high
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: secret-safety-scan
+    dependencies:
+      skills: []
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - session_search
+    install_hooks: []
+    examples:
+      - Pre-commit secret sweep on AAA repo
+    tests:
+      - Detect fake AWS key in test fixture
+      - Ignore secrets in .env.example templates
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: readme-truth-check
+    name: README Truth Check
+    version: "1.0.0"
+    description: Verify that a repo's README accurately describes its current structure, ports, dependencies, and authority boundaries. Detect drift between docs and reality.
+    owner: AAA
+    risk_tier: low
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: readme-truth-check
+    dependencies:
+      skills:
+        - repo-hygiene-audit
+      servers: []
+      tools:
+        - file-read
+        - terminal
+    install_hooks: []
+    examples:
+      - Verify AAA README matches actual directory structure
+    tests:
+      - Detect phantom directory referenced in README
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: parallel-authority-detection
+    name: Parallel Authority Detection
+    version: "1.0.0"
+    description: Detect when two or more repos claim the same authority, responsibility, or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
+    owner: AAA
+    risk_tier: high
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: parallel-authority-detection
+    dependencies:
+      skills:
+        - repo-hygiene-audit
+      servers: []
+      tools:
+        - web_search
+        - file-read
+    install_hooks: []
+    examples:
+      - Detect both AAA and arifOS claiming 888_JUDGE authority
+    tests:
+      - Find duplicate CONSTITUTION.md files across repos
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: pr-review-governance
+    name: PR Review Governance
+    version: "1.0.0"
+    description: High-level governance layer for pull request review across the federation. Ensures separation of duties, required signers, and constitutional compliance before merge.
+    owner: AAA
+    risk_tier: high
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: pr-review-governance
+    dependencies:
+      skills:
+        - github-pr-review
+      servers: []
+      tools:
+        - web_search
+        - file-read
+        - send_message
+    install_hooks: []
+    examples:
+      - Govern a high-risk PR touching multiple organs
+    tests:
+      - Verify engineer cannot self-approve irreversible PR
+    version_lock:
+      schema_version: "1"
+      artifact_hash: pending
+
+  - id: incident-escalation
+    name: Incident Escalation Protocol
+    version: "1.0.0"
+    description: Standard protocol for responding to federation incidents — service outages, security breaches, constitutional violations, or agent misbehavior.
+    owner: AAA
+    risk_tier: critical
+    knowledge_basis:
+      physics: false
+      math: false
+      language: true
+    host_compatibility:
+      - claude-code
+      - codex
+      - opencode
+    package_ref: incident-escalation
+    dependencies:
+      skills:
+        - service-health-triage
+        - secret-safety-scan
+      servers: []
+      tools:
+        - status-query
+        - send_message
+        - delegate_task
+    install_hooks: []
+    examples:
+      - Hermes agent starts sending unauthorized messages
+    tests:
+      - Verify escalation reaches Arif within 60 seconds for critical incidents
     version_lock:
       schema_version: "1"
       artifact_hash: pending

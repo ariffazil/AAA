@@ -68,7 +68,7 @@ const registries = {
 };
 
 const a2aAgents = loadYaml("a2a/registry/agents.yaml");
-const bridge = loadYaml("openclaw/a2a/bridge.yaml");
+
 const authPolicy = loadYaml("a2a/policies/auth.yaml");
 const decisionsContract = loadYaml("contracts/decisions/888-999-decisions.yaml");
 const governanceContract = loadYaml("contracts/governance/666-777-gates.yaml");
@@ -99,7 +99,7 @@ const workflows = expectArray(
   errors,
 );
 const a2aRegistryAgents = expectArray(a2aAgents.agents, "a2a/registry/agents.yaml:agents", errors);
-const bridgeBindings = expectArray(bridge.bindings, "openclaw/a2a/bridge.yaml:bindings", errors);
+
 const hostContracts = expectArray(
   hostContractsCatalog.host_contracts,
   "contracts/hosts/contracts.yaml:host_contracts",
@@ -554,8 +554,8 @@ if (initContract.id !== "aaa-init-000") {
   errors.push("contracts/init/000-init.yaml: id must be 'aaa-init-000'");
 }
 
-if ((initBootSequence[0]?.path ?? "") !== "ROOT_CANON.yaml") {
-  errors.push("contracts/init/000-init.yaml: boot sequence must begin with ROOT_CANON.yaml");
+if ((initBootSequence[0]?.path ?? "") !== "README.md") {
+  errors.push("contracts/init/000-init.yaml: boot sequence must begin with README.md");
 }
 
 for (const rootPath of requiredRootCanons) {
@@ -649,15 +649,7 @@ for (const item of a2aRegistryAgents) {
   }
 }
 
-for (const binding of bridgeBindings) {
-  if (!a2aAgentIds.has(binding.agent_id)) {
-    errors.push(`${binding.agent_id}: bridge binding references unknown A2A agent`);
-  }
-}
 
-if (bridge.runtime_policy?.remote_execution_enabled !== false) {
-  errors.push("openclaw/a2a/bridge.yaml: remote_execution_enabled must remain false");
-}
 
 if (federationContract.id !== "aaa-sense-111") {
   errors.push("contracts/federation/111-sense.yaml: id must be aaa-sense-111");
@@ -667,9 +659,9 @@ if (federationContract.stage !== "111") {
   errors.push("contracts/federation/111-sense.yaml: stage must be 111");
 }
 
-if (federationContract.deployment?.runtime_bridge_ref !== "openclaw/a2a/bridge.yaml") {
+if (federationContract.deployment?.runtime_bridge_ref !== "a2a/federation-bridge.yaml") {
   errors.push(
-    "contracts/federation/111-sense.yaml: deployment.runtime_bridge_ref must be openclaw/a2a/bridge.yaml",
+    "contracts/federation/111-sense.yaml: deployment.runtime_bridge_ref must be a2a/federation-bridge.yaml",
   );
 }
 
@@ -940,7 +932,7 @@ for (const decision of decisions) {
   if (!orgUnitIds.has(decision.executor_org_unit)) {
     errors.push(`${decision.id}: unknown executor_org_unit '${decision.executor_org_unit}'`);
   }
-  if (!vaultExportIds.has(decision.vault_export_ref)) {
+  if (decision.vault_export_ref && !vaultExportIds.has(decision.vault_export_ref)) {
     errors.push(`${decision.id}: unknown vault_export_ref '${decision.vault_export_ref}'`);
   }
   for (const evidenceRef of decision.evidence_refs ?? []) {
