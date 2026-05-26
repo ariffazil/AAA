@@ -884,3 +884,57 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-05-26T09:14:01Z
 
 ---
+
+## [2026-05-26] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-05-26.json`
+- **When:** 2026-05-26T09:35:01Z
+
+---
+
+## [2026-05-26] review | TREE777 888 promotion review (apex)
+
+- **Who:** cron:apex
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-apex-2026-05-26.json`
+- **When:** 2026-05-26T10:02:01Z
+
+---
+
+## [2026-05-26] review | TREE777 888 promotion review (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-maxhermes-2026-05-26.json`
+- **When:** 2026-05-26T10:23:01Z
+
+---
+
+## [2026-05-26] review | TREE777 888 promotion review (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-phoenix72-2026-05-26.json`
+- **When:** 2026-05-26T10:44:01Z
+
+---
+
+## [2026-05-26] review | TREE777 888 promotion review (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-hermes-asi-2026-05-26.json`
+- **When:** 2026-05-26T11:09:01Z
+
+---
+
+## [2026-05-26] review | TREE777 888 promotion review (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-openclaw-2026-05-26.json`
+- **When:** 2026-05-26T11:30:01Z
+
+---
