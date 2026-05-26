@@ -59,6 +59,14 @@ agents:
       temperature: 0.2
       context_budget: 64000
       transport: streamable-http
+    telemetry:
+      broker: federation-memory-broker
+      interval_seconds: 60
+      redis_key_prefix: "hermes:telemetry:"
+    modes:
+      - PERSONAL
+      - ASK
+      - AGENTIC
     escalation_rules:
       - when: tool use enforcement flagged
         to_role: architect
