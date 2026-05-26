@@ -947,3 +947,12 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-05-26T12:16:01Z
 
 ---
+
+## [2026-05-26] review | TREE777 888 promotion review (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-opencode-2026-05-26.json`
+- **When:** 2026-05-26T12:37:01Z
+
+---
