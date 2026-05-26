@@ -1,4 +1,4 @@
-import { TaskMessage, Task } from '../gateway/schema';
+import { TaskMessage } from '../gateway/schema';
 
 export type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 
@@ -56,7 +56,7 @@ export class GovernanceAdapter {
       .join(' ');
   }
 
-  async routeIntent(message: TaskMessage): Promise<any> {
+  async routeIntent(message: TaskMessage): Promise<Record<string, unknown>> {
     const decision = await this.assessRisk(message);
     console.log(`[Adapter] Risk Assessment: ${decision.riskLevel} -> Path: ${decision.path} (${decision.reason})`);
     
@@ -79,15 +79,63 @@ export class GovernanceAdapter {
     // Architectural Law: All tool calls must route via A-FORGE
     console.log('[Adapter] Routing to A-FORGE for execution...');
     
-    // In this phase, we return the intent to route to forge
-    return { 
-      status: 'authorized', 
-      source: 'A-FORGE',
-      proof: {
-        witness_type: 'agent',
-        signature: 'af-forge-sig-' + Date.now(),
-        timestamp: new Date().toISOString()
+    const prompt = this.extractText(message);
+    
+    try {
+      const response = await fetch(`${this.afForgeUrl}/route`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt, mode: 'external' })
+      });
+
+      if (!response.ok) {
+        const text = await response.text().catch(() => '<unreadable>');
+        console.error(`[Adapter] A-FORGE /route returned HTTP ${response.status}: ${text.slice(0, 500)}`);
+        return {
+          status: 'HOLD',
+          source: 'A-FORGE',
+          reason: `A-FORGE /route failed with HTTP ${response.status}`,
+          riskLevel: 'CRITICAL' as RiskLevel,
+          requiresHuman: true,
+        };
       }
-    };
+
+      const data = await response.json();
+      
+      if (data.is_hold || data.routing_decision === '888_HOLD') {
+        return {
+          status: 'HOLD',
+          source: 'A-FORGE',
+          reason: data.routing_decision ?? 'Routing decision returned HOLD',
+          riskLevel: 'HIGH' as RiskLevel,
+          routing_decision: data.routing_decision,
+          session_id: data.session_id,
+          requiresHuman: true,
+        };
+      }
+
+      return {
+        status: 'authorized',
+        source: 'A-FORGE',
+        routing_decision: data.routing_decision,
+        agent_id: data.agent_id,
+        session_id: data.session_id,
+        coordinator: data.coordinator,
+        proof: {
+          witness_type: 'agent',
+          signature: `routed-${data.routing_decision}-${Date.now()}`,
+          timestamp: new Date().toISOString(),
+        },
+      };
+    } catch (error) {
+      console.error('[Adapter] A-FORGE /route error:', error);
+      return {
+        status: 'HOLD',
+        source: 'A-FORGE',
+        reason: error instanceof Error ? error.message : 'A-FORGE /route unreachable',
+        riskLevel: 'CRITICAL' as RiskLevel,
+        requiresHuman: true,
+      };
+    }
   }
 }
