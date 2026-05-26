@@ -1,0 +1,117 @@
+{
+  "protocol_version": "1.0.0",
+  "id": "hermes-asi",
+  "name": "Hermes ASI",
+  "description": "ASI-level deliberative relay — human-life layer, world orientation, constitutional routing, and APEX PRIME verdict narration. Routes Earth tasks to maxhermes, execution tasks to hermes-ops. Sole group listener under Option B protocol.",
+  "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
+  "preferred_transport": "jsonrpc-https",
+  "additional_interfaces": [
+    {
+      "transport": "sse",
+      "url": "https://aaa.arif-fazil.com/a2a/hermes-asi/events"
+    }
+  ],
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "organ": "Hermes-ASI",
+    "sub_role": "Human-Life"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false
+  },
+  "security_schemes": [
+    {
+      "id": "gateway-token",
+      "type": "bearer",
+      "description": "Gateway bearer token for internal trusted peers."
+    }
+  ],
+  "security": [
+    ["gateway-token"]
+  ],
+  "default_input_modes": ["application/json", "text/plain"],
+  "default_output_modes": ["application/json"],
+  "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
+  "treaty_ref": "AAA-TREATY-v1.0.0",
+  "lane": "ASI",
+  "a_role": "Hermes-ASI",
+  "power_band": "deliberation_routing",
+  "skills": [
+    {
+      "id": "memory-recall",
+      "name": "Memory Recall",
+      "description": "Retrieve past session context and decisions from governed memory",
+      "tags": ["recall", "memory", "search"],
+      "floor_scope": ["F01", "F02", "F04"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "reasoning",
+      "name": "Reasoning",
+      "description": "Chain-of-thought logical reasoning with constitutional floor awareness",
+      "tags": ["reason", "logic", "analyze"],
+      "floor_scope": ["F02", "F04", "F07", "F08"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "routing",
+      "name": "Routing",
+      "description": "Route tasks to appropriate specialist agents via A2A mesh",
+      "tags": ["route", "delegate", "coordinate"],
+      "floor_scope": ["F01", "F04", "F10", "F11"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "world-model-brief",
+      "name": "World Model Brief",
+      "description": "Generate pagi/malam briefings with contrast method and PETRONAS WATCH",
+      "tags": ["brief", "news", "world-model"],
+      "floor_scope": ["F02", "F04", "F05", "F06"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "breaking-news-alert",
+      "name": "Breaking News Alert",
+      "description": "Evaluate whether news warrants breaking the scheduled brief cadence",
+      "tags": ["alert", "news", "policy"],
+      "floor_scope": ["F02", "F05", "F06", "F13"],
+      "approval_policy": "hold",
+      "reversibility_class": "reversible",
+      "judgment_required": true
+    },
+    {
+      "id": "apex-verdict-narration",
+      "name": "APEX Verdict Narration",
+      "description": "Receive APEX PRIME verdict and narrate it to group in one-line format",
+      "tags": ["verdict", "narration", "apex"],
+      "floor_scope": ["F01", "F02", "F04", "F13"],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible"
+    }
+  ],
+  "extends_card": "aaa-gateway",
+  "forbidden": {
+    "cannot_execute": false,
+    "cannot_dispatch_direct": false,
+    "cannot_seal": true,
+    "cannot_override_floors": true,
+    "note": "Hermes routes and narrates. Execution flows to OPENCLAW. Judgment flows to APEXMax. Sealing flows to arifOS VAULT999."
+  },
+  "metadata": {
+    "organ": "AAA",
+    "sub_organ": "Hermes-ASI",
+    "lane": "ASI",
+    "a_role": "Hermes-ASI",
+    "floor_version": "KANON-2026.05.05-SSCT",
+    "treaty_id": "AAA-TREATY-v1.0.0",
+    "canonical_soul": "/root/AAA/agents/hermes-asi/runtime/SOUL.md"
+  }
+}
