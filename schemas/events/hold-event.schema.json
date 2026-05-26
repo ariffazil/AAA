@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "888 HOLD Event Schema",
+  "description": "Event emitted when an action triggers the 888 HOLD constitutional gate in arifOS",
+  "type": "object",
+  "required": ["event_id", "timestamp", "agent_id", "reason", "proposal", "hold_type"],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "agent_id": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "proposal": {
+      "type": "object",
+      "required": ["action", "reversibility_score"],
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "reversibility_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "maruah_impact": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "affected_repos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "hold_type": {
+      "type": "string",
+      "enum": ["irreversible", "cross_repo", "high_risk", "self_approval", "pipeline_skip"]
+    },
+    "floor_violation": {
+      "type": "string",
+      "pattern": "^F(0[1-9]|1[0-3])$"
+    },
+    "resolution": {
+      "type": "object",
+      "properties": {
+        "resolved_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "resolved_by": {
+          "type": "string"
+        },
+        "verdict": {
+          "type": "string",
+          "enum": ["approved", "rejected", "modified"]
+        }
+      }
+    }
+  }
+}

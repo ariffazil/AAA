@@ -830,3 +830,57 @@ judgment ran directly without human confirmation — model self-certified.
 - **Note:** Before this forge, skills were static manuals written by hand. After this forge, the federation can birth its own capabilities on demand — but every birth is governed, attested, and sealed by the sovereign.
 
 ---
+
+## [2026-05-26] update | TREE777 777 health pulse (apex)
+
+- **Who:** cron:apex
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-apex-2026-05-26.json`
+- **When:** 2026-05-26T07:00:01Z
+
+---
+
+## [2026-05-26] update | TREE777 777 health pulse (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-maxhermes-2026-05-26.json`
+- **When:** 2026-05-26T07:21:01Z
+
+---
+
+## [2026-05-26] update | TREE777 777 health pulse (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-phoenix72-2026-05-26.json`
+- **When:** 2026-05-26T07:42:02Z
+
+---
+
+## [2026-05-26] update | TREE777 777 health pulse (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-asi-2026-05-26.json`
+- **When:** 2026-05-26T08:07:01Z
+
+---
+
+## [2026-05-26] update | TREE777 777 health pulse (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-openclaw-2026-05-26.json`
+- **When:** 2026-05-26T08:28:01Z
+
+---
+
+## [2026-05-26] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-05-26.json`
+- **When:** 2026-05-26T09:14:01Z
+
+---
