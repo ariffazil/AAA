@@ -1,0 +1,19 @@
+# ═══════════════════════════════════════════════════════════════
+# AAA Canonical Workflow Manifest
+# Single source of truth for the workflow automation stack.
+# ═══════════════════════════════════════════════════════════════
+
+canonical_workflows:
+  - aaa-governance.yml       # Governance plane: validate, export, lint
+  - pages.yml                # GitHub Pages deploy for AAA site
+  - publish-a2a-image.yml    # Build + push A2A Docker image to GHCR
+  - secrets-audit.yml        # detect-secrets baseline enforcement
+  - repo-hygiene-weekly.yml  # Weekly automation-health digest
+  - repo-routing-validation.yml # Enforces REPO= trailer on commits
+
+required_checks_for_main:
+  - "AAA Governance Plane"
+  - "🔒 AAA Secrets Audit (WAJIB)"
+  - "Repo Routing Validation"
+
+last_audit: "2026-05-26"
