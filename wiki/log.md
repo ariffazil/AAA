@@ -938,3 +938,12 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-05-26T11:30:01Z
 
 ---
+
+## [2026-05-26] review | TREE777 888 promotion review (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-hermes-ops-2026-05-26.json`
+- **When:** 2026-05-26T12:16:01Z
+
+---
