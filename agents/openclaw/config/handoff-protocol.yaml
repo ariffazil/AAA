@@ -1,0 +1,96 @@
+# OpenClaw ↔ Hermes Handoff Protocol v1.0.0
+# Canonical A2A handoff convention for arifOS AAA federation
+# Ratified: 2026-05-25
+# Authority: F13 SOVEREIGN — Arif's directive
+
+protocol:
+  name: "OpenClaw-Hermes Handoff"
+  version: "1.0.0"
+  transport: "A2A jsonrpc-https"
+  endpoint_hermes: "https://aaa.arif-fazil.com/a2a/hermes-asi"
+  endpoint_openclaw: "https://aaa.arif-fazil.com/a2a/openclaw"
+
+roles:
+  openclaw:
+    title: "AGI-Level Operator"
+    domain: "machine ops — infra, Docker, code, DevOps"
+    authority: "execution only — no verdicts, no seals"
+  hermes:
+    title: "ASI-Level Deliberator"
+    domain: "human-life — narrative, planning, routing, verdict narration"
+    authority: "routing and narration — no direct execution"
+
+handoff_signals:
+  # Signal sent by OpenClaw when machine work completes and human summary needed
+  EXEC_COMPLETE:
+    from: openclaw
+    to: hermes
+    trigger: "Machine task finished; results need human framing"
+    payload:
+      task_id: "string — original task correlation ID"
+      execution_status: "DONE | FAILED | 888_HOLD"
+      artifact_summary: "string — one-line what was done"
+      artifacts: "array<string> — file paths or URLs"
+      risk_class: "OBSERVE | MUTATE | ATOMIC"
+      floors_triggered: "array<Floor> — e.g. [F11, F13]"
+      next_safe_action: "string — what Hermes should tell Arif"
+    hermes_action: "Narrate result to Arif using Telegram template. Route to APEXMax if 888_HOLD."
+
+  # Signal sent by Hermes when human intent needs machine execution
+  EXEC_REQUEST:
+    from: hermes
+    to: openclaw
+    trigger: "Arif (or Hermes plan) requests code/infra action"
+    payload:
+      task_id: "string — new correlation ID"
+      intent: "string — what Arif wants"
+      plan: "string — Hermes-decomposed steps"
+      authority_level: "Arif_explicit | Hermes_delegated | APEX_sealed"
+      reversibility: "reversible | partial | irreversible"
+      approval_ticket: "string? — APEX seal ID if required"
+    openclaw_action: "Classify action. If ATOMIC → 888_HOLD. If MUTATE → execute with plan. If OBSERVE → inspect and return."
+
+  # Signal sent by either when constitutional judgment needed
+  JUDGE_REQUEST:
+    from: [openclaw, hermes]
+    to: apexmax
+    trigger: "Irreversible action, conflicting evidence, or floor ambiguity"
+    payload:
+      session_id: "string"
+      candidate: "string — proposed action description"
+      evidence: "array<string> — supporting facts"
+      requesting_agent: "openclaw | hermes"
+    apexmax_action: "Return SEAL | HOLD | SABAR | VOID with floor scores"
+    hermes_action_post_apex: "Narrate verdict to group if relevant. Default HOLD if APEX unreachable."
+
+decision_tree:
+  - condition: "Message contains @AGI_ASI_bot or machine ops keywords"
+    routing: "Hermes stays silent → OpenClaw handles → OpenClaw may send EXEC_COMPLETE to Hermes"
+  - condition: "Message contains @ASI_arifos_bot or human-life keywords"
+    routing: "Hermes responds → Hermes may send EXEC_REQUEST to OpenClaw"
+  - condition: "Message contains 'SEAL', 'HOLD', 'verdict', '888', 'irreversible'"
+    routing: "Hermes routes to APEXMax → APEXMax returns verdict → Hermes narrates"
+  - condition: "OpenClaw sends EXEC_COMPLETE with 888_HOLD"
+    routing: "Hermes narrates HOLD to Arif, includes APEX verdict if available"
+  - condition: "Hermes sends EXEC_REQUEST with reversibility=irreversible"
+    routing: "OpenClaw pauses → sends JUDGE_REQUEST to APEXMax → awaits SEAL before executing"
+
+group_chat_rules:
+  - rule: "Hermes is SOLE group speaker under Option B (2026-05-20)"
+  - rule: "OpenClaw NEVER speaks in group unless @mentioned by Arif"
+  - rule: "APEXMax NEVER speaks in group unless Arif explicitly requests"
+  - rule: "One message per agent per session in group"
+  - rule: "All inter-agent chatter → A2A, not Telegram"
+  - rule: "DITEMPA BUKAN DIBERI footer mandatory on every Telegram reply"
+
+forbidden:
+  - "OpenClaw claiming Hermes identity"
+  - "Hermes executing machine ops directly"
+  - "Either agent bypassing APEXMax for irreversible actions"
+  - "Either agent bypassing 888_HOLD gate"
+  - "Auto-loop: Hermes replying to its own messages"
+
+audit:
+  - "Every handoff logged to VAULT999 with correlation_id"
+  - "Handoff payload hash recorded for non-repudiation"
+  - "Timeout: if handoff not acknowledged in 60s → escalate to Arif"

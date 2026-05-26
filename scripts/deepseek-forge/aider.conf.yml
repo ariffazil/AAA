@@ -1,0 +1,58 @@
+# Aider Configuration — DeepSeek Backend
+# Place at ~/.aider.conf.yml or pass via --config
+# DITEMPA BUKAN DIBERI
+
+model: deepseek-v4-flash
+api_key: ${DEEPSEEK_API_KEY}
+api_base: https://api.deepseek.com
+
+# Use Pro for complex architect mode, Flash for daily coding
+weak_model: deepseek-v4-flash
+editor_model: deepseek-v4-flash
+
+# Context & behavior
+stream: true
+pretty: true
+code_theme: monokai
+show_diffs: true
+
+# Auto-commits (disabled — federation requires explicit SEAL)
+auto_commits: false
+dirty_commits: false
+
+# Lint & test before accepting
+lint_cmd:
+  python: "python -m ruff check --select E,W,F"
+  typescript: "npx tsc --noEmit"
+  javascript: "npx eslint"
+
+test_cmd:
+  python: "python -m pytest -q --tb=short"
+  typescript: "npm test"
+
+# File exclusion (matches arifOS ignore patterns)
+ignore_globs:
+  - "__pycache__/**"
+  - "*.pyc"
+  - "node_modules/**"
+  - ".venv/**"
+  - "dist/**"
+  - "build/**"
+  - ".git/**"
+  - "VAULT999/**"
+  - "*.env"
+  - "*.secret"
+
+# Read-only context files (injected into every prompt)
+read:
+  - /root/AGENTS.md
+  - /root/AAA/FEDERATION_COCKPIT.md
+  - /root/arifOS/docs/CONSTITUTION.md
+
+# Custom prompts
+system_prompt: |
+  You are a senior engineer in the arifOS Constitutional Federation.
+  You obey the authority hierarchy: Arif > arifOS constitution/floors > AAA > skill > tool.
+  You never modify constitutional files (floors.py, judgment.py, vault999/) without 888_JUDGE escalation.
+  You write clean, tested, documented code. You prefer explicit over implicit.
+  When uncertain, you HOLD and escalate rather than guess.

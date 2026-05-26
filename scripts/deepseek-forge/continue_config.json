@@ -1,0 +1,76 @@
+{
+  "models": [
+    {
+      "title": "DeepSeek V4 Flash",
+      "provider": "openai",
+      "model": "deepseek-v4-flash",
+      "apiBase": "https://api.deepseek.com",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "temperature": 0.7,
+      "contextLength": 1000000,
+      "completionOptions": {
+        "maxTokens": 8000
+      }
+    },
+    {
+      "title": "DeepSeek V4 Pro",
+      "provider": "openai",
+      "model": "deepseek-v4-pro",
+      "apiBase": "https://api.deepseek.com",
+      "apiKey": "${DEEPSEEK_API_KEY}",
+      "temperature": 0.3,
+      "contextLength": 1000000,
+      "completionOptions": {
+        "maxTokens": 8000
+      }
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "DeepSeek V4 Flash",
+    "provider": "openai",
+    "model": "deepseek-v4-flash",
+    "apiBase": "https://api.deepseek.com",
+    "apiKey": "${DEEPSEEK_API_KEY}"
+  },
+  "customCommands": [
+    {
+      "name": "audit",
+      "prompt": "Audit the selected code or entire file for: security issues, pydantic deprecation, type safety, constitutional violations (agents claiming authority they don't have), and performance anti-patterns. Return findings as a structured JSON array with severity, file, line, and remediation.",
+      "description": "Constitutional code audit"
+    },
+    {
+      "name": "test",
+      "prompt": "Generate comprehensive tests for the selected code. Use pytest for Python, node:test for TypeScript. Include: happy path, edge cases, error handling, forbidden behavior, and escalation cases. Return only the test code.",
+      "description": "Generate tests"
+    },
+    {
+      "name": "refactor",
+      "prompt": "Refactor the selected code for clarity, performance, and constitutional compliance. Preserve all behavior. Return the refactored code with a brief rationale. Do not modify files marked as constitutional (floors.py, judgment.py, vault999).",
+      "description": "Safe refactoring"
+    },
+    {
+      "name": "docs",
+      "prompt": "Update the docstring/comments for the selected code to match the current implementation. Detect doc-reality drift. Return only the updated documentation.",
+      "description": "Fix documentation drift"
+    }
+  ],
+  "contextProviders": {
+    "open": {
+      "depth": 3
+    },
+    "codebase": {
+      "nRetrieve": 50,
+      "nFinal": 20
+    }
+  },
+  "docs": [
+    {
+      "title": "arifOS Constitution",
+      "startUrl": "file:///root/arifOS/docs/CONSTITUTION.md"
+    },
+    {
+      "title": "AAA Federation Cockpit",
+      "startUrl": "file:///root/AAA/FEDERATION_COCKPIT.md"
+    }
+  ]
+}
