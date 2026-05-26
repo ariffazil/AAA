@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Agent Interaction Mode Taxonomy",
+  "description": "Interaction modes that affect federation visibility and A2A coordination for Hermes ASI",
+  "type": "string",
+  "enum": ["PERSONAL", "ASK", "AGENTIC"],
+  "definitions": {
+    "PERSONAL": "Human-facing conversational mode, natural language, voice-driven. Default. Never renders A2A template fields.",
+    "ASK": "Clarification gate before escalating to structured templates. Intercepted when task keywords detected in user message.",
+    "AGENTIC": "Federation A2A coordination with full TO/FROM/CC/TASK/DELEGATION/WAY FORWARD/SEAL/TELEMETRY template. Only for cross-agent coordination, never in human replies."
+  }
+}
