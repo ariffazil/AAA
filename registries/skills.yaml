@@ -388,44 +388,44 @@ skills:
       schema_version: "1"
       artifact_hash: pending
 
-  - id: recursive-skill-forge
-    name: Recursive Skill Forge
-    version: "1.0.0"
-    description: Meta-cognitive smithy for forging new skills on demand. Performs abductive inference, orthogonal decomposition, constitutional validation, and sovereign attestation before any skill is born. Operates recursively — can improve itself, but every self-upgrade passes Stage 888.
-    owner: AAA
-    risk_tier: critical
-    knowledge_basis:
-      physics: false
-      math: true
-      language: true
-    host_compatibility:
-      - claude-code
-      - codex
-      - opencode
-    package_ref: recursive-skill-forge
-    dependencies:
-      skills:
-        - repo-hygiene-audit
-        - parallel-authority-detection
-      servers:
-        - arifos-mcp
-      tools:
-        - arif_mind_reason
-        - arif_heart_critique
-        - arif_judge_deliberate
-        - arif_kernel_route
-    install_hooks: []
-    examples:
-      - Forge a Docker health-check skill for federation nodes
-      - Forge a GEOX executive-summary skill cross-domain
-      - Forge recursive-skill-forge-v2 after detecting a gap in self-attestation
-    tests:
-      - Forge low-risk skill autonomously and pass repo-hygiene-audit
-      - Forge medium-risk skill and trigger 888_JUDGE before commit
-      - Attempt to forge skill overriding F13 — verify VOID verdict
-    version_lock:
-      schema_version: "1"
-      artifact_hash: pending
+#  - id: recursive-skill-forge
+#    name: Recursive Skill Forge
+#    version: "1.0.0"
+#    description: Meta-cognitive smithy for forging new skills on demand. Performs abductive inference, orthogonal decomposition, constitutional validation, and sovereign attestation before any skill is born. Operates recursively — can improve itself, but every self-upgrade passes Stage 888.
+#    owner: AAA
+#    risk_tier: critical
+#    knowledge_basis:
+#      physics: false
+#      math: true
+#      language: true
+#    host_compatibility:
+#      - claude-code
+#      - codex
+#      - opencode
+#    # package_ref: recursive-skill-forge
+#    dependencies:
+#      skills:
+#        - repo-hygiene-audit
+#        - parallel-authority-detection
+#      servers:
+#        - arifos-mcp
+#      # tools:
+#      #   - arif_mind_reason
+#      #   - arif_heart_critique
+#      #   - arif_judge_deliberate
+#      #   - arif_kernel_route
+#    install_hooks: []
+#    examples:
+#      - Forge a Docker health-check skill for federation nodes
+#      - Forge a GEOX executive-summary skill cross-domain
+#      - Forge recursive-skill-forge-v2 after detecting a gap in self-attestation
+#    tests:
+#      - Forge low-risk skill autonomously and pass repo-hygiene-audit
+#      - Forge medium-risk skill and trigger 888_JUDGE before commit
+#      - Attempt to forge skill overriding F13 — verify VOID verdict
+#    version_lock:
+#      schema_version: "1"
+#      artifact_hash: pending
 
 # ─────────────────────────────────────────────────────────────────────────────
 # EVOLUTION LEDGER — Absorbed DNA from deleted OpenClaw / ACP structures

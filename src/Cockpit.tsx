@@ -92,7 +92,7 @@ export default function Cockpit() {
   const [holdsBreakdown, setHoldsBreakdown] = useState<{ 'input-required': number; 'auth-required': number }>({ 'input-required': 0, 'auth-required': 0 });
   const [sealsCount, setSealsCount] = useState<number>(0);
   const [vaultConnected, setVaultConnected] = useState<boolean>(false);
-  const [toolRegistry, setToolRegistry] = useState<string[]>([]);
+  const [toolRegistry, setToolRegistry] = useState<{ name: string; requires_888: boolean }[]>([]);
   const [sessionManifest, setSessionManifest] = useState<SessionManifest | null>(null);
   const [showConsentDialog, setShowConsentDialog] = useState(false);
 
@@ -300,10 +300,15 @@ export default function Cockpit() {
           const tools = Array.isArray(data.tools) ? data.tools : [];
           setToolRegistry(
             tools
-              .map((tool: unknown) =>
-                typeof tool === 'string' ? tool : (tool as { name?: string }).name
-              )
-              .filter((name: unknown): name is string => typeof name === 'string' && name.length > 0),
+              .map((tool: unknown) => {
+                const t = tool as Record<string, unknown>;
+                const name = typeof tool === 'string' ? tool : (typeof t?.name === 'string' ? t.name : '');
+                const desc = typeof t?.description === 'string' ? t.description : '';
+                const req888 = Boolean(t?.requires_888);
+                const requires_888 = desc.includes('[REQUIRES_888_HOLD: true]') || req888;
+                return { name, requires_888 };
+              })
+              .filter((t: { name: string; requires_888: boolean }) => t.name.length > 0),
           );
         }
       } catch { /* ignore */ }
@@ -678,9 +683,23 @@ export default function Cockpit() {
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Tool Registry</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {(toolRegistry.length > 0 ? toolRegistry : ['geox.well_viewer', 'geox.interpret_las', 'forge.check_governance', 'forge.run_agent', 'forge.hold_action', 'forge.recall_memory']).map(t => (
-              <div key={t} className="p-4 border border-white/5 hover:border-white/20 transition-all flex justify-between items-center group">
-                <code className="text-xs font-mono text-white/60 group-hover:text-white transition-colors">{t}</code>
+            {(toolRegistry.length > 0 ? toolRegistry : [
+               { name: 'geox.well_viewer', requires_888: false },
+               { name: 'geox.interpret_las', requires_888: true },
+               { name: 'forge.check_governance', requires_888: false },
+               { name: 'forge.run_agent', requires_888: true },
+               { name: 'forge.hold_action', requires_888: false },
+               { name: 'forge.recall_memory', requires_888: false }
+            ]).map(t => (
+              <div key={t.name} className="p-4 border border-white/5 hover:border-white/20 transition-all flex justify-between items-center group">
+                <div className="flex flex-col gap-1">
+                  <code className="text-xs font-mono text-white/60 group-hover:text-white transition-colors">{t.name}</code>
+                  {t.requires_888 && (
+                    <span className="text-[9px] text-amber-500 uppercase tracking-widest font-black flex items-center gap-1">
+                      <AlertCircle className="w-3 h-3" /> HOLD PENDING
+                    </span>
+                  )}
+                </div>
                 <div className="w-1 h-1 bg-white/20 rounded-full group-hover:bg-red-500" />
               </div>
             ))}
