@@ -1,13 +1,18 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-05-25
-valid_from: 2026-05-25
-valid_until: 2026-06-25
+last_verified: 2026-05-26
+valid_from: 2026-05-26
+valid_until: 2026-06-26
 confidence: high
 scope: /root/AAA
 -->
 
-# AGENTS.md — AAA | Federation Control Plane
+# AGENTS.md — AAA | arifOS Federation
+
+> **MANDATORY BOOT SEQUENCE**
+> 1. Read `/root/AGENTS.md` (Global Federation Rules & Identity)
+> 2. Read `/root/CONTEXT.md` (Live Machine State & Ports)
+> 3. Read this file (Repo-Specific Build/Test/Run rules)
 
 > **Canonical Identity:** Agent Operations Cockpit / Federation Control Plane
 > **Authoritative Doc:** `FEDERATION_COCKPIT.md`
