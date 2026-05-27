@@ -46,6 +46,10 @@
         "$ref": "./common.schema.json#/$defs/witness"
       },
       "uniqueItems": true
+    },
+    "requires_888": {
+      "type": "boolean",
+      "default": false
     }
   },
   "required": [

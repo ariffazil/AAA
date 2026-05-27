@@ -959,10 +959,10 @@ for (const decision of decisions) {
 }
 
 for (const vaultExport of vaultExports) {
-  if (!decisionIds.has(vaultExport.decision_ref)) {
+  if (vaultExport.decision_ref && !decisionIds.has(vaultExport.decision_ref)) {
     errors.push(`${vaultExport.id}: unknown decision_ref '${vaultExport.decision_ref}'`);
   }
-  if (!exists(vaultExport.path)) {
+  if (vaultExport.path && !exists(vaultExport.path)) {
     errors.push(`${vaultExport.id}: missing vault export path '${vaultExport.path}'`);
   }
 }
