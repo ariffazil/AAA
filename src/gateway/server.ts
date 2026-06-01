@@ -11,6 +11,106 @@ import { createAuthMiddleware, AuthContext } from './auth';
 import { TaskStore, EventBus } from './store';
 import { GovernanceAdapter } from '../adapter/router';
 import { getAgentCard, CONSTITUTION_DEFAULTS } from '../seed/bootstrap';
+import https from 'node:https';
+import http from 'node:http';
+
+// ── Grafana Webhook + Organ Monitor + Telegram Notifier ───────────────────────
+
+const TELEGRAM_BOT_TOKEN = '8410138119:AAHrXysyxI8yuBM7QW6QTafKsgpqEyd19DA';
+const TELEGRAM_CHAT_ID = '267378578';
+
+const ORGANS = [
+  { name: 'arifOS MCP', port: 8088 },
+  { name: 'GEOX', port: 18081 },
+  { name: 'WEALTH', port: 18082 },
+  { name: 'WELL', port: 18083 },
+  { name: 'APEX Prime', port: 3002 },
+  { name: 'A-FORGE', port: 7071 },
+] as const;
+
+function httpGet(port: number, path: string): Promise<{ ok: boolean; status?: number; body?: unknown }> {
+  return new Promise((resolve) => {
+    const req = http.get(`http://localhost:${port}${path}`, (res) => {
+      let data = '';
+      res.on('data', (chunk: string) => data += chunk);
+      res.on('end', () => {
+        try {
+          resolve({ ok: true, status: res.statusCode, body: JSON.parse(data) });
+        } catch {
+          resolve({ ok: true, status: res.statusCode, body: data });
+        }
+      });
+    });
+    req.on('error', () => resolve({ ok: false }));
+    req.setTimeout(5000, () => { req.destroy(); resolve({ ok: false }); });
+  });
+}
+
+async function checkOrganHealth(name: string, port: number): Promise<{ name: string; port: number; healthy: boolean; detail?: string }> {
+  const result = await httpGet(port, '/health');
+  if (!result.ok) {
+    return { name, port, healthy: false, detail: 'connection failed' };
+  }
+  if (result.status !== 200) {
+    return { name, port, healthy: false, detail: `HTTP ${result.status}` };
+  }
+  const body = result.body as Record<string, unknown>;
+  const status = typeof body?.status === 'string' ? body.status : 'unknown';
+  const healthy = status === 'healthy' || status === 'ok' || status === 'live';
+  return { name, port, healthy, detail: status };
+}
+
+async function sendTelegramMessage(text: string): Promise<boolean> {
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+  const body = JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' });
+  return new Promise((resolve) => {
+    const req = https.request(url, { method: 'POST', headers: { 'Content-Type': 'application/json' } }, (res) => {
+      let data = '';
+      res.on('data', (chunk: string) => data += chunk);
+      res.on('end', () => {
+        try {
+          const parsed = JSON.parse(data);
+          resolve(parsed.ok === true);
+        } catch { resolve(false); }
+      });
+    });
+    req.on('error', () => resolve(false));
+    req.write(body);
+    req.end();
+  });
+}
+
+function formatAlert(alert: GrafanaAlert, confirmedDown: string[]): string {
+  const emoji = (organ: string) => confirmedDown.includes(organ) ? '🔴' : '🟢';
+  const lines = [
+    `<b>🚨 Grafana Alert — Organ Monitor</b>`,
+    ``,
+    `<b>Alert:</b> ${alert.alertName}`,
+    `<b>Summary:</b> ${alert.summary}`,
+    `<b>State:</b> ${alert.state}`,
+    ``,
+    `<b>Organ Health Check:</b>`,
+    ...ORGANS.map(o => {
+      const found = alert.organChecks?.find((c: { name: string }) => c.name === o.name);
+      if (!found) return `  ${emoji(o.name)} ${o.name}: not checked`;
+      return `  ${found.healthy ? '🟢' : '🔴'} ${o.name}: ${found.healthy ? 'OK' : 'DOWN'} (${found.detail})`;
+    }),
+    ``,
+    confirmedDown.length > 0
+      ? `<b>Confirmed DOWN:</b> ${confirmedDown.join(', ')}`
+      : `<b>All organs operational</b>`,
+    ``,
+    `<i>DITEMPA BUKAN DIBERI — arifOS Federation</i>`,
+  ];
+  return lines.join('\n');
+}
+
+interface GrafanaAlert {
+  alertName: string;
+  summary: string;
+  state: string;
+  organChecks?: Array<{ name: string; port: number; healthy: boolean; detail?: string }>;
+}
 
 function generateId(): string {
   return crypto.randomUUID();
@@ -278,6 +378,43 @@ export function createApp(): express.Application {
   // Mount at root (for /health, /.well-known/*, etc.) and at /api (for Caddy /api/* proxy)
   app.use('/', mainRouter);
   app.use('/api', mainRouter);
+
+  // ── Grafana Webhook ────────────────────────────────────────────────────────
+  mainRouter.post('/webhooks/grafana/alerts', async (req: Request, res: Response) => {
+    const alert = req.body as GrafanaAlert;
+    const alertName = alert?.alertName || 'Unknown Alert';
+    const summary = alert?.summary || '';
+    const state = alert?.state || 'unknown';
+
+    // Check all organs
+    const organChecks = await Promise.all(
+      ORGANS.map(({ name, port }) => checkOrganHealth(name, port))
+    );
+
+    const confirmedDown = organChecks
+      .filter((o) => !o.healthy)
+      .map((o) => o.name);
+
+    const alert2: GrafanaAlert = {
+      alertName,
+      summary,
+      state,
+      organChecks,
+    };
+
+    const telegramMsg = formatAlert(alert2, confirmedDown);
+    const notified = await sendTelegramMessage(telegramMsg);
+
+    logEvent('GRAFANA_WEBHOOK', 'n/a', `Alert "${alertName}" state=${state} confirmedDown=${confirmedDown.join(',') || 'none'}`);
+
+    res.json({
+      ok: true,
+      received: true,
+      organChecks,
+      confirmedDown,
+      telegramNotified: notified,
+    });
+  });
 
   return app;
 }
