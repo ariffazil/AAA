@@ -35,6 +35,102 @@ const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || 'hermes-agent-apikey-dev';
 const REDIS_URL = process.env.REDIS_URL || 'redis://redis:6379';
 const NATS_URL = process.env.NATS_URL || 'nats://nats:4222';
 
+// === GRAFANA WEBHOOK + ORGAN MONITOR + TELEGRAM NOTIFIER ===
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8410138119:AAHrXysyxI8yuBM7QW6QTafKsgpqEyd19DA';
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '267378578';
+
+const HTTP = require('http');
+const HTTPS = require('https');
+
+const ORGANS = [
+  { name: 'arifOS MCP', port: 8088 },
+  { name: 'GEOX', port: 18081 },
+  { name: 'WEALTH', port: 18082 },
+  { name: 'WELL', port: 18083 },
+  { name: 'APEX Prime', port: 3002 },
+  { name: 'A-FORGE', port: 7071 },
+];
+
+function httpGet(port, path) {
+  return new Promise((resolve) => {
+    const req = HTTP.get({ hostname: 'localhost', port, path, timeout: 5000 }, (res) => {
+      let data = '';
+      res.on('data', (chunk) => data += chunk);
+      res.on('end', () => {
+        try { resolve({ ok: true, status: res.statusCode, body: JSON.parse(data) }); }
+        catch { resolve({ ok: true, status: res.statusCode, body: data }); }
+      });
+    });
+    req.on('error', () => resolve({ ok: false }));
+    req.on('timeout', () => { req.destroy(); resolve({ ok: false }); });
+  });
+}
+
+function httpsPost(url, body) {
+  return new Promise((resolve) => {
+    const urlObj = new URL(url);
+    const lib = urlObj.protocol === 'https:' ? HTTPS : HTTP;
+    const options = {
+      hostname: urlObj.hostname,
+      port: urlObj.port || (urlObj.protocol === 'https:' ? 443 : 80),
+      path: urlObj.pathname,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    };
+    const req = lib.request(options, (res) => {
+      let data = '';
+      res.on('data', (chunk) => data += chunk);
+      res.on('end', () => {
+        try { resolve({ ok: true, status: res.statusCode, body: JSON.parse(data) }); }
+        catch { resolve({ ok: true, status: res.statusCode, body: data }); }
+      });
+    });
+    req.on('error', () => resolve({ ok: false }));
+    req.write(JSON.stringify(body));
+    req.end();
+  });
+}
+
+async function checkOrganHealth(name, port) {
+  const result = await httpGet(port, '/health');
+  if (!result.ok) return { name, port, healthy: false, detail: 'connection failed' };
+  if (result.status !== 200) return { name, port, healthy: false, detail: `HTTP ${result.status}` };
+  const body = result.body || {};
+  // Accept standard status fields AND WELL-specific verdict
+  const status = body.status || body.verdict || 'unknown';
+  const healthy = ['healthy', 'ok', 'live', 'WELL_HOLD'].includes(status);
+  return { name, port, healthy, detail: status };
+}
+
+async function sendTelegramMessage(text) {
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+  const result = await httpsPost(url, { chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' });
+  return result.ok && result.body?.ok === true;
+}
+
+function formatAlert(alert, organChecks, confirmedDown) {
+  const lines = [
+    `<b>🚨 Grafana Alert — Organ Monitor</b>`,
+    ``,
+    `<b>Alert:</b> ${alert.alertName || 'Unknown'}`,
+    `<b>Summary:</b> ${alert.summary || '—'}`,
+    `<b>State:</b> ${alert.state || 'unknown'}`,
+    ``,
+    `<b>Organ Health:</b>`,
+    ...ORGANS.map((o) => {
+      const c = organChecks.find((c) => c.name === o.name) || {};
+      return `  ${c.healthy === false ? '🔴' : c.healthy === true ? '🟢' : '⚪'} ${o.name}: ${c.healthy === false ? 'DOWN' : c.healthy === true ? 'OK' : 'not checked'} ${c.detail ? `(${c.detail})` : ''}`;
+    }),
+    ``,
+    confirmedDown.length > 0
+      ? `<b>⚠️ Confirmed DOWN:</b> ${confirmedDown.join(', ')}`
+      : `<b>✅ All organs operational</b>`,
+    ``,
+    `<i>DITEMPA BUKAN DIBERI — arifOS Federation</i>`,
+  ];
+  return lines.join('\n');
+}
+
 // Fail fast if tokens not configured — no silent dev fallback (F1 AMANAH)
 if (!A2A_TOKEN || !A2A_API_KEY) {
   console.error('[AAA A2A] FATAL: A2A_TOKEN and A2A_API_KEY must be set. No dev fallback.');
@@ -1110,6 +1206,33 @@ app.get('/health', async (req, res) => {
     gateway: 'AAA',
     motto: 'Ditempa Bukan Diberi',
     vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED'
+  });
+});
+
+// ── Grafana Webhook ────────────────────────────────────────────────────────
+app.post('/webhooks/grafana/alerts', async (req, res) => {
+  const alert = req.body || {};
+  const alertName = alert.alertName || 'Unknown Alert';
+  const summary = alert.summary || '';
+  const state = alert.state || 'unknown';
+
+  const organChecks = await Promise.all(
+    ORGANS.map(({ name, port }) => checkOrganHealth(name, port))
+  );
+
+  const confirmedDown = organChecks.filter((o) => !o.healthy).map((o) => o.name);
+
+  const telegramMsg = formatAlert(alert, organChecks, confirmedDown);
+  const notified = await sendTelegramMessage(telegramMsg);
+
+  logEvent('GRAFANA_WEBHOOK', 'n/a', `Alert "${alertName}" state=${state} confirmedDown=${confirmedDown.join(',') || 'none'}`);
+
+  res.json({
+    ok: true,
+    received: true,
+    organChecks,
+    confirmedDown,
+    telegramNotified: notified,
   });
 });
 
