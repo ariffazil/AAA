@@ -61,6 +61,8 @@ device_id
 session-store.db
 mcp-oauth-config/
 secrets/
+IDENTITY/keys/*private*.pem
+IDENTITY/keys/*private*.key
 # ── Agent sessions and logs (privacy) ──
 sessions/
 session-state/
