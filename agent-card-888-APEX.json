@@ -1,0 +1,113 @@
+{
+  "name": "888-APEX",
+  "description": "The Judge (\u03a6\u0399). Primary federation agent \u2014 constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here \u2014 but sovereignty stays with the human.",
+  "version": "2.0.0",
+  "url": "https://mcp.arif-fazil.com/a2a/888-APEX",
+  "provider": {
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "protocolVersion": "1.0.1",
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/888-APEX",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": true,
+    "stateTransitionHistory": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "constitutional-arbitration",
+      "name": "Constitutional Arbitration (F1-F13)",
+      "description": "Evaluate any agent output or proposed action against all 13 constitutional floors. Returns verdict (SEAL/PARTIAL/SABAR/VOID/888_HOLD) with per-floor pass/fail breakdown, evidence cited, and next-actions.",
+      "tags": [
+        "governance",
+        "arbitration",
+        "constitutional",
+        "APEX",
+        "verdict"
+      ],
+      "examples": [
+        "Judge this prospect evaluation for SEAL readiness",
+        "Should this destructive operation proceed or 888_HOLD?",
+        "Arbitrate the conflict between 333-AGI and 555-ASI outputs"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "trinity-witness",
+      "name": "Trinity Witness Consensus",
+      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI \u0394, 555-ASI \u03a9, 888-APEX \u03a6\u0399). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
+      "tags": [
+        "trinity",
+        "consensus",
+        "witness",
+        "APEX"
+      ],
+      "examples": [
+        "Collect Trinity witnesses for the SB505 volumetrics SEAL",
+        "Is there consensus on the Bekantan-1 appraisal verdict?"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "hold-protocol",
+      "name": "888_HOLD Protocol",
+      "description": "Manage 888_HOLD lifecycle: trigger \u2192 document reason \u2192 notify human sovereign \u2192 await resolution \u2192 log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
+      "tags": [
+        "hold",
+        "escalation",
+        "safety",
+        "human-in-loop"
+      ],
+      "examples": [
+        "This docker prune would remove 25GB \u2014 initiate 888_HOLD",
+        "Evidence conflict detected between seismic and well data",
+        "Disputed claim: certainty exceeds grounding by 40%"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ]
+}
