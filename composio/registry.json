@@ -1,0 +1,137 @@
+{
+  "manifest_version": "1.0",
+  "ratified": "2026-06-02",
+  "authority": "888 (Arif bin Fazil, F13 SOVEREIGN)",
+  "seal": "AAA-COMPOSIO-EMBODIMENT-2026-06-02",
+  "doctrine": "AAA is the canonical tool-orchestration surface for the federation. Organs and PENTAGON agents call external SaaS through AAA, not directly through Composio. The execution layer remains in HERMES (composio_bridge.py). AAA holds the governance surface — registry, policy, and audit doctrine.",
+  "motto": "DITEMPA BUKAN DIBERI — Forged, Not Given",
+
+  "federation_position": {
+    "node": "AAA (port 3001)",
+    "role": "control_plane + tool_orchestrator + governance_surface",
+    "downstream_executor": "HERMES composio_bridge.py (Path B, port-based execution)",
+    "upstream_consumers": ["GEOX", "WEALTH", "WELL", "A-FORGE", "333-AGI", "555-ASI", "888-APEX", "A-AUDIT", "A-ARCHIVE"]
+  },
+
+  "vault999_state": "BROKEN",
+  "vault999_detail": "120 gaps, last seal #80. All writes BLOCKED at AAA level until chain is repaired.",
+  "write_authority": "BLOCKED_UNTIL_VAULT999_REPAIRED",
+  "fallback_authority": "000-SALAM_MANUAL_ACK — Arif must ack each write verb in chat",
+
+  "personal_reach_layer": {
+    "description": "Sovereign OAuth identity. Broad read across personal SaaS.",
+    "user_id": "pg-test-6a141225-1865-42a6-b1f4-0456f23f64aa",
+    "auth_type": "OAuth2",
+    "default_scope": "read-only",
+    "floor": "F2/F3 evidence (truth + receipt)",
+
+    "auth_configs": {
+      "gmail": {
+        "auth_config_id": "ac_mZMDwajgRo8x",
+        "connected_account": "ca_4W804Z2adkIv",
+        "status": "Active",
+        "intended_uses": ["inbox read for organ evidence", "draft synthesis (333-AGI only)"]
+      },
+      "googledrive": {
+        "auth_config_id": "ac_vNuiCPcjj7KF",
+        "connected_account": "ca_ygnSTDy1imSv",
+        "status": "Active",
+        "intended_uses": ["file read for GEOX/AAA ingest", "evidence bundle retrieval"]
+      },
+      "youtube": {
+        "auth_config_id": "ac_rF560kun8QEd",
+        "connected_account": "ca_dfufcQtLR5n8",
+        "status": "Active",
+        "intended_uses": ["video metadata + transcript reads", "research material"]
+      },
+      "reddit": {
+        "auth_config_id": "ac_mRSgta2wjr_4",
+        "connected_account": "ca_CWe4H0pLdH33",
+        "status": "Active",
+        "intended_uses": ["subreddit monitoring", "sentiment / community signal"]
+      },
+      "googlemaps": {
+        "auth_config_id": "ac_YHTfCvcrutIA",
+        "connected_account": "ca_iKCW5yws-43B",
+        "status": "Active",
+        "intended_uses": ["coordinate verification", "geocoding", "basin location context (feeds GEOX)"]
+      },
+      "linkedin": {
+        "auth_config_id": "ac_S5i2ID1aEEci",
+        "connected_account": "ca_6YXfnZgo5dRz",
+        "status": "Active",
+        "intended_uses": ["profile + post reads"],
+        "write_warning": "Write (post, message, connect) gets F1 + F13 + SALAM ack triple-gate if enabled — sovereign identity is reputation-loaded"
+      }
+    }
+  },
+
+  "workspace_layer": {
+    "description": "Per-organ Supabase sessions. Each organ gets its own user_id for isolation.",
+    "auth_config_id": "ac_xG-MJznLbRlA",
+    "toolkit": "supabase",
+    "default_scope": "per-organ (F1 + F13 for writes, F2/F3 for reads)",
+    "floor": "F1 reversibility + F13 SOVEREIGN ack required for any write",
+
+    "accounts": [
+      {
+        "account": "ca_ikoeG8G6Tr1c",
+        "status": "Active",
+        "intended_organ": "TBD (will map to WEALTH/A-FORGE/AAA per Phase 2 design)"
+      },
+      {
+        "account": "ca_o17l0FiTnRf2",
+        "status": "Initializing"
+      },
+      {
+        "account": "ca_Zxyuw3OnJ6TW",
+        "status": "Initializing"
+      }
+    ]
+  },
+
+  "compute_layer": {
+    "description": "Capability tools — research/AI capability, not personal SaaS. API key auth (different model from OAuth).",
+    "perplexityai": {
+      "auth_config_id": "ac_MCJcxineGX_w",
+      "auth_type": "API Key",
+      "management": "Custom",
+      "account": null,
+      "status": "no account connected",
+      "default_scope": "read-only research",
+      "floor": "F9 anti-hallucination — every claim needs a citation receipt before propagating to any verdict"
+    }
+  },
+
+  "phase_status": {
+    "phase_1_read_only_reach": {
+      "status": "ACTIVE",
+      "enabled": ["gmail.read", "googledrive.read", "youtube.read", "reddit.read", "googlemaps.read", "linkedin.read"],
+      "disabled": ["all writes"],
+      "requirements_met": ["composio_account_provisioned", "6_personal_toolkits_connected"]
+    },
+    "phase_2_per_organ_sessions": {
+      "status": "PENDING",
+      "requirements": ["3_supabase_accounts_active", "github_auth_connected", "AAA_session_manager_built", "organ_user_id_mapping_locked"]
+    },
+    "phase_3_trigger_bus": {
+      "status": "PENDING",
+      "requirements": ["AAA_webhook_endpoint_deployed", "event_router_service_live"]
+    },
+    "phase_4_governed_writes": {
+      "status": "BLOCKED",
+      "blocker": "VAULT999_chain_REPAIRED",
+      "blocker_detail": "120 gaps, last seal #80 (2026-06-02). Append-only chain needs epoch-split or v2-bridge decision from sovereign."
+    },
+    "phase_5_byo_oauth": {
+      "status": "PENDING",
+      "requirements": ["GCP_redirect_uri_added_for_gen-lang-client-0385068353", "scopes_narrowed_per_organ"]
+    }
+  },
+
+  "audit": {
+    "log_path": "/root/HERMES/audit/composio_bridge.jsonl",
+    "reader": "A-AUDIT (pentagon-audit user_id)",
+    "future_emission": "Every AAA-routed call should emit a structured event to A-AUDIT for cross-organs observability"
+  }
+}
