@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import TrinityNav from './components/TrinityNav';
 import Cockpit from './Cockpit';
 import AiPanel from './ai/AiPanel';
+import SupabaseCockpit from './components/SupabaseCockpit';
 
 function useHashRoute() {
   const [hash, setHash] = useState(() => window.location.hash.slice(1));
@@ -21,7 +22,7 @@ function App() {
   return (
     <>
       <TrinityNav />
-      {route === 'ai' ? <AiPanel /> : <Cockpit />}
+      {route === 'ai' ? <AiPanel /> : route === 'supabase' ? <SupabaseCockpit /> : <Cockpit />}
     </>
   );
 }
