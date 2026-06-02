@@ -11,6 +11,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
+import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 
 type OperatorTask = {
   id: string;
@@ -738,6 +739,9 @@ export default function Cockpit() {
             </div>
           </div>
         </section>
+
+        {/* ── SUPABASE FEDERATION MEMORY (Phase 3A Read-Only) ── */}
+        <SupabaseMemoryPanel />
 
         {/* SUMMARY */}
         <section className="mb-24 pt-12 border-t border-white/10">
