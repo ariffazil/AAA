@@ -109,8 +109,33 @@ function SealsPanel() {
 }
 
 // ── Pending Approvals ───────────────────────────────────────────
+import { supabase } from '@/lib/supabase';
+import { useState } from 'react';
+
 function ApprovalsPanel() {
   const { data, loading, error } = usePendingApprovals();
+  const [acting, setActing] = useState<string | null>(null);
+
+  async function handleAction(approval_id: string, verdict: 'APPROVED' | 'REJECTED') {
+    setActing(approval_id);
+    try {
+      const { error } = await supabase
+        .from('arifosmcp_approval_tickets')
+        .update({ human_verdict: verdict, resolved_at: new Date().toISOString() })
+        .eq('ticket_id', approval_id);
+      
+      if (error) {
+        alert('Failed to update: ' + error.message);
+      } else {
+        // Trigger a reload or just let React update if we use a realtime sub
+        window.location.reload();
+      }
+    } catch (e: any) {
+      alert('Error: ' + e.message);
+    }
+    setActing(null);
+  }
+
   if (loading) return <LoadingState />;
   if (error) return <ErrorState msg={error} />;
   if (!data?.length) return <EmptyState message="No pending approvals." />;
@@ -125,6 +150,22 @@ function ApprovalsPanel() {
           <span className="text-white/20 text-[9px] flex-shrink-0">
             {a.created_at ? new Date(a.created_at).toLocaleDateString('en-MY', { month: 'short', day: 'numeric' }) : ''}
           </span>
+          <div className="flex gap-1 ml-auto">
+            <button 
+              onClick={() => handleAction(a.approval_id, 'APPROVED')}
+              disabled={acting === a.approval_id}
+              className="px-2 py-0.5 bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 rounded border border-emerald-500/30 text-[9px] disabled:opacity-50"
+            >
+              APP
+            </button>
+            <button 
+              onClick={() => handleAction(a.approval_id, 'REJECTED')}
+              disabled={acting === a.approval_id}
+              className="px-2 py-0.5 bg-red-500/20 text-red-400 hover:bg-red-500/30 rounded border border-red-500/30 text-[9px] disabled:opacity-50"
+            >
+              REJ
+            </button>
+          </div>
         </div>
       ))}
     </div>
