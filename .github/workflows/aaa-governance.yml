@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run validate:aaa
       - run: npm run export:aaa
       - uses: actions/upload-artifact@v7
@@ -61,7 +61,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run validate:aaa
       - run: npm run export:aaa
       - uses: actions/upload-artifact@v7
@@ -78,7 +78,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run validate:aaa
 
   security-compliance:
@@ -90,6 +90,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm audit --omit=dev
       - run: npm run validate:aaa
