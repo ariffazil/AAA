@@ -30,13 +30,15 @@ Arif. This is the **AAA** organ of the arifOS federation — the Control Plane A
 The human-facing control plane and A2A agent gateway for the arifOS Federation.
 AAA provides:
 - **React 19 dashboard** (Cockpit) — constitutional floors, domain health, operator tasks
-- **A2A v1.0.0 TypeScript server** — Agent-to-Agent mesh protocol (port 3001)
+- **A2A v0.3.0 TypeScript server** — Agent-to-Agent mesh protocol (port 3001) — *canonical spec per public agent card*
 - **shadcn/ui component library** — 50+ Radix + Tailwind primitives
 - **AI chat panel** — Ollama / arifOS / OpenRouter client
 
 | Attribute | Value |
 |-----------|-------|
-| **Framework** | React 19, TypeScript ~5.9, Vite 7, Tailwind 3.4 |
+| **Framework** | React 19, TypeScript ~6.0, Vite 8, Tailwind 4 |
+| **MCP Protocol** | v1.0.0-FORGED |
+| **A2A Protocol** | v0.3.0 (canonical spec — see `public/a2a/agent-card.json`) |
 | **A2A Server** | Express 4.x, TypeScript, port 3001 |
 | **Build** | `npm run build` → `dist/` |
 | **Path Alias** | `@/` → `src/` |
@@ -51,7 +53,7 @@ AAA/
 │   ├── App.tsx           # Root component (hash router)
 │   ├── Cockpit.tsx       # Main dashboard
 │   ├── ai/               # AI chat panel + client
-│   ├── gateway/          # A2A v1.0.0 TypeScript server
+│   ├── gateway/          # A2A v0.3.0 TypeScript server
 │   ├── components/ui/    # shadcn/ui primitives (50+)
 │   ├── adapter/          # GovernanceAdapter → A-FORGE /sense
 │   ├── seed/             # Control-plane seed data
