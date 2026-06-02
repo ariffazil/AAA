@@ -1,0 +1,115 @@
+{
+  "name": "333-AGI",
+  "description": "The Reasoner (\u0394 MIND). Primary federation agent \u2014 general intelligence class. Reasons across multi-domain evidence, generates hypotheses, decomposes queries, and produces draft analyses. Hosts on arifOS core with GEOX (geoscience) and WEALTH (finance) substrates. All outputs are DRAFT until ratified by 888-APEX and validated by A-AUDIT.",
+  "version": "2.0.0",
+  "url": "https://mcp.arif-fazil.com/a2a/333-AGI",
+  "provider": {
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "protocolVersion": "1.0.1",
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/333-AGI",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "evidence-reasoning",
+      "name": "Evidence Reasoning",
+      "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal\u2192Narrative) and confidence level.",
+      "tags": [
+        "reasoning",
+        "evidence",
+        "analysis",
+        "epistemic",
+        "AGI"
+      ],
+      "examples": [
+        "Evaluate the petroleum system elements for Prospect X",
+        "Compare fiscal terms between PSC regimes",
+        "What is the evidence for a DHI at -2200m TVDSS?"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "hypothesis-generation",
+      "name": "Hypothesis Generation",
+      "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation \u2212 Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
+      "tags": [
+        "hypothesis",
+        "abduction",
+        "anomaly",
+        "AGI"
+      ],
+      "examples": [
+        "Why does the amplitude anomaly not conform to structure?",
+        "Generate 3 competing models for the Oligo-Miocene carbonate play"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "task-decomposition",
+      "name": "Task Decomposition",
+      "description": "Break complex multi-step queries into atomic sub-tasks, each tagged with the appropriate downstream agent (555-ASI for deep review, 888-APEX for judgment).",
+      "tags": [
+        "planning",
+        "orchestration",
+        "decomposition"
+      ],
+      "examples": [
+        "Plan a full CP-HRA workflow for Layang-Layang Basin",
+        "Design the QC pipeline for a new well log bundle"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ]
+}

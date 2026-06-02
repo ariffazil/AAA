@@ -30,6 +30,22 @@ type LogEvent = {
   msg: string;
 };
 
+/**
+ * F7 PII redaction (defense in depth).
+ * Server already redacts via `redactEventLog()`; this client-side
+ * filter protects against any older build that bypasses the
+ * server fix. Strips operator-supplied quoted text from any
+ * log line that mentions an operator action.
+ *
+ * Added 2026-06-02 19:35 UTC under F13 SOVEREIGN ratification.
+ */
+function redactLogMsg(msg: string): string {
+  return msg
+    .replace(/(Operator mission:\s*)"[^"]*"/g, '$1"[redacted — operator session only]"')
+    .replace(/(Operator input:\s*)"[^"]*"/g, '$1"[redacted — operator session only]"')
+    .replace(/(operator submitted:\s*)"[^"]*"/g, '$1"[redacted — operator session only]"');
+}
+
 type DomainStatus = 'loading' | 'ok' | 'err';
 
 // Floor metadata — IDs and names are SOT (build-time), but STATUS is derived
@@ -801,7 +817,7 @@ export default function Cockpit() {
                       <div key={ev.id} className={`px-6 py-2 border-b border-white/5 flex items-start gap-4 hover:bg-white/[0.02] ${i === 0 ? 'bg-white/[0.03]' : ''}`}>
                         <span className="text-white/20 flex-shrink-0 w-20">{new Date(ev.ts).toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
                         <span className={`flex-shrink-0 w-24 font-bold ${EVENT_COLORS[ev.kind] || 'text-white/40'}`}>{ev.kind}</span>
-                        <span className="text-white/50">{ev.msg}</span>
+                        <span className="text-white/50">{redactLogMsg(ev.msg)}</span>
                         <span className="text-white/20 flex-shrink-0 ml-auto text-[9px]">{ev.taskId.slice(-8)}</span>
                       </div>
                     ))}

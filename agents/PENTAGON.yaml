@@ -1,0 +1,117 @@
+pENTAGON:
+  version: 2.0.0
+  seal:
+    seal_id: PENTAGON-AGENTS-FORGE-20260602
+    verdict: SEAL
+    authority: Muhammad Arif bin Fazil — F13 SOVEREIGN
+    ratified: '2026-06-02T19:54:59.815809+00:00'
+    chain_length: 2505
+    merkle_leaf: 69c65e7c64e3dd1fdc08aac7bf862be3...
+    predecessor: TRUTH-BOUND-UPGRADE-20260602
+  architecture: Hybrid 5 — 3 PRIMARY + 2 SUPPORT
+  motto: DITEMPA BUKAN DIBERI
+  total_skills: 20
+  sovereign:
+    id: 000-SALAM
+    role: Human Sovereign — F13 · above the registry · not an agent
+    authority: Muhammad Arif bin Fazil
+  topology:
+    shape: PENTAGON — primary triangle + support observers
+    primary_triangle:
+      description: Bidirectional propose/validate between all 3 primaries
+      flow: 333-AGI ⇄ 555-ASI ⇄ 888-APEX ⇄ 333-AGI
+      interactions:
+      - '333→555: proposal + draft for critique'
+      - '555→333: concern + memory synthesis'
+      - '333→888: draft for ratification'
+      - '555→888: ethical flags + 888_HOLD triggers'
+      - '888→333: verdict + correction directives'
+      - '888→555: judgment for memory archival'
+    support_layer:
+      description: Parallel observation, not in decision flow
+      A-AUDIT: Observes ALL 3 primaries continuously → flags anomalies → escalates to 888-APEX
+      A-ARCHIVE: Triggered on SEAL → writes to VAULT999 → append-only
+    sovereign_override: 000-SALAM above — final human veto on any 888_HOLD or disputed verdict
+  lifecycle:
+    pipeline: 000-SALAM → 333-AGI (reason+execute) → 555-ASI (critique+memory) → 888-APEX (judge) → [A-AUDIT validates] → [A-ARCHIVE seals] → reseed to 000
+    stages:
+      '000': SALAM — Human sovereign handshake (not an agent)
+      '333': THINK — 333-AGI reasons + executes (FORGE subsumed)
+      '555': MEMORY — 555-ASI critiques + synthesizes deep memory
+      '888': JUDGE — 888-APEX arbitrates F1-F13, issues verdict
+      '999': SEAL — A-ARCHIVE writes immutable ledger entry
+  cascades:
+    888_HOLD:
+      trigger: Any agent (333/555/A-AUDIT) flags risk → 888-APEX initiates hold
+      flow: Flag → 888-APEX HOLD → notify 000-SALAM → await human resolution → log to A-ARCHIVE
+      triggers:
+      - Destructive operations (rm -rf, DROP TABLE, docker prune)
+      - Production deployments
+      - Mass file changes
+      - Secret handling
+      - Evidence conflicts or absence of primary evidence
+      - Rushed fixes
+      - Disputed claims
+      - certainty_gradient > grounding_gradient (Anti-Beautiful-One)
+    SEAL:
+      trigger: 888-APEX issues SEAL verdict
+      flow: 888-APEX SEAL → A-AUDIT compliance receipt → A-ARCHIVE writes VAULT999 → SHA256 hash → chain extends
+      requirements:
+      - Trinity witness consensus (Δ+Ω)
+      - All F1-F13 floors pass
+      - A-AUDIT compliance receipt attached
+    VOID:
+      trigger: 888-APEX rejects output
+      flow: 888-APEX VOID → reason documented → A-ARCHIVE logs (non-canon but traceable) → reseed to 000
+  key_decisions:
+  - 1. 5 agents, not 6, not 3 — sovereign directive (3 primary + 2 support)
+  - 2. FORGE is AGI — subsumed into 333-AGI as 3 sub-skills (arif-ops-measure, arif-forge-execute, arif-forge-deploy)
+  - 3. 555-ASI, not 666-ASI — MEMORY stage for audit lineage. Superintelligence is deeper remembering.
+  - 4. A-AUDIT and A-ARCHIVE are support agents — parallel observers, not in active decision flow
+  - 5. A2A v1.0.1 spec — skills[] arrays, securitySchemes, capabilities, defaultInputModes/OutputModes
+  - 6. 6 organs demoted to infrastructure — aaa-gateway, aaa-architect, aaa-engineer, aaa-auditor, hermes-asi, geox-witness, wealth-witness no longer in agent registry
+  - 7. Sovereign 000-SALAM above the registry — the human is not an agent
+  agents:
+    primary:
+    - id: 333-AGI
+      class: AGI
+      trinity: Δ MIND
+      stage: 333-THINK
+      skills: 10
+      role: reasons + executes (FORGE subsumed)
+      hosts:
+      - arifOS
+      - GEOX
+      - WEALTH
+    - id: 555-ASI
+      class: ASI
+      trinity: Ω HEART
+      stage: 555-MEMORY
+      skills: 3
+      role: ethical + memory + audit lineage
+      hosts:
+      - WELL
+      - arifOS
+    - id: 888-APEX
+      class: APEX
+      trinity: ΦΙ JUDGE
+      stage: 888-JUDGE
+      skills: 2
+      role: constitutional judge, F1-F13 arbitration
+      hosts:
+      - arifOS
+    support:
+    - id: A-AUDIT
+      class: APEX oversight
+      role: continuous ethical + safety monitor
+      skills: 2
+      tag: '[oversight]'
+      hosts:
+      - arifOS (control plane)
+    - id: A-ARCHIVE
+      class: ASI service
+      role: immutable ledger keeper + audit trail
+      skills: 3
+      tag: SEAL
+      hosts:
+      - VAULT999

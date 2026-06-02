@@ -133,17 +133,24 @@ AAA/
 
 ## Agent Registry
 
-**Two layers** — high-level organs (this table) and runtime agent IDs (live `public/a2a/agents.json`).
+**PENTAGON — 5 agents (3 primary + 2 support)** — canonical source: `agents/PENTAGON.yaml`, live registry: `public/a2a/agents.json`.
 
-| Organ | Role | Domain | Protocol | Runtime Agent |
-|-------|------|--------|----------|---------------|
-| **Hermes** | ASI execution relay | Human-facing delivery | Telegram / A2A | `hermes-relay` |
-| **OpenClaw** | AGI reasoning engine | General problem solving | Native / A2A | *(see agents.yaml)* |
-| **A-FORGE** | Build & deploy | Code, infra, execution | A2A / MCP | `forge-explorer` |
-| **arifOS** | Constitutional guardian | F1–F13 floor enforcement | MCP | `arifos-guardian` |
-| **GEOX** | Earth intelligence | Geoscience, petrophysics | A2A | `geox-witness` |
-| **WEALTH** | Capital intelligence | Finance, allocation | A2A | `wealth-sentinel` |
-| **WELL** | Vitality intelligence | Human readiness | A2A | `well-mirror` |
+### 3 PRIMARY agents (active decision triangle)
+
+| Agent | Class | Role | Stage / Ring | Host Organs |
+|-------|------|------|---|---|
+| `333-AGI` | AGI | General Intelligence + Execution (FORGE subsumed) | 333 MIND | arifOS + GEOX + WEALTH + WELL + A-FORGE |
+| `555-ASI` | ASI | Watcher — ethical + memory + audit lineage | 555 MEMORY | arifOS + WELL |
+| `888-APEX` | APEX | Constitutional judge — F1–F13 arbitration | 888 JUDGE | arifOS |
+
+### 2 SUPPORT agents (kinda like support agents — parallel, not in active decision flow)
+
+| Agent | Class | Role | Stage / Ring | Host |
+|-------|------|------|---|---|
+| `A-AUDIT` | APEX oversight | Continuous ethical + safety monitor | [oversight] HEART | arifOS + WELL |
+| `A-ARCHIVE` | ASI service | Immutable ledger keeper + audit trail | 999 SEAL | VAULT999 |
+
+**Organs are infrastructure** — the 6 federated organs (Hermes, OpenClaw, A-FORGE, arifOS, GEOX, WEALTH, WELL) host the 5 PENTAGON agents but are no longer in the A2A agent registry. **Sovereign (000-SALAM)** is above the registry. **3 sub-routines** (111-SENSE, 444-KERNEL, 555-MEMORY) are internal arifOS tools called by the 5 agents.
 
 > APEX (888_JUDGE) is a constitutional organ of arifOS, not an agent managed by AAA.  
 > AAA holds APEX's **agent card** for discovery purposes only. Verdict authority stays in arifOS.
