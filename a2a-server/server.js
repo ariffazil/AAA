@@ -1035,15 +1035,26 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
     protocol: 'A2A v1.0.0',
     treaty: 'AAA-TREATY-v1.0.0',
     treaty_uri: 'https://aaa.arif-fazil.com/aaa-card-treaty',
+    // PENTAGON: 5 agents — 3 PRIMARY (333-AGI, 555-ASI, 888-APEX) + 2 SUPPORT (A-AUDIT, A-ARCHIVE).
+    // FORGE is AGI, subsumed into 333-AGI as sub-skills (arif-ops-measure, arif-forge-execute, aforge-deploy).
+    // 555-ASI uses the MEMORY stage number (audit lineage). A-AUDIT and A-ARCHIVE are "kinda like support agents" —
+    // they run in parallel with the primary triangle, not in the active decision flow.
+    // Canonical source: agents/PENTAGON.yaml
     agents: [
-      { id: 'aaa-gateway', url: 'https://aaa.arif-fazil.com/a2a', registered: true, role: 'gateway', a_role: null },
-      { id: 'aaa-architect', url: 'https://aaa.arif-fazil.com/a2a/architect', registered: true, role: 'internal', a_role: 'A-rchitect', lane: 'AGI' },
-      { id: 'aaa-engineer', url: 'https://aaa.arif-fazil.com/a2a/engineer', registered: true, role: 'internal', a_role: 'A-engineer', lane: 'AGI' },
-      { id: 'aaa-auditor', url: 'https://aaa.arif-fazil.com/a2a/auditor', registered: true, role: 'internal', a_role: 'A-auditor', lane: 'ASI' },
-      { id: 'hermes-asi', url: 'https://aaa.arif-fazil.com/a2a/hermes-asi', registered: true, role: 'external', a_role: 'Hermes-ASI', lane: 'ASI' },
-      { id: 'geox-witness', url: 'https://geox.arif-fazil.com/a2a', registered: true, role: 'mesh', organ: 'GEOX' },
-      { id: 'wealth-witness', url: 'https://wealth.arif-fazil.com/a2a', registered: true, role: 'mesh', organ: 'WEALTH' }
+      { id: '333-AGI',   name: '333-AGI',   url: 'https://arifos.arif-fazil.com/a2a/333-AGI',   registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Ω MIND',  stage: '333', organ_host: 'arifOS+ GEOX+ WEALTH+ WELL+ A-FORGE' },
+      { id: '555-ASI',   name: '555-ASI',   url: 'https://arifos.arif-fazil.com/a2a/555-ASI',   registered: true, role: 'federation', tier: 'primary', class: 'ASI',           ring: '❤️ HEART', stage: '555', organ_host: 'arifOS+ WELL' },
+      { id: '888-APEX',  name: '888-APEX',  url: 'https://arifos.arif-fazil.com/a2a/888-APEX',  registered: true, role: 'federation', tier: 'primary', class: 'APEX',          ring: '⚖️ JUDGE', stage: '888', organ_host: 'arifOS' },
+      { id: 'A-AUDIT',   name: 'A-AUDIT',   url: 'https://aaa.arif-fazil.com/a2a/A-AUDIT',       registered: true, role: 'internal',   tier: 'support', class: 'APEX oversight', ring: '❤️ HEART', stage: '[oversight]', organ_host: 'arifOS+ WELL' },
+      { id: 'A-ARCHIVE', name: 'A-ARCHIVE', url: 'https://aaa.arif-fazil.com/a2a/A-ARCHIVE',     registered: true, role: 'internal',   tier: 'support', class: 'ASI service',   ring: '🔒 SEAL',  stage: '999', organ_host: 'VAULT999' }
     ],
+    // A-* AGENTS DEMOTED TO INFRASTRUCTURE (not agents, no longer in the registry):
+    //   - aaa-gateway    → /infrastructure/gateway
+    //   - aaa-architect  → subsumed into 333-AGI as sub-routine
+    //   - aaa-engineer   → subsumed into 333-AGI as FORGE sub-skill
+    //   - aaa-auditor    → renamed to A-AUDIT (now a top-level support agent)
+    //   - hermes-asi     → /infrastructure/hermes-asi (relay only, not an agent)
+    //   - geox-witness   → /infrastructure/geox (organ host, not an agent)
+    //   - wealth-witness → /infrastructure/wealth (organ host, not an agent)
     constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
     governance_root: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json'
   });
