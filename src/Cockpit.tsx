@@ -32,21 +32,44 @@ type LogEvent = {
 
 type DomainStatus = 'loading' | 'ok' | 'err';
 
-const FLOORS = [
-  { id: 'F1', name: 'Amanah', status: 'PASS' },
-  { id: 'F2', name: 'Truth', status: 'PASS' },
-  { id: 'F3', name: 'Tri-Witness', status: 'PASS' },
-  { id: 'F4', name: 'Clarity', status: 'PASS' },
-  { id: 'F5', name: 'Peace²', status: 'PASS' },
-  { id: 'F6', name: 'Empathy', status: 'PASS' },
-  { id: 'F7', name: 'Humility', status: 'PASS' },
-  { id: 'F8', name: 'Genius', status: 'PASS' },
-  { id: 'F9', name: 'Anti-Hantu', status: 'PASS' },
-  { id: 'F10', name: 'Ontology', status: 'PASS' },
-  { id: 'F11', name: 'Auditability', status: 'PASS' },
-  { id: 'F12', name: 'Injection', status: 'PASS' },
-  { id: 'F13', name: 'Sovereign', status: 'PASS' },
+// Floor metadata — IDs and names are SOT (build-time), but STATUS is derived
+// from the live kernel /health payload. Initial state is UNKNOWN per F2.
+const FLOORS_META: { id: string; name: string }[] = [
+  { id: 'F1', name: 'Amanah' },
+  { id: 'F2', name: 'Truth' },
+  { id: 'F3', name: 'Tri-Witness' },
+  { id: 'F4', name: 'Clarity' },
+  { id: 'F5', name: 'Peace²' },
+  { id: 'F6', name: 'Empathy' },
+  { id: 'F7', name: 'Humility' },
+  { id: 'F8', name: 'Genius' },
+  { id: 'F9', name: 'Anti-Hantu' },
+  { id: 'F10', name: 'Ontology' },
+  { id: 'F11', name: 'Auditability' },
+  { id: 'F12', name: 'Injection' },
+  { id: 'F13', name: 'Sovereign' },
 ];
+
+type FloorState = 'PASS' | 'FAIL' | 'UNKNOWN';
+
+type KernelHealth = {
+  status: 'healthy' | 'degraded' | 'unhealthy' | string;
+  release_name?: string;
+  git_commit?: string;
+  build_time?: string;
+  tools_loaded?: number;
+  floors_active?: number;
+  floors_enforcement?: string;
+  floors_hard_doctrinal?: string[];
+  floors_soft_doctrinal?: string[];
+  vault999_health?: string;
+  freshness?: { status?: string; age_seconds?: number };
+  contract_drift?: boolean;
+  runtime_drift?: boolean;
+};
+
+const TEST_ALERT_PATTERN = /(Phase1|Test Organ|Verification Test|Dry.?Run)/i;
+const MCP_PROTOCOL = 'v1.0.0-FORGED'; // SOT — MCP protocol, not A2A (A2A = 0.3.0)
 
 const GOLDEN_PATH = ['SENSE', 'MIND', 'HEART', 'JUDGE', 'VAULT'] as const;
 
@@ -89,6 +112,7 @@ export default function Cockpit() {
   const [kernelHealth, setKernelHealth] = useState<'READY' | 'OFFLINE'>('OFFLINE');
   const [kernelLastCheck, setKernelLastCheck] = useState<string>('never');
   const [kernelLatency, setKernelLatency] = useState<number | null>(null);
+  const [kernelData, setKernelData] = useState<KernelHealth | null>(null);
   const [holdsCount, setHoldsCount] = useState<number>(0);
   const [holdsBreakdown, setHoldsBreakdown] = useState<{ 'input-required': number; 'auth-required': number }>({ 'input-required': 0, 'auth-required': 0 });
   const [sealsCount, setSealsCount] = useState<number>(0);
@@ -249,16 +273,41 @@ export default function Cockpit() {
         setKernelLatency(ms);
         const now = new Date().toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         setKernelLastCheck(now);
-        setKernelHealth(res.ok ? 'READY' : 'OFFLINE');
+        if (res.ok) {
+          const data: KernelHealth = await res.json();
+          setKernelData(data);
+          setKernelHealth(data?.status === 'healthy' ? 'READY' : 'OFFLINE');
+        } else {
+          setKernelHealth('OFFLINE');
+          setKernelData(null);
+        }
       } catch {
         setKernelHealth('OFFLINE');
         setKernelLatency(null);
+        setKernelData(null);
       }
     };
     checkArifOSHealth();
     const interval = setInterval(checkArifOSHealth, 30000);
     return () => clearInterval(interval);
   }, []);
+
+  // Derive per-floor status from live kernel data.
+  // F2-honest: UNKNOWN when no data, FAIL when kernel degraded, PASS when doctrinal.
+  const floorStates: Record<string, FloorState> = (() => {
+    const out: Record<string, FloorState> = {};
+    for (const f of FLOORS_META) out[f.id] = 'UNKNOWN';
+    if (!kernelData) return out;
+    const healthy = kernelData.status === 'healthy';
+    const hard = new Set(kernelData.floors_hard_doctrinal || []);
+    const soft = new Set(kernelData.floors_soft_doctrinal || []);
+    for (const f of FLOORS_META) {
+      const isDoctrinal = hard.has(f.id) || soft.has(f.id);
+      if (!isDoctrinal) out[f.id] = 'FAIL';
+      else out[f.id] = healthy ? 'PASS' : 'FAIL';
+    }
+    return out;
+  })();
 
   useEffect(() => {
     const checkHolds = async () => {
@@ -392,8 +441,8 @@ export default function Cockpit() {
               VAULT999: {vaultConnected ? 'CONNECTED' : 'LOCAL'}
             </div>
             <SessionBadge manifest={sessionManifest} onRevoke={() => setSessionManifest(null)} />
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60">
-              MCP: v1.0.0-FORGED
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60" title="MCP protocol version — SOT, not live">
+              MCP: {MCP_PROTOCOL} <span className="text-white/30">[SOT]</span>
             </div>
           </div>
         </div>
@@ -584,18 +633,24 @@ export default function Cockpit() {
           <div className="flex items-baseline gap-4 mb-10">
             <span className="text-4xl font-black text-white/10 font-mono italic">02.</span>
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Constitutional Floors</h2>
+            <span className="text-[9px] font-mono text-white/30 uppercase tracking-widest">live · {kernelData ? kernelData.release_name || 'kernel' : 'no kernel'}</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-px bg-white/5 border border-white/5">
-            {FLOORS.map(f => (
-              <div key={f.id} className="bg-[#050505] p-6 hover:bg-white/[0.02] transition-colors group">
-                <div className="text-[10px] font-mono text-red-500 mb-4 group-hover:translate-x-1 transition-transform">{f.id}</div>
-                <div className="text-xs font-black text-white leading-tight mb-2">{f.name.toUpperCase()}</div>
-                <div className="flex items-center gap-1.5">
-                  <div className="w-1 h-1 bg-emerald-500 rounded-full" />
-                  <span className="text-[8px] font-mono text-emerald-500 tracking-widest">VERIFIED</span>
+            {FLOORS_META.map(f => {
+              const s = floorStates[f.id];
+              const tone = s === 'PASS' ? 'emerald' : s === 'FAIL' ? 'red' : 'white/30';
+              const label = s === 'PASS' ? 'VERIFIED' : s === 'FAIL' ? 'VIOLATED' : 'UNKNOWN · F2';
+              return (
+                <div key={f.id} className="bg-[#050505] p-6 hover:bg-white/[0.02] transition-colors group">
+                  <div className="text-[10px] font-mono text-red-500 mb-4 group-hover:translate-x-1 transition-transform">{f.id}</div>
+                  <div className="text-xs font-black text-white leading-tight mb-2">{f.name.toUpperCase()}</div>
+                  <div className="flex items-center gap-1.5">
+                    <div className={`w-1 h-1 bg-${tone}-500 rounded-full`} />
+                    <span className={`text-[8px] font-mono text-${tone}-500 tracking-widest`}>{label}</span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
             <div className="bg-[#050505] p-6 flex items-center justify-center border-l border-white/5">
               <ShieldAlert className="w-6 h-6 text-white/10" />
             </div>
@@ -605,10 +660,10 @@ export default function Cockpit() {
         {/* ── SYSTEM HEALTH GRID ── */}
         <section className="mb-24">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <HealthMetric label="Integrity" value="100%" sub="Validated" color="text-red-500" />
+            <HealthMetric label="Integrity" value={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? '100%' : '—'} sub={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? 'No drift' : 'Drift detected'} color="text-red-500" />
             <HealthMetric label="Holds Open" value={String(holdsCount)} sub={holdsCount > 0 ? `${holdsBreakdown['input-required']} pending · ${holdsBreakdown['auth-required']} auth` : 'None'} color={holdsCount > 0 ? 'text-amber-500' : 'text-white'} />
             <HealthMetric label="Seals" value={String(sealsCount)} sub={vaultConnected ? 'VAULT999' : 'In-memory'} color={vaultConnected ? 'text-emerald-500' : 'text-blue-400'} />
-            <HealthMetric label="Uptime" value="99.9%" sub="Live" color="text-blue-500" />
+            <HealthMetric label="Vault999" value={kernelData?.vault999_health?.toUpperCase() || '—'} sub={kernelData?.freshness ? `fresh · ${kernelData.freshness.age_seconds ?? '?'}s` : 'no probe'} color={kernelData?.vault999_health === 'healthy' ? 'text-blue-500' : 'text-white/40'} />
           </div>
         </section>
 
@@ -726,16 +781,33 @@ export default function Cockpit() {
                   <div className="mb-2">No events yet. Submit a mission to activate the loop.</div>
                   <div className="animate-pulse text-white/10">_</div>
                 </div>
-              ) : (
-                events.map((ev, i) => (
-                  <div key={ev.id} className={`px-6 py-2 border-b border-white/5 flex items-start gap-4 hover:bg-white/[0.02] ${i === 0 ? 'bg-white/[0.03]' : ''}`}>
-                    <span className="text-white/20 flex-shrink-0 w-20">{new Date(ev.ts).toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
-                    <span className={`flex-shrink-0 w-24 font-bold ${EVENT_COLORS[ev.kind] || 'text-white/40'}`}>{ev.kind}</span>
-                    <span className="text-white/50">{ev.msg}</span>
-                    <span className="text-white/20 flex-shrink-0 ml-auto text-[9px]">{ev.taskId.slice(-8)}</span>
-                  </div>
-                ))
-              )}
+              ) : (() => {
+                const live = events.filter(ev => !TEST_ALERT_PATTERN.test(ev.msg) && !TEST_ALERT_PATTERN.test(ev.kind));
+                const hidden = events.length - live.length;
+                if (live.length === 0) {
+                  return (
+                    <div className="px-6 py-8 text-white/20 text-center">
+                      <div className="mb-2">{hidden} test event{hidden === 1 ? '' : 's'} filtered.</div>
+                      <div className="animate-pulse text-white/10">_</div>
+                    </div>
+                  );
+                }
+                return (
+                  <>
+                    {hidden > 0 && (
+                      <div className="px-6 py-1 text-[9px] text-white/30 border-b border-white/5">· {hidden} test event{hidden === 1 ? '' : 's'} hidden (Phase1 / Dry-Run / Test Organ)</div>
+                    )}
+                    {live.map((ev, i) => (
+                      <div key={ev.id} className={`px-6 py-2 border-b border-white/5 flex items-start gap-4 hover:bg-white/[0.02] ${i === 0 ? 'bg-white/[0.03]' : ''}`}>
+                        <span className="text-white/20 flex-shrink-0 w-20">{new Date(ev.ts).toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
+                        <span className={`flex-shrink-0 w-24 font-bold ${EVENT_COLORS[ev.kind] || 'text-white/40'}`}>{ev.kind}</span>
+                        <span className="text-white/50">{ev.msg}</span>
+                        <span className="text-white/20 flex-shrink-0 ml-auto text-[9px]">{ev.taskId.slice(-8)}</span>
+                      </div>
+                    ))}
+                  </>
+                );
+              })()}
             </div>
           </div>
         </section>
@@ -769,8 +841,51 @@ export default function Cockpit() {
         }}
       />
 
-      <footer className="max-w-6xl mx-auto px-6 pt-20 border-t border-white/5 text-center text-[10px] font-mono tracking-[0.2em] text-white/20">
-        Δ AAA COCKPIT · arifOS v2026.4.22 · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
+      <footer className="max-w-6xl mx-auto px-6 pt-12 border-t border-white/5">
+        <div className="mb-8">
+          <h3 className="text-sm font-black uppercase tracking-widest text-white/40 mb-4">Build Info</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] font-mono">
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Kernel</div>
+              <div className="text-white/80">{kernelData?.release_name || '—'} <span className="text-white/30">[LIVE]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Git Commit</div>
+              <div className="text-white/80">{kernelData?.git_commit || '—'} <span className="text-white/30">[LIVE]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">MCP</div>
+              <div className="text-white/80">{MCP_PROTOCOL} <span className="text-white/30">[SOT]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Cockpit Build</div>
+              <div className="text-white/80">v55.5.1 <span className="text-white/30">[SOT]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Tools Loaded</div>
+              <div className="text-white/80">{kernelData?.tools_loaded ?? '—'} <span className="text-white/30">[LIVE]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Floors Active</div>
+              <div className="text-white/80">{kernelData?.floors_active ?? '—'} <span className="text-white/30">[LIVE]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Contract Drift</div>
+              <div className={kernelData?.contract_drift === false ? 'text-emerald-400' : kernelData?.contract_drift === true ? 'text-red-400' : 'text-white/40'}>
+                {kernelData?.contract_drift === undefined ? '—' : kernelData.contract_drift ? 'YES' : 'none'} <span className="text-white/30">[LIVE]</span>
+              </div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Runtime Drift</div>
+              <div className={kernelData?.runtime_drift === false ? 'text-emerald-400' : kernelData?.runtime_drift === true ? 'text-red-400' : 'text-white/40'}>
+                {kernelData?.runtime_drift === undefined ? '—' : kernelData.runtime_drift ? 'YES' : 'none'} <span className="text-white/30">[LIVE]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="text-center text-[10px] font-mono tracking-[0.2em] text-white/20 pt-8">
+          Δ AAA COCKPIT · arifOS {kernelData?.release_name || '—'} · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
+        </div>
       </footer>
     </div>
   );

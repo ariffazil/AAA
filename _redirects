@@ -6,3 +6,9 @@
 
 # SPA fallback for React Router
 /*    /index.html   200
+
+# NOTE: Domain-level redirect (arif.fazil → arif-fazil.com) is NOT possible
+# from this file — _redirects handles path-level only. The proper fix is at
+# the registrar (Namecheap/Porkbun/etc.) or via a Cloudflare Worker that
+# inspects request.host. The SPA itself has a JS guard in index.html that
+# detects window.location.hostname === 'arif.fazil' and redirects.
