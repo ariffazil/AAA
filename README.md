@@ -75,68 +75,89 @@ Arif (human sovereign)
 
 ```
 AAA/
-├── src/                    # React 19 cockpit UI (Vite)
-│   ├── gateway/            # A2A TypeScript server
-│   ├── adapter/            # Governance adapter (A-FORGE bridge)
-│   ├── ai/                 # AI chat panel
-│   ├── components/         # shadcn/ui primitives
-│   └── seed/               # Control-plane seed data
-├── a2a/                    # A2A specs, cards, registry
-│   ├── agent-cards/        # Per-agent capability cards
-│   ├── registry/           # Consolidated agent registry
-│   ├── policies/           # Auth and trust policies
-│   └── federation-bridge.yaml
-├── a2a-server/             # Standalone A2A gateway (Node.js/Express)
-│   ├── server.js           # HTTP bridge
-│   ├── agent-cards/        # Runtime agent cards
-│   └── vault.js            # Vault integration client
-├── agents/                 # Agent identity directories
-│   ├── hermes-asi/         # Hermes ASI config + runtime
-│   ├── hermes-ops/         # Hermes ops config
-│   ├── openclaw/           # OpenClaw agent identity
-│   ├── opencode/           # OpenCode agent identity
-│   └── apex/               # APEX agent card (read-only identity)
-├── contracts/              # YAML governance contracts
-├── registries/             # Canonical YAML registries
-│   ├── agents.yaml
-│   ├── skills.yaml
-│   ├── tools.yaml
-│   └── workflows.yaml
-├── schemas/                # JSON/YAML schemas
-├── public/                 # Static assets + .well-known
-├── services/               # Service definitions
-├── observability/          # Grafana + Prometheus configs
-├── deploy/                 # Docker + Caddy configs
-├── ops/                    # Runbooks and workflows
-├── docs/                   # Architecture + federation docs
-├── wiki/                   # Operational wiki
-└── tests/                  # Test suite
+├── src/                        # React 19 cockpit UI (Vite 8, TS 6, Tailwind 4)
+│   ├── App.tsx                 # Root + hash router
+│   ├── Cockpit.tsx             # Main dashboard — live floor grid, mission intake
+│   ├── main.tsx                # React entry (+ webmcp init)
+│   ├── gateway/                # A2A TypeScript server (v0.3.0)
+│   ├── adapter/                # Governance adapter (A-FORGE bridge)
+│   ├── ai/                     # AI chat panel (Ollama / arifOS / OpenRouter)
+│   ├── components/             # shadcn/ui + TrinityNav + SessionConsent
+│   ├── seed/                   # Control-plane seed data
+│   ├── hooks/                  # React hooks
+│   └── lib/                    # cn() + utilities
+├── a2a/                        # A2A design surface (specs, doctrine)
+│   ├── agent-cards/            # Per-agent capability cards (design)
+│   ├── registry/               # Consolidated registry YAML
+│   ├── policies/               # Auth and trust policies
+│   ├── federation-bridge.yaml  # Inter-organ routing
+│   ├── A2A_DIALOGUE.md         # Protocol dialogue spec
+│   └── AAA_TREATY_LAW.md       # Treaty-level contract
+├── a2a-server/                 # Standalone A2A gateway (Node.js/Express)
+│   ├── server.js               # HTTP bridge (port 3001)
+│   ├── agent-cards/            # Runtime agent cards
+│   ├── vault.js                # VAULT999 integration client
+│   └── Dockerfile              # Container for A2A gateway
+├── public/                     # Static-served assets (mirrored to dist/)
+│   └── a2a/                    # Live A2A surface — agent-card, agents.json
+│       ├── agent-card.json     # Canonical A2A card (protocol_version 0.3.0)
+│       ├── agents.json         # Live runtime agent registry
+│       ├── status.json         # Gateway health
+│       └── index.html          # Static A2A info page
+├── agents/                     # Per-agent identity directories
+│   ├── hermes-asi/             # Hermes ASI config + runtime
+│   ├── hermes-ops/             # Hermes ops config
+│   ├── openclaw/               # OpenClaw agent identity
+│   ├── opencode/               # OpenCode agent identity
+│   ├── apex/                   # APEX agent card (read-only)
+│   ├── antigravity/            # [staging] Antigravity test bed
+│   └── maxhermes/              # [staging] MaxHermes variant
+├── contracts/                  # YAML governance contracts
+├── registries/                 # Canonical YAML registries (agents/skills/tools)
+├── schemas/                    # JSON/YAML schemas
+├── services/a2a-gateway/       # Service definition for A2A gateway
+├── observability/              # Grafana + Prometheus configs (Nine-Signal)
+├── deploy/                     # Docker + Caddy configs
+├── ops/                        # Runbooks and workflows
+├── docs/                       # Architecture + federation docs
+├── wiki/                       # Operational wiki
+├── tests/                      # Test suite (test_contract_parity.py)
+├── dist/                       # Build output (`npm run build` → dist/)
+├── .well-known/                # A2A discovery surface
+├── FEDERATION_COCKPIT.md       # Internal federation contract (SOT)
+├── AGENTS.md                   # Repo boot protocol
+└── ADR/                        # Architecture Decision Records
 ```
 
 ---
 
 ## Agent Registry
 
-Canonical agents registered in AAA:
+**Two layers** — high-level organs (this table) and runtime agent IDs (live `public/a2a/agents.json`).
 
-| Agent | Role | Domain | Protocol |
-|-------|------|--------|----------|
-| **Hermes** | ASI execution relay | Human-facing delivery | Telegram / A2A |
-| **OpenClaw** | AGI reasoning engine | General problem solving | Native / A2A |
-| **A-FORGE** | Build & deploy | Code, infra, execution | A2A / MCP |
-| **GEOX** | Earth intelligence | Geoscience, petrophysics | A2A |
-| **WEALTH** | Capital intelligence | Finance, allocation | A2A |
-| **WELL** | Vitality intelligence | Human readiness | A2A |
+| Organ | Role | Domain | Protocol | Runtime Agent |
+|-------|------|--------|----------|---------------|
+| **Hermes** | ASI execution relay | Human-facing delivery | Telegram / A2A | `hermes-relay` |
+| **OpenClaw** | AGI reasoning engine | General problem solving | Native / A2A | *(see agents.yaml)* |
+| **A-FORGE** | Build & deploy | Code, infra, execution | A2A / MCP | `forge-explorer` |
+| **arifOS** | Constitutional guardian | F1–F13 floor enforcement | MCP | `arifos-guardian` |
+| **GEOX** | Earth intelligence | Geoscience, petrophysics | A2A | `geox-witness` |
+| **WEALTH** | Capital intelligence | Finance, allocation | A2A | `wealth-sentinel` |
+| **WELL** | Vitality intelligence | Human readiness | A2A | `well-mirror` |
 
 > APEX (888_JUDGE) is a constitutional organ of arifOS, not an agent managed by AAA.  
 > AAA holds APEX's **agent card** for discovery purposes only. Verdict authority stays in arifOS.
 
 Full agent cards: `a2a/agent-cards/`  
-Consolidated registry: `a2a/registry/agents.yaml`
+Design registry: `a2a/registry/agents.yaml`  
+**Live runtime registry** (what Cockpit actually queries): `public/a2a/agents.json`
 
 ---
 
 ## A2A Protocol
+
+**Protocol version:** `v0.3.0` (canonical — see `public/a2a/agent-card.json` → `protocol_version`)  
+**MCP protocol:** `v1.0.0-FORGED` (canonical — see `arifOS/CLAUDE.md`)
 
 The federated A2A protocol defines how agents communicate. Key message types:
 
