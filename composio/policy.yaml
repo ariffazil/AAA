@@ -1,0 +1,222 @@
+# arifOS × Composio — AAA Canonical Policy
+# Ratified: 2026-06-02 · Authority: 888 (Arif bin Fazil, F13 SOVEREIGN)
+# Seal: AAA-COMPOSIO-EMBODIMENT-2026-06-02
+# DITEMPA BUKAN DIBERI — Forged, Not Given
+#
+# AAA is the canonical tool-orchestration surface for the federation.
+# Organs and PENTAGON agents call external SaaS through AAA → policy check →
+# HERMES composio_bridge.py (Path B execution) → Composio API → OAuth'd SaaS.
+#
+# VAULT999 NOTE: Read operations proceed without SEAL. WRITE operations
+# require: 888-APEX SEAL → VAULT999 pre-execution receipt → 000-SALAM ack_irreversible
+# (if destructive) → Composio execute → VAULT999 post-execution receipt.
+# Currently VAULT999 chain is BROKEN → NO write tools enabled for any agent.
+# Read-only is the constitutional floor until chain is repaired.
+
+vault999_state: BROKEN  # 2026-06-02 status: 120 gaps, last seal #80
+write_authority: BLOCKED_UNTIL_VAULT999_REPAIRED
+fallback_authority: 000-SALAM_MANUAL_ACK  # Arif must ack each write verb in chat
+
+# ─── Per-toolkit scope (canonical) ───────────────────────────────────────────
+
+toolkits:
+
+  gmail:
+    auth_config: ac_mZMDwajgRo8x
+    account: ca_4W804Z2adkIv
+    layer: personal-reach
+    default_scope: read-only
+    floor: F2/F3
+    writes_blocked_until: VAULT999_REPAIRED
+    notes: "Inbox read for organ evidence. Drafts via 333-AGI only. Sends require F1 + F13 + SALAM ack."
+
+  googledrive:
+    auth_config: ac_vNuiCPcjj7KF
+    account: ca_ygnSTDy1imSv
+    layer: personal-reach
+    default_scope: read-only
+    floor: F2/F3
+    writes_blocked_until: VAULT999_REPAIRED
+    notes: "File reads for GEOX/AAA ingest. Evidence bundle retrieval. Writes blocked until VAULT999."
+
+  youtube:
+    auth_config: ac_rF560kun8QEd
+    account: ca_dfufcQtLR5n8
+    layer: personal-reach
+    default_scope: read-only
+    floor: F2/F3
+    writes_blocked_until: NEVER_BY_DEFAULT
+    notes: "Video metadata + transcript reads for research. Upload (write) not enabled — would need sovereign decision."
+
+  reddit:
+    auth_config: ac_mRSgta2wjr_4
+    account: ca_CWe4H0pLdH33
+    layer: personal-reach
+    default_scope: read-only
+    floor: F2/F3
+    writes_blocked_until: NEVER_BY_DEFAULT
+    notes: "Subreddit monitoring, sentiment signal. Post/comment would need sovereign decision (reputation risk)."
+
+  googlemaps:
+    auth_config: ac_YHTfCvcrutIA
+    account: ca_iKCW5yws-43B
+    layer: personal-reach
+    default_scope: read-only
+    floor: F2/F3
+    writes_blocked_until: N/A
+    notes: "Coordinate verification, geocoding, location context. Feeds GEOX when GEOX gets its own session. Maps has no destructive write verbs."
+
+  linkedin:
+    auth_config: ac_S5i2ID1aEEci
+    account: ca_6YXfnZgo5dRz
+    layer: personal-reach
+    default_scope: read-only
+    floor: F2/F3
+    writes_blocked_until: VAULT999_REPAIRED
+    notes: "Profile + post reads. Write (post, message, connect) gets F1 + F13 + SALAM ack triple-gate — sovereign identity is reputation-loaded."
+
+  supabase:
+    auth_config: ac_xG-MJznLbRlA
+    accounts: [ca_ikoeG8G6Tr1c, ca_o17l0FiTnRf2, ca_Zxyuw3OnJ6TW]
+    layer: workspace
+    default_scope: per-organ (one user_id per organ)
+    floor: F1 + F13 for writes, F2/F3 for reads
+    writes_blocked_until: VAULT999_REPAIRED
+    notes: "Per-organ user_id isolation. 3 accounts: 1 Active, 2 Initializing. Organ mapping pending Phase 2."
+
+  perplexityai:
+    auth_config: ac_MCJcxineGX_w
+    account: null
+    layer: compute
+    default_scope: read-only (research)
+    floor: F9 anti-hallucination
+    writes_blocked_until: N/A
+    notes: "API key auth. No account connected yet. Perplexity is read-only by nature — every claim needs a citation receipt before propagating."
+
+# ─── Per-organ policy (organ → toolkit scope) ────────────────────────────────
+
+organs:
+
+  GEOX:
+    intended_tools: [googledrive, googlesheets, gmail, googlemaps]
+    scope: read-only evidence ingest
+    writes_blocked_until: VAULT999_REPAIRED
+    notes: "GEOX physics-9 outputs stay on-organ. Composio is data ingest wrapper only. Maps for coordinate verification when GEOX gets its own session."
+
+  WEALTH:
+    intended_tools: [googlesheets, googledrive, googledocs, gmail, supabase]
+    scope: read + draft-write (write blocked until VAULT999 repaired)
+    writes_blocked_until: VAULT999_REPAIRED
+    gate: "F1 reversibility + F13 ack required for any write"
+    notes: "Draft-write intended for Sheets/Docs. Supabase session for Makcik² credit + transactions. All writes triple-gated."
+
+  WELL:
+    intended_tools: [googlecalendar, gmail]
+    scope: read-only
+    writes_blocked_until: PERMANENT_BY_DESIGN
+    notes: "WELL is REFLECT_ONLY. Must NEVER create, modify, or delete external state. Calendar density + email volume feed cognitive pressure model."
+
+  A-FORGE:
+    intended_tools: [github, supabase, slack]
+    scope: read + write (write blocked until VAULT999 repaired)
+    writes_blocked_until: VAULT999_REPAIRED
+    gate: "888-APEX SEAL + VAULT999 receipt + 000-SALAM ack required"
+    notes: "Only organ with legitimate write intent. Schema ops + edge functions + PRs + Slack notifications. All writes quadruple-gated."
+
+  AAA:
+    intended_tools: [composio-self]
+    scope: session-orchestrator
+    notes: "AAA creates/revokes per-organ sessions. Holds COMPOSIO_API_KEY. Does not execute direct tool calls — it gates them."
+
+# ─── PENTAGON agent policy (parallel layer) ──────────────────────────────────
+
+agents:
+
+  333-AGI:
+    role: synthesis
+    composio_user_id: pentagon-333-agi
+    toolkits: [gmail, googledrive, googlecalendar, googlesheets, googledocs, supabase]
+    scope: read + draft-only (DRAFT, never send)
+    blocked_actions:
+      - GMAIL_SEND_EMAIL
+      - GMAIL_DELETE_MESSAGE
+      - GOOGLEDRIVE_DELETE_FILE
+      - GOOGLESHEETS_UPDATE_SHEET
+    escalation: "draft outputs require 555-ASI critique before any send"
+
+  555-ASI:
+    role: critique
+    composio_user_id: pentagon-555-asi
+    toolkits: [gmail, googlecalendar]
+    scope: read-only
+    blocked_actions: ["*"]  # CRITIQUE ONLY — no write, no draft
+    rationale: "555-ASI critiques 333-AGI drafts. Its voice is internal, not external. ZERO Composio write authority."
+
+  888-APEX:
+    role: judge
+    composio_user_id: pentagon-888-apex
+    toolkits: []  # intentionally empty initially
+    blocked_actions: ["*"]  # F11 AUTH: 888-APEX cannot self-authorize
+    rationale: "888-APEX governs all write actions for other agents. It must not be the executor."
+
+  A-AUDIT:
+    role: observer
+    composio_user_id: pentagon-audit
+    toolkits: [composio]  # composio-self toolkit
+    scope: read-only
+    blocked_actions: ["*"]  # observer cannot write
+    rationale: "A-AUDIT monitors Composio's audit trail for anomalies. It sees; it does not touch."
+
+  A-ARCHIVE:
+    role: witness
+    composio_user_id: pentagon-archive
+    toolkits: []  # VAULT999 is its substrate, not Composio
+    blocked_actions: ["*"]
+    rationale: "A-ARCHIVE seals and reads VAULT999. Until chain is repaired, no SEALs are possible — A-ARCHIVE itself is on HOLD."
+
+# ─── Constitutional gate (every tool call) ───────────────────────────────────
+
+gate:
+
+  read_calls:
+    flow: "organ/agent → AAA → policy_check (toolkit in caller's scope) → composio_bridge.execute → audit_log"
+    preconditions: [agent_identity_verified, toolkit_in_caller_scope]
+    floor_check: F2 (truth) + F3 (evidence receipt)
+    no_vaul999_required: true
+
+  write_calls:
+    flow: |
+      organ/agent → AAA → 333-AGI draft → 555-ASI critique →
+      888-APEX arbitrate (F1-F13) → VAULT999 pre-SEAL →
+      000-SALAM ack (if destructive) → composio_bridge.execute →
+      VAULT999 post-SEAL → audit_log
+    preconditions: [VAULT999_CONNECTED, F1_F13_PASSED, SALAM_ACK_IF_DESTRUCTIVE]
+    blocked_when: VAULT999_BROKEN
+    fallback: "000-SALAM_MANUAL_ACK — Arif must ack each write verb in chat"
+
+# ─── Phase gates ─────────────────────────────────────────────────────────────
+
+phases:
+
+  phase_1_read_only_reach:
+    status: ACTIVE  # ← we are here
+    enabled: [gmail.read, googledrive.read, youtube.read, reddit.read, googlemaps.read, linkedin.read]
+    disabled: [all writes]
+    requirements_met: [composio_account_provisioned, 6_personal_toolkits_connected]
+
+  phase_2_per_organ_sessions:
+    status: PENDING
+    requirements: [phase_1_complete, supabase_3_accounts_active, github_connected, AAA_session_manager_built, organ_user_id_mapping_locked]
+
+  phase_3_trigger_bus:
+    status: PENDING
+    requirements: [phase_2_complete, AAA_webhook_endpoint_deployed, event_router_service_live]
+
+  phase_4_governed_writes:
+    status: BLOCKED
+    blocker: VAULT999_chain_REPAIRED
+    note: "Critical path. Until chain is repaired, writes are constitutionally void even if AAA approves them."
+
+  phase_5_byo_oauth:
+    status: PENDING
+    requirements: [phase_4_complete, GCP_redirect_uri_added_for_gen-lang-client-0385068353, scopes_narrowed_per_organ]
