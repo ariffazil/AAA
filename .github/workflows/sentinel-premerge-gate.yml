@@ -1,0 +1,154 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# AAA Sentinel Pre-Merge Gate
+# Q1: Did A2A gateway / schema paths change?
+# Q2: A2A schema intact, no adjudication logic in control plane?
+# Q3: Build passes?
+# ═══════════════════════════════════════════════════════════════════════════
+name: "🛡️ AAA Sentinel"
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  merge_group:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ─── Q1: Critical path changes? ────────────────────────────────────────
+  q1-critical-paths:
+    name: "Q1 — Critical Paths"
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.scan.outputs.critical_changed }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Detect changed critical paths
+        id: scan
+        run: |
+          CRITICAL_PATHS=(
+            "src/gateway/"
+            "src/a2a/"
+            "src/types/"
+            "vite.config.ts"
+            "package.json"
+            "registries/"
+            "docs/MEMORY_TRUTH.md"
+            "AGENTS.md"
+          )
+
+          CRITICAL_CHANGED="no"
+
+          for path in "${CRITICAL_PATHS[@]}"; do
+            if ! git diff --exit-code "origin/main...HEAD" -- "$path" > /dev/null 2>&1; then
+              CRITICAL_CHANGED="yes"
+              echo "  - ${path} (MODIFIED)"
+            fi
+          done
+
+          echo "critical_changed=$CRITICAL_CHANGED" >> "$GITHUB_OUTPUT"
+
+          if [[ "$CRITICAL_CHANGED" == "yes" ]]; then
+            echo "::notice::Q1 ALERT: A2A/control-plane paths modified"
+          else
+            echo "::notice::Q1 PASS: No critical control-plane paths modified"
+          fi
+
+  # ─── Q2: AAA boundary invariants? ──────────────────────────────────────
+  q2-boundary:
+    name: "Q2 — Control Plane Boundary"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check control-plane invariants
+        run: |
+          VIOLATIONS=""
+
+          # AAA must not contain constitutional adjudication logic
+          JUDGE_HITS=$(git diff origin/main...HEAD -- 'src/**' | grep '^+' | grep -iE "floor_attribution|verdict_issued|888_JUDGE|VAULT999|SEAL_verdict" | grep -v "display\|show\|render\|view\|ui\|cockpit\|#" | grep -v "^++" || true)
+          if [[ -n "$JUDGE_HITS" ]]; then
+            VIOLATIONS="${VIOLATIONS}\n  - Constitutional judgment logic in AAA (belongs in arifOS/888_JUDGE)"
+          fi
+
+          # AAA must not contain direct earth compute
+          GEO_HITS=$(git diff origin/main...HEAD -- 'src/**' | grep '^+' | grep -iE "Archie|PHIE|porosity|seismic_amplitude" | grep -v "^++" || true)
+          if [[ -n "$GEO_HITS" ]]; then
+            VIOLATIONS="${VIOLATIONS}\n  - Earth compute in AAA (delegate to GEOX)"
+          fi
+
+          # Check if A2A schema files were modified — warn, don't block (might be valid)
+          A2A_SCHEMA_HITS=$(git diff origin/main...HEAD --name-only | grep -E "a2a.*schema|agent.*card|well-known" || true)
+          if [[ -n "$A2A_SCHEMA_HITS" ]]; then
+            echo "::warning::A2A schema files changed — verify downstream compatibility:"
+            echo "$A2A_SCHEMA_HITS"
+          fi
+
+          if [[ -n "$VIOLATIONS" ]]; then
+            echo "::error::Q2 BOUNDARY VIOLATION:$VIOLATIONS"
+            printf "Violations:$VIOLATIONS\n"
+            exit 1
+          else
+            echo "::notice::Q2 PASS: Control-plane boundary intact"
+          fi
+
+  # ─── Q3: Build passes? ─────────────────────────────────────────────────
+  q3-build:
+    name: "Q3 — Build"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install
+        run: npm ci --legacy-peer-deps
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+  # ─── Final gate ────────────────────────────────────────────────────────
+  sentinel-gate:
+    name: "✅ Sentinel Gate"
+    needs: [q1-critical-paths, q2-boundary, q3-build]
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Gate verdict
+        run: |
+          Q1="${{ needs.q1-critical-paths.result }}"
+          Q2="${{ needs.q2-boundary.result }}"
+          Q3="${{ needs.q3-build.result }}"
+
+          echo "Q1 (critical paths): $Q1"
+          echo "Q2 (boundary):       $Q2"
+          echo "Q3 (build):          $Q3"
+
+          if [[ "$Q2" != "success" || "$Q3" != "success" ]]; then
+            echo "::error::SENTINEL BLOCK — PR cannot merge"
+            exit 1
+          fi
+
+          if [[ "${{ needs.q1-critical-paths.outputs.changed }}" == "yes" ]]; then
+            echo "::warning::SENTINEL PASS WITH ALERT — A2A/control-plane paths changed, verify schema compatibility"
+          fi
+
+          echo "✅ SENTINEL PASS"
