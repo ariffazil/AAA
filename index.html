@@ -64,6 +64,15 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Domain guard: arif.fazil → arif-fazil.com. DNS may not resolve arif.fazil; this is a safety net if the wrong domain is ever mapped. -->
+    <script>
+      (function () {
+        var h = window.location.hostname;
+        if (h === 'arif.fazil' || h === 'www.arif.fazil') {
+          window.location.replace('https://arif-fazil.com' + window.location.pathname + window.location.search + window.location.hash);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
