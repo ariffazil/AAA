@@ -124,6 +124,45 @@ function logEvent(kind: string, taskId: string, msg: string): void {
   if (_eventLog.length > 200) _eventLog.splice(0, 1);
 }
 
+/**
+ * F7 PII redaction (arifOS audit 2026-06-02 — P0 dignity breach).
+ * Strips operator-supplied text from event log messages before they
+ * reach any client. Defense in depth: the deployed build may have
+ * legacy logEvent calls that put raw operator text into `msg`; this
+ * function ensures no operator input ever leaves the gateway.
+ *
+ * Patterns redacted:
+ *   - `Operator mission: "..."`  → keeps the prefix, replaces the quote
+ *   - `Operator input: "..."`
+ *   - `operator submitted: "..."`
+ *   - any double-quoted string up to 2KB (belt and suspenders)
+ *
+ * Added 2026-06-02 19:35 UTC under F13 SOVEREIGN ratification.
+ */
+const OPERATOR_TEXT_PATTERNS: RegExp[] = [
+  /(Operator mission:\s*)"([^"]*)"/g,
+  /(Operator input:\s*)"([^"]*)"/g,
+  /(operator submitted:\s*)"([^"]*)"/g,
+  /"([^"]{1,2000})"/g, // any quoted string up to 2KB — belt and suspenders
+];
+
+function redactEventMsg(msg: string): string {
+  let out = msg;
+  for (const re of OPERATOR_TEXT_PATTERNS) {
+    out = out.replace(re, (match, p1) => {
+      if (typeof p1 === 'string' && p1.length > 0) {
+        return `${p1}"[redacted — operator session only]"`;
+      }
+      return `"[redacted — operator session only]"`;
+    });
+  }
+  return out;
+}
+
+function redactEventLog(events: typeof _eventLog): typeof _eventLog {
+  return events.map((ev) => ({ ...ev, msg: redactEventMsg(ev.msg) }));
+}
+
 class AAAGatewayExecutor {
   private adapter = new GovernanceAdapter();
 
@@ -300,7 +339,7 @@ export function createApp(): express.Application {
 
   mainRouter.get('/operator/events', (req, res) => {
     const n = Math.min(parseInt(String(req.query.n || '50')), 100);
-    res.json({ ok: true, events: _eventLog.slice(-n).reverse() });
+    res.json({ ok: true, events: redactEventLog(_eventLog.slice(-n).reverse()) });
   });
 
   mainRouter.post('/operator/tasks/:taskId/approve', async (req, res) => {
