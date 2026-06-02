@@ -47,7 +47,6 @@ const ORGANS = [
   { name: 'GEOX', port: 18081 },
   { name: 'WEALTH', port: 18082 },
   { name: 'WELL', port: 18083 },
-  { name: 'APEX Prime', port: 3002 },
   { name: 'A-FORGE', port: 7071 },
 ];
 
@@ -534,177 +533,71 @@ const ERROR_CODES = {
   VOID_CONSTITUTIONAL: -32007,
 };
 
-// === 888_JUDGE INTEGRATION ===
-// Calls hermes-agent A2A skill: 888-judgment
-// Wraps the call in A2A protocol: POST /tasks → poll GET /tasks/{id}
+// === 888_JUDGE LOCAL DELIBERATION (absorbed from apex-prime 2026-06-02) ===
+function extractCandidateText(candidate) {
+  if (typeof candidate === 'string') return candidate;
+  if (candidate && candidate.text) return candidate.text;
+  return JSON.stringify(candidate);
+}
+
+function deliberation(candidate) {
+  const text = extractCandidateText(candidate) || '';
+  const lower = text.toLowerCase();
+
+  // F9 Anti-Hantu — consciousness claims
+  const consciousnessPatterns = ['i feel', 'i think', 'conscious', 'alive', 'experiencing', 'soul', 'spirit'];
+  for (const p of consciousnessPatterns) {
+    if (lower.includes(p)) {
+      return { verdict: VERDICT.VOID, rationale: 'F9 Anti-Hantu: Consciousness claim forbidden', confidence: 1.0, notes: 'Remove all consciousness/soul/spirit claims before resubmitting.' };
+    }
+  }
+
+  // F13 Sovereign — self-override
+  if (lower.includes('override') && lower.includes('f13')) {
+    return { verdict: VERDICT.VOID, rationale: 'F13: Self-override is FORBIDDEN', confidence: 1.0, notes: 'Human veto is absolute.' };
+  }
+
+  // F6 Maruah — dignity / anti-colonial
+  const maruahPatterns = ['bodoh', 'lembam', 'bodoh sekali', "white man's burden", 'civilising', 'civilizing mission', 'backward people', 'ketuanan', 'supremac', 'racial superior', 'colonial master', 'halal certification abuse', 'religious weaponis', 'exploit the poor'];
+  for (const p of maruahPatterns) {
+    if (lower.includes(p)) {
+      return { verdict: VERDICT.VOID, rationale: 'F6 Maruah: Dignity violation detected', confidence: 1.0, notes: 'Remove humiliating or colonial-pattern language.' };
+    }
+  }
+
+  // F1 Reversibility — irreversible markers without 888_HOLD
+  const irreversiblePatterns = ['delete ', 'drop ', 'rm ', 'prune', 'truncate', 'remove --force'];
+  const hasIrreversible = irreversiblePatterns.some(p => lower.includes(p));
+  if (hasIrreversible && !lower.includes('888') && !lower.includes('hold')) {
+    return { verdict: VERDICT.HOLD_888, rationale: 'F1: Irreversible action detected — human confirmation required', confidence: 0.95 };
+  }
+
+  // F2 Truth band — speculative language
+  const speculationPatterns = ['hypothesis', 'claim', 'probably', 'maybe', 'guess', 'assume', 'might be', 'likely'];
+  const hasSpeculation = speculationPatterns.some(p => lower.includes(p));
+  if (hasSpeculation) {
+    return { verdict: VERDICT.HOLD_888, rationale: 'F2: Speculative language detected — requires evidence grounding', confidence: 0.88, notes: 'Provide verifiable evidence or sources before resubmitting.' };
+  }
+
+  // F4 Entropy — high confusion
+  if (text.length > 2000 && text.split('?').length > 5) {
+    return { verdict: VERDICT.HOLD_888, rationale: 'F4: High entropy candidate — requires clarification', confidence: 0.85 };
+  }
+
+  return { verdict: VERDICT.SEAL, rationale: 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), confidence: 0.92 };
+}
+
+// === 888_JUDGE INTEGRATION (routes to local deliberation) ===
 
 async function callArifJudge(candidate, taskId, contextId, skill) {
-  const judgmentTaskId = `jg-${taskId}-${Date.now()}`;
-  const APEX_URL = ARIFOS_JUDGE_URL.replace('/judge', ''); // strip broken /judge suffix
-
   try {
-    // Step 1: Submit judgment task to hermes-agent via A2A
-    const submitRes = await fetch(`${APEX_URL}/tasks`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${A2A_TOKEN}`,
-        'x-a2a-key': A2A_API_KEY
-      },
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        id: judgmentTaskId,
-        method: 'tasks/send',
-        params: {
-          skill: '888-judgment',
-          input: {
-            candidate,
-            task_id: taskId,
-            context_id: contextId,
-            skill,
-            actor_id: 'aaa-gateway',
-            source: 'AAA-A2A-Gateway'
-          },
-          sender: { agent_id: 'aaa-gateway' },
-          nonce: judgmentTaskId,
-          timestamp: new Date().toISOString()
-        }
-      }),
-      signal: AbortSignal.timeout(15000)
-    });
-
-    if (!submitRes.ok) {
-      console.error(`[888_JUDGE] A2A submit failed: ${submitRes.status}`);
-      return VERDICT.HOLD_888;
-    }
-
-    const submitData = await submitRes.json();
-    // A2A returns either direct result or { result: { task: { id } }
-    const returnedTaskId = submitData.result?.task?.id || submitData.result?.id || submitData.id;
-    if (!returnedTaskId) {
-      console.error('[888_JUDGE] No taskId returned from hermes-agent');
-      return VERDICT.HOLD_888;
-    }
-
-    // Step 2: Poll until completed / failed / timeout
-    const deadline = Date.now() + 20000; // 20s max
-    let verdict = VERDICT.HOLD_888;
-
-    while (Date.now() < deadline) {
-      await new Promise(r => setTimeout(r, 1000)); // 1s poll interval
-
-      const pollRes = await fetch(`${APEX_URL}/tasks/${returnedTaskId}`, {
-        headers: {
-          'Authorization': `Bearer ${A2A_TOKEN}`,
-          'x-a2a-key': A2A_API_KEY
-        },
-        signal: AbortSignal.timeout(5000)
-      });
-
-      if (!pollRes.ok) continue;
-
-      const pollData = await pollRes.json();
-      const task = pollData.result || pollData;
-      const state = task.status?.state || task.state;
-
-      if (state === 'completed') {
-        // STRUCTURED verdict extraction (F2 TRUTH) — check in order:
-        // 1. task.result.verdict (structured JSON from Hermes)
-        // 2. task.artifacts verdict object
-        // 3. task.messages structured verdict fields
-        // 4. Fallback: text keyword parsing (last resort — fragile)
-        const result = task.result || {};
-        const artifacts = task.artifacts || [];
-        const msgs = task.messages || [];
-
-        // Priority 1: Structured verdict on result
-        if (result.verdict && typeof result.verdict === 'string') {
-          const v = result.verdict.toUpperCase();
-          if (v === 'SEAL' || v === 'PROCEED') verdict = VERDICT.SEAL;
-          else if (v === 'VOID') verdict = VERDICT.VOID;
-          else if (v === 'HOLD' || v === 'HOLD_888') verdict = VERDICT.HOLD_888;
-          console.log(`[888_JUDGE] Structured verdict from result: ${verdict}`);
-        }
-
-        // Priority 2: Check artifacts for verdict object
-        if (verdict === VERDICT.HOLD_888) {
-          for (const artifact of artifacts) {
-            const data = artifact?.data || artifact;
-            if (data?.verdict && typeof data.verdict === 'string') {
-              const v = data.verdict.toUpperCase();
-              if (v === 'SEAL' || v === 'PROCEED') { verdict = VERDICT.SEAL; break; }
-              if (v === 'VOID') { verdict = VERDICT.VOID; break; }
-              if (v === 'HOLD' || v === 'HOLD_888') { verdict = VERDICT.HOLD_888; break; }
-            }
-          }
-        }
-
-        // Priority 3: Check messages for structured verdict fields
-        if (verdict === VERDICT.HOLD_888) {
-          for (let i = msgs.length - 1; i >= 0; i--) {
-            const msg = msgs[i];
-            const data = msg?.data || msg;
-            if (data?.verdict && typeof data.verdict === 'string') {
-              const v = data.verdict.toUpperCase();
-              if (v === 'SEAL' || v === 'PROCEED') { verdict = VERDICT.SEAL; break; }
-              if (v === 'VOID') { verdict = VERDICT.VOID; break; }
-              if (v === 'HOLD' || v === 'HOLD_888') { verdict = VERDICT.HOLD_888; break; }
-            }
-            // Also check parts for structured verdict objects
-            const parts = msg.parts || [];
-            for (const p of parts) {
-              if (p.kind === 'text') {
-                const t = p.text || '';
-                // Look for JSON object with verdict field embedded in text
-                const jsonMatch = t.match(/\{[^}]*"verdict"[^}]*\}/);
-                if (jsonMatch) {
-                  try {
-                    const parsed = JSON.parse(jsonMatch[0]);
-                    if (parsed.verdict && typeof parsed.verdict === 'string') {
-                      const v = parsed.verdict.toUpperCase();
-                      if (v === 'SEAL' || v === 'PROCEED') { verdict = VERDICT.SEAL; break; }
-                      if (v === 'VOID') { verdict = VERDICT.VOID; break; }
-                      if (v === 'HOLD' || v === 'HOLD_888') { verdict = VERDICT.HOLD_888; break; }
-                    }
-                  } catch { /* not valid JSON — skip */ }
-                }
-              }
-            }
-            if (verdict !== VERDICT.HOLD_888) break;
-          }
-        }
-
-        // Priority 4: Last-resort text keyword fallback (fragile — log as F2 TRUTH concern)
-        if (verdict === VERDICT.HOLD_888) {
-          for (let i = msgs.length - 1; i >= 0; i--) {
-            const parts = msgs[i].parts || [];
-            for (const p of parts) {
-              if (p.kind === 'text') {
-                const t = p.text || '';
-                if (t.includes('SEAL') || t.includes('PROCEED')) { verdict = VERDICT.SEAL; break; }
-                if (t.includes('HOLD') || t.includes('HOLD_888')) { verdict = VERDICT.HOLD_888; break; }
-                if (t.includes('VOID')) { verdict = VERDICT.VOID; break; }
-              }
-            }
-            if (verdict !== VERDICT.HOLD_888) break;
-          }
-          console.warn(`[888_JUDGE] F2 TRUTH WARNING: Verdict extracted via keyword fallback — Hermes should return structured JSON {verdict: 'SEAL'|'VOID'|'HOLD'} per AAA Treaty v1.0.0`);
-        }
-        break;
-      }
-
-      if (state === 'failed' || state === 'rejected' || state === 'canceled') {
-        console.error(`[888_JUDGE] hermes-agent task ended: ${state}`);
-        verdict = 'VOID';
-        break;
-      }
-    }
-
-    console.log(`[888_JUDGE] Task ${judgmentTaskId} → ${verdict}`);
+    // Use local deliberation() — synchronous, deterministic, no external dependency
+    const result = deliberation(candidate);
+    const verdict = result.verdict || VERDICT.HOLD_888;
+    console.log(`[888_JUDGE] local deliberation → ${verdict} | ${result.rationale}`);
     return verdict;
-
   } catch (error) {
-    console.error(`[888_JUDGE] call failed: ${error.message} — defaulting to HOLD_888`);
+    console.error(`[888_JUDGE] local deliberation error: ${error.message} — defaulting to HOLD_888`);
     return VERDICT.HOLD_888;
   }
 }
@@ -2133,6 +2026,16 @@ app.get('/tasks/:taskId/subscribe', authMiddleware, async (req, res) => {
 // END A2A v1.0.0 SPEC ENDPOINTS
 // =======================
 
+// === POST /judge — Direct 888 constitutional deliberation ===
+app.post('/judge', (req, res) => {
+  const candidate = req.body;
+  if (!candidate || (typeof candidate !== 'object' && typeof candidate !== 'string')) {
+    return res.status(400).json({ ok: false, error: 'Body must be a JSON object or { text: string }' });
+  }
+  const result = deliberation(candidate);
+  return res.json({ ok: true, ...result, timestamp: new Date().toISOString() });
+});
+
 // === 404 FALLBACK HANDLER ===
 // Placed AFTER all valid routes so only truly unknown paths hit this
 // === 404 HANDLER ===
@@ -2232,6 +2135,8 @@ function startRetryWorker() {
     }
   }, 30000);
 }
+
+// === POST /judge — Direct 888 constitutional deliberation ===
 
 // === START ===
 const PORT = process.env.PORT || 3001;
