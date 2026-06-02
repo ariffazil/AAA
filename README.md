@@ -185,11 +185,47 @@ npm run validate:aaa
 
 ## Canonical Authority Notice
 
-AAA is the **control plane / cockpit**, not a constitutional authority.  
-The sovereign constitution and F1-F13 floors live in `ariffazil/arifOS`.  
+AAA is the **control plane / cockpit** — not a constitutional authority.  
+The sovereign constitution and F1–F13 floors live in `ariffazil/arifOS`.  
 888_JUDGE, 999_VAULT, and constitutional law are **not** owned here.
 
 For live federation status, see `ariffazil/arifOS/FEDERATION_STATUS.md`.
+
+---
+
+## AAA Namespace Disambiguation
+
+**This repo is `AAA-Cockpit`** — the operations control plane and A2A gateway.
+
+AAA is polymorphic by design. There are multiple valid surfaces:
+
+| Term | Surface | Role |
+|------|---------|------|
+| **AAA-HF** | Hugging Face dataset [`ariffazil/AAA`](https://hf.co/datasets/ariffazil/AAA) | Doctrine corpus, F1–F13 floors, verdicts, schemas, gold eval records |
+| **AAA-Cockpit** | **This repo** (`ariffazil/AAA`) | Control plane, A2A gateway, agent registry, routing dashboard |
+| **AAA-Doctrine** | Conceptual layer | Constitutional principle: alignment, authority, accountability |
+| **AAA-Interface** | Operator surface | Human visibility — inspect actions, approvals, seals |
+| **AAA-Eval** | Benchmark layer | Gold records and evaluation harness |
+
+**What this repo (AAA-Cockpit) does NOT do:**
+- Own F1–F13 constitutional judgment (that is `arifOS`)
+- Define the doctrine corpus (that is `AAA-HF` on Hugging Face)
+- Execute irreversible actions unilaterally
+- Replace VAULT999 as the sealed archive
+
+**The invariant chain:**
+
+```
+AAA-HF       defines doctrine.
+arifOS       applies doctrine.
+MCP tools    execute only if allowed.
+Supabase     records constitutional receipts.
+VAULT999     seals final artifacts.
+AAA-Cockpit  displays the governed state to Arif.   ← THIS REPO
+Arif         remains F13 final sovereign authority.
+```
+
+> "AAA is polymorphic by design. When precision matters, qualify the surface."
 
 ---
 
