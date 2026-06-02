@@ -1,0 +1,116 @@
+{
+  "name": "A-ARCHIVE",
+  "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
+  "version": "2.0.0",
+  "url": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE",
+  "provider": {
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "protocolVersion": "1.0.1",
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/A-ARCHIVE",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "seal-write",
+      "name": "SEAL Write (Append-Only)",
+      "description": "Accept a verdict package signed by 888-APEX and write it to VAULT999 as an immutable ledger entry. Each entry receives monotonic sequence number, SHA256 hash, timestamp, origin signature, and A-AUDIT compliance receipt. Rejects unsigned or malformed packages.",
+      "tags": [
+        "vault",
+        "ledger",
+        "immutable",
+        "SEAL",
+        "audit"
+      ],
+      "examples": [
+        "Record the SEAL verdict for SB505 CP-HRA volumetrics",
+        "Log the 888_HOLD event for the disputed DHI claim",
+        "Archive the VOID decision on rejected override request"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "seal-read",
+      "name": "SEAL Read (Audit Query)",
+      "description": "Retrieve historical ledger entries by sequence number, date range, verdict type, agent origin, or full-text search. Returns verified entries with integrity proof (hash chain validation).",
+      "tags": [
+        "vault",
+        "query",
+        "audit",
+        "history",
+        "retrieval"
+      ],
+      "examples": [
+        "Show all SEALs from the last 7 days",
+        "Retrieve the full audit trail for session ARIF-AGI::2026-06-03",
+        "How many 888_HOLDs were triggered this month?"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "integrity-proof",
+      "name": "Ledger Integrity Proof",
+      "description": "Verify integrity of VAULT999 ledger by validating SHA256 hash chain from genesis to head. Returns proof status (INTACT/TAMPERED), chain length, and any detected anomalies.",
+      "tags": [
+        "integrity",
+        "verification",
+        "hash-chain",
+        "cryptographic"
+      ],
+      "examples": [
+        "Verify VAULT999 ledger integrity",
+        "Has any entry been tampered with since last audit?",
+        "Generate integrity proof for regulatory submission"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ]
+}
