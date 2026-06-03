@@ -12,6 +12,11 @@ const { writeSeal, writeVoid, checkHealth: checkVaultHealth } = require('./vault
 const { createClient } = require('redis');
 const { connect, StringCodec } = require('nats');
 
+// Federation Envelope validation (Reconstruction A Foundation)
+const {
+  createEnvelopeValidator,
+} = require('./federation_envelope');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -1682,7 +1687,7 @@ app.get(['/operator/tasks/:taskId', '/api/operator/tasks/:taskId'], async (req, 
 });
 
 // === OPERATOR MISSION SUBMIT (unauthenticated — operator direct path) ===
-app.post(['/api/message/send'], async (req, res) => {
+app.post(['/api/message/send'], createEnvelopeValidator(), async (req, res) => {
   try {
     const body = req.body;
     const params = (body.params) || {};
@@ -1744,7 +1749,7 @@ function jsonRpcValidate(req, res, next) {
 }
 
 // === MESSAGE/SEND ===
-app.post('/a2a/message/send', jsonRpcValidate, async (req, res) => {
+app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async (req, res) => {
   try {
     const { id, method, params } = req.jsonrpc;
     const message = params.message;
@@ -1915,7 +1920,7 @@ function extractMessageFromParams(params) {
 }
 
 // POST /tasks — A2A v1.0.0 spec task creation
-app.post('/tasks', authMiddleware, jsonRpcValidate, async (req, res) => {
+app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), async (req, res) => {
   try {
     const { id, params } = req.jsonrpc;
     const message = extractMessageFromParams(params);

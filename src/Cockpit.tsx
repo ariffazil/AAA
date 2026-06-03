@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
+import AutonomyBands from './components/cockpit/AutonomyBands';
 
 type OperatorTask = {
   id: string;
@@ -777,6 +778,9 @@ export default function Cockpit() {
             ))}
           </div>
         </section>
+
+        {/* ── AUTONOMY BANDS ── */}
+        <AutonomyBands tools={toolRegistry} />
 
         {/* ── LIVE EVENT LOG ── */}
         <section className="mb-24">
