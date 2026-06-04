@@ -6,7 +6,7 @@ valid_until: 2026-09-02
 confidence: high
 scope: /root/AAA
 epistemic_status: SOURCE_OF_TRUTH
-companion_to: PENTAGON-AGENTS-FORGE-20260602 (VAULT999 chain 2505)
+companion_to: HEXAGON-AGENTS-FORGE-20260602 (VAULT999 chain 2505, renamed from PENTAGON 2026-06-04)
 -->
 
 # AGENTS.md — AAA | arifOS Federation
@@ -157,9 +157,9 @@ AAA is the **interface layer**, not the law layer. It routes intent to A-FORGE, 
 
 **APEX (888_JUDGE)** is a constitutional organ of arifOS, not an agent managed by AAA. AAA holds APEX's agent card for discovery purposes only. Verdict authority stays in arifOS.
 
-## PENTAGON (Constitutional Agent Layer)
+## HEXAGON (Constitutional Agent Layer)
 
-The 5-agent constitutional architecture (PENTAGON) sits **above** the 7-organ runtime topology. Each PENTAGON agent maps to one or more physical organs:
+The 6-agent constitutional architecture (HEXAGON, formerly PENTAGON) sits **above** the 7-organ runtime topology. Each HEXAGON agent maps to one or more physical organs:
 
 | ID | Class | Ring | Skills | Host Organs |
 |---|---|---|---|---|
