@@ -1,7 +1,50 @@
-# AAA — Agent Operations Cockpit
+# AAA — Reality Engineering Console + Agent Operations Cockpit
 
 > **Repository:** https://github.com/ariffazil/AAA  
-> **Purpose:** The mission control room for your AI agent federation.
+> **Purpose:** The mission control room for your AI agent federation.  
+> **Protocol:** AREP v1.0 — Arif Reality Engineering Protocol (forged 2026-06-04)
+
+---
+
+## AREP — The Protocol That Replaces Prompts
+
+AAA is no longer just a dashboard. It is now the **Reality Engineering Console** — the place where you declare intent, the machine verifies reality, and the federation executes.
+
+**Prompt engineering is dead.** AREP replaces it with a four-layer truth stack and reality gating:
+
+```
+Human: "forge all organ with deepseek integration"
+         │
+         ▼
+   POST /api/arep/submit
+         │
+    AREP Task Manager:
+     1. Validate declaration (schema check)
+     2. Reality gates (6-organ health probe)
+     3. If HALT → VOID. If ESCALATE → HOLD.
+     4. All gates pass → execute → VAULT999 seal
+         │
+         ▼
+   RealityConsole (3-pane cockpit):
+     PANE 1: INTENT BOARD   — active tasks, delegation chains
+     PANE 2: REALITY FEED   — live health probes, evidence layers
+     PANE 3: VERDICT QUEUE  — HOLDs awaiting human, floor vetoes
+```
+
+**The prompt was never visible. The reality was.**
+
+> Read the full article: [I Stopped Writing Prompts. Here's What Replaces Them: AREP](https://medium.com/@arifbfazil/i-stopped-writing-prompts-heres-what-replaces-them-8fc445f02732)
+
+### The Four-Layer Truth Stack
+
+| Layer | Anchor | Verification |
+|-------|--------|-------------|
+| **GROUND_TRUTH** | VAULT999 sealed events | Merkle chain integrity |
+| **VERIFIED_STATE** | Live health probe, model registry | curl /health + passport check |
+| **CACHED_STATE** | L3 Qdrant, session memory | Freshness timestamp |
+| **INFERRED** | Agent reasoning | Bounded by constitutional floors |
+
+An agent cannot claim a higher layer than its evidence supports. You cannot infer your way to ground truth.
 
 ---
 
@@ -32,6 +75,9 @@ In human terms, AAA is:
 | Where does a task go next? | Workflow contracts, escalation paths, org topology |
 | Who is responsible for this handoff? | Separation-of-duties rules, signer roles, audit trails |
 | What is the current federation map? | Registries, observability dashboard, health endpoints |
+| **How do I declare intent without prompts?** | **`POST /api/arep/submit` — AREP task declaration** |
+| **Is reality verified before execution?** | **Reality gates: 6-organ health probe + evidence floor check** |
+| **What truth layer is this task at?** | **RealityConsole — 4-layer stack from GROUND_TRUTH to INFERRED** |
 
 ---
 
@@ -79,7 +125,10 @@ AAA/
 │   ├── App.tsx                 # Root + hash router
 │   ├── Cockpit.tsx             # Main dashboard — live floor grid, mission intake
 │   ├── main.tsx                # React entry (+ webmcp init)
-│   ├── gateway/                # A2A TypeScript server (v0.3.0)
+│   ├── gateway/                # A2A TypeScript server (v0.3.0) + AREP types
+│   │   └── arep-types.ts       # AREP TypeScript definitions — RealityLayer, DelegationLink, AREPTask
+│   ├── components/cockpit/
+│   │   └── RealityConsole.tsx  # AREP 3-pane cockpit — Intent Board, Reality Feed, Verdict Queue
 │   ├── adapter/                # Governance adapter (A-FORGE bridge)
 │   ├── ai/                     # AI chat panel (Ollama / arifOS / OpenRouter)
 │   ├── components/             # shadcn/ui + TrinityNav + SessionConsent
@@ -93,8 +142,9 @@ AAA/
 │   ├── federation-bridge.yaml  # Inter-organ routing
 │   ├── A2A_DIALOGUE.md         # Protocol dialogue spec
 │   └── AAA_TREATY_LAW.md       # Treaty-level contract
-├── a2a-server/                 # Standalone A2A gateway (Node.js/Express)
-│   ├── server.js               # HTTP bridge (port 3001)
+├── a2a-server/                 # Standalone A2A gateway (Node.js/Express) + AREP runtime
+│   ├── server.js               # HTTP bridge (port 3001) + /api/arep/* endpoints
+│   ├── arep-task-manager.js    # AREP engine — reality gates, task lifecycle, vault sealing
 │   ├── agent-cards/            # Runtime agent cards
 │   ├── vault.js                # VAULT999 integration client
 │   └── Dockerfile              # Container for A2A gateway
@@ -114,7 +164,11 @@ AAA/
 │   └── maxhermes/              # [staging] MaxHermes variant
 ├── contracts/                  # YAML governance contracts
 ├── registries/                 # Canonical YAML registries (agents/skills/tools)
-├── schemas/                    # JSON/YAML schemas
+├── schemas/                    # JSON/YAML schemas + AREP contracts
+│   ├── arep-task.schema.json  # Canonical AREP task contract (JSON Schema 2020-12)
+│   ├── arep-reality-layers.schema.json  # Four-layer truth stack specification
+│   ├── SCHEMA_REGISTRY.json   # Schema index for agent discovery
+│   └── arep-example-forge-integration.json  # Validating example
 ├── services/a2a-gateway/       # Service definition for A2A gateway
 ├── observability/              # Grafana + Prometheus configs (Nine-Signal)
 ├── deploy/                     # Docker + Caddy configs
