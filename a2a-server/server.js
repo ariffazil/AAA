@@ -9,6 +9,7 @@
 const express = require('express');
 const crypto = require('crypto');
 const { writeSeal, writeVoid, checkHealth: checkVaultHealth } = require('./vault');
+const { processAREPTask, sealAREPTask, probeFederation } = require('./arep-task-manager');
 const { createClient } = require('redis');
 const { connect, StringCodec } = require('nats');
 
@@ -1712,6 +1713,56 @@ app.post(['/api/message/send'], createEnvelopeValidator(), async (req, res) => {
     });
 
     res.json({ jsonrpc: '2.0', id: body.id || 0, result: { id: taskId, contextId, status: task.status } });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// AREP — Arif Reality Engineering Protocol endpoint
+// ═══════════════════════════════════════════════════════════════════
+app.post('/api/arep/submit', async (req, res) => {
+  try {
+    const task = req.body;
+
+    // Process AREP task with reality gating
+    const result = await processAREPTask(task, taskStore, async (t) => {
+      // Store and dispatch the task for execution
+      const taskId = t.telemetry.task_id;
+      await taskStore.set(taskId, t);
+
+      // Log the AREP intent
+      logEvent('AREP_SUBMIT', taskId, `AREP: "${t.intent.statement.slice(0, 80)}" | floor: ${t.reality_constraints.evidence_floor} | band: ${t.reality_constraints.autonomy_band}`);
+
+      // Seal if completed
+      if (t.task_lifecycle.current_state === 'completed') {
+        await sealAREPTask(t);
+        await taskStore.set(taskId, t);
+      }
+    });
+
+    res.json({
+      accepted: result.accepted,
+      task_id: task.telemetry?.task_id,
+      verdict: result.verdict,
+      reason: result.reason,
+      gate_result: result.gateResult ? {
+        passed: result.gateResult.passed,
+        violations_count: result.gateResult.violations.length,
+        evidence_layer: result.gateResult.currentEvidenceLayer,
+        health_summary: result.gateResult.healthProbe?.summary,
+      } : null,
+    });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
+// AREP reality feed — live health probe for the cockpit
+app.get('/api/arep/reality-feed', async (req, res) => {
+  try {
+    const probe = await probeFederation();
+    res.json(probe);
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
   }
