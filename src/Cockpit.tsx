@@ -13,6 +13,7 @@ import {
 import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 import AutonomyBands from './components/cockpit/AutonomyBands';
+import RealityConsole from './components/cockpit/RealityConsole';
 
 type OperatorTask = {
   id: string;
@@ -781,6 +782,11 @@ export default function Cockpit() {
 
         {/* ── AUTONOMY BANDS ── */}
         <AutonomyBands tools={toolRegistry} />
+
+        {/* ── ⊜ REALITY CONSOLE (AREP) ── */}
+        <section className="mb-24">
+          <RealityConsole />
+        </section>
 
         {/* ── LIVE EVENT LOG ── */}
         <section className="mb-24">
