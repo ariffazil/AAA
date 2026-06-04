@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/arep-task-v1",
+  "title": "AREP Task — Arif Reality Engineering Protocol",
+  "description": "The formal contract for human→agent task delegation in arifOS. This replaces prompt engineering with reality engineering. A task is a task, whether it comes from a human principal or another agent. Aligned with A2A v1.0 task lifecycle and AgenticReality existential grounding model. Coined by Muhammad Arif bin Fazil (F13 SOVEREIGN), 2026-06-04.",
+  "type": "object",
+  "required": ["arep_version", "intent", "principal", "reality_constraints", "task_lifecycle"],
+  "additionalProperties": false,
+  "properties": {
+
+    "arep_version": {
+      "type": "string",
+      "const": "1.0",
+      "description": "AREP protocol version. First formalized 2026-06-04."
+    },
+
+    "intent": {
+      "type": "object",
+      "description": "The human's intent — WHAT they want, not HOW to do it. This is the only layer the human touches.",
+      "required": ["statement", "success_criteria"],
+      "additionalProperties": false,
+      "properties": {
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Natural language intent declaration. e.g. 'forge all organ with deepseek integration'"
+        },
+        "success_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "Verifiable conditions that define task completion. e.g. ['all 7 organs health 200', 'deepseek key verified live', 'registry updated']"
+        },
+        "failure_modes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Known ways this task can fail. Agent uses these for self-verification.",
+          "examples": [["organ health degraded", "API key rotated mid-task", "model registry drift detected"]]
+        },
+        "context_tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Domain tags for routing. e.g. ['security', 'deployment', 'config', 'model-registry']"
+        }
+      }
+    },
+
+    "principal": {
+      "type": "object",
+      "description": "The human sovereign who owns this task. The ultimate authority in the delegation chain.",
+      "required": ["actor_id"],
+      "additionalProperties": false,
+      "properties": {
+        "actor_id": {
+          "type": "string",
+          "const": "arif-fazil",
+          "description": "F13 SOVEREIGN. All authority traces back to this identity."
+        },
+        "ratification_mode": {
+          "type": "string",
+          "enum": ["implicit", "888_HOLD", "explicit_ack"],
+          "default": "implicit",
+          "description": "How the principal ratified this task. implicit = delegated within autonomy band. 888_HOLD = held pending human ack. explicit_ack = human explicitly approved."
+        },
+        "sovereign_signature": {
+          "type": "string",
+          "description": "Optional cryptographic signature from the principal. Required for GROUND_TRUTH evidence floor."
+        }
+      }
+    },
+
+    "reality_constraints": {
+      "type": "object",
+      "description": "The reality engineering layer — what must be true before, during, and after task execution.",
+      "required": ["evidence_floor"],
+      "additionalProperties": false,
+      "properties": {
+        "evidence_floor": {
+          "type": "string",
+          "enum": ["GROUND_TRUTH", "VERIFIED_STATE", "CACHED_STATE", "INFERRED"],
+          "default": "VERIFIED_STATE",
+          "description": "Minimum evidence layer required for execution. VERIFIED_STATE = live health probes must pass. GROUND_TRUTH = seal required."
+        },
+        "reality_gates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["condition", "action_on_fail"],
+            "additionalProperties": false,
+            "properties": {
+              "condition": { "type": "string", "description": "Must be true to proceed. e.g. 'organ_health == GREEN'" },
+              "action_on_fail": { "type": "string", "enum": ["HALT", "ESCALATE", "RETRY", "SKIP"], "description": "What to do if condition fails." },
+              "evidence_layer": { "type": "string", "enum": ["GROUND_TRUTH", "VERIFIED_STATE", "CACHED_STATE", "INFERRED"], "default": "VERIFIED_STATE" }
+            }
+          },
+          "description": "Ordered list of conditions checked before each execution step. Like pre-flight checks on a drilling rig."
+        },
+        "autonomy_band": {
+          "type": "string",
+          "enum": ["GREEN", "YELLOW", "ORANGE", "RED", "BLACK"],
+          "default": "GREEN",
+          "description": "Maximum autonomy band for this task. Agent cannot escalate beyond this band without re-delegation. GREEN = full auto. RED = human required. BLACK = forbidden."
+        },
+        "model_identity_constraint": {
+          "type": "object",
+          "description": "Which model passports are authorized for this task. Verified against the model registry.",
+          "additionalProperties": false,
+          "properties": {
+            "allowed_providers": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Provider keys from the model registry. e.g. ['deepseek', 'minimax', 'ilmu']"
+            },
+            "required_capabilities": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "Capability labels required. e.g. ['math_reasoning: olympiad_gold', 'code_generation']"
+            },
+            "self_claim_boundary": {
+              "type": "string",
+              "const": "verified_only",
+              "description": "F9 Anti-Hantu: model cannot claim identity beyond its passport."
+            }
+          }
+        },
+        "reversibility": {
+          "type": "object",
+          "description": "F1 AMANAH and F8 REVERSIBILITY constraints.",
+          "additionalProperties": false,
+          "properties": {
+            "maximum_action_class": {
+              "type": "string",
+              "enum": ["OBSERVE", "PREPARE", "MUTATE", "ATOMIC"],
+              "default": "MUTATE",
+              "description": "Highest risk action class permitted. ATOMIC requires explicit human ack."
+            },
+            "rollback_plan_required": { "type": "boolean", "default": true },
+            "irreversible_ack_required": { "type": "boolean", "default": true }
+          }
+        }
+      }
+    },
+
+    "delegation_chain": {
+      "type": "array",
+      "description": "Ordered chain of authority from principal to executing agent. Each hop attenuates scope (Huawei governance paper, June 2026).",
+      "items": {
+        "type": "object",
+        "required": ["actor_id", "role", "scope"],
+        "additionalProperties": false,
+        "properties": {
+          "actor_id": { "type": "string" },
+          "role": { "type": "string", "enum": ["PRINCIPAL", "KERNEL", "PRIMARY_AGENT", "SUB_AGENT", "TOOL"] },
+          "scope": { "type": "string", "description": "Narrower than parent's scope. What this actor is authorized to do." },
+          "grant_id": { "type": "string", "description": "CapabilityGrant registry ID." },
+          "lease_seconds": { "type": "integer", "description": "Time-bound lease. 0 = permanent (principal only)." },
+          "max_subagent_depth": { "type": "integer", "description": "How many more delegation hops are allowed." }
+        }
+      }
+    },
+
+    "task_lifecycle": {
+      "type": "object",
+      "description": "A2A v1.0 task lifecycle mapping. Every AREP task follows this state machine.",
+      "required": ["current_state"],
+      "additionalProperties": false,
+      "properties": {
+        "current_state": {
+          "type": "string",
+          "enum": ["submitted", "working", "input-required", "completed", "failed", "canceled", "rejected"],
+          "default": "submitted"
+        },
+        "state_history": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["state", "timestamp"],
+            "additionalProperties": false,
+            "properties": {
+              "state": { "type": "string", "enum": ["submitted", "working", "input-required", "completed", "failed", "canceled", "rejected"] },
+              "timestamp": { "type": "string", "format": "date-time" },
+              "actor_id": { "type": "string" },
+              "evidence_layer_at_transition": { "type": "string", "enum": ["GROUND_TRUTH", "VERIFIED_STATE", "CACHED_STATE", "INFERRED"] },
+              "note": { "type": "string" }
+            }
+          }
+        },
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "artifact_id": { "type": "string" },
+              "artifact_type": { "type": "string", "enum": ["code", "config", "seal", "report", "health_probe", "registry_entry"] },
+              "evidence_layer": { "type": "string", "enum": ["GROUND_TRUTH", "VERIFIED_STATE", "CACHED_STATE", "INFERRED"] },
+              "vault_seal_hash": { "type": "string", "description": "VAULT999 seal hash if artifact was sealed." }
+            }
+          }
+        },
+        "a2a_task_id": {
+          "type": "string",
+          "description": "A2A protocol task ID for cross-agent operability."
+        },
+        "parent_task_id": {
+          "type": "string",
+          "description": "If this task was spawned by another agent, the parent's A2A task ID."
+        }
+      }
+    },
+
+    "constitutional_binding": {
+      "type": "object",
+      "description": "Which constitutional floors are active for this task and their current state.",
+      "additionalProperties": false,
+      "properties": {
+        "active_floors": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"] },
+          "description": "Floors actively enforced for this task."
+        },
+        "floor_vetoes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "floor": { "type": "string" },
+              "reason": { "type": "string" },
+              "timestamp": { "type": "string", "format": "date-time" }
+            }
+          }
+        },
+        "governance_verdict": {
+          "type": "string",
+          "enum": ["SEAL", "SABAR", "HOLD", "VOID", "PENDING"],
+          "default": "PENDING"
+        }
+      }
+    },
+
+    "telemetry": {
+      "type": "object",
+      "description": "Operational metadata for AAA cockpit display.",
+      "additionalProperties": false,
+      "properties": {
+        "task_id": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" },
+        "updated_at": { "type": "string", "format": "date-time" },
+        "estimated_tokens": { "type": "integer" },
+        "actual_tokens": { "type": "integer" },
+        "model_used": { "type": "string" },
+        "agent_shell": { "type": "string", "enum": ["opencode", "claude-code", "continue-cli", "hermes", "openclaw"] },
+        "session_id": { "type": "string" }
+      }
+    }
+  }
+}

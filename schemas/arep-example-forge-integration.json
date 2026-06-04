@@ -1,0 +1,101 @@
+{
+  "arep_version": "1.0",
+  "intent": {
+    "statement": "forge all organ with deepseek integration",
+    "success_criteria": [
+      "all 7 federation organs health 200",
+      "deepseek-v4-pro registered in model passport",
+      "health probe confirms deepseek key live",
+      "VAULT999 seal written"
+    ],
+    "failure_modes": [
+      "organ health degraded during forge",
+      "deepseek API key rotated mid-task",
+      "model registry drift detected"
+    ],
+    "context_tags": ["deployment", "model-registry", "deepseek"]
+  },
+  "principal": {
+    "actor_id": "arif-fazil",
+    "ratification_mode": "implicit"
+  },
+  "reality_constraints": {
+    "evidence_floor": "VERIFIED_STATE",
+    "reality_gates": [
+      {
+        "condition": "all 7 organs health == 200",
+        "action_on_fail": "HALT",
+        "evidence_layer": "VERIFIED_STATE"
+      },
+      {
+        "condition": "deepseek-v4-pro in model registry",
+        "action_on_fail": "ESCALATE",
+        "evidence_layer": "VERIFIED_STATE"
+      },
+      {
+        "condition": "git working tree clean before push",
+        "action_on_fail": "RETRY",
+        "evidence_layer": "CACHED_STATE"
+      }
+    ],
+    "autonomy_band": "GREEN",
+    "model_identity_constraint": {
+      "allowed_providers": ["deepseek", "minimax"],
+      "required_capabilities": ["code_generation"],
+      "self_claim_boundary": "verified_only"
+    },
+    "reversibility": {
+      "maximum_action_class": "MUTATE",
+      "rollback_plan_required": true,
+      "irreversible_ack_required": true
+    }
+  },
+  "delegation_chain": [
+    {
+      "actor_id": "arif-fazil",
+      "role": "PRINCIPAL",
+      "scope": "unlimited — F13 SOVEREIGN",
+      "lease_seconds": 0,
+      "max_subagent_depth": 3
+    },
+    {
+      "actor_id": "arifOS-kernel",
+      "role": "KERNEL",
+      "scope": "constitutional gating, floor enforcement",
+      "lease_seconds": 0,
+      "max_subagent_depth": 2
+    },
+    {
+      "actor_id": "omega-forge-agent",
+      "role": "PRIMARY_AGENT",
+      "scope": "forge, deploy, test, registry update — read-only vault",
+      "grant_id": "omega-forge-full",
+      "lease_seconds": 3600,
+      "max_subagent_depth": 1
+    }
+  ],
+  "task_lifecycle": {
+    "current_state": "submitted",
+    "state_history": [
+      {
+        "state": "submitted",
+        "timestamp": "2026-06-04T08:15:00Z",
+        "actor_id": "arif-fazil",
+        "evidence_layer_at_transition": "GROUND_TRUTH",
+        "note": "Task created by sovereign AREP intent"
+      }
+    ]
+  },
+  "constitutional_binding": {
+    "active_floors": ["F1", "F2", "F4", "F7", "F8", "F9", "F11", "F13"],
+    "governance_verdict": "PENDING"
+  },
+  "telemetry": {
+    "task_id": "arep-20260604-081500-forge-deepseek",
+    "created_at": "2026-06-04T08:15:00Z",
+    "updated_at": "2026-06-04T08:15:00Z",
+    "model_used": "deepseek-v4-pro",
+    "agent_shell": "opencode",
+    "session_id": "SEAL-arep-forge-20260604"
+  }
+}
