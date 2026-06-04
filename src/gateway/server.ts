@@ -322,7 +322,7 @@ export function createApp(): express.Application {
   });
 
   mainRouter.get('/operator/seals', async (req, res) => {
-    let seals = 0;
+    let seals: number;
     let vaultConnected = false;
     try {
       const fs = await import('node:fs');
