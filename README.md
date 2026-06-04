@@ -1,5 +1,7 @@
 # AAA — Reality Engineering Console + Agent Operations Cockpit
 
+> **AAA is the control plane for the arifOS federation — the cockpit where human operators see every agent, every verdict, and every sealed decision in real time.** It enforces the separation of cognitive powers (Mind proposes, Heart judges, Soul authorizes) through structured protocols rather than prompts. It is the parliament and the air traffic control tower of the constitutional AI system.
+
 > **Repository:** https://github.com/ariffazil/AAA  
 > **Purpose:** The mission control room for your AI agent federation.  
 > **Protocol:** AREP v1.0 — Arif Reality Engineering Protocol (forged 2026-06-04)
