@@ -4,6 +4,22 @@
 > **Purpose:** The mission control room for your AI agent federation.  
 > **Protocol:** AREP v1.0 — Arif Reality Engineering Protocol (forged 2026-06-04)
 
+[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.0-8b5cf6?logo=google&logoColor=white)](https://aaa.arif-fazil.com/.well-known/agent-card.json)
+[![Node](https://img.shields.io/badge/node-22-339933?logo=node.js&logoColor=white)](package.json)
+[![React](https://img.shields.io/badge/react-19-61DAFB?logo=react&logoColor=black)](package.json)
+[![Vite](https://img.shields.io/badge/vite-8-646CFF?logo=vite&logoColor=white)](package.json)
+[![Port](https://img.shields.io/badge/port-3001-64748b?logo=express&logoColor=white)](deploy/Caddyfile)
+[![License](https://img.shields.io/badge/license-AGPL--3.0-ef4444?logo=gnu)](LICENSE)
+
+<!-- SOT-MANIFEST
+owner: Arif
+last_verified: 2026-06-04
+valid_from: 2026-06-04
+valid_until: 2026-09-04
+confidence: high
+scope: /root/AAA
+-->
+
 ---
 
 ## AREP — The Protocol That Replaces Prompts
@@ -204,7 +220,7 @@ AAA/
 | `A-AUDIT` | APEX oversight | Continuous ethical + safety monitor | [oversight] HEART | arifOS + WELL |
 | `A-ARCHIVE` | ASI service | Immutable ledger keeper + audit trail | 999 SEAL | VAULT999 |
 
-**Organs are infrastructure** — the 6 federated organs (Hermes, OpenClaw, A-FORGE, arifOS, GEOX, WEALTH, WELL) host the 5 PENTAGON agents but are no longer in the A2A agent registry. **Sovereign (000-SALAM)** is above the registry. **3 sub-routines** (111-SENSE, 444-KERNEL, 555-MEMORY) are internal arifOS tools called by the 5 agents.
+**Organs are infrastructure** — the 7 federated organs (Hermes, OpenClaw, A-FORGE, arifOS, GEOX, WEALTH, WELL) host the 5 PENTAGON agents but are no longer in the A2A agent registry. **Sovereign (000-SALAM)** is above the registry. **3 sub-routines** (111-SENSE, 444-KERNEL, 555-MEMORY) are internal arifOS tools called by the 5 agents.
 
 > APEX (888_JUDGE) is a constitutional organ of arifOS, not an agent managed by AAA.  
 > AAA holds APEX's **agent card** for discovery purposes only. Verdict authority stays in arifOS.
