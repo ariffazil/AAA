@@ -184,7 +184,7 @@ AAA/
 
 ## Agent Registry
 
-**PENTAGON — 5 agents (3 primary + 2 support)** — canonical source: `agents/PENTAGON.yaml`, live registry: `public/a2a/agents.json`.
+**HEXAGON — 6 agents (3 primary + 3 support)** — canonical source: `agents/HEXAGON.yaml`, live registry: `public/a2a/agents.json`. Renamed from PENTAGON 2026-06-04.
 
 ### 3 PRIMARY agents (active decision triangle)
 
@@ -201,7 +201,7 @@ AAA/
 | `A-AUDIT` | APEX oversight | Continuous ethical + safety monitor | [oversight] HEART | arifOS + WELL |
 | `A-ARCHIVE` | ASI service | Immutable ledger keeper + audit trail | 999 SEAL | VAULT999 |
 
-**Organs are infrastructure** — the 7 federated organs (Hermes, OpenClaw, A-FORGE, arifOS, GEOX, WEALTH, WELL) host the 5 PENTAGON agents but are no longer in the A2A agent registry. **Sovereign (000-SALAM)** is above the registry. **3 sub-routines** (111-SENSE, 444-KERNEL, 555-MEMORY) are internal arifOS tools called by the 5 agents.
+**Organs are infrastructure** — the 7 federated organs (Hermes, OpenClaw, A-FORGE, arifOS, GEOX, WEALTH, WELL) host the 6 HEXAGON agents but are no longer in the A2A agent registry. **Sovereign (000-SALAM)** is above the registry. **3 sub-routines** (111-SENSE, 444-KERNEL, 555-MEMORY) are internal arifOS tools called by the 5 agents.
 
 > APEX (888_JUDGE) is a constitutional organ of arifOS, not an agent managed by AAA.  
 > AAA holds APEX's **agent card** for discovery purposes only. Verdict authority stays in arifOS.
