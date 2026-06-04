@@ -2156,7 +2156,7 @@ function startRetryWorker() {
 
 // === START ===
 const PORT = process.env.PORT || 3001;
-app.listen(PORT, async () => {
+app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Hardened server running on port ${PORT}`);
   console.log(`[AAA A2A] Protocol: A2A v1.0.0`);
   console.log(`[AAA A2A] Auth: configured (bearer + api-key)`);
