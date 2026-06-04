@@ -1041,11 +1041,11 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
     protocol: 'A2A v1.0.0',
     treaty: 'AAA-TREATY-v1.0.0',
     treaty_uri: 'https://aaa.arif-fazil.com/aaa-card-treaty',
-    // PENTAGON: 5 agents — 3 PRIMARY (333-AGI, 555-ASI, 888-APEX) + 2 SUPPORT (A-AUDIT, A-ARCHIVE).
+    // HEXAGON: 6 agents — 3 PRIMARY (333-AGI, 555-ASI, 888-APEX) + 3 SUPPORT (A-AUDIT, A-ARCHIVE, AA-HORIZON).
     // FORGE is AGI, subsumed into 333-AGI as sub-skills (arif-ops-measure, arif-forge-execute, aforge-deploy).
     // 555-ASI uses the MEMORY stage number (audit lineage). A-AUDIT and A-ARCHIVE are "kinda like support agents" —
     // they run in parallel with the primary triangle, not in the active decision flow.
-    // Canonical source: agents/PENTAGON.yaml
+    // Canonical source: agents/HEXAGON.yaml
     agents: [
       { id: '333-AGI',   name: '333-AGI',   url: 'https://arifos.arif-fazil.com/a2a/333-AGI',   registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Ω MIND',  stage: '333', organ_host: 'arifOS+ GEOX+ WEALTH+ WELL+ A-FORGE' },
       { id: '555-ASI',   name: '555-ASI',   url: 'https://arifos.arif-fazil.com/a2a/555-ASI',   registered: true, role: 'federation', tier: 'primary', class: 'ASI',           ring: '❤️ HEART', stage: '555', organ_host: 'arifOS+ WELL' },

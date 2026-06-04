@@ -2,12 +2,12 @@
   "$schema": "https://a2aproject.github.io/A2A/schema/agent-card.json",
   "protocolVersion": "1.0.1",
   "registry": {
-    "name": "AAA PENTAGON",
+    "name": "AAA HEXAGON",
     "description": "5 agents, 20 skills, 3+2 split. FORGE subsumed. A-AUDIT/A-ARCHIVE tagged support. SEALED to VAULT999.",
     "version": "2.0.0",
     "author": "Muhammad Arif bin Fazil",
     "seal": {
-      "seal_id": "PENTAGON-AGENTS-FORGE-20260602",
+      "seal_id": "HEXAGON-AGENTS-FORGE-20260602",
       "verdict": "SEAL",
       "authority": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
       "ratified": "2026-06-02T19:54:59.815809+00:00",
@@ -223,7 +223,7 @@
         {
           "id": "arif-ops-measure",
           "name": "Ops Measure",
-          "description": "Measure and report operational metrics: federation health, organ latency, VAULT999 chain integrity, agent uptime, drift detection. The instrumentation layer for the PENTAGON.",
+          "description": "Measure and report operational metrics: federation health, organ latency, VAULT999 chain integrity, agent uptime, drift detection. The instrumentation layer for the HEXAGON.",
           "tags": [
             "ops",
             "measure",
@@ -257,7 +257,7 @@
           "examples": [
             "Run Monte Carlo volumetrics for SB505 prospects",
             "Execute the seismic attribute extraction script",
-            "Build the PENTAGON.yaml from agent definitions"
+            "Build the HEXAGON.yaml from agent definitions"
           ],
           "inputModes": [
             "application/json",
