@@ -1,7 +1,7 @@
-pENTAGON:
+hexagon:
   version: 2.0.0
   seal:
-    seal_id: PENTAGON-AGENTS-FORGE-20260602
+    seal_id: HEXAGON-AGENTS-FORGE-20260602
     verdict: SEAL
     authority: Muhammad Arif bin Fazil — F13 SOVEREIGN
     ratified: '2026-06-02T19:54:59.815809+00:00'
@@ -16,7 +16,7 @@ pENTAGON:
     role: Human Sovereign — F13 · above the registry · not an agent
     authority: Muhammad Arif bin Fazil
   topology:
-    shape: PENTAGON — primary triangle + support observers
+    shape: HEXAGON — primary triangle + support observers + archive witness
     primary_triangle:
       description: Bidirectional propose/validate between all 3 primaries
       flow: 333-AGI ⇄ 555-ASI ⇄ 888-APEX ⇄ 333-AGI
