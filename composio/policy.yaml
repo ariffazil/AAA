@@ -4,7 +4,7 @@
 # DITEMPA BUKAN DIBERI — Forged, Not Given
 #
 # AAA is the canonical tool-orchestration surface for the federation.
-# Organs and PENTAGON agents call external SaaS through AAA → policy check →
+# Organs and HEXAGON agents call external SaaS through AAA → policy check →
 # HERMES composio_bridge.py (Path B execution) → Composio API → OAuth'd SaaS.
 #
 # VAULT999 NOTE: Read operations proceed without SEAL. WRITE operations
@@ -128,7 +128,7 @@ organs:
     scope: session-orchestrator
     notes: "AAA creates/revokes per-organ sessions. Holds COMPOSIO_API_KEY. Does not execute direct tool calls — it gates them."
 
-# ─── PENTAGON agent policy (parallel layer) ──────────────────────────────────
+# ─── HEXAGON agent policy (parallel layer) ──────────────────────────────────
 
 agents:
 

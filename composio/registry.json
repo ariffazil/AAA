@@ -3,7 +3,7 @@
   "ratified": "2026-06-02",
   "authority": "888 (Arif bin Fazil, F13 SOVEREIGN)",
   "seal": "AAA-COMPOSIO-EMBODIMENT-2026-06-02",
-  "doctrine": "AAA is the canonical tool-orchestration surface for the federation. Organs and PENTAGON agents call external SaaS through AAA, not directly through Composio. The execution layer remains in HERMES (composio_bridge.py). AAA holds the governance surface — registry, policy, and audit doctrine.",
+  "doctrine": "AAA is the canonical tool-orchestration surface for the federation. Organs and HEXAGON agents call external SaaS through AAA, not directly through Composio. The execution layer remains in HERMES (composio_bridge.py). AAA holds the governance surface — registry, policy, and audit doctrine.",
   "motto": "DITEMPA BUKAN DIBERI — Forged, Not Given",
 
   "federation_position": {

@@ -6,12 +6,12 @@
 
 ## What this is
 
-AAA is the canonical **tool-orchestration surface** for the arifOS federation. Organs (GEOX, WEALTH, WELL, A-FORGE) and PENTAGON agents (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE) call external SaaS through AAA, not directly through Composio.
+AAA is the canonical **tool-orchestration surface** for the arifOS federation. Organs (GEOX, WEALTH, WELL, A-FORGE) and HEXAGON agents (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE) call external SaaS through AAA, not directly through Composio.
 
 The actual execution layer lives in HERMES (`/root/HERMES/scripts/composio_bridge.py`, Python) under "Path B" — Google Workspace access. This AAA module is the **governance surface** that wraps it: tool registry, per-organ policy, write gate, audit doctrine.
 
 ```
-Organ / PENTAGON agent
+Organ / HEXAGON agent
           ↓
        AAA (this module)
        ├── registry.json   — what toolkits/accounts exist
