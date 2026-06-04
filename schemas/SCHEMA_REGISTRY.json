@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AAA Schema Registry",
+  "description": "Canonical index of all JSON schemas in the AAA control plane. Add new schemas here when they are forged so agents can discover them via /.well-known/schema-registry.json.",
+  "registry_version": "2026.06.04-arep",
+  "generated_at": "2026-06-04T08:20:00Z",
+  "schemas": [
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/arep-task-v1",
+      "file": "arep-task.schema.json",
+      "title": "AREP Task — Arif Reality Engineering Protocol",
+      "description": "Formal contract for human→agent task delegation. Replaces prompt engineering with reality engineering. Aligned with A2A v1.0.",
+      "coined_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+      "forged_at": "2026-06-04",
+      "layer": "REALITY_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/arep-reality-layers-v1",
+      "file": "arep-reality-layers.schema.json",
+      "title": "AREP Reality Layers",
+      "description": "Four-layer truth stack (GROUND_TRUTH → VERIFIED_STATE → CACHED_STATE → INFERRED) anchoring every AREP task. Aligned with AgenticReality (March 2026).",
+      "coined_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+      "forged_at": "2026-06-04",
+      "layer": "REALITY_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/a2a-agent-card-v1",
+      "file": "a2a-agent-card.schema.json",
+      "title": "AAA A2A Agent Card",
+      "description": "Agent identity and capability declaration per Google A2A v1.0 protocol.",
+      "layer": "AGENT_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/federation-contract-v1",
+      "file": "federation-contract.schema.json",
+      "title": "AAA Federation Contract",
+      "description": "Cross-organ federation topology, invariants, and trust tiers.",
+      "layer": "CONSTITUTIONAL_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/cockpit-model-v1",
+      "file": "cockpit-model.schema.json",
+      "title": "AAA Cockpit Model",
+      "description": "Operator surface model — agents, sessions, workflows, approvals.",
+      "layer": "AGENT_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/epistemic-signal-v1",
+      "file": "../a2a/epistemic_signal_schema.json",
+      "title": "Epistemic Signal",
+      "description": "Agent epistemic state — belief strength, confidence, evidence grounding.",
+      "layer": "REALITY_ENGINEERING"
+    }
+  ],
+  "layer_legend": {
+    "REALITY_ENGINEERING": "What is true, what exists, what is allowed — the top discipline",
+    "CONSTITUTIONAL_ENGINEERING": "What cannot be violated — floors F1-F13, VAULT999",
+    "AGENT_ENGINEERING": "How to build autonomous systems — A2A, MCP, agent shells",
+    "INTENT_ENGINEERING": "How to delegate to an agent — task contracts, success criteria",
+    "PROMPT_ENGINEERING": "How to talk to a model — OBSOLETE, replaced by AREP"
+  }
+}
