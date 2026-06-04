@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/arep-reality-layers-v1",
+  "title": "AREP Reality Layers",
+  "description": "The four-layer truth stack that anchors every AREP task. An agent cannot claim a higher layer than its evidence supports. Aligned with AgenticReality (March 2026) existential grounding model.",
+  "type": "object",
+  "required": ["required_evidence_floor", "current_evidence_layer"],
+  "additionalProperties": false,
+  "properties": {
+    "required_evidence_floor": {
+      "type": "string",
+      "enum": ["GROUND_TRUTH", "VERIFIED_STATE", "CACHED_STATE", "INFERRED"],
+      "description": "Minimum reality layer required before this task can proceed to execution. Set by the human principal. GROUND_TRUTH = must be sealed in VAULT999. VERIFIED_STATE = must pass live health probe. CACHED_STATE = from recent memory. INFERRED = agent reasoning allowed."
+    },
+    "current_evidence_layer": {
+      "type": "string",
+      "enum": ["GROUND_TRUTH", "VERIFIED_STATE", "CACHED_STATE", "INFERRED"],
+      "default": "INFERRED",
+      "description": "Current highest evidence layer achieved for this task. Updated by the agent as evidence accumulates. Cannot exceed the principal's required floor without explicit upgrade."
+    },
+    "layer_definitions": {
+      "type": "object",
+      "description": "Canonical definitions of the four reality layers per the AgenticReality model.",
+      "additionalProperties": false,
+      "properties": {
+        "GROUND_TRUTH": {
+          "type": "object",
+      "additionalProperties": false,
+          "properties": {
+            "description": { "type": "string", "const": "Verified right now, indisputable. Cannot be changed." },
+            "arifos_anchor": { "type": "string", "const": "VAULT999 sealed events, F13 SOVEREIGN decrees" },
+            "verification_method": { "type": "string", "const": "Merkle chain integrity check + vault_sealed_events query" },
+            "example": { "type": "string", "const": "Omega sealed SESSION-CLOSE at 2026-06-03T10:49:00Z — sha256:abc123" }
+          }
+        },
+        "VERIFIED_STATE": {
+          "type": "object",
+      "additionalProperties": false,
+          "properties": {
+            "description": { "type": "string", "const": "Checked recently, trustworthy. Subject to staleness." },
+            "arifos_anchor": { "type": "string", "const": "Model registry passports, live health probes, organ status" },
+            "verification_method": { "type": "string", "const": "curl health endpoint + registry lookup + capability_map check" },
+            "staleness_threshold_seconds": { "type": "integer", "const": 300 },
+            "example": { "type": "string", "const": "All 7 organs healthy at T+30s — health probe 200" }
+          }
+        },
+        "CACHED_STATE": {
+          "type": "object",
+      "additionalProperties": false,
+          "properties": {
+            "description": { "type": "string", "const": "Once verified, now stale. May still be true but must be re-verified before MUTATE/ATOMIC." },
+            "arifos_anchor": { "type": "string", "const": "L3 Qdrant embeddings, session memory, L5 Graphiti relationships" },
+            "verification_method": { "type": "string", "const": "Vector similarity search + freshness timestamp check" },
+            "staleness_threshold_seconds": { "type": "integer", "const": 3600 },
+            "example": { "type": "string", "const": "Session 2026-06-03 discussed SAF migration — cached at 15:00 UTC" }
+          }
+        },
+        "INFERRED": {
+          "type": "object",
+      "additionalProperties": false,
+          "properties": {
+            "description": { "type": "string", "const": "Never directly verified. Agent reasoning output. Bounded by constitutional floors." },
+            "arifos_anchor": { "type": "string", "const": "Model outputs, agent reasoning chains (constrained by F2 TRUTH, F9 ANTIHANTU)" },
+            "verification_method": { "type": "string", "const": "None available — this is the floor. Must be escalated to higher layer before execution." },
+            "example": { "type": "string", "const": "This task probably needs GEOX, not WEALTH — agent routing heuristic" }
+          }
+        }
+      }
+    },
+    "layer_upgrade_rules": {
+      "type": "object",
+      "description": "Rules governing when and how evidence can be promoted to a higher layer.",
+      "additionalProperties": false,
+      "properties": {
+        "INFERRED_to_CACHED_STATE": { "type": "string", "const": "Must survive one complete agent reasoning loop without contradiction." },
+        "CACHED_STATE_to_VERIFIED_STATE": { "type": "string", "const": "Must pass live health probe or registry verification. Freshness < threshold." },
+        "VERIFIED_STATE_to_GROUND_TRUTH": { "type": "string", "const": "Must be sealed to VAULT999 with human ratification (F13 SOVEREIGN). Cannot be automated." },
+        "auto_upgrade_ceiling": { "type": "string", "const": "INFERRED → CACHED_STATE (automatic). VERIFIED_STATE (probe). GROUND_TRUTH (human only)." }
+      }
+    }
+  }
+}
