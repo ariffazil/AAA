@@ -111,25 +111,6 @@ In human terms, AAA is:
 
 ---
 
-## Federation Map
-
-```
-Arif (human sovereign)
-    │
-    ├── arifOS  = constitution, law, final judge (F1-F13)
-    ├── AAA     = operations control room (this repo)
-    ├── A-FORGE = workshop / execution floor
-    ├── GEOX    = earth-science expert department
-    ├── WEALTH  = finance / capital expert department
-    ├── WELL    = human readiness / metabolic department
-    └── APEX    = constitutional verdict engine (arifOS organ)
-```
-
-**arifOS** decides what is lawful.  
-**AAA** decides who should handle what.  
-**A-FORGE** does the building.  
-**GEOX, WEALTH, WELL** provide specialist intelligence.  
-**Arif** remains the final human judge.
 
 ---
 
@@ -267,17 +248,6 @@ npm run validate:aaa
 
 ---
 
-## Federation Cross-Reference
-
-| Node | Repository | Role |
-|------|------------|------|
-| **Constitutional Kernel** | `ariffazil/arifOS` | F1-F13, 888_JUDGE, 999_VAULT |
-| **Execution Engine** | `ariffazil/A-FORGE` | Build, deploy, forge, code-mode |
-| **Control Plane** | `ariffazil/AAA` | **This repo** — agent cards, A2A, cockpit |
-| **Earth Intelligence** | `ariffazil/geox` | Geoscience, petrophysics |
-| **Capital Intelligence** | `ariffazil/wealth` | Finance, allocation, stewardship |
-| **Vitality Intelligence** | `ariffazil/well` | Human readiness, metabolic |
-| **Static Surfaces** | `ariffazil/arif-sites` | Cloudflare Pages + VPS sites |
 
 ---
 
@@ -324,7 +294,31 @@ Arif         remains F13 final sovereign authority.
 ```
 
 > "AAA is polymorphic by design. When precision matters, qualify the surface."
+ — Intelligence is forged, not given.
+
+## 🏛️ Federation
+
+| Organ | Repository | Role | Port |
+|-------|-----------|------|------|
+| **arifOS** | [ariffazil/arifOS](https://github.com/ariffazil/arifOS) | Constitutional Kernel · F1-F13 | 8088 |
+| **AAA** | [ariffazil/AAA](https://github.com/ariffazil/AAA) | Reality Console · A2A Gateway | 3001 |
+| **A-FORGE** | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) | Execution Shell | 7071 |
+| **GEOX** | [ariffazil/geox](https://github.com/ariffazil/geox) | Earth Intelligence | 8081 |
+| **WEALTH** | [ariffazil/wealth](https://github.com/ariffazil/wealth) | Capital Intelligence | 18082 |
+| **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | Human Readiness | 18083 |
+| **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | Public Surfaces | 443 |
+
+> **Constitutional authority:** F1-F13 floors, 888_JUDGE, and VAULT999 live in `ariffazil/arifOS`.  
+> **Live federation status:** See `ariffazil/arifOS/FEDERATION_STATUS.md`.
+## 📄 Contributing
+
+This repository operates under the arifOS Federation constitution (F1–F13).  
+See [AGENTS.md](AGENTS.md) for the canonical boot sequence and agent operating rules.
+
+## 📜 License
+
+AGPL-3.0. See [LICENSE](LICENSE).
 
 ---
 
-**DITEMPA BUKAN DIBERI** — Intelligence is forged, not given.
+**DITEMPA BUKAN DIBERI** — Forged, Not Given.
