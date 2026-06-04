@@ -2,6 +2,7 @@
   "name": "aaa-a2a-server",
   "version": "1.0.0",
   "description": "AAA A2A Server - Agent2Agent Protocol Gateway",
+  "license": "AGPL-3.0",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
