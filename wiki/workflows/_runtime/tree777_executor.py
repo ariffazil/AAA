@@ -10,7 +10,7 @@ Fixes from v1.2.0:
 - All state persisted to disk, not memory
 """
 
-import json, sys, os
+import json, sys
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Any
@@ -112,7 +112,7 @@ class WorkflowEngine:
     def _run_step(self, step: dict) -> tuple[bool, Any]:
         tool = step.get("tool", "internal")
         mode = step.get("mode", "")
-        step_id = step["step_id"]
+        step["step_id"]
         print("    [" + tool + "/" + (mode or "default") + "]")
         if self.dry_run:
             output = {"dry_run": True, "tool": tool, "mode": mode}

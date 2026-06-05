@@ -16,12 +16,10 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import os
 import sys
 from pathlib import Path
-from typing import Any
 
 # Add budget guard
 sys.path.insert(0, str(Path(__file__).parent))
