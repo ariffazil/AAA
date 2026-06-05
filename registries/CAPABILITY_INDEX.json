@@ -1809,6 +1809,456 @@
       "description": "Design custom voice from text description with preview audio.",
       "risk_tier": "MEDIUM",
       "cost_warning": true
+    },
+    {
+      "id": "geox_data_ingest_bundle",
+      "name": "geox_data_ingest_bundle",
+      "description": "Lazy ingestion for LAS, CSV, Parquet, SEG-Y, and structural payloads. Also supports direct base64 upload and batch mode. Replaces: geox_data_ingest_bundle + geox_task_ingest_las_batch.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_data_qc_bundle",
+      "name": "geox_data_qc_bundle",
+      "description": "Real QC: depth monotonicity, null %, physical range checks. Fails closed: artifact_ref must have been previously ingested.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_dst_ingest_test",
+      "name": "geox_dst_ingest_test",
+      "description": "Structured DST (Drill-Stem Test) ingestion with derived metrics and flags. F2 Truth: all outputs OBSERVED.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_las_inspect",
+      "name": "geox_las_inspect",
+      "description": "Inspects LAS metadata and curve headers against GEOX Earth schemas before ingestion.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_seismic_inspect",
+      "name": "geox_seismic_inspect",
+      "description": "Inspects Seismic metadata against GEOX Earth schemas before ingestion.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_deviation_survey_inspect",
+      "name": "geox_deviation_survey_inspect",
+      "description": "Inspects deviation survey metadata against GEOX Earth schemas before ingestion. Enforces: depth unit, datum, MD increasing, TVD consistency.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_tops_inspect",
+      "name": "geox_tops_inspect",
+      "description": "Inspects well tops table metadata against GEOX Earth schemas before ingestion. Enforces: unit/datum consistency, positive thickness.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_seismic_segy_inspect",
+      "name": "geox_seismic_segy_inspect",
+      "description": "Inspects SEG-Y file binary header metadata before ingestion. Inspect before ingest. Validate structure without mutating data.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_subsurface_generate_candidates",
+      "name": "geox_subsurface_generate_candidates",
+      "description": "Generates ensemble subsurface outputs with residuals and data-density maps. Target classes: petrophysics, structure, flattening, vsh, porosity, saturation, netpay, permeability.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_subsurface_verify_integrity",
+      "name": "geox_subsurface_verify_integrity",
+      "description": "Enforces Physics9 boundary limits and detects structural paradoxes. Never returns SEAL without verified evidence.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_seismic_compute",
+      "name": "geox_seismic_compute",
+      "description": "Unified seismic physics engine. Modes: synthetic, well_tie, time_depth_anchor, anomalous_contrast, attribute.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_sequence_interpret",
+      "name": "geox_sequence_interpret",
+      "description": "Unified sequence stratigraphy engine. Workflows: single_well, project, preview, section_correlation.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_evidence_reason",
+      "name": "geox_evidence_reason",
+      "description": "Unified evidence synthesis, abduction, and contradiction engine. Phases: synthesize, abduct, contradict, full.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_prospect_evaluate",
+      "name": "geox_prospect_evaluate",
+      "description": "Integrated prospect evaluation (Volumetrics, POS, EVOI) with optional preview/seal. Replaces: geox_prospect_evaluate + geox_prospect_judge_preview + geox_prospect_judge_seal.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_map_context_scene",
+      "name": "geox_map_context_scene",
+      "description": "Spatial bbox context, CRS checks, and causal scene rendering. Modes: bbox_context, crs_check, render_scene, scene_summary.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_system_registry_status",
+      "name": "geox_system_registry_status",
+      "description": "Discovery of canonical tools, health, and contract epoch. Reports the ACTUAL live MCP surface with no phantom aliases.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_coord_transform_tool",
+      "name": "geox_coord_transform_tool",
+      "description": "Transform 3D points between block, survey, and world coordinate spaces using 4x4 affine matrices.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_blockspace_resolution_tool",
+      "name": "geox_blockspace_resolution_tool",
+      "description": "Compute inline, crossline, and vertical resolution from block/survey definitions.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_volume_get_frame_tool",
+      "name": "geox_volume_get_frame_tool",
+      "description": "Extract a single 2D frame from a 3D seismic volume. Returns canonical Image2d schema.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_volume_set_frame_tool",
+      "name": "geox_volume_set_frame_tool",
+      "description": "Write a 2D frame into a 3D seismic volume. REQUIRES_888_HOLD: irreversible file mutation enforced by MCP layer.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_seismic_compute_attribute_tool",
+      "name": "geox_seismic_compute_attribute_tool",
+      "description": "Compute a registered seismic attribute on a volume or frame. Supported: Amplitude, Variance, Sweetness, Coherence, Envelope, Frequency Average.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_fault_stick_ingest_tool",
+      "name": "geox_fault_stick_ingest_tool",
+      "description": "Ingest fault sticks from CSV or GeoJSON into canonical FaultSet3d schema.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_attribute_registry_list_tool",
+      "name": "geox_attribute_registry_list_tool",
+      "description": "List all registered seismic attributes with metadata.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_blend_volume_alpha_tool",
+      "name": "geox_blend_volume_alpha_tool",
+      "description": "Alpha blend 2 or 3 seismic volumes with weighted opacities. Pure geoscience compute \u2014 no file I/O.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_blend_volume_rgb_tool",
+      "name": "geox_blend_volume_rgb_tool",
+      "description": "RGB blend three seismic volumes into a single color-mapped volume. Widely used for frequency decomposition interpretation.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_segy_export_tool",
+      "name": "geox_segy_export_tool",
+      "description": "Export a seismic volume to SEG-Y format. REQUIRES_888_HOLD: irreversible file creation enforced by MCP layer.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_claim_create",
+      "name": "geox_claim_create",
+      "description": "Create a structured Earth interpretation claim with full provenance chain. Truth classes: FACT, INTERPRETATION, SPECULATION.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_claim_challenge",
+      "name": "geox_claim_challenge",
+      "description": "Challenge an existing interpretation claim with an alternative. Core tool for Multi-Discipline Self-Argument requirement.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_evidence_attach",
+      "name": "geox_evidence_attach",
+      "description": "Attach an evidence artifact to an existing claim. Types: supporting, contradicting, contextual, alternative.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
+    },
+    {
+      "id": "geox_claim_seal",
+      "name": "geox_claim_seal",
+      "description": "Submit a validated claim to arifOS for Vault999 sealing. Routes to arifOS kernel for constitutional checks.",
+      "server": "GEOX",
+      "tags": [
+        "geoscience",
+        "earth"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false
     }
   ]
 }
