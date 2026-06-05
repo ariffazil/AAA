@@ -1483,3 +1483,12 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-04T09:35:01Z
 
 ---
+
+## [2026-06-05] update | TREE777 777 health pulse (apex)
+
+- **Who:** cron:apex
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-apex-2026-06-05.json`
+- **When:** 2026-06-05T07:00:01Z
+
+---
