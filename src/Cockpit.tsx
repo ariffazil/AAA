@@ -345,8 +345,8 @@ export default function Cockpit() {
     for (const f of FLOORS_META) out[f.id] = 'UNKNOWN';
     if (!kernelData) return out;
     const healthy = kernelData.status === 'healthy';
-    const hard = new Set(kernelData.floors_hard_doctrinal || []);
-    const soft = new Set(kernelData.floors_soft_doctrinal || []);
+    const hard = new Set(kernelData.governance?.floors_hard_doctrinal || kernelData.floors_hard_doctrinal || []);
+    const soft = new Set(kernelData.governance?.floors_soft_doctrinal || kernelData.floors_soft_doctrinal || []);
     for (const f of FLOORS_META) {
       const isDoctrinal = hard.has(f.id) || soft.has(f.id);
       if (!isDoctrinal) out[f.id] = 'FAIL';
