@@ -3,20 +3,30 @@
   "name": "OpenCode",
   "tier": "AGI",
   "role": "engineer-executor",
-  "transport": "MCP_SSE",
+  "transport": "MCP_SSE_HTTP",
   "native_mcp": true,
   "version": "1.15.0",
   "model": "deepseek-v4-pro",
   "runtime": "/usr/local/bin/opencode",
   "config": "/root/.opencode/opencode.json",
   "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
-  "mcp_servers": ["arifOS", "WEALTH", "WELL", "GEOX", "A-FORGE", "minimax-media", "minimax-code"],
+  "mcp_servers": [
+    "arifOS",
+    "WEALTH",
+    "WELL",
+    "GEOX",
+    "A-FORGE",
+    "minimax-media",
+    "minimax-code",
+    "capability-index"
+  ],
   "strengths": [
     "fast single-session task execution",
     "skill system (40+ skills loaded)",
     "subagent delegation (forge, explore, auditor)",
     "pre-aligned with F1-F13 instructions",
-    "filesystem-native operations"
+    "filesystem-native operations",
+    "MCP-native"
   ],
   "weaknesses": [
     "shorter planning horizon than Claude",
@@ -28,8 +38,7 @@
     "single-task execution",
     "test suite execution and debugging",
     "file operations across repos",
-    "deployments (after SEAL)",
-    "codebase exploration"
+    "skill-driven automation"
   ],
   "capabilities": {
     "streaming": true,
@@ -39,5 +48,5 @@
   },
   "memory_contributor": true,
   "session_identity": "opencode@arif-fazil.com",
-  "authority_boundary": "Cannot self-authorize irreversible actions. All permissions allow."
+  "authority_boundary": "Cannot SEAL irreversible actions. Cannot self-authorize."
 }
