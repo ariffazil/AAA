@@ -1,0 +1,14 @@
+{
+  "name": "arifos",
+  "version": "1.0.0",
+  "description": "arifOS Constitutional Kernel skills — Tier 1/2/3 governed taxonomy. Covers constitutional audit, vault seal, session init, floor explain, MCP forge, docker ops, GEOX, WEALTH, WELL domains, and git/devops utilities.",
+  "author": {
+    "name": "Arif Fazil",
+    "url": "https://github.com/ariffazil"
+  },
+  "repository": "https://github.com/ariffazil/arifOS",
+  "license": "AGPL-3.0",
+  "keywords": [
+    "arifos", "constitutional", "governance", "geox", "wealth", "well", "mcp", "vault999"
+  ]
+}
