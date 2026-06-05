@@ -1,0 +1,44 @@
+{
+  "id": "continue-cli",
+  "name": "Continue CLI",
+  "tier": "AGI",
+  "role": "headless-peer",
+  "transport": "MCP_STDIO",
+  "native_mcp": true,
+  "version": "1.5.45",
+  "model": "minimax/MiniMax-M3",
+  "runtime": "/usr/bin/cn",
+  "config": "/root/.continue/config.yaml",
+  "governed_by": "arifOS F1-F13 via A-FORGE bridge (port 7071) + cn-organ (port 18795)",
+  "mcp_servers": ["A-FORGE (stdio primary)"],
+  "strengths": [
+    "headless autonomous operation",
+    "systemd-managed (cn-organ.service)",
+    "federation health audit (9 organs)",
+    "constitutional F1-F13 rules loaded",
+    "MCP-native via A-FORGE stdio bridge"
+  ],
+  "weaknesses": [
+    "no SSE transport (stdio only)",
+    "env var expansion broken in YAML",
+    "direct arifOS SSE incompatible (FastMCP session model)",
+    "single-session, no background"
+  ],
+  "risk_tolerance": "YELLOW",
+  "preferred_tasks": [
+    "autonomous health audits",
+    "scheduled federation checks",
+    "single-turn query responses",
+    "read-only status probes",
+    "non-interactive tasks"
+  ],
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": "MCP_stdio"
+  },
+  "memory_contributor": true,
+  "session_identity": "continue-cli@arif-fazil.com",
+  "authority_boundary": "readonly by default. Full mode has 38 tools. All governed by A-FORGE bridge."
+}
