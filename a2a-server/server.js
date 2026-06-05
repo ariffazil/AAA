@@ -23,13 +23,13 @@ app.use(express.json({ limit: '12mb' }));
 
 // === CONFIG ===
 // === AGENT A2A ADAPTER URLs (host network) ===
-const HERMES_A2A_URL = process.env.HERMES_A2A_URL || 'http://172.19.0.1:18001';
-const OPENCLAW_A2A_URL = process.env.OPENCLAW_A2A_URL || 'http://172.19.0.1:18002';
-const OLLAMA_URL = process.env.OLLAMA_URL || 'http://ollama-engine-prod:11434';
+const HERMES_A2A_URL = process.env.HERMES_A2A_URL || 'http://127.0.0.1:18001';
+const OPENCLAW_A2A_URL = process.env.OPENCLAW_A2A_URL || 'http://127.0.0.1:18789';
+const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
 const OPENWEBUI_API_KEY = process.env.OPENWEBUI_API_KEY || '';
 const OPENWEBUI_URL = process.env.OPENWEBUI_URL || '';
-const ARIFOS_LOCAL_URL = process.env.ARIFOS_LOCAL_URL || 'http://arifosmcp:8080';
-const QDRANT_URL = process.env.QDRANT_URL || 'http://qdrant:6333';
+const ARIFOS_LOCAL_URL = process.env.ARIFOS_LOCAL_URL || 'http://127.0.0.1:8088';
+const QDRANT_URL = process.env.QDRANT_URL || 'http://127.0.0.1:6333';
 const AAA_AI_COLLECTION = process.env.AAA_AI_COLLECTION || 'aaa_ai_docs';
 const AAA_AI_DEFAULT_MODEL = process.env.AAA_AI_DEFAULT_MODEL || 'qwen2.5:7b';
 const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
@@ -38,8 +38,8 @@ const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
 const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
 const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://apex-prime:3002';
 const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || 'hermes-agent-apikey-dev';
-const REDIS_URL = process.env.REDIS_URL || 'redis://redis:6379';
-const NATS_URL = process.env.NATS_URL || 'nats://nats:4222';
+const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
+const NATS_URL = process.env.NATS_URL || 'nats://127.0.0.1:4222';
 
 // === GRAFANA WEBHOOK + ORGAN MONITOR + TELEGRAM NOTIFIER ===
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8410138119:AAHrXysyxI8yuBM7QW6QTafKsgpqEyd19DA';
