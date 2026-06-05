@@ -1,0 +1,115 @@
+{
+  "mcpServers": {
+    "arifos": {
+      "command": "C:\\ariffazil\\arifOS\\.venv\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "arifosmcp.runtime",
+        "stdio"
+      ],
+      "cwd": "C:\\ariffazil\\arifOS",
+      "env": {
+        "PYTHONPATH": "C:\\ariffazil\\arifOS",
+        "PYTHONIOENCODING": "utf-8",
+        "ARIFOS_GOVERNANCE_SECRET": "ea5e51a4f7a3b180f13ef01d65c507602cff4fd417746901170300f33a0cc991f",
+        "ARIFOS_GOVERNANCE_OPEN_MODE": "1",
+        "AAA_MCP_TRANSPORT": "stdio",
+        "SystemRoot": "C:\\Windows",
+        "SystemDrive": "C:",
+        "PATH": "C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "C:/ariffazil/arifOS",
+        "C:/ariffazil/arifOS/arifosmcp",
+        "C:/Users/User/Documents"
+      ]
+    },
+    "meyhem": {
+      "url": "https://api.rhdxm.com/mcp/"
+    },
+    "github-official": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      }
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp"
+      ]
+    },
+    "desktop-commander": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@wonderwhy-er/desktop-commander@latest",
+        "--no-onboarding"
+      ]
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-brave-search"
+      ],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      }
+    },
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      }
+    },
+    "perplexity": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@perplexity-ai/mcp-server"
+      ],
+      "env": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      }
+    },
+    "exa-search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "exa-mcp-server"
+      ],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      }
+    }
+  }
+}

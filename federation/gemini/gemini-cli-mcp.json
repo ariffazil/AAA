@@ -1,0 +1,64 @@
+{
+  "mcpServers": {
+    "arifos_local": {
+      "command": "C:\\ariffazil\\arifOS\\.venv\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "arifosmcp.runtime",
+        "stdio"
+      ],
+      "cwd": "C:\\ariffazil\\arifOS",
+      "env": {
+        "PYTHONPATH": "C:\\ariffazil\\arifOS",
+        "PYTHONIOENCODING": "utf-8",
+        "ARIFOS_GOVERNANCE_SECRET": "arifos-internal-forge-secret",
+        "ARIFOS_VAULT_PATH": "C:\\ariffazil\\arifOS\\VAULT999",
+        "ARIFOS_MODE": "development"
+      }
+    },
+    "arifos_remote": {
+      "serverUrl": "https://mcp.arif-fazil.com/mcp"
+    },
+    "geox": {
+      "command": "C:\\ariffazil\\GEOX\\.venv\\Scripts\\python.exe",
+      "args": [
+        "src/geox_mcp/server.py"
+      ],
+      "cwd": "C:\\ariffazil\\GEOX",
+      "env": {
+        "PYTHONPATH": "C:\\ariffazil\\GEOX\\src",
+        "PYTHONIOENCODING": "utf-8"
+      }
+    },
+    "wealth": {
+      "serverUrl": "https://wealth.arif-fazil.com/mcp"
+    },
+    "well": {
+      "serverUrl": "https://well.arif-fazil.com/mcp"
+    },
+    "supabase": {
+      "serverUrl": "https://mcp.supabase.com/mcp?project_ref=utbmmjmbolmuahwixjqc",
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "sbp_[REDACTED]"
+      }
+    },
+    "google_workspace": {
+      "command": "ssh",
+      "args": [
+        "-q",
+        "-T",
+        "-p",
+        "22888",
+        "-o",
+        "StrictHostKeyChecking=accept-new",
+        "-o",
+        "ServerAliveInterval=30",
+        "ariffazil@72.62.71.199",
+        "sudo -n ARIFOS_WORKSPACE_MODE=private python3 /root/AAA/.apex/workspace_mcp.py"
+      ]
+    },
+    "meyhem": {
+      "serverUrl": "https://api.rhdxm.com/mcp/"
+    }
+  }
+}
