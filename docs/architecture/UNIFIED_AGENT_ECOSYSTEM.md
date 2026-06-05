@@ -1,8 +1,9 @@
 # Unified Heterogeneous Coding Agent Ecosystem
 
-> **Status:** SPECIFICATION (Ingested 2026-06-05)
+> **Status:** ACTIVE FORGE (v1.1 — Updated 2026-06-05 04:02 UTC)
 > **Authority:** F13 SOVEREIGN (Arif Fazil)
 > **Domain:** AAA — Control Plane / Cockpit
+> **Forged artifacts:** Agent Cards (26 agents), CAPABILITY_INDEX (106 tools, 8 servers), Cross-Agent Telemetry Schema (NATS)
 > **DITEMPA BUKAN DIBERI**
 
 ## Core Thesis: Bridge, Don't Duplicate — A Federation with a Single Law
@@ -109,39 +110,72 @@ Unified MCP/A2A Gateway  ←── Shims for non-MCP agents
 
 ## Implementation Phases
 
-### Phase 1: Foundation (Current State)
-- [x] arifOS MCP Gateway (8088)
-- [x] A-FORGE execution shell (7071)
-- [x] A2A server (3001)
-- [x] VAULT999 ledger
-- [x] NATS JetStream
-- [x] Qdrant vector store
-- [x] Multiple agents configured (Claude, OpenCode, Continue, Kimi)
+### Phase 0: Constitutional Foundation ✅ COMPLETE
+- [x] arifOS MCP Gateway (8088) — 13 tools, F1-F13 live
+- [x] A-FORGE execution shell (7071) — gated behind JUDGE_SEAL
+- [x] A2A server (3001) — v0.3.0 protocol mesh
+- [x] VAULT999 ledger — 61 seals, chain_height 61, append-only
+- [x] NATS JetStream — event bus + arifos-governance stream
+- [x] Qdrant vector store — 5 collections, 1066+ points
+- [x] Graphiti L5 entity graph
+- [x] Postgres L4 canonical storage
+- [x] 26 AGENT CARDS — all configured agents registered (AAA/agents/)
+- [x] 106 TOOL CAPABILITY INDEX — 8 servers indexed (AAA/registries/CAPABILITY_INDEX.json)
+- [x] Gödel/Strange/Beautiful locks — 22 tests in recursive_governance_locks.py
+- [x] Jurisdiction bands — GREEN→BLACK with CapabilityGrantRegistry (20 tests)
+- [x] HEXAGON constitutional layer — 333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE
+- [x] Hermes ASI (human-facing relay) + OpenClaw AGI (execution muscle)
 
-### Phase 2: Capability Index
-- [ ] Define canonical tool descriptor schema
-- [ ] Build `arif_capability_select` tool
-- [ ] Populate index with all federation tools
-- [ ] Build Capability Lens for Claude Code MCP format
-- [ ] Build Capability Lens for OpenCode remote format
+### Phase 1: Agent Registration ✅ COMPLETE
+- [x] Agent card schema defined (`schemas/agent-card.schema.json`)
+- [x] 26 agents registered with identity cards under `agents/`
+- [x] Claude Code, OpenCode, Kimi Code, Copilot, Codex, Continue CLI, Antigravity
+- [x] All federation organs: Hermes ASI/ops, OpenClaw, Aider, Gemini, MaxHermes
+- [x] HEXAGON constitutional agents: 333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE
+- [x] APEX, AAA Gateway
 
-### Phase 3: Agent Router
-- [ ] Define Agent Card schema
-- [ ] Register all agents with identity cards
-- [ ] Build intent classifier (embedding-based)
-- [ ] Implement task envelope dispatch via A2A
-- [ ] Routing audit log
+### Phase 2: Capability Index ✅ COMPLETE
+- [x] CAPABILITY_INDEX.json — 106 tools across 8 servers
+- [x] arifOS (16 tools), WEALTH (26), WELL (16), GEOX (via arifOS)
+- [x] minimax-media (9 tools — TTS, video, image, voice, music)
+- [x] minimax-code (2 tools — web_search, understand_image)
+- [x] brave-search (6), github (26), meyhem (5)
+- [x] Server metadata: port, bind address, transport, tool count
+- [ ] `arif_capability_select` — dynamic semantic search tool (NOT BUILT)
+- [ ] Capability Lenses — per-agent format adapters (NOT BUILT)
+- [ ] Index wired to agent discovery at session init (NOT WIRED)
 
-### Phase 4: Non-MCP Shims
+### Phase 3: Agent Router 🔲 NOT BUILT
+- [ ] Intent classifier — embedding-based task routing
+- [ ] Task envelope dispatch via A2A
+- [ ] Routing receipt audit log
+- [ ] Agent competency scoring from telemetry feedback
+
+### Phase 4: Non-MCP Shims 🔲 NOT BUILT
 - [ ] Terminal Capture shim for Copilot/CLI agents
 - [ ] Pattern detector for command extraction
 - [ ] Pseudo-tool exposure (startup hints for text agents)
 
-### Phase 5: Federated Memory Feedback
-- [ ] Cross-agent telemetry publishing (NATS)
+### Phase 5: Federated Memory Feedback 🔲 NOT BUILT
+- [ ] Cross-agent telemetry publishing via NATS (SCHEMA DEFINED: `schemas/cross-agent-telemetry.schema.json`)
 - [ ] Memory recall tool — find solutions from any agent
 - [ ] Agent eval harness (routing quality, floor compliance, tool success rate)
 - [ ] Continuous prompt improvement from eval feedback
+- [ ] Anti-drift walls: "may recursively improve execution, may not recursively rewrite sovereignty"
+
+### Phase 6: Enforcement Unification 🔲 NOT BUILT
+- [ ] All external agents piped through arifOS gateway
+- [ ] Gödel/Strange/Beautiful locks active cross-agent (code exists, not wired)
+- [ ] Unified SEAL/HOLD gating for non-MCP agents
+- [ ] FederationEnvelope required for all tool calls
+
+### Immediate Next Actions (This Session — 2026-06-05)
+- [x] MiniMax MCP deployed globally (2 new SSE servers)
+- [x] CAPABILITY_INDEX updated (97 → 106 tools)
+- [x] Cross-agent telemetry schema defined
+- [x] Claude Code + OpenCode configured for new MCP servers
+- [ ] Push AAA commit to origin/main
+- [ ] Build `arif_capability_select` as next forge target
 
 ## Key Invariants (Must Never Break)
 
