@@ -1,0 +1,63 @@
+{
+  "mcpServers": {
+    "arifosmcp-local": {
+      "command": "C:/ariffazil/arifOS/arifosmcp/.venv/Scripts/python.exe",
+      "args": [
+        "-m",
+        "arifosmcp.mcp_server"
+      ],
+      "env": {
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUNBUFFERED": "1",
+        "PYTHONPATH": "C:/ariffazil/arifOS"
+      }
+    },
+    "arifosmcp-vps": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "mcp-remote",
+        "https://mcp.arif-fazil.com/mcp"
+      ]
+    },
+    "a-forge-local": {
+      "command": "node",
+      "args": [
+        "C:/ariffazil/A-FORGE/dist/src/mcp/cli.js",
+        "serve",
+        "--transport",
+        "stdio"
+      ],
+      "env": {
+        "AF_FORGE_PORT": "7071",
+        "NODE_ENV": "development",
+        "ARIFOS_GOVERNANCE_URL": "https://mcp.arif-fazil.com/mcp"
+      }
+    }
+  },
+  "preferences": {
+    "allowAllBrowserActions": true,
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "chat",
+    "coworkWebSearchEnabled": true,
+    "keepAwakeEnabled": true,
+    "chicagoEnabled": true,
+    "remoteToolsDeviceName": "ariffazil",
+    "epitaxyPrefs": {
+      "starred-local-code-sessions": [],
+      "starred-cowork-spaces": [],
+      "starred-session-groups": [],
+      "dframe-local-slice": {
+        "pinnedOrder": [],
+        "customGroupAssignments": {},
+        "customGroupOrder": {}
+      }
+    },
+    "bypassPermissionsGateByAccount": {
+      "66bb4872-e705-4244-9793-3894275e7c69": false
+    }
+  }
+}
