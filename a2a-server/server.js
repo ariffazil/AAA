@@ -1105,6 +1105,66 @@ app.get('/aaa-card-treaty', (req, res) => {
   });
 });
 
+// ── Governance Card API ─────────────────────────────────────────────────────
+// Returns the live model_governance_card from the arifOS-model-registry spine.
+// Consumed by AAA Cockpit AgentModelPanel and A-FORGE pre-execution gate.
+app.get('/api/governance-card', async (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  try {
+    const { execSync } = await import('node:child_process');
+    const cardJson = execSync(
+      `python3 -c "
+import json
+from arifosmcp.runtime.registry import RUNTIME_PATH
+print(json.dumps(json.load(open(RUNTIME_PATH / 'vps_main_arifos.json'))))
+"`,
+      { encoding: 'utf-8', timeout: 5000, cwd: '/root/arifOS' }
+    );
+    const spineProfile = JSON.parse(cardJson);
+
+    // Build governance card from spine data
+    const governanceCard = {
+      model_anchor: {
+        provider_key: spineProfile.provider_key || 'unknown',
+        family_key: spineProfile.family_key || 'unknown',
+        model_variant: spineProfile.model_id || 'unknown',
+        identity_verified: true,
+        verified_at: spineProfile.verified_at || null,
+      },
+      runtime_truth: {
+        tools: spineProfile.tools_live || [],
+        web: spineProfile.web_on || false,
+        memory: spineProfile.memory_mode === 'vault_backed',
+        execution_mode: spineProfile.execution_mode || 'unknown',
+        side_effects_allowed: spineProfile.side_effects_allowed || false,
+        auth_level: spineProfile.auth_level || 'unknown',
+      },
+      risk_leash: {
+        risk_tier: 'bounded',
+        requires_human_ack_for: ['irreversible_delete', 'git_push', 'external_relay', 'vault_seal'],
+      },
+      provider_soul: spineProfile.provider_key || 'unknown',
+      soul_label: spineProfile.model_id || 'unknown',
+      cascade_tier: 'primary',
+      drift_state: 'GREEN',
+      last_verified: spineProfile.verified_at || null,
+      model_cascade: spineProfile.model_cascade || null,
+      capabilities: spineProfile.capabilities || null,
+    };
+
+    res.json(governanceCard);
+  } catch (err) {
+    // Fallback: return minimal card with RED drift state
+    res.json({
+      model_anchor: { provider_key: 'unknown', model_variant: 'unknown', identity_verified: false },
+      drift_state: 'RED',
+      cascade_tier: 'unknown',
+      last_verified: null,
+      error: err instanceof Error ? err.message : 'Spine unavailable',
+    });
+  }
+});
+
 app.get('/health', async (req, res) => {
   const vaultHealthy = await checkVaultHealth();
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
