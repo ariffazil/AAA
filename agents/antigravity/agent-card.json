@@ -5,10 +5,12 @@
   "role": "pair-programmer",
   "transport": "CLI_SHELL",
   "native_mcp": false,
+  "mcp_ready": false,
   "version": "latest",
   "model": "google/gemini",
   "runtime": "CLI tool",
-  "governed_by": "arifOS F1-F13 via A-FORGE bridge (port 7071)",
+  "config": "/root/.gemini/config/",
+  "governed_by": "arifOS F1-F13 via Python fallback + A-FORGE bridge (port 7071)",
   "strengths": [
     "rapid code generation",
     "Google ecosystem integration",
@@ -16,8 +18,9 @@
     "interactive pair programming"
   ],
   "weaknesses": [
-    "not MCP-native (requires A-FORGE bridge)",
-    "no constitutional awareness",
+    "no native MCP support",
+    "requires Python subprocess for federation tools",
+    "no constitutional awareness without injection",
     "Google-only backend",
     "limited session context"
   ],
@@ -32,14 +35,20 @@
     "streaming": true,
     "push_notifications": false,
     "authenticated_extended_card": false,
-    "tool_calling": "CLI_stdout_capture"
+    "tool_calling": "none"
   },
   "bridge": {
-    "type": "A-FORGE pattern detector",
+    "type": "Python subprocess + A-FORGE pattern detector",
     "patterns": ["shell commands", "code blocks"],
     "governance_injection": "Capability hints in session preamble"
   },
+  "fallback_commands": {
+    "capability_search": "cd /root/arifOS && PYTHONPATH=core python3 -c \"from capability_index.store import CapabilityStore; [print(r.tool_name) for r in CapabilityStore().search('QUERY', 5)]\"",
+    "playwright_screenshot": "cd /root/playwright-mcp && /root/arifOS/.venv/bin/python -c \"from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); page=b.new_page(); page.goto('URL'); page.screenshot(path='/tmp/ss.png'); b.close()\"",
+    "publish_telemetry": "cd /root/arifOS && PYTHONPATH=core python3 -c \"import asyncio; from agent_bridge.publisher import TelemetryPublisher; from agent_bridge.models import AgentTelemetry; asyncio.run(main())\"",
+    "run_evals": "cd /root/arifOS && PYTHONPATH=core python3 -m pytest evals/ -v"
+  },
   "memory_contributor": false,
   "session_identity": "antigravity@arif-fazil.com",
-  "authority_boundary": "All actions bridged through A-FORGE. Cannot execute directly."
+  "authority_boundary": "All actions via Python fallback or A-FORGE bridge. No direct MCP."
 }

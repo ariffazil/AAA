@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/capability-card.schema.json",
+  "title": "AAA Capability Card",
+  "description": "Standardized metadata for a tool in the unified capability fabric. Every tool — MCP or otherwise — is described by one capability card so all agents share the same semantic understanding.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_:-]+$",
+      "description": "Canonical tool identifier. snake_case or colon-namespaced."
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable tool name."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "description": "What the tool does, when to use it, and what it returns."
+    },
+    "server": {
+      "type": "string",
+      "description": "Which MCP server or organ hosts this tool."
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["builtin", "plugin", "mcp", "bridge", "shim"],
+      "description": "How the tool is provided to the federation."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "Semantic tags for vector search and filtering."
+    },
+    "epistemic_tag": {
+      "type": "string",
+      "enum": ["CLAIM", "PLAUSIBLE", "HYPOTHESIS", "ESTIMATE"],
+      "description": "Evidence quality of the tool's outputs."
+    },
+    "risk_tier": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"],
+      "description": "Maximum damage this tool can cause if misused."
+    },
+    "execution_kind": {
+      "type": "string",
+      "enum": ["read", "write", "execute", "admin"],
+      "description": "Class of side effects."
+    },
+    "approval_policy": {
+      "type": "string",
+      "enum": ["auto", "hold", "human-required"],
+      "description": "Default approval gate for this tool."
+    },
+    "requires_888": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether invocation requires 888_JUDGE SEAL authority."
+    },
+    "reversible": {
+      "type": "boolean",
+      "default": true,
+      "description": "Can the action be undone?"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "JSON Schema-like parameter summary (optional, for deep introspection)."
+    },
+    "toolcard": {
+      "type": "string",
+      "description": "Short usage example or affordance hint shown to agents."
+    },
+    "version": {
+      "type": "string",
+      "description": "Schema version or last-updated timestamp."
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "server",
+    "source_type",
+    "tags",
+    "epistemic_tag",
+    "risk_tier",
+    "execution_kind",
+    "approval_policy",
+    "version"
+  ]
+}
