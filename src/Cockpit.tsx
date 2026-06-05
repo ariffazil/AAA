@@ -14,6 +14,7 @@ import { ConsentDialog, SessionBadge, SessionManifest } from './components/Sessi
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 import AutonomyBands from './components/cockpit/AutonomyBands';
 import RealityConsole from './components/cockpit/RealityConsole';
+import AgentModelPanel, { type ModelGovernanceCard } from './components/cockpit/AgentModelPanel';
 
 type OperatorTask = {
   id: string;
@@ -152,6 +153,11 @@ export default function Cockpit() {
     geox: 'loading', wealth: 'loading', well: 'loading',
   });
 
+  // Model governance card from spine
+  const [governanceCard, setGovernanceCard] = useState<ModelGovernanceCard | null>(null);
+  const [governanceLoading, setGovernanceLoading] = useState(true);
+  const [governanceError, setGovernanceError] = useState<string | null>(null);
+
   // ── Data Fetchers ────────────────────────────────────────────────────────
 
   const fetchAgents = async () => {
@@ -185,6 +191,26 @@ export default function Cockpit() {
         setEvents(data.events || []);
       }
     } catch { /* ignore */ }
+  };
+
+  const fetchGovernanceCard = async () => {
+    try {
+      setGovernanceLoading(true);
+      const res = await fetch('/api/governance-card', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        setGovernanceCard(data);
+        setGovernanceError(null);
+      } else {
+        setGovernanceError(`HTTP ${res.status}`);
+        setGovernanceCard(null);
+      }
+    } catch (err) {
+      setGovernanceError(err instanceof Error ? err.message : 'Failed to fetch governance card');
+      setGovernanceCard(null);
+    } finally {
+      setGovernanceLoading(false);
+    }
   };
 
   const pollLastMission = async (taskId: string) => {
@@ -239,9 +265,11 @@ export default function Cockpit() {
   useEffect(() => {
     queueMicrotask(fetchTasks);
     queueMicrotask(fetchAgents);
+    queueMicrotask(fetchGovernanceCard);
     const interval = setInterval(fetchTasks, 5000);
     const agentsInterval = setInterval(fetchAgents, 30000);
-    return () => { clearInterval(interval); clearInterval(agentsInterval); };
+    const governanceInterval = setInterval(fetchGovernanceCard, 60000);
+    return () => { clearInterval(interval); clearInterval(agentsInterval); clearInterval(governanceInterval); };
   }, []);
 
   useEffect(() => {
@@ -779,6 +807,13 @@ export default function Cockpit() {
             ))}
           </div>
         </section>
+
+        {/* ── AGENT MODEL IDENTITY (Governance Spine) ── */}
+        <AgentModelPanel
+          governanceCard={governanceCard}
+          isLoading={governanceLoading}
+          error={governanceError}
+        />
 
         {/* ── AUTONOMY BANDS ── */}
         <AutonomyBands tools={toolRegistry} />
