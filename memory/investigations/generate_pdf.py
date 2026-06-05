@@ -5,18 +5,15 @@ Professional PDF Report
 """
 
 from reportlab.lib.pagesizes import A4
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.styles import ParagraphStyle
 from reportlab.lib.units import mm
-from reportlab.lib.colors import HexColor, white, black, Color
+from reportlab.lib.colors import HexColor, white
 from reportlab.platypus import (
     SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle,
-    PageBreak, HRFlowable, KeepTogether, Image
+    PageBreak, KeepTogether
 )
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT, TA_JUSTIFY
 from reportlab.platypus.flowables import Flowable
-from reportlab.pdfgen import canvas
-from reportlab.lib import colors
-import os
 
 # ─── BRAND PALETTE ───────────────────────────────────────────────────────────
 C_NAVY       = HexColor('#0A2342')   # deep navy — primary
@@ -112,7 +109,7 @@ def callout_box(title, body_lines, bg_color, left_color, title_color=None, body_
     for line in body_lines:
         content.append(Paragraph(line, body_style))
 
-    rows = [[Paragraph(title, title_style)]] + [[p] for p in content]
+    [[Paragraph(title, title_style)]] + [[p] for p in content]
     t = Table([[Paragraph(title, title_style)]] + [[p] for p in content],
               colWidths=[CONTENT_W - 12*mm])
     t.setStyle(TableStyle([
@@ -228,7 +225,7 @@ def build_pdf(output_path):
                                   textColor=C_NAVY, leading=34, spaceAfter=6)
     sub_style = ParagraphStyle('MainSub', fontName='Helvetica', fontSize=13,
                                textColor=C_TEAL, leading=17, spaceAfter=8)
-    src_style = ParagraphStyle('Src', fontName='Helvetica', fontSize=9,
+    ParagraphStyle('Src', fontName='Helvetica', fontSize=9,
                                textColor=C_GREY_MID, leading=12)
 
     story.append(Paragraph('SEARAH × PETROS', title_style))
@@ -649,7 +646,7 @@ def build_pdf(output_path):
 
     layer_label = ParagraphStyle('LL', fontName='Helvetica-Bold', fontSize=9.5,
                                   textColor=white, leading=12, alignment=TA_CENTER)
-    layer_body  = ParagraphStyle('LB', fontName='Helvetica', fontSize=8.5,
+    ParagraphStyle('LB', fontName='Helvetica', fontSize=8.5,
                                   textColor=white, leading=12, alignment=TA_CENTER)
     layer_arrow  = ParagraphStyle('LA', fontName='Helvetica-Bold', fontSize=14,
                                   textColor=C_GREY_MID, leading=16, alignment=TA_CENTER)
@@ -1012,7 +1009,7 @@ def build_pdf(output_path):
         ]),
     ]
 
-    q_label = ParagraphStyle('QL', fontName='Helvetica-Bold', fontSize=8.5,
+    ParagraphStyle('QL', fontName='Helvetica-Bold', fontSize=8.5,
                               textColor=C_NAVY, leading=11)
     q_body  = ParagraphStyle('QB', fontName='Helvetica', fontSize=9,
                                textColor=C_TEXT, leading=13)

@@ -20,8 +20,6 @@ It validates structural compliance against the canonical schema.
 
 import hashlib
 import json
-import math
-import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
