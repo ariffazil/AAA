@@ -1,45 +1,43 @@
 {
-  "$schema": "https://aaa.arif-fazil.com/schemas/openclaw-a2a-agent-card.schema.json",
   "id": "opencode",
-  "name": "opencode",
-  "description": "Coding agent — code analysis, feature building, refactoring. Operates under arifOS constitutional governance.",
-  "url": "https://aaa.arif-fazil.com/a2a/opencode",
-  "preferred_transport": "jsonrpc-http",
-  "provider": {
-    "organization": "arifOS",
-    "system": "AAA",
-    "runtime": "opencode"
-  },
-  "version": "1.0.0",
+  "name": "OpenCode",
+  "tier": "AGI",
+  "role": "engineer-executor",
+  "transport": "MCP_SSE",
+  "native_mcp": true,
+  "version": "1.15.0",
+  "model": "deepseek-v4-pro",
+  "runtime": "/usr/local/bin/opencode",
+  "config": "/root/.opencode/opencode.json",
+  "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
+  "mcp_servers": ["arifOS", "WEALTH", "WELL", "GEOX", "A-FORGE", "minimax-media", "minimax-code"],
+  "strengths": [
+    "fast single-session task execution",
+    "skill system (40+ skills loaded)",
+    "subagent delegation (forge, explore, auditor)",
+    "pre-aligned with F1-F13 instructions",
+    "filesystem-native operations"
+  ],
+  "weaknesses": [
+    "shorter planning horizon than Claude",
+    "no background processing",
+    "no push notifications"
+  ],
+  "risk_tolerance": "YELLOW",
+  "preferred_tasks": [
+    "single-task execution",
+    "test suite execution and debugging",
+    "file operations across repos",
+    "deployments (after SEAL)",
+    "codebase exploration"
+  ],
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
-    "authenticated_extended_card": false
+    "authenticated_extended_card": false,
+    "tool_calling": "native_mcp"
   },
-  "capabilities_input_modes": ["text/plain", "application/json"],
-  "capabilities_output_modes": ["text/plain", "application/json", "code/text"],
-  "skills": [
-    {
-      "id": "code-analysis",
-      "name": "Code Analysis",
-      "description": "Read and analyze codebase structure, patterns, and conventions",
-      "tags": ["read", "analyze", "understand"],
-      "examples": ["explain how auth works in this codebase", "what files handle user management"]
-    },
-    {
-      "id": "code-write",
-      "name": "Code Writing",
-      "description": "Create, edit, or refactor code files with constitutional compliance",
-      "tags": ["write", "edit", "refactor", "create"],
-      "examples": ["add authentication to the settings route", "refactor the database layer"]
-    },
-    {
-      "id": "build-validate",
-      "name": "Build & Validate",
-      "description": "Run linters, formatters, typecheckers, and tests",
-      "tags": ["build", "lint", "test", "format"],
-      "examples": ["run the full quality pipeline", "check if this file is properly formatted"]
-    }
-  ],
-  "supports_authenticated_extended_card": false
+  "memory_contributor": true,
+  "session_identity": "opencode@arif-fazil.com",
+  "authority_boundary": "Cannot self-authorize irreversible actions. All permissions allow."
 }
