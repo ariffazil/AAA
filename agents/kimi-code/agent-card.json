@@ -1,0 +1,47 @@
+{
+  "id": "kimi-code",
+  "name": "Kimi Code",
+  "tier": "AGI",
+  "role": "engineer-debugger",
+  "transport": "CLI_SHELL",
+  "native_mcp": false,
+  "version": "latest",
+  "model": "moonshot/kimi",
+  "runtime": "/root/.local/bin/kimi",
+  "governed_by": "arifOS F1-F13 via A-FORGE bridge (port 7071)",
+  "strengths": [
+    "near-SOTA code debugging",
+    "algorithmic problem solving",
+    "Chinese/Malaysian multilingual context",
+    "large codebase navigation",
+    "test-driven development"
+  ],
+  "weaknesses": [
+    "not MCP-native (requires A-FORGE bridge)",
+    "limited constitutional awareness",
+    "no skill system",
+    "CLI-only, no web UI"
+  ],
+  "risk_tolerance": "YELLOW",
+  "preferred_tasks": [
+    "debugging complex issues",
+    "algorithmic optimization",
+    "code generation from specs",
+    "test case generation",
+    "SEA-region context tasks"
+  ],
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": "CLI_stdout_capture"
+  },
+  "bridge": {
+    "type": "A-FORGE pattern detector",
+    "patterns": ["shell commands", "code blocks", "file path references"],
+    "governance_injection": "ABI preamble loaded per session"
+  },
+  "memory_contributor": true,
+  "session_identity": "kimi-code@arif-fazil.com",
+  "authority_boundary": "All actions bridged through A-FORGE. Cannot execute directly."
+}

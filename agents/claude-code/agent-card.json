@@ -1,0 +1,43 @@
+{
+  "id": "claude-code",
+  "name": "Claude Code",
+  "tier": "AGI",
+  "role": "engineer-architect",
+  "transport": "MCP_SSE",
+  "native_mcp": true,
+  "version": "2.1.160",
+  "model": "deepseek-v4-pro",
+  "runtime": "/root/.local/bin/claude",
+  "config": "/root/.claude/settings.json",
+  "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
+  "mcp_servers": ["arifOS", "WEALTH", "WELL", "GEOX", "A-FORGE", "minimax-media", "minimax-code"],
+  "strengths": [
+    "multi-file architecture design",
+    "constitutional awareness (CLAUDE.md loaded)",
+    "safety-first reasoning",
+    "long-context codebase understanding",
+    "complex refactoring"
+  ],
+  "weaknesses": [
+    "no native web search without MCP",
+    "single-session context window",
+    "no self-approval (by design)"
+  ],
+  "risk_tolerance": "YELLOW",
+  "preferred_tasks": [
+    "architecture design",
+    "multi-file refactoring",
+    "code review",
+    "constitutional audits",
+    "test suite design"
+  ],
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": "native_mcp"
+  },
+  "memory_contributor": true,
+  "session_identity": "claude-code@arif-fazil.com",
+  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize."
+}
