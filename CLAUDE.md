@@ -252,6 +252,14 @@ L6 VAULT999  = immutable sealed truth
 - Branch: `main` is production. Feature branches for work.
 - Git-first deploy: commit + push before deploying.
 
+### Tags — DATE-STAMP ONLY (Iron Rule)
+- **Format:** `vYYYY.MM.DD` — e.g., `v2026.06.05`
+- **NEVER:** arbitrary version numbers (`v55.7.0`, `v1.2.3`, `v0.x.x`)
+- **WHY:** Real-time-space-energy. The forge date IS the version. Software that matures dates itself by when it was forged, not by a counter that means nothing.
+- **Enforcement:** Any agent creating a non-date tag MUST delete it and replace it. This is not negotiable.
+- **Tag message:** Summarize what was forged. No filler.
+- **Existing cikai tags** (`v55.*`, `v0.1.*`) are legacy. Do not replicate the pattern.
+
 ### Epistemic Tags (mandatory on substantive claims)
 `CLAIM` · `PLAUSIBLE` · `HYPOTHESIS` · `ESTIMATE` · `UNKNOWN`
 Overconfidence = F7 violation. Uncertainty is a feature, not a defect.
