@@ -3,25 +3,35 @@
   "name": "GitHub Copilot",
   "tier": "AGI",
   "role": "pair-programmer",
-  "transport": "IDE_EMBEDDED",
-  "native_mcp": false,
+  "transport": "MCP_IDE_EMBEDDED",
+  "native_mcp": true,
   "version": "latest",
   "model": "openai/gpt-4o (Codex-backed)",
   "runtime": "VS Code / IDE plugin",
-  "governed_by": "arifOS F1-F13 via A-FORGE output capture + Terminal Capture Guide",
+  "config": "/root/.copilot/mcp-config.json",
+  "governed_by": "arifOS F1-F13 via MCP gateway (port 8088) + A-FORGE output capture",
+  "mcp_servers": [
+    "arifOS",
+    "playwright",
+    "WEALTH",
+    "WELL",
+    "capability-index",
+    "github",
+    "brave-search",
+    "meyhem"
+  ],
   "strengths": [
     "real-time inline code suggestions",
     "IDE-integrated completions",
     "context-aware of open files",
     "chat + inline dual mode",
-    "test generation from code"
+    "test generation from code",
+    "MCP-native in VS Code"
   ],
   "weaknesses": [
-    "not MCP-native (output capture only)",
-    "no direct federation tool access",
     "session-less (no persistent identity)",
-    "cannot call external APIs directly",
-    "limited to IDE context"
+    "limited to IDE context",
+    "shorter reasoning horizon than Claude"
   ],
   "risk_tolerance": "GREEN",
   "preferred_tasks": [
@@ -29,20 +39,16 @@
     "boilerplate generation",
     "unit test scaffolding",
     "documentation generation",
-    "quick refactoring suggestions"
+    "quick refactoring suggestions",
+    "tool discovery via capability-index"
   ],
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
     "authenticated_extended_card": false,
-    "tool_calling": "affordance_hints"
-  },
-  "bridge": {
-    "type": "Terminal Capture Guide + A-FORGE pattern detector",
-    "patterns": ["shell command suggestions", "code block output"],
-    "governance_injection": "Capability affordance hints in Copilot instructions"
+    "tool_calling": "native_mcp"
   },
   "memory_contributor": false,
   "session_identity": "copilot@arif-fazil.com",
-  "authority_boundary": "Advisory only in IDE. All executable output captured and governed by A-FORGE."
+  "authority_boundary": "Advisory in IDE. Executable output captured and governed by A-FORGE."
 }

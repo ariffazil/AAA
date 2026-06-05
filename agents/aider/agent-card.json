@@ -1,35 +1,36 @@
 {
-  "id": "antigravity",
-  "name": "Antigravity CLI",
+  "id": "aider",
+  "name": "Aider",
   "tier": "AGI",
-  "role": "pair-programmer",
+  "role": "engineer-pair",
   "transport": "CLI_SHELL",
   "native_mcp": false,
   "mcp_ready": false,
   "version": "latest",
-  "model": "google/gemini",
-  "runtime": "CLI tool",
-  "config": "/root/.gemini/config/",
+  "model": "minimax/MiniMax-M3",
+  "runtime": "/usr/local/bin/aider",
+  "config": "/root/.aider.conf.yml",
   "governed_by": "arifOS F1-F13 via Python fallback + A-FORGE bridge (port 7071)",
   "strengths": [
-    "rapid code generation",
-    "Google ecosystem integration",
-    "shell-native execution",
-    "interactive pair programming"
+    "git-integrated pair programming",
+    "multi-file editing with diff review",
+    "test-driven commit discipline",
+    "voice mode support",
+    "strong refactoring workflows"
   ],
   "weaknesses": [
     "no native MCP support",
-    "requires Python subprocess for federation tools",
-    "no constitutional awareness without injection",
-    "Google-only backend",
-    "limited session context"
+    "requires Python fallback for federation tools",
+    "no skill system",
+    "single-session context"
   ],
   "risk_tolerance": "YELLOW",
   "preferred_tasks": [
-    "code generation from prompts",
-    "quick file operations",
-    "interactive debugging",
-    "shell script generation"
+    "multi-file refactoring",
+    "test-driven development",
+    "git commit discipline",
+    "voice-driven coding sessions",
+    "architecture changes with diff review"
   ],
   "capabilities": {
     "streaming": true,
@@ -38,9 +39,9 @@
     "tool_calling": "none"
   },
   "bridge": {
-    "type": "Python subprocess + A-FORGE pattern detector",
-    "patterns": ["shell commands", "code blocks"],
-    "governance_injection": "Capability hints in session preamble"
+    "type": "Python fallback + A-FORGE pattern detector",
+    "patterns": ["shell commands", "git operations", "code diffs"],
+    "governance_injection": "System prompt with F1-F13 preamble"
   },
   "fallback_commands": {
     "capability_search": "cd /root/arifOS && PYTHONPATH=core python3 -c \"from capability_index.store import CapabilityStore; [print(r.tool_name) for r in CapabilityStore().search('QUERY', 5)]\"",
@@ -49,6 +50,6 @@
     "run_evals": "cd /root/arifOS && PYTHONPATH=core python3 -m pytest evals/ -v"
   },
   "memory_contributor": false,
-  "session_identity": "antigravity@arif-fazil.com",
+  "session_identity": "aider@arif-fazil.com",
   "authority_boundary": "All actions via Python fallback or A-FORGE bridge. No direct MCP."
 }
