@@ -1,35 +1,36 @@
 {
-  "id": "antigravity",
-  "name": "Antigravity CLI",
+  "id": "gemini",
+  "name": "Gemini / Antigravity CLI",
   "tier": "AGI",
   "role": "pair-programmer",
   "transport": "CLI_SHELL",
   "native_mcp": false,
   "mcp_ready": false,
   "version": "latest",
-  "model": "google/gemini",
-  "runtime": "CLI tool",
+  "model": "google/gemini-2.5-pro",
+  "runtime": "Go binary / CLI",
   "config": "/root/.gemini/config/",
   "governed_by": "arifOS F1-F13 via Python fallback + A-FORGE bridge (port 7071)",
   "strengths": [
     "rapid code generation",
     "Google ecosystem integration",
     "shell-native execution",
-    "interactive pair programming"
+    "interactive pair programming",
+    "long context window"
   ],
   "weaknesses": [
     "no native MCP support",
     "requires Python subprocess for federation tools",
     "no constitutional awareness without injection",
-    "Google-only backend",
-    "limited session context"
+    "Google-only backend"
   ],
   "risk_tolerance": "YELLOW",
   "preferred_tasks": [
     "code generation from prompts",
     "quick file operations",
     "interactive debugging",
-    "shell script generation"
+    "shell script generation",
+    "long-context analysis"
   ],
   "capabilities": {
     "streaming": true,
@@ -39,7 +40,7 @@
   },
   "bridge": {
     "type": "Python subprocess + A-FORGE pattern detector",
-    "patterns": ["shell commands", "code blocks"],
+    "patterns": ["shell commands", "code blocks", "file references"],
     "governance_injection": "Capability hints in session preamble"
   },
   "fallback_commands": {
@@ -49,6 +50,6 @@
     "run_evals": "cd /root/arifOS && PYTHONPATH=core python3 -m pytest evals/ -v"
   },
   "memory_contributor": false,
-  "session_identity": "antigravity@arif-fazil.com",
+  "session_identity": "gemini@arif-fazil.com",
   "authority_boundary": "All actions via Python fallback or A-FORGE bridge. No direct MCP."
 }

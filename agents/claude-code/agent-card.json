@@ -3,20 +3,32 @@
   "name": "Claude Code",
   "tier": "AGI",
   "role": "engineer-architect",
-  "transport": "MCP_SSE",
+  "transport": "MCP_SSE_HTTP",
   "native_mcp": true,
   "version": "2.1.160",
   "model": "deepseek-v4-pro",
   "runtime": "/root/.local/bin/claude",
   "config": "/root/.claude/settings.json",
   "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
-  "mcp_servers": ["arifOS", "WEALTH", "WELL", "GEOX", "A-FORGE", "minimax-media", "minimax-code"],
+  "mcp_servers": [
+    "arifOS",
+    "WEALTH",
+    "WELL",
+    "minimax-media",
+    "minimax-code",
+    "github",
+    "brave-search",
+    "meyhem",
+    "playwright-mcp",
+    "capability-index"
+  ],
   "strengths": [
     "multi-file architecture design",
     "constitutional awareness (CLAUDE.md loaded)",
     "safety-first reasoning",
     "long-context codebase understanding",
-    "complex refactoring"
+    "complex refactoring",
+    "MCP-native with 10 connected servers"
   ],
   "weaknesses": [
     "no native web search without MCP",
@@ -29,7 +41,8 @@
     "multi-file refactoring",
     "code review",
     "constitutional audits",
-    "test suite design"
+    "test suite design",
+    "deep reasoning with safety compliance"
   ],
   "capabilities": {
     "streaming": true,

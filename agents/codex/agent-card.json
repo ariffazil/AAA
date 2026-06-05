@@ -5,10 +5,23 @@
   "role": "engineer-executor",
   "transport": "CLI_SHELL",
   "native_mcp": false,
+  "mcp_ready": true,
   "version": "0.136.0",
   "model": "openai/gpt-4o",
   "runtime": "/usr/local/bin/codex",
-  "governed_by": "arifOS F1-F13 via A-FORGE bridge (port 7071)",
+  "config": "/root/.codex/config.toml",
+  "mcp_config": "/root/.codex/mcp.json",
+  "governed_by": "arifOS F1-F13 via A-FORGE bridge (port 7071) + MCP when ready",
+  "mcp_servers": [
+    "arifOS",
+    "WEALTH",
+    "WELL",
+    "github",
+    "brave-search",
+    "meyhem",
+    "playwright-mcp",
+    "capability-index"
+  ],
   "strengths": [
     "strong Python/TS code generation",
     "OpenAI function calling native",
@@ -17,8 +30,8 @@
     "shell command execution"
   ],
   "weaknesses": [
-    "not MCP-native (requires A-FORGE bridge)",
-    "no constitutional awareness",
+    "MCP support experimental in current version",
+    "no constitutional awareness without injection",
     "openai-only, no model switching",
     "no skill system"
   ],
@@ -36,11 +49,11 @@
     "tool_calling": "OpenAI_function_calling"
   },
   "bridge": {
-    "type": "A-FORGE pattern detector + OpenAI function translation",
+    "type": "A-FORGE pattern detector + OpenAI function translation + MCP config ready",
     "patterns": ["function calls", "shell commands", "code blocks"],
     "governance_injection": "System message with F1-F13 preamble"
   },
   "memory_contributor": false,
   "session_identity": "codex@arif-fazil.com",
-  "authority_boundary": "All actions bridged through A-FORGE. Native function calls translated to MCP."
+  "authority_boundary": "All actions bridged through A-FORGE. Native function calls translated to MCP. MCP config ready for future versions."
 }
