@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arifos.arif-fazil.com/schemas/cross-agent-telemetry.schema.json",
+  "title": "Cross-Agent Structured Telemetry",
+  "description": "Schema for NATS JetStream messages published by agents after task completion. Feeds the federated memory bus (Qdrant L3 + Postgres L4 + Graphiti L5 + VAULT999 L6).",
+  "type": "object",
+  "required": ["telemetry_id", "agent_id", "session_id", "task", "timestamp", "verdict"],
+  "properties": {
+    "telemetry_id": {
+      "type": "string",
+      "description": "UUID v4 — unique identifier for this telemetry event"
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "Agent identity (e.g., 'claude-code', 'opencode', 'hermes-asi')"
+    },
+    "agent_card_ref": {
+      "type": "string",
+      "description": "Path to agent card JSON in AAA registry (e.g., 'agents/claude-code/agent-card.json')"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "arifOS constitutional session ID (SEAL-*)"
+    },
+    "task": {
+      "type": "object",
+      "required": ["task_id", "description", "status"],
+      "properties": {
+        "task_id": {"type": "string", "description": "Unique task identifier"},
+        "description": {"type": "string", "description": "Human-readable task summary (max 200 chars)"},
+        "status": {"enum": ["COMPLETED", "FAILED", "HELD", "DELEGATED", "ABANDONED"]},
+        "intent_class": {"type": "string", "description": "Classified intent (e.g., 'code-refactor', 'research', 'deploy', 'diagnose')"},
+        "parent_task_id": {"type": "string", "description": "If this task was delegated, the parent task ID"},
+        "delegated_to": {"type": "string", "description": "If delegated, which agent received the task"}
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "summary": {"type": "string", "description": "What was accomplished (max 300 chars)"},
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"enum": ["file", "commit", "seal", "config", "memory_entry", "tool_result"]},
+              "ref": {"type": "string", "description": "Path, SHA, seal_id, or memory key"},
+              "description": {"type": "string"}
+            }
+          }
+        },
+        "error": {"type": "string", "description": "Error message if status is FAILED"},
+        "learnings": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "Key insights for the federated memory bus (max 3, max 100 chars each)"
+        }
+      }
+    },
+    "tools_used": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "tool_name": {"type": "string"},
+          "server": {"type": "string"},
+          "calls": {"type": "integer"},
+          "success_rate": {"type": "number", "minimum": 0, "maximum": 1},
+          "latency_ms_avg": {"type": "number"}
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "floors_checked": {"type": "integer", "minimum": 0, "maximum": 13},
+        "holds_triggered": {"type": "integer"},
+        "seals_requested": {"type": "integer"},
+        "verdict": {"enum": ["SEAL", "SABAR", "HOLD", "VOID", "UNCHECKED"]},
+        "routing_receipt": {"type": "string", "description": "Why this agent was chosen for this task"}
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "duration_ms": {"type": "number"},
+        "tokens_input": {"type": "integer"},
+        "tokens_output": {"type": "integer"},
+        "model": {"type": "string"},
+        "cost_estimate_usd": {"type": "number"}
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp"
+    },
+    "verdict": {
+      "enum": ["SEAL", "SABAR", "HOLD", "VOID"],
+      "description": "Governance verdict on this telemetry event"
+    },
+    "previous_telemetry_hash": {
+      "type": "string",
+      "description": "SHA-256 of previous telemetry event from this agent (chain continuity)"
+    },
+    "memory_promotion": {
+      "type": "object",
+      "properties": {
+        "promote_to_l3": {"type": "boolean", "description": "Should this be embedded for semantic search?"},
+        "promote_to_l4": {"type": "boolean", "description": "Should this be stored as canonical fact?"},
+        "promote_to_l5": {"type": "boolean", "description": "Should entity relationships be extracted?"},
+        "promote_to_l6": {"type": "boolean", "description": "Should this be sealed to VAULT999?"},
+        "promotion_reason": {"type": "string", "description": "Why this event warrants promotion (e.g., 'constitutional precedent', 'successful pattern')"}
+      }
+    }
+  },
+  "examples": [{
+    "telemetry_id": "550e8400-e29b-41d4-a716-446655440000",
+    "agent_id": "claude-code",
+    "agent_card_ref": "agents/claude-code/agent-card.json",
+    "session_id": "SEAL-ed54383733934fd5",
+    "task": {
+      "task_id": "task-001",
+      "description": "Deploy MiniMax MCP as global SSE server",
+      "status": "COMPLETED",
+      "intent_class": "deploy"
+    },
+    "outcome": {
+      "summary": "Created 2 systemd services: minimax-media-mcp (18090) and minimax-code-mcp (18091)",
+      "artifacts": [
+        {"type": "config", "ref": "/etc/systemd/system/minimax-media-mcp.service"},
+        {"type": "config", "ref": "/etc/systemd/system/minimax-code-mcp.service"}
+      ],
+      "learnings": [
+        "FastMCP Settings env vars unreliable; use direct mcp.settings.port override",
+        "minimax-mcp and minimax-coding-plan-mcp share namespace — separate venvs needed"
+      ]
+    },
+    "tools_used": [
+      {"tool_name": "bash", "server": "local", "calls": 12, "success_rate": 1.0},
+      {"tool_name": "webfetch", "server": "local", "calls": 3, "success_rate": 1.0}
+    ],
+    "governance": {
+      "floors_checked": 13,
+      "holds_triggered": 0,
+      "seals_requested": 1,
+      "verdict": "SEAL"
+    },
+    "metrics": {
+      "duration_ms": 840000,
+      "tokens_input": 45000,
+      "tokens_output": 8000,
+      "model": "deepseek-v4-pro"
+    },
+    "timestamp": "2026-06-05T03:54:34Z",
+    "verdict": "SEAL",
+    "memory_promotion": {
+      "promote_to_l3": true,
+      "promote_to_l4": true,
+      "promote_to_l5": false,
+      "promote_to_l6": true,
+      "promotion_reason": "New federation services deployed; deployment pattern reusable"
+    }
+  }]
+}
