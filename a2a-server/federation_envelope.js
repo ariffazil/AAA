@@ -65,6 +65,15 @@ function extractEnvelope(params) {
     risk: params.risk || { tier: 'T0', action_class: 'OBSERVE' },
     receipts: params.receipts || {},
     legacy_wrap: true,
+    // Structural Coherence Transmission — EUREKA v2026.06.05
+    // Governance architecture is signal compression. Envelopes that carry
+    // explicit structural_coherence markers survive cross-modal transfer.
+    structural_coherence: params.structural_coherence || {
+      cross_modal_stability: 0.50,
+      semantic_density_score: 0.30,
+      dim_spot_flag: false,
+      note: 'Legacy wrap — structural coherence not verified.',
+    },
   };
 }
 
@@ -89,6 +98,15 @@ function wrapLegacyCall(toolName) {
     },
     receipts: {},
     legacy_wrap: true,
+    // Structural Coherence Transmission — EUREKA v2026.06.05
+    // Legacy calls have low structural coherence because they lack explicit
+    // governance grammar. They are more vulnerable to cross-modal corruption.
+    structural_coherence: {
+      cross_modal_stability: 0.30,
+      semantic_density_score: 0.20,
+      dim_spot_flag: true,
+      note: 'Legacy wrap — governance grammar not explicitly encoded. Signal may degrade in modality transfer.',
+    },
   };
 }
 
@@ -176,8 +194,22 @@ function validateEnvelope(envelope, toolName) {
     }
   }
 
+  // Structural Coherence check — EUREKA v2026.06.05
+  // Envelopes with dim_spot_flag=true have negative constraints that may not
+  // survive cross-modal transfer. Warn but do not block.
+  const sc = envelope.structural_coherence || {};
+  if (sc.dim_spot_flag === true && result.ok) {
+    result.reason = 'SEAL_WITH_DIM_SPOT';
+    result.structural_coherence_warning = (
+      'STRUCTURAL_COHERENCE_ALERT: This envelope carries negative constraints ' +
+      '(VOID, absence, dim spots) that have LOW cross-modal fidelity. ' +
+      'If this task flows through image, audio, or external protocols, ' +
+      'the absence may be lost. Re-encode with explicit positive governance markers.'
+    );
+  }
+
   result.ok = true;
-  result.reason = 'SEAL';
+  result.reason = result.reason || 'SEAL';
   result.action_taken = acl;
   return result;
 }
