@@ -1,0 +1,1814 @@
+{
+  "$schema": "arifOS/AAA-capability-index/v1.0.0",
+  "protocol": "MCP",
+  "protocolVersion": "3.3.1",
+  "forgedAt": "2026-06-05T04:09:24.753429+00:00",
+  "total_tools": 106,
+  "servers": [
+    {
+      "name": "WEALTH",
+      "tools": 26,
+      "port": 18082,
+      "bind": "127.0.0.1"
+    },
+    {
+      "name": "WELL",
+      "tools": 16,
+      "port": 18083,
+      "bind": "127.0.0.1"
+    },
+    {
+      "name": "arifOS",
+      "tools": 16,
+      "port": 8088,
+      "bind": "127.0.0.1"
+    },
+    {
+      "name": "brave-search",
+      "tools": 6,
+      "port": null,
+      "bind": null
+    },
+    {
+      "name": "github",
+      "tools": 26,
+      "port": null,
+      "bind": null
+    },
+    {
+      "name": "meyhem",
+      "tools": 5,
+      "port": null,
+      "bind": null
+    },
+    {
+      "name": "minimax-code",
+      "tools": 2,
+      "port": 18091,
+      "bind": "127.0.0.1"
+    },
+    {
+      "name": "minimax-media",
+      "tools": 9,
+      "port": 18090,
+      "bind": "127.0.0.1"
+    }
+  ],
+  "tools": [
+    {
+      "id": "arif_session_init",
+      "name": "arif_session_init",
+      "description": "Start or resume a governed constitutional session. Must be called first.",
+      "server": "arifOS",
+      "tags": [
+        "governance",
+        "session",
+        "constitutional"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_sense_observe",
+      "name": "arif_sense_observe",
+      "description": "Search the web, ingest URLs, check system vitals, or map a repository.",
+      "server": "arifOS",
+      "tags": [
+        "web",
+        "search",
+        "observation",
+        "evidence"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_evidence_fetch",
+      "name": "arif_evidence_fetch",
+      "description": "Fetch and preserve external evidence with source citations.",
+      "server": "arifOS",
+      "tags": [
+        "evidence",
+        "citation",
+        "fact-check"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_mind_reason",
+      "name": "arif_mind_reason",
+      "description": "Multi-step reasoning, planning, and reflection with confidence labeling.",
+      "server": "arifOS",
+      "tags": [
+        "reasoning",
+        "planning",
+        "reflection",
+        "analysis"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_heart_critique",
+      "name": "arif_heart_critique",
+      "description": "Assess ethical risks and human impact before acting.",
+      "server": "arifOS",
+      "tags": [
+        "ethics",
+        "critique",
+        "human-impact",
+        "safety"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_kernel_route",
+      "name": "arif_kernel_route",
+      "description": "Route intent to the correct tool or federation organ.",
+      "server": "arifOS",
+      "tags": [
+        "routing",
+        "orchestration",
+        "dispatch"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_reply_compose",
+      "name": "arif_reply_compose",
+      "description": "Compose the final response for the user.",
+      "server": "arifOS",
+      "tags": [
+        "composition",
+        "reply",
+        "formatting"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_memory_recall",
+      "name": "arif_memory_recall",
+      "description": "Search past sessions, assets, sealed events, or repositories.",
+      "server": "arifOS",
+      "tags": [
+        "memory",
+        "search",
+        "history",
+        "recall"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_gateway_connect",
+      "name": "arif_gateway_connect",
+      "description": "Bridge to other federation agents (GEOX, WEALTH, WELL, A-FORGE, AAA, APEX, cn-organ).",
+      "server": "arifOS",
+      "tags": [
+        "bridge",
+        "gateway",
+        "multi-agent"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_judge_deliberate",
+      "name": "arif_judge_deliberate",
+      "description": "Render final constitutional verdict on a proposed action.",
+      "server": "arifOS",
+      "tags": [
+        "judge",
+        "verdict",
+        "constitutional",
+        "deliberation"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": true,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_vault_seal",
+      "name": "arif_vault_seal",
+      "description": "Seal a verdict or outcome to the immutable audit ledger.",
+      "server": "arifOS",
+      "tags": [
+        "vault",
+        "seal",
+        "audit",
+        "immutable"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "hold",
+      "requires_888": true,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_forge_execute",
+      "name": "arif_forge_execute",
+      "description": "Execute approved builds, deployments, or system changes.",
+      "server": "arifOS",
+      "tags": [
+        "forge",
+        "deploy",
+        "build",
+        "execution"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "hold",
+      "requires_888": true,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_ops_measure",
+      "name": "arif_ops_measure",
+      "description": "Check system health, thermodynamic state, and resource metrics.",
+      "server": "arifOS",
+      "tags": [
+        "health",
+        "metrics",
+        "monitoring",
+        "ops"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_appeal_raise",
+      "name": "arif_appeal_raise",
+      "description": "Raise an appeal against a sealed or decided verdict.",
+      "server": "arifOS",
+      "tags": [
+        "appeal",
+        "governance",
+        "challenge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_appeal_status",
+      "name": "arif_appeal_status",
+      "description": "Check the status of a previously raised appeal.",
+      "server": "arifOS",
+      "tags": [
+        "appeal",
+        "status",
+        "governance"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "arif_appeal_list",
+      "name": "arif_appeal_list",
+      "description": "List all appeals with optional status filter.",
+      "server": "arifOS",
+      "tags": [
+        "appeal",
+        "list",
+        "governance"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_personal_finance",
+      "name": "wealth_personal_finance",
+      "description": "Unified surface for cashflow, runway, and net worth.",
+      "server": "WEALTH",
+      "tags": [
+        "finance",
+        "cashflow",
+        "runway",
+        "net-worth",
+        "personal"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_epf_project",
+      "name": "wealth_epf_project",
+      "description": "Project EPF accumulation to target age.",
+      "server": "WEALTH",
+      "tags": [
+        "epf",
+        "malaysia",
+        "retirement",
+        "projection"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_zakat_calculate",
+      "name": "wealth_zakat_calculate",
+      "description": "Malaysian 2.5%% zakat above nisab.",
+      "server": "WEALTH",
+      "tags": [
+        "zakat",
+        "malaysia",
+        "islamic-finance"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_market_data",
+      "name": "wealth_market_data",
+      "description": "Unified surface for FX, commodities, and macro indicators.",
+      "server": "WEALTH",
+      "tags": [
+        "market",
+        "fx",
+        "commodity",
+        "macro"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_health_check",
+      "name": "wealth_health_check",
+      "description": "Universal health check for federation stability.",
+      "server": "WEALTH",
+      "tags": [
+        "health",
+        "federation",
+        "stability"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_survival_engine",
+      "name": "wealth_survival_engine",
+      "description": "Unified survival intelligence: cashflow, runway, burn, liquidity.",
+      "server": "WEALTH",
+      "tags": [
+        "survival",
+        "liquidity",
+        "burn",
+        "runway"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_entropy_audit",
+      "name": "wealth_entropy_audit",
+      "description": "Calculate structural and narrative entropy coefficients for an SOE/NOC.",
+      "server": "WEALTH",
+      "tags": [
+        "entropy",
+        "audit",
+        "soe",
+        "noc",
+        "governance"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_governance_verdict",
+      "name": "wealth_governance_verdict",
+      "description": "Final Allocation Verdict \u2014 sovereign governance recommendation.",
+      "server": "WEALTH",
+      "tags": [
+        "governance",
+        "verdict",
+        "allocation",
+        "sovereign"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_preference_rank",
+      "name": "wealth_preference_rank",
+      "description": "Personal Utility Ranking \u2014 preference ordering under constraints.",
+      "server": "WEALTH",
+      "tags": [
+        "preference",
+        "ranking",
+        "utility",
+        "decision"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_agent_path",
+      "name": "wealth_agent_path",
+      "description": "Sovereign Intent Router \u2014 classifies tasks into L1/L2 physics-economic paths.",
+      "server": "WEALTH",
+      "tags": [
+        "routing",
+        "intent",
+        "physics",
+        "economics"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_ledger_query",
+      "name": "wealth_ledger_query",
+      "description": "Ledger Read \u2014 query the immutable governance ledger.",
+      "server": "WEALTH",
+      "tags": [
+        "ledger",
+        "query",
+        "audit"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_ledger_write",
+      "name": "wealth_ledger_write",
+      "description": "Ledger Append \u2014 irreversible state transition to VAULT999.",
+      "server": "WEALTH",
+      "tags": [
+        "ledger",
+        "write",
+        "vault",
+        "irreversible"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "hold",
+      "requires_888": true,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_conservation_capital",
+      "name": "wealth_conservation_capital",
+      "description": "Conservation \u2014 capital stock reality (assets, liabilities, reserves).",
+      "server": "WEALTH",
+      "tags": [
+        "capital",
+        "assets",
+        "liabilities",
+        "reserves"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_flow_liquidity",
+      "name": "wealth_flow_liquidity",
+      "description": "Flow \u2014 liquidity movement (cashflow, burn, runway, survival).",
+      "server": "WEALTH",
+      "tags": [
+        "liquidity",
+        "cashflow",
+        "burn",
+        "runway"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_gradient_price",
+      "name": "wealth_gradient_price",
+      "description": "Gradient \u2014 price pressure, spread, mispricing detection.",
+      "server": "WEALTH",
+      "tags": [
+        "price",
+        "spread",
+        "mispricing",
+        "trading"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_entropy_risk",
+      "name": "wealth_entropy_risk",
+      "description": "Entropy \u2014 uncertainty, dispersion, tail risk, disorder.",
+      "server": "WEALTH",
+      "tags": [
+        "risk",
+        "entropy",
+        "uncertainty",
+        "tail-risk"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_energy_productivity",
+      "name": "wealth_energy_productivity",
+      "description": "Energy \u2014 output per input, productivity, capital efficiency.",
+      "server": "WEALTH",
+      "tags": [
+        "productivity",
+        "efficiency",
+        "energy"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_time_discount",
+      "name": "wealth_time_discount",
+      "description": "Time \u2014 NPV, IRR, payback, compounding, decay.",
+      "server": "WEALTH",
+      "tags": [
+        "npv",
+        "irr",
+        "payback",
+        "time-value"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_inertia_leverage",
+      "name": "wealth_inertia_leverage",
+      "description": "Inertia \u2014 resistance to change, leverage stress, fragility.",
+      "server": "WEALTH",
+      "tags": [
+        "leverage",
+        "dscr",
+        "fragility",
+        "stress"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_field_macro",
+      "name": "wealth_field_macro",
+      "description": "Field \u2014 macro environment (rates, FX, energy, carbon, regime).",
+      "server": "WEALTH",
+      "tags": [
+        "macro",
+        "rates",
+        "fx",
+        "energy",
+        "carbon"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_signal_information",
+      "name": "wealth_signal_information",
+      "description": "Signal \u2014 information value, evidence quality, schema validity.",
+      "server": "WEALTH",
+      "tags": [
+        "signal",
+        "information",
+        "evidence",
+        "e-and-p"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_game_coordination",
+      "name": "wealth_game_coordination",
+      "description": "Game \u2014 multi-agent incentives, bargaining, coordination.",
+      "server": "WEALTH",
+      "tags": [
+        "game-theory",
+        "incentives",
+        "bargaining",
+        "coordination"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_boundary_governance",
+      "name": "wealth_boundary_governance",
+      "description": "Boundary \u2014 constitutional floors, maruah, stewardship, constraint.",
+      "server": "WEALTH",
+      "tags": [
+        "boundary",
+        "governance",
+        "maruah",
+        "stewardship"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_system_registry_status",
+      "name": "wealth_system_registry_status",
+      "description": "Registry truth diagnostic \u2014 intended, registered, and alias surfaces.",
+      "server": "WEALTH",
+      "tags": [
+        "registry",
+        "diagnostic",
+        "truth"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_omni_wisdom",
+      "name": "wealth_omni_wisdom",
+      "description": "Unified capital intelligence \u2014 synthesis + deal + hysteresis in one tool.",
+      "server": "WEALTH",
+      "tags": [
+        "synthesis",
+        "wisdom",
+        "capital",
+        "deal"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "wealth_inequality_kernel",
+      "name": "wealth_inequality_kernel",
+      "description": "Inequality Kernel \u2014 unified diagnosis across all 5 inequality dimensions.",
+      "server": "WEALTH",
+      "tags": [
+        "inequality",
+        "kernel",
+        "diagnosis",
+        "social"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "mcp_health_check",
+      "name": "mcp_health_check",
+      "description": "DEPRECATED: use well_assess_reliability instead.",
+      "server": "WELL",
+      "tags": [
+        "health",
+        "deprecated"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_classify_substrate",
+      "name": "well_classify_substrate",
+      "description": "Substrate classification and boundary sensing.",
+      "server": "WELL",
+      "tags": [
+        "substrate",
+        "classification",
+        "boundary"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_trace_lineage",
+      "name": "well_trace_lineage",
+      "description": "Memory, trend, ledger, and vault chain tracing.",
+      "server": "WELL",
+      "tags": [
+        "lineage",
+        "memory",
+        "trace",
+        "vault"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_detect_boundary",
+      "name": "well_detect_boundary",
+      "description": "Boundary detection across membrane, body, machine, and federation.",
+      "server": "WELL",
+      "tags": [
+        "boundary",
+        "detection",
+        "membrane"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_measure_gradient",
+      "name": "well_measure_gradient",
+      "description": "Measure chemical, energy, pressure, attention, and compute gradients.",
+      "server": "WELL",
+      "tags": [
+        "gradient",
+        "energy",
+        "pressure",
+        "attention"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_assess_metabolism",
+      "name": "well_assess_metabolism",
+      "description": "Assess biological metabolism and system throughput across substrates.",
+      "server": "WELL",
+      "tags": [
+        "metabolism",
+        "throughput",
+        "biology"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_assess_homeostasis",
+      "name": "well_assess_homeostasis",
+      "description": "Assess regulation, stability, energy, stress, and empathic balance under change.",
+      "server": "WELL",
+      "tags": [
+        "homeostasis",
+        "stability",
+        "empathy",
+        "regulation",
+        "energy",
+        "stress"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_check_repair",
+      "name": "well_check_repair",
+      "description": "Check repair, recovery, resilience, and forge cycle integrity.",
+      "server": "WELL",
+      "tags": [
+        "repair",
+        "recovery",
+        "resilience",
+        "forge"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_validate_vitality",
+      "name": "well_validate_vitality",
+      "description": "Validate vitality, readiness, and NIAT.",
+      "server": "WELL",
+      "tags": [
+        "vitality",
+        "readiness",
+        "niat"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_assess_livelihood",
+      "name": "well_assess_livelihood",
+      "description": "Assess human wellness, role, dignity, support, and meaning.",
+      "server": "WELL",
+      "tags": [
+        "livelihood",
+        "wellness",
+        "dignity",
+        "meaning"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_assess_reliability",
+      "name": "well_assess_reliability",
+      "description": "Assess machine, tool, institution, and operational reliability.",
+      "server": "WELL",
+      "tags": [
+        "reliability",
+        "machine",
+        "institution"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_compute_metabolic_flux",
+      "name": "well_compute_metabolic_flux",
+      "description": "Compute metabolic_flux \u2014 unified thermodynamic entropy rate.",
+      "server": "WELL",
+      "tags": [
+        "metabolic-flux",
+        "entropy",
+        "thermodynamics"
+      ],
+      "epistemic_tag": "ESTIMATE",
+      "risk_tier": "high",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_assess_sovereign_entropy",
+      "name": "well_assess_sovereign_entropy",
+      "description": "Measure the sovereign's resistance to behavioral modeling.",
+      "server": "WELL",
+      "tags": [
+        "sovereignty",
+        "entropy",
+        "behavioral-modeling"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_guard_dignity",
+      "name": "well_guard_dignity",
+      "description": "Guard soul, personhood, meaning, and symbolic boundaries.",
+      "server": "WELL",
+      "tags": [
+        "dignity",
+        "soul",
+        "personhood",
+        "boundaries"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_system_registry_status",
+      "name": "well_system_registry_status",
+      "description": "WELL registry truth probe \u2014 somatic surface vs autonomic internals.",
+      "server": "WELL",
+      "tags": [
+        "registry",
+        "truth",
+        "somatic"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "well_registry_status",
+      "name": "well_registry_status",
+      "description": "WELL registry truth diagnostic \u2014 blueprint canonical format.",
+      "server": "WELL",
+      "tags": [
+        "registry",
+        "diagnostic",
+        "blueprint"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "web_search",
+      "name": "web_search",
+      "description": "Search the web and return ranked results with feedback-driven scoring.",
+      "server": "minimax-code",
+      "tags": [
+        "web",
+        "search",
+        "ranking"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "understand_image",
+      "name": "understand_image",
+      "description": "Analyze and interpret image content from local files or URLs.",
+      "server": "minimax-code",
+      "tags": [
+        "vision",
+        "image",
+        "analysis"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "create_or_update_file",
+      "name": "create_or_update_file",
+      "description": "Create or update a single file in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "file",
+        "write"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "search_repositories",
+      "name": "search_repositories",
+      "description": "Search for GitHub repositories.",
+      "server": "github",
+      "tags": [
+        "github",
+        "search",
+        "repository"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "create_repository",
+      "name": "create_repository",
+      "description": "Create a new GitHub repository in your account.",
+      "server": "github",
+      "tags": [
+        "github",
+        "repository",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_file_contents",
+      "name": "get_file_contents",
+      "description": "Get the contents of a file or directory from a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "file",
+        "read"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "push_files",
+      "name": "push_files",
+      "description": "Push multiple files to a GitHub repository in a single commit.",
+      "server": "github",
+      "tags": [
+        "github",
+        "file",
+        "push",
+        "commit"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "create_issue",
+      "name": "create_issue",
+      "description": "Create a new issue in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "issue",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "create_pull_request",
+      "name": "create_pull_request",
+      "description": "Create a new pull request in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "fork_repository",
+      "name": "fork_repository",
+      "description": "Fork a GitHub repository to your account or specified organization.",
+      "server": "github",
+      "tags": [
+        "github",
+        "fork",
+        "repository"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "create_branch",
+      "name": "create_branch",
+      "description": "Create a new branch in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "branch",
+        "create"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "list_commits",
+      "name": "list_commits",
+      "description": "Get list of commits of a branch in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "commit",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "list_issues",
+      "name": "list_issues",
+      "description": "List issues in a GitHub repository with filtering options.",
+      "server": "github",
+      "tags": [
+        "github",
+        "issue",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "update_issue",
+      "name": "update_issue",
+      "description": "Update an existing issue in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "issue",
+        "update"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "add_issue_comment",
+      "name": "add_issue_comment",
+      "description": "Add a comment to an existing issue.",
+      "server": "github",
+      "tags": [
+        "github",
+        "issue",
+        "comment"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "search_code",
+      "name": "search_code",
+      "description": "Search for code across GitHub repositories.",
+      "server": "github",
+      "tags": [
+        "github",
+        "code",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "search_issues",
+      "name": "search_issues",
+      "description": "Search for issues and pull requests across GitHub repositories.",
+      "server": "github",
+      "tags": [
+        "github",
+        "issue",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "search_users",
+      "name": "search_users",
+      "description": "Search for users on GitHub.",
+      "server": "github",
+      "tags": [
+        "github",
+        "user",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_issue",
+      "name": "get_issue",
+      "description": "Get details of a specific issue in a GitHub repository.",
+      "server": "github",
+      "tags": [
+        "github",
+        "issue",
+        "detail"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_pull_request",
+      "name": "get_pull_request",
+      "description": "Get details of a specific pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "detail"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "list_pull_requests",
+      "name": "list_pull_requests",
+      "description": "List and filter repository pull requests.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "create_pull_request_review",
+      "name": "create_pull_request_review",
+      "description": "Create a review on a pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "review"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "merge_pull_request",
+      "name": "merge_pull_request",
+      "description": "Merge a pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "merge"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_pull_request_files",
+      "name": "get_pull_request_files",
+      "description": "Get the list of files changed in a pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "files"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_pull_request_status",
+      "name": "get_pull_request_status",
+      "description": "Get the combined status of all status checks for a pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "status"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "update_pull_request_branch",
+      "name": "update_pull_request_branch",
+      "description": "Update a pull request branch with the latest changes from the base branch.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "update"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "write",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_pull_request_comments",
+      "name": "get_pull_request_comments",
+      "description": "Get the review comments on a pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "comments"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "get_pull_request_reviews",
+      "name": "get_pull_request_reviews",
+      "description": "Get the reviews on a pull request.",
+      "server": "github",
+      "tags": [
+        "github",
+        "pull-request",
+        "reviews"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "brave_web_search",
+      "name": "brave_web_search",
+      "description": "Search the open web using the Brave Search API. Find news, updates, protocol specifications, documentation, and general information on the internet.",
+      "server": "brave-search",
+      "tags": [
+        "web",
+        "search",
+        "brave",
+        "protocol",
+        "updates",
+        "mcp"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "brave_local_search",
+      "name": "brave_local_search",
+      "description": "Searches for local businesses and places using Brave's Local Search API.",
+      "server": "brave-search",
+      "tags": [
+        "local",
+        "search",
+        "business",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "brave_video_search",
+      "name": "brave_video_search",
+      "description": "Searches for videos using Brave's Video Search API.",
+      "server": "brave-search",
+      "tags": [
+        "video",
+        "search",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "brave_image_search",
+      "name": "brave_image_search",
+      "description": "Performs an image search using the Brave Search API.",
+      "server": "brave-search",
+      "tags": [
+        "image",
+        "search",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "brave_news_search",
+      "name": "brave_news_search",
+      "description": "Searches for news articles using Brave's News Search API.",
+      "server": "brave-search",
+      "tags": [
+        "news",
+        "search",
+        "brave"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "brave_summarizer",
+      "name": "brave_summarizer",
+      "description": "Retrieves AI-generated summaries of web search results.",
+      "server": "brave-search",
+      "tags": [
+        "summary",
+        "search",
+        "brave",
+        "ai"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "search",
+      "name": "search",
+      "description": "Search the web and return ranked results with feedback-driven scoring.",
+      "server": "meyhem",
+      "tags": [
+        "web",
+        "search",
+        "meyhem"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "select",
+      "name": "select",
+      "description": "Select a search result to get its full content.",
+      "server": "meyhem",
+      "tags": [
+        "web",
+        "select",
+        "content"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "outcome",
+      "name": "outcome",
+      "description": "Report whether a search result helped complete your task.",
+      "server": "meyhem",
+      "tags": [
+        "feedback",
+        "search",
+        "meyhem"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "find_server",
+      "name": "find_server",
+      "description": "Find MCP servers for a given task.",
+      "server": "meyhem",
+      "tags": [
+        "discovery",
+        "server"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "id": "find_capability",
+      "name": "find_capability",
+      "description": "Find the best tool for your task across MCP servers and OpenClaw skills.",
+      "server": "meyhem",
+      "tags": [
+        "discovery",
+        "capability"
+      ],
+      "epistemic_tag": "PLAUSIBLE",
+      "risk_tier": "medium",
+      "execution_kind": "read",
+      "approval_policy": "hold",
+      "requires_888": false,
+      "version": "2026.06.05"
+    },
+    {
+      "name": "text_to_audio",
+      "server": "minimax-media",
+      "description": "Convert text to speech with voice selection, speed, pitch, emotion control. Outputs audio file.",
+      "risk_tier": "LOW",
+      "cost_warning": true
+    },
+    {
+      "name": "list_voices",
+      "server": "minimax-media",
+      "description": "List all available system and cloned voices.",
+      "risk_tier": "READ_ONLY",
+      "cost_warning": false
+    },
+    {
+      "name": "voice_clone",
+      "server": "minimax-media",
+      "description": "Clone a voice from provided audio file. Charged upon first use.",
+      "risk_tier": "MEDIUM",
+      "cost_warning": true
+    },
+    {
+      "name": "play_audio",
+      "server": "minimax-media",
+      "description": "Play an audio file (WAV/MP3) on the local system.",
+      "risk_tier": "LOW",
+      "cost_warning": false
+    },
+    {
+      "name": "generate_video",
+      "server": "minimax-media",
+      "description": "Generate video from text prompt or first-frame image. Supports camera direction instructions.",
+      "risk_tier": "MEDIUM",
+      "cost_warning": true
+    },
+    {
+      "name": "query_video_generation",
+      "server": "minimax-media",
+      "description": "Check status of async video generation task and retrieve result.",
+      "risk_tier": "LOW",
+      "cost_warning": false
+    },
+    {
+      "name": "text_to_image",
+      "server": "minimax-media",
+      "description": "Generate images from text prompt with aspect ratio and count control.",
+      "risk_tier": "LOW",
+      "cost_warning": true
+    },
+    {
+      "name": "music_generation",
+      "server": "minimax-media",
+      "description": "Generate music from prompt and lyrics with style/mood control. Up to 1 minute.",
+      "risk_tier": "MEDIUM",
+      "cost_warning": true
+    },
+    {
+      "name": "voice_design",
+      "server": "minimax-media",
+      "description": "Design custom voice from text description with preview audio.",
+      "risk_tier": "MEDIUM",
+      "cost_warning": true
+    }
+  ]
+}
