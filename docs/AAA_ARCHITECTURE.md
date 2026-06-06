@@ -194,7 +194,7 @@ External Agent receives result or hold notification
 
 ---
 
-## The 13 Constitutional Floors (arifOS Kernel)
+## The 13 Constitutional Laws (arifOS Kernel)
 
 Floors are constraint equations enforced by the Kernel — not sequential filters.
 
