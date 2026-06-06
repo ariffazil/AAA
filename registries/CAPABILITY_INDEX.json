@@ -1,9 +1,9 @@
 {
   "$schema": "arifOS/AAA-capability-index/v1.0.0",
   "protocol": "MCP",
-  "protocolVersion": "3.3.1",
-  "forgedAt": "2026-06-05T04:09:24.753429+00:00",
-  "total_tools": 106,
+  "protocolVersion": "3.4.0",
+  "forgedAt": "2026-06-06T06:26:44.495194+00:00",
+  "total_tools": 163,
   "servers": [
     {
       "name": "WEALTH",
@@ -52,6 +52,33 @@
       "tools": 9,
       "port": 18090,
       "bind": "127.0.0.1"
+    },
+    {
+      "name": "github-official",
+      "tools": 14,
+      "port": null,
+      "bind": null,
+      "transport": "stdio",
+      "runtime_scope": "local",
+      "command": "/root/.claude/mcp-launchers/github-official.sh"
+    },
+    {
+      "name": "serena",
+      "tools": 11,
+      "port": null,
+      "bind": null,
+      "transport": "stdio",
+      "runtime_scope": "local",
+      "command": "/root/.claude/mcp-launchers/serena.sh"
+    },
+    {
+      "name": "repomapper",
+      "tools": 2,
+      "port": null,
+      "bind": null,
+      "transport": "stdio",
+      "runtime_scope": "local",
+      "command": "/root/.claude/mcp-launchers/repomapper.sh"
     }
   ],
   "tools": [
@@ -464,7 +491,7 @@
     {
       "id": "wealth_governance_verdict",
       "name": "wealth_governance_verdict",
-      "description": "Final Allocation Verdict \u2014 sovereign governance recommendation.",
+      "description": "Final Allocation Verdict — sovereign governance recommendation.",
       "server": "WEALTH",
       "tags": [
         "governance",
@@ -482,7 +509,7 @@
     {
       "id": "wealth_preference_rank",
       "name": "wealth_preference_rank",
-      "description": "Personal Utility Ranking \u2014 preference ordering under constraints.",
+      "description": "Personal Utility Ranking — preference ordering under constraints.",
       "server": "WEALTH",
       "tags": [
         "preference",
@@ -500,7 +527,7 @@
     {
       "id": "wealth_agent_path",
       "name": "wealth_agent_path",
-      "description": "Sovereign Intent Router \u2014 classifies tasks into L1/L2 physics-economic paths.",
+      "description": "Sovereign Intent Router — classifies tasks into L1/L2 physics-economic paths.",
       "server": "WEALTH",
       "tags": [
         "routing",
@@ -518,7 +545,7 @@
     {
       "id": "wealth_ledger_query",
       "name": "wealth_ledger_query",
-      "description": "Ledger Read \u2014 query the immutable governance ledger.",
+      "description": "Ledger Read — query the immutable governance ledger.",
       "server": "WEALTH",
       "tags": [
         "ledger",
@@ -535,7 +562,7 @@
     {
       "id": "wealth_ledger_write",
       "name": "wealth_ledger_write",
-      "description": "Ledger Append \u2014 irreversible state transition to VAULT999.",
+      "description": "Ledger Append — irreversible state transition to VAULT999.",
       "server": "WEALTH",
       "tags": [
         "ledger",
@@ -553,7 +580,7 @@
     {
       "id": "wealth_conservation_capital",
       "name": "wealth_conservation_capital",
-      "description": "Conservation \u2014 capital stock reality (assets, liabilities, reserves).",
+      "description": "Conservation — capital stock reality (assets, liabilities, reserves).",
       "server": "WEALTH",
       "tags": [
         "capital",
@@ -571,7 +598,7 @@
     {
       "id": "wealth_flow_liquidity",
       "name": "wealth_flow_liquidity",
-      "description": "Flow \u2014 liquidity movement (cashflow, burn, runway, survival).",
+      "description": "Flow — liquidity movement (cashflow, burn, runway, survival).",
       "server": "WEALTH",
       "tags": [
         "liquidity",
@@ -589,7 +616,7 @@
     {
       "id": "wealth_gradient_price",
       "name": "wealth_gradient_price",
-      "description": "Gradient \u2014 price pressure, spread, mispricing detection.",
+      "description": "Gradient — price pressure, spread, mispricing detection.",
       "server": "WEALTH",
       "tags": [
         "price",
@@ -607,7 +634,7 @@
     {
       "id": "wealth_entropy_risk",
       "name": "wealth_entropy_risk",
-      "description": "Entropy \u2014 uncertainty, dispersion, tail risk, disorder.",
+      "description": "Entropy — uncertainty, dispersion, tail risk, disorder.",
       "server": "WEALTH",
       "tags": [
         "risk",
@@ -625,7 +652,7 @@
     {
       "id": "wealth_energy_productivity",
       "name": "wealth_energy_productivity",
-      "description": "Energy \u2014 output per input, productivity, capital efficiency.",
+      "description": "Energy — output per input, productivity, capital efficiency.",
       "server": "WEALTH",
       "tags": [
         "productivity",
@@ -642,7 +669,7 @@
     {
       "id": "wealth_time_discount",
       "name": "wealth_time_discount",
-      "description": "Time \u2014 NPV, IRR, payback, compounding, decay.",
+      "description": "Time — NPV, IRR, payback, compounding, decay.",
       "server": "WEALTH",
       "tags": [
         "npv",
@@ -660,7 +687,7 @@
     {
       "id": "wealth_inertia_leverage",
       "name": "wealth_inertia_leverage",
-      "description": "Inertia \u2014 resistance to change, leverage stress, fragility.",
+      "description": "Inertia — resistance to change, leverage stress, fragility.",
       "server": "WEALTH",
       "tags": [
         "leverage",
@@ -678,7 +705,7 @@
     {
       "id": "wealth_field_macro",
       "name": "wealth_field_macro",
-      "description": "Field \u2014 macro environment (rates, FX, energy, carbon, regime).",
+      "description": "Field — macro environment (rates, FX, energy, carbon, regime).",
       "server": "WEALTH",
       "tags": [
         "macro",
@@ -697,7 +724,7 @@
     {
       "id": "wealth_signal_information",
       "name": "wealth_signal_information",
-      "description": "Signal \u2014 information value, evidence quality, schema validity.",
+      "description": "Signal — information value, evidence quality, schema validity.",
       "server": "WEALTH",
       "tags": [
         "signal",
@@ -715,7 +742,7 @@
     {
       "id": "wealth_game_coordination",
       "name": "wealth_game_coordination",
-      "description": "Game \u2014 multi-agent incentives, bargaining, coordination.",
+      "description": "Game — multi-agent incentives, bargaining, coordination.",
       "server": "WEALTH",
       "tags": [
         "game-theory",
@@ -733,7 +760,7 @@
     {
       "id": "wealth_boundary_governance",
       "name": "wealth_boundary_governance",
-      "description": "Boundary \u2014 constitutional floors, maruah, stewardship, constraint.",
+      "description": "Boundary — constitutional floors, maruah, stewardship, constraint.",
       "server": "WEALTH",
       "tags": [
         "boundary",
@@ -751,7 +778,7 @@
     {
       "id": "wealth_system_registry_status",
       "name": "wealth_system_registry_status",
-      "description": "Registry truth diagnostic \u2014 intended, registered, and alias surfaces.",
+      "description": "Registry truth diagnostic — intended, registered, and alias surfaces.",
       "server": "WEALTH",
       "tags": [
         "registry",
@@ -768,7 +795,7 @@
     {
       "id": "wealth_omni_wisdom",
       "name": "wealth_omni_wisdom",
-      "description": "Unified capital intelligence \u2014 synthesis + deal + hysteresis in one tool.",
+      "description": "Unified capital intelligence — synthesis + deal + hysteresis in one tool.",
       "server": "WEALTH",
       "tags": [
         "synthesis",
@@ -786,7 +813,7 @@
     {
       "id": "wealth_inequality_kernel",
       "name": "wealth_inequality_kernel",
-      "description": "Inequality Kernel \u2014 unified diagnosis across all 5 inequality dimensions.",
+      "description": "Inequality Kernel — unified diagnosis across all 5 inequality dimensions.",
       "server": "WEALTH",
       "tags": [
         "inequality",
@@ -997,7 +1024,7 @@
     {
       "id": "well_compute_metabolic_flux",
       "name": "well_compute_metabolic_flux",
-      "description": "Compute metabolic_flux \u2014 unified thermodynamic entropy rate.",
+      "description": "Compute metabolic_flux — unified thermodynamic entropy rate.",
       "server": "WELL",
       "tags": [
         "metabolic-flux",
@@ -1049,7 +1076,7 @@
     {
       "id": "well_system_registry_status",
       "name": "well_system_registry_status",
-      "description": "WELL registry truth probe \u2014 somatic surface vs autonomic internals.",
+      "description": "WELL registry truth probe — somatic surface vs autonomic internals.",
       "server": "WELL",
       "tags": [
         "registry",
@@ -1066,7 +1093,7 @@
     {
       "id": "well_registry_status",
       "name": "well_registry_status",
-      "description": "WELL registry truth diagnostic \u2014 blueprint canonical format.",
+      "description": "WELL registry truth diagnostic — blueprint canonical format.",
       "server": "WELL",
       "tags": [
         "registry",
@@ -2158,7 +2185,7 @@
     {
       "id": "geox_blend_volume_alpha_tool",
       "name": "geox_blend_volume_alpha_tool",
-      "description": "Alpha blend 2 or 3 seismic volumes with weighted opacities. Pure geoscience compute \u2014 no file I/O.",
+      "description": "Alpha blend 2 or 3 seismic volumes with weighted opacities. Pure geoscience compute — no file I/O.",
       "server": "GEOX",
       "tags": [
         "geoscience",
@@ -2259,6 +2286,467 @@
       "execution_kind": "read",
       "approval_policy": "auto",
       "requires_888": false
+    },
+    {
+      "id": "github_get_file_contents",
+      "name": "get_file_contents",
+      "description": "Get the contents of a file or directory from a GitHub repository.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "file",
+        "read"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_search_code",
+      "name": "search_code",
+      "description": "Search for code across GitHub repositories.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "code",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_search_repositories",
+      "name": "search_repositories",
+      "description": "Search for GitHub repositories.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "search",
+        "repository"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_search_issues",
+      "name": "search_issues",
+      "description": "Search for issues and pull requests across GitHub repositories.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "issue",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_search_users",
+      "name": "search_users",
+      "description": "Search for users on GitHub.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "user",
+        "search"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_list_issues",
+      "name": "list_issues",
+      "description": "List issues in a GitHub repository with filtering options.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "issue",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_get_issue",
+      "name": "get_issue",
+      "description": "Get details of a specific issue in a GitHub repository.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "issue",
+        "detail"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_list_pull_requests",
+      "name": "list_pull_requests",
+      "description": "List and filter repository pull requests.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "pull-request",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_get_pull_request",
+      "name": "get_pull_request",
+      "description": "Get details of a specific pull request.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "pull-request",
+        "detail"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_get_pull_request_files",
+      "name": "get_pull_request_files",
+      "description": "Get the list of files changed in a pull request.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "pull-request",
+        "files"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_get_pull_request_status",
+      "name": "get_pull_request_status",
+      "description": "Get the combined status of all status checks for a pull request.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "pull-request",
+        "status"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_get_pull_request_comments",
+      "name": "get_pull_request_comments",
+      "description": "Get the review comments on a pull request.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "pull-request",
+        "comments"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_get_pull_request_reviews",
+      "name": "get_pull_request_reviews",
+      "description": "Get the reviews on a pull request.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "pull-request",
+        "reviews"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "github_list_commits",
+      "name": "list_commits",
+      "description": "Get list of commits of a branch in a GitHub repository.",
+      "server": "github-official",
+      "tags": [
+        "github",
+        "commit",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_read_file",
+      "name": "read_file",
+      "description": "Read file contents with optional line range.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "file",
+        "read"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_list_dir",
+      "name": "list_dir",
+      "description": "List directory contents, optionally non-recursive.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "directory",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_find_file",
+      "name": "find_file",
+      "description": "Find files by name substring or glob.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "file",
+        "find"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_search_for_pattern",
+      "name": "search_for_pattern",
+      "description": "Search for regex pattern across files (ripgrep-backed).",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "search",
+        "pattern",
+        "ripgrep"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_find_symbol",
+      "name": "find_symbol",
+      "description": "Find symbols (functions, classes, variables) by name pattern.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "symbol",
+        "find"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_find_referencing_symbols",
+      "name": "find_referencing_symbols",
+      "description": "Find symbols that reference a given symbol name.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "symbol",
+        "reference"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_get_symbols_overview",
+      "name": "get_symbols_overview",
+      "description": "Get a high-level overview of all top-level symbols in a file or directory.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "symbol",
+        "overview"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_list_memories",
+      "name": "list_memories",
+      "description": "List available project memories (read-only when --mode no-memories).",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "memory",
+        "list"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_read_memory",
+      "name": "read_memory",
+      "description": "Read a project memory by name.",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "memory",
+        "read"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_get_current_config",
+      "name": "get_current_config",
+      "description": "Return the current Serena configuration (mode, languages, project root).",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "config"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "serena_onboarding",
+      "name": "onboarding",
+      "description": "Initialize Serena project context (one-time per project).",
+      "server": "serena",
+      "tags": [
+        "serena",
+        "onboarding",
+        "init"
+      ],
+      "epistemic_tag": "CLAIM",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "repomapper_repomap",
+      "name": "repomap",
+      "description": "Generate a tree-sitter + PageRank repo map (symbol-level structural overview).",
+      "server": "repomapper",
+      "tags": [
+        "repomapper",
+        "structure",
+        "map",
+        "tree-sitter",
+        "pagerank"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
+    },
+    {
+      "id": "repomapper_language_detect",
+      "name": "language_detect",
+      "description": "Detect the dominant language(s) in a repo path.",
+      "server": "repomapper",
+      "tags": [
+        "repomapper",
+        "language",
+        "detect"
+      ],
+      "epistemic_tag": "EVIDENCE",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.06.06"
     }
   ]
 }

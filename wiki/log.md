@@ -1513,3 +1513,57 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-06T07:05:00Z
 
 ---
+
+## [2026-06-06] update | TREE777 777 health pulse (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-maxhermes-2026-06-06.json`
+- **When:** 2026-06-06T07:21:01Z
+
+---
+
+## [2026-06-06] update | TREE777 777 health pulse (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-phoenix72-2026-06-06.json`
+- **When:** 2026-06-06T07:42:01Z
+
+---
+
+## [2026-06-06] update | TREE777 777 health pulse (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-asi-2026-06-06.json`
+- **When:** 2026-06-06T08:07:01Z
+
+---
+
+## [2026-06-06] update | TREE777 777 health pulse (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-openclaw-2026-06-06.json`
+- **When:** 2026-06-06T08:28:01Z
+
+---
+
+## [2026-06-06] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-06.json`
+- **When:** 2026-06-06T09:14:01Z
+
+---
+
+## [2026-06-06] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-06-06.json`
+- **When:** 2026-06-06T09:35:01Z
+
+---

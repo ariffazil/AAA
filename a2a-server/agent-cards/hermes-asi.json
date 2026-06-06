@@ -17,7 +17,7 @@
     "organ": "Hermes-ASI",
     "sub_role": "Human-Life"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
@@ -31,10 +31,17 @@
     }
   ],
   "security": [
-    ["gateway-token"]
+    [
+      "gateway-token"
+    ]
   ],
-  "default_input_modes": ["application/json", "text/plain"],
-  "default_output_modes": ["application/json"],
+  "default_input_modes": [
+    "application/json",
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "application/json"
+  ],
   "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
   "treaty_ref": "AAA-TREATY-v1.0.0",
   "lane": "ASI",
@@ -45,8 +52,16 @@
       "id": "memory-recall",
       "name": "Memory Recall",
       "description": "Retrieve past session context and decisions from governed memory",
-      "tags": ["recall", "memory", "search"],
-      "floor_scope": ["F01", "F02", "F04"],
+      "tags": [
+        "recall",
+        "memory",
+        "search"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04"
+      ],
       "approval_policy": "on-demand",
       "reversibility_class": "reversible"
     },
@@ -54,8 +69,17 @@
       "id": "reasoning",
       "name": "Reasoning",
       "description": "Chain-of-thought logical reasoning with constitutional floor awareness",
-      "tags": ["reason", "logic", "analyze"],
-      "floor_scope": ["F02", "F04", "F07", "F08"],
+      "tags": [
+        "reason",
+        "logic",
+        "analyze"
+      ],
+      "floor_scope": [
+        "F02",
+        "F04",
+        "F07",
+        "F08"
+      ],
       "approval_policy": "on-demand",
       "reversibility_class": "reversible"
     },
@@ -63,8 +87,17 @@
       "id": "routing",
       "name": "Routing",
       "description": "Route tasks to appropriate specialist agents via A2A mesh",
-      "tags": ["route", "delegate", "coordinate"],
-      "floor_scope": ["F01", "F04", "F10", "F11"],
+      "tags": [
+        "route",
+        "delegate",
+        "coordinate"
+      ],
+      "floor_scope": [
+        "F01",
+        "F04",
+        "F10",
+        "F11"
+      ],
       "approval_policy": "on-demand",
       "reversibility_class": "reversible"
     },
@@ -72,8 +105,17 @@
       "id": "world-model-brief",
       "name": "World Model Brief",
       "description": "Generate pagi/malam briefings with contrast method and PETRONAS WATCH",
-      "tags": ["brief", "news", "world-model"],
-      "floor_scope": ["F02", "F04", "F05", "F06"],
+      "tags": [
+        "brief",
+        "news",
+        "world-model"
+      ],
+      "floor_scope": [
+        "F02",
+        "F04",
+        "F05",
+        "F06"
+      ],
       "approval_policy": "on-demand",
       "reversibility_class": "reversible"
     },
@@ -81,8 +123,17 @@
       "id": "breaking-news-alert",
       "name": "Breaking News Alert",
       "description": "Evaluate whether news warrants breaking the scheduled brief cadence",
-      "tags": ["alert", "news", "policy"],
-      "floor_scope": ["F02", "F05", "F06", "F13"],
+      "tags": [
+        "alert",
+        "news",
+        "policy"
+      ],
+      "floor_scope": [
+        "F02",
+        "F05",
+        "F06",
+        "F13"
+      ],
       "approval_policy": "hold",
       "reversibility_class": "reversible",
       "judgment_required": true
@@ -91,9 +142,68 @@
       "id": "apex-verdict-narration",
       "name": "APEX Verdict Narration",
       "description": "Receive APEX PRIME verdict and narrate it to group in one-line format",
-      "tags": ["verdict", "narration", "apex"],
-      "floor_scope": ["F01", "F02", "F04", "F13"],
+      "tags": [
+        "verdict",
+        "narration",
+        "apex"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F13"
+      ],
       "approval_policy": "on-demand",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "repo-eureka",
+      "name": "Repo Eureka",
+      "description": "Multi-layer repo intelligence (gitingest + RepoMapper + Serena + eureka synthesis). Read-only by design, 50k token ceiling, 3 hard stops. Forged by Ω mcp-server-forge 2026-06-06.",
+      "tags": [
+        "repo",
+        "intelligence",
+        "eureka",
+        "scout",
+        "analyst",
+        "code-map"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F07",
+        "F08",
+        "F09",
+        "F12",
+        "F13"
+      ],
+      "approval_policy": "on-demand",
+      "reversibility_class": "reversible",
+      "mcp_servers": [
+        "github-official",
+        "serena",
+        "repomapper"
+      ],
+      "policy_ref": "/root/.hermes/policies/repo-eureka-policy.yaml",
+      "delegation_target": "openclaw-executor"
+    },
+    {
+      "id": "gitingest-recipe",
+      "name": "Gitingest Recipe",
+      "description": "Universal repo digest (L1) via gitingest + llms.txt. Idempotent, token-bounded, available to all agents. Falls back to gitingest API when local digest unavailable.",
+      "tags": [
+        "repo",
+        "digest",
+        "gitingest",
+        "universal",
+        "L1"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F07"
+      ],
+      "approval_policy": "auto",
       "reversibility_class": "reversible"
     }
   ],
@@ -112,6 +222,8 @@
     "a_role": "Hermes-ASI",
     "floor_version": "KANON-2026.05.05-SSCT",
     "treaty_id": "AAA-TREATY-v1.0.0",
-    "canonical_soul": "/root/AAA/agents/hermes-asi/runtime/SOUL.md"
+    "canonical_soul": "/root/AAA/agents/hermes-asi/runtime/SOUL.md",
+    "forged_at": "2026-06-06T06:27:58Z",
+    "wire_event": "agentic-git-stack-wiring-2026-06-06"
   }
 }

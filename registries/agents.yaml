@@ -40,6 +40,14 @@ agents:
     allowed_servers:
       - arifosmcp
       - geoxmcp
+      - github-official
+      - serena
+      - repomapper
+    allowed_skills:
+      - gitingest-recipe
+      - repo-eureka
+      - mcp-server-forge
+      - python-tool-isolation
     a2a_exposure: authenticated
     allowed_peers:
       - aaa-gateway
