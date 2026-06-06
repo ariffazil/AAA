@@ -96,8 +96,8 @@ arifOS/
 │   ├── 000_CONSTITUTION.md      ✅ 13 Floors (lean, ~20KB)
 │   ├── 000_MANIFESTO.md        ✅ Manifesto (philosophy summary)
 │   ├── FLOORS/                  ✅ F01-F13 operational
-│   │   ├── F01_AMANAH.md
-│   │   ├── F02_TRUTH.md
+│   │   ├── L01_AMANAH.md
+│   │   ├── L02_TRUTH.md
 │   │   └── ... (F03-F13)
 │   └── VERDICT_RECOVERY_MATRIX.md ✅ Operational recovery
 │

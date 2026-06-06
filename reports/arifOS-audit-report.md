@@ -130,7 +130,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 1: init_anchor
 - **Category:** Session initialization
 - **Function Code:** 000
-- **Constitutional Floors:** F1 (Amanah), F7 (Humility)
+- **Constitutional Laws:** F1 (Amanah), F7 (Humility)
 - **Functionality:** Session anchoring with identity verification
 - **Response Time:** ~120ms (VPS) / ~380ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -140,7 +140,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 2: vault_ledger
 - **Category:** Immutable persistence
 - **Function Code:** 999
-- **Constitutional Floors:** F1 (Amanah), F3 (Tri-Witness), F11 (Auditability)
+- **Constitutional Laws:** F1 (Amanah), F3 (Tri-Witness), F11 (Auditability)
 - **Functionality:** Records all decisions to Merkle-chained ledger
 - **Response Time:** ~95ms (VPS) / ~340ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -150,7 +150,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 3: vault_seal
 - **Category:** Session sealing
 - **Function Code:** 999
-- **Constitutional Floors:** F1, F3
+- **Constitutional Laws:** F1, F3
 - **Functionality:** Commits decision + telemetry to immutable ledger
 - **Response Time:** ~110ms (VPS) / ~360ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -160,7 +160,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 4: verify_vault_ledger
 - **Category:** Integrity verification
 - **Function Code:** 999
-- **Constitutional Floors:** F11 (Auditability), F12 (Resilience)
+- **Constitutional Laws:** F11 (Auditability), F12 (Resilience)
 - **Functionality:** SHA-256 chain validation with breach detection
 - **Response Time:** ~85ms (VPS) / ~290ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -174,7 +174,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 5: agi_mind
 - **Category:** Deep reasoning
 - **Function Code:** 333
-- **Constitutional Floors:** F2 (Truth), F4 (Clarity), F7 (Humility)
+- **Constitutional Laws:** F2 (Truth), F4 (Clarity), F7 (Humility)
 - **Functionality:** Convergent reasoning with entropy minimization
 - **Response Time:** ~450ms (VPS) / ~800ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -184,7 +184,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 6: agi_reason
 - **Category:** Logic chains
 - **Function Code:** 333
-- **Constitutional Floors:** F2, F4, F7
+- **Constitutional Laws:** F2, F4, F7
 - **Functionality:** Deep logical reasoning with low entropy
 - **Response Time:** ~520ms (VPS) / ~920ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -194,7 +194,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 7: agi_reflect
 - **Category:** Self-examination
 - **Function Code:** 333
-- **Constitutional Floors:** F7 (Humility), F8 (Genius), F12 (Resilience)
+- **Constitutional Laws:** F7 (Humility), F8 (Genius), F12 (Resilience)
 - **Functionality:** System health checking and self-correction
 - **Response Time:** ~380ms (VPS) / ~720ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -204,7 +204,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 8: asi_heart
 - **Category:** Safety critique
 - **Function Code:** 555
-- **Constitutional Floors:** F5 (Peace²), F6 (Empathy), F9 (Ethics)
+- **Constitutional Laws:** F5 (Peace²), F6 (Empathy), F9 (Ethics)
 - **Functionality:** Emotional and ethical safety validation
 - **Response Time:** ~280ms (VPS) / ~520ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -214,7 +214,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 9: asi_critique
 - **Category:** Adversarial critique
 - **Function Code:** 555
-- **Constitutional Floors:** F5, F6, F9, F10 (Conscience)
+- **Constitutional Laws:** F5, F6, F9, F10 (Conscience)
 - **Functionality:** Safety and alignment verification
 - **Response Time:** ~310ms (VPS) / ~580ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -224,7 +224,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 10: asi_simulate
 - **Category:** Scenario simulation
 - **Function Code:** 555
-- **Constitutional Floors:** F5, F8, F12
+- **Constitutional Laws:** F5, F8, F12
 - **Functionality:** Consequence simulation before action
 - **Response Time:** ~650ms (VPS) / ~1100ms (Cloud)
 - **Verdict:** ✅ WORKS (with caveats)
@@ -234,7 +234,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 11: engineering_memory
 - **Category:** Redis memory
 - **Function Code:** 444
-- **Constitutional Floors:** F11 (Auditability), F13 (Adaptability)
+- **Constitutional Laws:** F11 (Auditability), F13 (Adaptability)
 - **Functionality:** Session-scoped memory with constitutional tagging
 - **Response Time:** ~45ms (VPS) / ~180ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -248,7 +248,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 12: physics_reality
 - **Category:** Time + search
 - **Function Code:** 111
-- **Constitutional Floors:** F2 (Truth), F4 (Clarity), F7 (Humility)
+- **Constitutional Laws:** F2 (Truth), F4 (Clarity), F7 (Humility)
 - **Functionality:** Temporal and factual grounding
 - **Response Time:** ~220ms (VPS) / ~480ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -258,7 +258,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 13: math_estimator
 - **Category:** Thermodynamic cost
 - **Function Code:** 111
-- **Constitutional Floors:** F4 (Clarity), F7 (Humility), F8 (Genius)
+- **Constitutional Laws:** F4 (Clarity), F7 (Humility), F8 (Genius)
 - **Functionality:** Computational complexity and resource estimation
 - **Response Time:** ~95ms (VPS) / ~220ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -268,7 +268,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 14: code_engine
 - **Category:** Safe execution
 - **Function Code:** 111
-- **Constitutional Floors:** F1 (Amanah), F5 (Peace²), F9 (Ethics)
+- **Constitutional Laws:** F1 (Amanah), F5 (Peace²), F9 (Ethics)
 - **Functionality:** Sandboxed code execution with safety checks
 - **Response Time:** ~180ms (VPS) / ~400ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -278,7 +278,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 15: reality_compass
 - **Category:** Web grounding
 - **Function Code:** 222
-- **Constitutional Floors:** F2, F4
+- **Constitutional Laws:** F2, F4
 - **Functionality:** Epistemic intake—grounds claims before reasoning
 - **Response Time:** ~350ms (VPS) / ~680ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -288,7 +288,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 16: reality_atlas
 - **Category:** Philosophical mapping
 - **Function Code:** 222
-- **Constitutional Floors:** F2, F7, F8
+- **Constitutional Laws:** F2, F7, F8
 - **Functionality:** Maps claims to 27 philosophical zones
 - **Response Time:** ~280ms (VPS) / ~520ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -298,7 +298,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 17: search_reality
 - **Category:** Live web search
 - **Function Code:** 222
-- **Constitutional Floors:** F2, F4
+- **Constitutional Laws:** F2, F4
 - **Functionality:** Real-time web evidence discovery
 - **Response Time:** ~420ms (VPS) / ~780ms (Cloud)
 - **Verdict:** ⚠️ LEGACY (replaced by reality_compass)
@@ -308,7 +308,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 18: ingest_evidence
 - **Category:** Evidence collection
 - **Function Code:** 222
-- **Constitutional Floors:** F2, F3 (Tri-Witness)
+- **Constitutional Laws:** F2, F3 (Tri-Witness)
 - **Functionality:** Evidence collection for claims
 - **Response Time:** ~380ms (VPS) / ~720ms (Cloud)
 - **Verdict:** ⚠️ LEGACY (being phased out)
@@ -318,7 +318,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 19: agentzero_engineer
 - **Category:** Tool generation
 - **Function Code:** 777
-- **Constitutional Floors:** All 13 floors
+- **Constitutional Laws:** All 13 floors
 - **Functionality:** Creates new constitutional tools at runtime
 - **Response Time:** ~850ms (VPS) / ~1500ms (Cloud)
 - **Verdict:** ✅ WORKS (experimental)
@@ -328,7 +328,7 @@ arifOS organizes its 20 tools across three constitutional layers:
 ### Tool 20: apex_judge
 - **Category:** Constitutional verdict
 - **Function Code:** 666
-- **Constitutional Floors:** F10 (Conscience), F11 (Auditability)
+- **Constitutional Laws:** F10 (Conscience), F11 (Auditability)
 - **Functionality:** Final decision validation against all 13 floors
 - **Response Time:** ~150ms (VPS) / ~320ms (Cloud)
 - **Verdict:** ✅ WORKS
@@ -790,7 +790,7 @@ Apex_judge enforces:
 | Tool Count | 20 | 50+ | 30+ | 15 |
 | Governance Layers | 13 | 0 | 4 | 0 |
 | Audit Trail | VAULT999 | Basic | Moderate | None |
-| Constitutional Floors | F1-F13 | None | Claude Const | None |
+| Constitutional Laws | F1-F13 | None | Claude Const | None |
 | Latency (VPS) | 285ms | 180ms | 220ms | 150ms |
 | Security Score | 9.2/10 | 6.5/10 | 8.0/10 | 5.5/10 |
 

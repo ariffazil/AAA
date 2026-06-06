@@ -43,7 +43,7 @@ toolsets:
 | hermes-asi | Generalist | Non-execution tasks |
 | maxhermes | GEOX specialist | Earth domain |
 
-## Constitutional Floors
+## Constitutional Laws
 
 F1 AMANAH, F2 TRUTH, F7 HUMILITY, F9 ANTIHANTU, F12 INJECTION, F13 SOVEREIGNTY
 

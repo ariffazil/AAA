@@ -75,7 +75,7 @@ Violating any Gödel-Lock invariant is a constitutional breach, not a warning.
 
 ***
 
-## V. Constitutional Floors F1–F13
+## V. Constitutional Laws F1–F13
 
 ### Hard Floors — VOID on Violation (Immediate Block)
 

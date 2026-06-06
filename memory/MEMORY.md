@@ -64,7 +64,7 @@ AAA's memory system is grounded in the **Cognitive Architectures for Language Ag
 - **APEX Theory:** His proprietary framework (not fully documented)
 - **SALAM protocol:** Required handshake to trigger identity anchor loading
 
-### Constitutional Floors (F1–F13)
+### Constitutional Laws (F1–F13)
 - F1: Amanah | F2: Truth | F3: Tri-Witness | F9: Hantu Warning | F13: Sovereign
 - 888_JUDGE: agents act as proposers only — never self-approve or seal their own outputs
 

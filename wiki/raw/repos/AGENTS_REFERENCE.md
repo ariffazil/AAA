@@ -531,8 +531,8 @@ npm run test    # lint + build
 
 ## 7. Security & Safety Considerations
 
-### Constitutional Floors (F1–F13)
-All projects operate under the 13 Constitutional Floors defined in `arifOS/000/FLOORS/`. Key floors for agents:
+### Constitutional Laws (F1–F13)
+All projects operate under the 13 Constitutional Laws defined in `arifOS/000/FLOORS/`. Key floors for agents:
 
 | Floor | Code | Agent Relevance |
 |-------|------|-----------------|

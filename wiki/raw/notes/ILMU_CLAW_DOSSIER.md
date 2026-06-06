@@ -277,7 +277,7 @@ This means:
 
 **arifOS AAA's defense in depth:**
 ```
-Message → OpenClaw Gateway → [Constitutional Floors F1-F13] → Tool Execution
+Message → OpenClaw Gateway → [Constitutional Laws F1-F13] → Tool Execution
                             → [VAULT999 Ledger] → Response
 ```
 

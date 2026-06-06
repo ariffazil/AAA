@@ -168,7 +168,7 @@ A NACK without floor citation is malformed and receiving agent MAY request clari
 
 Triggered when:
 - RISK=HIGH AND MODE=⚠ ESCALATE
-- Any floor_F01_AMANAH check returns "irreversible AND uncertain"
+- Any floor_L01_AMANAH check returns "irreversible AND uncertain"
 - Arif explicitly tags message with 888_HOLD
 
 **Behavior when 888_HOLD fires:**
@@ -183,7 +183,7 @@ Triggered when:
 
 | Flag | Meaning | When Required |
 |------|---------|--------------|
-| 👤 REQUIRED | Arif **must** decide before task proceeds | RISK=HIGH, 888_HOLD, floor_F13_SOVEREIGN_HOLD |
+| 👤 REQUIRED | Arif **must** decide before task proceeds | RISK=HIGH, 888_HOLD, floor_L13_SOVEREIGN_HOLD |
 | 👤 OPTIONAL | Arif **may** intervene but task can auto-complete | RISK=LOW/MEDIUM within loop budget |
 
 ---
