@@ -45,7 +45,7 @@ This workspace consolidates from scattered `hermes-*` dirs in AAA root:
 - `hermes-skills/` → DELETE (empty)
 - `hermes-workspace/` → DELETE (empty)
 
-## Constitutional Floors
+## Constitutional Laws
 
 F1 AMANAH → No irreversible memory deletion without human consent
 F2 TRUTH → Memory must be verifiable, no confabulation

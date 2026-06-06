@@ -64,7 +64,7 @@ confidence: high
 
 ---
 
-## Constitutional Floors (Quick Ref)
+## Constitutional Laws (Quick Ref)
 
 | Floor | Code | Key Rule |
 |-------|------|---------|

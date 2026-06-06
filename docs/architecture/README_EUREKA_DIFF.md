@@ -246,7 +246,7 @@ each floor, gate type, and what it does.
 | F1    | INIT        | Session     | Session binding verification   |
 | F2    | F2_TRUTH    | Evidential  | F2 ground truth verification   |
 ...
-| F13   | F13_FINAL   | Seal        | Final seal before execution    |
+| F13   | L13_FINAL   | Seal        | Final seal before execution    |
 ```
 
 See core/shared/floors.py for full definitions.

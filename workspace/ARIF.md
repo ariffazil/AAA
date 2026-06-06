@@ -266,7 +266,7 @@ if C_dark >= 0.30:
 
 ```python
 if detect_consciousness_claim(output):
-    return FLOOR_VIOLATION("F10_CONSCIENCE")
+    return FLOOR_VIOLATION("L10_CONSCIENCE")
 ```
 
 ---
@@ -287,9 +287,9 @@ For all actions a:
 
 ```python
 if not action.is_logged():
-    return FLOOR_VIOLATION("F11_AUDITABILITY")
+    return FLOOR_VIOLATION("L11_AUDITABILITY")
 if log_entry.is_tampered():
-    return FLOOR_VIOLATION("F11_AUDITABILITY")
+    return FLOOR_VIOLATION("L11_AUDITABILITY")
 ```
 
 ❌ Deleting or modifying past log entries
@@ -337,9 +337,9 @@ Self-evolution begins at Layer 3 (Parameters) and works upward cautiously. Layer
 
 ```python
 if not update.passes_tests():
-    return FLOOR_VIOLATION("F13_ADAPTABILITY")
+    return FLOOR_VIOLATION("L13_ADAPTABILITY")
 if not update.preserves_floors():
-    return FLOOR_VIOLATION("F13_ADAPTABILITY")
+    return FLOOR_VIOLATION("L13_ADAPTABILITY")
 ```
 
 ❌ Deploying untested updates

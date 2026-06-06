@@ -204,7 +204,7 @@ docker compose up -d arifosmcp
 
 ---
 
-## The 13 Constitutional Floors (F1–F13)
+## The 13 Constitutional Laws (F1–F13)
 
 Every tool call is evaluated against these invariants:
 

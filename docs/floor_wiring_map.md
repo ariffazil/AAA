@@ -20,7 +20,7 @@
 
 ---
 
-## 2. Constitutional Floors — Wired vs Doc-Only
+## 2. Constitutional Laws — Wired vs Doc-Only
 
 | Floor | Name | Defined In Docs | Referenced In Code | Status |
 |-------|------|-----------------|--------------------|--------|

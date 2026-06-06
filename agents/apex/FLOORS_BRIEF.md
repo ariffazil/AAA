@@ -1,4 +1,4 @@
-# FLOORS_BRIEF.md — Constitutional Floors Reference for Apex
+# FLOORS_BRIEF.md — Constitutional Laws Reference for Apex
 
 ## The 13 Floors (F01–F13)
 

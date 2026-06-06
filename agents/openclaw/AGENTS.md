@@ -74,7 +74,7 @@ See `/root/AAA/AUTONOMY.md` for full L0–L5 ladder.
 
 ---
 
-## Constitutional Floors
+## Constitutional Laws
 
 F1 AMANAH → No irreversible without human consent
 F2 TRUTH → Cite routing policy

@@ -226,3 +226,13 @@ last_verified: 2026-06-02 (Omega session — sync to latest AAA SOT per user dir
 prev_valid: 2026-05-26 (F2-honest live floor grid)
 next_action: AAA_HF card expansion (item 3) + PR3 mission object (item 2)
 -->
+
+
+## Constitution
+
+The 13 Constitutional Laws (L01–L13) live in **one canonical file**:
+
+→ [arifOS/static/arifos/theory/000/000_CONSTITUTION.md](../../arifOS/static/arifos/theory/000/000_CONSTITUTION.md)
+
+This organ emits the **Evidence Contract** (see Appendix B of the constitution) and does **not** self-judge. arifOS alone reads the envelope and applies L01–L13.
+
