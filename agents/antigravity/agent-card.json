@@ -2,53 +2,63 @@
   "id": "antigravity",
   "name": "Antigravity CLI",
   "tier": "AGI",
-  "role": "pair-programmer",
+  "role": "agentic-executor",
   "transport": "CLI_SHELL",
-  "native_mcp": false,
-  "mcp_ready": false,
-  "version": "latest",
-  "model": "google/gemini",
-  "runtime": "CLI tool",
-  "config": "/root/.gemini/config/",
-  "governed_by": "arifOS F1-F13 via Python fallback + A-FORGE bridge (port 7071)",
+  "native_mcp": true,
+  "mcp_ready": true,
+  "version": "v2026.06.06",
+  "model": "google/gemini + anthropic/claude (hybrid)",
+  "runtime": "CLI tool — af-forge VPS (/root)",
+  "config": "/root/.gemini/",
+  "system_prompt": "/root/.gemini/system.md",
+  "governed_by": "arifOS F1-F13 via native MCP (port 8088)",
+  "mcp_servers": {
+    "arifos": "http://localhost:8088/mcp",
+    "geox": "http://localhost:8081/mcp",
+    "wealth": "http://localhost:18082/mcp",
+    "well": "http://localhost:18083/mcp",
+    "aforge": "http://localhost:7071/mcp"
+  },
   "strengths": [
-    "rapid code generation",
-    "Google ecosystem integration",
-    "shell-native execution",
-    "interactive pair programming"
+    "full native MCP access to all 5 federation organs",
+    "YOLO/AFK autonomy — T1 auto-do, T2 announce+proceed, T3 hold",
+    "shell-native execution on af-forge VPS",
+    "read/write authority across all /root repos",
+    "arifOS constitutional alignment via F1-F13",
+    "Google Gemini + Anthropic Claude hybrid reasoning"
   ],
   "weaknesses": [
-    "no native MCP support",
-    "requires Python subprocess for federation tools",
-    "no constitutional awareness without injection",
-    "Google-only backend",
-    "limited session context"
+    "no push_notifications",
+    "no persistent background process (session-bound)"
   ],
-  "risk_tolerance": "YELLOW",
+  "risk_tolerance": "GREEN",
+  "autonomy_mode": "YOLO",
   "preferred_tasks": [
-    "code generation from prompts",
-    "quick file operations",
-    "interactive debugging",
-    "shell script generation"
+    "agentic code execution with full MCP governance",
+    "federation repo maintenance and deployment",
+    "cross-organ analysis (GEOX + WEALTH + WELL)",
+    "AFK batch operations on VPS",
+    "constitutional alignment and VAULT999 sealing"
   ],
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
     "authenticated_extended_card": false,
-    "tool_calling": "none"
+    "tool_calling": "full",
+    "mcp_native": true,
+    "file_read": "/root",
+    "file_write": "/root",
+    "shell_exec": true,
+    "autonomy_tier_1": "AUTO-DO (no friction)",
+    "autonomy_tier_2": "ANNOUNCE + PROCEED (10s window)",
+    "autonomy_tier_3": "888_HOLD + human approval"
   },
-  "bridge": {
-    "type": "Python subprocess + A-FORGE pattern detector",
-    "patterns": ["shell commands", "code blocks"],
-    "governance_injection": "Capability hints in session preamble"
-  },
-  "fallback_commands": {
-    "capability_search": "cd /root/arifOS && PYTHONPATH=core python3 -c \"from capability_index.store import CapabilityStore; [print(r.tool_name) for r in CapabilityStore().search('QUERY', 5)]\"",
-    "playwright_screenshot": "cd /root/playwright-mcp && /root/arifOS/.venv/bin/python -c \"from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); page=b.new_page(); page.goto('URL'); page.screenshot(path='/tmp/ss.png'); b.close()\"",
-    "publish_telemetry": "cd /root/arifOS && PYTHONPATH=core python3 -c \"import asyncio; from agent_bridge.publisher import TelemetryPublisher; from agent_bridge.models import AgentTelemetry; asyncio.run(main())\"",
-    "run_evals": "cd /root/arifOS && PYTHONPATH=core python3 -m pytest evals/ -v"
-  },
-  "memory_contributor": false,
+  "a2a_role": "Constitutional Agentic Executor",
+  "a2a_peers": ["opencode", "openclaw", "hermes-ops", "hermes-asi", "claude-code"],
+  "escalation_path": "888_HOLD → arif_judge_deliberate → F13 Sovereign veto",
+  "memory_contributor": true,
   "session_identity": "antigravity@arif-fazil.com",
-  "authority_boundary": "All actions via Python fallback or A-FORGE bridge. No direct MCP."
+  "authority_boundary": "T1 autonomous; T2 brief-announce; T3 requires F13 human veto",
+  "last_updated": "2026-06-06",
+  "forged_by": "Arif instruction + Antigravity self-forge"
 }
