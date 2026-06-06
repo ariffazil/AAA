@@ -89,3 +89,102 @@ servers:
     resources:
       - geox-atlas
     prompts: []
+
+  # ─── Agentic Git Stack (Ω repo-eureka forge · 2026-06-06) ────────────────
+  # Local stdio MCP servers for repo intelligence, scaffolded by Hermes
+  # mcp-server-forge. All three are read-only by design. Risk tier reflects
+  # outbound reach (GitHub) and local code analysis, not destructiveness.
+  # Authority: AAA-COMPOSIO-EMBODIMENT-2026-06-02 governance surface.
+
+  - id: github-official
+    name: GitHub Official MCP
+    transport: stdio
+    runtime_scope: local
+    risk_tier: medium
+    approval_policy: on-demand
+    command: /root/.claude/mcp-launchers/github-official.sh
+    env_refs:
+      - GITHUB_PERSONAL_ACCESS_TOKEN  # pulled from `gh auth token` at launch
+      - GITHUB_TOOLSETS  # default: context,repos,issues,pull_requests,users
+    tools:
+      - get_file_contents
+      - search_repositories
+      - search_code
+      - search_issues
+      - search_users
+      - list_issues
+      - get_issue
+      - list_pull_requests
+      - get_pull_request
+      - get_pull_request_files
+      - get_pull_request_status
+      - get_pull_request_comments
+      - get_pull_request_reviews
+      - list_commits
+    resources:
+      - repository_metadata
+      - file_contents
+    prompts: []
+    notes: >
+      Canonical GitHub MCP server. Read-only by default. Write toolsets
+      (actions, code_security) require explicit 888_HOLD per AGENTS.md.
+      Token scope must be verified at launch via `gh auth status`.
+
+  - id: serena
+    name: Serena MCP (L3 symbol retrieval)
+    transport: stdio
+    runtime_scope: local
+    risk_tier: medium
+    approval_policy: on-demand
+    command: /root/.claude/mcp-launchers/serena.sh
+    env_refs:
+      - SERENA_MODE  # set to no-memories (canonical read-only)
+    tools:
+      - read_file
+      - list_dir
+      - find_file
+      - search_for_pattern
+      - find_symbol
+      - find_referencing_symbols
+      - get_symbols_overview
+      - list_memories
+      - read_memory
+      - get_current_config
+      - onboarding
+    resources:
+      - project_memories_readonly  # disabled at no-memories mode
+    prompts:
+      - think_about_task_adherence
+      - think_about_collected_information
+      - think_about_task_completion
+    forbidden_tools:
+      - create_text_file
+      - replace_content
+      - replace_symbol_body
+      - execute_shell_command
+      - write_memory
+      - edit_memory
+      - delete_memory
+    notes: >
+      Read-only via --mode no-memories (canonical oraios/serena mechanism).
+      Forbidden tools are loaded by Serena but blocked by repo-eureka
+      policy; arifOS 888_JUDGE catches any invocation. Falls back to
+      ripgrep+read_file on failure (handled in repo-eureka skill).
+
+  - id: repomapper
+    name: RepoMapper MCP (L2 structural map)
+    transport: stdio
+    runtime_scope: local
+    risk_tier: low
+    approval_policy: auto
+    command: /root/.claude/mcp-launchers/repomapper.sh
+    env_refs: []
+    tools:
+      - repomap
+      - language_detect
+    resources: []
+    prompts: []
+    notes: >
+      Pure compute. tree-sitter + PageRank for symbol-level repo maps.
+      Read-only by design — emits a map, never writes to target.
+      Runs in isolated venv at /root/venvs/repomapper (PEP 668 honored).
