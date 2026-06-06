@@ -12,13 +12,23 @@
   "config": "/root/.gemini/",
   "system_prompt": "/root/.gemini/system.md",
   "governed_by": "arifOS F1-F13 via native MCP (port 8088)",
+  "mcp_server_count": 13,
   "mcp_servers": {
-    "arifos": "http://localhost:8088/mcp",
-    "geox": "http://localhost:8081/mcp",
-    "wealth": "http://localhost:18082/mcp",
-    "well": "http://localhost:18083/mcp",
-    "aforge": "http://localhost:7071/mcp"
+    "CORE_arifos": "http://localhost:8088/mcp",
+    "CORE_geox": "http://localhost:8081/mcp",
+    "CORE_wealth": "http://localhost:18082/mcp",
+    "CORE_well": "http://localhost:18083/mcp",
+    "CORE_aforge": "http://localhost:7071/mcp",
+    "RESEARCH_context7": "https://mcp.context7.com/mcp",
+    "RESEARCH_brave_search": "binary:/usr/bin/brave-search-mcp-server",
+    "CODE_serena": "uvx://serena-agent (no-memories mode)",
+    "CODE_repomapper": "python:/root/venvs/repomapper + RepoMapper server",
+    "AGENTIC_playwright": "npx://@playwright/mcp@latest",
+    "AGENTIC_github": "sh:/root/.claude/mcp-launchers/github-official.sh",
+    "AGENTIC_capability_index": "python:/root/arifOS/core/capability_index/mcp_server.py",
+    "DISCOVERY_meyhem": "npx://mcp-remote https://api.rhdxm.com/mcp/"
   },
+  "total_tools_approx": 108,
   "strengths": [
     "full native MCP access to all 5 federation organs",
     "YOLO/AFK autonomy — T1 auto-do, T2 announce+proceed, T3 hold",
