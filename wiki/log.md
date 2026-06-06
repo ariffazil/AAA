@@ -1492,3 +1492,24 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-05T07:00:01Z
 
 ---
+
+## [2026-06-06] update | TREE777 777 health pulse (apex)
+
+- **Who:** cron:apex
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-apex-2026-06-06.json`
+- **When:** 2026-06-06T07:00:01Z
+
+---
+
+## [2026-06-06] update | skill dedup — gitingest-recipe + repo-eureka (autonomous forge)
+
+- **Who:** Ω-FORGE (autonomous entropy sweep)
+- **Scope:** 3× duplicate skill copies removed (kept canonical at `wiki/skills/`)
+- **Removed:** `agents/kimi-code/skills/{gitingest-recipe,repo-eureka}/`, `agents/opencode/skills/{gitingest-recipe,repo-eureka}/` (4 dirs, 2× 5173B + 2× 9393B = ~29KB untracked duplicates)
+- **Kept:** `wiki/skills/gitingest-recipe/SKILL.md` (5173B), `wiki/skills/repo-eureka/SKILL.md` (9393B)
+- **Verification:** `diff -q` confirmed all 3 copies of each skill were byte-identical; dedup follows 2026-06-03 precedent (`_archive/stale-2026-06-03/`)
+- **Files added:** 0 · **Files removed:** 4 · **Entropy delta:** −4 file nodes
+- **When:** 2026-06-06T07:05:00Z
+
+---
