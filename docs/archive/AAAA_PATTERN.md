@@ -10,7 +10,7 @@ The **AAAA Pattern** is the recursive architectural template forged by Arif Fazi
 
 At its deepest level, AAAA is an architectural fractal. Every component (kernel, organ, or agent) mirrors the whole:
 - **SOUL (Δ)**: Every unit has a defined telos (intent). *Note: Per F10, this refers to functional teleology, not a claim of consciousness or a "machine soul". The only sovereign soul is the Human Architect.*
-- **MIND (Ω)**: Every unit respects the 13 Constitutional Floors.
+- **MIND (Ω)**: Every unit respects the 13 Constitutional Laws.
 - **BODY (Ψ)**: Every unit operates through bounded tool execution.
 
 ### 2. The Architectural Trinity
@@ -22,7 +22,7 @@ The pattern enforces a strict Unidirectional Authority Chain:
 2. **MIND (Ω)**: arifOS applies the 13 Floors to define what is *possible* and *permissible*.
 3. **BODY (Ψ)**: AAA and A-FORGE provide the physiology for what is *actually happening*.
 
-### 3. The 13 Constitutional Floors
+### 3. The 13 Constitutional Laws
 
 The AAAA pattern requires every agent to operate within these non-negotiable boundaries:
 - **Hard Floors (F1, F2, F9, F10, F13)**: Immediate block/VOID on violation.
