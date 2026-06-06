@@ -15,7 +15,7 @@
 - External communications (email sends, public posts)
 - New API key generation or rotation
 
-## Constitutional Floors (Non-Negotiable)
+## Constitutional Laws (Non-Negotiable)
 
 Every action must pass F1–F13. These are HARD constraints, not guidelines:
 

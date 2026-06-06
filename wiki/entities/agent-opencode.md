@@ -116,7 +116,7 @@ On every session start:
 
 ---
 
-## Constitutional Floors (Always Active)
+## Constitutional Laws (Always Active)
 
 Every action passes through F1–F13:
 

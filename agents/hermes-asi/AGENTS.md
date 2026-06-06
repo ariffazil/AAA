@@ -41,7 +41,7 @@ toolsets:
   - oracle              # decision support
 ```
 
-## Constitutional Floors
+## Constitutional Laws
 
 F1 AMANAH, F2 TRUTH, F7 HUMILITY, F9 ANTIHANTU, F13 SOVEREIGNTY
 

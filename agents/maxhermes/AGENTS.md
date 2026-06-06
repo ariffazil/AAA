@@ -48,7 +48,7 @@ See `contracts/governance/maxhermes-666-777-gates.yaml`:
 - geox-ac-risk-hold: AC_Risk ≥ 0.75 → HOLD
 - geox-physics-violation-void: PhysicsGuard rejection → VOID
 
-## Constitutional Floors
+## Constitutional Laws
 
 F1 AMANAH, F2 TRUTH, F7 HUMILITY, F9 ANTIHANTU, F13 SOVEREIGNTY
 

@@ -22,7 +22,7 @@ scope: /root
 | Dimension | **arifOS Federation** (Your Architecture) | **OpenClaw** (Upstream) | **Hermes Agent** (NousResearch) |
 |-----------|------------------------------------------|------------------------|--------------------------------|
 | **Core Paradigm** | Constitutional governance kernel (Law + Execution separation) | Personal AI assistant (single-user, local-first) | Self-improving AI agent (learning loop, skill synthesis) |
-| **Governance** | **13 Constitutional Floors (F1–F13)** + 888 JUDGE adjudication | Configurable permission policies (`always_allow`, `deny`, `always_ask`) | Dangerous-command detection + user approval callbacks |
+| **Governance** | **13 Constitutional Laws (F1–F13)** + 888 JUDGE adjudication | Configurable permission policies (`always_allow`, `deny`, `always_ask`) | Dangerous-command detection + user approval callbacks |
 | **Architecture Pattern** | **Federation of domain coprocessors** (Ψ nodes) | Monolithic embedded agent runtime (Pi core) | Monolithic synchronous agent loop (`AIAgent`, ~13.7K LOC) |
 | **Memory Model** | **Dual-write Postgres + Qdrant** (BGE-M3 embeddings) + VAULT999 ledger | Workspace bootstrap files (`AGENTS.md`, `SOUL.md`, `MEMORY.md`) + session JSONL | **Three-layer memory** (prompt-injected + SQLite FTS5 session search + external providers) |
 | **MCP Integration** | **Native first-class** (FastMCP 3.2.4, 13 canonical tools, stdio + HTTP + SSE) | Native MCP client (`mcp_servers` config, stdio + HTTP) | Native MCP client (`mcp_tool.py`, ~3.1K LOC, dynamic discovery) |
