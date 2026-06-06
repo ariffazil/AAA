@@ -8,7 +8,7 @@
 
 **F0 SOVEREIGN FLOOR is RATIFIED as a live constitutional floor, effective immediately.**
 
-arifOS operates under a four-ring law: **Sovereign Floor F0** plus **13 Constitutional Floors (F1–F13)**.
+arifOS operates under a four-ring law: **Sovereign Floor F0** plus **13 Constitutional Laws (F1–F13)**.
 - F0 governs who holds power.
 - F1–F13 govern how power is exercised.
 
@@ -36,7 +36,7 @@ arifOS operates under a four-ring law: **Sovereign Floor F0** plus **13 Constitu
 
 | Target | Action Required |
 |--------|----------------|
-| README.md | Replace "13 Floors (F1–F13)" → "Sovereign Floor F0 plus 13 Constitutional Floors (F1–F13)" |
+| README.md | Replace "13 Floors (F1–F13)" → "Sovereign Floor F0 plus 13 Constitutional Laws (F1–F13)" |
 | 000_CONSTITUTION.md | Add F0 as preamble floor |
 | RIK spec | Add F0 to floor checklist |
 | Nine-Signal Matrix | Update "13 Floors" claim if present |
