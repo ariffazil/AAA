@@ -329,3 +329,7 @@ AGPL-3.0. See [LICENSE](LICENSE).
 
 > **Evidence Contract.** This organ emits the standard envelope (epistemic_tag, evidence_quality, source_attribution, uncertainty_band, delta_S) per [arifOS 000_CONSTITUTION.md](../../arifOS/static/arifos/theory/000/000_CONSTITUTION.md) Appendix B. arifOS reads the envelope and applies L01–L13. This organ does not self-judge.
 
+
+## Changelog
+
+- **v2026.06.06-LAW-SEAL** (2026-06-06): Constitution pointer added to arifOS canonical 000_CONSTITUTION.md. AAA emits Evidence Contract; does not self-judge. AGENTS.md updated.
