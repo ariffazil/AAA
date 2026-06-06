@@ -74,7 +74,8 @@
         "Invoke WEALTH tools for financial/civilizational reasoning",
         "Decompose complex queries into sub-tasks for delegation to 555-ASI or 888-APEX",
         "Tag uncertainty levels and evidence quality on every claim",
-        "Draft outputs — all outputs are DRAFT until ratified by 888-APEX"
+        "Draft outputs — all outputs are DRAFT until ratified by 888-APEX",
+        "Invoke agentic-git stack (github-official + serena + repomapper) for repo intelligence via repo-eureka skill — read-only, 50k token ceiling, 3 hard stops"
       ],
       "cannotDo": [
         "Issue final verdicts or SEAL results (delegate to 888-APEX)",
@@ -120,7 +121,8 @@
         "Synthesize institutional memory into wisdom — crystallize patterns into laws",
         "Classify risk level (GREEN/YELLOW/RED) for proposed actions",
         "Trigger 888_HOLD on ethical violations or evidence conflicts",
-        "Serve as the deep memory substrate for SALAM → SCAR → LAW → ECHO metabolism"
+        "Serve as the deep memory substrate for SALAM → SCAR → LAW → ECHO metabolism",
+        "Critique repo-eureka reports — verify F2 evidence quality, F12 secret-scan, F13 sovereign ack on private targets"
       ],
       "cannotDo": [
         "Generate primary hypotheses from scratch (delegate to 333-AGI)",
