@@ -1,0 +1,106 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://arifos.arif-fazil.com/schemas/turn_outcomes.json",
+  "title": "turn_outcomes",
+  "description": "Per-turn audit log for the recursive improvement loop. Written by the bot on every turn. The post_hoc_verdict field is filled by Arif (the human sovereign) only, never by the agent. This is the F1+F7+F13 anti-self-certification guardrail.",
+  "version": "v2026.06.07",
+  "type": "object",
+  "required": [
+    "turn_id",
+    "session_id",
+    "organ",
+    "task_id",
+    "verdict",
+    "risk_class",
+    "timestamp"
+  ],
+  "properties": {
+    "turn_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this turn. UUIDv4."
+    },
+    "session_id": {
+      "type": "string",
+      "description": "The opencode session ID where this turn happened."
+    },
+    "organ": {
+      "type": "string",
+      "enum": ["LIBRA", "HERMES", "CLAW", "FORGE"],
+      "description": "Which organ produced this turn. Bound to F1-F13 by the organ's prompt file."
+    },
+    "task_id": {
+      "type": "string",
+      "description": "The task this turn belongs to. Cross-references VAULT999."
+    },
+    "prompt_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{16}$",
+      "description": "First 16 chars of SHA-256 of the prompt file used. Critical for the recursive loop: when this changes, the loop knows a prompt mutation was applied."
+    },
+    "user_message": {
+      "type": "string",
+      "description": "The original message that triggered this turn. May be redacted for PII (F12)."
+    },
+    "organ_response": {
+      "type": "string",
+      "description": "The full response from the organ. May be redacted for PII (F12)."
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["INFO", "SEAL", "HOLD", "VOID", "DEMAND_SEAL"],
+      "description": "The verdict emitted by the organ. HERMES verdicts are binding for MED risk; HIGH risk verdicts are advisory only."
+    },
+    "risk_class": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH"],
+      "description": "The risk class the organ assigned. If uncertain, escalate upward."
+    },
+    "floors_cited": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^F([1-9]|1[0-3])$"
+      },
+      "description": "Floors the organ explicitly cited. F1-F13."
+    },
+    "token_cost_in": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Input tokens consumed. Tracked for efficiency metrics."
+    },
+    "token_cost_out": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Output tokens produced. Tracked for efficiency metrics."
+    },
+    "hold_reason": {
+      "type": "string",
+      "description": "If verdict is HOLD, the reason. Empty if not HOLD."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of the turn. UTC."
+    },
+    "post_hoc_verdict": {
+      "type": ["string", "null"],
+      "enum": ["correct", "wrong", "meh", null],
+      "description": "Filled by Arif (the human sovereign) only. NEVER by the agent. This is the Gödel Lock defense: same species cannot judge same species, but a human can judge an agent's output. null = not yet marked."
+    },
+    "post_hoc_verdict_by": {
+      "type": ["string", "null"],
+      "description": "The actor_id who filled post_hoc_verdict. Should always be arif-fazil. If anything else appears, F1 AMANAH is violated."
+    },
+    "post_hoc_verdict_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "ISO 8601 timestamp of when post_hoc_verdict was filled."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Optional notes from the human marker. Free-form. Should be terse."
+    }
+  },
+  "additionalProperties": false
+}
