@@ -52,21 +52,23 @@ function redactLogMsg(msg: string): string {
 type DomainStatus = 'loading' | 'ok' | 'err';
 
 // Floor metadata — IDs and names are SOT (build-time), but STATUS is derived
-// from the live kernel /health payload. Initial state is UNKNOWN per F2.
+// from the live kernel /health payload. Initial state is UNKNOWN per L02.
+// Per 2026-06-06 ratification (000_LAWS_TRINITY_ANCHOR.md), canonical IDs are
+// L01-L13. arifOS /health emits L-prefix since the 2026-06-07 F→L migration.
 const FLOORS_META: { id: string; name: string }[] = [
-  { id: 'F1', name: 'Amanah' },
-  { id: 'F2', name: 'Truth' },
-  { id: 'F3', name: 'Tri-Witness' },
-  { id: 'F4', name: 'Clarity' },
-  { id: 'F5', name: 'Peace²' },
-  { id: 'F6', name: 'Empathy' },
-  { id: 'F7', name: 'Humility' },
-  { id: 'F8', name: 'Genius' },
-  { id: 'F9', name: 'Anti-Hantu' },
-  { id: 'F10', name: 'Ontology' },
-  { id: 'F11', name: 'Auditability' },
-  { id: 'F12', name: 'Injection' },
-  { id: 'F13', name: 'Sovereign' },
+  { id: 'L01', name: 'Amanah' },
+  { id: 'L02', name: 'Truth' },
+  { id: 'L03', name: 'Tri-Witness' },
+  { id: 'L04', name: 'Clarity' },
+  { id: 'L05', name: 'Peace²' },
+  { id: 'L06', name: 'Empathy' },
+  { id: 'L07', name: 'Humility' },
+  { id: 'L08', name: 'Genius' },
+  { id: 'L09', name: 'Anti-Hantu' },
+  { id: 'L10', name: 'Ontology' },
+  { id: 'L11', name: 'Auditability' },
+  { id: 'L12', name: 'Injection' },
+  { id: 'L13', name: 'Sovereign' },
 ];
 
 type FloorState = 'PASS' | 'FAIL' | 'UNKNOWN';
@@ -85,6 +87,12 @@ type KernelHealth = {
   freshness?: { status?: string; age_seconds?: number };
   contract_drift?: boolean;
   runtime_drift?: boolean;
+  governance?: {
+    laws_hard_active?: string[];
+    floors_soft_doctrinal?: string[];
+    floors_derived_doctrinal?: string[];
+    floors_health_report?: Record<string, string>;
+  };
 };
 
 const TEST_ALERT_PATTERN = /(Phase1|Test Organ|Verification Test|Dry.?Run)/i;
@@ -345,8 +353,10 @@ export default function Cockpit() {
     for (const f of FLOORS_META) out[f.id] = 'UNKNOWN';
     if (!kernelData) return out;
     const healthy = kernelData.status === 'healthy';
-    const hard = new Set(kernelData.governance?.floors_hard_doctrinal || kernelData.floors_hard_doctrinal || []);
-    const soft = new Set(kernelData.governance?.floors_soft_doctrinal || kernelData.floors_soft_doctrinal || []);
+    // /health governance payload: laws_hard_active, floors_soft_doctrinal, floors_derived_doctrinal.
+    // (Previously this read non-existent fields, leaving every floor UNKNOWN in the Cockpit.)
+    const hard = new Set(kernelData.governance?.laws_hard_active || []);
+    const soft = new Set(kernelData.governance?.floors_soft_doctrinal || []);
     for (const f of FLOORS_META) {
       const isDoctrinal = hard.has(f.id) || soft.has(f.id);
       if (!isDoctrinal) out[f.id] = 'FAIL';
@@ -880,7 +890,7 @@ export default function Cockpit() {
         <section className="mb-24 pt-12 border-t border-white/10">
           <h3 className="text-sm font-black uppercase tracking-widest text-white mb-6">Constitutional Summary</h3>
           <p className="text-white/40 font-light leading-relaxed text-sm max-w-3xl">
-            The arifOS federation operates under 13 binding floors (F1–F13). Every action — from a well-log interpretation to an agent deployment — must pass all active floors before a 999_SEAL is issued. Any floor failure triggers 888_HOLD, requiring human review.
+            The arifOS federation operates under 13 binding laws (L01–L13). Every action — from a well-log interpretation to an agent deployment — must pass all active laws before a 999_SEAL is issued. Any law failure triggers 888_HOLD, requiring human review.
           </p>
         </section>
 

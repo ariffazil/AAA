@@ -10,7 +10,7 @@ export interface AgentIdentity {
 
 export const CONSTITUTION_DEFAULTS = {
   version: 'v888.1.0-CONSTITUTION',
-  floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
+  floors: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13'],
   governance_model: 'arifOS Constitutional AI',
   authority: 'Muhammad Arif bin Fazil (888 Judge)'
 };
