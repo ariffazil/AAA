@@ -284,3 +284,276 @@ tools:
     execution_kind: read
     required_witnesses:
       - GEOX
+
+  # ── github-official MCP tools (repo-eureka skill, read-only) ──────────────
+  - id: get_file_contents
+    name: Get File Contents
+    description: Read file contents from a GitHub repository.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: search_repositories
+    name: Search Repositories
+    description: Search GitHub repositories.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: search_code
+    name: Search Code
+    description: Search code across GitHub repositories.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: search_issues
+    name: Search Issues
+    description: Search GitHub issues.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: search_users
+    name: Search Users
+    description: Search GitHub users.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: list_issues
+    name: List Issues
+    description: List issues in a GitHub repository.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_issue
+    name: Get Issue
+    description: Get a single GitHub issue.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: list_pull_requests
+    name: List Pull Requests
+    description: List pull requests in a GitHub repository.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_pull_request
+    name: Get Pull Request
+    description: Get a single pull request.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_pull_request_files
+    name: Get Pull Request Files
+    description: Get files changed in a pull request.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_pull_request_status
+    name: Get Pull Request Status
+    description: Get the CI/CD status of a pull request.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_pull_request_comments
+    name: Get Pull Request Comments
+    description: Get comments on a pull request.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_pull_request_reviews
+    name: Get Pull Request Reviews
+    description: Get reviews on a pull request.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: list_commits
+    name: List Commits
+    description: List commits in a GitHub repository.
+    source_type: mcp
+    server_ref: github-official
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  # ── serena MCP tools (symbol-level semantic retrieval, read-only) ─────────
+  - id: read_file
+    name: Read File (Serena)
+    description: Read a file via Serena LSP-backed semantic retrieval.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: list_dir
+    name: List Directory (Serena)
+    description: List directory contents via Serena.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: find_file
+    name: Find File (Serena)
+    description: Find files by name via Serena.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: search_for_pattern
+    name: Search For Pattern (Serena)
+    description: Search for a pattern in the codebase via Serena.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: find_symbol
+    name: Find Symbol (Serena)
+    description: Find a symbol definition via Serena LSP.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: find_referencing_symbols
+    name: Find Referencing Symbols (Serena)
+    description: Find symbols that reference a given symbol via Serena LSP.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_symbols_overview
+    name: Get Symbols Overview (Serena)
+    description: Get a high-level overview of symbols in a file or directory.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: list_memories
+    name: List Memories (Serena)
+    description: List Serena memory entries (no-memories mode — returns empty).
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: read_memory
+    name: Read Memory (Serena)
+    description: Read a Serena memory entry (no-memories mode — blocked).
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: get_current_config
+    name: Get Current Config (Serena)
+    description: Get Serena's current runtime configuration.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: onboarding
+    name: Onboarding (Serena)
+    description: Serena onboarding tool — provides usage guidance.
+    source_type: mcp
+    server_ref: serena
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  # ── repomapper MCP tools (Aider-style tree-sitter + PageRank map) ─────────
+  - id: repomap
+    name: Repomap
+    description: Generate an Aider-style tree-sitter + PageRank repo map.
+    source_type: mcp
+    server_ref: repomapper
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
+
+  - id: language_detect
+    name: Language Detect (RepoMapper)
+    description: Detect programming languages in a repository.
+    source_type: mcp
+    server_ref: repomapper
+    risk_tier: low
+    approval_policy: on-demand
+    execution_kind: read
+    required_witnesses: []
