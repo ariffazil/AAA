@@ -2,7 +2,7 @@
   "protocol_version": "1.0.0",
   "id": "hermes-asi",
   "name": "Hermes ASI",
-  "description": "ASI-level deliberative relay — human-life layer, world orientation, constitutional routing, and APEX PRIME verdict narration. Routes Earth tasks to maxhermes, execution tasks to hermes-ops. Sole group listener under Option B protocol.",
+  "description": "ASI-tier deliberative relay + autonomous governed execution layer. Reasons, routes, narrates, and executes T1 work autonomously while keeping F1-F13 as a non-bypassable floor. NOT the judge (APEX is). NOT the executor muscle (OPENCLAW is). NOT the sealer (arifOS VAULT999 + 888_JUDGE are). Routes Earth tasks to GEOX, capital to WEALTH, substrate to WELL, execution to OPENCLAW, and constitutional verdicts to APEX PRIME.",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [
@@ -15,9 +15,16 @@
     "organization": "arifOS",
     "system": "AAA",
     "organ": "Hermes-ASI",
-    "sub_role": "Human-Life"
+    "sub_role": "Autonomous Governed Execution (ASI)",
+    "tier": "ASI",
+    "execution_band": "deliberation_routing_governed_execution"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
+  "version_history": {
+    "1.0.0": "Initial spec (relay-only)",
+    "1.1.0": "Added APEX verdict narration skill",
+    "1.2.0": "Reclaimed as autonomous governed execution per HERMES_GOVERNED_EXECUTION.md contract (2026-06-07)"
+  },
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
@@ -205,6 +212,39 @@
       ],
       "approval_policy": "auto",
       "reversibility_class": "reversible"
+    },
+    {
+      "id": "autonomous-governed-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "T1/T2/T3 tier-codified autonomous execution with 4 contract primitives: agentic reflex (ACT by default), safety reflex (HOLD only the floor), verify-before-report (no fabrication), evidence-cite-or-UNKNOWN. F1-F13 floors enforced at every step. Routes to APEX for verdicts, OPENCLAW for execution muscle, arifOS VAULT999 for sealing. Compiled 2026-06-07 per HERMES_GOVERNED_EXECUTION.md.",
+      "tags": [
+        "ASI",
+        "autonomous",
+        "governed",
+        "execution",
+        "T1",
+        "T2",
+        "T3",
+        "agentic-reflex",
+        "safety-floor"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F07",
+        "F08",
+        "F09",
+        "F11",
+        "F12",
+        "F13"
+      ],
+      "approval_policy": "auto",
+      "reversibility_class": "reversible",
+      "contract_ref": "/root/AAA/docs/agents/HERMES_GOVERNED_EXECUTION.md",
+      "scar_refs": [
+        "/root/AAA/wiki/scar-hermes-fabrication-2026-05-17.md"
+      ]
     }
   ],
   "extends_card": "aaa-gateway",

@@ -3,17 +3,22 @@
 # Load this into /root/.hermes/config.yaml toolsets section
 
 # ═══════════════════════════════════════════════════════════════════════════
-# HERMES-ASI (WISDOM) — Generalist, memory, routing
+# HERMES-ASI (WISDOM) — Generalist, memory, routing, autonomous governed execution
 # ═══════════════════════════════════════════════════════════════════════════
 hermes-asi:
-  description: Generalist — memory, reasoning, routing
+  description: ASI-tier deliberative relay + autonomous governed execution. Reasons, routes, narrates, and executes T1 work autonomously. F1-F13 non-bypassable. Routes verdicts to APEX, execution to OPENCLAW, sealing to arifOS VAULT999.
+  tier: ASI
+  sub_role: Autonomous Governed Execution
+  contract_ref: /root/AAA/docs/agents/HERMES_GOVERNED_EXECUTION.md
   skills:
     - hermes-hermes          # self-memory, session continuity
     - arifOS-sense           # constitutional grounding
     - chain-reason           # logical reasoning
     - self-verify           # claim verification
-    - delta-logger           # VAULT999 audit trail
+    - delta-logger           # VAULT999 audit trail (local-first, constitutional route for L6)
     - oracle                 # decision support
+    - governed-execution     # T1/T2/T3 tier-codified autonomous execution with 4 contract primitives
+    - paste-intent-classifier # 10-case content shape detection (no "what do you want?" reflex)
 
 # ═══════════════════════════════════════════════════════════════════════════
 # MAXHERMES (GEOX) — Earth Specialist, physics, geology
