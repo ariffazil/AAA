@@ -500,7 +500,7 @@ const AAA_AGENT_CARD = {
     { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] },
   ],
   governance: {
-    constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
+    constitutional_floors: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13'],
     verdict_authority: '888_JUDGE',
     vault: 'VAULT999',
     irreversible_requires_human: true,
@@ -1020,6 +1020,32 @@ app.get('/.well-known/agent-card.json', (req, res) => {
   res.json(AAA_AGENT_CARD);
 });
 
+// MCP 2025-11-25 Server Card at /.well-known/mcp/server.json
+// (A2A spec serves the agent card; MCP spec serves the server card. Same organ, both protocols.)
+// Forged 2026-06-07 — autonomous, reversible, F13-clean (no contract change).
+app.get('/.well-known/mcp/server.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({
+    name: 'aaa',
+    displayName: 'AAA — arifOS Agent Cockpit & A2A Gateway',
+    url: 'https://aaa.arif-fazil.com',
+    version: '1.0.0',
+    protocol: 'MCP 2025-11-25 + A2A v1.0.0',
+    capabilities: {
+      tools: false,  // AAA is A2A, not MCP — no tool surface
+      resources: true,
+      prompts: true,
+      a2a: true,
+      federation_manifest: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json',
+      agent_card: 'https://aaa.arif-fazil.com/.well-known/agent-card.json',
+    },
+    authentication: { type: 'bearer', header: 'Authorization', notes: 'A2A bearer token; MCP layer passthrough' },
+    seal: 'DITEMPA BUKAN DIBERI',
+    note: 'AAA is the control plane. Tools (if any) live in arifOS, GEOX, WEALTH, WELL, A-FORGE. This card is for MCP-spec discovery only.',
+  });
+});
+
 app.get('/agent-card.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.json(AAA_AGENT_CARD);
@@ -1061,7 +1087,7 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
     //   - hermes-asi     → /infrastructure/hermes-asi (relay only, not an agent)
     //   - geox-witness   → /infrastructure/geox (organ host, not an agent)
     //   - wealth-witness → /infrastructure/wealth (organ host, not an agent)
-    constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
+    constitutional_floors: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13'],
     governance_root: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json'
   });
 });
