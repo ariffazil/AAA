@@ -18,6 +18,9 @@ const {
   createEnvelopeValidator,
 } = require('./federation_envelope');
 
+// Agent Lifecycle State Machine (GAP-B: wired 2026-06-09 by Ω)
+const { lifecycleManager, AgentState } = require('./agent_lifecycle');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -1218,6 +1221,35 @@ app.get('/health', async (req, res) => {
   });
 });
 
+// ── Agent Lifecycle API (GAP-B: forged 2026-06-09 by Ω) ────────────────
+// Maps MXC state-aware lifecycle onto AAA A2A gateway.
+// Every agent in the federation gets tracked: REGISTERED → PROVISIONED →
+// AUTHORIZED → EXECUTING → AUDITING → STOPPED → DEPROVISIONED.
+// ── Agent Lifecycle Status (FORGED 2026-06-09) ──
+app.get('/api/agents/status', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({ ok: true, ...lifecycleManager.federationStatus(), timestamp: new Date().toISOString() });
+});
+
+app.get('/api/agents/federation-status', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({ ok: true, ...lifecycleManager.federationStatus(), timestamp: new Date().toISOString() });
+});
+
+app.get('/api/agents', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  const active = lifecycleManager.getActive();
+  res.json({ ok: true, count: active.length, agents: active });
+});
+
+// MUST be last — catches single agent by ID
+app.get('/api/agents/:agentId', (req, res) => {
+  const agent = lifecycleManager.get(req.params.agentId);
+  if (!agent) return res.status(404).json({ ok: false, error: `Agent ${req.params.agentId} not found` });
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json({ ok: true, ...agent.summary(), transitionHistory: agent.transitionHistory.slice(-10) });
+});
+
 // ── Grafana Webhook ────────────────────────────────────────────────────────
 app.post('/webhooks/grafana/alerts', async (req, res) => {
   const alert = req.body || {};
@@ -2218,6 +2250,16 @@ app.post('/judge', (req, res) => {
   return res.json({ ok: true, ...result, timestamp: new Date().toISOString() });
 });
 
+// === AGENT LIFECYCLE ROUTES (FORGED 2026-06-09 — MXC-arifOS connectivity pipeline) ===
+try {
+  const { lifecycleManager } = require('./agent_lifecycle');
+  const { mountLifecycleRoutes } = require('./agent_lifecycle_routes');
+  mountLifecycleRoutes(app, lifecycleManager);
+  console.log('[AAA] Agent lifecycle state layer ACTIVE');
+} catch (e) {
+  console.warn('[AAA] Agent lifecycle routes not loaded:', e.message);
+}
+
 // === 404 FALLBACK HANDLER ===
 // Placed AFTER all valid routes so only truly unknown paths hit this
 // === 404 HANDLER ===
@@ -2330,6 +2372,7 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent-card.json`);
   console.log(`[AAA A2A] Federation: http://localhost:${PORT}/.well-known/arifos-federation.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
+  console.log(`[AAA A2A] Lifecycle: http://localhost:${PORT}/api/agents/federation-status`);
   await initAsyncBackbone();
   startRetryWorker();
 });
