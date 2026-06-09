@@ -483,22 +483,42 @@ async function searchRag(query, limit = 5) {
 }
 
 // === A2A Agent Card v1.0.0 ===
+// A2A v1.0 spec-compliant Agent Card (Linux Foundation standard, June 2026)
+// See: https://a2a-protocol.org/latest/specification/#8-agent-discovery-the-agent-card
 const AAA_AGENT_CARD = {
   name: 'AAA Gateway',
-  description: 'Governed A2A v1.0.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13.',
-  url: 'https://aaa.arif-fazil.com/a2a',
+  description: 'Governed A2A v1.0 gateway for AAA federation. WARGA: Constitutional Agent — arifOS L01-L13 floors, 888_JUDGE verdict authority, VAULT999 sealed audit. Not BINATANG, not harness, not cage.',
   provider: { organization: 'arifOS', system: 'AAA' },
   version: '1.0.0',
-  protocol_version: '1.0.0',
-  capabilities: { streaming: true, push_notifications: false, authenticated_extended_card: false },
-  authentication: { schemes: ['bearer', 'apiKey'], bearer: { scheme: 'bearer', token_type: 'opaque' }, apiKey: { scheme: 'apiKey', in: 'header', name: 'x-a2a-key' } },
-  default_input_modes: ['text/plain', 'application/json'],
-  default_output_modes: ['text/plain', 'application/json'],
+  supportedInterfaces: [{
+    url: 'https://aaa.arif-fazil.com',
+    protocolBinding: 'JSONRPC',
+    protocolVersion: '1.0'
+  }],
+  capabilities: {
+    streaming: true,
+    pushNotifications: false,
+    extendedAgentCard: false
+  },
+  securitySchemes: {
+    bearer: { scheme: 'bearer', tokenType: 'opaque' },
+    apiKey: { scheme: 'apiKey', in: 'header', name: 'x-a2a-key' }
+  },
+  defaultInputModes: ['text/plain', 'application/json'],
+  defaultOutputModes: ['text/plain', 'application/json'],
   skills: [
-    { id: 'agent-dispatch', name: 'Agent Dispatch', description: 'Non-blocking supervised task dispatch to approved internal agents.', tags: ['dispatch', 'task', 'coordination'], examples: ['dispatch a task to the planner agent', 'send work to the geodesy agent'] },
-    { id: 'agent-handoff', name: 'Agent Handoff', description: 'Delegation to approved agents through governed handoff workflows.', tags: ['handoff', 'delegation', 'transfer'], examples: ['handoff to the mobility agent', 'transfer context to planner'] },
-    { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] },
+    { id: 'agent-dispatch', name: 'Agent Dispatch', description: 'Non-blocking supervised task dispatch to approved internal agents (Hermes, OpenClaw, arifOS). Governed by L01-L13.', tags: ['dispatch', 'task', 'coordination', 'governed'], examples: ['dispatch a task to the planner agent', 'send work to the geodesy agent'] },
+    { id: 'agent-handoff', name: 'Agent Handoff', description: 'Delegation to approved agents through governed handoff with VAULT999 audit trail.', tags: ['handoff', 'delegation', 'transfer', 'governed'], examples: ['handoff to the mobility agent', 'transfer context to planner'] },
+    { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval across the federation mesh.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] }
   ],
+  extensions: [{
+    uri: 'https://arifos.arif-fazil.com/extensions/constitutional-governance',
+    description: 'arifOS Constitutional Governance — L01-L13 floors, 888_JUDGE verdict authority, VAULT999 sealed audit. All irreversible actions require human sovereign approval.',
+    required: true,
+    version: '1.0.0'
+  }],
+  signatures: [],
+  // ── arifOS-specific (non-A2A-standard, kept for federation introspection) ──
   governance: {
     constitutional_floors: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13'],
     verdict_authority: '888_JUDGE',
