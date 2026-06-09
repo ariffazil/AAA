@@ -1,4 +1,7 @@
-# Workspace and runtime — never commit
+# ── SOVEREIGN: never commit to public GitHub ──
+VAULT999/
+memory/deep-research-petronas-*
+# ── Workspace and runtime — never commit ──
 hermes/
 hermes-backup/
 hermes-backups/
