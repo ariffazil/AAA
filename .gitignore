@@ -110,3 +110,5 @@ workspace/skills/
 AAA_LOCAL_NOTES/
 medium/
 wiki/.arifos/
+# ── Local workspace IDE config — machine-specific paths, never commit ──
+AAA/arifosaaa/
