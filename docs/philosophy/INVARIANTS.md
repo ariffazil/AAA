@@ -197,14 +197,15 @@ Work lands in the correct repo or it does not land at all. Routing confidence < 
 
 | Method | Path | Description |
 |--------|------|-------------|
+| `GET` | `/.well-known/a2a-discovery.json` | Canonical A2A discovery contract |
 | `GET` | `/.well-known/agent-card.json` | A2A v1.0.0 agent card |
 | `GET` | `/.well-known/arifos-federation.json` | Federation peer manifest |
 | `GET` | `/health` | Health + vault status |
 | `POST` | `/tasks` | Create task (888_JUDGE gate enforced) |
 | `GET` | `/tasks/:taskId` | Get task by ID |
-| `GET` | `/tasks/:taskId/stream` | SSE task stream |
+| `GET` | `/tasks/:taskId/stream` | Task event stream |
 | `POST` | `/tasks/:taskId/cancel` | Cancel task |
-| `GET` | `/tasks/:taskId/subscribe` | SSE task subscription |
+| `GET` | `/tasks/:taskId/subscribe` | Task event subscription |
 
 Every POST to `/tasks` passes through the 888_JUDGE gate, F9 anti-hallucination check, and VAULT999 audit before dispatch.
 

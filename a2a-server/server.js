@@ -483,61 +483,63 @@ async function searchRag(query, limit = 5) {
 }
 
 // === A2A Agent Card v1.0.0 ===
-// A2A v1.0 spec-compliant Agent Card (Linux Foundation standard, June 2026)
-// See: https://a2a-protocol.org/latest/specification/#8-agent-discovery-the-agent-card
-const AAA_AGENT_CARD = {
-  name: 'AAA Gateway',
-  description: 'Governed A2A v1.0 gateway for AAA federation. WARGA: Constitutional Agent — arifOS L01-L13 floors, 888_JUDGE verdict authority, VAULT999 sealed audit. Not BINATANG, not harness, not cage.',
-  provider: { organization: 'arifOS', system: 'AAA' },
-  version: '1.0.0',
-  supportedInterfaces: [{
-    url: 'https://aaa.arif-fazil.com',
-    protocolBinding: 'JSONRPC',
-    protocolVersion: '1.0'
-  }],
-  capabilities: {
-    streaming: true,
-    pushNotifications: false,
-    extendedAgentCard: false
-  },
-  securitySchemes: {
-    bearer: { scheme: 'bearer', tokenType: 'opaque' },
-    apiKey: { scheme: 'apiKey', in: 'header', name: 'x-a2a-key' }
-  },
-  defaultInputModes: ['text/plain', 'application/json'],
-  defaultOutputModes: ['text/plain', 'application/json'],
-  skills: [
-    { id: 'agent-dispatch', name: 'Agent Dispatch', description: 'Non-blocking supervised task dispatch to approved internal agents (Hermes, OpenClaw, arifOS). Governed by L01-L13.', tags: ['dispatch', 'task', 'coordination', 'governed'], examples: ['dispatch a task to the planner agent', 'send work to the geodesy agent'] },
-    { id: 'agent-handoff', name: 'Agent Handoff', description: 'Delegation to approved agents through governed handoff with VAULT999 audit trail.', tags: ['handoff', 'delegation', 'transfer', 'governed'], examples: ['handoff to the mobility agent', 'transfer context to planner'] },
-    { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval across the federation mesh.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] }
-  ],
-  extensions: [{
-    uri: 'https://arifos.arif-fazil.com/extensions/constitutional-governance',
-    description: 'arifOS Constitutional Governance — L01-L13 floors, 888_JUDGE verdict authority, VAULT999 sealed audit. All irreversible actions require human sovereign approval.',
-    required: true,
-    version: '1.0.0'
-  }],
-  signatures: [],
-  // ── arifOS-specific (non-A2A-standard, kept for federation introspection) ──
-  governance: {
-    constitutional_floors: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13'],
-    verdict_authority: '888_JUDGE',
-    vault: 'VAULT999',
-    irreversible_requires_human: true,
-    self_approval_forbidden: true,
-    federation_trust_model: 'untrusted_peers',
-    enforcefloors: true
-  },
-  a2a_endpoints: {
-    send_task: 'POST /tasks',
-    get_task: 'GET /tasks/{taskId}',
-    stream_task: 'GET /tasks/{taskId}/stream',
-    cancel_task: 'POST /tasks/{taskId}/cancel',
-    subscribe_task: 'GET /tasks/{taskId}/subscribe',
-    agent_card: 'GET /.well-known/agent-card.json',
-    federation_manifest: 'GET /.well-known/arifos-federation.json'
+const AAA_AGENT_CARD = require('../src/seed/agent-card.json');
+const DISCOVERY_ROUTING_POLICY = require('../src/seed/discovery-routing-policy.json');
+
+function buildDiscoveryContract() {
+  return {
+    contract_id: 'aaa-a2a-discovery-contract-v1',
+    version: '1.0.0',
+    canonical_discovery_surface: '/.well-known/a2a-discovery.json',
+    canonical_agent_card: '/.well-known/agent-card.json',
+    canonical_routing_policy: '/.well-known/a2a-routing-policy.json',
+    compatibility_aliases: {
+      agent_card: ['/agent-card.json', '/a2a/agent-card.json'],
+      legacy_agent: ['/.well-known/agent.json', '/agent.json', '/a2a/agent.json'],
+      routing_policy: ['/a2a/routing-policy.json'],
+      discovery_contract: ['/a2a/discovery-contract.json'],
+    },
+    protocol: {
+      name: 'A2A',
+      version: AAA_AGENT_CARD.protocol_version,
+      preferred_transport: AAA_AGENT_CARD.preferred_transport || 'jsonrpc-https',
+    },
+    policy: {
+      default_mode: DISCOVERY_ROUTING_POLICY.default_mode,
+      fallback_mode: DISCOVERY_ROUTING_POLICY.fallback?.mode || 'hybrid',
+      graph_only_allowed_by_default: false,
+    },
+  };
+}
+
+function resolveDiscoveryRouting(queryText) {
+  const query = String(queryText || '').toLowerCase();
+  const rules = [...(DISCOVERY_ROUTING_POLICY.intent_rules || [])].sort((a, b) => (b.priority || 0) - (a.priority || 0));
+
+  for (const rule of rules) {
+    const triggers = rule.triggers || [];
+    const matched = triggers.find((trigger) => query.includes(String(trigger).toLowerCase()));
+    if (matched) {
+      return {
+        mode: rule.mode,
+        required_lane: rule.required_lane || rule.mode,
+        preferred_surfaces: rule.preferred_surfaces || [],
+        graph_only_forbidden: rule.graph_only_forbidden === true,
+        minimums: rule.minimums || {},
+        matched_trigger: matched,
+      };
+    }
   }
-};
+
+  return {
+    mode: DISCOVERY_ROUTING_POLICY.fallback?.mode || DISCOVERY_ROUTING_POLICY.default_mode || 'hybrid',
+    required_lane: DISCOVERY_ROUTING_POLICY.fallback?.mode || 'hybrid',
+    preferred_surfaces: [],
+    graph_only_forbidden: DISCOVERY_ROUTING_POLICY.fallback?.graph_only_allowed === false,
+    minimums: {},
+    matched_trigger: null,
+  };
+}
 
 // === A-ROLE AGENT CARDS ===
 const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
@@ -1034,48 +1036,39 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
 // === PUBLIC ROUTES (no auth) ===
 
-// A2A v1.0.0 spec: agent card at /.well-known/agent-card.json
-app.get('/.well-known/agent-card.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json(AAA_AGENT_CARD);
-});
+// A2A v1.0.0 spec: canonical agent card + compatibility aliases
+for (const discoveryPath of [
+  '/.well-known/a2a-discovery.json',
+  '/.well-known/agent-card.json',
+  '/agent-card.json',
+  '/.well-known/agent.json',
+  '/agent.json',
+  '/a2a/agent-card.json',
+  '/a2a/agent.json',
+]) {
+  app.get(discoveryPath, (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    if (discoveryPath === '/.well-known/a2a-discovery.json') {
+      return res.json(buildDiscoveryContract());
+    }
+    return res.json(AAA_AGENT_CARD);
+  });
+}
 
-// MCP 2025-11-25 Server Card at /.well-known/mcp/server.json
-// (A2A spec serves the agent card; MCP spec serves the server card. Same organ, both protocols.)
-// Forged 2026-06-07 — autonomous, reversible, F13-clean (no contract change).
-app.get('/.well-known/mcp/server.json', (req, res) => {
+app.get('/a2a/discovery-contract.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-  res.json({
-    name: 'aaa',
-    displayName: 'AAA — arifOS Agent Cockpit & A2A Gateway',
-    url: 'https://aaa.arif-fazil.com',
-    version: '1.0.0',
-    protocol: 'MCP 2025-11-25 + A2A v1.0.0',
-    capabilities: {
-      tools: false,  // AAA is A2A, not MCP — no tool surface
-      resources: true,
-      prompts: true,
-      a2a: true,
-      federation_manifest: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json',
-      agent_card: 'https://aaa.arif-fazil.com/.well-known/agent-card.json',
-    },
-    authentication: { type: 'bearer', header: 'Authorization', notes: 'A2A bearer token; MCP layer passthrough' },
-    seal: 'DITEMPA BUKAN DIBERI',
-    note: 'AAA is the control plane. Tools (if any) live in arifOS, GEOX, WEALTH, WELL, A-FORGE. This card is for MCP-spec discovery only.',
+  res.json(buildDiscoveryContract());
+});
+
+for (const policyPath of ['/.well-known/a2a-routing-policy.json', '/a2a/routing-policy.json']) {
+  app.get(policyPath, (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.json(DISCOVERY_ROUTING_POLICY);
   });
-});
-
-app.get('/agent-card.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json(AAA_AGENT_CARD);
-});
-
-// Legacy v0.3.0 compat alias (deprecated)
-app.get('/.well-known/agent.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json(AAA_AGENT_CARD);
-});
+}
 
 // Federation manifest — public discovery of peer agents
 app.get('/.well-known/arifos-federation.json', (req, res) => {
@@ -1107,7 +1100,7 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
     //   - hermes-asi     → /infrastructure/hermes-asi (relay only, not an agent)
     //   - geox-witness   → /infrastructure/geox (organ host, not an agent)
     //   - wealth-witness → /infrastructure/wealth (organ host, not an agent)
-    constitutional_floors: ['L01', 'L02', 'L03', 'L04', 'L05', 'L06', 'L07', 'L08', 'L09', 'L10', 'L11', 'L12', 'L13'],
+    constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
     governance_root: 'https://aaa.arif-fazil.com/.well-known/arifos-federation.json'
   });
 });
@@ -1397,10 +1390,13 @@ app.post('/api/ai/rag/query', async (req, res) => {
       return res.status(400).json({ ok: false, error: 'query is required' });
     }
 
+    const routingDecision = resolveDiscoveryRouting(query);
     const citations = await searchRag(query, Math.max(1, Math.min(limit, 8)));
     res.json({
       ok: true,
       query,
+      routing: routingDecision,
+      contrast_lane_enforced: routingDecision.required_lane === 'contrast' || routingDecision.required_lane === 'hybrid',
       citations,
       collection: AAA_AI_COLLECTION,
     });
@@ -1420,7 +1416,17 @@ app.post('/api/ai/chat', async (req, res) => {
     ? req.body.model.trim()
     : AAA_AI_DEFAULT_MODEL;
   const messages = normalizeAiMessages(req.body?.messages);
-  const citations = Array.isArray(req.body?.citations) ? req.body.citations : [];
+  let citations = Array.isArray(req.body?.citations) ? req.body.citations : [];
+  const latestUserMessage = [...messages].reverse().find((message) => message.role === 'user')?.content || '';
+  const routingDecision = resolveDiscoveryRouting(latestUserMessage);
+
+  if ((routingDecision.required_lane === 'contrast' || routingDecision.required_lane === 'hybrid') && citations.length === 0 && latestUserMessage) {
+    try {
+      citations = await searchRag(latestUserMessage, 6);
+    } catch (error) {
+      console.warn(`[DISCOVERY_POLICY] Contrast lane retrieval failed: ${error.message}`);
+    }
+  }
   const contextBlock = buildContextBlock(citations);
 
   if (messages.length === 0) {
@@ -1487,6 +1493,7 @@ app.post('/api/ai/chat', async (req, res) => {
         type: 'meta',
         provider,
         model: 'arif_reply_compose',
+        routing: routingDecision,
         citations,
       });
       if (fullText) {
@@ -1532,7 +1539,7 @@ app.post('/api/ai/chat', async (req, res) => {
         return res.end();
       }
 
-      writeSse(res, { type: 'meta', provider: 'openrouter', model, citations });
+      writeSse(res, { type: 'meta', provider: 'openrouter', model, routing: routingDecision, citations });
 
       const decoder = new TextDecoder();
       let buffer = '';
@@ -1588,6 +1595,7 @@ app.post('/api/ai/chat', async (req, res) => {
       type: 'meta',
       provider,
       model,
+      routing: routingDecision,
       citations,
     });
 
@@ -1881,6 +1889,7 @@ app.get('/', (req, res) => {
     protocol_version: '1.0.0',
     auth: 'required',
     endpoints: {
+      discoveryContract: '/.well-known/a2a-discovery.json',
       agentCard: '/.well-known/agent-card.json',
       federationManifest: '/.well-known/arifos-federation.json',
       sendTask: 'POST /tasks',
@@ -2317,6 +2326,7 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Hardened server running on port ${PORT}`);
   console.log(`[AAA A2A] Protocol: A2A v1.0.0`);
   console.log(`[AAA A2A] Auth: configured (bearer + api-key)`);
+  console.log(`[AAA A2A] Discovery Contract: http://localhost:${PORT}/.well-known/a2a-discovery.json`);
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent-card.json`);
   console.log(`[AAA A2A] Federation: http://localhost:${PORT}/.well-known/arifos-federation.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);

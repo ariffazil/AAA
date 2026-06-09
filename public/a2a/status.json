@@ -4,11 +4,14 @@
   "federation_status": "discovery-live",
   "public_base_url": "https://aaa.arif-fazil.com",
   "public_surfaces": {
+    "canonical_discovery_contract": "/.well-known/a2a-discovery.json",
+    "canonical_discovery_surface": "/.well-known/agent-card.json",
     "a2a_root": "/a2a/",
     "agent_card": "/a2a/agent-card.json",
     "agent_legacy": "/a2a/agent.json",
     "well_known_agent_card": "/.well-known/agent-card.json",
-    "well_known_agent_legacy": "/.well-known/agent.json"
+    "well_known_agent_legacy": "/.well-known/agent.json",
+    "routing_policy": "/.well-known/a2a-routing-policy.json"
   },
   "message_ingress": {
     "path": "/a2a/message",
