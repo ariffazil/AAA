@@ -163,13 +163,17 @@ Send a test message:
 
 | Endpoint | Purpose |
 |----------|---------|
-| `/.well-known/agent.json` | Agent Card (discovery) |
+| `/.well-known/a2a-discovery.json` | Canonical A2A discovery contract |
+| `/.well-known/agent-card.json` | Agent Card (canonical discovery) |
+| `/.well-known/agent.json` | Legacy discovery alias |
 | `/message/send` | Submit task (blocking) |
-| `/message/stream` | Submit task (SSE streaming) |
+| `/message/stream` | Submit task (event stream for long-running A2A tasks) |
 | `/tasks/:taskId` | Get task status |
 | `/tasks/:taskId/cancel` | Cancel task |
-| `/tasks/:taskId/subscribe` | SSE subscribe to updates |
+| `/tasks/:taskId/subscribe` | Event stream subscribe to updates |
 | `/health` | Health check |
+
+> `message/stream` and `tasks/:taskId/subscribe` are A2A task-event streams. For MCP and Copilot Studio, use streamable HTTP as the default transport and treat SSE as legacy compatibility.
 
 ### A2A Skills
 
@@ -251,7 +255,7 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 
-    location /.well-known/agent.json {
+    location /.well-known/agent-card.json {
         proxy_pass http://localhost:3001;
     }
 }

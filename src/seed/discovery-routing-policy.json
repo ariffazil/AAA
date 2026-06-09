@@ -1,0 +1,106 @@
+{
+  "id": "aaa-discovery-routing-policy",
+  "version": "1.0.0",
+  "canonical_discovery_surface": "https://aaa.arif-fazil.com/.well-known/a2a-discovery.json",
+  "legacy_aliases": [
+    "https://aaa.arif-fazil.com/.well-known/agent.json",
+    "https://aaa.arif-fazil.com/agent-card.json",
+    "https://aaa.arif-fazil.com/agent.json",
+    "https://aaa.arif-fazil.com/a2a/discovery-contract.json",
+    "https://aaa.arif-fazil.com/a2a/agent-card.json",
+    "https://aaa.arif-fazil.com/a2a/agent.json"
+  ],
+  "default_mode": "exploit",
+  "intent_rules": [
+    {
+      "mode": "contrast",
+      "priority": 100,
+      "triggers": [
+        "what am i missing",
+        "what contradicts this",
+        "contradiction",
+        "disconfirm",
+        "counterexample",
+        "boundary",
+        "anomaly",
+        "uncertainty",
+        "outside my current model",
+        "discovery"
+      ],
+      "required_lane": "contrast",
+      "preferred_surfaces": [
+        "geox_contrast_search",
+        "geox_disconfirm_scan",
+        "geox_boundary_map"
+      ],
+      "graph_only_forbidden": true,
+      "minimums": {
+        "contrast_results": 2,
+        "contradictions": 1,
+        "boundary_maps": 1
+      }
+    },
+    {
+      "mode": "hybrid",
+      "priority": 70,
+      "triggers": [
+        "compare",
+        "alternatives",
+        "tradeoff",
+        "adjacent",
+        "explore"
+      ],
+      "required_lane": "hybrid",
+      "preferred_surfaces": [
+        "office365_search",
+        "geox_contrast_search"
+      ],
+      "graph_only_forbidden": true,
+      "minimums": {
+        "explore_ratio": 0.3,
+        "contradictions": 1
+      }
+    },
+    {
+      "mode": "exploit",
+      "priority": 10,
+      "triggers": [
+        "find document",
+        "latest status",
+        "known item",
+        "owner of",
+        "task status"
+      ],
+      "required_lane": "exploit",
+      "preferred_surfaces": [
+        "status-query",
+        "office365_search"
+      ],
+      "graph_only_forbidden": false
+    }
+  ],
+  "fallback": {
+    "mode": "hybrid",
+    "graph_only_allowed": false,
+    "must_declare_partial": true,
+    "reason_code": "contrast-policy-unavailable"
+  },
+  "governance": {
+    "verdict_authority": "888_JUDGE",
+    "floors": [
+      "F1",
+      "F2",
+      "F7",
+      "F9",
+      "F11",
+      "F13"
+    ],
+    "release_requirements": [
+      "supporting_evidence",
+      "contradicting_evidence",
+      "unknowns",
+      "confidence_band",
+      "citations"
+    ]
+  }
+}

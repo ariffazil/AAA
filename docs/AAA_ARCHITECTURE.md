@@ -37,7 +37,7 @@ AAA's first role is to serve as the **genesis for agent governance**.
 
 ### What it provides
 
-- **Agent Identity Template** — A canonical agent identity (`.well-known/agent.json`) that new agents can clone or reference
+- **Agent Identity Template** — A canonical agent identity (`.well-known/agent-card.json`) that new agents can clone or reference
 - **Constitution & Governance Defaults** — Baseline F1–F13 Floor parameters; every agent starts with the same "laws of physics"
 - **Bootstrap Procedure** — New agents call `AAA.get_bootstrap()` to retrieve their unique ID, known agents, MCP endpoints, and constitution version hash
 
@@ -75,12 +75,14 @@ The gateway is the **traffic controller** for the agent federation.
 |----------|--------|------|-------------|
 | `/a2a` | GET | No | Service info and endpoint map |
 | `/a2a/health` | GET | No | Health check with kernel status |
-| `/a2a/.well-known/agent.json` | GET | No | Agent card (capabilities, skills, auth schemes) |
+| `/.well-known/a2a-discovery.json` | GET | No | Canonical discovery contract |
+| `/.well-known/agent-card.json` | GET | No | Agent card (canonical discovery surface) |
+| `/.well-known/agent.json` | GET | No | Legacy discovery alias |
 | `/a2a/message/send` | POST | **Yes** | Send a task message (JSON-RPC) |
-| `/a2a/message/stream` | POST | **Yes** | SSE streaming for long-running tasks |
+| `/a2a/message/stream` | POST | **Yes** | A2A task-event streaming for long-running tasks |
 | `/a2a/tasks/:taskId` | GET | **Yes** | Get task status |
 | `/a2a/tasks/:taskId/cancel` | POST | **Yes** | Cancel a task |
-| `/a2a/tasks/:taskId/subscribe` | GET | **Yes** | Subscribe to task events via SSE |
+| `/a2a/tasks/:taskId/subscribe` | GET | **Yes** | Subscribe to task event stream |
 
 ### Invariants
 
