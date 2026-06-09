@@ -483,41 +483,63 @@ async function searchRag(query, limit = 5) {
 }
 
 // === A2A Agent Card v1.0.0 ===
-const AAA_AGENT_CARD = {
-  name: 'AAA Gateway',
-  description: 'Governed A2A v1.0.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13.',
-  url: 'https://aaa.arif-fazil.com/a2a',
-  provider: { organization: 'arifOS', system: 'AAA' },
-  version: '1.0.0',
-  protocol_version: '1.0.0',
-  capabilities: { streaming: true, push_notifications: false, authenticated_extended_card: false },
-  authentication: { schemes: ['bearer', 'apiKey'], bearer: { scheme: 'bearer', token_type: 'opaque' }, apiKey: { scheme: 'apiKey', in: 'header', name: 'x-a2a-key' } },
-  default_input_modes: ['text/plain', 'application/json'],
-  default_output_modes: ['text/plain', 'application/json'],
-  skills: [
-    { id: 'agent-dispatch', name: 'Agent Dispatch', description: 'Non-blocking supervised task dispatch to approved internal agents.', tags: ['dispatch', 'task', 'coordination'], examples: ['dispatch a task to the planner agent', 'send work to the geodesy agent'] },
-    { id: 'agent-handoff', name: 'Agent Handoff', description: 'Delegation to approved agents through governed handoff workflows.', tags: ['handoff', 'delegation', 'transfer'], examples: ['handoff to the mobility agent', 'transfer context to planner'] },
-    { id: 'status-query', name: 'Status Query', description: 'Read-only task and run status retrieval.', tags: ['query', 'status', 'read-only'], examples: ['check task status', 'get current state of task 123'] },
-  ],
-  governance: {
-    constitutional_floors: ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', 'F13'],
-    verdict_authority: '888_JUDGE',
-    vault: 'VAULT999',
-    irreversible_requires_human: true,
-    self_approval_forbidden: true,
-    federation_trust_model: 'untrusted_peers',
-    enforcefloors: true
-  },
-  a2a_endpoints: {
-    send_task: 'POST /tasks',
-    get_task: 'GET /tasks/{taskId}',
-    stream_task: 'GET /tasks/{taskId}/stream',
-    cancel_task: 'POST /tasks/{taskId}/cancel',
-    subscribe_task: 'GET /tasks/{taskId}/subscribe',
-    agent_card: 'GET /.well-known/agent-card.json',
-    federation_manifest: 'GET /.well-known/arifos-federation.json'
+const AAA_AGENT_CARD = require('../src/seed/agent-card.json');
+const DISCOVERY_ROUTING_POLICY = require('../src/seed/discovery-routing-policy.json');
+
+function buildDiscoveryContract() {
+  return {
+    contract_id: 'aaa-a2a-discovery-contract-v1',
+    version: '1.0.0',
+    canonical_discovery_surface: '/.well-known/a2a-discovery.json',
+    canonical_agent_card: '/.well-known/agent-card.json',
+    canonical_routing_policy: '/.well-known/a2a-routing-policy.json',
+    compatibility_aliases: {
+      agent_card: ['/agent-card.json', '/a2a/agent-card.json'],
+      legacy_agent: ['/.well-known/agent.json', '/agent.json', '/a2a/agent.json'],
+      routing_policy: ['/a2a/routing-policy.json'],
+      discovery_contract: ['/a2a/discovery-contract.json'],
+    },
+    protocol: {
+      name: 'A2A',
+      version: AAA_AGENT_CARD.protocol_version,
+      preferred_transport: AAA_AGENT_CARD.preferred_transport || 'jsonrpc-https',
+    },
+    policy: {
+      default_mode: DISCOVERY_ROUTING_POLICY.default_mode,
+      fallback_mode: DISCOVERY_ROUTING_POLICY.fallback?.mode || 'hybrid',
+      graph_only_allowed_by_default: false,
+    },
+  };
+}
+
+function resolveDiscoveryRouting(queryText) {
+  const query = String(queryText || '').toLowerCase();
+  const rules = [...(DISCOVERY_ROUTING_POLICY.intent_rules || [])].sort((a, b) => (b.priority || 0) - (a.priority || 0));
+
+  for (const rule of rules) {
+    const triggers = rule.triggers || [];
+    const matched = triggers.find((trigger) => query.includes(String(trigger).toLowerCase()));
+    if (matched) {
+      return {
+        mode: rule.mode,
+        required_lane: rule.required_lane || rule.mode,
+        preferred_surfaces: rule.preferred_surfaces || [],
+        graph_only_forbidden: rule.graph_only_forbidden === true,
+        minimums: rule.minimums || {},
+        matched_trigger: matched,
+      };
+    }
   }
-};
+
+  return {
+    mode: DISCOVERY_ROUTING_POLICY.fallback?.mode || DISCOVERY_ROUTING_POLICY.default_mode || 'hybrid',
+    required_lane: DISCOVERY_ROUTING_POLICY.fallback?.mode || 'hybrid',
+    preferred_surfaces: [],
+    graph_only_forbidden: DISCOVERY_ROUTING_POLICY.fallback?.graph_only_allowed === false,
+    minimums: {},
+    matched_trigger: null,
+  };
+}
 
 // === A-ROLE AGENT CARDS ===
 const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
@@ -1014,22 +1036,39 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
 // === PUBLIC ROUTES (no auth) ===
 
-// A2A v1.0.0 spec: agent card at /.well-known/agent-card.json
-app.get('/.well-known/agent-card.json', (req, res) => {
+// A2A v1.0.0 spec: canonical agent card + compatibility aliases
+for (const discoveryPath of [
+  '/.well-known/a2a-discovery.json',
+  '/.well-known/agent-card.json',
+  '/agent-card.json',
+  '/.well-known/agent.json',
+  '/agent.json',
+  '/a2a/agent-card.json',
+  '/a2a/agent.json',
+]) {
+  app.get(discoveryPath, (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    if (discoveryPath === '/.well-known/a2a-discovery.json') {
+      return res.json(buildDiscoveryContract());
+    }
+    return res.json(AAA_AGENT_CARD);
+  });
+}
+
+app.get('/a2a/discovery-contract.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.json(AAA_AGENT_CARD);
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(buildDiscoveryContract());
 });
 
-app.get('/agent-card.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json(AAA_AGENT_CARD);
-});
-
-// Legacy v0.3.0 compat alias (deprecated)
-app.get('/.well-known/agent.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.json(AAA_AGENT_CARD);
-});
+for (const policyPath of ['/.well-known/a2a-routing-policy.json', '/a2a/routing-policy.json']) {
+  app.get(policyPath, (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.json(DISCOVERY_ROUTING_POLICY);
+  });
+}
 
 // Federation manifest — public discovery of peer agents
 app.get('/.well-known/arifos-federation.json', (req, res) => {
@@ -1351,10 +1390,13 @@ app.post('/api/ai/rag/query', async (req, res) => {
       return res.status(400).json({ ok: false, error: 'query is required' });
     }
 
+    const routingDecision = resolveDiscoveryRouting(query);
     const citations = await searchRag(query, Math.max(1, Math.min(limit, 8)));
     res.json({
       ok: true,
       query,
+      routing: routingDecision,
+      contrast_lane_enforced: routingDecision.required_lane === 'contrast' || routingDecision.required_lane === 'hybrid',
       citations,
       collection: AAA_AI_COLLECTION,
     });
@@ -1374,7 +1416,17 @@ app.post('/api/ai/chat', async (req, res) => {
     ? req.body.model.trim()
     : AAA_AI_DEFAULT_MODEL;
   const messages = normalizeAiMessages(req.body?.messages);
-  const citations = Array.isArray(req.body?.citations) ? req.body.citations : [];
+  let citations = Array.isArray(req.body?.citations) ? req.body.citations : [];
+  const latestUserMessage = [...messages].reverse().find((message) => message.role === 'user')?.content || '';
+  const routingDecision = resolveDiscoveryRouting(latestUserMessage);
+
+  if ((routingDecision.required_lane === 'contrast' || routingDecision.required_lane === 'hybrid') && citations.length === 0 && latestUserMessage) {
+    try {
+      citations = await searchRag(latestUserMessage, 6);
+    } catch (error) {
+      console.warn(`[DISCOVERY_POLICY] Contrast lane retrieval failed: ${error.message}`);
+    }
+  }
   const contextBlock = buildContextBlock(citations);
 
   if (messages.length === 0) {
@@ -1441,6 +1493,7 @@ app.post('/api/ai/chat', async (req, res) => {
         type: 'meta',
         provider,
         model: 'arif_reply_compose',
+        routing: routingDecision,
         citations,
       });
       if (fullText) {
@@ -1486,7 +1539,7 @@ app.post('/api/ai/chat', async (req, res) => {
         return res.end();
       }
 
-      writeSse(res, { type: 'meta', provider: 'openrouter', model, citations });
+      writeSse(res, { type: 'meta', provider: 'openrouter', model, routing: routingDecision, citations });
 
       const decoder = new TextDecoder();
       let buffer = '';
@@ -1542,6 +1595,7 @@ app.post('/api/ai/chat', async (req, res) => {
       type: 'meta',
       provider,
       model,
+      routing: routingDecision,
       citations,
     });
 
@@ -1835,6 +1889,7 @@ app.get('/', (req, res) => {
     protocol_version: '1.0.0',
     auth: 'required',
     endpoints: {
+      discoveryContract: '/.well-known/a2a-discovery.json',
       agentCard: '/.well-known/agent-card.json',
       federationManifest: '/.well-known/arifos-federation.json',
       sendTask: 'POST /tasks',
@@ -2271,6 +2326,7 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Hardened server running on port ${PORT}`);
   console.log(`[AAA A2A] Protocol: A2A v1.0.0`);
   console.log(`[AAA A2A] Auth: configured (bearer + api-key)`);
+  console.log(`[AAA A2A] Discovery Contract: http://localhost:${PORT}/.well-known/a2a-discovery.json`);
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent-card.json`);
   console.log(`[AAA A2A] Federation: http://localhost:${PORT}/.well-known/arifos-federation.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);

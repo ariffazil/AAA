@@ -1,63 +1,35 @@
 {
-  "protocol_version": "0.3.0",
-  "id": "aaa-gateway",
   "name": "AAA Gateway",
-  "description": "Governed agent gateway for AAA. Exposes only approved delegation and coordination surfaces.",
+  "description": "Governed A2A v1.0.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13.",
   "url": "https://aaa.arif-fazil.com/a2a",
-  "preferred_transport": "jsonrpc-https",
-  "additional_interfaces": [
-    {
-      "transport": "sse",
-      "url": "https://aaa.arif-fazil.com/a2a/events"
-    }
-  ],
   "provider": {
     "organization": "arifOS",
     "system": "AAA",
     "runtime": "OpenClaw"
   },
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "protocol_version": "1.0.0",
+  "preferred_transport": "jsonrpc-https",
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
-    "authenticated_extended_card": false,
-    "reply_mode_support": true
+    "authenticated_extended_card": false
   },
-  "reply_modes": ["HEALTH", "INCIDENT", "PROPOSAL", "ESCALATION", "AUDIT", "PLAN", "EXPLAIN", "DENY", "META"],
-  "security_schemes": [
-    {
-      "id": "gateway-token",
-      "type": "bearer",
-      "description": "Gateway bearer token for internal trusted peers."
+  "authentication": {
+    "schemes": [
+      "bearer",
+      "apiKey"
+    ],
+    "bearer": {
+      "scheme": "bearer",
+      "token_type": "opaque"
     },
-    {
-      "id": "oauth2",
-      "type": "oauth2",
-      "description": "OAuth/OIDC for user-linked or federated callers."
-    },
-    {
-      "id": "api-key",
-      "type": "apiKey",
-      "description": "API key for fixed infrastructure peers."
-    },
-    {
-      "id": "mtls",
-      "type": "mutualTLS",
-      "description": "mTLS for trusted machine-to-machine lanes."
+    "apiKey": {
+      "scheme": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key"
     }
-  ],
-  "security": [
-    [
-      "gateway-token"
-    ],
-    [
-      "oauth2"
-    ],
-    [
-      "api-key",
-      "mtls"
-    ]
-  ],
+  },
   "default_input_modes": [
     "text/plain",
     "application/json"
@@ -71,26 +43,79 @@
       "id": "agent-dispatch",
       "name": "Agent Dispatch",
       "description": "Non-blocking supervised task dispatch to approved internal agents.",
-      "approval_policy": "hold"
+      "tags": [
+        "dispatch",
+        "task",
+        "coordination"
+      ],
+      "examples": [
+        "dispatch a task to the planner agent",
+        "send work to the geodesy agent"
+      ]
     },
     {
       "id": "agent-handoff",
       "name": "Agent Handoff",
       "description": "Delegation to approved agents through governed handoff workflows.",
-      "approval_policy": "hold"
+      "tags": [
+        "handoff",
+        "delegation",
+        "transfer"
+      ],
+      "examples": [
+        "handoff to the mobility agent",
+        "transfer context to planner"
+      ]
     },
     {
       "id": "status-query",
       "name": "Status Query",
       "description": "Read-only task and run status retrieval.",
-      "approval_policy": "on-demand"
+      "tags": [
+        "query",
+        "status",
+        "read-only"
+      ],
+      "examples": [
+        "check task status",
+        "get current state of task 123"
+      ]
     }
   ],
-  "supports_authenticated_extended_card": false,
-  "openclaw_binding": {
-    "gateway_target": "openclaw-gateway",
-    "bridge_ref": "openclaw/a2a/bridge.yaml",
-    "session_mode": "acp",
-    "approval_policy": "hold"
+  "governance": {
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13"
+    ],
+    "verdict_authority": "888_JUDGE",
+    "vault": "VAULT999",
+    "irreversible_requires_human": true,
+    "self_approval_forbidden": true,
+    "federation_trust_model": "untrusted_peers",
+    "enforce_floors": true,
+    "routing_policy": "https://aaa.arif-fazil.com/.well-known/a2a-routing-policy.json"
+  },
+  "a2a_endpoints": {
+    "discovery_contract": "GET /.well-known/a2a-discovery.json",
+    "canonical_agent_card": "GET /.well-known/agent-card.json",
+    "legacy_agent_card": "GET /.well-known/agent.json",
+    "routing_policy": "GET /.well-known/a2a-routing-policy.json",
+    "send_task": "POST /tasks",
+    "get_task": "GET /tasks/{taskId}",
+    "stream_task": "GET /tasks/{taskId}/stream",
+    "cancel_task": "POST /tasks/{taskId}/cancel",
+    "subscribe_task": "GET /tasks/{taskId}/subscribe",
+    "federation_manifest": "GET /.well-known/arifos-federation.json"
   }
 }

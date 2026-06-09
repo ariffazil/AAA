@@ -166,7 +166,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
     },
     async execute() {
       try {
-        const response = await fetch('/a2a/agent-card.json', { cache: 'no-store' });
+        const response = await fetch('/.well-known/agent-card.json', { cache: 'no-store' });
         const card = await response.json();
         return {
           content: [{
@@ -194,7 +194,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
     },
     async execute() {
       try {
-        const response = await fetch('/a2a/agent-card.json', { cache: 'no-store' });
+        const response = await fetch('/.well-known/agent-card.json', { cache: 'no-store' });
         const card = await response.json();
         const skills = card.skills || [];
         return {
@@ -208,6 +208,34 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
       } catch (error) {
         return {
           content: [{ type: 'text', text: `Error: ${error}` }],
+          isError: true
+        };
+      }
+    }
+  });
+
+  // Tool: Discovery Routing Policy
+  mcp.registerTool({
+    name: 'get_discovery_routing_policy',
+    description: 'Retrieve the explicit discovery-routing policy that forces contrast-lane tools for discovery, contradiction, anomaly, and boundary-seeking intents.',
+    inputSchema: {
+      type: 'object',
+      properties: {},
+      required: []
+    },
+    async execute() {
+      try {
+        const response = await fetch('/.well-known/a2a-routing-policy.json', { cache: 'no-store' });
+        const policy = await response.json();
+        return {
+          content: [{
+            type: 'text',
+            text: JSON.stringify(policy, null, 2)
+          }]
+        };
+      } catch (error) {
+        return {
+          content: [{ type: 'text', text: `Error: Unable to fetch discovery routing policy — ${error}` }],
           isError: true
         };
       }
@@ -249,6 +277,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
           CLAIM_ONLY: 'Tool claim only — requires ratification'
         },
         vault: 'VAULT999 — append-only constitutional ledger',
+        discovery_routing: 'Discovery-style intents must prefer contrast-lane tools. Graph-only retrieval is forbidden when the query asks what is missing, contradictory, anomalous, or outside the current model.',
         key_invariant: 'Protocol does not grant authority. A2A enables coordination. Permission is separate.'
       };
       return {
@@ -336,6 +365,7 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
           POST_tasks_id_cancel: 'Cancel a task',
           GET_tasks_id_subscribe: 'SSE subscription for task updates'
         },
+        routing_policy: 'Discovery intents must trigger contrast-lane tools before Graph-only retrieval is allowed.',
         governance_note: 'A2A enables coordination. It does NOT grant authority. Every consequential action still requires 888_JUDGE approval.',
         auth: 'Bearer token or x-a2a-key required for all task endpoints'
       };
@@ -349,5 +379,5 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
   });
 
   console.log('[WebMCP] BODY layer tools registered (3 read-only tools)');
-  console.log('[WebMCP] AAA Federation tools registered (5 discovery + draft tools)');
+  console.log('[WebMCP] AAA Federation tools registered (7 discovery + draft tools)');
 }
