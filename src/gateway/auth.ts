@@ -15,7 +15,15 @@ export function createAuthMiddleware() {
     
     // Skip auth for public endpoints
     const publicPaths = [
+      '/.well-known/a2a-discovery.json',
+      '/.well-known/agent-card.json',
       '/.well-known/agent.json',
+      '/.well-known/a2a-routing-policy.json',
+      '/a2a/discovery-contract.json',
+      '/a2a/agent-card.json',
+      '/a2a/agent.json',
+      '/a2a/routing-policy.json',
+      '/agent-card.json',
       '/agent.json',
       '/health',
     ];
