@@ -194,6 +194,14 @@ function validateEnvelope(envelope, toolName) {
     }
   }
 
+  // 8. Agent Policy check (GAP-E: forged 2026-06-09 by Ω)
+  // Every agent must have a registered policy. Default: DENY ALL.
+  const policyResult = validateAgentPolicy(envelope, toolName);
+  if (!policyResult.ok) {
+    result.reason = policyResult.reason;
+    return result;
+  }
+
   // Structural Coherence check — EUREKA v2026.06.05
   // Envelopes with dim_spot_flag=true have negative constraints that may not
   // survive cross-modal transfer. Warn but do not block.
@@ -250,6 +258,85 @@ function createEnvelopeValidator(options = {}) {
   };
 }
 
+// ── Agent Policy Registry (GAP-E: forged 2026-06-09 by Ω) ──────────
+// Mirrors arifOS AgentPolicy Pydantic model. Maps MXC SandboxPolicy
+// concept onto AAA federation envelope validation.
+// Default: DENY ALL — agents must be explicitly registered with policy.
+
+const AGENT_POLICIES = new Map();
+
+function registerAgentPolicy(agentId, policy) {
+  const p = {
+    agent_id: agentId,
+    agent_role: policy.agent_role || 'observer',
+    allowed_tools: policy.allowed_tools || [],
+    denied_tools: policy.denied_tools || [],
+    allowed_organs: policy.allowed_organs || [],
+    irreversibility_threshold: policy.irreversibility_threshold || 0.5,
+    network_posture: policy.network_posture || 'ALLOWLIST',
+    allowed_domains: policy.allowed_domains || [],
+    max_tokens_per_call: policy.max_tokens_per_call || 100000,
+    max_runtime_seconds: policy.max_runtime_seconds || 3600,
+    policy_version: policy.policy_version || '1.0.0-forge',
+  };
+  AGENT_POLICIES.set(agentId, p);
+  return p;
+}
+
+function getAgentPolicy(agentId) {
+  return AGENT_POLICIES.get(agentId) || null;
+}
+
+function validateAgentPolicy(envelope, toolName) {
+  const agentId = envelope.actor_id;
+  if (!agentId || agentId === 'anonymous') {
+    // No agent = no policy = fallback to legacy wrap behavior
+    return { ok: true, reason: 'NO_POLICY_LEGACY_FALLBACK' };
+  }
+
+  const policy = getAgentPolicy(agentId);
+  if (!policy) {
+    // Registered agent without policy = DENY ALL (MXC default-deny)
+    return { ok: false, reason: `Agent ${agentId} has no registered policy — DENY ALL` };
+  }
+
+  // Check denied tools (explicit block)
+  if (policy.denied_tools.includes(toolName)) {
+    return { ok: false, reason: `${toolName} is explicitly DENIED for agent ${agentId}` };
+  }
+
+  // Check allowed tools (explicit allow)
+  if (policy.allowed_tools.length > 0 && !policy.allowed_tools.includes(toolName)) {
+    return { ok: false, reason: `${toolName} not in allowed_tools for agent ${agentId}` };
+  }
+
+  // Check risk tier against irreversibility threshold
+  const toolRisk = CANONICAL_TOOL_RISKS[toolName] || { tier: 'T0', action_class: 'OBSERVE' };
+  const riskTierNum = RISK_TIERS.indexOf(toolRisk.tier);
+  if (riskTierNum >= 3 && policy.irreversibility_threshold < 0.3) {
+    return { ok: false, reason: `T${riskTierNum} tool exceeds irreversibility threshold for agent ${agentId}` };
+  }
+
+  return { ok: true, reason: 'POLICY_PASS' };
+}
+
+// Seed federation agents with policies
+registerAgentPolicy('omega-forge', {
+  agent_role: 'engineer',
+  allowed_tools: ['arif_sense_observe', 'arif_ops_measure', 'arif_mind_reason', 'arif_memory_recall',
+                   'arif_evidence_fetch', 'arif_heart_critique', 'arif_forge_execute', 'arif_vault_seal',
+                   'arif_judge_deliberate', 'arif_session_init', 'arif_reply_compose'],
+  allowed_organs: ['arifOS', 'GEOX', 'WEALTH', 'WELL', 'A-FORGE', 'AAA'],
+  irreversibility_threshold: 0.8,
+});
+
+registerAgentPolicy('hermes-asi', {
+  agent_role: 'relay',
+  allowed_tools: ['arif_sense_observe', 'arif_ops_measure', 'arif_memory_recall', 'arif_reply_compose'],
+  allowed_organs: ['arifOS'],
+  irreversibility_threshold: 0.2,
+});
+
 // ── Exports ─────────────────────────────────────────────────────────
 module.exports = {
   extractEnvelope,
@@ -259,4 +346,9 @@ module.exports = {
   CANONICAL_TOOL_RISKS,
   RISK_TIERS,
   ACTION_CLASSES,
+  // Agent Policy (GAP-E)
+  registerAgentPolicy,
+  getAgentPolicy,
+  validateAgentPolicy,
+  AGENT_POLICIES,
 };
