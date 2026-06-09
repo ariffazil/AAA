@@ -1,4 +1,5 @@
 import agentCard from './agent-card.json';
+import discoveryRoutingPolicy from './discovery-routing-policy.json';
 
 export interface AgentIdentity {
   name: string;
@@ -7,6 +8,23 @@ export interface AgentIdentity {
   creator: string;
   runtime: string;
 }
+
+const BOOTSTRAP_IDENTITY: AgentIdentity = {
+  name: agentCard.name,
+  version: agentCard.version,
+  description: agentCard.description,
+  creator: agentCard.provider.organization,
+  runtime: agentCard.provider.runtime
+};
+
+const BOOTSTRAP_ENDPOINTS = {
+  a2a: agentCard.url,
+  discovery_contract: '/.well-known/a2a-discovery.json',
+  agent_card: '/.well-known/agent-card.json',
+  agent_legacy: '/.well-known/agent.json',
+  routing_policy: '/.well-known/a2a-routing-policy.json',
+  federation_manifest: '/.well-known/arifos-federation.json'
+};
 
 export const CONSTITUTION_DEFAULTS = {
   version: 'v888.1.0-CONSTITUTION',
@@ -18,9 +36,9 @@ export const CONSTITUTION_DEFAULTS = {
 export function getBootstrapConfig(agentId: string) {
   return {
     agent_id: agentId,
-    identity: agentCard.agent,
+    identity: BOOTSTRAP_IDENTITY,
     constitution: CONSTITUTION_DEFAULTS,
-    endpoints: agentCard.endpoints,
+    endpoints: BOOTSTRAP_ENDPOINTS,
     capabilities: agentCard.capabilities,
     timestamp: new Date().toISOString()
   };
@@ -28,4 +46,8 @@ export function getBootstrapConfig(agentId: string) {
 
 export function getAgentCard() {
   return agentCard;
+}
+
+export function getDiscoveryRoutingPolicy() {
+  return discoveryRoutingPolicy;
 }

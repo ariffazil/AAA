@@ -10,9 +10,36 @@ import {
 import { createAuthMiddleware, AuthContext } from './auth';
 import { TaskStore, EventBus } from './store';
 import { GovernanceAdapter } from '../adapter/router';
-import { getAgentCard, CONSTITUTION_DEFAULTS } from '../seed/bootstrap';
+import { getAgentCard, getDiscoveryRoutingPolicy, CONSTITUTION_DEFAULTS } from '../seed/bootstrap';
 import https from 'node:https';
 import http from 'node:http';
+
+function getA2ADiscoveryContract() {
+  const card = getAgentCard();
+  const policy = getDiscoveryRoutingPolicy();
+  return {
+    contract_id: 'aaa-a2a-discovery-contract-v1',
+    version: '1.0.0',
+    canonical_discovery_surface: '/.well-known/a2a-discovery.json',
+    canonical_agent_card: '/.well-known/agent-card.json',
+    canonical_routing_policy: '/.well-known/a2a-routing-policy.json',
+    compatibility_aliases: {
+      agent_card: ['/agent-card.json', '/a2a/agent-card.json'],
+      legacy_agent: ['/.well-known/agent.json', '/agent.json', '/a2a/agent.json'],
+      routing_policy: ['/a2a/routing-policy.json'],
+    },
+    protocol: {
+      name: 'A2A',
+      version: card.protocol_version,
+      preferred_transport: card.preferred_transport || 'jsonrpc-https',
+    },
+    policy: {
+      default_mode: policy.default_mode,
+      fallback_mode: policy.fallback?.mode || 'hybrid',
+      graph_only_allowed_by_default: false,
+    },
+  };
+}
 
 // ── Grafana Webhook + Organ Monitor + Telegram Notifier ───────────────────────
 
@@ -280,8 +307,31 @@ export function createApp(): express.Application {
   const mainRouter = Router();
 
   // ── Discovery ────────────────────────────────────────────────────────────
-  mainRouter.get('/.well-known/agent.json', (req, res) => res.json(getAgentCard()));
-  mainRouter.get('/agent.json', (req, res) => res.json(getAgentCard()));
+  const discoveryAliases = [
+    '/.well-known/a2a-discovery.json',
+    '/a2a/discovery-contract.json',
+    '/.well-known/agent-card.json',
+    '/.well-known/agent.json',
+    '/agent-card.json',
+    '/agent.json',
+    '/a2a/agent-card.json',
+    '/a2a/agent.json',
+  ];
+  for (const path of discoveryAliases) {
+    mainRouter.get(path, (req, res) => {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+      if (path === '/.well-known/a2a-discovery.json') {
+        return res.json(getA2ADiscoveryContract());
+      }
+      return res.json(getAgentCard());
+    });
+  }
+  for (const path of ['/.well-known/a2a-routing-policy.json', '/a2a/routing-policy.json']) {
+    mainRouter.get(path, (req, res) => {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+      res.json(getDiscoveryRoutingPolicy());
+    });
+  }
 
   mainRouter.get('/health', (req, res) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
@@ -289,7 +339,7 @@ export function createApp(): express.Application {
     res.json({
       status: 'healthy',
       protocol: 'A2A',
-      version: '0.3.0',
+      version: '1.0.0',
       gateway: 'AAA',
       auth: (req as any).authContext?.authenticated ? 'enabled' : 'development',
     });
