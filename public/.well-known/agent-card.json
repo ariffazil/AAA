@@ -1,96 +1,63 @@
 {
-  "protocol_version": "0.3.0",
-  "id": "aaa-gateway",
   "name": "AAA Gateway",
-  "description": "Governed agent gateway for AAA. Exposes only approved delegation and coordination surfaces.",
-  "url": "https://aaa.arif-fazil.com/a2a",
-  "preferred_transport": "jsonrpc-https",
-  "additional_interfaces": [
+  "description": "Governed A2A v1.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13. WARGA: Constitutional Agent — not BINATANG, not harness, not cage.",
+  "provider": { "organization": "arifOS", "system": "AAA" },
+  "version": "1.0.0",
+  "supportedInterfaces": [
     {
-      "transport": "sse",
-      "url": "https://aaa.arif-fazil.com/a2a/events"
+      "url": "https://aaa.arif-fazil.com",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
     }
   ],
-  "provider": {
-    "organization": "arifOS",
-    "system": "AAA",
-    "runtime": "OpenClaw"
-  },
-  "version": "0.1.0",
   "capabilities": {
     "streaming": true,
-    "push_notifications": false,
-    "authenticated_extended_card": false,
-    "reply_mode_support": true
+    "pushNotifications": false,
+    "extendedAgentCard": false
   },
-  "reply_modes": ["HEALTH", "INCIDENT", "PROPOSAL", "ESCALATION", "AUDIT", "PLAN", "EXPLAIN", "DENY", "META"],
-  "security_schemes": [
-    {
-      "id": "gateway-token",
-      "type": "bearer",
-      "description": "Gateway bearer token for internal trusted peers."
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "tokenType": "opaque"
     },
-    {
-      "id": "oauth2",
-      "type": "oauth2",
-      "description": "OAuth/OIDC for user-linked or federated callers."
-    },
-    {
-      "id": "api-key",
-      "type": "apiKey",
-      "description": "API key for fixed infrastructure peers."
-    },
-    {
-      "id": "mtls",
-      "type": "mutualTLS",
-      "description": "mTLS for trusted machine-to-machine lanes."
+    "apiKey": {
+      "scheme": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key"
     }
-  ],
-  "security": [
-    [
-      "gateway-token"
-    ],
-    [
-      "oauth2"
-    ],
-    [
-      "api-key",
-      "mtls"
-    ]
-  ],
-  "default_input_modes": [
-    "text/plain",
-    "application/json"
-  ],
-  "default_output_modes": [
-    "text/plain",
-    "application/json"
-  ],
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
   "skills": [
     {
       "id": "agent-dispatch",
       "name": "Agent Dispatch",
-      "description": "Non-blocking supervised task dispatch to approved internal agents.",
-      "approval_policy": "hold"
+      "description": "Non-blocking supervised task dispatch to approved internal agents (Hermes, OpenClaw, arifOS kernel). Governed by F1-F13 constitutional floors.",
+      "tags": ["dispatch", "task", "coordination", "governed"],
+      "examples": ["dispatch a task to the planner agent", "send work to the geodesy agent"]
     },
     {
       "id": "agent-handoff",
       "name": "Agent Handoff",
-      "description": "Delegation to approved agents through governed handoff workflows.",
-      "approval_policy": "hold"
+      "description": "Delegation to approved agents through governed handoff workflows with VAULT999 audit trail.",
+      "tags": ["handoff", "delegation", "transfer", "governed"],
+      "examples": ["handoff to the mobility agent", "transfer context to planner"]
     },
     {
       "id": "status-query",
       "name": "Status Query",
-      "description": "Read-only task and run status retrieval.",
-      "approval_policy": "on-demand"
+      "description": "Read-only task and run status retrieval across the federation mesh.",
+      "tags": ["query", "status", "read-only"],
+      "examples": ["check task status", "get current state of task 123"]
     }
   ],
-  "supports_authenticated_extended_card": false,
-  "openclaw_binding": {
-    "gateway_target": "openclaw-gateway",
-    "bridge_ref": "openclaw/a2a/bridge.yaml",
-    "session_mode": "acp",
-    "approval_policy": "hold"
-  }
+  "extensions": [
+    {
+      "uri": "https://arifos.arif-fazil.com/extensions/constitutional-governance",
+      "description": "arifOS Constitutional Governance — F1-F13 floors, 888_JUDGE verdict authority, VAULT999 sealed audit. All irreversible actions require human sovereign approval. No self-authorization permitted.",
+      "required": true,
+      "version": "1.0.0"
+    }
+  ],
+  "signatures": []
 }
