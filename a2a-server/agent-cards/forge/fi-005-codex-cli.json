@@ -1,0 +1,25 @@
+{
+  "id": "FI-005",
+  "name": "Codex CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "OpenAI Codex CLI — goal-based agentic coding. Has active goals database (goals_1.sqlite). TOML-defined sub-agents. Landlock sandbox.",
+  "version": "0.136.0",
+  "model": "UNKNOWN (likely GPT/Codex via OpenAI API)",
+  "izin": "GRANTED",
+  "izin_date": "2026-05-20",
+  "sandbox": "landlock",
+  "binary": "/usr/local/bin/codex",
+  "config": "/root/.codex/",
+  "services": [],
+  "mcpServers": "UNKNOWN",
+  "subAgentPolicy": {
+    "default": "ALLOWED — only from registered .codex/agents/*.toml",
+    "goalsEngine": "active",
+    "goalsDb": "/root/.codex/goals_1.sqlite",
+    "note": "Active goals database exists. Goal contents UNVERIFIED."
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "auditNote": "Has active goals database. MCP connections UNVERIFIED. Goals may trigger autonomous code execution."
+}

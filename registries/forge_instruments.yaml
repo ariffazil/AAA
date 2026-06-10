@@ -1,0 +1,174 @@
+# AAA REGISTRY: FORGE INSTRUMENTS
+# Class 1 Workers — CLI Tools Installed by Arif
+# Forged: 2026-06-10 by Ω | Authority: F13 SOVEREIGN
+# Canonical: /root/FORGE_REGISTRY.md
+
+version: 1
+last_audit: "2026-06-10T10:50:00Z"
+auditor: "OMEGA"
+
+instruments:
+  - id: FI-001
+    name: OpenCode
+    binary: /usr/local/bin/opencode
+    version: 1.15.0
+    model: deepseek-v4-pro
+    fallback_model: deepseek-v4-flash
+    izin: GRANTED
+    izin_date: "2026-05-17"
+    sandbox: process
+    subagent_policy:
+      default: "888_HOLD"
+      max_parallel: 1
+      registered_subagents:
+        - forge
+        - auditor
+        - explore
+        - general
+    mcp_servers:
+      - arifOS
+      - WEALTH
+      - WELL
+      - GEOX
+      - supabase
+      - exa
+      - minimax-media
+      - minimax-code
+      - filesystem
+      - memory
+      - sequential-thinking
+      - time
+      - github
+      - brave-search
+      - git
+      - repomapper
+      - serena
+      - meyhem
+      - composio
+    config_path: /root/.config/opencode/opencode.json
+    systemd_service: opencode.service
+    telegram_bot: opencode-bot.service
+
+  - id: FI-002
+    name: Claude Code
+    binary: /root/.local/bin/claude
+    version: 2.1.160
+    model: deepseek-v4-pro
+    izin: GRANTED
+    izin_date: "2026-04-15"
+    sandbox: seatbelt (bubblewrap + seccomp)
+    subagent_policy:
+      default: "888_HOLD"
+      agent_teams: DISABLED
+      workflows: DISABLED
+      bughunter_fleet_size: 5
+      note: "All sub-agent features require explicit F13 session override"
+    mcp_servers:
+      - arifOS
+      - minimax-media
+      - minimax-code
+      - WEALTH
+      - WELL
+      - github
+      - brave-search
+      - meyhem
+      - playwright-mcp
+      - capability-index
+    config_path: /root/.claude.json
+    settings_path: /root/.claude/settings.json
+    oauth_account: arifbfazil@gmail.com
+
+  - id: FI-003
+    name: Qwen Code
+    binary: /usr/bin/qwen
+    version: 0.17.1
+    model: UNKNOWN
+    izin: PENDING_AUDIT
+    izin_date: null
+    sandbox: UNKNOWN
+    subagent_policy:
+      default: UNKNOWN
+    mcp_servers: UNKNOWN
+    config_path: /root/.qwen/
+    note: "INSTALLED AND RUNNING. Model, MCP connections, and sandbox UNVERIFIED. Requires F13 audit before IZIN can be granted."
+
+  - id: FI-004
+    name: Gemini CLI
+    binary: /usr/bin/gemini
+    version: 0.43.0
+    model: UNKNOWN
+    izin: PENDING_AUDIT
+    izin_date: null
+    sandbox: process
+    subagent_policy:
+      default: "888_HOLD"
+      agent_skills: "per-skill approval required"
+    mcp_servers:
+      - arifos
+      - geox
+      - wealth
+      - well
+      - aforge
+      - context7
+      - playwright
+      - github
+      - brave-search
+      - capability-index
+      - serena
+      - repomapper
+      - meyhem
+    config_path: /root/.gemini/
+    note: "CONNECTED TO 5 FEDERATION ORGANS. Model and data sensitivity UNVERIFIED. Free tier — data may go to Google."
+
+  - id: FI-005
+    name: Codex CLI
+    binary: /usr/local/bin/codex
+    version: 0.136.0
+    model: UNKNOWN
+    izin: GRANTED
+    izin_date: "2026-05-20"
+    sandbox: landlock
+    subagent_policy:
+      default: "ALLOWED — only from registered .codex/agents/*.toml"
+      goals_engine: active
+      goals_db: /root/.codex/goals_1.sqlite
+    mcp_servers: UNKNOWN
+    config_path: /root/.codex/
+    note: "Has active goals database. Goal contents UNVERIFIED. Audit recommended."
+
+  - id: FI-006
+    name: Copilot CLI
+    binary: /usr/bin/copilot
+    version: 1.0.61
+    model: UNKNOWN
+    izin: GRANTED
+    izin_date: "2026-05-24"
+    sandbox: process
+    subagent_policy:
+      default: "ALLOWED — /fleet only, max 3 parallel, read-only sandbox"
+      fleet_max: 3
+    mcp_servers:
+      - arifOS
+      - playwright
+      - WEALTH
+      - WELL
+      - capability-index
+      - github-official
+      - github
+      - brave-search
+      - meyhem
+      - repomapper
+      - serena
+    config_path: /root/.copilot/mcp-config.json
+
+  - id: FI-007
+    name: Aider
+    binary: NOT INSTALLED
+    version: null
+    model: null
+    izin: N/A
+    izin_date: null
+    sandbox: null
+    subagent_policy: null
+    mcp_servers: []
+    note: "NOT PRESENT ON MACHINE. No installation found."
