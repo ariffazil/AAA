@@ -1,0 +1,20 @@
+{
+  "id": "FI-007",
+  "name": "Aider",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Aider AI pair programming tool. NOT INSTALLED on this machine.",
+  "version": null,
+  "model": null,
+  "izin": "N/A",
+  "izin_date": null,
+  "sandbox": null,
+  "binary": "NOT FOUND",
+  "config": null,
+  "services": [],
+  "mcpServers": [],
+  "subAgentPolicy": null,
+  "authority": "none",
+  "riskTier": "none",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "auditNote": "Not present on the machine. No installation found via which/pip/npm."
+}

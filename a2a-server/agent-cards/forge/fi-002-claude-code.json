@@ -1,0 +1,31 @@
+{
+  "id": "FI-002",
+  "name": "Claude Code",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Anthropic Claude Code CLI — native agentic coding assistant. DeepSeek-V4-Pro via Anthropic-compatible endpoint. Has Agent Teams, workflows, and bughunter capabilities (all DISABLED by default).",
+  "version": "2.1.160",
+  "model": "deepseek-v4-pro (via Anthropic compat endpoint)",
+  "izin": "GRANTED",
+  "izin_date": "2026-04-15",
+  "sandbox": "seatbelt (bubblewrap + seccomp + Landlock)",
+  "binary": "/root/.local/bin/claude",
+  "config": "/root/.claude.json",
+  "settings": "/root/.claude/settings.json",
+  "oauthAccount": "arifbfazil@gmail.com",
+  "services": [],
+  "mcpServers": [
+    "arifOS", "minimax-media", "minimax-code",
+    "WEALTH", "WELL", "github", "brave-search",
+    "meyhem", "playwright-mcp", "capability-index"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "agentTeams": "DISABLED",
+    "workflows": "DISABLED",
+    "bughunterFleetSize": 5,
+    "note": "All sub-agent features require explicit F13 session override"
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "lastAudit": "2026-06-10T10:50:00Z"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "FI-001",
+  "name": "OpenCode",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Primary forge instrument. arifOS Forge Agent (Ω) runtime. DeepSeek-V4-Pro powered constitutional engineering agent.",
+  "version": "1.15.0",
+  "model": "deepseek-v4-pro",
+  "fallback_model": "deepseek-v4-flash",
+  "izin": "GRANTED",
+  "izin_date": "2026-05-17",
+  "sandbox": "process",
+  "binary": "/usr/local/bin/opencode",
+  "config": "/root/.config/opencode/opencode.json",
+  "services": ["opencode.service", "opencode-bot.service"],
+  "mcpServers": [
+    "arifOS", "WEALTH", "WELL", "GEOX",
+    "supabase", "exa", "minimax-media", "minimax-code",
+    "filesystem", "memory", "sequential-thinking", "time",
+    "github", "brave-search", "git", "repomapper", "serena",
+    "meyhem", "composio"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 1,
+    "registered": ["forge", "auditor", "explore", "general"]
+  },
+  "telegramBot": "@777_FORGE_bot (via opencode-bot.service)",
+  "authority": "engineer",
+  "riskTier": "low",
+  "lastAudit": "2026-06-10T10:50:00Z"
+}
