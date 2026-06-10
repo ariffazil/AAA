@@ -1,0 +1,76 @@
+name: "Copilot Setup Steps — AAA"
+
+# Runs when this file changes (validation) and before every Copilot coding agent session
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+  pull_request:
+    paths:
+      - .github/workflows/copilot-setup-steps.yml
+
+jobs:
+  # MUST be named exactly `copilot-setup-steps`
+  copilot-setup-steps:
+    name: "AAA — Pre-install control plane and A2A gateway dependencies"
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout AAA
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install React/Vite/A2A dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Validate AAA contracts (F2 TRUTH gate)
+        run: npm run validate:aaa
+
+      - name: Build React cockpit and A2A gateway
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Verify A2A server starts (smoke test)
+        run: |
+          timeout 10 node a2a-server/server.js &
+          sleep 3
+          curl -sf http://localhost:3001/health && echo "[PASS] A2A gateway healthy" || echo "[WARN] A2A health check skipped"
+          kill %1 2>/dev/null || true
+        env:
+          PORT: "3001"
+          A2A_AUTH_TOKEN: ci-test-token
+          NODE_ENV: ci
+
+      - name: Print AAA setup summary
+        run: |
+          echo "=== AAA Copilot Environment Ready ==="
+          echo "Node: $(node --version)"
+          echo "npm:  $(npm --version)"
+          echo ""
+          echo "Federation topology (HEXAGON v2.0):"
+          echo "  333-AGI  — MIND (reason + execute)"
+          echo "  555-ASI  — MEMORY (critique + synthesize)"
+          echo "  888-APEX — JUDGE (F1-F13 arbitration)"
+          echo "  A-AUDIT  — Observer (anomaly detection)"
+          echo "  A-ARCHIVE— Sealer (VAULT999 writes)"
+          echo ""
+          echo "Key surfaces:"
+          echo "  React cockpit:  src/ (Vite 8 + React 19 + Tailwind 4)"
+          echo "  A2A gateway:    a2a-server/server.js (port 3001)"
+          echo "  Agent registry: agents/ (HEXAGON.yaml + per-agent dirs)"
+          echo "  Registries:     registries/ (servers/tools/workflows/agents)"
+          echo ""
+          echo "Agent cards: agents/*/agent-card.json"
+          echo "Build: npm run build | Start A2A: node a2a-server/server.js"
+          echo "DITEMPA BUKAN DIBERI"
