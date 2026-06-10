@@ -1,0 +1,23 @@
+{
+  "id": "FI-003",
+  "name": "Qwen Code",
+  "class": "FORGE_INSTRUMENT",
+  "description": "⚠️ PENDING AUDIT. Alibaba Qwen Code CLI — installed and running (node binary). Model, MCP connections, sandbox, and sub-agent policy UNVERIFIED.",
+  "version": "0.17.1",
+  "model": "UNKNOWN",
+  "izin": "PENDING_AUDIT",
+  "izin_date": null,
+  "sandbox": "UNKNOWN",
+  "binary": "/usr/bin/qwen (node wrapper)",
+  "config": "/root/.qwen/",
+  "services": [],
+  "mcpServers": "UNKNOWN",
+  "subAgentPolicy": {
+    "default": "UNKNOWN",
+    "note": "AUDIT REQUIRED — this instrument is running on the machine with unknown configuration"
+  },
+  "authority": "unverified",
+  "riskTier": "high",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "auditNote": "Binary confirmed running (ps aux). Package @qwen-code/qwen-code v0.17.1. Config directory exists at /root/.qwen/. Model and MCP endpoints NOT verified."
+}

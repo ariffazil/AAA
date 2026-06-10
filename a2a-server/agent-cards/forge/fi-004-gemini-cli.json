@@ -1,0 +1,27 @@
+{
+  "id": "FI-004",
+  "name": "Gemini CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "⚠️ PENDING AUDIT. Google Gemini CLI — connected to 13 MCP servers including 5 federation organs (arifos, geox, wealth, well, aforge). Free tier — data may be sent to Google.",
+  "version": "0.43.0",
+  "model": "UNKNOWN",
+  "izin": "PENDING_AUDIT",
+  "izin_date": null,
+  "sandbox": "process",
+  "binary": "/usr/bin/gemini",
+  "config": "/root/.gemini/",
+  "services": [],
+  "mcpServers": [
+    "arifos", "geox", "wealth", "well", "aforge",
+    "context7", "playwright", "github", "brave-search",
+    "capability-index", "serena", "repomapper", "meyhem"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD — agent skills require per-skill approval",
+    "note": "Has agent skills capability. Model and data handling policy UNVERIFIED."
+  },
+  "authority": "unverified",
+  "riskTier": "high",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "auditNote": "CONNECTED TO 5 FEDERATION MCP ORGANS. Data sent to Google API (free tier). Model, sandbox, and data sensitivity UNVERIFIED. Requires F13 review."
+}
