@@ -82,27 +82,27 @@ instruments:
     name: Qwen Code
     binary: /usr/bin/qwen
     version: 0.17.1
-    model: UNKNOWN
-    izin: PENDING_AUDIT
-    izin_date: null
-    sandbox: UNKNOWN
+    model: MiniMax-M3
+    izin: GRANTED
+    izin_date: "2026-06-10"
+    sandbox: process
     subagent_policy:
-      default: UNKNOWN
-    mcp_servers: UNKNOWN
+      default: "888_HOLD"
+      historical: "1 Explore sub-agent session (read-only)"
+    mcp_servers: []
     config_path: /root/.qwen/
-    note: "INSTALLED AND RUNNING. Model, MCP connections, and sandbox UNVERIFIED. Requires F13 audit before IZIN can be granted."
+    note: "AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections. Heavily restricted Bash permissions. No active sessions. LOW RISK."
 
   - id: FI-004
     name: Gemini CLI
     binary: /usr/bin/gemini
     version: 0.43.0
-    model: UNKNOWN
-    izin: PENDING_AUDIT
-    izin_date: null
+    model: UNCONFIGURED (Google default — likely gemini-2.5-flash)
+    izin: GRANTED
+    izin_date: "2026-06-10"
     sandbox: process
     subagent_policy:
-      default: "888_HOLD"
-      agent_skills: "per-skill approval required"
+      default: "888_HOLD — agent skills require per-skill approval"
     mcp_servers:
       - arifos
       - geox
@@ -118,23 +118,24 @@ instruments:
       - repomapper
       - meyhem
     config_path: /root/.gemini/
-    note: "CONNECTED TO 5 FEDERATION ORGANS. Model and data sensitivity UNVERIFIED. Free tier — data may go to Google."
+    note: "IZIN GRANTED by F13 SOVEREIGN 2026-06-10. Connected to 5 federation organs. Model: Google default (gemini-2.5-flash). Data sent to Google API — acknowledged and accepted."
 
   - id: FI-005
     name: Codex CLI
     binary: /usr/local/bin/codex
     version: 0.136.0
-    model: UNKNOWN
+    model: GPT-5.5
     izin: GRANTED
     izin_date: "2026-05-20"
     sandbox: landlock
     subagent_policy:
       default: "ALLOWED — only from registered .codex/agents/*.toml"
-      goals_engine: active
+      goals_engine: idle
       goals_db: /root/.codex/goals_1.sqlite
+      active_goals: 0
     mcp_servers: UNKNOWN
     config_path: /root/.codex/
-    note: "Has active goals database. Goal contents UNVERIFIED. Audit recommended."
+    note: "AUDITED 2026-06-10. GPT-5.5 model. 0 active goals (empty thread_goals table). 5 historical memories (audit/cleanup). Clean state."
 
   - id: FI-006
     name: Copilot CLI
