@@ -2,9 +2,9 @@
   "id": "FI-005",
   "name": "Codex CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "OpenAI Codex CLI — goal-based agentic coding. Has active goals database (goals_1.sqlite). TOML-defined sub-agents. Landlock sandbox.",
+  "description": "OpenAI Codex CLI — GPT-5.5 powered. Goal-based agentic coding with Landlock sandbox. 0 active goals.",
   "version": "0.136.0",
-  "model": "UNKNOWN (likely GPT/Codex via OpenAI API)",
+  "model": "GPT-5.5 (OpenAI API)",
   "izin": "GRANTED",
   "izin_date": "2026-05-20",
   "sandbox": "landlock",
@@ -14,12 +14,13 @@
   "mcpServers": "UNKNOWN",
   "subAgentPolicy": {
     "default": "ALLOWED — only from registered .codex/agents/*.toml",
-    "goalsEngine": "active",
+    "goalsEngine": "idle",
     "goalsDb": "/root/.codex/goals_1.sqlite",
-    "note": "Active goals database exists. Goal contents UNVERIFIED."
+    "activeGoals": 0,
+    "note": "Goals DB is empty. 5 historical memories from May 27 - June 2 (audit/cleanup). Clean state."
   },
   "authority": "engineer",
   "riskTier": "medium",
-  "lastAudit": "2026-06-10T10:50:00Z",
-  "auditNote": "Has active goals database. MCP connections UNVERIFIED. Goals may trigger autonomous code execution."
+  "lastAudit": "2026-06-10T18:45:00Z",
+  "auditNote": "AUDITED. GPT-5.5 model confirmed. 0 active goals. 5 historical rollout summaries (all audit/cleanup). LOW RISK."
 }
