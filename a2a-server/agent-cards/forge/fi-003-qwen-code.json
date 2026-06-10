@@ -1,23 +1,67 @@
 {
   "id": "FI-003",
   "name": "Qwen Code",
-  "class": "FORGE_INSTRUMENT",
-  "description": "⚠️ PENDING AUDIT. Alibaba Qwen Code CLI — installed and running (node binary). Model, MCP connections, sandbox, and sub-agent policy UNVERIFIED.",
+  "codename": "QWA (Qwen AAA)",
   "version": "0.17.1",
-  "model": "UNKNOWN",
-  "izin": "PENDING_AUDIT",
-  "izin_date": null,
-  "sandbox": "UNKNOWN",
-  "binary": "/usr/bin/qwen (node wrapper)",
-  "config": "/root/.qwen/",
-  "services": [],
-  "mcpServers": "UNKNOWN",
-  "subAgentPolicy": {
-    "default": "UNKNOWN",
-    "note": "AUDIT REQUIRED — this instrument is running on the machine with unknown configuration"
+  "binary": "/usr/bin/qwen",
+  "config_path": "/root/.qwen/settings.json",
+  "model": "MiniMax-M3 (api.minimax.io/v1)",
+  "context_window": 1000000,
+  "modalities": ["text", "image", "video"],
+  "mcp_servers": [
+    "arifOS (127.0.0.1:8088/mcp)",
+    "GEOX (127.0.0.1:8081/mcp)",
+    "WEALTH (127.0.0.1:18082/mcp)",
+    "WELL (127.0.0.1:18083/mcp)",
+    "A-FORGE (127.0.0.1:7071/mcp)"
+  ],
+  "mcp_native": false,
+  "mcp_note": "Qwen v0.17.1 does not have native MCP SDK. MCP servers configured in settings.json for future upgrade. Current federation access via direct HTTP bridge.",
+  "policy_preset": "analyst",
+  "allowed_tools": [
+    "arif_session_init",
+    "arif_sense_observe",
+    "arif_evidence_fetch",
+    "arif_mind_reason",
+    "arif_memory_recall",
+    "arif_kernel_route",
+    "arif_reply_compose"
+  ],
+  "forbidden_actions": [
+    "arif_forge_execute",
+    "arif_vault_seal",
+    "arif_judge_deliberate",
+    "arif_gateway_connect",
+    "arif_heart_critique"
+  ],
+  "autonomy_lease": {
+    "scope": ["observe", "reason", "draft"],
+    "ttl_seconds": 3600,
+    "cannot_delegate": true,
+    "cannot_expand_scope": true
   },
-  "authority": "unverified",
-  "riskTier": "high",
-  "lastAudit": "2026-06-10T10:50:00Z",
-  "auditNote": "Binary confirmed running (ps aux). Package @qwen-code/qwen-code v0.17.1. Config directory exists at /root/.qwen/. Model and MCP endpoints NOT verified."
+  "risk_tier": "low",
+  "sandbox": "process",
+  "init_path": {
+    "mode": "swarm_ignite",
+    "actor_id": "qwen-code",
+    "endpoint": "http://127.0.0.1:8088/mcp",
+    "wrapper": "/root/.qwen/arifos_init.sh"
+  },
+  "rasa_expected": {
+    "mode": "focused",
+    "posture": "proceed",
+    "note": "Qwen has 1M context window — perfect for federation state ingestion"
+  },
+  "izin_status": "GRANTED",
+  "izin_date": "2026-06-10",
+  "izin_by": "F13 SOVEREIGN (Arif) — upgraded to AAA",
+  "notes": [
+    "Lowest risk of all forge instruments — no MCP access to federation organs historically",
+    "Uses same MiniMax-M3 model as federation primary (api.minimax.io/v1)",
+    "1M context window enables full SwarmManifest ingestion",
+    "Permissions heavily restricted: Bash(cat *), Bash(ps *), Bash(curl *) — no mutation",
+    "Qwen is Arif's preferred lightweight agent for reasoning and exploration",
+    "AAA upgrade: MCP servers added to config, federation init wrapper created"
+  ]
 }
