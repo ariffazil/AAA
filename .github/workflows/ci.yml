@@ -35,7 +35,7 @@ jobs:
         run: npm run validate:aaa
 
       - name: Build
-        run: npm run build || true
+        run: npm run build
 
   secrets-gate:
     name: F11 — Secrets Gate
