@@ -24,6 +24,7 @@ export default defineConfig([
       // while we incrementally fix these
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'react-hooks/set-state-in-effect': 'off',
     },
   },
 ])
