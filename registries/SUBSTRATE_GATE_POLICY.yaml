@@ -1,0 +1,108 @@
+# SUBSTRATE GATE POLICY — Telegram 000♎️ @arifOS_bot
+# Owner: Arif
+# Forged: 2026-06-10
+# Scope: FORGE decisions only (code/commit/seal/rotate). Life/relationship = silent.
+# Authority: arifOS F1/F2/F13 floors. WELL substrate data.
+# Activation: when handler receives C4-class forge action AND WELL fatigue >= 0.6
+
+version: 1
+owner: arif
+forged: 2026-06-10
+scope: forge-only  # code/commit/rotate/seal. NOT life/relationship/email-personal.
+
+# ─── Decision class definitions (mirror arifOS C-class matrix) ─────────
+decision_classes:
+  C1_low:
+    examples: [read file, search, query, summarize, route intent]
+    intervention: silent  # never interrupt
+  C2_medium:
+    examples: [edit non-shared file, generate output, format, classify]
+    intervention: silent  # proceed, log only
+  C3_reversible_significant:
+    examples: [edit shared config, run tests, write to non-shared path]
+    intervention: silent  # proceed, log to /root/.hermes/cache/substrate-gate/audit.jsonl
+  C4_reversible_substantial:
+    examples: [commit, push, merge, vault seal, GH PR, docker deploy, file write to shared path]
+    intervention: HOLD_IF_FATIGUE_HIGH  # this is the gate's main use case
+  C5_irreversible:
+    examples: [rotate secret, delete data, force-push, force-replace, prod restart, Caddy reload]
+    intervention: HOLD_ALWAYS  # always HOLD, never auto-proceed
+
+# ─── WELL substrate thresholds ─────────────────────────────────────────
+substrate_thresholds:
+  decision_fatigue_high: 0.6      # WELL.well_assess_homeostasis(fatigue)
+  decision_fatigue_critical: 0.85
+  sleep_debt_days_critical: 3     # 3+ nights < 5h
+  stress_load_high: 0.7
+  cognitive_clarity_low: 0.4
+  accumulated_session_fatigue_high: 0.7
+
+# ─── HOLD rules ───────────────────────────────────────────────────────
+hold_rules:
+  - name: c4_fatigue_hold
+    when: decision_class == C4 AND fatigue >= 0.6
+    action: HOLD
+    default_defer_hours: 8
+    defer_target_local: "08:00 MYT"
+    bot_message: |
+      Arif — X ni C4 (forge: {action_type}). Fatigue {fatigue}, tidur {sleep_h}h.
+      HOLD ke {defer_target} esok, atau 888 (proceed anyway)?
+    inline_keyboard:
+      - text: "HOLD {defer_target}"
+        callback: hold_defer
+      - text: "888 proceed"
+        callback: hold_proceed
+
+  - name: c4_critical_hold
+    when: decision_class == C4 AND (fatigue >= 0.85 OR sleep_debt >= 3)
+    action: HARD_HOLD
+    bot_message: |
+      Arif — fatigue {fatigue}, tidur {sleep_h}h. C4 hold ni bukan suggestion.
+      Substrate Gate auto-HOLD. 888 override? (rare)
+
+  - name: c5_always_hold
+    when: decision_class == C5
+    action: ALWAYS_HOLD
+    bot_message: |
+      Arif — X ni C5 (irreversible: {action_type}). HOLD.
+      Saya tak proceed tanpa ack. 888 dari arifOS MCP?
+
+  - name: sleep_window_silent
+    when: local_hour between 23 and 7
+    action: SILENT
+    exceptions: [F1_violation, F2_violation, F13_violation, arif_explicit_invocation]
+
+# ─── Bot presence (when to talk, when to stay silent) ─────────────────
+presence:
+  default: silent
+  speak_when:
+    - "/forge, /vita, /hold, /seal, /init, /vault, /status, /stop, /start, /help invoked"
+    - "inbound collapse from email/GH/cal"  # 1 msg + 2-3 pilihan
+    - "C4+C5 HOLD gate fires"
+    - "F1/F2/F13 violation detected"
+  stay_silent_when:
+    - "fatigue low AND decision C3 ke bawah"
+    - "deep block > 25 min focus"  # require no-reply signal
+    - "sleep window 23:00-07:00 MYT"
+    - "no violation, no invocation, no HOLD trigger"
+
+# ─── Inline message budget (Telegram limits) ──────────────────────────
+message_budget:
+  max_chars: 4000
+  inline_keyboard_buttons_max: 3
+  one_question_only: true  # bot asks max 1 question per turn
+  default_rest: true       # for everything else, default and proceed
+
+# ─── Audit trail (F2 TRUTH receipts) ──────────────────────────────────
+audit:
+  log_path: /root/.hermes/cache/substrate-gate/audit.jsonl
+  log_format: jsonl
+  fields: [timestamp_local, decision_class, fatigue, sleep_h, action, hold_or_proceed, defer_target, arif_choice]
+  retention_days: 90
+
+# ─── Constitutional anchor ───────────────────────────────────────────
+constitutional_anchor: |
+  The bot's job is SUBTRACTION, not addition.
+  If the bot talked more than the human, it failed.
+  If the bot asked 2+ questions in one turn, it failed.
+  F1/F2/F13 violation → speak. Everything else → silence or one-tap.
