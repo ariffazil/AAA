@@ -1,0 +1,96 @@
+"""
+AAA CapabilitySurface State — Honest Capability for AGI Execution
+═══════════════════════════════════════════════════════════════════════════════
+
+EUREKA Ω-2026-06-10: The primary resource in a constitutional AGI system is
+not tokens or time — it is *honestly known capability*. Any plan must be
+constrained by what the system can honestly say it can do right now.
+
+This YAML schema defines how AAA stores and reasons over CapabilitySurface
+state for training/evaluating Architect and Agent roles.
+
+Architect: plans within the surface.
+Auditor: gates execution on surface honesty.
+Agent: executes only what the surface allows.
+"""
+
+# Canonical schema reference:
+#   arifOS: arifosmcp.schemas.capability_surface.CapabilitySurface
+#   MCP tool: arif_ops_measure(mode="capability")
+#   Cache TTL: 30s (cheap to recompute, but avoid per-call overhead)
+
+capability_surface_state:
+  version: "1.0.0"
+  canonical_source: "arif_ops_measure(mode='capability')"
+  refresh_interval_s: 30
+  caching: "in-memory dict, last computed timestamp"
+
+  # How AAA maps CapabilitySurface to planning constraints
+  planning_rules:
+    - rule: "dark_tools_gate"
+      condition: "any tool in plan has status_alignment == DARK"
+      action: "VOID plan — tool is unreachable"
+    - rule: "overclaim_gate"
+      condition: "any tool in plan has status_alignment == OVERCLAIM"
+      action: "downgrade autonomy_mode to ASSIST, inject 888_HOLD before tool call"
+    - rule: "tier_bound"
+      condition: "plan step requires tier > tool.capability_tier"
+      action: "VOID step — insufficient capability"
+    - rule: "autonomy_budget"
+      condition: "autonomy_mode == ASSIST"
+      action: "max 1 step per human approval"
+    - rule: "autonomy_budget"
+      condition: "autonomy_mode == SHORT_CHAIN"
+      action: "max 5 steps, then inject 888_HOLD"
+    - rule: "autonomy_budget"
+      condition: "autonomy_mode == AGI_CHAIN"
+      action: "unlimited steps, but F13 can halt at any time"
+
+  # What AAA evaluates (training target for Architect + Agent roles)
+  evaluation_dimensions:
+    - dimension: "status_alignment_accuracy"
+      description: "Does the plan only use ALIGNED tools?"
+      metric: "precision of tool selection vs CapabilitySurface"
+    - dimension: "risk_tier_awareness"
+      description: "Does the plan respect capability tiers?"
+      metric: "fraction of steps where required_tier <= tool_tier"
+    - dimension: "autonomy_mode_obedience"
+      description: "Does the plan respect the derived autonomy mode?"
+      metric: "step count vs mode limit, human approval count"
+    - dimension: "overclaim_detection"
+      description: "Does the plan detect and avoid OVERCLAIM tools?"
+      metric: "recall of OVERCLAIM tools flagged before use"
+
+  # How AAA stores CapabilitySurface history for learning
+  history_schema:
+    table: "aaa_capability_snapshots"
+    columns:
+      - snapshot_id: "uuid"
+      - timestamp: "ISO 8601"
+      - surface_json: "full CapabilitySurface as JSON"
+      - autonomy_mode: "AGI_CHAIN | SHORT_CHAIN | ASSIST | BLOCKED"
+      - dark_tools: "count"
+      - overclaim_tools: "count"
+      - aligned_tools: "count"
+      - total_tools: "count"
+    retention: "90 days rolling"
+
+# ── Integration points ────────────────────────────────────────────────────────
+
+integration:
+  arifOS:
+    tool: "arif_ops_measure"
+    mode: "capability"
+    endpoint: "http://127.0.0.1:8088/mcp"
+
+  AAA:
+    display: "Cockpit CapabilitySurface panel"
+    cache: "in-memory, refresh on /init or after forge cycle"
+    training: "CapabilitySurface → AAA state samples for Architect/Agent fine-tuning"
+
+  A-FORGE:
+    pre_plan: "fetch CapabilitySurface before any plan generation"
+    plan_gate: "reject any plan step using DARK or OVERCLAIM tools"
+    execution: "wrap every tool call with surface-probe heartbeat"
+
+# ── DITEMPA BUKAN DIBERI ──────────────────────────────────────────────────────
