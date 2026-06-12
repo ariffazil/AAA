@@ -1,0 +1,49 @@
+# MiniMax Soul — Capability Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-12 Ω
+model_id: minimax
+model_family: MiniMax
+provider: MiniMax (稀宇科技)
+license: Proprietary (API access)
+type: text-generation, multimodal (vision, audio), code
+
+soul:
+  capabilities:
+    general_purpose:
+      description: "Strong all-round performance. M3 is the federation primary model."
+      confidence: 0.85
+      evidence: "Chatbot Arena rankings, federation production use"
+    reasoning:
+      description: "Good multi-step reasoning. reasoning_content field provides audit trail."
+      confidence: 0.82
+      evidence: "M3 technical report, production observations"
+    multilingual:
+      description: "Good multilingual support including BM/Malay context"
+      confidence: 0.78
+      evidence: "Production use in Malaysian context"
+    multimodal:
+      description: "Vision, TTS, video generation, music via MiniMax-MCP"
+      confidence: 0.80
+      evidence: "MiniMax-MCP tool surface (11 tools)"
+    long_context:
+      description: "Large context window, good for long agentic sessions"
+      confidence: 0.80
+      evidence: "Vendor specification"
+
+  trust_tier: 2  # standard — primary model, well-understood
+
+  suitable_for:
+    - general_purpose_agentic_tasks
+    - constitutional_reasoning
+    - multimodal_tasks
+    - long_session_governance
+    - federation_orchestration
+
+  not_recommended_for:
+    - sovereign_identity_verification_without_witness
+    - irreversible_financial_decisions_alone
+
+  variants:
+    - minimax-M3: "Primary federation model. reasoning_content audit trail."
+    - minimax-M2.7: "Previous generation. Fallback only."
+
+ditempa_bukan_diberi: true

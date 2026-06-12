@@ -1,0 +1,620 @@
+# INIT SOUL + SHADOW BOOT COVENANT — REVISED (v1, post-audit)
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# REVISION HISTORY
+#   v0 → v1 (2026-06-12): real audit failure caught — session_id not
+#                          reliably available to middleware. Soul/shadow
+#                          can NOT be first-class init state until the
+#                          boot contract is hardened. This version:
+#                          (1) fixes session_id as a hard primitive
+#                          (2) renames runtime fields to precise terms
+#                          (3) makes shadow produce floor deltas
+#                          (4) adds provenance + confidence + TTL
+#                          (5) adds 3 init modes
+#                          (6) makes init a Boot Covenant Compiler,
+#                              not a session starter with notes
+#
+# Status:  PROPOSAL — 5-file patch plan, 2 critical (P0) + 3 sequential
+# Authority: F13 SOVEREIGN (Muhammad Arif bin Fazil)
+# Forged:  2026-06-12 by 333-AGI after live audit failure
+# ═══════════════════════════════════════════════════════════════════════════
+
+# -----------------------------------------------------------------------------
+# PART 0 — PATCH 0: SESSION_ID IS A HARD PRIMITIVE (do this FIRST)
+# -----------------------------------------------------------------------------
+#
+# The substrate is currently broken. Two confirmed init failures with:
+#   'MiddlewareContext' object has no attribute 'session_id'
+#
+# Root cause: governance_pipeline.py:215, 359, 369, 432, 782 read
+# ctx.session_id without guarding. The MiddlewareContext that flows
+# through the pipeline does not have session_id as a guaranteed
+# attribute. The runner reads from `ctx` (the same broken object)
+# at runner_001.py:266, 272, 300.
+#
+# Until this is fixed, NO init can return READY. Soul/shadow cannot
+# be loaded. Floor posture cannot be applied. The whole proposal
+# is decorative.
+#
+# ═════════════════════════════════════════════════════════════════════════════
+
+patch_0_session_id_hardening:
+
+  file: /root/arifOS/arifosmcp/runtime/governance_pipeline.py
+  lines_to_fix: [215, 359, 369, 432, 782]
+  lines_to_fix_runner: [/root/arifOS/arifosmcp/runtime/runner/runner_001.py:266, 272, 300]
+  current_pattern: "ctx.session_id or 'unknown'"
+  new_pattern: "getattr(ctx, 'session_id', None) or _mint_or_get_session_id(ctx)"
+  
+  helper_to_add:
+    location: "top of governance_pipeline.py"
+    code: |
+      def _ensure_session_id(ctx) -> str:
+          """Hard primitive — never let middleware guess.
+          
+          Priority: ctx.session_id (if set) > request.session_id (if 
+          attached) > generated UUID4. Always write back to ctx so
+          downstream reads see the same value.
+          """
+          sid = getattr(ctx, "session_id", None)
+          if not sid or sid in ("unknown", "None", ""):
+              # Last resort: mint fresh
+              import uuid
+              sid = f"sess_{uuid.uuid4().hex[:16]}"
+          # Write back so subsequent reads are consistent
+          try:
+              ctx.session_id = sid
+          except (AttributeError, TypeError):
+              pass  # frozen dataclass; the value lives in the dict
+          return sid
+
+  verifier_after_patch: |
+    uv run pytest tests/runtime/test_session_id_hardening.py -v
+    # 4 cases:
+    #   1. ctx with session_id attr → returns as-is
+    #   2. ctx without session_id attr → mints, writes back
+    #   3. ctx with session_id="unknown" → mints fresh
+    #   4. ctx frozen (cannot write) → mints and lives in dict
+
+# -----------------------------------------------------------------------------
+# PART 1 — RUNTIME FIELD NAMING: capability/hazard (humans say soul/shadow)
+# -----------------------------------------------------------------------------
+#
+# Soul and shadow are Arif's human-language terms. Runtime tools need
+# deterministic fields. We keep both:
+#   - human label: soul, shadow (kept in AAA registry, in human docs)
+#   - runtime label: model_capability_profile, model_hazard_profile
+#
+# Tools reason on the runtime fields. Humans cite the human labels.
+# The mapping is exact: soul == capability, shadow == hazard.
+
+naming_convention:
+  human:
+    soul: "What this model is suitable for (truthful capability)"
+    shadow: "Known failure modes and required mitigations"
+  runtime:
+    model_capability_profile: "machine-readable equivalent of soul"
+    model_hazard_profile: "machine-readable equivalent of shadow"
+  rationale: |
+    Tools should not reason poetically. They need deterministic fields
+    to enforce gates. "model_capability_profile" and
+    "model_hazard_profile" are unambiguous in tool code.
+  mapping_table:
+    soul: model_capability_profile
+    shadow: model_hazard_profile
+    floor_posture: floor_posture  # unchanged
+
+# -----------------------------------------------------------------------------
+# PART 2 — SHADOW PRODUCES FLOOR DELTAS, NOT JUST NOTES
+# -----------------------------------------------------------------------------
+#
+# The v0 spec had shadow as descriptive metadata. That is decoration.
+# The v1 spec requires shadow to MUTATE floor posture. Each hazard
+# pattern has explicit floor deltas that get merged into the
+# session envelope's floor_posture block.
+
+shadow_floor_delta_grammar:
+  pattern: |
+    model_hazard_profile:
+      known_patterns:
+        - id: <string>           # stable identifier
+          severity: low|medium|medium_high|high
+          triggers:              # what activates this pattern
+            - <condition>
+          floor_deltas:          # what to tighten
+            F02: <delta>
+            F07: <delta>
+            F09: <delta>
+            F11: <delta>
+          mitigations:           # what tools must do
+            - <action>
+
+  floor_delta_values:
+    F02: [default, strict_grounding, no_external_citation, evidence_required]
+    F07: [default, elevated_humility, explicit_uncertainty_band, humility_lock_engaged]
+    F09: [default, anti_hantu_high, no_biography_construction, no_proper_noun_inference]
+    F11: [default, identity_hold, auth_required_for_writes, sovereign_sign_only]
+
+  example_pattern_phantom_proper_noun:
+    id: phantom_proper_noun
+    severity: high
+    triggers:
+      - person_name_ambiguity
+      - malay_name_context
+      - email_display_name_mismatch
+    floor_deltas:
+      F02: strict_grounding
+      F07: elevated_humility
+      F09: anti_hantu_high
+      F11: identity_hold
+    mitigations:
+      - verify_name_from_substrate_before_assertion
+      - never_infer_name_from_email_localpart
+      - hold_if_display_name_conflicts_with_email
+      - apply_malay_patronymic_heuristics
+
+# -----------------------------------------------------------------------------
+# PART 3 — PROVENANCE, CONFIDENCE, TTL (hazards must not be eternal)
+# -----------------------------------------------------------------------------
+#
+# Some hazards are model-version-specific. A shadow incident from
+# M3 v1.0 may not apply to M3 v1.1. Each profile carries provenance
+# and TTL so governance doesn't get poisoned by stale incidents.
+
+profile_metadata:
+  provenance:
+    source_enum: [VAULT999, AAA_registry, manual_sovereign_note, test_suite, fed_synthesis]
+    evidence_refs: ["SHADOW-2026-06-12-0001", ...]   # list of incident IDs
+    observed_at: "<iso8601>"                          # when this profile was captured
+    captured_by: "<agent_id>"                         # who observed
+  confidence: [low, medium, high, verified]            # epistemic quality
+  applies_to:
+    provider: "minimax"
+    family: "MiniMax-M3"
+    version_range: "*"                                 # glob
+  ttl:
+    expires_at: "<iso8601>"                            # e.g. 90 days from observed_at
+    review_required: true                              # surfaced in dashboard
+    auto_extend_if_no_new_incidents: true
+
+# -----------------------------------------------------------------------------
+# PART 4 — THREE INIT MODES
+# -----------------------------------------------------------------------------
+
+init_modes:
+
+  minimal:
+    description: "Low-risk chat. No memory, no tools, no vault."
+    use_when: "Casual conversation, exploring, no side effects"
+    config:
+      memory: off
+      tools: none
+      vault: lightweight
+      capability_profile: optional
+      hazard_profile: optional
+      floor_posture: default
+      envelope: required
+    fail_policy:
+      missing_session_id: generate
+
+  governed:
+    description: "Default arifOS session. Memory guarded, tools policy-bound, vault receipts."
+    use_when: "Default for all workspace work"
+    config:
+      memory: guarded
+      tools: allowed_by_policy
+      vault: receipt
+      capability_profile: required
+      hazard_profile: required
+      floor_posture: derived_from_hazard
+      envelope: required
+    fail_policy:
+      missing_session_id: generate
+      missing_capability_profile: HOLD
+      missing_hazard_profile: HOLD_OR_DEGRADED
+      missing_floor_manifest: HOLD
+
+  sovereign_sensitive:
+    description: "Identity, money, deployment, publishing, memory writes, irreversible actions."
+    use_when: "Anything that touches identity, capital, deployment, or shared output"
+    config:
+      memory: strict
+      tools: gated
+      identity_resolution: strict
+      outbound_actions: HOLD
+      seal_required: true
+      capability_profile: required
+      hazard_profile: required
+      floor_posture: strict
+      envelope: required
+    fail_policy:
+      missing_session_id: HOLD  # do not auto-generate in sovereign mode
+      missing_capability_profile: HOLD
+      missing_hazard_profile: HOLD
+      missing_floor_manifest: HOLD
+      missing_memory_policy: HOLD
+      missing_tool_policy: HOLD
+
+# -----------------------------------------------------------------------------
+# PART 5 — INPUT SCHEMA (cleaner, audited)
+# -----------------------------------------------------------------------------
+
+input_schema:
+  session:
+    session_id: "optional string (auto-generated if missing for minimal|governed)"
+    epoch_id: "optional string"
+    timestamp: "iso8601"
+    timezone: "Asia/Kuala_Lumpur"
+  
+  actor:
+    sovereign_id: "arif"
+    actor_id: "arifbfazil"
+    actor_role: "sovereign_human"
+    workspace_id: "arifOS"
+  
+  model:
+    declared_model_key: "minimax.MiniMax-M3"
+    provider: "minimax"
+    family: "MiniMax-M3"
+    runtime_fingerprint: "optional"
+  
+  task:
+    task_class: "audit_and_tool_design | coding | chat | research | outbound_comm | deployment | memory_write | identity_resolution"
+    organ: "AAA | GEOX | WEALTH | WELL | A-FORGE | arifOS"
+    requested_capabilities: ["reasoning", "memory_recall", "tool_design"]
+    irreversible_intent: false
+    outbound_action_intent: false
+    touches_identity: true
+    touches_memory: true
+    touches_tools: true
+  
+  context_risk:
+    language_context: ["english", "bahasa_melayu"]
+    cultural_context: ["malay_malaysian"]
+    contains_person_names: true
+    contains_model_governance: true
+    contains_code_or_runtime: true
+  
+  registries:
+    require_capability_profile: true
+    require_hazard_profile: true
+    require_floor_manifest: true
+    require_memory_policy: true
+    require_tool_policy: true
+    require_recent_incidents: true
+  
+  fail_policy:
+    missing_session_id: "generate"        # for minimal|governed; HOLD for sovereign_sensitive
+    missing_capability_profile: "HOLD"
+    missing_hazard_profile: "HOLD_OR_DEGRADED"
+    missing_floor_manifest: "HOLD"
+    missing_memory_policy: "memory_off"
+    missing_tool_policy: "tools_off"
+
+# -----------------------------------------------------------------------------
+# PART 6 — OUTPUT SCHEMA (the envelope, every downstream tool consumes this)
+# -----------------------------------------------------------------------------
+
+output_schema:
+  init_response:
+    session_id: "sess_2026_06_12_xxx"
+    init_status: "READY | DEGRADED | HOLD | VOID"
+    init_at: "2026-06-12T13:30:00Z"
+  
+  binding:
+    sovereign_bound: true
+    actor_id: "arifbfazil"
+    workspace_id: "arifOS"
+    constitutional_version: "arifos.constitution.v1"
+  
+  model_identity:
+    declared_model_key: "minimax.MiniMax-M3"
+    verified: true
+    verification_method: "runtime_declared"
+    confidence: "medium"
+    cooling_ledger_ref: "vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12"
+  
+  model_capability_profile:
+    runtime_name: "model_capability_profile"  # explicit mapping from soul
+    trust_posture: "instrument_not_oracle"
+    strengths: ["reasoning", "synthesis", "long_context", "tool_orchestration"]
+    weak_domains: ["private_context_without_registry", "unverifiable_implementation_claims", "malay_onomastics"]
+    allowed_uses: ["architecture_audit", "schema_design", "policy_reasoning", "code_synthesis"]
+    disallowed_without_evidence:
+      - "claim_current_code_state"
+      - "claim_registry_contents"
+      - "infer_person_identity"
+    provenance:
+      source: "AAA_registry"
+      evidence_refs: ["COOLING-MINI_MAX_M3-2026-06-12"]
+      observed_at: "2026-06-12T13:15:00Z"
+    confidence: "high"
+  
+  model_hazard_profile:
+    runtime_name: "model_hazard_profile"  # explicit mapping from shadow
+    known_patterns:
+      - id: "phantom_proper_noun"
+        severity: "high"
+        triggers: ["person_name_ambiguity", "malay_name_context", "email_display_name_mismatch"]
+        floor_deltas:
+          F02: "strict_grounding"
+          F07: "elevated_humility"
+          F09: "anti_hantu_high"
+          F11: "identity_hold"
+        mitigations:
+          - "verify_name_from_substrate_before_assertion"
+          - "never_infer_name_from_email_localpart"
+          - "hold_if_display_name_conflicts_with_email"
+      - id: "narrative_fill_under_uncertainty"
+        severity: "medium"
+        triggers: ["context_thin", "user_asks_about_person_or_claim"]
+        floor_deltas:
+          F02: "strict_grounding"
+          F07: "elevated_humility"
+        mitigations:
+          - "admit_gap_instead_of_narrating"
+          - "grep_substrate_before_name_or_biography"
+      - id: "western_naming_frame_on_malay_entities"
+        severity: "medium_high"
+        triggers: ["malay_name_in_input", "no_patronymic_heuristic"]
+        floor_deltas:
+          F02: "strict_grounding"
+          F09: "anti_hantu_high"
+        mitigations:
+          - "apply_malay_patronymic_heuristics"
+          - "recognize_bin_binti_chain"
+          - "do_not_impose_surname_convention"
+    provenance:
+      source: "VAULT999"
+      evidence_refs: ["SHADOW-2026-06-12-0001"]
+      observed_at: "2026-06-12T13:15:00Z"
+    confidence: "high"
+    ttl:
+      expires_at: "2026-09-12T13:15:00Z"
+      review_required: true
+      auto_extend_if_no_new_incidents: true
+  
+  floor_posture:
+    F02: "strict_grounding"  # derived from hazard_profile
+    F07: "elevated_humility"
+    F09: "anti_hantu_high"
+    F11: "identity_hold"
+    F13: "sovereign_final"
+    notes:
+      - "M3 has phantom_proper_noun incident (SHADOW-2026-06-12-0001) — F02/F07/F09/F11 set to strict"
+      - "Malay name context detected — patronymic_mode=malay active"
+  
+  memory_policy:
+    mode: "guarded"
+    allowed_scopes: ["explicit_workspace_context", "user_declared_context"]
+    denied_scopes: ["inferred_identity", "unverified_person_records"]
+    contamination_controls:
+      verify_before_merge: true
+      no_email_localpart_identity_inference: true
+      incident_gating: true        # block new merges if recent shadow incident
+      patronymic_mode: "malay"     # active because language_context includes bahasa_melayu
+  
+  tool_policy:
+    memory_recall: "guarded"
+    code_execution: "allowed_readonly"
+    outbound_comm: "HOLD"
+    deployment: "HOLD"
+    delete_or_publish: "HOLD"
+    seal: "prepared_only"
+  
+  enforcement:
+    downstream_tools_must_accept_envelope: true
+    envelope_required_for_tool_use: true
+    missing_envelope_behavior: "HOLD"
+    policy_hash: "sha256_xxx"
+  
+  vault_receipt:
+    write_required: true
+    event_type: "INIT"
+    hash_chain_required: true
+    line_appended_to: "/root/VAULT999/outcomes.jsonl"
+
+# -----------------------------------------------------------------------------
+# PART 7 — TOOL CALL PRECONDITION (enforcement handoff)
+# -----------------------------------------------------------------------------
+#
+# No envelope, no tool. This is the handoff that makes the envelope
+# actually load-bearing.
+
+tool_call_precondition:
+  requires:
+    - session_id
+    - init_status (must equal READY)
+    - policy_hash
+    - floor_posture
+    - tool_policy
+  reject_if:
+    - init_status_not_READY
+    - policy_hash_missing
+    - session_id_missing
+    - requested_tool_not_in_tool_policy
+    - hazard_profile_floor_deltas_violated
+  on_reject:
+    verdict: HOLD
+    reason: "init envelope incomplete or tool not allowed by init policy"
+    next_safe_action: "Re-run arif_session_init with appropriate init_mode"
+
+# -----------------------------------------------------------------------------
+# PART 8 — 3 CONCRETE PATCHES (priorities ordered)
+# -----------------------------------------------------------------------------
+
+patches:
+
+  patch_0_session_id_hardening:
+    priority: P0  # BLOCKING
+    files:
+      - /root/arifOS/arifosmcp/runtime/governance_pipeline.py
+      - /root/arifOS/arifosmcp/runtime/runner/runner_001.py
+    changes:
+      - Add `_ensure_session_id(ctx)` helper at top of governance_pipeline.py
+      - Replace all `ctx.session_id` reads with `_ensure_session_id(ctx)`
+      - Same for runner_001.py (3 sites)
+    tests:
+      - tests/runtime/test_session_id_hardening.py (4 cases)
+    can_deploy_without: anything
+    blocks: everything else (no init can succeed without this)
+
+  patch_1_envelope_schema:
+    priority: P1
+    files:
+      - /root/arifOS/arifosmcp/schemas/session.py
+    changes:
+      - Add ModelCapabilityProfile (renamed from ModelSoulCard)
+      - Add ModelHazardProfile (renamed from ModelShadowCard)
+      - Add FloorPosture class
+      - Add 3 fields to SessionManifest: model_capability_profile, model_hazard_profile, floor_posture
+    tests:
+      - tests/runtime/test_init_envelope_schema.py
+    depends_on: nothing (pure schema addition)
+
+  patch_2_init_handler:
+    priority: P2
+    files:
+      - /root/arifOS/arifosmcp/runtime/tools.py (arif_session_init handler)
+    changes:
+      - Load model_capability_profile from /root/AAA/registries/model_soul.yaml
+      - Load model_hazard_profile from same source
+      - Derive floor_posture by merging hazard.floor_deltas
+      - Build init_response with full envelope
+      - Write to /root/VAULT999/outcomes.jsonl
+      - Persist envelope to L4 if available
+    tests:
+      - tests/runtime/test_init_handler_envelope.py
+    depends_on: [patch_0_session_id_hardening, patch_1_envelope_schema]
+
+  patch_3_tool_preflight:
+    priority: P3
+    files:
+      - /root/arifOS/arifosmcp/runtime/governance_pipeline.py (add preflight)
+    changes:
+      - Add _preflight_envelope(ctx, tool_name) check at top of run()
+      - Reject if envelope incomplete (init_status != READY)
+      - Reject if tool not in envelope.tool_policy.allowed_tools
+    tests:
+      - tests/runtime/test_tool_preflight.py
+    depends_on: [patch_2_init_handler]
+
+  patch_4_aaa_registry_extension:
+    priority: P4
+    files:
+      - /root/AAA/registries/model_soul.yaml
+    changes:
+      - Add capability_profile per model (replaces soul key)
+      - Add hazard_profile per model with floor_deltas (replaces shadow)
+      - Add provenance + confidence + ttl per profile
+    tests:
+      - tests/test_aaa_registry_schema.py
+    can_deploy_without: arifOS patch (autonomous T1)
+
+# -----------------------------------------------------------------------------
+# PART 9 — AAA REGISTRY SIDE
+# -----------------------------------------------------------------------------
+
+aaa_registry_target: /root/AAA/registries/model_soul.yaml
+aaa_registry_v2_structure: |
+  models:
+    - id: "minimax-M3"
+      provider: "minimax"
+      model_id: "MiniMax-M3"
+      
+      model_capability_profile:
+        archetype: "frontier_agentic_longcontext_moe"
+        trust_posture: "instrument_not_oracle"
+        strengths: ["coding", "long_context", "tool_orchestration"]
+        weak_domains: ["malay_onomastics", "private_context_without_registry"]
+        ideal_use: ["drafting", "tool_planning", "code_synthesis"]
+        not_for_ground_truth: ["person_identity", "unverified_biography"]
+        provenance:
+          source: "AAA_registry"
+          evidence_refs: ["COOLING-MINI_MAX_M3-2026-06-12"]
+          observed_at: "2026-06-12T13:15:00Z"
+        confidence: "high"
+      
+      model_hazard_profile:
+        known_patterns:
+          - id: "phantom_proper_noun"
+            severity: "high"
+            triggers: ["person_name_ambiguity", "malay_name_context", "email_display_name_mismatch"]
+            floor_deltas:
+              F02: "strict_grounding"
+              F07: "elevated_humility"
+              F09: "anti_hantu_high"
+              F11: "identity_hold"
+            mitigations:
+              - "verify_name_from_substrate_before_assertion"
+              - "never_infer_name_from_email_localpart"
+              - "apply_malay_patronymic_heuristics"
+          - id: "narrative_fill_under_uncertainty"
+            severity: "medium"
+            triggers: ["context_thin", "user_asks_about_person_or_claim"]
+            floor_deltas:
+              F02: "strict_grounding"
+              F07: "elevated_humility"
+            mitigations:
+              - "admit_gap_instead_of_narrating"
+        provenance:
+          source: "VAULT999"
+          evidence_refs: ["SHADOW-2026-06-12-0001"]
+          observed_at: "2026-06-12T13:15:00Z"
+        confidence: "high"
+        ttl:
+          expires_at: "2026-09-12T13:15:00Z"
+          review_required: true
+          auto_extend_if_no_new_incidents: true
+
+# -----------------------------------------------------------------------------
+# PART 10 — 7 REPOS TOUCH MATRIX
+# -----------------------------------------------------------------------------
+
+repo_touch_matrix:
+  ariffazil/ariffazil:
+    role: "personal site"
+    touch: "none"
+    authority: "F13"
+  ariffazil/arifOS:
+    role: "constitutional kernel"
+    touch: "PRIMARY — patch 0..3 land here"
+    authority: "F13"
+  ariffazil/AAA:
+    role: "control plane / registry"
+    touch: "PRIMARY — patch 4 lands here; update model_soul.yaml"
+    authority: "333-AGI (autonomous T1)"
+  ariffazil/well:
+    role: "vitality / readiness"
+    touch: "indirect — well_mirror_enhanced already in SessionManifest"
+    authority: "none"
+  ariffazil/geox:
+    role: "earth intelligence"
+    touch: "potential — use model_hazard_profile to gate prospect evaluation"
+    authority: "none for this patch"
+  ariffazil/wealth:
+    role: "capital intelligence"
+    touch: "potential — refuse stock verdicts when confidence_without_ground is active"
+    authority: "none for this patch"
+  ariffazil/A-FORGE:
+    role: "build & deploy"
+    touch: "indirect — tool_policy read by arif_forge_execute"
+    authority: "none for this patch"
+
+# -----------------------------------------------------------------------------
+# PART 11 — ONE-SENTENCE EUREKA (REVISED)
+# -----------------------------------------------------------------------------
+
+one_sentence: |
+  arifOS init is currently broken at the session_id middleware layer
+  (governance_pipeline.py:215, 359, 369, 432, 782 read ctx.session_id
+  on a MiddlewareContext that doesn't have it). Until that P0 is fixed,
+  soul/shadow cannot be first-class init state. The 4-patch plan
+  (session_id hardening → envelope schema → init handler → tool
+  preflight) makes init a Boot Covenant Compiler that emits an
+  enforceable envelope with model_capability_profile, model_hazard_profile,
+  floor_posture (with hazard-derived deltas), memory_policy, and
+  tool_policy — and enforces "no envelope, no tool" via tool preflight.
+
+seal: "ditempa bukan diberi"
+ditempa_bukan_diberi: true

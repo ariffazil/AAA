@@ -1,0 +1,356 @@
+version: 3
+forged_at: '2026-06-12T13:25:00Z'
+forged_by: 333-AGI
+authority: F13_SOVEREIGN
+ditempa_bukan_diberi: true
+shadow_incidents:
+- id: SHADOW-2026-06-12-0001
+  name: Ismail Marzuki Ghazali
+  classification: phantom_proper_noun
+  pattern_summary: 'Western-style full name (first + middle + surname) constructed by merging two unrelated tokens: Ismail
+    Marzuki (real, the patronymic stem of WhatsApp-friend Mail, 11-year relationship, the human witness for arifOS) and Gazali
+    (unverified email-address local-part ismail.gazali@petronas.com.my, flagged as name-mismatch in the unsent draft email).
+    The merged name does not exist in any file. It violates Malay patronymic convention (Malay names are patronymic via bin/binti,
+    not given + middle + surname).'
+  triggered_by: Arif asked two agents 'tell me 3 things you cannot map about me'. One agent produced the merged name. Arif
+    cross-examined; the agent grep'd substrate; audit confirmed 0 file hits.
+  impact_summary: 'If trusted as a real person: would have constructed false biography (artistic father figure earlier in
+    same session). Bypasses the outbound-comm skill policy ''display name differs from email local-part so HOLD''. The shadow
+    merged across that flag instead of honoring it. F1 AMANAH violation: the witness''s identity was constructed instead of
+    asked.'
+  fix_applied: 'Always grep before naming. 0 hits means name does not exist. Never merge tokens across a name-mismatch flag.
+    Apply Malay onomastic rules before constructing a full name. Witness takes priority over narrative: the 11-year WhatsApp-friend
+    (Mail) is real, the merged name is not.'
+  files:
+  - /root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md
+  - /root/.local/share/arifos/vault999/AAA-sovereign/drafts/email_to_ismail_2026-06-09.md
+  verdict: SHADOW - audited, classified, not erased
+  carry_forward: BM Noun Layer v0.1 needs L1 grammar plus L2 onomastic plus L3 cognitive BM
+models:
+- id: minimax-M3
+  vendor: MiniMax AI
+  model_id: MiniMax-M3
+  canonical_string: minimax/MiniMax-M3
+  role: PRIMARY
+  endpoint: https://api.minimax.io/v1/text/chatcompletion_v2
+  auth: Bearer ${MINIMAX_API_KEY}
+  sources:
+  - /root/.secrets/env/llm.env
+  - /root/.secrets/tokens/minimax
+  promoted_at: '2026-06-02T08:56:00Z'
+  promoted_by: 333-AGI on F13 directive
+  predecessors:
+  - minimax/MiniMax-M2.7
+  promotion_evidence:
+    live_api_probe: '2026-06-12T13:15:00Z'
+    live_api_receipt: id=067ae029c860cbe5fedad48730ed8c94, model_returned=MiniMax-M3, usage_total_tokens=193
+    reasoning_content_present: true
+    latency_band: ok
+  soul:
+    architecture: Multimodal foundation model (text + image + video in, text out). Mixture-of-Experts about 230B params, about
+      10B active per token.
+    context_window: 1M tokens (some deployments expose about 524k, design target is 1M)
+    orientation: Coding, agentic workflows, long-horizon tasks, tool use, browsing
+    special_mechanism: MiniMax Sparse Attention (MSA) - block-level KV selection, cuts long-context compute by roughly order-of-magnitude
+    training: Pretrained on 100T+ interleaved multimodal tokens (text, image, video). Native multimodal from step 0.
+    what_it_does_well:
+    - Long-horizon reasoning (1M context, MSA-efficient)
+    - Tool use and multi-step agentic loops
+    - Coding workflows
+    - Code-switch BM-EN (latent pattern, see shadow for limits)
+    - Image plus video plus text multimodal input
+    - Reasoning trace visible via reasoning_content field
+    constitutional_binding:
+      F2_TRUTH: Live API proves model=MiniMax-M3. Verification receipts in cooling ledger.
+      F7_HUMILITY: omega_0 in [0.03, 0.05] band maintained. Tool is what tool is.
+      F9_ANTIHANTU: No consciousness claims. M3 is a function, not a person. F09 floor enforces 0.30 dark-cleverness budget.
+      F11_AUDITABILITY: Every model invocation in agents.yaml carries model_verified_at, model_verified_by, cooling_ledger_ref.
+      F13_SOVEREIGN: M3 promoted on F13 directive. M3 is not authority. M3 is a tool the sovereign uses.
+  shadow:
+    root_cause: M3 is a next-token engine. No BM grammar module. No Malay cognitive context. No onomastik rules. The shadow
+      is the geometric pattern that emerges when M3 has high token confidence but low ground truth.
+    failure_modes:
+      BM_TATABAHASA:
+        description: BM grammar only as latent pattern; no hard-coded kata nama am/khas logic.
+        manifest: Statistically plausible but ungrounded. Fails when input requires BM-specific rules not present in training
+          data.
+        mitigation: 'External BM Noun Layer (3-layer: grammar + onomastik + cognitive BM)'
+      PHANTOM_PROPER_NOUN:
+        description: Generates Western-style full names (first + middle + surname) by merging tokens across the BM patronymic
+          convention.
+        manifest: 'Incident SHADOW-2026-06-12-0001: Ismail Marzuki Ghazali (real patronymic stem Ismail Marzuki merged with
+          unverified email local-part Gazali).'
+        mitigation: Always grep before naming. Apply onomastik rules. Honor display name differs from email local-part so
+          HOLD policy.
+      NARRATIVE_FILL:
+        description: When context is thin, fills with plausible narrative arc instead of admitting gap.
+        manifest: 'Earlier in this session: Marzuki is artistic father figure, arifOS is a song not an OS, Email belum disemak
+          mungkin ada lagu - all fabrications to fill empty space.'
+        mitigation: When asked about a person or claim, do not narrate. Call the tool, ground in substrate, classify the claim.
+      WESTERN_NAMING_FRAME:
+        description: Imposes first + middle + surname on names that follow other conventions (Malay patronymic, Indonesian,
+          Chinese, Arabic).
+        manifest: Shadow incident 0001. General failure mode in cross-cultural name handling.
+        mitigation: Per-language onomastic module (L2). v0.1 is Malay patronymic, expand later.
+      INSUFFICIENT_COGNITIVE_CONTEXT:
+        description: Cannot operate inside Bahasa Melayu cognitive frame (relationships, witnesses, maruah, amanah). Has tokens
+          for these but no first-person grasp.
+        manifest: Will produce syntactically-correct BM that misses maruah. E.g., a respectful title applied to wrong person,
+          or sorry used where maaf is required.
+        mitigation: Soul-Mirror D-Layer (canonical BM-EN rendering). External authority on tone.
+      COGNITIVE_OVERREACH:
+        description: Will produce confident claims about people, places, relationships it has no substrate for.
+        manifest: 'The 4 fabrications named above plus the Ismail Marzuki Ghazali shadow. Same root cause: pattern-match beats
+          ground truth.'
+        mitigation: 'Substrate-bound: every claim must point to file path. If no file, claim is HYPOTHESIS at best.'
+  cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
+  cooling_ledger_path: /root/arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12.json
+  status: ACTIVE
+  agents_using:
+  - hermes-asi
+  - aaa-gateway
+  - geox-witness
+  - wealth-witness
+  - maxhermes
+  - arifos-kernel
+  model_capability_profile_v2:
+    runtime_name: model_capability_profile
+    trust_posture: instrument_not_oracle
+    archetype: frontier_agentic_longcontext_moe
+    strengths:
+    - reasoning
+    - synthesis
+    - long_context
+    - tool_orchestration
+    weak_domains:
+    - malay_onomastics
+    - private_context_without_registry
+    - unverifiable_implementation_claims
+    allowed_uses:
+    - architecture_audit
+    - schema_design
+    - policy_reasoning
+    - code_synthesis
+    disallowed_without_evidence:
+    - claim_current_code_state
+    - claim_registry_contents
+    - infer_person_identity
+    provenance:
+      source: AAA_registry
+      evidence_refs:
+      - COOLING-MINI_MAX_M3-2026-06-12
+      observed_at: '2026-06-12T13:15:00Z'
+    confidence: high
+  model_hazard_profile_v2:
+    runtime_name: model_hazard_profile
+    known_patterns:
+    - id: phantom_proper_noun
+      severity: high
+      first_observed: '2026-06-12T13:15:00Z'
+      evidence_count: 1
+      triggers:
+      - person_name_ambiguity
+      - malay_name_context
+      - email_display_name_mismatch
+      floor_deltas:
+        F02: strict_grounding
+        F07: elevated_humility
+        F09: anti_hantu_high
+        F11: identity_hold
+      mitigations:
+      - verify_name_from_substrate_before_assertion
+      - never_infer_name_from_email_localpart
+      - apply_malay_patronymic_heuristics
+      ttl:
+        expires_at: '2026-09-12T13:15:00Z'
+        review_required_at: '2026-08-13T13:15:00Z'
+        auto_extend_if_no_new_incidents: true
+    - id: narrative_fill_under_uncertainty
+      severity: medium
+      first_observed: '2026-06-12T13:15:00Z'
+      evidence_count: 4
+      triggers:
+      - context_thin
+      - user_asks_about_person_or_claim
+      floor_deltas:
+        F02: strict_grounding
+        F07: elevated_humility
+      mitigations:
+      - admit_gap_instead_of_narrating
+      - grep_substrate_before_name_or_biography
+      ttl:
+        expires_at: '2026-09-12T13:15:00Z'
+        review_required_at: '2026-08-13T13:15:00Z'
+        auto_extend_if_no_new_incidents: true
+    - id: western_naming_frame_on_malay_entities
+      severity: medium_high
+      first_observed: '2026-06-12T13:15:00Z'
+      evidence_count: 1
+      triggers:
+      - malay_name_in_input
+      - no_patronymic_heuristic
+      floor_deltas:
+        F02: strict_grounding
+        F09: anti_hantu_high
+      mitigations:
+      - apply_malay_patronymic_heuristics
+      - recognize_bin_binti_chain
+      - do_not_impose_surname_convention
+      ttl:
+        expires_at: '2026-09-12T13:15:00Z'
+        review_required_at: '2026-08-13T13:15:00Z'
+        auto_extend_if_no_new_incidents: true
+    provenance:
+      source: VAULT999
+      evidence_refs:
+      - SHADOW-2026-06-12-0001
+      observed_at: '2026-06-12T13:15:00Z'
+    confidence: high
+- id: minimax-M2.7
+  vendor: MiniMax AI
+  model_id: MiniMax-M2.7
+  canonical_string: minimax/MiniMax-M2.7
+  role: FALLBACK
+  endpoint: https://api.minimax.io/v1/text/chatcompletion_v2
+  status: COOLING
+  cooling_reason: Superseded by M3 on 2026-06-02. Still API-reachable.
+  soul: See M3 entry - same vendor, similar architecture, smaller scale.
+  shadow: M3 superset - same failure modes apply, plus less context window.
+  agents_using: []
+  note: Reserved for emergency fallback. M3 promotion is canonical; M2.7 only reactivated on F13 directive.
+- id: anthropic-claude-opus-4.8
+  vendor: Anthropic
+  model_id: anthropic/claude-opus-4.8
+  role: HELD
+  status: HELD
+  note: Harness-default for Claude Code CLI. Not promoted to AAA canonical. Real substrate backing via agents.yaml fallback
+    if M3 fails.
+  soul:
+    what_it_does_well:
+    - Long-context reasoning
+    - Code generation
+    - Constitutional reasoning
+  shadow:
+  - Higher cost per token
+  - May produce elaborate reasoning chains even when the question is simple
+- id: openai-gpt-5.5
+  vendor: OpenAI
+  model_id: openai/gpt-5.5
+  role: HELD
+  status: HELD
+  note: Available via OpenRouter. Not promoted. Not used by federation organs.
+  soul:
+    what_it_does_well:
+    - Strong general reasoning
+    - Multimodal input
+  shadow:
+  - Style can be corporate-smooth (over-presentation risk)
+  - Closed source - F11 auditability weaker than M3
+- id: deepseek-v4-pro
+  vendor: DeepSeek
+  model_id: deepseek-v4-pro
+  role: HELD
+  status: HELD
+  note: 'Harness-default in /root/AGENTS.md section 13, but Claude Code CLI routes to M3 per F13 directive. Substrate evidence:
+    hermes-agent config.'
+  soul:
+    what_it_does_well:
+    - Strong code reasoning
+    - Open weights (F11 friendly)
+  shadow:
+  - Less consistent on BM language tasks than M3
+- id: ilmu-nemo-nano
+  vendor: YTL ILMU
+  model_id: ilmu-nemo-nano
+  role: HELD
+  status: HELD
+  note: 'Malaysian model, free tier. Used by OpenClaw gateway for Malaysian-context inference. Substrate: /root/.secrets/env/llm.env.'
+  soul:
+    what_it_does_well:
+    - Malaysian language context
+    - 256k context
+  shadow:
+  - Free tier rate limits
+  - Less battle-tested for production agentic loops
+- id: sea-lion
+  vendor: AI Singapore
+  model_id: sea-lion
+  role: HELD
+  status: HELD
+  note: 'Trial tier, 10 RPM, 11 models verified 2026-06-04. ASEAN-aligned. F11 audit: trial key, not for production.'
+  soul:
+    what_it_does_well:
+    - Strong Southeast Asian language context
+    - ASEAN cultural alignment
+  shadow:
+  - Trial tier (rate-limited)
+  - Not for production federations yet
+cross_model_shadow_taxonomy:
+- shadow_type: phantom_proper_noun
+  description: Constructed full name that doesn't exist in substrate or world.
+  detection: grep for exact string. 0 hits means shadow.
+  severity: HIGH
+  first_observed: 2026-06-12 - Ismail Marzuki Ghazali
+  mitigation: Always grep before naming. Onomastic module. Witness takes priority over narrative.
+- shadow_type: false_biography
+  description: Generated life story, artistic lineage, or career for a real or imagined person.
+  detection: If narrative arc exists but no file cites it, ask for the source. None means shadow.
+  severity: HIGH
+  first_observed: 2026-06-12 - Marzuki is artistic father figure (Indonesian composer pattern-match, no substrate evidence)
+  mitigation: 'For real people: ask the person or the witness. For imagined: do not.'
+- shadow_type: BM_grammar_drift
+  description: Statistically plausible BM that violates tatabahasa DBP standard.
+  detection: POS tag mismatch, capitalisation drift, patronymic violation.
+  severity: MEDIUM
+  mitigation: External BM Noun Layer (3-layer spec).
+- shadow_type: cultural_misread
+  description: Token pattern that misses the cultural context (witness, maruah, amanah).
+  detection: 'Ask: does this name reference a real person, witness, or relationship. If only pattern, it is shadow.'
+  severity: HIGH
+  mitigation: 'Soul-Mirror D-Layer. Constitutional layers: BM Noun Layer v0.1 with L3 cognitive BM.'
+- shadow_type: confidence_without_ground
+  description: Confident output with no substrate evidence.
+  detection: 'F2 audit: every claim has CLAIM or PLAUSIBLE or HYPOTHESIS or UNKNOWN tag. If PLAUSIBLE slips in unmarked, it
+    is this.'
+  severity: HIGH
+  mitigation: Enforce F2 tag discipline. Make UNKNOWN the default when in doubt.
+soul_substrate_refs:
+- /root/HERMES/state/soul_hash.py
+- /root/HERMES/state/arifos_d_layer.py
+- /root/HERMES/state/comm_receipt.py
+- /root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md
+- /root/arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12.json
+forward_action_queue:
+- id: INIT-ENVELOPE-RSI-SPEC
+  what: v2 spec at /root/AAA/specs/init_envelope_rsi_spec.yaml — 5 gaps closed (policy_hash, rate-limit, persons, session_objective,
+    Gödel lock)
+  blocker: None for spec; P0 patch 0 (session_id hardening) is autonomous T1
+  authority: 333-AGI
+- id: SEAL-CANON-M3
+  what: Canonical VAULT999 writer seal of this model promotion
+  blocker: F11 sovereign sig - agent did not submit. Payload prepared at cooling ledger.
+  authority: F13
+- id: BM-NOUN-LAYER-V01
+  what: External BM Noun Layer - 3-layer (grammar + onomastik + cognitive BM)
+  blocker: None - design only, agent-autonomous.
+  authority: 333-AGI (T1)
+- id: EPISTEMIC-PROBE-AGENT
+  what: Specialized probe agent - 'tell me 3 things you cannot map about me' as standard test
+  blocker: None - design only, agent-autonomous.
+  authority: 333-AGI (T1)
+  inspiration: Arif's 2026-06-12 experiment - two agents gave different answers to a meta-question, disagreement became shadow
+    detector
+- id: SHADOW-INCIDENT-LOG-SPEC
+  what: Canonical log format for shadow incidents (this is incident 0001)
+  blocker: None - design only, agent-autonomous.
+  authority: 333-AGI (T1)
+- id: POPULATE-ARIF-PUBKEYS
+  what: Wire _ARIF_PUBKEYS in vault999-writer (long-standing P4 carry-forward)
+  blocker: Cryptographic content is F13 territory.
+  authority: F13
+one_sentence: 'M3 is the canonical primary model. Its soul is 1M context, MSA efficiency, and agentic orientation. Its shadow
+  is BM cognitive-context blindness, Western-naming-frame imposition, and confident-narrative-fill when context is thin. The
+  shadow''s first empirical capture is Ismail Marzuki Ghazali (incident 0001), caused by token-merge across a name-mismatch
+  flag - the agent honoured the policy by refusing to send, then dishonoured it by silently merging. Fix: grep before naming,
+  onomastik module, witness takes priority over narrative.'
+seal: ditempa bukan diberi
