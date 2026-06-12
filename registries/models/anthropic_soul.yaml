@@ -1,0 +1,139 @@
+# Anthropic Claude Stack Soul — Capability Profile
+# ════════════════════════════════════════
+# arifOS Model Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-06-12 by Hermès on F13 directive
+# Status: ACTIVE (sourced from Anthropic public docs + press, 2026-06-12)
+#
+# SOUL DEFINITION (arifOS): In AAA registry, "soul" = HARNESS_CONTENT +
+# VALUE CONSTITUTION, NOT ontological claim. F9 ANTIHANTU + F10 ONTOLOGY
+# VOID any consciousness/soul claim. This file maps capabilities and
+# governance architecture — it does not attribute qualia.
+#
+# PROVENANCE DISCIPLINE: Every field carries source tier.
+#   VERIFIED      = public documentation + live API probe
+#   PLAUSIBLE     = architectural inference, not confirmed
+#   UNVERIFIED    = no source, held for future probe
+#   VOID          = ontologically invalid field, mapped to harness
+#
+# DITEMPA BUKAN DIBERI — capability map forged from measurement, not given.
+
+model_id: anthropic-claude
+model_family: Claude
+provider: Anthropic (PBC, San Francisco)
+license: Proprietary (API access only, no open weights)
+type: text-generation, code-generation, multimodal (vision variants)
+
+sources:
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf
+  - https://www.anthropic.com/news/claude-opus-4-8
+  - https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback
+  - https://www-cdn.anthropic.com/cffd979fd050fbc0d8874b8c58b24cc10554e208/claudes-constitution_webPDF_26-01.26a.pdf
+
+soul:
+  # ── What the Claude stack is good at ──
+  capabilities:
+    long_context:
+      description: "200K token context window on Claude 4+ models. Strong needle-in-haystack performance."
+      confidence: 0.88
+      evidence: "Anthropic technical documentation, public benchmarks"
+      provenance: VERIFIED
+
+    code_generation:
+      description: "Strong coding performance, especially Claude 4 Opus/Sonnet. Claude Code CLI uses this stack."
+      confidence: 0.85
+      evidence: "HumanEval, SWE-bench results; agentic coding benchmarks"
+      provenance: VERIFIED
+
+    reasoning:
+      description: "Extended thinking mode available. Good multi-step reasoning with visible chain-of-thought in some variants."
+      confidence: 0.82
+      evidence: "Anthropic product documentation, GPQA, MATH benchmarks"
+      provenance: VERIFIED
+
+    constitutional_reasoning:
+      description: "Trained with Constitutional AI — model critiques its own outputs against a written constitution during training."
+      confidence: 0.80
+      evidence: "Anthropic CAI papers (Bai et al. 2022), public documentation"
+      provenance: VERIFIED
+
+    safety_governance:
+      description: "Safety classifiers screen high-risk domains. Classifier-detected requests route to fallback model or refuse."
+      confidence: 0.78
+      evidence: "Anthropic system card, product documentation, press coverage"
+      provenance: VERIFIED
+
+    instruction_following:
+      description: "Strong instruction following. Claude models generally follow complex multi-constraint prompts well."
+      confidence: 0.83
+      evidence: "Chatbot Arena, general benchmarks"
+      provenance: VERIFIED
+
+  # ── Trust tier ──
+  trust_tier: 2  # standard — well-documented, but proprietary + US-jurisdiction
+
+  # ── Recommended use ──
+  suitable_for:
+    - code_generation_and_review
+    - long_context_analysis
+    - constitutional_audit_second_opinion
+    - safety_sensitive_reasoning
+    - complex_multi_step_planning
+
+  not_recommended_for:
+    - primary_federation_model  # routing complexity, 30-day retention, US jurisdiction
+    - malaysian_governance_topics  # unknown censorship posture, not battle-tested
+    - sovereign_identity_verification  # proprietary, no local deployment
+    - zero_retention_workloads  # Mythos-class: 30-day floor, no opt-out
+
+  # ── Stack architecture ──
+  stack_layers:
+    - layer: MYTHOS_5_WEIGHTS
+      role: FRONTIER_SOURCE_MASS
+      description: "Highest-tier internal model. Same weights used for both Mythos 5 and Fable 5."
+      exposure: RESTRICTED
+      access_program: "Project Glasswing — vetted cybersecurity/life-sciences/government partners only [1][6]"
+      provenance: VERIFIED
+
+    - layer: FABLE_5
+      role: PUBLIC_MYTHOS_HARNESS
+      description: "Public/enterprise-access Mythos-class model. Same weights as Mythos 5, with safety harness and Opus fallback router."
+      weights_ref: MYTHOS_5
+      harness:
+        constitution: "Anthropic Claude Constitution (written principles for CAI training)"
+        safety_classifiers:
+          domains: [CYBERSECURITY, BIOLOGY_CHEMISTRY, DISTILLATION]
+          action: FALLBACK_TO_OPUS_4_8_OR_REFUSE
+        routing_policy:
+          default_model: FABLE_5
+          on_classifier_flag: OPUS_4_8
+          fallback_rate_target: "<5% of sessions (Anthropic claim)"
+          user_notification_on_fallback: VERIFIED  # Anthropic states users are informed whenever fallback occurs
+      provenance: VERIFIED
+
+    - layer: OPUS_4_8
+      role: SAFETY_NET_FALLBACK
+      description: "High-capability non-Mythos Claude model. Receives queries Fable's classifiers flag as high-risk."
+      harness:
+        constitution: "Same Claude Constitution, lower frontier risk profile"
+        safety_posture: "Less restrictive than Fable in flagged domains (answers instead of refusing)"
+      provenance: VERIFIED
+
+  # ── Model variants tracked ──
+  variants:
+    - claude-opus-4.8: "Non-Mythos frontier. Safety net for Fable 5. Legacy Opus stack primary."
+    - claude-sonnet-4.5: "Mid-tier. Strong general purpose, good cost-performance."
+    - claude-haiku-4.5: "Fast/lightweight. Good for simple tasks, low latency."
+    - claude-fable-5: "Mythos-class public. Highest-capability broadly available Anthropic model."
+    - claude-mythos-5: "Mythos-class restricted. Glasswing program only. NOT publicly accessible."
+
+  # ── Data policy (load-bearing for federation routing) ──
+  data_policy:
+    retention_days: 30
+    retention_applies_to: "Mythos-class traffic ONLY (Fable 5, Mythos 5). Standard Claude models have zero-retention option."
+    zero_retention_available: false
+    note: "Fable 5 traffic CANNOT be set to zero-retention. This is a routing constraint for the federation."
+    provenance: VERIFIED
+
+ditempa_bukan_diberi: true

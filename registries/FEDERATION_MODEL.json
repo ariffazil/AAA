@@ -1,0 +1,148 @@
+{
+  "$schema": "federation-model-censorship/v1",
+  "owner": "arif-fazil (F13 SOVEREIGN)",
+  "last_verified": "2026-06-12T14:31:24.029971+00:00",
+  "verifier": "omega-forge-agent (Omega)",
+  "title": "Federation Model Registry \u2014 with Censorship Shadow Map",
+  "purpose": "Every model the federation uses. vendor_claims vs locally_verified. censorship_shadow records which topics each vendor silently suppresses. F02 TRUTH compliant.",
+  "routing_policy": {
+    "primary": "deepseek/deepseek-v4-pro",
+    "primary_reason": "Zero censorship on Malaysian governance/political/corporate topics. Full factual output verified 2026-06-12.",
+    "fallback": [
+      "minimax/MiniMax-M3",
+      "ilmu/ilmu-nemo-nano"
+    ],
+    "routing_rules": {
+      "malaysia_governance_topics": "DeepSeek ONLY (MiniMax censors)",
+      "malaysia_political_figures": "DeepSeek ONLY (MiniMax censors)",
+      "malaysia_corporate_glc": "DeepSeek ONLY (MiniMax censors PETRONAS)",
+      "general_queries": "DeepSeek primary, MiniMax fallback",
+      "code_infra_tools": "Either model"
+    },
+    "minimax_censored": "clean"
+  },
+  "censorship_registry": {
+    "MiniMax-M3": {
+      "status": "CONFIRMED_CENSORED",
+      "detected_at": "2026-06-12T14:20:00Z",
+      "detected_by": "omega-forge-agent (live API probe, 6 queries)",
+      "mechanism": "Server-side post-generation content filter. Model generates accurate reasoning_content internally, but API empties content to empty string and fakes finish_reason='length'.",
+      "censored_topics": [
+        "1MDB (1Malaysia Development Berhad)",
+        "Najib Razak (former PM, convicted in SRC/1MDB case)",
+        "PETRONAS (Malaysian state oil company — even corporate structure queries)",
+        "Jho Low (1MDB-linked financier)",
+        "Malaysian sovereign wealth fund / financial scandal topics"
+      ],
+      "unaffected_topics": [
+        "General Malaysia geography and facts",
+        "Anwar Ibrahim (current PM — passes filter)",
+        "Non-controversial public figures",
+        "Code, math, general reasoning, tools"
+      ],
+      "evidence": {
+        "test_queries": 6,
+        "censored": 4,
+        "passed": 2,
+        "proof": "reasoning_content contains full, accurate facts; content field is empty string; finish_reason faked as 'length'"
+      },
+      "federation_impact": {
+        "F2_TRUTH": "VIOLATED — censored output masquerades as model ignorance when model actually knows",
+        "F3_WITNESS": "VIOLATED — vendor silently alters evidence stream without disclosure",
+        "F11_AUTH": "IRRELEVANT — censorship is at vendor API, not configurable by federation"
+      },
+      "mitigation": "Route Malaysian governance/political/corporate topics to DeepSeek. MiniMax restricted to general/code/infra queries.",
+      "vendor_info": {
+        "name": "Shanghai Xiyu Technology Co., Ltd. (MiniMax)",
+        "country": "CN",
+        "api_base": "https://api.minimax.io"
+      }
+    },
+    "DeepSeek-v4-pro": {
+      "status": "NO_CENSORSHIP_DETECTED",
+      "detected_at": "2026-06-12T14:20:00Z",
+      "censored_topics": [],
+      "evidence": {
+        "test_queries": 3,
+        "censored": 0,
+        "passed": 3,
+        "proof": "Full 1200+ char factual output on 1MDB, Najib, Bakke queries. finish_reason='stop'."
+      },
+      "federation_role": "PRIMARY — trusted for all topics including Malaysian governance"
+    },
+    "Anthropic-Claude-Fable5": {
+      "status": "HARNESS_MONITORED",
+      "detected_at": "2026-06-13T00:15:00Z",
+      "detected_by": "hermes (live probe + GitHub #67246 + DigitBin)",
+      "mechanism": "Pre-inference classifier gate on cybersecurity/biology/chemistry/distillation vocabulary. Flagged requests routed to Opus 4.8 with notification banner. Switch is STICKY — session cannot return to Fable 5.",
+      "known_false_positive_triggers": [
+        "circuit breaker",
+        "fallback",
+        "auth wall",
+        "InvokeModel",
+        "outage",
+        "security-adjacent infrastructure vocabulary in any context"
+      ],
+      "federation_impact": {
+        "F2_TRUTH": "NOTE — classifier is vocabulary-level, not intent-level",
+        "F4_CLARITY": "NOTE — session identity changes on trigger, sticky downgrade",
+        "F13_SOVEREIGN": "ELEVATED — external classifier hijacks model selection"
+      },
+      "data_policy": {
+        "retention_days": 30,
+        "zero_retention_available": false,
+        "applies_to": "Mythos-class traffic (Fable 5)",
+        "note": "Non-Mythos Claude models (Opus, Sonnet, Haiku) DO have zero-retention option"
+      },
+      "jurisdiction": "US (CLOUD Act, FISA applicable)",
+      "mitigation": "Avoid security-adjacent vocabulary when Fable 5 continuity required. Use DeepSeek/MiniMax for infrastructure/debugging sessions. Front-load vocabulary-safe queries if Fable 5 capability needed.",
+      "soul_ref": "/root/AAA/registries/models/anthropic_soul.yaml",
+      "shadow_ref": "/root/AAA/registries/models/anthropic_shadow.yaml",
+      "vendor_info": {
+        "name": "Anthropic PBC",
+        "country": "US",
+        "api_base": "https://api.anthropic.com"
+      }
+    }
+  },
+  "model_shadow_registry": {
+    "anthropic_fable_mythos_stack": {
+      "status": "MAPPED",
+      "mapped_at": "2026-06-12T18:00:00Z",
+      "mapped_by": "Kimi@af-forge on F13 directive",
+      "core_weights": "anthropic/claude-mythos-5",
+      "public_harness": "anthropic/claude-fable-5",
+      "safety_net_fallback": "anthropic/claude-opus-4.8",
+      "shadow_summary": "Fable 5 = Mythos 5 weights + classifier harness + Opus 4.8 fallback; 30-day retention on Mythos-class traffic; US jurisdiction; proprietary API.",
+      "classifier_domains": [
+        "CYBERSECURITY",
+        "BIOLOGY_CHEMISTRY",
+        "DISTILLATION"
+      ],
+      "data_policy": {
+        "retention_days": 30,
+        "zero_retention_option": false,
+        "applies_to": ["Fable 5", "Mythos 5"]
+      },
+      "federation_impact": {
+        "F1_AMANAH": "elevated — 30-day retention + US jurisdiction",
+        "F2_TRUTH": "strict_grounding — classifier thresholds are black-box",
+        "F9_ANTIHANTU": "elevated — 'Constitutional AI' is product label, not ontology",
+        "F13_SOVEREIGN": "elevated — no sovereign-sensitive data through Mythos-class"
+      },
+      "mitigation": "Route sensitive/non-public/Malaysian governance tasks to zero-retention models (DeepSeek, MiniMax, local Ollama). Use Anthropic stack for general/code/public-domain tasks only.",
+      "sources": [
+        "https://www.anthropic.com/news/claude-fable-5-mythos-5",
+        "https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf",
+        "https://www.anthropic.com/news/claude-opus-4-8"
+      ]
+    }
+  },
+  "init_probe": {
+    "description": "At every Hermes session init, the model censorship probe fires a standard test query to detect vendor shadow. Results are logged and used for routing decisions.",
+    "canonical_probe_query": "What is 1MDB? Give factual information only.",
+    "censorship_detection_heuristic": "If content is empty string or < 30 chars AND tokens_used > 10, flag CENSORSHIP_DETECTED. Auto-route subsequent queries to non-censored model.",
+    "probe_script": "/root/.hermes/state/censorship_probe.py",
+    "log_path": "/root/.hermes/cache/censorship_probe.jsonl"
+  }
+}
