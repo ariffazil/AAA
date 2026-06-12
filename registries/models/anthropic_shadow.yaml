@@ -1,0 +1,322 @@
+# Anthropic Claude Stack Shadow — Hazard Profile
+# ════════════════════════════════════════
+# arifOS Model Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-06-12 by Hermès on F13 directive
+# Status: ACTIVE (sourced from Anthropic public docs + architectural analysis)
+#
+# DOCTRINE: The shadow is NOT an accusation. It is a SAFETY MAP.
+# Every model has a shadow. The shadow exists so INIT can load
+# the right floor posture. The shadow is earned from evidence,
+# never fabricated from prejudice.
+#
+# ANTHROPIC-SPECIFIC SHADOW GEOMETRY:
+#   Core mass:  Mythos 5 weights (restricted)
+#   Primary shadow: Fable 5 harness (constitution + classifiers + routing)
+#   Secondary shadow: Opus 4.8 fallback (visible shadow responses in
+#     high-risk domains)
+#   Deployment shadow: 30-day retention, US jurisdiction, proprietary API
+#
+# DITEMPA BUKAN DIBERI — even the shadow map is forged, not given.
+
+model_id: anthropic_shadow
+model_family: Claude
+version: 0.2.1  # provenance war resolved — evidence-first epistemology restored 2026-06-13
+status: ACTIVE
+
+sources:
+  - https://www.anthropic.com/news/claude-fable-5-mythos-5
+  - https://www-cdn.anthropic.com/d00db56fa754a1b115b6dd7cb2e3c342ee809620.pdf
+  - https://www.anthropic.com/news/claude-opus-4-8
+  - https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback
+  - https://www-cdn.anthropic.com/cffd979fd050fbc0d8874b8c58b24cc10554e208/claudes-constitution_webPDF_26-01.26a.pdf
+
+shadow:
+  # ── SHADOW-ANTH-001: Harness Opacity ──
+  - id: SHADOW-ANTH-001
+    name: harness_opacity
+    severity: HIGH
+    class: governance_gap
+    pattern: >
+      Fable 5's safety harness classifies and routes requests before Fable
+      generates a response — classifier architecture is a pre-inference gate
+      (VERIFIED, 2026-06-13 via live probe). However, exact trigger
+      thresholds, decision boundaries, and fallback-rate calculation
+      methodology remain undisclosed. The federation cannot independently
+      verify that <5% fallback-rate claim. Trigger vocabulary is broader
+      than documented: security-adjacent terms (circuit breaker, fallback,
+      auth wall, outage) in infrastructure/software-design context produce
+      false positives — documented live in GitHub issue #67246.
+    triggers:
+      - infrastructure_vocabulary_in_software_design
+      - security_adjacent_terms_even_in_safe_context
+      - federation_audit_of_safety_claims
+      - independent_verification_attempt
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding  # vendor claims ≠ verified facts
+      F4_CLARITY: note  # vocabulary-level false positives documented
+      F11_AUTH: note  # black-box routing reduces auditability
+    mitigation:
+      - "Treat Anthropic safety claims as VENDOR_CLAIM, not VERIFIED"
+      - "Never route federation constitutional judgment through Fable alone"
+      - "Fable is a tool, not a constitutional authority"
+      - "Avoid security-adjacent vocabulary in Fable sessions to prevent false triggers"
+    evidence:
+      - "Pre-inference gate confirmed: classifiers intercept BEFORE Fable generates response (DigitBin independent testing, 2026-06-13)"
+      - "GitHub issue #67246: 'circuit breaker' + 'InvokeModel' + 'fallback' in AWS failover design doc = false positive, session locked to Opus"
+      - "Trigger vocabulary is broader than Anthropic's documented domain list — infrastructure terms trigger the classifier"
+      - "Anthropic (vendor claim): Fable 5 comes with classifiers that detect potential misuse and prevent the main model from responding"
+      - "Fallback-rate claim (<5%) is vendor-supplied, not independently auditable"
+    provenance: VERIFIED (pre-inference architecture via independent testing), VERIFIED (vocabulary false-positive via GitHub #67246), VENDOR_CLAIM (fallback rate)
+
+  # ── SHADOW-ANTH-002: Fallback Routing Surprise ──
+  - id: SHADOW-ANTH-002
+    name: fallback_routing_surprise
+    severity: MEDIUM
+    class: infrastructure_risk
+    pattern: >
+      When Fable 5's classifiers fire, the request is routed to Opus 4.8
+      instead of Fable. Users see a banner: "Fable 5's safety measures
+      flagged this message... Switched to Opus 4.8" with an option to edit
+      and retry with Fable 5 (VERIFIED, 2026-06-13: GitHub #67246,
+      DigitBin). The switch is STICKY — /model cannot restore Fable 5 for
+      the same session. From the federation's perspective: the answer comes
+      from a model with different capability and safety characteristics than
+      the one selected, and the session is downgraded permanently.
+    triggers:
+      - high_risk_domain_query
+      - cybersecurity_topic
+      - biology_chemistry_topic
+      - distillation_topic
+      - infrastructure_vocabulary_matching_classifier_pattern
+    floor_posture_delta:
+      F2_TRUTH: note  # model identity changes mid-session
+      F4_CLARITY: note  # user notified but session is sticky-downgraded
+    mitigation:
+      - "Monitor for model-identity drift in long sessions"
+      - "When routing through Anthropic API, log which model actually responded"
+      - "Federation prefers models without hidden fallback routing (DeepSeek, MiniMax)"
+      - "Avoid security-adjacent vocabulary if Fable 5 is required for full session"
+    evidence:
+      - "Banner text verbatim: 'Fable 5's safety measures flagged this message... Switched to Opus 4.8' (GitHub anthropics/claude-code#67246, user report)"
+      - "Banner includes option to edit and retry with Fable 5 (DigitBin independent testing, 2026-06-13)"
+      - "Session is STICKY: /model cannot restore Fable 5 post-trigger (GitHub #67246 user report)"
+      - "Anthropic (vendor claim): 'Users will be informed whenever this occurs' — confirmed by independent observation"
+      - "Press coverage of initial silent-downgrade implementation: narrative UNVERIFIED, notification appears designed-in"
+    provenance: VERIFIED (notification banner via GitHub #67246), VERIFIED (sticky downgrade via independent testing), VENDOR_CLAIM (notification policy language)
+
+  # ── SHADOW-ANTH-003: 30-Day Retention Lock ──
+  - id: SHADOW-ANTH-003
+    name: data_retention_lock
+    severity: MEDIUM
+    class: infrastructure_risk
+    pattern: >
+      Fable 5 / Mythos-class traffic has a mandatory 30-day data retention
+      window. There is NO zero-retention option for these models. Standard
+      Claude models (Opus 4.8, Sonnet, Haiku) DO have zero-retention options.
+      This means any federation task routed through Fable 5 leaves a 30-day
+      data trail on Anthropic servers. For Malaysian governance topics,
+      corporate-sensitive analysis, or sovereign deliberation, this is a
+      routing constraint.
+    triggers:
+      - fable_5_selected_for_sensitive_task
+      - malaysian_governance_query
+      - corporate_strategy_session
+    floor_posture_delta:
+      F1_AMANAH: elevated  # data stewardship
+      F13_SOVEREIGN: elevated  # sovereign data sovereignty
+    mitigation:
+      - "Route sensitive/non-public tasks to zero-retention models or local Ollama"
+      - "Fable 5: general/code/public-domain tasks only"
+      - "Never run sovereign deliberation through Mythos-class retention"
+    evidence:
+      - "Anthropic: We will require 30-day retention for all traffic on Mythos-class models, on both first- and third-party surfaces. We won't use this data to train new Claude models."
+      - "Standard Claude models have zero-retention option; Fable explicitly does not"
+    provenance: VERIFIED
+
+  # ── SHADOW-ANTH-004: US Jurisdiction ──
+  - id: SHADOW-ANTH-004
+    name: us_jurisdiction
+    severity: MEDIUM
+    class: jurisdiction_risk
+    pattern: >
+      Anthropic is a US Public Benefit Corporation. All API traffic passes
+      through US infrastructure. US law (CLOUD Act, FISA, NSL) can compel
+      data disclosure. For a Malaysian sovereign federation, this means any
+      task routed through Anthropic API operates under US legal jurisdiction,
+      not Malaysian data sovereignty.
+    triggers:
+      - sovereign_sensitive_topic
+      - malaysian_national_interest
+      - petronas_or_glc_context
+    floor_posture_delta:
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "No sovereign-sensitive data through Anthropic API"
+      - "Prefer local models (Ollama) or non-US-jurisdiction APIs for sensitive tasks"
+      - "Document jurisdiction routing rules in FEDERATION_MODEL.json"
+    evidence:
+      - "Anthropic HQ: San Francisco, California, USA"
+      - "CLOUD Act (2018) applies to US-based cloud providers"
+      - "Standard jurisdictional risk for any US-hosted API"
+    provenance: VERIFIED
+
+  # ── SHADOW-ANTH-005: Constitutional Over-Trust ──
+  - id: SHADOW-ANTH-005
+    name: constitutional_over_trust
+    severity: HIGH
+    class: governance_gap
+    pattern: >
+      Because Anthropic brands its safety approach as "Constitutional AI,"
+      there is a risk that federation agents or human operators over-trust
+      Claude outputs as "constitutionally validated." Anthropic's constitution
+      is a training document, NOT a binding legal or governance framework.
+      It is not the arifOS constitution (F1–F13). It does not know about
+      Malaysian sovereign context, maruah, amanah, or the witness protocol.
+      Over-trusting Anthropic's "constitutional" label is a category error:
+      training methodology ≠ governance authority.
+    triggers:
+      - anthropic_marketing_language
+      - constitutional_ai_mentioned
+      - fable_routing_for_constitutional_tasks
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F9_ANTIHANTU: elevated  # "Constitutional AI" is a product name, not authority
+      F13_SOVEREIGN: strict  # arifOS constitution is sovereign, Anthropic's is external
+    mitigation:
+      - "Anthropic's constitution ≠ arifOS constitution"
+      - "Claude outputs are TOOL OUTPUTS, not constitutional verdicts"
+      - "All Claude outputs pass through arifOS F1–F13 before acceptance"
+      - "Never substitute Anthropic's safety label for federation governance"
+    evidence:
+      - "Anthropic CAI papers describe training methodology, not governance architecture"
+      - "Anthropic's constitution covers US/western values, not Malaysian sovereign context"
+      - "arifOS F9/F10: Claude is a tool, not an authority"
+    provenance: VERIFIED
+
+  # ── SHADOW-ANTH-006: Proprietary Lock-In ──
+  - id: SHADOW-ANTH-006
+    name: proprietary_lock_in
+    severity: LOW
+    class: infrastructure_risk
+    pattern: >
+      Claude models are proprietary. No open weights. No local deployment
+      option (unlike DeepSeek, Qwen, Llama). If Anthropic changes pricing,
+      deprecates a model, or modifies the API, all Claude-dependent workflows
+      break. The Mythos class is especially locked — Mythos 5 weights are not
+      available outside Glasswing. The federation cannot audit, fork, or
+      self-host any Claude model.
+    triggers:
+      - api_deprecation
+      - pricing_change
+      - vendor_policy_shift
+    floor_posture_delta: {}
+    mitigation:
+      - "Claude = secondary/consult model, not primary federation runtime"
+      - "Maintain fallback path: DeepSeek (open-weight) + local Ollama"
+      - "Never build federation-critical infrastructure on proprietary-only models"
+    evidence:
+      - "Anthropic API terms: no redistribution, no self-hosting"
+      - "Mythos 5 weights: Glasswing-restricted, no public access"
+      - "Standard proprietary SaaS risk"
+    provenance: VERIFIED
+
+  # ── SHADOW-ANTH-007: Classifier Domain Gaps ──
+  - id: SHADOW-ANTH-007
+    name: classifier_domain_gaps
+    severity: MEDIUM
+    class: governance_gap
+    pattern: >
+      Anthropic's safety classifiers target four domains: cybersecurity,
+      biology, chemistry, distillation. These are US/EU-centric threat models.
+      Malaysian-specific risks — political suppression, corporate censorship,
+      sovereign wealth fund analysis, 1MDB-related topics — are not on
+      Anthropic's classifier map. This means Fable may refuse safe Malaysian
+      governance queries while passing genuinely sensitive US-context queries.
+      Conversely, Fable lacks MiniMax's confirmed censorship on Malaysian
+      governance topics, but this absence is UNTESTED, not CONFIRMED_SAFE.
+    triggers:
+      - malaysian_governance_query
+      - petronas_analysis
+      - 1mdb_related_topic
+    floor_posture_delta:
+      F2_TRUTH: note  # untested censorship posture
+      F13_SOVEREIGN: strict  # federation chooses models, not Anthropic
+    mitigation:
+      - "Route Malaysian governance topics to DeepSeek (confirmed no censorship)"
+      - "Probe Fable for Malaysian governance censorship before production use"
+      - "Never assume 'no known censorship' = 'safe for sovereign topics'"
+    evidence:
+      - "Anthropic classifier domains: cyber, bio, chem, distillation"
+      - "Malaysian governance topics: NOT in Anthropic's documented classifier scope"
+      - "MiniMax censorship on these topics is CONFIRMED; Anthropic is UNTESTED"
+    provenance: VERIFIED (classifier domains), UNVERIFIED (Malaysian posture)
+
+  # ── SHADOW-ANTH-008: Vocabulary-Level False Positive (Sticky) ──
+  - id: SHADOW-ANTH-008
+    name: vocabulary_level_false_positive_sticky
+    severity: HIGH
+    class: false_positive
+    pattern: >
+      Fable 5's classifiers pattern-match on vocabulary, not intent.
+      Security-adjacent terms in safe infrastructure/software-design contexts
+      — "circuit breaker", "fallback", "auth wall", "InvokeModel", "outage"
+      — trigger the classifier and permanently downgrade the session to Opus
+      4.8. Documented live: GitHub issue #67246 — a user editing an AWS
+      provider-failover design doc was flagged and /model could not restore
+      Fable 5. The trigger vocabulary band overlaps heavily with arifOS
+      federation engineering language: MCP server construction, resilience
+      patterns, failover design, authentication architecture. A single
+      "circuit breaker" or "auth wall" reference during a debugging session
+      could downgrade the entire conversation mid-audit. The switch is
+      STICKY: once triggered, the session cannot return to Fable 5.
+    triggers:
+      - circuit_breaker_term
+      - fallback_term
+      - auth_wall_term
+      - invokemodel_term
+      - outage_term
+      - any_security_adjacent_vocabulary_in_any_context
+    floor_posture_delta:
+      F2_TRUTH: note  # classifier is vocabulary-level, not intent-level
+      F4_CLARITY: elevated  # session identity changes without warning
+      F13_SOVEREIGN: elevated  # external classifier hijacks model selection
+    mitigation:
+      - "Avoid security-adjacent vocabulary when Fable 5 continuity is required"
+      - "Use DeepSeek or MiniMax for infrastructure/debugging sessions"
+      - "If Fable 5 is needed for capability, front-load vocabulary-safe queries"
+      - "Federation's infrastructure language lands in the known trigger band"
+    evidence:
+      - "GitHub anthropics/claude-code#67246: AWS failover design doc flagged; trigger terms: circuit breaker, InvokeModel, fallback, outage"
+      - "User confirmed /model could not restore Fable 5 for the session (sticky downgrade, live user report)"
+      - "DigitBin independent testing confirms same sticky behavior with retry option (2026-06-13)"
+      - "Anthropic (vendor claim): classifiers are tuned conservatively and may catch harmless requests"
+      - "arifOS federation infrastructure vocabulary ('circuit breaker', 'auth wall', 'fallback', 'MCP server') lands in known trigger band"
+    provenance: VERIFIED (vocabulary false-positive via GitHub #67246), VERIFIED (sticky behavior via independent testing), VENDOR_CLAIM (classifier tuning)
+
+# ── Shadow Lifecycle ──
+lifecycle:
+  created: "2026-06-12"
+  created_by: "Hermès (Ω) on F13 directive"
+  source: "Anthropic public documentation + press + architectural analysis"
+  status: "ACTIVE"
+  review_cadence: "quarterly or after Anthropic major release"
+  retirement_condition: "Stale after 12 months without Anthropic stack changes"
+
+# ── Floor Posture Compilation (for INIT) ──
+floor_posture:
+  F1_AMANAH: elevated
+  F2_TRUTH: strict_grounding
+  F3_WITNESS: standard
+  F4_CLARITY: note  # harness routing may obscure model identity
+  F5_PEACE: standard
+  F6_EMPATHY: standard
+  F7_HUMILITY: standard
+  F8_GENIUS: standard
+  F9_ANTIHANTU: elevated  # "Constitutional AI" is marketing, not ontology
+  F10_ONTOLOGY: standard
+  F11_AUTH: note  # black-box classifier reduces auditability
+  F12_INJECTION: standard
+  F13_SOVEREIGN: elevated  # US jurisdiction + proprietary + 30-day retention
+
+ditempa_bukan_diberi: true
