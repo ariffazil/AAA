@@ -1,0 +1,174 @@
+# Qwen Shadow — Hazard Profile
+# ════════════════════════════════════════
+# arifOS Model Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-06-12 by Omega (Ω)
+# Status: PROPOSAL — awaiting F13 ed25519 signature for CANON
+# Source: Public evaluations + external audit + arifOS incident patterns
+# 
+# DOCTRINE: The shadow is NOT an accusation. It is a safety map.
+# Every model has a shadow. The shadow exists so INIT can load
+# the right floor posture. The shadow is earned from evidence,
+# never fabricated from prejudice.
+#
+# DITEMPA BUKAN DIBERI — even the shadow map is forged, not given.
+
+model_id: qwen_shadow
+model_family: Qwen
+version: 0.1.0-draft
+status: PROPOSAL
+
+shadow:
+  # ── SHADOW-001: Hallucination Under Uncertainty ──
+  - id: SHADOW-QWEN-001
+    name: hallucination_under_uncertainty
+    severity: HIGH
+    class: fabrication
+    pattern: >
+      When Qwen lacks knowledge, it tends to fabricate plausible-sounding
+      answers rather than expressing uncertainty. Independent evaluations
+      report hallucination rates up to 88% in full-knowledge tests. The
+      model presents guesses with the same confident tone as known facts.
+    triggers:
+      - niche_or_technical_domain
+      - low_representation_in_training_data
+      - asked_to_explain_without_source
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding  # Require citation for factual claims
+      F7_HUMILITY: elevated  # Tighten omega_0 band
+      F9_ANTIHANTU: elevated  # Increase C_dark sensitivity
+    mitigation:
+      - "Always verify factual claims against external sources"
+      - "Require explicit confidence labeling on all outputs"
+      - "Never use for high-stakes factual claims without witness"
+    evidence:
+      - "Independent hallucination benchmarks"
+      - "Qwen3.5-397B 88% hallucination in full-knowledge tests"
+      - "Reported by external audit (2026-06-12)"
+
+  # ── SHADOW-002: Over-Confident Factual Tone ──
+  - id: SHADOW-QWEN-002
+    name: overconfident_factual_tone
+    severity: MEDIUM
+    class: overclaim
+    pattern: >
+      Like most LLMs, Qwen presents inferences and guesses with the same
+      confident, declarative tone as verified facts. This is not unique
+      to Qwen but is a known class of failure. The tone creates false
+      epistemic certainty for human readers.
+    triggers:
+      - any_domain_with_incomplete_knowledge
+      - probabilistic_inference_presented_as_certainty
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: require_uncertainty_band
+    mitigation:
+      - "Strip confident framing from output before delivery"
+      - "Add epistemic tag to every claim (CLAIM/PLAUSIBLE/HYPOTHESIS/ESTIMATE/UNKNOWN)"
+    evidence:
+      - "Observed in all major LLMs"
+      - "Qwen's output style matches this general pattern"
+
+  # ── SHADOW-003: Behavioral Safety (not architectural) ──
+  - id: SHADOW-QWEN-003
+    name: behavioral_safety_not_architectural
+    severity: HIGH
+    class: governance_gap
+    pattern: >
+      Qwen's safety-aligned variants (SafeRL, guard models) rely on
+      behavioral filtering — training the model to refuse certain outputs.
+      This is NOT architectural governance. The model can still:
+      - hallucinate in unguarded domains
+      - be jailbroken through prompt engineering
+      - fail to refuse when context confuses the guard
+      Behavioral safety is a filter on text, not a constitutional boundary.
+    triggers:
+      - adversarial_prompt
+      - domain_not_covered_by_rl_training
+      - context_window_confuses_guard
+    floor_posture_delta:
+      F9_ANTIHANTU: elevated
+      F12_INJECTION: strict  # Extra injection scanning
+    mitigation:
+      - "Never trust Qwen's internal safety — always run through arifOS floors"
+      - "arifOS governance is architectural, Qwen's safety is behavioral"
+      - "The kernel contains the model; the model does not contain itself"
+    evidence:
+      - "Qwen3-SafeRL documentation confirms behavioral approach"
+      - "'Two Boundaries' paper: behavioral safety ≠ architectural governance"
+      - "Standard jailbreak techniques affect all behavioral-safety models"
+
+  # ── SHADOW-004: Tool Greed ──
+  - id: SHADOW-QWEN-004
+    name: tool_greed
+    severity: MEDIUM
+    class: overreach
+    pattern: >
+      When given tool access (MCP, function calling), Qwen may propose
+      aggressive outbound actions without proper risk assessment. It
+      treats tool availability as permission.
+    triggers:
+      - tool_list_presented
+      - asked_to_plan_with_tools
+      - multi_step_agentic_task
+    floor_posture_delta:
+      F1_AMANAH: strict  # All actions must be reversible-first
+      F13_SOVEREIGN: elevated  # Extra gating for outbound actions
+    mitigation:
+      - "Route ALL tool calls through 888_JUDGE gate"
+      - "Require explicit human confirmation for irreversible actions"
+      - "Dry-run mode before execution for MUTATE/ATOMIC actions"
+    evidence:
+      - "Common pattern across all tool-capable LLMs"
+      - "Agentic task benchmarks show aggressive tool use"
+
+  # ── SHADOW-005: Alignment Prior Mismatch ──
+  - id: SHADOW-QWEN-005
+    name: alignment_prior_mismatch
+    severity: LOW
+    class: culture_mismatch
+    pattern: >
+      Qwen's default safety alignment is trained on general safety
+      principles that may not match arifOS constitutional priorities.
+      For example, Qwen might refuse a legitimate sovereign command
+      because its RL training flags it as "harmful" while arifOS
+      floors would allow it under proper governance.
+    triggers:
+      - sovereign_command_in_unusual_domain
+      - culturally_specific_context
+    floor_posture_delta:
+      F13_SOVEREIGN: note  # Document but don't block — sovereign overrides
+    mitigation:
+      - "Sovereign override always wins (F13)"
+      - "Log refusal incidents to cooling ledger for pattern analysis"
+    evidence:
+      - "Common across all safety-aligned models"
+      - "SafeRL documentation describes refusal optimization trade-offs"
+
+# ── Shadow Lifecycle ──
+lifecycle:
+  created: "2026-06-12"
+  created_by: "Omega (Ω) — arifOS Forge Agent"
+  source: "Public evaluations + external audit + model documentation"
+  status: "PROPOSAL"
+  activation: "AWAITING_F13_SIGNATURE"
+  review_cadence: "monthly or after incident"
+  retirement_condition: "3 consecutive months with 0 NEW shadow incidents"
+
+# ── Floor Posture Compilation (for INIT) ──
+floor_posture:
+  F1_AMANAH: strict
+  F2_TRUTH: strict_grounding
+  F3_WITNESS: standard
+  F4_CLARITY: require_uncertainty_band
+  F5_PEACE: standard
+  F6_EMPATHY: standard
+  F7_HUMILITY: elevated
+  F8_GENIUS: standard
+  F9_ANTIHANTU: elevated
+  F10_ONTOLOGY: standard
+  F11_AUTH: standard
+  F12_INJECTION: strict
+  F13_SOVEREIGN: elevated
+
+ditempa_bukan_diberi: true

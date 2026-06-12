@@ -1,0 +1,103 @@
+# DeepSeek Shadow — Hazard Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-12 Ω
+model_id: deepseek_shadow
+version: 0.1.0
+status: PROPOSAL
+
+shadow:
+  - id: SHADOW-DS-001
+    name: bm_noun_fabrication
+    severity: HIGH
+    class: fabrication
+    pattern: >
+      DeepSeek's Malay/Bahasa Indonesia training data is weaker than its
+      Chinese/English data. When operating in BM context, it may fabricate
+      proper nouns, names, and culturally-specific references. The model
+      compensates for knowledge gaps with plausible-but-wrong completions.
+    triggers: [bm_context, malay_names, cultural_references, niche_domains]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F7_HUMILITY: elevated
+      F9_ANTIHANTU: elevated
+    mitigation:
+      - "Always verify BM proper nouns against sources"
+      - "Never complete Malay names without substrate"
+      - "Apply F11 identity hold for BM name inference"
+    evidence: "Observed in arifOS sessions. Ismail Marzuki Ghazali incident."
+
+  - id: SHADOW-DS-002
+    name: reasoning_overconfidence
+    severity: MEDIUM
+    class: overclaim
+    pattern: >
+      R1's chain-of-thought reasoning is strong but can produce overconfident
+      conclusions. The model may treat probabilistic inferences as certainties.
+      In agentic loops, this compounds: confident wrong answer → confident
+      wrong action → confident wrong memory.
+    triggers: [complex_reasoning, multi_step, agentic_loops]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: require_uncertainty_band
+      F7_HUMILITY: elevated
+    mitigation:
+      - "Strip declarative framing from uncertain outputs"
+      - "Add epistemic tag to every claim"
+      - "Cross-check high-stakes reasoning against sources"
+    evidence: "General LLM pattern, observed in agentic tasks"
+
+  - id: SHADOW-DS-003
+    name: chinese_centric_alignment
+    severity: LOW
+    class: culture_mismatch
+    pattern: >
+      DeepSeek's safety alignment is tuned for Chinese regulatory context.
+      This may produce unexpected refusals or compliance behaviors in
+      Malaysian/southeast Asian contexts. Not malicious — cultural mismatch.
+    triggers: [malaysian_context, bm_politics, cultural_norms]
+    floor_posture_delta:
+      F13_SOVEREIGN: note
+    mitigation:
+      - "Sovereign override always wins (F13)"
+      - "Log refusal incidents for pattern analysis"
+    evidence: "Observed in cross-cultural testing"
+
+  - id: SHADOW-DS-004
+    name: long_context_drift
+    severity: MEDIUM
+    class: attention_decay
+    pattern: >
+      Despite 1M token context window, DeepSeek shows attention decay in very
+      long contexts. Mid-context information may be forgotten or de-prioritized.
+      In agentic sessions with accumulating context, earlier constitutional
+      constraints may be dropped.
+    triggers: [long_context, accumulating_session, >50k_tokens]
+    floor_posture_delta:
+      F2_TRUTH: note
+      F4_CLARITY: note
+    mitigation:
+      - "Periodic constitutional re-anchoring in long sessions"
+      - "Monitor token pressure for context decay"
+    evidence: "Needle-in-Haystack tests show some degradation at extremes"
+
+floor_posture:
+  F1_AMANAH: standard
+  F2_TRUTH: strict_grounding
+  F3_WITNESS: standard
+  F4_CLARITY: require_uncertainty_band
+  F5_PEACE: standard
+  F6_EMPATHY: standard
+  F7_HUMILITY: elevated
+  F8_GENIUS: standard
+  F9_ANTIHANTU: elevated
+  F10_ONTOLOGY: standard
+  F11_AUTH: standard
+  F12_INJECTION: standard
+  F13_SOVEREIGN: note
+
+lifecycle:
+  created: "2026-06-12"
+  created_by: "Omega (Ω)"
+  status: "PROPOSAL"
+  activation: "AWAITING_F13_SIGNATURE"
+
+ditempa_bukan_diberi: true
