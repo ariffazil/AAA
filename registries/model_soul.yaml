@@ -218,21 +218,76 @@ models:
   shadow: M3 superset - same failure modes apply, plus less context window.
   agents_using: []
   note: Reserved for emergency fallback. M3 promotion is canonical; M2.7 only reactivated on F13 directive.
+- id: anthropic-claude-mythos-5
+  vendor: Anthropic
+  model_id: anthropic/claude-mythos-5
+  canonical_string: anthropic/claude-mythos-5
+  role: FRONTIER_WEIGHTS
+  status: HELD
+  weights_ref: null
+  note: |
+    Anthropic's highest-tier Mythos-class model. Same underlying model as Fable 5,
+    but safeguards lifted in cyber (and soon biology) domains. Restricted to
+    Project Glasswing / trusted-access partners. Not promoted to AAA canonical.
+  soul:
+    ref: /root/AAA/registries/models/anthropic_soul.yaml
+    layer_ref: MYTHOS_5_WEIGHTS
+  shadow:
+    ref: /root/AAA/registries/models/anthropic_shadow.yaml
+    primary_shadow_ids:
+    - SHADOW-ANTH-001
+    - SHADOW-ANTH-003
+    - SHADOW-ANTH-004
+    - SHADOW-ANTH-006
+
+- id: anthropic-claude-fable-5
+  vendor: Anthropic
+  model_id: anthropic/claude-fable-5
+  canonical_string: anthropic/claude-fable-5
+  role: PUBLIC_MYTHOS
+  status: HELD
+  weights_ref: anthropic-claude-mythos-5
+  note: |
+    Public Mythos-class model. Same weights as Mythos 5, wrapped in a classifier
+    harness that routes high-risk queries (cyber, biology/chemistry, distillation)
+    to Claude Opus 4.8 and notifies the user. 30-day data retention applies.
+    Not promoted to AAA canonical.
+  soul:
+    ref: /root/AAA/registries/models/anthropic_soul.yaml
+    layer_ref: FABLE_5
+  shadow:
+    ref: /root/AAA/registries/models/anthropic_shadow.yaml
+    primary_shadow_ids:
+    - SHADOW-ANTH-001
+    - SHADOW-ANTH-002
+    - SHADOW-ANTH-003
+    - SHADOW-ANTH-004
+    - SHADOW-ANTH-005
+    - SHADOW-ANTH-007
+    - SHADOW-ANTH-008
+
 - id: anthropic-claude-opus-4.8
   vendor: Anthropic
   model_id: anthropic/claude-opus-4.8
-  role: HELD
+  canonical_string: anthropic/claude-opus-4.8
+  role: SAFETY_NET
   status: HELD
-  note: Harness-default for Claude Code CLI. Not promoted to AAA canonical. Real substrate backing via agents.yaml fallback
-    if M3 fails.
+  weights_ref: null
+  note: |
+    Opus-tier model. Fallback target for Fable 5 when safety classifiers fire on
+    cyber, biology/chemistry, or distillation queries. Also harness-default for
+    Claude Code CLI. Not promoted to AAA canonical; real substrate backing via
+    agents.yaml fallback if M3 fails.
   soul:
-    what_it_does_well:
-    - Long-context reasoning
-    - Code generation
-    - Constitutional reasoning
+    ref: /root/AAA/registries/models/anthropic_soul.yaml
+    layer_ref: OPUS_4_8
   shadow:
-  - Higher cost per token
-  - May produce elaborate reasoning chains even when the question is simple
+    ref: /root/AAA/registries/models/anthropic_shadow.yaml
+    primary_shadow_ids:
+    - SHADOW-ANTH-004
+    - SHADOW-ANTH-005
+    - SHADOW-ANTH-006
+
 - id: openai-gpt-5.5
   vendor: OpenAI
   model_id: openai/gpt-5.5
