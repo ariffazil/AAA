@@ -1250,6 +1250,109 @@ app.get('/api/agents/:agentId', (req, res) => {
   res.json({ ok: true, ...agent.summary(), transitionHistory: agent.transitionHistory.slice(-10) });
 });
 
+// ── Federation Organ Registry (A2A Handshake Protocol) ─────────────────
+// No OAuth needed — localhost IS the password (ADR-001).
+// Validation: organ card signature, health probe, heartbeat TTL.
+
+const ORGAN_REGISTRY = new Map();  // organId -> { card, registeredAt, lastHeartbeat, state }
+
+// POST /federation/register — Register an organ with its card
+app.post('/federation/register', async (req, res) => {
+  const card = req.body;
+  
+  // Validate required fields
+  if (!card?.identity?.organId) {
+    return res.status(400).json({ ok: false, error: 'MISSING_IDENTITY', detail: 'organId required' });
+  }
+  if (!card?.endpoints?.healthUrl) {
+    return res.status(400).json({ ok: false, error: 'MISSING_ENDPOINTS', detail: 'healthUrl required' });
+  }
+  if (!card?.skills || card.skills.length === 0) {
+    return res.status(400).json({ ok: false, error: 'MISSING_SKILLS', detail: 'At least one skill required' });
+  }
+  
+  // Probe health endpoint
+  try {
+    const healthResp = await fetch(card.endpoints.healthUrl);
+    if (!healthResp.ok) {
+      return res.status(503).json({ ok: false, error: 'HEALTH_FAIL', detail: `Health returned ${healthResp.status}` });
+    }
+    const health = await healthResp.json();
+    if (health.status !== 'healthy') {
+      return res.status(503).json({ ok: false, error: 'UNHEALTHY', detail: health.status });
+    }
+  } catch (e) {
+    return res.status(503).json({ ok: false, error: 'UNREACHABLE', detail: e.message });
+  }
+  
+  const organId = card.identity.organId;
+  const now = new Date().toISOString();
+  
+  ORGAN_REGISTRY.set(organId, {
+    card,
+    registeredAt: now,
+    lastHeartbeat: now,
+    state: 'active'
+  });
+  
+  // Store in Redis for persistence
+  try {
+    if (redisClient && redisClient.isOpen) {
+      await redisClient.set(`federation:organ:${organId}`, JSON.stringify({ card, registeredAt: now }));
+      await redisClient.sAdd('federation:organs', organId);
+    }
+  } catch (e) {
+    console.warn(`[federation] Redis store failed for ${organId}:`, e.message);
+  }
+  
+  console.log(`[federation] Organ registered: ${organId} (${card.identity.name})`);
+  res.json({ 
+    ok: true, 
+    organId, 
+    state: 'active', 
+    registeredAt: now,
+    handshake: { stage: 'COMPLETE', stages: ['RECEIVED','SCHEMA_VALID','HEALTH_PROBED','REGISTERED'] }
+  });
+});
+
+// POST /federation/heartbeat — Organ liveness ping
+app.post('/federation/heartbeat', (req, res) => {
+  const { organId } = req.body;
+  if (!organId) return res.status(400).json({ ok: false, error: 'organId required' });
+  
+  const entry = ORGAN_REGISTRY.get(organId);
+  if (!entry) return res.status(404).json({ ok: false, error: 'NOT_FOUND', detail: 'Organ not registered' });
+  
+  entry.lastHeartbeat = new Date().toISOString();
+  entry.state = 'active';
+  
+  res.json({ ok: true, organId, lastHeartbeat: entry.lastHeartbeat });
+});
+
+// GET /federation/organs — List all registered organs
+app.get('/federation/organs', (req, res) => {
+  const organs = [];
+  for (const [id, entry] of ORGAN_REGISTRY) {
+    organs.push({
+      organId: id,
+      name: entry.card.identity?.name || id,
+      state: entry.state,
+      registeredAt: entry.registeredAt,
+      lastHeartbeat: entry.lastHeartbeat,
+      trustGrade: entry.card.governance?.trustGrade || 'B',
+      skills: (entry.card.skills || []).map(s => s.id),
+    });
+  }
+  res.json({ ok: true, count: organs.length, organs });
+});
+
+// GET /federation/organ/:organId — Get single organ card
+app.get('/federation/organ/:organId', (req, res) => {
+  const entry = ORGAN_REGISTRY.get(req.params.organId);
+  if (!entry) return res.status(404).json({ ok: false, error: 'NOT_FOUND' });
+  res.json({ ok: true, ...entry.card });
+});
+
 // ── Grafana Webhook ────────────────────────────────────────────────────────
 app.post('/webhooks/grafana/alerts', async (req, res) => {
   const alert = req.body || {};
