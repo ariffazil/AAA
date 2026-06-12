@@ -1,0 +1,10 @@
+# AAA WARGA — Telegram user IDs allowed to talk to arifOS Hermes gateway.
+# Ratified 2026-06-11 (Arif): "warga AAA boleh communicate."
+# Single source of truth. Do not edit allowlists elsewhere — they should source from here.
+#
+# ID         | Role                       | Bot/Username
+# -----------|----------------------------|-------------------------
+# 267378578  | F13 SOVEREIGN (Arif)       | @ASI_arifos_bot owner
+# 8727562763 | APEX / 000♎️ / @arifOS_bot  | OpenClaw peer
+# 8149595687 | AGI🦞 / @AGI_ASI_bot        | OpenClaw peer
+# 1042200555 | Rico                       | SADO stress-tester, allowlisted
