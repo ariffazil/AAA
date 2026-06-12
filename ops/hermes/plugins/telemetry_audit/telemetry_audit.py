@@ -30,7 +30,7 @@ class ToolMetrics:
 class TelemetryAuditPlugin:
     def __init__(
         self,
-        audit_path: str = "/root/VAULT999/outcomes.jsonl",
+        audit_path: str = os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl",
         metrics_path: str = "/root/AAA/ops/hermes/telemetry/metrics.jsonl",
         delegation_log_path: str = "/root/AAA/ops/hermes/telemetry/delegation.jsonl",
         approval_log_path: str = "/root/AAA/ops/hermes/telemetry/approvals.jsonl",
@@ -274,7 +274,7 @@ class TelemetryAuditPlugin:
 
 def register(ctx):
     plugin = TelemetryAuditPlugin(
-        audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+        audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
         metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
         delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
         approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -295,7 +295,7 @@ def _on_post_tool_call(tool_name: str, args: dict, result: str, task_id: str = "
                         duration_ms: int = 0, **kwargs) -> str:
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -313,7 +313,7 @@ def _on_subagent_stop(parent_session_id: str, child_role: Optional[str],
                        duration_ms: int = 0, **kwargs):
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -331,7 +331,7 @@ def _on_pre_approval_request(command: str, description: str, pattern_key: str,
                               surface: str, **kwargs):
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -349,7 +349,7 @@ def _on_post_approval_response(command: str, description: str, pattern_key: str,
                                 surface: str, choice: str, **kwargs):
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -365,7 +365,7 @@ def _on_post_approval_response(command: str, description: str, pattern_key: str,
 def _on_session_start(session_id: str, model: str, platform: str, **kwargs):
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -381,7 +381,7 @@ def _on_session_end(session_id: str, completed: bool, interrupted: bool,
                     model: str, platform: str, **kwargs):
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
@@ -396,7 +396,7 @@ def _on_session_end(session_id: str, completed: bool, interrupted: bool,
 def _on_session_finalize(session_id: Optional[str], platform: str, **kwargs):
     try:
         plugin = TelemetryAuditPlugin(
-            audit_path=os.environ.get("AAA_AUDIT_PATH", "/root/VAULT999/outcomes.jsonl"),
+            audit_path=os.environ.get("AAA_AUDIT_PATH", os.environ.get("ARIFOS_HOME", "/root") + "/VAULT999/outcomes.jsonl"),
             metrics_path=os.environ.get("AAA_METRICS_PATH", "/root/AAA/ops/hermes/telemetry/metrics.jsonl"),
             delegation_log_path=os.environ.get("AAA_DELEGATION_LOG", "/root/AAA/ops/hermes/telemetry/delegation.jsonl"),
             approval_log_path=os.environ.get("AAA_APPROVAL_LOG", "/root/AAA/ops/hermes/telemetry/approvals.jsonl"),
