@@ -2085,3 +2085,39 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-12T09:35:02Z
 
 ---
+
+## [2026-06-12] review | TREE777 888 promotion review (apex)
+
+- **Who:** cron:apex
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-apex-2026-06-12.json`
+- **When:** 2026-06-12T10:02:01Z
+
+---
+
+## [2026-06-12] review | TREE777 888 promotion review (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-maxhermes-2026-06-12.json`
+- **When:** 2026-06-12T10:23:01Z
+
+---
+
+## [2026-06-12] review | TREE777 888 promotion review (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-phoenix72-2026-06-12.json`
+- **When:** 2026-06-12T10:44:01Z
+
+---
+
+## [2026-06-12] review | TREE777 888 promotion review (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-hermes-asi-2026-06-12.json`
+- **When:** 2026-06-12T11:09:01Z
+
+---
