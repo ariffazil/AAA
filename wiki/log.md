@@ -2121,3 +2121,30 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-12T11:09:01Z
 
 ---
+
+## [2026-06-12] review | TREE777 888 promotion review (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-openclaw-2026-06-12.json`
+- **When:** 2026-06-12T11:30:01Z
+
+---
+
+## [2026-06-12] review | TREE777 888 promotion review (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-hermes-ops-2026-06-12.json`
+- **When:** 2026-06-12T12:16:01Z
+
+---
+
+## [2026-06-12] review | TREE777 888 promotion review (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-opencode-2026-06-12.json`
+- **When:** 2026-06-12T12:37:01Z
+
+---
