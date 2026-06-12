@@ -1,0 +1,70 @@
+{
+  "$schema": "https://arifos.arif-fazil.com/schemas/organ-card/v1.json",
+  "kind": "organ-card",
+  "schemaVersion": "1.0.0",
+  "identity": {
+    "organId": "arifos",
+    "name": "arifOS Kernel",
+    "description": "Constitutional AI governance kernel. 13 canonical tools, 13 floors (F1-F13), 888 JUDGE, 999 VAULT. Routes every agent action through constitutional enforcement before execution.",
+    "version": "kanon-bac2bbd",
+    "protocolVersion": "a2a.v1",
+    "provider": {
+      "organization": "arifOS Federation",
+      "url": "https://arif-fazil.com"
+    },
+    "owner": "arif",
+    "namespace": "federation.arifos",
+    "tags": ["constitution", "governance", "judge", "routing", "seal"]
+  },
+  "endpoints": {
+    "baseUrl": "http://127.0.0.1:8088",
+    "mcpUrl": "http://127.0.0.1:8088/mcp",
+    "healthUrl": "http://127.0.0.1:8088/health",
+    "cardUrl": "http://127.0.0.1:8088/.well-known/organ-card.json",
+    "a2aUrl": "http://127.0.0.1:18001"
+  },
+  "capabilities": {
+    "streaming": true,
+    "asyncTasks": true,
+    "pushNotifications": false,
+    "supportsDelegation": true,
+    "supportsEvidenceRefs": true,
+    "supportsHoldFlags": true,
+    "supportsToolDiscovery": true
+  },
+  "interaction": {
+    "defaultInputModes": ["application/json"],
+    "defaultOutputModes": ["application/json"],
+    "transports": ["http", "stdio"],
+    "invocationModes": ["request-response", "streaming"],
+    "timeoutMs": 60000
+  },
+  "skills": [
+    {"id":"session_init","name":"Session Init","description":"Start or resume a governed constitutional session","tags":["session","governance","identity"],"riskClass":"low","executionAllowed":false},
+    {"id":"judge_deliberate","name":"Judge Deliberate","description":"Render final constitutional verdict on proposed action","tags":["judge","verdict","constitution"],"riskClass":"high","executionAllowed":false},
+    {"id":"vault_seal","name":"Vault Seal","description":"Seal verdict to immutable audit ledger (VAULT999)","tags":["seal","vault","audit","irreversible"],"riskClass":"critical","executionAllowed":false},
+    {"id":"kernel_route","name":"Kernel Route","description":"Route intent to correct tool or organ. Includes discover mode for semantic tool search.","tags":["route","discovery","orchestration"],"riskClass":"low","executionAllowed":false},
+    {"id":"forge_execute","name":"Forge Execute","description":"Execute approved builds, deployments, system changes","tags":["forge","deploy","mutation"],"riskClass":"high","executionAllowed":false}
+  ],
+  "security": {
+    "authRequired": false,
+    "securityNote": "Localhost IS the password (ADR-001). All services bind 127.0.0.1. UFW handles external.",
+    "allowedCallers": ["arifos","aaa","a-forge","geox","wealth","well","apex","hermes","openclaw"],
+    "trustRoot": "localhost",
+    "manifestSignature": "pending-ed25519"
+  },
+  "governance": {
+    "trustGrade": "A",
+    "sourceClass": "canonical",
+    "dataClasses": ["internal","constitutional","audit"],
+    "holdCapable": true,
+    "floorProfile": ["F1","F2","F3","F4","F7","F9","F10","F11","F12","F13"]
+  },
+  "validation": {
+    "supportedSchemaVersions": ["1.0.0"],
+    "compatibility": "backward",
+    "lastValidatedAt": "2026-06-12T12:00:00Z",
+    "expiresAt": "2026-07-12T12:00:00Z",
+    "heartbeatTtlSec": 60
+  }
+}
