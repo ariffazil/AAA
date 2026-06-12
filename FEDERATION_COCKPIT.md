@@ -31,7 +31,7 @@ or hold live runtime state. It is the **cockpit**, not the **engine**.
 
 ### AAA Does NOT Own
 - **Constitutional Law** — F1-F13 lives in `arifOS`
-- **888_JUDGE** — verdict engine lives in `arifOS` / APEX
+- **888_JUDGE** — verdict engine lives in `arifOS` (APEX is decommissioned; deliberation in AAA a2a-server)
 - **999_VAULT** — ledger sealing lives in `arifOS`
 - **MCP Core Tools** — canonical 13-tool surface is `arifOS` port 8088
 - **Domain Calculations** — GEOX, WEALTH, WELL own their domains
