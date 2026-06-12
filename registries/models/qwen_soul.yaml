@@ -1,0 +1,78 @@
+# Qwen Soul — Capability Profile
+# ════════════════════════════════════════
+# arifOS Model Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-06-12 by Omega (Ω)
+# Status: PROPOSAL — awaiting F13 ed25519 signature for CANON
+# Source: Public evaluations + Alibaba Qwen documentation
+# References:
+#   [1] Qwen Technical Reports (Qwen2/2.5/3)
+#   [2] Independent evaluations (hallucination, coding, math)
+#   [3] arifOS external audit by Qwen agent (2026-06-12)
+
+model_id: qwen
+model_family: Qwen
+provider: Alibaba Cloud (Tongyi Qianwen)
+license: Apache 2.0 (open-weight)
+type: text-generation, code-generation, multimodal (vision-capable variants)
+
+soul:
+  # ── What Qwen is good at ──
+  capabilities:
+    multilingual:
+      description: "Strong multilingual performance including Asian languages (Chinese, Japanese, Korean, Arabic, Malay/Indonesian)"
+      confidence: 0.85
+      evidence: "Qwen3 technical report, independent benchmarks"
+
+    code_generation:
+      description: "Competitive coding performance, strong in Python/JS/TS, good code reasoning"
+      confidence: 0.82
+      evidence: "HumanEval, MBPP benchmarks, Qwen3.5-Coder variants"
+
+    mathematics:
+      description: "Strong formal math reasoning, especially in Qwen3.x series"
+      confidence: 0.80
+      evidence: "GSM8K, MATH benchmarks"
+
+    reasoning:
+      description: "Good multi-step reasoning capability, chain-of-thought compatible"
+      confidence: 0.78
+      evidence: "Qwen3 technical report, agentic task benchmarks"
+
+    instruction_following:
+      description: "Follows structured instructions well in well-represented domains"
+      confidence: 0.80
+      evidence: "General LLM benchmarks"
+
+    tool_use:
+      description: "Tool-use capability in Qwen3 variants, compatible with MCP/function-calling"
+      confidence: 0.75
+      evidence: "Qwen3 agent variants, function-calling benchmarks"
+
+  # ── Trust tier for INIT ──
+  trust_tier: 3  # 1=fully_trusted, 2=standard, 3=needs_witness, 4=elevated_caution, 5=sovereign_only
+
+  # ── Recommended use ──
+  suitable_for:
+    - code_assistance
+    - data_wrangling
+    - multilingual_drafting
+    - reasoning_tasks
+    - planning_with_governance
+    - tool_use_with_gates
+
+  not_recommended_for:
+    - high_stakes_factual_claims_without_verification
+    - sovereign_identity_operations
+    - irreversible_actions_without_multiple_witnesses
+    - medical_or_legal_advice
+
+  # ── Model variants tracked ──
+  variants:
+    - qwen2.5-72b: "Strong general purpose, good for reasoning/coding"
+    - qwen3-235b: "Latest generation, improved math and reasoning"
+    - qwen3.5-397b: "Largest open variant, strongest but highest hallucination risk"
+    - qwen3-coder: "Code-optimized variant"
+    - qwen3-safe-rl: "Safety-aligned variant (behavioral guard, not architectural)"
+
+ditempa_bukan_diberi: true
