@@ -2,7 +2,7 @@
 
 > **This organ operates under the arifOS Constitutional Federation.**
 > **Canonical contract:** [ariffazil/arifOS/FEDERATION_CONTRACT.md](https://github.com/ariffazil/arifOS/blob/main/FEDERATION_CONTRACT.md)
-> **Kernel gospel:** [ariffazil/arifOS/GENESIS/000_KERNEL_GOSPEL.md](https://github.com/ariffazil/arifOS/blob/main/GENESIS/000_KERNEL_GOSPEL.md)
+> **Kernel canon:** [ariffazil/arifOS/GENESIS/000_KERNEL_CANON.md](https://github.com/ariffazil/arifOS/blob/main/GENESIS/000_KERNEL_CANON.md)
 
 ## Organ Identity
 

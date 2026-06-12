@@ -2067,3 +2067,21 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-12T08:28:01Z
 
 ---
+
+## [2026-06-12] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-12.json`
+- **When:** 2026-06-12T09:14:01Z
+
+---
+
+## [2026-06-12] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-06-12.json`
+- **When:** 2026-06-12T09:35:02Z
+
+---
