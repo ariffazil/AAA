@@ -1,0 +1,424 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# 3-TIER GOVERNANCE STACK — Canonical Schema Spec
+# ════════════════════════════════════════════════════════════════════════════════
+#
+# VERSION: 1.0 (post-substrate-audit, 2026-06-12)
+# STATUS:  PROPOSAL — design spec anchored to EXISTING substrate
+# FORGED:  2026-06-12 by 333-AGI after F13 directive
+#         "now solve all this and make it init to seal RSI level AGI"
+#
+# SUBSTRATE TRUTH (verified 2026-06-12 via psql):
+#   Postgres `vault999` database already has these tables:
+#     - vault_seals          (immutable L6 chain)
+#     - cooling_queue        (proposal lifecycle, awaiting_human|approved|rejected)
+#     - memory_records       (L4 with quarantine states)
+#     - memory_review_queue  (human review queue for memory)
+#     - memory_write_queue   (memory write pending)
+#     - memory_revocations   (quarantine tracking)
+#     - human_reviews        (sovereign review)
+#     - approval_tickets     (F11/F13 approval flow)
+#     - vault999_witness     (witness receipts)
+#
+#   Filesystem cooling ledger:
+#     /root/arifOS/VAULT999/cooling/*.json (proposal-grade, larger artifacts)
+#
+# This spec does NOT invent new tables. It defines the *contract* between
+# existing tiers, the activation lifecycle, and the 13 hard invariants.
+# ════════════════════════════════════════════════════════════════════════════════
+
+# -----------------------------------------------------------------------------
+# TIER MODEL — the canonical 3-tier architecture
+# -----------------------------------------------------------------------------
+
+tier_model:
+  tier_1_HOT_session_envelope:
+    table: "in-memory + session_records"
+    lifetime: "single session"
+    mutability: "ephemeral, dies with session"
+    authority: "INIT compiles this from active registries"
+    purpose: "what is the covenant right now"
+    substrate_anchors:
+      - "/root/arifOS/arifosmcp/schemas/session.py:SessionManifest"
+      - "SessionState.session_id (in-memory)"
+  
+  tier_2_WARM_cooling:
+    table: "cooling_queue (Postgres)"
+    filesystem_mirror: "/root/arifOS/VAULT999/cooling/*.json"
+    lifetime: "weeks to months"
+    mutability: "governed mutable, requires activation_rule + judge_review"
+    authority: "auto-allowed proposal; activation requires judge or sovereign"
+    purpose: "candidate shadow/soul updates, quarantine facts, policy proposals — the *learning* layer"
+    substrate_anchors:
+      - "cooling_queue (Postgres table)"
+      - "/root/arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12.json"
+      - "/root/arifOS/VAULT999/cooling/RSI_ARCHITECTURE_INVARIANTS_2026_06_12.json"
+  
+  tier_3_COLD_vaullt:
+    table: "vault_seals (Postgres)"
+    filesystem_mirror: "/opt/arifos/app/VAULT999/outcomes.jsonl (canonical) + /root/VAULT999/outcomes.jsonl (local mirror)"
+    lifetime: "forever"
+    mutability: "append-only, hash-chained"
+    authority: "auto-allowed evidence; constitutional changes require sovereign sig"
+    purpose: "immutable audit, replay, evidence of what actually happened — the *law trace* layer"
+    substrate_anchors:
+      - "vault_seals (Postgres table, 1,741+ rows as of 2026-06-12)"
+      - "outcomes.jsonl (canonical chain)"
+      - "SHA-256 hash chain"
+
+# -----------------------------------------------------------------------------
+# THE ACTIVATION LIFECYCLE — what passes between tiers
+# -----------------------------------------------------------------------------
+
+activation_lifecycle:
+  step_0_event_occurs:
+    description: "Runtime event happens (tool call, incident, outcome)"
+    lives_in: "tier_1 (session envelope, in-memory)"
+    substrate: "governance_pipeline.py emits incident/outcome events"
+  
+  step_1_receipt_written:
+    description: "VAULT gets the fact that this event happened"
+    lives_in: "tier_3 (VAULT, append-only)"
+    substrate: "INSERT INTO vault_seals (event_type=OUTCOME_RECEIPT|INCIDENT_SEAL|...)"
+    seal_classes:
+      INIT_RECEIPT: "auto_allowed=true"
+      TOOL_USE_RECEIPT: "auto_allowed=true"
+      OUTCOME_RECEIPT: "auto_allowed=true"
+      INCIDENT_SEAL: "auto_allowed=true, review_required=true"
+      SHADOW_DELTA_PROPOSAL: "auto_allowed=true, activation=requires_judge_or_sovereign"
+      SOUL_DELTA_PROPOSAL: "auto_allowed=true, activation=requires_judge_or_sovereign"
+      POLICY_CHANGE_SEAL: "auto_allowed=false, requires_sovereign=true"
+      CONSTITUTION_CHANGE_SEAL: "auto_allowed=false, requires=888_HOLD"
+  
+  step_2_proposal_posted:
+    description: "If event is a candidate shadow/soul/memory update, write to cooling"
+    lives_in: "tier_2 (cooling)"
+    substrate: "INSERT INTO cooling_queue (status='awaiting_human', payload=proposal_json)"
+    activation_rule:
+      requires:
+        - "repeated_count >= activation_threshold (default 3)"
+        - "judge_review = PASS or sovereign_ack = true"
+        - "no_contradictory_evidence"
+  
+  step_3_review:
+    description: "Judge or sovereign reviews the proposal in cooling"
+    lives_in: "tier_2 (cooling)"
+    substrate: "UPDATE cooling_queue SET judge_verdict=..., status=approved|rejected|active"
+  
+  step_4_activate:
+    description: "If approved, propagate to active policy registry (AAA)"
+    lives_in: "AAA active registry (filesystem YAML) — tier_2 (warm) but with activation-status=active"
+    substrate: "UPDATE /root/AAA/registries/model_soul.yaml shadow.active_patterns[].status=active"
+    VAULT_receipt: "INSERT INTO vault_seals (event_type=ACTIVATION_DECISION_RECEIPT, ref=cooling_queue.id)"
+  
+  step_5_next_INIT:
+    description: "Next session reads active AAA registry, compiles envelope, runs"
+    lives_in: "tier_1 (hot, ephemeral)"
+    substrate: "arif_session_init reads /root/AAA/registries/model_soul.yaml"
+    closes: "the strange loop"
+
+# -----------------------------------------------------------------------------
+# THE 13 HARD INVARIANTS (I1-I13) — substrate-level enforcement
+# -----------------------------------------------------------------------------
+
+hard_invariants:
+  I1_no_session_id_no_init:
+    rule: "If session_id is missing from request, INIT returns HOLD with hold_type=H0_MISSING_BOOT"
+    enforced_by: "governance_pipeline.py:_ensure_session_id()"
+    status: "P0 PATCH (broken_now in live substrate)"
+  
+  I2_no_envelope_no_tool:
+    rule: "Every tool call must carry session_envelope. Missing envelope = HOLD"
+    enforced_by: "governance_pipeline.py:_preflight_envelope_v2() (planned P3)"
+    status: "PLANNED"
+  
+  I3_no_policy_hash_no_tool:
+    rule: "policy_hash must match sealed envelope. Mismatch = HOLD"
+    enforced_by: "governance_pipeline.py:preflight"
+    status: "PLANNED"
+  
+  I4_no_vault_init_receipt_degraded:
+    rule: "If session lacks VAULT INIT_RECEIPT, status=DEGRADED not READY"
+    enforced_by: "governance_pipeline.py + vault_seals check"
+    status: "PLANNED"
+  
+  I5_no_evidence_no_shadow_activation:
+    rule: "Shadow cannot reach active state without evidence_refs in cooling_queue"
+    enforced_by: "cooling_queue.activation_rule.required.repeated_count >= 3"
+    status: "DESIGN"
+  
+  I6_sovereign_required_for_floor_relaxation:
+    rule: "Floor deltas (tightening) can be auto by judge; loosening requires sovereign"
+    enforced_by: "autonomy_ladder — level_3 can tighten, level_4+ required for loosening"
+    status: "DESIGN"
+  
+  I7_no_self_trust_promotion:
+    rule: "Agent cannot mark itself as more trusted. Soul downgrades auto; upgrades need benchmark+sovereign"
+    enforced_by: "soul_update_policy: allow_auto_downgrade=true, allow_auto_upgrade=false"
+    status: "DESIGN"
+  
+  I8_no_shadow_self_deletion:
+    rule: "Agent cannot delete its own shadow history. Decay only via judge/sovereign"
+    enforced_by: "shadow_lifecycle.never_auto_delete: [identity_breach, memory_contamination, ...]"
+    status: "DESIGN"
+  
+  I9_no_email_to_name_identity:
+    rule: "Email local-part is never sufficient for person identity"
+    enforced_by: "identity_firewall.forbidden_inferences"
+    status: "DESIGN (real substrate: /root/AAA/registries/persons.yaml#mail.email_local_part_status=unverified)"
+  
+  I10_no_constitution_change_without_888:
+    rule: "Constitution change requires F13 SOVEREIGN signature + 888_HOLD"
+    enforced_by: "seal_classes.CONSTITUTION_CHANGE_SEAL.requires=888_HOLD"
+    status: "DESIGN"
+  
+  I11_no_seal_pretending_proposal_is_law:
+    rule: "PROPOSAL_NOT_LAW tagged events never become ACTIVE_LAW without sovereign review"
+    enforced_by: "vault_seals.kind='PROPOSAL_NOT_LAW' is filter-blocked from active state"
+    status: "DESIGN"
+  
+  I12_every_autonomous_mutation_has_rollback:
+    rule: "Every patch_id must include a rollback plan before activation"
+    enforced_by: "rsi_patch_test.required_tests has_rollback"
+    status: "DESIGN"
+  
+  I13_sovereign_final:
+    rule: "F13 SOVEREIGN is the final word on constitutional authority. Period."
+    enforced_by: "sealed_signature_check on CONSTITUTION_CHANGE_SEAL"
+    status: "ENFORCED (existing substrate)"
+
+# -----------------------------------------------------------------------------
+# 4 SCHEMA OBJECTS — the canonical contract
+# -----------------------------------------------------------------------------
+
+# Schema 1: VAULT RECEIPT
+vault_receipt:
+  table: "vault_seals (Postgres)"
+  canonical_columns:
+    id: "serial PK"
+    created_at: "timestamp"
+    event_type: "text  (INIT_RECEIPT | TOOL_USE_RECEIPT | OUTCOME_RECEIPT | INCIDENT_SEAL | SHADOW_DELTA_PROPOSAL | SOUL_DELTA_PROPOSAL | POLICY_CHANGE_SEAL | CONSTITUTION_CHANGE_SEAL | ACTIVATION_DECISION_RECEIPT | SOVEREIGN_OVERRIDE_RECEIPT | RETIREMENT_RECEIPT)"
+    actor_id: "text"
+    session_id: "text"
+    payload: "jsonb  (event-specific)"
+    proposal_hash: "text  (link to cooling_queue row if applicable)"
+    judge_verdict: "text  (PASS | FAIL | HOLD | null)"
+    risk_tier: "text  (low | medium | high | critical)"
+    prev_leaf: "text  (SHA-256 of previous seal)"
+    merkle_leaf: "text  (SHA-256 of this seal's content)"
+  auto_allowed: "depends on event_type (see seal_classes)"
+  constitutional_role: "immutable audit of what happened"
+  do_not_use_for: "candidate state, learning, mutable working memory"
+
+# Schema 2: COOLING ENTRY
+cooling_entry:
+  table: "cooling_queue (Postgres)"
+  filesystem_mirror: "/root/arifOS/VAULT999/cooling/*.json (for larger artifacts)"
+  canonical_columns:
+    id: "serial PK"
+    created_at: "timestamp"
+    status: "text  (awaiting_human | approved | rejected | active | retired)"
+    tool_name: "text  (which tool/proposal this is about)"
+    reason: "text"
+    action_type: "text  (shadow_delta | soul_delta | memory_quarantine | policy_proposal)"
+    risk_class: "text  (low | medium | high | critical)"
+    judge_verdict: "text  (PASS | FAIL | HOLD | null)"
+    session_id: "text  (originating session)"
+    agent_id: "text  (originating agent, e.g. 333-AGI)"
+    prospect_id: "text  (optional, for downstream triggers)"
+    proposal_hash: "text  (sha256 of payload, links to vault_seals.proposal_hash)"
+    payload: "jsonb  (the proposal itself)"
+    lock_timestamp: "double precision"
+    unlock_timestamp: "double precision"
+  state_machine:
+    from: "awaiting_human"
+    to: "approved | rejected"
+    trigger: "judge_verdict=..."
+    requires: "auto_allowed=true, no_contradictory_evidence, evidence_count >= threshold"
+  
+    from: "approved"
+    to: "active"
+    trigger: "activation rule satisfied (repeated_count, time, sovereign ack)"
+  
+    from: "active"
+    to: "retired"
+    trigger: "no recurrence across N sessions OR judge_or_sovereign_approves"
+  
+    from: "any"
+    to: "rejected"
+    trigger: "contradictory evidence OR sovereign directive"
+  constitutional_role: "the learning layer — what the system is thinking about changing"
+  do_not_use_for: "immutable receipts (use vault_seals), active policy (use AAA registry)"
+
+# Schema 3: ACTIVE SHADOW/SOUL REGISTRY
+active_shadow_registry:
+  filesystem_path: "/root/AAA/registries/model_soul.yaml"
+  filesystem_path_persons: "/root/AAA/registries/persons.yaml"
+  schema_per_entry:
+    id: "stable identifier (minimax.MiniMax-M3)"
+    model_capability_profile_v2:
+      trust_posture: "instrument_not_oracle"
+      strengths: "[list]"
+      weak_domains: "[list]"
+      allowed_uses: "[list]"
+      disallowed_without_evidence: "[list]"
+      provenance: "{source, evidence_refs, observed_at}"
+      confidence: "high | medium | low | verified"
+    model_hazard_profile_v2:
+      known_patterns:
+        - id: "phantom_proper_noun"
+          severity: "high"
+          evidence_count: 1
+          triggers: "[list]"
+          floor_deltas: "{F02, F07, F09, F11}"
+          mitigations: "[list]"
+          ttl: "{expires_at, review_required_at, auto_extend_if_no_new_incidents}"
+          status: "candidate | active | cooling | mitigated | retired"
+  activation_source: "cooling_queue.id when status becomes 'active'"
+  constitutional_role: "the active policy the next INIT reads"
+  do_not_use_for: "immutable audit (use vault_seals), learning buffer (use cooling_queue)"
+
+# Schema 4: INIT ENVELOPE
+init_envelope:
+  table: "in-memory SessionManifest + persisted session_record"
+  schema:
+    session_id: "string (UUID)"
+    init_status: "READY | DEGRADED | HOLD | VOID"
+    init_at: "iso8601"
+    init_mode: "minimal | governed | sovereign_sensitive"
+    binding: "{sovereign_bound, actor_id, workspace_id, constitutional_version}"
+    model_identity: "{declared_model_key, verified, cooling_ledger_ref}"
+    model_capability_profile: "load from /root/AAA/registries/model_soul.yaml"
+    model_hazard_profile: "load from /root/AAA/registries/model_soul.yaml"
+    persons_in_scope: "[load from /root/AAA/registries/persons.yaml]"
+    session_objective: "{kind, target_metric, success_criterion, anti_patterns}"
+    floor_posture: "{F02, F07, F09, F11, F13}"
+    memory_policy: "{mode, allowed_scopes, denied_scopes, contamination_controls}"
+    tool_policy: "{allowed, hold, denied_by_default}"
+    identity_policy: "{patronymic_mode, witness_priority_rule, display_name_email_mismatch_rule}"
+    seal_policy: "{auto_allowed, prepared_only, sovereign_required}"
+    enforcement:
+      policy_hash: "sha256(all above)"
+      downstream_tools_must_accept_envelope: true
+      missing_envelope_behavior: "HOLD"
+      policy_hash_mismatch_behavior: "HOLD"
+    vault:
+      init_receipt_required: true
+      init_receipt_ref: "vault_seals.id after seal"
+  activation_source: "compiled by arif_session_init from tier_2 (active) + tier_3 (canonical)"
+  constitutional_role: "the runtime covenant for the current session"
+
+# -----------------------------------------------------------------------------
+# THE F2-PROOF SUBSTRATE TRACE — what already exists, what's broken
+# -----------------------------------------------------------------------------
+
+substrate_trace:
+  exists_in_substrate_now:
+    - file: "/root/arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12.json"
+      role: "filesystem cooling ledger entry (model promotion)"
+      status: "exists, 6,682 bytes"
+    - file: "/root/arifOS/VAULT999/cooling/RSI_ARCHITECTURE_INVARIANTS_2026_06_12.json"
+      role: "filesystem cooling ledger entry (RSI proposal)"
+      status: "exists, 22,124 bytes"
+    - file: "/root/AAA/registries/model_soul.yaml"
+      role: "active capability + hazard profiles"
+      status: "exists, v3, M3 has 3 hazard patterns"
+    - file: "/root/AAA/registries/persons.yaml"
+      role: "first-class person registry (Mail, Arif, Jamari)"
+      status: "exists, v1"
+    - file: "/root/arifOS/arifosmcp/schemas/session.py"
+      role: "SessionManifest with 17 sub-schemas"
+      status: "exists, 481 lines"
+    - table: "vault_seals (Postgres)"
+      role: "L6 immutable audit chain"
+      status: "1,741+ rows as of 2026-06-12"
+    - table: "cooling_queue (Postgres)"
+      role: "tier_2 cooling ledger"
+      status: "0 rows currently (empty)"
+    - table: "memory_records (Postgres)"
+      role: "tier_2 memory with quarantine states"
+      status: "exists, schema supports status='active'|'quarantined'|'disputed'|'toxic'"
+    - table: "memory_review_queue, memory_write_queue, memory_revocations"
+      role: "memory governance"
+      status: "exists, governance pipeline"
+    - table: "human_reviews, approval_tickets"
+      role: "F11/F13 sovereign approval"
+      status: "exists"
+  
+  broken_in_substrate_now:
+    - file: "/root/arifOS/arifosmcp/runtime/governance_pipeline.py:215, 359, 369, 432, 782"
+      role: "reads ctx.session_id but MiddlewareContext has no session_id attribute"
+      severity: "P0 BLOCKING"
+      fix: "P0 patch in /root/AAA/specs/init_soul_shadow_contract.yaml"
+    - file: "/root/arifOS/arifosmcp/runtime/runner/runner_001.py:266, 272, 300"
+      role: "same bug, propagates to runner"
+      severity: "P0 BLOCKING"
+      fix: "same P0 patch"
+    - file: "arif_session_init envelope"
+      role: "doesn't emit model_soul or model_shadow (decoration gap)"
+      severity: "P1 PATCH NEEDED"
+      fix: "P2 patch in /root/AAA/specs/init_soul_shadow_contract.yaml"
+    - file: "tool preflight"
+      role: "doesn't check envelope, no policy_hash, no HOLD on missing"
+      severity: "P3 PATCH NEEDED"
+      fix: "P3 patch in /root/AAA/specs/init_soul_shadow_contract.yaml"
+  
+  autonomous_T1_what_i_can_do:
+    - "Update AAA registries (autonomous, done — model_soul v3, persons v1)"
+    - "Write spec docs (autonomous, done — 3 specs in /root/AAA/specs/)"
+    - "Append to local mirror (autonomous, done — RSI_ARCHITECTURE entry in outcomes.jsonl)"
+    - "Add `proposal_hash` linking from cooling_queue to vault_seals (could write a small migration script — but DB is F13 territory)"
+  
+  F13_territory_what_i_cannot:
+    - "Patch live arifOS code (governance_pipeline.py, runner_001.py, tools.py)"
+    - "Restart arifOS service"
+    - "Sign canonical VAULT999 with sovereign key"
+    - "Activate any proposal from cooling to AAA active"
+    - "Update constitutional floors"
+    - "Update public-facing surfaces"
+
+# -----------------------------------------------------------------------------
+# FINAL DECISION ON THE DUALITY PARADOX
+# -----------------------------------------------------------------------------
+
+duality_paradox_resolution:
+  the_question: "are cooling ledgers in supabase too? duality database paradox?"
+  short_answer: |
+    Yes, cooling is in Postgres (cooling_queue). No, this is not a paradox — it's
+    a 3-tier stack, by design. Postgres has multiple *different* tables for
+    *different* lifecycles. Each tier is for a different kind of event:
+    
+      - vault_seals: immutable audit (the law trace)
+      - cooling_queue: candidate proposals (the learning layer)
+      - memory_records: working memory with quarantine states (the substrate)
+      - human_reviews: sovereign review (the F11/F13 interface)
+      - approval_tickets: F11/F13 ticket flow (the approval substrate)
+    
+    The 'duality' you noticed is actually *separation of concerns*. The risk
+    is not paradox; the risk is *temporal mismatch* between vault_seals row
+    (which says 'proposal P was submitted') and cooling_queue row (which
+    tracks the proposal lifecycle). The fix is canonical linking:
+    vault_seals.proposal_hash = sha256(cooling_queue.payload).
+  design_discipline:
+    - "Cooling is a *separate table* because its lifecycle is mutable; VAULT is append-only."
+    - "Memory has quarantine states because some facts are disputed; VAULT is canonical."
+    - "Human reviews are queued separately because they require sovereign time."
+    - "Approval tickets are F11/F13's working memory — separate from the audit chain."
+  what_would_break_if_collapsed:
+    - "If VAULT and Cooling were one table: temporal mutation of an immutable chain = Universe 25 path."
+    - "If Memory and Cooling were one table: shadow incidents would become normal memory = contamination."
+    - "If Reviews and Cooling were one table: human deliberation gets confused with machine logging = loss of sovereign authority."
+  the_one_principle: "Each tier answers a *different* question. VAULT answers 'what happened'. Cooling answers 'what might change next'. Memory answers 'what can be used now'. Reviews answer 'what needs human time'."
+
+# -----------------------------------------------------------------------------
+# ONE-SENTENCE EUREKA
+# -----------------------------------------------------------------------------
+
+one_sentence: |
+  VAULT is not where the model learns. VAULT is where the system proves
+  what happened. Cooling is where the system learns what to change next.
+  Memory is where learning becomes usable. Reviews are where sovereign
+  decides. The 3-tier stack is not a paradox; it is a *separation of
+  governance concerns* — and the substrate already has the tables for it.
+
+seal: "ditempa bukan diberi"
+ditempa_bukan_diberi: true

@@ -63,10 +63,13 @@ agents:
       - ARIFOS
       - HUMAN
     runtime:
-      model: minimax/MiniMax-M2.7
+      model: minimax/MiniMax-M3
       temperature: 0.2
       context_budget: 64000
       transport: streamable-http
+      model_verified_at: "2026-06-12T13:15:00Z"
+      model_verified_by: 333-AGI
+      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
     telemetry:
       broker: federation-memory-broker
       interval_seconds: 60
@@ -122,10 +125,13 @@ agents:
       - ARIFOS
       - HUMAN
     runtime:
-      model: minimax/auto
+      model: minimax/MiniMax-M3
       temperature: 0
       context_budget: 64000
       transport: streamable-http
+      model_verified_at: "2026-06-12T13:15:00Z"
+      model_verified_by: 333-AGI
+      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
     escalation_rules:
       - when: remote write or execution is requested
         to_role: validator
@@ -163,10 +169,13 @@ agents:
       - GEOX
       - ARIFOS
     runtime:
-      model: minimax/auto
+      model: minimax/MiniMax-M3
       temperature: 0
       context_budget: 32000
       transport: stdio
+      model_verified_at: "2026-06-12T13:15:00Z"
+      model_verified_by: 333-AGI
+      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
     escalation_rules:
       - when: non-earth decision requested
         to_role: architect
@@ -204,10 +213,13 @@ agents:
       - WEALTH
       - ARIFOS
     runtime:
-      model: minimax/auto
+      model: minimax/MiniMax-M3
       temperature: 0
       context_budget: 32000
       transport: stdio
+      model_verified_at: "2026-06-12T13:15:00Z"
+      model_verified_by: 333-AGI
+      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
     escalation_rules:
       - when: irreversible financial action requested
         to_role: validator
@@ -262,10 +274,13 @@ agents:
       - ARIFOS
       - HUMAN
     runtime:
-      model: minimax/auto
+      model: minimax/MiniMax-M3
       temperature: 0
       context_budget: 64000
       transport: streamable-http
+      model_verified_at: "2026-06-12T13:15:00Z"
+      model_verified_by: 333-AGI
+      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
     escalation_rules:
       - when: ac_risk >= 0.75 or claim-grade interpretation requested
         to_role: auditor
@@ -309,7 +324,10 @@ agents:
     required_witnesses:
       - ARIFOS
     runtime:
-      model: minimax/auto
+      model: minimax/MiniMax-M3
       temperature: 0
       context_budget: 32000
       transport: streamable-http
+      model_verified_at: "2026-06-12T13:15:00Z"
+      model_verified_by: 333-AGI
+      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12

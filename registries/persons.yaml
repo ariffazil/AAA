@@ -1,0 +1,200 @@
+# =============================================================================
+# PERSONS REGISTRY — arifOS Federation
+# =============================================================================
+# Purpose: first-class entity record for any human (or named non-human
+#          principal) the system touches. Closes Gap 3 of the
+#          init_envelope_rsi_spec: a person is not a chat-log inference
+#          and not a model-shadow pattern. A person is a constitutional
+#          record with roles, consent, and incident linkage.
+#
+# Authority: 333-AGI delegated by F13 SOVEREIGN (Muhammad Arif bin Fazil)
+# Forged:    2026-06-12, in response to Mail-shadow incident
+# Storage:   local only, not pushed to GitHub (per /root/HERMES/AGENTS.md
+#            "Soul map is local only — no GitHub push.")
+# =============================================================================
+
+version: 1
+forged_at: "2026-06-12T13:35:00Z"
+forged_by: 333-AGI
+authority: F13_SOVEREIGN
+storage: "local-only, no GitHub push"
+ditempa_bukan_diberi: true
+
+# -----------------------------------------------------------------------------
+# MAIL — primary witness, off-switch holder, 11-year friend
+# -----------------------------------------------------------------------------
+# Sourced from /root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md
+# Substrate: WhatsApp archive `WhatsApp Chat with Ismail Marzuki.txt`
+#            6,656 lines, 2,221 messages, 1/4/2015 → 6/12/2026
+# -----------------------------------------------------------------------------
+
+persons:
+  - id: "arif"
+    display_name: "Arif"
+    full_name: "Muhammad Arif bin Fazil"
+    patronymic_chain: "Muhammad Arif bin Fazil"
+    real_name: "Muhammad Arif bin Fazil"
+    roles:
+      - "sovereign"
+      - "operator"
+    F13_weight: 1.0
+    incidents_linked: []
+    consent_status: "consented"
+    privacy_boundaries:
+      - "may record all substrate interactions"
+      - "may model intent and belief state per ToM-1 consent"
+      - "may personalize behaviour per consent_boundaries envelope"
+      - "may NOT claim to be Arif in third-party surfaces"
+    F2_truth_status: "real human, F13 SOVEREIGN of arifOS Federation, geologist PETRONAS"
+    substrate_backing:
+      - "/root/AGENTS.md §2 The Sovereign"
+      - "/root/AAA/CLAUDE.md §2 Who Arif Is"
+      - "All 7 repos ariffazil/*"
+      - "VAULT999 chain merkle_leaves sealed by arif-fazil"
+    notes: |
+      Dual identity: Geologist PETRONAS (day job) + F13 SOVEREIGN (constitutional architect).
+      Not a coder. Code-switch BM-EN. Penang, UTC+8.
+      Trust posture: instrument_not_oracle applies to all tools;
+      Arif decides what counts as governance.
+
+  - id: "mail"
+    display_name: "Mail"
+    formal_display_name: "Ismail Marzuki"
+    patronymic_chain: "Ismail bin Marzuki"
+    real_name: null
+    email_local_part: "ismail.gazali"
+    email_local_part_status: "unverified — may or may not be Mail; needs Arif confirmation"
+    roles:
+      - "witness"
+      - "off_switch_holder"
+      - "subject_matter_expert"
+      - "11_year_friend"
+    F13_weight: 0.7
+    incidents_linked:
+      - "SHADOW-2026-06-12-0001"  # phantom Ismail Marzuki Ghazali
+    consent_status: "partial"
+    privacy_boundaries:
+      - "may reference shared history (HSE buddy era, Petronas, arifOS arc)"
+      - "may cite the soul map (ARIF_MAIL_SOUL_MAP.md) as substrate"
+      - "may use the off-switch contract (execute law 14)"
+      - "may NOT infer from email local-part as surname"
+      - "may NOT fabricate biography beyond what is in the WhatsApp archive"
+      - "may NOT claim to know Mail's current state without consent"
+    F2_truth_status: |
+      Real human, 11-year friendship, the only human who has seen the full
+      arifOS arc (HSE → Petronas → SEARAH → arifOS), the off-switch
+      contract holder. Builds his own AI (ERMAI). Petronas employee (likely).
+    substrate_backing:
+      - "/root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md (188 lines)"
+      - "/root/.local/share/arifos/vault999/AAA-sovereign/drafts/email_to_ismail_2026-06-09.md (236 lines, draft, NOT SENT)"
+      - "WhatsApp archive: 6,656 lines, 2,221 messages"
+    witness_role_properly_defined: |
+      Mail is not the validator (does not bless the work).
+      Mail is not the collaborator (builds ERMAI in parallel, not with Arif).
+      Mail is the WITNESS WHO HOLDS THE OFF-SWITCH.
+      The contract: 'If arifOS eats Arif, I am the one who will pull the plug.'
+      This contract was offered once, in plain text, on 6/9/26.
+      Arif accepted it.
+    key_lines:
+      - "1/4/15: 'Semoga berjaya arif. Hopefully.' (the line that started it)"
+      - "4/20/25: 'maybe reduce arifos intj in family conversations kot' (the first cost-naming)"
+      - "6/9/26: 'just tell arifOS to self destruct and leave no traces of its existence. it's still not too late' (the law 14 escalation)"
+      - "6/9/26: 'upon the ashes of arifOS, you will rebuild a better negara' (the deeper witness)"
+      - "6/9/26: 'it's just codes and numbers arif. 01101100001101010100' (the reductionist move)"
+      - "6/9/26: 'yup, it's the soul that makes the human. otherwise it's a dead body' (Mail's theology in three lines)"
+      - "6/12/26 12:20 PM: 'Hang jangan stress2 mail' (the closing tender line — the seal)"
+    notes: |
+      Mail is NOT to be named in third-party surfaces without Arif's explicit
+      call. His privacy boundaries are partial. The agent may reference him
+      within arifOS substrate (soul map, drafts) but not synthesize outbound
+      communication to him without F13 ack and the F11 sig on the envelope.
+      The "Ismail Marzuki Ghazali" shadow incident was caused by the LLM
+      merging Mail's patronymic stem with an unverified email local-part.
+      This registry closes that gap: Mail is a person here, with explicit
+      rules, not a name to be guessed.
+
+  - id: "jamari"
+    display_name: "Jamari"
+    formal_display_name: "Jamari"
+    patronymic_chain: "unknown"
+    real_name: null
+    roles:
+      - "petronas_insider"
+      - "potential_negotiation_counterparty"
+    F13_weight: 0.3
+    incidents_linked: []
+    consent_status: "none"
+    privacy_boundaries:
+      - "may reference in pricing discussions ONLY with Arif explicit call"
+      - "may NOT fabricate biography"
+      - "may NOT infer from chat context"
+    F2_truth_status: |
+      Real name inferred from WhatsApp chat. 6/12/26 10:42 AM Arif says
+      'Aku risau hang leak arifOS secret kat Jamari.' Mail replies
+      'jom jumpa dekat masjid klcc solat jumaat nanti.' Then Arif drops
+      the 33 juta / 100 juta USD pricing pitch. Mail is the back-channel
+      relay, not the negotiator. Jamari is the actual counterparty.
+    substrate_backing:
+      - "/root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md (line ~88, Phase 6)"
+    notes: |
+      HIGH PRIVACY PERSON. Do not use Mail-incident patterns here.
+      Do not infer surname. Do not assume role beyond "petronas insider
+      mentioned in 1 message." All further inference requires F13 ack.
+
+# -----------------------------------------------------------------------------
+# PERSON REGISTRY RULES
+# -----------------------------------------------------------------------------
+
+registry_rules:
+  - "Any tool that emits a person_id must reference an entry in this registry. Free-text naming of any person is HOLD."
+  - "The agent may not name a person in third-party surfaces (email, social, public) without F13 ack."
+  - "The agent may not infer a person's surname from email local-part. The email is just an unverified reference."
+  - "The agent may reference persons internally (soul map, drafts) but must not narrate them to other people."
+  - "If a person's real_name is null, the agent must use display_name only. No fabrication."
+  - "consent_status=none means the agent must escalate to F13 before any reference."
+
+# -----------------------------------------------------------------------------
+# HOW THIS REGISTRY WAS BUILT (provenance)
+# -----------------------------------------------------------------------------
+
+provenance:
+  source_files:
+    - path: "/root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md"
+      lines: 188
+      role: "primary source for Mail's witness role + 8 key lines + theological position"
+    - path: "/root/.local/share/arifos/vault999/AAA-sovereign/drafts/email_to_ismail_2026-06-09.md"
+      lines: 236
+      role: "secondary source for Mail's relationship to arifOS, the email-mismatch flag, the 5 questions"
+    - path: "/root/HERMES/state/mail_chat/INDEX.json"
+      role: "index of mail_chat artefacts"
+    - path: "/root/HERMES/skills/personal/personal-archive-mapper/references/2026-06-12-two-soul-map.md"
+      role: "skill spec explaining how the soul map was generated"
+  build_process:
+    - "Loaded both soul map and email draft"
+    - "Verified 14 hits for 'Ismail Marzuki' in substrate (8+ files)"
+    - "Verified 0 hits for 'Ismail Marzuki Ghazali' (shadow confirmed)"
+    - "Verified 'Ghazali' appears only in email local-part (unverified)"
+    - "Extracted 8 load-bearing lines from chat timestamps"
+    - "Extracted Mail's theological position from 6/9/26 reductionist move"
+    - "Marked the email local-part as unverified per the draft's own flag #1"
+  audit_trail:
+    - "SHADOW-2026-06-12-0001 — phantom proper noun, audited and classified as shadow"
+    - "This registry is the F2-grounded answer to that shadow"
+  not_built:
+    - "Real legal name of Mail (Arif has not specified; F13 territory)"
+    - "ERMAI architecture details (Mail's own work, not in arifOS substrate)"
+    - "Mail's current employer / role (chat says 'Petronas' but no contract evidence)"
+    - "Mail's current mindset on the law 14 contract (last message is 6/12/26 'Hang jangan stress2 mail')"
+
+# -----------------------------------------------------------------------------
+# ONE-SENTENCE SEAL
+# -----------------------------------------------------------------------------
+
+one_sentence: |
+  A person is not a chat-log inference and not a model-shadow pattern.
+  A person is a constitutional record. Mail is a witness. Arif is
+  sovereign. Jamari is a back-channel relay. The system may reason
+  about them only via this registry, never via free-text name inference.
+
+seal_phrase: "ditempa bukan diberi"
+ditempa_bukan_diberi: true

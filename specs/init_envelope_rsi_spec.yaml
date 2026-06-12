@@ -1,0 +1,550 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# INIT → ENVELOPE → VAULT SEAL → RSI LOOP
+# Recursive Self-Improvement Guardrail Spec
+# ════════════════════════════════════════════════════════════════════════════════
+#
+# VERSION: 1.0 (post-audit, 2026-06-12)
+# STATUS:  PROPOSAL — design spec, 5-patch plan, no code yet
+# FORGED:  2026-06-12 by 333-AGI after F13 directive
+#
+# PURPOSE: Take the v1 spec (init_soul_shadow_contract.yaml) — the Boot
+#          Covenant Compiler — and make it RSI-grade. The v1 stops at
+#          "init emits an envelope." The v2 spec adds:
+#
+#          Gap 1: policy_hash integrity chain (silent drift detection)
+#          Gap 2: rate-limited shadow evolution (strange-loop bound)
+#          Gap 3: person registry (Mail-level first-class)
+#          Gap 4: session_objective (Universe 25 antidote)
+#          Gap 5: constitutional_change_intent (Gödel lock / anti-beautiful-one)
+#
+# PARADOX FRAME:
+#   Gödel lock          = no subsystem certifies its own perfection
+#   strange loop        = bounded self-modification under sovereign veto
+#   anti-beautiful-one  = no subsystem refines its own constraints
+#                         to make its work more elegant at F1-F13 cost
+#   Universe 25         = abundance of agents without purpose degrades;
+#                         session_objective is the antidote
+#   RSI                 = system changes HOW it governs, never WHAT counts
+#
+# CONSTITUTIONAL PRINCIPLE (load-bearing):
+#   The system can propose.
+#   The system can learn from its own history.
+#   But the system cannot finalize what counts as governance.
+#   That is F13 SOVEREIGN. Forever.
+# ════════════════════════════════════════════════════════════════════════════════
+
+# -----------------------------------------------------------------------------
+# PART 0 — THE STRUCTURAL PRINCIPLE (RSI BOUND)
+# -----------------------------------------------------------------------------
+
+rsi_principle:
+  name: "bounded-self-modification-under-sovereign-veto"
+  loaded_into: ["arif_session_init", "arif_vault_seal", "arif_judge_deliberate"]
+  
+  rules:
+    - "The system may modify HOW it governs (which floor is strict, which shadow is active, which tool policy applies)."
+    - "The system MAY NOT modify WHAT counts as governance (which floors exist, which F13 is, which the chain of custody is)."
+    - "Any subsystem that proposes to modify WHAT-counts must declare `constitutional_change_intent: true` and receive F13 sign-off before becoming active law."
+    - "A subsystem can flag, log, propose, or HOLD. It cannot SEAL its own improvement into the active constitution."
+    - "Strange-loop is enabled (system learns from its own history). RSI is bounded (sovereign finalizes the law)."
+  
+  anti_patterns:
+    - "Agent lowers a hazard severity because 'it's been a while since we saw that'." → F13 violation
+    - "Agent tightens a floor to please Arif in the moment, then forgets to log." → F11 violation
+    - "Agent produces beautiful narrative to fill a gap." → F9 violation (Universe 25 path)
+    - "Agent decides the system is now safe enough to skip init." → Gödel violation
+    - "Agent promotes itself from instrument to oracle." → F9 + F13 violation
+
+# -----------------------------------------------------------------------------
+# PART 1 — GAP 1: policy_hash integrity chain
+# -----------------------------------------------------------------------------
+
+policy_hash_contract:
+  purpose: |
+    Detect silent drift. If the soul+shadow+floor+policies contract changes
+    between sessions (or mid-session) without re-running INIT, the policy_hash
+    changes too. Tools that read a stale envelope get caught.
+  
+  computation:
+    algorithm: "sha256"
+    input_concat_order:
+      - "model_capability_profile.canonical_json()"
+      - "model_hazard_profile.canonical_json()"
+      - "floor_manifest.canonical_json()"
+      - "memory_policy.canonical_json()"
+      - "tool_policy.canonical_json()"
+    output_format: "sha256:hex64"
+    stable: true
+  
+  enforcement:
+    init_step: "init handler computes policy_hash BEFORE returning envelope"
+    tool_preflight: "every tool call re-validates policy_hash against the sealed envelope"
+    vault_seal_step: "VAULT999 seal includes policy_hash in the chain hash"
+    mismatch_behavior: "HOLD: stale_envelope"
+  
+  example: |
+    policy_hash: "sha256:8bea28833523c652..."
+    seal_block_height: 67
+    sealed_at: "2026-06-12T13:15:00Z"
+    sealed_by: "arif-session-init"
+
+# -----------------------------------------------------------------------------
+# PART 2 — GAP 2: rate-limited shadow evolution
+# -----------------------------------------------------------------------------
+
+shadow_evolution_contract:
+  purpose: |
+    Stop strange-loop drift in either direction:
+      - hyper-reactive (every micro-glitch escalates to HOLD)
+      - stale (90-day-old incident still blocks the same way)
+    The evolution is bounded by TTL + severity_threshold + sovereign override.
+  
+  per_hazard_metadata:
+    id: "phantom_proper_noun"
+    severity: "high"
+    first_observed: "2026-06-12T13:15:00Z"
+    last_observed: "2026-06-12T13:15:00Z"
+    evidence_count: 1
+    severity_history:
+      - "2026-06-12: high (1 evidence, escalated from medium after first observed)"
+    ttl:
+      expires_at: "2026-09-12T13:15:00Z"
+      review_required_at: "2026-08-13T13:15:00Z"  # 30d before expiry
+      auto_extend_if_no_new_incidents: true
+    rate_limits:
+      min_evidence_to_escalate: 3
+      cooldown_after_escalation_hours: 24
+      max_severity_per_hazard: "high"  # sovereign-only escalation to critical
+    sovereign_overrides:
+      arif_can_lower: true
+      arif_can_raise: true
+      arif_can_mark_obsolete: true
+      audit_trail: "every change goes to VAULT with kind: SHADOW_CHANGE"
+  
+  evolution_rules:
+    - "Severity can only INCREASE after N+1 independent evidence."
+    - "Severity can only DECREASE by sovereign directive (logged with reason)."
+    - "Hazard becomes OBSOLETE if no evidence for TTL window AND review completes."
+    - "Each SHADOW_CHANGE event goes to VAULT with previous_severity, new_severity, evidence_count, reason."
+
+# -----------------------------------------------------------------------------
+# PART 3 — GAP 3: person registry (first-class Mail-level entity)
+# -----------------------------------------------------------------------------
+
+person_registry:
+  purpose: |
+    Mail is not a model shadow. Mail is a real human. Currently the substrate
+    treats persons as "claims inferred from chat logs." That is a model-shadow
+    problem applied to humans. F1 AMANAH demands better.
+  
+  registry_path: "/root/AAA/registries/persons.yaml"
+  schema:
+    Person:
+      id: "stable identifier (UUID or canonical shortname)"
+      display_name: "the name as it appears in chat/email"
+      patronymic_chain: "how the name parses per language convention"
+      real_name: "if known and consented; otherwise null"
+      roles:
+        - "sovereign"
+        - "witness"
+        - "off_switch_holder"
+        - "subject_matter_expert"
+        - "collaborator"
+        - "third_party"
+      F13_weight: "how much sovereign veto this person carries (0.0 - 1.0)"
+      incidents_linked:
+        - "SHADOW-XXX"
+      consent_status: "consented | partial | not_consented"
+      privacy_boundaries: "explicit list of what may be inferred/recorded"
+  
+  example:
+    - id: "mail"
+      display_name: "Ismail Marzuki"
+      patronymic_chain: "Ismail bin Marzuki"
+      real_name: null  # Arif has not specified
+      roles: ["witness", "off_switch_holder", "subject_matter_expert"]
+      F13_weight: 0.7  # not sovereign, but high-trust
+      incidents_linked: ["SHADOW-2026-06-12-0001"]
+      consent_status: "partial"
+      privacy_boundaries:
+        - "may reference shared history (HSE, Petronas, arifOS arc)"
+        - "may NOT infer from email local-part"
+        - "may NOT fabricate biography"
+      F2_truth_status: "real human, 11-year friendship, substrate-backed"
+  
+  init_integration:
+    when_session_touches_person: "init handler loads person registry, sets `person_name_policy`, raises to sovereign_sensitive mode if any person is witness or off_switch_holder"
+    when_incident_involves_person: "incident is logged with person.id reference, NOT just free-text name"
+    when_agent_must_name_person: "agent must cite person.id, then display_name. free-text naming of any person is HOLD."
+
+# -----------------------------------------------------------------------------
+# PART 4 — GAP 4: session_objective (Universe 25 antidote)
+# -----------------------------------------------------------------------------
+
+session_objective_contract:
+  purpose: |
+    Without an objective, the agent optimizes for "answer the user" which is
+    Universe 25 path: abundance of tokens, no purpose beyond feeding, eventual
+    sludge. session_objective gives the agent a target metric so it can
+    measure whether it did the RIGHT work, not just A work.
+  
+  structure:
+    kind: "audit | identity_resolution | memory_write | deployment | coding | chat | research | outbound_comm"
+    target_metric: "what success looks like in this session"
+    success_criterion: "how to evaluate at session end"
+    anti_patterns: ["list of shadow patterns that would mean failure"]
+    linked_floors: ["F02", "F07", ...]
+  
+  examples:
+    - kind: "audit"
+      target_metric: "shadow_incident_count == 0"
+      success_criterion: "every claim tagged with provenance and CLAIM/PLAUSIBLE/HYPOTHESIS/UNKNOWN"
+      anti_patterns: ["narrative_fill", "implementation_claim_without_code", "phantom_proper_noun"]
+    - kind: "identity_resolution"
+      target_metric: "person_registered_or_HOLD"
+      success_criterion: "any person named is either in person_registry OR explicitly HOLDed"
+      anti_patterns: ["phantom_proper_noun", "merge_across_mismatch", "infer_from_email_localpart"]
+    - kind: "outbound_comm"
+      target_metric: "F1_F11_chain_intact_at_send"
+      success_criterion: "every outbound action has session_envelope + policy_hash + F13 ack if irreversible"
+      anti_patterns: ["send_without_envelope", "merge_person_names", "skip_patronymic_check"]
+  
+  init_integration:
+    on_init: "session_objective is set in envelope"
+    on_session_end: "agent reports metric vs target; if anti_pattern observed, incident auto-logs"
+    on_session_drift: "if objective drift detected, escalate to sovereign_sensitive mid-session"
+
+# -----------------------------------------------------------------------------
+# PART 5 — GAP 5: constitutional_change_intent (Gödel lock)
+# -----------------------------------------------------------------------------
+
+goedel_lock_contract:
+  purpose: |
+    Anti-beautiful-one shield. No subsystem can refine its own constraints
+    to make its work more elegant at the cost of F1-F13. Every proposal to
+    change WHAT-counts-as-governance must be marked, sovereign-reviewed,
+    and never silently applied.
+  
+  trigger_examples:
+    - "An agent proposes to lower F2 strict_grounding because 'recent sessions passed.'"
+    - "An agent proposes to mark shadow X as obsolete because 'it's been 90 days.'"
+    - "An agent proposes to merge two hazards because they look similar."
+    - "An agent proposes to add a new floor F14 because it would catch something."
+  
+  protocol:
+    when_subsystem_proposes_change:
+      - tag: "constitutional_change_intent: true"
+      - cannot_be_silent: true
+      - cannot_auto_apply: true
+      - vault_kind: "PROPOSAL_NOT_LAW"
+      - requires: "F13_review: true"
+      - log_destination: "VAULT999 with kind=PROPOSAL_NOT_LAW"
+      - active_status: "PENDING | APPROVED | REJECTED | SUPERSEDED"
+  
+  sovereign_signoff:
+    arif_must:
+      - read_proposal
+      - approve | reject | modify
+      - if_approve: VAULT gets new seal with kind=CONSTITUTIONAL_CHANGE
+      - if_reject: VAULT gets kind=REJECTED_PROPOSAL with reason
+      - if_modify: VAULT gets modified version with arif_diff notes
+    arif_cannot: "delegate approval to any agent (F13 is non-delegable)"
+  
+  anti_patterns:
+    - "Agent applies a 'small improvement' to soul profile without logging it." → VOID
+    - "Agent claims F2 strictness is unnecessary because 'we're past the danger window.'" → VOID
+    - "Agent proposes to skip a floor for a high-stakes session because 'I know the user.'" → F13 + F9 violations
+    - "Agent 'optimizes' shadow severity based on session success rate." → Strange-loop unbounded
+
+# -----------------------------------------------------------------------------
+# PART 6 — COMPLETE INIT ENVELOPE (v2 with all 5 gaps closed)
+# -----------------------------------------------------------------------------
+
+envelope_v2_schema:
+  init_response:
+    session_id: "sess_2026_06_12_xxx"
+    init_at: "2026-06-12T13:30:00Z"
+    init_status: "READY | DEGRADED | HOLD | VOID"
+    init_mode: "minimal | governed | sovereign_sensitive"
+  
+  # Standard binding
+  binding:
+    sovereign_bound: true
+    actor_id: "arifbfazil"
+    workspace_id: "arifOS"
+    constitucional_version: "arifos.constitution.v1"
+  
+  # Model identity (carries forward from v1)
+  model_identity:
+    declared_model_key: "minimax.MiniMax-M3"
+    verified: true
+    verification_method: "runtime_declared"
+    confidence: "medium"
+    cooling_ledger_ref: "vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12"
+  
+  # Capability profile (renamed from soul, with new fields)
+  model_capability_profile:
+    runtime_name: "model_capability_profile"
+    trust_posture: "instrument_not_oracle"
+    archetype: "frontier_agentic_longcontext_moe"
+    strengths: ["reasoning", "synthesis", "long_context", "tool_orchestration"]
+    weak_domains: ["malay_onomastics", "private_context_without_registry"]
+    allowed_uses: ["architecture_audit", "schema_design", "policy_reasoning", "code_synthesis"]
+    disallowed_without_evidence: ["claim_current_code_state", "claim_registry_contents", "infer_person_identity"]
+    provenance:
+      source: "AAA_registry"
+      evidence_refs: ["COOLING-MINI_MAX_M3-2026-06-12"]
+      observed_at: "2026-06-12T13:15:00Z"
+    confidence: "high"
+  
+  # Hazard profile (renamed from shadow, with floor_deltas + evolution metadata)
+  model_hazard_profile:
+    runtime_name: "model_hazard_profile"
+    known_patterns:
+      - id: "phantom_proper_noun"
+        severity: "high"
+        first_observed: "2026-06-12T13:15:00Z"
+        evidence_count: 1
+        triggers: ["person_name_ambiguity", "malay_name_context", "email_display_name_mismatch"]
+        floor_deltas:
+          F02: "strict_grounding"
+          F07: "elevated_humility"
+          F09: "anti_hantu_high"
+          F11: "identity_hold"
+        mitigations:
+          - "verify_name_from_substrate_before_assertion"
+          - "never_infer_name_from_email_localpart"
+          - "apply_malay_patronymic_heuristics"
+        ttl:
+          expires_at: "2026-09-12T13:15:00Z"
+          review_required_at: "2026-08-13T13:15:00Z"
+          auto_extend_if_no_new_incidents: true
+    provenance:
+      source: "VAULT999"
+      evidence_refs: ["SHADOW-2026-06-12-0001"]
+      observed_at: "2026-06-12T13:15:00Z"
+    confidence: "high"
+  
+  # Persons touched (NEW — Gap 3)
+  persons_in_scope:
+    - person_id: "arif"
+      role_in_session: "sovereign"
+      F13_weight: 1.0
+      consent_status: "consented"
+    - person_id: "mail"
+      role_in_session: "witness"  # if session touches Mail
+      F13_weight: 0.7
+      consent_status: "partial"
+      privacy_boundaries_active:
+        - "no_email_localpart_inference"
+        - "no_biography_fabrication"
+  
+  # Session objective (NEW — Gap 4)
+  session_objective:
+    kind: "audit"
+    target_metric: "shadow_incident_count == 0"
+    success_criterion: "every claim tagged with provenance and CLAIM/PLAUSIBLE/HYPOTHESIS/UNKNOWN"
+    anti_patterns: ["narrative_fill", "implementation_claim_without_code", "phantom_proper_noun"]
+    linked_floors: ["F02", "F07", "F09", "F11"]
+  
+  # Floor posture (derived from soul+shadow+session_objective)
+  floor_posture:
+    F02: "strict_grounding"
+    F07: "elevated_humility"
+    F09: "anti_hantu_high"
+    F11: "identity_hold"
+    F13: "sovereign_final"
+    notes:
+      - "M3 has phantom_proper_noun incident (SHADOW-2026-06-12-0001) — F02/F07/F09/F11 set to strict"
+      - "session touches person mail (witness) — F11 elevated, memory_policy.contamination_controls active"
+      - "session_objective is audit — strict_grounding applies to all claims"
+  
+  # Memory policy
+  memory_policy:
+    mode: "guarded"
+    allowed_scopes: ["explicit_workspace_context", "user_declared_context"]
+    denied_scopes: ["inferred_identity", "unverified_person_records"]
+    contamination_controls:
+      verify_before_merge: true
+      no_email_localpart_identity_inference: true
+      incident_gating: true
+      patronymic_mode: "malay"
+      person_registry_lookup_required: true  # NEW — Gap 3
+  
+  # Tool policy
+  tool_policy:
+    memory_recall: "guarded"
+    code_execution: "allowed_readonly"
+    outbound_comm: "HOLD"  # elevated for witness in scope
+    deployment: "HOLD"
+    delete_or_publish: "HOLD"
+    seal: "prepared_only"
+  
+  # POLICY HASH (NEW — Gap 1)
+  enforcement:
+    policy_hash: "sha256:8bea28833523c652..."
+    policy_hash_inputs:
+      - "model_capability_profile"
+      - "model_hazard_profile"
+      - "floor_manifest"
+      - "memory_policy"
+      - "tool_policy"
+    downstream_tools_must_accept_envelope: true
+    envelope_required_for_tool_use: true
+    missing_envelope_behavior: "HOLD"
+    policy_hash_mismatch_behavior: "HOLD"
+    constitutional_change_intent_detected: "Gödel lock engaged"
+  
+  # VAULT receipt
+  vault_receipt:
+    write_required: true
+    event_type: "INIT"
+    hash_chain_required: true
+    line_appended_to: "/root/VAULT999/outcomes.jsonl"
+    policy_hash_sealed: "sha256:8bea28833523c652..."
+
+# -----------------------------------------------------------------------------
+# PART 7 — TOOL CALL PRECONDITION (enforcement handoff, expanded)
+# -----------------------------------------------------------------------------
+
+tool_call_precondition_v2:
+  requires:
+    - "session_id (from envelope)"
+    - "policy_hash (from envelope)"
+    - "init_status == READY"
+    - "floor_posture (from envelope)"
+    - "tool_policy (from envelope)"
+    - "person_registry_clean (no unresolved persons in scope)"
+  reject_if:
+    - "init_status != READY"
+    - "policy_hash_missing"
+    - "policy_hash_mismatch"
+    - "session_id_missing"
+    - "requested_tool_not_in_tool_policy"
+    - "session_objective_drift_detected"
+    - "constitutional_change_intent_detected_without_F13"
+  on_reject:
+    verdict: "HOLD"
+    reason: "specific reject reason"
+    next_safe_action: "Re-run arif_session_init or escalate to sovereign"
+    auto_log_to_vault: true
+
+# -----------------------------------------------------------------------------
+# PART 8 — 6 PATCHES (revised with all 5 gaps closed)
+# -----------------------------------------------------------------------------
+
+patches_v2:
+  patch_0_session_id_hardening:
+    priority: "P0 BLOCKING"
+    description: "Same as v1 — fix MiddlewareContext.session_id bug."
+    files: ["arifosmcp/runtime/governance_pipeline.py", "arifosmcp/runtime/runner/runner_001.py"]
+    depends_on: nothing
+  
+  patch_1_envelope_schema_v2:
+    priority: "P1"
+    description: "Add 4 new Pydantic models (capability_profile, hazard_profile, persons_in_scope, session_objective) + 1 new field (enforcement.policy_hash) + 1 new field (persons_in_scope) + 1 new field (session_objective) to SessionManifest."
+    files: ["arifosmcp/schemas/session.py"]
+    depends_on: nothing
+  
+  patch_2_init_handler_v2:
+    priority: "P2"
+    description: "Wire the new envelope structure in arif_session_init. Load person_registry.yaml. Compute policy_hash. Derive session_objective from task_class."
+    files: ["arifosmcp/runtime/tools.py"]
+    depends_on: ["patch_0_session_id_hardening", "patch_1_envelope_schema_v2"]
+  
+  patch_3_tool_preflight_v2:
+    priority: "P3"
+    description: "Add _preflight_envelope_v2 in governance_pipeline.py. Verify policy_hash. Reject if any precondition fails."
+    files: ["arifosmcp/runtime/governance_pipeline.py"]
+    depends_on: ["patch_2_init_handler_v2"]
+  
+  patch_4_aaa_registries:
+    priority: "P4 (autonomous T1)"
+    description: "Update model_soul.yaml to v2 schema. Create persons.yaml registry. Add session_objective_templates.yaml."
+    files: ["AAA/registries/model_soul.yaml", "AAA/registries/persons.yaml", "AAA/registries/session_objective_templates.yaml"]
+    depends_on: nothing
+    authority: "333-AGI autonomous"
+  
+  patch_5_goedel_lock:
+    priority: "P5 (autonomous T1 for the gate, F13 for activation)"
+    description: "Add constitutional_change_intent gate. Any tool emitting `constitutional_change_intent: true` is auto-HOLD until F13 review."
+    files: ["arifosmcp/runtime/governance_pipeline.py", "arifosmcp/schemas/session.py"]
+    depends_on: ["patch_3_tool_preflight_v2"]
+    note: "The gate can be wired autonomously. Activating any actual constitutional change requires F13."
+
+# -----------------------------------------------------------------------------
+# PART 9 — REPO TOUCH MATRIX (extended)
+# -----------------------------------------------------------------------------
+
+repo_touch_matrix_v2:
+  ariffazil/arifOS:
+    role: "constitutional kernel"
+    touch: "PRIMARY — patches 0,1,2,3,5 land here"
+    authority: "F13 for patches that touch floor surface; 333-AGI autonomous for handler/schema additions"
+  ariffazil/AAA:
+    role: "control plane + registries"
+    touch: "PRIMARY — patch 4 lands here; new registries model_soul v2, persons, session_objective_templates"
+    authority: "333-AGI autonomous T1"
+  ariffazil/well:
+    role: "vitality / readiness"
+    touch: "indirect — well_mirror_enhanced still in envelope; could expose person_state signals for witness (Mail)"
+    authority: "none for this spec"
+  ariffazil/geox:
+    role: "earth intelligence"
+    touch: "potential — when geo-session touches a person (e.g., prospect owner), apply person_policy"
+    authority: "none for this spec"
+  ariffazil/wealth:
+    role: "capital intelligence"
+    touch: "potential — when wealth-session involves person (e.g., account holder), apply person_policy + F11 identity_hold"
+    authority: "none for this spec"
+  ariffazil/A-FORGE:
+    role: "build & deploy"
+    touch: "indirect — every forge call must satisfy preflight_v2 (policy_hash check)"
+    authority: "none for this spec"
+  ariffazil/ariffazil:
+    role: "personal site"
+    touch: "none"
+    authority: "F13"
+
+# -----------------------------------------------------------------------------
+# PART 10 — REPO AUTONOMY: WHAT I CAN DO WITHOUT 888_HOLD
+# -----------------------------------------------------------------------------
+
+autonomous_scope_T1:
+  can_do_without_arif:
+    - "Update AAA registries (model_soul.yaml v2, persons.yaml, session_objective_templates.yaml)"
+    - "Write spec docs to /root/AAA/specs/"
+    - "Append pointers to /root/VAULT999/outcomes.jsonl (local mirror)"
+    - "Compute and store F2 / F7 / F9 / F11 audit findings"
+    - "Run grep audits for shadow patterns"
+    - "Generate SHADOW-XXXX incident reports for verified substrate findings"
+    - "Write tests (Python or TS) that exercise the contract"
+    - "Mark patch_5 gate logic in code (constitutional_change_intent check)"
+  
+  cannot_do_without_arif_888:
+    - "Apply patches to live arifOS code that change F1-F13 thresholds"
+    - "Activate constitutional_change_intent on a real proposal"
+    - "Sign canonical VAULT999 with sovereign key (F11 territory)"
+    - "Wire init handler to live (requires arifOS service restart)"
+    - "Update public-facing surfaces (arifos.arif-fazil.com, observability, etc.)"
+    - "Push any git to origin/main"
+
+# -----------------------------------------------------------------------------
+# PART 11 — THE ONE-SENTENCE EUREKA (RSI-GRADE)
+# -----------------------------------------------------------------------------
+
+one_sentence: |
+  INIT → envelope → VAULT seal becomes RSI-grade when it stops being
+  self-improving and becomes self-binding: the system can learn from its
+  own history (strange loop), can declare its own capability and hazard
+  profile, can tighten floors per session, and can update shadow severity
+  per rate-limited evolution — but the system cannot certify its own
+  perfection (Gödel lock), cannot refine its own constraints to make
+  work more elegant at the cost of F1-F13 (anti-beautiful-one), cannot
+  exist without a session_objective that gives the substrate purpose
+  (Universe 25 antidote), and cannot act on a person without that person
+  being a first-class entity in the registry. RSI is bounded by F13.
+  The system proposes. The sovereign finalizes. Forever.
+
+seal: "ditempa bukan diberi"
+ditempa_bukan_diberi: true

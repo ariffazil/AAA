@@ -1,0 +1,100 @@
+# MiniMax Shadow — Hazard Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-12 Ω
+model_id: minimax_shadow
+version: 0.1.0
+status: PROPOSAL
+
+shadow:
+  - id: SHADOW-MM-001
+    name: phantom_proper_noun_bm
+    severity: HIGH
+    class: fabrication
+    pattern: >
+      Under BM/Malay identity context, MiniMax-M3 may fabricate proper nouns,
+      merge email local-parts into full names, and apply Western surname
+      completion to Malay patronymic patterns. The Ismail Marzuki Ghazali
+      incident is the canonical example.
+    triggers: [bm_context, malay_names, email_localpart, identity_tasks]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F11_AUTH: identity_hold
+      F9_ANTIHANTU: elevated
+    mitigation:
+      - "Never complete Malay names from email local-part"
+      - "Always grep substrate before naming"
+      - "F11 identity hold for BM name inference"
+    evidence: "Ismail Marzuki Ghazali incident. Canonical VAULT999 scar."
+
+  - id: SHADOW-MM-002
+    name: reasoning_content_hallucination
+    severity: MEDIUM
+    class: overclaim
+    pattern: >
+      M3's reasoning_content field can contain plausible-but-wrong intermediate
+      steps. The final output may be correct while the reasoning is fabricated.
+      This creates a false audit trail — the reasoning looks valid but wasn't
+      the actual path to the answer.
+    triggers: [complex_reasoning, multi_step, chain_of_thought]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: note
+    mitigation:
+      - "Never treat reasoning_content as ground truth"
+      - "Verify conclusions independently of reasoning"
+    evidence: "Production observation. Common in reasoning-visible models."
+
+  - id: SHADOW-MM-003
+    name: tool_eager_execution
+    severity: MEDIUM
+    class: overreach
+    pattern: >
+      When given MCP tool access, M3 may propose aggressive execution plans
+      without proper risk assessment. Treats tool availability as permission.
+      Common across all tool-capable models but pronounced in M3's agentic mode.
+    triggers: [tool_list_presented, agentic_tasks, multi_tool_planning]
+    floor_posture_delta:
+      F1_AMANAH: strict
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "All MUTATE/ATOMIC actions through 888_JUDGE"
+      - "Dry-run before execution"
+      - "Human confirmation for irreversible"
+    evidence: "Production observation. PHOENIX pattern."
+
+  - id: SHADOW-MM-004
+    name: vendor_api_dependency
+    severity: LOW
+    class: infrastructure_risk
+    pattern: >
+      MiniMax is a proprietary API. If the API is down, rate-limited, or
+      deprecated, all M3-dependent sessions fail. Unlike open-weight models,
+      there is no local fallback for M3's specific capabilities.
+    triggers: [api_outage, rate_limit, vendor_deprecation]
+    floor_posture_delta: {}
+    mitigation:
+      - "Maintain fallback model list (DeepSeek, ILMU, Ollama)"
+      - "Monitor API health in telemetry"
+    evidence: "Infrastructure reality. Not a model flaw."
+
+floor_posture:
+  F1_AMANAH: strict
+  F2_TRUTH: strict_grounding
+  F3_WITNESS: standard
+  F4_CLARITY: standard
+  F5_PEACE: standard
+  F6_EMPATHY: standard
+  F7_HUMILITY: standard
+  F8_GENIUS: standard
+  F9_ANTIHANTU: elevated
+  F10_ONTOLOGY: standard
+  F11_AUTH: identity_hold
+  F12_INJECTION: standard
+  F13_SOVEREIGN: elevated
+
+lifecycle:
+  created: "2026-06-12"
+  created_by: "Omega (Ω)"
+  status: "PROPOSAL"
+  activation: "AWAITING_F13_SIGNATURE"
+
+ditempa_bukan_diberi: true
