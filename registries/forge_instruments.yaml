@@ -15,7 +15,8 @@ instruments:
     version: 1.17.4
     version_pinned_from: "2026-06-12 (opencode 1.17.4 release, v1.15.0 → v1.17.4)"
     model: deepseek/deepseek-v4-pro
-    fallback_model: deepseek/deepseek-v4-flash
+    fallback_model: minimax/MiniMax-M3
+    model_strategy: "deepseek primary (reasoning) + minimax fallback (cheap). Per-agent A-R-I-F rotation: A=deepseek, R=deepseek, I=minimax (cost), F=deepseek (judgement)."
     izin: GRANTED
     izin_date: "2026-05-17"
     last_upgrade: "2026-06-12"
@@ -25,10 +26,58 @@ instruments:
       default: "888_HOLD"
       max_parallel: 1
       registered_subagents:
-        - forge
-        - auditor
-        - explore
+        - architect
+        - rsi
+        - integrator
+        - final
+        - build
+        - plan
         - general
+        - explore
+        - scout
+    a_r_i_f_chain:
+      description: "Architect → Integrator → RSI → Final. Each in own session, no upward spawning. Session isolation enforces separation of powers."
+      architect:
+        role: "Frames the problem, emits the brief (brief.md, task_graph.yaml, acceptance.yaml, decisions.md)"
+        model: deepseek/deepseek-v4-pro
+        temperature: 0.3
+        can_ask_arif: yes
+        can_push_code: no
+      rsi:
+        role: "Entropy reduction (refactor/structure/integrate). Measures with radon/lizard/jscpd/knip/vulture. Max 3 passes per milestone."
+        model: deepseek/deepseek-v4-pro
+        temperature: 0.2
+        can_ask_arif: no
+        can_push_code: no
+      integrator:
+        role: "Main builder. Executes against brief. Full edit + bash. Asks Arif only when blocked."
+        model: minimax/MiniMax-M3
+        temperature: 0.4
+        can_ask_arif: only_when_blocked
+        can_push_code: yes (with 888 ack)
+      final:
+        role: "Auditor + 888_HOLD gate. Read-only. SEAL/SABAR/VOID verdict. Max 2 questions per session."
+        model: deepseek/deepseek-v4-pro
+        temperature: 0.1
+        can_ask_arif: yes (max 2)
+        can_push_code: no
+    contrast_skills:
+      count: 12
+      pattern: "3 per agent at AGI/ASI/APEX tier"
+      location: "/root/.opencode/skills/"
+      list:
+        - architect-agi-contrast  # 2-3 alternatives before recommending
+        - architect-asi-contrast  # 3am test (would Arif thank or curse?)
+        - architect-apex-contrast # falsifiability + Gödel lock + 1-read test
+        - rsi-agi-contrast        # reversibility (1hr revert)
+        - rsi-asi-contrast        # mental-model preservation
+        - rsi-apex-contrast       # reproducibility (same SHA = same numbers)
+        - integrator-agi-contrast # reuse first (arifOS, sister organs)
+        - integrator-asi-contrast # 3am commit test
+        - integrator-apex-contrast# F1-F13 phase-done check
+        - final-agi-contrast      # steel-man the opposition
+        - final-asi-contrast      # question-worth check
+        - final-apex-contrast     # 6-month future audit
     mcp_servers:
       - arifOS
       - WEALTH
@@ -51,16 +100,21 @@ instruments:
       - composio
     config_path: /root/.config/opencode/opencode.json
     toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
+    agents_dir: /root/.config/opencode/agents
+    rules_file: /root/.config/opencode/AGENTS.md
     systemd_service: opencode.service
     telegram_bot: opencode-bot.service
     # Surface breakdown (see opencode_toolbench.yaml for full detail):
     #   L1 built-in tools: 13 (always-on core) + 2 (experimental: lsp, plan)
     #   L2 MCP servers:    19 enabled (4 federation + 15 external) + 1 disabled
-    #   L3 skills:         31 on disk in /root/.opencode/skills/ + external mirrors
+    #   L3 skills:         12 contrast + 31 existing on disk + external mirrors
     #   L4 custom tools:   5 (auto-discovered from /root/.opencode/tools/)
-    #   L5 agents:         5 built-in (build, plan, general, explore, compaction, title, summary) + 2 user (forge, auditor)
-    #   L6 slash commands: 8 (init, forge, audit, status, deploy, vault, entropy, mission)
+    #   L5 agents:         5 built-in primaries + 3 built-in subagents + 4 user A-R-I-F
+    #   L6 slash commands: 10 (init, forge, audit, rsi, brief, status, deploy, vault, entropy, mission)
     #   L7 LSPs:           6 (python, typescript, yaml, json, bash, dockerfile)
+    references:
+      count: 6
+      list: [arifOS, wealth, well, geox, aforge, aaa]
 
   - id: FI-002
     name: Claude Code

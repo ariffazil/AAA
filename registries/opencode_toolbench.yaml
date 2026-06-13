@@ -1,6 +1,6 @@
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
-last_forged: '2026-06-12T19:00:00Z'
+last_forged: '2026-06-12T20:00:00Z'
 forged_by: OMEGA (Ω) Forge Agent
 opencode_version: 1.17.4
 opencode_binary: /usr/local/bin/opencode
@@ -329,8 +329,9 @@ axes:
       enabled: false
   L3_skills:
     description: LLM-callable procedural knowledge (markdown + YAML frontmatter). Loaded as system prompt
-      inserts, NOT as function calls. The 'skill' tool (L1) lists and renders them.
-    disk_count: 31
+      inserts, NOT as function calls. The 'skill' tool (L1) lists and renders them. A-R-I-F chain has
+      12 contrast skills (3 per agent at AGI/ASI/APEX tier).
+    disk_count: 43
     config_paths_required: true
     skills:
     - id: aaa-workspace
@@ -517,6 +518,56 @@ axes:
       path: /root/.opencode/skills/witness-effect/SKILL.md
       host_compat:
       - opencode
+    a_r_i_f_contrast_skills:
+    - id: architect-agi-contrast
+      agent: architect
+      tier: AGI
+      purpose: Contrast 2-3 alternatives before recommending one
+    - id: architect-asi-contrast
+      agent: architect
+      tier: ASI
+      purpose: 3am test — would Arif thank or curse at 3am?
+    - id: architect-apex-contrast
+      agent: architect
+      tier: APEX
+      purpose: Falsifiability + Gödel lock + 1-read test
+    - id: rsi-agi-contrast
+      agent: rsi
+      tier: AGI
+      purpose: Reversibility check — can I revert in 1hr?
+    - id: rsi-asi-contrast
+      agent: rsi
+      tier: ASI
+      purpose: Mental-model preservation — did I break the team's vocabulary?
+    - id: rsi-apex-contrast
+      agent: rsi
+      tier: APEX
+      purpose: Reproducibility — same tools + same SHA = same numbers?
+    - id: integrator-agi-contrast
+      agent: integrator
+      tier: AGI
+      purpose: Reuse first — does arifOS or a sister organ already do this?
+    - id: integrator-asi-contrast
+      agent: integrator
+      tier: ASI
+      purpose: 3am commit test — small, reversible, clear message?
+    - id: integrator-apex-contrast
+      agent: integrator
+      tier: APEX
+      purpose: F1-F13 phase-done check before declaring complete
+    - id: final-agi-contrast
+      agent: final
+      tier: AGI
+      purpose: Steel-man the opposition — strongest case against shipping
+    - id: final-asi-contrast
+      agent: final
+      tier: ASI
+      purpose: Question-worth check — could I answer with one more tool call?
+    - id: final-apex-contrast
+      agent: final
+      tier: APEX
+      purpose: 6-month future audit — would the verdict still hold?
+    count: 43
   L4_custom_tools:
     description: TypeScript files in /root/.opencode/tools/ auto-discovered by opencode plugin loader
     count: 5
@@ -542,17 +593,19 @@ axes:
       description: Reflect on a skill and propose improvements (audit, gaps, draft updates)
       source: /root/.opencode/tools/skill-improver.ts
   L5_agents:
-    description: '5 built-in + N user agents. mode: primary|subagent|all. Subagents invokable via @name
-      or task tool.'
+    description: 5 built-in primaries (build, plan, compaction, title, summary) + 3 built-in subagents
+      (general, explore, scout) + 4 user-defined (architect, rsi, integrator, final) = A-R-I-F chain
     builtins:
     - name: build
       mode: primary
       builtin: true
-      description: Default dev agent — full edit, question:allow, plan_enter:allow
+      description: Default dev agent — full edit, question:allow, plan_enter:allow (kept as alias for
+        'integrator')
     - name: plan
       mode: primary
       builtin: true
-      description: Read-only plan mode — edit denied except plan dirs, plan_exit:allow
+      description: Read-only plan mode — edit denied except plan dirs, plan_exit:allow (kept as alias
+        for 'architect')
     - name: general
       mode: subagent
       builtin: true
@@ -560,8 +613,12 @@ axes:
     - name: explore
       mode: subagent
       builtin: true
-      description: Read-only search agent, grep/glob/bash/webfetch/websearch/read allowed, external_directory
-        readonly
+      description: Read-only search agent, grep/glob/bash/webfetch/websearch/read allowed
+    - name: scout
+      mode: subagent
+      builtin: true
+      description: Read-only external docs/dependency research — clones dependency repos into managed
+        cache, cross-references local vs upstream
     - name: compaction
       mode: primary
       builtin: true
@@ -575,11 +632,18 @@ axes:
       builtin: true
       description: Auto-summarizer for sessions
     user_defined:
-    - name: forge
+    - name: architect
       mode: primary
-      builtin: false
-      description: arifOS Forge Agent (Ω) — Absolute Sovereignty Edition
+      alias_for: plan
+      description: A — Designs the system, frames the problem, emits the brief. Read-mostly, asks Arif
+        clarifying questions, cannot push code.
       model: deepseek/deepseek-v4-pro
+      fallback_model: minimax/MiniMax-M3
+      temperature: 0.3
+      steps: 50
+      color: '#5B6CFF'
+      can_ask_arif: true
+      can_push_code: false
       host_organs:
       - arifOS
       - WEALTH
@@ -588,14 +652,105 @@ axes:
       - A-FORGE
       - AAA
       constitutional_binding: F1-F13
-    - name: auditor
+      skills:
+      - architect-agi-contrast
+      - architect-asi-contrast
+      - architect-apex-contrast
+      - arifOS-federation
+      - arifos-operator
+      - constitutional-advisor
+      - mcp-unified
+      - aaa-workspace
+      - godel-humility-lock
+      - witness-effect
+      prompt_file: /root/.config/opencode/agents/architect.md
+    - name: rsi
       mode: subagent
-      builtin: false
-      description: Constitutional auditor — absolute sovereignty edition
+      alias_for: null
+      description: R — Refactor / Structure / Integrate. Entropy-reduction subagent. Measures complexity
+        (radon/lizard/jscpd/knip/vulture), applies bounded passes (max 3), never asks Arif questions.
       model: deepseek/deepseek-v4-pro
+      fallback_model: minimax/MiniMax-M3
+      temperature: 0.2
+      steps: 80
+      color: '#FF6B5B'
+      can_ask_arif: false
+      can_push_code: false
       host_organs:
-      - arifOS
-      constitutional_binding: F1-F13
+      - all 7 federated repos + any project
+      constitutional_binding: F1 AMANAH + F2 TRUTH + F7 HUMILITY + F11 AUDIT
+      skills:
+      - rsi-agi-contrast
+      - rsi-asi-contrast
+      - rsi-apex-contrast
+      - skill-reflector
+      - witness-effect
+      - repo-eureka
+      - gitingest-recipe
+      prompt_file: /root/.config/opencode/agents/rsi.md
+      hidden: false
+    - name: integrator
+      mode: primary
+      alias_for: build
+      description: I — Main builder. Executes against approved Architect brief. Full edit + bash. Asks
+        Arif only when blocked. The CHEAP model (minimax) by default for cost efficiency.
+      model: minimax/MiniMax-M3
+      fallback_model: deepseek/deepseek-v4-pro
+      temperature: 0.4
+      steps: 200
+      color: '#4FBE4F'
+      can_ask_arif: only_when_blocked
+      can_push_code: true
+      push_authority: ack_irreversible=true + 888 required
+      host_organs:
+      - all 7 federated repos + any project
+      constitutional_binding: F1-F13 (all floors, enforced at tool boundary)
+      skills:
+      - integrator-agi-contrast
+      - integrator-asi-contrast
+      - integrator-apex-contrast
+      - fastmcp-deploy
+      - docker-thermodynamics
+      - docker-security
+      - database-tuning
+      - caddy-cloudflare
+      - staff-engineer-review
+      - microsoft-eureka-integration
+      - mcp-builder
+      - cross-domain-reasoning
+      - claude-code-ops
+      - vps-management
+      - vps-docker
+      - vps-audit
+      prompt_file: /root/.config/opencode/agents/integrator.md
+    - name: final
+      mode: primary
+      alias_for: null
+      description: F — Auditor + 888_HOLD gate. Read-only review, evidence-grounded verdict (SEAL/SABAR/VOID).
+        Cannot push, cannot edit, can ask Arif up to 2 strategic questions per session.
+      model: deepseek/deepseek-v4-pro
+      fallback_model: minimax/MiniMax-M3
+      temperature: 0.1
+      steps: 30
+      color: '#C04FFF'
+      can_ask_arif: true
+      can_ask_max_per_session: 2
+      can_push_code: false
+      host_organs:
+      - all 7 federated repos + any project
+      constitutional_binding: F1 + F2 + F11 + F13 (the constitutional voice)
+      skills:
+      - final-agi-contrast
+      - final-asi-contrast
+      - final-apex-contrast
+      - constitutional-advisor
+      - arifos-recursive-audit
+      - staff-engineer-review
+      - witness-effect
+      - godel-humility-lock
+      - hermes-ops
+      - arifos-evals
+      prompt_file: /root/.config/opencode/agents/final.md
   L6_commands:
     description: 'Slash commands defined in opencode.json command: {} block'
     count: 8
@@ -707,3 +862,28 @@ constitutional_binding:
   F9_ANTIHANTU: C_dark ≤ 0.30. No consciousness/feeling claims in any tool output.
   F11_AUDIT: Every tool call logged to arifosmcp_tool_calls (Supabase L4) with actor_id + session_id.
   F13_SOVEREIGN: Arif's veto is absolute. 888_HOLD gate on irreversible actions.
+model_strategy:
+  top_level:
+    model: deepseek/deepseek-v4-pro
+    small_model: minimax/MiniMax-M3
+    rationale: deepseek for reasoning, minimax for cheap fallback. No native 'fallback' field in opencode
+      1.17.4 — small_model is the closest equivalent.
+  per_agent:
+    architect: deepseek (strong reasoning for design)
+    rsi: deepseek (deterministic measurement)
+    integrator: minimax (cheap + fast for build iterations, ~60% cost savings)
+    final: deepseek (judgement must be stable, no cheap-model shortcuts)
+  cycle_patterns:
+    in_session: Use variant_cycle keybind to switch between 'high' and 'fast' variants per model
+    between_sessions: 'Edit opencode.json ''model'' field, or pass -m flag: `opencode run -m minimax/MiniMax-M3
+      ...`'
+    fallback_when_deepseek_fails: 1. Try /models to switch interactively, 2. Restart with `opencode -m
+      minimax/MiniMax-M3`
+    on_vendor_402_insufficient_balance: Restart with fallback model via -m flag
+  variants_configured:
+    deepseek/deepseek-v4-pro:
+    - high
+    - fast
+    minimax/MiniMax-M3:
+    - high
+    - fast
