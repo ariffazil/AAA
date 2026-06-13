@@ -2,20 +2,24 @@
 # Class 1 Workers — CLI Tools Installed by Arif
 # Forged: 2026-06-10 by Ω | Authority: F13 SOVEREIGN
 # Canonical: /root/FORGE_REGISTRY.md
+# OpenCode toolbench detail: registries/opencode_toolbench.yaml
 
 version: 1
-last_audit: "2026-06-10T10:50:00Z"
+last_audit: "2026-06-12T19:00:00Z"
 auditor: "OMEGA"
 
 instruments:
   - id: FI-001
     name: OpenCode
     binary: /usr/local/bin/opencode
-    version: 1.15.0
-    model: deepseek-v4-pro
-    fallback_model: deepseek-v4-flash
+    version: 1.17.4
+    version_pinned_from: "2026-06-12 (opencode 1.17.4 release, v1.15.0 → v1.17.4)"
+    model: deepseek/deepseek-v4-pro
+    fallback_model: deepseek/deepseek-v4-flash
     izin: GRANTED
     izin_date: "2026-05-17"
+    last_upgrade: "2026-06-12"
+    upgrade_authority: "Arif Fazil (F13)"
     sandbox: process
     subagent_policy:
       default: "888_HOLD"
@@ -46,8 +50,17 @@ instruments:
       - meyhem
       - composio
     config_path: /root/.config/opencode/opencode.json
+    toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
     systemd_service: opencode.service
     telegram_bot: opencode-bot.service
+    # Surface breakdown (see opencode_toolbench.yaml for full detail):
+    #   L1 built-in tools: 13 (always-on core) + 2 (experimental: lsp, plan)
+    #   L2 MCP servers:    19 enabled (4 federation + 15 external) + 1 disabled
+    #   L3 skills:         31 on disk in /root/.opencode/skills/ + external mirrors
+    #   L4 custom tools:   5 (auto-discovered from /root/.opencode/tools/)
+    #   L5 agents:         5 built-in (build, plan, general, explore, compaction, title, summary) + 2 user (forge, auditor)
+    #   L6 slash commands: 8 (init, forge, audit, status, deploy, vault, entropy, mission)
+    #   L7 LSPs:           6 (python, typescript, yaml, json, bash, dockerfile)
 
   - id: FI-002
     name: Claude Code
