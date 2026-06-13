@@ -133,7 +133,7 @@ async function checkSourceContracts() {
   const authSource = await loadText('src/gateway/auth.ts');
   const gatewaySource = await loadText('src/gateway/server.ts');
   const a2aServerSource = await loadText('a2a-server/server.js');
-  const dashboardSource = await loadText('../arifos/static/dashboard/index.html');
+  const dashboardSource = await loadText('../arifOS/static/dashboard/index.html');
 
   for (const publicPath of [
     '/.well-known/a2a-discovery.json',

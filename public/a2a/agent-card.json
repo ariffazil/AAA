@@ -107,7 +107,6 @@
     "routing_policy": "https://aaa.arif-fazil.com/.well-known/a2a-routing-policy.json"
   },
   "a2a_endpoints": {
-    "discovery_contract": "GET /.well-known/a2a-discovery.json",
     "canonical_agent_card": "GET /.well-known/agent-card.json",
     "legacy_agent_card": "GET /.well-known/agent.json",
     "routing_policy": "GET /.well-known/a2a-routing-policy.json",

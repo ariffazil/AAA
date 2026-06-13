@@ -1,24 +1,28 @@
 {
   "name": "AAA Gateway",
-  "description": "Governed A2A v1.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13. WARGA: Constitutional Agent — not BINATANG, not harness, not cage.",
-  "provider": { "organization": "arifOS", "system": "AAA" },
+  "description": "Governed A2A v1.0.0 gateway for AAA federation. Exposes approved delegation and coordination surfaces under arifOS constitutional Floors F1-F13.",
+  "url": "https://aaa.arif-fazil.com/a2a",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "runtime": "OpenClaw"
+  },
   "version": "1.0.0",
-  "supportedInterfaces": [
-    {
-      "url": "https://aaa.arif-fazil.com",
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.0"
-    }
-  ],
+  "protocol_version": "1.0.0",
+  "preferred_transport": "jsonrpc-https",
   "capabilities": {
     "streaming": true,
-    "pushNotifications": false,
-    "extendedAgentCard": false
+    "push_notifications": false,
+    "authenticated_extended_card": false
   },
-  "securitySchemes": {
+  "authentication": {
+    "schemes": [
+      "bearer",
+      "apiKey"
+    ],
     "bearer": {
       "scheme": "bearer",
-      "tokenType": "opaque"
+      "token_type": "opaque"
     },
     "apiKey": {
       "scheme": "apiKey",
@@ -26,38 +30,91 @@
       "name": "x-a2a-key"
     }
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
   "skills": [
     {
       "id": "agent-dispatch",
       "name": "Agent Dispatch",
-      "description": "Non-blocking supervised task dispatch to approved internal agents (Hermes, OpenClaw, arifOS kernel). Governed by F1-F13 constitutional floors.",
-      "tags": ["dispatch", "task", "coordination", "governed"],
-      "examples": ["dispatch a task to the planner agent", "send work to the geodesy agent"]
+      "description": "Non-blocking supervised task dispatch to approved internal agents.",
+      "tags": [
+        "dispatch",
+        "task",
+        "coordination"
+      ],
+      "examples": [
+        "dispatch a task to the planner agent",
+        "send work to the geodesy agent"
+      ]
     },
     {
       "id": "agent-handoff",
       "name": "Agent Handoff",
-      "description": "Delegation to approved agents through governed handoff workflows with VAULT999 audit trail.",
-      "tags": ["handoff", "delegation", "transfer", "governed"],
-      "examples": ["handoff to the mobility agent", "transfer context to planner"]
+      "description": "Delegation to approved agents through governed handoff workflows.",
+      "tags": [
+        "handoff",
+        "delegation",
+        "transfer"
+      ],
+      "examples": [
+        "handoff to the mobility agent",
+        "transfer context to planner"
+      ]
     },
     {
       "id": "status-query",
       "name": "Status Query",
-      "description": "Read-only task and run status retrieval across the federation mesh.",
-      "tags": ["query", "status", "read-only"],
-      "examples": ["check task status", "get current state of task 123"]
+      "description": "Read-only task and run status retrieval.",
+      "tags": [
+        "query",
+        "status",
+        "read-only"
+      ],
+      "examples": [
+        "check task status",
+        "get current state of task 123"
+      ]
     }
   ],
-  "extensions": [
-    {
-      "uri": "https://arifos.arif-fazil.com/extensions/constitutional-governance",
-      "description": "arifOS Constitutional Governance — F1-F13 floors, 888_JUDGE verdict authority, VAULT999 sealed audit. All irreversible actions require human sovereign approval. No self-authorization permitted.",
-      "required": true,
-      "version": "1.0.0"
-    }
-  ],
-  "signatures": []
+  "governance": {
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13"
+    ],
+    "verdict_authority": "888_JUDGE",
+    "vault": "VAULT999",
+    "irreversible_requires_human": true,
+    "self_approval_forbidden": true,
+    "federation_trust_model": "untrusted_peers",
+    "enforce_floors": true,
+    "routing_policy": "https://aaa.arif-fazil.com/.well-known/a2a-routing-policy.json"
+  },
+  "a2a_endpoints": {
+    "canonical_agent_card": "GET /.well-known/agent-card.json",
+    "legacy_agent_card": "GET /.well-known/agent.json",
+    "routing_policy": "GET /.well-known/a2a-routing-policy.json",
+    "send_task": "POST /tasks",
+    "get_task": "GET /tasks/{taskId}",
+    "stream_task": "GET /tasks/{taskId}/stream",
+    "cancel_task": "POST /tasks/{taskId}/cancel",
+    "subscribe_task": "GET /tasks/{taskId}/subscribe",
+    "federation_manifest": "GET /.well-known/arifos-federation.json"
+  }
 }
