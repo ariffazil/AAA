@@ -14,7 +14,8 @@ companion_to: HEXAGON-AGENTS-FORGE-20260602 (VAULT999 chain 2505, renamed from P
 > **MANDATORY BOOT SEQUENCE**
 > 1. Read `/root/AGENTS.md` (Global Federation Rules & Identity)
 > 2. Read `/root/CONTEXT.md` (Live Machine State & Ports)
-> 3. Read this file (Repo-Specific Build/Test/Run rules)
+> 3. Read `docs/architecture/UNIFIED_AGENT_PROTOCOL.md` (Unified Agent Protocol — canonical governance binding)
+> 4. Read this file (Repo-Specific Build/Test/Run rules)
 
 > **Canonical Identity:** Agent Operations Cockpit / Federation Control Plane
 > **Authoritative Doc:** `FEDERATION_COCKPIT.md`
