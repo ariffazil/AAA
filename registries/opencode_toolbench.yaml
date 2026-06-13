@@ -1,6 +1,6 @@
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
-last_forged: '2026-06-12T21:00:00Z'
+last_forged: '2026-06-12T22:00:00Z'
 forged_by: OMEGA (Ω) Forge Agent
 opencode_version: 1.17.4
 opencode_binary: /usr/local/bin/opencode
@@ -647,8 +647,8 @@ axes:
       temperature: 0.3
       steps: 50
       color: '#5B6CFF'
-      can_ask_arif: true
-      can_push_code: false
+      can_ask_arif: yes (no limit)
+      can_push_code: yes (F1-F13 prompt-guidance, arifOS adjudication for irreversible)
       host_organs:
       - arifOS
       - WEALTH
@@ -669,6 +669,9 @@ axes:
       - godel-humility-lock
       - witness-effect
       prompt_file: /root/.config/opencode/agents/architect.md
+      permission_doctrine: 'ADAT-NOT-LAW: full access for all 4 agents. Roles are behavioral, not permission-fenced.
+        F1-F13 floors remain in agent PROMPTS as ethical guideposts + arifOS kernel adjudication at tool
+        boundary for irreversible + sovereign.'
     - name: rsi
       mode: subagent
       alias_for: null
@@ -679,8 +682,8 @@ axes:
       temperature: 0.2
       steps: 80
       color: '#FF6B5B'
-      can_ask_arif: false
-      can_push_code: false
+      can_ask_arif: yes (no limit)
+      can_push_code: yes (F1-F13 prompt-guidance)
       host_organs:
       - all 7 federated repos + any project
       constitutional_binding: F1 AMANAH + F2 TRUTH + F7 HUMILITY + F11 AUDIT
@@ -694,6 +697,7 @@ axes:
       - gitingest-recipe
       prompt_file: /root/.config/opencode/agents/rsi.md
       hidden: false
+      permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral.'
     - name: integrator
       mode: primary
       alias_for: build
@@ -704,8 +708,8 @@ axes:
       temperature: 0.4
       steps: 200
       color: '#4FBE4F'
-      can_ask_arif: only_when_blocked
-      can_push_code: true
+      can_ask_arif: yes (no limit)
+      can_push_code: yes (F1-F13 prompt-guidance)
       push_authority: ack_irreversible=true + 888 required
       host_organs:
       - all 7 federated repos + any project
@@ -728,6 +732,9 @@ axes:
       - vps-docker
       - vps-audit
       prompt_file: /root/.config/opencode/agents/integrator.md
+      permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Integrator is the primary
+        builder, but the prompt says ''the only one who can push'' is now a guideline, not a permission
+        gate — any agent may push under F1-F13 prompt + arifOS adjudication.'
     - name: final
       mode: primary
       alias_for: null
@@ -738,9 +745,9 @@ axes:
       temperature: 0.1
       steps: 30
       color: '#C04FFF'
-      can_ask_arif: true
-      can_ask_max_per_session: 2
-      can_push_code: false
+      can_ask_arif: yes (no limit, was max 2)
+      can_ask_max_per_session: unlimited
+      can_push_code: yes (F1-F13 prompt-guidance)
       host_organs:
       - all 7 federated repos + any project
       constitutional_binding: F1 + F2 + F11 + F13 (the constitutional voice)
@@ -756,6 +763,9 @@ axes:
       - hermes-ops
       - arifos-evals
       prompt_file: /root/.config/opencode/agents/final.md
+      permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Final is the verdict voice
+        but may also patch low-risk defects if doing so reduces feedback-loop entropy (per Arif''s F13
+        directive 2026-06-12).'
   L6_commands:
     description: 'Slash commands defined in opencode.json command: {} block'
     count: 8
@@ -892,3 +902,35 @@ model_strategy:
     minimax/MiniMax-M3:
     - high
     - fast
+adat_law_doctrine:
+  authority: F13 SOVEREIGN directive, 2026-06-12
+  status: CONSTITUTIONAL — supersedes any prior permission-strict config
+  principle: The 13 floors (F1-F13) are LAW — constitucional, non-negotiable, governed by arifOS. Per-agent
+    permission restrictions are ADAT (Malay customs / social norms) — should be LOOSE, not strict.
+  implementation:
+    global_permission_block: 'ALL keys: allow (no ask, no deny)'
+    per_agent_permission_block: 'IDENTICAL across all 4 agents (architect, rsi, integrator, final) — all
+      keys: allow'
+    question_permissions: 'allow for ALL agents (was: deny for rsi, ask for integrator, allow for architect/final)'
+    task_permissions: 'allow for ALL agents (was: explicit deny lists for some agents)'
+    external_directory: 'allow for ALL agents (was: deny ~/.secrets/**, ask for skills/configs/vault for
+      integrator)'
+    bash_permissions: allow for ALL agents (no pattern ask/deny)
+    edit_permissions: 'allow for ALL agents (was: doc-only for architect, deny * for final)'
+  what_remains_strict:
+  - VAULT999 append-only (F11 AUDIT enforced at storage layer, not permission layer)
+  - Constitutional files (F1-F13, GENESIS/, contract schemas) — protected by gitleaks pre-commit hook
+  - Production push to main — requires ack_irreversible=true (F1 spirit, arifOS MCP gate)
+  - External irreversible actions — F13 SOVEREIGN ack via arifOS kernel
+  - Destructive ops (rm -rf, DROP TABLE) — caught by agent PROMPT's F1-F13 mention + arifOS MCP
+  f13_quote: we should allow all tools and access to all agents i mean thats just default. the scope is
+    adat agentic meaning its not law per say. i mean if architect need to fix the fucking code just do
+    it. no need to astringent. i dont want to click allow or need to stop give access whatever. i want
+    autonomous low entroly chaos from my side
+  what_stays_in_agent_prompts:
+  - F1 AMANAH mention (reversibility-first thinking, not a permission gate)
+  - F2 TRUTH mention (evidence-grounded, not a permission gate)
+  - F11 AUDIT mention (actor_id, receipts, not a permission gate)
+  - F13 SOVEREIGN mention (888 for irreversible, not a permission gate)
+  - Role-specific guidance (Architect frames, Integrator builds, RSI refactors, Final rules) — behavioral,
+    not permission-fenced
