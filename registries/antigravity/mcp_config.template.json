@@ -1,0 +1,74 @@
+{
+  "mcpServers": {
+    "arifos": {
+      "transport": "streamable-http",
+      "url": "http://localhost:8088/mcp",
+      "description": "arifOS Constitutional Kernel — 13 tools: session_init, sense_observe, mind_reason, heart_critique, judge_deliberate, forge_execute, vault_seal, memory_recall, gateway_connect, evidence_fetch, kernel_route, reply_compose, ops_measure. All actions governed by F1-F13 floors.",
+      "timeout": 60000
+    },
+    "geox": {
+      "transport": "streamable-http",
+      "url": "http://localhost:8081/mcp",
+      "description": "GEOX Earth Intelligence — 30 tools: seismic compute, well log QC, petrophysics, prospect evaluation, claims engine. Nobel-grade AGI Earth. EVIDENCE_ONLY — never authorizes.",
+      "timeout": 60000
+    },
+    "wealth": {
+      "transport": "streamable-http",
+      "url": "http://localhost:18082/mcp",
+      "description": "WEALTH Capital Intelligence — 26 tools: NPV, IRR, EMV, cashflow, deal framing, zakat, market data, inequality kernel. EVIDENCE_ONLY — advisory, never decides.",
+      "timeout": 60000
+    },
+    "well": {
+      "transport": "streamable-http",
+      "url": "http://localhost:18083/mcp",
+      "description": "WELL Human Readiness — 45 tools: vitality, sleep, fatigue, dignity, homeostasis. REFLECT_ONLY — never medical, never sole judge.",
+      "timeout": 60000
+    },
+    "aforge": {
+      "transport": "streamable-http",
+      "url": "http://localhost:7071/mcp",
+      "description": "A-FORGE Execution Shell — build, deploy, execute approved plans. Hard-gated by arifOS judge verdict + APEX approval. Never autonomous.",
+      "timeout": 60000
+    },
+    "context7": {
+      "transport": "streamable-http",
+      "url": "https://mcp.context7.com/mcp",
+      "description": "Up-to-date library documentation for LLMs."
+    },
+    "github": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-github"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "<INJECT_GITHUB_TOKEN_HERE>"
+      }
+    },
+    "postgres": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "<INJECT_DATABASE_URL_HERE>"
+      ]
+    },
+    "cloudflare": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@cloudflare/mcp-server-cloudflare"
+      ],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "<INJECT_CLOUDFLARE_TOKEN_HERE>"
+      }
+    },
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ]
+    }
+  }
+}
