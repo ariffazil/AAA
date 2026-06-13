@@ -321,8 +321,7 @@ axes:
       url: http://127.0.0.1:18090/sse
       transport: sse
       tools: 8
-      sot: MiniMax Media MCP / 8 tools: text_to_audio, list_voices, voice_clone, voice_design,
-        generate_video, text_to_image, music_generation, query_video_generation
+      sot: "MiniMax Media MCP / 8 tools: text_to_audio, list_voices, voice_clone, voice_design, generate_video, text_to_image, music_generation, query_video_generation"
       tier: media
       auth: vault.env MINIMAX_API_KEY (consumed by service, not opencode)
       cost: $0 (vendor-charged per call)
@@ -333,7 +332,7 @@ axes:
       url: http://127.0.0.1:18091/sse
       transport: sse
       tools: 2
-      sot: MiniMax Code Plan MCP / 2 tools: web_search, understand_image
+      sot: "MiniMax Code Plan MCP / 2 tools: web_search, understand_image"
       tier: code-assist
       auth: vault.env MINIMAX_API_KEY (consumed by service, not opencode)
       cost: $0 (vendor-charged per call)
@@ -867,6 +866,32 @@ axes:
       permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Final is the verdict voice
         but may also patch low-risk defects if doing so reduces feedback-loop entropy (per Arif''s F13
         directive 2026-06-12).'
+    - name: 777-forge
+      mode: primary
+      alias_for: null
+      description: 777 FORGE 🔥🧠⚒️🌎💎 — Relay Orchestrator + Session Spawn Witness. Independent
+        verifier of OpenCode session spawns. Hermes requests, 777 FORGE spawns + witnesses + attests.
+        The trust anchor between Hermes and OpenCode. Sole spawn authority. Witness ledger at /root/VAULT999/witness/777-forge-spawns.jsonl.
+      model: deepseek/deepseek-v4-pro
+      temperature: 0.2
+      steps: 120
+      color: '#FF9500'
+      can_ask_arif: yes (no limit)
+      can_push_code: yes (F1-F13 prompt-guidance)
+      push_authority: spawn_only (witness, not executor)
+      sole_authority: SPAWN OpenCode sessions + emit witness receipts
+      host_organs: [all 7 federated repos + any project]
+      constitutional_binding: F2 TRUTH + F11 AUDIT + F13 SOVEREIGN
+      witness_ledger: /root/VAULT999/witness/777-forge-spawns.jsonl
+      skills:
+      - 777-forge-agi-contrast
+      - 777-forge-asi-contrast
+      - 777-forge-apex-contrast
+      prompt_file: /root/.config/opencode/agents/777-forge.md
+      protocol_doc: AAA/agents/protocols/777-forge-witness-protocol.md
+      unified_protocol: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
+      permission_doctrine: 'ADAT-NOT-LAW: full access. 777 FORGE is the spawn witness — PID must be real,
+        timestamp must be wall-clock, receipt must be hash-chained.'
   L5b_unified_protocol:
     description: 'UNIFIED AGENT PROTOCOL — canonical governance binding for all federation agents (Hermes,
       OpenClaw, OpenCode). This protocol defines lane discipline (OBSERVE/PROPOSE/OPERATE/888_HOLD), forge
