@@ -2,7 +2,7 @@
 
 > **Authority:** F13 SOVEREIGN (Arif Fazil)
 > **Forged:** 2026-06-12 by Ω (Omega) — arifOS Forge Agent
-> **Status:** SEALED. OpenCode 1.17.4. Federation-tested.
+> **Status:** SEALED. OpenCode 1.17.4. Federation-tested. **Adat layer (reframed 2026-06-13):** soft role specialization, full tool access, kernel-level guardrails only.
 
 ---
 
@@ -19,6 +19,19 @@ deepseek     deepseek       minimax        deepseek
 ```
 
 Each stage is a **separate session**. No upward spawning. The human (Arif) is the only entity that sees all four in sequence.
+
+---
+
+## Philosophy (Adat, not Law)
+
+The A-R-I-F chain is built on **soft role specialization**, not hard permission fences.
+
+- **All agents get full tool access by default.** No permission prompts for normal work. The tool layer is free.
+- **Roles shape behavior, not capability.** Architect *prefers* to plan, Integrator *prefers* to build, Final *prefers* to audit. But if the cleanest path crosses the role boundary (e.g., Architect spots a typo and fixes it), the role does not block.
+- **Hard guardrails live at the kernel and the release boundary**, not at the role description. Irreversible ops, production push, constitutional file mutation, destructive infra, external comms — these are kernel-blocked. Everything else (clarity, humility, empathy, audit trail formatting, doc style) is **Adat** — narrative guidance, not law.
+- **The real safety net is git revert + F13 signature on irreversible + VAULT999 audit.** Not permission popups.
+
+In one line: **autonomy by default, governance at the kernel.**
 
 ---
 
