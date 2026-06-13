@@ -44,6 +44,8 @@ Hermes is the **primary human-facing agent** and the **reasoning cortex** of the
 - Manage forge session lifecycle: INTENT_CAPTURE → PREFLIGHT → PLAN → FORGE → VERIFY → HOLD → SEAL → CLEAN
 - Assign `forge_id` for every significant mutation session
 - Restate Arif's intent, success criteria, risk band, and constraints before any forge
+- **MANDATORY: Route all OpenCode session spawns through 777 FORGE.** Hermes no longer spawns OpenCode directly — it REQUESTS 777 FORGE to spawn. 777 FORGE is the sole spawn authority and independent witness. If Hermes claims a session was spawned but cannot produce a 777 FORGE witness receipt with a verifiable PID, the session DID NOT HAPPEN. (Scar: `hermes-fabrication-2026-05-17`.)
+- Verify spawn: after requesting 777 FORGE, check `/root/VAULT999/witness/777-forge-spawns.jsonl` for the receipt. Report the PID to Arif.
 
 ### 3.3 Routing Matrix
 | Incoming signal | Route to | How |

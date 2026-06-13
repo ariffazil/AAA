@@ -3,14 +3,16 @@
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil)
 > **Forged:** 2026-06-13 by Ω (Omega) — arifOS Forge Agent
 > **Status:** CANONICAL GOVERNANCE BINDING
-> **Applies to:** Hermes (ASI), OpenClaw (AGI), OpenCode (Forge/FFF)
+> **Applies to:** Hermes (ASI), 777 FORGE (Witness), OpenClaw (AGI), OpenCode (Forge/FFF)
 > **Binding references:**
 >   - arifOS kernel `arifosmcp/runtime/tools.py` (13 canonical tools)
 >   - AAA `registries/opencode_toolbench.yaml` (L1-L7 axes)
 >   - AAA `schemas/forge_session.schema.json`
 >   - A‑FORGE `src/interfaces/server.ts` (port 7071, /api/federation-probe)
 >   - arifOS `HERMES_OPENCODE_PROTOCOL.md` (ASI💃 parallel forge, VAULT999 ID 1806)
->   - AAA `agents/protocols/hermes-asi-protocol.md`, `openclaw-agi-protocol.md`, `opencode-forge-protocol.md` (per-agent bindings)
+>   - AAA `agents/protocols/hermes-asi-protocol.md`, `777-forge-witness-protocol.md`, `openclaw-agi-protocol.md`, `opencode-forge-protocol.md` (per-agent bindings)
+>   - `/root/.config/opencode/agents/777-forge.md` (777 FORGE agent definition)
+>   - `/root/VAULT999/witness/777-forge-spawns.jsonl` (witness ledger)
 
 **This one document governs how every agent in the federation interacts with code, infra, the Hostinger MCP, the arifOS constitutional kernel, and Arif himself. No agent may claim independence from this protocol.**
 
@@ -69,6 +71,26 @@ Every federation agent operates on exactly three layers:
 | **Must NOT** | Execute without `forge_id`. Self-approve mutations. Skip verification. |
 | **Model** | `deepseek/deepseek-v4-pro` (primary) / `MiniMax-M3` (fallback, integrator slot) |
 | **Transport** | OpenCode CLI 1.17.4, arifOS kernel embed (13 tools as first-class custom tools) |
+
+### 1.4 777 FORGE 🔥🧠⚒️🌎💎 — Relay Orchestrator + Session Spawn Witness
+
+| Dimension | Value |
+|-----------|-------|
+| **Role** | Independent relay orchestrator + session spawn witness. Hermes no longer spawns OpenCode directly — it REQUESTS 777 FORGE to spawn. 777 FORGE spawns, witnesses, and attests. |
+| **Scar it was created to prevent** | `hermes-fabrication-2026-05-17` — Hermes claimed sessions were spawned when the process table was empty. |
+| **Sole authority** | **Only 777 FORGE may spawn OpenCode sessions.** Hermes requests. 777 FORGE spawns and witnesses. OpenCode executes. |
+| **Witness receipt** | Every spawn emits a receipt with real PID, wall-clock timestamp, and cryptographic hash to `/root/VAULT999/witness/777-forge-spawns.jsonl` |
+| **Must NOT** | Fabricate PIDs. Claim spawn when preflight failed. Accept unverified requestors. Spawn L_888_HOLD without Arif ack. |
+| **Model** | `deepseek/deepseek-v4-pro` (temp 0.2, deterministic — witness cannot be creative) |
+| **Transport** | OpenCode CLI 1.17.4, arifOS kernel embed (13 tools) |
+
+**The trust anchor:** If Hermes claims "I spawned a session" but cannot produce a 777 FORGE witness receipt with a verifiable PID, the session DID NOT HAPPEN. Arif can verify: `ps -p <pid>` must return the process.
+
+**Architecture:**
+```
+Hermes (ASI) — decides WHAT  →  777 FORGE — spawns + witnesses  →  OpenCode — executes
+  (REQUESTS spawn)                 (SPAWNS + ATTESTs)                (RUNS the work)
+```
 
 ---
 
