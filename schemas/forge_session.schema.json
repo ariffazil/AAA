@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/forge_session.schema.json",
+  "title": "Forge Session",
+  "description": "A governed forge session under arifOS kernel + AAA state + A-FORGE execution. Every mutation must carry a forge_id tracked against this schema.",
+  "type": "object",
+  "required": ["forge_id", "actor_id", "session_id", "lane", "states_traversed", "started_at"],
+  "properties": {
+    "forge_id": {
+      "type": "string",
+      "description": "Unique session identifier. Format: FORGE-YYYYMMDD-HHMMSS-{agent}-{intent}",
+      "pattern": "^FORGE-\\d{8}-\\d{6}-[a-z0-9_]+-[a-z0-9_]+$"
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "The initiating agent. One of: hermes-asi, openclaw-agi, opencode-forge, omega, kimi, claude-code, qwen-code, gemini-cli, codex-cli, copilot-cli"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "arifOS constitutional session ID (SEAL-* from arif_session_init)"
+    },
+    "lane": {
+      "type": "string",
+      "enum": ["L_OBSERVE", "L_PROPOSE", "L_OPERATE", "L_888_HOLD"],
+      "description": "The authority lane for this forge session"
+    },
+    "intent": {
+      "type": "string",
+      "description": "One-line human-readable intent captured at INTENT_CAPTURE state"
+    },
+    "risk_band": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+      "description": "Risk classification from INTENT_CAPTURE"
+    },
+    "reversibility": {
+      "type": "boolean",
+      "description": "True if all mutations in this session are fully reversible via git revert or equivalent"
+    },
+    "states_traversed": {
+      "type": "array",
+      "description": "Ordered list of states the session passed through",
+      "items": {
+        "type": "string",
+        "enum": ["INTENT_CAPTURE", "PREFLIGHT", "PLAN", "FORGE", "VERIFY", "HOLD", "SEAL", "CLEAN"]
+      },
+      "minItems": 1
+    },
+    "current_state": {
+      "type": "string",
+      "enum": ["INTENT_CAPTURE", "PREFLIGHT", "PLAN", "FORGE", "VERIFY", "HOLD", "SEAL", "CLEAN"],
+      "description": "Current state of the forge session"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when session was created"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when session reached SEAL or was aborted"
+    },
+    "repos_touched": {
+      "type": "array",
+      "description": "List of federation repos modified in this session",
+      "items": {
+        "type": "string",
+        "enum": ["arifOS", "A-FORGE", "AAA", "geox", "WEALTH", "WELL", "APEX", "HERMES", "arif-sites"]
+      }
+    },
+    "hostinger_scopes": {
+      "type": "array",
+      "description": "Hostinger MCP scopes accessed",
+      "items": {
+        "type": "string",
+        "enum": ["domains_read", "domains_write", "dns_read", "dns_write", "vps_read", "vps_manage", "hosting_read", "hosting_manage", "billing_read", "billing_manage"]
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "Individual forge events within this session (forge_event records)",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "lane", "tool", "timestamp", "result"],
+        "properties": {
+          "event_id": { "type": "string" },
+          "lane": { "type": "string", "enum": ["L_OBSERVE", "L_PROPOSE", "L_OPERATE", "L_888_HOLD"] },
+          "tool": { "type": "string", "description": "Tool or command used" },
+          "parameters": { "type": "object", "description": "Sanitized parameters (no secrets)" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "result": { "type": "string", "enum": ["SUCCESS", "FAILURE", "TIMEOUT", "PARTIAL", "HOLD", "REJECTED"] },
+          "exit_code": { "type": "integer" },
+          "error": { "type": "string", "description": "Error message if any" },
+          "files_touched": { "type": "array", "items": { "type": "string" } },
+          "before_hash": { "type": "string", "description": "sha256 of pre-state" },
+          "after_hash": { "type": "string", "description": "sha256 of post-state" }
+        }
+      }
+    },
+    "hold_requests": {
+      "type": "array",
+      "description": "L_888_HOLD requests raised during this session",
+      "items": {
+        "type": "object",
+        "required": ["hold_id", "action", "risk", "reversibility"],
+        "properties": {
+          "hold_id": { "type": "string" },
+          "action": { "type": "string", "description": "What will change" },
+          "why": { "type": "string", "description": "Why it matters" },
+          "risk": { "type": "string", "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"] },
+          "reversibility": { "type": "boolean" },
+          "rollback": { "type": "string", "description": "Rollback path (max 4 lines)" },
+          "recommended_choice": { "type": "string", "enum": ["A", "B", "HOLD", "ABORT"] },
+          "arif_ack": { "type": "boolean", "description": "True if Arif gave explicit approval" },
+          "arif_ack_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "seal_record": {
+      "type": "object",
+      "description": "Final seal for completed sessions",
+      "required": ["verdict", "diffs_summary"],
+      "properties": {
+        "verdict": { "type": "string", "enum": ["SEAL", "HOLD", "REVERT", "VOID"] },
+        "diffs_summary": { "type": "string", "description": "Human-readable summary of what changed" },
+        "tests_run": { "type": "integer" },
+        "tests_passed": { "type": "integer" },
+        "host_infra_before": { "type": "object", "description": "Snapshot of host state before" },
+        "host_infra_after": { "type": "object", "description": "Snapshot of host state after" },
+        "vault_seal_id": { "type": "string", "description": "VAULT999 seal ID if sealed to L6" },
+        "sealed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "floors_touched": {
+      "type": "array",
+      "description": "Constitutional floors referenced during this session",
+      "items": { "type": "string", "enum": ["F01","F02","F03","F04","F05","F06","F07","F08","F09","F10","F11","F12","F13"] }
+    },
+    "epistemic_tags": {
+      "type": "array",
+      "description": "Epistemic confidence tags used in session outputs",
+      "items": { "type": "string", "enum": ["CLAIM","PLAUSIBLE","ESTIMATE","UNKNOWN","HYPOTHESIS"] }
+    }
+  }
+}

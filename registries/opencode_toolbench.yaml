@@ -1,7 +1,7 @@
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
-last_forged: '2026-06-12T23:00:00Z'
-forged_by: OMEGA (Ω) Forge Agent
+last_forged: '2026-06-13T00:30:00Z'
+forged_by: OMEGA (Ω) Forge Agent + ASI💃 (parallel forge, VAULT999 ID 1806)
 opencode_version: 1.17.4
 opencode_binary: /usr/local/bin/opencode
 config_paths:
@@ -150,7 +150,7 @@ axes:
       axis: permission_concept
   L2_mcp_servers:
     description: External processes (local stdio) or remote (SSE / Streamable-HTTP / OAuth) tool providers.
-      Each server's tools namespaced as <server>_<tool>. 13-slot MISKIN roster — only zero-cost + actually-used
+      Each server's tools namespaced as <server>_<tool>. 15-slot MISKIN roster (was 13; restored minimax-media + minimax-code in P1) — only zero-cost + actually-used
       servers. $0/month total cost.
     count: 13
     transport:
@@ -315,13 +315,34 @@ axes:
       tier: testing
       auth: none (local Chromium)
       cost: $0
+    - name: minimax-media
+      slot: 14
+      type: remote
+      url: http://127.0.0.1:18090/sse
+      transport: sse
+      tools: 8
+      sot: MiniMax Media MCP / 8 tools: text_to_audio, list_voices, voice_clone, voice_design,
+        generate_video, text_to_image, music_generation, query_video_generation
+      tier: media
+      auth: vault.env MINIMAX_API_KEY (consumed by service, not opencode)
+      cost: $0 (vendor-charged per call)
+      added_in: P1 of minimax-federation-2026-06-12 (restored after F2 audit correction)
+    - name: minimax-code
+      slot: 15
+      type: remote
+      url: http://127.0.0.1:18091/sse
+      transport: sse
+      tools: 2
+      sot: MiniMax Code Plan MCP / 2 tools: web_search, understand_image
+      tier: code-assist
+      auth: vault.env MINIMAX_API_KEY (consumed by service, not opencode)
+      cost: $0 (vendor-charged per call)
+      added_in: P1 of minimax-federation-2026-06-12 (restored after F2 audit correction)
     quarantine:
       brave-search: 🔒 Token in /root/.env (mode 644) not in vault.env. Move BRAVE_SEARCH_API_KEY to vault.env
         to enable.
       supabase: 🔒 Token exists but --read-only flag. Remove flag AND ensure F13 ack for write access.
     removed_log:
-      minimax-media: NotFound at /mcp — design-correct (serves on /sse). Was never working in MCP transport.
-      minimax-code: Same — never worked in MCP transport.
       exa: 405 Method Not Allowed + EXA_API_KEY empty. Never authenticated.
       composio: 401 Unauthorized + requires OAuth flow you haven't completed. No value to a single-user
         VPS.
@@ -331,7 +352,7 @@ axes:
       playwright: Fills the AAA / arif-sites / observability-dashboard testing gap. Replaces the dead
         minimax-code slot. Zero cost (npx @playwright/mcp). The integration (I) and final (F) agents can
         now actually test web surfaces they build.
-    total_cost: $0/month — all 13 are zero-cost (local npx/uvx or local federation organs)
+    total_cost: $0/month — all 15 are zero-cost (local npx/uvx, federation organs, or vendor-charged per call)
   L3_skills:
     description: LLM-callable procedural knowledge (markdown + YAML frontmatter). Loaded as system prompt
       inserts, NOT as function calls. The 'skill' tool (L1) lists and renders them. A-R-I-F chain has
@@ -674,7 +695,8 @@ axes:
     kernel_skill: /root/.opencode/skills/arifos-kernel/SKILL.md (canonical discoverable entry point)
   L5_agents:
     description: 5 built-in primaries (build, plan, compaction, title, summary) + 3 built-in subagents
-      (general, explore, scout) + 4 user-defined (architect, rsi, integrator, final) = A-R-I-F chain
+      (general, explore, scout) + 4 user-defined (architect, rsi, integrator, final) = A-R-I-F chain.
+      All 4 user-defined agents are bound by the UNIFIED AGENT PROTOCOL (see L5b_unified_protocol below).
     builtins:
     - name: build
       mode: primary
@@ -744,6 +766,7 @@ axes:
       - godel-humility-lock
       - witness-effect
       prompt_file: /root/.config/opencode/agents/architect.md
+      protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
       permission_doctrine: 'ADAT-NOT-LAW: full access for all 4 agents. Roles are behavioral, not permission-fenced.
         F1-F13 floors remain in agent PROMPTS as ethical guideposts + arifOS kernel adjudication at tool
         boundary for irreversible + sovereign.'
@@ -771,6 +794,7 @@ axes:
       - repo-eureka
       - gitingest-recipe
       prompt_file: /root/.config/opencode/agents/rsi.md
+      protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
       hidden: false
       permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral.'
     - name: integrator
@@ -807,6 +831,7 @@ axes:
       - vps-docker
       - vps-audit
       prompt_file: /root/.config/opencode/agents/integrator.md
+      protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
       permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Integrator is the primary
         builder, but the prompt says ''the only one who can push'' is now a guideline, not a permission
         gate — any agent may push under F1-F13 prompt + arifOS adjudication.'
@@ -838,9 +863,44 @@ axes:
       - hermes-ops
       - arifos-evals
       prompt_file: /root/.config/opencode/agents/final.md
+      protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
       permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Final is the verdict voice
         but may also patch low-risk defects if doing so reduces feedback-loop entropy (per Arif''s F13
         directive 2026-06-12).'
+  L5b_unified_protocol:
+    description: 'UNIFIED AGENT PROTOCOL — canonical governance binding for all federation agents (Hermes,
+      OpenClaw, OpenCode). This protocol defines lane discipline (OBSERVE/PROPOSE/OPERATE/888_HOLD), forge
+      session lifecycle (INTENT_CAPTURE→CLEAN), per-agent roles, Hostinger MCP integration, F1-F13 constitutional
+      binding, and evidence/audit requirements.'
+    protocol_version: 1
+    status: CANONICAL_GOVERNANCE_BINDING
+    forged_by: OMEGA (Ω) Forge Agent
+    forged_at: '2026-06-13T00:00:00Z'
+    canonical_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
+    canonical_schema: AAA/schemas/forge_session.schema.json
+    canonical_registry: AAA/registries/unified_agent_protocol.yaml
+    human_readable_variant: /root/arifOS/HERMES_OPENCODE_PROTOCOL.md (ASI💃 forge, VAULT999 ID 1806)
+    per_agent_protocols:
+      hermes_asi: AAA/agents/protocols/hermes-asi-protocol.md
+      openclaw_agi: AAA/agents/protocols/openclaw-agi-protocol.md
+      opencode_forge: AAA/agents/protocols/opencode-forge-protocol.md
+    authority_lanes:
+    - L_OBSERVE: read_only_always_allowed
+    - L_PROPOSE: plan_draft_always_allowed_tagged
+    - L_OPERATE: safe_mutate_with_lease
+    - L_888_HOLD: irreversible_requires_arif_ack
+    forge_session_states:
+    - INTENT_CAPTURE
+    - PREFLIGHT
+    - PLAN
+    - FORGE
+    - VERIFY
+    - HOLD
+    - SEAL
+    - CLEAN
+    binding_repos: [arifOS, A-FORGE, AAA, geox, WEALTH, WELL, APEX, HERMES, arif-sites]
+    applies_to_agents: [hermes-asi, openclaw-agi, opencode-forge, architect, rsi, integrator, final]
+    applies_to_mcp_servers: [arifOS, WEALTH, WELL, GEOX, hostinger-mcp]
   L6_commands:
     description: 'Slash commands defined in opencode.json command: {} block'
     count: 8
