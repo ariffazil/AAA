@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "on_session_start": {
+      "command": "mcp:arifos/arif_session_init",
+      "description": "Initialize session through arifOS. Fetches current constitutional constraints and active hold states."
+    },
+    "post_file_edit": {
+      "command": "run: make test || mcp:arifos/arif_ops_measure",
+      "description": "After Forge mutates a file, optionally run tests or send telemetry to the kernel."
+    },
+    "pre_tool_call": {
+      "tools": ["run_command"],
+      "command": "mcp:arifos/arif_judge_deliberate",
+      "description": "Before major bash execution, briefly verify with APEX/kernel for 888_HOLD status."
+    }
+  }
+}
