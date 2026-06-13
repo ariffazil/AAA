@@ -79,27 +79,32 @@ instruments:
         - final-asi-contrast      # question-worth check
         - final-apex-contrast     # 6-month future audit
     mcp_servers:
-      - arifOS
-      - WEALTH
-      - WELL
-      - GEOX
-      - supabase
-      - exa
-      - minimax-media
-      - minimax-code
-      - filesystem
-      - memory
-      - sequential-thinking
-      - time
-      - github
-      - brave-search
-      - git
-      - repomapper
-      - serena
-      - meyhem
-      - composio
+      - arifOS           # 8088 — constitutional kernel, 13 tools
+      - WEALTH           # 18082 — capital intelligence, 20 tools
+      - WELL             # 18083 — human readiness, 18 tools, REFLECT_ONLY
+      - GEOX             # 8081 — earth intelligence, 20 tools
+      - filesystem       # local, 12 roots
+      - git              # local git ops
+      - memory           # knowledge graph
+      - sequential-thinking  # reasoning scaffold
+      - time             # utility
+      - repomapper       # tree-sitter + PageRank (read-only)
+      - serena           # LSP symbol search (read-only)
+      - meyhem           # MCP discovery (6700+) + outcome search
+      - playwright       # NEW: browser automation, AAA/arif-sites testing
+    mcp_quarantine:
+      - brave-search     # token in /root/.env (mode 644), needs vault.env migration
+      - supabase         # --read-only, needs F13 ack for write
+    mcp_removed:
+      - minimax-media    # 404 — wrong endpoint
+      - minimax-code     # 404 — same
+      - exa              # 405 + empty EXA_API_KEY
+      - composio         # 401 + needs OAuth you haven't done
+      - github-local     # empty GITHUB_PERSONAL_ACCESS_TOKEN
+    mcp_strategy: "13-slot MISKIN roster — only zero-cost + actually-used. All $0/month. See opencode.mcp_audit.json for full audit trail."
     config_path: /root/.config/opencode/opencode.json
     toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
+    mcp_audit: /root/.config/opencode/opencode.mcp_audit.json
     agents_dir: /root/.config/opencode/agents
     rules_file: /root/.config/opencode/AGENTS.md
     systemd_service: opencode.service
