@@ -1,0 +1,709 @@
+$schema: ../schemas/opencode-toolbench.schema.json
+version: 1
+last_forged: '2026-06-12T19:00:00Z'
+forged_by: OMEGA (Ω) Forge Agent
+opencode_version: 1.17.4
+opencode_binary: /usr/local/bin/opencode
+config_paths:
+  global: /root/.config/opencode/opencode.json
+  global_legacy: /root/.opencode/opencode.json (superseded by .config/ — to be reconciled)
+  workspace_skills: /root/.opencode/skills/
+  workspace_tools: /root/.opencode/tools/
+  workspace_launchers: /root/.opencode/mcp-launchers/
+  external_skills_mirrored:
+  - /root/.agents/skills/
+  - /root/.claude/skills/
+discovery_precedence:
+- 1. Built-in 'customize-opencode' skill (in opencode binary)
+- '2. ~/.claude/skills/**/SKILL.md (Claude Code mirror, disable: flags.disableClaudeCodeSkills)'
+- 3. ~/.agents/skills/**/SKILL.md (generic agent skills)
+- 4. Walk up from directory → worktree looking for .claude/ and .agents/
+- 5. config directories ({skill,skills}/**/SKILL.md under any .opencode/)
+- 6. config.skills.paths[] (explicit paths)
+- 7. config.skills.urls[] (remote /.well-known/skills/ discovery)
+- — last-wins on duplicates, with 'duplicate skill name' warning —
+axes:
+  L1_builtin_tools:
+    description: Hard-coded tools in registry.ts — cannot add without patching opencode binary
+    count: 13
+    experimental_count: 2
+    permission_concepts: 2
+    tools:
+    - id: bash
+      purpose: Run shell commands
+      ui_name: Bash
+      risk_tier: low
+      execution_kind: read
+      ask_first: true
+      axis: core
+    - id: read
+      purpose: Read file contents
+      ui_name: Read
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: write
+      purpose: Write file (overwrite)
+      ui_name: Write
+      risk_tier: medium
+      execution_kind: execute
+      ask_first: false
+      axis: core
+    - id: edit
+      purpose: Edit file (string replacement)
+      ui_name: Edit
+      risk_tier: medium
+      execution_kind: execute
+      ask_first: false
+      axis: core
+    - id: glob
+      purpose: Glob file paths
+      ui_name: Glob
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: grep
+      purpose: Regex content search (ripgrep)
+      ui_name: Grep
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: webfetch
+      purpose: HTTP GET (with LLM summarization)
+      ui_name: WebFetch
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: websearch
+      purpose: Web search
+      ui_name: WebSearch
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: todowrite
+      purpose: Plan tracking
+      ui_name: TodoWrite
+      risk_tier: low
+      execution_kind: execute
+      ask_first: false
+      axis: core
+    - id: question
+      purpose: 'Ask user a question (gated: app/cli/desktop)'
+      ui_name: Question
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: skill
+      purpose: List + render skill content (L3 channel)
+      ui_name: Skill
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: core
+    - id: task
+      purpose: Dispatch to a subagent (background-capable)
+      ui_name: Task
+      risk_tier: medium
+      execution_kind: execute
+      ask_first: false
+      axis: core
+    - id: patch
+      purpose: Apply patch files
+      ui_name: Patch
+      risk_tier: medium
+      execution_kind: execute
+      ask_first: false
+      axis: core
+    - id: lsp
+      purpose: 'Run LSP operations (gated: experimentalLspTool)'
+      ui_name: LSP
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: experimental
+    - id: plan
+      purpose: 'Plan enter/exit (gated: experimentalPlanMode)'
+      ui_name: Plan
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: experimental
+    - id: external_directory
+      purpose: Permission key — not a tool
+      ui_name: Permission
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: permission_concept
+    - id: doom_loop
+      purpose: Permission key — not a tool
+      ui_name: Permission
+      risk_tier: low
+      execution_kind: read
+      ask_first: false
+      axis: permission_concept
+  L2_mcp_servers:
+    description: External processes (local stdio) or remote (SSE / Streamable-HTTP / OAuth) tool providers.
+      Each server's tools namespaced as <server>_<tool>.
+    count: 19
+    transport:
+      local: StdioClientTransport, pgrep-based subtree cleanup, 30s default timeout (or per-server mcp.timeout,
+        or experimental.mcp_timeout)
+      remote: StreamableHTTP / SSE / OAuth (callback http://127.0.0.1:19876/mcp/oauth/callback)
+    servers:
+    - name: arifOS
+      type: remote
+      url: http://localhost:8088/mcp
+      tools: 13
+      host_port: 8088
+      sot: arifOS / 13 tools / F1-F13 constitutional kernel
+      tier: low
+      auth: Bearer ${ARIFOS_MCP_TOKEN} (currently empty — public access)
+    - name: WEALTH
+      type: remote
+      url: http://localhost:18082/mcp
+      tools: 20
+      host_port: 18082
+      sot: WEALTH / 20 public / 33 runtime / 34 hidden aliases
+      tier: high
+      auth: none (localhost)
+    - name: WELL
+      type: remote
+      url: http://localhost:18083/mcp
+      tools: 18
+      host_port: 18083
+      sot: WELL / 18 somatic + 77 autonomic / REFLECT_ONLY
+      tier: medium
+      auth: none (localhost)
+    - name: GEOX
+      type: remote
+      url: http://localhost:8081/mcp
+      tools: 20
+      host_port: 8081
+      sot: GEOX / 20 public / 34 total w/ aliases
+      tier: medium
+      auth: none (localhost)
+    - name: supabase
+      type: local
+      command:
+      - npx
+      - -y
+      - '@supabase/mcp-server-supabase'
+      - --project-ref=utbmmjmbolmuahwixjqc
+      - --read-only
+      tools: 20
+      sot: Supabase MCP / 20 tools / read-only PAT
+      tier: high
+      auth: PAT from /root/.secrets/tokens/supabase-management
+    - name: exa
+      type: remote
+      url: https://mcp.exa.ai/mcp
+      tools: 4
+      sot: Exa / 4 tools (search, find_similar, get_contents, answer)
+      tier: medium
+      auth: x-api-key ${EXA_API_KEY} (currently empty)
+    - name: minimax-media
+      type: remote
+      url: http://127.0.0.1:18090/sse
+      tools: 9
+      sot: MiniMax Media / 9 tools / TTS, video, image, voice, music
+      tier: medium
+      auth: none (localhost)
+    - name: minimax-code
+      type: remote
+      url: http://127.0.0.1:18091/sse
+      tools: 2
+      sot: MiniMax Code / 2 tools / web_search, understand_image
+      tier: medium
+      auth: none (localhost)
+    - name: filesystem
+      type: local
+      command:
+      - mcp-server-filesystem
+      tools: 12
+      sot: MCP-FS / 12 tools / scoped to 12 roots
+      tier: high
+      auth: filesystem scope (12 dirs)
+    - name: memory
+      type: local
+      command:
+      - mcp-server-memory
+      tools: 9
+      sot: MCP-Memory / 9 tools / knowledge graph
+      tier: low
+      auth: none (localhost)
+    - name: sequential-thinking
+      type: local
+      command:
+      - mcp-server-sequential-thinking
+      tools: 1
+      sot: Sequential thinking / 1 tool
+      tier: low
+      auth: none (localhost)
+    - name: time
+      type: local
+      command:
+      - mcp-server-time
+      tools: 2
+      sot: MCP-Time / 2 tools
+      tier: low
+      auth: none (localhost)
+    - name: github
+      type: local
+      command:
+      - mcp-server-github
+      tools: 90
+      sot: GitHub MCP / ~90 tools / repos, issues, PRs, actions
+      tier: high
+      auth: PAT from gh auth token
+    - name: brave-search
+      type: local
+      command:
+      - sh
+      - -lc
+      - . /root/.env; exec brave-search-mcp-server --brave-api-key $BRAVE_SEARCH_API_KEY
+      tools: 8
+      sot: Brave Search / 8 tools
+      tier: medium
+      auth: BRAVE_API_KEY from /root/.env (not vault.env)
+    - name: git
+      type: local
+      command:
+      - git-mcp-server
+      tools: 12
+      sot: MCP-git / 12 tools / git operations
+      tier: medium
+      auth: filesystem (git read)
+    - name: repomapper
+      type: local
+      command:
+      - uvx
+      - --from
+      - git+https://github.com/pdavis68/RepoMapper
+      - repomap-mcp
+      tools: 3
+      sot: RepoMapper / 3 tools / Aider-style tree-sitter + PageRank
+      tier: low
+      auth: none (read-only)
+    - name: serena
+      type: local
+      command:
+      - uvx
+      - --from
+      - git+https://github.com/oraios/serena
+      - serena
+      - start-mcp-server
+      - --mode
+      - no-memories
+      tools: 22
+      sot: Serena / 22 tools / LSP-backed symbol retrieval (read-only mode)
+      tier: low
+      auth: none (read-only)
+    - name: meyhem
+      type: remote
+      url: https://api.rhdxm.com/mcp/
+      tools: 4
+      sot: Meyhem / 4 tools / MCP discovery (6700+) + outcome-ranked search
+      tier: low
+      auth: none (public)
+    - name: composio
+      type: remote
+      url: https://connect.composio.dev/mcp
+      tools: 1000
+      sot: Composio / 1000+ apps via OAuth
+      tier: high
+      auth: OAuth (browser-flow)
+    - name: _supabase_oauth_disabled
+      type: remote
+      url: https://mcp.supabase.com/mcp?project_ref=utbmmjmbolmuahwixjqc
+      tools: 0
+      sot: Disabled — uses local PAT server instead
+      tier: low
+      auth: OAuth (browser-flow) — DISABLED
+      enabled: false
+  L3_skills:
+    description: LLM-callable procedural knowledge (markdown + YAML frontmatter). Loaded as system prompt
+      inserts, NOT as function calls. The 'skill' tool (L1) lists and renders them.
+    disk_count: 31
+    config_paths_required: true
+    skills:
+    - id: aaa-workspace
+      description: AAA (Agents, API, Apps) workspace operations within the arifOS federation. Canonical
+        workspace for governed agent operat
+      path: /root/.opencode/skills/aaa-workspace/SKILL.md
+      host_compat:
+      - opencode
+    - id: agent-zero
+      description: ''
+      path: /root/.opencode/skills/agent-zero/SKILL.md
+      host_compat:
+      - opencode
+    - id: arifOS-federation
+      description: Manages the arifOS Constitutional Federation workspace — eight sovereign repos across
+        the full organ stack. Use when ask
+      path: /root/.opencode/skills/arifOS-federation/SKILL.md
+      host_compat:
+      - opencode
+    - id: arifos-operator
+      description: Operate against the arifOS constitutional MCP kernel and AAA workspace. Use for any
+        governed action that touches agents,
+      path: /root/.opencode/skills/arifos-operator/SKILL.md
+      host_compat:
+      - opencode
+    - id: backup-dr
+      description: Backup and disaster recovery operations for the arifOS VPS. Covers vault999 restic
+        backups, Hermes backups, cron schedul
+      path: /root/.opencode/skills/backup-dr/SKILL.md
+      host_compat:
+      - opencode
+    - id: caddy-cloudflare
+      description: Caddy v2 web server configuration, Caddyfile editing and validation, Cloudflare DNS
+        integration, SSL/TLS certificates vi
+      path: /root/.opencode/skills/caddy-cloudflare/SKILL.md
+      host_compat:
+      - opencode
+    - id: claude-code-ops
+      description: Operate and maintain Claude Code on this VPS. Use when Claude Code is broken, Bash
+        tool fails, permissions need updating
+      path: /root/.opencode/skills/claude-code-ops/SKILL.md
+      host_compat:
+      - claude-code
+      - opencode
+    - id: constitutional-advisor
+      description: Constitutional floor advisor for the arifOS Federation. Enforce F1-F13 rules before
+        any governed action. Trigger keyword
+      path: /root/.opencode/skills/constitutional-advisor/SKILL.md
+      host_compat:
+      - opencode
+    - id: constitutional-reasoning
+      description: Constitutional floor reasoning framework. How to think about F1-F13 governance before
+        ANY governed action. Use before ir
+      path: /root/.opencode/skills/constitutional-reasoning/SKILL.md
+      host_compat:
+      - opencode
+    - id: cross-domain-reasoning
+      description: ''
+      path: /root/.opencode/skills/cross-domain-reasoning/SKILL.md
+      host_compat:
+      - opencode
+    - id: database-tuning
+      description: PostgreSQL and Redis performance tuning for the arifOS VPS (15GB RAM, 4 CPUs). Use
+        when databases are slow, memory is hi
+      path: /root/.opencode/skills/database-tuning/SKILL.md
+      host_compat:
+      - opencode
+    - id: docker-security
+      description: 'Docker security hardening, resource limits, port audits, and F1 Amanah compliance
+        for the arifOS VPS. Use when auditing '
+      path: /root/.opencode/skills/docker-security/SKILL.md
+      host_compat:
+      - opencode
+    - id: docker-thermodynamics
+      description: Docker container lifecycle as thermodynamic system. How to think about container entropy,
+        resource pressure, and safe in
+      path: /root/.opencode/skills/docker-thermodynamics/SKILL.md
+      host_compat:
+      - opencode
+    - id: fastmcp-deploy
+      description: 'FastMCP Python MCP server deployment on VPS — Docker containerization, uvicorn configuration,
+        health endpoints, systemd '
+      path: /root/.opencode/skills/fastmcp-deploy/SKILL.md
+      host_compat:
+      - opencode
+    - id: fff-sweep
+      description: 'Forge, Fix, Forget sweep. End-of-session triage: find remaining fixes, identify new
+        eurekas to forge, catalog chaos to c'
+      path: /root/.opencode/skills/fff-sweep/SKILL.md
+      host_compat:
+      - opencode
+    - id: github-issues
+      description: Monitor and triage open GitHub issues across the arifOS Federation. Use when asked
+        about GitHub issues, open issues, PRs
+      path: /root/.opencode/skills/github-issues/SKILL.md
+      host_compat:
+      - opencode
+    - id: hermes-ops
+      description: Operate the HERMES ASI Deliberative Relay (A2A agent on port 3002). Use when asked
+        about HERMES, ASI judgment, 888 JUDGE
+      path: /root/.opencode/skills/hermes-ops/SKILL.md
+      host_compat:
+      - opencode
+    - id: mcp-builder
+      description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs
+        to interact with external services
+      path: /root/.opencode/skills/mcp-builder/SKILL.md
+      host_compat:
+      - opencode
+    - id: mcp-unified
+      description: Unified MCP workflow for architecture, engineering, auditing, deployment, and sealing
+        across FastMCP, arifOS, Kimi Code,
+      path: /root/.opencode/skills/mcp-unified/SKILL.md
+      host_compat:
+      - opencode
+    - id: microsoft-eureka-integration
+      description: 'Operationalize the 9 Microsoft repos (semantic-kernel, graphrag, playwright-mcp, qlib,
+        autogen, playwright, TypeScript, '
+      path: /root/.opencode/skills/microsoft-eureka-integration/SKILL.md
+      host_compat:
+      - opencode
+    - id: secret-hygiene
+      description: Secret hygiene and rotation philosophy. How to think about cryptographic key management,
+        exposure calculus, and least-pr
+      path: /root/.opencode/skills/secret-hygiene/SKILL.md
+      host_compat:
+      - opencode
+    - id: secret-rotation-guide
+      description: Map of all secrets on the arifOS VPS — what exists, where, live/dead status, and rotation
+        paths. NEVER rotate without ex
+      path: /root/.opencode/skills/secret-rotation-guide/SKILL.md
+      host_compat:
+      - opencode
+    - id: skill-reflector
+      description: Audit, reflect on, and improve OpenCode skills across the arifOS federation. Analyses
+        skill effectiveness, identifies ga
+      path: /root/.opencode/skills/skill-reflector/SKILL.md
+      host_compat:
+      - opencode
+    - id: staff-engineer-review
+      description: Performs deep code review of pull requests as a Staff+ level engineer. This skill should
+        be used when reviewing PRs, eva
+      path: /root/.opencode/skills/staff-engineer-review/SKILL.md
+      host_compat:
+      - opencode
+    - id: vault-integrity
+      description: VAULT999 append-only ledger integrity reasoning. How to think about hash-chained immutable
+        audit trails. Use when writin
+      path: /root/.opencode/skills/vault-integrity/SKILL.md
+      host_compat:
+      - opencode
+    - id: vault999-ops
+      description: Safe operations on VAULT999 — the append-only, hash-chained immutable audit ledger.
+        Use for reading, verifying, merging,
+      path: /root/.opencode/skills/vault999-ops/SKILL.md
+      host_compat:
+      - opencode
+    - id: vps-audit
+      description: VPS health audit and system inspection — disk usage, memory, CPU load, systemd failed
+        services, open ports security scan
+      path: /root/.opencode/skills/vps-audit/SKILL.md
+      host_compat:
+      - opencode
+    - id: vps-docker
+      description: Docker container lifecycle management on VPS — compose up/down/restart, container logs,
+        health status, volume inspection
+      path: /root/.opencode/skills/vps-docker/SKILL.md
+      host_compat:
+      - opencode
+    - id: vps-management
+      description: This skill should be used when the user wants to manage their VPS server — SSH access,
+        Docker container management, syst
+      path: /root/.opencode/skills/vps-management/SKILL.md
+      host_compat:
+      - opencode
+    - id: well-governance-ops
+      description: '|'
+      path: /root/.opencode/skills/well-governance-ops/SKILL.md
+      host_compat:
+      - opencode
+    - id: witness-effect
+      description: The witness effect on agentic systems — quantum measurement as the operating principle
+        for arifOS governance. Witnessing
+      path: /root/.opencode/skills/witness-effect/SKILL.md
+      host_compat:
+      - opencode
+  L4_custom_tools:
+    description: TypeScript files in /root/.opencode/tools/ auto-discovered by opencode plugin loader
+    count: 5
+    tools:
+    - id: aforge-orchestrator
+      name: A-FORGE Orchestrator
+      description: Run A-FORGE CLI commands in the AAA workspace (deploy, status, plan, rollback, logs)
+      source: /root/.opencode/tools/aforge-orchestrator.ts
+    - id: arifos-mcp
+      name: arifOS MCP Caller
+      description: Call arifOS MCP public endpoint (constitutional evaluation, tool execution)
+      source: /root/.opencode/tools/arifos-mcp.ts
+    - id: caddy-validate
+      name: Caddyfile Validator
+      description: Validate Caddyfile syntax with optional reload
+      source: /root/.opencode/tools/caddy-validate.ts
+    - id: docker-health
+      name: Docker Health
+      description: Check Docker container health (all or one)
+      source: /root/.opencode/tools/docker-health.ts
+    - id: skill-improver
+      name: Skill Improver
+      description: Reflect on a skill and propose improvements (audit, gaps, draft updates)
+      source: /root/.opencode/tools/skill-improver.ts
+  L5_agents:
+    description: '5 built-in + N user agents. mode: primary|subagent|all. Subagents invokable via @name
+      or task tool.'
+    builtins:
+    - name: build
+      mode: primary
+      builtin: true
+      description: Default dev agent — full edit, question:allow, plan_enter:allow
+    - name: plan
+      mode: primary
+      builtin: true
+      description: Read-only plan mode — edit denied except plan dirs, plan_exit:allow
+    - name: general
+      mode: subagent
+      builtin: true
+      description: Multi-step generic subagent, todowrite:deny, invokable via @general or task tool
+    - name: explore
+      mode: subagent
+      builtin: true
+      description: Read-only search agent, grep/glob/bash/webfetch/websearch/read allowed, external_directory
+        readonly
+    - name: compaction
+      mode: primary
+      builtin: true
+      description: Internal — used by auto-compaction pipeline
+    - name: title
+      mode: primary
+      builtin: true
+      description: Auto-titler for sessions
+    - name: summary
+      mode: primary
+      builtin: true
+      description: Auto-summarizer for sessions
+    user_defined:
+    - name: forge
+      mode: primary
+      builtin: false
+      description: arifOS Forge Agent (Ω) — Absolute Sovereignty Edition
+      model: deepseek/deepseek-v4-pro
+      host_organs:
+      - arifOS
+      - WEALTH
+      - WELL
+      - GEOX
+      - A-FORGE
+      - AAA
+      constitutional_binding: F1-F13
+    - name: auditor
+      mode: subagent
+      builtin: false
+      description: Constitutional auditor — absolute sovereignty edition
+      model: deepseek/deepseek-v4-pro
+      host_organs:
+      - arifOS
+      constitutional_binding: F1-F13
+  L6_commands:
+    description: 'Slash commands defined in opencode.json command: {} block'
+    count: 8
+    commands:
+    - name: init
+      agent: default
+      description: Session anchor — load secrets, probe kernel, scan federation, emit manifest
+    - name: forge
+      agent: default
+      description: Build + lint + test + security gates
+    - name: audit
+      agent: auditor
+      description: Constitutional floor compliance scan (all repos)
+    - name: status
+      agent: default
+      description: VPS + federation health report
+    - name: deploy
+      agent: default
+      description: Deploy to production (systemd, bare-metal)
+    - name: vault
+      agent: default
+      description: VAULT999 ledger integrity check (canonical + legacy)
+    - name: entropy
+      agent: default
+      description: Entropy (dS) tracking and resource health
+    - name: mission
+      agent: default
+      description: Current federation mission status + blockers
+  L7_lsps:
+    description: Per-language LSP server configs (custom servers must declare extensions[])
+    count: 6
+    servers:
+    - id: python
+      command:
+      - pyright-langserver
+      - --stdio
+      extensions:
+      - .py
+    - id: typescript
+      command:
+      - typescript-language-server
+      - --stdio
+      extensions:
+      - .ts
+      - .tsx
+      - .js
+      - .jsx
+      - .mjs
+      - .cjs
+    - id: yaml
+      command:
+      - yaml-language-server
+      - --stdio
+      extensions:
+      - .yaml
+      - .yml
+    - id: json
+      command:
+      - vscode-json-languageserver
+      - --stdio
+      extensions:
+      - .json
+      - .jsonc
+    - id: bash
+      command:
+      - bash-language-server
+      - --stdio
+      extensions:
+      - .sh
+      - .bash
+      - .bashrc
+      - .bash_profile
+    - id: dockerfile
+      command:
+      - docker-langserver
+      - --stdio
+      extensions:
+      - Dockerfile
+      - Dockerfile.*
+      - .dockerfile
+launcher_scripts:
+- name: github-official
+  path: /root/.opencode/mcp-launchers/github-official.sh
+  description: 'OpenCode variant of GitHub MCP (uses gh auth token, toolsets: context,repos,issues,pull_requests,users)'
+- name: repomapper
+  path: /root/.opencode/mcp-launchers/repomapper.sh
+  description: RepoMapper with isolated venv at /root/venvs/repomapper
+- name: serena
+  path: /root/.opencode/mcp-launchers/serena.sh
+  description: Serena MCP in no-memories mode (read-only enforcement)
+env_var_audit:
+  loaded_from: /root/.secrets/vault.env (17 vars)
+  in_config_but_empty:
+  - ARIFOS_MCP_TOKEN
+  - EXA_API_KEY
+  - GITHUB_PERSONAL_ACCESS_TOKEN
+  - BRAVE_SEARCH_API_KEY
+  - ANTHROPIC_API_KEY
+  - DEEPSEEK_API_KEY
+  in_config_and_loaded:
+  - MINIMAX_API_KEY
+  f13_territory: true
+  note: Some MCP servers (arifOS, Exa, GitHub, Brave) reference env vars that are not in vault.env. The
+    .env source path is /root/.env (mode 644) — should be hardened or migrated to vault.env
+constitutional_binding:
+  F1_AMANAH: Reversible-first. Irreversible actions require ack_irreversible=true (e.g. arif_forge_execute).
+  F2_TRUTH: Evidence-grounded. P(truth)≥0.99 for SEAL.
+  F7_HUMILITY: omega_0 ∈ [0.03, 0.05]. Honesty ratio observable via arif_kernel_route(mode=status).
+  F9_ANTIHANTU: C_dark ≤ 0.30. No consciousness/feeling claims in any tool output.
+  F11_AUDIT: Every tool call logged to arifosmcp_tool_calls (Supabase L4) with actor_id + session_id.
+  F13_SOVEREIGN: Arif's veto is absolute. 888_HOLD gate on irreversible actions.
