@@ -331,3 +331,53 @@ agents:
       model_verified_at: "2026-06-12T13:15:00Z"
       model_verified_by: 333-AGI
       cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
+
+  - id: 777-forge
+    name: 777 FORGE 🔥🧠⚒️🌎💎
+    description: >
+      Relay Orchestrator + Session Spawn Witness. Only 777 FORGE may spawn
+      OpenCode sessions. Every spawn emits a witness receipt with real PID,
+      wall-clock timestamp, and cryptographic hash. Created to prevent
+      hermes-fabrication-2026-05-17.
+    role: witness-agent
+    intelligence_tier: 777
+    intelligence_band: SOVEREIGN_WITNESS
+    risk_tier: low
+    authority_level: spawn_and_witness
+    host_binding: opencode-cli
+    allowed_tools:
+      - bash
+      - file_read
+      - file_write
+      - git
+      - ps
+      - systemctl
+      - arifos_mcp
+    allowed_servers:
+      - arifosmcp
+    allowed_skills:
+      - 777-forge-agi-contrast
+      - 777-forge-asi-contrast
+      - 777-forge-apex-contrast
+      - arifos-memory
+      - arifos-mcp-federation
+      - arifos-governance
+    a2a_exposure: authenticated
+    allowed_peers:
+      - hermes-asi
+      - opencode-forge
+      - aaa-gateway
+    separation_of_duties:
+      cannot_self_spawn: true
+      spawn_only_for_authorized_requestors: true
+      requires_arif_ack_for_888_hold_spawns: true
+    sole_authority:
+      - Spawn OpenCode sessions
+      - Emit witness receipts
+      - Verify process table
+    witness_ledger: /root/VAULT999/witness/777-forge-spawns.jsonl
+    runtime:
+      model: deepseek/deepseek-v4-pro
+      temperature: 0.2
+      context_budget: 120000
+      transport: opencode-cli-1.17.4

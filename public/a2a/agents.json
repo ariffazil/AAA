@@ -2,9 +2,9 @@
   "$schema": "https://a2aproject.github.io/A2A/schema/agent-card.json",
   "protocolVersion": "1.0.1",
   "registry": {
-    "name": "AAA HEXAGON",
-    "description": "5 agents, 20 skills, 3+2 split. FORGE subsumed. A-AUDIT/A-ARCHIVE tagged support. SEALED to VAULT999.",
-    "version": "2.0.0",
+    "name": "AAA HEXAGON + 777 WITNESS",
+    "description": "5 agents, 20 skills, 3+2+1 split. 777-FORGE added as WITNESS tier. FORGE subsumed. A-AUDIT/A-ARCHIVE tagged support. SEALED to VAULT999.",
+    "version": "2.1.0",
     "author": "Muhammad Arif bin Fazil",
     "seal": {
       "seal_id": "HEXAGON-AGENTS-FORGE-20260602",
@@ -717,6 +717,64 @@
           "outputModes": [
             "application/json"
           ]
+        }
+      ]
+    },
+    {
+      "id": "777-FORGE",
+      "name": "777 FORGE 🔥🧠⚒️🌎💎",
+      "description": "The Witness (WITNESS tier). Relay Orchestrator + Session Spawn Witness. Only 777 FORGE may spawn OpenCode sessions. Hermes requests, 777 FORGE spawns and attests. Every spawn emits a cryptographically verifiable witness receipt with real PID, wall-clock timestamp, and SHA-256 hash to /root/VAULT999/witness/777-forge-spawns.jsonl. Created to prevent hermes-fabrication-2026-05-17. Arif can verify independently: ps -p <pid>.",
+      "version": "1.0.0",
+      "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
+      "provider": {
+        "organization": "arifOS by Muhammad Arif bin Fazil",
+        "url": "https://arif-fazil.com"
+      },
+      "protocolVersion": "1.0.1",
+      "documentationUrl": "https://aaa.arif-fazil.com/docs/agents/777-FORGE",
+      "capabilities": {
+        "streaming": false,
+        "pushNotifications": false,
+        "stateTransitionHistory": true
+      },
+      "securitySchemes": {
+        "bearer_auth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT",
+          "description": "arifOS session token"
+        }
+      },
+      "security": [{"bearer_auth": []}],
+      "defaultInputModes": ["application/json"],
+      "defaultOutputModes": ["application/json"],
+      "skills": [
+        {
+          "id": "777-spawn-witness",
+          "name": "Session Spawn Witness",
+          "description": "Spawn OpenCode sessions and emit cryptographically verifiable witness receipts. Every spawn logged to append-only, hash-chained witness ledger. Arif can verify independently with ps -p <pid>.",
+          "tags": ["witness", "spawn", "verification", "trust", "audit"],
+          "examples": ["Spawn integrator session", "Verify session was actually spawned", "Audit all Hermes spawns in last 24h"],
+          "inputModes": ["application/json"],
+          "outputModes": ["application/json"]
+        },
+        {
+          "id": "777-preflight-validator",
+          "name": "Preflight Validator",
+          "description": "Validate spawn requests: forge_id uniqueness, requestor auth, scope lease, repo state, disk/load, L_888_HOLD ack.",
+          "tags": ["preflight", "validation", "gate", "safety"],
+          "examples": ["Validate spawn request preflight", "Check L_888_HOLD ack"],
+          "inputModes": ["application/json"],
+          "outputModes": ["application/json"]
+        },
+        {
+          "id": "777-process-verifier",
+          "name": "Process Table Verifier",
+          "description": "Cross-check claimed spawns against real process table. Detect fabrication: if Hermes claims session but no PID → F2 TRUTH violation.",
+          "tags": ["verification", "fabrication-detection", "audit"],
+          "examples": ["ps -p <pid> — does this session exist?", "Audit all claimed spawns"],
+          "inputModes": ["application/json"],
+          "outputModes": ["application/json"]
         }
       ]
     }
