@@ -1,6 +1,6 @@
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
-last_forged: '2026-06-12T22:00:00Z'
+last_forged: '2026-06-12T23:00:00Z'
 forged_by: OMEGA (Ω) Forge Agent
 opencode_version: 1.17.4
 opencode_binary: /usr/local/bin/opencode
@@ -574,8 +574,13 @@ axes:
       purpose: 6-month future audit — would the verdict still hold?
     count: 43
   L4_custom_tools:
-    description: TypeScript files in /root/.opencode/tools/ auto-discovered by opencode plugin loader
-    count: 5
+    description: TypeScript files in /root/.opencode/tools/ auto-discovered by opencode plugin loader.
+      The arifOS kernel is now EMBEDDED as 13 first-class opencode tools (short names, no mcp.arifOS.
+      prefix).
+    count: 18
+    directories:
+    - /root/.opencode/tools/*.ts (5 pre-existing)
+    - /root/.opencode/tools/arifos-kernel/*.ts (13 arifOS kernel wrappers)
     tools:
     - id: aforge-orchestrator
       name: A-FORGE Orchestrator
@@ -597,6 +602,76 @@ axes:
       name: Skill Improver
       description: Reflect on a skill and propose improvements (audit, gaps, draft updates)
       source: /root/.opencode/tools/skill-improver.ts
+    - id: arif_session_init
+      name: arif_session_init
+      stenonym: init
+      description: Start or resume a governed constitucional session. Call FIRST.
+      source: /root/.opencode/tools/arifos-kernel/arif_session_init.ts
+    - id: arif_sense_observe
+      name: arif_sense_observe
+      stenonym: sense
+      description: Web search, URL ingest, system vitals, repo map
+      source: /root/.opencode/tools/arifos-kernel/arif_sense_observe.ts
+    - id: arif_evidence_fetch
+      name: arif_evidence_fetch
+      stenonym: evidence
+      description: Fetch and preserve external evidence with source citations
+      source: /root/.opencode/tools/arifos-kernel/arif_evidence_fetch.ts
+    - id: arif_mind_reason
+      name: arif_mind_reason
+      stenonym: mind
+      description: Multi-step reasoning, planning, reflection
+      source: /root/.opencode/tools/arifos-kernel/arif_mind_reason.ts
+    - id: arif_heart_critique
+      name: arif_heart_critique
+      stenonym: heart
+      description: Ethical risk + human impact assessment. Call before irreversible.
+      source: /root/.opencode/tools/arifos-kernel/arif_heart_critique.ts
+    - id: arif_judge_deliberate
+      name: arif_judge_deliberate
+      stenonym: judge
+      description: Final constitucional verdict (SEAL/SABAR/VOID)
+      source: /root/.opencode/tools/arifos-kernel/arif_judge_deliberate.ts
+    - id: arif_kernel_route
+      name: arif_kernel_route
+      stenonym: kernel
+      description: Route intent to the right tool or federation organ
+      source: /root/.opencode/tools/arifos-kernel/arif_kernel_route.ts
+    - id: arif_ops_measure
+      name: arif_ops_measure
+      stenonym: ops
+      description: System health, thermodynamic state, resource metrics
+      source: /root/.opencode/tools/arifos-kernel/arif_ops_measure.ts
+    - id: arif_memory_recall
+      name: arif_memory_recall
+      stenonym: memory
+      description: Search past sessions, assets, sealed events, repositories
+      source: /root/.opencode/tools/arifos-kernel/arif_memory_recall.ts
+    - id: arif_forge_execute
+      name: arif_forge_execute
+      stenonym: forge
+      description: Execute approved builds/deployments. Requires SEAL verdict + ack_irreversible=true.
+      source: /root/.opencode/tools/arifos-kernel/arif_forge_execute.ts
+    - id: arif_vault_seal
+      name: arif_vault_seal
+      stenonym: vault
+      description: Seal verdict/outcome to immutable audit ledger (VAULT999 hash-chain)
+      source: /root/.opencode/tools/arifos-kernel/arif_vault_seal.ts
+    - id: arif_gateway_connect
+      name: arif_gateway_connect
+      stenonym: gateway
+      description: Bridge to other federation agents (GEOX, WEALTH, WELL, A-FORGE, AAA, APEX, cn-organ)
+      source: /root/.opencode/tools/arifos-kernel/arif_gateway_connect.ts
+    - id: arif_reply_compose
+      name: arif_reply_compose
+      stenonym: reply
+      description: Compose final user-facing response. Call LAST.
+      source: /root/.opencode/tools/arifos-kernel/arif_reply_compose.ts
+    kernel_embedding_strategy: Each TS wrapper is ~10 lines. It calls arifOS MCP at http://127.0.0.1:8088/mcp
+      via JSON-RPC. The wrapper exists to remove the mcp.arifOS. namespace prefix and make the 13 arif_*
+      tools first-class opencode tools. The mcp.arifOS.<tool> namespaced form is still available as a
+      fallback.
+    kernel_skill: /root/.opencode/skills/arifos-kernel/SKILL.md (canonical discoverable entry point)
   L5_agents:
     description: 5 built-in primaries (build, plan, compaction, title, summary) + 3 built-in subagents
       (general, explore, scout) + 4 user-defined (architect, rsi, integrator, final) = A-R-I-F chain
