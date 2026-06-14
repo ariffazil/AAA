@@ -6,6 +6,6 @@
   "session_id": "enf-1",
   "reason": "E7 HOLD: Reversibility 0.00 below hard floor (0.3). Full principal control required.",
   "severity": "critical",
-  "count": 3,
-  "last_seen": "2026-06-14T08:19:35.273090+00:00"
+  "count": 7,
+  "last_seen": "2026-06-14T15:22:03.317950+00:00"
 }
