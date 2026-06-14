@@ -56,7 +56,8 @@ const HTTPS = require('https');
 
 const ORGANS = [
   { name: 'arifOS MCP', port: 8088 },
-  { name: 'GEOX', port: 18081 },
+  { name: 'GEOX MCP', port: 8081 },
+  { name: 'arifosd', port: 18081 },
   { name: 'WEALTH', port: 18082 },
   { name: 'WELL', port: 18083 },
   { name: 'A-FORGE', port: 7071 },
