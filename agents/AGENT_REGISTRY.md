@@ -74,6 +74,22 @@ All share the 97-tool capability index and F1-F13 governance.
 
 ---
 
+## LAYER 4.5: ROLE AGENTS — Bounded C2/C3 Specialists (4)
+
+> **Forged:** 2026-06-14 by FORGE (000Ω) — per Perplexity gap analysis.
+> These agents operate within bounded leases. They observe, analyze, plan, propose — but execute only through the governed forge pipeline.
+
+| ID | Class | Ring | Host Organs | Lease Max | Role Card |
+|---|---|---|---|---|---|
+| **Kernel Scribe** | C2 | SERVICE | arifOS, AAA | OBSERVE + PROPOSE | `roles/KERNEL_SCRIBE.md` |
+| **Ops Planner** | C2 | SERVICE | AAA, WEALTH, WELL | OBSERVE + PROPOSE | `roles/OPS_PLANNER.md` |
+| **Self-Forge Advisor** | C3 | Δ MIND | A-FORGE, arifOS | PROPOSE + MUTATE (gated) | `roles/SELF_FORGE_ADVISOR.md` |
+| **External Watcher** | C1 | SERVICE | AAA | OBSERVE only | `roles/EXTERNAL_WATCHER.md` |
+
+**Communication Rule:** Role agents are SUBORDINATE to HEXAGON agents. They do not execute independently — they feed analysis and proposals to HEXAGON agents (333-AGI, 555-ASI, 888-APEX) for judgment and execution.
+
+---
+
 ## LAYER 5: LEGACY — Deprecated/Spec-Only (3)
 
 | ID | Reason | Superseded By | Status |
@@ -94,9 +110,10 @@ All share the 97-tool capability index and F1-F13 governance.
 | HEXAGON (Constitutional) | 5 | SPEC (cards only) |
 | RUNTIME (Live Services) | 4 | LIVE |
 | INFRASTRUCTURE (Organs) | 6 | LIVE |
+| ROLE AGENTS (Specialists) | 4 | SPEC (role cards forged 2026-06-14) |
 | CODING (Forge Instruments) | 9 | 7 LIVE, 2 unverified |
 | LEGACY (Spec-Only) | 3 | DEPRECATED |
-| **TOTAL ACTIVE** | **19** | |
+| **TOTAL ACTIVE** | **23** | |
 | **TOTAL ALL** | **27** | (excluding sovereign 000-SALAM) |
 
 ---
@@ -118,6 +135,26 @@ All share the 97-tool capability index and F1-F13 governance.
 | `AAA_AGENTS_REGISTRY.json` | Machine-readable registry (v2.0.0) |
 | `CODING_AGENT_FEDERATION.md` | Forge instrument reference (8 agents, 97 tools) |
 | `a2a-server/agent-cards/` | A2A discovery cards (JSON-LD) |
+
+---
+
+## OPERATIONAL SKILLS (Forged 2026-06-14)
+
+Skills deployable by OpenClaw and callable by all warga agents:
+
+| Skill | Agent | Priority | Purpose |
+|---|---|---|---|
+| `federation-health-scan` | OpenClaw | P0 | 6 organs + NATS + drift + vault in one structured command |
+| `drift-response` | OpenClaw | P0 | Standard 5-step: detect→verify→classify→propose→route |
+| `subagent-spawn` | OpenClaw | P1 | Bounded task contract: output schema + time budget + evidence |
+
+Hermes Constitutional Tools (registered in arifOS MCP):
+
+| Tool | Purpose |
+|---|---|
+| `hermes_system_status` | Live organ health + NATS + drift diagnostic |
+| `hermes_vault_query` | VAULT999 history search by date/organ/keyword |
+| `hermes_epistemic_check` | Pre-claim confidence validation (TAHU/NAMPAK/RASA/TAK_TAHU) |
 
 ---
 

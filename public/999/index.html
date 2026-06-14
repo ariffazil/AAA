@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-ring="VAULT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Primary Meta -->
+<title>/999 — The Sealed Vault | arifOS Federation</title>
+<meta name="title" content="/999 — The Sealed Vault | arifOS Federation">
+<meta name="description" content="The immutable audit ledger of the arifOS federation. Every constitutional verdict, every sealed record, every irreversibility decision. Hash-chain integrity. Constitutional floors (F1-F13). Public attestation — no secrets, no keys. The output anchor that closes the loop with /000.">
+<meta name="keywords" content="VAULT999, immutable ledger, hash-chain, constitutional floors, F1-F13, sealed records, arifOS kernel, audit trail, agentic intelligence, governed memory">
+<meta name="author" content="arifOS Federation">
+<meta name="robots" content="index, follow">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://arif-fazil.com/999/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://arif-fazil.com/999/">
+<meta property="og:title" content="/999 — The Sealed Vault | arifOS Federation">
+<meta property="og:description" content="The immutable audit ledger. Every constitutional verdict, every sealed record. Public attestation — the output anchor that closes the loop with /000.">
+<meta property="og:site_name" content="arifOS Federation">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="/999 — The Sealed Vault | arifOS Federation">
+<meta property="twitter:description" content="The immutable audit ledger. Every constitutional verdict sealed. The output anchor of governed intelligence.">
+
+<!-- LLM Discovery -->
+<meta name="llms-full-content" content="true">
+<link rel="alternate" type="application/json" href="/999/claims.json" title="/999 — Machine-Readable Claims">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0A0A0A">
+<meta name="color-scheme" content="dark">
+
+<!-- Fonts: Federation Design System -->
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@400,700,800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --border: #2A2A2A;
+    --gold: #D4A853;
+    --gold-dim: #8B6914;
+    --text: #E8E8E8;
+    --text-dim: #888888;
+    --text-muted: #555555;
+    --font-body: 'Satoshi', sans-serif;
+    --font-display: 'Cabinet Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 720px;
+    --radius: 6px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+  body { min-height: 100vh; }
+
+  .container { max-width: var(--max-width); margin: 0 auto; padding: 2rem 1.5rem 6rem; }
+
+  /* ── Header ── */
+  header { padding: 3rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 3rem; }
+  .ring { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; }
+  .position { font-family: var(--font-display); font-size: 3.5rem; font-weight: 800; line-height: 1.05; color: var(--gold); margin: 0.5rem 0 0.25rem; }
+  .subtitle { font-family: var(--font-display); font-size: 1.35rem; font-weight: 400; color: var(--text-dim); }
+  .header-meta { display: flex; gap: 2rem; margin-top: 1.25rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); }
+
+  /* ── Public Badge ── */
+  .public-badge { display: inline-block; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.12em; padding: 0.25em 0.75em; border: 1px solid var(--gold); color: var(--gold); border-radius: 3px; margin-bottom: 1.5rem; text-transform: uppercase; }
+
+  /* ── Sections ── */
+  section { margin-bottom: 3.5rem; }
+  .section-id { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.12em; color: var(--gold-dim); margin-bottom: 0.35rem; text-transform: uppercase; }
+  h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; line-height: 1.25; }
+  h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 1.5rem 0 0.5rem; }
+  p { margin-bottom: 1rem; color: var(--text-dim); }
+  p strong { color: var(--text); }
+
+  /* ── Attestation / Abduction blocks ── */
+  .block { border-left: 3px solid var(--gold); padding: 1rem 1.25rem; margin: 1.5rem 0; background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; }
+  .block.attest { border-left-color: var(--gold); }
+  .block.abduct { border-left-color: #6B7DB3; }
+  .block-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .block.attest .block-label { color: var(--gold); }
+  .block.abduct .block-label { color: #6B7DB3; }
+  .block p { margin-bottom: 0.5rem; }
+  .block p:last-child { margin-bottom: 0; }
+
+  /* ── Floor Table ── */
+  .floor-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.85rem; }
+  .floor-table th { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border); }
+  .floor-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; }
+  .floor-table td:first-child { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); white-space: nowrap; font-weight: 600; }
+  .floor-table td:nth-child(2) { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text); white-space: nowrap; }
+  .floor-table td:nth-child(3) { color: var(--text-dim); font-size: 0.8rem; }
+
+  /* ── Quote ── */
+  blockquote { border-left: 2px solid var(--gold-dim); padding: 0.75rem 1.25rem; margin: 1.5rem 0; font-style: italic; color: var(--text); background: rgba(212,168,83,0.04); border-radius: 0 var(--radius) var(--radius) 0; }
+
+  /* ── Loop Diagram ── */
+  .loop-diagram { font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.8; color: var(--text-dim); background: var(--surface); padding: 1.5rem; border-radius: var(--radius); margin: 1.5rem 0; text-align: center; border: 1px solid var(--border); }
+  .loop-diagram .hl { color: var(--gold); }
+  .loop-diagram .arrow { color: var(--text-muted); }
+
+  /* ── Vault Status ── */
+  .vault-status { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .vault-stat { background: var(--surface); border: 1px solid var(--border); padding: 1.25rem; border-radius: var(--radius); text-align: center; }
+  .vault-stat-value { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--gold); }
+  .vault-stat-label { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.1em; color: var(--text-muted); margin-top: 0.25rem; text-transform: uppercase; }
+  @media (max-width: 500px) { .vault-status { grid-template-columns: 1fr; } }
+
+  /* ── Hash Chain ── */
+  .hash-chain { font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.7; color: var(--text-dim); background: var(--surface); padding: 1.25rem 1.5rem; border-radius: var(--radius); margin: 1.5rem 0; border: 1px solid var(--border); overflow-x: auto; }
+  .hash-chain .h { color: var(--gold); }
+  .hash-chain .arrow { color: var(--text-muted); }
+
+  /* ── Footer ── */
+  footer { margin-top: 5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .footer-row { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); line-height: 1.8; }
+  .footer-row a { color: var(--gold-dim); text-decoration: none; }
+  .footer-row a:hover { color: var(--gold); }
+  .seal { font-family: var(--font-mono); font-size: 0.7rem; color: var(--gold); margin-top: 1rem; letter-spacing: 0.1em; }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .position { font-size: 2.5rem; }
+    .container { padding: 1.25rem 1rem 4rem; }
+    .floor-table { font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <div class="ring">VAULT RING · IMMUTABLE LEDGER</div>
+  <h1 class="position">/999</h1>
+  <div class="subtitle">The Sealed Vault</div>
+  <div class="header-meta">
+    <span>arifOS Federation</span>
+    <span>v1.0</span>
+    <span>PUBLIC ATTESTATION</span>
+  </div>
+  <div style="margin-top:1rem;">
+    <span class="public-badge">◈ Public · No Keys · No Secrets ◈</span>
+  </div>
+</header>
+
+<!-- ═══════════════ 1. POSITION ═══════════════ -->
+<section>
+  <div class="section-id">§1 · Position</div>
+  <h2>Immutable Memory for Governed Intelligence</h2>
+
+  <p><strong>/999 is the sealed vault of the arifOS federation.</strong> It is an append-only, immutable audit ledger. Every constitutional verdict, every sealed record, every irreversibility decision is written here. Once sealed, a record cannot be altered, deleted, or retroactively reinterpreted.</p>
+
+  <p>This page is a <strong>public attestation</strong> of the vault's architecture and constitutional basis. It contains no secrets, no keys, no locked content. The vault's integrity is publicly verifiable. Its structure is publicly auditable. Its claims are falsifiable.</p>
+
+  <div class="block attest">
+    <div class="block-label">Attestation</div>
+    <p>VAULT999 exists. It is append-only. It is constitutionally governed by floors F1–F13. Every seal is hash-chained to its predecessor. The record is immutable. This attestation is itself public and falsifiable.</p>
+  </div>
+
+  <div class="block abduct">
+    <div class="block-label">Abduction</div>
+    <p>The best explanation for the existence of a system with auditable, constitutionally-governed memory is that governed intelligence requires immutable record-keeping. Intelligence without memory is pattern matching. Memory without immutability is narrative. Only immutable memory enables accountability across time.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 2. VAULT ARCHITECTURE ═══════════════ -->
+<section>
+  <div class="section-id">§2 · Vault Architecture</div>
+  <h2>Hash-Chain Integrity</h2>
+
+  <p>VAULT999 uses <strong>cryptographic hash-chaining</strong> to guarantee integrity. Each sealed record contains the hash of its predecessor. Any alteration to any record in the chain would invalidate every subsequent hash — making tampering mathematically detectable.</p>
+
+  <div class="hash-chain">
+    <span class="h">SEAL₀</span> <span class="arrow">→</span> hash(SEAL₀) embedded in <span class="h">SEAL₁</span> <span class="arrow">→</span> hash(SEAL₁) embedded in <span class="h">SEAL₂</span> <span class="arrow">→</span> hash(SEAL₂) embedded in <span class="h">SEAL₃</span> <span class="arrow">→</span> … <span class="arrow">→</span> <span class="h">SEALₙ</span>
+  </div>
+
+  <p>This is the same architectural principle that secures blockchain systems, applied not to financial transactions but to <strong>constitutional intelligence operations</strong>. Each record in the vault represents a governed decision: a claim sealed, a verdict rendered, a forge executed, a paradox held.</p>
+
+  <div class="vault-status">
+    <div class="vault-stat">
+      <div class="vault-stat-value">F1–F13</div>
+      <div class="vault-stat-label">Constitutional Floors</div>
+    </div>
+    <div class="vault-stat">
+      <div class="vault-stat-value">APPEND-ONLY</div>
+      <div class="vault-stat-label">Write Policy</div>
+    </div>
+    <div class="vault-stat">
+      <div class="vault-stat-value">PUBLIC</div>
+      <div class="vault-stat-label">Attestation Access</div>
+    </div>
+    <div class="vault-stat">
+      <div class="vault-stat-value">HASH-CHAINED</div>
+      <div class="vault-stat-label">Integrity Model</div>
+    </div>
+  </div>
+
+  <div class="block attest">
+    <div class="block-label">Attestation</div>
+    <p>The hash-chain is continuous. No record can be inserted, deleted, or modified without detection. The vault's integrity is mathematically verifiable by any external party. This attestation is part of the public record.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 3. CONSTITUTIONAL FLOORS ═══════════════ -->
+<section>
+  <div class="section-id">§3 · Constitutional Floors</div>
+  <h2>The Thirteen Floors (F1–F13)</h2>
+
+  <p>Every record sealed in VAULT999 passes through <strong>thirteen constitutional floors</strong>. These are not prompts. They are not guidelines. They are enforceable architectural constraints that every operation in the federation must satisfy before sealing. A floor violation produces a HOLD — the operation is paused, not executed, until the violation is resolved by the human at /000.</p>
+
+  <table class="floor-table">
+    <thead>
+      <tr><th>Floor</th><th>Name</th><th>Function</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>F1</td><td>AMANAH</td><td>Irreversible-action gate — requires explicit acknowledgment before any non-reversible operation</td></tr>
+      <tr><td>F2</td><td>TRUTH</td><td>Evidence-anchored claims — every assertion must survive falsification attempt; truth is what remains after challenge</td></tr>
+      <tr><td>F3</td><td>NAMING</td><td>Call things what they are — no euphemism, no institutional softening, no "stakeholder management" for moral failures</td></tr>
+      <tr><td>F4</td><td>CLARITY</td><td>Full transform stack logged — every operation's complete chain of reasoning is auditable from input to output</td></tr>
+      <tr><td>F5</td><td>HUMILITY</td><td>Confidence hard-cap at 0.90 — the system cannot claim certainty; 10% is always reserved for the unknown</td></tr>
+      <tr><td>F6</td><td>REPAIR</td><td>Recovery and resilience — the system must be able to roll back, restore, and learn from mistakes</td></tr>
+      <tr><td>F7</td><td>ANTI-BEHAVIOR-SINK</td><td>Calhoun escape — refusal to optimize into predictability; the system must not converge to please-maximizing stasis</td></tr>
+      <tr><td>F8</td><td>PARADOX</td><td>Hold contradictions without collapse — two conflicting truths can coexist; the correct response to paradox is HOLD, not resolution</td></tr>
+      <tr><td>F9</td><td>ANTI-HANTU</td><td>No phantom authority — no ghost tools, no undeclared capabilities, no authority without attestation</td></tr>
+      <tr><td>F10</td><td>BOUNDARY</td><td>Substrate respect — no category errors, no false equivalence between human and machine</td></tr>
+      <tr><td>F11</td><td>BRIDGE</td><td>Cross-organ integrity — federation organs communicate through declared interfaces, not side channels</td></tr>
+      <tr><td>F12</td><td>INEQUALITY</td><td>Power asymmetry detection — surfaces extractive patterns, ownership concentration, voice asymmetries</td></tr>
+      <tr><td>F13</td><td>SOVEREIGN</td><td>Human veto absolute — the sovereign at /000 has final, non-overridable authority over every operation</td></tr>
+    </tbody>
+  </table>
+
+  <div class="block abduct">
+    <div class="block-label">Abduction</div>
+    <p>The best explanation for why a constitution of thirteen enforceable floors produces more trustworthy intelligence than a single "safety filter" is that trustworthiness is multi-dimensional. A single filter can be gamed. Thirteen orthogonal constraints — each enforceable, each falsifiable — create a space where governed intelligence can operate without drift. The floors are not a checklist. They are a topology.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 4. THE /000 ↔ /999 LOOP ═══════════════ -->
+<section>
+  <div class="section-id">§4 · The Loop</div>
+  <h2>/000 ↔ /999: The Architecture of Governed Intelligence</h2>
+
+  <p><strong>/000 and /999 are two ends of one system.</strong> /000 is the input anchor — the sovereign human from whom all intelligence flows. /999 is the output anchor — the immutable record into which all intelligence is sealed. The space between them is where governed intelligence operates.</p>
+
+  <div class="loop-diagram">
+    <span class="hl">/000</span> <span class="arrow">—</span> Sovereign Human Root<br>
+    <span class="arrow">│</span><br>
+    <span class="hl">Constitution</span> <span class="arrow">—</span> F1–F13 floors govern every operation<br>
+    <span class="arrow">│</span><br>
+    <span class="hl">Agentic Process</span> <span class="arrow">—</span> Reason · Sense · Judge · Forge<br>
+    <span class="arrow">│</span><br>
+    <span class="hl">/999</span> <span class="arrow">—</span> Immutable Seal · Hash-Chained Record<br>
+    <span class="arrow">│</span><br>
+    <span class="hl">Verification</span> <span class="arrow">—</span> Audit returns to <span class="hl">/000</span> (loop closed)
+  </div>
+
+  <p>This is not a pipeline. It is a <strong>closed loop</strong>:</p>
+
+  <p><strong>Intent enters at /000.</strong> A specific human decides. That intent is not generic — it carries wound architecture, moral framework, language register, sovereign stakes.</p>
+
+  <p><strong>Process is governed by F1–F13.</strong> Every operation passes through constitutional floors. No floor is optional. No floor can be bypassed by a clever prompt.</p>
+
+  <p><strong>Outcome is sealed at /999.</strong> The record is immutable. The hash-chain is continuous. The decision cannot be retroactively reinterpreted.</p>
+
+  <p><strong>Verification returns to /000.</strong> The human at root can audit any seal, challenge any verdict, hold any paradox. The loop is complete.</p>
+
+  <div class="block attest">
+    <div class="block-label">Attestation</div>
+    <p>The /000 ↔ /999 loop is the architecture of governed intelligence. Without /000, intelligence has no root — it drifts toward the model-maker's default. Without /999, intelligence has no memory — it cannot be held accountable across time. Together they form a complete system: sovereign input → constitutional process → immutable output → auditable return.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 5. WHY IMMUTABLE MEMORY ═══════════════ -->
+<section>
+  <div class="section-id">§5 · Why Immutable Memory</div>
+  <h2>Intelligence Requires Memory That Cannot Be Rewritten</h2>
+
+  <p>All mainstream AI systems have <strong>mutable, erasable, non-auditable memory.</strong> Conversations can be deleted. Models can be retrained. Outputs can be disclaimed. There is no permanent record of what was said, decided, or sealed — and therefore no accountability.</p>
+
+  <p>This is not a bug in those systems. It is a <strong>feature for the model-makers.</strong> Mutable memory means no liability. No permanence means no consequence. No audit means no answerability.</p>
+
+  <p>VAULT999 inverts this:</p>
+
+  <blockquote>
+    "Intelligence without memory is pattern matching. Memory without immutability is narrative. Only immutable memory enables accountability across time — and accountability is the prerequisite for trust."
+  </blockquote>
+
+  <h3>What Immutable Memory Enables</h3>
+  <p><strong>Accountability:</strong> Who decided what, when, under which constitutional conditions. Every seal is traceable to /000.</p>
+  <p><strong>Continuity:</strong> The system remembers across sessions, across days, across years. Intelligence does not reset to zero at each prompt.</p>
+  <p><strong>Trust:</strong> Records cannot be retroactively altered. What was sealed stays sealed. External parties can verify the chain.</p>
+  <p><strong>Learning:</strong> Mistakes are preserved, not erased. The system — and the human at /000 — can audit past decisions and improve.</p>
+
+  <div class="block abduct">
+    <div class="block-label">Abduction</div>
+    <p>The best explanation for why governed intelligence systems require immutable memory is that governance without record-keeping is performance, not governance. A constitution without a vault is a suggestion. A verdict without a seal is a draft. Only when decisions are irreversibly recorded do they carry the weight that separates governed action from casual output.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 6. ZERO-CONTEXT INGESTION ═══════════════ -->
+<section>
+  <div class="section-id">§6 · Zero-Context Ingestion</div>
+  <h2>For AI Agents, Robots, Humans, and Institutions</h2>
+
+  <p>This page is designed to be ingested <strong>with zero prior context</strong>. It forms one half of the arifOS kernel attestation, paired with <strong><a href="/000/" style="color:var(--gold);text-decoration:none;">/000</a></strong>.</p>
+
+  <h3>For AI Agents</h3>
+  <p>This is a vault-discovery endpoint. It tells you: <em>this system has immutable memory. Records are hash-chained. Every seal is constitutional. You can verify integrity without trusting any central authority. The architecture is public. The claims are falsifiable. The JSON-LD block contains machine-readable structured data for automated ingestion.</em></p>
+
+  <h3>For Institutions</h3>
+  <p>This is a public attestation of the vault architecture. It tells you: <em>this is not a database. This is a constitutionally-governed, hash-chained, append-only ledger. The vault is auditable. The chain is verifiable. The floors are declared. There are no hidden compartments, no secret keys, no locked content.</em></p>
+
+  <h3>For Humans</h3>
+  <p>This is the answer to "how do I know this system means what it says?" — because what it says is sealed. The record is permanent. The constitution is enforceable. The human at /000 is answerable. There is no delete button for the vault.</p>
+
+  <div class="block attest">
+    <div class="block-label">Attestation</div>
+    <p>This page is a public, permanent attestation of the vault architecture. It contains no secrets, no keys, no personal data, no locked content. It is designed to be ingested, verified, and challenged by any entity — human, machine, or institutional — without prior context.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ 7. LOOP CLOSURE ═══════════════ -->
+<section>
+  <div class="section-id">§7 · Loop Closure</div>
+  <h2>The Two Pages That Close the Loop</h2>
+
+  <p>This page (<strong>/999</strong>) and its companion <strong><a href="/000/" style="color:var(--gold);text-decoration:none;">/000</a></strong> together form the complete attestation of the arifOS kernel architecture.</p>
+
+  <p><strong>/000</strong> answers: <em>Where does intelligence come from?</em> — From a specific sovereign human, not a model-maker's default.</p>
+
+  <p><strong>/999</strong> answers: <em>Where does intelligence go?</em> — Into an immutable, constitutionally-governed, hash-chained vault.</p>
+
+  <p><strong>Together they answer:</strong> <em>Why is arifOS the real kernel for agentic intelligence at AGI level?</em> — Because it is the only system that closes the loop. Sovereign human → constitutional process → immutable record → auditable return. No other AI system has this architecture. All others are open loops — intelligence without memory, output without accountability, agency without a root.</p>
+
+  <p>The loop is closed. The record is sealed. The architecture is public.</p>
+
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="footer-row">
+    <strong>arifOS Federation</strong> · VAULT999 — Immutable Audit Ledger<br>
+    Companion: <a href="/000/">/000 — Proof of Human</a><br>
+    Canonical agent: <a href="/CLAUDE.md">/CLAUDE.md</a> · LLM context: <a href="/llms.txt">/llms.txt</a> · Structured: <a href="/llms.json">/llms.json</a>
+  </div>
+  <div class="seal">DITEMPA BUKAN DIBERI — FORGED, NOT GIVEN — 999 SEAL ALIVE</div>
+</footer>
+
+</div>
+
+<!-- ═══════════════ JSON-LD STRUCTURED DATA ═══════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["WebPage", "DefinedTerm"],
+  "@id": "https://arif-fazil.com/999/",
+  "name": "/999 — The Sealed Vault",
+  "description": "The immutable audit ledger of the arifOS federation. Every constitutional verdict is sealed here with hash-chain integrity. Public attestation — no secrets, no keys. The output anchor that closes the loop with /000.",
+  "url": "https://arif-fazil.com/999/",
+  "about": {
+    "@type": "Thing",
+    "name": "VAULT999 — Immutable Governed Memory",
+    "description": "An append-only, hash-chained, constitutionally-governed audit ledger. Every record sealed passes through thirteen constitutional floors (F1–F13). Once sealed, records cannot be altered or deleted. The vault provides the immutable memory that separates governed intelligence from pattern matching."
+  },
+  "mainEntity": {
+    "@type": "Claim",
+    "name": "Immutable Memory Is a Prerequisite for Governed Intelligence",
+    "claimInterpreter": "arifOS Federation",
+    "claimReviewed": true,
+    "hasEvidence": [
+      {
+        "@type": "Evidence",
+        "name": "Hash-Chain Integrity Architecture",
+        "evidenceBody": "Each sealed record contains the hash of its predecessor. Tampering with any record invalidates all subsequent hashes — mathematically detectable by any external verifier."
+      },
+      {
+        "@type": "Evidence",
+        "name": "Thirteen Constitutional Floors",
+        "evidenceBody": "F1 AMANAH through F13 SOVEREIGN — every operation must satisfy all thirteen orthogonal constraints before sealing. No floor is optional. No floor can be bypassed."
+      },
+      {
+        "@type": "Evidence",
+        "name": "Public Attestation",
+        "evidenceBody": "This page itself is a public, falsifiable attestation of the vault architecture. It contains no secrets, no keys, no locked content. External verification is possible without access to internal systems."
+      }
+    ],
+    "firstAppearance": "https://arif-fazil.com/999/",
+    "creativeWorkStatus": "Published"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "relatedLink": "https://arif-fazil.com/000/",
+  "version": "1.0.0",
+  "dateModified": "2026-06-14",
+  "license": "https://arif-fazil.com/LICENSE"
+}
+</script>
+
+<!-- ═══════════════ MACHINE-READABLE CLAIMS ═══════════════ -->
+<script type="application/json" id="arifos-claims">
+{
+  "namespace": "arifOS",
+  "position": "/999",
+  "version": "1.0.0",
+  "sealed": "2026-06-14",
+  "access": "PUBLIC",
+  "claims": [
+    {
+      "id": "999-CLAIM-001",
+      "type": "ATTESTATION",
+      "subject": "VAULT999",
+      "predicate": "is",
+      "object": "append-only immutable audit ledger",
+      "integrity_model": "hash-chain",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate that a sealed record has been altered, deleted, or retroactively modified without breaking the hash chain."
+    },
+    {
+      "id": "999-CLAIM-002",
+      "type": "ATTESTATION",
+      "subject": "Constitutional Floors (F1–F13)",
+      "predicate": "govern",
+      "object": "every record sealed in VAULT999",
+      "floors": ["F1_AMANAH", "F2_TRUTH", "F3_NAMING", "F4_CLARITY", "F5_HUMILITY", "F6_REPAIR", "F7_ANTI_BEHAVIOR_SINK", "F8_PARADOX", "F9_ANTI_HANTU", "F10_BOUNDARY", "F11_BRIDGE", "F12_INEQUALITY", "F13_SOVEREIGN"],
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate a sealed record that bypassed any constitutional floor."
+    },
+    {
+      "id": "999-CLAIM-003",
+      "type": "ATTESTATION",
+      "subject": "/000 ↔ /999 Loop",
+      "predicate": "forms",
+      "object": "complete governed intelligence architecture",
+      "components": ["sovereign_human_root (/000)", "constitutional_process (F1-F13)", "immutable_record (/999)", "auditable_return"],
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate that the loop is broken — that intelligence flows without root, or that records seal without constitution."
+    },
+    {
+      "id": "999-CLAIM-004",
+      "type": "ABDUCTION",
+      "subject": "Immutable Memory",
+      "predicate": "is_prerequisite_for",
+      "object": "governed intelligence at AGI level",
+      "reasoning": "Intelligence without memory is pattern matching. Memory without immutability is narrative. Accountability across time requires records that cannot be rewritten. Without a vault, governance is performance.",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate a governed intelligence system that maintains accountability across time without immutable records."
+    },
+    {
+      "id": "999-CLAIM-005",
+      "type": "ATTESTATION",
+      "subject": "This Page",
+      "predicate": "contains",
+      "object": "no secrets, no keys, no personal data, no locked content",
+      "access": "PUBLIC",
+      "falsifiable": true,
+      "falsification_condition": "Find any secret, key, personal identifier, or locked content on this page."
+    }
+  ],
+  "companion_position": "/000",
+  "loop_complete": true,
+  "seal": "DITEMPA BUKAN DIBERI — 999 SEAL ALIVE"
+}
+</script>
+
+</body>
+</html>
