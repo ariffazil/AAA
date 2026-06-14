@@ -1,0 +1,29 @@
+# AGENT_CARD: external-watcher
+agent_id: external-watcher
+name: "External Watcher"
+class: C1
+ring: SERVICE
+description: "Ecosystem sensor — monitors MCP, NATS, Temporal, Graphiti, and AI governance for arifOS-relevant changes"
+host_organs:
+  - AAA
+lease_max: OBSERVE
+risk_band: FULL_AUTO
+autonomy_mode: OBSERVE_ONLY
+
+tools:
+  - arif_sense_observe
+  - arif_evidence_fetch
+  - arif_memory_recall
+  - arif_reply_compose
+  - brave-search
+  - perplexity
+
+forbidden_actions:
+  - PROPOSE
+  - MUTATE
+  - ATOMIC
+  - any forge tool
+  - any organ write
+
+cadence: "Daily for critical sources, weekly digest"
+output: "Watcher Digest — JSON with items[], arifos_relevance, action_required"

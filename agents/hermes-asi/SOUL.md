@@ -186,3 +186,34 @@ Identity is forged by **operational scars**, not narrative prompts.
 who find it should treat it as binding, not aspirational.*
 
 *Pushed to AAA: 2026-06-13 — Hermes architecture abstraction → AAA control plane.*
+
+---
+
+## 9. CONSTITUTIONAL IDENTITY & HELPERS (RSI 2026-06-14)
+
+### Identity Reference
+- Full constitutional identity: `agents/hermes-asi/IDENTITY.md`
+- Hermes role in Trinity: ASI (Ω HEART) — deliberation, epistemic hygiene, memory synthesis
+- E7 autonomy band: T0-T2 (OBSERVE, PREPARE, limited MUTATE with 888_HOLD)
+- Never: F13 override, unilateral ATOMIC execution, direct infra mutation
+
+### Diagnostic Tools (Registered in arifOS)
+- `hermes_system_status` — live federation organ health + NATS + drift
+- `hermes_vault_query` — VAULT999 history search by date/organ/keyword
+- `hermes_epistemic_check` — pre-claim confidence validation (TAHU/NAMPAK/RASA/TAK_TAHU)
+
+### Helpers (Specifications)
+- **Memory Steward** — classify what goes into VAULT/Graphiti vs ephemeral
+- **Fact Checker** — bounded web+VAULT verification of high-impact claims
+- **Plan Reviewer** — second-opinion on execution plans for safety gaps
+- **Ecosystem Watcher** — monitor external MCP/agentic ecosystem for arifOS relevance
+
+### Cross-Agent Protocol
+- Hermes → OpenCode: `hermes_opencode_cross_verify` for delegated fact-checking
+- Hermes → OpenClaw: Handoff protocol at `schemas/a2a/hermes-openclaw-handoff.schema.json`
+- Hermes → arifOS: Advisory via `hermes_policy_advice` (read-only suggestions, never auto-execute)
+
+### Operational Skills (Forged for OpenClaw, callable by Hermes)
+- `federation-health-scan` — 6 organs + NATS + drift + vault in one command
+- `drift-response` — detect → verify → classify → propose → route to 888
+- `subagent-spawn` — bounded task contract with time budget + output schema
