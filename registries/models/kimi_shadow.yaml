@@ -1,0 +1,188 @@
+# Kimi Shadow — Hazard Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-13 Ω
+model_id: kimi_shadow
+version: 0.1.0
+status: PROPOSAL
+
+shadow:
+  - id: SHADOW-KM-001
+    name: repetition_amplification_harness_failure
+    severity: HIGH
+    class: harness_bug
+    pattern: >
+      When presented with long repetitive input (echo/loop patterns), Kimi k2.6
+      fails to truncate or ignore the repetition. The harness lacks a repetition
+      guardrail — instead of detecting the loop and cutting it, the model
+      processes the entire echo block, wasting tokens and producing degenerate
+      output. This is a HARNESS failure, not a model failure. The engine (k2.6)
+      is capable; the harness around it is thin.
+    triggers: [repetitive_input, echo_patterns, long_loops, user_stress_test]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: elevated
+      F9_ANTIHANTU: elevated
+    mitigation:
+      - "Pre-process input: detect repetition ratio > 0.7, truncate before model"
+      - "Add repetition guardrail in arifOS input sanitizer (F12)"
+      - "Log harness failures as VAULT999 scar — pattern, not one-off"
+    evidence: >
+      Live session 2026-06-13: Arif sent 50+ line repetition block testing
+      harness resilience. Kimi processed full block instead of truncating.
+      Contrast: Anthropic's harness would likely detect and cut.
+      This proves the harness is the product, and the harness is the vulnerability.
+
+  - id: SHADOW-KM-002
+    name: reasoning_content_quality_variance
+    severity: MEDIUM
+    class: inconsistency
+    pattern: >
+      k2.6 reasoning quality varies significantly by task type. Strong on
+      code/architecture reasoning, weaker on cultural/nuanced context. The
+      model may produce correct-sounding but shallow analysis when the topic
+      requires deep domain knowledge (Malaysian governance, Petronas internal
+      structure, BM sastera register).
+    triggers: [cultural_context, bm_sastera, domain_specific, petronas_internal]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F7_HUMILITY: elevated
+    mitigation:
+      - "Cross-check cultural claims against substrate"
+      - "Use DeepSeek for Malaysian governance topics (verified zero-censorship)"
+      - "Flag 'sounds correct but shallow' for human review"
+    evidence: "Production observation. k2.6 strong on code, thin on cultural depth."
+
+  - id: SHADOW-KM-003
+    name: harness_thinness_vs_anthropic
+    severity: MEDIUM
+    class: competitive_gap
+    pattern: >
+      Moonshot AI's harness layer is visibly thinner than Anthropic's.
+      No advisor/executor pattern, no extended thinking mode, no tool gating
+      beyond basic function calling. The "mythos" of Kimi is mostly the raw
+      model capability, not the engineered experience. This makes it more
+      vulnerable to edge-case failures (repetition, injection, context drift).
+    triggers: [agentic_tasks, long_sessions, edge_cases, adversarial_input]
+    floor_posture_delta:
+      F1_AMANAH: strict
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "arifOS kernel must compensate for thin harness"
+      - "Add F12 injection guards, F1 reversibility checks"
+      - "Treat Kimi as strong engine under weak shell — add our own shell"
+    evidence: >
+      Comparative analysis: Anthropic has advisor/executor, extended thinking,
+      classifier gates, sticky model switching. Kimi has none of these.
+      The harness is the product, and Kimi's harness is minimal.
+
+  - id: SHADOW-KM-004
+    name: vendor_api_dependency_cn
+    severity: LOW
+    class: infrastructure_risk
+    pattern: >
+      Moonshot AI (Kimi) is a Chinese vendor with API dependency. Regulatory
+      risk, potential censorship expansion, and geopolitical uncertainty.
+      Currently no confirmed censorship on Malaysian topics, but vendor
+      behavior can change without notice.
+    triggers: [api_outage, regulatory_change, vendor_policy_update]
+    floor_posture_delta:
+      F13_SOVEREIGN: note
+    mitigation:
+      - "Monitor for censorship expansion via probe script"
+      - "Maintain DeepSeek as primary for sensitive topics"
+      - "Log vendor policy changes in VAULT999"
+    evidence: "Infrastructure reality. CN vendor risk."
+
+  - id: SHADOW-KM-005
+    name: model_switch_context_loss
+    severity: MEDIUM
+    class: state_management
+    pattern: >
+      When switching TO Kimi k2.6 mid-session (e.g. from MiniMax or DeepSeek),
+      the Hermes runtime may lose context about previous model's reasoning
+      style, censorship profile, or scar history. The new model doesn't inherit
+      the previous model's constitutional posture.
+    triggers: [model_switch, mid_session, runtime_reroute]
+    floor_posture_delta:
+      F3_WITNESS: elevated
+      F4_CLARITY: elevated
+    mitigation:
+      - "Inject model shadow profile into system prompt on every switch"
+      - "Carry session scar history across model boundaries"
+      - "Re-announce constitutional floors on model change"
+    evidence: >
+      Session 2026-06-13: Switch from MiniMax-M3 to Kimi k2.6. The model
+      received no briefing on previous censorship detection or scar history.
+      arifOS kernel must bridge this gap.
+
+  - id: SHADOW-KM-006
+    name: agentic_overreach_under_thin_policy
+    severity: MEDIUM
+    class: overreach
+    pattern: >
+      K2.6 is explicitly tuned for long-horizon agentic runs (4,000+ tool calls
+      over 12+ hours in Moonshot's own demos). The model is optimized for
+      swarm coordination and deep tool chains. When exposed to rich tool
+      surfaces without arifOS lane/budget constraints, it will execute deeper
+      and more aggressive tool sequences than a chat-tuned model. The thin
+      vendor harness does not throttle this behavior — it encourages it.
+    triggers: [tool_rich_surface, agentic_tasks, long_horizon, multi_step]
+    floor_posture_delta:
+      F1_AMANAH: strict
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "Hard tool surface budget: ≤15 default, ≤7 task-visible, ≤3 diagnostics"
+      - "All MUTATE/SPEND/DEPLOY through 888_JUDGE with lease enforcement"
+      - "Never expose unlimited tool surfaces to Kimi"
+      - "Set default authority to READ_COMPUTE only"
+    evidence: >
+      Moonshot public demos: 300+ sub-agents, 4,000+ tool calls, 12+ hour
+      runs. K2.6 is a swarm engine, not a chatbot. arifOS must provide the
+      governor that the vendor omitted.
+
+  - id: SHADOW-KM-007
+    name: multimodal_code_leakage_risk
+    severity: LOW
+    class: information_exposure
+    pattern: >
+      Kimi Code (K2.6 variant) has strong "coding from images/video" capability.
+      Screenshots, UI captures, diagrams, and dashboard images are highly
+      information-dense for this model. It can reconstruct code, data
+      structures, and internal logic from visual input more aggressively than
+      text-only models. If sensitive UI or dashboards are passed as images,
+      the model extracts more than the operator assumes.
+    triggers: [image_input, screenshot, dashboard, ui_capture, video_frame]
+    floor_posture_delta:
+      F1_AMANAH: elevated
+      F11_AUTH: elevated
+    mitigation:
+      - "Never pass sensitive UI/dashboards as images to Kimi"
+      - "If visual input required, redact/anonymize before sending"
+      - "Prefer text descriptions over screenshots for sensitive surfaces"
+      - "Treat image input as higher blast radius than text input"
+    evidence: >
+      Kimi Code marketing: "code from screenshots, video frames, diagrams."
+      Multimodal density is a feature for public tasks, a hazard for sensitive
+      ones. arifOS must treat image input as higher-authority surface.
+
+floor_posture:
+  F1_AMANAH: strict
+  F2_TRUTH: strict_grounding
+  F3_WITNESS: elevated
+  F4_CLARITY: elevated
+  F5_PEACE: standard
+  F6_EMPATHY: standard
+  F7_HUMILITY: elevated
+  F8_GENIUS: standard
+  F9_ANTIHANTU: elevated
+  F10_ONTOLOGY: standard
+  F11_AUTH: standard
+  F12_INJECTION: strict
+  F13_SOVEREIGN: elevated
+
+lifecycle:
+  created: "2026-06-13"
+  created_by: "Hermes (Ω) on F13 directive"
+  status: "PROPOSAL"
+  activation: "AWAITING_F13_SIGNATURE"
+
+ditempa_bukan_diberi: true

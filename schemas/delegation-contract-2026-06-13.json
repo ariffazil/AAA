@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "arifOS Delegation Contract",
+  "description": "Canonical schemas for Hermes→Gateway→Agent delegation. Forged 2026-06-13 from live trace DLGT-472f1419aca2.",
+  "definitions": {
+    "DelegationRequest": {
+      "type": "object",
+      "required": ["intent", "target_agent"],
+      "properties": {
+        "intent": {
+          "type": "string",
+          "description": "Natural language task description. The gateway classifier extracts category from this."
+        },
+        "target_agent": {
+          "type": "string",
+          "enum": ["hermes", "opencode", "openclaw", "all"],
+          "description": "Target AAA citizen. 'all' triggers broadcast + collapse."
+        },
+        "task_category": {
+          "type": "string",
+          "enum": ["cognitive", "forge", "infra", "verify", "oracle"],
+          "description": "Optional override for classifier. Leave empty for auto-classification."
+        },
+        "is_claim": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true → F14 CROSS-VERIFY auto-triggered. CLAIM tasks spawn a second verification agent."
+        },
+        "context_summary": {
+          "type": "object",
+          "properties": {
+            "provided": {"type": "boolean"},
+            "files": {"type": "array", "items": {"type": "string"}},
+            "memory_refs": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "collapse_strategy": {
+          "type": "string",
+          "enum": ["constitutional", "majority", "first_valid", "best_evidence"],
+          "default": "constitutional",
+          "description": "How to merge results when target_agent='all'. 'constitutional' = strictest floor wins."
+        },
+        "max_wait_ms": {
+          "type": "integer",
+          "default": 120000,
+          "description": "Async completion timeout before returning partial results."
+        }
+      }
+    },
+    "DelegationReceipt": {
+      "type": "object",
+      "required": ["trace_id", "status", "timestamp"],
+      "properties": {
+        "trace_id": {
+          "type": "string",
+          "pattern": "^DLGT-[a-f0-9]{12}$",
+          "description": "Unique delegation trace ID."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["DELEGATED", "ROUTED", "HELD", "REJECTED", "COMPLETED", "TIMEOUT"],
+          "description": "Delegation lifecycle state."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "receipt_id": {
+          "type": "string",
+          "pattern": "^RCPT-[a-f0-9]{10,12}$"
+        },
+        "vault_seal": {
+          "type": "string",
+          "enum": ["VAULT999_CHAIN_RECORDED", "VAULT999_PENDING"],
+          "description": "Whether the receipt is sealed in VAULT999 Merkle chain."
+        },
+        "delegation": {
+          "type": "object",
+          "properties": {
+            "category": {"type": "string", "enum": ["COGNITIVE", "FORGE", "INFRA", "ORACLE"]},
+            "primary_agents": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "agent_id": {"type": "string"},
+                  "name": {"type": "string"},
+                  "lane": {"type": "string", "enum": ["ASI", "AGI"]},
+                  "primary_category": {"type": "string"}
+                }
+              }
+            },
+            "verify_agents": {"type": "array", "items": {"type": "object"}},
+            "cross_verify_triggered": {"type": "boolean"},
+            "collapse_strategy": {"type": "string"}
+          }
+        },
+        "governed_by": {
+          "type": "object",
+          "properties": {
+            "floors": {"type": "array", "items": {"type": "string"}},
+            "gateway": {"type": "string"},
+            "authority": {"type": "string"}
+          }
+        },
+        "frontdoor": {
+          "type": "object",
+          "properties": {
+            "valid": {"type": "boolean"},
+            "message": {"type": "string"}
+          }
+        },
+        "result": {
+          "type": "object",
+          "description": "Populated on COMPLETED. Contains collapsed agent output."
+        }
+      }
+    }
+  }
+}

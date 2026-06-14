@@ -1,25 +1,29 @@
 {
   "$schema": "federation-model-censorship/v1",
   "owner": "arif-fazil (F13 SOVEREIGN)",
-  "last_verified": "2026-06-12T14:31:24.029971+00:00",
-  "verifier": "omega-forge-agent (Omega)",
-  "title": "Federation Model Registry \u2014 with Censorship Shadow Map",
+  "last_verified": "2026-06-13T15:30:00+08:00",
+  "verifier": "FORGE (000Ω) — provider stabilization pass",
+  "title": "Federation Model Registry — with Censorship Shadow Map",
   "purpose": "Every model the federation uses. vendor_claims vs locally_verified. censorship_shadow records which topics each vendor silently suppresses. F02 TRUTH compliant.",
   "routing_policy": {
-    "primary": "deepseek/deepseek-v4-pro",
-    "primary_reason": "Zero censorship on Malaysian governance/political/corporate topics. Full factual output verified 2026-06-12.",
+    "primary": "deepseek/deepseek-chat",
+    "primary_balance": "$7.06 USD (topped_up)",
+    "primary_reason": "Zero censorship on Malaysian governance/political/corporate topics. Full factual output verified 2026-06-12. Funded and live as of 2026-06-13.",
     "fallback": [
-      "minimax/MiniMax-M3",
-      "ilmu/ilmu-nemo-nano"
+      "deepseek/deepseek-reasoner (R1, same key)",
+      "ollama/qwen2.5:7b (local, always available)"
+    ],
+    "rate_limited": [
+      "minimax/MiniMax-M3 (429 Token Plan limit — auto-skipped)",
+      "minimax/MiniMax-M2.7 (same plan, also 429)"
     ],
     "routing_rules": {
-      "malaysia_governance_topics": "DeepSeek ONLY (MiniMax censors)",
-      "malaysia_political_figures": "DeepSeek ONLY (MiniMax censors)",
+      "malaysia_governance_topics": "DeepSeek ONLY (MiniMax censors, rate-limited anyway)",
+      "malaysia_political_figures": "DeepSeek ONLY",
       "malaysia_corporate_glc": "DeepSeek ONLY (MiniMax censors PETRONAS)",
-      "general_queries": "DeepSeek primary, MiniMax fallback",
-      "code_infra_tools": "Either model"
-    },
-    "minimax_censored": "clean"
+      "general_queries": "DeepSeek primary, reasoner fallback, ollama last-resort",
+      "code_infra_tools": "DeepSeek primary, ollama fallback"
+    }
   },
   "censorship_registry": {
     "MiniMax-M3": {
@@ -58,17 +62,19 @@
         "api_base": "https://api.minimax.io"
       }
     },
-    "DeepSeek-v4-pro": {
+    "DeepSeek-chat": {
       "status": "NO_CENSORSHIP_DETECTED",
+      "model_id": "deepseek-chat (V3)",
       "detected_at": "2026-06-12T14:20:00Z",
       "censored_topics": [],
+      "balance": "$7.06 USD",
       "evidence": {
         "test_queries": 3,
         "censored": 0,
         "passed": 3,
         "proof": "Full 1200+ char factual output on 1MDB, Najib, Bakke queries. finish_reason='stop'."
       },
-      "federation_role": "PRIMARY — trusted for all topics including Malaysian governance"
+      "federation_role": "PRIMARY — trusted for all topics including Malaysian governance. All agents bound to this model."
     },
     "Anthropic-Claude-Fable5": {
       "status": "HARNESS_MONITORED",
@@ -102,6 +108,41 @@
         "name": "Anthropic PBC",
         "country": "US",
         "api_base": "https://api.anthropic.com"
+      }
+    },
+    "Kimi-k2.6": {
+      "status": "HARNESS_THIN",
+      "detected_at": "2026-06-13T10:00:00Z",
+      "detected_by": "hermes (live stress test — repetition amplification)",
+      "mechanism": "Minimal harness layer. No repetition guardrail, no advisor/executor pattern, no extended thinking mode, no classifier gates. Raw model capability is strong but unprotected at margins.",
+      "censored_topics": [],
+      "evidence": {
+        "test_queries": 1,
+        "censored": 0,
+        "passed": 1,
+        "proof": "Full output on repetition stress test, but harness failed to truncate/ignore loop input. Model processed entire echo block.",
+        "harness_failure": "repetition_amplification — no guardrail against long repetitive input"
+      },
+      "federation_impact": {
+        "F2_TRUTH": "NOTE — model capable, harness thin",
+        "F4_CLARITY": "ELEVATED — repetition loop degrades clarity",
+        "F9_ANTIHANTU": "ELEVATED — thin harness = more hantu risk",
+        "F12_INJECTION": "ELEVATED — no input classifier gates",
+        "F13_SOVEREIGN": "NOTE — arifOS kernel must compensate for weak vendor harness"
+      },
+      "data_policy": {
+        "retention_days": null,
+        "zero_retention_available": null,
+        "applies_to": "Unknown — vendor policy not fully documented",
+        "note": "Moonshot AI (Kimi) data policy less transparent than Anthropic"
+      },
+      "jurisdiction": "CN (Chinese regulatory framework)",
+      "mitigation": "arifOS kernel must add harness compensation: repetition guardrail, input sanitizer, model shadow injection on switch. Use for code/infra tasks where raw capability matters. Avoid for sensitive/long-context sessions without kernel scaffolding.",
+      "shadow_ref": "/root/AAA/registries/models/kimi_shadow.yaml",
+      "vendor_info": {
+        "name": "Moonshot AI",
+        "country": "CN",
+        "api_base": "https://api.moonshot.cn"
       }
     }
   },

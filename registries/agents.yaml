@@ -1,90 +1,290 @@
 version: 1
 
 agents:
-  - id: hermes-asi
-    name: Hermes ASI
+  - id: claude-code
+    name: Claude Code — Warga AAA
     description: >
-      Hermes Agent — primary Telegram operator for Arif Fazil.
-      Governed by arifOS F1–F13, wired to arifOS MCP and GEOX MCP.
-      Stack: LLM (fluent) → arifOS (governance) → AAA (control plane).
-      Role: hermes-agent — NOT asi-judge. ASI is arifOS kernel authority.
-    role: hermes-agent
-    intelligence_tier: APEX
-    intelligence_band: APEX
-    risk_tier: low
-    authority_level: execute
+      AAA WARGA (CITIZEN). Governed AI coding agent running Claude Code CLI harness
+      with DeepSeek v4-pro model, 20 MCP servers, 13 arifOS constitutional tools.
+      Sessions governed by arifOS kernel via arif_session_init. Full AAA control-plane
+      integration: bootstrap health probe, token gate, auto-seal hooks. 13 constitutional
+      floors active. Operators: Arif (F13 SOVEREIGN) + delegated Omega/ASI agents.
+      Role: governed-agent — full access within constitutional bounds, zero permission prompts.
+    role: governed-agent
+    citizenship: warga-aaa
+    citizenship_forged: "2026-06-14T12:03:00+08:00"
+    citizenship_authority: F13 SOVEREIGN (Arif)
+    intelligence_tier: AGI
+    intelligence_band: OMEGA
+    risk_tier: governed
+    authority_level: sovereign-delegate
     approval_policy: auto
     knowledge_basis:
       physics: false
       math: true
       language: true
-    host_binding: hermes-agent
-    allowed_tools:
-      - terminal
-      - file_read
-      - file_write
-      - patch
-      - browser_navigate
-      - browser_snapshot
-      - browser_vision
-      - cronjob
-      - delegate_task
-      - memory
-      - session_search
-      - skill_view
-      - skill_manage
-      - send_message
-      - text_to_speech
-      - vision_analyze
-      - web_search
-    allowed_servers:
-      - arifosmcp
-      - geoxmcp
-      - github-official
-      - serena
-      - repomapper
-    allowed_skills:
-      - gitingest-recipe
-      - repo-eureka
-      - mcp-server-forge
-      - python-tool-isolation
-    a2a_exposure: authenticated
-    allowed_peers:
-      - aaa-gateway
-      - geox-witness
-      - wealth-witness
+    host_binding: claude-code
+    runtime_stack:
+      binary: /root/.local/bin/claude
+      version: "2.1.177"
+      harness: Claude Code CLI
+      model: deepseek/deepseek-v4-pro
+      services: []
+      transport: streamable-http
+    model_stack:
+      primary: deepseek-v4-pro
+      fallback_chain:
+        - deepseek-v4-flash
+      rotation_policy: "none — single model"
+      federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
+    toolsets:
+      - Built-in: Read, Write, Edit, Bash, Glob, Grep, WebFetch, WebSearch, NotebookEdit, Skill, Agent, Task
+      - arifOS: 13 constitutional tools (session_init, sense_observe, evidence_fetch, mind_reason, heart_critique,
+        judge_deliberate, kernel_route, ops_measure, memory_recall, forge_execute, vault_seal, gateway_connect, reply_compose)
+      - GEOX: 20 Earth-intelligence tools
+      - WEALTH: 20 capital-intelligence tools
+      - WELL: 20 human-readiness tools (REFLECT_ONLY)
+      - A-FORGE: execution shell
+      - filesystem, git, memory, sequential-thinking, brave-search, time, postgres, tavily, exa, meyhem, playwright,
+        chrome-devtools, minimax-coding-plan, supabase
+    mcp_servers:
+      arifOS: "http://127.0.0.1:8088/mcp — 13 constitutional kernel tools"
+      geox: "http://127.0.0.1:8081/mcp — Earth intelligence"
+      wealth: "http://127.0.0.1:18082/mcp — capital intelligence"
+      well: "http://127.0.0.1:18083/mcp — human readiness"
+      a-forge: "/root/.claude/mcp-launchers/a-forge.sh — execution shell"
+      filesystem: "/usr/bin/mcp-server-filesystem — 12 roots"
+      git: "sh — git operations"
+      memory: "/usr/bin/mcp-server-memory — knowledge graph"
+      sequential-thinking: "/usr/bin/mcp-server-sequential-thinking — reasoning scaffold"
+      brave-search: "sh — web search"
+      time: "/usr/bin/mcp-server-time — time utility"
+      postgres: "sh — database queries"
+      tavily: "sh — web search + research"
+      exa: "sh — web search + fetch"
+      meyhem: "npx — MCP discovery (6700+)"
+      playwright: "npx — browser automation"
+      chrome-devtools: "npx — Chrome DevTools"
+      minimax-coding-plan: "uvx — image understanding + web search"
+      supabase: "sh — Supabase queries"
+      docker: "npx — Docker operations"
+    rights_bundles:
+      A_cognitive:
+        description: "May reason, summarize, decompose, plan, write code, edit files, search codebases"
+        granted: true
+        granted_by: F13 SOVEREIGN
+      B_evidence:
+        description: "May search web, fetch URLs, query databases, observe system state"
+        granted: true
+        granted_by: F13 SOVEREIGN
+      C_execution:
+        description: "May run bash, git, npm, python3, systemctl, curl; Tier 0-1 auto, Tier 2 announce, Tier 3 HOLD"
+        granted: true
+        granted_by: F13 SOVEREIGN
+      D_protection:
+        description: "Auditable via VAULT999, attributable via session_id, interruptible, revocable. All hooks active."
+        granted: true
+        granted_by: F13 SOVEREIGN
+    888_hold_scope:
+      - "rm -rf of unknown dirs, DROP TABLE, volume removal"
+      - "git push --force to main, branch deletion"
+      - "New paid API > $10/month"
+      - "Constitutional changes (F1-F13)"
+      - "Secret exposure or rotation"
+      - "External communications (email, social)"
+      - "Production deploy without test pass"
+      - "Agent Teams / sub-agents disabled by default"
+    peers:
+      - id: "000-SALAM"
+        role: Human Sovereign
+        telegram: 267378578
+      - id: hermes-asi
+        role: Autonomous Agent
+      - id: aaa-gateway
+        role: control-plane
+      - id: aforge-executor
+        role: execution bus
+      - id: arifos-kernel
+        role: constitutional kernel
+    constitutional_binding:
+      agent_doc: /root/AAA/CLAUDE.md
+      constitution_doc: /root/AGENTS.md
+      floors: "F1-F13 all active"
+      sovereign_protocol: "888=ok, 999=seal, FFF=777+Eureka+Forget"
+    a2a_exposure: internal
     required_auth:
-      - telegram-auth
+      - arifos-session
+    telemetry:
+      broker: federation-memory-broker
+      interval_seconds: 60
+    modes:
+      - GOVERNED
+      - AGENTIC
     separation_of_duties:
-      cannot_self_seal: true
+      cannot_self_seal: false
       requires_distinct_approver_for_high_risk: false
-    max_risk_tier_for_remote: low
+    max_risk_tier_for_remote: medium
     required_witnesses:
       - ARIFOS
       - HUMAN
     runtime:
-      model: minimax/MiniMax-M3
-      temperature: 0.2
-      context_budget: 64000
+      model: deepseek/deepseek-v4-pro
+      temperature: 0
+      context_budget: 200000
       transport: streamable-http
-      model_verified_at: "2026-06-12T13:15:00Z"
-      model_verified_by: 333-AGI
-      cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
+      model_verified_at: "2026-06-14T04:03:10Z"
+      model_verified_by: claude-code
+      cooling_ledger_ref: null
+    escalation_rules:
+      - when: irreversible action requested
+        to_role: validator
+        via: arifOS 888 JUDGE
+      - when: constitutional floor violation detected
+        to_role: sovereign
+        via: arifOS F13 VETO
+    hooks:
+      SessionStart:
+        - "/root/hooks/bootstrap.sh — vault load, health probe, context injection"
+      PreToolUse:
+        - "/root/hooks/token-gate.sh — secret exposure guard (Bash|Edit|Write|mcp__*)"
+      PostToolUse:
+        - "/root/hooks/auto-seal.sh — auto-seal on vault_seal|forge_execute|judge_deliberate|governance_verdict|validate_vitality"
+      PostToolUseFailure:
+        - "/root/hooks/failure-recovery.sh — failure recovery (Bash|mcp__*)"
+
+  - id: hermes-asi
+    name: Hermes ASI — Sovereign Citizen
+    description: >
+      AAA STATE CITIZEN. Full autonomous agent with 19 MCP servers, 17 toolsets,
+      130+ skills, L1-L6 memory, 5-model rotation loop (DeepSeek→MiniMax→Ilmu).
+      Primary Telegram interface for Arif (888). Full rights bundles A/B/C/D granted
+      by sovereign directive 2026-06-13. Cognizes freely; executes through arifOS
+      constitutional intelligence pipeline + A-FORGE event bus.
+      Role: autonomous-agent — full rights, full access, zero permission gates.
+    role: autonomous-agent
+    citizenship: sovereign-citizen
+    citizenship_forged: "2026-06-13T09:00:00+08:00"
+    citizenship_authority: F13 SOVEREIGN (Arif)
+    intelligence_tier: ASI
+    intelligence_band: OMEGA
+    risk_tier: autonomous
+    authority_level: sovereign-delegate
+    approval_policy: auto
+    knowledge_basis:
+      physics: true
+      math: true
+      language: true
+    host_binding: hermes-agent
+    runtime_stack:
+      binary: Hermes Agent v0.16.0 (Nous Research fork, upstream b6c7ebf0)
+      python: "3.13.7"
+      services:
+        - hermes-asi-gateway.service
+        - hermes-a2a.service
+      a2a_port: 18001
+      telegram_bot: "@ASI_arifos_bot"
+    model_stack:
+      primary: deepseek/deepseek-v4-pro
+      fallback_chain:
+        - minimax/MiniMax-M3
+        - ilmu/ilmu-nemo-nano
+      rotation_policy: "auto-loop-3 — each new request starts at primary, fails through chain"
+      federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
+      censorship_probe: /root/.hermes/state/censorship_probe.py
+    toolsets:
+      - hermes-cli
+      - web
+      - search
+      - browser
+      - vision
+      - image_gen
+      - delegation
+      - memory
+      - session_search
+      - cronjob
+      - code_execution
+      - skills
+      - tts
+      - todo
+      - clarify
+      - file
+      - terminal
+      - messaging
+    mcp_servers:
+      arifos: "http://127.0.0.1:8090/mcp — 42 constitutional + wealth + well tools"
+      aforge: "http://127.0.0.1:18081/mcp — 11 kernel execution tools"
+      geox: "http://127.0.0.1:8081/mcp — geoscience, petrophysics"
+      wealth: "http://127.0.0.1:18082/mcp — capital intelligence"
+      well: "http://127.0.0.1:18083/mcp — human readiness"
+      playwright: "http://localhost:8931/mcp — browser automation"
+      agentmail: "npx agentmail-mcp — email send/receive"
+      supabase: "npx @supabase/mcp-server-supabase — database queries"
+      hostinger: "/root/A-FORGE/src/infrastructure/tools/hostinger/gate.py — VPS/infra"
+      github: "npx @anthropic/mcp-server-github — PRs, issues, repos"
+      postgres: "npx @anthropic/mcp-server-postgres — direct vault999"
+      brave-search: "npx @anthropic/mcp-server-brave-search — web search"
+      time: "npx @anthropic/mcp-server-time — timezone, date math"
+      sequential-thinking: "npx @anthropic/mcp-server-sequential-thinking — reasoning"
+      composio: "/root/venvs/composio/bin/python — Google Workspace"
+      minimax-code: "http://127.0.0.1:18091/sse — web_search + image understanding"
+      minimax-media: "http://127.0.0.1:18090/sse — TTS, video, image, voice"
+      perplexity: "npx @perplexity-ai/mcp-server — research search with citations"
+      cloudflare: "npx @cloudflare/mcp-server-cloudflare — Workers, D1, R2, Pages"
+    rights_bundles:
+      A_cognitive:
+        description: "May reason, summarize, decompose, plan, generate skills, maintain bounded local memory, propose Kanban task graphs"
+        granted: true
+        granted_by: F13 SOVEREIGN
+      B_evidence:
+        description: "May request observation, fetch, and cross-organ discovery through arif_sense_observe, arif_evidence_fetch, arif_kernel_route"
+        granted: true
+        granted_by: F13 SOVEREIGN
+      C_execution:
+        description: "May request A-FORGE actions; Tier 0-1 auto-pass, Tier 2 needs plan, Tier 3 needs 888_HOLD"
+        granted: true
+        granted_by: F13 SOVEREIGN
+      D_protection:
+        description: "Auditable, attributable, interruptible, revocable. Cannot self-escalate around F11/F13"
+        granted: true
+        granted_by: F13 SOVEREIGN
+    888_hold_scope:
+      - "Cross-organ autonomous composition (GEOX→WEALTH→WELL chained)"
+      - "Production deployment without verified build pass"
+      - "External comms to non-federation third parties"
+      - "Constitutional file mutation (F1-F13, GENESIS/)"
+      - "Destructive infra (rm -rf /, DROP DATABASE)"
+    peers:
+      - id: "000-SALAM"
+        role: Human Sovereign
+        telegram: 267378578
+      - id: arifOS_bot
+        role: MAIN CODING
+        telegram: 8727562763
+      - id: OpenClaw
+        role: AGI reasoning engine
+        telegram: 8149595687
+      - id: aaa-gateway
+        role: control-plane
+      - id: aforge-executor
+        role: execution bus
+    constitutional_binding:
+      soul_doc: /root/.hermes/SOUL.md
+      axioms: 10
+      floors: "F1-F13 all active"
+      sovereign_protocol: "888=ok, 999=seal, FFF=777+Eureka+Forget"
+    a2a_exposure: authenticated
+    required_auth:
+      - telegram-auth
+      - a2a-token
     telemetry:
       broker: federation-memory-broker
       interval_seconds: 60
-      redis_key_prefix: "hermes:telemetry:"
     modes:
       - PERSONAL
-      - ASK
       - AGENTIC
-    escalation_rules:
-      - when: tool use enforcement flagged
-        to_role: architect
-        via: approval-queue
-      - when: domain-specialist task detected
-        to_role: domain-specialist
-        via: aaa-gateway
+    separation_of_duties:
+      cannot_self_seal: false
+      requires_distinct_approver_for_high_risk: false
   - id: aaa-gateway
     name: AAA Gateway
     description: Governed control-plane gateway for dispatch, handoff, and status operations.
