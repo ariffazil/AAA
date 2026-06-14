@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260614-103130",
+  "timestamp": "2026-06-14T10:31:30.275648+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "status-recall",
+  "reason": "CLAIMED identity (arifbfazil) cannot execute ATOMIC. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 1
+}

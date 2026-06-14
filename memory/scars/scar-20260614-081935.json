@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260614-081935",
+  "timestamp": "2026-06-14T08:19:35.247116+00:00",
+  "tool_name": "arif_ops_measure",
+  "agent_id": "anonymous",
+  "session_id": "test-session-total",
+  "reason": "888_HOLD: max_tool_calls (3) reached",
+  "severity": "critical",
+  "count": 1
+}

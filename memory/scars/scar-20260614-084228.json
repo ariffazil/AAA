@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-084228",
+  "timestamp": "2026-06-14T08:42:28.785316+00:00",
+  "tool_name": "hermes_vault_query",
+  "agent_id": "anonymous",
+  "session_id": "sess_da87c99a06904bb5",
+  "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
+  "severity": "critical",
+  "count": 15,
+  "last_seen": "2026-06-14T10:31:03.914669+00:00"
+}
