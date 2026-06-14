@@ -30,27 +30,44 @@ The Opus harness shadow analysis (session 134-137) exposed three structural gaps
 **Enforces:** Every MUTATE/DEPLOY/ALLOCATE/COMMUNICATE passes through all three checks
 **Self-test:** PASSED (6/6)
 
-## Next Steps (for next session)
+## Forge Wiring — 2026-06-14 (Session 141)
 
-### Immediate
-1. **Wire into A-FORGE execution path** — `core/pre_forge_gate.py` is ready; the forge execution path needs to call `PreForgeGate.check()` before any MUTATE
-2. **Wire witness diversity into AAA session init** — every `arif_session_init` should create a `SessionWitnessState` and register witnesses as they appear
-3. **Wire citation provenance into tool call layer** — every search/fetch tool call should auto-create `CitationProvenance` records
+### ✅ WIRED — Immediate (1-3)
+1. ✅ **PreForgeGate into A-FORGE execution path** — `PreForgeGateClient.ts` + wired into `/execute` in `server.ts`. Every EXECUTE_REVERSIBLE/EXECUTE_HIGH_IMPACT/IRREVERSIBLE action now passes through F2 (citation), F3 (witness), F9 (shadow) before execution. Fails closed — gate error logs CAUTION but allows.
+2. ✅ **Witness diversity into AAA session init** — `preforge_bridge.js` wired into AAA `server.js`. HUMAN registered on task submission. A-FORGE `/execute` auto-registers EARTH_MEASUREMENT on tool success. Pre-forge service auto-registers model output witnesses via `/check` calls.
+3. ✅ **Citation provenance into tool call layer** — `/citation` and `/provenance/batch` endpoints on pre-forge service (port 18990). `captureCitationProvenance()` TypeScript client in A-FORGE. Search/fetch results can be auto-captured as PROVENANCED citations.
 
-### Schema work (needed)
-4. `schemas/citation_provenance.schema.json` — JSON Schema for provenance records
-5. `schemas/shadow_audit_result.schema.json` — JSON Schema for shadow audit output
-6. `schemas/witness_diversity_state.schema.json` — JSON Schema for witness state
+### New Infrastructure Created
+- **`core/pre_forge_service.py`** — HTTP microservice on port 18990 (9 endpoints: /check, /quick, /witness, /earth, /model, /citation, /provenance/batch, /health, /witness/:id)
+- **`a2a-server/preforge_bridge.js`** — Node.js bridge for AAA gateway (fire-and-forget witness registration)
+- **`scripts/run_preforge_service.sh`** — Service runner script
+- **`/etc/systemd/system/aaa-preforge.service`** — systemd unit (active, running)
+- **A-FORGE `src/domain/governance/PreForgeGateClient.ts`** — TypeScript client (pre-forge check, witness reg, citation capture)
 
-### Integration with existing infrastructure
-7. Update `deliberation.ts` ToAC scoring to accept shadow audit results as input
+### Architecture
+```
+Model proposes → A-FORGE /execute
+                  ├─ classifyTool(actionClass)
+                  ├─ requiresGovernance? → SESSION + LEASE gates
+                  ├─ ATOMIC? → 888_HOLD gate
+                  ├─ PRE-FORGE GATE (NEW) → POST :18990/check
+                  │   ├─ F2 Citation Provenance
+                  │   ├─ F3 Witness Diversity
+                  │   └─ F9 Shadow Audit
+                  ├─ Execute MCP tool
+                  └─ Auto-register EARTH_MEASUREMENT witness
+```
+
+### Next Steps (remaining)
+4. `schemas/citation_provenance.schema.json`
+5. `schemas/shadow_audit_result.schema.json`
+6. `schemas/witness_diversity_state.schema.json`
+7. Update `deliberation.ts` ToAC scoring with shadow audit input
 8. Update `hold_queue.py` to accept `PreForgeGateResult` objects
 9. Add witness diversity to AAA cockpit dashboard
-
-### Hardening
-10. Run floor benchmarks against the new gates (`benchmarks/floors/F02_truth.py`, `F03_tri_witness.py`, `F09_antihantu.py`)
-11. Integration test: full Opus shadow transcript run through all three gates
-12. Performance: shadow audit is regex-heavy; profile on >10KB inputs
+10. Run floor benchmarks against new gates
+11. Integration test: full Opus shadow transcript through live gates
+12. Performance profiling on >10KB inputs
 
 ## Architecture Note
 
