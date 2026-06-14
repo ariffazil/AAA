@@ -31,7 +31,7 @@ except:
 # Check 2: opencode.db integrity
 try:
     import sqlite3
-    db_path = os.path.expanduser("~/.local/state/opencode/opencode.db")
+    db_path = os.path.expanduser("~/.local/share/opencode/opencode.db")
     if os.path.exists(db_path):
         conn = sqlite3.connect(db_path)
         cur = conn.execute("SELECT count(*) FROM sqlite_master WHERE type='table'")
@@ -57,7 +57,7 @@ for svc in ["opencode.service", "opencode-bot.service", "opencode-bridge.service
         CHECKS[f"service_{svc}"] = "unknown"
 
 # Check 4: OpenCode session state
-state_dir = os.path.expanduser("~/.local/state/opencode")
+state_dir = os.path.expanduser("~/.local/share/opencode")
 if os.path.isdir(state_dir):
     files = os.listdir(state_dir)
     CHECKS["opencode_state_files"] = len(files)
