@@ -1,0 +1,144 @@
+# HOSTINGER-MCP-ACCESS — F13 SOVEREIGN DIRECTIVE
+# ═══════════════════════════════════════════════════════
+# directive_id:  HOSTINGER-MCP-ACCESS-2026-06-13
+# issuer:        arif-fazil (F13 SOVEREIGN)
+# scope:         hostinger-mcp
+# status:        ACTIVE
+# supersedes:    SEAL-1b1f0e1ebea54c09 capability_matrix.yaml
+# ═══════════════════════════════════════════════════════
+directive_id: HOSTINGER-MCP-ACCESS-2026-06-13
+issuer: arif-fazil
+scope: hostinger-mcp
+status: ACTIVE
+transported_by: I (Integrator) under Architect brief SEAL-1b1f0e1ebea54c09
+transported_at: 2026-06-13T06:45:00Z
+POLICY_WRITTEN: true
+
+actors:
+  - id: openclaw.a2a.agent
+    lanes: [OBSERVE, PROPOSE]
+  - id: hermes.telegram.agent
+    lanes: [OBSERVE, PROPOSE]
+
+connection:
+  mcp_server_id: mcp.hostinger-vps
+  transport: aforge_mcp_proxy
+  auth:
+    token_ref: file:///root/.secrets/tokens/hostinger_api_token
+  routing:
+    via_kernel: true
+    via_aforge: true
+    direct_mcp: false
+
+tools:
+  observe:
+    - VPS_getVirtualMachinesV1
+    - VPS_getMetricsV1
+    - VPS_getBackupsV1
+    - VPS_getFirewallListV1
+    - VPS_getPublicKeysV1
+    - VPS_getActionsV1
+    - VPS_getSnapshotsV1
+    - VPS_getProjectListV1
+    - VPS_getProjectContainersV1
+    - VPS_getScanMetricsV1
+    - VPS_getDataCenterListV1
+    - VPS_getTemplatesV1
+    - VPS_getPostInstallScriptsV1
+  mutate_reversible:
+    - VPS_restartVirtualMachineV1
+    - VPS_createSnapshotV1
+    - VPS_startVirtualMachineV1
+    - VPS_stopVirtualMachineV1
+    - VPS_attachPublicKeyV1
+  mutate_high_risk:
+    - VPS_resizeVirtualMachineV1
+    - VPS_recreateVirtualMachineV1
+    - VPS_deleteSnapshotV1
+    - VPS_restoreSnapshotV1
+    - VPS_setRootPasswordV1
+    - VPS_activateFirewallV1
+    - VPS_deactivateFirewallV1
+    - VPS_startRecoveryModeV1
+    - VPS_setPanelPasswordV1
+  anti_hantu_block:
+    - VPS_recreateVirtualMachineV1
+    - VPS_deleteSnapshotV1
+    - VPS_resizeVirtualMachineV1
+    - VPS_purchaseNewVirtualMachineV1
+    - VPS_setPanelPasswordV1
+
+guardrails:
+  require_kernel_gate: true
+  require_lease_for_mutate: true
+  require_judge_for_mutate: true
+  require_vault_seal: true
+  lease:
+    ttl_seconds: 60
+    scope_must_match_tool: true
+  judge:
+    tool_class_rules:
+      OBSERVE: SEAL_IF_FLOORS_OK
+      MUTATE_REVERSIBLE: SEAL_IF_BACKUP_AVAILABLE
+      MUTATE_RISKY: HOLD_UNLESS_888_APPROVED
+  vault:
+    record:
+      - actor_id
+      - tool_name
+      - args_redacted
+      - vm_id
+      - decision
+      - lease_id
+      - outcome
+      - snapshot_or_backup_id
+      - timestamps
+
+lanes:
+  OBSERVE:
+    allowed_tools: "@tools.observe"
+    notes: "Free to inspect Hostinger state; zero mutation."
+  PROPOSE:
+    allowed_tools: "@tools.observe"
+    behavior:
+      - "Agent may ANALYZE metrics and PROPOSE mutate actions."
+      - "Execution still requires separate 888 / approval path."
+  EXECUTE:
+    allowed_tools:
+      - VPS_restartVirtualMachineV1
+      - VPS_createSnapshotV1
+      - VPS_startVirtualMachineV1
+      - VPS_stopVirtualMachineV1
+      - VPS_attachPublicKeyV1
+    conditions:
+      - "Only via A-FORGE worker with lease + judge SEAL."
+      - "Only for vm_id=1325122 unless explicitly extended."
+    notes: "No EXECUTE rights are granted directly to Telegram agents."
+
+telegram:
+  openclaw:
+    mode: advisor
+    may_ask_for_reboot: true
+    may_execute: false
+  hermes:
+    mode: advisor
+    lanes: [OBSERVE, PROPOSE]
+    may_execute: false
+
+lane_888:
+  owner: arif-fazil
+  tools:
+    - VPS_recreateVirtualMachineV1
+    - VPS_resizeVirtualMachineV1
+    - VPS_deleteSnapshotV1
+    - VPS_purchaseNewVirtualMachineV1
+    - billing_disableAutoRenewalV1
+  requirements:
+    - TRI_WITNESS
+    - explicit confirmation in AAA cockpit
+    - pre- and post-state snapshot
+
+notes:
+  - "Hostinger MCP is now part of the federation substrate."
+  - "OpenClaw & Hermes may SEE and PROPOSE using it from Telegram."
+  - "Only arifOS+A-FORGE may EXECUTE, under leases and judges."
+  - "Agents must never hold raw tokens; the A-FORGE proxy holds auth."

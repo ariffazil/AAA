@@ -1,0 +1,86 @@
+# FEDERATION DIRECTIVE — Hostinger MCP Access for OpenClaw & Hermes
+# directive_id: HOSTINGER-MCP-ACCESS-2026-06-13
+# issuer: arif-fazil (F13 SOVEREIGN)
+# scope: hostinger-mcp
+# status: ACTIVE
+# forged: 2026-06-13
+# DITEMPA BUKAN DIBERI
+
+[connection]
+mcp_server_id = "mcp.hostinger-vps"
+transport = "opencode.mcp_bridge"
+token_ref = "file:///root/.secrets/tokens/hostinger_api_token"
+via_kernel = true
+via_aforge = true
+direct_mcp = false
+
+[actors]
+openclaw.lanes = ["OBSERVE", "PROPOSE"]
+hermes.lanes = ["OBSERVE", "PROPOSE"]
+
+[tools.observe]
+allowed = [
+    "VPS_getVirtualMachinesV1",
+    "VPS_getMetricsV1",
+    "VPS_getBackupsV1",
+    "VPS_getSnapshotsV1",
+    "domains_getDomainsV1",
+    "dns_getRecordsV1",
+    "billing_getSubscriptionsV1",
+    "billing_getInvoicesV1",
+]
+
+[tools.mutate.reversible]
+allowed = [
+    "VPS_rebootVirtualMachineV1",
+    "VPS_createSnapshotV1",
+    "VPS_createBackupV1",
+    "dns_updateRecordV1",
+]
+
+[tools.mutate.high_risk]
+blocked = [
+    "VPS_reinstallVirtualMachineV1",
+    "VPS_deleteSnapshotV1",
+    "VPS_resizeVirtualMachineV1",
+    "domains_purchaseNewDomainV1",
+    "billing_disableAutoRenewalV1",
+]
+
+[guardrails]
+require_kernel_gate = true
+require_lease_for_mutate = true
+require_judge_for_mutate = true
+require_vault_seal = true
+lease_ttl_seconds = 60
+
+[judge.rules]
+OBSERVE = "SEAL_IF_FLOORS_OK"
+MUTATE_REVERSIBLE = "SEAL_IF_BACKUP_AVAILABLE"
+MUTATE_RISKY = "HOLD_UNLESS_888_APPROVED"
+
+[lane_888]
+owner = "arif-fazil"
+tools = [
+    "VPS_reinstallVirtualMachineV1",
+    "VPS_resizeVirtualMachineV1",
+    "VPS_deleteSnapshotV1",
+    "domains_purchaseNewDomainV1",
+    "billing_disableAutoRenewalV1",
+]
+requirements = ["TRI_WITNESS", "888_CONFIRM", "PRE_POST_SNAPSHOT"]
+
+[telegram.openclaw]
+mode = "advisor"
+may_ask_for_reboot = true
+may_execute = false
+
+[telegram.hermes]
+mode = "advisor"
+may_execute = false
+
+[notes]
+hostinger_mcp = "part of federation substrate"
+openclaw_hermes = "SEE and PROPOSE from Telegram"
+execution = "Only arifOS+A-FORGE via leases+judges"
+token_handling = "Bridge holds auth; agents never hold raw tokens"
