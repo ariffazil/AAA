@@ -6,6 +6,6 @@
   "session_id": "loop-1",
   "reason": "E7: action_class=MUTATE risk=HIGH blast=FEDERATION reversibility=0.40 \u2192 autonomy=PRINCIPAL_APPROVAL_REQUIRED",
   "severity": "critical",
-  "count": 15,
-  "last_seen": "2026-06-14T08:19:35.403669+00:00"
+  "count": 22,
+  "last_seen": "2026-06-14T15:22:03.466809+00:00"
 }
