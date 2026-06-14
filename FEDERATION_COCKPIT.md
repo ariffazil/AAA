@@ -2,7 +2,7 @@
 
 > **Canonical Identity:** Agent Operations Cockpit / Federation Control Plane
 > **Sovereign:** Muhammad Arif bin Fazil
-> **Subordinate To:** arifOS Constitutional Kernel (`ariffazil/arifOS`)
+> **Subordinate To:** arifOS Constitutional Kernel (`ariffazil/arifos`)
 > **Repository:** https://github.com/ariffazil/AAA
 
 ---
@@ -31,7 +31,7 @@ or hold live runtime state. It is the **cockpit**, not the **engine**.
 
 ### AAA Does NOT Own
 - **Constitutional Law** — F1-F13 lives in `arifOS`
-- **888_JUDGE** — verdict engine lives in `arifOS` (APEX is decommissioned; deliberation in AAA a2a-server)
+- **888_JUDGE** — verdict engine lives in `arifOS` (APEX repo is legacy; deliberation moved to AAA a2a-server, only a legacy health probe remains on port 3002)
 - **999_VAULT** — ledger sealing lives in `arifOS`
 - **MCP Core Tools** — canonical 13-tool surface is `arifOS` port 8088
 - **Domain Calculations** — GEOX, WEALTH, WELL own their domains
@@ -100,13 +100,13 @@ responsibility.
 
 | Node | Repository | Port (Live) | Role |
 |------|------------|-------------|------|
-| arifOS | `ariffazil/arifOS` | 8088 | Constitutional kernel |
-| GEOX | `ariffazil/geox` | 18081 | Earth intelligence |
+| arifOS | `ariffazil/arifos` | 8088 | Constitutional kernel |
+| GEOX | `ariffazil/geox` | 8081 | Earth intelligence |
 | WEALTH | `ariffazil/wealth` | 18082 | Capital intelligence |
 | WELL | `ariffazil/well` | 18083 | Vitality intelligence |
 | A-FORGE | `ariffazil/A-FORGE` | 7071 | Execution engine |
 | AAA A2A | `ariffazil/AAA` | 3001 | A2A gateway (held) |
-| APEX | `ariffazil/APEX` | 3002 | Verdict engine (held) |
+| APEX | `ariffazil/APEX` | 3002 | Legacy health probe — deliberation moved to AAA a2a-server |
 
 ---
 

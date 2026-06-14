@@ -75,7 +75,7 @@ Verify README does not claim constitutional authority incorrectly.
 - [ ] Phantom: `agent/` (README) vs `agents/` (disk)
 
 ### Port Drift
-- [ ] Claimed: GEOX 8081 — Actual: 18081
+- [ ] Claimed: GEOX 18081 — Actual: 8081 (canonical GEOX MCP organ port is 8081; 18081 is arifosd)
 
 ### Dependency Drift
 - [ ] None / [list]

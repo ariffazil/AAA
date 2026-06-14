@@ -54,7 +54,7 @@ The federation runs on a mix of systemd services and Docker containers. This ski
 | ollama | systemd | 11434 | active |
 | vault999-api | systemd | 8100 | active |
 | vault999-writer | systemd | 5001 | active |
-| GEOX | systemd | 18081 | active |
+| GEOX | systemd | 8081 | active |
 | WEALTH | systemd | 18082 | active |
 | WELL | systemd | 18083 | active |
 | A-FORGE | systemd | 7071 | active |
