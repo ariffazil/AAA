@@ -112,6 +112,10 @@ agents:
       floors: "F1-F13 all active"
       sovereign_protocol: "888=ok, 999=seal, FFF=777+Eureka+Forget"
     a2a_exposure: internal
+    ignition_path: /usr/local/bin/hermes-claude
+    ignition_protocol: hermes-ignition-v1
+    ignition_manifest_dir: /root/.claude/ignition
+    cross_harness_verify: /root/AAA/scripts/audit-opencode-state.sh
     required_auth:
       - arifos-session
     telemetry:
