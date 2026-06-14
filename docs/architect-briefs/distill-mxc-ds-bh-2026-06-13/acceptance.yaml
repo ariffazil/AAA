@@ -1,0 +1,136 @@
+version: 1
+brief: distill-mxc-ds-bh-2026-06-13
+session: SEAL-5d1232e556bf44f3
+
+# ============================================================================
+# ACCEPTANCE CRITERIA — 10 falsifiable conditions
+# Each row: id, description, test_command, pass_criteria, owner, floor
+# ============================================================================
+
+criteria:
+
+  - id: AC1
+    description: "Reasoning-content passback contract test (W1) — DeepSeek V4 seam"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_reasoning_content_echo.py -v --tb=short"
+    pass_criteria: "All 7 federation models in FEDERATION_MODEL.json are tested. Each model preserves reasoning_content across multi-turn tool calls. OpenAI-compat transport reconstructs the field from audit trail. No 400 errors on turn 2 for any model. Coverage ≥ 90% on the new file."
+    owner: I
+    floor: F2
+    eureka: W1
+    phase: P1
+
+  - id: AC2
+    description: "Snapshot/Copyback wrapper in state_store.py (W2) — no partial state leak"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_state_store_rollback.py -v --tb=short"
+    pass_criteria: "Test injects L1 dual-write failure (mock). Asserts L4 Postgres row is NOT created. Asserts rollback signal is emitted (return value contains {'rolled_back': True, 'reason': 'l1_failure'}). Negative test: when L1 succeeds, L4 row IS created. Coverage ≥ 85% on state_store.py."
+    owner: I
+    floor: F1
+    eureka: W2
+    phase: P3
+
+  - id: AC3
+    description: "Skill negative-space contract (W3) — 'map not diary' enforced at write time"
+    test_command: "cd /root/AAA && bash /root/.config/opencode/hooks/pre-commit-skill-contract.sh test_fixtures/forbidden_skill.md"
+    pass_criteria: "Test fixtures include: (a) skill with pixel coordinates → REJECTED, (b) skill with session diary → REJECTED, (c) skill with 'Bearer ' token → REJECTED, (d) clean skill → ACCEPTED. The hook exits 0 on accept, 1 on reject. The YAML contract is parseable and well-formed."
+    owner: I
+    floor: F4
+    eureka: W3
+    phase: P0
+
+  - id: AC4
+    description: "5-phase session lifecycle enum (W4) — arif_session_phase"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_session_phase.py -v --tb=short"
+    pass_criteria: "Enum has exactly 5 values: INIT, BIND, EXECUTE, PAUSE, CLOSE. Test walks a session through all 5 phases in order; assert each transition succeeds. Test attempts to skip a phase (INIT → EXECUTE); assert rejected. Test attempts reverse (EXECUTE → BIND); assert rejected. Pydantic v2 strict-mode used."
+    owner: I
+    floor: F1
+    eureka: W4
+    phase: P2
+
+  - id: AC5
+    description: "Envelope version stamp (W5) — new fields default to deny for old envelopes"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_envelope_version_contract.py -v --tb=short"
+    pass_criteria: "Add a new envelope field `destructive_ack: bool = False`. Test with envelope WITHOUT envelope_version → parses as v1, destructive_ack field is missing or denied. Test with envelope_version='v1' → identical behavior. Test with envelope_version='v2' AND destructive_ack=True → action proceeds. Coverage ≥ 90% on envelope schemas."
+    owner: I
+    floor: F2
+    eureka: W5
+    phase: P6
+    f13_required: true
+    note: "888 from Arif required to merge. Envelope is canonical surface."
+
+  - id: AC6
+    description: "Sub-agent lifecycle 4 modes (W6) — OS-process semantics for LLM agents"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_subordinate_lifecycle.py -v --tb=short"
+    pass_criteria: "Test: arif_kernel_route(mode='spawn_subordinate', scope='test', ttl=60) returns a typed SubordinateHandle. Test: arif_kernel_route(mode='wait_subordinate', handle=...) blocks and returns. Test: arif_kernel_route(mode='result_subordinate', handle=...) returns the child's stdout/exit code. Test: arif_kernel_route(mode='cancel_subordinate', handle=...) sends SIGTERM. Assert each child is a real subprocess (PID exists in /proc, parent=current process). Vault seal on completion."
+    owner: I + F
+    floor: F1
+    eureka: W6
+    phase: P4
+    note: "F13 review before any production spawn. Sub-agent spawn is the highest-blast-radius phase."
+
+  - id: AC7
+    description: "Precedence guard primitive (W7) — explicit > local > ambient"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_precedence_guard.py -v --tb=short"
+    pass_criteria: "Test: set explicit BU_CDP_URL='http://localhost:9222'; assert arif_gateway_connect refuses ambient cloud. Test: unset env, set BROWSER_USE_API_KEY only; assert ambient still requires BU_AUTOSPAWN. Test: set all four (explicit + key + autospawn + local-free); assert ambient wins as last-resort. Quadruple opt-in verified."
+    owner: I
+    floor: F1
+    eureka: W7
+    phase: P5
+
+  - id: AC8
+    description: "Two-layer Policy→Config via A-FORGE bridge (S1) — backend-specific output"
+    test_command: "cd /root/A-FORGE && npm run test:unit -- --testPathPattern=policy-to-config"
+    pass_criteria: "Pass a Pydantic AgentPolicy (with filesystem: '/tmp', network: 'block', timeoutMs: 30000). Assert each backend produces expected args: bubblewrap → ['--ro-bind', '/', '/', '--tmpfs', '/tmp', ...]; firejail → ['--private', '--no-network', '--timeout=30']; docker → ['--read-only', '--tmpfs', '/tmp', '--network=none']. Advance path: pass an extra field `processContainer.ui.isolation='atoms'`; assert it appears in bubblewrap output."
+    owner: I
+    floor: F1
+    eureka: S1
+    phase: P7
+
+  - id: AC9
+    description: "Cache-first routing signal (S2) — kv_cache_hit_rate exposed"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_cache_first_routing.py -v --tb=short"
+    pass_criteria: "Route 10 turns through the same system prompt prefix. After turn 1, assert kv_cache_hit_rate > 0. Test: arif_kernel_route(mode='prefer_cached') advisory is sticky across the session. Test: when hit_rate < 0.3, advisory is auto-emitted via arif_reply_compose."
+    owner: I
+    floor: F7
+    eureka: S2
+    phase: P8
+
+  - id: AC10
+    description: "Per-IPC token primitive (S3) — f11-bridge pattern formalized"
+    test_command: "cd /root/arifOS && uv run pytest tests/runtime/test_ipc_token.py -v --tb=short"
+    pass_criteria: "Test: arif_session_init generates ipc_token (secrets.token_hex(32)). Test: arif_vault_seal without token → 403. Test: with expired token (TTL=0) → 401. Test: with valid token → SEAL. Test: token bound to action namespace; arif_vault_seal with token issued for arif_memory_recall.store → 403. Coverage ≥ 90% on ipc_token.py."
+    owner: I
+    floor: F1
+    eureka: S3
+    phase: P9
+
+# ============================================================================
+# COMPOSITE ACCEPTANCE — all 10 must pass for the milestone to be SEALABLE
+# ============================================================================
+
+composite:
+  description: "All 10 criteria must pass before the milestone is SEALABLE. Final review by F (Final agent) gates the canonical VAULT999 seal and the push to main."
+  pass_criteria:
+    - "All 10 individual AC pass"
+    - "Constitutional review (F11 audit trail, F13 ed25519 signature) is in the PR body"
+    - "F2-honest: every eureka citation is in the code comments"
+    - "Reversibility: every change is git-revertable; no canonical surface mutation without F13"
+    - "VAULT999 seal exists for at least one of W1-W7 in the PR"
+  owner: F
+  floor: F11
+  f13_required_for_push: true
+
+# ============================================================================
+# OUT-OF-SCOPE — explicit non-goals (falsifiable by absence)
+# ============================================================================
+
+out_of_scope_assertions:
+  - "arif_v14_* does NOT exist (canonical 13-tool surface preserved)"
+  - "git push to main was NOT performed without 888"
+  - "GEOX/WEALTH/WELL services were NOT restarted"
+  - "vault_sealed_events was NOT written without F11 ed25519 signature"
+  - "F1-F13, GENESIS/, or contract schemas were NOT modified"
+  - "CPU remained under 50% (post-milestone)"
+  - "No community-PR skill surface was created"
+  - "No 'agent self-improves' framing was added to any canon file"
+  - "No YOLO mode or auto-approve-all-tools mode was added"
+  - "No deprecation aliases were added to any parser"
+  - "No --experimental global flag was added"

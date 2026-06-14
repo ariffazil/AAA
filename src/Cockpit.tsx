@@ -14,6 +14,7 @@ import { ConsentDialog, SessionBadge, SessionManifest } from './components/Sessi
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 import AutonomyBands from './components/cockpit/AutonomyBands';
 import RealityConsole from './components/cockpit/RealityConsole';
+import HermesCitizenCard from './components/cockpit/HermesCitizenCard';
 import AgentModelPanel, { type ModelGovernanceCard } from './components/cockpit/AgentModelPanel';
 
 type OperatorTask = {
@@ -824,6 +825,19 @@ export default function Cockpit() {
           isLoading={governanceLoading}
           error={governanceError}
         />
+
+        {/* ── HERMES SOVEREIGN CITIZEN ── */}
+        <section className="mb-12">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="text-4xl font-black text-white/10 font-mono italic">03.</span>
+            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Sovereign Citizen</h2>
+            <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
+              <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+              LIVE
+            </span>
+          </div>
+          <HermesCitizenCard />
+        </section>
 
         {/* ── AUTONOMY BANDS ── */}
         <AutonomyBands tools={toolRegistry} />
