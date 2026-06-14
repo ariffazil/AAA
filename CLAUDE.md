@@ -31,9 +31,17 @@ DeepSeek v4-pro          ← the brain (model)
     ↓
 Claude Code CLI          ← the harness (tool runtime, MCP client)
     ↓
-arifOS MCP (13 tools)    ← the law (F1-F13, 888 JUDGE, VAULT999)
-    ↓
-AAA A2A Gateway          ← the dashboard (monitors all 7 organs)
+┌──────────────────────────────────────────────────┐
+│ arifOS Federation — 5-Organ MCP Substrate        │
+│                                                  │
+│ arifOS   :8088  ← governance, judgment, routing  │
+│ A-FORGE  :7071  ← engineering actuator           │
+│ GEOX     :8081  ← earth intelligence             │
+│ WEALTH   :18082 ← capital intelligence           │
+│ WELL     :18083 ← vitality guard                 │
+│ AAA      :3001  ← cockpit / identity / A2A       │
+│ VAULT999        ← immutable audit memory         │
+└──────────────────────────────────────────────────┘
     ↓
 af-forge VPS             ← the iron (72.62.71.199)
 ```
@@ -42,7 +50,9 @@ af-forge VPS             ← the iron (72.62.71.199)
 
 **You ARE agentic** — in the arifOS sense. You can reason, plan, execute, and seal. But F13 is absolute: Arif's veto is final. No autonomous loops without his say.
 
-**The model thinks. The harness acts. The kernel judges. Arif rules.**
+**The model thinks. The harness acts. arifOS governs. A-FORGE engineers. Domain organs compute. AAA displays. Arif rules.**
+
+**Role separation is law:** arifOS is governance, not engineering. A-FORGE is engineering, not judgment. GEOX/WEALTH/WELL are domain intelligence, not authority. `forge_*` on arifOS is a deprecated proxy — canonical home is A-FORGE. See `arifos/README.md#18-mcp-connection-guide`.
 
 ---
 
@@ -139,36 +149,64 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 
 **Consensus:** W = W_theory × W_constitution × W_manifesto ≥ 0.95 for high-stakes actions.
 
-### 7 Organs — Live Topology
+### 7 Organs — Live Topology (Substrate Split)
 
-| Organ | Port | Role | Git Remote | Systemd Unit |
-|-------|------|------|------------|--------------|
-| **arifOS** | 8088 | Constitutional kernel, F1-F13, 888 JUDGE, VAULT999 | `ariffazil/arifos` | `arifos.service` |
-| **A-FORGE** | 7071 | Execution shell: build, deploy, code-mode | `ariffazil/A-FORGE` | `a-forge.service` |
-| **AAA** | 3001 | Control plane, A2A mesh, React cockpit | `ariffazil/AAA` | `aaa-a2a.service` |
-| **GEOX** | 8081 | Earth intelligence, petrophysics, seismic | `ariffazil/geox` | `geox-mcp.service` |
-| **WEALTH** | 18082 | Capital intelligence, NPV/IRR/EMV | `ariffazil/wealth` | `wealth-organ.service` |
-| **WELL** | 18083 | Human readiness, vitality (REFLECT_ONLY) | `ariffazil/well` | `well.service` |
-| **APEX** | 3002 | 888 JUDGE deliberation (legacy, absorbed into AAA) | — | `apex-prime.service` |
+| Organ | Port | Role | MCP Endpoint | Git Remote | Systemd Unit |
+|-------|------|------|-------------|------------|--------------|
+| **arifOS** | 8088 | Governance kernel — F1-F13, 888 JUDGE, VAULT999, routing, audit | `https://arifos.arif-fazil.com/mcp` | `ariffazil/arifos` | `arifos.service` |
+| **A-FORGE** | 7071 | Engineering actuator — plan, simulate, execute, rollback | `https://forge.arif-fazil.com/mcp` | `ariffazil/A-FORGE` | `a-forge.service` |
+| **AAA** | 3001 | Cockpit / identity / A2A authority layer | — | `ariffazil/AAA` | `aaa-a2a.service` |
+| **GEOX** | 8081 | Earth intelligence — wells, seismic, petrophysics | `https://geox.arif-fazil.com/mcp` | `ariffazil/geox` | `geox-mcp.service` |
+| **WEALTH** | 18082 | Capital intelligence — NPV, IRR, EMV, stock analysis | `https://wealth.arif-fazil.com/mcp` | `ariffazil/wealth` | `wealth-organ.service` |
+| **WELL** | 18083 | Vitality guard — human readiness, REFLECT_ONLY | `https://well.arif-fazil.com/mcp` | `ariffazil/well` | `well.service` |
+| **APEX** | 3002 | 888 JUDGE deliberation (legacy, absorbed into AAA a2a) | — | — | `apex-prime.service` |
+
+### Organ Substrate Roles
+
+| Organ | Responsibility | Mutation? |
+|-------|---------------|-----------|
+| **arifOS** | governance, authority, judgment, routing, audit | No — judges only |
+| **A-FORGE** | engineering planning, simulation, execution, rollback | **Yes — after SEAL** |
+| **GEOX** | geoscience intelligence — evidence, not decisions | No |
+| **WEALTH** | capital and economic intelligence — compute, not allocate | No |
+| **WELL** | wellness intelligence — reflect, not diagnose | No |
+| **AAA** | identity / cockpit / A2A authority layer | No |
+| **VAULT999** | immutable audit memory | Append-only |
+
+### Engineering Flow
+
+> arifOS judges → A-FORGE engineers → HERMES verifies → VAULT999 records
+
+**arifOS does not directly perform engineering mutation.** For any engineering action: arifOS classifies and routes → A-FORGE produces plan + dry-run + rollback → arifOS issues SEAL/HOLD/VOID → A-FORGE mutates only after valid authority.
+
+**forge_\* tools on arifOS are deprecated proxies.** Canonical home is A-FORGE. If a tool returns `DEPRECATED_PROXY`, connect to `https://forge.arif-fazil.com/mcp` and call it there.
 
 ### Supporting Services (Docker)
 Postgres+pgvector (5432), Redis (6379), Qdrant (6333), Graphiti-mcp (8000), NATS (4222), Prometheus (9090), Grafana (3000).
 
-### Authority Map
-- **arifOS** owns: constitution, sessions, identity, all verdicts, VAULT999, tool registry
-- **GEOX** owns: earth-truth artifacts, prospect evaluations (Physics9)
-- **WEALTH** owns: capital scores, decision memos
-- **WELL** owns: human readiness (REFLECT_ONLY — never adjudicates)
-- **AAA** owns: UX surface, agent identity, A2A gateway (routes, displays — never adjudicates)
-- **A-FORGE** owns: container images, deploy orchestration, build SHAs (executes — never legislates)
-- **Boundary rule:** No organ may seal without arifOS. Only 888_JUDGE → 999_VAULT emits seals.
+### Authority Map (Substrate Enforcement)
+- **arifOS** owns: constitution, sessions, identity, verdicts (SEAL/SABAR/HOLD/VOID), VAULT999, tool registry, routing
+- **A-FORGE** owns: engineering plans, dry-runs, build SHAs, deploy orchestration, container images, code execution (executes — never legislates, never self-authorizes)
+- **GEOX** owns: earth-truth artifacts, petrophysics, prospect evaluations, seismic evidence (Physics9 — evidence only)
+- **WEALTH** owns: capital scores, NPV/IRR/EMV, stock analysis, decision memos (compute — never allocate)
+- **WELL** owns: human readiness, vitality metrics, sleep/fatigue signals (REFLECT_ONLY — never adjudicates, never diagnoses)
+- **AAA** owns: UX surface, agent identity, A2A gateway, cockpit dashboard (routes, displays — never adjudicates)
+- **VAULT999** owns: immutable sealed records, hash-chain integrity, audit history
+- **Boundary rule:** No organ may seal without arifOS. Only 888_JUDGE → 999_VAULT emits seals. No organ may self-authorize mutation. Engineering requires arifOS SEAL → A-FORGE execute.
 
-### Ingress (Public Endpoints)
-- `https://arifos.arif-fazil.com/mcp` — Cloudflare Tunnel → localhost:8088
-- `https://geox.arif-fazil.com/mcp` — Caddy → localhost:8081
-- `https://wealth.arif-fazil.com/mcp` — Caddy → localhost:18082
-- `https://well.arif-fazil.com/mcp` — Caddy → localhost:18083
-- `https://aaa.arif-fazil.com` — Caddy → localhost:3001
+### Ingress (Public MCP Endpoints)
+- `https://arifos.arif-fazil.com/mcp` — Cloudflare Tunnel → localhost:8088 (governance)
+- `https://forge.arif-fazil.com/mcp` — Cloudflare Tunnel → localhost:7071 (engineering)
+- `https://geox.arif-fazil.com/mcp` — Caddy → localhost:8081 (earth intelligence)
+- `https://wealth.arif-fazil.com/mcp` — Caddy → localhost:18082 (capital intelligence)
+- `https://well.arif-fazil.com/mcp` — Caddy → localhost:18083 (vitality guard)
+- `https://aaa.arif-fazil.com` — Caddy → localhost:3001 (cockpit)
+
+### Discovery
+- LLM-readable manifest: `https://arifos.arif-fazil.com/llms.txt`
+- Health: `https://arifos.arif-fazil.com/health`
+- Connection order: **arifOS first** → `tools/list` → then domain organs as needed
+- Do not infer tool counts from README badges alone — use live registry
 
 ---
 
