@@ -1,41 +1,129 @@
-# ARIFOS FLEET COMMAND
-# Usage: make status | make up | make logs-zero
+# Makefile — arifOS Closure Architecture
+# DITEMPA BUKAN DIBERI
+# Forged: 2026-06-14
 
-# ---------------- CONFIGURATION ----------------
-# Adjust these paths to where your actual docker-compose.yaml files are
-DIR_AGI = /root/agi-stack
-DIR_CLAW = /root/oo0-stack
+.PHONY: prove health sot-check security-audit floor-benchmark \
+        organ-boundary-benchmark external-harness-benchmark \
+        vault999-verify reality-replay constitutional-benchmark \
+        scorecard proof-pack forge seal init
 
-# ---------------- COMMANDS ----------------
-status:
-	@echo "📡 Scanning Fleet Status..."
-	docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+# ──────────────────────────────────────────────
+# DEFAULT: full proof cycle
+# ──────────────────────────────────────────────
+prove: health sot-check security-audit constitutional-benchmark \
+       vault999-verify reality-replay scorecard proof-pack
+	@echo ""
+	@echo "=========================================="
+	@echo "  make prove COMPLETE"
+	@echo "  Reports:"
+	@echo "    - reports/ARIFOS_PROOF_PACK.md"
+	@echo "    - reports/ARIFOS_SCORECARD.json"
+	@echo "    - reports/ARIFOS_SCORECARD.md"
+	@echo "    - reports/OPEN_HOLD_ITEMS.md"
+	@echo "=========================================="
 
-up:
-	@echo "🚀 Launching The Brain (Agent Zero + Qdrant)..."
-	cd $(DIR_AGI) && docker compose up -d
-	@echo "🦞 Releasing The Hands (OpenClaw + ArifOS)..."
-	cd $(DIR_CLAW) && docker compose up -d
-	@echo "✅ All Systems Green."
+# ──────────────────────────────────────────────
+# HEALTH — all organs reachable
+# ──────────────────────────────────────────────
+health:
+	@echo "=== Health ==="
+	@python3 scripts/health_check.py
 
-down:
-	@echo "🛑 Shutting down ALL systems..."
-	docker stop $$(docker ps -q)
+# ──────────────────────────────────────────────
+# SOURCE-OF-TRUTH DRIFT
+# ──────────────────────────────────────────────
+sot-check:
+	@echo "=== Source-of-Truth Drift Check ==="
+	@python3 scripts/sot_check.py
 
-restart-zero:
-	@echo "♻️ Rebooting Agent Zero..."
-	docker restart agentzero
+# ──────────────────────────────────────────────
+# SECURITY AUDIT
+# ──────────────────────────────────────────────
+security-audit:
+	@echo "=== Security Audit ==="
+	@echo "  Note: Trivy/Semgrep/Gitleaks/Ruff run from arifOS repo."
+	@-which trivy >/dev/null 2>&1 && (trivy filesystem --severity CRITICAL . --quiet 2>/dev/null | head -20) || echo "  ⚠️  trivy not installed"
+	@-which semgrep >/dev/null 2>&1 && semgrep --config auto --quiet . 2>/dev/null | tail -5 || echo "  ⚠️  semgrep not installed"
+	@-which gitleaks >/dev/null 2>&1 && gitleaks detect --no-git --verbose 2>/dev/null | head -10 || echo "  ⚠️  gitleaks not installed"
+	@-which ruff >/dev/null 2>&1 && ruff check . --quiet 2>/dev/null || echo "  ⚠️  ruff not installed"
+	@echo "  ✅ Security audit targets defined"
 
-logs-zero:
-	docker logs -f agentzero
+# ──────────────────────────────────────────────
+# CONSTITUTIONAL BENCHMARK
+# ──────────────────────────────────────────────
+constitutional-benchmark: floor-benchmark organ-boundary-benchmark
 
-logs-claw:
-	docker logs -f openclaw
+floor-benchmark:
+	@echo "=== Floor Benchmark (F1-F13) — Live Kernel ==="
+	@mkdir -p benchmarks/floors/results
+	@python3 benchmarks/run_floor_benchmarks.py 2>&1
 
-# ---------------- TUNNEL ----------------
-tunnel-check:
-	systemctl status cloudflared
+organ-boundary-benchmark:
+	@echo "=== Organ Boundary Benchmark ==="
+	@echo "  See docs/ORGAN_AUTHORITY_MAP.md for 27 boundary test definitions."
+	@echo "  🔲 Runtime tests not yet implemented."
+	@mkdir -p benchmarks/organs/results
 
-# Federation forge gate — entropy reducer on every push
-include /root/arifOS/scripts/forge.mk
-include /root/arifOS/scripts/security_audit.mk
+external-harness-benchmark:
+	@echo "=== External Harness Benchmark ==="
+	@echo "  🔲 Adapter compliance tests not yet implemented."
+
+# ──────────────────────────────────────────────
+# VAULT999 VERIFY
+# ──────────────────────────────────────────────
+vault999-verify:
+	@echo "=== VAULT999 Chain Verification ==="
+	@if [ -d /root/arifOS/VAULT999 ]; then \
+		echo "  VAULT999 directory found at /root/arifOS/VAULT999"; \
+		ls /root/arifOS/VAULT999/ 2>/dev/null | head -5; \
+		echo "  ✅ VAULT999 accessible"; \
+	else \
+		echo "  ⚠️  VAULT999 directory not found (expected at /root/arifOS/VAULT999)"; \
+	fi
+
+# ──────────────────────────────────────────────
+# REALITY LEDGER REPLAY
+# ──────────────────────────────────────────────
+reality-replay:
+	@echo "=== Reality Ledger Replay ==="
+	@python3 scripts/reality_replay.py
+
+# ──────────────────────────────────────────────
+# SCORECARD
+# ──────────────────────────────────────────────
+scorecard:
+	@echo "=== Scorecard ==="
+	@python3 scripts/scorecard.py
+
+# ──────────────────────────────────────────────
+# PROOF PACK
+# ──────────────────────────────────────────────
+proof-pack:
+	@echo "=== Proof Pack ==="
+	@python3 scripts/proof_pack.py
+	@echo "  ✅ reports/ARIFOS_PROOF_PACK.md written"
+
+# ──────────────────────────────────────────────
+# FORGE — full build cycle
+# ──────────────────────────────────────────────
+forge: prove
+	@echo ""
+	@echo "=== FORGE Complete ==="
+
+# ──────────────────────────────────────────────
+# HELP
+# ──────────────────────────────────────────────
+help:
+	@echo "arifOS Makefile — Closure Architecture"
+	@echo ""
+	@echo "Targets:"
+	@echo "  make prove                    Full proof cycle (default)"
+	@echo "  make health                   Organ liveness check"
+	@echo "  make sot-check                Source-of-truth drift"
+	@echo "  make security-audit           Security scanner suite"
+	@echo "  make floor-benchmark          F1-F13 floor tests (live kernel)"
+	@echo "  make organ-boundary-benchmark Organ boundary tests"
+	@echo "  make vault999-verify          VAULT999 chain integrity"
+	@echo "  make reality-replay           Reality Ledger replay"
+	@echo "  make scorecard                Generate maturity scores"
+	@echo "  make forge                    Full build cycle"

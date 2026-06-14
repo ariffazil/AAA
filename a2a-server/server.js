@@ -1151,6 +1151,77 @@ app.get('/aaa-card-treaty', (req, res) => {
   });
 });
 
+// ── MCP Apps Router — SEP-1865 UI resource serving ─────────────────────────
+// Serves MCP App HTML files with text/html;profile=mcp-app MIME type.
+// Maps ui://geox/well-desk → /mcp-apps/well-desk
+// DITEMPA BUKAN DIBERI — MIME type per SEP-1865 stable 2026-01-26
+const APP_ROOTS = {
+  'well-desk': '/root/geox/apps/well-desk/index.html',
+  'earth-volume': '/root/geox/apps/earth-volume/index.html',
+  'judge-console': '/root/geox/apps/judge-console/index.html',
+};
+const APP_MANIFESTS = {
+  'well-desk': '/root/geox/apps/well-desk/manifest.json',
+  'earth-volume': '/root/geox/apps/earth-volume/manifest.json',
+  'judge-console': '/root/geox/apps/judge-console/manifest.json',
+};
+function isSafeAppId(id) {
+  return /^[a-z0-9][a-z0-9-_]*$/.test(id);
+}
+function buildCspFromManifest(manifest) {
+  const csp = manifest?._meta?.ui?.csp || manifest?.csp || {};
+  const connectSrc = Array.isArray(csp.connectDomains) && csp.connectDomains.length
+    ? csp.connectDomains.join(' ') : "'none'";
+  const resourceSrc = Array.isArray(csp.resourceDomains) && csp.resourceDomains.length
+    ? csp.resourceDomains.join(' ') : "'self'";
+  const frameSrc = Array.isArray(csp.frameDomains) && csp.frameDomains.length
+    ? csp.frameDomains.join(' ') : "'none'";
+  const baseUri = Array.isArray(csp.baseUriDomains) && csp.baseUriDomains.length
+    ? csp.baseUriDomains.join(' ') : "'self'";
+  return [
+    "default-src 'none'",
+    "script-src 'self' 'unsafe-inline'",
+    "style-src 'self' 'unsafe-inline'",
+    `img-src ${resourceSrc} data:`,
+    `font-src ${resourceSrc}`,
+    `media-src ${resourceSrc} data:`,
+    `connect-src ${connectSrc}`,
+    `frame-src ${frameSrc}`,
+    `base-uri ${baseUri}`,
+    "object-src 'none'",
+    "form-action 'none'",
+  ].join('; ');
+}
+app.get('/mcp-apps/:app_id', async (req, res) => {
+  const appId = req.params.app_id;
+  if (!isSafeAppId(appId)) {
+    return res.status(400).json({ error: 'invalid_app_id', detail: 'Must match /^[a-z0-9][a-z0-9-_]*$/' });
+  }
+  const htmlPath = APP_ROOTS[appId];
+  if (!htmlPath) {
+    return res.status(404).json({ error: 'app_not_found', detail: `No app registered for "${appId}". Known: ${Object.keys(APP_ROOTS).join(', ')}` });
+  }
+  try {
+    const fs = await import('node:fs/promises');
+    const path = await import('node:path');
+    const [html, manifestRaw] = await Promise.all([
+      fs.readFile(htmlPath, 'utf8'),
+      APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], 'utf8').catch(() => '{}') : Promise.resolve('{}'),
+    ]);
+    const manifest = JSON.parse(manifestRaw || '{}');
+    res.status(200);
+    res.setHeader('Content-Type', 'text/html;profile=mcp-app; charset=utf-8');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Cache-Control', 'private, max-age=60');
+    res.setHeader('Content-Security-Policy', buildCspFromManifest(manifest));
+    res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
+    res.send(html);
+  } catch (error) {
+    console.error('mcp-app-serve-error', { appId, error: error.message });
+    res.status(500).json({ error: 'app_serve_failed' });
+  }
+});
+
 // ── Governance Card API ─────────────────────────────────────────────────────
 // Returns the live model_governance_card from the arifOS-model-registry spine.
 // Consumed by AAA Cockpit AgentModelPanel and A-FORGE pre-execution gate.
