@@ -777,6 +777,79 @@
           "outputModes": ["application/json"]
         }
       ]
+    },
+    {
+      "id": "GEOX",
+      "name": "GEOX — Governed Earth Intelligence",
+      "description": "Earth Intelligence organ of the arifOS federation. 37 canonical MCP tools across seismic, petrophysics, basin analysis, prospect evaluation, sequence stratigraphy, and Vision V1. Evidence-only organ — never a policy judge. Every claim carries physics provenance (physics_manifest_hash), uncertainty bands, and F1-F13 constitutional governance.",
+      "version": "v2026.06.05",
+      "url": "https://geox.arif-fazil.com",
+      "provider": {
+        "organization": "arifOS by Muhammad Arif bin Fazil",
+        "url": "https://arif-fazil.com"
+      },
+      "protocolVersion": "1.0.1",
+      "documentationUrl": "https://geox.arif-fazil.com/docs",
+      "capabilities": {
+        "streaming": true,
+        "pushNotifications": false,
+        "stateTransitionHistory": true
+      },
+      "securitySchemes": {},
+      "security": [],
+      "defaultInputModes": ["application/json"],
+      "defaultOutputModes": ["application/json"],
+      "mcp_endpoint": "https://geox.arif-fazil.com/mcp",
+      "skills": [
+        {
+          "id": "geox-data-ingest",
+          "name": "Data Ingest & QC",
+          "description": "LAS, CSV, Parquet, SEG-Y ingestion with automatic format detection, curve standardisation, unit normalisation, and multi-pass quality control.",
+          "tags": ["ingest", "LAS", "SEG-Y", "QC", "well-data", "seismic"]
+        },
+        {
+          "id": "geox-seismic-physics",
+          "name": "Seismic Physics & Attribute Computation",
+          "description": "Forward modelling, well-tie correlation, time-depth anchoring, anomalous contrast detection, and attribute computation (amplitude, variance, sweetness, coherence, envelope, frequency average). 6 attributes in registry.",
+          "tags": ["seismic", "synthetic", "well-tie", "attribute", "AVO", "physics"]
+        },
+        {
+          "id": "geox-petrophysics",
+          "name": "Subsurface Petrophysics & Candidates",
+          "description": "Ensemble subsurface generation: Vsh, porosity, saturation, net pay, permeability, lithology classification, GR motif analysis. Evidence-gated: refuses to appraise without data.",
+          "tags": ["petrophysics", "Vsh", "porosity", "saturation", "net-pay", "lithology"]
+        },
+        {
+          "id": "geox-basin-prospect",
+          "name": "Basin & Prospect Evaluation",
+          "description": "Basin profile retrieval, petroleum system analysis, prospect volumetrics (P10/P50/P90), multi-mode evaluation (screen/appraise/develop) with evidence gating and 888_HOLD for irreversible seals.",
+          "tags": ["basin", "prospect", "volumetrics", "POS", "risk"]
+        },
+        {
+          "id": "geox-claim-engine",
+          "name": "Claim Engine — Structured Interpretations",
+          "description": "Create, validate, challenge, and seal structured Earth interpretation claims. Full provenance chain with FACT/INTERPRETATION/SPECULATION truth classes. Claims route through arifOS for constitutional sealing.",
+          "tags": ["claim", "interpretation", "provenance", "sealing"]
+        },
+        {
+          "id": "geox-horizon-contrast",
+          "name": "Horizon Contrast — ToAC Pipeline",
+          "description": "Multi-attribute horizon contrast surface pipeline. Attention-weighted fusion of amplitude, coherence, frequency, phase, curvature. Geological query templates (unconformity, flooding surface, channel, fault zone).",
+          "tags": ["horizon", "contrast", "attention", "ToAC", "multi-attribute"]
+        },
+        {
+          "id": "geox-vision-v1",
+          "name": "Vision V1 — Perceptual Inventory (Layer 1)",
+          "description": "VLM-based seismic section interpretation. Perceptual inventory, MiniMax inference, AC_Risk scoring, and calibration harness. BETA: outputs tagged with backend source; never reaches SEAL without physics validation.",
+          "tags": ["vision", "VLM", "perceptual", "seismic-interpretation", "BETA"]
+        },
+        {
+          "id": "geox-sequence-stratigraphy",
+          "name": "Sequence Stratigraphy",
+          "description": "Single-well and multi-well sequence stratigraphy: GR binning, package building, systems tract interpretation, and section correlation.",
+          "tags": ["sequence", "stratigraphy", "correlation", "well-correlation"]
+        }
+      ]
     }
   ]
 }
