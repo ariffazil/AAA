@@ -334,6 +334,8 @@ TARGET_STATE (planned, HOLD):
 
 ## EUREKA 17: F14 Autonomy Clause Was Buried
 
+> ⚠️ **HISTORICAL NOTE (2026-06-13):** F14 is **DEAD as a constitutional floor** per Sovereign Ruling. Any "F14" reference in this EUREKA is a historical label only. Autonomy clauses are now governed by F1 (AMANAH), F2 (TRUTH), F3 (AUDITABILITY), and F13 (SOVEREIGN), not by a 14th floor.
+
 **OLD:** Mentioned "F14 SOVEREIGN (Arif)" in a status line but the actual
 F14 clause — "once intent is given, system runs until halted" — was absent.
 
