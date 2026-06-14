@@ -15,7 +15,7 @@
 
 > **AAA is the control plane for the arifOS Federation — the cockpit where the human operator sees every agent, every verdict, and every sealed decision. It routes tasks, manages the A2A mesh, queues approvals, and displays governed state. It is the parliament and the air traffic control tower — never the judge, never the executor, never the constitution.**
 
-[![A2A Protocol](https://img.shields.io/badge/A2A-v0.3.0-8b5cf6)](a2a-server/)
+[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.0-8b5cf6)](a2a-server/)
 [![Node](https://img.shields.io/badge/node-22-339933?logo=node.js)](package.json)
 [![React](https://img.shields.io/badge/react-19-61DAFB?logo=react)](package.json)
 [![TypeScript](https://img.shields.io/badge/ts-6.0-3178c6?logo=typescript)](package.json)
@@ -63,7 +63,7 @@ DITEMPA BUKAN DIBERI — Control is forged, not given.
 │   │ F1-F13   │            │ builds,  │            │ GEOX     │          │
 │   │ 888-APEX │            │ deploys, │            │ WEALTH   │          │
 │   │ VAULT999 │            │ forges   │            │ WELL     │          │
-│   │ Port 8088│            │ Port 7071│            │8081/18082│          │
+│   │ Port 8088│            │ Port 7071│            │8081/18082/18083│    │
 │   └──────────┘            └──────────┘            └──────────┘          │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
@@ -126,7 +126,7 @@ npm run validate:aaa               # registry consistency + card validity
 
 # Health check
 curl -s http://localhost:3001/health | python3 -m json.tool
-# → {"status":"healthy","protocol":"A2A","version":"0.3.0","agents":5}
+# → {"status":"healthy","protocol":"A2A","version":"1.0.0","agents":5}
 
 # A2A conformance test
 npm run a2a:conformance
@@ -332,7 +332,7 @@ Every agent in the AAA registry follows a four-stage lifecycle. The cockpit trac
 | Endpoint | Method | Purpose |
 |----------|--------|---------|
 | `/health` | GET | Liveness probe (systemd health check) |
-| `/.well-known/agent-card.json` | GET | A2A agent discovery (v0.3.0) |
+| `/.well-known/agent-card.json` | GET | A2A agent discovery (v1.0.0) |
 | `/a2a/agents.json` | GET | HEXAGON agent registry |
 | `/a2a/tasks` | POST | Submit A2A task for routing |
 | `/a2a/tasks/:id` | GET | Check task status |
@@ -406,7 +406,7 @@ AAA/
 │   ├── App.tsx                       # Root + hash router
 │   ├── Cockpit.tsx                   # Main dashboard — live floor grid, mission intake
 │   ├── main.tsx                      # React entry (+ webmcp init)
-│   ├── gateway/                      # A2A v0.3.0 TypeScript server + AREP types
+│   ├── gateway/                      # A2A v1.0.0 TypeScript server + AREP types
 │   │   ├── server.ts                 # Dev A2A gateway (tsx)
 │   │   ├── deliberation.ts           # 888-judgment deliberation (absorbed from APEX)
 │   │   └── arep-types.ts             # AREP TypeScript definitions
@@ -493,7 +493,7 @@ AAA/
 │
 ├── public/                           # Static-served assets (mirrored to dist/)
 │   └── a2a/                          # Live A2A surface
-│       ├── agent-card.json           # Canonical A2A card (protocol_version 0.3.0)
+│       ├── agent-card.json           # Canonical A2A card (protocol_version 1.0.0)
 │       ├── agents.json               # Live runtime agent registry
 │       └── status.json               # Gateway health
 │
@@ -574,7 +574,7 @@ The Vault Feed shows recent VAULT999 seals with their Merkle chain verification.
 
 ## 11. For AI Agents
 
-### A2A Protocol v0.3.0
+### A2A Protocol v1.0.0
 
 AAA implements the A2A (Agent-to-Agent) protocol for federation communication. Every agent in the registry has an A2A agent card defining its capabilities, endpoints, and permissions.
 
@@ -620,7 +620,7 @@ Every agent carries an A2A agent card. These are the canonical format (v1.0.1 sp
 {
   "id": "333-AGI",
   "class": "AGI",
-  "protocol_version": "0.3.0",
+  "protocol_version": "1.0.0",
   "capabilities": {
     "skills": ["arifos-reason", "geox-interpret", "wealth-compute"],
     "defaultInputModes": ["text", "structured"],
@@ -683,7 +683,7 @@ AAA is the control plane for the **Adat Agentik** civilisational model — a nor
 | **Build-only frontend** | React app is statically built; no SSR, no backend rendering | Use `npm run build` → serve `dist/` |
 | **APEX is decommissioned** | Original APEX repo is archived; deliberation lives in `a2a-server/` | See `src/gateway/deliberation.ts` |
 | **No domain calculations** | AAA routes to GEOX/WEALTH/WELL but never computes | Trust the domain organs for evidence |
-| **A2A protocol is young** | v0.3.0 — evolving spec, breaking changes possible | Pin to agent card protocol_version |
+| **A2A protocol** | v1.0.0 — ratified federation protocol | Pin to agent card protocol_version |
 | **Single VPS** | No high availability; cockpit goes down if VPS goes down | Monitored by systemd auto-restart |
 
 ---
@@ -692,13 +692,13 @@ AAA is the control plane for the **Adat Agentik** civilisational model — a nor
 
 | Organ | Repository | Port | Role | AAA Relationship |
 |-------|-----------|------|------|-----------------|
-| **arifOS** | [ariffazil/arifOS](https://github.com/ariffazil/arifOS) | 8088 | Constitutional kernel — F1-F13, 888_JUDGE, VAULT999 | AAA **displays** arifOS verdicts, never issues them |
+| **arifOS** | [ariffazil/arifos](https://github.com/ariffazil/arifos) | 8088 | Constitutional kernel — F1-F13, 888_JUDGE, VAULT999 | AAA **displays** arifOS verdicts, never issues them |
 | **A-FORGE** | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) | 7071 | Execution shell — builds, deploys, forges | AAA **routes** tasks to A-FORGE, never executes |
 | **GEOX** | [ariffazil/geox](https://github.com/ariffazil/geox) | 8081 | Earth intelligence — petrophysics, seismic | AAA **displays** GEOX evidence, never interprets |
 | **WEALTH** | [ariffazil/wealth](https://github.com/ariffazil/wealth) | 18082 | Capital intelligence — NPV, IRR, EMV | AAA **displays** WEALTH scores, never allocates |
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | 18083 | Human readiness — vitality, substrate | AAA **displays** WELL state (REFLECT_ONLY) |
 | **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | 443 | Public surfaces, static sites | AAA routes aaa.arif-fazil.com |
-| **APEX** | [ariffazil/APEX](https://github.com/ariffazil/APEX) | 3002 | Legacy verdict engine (decommissioned) | Absorbed into AAA `a2a-server/` |
+| **APEX** | [ariffazil/APEX](https://github.com/ariffazil/APEX) | 3002 | Legacy health probe — deliberation moved to AAA `a2a-server/` | Absorbed into AAA `a2a-server/` |
 
 > **Canonical authority chain:** arifOS judges → AAA displays/routes → A-FORGE executes → Organs witness → Arif ratifies.
 
@@ -747,7 +747,7 @@ systemctl restart aaa-a2a.service
 
 # Verify
 curl -s http://localhost:3001/health | python3 -m json.tool
-# Expected: {"status":"healthy","protocol":"A2A","version":"0.3.0"}
+# Expected: {"status":"healthy","protocol":"A2A","version":"1.0.0"}
 
 # Check public endpoint
 curl -s https://aaa.arif-fazil.com/.well-known/agent-card.json | python3 -m json.tool
@@ -802,7 +802,7 @@ Full GENESIS chain expansion pending F13 sovereign ratification.
 │  AAA — FEDERATION CONTROL PLANE                                 │
 ├─────────────────────────────────────────────────────────────────┤
 │  Port:      3001 (A2A gateway)                                  │
-│  Protocol:  A2A v0.3.0                                          │
+│  Protocol:  A2A v1.0.0                                          │
 │  Frontend:  React 19 + TypeScript 6 + Vite 8 + Tailwind 4      │
 │  Backend:   Express 4.x (a2a-server/)                           │
 │  UI:        shadcn/ui (50+ Radix primitives)                    │

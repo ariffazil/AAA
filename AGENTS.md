@@ -33,7 +33,7 @@ Arif. This is the **AAA** organ of the arifOS federation — the Control Plane A
 The human-facing control plane and A2A agent gateway for the arifOS Federation.
 AAA provides:
 - **React 19 dashboard** (Cockpit) — constitutional floors, domain health, operator tasks
-- **A2A v0.3.0 TypeScript server** — Agent-to-Agent mesh protocol (port 3001) — *canonical spec per public agent card*
+- **A2A v1.0.0 TypeScript server** — Agent-to-Agent mesh protocol (port 3001) — *canonical spec per public agent card*
 - **shadcn/ui component library** — 50+ Radix + Tailwind primitives
 - **AI chat panel** — Ollama / arifOS / OpenRouter client
 
@@ -41,7 +41,7 @@ AAA provides:
 |-----------|-------|
 | **Framework** | React 19, TypeScript ~6.0, Vite 8, Tailwind 4 |
 | **MCP Protocol** | v1.0.0-FORGED |
-| **A2A Protocol** | v0.3.0 (canonical spec — see `public/a2a/agent-card.json`) |
+| **A2A Protocol** | v1.0.0 (canonical spec — see `public/a2a/agent-card.json`) |
 | **A2A Server** | Express 4.x, TypeScript, port 3001 |
 | **Build** | `npm run build` → `dist/` |
 | **Path Alias** | `@/` → `src/` |
@@ -56,7 +56,7 @@ AAA/
 │   ├── App.tsx           # Root component (hash router)
 │   ├── Cockpit.tsx       # Main dashboard
 │   ├── ai/               # AI chat panel + client
-│   ├── gateway/          # A2A v0.3.0 TypeScript server
+│   ├── gateway/          # A2A v1.0.0 TypeScript server
 │   │   └── deliberation.ts  # 888-judgment deliberation (absorbed from APEX)
 │   ├── components/ui/    # shadcn/ui primitives (50+)
 │   ├── adapter/          # GovernanceAdapter → A-FORGE /sense
@@ -166,7 +166,7 @@ AAA is the **interface layer**, not the law layer. It routes intent to A-FORGE, 
 
 | Node | Repository | Role |
 |---|---|---|
-| Constitutional Kernel | ariffazil/arifOS | F1-F13, 888_JUDGE, 999_VAULT |
+| Constitutional Kernel | ariffazil/arifos | F1-F13, 888_JUDGE, 999_VAULT |
 | Execution Engine | ariffazil/A-FORGE | Build, deploy, forge, code-mode |
 | Control Plane | ariffazil/AAA | This repo — agent cards, A2A, cockpit |
 | Earth Intelligence | ariffazil/geox | Geoscience, petrophysics |
@@ -190,7 +190,7 @@ AAA is the **interface layer**, not the law layer. It routes intent to A-FORGE, 
 
 ## HEXAGON (Constitutional Agent Layer)
 
-The 6-agent constitutional architecture (HEXAGON, formerly PENTAGON) sits **above** the 7-organ runtime topology. Each HEXAGON agent maps to one or more physical organs:
+The 5-agent constitutional architecture (HEXAGON, formerly PENTAGON) sits **above** the 7-organ runtime topology. Each HEXAGON agent maps to one or more physical organs:
 
 | ID | Class | Ring | Skills | Host Organs |
 |---|---|---|---|---|
@@ -202,15 +202,15 @@ The 6-agent constitutional architecture (HEXAGON, formerly PENTAGON) sits **abov
 
 The 10-3-2 ratio encodes the truth: **thinking is cheap, memory is hard, judgment is rare.**
 
-A2A v1.0.1 spec compliance at `https://aaa.arif-fazil.com/a2a/agents.json`.
+A2A v1.0.0 spec compliance at `https://aaa.arif-fazil.com/a2a/agents.json`.
 
 ## Canonical Authority Notice
 
 AAA is the control plane / cockpit — not a constitutional authority.
-The sovereign constitution and F1–F13 floors live in `ariffazil/arifOS`.
+The sovereign constitution and F1–F13 floors live in `ariffazil/arifos`.
 888_JUDGE, 999_VAULT, and constitutional law are not owned here.
 
-For live federation status, see `ariffazil/arifOS/FEDERATION_STATUS.md`.
+For live federation status, see `ariffazil/arifos/FEDERATION_STATUS.md`.
 
 ## AAA Namespace Disambiguation
 
@@ -261,9 +261,9 @@ next_action: AAA_HF card expansion (item 3) + PR3 mission object (item 2)
 
 ## Constitution
 
-The 13 Constitutional Laws (L01–L13) live in **one canonical file**:
+The 13 Constitutional Floors (F1–F13; legacy documents may render them as L01–L13) live in **one canonical file**:
 
 → [arifOS/static/arifos/theory/000/000_CONSTITUTION.md](../../arifOS/static/arifos/theory/000/000_CONSTITUTION.md)
 
-This organ emits the **Evidence Contract** (see Appendix B of the constitution) and does **not** self-judge. arifOS alone reads the envelope and applies L01–L13.
+This organ emits the **Evidence Contract** (see Appendix B of the constitution) and does **not** self-judge. arifOS alone reads the envelope and applies F1–F13.
 
