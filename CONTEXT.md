@@ -1,7 +1,7 @@
 # CONTEXT.md — AAA (Control Plane)
 
 > **Organ:** AAA | **Port:** 3001 | **Repo:** `ariffazil/AAA`
-> **Kernel SoT:** `ariffazil/arifOS` (FEDERATION_CONTRACT.md + GENESIS/000)
+> **Kernel SoT:** `ariffazil/arifos` (FEDERATION_CONTRACT.md + GENESIS/000)
 > **Last Updated:** 2026-06-12
 
 ## Live State
