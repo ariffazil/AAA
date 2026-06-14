@@ -24,6 +24,13 @@ const {
 // Agent Lifecycle State Machine (GAP-B: wired 2026-06-09 by Ω)
 const { lifecycleManager, AgentState } = require('./agent_lifecycle');
 
+// Pre-Forge Constitutional Gate Bridge (forged 2026-06-14)
+const {
+  registerModelOutput,
+  registerEarthMeasurement,
+  registerHuman,
+} = require('./preforge_bridge');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -2042,6 +2049,10 @@ app.post(['/api/message/send'], createEnvelopeValidator(), async (req, res) => {
     };
     await taskStore.set(taskId, task);
     logEvent('TASK_START', taskId, `Operator mission: "${(message.parts?.[0]?.text || '').slice(0, 60)}"`);
+
+    // ── Register witness: human sovereign (always present) ──
+    const sid = params.session_id || params.metadata?.session_id;
+    if (sid) registerHuman(sid);
 
     executeTask(taskId, contextId, message, params.agent_id || null, params).catch(err => {
       logEvent('ERROR', taskId, `Mission failed: ${err.message}`);

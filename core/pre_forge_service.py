@@ -173,6 +173,10 @@ class PreForgeHandler(BaseHTTPRequestHandler):
             self._handle_earth_register()
         elif self.path == "/model":
             self._handle_model_register()
+        elif self.path == "/citation":
+            self._handle_citation_create()
+        elif self.path == "/provenance/batch":
+            self._handle_provenance_batch()
         else:
             self._send_json({"error": "not found"}, 404)
 
@@ -193,12 +197,12 @@ class PreForgeHandler(BaseHTTPRequestHandler):
                 if isinstance(prov_data, dict):
                     known_provenances[marker] = CitationProvenance(
                         citation_text=prov_data.get("citation_text", marker),
-                        source_model_id=prov_data.get("source_model_id", ""),
-                        tool_name=prov_data.get("tool_name", ""),
-                        query_id=prov_data.get("query_id", ""),
-                        retrieval_timestamp=prov_data.get("retrieval_timestamp", ""),
-                        result_position=prov_data.get("result_position", -1),
-                        source_url=prov_data.get("source_url", ""),
+                        source_model_id=str(prov_data.get("source_model_id", "")),
+                        tool_name=str(prov_data.get("tool_name", "")),
+                        query_id=str(prov_data.get("query_id", "")),
+                        retrieval_timestamp=str(prov_data.get("retrieval_timestamp", "")),
+                        result_position=int(prov_data.get("result_position", -1)),
+                        source_url=str(prov_data.get("source_url", "")),
                     )
 
             # Get or create session witness state
@@ -292,6 +296,76 @@ class PreForgeHandler(BaseHTTPRequestHandler):
             is_primary = body.get("is_primary", True)
             result = register_model_output(session_id, model_id, is_primary)
             self._send_json(result)
+        except Exception as e:
+            self._send_json({"ok": False, "error": str(e)}, 500)
+
+    def _handle_citation_create(self):
+        """POST /citation — Create a CitationProvenance record from a search result."""
+        try:
+            body = self._read_body()
+            prov = CitationProvenance(
+                citation_text=body.get("citation_text", ""),
+                source_model_id=body.get("source_model_id", "deepseek-v4-pro"),
+                tool_name=body.get("tool_name", ""),
+                query_id=body.get("query_id", ""),
+                retrieval_timestamp=body.get("retrieval_timestamp", datetime.now(timezone.utc).isoformat()),
+                result_position=body.get("result_position", -1),
+                source_url=body.get("source_url", ""),
+            )
+            self._send_json({
+                "ok": True,
+                "provenance": {
+                    "marker": prov.citation_text,
+                    "classification": prov.classify(),
+                    "completeness": round(prov.completeness_score(), 3),
+                    "provenance_hash": prov.provenance_hash()[:12],
+                    "url": prov.source_url,
+                },
+            })
+        except Exception as e:
+            self._send_json({"ok": False, "error": str(e)}, 500)
+
+    def _handle_provenance_batch(self):
+        """POST /provenance/batch — Create multiple CitationProvenance records from search results."""
+        try:
+            body = self._read_body()
+            results = body.get("results", [])
+            tool_name = body.get("tool_name", "unknown")
+            query = body.get("query", "")
+            model_id = body.get("model_id", "deepseek-v4-pro")
+            timestamp = datetime.now(timezone.utc).isoformat()
+
+            provenances = {}
+            for i, result in enumerate(results):
+                url = result.get("url", result.get("link", ""))
+                title = result.get("title", result.get("snippet", ""))
+                marker = f"[ref:{i + 1}]"
+                prov = CitationProvenance(
+                    citation_text=marker,
+                    source_model_id=model_id,
+                    tool_name=tool_name,
+                    query_id=query,
+                    retrieval_timestamp=timestamp,
+                    result_position=i + 1,
+                    source_url=url,
+                )
+                provenances[marker] = {
+                    "marker": marker,
+                    "classification": prov.classify(),
+                    "completeness": round(prov.completeness_score(), 3),
+                    "provenance_hash": prov.provenance_hash()[:12],
+                    "url": url,
+                    "title": title,
+                }
+
+            self._send_json({
+                "ok": True,
+                "count": len(provenances),
+                "provenances": provenances,
+                "query": query,
+                "tool": tool_name,
+                "timestamp": timestamp,
+            })
         except Exception as e:
             self._send_json({"ok": False, "error": str(e)}, 500)
 
