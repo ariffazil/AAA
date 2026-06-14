@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RealityLedgerEvent",
+  "description": "Schema for Reality Ledger — the prediction-vs-outcome comparison layer. VAULT999 answers 'what did we decide?'; Reality Ledger answers 'did reality agree?'",
+  "type": "object",
+  "required": [
+    "id", "timestamp", "actor", "intent", "action_class",
+    "prediction", "arifos_verdict", "vault999_receipt"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event ID (UUID v4)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the action was planned"
+    },
+    "actor": {
+      "type": "string",
+      "description": "Who proposed the action (agent_id or human_id)"
+    },
+    "intent": {
+      "type": "string",
+      "description": "What was the goal in natural language"
+    },
+    "action_class": {
+      "type": "string",
+      "enum": ["observe", "propose", "mutate", "deploy", "communicate", "allocate"],
+      "description": "Classification of the action"
+    },
+    "organs_consulted": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Which domain witnesses were called"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What evidence grounded the decision"
+    },
+    "prediction": {
+      "type": "object",
+      "required": ["expected_outcome", "confidence"],
+      "properties": {
+        "expected_outcome": {
+          "type": "string",
+          "description": "What we predicted would happen"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Confidence in the prediction (0.0–1.0, capped at 0.90 per F7)"
+        },
+        "uncertainty": {
+          "type": "string",
+          "enum": ["low", "medium", "high"],
+          "description": "Subjective uncertainty estimate"
+        },
+        "failure_modes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "What could go wrong"
+        },
+        "quantitative_bounds": {
+          "type": "object",
+          "properties": {
+            "p10": { "type": "number" },
+            "p50": { "type": "number" },
+            "p90": { "type": "number" },
+            "unit": { "type": "string" }
+          },
+          "description": "Optional quantitative prediction bounds"
+        }
+      }
+    },
+    "arifos_verdict": {
+      "type": "object",
+      "required": ["verdict"],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": ["SEAL", "SABAR", "HOLD", "VOID"],
+          "description": "Constitutional verdict from arifOS 888 JUDGE"
+        },
+        "floors_triggered": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Which F-floors were evaluated"
+        },
+        "lease_id": {
+          "type": "string",
+          "description": "The lease under which action occurred"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "executor": {
+          "type": "string",
+          "description": "A-FORGE | langgraph | openai_sdk | autogen | crewai | human"
+        },
+        "command_or_action": {
+          "type": "string",
+          "description": "Exact action taken (command, API call, file mutation)"
+        },
+        "rollback": {
+          "type": "string",
+          "description": "How to reverse if needed"
+        },
+        "executed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the action was actually executed"
+        }
+      }
+    },
+    "observed_outcome": {
+      "type": "object",
+      "description": "Populated after reality feedback is observed",
+      "properties": {
+        "result": {
+          "type": "string",
+          "description": "What actually happened"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When result was observed"
+        },
+        "delta_from_prediction": {
+          "type": "string",
+          "description": "Narrative of how reality differed from prediction"
+        },
+        "quantitative_delta": {
+          "type": "object",
+          "properties": {
+            "actual_value": { "type": "number" },
+            "predicted_value": { "type": "number" },
+            "error_pct": { "type": "number" },
+            "within_bounds": { "type": "boolean" }
+          },
+          "description": "Optional quantitative prediction error"
+        },
+        "evidence_urls": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Sources confirming the observed outcome"
+        }
+      }
+    },
+    "lesson": {
+      "type": "object",
+      "description": "What the system should learn from this event",
+      "properties": {
+        "what_changed": {
+          "type": "string",
+          "description": "What the system should learn"
+        },
+        "memory_update": {
+          "type": "string",
+          "description": "What to update in L3/L4/L5 memory"
+        },
+        "future_rule": {
+          "type": "string",
+          "description": "New invariant or rule if applicable"
+        },
+        "accuracy_score": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "0.0 = completely wrong, 1.0 = perfectly predicted"
+        }
+      }
+    },
+    "vault999_receipt": {
+      "type": "string",
+      "description": "Link to the sealed audit record in VAULT999"
+    },
+    "supersedes": {
+      "type": "string",
+      "description": "Optional: ID of the Reality Ledger event this supersedes (for iterative learning)"
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Free-form tags for querying"
+    }
+  }
+}

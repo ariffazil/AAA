@@ -16,6 +16,7 @@ import AutonomyBands from './components/cockpit/AutonomyBands';
 import RealityConsole from './components/cockpit/RealityConsole';
 import HermesCitizenCard from './components/cockpit/HermesCitizenCard';
 import AgentModelPanel, { type ModelGovernanceCard } from './components/cockpit/AgentModelPanel';
+import MCPAppsPanel from './components/MCPAppsPanel';
 
 type OperatorTask = {
   id: string;
@@ -818,6 +819,9 @@ export default function Cockpit() {
             ))}
           </div>
         </section>
+
+        {/* ── MCP APPS (SEP-1865 Interactive UIs) ── */}
+        <MCPAppsPanel />
 
         {/* ── AGENT MODEL IDENTITY (Governance Spine) ── */}
         <AgentModelPanel

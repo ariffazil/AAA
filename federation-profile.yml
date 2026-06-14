@@ -1,0 +1,76 @@
+# federation-profile.yml
+# arifOS Federation Config & Trust Graph
+version: "2026.06.14"
+
+node:
+  id: "node-alpha-1"
+  organization: "arifOS Core Federation"
+  trust_level: "sovereign" # sovereign, federated, or untrusted
+
+organs:
+  # The Constitutional Kernel
+  arifOS:
+    enabled: true
+    port: 8088
+    role: "kernel"
+    enforce_floors: ["F1", "F2", "F3", "F4", "F8", "F11", "F13"]
+
+  # The Control Plane
+  AAA:
+    enabled: true
+    port: 3001
+    role: "mesh-gateway"
+    a2a_endpoint: "nats://localhost:4222"
+
+  # Earth Intelligence
+  GEOX:
+    enabled: true
+    port: 8081
+    role: "evidence-organ"
+  
+  # Capital Intelligence
+  WEALTH:
+    enabled: true
+    port: 18082
+    role: "evidence-organ"
+    requires_approval: true # Operations here default to 888_HOLD
+  
+  # Vitality Intelligence
+  WELL:
+    enabled: true
+    port: 18083
+    role: "evidence-organ"
+
+trust_graph:
+  allowed_external_nodes:
+    - id: "node-beta-remote"
+      url: "wss://beta.arifos.network/a2a"
+      max_risk_class: "R1" # Soft approvals only over the wire
+      require_tls: true
+
+risk_classes:
+  # R0: read-only, local only
+  R0:
+    requires_witnesses: 0
+    requires_human_brake: false
+  # R1: local mutation, low impact
+  R1:
+    requires_witnesses: 1
+    requires_human_brake: false
+  # R2: federated read, moderate local mutation
+  R2:
+    requires_witnesses: 1
+    requires_human_brake: false
+  # R3: federated mutation, ledger altering
+  R3:
+    requires_witnesses: 2
+    requires_human_brake: true
+  # R4: irreversible, constitutional change, financial execute
+  R4:
+    requires_witnesses: 3
+    requires_human_brake: true
+
+default_policy:
+  mode: "safe-default"
+  # Any action classified >= R3 requires explicit F13 / AAA approval
+  human_brake_threshold: "R3" 

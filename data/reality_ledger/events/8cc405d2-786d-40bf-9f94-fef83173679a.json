@@ -1,0 +1,29 @@
+{
+  "id": "8cc405d2-786d-40bf-9f94-fef83173679a",
+  "timestamp": "2026-06-14T17:00:11.154405+00:00",
+  "actor": "forge-reality-test",
+  "intent": "Test: Reality Ledger \u2192 VAULT999 pipeline",
+  "action_class": "observe",
+  "organs_consulted": [],
+  "evidence_refs": [],
+  "prediction": {
+    "expected_outcome": "Event created and sealed to VAULT999",
+    "confidence": 0.85,
+    "uncertainty": "medium",
+    "failure_modes": [
+      "Kernel unreachable",
+      "VAULT999 gated"
+    ]
+  },
+  "arifos_verdict": {
+    "verdict": "SEAL",
+    "floors_triggered": [],
+    "lease_id": ""
+  },
+  "execution": {},
+  "observed_outcome": {},
+  "lesson": {},
+  "vault999_receipt": "",
+  "supersedes": null,
+  "tags": []
+}

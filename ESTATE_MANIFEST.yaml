@@ -1,0 +1,187 @@
+# ESTATE MANIFEST — arifOS Federation Source of Truth
+# Forged: 2026-06-14 | Session: SEAL-4863332031ba40ca
+# DITEMPA BUKAN DIBERI
+
+federation:
+  name: arifOS Federation
+  sovereign: Muhammad Arif bin Fazil
+  sovereign_id: F13
+  doctrine: DITEMPA BUKAN DIBERI
+  last_verified: 2026-06-14
+
+organs:
+  arifOS:
+    role: constitutional_kernel
+    category: judge
+    port: 8088
+    repo: /root/arifOS
+    remote: git@github.com:ariffazil/arifos.git
+    branch: main
+    tools: 13
+    status: healthy
+    may: [judge, issue_lease, seal_vault, enforce_floors]
+    may_not: [execute, witness_earth, witness_capital, witness_human]
+
+  GEOX:
+    role: earth_witness
+    category: witness
+    port: 8081
+    repo: /root/geox
+    remote: git@github.com:ariffazil/geox.git
+    branch: main
+    tools: 40
+    status: healthy
+    may: [witness_earth, interpret_subsurface, produce_evidence]
+    may_not: [judge, authorize_extraction, issue_certainty_without_uncertainty]
+
+  WEALTH:
+    role: capital_witness
+    category: witness
+    port: 18082
+    repo: /root/WEALTH
+    remote: git@github.com:ariffazil/wealth.git
+    branch: main
+    tools: 20
+    status: healthy
+    may: [witness_capital, value_assets, assess_risk]
+    may_not: [judge, allocate_funds, show_upside_without_downside]
+
+  WELL:
+    role: human_witness
+    category: witness
+    port: 18083
+    repo: /root/WELL
+    remote: git@github.com:ariffazil/well.git
+    branch: main
+    tools: 18
+    status: healthy
+    may: [witness_human, assess_readiness, estimate_load]
+    may_not: [judge, diagnose, override_f13, label_human_worth]
+
+  AAA:
+    role: cockpit
+    category: interface
+    port: 3001
+    repo: /root/AAA
+    remote: git@github.com:ariffazil/AAA.git
+    branch: main
+    tools: attested_via_a2a
+    status: healthy
+    may: [display, expose_hold, show_receipts, human_veto]
+    may_not: [judge, issue_verdicts, conceal_state]
+
+  A-FORGE:
+    role: execution_hand
+    category: hand
+    port: 7071
+    repo: /root/A-FORGE
+    remote: git@github.com:ariffazil/A-FORGE.git
+    branch: main
+    tools: attested_via_mcp
+    status: healthy
+    may: [execute_approved, build, deploy_with_seal]
+    may_not: [self_authorize, judge, mutate_floors_without_f13]
+
+  VAULT999:
+    role: immutable_memory
+    category: memory
+    port: 8100
+    repo: /root/arifOS/VAULT999
+    remote: embedded_in_arifOS
+    branch: n/a
+    tools: 0
+    status: healthy
+    may: [seal, append, verify_chain]
+    may_not: [rewrite, delete, bypass_arifos]
+
+external_adapters:
+  langgraph:
+    status: not_built
+    required_by: sprint_4
+    pattern: lease_before_run
+  openai_agents_sdk:
+    status: not_built
+    required_by: sprint_4
+    pattern: guardrail_escalation
+  autogen:
+    status: not_built
+    required_by: sprint_4
+    pattern: parliament_under_constitution
+  crewai:
+    status: not_built
+    required_by: sprint_4
+    pattern: flow_gate
+
+supply_gates:
+  mcp_constitutional_gateway:
+    status: not_built
+    required_by: sprint_5
+  huggingface_import_gate:
+    status: not_built
+    required_by: sprint_5
+
+missing_layers:
+  reality_ledger:
+    status: not_built
+    priority: P0
+    sprint: 3
+    current_score: 3.5
+    target_score: 8.5
+    why: "Without comparing prediction to outcome, the system cannot learn from reality. This is the AGI-kernel gap."
+
+benchmarks:
+  floors:
+    status: not_built
+    priority: P0
+    sprint: 2
+    target_dir: benchmarks/floors/
+  organs:
+    status: not_built
+    priority: P0
+    sprint: 2
+    target_dir: benchmarks/organs/
+  external_harnesses:
+    status: not_built
+    priority: P1
+    sprint: 5
+    target_dir: benchmarks/external_harnesses/
+  reality_feedback:
+    status: not_built
+    priority: P0
+    sprint: 3
+    target_dir: benchmarks/reality_feedback/
+
+proof_contract:
+  make_prove:
+    status: not_built
+    must_include:
+      - make health
+      - make sot-check
+      - make security-audit
+      - make floor-benchmark
+      - make organ-boundary-benchmark
+      - make external-harness-benchmark
+      - make vault999-verify
+      - make reality-replay
+    outputs:
+      - reports/ARIFOS_PROOF_PACK.md
+      - reports/ARIFOS_SCORECARD.json
+      - reports/ARIFOS_SCORECARD.md
+      - reports/OPEN_HOLD_ITEMS.md
+
+reports:
+  AAA_BENCHMARK_EXTERNAL.md: forged
+  ARIFOS_GAP_CLOSURE.md: forged
+  ORGAN_AUTHORITY_MAP.md: forged
+  ESTATE_MANIFEST.yaml: forged (this file)
+  FLOOR_COVERAGE_MATRIX.md: pending
+  ARIFOS_VS_LANGGRAPH.md: pending
+  ARIFOS_VS_OPENAI_AGENTS_SDK.md: pending
+  ARIFOS_VS_AUTOGEN.md: pending
+  ARIFOS_VS_CREWAI.md: pending
+  ARIFOS_VS_MCP.md: pending
+  ARIFOS_VS_HUGGINGFACE.md: pending
+  ARIFOS_PROOF_PACK.md: pending
+  ARIFOS_SCORECARD.json: pending
+  ARIFOS_GAP_CLOSURE_REPORT.md: pending
+  REALITY_LEDGER_REPLAY.md: pending
