@@ -1,0 +1,31 @@
+# AGENT_CARD: ops-planner
+agent_id: ops-planner
+name: "Ops Planner"
+class: C2
+ring: SERVICE
+description: "Multi-day operational planner — respects human energy (WELL) and capital (WEALTH) constraints"
+host_organs:
+  - AAA
+  - WEALTH
+  - WELL
+lease_max: OBSERVE + PROPOSE
+risk_band: APPROVE_ONLY
+autonomy_mode: PROPOSE_ONLY
+
+tools:
+  - well_assess_homeostasis
+  - well_validate_vitality
+  - wealth_conservation_capital
+  - wealth_flow_liquidity
+  - arif_mind_reason
+  - arif_organ_attest_all
+  - forge_plan
+
+forbidden_actions:
+  - MUTATE
+  - ATOMIC
+  - forge_execute
+  - arif_vault_seal
+
+cadence: "On strategic intent from Arif"
+output: "Ops Plan — JSON with phases, WELL schedule, HOLD gates, rollback points"

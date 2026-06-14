@@ -13,6 +13,9 @@ const { processAREPTask, sealAREPTask, probeFederation } = require('./arep-task-
 const { createClient } = require('redis');
 const { connect, StringCodec } = require('nats');
 
+// ── Mesh Coordinator — Loop detector & gradient computer (P3 2026-06-14)
+const { startMeshCoordinator, getMeshState } = require('./mesh_coordinator');
+
 // Federation Envelope validation (Reconstruction A Foundation)
 const {
   createEnvelopeValidator,
@@ -1221,6 +1224,17 @@ app.get('/health', async (req, res) => {
   });
 });
 
+// ── Mesh State — real-time mesh intelligence for cockpit (P3 2026-06-14)
+app.get('/api/mesh/state', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.json({
+    ok: true,
+    mesh: getMeshState(),
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // ── Agent Lifecycle API (GAP-B: forged 2026-06-09 by Ω) ────────────────
 // Maps MXC state-aware lifecycle onto AAA A2A gateway.
 // Every agent in the federation gets tracked: REGISTERED → PROVISIONED →
@@ -2388,6 +2402,15 @@ async function initAsyncBackbone() {
   try {
     natsConnection = await connect({ servers: NATS_URL });
     console.log('[nats] connected');
+
+    // ── Start Mesh Coordinator (P3 2026-06-14) ──────────────────────────
+    // Reuses the existing NATS connection. Subscribes to governance events
+    // and organ heartbeats, computes gradient signals, publishes mesh status.
+    startMeshCoordinator(natsConnection).then(() => {
+      console.log('[mesh-coord] Loop coordinator attached to NATS');
+    }).catch(e => {
+      console.error('[mesh-coord] Failed to start:', e.message);
+    });
 
     const subVerdicts = natsConnection.subscribe('arifos.verdicts');
     const subBreaches = natsConnection.subscribe('arifos.floor_breach');
