@@ -498,3 +498,14 @@
 - **When:** 2026-06-14T15:18:01Z
 
 ---
+
+## [2026-06-14] seal | TREE777 999 weekly anchor (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-opencode-2026-06-14.json`
+- **Anchor receipt:** `TREE777-999-opencode-e778b6890aa836ef`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-14T15:39:01Z
+
+---

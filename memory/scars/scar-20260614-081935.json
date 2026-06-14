@@ -6,6 +6,6 @@
   "session_id": "test-session-total",
   "reason": "888_HOLD: max_tool_calls (3) reached",
   "severity": "critical",
-  "count": 2,
-  "last_seen": "2026-06-14T15:22:03.281364+00:00"
+  "count": 3,
+  "last_seen": "2026-06-14T15:38:27.228838+00:00"
 }

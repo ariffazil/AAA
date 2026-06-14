@@ -35,3 +35,7 @@ logs-claw:
 # ---------------- TUNNEL ----------------
 tunnel-check:
 	systemctl status cloudflared
+
+# Federation forge gate — entropy reducer on every push
+include /root/arifOS/scripts/forge.mk
+include /root/arifOS/scripts/security_audit.mk
