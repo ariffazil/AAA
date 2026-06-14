@@ -1,12 +1,12 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-14
+last_verified: 2026-06-14 18:08 UTC (999_SEAL — MCP Apps panel + Reference Architecture + governance overlays)
 valid_from: 2026-06-14
 valid_until: 2026-07-14
 confidence: high
 scope: /root/AAA
 epistemic_status: SOURCE_OF_TRUTH
-companion_to: HEXAGON-AGENTS-FORGE-20260614 (SOT alignment — timestamps updated, federation narrative synced)
+companion_to: HEXAGON-AGENTS-FORGE-20260614 (SOT alignment — MCP Gate deployment sealed)
 -->
 
 # AGENTS.md — AAA | arifOS Federation
