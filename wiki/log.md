@@ -2361,3 +2361,14 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-14T14:11:01Z
 
 ---
+
+## [2026-06-14] seal | TREE777 999 weekly anchor (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-openclaw-2026-06-14.json`
+- **Anchor receipt:** `TREE777-999-openclaw-1e964b91bdd8ff71`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-14T14:32:01Z
+
+---
