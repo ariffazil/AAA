@@ -293,6 +293,88 @@ class AAAGatewayExecutor {
 
 export function createApp(): express.Application {
   const app = express();
+
+// ── MCP Apps Routes ──────────────────────────────────────────────────────────
+
+const APP_ROOTS: Record<string, string> = {
+  "well-desk": "/root/geox/apps/well-desk/index.html",
+  "earth-volume": "/root/geox/apps/earth-volume/index.html",
+  "judge-console": "/root/geox/apps/judge-console/index.html"
+};
+
+const APP_MANIFESTS: Record<string, string> = {
+  "well-desk": "/root/geox/apps/well-desk/manifest.json",
+  "earth-volume": "/root/geox/apps/earth-volume/manifest.json",
+  "judge-console": "/root/geox/apps/judge-console/manifest.json"
+};
+
+function isSafeAppId(appId: string): boolean {
+  return /^[a-z0-9][a-z0-9-_]*$/.test(appId);
+}
+
+function buildCspFromManifest(manifest: any): string {
+  const csp = manifest?._meta?.ui?.csp || manifest?.csp || {};
+  const connectSrc = Array.isArray(csp.connectDomains) && csp.connectDomains.length
+    ? csp.connectDomains.join(" ")
+    : "'none'";
+  const resourceSrc = Array.isArray(csp.resourceDomains) && csp.resourceDomains.length
+    ? csp.resourceDomains.join(" ")
+    : "'self'";
+  const frameSrc = Array.isArray(csp.frameDomains) && csp.frameDomains.length
+    ? csp.frameDomains.join(" ")
+    : "'none'";
+  const baseUri = Array.isArray(csp.baseUriDomains) && csp.baseUriDomains.length
+    ? csp.baseUriDomains.join(" ")
+    : "'self'";
+
+  return [
+    "default-src 'none'",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+    "style-src 'self' 'unsafe-inline'",
+    `img-src ${resourceSrc} data:`,
+    `font-src ${resourceSrc} data:`,
+    `media-src ${resourceSrc} data:`,
+    `connect-src ${connectSrc}`,
+    `frame-src ${frameSrc}`,
+    `base-uri ${baseUri}`,
+    "object-src 'none'",
+    "form-action 'none'"
+  ].join("; ");
+}
+
+app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
+  const appId = req.params.app_id;
+
+  if (!isSafeAppId(appId)) {
+    return res.status(400).json({ error: "invalid_app_id" });
+  }
+
+  const htmlPath = APP_ROOTS[appId];
+  if (!htmlPath) {
+    return res.status(404).json({ error: "app_not_found" });
+  }
+
+  try {
+    const fs = require('node:fs/promises');
+    const [html, manifestRaw] = await Promise.all([
+      fs.readFile(htmlPath, "utf8"),
+      APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], "utf8").catch(() => "{}") : Promise.resolve("{}")
+    ]);
+
+    const manifest = JSON.parse(manifestRaw || "{}");
+
+    res.status(200);
+    res.setHeader("Content-Type", "text/html;profile=mcp-app; charset=utf-8");
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Cache-Control", "private, max-age=60");
+    res.setHeader("Content-Security-Policy", buildCspFromManifest(manifest));
+    res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+    res.send(html);
+  } catch (error) {
+    console.error("mcp-app-serve-error", { appId, error });
+    res.status(500).json({ error: "app_serve_failed" });
+  }
+});
   app.use(express.json());
 
   const taskStore = new TaskStore();

@@ -1,0 +1,98 @@
+{
+  "manifest": "TOOL_MANIFEST",
+  "federation": "arifOS",
+  "forged": "2026-06-14",
+  "session": "SEAL-4863332031ba40ca",
+  "live_attestation": {
+    "attested_at": "2026-06-14T16:47:09Z",
+    "organs": {
+      "arifOS": {
+        "role": "constitutional_kernel",
+        "category": "judge",
+        "tools": 13,
+        "status": "ALIVE",
+        "version": "v2026.05.05-SSCT",
+        "schema_hash": "sha256:12523d50c342f20c3f6adc65d59fe19eb4f08d59551ab9ba87d6ccf235a29afa",
+        "constitution_hash": "sha256:dd4f41e75f55ed38df759a1c8db1fc4680ef0307a6b0e2793bccf6540bb21506",
+        "port": 8088
+      },
+      "GEOX": {
+        "role": "earth_witness",
+        "category": "witness",
+        "tools": 40,
+        "status": "ALIVE",
+        "version": "v2026.06.05",
+        "schema_hash": "sha256:1ff0441e25786596f1988a2a29d2c1edd74e7b596816107956e0ba058900f52c",
+        "constitution_hash": "sha256:b51811b11db15aa911715316c34b4758a1e964ff1e354d1f08d5a1db60cc6f35",
+        "port": 8081
+      },
+      "WEALTH": {
+        "role": "capital_witness",
+        "category": "witness",
+        "tools": 20,
+        "status": "ALIVE",
+        "version": "2026.05.02",
+        "schema_hash": "sha256:da710b332453b38a674af3b093f2372a876d7abf22285168cb3b1564de0d9835",
+        "constitution_hash": "sha256:9e5c55b43e28478a3deeb312fffea565cdba3b38ff39242ff00b850da0e6dc64",
+        "port": 18082
+      },
+      "WELL": {
+        "role": "human_witness",
+        "category": "witness",
+        "tools": 18,
+        "status": "ALIVE",
+        "version": "2026.05.15-ΩWELL+GWELL+FEDERATION",
+        "schema_hash": "sha256:588bb2d5bbb66ea3989c18bad7b6236a9cebb9e47ed5a503e8a3ca9b77a9373d",
+        "constitution_hash": "sha256:fd21db852dfe3623c3bd943e05d032b456cd209fd385fa8e3f9e093346b2c913",
+        "port": 18083
+      }
+    },
+    "total_tools": 91,
+    "degraded_organs": [],
+    "verdict": "SEAL"
+  },
+  "external_adapters": {
+    "langgraph": {"status": "not_built", "required_by": "sprint_4", "pattern": "lease_before_run"},
+    "openai_agents_sdk": {"status": "not_built", "required_by": "sprint_4", "pattern": "guardrail_escalation"},
+    "autogen": {"status": "not_built", "required_by": "sprint_4", "pattern": "parliament_under_constitution"},
+    "crewai": {"status": "not_built", "required_by": "sprint_4", "pattern": "flow_gate"}
+  },
+  "supply_gates": {
+    "mcp_constitutional_gateway": {"status": "not_built", "required_by": "sprint_5"},
+    "huggingface_import_gate": {"status": "not_built", "required_by": "sprint_5"}
+  },
+  "missing_layers": {
+    "reality_ledger": {
+      "status": "not_built",
+      "priority": "P0",
+      "sprint": 3,
+      "current_score": 3.5,
+      "target_score": 8.5,
+      "why": "Without comparing prediction to outcome, the system cannot learn from reality. This is the AGI-kernel gap."
+    }
+  },
+  "benchmarks": {
+    "floors": {"status": "not_built", "priority": "P0", "sprint": 2},
+    "organs": {"status": "not_built", "priority": "P0", "sprint": 2},
+    "external_harnesses": {"status": "not_built", "priority": "P1", "sprint": 5},
+    "reality_feedback": {"status": "not_built", "priority": "P0", "sprint": 3}
+  },
+  "reports_status": {
+    "AAA_BENCHMARK_EXTERNAL.md": "forged",
+    "ARIFOS_GAP_CLOSURE.md": "forged",
+    "ORGAN_AUTHORITY_MAP.md": "forged",
+    "ESTATE_MANIFEST.yaml": "forged",
+    "TOOL_MANIFEST.json": "forged",
+    "FLOOR_COVERAGE_MATRIX.md": "forged",
+    "ARIFOS_VS_LANGGRAPH.md": "forging",
+    "ARIFOS_VS_OPENAI_AGENTS_SDK.md": "forging",
+    "ARIFOS_VS_AUTOGEN.md": "forging",
+    "ARIFOS_VS_CREWAI.md": "forging",
+    "ARIFOS_VS_MCP.md": "forging",
+    "ARIFOS_VS_HUGGINGFACE.md": "forging",
+    "ARIFOS_PROOF_PACK.md": "pending",
+    "ARIFOS_SCORECARD.json": "pending",
+    "ARIFOS_GAP_CLOSURE_REPORT.md": "pending",
+    "REALITY_LEDGER_REPLAY.md": "pending"
+  }
+}

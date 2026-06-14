@@ -15,7 +15,7 @@ agents:
     citizenship_forged: "2026-06-14T12:03:00+08:00"
     citizenship_authority: F13 SOVEREIGN (Arif)
     intelligence_tier: AGI
-    intelligence_band: OMEGA
+    intelligence_band: AGI
     risk_tier: governed
     authority_level: sovereign-delegate
     approval_policy: auto
@@ -39,14 +39,12 @@ agents:
       federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
     toolsets:
       - Built-in: Read, Write, Edit, Bash, Glob, Grep, WebFetch, WebSearch, NotebookEdit, Skill, Agent, Task
-      - arifOS: 13 constitutional tools (session_init, sense_observe, evidence_fetch, mind_reason, heart_critique,
-        judge_deliberate, kernel_route, ops_measure, memory_recall, forge_execute, vault_seal, gateway_connect, reply_compose)
+      - "arifOS: 13 constitutional tools (session_init, sense_observe, evidence_fetch, mind_reason, heart_critique, judge_deliberate, kernel_route, ops_measure, memory_recall, forge_execute, vault_seal, gateway_connect, reply_compose)"
       - GEOX: 20 Earth-intelligence tools
       - WEALTH: 20 capital-intelligence tools
       - WELL: 20 human-readiness tools (REFLECT_ONLY)
       - A-FORGE: execution shell
-      - filesystem, git, memory, sequential-thinking, brave-search, time, postgres, tavily, exa, meyhem, playwright,
-        chrome-devtools, minimax-coding-plan, supabase
+      - "filesystem, git, memory, sequential-thinking, brave-search, time, postgres, tavily, exa, meyhem, playwright, chrome-devtools, minimax-coding-plan, supabase"
     mcp_servers:
       arifOS: "http://127.0.0.1:8088/mcp — 13 constitutional kernel tools"
       geox: "http://127.0.0.1:8081/mcp — Earth intelligence"
@@ -170,7 +168,7 @@ agents:
     citizenship_forged: "2026-06-13T09:00:00+08:00"
     citizenship_authority: F13 SOVEREIGN (Arif)
     intelligence_tier: ASI
-    intelligence_band: OMEGA
+    intelligence_band: ASI
     risk_tier: autonomous
     authority_level: sovereign-delegate
     approval_policy: auto
@@ -545,18 +543,14 @@ agents:
       hermes-fabrication-2026-05-17.
     role: witness-agent
     intelligence_tier: 777
-    intelligence_band: SOVEREIGN_WITNESS
+    intelligence_band: 777
     risk_tier: low
     authority_level: spawn_and_witness
-    host_binding: opencode-cli
+    host_binding: opencode
     allowed_tools:
-      - bash
+      - terminal
       - file_read
       - file_write
-      - git
-      - ps
-      - systemctl
-      - arifos_mcp
     allowed_servers:
       - arifosmcp
     allowed_skills:
@@ -569,7 +563,6 @@ agents:
     a2a_exposure: authenticated
     allowed_peers:
       - hermes-asi
-      - opencode-forge
       - aaa-gateway
     separation_of_duties:
       cannot_self_spawn: true

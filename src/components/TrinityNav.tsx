@@ -40,7 +40,8 @@ export default function TrinityNav() {
           </a>
 
           <div className="unified-nav-links">
-            <a href="#ai"      className="unified-nav-link">ai</a>
+            <a href="#ai"        className="unified-nav-link">ai</a>
+            <a href="#mcp-apps" className="unified-nav-link text-blue-400 font-bold">MCP Apps</a>
             <a href="#supabase" className="unified-nav-link text-emerald-400 font-bold">L4 memory</a>
             <a href="#about"   className="unified-nav-link">about</a>
             <a href="#work"    className="unified-nav-link">work</a>
