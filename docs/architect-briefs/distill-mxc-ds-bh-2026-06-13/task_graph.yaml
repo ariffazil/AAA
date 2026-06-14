@@ -1,0 +1,293 @@
+version: 1
+brief: distill-mxc-ds-bh-2026-06-13
+session: SEAL-5d1232e556bf44f3
+owner: I  # Integrator (after 888 from Arif)
+depends_on_root: []  # This is the root brief
+deliverables_root: /root/AAA/docs/architect-briefs/distill-mxc-ds-bh-2026-06-13
+
+# ============================================================================
+# PHASES (P0-P11) — every phase reversible, every commit small
+# ============================================================================
+
+phases:
+  - id: P0
+    name: "Skill content-shape contract + pre-commit hook (W3, S3)"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/AAA/registries/arifos_skill_contract.yaml
+        content: "Negative-space forbid-list: no pixel coords, no session diaries, no secrets, no community-PR footer"
+      - path: /root/.config/opencode/hooks/pre-commit-skill-contract.sh
+        content: "Executable pre-commit hook: parse YAML contract, scan staged SKILL.md files, reject on match"
+      - path: /root/AAA/tests/contract/test_skill_contract.py
+        content: "Test: commit a forbidden skill and assert the hook rejects"
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2
+    floor_gates: [F2, F4, F7, F11]
+    eurekas_absorbed: [W3]
+    eurekas_referenced: [S3, H2, H5]
+
+  - id: P1
+    name: "Reasoning-content passback contract test (W1)"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/tests/runtime/test_reasoning_content_echo.py
+        content: "For every model in AAA/registries/FEDERATION_MODEL.json, assert reasoning_content preserved across multi-turn tool calls. Inject OpenAI-compat transport and assert the field is reconstructed from the audit trail."
+      - path: /root/arifOS/tests/runtime/conftest_reasoning.py
+        content: "Fixture: model_registry.yaml loader, transport stub, audit-trail inspector"
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2
+    floor_gates: [F2, F7, F11]
+    eurekas_absorbed: [W1]
+
+  - id: P2
+    name: "5-phase session lifecycle enum (W4) + kernel_state upgrade"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/arifosmcp/runtime/session_phase.py
+        content: "Pydantic v2 enum: arif_session_phase = {INIT, BIND, EXECUTE, PAUSE, CLOSE}. Per-phase validators (validate_init, validate_bind, ...). Phase transitions must be monotonic."
+      - path: /root/arifOS/arifosmcp/runtime/kernel_state.py
+        content: "Add session_phase field to KernelState Pydantic model. Wire into transition() method. Update consolidate() to require phase=EXECUTE."
+      - path: /root/arifOS/tests/runtime/test_session_phase.py
+        content: "Walk a session through all 5 phases; assert monotonic; assert each validator rejects out-of-order"
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2 (Pydantic is additive)
+    floor_gates: [F1, F2, F7, F11]
+    eurekas_absorbed: [W4]
+
+  - id: P3
+    name: "Snapshot/Copyback wrapper in state_store.py (W2)"
+    owner: I
+    depends_on: [P2]
+    deliverables:
+      - path: /root/arifOS/arifosmcp/runtime/state_store.py
+        content: "Add consolidate_or_rollback() — wraps existing dual-write, signals rollback if L1 fails after L4 succeeds. Skip semantics for preflight failure, spawn failure, watchdog timeout."
+      - path: /root/arifOS/tests/runtime/test_state_store_rollback.py
+        content: "Inject L1 failure; assert L4 row is not created; assert rollback signal is emitted"
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2
+    floor_gates: [F1, F2, F11]
+    eurekas_absorbed: [W2]
+
+  - id: P4
+    name: "Sub-agent lifecycle 4 modes on arif_kernel_route (W6)"
+    owner: I
+    depends_on: [P2]
+    deliverables:
+      - path: /root/arifOS/arifosmcp/runtime/subordinate.py
+        content: "Pydantic v2 SubordinateHandle, spawn_subordinate, wait_subordinate, result_subordinate, cancel_subordinate. Real subprocess (PID), parent-child recorded in L5 Graphiti, arif_vault_seal on completion."
+      - path: /root/arifOS/arifosmcp/tools/kernel.py
+        content: "Add 4 modes to arif_kernel_route mode dispatch. Zero canonical surface change."
+      - path: /root/arifOS/tests/runtime/test_subordinate_lifecycle.py
+        content: "Spawn → wait → result → cancel. Assert subprocess PID exists in /proc. Assert vault_seal on completion."
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2 (mode dispatch only, no schema change)
+    floor_gates: [F1, F2, F7, F11, F13]
+    eurekas_absorbed: [W6]
+
+  - id: P5
+    name: "Precedence guard primitive in arifosmcp/core (W7) + arif_gateway_connect refactor"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/arifosmcp/core/precedence.py
+        content: "arifos_precedence(intent, candidates) -> Endpoint. Order: explicit env > local 127.0.0.1 > ambient cloud. The latter requires F13 ack and quadruple opt-in."
+      - path: /root/arifOS/arifosmcp/runtime/gateway_connect.py
+        content: "Refactor arif_gateway_connect to use the precedence primitive. Backward-compatible — explicit env still wins."
+      - path: /root/arifOS/tests/runtime/test_precedence_guard.py
+        content: "Set BU_CDP_URL; assert ambient path is rejected. Set BROWSER_USE_API_KEY alone; assert ambient still requires BU_AUTOSPAWN."
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2 (P5 is the refactor itself; schema stays)
+    floor_gates: [F1, F2, F7, F11]
+    eurekas_absorbed: [W7]
+
+  - id: P6
+    name: "Envelope version stamp (W5)"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/arifosmcp/schemas/envelope_v2.py
+        content: "envelope_version field required on all envelope-using tools. Old envelopes (no version) parse as envelope_version='v1'. New fields default to deny for old envelopes."
+      - path: /root/arifOS/arifosmcp/schemas/envelope_migration.py
+        content: "Migration shim: v1 → v2 if envelope_version missing. Verify old behavior preserved under new schema."
+      - path: /root/arifOS/tests/runtime/test_envelope_version_contract.py
+        content: "Add a new envelope field; assert v1 envelopes parse-identically under v2 schema. Add a deny-by-default field; assert v1 envelopes do NOT get the new behavior."
+    tdd_first: true
+    reversibility: full
+    authority: F13 — envelope is canonical surface
+    floor_gates: [F1, F2, F7, F11, F13]
+    eurekas_absorbed: [W5]
+    carry_forward_to_F13: 888 required to merge to main
+
+  - id: P7
+    name: "Two-layer Policy→Config via A-FORGE bridge (S1)"
+    owner: I
+    depends_on: [P5]
+    deliverables:
+      - path: /root/A-FORGE/src/domain/containment/PolicyToConfig.ts
+        content: "createConfigFromPolicy(policy, backend): bubblewrap | firejail | docker. Returns backend-specific ContainerConfig. A-FORGE is the bridge between Pydantic AgentPolicy and OS-level sandbox."
+      - path: /root/AAA/a2a-server/policy-bridge.ts
+        content: "Wire A-FORGE bridge as arif_kernel_route(mode='config_from_policy') endpoint. New mode, no canonical surface change."
+      - path: /root/A-FORGE/tests/unit/policy-to-config.test.ts
+        content: "Pass a Pydantic AgentPolicy; assert each backend produces the expected args. Test the advance path (config.processContainer.ui.isolation)."
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2 (A-FORGE side); F13 if arifOS mode added
+    floor_gates: [F1, F2, F7, F11]
+    eurekas_absorbed: [S1]
+
+  - id: P8
+    name: "Cache-first routing signal in arif_token_pressure (S2)"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/arifosmcp/runtime/token_pressure.py
+        content: "Add kv_cache_hit_rate field. Prefer cached prefix when ratio > 0.5. Expose via arif_kernel_route(mode='token_pressure', model). Drain arif_kernel_route(mode='prefer_cached') advisory."
+      - path: /root/arifOS/tests/runtime/test_cache_first_routing.py
+        content: "Route 10 turns through the same system prompt; assert hit_rate > 0 after turn 1. Assert prefer_cached is sticky across the session."
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2 (advisory only)
+    floor_gates: [F1, F2, F7]
+    eurekas_absorbed: [S2]
+
+  - id: P9
+    name: "Per-IPC token primitive (S3) — formalize f11-bridge pattern"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/arifosmcp/core/ipc_token.py
+        content: "Per-IPC token: secrets.token_hex(32) generated at session-init, scoped to action namespace, TTL-bounded. Caller-side and callee-side validation. Pattern lifted from f11-bridge 2026-06-12."
+      - path: /root/arifOS/arifosmcp/tools/vault.py
+        content: "Wire into arif_vault_seal as a required header. Without token, refuse."
+      - path: /root/arifOS/tests/runtime/test_ipc_token.py
+        content: "Generate token; send request without token; assert 403. Send with expired token; assert 401. Send with valid token; assert SEAL."
+    tdd_first: true
+    reversibility: full
+    authority: autonomous T1+T2 (additive)
+    floor_gates: [F1, F2, F7, F11]
+    eurekas_absorbed: [S3]
+
+  - id: P10
+    name: "Compositor-level click primitive in A-FORGE"
+    owner: I
+    depends_on: [P7]
+    deliverables:
+      - path: /root/A-FORGE/src/infrastructure/browser-use/compositor-click.ts
+        content: "Wrap cdp Input.dispatchMouseEvent. Take pixel coordinates, not selector. Bypass DOM traversal. Hit-test at compositor level."
+      - path: /root/A-FORGE/tests/integration/compositor-click.test.ts
+        content: "Click at pixel; assert DOM event fired; assert selector path was NOT used (no DOM lookup)."
+    tdd_first: true
+    reversibility: full
+    authority: F13 — new tool in A-FORGE (does not mutate arifOS 13)
+    floor_gates: [F1, F2, F7, F11]
+    eurekas_absorbed: [browser-harness EUREKA 1]
+    carry_forward_to_F13: 888 required to merge to main
+
+  - id: P11
+    name: "HARAM canon — 5 rejects documented explicitly"
+    owner: I
+    depends_on: []
+    deliverables:
+      - path: /root/arifOS/docs/HARAM_DOCTRINE.md
+        content: "Document the 5 rejects with the load-bearing reason each is haram. Cite the source eureka. State the arifOS alternative. This file is read-only canon — adding/removing a HARAM is F13 territory."
+      - path: /root/AAA/docs/architecture/constitutional-rejects.md
+        content: "Public-facing version of the same canon, in AAA docs. The harAM doctrine is the floor's immune system."
+    tdd_first: false  # Documentation only, no code
+    reversibility: full
+    authority: autonomous T1+T2 (documentation)
+    floor_gates: [F2, F7, F9, F11]
+    eurekas_rejected: [H1, H2, H3, H4, H5]
+
+# ============================================================================
+# RISKS + MITIGATIONS
+# ============================================================================
+
+risks:
+  - id: R1
+    description: "P4 sub-agent lifecycle is the highest-blast-radius phase (spawns real subprocesses). A leak could fork-bomb the host."
+    mitigation: "Each subordinate is a real subprocess with PID, parent-child recorded in L5 Graphiti. cancel_subordinate sends SIGTERM first, SIGKILL after 5s. Test exhaustively. F13 review before any production spawn."
+    owner: F  # Final review
+    floor_dependent: [F1, F13]
+
+  - id: R2
+    description: "P6 envelope version stamp is a canonical surface change — risk of breaking every envelope-using tool across the federation."
+    mitigation: "Pydantic v2 strict-mode; old envelopes parse-identically under new schema. Migration shim. 10+ tests on cross-organ envelopes before merge. F13 888 required to merge."
+    owner: F
+    floor_dependent: [F1, F2, F13]
+
+  - id: R3
+    description: "P10 compositor-level click primitive in A-FORGE is a new tool surface. Could be misused (click without consent)."
+    mitigation: "click_at_xy() requires a `consent_token` parameter (the IPC token from P9). Without it, refuse. Click target logged to L6 VAULT999."
+    owner: I + F
+    floor_dependent: [F1, F11, F13]
+
+  - id: R4
+    description: "CPU at 34.1% currently. Adding 4 new test suites + 3 new modules risks pushing above 50%."
+    mitigation: "Each phase's tests must be lightweight (< 5s per test, < 100MB RSS). pytest-xdist optional. If load rises, defer P7/P10 to next milestone."
+    owner: I
+    floor_dependent: [F1]
+
+# ============================================================================
+# CONSTITUTIONAL CHECKPOINTS
+# ============================================================================
+
+constitutional_checkpoints:
+  - floor: F1
+    when: "before each phase (reversibility check)"
+    assertion: "Every change is git-revertable. Mode additions are safe. Schema changes require F13."
+  - floor: F2
+    when: "before each phase (truth check)"
+    assertion: "Every eureka claim is cited to file:line. No overclaim. Integration tests assert behavior, not vibes."
+  - floor: F4
+    when: "after each phase (clarity check)"
+    assertion: "delta_S ≤ 0. New code is simpler than old. Tests are readable. Documentation is honest."
+  - floor: F7
+    when: "after each phase (humility check)"
+    assertion: "omega_0 banded [0.03, 0.05]. Uncertainty declared. No false certainty."
+  - floor: F9
+    when: "after P11 (anti-hantu check)"
+    assertion: "HARAM canon explicitly rejects 'agent self-improves' framing. Helpers may compound; canon does not."
+  - floor: F11
+    when: "before push (audit check)"
+    assertion: "Every PR contains a L6 VAULT999 seal line. seal_type INTEGRATION_FORGE_DISTILL_MXC_DS_BH_<seq>."
+  - floor: F13
+    when: "before push to main (sovereign check)"
+    assertion: "888 from Arif. No self-authorization for constitutional surface changes."
+
+# ============================================================================
+# OUT-OF-SCOPE (HARAM to even attempt in this brief)
+# ============================================================================
+
+out_of_scope:
+  - "Adding a 14th tool to the canonical 13"
+  - "Pushing to main without 888"
+  - "Restarting GEOX/WEALTH/WELL"
+  - "Sealing to canonical vault_sealed_events without F11 ed25519 signature"
+  - "Touching F1-F13, GENESIS/, or contract schemas without 888"
+  - "Any change that increases CPU above 50% (currently 34.1%)"
+  - "Community-PR skill model"
+  - "'Skills are written by the harness' framing"
+  - "YOLO mode or any auto-approve-all-tools mode"
+  - "Backward-compat deprecation aliases"
+  - "--experimental global flag"
+
+# ============================================================================
+# CARRY-FORWARDS (not in this brief, awaiting F13)
+# ============================================================================
+
+carry_forwards_to_F13:
+  - "17 unpushed arifOS commits awaiting 888 to push"
+  - "GEOX/WEALTH/WELL restart decision (currently service-alive, constitution-file-missing)"
+  - "F11 ed25519 signature on F0_FIQH.md for 5-tier activation"
+  - "Canonical VAULT999 seal writes (currently only to non-canonical outcomes.jsonl)"
+  - "L09 safety guard parity review (false-positive on a clean F2 report, 2026-06-13)"
+  - "cpu-health-watch skill wired and active (forged 2026-06-13, 3 processes STOPped for reversible CPU relief)"

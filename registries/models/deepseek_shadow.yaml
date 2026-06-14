@@ -1,8 +1,8 @@
 # DeepSeek Shadow — Hazard Profile
-# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-12 Ω
+# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-06-13
 model_id: deepseek_shadow
-version: 0.1.0
-status: PROPOSAL
+version: 0.2.0
+status: ACTIVE (model is PRIMARY, shadow is LIVE)
 
 shadow:
   - id: SHADOW-DS-001
@@ -30,7 +30,7 @@ shadow:
     severity: MEDIUM
     class: overclaim
     pattern: >
-      R1's chain-of-thought reasoning is strong but can produce overconfident
+      R1/reasoner's chain-of-thought is strong but can produce overconfident
       conclusions. The model may treat probabilistic inferences as certainties.
       In agentic loops, this compounds: confident wrong answer → confident
       wrong action → confident wrong memory.
@@ -66,7 +66,7 @@ shadow:
     severity: MEDIUM
     class: attention_decay
     pattern: >
-      Despite 1M token context window, DeepSeek shows attention decay in very
+      Despite 128K token context window, DeepSeek shows attention decay in very
       long contexts. Mid-context information may be forgotten or de-prioritized.
       In agentic sessions with accumulating context, earlier constitutional
       constraints may be dropped.
@@ -78,6 +78,24 @@ shadow:
       - "Periodic constitutional re-anchoring in long sessions"
       - "Monitor token pressure for context decay"
     evidence: "Needle-in-Haystack tests show some degradation at extremes"
+
+  - id: SHADOW-DS-005
+    name: credit_exhaustion_risk
+    severity: MEDIUM
+    class: infrastructure_risk
+    pattern: >
+      DeepSeek is a pre-paid credit API ($7.06 USD as of 2026-06-13).
+      When credits exhaust, ALL federation agent sessions fail simultaneously.
+      Unlike Ollama (local), there is no fallback that preserves DeepSeek's
+      specific reasoning capabilities.
+    triggers: [credit_depleted, payment_required, 402_error]
+    floor_posture_delta:
+      F1_AMANAH: note
+    mitigation:
+      - "Monitor balance via /user/balance endpoint"
+      - "Maintain fallback chain: reasoner → ollama (local)"
+      - "Alert sovereign before balance drops below $2.00"
+    evidence: "Previous 402 outage 2026-06-12. Fully resolved with $7.06 top-up."
 
 floor_posture:
   F1_AMANAH: standard
@@ -97,7 +115,9 @@ floor_posture:
 lifecycle:
   created: "2026-06-12"
   created_by: "Omega (Ω)"
-  status: "PROPOSAL"
-  activation: "AWAITING_F13_SIGNATURE"
+  updated: "2026-06-13"
+  updated_by: "FORGE (000Ω) — provider stabilization pass"
+  status: "ACTIVE"
+  activation: "PRIMARY FEDERATION MODEL — all agents bound"
 
 ditempa_bukan_diberi: true

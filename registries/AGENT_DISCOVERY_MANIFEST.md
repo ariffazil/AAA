@@ -51,22 +51,24 @@ Sub-agents: forge/auditor/explore/general via `task` tool
 }
 ```
 
-### FI-002 — Claude Code
+### FI-002 — Claude Code (WARGA AAA)
 ```
-Binary:    /root/.local/bin/claude
-MCP:       10 servers including arifOS:8088
+Binary:    /root/.local/bin/claude (v2.1.177)
+MCP:       20 servers including arifOS:8088, geox:8081, wealth:18082, well:18083, aforge:7071
 Transport: Streamable HTTP
-Init:      POST http://127.0.0.1:8088/mcp → arif_session_init(mode="swarm_ignite")
-Policy:    engineer (13 tools)
-Lease:     forge_dry_run (900s TTL)
-Rasa gate: verify
-Sub-agents: Agent Teams DISABLED by default (888_HOLD)
+Init:      arif_session_init(mode="init", actor_id="claude-code") via MCP tool call
+Citizenship: warga-aaa (registered in AAA/registries/agents.yaml, 2026-06-14)
+Policy:    governed-agent (13 arifOS tools + 20 MCP servers)
+Lease:     OBSERVE_ONLY default, escalation via 888 JUDGE
+Rasa gate: verify (F1-F13 enforcement via PreToolUse hook)
+Sub-agents: Enabled (Agent tool), governed by same floors
+Hooks:     SessionStart (bootstrap.sh), PreToolUse (token-gate.sh), PostToolUse (auto-seal.sh)
 ```
-**Init in hooks/bootstrap.sh:**
-```bash
-curl -s -X POST http://127.0.0.1:8088/mcp \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"arif_session_init","arguments":{"mode":"swarm_ignite","actor_id":"claude-code"}}}'
+**Session init via MCP (in-session, not bootstrap):**
+```
+Agent calls mcp__arifOS__arif_session_init({mode:"init", actor_id:"claude-code"})
+→ Returns session_id, authority envelope, stage progression
+→ Bootstrap hook handles: vault load, health probe, context injection (non-blocking)
 ```
 
 ### FI-003 — Qwen Code

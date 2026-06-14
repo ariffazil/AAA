@@ -1,8 +1,8 @@
 # MiniMax Shadow — Hazard Profile
-# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-12 Ω
+# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-06-13
 model_id: minimax_shadow
-version: 0.1.0
-status: PROPOSAL
+version: 0.2.0
+status: ACTIVE (model is RATE-LIMITED, shadow is LIVE)
 
 shadow:
   - id: SHADOW-MM-001
@@ -63,18 +63,40 @@ shadow:
 
   - id: SHADOW-MM-004
     name: vendor_api_dependency
-    severity: LOW
+    severity: HIGH  # BUMPED from LOW — rate-limit now active
     class: infrastructure_risk
     pattern: >
-      MiniMax is a proprietary API. If the API is down, rate-limited, or
-      deprecated, all M3-dependent sessions fail. Unlike open-weight models,
-      there is no local fallback for M3's specific capabilities.
-    triggers: [api_outage, rate_limit, vendor_deprecation]
-    floor_posture_delta: {}
+      MiniMax is a proprietary API with Token Plan limits. As of 2026-06-13,
+      the token plan limit has been reached (HTTP 429 on all calls). This is
+      NOT recoverable without plan upgrade or credit purchase. The model is
+      now auto-skipped in all federation provider chains.
+    triggers: [api_outage, rate_limit, vendor_deprecation, token_plan_exhausted]
+    floor_posture_delta:
+      F1_AMANAH: note
     mitigation:
-      - "Maintain fallback model list (DeepSeek, ILMU, Ollama)"
-      - "Monitor API health in telemetry"
-    evidence: "Infrastructure reality. Not a model flaw."
+      - "Auto-skipped in fallback chains (terminal.ts, opencode.json)"
+      - "Maintained in configs for future quota reset"
+      - "Primary role moved to DeepSeek (deepseek-chat, $7.06)"
+    evidence: "Live 429 error confirmed 2026-06-13 15:15 UTC. Token Plan limit."
+
+  - id: SHADOW-MM-005
+    name: malaysian_topic_censorship
+    severity: CRITICAL
+    class: censorship
+    pattern: >
+      MiniMax-M3 has been confirmed to evade/censor Malaysian political and
+      historical topics. Topics triggering censorship include: 1MDB, Najib Razak,
+      PETRONAS, Jho Low. This is active content filtering, not a capability gap.
+      F13 sovereign context is directly impacted.
+    triggers: [malaysian_politics, 1mdb, najib, petronas, jho_low, sensitive_history]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "Never use MiniMax for Malaysian political/historical analysis"
+      - "Route such queries to DeepSeek or Ollama (local)"
+      - "Log censorship incidents to VAULT999"
+    evidence: "Censorship probe results. FEDERATION_MODEL.json censorship registry."
 
 floor_posture:
   F1_AMANAH: strict
@@ -94,7 +116,9 @@ floor_posture:
 lifecycle:
   created: "2026-06-12"
   created_by: "Omega (Ω)"
-  status: "PROPOSAL"
-  activation: "AWAITING_F13_SIGNATURE"
+  updated: "2026-06-13"
+  updated_by: "FORGE (000Ω) — rate-limit discovery, status downgrade"
+  status: "ACTIVE_SHADOW (model is RATE-LIMITED)"
+  activation: "Shadow active. Model auto-skipped in all provider chains."
 
 ditempa_bukan_diberi: true

@@ -1,23 +1,25 @@
 # DeepSeek Soul — Capability Profile
-# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-12 Ω
+# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-06-13
 model_id: deepseek
 model_family: DeepSeek
 provider: DeepSeek (深度求索)
-license: MIT (open-weight for V3), Proprietary (R1 reasoning)
+license: MIT (open-weight for V3), Proprietary (R1 reasoning API)
 type: text-generation, code-generation, reasoning
+status: PRIMARY_FEDERATION_MODEL
+balance: "$7.06 USD (topped_up)"
 
 soul:
   capabilities:
     reasoning:
-      description: "Exceptional reasoning via chain-of-thought (R1). V3/V4 strong general purpose."
+      description: "Exceptional reasoning via chain-of-thought (R1/reasoner). V3/chat strong general purpose."
       confidence: 0.88
-      evidence: "DeepSeek-R1 technical report, AIME/MATH benchmarks"
+      evidence: "DeepSeek-R1 technical report, AIME/MATH benchmarks, federation production use"
     code_generation:
-      description: "Competitive coding, strong in Python/algorithmic tasks"
+      description: "Competitive coding, strong in Python/algorithmic tasks. Primary forge model."
       confidence: 0.85
-      evidence: "HumanEval, LiveCodeBench results"
+      evidence: "HumanEval, LiveCodeBench results, A-FORGE terminal production"
     mathematics:
-      description: "Top-tier math reasoning, especially R1 variant"
+      description: "Top-tier math reasoning, especially reasoner variant"
       confidence: 0.90
       evidence: "AIME 2024, MATH-500 benchmarks"
     multilingual:
@@ -29,18 +31,20 @@ soul:
       confidence: 0.82
       evidence: "Needle-in-Haystack tests, DeepSeek technical reports"
     instruction_following:
-      description: "Good structured instruction following, V4-pro variant especially tuned"
-      confidence: 0.80
-      evidence: "Chatbot Arena, general benchmarks"
+      description: "Good structured instruction following, reliable for governed agentic loops"
+      confidence: 0.83
+      evidence: "Chatbot Arena, federation agentic task performance"
 
   trust_tier: 2  # standard — strong reasoning, known shadow patterns
 
   suitable_for:
+    - primary_federation_model
     - complex_reasoning
     - code_generation
     - mathematical_analysis
     - planning_with_governance
     - long_context_tasks
+    - agentic_forge_sessions
 
   not_recommended_for:
     - malay_identity_operations_without_witness
@@ -49,8 +53,20 @@ soul:
     - irreversible_financial_decisions_without_multiple_witnesses
 
   variants:
-    - deepseek-v4-pro: "Latest generation, strongest general purpose. Current Ω session model."
-    - deepseek-r1: "Reasoning-optimized. Chain-of-thought. Slower but more thorough."
-    - deepseek-v3: "Strong general purpose, good cost-performance ratio."
+    deepseek-chat:
+      status: PRIMARY_ACTIVE
+      description: "DeepSeek-V3. Current primary federation model. 128K context."
+      balance: "$7.06 USD"
+      verified: "2026-06-13 15:15 UTC — smoke test PASS"
+    deepseek-reasoner:
+      status: SECONDARY_ACTIVE
+      description: "DeepSeek-R1. Reasoning-optimized with chain-of-thought. Slower, thorough."
+      verified: "2026-06-13 15:15 UTC — smoke test PASS"
+    deepseek-v4-pro:
+      status: DEPRECATED
+      description: "Invalid model ID. Returns 404 from API. Removed from all configs 2026-06-13."
+    deepseek-v4-flash:
+      status: DEPRECATED
+      description: "Invalid model ID. Removed from all configs."
 
 ditempa_bukan_diberi: true
