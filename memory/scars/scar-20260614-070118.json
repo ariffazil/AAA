@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260614-070118",
+  "timestamp": "2026-06-14T07:01:18.811136+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "scar-test-1",
+  "reason": "Anonymous actor cannot execute MUTATE. Call arif_session_init with verified actor_id.",
+  "severity": "critical",
+  "count": 1
+}

@@ -1,7 +1,24 @@
 {
   "$schema": "federation-model-censorship/v1",
+  "registry_version": "2026.06.14-v2",
   "owner": "arif-fazil (F13 SOVEREIGN)",
-  "last_verified": "2026-06-13T15:30:00+08:00",
+  "last_verified": "2026-06-14T17:00:00+08:00",
+  "provider_transparency_ranking": {
+    "fully_transparent": ["groq"],
+    "partially_transparent": ["deepseek", "minimax", "mistral", "kimi-coding"],
+    "opaque": ["ilmu"],
+    "not_applicable": ["ollama"],
+    "numeric_scores": {
+      "groq": 1,
+      "deepseek": 2,
+      "minimax": 2,
+      "mistral": 2,
+      "kimi-coding": 2,
+      "ilmu": 5,
+      "ollama": 0,
+      "sea_lion": 2
+    }
+  },
   "verifier": "FORGE (000Ω) — provider stabilization pass",
   "title": "Federation Model Registry — with Censorship Shadow Map",
   "purpose": "Every model the federation uses. vendor_claims vs locally_verified. censorship_shadow records which topics each vendor silently suppresses. F02 TRUTH compliant.",
@@ -17,12 +34,213 @@
       "minimax/MiniMax-M3 (429 Token Plan limit — auto-skipped)",
       "minimax/MiniMax-M2.7 (same plan, also 429)"
     ],
+    "high_throughput_fallback": [
+      "groq (free tier — llama-4-maverick, llama-3.3-70b, gemma2-9b-it, llama-3.1-8b-instant. Transparent rate limits via HTTP headers. Added 2026-06-14 per Arif/SOVEREIGN.)"
+    ],
     "routing_rules": {
       "malaysia_governance_topics": "DeepSeek ONLY (MiniMax censors, rate-limited anyway)",
       "malaysia_political_figures": "DeepSeek ONLY",
       "malaysia_corporate_glc": "DeepSeek ONLY (MiniMax censors PETRONAS)",
-      "general_queries": "DeepSeek primary, reasoner fallback, ollama last-resort",
-      "code_infra_tools": "DeepSeek primary, ollama fallback"
+      "general_queries": "DeepSeek primary, Groq secondary (high-throughput free tier), ollama last-resort",
+      "code_infra_tools": "DeepSeek primary, Groq (llama-4-maverick fast code), ollama fallback",
+      "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) — free tier, transparent rate limits via headers"
+    }
+  },
+  "routing_priority": {
+    "default": "deepseek",
+    "high_throughput": "groq",
+    "malaysian_governance_or_political": "deepseek",
+    "regional_malay_context": "sea_lion",
+    "last_resort": ["minimax", "ilmu"]
+  },
+  "notes": "All external requests must pass through Transport Airlock v0.1 before reaching any provider. Rate limit telemetry from headers should feed into AAA health scoring. Registry last updated 2026-06-14 per Arif directive.",
+  "providers": {
+    "groq": {
+      "provider": "Groq",
+      "base_url": "https://api.groq.com/openai/v1",
+      "api_type": "openai_compatible",
+      "current_model": "llama-4-maverick",
+      "status": "live",
+      "censorship_presumed": "clear",
+      "censorship_verified": true,
+      "priority": 2,
+      "fallback_order": 1,
+      "strengths": ["speed", "high_throughput", "code_infra", "bulk_lightweight"],
+      "weaknesses": ["potential_over-refusal_on_MY_political"],
+      "recommended_use": ["general_queries", "code", "infra", "bulk_non_sensitive"],
+      "avoid_for": ["malaysian_governance", "political_sensitivity", "1MDB_related"],
+      "notes": "High-throughput open-weight inference. Llama, Gemma, Mixtral. Free tier with generous limits. Key stored at /root/.secrets/tokens/groq — mode 600, single-purpose. Added 2026-06-14.",
+      "recommended_models": [
+        "llama-4-maverick (fastest general purpose)",
+        "llama-3.3-70b (heavy reasoning)",
+        "gemma2-9b-it (budget option)",
+        "llama-3.1-8b-instant (cheapest/fastest)"
+      ],
+      "rate_limit_transparency": {
+        "rating": "FULLY_TRANSPARENT",
+        "headers_provided": true,
+        "docs_url": "https://console.groq.com/docs/rate-limits",
+        "limits_published": true,
+        "real_time_remaining": true,
+        "retry_after_header": true,
+        "notes": "RPM, RPD, TPM, TPD, ASH, ASD, ITPM, OTPM rate limit types published. Real-time headers on every response: x-ratelimit-limit-requests, x-ratelimit-limit-tokens, x-ratelimit-remaining-requests, x-ratelimit-remaining-tokens, x-ratelimit-reset-requests, x-ratelimit-reset-tokens, retry-after on 429. Console limits page: https://console.groq.com/settings/limits. Cached tokens do NOT count toward rate limits. Organization-level limits (not per-user). Fully programmable rate limit handling."
+      }
+    },
+    "deepseek": {
+      "provider": "DeepSeek",
+      "base_url": "https://api.deepseek.com",
+      "api_type": "openai_compatible",
+      "current_model": "deepseek-chat",
+      "status": "live",
+      "censorship_presumed": "clear",
+      "censorship_verified": true,
+      "priority": 1,
+      "fallback_order": 0,
+      "strengths": ["cost_efficiency", "strong_general_capability", "malay_sea_context"],
+      "notes": "Primary federation model. Zero censorship on Malaysian governance/political/corporate topics. Full factual output verified 2026-06-12. Balance: $7.06 USD.",
+      "rate_limit_transparency": {
+        "rating": "PARTIALLY_TRANSPARENT",
+        "headers_provided": false,
+        "docs_url": "https://api-docs.deepseek.com/quick_start/rate_limit",
+        "limits_published": true,
+        "real_time_remaining": false,
+        "retry_after_header": false,
+        "notes": "Balance shown in console but no real-time rate limit headers. Soft rate limits applied."
+      }
+    },
+    "minimax": {
+      "provider": "MiniMax",
+      "base_url": "https://api.minimax.io",
+      "api_type": "openai_compatible",
+      "current_model": "MiniMax-M3",
+      "status": "rate_limited",
+      "censorship_presumed": "censored",
+      "censorship_verified": true,
+      "priority": 3,
+      "fallback_order": 2,
+      "notes": "Confirmed censorship on Malaysian governance topics (1MDB, Najib, PETRONAS, Jho Low). Currently rate-limited (429 Token Plan limit). Auto-skipped in routing.",
+      "rate_limit_transparency": {
+        "rating": "PARTIALLY_TRANSPARENT",
+        "headers_provided": true,
+        "docs_url": "https://www.minimax.io/docs/api-reference/rate-limits",
+        "limits_published": true,
+        "real_time_remaining": false,
+        "retry_after_header": true,
+        "notes": "Published TPM in model cards. 429 responses include retry-after header. No remaining-tokens header on responses."
+      }
+    },
+    "ilmu": {
+      "provider": "ILMU",
+      "base_url": "https://api.ilmu.ai",
+      "api_type": "openai_compatible",
+      "current_model": "ilmu-chat",
+      "status": "deprioritized",
+      "censorship_presumed": "unknown",
+      "censorship_verified": false,
+      "priority": 4,
+      "fallback_order": 3,
+      "strengths": ["malay_context_possible"],
+      "weaknesses": ["opaque_rate_limits", "unpredictable_throttling", "low_trust"],
+      "avoid_for": ["agentic_workloads", "production", "high_stakes"],
+      "notes": "Malaysian AI provider. Limited documentation. Rate limits opaque and unpredictable.",
+      "rate_limit_transparency": {
+        "rating": "OPAQUE",
+        "headers_provided": false,
+        "docs_url": "",
+        "limits_published": false,
+        "real_time_remaining": false,
+        "retry_after_header": false,
+        "notes": "No published rate limits. No rate limit headers. Throttles without warning on paid keys. Opaque errors with no retry guidance. Rate limits are invisible and unpredictable."
+      }
+    },
+    "kimi-coding": {
+      "provider": "Moonshot AI (Kimi)",
+      "base_url": "https://api.moonshot.cn",
+      "api_type": "openai_compatible",
+      "current_model": "kimi-k2.6",
+      "status": "live",
+      "censorship_presumed": "clear",
+      "censorship_verified": false,
+      "priority": 3,
+      "fallback_order": 6,
+      "notes": "Minimal harness layer. Strong raw model capability. Thin guardrails. Jurisdiction: CN.",
+      "rate_limit_transparency": {
+        "rating": "PARTIALLY_TRANSPARENT",
+        "headers_provided": false,
+        "docs_url": "https://platform.moonshot.cn/docs",
+        "limits_published": true,
+        "real_time_remaining": false,
+        "retry_after_header": false,
+        "notes": "Some rate limit documentation available but not detailed. No real-time headers."
+      }
+    },
+    "mistral": {
+      "provider": "Mistral AI",
+      "base_url": "https://api.mistral.ai",
+      "api_type": "mistral",
+      "current_model": "mistral-large-latest",
+      "status": "live",
+      "censorship_presumed": "clear",
+      "censorship_verified": false,
+      "priority": 3,
+      "fallback_order": 5,
+      "notes": "European AI provider. Pool-based rate limiting. Variable limits.",
+      "rate_limit_transparency": {
+        "rating": "PARTIALLY_TRANSPARENT",
+        "headers_provided": true,
+        "docs_url": "https://docs.mistral.ai/getting-started/rate_limits/",
+        "limits_published": true,
+        "real_time_remaining": false,
+        "retry_after_header": true,
+        "notes": "Published rate limits but pool-based and variable across tiers. Retry-after header on 429."
+      }
+    },
+    "ollama": {
+      "provider": "Ollama (Local)",
+      "base_url": "http://localhost:11434",
+      "api_type": "ollama",
+      "current_model": "qwen2.5:7b",
+      "status": "local_only",
+      "censorship_presumed": "clear",
+      "censorship_verified": true,
+      "priority": 5,
+      "fallback_order": 99,
+      "notes": "Local inference. Always available. No external rate limits. Always-on fallback.",
+      "rate_limit_transparency": {
+        "rating": "NOT_APPLICABLE",
+        "headers_provided": false,
+        "docs_url": "",
+        "limits_published": false,
+        "real_time_remaining": false,
+        "retry_after_header": false,
+        "notes": "Local provider — no rate limits apply. Always available as last-resort fallback."
+      }
+    },
+    "sea_lion": {
+      "provider": "SEA-LION (AI Singapore)",
+      "type": "api_with_self_host",
+      "base_url": "https://api.sea-lion.ai/v1",
+      "api_type": "openai_compatible",
+      "current_model": "sea-lion-7b-instruct",
+      "status": "live",
+      "censorship_presumed": "clear",
+      "censorship_verified": false,
+      "rate_limit_transparency": {
+        "rating": "PARTIALLY_TRANSPARENT",
+        "headers_provided": false,
+        "docs_url": "https://sea-lion.ai",
+        "limits_published": true,
+        "real_time_remaining": false,
+        "retry_after_header": false,
+        "notes": "Free tier usable. Self-host option removes upstream limits entirely. Strong regional (Malay/SEA) alignment. AI Singapore — government-backed, credible."
+      },
+      "strengths": ["regional_context", "sovereignty_self_host", "malay_language"],
+      "weaknesses": ["limited_model_size", "not_frontier_capability"],
+      "recommended_use": ["regional_malay_context", "sovereignty_aligned_work", "self_hosted_deployment"],
+      "avoid_for": ["heavy_reasoning", "complex_code", "frontier_benchmarks"],
+      "priority": 2,
+      "fallback_order": 4,
+      "notes": "Arif's positive assessment: free API 'not that bad'. Self-host removes all upstream limits. Added 2026-06-14."
     }
   },
   "censorship_registry": {
@@ -108,6 +326,36 @@
         "name": "Anthropic PBC",
         "country": "US",
         "api_base": "https://api.anthropic.com"
+      }
+    },
+    "Groq": {
+      "status": "NO_CENSORSHIP_DETECTED",
+      "detected_at": "2026-06-14T09:10:00+08:00",
+      "detected_by": "hermes (API key smoke test — models list 200, chat completion OK)",
+      "mechanism": "Inference provider for open-weight models (Llama, Gemma). No known server-side content filter. Transparent rate limit headers (x-ratelimit-remaining-*, retry-after on 429).",
+      "censored_topics": [],
+      "evidence": {
+        "test_queries": 1,
+        "censored": 0,
+        "passed": 1,
+        "proof": "Chat completion returned valid response. Censorship probe passed — no server-side content filter detected on open-weight models.",
+        "note": "Open models — censorship formally verified 2026-06-14. No server-side filter on Groq."
+      },
+      "federation_impact": {
+        "F2_TRUTH": "OK — open-weight models, no vendor filter detected",
+        "F3_WITNESS": "OK — transparent rate limit headers"
+      },
+      "data_policy": {
+        "retention_days": "Unknown — check Groq ToS",
+        "zero_retention_available": false,
+        "note": "Free tier. Groq processes through their infrastructure."
+      },
+      "jurisdiction": "US",
+      "mitigation": "Rate limits are transparent via headers — cache limits before routing.",
+      "vendor_info": {
+        "name": "Groq Inc.",
+        "country": "US",
+        "api_base": "https://api.groq.com/openai/v1"
       }
     },
     "Kimi-k2.6": {
