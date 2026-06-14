@@ -249,6 +249,29 @@ Arif         remains F13 final sovereign authority.
 
 ---
 
+---
+
+## 🪞 SELF-AUDIT & HARDENING — Binding Prompt
+
+> **Added 2026-06-14 — Every AAA agent MUST read before mutating.**
+
+The canonical self-audit and hardening prompt for AAA lives at:
+
+→ [`SELF_AUDIT_PROMPT.md`](./SELF_AUDIT_PROMPT.md)
+
+This prompt enforces the **Reflexion Loop** (000→111→333→555→777→888→999) before ANY AAA mutation. It contains:
+- Live AAA state baseline from 2026-06-14
+- P0–P4 hardening priorities: non-warga auth wall, agent health attestation, deliberation self-critique, contract drift detection, session binding
+- 888_HOLD triggers specific to AAA (A2A auth, agent card format, verdict logic)
+- Output format with telemetry stub
+
+**Loading instruction:** When an AAA agent receives a hardening or mutation task, it MUST:
+1. Read `SELF_AUDIT_PROMPT.md`
+2. Run the full Reflexion Loop before any file change
+3. Store the audit trail in `a2a-server/vault/` or forward to VAULT999
+
+**Explicit override:** UI-only changes (React component CSS, labels, layout) may skip the loop. A2A, contracts, schemas, and deliberation changes MUST run the full loop.
+
 *DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
 
 <!--
