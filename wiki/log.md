@@ -2372,3 +2372,14 @@ judgment ran directly without human confirmation — model self-certified.
 - **When:** 2026-06-14T14:32:01Z
 
 ---
+
+## [2026-06-14] seal | TREE777 999 weekly anchor (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-hermes-ops-2026-06-14.json`
+- **Anchor receipt:** `TREE777-999-hermes-ops-0266041f027d51f0`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-14T15:18:01Z
+
+---
