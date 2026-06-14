@@ -64,11 +64,21 @@ Rasa gate: verify (F1-F13 enforcement via PreToolUse hook)
 Sub-agents: Enabled (Agent tool), governed by same floors
 Hooks:     SessionStart (bootstrap.sh), PreToolUse (token-gate.sh), PostToolUse (auto-seal.sh)
 ```
+**Hermes Ignition (Telegram → Claude Code):**
+```
+Hermes Telegram → hermes-claude wrapper (/usr/local/bin/hermes-claude)
+  → arif_judge_deliberate (888 gate)
+  → On SEAL: writes ignition manifest to /root/.claude/ignition/
+  → Spawns: claude -p "task" --append-system-prompt "governance context"
+  → Claude Code SessionStart hook (bootstrap.sh) picks up pending manifests
+→ WARGA-001 forged 2026-06-14
+```
+
 **Session init via MCP (in-session, not bootstrap):**
 ```
 Agent calls mcp__arifOS__arif_session_init({mode:"init", actor_id:"claude-code"})
 → Returns session_id, authority envelope, stage progression
-→ Bootstrap hook handles: vault load, health probe, context injection (non-blocking)
+→ Bootstrap hook handles: vault load, health probe, context injection, ignition check (non-blocking)
 ```
 
 ### FI-003 — Qwen Code
