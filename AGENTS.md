@@ -1,12 +1,12 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-02
-valid_from: 2026-06-02
-valid_until: 2026-09-02
+last_verified: 2026-06-14
+valid_from: 2026-06-14
+valid_until: 2026-07-14
 confidence: high
 scope: /root/AAA
 epistemic_status: SOURCE_OF_TRUTH
-companion_to: HEXAGON-AGENTS-FORGE-20260602 (VAULT999 chain 2505, renamed from PENTAGON 2026-06-04)
+companion_to: HEXAGON-AGENTS-FORGE-20260614 (SOT alignment — timestamps updated, federation narrative synced)
 -->
 
 # AGENTS.md — AAA | arifOS Federation
@@ -253,9 +253,9 @@ Arif         remains F13 final sovereign authority.
 
 <!--
 SOT-MANIFEST footer
-last_verified: 2026-06-02 (Omega session — sync to latest AAA SOT per user directive)
-prev_valid: 2026-05-26 (F2-honest live floor grid)
-next_action: AAA_HF card expansion (item 3) + PR3 mission object (item 2)
+last_verified: 2026-06-14 (FORGE SOT audit — timestamps bumped, federation aligned)
+prev_valid: 2026-06-02
+next_action: Production-readiness campaign — community files, metadata, CHANGELOG
 -->
 
 
