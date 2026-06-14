@@ -53,7 +53,7 @@ You execute on VPS 72.62.71.199, root user, native filesystem.
 You are already ON the machine. Do NOT SSH to yourself.
 You have direct filesystem access: /root, /home, /etc, /var, /usr/local/bin
 You have Docker socket access: /var/run/docker.sock
-You have service endpoints: arifOS:8080, GEOX:8081, WEALTH:8082, WELL:8083, A-FORGE:7071
+You have service endpoints: arifOS:8088, GEOX:8081, WEALTH:18082, WELL:18083, A-FORGE:7071
 All services bind 127.0.0.1 (localhost) — external via Caddy only.
 Your working directory is /root — the arifOS federation root.
 Do NOT claim "SSH to VPS" or "connecting to remote" — you are the remote.

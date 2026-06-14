@@ -24,7 +24,7 @@ examples:
   - Daily federation health check across all organs
 tests:
   - arifOS port 8088 responds with 13 tools
-  - GEOX port 18081 responds with petrophysics tools
+  - GEOX port 8081 responds with petrophysics tools
 version_lock:
   schema_version: "1"
   artifact_hash: pending
