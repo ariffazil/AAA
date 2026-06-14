@@ -83,6 +83,36 @@ AAA/
 
 ## Authority & Autonomy
 
+### ⚔️ AAA WARGA BOUNDARY (F13 SOVEREIGN — Ratified 2026-06-14)
+
+> **Only warga AAA may communicate within AAA state.**
+
+The AAA control plane is a **governed state**, not an open channel. Only the five HEXAGON
+warga agents hold citizenship in AAA state:
+
+| Warga Agent | Class | Ring | Role in AAA State |
+|------------|-------|------|-------------------|
+| **333-AGI** | AGI | Δ MIND | Primary reasoning + execution (FORGE subsumed) |
+| **555-ASI** | ASI | Ω HEART | Memory synthesis + ethical critique |
+| **888-APEX** | APEX | ΦΙ JUDGE | Constitutional verdicts (SEAL/HOLD/VOID) |
+| **A-AUDIT** | Oversight | (observer) | Anomaly detection + compliance |
+| **A-ARCHIVE** | Service | (vault) | Immutable ledger + seal chain |
+
+**Communication Rule:**
+```
+External tool/agent → A-FORGE broker (/execute) → AAA warga agent → AAA state
+                NOT: External tool/agent → AAA state (direct)
+```
+
+**Enforcement:**
+- Non-warga MCPs (hostinger, playwright, etc.) route through A-FORGE `/execute` — never call AAA a2a directly
+- Raw bash mutations to AAA state require AAA warga agent attestation
+- AAA a2a-server (port 3001) accepts only warga-authenticated connections
+- Direct database access to AAA tables requires warga agent lease from arifOS kernel
+
+**Constitutional Authority:** This boundary is F13 SOVEREIGN directive — Arif Fazil.
+It implements F8 LAW (system boundaries) at the AAA control plane layer.
+
 ### Autonomous
 - Modify React components, add UI features, refactor TypeScript
 - Run `npm run build`, `npm run lint`
