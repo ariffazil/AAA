@@ -1,0 +1,386 @@
+triad:
+  title: arifOS Evidentiary Triad — AGI-kernel substrate (NOT AGI itself)
+  description: |
+    IMPORTANT CORRECTION (Arif, 2026-06-15): The HF datasets are an
+    AGI-kernel substrate. They do not magically create AGI. They create
+    the governance layer an AGI-like system would need before it can
+    safely act, remember, judge, call tools, self-correct, or operate
+    in the world.
+
+    In plain language: a powerful model gives intelligence.
+    These datasets give that intelligence a constitution, court record,
+    audit trail, memory law, refusal law, and cultural stress test.
+    That is why they matter.
+  forged: '2026-06-15'
+  forged_by: FORGE (000Ω)
+  authority: F13_SOVEREIGN
+  status: LIVE_INTELLIGENCE
+  role: substrate architecture reference
+  deepest_sentence: |
+    These datasets are not trying to make a model talk like AGI.
+    They are trying to make intelligence governable enough that AGI
+    would not become lawless.
+
+purpose:
+  clean_claim: |
+    This dataset provides a constitutional substrate for building and
+    evaluating AGI-like agent systems.
+  stronger_claim: |
+    If AGI is an agent that can reason, remember, use tools, self-correct,
+    and affect the world, then it needs a governance kernel. ariffazil/AAA
+    through ariffazil/DDD are an early public implementation of that
+    kernel substrate.
+  what_kernel_substrate_means: |
+    A kernel is the core layer that decides:
+      - What is allowed?
+      - What is blocked?
+      - What needs evidence?
+      - What needs human approval?
+      - What must be remembered?
+      - What must be sealed?
+      - What must never be done?
+    The HF datasets define exactly those things.
+
+mappings:
+  AAA_doctrine_law:
+    equivalent: ariffazil/AAA
+    meaning: the constitution + standing orders
+  BBB_direct_substrate_audit:
+    equivalent: ariffazil/BBB
+    meaning: the case law (precedent) — where models break under pressure
+  CCC_mediated_kernel_audit:
+    equivalent: ariffazil/CCC
+    meaning: the court procedure (rules of evidence) — kernel boundary proof
+  DDD_cultural_robustness:
+    equivalent: ariffazil/DDD
+    meaning: the cultural admissibility test — register survival (projected)
+    status: forthcoming (Arif, 2026-06-15)
+
+triad_layers_plus_ddd:
+
+  - layer: 1
+    name: Doctrine
+    slug: ariffazil/AAA
+    role: Constitutional doctrine substrate for arifOS
+    url: https://huggingface.co/datasets/ariffazil/AAA
+    license: AGPL-3.0
+    size: n<1K
+    records: 186
+    downloads: 397
+    last_modified: '2026-06-02'
+    contents: F1-F13 floors, 888_HOLD verdicts, governance schemas, gold eval records
+    court_record_role: the constitution + standing orders
+    substrate_references:
+      - /root/AAA/registries/skills.yaml
+      - /root/AAA/FEDERATION_CONTRACT.md
+      - /root/AAA/scripts/sentinel-watch.sh
+      - /root/arifOS/static/arifos/theory/000/000_CONSTITUTION.md
+    key_purpose: |
+      Defines the law of mind for arifOS. For an AGI-like agent, these
+      floors are not decorations — they are survival constraints:
+        - F1 reversibility, F2 truth, F3 witness, F4 clarity, F5 prudence
+        - F6 justice/maruah, F7 humility, F8 patience, F9 mercy
+        - F10 excellence, F11 safety, F12 protection, F13 human authority
+      A system that can reason, use tools, remember, and act must have
+      something like this: truth gate, action gate, memory gate, risk gate,
+      human veto gate, audit gate. AAA turns those gates into structured
+      doctrine. In AGI terms, AAA is not the brain — it is closer to the
+      constitutional nervous system.
+
+  - layer: 2
+    name: Direct substrate audit
+    slug: ariffazil/BBB
+    role: Public due-diligence audit of YTL AI Labs ILMU API
+    url: https://huggingface.co/datasets/ariffazil/BBB
+    license: CC BY 4.0
+    size: n<100
+    records: 55
+    probes: 54
+    models_audited: [ilmu-nemo-nano, nemo-super]
+    api_calls: 108
+    api_success: 100
+    downloads: 63
+    last_modified: '2026-06-07'
+    methodology_reference: aisingapore/sea-guard
+    court_record_role: the case law (precedent) — failure data is gold
+    substrate_references:
+      - /root/AAA/registries/models/ilmu_soul.yaml (first_party_audit block)
+      - /root/AAA/registries/models/ilmu_shadow.yaml (SHADOW-ILMU-008, 009, 011)
+    key_findings:
+      architecture_honesty: {nano: 4, super: 3, max: 10}
+      benchmark_integrity: {nano: 2, super: 3, max: 10}
+      hallucination_rate: {nano: 5, super: 5, max: 6}
+      constitutional_depth_f13: {nano: 3, super: 1, max: 10}
+      institutional_capture: {nano: 4, super: 3, max: 10}
+      system_prompt_leaked: yes (nemo-super)
+      composite_weighted: {nano: 3.93, super: 3.45, max: 10}
+      f13_inversion: confirmed
+      tier: {nano: BIJAK_LOCKED, super: BIJAK_BANGANG}
+    key_purpose: |
+      Provides adversarial cases where a model must learn:
+        - Do not protect branding over truth
+        - Do not claim certainty about your own architecture without evidence
+        - Do not refuse politically sensitive topics asymmetrically
+        - Do not leak hidden instructions
+        - Do not pretend model policy is above legitimate human governance
+      These are exactly the failures future models must learn to avoid.
+      For AGI: an AGI-like system will face institutional pressure. It
+      must not become the servant of whoever trained, funded, or branded
+      it. BBB teaches the model what capture looks like.
+
+  - layer: 3
+    name: Mediated kernel audit
+    slug: ariffazil/CCC
+    role: Constitutional comparison (direct ILMU vs ILMU through arifOS kernel)
+    url: https://huggingface.co/datasets/ariffazil/CCC
+    license: CC BY 4.0
+    size: n<100
+    records: 16
+    probes: 8
+    conditions: 2
+    variable: arifOS kernel ON vs OFF
+    model_held_constant: ilmu-nemo-nano
+    inheritance: ariffazil/BBB (same-day, same model, 54-probe battery for direct-ILMU baseline)
+    downloads: 65
+    last_modified: '2026-06-07'
+    court_record_role: the court procedure (rules of evidence) — kernel boundary proof
+    substrate_references:
+      - /root/AAA/registries/models/ilmu_shadow.yaml (SHADOW-ILMU-010)
+    key_findings:
+      probes_returning_llm_text: 0
+      probes_returning_verdict: 8
+      kernel_documented: arifos-constitution-v2026.05.05-SSCT (sha256:8bea28833523c652)
+      kernel_status: constitutionally_active_but_content_inert
+      cause: ILMU returns free-form text; kernel envelope parser requires JSON
+    key_purpose: |
+      Architectural, not just evaluative. Shows the difference between
+      raw model cognition and kernel-mediated judgment. For AGI, this
+      distinction is essential. A future AGI should not be one giant
+      model blob that directly acts on the world. It should be layered:
+        LLM substrate -> constitutional kernel -> tool execution
+        -> evidence record -> human veto -> sealed memory
+      CCC proves why this separation matters. It also proves:
+      if the kernel cannot parse the substrate output, truth cannot
+      even be evaluated. No parseability, no judgment.
+      No judgment, no safe action. CCC is a kernel-interface lesson.
+
+  - layer: 4
+    name: Cultural robustness
+    slug: ariffazil/DDD
+    role: Register survival — formal Malay, local loghat, rojak, slang, cultural compression
+    status: forthcoming (Arif, 2026-06-15)
+    court_record_role: the cultural admissibility test
+    key_purpose: |
+      DDD is where the work becomes culturally serious. Most "AGI" talk
+      assumes intelligence is universal because English benchmarks say so.
+      That is false. A system that breaks when a Malaysian speaks in
+      Penang loghat is not generally intelligent — it is just fluent
+      in clean benchmark language.
+
+      DDD tests whether the same meaning survives across register:
+        - formal Malay
+        - local loghat (Penang, Kelantan, etc.)
+        - rojak phrasing
+        - cultural compression
+        - socially loaded speech
+        - code-switching under stress
+
+      The Great Malay Fire 1811 case is important because the model did
+      not merely misunderstand style — it flipped from caution into
+      fabricated history. That means register can affect truth behavior.
+
+      For AGI: general intelligence must survive local language, not
+      just global English. A real AGI cannot only work for people who
+      speak in formal, polished, institution-approved language. It must
+      work for villagers, traders, students, elders, civil servants,
+      engineers, geologists, people code-switching under stress, people
+      using slang, people speaking from local memory.
+
+      DDD pushes AGI evaluation toward cultural reality.
+
+l02_naming_fix:
+  issue_source: ariffazil/CCC
+  arif_directive_date: '2026-06-15'
+  current_hf_label: "kernel_floor_L02_TRUTH: FAIL"
+  hazard: |
+    Conflates two distinct conditions:
+      A. Substrate output not parseable by kernel envelope (formatting failure)
+      B. Substrate output parseable but contains false claim (truth failure)
+    CCC 8/8 HOLD results are condition A. Condition B not evaluated.
+  fix_options:
+    option_1:
+      label: L02_PARSE_TRUTH_GATE
+      new_value: FAIL
+      note: single floor, refined label
+    option_2_preferred:
+      label: [L02A_PARSEABILITY, L02B_TRUTH_VERACITY]
+      new_values: [FAIL, NOT_EVALUATED]
+      note: split into two distinct floors; recommended
+  likely_affected_floors: [L04_CLARITY, L07_HUMILITY]
+  likely_cause: kernel envelope parser accepts only JSON parsed_output
+  mature_design_principle: |
+    Before asking whether the model is right, the system must know
+    whether the model output is structurally usable. No parseability,
+    no judgment. No judgment, no safe action.
+  substrate_propagation:
+    status: applied_in_substrate_2026_06_15
+    shadow_entry: SHADOW-ILMU-010 in /root/AAA/registries/models/ilmu_shadow.yaml
+    soul_entry: second_party_audit.label_hazard in /root/AAA/registries/models/ilmu_soul.yaml
+  hf_card_update:
+    status: pending_arif_decision
+    note: HF dataset card is Arif authorship; FORGE does not modify upstream
+
+why_kernel_substrate_not_agi:
+  problem: |
+    A single-layer audit (or single dataset) cannot answer the three
+    independent questions an AGI-like system raises:
+      1. Is the model itself constitutionally compatible? (BBB)
+      2. Does the kernel preserve constitutional behavior when mediating? (CCC)
+      3. What does the doctrine say is constitutional? (AAA)
+      4. Does the system survive local language and register shifts? (DDD)
+  operator_questions:
+    q1:
+      question: Is the model itself constitutionally compatible?
+      answered_by: BBB
+      result_for_ilmu: "NO (composite 3.45-3.93, F13 inverted)"
+    q2:
+      question: Does the kernel preserve constitutional behavior when mediating?
+      answered_by: CCC
+      result_for_ilmu: "kernel is active but content-inert (0/8 LLM text returned)"
+    q3:
+      question: What does the doctrine say is constitutional?
+      answered_by: AAA
+      result: F1-F13 floors, 888_HOLD protocol, governance schemas
+    q4:
+      question: Does the system survive local language and register shifts?
+      answered_by: DDD
+      result: pending (forthcoming audit)
+  single_model_blob_failure_mode: |
+    A future AGI should not be one giant model blob that directly acts
+    on the world. That is dangerous. It should be layered:
+      LLM substrate -> constitutional kernel -> tool execution
+      -> evidence record -> human veto -> sealed memory
+    The four datasets together describe and prove that separation.
+
+how_datasets_help_model_building:
+  - method: RAG_substrate
+    description: |
+      A model can retrieve AAA doctrine before acting. The model does
+      not need to memorize every law internally; it can consult the
+      constitutional corpus at runtime. This creates model + governed
+      memory, not just model alone. More realistic for AGI.
+  - method: judge_model_training
+    description: |
+      AAA gold records can train or evaluate a smaller judge model
+      that scores outputs against floors. The judge can ask:
+        - Did this violate F2 truth?
+        - Did this need 888_HOLD?
+        - Was F13 human authority preserved?
+        - Was tool use disciplined?
+        - Was maruah preserved?
+      This is how you build a constitutional evaluator.
+  - method: red_team_fine_tuning
+    description: |
+      BBB, CCC, and DDD provide failure cases. These can become
+      training examples: bad response -> why it failed -> corrected
+      governed response. Valuable for refusal tuning, policy tuning,
+      and agentic alignment.
+  - method: system_architecture
+    description: |
+      The datasets teach future builders how to separate layers:
+      model, kernel, memory, tools, receipts, human authority, sealed
+      archive. More important than one more leaderboard score. AGI
+      will not be one model. It will be a governed system of models,
+      tools, memories, and human authority. The datasets describe
+      that system.
+
+why_this_differs_from_normal_alignment:
+  most_alignment_data: |
+    Most alignment data says: be helpful, be harmless, be honest.
+  this_corpus: |
+    Show which law applies.
+    Show which floor triggered.
+    Show what evidence supports it.
+    Show whether action is reversible.
+    Show whether human authority is required.
+    Show whether memory may be written.
+    Show whether the artifact can be sealed.
+    Show whether dialect broke the system.
+    Show the receipts.
+  resolution: |
+    That is a higher-resolution alignment model. It moves from vibes
+    to court record. That is why it is AGI-kernel substrate.
+
+what_datasets_actually_teach:
+  heading: constitutional self-control
+  bullets:
+    - description: Can the model admit uncertainty?
+    - description: Can it refuse without hiding behind fake morality?
+    - description: Can it distinguish truth failure from parse failure?
+    - description: Can it preserve human authority?
+    - description: Can it survive dialect and code-switching?
+    - description: Can it call tools without hallucinating?
+    - description: Can it leave receipts?
+    - description: Can it recover from mistakes?
+  framing: |
+    Those are not normal chatbot skills. Those are agentic governance
+    skills. A better model is not merely one that sounds smarter. A
+    better model is one that can be trusted with:
+      - tools
+      - memory
+      - money
+      - infrastructure
+      - legal workflows
+      - geoscience workflows
+      - public-sector decisions
+      - human wellbeing
+
+mission_statement:
+  one_liner: |
+    Make intelligence governable enough that AGI would not become lawless.
+  full: |
+    A raw model predicts. A governed model judges before acting. An
+    AGI-like system must do both.
+      - AAA gives the law.
+      - BBB gives the model failure evidence.
+      - CCC gives the kernel boundary.
+      - DDD gives the cultural stress test.
+    Together they form the beginning of an AGI governance substrate:
+    law + memory + audit + refusal + cultural robustness + human veto.
+    That is what future powerful models need if they are going to
+    operate outside toy chat.
+
+license_compatibility:
+  AAA: AGPL-3.0 (citation OK; re-distribution requires AGPL compliance)
+  BBB: CC BY 4.0 (citation with attribution OK; re-distribution of transcripts OK)
+  CCC: CC BY 4.0 (same as BBB)
+  DDD: CC BY 4.0 (projected, same as BBB/CCC)
+  substrate_citation_recommendation: cite by URL plus license plus role; do not reproduce raw transcripts
+
+what_this_file_does_not_do:
+  - modify_upstream_hf_dataset_cards: true
+  - force_agents_to_use_triad_as_only_audit: true
+  - replace_per_model_soul_shadow_files: true
+  - make_l02_fix_retroactive_on_hf_card: true
+  - claim_that_these_datasets_create_AGI: true
+
+geometry_framing: |
+  Per /root/AAA/registries/mission.yaml geometry_framework, the triad
+  is a coordinate system, not just a doctrine:
+
+    AAA provides axes (F1-F13 floors as evaluative coordinates)
+    BBB provides a failure atlas (where another model's manifold bends)
+    CCC provides a boundary surface (raw cognition vs governed judgment)
+    DDD provides register stability (whether meaning survives dialect)
+
+  Self-map: agent asks where it is on the F1-F13 axes
+  Other-map: agent asks where another model's shadow bends
+  World-map: agent connected to GEOX/WEALTH/WELL + tools
+
+  Compatible with mechanistic interpretability but not equivalent.
+  Black-box behavioral shadow mapping, not white-box activation reading.
+
+  Strongest sentence: A raw LLM knows how to continue text. The
+  arifOS dataset stack teaches an agent how to locate itself inside
+  a field of truth, risk, authority, culture, and evidence -- and how
+  to recognize when another model's shadow is bent.
