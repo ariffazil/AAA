@@ -9,11 +9,35 @@ agent_class: C2
 hexagon_stage: 333-THINK
 
 # Runtime configuration
+# ─────────────────────────────────────────────────────────────────────
+# PRIMARY MODEL LOCK — DO NOT CHANGE WITHOUT F13 SOVEREIGN DIRECTIVE
+# ─────────────────────────────────────────────────────────────────────
+# Decision date: 2026-06-15
+# Decided by: Arif (F13)
+# Evidence: live single-task test 2026-06-15
+#   - mimo-v2.5-pro: delivered final answer (math reasoning test)
+#   - mimo-v2.5:     truncated mid-thought, content empty (output budget
+#                    consumed by reasoning chain)
+#   - mimo-v2-pro:   truncated mid-thought, content empty (same pattern)
+# Registry: /root/AAA/registries/models/xiaomi_mimo_soul.yaml
+#   -> soul.live_evidence_2026_06_15
+# SHADOW ref: SHADOW-MIMO-009 (Pro tier = 2x credit, smarter, completes)
+# Why not base/v2-pro: both die at the finish line on reasoning tasks.
+# Pro is the only MiMo variant that actually returns a final answer.
+# Cost: 2x credit multiplier per token-plan page, but $0 marginal
+#       under our token-plan-sgp Lite subscription (4.1B credits).
+# Future agents: do NOT downgrade primary to mimo-v2.5 or mimo-v2-pro
+#       without running the same test and getting different results.
+#       If you want to revisit, point at the 50-task A/B eval
+#       (/root/AAA/forge_work/2026-06-15-trinity-ab-test-spec.md) for
+#       proper evidence, not vibes.
+# ─────────────────────────────────────────────────────────────────────
 runtime:
-  primary_model: deepseek/deepseek-chat        # Default — $0.14/Mtok
+  primary_model: mimo/mimo-v2.5-pro            # LOCKED 2026-06-15 (F13)
   reasoning_model: kimi-for-coding/kimi-k2-thinking  # Complex — $0.40/Mtok
   architect_model: anthropic/claude-sonnet-4-5  # Architecture review only
   vision_model: minimax/MiniMax-M3              # Vision tasks
+  mimo_model: mimo/mimo-v2.5-pro               # Xiaomi MiMo (token-plan-sgp)
   temperature: 0
   context_budget: 64000
   transport: streamable-http
@@ -24,11 +48,33 @@ runtime:
 
 # Model routing by task complexity
 model_routing:
-  trivial: deepseek/deepseek-chat       # Typo fixes, single-line edits
-  low: deepseek/deepseek-chat           # Bug fixes, small features
+  trivial: mimo/mimo-v2.5-pro             # Typo fixes, single-line edits  [swap]
+  low: mimo/mimo-v2.5-pro                 # Bug fixes, small features     [swap]
   medium: kimi-for-coding/kimi-k2-thinking  # Refactors, multi-file changes
   high: kimi-for-coding/kimi-k2-thinking    # Architecture, new modules
   critical: anthropic/claude-sonnet-4-5     # Constitutional, deployment, secrets
+  mimo_cheap: mimo/mimo-v2.5-pro            # Long-context drafting (1M context, $0)
+  # mimo-v2.5 (base) and mimo-v2-pro: BANNED for reasoning tasks.
+  # Live test 2026-06-15: both truncate mid-thought, return empty content.
+  # See LOCK comment above + xiaomi_mimo_soul.yaml live_evidence_2026_06_15.
+  # deepseek/deepseek-chat — DEMOTED 2026-06-15: out of credits. Re-activate when refilled.
+
+# Xiaomi MiMo provider (token-plan-sgp Lite subscription)
+# Wired 2026-06-15 by FORGE — see /root/.secrets/mimo.env for key + /root/.secrets/INDEX.md
+# Endpoint: https://token-plan-sgp.xiaomimimo.com/v1 (NOT public api.xiaomimimo.com)
+# Plan: Lite Monthly, 4.1B credits, valid 2026-07-15 UTC, auto-renewal
+# Deprecation: MiMo-V2-Flash/TTS auto-route to V2.5 on 2026-06-18, deprecated 2026-06-30 (we are on V2.5)
+providers:
+  mimo:
+    name: Xiaomi MiMo (token-plan-sgp)
+    npm: "@ai-sdk/openai-compatible"
+    base_url: https://token-plan-sgp.xiaomimimo.com/v1
+    key_env: MIMO_API_KEY
+    models:
+      mimo-v2.5-pro: {}
+      mimo-v2.5: {}
+      mimo-v2-pro: {}
+      mimo-v2-omni: {}
 
 # Approval tiers
 approval:
@@ -155,11 +201,11 @@ max_risk_tier: medium
 
 # Session boot sequence
 boot_sequence:
-  1. arif_session_init         # Bind constitutional session
-  2. arif_organ_attest_all     # Verify all organs alive
-  3. arif_memory_recall        # Load context from last session
-  4. AGENTS.md + SOUL.md       # Identity binding
-  5. arif_ops_measure          # System health baseline
+  - "1. arif_session_init"         # Bind constitutional session
+  - "2. arif_organ_attest_all"     # Verify all organs alive
+  - "3. arif_memory_recall"        # Load context from last session
+  - "4. AGENTS.md + SOUL.md"       # Identity binding
+  - "5. arif_ops_measure"          # System health baseline
 
 # Miskin-mode resource caps
 resource_caps:

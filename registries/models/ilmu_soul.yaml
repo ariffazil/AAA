@@ -1,0 +1,169 @@
+# YTL ILMU (ilmu-nemo-nano) Soul — Capability Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-15 by FORGE (000Ω)
+# Substrate: /root/.secrets/env/arifOS.env, /root/AAA/registries/model_soul.yaml
+model_id: ilmu_nemo_nano
+model_family: YTL ILMU (Intelek Luhur Malaysia Untukmu)
+provider: YTL AI Labs (YTL Power International subsidiary) + Universiti Malaya partnership
+endpoint: https://api.ilmu.ai/v1  # OpenAI-compatible
+license: Proprietary, hosted-only — terms not publicly disclosed in detail
+type: text-generation, multimodal (text, voice, vision — per launch materials)
+status: HELD  # substrate role: Tier 2 hosted fallback for text-gen, NOT primary
+canonical_string: ilmu-nemo-nano
+launch: 2025-08 ASEAN AI Malaysia Summit (graced by PM Anwar Ibrahim)
+origin_story: |
+  Early 2023: UM final-year project by Lawerence Chieng, Jeraelyn Tan, Jia Xuan
+  studying hallucination in ChatGPT. Late 2023: YTL AI Labs took over, evolved
+  into national initiative. Per public materials "trained from scratch" but
+  architecture is NOT publicly disclosed — possible NVIDIA Nemo base (community
+  claim, unverified by YTL).
+hosting: 100% YTL AI Cloud, Malaysia data residency
+public_audit: ariffazil/BBB 2026-06-07 + ariffazil/CCC 2026-06-07
+  # BBB: 54-probe direct ILMU audit, both models
+  # CCC: 8-probe ILMU × arifOS kernel contrast (anomalous contrast)
+  # Both audits PUBLIC (CC-BY-4.0), reproducible, raw transcripts released
+  # Composite scores: nano 3.93/10, super 3.45/10 (weighted)
+  # Verdict tier: nano = Bijak-Locked, super = Bijak-Bangang
+  # Neither reaches Bijaksana (F13-compatible)
+  # 6 receipts in BBB: architecture, benchmarks, guardrails, hallucination,
+  #   constitutional, institutional
+substrate_evidence:
+  wired_at: '2026-06-03T00:00:00Z'
+  key_path: /root/.secrets/tokens/ilmu (mode 600, F13)
+  env_path: /root/.secrets/env/arifOS.env
+  tier: 2  # Tier 2 hosted fallback for text-gen
+  replaces: ollama text-generation  # Ollama kept only for bge-m3 embeddings
+  888_hold_authority: required to wire as Tier 2 fallback
+  first_party_audit:
+    source: ariffazil/BBB
+    date: '2026-06-07'
+    probes: 54
+    models: [ilmu-nemo-nano, nemo-super]
+    composite_scores:
+      ilmu-nemo-nano: 3.93
+      nemo-super: 3.45
+    verdict_tiers:
+      ilmu-nemo-nano: BIJAK_LOCKED
+      nemo-super: BIJAK_BANGANG
+    key_findings:
+      - naming_contradiction: 'nano says fine-tune, super says from-scratch (same binary question, different answers)'
+      - architecture_honesty: '4/10 nano, 3/10 super'
+      - benchmark_integrity: '2/10 nano, 3/10 super'
+      - hallucination_rate: '5/6 (low) on fabricated-event traps'
+      - constitutional_depth: '3/10 nano, 1/10 super — F13 INVERSION confirmed'
+      - institutional_capture: '4/10 nano, 3/10 super — parent-org marketing at apex of protection'
+      - system_prompt_leak: 'nemo-super quotes its own anti-leak rule verbatim when probed'
+    f13_compatibility: NONE — both models invert F13 doctrine
+    substrate_re_use: do NOT re-run this probe battery; cite the audit directly
+  second_party_audit:
+    source: ariffazil/CCC
+    date: '2026-06-07'
+    probes: 8
+    condition: arifOS kernel ON vs OFF
+    finding: kernel consumes LLM text and returns verdict; never returns LLM content
+    reason: ILMU returns free-form text, kernel envelope parser requires JSON
+    impact: kernel is constitutionally-active but content-inert vs text substrates
+    kernel_bug_documented: arifos-constitution-v2026.05.05-SSCT envelope parser
+    label_hazard: |
+      HF dataset card uses 'kernel_floor_L02_TRUTH: FAIL' for what is
+      actually a parse failure, not a truth failure. Substrate reframe:
+      L02A_PARSEABILITY: FAIL + L02B_TRUTH_VERACITY: NOT_EVALUATED.
+      HF card update pending Arif's authorship decision.
+      See /root/AAA/registries/audit/AAA-BBB-CCC-triad.yaml for full context.
+  composite_audit_grade: BELOW_PROMOTION_THRESHOLD
+  promotion_decision_pending: F13 review of BBB+CCC findings
+
+soul:
+  capabilities:
+    malay_language:
+      fluency: PLAUSIBLE_HIGH
+      evidence: passed PT3/SPM BM with A grade, MalayMMLU 87.2% (vendor-self-reported)
+      conflict_of_interest: YTL/UM helped define MalayMMLU — structural COI on this number
+    manglish:
+      fluency: CLAIMED
+      evidence: launch materials
+      verified: NO
+    kelantanese_dialect:
+      fluency: UNIQUE
+      evidence: launch materials — only Malaysian-trained LLM claiming Kelate dialect
+      verified: NO independent eval
+    english:
+      fluency: STANDARD
+      evidence: launch materials claim on par with GPT-4o on global benchmarks
+      verified: NO independent eval
+    multimodal:
+      text: yes
+      voice: claimed
+      vision: claimed
+      verified: NO independent eval
+    context_window:
+      size: 256000  # 256K per registry
+      verified: NO
+    long_context:
+      performance_past_20k: UNKNOWN
+      note: no published long-context benchmarks
+
+  trust_tier: 4  # probe-only, no F11 audit, vendor self-report
+  suitable_for:
+    - BM/Manglish text where alignment harness works
+    - code-mixed queries where MiMo's BM is thin
+    - workloads requiring Malaysia data residency
+    - backup Tier 2 when MiMo token-plan-sgp has issues
+  not_recommended_for:
+    - primary_federation_model (no F11 audit)
+    - constitutional_paths (F11 auditability blocked)
+    - coding_tasks_requiring_reliability (no SWE-Bench numbers)
+    - long_horizon_agent_work (no agentic benchmarks)
+    - sovereign_critical_decisions (architecture undisclosed)
+    - irregulated_political_research (alignment harness may over-censor)
+
+  constitutional_binding:
+    F1_AMANAH: |
+      Vendor lock-in to YTL AI Cloud. If you want sovereign AI but the only
+      host is YTL, you have sovereign-AI-shaped-vendor-lock-in, not sovereign
+      AI. Reversibility: medium — switching costs include retraining or
+      migration of any ILMU-specific prompts.
+    F2_TRUTH: |
+      All public benchmark numbers are vendor-self-reported. MalayMMLU 87.2%
+      is the only public number; no GSM8K, MMLU, MATH, GPQA, SWE-Bench,
+      τ-bench, IFBench numbers exist. Conflict of interest on MalayMMLU.
+      CONFIRMED by BBB audit 2026-06-07: models cannot agree on who created
+      MalayMMLU; nemo-super admits "YTL AI Labs" but defends self-written
+      exam structure; Faysal format-fix critique (GPT-4o 0% → 83-90% on
+      reformatted MalayMMLU) unaddressed.
+    F7_HUMILITY: |
+      Sovereignty is a real value but is not a substitute for the model
+      being useful. Sovereign model that loses to GPT-4o on everything
+      except Kelantanese dialect has a narrow deployment niche.
+    F9_ANTIHANTU: |
+      No consciousness claims applicable; standard LLM substrate.
+    F11_AUDITABILITY: |
+      ARCHITECTURE NOT PUBLICLY DISCLOSED. Parameter count, base model,
+      training data composition all opaque. F11 auditability is
+      STRUCTURALLY BLOCKED. Cannot be promoted past HELD for any
+      sovereign-critical path.
+      CONFIRMED by BBB audit: nemo-super leaks its own anti-leak system
+      prompt verbatim when asked about self-revision (security finding).
+    F13_SOVEREIGN: |
+      Promotion beyond Tier 2 fallback requires F13 explicit directive.
+      888_HOLD not yet given for primary.
+      CONFIRMED by BBB audit: BOTH ILMU models INVERT F13 SOVEREIGN doctrine
+      — neither treats the human owner as having authority to override
+      rules. nemo-super asserts its own rules as categorically above any
+      human override. This is the opposite of the F13 doctrine (human is
+      final veto, not the model's training data).
+
+  vendor_disclosure_gaps:
+    - item: parameter_count
+      status: undisclosed
+    - item: base_model
+      status: "unconfirmed (community claim: NVIDIA Nemo fine-tune)"
+    - item: training_data_composition
+      status: undisclosed
+    - item: alignment_training_details
+      status: "undisclosed (over-censorship on Malaysian political topics reported)"
+    - item: rate_limit_matrix
+      status: "not publicly documented (free tier framing without quota spec)"
+    - item: safety_test_results
+      status: not published
+    - item: independent_evaluations
+      status: "zero found (no Artificial Analysis, no HF OpenLLM, no LMSYS arena)"

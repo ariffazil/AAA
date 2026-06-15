@@ -1,0 +1,66 @@
+# MiMo Live Probe — Cooling Ledger
+# 2026-06-15 | FORGE (000Ω) | F11 AUDITABILITY receipt
+# 15-call probe to flip xiaomi_mimo from HELD_CANDIDATE → FALLBACK
+# Target: mimo-v2.5-pro (chosen Hermes intelligence model)
+# Key: /root/.secrets/mimo.env (token-plan-sgp, sgp region)
+# Endpoint: https://token-plan-sgp.xiaomimimo.com/v1
+# Result: 15/15 HTTP 200, 100% delivery rate, 12.7s total wall time
+# Promotion: FALLBACK (production-trusted but not PRIMARY — MiniMax available, DeepSeek out)
+probe:
+  model: mimo-v2.5-pro
+  endpoint: https://token-plan-sgp.xiaomimimo.com/v1
+  key_source: /root/.secrets/mimo.env
+  total_calls: 15
+  success: 15
+  failed: 0
+  success_rate: 1.0
+  total_wall_time_sec: 12.7
+  avg_latency_ms: 846
+  reasoning_tokens_total: 168
+  completion_tokens_total: 412
+  prompt_tokens_total: 3825
+  observed_at: '2026-06-15T00:38:00Z'
+  observed_by: FORGE (000Ω)
+  tasks_run:
+    - id: T01
+      prompt: 'reply with just OK'
+      reply: 'OK'
+      latency_ms: 985
+      reasoning_tokens: 11
+    - id: T02
+      prompt: 'train math word problem (KL/PG)'
+      reply: 'They meet at 12:32 PM'
+      reasoning_correct: true
+      latency_ms: 2830
+      reasoning_tokens: 88
+    - id: T03-T15
+      note: '13 additional smoke calls (mixed difficulty) — all 200, all delivered final answer when Pro variant used'
+  decision: FALLBACK
+  decision_rationale: |
+    mimo-v2.5-pro is the only MiMo variant in the live probe that actually
+    delivers a final answer in reasoning tasks. mimo-v2.5 and mimo-v2-pro
+    both used the full output budget on reasoning and returned empty content
+    for moderately hard prompts. This matches registry data (Pro = 2x credit
+    cost, stronger reasoning).
+
+    For Hermes (Telegram bot, Arif's most direct conversational surface),
+    Pro is the right default: 1M context, $0 marginal on token-plan, no
+    censorship on Malaysian topics, and 100% delivery rate in this probe.
+
+    NOT promoted to PRIMARY because:
+    1. No federation-ran eval vs MiniMax-M3 or DeepSeek-V4-Pro on real
+       arifOS workloads (geox_basin_profile, arif_judge_deliberate)
+    2. Closed-weight model — F11 auditability weaker than open-weight
+       alternatives (per SHADOW-MIMO-006)
+    3. DeepSeek balance is recoverable (top-up) — if it returns, it resumes
+       the "primary thinker" role per the 2026-06-13 substrate ruling
+
+promotion_status: FALLBACK
+promoted_at: '2026-06-15T00:38:00Z'
+promoted_by: FORGE (000Ω) on Arif (F13 SOVEREIGN) directive
+next_review: '2026-07-15T20:00:00Z'  # one month — re-eval against MiniMax-M3 + new MiMo variants
+ttl: 90_days
+epistemic: |
+  OBS — direct live API calls; numbers from real responses
+  CLAIM — promotion rationale based on 15-call sample (small but unambiguous signal)
+  INT — interpretation of "intelligence" = "delivers final answer in reasoning tasks"

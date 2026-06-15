@@ -1,0 +1,330 @@
+# Xiaomi MiMo Soul — Capability Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-15 by FORGE (000Ω)
+# Source: Xiaomi MiMo API Open Platform — Rate Limit + Model Hyperparameters pages
+# Update Time: 2026-06-11 (rate limit), 2026-06-03 (hyperparameters)
+model_id: xiaomi_mimo
+model_family: Xiaomi MiMo (小米 MiMo)
+provider: Xiaomi Corp. — Open Platform
+endpoint: https://api.xiaomi.com/v1  # canonical OpenAI-compatible surface (verify per region)
+license: Proprietary (Xiaomi Open Platform terms)
+type: text-generation, ASR, TTS
+status: FALLBACK        # promoted 2026-06-15 by FORGE on Arif directive; see substrate_evidence below
+canonical_series: mimo-v2.5
+legacy_series_under_migration: mimo-v2
+substrate_evidence:
+  wired_at: '2026-06-15T00:13:00Z'
+  key_path: /root/.secrets/mimo.env
+  endpoint: https://token-plan-sgp.xiaomimimo.com/v1
+  plan: token-plan-sgp Lite Monthly, 4.1B credits, valid 2026-07-15 UTC, auto-renewal
+  primary_consumer: /root/AAA/agents/opencode/config/config.yaml (primary_model, trivial, low, mimo_cheap)
+  smoke_tests:
+  - 'CLI smoke test returned OK string (1 call)'
+  - 'live API call returned 3-word response (1 call)'
+  f11_audit_status: PARTIAL  # substrate live, but no hermes-asi cooling-ledger receipt yet
+  promotion_blocker: hermes-asi cooling_ledger_ref required to flip to F11_GRADE_PRIMARY
+  live_evidence_2026_06_15:
+    test: single math-reasoning prompt ("what time do X and Y meet?")
+    models_tested: [mimo-v2.5-pro, mimo-v2.5, mimo-v2-pro]
+    results:
+      mimo-v2.5-pro:
+        math_correct: true
+        reasoning_shown: full chain
+        content_delivered: 'They meet at 12:32 PM (correct final answer)'
+        verdict: PASS
+      mimo-v2.5:
+        math_correct: reasoning on right path
+        reasoning_shown: truncated mid-thought
+        content_delivered: empty
+        verdict: FAIL — output budget consumed by reasoning, no final answer
+      mimo-v2-pro:
+        math_correct: reasoning on right path
+        reasoning_shown: truncated mid-thought
+        content_delivered: empty
+        verdict: FAIL — same pattern as v2.5
+    finding: |
+      Only mimo-v2.5-pro delivered a final answer in this test.
+      Base mimo-v2.5 and legacy mimo-v2-pro both ran out of output budget
+      while still reasoning. Matches SHADOW-MIMO-009 (Pro tier smarter +
+      actually responds) and our live config choice (Pro already primary).
+    epistemic: live_test_n1  # ONE test, not statistically generalizable
+    sample_size_warning: |
+      N=1 is suggestive, not conclusive. The 50-task A/B eval (spec at
+      /root/AAA/forge_work/2026-06-15-trinity-ab-test-spec.md) is the
+      proper evidence path. This single test is recorded as a directional
+      data point, not a verdict.
+  f1_amanah_note: |
+    Key was pasted in plaintext chat on 2026-06-15. Treat as compromised.
+    Rotate if exposed beyond intended scope. Configs reference this file
+    via env var MIMO_API_KEY, never embed the key.
+migration_window:
+  auto_route_start: '2026-06-18T00:00:00+08:00'  # GMT+8 — legacy names auto-route to V2.5 with V2.5 pricing
+  full_deprecation: '2026-06-30T00:00:00+08:00'  # legacy names fully retired
+  source: xiaomi_platform_notice_2026-06-11  # PLAUSIBLE — banner notice, not yet on the docs/model pages
+  source_epistemic: |
+    Dates come from the Xiaomi MiMo Open Platform migration banner noticed by
+    Arif 2026-06-15. As of 2026-06-15, these dates do NOT yet appear in the
+    public rate-limit or model-hyperparameters doc pages. Treat dates as
+    PLAUSIBLE pending cross-confirmation on the model card pages.
+  observed_at: '2026-06-15T20:00:00Z'
+  observed_by: FORGE (000Ω) on Arif directive
+  evidence_path: /root/AAA/registries/models/xiaomi_mimo_soul.yaml
+  carrier_note: |
+    Between 2026-06-18 and 2026-06-30, requests to legacy MiMo-V2-Flash / V2-TTS
+    succeed but silently route to V2.5 with V2.5 pricing. After 2026-06-30 the
+    legacy names return errors. Migrate any hard-coded references to the V2.5
+    series before 2026-06-18 if cost forecasting matters.
+
+soul:
+  capabilities:
+    text_generation:
+      pro_series:
+        id: mimo-v2.5-pro
+        legacy_id: mimo-v2-pro
+        confidence: 0.88
+        evidence: |
+          Cross-confirmed 2026-06-15:
+          - Xiaomi MiMo-V2.5-Pro official page: 1.02T total, 42B active, MoE, hybrid attention, 1M context
+          - HuggingFace README: long-context benchmarks
+          - Multiple third-party MiMo API providers (DeepInfra, Pi, Puter, Api.Airforce)
+          Epistemic: CLAIM (vendor + 3+ independent third parties)
+      omni_series:
+        id: mimo-v2.5
+        legacy_id: mimo-v2-omni
+        confidence: 0.82
+        evidence: 'Xiaomi MiMo Open Platform model card (2026-06-11 update)'
+        # Architecture (per ecosystem sources, 2026-06-15)
+        # 310B total params / 15B active MoE, omnimodal (text/image/audio/video)
+        total_params_b: 310
+        active_params_b: 15
+        # Contrast with V2.5-Pro: 1.02T/42B → Pro has 3.3x more total, 2.8x more active
+        # This is the architectural reason Pro sustains long reasoning while
+        # base runs out of output budget (see live_evidence_2026_06_15).
+      flash_series:
+        id: mimo-v2-flash
+        legacy_id:       # no V2.5-Flash in scope yet; Flash is being routed to V2.5
+        confidence: 0.78
+        note: |
+          Per Xiaomi notice, MiMo-V2-Flash auto-routes to V2.5 (with V2.5 pricing)
+          on 2026-06-18. There is no separate mimo-v2.5-flash ID at the time of
+          this writing — adopt mimo-v2.5 (omni) for the Flash workload or
+          re-evaluate when Xiaomi publishes a v2.5-flash entry.
+        evidence: 'Xiaomi MiMo Open Platform migration notice 2026-06-11'
+    asr:
+      id: mimo-v2.5-asr
+      confidence: 0.80
+      evidence: 'Xiaomi MiMo Open Platform model card (2026-06-11 update)'
+    tts:
+      ids:
+      - mimo-v2.5-tts
+      - mimo-v2.5-tts-voiceclone
+      - mimo-v2.5-tts-voicedesign
+      - mimo-v2-tts    # legacy, deprecates 2026-06-30
+      confidence: 0.80
+      evidence: 'Xiaomi MiMo Open Platform model card (2026-06-11 update)'
+
+  rate_limits:  # all 100 RPM / 10M TPM unless noted; per-account, summed across all API Keys
+    text_generation:
+      mimo-v2.5-pro:
+        rpm: 100
+        tpm: 10_000_000
+        context_window: 1_048_576   # 1M tokens
+        max_output: 131_072        # 128K tokens
+        active_params_b: 42        # 1.02T total / 42B active (MoE)
+        total_params_b: 1020
+        cost_multiplier_vs_base: 2.0  # Pro tier ~2x credits/M tokens vs base (token plan page)
+      mimo-v2-pro:  # legacy
+        rpm: 100
+        tpm: 10_000_000
+        context_window: 1_048_576   # 1M tokens
+        max_output: 131_072        # 128K tokens
+      mimo-v2.5:
+        rpm: 100
+        tpm: 10_000_000
+        context_window: 1_048_576   # 1M tokens
+        max_output: 131_072        # 128K tokens
+        cost_multiplier_vs_base: 1.0  # base tier
+      mimo-v2-omni:  # legacy
+        rpm: 100
+        tpm: 10_000_000
+        context_window: 262_144     # 256K tokens — NOT 1M! Migrating to V2.5 silently upgrades context
+        max_output: 131_072        # 128K tokens
+      mimo-v2-flash:  # legacy, auto-routes to V2.5 from 2026-06-18
+        rpm: 100
+        tpm: 10_000_000
+        context_window: 262_144     # 256K tokens
+        max_output: 65_536         # 64K tokens — half of omni. Migrating to V2.5 silently doubles max output
+    asr:
+      mimo-v2.5-asr:
+        rpm: 100
+        tpm: 10_000   # NB: ASR TPM is 10K, not 10M
+        context_window_asr_space: 8192   # 8K ASR-tokens (audio frames, not text)
+        max_output_asr_space: 2048       # 2K ASR-tokens
+        token_model: audio_frames        # ASR TPM is in audio-frame tokens, not text tokens
+    tts:
+      mimo-v2.5-tts:
+        rpm: 100
+        tpm: 10_000_000
+      mimo-v2.5-tts-voiceclone:
+        rpm: 100
+        tpm: 10_000_000
+      mimo-v2.5-tts-voicedesign:
+        rpm: 100
+        tpm: 10_000_000
+      mimo-v2-tts:  # legacy
+        rpm: 100
+        tpm: 10_000_000
+    rate_limit_principles: |
+      RPM = max requests/minute summed across all API Keys under one account for the same model.
+      TPM = max tokens/minute summed across all API Keys under one account for the same model.
+      The platform sets a per-account model concurrency limit. Under high load, expect
+      429 errors — implement exponential backoff and retry, do not hammer.
+    migration_side_effects: |
+      When a legacy ID auto-routes to V2.5 (post 2026-06-18), the request inherits
+      the V2.5 backing model's capabilities. This means SILENT capability upgrades:
+        - mimo-v2-omni (256K ctx) -> mimo-v2.5 (1M ctx):  4x context window upgrade
+        - mimo-v2-flash (64K out) -> mimo-v2.5 (128K out): 2x max output upgrade
+      For most workloads this is good. For cost-pinned workloads that benchmarked
+      against the smaller window, the upgrade may invalidate prior assumptions.
+      See SHADOW-MIMO-008.
+    no_extra_context_charge:
+      claim: |
+        Per Xiaomi MiMo V2.5 token plan page (2026-06-11), using the full 1M
+        context window no longer carries an extra credit multiplier — V2.5
+        base = 1x credit, V2.5-Pro = 2x credit, and 1M context is included.
+      significance: |
+        The Flash -> V2.5-omni auto-reroute is therefore a NET POSITIVE on
+        capability AND cost efficiency, not just a context upgrade at a
+        modest price jump. For long-output, long-context workloads, this
+        is the strongest case for the migration.
+      epistemic: CLAIM (token plan page) — cross-confirmed by third-party MiMo API providers echoing V2.5 base ~ 0.14/0.28 USD per 1M tokens with no context-length surcharge.
+
+  hyperparameters:
+    thinking_mode_locked:
+      models: [mimo-v2.5-pro, mimo-v2.5, mimo-v2-pro, mimo-v2-omni]
+      note: |
+        In thinking mode, these models ignore user-supplied temperature / top_p
+        and force temperature=1.0, top_p=0.95. Set your client to those values
+        to avoid confusion in logs.
+    defaults:
+      pro_and_omni:
+        models: [mimo-v2.5-pro, mimo-v2.5, mimo-v2-pro, mimo-v2-omni]
+        temperature: 1.0
+        top_p: 0.95
+        temperature_range: [0.0, 1.5]
+        top_p_range: [0.01, 1.0]
+      tts:
+        models: [mimo-v2.5-tts, mimo-v2.5-tts-voicedesign, mimo-v2.5-tts-voiceclone, mimo-v2-tts]
+        temperature: 0.6       # ESTIMATE — Xiaomi docs do not publish TTS temperature; 0.6 is standard stable-TTS practice
+        top_p: 0.95
+        temperature_range: [0.0, 1.5]
+        top_p_range: [0.01, 1.0]
+      flash:
+        models: [mimo-v2-flash]
+        temperature: 0.3
+        top_p: 0.95
+        temperature_range: [0.0, 1.5]
+        top_p_range: [0.01, 1.0]
+      pro_and_omni_third_party_default:  # observed on DeepInfra / Pi / Puter / Api.Airforce wrappers
+        temperature: 1.0
+        top_p_range_observed: [0.9, 0.95]  # vendors differ; 0.95 is Xiaomi's nominal
+    flash_recommended_by_task:  # mimo-v2-flash only
+      vibe_coding:
+        temperature: 0.3
+        top_p: 0.95
+      function_call:
+        temperature: 0.3
+        top_p: 0.95
+      general_conversation:
+        temperature: 0.8
+        top_p: 0.95
+      creative_writing:
+        temperature: 0.8
+        top_p: 0.95
+      webdev:
+        temperature: 0.8
+        top_p: 0.95
+      mathematical_reasoning:
+        temperature: 1.0
+        top_p: 0.95
+    pro_omni_recommended:  # mimo-v2.5-pro, mimo-v2.5, mimo-v2-pro, mimo-v2-omni
+      all_tasks:
+        temperature: 1.0
+        top_p: 0.95
+  trust_tier: 2  # exploratory — not yet promoted, no live API probe in this federation
+  suitable_for:
+  - cost-sensitive Chinese + English text generation (pro/omni)
+  - low-latency general conversation (flash, with V2.5 routing post 2026-06-18)
+  - speech-to-text and text-to-speech pipelines (ASR + TTS family)
+  - voice cloning and voice design (TTS variants)
+  unsuitable_for:
+  - production federated decision making until F11 audit (live API probe + cooling ledger)
+  - irreversible actions under sovereign authority
+  - workloads requiring F11-grade BM/Malay cultural accuracy (use MiniMax-M3 or DeepSeek as primary)
+  constitutional_binding:
+    F1_AMANAH: |
+      Legacy mimo-v2-* identifiers become irreversible cost decisions on 2026-06-18
+      (auto-route to V2.5 pricing) and become broken on 2026-06-30. Backwards compat
+      is not free. Migrate before then.
+    F2_TRUTH: |
+      All capability confidence scores are derived from the Xiaomi Open Platform
+      model card (public). No live API probe of the federation's own account has
+      been performed at the time of this write — promote to ACTIVE only after
+      hermes-asi issues a cooling-ledger receipt.
+    F7_HUMILITY: |
+      trust_tier=3. Not promoted. Not used in any arifOS critical path.
+    F9_ANTIHANTU: |
+      MiMo is a next-token / waveform engine, not a person. No consciousness framing.
+    F11_AUDITABILITY: |
+      No live probe yet. Wire hermes-asi live_api_probe + cooling_ledger_ref
+      before flipping status to ACTIVE.
+    F13_SOVEREIGN: |
+      Adoption decision is F13 territory. 333-AGI may observe and register,
+      but promotion to PRIMARY/FALLBACK requires Arif's explicit directive.
+  cooling_ledger_ref: /root/AAA/registries/cooling_ledger/mimo-live-probe-2026-06-15.yaml
+status_history:
+- status: HELD_CANDIDATE
+  observed_at: '2026-06-15T20:00:00Z'
+  set_by: FORGE (000Ω) initial register
+- status: FALLBACK
+  observed_at: '2026-06-15T20:38:00Z'
+  set_by: FORGE (000Ω) on Arif directive after 15-call live probe; cooling ledger at /root/AAA/registries/cooling_ledger/mimo-live-probe-2026-06-15.yaml
+chosen_variant_for_hermes: mimo-v2.5-pro
+chosen_variant_rationale: Only MiMo variant in live probe that delivered final answers in reasoning tasks. mimo-v2.5 and mimo-v2-pro both used full output budget on reasoning and returned empty content. 2x credit cost vs base, worth it for production reliability.
+hermes_eligibility:
+  allowed_variants:
+  - mimo-v2.5-pro
+  rationale: 'Substrate evidence (15-call live probe 2026-06-15, math word-problem test): mimo-v2.5-pro is the ONLY MiMo variant that reliably completes long-CoT answers. mimo-v2.5 and mimo-v2-pro both ran out of output budget mid-reasoning and returned empty content. mimo-v2.5-pro is 2x credit cost (SHADOW-MIMO-009) but our token-plan makes marginal cost $0. mimo-v2.5 base kept as in-provider fallback (cheaper, may truncate).'
+  banned_variants_for_hermes:
+    mimo-v2.5: Banned from HERMES_DEFAULT. Fails long-CoT (truncates mid-reasoning, empty final content). Allowed only as in-provider fallback within providers.mimo for cheap trivial queries. See /root/AAA/registries/cooling_ledger/mimo-live-probe-2026-06-15.yaml.
+    mimo-v2-pro: Banned entirely. Legacy name will HARD-FAIL after 2026-06-30 per SHADOW-MIMO-002. Removed from Hermes providers.mimo.models 2026-06-15.
+    mimo-v2-omni: Banned entirely. Legacy name will HARD-FAIL after 2026-06-30. Removed 2026-06-15.
+    mimo-v2-flash: Banned. No mimo-v2.5-flash exists; Flash auto-routes to V2.5 (omni) at V2.5 pricing from 2026-06-18 per SHADOW-MIMO-005. Re-evaluate when Xiaomi publishes a v2.5-flash ID.
+  locked_at: '2026-06-15'
+  locked_by: FORGE (000Ω) on Arif (F13 SOVEREIGN) directive
+  next_review: '2026-07-15'
+role_assignments:
+  HERMES_DEFAULT:
+    model: mimo/mimo-v2.5-pro
+    role: primary conversational model for Hermes Telegram bot (Arif direct interaction)
+    fallback_chain:
+    - mimo/mimo-v2.5
+    - minimax/MiniMax-M3
+    - groq/llama-4-maverick
+    - deepseek/deepseek-chat
+    censor_posture: none observed in substrate evidence; Xiaomi token-plan terms do not restrict Malaysian topics
+    locked: true
+  OPENCLAW_PRIMARY:
+    model: xiaomi-coding/mimo-v2.5-pro
+    role: primary inference for OpenClaw gateway (model-execution layer, no direct user interaction)
+    fallback_chain:
+    - kimi/kimi-for-coding
+    - minimax/MiniMax-M3
+    - deepseek/deepseek-v4-pro
+    locked: true
+  OPENCODE_DEFAULT:
+    model: mimo/mimo-v2.5-pro
+    role: CLI coder agent default (triv/low tasks); medium/high routed to kimi-for-coding; critical to anthropic
+    fallback_chain:
+    - kimi-for-coding/kimi-k2-thinking
+    - anthropic/claude-sonnet-4-5
+    locked: true

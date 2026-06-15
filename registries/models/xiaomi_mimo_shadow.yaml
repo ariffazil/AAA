@@ -1,0 +1,281 @@
+# Xiaomi MiMo Shadow — Hazard Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-15 by FORGE (000Ω)
+model_id: xiaomi_mimo_shadow
+version: 0.1.0
+status: DRAFT (no live API probe of federation account yet; hazards are projected from public docs)
+
+shadow:
+
+  - id: SHADOW-MIMO-001
+    name: silent_legacy_price_reroute
+    severity: HIGH
+    class: cost_transparency
+    pattern: |
+      Between 2026-06-18 and 2026-06-30 (GMT+8), Xiaomi silently auto-routes
+      requests to legacy names (mimo-v2-flash, mimo-v2-tts, mimo-v2-pro,
+      mimo-v2-omni) onto the V2.5 series at V2.5 pricing. No response header
+      distinguishes a routed call from a native V2.5 call. Cost dashboards
+      that aggregate per-model spend will mis-attribute spend during this
+      window and after.
+    triggers: [legacy_model_id, no_migration_window_check, cost_attribution]
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+      F2_TRUTH: strict_grounding
+      F11_AUDIT: provenance_required
+    mitigation:
+      - "Migrate any hard-coded mimo-v2-* references to mimo-v2.5-* before 2026-06-18 00:00 GMT+8"
+      - "Tag cost events with migration_window_phase = pre|grace|post"
+      - "Reconcile per-model bills against the Xiaomi invoice after 2026-07-01"
+    evidence: "Xiaomi MiMo Open Platform notice 2026-06-11"
+
+  - id: SHADOW-MIMO-002
+    name: legacy_name_hard_failure_post_deprecation
+    severity: HIGH
+    class: availability
+    pattern: |
+      After 2026-06-30 (GMT+8), legacy model names (mimo-v2-flash, mimo-v2-tts,
+      mimo-v2-pro, mimo-v2-omni, mimo-v2-tts) return errors instead of routing.
+      Any agent or pipeline that retained a legacy ID will hard-fail on first
+      request after this date. Failure mode: 4xx error from the gateway.
+    triggers: [legacy_model_id, no_migration_plan, hardcoded_string]
+    floor_posture_delta:
+      F1_AMANAH: irreversibility_hold
+      F8_LAW: system_boundary
+      F11_AUDIT: provenance_required
+    mitigation:
+      - "Replace every literal 'mimo-v2-' prefix with 'mimo-v2.5-' (with the dot) before 2026-06-18"
+      - "NB: V2 used a dash, V2.5 uses a dot — string replace must be exact, not partial"
+      - "Add a model-id linter to AAA agents.yaml that flags any string starting with 'mimo-v2-' (without trailing dot)"
+    evidence: "Xiaomi MiMo Open Platform notice 2026-06-11"
+
+  - id: SHADOW-MIMO-003
+    name: thinking_mode_hyperparameter_silently_ignored
+    severity: MEDIUM
+    class: determinism
+    pattern: |
+      In thinking mode, mimo-v2.5-pro / mimo-v2.5 / mimo-v2-pro / mimo-v2-omni
+      ignore user-supplied temperature and top_p and force them to 1.0 and 0.95
+      respectively. Clients that log sent-vs-effective values will see
+      divergence with no error. Reproducibility suffers when an agent re-runs
+      a task with different "intended" sampling.
+    triggers: [thinking_mode, custom_temperature, custom_top_p]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: parameter_logging
+    mitigation:
+      - "When thinking_mode=true, log temperature=1.0, top_p=0.95 explicitly in the request envelope"
+      - "Disable thinking_mode unless the task genuinely needs chain-of-thought budget"
+    evidence: "Xiaomi MiMo Open Platform Model Hyperparameters page, 2026-06-03 update"
+
+  - id: SHADOW-MIMO-004
+    name: asr_tpm_asymmetry_with_audio_frame_token_model
+    severity: MEDIUM
+    class: rate_limit
+    pattern: |
+      ASR (mimo-v2.5-asr) has TPM=10K while all other text and TTS models have
+      TPM=10M. The asymmetry is amplified by the ASR token model: ASR TPM is
+      in AUDIO FRAME tokens, not text tokens. Context window is 8K ASR-tokens,
+      max output 2K ASR-tokens. A client that estimates ASR cost in text-token
+      units will be off by an order of magnitude or more. Long recordings
+      (e.g. 1-hour audio = ~3600s) consume ASR tokens at a steady per-second
+      rate and will hit 10K TPM within the first ~6 minutes of a single
+      1-hour file. 429 errors arrive after the account is already throttled.
+      The RPM limit (100) is identical to text models, masking the TPM gap.
+    triggers: [long_audio_batch, mimo-v2.5-asr, multi_file_transcription, text_token_assumption]
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: parameter_logging
+    mitigation:
+      - "Model ASR capacity in audio_minutes, not text tokens"
+      - "Implement per-model backpressure; never share a token-bucket between ASR and text/TTS"
+      - "Default conservative ASR concurrency to RPM=10, not 100"
+      - "Pre-flight check: file_duration_sec * frames_per_sec / 60 <= 10K ASR-TPM allowance"
+    evidence: "Xiaomi MiMo Open Platform Rate Limit + ASR model card, 2026-06-11 update; Perplexity cross-check 2026-06-15"
+
+  - id: SHADOW-MIMO-005
+    name: flash_model_collapse_into_v25_pricing
+    severity: HIGH
+    class: cost_transparency
+    pattern: |
+      There is no separate mimo-v2.5-flash model ID at the time of this writing.
+      Calls to mimo-v2-flash (legacy) are routed to mimo-v2.5 (omni tier) with
+      V2.5 pricing from 2026-06-18. Workloads that picked Flash for cost reasons
+      will pay V2.5 prices without warning. There is no V2.5-Flash path to
+      migrate to.
+    triggers: [mimo-v2-flash, cost_optimization_workload, no_native_v25_flash]
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+      F2_TRUTH: strict_grounding
+    mitigation:
+      - "If Flash-tier cost was the reason for adoption, do not migrate Flash workloads to V2.5 (omni) — re-evaluate workload economics"
+      - "Use mimo-v2.5 (omni) only for workloads that were tolerant of V2-Omni pricing"
+      - "Watch Xiaomi announcements for a future mimo-v2.5-flash ID"
+    evidence: "Xiaomi MiMo Open Platform model card, 2026-06-11 update"
+
+  - id: SHADOW-MIMO-006
+    name: closed_source_audit_gap
+    severity: MEDIUM_HIGH
+    class: auditability
+    pattern: |
+      Xiaomi MiMo API is closed-weight and closed-dataset. F11 auditability
+      is weaker than open-weight alternatives (DeepSeek V3, MiniMax M3 for
+      agentic long-context). For sovereign or regulated workloads, this
+      limits the ability to inspect training provenance, red-team
+      systematically, or verify the constitutional floors hold under
+      the actual model weights.
+    triggers: [sovereign_workload, regulated_data, audit_required]
+    floor_posture_delta:
+      F11_AUDIT: elevated
+    mitigation:
+      - "Do not route sovereign data, Petronas-tier institutional information, or regulator-bound artifacts through MiMo"
+      - "Reserve MiMo for cost-sensitive, non-sovereign text + voice workloads"
+    evidence: "Xiaomi MiMo Open Platform terms of service (proprietary, closed weights)"
+
+  - id: SHADOW-MIMO-007
+    name: model_id_naming_drift
+    severity: LOW
+    class: hygiene
+    pattern: |
+      The legacy series uses a dash (mimo-v2-pro, mimo-v2-omni, mimo-v2-flash,
+      mimo-v2-tts) while the V2.5 series uses a dot (mimo-v2.5-pro, mimo-v2.5,
+      mimo-v2.5-tts). A naive string replace on the substring 'mimo-v2' will
+      produce invalid IDs like 'mimo-v2.5-pro' from a string that was already
+      'mimo-v2-pro' (collisions, false positives, and case-mismatched tails).
+    triggers: [bulk_migration_script, regex_replace]
+    floor_posture_delta:
+      F4_CLARITY: parameter_logging
+    mitigation:
+      - "Use an explicit allowlist map: {'mimo-v2-pro': 'mimo-v2.5-pro', 'mimo-v2-omni': 'mimo-v2.5', 'mimo-v2-flash': 'mimo-v2.5', 'mimo-v2-tts': 'mimo-v2.5-tts'}"
+      - "Reject any model_id that contains both 'mimo-v2' and 'mimo-v2.5' (it has been migrated twice)"
+      - "Add a unit test that imports the migration table and checks every legacy key has a V2.5 successor"
+    evidence: "Xiaomi MiMo Open Platform model card 2026-06-11 — name pattern inspection"
+
+  - id: SHADOW-MIMO-008
+    name: silent_capability_upgrade_on_legacy_reroute
+    severity: MEDIUM
+    class: capability_drift
+    pattern: |
+      When legacy model IDs auto-route to V2.5 on 2026-06-18, requests inherit
+      the V2.5 backing model's full capabilities — including context window
+      and max output. Workloads pinned to legacy limits will silently gain
+      capability:
+        - mimo-v2-omni (256K context)  -> mimo-v2.5 (1M context):  4x window
+        - mimo-v2-flash (64K output)   -> mimo-v2.5 (128K output): 2x max output
+      For most workloads this is good. For cost-pinned workloads that
+      benchmarked against the smaller window, or for clients that pass
+      context_length as a request parameter to validate their budget, the
+      silent upgrade may:
+        (a) Invalidate prior latency / cost benchmarks
+        (b) Trigger client-side validation that rejects the larger response
+        (c) Cause unexpected context caching behavior
+      No response header marks the routed vs native call.
+    triggers: [legacy_model_id, context_pinned_workload, response_size_validation, cost_benchmark_drift]
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: parameter_logging
+      F11_AUDIT: provenance_required
+    mitigation:
+      - "Tag every request with migration_window_phase = pre|grace|post and emit telemetry"
+      - "Re-run latency / cost benchmarks for any legacy-ID workload after 2026-06-18"
+      - "If the workload was tuned to 64K max output, validate the V2.5 response is still within the same budget or raise the budget explicitly"
+    evidence: "Per-model context_window and max_output from Xiaomi model card 2026-06-11; cross-checked via Perplexity 2026-06-15"
+
+  - id: SHADOW-MIMO-009
+    name: pro_cost_multiplier_2x_vs_base
+    severity: MEDIUM
+    class: cost_transparency
+    pattern: |
+      Per Xiaomi's token plan page, the V2.5-Pro tier carries approximately
+      a 2x credit multiplier vs the V2.5 (base/omni) tier per million tokens.
+      This is not visible on the rate-limit page. If any workload auto-routes
+      to V2.5-Pro instead of V2.5 (e.g. via an alias or future model name
+      collision), cost forecasting using base-tier numbers will under-budget
+      by 2x. The shadow compounds with SHADOW-MIMO-001 (silent price reroute)
+      and SHADOW-MIMO-008 (silent capability upgrade) — a workload can
+      silently double in cost AND capability at the same time, with no
+      observable signal in the response.
+    triggers: [pro_tier_assumption, cost_per_million_estimate, base_tier_pricing]
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+      F2_TRUTH: strict_grounding
+      F11_AUDIT: provenance_required
+    mitigation:
+      - "Always read the model_id echo in the API response; treat it as the source of truth for billing"
+      - "Reconcile monthly invoices against per-model cost projections using actual model_id, not assumed"
+      - "If a workload must stay on base tier, hard-pin the model_id string and reject any response that returns a different ID"
+    evidence: "Xiaomi MiMo Open Platform token plan page (Perplexity cross-check 2026-06-15)"
+
+  - id: SHADOW-MIMO-010
+    name: legacy_name_migration_executed_2026_06_15
+    severity: INFO
+    class: lifecycle
+    pattern: |
+      On 2026-06-15, FORGE migrated hardcoded legacy mimo-v2-* IDs from
+      production configs in advance of the 2026-06-18 silent auto-reroute.
+      Files touched:
+        - /root/.openclaw/openclaw.json
+            - Removed: "xiaomi-coding/mimo-v2-pro", "xiaomi-coding/mimo-v2-omni"
+            - Migrated 2 model-list entries from mimo-v2-pro to mimo-v2.5-pro
+            - Added migration note (mimo_v2_removed_note) referencing this shadow file
+        - /root/.openclaw/agents/main/agent/models.json
+            - Migrated "mimo-v2-pro" entry to "mimo-v2.5-pro"
+      Backups: /root/.openclaw/openclaw.json.bak.2026-06-15-mimo-migration
+               /root/.openclaw/agents/main/agent/models.json.bak.2026-06-15-mimo-migration
+      Risk eliminated: silent cost reroute on 2026-06-18 will no longer
+      affect these two production paths. Silent capability upgrade (4x
+      context, 2x output) still applies — see SHADOW-MIMO-008.
+      Audit trail: forge_work/2026-06-15-mimo-migration-summary.md
+      (to be written) or this shadow entry.
+    triggers: [migration_complete, audit_trail]
+    floor_posture_delta:
+      F1_AMANAH: reversibility_hold
+    mitigation:
+      - "Production configs cleared of legacy IDs ahead of 2026-06-18"
+      - "Backups in place for rollback if needed"
+      - "Migration note in config file points at shadow file for context"
+    evidence: "Diff applied 2026-06-15; JSON parse-verified; grep confirmed zero remaining mimo-v2-pro/omni/flash/tts in production configs"
+    severity: MEDIUM
+    class: cost_transparency
+    pattern: |
+      Per Xiaomi's token plan page, the V2.5-Pro tier carries approximately
+      a 2x credit multiplier vs the V2.5 (base/omni) tier per million tokens.
+      This is not visible on the rate-limit page. If any workload auto-routes
+      to V2.5-Pro instead of V2.5 (e.g. via an alias or future model name
+      collision), cost forecasting using base-tier numbers will under-budget
+      by 2x. The shadow compounds with SHADOW-MIMO-001 (silent price reroute)
+      and SHADOW-MIMO-008 (silent capability upgrade) — a workload can
+      silently double in cost AND capability at the same time, with no
+      observable signal in the response.
+    triggers: [pro_tier_assumption, cost_per_million_estimate, base_tier_pricing]
+    floor_posture_delta:
+      F1_AMANAH: cost_hold
+      F2_TRUTH: strict_grounding
+      F11_AUDIT: provenance_required
+    mitigation:
+      - "Always read the model_id echo in the API response; treat it as the source of truth for billing"
+      - "Reconcile monthly invoices against per-model cost projections using actual model_id, not assumed"
+      - "If a workload must stay on base tier, hard-pin the model_id string and reject any response that returns a different ID"
+    evidence: "Xiaomi MiMo Open Platform token plan page (Perplexity cross-check 2026-06-15)"
+
+provenance:
+  source: Xiaomi_MiMo_Open_Platform_public_docs
+  evidence_refs:
+    - URL: https://api.xiaomi.com/docs/rate-limit
+      observed_at: '2026-06-11'
+      page: Rate Limit
+    - URL: https://api.xiaomi.com/docs/model-hyperparameters
+      observed_at: '2026-06-03'
+      page: Model Hyperparameters
+    - URL: https://api.xiaomi.com/docs/updates
+      observed_at: '2026-06-11'
+      page: Migration notice (V2-Flash + V2-TTS → V2.5)
+  observed_at: '2026-06-15T20:00:00Z'
+  observed_by: FORGE (000Ω)
+  confidence: medium  # public docs only; no live API probe of this federation's account yet
+
+ttl:
+  expires_at: '2026-09-15T20:00:00Z'  # re-audit after the 2026-06-30 hard deprecation passes
+  review_required_at: '2026-07-15T20:00:00Z'  # one month after the deprecation deadline
+  auto_extend_if_no_new_incidents: true
