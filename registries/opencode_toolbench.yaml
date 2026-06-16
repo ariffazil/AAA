@@ -9,12 +9,19 @@ config_paths:
   live_global: /root/.config/opencode/opencode.json
   repo_view: /root/AAA/agents/opencode/config/config.yaml
   global_legacy: /root/.opencode/opencode.json (retired; absent on 2026-06-16)
-  workspace_skills: /root/.opencode/skills/
-  workspace_tools: /root/.opencode/tools/
-  workspace_launchers: /root/.opencode/mcp-launchers/
+  # workspace_skills/tools/launchers: SPEC'D but ABSENT on 2026-06-16.
+  # Real skill discovery is via ~/.agents/skills (51) + ~/.claude/skills (66)
+  # through discovery_precedence steps 2-3 below. Workspace pattern was
+  # documented in v1 forge but never materialized; treating as documentation
+  # of a planned feature, not a current source. Fix tracked in
+  # forge_work/2026-06-16-toolcheck-actions-executed.md.
+  workspace_skills: /root/.opencode/skills/  # spec-only, not materialized
+  workspace_tools: /root/.opencode/tools/    # spec-only, not materialized
+  workspace_launchers: /root/.opencode/mcp-launchers/  # spec-only, not materialized
   external_skills_mirrored:
-  - /root/.agents/skills/
-  - /root/.claude/skills/
+  - /root/.agents/skills/  # 51 skills, ACTIVE source
+  - /root/.claude/skills/  # 66 skills, ACTIVE source
+  active_skill_count: 117  # 51 + 66, last probed 2026-06-16 17:25 UTC
 discovery_precedence:
 - 1. Built-in 'customize-opencode' skill (in opencode binary)
 - '2. ~/.claude/skills/**/SKILL.md (Claude Code mirror, disable: flags.disableClaudeCodeSkills)'
