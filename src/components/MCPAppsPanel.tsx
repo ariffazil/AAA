@@ -130,12 +130,17 @@ interface ActiveApp {
   governanceState: ArifOsEnvelope | null;
 }
 
+interface PendingRequest {
+  resolve: (value: unknown) => void;
+  reject: (reason?: unknown) => void;
+}
+
 // ── Component ───────────────────────────────────────────────────────────────
 
 export default function MCPAppsPanel() {
   const [activeApps, setActiveApps] = useState<Map<string, ActiveApp>>(new Map());
   const [fullscreenApp, setFullscreenApp] = useState<string | null>(null);
-  const pendingRequestsRef = useRef<Map<string, Map<number, { resolve: Function; reject: Function }>>>(new Map());
+  const pendingRequestsRef = useRef<Map<string, Map<number, PendingRequest>>>(new Map());
   const messageHandlersRef = useRef<Map<string, (event: MessageEvent) => void>>(new Map());
   const nextIdRef = useRef<Map<string, number>>(new Map());
 

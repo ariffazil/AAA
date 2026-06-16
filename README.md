@@ -342,6 +342,7 @@ Every agent in the AAA registry follows a four-stage lifecycle. The cockpit trac
 
 | Registry | Location | Content |
 |----------|----------|---------|
+| `ROOT_AGENT_CONFIG.yaml` | Root | Root map for AAA warga, runtime peers, forge instruments, and config pointers |
 | `AAA_AGENTS_REGISTRY.json` | Root | Canonical 5-agent HEXAGON registry |
 | `HEXAGON.yaml` | `agents/` | Agent YAML spec (version 2.0.0) |
 | `agents.json` | `public/a2a/` | Live runtime registry |
@@ -377,7 +378,7 @@ Prometheus + Grafana configs for the federation Nine-Signal dashboard. Monitors 
 |--------|-----------|
 | **Cockpit display** | React 19 dashboard — floor grid, organ health, verdict feed |
 | **A2A mesh routing** | `a2a-server/` — task routing, agent discovery, federation bridge |
-| **Agent identity registry** | `AAA_AGENTS_REGISTRY.json`, `HEXAGON.yaml`, `agents.json` |
+| **Agent identity registry** | `ROOT_AGENT_CONFIG.yaml`, `AAA_AGENTS_REGISTRY.json`, `HEXAGON.yaml`, `agents.json` |
 | **Approval queue** | Verdict Queue in RealityConsole — HOLDs awaiting human |
 | **Agent card management** | Per-agent capability cards, protocol versioning |
 | **Model registries** | Soul, shadow, and capability registries |
@@ -600,9 +601,10 @@ POST /a2a/tasks
 
 1. Create an agent identity directory under `agents/{agent-id}/`
 2. Write an `agent-card.json` with capabilities, hosts, floor responsibilities
-3. Add the agent to `AAA_AGENTS_REGISTRY.json` (PRIMARY, SUPPORT, or CODING tier)
-4. Update `HEXAGON.yaml` if it's a primary/support agent
-5. Run `npm run validate:aaa` to verify consistency
+3. Add the agent to `ROOT_AGENT_CONFIG.yaml`
+4. Add the agent to `AAA_AGENTS_REGISTRY.json` (PRIMARY, SUPPORT, or CODING tier)
+5. Update `HEXAGON.yaml` if it's a primary/support agent
+6. Run `npm run validate:aaa` to verify consistency
 
 ### How to Route a Task
 

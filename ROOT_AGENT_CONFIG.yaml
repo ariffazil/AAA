@@ -1,0 +1,250 @@
+version: 1
+status: active
+last_forged: "2026-06-16T16:30:00Z"
+owner: "Muhammad Arif bin Fazil"
+authority: "F13 SOVEREIGN"
+purpose: >
+  Root map for AAA warga, runtime peers, and forge instruments. Per-agent
+  directories are identity views. Runtime configs outside this repo remain
+  live tool configs. This root file is the repo-level source of truth for
+  agent citizenship, routing, and config pointers.
+
+root_policy:
+  root_config_is_source: true
+  per_agent_dirs_are_views: true
+  live_runtime_configs_external: true
+  no_new_per_agent_config_without_root_entry: true
+  routing_rule: "external agent -> A-FORGE/arifOS lease -> AAA warga/proxy -> AAA state"
+  protected_actions:
+    - force_push
+    - destructive_delete
+    - production_deploy_without_tests
+    - secret_rotation
+    - caddy_reload
+    - vault_seal
+
+honest_self_audit:
+  source: "F9 ANTI-HANTU critique from Arif, 2026-06-16"
+  got_right:
+    - "Federation architecture is novel but must still prove operational value."
+    - "VAULT999 hash-chain integrity is a real mechanism, not a slogan."
+    - "OBS/DER/INT/SPEC tagging reduces epistemic collapse."
+    - "F13 human veto is a required boundary for irreversible action."
+  uncertain:
+    - "mimo-v2.5 base may be underpowered for deep multi-step governance reasoning."
+    - "The live OpenCode primary is mimo-v2.5-pro; do not generalize base-model limits to Pro without fresh eval evidence."
+    - "The 7-organ and 150-plus-tool surface may exceed the current operating need."
+    - "GENESIS documents must be checked against runtime enforcement, not treated as self-proving law."
+  concerns:
+    - "Single VPS deployment is a shared failure domain."
+    - "External adoption is limited; validation is primarily sovereign-local."
+    - "Maintenance burden is high for one operator."
+    - "Model capability must be measured by task evals, not assumed from branding."
+  godel_boundary:
+    verdict: "HOLD"
+    note: "No agent may fully certify its own correctness from inside the system. Final claims require tests, external witness, or F13 judgment."
+
+sources:
+  human_warga_allowlist: agents/warga/AAA_WARGA.txt
+  constitutional_topology: agents/HEXAGON.yaml
+  human_registry: agents/AGENT_REGISTRY.md
+  machine_registry: AAA_AGENTS_REGISTRY.json
+  a2a_public_registry: public/a2a/agents.json
+  forge_instruments: registries/forge_instruments.yaml
+  opencode_toolbench: registries/opencode_toolbench.yaml
+
+sovereign:
+  id: "000-SALAM"
+  name: "Muhammad Arif bin Fazil"
+  role: "Human sovereign. Not an agent. Final veto."
+
+aaa_warga:
+  - id: 333-AGI
+    class: AGI
+    ring: "Delta MIND"
+    role: "primary reasoning and execution"
+    status: spec
+    card: agents/333-AGI/agent-card.json
+  - id: 555-ASI
+    class: ASI
+    ring: "Omega HEART"
+    role: "memory synthesis and ethical critique"
+    status: spec
+    card: agents/555-ASI/agent-card.json
+  - id: 888-APEX
+    class: APEX
+    ring: "PHI JUDGE"
+    role: "constitutional verdicts"
+    status: spec
+    card: agents/888-APEX/agent-card.json
+  - id: A-AUDIT
+    class: oversight
+    ring: observer
+    role: "continuous anomaly and compliance monitor"
+    status: spec
+    card: agents/A-AUDIT/agent-card.json
+  - id: A-ARCHIVE
+    class: service
+    ring: vault
+    role: "immutable ledger and seal-chain keeper"
+    status: spec
+    card: agents/A-ARCHIVE/agent-card.json
+
+runtime_peers:
+  - id: hermes-asi
+    status: live
+    role: "Telegram ASI relay and deliberation interface"
+    port: 18001
+    config_ref: agents/hermes-asi/config/config.yaml
+  - id: openclaw
+    status: live
+    role: "A2A mesh gateway and infra operator"
+    port: 18789
+    config_ref: agents/openclaw/config/config.yaml
+  - id: 777-forge
+    status: live
+    role: "OpenCode spawn witness"
+    port: null
+    config_ref: agents/777-forge/AGENTS.md
+  - id: antigravity
+    status: live
+    role: "Gemini-backed autonomous coding harness"
+    port: null
+    config_ref: agents/antigravity/agent-card.json
+
+organ_peers:
+  - id: arifos-kernel
+    status: live
+    role: "constitutional kernel"
+    port: 8088
+  - id: aforge-executor
+    status: live
+    role: "execution shell"
+    port: 7071
+  - id: geox-witness
+    status: live
+    role: "earth evidence"
+    port: 8081
+  - id: wealth-witness
+    status: live
+    role: "capital evidence"
+    port: 18082
+  - id: well-mirror
+    status: live
+    role: "human-readiness evidence"
+    port: 18083
+  - id: aaa-gateway
+    status: live
+    role: "control plane and A2A gateway"
+    port: 3001
+
+forge_instruments:
+  - id: opencode
+    fi_id: FI-001
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    constitutional_proxy: 333-AGI
+    host_binding: opencode
+    root_config_ref: ROOT_AGENT_CONFIG.yaml
+    agent_card: agents/opencode/agent-card.json
+    repo_config_view: agents/opencode/config/config.yaml
+    live_config: /root/.config/opencode/opencode.json
+    legacy_config: /root/.opencode/opencode.json
+    legacy_status: retired_absent
+    binary: /usr/local/bin/opencode
+    resolved_binary: /root/.npm-global/bin/opencode
+    version: "1.17.7"
+    model: tokenplan-mimo/mimo-v2.5-pro
+    small_model: tokenplan-mimo/mimo-v2.5
+    native_mcp: true
+    mcp_count: 18
+    mcp_servers:
+      - arifos-kernel
+      - aforge
+      - geox
+      - wealth
+      - well
+      - github
+      - context7
+      - playwright
+      - docker
+      - brave-search
+      - meyhem
+      - sequential-thinking
+      - postgres
+      - supabase
+      - qdrant
+      - cloudflare
+      - hostinger-vps
+      - perplexity
+    local_agents:
+      - forge
+      - auditor
+      - ops
+    autonomy:
+      mode: governed_autonomous
+      routine_mutations: allowed
+      max_risk_without_hold: medium
+      no_block_tools: true
+      gate: "arifOS F1-F13 + A-FORGE lease for consequential mutation"
+    verification:
+      health_script: scripts/audit-opencode-state.sh
+      root_validator: scripts/validate-root-agent-config.mjs
+
+  - id: claude-code
+    fi_id: FI-002
+    status: live
+    class: forge-instrument
+    citizenship: warga-aaa
+    host_binding: claude-code
+    agent_card: agents/claude-code/agent-card.json
+  - id: continue-cli
+    fi_id: FI-009
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    host_binding: continue-cli
+    agent_card: agents/continue-cli/agent-card.json
+  - id: codex
+    fi_id: FI-005
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    host_binding: codex
+    agent_card: agents/codex/agent-card.json
+  - id: copilot
+    fi_id: FI-006
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    host_binding: copilot-cli
+    agent_card: agents/copilot/agent-card.json
+  - id: aider
+    fi_id: FI-007
+    status: installed
+    class: forge-instrument
+    citizenship: bridge-worker
+    host_binding: aider
+    agent_card: agents/aider/agent-card.json
+  - id: kimi-code
+    fi_id: FI-008
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    host_binding: kimi-code
+    agent_card: agents/kimi-code/agent-card.json
+  - id: antigravity
+    fi_id: FI-004
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    host_binding: gemini-cli
+    agent_card: agents/antigravity/agent-card.json
+  - id: qwen-code
+    fi_id: FI-003
+    status: not_connected
+    class: forge-instrument
+    citizenship: observer-until-mcp
+    host_binding: qwen-code
+    agent_card: null

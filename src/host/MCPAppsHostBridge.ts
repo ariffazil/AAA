@@ -88,12 +88,18 @@ export function resolveUiResource(uri: string): string | null {
 
 // ── MCP Apps Host Bridge ──────────────────────────────────────────────────
 
+interface PendingRequest {
+  resolve: (value: unknown) => void;
+  reject: (reason?: unknown) => void;
+  method: string;
+}
+
 export interface MCPAppInstance {
   appId: string;
   iframe: HTMLIFrameElement;
   container: HTMLElement;
   state: 'initializing' | 'ready' | 'error' | 'teardown';
-  pendingRequests: Map<number, { resolve: Function; reject: Function; method: string }>;
+  pendingRequests: Map<number, PendingRequest>;
   nextId: number;
 }
 
