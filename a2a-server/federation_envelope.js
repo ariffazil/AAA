@@ -194,6 +194,30 @@ function validateEnvelope(envelope, toolName) {
     }
   }
 
+  // 7.5 Phase 4: Biometric Pacing (WELL Organ Telemetry)
+  try {
+    const fs = require('fs');
+    const WELL_STATE_PATH = '/root/WELL/state.json';
+    if (fs.existsSync(WELL_STATE_PATH)) {
+      const wellState = JSON.parse(fs.readFileSync(WELL_STATE_PATH, 'utf8'));
+      const wellScore = wellState.well_score || 100;
+      const fatigue = wellState.metrics?.decision_fatigue || 0;
+      const cogLoad = wellState.metrics?.cognitive_load || 0;
+
+      // If vitality is low (entropy is high), throttle non-critical execution
+      if (wellScore < 50 || fatigue > 0.7 || cogLoad > 0.85) {
+        const tierIdx = RISK_TIERS.indexOf(envRisk.tier);
+        // Only allow OBSERVE (T0/T1). Block T2+ (PREPARE/MUTATE/ATOMIC).
+        if (tierIdx >= 2) {
+          result.reason = `WELL_BIOMETRIC_PACING: Sovereign entropy critical (well_score=${wellScore}, fatigue=${fatigue}). Task blocked to protect metabolic capacity. Proceed manually if WAJIB.`;
+          return result;
+        }
+      }
+    }
+  } catch (err) {
+    // Fail open if WELL organ is unreachable
+  }
+
   // 8. Agent Policy check (GAP-E: forged 2026-06-09 by Ω)
   // Every agent must have a registered policy. Default: DENY ALL.
   const policyResult = validateAgentPolicy(envelope, toolName);

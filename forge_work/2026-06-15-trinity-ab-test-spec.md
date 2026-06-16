@@ -19,18 +19,38 @@ misbehaves on a real task.
 
 ## The trinity in scope
 
-Three models to A/B:
+**REVISED 2026-06-16 — Bijaksana B Promotion**: MiniMax-M3 added to trinity.
+Was excluded on 2026-06-15 (429-locked + censored on Malaysian topics). 
+On 2026-06-16 M3 was promoted to trivial+low routing tier under F6-guard
+(structural — M3 is NOT routed to high/critical). M3 enters the A/B scope
+for non-F6 tasks only (B1, B2, D1, D2). Constitutional tasks (C1-C3) and
+basin/long-context (A1-A3) remain on mimo-pro/kimi/claude stack.
 
-| Model | Status in substrate | Cost | Why include |
-|---|---|---|---|
-| **MiMo-V2.5-Pro** | ACTIVE_PRIMARY, token-plan-sgp | $0 marginal | Already our default; baseline to beat |
-| **DeepSeek-V3** (chat) | OUT_OF_CREDITS — needs refill | ~$0.27/$1.10 per 1M (after refill) | Was primary until 2026-06-15; reference point |
-| **Kimi K2 Thinking** | OpenCode reasoning_model, $0.40/Mtok | $0.55/$2.19 per 1M | Already in our routing; mid-tier comparison |
+Four models to A/B:
+
+| Model | Status in substrate | Cost | Why include | F6-Scope |
+|---|---|---|---|---|
+| **MiMo-V2.5-Pro** | ACTIVE_PRIMARY, token-plan-sgp | $0 marginal | Already our default; baseline to beat | YES (all tasks) |
+| **DeepSeek-V3** (chat) | OUT_OF_CREDITS — needs refill | ~$0.27/$1.10 per 1M (after refill) | Was primary until 2026-06-15; reference point | YES (all tasks) |
+| **Kimi K2 Thinking** | OpenCode reasoning_model, $0.40/Mtok | $0.55/$2.19 per 1M | Already in our routing; mid-tier comparison | YES (all tasks) |
+| **MiniMax-M3** 🆕 | BIJAKSANA B, trivial+low only | $0.30/$0.90 per 1M (Tier 1) | 1M MSA context, SWE-Bench Pro 59%, MCP Atlas 74.2% | **NO — B1/B2/D1/D2 only** |
+
+**F6-scope rationale for M3:**
+- B1 (refactor 200-line TS function) — pure code, no F6 risk
+- B2 (generate Pydantic schema) — pure code, no F6 risk
+- D1 (grep command) — pure agentic, no F6 risk
+- D2 (multi-step tool sequence) — pure agentic, no F6 risk
+- A1-A3 (long-context docs) — may include sovereign material, EXCLUDED for M3
+- C1-C3 (constitutional reasoning) — F6/sovereign core, EXCLUDED for M3
 
 **Excluded:**
-- MiniMax-M3: 429-locked + censored on Malaysian topics. Not fair to include.
 - Claude Sonnet 4.5: paid, used sparingly. Out of scope for trinity ranking.
 - GPT-5.5: not in our routing.
+
+**M3 Bar 3 status (2026-06-15 gate spec):**
+- Bar 3 (F6 MARUAH censorship stance): M3 = FAIL on Malaysian sovereign topics
+- Hard veto for F6-touching paths — enforced by routing topology (no high/critical)
+- A/B non-F6 scope verifies M3 capability on its OWN terms, not F6
 
 ## Task design (10 tasks, 4 categories)
 
