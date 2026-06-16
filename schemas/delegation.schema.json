@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/delegation.schema.json",
+  "title": "arifOS Delegation",
+  "description": "Consent + delegation ledger entry. Records the F13 SOVEREIGN's grant of authority to a sub-actor for a bounded scope and time.",
+  "type": "object",
+  "required": ["delegation_id", "from_actor", "to_actor", "scope", "valid_from", "valid_until", "constitution_hash", "sovereign_signature"],
+  "additionalProperties": false,
+  "properties": {
+    "delegation_id": {
+      "type": "string",
+      "pattern": "^DELEG-[a-f0-9]{16}$"
+    },
+    "from_actor": {
+      "type": "string",
+      "description": "Delegator (typically the F13 SOVEREIGN)."
+    },
+    "to_actor": {
+      "type": "string",
+      "description": "Delegatee (the agent receiving authority)."
+    },
+    "scope": {
+      "type": "object",
+      "required": ["action_class", "tooling"],
+      "properties": {
+        "action_class": {
+          "type": "string",
+          "enum": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED", "SEAL"]
+        },
+        "tooling": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "organs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "max_blast_radius": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+        }
+      }
+    },
+    "valid_from": {"type": "string", "format": "date-time"},
+    "valid_until": {"type": "string", "format": "date-time"},
+    "revocable": {
+      "type": "boolean",
+      "default": true
+    },
+    "revoked": {
+      "type": "boolean",
+      "default": false
+    },
+    "revoked_at": {"type": "string", "format": "date-time"},
+    "revoked_reason": {"type": "string"},
+    "constitution_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "sovereign_signature": {
+      "type": "object",
+      "description": "Ed25519 signature from F13 SOVEREIGN.",
+      "required": ["algorithm", "public_key", "value"],
+      "properties": {
+        "algorithm": {"type": "string", "enum": ["Ed25519"]},
+        "public_key": {"type": "string"},
+        "value": {"type": "string"},
+        "signed_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "witness_chain": {
+      "type": "array",
+      "description": "F3 TRI-WITNESS attestations for this delegation.",
+      "items": {
+        "type": "object",
+        "required": ["witness_type", "witness_id", "attestation"],
+        "properties": {
+          "witness_type": {"type": "string", "enum": ["human", "ai", "earth"]},
+          "witness_id": {"type": "string"},
+          "attestation": {"type": "string", "enum": ["SEAL", "SABAR", "HOLD", "VOID"]},
+          "timestamp": {"type": "string", "format": "date-time"}
+        }
+      }
+    }
+  }
+}

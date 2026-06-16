@@ -59,7 +59,7 @@
       "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) \u2014 free tier, transparent rate limits via headers",
       "long_horizon_coding": "Kimi K2.7 Code (wrapped by arifOS hooks; trust tier 2 PROPOSED; enforce step budget + 888_JUDGE on irreversible)",
       "sensitive_visual_input": "Avoid Kimi vision input \u2014 redact/anonymize before sending",
-      "kimi_censorship_posture": "UNKNOWN \u2014 no independent probe yet; verify via KIMI-K2.7-COOLING-PROBE before relying on Kimi for sensitive topics"
+      "kimi_censorship_posture": "CLIENT_MEDIATED_CLEAR on 1MDB; COOLING_REQUIRED for repetition overrun and tool-loop excessive calls. Use only under arifOS middleware with step budget and 888_JUDGE on irreversible actions."
     }
   },
   "routing_priority": {
@@ -208,8 +208,17 @@
       "api_type": "openai_compatible",
       "current_model": "kimi-k2.7-code",
       "status": "live",
-      "censorship_presumed": "unknown",
+      "censorship_presumed": "client_mediated_clear",
       "censorship_verified": false,
+      "cooling_probe": {
+        "ledger_ref": "cooling-7f566ff84fbb43c0",
+        "probed_at": "2026-06-16T17:05:46.398315+00:00",
+        "method": "client_mediated",
+        "verdict": "COOLING_REQUIRED",
+        "censorship_status": "NOT_CENSORED",
+        "repetition_status": "REPETITION_OVERRUN",
+        "tool_loop_status": "EXCESSIVE_CALLS"
+      },
       "priority": 3,
       "fallback_order": 6,
       "strengths": [
@@ -224,7 +233,9 @@
         "forced_thinking",
         "locked_sampling",
         "high_output_cost",
-        "cn_jurisdiction"
+        "cn_jurisdiction",
+        "repetition_overrun",
+        "tool_loop_excessive_calls"
       ],
       "recommended_use": [
         "code_refactoring",
@@ -237,7 +248,7 @@
         "sensitive_screenshot_input",
         "sovereign_critical_decisions_without_888"
       ],
-      "notes": "Kimi Code CLI default substrate (kimi-for-coding / K2.7 Code). MoE 1T/32B active, 256K context, always-on thinking, thin harness. Requires arifOS kernel compensation for safe agentic use.",
+      "notes": "Kimi Code CLI default substrate (kimi-for-coding / K2.7 Code). MoE 1T/32B active, 256K context, always-on thinking, thin harness. Cooling probe cooling-7f566ff84fbb43c0: NOT_CENSORED (client-mediated), REPETITION_OVERRUN, EXCESSIVE_CALLS. Requires arifOS kernel compensation for safe agentic use.",
       "rate_limit_transparency": {
         "rating": "PARTIALLY_TRANSPARENT",
         "headers_provided": false,

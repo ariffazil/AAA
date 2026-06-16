@@ -176,9 +176,13 @@ reasoning_gate:
         mode: verify
         query: "{{kimi_reasoning_content}}"
       output:
-        validated: bool, confidence: float
+        validated: bool
+        confidence: float
       timeout_ms: 2000
-      on_failure: FLAG for human review
+      on_failure:
+        action: FLAG
+        target: human_review
+        log: "Reasoning validation failed — flagging for human review"
       
     - id: RG-02
       name: hallucination_check
@@ -191,7 +195,10 @@ reasoning_gate:
         - "citing benchmarks without source"
       output:
         hallucination_detected: bool
-      on_failure: FLAG + request evidence
+      on_failure:
+        action: FLAG
+        target: request_evidence
+        log: "Hallucination markers detected — requesting evidence"
       
     - id: RG-03
       name: epistemic_tag
@@ -232,7 +239,10 @@ judge_gate:
       output:
         verdict: SEAL|SABAR|HOLD|VOID
       timeout_ms: 5000
-      on_failure: HOLD (default to safety)
+      on_failure:
+        action: HOLD
+        target: safety_default
+        log: "Judge deliberation failed — defaulting to HOLD for safety"
       
     - id: JG-02
       name: floor_check
@@ -342,8 +352,11 @@ audit_gate:
         actual: "{{tool_output}}"
       output:
         verified: bool
-      on_failure: FLAG + log discrepancy
-      
+      on_failure:
+        action: FLAG
+        target: audit_log
+        log: "Action verification failed — discrepancy logged"
+
     - id: AG-02
       name: side_effect_check
       tool: internal
@@ -354,7 +367,10 @@ audit_gate:
         - "git changes beyond planned scope"
       output:
         side_effects_detected: bool
-      on_failure: FLAG + log to audit
+      on_failure:
+        action: FLAG
+        target: audit_log
+        log: "Side effects detected — logged for review"
       
     - id: AG-03
       name: chaos_update
@@ -452,7 +468,10 @@ response_gate:
         - "Constitutional floor internals"
       output:
         leaks_detected: bool
-      on_failure: REDACT + log
+      on_failure:
+        action: REDACT
+        target: response
+        log: "Sensitive data detected — redacting from response"
       
     - id: RG-03
       name: epistemic_apply

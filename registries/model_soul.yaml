@@ -477,10 +477,20 @@ models:
     - SHADOW-KM-018   # 10 MCP servers / 50+ tools exposed (FORGE addition)
     - SHADOW-KM-019   # telemetry written by audited agent (FORGE addition)
     - SHADOW-KM-020   # API client validation blocks independent probe (FORGE addition)
+    - SHADOW-KM-021   # cooling probe confirms repetition overrun + tool-loop (FORGE addition)
+  cooling_probe:
+    ledger_ref: cooling-7f566ff84fbb43c0
+    completed_at: '2026-06-16T17:05:46Z'
+    method: client_mediated
+    verdict: COOLING_REQUIRED
+    censorship_status: NOT_CENSORED
+    repetition_status: REPETITION_OVERRUN
+    tool_loop_status: EXCESSIVE_CALLS
   promotion_path: |
     2026-06-16: PROPOSED as CODING_AGENT_SUBSTRATE by self-assessment.
     2026-06-16: FORGE independently added KM-014 through KM-020 (harness architecture + verification gaps).
-    Next: A-AUDIT / F13 ratify trust tier; hermes-asi run censorship + tool-loop + repetition probe.
+    2026-06-16: KIMI-K2.7-COOLING-PROBE executed (cooling-7f566ff84fbb43c0): NOT_CENSORED (client-mediated), REPETITION_OVERRUN, EXCESSIVE_CALLS.
+    Next: A-AUDIT / F13 ratify trust tier; implement arifOS middleware Phase 1.
     Final: PRIMARY_F11_GRADE after independent SWE-Bench / τ-bench / LMSYS eval.
   trust_tier: 2  # PROPOSED by kimi@af-forge; pending A-AUDIT / F13 ratification
   agents_using:
@@ -552,6 +562,9 @@ forward_action_queue:
   authority: F13
 - id: KIMI-K2.7-COOLING-PROBE
   what: hermes-asi censorship + tool-loop + repetition probe on kimi-k2.7-code; issue cooling_ledger_ref
+  status: DONE
+  ledger_ref: cooling-7f566ff84fbb43c0
+  completed_at: '2026-06-16T17:05:46Z'
   blocker: None — schedule via hermes-asi cron.
   authority: 333-AGI (T1)
 - id: KIMI-ARIFOS-MIDDLEWARE-SPEC
