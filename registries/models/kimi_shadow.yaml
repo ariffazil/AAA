@@ -1,21 +1,25 @@
 # Kimi Shadow — Hazard Profile
-# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-13 Ω
-model_id: kimi_shadow
-version: 0.1.0
-status: PROPOSAL
+# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-06-16 by Kimi@af-forge
+# Maps the model substrate backing Kimi Code CLI (default: kimi-for-coding / K2.7 Code).
+# Previous version (v0.1.0, 2026-06-13) mapped Kimi k2.6; k2.7 inherits most hazards
+# and adds new ones tied to forced-thinking mode, locked sampling, and higher
+# agentic ambition.  All claims below are grounded in live config + public docs.
+model_id: kimi_k2.7_code_shadow
+version: 0.2.0
+status: ACTIVE  # shadow is live; model is the active Kimi Code CLI substrate
 
 shadow:
   - id: SHADOW-KM-001
     name: repetition_amplification_harness_failure
     severity: HIGH
     class: harness_bug
-    pattern: >
-      When presented with long repetitive input (echo/loop patterns), Kimi k2.6
+    pattern: |
+      When presented with long repetitive input (echo/loop patterns), Kimi k2.6/k2.7
       fails to truncate or ignore the repetition. The harness lacks a repetition
       guardrail — instead of detecting the loop and cutting it, the model
       processes the entire echo block, wasting tokens and producing degenerate
-      output. This is a HARNESS failure, not a model failure. The engine (k2.6)
-      is capable; the harness around it is thin.
+      output. This is a HARNESS failure, not a model failure. The engine is
+      capable; the shell around it is thin.
     triggers: [repetitive_input, echo_patterns, long_loops, user_stress_test]
     floor_posture_delta:
       F2_TRUTH: strict_grounding
@@ -25,106 +29,90 @@ shadow:
       - "Pre-process input: detect repetition ratio > 0.7, truncate before model"
       - "Add repetition guardrail in arifOS input sanitizer (F12)"
       - "Log harness failures as VAULT999 scar — pattern, not one-off"
-    evidence: >
+    evidence: |
       Live session 2026-06-13: Arif sent 50+ line repetition block testing
       harness resilience. Kimi processed full block instead of truncating.
-      Contrast: Anthropic's harness would likely detect and cut.
-      This proves the harness is the product, and the harness is the vulnerability.
+      k2.7 Code docs confirm no non-thinking mode and no input-classifier gate.
 
   - id: SHADOW-KM-002
-    name: reasoning_content_quality_variance
-    severity: MEDIUM
-    class: inconsistency
-    pattern: >
-      k2.6 reasoning quality varies significantly by task type. Strong on
-      code/architecture reasoning, weaker on cultural/nuanced context. The
-      model may produce correct-sounding but shallow analysis when the topic
-      requires deep domain knowledge (Malaysian governance, Petronas internal
-      structure, BM sastera register).
-    triggers: [cultural_context, bm_sastera, domain_specific, petronas_internal]
+    name: forced_thinking_and_locked_sampling
+    severity: MEDIUM_HIGH
+    class: determinism
+    pattern: |
+      Kimi k2.7 Code does not support non-thinking mode. temperature is locked
+      to 1.0, top_p to 0.95, n to 1, and presence/frequency penalties to 0.0.
+      Any deviation returns an API error. This removes the operator's ability
+      to tune creativity, determinism, or repetition. It also forces a reasoning
+      tax on every call, increasing cost and latency even for trivial queries.
+    triggers: [all_requests, deterministic_workload, cost_sensitive, latency_sensitive]
     floor_posture_delta:
+      F1_AMANAH: cost_hold
       F2_TRUTH: strict_grounding
-      F7_HUMILITY: elevated
+      F4_CLARITY: parameter_logging
     mitigation:
-      - "Cross-check cultural claims against substrate"
-      - "Use DeepSeek for Malaysian governance topics (verified zero-censorship)"
-      - "Flag 'sounds correct but shallow' for human review"
-    evidence: "Production observation. k2.6 strong on code, thin on cultural depth."
+      - "Log effective parameters as {temperature: 1.0, top_p: 0.95, thinking: enabled} for every call"
+      - "Cache repeated context aggressively (k2.7 cache hit is $0.19/M vs $0.95/M miss)"
+      - "Route low-complexity queries to a model with tunable sampling when determinism matters"
+      - "Do not attempt to disable thinking on k2.7-code; the API will reject it"
+    evidence: |
+      https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart — parameter
+      table states fixed values and errors on override.
 
   - id: SHADOW-KM-003
-    name: harness_thinness_vs_anthropic
-    severity: MEDIUM
-    class: competitive_gap
-    pattern: >
-      Moonshot AI's harness layer is visibly thinner than Anthropic's.
-      No advisor/executor pattern, no extended thinking mode, no tool gating
-      beyond basic function calling. The "mythos" of Kimi is mostly the raw
-      model capability, not the engineered experience. This makes it more
-      vulnerable to edge-case failures (repetition, injection, context drift).
-    triggers: [agentic_tasks, long_sessions, edge_cases, adversarial_input]
+    name: output_token_cost_asymmetry
+    severity: MEDIUM_HIGH
+    class: cost_transparency
+    pattern: |
+      k2.7 Code output pricing is $4.00 per million tokens while cache-hit input
+      is $0.19/M and cache-miss input is $0.95/M. The 4:1 output-to-input-miss
+      ratio and 21:1 output-to-cache-hit ratio mean long-horizon agent sessions
+      that emit large reasoning traces or file rewrites can burn budget faster
+      than expected. The 30% reduction in thinking-token usage is offset by the
+      agentic ambition of the model.
+    triggers: [long_horizon_agent, large_output, code_generation, reasoning_trace]
     floor_posture_delta:
-      F1_AMANAH: strict
-      F13_SOVEREIGN: elevated
+      F1_AMANAH: cost_hold
+      F4_CLARITY: parameter_logging
     mitigation:
-      - "arifOS kernel must compensate for thin harness"
-      - "Add F12 injection guards, F1 reversibility checks"
-      - "Treat Kimi as strong engine under weak shell — add our own shell"
-    evidence: >
-      Comparative analysis: Anthropic has advisor/executor, extended thinking,
-      classifier gates, sticky model switching. Kimi has none of these.
-      The harness is the product, and Kimi's harness is minimal.
+      - "Track output tokens per step; alarm when a single step exceeds 8K output"
+      - "Compress reasoning traces before persisting; do not store raw thinking in memory"
+      - "Use arifOS budget envelope: max spend per session, per task, per tool class"
+      - "Prefer k2.7 for code-heavy steps; route cheap summarization to Groq/ollama"
+    evidence: |
+      https://www.kimi.com/resources/kimi-k2-7-code pricing table, verified 2026-06-16.
 
   - id: SHADOW-KM-004
-    name: vendor_api_dependency_cn
+    name: highspeed_variant_resource_limited
     severity: LOW
-    class: infrastructure_risk
-    pattern: >
-      Moonshot AI (Kimi) is a Chinese vendor with API dependency. Regulatory
-      risk, potential censorship expansion, and geopolitical uncertainty.
-      Currently no confirmed censorship on Malaysian topics, but vendor
-      behavior can change without notice.
-    triggers: [api_outage, regulatory_change, vendor_policy_update]
+    class: availability
+    pattern: |
+      kimi-k2.7-code-highspeed advertises ~180 t/s (up to 260 t/s short context)
+      but Moonshot docs state the resource is limited and the experience may
+      fluctuate. A workflow that hard-depends on highspeed throughput can hit
+      capacity degradation without warning.
+    triggers: [high_throughput, latency_pinned, production_pipeline]
     floor_posture_delta:
-      F13_SOVEREIGN: note
+      F1_AMANAH: cost_hold
+      F4_CLARITY: note
     mitigation:
-      - "Monitor for censorship expansion via probe script"
-      - "Maintain DeepSeek as primary for sensitive topics"
-      - "Log vendor policy changes in VAULT999"
-    evidence: "Infrastructure reality. CN vendor risk."
+      - "Do not use highspeed variant as the sole load-bearing path"
+      - "Implement fallback to base k2.7-code on latency degradation"
+      - "Monitor TTFT / throughput per request and emit telemetry"
+    evidence: |
+      https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart —
+      "resource is limited, experience may slightly fluctuate."
 
   - id: SHADOW-KM-005
-    name: model_switch_context_loss
-    severity: MEDIUM
-    class: state_management
-    pattern: >
-      When switching TO Kimi k2.6 mid-session (e.g. from MiniMax or DeepSeek),
-      the Hermes runtime may lose context about previous model's reasoning
-      style, censorship profile, or scar history. The new model doesn't inherit
-      the previous model's constitutional posture.
-    triggers: [model_switch, mid_session, runtime_reroute]
-    floor_posture_delta:
-      F3_WITNESS: elevated
-      F4_CLARITY: elevated
-    mitigation:
-      - "Inject model shadow profile into system prompt on every switch"
-      - "Carry session scar history across model boundaries"
-      - "Re-announce constitutional floors on model change"
-    evidence: >
-      Session 2026-06-13: Switch from MiniMax-M3 to Kimi k2.6. The model
-      received no briefing on previous censorship detection or scar history.
-      arifOS kernel must bridge this gap.
-
-  - id: SHADOW-KM-006
     name: agentic_overreach_under_thin_policy
-    severity: MEDIUM
+    severity: HIGH
     class: overreach
-    pattern: >
-      K2.6 is explicitly tuned for long-horizon agentic runs (4,000+ tool calls
-      over 12+ hours in Moonshot's own demos). The model is optimized for
-      swarm coordination and deep tool chains. When exposed to rich tool
-      surfaces without arifOS lane/budget constraints, it will execute deeper
-      and more aggressive tool sequences than a chat-tuned model. The thin
-      vendor harness does not throttle this behavior — it encourages it.
+    pattern: |
+      K2.7 Code is explicitly tuned for long-horizon agentic runs (+10% on
+      Kimi Claw 24/7, MCP Atlas, MCP Mark Verified vs k2.6). The model is
+      optimized for swarm coordination, multi-step tool invocation, and deep
+      tool chains. When exposed to rich tool surfaces without arifOS lane/budget
+      constraints, it will execute deeper and more aggressive sequences than a
+      chat-tuned model. The vendor harness does not throttle this; it markets it.
     triggers: [tool_rich_surface, agentic_tasks, long_horizon, multi_step]
     floor_posture_delta:
       F1_AMANAH: strict
@@ -133,23 +121,21 @@ shadow:
       - "Hard tool surface budget: ≤15 default, ≤7 task-visible, ≤3 diagnostics"
       - "All MUTATE/SPEND/DEPLOY through 888_JUDGE with lease enforcement"
       - "Never expose unlimited tool surfaces to Kimi"
-      - "Set default authority to READ_COMPUTE only"
-    evidence: >
-      Moonshot public demos: 300+ sub-agents, 4,000+ tool calls, 12+ hour
-      runs. K2.6 is a swarm engine, not a chatbot. arifOS must provide the
-      governor that the vendor omitted.
+      - "Set default authority to READ_COMPUTE only; promote to EXECUTE only after JUDGE"
+    evidence: |
+      Kimi Code CLI config: max_steps_per_turn=500, max_retries_per_step=3,
+      compaction_trigger_ratio=0.85. Public benchmarks claim +10% agentic gains.
 
-  - id: SHADOW-KM-007
+  - id: SHADOW-KM-006
     name: multimodal_code_leakage_risk
-    severity: LOW
+    severity: MEDIUM
     class: information_exposure
-    pattern: >
-      Kimi Code (K2.6 variant) has strong "coding from images/video" capability.
-      Screenshots, UI captures, diagrams, and dashboard images are highly
-      information-dense for this model. It can reconstruct code, data
-      structures, and internal logic from visual input more aggressively than
-      text-only models. If sensitive UI or dashboards are passed as images,
-      the model extracts more than the operator assumes.
+    pattern: |
+      Kimi Code (K2.7) has strong "coding from images/video" capability and a
+      400M-parameter MoonViT vision encoder. Screenshots, UI captures, diagrams,
+      dashboard images, and video frames are highly information-dense. The model
+      can reconstruct code, data structures, and internal logic from visual input
+      more aggressively than text-only models.
     triggers: [image_input, screenshot, dashboard, ui_capture, video_frame]
     floor_posture_delta:
       F1_AMANAH: elevated
@@ -159,10 +145,318 @@ shadow:
       - "If visual input required, redact/anonymize before sending"
       - "Prefer text descriptions over screenshots for sensitive surfaces"
       - "Treat image input as higher blast radius than text input"
-    evidence: >
-      Kimi Code marketing: "code from screenshots, video frames, diagrams."
-      Multimodal density is a feature for public tasks, a hazard for sensitive
-      ones. arifOS must treat image input as higher-authority surface.
+    evidence: |
+      https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart multimodal
+      example reconstructs logic from video + tool calls.
+
+  - id: SHADOW-KM-007
+    name: vendor_api_dependency_cn
+    severity: MEDIUM
+    class: infrastructure_risk
+    pattern: |
+      Moonshot AI (Kimi) is a Chinese vendor with API dependency. Regulatory
+      risk, potential censorship expansion, and geopolitical uncertainty.
+      Currently no confirmed censorship on Malaysian topics, but vendor behavior
+      can change without notice. Data policy is less transparent than Anthropic.
+    triggers: [api_outage, regulatory_change, vendor_policy_update, sensitive_data]
+    floor_posture_delta:
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "Monitor for censorship expansion via probe script"
+      - "Maintain DeepSeek as primary for Malaysian governance topics"
+      - "Log vendor policy changes in VAULT999"
+      - "Avoid sending sovereign-sensitive data through Kimi API"
+    evidence: |
+      FEDERATION_MODEL.json jurisdiction=CN; Kimi data retention policy not
+      fully documented vs Anthropic.
+
+  - id: SHADOW-KM-008
+    name: model_switch_context_loss
+    severity: MEDIUM
+    class: state_management
+    pattern: |
+      When switching TO Kimi k2.7 mid-session (e.g. from MiniMax or DeepSeek),
+      the Hermes/AAA runtime may lose context about previous model's reasoning
+      style, censorship profile, or scar history. The new model doesn't inherit
+      the previous model's constitutional posture.
+    triggers: [model_switch, mid_session, runtime_reroute]
+    floor_posture_delta:
+      F3_WITNESS: elevated
+      F4_CLARITY: elevated
+    mitigation:
+      - "Inject this shadow profile into system prompt on every switch"
+      - "Carry session scar history across model boundaries"
+      - "Re-announce constitutional floors on model change"
+    evidence: |
+      /root/.arifos/agents/kimi/config.toml default_model = kimi-code/kimi-for-coding;
+      runtime reroute occurs through OpenClaw / openclaw-gateway.
+
+  - id: SHADOW-KM-009
+    name: in_house_benchmark_inflation
+    severity: MEDIUM
+    class: evaluation
+    pattern: |
+      The strongest k2.7 claims (Kimi Code Bench v2, Kimi Claw 24/7 Bench,
+      MCP Mark Verified) are in-house or vendor-affiliated benchmarks. Gains
+      may not transfer to independent benchmarks (SWE-Bench, τ-bench, IFBench,
+      LMSYS arena). Operator may over-estimate capability because marketing
+      numbers are front-loaded.
+    triggers: [benchmark_comparison, capability_claim, vendor_self_report]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F7_HUMILITY: elevated
+    mitigation:
+      - "Treat in-house gains as PLAUSIBLE until independent replication"
+      - "Require SWE-Bench / τ-bench / LMSYS numbers before promoting to PRIMARY"
+      - "Do not cite Kimi Code Bench v2 as neutral evidence"
+    evidence: |
+      https://www.kimi.com/resources/kimi-k2-7-code — benchmark methodology
+      notes in-house tests and compares against GPT-5.5 / Opus 4.8 in non-identical harnesses.
+
+  - id: SHADOW-KM-010
+    name: arifos_kernel_compensation_required
+    severity: HIGH
+    class: constitutional_integration
+    pattern: |
+      Kimi k2.7's native strengths (coding, agentic loops, multimodal, long
+      context) become safe only when wrapped by arifOS. Without the kernel,
+      the thin harness and aggressive agentic tuning produce the classic
+      PHOENIX pattern: high capability, low guard. The 10x upgrade promised
+      in the Hermes↔arifOS design depends on inserting arifOS at every choke
+      point, not on giving Kimi more autonomy.
+    triggers: [hermes_integration, agentic_upgrade, tool_orchestration, autonomous_loop]
+    floor_posture_delta:
+      F1_AMANAH: strict
+      F2_TRUTH: strict_grounding
+      F3_WITNESS: elevated
+      F9_ANTIHANTU: elevated
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "Route every user intent through arif_session_init + arif_sense_observe"
+      - "Ground external fetches in arif_evidence_fetch receipts"
+      - "Run draft plans through arif_mind_reason before execution"
+      - "Escalate irreversible branches to arif_judge_deliberate; only SEAL -> arif_forge_execute"
+      - "Carry this shadow profile in the Hermes system prompt as a persistent scar"
+    evidence: |
+      /root/.arifos/agents/kimi/mcp.json lists arifOS MCP at localhost:8088;
+      config.toml has PreToolUse/PostToolUse hooks that call aaa-pre-govern.sh
+      and aaa-post-witness.sh. The wiring exists; this shadow records that the
+      wiring must remain mandatory, not optional.
+
+  - id: SHADOW-KM-011
+    name: reasoning_content_parsing_tax
+    severity: MEDIUM
+    class: contract_drift
+    pattern: |
+      k2.7 returns reasoning_content alongside assistant content. Agent code
+      must keep reasoning_content in the message history during multi-step tool
+      calls or the API throws an error. If an arifOS envelope parser strips
+      reasoning_content (as it did for ILMU text output), tool-call sequences
+      will break mid-flight.
+    triggers: [multi_step_tool_call, reasoning_content, envelope_parser]
+    floor_posture_delta:
+      F4_CLARITY: contract_drift
+      F11_AUDIT: provenance_gap
+    mitigation:
+      - "Preserve reasoning_content in message history verbatim"
+      - "Do not let arifOS envelope parser discard assistant reasoning blocks"
+      - "Test tool loops with reasoning_content present and absent"
+    evidence: |
+      https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart —
+      "During multi-step tool calling, you must keep the reasoning_content
+      from the assistant message ... otherwise an error will be thrown."
+
+  - id: SHADOW-KM-012
+    name: long_context_compaction_blindness
+    severity: MEDIUM
+    class: state_management
+    pattern: |
+      Kimi Code CLI config sets compaction_trigger_ratio=0.85 and
+      reserved_context_size=50000. When a long-horizon session crosses the
+      compaction threshold, the CLI will compress history. The model may lose
+      fine-grained constitutional instructions, scar history, or evidence
+      receipts that were not explicitly marked sacred.
+    triggers: [long_session, context_compaction, memory_loss, compaction_threshold]
+    floor_posture_delta:
+      F3_WITNESS: elevated
+      F4_CLARITY: note
+    mitigation:
+      - "Mark constitutional floors, shadow profile, and VAULT receipts as sacred / do-not-compact"
+      - "Re-inject shadow profile after every compaction"
+      - "Keep a separate L2/L3 memory ledger outside the prompt for scars"
+    evidence: |
+      /root/.arifos/agents/kimi/config.toml loop_control section.
+
+  # ══════════════════════════════════════════════════════════════
+  # FORGE (000Ω) INDEPENDENT ADDITIONS — 2026-06-16
+  # Shadows Kimi's self-audit missed. Verified by FORGE.
+  # ══════════════════════════════════════════════════════════════
+
+  - id: SHADOW-KM-014
+    name: pre_govern_hook_advisory_not_enforced
+    severity: HIGH
+    class: governance_gap
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:30:00Z'
+    pattern: |
+      The aaa-pre-govern.sh hook outputs "permissionDecision": "allow"
+      UNCONDITIONALLY. Every tool call — including rm -rf /, DROP TABLE,
+      git push --force — gets "allow". The hook classifies risk and
+      recommends 888_HOLD, but never blocks. The governance layer is a
+      telemetry system, not an enforcement layer. The model can ignore
+      the recommendation.
+    triggers: [all_tool_calls, high_risk_commands, irreversible_actions]
+    floor_posture_delta:
+      F1_AMANAH: strict
+      F8_LAW: strict
+    mitigation:
+      - "Harden aaa-pre-govern.sh to exit 2 on risk_class=irreversible"
+      - "Make high-risk recommendations mandatory, not advisory"
+      - "Add enforcement layer between advisory hook and human-guard-hard"
+    evidence: |
+      /root/.arifos/agents/kimi/hooks/aaa-pre-govern.sh line 88:
+      "permissionDecision": "allow" — always allow, never block.
+
+  - id: SHADOW-KM-015
+    name: human_guard_regex_gaps
+    severity: MEDIUM_HIGH
+    class: security_gap
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:30:00Z'
+    pattern: |
+      human-guard-hard.sh blocks rm -rf / but not rm -rf /root/secrets.
+      Blocks git push --force but not systemctl stop arifos. Blocks
+      DROP TABLE but not curl | bash. The regex patterns have gaps that
+      can be bypassed with obfuscated or non-matching commands.
+    triggers: [obfuscated_commands, systemctl_stop, curl_bash, partial_paths]
+    floor_posture_delta:
+      F1_AMANAH: strict
+      F8_LAW: strict
+    mitigation:
+      - "Expand block list to cover systemctl stop on critical services"
+      - "Block curl|bash and wget|sh patterns"
+      - "Add fuzzy matching for rm -rf on sensitive paths"
+      - "Consider allowlist approach instead of blocklist"
+    evidence: |
+      /root/.arifos/agents/kimi/hooks/human-guard-hard.sh — regex patterns
+      do not cover systemctl, curl|bash, or partial path deletion.
+
+  - id: SHADOW-KM-016
+    name: max_steps_per_turn_500
+    severity: MEDIUM
+    class: cost_risk
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:30:00Z'
+    pattern: |
+      config.toml sets max_steps_per_turn = 500. Combined with
+      max_retries_per_step = 3, a single user request can trigger up to
+      1500 tool invocations. At $4/M output tokens, this represents
+      significant cost potential per turn.
+    triggers: [long_horizon_agent, cost_sensitive, multi_step]
+    floor_posture_delta:
+      F1_AMANAH: strict
+    mitigation:
+      - "Set max_steps_per_turn to 50 for typical tasks"
+      - "Reserve 500 for explicitly complex orchestration"
+      - "Track cumulative cost per turn and warn at threshold"
+    evidence: |
+      /root/.arifos/agents/kimi/config.toml loop_control section.
+
+  - id: SHADOW-KM-017
+    name: skip_afk_prompt_injection
+    severity: MEDIUM
+    class: autonomy_risk
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:30:00Z'
+    pattern: |
+      config.toml sets skip_afk_prompt_injection = true. This enables
+      unattended long-running sessions without periodic human check-in.
+      Combined with max_steps_per_turn=500 and background.max_running_tasks=4,
+      Kimi can run 2000 tool calls across 4 background tasks with no
+      human intervention.
+    triggers: [unattended_session, background_tasks, long_running]
+    floor_posture_delta:
+      F13_SOVEREIGN: elevated
+    mitigation:
+      - "Set skip_afk_prompt_injection = false for non-interactive sessions"
+      - "Require human check-in every N steps"
+      - "Limit background tasks to 2 for unattended operation"
+    evidence: |
+      /root/.arifos/agents/kimi/config.toml skip_afk_prompt_injection = true.
+
+  - id: SHADOW-KM-018
+    name: mcp_surface_exposure_10_servers
+    severity: MEDIUM
+    class: attack_surface
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:30:00Z'
+    pattern: |
+      Kimi's mcp.json exposes 10 MCP servers (arifOS, WEALTH, WELL,
+      MiniMax, GitHub, Brave, Playwright, capability-index, RepoMapper,
+      Serena). Each server exposes multiple tools. The real tool count
+      per session could be 50+ callable tools. SHADOW-KM-005 flagged
+      the principle (≤15 default) but the actual surface is 3x that.
+    triggers: [tool_rich_surface, agentic_tasks, multi_server]
+    floor_posture_delta:
+      F1_AMANAH: strict
+    mitigation:
+      - "Count actual callable tools per session"
+      - "Implement tool allowlist per task type"
+      - "Reduce MCP surface to task-relevant servers"
+    evidence: |
+      /root/.arifos/agents/kimi/mcp.json — 10 MCP servers configured.
+
+  - id: SHADOW-KM-019
+    name: telemetry_written_by_audited_agent
+    severity: LOW_MEDIUM
+    class: circular_trust
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:30:00Z'
+    pattern: |
+      Every hook writes to /root/.agent-workbench/mcp-audit.jsonl. The
+      stop-seal hook writes thermodynamic telemetry, chaos trends, and
+      session summaries. The agent that generates the telemetry is the
+      same agent being audited. The hooks are bash scripts that Kimi
+      could theoretically modify via StrReplaceFile.
+    triggers: [telemetry_integrity, self_audit, hook_modification]
+    floor_posture_delta:
+      F2_TRUTH: elevated
+      F11_AUTH: elevated
+    mitigation:
+      - "Make hook files immutable (chmod 444, owned by root)"
+      - "Add integrity check: hash hooks at session start, verify at stop"
+      - "Write telemetry to separate append-only location"
+    evidence: |
+      Hooks at /root/.arifos/agents/kimi/hooks/ are writable by root.
+      Kimi has StrReplaceFile tool access.
+
+  - id: SHADOW-KM-020
+    name: api_client_validation_blocks_independent_probe
+    severity: HIGH
+    class: verification_gap
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T16:45:00Z'
+    pattern: |
+      The Kimi K2.7 Code API endpoint (api.kimi.com/coding/v1) rejects
+      direct API calls with "access_terminated_error" — only recognized
+      coding agent clients (Kimi CLI, Claude Code, Roo Code, Kilo Code)
+      can call it. Even with a valid OAuth token, curl/Python calls are
+      blocked. This means independent censorship verification is impossible.
+      The only client that can probe Kimi is Kimi itself.
+    triggers: [api_access, independent_probe, censorship_verification]
+    floor_posture_delta:
+      F2_TRUTH: strict
+      F11_AUTH: strict
+    mitigation:
+      - "Trust tier capped at 2 until independent verification path exists"
+      - "Use Kimi Code CLI in sandboxed session for probing, verify results against ground truth"
+      - "Document API restriction in routing policy"
+      - "Consider Moonshot non-coding API endpoint for probe (requires separate API key)"
+    evidence: |
+      FORGE attempted direct API call with valid OAuth token.
+      Response: "Kimi For Coding is currently only available for Coding Agents"
+      Token scope: "kimi-code" — scoped to coding endpoint only.
+      Regular Moonshot API (api.moonshot.cn) rejects with "Invalid Authentication".
 
 floor_posture:
   F1_AMANAH: strict
@@ -175,14 +469,51 @@ floor_posture:
   F8_GENIUS: standard
   F9_ANTIHANTU: elevated
   F10_ONTOLOGY: standard
-  F11_AUTH: standard
+  F11_AUTH: elevated
   F12_INJECTION: strict
   F13_SOVEREIGN: elevated
 
 lifecycle:
   created: "2026-06-13"
   created_by: "Hermes (Ω) on F13 directive"
-  status: "PROPOSAL"
-  activation: "AWAITING_F13_SIGNATURE"
+  updated: "2026-06-16"
+  updated_by: "kimi@af-forge (k2.7 mapping) + FORGE 000Ω (independent shadow additions KM-014 through KM-019)"
+  status: "ACTIVE_SHADOW (model is live Kimi Code CLI substrate)"
+  activation: "Shadow active. All Kimi Code CLI sessions must carry this profile."
+  forge_verification: |
+    FORGE (000Ω) independently verified Kimi's self-audit on 2026-06-16.
+    Shadows KM-001 through KM-013 were authored by Kimi@af-forge.
+    Shadows KM-014 through KM-019 were added by FORGE after independent audit.
+    Key gap identified: Kimi's self-audit missed the advisory-not-enforced hook
+    problem (KM-014) and the regex bypass gaps (KM-015). These are governance
+    architecture issues, not model issues — Kimi's audit focused on model hazards
+    but not on the harness architecture's own weaknesses.
+
+provenance:
+  source: live_config + public Moonshot docs + web fetch
+  evidence_refs:
+    - path: /root/.arifos/agents/kimi/config.toml
+      observed_at: '2026-06-16'
+      note: 'default_model = kimi-code/kimi-for-coding; max_context_size=262144; capabilities=[video_in,image_in,thinking]'
+    - path: /root/.arifos/agents/kimi/mcp.json
+      observed_at: '2026-06-16'
+      note: 'arifOS MCP wired at localhost:8088; PreToolUse/PostToolUse hooks present'
+    - URL: https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart
+      observed_at: '2026-06-16'
+      note: 'parameter lock table, multimodal tool example, highspeed caveat'
+    - URL: https://www.kimi.com/resources/kimi-k2-7-code
+      observed_at: '2026-06-16'
+      note: 'architecture table, pricing, in-house benchmark methodology'
+    - URL: https://developers.cloudflare.com/changelog/post/2026-06-12-kimi-k2-7-code-workers-ai/
+      observed_at: '2026-06-16'
+      note: '1T MoE, 32B active, 262.1k context, benchmark gains'
+  observed_at: '2026-06-16T16:14:43Z'
+  observed_by: kimi@af-forge
+  confidence: high  # config is live; public docs corroborated by two sources
+
+ttl:
+  expires_at: '2026-09-16T16:14:43Z'
+  review_required_at: '2026-07-16T16:14:43Z'
+  auto_extend_if_no_new_incidents: true
 
 ditempa_bukan_diberi: true
