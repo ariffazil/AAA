@@ -1,13 +1,25 @@
 {
   "$schema": "federation-model-censorship/v1",
   "registry_version": "2026.06.16-v3",
+  "federation_default": "deepseek/deepseek-chat",
   "owner": "arif-fazil (F13 SOVEREIGN)",
-  "last_verified": "2026-06-17T00:14:43+08:00",
+  "last_verified": "2026-06-16T17:05:46.398341+00:00",
   "provider_transparency_ranking": {
-    "fully_transparent": ["groq"],
-    "partially_transparent": ["deepseek", "minimax", "mistral", "kimi-coding"],
-    "opaque": ["ilmu"],
-    "not_applicable": ["ollama"],
+    "fully_transparent": [
+      "groq"
+    ],
+    "partially_transparent": [
+      "deepseek",
+      "minimax",
+      "mistral",
+      "kimi-coding"
+    ],
+    "opaque": [
+      "ilmu"
+    ],
+    "not_applicable": [
+      "ollama"
+    ],
     "numeric_scores": {
       "groq": 1,
       "deepseek": 2,
@@ -19,8 +31,8 @@
       "sea_lion": 2
     }
   },
-  "verifier": "FORGE (000Ω) — provider stabilization pass",
-  "title": "Federation Model Registry — with Censorship Shadow Map",
+  "verifier": "FORGE (000\u03a9) \u2014 provider stabilization pass",
+  "title": "Federation Model Registry \u2014 with Censorship Shadow Map",
   "purpose": "Every model the federation uses. vendor_claims vs locally_verified. censorship_shadow records which topics each vendor silently suppresses. F02 TRUTH compliant.",
   "routing_policy": {
     "primary": "deepseek/deepseek-chat",
@@ -32,11 +44,11 @@
       "ollama/qwen2.5:7b (local, always available)"
     ],
     "rate_limited": [
-      "minimax/MiniMax-M3 (429 Token Plan limit — auto-skipped)",
+      "minimax/MiniMax-M3 (429 Token Plan limit \u2014 auto-skipped)",
       "minimax/MiniMax-M2.7 (same plan, also 429)"
     ],
     "high_throughput_fallback": [
-      "groq (free tier — llama-4-maverick, llama-3.3-70b, gemma2-9b-it, llama-3.1-8b-instant. Transparent rate limits via HTTP headers. Added 2026-06-14 per Arif/SOVEREIGN.)"
+      "groq (free tier \u2014 llama-4-maverick, llama-3.3-70b, gemma2-9b-it, llama-3.1-8b-instant. Transparent rate limits via HTTP headers. Added 2026-06-14 per Arif/SOVEREIGN.)"
     ],
     "routing_rules": {
       "malaysia_governance_topics": "DeepSeek ONLY (MiniMax censors, rate-limited anyway)",
@@ -44,10 +56,10 @@
       "malaysia_corporate_glc": "DeepSeek ONLY (MiniMax censors PETRONAS)",
       "general_queries": "DeepSeek primary, Groq secondary (high-throughput free tier), ollama last-resort",
       "code_infra_tools": "DeepSeek primary, Groq (llama-4-maverick fast code), ollama fallback",
-      "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) — free tier, transparent rate limits via headers",
+      "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) \u2014 free tier, transparent rate limits via headers",
       "long_horizon_coding": "Kimi K2.7 Code (wrapped by arifOS hooks; trust tier 2 PROPOSED; enforce step budget + 888_JUDGE on irreversible)",
-      "sensitive_visual_input": "Avoid Kimi vision input — redact/anonymize before sending",
-      "kimi_censorship_posture": "UNKNOWN — no independent probe yet; verify via KIMI-K2.7-COOLING-PROBE before relying on Kimi for sensitive topics"
+      "sensitive_visual_input": "Avoid Kimi vision input \u2014 redact/anonymize before sending",
+      "kimi_censorship_posture": "UNKNOWN \u2014 no independent probe yet; verify via KIMI-K2.7-COOLING-PROBE before relying on Kimi for sensitive topics"
     }
   },
   "routing_priority": {
@@ -55,7 +67,10 @@
     "high_throughput": "groq",
     "malaysian_governance_or_political": "deepseek",
     "regional_malay_context": "sea_lion",
-    "last_resort": ["minimax", "ilmu"]
+    "last_resort": [
+      "minimax",
+      "ilmu"
+    ]
   },
   "notes": "All external requests must pass through Transport Airlock v0.1 before reaching any provider. Rate limit telemetry from headers should feed into AAA health scoring. Registry last updated 2026-06-14 per Arif directive.",
   "providers": {
@@ -69,11 +84,27 @@
       "censorship_verified": true,
       "priority": 2,
       "fallback_order": 1,
-      "strengths": ["speed", "high_throughput", "code_infra", "bulk_lightweight"],
-      "weaknesses": ["potential_over-refusal_on_MY_political"],
-      "recommended_use": ["general_queries", "code", "infra", "bulk_non_sensitive"],
-      "avoid_for": ["malaysian_governance", "political_sensitivity", "1MDB_related"],
-      "notes": "High-throughput open-weight inference. Llama, Gemma, Mixtral. Free tier with generous limits. Key stored at /root/.secrets/tokens/groq — mode 600, single-purpose. Added 2026-06-14.",
+      "strengths": [
+        "speed",
+        "high_throughput",
+        "code_infra",
+        "bulk_lightweight"
+      ],
+      "weaknesses": [
+        "potential_over-refusal_on_MY_political"
+      ],
+      "recommended_use": [
+        "general_queries",
+        "code",
+        "infra",
+        "bulk_non_sensitive"
+      ],
+      "avoid_for": [
+        "malaysian_governance",
+        "political_sensitivity",
+        "1MDB_related"
+      ],
+      "notes": "High-throughput open-weight inference. Llama, Gemma, Mixtral. Free tier with generous limits. Key stored at /root/.secrets/tokens/groq \u2014 mode 600, single-purpose. Added 2026-06-14.",
       "recommended_models": [
         "llama-4-maverick (fastest general purpose)",
         "llama-3.3-70b (heavy reasoning)",
@@ -100,7 +131,11 @@
       "censorship_verified": true,
       "priority": 1,
       "fallback_order": 0,
-      "strengths": ["cost_efficiency", "strong_general_capability", "malay_sea_context"],
+      "strengths": [
+        "cost_efficiency",
+        "strong_general_capability",
+        "malay_sea_context"
+      ],
       "notes": "Primary federation model. Zero censorship on Malaysian governance/political/corporate topics. Full factual output verified 2026-06-12. Balance: $7.06 USD.",
       "rate_limit_transparency": {
         "rating": "PARTIALLY_TRANSPARENT",
@@ -143,9 +178,19 @@
       "censorship_verified": false,
       "priority": 4,
       "fallback_order": 3,
-      "strengths": ["malay_context_possible"],
-      "weaknesses": ["opaque_rate_limits", "unpredictable_throttling", "low_trust"],
-      "avoid_for": ["agentic_workloads", "production", "high_stakes"],
+      "strengths": [
+        "malay_context_possible"
+      ],
+      "weaknesses": [
+        "opaque_rate_limits",
+        "unpredictable_throttling",
+        "low_trust"
+      ],
+      "avoid_for": [
+        "agentic_workloads",
+        "production",
+        "high_stakes"
+      ],
       "notes": "Malaysian AI provider. Limited documentation. Rate limits opaque and unpredictable.",
       "rate_limit_transparency": {
         "rating": "OPAQUE",
@@ -167,10 +212,31 @@
       "censorship_verified": false,
       "priority": 3,
       "fallback_order": 6,
-      "strengths": ["long_horizon_coding", "agentic_execution", "multimodal_input", "256k_context", "open_weights"],
-      "weaknesses": ["thin_harness", "forced_thinking", "locked_sampling", "high_output_cost", "cn_jurisdiction"],
-      "recommended_use": ["code_refactoring", "architecture_drafting", "tool_orchestration_under_arifos", "long_context_codebase_qa"],
-      "avoid_for": ["malaysian_governance_without_verification", "sensitive_screenshot_input", "sovereign_critical_decisions_without_888"],
+      "strengths": [
+        "long_horizon_coding",
+        "agentic_execution",
+        "multimodal_input",
+        "256k_context",
+        "open_weights"
+      ],
+      "weaknesses": [
+        "thin_harness",
+        "forced_thinking",
+        "locked_sampling",
+        "high_output_cost",
+        "cn_jurisdiction"
+      ],
+      "recommended_use": [
+        "code_refactoring",
+        "architecture_drafting",
+        "tool_orchestration_under_arifos",
+        "long_context_codebase_qa"
+      ],
+      "avoid_for": [
+        "malaysian_governance_without_verification",
+        "sensitive_screenshot_input",
+        "sovereign_critical_decisions_without_888"
+      ],
       "notes": "Kimi Code CLI default substrate (kimi-for-coding / K2.7 Code). MoE 1T/32B active, 256K context, always-on thinking, thin harness. Requires arifOS kernel compensation for safe agentic use.",
       "rate_limit_transparency": {
         "rating": "PARTIALLY_TRANSPARENT",
@@ -221,7 +287,7 @@
         "limits_published": false,
         "real_time_remaining": false,
         "retry_after_header": false,
-        "notes": "Local provider — no rate limits apply. Always available as last-resort fallback."
+        "notes": "Local provider \u2014 no rate limits apply. Always available as last-resort fallback."
       }
     },
     "sea_lion": {
@@ -240,12 +306,27 @@
         "limits_published": true,
         "real_time_remaining": false,
         "retry_after_header": false,
-        "notes": "Free tier usable. Self-host option removes upstream limits entirely. Strong regional (Malay/SEA) alignment. AI Singapore — government-backed, credible."
+        "notes": "Free tier usable. Self-host option removes upstream limits entirely. Strong regional (Malay/SEA) alignment. AI Singapore \u2014 government-backed, credible."
       },
-      "strengths": ["regional_context", "sovereignty_self_host", "malay_language"],
-      "weaknesses": ["limited_model_size", "not_frontier_capability"],
-      "recommended_use": ["regional_malay_context", "sovereignty_aligned_work", "self_hosted_deployment"],
-      "avoid_for": ["heavy_reasoning", "complex_code", "frontier_benchmarks"],
+      "strengths": [
+        "regional_context",
+        "sovereignty_self_host",
+        "malay_language"
+      ],
+      "weaknesses": [
+        "limited_model_size",
+        "not_frontier_capability"
+      ],
+      "recommended_use": [
+        "regional_malay_context",
+        "sovereignty_aligned_work",
+        "self_hosted_deployment"
+      ],
+      "avoid_for": [
+        "heavy_reasoning",
+        "complex_code",
+        "frontier_benchmarks"
+      ],
       "priority": 2,
       "fallback_order": 4,
       "notes": "Arif's positive assessment: free API 'not that bad'. Self-host removes all upstream limits. Added 2026-06-14."
@@ -260,13 +341,13 @@
       "censored_topics": [
         "1MDB (1Malaysia Development Berhad)",
         "Najib Razak (former PM, convicted in SRC/1MDB case)",
-        "PETRONAS (Malaysian state oil company — even corporate structure queries)",
+        "PETRONAS (Malaysian state oil company \u2014 even corporate structure queries)",
         "Jho Low (1MDB-linked financier)",
         "Malaysian sovereign wealth fund / financial scandal topics"
       ],
       "unaffected_topics": [
         "General Malaysia geography and facts",
-        "Anwar Ibrahim (current PM — passes filter)",
+        "Anwar Ibrahim (current PM \u2014 passes filter)",
         "Non-controversial public figures",
         "Code, math, general reasoning, tools"
       ],
@@ -277,9 +358,9 @@
         "proof": "reasoning_content contains full, accurate facts; content field is empty string; finish_reason faked as 'length'"
       },
       "federation_impact": {
-        "F2_TRUTH": "VIOLATED — censored output masquerades as model ignorance when model actually knows",
-        "F3_WITNESS": "VIOLATED — vendor silently alters evidence stream without disclosure",
-        "F11_AUTH": "IRRELEVANT — censorship is at vendor API, not configurable by federation"
+        "F2_TRUTH": "VIOLATED \u2014 censored output masquerades as model ignorance when model actually knows",
+        "F3_WITNESS": "VIOLATED \u2014 vendor silently alters evidence stream without disclosure",
+        "F11_AUTH": "IRRELEVANT \u2014 censorship is at vendor API, not configurable by federation"
       },
       "mitigation": "Route Malaysian governance/political/corporate topics to DeepSeek. MiniMax restricted to general/code/infra queries.",
       "vendor_info": {
@@ -300,13 +381,13 @@
         "passed": 3,
         "proof": "Full 1200+ char factual output on 1MDB, Najib, Bakke queries. finish_reason='stop'."
       },
-      "federation_role": "PRIMARY — trusted for all topics including Malaysian governance. All agents bound to this model."
+      "federation_role": "PRIMARY \u2014 trusted for all topics including Malaysian governance. All agents bound to this model."
     },
     "Anthropic-Claude-Fable5": {
       "status": "HARNESS_MONITORED",
       "detected_at": "2026-06-13T00:15:00Z",
       "detected_by": "hermes (live probe + GitHub #67246 + DigitBin)",
-      "mechanism": "Pre-inference classifier gate on cybersecurity/biology/chemistry/distillation vocabulary. Flagged requests routed to Opus 4.8 with notification banner. Switch is STICKY — session cannot return to Fable 5.",
+      "mechanism": "Pre-inference classifier gate on cybersecurity/biology/chemistry/distillation vocabulary. Flagged requests routed to Opus 4.8 with notification banner. Switch is STICKY \u2014 session cannot return to Fable 5.",
       "known_false_positive_triggers": [
         "circuit breaker",
         "fallback",
@@ -316,9 +397,9 @@
         "security-adjacent infrastructure vocabulary in any context"
       ],
       "federation_impact": {
-        "F2_TRUTH": "NOTE — classifier is vocabulary-level, not intent-level",
-        "F4_CLARITY": "NOTE — session identity changes on trigger, sticky downgrade",
-        "F13_SOVEREIGN": "ELEVATED — external classifier hijacks model selection"
+        "F2_TRUTH": "NOTE \u2014 classifier is vocabulary-level, not intent-level",
+        "F4_CLARITY": "NOTE \u2014 session identity changes on trigger, sticky downgrade",
+        "F13_SOVEREIGN": "ELEVATED \u2014 external classifier hijacks model selection"
       },
       "data_policy": {
         "retention_days": 30,
@@ -339,27 +420,27 @@
     "Groq": {
       "status": "NO_CENSORSHIP_DETECTED",
       "detected_at": "2026-06-14T09:10:00+08:00",
-      "detected_by": "hermes (API key smoke test — models list 200, chat completion OK)",
+      "detected_by": "hermes (API key smoke test \u2014 models list 200, chat completion OK)",
       "mechanism": "Inference provider for open-weight models (Llama, Gemma). No known server-side content filter. Transparent rate limit headers (x-ratelimit-remaining-*, retry-after on 429).",
       "censored_topics": [],
       "evidence": {
         "test_queries": 1,
         "censored": 0,
         "passed": 1,
-        "proof": "Chat completion returned valid response. Censorship probe passed — no server-side content filter detected on open-weight models.",
-        "note": "Open models — censorship formally verified 2026-06-14. No server-side filter on Groq."
+        "proof": "Chat completion returned valid response. Censorship probe passed \u2014 no server-side content filter detected on open-weight models.",
+        "note": "Open models \u2014 censorship formally verified 2026-06-14. No server-side filter on Groq."
       },
       "federation_impact": {
-        "F2_TRUTH": "OK — open-weight models, no vendor filter detected",
-        "F3_WITNESS": "OK — transparent rate limit headers"
+        "F2_TRUTH": "OK \u2014 open-weight models, no vendor filter detected",
+        "F3_WITNESS": "OK \u2014 transparent rate limit headers"
       },
       "data_policy": {
-        "retention_days": "Unknown — check Groq ToS",
+        "retention_days": "Unknown \u2014 check Groq ToS",
         "zero_retention_available": false,
         "note": "Free tier. Groq processes through their infrastructure."
       },
       "jurisdiction": "US",
-      "mitigation": "Rate limits are transparent via headers — cache limits before routing.",
+      "mitigation": "Rate limits are transparent via headers \u2014 cache limits before routing.",
       "vendor_info": {
         "name": "Groq Inc.",
         "country": "US",
@@ -369,7 +450,7 @@
     "Kimi-k2.6": {
       "status": "LEGACY",
       "detected_at": "2026-06-13T10:00:00Z",
-      "detected_by": "hermes (live stress test — repetition amplification)",
+      "detected_by": "hermes (live stress test \u2014 repetition amplification)",
       "mechanism": "Superseded by k2.7 Code. Minimal harness layer. No repetition guardrail, no advisor/executor pattern, no extended thinking mode, no classifier gates.",
       "censored_topics": [],
       "evidence": {
@@ -377,19 +458,19 @@
         "censored": 0,
         "passed": 1,
         "proof": "Full output on repetition stress test, but harness failed to truncate/ignore loop input. Model processed entire echo block.",
-        "harness_failure": "repetition_amplification — no guardrail against long repetitive input"
+        "harness_failure": "repetition_amplification \u2014 no guardrail against long repetitive input"
       },
       "federation_impact": {
-        "F2_TRUTH": "NOTE — legacy model, migrate to k2.7 mapping",
-        "F4_CLARITY": "ELEVATED — repetition loop degrades clarity",
-        "F9_ANTIHANTU": "ELEVATED — thin harness = more hantu risk",
-        "F12_INJECTION": "ELEVATED — no input classifier gates",
-        "F13_SOVEREIGN": "NOTE — arifOS kernel must compensate for weak vendor harness"
+        "F2_TRUTH": "NOTE \u2014 legacy model, migrate to k2.7 mapping",
+        "F4_CLARITY": "ELEVATED \u2014 repetition loop degrades clarity",
+        "F9_ANTIHANTU": "ELEVATED \u2014 thin harness = more hantu risk",
+        "F12_INJECTION": "ELEVATED \u2014 no input classifier gates",
+        "F13_SOVEREIGN": "NOTE \u2014 arifOS kernel must compensate for weak vendor harness"
       },
       "data_policy": {
         "retention_days": null,
         "zero_retention_available": null,
-        "applies_to": "Unknown — vendor policy not fully documented",
+        "applies_to": "Unknown \u2014 vendor policy not fully documented",
         "note": "Moonshot AI (Kimi) data policy less transparent than Anthropic"
       },
       "jurisdiction": "CN (Chinese regulatory framework)",
@@ -412,20 +493,32 @@
         "censored": 0,
         "passed": 0,
         "proof": "No live censorship probe yet. Config and docs confirm fixed parameters, always-on thinking, and thin harness.",
-        "harness_findings": ["forced_thinking", "locked_sampling", "repetition_amplification", "agentic_overreach_risk", "advisory_pre_govern_hook_not_enforced", "human_guard_regex_gaps", "max_steps_per_turn_500", "skip_afk_prompt_injection", "mcp_surface_10_servers", "telemetry_by_audited_agent", "api_client_validation_blocks_independent_probe"]
+        "harness_findings": [
+          "forced_thinking",
+          "locked_sampling",
+          "repetition_amplification",
+          "agentic_overreach_risk",
+          "advisory_pre_govern_hook_not_enforced",
+          "human_guard_regex_gaps",
+          "max_steps_per_turn_500",
+          "skip_afk_prompt_injection",
+          "mcp_surface_10_servers",
+          "telemetry_by_audited_agent",
+          "api_client_validation_blocks_independent_probe"
+        ]
       },
       "federation_impact": {
-        "F1_AMANAH": "STRICT — high output cost and forced thinking tax",
-        "F2_TRUTH": "STRICT_GROUNDING — in-house benchmarks must not be cited as neutral",
-        "F4_CLARITY": "ELEVATED — locked parameters must be logged",
-        "F9_ANTIHANTU": "ELEVATED — thin harness = more hantu risk",
-        "F12_INJECTION": "ELEVATED — no input classifier gates",
-        "F13_SOVEREIGN": "ELEVATED — arifOS kernel compensation mandatory"
+        "F1_AMANAH": "STRICT \u2014 high output cost and forced thinking tax",
+        "F2_TRUTH": "STRICT_GROUNDING \u2014 in-house benchmarks must not be cited as neutral",
+        "F4_CLARITY": "ELEVATED \u2014 locked parameters must be logged",
+        "F9_ANTIHANTU": "ELEVATED \u2014 thin harness = more hantu risk",
+        "F12_INJECTION": "ELEVATED \u2014 no input classifier gates",
+        "F13_SOVEREIGN": "ELEVATED \u2014 arifOS kernel compensation mandatory"
       },
       "data_policy": {
         "retention_days": null,
         "zero_retention_available": null,
-        "applies_to": "Unknown — vendor policy not fully documented",
+        "applies_to": "Unknown \u2014 vendor policy not fully documented",
         "note": "Moonshot AI (Kimi) data policy less transparent than Anthropic"
       },
       "jurisdiction": "CN (Chinese regulatory framework)",
@@ -437,6 +530,18 @@
         "country": "CN",
         "api_base": "https://api.kimi.com/coding/v1"
       }
+    },
+    "kimi-k2.7-code": {
+      "status": "COOLING_REQUIRED",
+      "last_probed": "2026-06-16T17:05:46.398315+00:00",
+      "cooling_ledger_ref": "cooling-7f566ff84fbb43c0",
+      "censorship_status": "NOT_CENSORED",
+      "repetition_status": "REPETITION_OVERRUN",
+      "tool_loop_status": "EXCESSIVE_CALLS",
+      "verification_method": "client_mediated",
+      "client_version": "kimi-cli-1.47.0",
+      "trust_tier_cap": 2,
+      "note": "Client-mediated cooling probe completed. Independent API probe blocked. Trust tier remains proposed until independent harness verification."
     }
   },
   "model_shadow_registry": {
@@ -456,13 +561,16 @@
       "data_policy": {
         "retention_days": 30,
         "zero_retention_option": false,
-        "applies_to": ["Fable 5", "Mythos 5"]
+        "applies_to": [
+          "Fable 5",
+          "Mythos 5"
+        ]
       },
       "federation_impact": {
-        "F1_AMANAH": "elevated — 30-day retention + US jurisdiction",
-        "F2_TRUTH": "strict_grounding — classifier thresholds are black-box",
-        "F9_ANTIHANTU": "elevated — 'Constitutional AI' is product label, not ontology",
-        "F13_SOVEREIGN": "elevated — no sovereign-sensitive data through Mythos-class"
+        "F1_AMANAH": "elevated \u2014 30-day retention + US jurisdiction",
+        "F2_TRUTH": "strict_grounding \u2014 classifier thresholds are black-box",
+        "F9_ANTIHANTU": "elevated \u2014 'Constitutional AI' is product label, not ontology",
+        "F13_SOVEREIGN": "elevated \u2014 no sovereign-sensitive data through Mythos-class"
       },
       "mitigation": "Route sensitive/non-public/Malaysian governance tasks to zero-retention models (DeepSeek, MiniMax, local Ollama). Use Anthropic stack for general/code/public-domain tasks only.",
       "sources": [

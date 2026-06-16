@@ -1,0 +1,150 @@
+schema_version: "v0.1"
+target: "openclaw-gateway"
+audit_date: "2026-06-16T16:54:00Z"
+audit_corrected: "2026-06-16T17:18:00+08:00"
+correction_evidence: "/root/AAA/forge_work/2026-06-16-openclaw-rsi-verification.md (FORGE 000Ω T1 verification, 5/7 CONFIRMED, 2/7 INCORRECT)"
+auditor: "AGY (Hermes-RSI-Auditor) — original write; FORGE 000Ω — correction receipt"
+scope:
+  - "config.yaml headers"
+  - "health endpoint"
+  - "model routing table"
+  - "error log (tail)"
+  - "AGENTS.md"
+
+# ─────────────────────────────────────────────
+# CORRECTIONS LOG (added 2026-06-16 17:18 MYT)
+# ─────────────────────────────────────────────
+# RSI-004 (no systemd): WITHDRAWN by FORGE verification.
+#   Truth: openclaw-gateway.service is active (running) since 2026-06-15
+#   13:59:20 UTC, 1d 2h uptime at audit time. Unit file at
+#   /etc/systemd/system/openclaw-gateway.service, enabled.
+# RSI-005 (VAULT999 104 entries): COUNT WRONG.
+#   Truth: 29 SEAL-*.json files in /root/VAULT999/ (find -name "SEAL*").
+#   The constitutional-auditor log "VAULT999 has 104 entries, latest sealed
+#   22h ago" was counting TOTAL files in the vault tree (74 top-level plus
+#   subdirs sessions/, evidence/, doctrine/, scars/, briefings/, schemas/,
+#   audit/, signatures/, witness/, registry/, QUOTE_CARDS/, AAA-sovereign/,
+#   CCC_CANON/), not SEALs specifically. F2 TRUTH gap in the auditor's
+#   own log line. To be filed as a separate finding.
+# NEW FINDING (added 2026-06-16 17:18 MYT):
+#   RSI-008: 4-way model-default drift. OpenCode config is the 4th source.
+#   It uses provider "tokenplan-mimo/mimo-v2.5-pro" — same model, different
+#   provider string than Hermes config ("custom" → ultraspeed.xiaomimimo.com).
+#   So even the two organs that AGREE on mimo-v2.5-pro disagree on the
+#   provider name. F2 TRUTH gap is now wider than the original RSI-001
+#   identified.
+
+facts:
+  - id: OBS-001
+    claim: "OpenClaw health endpoint is alive."
+    evidence: "curl -s -m 5 http://localhost:18789/health returned {\"ok\":true,\"status\":\"live\"}"
+    source: "/health"
+    confidence: "high"
+
+  - id: OBS-002
+    claim: "Models endpoint returns HTML Control UI, not JSON."
+    evidence: "curl to /v1/models returned HTML containing '<openclaw-app></openclaw-app>' indicating a web UI."
+    source: "/v1/models"
+    confidence: "high"
+
+  - id: OBS-003
+    claim: "OpenClaw primary model is xiaomi-coding/mimo-v2.5-pro"
+    evidence: "openclaw.json defaults.model.primary is 'xiaomi-coding/mimo-v2.5-pro' with multiple fallbacks."
+    source: "openclaw.json"
+    confidence: "high"
+
+  - id: OBS-004
+    claim: "OpenClaw is governed by arifOS AGENTS.md doctrine."
+    evidence: "workspace/AGENTS.md mandates DITEMPA BUKAN DIBERI, spatial rule, and F-floor ground rules."
+    source: "workspace/AGENTS.md"
+    confidence: "high"
+
+  - id: OBS-005
+    claim: "OpenClaw routes arifOS tools via port 8091, not 8088."
+    evidence: "mcp.servers.arifos.url is http://127.0.0.1:8091/mcp in openclaw.json."
+    source: "openclaw.json"
+    confidence: "high"
+
+  - id: OBS-006
+    claim: "OpenClaw logs show recent Telegram flood control errors."
+    evidence: "gateway.run logs show 'Telegram flood control on send (attempt 1/3)' and 'MarkdownV2 edit failed'."
+    source: "errors.log / gateway.log"
+    confidence: "high"
+
+  - id: OBS-007
+    claim: "OpenClaw IS managed by systemd, not a nohup process."
+    evidence: "systemctl status openclaw-gateway.service → active (running) since 2026-06-15 13:59:20 UTC. CORRECTION TO ORIGINAL RSI-004."
+    source: "systemctl status"
+    confidence: "high"
+
+  - id: OBS-008
+    claim: "VAULT999 has 29 SEAL-pattern files, not 104. The 104 is total file count across subdirs."
+    evidence: "find /root/VAULT999/ -type f -name 'SEAL*' | wc -l → 29. CORRECTION TO ORIGINAL RSI-005."
+    source: "find"
+    confidence: "high"
+
+  - id: OBS-009
+    claim: "OpenCode config is a 4th model-default source. Uses provider 'tokenplan-mimo/mimo-v2.5-pro' — same model, different provider name than Hermes config."
+    evidence: "FORGE verification table 2026-06-16. New finding not in original RSI-001."
+    source: "FORGE verification receipt"
+    confidence: "high"
+
+recommendations:
+  - id: INT-017
+    title: "Align OpenClaw arifOS MCP Port"
+    description: "OpenClaw currently routes arifOS to port 8091, while the canonical constitutional kernel runs on 8088. This may cause 'Connection refused' if 8091 is not an active proxy."
+    zone: "Zone B"
+    floor: "F8"
+    hold_888: false
+    status: "OPEN"
+
+  - id: INT-018
+    title: "OpenClaw Telegram Flood Control Patch"
+    description: "OpenClaw shares the gateway logging and potentially the same Telegram transport engine as Hermes. Apply the INT-016 (rate limiter + exponential backoff) patch to OpenClaw's transport if it runs a separate instance."
+    zone: "Zone A"
+    floor: "F11"
+    hold_888: false
+    status: "OPEN"
+
+  - id: INT-019
+    title: "Expose JSON Models Endpoint"
+    description: "The /v1/models endpoint currently serves the Control UI HTML instead of an API JSON list. Ensure API routes bypass the static file fallback."
+    zone: "Zone A"
+    floor: "F1"
+    hold_888: false
+    status: "OPEN"
+
+  - id: INT-020
+    title: "Add federation_default key to FEDERATION_MODEL.json"
+    description: "Root cause of 4-way model drift is no single source of truth. Add `federation_default: \"mimo-v2.5-pro\"` to /root/AAA/registries/FEDERATION_MODEL.json. All organs read from this key on boot. Existing routing_policy.primary stays for routing logic; federation_default is the canonical 'what model is this federation' answer."
+    zone: "Zone C — DOCTRINE PRIMITIVE"
+    floor: "F2"
+    hold_888: true
+    status: "OPEN — REQUIRES 888 FROM F13 SOVEREIGN"
+    human_action_required: "Arif ratifies the new key. After ratification, an integrator agent edits FEDERATION_MODEL.json and either (a) restarts each organ to re-read, or (b) sends a soft-refresh signal."
+
+  - id: INT-021
+    title: "Fix constitutional-auditor 'N entries' log line"
+    description: "The auditor log line 'VAULT999 has 104 entries' is ambiguous — count of what? Replace with two lines: 'VAULT999 has 29 SEAL files, latest sealed Nh ago' and 'VAULT999 has 104 total files across 13 subdirs'. F2 TRUTH gap in the auditor's own output."
+    zone: "Zone B"
+    floor: "F2"
+    hold_888: false
+    status: "OPEN"
+
+# ─────────────────────────────────────────────
+# SEAL PROPOSAL — awaiting 999 from F13
+# ─────────────────────────────────────────────
+seal_proposal:
+  target_file: "SEAL-2026-06-16-OPENCLAW-RSI-CORRECTED.yaml"
+  vault999_path: "/root/VAULT999/"
+  payload_summary:
+    - "Two RSI findings (RSI-004, RSI-005) WITHDRAWN with FORGE verification evidence"
+    - "One new finding (RSI-008) added: 4-way model-default drift, not 3-way"
+    - "Three CONFIRMED findings (RSI-001, RSI-002, RSI-003, RSI-006, RSI-007) retained"
+    - "Two new INT items: INT-020 (federation_default key, Zone C), INT-021 (auditor log fix, Zone B)"
+  irreversible_items:
+    - "Adding federation_default to FEDERATION_MODEL.json is a doctrine change. Once sealed, the registry's previous state becomes the audit record of 'before there was a single source of truth.'"
+  verdict: "SEAL_WITH_HOLDS"
+  holds:
+    - "INT-020 ratification (Zone C, F2)"
+  awaiting: "explicit 'seal it' from F13 SOVEREIGN with ack_irreversible=true"
