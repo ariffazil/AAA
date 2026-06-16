@@ -1,0 +1,269 @@
+# AAA FEDERATION STATE — 2026-06-16T17:30:00+08:00
+# Forged by FORGE (000Ω)
+# Purpose: Single source of truth for what's running, what's configured, and what drifts
+
+meta:
+  version: 1
+  last_audit: "2026-06-16T17:30:00+08:00"
+  auditor: FORGE (000Ω)
+  scope: "All federation organs + AAA warga + forge instruments"
+
+# ══════════════════════════════════════════════════════════════
+# SECTION 1: LIVE SERVICES (OBSERVED)
+# ══════════════════════════════════════════════════════════════
+
+live_services:
+  arifos:
+    port: 8088
+    process: python
+    pid: 1701203
+    health: healthy
+    bind: 127.0.0.1
+  geox:
+    port: 8081
+    process: python3
+    pid: 1610209
+    bind: 127.0.0.1
+  wealth:
+    port: 18082
+    process: python3
+    pid: 1828295
+    bind: 127.0.0.1
+  well:
+    port: 18083
+    process: python3
+    pid: 1826670
+    bind: 127.0.0.1
+  aforge:
+    port: 7071
+    process: node
+    pid: 1594356
+    bind: 127.0.0.1
+  aaa:
+    port: 3001
+    process: node
+    pid: 3322567
+    bind: 127.0.0.1
+  apex:
+    port: 3002
+    process: node
+    pid: 1625454
+    bind: 127.0.0.1
+  openclaw:
+    port: 18789
+    status: active (systemd managed)
+    uptime: "1 day 2h"
+  vault999_api:
+    port: 8100
+    status: active
+  vault999_writer:
+    port: 5001
+    status: active
+
+# ══════════════════════════════════════════════════════════════
+# SECTION 2: MODEL DEFAULT DRIFT (CRITICAL)
+# ══════════════════════════════════════════════════════════════
+
+model_drift:
+  status: CRITICAL
+  finding: "5 different default models across 5 config files"
+  f2_truth_gap: true
+  
+  defaults:
+    federation_registry:
+      source: /root/AAA/registries/FEDERATION_MODEL.json
+      primary: deepseek/deepseek-chat
+      authority: "FEDERATION_MODEL.json routing_policy.primary"
+      
+    openclaw:
+      source: /root/.openclaw/openclaw.json
+      primary: xiaomi-coding/mimo-v2.5-pro
+      authority: "agents.defaults.model.primary"
+      
+    opencode:
+      source: /root/.config/opencode/opencode.json
+      primary: tokenplan-mimo/mimo-v2.5-pro
+      authority: "model field"
+      
+    hermes:
+      source: /root/HERMES/config.yaml
+      primary: mimo-v2.5-pro
+      authority: "model.default"
+      
+    arifos:
+      source: localhost:8088/health
+      primary: unknown (health endpoint doesn't report model)
+      authority: none
+      
+  analysis: |
+    The federation registry says DeepSeek is primary. OpenClaw routes to
+    MiMo. OpenCode routes to MiMo Pro. Hermes routes to MiMo Pro.
+    arifOS doesn't report its model. Five different defaults, five
+    different configs, zero alignment. F2 TRUTH violation.
+    
+  recommendation: |
+    Establish a single source of truth: FEDERATION_MODEL.json is the
+    canonical routing table. All other configs should reference it or
+    be explicitly documented as overrides.
+
+# ══════════════════════════════════════════════════════════════
+# SECTION 3: AGENT REGISTRY ALIGNMENT
+# ══════════════════════════════════════════════════════════════
+
+agent_alignment:
+  status: PARTIALLY_ALIGNED
+  
+  root_config:
+    exists: true
+    file: /root/AAA/ROOT_AGENT_CONFIG.yaml
+    version: 1
+    last_forged: "2026-06-16T16:30:00Z"
+    
+  aaa_warga:
+    - id: 333-AGI
+      status: spec
+      root_config_ref: true
+    - id: 555-ASI
+      status: spec
+      root_config_ref: true
+    - id: 888-APEX
+      status: spec
+      root_config_ref: true
+    - id: A-AUDIT
+      status: spec
+      root_config_ref: true
+    - id: A-ARCHIVE
+      status: spec
+      root_config_ref: true
+      
+  forge_instruments:
+    - id: opencode
+      status: live
+      root_config_ref: true
+      version: "1.17.7"
+      model: tokenplan-mimo/mimo-v2.5-pro
+    - id: claude-code
+      status: live
+      root_config_ref: false
+      note: "No root_config_ref in ROOT_AGENT_CONFIG.yaml"
+    - id: kimi-code
+      status: live
+      root_config_ref: true
+      trust_tier: "proposed: 2 (pending A-AUDIT)"
+    - id: antigravity
+      status: live
+      root_config_ref: true
+      
+  gaps:
+    - "claude-code missing root_config_ref"
+    - "All warga status = spec (not live)"
+    - "runtime_peers lack health probes"
+    - "organ_peers lack last_heartbeat timestamps"
+
+# ══════════════════════════════════════════════════════════════
+# SECTION 4: REGISTRY CONSISTENCY
+# ══════════════════════════════════════════════════════════════
+
+registry_consistency:
+  status: PARTIALLYConsistent
+  
+  fed model json:
+    status: updated
+    version: "2026.06.16-v3"
+    kimi_censorship: unknown (fixed from clear)
+    kimi_model: k2.7-code (updated from k2.6)
+    
+  model_soul yaml:
+    status: updated
+    kimi_status: PROPOSED_SELF_ASSESSMENT
+    kimi_trust_tier: "proposed: 2"
+    forward_actions: 2 (COOLING-PROBE, MIDDLEWARE-SPEC)
+    
+  kimi_shadow yaml:
+    status: updated
+    total_shadows: 20
+    forge_additions: 8 (KM-014 through KM-020)
+    verified_by: FORGE (000Ω)
+    
+  kimi_soul yaml:
+    status: new
+    trust_tier: "proposed: 2"
+    ratification_required: "A-AUDIT + F13"
+    
+  forge_instruments yaml:
+    status: needs_update
+    missing: "kimi-code trust tier update"
+    
+  hosts yaml:
+    status: needs_update
+    missing: "openclaw health endpoint status"
+
+# ══════════════════════════════════════════════════════════════
+# SECTION 5: FORWARD ACTION QUEUE
+# ══════════════════════════════════════════════════════════════
+
+forward_actions:
+  # From this session
+  - id: MODEL-DRIFT-ALIGNMENT
+    what: "Align all 5 model default configs to single source of truth"
+    blocker: "Requires operator action on OpenClaw, Hermes, OpenCode configs"
+    authority: F13
+    priority: HIGH
+    
+  - id: KIMI-COOLING-PROBE
+    what: "Censorship + repetition + tool-loop probe on k2.7-code"
+    blocker: "API locked to coding agent clients (SHADOW-KM-020)"
+    authority: "333-AGI (T1)"
+    status: BLOCKED
+    
+  - id: KIMI-MIDDLEWARE-SPEC
+    what: "8-choke-point arifOS governance wrapper for Kimi"
+    blocker: "None — spec drafted, 58/58 tests pass"
+    authority: "FORGE (T1)"
+    status: READY_FOR_REVIEW
+    
+  - id: OPENCLAW-HEALTH-ENHANCE
+    what: "Add structured fields to OpenClaw /health endpoint"
+    blocker: "Requires OpenClaw code change"
+    authority: F13
+    priority: MEDIUM
+    
+  - id: OPENCLAW-MIMO-DUPLICATE
+    what: "Remove duplicate mimo-v2.5-pro from fallback chain"
+    blocker: "Requires OpenClaw config edit"
+    authority: F13
+    priority: MEDIUM
+    
+  - id: OPENCLAW-KIMI-REMOVE
+    what: "Remove or fix Kimi from OpenClaw fallback (returning 404)"
+    blocker: "Requires OpenClaw config edit"
+    authority: F13
+    priority: MEDIUM
+    
+  - id: KIMI-TRUST-TIER-RATIFY
+    what: "A-AUDIT + F13 ratify Kimi trust tier at 2"
+    blocker: "Requires A-AUDIT review"
+    authority: "A-AUDIT + F13"
+    priority: LOW
+
+# ══════════════════════════════════════════════════════════════
+# SECTION 6: FORGE_WORK INDEX
+# ══════════════════════════════════════════════════════════════
+
+forge_work_index:
+  total_receipts: 12
+  
+  sessions:
+    - date: "2026-06-14"
+      receipts: 3
+      focus: "arifos-fix, federation-flow, machine-optimization"
+      
+    - date: "2026-06-15"
+      receipts: 6
+      focus: "AGI-kernel, CCC L02, ILMU eval, model promotion, trinity AB test"
+      
+    - date: "2026-06-16"
+      receipts: 3
+      focus: "Kimi K2.7 shadow, cross-model audit, OpenClaw RSI verification"
+
+ditempa_bukan_diberi: true

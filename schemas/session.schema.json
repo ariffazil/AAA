@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/session.schema.json",
+  "title": "arifOS Session",
+  "description": "Constitutional session binding: actor, scope, expiry, chain_id, lease_id.",
+  "type": "object",
+  "required": ["session_id", "actor_id", "scope", "constitution_hash", "created_at", "expires_at"],
+  "additionalProperties": false,
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "description": "Unique session identifier. Format: SEAL-xxxxxxxx or arif-<8hex>.",
+      "pattern": "^(SEAL-[a-f0-9]{16}|arif-[a-f0-9]{8,32})$"
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "F13 SOVEREIGN or delegated agent ID.",
+      "minLength": 1,
+      "maxLength": 64
+    },
+    "actor_verified": {
+      "type": "boolean",
+      "description": "True if the actor has been cryptographically verified (Ed25519 sig)."
+    },
+    "scope": {
+      "type": "object",
+      "required": ["action_class", "tooling"],
+      "properties": {
+        "action_class": {
+          "type": "string",
+          "enum": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED", "SEAL"]
+        },
+        "tooling": {
+          "type": "array",
+          "items": {"type": "string"},
+          "description": "List of tool names the session may invoke.",
+          "uniqueItems": true
+        },
+        "organs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "lease_id": {
+      "type": "string",
+      "description": "Active lease ID if any."
+    },
+    "constitution_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "constitutional_chain_id": {
+      "type": "string",
+      "description": "Link to the chain of constitutional verifications."
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "nonce": {
+      "type": "string",
+      "description": "Single-use nonce for replay protection."
+    },
+    "actor_signature": {
+      "type": "string",
+      "description": "Ed25519 signature over canonical session payload."
+    },
+    "epoch_id": {
+      "type": "string"
+    },
+    "previous_session_hash": {
+      "type": "string"
+    }
+  }
+}
