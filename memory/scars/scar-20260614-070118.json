@@ -6,6 +6,6 @@
   "session_id": "scar-test-1",
   "reason": "Anonymous actor cannot execute MUTATE. Call arif_session_init with verified actor_id.",
   "severity": "critical",
-  "count": 6,
-  "last_seen": "2026-06-16T09:15:44.888175+00:00"
+  "count": 7,
+  "last_seen": "2026-06-16T17:41:19.303449+00:00"
 }

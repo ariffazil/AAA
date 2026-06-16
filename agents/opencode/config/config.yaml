@@ -55,18 +55,43 @@ runtime:
     prune: true
     reserved: 10000
 
+# ─────────────────────────────────────────────────────────────────────
+# BIJAKSANA B — M3 PROMOTION (2026-06-16, F13 delegated, FORGE executed)
+# ─────────────────────────────────────────────────────────────────────
+# Decision: M3 promoted to trivial + low slots ONLY.
+# Why: 1M MSA context, frontier agentic (SWE-Bench Pro 59%, MCP Atlas 74.2%),
+#       native multimodality — wasted on vision-only.
+# F6-GUARD (structural): M3 is NOT routed to high or critical. The constitutional
+#       path (high/critical) stays on kimi-k2-thinking + claude-sonnet-4-5,
+#       which have NO Bar 3 hard veto.
+# Bar 3 (F6 MARUAH) status: M3 = CONFIRMED_CENSORED on Malaysian sovereign
+#       topics (1MDB, Najib, PETRONAS, Jho Low). The trivial/low tier is small
+#       coding/math/agentic — F6 risk is structurally zero in this scope.
+# Ratification path: added M3 to trinity A/B spec (was EXCLUDED on line 31).
+#       If M3 fails A/B on non-F6 tasks, revert trivial/low back to mimo-pro.
+# Reversion: 2-line config edit + git revert. Total blast radius: zero.
+# Decision authority: F13 SOVEREIGN delegated ("chooaw the most bijaksana way")
+#       at 2026-06-16 17:35 UTC. FORGE chose Option B from 4 options table.
+# Evidence: /root/AAA/forge_work/2026-06-16-toolcheck-actions-executed.md
+# Gate spec: /root/AAA/forge_work/2026-06-15-model-promotion-gate.md
+# ─────────────────────────────────────────────────────────────────────
 # Model routing by task complexity
 model_routing:
-  trivial: mimo/mimo-v2.5-pro             # Typo fixes, single-line edits  [swap]
-  low: mimo/mimo-v2.5-pro                 # Bug fixes, small features     [swap]
+  trivial: minimax/MiniMax-M3             # Typo fixes, single-line edits  [BIJAKSANA B 2026-06-16]
+  low: minimax/MiniMax-M3                 # Bug fixes, small features     [BIJAKSANA B 2026-06-16]
   medium: kimi-for-coding/kimi-k2-thinking  # Refactors, multi-file changes
   high: kimi-for-coding/kimi-k2-thinking    # Architecture, new modules
   critical: anthropic/claude-sonnet-4-5     # Constitutional, deployment, secrets
   mimo_cheap: mimo/mimo-v2.5-pro            # Long-context drafting (1M context, $0)
+  vision: minimax/MiniMax-M3                # Image/video input
   # mimo-v2.5 (base) and mimo-v2-pro: BANNED for reasoning tasks.
   # Live test 2026-06-15: both truncate mid-thought, return empty content.
   # See LOCK comment above + xiaomi_mimo_soul.yaml live_evidence_2026_06_15.
   # deepseek/deepseek-chat — DEMOTED 2026-06-15: out of credits. Re-activate when refilled.
+  # MiniMax-M3: BIJAKSANA B promotion 2026-06-16. Confined to trivial/low tier.
+  # F6-touching tasks (1MDB, Najib, PETRONAS, Jho Low) are filtered out by
+  # routing topology — M3 is never in the path. Bar 3 hard veto: ACTIVE.
+  # If trinity A/B fails on non-F6 tasks, revert trivial+low to mimo-v2.5-pro.
 
 # Xiaomi MiMo provider (token-plan-sgp Lite subscription)
 # Wired 2026-06-15 by FORGE — see /root/.secrets/mimo.env for key + /root/.secrets/INDEX.md
