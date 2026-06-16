@@ -237,7 +237,7 @@ export default function MCPAppsPanel() {
   const postToView = useCallback((appId: string, payload: Record<string, unknown>) => {
     const iframe = document.querySelector(`iframe[data-app-id="${appId}"]`) as HTMLIFrameElement | null;
     if (iframe?.contentWindow) {
-      iframe.contentWindow.postMessage(payload, '*');
+      iframe.contentWindow.postMessage(payload, window.location.origin);
     }
   }, []);
 
