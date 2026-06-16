@@ -1,12 +1,14 @@
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
-last_forged: '2026-06-13T00:30:00Z'
-forged_by: OMEGA (Ω) Forge Agent + ASI💃 (parallel forge, VAULT999 ID 1806)
-opencode_version: 1.17.4
+last_forged: '2026-06-16T16:30:00Z'
+forged_by: Codex RSI/Forge
+opencode_version: 1.17.7
 opencode_binary: /usr/local/bin/opencode
 config_paths:
-  global: /root/.config/opencode/opencode.json
-  global_legacy: /root/.opencode/opencode.json (superseded by .config/ — to be reconciled)
+  root_config: /root/AAA/ROOT_AGENT_CONFIG.yaml
+  live_global: /root/.config/opencode/opencode.json
+  repo_view: /root/AAA/agents/opencode/config/config.yaml
+  global_legacy: /root/.opencode/opencode.json (retired; absent on 2026-06-16)
   workspace_skills: /root/.opencode/skills/
   workspace_tools: /root/.opencode/tools/
   workspace_launchers: /root/.opencode/mcp-launchers/

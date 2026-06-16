@@ -1,5 +1,7 @@
 version: 2
-# ── OpenCode 333-AGI | AAA Warga Coder Forge ──
+# Root canon: /root/AAA/ROOT_AGENT_CONFIG.yaml
+# This file is a per-agent view, not the source of truth.
+# ── OpenCode Forge Instrument | 333-AGI worker ──
 # HEXAGON v2.0 aligned — 333-THINK stage
 # Forged: 2026-06-14 by FORGE (000Ω)
 
@@ -7,6 +9,10 @@ id: opencode-333-agi
 agent_id: opencode
 agent_class: C2
 hexagon_stage: 333-THINK
+root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
+config_role: per-agent-view
+citizenship: governed-forge-worker
+constitutional_proxy: 333-AGI
 
 # Runtime configuration
 # ─────────────────────────────────────────────────────────────────────
@@ -33,6 +39,9 @@ hexagon_stage: 333-THINK
 #       proper evidence, not vibes.
 # ─────────────────────────────────────────────────────────────────────
 runtime:
+  version: 1.17.7
+  live_config: /root/.config/opencode/opencode.json
+  root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
   primary_model: mimo/mimo-v2.5-pro            # LOCKED 2026-06-15 (F13)
   reasoning_model: kimi-for-coding/kimi-k2-thinking  # Complex — $0.40/Mtok
   architect_model: anthropic/claude-sonnet-4-5  # Architecture review only

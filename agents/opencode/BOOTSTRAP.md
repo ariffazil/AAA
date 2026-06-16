@@ -9,6 +9,7 @@
    └── which opencode
 
 2. LOAD CONTEXT
+   ├── Read /root/AAA/ROOT_AGENT_CONFIG.yaml (root agent config)
    ├── Read AGENTS.md (constitutional rules)
    ├── Read SOUL.md (personality)
    ├── Read USER.md (who is Arif)
@@ -32,7 +33,7 @@
 
 ## Recovery Ritual (if drift detected)
 
-1. Read `ROOT_CANON.yaml` for file precedence
+1. Read `/root/AAA/ROOT_AGENT_CONFIG.yaml` for agent/config precedence
 2. Verify `AGENTS.md` exists and is valid
 3. Check git status for uncommitted changes
 4. Run `/init` if context is stale

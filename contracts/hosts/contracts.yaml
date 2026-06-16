@@ -171,6 +171,8 @@ host_contracts:
     runtime_type: acp
     transport: stdio
     config_paths:
+      - ROOT_AGENT_CONFIG.yaml
+      - /root/.config/opencode/opencode.json
       - .opencode
       - openclaw/acp
     install_method: acp-session-template
@@ -186,6 +188,8 @@ host_contracts:
       template_root: openclaw/acp
       required_for_agent_sessions: true
     generated_artifacts:
+      - ROOT_AGENT_CONFIG.yaml
+      - /root/.config/opencode/opencode.json
       - openclaw/acp
       - .opencode
     auth_modes:
