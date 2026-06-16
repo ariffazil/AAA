@@ -1,4 +1,4 @@
-import { Shield, Zap, Eye, Cpu, Activity, CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react';
+import { Shield, Cpu, Activity, CheckCircle2, AlertTriangle, ChevronRight } from 'lucide-react';
 
 interface RightsBundle {
   id: string;

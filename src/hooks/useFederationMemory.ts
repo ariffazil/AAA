@@ -2,7 +2,7 @@
  * useFederationMemory — Phase 3A Read-Only
  * Hooks for each Supabase aaa.* view (existing schemas)
  */
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 
 // ── Shared types ─────────────────────────────────────────────────
@@ -19,7 +19,7 @@ function useQuery<T>(tableOrView: string, select = '*', limit = 50): QueryState<
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetch = async () => {
+  const fetchData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
@@ -34,10 +34,10 @@ function useQuery<T>(tableOrView: string, select = '*', limit = 50): QueryState<
     } finally {
       setLoading(false);
     }
-  };
+  }, [tableOrView, select, limit]);
 
-  useEffect(() => { fetch(); }, [tableOrView]);
-  return { data, loading, error, refetch: fetch };
+  useEffect(() => { void fetchData(); }, [fetchData]);
+  return { data, loading, error, refetch: fetchData };
 }
 
 // ── Supabase health ─────────────────────────────────────────────

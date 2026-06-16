@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, RequestHandler } from 'express';
 import { ERROR_CODES } from './schema';
 
 export interface AuthContext {
@@ -8,8 +8,13 @@ export interface AuthContext {
   scopes?: string[];
 }
 
-export function createAuthMiddleware() {
-  return (req: Request, res: Response, next: () => void): void => {
+export type AuthenticatedRequest = Request & {
+  authContext?: AuthContext;
+};
+
+export function createAuthMiddleware(): RequestHandler {
+  return (req: Request, res: Response, next: NextFunction): void => {
+    const authReq = req as AuthenticatedRequest;
     const authHeader = req.headers.authorization;
     const apiKeyHeader = req.headers['x-api-key'];
     
@@ -29,7 +34,7 @@ export function createAuthMiddleware() {
     ];
     
     if (publicPaths.includes(req.path)) {
-      (req as any).authContext = { authenticated: false };
+      authReq.authContext = { authenticated: false };
       return next();
     }
 
@@ -37,7 +42,7 @@ export function createAuthMiddleware() {
     if (authHeader?.startsWith('Bearer ')) {
       const token = authHeader.slice(7);
       if (token === process.env.A2A_TOKEN || process.env.NODE_ENV === 'development') {
-        (req as any).authContext = {
+        authReq.authContext = {
           authenticated: true,
           authScheme: 'bearer',
           clientId: 'authenticated-client',
@@ -49,7 +54,7 @@ export function createAuthMiddleware() {
 
     if (apiKeyHeader) {
       if (apiKeyHeader === process.env.A2A_API_KEY || process.env.NODE_ENV === 'development') {
-        (req as any).authContext = {
+        authReq.authContext = {
           authenticated: true,
           authScheme: 'apiKey',
           clientId: 'api-client',
@@ -73,7 +78,7 @@ export function createAuthMiddleware() {
     }
 
     // Allow in development
-    (req as any).authContext = { authenticated: false };
+    authReq.authContext = { authenticated: false };
     next();
   };
 }

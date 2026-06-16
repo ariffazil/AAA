@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import { supabase } from '../lib/supabase';
 import { Database, AlertCircle, CheckCircle2, ShieldAlert, FileText, Activity, Box, DatabaseZap, Terminal, Map, ThumbsUp, ThumbsDown, RefreshCw, X, Check } from 'lucide-react';
 
@@ -6,22 +7,41 @@ type ConnectionHealth = 'CHECKING' | 'ONLINE' | 'ERROR';
 
 interface PendingTicket {
   ticket_id: string;
-  action_plan: string;
-  requested_at: string;
+  action_plan?: string | null;
+  requested_at?: string | null;
+  [key: string]: unknown;
+}
+
+type SupabaseRow = Record<string, unknown>;
+
+interface ViewsData {
+  toolCalls: SupabaseRow[];
+  pendingApprovals: PendingTicket[];
+  recentSeals: SupabaseRow[];
+  mcpSurface: SupabaseRow[];
+  evidenceIndex: SupabaseRow[];
+  artifactIndex: SupabaseRow[];
+  riskDashboard: SupabaseRow[];
+}
+
+type PendingTicketsResponse = {
+  pending?: PendingTicket[];
+};
+
+type ResolveResponse = {
+  error?: string;
+};
+
+const ARIFOS_BASE = 'https://arifos.arif-fazil.com';
+
+function errorMessage(error: unknown, fallback = 'Unknown connection error occurred.'): string {
+  return error instanceof Error ? error.message : fallback;
 }
 
 export default function SupabaseCockpit() {
   const [health, setHealth] = useState<ConnectionHealth>('CHECKING');
   const [lastRefresh, setLastRefresh] = useState<string>('Never');
-  const [viewsData, setViewsData] = useState<{
-    toolCalls: any[];
-    pendingApprovals: any[];
-    recentSeals: any[];
-    mcpSurface: any[];
-    evidenceIndex: any[];
-    artifactIndex: any[];
-    riskDashboard: any[];
-  }>({
+  const [viewsData, setViewsData] = useState<ViewsData>({
     toolCalls: [],
     pendingApprovals: [],
     recentSeals: [],
@@ -41,20 +61,18 @@ export default function SupabaseCockpit() {
   const [confirmDialog, setConfirmDialog] = useState<{ ticket: PendingTicket; action: 'APPROVED' | 'REJECTED' } | null>(null);
   const [mutationResult, setMutationResult] = useState<{ success: boolean; message: string } | null>(null);
 
-  const ARIFOS_BASE = 'https://arifos.arif-fazil.com';
-
   const fetchRestPending = useCallback(async () => {
     try {
       const res = await fetch(`${ARIFOS_BASE}/approval/pending`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const data = await res.json();
-      setRestPendingTickets(data.pending || []);
-    } catch (err: any) {
+      const data = await res.json() as PendingTicketsResponse;
+      setRestPendingTickets(Array.isArray(data.pending) ? data.pending : []);
+    } catch (err: unknown) {
       console.error('[fetchRestPending]', err);
     }
-  }, [ARIFOS_BASE]);
+  }, []);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       setHealth('CHECKING');
@@ -94,13 +112,13 @@ export default function SupabaseCockpit() {
       ]);
 
       setViewsData({
-        toolCalls: toolCallsRes.data || [],
-        pendingApprovals: approvalsRes.data || [],
-        recentSeals: sealsRes.data || [],
-        mcpSurface: mcpRes.data || [],
-        evidenceIndex: evidenceRes.data || [],
-        artifactIndex: artifactRes.data || [],
-        riskDashboard: riskRes.data || [],
+        toolCalls: (toolCallsRes.data ?? []) as SupabaseRow[],
+        pendingApprovals: (approvalsRes.data ?? []) as PendingTicket[],
+        recentSeals: (sealsRes.data ?? []) as SupabaseRow[],
+        mcpSurface: (mcpRes.data ?? []) as SupabaseRow[],
+        evidenceIndex: (evidenceRes.data ?? []) as SupabaseRow[],
+        artifactIndex: (artifactRes.data ?? []) as SupabaseRow[],
+        riskDashboard: (riskRes.data ?? []) as SupabaseRow[],
       });
 
       // Also fetch pending tickets from arifOS REST endpoint
@@ -108,17 +126,17 @@ export default function SupabaseCockpit() {
 
       setLastRefresh(new Date().toLocaleTimeString());
       setErrorMsg(null);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setHealth('ERROR');
-      setErrorMsg(err.message || 'Unknown connection error occurred.');
+      setErrorMsg(errorMessage(err));
     } finally {
       setLoading(false);
     }
-  };
+  }, [fetchRestPending]);
 
   useEffect(() => {
     fetchData();
-  }, [fetchRestPending]);
+  }, [fetchData]);
 
   const handleResolve = async () => {
     if (!confirmDialog) return;
@@ -132,21 +150,21 @@ export default function SupabaseCockpit() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ verdict: action, actor_id: 'arif' }),
       });
-      const data = await res.json();
+      const data = await res.json() as ResolveResponse;
       if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
       setMutationResult({ success: true, message: `${ticket.ticket_id} ${action}` });
       // Refresh both Supabase view and REST endpoint
       await fetchRestPending();
       await fetchData();
-    } catch (err: any) {
-      setMutationResult({ success: false, message: err.message });
+    } catch (err: unknown) {
+      setMutationResult({ success: false, message: errorMessage(err, 'Approval mutation failed.') });
     } finally {
       setMutatingTicket(null);
       setConfirmDialog(null);
     }
   };
 
-  const renderCard = (title: string, source: string, icon: React.ReactNode, data: any[], emptyMsg: string) => (
+  const renderCard = (title: string, source: string, icon: ReactNode, data: SupabaseRow[], emptyMsg: string) => (
     <div className="bg-[#111] border border-gray-800 rounded-lg p-5 flex flex-col gap-4">
       <div className="flex flex-col gap-1 border-b border-gray-800 pb-3">
         <div className="flex items-center gap-2">
@@ -213,13 +231,13 @@ export default function SupabaseCockpit() {
             </div>
           ) : (
             <div className="flex flex-col gap-2">
-              {tickets.map((ticket: any) => (
+              {tickets.map((ticket) => (
                 <div key={ticket.ticket_id} className="bg-black border border-gray-800 rounded p-3 flex flex-col gap-2">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex flex-col gap-1 min-w-0">
                       <span className="font-mono text-xs text-amber-400 font-bold">{ticket.ticket_id}</span>
                       <span className="font-mono text-[10px] text-gray-500">
-                        {ticket.action_plan || ticket.action_plan || '—'}
+                        {ticket.action_plan || '—'}
                       </span>
                       <span className="font-mono text-[10px] text-gray-600">
                         {ticket.requested_at ? new Date(ticket.requested_at).toLocaleString() : '—'}

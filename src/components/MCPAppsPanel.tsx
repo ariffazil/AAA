@@ -18,7 +18,6 @@ import {
   Minimize2,
   ShieldAlert,
   AlertCircle,
-  ExternalLink,
   LayoutGrid,
 } from 'lucide-react';
 
@@ -135,6 +134,34 @@ interface PendingRequest {
   reject: (reason?: unknown) => void;
 }
 
+type JsonRpcId = string | number;
+
+interface JsonRpcMessage {
+  jsonrpc: '2.0';
+  id?: JsonRpcId;
+  method?: string;
+  params?: Record<string, unknown>;
+  result?: unknown;
+  error?: { message?: string };
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object';
+}
+
+function parseJsonRpcMessage(value: unknown): JsonRpcMessage | null {
+  let parsed: unknown = value;
+  if (typeof value === 'string') {
+    try {
+      parsed = JSON.parse(value) as unknown;
+    } catch {
+      return null;
+    }
+  }
+  if (!isRecord(parsed) || parsed.jsonrpc !== '2.0') return null;
+  return parsed as JsonRpcMessage;
+}
+
 // ── Component ───────────────────────────────────────────────────────────────
 
 export default function MCPAppsPanel() {
@@ -207,7 +234,7 @@ export default function MCPAppsPanel() {
 
   // ── Post message to iframe ─────────────────────────────────────────────
 
-  const postToView = useCallback((appId: string, payload: any) => {
+  const postToView = useCallback((appId: string, payload: Record<string, unknown>) => {
     const iframe = document.querySelector(`iframe[data-app-id="${appId}"]`) as HTMLIFrameElement | null;
     if (iframe?.contentWindow) {
       iframe.contentWindow.postMessage(payload, '*');
@@ -216,7 +243,7 @@ export default function MCPAppsPanel() {
 
   // ── Wire message listener for each app ────────────────────────────────
 
-  const wireMessageListener = useCallback((appId: string, descriptor: MCPAppDescriptor) => {
+  const wireMessageListener = useCallback((appId: string) => {
     // Clean up existing handler
     const oldHandler = messageHandlersRef.current.get(appId);
     if (oldHandler) window.removeEventListener('message', oldHandler);
@@ -232,22 +259,17 @@ export default function MCPAppsPanel() {
       const iframe = document.querySelector(`iframe[data-app-id="${appId}"]`) as HTMLIFrameElement | null;
       if (!iframe || event.source !== iframe.contentWindow) return;
 
-      let data: any;
-      if (typeof event.data === 'string') {
-        try { data = JSON.parse(event.data); } catch { return; }
-      } else {
-        data = event.data;
-      }
-      if (!data || data.jsonrpc !== '2.0') return;
+      const data = parseJsonRpcMessage(event.data);
+      if (!data) return;
 
       // Response correlation
-      if (data.id != null && (data.result !== undefined || data.error !== undefined)) {
+      if (typeof data.id === 'number' && (data.result !== undefined || data.error !== undefined)) {
         const pending = pendingRequestsRef.current.get(appId);
         if (pending) {
           const pendingEntry = pending.get(data.id);
           if (pendingEntry) {
             pending.delete(data.id);
-            if (data.error) pendingEntry.reject(new Error(data.error.message || 'RPC error'));
+            if (data.error) pendingEntry.reject(new Error(data.error.message ?? 'RPC error'));
             else pendingEntry.resolve(data.result);
           }
         }
@@ -292,12 +314,13 @@ export default function MCPAppsPanel() {
 
         case 'ui/update-model-context': {
           const sc = data.params?.structuredContent;
-          if (sc?.envelope) {
+          const envelope = isRecord(sc) ? sc.envelope : null;
+          if (envelope) {
             setActiveApps(prev => {
               const app = prev.get(appId);
               if (!app) return prev;
               const next = new Map(prev);
-              next.set(appId, { ...app, governanceState: sc.envelope as ArifOsEnvelope });
+              next.set(appId, { ...app, governanceState: envelope as ArifOsEnvelope });
               return next;
             });
           }
@@ -311,7 +334,7 @@ export default function MCPAppsPanel() {
 
         case 'ui/open-link': {
           const url = data.params?.url;
-          if (url) window.open(url, '_blank');
+          if (typeof url === 'string') window.open(url, '_blank');
           break;
         }
 
@@ -334,20 +357,23 @@ export default function MCPAppsPanel() {
   useEffect(() => {
     for (const [appId, app] of activeApps) {
       if (app.state === 'initializing') {
-        wireMessageListener(appId, app.descriptor);
+        wireMessageListener(appId);
       }
     }
   }, [activeApps, wireMessageListener]);
 
   // Cleanup on unmount
   useEffect(() => {
+    const messageHandlers = messageHandlersRef.current;
+    const pendingRequests = pendingRequestsRef.current;
+    const nextIds = nextIdRef.current;
     return () => {
-      for (const [appId, handler] of messageHandlersRef.current) {
+      for (const handler of messageHandlers.values()) {
         window.removeEventListener('message', handler);
       }
-      messageHandlersRef.current.clear();
-      pendingRequestsRef.current.clear();
-      nextIdRef.current.clear();
+      messageHandlers.clear();
+      pendingRequests.clear();
+      nextIds.clear();
     };
   }, []);
 
@@ -543,7 +569,7 @@ function GovernanceBadge({ envelope }: { envelope: ArifOsEnvelope }) {
 // ── Governance Overlay ──────────────────────────────────────────────────────
 
 function renderGovernanceOverlay(envelope: ArifOsEnvelope) {
-  const { constraints, holds, actions } = envelope;
+  const { constraints, holds } = envelope;
   const isVetoed = constraints?.veto?.active === true;
   const blockingHolds = Array.isArray(holds) ? holds.filter(h => h.blocking !== false) : [];
   const disabledActions = constraints?.disabledActions || [];

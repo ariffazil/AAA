@@ -1,16 +1,16 @@
 import express, { Request, Response, Router } from 'express';
 import {
   JSONRPCRequest,
-  ERROR_CODES,
   Task,
+  TaskState,
   MessageSendParams,
   TaskMessage,
   PushNotificationConfig
 } from './schema';
-import { createAuthMiddleware, AuthContext } from './auth';
+import { createAuthMiddleware, type AuthenticatedRequest } from './auth';
 import { TaskStore, EventBus } from './store';
 import { GovernanceAdapter } from '../adapter/router';
-import { getAgentCard, getDiscoveryRoutingPolicy, CONSTITUTION_DEFAULTS } from '../seed/bootstrap';
+import { getAgentCard, getDiscoveryRoutingPolicy } from '../seed/bootstrap';
 import fs from 'node:fs/promises';
 import https from 'node:https';
 import http from 'node:http';
@@ -44,8 +44,19 @@ function getA2ADiscoveryContract() {
 
 // ── Grafana Webhook + Organ Monitor + Telegram Notifier ───────────────────────
 
-const TELEGRAM_BOT_TOKEN = '8410138119:AAHrXysyxI8yuBM7QW6QTafKsgpqEyd19DA';
-const TELEGRAM_CHAT_ID = '267378578';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
+const TASK_STATES: readonly TaskState[] = [
+  'submitted',
+  'working',
+  'input-required',
+  'completed',
+  'failed',
+  'canceled',
+  'rejected',
+  'auth-required',
+  'unknown',
+];
 
 const ORGANS = [
   { name: 'arifOS MCP', port: 8088 },
@@ -89,6 +100,9 @@ async function checkOrganHealth(name: string, port: number): Promise<{ name: str
 }
 
 async function sendTelegramMessage(text: string): Promise<boolean> {
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    return false;
+  }
   const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
   const body = JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text, parse_mode: 'HTML' });
   return new Promise((resolve) => {
@@ -138,6 +152,36 @@ interface GrafanaAlert {
   summary: string;
   state: string;
   organChecks?: Array<{ name: string; port: number; healthy: boolean; detail?: string }>;
+}
+
+interface McpAppCsp {
+  connectDomains?: string[];
+  resourceDomains?: string[];
+  frameDomains?: string[];
+  baseUriDomains?: string[];
+}
+
+interface McpAppManifest {
+  _meta?: {
+    ui?: {
+      csp?: McpAppCsp;
+    };
+  };
+  csp?: McpAppCsp;
+}
+
+function errorMessage(error: unknown, fallback = 'Unknown error'): string {
+  return error instanceof Error ? error.message : fallback;
+}
+
+function isTaskState(value: unknown): value is TaskState {
+  return typeof value === 'string' && TASK_STATES.includes(value as TaskState);
+}
+
+function joinCspDomains(value: unknown, fallback: string): string {
+  return Array.isArray(value) && value.length > 0
+    ? value.filter((entry): entry is string => typeof entry === 'string').join(" ")
+    : fallback;
 }
 
 function generateId(): string {
@@ -200,7 +244,7 @@ class AAAGatewayExecutor {
     message: TaskMessage,
     eventBus: EventBus,
     taskStore: TaskStore,
-    pushNotificationConfig?: PushNotificationConfig
+    _pushNotificationConfig?: PushNotificationConfig
   ): Promise<void> {
     console.log(`[AAA Gateway] Processing task ${taskId} via Governance Adapter`);
     logEvent('TASK_START', taskId, 'Mission received by kernel');
@@ -260,11 +304,12 @@ class AAAGatewayExecutor {
         final: true
       });
 
-    } catch (error: any) {
-      console.error(`[AAA Gateway] Execution failed: ${error.message}`);
-      logEvent('ERROR', taskId, `Execution failed: ${error.message}`);
+    } catch (error: unknown) {
+      const message = errorMessage(error, 'Execution failed');
+      console.error(`[AAA Gateway] Execution failed: ${message}`);
+      logEvent('ERROR', taskId, `Execution failed: ${message}`);
 
-      const isHold = error.message.includes('888_HOLD');
+      const isHold = message.includes('888_HOLD');
       const state = isHold ? 'auth-required' : 'failed';
 
       await taskStore.updateTask(taskId, {
@@ -272,7 +317,7 @@ class AAAGatewayExecutor {
           state,
           message: {
             role: 'agent',
-            parts: [{ kind: 'text', text: error.message }],
+            parts: [{ kind: 'text', text: message }],
             messageId: generateId(),
             taskId,
             contextId
@@ -313,20 +358,12 @@ function isSafeAppId(appId: string): boolean {
   return /^[a-z0-9][a-z0-9-_]*$/.test(appId);
 }
 
-function buildCspFromManifest(manifest: any): string {
-  const csp = manifest?._meta?.ui?.csp || manifest?.csp || {};
-  const connectSrc = Array.isArray(csp.connectDomains) && csp.connectDomains.length
-    ? csp.connectDomains.join(" ")
-    : "'none'";
-  const resourceSrc = Array.isArray(csp.resourceDomains) && csp.resourceDomains.length
-    ? csp.resourceDomains.join(" ")
-    : "'self'";
-  const frameSrc = Array.isArray(csp.frameDomains) && csp.frameDomains.length
-    ? csp.frameDomains.join(" ")
-    : "'none'";
-  const baseUri = Array.isArray(csp.baseUriDomains) && csp.baseUriDomains.length
-    ? csp.baseUriDomains.join(" ")
-    : "'self'";
+function buildCspFromManifest(manifest: McpAppManifest): string {
+  const csp = manifest._meta?.ui?.csp || manifest.csp || {};
+  const connectSrc = joinCspDomains(csp.connectDomains, "'none'");
+  const resourceSrc = joinCspDomains(csp.resourceDomains, "'self'");
+  const frameSrc = joinCspDomains(csp.frameDomains, "'none'");
+  const baseUri = joinCspDomains(csp.baseUriDomains, "'self'");
 
   return [
     "default-src 'none'",
@@ -361,7 +398,7 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
       APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], "utf8").catch(() => "{}") : Promise.resolve("{}")
     ]);
 
-    const manifest = JSON.parse(manifestRaw || "{}");
+    const manifest = JSON.parse(manifestRaw || "{}") as McpAppManifest;
 
     res.status(200);
     res.setHeader("Content-Type", "text/html;profile=mcp-app; charset=utf-8");
@@ -382,7 +419,7 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
   const executor = new AAAGatewayExecutor();
   const authMiddleware = createAuthMiddleware();
 
-  app.use(authMiddleware as any);
+  app.use(authMiddleware);
 
   // Single router mounted at both / and /api — so Caddy's /api/* proxy
   // strips nothing, and Express handles both /health and /api/operator/tasks
@@ -423,14 +460,14 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
       protocol: 'A2A',
       version: '1.0.0',
       gateway: 'AAA',
-      auth: (req as any).authContext?.authenticated ? 'enabled' : 'development',
+      auth: (req as AuthenticatedRequest).authContext?.authenticated ? 'enabled' : 'development',
     });
   });
 
   // ── Operator Interface ───────────────────────────────────────────────────
   mainRouter.get('/operator/tasks', async (req, res) => {
-    const state = req.query.state as string;
-    const tasks = await taskStore.listTasks(state ? { state: state as any } : undefined);
+    const state = req.query.state;
+    const tasks = await taskStore.listTasks(isTaskState(state) ? { state } : undefined);
     res.json({ ok: true, tasks });
   });
 
