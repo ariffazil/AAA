@@ -1,0 +1,177 @@
+# Kimi Soul — Capability Profile
+# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-16 by kimi@af-forge
+# Substrate: /root/.arifos/agents/kimi/config.toml, /root/.arifos/agents/kimi/mcp.json
+model_id: kimi_k2.7_code
+model_family: Moonshot AI Kimi K2.7 Code
+provider: Moonshot AI
+endpoint: https://api.kimi.com/coding/v1  # Kimi Code CLI managed endpoint
+api_docs: https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart
+license: Open-weight on HuggingFace; API terms proprietary
+open_weights: https://huggingface.co/moonshotai/Kimi-K2.7-Code  # PLAUSIBLE URL pattern; verify before cite
+type: text-generation, coding, agentic, multimodal (text, image, video in; text/tool out)
+status: PROPOSED_SELF_ASSESSMENT  # agent-authored; requires A-AUDIT / F13 ratification
+canonical_string: kimi-k2.7-code
+launch: 2026-06-12 (per Cloudflare changelog + Moonshot docs)
+origin_story: |
+  Moonshot AI's coding-focused agentic model, built on the Kimi K2 family.
+  Released as open-weight and via the Kimi API / Kimi Code CLI. The model is
+  positioned as a long-horizon coding agent with vision, tool use, and
+  always-on thinking. On af-forge it is the default model for the
+  kimi-code CODING agent, wrapped by arifOS constitutional hooks.
+hosting: Moonshot AI cloud (api.kimi.com / api.moonshot.ai); open weights downloadable
+public_audit: pending  # no BBB/CCC-style probe yet; this is the first registry mapping
+substrate_evidence:
+  wired_at: '2026-06-16T16:14:43Z'
+  config_path: /root/.arifos/agents/kimi/config.toml
+  credentials_path: /root/.arifos/agents/kimi/credentials/kimi-code.json
+  cli_version: kimi 1.47.0
+  default_model: kimi-code/kimi-for-coding
+  display_name: K2.7 Code
+  max_context_size: 262144
+  capabilities: [video_in, image_in, thinking]
+  mcp_wiring: /root/.arifos/agents/kimi/mcp.json
+  governance_hooks:
+    PreToolUse: [aaa-pre-govern.sh, aaa-thermo-pre.sh, human-guard-hard.sh, human-backup.sh]
+    PostToolUse: [aaa-post-witness.sh, aaa-thermo-post.sh, human-format.sh]
+    Stop: [aaa-stop-seal.sh, aaa-nats-publish.sh, human-session-summary.sh]
+    SessionStart: [aaa-session-start.sh]
+  tier: 2  # substrate live; full F11 independent audit pending
+  888_hold_authority: required to promote beyond CODING-agent substrate
+
+soul:
+  capabilities:
+    coding:
+      strength: HIGH
+      evidence: +21.8% Kimi Code Bench v2, +11.0% Program Bench, +31.5% MLS Bench Lite vs k2.6
+      caveat: in-house benchmarks; independent SWE-Bench / τ-bench pending
+    agentic_execution:
+      strength: HIGH
+      evidence: +10% on Kimi Claw 24/7, MCP Atlas, MCP Mark Verified vs k2.6
+      caveat: thin harness requires arifOS governance wrapper
+    long_context:
+      size: 262144
+      verified: YES (config + docs)
+      note: 256K / 262.1k token context; compaction_trigger_ratio=0.85 in CLI
+    multimodal:
+      text: yes
+      image: yes
+      video: yes
+      tool_use: yes
+      note: MoonViT 400M vision encoder; video frames and screenshots usable as input
+    structured_outputs:
+      support: JSON schema
+      note: supported via API
+    thinking:
+      mode: always_on
+      note: k2.7 Code does not support non-thinking mode
+    architecture:
+      type: Mixture-of-Experts (MoE)
+      total_parameters: 1_000_000_000_000
+      active_parameters_per_token: 32_000_000_000
+      layers: 61
+      dense_layers: 1
+      attention_heads: 64
+      experts: 384
+      selected_experts_per_token: 8
+      shared_experts: 1
+      attention_hidden_dim: 7168
+      moe_hidden_dim_per_expert: 2048
+      vocab_size: 160000
+      activation: SwiGLU
+      attention_mechanism: MLA
+      vision_encoder: MoonViT
+      vision_encoder_parameters: 400_000_000
+
+  trust_tier_proposed: 2  # proposed by the agent itself; not self-ratified
+  trust_tier_ratification_required:
+  - A-AUDIT
+  - F13_SOVEREIGN
+  note: |
+    An agent should not set its own canonical trust tier. This profile is a
+    self-assessment. A-AUDIT and/or F13 must ratify or revise the tier before
+    it becomes canonical routing policy.
+  suitable_for:
+    - long_horizon_software_engineering
+    - code_refactoring_across_multiple_files
+    - architecture_design_and_schema_drafting
+    - tool_orchestration_under_arifOS_kernel
+    - multimodal_code_recovery_from_sanitized_images
+    - high_context_codebase_qa
+  not_recommended_for:
+    - sovereign_critical_decisions_without_888_judge
+    - malaysian_governance_political_analysis_without_verification
+    - sensitive_dashboard_or_ui_screenshot_input
+    - low_latency_chat_where_thinking_tax_is_wasteful
+    - deterministic_generation_where_sampling_must_be_tuned
+    - production_deploy_without_dry_run_and_human_seal
+
+  constitutional_binding:
+    F1_AMANAH: |
+      High output cost ($4/M) and forced thinking mean every call spends real
+      budget. Cache aggressively; cap spend per session. Reversibility: code edits
+      are reversible via git; filesystem mutations are not — route through 888.
+    F2_TRUTH: |
+      Benchmark claims are vendor/in-house. Cite as "Moonshot-reported" until
+      independent replication. Always grep substrate before asserting file or
+      person facts.
+    F3_WITNESS: |
+      Multi-step tool loops must preserve reasoning_content in history. Use
+      arifOS witness_packet to keep human/AI/evidence triad intact.
+    F4_CLARITY: |
+      Effective parameters are locked: temperature=1.0, top_p=0.95, thinking=on.
+      Log them on every request so downstream audits are not fooled by sent values.
+    F7_HUMILITY: |
+      Strong coding does not imply strong cultural grounding. For BM/Malay
+      context, witness, maruah, and amanah, cross-check with DeepSeek or human.
+    F9_ANTIHANTU: |
+      Agentic ambition is not consciousness. The model is a function. Never let
+      the swarm narrative override F13 human veto.
+    F11_AUDITABILITY: |
+      Open weights exist, but the live API path is proprietary. Keep a local
+      reproducible test pack for any SEAL-grade output produced through Kimi.
+    F13_SOVEREIGN: |
+      The human operator is final veto. Kimi Code CLI hooks already enforce
+      human-guard-hard on Shell/WriteFile/StrReplaceFile; this must never be
+      disabled.
+
+vendor_disclosure_gaps:
+  - item: full_training_data_composition
+    status: undisclosed
+  - item: alignment_training_details
+    status: undisclosed
+  - item: safety_eval_independent_third_party
+    status: not published
+  - item: data_retention_policy_for_api
+    status: partially documented
+  - item: rate_limit_real_time_headers
+    status: not provided
+
+agents_using:
+  - kimi-code-cli
+  - aaa-gateway (potential)
+  - hermes-asi (when routed via OpenClaw)
+
+cooling_ledger_ref: pending  # hermes-asi to issue after first probe battery
+status: PROPOSED_SELF_ASSESSMENT
+
+provenance:
+  source: live_config + public Moonshot docs + web fetch
+  evidence_refs:
+    - path: /root/.arifos/agents/kimi/config.toml
+      observed_at: '2026-06-16'
+    - URL: https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart
+      observed_at: '2026-06-16'
+    - URL: https://www.kimi.com/resources/kimi-k2-7-code
+      observed_at: '2026-06-16'
+    - URL: https://developers.cloudflare.com/changelog/post/2026-06-12-kimi-k2-7-code-workers-ai/
+      observed_at: '2026-06-16'
+  observed_at: '2026-06-16T16:14:43Z'
+  observed_by: kimi@af-forge
+  confidence: high
+
+ttl:
+  expires_at: '2026-09-16T16:14:43Z'
+  review_required_at: '2026-07-16T16:14:43Z'
+  auto_extend_if_no_new_incidents: true
+
+ditempa_bukan_diberi: true

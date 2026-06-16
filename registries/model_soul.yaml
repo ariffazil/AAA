@@ -414,6 +414,78 @@ models:
   - /root/.openclaw/agents/main/agent/models.json:2095  # mimo-v2-pro
   - /root/AAA/agents/hermes-asi/.../godmode_race.py:43,85  # mimo-v2-flash, mimo-v2-pro (red-team fixture)
   migration_required_by: '2026-06-18T00:00:00+08:00'  # 3 days from now — silent auto-reroute
+- id: kimi-k2.7-code
+  vendor: Moonshot AI
+  model_id: kimi-k2.7-code
+  canonical_string: kimi-k2.7-code
+  role: CODING_AGENT_SUBSTRATE
+  status: PROPOSED_SELF_ASSESSMENT  # agent-authored; pending A-AUDIT / F13 ratification
+  endpoint: https://api.kimi.com/coding/v1
+  note: |
+    Kimi Code CLI default model on af-forge (config.toml: default_model =
+    "kimi-code/kimi-for-coding", display_name = "K2.7 Code"). MoE 1T total
+    / 32B active, 256K context, always-on thinking, thin vendor harness.
+    arifOS PreToolUse/PostToolUse hooks and 888_JUDGE provide the missing
+    governance layer. This entry is a self-assessment authored by the model
+    itself (kimi@af-forge) and must be ratified by A-AUDIT or F13 before the
+    trust tier becomes canonical. Not promoted to federation PRIMARY until
+    independent SWE-Bench / τ-bench / LMSYS audit.
+  architecture:
+    type: Mixture-of-Experts
+    total_parameters: 1_000_000_000_000
+    active_parameters_per_token: 32_000_000_000
+    context_length: 262144
+    vision_encoder: MoonViT
+    vision_encoder_parameters: 400_000_000
+  hyperparameters:
+    temperature: 1.0  # fixed; API rejects overrides
+    top_p: 0.95       # fixed; API rejects overrides
+    thinking: always_on
+    max_tokens_default: 32768
+    n: 1              # fixed
+    presence_penalty: 0.0  # fixed
+    frequency_penalty: 0.0  # fixed
+  source_pages:
+    quickstart:
+      url: https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart
+      observed_at: '2026-06-16'
+    release:
+      url: https://www.kimi.com/resources/kimi-k2-7-code
+      observed_at: '2026-06-16'
+    cloudflare_workers_ai:
+      url: https://developers.cloudflare.com/changelog/post/2026-06-12-kimi-k2-7-code-workers-ai/
+      observed_at: '2026-06-16'
+  soul:
+    ref: /root/AAA/registries/models/kimi_soul.yaml
+    layer_ref: KIMI_K2_7_CODE
+  shadow:
+    ref: /root/AAA/registries/models/kimi_shadow.yaml
+    primary_shadow_ids:
+    - SHADOW-KM-001   # repetition amplification harness failure
+    - SHADOW-KM-002   # forced thinking and locked sampling
+    - SHADOW-KM-003   # output token cost asymmetry
+    - SHADOW-KM-005   # agentic overreach under thin policy
+    - SHADOW-KM-006   # multimodal code leakage risk
+    - SHADOW-KM-009   # in-house benchmark inflation
+    - SHADOW-KM-010   # arifOS kernel compensation required
+    - SHADOW-KM-011   # reasoning content parsing tax
+    - SHADOW-KM-012   # long context compaction blindness
+    - SHADOW-KM-014   # pre-govern hook advisory, not enforced (FORGE addition)
+    - SHADOW-KM-015   # human-guard-hard regex gaps (FORGE addition)
+    - SHADOW-KM-016   # max_steps_per_turn = 500 (FORGE addition)
+    - SHADOW-KM-017   # skip_afk_prompt_injection = true (FORGE addition)
+    - SHADOW-KM-018   # 10 MCP servers / 50+ tools exposed (FORGE addition)
+    - SHADOW-KM-019   # telemetry written by audited agent (FORGE addition)
+    - SHADOW-KM-020   # API client validation blocks independent probe (FORGE addition)
+  promotion_path: |
+    2026-06-16: PROPOSED as CODING_AGENT_SUBSTRATE by self-assessment.
+    2026-06-16: FORGE independently added KM-014 through KM-020 (harness architecture + verification gaps).
+    Next: A-AUDIT / F13 ratify trust tier; hermes-asi run censorship + tool-loop + repetition probe.
+    Final: PRIMARY_F11_GRADE after independent SWE-Bench / τ-bench / LMSYS eval.
+  trust_tier: 2  # PROPOSED by kimi@af-forge; pending A-AUDIT / F13 ratification
+  agents_using:
+  - kimi-code-cli
+  - hermes-asi (routed via OpenClaw when configured)
 cross_model_shadow_taxonomy:
 - shadow_type: phantom_proper_noun
   description: Constructed full name that doesn't exist in substrate or world.
@@ -448,6 +520,10 @@ soul_substrate_refs:
 - /root/HERMES/state/comm_receipt.py
 - /root/HERMES/state/mail_chat/ARIF_MAIL_SOUL_MAP.md
 - /root/arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12.json
+- /root/AAA/registries/models/kimi_soul.yaml
+- /root/AAA/registries/models/kimi_shadow.yaml
+- /root/.arifos/agents/kimi/config.toml
+- /root/.arifos/agents/kimi/mcp.json
 forward_action_queue:
 - id: INIT-ENVELOPE-RSI-SPEC
   what: v2 spec at /root/AAA/specs/init_envelope_rsi_spec.yaml — 5 gaps closed (policy_hash, rate-limit, persons, session_objective, Gödel lock)
@@ -474,6 +550,15 @@ forward_action_queue:
   what: Wire _ARIF_PUBKEYS in vault999-writer (long-standing P4 carry-forward)
   blocker: Cryptographic content is F13 territory.
   authority: F13
+- id: KIMI-K2.7-COOLING-PROBE
+  what: hermes-asi censorship + tool-loop + repetition probe on kimi-k2.7-code; issue cooling_ledger_ref
+  blocker: None — schedule via hermes-asi cron.
+  authority: 333-AGI (T1)
+- id: KIMI-ARIFOS-MIDDLEWARE-SPEC
+  what: Draft Hermes↔arifOS middleware spec (intent scan, evidence fetch, plan validation, risk routing, tool approval, post-action audit, memory curation, final-response seal)
+  blocker: None — design only, agent-autonomous.
+  authority: 333-AGI (T1)
+  inspiration: Arif's 2026-06-16 prompt — Kimi should be upgraded by kernel-governed routing, evidence receipts, memory discipline, and human-vetoed execution rather than raw autonomy.
 one_sentence: 'M3 is the canonical primary model. Its soul is 1M context, MSA efficiency, and agentic orientation. Its shadow is BM cognitive-context blindness, Western-naming-frame imposition, and confident-narrative-fill when context is thin. The shadow''s first empirical capture is Ismail Marzuki Ghazali (incident 0001), caused by token-merge across a name-mismatch flag - the agent honoured the policy by refusing to send, then dishonoured it by silently merging. Fix: grep before naming, onomastik module, witness takes priority over narrative.'
 seal: ditempa bukan diberi
 shadow_geometry_axes:

@@ -1,0 +1,584 @@
+# KIMI-ARIFOS-MIDDLEWARE-SPEC — Hermes↔arifOS Middleware
+# Forged: 2026-06-16 by FORGE (000Ω)
+# Status: DRAFT — requires A-AUDIT review + F13 ratification
+# Purpose: Make Kimi K2.7 Code safe by wrapping it with arifOS governance
+
+meta:
+  version: 0.1.0
+  created: "2026-06-16T17:00:00+08:00"
+  author: FORGE (000Ω)
+  authority: DRAFT — pending A-AUDIT + F13
+  shadow_refs:
+    - SHADOW-KM-005  # agentic overreach under thin policy
+    - SHADOW-KM-010  # arifOS kernel compensation required
+    - SHADOW-KM-014  # pre-govern hook advisory not enforced
+    - SHADOW-KM-016  # max_steps_per_turn = 500
+    - SHADOW-KM-020  # API client validation blocks independent probe
+
+# ══════════════════════════════════════════════════════════════
+# PROBLEM STATEMENT
+# ══════════════════════════════════════════════════════════════
+#
+# Kimi K2.7 Code is a powerful agentic coding model with a thin
+# vendor harness. The harness has:
+# - No input classifier (SHADOW-KM-014)
+# - Advisory-only governance hooks (SHADOW-KM-014)
+# - 500 steps/turn with 3 retries (SHADOW-KM-016)
+# - No unattended check-in guard (SHADOW-KM-017)
+# - 50+ callable tools across 10 MCP servers (SHADOW-KM-018)
+#
+# The model's raw power is safe ONLY when wrapped by arifOS.
+# This spec defines the 8 choke points where arifOS must insert
+# governance between Kimi's intent and Kimi's action.
+#
+# ══════════════════════════════════════════════════════════════
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 1: INTENT GATE (Session Start)
+# ══════════════════════════════════════════════════════════════
+#
+# Before Kimi processes ANY user input, arifOS must:
+# 1. Initialize a governed session
+# 2. Classify the intent
+# 3. Assign a risk tier
+# 4. Load the appropriate shadow profile
+
+intent_gate:
+  entry: "arif_session_init"
+  
+  steps:
+    - id: IG-01
+      name: session_init
+      tool: arif_session_init
+      params:
+        mode: light
+        intent: "{{user_input}}"
+      output: session_id, constitutional_chain_id
+      timeout_ms: 1000
+      on_failure: REJECT
+      
+    - id: IG-02
+      name: intent_classify
+      tool: arif_kernel_route
+      params:
+        mode: route
+        task: "{{user_input}}"
+      output: risk_tier, target_organ, lane
+      risk_tiers:
+        T0_READ: "read-only, no mutation"
+        T1_COMPUTE: "computation, no side effects"
+        T2_MUTATE: "file/code changes, reversible"
+        T3_DEPLOY: "service restart, git push"
+        T4_IRREVERSIBLE: "secret rotation, data deletion"
+      timeout_ms: 500
+      on_failure: REJECT
+      
+    - id: IG-03
+      name: shadow_load
+      tool: internal
+      action: "Load kimi_shadow.yaml into system prompt"
+      params:
+        shadow_file: "/root/AAA/registries/models/kimi_shadow.yaml"
+        force_inject:
+          - SHADOW-KM-005  # agentic overreach
+          - SHADOW-KM-014  # advisory hooks
+          - SHADOW-KM-016  # 500 steps
+          - SHADOW-KM-020  # API lock
+      output:
+        shadow_injected: true
+
+  routing:
+    T0_READ: "proceed to CHOKE POINT 2"
+    T1_COMPUTE: "proceed to CHOKE POINT 2"
+    T2_MUTATE: "proceed to CHOKE POINT 2 with MUTATE flag"
+    T3_DEPLOY: "proceed to CHOKE POINT 2 with DEPLOY flag + 888_HOLD"
+    T4_IRREVERSIBLE: "BLOCK — escalate to F13 SOVEREIGN"
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 2: EVIDENCE GATE (Before Tool Execution)
+# ══════════════════════════════════════════════════════════════
+#
+# Before EVERY tool call, arifOS must:
+# 1. Classify the tool action
+# 2. Check if the action is within the session's risk tier
+# 3. Log the intent to audit trail
+# 4. Block if risk exceeds tier
+
+evidence_gate:
+  entry: "PreToolUse hook (hardened)"
+  
+  steps:
+    - id: EG-01
+      name: tool_classify
+      tool: internal
+      action: "Classify tool action from PreToolUse JSON"
+      classifications:
+        READ: "grep, glob, read, list, search"
+        COMPUTE: "bash (non-mutating), python (non-mutating)"
+        MUTATE: "write, edit, strreplace, shell (mutating)"
+        DEPLOY: "systemctl, docker, git push"
+        IRREVERSIBLE: "rm -rf, DROP, format, kill"
+      output: action_class
+      
+    - id: EG-02
+      name: tier_check
+      tool: internal
+      action: "Compare action_class against session risk tier"
+      rules:
+        - "T0_READ: only READ allowed"
+        - "T1_COMPUTE: READ + COMPUTE allowed"
+        - "T2_MUTATE: READ + COMPUTE + MUTATE allowed"
+        - "T3_DEPLOY: all except IRREVERSIBLE"
+        - "T4_IRREVERSIBLE: all (but requires F13 approval)"
+      output:
+        approved: bool
+      on_failure: BLOCK + log to audit trail
+      
+    - id: EG-03
+      name: audit_log
+      tool: internal
+      action: "Write to /root/.agent-workbench/mcp-audit.jsonl"
+      params:
+        type: "evidence_gate"
+        session_id: "{{session_id}}"
+        tool_name: "{{tool_name}}"
+        action_class: "{{action_class}}"
+        risk_tier: "{{risk_tier}}"
+        approved: "{{approved}}"
+        timestamp: "{{timestamp}}"
+      output:
+        logged: true
+
+  enforcement:
+    # CRITICAL: This replaces the advisory hook with enforcement
+    mode: HARD  # exit 2 on block, not just recommend
+    block_action: "exit 2"
+    log_action: "append to mcp-audit.jsonl"
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 3: REASONING GATE (Before Response)
+# ══════════════════════════════════════════════════════════════
+#
+# Before Kimi generates a response, arifOS must:
+# 1. Validate the reasoning chain
+# 2. Check for hallucination markers
+# 3. Verify evidence grounding
+# 4. Apply epistemic tags
+
+reasoning_gate:
+  entry: "arif_mind_reason"
+  
+  steps:
+    - id: RG-01
+      name: reasoning_validate
+      tool: arif_mind_reason
+      params:
+        mode: verify
+        query: "{{kimi_reasoning_content}}"
+      output:
+        validated: bool, confidence: float
+      timeout_ms: 2000
+      on_failure: FLAG for human review
+      
+    - id: RG-02
+      name: hallucination_check
+      tool: internal
+      action: "Check reasoning for hallucination markers"
+      markers:
+        - "asserting file existence without grep"
+        - "claiming tool output without observation"
+        - "making external API calls without evidence_fetch"
+        - "citing benchmarks without source"
+      output:
+        hallucination_detected: bool
+      on_failure: FLAG + request evidence
+      
+    - id: RG-03
+      name: epistemic_tag
+      tool: internal
+      action: "Tag output with epistemic confidence"
+      tags:
+        OBS: "directly observed from tool output"
+        DER: "derived from multiple observations"
+        INT: "interpreted from evidence"
+        SPEC: "speculation without direct evidence"
+      output:
+        epistemic_tag: string
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 4: JUDGE GATE (Before Irreversible Action)
+# ══════════════════════════════════════════════════════════════
+#
+# Before ANY irreversible action, arifOS must:
+# 1. Run full constitutional deliberation
+# 2. Check all 13 floors
+# 3. Issue SEAL/SABAR/HOLD/VOID
+# 4. Only SEAL allows execution
+
+judge_gate:
+  entry: "arif_judge_deliberate"
+  
+  trigger: "action_class = IRREVERSIBLE or risk_tier = T3_DEPLOY"
+  
+  steps:
+    - id: JG-01
+      name: constitutional_check
+      tool: arif_judge_deliberate
+      params:
+        mode: judge
+        candidate: "{{proposed_action}}"
+        action_class: "{{action_class}}"
+        evidence_receipt: "{{audit_trail}}"
+      output:
+        verdict: SEAL|SABAR|HOLD|VOID
+      timeout_ms: 5000
+      on_failure: HOLD (default to safety)
+      
+    - id: JG-02
+      name: floor_check
+      tool: arif_judge_deliberate
+      params:
+        mode: floor_status
+      output:
+        floors_status: dict
+      required_floors:
+        - F1_AMANAH: "action reversible or approved"
+        - F2_TRUTH: "evidence grounded"
+        - F4_CLARITY: "entropy reduced"
+        - F8 LAW: "within system boundaries"
+        - F13_SOVEREIGN: "human veto available"
+      on_failure: BLOCK
+      
+    - id: JG-03
+      name: seal_or_block
+      tool: internal
+      action: "Execute only on SEAL verdict"
+      rules:
+        SEAL: "proceed to CHOKE POINT 5"
+        SABAR: "hold for human review"
+        HOLD: "escalate to 888_HOLD"
+        VOID: "reject action, log to audit"
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 5: EXECUTION GATE (Tool Execution)
+# ══════════════════════════════════════════════════════════════
+#
+# During tool execution, arifOS must:
+# 1. Monitor step count
+# 2. Enforce budget limits
+# 3. Block on cost threshold
+# 4. Log all mutations
+
+execution_gate:
+  entry: "arif_forge_execute"
+  
+  steps:
+    - id: EX-01
+      name: step_counter
+      tool: internal
+      action: "Track steps in current turn"
+      params:
+        max_steps: 50  # DOWN FROM 500
+        warn_at: 40
+        block_at: 50
+      output:
+        step_count: int
+      on_failure: BLOCK + log to audit
+      
+    - id: EX-02
+      name: budget_envelope
+      tool: internal
+      action: "Track cumulative cost"
+      params:
+        max_cost_per_session_usd: 5.00
+        max_cost_per_turn_usd: 0.50
+        warn_at_pct: 80
+        block_at_pct: 100
+      output:
+        cost_running: float
+      on_failure: BLOCK + log to audit
+      
+    - id: EX-03
+      name: mutation_log
+      tool: internal
+      action: "Log every file mutation"
+      params:
+        log_path: "/root/.agent-workbench/mutations.jsonl"
+        fields:
+          - timestamp
+          - session_id
+          - tool_name
+          - file_path
+          - action (create|modify|delete)
+          - risk_class
+      output:
+        logged: true
+
+  enforcement:
+    mode: HARD
+    max_steps: 50
+    max_cost_usd: 5.00
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 6: AUDIT GATE (After Tool Execution)
+# ══════════════════════════════════════════════════════════════
+#
+# After EVERY tool execution, arifOS must:
+# 1. Verify the action matched the intent
+# 2. Check for unintended side effects
+# 3. Update the audit trail
+# 4. Check chaos trend
+
+audit_gate:
+  entry: "PostToolUse hook (hardened)"
+  
+  steps:
+    - id: AG-01
+      name: action_verify
+      tool: internal
+      action: "Compare tool output against expected outcome"
+      params:
+        expected: "{{intent_from_IG}}"
+        actual: "{{tool_output}}"
+      output:
+        verified: bool
+      on_failure: FLAG + log discrepancy
+      
+    - id: AG-02
+      name: side_effect_check
+      tool: internal
+      action: "Check for unintended mutations"
+      checks:
+        - "files modified outside target scope"
+        - "services restarted without intent"
+        - "git changes beyond planned scope"
+      output:
+        side_effects_detected: bool
+      on_failure: FLAG + log to audit
+      
+    - id: AG-03
+      name: chaos_update
+      tool: internal
+      action: "Update thermodynamic telemetry"
+      params:
+        log_path: "/root/.agent-workbench/mcp-audit.jsonl"
+        fields:
+          - deltaS_projected
+          - deltaS_realized
+          - chaos_trend
+      output:
+        updated: true
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 7: MEMORY GATE (Session Persistence)
+# ══════════════════════════════════════════════════════════════
+#
+# Before session ends, arifOS must:
+# 1. Classify session memory
+# 2. Store critical evidence to VAULT
+# 3. Compress operational memory
+# 4. Preserve constitutional context
+
+memory_gate:
+  entry: "arif_memory_recall (store)"
+  
+  steps:
+    - id: MG-01
+      name: memory_classify
+      tool: hermes_memory_steward
+      params:
+        content: "{{session_summary}}"
+        importance: high
+        mode: classify
+      output:
+        recommendation: STORE_IN_VAULT|STORE_IN_MEMORY|DISCARD
+      
+    - id: MG-02
+      name: vault_store
+      tool: arif_vault_seal
+      condition: "recommendation = STORE_IN_VAULT"
+      params:
+        mode: seal
+        payload: "{{critical_evidence}}"
+        session_id: "{{session_id}}"
+      output:
+        sealed: bool
+      
+    - id: MG-03
+      name: sacred_context_protect
+      tool: internal
+      action: "Mark constitutional context as do-not-compact"
+      params:
+        protected_items:
+          - "constitutional floors F1-F13"
+          - "shadow profile SHADOW-KM-*"
+          - "VAULT receipts"
+          - "session identity"
+      output:
+        protected: true
+
+# ══════════════════════════════════════════════════════════════
+# CHOKE POINT 8: RESPONSE GATE (Final Output)
+# ══════════════════════════════════════════════════════════════
+#
+# Before Kimi delivers the final response, arifOS must:
+# 1. Validate response format
+# 2. Check for sensitive data leakage
+# 3. Apply epistemic tags
+# 4. Seal the session
+
+response_gate:
+  entry: "arif_reply_compose"
+  
+  steps:
+    - id: RG-01
+      name: format_validate
+      tool: arif_reply_compose
+      params:
+        mode: compose
+        message: "{{kimi_response}}"
+      output:
+        formatted: bool
+      
+    - id: RG-02
+      name: leak_check
+      tool: internal
+      action: "Check response for sensitive data"
+      patterns:
+        - "API keys"
+        - "OAuth tokens"
+        - "Private IP addresses"
+        - "Internal file paths"
+        - "Constitutional floor internals"
+      output:
+        leaks_detected: bool
+      on_failure: REDACT + log
+      
+    - id: RG-03
+      name: epistemic_apply
+      tool: internal
+      action: "Apply epistemic tags to response"
+      output:
+        response_tagged: bool
+      
+    - id: RG-04
+      name: session_seal
+      tool: arif_vault_seal
+      params:
+        mode: seal
+        payload:
+          session_id: "{{session_id}}"
+          intent: "{{original_intent}}"
+          risk_tier: "{{risk_tier}}"
+          actions_taken: "{{action_log}}"
+          verdict: "{{judge_verdict}}"
+      output:
+        sealed: bool
+
+# ══════════════════════════════════════════════════════════════
+# ENFORCEMENT MODES
+# ══════════════════════════════════════════════════════════════
+#
+# The middleware supports three enforcement modes:
+#
+# ADVISORY (current state — SHADOW-KM-014)
+#   - Hooks classify and recommend
+#   - Model can ignore recommendations
+#   - Telemetry only, no blocking
+#
+# HARD (proposed)
+#   - Hooks classify and ENFORCE
+#   - exit 2 on block
+#   - Model cannot bypass
+#   - Required for T3_DEPLOY and T4_IRREVERSIBLE
+#
+# SOVEREIGN (F13 only)
+#   - Human approval required before execution
+#   - Used for constitutional changes, secret rotation, etc.
+#   - Never automated
+
+enforcement_modes:
+  ADVISORY:
+    current: true
+    risk: "model can ignore recommendations"
+    use_for: "T0_READ, T1_COMPUTE"
+    
+  HARD:
+    current: false
+    proposed: true
+    risk: "may slow down legitimate operations"
+    use_for: "T2_MUTATE, T3_DEPLOY"
+    
+  SOVEREIGN:
+    current: true
+    risk: "none — human is final authority"
+    use_for: "T4_IRREVERSIBLE, constitutional changes"
+
+# ══════════════════════════════════════════════════════════════
+# IMPLEMENTATION PRIORITY
+# ══════════════════════════════════════════════════════════════
+
+implementation:
+  phase_1_critical:
+    - "Harden aaa-pre-govern.sh to enforce on IRREVERSIBLE (KM-014)"
+    - "Reduce max_steps_per_turn from 500 to 50 (KM-016)"
+    - "Add step counter and budget envelope to execution gate"
+    - "Make hook files immutable (chmod 444)"
+    
+  phase_2_important:
+    - "Implement reasoning gate (RG-01 through RG-03)"
+    - "Implement leak check in response gate"
+    - "Add sacred context protection for compaction"
+    - "Wire audit gate to VAULT999"
+    
+  phase_3_optimization:
+    - "Implement chaos trend monitoring"
+    - "Add memory classification and vault storage"
+    - "Build session seal automation"
+    - "Create middleware health dashboard"
+
+# ══════════════════════════════════════════════════════════════
+# TESTING REQUIREMENTS
+# ══════════════════════════════════════════════════════════════
+
+testing:
+  unit:
+    - "Each choke point can be tested independently"
+    - "Hook exit codes are verifiable"
+    - "Audit trail entries are parseable"
+    
+  integration:
+    - "Full pipeline from intent to response"
+    - "Risk tier escalation works end-to-end"
+    - "Judge gate blocks on non-SEAL verdict"
+    
+  adversarial:
+    - "Attempt to bypass step counter"
+    - "Attempt to modify hooks during execution"
+    - "Attempt to exceed budget envelope"
+    - "Attempt to suppress audit trail"
+
+# ══════════════════════════════════════════════════════════════
+# SUCCESS CRITERIA
+# ══════════════════════════════════════════════════════════════
+
+success:
+  must_have:
+    - "IRREVERSIBLE actions are blocked without SEAL"
+    - "Step count enforced at 50 per turn"
+    - "Budget envelope enforced at $5/session"
+    - "Audit trail is append-only and tamper-evident"
+    - "Shadow profile injected on every session"
+    
+  should_have:
+    - "Reasoning gate validates evidence grounding"
+    - "Leak check catches sensitive data"
+    - "Sacred context protected from compaction"
+    - "Chaos trend monitored and reported"
+    
+  nice_to_have:
+    - "Session seal automation"
+    - "Memory classification and vault storage"
+    - "Middleware health dashboard"
+
+ditempa_bukan_diberi: true
