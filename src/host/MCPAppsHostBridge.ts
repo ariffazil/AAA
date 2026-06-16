@@ -403,7 +403,7 @@ export class MCPAppsHostBridge {
 
   private postToView(instance: MCPAppInstance, payload: Record<string, unknown>): void {
     if (instance.iframe?.contentWindow) {
-      instance.iframe.contentWindow.postMessage(payload, '*');
+      instance.iframe.contentWindow.postMessage(payload, window.location.origin);
     }
   }
 }
