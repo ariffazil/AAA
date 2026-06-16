@@ -1,9 +1,18 @@
-import { Task, TaskState, TaskMessage, Artifact, SSEEvent } from './schema';
+import { Task, TaskState } from './schema';
+
+export interface GatewayEvent {
+  kind: string;
+  taskId: string;
+  contextId?: string;
+  status?: Task['status'];
+  final?: boolean;
+  [key: string]: unknown;
+}
 
 export class EventBus {
-  private listeners: Map<string, Set<(event: SSEEvent) => void>> = new Map();
+  private listeners: Map<string, Set<(event: GatewayEvent) => void>> = new Map();
 
-  subscribe(taskId: string, callback: (event: SSEEvent) => void): () => void {
+  subscribe(taskId: string, callback: (event: GatewayEvent) => void): () => void {
     if (!this.listeners.has(taskId)) {
       this.listeners.set(taskId, new Set());
     }
@@ -14,7 +23,7 @@ export class EventBus {
     };
   }
 
-  async publish(event: any): Promise<void> {
+  async publish(event: GatewayEvent): Promise<void> {
     const taskId = event.taskId;
     const listeners = this.listeners.get(taskId);
     if (listeners) {

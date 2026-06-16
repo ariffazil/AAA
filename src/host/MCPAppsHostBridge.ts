@@ -94,6 +94,45 @@ interface PendingRequest {
   method: string;
 }
 
+type ToolArgs = Record<string, unknown>;
+type JsonRpcId = string | number;
+
+interface MountOptions {
+  displayMode?: 'inline' | 'fullscreen';
+  initialToolInput?: ToolArgs;
+  onReady?: () => void;
+}
+
+interface JsonRpcMessage {
+  jsonrpc: '2.0';
+  id?: JsonRpcId;
+  method?: string;
+  params?: Record<string, unknown>;
+  result?: unknown;
+  error?: { message?: string };
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return value !== null && typeof value === 'object';
+}
+
+function parseJsonRpcMessage(value: unknown): JsonRpcMessage | null {
+  let parsed: unknown = value;
+  if (typeof value === 'string') {
+    try {
+      parsed = JSON.parse(value) as unknown;
+    } catch {
+      return null;
+    }
+  }
+  if (!isRecord(parsed) || parsed.jsonrpc !== '2.0') return null;
+  return parsed as JsonRpcMessage;
+}
+
+function errorMessage(error: unknown, fallback = 'Unknown error'): string {
+  return error instanceof Error ? error.message : fallback;
+}
+
 export interface MCPAppInstance {
   appId: string;
   iframe: HTMLIFrameElement;
@@ -101,22 +140,23 @@ export interface MCPAppInstance {
   state: 'initializing' | 'ready' | 'error' | 'teardown';
   pendingRequests: Map<number, PendingRequest>;
   nextId: number;
+  messageHandler?: (event: MessageEvent) => void;
 }
 
 export class MCPAppsHostBridge {
   private apps: Map<string, MCPAppInstance> = new Map();
-  private toolResultHandler: ((appId: string, result: any) => void) | null = null;
-  private toolCallHandler: ((appId: string, name: string, args: any) => Promise<any>) | null = null;
+  private toolResultHandler: ((appId: string, result: unknown) => void) | null = null;
+  private toolCallHandler: ((appId: string, name: string, args: ToolArgs) => Promise<unknown>) | null = null;
 
   constructor(private hostElement: HTMLElement) {}
 
   /** Register handler for tool results coming FROM the View */
-  onToolResult(handler: (appId: string, result: any) => void): void {
+  onToolResult(handler: (appId: string, result: unknown) => void): void {
     this.toolResultHandler = handler;
   }
 
   /** Register handler for tool calls coming FROM the View (e.g., promote claim) */
-  onToolCall(handler: (appId: string, name: string, args: any) => Promise<any>): void {
+  onToolCall(handler: (appId: string, name: string, args: ToolArgs) => Promise<unknown>): void {
     this.toolCallHandler = handler;
   }
 
@@ -125,11 +165,7 @@ export class MCPAppsHostBridge {
    * @param appId - e.g. "well-desk"
    * @param options - display mode, initial tool input, etc.
    */
-  mountApp(appId: string, options?: {
-    displayMode?: 'inline' | 'fullscreen';
-    initialToolInput?: any;
-    onReady?: () => void;
-  }): MCPAppInstance {
+  mountApp(appId: string, options?: MountOptions): MCPAppInstance {
     const fetchPath = UI_RESOURCE_ROOTS[`geox/${appId}`] || `/mcp-apps/${appId}`;
 
     // Create container
@@ -167,7 +203,7 @@ export class MCPAppsHostBridge {
   /**
    * Send tool input to the View (triggers the View to update)
    */
-  sendToolInput(appId: string, toolName: string, args: any, envelope: ArifOsEnvelope): void {
+  sendToolInput(appId: string, toolName: string, args: ToolArgs, envelope: ArifOsEnvelope): void {
     const instance = this.apps.get(appId);
     if (!instance) throw new Error(`App not mounted: ${appId}`);
 
@@ -221,6 +257,9 @@ export class MCPAppsHostBridge {
       params: { reason: reason || 'host teardown' },
     });
 
+    if (instance.messageHandler) {
+      window.removeEventListener('message', instance.messageHandler);
+    }
     instance.container.remove();
     this.apps.delete(appId);
   }
@@ -228,34 +267,28 @@ export class MCPAppsHostBridge {
   /**
    * Get the governance state of a specific app (last known)
    */
-  getGovernanceState(appId: string): ArifOsEnvelope | null {
+  getGovernanceState(_appId: string): ArifOsEnvelope | null {
     // This would ideally be stored per-app. For now returns null.
     return null;
   }
 
   // ── Private helpers ────────────────────────────────────────────────────
 
-  private wireMessageListener(instance: MCPAppInstance, options?: any): void {
+  private wireMessageListener(instance: MCPAppInstance, options?: MountOptions): void {
     const handler = (event: MessageEvent) => {
       if (event.source !== instance.iframe.contentWindow) return;
 
-      let data: any;
-      if (typeof event.data === 'string') {
-        try { data = JSON.parse(event.data); } catch { return; }
-      } else {
-        data = event.data;
-      }
-
       // Must be JSON-RPC 2.0
-      if (!data || data.jsonrpc !== '2.0') return;
+      const data = parseJsonRpcMessage(event.data);
+      if (!data) return;
 
       // Response correlation
-      if (data.id != null && (data.result !== undefined || data.error !== undefined)) {
+      if (typeof data.id === 'number' && (data.result !== undefined || data.error !== undefined)) {
         const pending = instance.pendingRequests.get(data.id);
         if (pending) {
           instance.pendingRequests.delete(data.id);
           if (data.error) {
-            pending.reject(new Error(data.error.message || 'RPC error'));
+            pending.reject(new Error(data.error.message ?? 'RPC error'));
           } else {
             pending.resolve(data.result);
           }
@@ -269,10 +302,10 @@ export class MCPAppsHostBridge {
 
     window.addEventListener('message', handler);
     // Store reference for cleanup
-    (instance as any)._messageHandler = handler;
+    instance.messageHandler = handler;
   }
 
-  private async handleViewMethod(instance: MCPAppInstance, msg: any, options?: any): Promise<void> {
+  private async handleViewMethod(instance: MCPAppInstance, msg: JsonRpcMessage, options?: MountOptions): Promise<void> {
     switch (msg.method) {
       case 'ui/initialize': {
         // Reply with host capabilities
@@ -306,8 +339,8 @@ export class MCPAppsHostBridge {
 
       case 'tools/call': {
         // View wants to call a server tool (e.g., geox_claim_create)
-        const toolName = msg.params?.name;
-        const toolArgs = msg.params?.arguments;
+        const toolName = typeof msg.params?.name === 'string' ? msg.params.name : undefined;
+        const toolArgs = isRecord(msg.params?.arguments) ? msg.params.arguments : {};
         if (this.toolCallHandler && toolName) {
           try {
             const result = await this.toolCallHandler(instance.appId, toolName, toolArgs);
@@ -316,11 +349,11 @@ export class MCPAppsHostBridge {
               id: msg.id,
               result,
             });
-          } catch (err: any) {
+          } catch (err: unknown) {
             this.postToView(instance, {
               jsonrpc: '2.0',
               id: msg.id,
-              error: { code: -32603, message: err.message || 'Tool call failed' },
+              error: { code: -32603, message: errorMessage(err, 'Tool call failed') },
             });
           }
         }
@@ -340,8 +373,9 @@ export class MCPAppsHostBridge {
       case 'ui/update-model-context': {
         // View shares updated model context
         const sc = msg.params?.structuredContent;
-        if (sc?.envelope) {
-          this.toolResultHandler?.(instance.appId, sc.envelope);
+        const envelope = isRecord(sc) ? sc.envelope : null;
+        if (envelope) {
+          this.toolResultHandler?.(instance.appId, envelope);
         }
         this.postToView(instance, {
           jsonrpc: '2.0',
@@ -354,7 +388,7 @@ export class MCPAppsHostBridge {
       case 'ui/open-link': {
         // View wants to open a link
         const url = msg.params?.url;
-        if (url) window.open(url, '_blank');
+        if (typeof url === 'string') window.open(url, '_blank');
         break;
       }
 
@@ -367,7 +401,7 @@ export class MCPAppsHostBridge {
     }
   }
 
-  private postToView(instance: MCPAppInstance, payload: any): void {
+  private postToView(instance: MCPAppInstance, payload: Record<string, unknown>): void {
     if (instance.iframe?.contentWindow) {
       instance.iframe.contentWindow.postMessage(payload, '*');
     }

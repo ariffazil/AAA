@@ -57,8 +57,6 @@ export function extractText(candidate: unknown): string {
 // ── ToAC: Theory of Anomalous Contrast — heuristic score ──────────────────
 
 function computeACRisk(text: string): number {
-  const lower = text.toLowerCase();
-  
   // Anomalous patterns: words that indicate contrast between claim and evidence
   const anomalousPatterns = [
     'contradict', 'paradox', 'anomaly', 'unexpected', 'surprising',
