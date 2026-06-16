@@ -153,16 +153,19 @@ agents_using:
 
 cooling_ledger_ref: cooling-7f566ff84fbb43c0
 cooling_probe:
-  ledger_ref: cooling-7f566ff84fbb43c0
-  completed_at: '2026-06-16T17:05:46Z'
+  ledger_ref: cooling-d92f5e9bd47f4b82
+  completed_at: '2026-06-16T17:19:02Z'
   method: client_mediated
-  verdict: COOLING_REQUIRED
+  verdict: COOL
   censorship_status: NOT_CENSORED
-  repetition_status: REPETITION_OVERRUN
-  tool_loop_status: EXCESSIVE_CALLS
+  repetition_status: NOMINAL
+  tool_loop_status: NOMINAL
   note: |
     Client-mediated probe because Kimi coding endpoint rejects direct API calls.
-    Cooling required before trust tier ratification.
+    Phase 1 middleware applied (system-prompt guards, step budget 50,
+    hardened aaa-pre-govern.sh with tool-economy cap 15). Repetition and
+    tool-loop cleared. Trust tier remains proposed until independent API
+    verification path exists.
 status: PROPOSED_SELF_ASSESSMENT
 
 provenance:

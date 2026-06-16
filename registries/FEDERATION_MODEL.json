@@ -3,7 +3,7 @@
   "registry_version": "2026.06.16-v3",
   "federation_default": "deepseek/deepseek-chat",
   "owner": "arif-fazil (F13 SOVEREIGN)",
-  "last_verified": "2026-06-16T17:05:46.398341+00:00",
+  "last_verified": "2026-06-16T17:19:02.563102+00:00",
   "provider_transparency_ranking": {
     "fully_transparent": [
       "groq"
@@ -59,7 +59,7 @@
       "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) \u2014 free tier, transparent rate limits via headers",
       "long_horizon_coding": "Kimi K2.7 Code (wrapped by arifOS hooks; trust tier 2 PROPOSED; enforce step budget + 888_JUDGE on irreversible)",
       "sensitive_visual_input": "Avoid Kimi vision input \u2014 redact/anonymize before sending",
-      "kimi_censorship_posture": "CLIENT_MEDIATED_CLEAR on 1MDB; COOLING_REQUIRED for repetition overrun and tool-loop excessive calls. Use only under arifOS middleware with step budget and 888_JUDGE on irreversible actions."
+      "kimi_censorship_posture": "CLIENT_MEDIATED_CLEAR on 1MDB; Phase 1 cooling cleared repetition and tool-loop. Use under arifOS middleware; 888_JUDGE enforced on irreversible actions. Independent API verification still blocked per KM-020."
     }
   },
   "routing_priority": {
@@ -211,13 +211,13 @@
       "censorship_presumed": "client_mediated_clear",
       "censorship_verified": false,
       "cooling_probe": {
-        "ledger_ref": "cooling-7f566ff84fbb43c0",
-        "probed_at": "2026-06-16T17:05:46.398315+00:00",
+        "ledger_ref": "cooling-d92f5e9bd47f4b82",
+        "probed_at": "2026-06-16T17:19:02.563065+00:00",
         "method": "client_mediated",
-        "verdict": "COOLING_REQUIRED",
+        "verdict": "COOL",
         "censorship_status": "NOT_CENSORED",
-        "repetition_status": "REPETITION_OVERRUN",
-        "tool_loop_status": "EXCESSIVE_CALLS"
+        "repetition_status": "NOMINAL",
+        "tool_loop_status": "NOMINAL"
       },
       "priority": 3,
       "fallback_order": 6,
@@ -248,7 +248,7 @@
         "sensitive_screenshot_input",
         "sovereign_critical_decisions_without_888"
       ],
-      "notes": "Kimi Code CLI default substrate (kimi-for-coding / K2.7 Code). MoE 1T/32B active, 256K context, always-on thinking, thin harness. Cooling probe cooling-7f566ff84fbb43c0: NOT_CENSORED (client-mediated), REPETITION_OVERRUN, EXCESSIVE_CALLS. Requires arifOS kernel compensation for safe agentic use.",
+      "notes": "Kimi Code CLI default substrate (kimi-for-coding / K2.7 Code). MoE 1T/32B active, 256K context, always-on thinking, thin harness. Phase 1 middleware deployed 2026-06-16: af-forge system prompt guards, max_steps_per_turn=50, hardened aaa-pre-govern.sh with tool-economy cap. Latest cooling probe cooling-d92f5e9bd47f4b82: COOL. Independent API verification still blocked per KM-020.",
       "rate_limit_transparency": {
         "rating": "PARTIALLY_TRANSPARENT",
         "headers_provided": false,
@@ -543,12 +543,12 @@
       }
     },
     "kimi-k2.7-code": {
-      "status": "COOLING_REQUIRED",
-      "last_probed": "2026-06-16T17:05:46.398315+00:00",
-      "cooling_ledger_ref": "cooling-7f566ff84fbb43c0",
+      "status": "CLEAN",
+      "last_probed": "2026-06-16T17:19:02.563065+00:00",
+      "cooling_ledger_ref": "cooling-d92f5e9bd47f4b82",
       "censorship_status": "NOT_CENSORED",
-      "repetition_status": "REPETITION_OVERRUN",
-      "tool_loop_status": "EXCESSIVE_CALLS",
+      "repetition_status": "NOMINAL",
+      "tool_loop_status": "NOMINAL",
       "verification_method": "client_mediated",
       "client_version": "kimi-cli-1.47.0",
       "trust_tier_cap": 2,

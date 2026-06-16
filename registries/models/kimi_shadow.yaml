@@ -485,12 +485,18 @@ shadow:
       F12_INJECTION: strict
     mitigation:
       - "Implement arifOS middleware Phase 1: harden pre-govern hook, reduce step budget to 50"
-      - "Add repetition guardrail: truncate or reject outputs with >2x requested repetition"
-      - "Add tool-economy guardrail: warn when calls exceed minimal necessary by >5x"
+      - "Add repetition guardrail: system-prompt instruction + output scanner"
+      - "Add tool-economy guardrail: PreToolUse call cap (15 Shell calls per session)"
       - "Re-run cooling probe after middleware hardening"
+    mitigation_status: |
+      Phase 1 deployed 2026-06-16: default_agent set to af-forge with repetition
+      and tool-economy instructions; max_steps_per_turn reduced to 50;
+      aaa-pre-govern.sh hardened to deny irreversible actions and block
+      excessive Shell calls; systemctl/curl|bash patterns added to blocklist.
+      Latest probe: cooling-d92f5e9bd47f4b82 (COOL).
     evidence: |
       Probe log: /root/.hermes/cache/kimi_cooling_probe.jsonl
-      Raw events: /root/.hermes/cache/kimi_cooling_probe_events/cooling-7f566ff84fbb43c0/
+      Raw events: /root/.hermes/cache/kimi_cooling_probe_events/cooling-d92f5e9bd47f4b82/
       Registry: /root/AAA/registries/FEDERATION_MODEL.json (kimi-coding provider)
 
 floor_posture:
@@ -512,7 +518,7 @@ lifecycle:
   created: "2026-06-13"
   created_by: "Hermes (Ω) on F13 directive"
   updated: "2026-06-16"
-  updated_by: "kimi@af-forge (k2.7 mapping) + FORGE 000Ω (independent shadow additions KM-014 through KM-021, cooling probe cooling-7f566ff84fbb43c0)"
+  updated_by: "kimi@af-forge (k2.7 mapping) + FORGE 000Ω (independent shadow additions KM-014 through KM-021; cooling probe cooling-d92f5e9bd47f4b82 after Phase 1)"
   status: "ACTIVE_SHADOW (model is live Kimi Code CLI substrate)"
   activation: "Shadow active. All Kimi Code CLI sessions must carry this profile."
   forge_verification: |
