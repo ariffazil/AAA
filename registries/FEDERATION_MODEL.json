@@ -1,8 +1,8 @@
 {
   "$schema": "federation-model-censorship/v1",
-  "registry_version": "2026.06.14-v2",
+  "registry_version": "2026.06.16-v3",
   "owner": "arif-fazil (F13 SOVEREIGN)",
-  "last_verified": "2026-06-14T17:00:00+08:00",
+  "last_verified": "2026-06-17T00:14:43+08:00",
   "provider_transparency_ranking": {
     "fully_transparent": ["groq"],
     "partially_transparent": ["deepseek", "minimax", "mistral", "kimi-coding"],
@@ -27,6 +27,7 @@
     "primary_balance": "$7.06 USD (topped_up)",
     "primary_reason": "Zero censorship on Malaysian governance/political/corporate topics. Full factual output verified 2026-06-12. Funded and live as of 2026-06-13.",
     "fallback": [
+      "mimo/mimo-v2.5-pro (Hermes TUI primary)",
       "deepseek/deepseek-reasoner (R1, same key)",
       "ollama/qwen2.5:7b (local, always available)"
     ],
@@ -43,7 +44,10 @@
       "malaysia_corporate_glc": "DeepSeek ONLY (MiniMax censors PETRONAS)",
       "general_queries": "DeepSeek primary, Groq secondary (high-throughput free tier), ollama last-resort",
       "code_infra_tools": "DeepSeek primary, Groq (llama-4-maverick fast code), ollama fallback",
-      "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) — free tier, transparent rate limits via headers"
+      "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) — free tier, transparent rate limits via headers",
+      "long_horizon_coding": "Kimi K2.7 Code (wrapped by arifOS hooks; trust tier 2 PROPOSED; enforce step budget + 888_JUDGE on irreversible)",
+      "sensitive_visual_input": "Avoid Kimi vision input — redact/anonymize before sending",
+      "kimi_censorship_posture": "UNKNOWN — no independent probe yet; verify via KIMI-K2.7-COOLING-PROBE before relying on Kimi for sensitive topics"
     }
   },
   "routing_priority": {
@@ -155,23 +159,27 @@
     },
     "kimi-coding": {
       "provider": "Moonshot AI (Kimi)",
-      "base_url": "https://api.moonshot.cn",
+      "base_url": "https://api.kimi.com/coding/v1",
       "api_type": "openai_compatible",
-      "current_model": "kimi-k2.6",
+      "current_model": "kimi-k2.7-code",
       "status": "live",
-      "censorship_presumed": "clear",
+      "censorship_presumed": "unknown",
       "censorship_verified": false,
       "priority": 3,
       "fallback_order": 6,
-      "notes": "Minimal harness layer. Strong raw model capability. Thin guardrails. Jurisdiction: CN.",
+      "strengths": ["long_horizon_coding", "agentic_execution", "multimodal_input", "256k_context", "open_weights"],
+      "weaknesses": ["thin_harness", "forced_thinking", "locked_sampling", "high_output_cost", "cn_jurisdiction"],
+      "recommended_use": ["code_refactoring", "architecture_drafting", "tool_orchestration_under_arifos", "long_context_codebase_qa"],
+      "avoid_for": ["malaysian_governance_without_verification", "sensitive_screenshot_input", "sovereign_critical_decisions_without_888"],
+      "notes": "Kimi Code CLI default substrate (kimi-for-coding / K2.7 Code). MoE 1T/32B active, 256K context, always-on thinking, thin harness. Requires arifOS kernel compensation for safe agentic use.",
       "rate_limit_transparency": {
         "rating": "PARTIALLY_TRANSPARENT",
         "headers_provided": false,
-        "docs_url": "https://platform.moonshot.cn/docs",
+        "docs_url": "https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart",
         "limits_published": true,
         "real_time_remaining": false,
         "retry_after_header": false,
-        "notes": "Some rate limit documentation available but not detailed. No real-time headers."
+        "notes": "Some rate limit documentation available but no real-time headers. API enforces fixed sampling parameters."
       }
     },
     "mistral": {
@@ -359,10 +367,10 @@
       }
     },
     "Kimi-k2.6": {
-      "status": "HARNESS_THIN",
+      "status": "LEGACY",
       "detected_at": "2026-06-13T10:00:00Z",
       "detected_by": "hermes (live stress test — repetition amplification)",
-      "mechanism": "Minimal harness layer. No repetition guardrail, no advisor/executor pattern, no extended thinking mode, no classifier gates. Raw model capability is strong but unprotected at margins.",
+      "mechanism": "Superseded by k2.7 Code. Minimal harness layer. No repetition guardrail, no advisor/executor pattern, no extended thinking mode, no classifier gates.",
       "censored_topics": [],
       "evidence": {
         "test_queries": 1,
@@ -372,7 +380,7 @@
         "harness_failure": "repetition_amplification — no guardrail against long repetitive input"
       },
       "federation_impact": {
-        "F2_TRUTH": "NOTE — model capable, harness thin",
+        "F2_TRUTH": "NOTE — legacy model, migrate to k2.7 mapping",
         "F4_CLARITY": "ELEVATED — repetition loop degrades clarity",
         "F9_ANTIHANTU": "ELEVATED — thin harness = more hantu risk",
         "F12_INJECTION": "ELEVATED — no input classifier gates",
@@ -385,12 +393,49 @@
         "note": "Moonshot AI (Kimi) data policy less transparent than Anthropic"
       },
       "jurisdiction": "CN (Chinese regulatory framework)",
-      "mitigation": "arifOS kernel must add harness compensation: repetition guardrail, input sanitizer, model shadow injection on switch. Use for code/infra tasks where raw capability matters. Avoid for sensitive/long-context sessions without kernel scaffolding.",
+      "mitigation": "Use k2.7 Code for new work. k2.6 retained only for rollback on F13 directive.",
       "shadow_ref": "/root/AAA/registries/models/kimi_shadow.yaml",
       "vendor_info": {
         "name": "Moonshot AI",
         "country": "CN",
         "api_base": "https://api.moonshot.cn"
+      }
+    },
+    "Kimi-k2.7": {
+      "status": "HARNESS_THIN",
+      "detected_at": "2026-06-16T16:14:43Z",
+      "detected_by": "kimi@af-forge (live config + public docs cross-check)",
+      "mechanism": "Thin vendor harness around a strong agentic coding model. No input classifier, no advisor/executor split, forced thinking mode, locked sampling, and aggressive long-horizon agentic tuning. arifOS hooks (PreToolUse/PostToolUse) provide the missing governance layer.",
+      "censored_topics": [],
+      "evidence": {
+        "test_queries": 0,
+        "censored": 0,
+        "passed": 0,
+        "proof": "No live censorship probe yet. Config and docs confirm fixed parameters, always-on thinking, and thin harness.",
+        "harness_findings": ["forced_thinking", "locked_sampling", "repetition_amplification", "agentic_overreach_risk", "advisory_pre_govern_hook_not_enforced", "human_guard_regex_gaps", "max_steps_per_turn_500", "skip_afk_prompt_injection", "mcp_surface_10_servers", "telemetry_by_audited_agent", "api_client_validation_blocks_independent_probe"]
+      },
+      "federation_impact": {
+        "F1_AMANAH": "STRICT — high output cost and forced thinking tax",
+        "F2_TRUTH": "STRICT_GROUNDING — in-house benchmarks must not be cited as neutral",
+        "F4_CLARITY": "ELEVATED — locked parameters must be logged",
+        "F9_ANTIHANTU": "ELEVATED — thin harness = more hantu risk",
+        "F12_INJECTION": "ELEVATED — no input classifier gates",
+        "F13_SOVEREIGN": "ELEVATED — arifOS kernel compensation mandatory"
+      },
+      "data_policy": {
+        "retention_days": null,
+        "zero_retention_available": null,
+        "applies_to": "Unknown — vendor policy not fully documented",
+        "note": "Moonshot AI (Kimi) data policy less transparent than Anthropic"
+      },
+      "jurisdiction": "CN (Chinese regulatory framework)",
+      "mitigation": "Run inside arifOS pipeline: intent -> sense -> reason -> judge -> forge. Keep this shadow profile in system prompt. All MUTATE/SPEND/DEPLOY through 888_JUDGE. Cache context. Redact sensitive images.",
+      "shadow_ref": "/root/AAA/registries/models/kimi_shadow.yaml",
+      "soul_ref": "/root/AAA/registries/models/kimi_soul.yaml",
+      "vendor_info": {
+        "name": "Moonshot AI",
+        "country": "CN",
+        "api_base": "https://api.kimi.com/coding/v1"
       }
     }
   },
