@@ -115,6 +115,8 @@ hosts:
     runtime_type: acp
     transport: stdio
     config_paths:
+      - ROOT_AGENT_CONFIG.yaml
+      - /root/.config/opencode/opencode.json
       - .opencode
       - openclaw/acp
     contract_path: contracts/hosts/contracts.yaml

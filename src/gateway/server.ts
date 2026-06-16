@@ -11,6 +11,7 @@ import { createAuthMiddleware, AuthContext } from './auth';
 import { TaskStore, EventBus } from './store';
 import { GovernanceAdapter } from '../adapter/router';
 import { getAgentCard, getDiscoveryRoutingPolicy, CONSTITUTION_DEFAULTS } from '../seed/bootstrap';
+import fs from 'node:fs/promises';
 import https from 'node:https';
 import http from 'node:http';
 
@@ -355,7 +356,6 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
   }
 
   try {
-    const fs = require('node:fs/promises');
     const [html, manifestRaw] = await Promise.all([
       fs.readFile(htmlPath, "utf8"),
       APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], "utf8").catch(() => "{}") : Promise.resolve("{}")

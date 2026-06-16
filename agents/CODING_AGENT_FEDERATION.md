@@ -1,6 +1,7 @@
 # CODING AGENT FEDERATION — Unified Swarm Reference
 
 > **Scope:** All coding agents on `af-forge` VPS  
+> **Root agent config:** `ROOT_AGENT_CONFIG.yaml`
 > **Canonical registry:** `AAA_AGENTS_REGISTRY.json`  
 > **Capability index:** `registries/CAPABILITY_INDEX.json` (97 tools)  
 > **Last updated:** 2026-06-05  
@@ -15,7 +16,7 @@
 | **Kimi Code** | ✅ 9 servers | arifOS, WEALTH, WELL, minimax, github, brave-search, meyhem, **playwright-mcp**, **capability-index** | MCP native | YELLOW |
 | **Claude Code** | ✅ 10 servers | arifOS, WEALTH, WELL, minimax-media, minimax-code, github, brave-search, meyhem, **playwright-mcp**, **capability-index** | MCP native | YELLOW |
 | **Continue CLI** | ✅ 17 servers | Full federation + tavily, exa, chrome-devtools, **capability-index** | MCP native | YELLOW |
-| **OpenCode** | ✅ 8 servers | arifOS, WEALTH, WELL, GEOX, A-FORGE, minimax, **capability-index** | MCP native | YELLOW |
+| **OpenCode** | ✅ 18 servers | arifOS, A-FORGE, GEOX, WEALTH, WELL, GitHub, Context7, Playwright, Docker, web/search/data MCPs | MCP native | YELLOW |
 | **Copilot** | ✅ 8 servers | arifOS, WEALTH, WELL, github, brave-search, meyhem, playwright, **capability-index** | IDE MCP | GREEN |
 | **Codex** | ⚠️ Ready | Configured for 8 servers (experimental) | MCP config ready | YELLOW |
 | **Aider** | ❌ No | Python fallback | A-FORGE bridge | YELLOW |

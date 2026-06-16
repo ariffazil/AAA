@@ -1,7 +1,7 @@
 # AGENT_REGISTRY.md — AAA Federation Agent Registry
 
 > **Canonical agent index for the arifOS Federation.**
-> **Last updated:** 2026-06-13 15:45 UTC
+> **Last updated:** 2026-06-16 16:30 UTC
 > **Supersedes:** AAA_AGENTS_REGISTRY.json (machine-readable), HEXAGON.yaml (topology)
 > **Rule:** This file is the human-readable source of truth. Agents not listed here are spec-only or deprecated.
 
@@ -62,7 +62,7 @@ All share the 97-tool capability index and F1-F13 governance.
 
 | FI# | ID | Model | Native MCP | Init Mode | Risk | Status |
 |---|---|---|---|---|---|---|
-| **FI-001** | opencode | deepseek-chat | ✅ 18 servers | swarm_ignite (engineer) | YELLOW | ✅ LIVE |
+| **FI-001** | opencode | tokenplan-mimo/mimo-v2.5-pro | ✅ 18 servers | swarm_ignite (engineer) | YELLOW | ✅ LIVE |
 | **FI-002** | claude-code | deepseek-chat | ✅ 10 servers | swarm_ignite (engineer) | YELLOW | ✅ LIVE |
 | **FI-003** | qwen-code | qwen | ❌ None | observer (3 tools) | LOW | ⚠️ not connected |
 | **FI-004** | antigravity | gemini-2.5-pro | ✅ 13 servers | swarm_ignite (analyst) | GREEN | ✅ LIVE |
@@ -131,6 +131,7 @@ All share the 97-tool capability index and F1-F13 governance.
 | File | Purpose |
 |---|---|
 | `AGENT_REGISTRY.md` | **This file** — human-readable canonical index |
+| `ROOT_AGENT_CONFIG.yaml` | Root config for AAA warga, peers, forge instruments, and config pointers |
 | `HEXAGON.yaml` | Constitutional agent topology (5 agents, pipeline) |
 | `AAA_AGENTS_REGISTRY.json` | Machine-readable registry (v2.0.0) |
 | `CODING_AGENT_FEDERATION.md` | Forge instrument reference (8 agents, 97 tools) |

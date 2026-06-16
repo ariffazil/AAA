@@ -12,11 +12,11 @@ instruments:
   - id: FI-001
     name: OpenCode
     binary: /usr/local/bin/opencode
-    version: 1.17.4
+    version: 1.17.7
     version_pinned_from: "2026-06-12 (opencode 1.17.4 release, v1.15.0 → v1.17.4)"
-    model: deepseek/deepseek-v4-pro
-    fallback_model: minimax/MiniMax-M3
-    model_strategy: "deepseek primary (reasoning) + minimax fallback (cheap). Per-agent A-R-I-F rotation: A=deepseek, R=deepseek, I=minimax (cost), F=deepseek (judgement)."
+    model: tokenplan-mimo/mimo-v2.5-pro
+    fallback_model: kimi-for-coding/kimi-k2-thinking
+    model_strategy: "MiMo V2.5 Pro primary per F13 2026-06-15 lock; Kimi for complex reasoning; Claude only for architecture review."
     izin: GRANTED
     izin_date: "2026-05-17"
     last_upgrade: "2026-06-12"
@@ -102,6 +102,7 @@ instruments:
       - composio         # 401 + needs OAuth you haven't done
       - github-local     # empty GITHUB_PERSONAL_ACCESS_TOKEN
     mcp_strategy: "13-slot MISKIN roster — only zero-cost + actually-used. All $0/month. See opencode.mcp_audit.json for full audit trail."
+    root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
     config_path: /root/.config/opencode/opencode.json
     toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
     mcp_audit: /root/.config/opencode/opencode.mcp_audit.json
