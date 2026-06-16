@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/oauth_token.schema.json",
+  "title": "arifOS OAuth 2.1 Token",
+  "description": "OAuth 2.1 access token for arifOS MCP endpoints. PKCE-protected, audience-bound.",
+  "type": "object",
+  "required": ["token_id", "issuer", "audience", "subject", "scope", "issued_at", "expires_at", "signature"],
+  "additionalProperties": false,
+  "properties": {
+    "token_id": {
+      "type": "string",
+      "pattern": "^TOK-[a-f0-9]{16}$"
+    },
+    "issuer": {
+      "type": "string",
+      "format": "uri"
+    },
+    "audience": {
+      "type": "string",
+      "format": "uri",
+      "description": "Must match the target organ's resource URI."
+    },
+    "subject": {
+      "type": "string",
+      "description": "actor_id or agent_id"
+    },
+    "scope": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true
+    },
+    "issued_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "not_before": {"type": "string", "format": "date-time"},
+    "pkce": {
+      "type": "object",
+      "description": "PKCE challenge material (RFC 7636).",
+      "required": ["code_challenge_method", "code_challenge"],
+      "properties": {
+        "code_challenge_method": {"type": "string", "enum": ["S256"]},
+        "code_challenge": {"type": "string"},
+        "code_verifier": {"type": "string", "description": "Present only on token exchange, never on access token."}
+      }
+    },
+    "signature": {
+      "type": "object",
+      "required": ["algorithm", "public_key", "value"],
+      "properties": {
+        "algorithm": {"type": "string", "enum": ["Ed25519", "RS256", "ES256"]},
+        "public_key": {"type": "string"},
+        "value": {"type": "string"},
+        "signed_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "constitution_hash": {"type": "string"}
+  }
+}

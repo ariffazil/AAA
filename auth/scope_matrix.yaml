@@ -1,0 +1,47 @@
+---
+# arifOS Auth Scope Matrix (F8 LAW enforcement)
+# Forged 2026-06-15 17:30 UTC by FORGE-000Ω per F13 SOVEREIGN directive
+# Each tool lists the scopes required to invoke it.
+# OPA policy (`arifos/tool_policy.rego`) enforces at runtime.
+
+version: 1
+constitution_hash: "sha256:dd4f41e75f55ed38df759a1c8db1fc4680ef0307a6b0e2793bccf6540bb21506"
+
+# Scope → action_class mapping
+scope_to_class:
+  OBSERVE:        OBSERVE
+  ANALYZE:        ANALYZE
+  MUTATE:         MUTATE
+  GOVERNED:       GOVERNED
+  SEAL:           SEAL
+  READ_PUBLIC:    OBSERVE
+  READ_INTERNAL:  ANALYZE
+  WRITE_INTERNAL: MUTATE
+  LEASE_ISSUE:    GOVERNED
+  LEASE_REVOKE:   GOVERNED
+  VAULT_SEAL:     SEAL
+  OPA_DELEGATE:   GOVERNED
+
+# Per-tool scope requirements
+tools:
+  # === arifOS (constitutional kernel) ===
+  arif_ping:                    [OBSERVE]
+  arif_session_init:            [OBSERVE, ANALYZE]
+  arif_sense_observe:           [OBSERVE]
+  arif_evidence_fetch:          [OBSERVE, READ_PUBLIC]
+  arif_mind_reason:             [ANALYZE]
+  arif_heart_critique:          [ANALYZE]
+  arif_kernel_route:            [ANALYZE, MUTATE]
+  arif_reply_compose:           [OBSERVE]
+  arif_memory_recall:           [OBSERVE, READ_INTERNAL]
+  arif_gateway_connect:         [OBSERVE, MUTATE]
+  arif_judge_deliberate:        [ANALYZE, GOVERNED]
+  arif_vault_seal:              [SEAL, VAULT_SEAL]
+  arif_forge_execute:           [MUTATE, GOVERNED]
+  arif_ops_measure:             [OBSERVE]
+  arif_lease_issue:             [GOVERNED, LEASE_ISSUE]
+  arif_lease_revoke:            [GOVERNED, LEASE_REVOKE]
+  arif_organ_attest:            [OBSERVE]
+  arif_organ_attest_all:        [OBSERVE]
+  arif_conformance_report:      [OBSERVE]
+  arif_ini

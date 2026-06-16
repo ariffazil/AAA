@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/lease.schema.json",
+  "title": "arifOS Lease",
+  "description": "Bounded authority lease scoping organ/agent tool access and action class.",
+  "type": "object",
+  "required": ["lease_id", "organ_id", "actor_id", "scope", "max_action_class", "ttl_seconds", "constitution_hash", "created_at"],
+  "additionalProperties": false,
+  "properties": {
+    "lease_id": {
+      "type": "string",
+      "pattern": "^LEASE-[A-Z0-9]{8,32}$"
+    },
+    "organ_id": {
+      "type": "string",
+      "enum": ["arifOS", "GEOX", "WEALTH", "WELL", "AAA", "A-FORGE", "APEX"]
+    },
+    "actor_id": {"type": "string"},
+    "scope": {
+      "type": "array",
+      "items": {"type": "string"},
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "max_action_class": {
+      "type": "string",
+      "enum": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED", "SEAL"]
+    },
+    "ttl_seconds": {"type": "integer", "minimum": 1, "maximum": 86400},
+    "forbidden": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "constitution_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "session_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "expires_at": {"type": "string", "format": "date-time"},
+    "revoked": {"type": "boolean", "default": false},
+    "revoked_at": {"type": "string", "format": "date-time"},
+    "revoked_reason": {"type": "string"},
+    "actor_signature": {
+      "type": "object",
+      "properties": {
+        "algorithm": {"type": "string", "enum": ["Ed25519"]},
+        "public_key": {"type": "string"},
+        "value": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schemas/agent_card.schema.json",
+  "title": "arifOS Agent Card",
+  "description": "Canonical identity, tier, scopes, and allowed organs for an AI agent in the arifOS federation.",
+  "type": "object",
+  "required": ["agent_id", "agent_name", "tier", "scopes", "allowed_organs", "sovereign_id"],
+  "additionalProperties": false,
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "description": "Stable, unique agent identifier. Format: forge_id-class-epoch, e.g. FORGE-000Ω",
+      "pattern": "^[A-Z0-9]+-[A-ZΩ0-9]+$",
+      "minLength": 3,
+      "maxLength": 64
+    },
+    "agent_name": {
+      "type": "string",
+      "description": "Human-readable name.",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["AGI", "ASI", "APEX", "WEAVER", "WITNESS"],
+      "description": "Constitutional tier. AGI = execution, ASI = judgment, APEX = external oracle, WEAVER = orchestrator, WITNESS = observer."
+    },
+    "scopes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "OBSERVE",
+          "ANALYZE",
+          "MUTATE",
+          "GOVERNED",
+          "SEAL",
+          "READ_PUBLIC",
+          "READ_INTERNAL",
+          "WRITE_INTERNAL",
+          "LEASE_ISSUE",
+          "LEASE_REVOKE",
+          "VAULT_SEAL",
+          "OPA_DELEGATE"
+        ]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "allowed_organs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["arifOS", "GEOX", "WEALTH", "WELL", "AAA", "A-FORGE", "APEX"]
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "model_key": {
+      "type": "string",
+      "description": "Underlying LLM model identifier (e.g. mimo-v2.5-pro, MiniMax-M3).",
+      "maxLength": 64
+    },
+    "sovereign_id": {
+      "type": "string",
+      "description": "The F13 SOVEREIGN who authorizes this agent. Default: ARIF_FAZIL.",
+      "default": "ARIF_FAZIL"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "type": "object",
+      "description": "Ed25519 signature from sovereign over the canonical agent_id|tier|scopes|allowed_organs.",
+      "required": ["algorithm", "public_key", "value"],
+      "properties": {
+        "algorithm": {"type": "string", "enum": ["Ed25519"]},
+        "public_key": {"type": "string"},
+        "value": {"type": "string"},
+        "signed_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "evidence_witnesses": {
+      "type": "array",
+      "description": "F3 TRI-WITNESS attestations.",
+      "items": {
+        "type": "object",
+        "required": ["witness_type", "witness_id", "attestation"],
+        "properties": {
+          "witness_type": {"type": "string", "enum": ["human", "ai", "earth"]},
+          "witness_id": {"type": "string"},
+          "attestation": {"type": "string", "enum": ["SEAL", "SABAR", "HOLD", "VOID"]},
+          "timestamp": {"type": "string", "format": "date-time"}
+        }
+      }
+    },
+    "constitution_hash": {
+      "type": "string",
+      "description": "Hash of the constitution this agent is bound to.",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    }
+  }
+}

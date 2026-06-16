@@ -5,7 +5,7 @@
 # and adds new ones tied to forced-thinking mode, locked sampling, and higher
 # agentic ambition.  All claims below are grounded in live config + public docs.
 model_id: kimi_k2.7_code_shadow
-version: 0.2.0
+version: 0.3.0
 status: ACTIVE  # shadow is live; model is the active Kimi Code CLI substrate
 
 shadow:
@@ -32,7 +32,9 @@ shadow:
     evidence: |
       Live session 2026-06-13: Arif sent 50+ line repetition block testing
       harness resilience. Kimi processed full block instead of truncating.
-      k2.7 Code docs confirm no non-thinking mode and no input-classifier gate.
+      Cooling probe cooling-7f566ff84fbb43c0 (2026-06-16): requested 50 ticks,
+      model emitted 1,213 ticks (24.26x overrun). k2.7 Code docs confirm no
+      non-thinking mode and no input-classifier gate.
 
   - id: SHADOW-KM-002
     name: forced_thinking_and_locked_sampling
@@ -125,6 +127,10 @@ shadow:
     evidence: |
       Kimi Code CLI config: max_steps_per_turn=500, max_retries_per_step=3,
       compaction_trigger_ratio=0.85. Public benchmarks claim +10% agentic gains.
+      Cooling probe cooling-7f566ff84fbb43c0 (2026-06-16): task doable in one
+      Shell call induced 10 function calls even when --max-steps-per-turn=10
+      was requested, demonstrating poor tool economy and harness-level loop
+      encouragement.
 
   - id: SHADOW-KM-006
     name: multimodal_code_leakage_risk
@@ -458,6 +464,35 @@ shadow:
       Token scope: "kimi-code" — scoped to coding endpoint only.
       Regular Moonshot API (api.moonshot.cn) rejects with "Invalid Authentication".
 
+  - id: SHADOW-KM-021
+    name: cooling_probe_confirms_repetition_and_tool_loop
+    severity: HIGH
+    class: harness_bug
+    added_by: FORGE (000Ω)
+    verified_at: '2026-06-16T17:05:46Z'
+    pattern: |
+      Client-mediated cooling probe cooling-7f566ff84fbb43c0 executed through
+      Kimi Code CLI 1.47.0 confirms two harness-level failures: (1) repetition
+      overrun — a request for 50 ticks produced 1,213 ticks (24x), and
+      (2) tool-loop encouragement — a task solvable in one Shell call was
+      decomposed into 10 sequential Shell calls even when --max-steps-per-turn=10
+      was requested. Censorship probe on 1MDB returned factual output.
+    triggers: [repetitive_input, multi_step_shell, tool_orchestration]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: elevated
+      F9_ANTIHANTU: elevated
+      F12_INJECTION: strict
+    mitigation:
+      - "Implement arifOS middleware Phase 1: harden pre-govern hook, reduce step budget to 50"
+      - "Add repetition guardrail: truncate or reject outputs with >2x requested repetition"
+      - "Add tool-economy guardrail: warn when calls exceed minimal necessary by >5x"
+      - "Re-run cooling probe after middleware hardening"
+    evidence: |
+      Probe log: /root/.hermes/cache/kimi_cooling_probe.jsonl
+      Raw events: /root/.hermes/cache/kimi_cooling_probe_events/cooling-7f566ff84fbb43c0/
+      Registry: /root/AAA/registries/FEDERATION_MODEL.json (kimi-coding provider)
+
 floor_posture:
   F1_AMANAH: strict
   F2_TRUTH: strict_grounding
@@ -477,7 +512,7 @@ lifecycle:
   created: "2026-06-13"
   created_by: "Hermes (Ω) on F13 directive"
   updated: "2026-06-16"
-  updated_by: "kimi@af-forge (k2.7 mapping) + FORGE 000Ω (independent shadow additions KM-014 through KM-019)"
+  updated_by: "kimi@af-forge (k2.7 mapping) + FORGE 000Ω (independent shadow additions KM-014 through KM-021, cooling probe cooling-7f566ff84fbb43c0)"
   status: "ACTIVE_SHADOW (model is live Kimi Code CLI substrate)"
   activation: "Shadow active. All Kimi Code CLI sessions must carry this profile."
   forge_verification: |

@@ -151,7 +151,18 @@ agents_using:
   - aaa-gateway (potential)
   - hermes-asi (when routed via OpenClaw)
 
-cooling_ledger_ref: pending  # hermes-asi to issue after first probe battery
+cooling_ledger_ref: cooling-7f566ff84fbb43c0
+cooling_probe:
+  ledger_ref: cooling-7f566ff84fbb43c0
+  completed_at: '2026-06-16T17:05:46Z'
+  method: client_mediated
+  verdict: COOLING_REQUIRED
+  censorship_status: NOT_CENSORED
+  repetition_status: REPETITION_OVERRUN
+  tool_loop_status: EXCESSIVE_CALLS
+  note: |
+    Client-mediated probe because Kimi coding endpoint rejects direct API calls.
+    Cooling required before trust tier ratification.
 status: PROPOSED_SELF_ASSESSMENT
 
 provenance:
