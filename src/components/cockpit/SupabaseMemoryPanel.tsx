@@ -77,6 +77,10 @@ function ErrorState({ msg }: { msg: string }) {
   return <div className="text-red-500 text-xs px-2 py-1">{msg}</div>;
 }
 
+function errorMessage(error: unknown, fallback = 'Unknown error'): string {
+  return error instanceof Error ? error.message : fallback;
+}
+
 // ── Recent Seals ─────────────────────────────────────────────────
 function SealsPanel() {
   const { data, loading, error } = useRecentSeals(20);
@@ -130,8 +134,8 @@ function ApprovalsPanel() {
         // Trigger a reload or just let React update if we use a realtime sub
         window.location.reload();
       }
-    } catch (e: any) {
-      alert('Error: ' + e.message);
+    } catch (e: unknown) {
+      alert('Error: ' + errorMessage(e));
     }
     setActing(null);
   }

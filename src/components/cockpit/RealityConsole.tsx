@@ -58,6 +58,28 @@ interface VerdictItem {
   autonomyBand: AutonomyBand;
 }
 
+type HoldsResponse = {
+  holds?: HoldRecord[] | number;
+};
+
+type HoldRecord = {
+  task_id?: string;
+  id?: string;
+  intent?: string;
+  description?: string;
+  verdict?: GovernanceVerdict;
+  reason?: string;
+  message?: string;
+  created_at?: string;
+  timestamp?: string;
+  evidence_layer?: RealityLayer;
+  autonomy_band?: AutonomyBand;
+};
+
+function errorMessage(error: unknown, fallback: string): string {
+  return error instanceof Error ? error.message : fallback;
+}
+
 // ═══════════════════════════════════════════════════════════════════
 // MAIN COMPONENT
 // ═══════════════════════════════════════════════════════════════════
@@ -134,11 +156,11 @@ export default function RealityConsole() {
         loading: false,
         error: null,
       });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setRealityFeed(prev => ({
         ...prev,
         loading: false,
-        error: err?.message || 'Probe failed',
+        error: errorMessage(err, 'Probe failed'),
       }));
     }
   }, []);
@@ -148,7 +170,7 @@ export default function RealityConsole() {
     try {
       const res = await fetch('/operator/tasks?state=all');
       if (!res.ok) return;
-      const data = await res.json();
+      const data = await res.json() as { tasks?: AREPTask[] };
       if (data.tasks) setTasks(data.tasks);
     } catch {
       // gracefully degrade
@@ -160,10 +182,11 @@ export default function RealityConsole() {
     try {
       const res = await fetch('/operator/holds');
       if (!res.ok) return;
-      const data = await res.json();
-      if (data.holds) {
-        setVerdicts(data.holds.map((h: any) => ({
-          taskId: h.task_id || h.id,
+      const data = await res.json() as HoldsResponse;
+      const holds = Array.isArray(data.holds) ? data.holds : [];
+      if (holds.length > 0) {
+        setVerdicts(holds.map((h) => ({
+          taskId: h.task_id || h.id || 'unknown',
           intent: h.intent || h.description || 'unknown',
           verdict: (h.verdict || 'HOLD') as GovernanceVerdict,
           reason: h.reason || h.message || '',

@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import type { FormEvent, KeyboardEvent } from 'react';
 import {
   ArrowRight,
   Zap,
@@ -33,6 +34,19 @@ type LogEvent = {
   kind: string;
   taskId: string;
   msg: string;
+};
+
+type FederationAgent = {
+  id: string;
+  type: string;
+  role: string;
+  status: string;
+  domain: string;
+  ring: string;
+};
+
+type AgentsResponse = {
+  agents?: FederationAgent[];
 };
 
 /**
@@ -132,7 +146,7 @@ const OPERATOR_API = '/api/operator';
 
 export default function Cockpit() {
   const [tasks, setTasks] = useState<OperatorTask[]>([]);
-  const [agents, setAgents] = useState<any[]>([]);
+  const [agents, setAgents] = useState<FederationAgent[]>([]);
   const [agentsLoading, setAgentsLoading] = useState(true);
   const [agentsError, setAgentsError] = useState<string | null>(null);
   const [kernelStatus, setKernelStatus] = useState<'ONLINE' | 'OFFLINE'>('OFFLINE');
@@ -175,8 +189,8 @@ export default function Cockpit() {
       setAgentsLoading(true);
       const response = await fetch('/a2a/agents.json', { cache: 'no-store' });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      const data = await response.json();
-      setAgents(data.agents || []);
+      const data = await response.json() as AgentsResponse;
+      setAgents(Array.isArray(data.agents) ? data.agents : []);
       setAgentsError(null);
     } catch (err) {
       setAgentsError(err instanceof Error ? err.message : 'Unknown');
@@ -235,7 +249,7 @@ export default function Cockpit() {
     } catch { /* ignore */ }
   };
 
-  const handleSubmitMission = async (e: React.FormEvent) => {
+  const handleSubmitMission = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     const text = missionText.trim();
     if (!text || missionSubmitting) return;
@@ -293,7 +307,7 @@ export default function Cockpit() {
     if (!lastMission || lastMission.state === 'completed' || lastMission.state === 'failed' || lastMission.state === 'rejected') return;
     const interval = setInterval(() => pollLastMission(lastMission.id), 3000);
     return () => clearInterval(interval);
-  }, [lastMission?.id, lastMission?.state]);
+  }, [lastMission]);
 
   useEffect(() => {
     const checkKernelHealth = async () => {
@@ -541,7 +555,7 @@ export default function Cockpit() {
               <textarea
                 value={missionText}
                 onChange={e => setMissionText(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleSubmitMission(e as any); }}
+                onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) void handleSubmitMission(e); }}
                 placeholder="State the mission objective. System will sense, reason, critique, judge, and seal — or HOLD for your decision."
                 rows={3}
                 className="w-full bg-transparent px-6 pt-5 pb-3 text-sm text-white/80 placeholder:text-white/20 font-mono resize-none outline-none"
@@ -764,7 +778,7 @@ export default function Cockpit() {
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Domain Specialists</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {DOMAIN_MCPS.map(({ id, label, symbol, desc, url }) => {
+            {DOMAIN_MCPS.map(({ id, label, symbol, desc }) => {
               const status = domainHealth[id];
               return (
                 <div key={id} className={`p-6 border rounded-lg ${
