@@ -1,0 +1,53 @@
+{
+  "resource": "arifOS Federation",
+  "authorization_servers": [
+    "https://arifos.arif-fazil.com/.well-known/oauth-authorization-server"
+  ],
+  "bearer_methods_supported": ["header", "body"],
+  "scopes_supported": [
+    "OBSERVE",
+    "ANALYZE",
+    "MUTATE",
+    "GOVERNED",
+    "SEAL",
+    "READ_PUBLIC",
+    "READ_INTERNAL",
+    "WRITE_INTERNAL",
+    "LEASE_ISSUE",
+    "LEASE_REVOKE",
+    "VAULT_SEAL",
+    "OPA_DELEGATE"
+  ],
+  "resource_indicators": {
+    "arifOS": {
+      "resource": "https://arifos.arif-fazil.com/mcp",
+      "scopes": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED", "SEAL"]
+    },
+    "GEOX": {
+      "resource": "https://geox.arif-fazil.com/mcp",
+      "scopes": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED"]
+    },
+    "WEALTH": {
+      "resource": "https://wealth.arif-fazil.com/mcp",
+      "scopes": ["OBSERVE", "ANALYZE", "MUTATE"]
+    },
+    "WELL": {
+      "resource": "https://well.arif-fazil.com/mcp",
+      "scopes": ["OBSERVE", "ANALYZE"]
+    },
+    "AAA": {
+      "resource": "https://aaa.arif-fazil.com/",
+      "scopes": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED"]
+    },
+    "A-FORGE": {
+      "resource": "https://forge.arif-fazil.com/mcp",
+      "scopes": ["OBSERVE", "ANALYZE", "MUTATE", "GOVERNED", "SEAL"]
+    }
+  },
+  "signature_algorithms_supported": ["Ed25519", "RS256", "ES256"],
+  "revocation_endpoint": "https://arifos.arif-fazil.com/oauth/revoke",
+  "introspection_endpoint": "https://arifos.arif-fazil.com/oauth/introspect",
+  "code_challenge_methods_supported": ["S256"],
+  "tls_client_certificate_bound_access_tokens": true,
+  "resource_documentation": "https://arifos.arif-fazil.com/docs/oauth-resource-metadata"
+}

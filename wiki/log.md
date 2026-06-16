@@ -509,3 +509,192 @@
 - **When:** 2026-06-14T15:39:01Z
 
 ---
+
+## [2026-06-15] update | TREE777 777 health pulse (apex)
+
+- **Who:** cron:apex
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-apex-2026-06-15.json`
+- **When:** 2026-06-15T07:00:01Z
+
+---
+
+## [2026-06-15] update | TREE777 777 health pulse (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-maxhermes-2026-06-15.json`
+- **When:** 2026-06-15T07:21:01Z
+
+---
+
+## [2026-06-15] update | TREE777 777 health pulse (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-phoenix72-2026-06-15.json`
+- **When:** 2026-06-15T07:42:01Z
+
+---
+
+## [2026-06-15] update | TREE777 777 health pulse (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-asi-2026-06-15.json`
+- **When:** 2026-06-15T08:07:01Z
+
+---
+
+## [2026-06-15] update | TREE777 777 health pulse (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-openclaw-2026-06-15.json`
+- **When:** 2026-06-15T08:28:01Z
+
+---
+
+## [2026-06-15] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-15.json`
+- **When:** 2026-06-15T09:14:01Z
+
+---
+
+## [2026-06-15] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-06-15.json`
+- **When:** 2026-06-15T09:35:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (apex)
+
+- **Who:** cron:apex
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-apex-2026-06-16.json`
+- **When:** 2026-06-16T07:00:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-maxhermes-2026-06-16.json`
+- **When:** 2026-06-16T07:21:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-phoenix72-2026-06-16.json`
+- **When:** 2026-06-16T07:42:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-asi-2026-06-16.json`
+- **When:** 2026-06-16T08:07:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-openclaw-2026-06-16.json`
+- **When:** 2026-06-16T08:28:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-16.json`
+- **When:** 2026-06-16T09:14:01Z
+
+---
+
+## [2026-06-16] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-06-16.json`
+- **When:** 2026-06-16T09:35:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (apex)
+
+- **Who:** cron:apex
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-apex-2026-06-16.json`
+- **When:** 2026-06-16T10:02:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-maxhermes-2026-06-16.json`
+- **When:** 2026-06-16T10:23:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-phoenix72-2026-06-16.json`
+- **When:** 2026-06-16T10:44:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-hermes-asi-2026-06-16.json`
+- **When:** 2026-06-16T11:09:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-openclaw-2026-06-16.json`
+- **When:** 2026-06-16T11:30:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-hermes-ops-2026-06-16.json`
+- **When:** 2026-06-16T12:16:01Z
+
+---
+
+## [2026-06-16] review | TREE777 888 promotion review (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** proposed page review for 888 promotion queue
+- **Report:** `wiki/_runtime/reports/tree777-promotion-review-opencode-2026-06-16.json`
+- **When:** 2026-06-16T12:37:01Z
+
+---

@@ -6,6 +6,6 @@
   "session_id": "sess_ec046debba0b4ce4",
   "reason": "CLAIMED identity (well) cannot execute ATOMIC. Requires verified or delegated authority.",
   "severity": "critical",
-  "count": 52,
-  "last_seen": "2026-06-14T17:17:35.465730+00:00"
+  "count": 72,
+  "last_seen": "2026-06-16T13:05:55.458729+00:00"
 }
