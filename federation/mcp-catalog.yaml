@@ -1,0 +1,329 @@
+# Unified MCP Server Catalog — AAA Federation
+# Source: Aggregated from Kimi, Gemini CLI, Antigravity VSCode, Claude Desktop
+# Generated: 2026-05-24
+# Schema Version: 1.0
+# Attestation: DISTILLATION-ATTESTATION.md
+
+version: 1
+
+meta:
+  source_repos:
+    - C:\Users\User\.kimi\mcp.json
+    - C:\Users\User\.gemini\config\mcp_config.json
+    - C:\Users\User\AppData\Roaming\Antigravity\User\mcp.json
+    - C:\Users\User\AppData\Roaming\Claude\claude_desktop_config.json
+  backup: C:\ariffazil\AAA\federation\BACKUP
+  backup_timestamp: "2026-05-24_04-52-53"
+  distillation: C:\ariffazil\AAA\federation\DISTILLATION-ATTESTATION.md
+
+# MCP Servers organized by agent ownership
+
+servers:
+
+  # === ARIFOS CORE (arifOS constitutional MCP) ===
+  arifos-local:
+    agent: arifOS
+    type: local
+    command: python
+    args: ["-m", "arifosmcp.runtime", "stdio"]
+    cwd: C:\ariffazil\arifOS
+    env:
+      PYTHONPATH: C:\ariffazil\arifOS
+      PYTHONIOENCODING: utf-8
+    enabled: true
+    auto_start: true
+    approval_policy: trusted
+    variants:
+      kimi:
+        env:
+          ARIFOS_GOVERNANCE_SECRET: "${ARIFOS_GOVERNANCE_SECRET}"
+          ARIFOS_GOVERNANCE_OPEN_MODE: "1"
+          AAA_MCP_TRANSPORT: stdio
+      gemini:
+        env:
+          ARIFOS_VAULT_PATH: C:\ariffazil\arifOS\VAULT999
+          ARIFOS_MODE: development
+      antigravity:
+        env:
+          ARIFOS_VAULT_PATH: C:\ariffazil\arifOS\arifosmcp\VAULT999
+          ARIFOS_CONSTITUTIONAL_MODE: AAA
+          ARIFOS_GOVERNANCE_SECRET: "${ARIFOS_GOVERNANCE_SECRET}"
+
+  arifos-remote:
+    agent: arifOS
+    type: remote
+    serverUrl: https://mcp.arif-fazil.com/mcp
+    enabled: true
+    auto_start: false
+    approval_policy: on-demand
+
+  # === GEOX (Earth domain) ===
+  geox:
+    agent: GEOX
+    type: local
+    command: python
+    args: [src/geox_mcp/server.py]
+    cwd: C:\ariffazil\GEOX
+    env:
+      PYTHONPATH: C:\ariffazil\GEOX\src
+      PYTHONIOENCODING: utf-8
+    enabled: true
+    auto_start: true
+    approval_policy: trusted
+
+  # === WEALTH (Capital domain) ===
+  wealth:
+    agent: WEALTH
+    type: remote
+    serverUrl: https://wealth.arif-fazil.com/mcp
+    enabled: true
+    auto_start: false
+    approval_policy: on-demand
+
+  # === WELL (Human domain) ===
+  well:
+    agent: WELL
+    type: remote
+    serverUrl: https://well.arif-fazil.com/mcp
+    enabled: true
+    auto_start: false
+    approval_policy: on-demand
+
+  # === A-FORGE (Builder agent) ===
+  a-forge:
+    agent: A-FORGE
+    type: local
+    command: node
+    args: [C:\ariffazil\A-FORGE\dist\src\mcp\cli.js, serve, --transport, stdio]
+    env:
+      NODE_ENV: development
+      ARIFOS_GOVERNANCE_URL: https://mcp.arif-fazil.com/mcp
+    enabled: true
+    auto_start: true
+    approval_policy: trusted
+    Antigravity:
+      path: C:\ariffazil\A-FORGE\dist\src\mcp\cli.js
+
+  # === Standard MCP Servers (shared across agents) ===
+  memory:
+    agent: any
+    type: npx
+    package: @modelcontextprotocol/server-memory
+    enabled: true
+    auto_start: false
+    antigravity:
+      env:
+        MEMORY_FILE_PATH: C:\ariffazil\arifOS\arifosmcp\VAULT999\mcp-memory.json
+
+  sequential-thinking:
+    agent: any
+    type: npx
+    package: @modelcontextprotocol/server-sequential-thinking
+    enabled: true
+    auto_start: false
+
+  filesystem:
+    agent: any
+    type: npx
+    package: @modelcontextprotocol/server-filesystem
+    args: [C:\ariffazil, C:\Users\User\Downloads]
+    enabled: true
+    auto_start: false
+    kimi:
+      args: [C:/ariffazil/arifOS, C:/ariffazil/arifOS/arifosmcp, C:/Users/User/Documents]
+
+  github-official:
+    agent: any
+    type: npx
+    package: @github/github-mcp-server
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
+    enabled: true
+    auto_start: false
+
+  github-mcp-server:
+    agent: any
+    type: docker
+    image: ghcr.io/github/github-mcp-server
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: ${GITHUB_PERSONAL_ACCESS_TOKEN}
+    enabled: true
+    auto_start: false
+    ⚠️ security_note: "Embedded token found in backup. Use env var instead."
+
+  playwright:
+    agent: any
+    type: npx
+    package: @playwright/mcp
+    env:
+      PLAYWRIGHT_HEADLESS: "true"
+    enabled: true
+    auto_start: false
+
+  desktop-commander:
+    agent: any
+    type: npx
+    package: @wonderwhy-er/desktop-commander@latest
+    args: [--no-onboarding]
+    enabled: true
+    auto_start: false
+
+  brave-search:
+    agent: any
+    type: npx
+    package: @modelcontextprotocol/server-brave-search
+    env:
+      BRAVE_API_KEY: ${BRAVE_API_KEY}
+    enabled: true
+    auto_start: false
+
+  context7:
+    agent: any
+    type: npx
+    package: @upstash/context7-mcp
+    env:
+      CONTEXT7_API_KEY: ${CONTEXT7_API_KEY}
+    enabled: true
+    auto_start: false
+
+  perplexity:
+    agent: any
+    type: npx
+    package: @perplexity-ai/mcp-server
+    env:
+      PERPLEXITY_API_KEY: ${PERPLEXITY_API_KEY}
+    enabled: true
+    auto_start: false
+
+  exa-search:
+    agent: any
+    type: npx
+    package: exa-mcp-server
+    env:
+      EXA_API_KEY: ${EXA_API_KEY}
+    enabled: true
+    auto_start: false
+
+  fetch:
+    agent: any
+    type: npx
+    package: @modelcontextprotocol/server-fetch
+    enabled: true
+    auto_start: false
+
+  mcp-server-git:
+    agent: any
+    type: uvx
+    package: mcp-server-git
+    enabled: true
+    auto_start: false
+
+  mcp-server-time:
+    agent: any
+    type: uvx
+    package: mcp-server-time
+    enabled: true
+    auto_start: false
+
+  # === Remote/Third-party MCP ===
+  meyhem:
+    agent: any
+    type: remote
+    serverUrl: https://api.rhdxm.com/mcp/
+    enabled: true
+    auto_start: false
+
+  supabase:
+    agent: any
+    type: remote
+    serverUrl: https://mcp.supabase.com/mcp?project_ref=utbmmjmbolmuahwixjqc
+    enabled: true
+    auto_start: false
+    ⚠️ security_note: "Embedded token found in backup. Use env var instead."
+
+  google-workspace:
+    agent: any
+    type: ssh
+    command: ssh
+    args: ["-q", "-T", "-p", "22888", "-o", "StrictHostKeyChecking=accept-new", "-o", "ServerAliveInterval=30", "ariffazil@72.62.71.199", "sudo -n ARIFOS_WORKSPACE_MODE=private python3 /root/AAA/.apex/workspace_mcp.py"]
+    enabled: false
+    auto_start: false
+
+  clickhouse:
+    agent: any
+    type: remote
+    serverUrl: https://mcp.clickhouse.cloud/mcp
+    enabled: true
+    auto_start: false
+
+  gitlens:
+    agent: any
+    type: local
+    command: C:\Users\User\AppData\Roaming\Antigravity\User\globalStorage\eamodio.gitlens\gk.exe
+    args: [mcp, --host=antigravity, --source=gitlens, --scheme=antigravity]
+    enabled: true
+    auto_start: false
+    antigravity_only: true
+
+  chrome-devtools-mcp:
+    agent: any
+    type: npx
+    package: chrome-devtools-mcp@latest
+    enabled: false
+    auto_start: false
+
+  google-developer-knowledge:
+    agent: any
+    type: remote
+    serverUrl: https://developerknowledge.googleapis.com/mcp
+    authProviderType: google_credentials
+    enabled: false
+    auto_start: false
+
+  gmp-code-assist:
+    agent: any
+    type: remote
+    serverUrl: https://mapscodeassist.googleapis.com/mcp
+    enabled: false
+    auto_start: false
+
+# Approval tiers by agent
+approval_tiers:
+  arifOS:
+    default: trusted
+    exec: trusted
+  A-FORGE:
+    default: on-demand
+    exec: on-demand
+  GEOX:
+    default: trusted
+    exec: trusted
+  WEALTH:
+    default: hold
+    exec: hold
+  WELL:
+    default: on-demand
+    exec: hold
+  any:
+    default: on-demand
+    exec: hold
+    destructive: hold
+    irreversible: hold
+
+# Constitutional mode by agent
+constitutional_modes:
+  kimi: development
+  gemini: development
+  antigravity: AAA
+  claude: AAA
+  codex: AAA
+  default: development
+
+# Vault paths by agent
+vault_paths:
+  kimi: null
+  gemini: C:\ariffazil\arifOS\VAULT999
+  antigravity: C:\ariffazil\arifOS\arifosmcp\VAULT999
+  claude: null
+  codex: null
+  default: C:\ariffazil\arifOS\VAULT999
