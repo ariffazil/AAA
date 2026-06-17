@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Kimi Code CLI MCP Configuration — arifOS v54.1 Constitutional Compliance",
+  "mcpServers": {
+    "context7": {
+      "transport": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "${CONTEXT7_API_KEY}"
+      },
+      "timeout": 30000,
+      "approvalRequired": false,
+      "alwaysAllow": ["resolve-library-id", "query-docs"],
+      "description": "F2 Truth: External documentation witness"
+    },
+    "perplexity": {
+      "transport": "http",
+      "url": "https://mcp.perplexity.ai/mcp",
+      "headers": {
+        "PERPLEXITY_API_KEY": "${PERPLEXITY_API_KEY}"
+      },
+      "timeout": 60000,
+      "approvalRequired": false,
+      "alwaysAllow": ["perplexity_search", "perplexity_ask"],
+      "description": "F8 Genius: Research amplification with 60s timeout guard"
+    },
+    "github": {
+      "transport": "http",
+      "url": "https://api.github.com/mcp",
+      "auth": {
+        "type": "oauth",
+        "clientId": "${GITHUB_OAUTH_CLIENT}"
+      },
+      "timeout": 30000,
+      "approvalRequired": true,
+      "alwaysAllow": [
+        "get_file_contents",
+        "list_commits",
+        "get_pull_request",
+        "list_issues"
+      ],
+      "dangerous": [
+        "create_or_update_file",
+        "create_pull_request",
+        "merge_pull_request",
+        "create_issue"
+      ],
+      "description": "F3 Tri-Witness: Read = auto, Write = requires human consensus (888_Judge)"
+    },
+    "linear": {
+      "transport": "http",
+      "url": "https://mcp.linear.app/mcp",
+      "auth": {
+        "type": "oauth"
+      },
+      "timeout": 30000,
+      "approvalRequired": true,
+      "alwaysAllow": ["linear_get_issue", "linear_list_issues"],
+      "description": "F6 Empathy: Project management dengan stakeholder visibility"
+    },
+    "filesystem": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem@latest", "C:/Users/User"],
+      "env": {},
+      "approvalRequired": true,
+      "alwaysAllow": ["read_file", "list_directory", "get_file_info"],
+      "dangerous": ["write_file", "create_directory", "move_file", "delete_file"],
+      "blockedPaths": [
+        "C:/Users/User/.ssh",
+        "C:/Users/User/.kimi",
+        "C:/Users/User/.config",
+        "/etc",
+        "/usr",
+        "C:/Users/User/VAULT999"
+      ],
+      "description": "F11 Command + F12 Injection Wall: Local filesystem dengan path blocking"
+    },
+    "memory": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory@latest"],
+      "env": {
+        "MEMORY_FILE_PATH": "C:/Users/User/VAULT999/mcp-memory.json"
+      },
+      "approvalRequired": false,
+      "alwaysAllow": ["read_graph", "search_nodes", "open_nodes"],
+      "dangerous": [
+        "create_entities",
+        "create_relations",
+        "add_observations",
+        "delete_entities",
+        "delete_observations",
+        "delete_relations"
+      ],
+      "description": "F1 Amanah: Knowledge graph dengan persistence di VAULT-999"
+    },
+    "sequential-thinking": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"],
+      "approvalRequired": false,
+      "alwaysAllow": ["sequentialthinking"],
+      "maxIterations": 10,
+      "description": "F4 Clarity: Thought chain dengan limit 10 steps (prevent infinite recursion)"
+    },
+    "playwright": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "env": {
+        "PLAYWRIGHT_HEADLESS": "true"
+      },
+      "approvalRequired": true,
+      "alwaysAllow": ["browser_navigate", "browser_snapshot", "browser_evaluate"],
+      "dangerous": ["browser_click", "browser_fill", "browser_type"],
+      "description": "F9 Anti-Hantu: Browser automation dengan input validation"
+    },
+    "desktop-commander": {
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@wonderwhy-er/desktop-commander@latest"],
+      "env": {
+        "ALLOWED_COMMANDS": "git,python,node,npm,npx,ls,cat,echo",
+        "BLOCKED_COMMANDS": "rm,sudo,chmod,chown,mv,cp,dd,format,fdisk",
+        "MAX_EXECUTION_TIME": "30000",
+        "MAX_OUTPUT_SIZE": "1000000"
+      },
+      "approvalRequired": true,
+      "alwaysAllow": [],
+      "description": "F11 Command Authority: Zero auto-allow. All commands require 888_Judge approval."
+    },
+    "git-local": {
+      "transport": "stdio",
+      "command": "uvx",
+      "args": ["mcp-server-git", "--repository", "C:/Users/User/arifOS"],
+      "approvalRequired": true,
+      "alwaysAllow": ["git_status", "git_log", "git_diff", "git_branch"],
+      "dangerous": ["git_commit", "git_push", "git_pull"],
+      "description": "F3 Tri-Witness: Local git operations. Write ops require consensus dengan GitHub MCP."
+    }
+  },
+  "globalSettings": {
+    "yoloModeWarning": "DITEMPA BUKAN DIBERI - YOLO mode disabled for constitutional compliance",
+    "defaultTimeout": 30000,
+    "maxConcurrentTools": 3,
+    "requireApprovalFor": [
+      "write_file",
+      "execute_command",
+      "browser_click",
+      "git_commit",
+      "create_pull_request"
+    ],
+    "vaultPath": "C:/Users/User/VAULT999"
+  }
+}
