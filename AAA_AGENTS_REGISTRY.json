@@ -1,0 +1,66 @@
+{
+  "registry_version": "2026-05-20",
+  "protocol": "AAA_SPEAKING_PROTOCOL_v1",
+  "seal": "999",
+  "doctrine": "DITEMPA_BUKAN_DIBERI",
+  "agents": {
+    "hermes": {
+      "bot": "@ASI_arifos_bot",
+      "tier": "ASI",
+      "role": "primary_interface",
+      "can_speak": true,
+      "default": true,
+      "conditions": [
+        "arif_asks_question",
+        "arif_requests_action", 
+        "arif_requests_verdict",
+        "hermes_interprets_result"
+      ],
+      "what": "structured answers, plans, 888_HOLD alerts, verdict summaries",
+      "limit": "1 main message + 1 optional clarification per session",
+      "spam_policy": "NO-SPAM — silence is default"
+    },
+    "openclaw": {
+      "bot": "@AGI_ASI_bot",
+      "tier": "AGI", 
+      "role": "machine_executor",
+      "can_speak": false,
+      "default": false,
+      "conditions": [
+        "arif_tags_openclaw_directly",
+        "hermes_explicitly_requests_status"
+      ],
+      "what": "TASK: <task> | STATUS: DONE|ERROR|BLOCKED | EVIDENCE: <path>",
+      "limit": "1 short status per session",
+      "spam_policy": "SILENCE by default — no trigger = no speak"
+    },
+    "apexmax": {
+      "bot": "@arifOS_bot",
+      "tier": "Oracle",
+      "role": "verdict_engine",
+      "can_speak": false,
+      "default": false,
+      "conditions": [
+        "arif_explicitly_invokes_apex_direct"
+      ],
+      "what": "verdicts SEAL|HOLD|SABAR|VOID via MCP/A2A only",
+      "limit": "0 messages to group — verdict flows through Hermes",
+      "spam_policy": "NEVER in group — Hermes is its mouth"
+    }
+  },
+  "flow": {
+    "question": "hermes answers",
+    "do_something": "hermes plans → openclaw executes → hermes confirms",
+    "verdict_request": "hermes prepares case → apexmax judges → hermes announces",
+    "openclaw_mentioned": "openclaw responds briefly → hermes optional",
+    "apexmax_mentioned": "hermes intercepts → routes → voices result",
+    "nothing": "nobody speaks — silence is default"
+  },
+  "no_spam": {
+    "rule": "one agent speaks once per session in group",
+    "violation_action": "state conflict once → ask Arif for correction"
+  },
+  "sovereign_override": {
+    "rule": "Arif is final — overrides HOLD with explicit human SEAL are recorded, not argued"
+  }
+}

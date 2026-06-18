@@ -1,7 +1,19 @@
-# AAA — Agents · API · Apps
+<!-- SOT-MANIFEST
+owner: Arif
+last_verified: 2026-05-19
+valid_from: 2026-05-19
+valid_until: 2026-06-19
+confidence: high
+scope: /root/.openclaw/workspace
+epistemic_status: CLAIM
+-->
+
+# OpenClaw Workspace — AAA Federation Control Plane
 
 > **Legal Definition · Identity · Federation · Control Plane**
 > **DITEMPA BUKAN DIBERI — Intelligence is forged, not given.**
+>
+> *This README lives in the OpenClaw workspace (`/root/.openclaw/workspace/`) and documents the AAA control plane surface. The canonical AAA repo lives at `/root/AAA/`.*
 
 [![AAA](https://img.shields.io/badge/AAA-v2026.05.10-FF3366?style=flat-square)](https://github.com/ariffazil/AAA)
 [![arifOS](https://img.shields.io/badge/arifOS-MIND_Ω-FF6B00?style=flat-square)](https://github.com/ariffazil/arifOS)

@@ -1,1 +1,6 @@
-{"name": "github", "version": "1.0.0", "description": "Native GitHub MCP for repo/PR/issue management", "mcp_server": "github", "installed": true, "api_key_required": "GITHUB_PERSONAL_ACCESS_TOKEN"}
+{
+  "ownerId": "kn70pywhg0fyz996kpa8xj89s57yhv26",
+  "slug": "github",
+  "version": "1.0.0",
+  "publishedAt": 1767545344344
+}
