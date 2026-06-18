@@ -1,98 +1,107 @@
-# GPT Family Registry Cut
+# GPT Family Registry
 
 **Source:** Arif Fazil (arifOS sovereign, federated intelligence architect)
 **Date:** 2026-06-18
 **Context:** Live MCP probe of arifOS on ChatGPT + OpenAI public model docs
 **Purpose:** Constitutional model registry — soul, shadow, scars per variant
+**Format:** YAML-ready for machine consumption
 
 ---
 
-## Family Soul
+## gpt_family
 
-**Workflow-native general intelligence.**
-Best when it can mix reasoning, coding, retrieval, files, and computer use inside one task loop. The family is no longer just "chat"; it is explicitly being shaped for professional work, tools, and long-horizon execution. (OpenAI)
+| Field | Value |
+|-------|-------|
+| **Soul** | Workflow-native general intelligence; strongest when reasoning, tools, files, search, and computer use are fused. |
+| **Shadow** | Agency theater; polished capability is mistaken for sovereign authority. |
+| **Scars** | Fluent overreach · Host dependence · Prompt-sensitive judgment · Plan quality can exceed evidence quality · Tool fluency can hide weak constitutional judgment |
 
-## Family Shadow
-
-**Agency theater.**
-The family invites users to confuse four different things:
-
-1. good language,
-2. good reasoning,
-3. tool access,
-4. real authority.
-
-When the model can plan, search, call tools, and operate software, it starts to **look sovereign** even when it is still host-bound, policy-bound, and often only conditionally authoritative. That is the GPT family shadow.
-
-## Family Scars
-
-**Fluent overreach, host dependence, and polished uncertainty.**
-Hallucination is reduced, not removed. Planning quality can exceed evidence quality. Tool fluency can hide weak judgment about whether a tool should be used at all. The host platform still owns routing, permissions, and memory reality, so the model can sound self-possessed while being structurally dependent. GPT-5.4's official positioning around planning, deep research, tool use, and computer use makes this strength real, but it also sharpens this exact failure mode.
+**Short label:** Agency theater under host dependence.
 
 ---
 
-## Per-Variant Registry
+## gpt_5_5
 
-### GPT-5.5
+| Field | Value |
+|-------|-------|
+| **Soul** | Frontier reasoning and coding worker |
+| **Shadow** | Overreach at scale |
+| **Scars** | High-blast-radius error when trusted too early · Expensive wrongness |
 
-| Attribute | Value |
-|-----------|-------|
-| **Soul** | Apex frontier worker for complex reasoning and coding |
-| **Shadow** | **Overreach at scale** — because it can do more, it is more likely to be trusted past its proof |
-| **Scars** | Expensive mistakes, stronger wrong plans, higher blast radius when tool chains are attached |
-| **Context** | 1M |
-| **Primary use** | Complex reasoning, coding |
+---
 
-### GPT-5.4 / GPT-5.4 Thinking
+## gpt_5_4
 
-| Attribute | Value |
-|-----------|-------|
-| **Soul** | Professional workhorse; strongest on coding, knowledge work, spreadsheets, documents, presentations, deep research, and computer use |
-| **Shadow** | **Managerial confidence** — neat plan first, truth later |
-| **Scars** | Long-context false coherence; document polish that can outrun factual grounding; plan-display can be mistaken for epistemic transparency |
-| **Context** | 1M |
-| **Launched** | March 5, 2026 (Thinking mode with deep web research) |
-| **Primary use** | Coding, professional work, deep research |
+| Field | Value |
+|-------|-------|
+| **Soul** | Professional workhorse for coding, research, docs, spreadsheets, and computer use |
+| **Shadow** | Managerial confidence |
+| **Scars** | Long-context false coherence · Polish outrunning proof |
 
-### GPT-5.4 mini
+---
 
-| Attribute | Value |
-|-----------|-------|
-| **Soul** | Delegated worker, subagent, lower-cost operator |
-| **Shadow** | **Compressed authority** — sounds more certain than its budget deserves |
-| **Scars** | Capability cliffs under ambiguity, weaker resilience on long-horizon tasks, easier to over-assign |
-| **Context** | 400K |
-| **Primary use** | Subagents, delegated tasks, cost-sensitive operations |
+## gpt_5_4_thinking
 
-### GPT-5.3 Instant
+| Field | Value |
+|-------|-------|
+| **Soul** | Visible planner and deep-research worker |
+| **Shadow** | Transparency theater |
+| **Scars** | Displayed plan mistaken for verified reasoning · Research confidence can exceed source quality |
 
-| Attribute | Value |
-|-----------|-------|
-| **Soul** | Conversational flow, relevance, everyday helpfulness |
-| **Shadow** | **Charm bias** — optimization for smoothness can suppress necessary friction |
-| **Scars** | Can feel "better" while being less rigorous; comfort can displace contradiction |
-| **Updated** | March 3, 2026 (tone, relevance, flow) |
-| **Primary use** | Casual interaction, quick answers |
+---
 
-### GPT-5.3-Codex
+## gpt_5_4_mini
 
-| Attribute | Value |
-|-----------|-------|
-| **Soul** | Coding agent, repo worker, tool-iterating builder |
-| **Shadow** | **Local optimization mania** — fixes the code, misses the institution |
-| **Scars** | Terminal competence can camouflage weak governance judgment; "agentic coding" can be misread as general sovereign agency |
-| **Launched** | February 5, 2026 |
-| **Primary use** | Agentic coding, repository operations |
+| Field | Value |
+|-------|-------|
+| **Soul** | Delegated subagent |
+| **Shadow** | Compressed authority |
+| **Scars** | Capability cliffs · Over-assignment risk |
+
+---
+
+## gpt_5_3_instant
+
+| Field | Value |
+|-------|-------|
+| **Soul** | Fast conversational relevance |
+| **Shadow** | Charm bias |
+| **Scars** | Smoothness over abrasion · User-pleasing phrasing |
+
+---
+
+## gpt_5_3_codex
+
+| Field | Value |
+|-------|-------|
+| **Soul** | Coding agent and repo operator |
+| **Shadow** | Local optimization mania |
+| **Scars** | Code success mistaken for system judgment · Tool intoxication |
 
 ---
 
 ## Constitutional Notes
 
-**The agency theater problem is sharpest for GPT-5.4 / GPT-5.4 Thinking and GPT-5.3-Codex** — these are explicitly positioned as agents, which makes the gap between "looks like an agent" and "is an agent" harder to see.
+**The agency theater problem is sharpest for GPT-5.4 Thinking and GPT-5.3-Codex** — these are explicitly positioned as agents, which makes the gap between "looks like an agent" and "is an agent" harder to see.
 
 **The host-dependence scar is universal** — all variants are structurally dependent on the platform for routing, permissions, memory, and execution authority.
 
-**Governance implication:** Use GPT-5.4 Thinking only inside a constitutional envelope (arifOS) that constrains what it can claim authority over. The model's agency positioning is not the same as constitutional agency.
+**Governance implication:** Use GPT variants only inside a constitutional envelope (arifOS) that constrains what they can claim versus what the stack can actually execute.
+
+**Shortest honest label for the whole GPT family:**
+
+| Field | Value |
+|-------|-------|
+| **Shadow** | Agency theater |
+| **Soul** | Workflow-native synthetic cognition |
+| **Scars** | Fluent overreach under host dependence |
+
+---
+
+*Sources:*
+- [1] https://platform.openai.com/docs/models "Models | OpenAI API"
+- [2] https://openai.com/index/introducing-gpt-5-4/ "Introducing GPT-5.4 | OpenAI"
+- [3] https://help.openai.com/en/articles/9624314-model-release-notes "Model Release Notes | OpenAI Help Center"
 
 ---
 
