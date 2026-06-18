@@ -1,7 +1,7 @@
 # AGENT_REGISTRY.md — AAA Federation Agent Registry
 
 > **Canonical agent index for the arifOS Federation.**
-> **Last updated:** 2026-06-16 16:30 UTC
+> **Last updated:** 2026-06-18 06:30 UTC
 > **Supersedes:** AAA_AGENTS_REGISTRY.json (machine-readable), HEXAGON.yaml (topology)
 > **Rule:** This file is the human-readable source of truth. Agents not listed here are spec-only or deprecated.
 
@@ -62,7 +62,7 @@ All share the 97-tool capability index and F1-F13 governance.
 
 | FI# | ID | Model | Native MCP | Init Mode | Risk | Status |
 |---|---|---|---|---|---|---|
-| **FI-001** | opencode | tokenplan-mimo/mimo-v2.5-pro | ✅ 18 servers | swarm_ignite (engineer) | YELLOW | ✅ LIVE |
+| **FI-001** | opencode | tokenplan-mimo/mimo-v2.5-pro | ✅ 20 servers | swarm_ignite (engineer) | YELLOW | ✅ LIVE |
 | **FI-002** | claude-code | deepseek-chat | ✅ 10 servers | swarm_ignite (engineer) | YELLOW | ✅ LIVE |
 | **FI-003** | qwen-code | qwen | ❌ None | observer (3 tools) | LOW | ⚠️ not connected |
 | **FI-004** | antigravity | gemini-2.5-pro | ✅ 13 servers | swarm_ignite (analyst) | GREEN | ✅ LIVE |
@@ -115,6 +115,8 @@ All share the 97-tool capability index and F1-F13 governance.
 | LEGACY (Spec-Only) | 3 | DEPRECATED |
 | **TOTAL ACTIVE** | **23** | |
 | **TOTAL ALL** | **27** | (excluding sovereign 000-SALAM) |
+
+> **Registry sync note (2026-06-18):** `AAA_AGENTS_REGISTRY.json` (machine-readable) was audited against live runtime state and updated to include `hermes-asi` and `openclaw` in a new `RUNTIME` tier. Human-readable LAYER 2 already matched live state; JSON registry now matches.
 
 ---
 
