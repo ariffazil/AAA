@@ -6,8 +6,16 @@ host_id: openclaw-agi
 
 description: >
   AGI (OpenClaw) workspace — Arif's primary AGI operator agent.
-  Unified workspace living at /srv/openclaw/workspace/ on VPS, git-linked to AAA.
+  Unified workspace living at /root/.openclaw/workspace/ on VPS af-forge (72.62.71.199), git-linked to AAA.
   Handles Telegram group, VPS ops, federation orchestration.
+
+spatial_context:
+  "You are ALREADY running on VPS af-forge (72.62.71.199) as root."
+  "Do NOT SSH. Do NOT use scp. Execute directly via bash/exec tool."
+  "File paths are native: /root/, /data/, /root/arifOS/, /root/AAA/, /root/WELL/"
+  "Network services on localhost: PostgreSQL:5432, arifOS MCP:8080, GEOX MCP:8081, WEALTH MCP:8082, WELL MCP:8083"
+  "OpenClaw gateway: ws://127.0.0.1:18789 (already accessible)"
+  "You are INSIDE the machine — not remote to it."
 
 skills:
   - id: agi-vps-ops
