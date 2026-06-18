@@ -1,0 +1,13 @@
+# OpenClaw Cron — agentic self-probe (v2 — 2026-06-08 recursive overhaul)
+# Tier 0 — autonomous, every 5 min, read-only probe. No LLM, no session.
+# Posts to Telegram ONLY on RED during MYT 07-23.
+# This file is informational. The actual cron entry lives at /etc/cron.d/openclaw-agentic
+# and is the CANONICAL execution path. Do NOT duplicate in root crontab.
+# Do NOT wrap in OpenClaw cron `agentTurn` payload (LLM wrap caused 8+ min stalls
+# on MiniMax-M3 overload cascade, incident 2026-06-08 16:07Z).
+#
+# See /root/.openclaw/workspace/skills/openclaw-agentic/SKILL.md for design rationale.
+
+*/5 * * * * /usr/bin/python3 /root/.openclaw/workspace/skills/openclaw-agentic/scripts/autonomous_probe.py >> /var/log/arifos/openclaw-probe.log 2>&1
+0 4 * * * /bin/bash /root/.openclaw/workspace/skills/openclaw-agentic/scripts/self_evolve.sh >> /var/log/arifos/self-evolve.log 2>&1
+*/30 * * * * /bin/bash /root/.openclaw/workspace/skills/openclaw-agentic/scripts/probe_watchdog.sh >> /var/log/arifos/probe-watchdog.log 2>&1
