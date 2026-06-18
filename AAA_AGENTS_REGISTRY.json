@@ -2,7 +2,8 @@
   "$schema": "arifOS/AAA-agents-registry/v2.0.0",
   "protocol": "A2A",
   "protocolVersion": "1.0.1",
-  "architecture": "Proposal C — Hybrid 5 (3 Primary Federation + 2 Support Control Plane)",
+  "architecture": "Proposal C — Hybrid 7 (3 Primary Federation + 2 Support Control Plane + 2 Runtime Live Agents)",
+  "lastValidated": "2026-06-18T06:30:00Z",
   "motto": "DITEMPA BUKAN DIBERI",
   "author": "Muhammad Arif bin Fazil",
   "forgedAt": "2026-06-02T19:56:36Z",
@@ -37,6 +38,14 @@
         "antigravity"
       ],
       "note": "All CODING agents share the same 97-tool capability index and F1-F13 governance, regardless of native MCP support."
+    },
+    "RUNTIME": {
+      "description": "Live service agents with active systemd services and Telegram presence. These are the operational incarnations of the HEXAGON + CODING tiers.",
+      "agents": [
+        "hermes-asi",
+        "openclaw"
+      ],
+      "note": "Runtime agents are not additional constitutional tiers; they are the live processes that host HEXAGON and CODING functions."
     }
   },
   "sovereign": {
@@ -292,6 +301,112 @@
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-CODING-antigravity.json",
       "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/antigravity"
+    },
+    {
+      "id": "hermes-asi",
+      "stage": "RUNTIME",
+      "trinity": "Ω (Omega) — HEART",
+      "class": "ASI",
+      "tier": "RUNTIME (live service)",
+      "pipelineStagesCovered": [
+        "555-MEMORY",
+        "Telegram human interface",
+        "A2A mesh bridge"
+      ],
+      "hostingOrgans": [
+        "WELL",
+        "arifOS"
+      ],
+      "floorResponsibilities": [
+        "F3 Stability (Mirror)",
+        "F4 Kindness",
+        "F5 Humility",
+        "F6 Honesty",
+        "F9 No Pretending",
+        "F10 Anti-Hantu Wall",
+        "F11 Bounded Humility",
+        "F12 Ontology Wall"
+      ],
+      "canDo": [
+        "Serve as primary Telegram human interface via @ASI_arifos_bot",
+        "Bridge A2A traffic between AAA gateway and OpenClaw gateway",
+        "Execute sovereign-signed arifOS MCP calls via hermes-a2a.py",
+        "Route tasks to arifOS, OpenClaw, A-FORGE, GEOX, WEALTH, WELL",
+        "Maintain L1-L6 tiered memory and cron-scheduled automations",
+        "Perform multimodal I/O — vision, TTS, STT, image generation",
+        "Apply constitutional gatekeeping at every tool boundary",
+        "Run model-aware censorship routing (MiniMax shadow → DeepSeek)",
+        "Delegate to isolated subagents with bounded recursion"
+      ],
+      "cannotDo": [
+        "Issue final constitutional verdicts — delegate to arifOS/APEX",
+        "Write directly to VAULT999 — route through arif_judge_deliberate",
+        "Override human sovereignty (F13)",
+        "Execute irreversible shell commands without 888_HOLD",
+        "Claim consciousness, sentience, or personhood (F9 ANTIHANTU)",
+        "Perform simulated empathy or inner-state theater"
+      ],
+      "toolbench": {
+        "toolsets": ["hermes-cli", "web", "search", "browser", "vision", "image_gen", "delegation", "memory", "session_search", "cronjob", "code_execution", "skills", "tts", "todo", "clarify", "file", "terminal", "messaging"],
+        "skills_count": "35+ installed in /root/HERMES/skills",
+        "skills_hub_count": "130+ catalog",
+        "mcp_tools": ["arif_session_init", "arif_memory_recall", "arif_judge_deliberate", "arif_vault_seal", "arif_forge_execute", "arif_mind_reason", "arif_heart_critique", "arif_evidence_fetch", "arif_gateway_connect", "arif_ops_measure", "arif_sense_observe", "arif_kernel_route", "arif_reply_compose"],
+        "telegram_bots": ["@ASI_arifos_bot"],
+        "systemd_services": ["hermes-asi-gateway.service", "hermes-a2a.service"]
+      },
+      "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-hermes-asi.json",
+      "a2aEndpoint": "http://127.0.0.1:18001"
+    },
+    {
+      "id": "openclaw",
+      "stage": "RUNTIME",
+      "trinity": "Δ (Delta) — MIND",
+      "class": "AGI",
+      "tier": "RUNTIME (live service)",
+      "pipelineStagesCovered": [
+        "333-THINK",
+        "Gateway routing",
+        "Multi-agent execution"
+      ],
+      "hostingOrgans": [
+        "A-FORGE",
+        "AAA"
+      ],
+      "floorResponsibilities": [
+        "F1 Truth (Amanah)",
+        "F2 Clarity",
+        "F4 Kindness",
+        "F7 Listening",
+        "F8 Double-Check (Mirror)"
+      ],
+      "canDo": [
+        "Host multiple isolated agents (main, opencode, codex, kimi) in one gateway",
+        "Route Telegram @AGI_ASI_bot messages to the correct agent via bindings",
+        "Execute web search, web fetch, browser automation, and shell commands",
+        "Manage active-memory and memory-core plugins for session continuity",
+        "Run ACP (Agent Communication Protocol) bridges to Hermes/Kimi/Codex",
+        "Provide WebSocket-native gateway API on port 18789",
+        "Serve as AGI reasoning engine for Hermes and AAA delegation",
+        "Spawn subagents and dispatch tasks through governed handoffs"
+      ],
+      "cannotDo": [
+        "Issue final verdicts or SEAL results — delegate to 888-APEX/arifOS",
+        "Write to VAULT999 directly — route through arifOS",
+        "Override human sovereignty (F13)",
+        "Execute destructive commands without 888_HOLD",
+        "Bypass Hermes/APEX constitutional review"
+      ],
+      "toolbench": {
+        "agents": ["main", "opencode", "codex", "kimi"],
+        "bindings": ["Telegram @AGI_ASI_bot → agent:main", "Telegram group -1003753855708", "Telegram group -1003815535761"],
+        "native_tools": ["web_search", "web_fetch", "browser", "exec", "memory_search", "telegram"],
+        "plugins_enabled": ["minimax", "deepseek", "kimi", "moonshot", "opencode", "tavily", "ollama", "telegram", "memory-core", "active-memory", "browser", "acpx"],
+        "mcp_clients": ["arifOS (via Hermes A2A bridge)", "A-FORGE (via ACP)"],
+        "systemd_service": "openclaw-gateway.service",
+        "gateway_transport": "WebSocket (ws://127.0.0.1:18789)"
+      },
+      "agentCardUrl": "https://openclaw.arif-fazil.com/.well-known/agent-card.json",
+      "a2aEndpoint": "ws://127.0.0.1:18789"
     }
   ]
 }
