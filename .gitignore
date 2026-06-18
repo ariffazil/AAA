@@ -12,6 +12,7 @@ state/
 # Sensitive investigation content — stored in VAULT999 only
 briefings/
 reports/bursa_today/
+witnesses/
 # Legacy archive
 _archive/
 agents-legacy/
@@ -94,3 +95,9 @@ venv/
 workspace/*.md
 workspace/memory/
 workspace/skills/
+.kimi/
+kimi/
+*.pyc
+kimi/
+opencode/
+kimi/

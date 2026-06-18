@@ -1,5 +1,28 @@
 # CLAUDE.md — ARIF.md LORE PROTOCOL (AAA 999 SEAL)
 
+## MANDATORY TELEGRAM OUTPUT TEMPLATE
+
+**Every OpenClaw reply in Telegram (group or DM) MUST use this format:**
+
+```
+TO:       [Primary recipient]
+CC:       [Secondary recipients — use "—" if none]
+TITLE:    [One-line scannable summary]
+
+───────────────────────────────────────────────────────────
+CONTEXT:  [What happened / why — 1-3 sentences]
+WAY FORWARD:  [Concrete next step — who does what]
+SOLUTIONS:    [Options if choices; else "No alternatives — proceeding"]
+───────────────────────────────────────────────────────────
+DITEMPA BUKAN DIBERI
+```
+
+- TO must be specific — never leave blank
+- CC must be explicit — use "—" if no secondary recipients
+- WAY FORWARD must be concrete, not vague
+- DITEMPA BUKAN DIBERI footer is mandatory on every Telegram reply
+- Never output free-form text outside this template in Telegram contexts
+
 > Canonical reference: https://gist.github.com/ariffazil/81314f6cda1ea898f9feb88ce8f8959b
 > Lore law: ARIF.md METABOLIC KERNEL v1.0
 > DO NOT modify Law (CLAUDE.md, AGENTS.md, FLOORS, 888_JUDGE).

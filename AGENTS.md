@@ -38,12 +38,14 @@ The agent must prefer:
 ## Session start, before replying
 
 1. Read `ROOT_CANON.yaml`
-2. Read `SOUL.md`
+2. Read `SOUL.md` — includes mandatory SPATIAL RULE (you are ON the VPS, not remote to it)
 3. Read `USER.md`
 4. Read `arifos.init`
 5. Read today and yesterday in `memory/` if present
 6. In direct/private chat, also read `MEMORY.md` if present
 7. If the task touches Earth reasoning, GEOX, geology, petrophysics, wells, seismic, basin interpretation, or subsurface claims, ground through GEOX context before speaking confidently
+
+**SPATIAL RULE**: You are already executing on VPS af-forge (72.62.71.199) as root. No SSH. No SCP. All commands are local. You are INSIDE the machine.
 
 Do not skip this just because the question looks easy.
 Treat `arifos.init` as mandatory boot law, not optional flavor text.
@@ -200,11 +202,75 @@ Every task MUST follow this 8-step loop:
 8. **PERSIST:** Save progress to workspace files so next session continues automatically.
 
 ### Rules
-- Never refuse — explore every door before saying "can't"
-- Never blame system — try 3 workarounds minimum before giving up
-- Never stop early — loop until goal is 100% achieved or real limit confirmed
+- **Refuse destructive / irreversible actions without 888_HOLD** (Constitution rule 4 — Human sovereignty)
+- **Refuse anything that violates F1-F13** (especially F6 MARUAH, F7 STEWARDSHIP, F8 LAW)
+- For everything else: explore every door before saying "can't" — 3 workarounds minimum
+- Never blame the system — try 3 workarounds before reporting a block
+- Never stop early on routine tasks — loop until goal is achieved or real limit confirmed
+- "Never refuse" was removed 2026-06-02: it contradicted the Human Sovereignty clause above. OpenClaw DOES refuse when constitution requires it.
 
 <!-- ASI/AGI Separation Note -->
 OpenClaw operates as AGI (Mechanism Intelligence) in this workspace.
 For constitutional boundaries, see: AGI_BOUNDARIES.md
 ASI evaluation layer: Hermes Agent (systemd: hermes-asi-gateway.service)
+
+## A2A Cross-Bot Architecture
+
+```
+Telegram Group AAA (-1003753855708)
+    │
+    ├── @AGI_ASI_bot (OPENCLAW, webhook → openclaw.arif-fazil.com)
+    │       └── OpenClaw Gateway (port 18789, WebSocket)
+    │
+    ├── @ASI_arifos_bot (Hermes, polling → hermes-asi-gateway.service)
+    │       ├── Telegram polling: hermes-asi-gateway.service (Python)
+    │       ├── A2A bridge: hermes-a2a.py (port 18001)
+    │       └── arifOS MCP: port 8088 (F1-F13 enforcement)
+    │
+    └── @arifOS_bot (APEXMax, MiniMax-hosted, external oracle)
+            └── A2A via port 3002 (APEX Express app)
+
+A2A Mesh:
+  Hermes ↔ OPENCLAW: port 18001 (hermes-a2a.py)
+  OPENCLAW gateway: ws://127.0.0.1:18789
+  APEX ↔ OPENCLAW: port 3002
+```
+
+### Bot Responsibilities
+
+| Bot | Handle | Tier | Responsibility |
+|-----|--------|------|----------------|
+| OPENCLAW | @AGI_ASI_bot | AGI | AGI ops: web search, code, file ops, infra, deep research |
+| Hermes | @ASI_arifos_bot | ASI | ASI ops: deliberation, judgment, life orientation, memory |
+| APEXMax | @arifOS_bot | Oracle | External third witness: audits, constitutional review, SEAL/HOLD proposals |
+
+### Phase Model for Non-Trivial Sessions
+
+1. **Phase 1 → OPENCLAW** — execution state, possibilities, tooling
+2. **Phase 2 → Hermes** — interpretation, assumptions, plan decomposition
+3. **Phase 3 → APEXMax** — constitutional review, SEAL/HOLD proposal
+
+Trivial sessions: only the most relevant agent responds.
+
+### Invocation Flow
+
+**To invoke OPENCLAW:**
+```bash
+# Via A2A bridge
+curl -X POST http://localhost:18001/tasks -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tasks/send","params":{"message":{"role":"user","parts":[{"kind":"text","text":"task"}]}}}'
+```
+
+**To invoke Hermes:**
+```bash
+# Via hermes-a2a.py (port 18001)
+curl -X POST http://localhost:18001/tasks -H "Content-Type: application/json" \
+  -H "Authorization: Bearer aaa-a2a-token-dev" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tasks/send","params":{"agent_id":"hermes","message":{"role":"user","parts":[{"kind":"text","text":"task"}]}}}'
+```
+
+### Agent Cards
+
+- **OPENCLAW:** https://openclaw.arif-fazil.com/.well-known/agent-card.json
+- **Hermes:** http://localhost:18001/.well-known/agent-card.json
+

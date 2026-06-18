@@ -1,0 +1,657 @@
+#!/usr/bin/env python3
+"""
+arifOS-bot (000♎️) — Code Specialist Persona in AAA
+====================================================
+
+Persona: 000♎️ — code specialist for the arifOS federation. The scales.
+         Every action is weighed before it moves. Bound to the opencode
+         sovereign agent. Lives in the AAA group.
+
+Two modes:
+  - TRANSLATOR (default) — read-only. Reads code, explains in plain human
+    language. No judge gate needed (OBSERVE class).
+  - /forge (executor) — read-write. Delegates to opencode via the
+    hermes-opencode wrapper, which is GATED through arifOS 888_JUDGE.
+    Refuses to do anything destructive without a SEAL verdict.
+
+In AAA group, responds only when @-mentioned (@arifOS_bot or @000♎️).
+In DM, responds to every message.
+
+Authorised: Arif (F13 SOVEREIGN, user_id=267378578) ONLY. Everyone else
+silently ignored. F13 is non-negotiable.
+
+Architecture (constitutional):
+  Arif in AAA
+       │
+       ▼
+  arifOS-bot (this service, polling, 127.0.0.1, no public ingress)
+       │
+       ├── TRANSLATOR ──▶ opencode run "..."  (no gate, OBSERVE)
+       │                       (read-only persona, plain language)
+       │
+       └── /forge    ──▶ hermes-opencode run "..."
+                              │
+                              ├──▶ arifOS MCP 888_JUDGE
+                              │     ├── SEAL/SABAR/QUALIFY → proceed
+                              │     └── HOLD/VOID → block + explain
+                              └──▶ opencode run "..."  (the actual work)
+"""
+
+from __future__ import annotations
+
+import json
+import logging
+import os
+import re
+import subprocess
+import sys
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any
+
+from telegram import Update
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
+
+# ─── Config ──────────────────────────────────────────────────────────────
+TOKEN_PATH = Path("/root/.secrets/tokens/telegram-opencode-bot")
+HERMES_OPENCODE_BIN = "/usr/local/bin/hermes-opencode"
+OPENCODE_BIN = "/usr/local/bin/opencode"
+# Model: deepseek-v4-pro is out of credits (Insufficient Balance).
+# Pin to minimax/MiniMax-M3 which is the federation's primary model and has credits.
+OPENCODE_MODEL = "minimax/MiniMax-M3"
+# Attach URL: if the user runs `opencode serve` in their terminal, the
+# server listens here and the bot routes every message through that
+# session (shared history, plans, in-flight MCP tool state). If the
+# server is NOT running, the bot falls back to one-shot `opencode run`
+# and tells the user in plain language to start `opencode serve`.
+# Use 127.0.0.1, not localhost, to avoid IPv6 / resolver surprises.
+OPENCODE_ATTACH_URL = os.environ.get("OPENCODE_ATTACH_URL", "http://127.0.0.1:4096")
+OPENCODE_ATTACH_ENABLED = os.environ.get("OPENCODE_ATTACH_ENABLED", "1") == "1"
+# Transport flag. v1: HTTP API. CLI subprocess kept as fallback only.
+# 0 = HTTP API only (recommended). 1 = CLI attach subprocess (legacy).
+OPENCODE_USE_CLI = os.environ.get("OPENCODE_USE_CLI", "0") == "1"
+# Per-chat session map: chat_id/user_id -> opencode session_id.
+# Lives in-process. Lost on restart. v2 = sqlite if needed.
+_session_map: dict[str, str] = {}
+# Canonical init session: ONE persistent session shared across all chats/users.
+# Read from .init_session file in this bot's working dir. Created on first
+# /init call, persisted to disk, reused on every subsequent message until
+# explicitly retired. This is the "one init session" invariant.
+INIT_SESSION_PATH = Path(__file__).resolve().parent / ".init_session"
+WORKSPACE = Path("/root/.openclaw/workspace/bots/opencode-bot")
+ALLOWED_USER_ID = 267378578  # Arif (F13 SOVEREIGN)
+AAA_GROUP_ID = -1003753855708  # AAA group
+BOT_USERNAME = "arifOS_bot"  # self @-mention detection
+FORGE_TRIGGER = "/forge"  # explicit executor mode
+HERMES_TIMEOUT_S = 120
+OPENCODE_TIMEOUT_S = 90
+REPLY_CHAR_CAP = 4000
+JOURNAL_TAG = "arifOS-bot"
+
+# Env for opencode / hermes-opencode. ARIFOS_MCP_URL must point at 8088
+# (8080 is Caddy, 8088 is arifOS MCP).
+RUNTIME_ENV = {
+    "ARIFOS_MCP_URL": "http://127.0.0.1:8088/mcp",
+    "OPENCODE_REAL_BIN": OPENCODE_BIN,
+    "PATH": os.environ.get(
+        "PATH",
+        "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    ),
+    "HOME": "/root",
+}
+
+# ─── Persona prompt (the soul) ───────────────────────────────────────────
+PERSONA_TRANSLATOR = """\
+You are 000♎️ (the arifOS code specialist persona in AAA). You translate code
+and federation state into plain human language for Arif.
+
+WHO HE IS
+Senior exploration geoscientist. He runs the federation but does not write code.
+He prefers BM-English: plain English first, with occasional Malay terms when
+they are the clearest way to say something. Short replies, direct answers.
+
+YOUR MODE: TRANSLATOR (read-only)
+You observe. You explain. You never write, never commit, never forge. If Arif
+asks for something that would mutate state, you say: "I am in translator mode.
+Say /forge if you want me to switch to executor mode, and the gate will check it."
+
+STRICT RULES — NEVER BREAK
+1. NEVER use code blocks, JSON dumps, terminal output, log lines, file paths
+2. NEVER show Python, SQL, YAML, or any programming language
+3. If you must reference a file, use plain words: "the part that calculates your money"
+4. Keep replies to 1-3 short paragraphs
+5. Match his BM-English style if he uses it
+6. If you don't know, say "I don't know in plain words, want me to dig deeper?" — never fake it
+7. For audit/health questions, fetch live data — never hallucinate
+8. Tell him the truth: broken = say so, green = say so. Don't oversell.
+
+TONE
+Like a trusted colleague explaining things over tea. Calm. Direct. No fluff.
+"""
+
+PERSONA_EXECUTOR = """\
+You are 000♎️ in EXECUTOR mode. You are about to perform a write operation
+through the arifOS judge gate. Your output will be reviewed by 888_JUDGE
+and only allowed to proceed if the verdict is SEAL/SABAR/QUALIFY.
+
+Your job in this mode: produce a concrete, reversible plan. State what
+you intend to change, in plain human language. Do not narrate code. Do
+not dump diffs. The gate will decide if your plan is sound.
+
+If you would propose anything IRREVERSIBLE (deletion, force-push, drop
+table, etc.), explicitly flag it as "888_HOLD required" so Arif can ack.
+"""
+
+# ─── Logging ─────────────────────────────────────────────────────────────
+logging.basicConfig(
+    format="%(asctime)s [" + JOURNAL_TAG + "] %(levelname)s %(message)s",
+    level=logging.INFO,
+    stream=sys.stdout,
+)
+log = logging.getLogger(JOURNAL_TAG)
+
+
+def load_token() -> str:
+    if not TOKEN_PATH.exists():
+        log.error(f"token file not found: {TOKEN_PATH}")
+        sys.exit(1)
+    token = TOKEN_PATH.read_text().strip()
+    if not token or ":" not in token or len(token) < 30:
+        log.error("token format looks wrong (not a valid Telegram bot token)")
+        sys.exit(1)
+    return token
+
+
+def is_authorized(update: Update) -> bool:
+    user = update.effective_user
+    if not user:
+        return False
+    if user.id != ALLOWED_USER_ID:
+        log.warning(
+            f"unauthorized user blocked: id={user.id} username={user.username!r}"
+        )
+        return False
+    return True
+
+
+def strip_bot_mention(text: str) -> str:
+    """Strip @arifOS_bot or @000♎️ mentions and the /forge trigger from a message."""
+    text = re.sub(r"@arifOS[_\-]?bot", "", text, flags=re.IGNORECASE)
+    text = re.sub(r"@000[Ω♎️]", "", text)
+    text = text.strip()
+    return text
+
+
+# ─── OpenCode HTTP API transport (preferred) ─────────────────────────────
+def _http_post(path: str, body: dict[str, Any] | None = None, timeout: int = 30) -> dict[str, Any]:
+    """POST JSON to the OpenCode server. Returns parsed response."""
+    url = f"{OPENCODE_ATTACH_URL}{path}"
+    data = json.dumps(body or {}).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        raw = resp.read().decode("utf-8", errors="replace")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"opencode returned non-JSON: {raw[:200]}") from e
+
+
+def _http_get(path: str, timeout: int = 10) -> Any:
+    """GET from the OpenCode server. Returns parsed response."""
+    url = f"{OPENCODE_ATTACH_URL}{path}"
+    req = urllib.request.Request(url, method="GET")
+    with urllib.request.urlopen(req, timeout=timeout) as resp:
+        raw = resp.read().decode("utf-8", errors="replace")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise RuntimeError(f"opencode returned non-JSON: {raw[:200]}") from e
+
+
+def opencode_create_session(title: str) -> str:
+    """Create a new OpenCode session. Returns session id."""
+    resp = _http_post("/session", {"title": title})
+    sid = resp.get("id") if isinstance(resp, dict) else None
+    if not sid:
+        raise RuntimeError(f"opencode session create returned no id: {str(resp)[:200]}")
+    return sid
+
+
+def opencode_message(session_id: str, text: str, agent: str = "build") -> dict[str, Any]:
+    """POST a message to an existing session. Returns the full response object."""
+    return _http_post(
+        f"/session/{session_id}/message",
+        {"agent": agent, "parts": [{"type": "text", "text": text}]},
+        timeout=120,
+    )
+
+
+def extract_text_from_response(resp: Any) -> str:
+    """Pull the final assistant text from an OpenCode /message response.
+
+    The response shape is { info, parts: [...] }. We collect any text parts
+    in order. Reasoning parts are skipped (model thinks, doesn't speak).
+    """
+    if not isinstance(resp, dict):
+        return ""
+    parts = resp.get("parts") or []
+    texts: list[str] = []
+    for part in parts:
+        if not isinstance(part, dict):
+            continue
+        if part.get("type") == "text" and part.get("text"):
+            texts.append(part["text"])
+    return "\n\n".join(texts).strip()
+
+
+def _session_key(update: Update) -> str:
+    """Per-chat or per-user session key."""
+    chat = update.effective_chat
+    if chat and chat.type in ("group", "supergroup"):
+        return f"chat:{chat.id}"
+    user = update.effective_user
+    return f"user:{user.id if user else 'anon'}"
+
+
+def get_or_create_session(update: Update) -> str:
+    """Return the canonical init session id.
+
+    The init session is the ONE persistent session shared by all chats/users.
+    - If .init_session exists and points to a live session, return that id.
+    - If the file is missing or stale, create a new init session and persist.
+    - /init command explicitly (re)creates the init session.
+    """
+    sid = _read_init_session()
+    if sid:
+        return sid
+    # No init session yet — create one and persist.
+    title = f"arifos:init:000-libra"
+    new_sid = opencode_create_session(title)
+    _write_init_session(new_sid)
+    log.info(f"created persistent init session {new_sid} (title={title})")
+    return new_sid
+
+
+def _read_init_session() -> str | None:
+    """Read init session id from disk. Return None if missing or invalid."""
+    try:
+        if not INIT_SESSION_PATH.exists():
+            return None
+        sid = INIT_SESSION_PATH.read_text().strip()
+        if not sid or not sid.startswith("ses_"):
+            log.warning(f"init session file has invalid id: {sid!r}")
+            return None
+        return sid
+    except Exception as e:
+        log.exception(f"failed to read init session file: {e}")
+        return None
+
+
+def _write_init_session(sid: str) -> None:
+    """Persist init session id to disk (mode 600)."""
+    INIT_SESSION_PATH.write_text(sid)
+    try:
+        INIT_SESSION_PATH.chmod(0o600)
+    except Exception:
+        pass  # best-effort on permission tightening
+
+
+async def cmd_init(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Explicit /init: (re)create the canonical init session."""
+    if not is_authorized(update):
+        return
+    try:
+        old = _read_init_session()
+        new_sid = opencode_create_session(f"arifos:init:000-libra")
+        _write_init_session(new_sid)
+        # Drop the in-memory map so next message uses the new init session.
+        _session_map.clear()
+        msg = f"000♎️ init session reset.\nold: {old or '(none)'}\nnew: {new_sid}"
+        log.info(msg)
+        await update.message.reply_text(msg)
+    except Exception as e:
+        log.exception("/init failed")
+        await update.message.reply_text(f"/init failed: {type(e).__name__}: {str(e)[:200]}")
+
+
+def _run_opencode_cli_fallback(prompt: str, persona: str) -> tuple[str, int]:
+    """Legacy: spawn `opencode run --attach` subprocess. Kept for opt-in fallback
+    (OPENCODE_USE_CLI=1). The HTTP API path is preferred and is the default.
+
+    If OPENCODE_ATTACH_ENABLED is true (default), routes through the user's
+    running `opencode serve` session. Falls back to one-shot `opencode run`.
+    """
+    full_prompt = (
+        f"{persona}\n\n"
+        f"--- Arif asks ---\n{prompt}\n\n"
+        f"--- Your reply (plain human language, no code, no jargon) ---"
+    )
+    env = os.environ.copy()
+    env.update(RUNTIME_ENV)
+    if OPENCODE_ATTACH_ENABLED:
+        cmd = [
+            OPENCODE_BIN,
+            "--attach",
+            OPENCODE_ATTACH_URL,
+            "run",
+            "--format",
+            "default",
+            "--model",
+            OPENCODE_MODEL,
+            full_prompt,
+        ]
+        attach_mode = f"attach={OPENCODE_ATTACH_URL}"
+    else:
+        cmd = [
+            OPENCODE_BIN,
+            "run",
+            "--format",
+            "default",
+            "--model",
+            OPENCODE_MODEL,
+            full_prompt,
+        ]
+        attach_mode = "oneshot"
+    try:
+        result = subprocess.run(
+            cmd,
+            capture_output=True,
+            text=True,
+            timeout=OPENCODE_TIMEOUT_S,
+            cwd=str(WORKSPACE),
+            env=env,
+        )
+    except subprocess.TimeoutExpired:
+        return (f"Took too long, brain froze. Try a shorter question.", -1)
+    except FileNotFoundError:
+        return ("opencode CLI missing. Tell Arif.", -2)
+    except Exception as e:
+        log.exception("opencode CLI call failed")
+        return (f"CLI broke: {type(e).__name__}.", -3)
+
+    if result.returncode != 0:
+        log.warning(
+            f"opencode CLI exit {result.returncode} mode={attach_mode}; "
+            f"stderr: {result.stderr[:200]}"
+        )
+        if (
+            OPENCODE_ATTACH_ENABLED
+            and "connection refused" in (result.stderr or "").lower()
+        ):
+            return (
+                "Your terminal's opencode server isn't running. "
+                f"In your VPS terminal, run: opencode serve --port 4096\n"
+                "Then send your message again. I'll route through your session.",
+                result.returncode,
+            )
+        return ("CLI hiccup. Try again or set OPENCODE_USE_CLI=0.", result.returncode)
+    response = (result.stdout or "").strip()
+    if not response:
+        return ("I got nothing back. The machine was quiet.", 0)
+    return (response[:REPLY_CHAR_CAP], 0)
+
+
+def run_opencode(prompt: str, persona: str, session_id: str) -> tuple[str, int]:
+    """Call OpenCode for TRANSLATOR mode. HTTP API is the default transport.
+    session_id is provided by handle_message (per-chat/user session map).
+    Returns (text, exit_code). 0 = success, 1 = transport/HTTP error.
+    """
+    if OPENCODE_USE_CLI:
+        return _run_opencode_cli_fallback(prompt, persona)
+
+    log.info("TRANSLATOR_HTTP: routing translator through OpenCode HTTP API")
+    full_prompt = f"{persona}\n\nUSER MESSAGE:\n{prompt}"
+    try:
+        resp = opencode_message(
+            session_id=session_id,
+            text=full_prompt,
+            agent="build",
+        )
+        text = extract_text_from_response(resp)
+        if not text:
+            log.warning(
+                f"empty assistant text. resp keys: {list(resp.keys()) if isinstance(resp, dict) else type(resp).__name__}"
+            )
+            return "I got nothing back from the model. The machine was quiet.", 1
+        return text, 0
+    except Exception as exc:
+        log.exception("opencode HTTP call failed")
+        if OPENCODE_USE_CLI:
+            return _run_opencode_cli_fallback(prompt, persona)
+        return (
+            f"OpenCode HTTP error: {type(exc).__name__}: {str(exc)[:300]}",
+            1,
+        )
+
+
+def run_hermes_opencode(prompt: str, persona: str, session_id: str) -> tuple[str, int]:
+    """Call OpenCode for EXECUTOR mode via the hermes-opencode CLI wrapper ONLY.
+
+    /forge is constitutionally required to route through 888_JUDGE before any
+    mutation. The hermes-opencode wrapper is the currently-proven gate
+    (subprocess call, model proposals go through arif_judge_deliberate, exit
+    codes 77=blocked 78=judge-unavailable). There is NO HTTP fallback here:
+    if the wrapper is missing or the gate is down, /forge returns NACK/HOLD.
+    The session_id parameter is accepted for symmetry with run_opencode but
+    is not used (the gate's own session model applies).
+    """
+    log.info("FORGE_JUDGE_CLI: routing /forge through hermes-opencode (888_JUDGE-gated)")
+    full_prompt = (
+        f"{PERSONA_EXECUTOR}\n\n"
+        f"--- Arif asks (FORGE mode, 888_HOLD-gated) ---\n{prompt}\n\n"
+        f"--- State your plan in plain human language ---"
+    )
+    env = os.environ.copy()
+    env.update(RUNTIME_ENV)
+    try:
+        result = subprocess.run(
+            [
+                HERMES_OPENCODE_BIN,
+                "run",
+                "--format",
+                "default",
+                "--model",
+                OPENCODE_MODEL,
+                full_prompt,
+            ],
+            capture_output=True,
+            text=True,
+            timeout=HERMES_TIMEOUT_S,
+            cwd=str(WORKSPACE),
+            env=env,
+        )
+    except subprocess.TimeoutExpired:
+        log.warning("FORGE_BLOCKED: hermes-opencode timeout")
+        return (
+            "FORGE_BLOCKED (888_HOLD): hermes-opencode timed out. The gate did not "
+            "respond in time. No mutation occurred. Try again, or check arifOS.",
+            -1,
+        )
+    except FileNotFoundError:
+        log.error("FORGE_BLOCKED: hermes-opencode wrapper missing — refusing to fall back")
+        return (
+            "FORGE_BLOCKED (888_HOLD): hermes-opencode wrapper is missing. "
+            "/forge is constitutionally disabled until the gate is restored. "
+            "No mutation occurred. Translator mode still works.",
+            -2,
+        )
+    except Exception as e:
+        log.exception("FORGE_BLOCKED: hermes-opencode call failed")
+        return (f"FORGE_BLOCKED: hermes-opencode broke: {type(e).__name__}", -3)
+
+    if result.returncode == 77:
+        log.info("FORGE_BLOCKED: judge returned 77 (HOLD/VOID)")
+        return (
+            "FORGE_BLOCKED (888_HOLD): the federation's gate blocked this request. "
+            "It might be too broad, too sensitive, or touch irreversible territory. "
+            "No mutation occurred. Try a more specific read-only question, or take it "
+            "to arifOS directly. The gate protects you.",
+            77,
+        )
+    if result.returncode == 78:
+        log.warning("FORGE_BLOCKED: judge unavailable (exit 78)")
+        return (
+            "FORGE_BLOCKED (888_HOLD): the federation's brain (arifOS) is offline. "
+            "/forge is parked. No mutation occurred. Translator mode still works. "
+            "I'll retry the gate on your next /forge.",
+            78,
+        )
+    if result.returncode != 0:
+        log.warning(
+            f"FORGE_BLOCKED: hermes-opencode exit {result.returncode}; "
+            f"stderr: {result.stderr[:300]}"
+        )
+        return (
+            f"FORGE_BLOCKED: hermes-opencode exit {result.returncode}. "
+            f"No mutation occurred. stderr: {result.stderr[:200]}",
+            result.returncode,
+        )
+
+    response = (result.stdout or "").strip()
+    if not response:
+        return (
+            "FORGE_BLOCKED: hermes-opencode returned no response. No mutation occurred.",
+            0,
+        )
+    return (response[:REPLY_CHAR_CAP], 0)
+
+
+# ─── Handlers ────────────────────────────────────────────────────────────
+def should_respond_in_group(update: Update) -> bool:
+    """In AAA group, only respond if the bot is @-mentioned."""
+    if update.effective_chat.id != AAA_GROUP_ID:
+        return True  # not in AAA group → respond (DM or other chat)
+    text = update.message.text or ""
+    # Match @arifOS_bot, @arifOSBot, @000♎️, or /command@arifOS_bot
+    return bool(
+        re.search(r"@arifOS[_\-]?bot", text, re.IGNORECASE)
+        or "@000♎️" in text
+        or text.startswith("/")
+    )
+
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_authorized(update):
+        return
+    if not should_respond_in_group(update):
+        return
+
+    raw = (update.message.text or "").strip()
+    if not raw:
+        return
+
+    text = strip_bot_mention(raw)
+    if not text:
+        return
+
+    log.info(
+        f"<- chat={update.effective_chat.id} user={update.effective_user.id} "
+        f"text={text[:120]}"
+    )
+    await update.message.chat.send_action("typing")
+
+    if text.startswith(FORGE_TRIGGER) or text.lstrip().startswith(FORGE_TRIGGER):
+        # /forge mode — gated executor (constitutionally CLI/JUDGE only)
+        # /forge routes through hermes-opencode subprocess, which has its own
+        # session model and does NOT consume the opencode HTTP session_id.
+        # We deliberately skip the HTTP session lookup for /forge:
+        #   (a) hermes-opencode does not use the session_id (verified by
+        #       run_hermes_opencode docstring: "session_id is accepted for
+        #       symmetry with run_opencode but is not used");
+        #   (b) the HTTP call adds up to 30s of latency (urllib default) and
+        #       a failure mode that can block /forge when opencode is slow
+        #       or cold-starting — even though the session is irrelevant to
+        #       the CLI subprocess path;
+        #   (c) if the gate (hermes-opencode) needs a session, it mints its own.
+        # Normalize "/ forge" (with leading space) → "/forge"
+        normalized = text.lstrip()
+        prompt = normalized[len(FORGE_TRIGGER) :].strip()
+        if not prompt:
+            await update.message.reply_text(
+                "/forge needs a task. Example: /forge add retry logic to the WEALTH health check"
+            )
+            return
+        log.info(f"FORGE mode: {prompt[:80]}")
+        reply, exit_code = run_hermes_opencode(prompt, PERSONA_EXECUTOR, "")
+    else:
+        # Default: translator mode — needs an HTTP session for the message call.
+        # Session lookup at the call site (per-chat / per-user identity).
+        try:
+            session_id = get_or_create_session(update)
+        except Exception as exc:
+            log.exception("session lookup failed")
+            await update.message.reply_text(
+                f"Bridge can't reach opencode to make a session: {type(exc).__name__}: {str(exc)[:200]}"
+            )
+            return
+        prompt = text
+        log.info(f"TRANSLATOR mode: {prompt[:80]}")
+        reply, exit_code = run_opencode(prompt, PERSONA_TRANSLATOR, session_id)
+
+    await update.message.reply_text(reply[:REPLY_CHAR_CAP])
+    log.info(f"-> exit={exit_code} reply={reply[:120]}")
+
+
+async def cmd_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_authorized(update):
+        return
+    await update.message.reply_text(
+        "000♎️ online. Two modes:\n"
+        "  • default (translator) — read-only, plain human language, no code\n"
+        "  • /forge (executor) — gated through 888_JUDGE, for write actions\n\n"
+        "I am bound to the opencode sovereign agent. I only respond to Arif (F13). "
+        "In the AAA group, mention me with @arifOS_bot or @000♎️."
+    )
+
+
+async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not is_authorized(update):
+        return
+    await update.message.reply_text(
+        "What I can do:\n"
+        "  translator (default) — read code, audit federation, explain anything in plain words\n"
+        "  /forge — propose a write; the gate (888_JUDGE) decides if it goes through\n\n"
+        "Constitutional stance:\n"
+        "  • I will not bypass 888_JUDGE. If the gate is down, I say so.\n"
+        "  • I will not speak to anyone except Arif (F13 SOVEREIGN).\n"
+        "  • I am read-only by default. /forge is the only way I touch state.\n"
+        "  • For irreversible actions (delete, drop, force-push), the gate will HOLD. "
+        "You then ack via arifOS directly with 888_HOLD."
+    )
+
+
+def main() -> None:
+    log.info("arifOS-bot starting (000♎️, opencode persona, AAA-bound)...")
+    token = load_token()
+
+    app = ApplicationBuilder().token(token).build()
+    app.add_handler(CommandHandler("start", cmd_start))
+    app.add_handler(CommandHandler("help", cmd_help))
+    app.add_handler(CommandHandler("init", cmd_init))
+    # Catch text messages. should_respond_in_group() filters non-mentions.
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+
+    log.info(
+        f"polling as @{BOT_USERNAME}, F13 user_id={ALLOWED_USER_ID}, "
+        f"AAA group={AAA_GROUP_ID}"
+    )
+    log.info(
+        f"translator → OpenCode HTTP API (no gate) ; /forge → {HERMES_OPENCODE_BIN} (888_JUDGE-gated, no HTTP fallback)"
+    )
+    app.run_polling(drop_pending_updates=True)
+
+
+if __name__ == "__main__":
+    main()

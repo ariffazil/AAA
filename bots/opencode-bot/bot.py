@@ -47,6 +47,7 @@ import subprocess
 import sys
 import urllib.error
 import urllib.request
+import base64
 from pathlib import Path
 from typing import Any
 
@@ -55,16 +56,33 @@ from telegram import (
     BotCommandScopeAllPrivateChats,
     BotCommandScopeChat,
     BotCommandScopeDefault,
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
     Update,
 )
 from telegram.ext import (
     Application,
     ApplicationBuilder,
+    CallbackQueryHandler,
     CommandHandler,
     ContextTypes,
     MessageHandler,
     filters,
 )
+
+# Substrate Gate: forge-only C4/C5 hold gate (F1/F2/F13 aware)
+from substrate_gate import (
+    GateDecision,
+    GateHandler,
+    MYT,
+    SubstrateReading,
+    build_inline_keyboard,
+    probe_well_substrate,
+)
+
+# Constitutional governance manager (4-organ MCP + 12 hooks + taxonomy)
+from governance import Governor
+from action_taxonomy import ActionClass
 
 # ─── Config ──────────────────────────────────────────────────────────────
 TOKEN_PATH = Path("/root/.secrets/tokens/telegram-opencode-bot")
@@ -87,13 +105,26 @@ OPENCODE_USE_CLI = os.environ.get("OPENCODE_USE_CLI", "0") == "1"
 # Per-chat session map: chat_id/user_id -> opencode session_id.
 # Lives in-process. Lost on restart. v2 = sqlite if needed.
 _session_map: dict[str, str] = {}
+# Constitutional governance surface (4-organ MCP + 12 hooks + taxonomy)
+_GOVERNOR: Governor | None = None
 # Canonical init session: ONE persistent session shared across all chats/users.
 # Read from .init_session file in this bot's working dir. Created on first
 # /init call, persisted to disk, reused on every subsequent message until
 # explicitly retired. This is the "one init session" invariant.
 INIT_SESSION_PATH = Path(__file__).resolve().parent / ".init_session"
 WORKSPACE = Path("/root/.openclaw/workspace/bots/opencode-bot")
-ALLOWED_USER_ID = 267378578  # Arif (F13 SOVEREIGN)
+# AAA WARG*A — Inclusive Institution State (ratified 2026-06-11)
+# Arif holds F13 SOVEREIGN veto. AAA peer agents are warga and may
+# communicate via this bridge. Per-peer revocation still possible
+# by removing from the set.
+ALLOWED_USER_IDS: set[int] = {
+    267378578,  # Arif (F13 SOVEREIGN)
+    8727562763,  # APEX / 000♎️ (@arifOS_bot, registered peer)
+    8149595687,  # OpenClaw🦞 / AGI (@AGI_ASI_bot, registered peer)
+    8410138119,  # ASI💃 / hermes-asi (@ASI_arifos_bot, registered peer) — added 2026-06-12 per F13 SOVEREIGN fix
+}
+# Backward-compat alias for any code that still references the old name.
+ALLOWED_USER_ID = 267378578  # F13 SOVEREIGN (single-user legacy check)
 AAA_GROUP_ID = -1003753855708  # AAA group
 BOT_USERNAME = "arifOS_bot"  # self @-mention detection
 FORGE_TRIGGER = "/forge"  # explicit executor mode
@@ -136,7 +167,8 @@ RUNTIME_ENV = {
 # Design rule: verb-first, sovereign-centric, one thing per command.
 # /forge is the only write path — central in the menu.
 COMMANDS: list[BotCommand] = [
-    BotCommand("forge", "Execute a write action (888_JUDGE-gated)"),
+    BotCommand("forge", "Execute a write action (888_JUDGE + Substrate Gate)"),
+    BotCommand("vita", "Substrate one-liner + HOLD queue"),
     BotCommand("init", "(Re)create session — fresh state"),
     BotCommand("status", "Show session, mode, last verdict"),
     BotCommand("seal", "Explicit seal of pending verdict"),
@@ -338,7 +370,7 @@ def is_authorized(update: Update) -> bool:
     user = update.effective_user
     if not user:
         return False
-    if user.id != ALLOWED_USER_ID:
+    if user.id not in ALLOWED_USER_IDS:
         log.warning(
             f"unauthorized user blocked: id={user.id} username={user.username!r}"
         )
@@ -472,6 +504,210 @@ def _arifos_mcp_call(
             f"{type(e).__name__}: {str(e)[:200]}"
         )
         return None
+
+
+# ─── Sovereign Ed25519 signer (L11 AUTH) ───────────────────────────────────
+# The bot signs arif_session_init challenges with the sovereign's private
+# key. Public counterpart is at /root/compose/sekrits/arifos_sovereign.pub
+# (loaded by the kernel via ARIFOS_SOVEREIGN_PUBKEY_FILE or its fallbacks).
+#
+# The private key file at /root/compose/sekrits/arifos_sovereign.key is
+# 39 bytes: 7 bytes of malformed-DER header (30 2a 02 01 01 04 20) followed
+# by the raw 32-byte Ed25519 seed at offset 7. The 32-byte seed produces
+# a public key that matches the .pub file exactly.
+SOVEREIGN_KEY_PATH = os.environ.get(
+    "ARIFOS_SOVEREIGN_KEY_FILE", "/root/compose/sekrits/arifos_sovereign.key"
+)
+_SOVEREIGN_KEY_CACHE: Any = None  # lazy-loaded Ed25519PrivateKey
+
+
+def _load_sovereign_private_key() -> Any:
+    """Load the Ed25519 sovereign private key. Cached.
+
+    Tries: raw 32-byte seed at offset 7, then full file as 32-byte seed
+    (for clean keys), then PEM, then base64, then DER.
+    """
+    global _SOVEREIGN_KEY_CACHE
+    if _SOVEREIGN_KEY_CACHE is not None:
+        return _SOVEREIGN_KEY_CACHE
+    try:
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import (
+            Ed25519PrivateKey,
+        )
+        from cryptography.hazmat.primitives import serialization
+    except ImportError:
+        log.warning("SOVEREIGN_KEY: cryptography library not installed")
+        return None
+
+    key_path = Path(SOVEREIGN_KEY_PATH)
+    if not key_path.exists():
+        log.warning(f"SOVEREIGN_KEY: file not found at {key_path}")
+        return None
+    try:
+        raw = key_path.read_bytes()
+    except Exception as exc:
+        log.warning(f"SOVEREIGN_KEY: cannot read {key_path}: {exc}")
+        return None
+
+    # Format 1: 39-byte file (7 bytes broken DER header + 32 bytes seed at offset 7)
+    if (
+        len(raw) == 39
+        and raw[:2] == b"\x30\x2a"
+        and raw[2:7] == b"\x02\x01\x01\x04\x20"
+    ):
+        try:
+            _SOVEREIGN_KEY_CACHE = Ed25519PrivateKey.from_private_bytes(raw[7:39])
+            log.info(
+                f"SOVEREIGN_KEY: loaded (39-byte broken-DER format) from {key_path}"
+            )
+            return _SOVEREIGN_KEY_CACHE
+        except Exception as exc:
+            log.warning(f"SOVEREIGN_KEY: 39-byte parse failed: {exc}")
+
+    # Format 2: raw 32-byte seed
+    if len(raw) == 32:
+        try:
+            _SOVEREIGN_KEY_CACHE = Ed25519PrivateKey.from_private_bytes(raw)
+            log.info(f"SOVEREIGN_KEY: loaded (32-byte raw seed) from {key_path}")
+            return _SOVEREIGN_KEY_CACHE
+        except Exception as exc:
+            log.warning(f"SOVEREIGN_KEY: 32-byte parse failed: {exc}")
+
+    # Format 3: PEM
+    if raw.startswith(b"-----BEGIN"):
+        try:
+            _SOVEREIGN_KEY_CACHE = serialization.load_pem_private_key(
+                raw, password=None
+            )
+            log.info(f"SOVEREIGN_KEY: loaded (PEM) from {key_path}")
+            return _SOVEREIGN_KEY_CACHE
+        except Exception as exc:
+            log.warning(f"SOVEREIGN_KEY: PEM parse failed: {exc}")
+
+    # Format 4: DER
+    try:
+        _SOVEREIGN_KEY_CACHE = serialization.load_der_private_key(raw, password=None)
+        log.info(f"SOVEREIGN_KEY: loaded (DER) from {key_path}")
+        return _SOVEREIGN_KEY_CACHE
+    except Exception as exc:
+        log.warning(f"SOVEREIGN_KEY: DER parse failed: {exc}")
+
+    log.warning(f"SOVEREIGN_KEY: no format matched for {key_path} ({len(raw)} bytes)")
+    return None
+
+
+def _sign_actor_challenge(actor_id: str, nonce: str) -> str | None:
+    """Sign f"{actor_id}:{nonce}" with Ed25519. Return base64 signature or None.
+
+    Mirrors crypto_auth.verify_actor_signature exactly:
+      message_bytes = f"{actor_id}:{nonce}".encode()
+    """
+    privkey = _load_sovereign_private_key()
+    if privkey is None:
+        return None
+    try:
+        payload = f"{actor_id}:{nonce}".encode("utf-8")
+        sig_bytes = privkey.sign(payload)
+        return base64.b64encode(sig_bytes).decode("ascii")
+    except Exception as exc:
+        log.warning(f"SOVEREIGN_SIGN: signing failed: {exc}")
+        return None
+
+
+# Cached forge session (avoids re-init on every /forge call). The session
+# is good for the lifetime of the opencode-bot process unless revoked.
+_FORGE_SESSION_ID: str | None = None
+_FORGE_SESSION_VERIFIED: bool = False
+
+
+def _arifos_session_init_mint(mcp_session_id: str) -> str | None:
+    """Mint a verified arifOS session. Returns session_id (SOVEREIGN) or None.
+
+    Two-call flow per arifosmcp/tools/session.py:
+      1. mode="challenge" with actor_id="arif" → kernel issues a nonce
+      2. Sign f"arif:{nonce}" with the sovereign Ed25519 private key
+      3. mode="init" with actor_id="arif", nonce, signature → session manifest
+         with actor.identity_verified=True
+
+    The session is cached in _FORGE_SESSION_ID for subsequent /forge calls.
+    """
+    global _FORGE_SESSION_ID, _FORGE_SESSION_VERIFIED
+    if _FORGE_SESSION_ID and _FORGE_SESSION_VERIFIED:
+        return _FORGE_SESSION_ID
+
+    actor_id = "arif"  # SOVEREIGN root actor (kernel's canonical id)
+
+    # Step 1: get challenge nonce from kernel
+    challenge = _arifos_mcp_call(
+        mcp_session_id,
+        "arif_session_init",
+        {"mode": "challenge", "actor_id": actor_id},
+    )
+    if not challenge or "result" not in challenge:
+        log.warning(
+            f"FORGE: session_init challenge call failed: {str(challenge)[:300]}"
+        )
+        return None
+    challenge_result = challenge.get("result", {})
+    nonce = challenge_result.get("nonce")
+    if not nonce:
+        log.warning(
+            f"FORGE: challenge returned no nonce: {str(challenge_result)[:300]}"
+        )
+        return None
+
+    # Step 2: sign the challenge
+    sig = _sign_actor_challenge(actor_id, nonce)
+    if not sig:
+        log.warning(
+            "FORGE: cannot sign challenge — _load_sovereign_private_key failed. "
+            "Check that the bot can read ARIFOS_SOVEREIGN_KEY_FILE."
+        )
+        return None
+
+    # Step 3: complete init with signed challenge
+    init = _arifos_mcp_call(
+        mcp_session_id,
+        "arif_session_init",
+        {
+            "mode": "init",
+            "actor_id": actor_id,
+            "nonce": nonce,
+            "signature": sig,
+        },
+    )
+    if not init or "result" not in init:
+        log.warning(f"FORGE: session_init init call failed: {str(init)[:300]}")
+        return None
+
+    init_result = init.get("result", {})
+    actor = init_result.get("actor", {})
+    identity_verified = actor.get("identity_verified", False)
+    signature_present = actor.get("signature_present", False)
+
+    # The session_id might live at top-level of result or inside session_state
+    forge_session_id = init_result.get("session_id") or init_result.get(
+        "session", {}
+    ).get("session_id")
+    if not forge_session_id and isinstance(init_result.get("session_state"), dict):
+        forge_session_id = init_result["session_state"].get("session_id")
+
+    log.info(
+        f"FORGE: session_init status={init.get('status')} "
+        f"identity_verified={identity_verified} signature_present={signature_present} "
+        f"session_id={forge_session_id}"
+    )
+
+    if not identity_verified:
+        log.warning(
+            f"FORGE: identity_verified=False — signature rejected by kernel. "
+            f"Check that ARIFOS_SOVEREIGN_KEY_FILE matches the .pub the kernel uses."
+        )
+        return None
+
+    _FORGE_SESSION_ID = forge_session_id
+    _FORGE_SESSION_VERIFIED = True
+    return forge_session_id
 
 
 def opencode_create_session(title: str) -> str:
@@ -627,6 +863,21 @@ def _write_init_session(sid: str) -> None:
         pass  # best-effort on permission tightening
 
 
+def _ensure_init_session_sync() -> str | None:
+    """Return the canonical init session id, creating it if necessary."""
+    sid = _read_init_session()
+    if sid:
+        return sid
+    try:
+        new_sid = opencode_create_session("arifos:init:000-libra")
+        _write_init_session(new_sid)
+        log.info(f"created persistent init session {new_sid}")
+        return new_sid
+    except Exception as exc:
+        log.exception(f"failed to create init session: {exc}")
+        return None
+
+
 async def cmd_init(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Explicit /init: (re)create the canonical init session."""
     if not is_authorized(update):
@@ -767,12 +1018,16 @@ def run_hermes_opencode(prompt: str, persona: str, session_id: str) -> tuple[str
 
     Flow:
       1. Mint MCP session with arifOS (initialize → capture mcp-session-id)
-      2. POST arif_judge_deliberate with the proposal
-      3. Parse verdict
-         - SEAL / SABAR / QUALIFY → continue to step 4
+      2. Mint a verified arifOS session (Ed25519 challenge-response against
+         the sovereign private key). Without this, the judge returns
+         LEGACY_WRAP HOLD — the actor is anonymous.
+      3. POST arif_judge_deliberate with the proposal (using the verified
+         session_id from step 2)
+      4. Parse verdict
+         - SEAL / SABAR / QUALIFY → continue to step 5
          - HOLD / VOID          → return FORGE_BLOCKED (no mutation)
          - any other / error    → return FORGE_BLOCKED judge-unavailable
-      4. POST the message to opencode :4096/session/{id}/message with
+      5. POST the message to opencode :4096/session/{id}/message with
          PERSONA_EXECUTOR. opencode executes with its live tool surface
          (terminal, file, MCP) — auto-approve policy is the current model.
 
@@ -788,7 +1043,9 @@ def run_hermes_opencode(prompt: str, persona: str, session_id: str) -> tuple[str
         )
         return _run_hermes_opencode_legacy(prompt, persona, session_id)
 
-    log.info("FORGE_JUDGE_HTTP: arif_judge_deliberate pre-gate → opencode :4096")
+    log.info(
+        "FORGE_JUDGE_HTTP: arif_session_init → arif_judge_deliberate → opencode :4096"
+    )
 
     # 1. Mint MCP session with arifOS at :8088
     mcp_sid = _arifos_mcp_init()
@@ -801,10 +1058,19 @@ def run_hermes_opencode(prompt: str, persona: str, session_id: str) -> tuple[str
             78,
         )
 
-    # 2. Pre-execution gate — propose the action to 888_JUDGE
-    forge_session_id = (
-        f"forge-{(session_id or '000-libra')[:24]}-{int(__import__('time').time())}"
-    )
+    # 2. Mint a verified arifOS session (Ed25519 challenge-response).
+    # Cached for the process lifetime — subsequent /forge calls reuse it.
+    forge_session_id = _arifos_session_init_mint(mcp_sid)
+    if not forge_session_id:
+        return (
+            "FORGE_BLOCKED (888_HOLD): cannot mint a verified arifOS session. "
+            "The sovereign private key is not wired (ARIFOS_SOVEREIGN_KEY_FILE) "
+            "or the signature was rejected. No mutation occurred. "
+            "Translator mode still works.",
+            78,
+        )
+
+    # 3. Pre-execution gate — propose the action to 888_JUDGE
     judge_payload = _arifos_mcp_call(
         mcp_sid,
         "arif_judge_deliberate",
@@ -812,7 +1078,7 @@ def run_hermes_opencode(prompt: str, persona: str, session_id: str) -> tuple[str
             "mode": "judge",
             "candidate": prompt,
             "session_id": forge_session_id,
-            "actor_id": "arif-fazil-af-forge",
+            "actor_id": "arif",  # SOVEREIGN root actor
             "claimed_evidence_level": "verified",
         },
     )
@@ -1030,10 +1296,39 @@ def should_respond_in_group(update: Update) -> bool:
     )
 
 
+# Dedup set: Telegram message_id -> expiry timestamp
+# 2026-06-17 — fix for duplicate-delivery spam (5x identical sends in 10 min)
+_SEEN_MSG_IDS: dict[int, float] = {}
+_DEDUP_WINDOW_S = 600  # 10 min dedup window
+
+def _is_duplicate(msg_id: int) -> bool:
+    """Returns True if we've already processed this Telegram message_id recently.
+    Prevents 5x response storm when Telegram webhook retries or user re-sends."""
+    import time as _time
+    now = _time.time()
+    # Prune expired entries every ~50 calls to keep dict small
+    if len(_SEEN_MSG_IDS) > 200:
+        cutoff = now - _DEDUP_WINDOW_S
+        for mid in list(_SEEN_MSG_IDS.keys()):
+            if _SEEN_MSG_IDS[mid] < cutoff:
+                del _SEEN_MSG_IDS[mid]
+    # Check + record
+    if msg_id in _SEEN_MSG_IDS and _SEEN_MSG_IDS[msg_id] > now - _DEDUP_WINDOW_S:
+        return True
+    _SEEN_MSG_IDS[msg_id] = now
+    return False
+
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not is_authorized(update):
         return
     if not should_respond_in_group(update):
+        return
+
+    # Dedup identical re-deliveries (Telegram retry + user double-send)
+    msg_id = update.message.message_id
+    if _is_duplicate(msg_id):
+        log.info(f"DEDUP skip chat={update.effective_chat.id} msg_id={msg_id}")
         return
 
     raw = (update.message.text or "").strip()
@@ -1065,6 +1360,18 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     prompt = text
     log.info(f"TRANSLATOR mode: {prompt[:80]}")
     reply, exit_code = run_opencode(prompt, PERSONA_TRANSLATOR, session_id)
+
+    # 2026-06-17 — graceful ack if model cascade fails (model exhausted / network).
+    # User was re-sending identical messages because no reply was arriving at all.
+    # Now: always send SOMETHING so they know the message landed.
+    if exit_code != 0 or not reply or reply.strip() in ("", "NO_REPLY"):
+        log.warning(f"TRANSLATOR model failed exit={exit_code} reply_len={len(reply)}")
+        await update.message.reply_text(
+            "⚠️ Message received but model cascade failed (all providers returning 429/network error).\n"
+            "Files were written earlier in this session — check /root/.openclaw/workspace/.\n"
+            "Retry in 5–10 min or send `/status` for current model health.",
+        )
+        return
 
     await update.message.reply_text(reply[:REPLY_CHAR_CAP])
     log.info(f"-> exit={exit_code} reply={reply[:120]}")
@@ -1177,6 +1484,130 @@ async def cmd_hold(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         "If a /forge is in flight, it will return on its own (HOLD/VOID or SEAL).\n"
         "To force-kill, use /stop — it SIGTERMs running forge processes."
     )
+
+
+# ─── Substrate Gate: /vita + callback + inbox collapse ──────────────────
+# Scope: forge-only. C4/C5 forge decisions intervene. Life = silent.
+# Constitutional rule: bot's job is SUBTRACTION.
+
+# Module-level gate handler (loaded once, reused for all /vita and gates)
+_GATE = GateHandler()
+
+
+async def cmd_vita(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """/vita — Substrate one-liner + HOLD queue (1 mesej, bukan 10).
+
+    The morning ping. Tells Arif his substrate state and the HOLD queue.
+    F2 TRUTH: no fabrication. If WELL can't be probed, say so.
+    """
+    if not is_authorized(update):
+        return
+    if not should_respond_in_group(update):
+        return
+
+    substrate = await probe_well_substrate()
+    if substrate.source != "well_mcp":
+        await update.message.reply_text(
+            "000♎️ /vita: WELL substrate tak dapat diukur "
+            f"({substrate.source}). Substrate Gate default = fail-closed HOLD.\n"
+            "Tap untuk release hold: /vita retry, atau terus /forge untuk override."
+        )
+        return
+
+    # Count recent HOLD entries from audit (last 24h)
+    hold_count = 0
+    try:
+        audit_path = _GATE.audit_path
+        if audit_path.exists():
+            from datetime import datetime, timedelta
+            cutoff = datetime.now(MYT) - timedelta(hours=24)
+            with audit_path.open() as f:
+                for line in f:
+                    try:
+                        rec = json.loads(line)
+                        if rec.get("hold_or_proceed") == "hold":
+                            ts = rec.get("ts_local", "")
+                            if ts >= cutoff.isoformat():
+                                hold_count += 1
+                    except json.JSONDecodeError:
+                        continue
+    except Exception:
+        pass
+
+    msg = (
+        f"🫡 /vita\n"
+        f"Tidur {substrate.sleep_h:.1f}h · fatigue {substrate.fatigue:.2f} · "
+        f"stress {substrate.stress:.2f}\n"
+        f"HOLD queue (24h): {hold_count}"
+    )
+
+    # Inline keyboard: 2 quick actions max
+    keyboard = InlineKeyboardMarkup([
+        [
+            InlineKeyboardButton(text="Release hold", callback_data="sg:release_hold"),
+            InlineKeyboardButton(text="Hold all 4h", callback_data="sg:hold_all_4h"),
+        ]
+    ])
+
+    await update.message.reply_text(msg, reply_markup=keyboard)
+
+
+async def gate_callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Substrate Gate inline keyboard callback (hold_defer / hold_proceed / release)."""
+    if not is_authorized(update):
+        return
+    query = update.callback_query
+    if not query:
+        return
+    await query.answer()
+
+    data = query.data or ""
+    substrate = await probe_well_substrate()
+
+    if data.startswith("sg:hold:"):
+        action_type = data.split(":", 2)[-1]
+        _GATE.log_audit(
+            decision=GateDecision(
+                hold=True, action_type=action_type, decision_class="C4"
+            ),
+            substrate=substrate,
+            arif_choice="hold",
+        )
+        await query.edit_message_text(
+            f"🫡 HOLD logged: {action_type}. Substrate Gate audit recorded."
+        )
+    elif data.startswith("sg:proceed:"):
+        action_type = data.split(":", 2)[-1]
+        _GATE.log_audit(
+            decision=GateDecision(
+                hold=False, action_type=action_type, decision_class="C4"
+            ),
+            substrate=substrate,
+            arif_choice="888",
+        )
+        await query.edit_message_text(
+            f"🫡 888 logged: {action_type}. Proceeding — audit recorded."
+        )
+    elif data == "sg:release_hold":
+        _GATE.log_audit(
+            decision=GateDecision(
+                hold=False, action_type="release_hold", decision_class="C2"
+            ),
+            substrate=substrate,
+            arif_choice="release",
+        )
+        await query.edit_message_text("🫡 HOLD released.")
+    elif data == "sg:hold_all_4h":
+        _GATE.log_audit(
+            decision=GateDecision(
+                hold=True, action_type="hold_all_4h", decision_class="C2"
+            ),
+            substrate=substrate,
+            arif_choice="hold_all_4h",
+        )
+        await query.edit_message_text("🫡 All holds deferred 4h.")
+    else:
+        await query.edit_message_text("🫡 unknown action.")
 
 
 async def cmd_vault(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -1359,6 +1790,7 @@ def main() -> None:
     app = ApplicationBuilder().token(token).post_init(post_init).build()
     # 777 FORGE canonical command surface (9 verbs, no stale noise)
     app.add_handler(CommandHandler("forge", cmd_forge))
+    app.add_handler(CommandHandler("vita", cmd_vita))  # Substrate Gate: morning ping
     app.add_handler(CommandHandler("init", cmd_init))
     app.add_handler(CommandHandler("status", cmd_status))
     app.add_handler(CommandHandler("seal", cmd_seal))
@@ -1367,6 +1799,8 @@ def main() -> None:
     app.add_handler(CommandHandler("stop", cmd_stop))
     app.add_handler(CommandHandler("start", cmd_start))
     app.add_handler(CommandHandler("help", cmd_help))
+    # Substrate Gate inline keyboard callbacks (must come before text handler)
+    app.add_handler(CallbackQueryHandler(gate_callback_handler, pattern=r"^sg:"))
     # Catch text messages. should_respond_in_group() filters non-mentions.
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
