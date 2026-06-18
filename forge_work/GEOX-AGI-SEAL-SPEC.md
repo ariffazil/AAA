@@ -1,17 +1,26 @@
-# GEOX AGI-First Spec — "999 SEAL ALIVE"
+# GEOX Constitutional Execution Spec — "999 SEAL ALIVE"
 
-**Trace ID:** geo-agi-001  
-**Created:** 2026-06-18 16:50 UTC  
-**Domain:** GEOX/Subsurface (first AGI-level domain)  
+**Trace ID:** geo-agi-001
+**Created:** 2026-06-18 16:50 UTC
+**Domain:** GEOX/Subsurface (first constitutionally-governed domain)
 **Doctrine:** DITEMPA BUKAN DIBERI — Intelligence is forged, not given.
+
+**Governance Framing (corrected 2026-06-18):**
+
+> arifOS does not turn a language model into an agent;
+> it constrains how a host-mediated agentic system may reason, bind authority, and act.
+
+The agent in this stack = arifOS kernel + GEOX MCP + WEALTH MCP + WELL MCP + OPENCLAW + Hermes + VAULT999 + crons + Arif (sovereign). The model (DeepSeek/Claude/etc.) is a reasoning component inside OPENCLAW, not the agent itself.
+
+On af-forge, arifOS is the host kernel — not a guest constitution. That distinction is why the stack is the agent, not the model.
 
 ---
 
-## 1. What "AGI-level GEOX" Means
+## 1. What "Constitutional GEOX" Means
 
 Not "it can answer geology questions." Not "it has 33 tools."
 
-**AGI-level GEOX = autonomous subsurface reasoning across the full discovery loop:**
+**Constitutional GEOX = autonomous subsurface reasoning across the full discovery loop, constrained by arifOS, executed on Arif-owned infrastructure:**
 
 ```
 Seismic Data → Structural Interpretation → Well Placement → Basin Model → Reserve Estimate
@@ -70,10 +79,10 @@ arifOS Kernel (:8088)
 
 Autonomous Cron (root crontab)
     │
-    ├── geox-daily-scan    (06:00 MYT) — seismic datasets, new horizons
-    ├── geox-claim-sweep   (08:00 MYT) — pending claims, send to Hermes
-    ├── geox-weekly-basin  (Mon 07:00 MYT) — basin model refresh
-    └── geox-monthly-reserves (1st Mon) — reserve estimate → WEALTH
+    ├── geox-daily-scan    (06:00 MYT) - seismic datasets, new horizons
+    ├── geox-claim-sweep   (08:00 MYT) - pending claims, send to Hermes
+    ├── geox-weekly-basin  (Mon 07:00 MYT) - basin model refresh
+    └── geox-monthly-reserves (1st Mon) - reserve estimate → WEALTH
 
 A2A Mesh
     OPENCLAW ←→ GEOX (port 18081)
@@ -135,11 +144,11 @@ Agent (via GEOX tool) → geox_claim_create(claim_id, content, domain, confidenc
 Purpose: Agent wakes up, checks for new seismic datasets or horizon updates, creates DRAFT claims.
 
 ```bash
-# Pseudocode — actual implementation via openclaw cron + arifOS MCP tools
+# Pseudocode - actual implementation via openclaw cron + arifOS MCP tools
 1. List seismic datasets in configured data directory
 2. Compare against last scan timestamp
 3. For each new/modified dataset:
-   a. Run geox_seismic_horizon_pick() — auto-pick top 3 horizons
+   a. Run geox_seismic_horizon_pick() - auto-pick top 3 horizons
    b. Run geox_seismic_velocity_analysis()
    c. If new structural interpretation differs from sealed:
       - geox_claim_create() → DRAFT
@@ -168,9 +177,9 @@ Purpose: Check for claims stuck in DRAFT > 24h, nudge toward VALIDATE or escalat
 Purpose: Full basin model refresh, reserve recalculation if inputs changed.
 
 ```bash
-1. geox_basin_model_build() — rebuild with latest thermal/pressure data
-2. geox_volume_calculate() — new in-place volume
-3. geox_roi_estimate() — economics update
+1. geox_basin_model_build() - rebuild with latest thermal/pressure data
+2. geox_volume_calculate() - new in-place volume
+3. geox_roi_estimate() - economics update
 4. If volume delta > ±10% from last sealed:
    - Create new claim via geox_claim_create()
    - Route to WEALTH for economic re-evaluation
@@ -184,7 +193,7 @@ Purpose: Reserve estimate → WEALTH pipeline. This is the big monthly output.
 
 ```bash
 1. Aggregate all sealed GEOX claims from past month
-2. geox_roi_estimate() — full economic model
+2. geox_roi_estimate() - full economic model
 3. arif_vault_seal() → SEALED_RESERVE_ESTIMATE
 4. A2A to WEALTH MCP: reserve_estimate_update()
 5. WEALTH generates: NPV10, IRR, capex schedule
@@ -225,7 +234,7 @@ Hermes.arifOS_MCP_verify_claim(claim_id)
 ## 7. Implementation Order
 
 ### Phase 1: Claim Lifecycle (P0)
-**Week 1 — Make claims traceable**
+**Week 1 - Make claims traceable**
 
 1. geox_claim_create / validate / attach_evidence / challenge tools (in arifOS MCP)
 2. arif_vault_seal integration
@@ -233,7 +242,7 @@ Hermes.arifOS_MCP_verify_claim(claim_id)
 4. Test: create one DRAFT claim, validate it, seal it
 
 ### Phase 2: Daily Cron (P0)
-**Week 2 — GEOX wakes up and works**
+**Week 2 - GEOX wakes up and works**
 
 1. geox-daily-scan cron job (06:00 MYT)
 2. File watcher or timestamp diff for new seismic data
@@ -241,21 +250,21 @@ Hermes.arifOS_MCP_verify_claim(claim_id)
 4. Telegram summary to Arif
 
 ### Phase 3: Cross-Organ (P1)
-**Week 3 — GEOX talks to WEALTH**
+**Week 3 - GEOX talks to WEALTH**
 
 1. A2A between GEOX and WEALTH
 2. Reserve estimate → WEALTH pipeline
 3. WEALTH economic re-evaluation loop
 
 ### Phase 4: ASI Governance (P1)
-**Week 4 — Hermes watches GEOX**
+**Week 4 - Hermes watches GEOX**
 
 1. Hermes subscribes to GEOX claim events
 2. Hermes F1/F2 check on HIGH confidence claims before SEAL
 3. Hermes surfaces summaries to Arif in group AAA
 
 ### Phase 5: Full Basin Loop (P2)
-**Week 5–6 — autonomous basin model**
+**Week 5-6 - autonomous basin model**
 
 1. geox-weekly-basin full pipeline
 2. geox_monthly_reserves pipeline
@@ -286,7 +295,7 @@ SEAL {
 Every SEAL has:
 - Traceable tool chain (what tools generated this)
 - Evidence references (what data it came from)
-- Confidence band (not a single number — range)
+- Confidence band (not a single number - range)
 - Witness line (who/what approved it)
 
 ---
@@ -316,4 +325,4 @@ Every SEAL has:
 
 ---
 
-*DITEMPA BUKAN DIBERI — GEOX earns its seals.*
+*DITEMPA BUKAN DIBERI - GEOX earns its seals.*
