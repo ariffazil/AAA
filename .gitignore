@@ -135,3 +135,10 @@ dist/
 .env
 .env.local
 .env.*.local
+
+# Cache & venv
+.mypy_cache/
+*.pyc
+scratch/
+.venv/
+
