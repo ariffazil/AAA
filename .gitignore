@@ -130,3 +130,8 @@ wiki/scars/*.json
 # ── Build outputs (TypeScript / Node) — should never be committed ──
 build/
 dist/
+
+# Secrets — never commit
+.env
+.env.local
+.env.*.local
