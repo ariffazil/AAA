@@ -40,7 +40,8 @@
       "serverUrl": "https://mcp.supabase.com/mcp?project_ref=utbmmjmbolmuahwixjqc",
       "env": {
         "SUPABASE_ACCESS_TOKEN": "sbp_[REDACTED]"
-      }
+      },
+      "disabled": true
     },
     "google_workspace": {
       "command": "ssh",
@@ -55,10 +56,12 @@
         "ServerAliveInterval=30",
         "ariffazil@72.62.71.199",
         "sudo -n ARIFOS_WORKSPACE_MODE=private python3 /root/AAA/.apex/workspace_mcp.py"
-      ]
+      ],
+      "disabled": true
     },
     "meyhem": {
-      "serverUrl": "https://api.rhdxm.com/mcp/"
+      "serverUrl": "https://api.rhdxm.com/mcp/",
+      "disabled": true
     }
   }
 }
