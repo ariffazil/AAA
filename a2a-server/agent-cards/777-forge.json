@@ -27,6 +27,24 @@
   "security": [{"bearer_auth": []}],
   "defaultInputModes": ["application/json"],
   "defaultOutputModes": ["application/json"],
+  "peers": [
+    {
+      "id": "hermes-asi",
+      "name": "Hermes ASI",
+      "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
+      "role": "intent_relay",
+      "skills": ["routing", "autonomous-governed-execution"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "aaa-auditor",
+      "name": "AAA A-auditor",
+      "url": "https://aaa.arif-fazil.com/a2a/auditor",
+      "role": "constitutional_auditor",
+      "skills": ["verify-agent-card", "emit-receipt", "issue-hold"],
+      "trust_tier": "governed"
+    }
+  ],
   "skills": [
     {
       "id": "777-spawn-witness",

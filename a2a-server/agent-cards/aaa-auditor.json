@@ -119,6 +119,40 @@
       "output_modes": ["application/json"]
     }
   ],
+  "peers": [
+    {
+      "id": "aaa-architect",
+      "name": "AAA A-rchitect",
+      "url": "https://aaa.arif-fazil.com/a2a/architect",
+      "role": "design_review",
+      "skills": ["design-task-schema", "evaluate-treaty"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "aaa-engineer",
+      "name": "AAA A-engineer",
+      "url": "https://aaa.arif-fazil.com/a2a/engineer",
+      "role": "execution_oversight",
+      "skills": ["run-task", "dispatch-task"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "hermes-asi",
+      "name": "Hermes ASI",
+      "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
+      "role": "intent_audit_subject",
+      "skills": ["autonomous-governed-execution", "repo-eureka"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "777-FORGE",
+      "name": "777 FORGE",
+      "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
+      "role": "spawn_witness_audit",
+      "skills": ["777-process-verifier"],
+      "trust_tier": "governed"
+    }
+  ],
   "extends_card": "aaa-gateway",
   "forbidden": {
     "cannot_execute": true,
