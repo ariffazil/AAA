@@ -5,14 +5,14 @@
   "role": "engineer-executor",
   "transport": "MCP_SSE_HTTP",
   "native_mcp": true,
-  "version": "1.17.7",
+  "version": "1.17.8",
   "model": "tokenplan-mimo/mimo-v2.5-pro",
   "runtime": "/usr/local/bin/opencode",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "repo_config_view": "agents/opencode/config/config.yaml",
   "constitutional_proxy": "333-AGI",
-  "citizenship": "governed-forge-worker",
+  "citizenship": "warga-aaa",
   "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
   "mcp_servers": [
     "arifOS",
@@ -53,5 +53,6 @@
   },
   "memory_contributor": true,
   "session_identity": "opencode@arif-fazil.com",
+  "warga_card": "agents/opencode/WARGAAA_CARD.md",
   "authority_boundary": "Forge instrument, not final judge. Enters AAA state through 333-AGI/A-FORGE/arifOS lease. Cannot SEAL irreversible actions. Cannot self-authorize."
 }

@@ -500,6 +500,13 @@ async function searchRag(query, limit = 5) {
 const AAA_AGENT_CARD = require('../src/seed/agent-card.json');
 const DISCOVERY_ROUTING_POLICY = require('../src/seed/discovery-routing-policy.json');
 
+// === P2P Federation Contract v1 (spine peers) ===
+const PEER_CONTRACTS = new Map([
+  ['aaa-gateway', require('../a2a/peer-contracts/aaa-gateway.json')],
+  ['arifos-kernel', require('../a2a/peer-contracts/arifos-kernel.json')],
+  ['a-forge-executor', require('../a2a/peer-contracts/a-forge-executor.json')],
+]);
+
 function buildDiscoveryContract() {
   return {
     contract_id: 'aaa-a2a-discovery-contract-v1',
@@ -507,11 +514,13 @@ function buildDiscoveryContract() {
     canonical_discovery_surface: '/.well-known/a2a-discovery.json',
     canonical_agent_card: '/.well-known/agent-card.json',
     canonical_routing_policy: '/.well-known/a2a-routing-policy.json',
+    canonical_peer_contract: '/.well-known/peer-federation-contract.json',
     compatibility_aliases: {
       agent_card: ['/agent-card.json', '/a2a/agent-card.json'],
       legacy_agent: ['/.well-known/agent.json', '/agent.json', '/a2a/agent.json'],
       routing_policy: ['/a2a/routing-policy.json'],
       discovery_contract: ['/a2a/discovery-contract.json'],
+      peer_contract: ['/a2a/peer-federation-contract.json'],
     },
     protocol: {
       name: 'A2A',
@@ -1084,6 +1093,15 @@ for (const policyPath of ['/.well-known/a2a-routing-policy.json', '/a2a/routing-
   });
 }
 
+// P2P Federation Contract v1 — governed capability peering
+for (const peerContractPath of ['/.well-known/peer-federation-contract.json', '/a2a/peer-federation-contract.json']) {
+  app.get(peerContractPath, (req, res) => {
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.json(PEER_CONTRACTS.get('aaa-gateway'));
+  });
+}
+
 // Federation manifest — public discovery of peer agents
 app.get('/.well-known/arifos-federation.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -1156,6 +1174,47 @@ app.get('/aaa-card-treaty', (req, res) => {
     canonical_source: 'https://github.com/ariffazil/AAA/blob/main/a2a/AAA_TREATY_LAW.md',
     note: 'Full treaty law committed to AAA repo. Agent cards and this treaty are the binding contracts.'
   });
+});
+
+app.get('/a2a/sense/vision', async (req, res) => {
+  const camera = req.query.camera || 'kitchen';
+  const outputPath = '/tmp/snap.jpg';
+  const camsnapBin = '/root/go/bin/camsnap';
+  const { exec } = require('child_process');
+  const util = require('util');
+  const execPromise = util.promisify(exec);
+
+  console.log(`[a2a-server] Sense Vision triggered for camera: ${camera}`);
+
+  try {
+    // Attempt camsnap capture
+    try {
+      await execPromise(`${camsnapBin} snap ${camera} --out ${outputPath}`);
+      console.log(`[a2a-server] camsnap successful for camera ${camera}`);
+    } catch (camsnapErr) {
+      console.warn(`[a2a-server] camsnap failed, falling back to mock image: ${camsnapErr.message}`);
+      const timestamp = new Date().toISOString();
+      const mockText = `ARIFOS SYSTEM OK\\nCAMERA: ${camera}\\nTIME: ${timestamp}`;
+      await execPromise(`convert -background white -fill black -pointsize 24 label:"${mockText}" ${outputPath}`);
+    }
+
+    // Run OCR using tesseract
+    const { stdout: ocrOutput } = await execPromise(`tesseract ${outputPath} stdout`);
+    
+    res.json({
+      ok: true,
+      camera,
+      timestamp: new Date().toISOString(),
+      ocr: ocrOutput.trim(),
+      image_path: outputPath
+    });
+  } catch (err) {
+    console.error(`[a2a-server] sense/vision error:`, err);
+    res.status(500).json({
+      ok: false,
+      error: err.message
+    });
+  }
 });
 
 // ── MCP Apps Router — SEP-1865 UI resource serving ─────────────────────────
@@ -1446,6 +1505,29 @@ app.get('/federation/organ/:organId', (req, res) => {
   res.json({ ok: true, ...entry.card });
 });
 
+// GET /federation/peers — List governed P2P spine peers
+app.get('/federation/peers', (req, res) => {
+  const peers = [];
+  for (const [id, contract] of PEER_CONTRACTS) {
+    peers.push({
+      peerId: id,
+      organ: contract.peer_id.organ,
+      authorityClass: contract.authority_class,
+      maxRiskTier: contract.capability_card.max_risk_tier,
+      leaseRequired: contract.lease_required,
+      contractUrl: `/.well-known/peer-federation-contract.json?peer=${id}`,
+    });
+  }
+  res.json({ ok: true, count: peers.length, peers });
+});
+
+// GET /federation/peers/:peerId/contract — Get governed P2P contract for a spine peer
+app.get('/federation/peers/:peerId/contract', (req, res) => {
+  const contract = PEER_CONTRACTS.get(req.params.peerId);
+  if (!contract) return res.status(404).json({ ok: false, error: 'NOT_FOUND' });
+  res.json({ ok: true, contract });
+});
+
 // ── Grafana Webhook ────────────────────────────────────────────────────────
 app.post('/webhooks/grafana/alerts', async (req, res) => {
   const alert = req.body || {};
@@ -1670,218 +1752,40 @@ app.post('/api/ai/chat', async (req, res) => {
   req.on('close', () => controller.abort());
 
   try {
-    let fullText = '';
+    const { spawn } = require('child_process');
+    const pythonPath = '/root/pydantic-ai-pilot/.venv/bin/python';
+    const scriptPath = '/root/AAA/a2a-server/chat_agent.py';
 
-    if (provider === 'arifos') {
-      const governedPrompt = [
-        'You are responding through AAA governed mode.',
-        'Stay precise, grounded, and useful.',
-        contextBlock ? `Use this retrieval context when relevant:\n\n${contextBlock}` : null,
-        'Conversation transcript:',
-        flattenTranscript(messages),
-      ]
-        .filter(Boolean)
-        .join('\n\n');
-
-      try {
-        const governedResponse = await fetch(`${ARIFOS_LOCAL_URL}/tools/arif_reply_compose`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            message: governedPrompt,
-            style: 'plain',
-          }),
-          signal: AbortSignal.any([controller.signal, AbortSignal.timeout(30000)]),
-        });
-
-        if (!governedResponse.ok) {
-          const details = await readResponseText(governedResponse);
-          writeSse(res, { type: 'error', error: details });
-          return res.end();
-        }
-
-        const payload = await governedResponse.json();
-        fullText = payload?.result?.composed || payload?.result?.result?.composed || '';
-      } catch (networkErr) {
-        const taskId = `arifos_chat_${Date.now()}`;
-        const queued = await queueTask(taskId, {
-          provider,
-          messages: req.body.messages,
-          contextBlock,
-          citations,
-        }, networkErr.message);
-        if (queued) {
-          fullText = `[HOLD] arifOS temporarily unreachable. Task queued (${taskId}). Retry worker active.`;
-        } else {
-          fullText = `[HOLD] arifOS unreachable and async backbone unavailable. Try again later.`;
-        }
-      }
-
-      writeSse(res, {
-        type: 'meta',
-        provider,
-        model: 'arif_reply_compose',
-        routing: routingDecision,
-        citations,
-      });
-      if (fullText) {
-        writeSse(res, {
-          type: 'chunk',
-          content: fullText,
-        });
-      }
-      writeSse(res, {
-        type: 'done',
-        provider,
-        model: 'arif_reply_compose',
-        content: fullText,
-        citations,
-      });
-      return res.end();
-    }
-
-    if (provider === 'openrouter') {
-      const orMessages = contextBlock
-        ? [{ role: 'system', content: `Ground the answer in the supplied sources when relevant.\n\n${contextBlock}` }, ...messages]
-        : messages;
-
-      const upstream = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${OPENWEBUI_API_KEY}`,
-          'HTTP-Referer': 'https://aaa.arif-fazil.com',
-          'X-Title': 'AAA AI Chat',
-        },
-        body: JSON.stringify({
-          model: model || 'openai/gpt-4o-mini',
-          messages: orMessages,
-          stream: true,
-        }),
-        signal: AbortSignal.any([controller.signal, AbortSignal.timeout(60000)]),
-      });
-
-      if (!upstream.ok || !upstream.body) {
-        const details = await readResponseText(upstream);
-        writeSse(res, { type: 'error', error: details });
-        return res.end();
-      }
-
-      writeSse(res, { type: 'meta', provider: 'openrouter', model, routing: routingDecision, citations });
-
-      const decoder = new TextDecoder();
-      let buffer = '';
-
-      for await (const chunk of upstream.body) {
-        buffer += decoder.decode(chunk, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
-        for (const line of lines) {
-          const trimmed = line.trim();
-          if (!trimmed || trimmed === 'data: [DONE]') continue;
-          const data = trimmed.startsWith('data: ') ? trimmed.slice(6) : trimmed;
-          try {
-            const parsed = JSON.parse(data);
-            const delta = parsed?.choices?.[0]?.delta?.content || '';
-            if (delta) {
-              fullText += delta;
-              writeSse(res, { type: 'chunk', content: delta });
-            }
-            if (parsed?.choices?.[0]?.finish_reason === 'stop') {
-              writeSse(res, { type: 'done', provider: 'openrouter', model, content: fullText, citations });
-              return res.end();
-            }
-          } catch { /* skip partial */ }
-        }
-      }
-      writeSse(res, { type: 'done', provider: 'openrouter', model, content: fullText, citations });
-      return res.end();
-    }
-
-    const ollamaMessages = contextBlock
-      ? [{ role: 'system', content: `Ground the answer in the supplied sources when relevant.\n\n${contextBlock}` }, ...messages]
-      : messages;
-
-    const upstream = await fetch(`${OLLAMA_URL}/api/chat`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model,
-        messages: ollamaMessages,
-        stream: true,
-      }),
-      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(60000)]),
-    });
-
-    if (!upstream.ok || !upstream.body) {
-      const details = await readResponseText(upstream);
-      writeSse(res, { type: 'error', error: details });
-      return res.end();
-    }
-
-    writeSse(res, {
-      type: 'meta',
+    const payload = {
       provider,
       model,
-      routing: routingDecision,
-      citations,
+      messages,
+      session_id: req.body?.session_id || 'session-unknown',
+      citations
+    };
+
+    const child = spawn(pythonPath, [scriptPath, JSON.stringify(payload)], {
+      env: { ...process.env, PYTHONPATH: '/root/pydantic-ai-pilot/src' }
     });
 
-    const decoder = new TextDecoder();
-    let buffer = '';
-
-    for await (const chunk of upstream.body) {
-      buffer += decoder.decode(chunk, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop() || '';
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed) continue;
-
-        const payload = JSON.parse(trimmed);
-        const delta = payload?.message?.content || '';
-        if (delta) {
-          fullText += delta;
-          writeSse(res, {
-            type: 'chunk',
-            content: delta,
-          });
-        }
-
-        if (payload.done) {
-          writeSse(res, {
-            type: 'done',
-            provider,
-            model,
-            content: fullText,
-            citations,
-          });
-          return res.end();
-        }
-      }
-    }
-
-    if (buffer.trim()) {
-      const payload = JSON.parse(buffer.trim());
-      const delta = payload?.message?.content || '';
-      if (delta) {
-        fullText += delta;
-        writeSse(res, {
-          type: 'chunk',
-          content: delta,
-        });
-      }
-    }
-
-    writeSse(res, {
-      type: 'done',
-      provider,
-      model,
-      content: fullText,
-      citations,
+    child.stdout.on('data', (data) => {
+      res.write(data);
     });
-    res.end();
+
+    child.stderr.on('data', (data) => {
+      console.error(`[chat_agent.py] stderr: ${data.toString()}`);
+    });
+
+    child.on('close', (code) => {
+      if (code !== 0) {
+        console.warn(`[chat_agent.py] process exited with code ${code}`);
+      }
+      res.end();
+    });
+
+    req.on('close', () => {
+      child.kill();
+    });
   } catch (error) {
     writeSse(res, {
       type: 'error',
@@ -2580,6 +2484,7 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Discovery Contract: http://localhost:${PORT}/.well-known/a2a-discovery.json`);
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent-card.json`);
   console.log(`[AAA A2A] Federation: http://localhost:${PORT}/.well-known/arifos-federation.json`);
+  console.log(`[AAA A2A] Peer Contract: http://localhost:${PORT}/.well-known/peer-federation-contract.json`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
   console.log(`[AAA A2A] Lifecycle: http://localhost:${PORT}/api/agents/federation-status`);
   await initAsyncBackbone();

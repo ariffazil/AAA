@@ -6,6 +6,6 @@
   "session_id": "status-recall",
   "reason": "CLAIMED identity (arifbfazil) cannot execute ATOMIC. Requires verified or delegated authority.",
   "severity": "critical",
-  "count": 7,
-  "last_seen": "2026-06-14T21:10:23.903861+00:00"
+  "count": 8,
+  "last_seen": "2026-06-18T13:45:39.695523+00:00"
 }

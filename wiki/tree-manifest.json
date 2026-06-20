@@ -2,7 +2,7 @@
   "schema": "TREE777-v1",
   "generated": "2026-05-17",
   "generated_by": "auto-regenerate",
-  "total_pages": 72,
+  "total_pages": 73,
   "pages": [
     {
       "id": "concept-telegram-dual-bot-architecture",
@@ -197,6 +197,20 @@
       "approval_required": null,
       "floors_cited": [],
       "source": "auto",
+      "evidence_required": true,
+      "promotion_history": []
+    },
+    {
+      "id": "concept-browser-io-surfaces-arifos",
+      "file": "concepts/concept-browser-io-surfaces-arifos.md",
+      "type": "concept",
+      "category": "architecture",
+      "version": "1.0.0",
+      "status": "canonical",
+      "update_class": "AUTO",
+      "approval_required": null,
+      "floors_cited": ["F1", "F2", "F9", "F11", "F13"],
+      "source": "manual-audit",
       "evidence_required": true,
       "promotion_history": []
     },

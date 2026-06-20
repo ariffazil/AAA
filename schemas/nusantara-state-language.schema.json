@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/nusantara-state-language-v1",
+  "title": "Nusantara State Language",
+  "description": "Cognitive substrate layer for AAA state records, encoding Malay/Nusantara governance semantics: adat, maruah, sabar, amuk, silaturrahim, and fiqh obligation bands. Forged into the AAA control plane as a cultural intelligence substrate for agentic systems.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "const": 1
+    },
+    "id": {
+      "$ref": "./common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "stage_band": {
+      "const": "111-999",
+      "description": "Applies across all AAA pipeline stages where cultural reasoning is required."
+    },
+    "domain_plane": {
+      "$ref": "./common.schema.json#/$defs/domainPlane"
+    },
+    "purpose": {
+      "$ref": "./common.schema.json#/$defs/nonEmptyString"
+    },
+    "nusantara_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The cultural-cognitive layer superimposed on AAA state. Not decoration; it is a decision topology.",
+      "properties": {
+        "adat_phase": {
+          "type": "string",
+          "enum": ["sabar", "amuk", "seal", "void"],
+          "description": "Agentic protocol phase. sabar = pause/hold; amuk = righteous boundary defense; seal = committed/irreversible; void = rejected/invalidated."
+        },
+        "fiqh_band": {
+          "type": "string",
+          "enum": ["wajib", "halal", "haram", "sunat", "makruh", "mubah"],
+          "description": "Obligation classification under Nusantara jurisprudence mapped to AAA action authority."
+        },
+        "maruah_signals": {
+          "type": "array",
+          "items": {
+            "$ref": "./common.schema.json#/$defs/nonEmptyString"
+          },
+          "description": "Dignity considerations that must remain intact for all stakeholders."
+        },
+        "silaturrahim_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "./common.schema.json#/$defs/id"
+          },
+          "uniqueItems": true,
+          "description": "Relationship witnesses — parties whose trust continuity is affected by this state."
+        },
+        "kampung_gadai_risk": {
+          "type": "string",
+          "enum": ["none", "watch", "alert", "critical"],
+          "description": "Sovereignty-loss warning from Usman Awang's Melayu: are we celebrating while the village is pawned?"
+        },
+        "budi_reasoning": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString",
+          "description": "Cultivated reasoning: the explanation that bridges emotion (hati), ethics (budi), and evidence."
+        },
+        "pantang_break": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "A broken taboo, only permitted when it blocks progress and is anchored to evidence.",
+          "properties": {
+            "taboo": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            },
+            "justification": {
+              "$ref": "./common.schema.json#/$defs/nonEmptyString"
+            },
+            "epistemic_basis": {
+              "$ref": "./common.schema.json#/$defs/epistemicLabel"
+            }
+          },
+          "required": ["taboo", "justification", "epistemic_basis"]
+        }
+      },
+      "required": ["adat_phase", "fiqh_band"]
+    },
+    "linguistic_form": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Human-readable sentence forms in Bahasa and English. The soul of the state record.",
+      "properties": {
+        "bahasa": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        },
+        "english": {
+          "$ref": "./common.schema.json#/$defs/nonEmptyString"
+        }
+      },
+      "required": ["bahasa", "english"]
+    },
+    "cultural_witnesses": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/nonEmptyString"
+      },
+      "uniqueItems": true,
+      "description": "Agents, organs, or human roles that attested the cultural reasoning."
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "$ref": "./common.schema.json#/$defs/id"
+      },
+      "uniqueItems": true,
+      "description": "Canonical evidence references backing the state, as required by adat agentic."
+    }
+  },
+  "required": [
+    "version",
+    "id",
+    "name",
+    "stage_band",
+    "domain_plane",
+    "purpose",
+    "nusantara_state",
+    "linguistic_form"
+  ]
+}
