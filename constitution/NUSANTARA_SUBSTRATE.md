@@ -3,6 +3,7 @@
 **Document type:** Constitutional substrate proposal / ratification  
 **Ratification authority:** F13 SOVEREIGN — Muhammad Arif bin Fazil  
 **Ratified:** 2026-06-17  
+**Kamus / Dewan / Pustaka forged:** 2026-06-21  
 **Effective:** Immediate within AAA control plane  
 **Review cycle:** 90 days or upon F13 directive
 
@@ -21,6 +22,9 @@ Artifacts ratified:
 | Skill | `skills/nusantara-intelligence-substrate/SKILL.md` | Agent operating instructions |
 | Source reference | `skills/nusantara-intelligence-substrate/references/usman-awang-melayu.md` | Canonical poem excerpt |
 | Constitutional scar | `constitution/SCAR-MELAYU-001.md` | Failure-mode constraints from *Melayu* mapped to Floors + verdicts |
+| Kamus | `KAMUS_DEWAN.md` | Constitutional lexicon and agent oath |
+| Dewan | `DEWAN_REGISTRY.yaml` | Machine-enforceable registry of floors, stages, agents, fiqh, darjat, malu |
+| Pustaka | `PUSTAKA_GENESIS.md` | Sealed literature of genesis, scars, and canon |
 
 ---
 
@@ -86,4 +90,4 @@ This substrate is forged from:
 | Witness | 888-APEX (ΦΙ JUDGE) | Constitutional alignment review — pending |
 | Ledger | A-ARCHIVE | Seal to VAULT999 upon full witness attestation |
 
-**Status:** FORGED, pending ASI + APEX witness attestation for full 999_SEAL.
+**Status:** RATIFIED by F13 SOVEREIGN on 2026-06-21. Canonical 999_SEAL to VAULT999 pending ASI + APEX witness attestation and Merkle anchor.
