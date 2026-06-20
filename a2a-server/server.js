@@ -115,9 +115,9 @@ async function checkOrganHealth(name, port) {
   if (!result.ok) return { name, port, healthy: false, detail: 'connection failed' };
   if (result.status !== 200) return { name, port, healthy: false, detail: `HTTP ${result.status}` };
   const body = result.body || {};
-  // Accept standard status fields AND WELL-specific verdict
+  // Accept standard status fields AND organ-specific healthy verdicts
   const status = body.status || body.verdict || 'unknown';
-  const healthy = ['healthy', 'ok', 'live', 'WELL_HOLD'].includes(status);
+  const healthy = ['healthy', 'ok', 'live', 'alive', 'serving', 'ready', 'pass', 'WELL_HOLD'].includes(status);
   return { name, port, healthy, detail: status };
 }
 
@@ -1544,7 +1544,7 @@ app.get('/api/attestation/organs', async (req, res) => {
         // Try the FastMCP tools endpoint for arif_organ_attest_all
         const attestResult = await new Promise((resolve) => {
           const req2 = HTTP.request(
-            { hostname: 'localhost', port: 8088, path: '/tools', method: 'POST', timeout: 8000, headers: { 'Content-Type': 'application/json' } },
+            { hostname: 'localhost', port: 8088, path: '/mcp', method: 'POST', timeout: 8000, headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'MCP-Protocol-Version': '2025-11-25' } },
             (res2) => {
               let data2 = '';
               res2.on('data', (chunk) => data2 += chunk);
@@ -1560,7 +1560,7 @@ app.get('/api/attestation/organs', async (req, res) => {
             jsonrpc: '2.0',
             id: 1,
             method: 'tools/call',
-            params: { name: 'arif_organ_attest_all', arguments: {} }
+            params: { name: 'arif_kernel_attest', arguments: { organ: 'all' } }
           }));
           req2.end();
         });
