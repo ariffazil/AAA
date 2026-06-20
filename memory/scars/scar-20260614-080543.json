@@ -6,6 +6,6 @@
   "session_id": "sess_5e75d7aab8f74431",
   "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
   "severity": "critical",
-  "count": 12,
-  "last_seen": "2026-06-16T05:30:52.241954+00:00"
+  "count": 2728,
+  "last_seen": "2026-06-20T08:08:41.710622+00:00"
 }

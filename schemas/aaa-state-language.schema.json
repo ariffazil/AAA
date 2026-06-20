@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/aaa-state-language-v1",
+  "title": "AAA State Language",
+  "description": "Canonical state record for every significant arifOS federation decision. Zen-derived: explicit beats implicit, errors become state, one governed path, namespaces preserve accountability.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["aaa_state"],
+  "properties": {
+    "aaa_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "timestamp",
+        "actor",
+        "intent",
+        "epistemics",
+        "evidence",
+        "floors",
+        "governance",
+        "execution",
+        "audit",
+        "explanation"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^aaa_state_[a-zA-Z0-9_-]+$",
+          "description": "Unique state record identifier."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO-8601 timestamp when this state was emitted."
+        },
+        "actor": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["actor_id", "actor_type", "authority_mode"],
+          "properties": {
+            "actor_id": {
+              "type": "string",
+              "description": "Human, agent, service, or organ identifier."
+            },
+            "actor_type": {
+              "type": "string",
+              "enum": ["human", "ai", "service", "organ"]
+            },
+            "authority_mode": {
+              "type": "string",
+              "enum": ["observe", "propose", "execute", "seal", "veto"]
+            }
+          }
+        },
+        "intent": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "user_request",
+            "normalized_intent",
+            "action_class",
+            "risk_class",
+            "reversible",
+            "blast_radius"
+          ],
+          "properties": {
+            "user_request": {
+              "type": "string",
+              "description": "Plain-language request as received."
+            },
+            "normalized_intent": {
+              "type": "string",
+              "description": "Kernel-parsed intent."
+            },
+            "action_class": {
+              "type": "string",
+              "enum": ["OBSERVE", "PROPOSE", "MUTATE", "DEPLOY", "ALLOCATE", "COMMUNICATE", "SEAL"]
+            },
+            "risk_class": {
+              "type": "string",
+              "enum": ["C0", "C1", "C2", "C3", "C4", "C5"]
+            },
+            "reversible": {
+              "type": "boolean"
+            },
+            "blast_radius": {
+              "type": "string",
+              "enum": ["low", "medium", "high", "critical"]
+            }
+          }
+        },
+        "epistemics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tag",
+            "confidence",
+            "uncertainty_band",
+            "ambiguity_detected",
+            "ambiguity_resolution"
+          ],
+          "properties": {
+            "tag": {
+              "type": "string",
+              "enum": ["CLAIM", "PLAUSIBLE", "HYPOTHESIS", "UNKNOWN"]
+            },
+            "confidence": {
+              "type": "number",
+              "minimum": 0.0,
+              "maximum": 1.0
+            },
+            "uncertainty_band": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {
+                "type": "number",
+                "minimum": 0.0,
+                "maximum": 1.0
+              }
+            },
+            "ambiguity_detected": {
+              "type": "boolean"
+            },
+            "ambiguity_resolution": {
+              "type": "string",
+              "enum": ["none", "clarified", "held", "downgraded"]
+            }
+          }
+        },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "witnesses",
+            "citations",
+            "retrieval_time",
+            "freshness_status",
+            "missing_context"
+          ],
+          "properties": {
+            "witnesses": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["human", "ai", "earth", "system", "capital"],
+              "properties": {
+                "human": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "ai": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "earth": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "system": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "capital": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                }
+              }
+            },
+            "citations": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "retrieval_time": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "freshness_status": {
+              "type": "string",
+              "enum": ["fresh", "stale", "unknown"]
+            },
+            "missing_context": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        },
+        "floors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["touched", "failed", "warnings", "floor_verdicts"],
+          "properties": {
+            "touched": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^F[0-9]+(_[A-Z]+)?$"
+              }
+            },
+            "failed": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^F[0-9]+(_[A-Z]+)?$"
+              }
+            },
+            "warnings": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^F[0-9]+(_[A-Z]+)?$"
+              }
+            },
+            "floor_verdicts": {
+              "type": "object",
+              "additionalProperties": false,
+              "patternProperties": {
+                "^F[0-9]+(_[A-Z]+)?$": {
+                  "type": "string",
+                  "enum": ["pass", "hold", "fail", "not_applicable"]
+                }
+              }
+            }
+          }
+        },
+        "governance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "verdict",
+            "reason",
+            "human_ack_required",
+            "human_ack_reference",
+            "lease_id",
+            "rollback_plan_required"
+          ],
+          "properties": {
+            "verdict": {
+              "type": "string",
+              "enum": ["SEAL", "HOLD", "SABAR", "VOID", "PARTIAL"]
+            },
+            "reason": {
+              "type": "string",
+              "description": "Human-readable governance explanation."
+            },
+            "human_ack_required": {
+              "type": "boolean"
+            },
+            "human_ack_reference": {
+              "type": ["string", "null"]
+            },
+            "lease_id": {
+              "type": ["string", "null"]
+            },
+            "rollback_plan_required": {
+              "type": "boolean"
+            }
+          }
+        },
+        "execution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "allowed",
+            "executor",
+            "tool_called",
+            "tool_namespace",
+            "side_effects",
+            "dry_run_required",
+            "dry_run_result"
+          ],
+          "properties": {
+            "allowed": {
+              "type": "boolean"
+            },
+            "executor": {
+              "type": "string",
+              "description": "none, A-FORGE, or organ_id"
+            },
+            "tool_called": {
+              "type": ["string", "null"]
+            },
+            "tool_namespace": {
+              "type": ["string", "null"]
+            },
+            "side_effects": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "dry_run_required": {
+              "type": "boolean"
+            },
+            "dry_run_result": {
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "audit": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "vault_required",
+            "vault_entry_id",
+            "trace_id",
+            "prior_state_hash",
+            "current_state_hash",
+            "scar_reference"
+          ],
+          "properties": {
+            "vault_required": {
+              "type": "boolean"
+            },
+            "vault_entry_id": {
+              "type": ["string", "null"]
+            },
+            "trace_id": {
+              "type": "string"
+            },
+            "prior_state_hash": {
+              "type": "string"
+            },
+            "current_state_hash": {
+              "type": "string"
+            },
+            "scar_reference": {
+              "type": ["string", "null"]
+            }
+          }
+        },
+        "explanation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["one_sentence", "explainable_to_operator"],
+          "properties": {
+            "one_sentence": {
+              "type": "string",
+              "description": "Canonical sentence form: actor, intent, evidence, floors, verdict, next action."
+            },
+            "explainable_to_operator": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    }
+  }
+}

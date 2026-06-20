@@ -6,6 +6,6 @@
   "session_id": "test-session",
   "reason": "888_HOLD: max_turns (1) reached for session test-session...",
   "severity": "critical",
-  "count": 11,
-  "last_seen": "2026-06-16T17:48:56.475773+00:00"
+  "count": 17,
+  "last_seen": "2026-06-17T07:24:27.761063+00:00"
 }

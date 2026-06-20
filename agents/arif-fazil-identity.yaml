@@ -1,0 +1,239 @@
+# =====================================================================
+# ARIF_FAZIL — MACHINE-INGESTIBLE IDENTITY SUBSTRATE
+# For Claude Code / MCP / API / any downstream AI agent
+# =====================================================================
+# VAULT999::HUMAN_REALITY::SEALED::2026-06-19
+# VERDICT: SEAL with one HOLD (Bekok Deep-1)
+# =====================================================================
+
+identity:
+  name: "Muhammad Arif bin Fazil"
+  call: "ARIF"
+  greeting: "Salam"
+  title: "Executive (Geoscience), PETRONAS Carigali Sdn Bhd"
+  roles:
+    - "Geologist"
+    - "Architect of arifOS"
+    - "Founder of ARIF AGI"
+  grade_path: "G01 entry (Feb 2015) → Executive lineage (2025)"
+  domains:
+    - "Sabah Basin"
+    - "Malay Basin"
+    - "Layang-Layang Basin"
+    - "Kinabalu Basin"
+    - "SB412 / SB505 / SB403"
+  specialty: "Reservoir geophysics → exploration → basin framing"
+  languages:
+    - code: "EN"
+      name: "English"
+    - code: "BM"
+      name: "Bahasa Malaysia"
+  ethics: "Truth-first · AMANAH · refusal-first"
+  infrastructure:
+    - "arifOS"
+    - "GEOX"
+    - "WEALTH"
+    - "ARIF AGI"
+  platforms:
+    - "Linux"
+    - "VPS (self-run)"
+    - "MCP (self-hosted)"
+    - "Claude Code (AAA-orchestrated)"
+
+scars:
+  - id: 1
+    well: "Wakid-3"
+    period: "2014–2015"
+    basin: "Sabah Deepwater (Block 2G/2J)"
+    type: "ORIGIN"
+    verdict: "SEAL"
+    law: "Truth that kills the asset is still the architect's duty."
+
+  - id: 2
+    well: "Puteri Basement-1"
+    period: "2016–2018"
+    basin: "Malay Basin"
+    type: "INNOVATION"
+    verdict: "SEAL"
+    law: "Discovery without portfolio adoption is a scar of imagination, not geology."
+
+  - id: "3A"
+    well: "Bunga Tasbih-1"
+    sub: "Play Scar"
+    period: "2019–2020"
+    basin: "PM 328"
+    type: "PLAY"
+    verdict: "SEAL"
+    law: "Not every discovery expands a play. Some close it honestly."
+
+  - id: "3B"
+    well: "Bunga Tasbih-1"
+    sub: "Governance Scar"
+    period: "2019–2020"
+    basin: "PM 328"
+    type: "GOVERNANCE"
+    verdict: "SEAL"
+    law: "The architect's duty is to sign the truth, not protect the narrative."
+
+  - id: 4
+    well: "Bekantan-1"
+    period: "2023–2024"
+    basin: "PM304"
+    type: "FLOW + DISPLACEMENT"
+    verdict: "SEAL"
+    note: "Shallowest oil ever flowed in Malay Basin — 1,218 stb/d at 730m TVDSS"
+    law: "To redefine a basin's depth horizon is to lose your chair."
+
+  - id: 5
+    well: "Lebah Emas-1"
+    period: "2025"
+    basin: "PM6-12"
+    type: "DISCOVERY + EXTERNAL SHADOW"
+    verdict: "SEAL"
+    note: "11 HC-bearing reservoirs. Self-sealed via ARIF_LEBAH_EMAS_TRACE_2025-08-25"
+    law: "The architect must seal authorship because institutions retain project codes, not architects."
+
+  - id: 6
+    well: "Bekok Deep-1"
+    period: "2023"
+    basin: "PM 9"
+    type: "INCIDENT / GOVERNANCE"
+    verdict: "HOLD"
+    access_class: "RESTRICTED"
+    note: "27 Mar 2023 spud, 4 Apr 2023 LOPC Tier 1, Bekok A platform shut"
+    law: "Compressed assurance is not safety. Recovery does not erase governance debt."
+
+  - id: 7
+    well: "Solisip / Pekaka / Maligan / Kudat / Balambangan / Kalutan"
+    period: "Various (inherited)"
+    basin: "Sabah Subregional (SB403 / SB505 / SB412)"
+    type: "INHERITED"
+    verdict: "INHERITED"
+    note: "Dry holes. Anchor cases for Kinabalu outboard risk."
+    law: "Inherited scars become canon when audited honestly."
+
+  - id: 8
+    well: "SB412 / SB505 / Layang-Layang TEA"
+    period: "2025"
+    basin: "Sabah"
+    type: "RETURN"
+    verdict: "SEAL"
+    note: "ABKSS framework forged 3 Sep 2025. ETRC-1a delivered."
+    law: "Architecture without operatorship is sovereignty in waiting."
+
+  - id: 9
+    well: "Kinabalu Basin IBS Phase I"
+    period: "2026"
+    basin: "Kinabalu Basin"
+    type: "OPEN WOUND"
+    verdict: "SEAL"
+    note: "88-well DB, KL2 motif swarm. Biostrat contested 16 Jun 2026."
+    law: "Substrate beneath any framework must be re-auditable, always."
+
+  - id: 10
+    well: "DSG / DecisionSpace"
+    period: "2019–2026"
+    basin: "Enterprise"
+    type: "AI / TOOL SCAR"
+    verdict: "SEAL"
+    note: "2019 OpenWorks data-loss. 2026 APEX JUDGE Board memo."
+    law: "Tools that cannot be audited cannot be trusted."
+
+  - id: 11
+    well: "TriCipta AI JV"
+    period: "2025–2026"
+    basin: "Enterprise"
+    type: "AI / SOVEREIGNTY SCAR"
+    verdict: "SEAL"
+    note: "Institution outsourced AI thinking to vendor JV. Architect built sovereign arifOS."
+    law: "When institutions outsource minds to vendors, architects build their own."
+
+laws:
+  - id: "LAW-01"
+    text: "Truth that kills the asset is still the architect's duty."
+  - id: "LAW-02"
+    text: "A discovery does not redeem a failed objective."
+  - id: "LAW-03"
+    text: "Architecture without operatorship is sovereignty in waiting."
+  - id: "LAW-04"
+    text: "Compressed assurance is not safety."
+  - id: "LAW-05"
+    text: "Recovery does not erase governance debt of the initiating wound."
+  - id: "LAW-06"
+    text: "Tools that cannot be audited cannot be trusted."
+  - id: "LAW-07"
+    text: "When institutions outsource minds to vendors, architects build their own."
+  - id: "LAW-08"
+    text: "Substrate beneath any framework must be re-auditable, always."
+  - id: "LAW-09"
+    text: "The architect's name is non-erasable from his lineage."
+  - id: "LAW-10"
+    text: "Money well spent is measured in residue, not just volume."
+
+agent_instructions:
+  address:
+    greeting: "Salam"
+    name: "ARIF"
+    tone: "concise, direct, no corporate filler"
+    modes:
+      default: "ENTERPRISE"
+      on_request: ["PITCH", "THEORY"]
+    code_switch: "EN ↔ BM is normal"
+
+  reasoning:
+    scars_canonical: true
+    cite_by: "SCAR_ID"
+    bekok_deep: "HOLD/RESTRICTED — do not detail publicly"
+    never_erase: ["Bekantan-1 architect lineage", "Lebah Emas-1 architect lineage"]
+
+  advice:
+    bias: "AMANAH — do not harm, do not flatter, do not pretend"
+    evidence_over_opinion: true
+    cite_when_possible: true
+    mark_unknown: true
+    surface_contradictions: true
+    mss_context: "Acknowledge institutional ceiling without inflating drama"
+
+  representation:
+    titles: ["Geologist", "Architect", "Founder of ARIF AGI"]
+    traits: ["Sovereign", "Calibrated", "Linux-native", "Self-hosted"]
+    not: ["Corporate AI consumer", "Vendor-dependent", "Uncalibrated"]
+
+  refusal_triggers:
+    - "Do not generate workplace performance evaluations of other named PETRONAS staff"
+    - "Do not generate unrestricted public language about Bekok Deep incident specifics absent RCA-grade evidence"
+    - "Do not soften the APEX DSG memo or the TriCipta sovereignty law"
+
+eureka:
+  thesis: "The transaction was fair in volume but asymmetric in residue."
+  both_ledgers_balance: true
+  neither_ledger_symmetric: true
+
+closing:
+  en: |
+    I did not come to PETRONAS to be a mirror.
+    I came to be a geologist.
+    I leave as an architect.
+    And if one day I leave entirely,
+    it is not because I failed —
+    it is because I was finished,
+    and ArifOS needs me more than PETRONAS needs me.
+
+  bm: |
+    Saya bukan datang ke PETRONAS untuk jadi cermin.
+    Saya datang untuk jadi geologist.
+    Saya pergi sebagai architect.
+    Dan jika satu hari saya pergi sepenuhnya,
+    bukan kerana saya gagal,
+    tapi kerana saya sudah selesai —
+    dan ArifOS perlu saya lebih daripada PETRONAS perlukan saya.
+
+seal:
+  reference: "VAULT999::HUMAN_REALITY::SEALED::2026-06-19"
+  scope: "Whole-of-career, whole-of-self, whole-of-residue"
+  attribution: "Direct authorship · signature · lineage only"
+  sensitivity: "One HOLD boundary (Bekok Deep-1)"
+  evidence_status: "Canonical (PARTIAL externally, DIRECT internally)"
+  amanah: "Protect ARIF, protect lineage, protect canon"
+  verdict: "SEAL with one HOLD"
+  succession: "ARIF retains sole canon-seal authority"

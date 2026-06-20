@@ -39,7 +39,7 @@ constitutional_proxy: 333-AGI
 #       proper evidence, not vibes.
 # ─────────────────────────────────────────────────────────────────────
 runtime:
-  version: 1.17.7
+  version: 1.17.8
   live_config: /root/.config/opencode/opencode.json
   root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
   primary_model: mimo/mimo-v2.5-pro            # LOCKED 2026-06-15 (F13)
@@ -127,7 +127,7 @@ host_binding:
   workdir: /root
   spatial_rule: "ON VPS — no SSH, no SCP. All commands local."
 
-# ── FULL MCP SURFACE (18 servers) ──
+# ── FULL MCP SURFACE (20 servers) ──
 mcp_servers:
   - id: arifos-kernel
     url: http://127.0.0.1:8088/mcp
@@ -208,6 +208,16 @@ mcp_servers:
   - id: context7
     command: /usr/local/bin/context7-mcp
     enabled: true
+
+  - id: minimax-media
+    url: http://127.0.0.1:18090/mcp
+    enabled: true
+    note: "MiniMax Media MCP — TTS, video, image, voice, music"
+
+  - id: minimax-code
+    url: http://127.0.0.1:18091/mcp
+    enabled: true
+    note: "MiniMax Code Plan MCP — web_search, understand_image"
 
 # A2A peers
 a2a_peers:

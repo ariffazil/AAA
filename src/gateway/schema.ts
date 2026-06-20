@@ -4,6 +4,7 @@ export interface TaskMessage {
   messageId: string;
   taskId?: string;
   contextId?: string;
+  metadata?: Record<string, unknown>;
 }
 
 export type Part = 

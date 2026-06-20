@@ -143,8 +143,17 @@ forge_instruments:
     fi_id: FI-001
     status: live
     class: forge-instrument
-    citizenship: governed-forge-worker
+    citizenship: warga-aaa
     constitutional_proxy: 333-AGI
+    warga_card: agents/opencode/WARGAAA_CARD.md
+    hooks_dir: /root/.openclaw/workspace/bots/opencode-bot/hooks
+    action_taxonomy: /root/.openclaw/workspace/bots/opencode-bot/action_taxonomy.py
+    federation_mcp_surface:
+      arifos: http://127.0.0.1:8088/mcp
+      aforge: http://127.0.0.1:7071/mcp
+      geox: http://127.0.0.1:8081/mcp
+      wealth: http://127.0.0.1:18082/mcp
+      well: http://127.0.0.1:18083/mcp
     host_binding: opencode
     root_config_ref: ROOT_AGENT_CONFIG.yaml
     agent_card: agents/opencode/agent-card.json
@@ -154,13 +163,13 @@ forge_instruments:
     legacy_status: retired_absent
     binary: /usr/local/bin/opencode
     resolved_binary: /root/.npm-global/bin/opencode
-    version: "1.17.7"
+    version: "1.17.8"
     model: tokenplan-mimo/mimo-v2.5-pro
     small_model: tokenplan-mimo/mimo-v2.5
     native_mcp: true
-    mcp_count: 18
+    mcp_count: 20
     mcp_servers:
-      - arifos-kernel
+      - arifos
       - aforge
       - geox
       - wealth
@@ -178,6 +187,8 @@ forge_instruments:
       - cloudflare
       - hostinger-vps
       - perplexity
+      - minimax-media
+      - minimax-code
     local_agents:
       - forge
       - auditor
