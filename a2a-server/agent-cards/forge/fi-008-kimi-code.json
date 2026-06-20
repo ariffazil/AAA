@@ -1,0 +1,45 @@
+{
+  "id": "FI-008",
+  "name": "Kimi Code CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Moonshot Kimi Code CLI — K2.7 Code model. Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio (77 tools). AMANAH + MARUAH explicit in system identity.",
+  "version": "1.47.0",
+  "model": "kimi-code/kimi-for-coding (K2.7 Code)",
+  "izin": "GRANTED",
+  "izin_date": "2026-06-10",
+  "sandbox": "process",
+  "binary": "/root/.local/bin/kimi",
+  "config": "/root/.kimi/config.toml",
+  "mcpConfig": "/root/.kimi/mcp.json",
+  "services": [],
+  "mcpServers": [
+    "arifOS",
+    "wealth",
+    "well",
+    "geox",
+    "aforge",
+    "minimax",
+    "capability-index",
+    "repomapper",
+    "serena"
+  ],
+  "mcpServersDisabled": [
+    "github",
+    "brave-search",
+    "meyhem",
+    "playwright-mcp"
+  ],
+  "mcpStrategy": "A-FORGE stdio is the stable engineering ingress. Legacy direct MCPs disabled; all MUTATE/SEARCH/BROWSER/GITHUB route through A-FORGE forge_* tools with kernel leases.",
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "explore": "read-only",
+    "fix": "888_HOLD aware",
+    "coordinator": "Planner/Executor/Verifier triad",
+    "worker": "minimal tool surface"
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "trustTier": "proposed: 2 (pending A-AUDIT + F13 ratification)",
+  "lastAudit": "2026-06-20T13:50:00Z",
+  "auditNote": "Aligned 2026-06-20: A-FORGE moved to stdio due to HTTP single-session SDK limitation; amanah/maruah principles embedded in config + system prompt; legacy direct MCPs disabled."
+}
