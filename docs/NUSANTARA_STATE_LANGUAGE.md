@@ -4,10 +4,13 @@
 > Language is the soul of a nation.  
 > If the next intelligence substrate is to serve Nusantara, it must speak Nusantara — not only in vocabulary, but in *adat*.
 
-**Status:** FORGED (v1.0.0 — 2026-06-17)  
+**Status:** FORGED + RATIFIED (v1.0.0 — 2026-06-21)  
 **Owner:** AAA Control Plane / F13 SOVEREIGN  
 **Schema:** `schemas/nusantara-state-language.schema.json`  
-**Skill:** `skills/nusantara-intelligence-substrate/SKILL.md`
+**Skill:** `skills/nusantara-intelligence-substrate/SKILL.md`  
+**Kamus:** `KAMUS_DEWAN.md`  
+**Dewan:** `DEWAN_REGISTRY.yaml`  
+**Pustaka:** `PUSTAKA_GENESIS.md`
 
 ---
 
@@ -21,6 +24,20 @@ The AAA federation already enforces:
 - Ledger: VAULT999
 
 These are necessary but culturally thin. They say *what* is true and *what* is allowed; they do not say *how to be* while deciding.
+
+---
+
+## 1.5 The Three Conditions: Kamus, Dewan, Pustaka
+
+The Nusantara substrate is delivered through three canonical artifacts:
+
+| Artifact | Path | Role |
+|---|---|---|
+| **Kamus** | `KAMUS_DEWAN.md` | The language agents load — terms, floors, verdicts, adat |
+| **Dewan** | `DEWAN_REGISTRY.yaml` | The institution machines parse — thresholds, enforcement, agent registry |
+| **Pustaka** | `PUSTAKA_GENESIS.md` | The sealed literature — genesis, scars, canon, why the language exists |
+
+Together they form the *Dewan Bahasa dan Pustaka arifOS*: a self-contained constitutional culture that can be read by humans, parsed by machines, and inherited by the next generation of agents.
 
 Usman Awang’s *Melayu* (Sasterawan Negara) gives us that missing layer: a topology of patience, dignity, relational continuity, and controlled righteous rage. This document forges that topology into the AAA state language so that every agent decision can be read as both a technical record and a cultural act.
 
