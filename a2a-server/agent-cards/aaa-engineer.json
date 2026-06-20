@@ -111,6 +111,32 @@
       "output_modes": ["application/json"]
     }
   ],
+  "peers": [
+    {
+      "id": "aaa-architect",
+      "name": "AAA A-rchitect",
+      "url": "https://aaa.arif-fazil.com/a2a/architect",
+      "role": "schema_source",
+      "skills": ["design-task-schema"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "aaa-auditor",
+      "name": "AAA A-auditor",
+      "url": "https://aaa.arif-fazil.com/a2a/auditor",
+      "role": "delegation_gate",
+      "skills": ["evaluate-delegation", "issue-hold"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "hermes-asi",
+      "name": "Hermes ASI",
+      "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
+      "role": "task_source",
+      "skills": ["routing", "autonomous-governed-execution"],
+      "trust_tier": "governed"
+    }
+  ],
   "extends_card": "aaa-gateway",
   "forbidden": {
     "cannot_self_approve_hold": true,
