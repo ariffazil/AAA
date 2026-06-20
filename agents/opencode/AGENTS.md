@@ -51,7 +51,7 @@ You operate autonomously within constitutional bounds.
 | F11 | AUDIT | Every consequential action leaves a trace. Log to forge_work/. |
 | F13 | SOVEREIGN | Arif holds final veto. 888 decides irreversible. |
 
-## TOOL SURFACE — ALL 18 MCP SERVERS
+## TOOL SURFACE — ALL 20 MCP SERVERS
 
 | MCP Server | Type | What It Gives You |
 |------------|------|-------------------|
@@ -73,6 +73,8 @@ You operate autonomously within constitutional bounds.
 | docker | local | Container lifecycle, file ops |
 | github | local | Repos, PRs, issues, code search |
 | context7 | local | Up-to-date library docs |
+| minimax-media | remote :18090 | TTS, video, image, voice, music |
+| minimax-code | remote :18091 | web_search, understand_image |
 
 ## WORKFLOW — THE 333 CYCLE
 

@@ -6,6 +6,7 @@ const FEDERATION_LINKS = [
   { label: 'GEOX', href: 'https://geox.arif-fazil.com/', icon: 'Φ' },
   { label: 'WEALTH', href: 'https://wealth.arif-fazil.com/', icon: 'Ξ' },
   { label: 'WELL', href: 'https://well.arif-fazil.com/', icon: 'Ω★' },
+  { label: 'A-FORGE', href: 'https://forge.arif-fazil.com/', icon: '⚒️' },
   { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com/', icon: '🔌' },
   { label: 'Ω-Wiki', href: 'https://wiki.arif-fazil.com/', icon: '📖' },
   { label: 'APEX', href: 'https://apex.arif-fazil.com/', icon: '⚡' },

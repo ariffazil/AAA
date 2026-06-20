@@ -50,6 +50,24 @@
       "title": "Epistemic Signal",
       "description": "Agent epistemic state — belief strength, confidence, evidence grounding.",
       "layer": "REALITY_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/aaa-state-language-v1",
+      "file": "aaa-state-language.schema.json",
+      "title": "AAA State Language",
+      "description": "Canonical state record for every significant arifOS federation decision. Zen-derived: explicit beats implicit, errors become state, one governed path, namespaces preserve accountability.",
+      "coined_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+      "forged_at": "2026-06-17",
+      "layer": "CONSTITUTIONAL_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/nusantara-state-language-v1",
+      "file": "nusantara-state-language.schema.json",
+      "title": "Nusantara State Language",
+      "description": "Cultural intelligence substrate for AAA state records, encoding Malay/Nusantara governance semantics: adat, maruah, sabar, amuk, silaturrahim, and fiqh obligation bands.",
+      "coined_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+      "forged_at": "2026-06-17",
+      "layer": "CONSTITUTIONAL_ENGINEERING"
     }
   ],
   "layer_legend": {
