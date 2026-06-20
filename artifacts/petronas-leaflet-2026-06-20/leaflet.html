@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<title>MINYAK KITA, KHAZANAH KITA — Arif Fazil 2026 (Edisi 3 Halaman)</title>
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DejaVu Serif', 'Noto Serif', Georgia, serif;
+    color: #1a1a1a;
+    font-size: 8.8pt;
+    line-height: 1.32;
+  }
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 10mm 12mm 8mm 12mm;
+    page-break-after: always;
+    position: relative;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ============ PAGE 1: COVER ============ */
+  .cover {
+    background: #0a1f1c;
+    color: #f0e6d2;
+    padding: 0;
+  }
+  .cover-inner { padding: 12mm 14mm 10mm 14mm; height: 100%; position: relative; }
+  .masthead {
+    border-bottom: 1px solid #c9a55c;
+    padding-bottom: 2.5mm;
+    margin-bottom: 5mm;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7pt;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #c9a55c;
+  }
+  .kicker {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #d4574a;
+    margin-bottom: 3mm;
+  }
+  .headline {
+    font-family: 'DejaVu Serif', serif;
+    font-size: 32pt;
+    font-weight: bold;
+    line-height: 0.95;
+    color: #f7e9c8;
+    margin-bottom: 3mm;
+    letter-spacing: -0.5px;
+  }
+  .subhead {
+    font-family: 'DejaVu Serif', serif;
+    font-size: 11.5pt;
+    font-style: italic;
+    color: #c9a55c;
+    line-height: 1.25;
+    margin-bottom: 5mm;
+    border-left: 3px solid #d4574a;
+    padding-left: 3.5mm;
+  }
+  .azizan-quote {
+    background: rgba(201, 165, 92, 0.08);
+    border-left: 4px solid #c9a55c;
+    padding: 3.5mm 5mm;
+    margin-bottom: 5mm;
+    font-family: 'DejaVu Serif', serif;
+    font-size: 10pt;
+    font-style: italic;
+    color: #e8d9b8;
+    line-height: 1.35;
+  }
+  .azizan-quote .attr {
+    display: block;
+    margin-top: 2mm;
+    font-style: normal;
+    font-size: 7.5pt;
+    color: #c9a55c;
+    letter-spacing: 0.5px;
+  }
+  .lede {
+    font-family: 'DejaVu Serif', serif;
+    font-size: 9.8pt;
+    line-height: 1.38;
+    color: #f0e6d2;
+    margin-bottom: 3mm;
+    column-count: 2;
+    column-gap: 5mm;
+    text-align: justify;
+  }
+  .lede p { margin-bottom: 2.5mm; }
+  .lede .dropcap {
+    float: left;
+    font-size: 24pt;
+    font-weight: bold;
+    color: #d4574a;
+    line-height: 0.85;
+    padding-right: 1.5mm;
+    padding-top: 0.5mm;
+  }
+  .stat-row {
+    display: flex;
+    gap: 2.5mm;
+    margin-top: 3mm;
+    margin-bottom: 2mm;
+  }
+  .stat-box {
+    flex: 1;
+    background: #13302c;
+    border: 1px solid #c9a55c;
+    padding: 3mm 2.5mm;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 19pt;
+    font-weight: bold;
+    color: #d4574a;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7pt;
+    color: #f0e6d2;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-top: 1.5mm;
+    line-height: 1.15;
+  }
+  .footer {
+    position: absolute;
+    bottom: 6mm;
+    left: 14mm;
+    right: 14mm;
+    border-top: 1px solid #c9a55c;
+    padding-top: 2mm;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 6.2pt;
+    color: #8a9a8e;
+    letter-spacing: 0.5px;
+  }
+  .footer .sig { color: #c9a55c; font-weight: bold; }
+
+  /* ============ PAGE 2 & 3: BODY ============ */
+  .body-page {
+    background: #f5efe1;
+    color: #1a1a1a;
+  }
+  .body-inner { padding: 10mm 13mm 9mm 13mm; height: 100%; position: relative; }
+  .section-eyebrow {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7pt;
+    font-weight: bold;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #d4574a;
+    margin-bottom: 1.5mm;
+    border-bottom: 1px solid #d4574a;
+    padding-bottom: 0.8mm;
+  }
+  h2 {
+    font-family: 'DejaVu Serif', serif;
+    font-size: 12.5pt;
+    font-weight: bold;
+    color: #0a1f1c;
+    margin-bottom: 2.5mm;
+    line-height: 1.1;
+  }
+  h3 {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 9pt;
+    font-weight: bold;
+    color: #0a1f1c;
+    letter-spacing: 0.5px;
+    margin: 2.5mm 0 1.5mm 0;
+    text-transform: uppercase;
+  }
+  .body-page p { margin-bottom: 1.8mm; text-align: justify; }
+  .col2 { column-count: 2; column-gap: 5mm; }
+  .col3 { column-count: 3; column-gap: 4mm; font-size: 7.8pt; }
+  .compare {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2mm 0 3mm 0;
+    font-size: 8pt;
+  }
+  .compare th, .compare td {
+    border: 1px solid #0a1f1c;
+    padding: 1.8mm 2.2mm;
+    text-align: left;
+    vertical-align: top;
+  }
+  .compare th {
+    background: #0a1f1c;
+    color: #f7e9c8;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 0.5px;
+  }
+  .compare td.era-old { background: #e8d9b8; }
+  .compare td.era-new { background: #f7d4ce; }
+  .timeline {
+    margin: 2mm 0 3mm 0;
+    border-left: 3px solid #d4574a;
+    padding-left: 4mm;
+  }
+  .timeline-event {
+    margin-bottom: 1.8mm;
+    padding-left: 1.5mm;
+    position: relative;
+  }
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -5.2mm;
+    top: 1.3mm;
+    width: 2.5mm;
+    height: 2.5mm;
+    background: #d4574a;
+    border-radius: 50%;
+  }
+  .timeline-date {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7.2pt;
+    font-weight: bold;
+    color: #d4574a;
+    letter-spacing: 0.5px;
+  }
+  .timeline-text {
+    font-size: 8.4pt;
+    line-height: 1.25;
+  }
+  .warning-box {
+    background: #0a1f1c;
+    color: #f7e9c8;
+    padding: 3.5mm 5mm;
+    margin: 3mm 0;
+    border-left: 5px solid #d4574a;
+  }
+  .warning-box h3 {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 9.5pt;
+    color: #d4574a;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5mm;
+  }
+  .warning-box ol { padding-left: 4mm; }
+  .warning-box li { color: #f0e6d2; font-size: 8.2pt; line-height: 1.32; margin-bottom: 0.8mm; }
+  .kepada {
+    background: #c9a55c;
+    color: #0a1f1c;
+    padding: 2.5mm 4mm;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8.5pt;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.8px;
+    margin-bottom: 3mm;
+  }
+  .source-note {
+    font-size: 6.5pt;
+    color: #5a4a3a;
+    line-height: 1.25;
+    font-style: italic;
+    margin-top: 2mm;
+  }
+  .body-footer {
+    position: absolute;
+    bottom: 5mm;
+    left: 13mm;
+    right: 13mm;
+    border-top: 1px solid #0a1f1c;
+    padding-top: 2mm;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 6pt;
+    color: #5a4a3a;
+    display: flex;
+    justify-content: space-between;
+  }
+  .body-footer .sig { color: #0a1f1c; font-weight: bold; }
+  .action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5mm;
+    margin: 2.5mm 0 2mm 0;
+  }
+  .action-card {
+    border: 1px solid #0a1f1c;
+    background: #fbf6e8;
+    padding: 2.5mm 3mm;
+  }
+  .action-card h4 {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 8.5pt;
+    color: #d4574a;
+    font-weight: bold;
+    margin-bottom: 1mm;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .action-card p, .action-card ol, .action-card ul {
+    font-size: 7.6pt;
+    line-height: 1.3;
+    margin-bottom: 1mm;
+  }
+  .action-card ol, .action-card ul { padding-left: 4mm; }
+  .action-card li { margin-bottom: 0.5mm; }
+  .action-card .who {
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 6.8pt;
+    color: #5a4a3a;
+    font-style: italic;
+    margin-top: 1mm;
+    border-top: 1px dotted #5a4a3a;
+    padding-top: 1mm;
+  }
+  .share-kit {
+    background: #0a1f1c;
+    color: #f0e6d2;
+    padding: 3mm 4mm;
+    margin-top: 2.5mm;
+    border-left: 4px solid #c9a55c;
+    font-size: 7.8pt;
+    line-height: 1.32;
+  }
+  .share-kit h4 {
+    font-family: 'DejaVu Sans', sans-serif;
+    color: #c9a55c;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 1.5mm;
+  }
+  .share-kit em { color: #f7e9c8; font-style: normal; }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.5pt;
+    margin: 1.5mm 0 2mm 0;
+  }
+  .data-table th, .data-table td {
+    border: 1px solid #0a1f1c;
+    padding: 1.5mm 2mm;
+    text-align: left;
+  }
+  .data-table th {
+    background: #0a1f1c;
+    color: #f7e9c8;
+    font-family: 'DejaVu Sans', sans-serif;
+    font-size: 7pt;
+    letter-spacing: 0.3px;
+  }
+  .data-table td.num { text-align: right; font-family: 'DejaVu Sans Mono', monospace; }
+  .data-table tr:nth-child(even) td { background: #ede4cd; }
+</style>
+</head>
+<body>
+
+<!-- =============== PAGE 1: COVER =============== -->
+<div class="page cover">
+<div class="cover-inner">
+
+  <div class="masthead">
+    <span>KHABAR DARURAT · KHAZANAH NEGARA</span>
+    <span>EDISI RAKYAT · 20 JUN 2026 · HAL 1/3</span>
+  </div>
+
+  <div class="kicker">⚠ AMARAN KEPADA RAKYAT · KHUSUSNYA SARAWAK & SABAH</div>
+
+  <h1 class="headline">Minyak Kita,<br>Khazanah Kita</h1>
+
+  <div class="subhead">
+    Dah 52 tahun Petronas jadi tulang belakang negara. Hari ni, tulang belakang tu sedang dijual — kepingan demi kepingan. Siapa yang rugi? Kita.
+  </div>
+
+  <div class="azizan-quote">
+    "The day we compromise on integrity will be the day we see Petronas destroyed."
+    <span class="attr">— AZIZAN ZAINUL ABIDIN, bekas Presiden & CEO Petronas 1988–1995 · The Edge Malaysia, Feb 2010</span>
+  </div>
+
+  <div class="lede">
+    <p><span class="dropcap">M</span>akcik, pakcik, saudara, saudari — terutamanya di Sarawak dan Sabah. Petronas bukan syarikat swasta. Ia khazanah negara, ditubuhkan 1974 di bawah Akta Petroleum, milik semua rakyat Malaysia. Hari ini khazanah itu sedang dipecah-pecah dan dijual kepada pihak asing — satu demi satu. Bukan dengan suara, bukan dengan undian. Dengan kontrak.</p>
+
+    <p>Pada 10 Jun 2026, Petronas secara rasmi menjual kepentingan dalam empat kontrak minyak luar pesisir kepada syarikat United Kingdom, EnQuest — nilai RM3.4 bilion. Ini bukan usaha sama sama rata macam ENI Itali. Ini jual aset. Pertama kali Petronas jual aset sebegitu besar kepada syarikat Eropah.</p>
+
+    <p>Sementara itu, dividen Petronas kepada kerajaan jatuh dari RM32 bilion ke RM20 bilion dalam setahun. Pekerja Petronas dipotong 10% Jun 2025. Syarikat hantar CEO ke Turkmenistan untuk tandatangan "block gas terbesar dunia" — hakikatnya blok 19 dan 20 tu kawasan kosong yang China tak mahu ambil.</p>
+
+    <p>Di Sarawak, satu lagi pertikaian berjalan: siapa yang punya hak jual gas Sarawak — Petronas atau Petroleum Sarawak (Petros)? Kes di Mahkamah Persekutuan. Taruhannya RM70–80 juta sebulan, 90% daripada LNG Malaysia datang dari Sarawak.</p>
+
+    <p>Dokumen ni bukan tuduhan kosong. Setiap angka dari sumber terbuka: Reuters, Upstream Online, Borneo Post, Malaysian Reserve, The Edge. Baca tiga halaman ni — habis, anda akan tahu apa nak buat.</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-box">
+      <div class="stat-num">RM3.4B</div>
+      <div class="stat-label">Aset Petronas dijual<br>kepada EnQuest UK</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">−RM12B</div>
+      <div class="stat-label">Dividen Petronas jatuh<br>dalam satu tahun (−38%)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">RM285J</div>
+      <div class="stat-label">Minyak Sarawak hilang<br>setiap hari (angka March 2026)</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <span>Sumber: Reuters (10/6/2026) · Upstream Online · Borneo Post (5/2/2026) · Malaysian Reserve · The Edge (8/2/2010)</span>
+    <span class="sig">DITEMPA BUKAN DIBERI — ARIF FAZIL · 999 SEAL ALIVE</span>
+  </div>
+
+</div>
+</div>
+
+<!-- =============== PAGE 2: KONTEKS & TIMELINE =============== -->
+<div class="page body-page">
+<div class="body-inner">
+
+  <div class="kepada">BAGIAN 1 · DNA YANG HILANG · KRONOLOGI 2024–2026 · TANDA BAHAYA</div>
+
+  <div class="section-eyebrow">DNA · Dulu vs Sekarang</div>
+  <h2>Petronas Yang Kami Kenali vs Petronas Yang Ada Sekarang</h2>
+
+  <p>Dulu ada <b>Hassan Marican</b> — Presiden 1995-2010, peguam jadi CEO, jaga maruah syarikat macam maruah sendiri. Ada <b>Azizan Zainul Abidin</b> yang institusikan "shared values" — loyalty, professionalism, integrity, cohesiveness. Ada <b>Rastam Hadi</b> yang ajar orang baru "fight like bulldogs" dengan syarikat minyak gergasi. Aset tumbuh dari RM10 juta (1974) ke RM403 bilion (2009) — tanpa satu sen capital injection dari kerajaan.</p>
+
+  <p>Sekarang? Pengerusi <b>Tan Sri Mohd Bakke Salleh</b> datang dari FELDA, Sime Darby, Tabung Haji — plantation dan telco, bukan minyak. CEO <b>Tengku Muhammad Taufik</b> finance background. Aset dijual: USD $833 juta ke EnQuest UK (Jun 2026), 50% upstream ke ENI Itali (Nov 2025), block eksplorasi Turkmenistan (Jun 2026). 10% workforce cut Jun 2025. Dividen jatuh 38%.</p>
+
+  <table class="compare">
+    <tr>
+      <th style="width:22%">Aset</th>
+      <th>1995–2010 (Azizan/Hassan)</th>
+      <th>2021–2026 (Bakke/Taufik)</th>
+    </tr>
+    <tr>
+      <td class="era-old"><b>Strategik</b></td>
+      <td class="era-old">Lawan Shell, Exxon, BP — menang kontrak Iraq 2009. Pengerusi & CEO orang oil & gas.</td>
+      <td class="era-new">Jual 50% upstream Malaysia ke ENI Itali. Jual 4 PSC ke EnQuest UK. Capex dipotong.</td>
+    </tr>
+    <tr>
+      <td class="era-old"><b>Kewangan</b></td>
+      <td class="era-old">Aset RM10 juta → RM403 bilion (35 tahun). Tiada duit tambahan dari kerajaan.</td>
+      <td class="era-new">Dividen RM32B → RM20B (−38%). Kerja dipotong 10%. Hutang naik.</td>
+    </tr>
+    <tr>
+      <td class="era-old"><b>Integriti</b></td>
+      <td class="era-old">"Fight like bulldogs" — Azizan's rule: integrity non-negotiable.</td>
+      <td class="era-new">PM-MF tentukan dividen. Pengerusi plantation. Tidur dalam skandal Iran shadow fleet.</td>
+    </tr>
+  </table>
+
+  <div class="section-eyebrow">Kronologi · Apa Berlaku 2024–2026</div>
+
+  <div class="timeline">
+    <div class="timeline-event">
+      <div class="timeline-date">OGOS 2024</div>
+      <div class="timeline-text"><b>Petros hantar invois gas Sarawak.</b> Shell MDS terima dua invois untuk gas yang sama — satu Petronas, satu Petros. Fail interpleader di mahkamah. Titik mula.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">JUN 2025</div>
+      <div class="timeline-text"><b>Petronas potong 10% tenaga kerja.</b> Pertama kali dalam sejarah moden. Legacy expertise terbuang.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">22 SEPT 2025</div>
+      <div class="timeline-text"><b>Mahkamah Rayuan: Petronas menang pusingan pertama.</b> RM70–80 juta sebulan. Tapi isu constitution (siapa punya gas Sarawak?) masih tergantung.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">NOV 2025</div>
+      <div class="timeline-text"><b>ENI Itali JV di ADIPEC.</b> 50:50 NewCo, 19 aset (5 Malaysia), USD $15 bilion, ~3 bilion BOE, target 500K BOE/hari.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">5 FEB 2026</div>
+      <div class="timeline-text"><b>Mahkamah Rayuan clarify payment order.</b> Sarawak fail di Mahkamah Persekutuan untuk MA63 vs Akta Petroleum 1974.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">16 MAC 2026</div>
+      <div class="timeline-text"><b>Mahkamah Persekutuan benarkan Petronas cabar undang-undang Sarawak.</b> Prosiding penuh berjalan, bertahun-tahun.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">10 JUN 2026</div>
+      <div class="timeline-text"><b>EnQuest beli 4 aset Petronas offshore.</b> USD $833 juta (~RM3.4B). $554M muka. Output EnQuest double 57K→100K+ BOE/hari.</div>
+    </div>
+    <div class="timeline-event">
+      <div class="timeline-date">18 JUN 2026</div>
+      <div class="timeline-text"><b>Anwar visit Turkmenistan, Petronas tandatangan "block 19 & 20".</b> Exploration acreage kosong sebelah Galkynysh (China/CNPC). Bukan gas field — tanah kosong.</div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <h3>⚠ 5 Tanda Petronas Akan Runtuh</h3>
+    <ol>
+      <li>Aset dijual sebahagian demi sebahagian — ENI, EnQuest, divest Turkmenistan. Bukan satu, bukan dua — tiga dalam 7 bulan.</li>
+      <li>Dividen jatuh, hutang naik, capex dipotong — profil syarikat tenat, bukan berkembang.</li>
+      <li>10% workforce cut — orang paling berpengalaman dibuang, ingatan institusi hilang.</li>
+      <li>Politik campur tangan — PM yang juga Menteri Kewangan tentukan dividen. Pengerusi bukan orang minyak.</li>
+      <li>Khazanah Sarawak dipertikaikan di mahkamah — bukan oleh musuh, tapi oleh saudara sendiri.</li>
+    </ol>
+  </div>
+
+  <div class="body-footer">
+    <span>MINYAK KITA, KHAZANAH KITA · HAL 2/3</span>
+    <span class="sig">DITEMPA BUKAN DIBERI — 999 SEAL ALIVE</span>
+  </div>
+
+</div>
+</div>
+
+<!-- =============== PAGE 3: ACTION KIT =============== -->
+<div class="page body-page">
+<div class="body-inner">
+
+  <div class="kepada">BAGIAN 2 · KONTEKS ANGKA · KIT TINDAKAN · BACA & GERAK</div>
+
+  <div class="section-eyebrow">Konteks Nombor · Boleh Verify Sendiri</div>
+  <h2>Trajektori 6 Tahun — Minyak Kita Yang Mengecil</h2>
+
+  <p>Nombor di bawah dari sumber awam: DOSM (Jabatan Perangkaan Malaysia), Kpler, World Bank, Bank Negara Malaysia. Bukan interpretasi — fakta. Trajektori tu yang membimbangkan.</p>
+
+  <table class="data-table">
+    <tr>
+      <th>Metrik</th>
+      <th>2018</th>
+      <th>2022</th>
+      <th>2024</th>
+      <th>Q1 2026</th>
+    </tr>
+    <tr>
+      <td>Pengeluaran crude Malaysia (BPD)</td>
+      <td class="num">~750,000</td>
+      <td class="num">~570,000</td>
+      <td class="num">~560,000</td>
+      <td class="num">~478,000</td>
+    </tr>
+    <tr>
+      <td>Dividen Petronas kepada kerajaan (RM bilion)</td>
+      <td class="num">~28</td>
+      <td class="num">~50</td>
+      <td class="num">~32</td>
+      <td class="num">~20 (unjuran)</td>
+    </tr>
+    <tr>
+      <td>Tenaga kerja Petronas ('000)</td>
+      <td class="num">~49</td>
+      <td class="num">~48</td>
+      <td class="num">~46</td>
+      <td class="num">~41 (−10% cut)</td>
+    </tr>
+    <tr>
+      <td>Royalti minyak Sarawak (%)</td>
+      <td class="num">5</td>
+      <td class="num">5</td>
+      <td class="num">5</td>
+      <td class="num">5 (claim 20%)</td>
+    </tr>
+    <tr>
+      <td>Foreign operator stake dalam PSC Malaysia (%)</td>
+      <td class="num">~25</td>
+      <td class="num">~30</td>
+      <td class="num">~35</td>
+      <td class="num">~40 (epas ENI+EnQuest)</td>
+    </tr>
+  </table>
+
+  <p><b>Realiti:</b> 2018 → 2026, pengeluaran jatuh 36%, dividen volatile, royalti Sarawak tak gerak, kawalan asing naik 15 mata peratus. Kalau ni syarikat swasta, pelabur sudah keluar. Tapi Petronas bukan syarikat swasta — ia khazanah. Sebab tu takde "exit."</p>
+
+  <div class="section-eyebrow">Kit Tindakan · Apa Anda Boleh Buat Hari Ni</div>
+
+  <div class="action-grid">
+    <div class="action-card">
+      <h4>① Email YB Parlimen Anda (5 minit)</h4>
+      <p>Template sudah sedia — cari YB parlimen di <b>parlimen.gov.my</b>. Hantar 5 soalan:</p>
+      <ol>
+        <li>Adakah Kabinet lulus penjualan USD $833M ke EnQuest?</li>
+        <li>Mengapa 50% upstream ke ENI Itali, bukan Petronas sendiri?</li>
+        <li>Berapa dividen 2026 sebenarnya, adakah audit bebas?</li>
+        <li>Apa status kes MA63 Sarawak di Mahkamah Persekutuan?</li>
+        <li>Mengapa royalti Sarawak kekal 5% bukan 20%?</li>
+      </ol>
+      <p class="who">→ Jumpa YB di klinik, kopi atau pasar malam minggu depan.</p>
+    </div>
+
+    <div class="action-card">
+      <h4>② Lapor ke SPRM / Suhakam (10 minit)</h4>
+      <p>Kalau anda ada maklumat tentang:</p>
+      <ul>
+        <li>STS transfer minyak Iran dekat Muka Head / Johor</li>
+        <li>Penerimaan sogokan untuk sijil halal minyak</li>
+        <li>Penalti pekerja yang bersuara (whistleblower)</li>
+      </ul>
+      <p>Hubungi: <b>SPRM 1-800-88-6000</b> · <b>Suhakam 03-2612 5600</b> · Portal: <b>aduan.sprm.gov.my</b></p>
+      <p class="who">→ Protected by Whistleblower Protection Act 2010. Identiti anda dilindungi.</p>
+    </div>
+
+    <div class="action-card">
+      <h4>③ Edar Surat Kepada JKKK / Ketua Komuniti (30 minit)</h4>
+      <p>Untuk Sarawak — bincang dalam mesyuarat JKKK, ketua kaum Iban/Melanau, paderi, imam:</p>
+      <ol>
+        <li>"Adakah kita tahu royalti 5% je, sedangkan 20% dijanjikan MA63?"</li>
+        <li>"Adakah JKKK nak bawa usul ke ADUN untuk royalti 20%?"</li>
+        <li>"Adakah Petros ada hak jual gas kita, atau Petronas sorok?"</li>
+      </ol>
+      <p class="who">→ Usul JKKK → ADUN → Speaker DUN Sarawak → resolusi politik.</p>
+    </div>
+
+    <div class="action-card">
+      <h4>④ Surat Kepada Media (15 minit)</h4>
+      <p>Hantar email ke editors dengan fakta + sumber:</p>
+      <ul>
+        <li><b>Borneo Post</b>: tt.keu@theborneopost.com (Sarawak angle)</li>
+        <li><b>Malaysiakini</b>: news@malaysiakini.com (nasional)</li>
+        <li><b>The Edge</b>: feedback@bizedge.com (ekonomi)</li>
+        <li><b>FreeMalaysiaToday</b>: editor@freemalaysiatoday.com</li>
+      </ul>
+      <p>Lampirkan PDF ni. Tulis: "Sebagai pembaca setia, saya hairan kenapa isu ni tak disorot."</p>
+    </div>
+  </div>
+
+  <div class="share-kit">
+    <h4>📤 Share Kit · Copy-Paste Ke WhatsApp / Telegram / Facebook</h4>
+    <p><em>"Korang tau tak? Petronas baru jual aset RM3.4 bilion ke syarikat UK. Dividen jatuh 38%. Sarawak hilang 90% gas tapi royalti cuma 5%. Saya jumpa leaflet ni — 3 halaman je, senang faham. Tengok sini, share ramai-ramai. Minyak kita, khazanah kita — bukan duit orang politik."</em></p>
+    <p style="margin-top:1.5mm"><em>📎 Attach PDF: minyak-kita-khazanah-kita-2026-06-20.pdf · 3 halaman · BM-Pasar · semua ada sumber</em></p>
+  </div>
+
+  <p style="margin-top:3mm;font-size:8.6pt"><b>Penutup — Kepada Arif Fazil, bekas warga Petronas:</b> Saya masuk Petronas sebab saya terhutang budi kepada scholarship yang buka pintu. Saya keluar senyap sebab saya tidak tahan melihat khazanah yang saya sayang dijual kepingan demi kepingan. Dokumen ini bukan fitnah — ia rekod. Setiap angka ada sumber, setiap tarikh ada rekod mahkamah atau bursa. Kalau saya salah, tunjukkan saya salah. Kalau saya betul, gerak sama.</p>
+
+  <p class="source-note">
+    <b>Sumber primer disusun 20 Jun 2026:</b> Reuters (10/6/2026, 16/3/2026, 24/9/2025) · Upstream Online · Borneo Post (5/2/2026, 28/2/2026) · Malaysian Reserve (10/6/2026) · EnQuest PLC Press Release · The Edge Malaysia (8/2/2010, Azam Aris "The Petronas DNA") · World Oil · Fulcrum.sg · KSE Screener · DOSM Mining of Petroleum Q1 2026 · Bank Negara Malaysia Annual Report 2025. Edisi 3 halaman, susun atur oleh Arif Fazil (geologist, bekas warga Petronas, federation operator arifOS). Sebarkan tanpa izin — kebenaran bukan untuk dijual.
+  </p>
+
+  <div class="body-footer">
+    <span>MINYAK KITA, KHAZANAH KITA · HAL 3/3 · EDISI RAKYAT</span>
+    <span class="sig">DITEMPA BUKAN DIBERI — 999 SEAL ALIVE</span>
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>
