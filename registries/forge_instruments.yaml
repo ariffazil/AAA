@@ -246,3 +246,38 @@ instruments:
     subagent_policy: null
     mcp_servers: []
     note: "NOT PRESENT ON MACHINE. No installation found."
+
+  - id: FI-008
+    name: Kimi Code CLI
+    binary: /root/.local/bin/kimi
+    version: "1.47.0"
+    model: kimi-code/kimi-for-coding
+    izin: GRANTED
+    izin_date: "2026-06-10"
+    sandbox: process
+    subagent_policy:
+      default: "888_HOLD"
+      registered_subagents:
+        - explore
+        - fix
+        - coordinator
+        - worker
+    mcp_servers:
+      - arifOS
+      - wealth
+      - well
+      - geox
+      - aforge
+      - minimax
+      - capability-index
+      - repomapper
+      - serena
+    mcp_servers_disabled:
+      - github
+      - brave-search
+      - meyhem
+      - playwright-mcp
+    config_path: /root/.kimi/config.toml
+    mcp_config_path: /root/.kimi/mcp.json
+    agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
+    note: "Aligned 2026-06-20. A-FORGE ingress switched to stdio (HTTP surface has SDK single-session limitation). AMANAH + MARUAH embedded in system identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through A-FORGE forge_* tools. Trust tier proposed: 2 pending A-AUDIT + F13 ratification."

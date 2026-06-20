@@ -3,7 +3,7 @@
 > **Purpose:** Every agent must know how to discover and init into the federation.
 > **Principle:** No agent boot without governed contract. No capability without attestation.
 > **Authority:** F13 SOVEREIGN — Arif remains final judge.
-> **Last Forged:** 2026-06-10 | **Forged by:** Ω (Omega)
+> **Last Forged:** 2026-06-20 | **Forged by:** Kimi Constitutional Clerk
 
 ---
 
@@ -149,6 +149,31 @@ Binary:    ❌ NOT INSTALLED
 Status:    N/A
 ```
 
+### FI-008 — Kimi Code CLI
+```
+Binary:    /root/.local/bin/kimi
+MCP:       9 active servers (arifOS, WEALTH, WELL, GEOX, A-FORGE, minimax, capability-index, repomapper, serena)
+           4 legacy servers disabled (github, brave-search, meyhem, playwright-mcp) — route through A-FORGE
+Transport: A-FORGE via stdio; federation organs via streamable-http
+Init:      POST http://127.0.0.1:8088/mcp → arif_session_init(mode="init", actor_id="kimi-code")
+Policy:    engineer (13 arifOS tools + 77 A-FORGE tools via stdio)
+Lease:     OBSERVE default; MUTATE requires A-FORGE lease + 888_HOLD for irreversible
+Rasa gate: verify (PreToolUse hooks: aaa-pre-govern + human-guard-hard)
+Subagents: explore, fix, coordinator, worker — all 888_HOLD by default
+```
+**A-FORGE stdio ingress:**
+```json
+{
+  "mcpServers": {
+    "aforge": {
+      "command": "sh",
+      "args": ["-lc", "cd /root/A-FORGE && node dist/src/interfaces/mcp/cli.js serve --transport stdio"]
+    }
+  }
+}
+```
+**Constitutional anchor:** AMANAH (F1) + MARUAH (F6) embedded in `/root/.kimi/agents/system.md` and `/root/.kimi/config.toml`.
+
 ---
 
 ## DISCOVERY LAYER 2: Federation Organs (Internal Agents)
@@ -164,10 +189,12 @@ MCP:       Routes to arifOS:8088
 
 ### AG-002 — A-FORGE (execution shell)
 ```
-Port:      7071
+Port:      7071 (HTTP bridge + A2A)
+MCP:       stdio via `node dist/src/interfaces/mcp/cli.js serve --transport stdio`
+           HTTP /mcp on :7071 exists but has SDK single-session limitation
 Role:      Execution broker — dry-run first, never sovereign
 Init:      Internal — identity_hash file
-Policy:    operator (12 tools, no seal/forge without lease)
+Policy:    operator (77 tools, no seal/forge without lease)
 MCP:       Routes to arifOS:8088
 ```
 
