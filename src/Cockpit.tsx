@@ -178,6 +178,10 @@ export default function Cockpit() {
     geox: 'loading', wealth: 'loading', well: 'loading', forge: 'loading',
   });
 
+  // Live organ attestation from arifOS + direct health probes
+  const [organAttestation, setOrganAttestation] = useState<{ organs: any[]; arifos_attestation: any; timestamp: string } | null>(null);
+  const [organAttestationLoading, setOrganAttestationLoading] = useState(true);
+
   // Model governance card from spine
   const [governanceCard, setGovernanceCard] = useState<ModelGovernanceCard | null>(null);
   const [governanceLoading, setGovernanceLoading] = useState(true);
@@ -238,6 +242,19 @@ export default function Cockpit() {
     }
   };
 
+  const fetchOrganAttestation = async () => {
+    try {
+      setOrganAttestationLoading(true);
+      const res = await fetch('/api/attestation/organs', { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        setOrganAttestation(data);
+      }
+    } catch { /* ignore */ } finally {
+      setOrganAttestationLoading(false);
+    }
+  };
+
   const pollLastMission = async (taskId: string) => {
     try {
       const res = await fetch(`${OPERATOR_API}/tasks/${taskId}`);
@@ -291,10 +308,12 @@ export default function Cockpit() {
     queueMicrotask(fetchTasks);
     queueMicrotask(fetchAgents);
     queueMicrotask(fetchGovernanceCard);
+    queueMicrotask(fetchOrganAttestation);
     const interval = setInterval(fetchTasks, 5000);
     const agentsInterval = setInterval(fetchAgents, 30000);
     const governanceInterval = setInterval(fetchGovernanceCard, 60000);
-    return () => { clearInterval(interval); clearInterval(agentsInterval); clearInterval(governanceInterval); };
+    const attestationInterval = setInterval(fetchOrganAttestation, 15000);
+    return () => { clearInterval(interval); clearInterval(agentsInterval); clearInterval(governanceInterval); clearInterval(attestationInterval); };
   }, []);
 
   useEffect(() => {
@@ -803,6 +822,56 @@ export default function Cockpit() {
               );
             })}
           </div>
+        </section>
+
+        {/* ── LIVE ORGAN ATTESTATION ── */}
+        <section className="mb-24">
+          <div className="flex items-baseline gap-4 mb-10">
+            <span className="text-4xl font-black text-white/10 font-mono italic">Ω</span>
+            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Live Organ Attestation</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {organAttestationLoading && !organAttestation && (
+              <div className="col-span-full p-6 border border-white/10 bg-white/[0.02]">
+                <p className="text-white/30 font-mono text-xs">Polling arifOS attestation stream…</p>
+              </div>
+            )}
+            {organAttestation?.organs?.map((organ: any) => (
+              <div
+                key={organ.name}
+                className={`p-5 border rounded-lg ${
+                  organ.healthy
+                    ? 'border-emerald-500/20 bg-emerald-950/5'
+                    : 'border-red-500/20 bg-red-950/5'
+                }`}
+              >
+                <div className="flex items-start justify-between mb-2">
+                  <div className="text-sm font-black text-white tracking-tight">{organ.name}</div>
+                  <div
+                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
+                      organ.healthy
+                        ? 'text-emerald-400 bg-emerald-950/30'
+                        : 'text-red-400 bg-red-950/30'
+                    }`}
+                  >
+                    {organ.healthy ? 'ALIVE' : 'DEGRADED'}
+                  </div>
+                </div>
+                <div className="text-[10px] font-mono text-white/40 mb-1">port {organ.port}</div>
+                <div className="text-[10px] font-mono text-white/50">{organ.detail}</div>
+              </div>
+            ))}
+          </div>
+          {organAttestation?.arifos_attestation && (
+            <div className="mt-4 p-4 border border-white/5 bg-white/[0.02]">
+              <div className="text-[10px] font-mono text-white/40 mb-2">
+                arifOS canonical attestation · {new Date(organAttestation.timestamp).toLocaleTimeString()}
+              </div>
+              <pre className="text-[9px] font-mono text-white/30 overflow-x-auto">
+                {JSON.stringify(organAttestation.arifos_attestation, null, 2).slice(0, 600)}
+              </pre>
+            </div>
+          )}
         </section>
 
         {/* ── TOOL REGISTRY ── */}
