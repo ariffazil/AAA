@@ -1,10 +1,10 @@
-# AAA FEDERATION STATE — 2026-06-16T17:30:00+08:00
+# AAA FEDERATION STATE — 2026-06-20T13:50:00+00:00
 # Forged by FORGE (000Ω)
 # Purpose: Single source of truth for what's running, what's configured, and what drifts
 
 meta:
   version: 1
-  last_audit: "2026-06-16T17:30:00+08:00"
+  last_audit: "2026-06-20T13:50:00+00:00"
   auditor: FORGE (000Ω)
   scope: "All federation organs + AAA warga + forge instruments"
 
@@ -149,7 +149,8 @@ agent_alignment:
     - id: kimi-code
       status: live
       root_config_ref: true
-      trust_tier: "proposed: 2 (pending A-AUDIT)"
+      trust_tier: "proposed: 2 (pending A-AUDIT + F13 ratification)"
+      last_aligned: "2026-06-20T13:50:00Z"
     - id: antigravity
       status: live
       root_config_ref: true
@@ -191,8 +192,8 @@ registry_consistency:
     ratification_required: "A-AUDIT + F13"
     
   forge_instruments yaml:
-    status: needs_update
-    missing: "kimi-code trust tier update"
+    status: updated
+    note: "FI-008 Kimi Code CLI entry added; A-FORGE stdio alignment + amanah/maruah identity reflected. Trust tier remains proposed: 2 pending A-AUDIT + F13."
     
   hosts yaml:
     status: needs_update
