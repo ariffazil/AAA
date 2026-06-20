@@ -116,9 +116,10 @@ async function checkOrganHealth(name, port) {
   if (result.status !== 200) return { name, port, healthy: false, detail: `HTTP ${result.status}` };
   const body = result.body || {};
   // Accept standard status fields AND organ-specific healthy verdicts
-  const status = body.status || body.verdict || 'unknown';
-  const healthy = ['healthy', 'ok', 'live', 'alive', 'serving', 'ready', 'pass', 'WELL_HOLD'].includes(status);
-  return { name, port, healthy, detail: status };
+  const statusRaw = body.status || body.verdict || 'unknown';
+  const status = String(statusRaw).toLowerCase();
+  const healthy = ['healthy', 'ok', 'live', 'alive', 'serving', 'ready', 'pass', 'well_hold'].includes(status);
+  return { name, port, healthy, detail: statusRaw };
 }
 
 async function sendTelegramMessage(text) {
