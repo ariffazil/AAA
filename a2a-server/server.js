@@ -1528,6 +1528,62 @@ app.get('/federation/peers/:peerId/contract', (req, res) => {
   res.json({ ok: true, contract });
 });
 
+// GET /api/attestation/organs — Live organ attestation from arifOS + direct health probes
+app.get('/api/attestation/organs', async (req, res) => {
+  try {
+    // Direct HTTP health probes (fast, fallback)
+    const organChecks = await Promise.all(
+      ORGANS.map(({ name, port }) => checkOrganHealth(name, port))
+    );
+
+    // Canonical arifOS attestation via local MCP HTTP surface
+    let arifosAttestation = null;
+    try {
+      const arifosResult = await httpGet(8088, '/health');
+      if (arifosResult.ok && arifosResult.status === 200) {
+        // Try the FastMCP tools endpoint for arif_organ_attest_all
+        const attestResult = await new Promise((resolve) => {
+          const req2 = HTTP.request(
+            { hostname: 'localhost', port: 8088, path: '/tools', method: 'POST', timeout: 8000, headers: { 'Content-Type': 'application/json' } },
+            (res2) => {
+              let data2 = '';
+              res2.on('data', (chunk) => data2 += chunk);
+              res2.on('end', () => {
+                try { resolve({ ok: true, status: res2.statusCode, body: JSON.parse(data2) }); }
+                catch { resolve({ ok: true, status: res2.statusCode, body: data2 }); }
+              });
+            }
+          );
+          req2.on('error', () => resolve({ ok: false }));
+          req2.on('timeout', () => { req2.destroy(); resolve({ ok: false }); });
+          req2.write(JSON.stringify({
+            jsonrpc: '2.0',
+            id: 1,
+            method: 'tools/call',
+            params: { name: 'arif_organ_attest_all', arguments: {} }
+          }));
+          req2.end();
+        });
+        if (attestResult.ok) {
+          arifosAttestation = attestResult.body;
+        }
+      }
+    } catch (e) {
+      // Non-fatal: direct probes are the fallback
+    }
+
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.json({
+      ok: true,
+      timestamp: new Date().toISOString(),
+      organs: organChecks,
+      arifos_attestation: arifosAttestation,
+    });
+  } catch (err) {
+    res.status(502).json({ ok: false, error: err.message });
+  }
+});
+
 // ── Grafana Webhook ────────────────────────────────────────────────────────
 app.post('/webhooks/grafana/alerts', async (req, res) => {
   const alert = req.body || {};
