@@ -247,6 +247,40 @@
       ]
     }
   ],
+  "peers": [
+    {
+      "id": "777-FORGE",
+      "name": "777 FORGE",
+      "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
+      "role": "session_spawn_witness",
+      "skills": ["777-spawn-witness", "777-preflight-validator", "777-process-verifier"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "aaa-architect",
+      "name": "AAA A-rchitect",
+      "url": "https://aaa.arif-fazil.com/a2a/architect",
+      "role": "task_designer",
+      "skills": ["design-task-schema", "propose-agent-mesh", "evaluate-treaty"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "aaa-engineer",
+      "name": "AAA A-engineer",
+      "url": "https://aaa.arif-fazil.com/a2a/engineer",
+      "role": "executor",
+      "skills": ["dispatch-task", "run-task"],
+      "trust_tier": "governed"
+    },
+    {
+      "id": "aaa-auditor",
+      "name": "AAA A-auditor",
+      "url": "https://aaa.arif-fazil.com/a2a/auditor",
+      "role": "constitutional_auditor",
+      "skills": ["evaluate-delegation", "check-floor-compliance", "emit-receipt"],
+      "trust_tier": "governed"
+    }
+  ],
   "extends_card": "aaa-gateway",
   "forbidden": {
     "cannot_execute": false,
