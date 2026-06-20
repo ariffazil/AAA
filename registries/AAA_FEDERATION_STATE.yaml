@@ -1,10 +1,10 @@
-# AAA FEDERATION STATE — 2026-06-20T13:50:00+00:00
+# AAA FEDERATION STATE — 2026-06-20T14:20:00+00:00
 # Forged by FORGE (000Ω)
 # Purpose: Single source of truth for what's running, what's configured, and what drifts
 
 meta:
   version: 1
-  last_audit: "2026-06-20T13:50:00+00:00"
+  last_audit: "2026-06-20T14:20:00+00:00"
   auditor: FORGE (000Ω)
   scope: "All federation organs + AAA warga + forge instruments"
 
@@ -39,6 +39,13 @@ live_services:
     process: node
     pid: 1594356
     bind: 127.0.0.1
+    note: "A-FORGE API bridge /sense + /operator routes"
+  aforge_mcp:
+    port: 7072
+    process: node
+    service: a-forge-mcp.service
+    bind: 127.0.0.1
+    note: "Dedicated MCP gateway; single streamable-http session, stdio preferred for agents"
   aaa:
     port: 3001
     process: node
@@ -193,7 +200,7 @@ registry_consistency:
     
   forge_instruments yaml:
     status: updated
-    note: "FI-008 Kimi Code CLI entry added; A-FORGE stdio alignment + amanah/maruah identity reflected. Trust tier remains proposed: 2 pending A-AUDIT + F13."
+    note: "FI-008 Kimi Code CLI entry added; A-FORGE stdio alignment + amanah/maruah identity reflected. 2026-06-20 also fixed a-forge-mcp.service (port 7072) missing server.connect(transport). Trust tier remains proposed: 2 pending A-AUDIT + F13."
     
   hosts yaml:
     status: needs_update
