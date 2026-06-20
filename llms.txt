@@ -1,13 +1,25 @@
 # AAA — Control Plane / Agent Cockpit
-> React 19 cockpit + A2A mesh gateway. Operator surface for the arifOS federation.
-> Port: 3001. License: AGPL-3.0. Status: OPERATIONAL. Version: 2026.06.09.
+> React 19 cockpit + A2A mesh gateway. Operator surface for the 6-organ arifOS federation.
+> Port: 3001. License: AGPL-3.0. Status: OPERATIONAL. Version: 2026.06.19.
+> Transport: JSON-RPC unified · ΔS ≤ 0 · all 6 organs healthy.
 
 ## Quick Context
-- **What:** Operator dashboard + A2A message broker for the 7-organ federation
+- **What:** Operator dashboard + A2A message broker for the 6-organ arifOS federation
 - **Role:** OPERATES missions — queues HOLDs, routes A2A messages, displays state
-- **Federation:** AAA shows. arifOS judges. Arif controls.
+- **Federation:** AAA shows. arifOS judges. A-FORGE executes. Arif controls.
+- **Transport:** JSON-RPC unified · ΔS ≤ 0 · all organs healthy since 2026-06-17
 - **Ingress:** Direct A-record → aaa.arif-fazil.com (Caddy → localhost:3001)
 - **Stack:** React 19 + Vite 8 + Tailwind 4 + Radix UI + Express A2A gateway
+
+## Federation Organs (6 live · as of 2026-06-19)
+| Organ | Port | Role | MCP Tools |
+|-------|------|------|-----------|
+| arifOS | 8088 | Governance kernel — F1-F13, 888 JUDGE, VAULT999 | 42 (13 canonical + 29 operational) |
+| A-FORGE | 7071 | Engineering actuator — plan, simulate, execute | operational |
+| GEOX | 8081 | Earth intelligence — wells, seismic, petrophysics | 40 |
+| WEALTH | 18082 | Capital intelligence — NPV, IRR, EMV | 23 |
+| WELL | 18083 | Vitality mirror — REFLECT_ONLY | 21 |
+| AAA | 3001 | Cockpit / identity / A2A (this surface) | — |
 
 ## Key Files
 - README.md — Full human-readable narrative (849 lines)

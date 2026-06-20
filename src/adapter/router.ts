@@ -15,13 +15,14 @@ export class GovernanceAdapter {
 
   async assessRisk(message: TaskMessage): Promise<RoutingDecision> {
     const prompt = this.extractText(message);
-    
+    const peer_contract_id = this.extractPeerContractId(message);
+
     try {
       // Call A-FORGE /sense for authoritative risk assessment
       const response = await fetch(`${this.afForgeUrl}/sense`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, version: '0.1.0' })
+        body: JSON.stringify({ prompt, version: '0.1.0', peer_contract_id })
       });
       
       const data = await response.json();
@@ -35,7 +36,8 @@ export class GovernanceAdapter {
         reason: data.judge?.reason || 'A-FORGE risk assessment completed',
         riskLevel: riskTier as RiskLevel,
         requiresConfirmation,
-        irreversibilityBond: requiresConfirmation ? `Required for ${riskTier} risk operations` : undefined
+        irreversibilityBond: requiresConfirmation ? `Required for ${riskTier} risk operations` : undefined,
+        peer_contract_id,
       };
 
     } catch (error) {
@@ -54,6 +56,14 @@ export class GovernanceAdapter {
       .filter((p): p is { kind: 'text'; text: string } => p.kind === 'text')
       .map(p => p.text)
       .join(' ');
+  }
+
+  private extractPeerContractId(message: TaskMessage): string | undefined {
+    const meta = message.metadata;
+    if (meta && typeof meta.peer_contract_id === 'string') {
+      return meta.peer_contract_id;
+    }
+    return undefined;
   }
 
   async routeIntent(message: TaskMessage): Promise<Record<string, unknown>> {
@@ -78,14 +88,15 @@ export class GovernanceAdapter {
   private async executeViaForge(message: TaskMessage) {
     // Architectural Law: All tool calls must route via A-FORGE
     console.log('[Adapter] Routing to A-FORGE for execution...');
-    
+
     const prompt = this.extractText(message);
-    
+    const peer_contract_id = this.extractPeerContractId(message);
+
     try {
       const response = await fetch(`${this.afForgeUrl}/route`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, mode: 'external' })
+        body: JSON.stringify({ prompt, mode: 'external', peer_contract_id })
       });
 
       if (!response.ok) {
@@ -121,6 +132,7 @@ export class GovernanceAdapter {
         agent_id: data.agent_id,
         session_id: data.session_id,
         coordinator: data.coordinator,
+        peer_contract_id,
         proof: {
           witness_type: 'agent',
           signature: `routed-${data.routing_decision}-${Date.now()}`,

@@ -1,0 +1,69 @@
+{
+  "contract_version": "1.0.0",
+  "peer_id": {
+    "organ": "AAA",
+    "instance_id": "9bb28793-16ac-4c77-aa04-b0fbed7c6555",
+    "did": "did:arifos:aaa-gateway-alpha",
+    "public_key_fingerprint": "aaa-gateway-ed25519-stub"
+  },
+  "authority_class": "route",
+  "capability_card": {
+    "schema_hash": "peer-federation-contract-v1",
+    "constitution_hash": "aaa-treaty-law-v1",
+    "tool_manifest_url": "https://aaa.arif-fazil.com/a2a/agent-card.json",
+    "allowed_action_classes": [
+      "OBSERVE",
+      "PREPARE",
+      "MUTATE"
+    ],
+    "max_risk_tier": "T3",
+    "skills": [
+      "route_task",
+      "discovery",
+      "agent_lifecycle",
+      "federation_probe",
+      "approval_queue"
+    ]
+  },
+  "lease_required": true,
+  "reversibility_score": 0.7,
+  "accepted_inputs": [
+    {
+      "schema_id": "a2a-task-v1",
+      "schema_url": "https://aaa.arif-fazil.com/schemas/arep-task.schema.json"
+    },
+    {
+      "schema_id": "federation-envelope-v2",
+      "schema_url": "https://arifos.arif-fazil.com/schemas/federation_envelope.schema.json"
+    }
+  ],
+  "forbidden_actions": [
+    "issue_seal",
+    "execute_mutation",
+    "self_authorize",
+    "judge",
+    "move_capital",
+    "drill_decision"
+  ],
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "arifos_vault999_v2",
+    "nats_subject": "arifos.peer.contract.aaa"
+  },
+  "human_veto": {
+    "f13_absolute": true,
+    "override_paths": [
+      {
+        "channel": "a2a_task",
+        "endpoint": "https://aaa.arif-fazil.com/a2a/tasks"
+      }
+    ]
+  },
+  "trust_score": 0.92,
+  "signed_attestation": {
+    "issuer": "arifOS-888-JUDGE",
+    "signature": "stub-attestation-aaa-gateway-pending-f13-ratification",
+    "issued_at": "2026-06-16T19:54:41Z",
+    "expires_at": "2027-06-16T19:54:41Z"
+  }
+}

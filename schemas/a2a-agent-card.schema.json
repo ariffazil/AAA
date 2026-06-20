@@ -206,6 +206,10 @@
         "session_mode",
         "approval_policy"
       ]
+    },
+    "peer_contract_url": {
+      "type": "string",
+      "format": "uri"
     }
   },
   "required": [

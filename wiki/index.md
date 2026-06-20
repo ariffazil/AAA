@@ -10,7 +10,7 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-05-22 | Total markdown pages: 112
+> Last updated: 2026-06-19 | Total markdown pages: 113
 
 ---
 
@@ -108,6 +108,7 @@ confidence: high
 | [[concept-memory-layers-architecture]] | True shared memory = workspace file coupling |
 | [[concept-telegram-dual-bot-architecture]] | Dual-bot intentional: OpenClaw vs Hermes |
 | [[concept-skills-tool-map]] | TREE777 skills → MCP tool doctrine-to-actuator map |
+| [[concept-browser-io-surfaces-arifos]] | Browser transport alignment: MCP default, harness privileged |
 
 ---
 

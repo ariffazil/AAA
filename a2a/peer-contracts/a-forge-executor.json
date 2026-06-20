@@ -1,0 +1,75 @@
+{
+  "contract_version": "1.0.0",
+  "peer_id": {
+    "organ": "A-FORGE",
+    "instance_id": "ccaca653-c318-453d-8c6f-8f80f8d16be2",
+    "did": "did:arifos:a-forge-alpha",
+    "public_key_fingerprint": "a-forge-ed25519-stub"
+  },
+  "authority_class": "execute",
+  "capability_card": {
+    "schema_hash": "peer-federation-contract-v1",
+    "constitution_hash": "a-forge-hexagonal-domain-v1",
+    "tool_manifest_url": "https://forge.arif-fazil.com/.well-known/agent-card.json",
+    "allowed_action_classes": [
+      "OBSERVE",
+      "PREPARE",
+      "MUTATE"
+    ],
+    "max_risk_tier": "T4",
+    "skills": [
+      "plan",
+      "simulate",
+      "build",
+      "deploy",
+      "rollback",
+      "repo_steward"
+    ]
+  },
+  "lease_required": true,
+  "reversibility_score": 0.5,
+  "accepted_inputs": [
+    {
+      "schema_id": "forge-plan-v1",
+      "schema_url": "https://forge.arif-fazil.com/schemas/forge_plan.schema.json"
+    },
+    {
+      "schema_id": "federation-envelope-v2",
+      "schema_url": "https://arifos.arif-fazil.com/schemas/federation_envelope.schema.json"
+    }
+  ],
+  "forbidden_actions": [
+    "self_authorize",
+    "issue_seal",
+    "judge",
+    "execute_without_lease",
+    "execute_without_seal",
+    "move_capital",
+    "drill_decision"
+  ],
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "arifos_vault999_v2",
+    "nats_subject": "arifos.peer.contract.a-forge"
+  },
+  "human_veto": {
+    "f13_absolute": true,
+    "override_paths": [
+      {
+        "channel": "a2a_task",
+        "endpoint": "https://aaa.arif-fazil.com/a2a/tasks"
+      },
+      {
+        "channel": "mcp_tool",
+        "endpoint": "https://arifos.arif-fazil.com/mcp"
+      }
+    ]
+  },
+  "trust_score": 0.88,
+  "signed_attestation": {
+    "issuer": "arifOS-888-JUDGE",
+    "signature": "stub-attestation-a-forge-pending-f13-ratification",
+    "issued_at": "2026-06-16T19:54:41Z",
+    "expires_at": "2027-06-16T19:54:41Z"
+  }
+}

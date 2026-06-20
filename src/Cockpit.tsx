@@ -112,14 +112,15 @@ type KernelHealth = {
 };
 
 const TEST_ALERT_PATTERN = /(Phase1|Test Organ|Verification Test|Dry.?Run)/i;
-const MCP_PROTOCOL = 'v1.0.0-FORGED'; // SOT — MCP protocol, not A2A (A2A = 0.3.0)
+const MCP_PROTOCOL = 'JSON-RPC 2.0'; // SOT — all 6 organs unified, streamable-http, ΔS ≤ 0
 
 const GOLDEN_PATH = ['SENSE', 'MIND', 'HEART', 'JUDGE', 'VAULT'] as const;
 
 const DOMAIN_MCPS = [
-  { id: 'geox', label: 'GEOX', symbol: '🌍', desc: 'Earth intelligence · 34 skills', url: 'https://geox.arif-fazil.com/health' },
-  { id: 'wealth', label: 'WEALTH', symbol: 'Ω', desc: 'Capital intelligence · entropy flows', url: 'https://wealth.arif-fazil.com/health' },
-  { id: 'well', label: 'WELL', symbol: 'Ψ', desc: 'Vitality mirror · substrate health', url: 'https://well.arif-fazil.com/health' },
+  { id: 'geox', label: 'GEOX', symbol: '🌍', desc: 'Earth intelligence · 40 tools · JSON-RPC', url: 'https://geox.arif-fazil.com/health' },
+  { id: 'wealth', label: 'WEALTH', symbol: 'Ω', desc: 'Capital intelligence · 23 tools · JSON-RPC', url: 'https://wealth.arif-fazil.com/health' },
+  { id: 'well', label: 'WELL', symbol: 'Ψ', desc: 'Vitality mirror · 21 tools · JSON-RPC', url: 'https://well.arif-fazil.com/health' },
+  { id: 'forge', label: 'A-FORGE', symbol: '⚡', desc: 'Metabolic shell · engineering actuator', url: 'https://forge.arif-fazil.com/health' },
 ];
 
 // Map A2A task state → golden path step index (0–4)
@@ -174,7 +175,7 @@ export default function Cockpit() {
 
   // Domain MCP health
   const [domainHealth, setDomainHealth] = useState<Record<string, DomainStatus>>({
-    geox: 'loading', wealth: 'loading', well: 'loading',
+    geox: 'loading', wealth: 'loading', well: 'loading', forge: 'loading',
   });
 
   // Model governance card from spine
@@ -513,8 +514,8 @@ export default function Cockpit() {
               VAULT999: {vaultConnected ? 'CONNECTED' : 'LOCAL'}
             </div>
             <SessionBadge manifest={sessionManifest} onRevoke={() => setSessionManifest(null)} />
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono text-white/60" title="MCP protocol version — SOT, not live">
-              MCP: {MCP_PROTOCOL} <span className="text-white/30">[SOT]</span>
+            <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-emerald-950/20 border border-emerald-500/30 rounded text-[9px] font-mono text-emerald-400" title="JSON-RPC 2.0 + streamable-http — all 6 organs unified, ΔS ≤ 0">
+              JSON-RPC · ΔS≤0 <span className="text-emerald-500">[LIVE]</span>
             </div>
           </div>
         </div>
@@ -957,12 +958,16 @@ export default function Cockpit() {
               <div className="text-white/80">{kernelData?.git_commit || '—'} <span className="text-white/30">[LIVE]</span></div>
             </div>
             <div>
-              <div className="text-white/30 uppercase tracking-widest mb-1">MCP</div>
-              <div className="text-white/80">{MCP_PROTOCOL} <span className="text-white/30">[SOT]</span></div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">Transport</div>
+              <div className="text-white/80">JSON-RPC 2.0 <span className="text-emerald-400">[LIVE]</span></div>
             </div>
             <div>
               <div className="text-white/30 uppercase tracking-widest mb-1">Cockpit Build</div>
-              <div className="text-white/80">v55.5.1 <span className="text-white/30">[SOT]</span></div>
+              <div className="text-white/80">v2026.06.18 <span className="text-white/30">[SOT]</span></div>
+            </div>
+            <div>
+              <div className="text-white/30 uppercase tracking-widest mb-1">ΔS</div>
+              <div className="text-emerald-400">≤ 0 <span className="text-white/30">[UNIFIED]</span></div>
             </div>
             <div>
               <div className="text-white/30 uppercase tracking-widest mb-1">Tools Loaded</div>
@@ -987,7 +992,7 @@ export default function Cockpit() {
           </div>
         </div>
         <div className="text-center text-[10px] font-mono tracking-[0.2em] text-white/20 pt-8">
-          Δ AAA COCKPIT · arifOS {kernelData?.release_name || '—'} · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
+          Δ AAA COCKPIT · arifOS {kernelData?.release_name || '—'} · 6 ORGANS · JSON-RPC · ΔS ≤ 0 · DITEMPA BUKAN DIBERI · Forged in Kuala Lumpur 🇲🇾
         </div>
       </footer>
     </div>
