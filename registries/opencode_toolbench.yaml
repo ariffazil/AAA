@@ -2,7 +2,7 @@ $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
 last_forged: '2026-06-16T16:30:00Z'
 forged_by: Codex RSI/Forge
-opencode_version: 1.17.7
+opencode_version: 1.17.8
 opencode_binary: /usr/local/bin/opencode
 config_paths:
   root_config: /root/AAA/ROOT_AGENT_CONFIG.yaml
@@ -327,8 +327,8 @@ axes:
     - name: minimax-media
       slot: 14
       type: remote
-      url: http://127.0.0.1:18090/sse
-      transport: sse
+      url: http://127.0.0.1:18090/mcp
+      transport: streamableHttp
       tools: 8
       sot: "MiniMax Media MCP / 8 tools: text_to_audio, list_voices, voice_clone, voice_design, generate_video, text_to_image, music_generation, query_video_generation"
       tier: media
@@ -338,8 +338,8 @@ axes:
     - name: minimax-code
       slot: 15
       type: remote
-      url: http://127.0.0.1:18091/sse
-      transport: sse
+      url: http://127.0.0.1:18091/mcp
+      transport: streamableHttp
       tools: 2
       sot: "MiniMax Code Plan MCP / 2 tools: web_search, understand_image"
       tier: code-assist
@@ -1049,9 +1049,8 @@ constitutional_binding:
 model_strategy:
   top_level:
     model: deepseek/deepseek-v4-pro
-    small_model: minimax/MiniMax-M3
-    rationale: deepseek for reasoning, minimax for cheap fallback. No native 'fallback' field in opencode
-      1.17.4 — small_model is the closest equivalent.
+    small_model: tokenplan-mimo/mimo-v2.5
+    rationale: deepseek for reasoning, MiMo v2.5 for cheap governed fallback within the same provider family.
   per_agent:
     architect: deepseek (strong reasoning for design)
     rsi: deepseek (deterministic measurement)
