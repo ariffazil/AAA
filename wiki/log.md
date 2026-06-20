@@ -995,3 +995,21 @@
 - **When:** 2026-06-20T08:28:05Z
 
 ---
+
+## [2026-06-20] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-20.json`
+- **When:** 2026-06-20T09:14:02Z
+
+---
+
+## [2026-06-20] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-06-20.json`
+- **When:** 2026-06-20T09:35:07Z
+
+---
