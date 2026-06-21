@@ -66,7 +66,7 @@
       "description": "Given a remote AgentCard: verify identity consistency, check for F09 ANTIHANTU violations (contradictory identity claims), assess trust tier, flag anomalies. Returns trust score and anomaly list.",
       "tags": ["verify", "agent-card", "identity", "trust", "f09"],
       "floor_scope": ["F01", "F02", "F04", "F09", "F11"],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "input_modes": ["application/json"],
       "output_modes": ["application/json"]
@@ -77,7 +77,7 @@
       "description": "Write a VAULT999 receipt for a completed dispatch, handoff, or high-stakes task. Records: taskId, from_agent, to_agent, skill, floor_scope, verdict, timestamp, chain_hash.",
       "tags": ["receipt", "vault999", "audit", "seal"],
       "floor_scope": ["F01", "F02", "F03", "F04", "F13"],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "irreversible",
       "receipt_targets": ["VAULT999"],
       "input_modes": ["application/json"],
@@ -101,7 +101,7 @@
       "description": "Reconstruct the full history of a task: all state transitions, messages, artifacts, delegation events, receipts. Verifies no silent mutations or hidden state changes.",
       "tags": ["audit", "history", "task", "trace"],
       "floor_scope": ["F01", "F02", "F03", "F04"],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "input_modes": ["application/json"],
       "output_modes": ["application/json"]

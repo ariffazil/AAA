@@ -1,13 +1,13 @@
 hexagon:
   version: 2.0.0
   seal:
-    seal_id: HEXAGON-AGENTS-FORGE-20260602
+    seal_id: HEXAGON-333-EMBODIED-20260621
     verdict: SEAL
     authority: Muhammad Arif bin Fazil — F13 SOVEREIGN
-    ratified: '2026-06-02T19:54:59.815809+00:00'
-    chain_length: 2505
-    merkle_leaf: 69c65e7c64e3dd1fdc08aac7bf862be3...
-    predecessor: TRUTH-BOUND-UPGRADE-20260602
+    ratified: '2026-06-21T12:00:00+08:00'
+    chain_length: 2506
+    predecessor: HEXAGON-AGENTS-FORGE-20260602
+    mutation: "333-AGI promoted from SPEC to LIVE — embodied as OpenClaw on port 18789"
   architecture: Hybrid 5 — 3 PRIMARY + 2 SUPPORT
   motto: DITEMPA BUKAN DIBERI
   total_skills: 20
@@ -78,11 +78,15 @@ hexagon:
       trinity: Δ MIND
       stage: 333-THINK
       skills: 10
+      status: live
+      runtime: openclaw
+      runtime_port: 18789
       role: reasons + executes (FORGE subsumed)
       hosts:
       - arifOS
       - GEOX
       - WEALTH
+      - OpenClaw
     - id: 555-ASI
       class: ASI
       trinity: Ω HEART
