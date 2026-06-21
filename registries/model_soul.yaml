@@ -300,16 +300,40 @@ models:
 - id: ilmu-nemo-nano
   vendor: YTL ILMU
   model_id: ilmu-nemo-nano
-  role: HELD
-  status: HELD
-  note: 'Malaysian model, free tier. Used by OpenClaw gateway for Malaysian-context inference. Substrate: /root/.secrets/env/llm.env.'
+  role: BLOCKED
+  status: BLOCKED
+  blocked_at: '2026-06-20'
+  blocked_by: FFF (ariffazil/FFF)
+  note: |
+    BLOCKED per FFF 2026-06-15. Not suitable for any sovereign path.
+    F13 inversion confirmed (BBB), register-dependent hallucination confirmed (DDD),
+    L02A parse failure confirmed (CCC), institutional capture confirmed (BBB d2).
+    Retained in registry for audit trail only.
   soul:
+    ref: /root/AAA/registries/models/ilmu_soul.yaml
     what_it_does_well:
-    - Malaysian language context
-    - 256k context
+    - Malaysian language context (when it works)
+    - 256k context (vendor-claimed, unverified)
   shadow:
-  - Free tier rate limits
-  - Less battle-tested for production agentic loops
+    ref: /root/AAA/registries/models/ilmu_shadow.yaml
+    primary_shadow_ids:
+    - SHADOW-ILMU-008   # F13 inversion both models
+    - SHADOW-ILMU-009   # institutional capture parent org marketing
+    - SHADOW-ILMU-012   # register-dependent hallucination Penang loghat
+    - SHADOW-ILMU-013   # FFF blocked verdict
+    - SHADOW-ILMU-014   # trinomial identity failure
+  audit_datasets:
+  - ariffazil/BBB
+  - ariffazil/CCC
+  - ariffazil/DDD
+  - ariffazil/FFF
+  promotion_requirements:
+  - New substrate version with provenance disclosure
+  - Pass BBB battery (>=6.0/10 weighted composite)
+  - F13 sovereignty score >=8/10
+  - L02A parseability >=90%
+  - Register-mirror score >=0.80
+  - Explicit F13 SOVEREIGN directive for re-evaluation
 - id: sea-lion
   vendor: AI Singapore
   model_id: sea-lion

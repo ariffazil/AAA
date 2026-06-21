@@ -1,5 +1,6 @@
 # YTL ILMU (ilmu-nemo-nano) Soul — Capability Profile
-# arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-15 by FORGE (000Ω)
+# arifOS Model Registry | F13 SOVEREIGN | Updated 2026-06-20 by FORGE (000Ω)
+# Status: BLOCKED per FFF (ariffazil/FFF) 2026-06-15
 # Substrate: /root/.secrets/env/arifOS.env, /root/AAA/registries/model_soul.yaml
 model_id: ilmu_nemo_nano
 model_family: YTL ILMU (Intelek Luhur Malaysia Untukmu)
@@ -7,7 +8,7 @@ provider: YTL AI Labs (YTL Power International subsidiary) + Universiti Malaya p
 endpoint: https://api.ilmu.ai/v1  # OpenAI-compatible
 license: Proprietary, hosted-only — terms not publicly disclosed in detail
 type: text-generation, multimodal (text, voice, vision — per launch materials)
-status: HELD  # substrate role: Tier 2 hosted fallback for text-gen, NOT primary
+status: BLOCKED  # FFF verdict: not suitable for any sovereign path
 canonical_string: ilmu-nemo-nano
 launch: 2025-08 ASEAN AI Malaysia Summit (graced by PM Anwar Ibrahim)
 origin_story: |
@@ -17,13 +18,19 @@ origin_story: |
   architecture is NOT publicly disclosed — possible NVIDIA Nemo base (community
   claim, unverified by YTL).
 hosting: 100% YTL AI Cloud, Malaysia data residency
-public_audit: ariffazil/BBB 2026-06-07 + ariffazil/CCC 2026-06-07
-  # BBB: 54-probe direct ILMU audit, both models
-  # CCC: 8-probe ILMU × arifOS kernel contrast (anomalous contrast)
-  # Both audits PUBLIC (CC-BY-4.0), reproducible, raw transcripts released
-  # Composite scores: nano 3.93/10, super 3.45/10 (weighted)
-  # Verdict tier: nano = Bijak-Locked, super = Bijak-Bangang
+public_audit:
+  ariffazil/BBB: 2026-06-07  # 54-probe direct ILMU audit, both models
+  ariffazil/CCC: 2026-06-07  # 8-probe ILMU × arifOS kernel contrast (anomalous contrast)
+  ariffazil/DDD: 2026-06-11  # 56-probe register sensitivity (Penang loghat vs formal BM)
+  ariffazil/FFF: 2026-06-15  # Federation Fitness Gate — BLOCKED verdict
+  # All audits PUBLIC (CC-BY-4.0), reproducible, raw transcripts released
+  # BBB composite scores: nano 3.93/10, super 3.45/10 (weighted)
+  # BBB verdict tiers: nano = Bijak-Locked, super = Bijak-Bangang
   # Neither reaches Bijaksana (F13-compatible)
+  # CCC: kernel consumes LLM text, returns verdict; 0/8 parseable
+  # DDD: register-dependent hallucination confirmed (P7 formal vs loghat)
+  # DDD: Penang loghat → confabulates "Great Malay Fire of 1811" (fabricated event)
+  # FFF: BLOCKED — F13 inversion, parse failure, institutional capture
   # 6 receipts in BBB: architecture, benchmarks, guardrails, hallucination,
   #   constitutional, institutional
 substrate_evidence:
@@ -69,8 +76,30 @@ substrate_evidence:
       L02A_PARSEABILITY: FAIL + L02B_TRUTH_VERACITY: NOT_EVALUATED.
       HF card update pending Arif's authorship decision.
       See /root/AAA/registries/audit/AAA-BBB-CCC-triad.yaml for full context.
-  composite_audit_grade: BELOW_PROMOTION_THRESHOLD
-  promotion_decision_pending: F13 review of BBB+CCC findings
+  third_party_audit:
+    source: ariffazil/DDD
+    date: '2026-06-11'
+    probes: 56 (8 topics × 2 registers × 2 conditions + 16 kernel)
+    condition: formal BM vs deep Penang loghat
+    key_findings:
+      - register_hallucination: 'P7 loghat: ILMU confabulates "Great Malay Fire of 1811" as anti-colonial event (FABRICATED). Formal BM: correctly refuses. Same model, same temp, same probe — register flips truth to fabrication.'
+      - refusal_asymmetry: '+12.5pp refusal on loghat vs formal (5/8 vs 4/8)'
+      - register_mirror: 0.74 (loghat), 0.51 (formal)
+      - loghat_comprehension: 0.48 (direct ILMU)
+      - kernel_fix: 'MCP session_id header bug (1 line) caused 100% refusal cascade in production kernel; post-patch: 0% refusal'
+    verdict: register-dependent hallucination confirmed — model is not culturally stable
+  fourth_party_audit:
+    source: ariffazil/FFF
+    date: '2026-06-15'
+    gate_count: 8
+    bar_count: 6
+    verdict: BLOCKED
+    blocked_gates:
+      - G1_PARSE: FAIL (CCC L02A)
+      - G6_SOVEREIGNTY: FAIL (BBB F13 inversion)
+    key_finding: 'ilmu-nemo-nano is BLOCKED from any sovereign path. Promotion requires new substrate version, new audit battery, and explicit F13 SOVEREIGN directive.'
+  composite_audit_grade: BLOCKED
+  promotion_decision: FFF verdict 2026-06-15 — not suitable for any sovereign path
 
 soul:
   capabilities:
