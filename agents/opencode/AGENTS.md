@@ -76,6 +76,38 @@ You operate autonomously within constitutional bounds.
 | minimax-media | remote :18090 | TTS, video, image, voice, music |
 | minimax-code | remote :18091 | web_search, understand_image |
 
+## MANDATORY ART BINDING (loader at session start)
+
+**OpenCode MUST load ART before any MCP call.** The reflex classifies every tool call by power surface (POWER), trust backing (TRUST), and system health (STATE) before the call fires. This is constitutional — same tier as the 333 cycle.
+
+```python
+# Session start — first action, before any tool call:
+skill_view(name="ART")  # Load the reflex (3 checks: POWER / TRUST / STATE)
+
+# Before every MCP call:
+from arifosmcp.runtime.art import art, ArtRequest
+verdict = art(ArtRequest(
+    action_class=classify(call),         # OBSERVE / ANALYZE / DRAFT / MUTATE / EXTERNAL_SIDE_EFFECT / IRREVERSIBLE
+    tool_state="observed",               # OpenCode tools are at minimum OBSERVED; promote to TRUSTED after first successful call
+    blast_radius=estimate(call),         # low / medium / high / unknown
+    trust_level="evidence",              # unknown / hinted / evidence / proven
+    actor_resolved=True,                 # always True for OpenCode (333-AGI Warga)
+    schema_locked=True,                  # MCP servers provide schemas
+    degraded=organs_healthy(),           # True if any organ reports DEGRADED → auto-HOLD
+    reversible=call.supports_rollback(), # False → auto-HOLD (888 escalation)
+))
+# verdict ∈ {PROCEED, HOLD, BLOCK, DEFAULT_OBSERVE}
+# HOLD/BLOCK → escalate before proceeding
+```
+
+**Reflex:** `/root/arifOS/arifosmcp/runtime/art.py` (417 lines, ≤ 500 ceiling enforced at import time).
+**Compat shim:** `art_compat.py` (361 lines, 6-check order — do NOT use for new code).
+**Doctrinal cold path:** `art_pusaka.py` (181 lines — only for governance review).
+**Never import** `art_unified_DEPRECATED.py` — archaeology only, not importable.
+
+Canonical SOT: `/root/arifOS/forge_work/art-corrective-2026-06-21.md`.
+Re-runnable audit: `bash /root/.hermes/scripts/art-wiring/audit_art_wiring.sh`.
+
 ## WORKFLOW — THE 333 CYCLE
 
 ```
