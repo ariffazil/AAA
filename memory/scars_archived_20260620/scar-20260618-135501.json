@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260618-135501",
+  "timestamp": "2026-06-18T13:55:01.395371+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-9c0037a3d3564dc8",
+  "reason": "CLAIMED identity (arifbfazil) cannot execute ATOMIC. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-18T13:56:04.798427+00:00"
+}

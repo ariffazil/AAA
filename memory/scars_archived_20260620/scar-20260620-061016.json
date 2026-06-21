@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260620-061016",
+  "timestamp": "2026-06-20T06:10:16.512081+00:00",
+  "tool_name": "forge_query",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-6b9a8d7829714156",
+  "reason": "Tool surface drift detected: missing=['arif_bridge', 'arif_kernel_attest', 'arif_kernel_health', 'arif_kernel_status', 'arif_route', 'arif_triage'], extra=[]",
+  "severity": "warn",
+  "count": 1
+}

@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260620-160246",
+  "timestamp": "2026-06-20T16:02:46.843237+00:00",
+  "tool_name": "arif_gateway_connect",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-bfb0b772f0a444ad",
+  "reason": "E7 HOLD: Invalid risk_tier=LOW or blast_radius=ORGAN",
+  "severity": "critical",
+  "count": 1
+}

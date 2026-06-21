@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-171637",
+  "timestamp": "2026-06-14T17:16:37.652099+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "CLAIMED identity (arif) cannot execute ATOMIC. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 11,
+  "last_seen": "2026-06-20T16:20:27.543172+00:00"
+}

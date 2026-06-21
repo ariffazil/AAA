@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260620-194413",
+  "timestamp": "2026-06-20T19:44:13.012680+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-debug-1",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_vault_seal",
+  "severity": "critical",
+  "count": 1
+}

@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-103842",
+  "timestamp": "2026-06-14T10:38:42.214890+00:00",
+  "tool_name": "forge_plan",
+  "agent_id": "anonymous",
+  "session_id": "sess_83250056c5bb49a1",
+  "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
+  "severity": "critical",
+  "count": 58,
+  "last_seen": "2026-06-20T19:11:35.791036+00:00"
+}

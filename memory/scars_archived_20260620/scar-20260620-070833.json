@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-070833",
+  "timestamp": "2026-06-20T07:08:33.610421+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "sess_9abe0af9c8ab4200",
+  "reason": "Anonymous actor cannot execute ATOMIC. Call arif_session_init with verified actor_id.",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-20T14:14:41.286474+00:00"
+}
