@@ -342,6 +342,8 @@ Before acting on any request:
 | Secret vault index | `/root/.secrets/INDEX.md` |
 | arifOS source | `/root/arifOS/` |
 | AAA repo (this file lives here) | `github.com/ariffazil/AAA` |
+| Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
+| Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |
 
 ---
 
