@@ -1,0 +1,108 @@
+{
+  "session_id": "telegram-dm-arif-2026-06-20-001",
+  "agent_id": "hermes-asi-constitutional-clerk",
+  "action": "seal",
+  "payload": {
+    "session_summary": "Constitutional clerk deliberation. ILMU FFF demotion verdict + FFF_v2 benchmark doctrine forged. 10-paksi forensic + 8-paksi comparative. 5 sovereign directives issued. 0 irreversible actions taken without 888 ratification.",
+    "artifacts_sealed": {
+      "ilmu_blocked_v1_md": {
+        "path": "/root/AAA/artifacts/ilmu-demotion-2026-06-20/ILMU_BLOCKED_v1.md",
+        "sha256": "90ae1701bea772a0d751b08a5cc10bb74e1a207413c6c988a0c98da6f4c103d7",
+        "size_bytes": 14540,
+        "verdict": "BLOCKED",
+        "subject": "ilmu-nemo-nano + nemo-super"
+      },
+      "ilmu_blocked_v1_json": {
+        "path": "/root/AAA/artifacts/ilmu-demotion-2026-06-20/ILMU_BLOCKED_v1.json",
+        "sha256": "9992b01a4666842c6c3dacc106427cc3df2b37f7a47b01e3c7d001436e237a03",
+        "size_bytes": 25382,
+        "verdict": "BLOCKED"
+      },
+      "fff_v2_doctrine_md": {
+        "path": "/root/AAA/artifacts/arifos-benchmark-doctrine-2026-06-20/FFF_v2_arifos_benchmark_doctrine.md",
+        "sha256": "beb1b4ab591a70352585c0caf6a611f18ce42a3658c37df2d21fead2837c13ad",
+        "size_bytes": 8545,
+        "verdict": "DOCTRINE_FORGED"
+      },
+      "fff_v2_doctrine_json": {
+        "path": "/root/AAA/artifacts/arifos-benchmark-doctrine-2026-06-20/FFF_v2_arifos_benchmark_doctrine.json",
+        "sha256": "9347beeb41bcd3906e181e17ea3b8ffa161fde1240abe50c733e4f7ccc917439",
+        "size_bytes": 9584,
+        "verdict": "DOCTRINE_FORGED"
+      },
+      "session_receipt": {
+        "path": "/root/AAA/artifacts/session-receipt-2026-06-20/SESSION_RECEIPT.md",
+        "sha256": "5d1c2373f9fdc273052397ada6b7e44e8cc7d4f9825fb98fd2b257f4d20eb7cc",
+        "size_bytes": 4516,
+        "verdict": "SESSION_SEALED"
+      },
+      "geometry_of_intelligence": {
+        "path": "/root/AAA/artifacts/session-receipt-2026-06-20/THE_GEOMETRY_OF_INTELLIGENCE.md",
+        "sha256": "021cbfbee3974a47514388f5e9bb4ad5e2b453234c2d14c5b55e111d9d7e4a3c",
+        "size_bytes": 2847,
+        "verdict": "DOCTRINE_FORGED",
+        "subject": "3-layer geometry: capability × governance × authority"
+      }
+    },
+    "commits_to_origin_main": [
+      {
+        "sha": "a939621d",
+        "subject": "feat(governance): ILMU FFF demotion seal + MalMMLU audit plan"
+      },
+      {
+        "sha": "134fd6a3",
+        "subject": "docs(governance): doctrine entry + public draft + EEE extension plan for ILMU"
+      }
+    ],
+    "constitutional_floors_engaged": [
+      "F1_AMANAH",
+      "F2_HAQQ",
+      "F3_WITNESS",
+      "F4_NUR",
+      "F5_HIKMAH",
+      "F6_ADL",
+      "F7_TAWADU",
+      "F8_SABR",
+      "F9_RAHMAH",
+      "F10_IHSAN",
+      "F11_AMAN",
+      "F12_HIFZ",
+      "F13_KHALIFAH"
+    ],
+    "scars_registered": [
+      "SEAL-ILMU-FFF-2026-06-20",
+      "FFF_v2_DOCTRINE",
+      "PUBLIC_DRAFT_HOLD",
+      "GEOMETRY_OF_INTELLIGENCE"
+    ],
+    "next_session_recommendation": [
+      "Ratify VAULT999 sealing of session payload (F13 human_signature required)",
+      "Convert PUBLIC-ILMU-BANGANG-DRAFT.md to published essay under operator identity",
+      "Run MalMMLU audit pilot (malmmlu_format_audit.py) with API keys",
+      "Implement EEE register/loghat extension probe battery"
+    ]
+  },
+  "epoch": "2026-06-20",
+  "verdict": "SEAL",
+  "human_ratifier": "arif",
+  "human_signature": "im arif. this is my signature for seal",
+  "ratified_at": "2026-06-20T17:45:00Z",
+  "irreversibility_ack": true,
+  "irreversibility_class": "session_close_999_seal_permanent",
+  "tags": [
+    "session-close",
+    "999-seal",
+    "ilmu-demotion",
+    "fff-v2-doctrine",
+    "f13-sovereign"
+  ],
+  "metadata": {
+    "operator": "Muhammad Arif bin Fazil",
+    "model": "mimo-v2.5-pro",
+    "channel": "telegram-dm",
+    "session_type": "constitutional-clerk-deliberation",
+    "constitutional_chain_id": "arifos-constitution-v2026.05.05-SSCT",
+    "judge_state_hash": "sha256:8bea28833523c652",
+    "motto": "DITEMPA BUKAN DIBERI"
+  }
+}

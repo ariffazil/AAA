@@ -1,0 +1,4 @@
+curl -X POST http://localhost:5001/seal \
+  -H "Content-Type: application/json" \
+  -H "x-writer-token: <arif-vault-writer-token>" \
+  -d @/root/AAA/artifacts/session-receipt-2026-06-20/VAULT999_SEAL_REQUEST.json
