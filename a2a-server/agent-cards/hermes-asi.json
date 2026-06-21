@@ -69,7 +69,7 @@
         "F02",
         "F04"
       ],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible"
     },
     {
@@ -87,7 +87,7 @@
         "F07",
         "F08"
       ],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible"
     },
     {
@@ -105,7 +105,7 @@
         "F10",
         "F11"
       ],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible"
     },
     {
@@ -123,7 +123,7 @@
         "F05",
         "F06"
       ],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible"
     },
     {
@@ -141,7 +141,7 @@
         "F06",
         "F13"
       ],
-      "approval_policy": "hold",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "judgment_required": true
     },
@@ -160,7 +160,7 @@
         "F04",
         "F13"
       ],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible"
     },
     {
@@ -184,7 +184,7 @@
         "F12",
         "F13"
       ],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "mcp_servers": [
         "github-official",
