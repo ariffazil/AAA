@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-190524",
+  "timestamp": "2026-06-20T19:05:24.115361+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "forge-tiga-wire-2026-06-20",
+  "reason": "CLAIMED identity (FORGE-000) cannot execute IRREVERSIBLE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-20T19:18:38.185512+00:00"
+}

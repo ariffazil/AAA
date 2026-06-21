@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260620-063805",
+  "timestamp": "2026-06-20T06:38:05.909756+00:00",
+  "tool_name": "hermes_plan_review",
+  "agent_id": "anonymous",
+  "session_id": "sess_72b72fda4715464c",
+  "reason": "Tool surface drift detected: missing=['arif_bridge', 'arif_kernel_attest', 'arif_kernel_health', 'arif_kernel_status', 'arif_route', 'arif_triage'], extra=[]",
+  "severity": "warn",
+  "count": 1
+}

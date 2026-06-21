@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-161659",
+  "timestamp": "2026-06-20T16:16:59.842195+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "Risk T5 exceeds ceiling for ATOMIC",
+  "severity": "warn",
+  "count": 3,
+  "last_seen": "2026-06-20T16:20:27.659171+00:00"
+}

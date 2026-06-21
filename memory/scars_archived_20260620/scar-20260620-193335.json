@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-193335",
+  "timestamp": "2026-06-20T19:33:35.382225+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-70040752a6194ec2",
+  "reason": "MUTATE requires FederationEnvelope v2 with verified authority.",
+  "severity": "critical",
+  "count": 7,
+  "last_seen": "2026-06-20T19:42:31.402594+00:00"
+}
