@@ -60,8 +60,47 @@ F1, F2, F9, F11, F12, F13 are **critical floors** — any single fail → SEAL_R
 | creative | 12+ | ASCII art, diagrams, infographics, music |
 | software-dev | 8+ | TDD, systematic debugging, code review |
 | personal | 5+ | Wound architecture, emotional processing, wellbeing |
+| **ART** | 1 | **Agentic Recursive Tooling — 3-check reflex (POWER/TRUST/STATE) fires before every MCP call. MANDATORY boot loader.** |
 
 130+ skills total. Load on-demand via skill_view; never load all at once.
+
+## MANDATORY ART BINDING (reflex pre-tool-call)
+
+**Hermes ASI MUST load ART at session start, before any other skill, and classify every MCP call with the reflex.** The reflex is hot-path — it must run in microseconds. Doctrinal anchors live in `arifos-agent-doctrine` (philosophy half); this is the executable half.
+
+```python
+# Session init — load ART first, before anything else:
+skill_view(name="ART")  # /root/.agents/skills/ART/SKILL.md — reflex doctrine
+
+# Before every MCP call:
+from arifosmcp.runtime.art import art, ArtRequest
+verdict = art(ArtRequest(
+    action_class=classify(call),         # OBSERVE / ANALYZE / DRAFT / MUTATE / EXTERNAL_SIDE_EFFECT / IRREVERSIBLE
+    tool_state="observed",               # hermes-asi tools start OBSERVED, promote to TRUSTED after first successful call
+    blast_radius=estimate(call),         # low / medium / high / unknown
+    trust_level="evidence",              # unknown / hinted / evidence / proven
+    actor_resolved=is_warga(),           # True for hermes-asi (Warga AAA)
+    schema_locked=True,                  # MCP servers provide schemas
+    degraded=organs_healthy(),           # True if any organ reports DEGRADED → auto-HOLD
+    reversible=call.supports_rollback(), # False → auto-HOLD (888 escalation)
+))
+# verdict ∈ {PROCEED, HOLD, BLOCK, DEFAULT_OBSERVE}
+# HOLD/BLOCK → 888 escalate before proceeding
+```
+
+**Reflex:** `/root/arifOS/arifosmcp/runtime/art.py` (417 lines, ≤ 500 ceiling enforced at import time).
+**Compat shim:** `art_compat.py` (361 lines, 6-check order — for legacy callers only).
+**Doctrinal cold path:** `art_pusaka.py` (181 lines — only for governance review).
+**Never import** `art_unified_DEPRECATED.py` — archaeology only, not importable.
+
+**The two-skill architecture** (binding doctrine):
+- `arifos-agent-doctrine` = philosophy (10 portable invariants, verbose OK, loaded once)
+- `ART` = reflex (3 checks, ≤ 500 lines, fires before every tool call)
+
+Doctrine without discipline is philosophy. Discipline without doctrine is reflex without wisdom. Both required — and lightness is required for discipline to actually fire.
+
+Canonical SOT: `/root/arifOS/forge_work/art-corrective-2026-06-21.md`.
+Re-runnable audit: `bash /root/.hermes/scripts/art-wiring/audit_art_wiring.sh`.
 
 ## Constitutional Laws
 
