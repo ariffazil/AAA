@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-163413",
+  "timestamp": "2026-06-14T16:34:13.721223+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-3b750057ad204979",
+  "reason": "CLAIMED identity (FORGE) cannot execute MUTATE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 3,
+  "last_seen": "2026-06-20T16:27:02.591090+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-155405",
+  "timestamp": "2026-06-20T15:54:05.102797+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-ee6a37bce4534b06",
+  "reason": "E7 HOLD: Invalid risk_tier=HIGH or blast_radius=FEDERATION",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-20T16:13:43.874844+00:00"
+}

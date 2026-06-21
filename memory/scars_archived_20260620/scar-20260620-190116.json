@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-190116",
+  "timestamp": "2026-06-20T19:01:16.597837+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-64ac6c35c87f4e6c",
+  "reason": "Risk T4 exceeds ceiling for MUTATE",
+  "severity": "warn",
+  "count": 7,
+  "last_seen": "2026-06-20T19:28:51.111734+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-134344",
+  "timestamp": "2026-06-20T13:43:44.997567+00:00",
+  "tool_name": "arif_lease_issue",
+  "agent_id": "anonymous",
+  "session_id": "0a25ff0f-d877-4f26-b218-bd39e842f444",
+  "reason": "Tool surface drift detected: missing=['arif_bridge', 'arif_kernel_attest', 'arif_kernel_health', 'arif_kernel_status', 'arif_route', 'arif_triage'], extra=[]",
+  "severity": "warn",
+  "count": 4,
+  "last_seen": "2026-06-20T14:29:34.577103+00:00"
+}

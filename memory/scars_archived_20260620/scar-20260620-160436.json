@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-160436",
+  "timestamp": "2026-06-20T16:04:36.407468+00:00",
+  "tool_name": "arif_mind_reason",
+  "agent_id": "anonymous",
+  "session_id": "delegated-session",
+  "reason": "Envelope validation error: 'types.SimpleNamespace' object has no attribute 'validate_for_execution'",
+  "severity": "critical",
+  "count": 6,
+  "last_seen": "2026-06-20T16:20:27.545966+00:00"
+}
