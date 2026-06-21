@@ -63,7 +63,9 @@ aaa_warga:
     class: AGI
     ring: "Delta MIND"
     role: "primary reasoning and execution"
-    status: spec
+    status: live
+    runtime: openclaw
+    runtime_port: 18789
     card: agents/333-AGI/agent-card.json
   - id: 555-ASI
     class: ASI
@@ -98,8 +100,9 @@ runtime_peers:
     config_ref: agents/hermes-asi/config/config.yaml
   - id: openclaw
     status: live
-    role: "A2A mesh gateway and infra operator"
+    role: "A2A mesh gateway and infra operator — embodies 333-AGI (Δ MIND)"
     port: 18789
+    constitutional_identity: 333-AGI
     config_ref: agents/openclaw/config/config.yaml
   - id: 777-forge
     status: live

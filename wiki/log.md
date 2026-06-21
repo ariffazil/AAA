@@ -1040,3 +1040,116 @@
 - **When:** 2026-06-21T07:42:01Z
 
 ---
+
+## [2026-06-21] update | TREE777 777 health pulse (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-asi-2026-06-21.json`
+- **When:** 2026-06-21T08:07:01Z
+
+---
+
+## [2026-06-21] update | TREE777 777 health pulse (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-openclaw-2026-06-21.json`
+- **When:** 2026-06-21T08:28:02Z
+
+---
+
+## [2026-06-21] update | TREE777 777 health pulse (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-21.json`
+- **When:** 2026-06-21T09:14:01Z
+
+---
+
+## [2026-06-21] update | TREE777 777 health pulse (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** 777 health pulse (counts, freshness, orphan links)
+- **Report:** `wiki/_runtime/reports/tree777-health-opencode-2026-06-21.json`
+- **When:** 2026-06-21T09:35:01Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (apex)
+
+- **Who:** cron:apex
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-apex-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-apex-9b9c300b210eaba8`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T13:04:01Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (maxhermes)
+
+- **Who:** cron:maxhermes
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-maxhermes-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-maxhermes-78e65a56f8635128`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T13:25:02Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (phoenix72)
+
+- **Who:** cron:phoenix72
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-phoenix72-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-phoenix72-5843e36f6e9844cc`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T13:46:01Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (hermes-asi)
+
+- **Who:** cron:hermes-asi
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-hermes-asi-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-hermes-asi-107e58f138b4de92`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T14:11:01Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (openclaw)
+
+- **Who:** cron:openclaw
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-openclaw-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-openclaw-fdf5eee3736e68d6`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T14:32:01Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (hermes-ops)
+
+- **Who:** cron:hermes-ops
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-hermes-ops-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-hermes-ops-bff1aa67fc4d5af0`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T15:18:01Z
+
+---
+
+## [2026-06-21] seal | TREE777 999 weekly anchor (opencode)
+
+- **Who:** cron:opencode
+- **Scope:** weekly TREE777 growth anchor
+- **Anchor report:** `wiki/_runtime/reports/tree777-weekly-anchor-opencode-2026-06-21.json`
+- **Anchor receipt:** `TREE777-999-opencode-84e51e5cc2d9ce09`
+- **Ledger:** `VAULT999/tree777/tree777_anchors.jsonl`
+- **When:** 2026-06-21T15:39:01Z
+
+---

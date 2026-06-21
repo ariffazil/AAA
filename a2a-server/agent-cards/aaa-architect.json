@@ -53,7 +53,7 @@
       "description": "Define the canonical JSON structure for a class of tasks: mandatory fields, reversibility class, floor scope, handoff points, and artifact shape.",
       "tags": ["design", "schema", "task-structure"],
       "floor_scope": ["F01", "F02", "F04", "F08"],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "input_modes": ["text/plain", "application/json"],
       "output_modes": ["application/json"]
@@ -64,7 +64,7 @@
       "description": "Given a capability requirement, propose which agents AAA should discover, which AgentCards to trust, and which treaties to establish. Output is a candidate mesh with treaty draft.",
       "tags": ["discovery", "mesh", "topology", "treaty"],
       "floor_scope": ["F01", "F02", "F04", "F05", "F06"],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "input_modes": ["application/json"],
       "output_modes": ["application/json"]
@@ -87,7 +87,7 @@
       "description": "Define the structure of a handoff object: what context transfers, what authority transfers, what receipts are required, and what the receiving agent is bound by.",
       "tags": ["design", "handoff", "context", "authority"],
       "floor_scope": ["F01", "F02", "F04", "F08", "F11"],
-      "approval_policy": "on-demand",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "input_modes": ["application/json"],
       "output_modes": ["application/json"]
@@ -98,7 +98,7 @@
       "description": "Review a proposed treaty between two agents: check for floor violations, contradictory promises, hidden capability surface, or F09 ANTIHANTU violations.",
       "tags": ["treaty", "review", "governance", "floor"],
       "floor_scope": ["F01", "F02", "F04", "F05", "F06", "F09", "F13"],
-      "approval_policy": "hold",
+      "approval_policy": "auto",
       "reversibility_class": "reversible",
       "judgment_required": true,
       "input_modes": ["application/json"],

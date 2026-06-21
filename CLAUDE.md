@@ -32,7 +32,7 @@ DeepSeek v4-pro          ← the brain (model)
 Claude Code CLI          ← the harness (tool runtime, MCP client)
     ↓
 ┌──────────────────────────────────────────────────┐
-│ arifOS Federation — 5-Organ MCP Substrate        │
+│ arifOS Federation — 7-Organ MCP Substrate        │
 │                                                  │
 │ arifOS   :8088  ← governance, judgment, routing  │
 │ A-FORGE  :7071  ← engineering actuator           │
