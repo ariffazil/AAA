@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-165911",
+  "timestamp": "2026-06-14T16:59:11.926340+00:00",
+  "tool_name": "judge",
+  "agent_id": "anonymous",
+  "session_id": "sess_36cabea75e1b44c8",
+  "reason": "Anonymous actor cannot execute MUTATE. Call arif_session_init with verified actor_id.",
+  "severity": "critical",
+  "count": 5,
+  "last_seen": "2026-06-14T16:59:12.406106+00:00"
+}

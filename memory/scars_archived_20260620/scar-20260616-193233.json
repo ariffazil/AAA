@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260616-193233",
+  "timestamp": "2026-06-16T19:32:33.266928+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "sess_53bf4e707c5848b5",
+  "reason": "CLAIMED identity (kimi-constitutional-clerk) cannot execute MUTATE. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-16T19:34:25.618916+00:00"
+}
