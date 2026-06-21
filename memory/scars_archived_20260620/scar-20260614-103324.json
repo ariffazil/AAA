@@ -1,0 +1,15 @@
+{
+  "scar_id": "scar-20260614-identity-gap",
+  "timestamp": "2026-06-14T11:00:00+08:00",
+  "agent": "FORGE-000Ω",
+  "severity": "AMBER-RED",
+  "contrast_truth": {
+    "surface_claim": "arifOS healthy, all MCPs green, session operational",
+    "actual_truth": "LIVE-SEEN, PARTIALLY SEALED, IDENTITY-HELD, TELEMETRY-DEGRADED",
+    "root_cause": "actor_verified: false — kernel sees agent as claimant, not delegate",
+    "impact": "All forge work executed outside constitutional session envelope (bash/SSH layer, not governed tool surface)",
+    "f11_gate": "Correct enforcement — not a bug. Kernel rightfully blocking unverified identity."
+  },
+  "axiom": "FFF flow is the new F — ratified by Arif 2026-06-14",
+  "action": "Investigate identity chain break: missing session_init, wrong actor_id, or deeper chain break"
+}

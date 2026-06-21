@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-171635",
+  "timestamp": "2026-06-14T17:16:35.306940+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "loop-1",
+  "reason": "F13 non-delegable: caller 'agent-7' is not a recognised sovereign",
+  "severity": "critical",
+  "count": 7,
+  "last_seen": "2026-06-20T16:03:53.508442+00:00"
+}

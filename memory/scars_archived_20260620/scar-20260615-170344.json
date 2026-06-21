@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260615-170344",
+  "timestamp": "2026-06-15T17:03:44.785670+00:00",
+  "tool_name": "arif_lease_revoke",
+  "agent_id": "anonymous",
+  "session_id": "sess_e2c7a6c7531e4bbd",
+  "reason": "Anonymous actor cannot execute MUTATE. Call arif_session_init with verified actor_id.",
+  "severity": "critical",
+  "count": 1
+}
