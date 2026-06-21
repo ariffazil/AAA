@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-194504",
+  "timestamp": "2026-06-20T19:45:04.261729+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-debug-1",
+  "reason": "Floor violation",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-20T19:45:26.805918+00:00"
+}

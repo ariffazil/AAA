@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260617-040833",
+  "timestamp": "2026-06-17T04:08:33.481686+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-c70dec5c65124838",
+  "reason": "CLAIMED identity (opencode-333-agi) cannot execute ATOMIC. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 4,
+  "last_seen": "2026-06-20T18:21:10.214007+00:00"
+}

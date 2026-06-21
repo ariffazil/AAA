@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-170345",
+  "timestamp": "2026-06-14T17:03:45.821350+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "fb55509b-9fd9-4a06-85e8-b1b6811b7d88",
+  "reason": "CLAIMED identity (forge-self-test) cannot execute ATOMIC. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 11,
+  "last_seen": "2026-06-14T17:04:58.693661+00:00"
+}

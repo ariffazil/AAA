@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-160455",
+  "timestamp": "2026-06-20T16:04:55.918187+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "principal-session",
+  "reason": "Risk ATOMIC exceeds ceiling for IRREVERSIBLE",
+  "severity": "warn",
+  "count": 5,
+  "last_seen": "2026-06-20T16:20:27.549833+00:00"
+}
