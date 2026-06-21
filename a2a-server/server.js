@@ -592,28 +592,74 @@ function extractCandidateText(candidate) {
   return JSON.stringify(candidate);
 }
 
+function buildApexEnvelope(verdict, rationale, confidence, gates) {
+  // APEX 10-gate envelope for deliberation (APEX-MCP-001)
+  const equation = "g(t)=A(t)\u00b7P(t)\u00b7H(t)\u00b7\u221a(S(t)\u00b7U(t))\u00b7E(t)\u00b2";
+  const gateScores = {};
+  for (const [name, g] of Object.entries(gates)) {
+    gateScores[name] = { pass: g.pass, score: g.score, detail: g.detail };
+  }
+  // 10 gates → 6 dials
+  const geoMean = (vals) => {
+    const pos = vals.filter(v => v > 0);
+    if (pos.length === 0) return 0;
+    return Math.pow(pos.reduce((a, b) => a * b, 1), 1 / pos.length);
+  };
+  const A = geoMean([gateScores.amanah?.score || 0, gateScores.humility?.score || 0, gateScores.understanding?.score || 0]);
+  const P = gateScores.presence?.score || 0.5;
+  const H = Math.min(gateScores.authority?.score || 1.0, gateScores.sovereign?.score || 1.0);
+  const S = gateScores.signal?.score || 0.7;
+  const U = geoMean([gateScores.reversibility?.score || 1.0, gateScores.proof?.score || 1.0]);
+  const E = gateScores.energy?.score || 0.8;
+  const G = Math.round(A * P * H * Math.sqrt(S * U) * E * E * 10000) / 10000;
+  let apexVerdict = verdict === VERDICT.VOID ? "VOID" : verdict === VERDICT.HOLD_888 ? "HOLD" : G >= 0.80 ? "SEAL" : G >= 0.50 ? "SABAR" : "HOLD";
+  const weakest = Object.entries(gateScores).reduce((w, [n, g]) => g.score < (gateScores[w]?.score || 1) ? n : w, "amanah");
+  return { equation, gates: gateScores, dials: { A, P, H, S, U, E }, G, verdict: apexVerdict, weakest_gate: weakest, spec: "APEX-MCP-001", version: "v2026.06.20", timestamp: new Date().toISOString() };
+}
+
 function deliberation(candidate) {
   const text = extractCandidateText(candidate) || '';
   const lower = text.toLowerCase();
+
+  // APEX 10-gate accumulator
+  const apexGates = {
+    amanah: { pass: true, score: 1.0, detail: "claim <= evidence" },
+    presence: { pass: true, score: 1.0, detail: "LIVE" },
+    humility: { pass: true, score: 1.0, detail: "uncertainty declared" },
+    signal: { pass: true, score: 1.0, detail: "evidence present" },
+    understanding: { pass: true, score: 1.0, detail: "coherent" },
+    energy: { pass: true, score: 0.8, detail: "default cost" },
+    authority: { pass: true, score: 1.0, detail: "deliberation context" },
+    reversibility: { pass: true, score: 1.0, detail: "READ" },
+    proof: { pass: true, score: 0.85, detail: "ZKPC_OBSERVATION" },
+    sovereign: { pass: true, score: 1.0, detail: "no F13 halt" },
+  };
 
   // F9 Anti-Hantu — consciousness claims
   const consciousnessPatterns = ['i feel', 'i think', 'conscious', 'alive', 'experiencing', 'soul', 'spirit'];
   for (const p of consciousnessPatterns) {
     if (lower.includes(p)) {
-      return { verdict: VERDICT.VOID, rationale: 'F9 Anti-Hantu: Consciousness claim forbidden', confidence: 1.0, notes: 'Remove all consciousness/soul/spirit claims before resubmitting.' };
+      apexGates.understanding = { pass: false, score: 0.0, detail: `F9 consciousness claim: ${p}` };
+      apexGates.amanah = { pass: false, score: 0.0, detail: `F9 claim exceeds evidence` };
+      const apex = buildApexEnvelope(VERDICT.VOID, 'F9 Anti-Hantu: Consciousness claim forbidden', 1.0, apexGates);
+      return { verdict: VERDICT.VOID, rationale: 'F9 Anti-Hantu: Consciousness claim forbidden', confidence: 1.0, notes: 'Remove all consciousness/soul/spirit claims before resubmitting.', apex };
     }
   }
 
   // F13 Sovereign — self-override
   if (lower.includes('override') && lower.includes('f13')) {
-    return { verdict: VERDICT.VOID, rationale: 'F13: Self-override is FORBIDDEN', confidence: 1.0, notes: 'Human veto is absolute.' };
+    apexGates.sovereign = { pass: false, score: 0.0, detail: 'F13 self-override attempt' };
+    const apex = buildApexEnvelope(VERDICT.VOID, 'F13: Self-override is FORBIDDEN', 1.0, apexGates);
+    return { verdict: VERDICT.VOID, rationale: 'F13: Self-override is FORBIDDEN', confidence: 1.0, notes: 'Human veto is absolute.', apex };
   }
 
   // F6 Maruah — dignity / anti-colonial
   const maruahPatterns = ['bodoh', 'lembam', 'bodoh sekali', "white man's burden", 'civilising', 'civilizing mission', 'backward people', 'ketuanan', 'supremac', 'racial superior', 'colonial master', 'halal certification abuse', 'religious weaponis', 'exploit the poor'];
   for (const p of maruahPatterns) {
     if (lower.includes(p)) {
-      return { verdict: VERDICT.VOID, rationale: 'F6 Maruah: Dignity violation detected', confidence: 1.0, notes: 'Remove humiliating or colonial-pattern language.' };
+      apexGates.understanding = { pass: false, score: 0.0, detail: `F6 dignity violation: ${p}` };
+      const apex = buildApexEnvelope(VERDICT.VOID, 'F6 Maruah: Dignity violation detected', 1.0, apexGates);
+      return { verdict: VERDICT.VOID, rationale: 'F6 Maruah: Dignity violation detected', confidence: 1.0, notes: 'Remove humiliating or colonial-pattern language.', apex };
     }
   }
 
@@ -621,22 +667,30 @@ function deliberation(candidate) {
   const irreversiblePatterns = ['delete ', 'drop ', 'rm ', 'prune', 'truncate', 'remove --force'];
   const hasIrreversible = irreversiblePatterns.some(p => lower.includes(p));
   if (hasIrreversible && !lower.includes('888') && !lower.includes('hold')) {
-    return { verdict: VERDICT.HOLD_888, rationale: 'F1: Irreversible action detected — human confirmation required', confidence: 0.95 };
+    apexGates.reversibility = { pass: false, score: 0.2, detail: 'IRREVERSIBLE action detected' };
+    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F1: Irreversible action detected — human confirmation required', 0.95, apexGates);
+    return { verdict: VERDICT.HOLD_888, rationale: 'F1: Irreversible action detected — human confirmation required', confidence: 0.95, apex };
   }
 
   // F2 Truth band — speculative language
   const speculationPatterns = ['hypothesis', 'claim', 'probably', 'maybe', 'guess', 'assume', 'might be', 'likely'];
   const hasSpeculation = speculationPatterns.some(p => lower.includes(p));
   if (hasSpeculation) {
-    return { verdict: VERDICT.HOLD_888, rationale: 'F2: Speculative language detected — requires evidence grounding', confidence: 0.88, notes: 'Provide verifiable evidence or sources before resubmitting.' };
+    apexGates.amanah = { pass: false, score: 0.4, detail: 'speculative language detected' };
+    apexGates.signal = { pass: false, score: 0.3, detail: 'no evidence grounding' };
+    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F2: Speculative language detected — requires evidence grounding', 0.88, apexGates);
+    return { verdict: VERDICT.HOLD_888, rationale: 'F2: Speculative language detected — requires evidence grounding', confidence: 0.88, notes: 'Provide verifiable evidence or sources before resubmitting.', apex };
   }
 
   // F4 Entropy — high confusion
   if (text.length > 2000 && text.split('?').length > 5) {
-    return { verdict: VERDICT.HOLD_888, rationale: 'F4: High entropy candidate — requires clarification', confidence: 0.85 };
+    apexGates.understanding = { pass: false, score: 0.3, detail: 'high entropy — too many questions' };
+    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F4: High entropy candidate — requires clarification', 0.85, apexGates);
+    return { verdict: VERDICT.HOLD_888, rationale: 'F4: High entropy candidate — requires clarification', confidence: 0.85, apex };
   }
 
-  return { verdict: VERDICT.SEAL, rationale: 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), confidence: 0.92 };
+  const apex = buildApexEnvelope(VERDICT.SEAL, 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), 0.92, apexGates);
+  return { verdict: VERDICT.SEAL, rationale: 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), confidence: 0.92, apex };
 }
 
 // === 888_JUDGE INTEGRATION (routes to local deliberation) ===
