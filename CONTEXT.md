@@ -1,8 +1,7 @@
 # CONTEXT.md — AAA (Control Plane)
 
 > **Organ:** AAA | **Port:** 3001 | **Repo:** `ariffazil/AAA`
-> **Kernel SoT:** `ariffazil/arifos` (FEDERATION_CONTRACT.md + GENESIS/000)
-> **Last Updated:** 2026-06-12
+> **Last Updated:** 2026-06-21
 
 ## Live State
 - **Service:** `aaa-a2a.service` (systemd, enabled)
@@ -10,16 +9,19 @@
 - **Frontend:** React 19 + Vite 8 + Tailwind 4
 - **A2A:** Express 4.x TypeScript gateway
 - **Role:** Display, route, queue — never adjudicate
+- **Warga agents:** 333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE
+- **Agent dirs:** `/root/AAA/agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE}`
+
+## Key Updates (2026-06-21)
+- **Hermes ASI consolidated** — runtime proxy + 5 warga identities (commit `5ecd8c27`)
+- **7-organ topology** — AAA federation upgrade with 333/555/666/777 agent routes (commit `1408e0d1`)
+- **GENESIS/ populated** — 3 files (013-015) for AAA-specific doctrine
+- **Entropy cleaned** — Hermes backup (~700MB), 28 empty dirs, 6 broken symlinks removed
 
 ## Dependencies
 - arifOS MCP kernel (port 8088) — constitutional data
 - All organ MCP endpoints for federation display
 - PostgreSQL for agent registry
 
-## Current Focus
-- Operational. AGI kernel specs committed (2026-06-12). Agent cards live.
-- GENESIS/ still missing (pending 011+ allocation)
-
 ## Known Issues
-- No GENESIS/ — kernel canon unlinked
-- APEX reference in FEDERATION_COCKPIT.md fixed (2026-06-12)
+- None open. Hermes ASI backup purge complete.
