@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-142239",
+  "timestamp": "2026-06-20T14:22:39.875721+00:00",
+  "tool_name": "arif_memory_recall",
+  "agent_id": "anonymous",
+  "session_id": "a-forge-store-f92cf6e5-e195-43b3-924b-d48cec52b10f",
+  "reason": "Tool surface drift detected: missing=['arif_bridge', 'arif_kernel_attest', 'arif_kernel_health', 'arif_kernel_status', 'arif_route', 'arif_triage'], extra=[]",
+  "severity": "warn",
+  "count": 7,
+  "last_seen": "2026-06-20T14:22:40.150138+00:00"
+}

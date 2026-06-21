@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-161531",
+  "timestamp": "2026-06-20T16:15:31.934508+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "test-session",
+  "reason": "Vault DEGRADED: HOLD: Vault DEGRADED (Verification failed: merkle, signature)",
+  "severity": "warn",
+  "count": 5,
+  "last_seen": "2026-06-20T19:30:00.854804+00:00"
+}

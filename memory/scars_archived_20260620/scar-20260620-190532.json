@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-190532",
+  "timestamp": "2026-06-20T19:05:32.923581+00:00",
+  "tool_name": "arif_triage",
+  "agent_id": "anonymous",
+  "session_id": "forge-tiga-wire-2026-06-20",
+  "reason": "E7 HOLD: No active authority lease. Agent cannot execute without lease.",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-20T20:19:44.986202+00:00"
+}

@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-052218",
+  "timestamp": "2026-06-20T05:22:18.413316+00:00",
+  "tool_name": "arif_os_attest",
+  "agent_id": "anonymous",
+  "session_id": "sess_3a3a3c44bcc74fb1",
+  "reason": "Tool surface drift detected: missing=['arif_bridge', 'arif_kernel_attest', 'arif_kernel_health', 'arif_kernel_status', 'arif_route', 'arif_triage'], extra=[]",
+  "severity": "warn",
+  "count": 4,
+  "last_seen": "2026-06-20T06:25:57.011249+00:00"
+}

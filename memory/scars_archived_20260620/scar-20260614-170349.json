@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-170349",
+  "timestamp": "2026-06-14T17:03:49.623662+00:00",
+  "tool_name": "arif_lease_issue",
+  "agent_id": "anonymous",
+  "session_id": "1c7bff22-673b-47e1-8a76-c3b88cc21bb0",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_lease_issue",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-14T17:04:46.608822+00:00"
+}

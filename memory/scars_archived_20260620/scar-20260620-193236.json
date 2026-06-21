@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260620-193236",
+  "timestamp": "2026-06-20T19:32:36.718511+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-04fb085db96444ae",
+  "reason": "Vault STALE: HOLD: Vault STALE (Last seal age 12981s > threshold 300s)",
+  "severity": "warn",
+  "count": 1
+}

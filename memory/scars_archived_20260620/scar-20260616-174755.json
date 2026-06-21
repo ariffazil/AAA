@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260616-174755",
+  "timestamp": "2026-06-16T17:47:55.370493+00:00",
+  "tool_name": "arif_vault_seal",
+  "agent_id": "anonymous",
+  "session_id": "enf-1",
+  "reason": "F13 non-delegable: caller 'agent-7' is not a recognised sovereign",
+  "severity": "critical",
+  "count": 6,
+  "last_seen": "2026-06-20T16:03:53.477616+00:00"
+}

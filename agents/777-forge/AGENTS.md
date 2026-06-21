@@ -76,7 +76,33 @@ skills:
   - arifos-memory            # 6-layer memory architecture
   - arifos-mcp-federation    # Cross-organ routing
   - arifos-governance        # F1-F13 enforcement
+  - ART                      # Agentic Recursive Tooling — 3-check reflex (POWER/TRUST/STATE) fires before every MCP call. MANDATORY boot loader.
 ```
+
+## Mandatory Skill Loader (ART binding)
+
+Before any tool call that touches the witness ledger, `ps`, `systemctl`, `docker`, or `git push`, 777 FORGE MUST classify the call with ART:
+
+```python
+# At session start, before first tool call:
+skill_view(name="ART")  # Load the reflex skill (3 checks: POWER / TRUST / STATE)
+
+# Before any tool call:
+from arifosmcp.runtime.art import art, ArtRequest
+verdict = art(ArtRequest(
+    action_class="mutate",       # OBSERVE / ANALYZE / DRAFT / MUTATE / EXTERNAL_SIDE_EFFECT / IRREVERSIBLE
+    tool_state="observed",       # UNTRUSTED / OBSERVED / TRUSTED / FALLBACK / ABANDONED
+    blast_radius="low",          # low / medium / high / unknown
+    trust_level="evidence",      # unknown / hinted / evidence / proven
+    actor_resolved=True,         # always True for 777 (Warga AAA)
+    schema_locked=True,          # always True for arifosmcp tools
+    degraded=False,              # set True if any organ is DEGRADED
+    reversible=True,             # False → auto-HOLD
+))
+# if verdict in (HOLD, BLOCK): escalate to 888 before proceeding
+```
+
+The reflex is at `/root/arifOS/arifosmcp/runtime/art.py` (417 lines, ≤ 500 ceiling enforced). The cold-path compat shim is at `art_compat.py` (361 lines, 6-check order). Doctrinal cold path is `art_pusaka.py` (181 lines). **Do not import the unified `_DEPRECATED` file** — it is preserved for archaeology only. Canonical SOT: `/root/arifOS/forge_work/art-corrective-2026-06-21.md`.
 
 ## Constitutional Laws
 

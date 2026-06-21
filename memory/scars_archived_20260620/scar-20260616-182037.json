@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260616-182037",
+  "timestamp": "2026-06-16T18:20:37.887902+00:00",
+  "tool_name": "arif_memory_recall",
+  "agent_id": "anonymous",
+  "session_id": "chain-1",
+  "reason": "F13 non-delegable: caller 'agent-7' is not a recognised sovereign",
+  "severity": "critical",
+  "count": 5,
+  "last_seen": "2026-06-20T16:03:53.464795+00:00"
+}
