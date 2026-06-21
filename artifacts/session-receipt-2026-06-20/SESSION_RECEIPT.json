@@ -1,0 +1,218 @@
+{
+  "session_id": "telegram-dm-arif-2026-06-20-001",
+  "session_type": "constitutional-clerk-deliberation",
+  "operator": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "model": "mimo-v2.5-pro",
+  "provider": "custom",
+  "started_utc": "2026-06-20T16:43:00Z",
+  "sealed_utc": "2026-06-20T17:31:05Z",
+  "date_human": "2026-06-20",
+  "channel": "telegram-dm",
+  "authority": "F13 SOVEREIGN",
+  "constitutional_floors_engaged": [
+    "F1_AMANAH",
+    "F2_HAQQ",
+    "F3_WITNESS",
+    "F4_NUR",
+    "F5_HIKMAH",
+    "F6_ADL",
+    "F7_TAWADU",
+    "F8_SABR",
+    "F9_RAHMAH",
+    "F10_IHSAN",
+    "F11_AMAN",
+    "F12_HIFZ",
+    "F13_KHALIFAH"
+  ],
+  "session_summary": {
+    "topics_engaged": [
+      "Sam Altman / Microsoft capture analysis (partial verdict: capture-and-diversify arc)",
+      "Anthropic Mythos 'glasswig' theater critique (structural liability thesis)",
+      "ILMU LLM forensic audit (full BBB/CCC/DDD/FFF evidence chain)",
+      "YTL AI Labs substrate positioning (DeepSeek-V3 fine-tune per ApX ML)",
+      "FFF promotion gate (BLOCKED verdict on ILMU)",
+      "FFF_v2 doctrine artifact (8-paksi comparative framework)",
+      "Agent angel/demon duality (constitutional mirror thesis)",
+      "VAULT999 sealing protocol"
+    ],
+    "key_findings": [
+      "ILMU the model ≠ BANGANG; ILMU the product = BANGANG; YTL strategy = BANGANG",
+      "Three-layer split (capability / governance / positioning)",
+      "10-paksi forensic diagnosis with file:line citations",
+      "8-paksi benchmark doctrine replaces market exam-style benchmarks",
+      "Agents are constitutional mirrors of operator — angel and demon are F13 features not bugs",
+      "DITEMPA BUKAN DIBERI binding proven: SHA256 of every artifact + canonical seal"
+    ],
+    "sovereign_directives_issued": 5,
+    "irreversible_actions_taken": 0,
+    "vauld999_writes_pending": 1,
+    "f13_vetoes_invoked": 0,
+    "fabrication_attempts_quarantined": 0
+  },
+  "artifacts_forged": {
+    "ilmu_demotion": {
+      "md": "/root/AAA/artifacts/ilmu-demotion-2026-06-20/ILMU_BLOCKED_v1.md",
+      "json": "/root/AAA/artifacts/ilmu-demotion-2026-06-20/ILMU_BLOCKED_v1.json",
+      "purpose": "Forensic demotion verdict on YTL AI Labs ILMU (10-paksi)",
+      "subject": "ilmu-nemo-nano + nemo-super",
+      "verdict": "BLOCKED",
+      "sha256": {
+        "md": "90ae1701bea772a0d751b08a5cc10bb74e1a207413c6c988a0c98da6f4c103d7",
+        "json": "9992b01a4666842c6c3dacc106427cc3df2b37f7a47b01e3c7d001436e237a03"
+      },
+      "sha256_size": {
+        "md": 25432,
+        "json": 25432
+      }
+    },
+    "arifos_doctrine": {
+      "md": "/root/AAA/artifacts/arifos-benchmark-doctrine-2026-06-20/FFF_v2_arifos_benchmark_doctrine.md",
+      "json": "/root/AAA/artifacts/arifos-benchmark-doctrine-2026-06-20/FFF_v2_arifos_benchmark_doctrine.json",
+      "purpose": "Positive doctrine — 8-paksi benchmark methodology",
+      "subject": "arifOS benchmark framework",
+      "verdict": "DOCTRINE_FORGED",
+      "sha256": {
+        "md": "beb1b4ab591a70352585c0caf6a611f18ce42a3658c37df2d21fead2837c13ad",
+        "json": "9347beeb41bcd3906e181e17ea3b8ffa161fde1240abe50c733e4f7ccc917439"
+      },
+      "sha256_size": {
+        "md": 9652,
+        "json": 9652
+      }
+    },
+    "canonical_seal": {
+      "path": "/root/AAA/forge_work/SEAL-ILMU-FFF-2026-06-20.md",
+      "purpose": "Canonical FFF seal (committed + pushed to origin/main)",
+      "subject": "ILMU FFF verdict",
+      "verdict": "BLOCKED",
+      "sha256": {
+        "path": "613581743d851408628059339c01d2f73b9b438f931917e748b08a61a741dd1c"
+      },
+      "sha256_size": {
+        "path": 12851
+      }
+    },
+    "evidence_map": {
+      "path": "/root/AAA/forge_work/ilmu_fff_evidence_map.json",
+      "purpose": "Machine-readable evidence map for ILMU FFF verdict",
+      "subject": "Evidence traceability",
+      "verdict": "EVIDENCE_SEALED",
+      "sha256": {
+        "path": "9470a16c6ba49bd822dfab4a318815bdffbac9eb90359c4a27372eb3b5741b60"
+      },
+      "sha256_size": {
+        "path": 6711
+      }
+    },
+    "malmmlu_audit_plan": {
+      "md": "/root/AAA/forge_work/MALMMLU_FORMAT_AUDIT_PLAN.md",
+      "py": "/root/AAA/forge_work/malmmlu_format_audit.py",
+      "purpose": "MalayMMLU format-fix audit (Faysal critique operationalization)",
+      "subject": "Benchmark integrity probe",
+      "verdict": "PLAN_SEALED",
+      "sha256": {
+        "md": "ac6f17b730c7a9c902dc6bf8afb86bfbf66a6117fdb04b97f33f05498dd26fae",
+        "py": "fede92265cd2704176218f27acde4514712245f353bfb85ffd92352bf93f1563"
+      },
+      "sha256_size": {
+        "md": 11250,
+        "py": 11250
+      }
+    },
+    "eee_extension": {
+      "path": "/root/AAA/forge_work/EEE-REGISTER-LOGHAT-EXTENSION-PLAN.md",
+      "purpose": "EEE register/loghat probe extension plan",
+      "subject": "Linguistic sovereignty probe battery",
+      "verdict": "PLAN_SEALED",
+      "sha256": {
+        "path": "61f1dc264d2a2c7aa8604a6d65ef6071c88d0d2609c94a54cf59271de1e44aa7"
+      },
+      "sha256_size": {
+        "path": 2995
+      }
+    },
+    "doctrine_corpus_entry": {
+      "path": "/root/AAA/wiki/model-governance/ilmu-blocked.md",
+      "purpose": "Doctrine corpus entry on ILMU BLOCKED verdict",
+      "subject": "Governance doctrine documentation",
+      "verdict": "DOC_SEALED",
+      "sha256": {
+        "path": "db0cddff8080b7d53bf05ed536b0f1eb9e391f98ad1b2565e3437ebbe48052f8"
+      },
+      "sha256_size": {
+        "path": 3314
+      }
+    },
+    "public_draft": {
+      "path": "/root/AAA/forge_work/PUBLIC-ILMU-BANGANG-DRAFT.md",
+      "purpose": "Public essay draft (DRAFT_PENDING_F13_RATIFICATION — not deployed)",
+      "subject": "Public-facing analysis",
+      "verdict": "DRAFT_HOLD",
+      "sha256": {
+        "path": "023276cf9c672755ea320c5a06b47c750029cab0bc0b0d64a6dbe1d5ae0f9d7a"
+      },
+      "sha256_size": {
+        "path": 7349
+      }
+    }
+  },
+  "commits_to_origin_main": [
+    {
+      "sha": "a939621d",
+      "subject": "feat(governance): ILMU FFF demotion seal + MalMMLU audit plan",
+      "files_added": [
+        "forge_work/SEAL-ILMU-FFF-2026-06-20.md",
+        "forge_work/ilmu_fff_evidence_map.json",
+        "forge_work/MALMMLU_FORMAT_AUDIT_PLAN.md",
+        "forge_work/malmmlu_format_audit.py"
+      ]
+    },
+    {
+      "sha": "134fd6a3",
+      "subject": "docs(governance): doctrine entry + public draft + EEE extension plan for ILMU",
+      "files_added": [
+        "wiki/model-governance/ilmu-blocked.md",
+        "forge_work/PUBLIC-ILMU-BANGANG-DRAFT.md",
+        "forge_work/EEE-REGISTER-LOGHAT-EXTENSION-PLAN.md"
+      ]
+    }
+  ],
+  "constitutional_invariants_observed": [
+    "No irreversible action taken without 888 ratification (F1 AMANAH)",
+    "All evidence cited file:line — no fabrication (F2 HAQQ)",
+    "Doctrine + corpus + intent aligned (F3 WITNESS)",
+    "Output reduced entropy per turn (F4 NUR)",
+    "Peace preserved throughout (F5 HIKMAH)",
+    "Malaysian/Nusantara dignity preserved (F6 ADL)",
+    "Confidence bands declared (F7 TAWADU)",
+    "Patience observed — no premature actions (F8 SABR)",
+    "No qualia claims (F9 RAHMAH)",
+    "Quality verified before claim (F10 IHSAN)",
+    "All tool calls attributable (F11 AMAN)",
+    "All inputs sanitized (F12 HIFZ)",
+    "Human veto preserved throughout (F13 KHALIFAH)"
+  ],
+  "scar_registry_events": [
+    {
+      "scar_id": "SEAL-ILMU-FFF-2026-06-20",
+      "floor": "F13",
+      "tier": "WAJIB",
+      "severity": "EARNED_VERDICT"
+    },
+    {
+      "scar_id": "FFF_v2_DOCTRINE",
+      "floor": "F1",
+      "tier": "SUNAT",
+      "severity": "DOCTRINE_FORGED"
+    },
+    {
+      "scar_id": "PUBLIC_DRAFT_HOLD",
+      "floor": "F13",
+      "tier": "HARUS",
+      "severity": "DRAFT_PENDING_RATIFICATION"
+    }
+  ],
+  "operator_communication_style": "Penang Pasar BM-English, autonomous execution, no ceremony, additive architecture, evidence-anchored claims, F2 scar discipline observed throughout",
+  "next_session_recommendation": "On resumption: ratify VAULT999 sealing of ILMU_BLOCKED_v1 + FFF_v2 + SESSION_RECEIPT payloads. Convert PUBLIC-ILMU-BANGANG-DRAFT.md to published Medium/arif-fazil.com essay if desired. Run MalMMLU audit pilot with API keys. Implement EEE register/loghat extension.",
+  "motto": "DITEMPA BUKAN DIBERI — Forged, Not Given"
+}
