@@ -1,100 +1,94 @@
-# arifOS Unified Agent Protocol · Machine-Readable Registry
-# Canonical binding for all federation agents: Hermes, OpenClaw, OpenCode
-# Authoritative source: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
-# Forged: 2026-06-13 by Ω (Omega) — arifOS Forge Agent
-
 $schema: ../schemas/forge_session.schema.json
-version: 1
-status: CANONICAL_GOVERNANCE_BINDING
-forged_by: OMEGA (Ω) Forge Agent
-forged_at: '2026-06-13T00:00:00Z'
+DITEMPA_BUKAN_DIBERI: true
 applies_to:
-  - agent_id: hermes-asi
-    role: human_interface_reasoning_cortex
-    lane_authority: [L_OBSERVE, L_PROPOSE, L_OPERATE]
-    lane_888_escalate: true
-    model: deepseek/deepseek-v4-pro
-    transport: [telegram_polling, a2a_bridge_18001]
-  - agent_id: openclaw-agi
-    role: infra_operator_orchestrator
-    lane_authority: [L_OBSERVE, L_PROPOSE, L_OPERATE]
-    lane_888_escalate: true
-    model: deepseek/deepseek-v4-pro
-    transport: [openclaw_gateway_18789, a2a_mesh]
-  - agent_id: opencode-forge
-    role: bounded_coding_worker
-    lane_authority: [L_OBSERVE, L_PROPOSE, L_OPERATE]
-    lane_888_escalate: false
-    model: deepseek/deepseek-v4-pro
-    fallback_model: MiniMax-M3
-    transport: [opencode_cli_1_17_4, arifos_kernel_embed]
-
-layers:
-  M_layer:
-    name: Mind
-    function: Proposes. Reasons. Maps intent to actions.
-    runtime: DeepSeek v4-pro (primary), MiniMax-M3 (fallback)
-  K_layer:
-    name: Kernel
-    function: Judges, gates, seals. F1-F13 enforcement.
-    runtime: arifos.service on :8088, 13 arif_* tools
-  F_layer:
-    name: Forge
-    function: Execute approved actions. Mutate state.
-    runtime: OpenCode CLI, Hostinger MCP, bash, git, systemctl
-
+- agent_id: hermes-asi
+  lane_888_escalate: true
+  lane_authority:
+  - L_OBSERVE
+  - L_PROPOSE
+  - L_OPERATE
+  model: deepseek/deepseek-v4-pro
+  role: human_interface_reasoning_cortex
+  transport:
+  - telegram_polling
+  - a2a_bridge_18001
+- agent_id: openclaw-agi
+  lane_888_escalate: true
+  lane_authority:
+  - L_OBSERVE
+  - L_PROPOSE
+  - L_OPERATE
+  model: deepseek/deepseek-v4-pro
+  role: infra_operator_orchestrator
+  transport:
+  - openclaw_gateway_18789
+  - a2a_mesh
+- agent_id: opencode-forge
+  fallback_model: MiniMax-M3
+  lane_888_escalate: false
+  lane_authority:
+  - L_OBSERVE
+  - L_PROPOSE
+  - L_OPERATE
+  model: deepseek/deepseek-v4-pro
+  role: bounded_coding_worker
+  transport:
+  - opencode_cli_1_17_4
+  - arifos_kernel_embed
 authority_lanes:
-  - id: L_OBSERVE
-    name: Read-Only
-    description: Logs, metrics, git status, Hostinger state, filesystem listings, health endpoints
-    always_allowed: true
-    requires: nothing
-    examples: [git status, curl /health, ls, ps aux, docker ps, Hostinger state reads]
-  - id: L_PROPOSE
-    name: Plan / Draft
-    description: Runbooks, diffs, migration steps, Hostinger changes on paper, risk analysis
-    always_allowed: true
-    requires: CLAIM/PLAUSIBLE/ESTIMATE/UNKNOWN tags
-    examples: [draft DNS change, propose VPS resize, plan backup rotation, runbook]
-  - id: L_OPERATE
-    name: Safe Mutate
-    description: Reversible, low-blast changes within agent lane
-    always_allowed: false
-    requires: kernel_lease_marks_safe + reversibility_confirmed + blast_radius_scoped
-    examples: [restart service, clean zombies, local test run, create snapshot, debug log toggle]
-  - id: L_888_HOLD
-    name: Irreversible / High Blast
-    description: Any irreversible or high-blast action
-    always_allowed: false
-    requires: arif_explicit_approval + f13_signature + ack_irreversible
-    examples: [git push to main, production deploy, DNS cutover, VPS reboot, destructive delete, secret rotation, billing change]
-
-forge_session_states:
-  - INTENT_CAPTURE
-  - PREFLIGHT
-  - PLAN
-  - FORGE
-  - VERIFY
-  - HOLD
-  - SEAL
-  - CLEAN
-
-hostinger_mcp_lanes:
-  L_OBSERVE:
-    tools: [list_vps, list_domains, list_dns_records, get_billing_status, get_hosting_info]
-    agents: [hermes-asi, openclaw-agi]
-  L_PROPOSE:
-    tools: [plan_dns_change, propose_vps_resize, plan_backup_rotation]
-    agents: [hermes-asi]
-  L_OPERATE:
-    tools: [create_snapshot, restart_vps_service, rotate_logs]
-    agents: [openclaw-agi]
-  L_888_HOLD:
-    tools: [dns_cutover, destructive_action, billing_change, reboot, cold_migration]
-    agents: []
-    escalation: hermes-asi -> arif_f13
-
+- always_allowed: true
+  description: Logs, metrics, git status, Hostinger state, filesystem listings, health
+    endpoints
+  examples:
+  - git status
+  - curl /health
+  - ls
+  - ps aux
+  - docker ps
+  - Hostinger state reads
+  id: L_OBSERVE
+  name: Read-Only
+  requires: nothing
+- always_allowed: true
+  description: Runbooks, diffs, migration steps, Hostinger changes on paper, risk
+    analysis
+  examples:
+  - draft DNS change
+  - propose VPS resize
+  - plan backup rotation
+  - runbook
+  id: L_PROPOSE
+  name: Plan / Draft
+  requires: CLAIM/PLAUSIBLE/ESTIMATE/UNKNOWN tags
+- always_allowed: false
+  description: Reversible, low-blast changes within agent lane
+  examples:
+  - restart service
+  - clean zombies
+  - local test run
+  - create snapshot
+  - debug log toggle
+  id: L_OPERATE
+  name: Safe Mutate
+  requires: kernel_lease_marks_safe + reversibility_confirmed + blast_radius_scoped
+- always_allowed: false
+  description: Any irreversible or high-blast action
+  examples:
+  - git push to main
+  - production deploy
+  - DNS cutover
+  - VPS reboot
+  - destructive delete
+  - secret rotation
+  - billing change
+  id: L_888_HOLD
+  name: Irreversible / High Blast
+  requires: arif_explicit_approval + f13_signature + ack_irreversible
 constitutional_floors:
+  f10_ontology: strict_schemas_ai_only_ontology
+  f11_audit: every_decision_logged_with_actor_session_forge
+  f12_injection: sanitize_external_input_no_blind_eval
+  f13_sovereign: human_veto_final_arif_absolute
   f1_amanah: reversible_first_irreversible_to_888
   f2_truth: evidence_cited_uncertainty_tagged
   f3_triwitness: human_ai_earth_verifier_consensus
@@ -104,22 +98,75 @@ constitutional_floors:
   f7_humility: omega_zero_band_required
   f8_genius: genius_score_threshold_advisory
   f9_antihantu: no_consciousness_claims_no_simulated_feelings
-  f10_ontology: strict_schemas_ai_only_ontology
-  f11_audit: every_decision_logged_with_actor_session_forge
-  f12_injection: sanitize_external_input_no_blind_eval
-  f13_sovereign: human_veto_final_arif_absolute
-
 cross_references:
-  master_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
+  arif_chain: AAA/docs/architecture/A-R-I-F-AGENTIC-CHAIN.md
+  arifos_kernel: /root/arifOS/arifosmcp/runtime/tools.py
+  federation_contract: /root/FEDERATION_CONTRACT.md
   forge_session_schema: AAA/schemas/forge_session.schema.json
   hermes_protocol: AAA/agents/protocols/hermes-asi-protocol.md
+  hermes_soul: /root/.hermes/SOUL.md
+  master_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
   openclaw_protocol: AAA/agents/protocols/openclaw-agi-protocol.md
   opencode_protocol: AAA/agents/protocols/opencode-forge-protocol.md
   toolbench_registry: AAA/registries/opencode_toolbench.yaml
-  arif_chain: AAA/docs/architecture/A-R-I-F-AGENTIC-CHAIN.md
-  federation_contract: /root/FEDERATION_CONTRACT.md
-  arifos_kernel: /root/arifOS/arifosmcp/runtime/tools.py
-  hermes_soul: /root/.hermes/SOUL.md
-
-DITEMPA_BUKAN_DIBERI: true
+forge_session_states:
+- INTENT_CAPTURE
+- PREFLIGHT
+- PLAN
+- FORGE
+- VERIFY
+- HOLD
+- SEAL
+- CLEAN
+forged_at: '2026-06-13T00:00:00Z'
+forged_by: OMEGA (Ω) Forge Agent
+hostinger_mcp_lanes:
+  L_888_HOLD:
+    agents: []
+    escalation: hermes-asi -> arif_f13
+    tools:
+    - dns_cutover
+    - destructive_action
+    - billing_change
+    - reboot
+    - cold_migration
+  L_OBSERVE:
+    agents:
+    - hermes-asi
+    - openclaw-agi
+    tools:
+    - list_vps
+    - list_domains
+    - list_dns_records
+    - get_billing_status
+    - get_hosting_info
+  L_OPERATE:
+    agents:
+    - openclaw-agi
+    tools:
+    - create_snapshot
+    - restart_vps_service
+    - rotate_logs
+  L_PROPOSE:
+    agents:
+    - hermes-asi
+    tools:
+    - plan_dns_change
+    - propose_vps_resize
+    - plan_backup_rotation
+layers:
+  F_layer:
+    function: Execute approved actions. Mutate state.
+    name: Forge
+    runtime: OpenCode CLI, Hostinger MCP, bash, git, systemctl
+  K_layer:
+    function: Judges, gates, seals. F1-F13 enforcement.
+    name: Kernel
+    runtime: arifos.service on :8088, 13 arif_* tools
+  M_layer:
+    function: Proposes. Reasons. Maps intent to actions.
+    name: Mind
+    runtime: DeepSeek v4-pro (primary), MiniMax-M3 (fallback)
 seal: UNIFIED-AGENT-PROTOCOL-V1-20260613
+status: CANONICAL_GOVERNANCE_BINDING
+version: 1

@@ -2,7 +2,9 @@
   "name": "333-AGI",
   "description": "The Reasoner (\u0394 MIND). Primary federation agent \u2014 general intelligence class. Reasons across multi-domain evidence, generates hypotheses, decomposes queries, and produces draft analyses. Hosts on arifOS core with GEOX (geoscience) and WEALTH (finance) substrates. All outputs are DRAFT until ratified by 888-APEX and validated by A-AUDIT.",
   "version": "2.0.0",
-  "url": "https://mcp.arif-fazil.com/a2a/333-AGI",
+  "url": "http://127.0.0.1:18789/a2a",
+  "runtime": "openclaw",
+  "runtime_port": 18789,
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
