@@ -1,0 +1,10 @@
+{
+  "scar_id": "scar-20260614-103355",
+  "timestamp": "2026-06-14T10:33:55.632632+00:00",
+  "tool_name": "arif_organ_attest_all",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-58137c0600e549dc",
+  "reason": "888_HOLD: max_same_tool_calls (2) for arif_organ_attest_all",
+  "severity": "critical",
+  "count": 1
+}

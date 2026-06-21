@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260620-160435",
+  "timestamp": "2026-06-20T16:04:35.922448+00:00",
+  "tool_name": "arif_forge_execute",
+  "agent_id": "anonymous",
+  "session_id": "chain-1",
+  "reason": "E7: action_class=MUTATE risk=HIGH blast=PUBLIC reversibility=0.40 \u2192 autonomy=PRINCIPAL_APPROVAL_REQUIRED",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-20T16:04:35.981851+00:00"
+}

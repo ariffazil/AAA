@@ -1,0 +1,11 @@
+{
+  "scar_id": "scar-20260614-122130",
+  "timestamp": "2026-06-14T12:21:30.575619+00:00",
+  "tool_name": "arif_judge_deliberate",
+  "agent_id": "anonymous",
+  "session_id": "SEAL-be913c2b107f4b21",
+  "reason": "CLAIMED identity (GPT-5.5 Thinking) cannot execute ATOMIC. Requires verified or delegated authority.",
+  "severity": "critical",
+  "count": 2,
+  "last_seen": "2026-06-14T12:21:31.237300+00:00"
+}
