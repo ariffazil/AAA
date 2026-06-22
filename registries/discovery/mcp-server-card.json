@@ -1,0 +1,151 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/mcp-server-card.schema.json",
+  "generated_at": "2026-06-22T05:42:00Z",
+  "generated_by": "FORGE (000Ω) at 888 directive (Arif)",
+  "publisher": "arifOS Federation",
+  "schema_note": "Per Model Context Protocol server card convention. See https://modelcontextprotocol.io/ for evolving spec.",
+  "servers": [
+    {
+      "id": "arifos",
+      "name": "arifOS Constitutional Kernel",
+      "description": "F1-F13 floor enforcement; 888 JUDGE; 999 VAULT; 29 tools (live, T1=2026-06-22 05:35 UTC)",
+      "version": "2026.06.22",
+      "transport": {
+        "type": "streamable-http",
+        "url": "http://localhost:8088/mcp",
+        "public_url": "https://arifos.arif-fazil.com/mcp",
+        "auth": "none (localhost-only; public via Cloudflare Tunnel)"
+      },
+      "capabilities": {
+        "tools_count": 29,
+        "prompts_count": 6,
+        "resources_count": 4,
+        "experimental": ["canary-tools: arif_initialize_probe, arif_schema_echo, arif_transport_echo, arif_version_echo"]
+      },
+      "constitutional_binding": {
+        "floors_active": ["F1", "F2", "F4", "F6", "F8", "F9", "F11", "F13"],
+        "judge_authority": "888_JUDGE",
+        "vault_authority": "999_VAULT",
+        "human_veto_required_for": ["irreversible_actions"]
+      },
+      "trust_anchors": {
+        "did": "did:web:arifos.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0",
+        "audit_chain": "VAULT999 hash-chained ledger, sealed entries from id 62+"
+      }
+    },
+    {
+      "id": "geox",
+      "name": "GEOX Earth Intelligence",
+      "description": "Subsurface reasoning organ; 55 tools (live, T1). Earth evidence; epistemic ladder OBS→DERIVED→INTERPRETED→HYPOTHESIS→EARTHMODEL→DECISIONSUPPORT→HUMAN.",
+      "version": "2026.06.22",
+      "transport": {
+        "type": "streamable-http",
+        "url": "http://localhost:8081/mcp",
+        "public_url": "https://geox.arif-fazil.com/mcp",
+        "auth": "none (localhost)"
+      },
+      "capabilities": {
+        "tools_count": 55,
+        "epistemic_ladder_strict": true,
+        "evidence_only": true,
+        "domains": ["basin", "seismic", "petrophysics", "geomechanics", "vision", "literature"]
+      },
+      "constitutional_binding": {
+        "floors_active": ["F1", "F2", "F4", "F8", "F9", "F11", "F13"],
+        "evidence_rung_policy": "F2 TRUTH — never claim certainty without evidence",
+        "seal_required_for": ["claim_seal"]
+      },
+      "trust_anchors": {
+        "did": "did:web:geox.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "wealth",
+      "name": "WEALTH Capital Intelligence",
+      "description": "Capital evidence organ; 24 tools (live, T1). EVIDENCE_ONLY — never an allocator without arifOS 888 seal.",
+      "version": "2026.06.22",
+      "transport": {
+        "type": "streamable-http",
+        "url": "http://localhost:18082/mcp",
+        "public_url": "https://wealth.arif-fazil.com/mcp",
+        "auth": "none (localhost)"
+      },
+      "capabilities": {
+        "tools_count": 24,
+        "evidence_only": true,
+        "domains": ["conservation", "flow", "entropy", "signal", "game", "boundary", "stock_analysis"]
+      },
+      "constitutional_binding": {
+        "floors_active": ["F1", "F2", "F4", "F8", "F9", "F11", "F13"],
+        "no_allocation_unless_sealed": true,
+        "f13_veto_required_for": ["irreversible_financial_decisions"]
+      },
+      "trust_anchors": {
+        "did": "did:web:wealth.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "well",
+      "name": "WELL Vitality Intelligence",
+      "description": "Human readiness organ; 15 tools (live, T1). REFLECT_ONLY — never an actor.",
+      "version": "2026.06.22",
+      "transport": {
+        "type": "streamable-http",
+        "url": "http://localhost:18083/mcp",
+        "public_url": "https://well.arif-fazil.com/mcp",
+        "auth": "none (localhost)"
+      },
+      "capabilities": {
+        "tools_count": 15,
+        "reflect_only": true,
+        "domains": ["metabolism", "homeostasis", "vitality", "dignity", "repair", "lineage", "boundary", "gradient"]
+      },
+      "constitutional_binding": {
+        "floors_active": ["F1", "F2", "F6", "F9", "F11", "F13"],
+        "no_actor_role": true,
+        "f6_maruah_strict": true,
+        "non_diagnostic_guard": "well_medical_boundary tool — never claims diagnosis"
+      },
+      "trust_anchors": {
+        "did": "did:web:well.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "aforge",
+      "name": "A-FORGE Execution Shell",
+      "description": "Execution organ; ADAT AGENTIC enforced; bare-metal systemd. REST-only (not MCP /tools/list).",
+      "version": "0.1.0",
+      "transport": {
+        "type": "rest-http",
+        "url": "http://localhost:7071",
+        "public_url": null,
+        "auth": "none (localhost)",
+        "endpoints": ["/health", "/contract", "/execute"]
+      },
+      "capabilities": {
+        "tools_count": 29,
+        "transport_kind_note": "REST, not MCP — registry prior misclassified this as MCP"
+      },
+      "constitutional_binding": {
+        "floors_active": ["F1", "F2", "F4", "F8", "F11", "F13"],
+        "adat_agentic_enforced": true,
+        "no_unanimous_judgment": true,
+        "leash_required_for_mutation": true
+      },
+      "trust_anchors": {
+        "did": "did:web:af-forge.local",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0",
+        "identity_hash_recorded": true
+      }
+    }
+  ]
+}
