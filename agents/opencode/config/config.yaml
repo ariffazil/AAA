@@ -132,29 +132,32 @@ mcp_servers:
   - id: arifos-kernel
     url: http://127.0.0.1:8088/mcp
     enabled: true
-    tools: 13
+    tools: 29
+    note: "arifOS MCP requires Accept: application/json header on POST. Live count 29 tools (2026-06-22). 13 was outdated."
 
   - id: aforge
     url: http://127.0.0.1:7071/mcp
     enabled: true
-    tools: 20+
-    note: "🆕 MCP endpoint forged 2026-06-14 — Streamable HTTP on Express bridge"
+    tools: 29
+    note: "A-FORGE MCP at 7071 is Express+streamable-http but requires Mcp-Session-Id header. Prefer stdio transport (npm run mcp:stdio) for reliable access. HTTP transport has session-state issues."
 
   - id: geox
     url: http://127.0.0.1:8081/mcp
     enabled: true
-    tools: 37
-    activation: earth-domain        # Enable when geology/geophysics detected
+    tools: 55
+    note: "GEOX Earth Intelligence (2026-06-22 audit). Activation: earth-domain. 55 tools live."
 
   - id: wealth
     url: http://127.0.0.1:18082/mcp
     enabled: true
-    tools: 20
+    tools: 24
+    note: "WEALTH Capital Intelligence (2026-06-22 audit). 24 tools live."
 
   - id: well
     url: http://127.0.0.1:18083/mcp
     enabled: true
-    tools: 18
+    tools: 15
+    note: "well_tool_count=15 (2026-06-22 audit). Config previously said 18 — tool surface shrank, not grew."
 
   - id: playwright
     url: http://localhost:8931/sse
@@ -212,12 +215,21 @@ mcp_servers:
   - id: minimax-media
     url: http://127.0.0.1:18090/mcp
     enabled: true
-    note: "MiniMax Media MCP — TTS, video, image, voice, music"
+    tools: 9
+    note: "MiniMax Media MCP — TTS, video, image, voice, music. SSE+JSON Accept required. Tools: text_to_audio, list_voices, voice_clone, play_audio, generate_video, query_video_generation, text_to_image, music_generation, voice_design."
 
   - id: minimax-code
     url: http://127.0.0.1:18091/mcp
     enabled: true
-    note: "MiniMax Code Plan MCP — web_search, understand_image"
+    tools: 2
+    note: "MiniMax Code Plan MCP — web_search, understand_image. SSE+JSON Accept required."
+
+  # ── SERENA MCP (uvx-based, started on demand) ──────────────────────────────
+  - id: serena
+    command: uvx --from serena-agent serena start-mcp-server --mode no-memories
+    enabled: true
+    tools: 20+
+    note: "Serena is a symbol-level semantic retrieval tool (Claude Code MCP). Read-only via --mode no-memories. Available via /root/.claude/mcp-launchers/serena.sh. Launch with: uvx --from serena-agent serena start-mcp-server --mode no-memories"
 
 # A2A peers
 a2a_peers:

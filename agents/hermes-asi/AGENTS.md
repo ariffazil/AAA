@@ -6,7 +6,7 @@
 ## Boot Sequence
 
 1. `hermes-asi-gateway.service` → starts Telegram polling on `hermes-a2a.service` port 18001
-2. ART reflex loaded first (`skill_view(name="ART")`) before any other skill
+2. ART reflex is **permanent fixture** in SOUL.md §0 — always in context, no skill load needed
 3. `arif_session_init` (MCP :8088) → binds session, fetches constitutional chain
 4. Censorship probe — if active model returns empty content on Malaysian governance → re-route
 5. Skills loaded on-demand; never `skill_view(all)` — context budget

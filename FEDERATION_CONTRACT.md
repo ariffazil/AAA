@@ -73,33 +73,97 @@ Arif (F13 SOVEREIGN)
 
 No organ may authorize its own execution. Only `arif_judge_deliberate → arif_forge_execute → arif_vault_seal` completes the chain.
 
+### 4.1 Constitutional Mutation Procedure
+
+Any change to:
+- F1–F13 floors
+- Constitution hash
+- Federation topology (new organ, new port, new transport)
+- VAULT999 chain algorithm
+
+Requires:
+1. F13 SOVEREIGN explicit directive
+2. Ed25519 signature from sovereign
+3. Pre-seal contradiction gate
+4. 3-witness attestation (Human × AI × Earth)
+5. VAULT999 SEAL with full provenance
+6. 24h pre-seal deliberation window (default; can be reduced by F13)
+
 ---
 
 ## 5. Organ Boundaries (Non-Negotiable)
 
-### arifOS — The Kernel
-- **OWNS:** Constitutional judgment, F1-F13 enforcement, tool registry, session identity, VAULT999
-- **NEVER:** Domain computation (geoscience, finance, biometrics)
+### 5.1 Per-Repo Authority Matrix
 
-### GEOX — Earth Intelligence
-- **OWNS:** Well logs, seismic, petrophysics, prospect evaluation, basin screening
-- **NEVER:** Issue drilling decisions, authorize capital, adjudicate constitution
+| Concern | arifOS | GEOX | WEALTH | WELL | AAA | A-FORGE | APEX |
+|---------|:------:|:----:|:------:|:----:|:---:|:-------:|:----:|
+| **Constitution** | ✅ owner | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+| **F1–F13 floor enforcement** | ✅ owner | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+| **VAULT999 seal authority** | ✅ owner | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+| **Identity anchor / actor binding** | ✅ owner | ✗ | ✗ | ✗ | ✗ | ✗ | ✗ |
+| **Lease issuance** | ✅ owner | observer | observer | observer | observer | observer | observer |
+| **MCP tool transport** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **Pydantic contract schemas** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| **OPA policy bundles** | ✅ | lane-local | lane-local | lane-local | lane-local | lane-local | ✗ |
+| **Earth evidence (basin/well/seismic)** | ✗ | ✅ owner | ✗ | ✗ | ✗ | ✗ | ✗ |
+| **Capital intelligence (NPV, IRR, EMV, ...)** | ✗ | ✗ | ✅ owner (compute) | ✗ | ✗ | ✗ | ✗ |
+| **Capital execution** | ❌ (never) | ❌ | ❌ (never) | ❌ | ❌ | ❌ | ❌ |
+| **Human readiness (vitality, fatigue)** | ✗ | ✗ | ✗ | ✅ owner (observe) | ✗ | ✗ | ✗ |
+| **Diagnosis / prescription** | ❌ (never) | ❌ | ❌ | ❌ (never) | ❌ | ❌ | ❌ |
+| **A2A agent cards** | observer | ✅ owner | ✅ | ✅ | ✅ | ✅ | ✗ |
+| **Control plane UI** | ✗ | ✗ | ✗ | ✗ | ✅ owner | ✗ | ✗ |
+| **Deployment / systemd** | ✗ | ✗ | ✗ | ✗ | ✗ | ✅ owner | ✗ |
+| **Caddy / TLS** | ✗ | ✗ | ✗ | ✗ | observer | ✅ owner | ✗ |
+| **Secret storage** | ✗ | ✗ | ✗ | ✗ | ✗ | ✅ owner | ✗ |
+| **Forge receipts** | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ owner | ✗ |
+| **Constitutional adjudication** | ✅ owner | ✗ | ✗ | ✗ | ✗ | ✗ | legacy only |
 
-### WEALTH — Capital Intelligence
-- **OWNS:** NPV, IRR, EMV, DSCR, risk scores, portfolio allocation, market data
-- **NEVER:** Move capital, authorize trades, adjudicate constitution
+### 5.2 Domain Ownership & Boundaries
 
-### WELL — Human Readiness
-- **OWNS:** Sleep, fatigue, stress, cognitive clarity, dignity metrics
-- **NEVER:** Make medical diagnoses, judge fitness for duty, adjudicate constitution
+* **arifOS — The Kernel**
+  - **OWNS:** Constitutional judgment, F1-F13 enforcement, tool registry, session identity, VAULT999.
+  - **NEVER:** Domain computation (geoscience, finance, biometrics).
+* **GEOX — Earth Intelligence**
+  - **OWNS:** Well logs, seismic, petrophysics, prospect evaluation, basin screening.
+  - **NEVER:** Issue drilling decisions, authorize capital, adjudicate constitution.
+* **WEALTH — Capital Intelligence**
+  - **OWNS:** NPV, IRR, EMV, DSCR, risk scores, portfolio allocation, market data.
+  - **NEVER:** Move capital, authorize trades, adjudicate constitution.
+* **WELL — Human Readiness**
+  - **OWNS:** Sleep, fatigue, stress, cognitive clarity, dignity metrics.
+  - **NEVER:** Make medical diagnoses, judge fitness for duty, adjudicate constitution.
+* **AAA — Control Plane**
+  - **OWNS:** Cockpit display, A2A mesh routing, agent identity registry, approval queue.
+  - **NEVER:** Issue constitutional verdicts, execute irreversible actions.
+* **A-FORGE — Execution Shell**
+  - **OWNS:** Build, deploy, code execution, orchestration.
+  - **NEVER:** Adjudicate, compute domain logic (NumPy/Pandas), self-authorize.
 
-### AAA — Control Plane
-- **OWNS:** Cockpit display, A2A mesh routing, agent identity registry, approval queue
-- **NEVER:** Issue constitutional verdicts, execute irreversible actions
+### 5.3 Hard Separations (NEVER cross)
 
-### A-FORGE — Execution Shell
-- **OWNS:** Build, deploy, code execution, orchestration
-- **NEVER:** Adjudicate, compute domain logic (NumPy/Pandas), self-authorize
+1. **Intelligence ≠ Authority** — GEOX is smart; arifOS is sovereign.
+2. **Tools ≠ Organs** — GEOX is an organ with identity, contract, domain_law.
+3. **Resources ≠ Memory until sealed** — only SEALED claims enter durable memory.
+4. **Compute ≠ Execute** — WEALTH computes; never moves capital.
+5. **Observe ≠ Judge** — WELL observes; never judges strategic action.
+6. **Recommend ≠ Decide** — every recommendation is `execution_authorized=False`.
+7. **Human dignity is not negotiable** — F6 MARUAH, F9 ANTI-HANTU are floors, not lanes.
+
+### 5.4 Lane Discipline (per organ)
+
+* **arifOS lanes:**
+  - `discovery` (5 tools): organ_attest, registry_status, ping, version, system_status
+  - `evidence` (13 tools): data_ingest, data_qc, evidence_attach, ...
+  - `reasoning` (17 tools): seismic_compute, claim_create, ...
+  - `judgment` (5 tools): claim_seal, vault_seal, forge_execute, judge_deliberate, heart_critique
+  - `weave_orchestrate` (20 tools): session_init, kernel_route, lease_*, memory_*, mind_reason, ...
+* **GEOX lanes (4):**
+  - discovery / evidence / reasoning / judgment — per GEOX.yaml §3
+* **WEALTH lanes (2):**
+  - wealth_calculate (16 tools): NPV, IRR, conservation, flow, entropy, ...
+  - wealth_audit (5 tools): stock_analysis, pre_trade, fundamentals, verify_math, position_size
+* **WELL lanes (1):**
+  - well_measure (18 tools): assess_*, validate_vitality, guard_dignity, measure_gradient, ...
 
 ---
 
@@ -168,6 +232,15 @@ The 7 Teras: Kejujuran, Maruah, Veto, Kesungguhan, Kerahasiaan, Keinsafan, Tebus
 4. **SEAL-readiness is not VAULT seal.** Only `VAULT999_SEAL_RECORD` is final.
 5. **No component may claim more certainty than its evidence receipt.**
 6. **The human is OUTSIDE the topology.** Not a coordinate in the system. The source that bounds it.
+
+### 10.1 Architectural Implications & Enforcement
+
+- No single organ can claim "sovereign" status.
+- All cross-organ communication goes through arifOS.
+- The kernel envelope (`arifosmcp/core/guards.py` / `arifos_policy/kernels_envelope.py`) wraps every organ output.
+- The pre-seal contradiction gate blocks SEAL until validate+challenge+evidence chain is complete.
+- OPA policies are advisory; arifOS is the constitutional authority.
+- Sigstore signs, arifOS verifies, OPA authorizes, arifOS gates.
 
 ---
 
