@@ -9,8 +9,30 @@
 
 ## 0. PRINCIPLE
 
-> The kernel does not make reality more true. It makes truth more governable.
-> These three invariants encode which worlds are allowed to exist — and which are illegal states, not vibes.
+> arifOS does not make reality more true. It makes intelligence accountable to reality before it is allowed to claim, continue, delegate, or mutate.
+>
+> The model emits possibilities. The MCP layer exposes possible effects. The kernel collapses those possibilities into **admissibility verdicts**.
+>
+> Not because the kernel knows ultimate truth, but because it enforces evidence, authority, policy, traceability, and replay.
+>
+> **The kernel does not collapse reality. It collapses admissibility ambiguity.**
+>
+> A model produces possibilities. A tool produces effects. The kernel decides admissibility. A vault preserves accountability.
+>
+> Ungoverned intelligence: symbolic output can become physical consequence without lawful transition.
+> Governed intelligence: symbolic output must pass admissibility before becoming consequence.
+>
+> **The kernel is not truth. The kernel is the constitutional boundary that prevents untruth, drift, and unauthorized power from crossing into reality.**
+
+### The core theorem
+
+```
+LLM          → symbolic possibility
+MCP tool     → executable effect
+arifOS       → admissibility boundary
+VAULT999     → accountable memory
+AAA          → operator visibility
+```
 
 ---
 
