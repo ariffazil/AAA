@@ -3,7 +3,13 @@
   "title": "Federation Memory Broker Telemetry Schema",
   "description": "Telemetry written to Redis by federation-memory-broker plugin. Polls Hermes state.db every 60s.",
   "type": "object",
-  "required": ["timestamp", "agent_id", "active_sessions", "message_count_24h", "error_rate_24h"],
+  "required": [
+    "timestamp",
+    "agent_id",
+    "active_sessions",
+    "message_count_24h",
+    "error_rate_24h"
+  ],
   "properties": {
     "timestamp": {
       "type": "string",
@@ -11,7 +17,10 @@
     },
     "agent_id": {
       "type": "string",
-      "enum": ["hermes", "openclaw", "maxhermes"]
+      "enum": [
+        "hermes",
+        "openclaw"
+      ]
     },
     "active_sessions": {
       "type": "integer",

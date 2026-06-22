@@ -53,8 +53,10 @@
 #### FM-07: GEOMCP unreachable (port 8081)
 **Severity**: MEDIUM
 **Status**: KNOWN
-**Impact**: maxhermes cannot call GEOX tools
+**Impact**: GEOX tool unavailability affects any downstream consumers (e.g. opencode routing via arifos_gateway_connect). External MaxHermes (if integrated) would also be blocked.
 **Remediation**: Start geoxmcp container in compose stack
+
+> **Historical note:** Earlier versions of this entry mentioned a fictional `maxhermes` local agent. Per Arif's 2026-06-22 clarification, MaxHermes is the MiniMax cloud product (`agent.minimaxi.com/max-hermes`) — external, not under AAA Federation control. See `external/maxhermes/` for the canonical external registry entry.
 
 #### FM-08: Hermes config split between ~/.hermes/config.yaml and AAA/hermes/config.yaml
 **Severity**: MEDIUM

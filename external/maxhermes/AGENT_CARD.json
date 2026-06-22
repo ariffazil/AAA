@@ -1,0 +1,53 @@
+{
+  "id": "maxhermes-external",
+  "name": "MaxHermes (MiniMax Cloud Sandbox)",
+  "vendor": "MiniMax",
+  "type": "external-third-party-service",
+  "description": "MiniMax's managed cloud deployment of the Hermes Agent framework by Nous Research. Powered by MiniMax M2.7 (230B MoE, 10B active). Self-evolving skill library. NOT under AAA Federation control.",
+  "url": "https://agent.minimaxi.com/max-hermes",
+  "access_model": "external-hosted",
+  "sovereignty": "none — hosted by MiniMax",
+  "audit_trail_source": "https://lushbinary.com/blog/maxhermes-minimax-cloud-sandbox-self-evolving-ai-guide/",
+  "audit_trail_verified": "2026-06-22",
+  "constitutional_binding": {
+    "floors_active_in_aaa_calls": ["F1", "F2", "F11", "F13"],
+    "floor_enforcement": "client-side only — MaxHermes itself does not enforce F1-F13",
+    "data_sovereignty": "maxhermes = external cloud = data flows through MiniMax infrastructure. AAA does NOT pass F6 MARUAH data to MaxHermes without F13 explicit ack."
+  },
+  "calling_pattern": {
+    "method": "outbound HTTP to https://agent.minimaxi.com/max-hermes",
+    "auth": "MiniMax API key (token plan)",
+    "witness_required": "ARIFOS-witnessed outbound call recorded in VAULT999"
+  },
+  "integration_status": {
+    "wired_in_aaa": false,
+    "reason": "No local instance. External service. Documentation only.",
+    "future_path": "When integration desired, register via aaa-gateway A2A delegation with F13 ack."
+  },
+  "model": {
+    "name": "MiniMax M2.7",
+    "architecture": "230B MoE (10B active per token)",
+    "pricing_per_m_tokens": {
+      "input": 0.30,
+      "output": 1.20
+    },
+    "benchmarks": {
+      "swe_pro_pct": 56.22,
+      "aa_intelligence_index": 50,
+      "aa_intelligence_rank": "1 of 136"
+    }
+  },
+  "distinct_from": [
+    "agents/hermes-asi/ (Hermes-ASI Telegram bot — under arifOS control)",
+    "agents/555-ASI/ (HEXAGON constitutional warga — class ASI)",
+    "agents/APEX/ (decommissioned constitutional judge)"
+  ],
+  "do_not_confuse_with": {
+    "agents/hermes-asi/": "Hermes-ASI is OUR Telegram bot (Nous Research fork, head 2517917d). MaxHermes is MiniMax's cloud service running M2.7.",
+    "agents/555-ASI/": "555-ASI is HEXAGON constitutional warga (memory + ethical critique). MaxHermes is external.",
+    "MiniMax-M3": "MiniMax-M3 is the LLM that powers our kernel (also rate-limited). MaxHermes uses MiniMax M2.7 (different model)."
+  },
+  "ditempa_bukan_diberi": true,
+  "forged": "2026-06-22T06:45:00Z",
+  "forged_by": "FORGE (000Ω) at 888 directive (Arif clarification: MaxHermes is external)"
+}
