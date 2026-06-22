@@ -95,7 +95,7 @@ All share the 97-tool capability index and F1-F13 governance.
 | ID | Reason | Superseded By | Status |
 |---|---|---|---|
 | **apex** | Memory engine. Deliberation moved to AAA a2a-server. | aaa-a2a (deliberation.ts) | ⚠️ SPEC-ONLY |
-| **maxhermes** | GEOX Earth specialist. Hermes handles Earth tasks directly. | hermes-asi | ⚠️ SPEC-ONLY |
+| **maxhermes** | GEOX Earth specialist. **REMOVED 2026-06-22** — clarified as external MiniMax cloud product (see `external/maxhermes/`). | external/maxhermes (MiniMax cloud) | ⚠️ ARCHIVED |
 | **hermes-ops** | DevOps specialist. Tasks delegated to OpenClaw or claude-code. | openclaw / claude-code | ⚠️ SPEC-ONLY |
 | **aaa-architect** | Pre-HEXAGON ARoLE. | 333-AGI | ❌ SUPERSEDED |
 | **aaa-engineer** | Pre-HEXAGON ARoLE. | A-FORGE | ❌ SUPERSEDED |

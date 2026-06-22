@@ -70,7 +70,7 @@ This contract codifies that real role.
 
 | Incoming signal | Route to | How |
 |-----------------|----------|-----|
-| Earth/geology/geophysics | GEOX (via `arifos_sense_observe`) | A2A delegation if maxhermes runtime exists; direct MCP if not |
+| Earth/geology/geophysics | GEOX (via `arifos_gateway_connect`) | Direct GEOX MCP at :8081 |
 | Capital/finance/wealth | WEALTH (via `arifos_gateway_connect`) | MCP at :18082 |
 | Biological/wellness/substrate | WELL (via `arifos_gateway_connect`) | MCP at :18083 |
 | Code/deployment/CI-CD | OPENCLAW (peer agent) | A2A delegation to :18789, or `:forge` mode in 000♎️ |
