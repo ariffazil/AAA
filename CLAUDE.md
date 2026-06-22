@@ -142,6 +142,8 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 
 ## 6. FEDERATION ARCHITECTURE
 
+> **Canonical organ map:** `/root/AAA/docs/federation-organ-map.md` — the single source of truth for organ topology, substrate roles, and constitutional boundaries. If any other document disagrees, the organ map wins.
+
 ### The Trinity (ΔΩΨ)
 - **Δ (SOUL)** — Human values, purpose, telos (Arif)
 - **Ω (MIND)** — Constitution, 13 Floors, 888 JUDGE (arifOS)
@@ -335,6 +337,7 @@ Before acting on any request:
 | What | Where |
 |------|-------|
 | Agent instruction (this file) | `/root/AAA/CLAUDE.md` |
+| **Canonical organ map** | `/root/AAA/docs/federation-organ-map.md` |
 | Federation landing + full detail | `/root/AGENTS.md` |
 | Live machine state | `/root/CONTEXT.md` |
 | Operations runbook | `/root/RUNBOOK.md` |
@@ -347,7 +350,7 @@ Before acting on any request:
 
 ---
 
-*Forged 2026-06-05 by AAA Control Plane.*
+*Forged 2026-06-05 by AAA Control Plane. Updated 2026-06-22 — organ map canonicalized.*
 *Replaces: /root/.claude/CLAUDE.md, /root/CLAUDE.md, /root/AGENT_KICKSTART.md, /root/AGENT_SELF_SOLVE.md, /root/AGENT_TOKEN_TAKEOVER.md*
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
