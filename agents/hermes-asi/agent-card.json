@@ -97,6 +97,22 @@
     "l5_vault": "VAULT999 — append-only hash-chained audit ledger",
     "l6_vector": "Qdrant arifos_memory — vector embeddings for semantic recall"
   },
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/hermes-asi/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "ANALYZE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/hermes-asi/art_binding.yaml"
+    }
+  },
   "constitutional_binding": {
     "soul_doc": "/root/.hermes/SOUL.md",
     "phase_transition": "M-Layer (Metabolize — deterministic Python, Pydantic v2) → D-Layer (Decode — BM Pasar Penang operator-facing)",

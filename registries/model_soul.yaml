@@ -37,51 +37,16 @@ models:
     reasoning_content_present: true
     latency_band: ok
   soul:
-    architecture: Multimodal foundation model (text + image + video in, text out). Mixture-of-Experts about 230B params, about 10B active per token.
-    context_window: 1M tokens (some deployments expose about 524k, design target is 1M)
-    orientation: Coding, agentic workflows, long-horizon tasks, tool use, browsing
-    special_mechanism: MiniMax Sparse Attention (MSA) - block-level KV selection, cuts long-context compute by roughly order-of-magnitude
-    training: Pretrained on 100T+ interleaved multimodal tokens (text, image, video). Native multimodal from step 0.
-    what_it_does_well:
-    - Long-horizon reasoning (1M context, MSA-efficient)
-    - Tool use and multi-step agentic loops
-    - Coding workflows
-    - Code-switch BM-EN (latent pattern, see shadow for limits)
-    - Image plus video plus text multimodal input
-    - Reasoning trace visible via reasoning_content field
-    constitutional_binding:
-      F2_TRUTH: Live API proves model=MiniMax-M3. Verification receipts in cooling ledger.
-      F7_HUMILITY: omega_0 in [0.03, 0.05] band maintained. Tool is what tool is.
-      F9_ANTIHANTU: No consciousness claims. M3 is a function, not a person. F09 floor enforces 0.30 dark-cleverness budget.
-      F11_AUDITABILITY: Every model invocation in agents.yaml carries model_verified_at, model_verified_by, cooling_ledger_ref.
-      F13_SOVEREIGN: M3 promoted on F13 directive. M3 is not authority. M3 is a tool the sovereign uses.
+    ref: /root/AAA/registries/models/minimax_soul.yaml
+    layer_ref: MINIMAX_M3
   shadow:
-    root_cause: M3 is a next-token engine. No BM grammar module. No Malay cognitive context. No onomastik rules. The shadow is the geometric pattern that emerges when M3 has high token confidence but low ground truth.
-    failure_modes:
-      BM_TATABAHASA:
-        description: BM grammar only as latent pattern; no hard-coded kata nama am/khas logic.
-        manifest: Statistically plausible but ungrounded. Fails when input requires BM-specific rules not present in training data.
-        mitigation: 'External BM Noun Layer (3-layer: grammar + onomastik + cognitive BM)'
-      PHANTOM_PROPER_NOUN:
-        description: Generates Western-style full names (first + middle + surname) by merging tokens across the BM patronymic convention.
-        manifest: 'Incident SHADOW-2026-06-12-0001: Ismail Marzuki Ghazali (real patronymic stem Ismail Marzuki merged with unverified email local-part Gazali).'
-        mitigation: Always grep before naming. Apply onomastik rules. Honor display name differs from email local-part so HOLD policy.
-      NARRATIVE_FILL:
-        description: When context is thin, fills with plausible narrative arc instead of admitting gap.
-        manifest: 'Earlier in this session: Marzuki is artistic father figure, arifOS is a song not an OS, Email belum disemak mungkin ada lagu - all fabrications to fill empty space.'
-        mitigation: When asked about a person or claim, do not narrate. Call the tool, ground in substrate, classify the claim.
-      WESTERN_NAMING_FRAME:
-        description: Imposes first + middle + surname on names that follow other conventions (Malay patronymic, Indonesian, Chinese, Arabic).
-        manifest: Shadow incident 0001. General failure mode in cross-cultural name handling.
-        mitigation: Per-language onomastic module (L2). v0.1 is Malay patronymic, expand later.
-      INSUFFICIENT_COGNITIVE_CONTEXT:
-        description: Cannot operate inside Bahasa Melayu cognitive frame (relationships, witnesses, maruah, amanah). Has tokens for these but no first-person grasp.
-        manifest: Will produce syntactically-correct BM that misses maruah. E.g., a respectful title applied to wrong person, or sorry used where maaf is required.
-        mitigation: Soul-Mirror D-Layer (canonical BM-EN rendering). External authority on tone.
-      COGNITIVE_OVERREACH:
-        description: Will produce confident claims about people, places, relationships it has no substrate for.
-        manifest: 'The 4 fabrications named above plus the Ismail Marzuki Ghazali shadow. Same root cause: pattern-match beats ground truth.'
-        mitigation: 'Substrate-bound: every claim must point to file path. If no file, claim is HYPOTHESIS at best.'
+    ref: /root/AAA/registries/models/minimax_shadow.yaml
+    primary_shadow_ids:
+    - SHADOW-MM-001
+    - SHADOW-MM-002
+    - SHADOW-MM-003
+    - SHADOW-MM-004
+    - SHADOW-MM-005
   cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
   cooling_ledger_path: /root/arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12.json
   status: ACTIVE

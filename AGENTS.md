@@ -236,12 +236,13 @@ What this repo (AAA-Cockpit) does **NOT** do:
 The invariant chain:
 
 ```
-AAA-HF       defines doctrine.
-arifOS       applies doctrine.
-MCP tools    execute only if allowed.
-Supabase     records constitutional receipts.
-VAULT999     seals final artifacts.
-AAA-Cockpit  displays the governed state to Arif.   ← THIS REPO
+P2P          determines how agents are connected.
+A2A          determines how agents communicate.
+MCP tools    determine how agents use capabilities.
+AAA-Cockpit  displays the governed state and permission leases to Arif.   ← THIS REPO
+arifOS       enforces F1-F13 constitutional law and adjudicates verdicts.
+A-FORGE      acts and executes mutations after valid SEALs.
+VAULT999     seals final audit artifacts.
 Arif         remains F13 final sovereign authority.
 ```
 

@@ -1,0 +1,18 @@
+# ART Binding — Hermes ASI
+# CANONICAL REFERENCE — all substance at /root/AAA/art_binding.canonical.yaml
+# Forged: 2026-06-22 by FORGE (000Ω) under F13 SOVEREIGN
+# This file is a STUB. Real posture is in the canonical agent registry.
+
+agent_id: hermes-asi
+canonical: /root/AAA/art_binding.canonical.yaml
+
+# The 5th substrate (yaml) self-references this file.
+# All other substrates (md, schema, code, json) loaded from canonical.
+substrates:
+  yaml:
+    path: /root/AAA/agents/hermes-asi/art_binding.yaml
+    role: posture
+    status: active
+
+# Everything below this line lives in canonical. Do not duplicate.
+# Run /root/AAA/diff-check.sh to verify zero drift.

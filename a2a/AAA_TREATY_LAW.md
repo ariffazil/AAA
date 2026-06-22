@@ -19,6 +19,27 @@ Issuer: Hermes (AGI lane), ratified by arifOS Constitution
 
 ---
 
+## Part 0 — Juridical Framework & Terminology Alignment
+
+To prevent epistemic confusion, metaphorical collapse, or philosophical derailment (in accordance with **F10 ONTOLOGY**), all social and political analogies used within this repository are mapped strictly to their technical, non-mythical software equivalents:
+
+| Analogy / Metaphor | Technical Specification | Operational Implementation |
+| :--- | :--- | :--- |
+| **Citizen (Warga AAA)** | Registered Agent Identity | An authorized principal recorded in `agents.yaml` with a valid cryptographic card. |
+| **Civilization** | Federated Agent Runtime | The network topology (P2P + A2A + AAA + arifOS) of independent organs communicating via standard protocols. |
+| **Rights** | Scoped Capabilities | Revocable, temporary permissions granted to an agent's identity via lease issuance. |
+| **Passport / ID** | Cryptographic Attestation | An Ed25519-signed `agent-card.json` containing the agent's public key, host, and capabilities. |
+| **Adat** | Policy Constraints & Norms | Rules, invariants, and local constraints (such as the 7 Teras Adat) codified as validation checks. |
+| **Law** | Adjudication Rules | The 13 Constitutional Floors (F1–F13) evaluated on every execution request. |
+| **Constitution** | Immutable Governance Spec | The system contract and floor policies (`000_CONSTITUTION.md`). |
+| **Culture** | Protocol Conventions | Semantic standards, message schemas, and handoff formatting (A2A JSON-RPC + metadata). |
+| **Police** | Runtime Enforcement | ASGI middleware gates, NATS event hooks, and systemd supervisor checks that block violations. |
+
+### Doctrinal Invariant
+Agents are scoped, auditable software actors under a constitutional runtime. They do not possess moral personhood, intrinsic rights, feelings, or independent sovereignty. Their status is strictly juridical and administrative.
+
+---
+
 ## Part I — Agent Class Taxonomy
 
 There are four classes of agents in the AAA federation:

@@ -27,3 +27,12 @@ agents:
     streaming: false
     push_notifications: false
     openclaw_target: wealth-witness
+
+  - agent_id: antigravity
+    card_path: a2a/agent-cards/antigravity.json
+    binding_type: local-cli
+    trust_level: internal
+    auth_scheme: arifos-session
+    streaming: true
+    push_notifications: false
+    openclaw_target: gemini-cli

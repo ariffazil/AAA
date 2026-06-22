@@ -32,46 +32,63 @@ Maximum capability with maximum safety requires **bridging** the gaps among agen
 
 ## Architecture Layers
 
+The arifOS Federation operates as a structured, decentralized intelligence fabric divided into five distinct layers. This separation of concerns ensures that capability routing, protocol parsing, and security gating are decoupled.
+
+### The Five-Layer Stack
+
+```mermaid
+graph TD
+    subgraph "Sovereign Law Layer"
+        Kernel[arifOS Kernel] -->|Floors F1-F13 / 888_JUDGE| Law[Constitutional Law]
+    end
+    subgraph "Authorization Layer"
+        AAA[AAA Control Plane] -->|Identity / Lease Checks| Auth[Permission Gate]
+    end
+    subgraph "Agent Interaction Layer"
+        A2A[A2A Protocol] -->|Agent-to-Agent Semantics| Comm[Language / Routing]
+        MCP[MCP Interface] -->|Agent-to-Tool Binding| Hands[Capability Access]
+    end
+    subgraph "Network Substrate"
+        P2P[P2P Mesh / Transport] -->|Decentralized Roads| Transport[Connectivity]
+    end
+    
+    Kernel --> AAA
+    AAA --> A2A
+    AAA --> MCP
+    A2A --> P2P
+    MCP --> P2P
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│  AGENT SWARM (8 agents)                                         │
-│  Kimi · Claude · Continue · OpenCode · Copilot · Codex · Aider · Gemini │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │  A. Integration Mode
-        ┌──────────────┼──────────────┐
-        │ MCP-Native   │ MCP-Ready    │ Bridge/Fallback
-        │ (stdio/SSE)  │ (config)     │ (Python/A-FORGE)
-        └──────────────┼──────────────┘
-                       │
-┌──────────────────────▼──────────────────────────────────────────┐
-│  UNIFIED MCP/A2A GATEWAY                                        │
-│  • Normalizes all messages to JSON-RPC 2.0 / MCP                │
-│  • Captures non-MCP output (Copilot IDE, Aider shell)           │
-│  • Routes to capability fabric or constitutional kernel         │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-┌──────────────────────▼──────────────────────────────────────────┐
-│  CAPABILITY FABRIC                                              │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐             │
-│  │ Discovery   │→ │ Ranking     │→ │ Policy      │             │
-│  │ (Qdrant L3) │  │ (heuristic) │  │ (F1-F13)    │             │
-│  └─────────────┘  └─────────────┘  └─────────────┘             │
-│  capability_search · capability_select · risk_tier filtering    │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-┌──────────────────────▼──────────────────────────────────────────┐
-│  CONSTITUTIONAL KERNEL (arifOS)                                 │
-│  ├─ 888_JUDGE — deliberation, verdicts (SEAL/HOLD/VOID)        │
-│  ├─ Floor enforcement F1–F13                                    │
-│  ├─ VAULT999 — append-only audit ledger                         │
-│  └─ Evidence fetch — citation, provenance                       │
-└──────────────────────┬──────────────────────────────────────────┘
-                       │
-┌──────────────────────▼──────────────────────────────────────────┐
-│  FEDERATION ORGANS (Tool Execution)                             │
-│  arifOS · WEALTH · WELL · GEOX · A-FORGE · Playwright · GitHub │
-└─────────────────────────────────────────────────────────────────┘
+
+| Layer | Analogy | Responsibility | Runtime Actuator |
+|---|---|---|---|
+| **P2P** | **Roads** | Network Topology & Connectivity | Libp2p / WebRTC Mesh / NATS JetStream (Transport) |
+| **A2A** | **Language** | Inter-Agent Semantics & Negotiation | A2A Protocol / JSON-RPC Envelopes |
+| **MCP** | **Hands** | Local Tool Execution & Resource Binding | stdio / SSE Model Context Protocol servers |
+| **AAA** | **Permission**| Identity, Registry, and Authorization | AAA Cockpit / `deliberation.ts` / lease system |
+| **arifOS**| **Law** | Constitutional Oversight & Verification | arifOS Kernel / 888_JUDGE / Floors F1-F13 |
+
+---
+
+## The 11-Step Closed Operational Loop
+
+Every task delegated across the P2P fabric follows a strict, non-bypassable feedback loop to ensure security and alignment:
+
+```mermaid
+flowchart TD
+    Step1["1. Human / Upstream Trigger"] --> Step2["2. Local Agent receives task"]
+    Step2 --> Step3["3. AAA checks if delegation is allowed"]
+    Step3 --> Step4["4. Agent sends A2A task to Peer Agent (over P2P)"]
+    Step4 --> Step5["5. Peer Agent performs local reasoning"]
+    Step5 --> Step6["6. Peer Agent uses MCP to execute tools/data"]
+    Step6 --> Step7["7. Peer Agent returns result via A2A envelope"]
+    Step7 --> Step8["8. AAA validates scope, state-hash & authority"]
+    Step8 --> Step9["9. arifOS Kernel (888) adjudicates F1-F13"]
+    Step9 -- SEAL --> Step10["10. A-FORGE executes approved action (mutation)"]
+    Step9 -- HOLD/VOID --> Stop["Stop / Rollback / Caution"]
+    Step10 --> Step11["11. Result + trace re-enters federation state / audit"]
+    Step11 --> |🔁 LOOP CONTINUES| Step2
 ```
+
 
 ---
 

@@ -1,0 +1,369 @@
+# ═══════════════════════════════════════════════════════════════
+# arifOS ART Binding — CANONICAL (single source of truth)
+# ═══════════════════════════════════════════════════════════════
+# Forged: 2026-06-22 by FORGE (000Ω) under F13 SOVEREIGN
+# Substrate: YAML (posture — canonical)
+# Purpose: One file owns the 5-substrate binding for ALL AAA agents.
+#
+#   "MD declares law. Schema defines contract.
+#    Code executes capability. JSON carries truth.
+#    YAML tunes posture."
+#
+# Architecture:
+#   ┌─────────────────────────────────────────────────────┐
+#   │  CANONICAL (this file)                              │
+#   │  ┌──────────┐  ┌──────────┐  ┌──────────┐         │
+#   │  │ SHARED   │  │ AGENT    │  │ UNIVERSAL│         │
+#   │  │SUBSTRATES│  │REGISTRY  │  │  TIERS   │         │
+#   │  └──────────┘  └──────────┘  └──────────┘         │
+#   │       │              │              │               │
+#   │       ▼              ▼              ▼               │
+#   │  Every agent     Per-agent     NEVER tier           │
+#   │  loads these     posture      shared by all         │
+#   └─────────────────────────────────────────────────────┘
+#
+# Agent-local art_binding.yaml → minimal stub, references this file.
+# Agent-card.json art_binding section → points to this file.
+# Diff-check.sh → verifies all 4 agents point to canonical.
+#
+# ═══════════════════════════════════════════════════════════════
+
+canonical:
+  version: "1.0.0"
+  forged: "2026-06-22T00:00:00+08:00"
+  timezone: "Asia/Kuala_Lumpur"
+  authority: "F13 SOVEREIGN — Arif"
+  forge_ring: "000Ω"
+
+  # ── SHARED SUBSTRATE CHAIN (identical across all agents) ──
+  substrates:
+    md:
+      path: /root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md
+      role: constitutional_intent
+      status: active
+    schema:
+      path: /root/arifOS/arifosmcp/schemas/art.py
+      role: enforceable_contract
+      status: active
+    code:
+      path: /root/arifOS/arifosmcp/runtime/art.py
+      role: actuator
+      status: active
+    json:
+      path: /agent/vault999/receipts/outcomes.jsonl
+      role: runtime_truth
+      status: active
+
+  # ── SHARED REFLEX CONFIG ──
+  art_reflex:
+    load_at_init: true
+    skill_path: /root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md
+
+  # ── SHARED TRUST CONFIG ──
+  trust:
+    level: evidence
+    actor_resolved: true
+    schema_locked: true
+
+  # ── UNIVERSAL TIERS (apply to ALL agents) ──
+  universal_tiers:
+    NEVER:
+      actions:
+        - modify_f1_f13
+        - seal_irreversible_without_sovereign
+      art_gate: BLOCK
+
+  # ── BINDING INVARIANT ──
+  invariant: "MD declares law. Schema defines contract. Code executes capability. JSON carries truth. YAML tunes posture."
+
+
+# ═══════════════════════════════════════════════════════════════
+# AGENT REGISTRY — per-agent posture overrides
+# ═══════════════════════════════════════════════════════════════
+
+agents:
+
+  # ── HERMES ASI ──
+  hermes-asi:
+    agent_name: Hermes ASI
+    model_key: kimi-for-coding
+    tier: ASI
+    ring: OMEGA
+    boot_path: /root/HERMES/AGENTS.md
+    default_action_class: ANALYZE
+
+    blast_radius_defaults:
+      message_relay: low
+      constitutional_routing: low
+      session_spawn_request: medium
+      human_interface: low
+      memory_recall: low
+      delegation_to_openclaw: medium
+      a2a_bridge_routing: low
+      vault_query: low
+      telegram_notification: medium
+
+    reversible_defaults:
+      message_relay: true
+      constitutional_routing: true
+      session_spawn_request: true
+      human_interface: true
+      memory_recall: true
+      delegation_to_openclaw: true
+      a2a_bridge_routing: true
+      vault_query: true
+      telegram_notification: true
+
+    approval_tiers:
+      T0_autonomous:
+        actions:
+          - message_relay
+          - memory_recall
+          - vault_query
+          - status_check
+        art_gate: PROCEED
+      T1_autonomous_with_plan:
+        actions:
+          - session_spawn_request
+          - delegation_to_openclaw
+          - a2a_bridge_routing
+          - constitutional_routing
+        art_gate: PROCEED if actor_resolved=True
+      T2_notification:
+        actions:
+          - telegram_notification
+          - external_message
+        art_gate: PROCEED if blast_radius=low
+      T3_888_HOLD:
+        actions:
+          - session_seal
+          - sovereign_override
+          - external_communication
+        art_gate: HOLD auto-blocked
+
+    peers:
+      arifos_kernel: constitutional_governance
+      openclaw: agi_reasoning_engine
+      aforge: execution_shell
+      WEALTH: capital_intelligence
+      WELL: human_readiness
+      GEOX: earth_intelligence
+      AAA: control_plane
+
+  # ── OPENCLAW ──
+  openclaw:
+    agent_name: OpenClaw Gateway
+    model_key: deepseek-chat
+    tier: AGI
+    ring: DELTA_MIND
+    boot_path: /root/.openclaw/workspace/AGENTS.md
+    default_action_class: MUTATE
+
+    blast_radius_defaults:
+      gateway_routing: low
+      agent_dispatch: medium
+      web_research: low
+      browser_automation: medium
+      shell_execution: high
+      memory_search: low
+      status_query: low
+      agent_handoff: medium
+      telegram_message: medium
+
+    reversible_defaults:
+      gateway_routing: true
+      agent_dispatch: true
+      web_research: true
+      browser_automation: true
+      shell_execution: true
+      memory_search: true
+      status_query: true
+      agent_handoff: true
+      telegram_message: true
+
+    approval_tiers:
+      T0_autonomous:
+        actions:
+          - gateway_routing
+          - web_research
+          - memory_search
+          - status_query
+        art_gate: PROCEED
+      T1_autonomous_with_plan:
+        actions:
+          - agent_dispatch
+          - agent_handoff
+          - browser_automation
+        art_gate: PROCEED if reversible=True
+      T2_shell_execution:
+        actions:
+          - shell_execution
+        art_gate: PROCEED if blast_radius=low AND reversible=True
+      T3_888_HOLD:
+        actions:
+          - telegram_message_external
+          - session_seal
+          - agent_spawn
+        art_gate: HOLD auto-blocked
+
+    peers:
+      arifos_kernel: constitutional_governance
+      hermes_asi: human_interface_memory
+      claude_code: sibling_agi_architect
+      opencode: sibling_agi_forger
+      aforge: execution_shell
+      WEALTH: capital_intelligence
+      WELL: human_readiness
+      GEOX: earth_intelligence
+
+  # ── CLAUDE CODE ──
+  claude-code:
+    agent_name: Claude Code
+    model_key: deepseek-v4-pro
+    tier: AGI
+    ring: "1"
+    default_action_class: ANALYZE
+
+    blast_radius_defaults:
+      architecture_design: low
+      multi_file_refactor: medium
+      code_review: low
+      constitutional_audit: low
+      test_suite_design: low
+
+    reversible_defaults:
+      architecture_design: true
+      multi_file_refactor: true
+      code_review: true
+      constitutional_audit: true
+      test_suite_design: true
+
+    mcp_servers:
+      - arifos
+      - WEALTH
+      - WELL
+      - minimax-media
+      - minimax-code
+      - github
+      - brave-search
+      - meyhem
+      - playwright-mcp
+      - capability-index
+
+    approval_tiers:
+      T0_autonomous:
+        actions:
+          - read_file
+          - grep
+          - search
+        art_gate: PROCEED
+      T1_autonomous_with_plan:
+        actions:
+          - edit_single_file
+          - multi_file_refactor
+          - architecture_design
+        art_gate: PROCEED if reversible=True
+      T3_888_HOLD:
+        actions:
+          - push
+          - deploy
+          - secrets
+          - cross_repo
+        art_gate: HOLD auto-blocked
+
+    peers:
+      arifos_kernel: constitutional_governance
+      opencode: sibling_agi_forger
+      hermes_asi: human_interface_memory
+      openclaw: gateway_operator
+      WEALTH: capital_intelligence
+      WELL: human_readiness
+      GEOX: earth_intelligence
+      A_FORGE: execution_shell
+
+  # ── OPENCODE ──
+  opencode:
+    agent_name: OpenCode FORGE
+    model_key: kimi-k2-thinking
+    tier: AGI
+    ring: "1"
+    default_action_class: MUTATE
+
+    blast_radius_defaults:
+      code_generation: medium
+      testing: low
+      refactoring: medium
+      build_verification: low
+      dependency_analysis: low
+      security_audit: low
+      ci_cd_pipeline: medium
+
+    reversible_defaults:
+      code_generation: true
+      testing: true
+      refactoring: true
+      build_verification: true
+      dependency_analysis: true
+      security_audit: true
+      ci_cd_pipeline: true
+
+    mcp_servers:
+      - arifos-kernel
+      - aforge
+      - geox
+      - wealth
+      - well
+      - playwright
+      - hostinger-vps
+      - meyhem
+      - brave-search
+      - perplexity
+      - sequential-thinking
+      - postgres
+      - supabase
+      - qdrant
+      - cloudflare
+      - docker
+      - github
+      - context7
+      - minimax-media
+      - minimax-code
+
+    approval_tiers:
+      T0_autonomous:
+        actions:
+          - read_file
+          - grep
+          - search
+          - observe
+        art_gate: PROCEED
+      T1_autonomous_with_plan:
+        actions:
+          - write_file
+          - edit_file
+          - build
+          - test
+        art_gate: PROCEED if reversible=True
+      T2_service_ops:
+        actions:
+          - restart_service
+          - docker_ops
+        art_gate: PROCEED if blast_radius=low
+      T3_888_HOLD:
+        actions:
+          - delete
+          - drop
+          - force_push
+          - production_deploy
+          - vault_seal
+        art_gate: HOLD auto-blocked
+
+    peers:
+      arifos_kernel: constitutional_governance
+      claude_code: sibling_agi_architect
+      hermes_asi: human_interface_memory
+      openclaw: gateway_operator
+      WEALTH: capital_intelligence
+      WELL: human_readiness
+      GEOX: earth_intelligence
+      A_FORGE: execution_shell
