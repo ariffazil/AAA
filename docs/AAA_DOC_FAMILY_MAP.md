@@ -69,7 +69,7 @@ The AAA repo contains **52 root-level `.md` files** organized into **9 document 
 | 20 | `AAA_TELEGRAM_VISIBILITY_PROTOCOL.md` | AGENT_PROTOCOL | 2026-05-04 | ✅ YES | SOT | Telegram visibility v2.0. SOVEREIGNLY RATIFIED. 696 lines. Source: ADR-011 + Hermes proposal. |
 | 21 | `TELEGRAM_VISIBILITY_RFC.md` | AGENT_PROTOCOL | 2026-05-04 | ⚠️ | DRAFT | RFC draft. Status: DRAFT — Pending Arif ratification. Supersedes ADR-010. |
 | 22 | `agent-visibility-proposal-2026-05-04.md` | AGENT_PROTOCOL | 2026-05-04 | ⚠️ | PROPOSAL | Hermes ASI deep research proposal. 371 lines. Source artifact for v2.0 protocol. |
-| 23 | `AAAA_PATTERN.md` | AGENT_PROTOCOL | 2026-05-02 | ✅ YES | SOT | AAAA governance pattern. DITEMPA BUKAN DIBERI. Finalized with maxhermes agent card. |
+| 23 | `AAAA_PATTERN.md` | AGENT_PROTOCOL | 2026-05-02 | ✅ YES | SOT | AAAA governance pattern. DITEMPA BUKAN DIBERI. Historical: maxhermes agent card was later removed 2026-06-22 when clarified as external MiniMax cloud product. |
 | 24 | `AGI_BOUNDARIES.md` | AGENT_PROTOCOL | 2026-05-22 | ✅ YES | SOT | AGI role boundaries. Enforced 2026-04-25. Antigravity agent registry. OpenClaw startup read. |
 | 25 | `GEMINI_CLI_GOVERNANCE.md` | AGENT_PROTOCOL | 2026-05-21 | ⚠️ | ACTIVE | Clerk law for Gemini CLI. Low-entropy baseline reconciled. Active governance doc. |
 | 26 | `HEARTBEAT.md` | OPERATIONAL_RUNTIME | 2026-05-11 | ✅ YES | SOT | Live runtime state. LIVE file. Status: cold/warm/active/paused/sealed/stale. Updated per action. |

@@ -187,7 +187,7 @@ Task arrives → classify intent → query agent cards → select agent → assi
 2. **Load:** Is the agent's session free?
 3. **Historical success:** Past performance on similar tasks (from audit log)
 4. **Risk:** High-risk tasks prefer agents with constitutional awareness
-5. **Specialization:** Geology → maxhermes, Finance → WEALTH-aware agent
+5. **Specialization:** Geology → GEOX (via arifos_gateway_connect), Finance → WEALTH-aware agent
 
 **Agent Card Schema Extension (extends existing agent-card.schema.json):**
 ```json

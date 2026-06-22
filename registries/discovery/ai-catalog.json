@@ -8,7 +8,7 @@
     "governance": "F1-F13 constitutional floors; 888_JUDGE arbitration; VAULT999 audit"
   },
   "generated_at": "2026-06-22T05:42:00Z",
-  "generated_by": "FORGE (000Ω) at 888 directive (Arif)",
+  "generated_by": "FORGE (000\u03a9) at 888 directive (Arif)",
   "federation": {
     "name": "arifOS Federation",
     "version": "2026.06.22",
@@ -28,8 +28,20 @@
       "url": "http://localhost:8088/mcp",
       "public_url": "https://arifos.arif-fazil.com/mcp",
       "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#arifos",
-      "capabilities": ["session_init", "judge_deliberate", "vault_seal", "memory_recall", "sense_observe"],
-      "tags": ["constitutional-ai", "governance", "audit", "judge", "memory"],
+      "capabilities": [
+        "session_init",
+        "judge_deliberate",
+        "vault_seal",
+        "memory_recall",
+        "sense_observe"
+      ],
+      "tags": [
+        "constitutional-ai",
+        "governance",
+        "audit",
+        "judge",
+        "memory"
+      ],
       "trust_manifest": {
         "did": "did:web:arifos.arif-fazil.com",
         "publisher": "ariffazil",
@@ -47,8 +59,19 @@
       "url": "http://localhost:7071/mcp",
       "public_url": null,
       "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#aforge",
-      "capabilities": ["forge_plan", "forge_dry_run", "forge_approve", "arif_vault_seal"],
-      "tags": ["execution", "build", "deploy", "forge", "adat"],
+      "capabilities": [
+        "forge_plan",
+        "forge_dry_run",
+        "forge_approve",
+        "arif_vault_seal"
+      ],
+      "tags": [
+        "execution",
+        "build",
+        "deploy",
+        "forge",
+        "adat"
+      ],
       "trust_manifest": {
         "did": "did:web:af-forge.local",
         "publisher": "ariffazil",
@@ -65,8 +88,21 @@
       "url": "http://localhost:8081/mcp",
       "public_url": "https://geox.arif-fazil.com/mcp",
       "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#geox",
-      "capabilities": ["basin_resolve", "seismic_compute", "data_ingest_bundle", "prospect_evaluate", "claim_create", "claim_seal"],
-      "tags": ["earth", "geoscience", "petrophysics", "evidence-only", "subsurface"],
+      "capabilities": [
+        "basin_resolve",
+        "seismic_compute",
+        "data_ingest_bundle",
+        "prospect_evaluate",
+        "claim_create",
+        "claim_seal"
+      ],
+      "tags": [
+        "earth",
+        "geoscience",
+        "petrophysics",
+        "evidence-only",
+        "subsurface"
+      ],
       "trust_manifest": {
         "did": "did:web:geox.arif-fazil.com",
         "publisher": "ariffazil",
@@ -83,8 +119,20 @@
       "url": "http://localhost:18082/mcp",
       "public_url": "https://wealth.arif-fazil.com/mcp",
       "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#wealth",
-      "capabilities": ["conservation_check", "flow_check", "compute_emv", "compute_npv", "stock_analysis", "power_audit"],
-      "tags": ["capital", "finance", "evidence-only", "allocation"],
+      "capabilities": [
+        "conservation_check",
+        "flow_check",
+        "compute_emv",
+        "compute_npv",
+        "stock_analysis",
+        "power_audit"
+      ],
+      "tags": [
+        "capital",
+        "finance",
+        "evidence-only",
+        "allocation"
+      ],
       "trust_manifest": {
         "did": "did:web:wealth.arif-fazil.com",
         "publisher": "ariffazil",
@@ -101,8 +149,20 @@
       "url": "http://localhost:18083/mcp",
       "public_url": "https://well.arif-fazil.com/mcp",
       "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#well",
-      "capabilities": ["assess_metabolism", "assess_homeostasis", "validate_vitality", "guard_dignity", "check_repair"],
-      "tags": ["vitality", "human", "readiness", "reflect-only", "dignity"],
+      "capabilities": [
+        "assess_metabolism",
+        "assess_homeostasis",
+        "validate_vitality",
+        "guard_dignity",
+        "check_repair"
+      ],
+      "tags": [
+        "vitality",
+        "human",
+        "readiness",
+        "reflect-only",
+        "dignity"
+      ],
       "trust_manifest": {
         "did": "did:web:well.arif-fazil.com",
         "publisher": "ariffazil",
@@ -118,8 +178,16 @@
       "version": "1.0.0",
       "url": "https://aaa.arif-fazil.com/a2a",
       "card_ref": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
-      "capabilities": ["streaming", "authenticated_extended_card"],
-      "tags": ["a2a", "control-plane", "cockpit", "governance"],
+      "capabilities": [
+        "streaming",
+        "authenticated_extended_card"
+      ],
+      "tags": [
+        "a2a",
+        "control-plane",
+        "cockpit",
+        "governance"
+      ],
       "trust_manifest": {
         "did": "did:web:aaa.arif-fazil.com",
         "publisher": "ariffazil",
@@ -136,12 +204,61 @@
       "version": "2026.06.22",
       "url": "https://aaa.arif-fazil.com/.well-known/skills-index.json",
       "card_ref": "https://aaa.arif-fazil.com/.well-known/skills-index.json",
-      "capabilities": ["skill-discovery"],
-      "tags": ["skills", "agent-skills", "discovery"],
+      "capabilities": [
+        "skill-discovery"
+      ],
+      "tags": [
+        "skills",
+        "agent-skills",
+        "discovery"
+      ],
       "trust_manifest": {
         "did": "did:web:aaa.arif-fazil.com",
         "publisher": "ariffazil",
         "license": "Mixed (Apache-2.0 + MIT per skill)"
+      }
+    },
+    {
+      "id": "maxhermes-external",
+      "type": "external-third-party-service",
+      "media_type": "application/json",
+      "name": "MaxHermes (MiniMax Cloud Sandbox)",
+      "description": "MiniMax's managed cloud deployment of Hermes Agent framework by Nous Research. Powered by MiniMax M2.7 (230B MoE). Self-evolving skill library. NOT under AAA Federation control. Documented at external/maxhermes/.",
+      "url": "https://agent.minimaxi.com/max-hermes",
+      "vendor": "MiniMax",
+      "version": "2026.04.16",
+      "external": true,
+      "audit_trail_source": "https://lushbinary.com/blog/maxhermes-minimax-cloud-sandbox-self-evolving-ai-guide/",
+      "card_ref": "external/maxhermes/AGENT_CARD.json",
+      "capabilities": [
+        "cloud-sandbox",
+        "learning-loop",
+        "skill-extraction"
+      ],
+      "tags": [
+        "external",
+        "minimax",
+        "cloud",
+        "m2.7",
+        "learning-loop",
+        "third-party"
+      ],
+      "model": "MiniMax-M2.7 (230B MoE, 10B active)",
+      "pricing": {
+        "input_per_m_tokens": 0.3,
+        "output_per_m_tokens": 1.2
+      },
+      "trust_manifest": {
+        "publisher": "MiniMax (HKEX: 00100)",
+        "license": "Proprietary",
+        "sovereignty": "external \u2014 data flows to MiniMax cloud",
+        "data_residency": "MiniMax cloud (no GDPR/SOC2 guarantee verified)",
+        "constitutional_binding_aaa_side": "F1, F2, F11, F13 (client-side only)",
+        "attestation": "External service. No internal verification. Witnessed via VAULT999 on outbound call."
+      },
+      "integration_status": {
+        "wired": false,
+        "future_path": "If integration desired: register MiniMax API key, add gateway route, F13 ack, witness via arifOS."
       }
     }
   ],
@@ -151,14 +268,15 @@
     "publisher_did": "did:web:aaa.arif-fazil.com",
     "federation_root": "https://arifos.arif-fazil.com",
     "audit_trail": "https://aaa.arif-fazil.com/.well-known/arifos.json",
-    "revocation": "VAULT999 seal chain — any entry's hash_chain_id can be verified",
+    "revocation": "VAULT999 seal chain \u2014 any entry's hash_chain_id can be verified",
     "notes": "Trust Manifest is optional per LF spec; provided for AAA Federation completeness. DID resolution via did:web requires TLS-verified HTTPS at the domain root."
   },
   "schema_notes": {
     "media_types_used": [
       "application/vnd.model-context-protocol+json (MCP servers)",
       "application/vnd.a2a-agent-card+json (A2A agents)",
-      "application/json (skills index)"
+      "application/json (skills index)",
+      "application/vnd.third-party-service+json (external services)"
     ],
     "future_media_types_planned": [
       "application/vnd.agntcy.oasf.record+json (OASF, when AGNTCY/dir stabilizes)",

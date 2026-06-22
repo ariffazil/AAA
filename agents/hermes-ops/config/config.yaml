@@ -30,9 +30,6 @@ a2a_peers:
   - agent_id: hermes-asi
     direction: bidirectional
     protocol: a2a-v1
-  - agent_id: maxhermes
-    direction: receive
-    protocol: a2a-v1
 
 floors:
   - F1  # AMANAH

@@ -463,46 +463,6 @@ agents:
     and GEOX tool orchestration.
 
     '
-  escalation_rules:
-  - to_role: auditor
-    via: approval-queue
-    when: ac_risk >= 0.75 or claim-grade interpretation requested
-  - to_role: validator
-    via: aaa-gateway
-    when: irreversible structural change to geox state
-  - to_role: architect
-    via: aaa-gateway
-    when: non-earth domain task detected
-  host_binding: openclaw-maxhermes
-  id: maxhermes
-  intelligence_band: ASI
-  intelligence_tier: ASI
-  knowledge_basis:
-    language: true
-    math: true
-    physics: true
-  max_risk_tier_for_remote: medium
-  name: MaxHermes
-  required_auth:
-  - gateway-token
-  - api-key+mtls
-  required_witnesses:
-  - GEOX
-  - ARIFOS
-  - HUMAN
-  risk_tier: medium
-  role: domain-specialist
-  runtime:
-    context_budget: 64000
-    cooling_ledger_ref: vault://arifOS/VAULT999/cooling/MINI_MAX_M3_2026_06_12
-    model: minimax/MiniMax-M3
-    model_verified_at: '2026-06-12T13:15:00Z'
-    model_verified_by: 333-AGI
-    temperature: 0
-    transport: streamable-http
-  separation_of_duties:
-    cannot_self_seal: true
-    requires_distinct_approver_for_high_risk: true
 - a2a_exposure: internal
   allowed_peers:
   - aaa-gateway
@@ -592,7 +552,6 @@ agents:
   - aaa-gateway
   - hermes-asi
   - claude-code
-  - maxhermes
   allowed_servers:
   - arifosmcp
   - geox-mcp
