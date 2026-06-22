@@ -88,7 +88,7 @@ def collect_files(root: Path, pattern: list[str], max_tokens: int = 900_000) -> 
             chunk = header + content
 
             if total_chars + len(chunk) > max_chars:
-                chunks.append(f"\n[... truncated: remaining files skipped to fit context window ...]\n")
+                chunks.append("\n[... truncated: remaining files skipped to fit context window ...]\n")
                 break
 
             chunks.append(chunk)
