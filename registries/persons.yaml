@@ -1,6 +1,11 @@
 # =============================================================================
 # PERSONS REGISTRY — arifOS Federation
 # =============================================================================
+# CANONICAL NAMING 2026-06-22: This file references /root/HERMES/state/mail_chat/
+# which is the LEGACY pre-migration path. The file is ALSO mirrored at
+# /root/.hermes/state/mail_chat/ (verified identical bytes 13886, mtime 2026-06-12).
+# Both paths work today. When /root/HERMES/ is removed (awaits 888),
+# these references must be updated to /root/.hermes/. See CANON-NAMING.md.
 # Purpose: first-class entity record for any human (or named non-human
 #          principal) the system touches. Closes Gap 3 of the
 #          init_envelope_rsi_spec: a person is not a chat-log inference

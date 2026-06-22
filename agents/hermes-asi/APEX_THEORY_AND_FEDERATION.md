@@ -1,5 +1,7 @@
 # APEX Theory & Federation Architecture
 
+> **NAMING NOTE 2026-06-22:** Despite filename, this file lives in the Hermes-ASI agent directory because Hermes-ASI consumes APEX doctrine at runtime (verdict narration skill). It is NOT evidence that Hermes = APEX. Hermes-ASI is the Telegram bot; APEX is the constitutional judge. See `AAA/registries/discovery/CANON-NAMING.md`.
+
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given
 > **Forged:** 2026-06-21 by FORGE (000Ω) for F13 SOVEREIGN
 > **Status:** CANONICAL — deploy to all agents
