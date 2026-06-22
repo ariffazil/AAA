@@ -5,7 +5,8 @@ Called by OpenClaw agent after successful execution.
 
 Usage: python3 aaa-holds-mark-executed.py <hold_id>
 """
-import json, sys
+import json
+import sys
 from pathlib import Path
 
 STATE_FILE = Path("/root/.openclaw/workspace/.aaa-holds-state.json")

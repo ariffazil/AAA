@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Health check: probe all federation organs."""
-import httpx, sys
+import httpx
+import sys
 
 ORGANS = {'arifOS': 8088, 'GEOX': 8081, 'WEALTH': 18082, 'WELL': 18083}
 ok = 0
