@@ -39,9 +39,7 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 
 from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
-from pathlib import Path
 from typing import Optional
 
 # ── Constants ──────────────────────────────────────────────────────────────────
@@ -393,7 +391,7 @@ if __name__ == "__main__":
     assert state2.active_count() == 3
     assert state2.is_mode3_collapse()
     print(f"  PASS: {state2.summary()}")
-    print(f"  Mode-3 collapse correctly detected")
+    print("  Mode-3 collapse correctly detected")
 
     # Test 3: Standalone score function
     print("\nTest 3: Standalone compute_witness_score")
@@ -404,7 +402,7 @@ if __name__ == "__main__":
         earth_active=False,
         independent_human_active=False,
     )
-    assert score["mode3_collapse"] == True
+    assert score["mode3_collapse"]
     assert score["score"] == 3
     assert score["f3_verdict"] == F3Verdict.PASS  # 3/5 = MINIMAL but still PASS
     assert len(score["recommendations"]) >= 2
@@ -414,7 +412,7 @@ if __name__ == "__main__":
     # Test 4: Pre-forge gate on MUTATE with Mode-3
     print("\nTest 4: Pre-forge gate — MUTATE blocked by Mode-3")
     gate_result = pre_forge_witness_gate(state2, "mutate")
-    assert gate_result["allowed"] == False
+    assert not gate_result["allowed"]
     assert gate_result["verdict"] == "HOLD"
     print(f"  Allowed: {gate_result['allowed']}")
     print(f"  Verdict: {gate_result['verdict']}")
@@ -423,7 +421,7 @@ if __name__ == "__main__":
     # Test 5: Pre-forge gate on OBSERVE always allowed
     print("\nTest 5: Pre-forge gate — OBSERVE always allowed")
     gate_result2 = pre_forge_witness_gate(state2, "observe")
-    assert gate_result2["allowed"] == True
+    assert gate_result2["allowed"]
     print(f"  Allowed: {gate_result2['allowed']}")
 
     # Test 6: Degraded (2/5) — no Earth, no independent human

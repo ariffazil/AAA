@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Reality Ledger replay."""
-import sys
 import json
+import sys
+
 sys.path.insert(0, '.')
-from core.reality_ledger import replay_ledger, DEFAULT_STORE_PATH
+from core.reality_ledger import DEFAULT_STORE_PATH, replay_ledger
 
 store = DEFAULT_STORE_PATH
 if store.exists() and list(store.glob("events/*.json")):

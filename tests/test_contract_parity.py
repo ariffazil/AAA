@@ -27,7 +27,6 @@ from typing import Any
 
 import pytest
 
-
 # ─────────────────────────────────────────────────────────────────────────────
 # Canonical Sources — resolved relative to project root
 # ─────────────────────────────────────────────────────────────────────────────

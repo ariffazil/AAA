@@ -13,9 +13,9 @@ from __future__ import annotations
 import asyncio
 import os
 
-from agents import Agent, Runner, function_tool
+from arifos_openai_agents import ArifKernel
 
-from arifos_openai_agents import ArifKernel, CognitionLane
+from agents import Agent, Runner, function_tool
 
 
 @function_tool

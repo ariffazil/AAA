@@ -1,0 +1,37 @@
+# ruff.toml — AAA lint configuration
+# Scoped to canonical dirs only. Third-party, archive, and generated code excluded.
+
+target-version = "py312"
+
+line-length = 120
+
+exclude = [
+    "_archive",
+    "archive",
+    "node_modules",
+    "dist",
+    ".ruff_cache",
+    "registries/antigravity",   # third-party skill bundles (not AAA-authored)
+    "forge_work",               # session receipts (not production code)
+    "workspace",                # openclaw workspace (not AAA source)
+    "hermes-workspace",         # legacy hermes workspace
+    "hermes-skills",            # legacy hermes skills
+    "tmp",
+    "medium",
+]
+
+[lint]
+select = ["E", "F", "W", "I"]
+ignore = [
+    "E501",   # line too long (handled by formatter)
+    "F841",   # local variable assigned but never used (acceptable in scripts)
+]
+
+[lint.per-file-ignores]
+"scripts/deepseek-forge/*.py" = ["F401", "F841"]   # forge scripts, non-strict
+"wiki/workflows/_runtime/*.py" = ["E712"]           # runtime executor, keep explicit True
+"core/pre_forge_gate.py" = ["E402"]                 # sys.path insert before imports — intentional
+"core/pre_forge_service.py" = ["E402"]              # sys.path insert before imports — intentional
+"a2a-server/chat_agent.py" = ["F401"]               # conditional imports, may be used at runtime
+"memory/investigations/generate_pdf.py" = ["E701"]  # inline conditionals in PDF generator — intentional
+

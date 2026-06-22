@@ -13,7 +13,6 @@ With this, it becomes a reality-learning substrate.
 
 import json
 import uuid
-import os
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -427,7 +426,6 @@ def replay_ledger(store_path: Path = DEFAULT_STORE_PATH) -> dict:
 
 if __name__ == "__main__":
     # Quick self-test
-    import sys
 
     print("=== Reality Ledger Self-Test ===")
 

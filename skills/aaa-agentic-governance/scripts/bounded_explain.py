@@ -28,9 +28,8 @@ from __future__ import annotations
 import hashlib
 import json
 import sys
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from typing import Any
-
 
 SCHEMA_VERSION = "2.0.0"
 HARD_K_CAP = 7
