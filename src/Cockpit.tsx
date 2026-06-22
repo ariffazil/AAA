@@ -18,6 +18,7 @@ import RealityConsole from './components/cockpit/RealityConsole';
 import HermesCitizenCard from './components/cockpit/HermesCitizenCard';
 import AgentModelPanel, { type ModelGovernanceCard } from './components/cockpit/AgentModelPanel';
 import MCPAppsPanel from './components/MCPAppsPanel';
+import ArifOSReceiptViewer from './components/cockpit/ArifOSReceiptViewer';
 
 type OperatorTask = {
   id: string;
@@ -987,6 +988,11 @@ export default function Cockpit() {
 
         {/* ── SUPABASE FEDERATION MEMORY (Phase 3A Read-Only) ── */}
         <SupabaseMemoryPanel />
+
+        {/* ── ARIFOS VAULT999 RECEIPT VIEWER ── recent sealed events */}
+        <section className="mb-8">
+          <ArifOSReceiptViewer />
+        </section>
 
         {/* SUMMARY */}
         <section className="mb-24 pt-12 border-t border-white/10">
