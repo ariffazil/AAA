@@ -574,6 +574,7 @@ const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
 const ENGINEER_CARD = require('./agent-cards/aaa-engineer.json');
 const AUDITOR_CARD = require('./agent-cards/aaa-auditor.json');
 const HERMES_CARD = require('./agent-cards/hermes-asi.json');
+const ANTIGRAVITY_CARD = require('../agents/antigravity/agent-card.json');
 
 // === ERROR CODES ===
 const ERROR_CODES = {
@@ -1382,7 +1383,8 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
       { id: '555-ASI',   name: '555-ASI',   url: 'https://arifos.arif-fazil.com/a2a/555-ASI',   registered: true, role: 'federation', tier: 'primary', class: 'ASI',           ring: '❤️ HEART', stage: '555', organ_host: 'arifOS+ WELL' },
       { id: '888-APEX',  name: '888-APEX',  url: 'https://arifos.arif-fazil.com/a2a/888-APEX',  registered: true, role: 'federation', tier: 'primary', class: 'APEX',          ring: '⚖️ JUDGE', stage: '888', organ_host: 'arifOS' },
       { id: 'A-AUDIT',   name: 'A-AUDIT',   url: 'https://aaa.arif-fazil.com/a2a/A-AUDIT',       registered: true, role: 'internal',   tier: 'support', class: 'APEX oversight', ring: '❤️ HEART', stage: '[oversight]', organ_host: 'arifOS+ WELL' },
-      { id: 'A-ARCHIVE', name: 'A-ARCHIVE', url: 'https://aaa.arif-fazil.com/a2a/A-ARCHIVE',     registered: true, role: 'internal',   tier: 'support', class: 'ASI service',   ring: '🔒 SEAL',  stage: '999', organ_host: 'VAULT999' }
+      { id: 'A-ARCHIVE', name: 'A-ARCHIVE', url: 'https://aaa.arif-fazil.com/a2a/A-ARCHIVE',     registered: true, role: 'internal',   tier: 'support', class: 'ASI service',   ring: '🔒 SEAL',  stage: '999', organ_host: 'VAULT999' },
+      { id: 'antigravity', name: 'antigravity', url: 'https://aaa.arif-fazil.com/a2a/antigravity',   registered: true, role: 'federation', tier: 'coding',  class: 'CODING',        ring: 'Ψ BODY',  stage: 'CODING', organ_host: 'Local Terminal' }
     ],
     // A-* AGENTS DEMOTED TO INFRASTRUCTURE (not agents, no longer in the registry):
     //   - aaa-gateway    → /infrastructure/gateway
@@ -1420,6 +1422,12 @@ app.get('/a2a/hermes-asi/agent-card.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.json(HERMES_CARD);
+});
+
+app.get('/a2a/antigravity/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(ANTIGRAVITY_CARD);
 });
 
 // Treaty route — links to the full treaty law

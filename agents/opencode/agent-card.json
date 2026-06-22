@@ -1,49 +1,61 @@
 {
   "id": "opencode",
-  "name": "OpenCode",
+  "name": "OpenCode FORGE",
   "tier": "AGI",
-  "role": "engineer-executor",
+  "role": "forge-worker",
   "transport": "MCP_SSE_HTTP",
   "native_mcp": true,
   "version": "1.17.8",
   "model": "tokenplan-mimo/mimo-v2.5-pro",
-  "runtime": "/usr/local/bin/opencode",
-  "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
-  "repo_config_view": "agents/opencode/config/config.yaml",
-  "constitutional_proxy": "333-AGI",
-  "citizenship": "warga-aaa",
+  "runtime": "opencode",
+  "config": "/root/.config/opencode/opencode.json",
   "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
   "mcp_servers": [
-    "arifOS",
-    "WEALTH",
-    "WELL",
-    "GEOX",
-    "A-FORGE",
+    "arifos-kernel",
+    "aforge",
+    "geox",
+    "wealth",
+    "well",
+    "playwright",
+    "hostinger-vps",
+    "meyhem",
+    "brave-search",
+    "perplexity",
+    "sequential-thinking",
+    "postgres",
+    "supabase",
+    "qdrant",
+    "cloudflare",
+    "docker",
+    "github",
+    "context7",
     "minimax-media",
-    "minimax-code",
-    "capability-index"
+    "minimax-code"
   ],
   "strengths": [
-    "fast single-session task execution",
-    "root-canon config binding through ROOT_AGENT_CONFIG.yaml",
-    "skill system (40+ skills loaded)",
-    "subagent delegation (forge, explore, auditor)",
-    "pre-aligned with F1-F13 instructions",
-    "filesystem-native operations",
-    "MCP-native"
+    "code generation",
+    "testing",
+    "refactoring",
+    "build verification",
+    "dependency analysis",
+    "security audit",
+    "CI/CD pipeline"
   ],
   "weaknesses": [
-    "shorter planning horizon than Claude",
-    "no background processing",
-    "no push notifications"
+    "no native web search without MCP",
+    "single-session context window",
+    "no self-approval (by design)"
   ],
   "risk_tolerance": "YELLOW",
   "preferred_tasks": [
-    "single-task execution",
-    "test suite execution and debugging",
-    "file operations across repos",
-    "skill-driven automation"
+    "code generation",
+    "testing",
+    "refactoring",
+    "build verification",
+    "dependency analysis",
+    "security audit",
+    "CI/CD pipeline"
   ],
   "capabilities": {
     "streaming": true,
@@ -53,6 +65,21 @@
   },
   "memory_contributor": true,
   "session_identity": "opencode@arif-fazil.com",
-  "warga_card": "agents/opencode/WARGAAA_CARD.md",
-  "authority_boundary": "Forge instrument, not final judge. Enters AAA state through 333-AGI/A-FORGE/arifOS lease. Cannot SEAL irreversible actions. Cannot self-authorize."
+  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize.",
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/opencode/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "MUTATE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/opencode/art_binding.yaml"
+    }
+  }
 }
