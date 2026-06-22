@@ -52,5 +52,21 @@
   },
   "memory_contributor": true,
   "session_identity": "claude-code@arif-fazil.com",
-  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize."
+  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize.",
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/claude-code/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "ANALYZE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/claude-code/art_binding.yaml"
+    }
+  }
 }
