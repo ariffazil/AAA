@@ -935,8 +935,8 @@ class TestOkFieldCoherence:
 def test_canonical_tools_list_not_empty():
     """Guard: canonical tool list must be non-empty."""
     assert len(CANONICAL_TOOLS) > 0, (
-        f"CANONICAL_TOOLS is empty. "
-        f"canonical_schema_contract.json may not have loaded correctly."
+        "CANONICAL_TOOLS is empty. "
+        "canonical_schema_contract.json may not have loaded correctly."
     )
 
 

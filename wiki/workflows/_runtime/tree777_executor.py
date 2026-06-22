@@ -10,7 +10,8 @@ Fixes from v1.2.0:
 - All state persisted to disk, not memory
 """
 
-import json, sys
+import json
+import sys
 from pathlib import Path
 from datetime import datetime, timezone
 from typing import Any
@@ -199,13 +200,13 @@ class WorkflowEngine:
             last_completed = None
             for s in self.plan["steps"]:
                 g = self._read_gate(s["step_id"])
-                if g.get("passed") == True:
+                if g.get("passed"):
                     last_completed = s["step_id"]
             if last_completed:
                 step_idx = self._find_step_idx(last_completed) + 1
                 self.state["completed_steps"] = [
                     s["step_id"] for s in self.plan["steps"]
-                    if self._read_gate(s["step_id"]).get("passed") == True
+                    if self._read_gate(s["step_id"]).get("passed")
                 ]
                 print("\nResume: last=" + str(last_completed) + ", next_idx=" + str(step_idx))
 
@@ -234,7 +235,7 @@ class WorkflowEngine:
                     return self.state
 
             gate = self._read_gate(step_id)
-            if gate.get("passed") == True and not self.resume:
+            if gate.get("passed") and not self.resume:
                 step_idx += 1
                 continue
 
