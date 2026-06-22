@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate arifOS scorecard."""
-import json, datetime
+import json
+import datetime
 
 scorecard = {
     'generated_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),

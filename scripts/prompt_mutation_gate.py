@@ -23,6 +23,7 @@ import json
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional
 
 PROMPTS_DIR = Path("/root/AAA/agents/prompts")
 AUDIT_LOG = Path("/root/AAA/agents/prompt_mutations.log")
@@ -124,14 +125,14 @@ def cmd_seal(organ: str) -> int:
 
     if new_hash == last_propose.get("current_hash"):
         print(
-            f"WARNING: new hash matches proposed hash. Did you forget to edit the file?"
+            "WARNING: new hash matches proposed hash. Did you forget to edit the file?"
         )
         print(f"  proposed: {last_propose.get('current_hash')}")
         print(f"  current:  {new_hash}")
 
     print(f"SEAL: {organ} prompt updated. new_hash={new_hash}")
-    print(f"  Bot will read the new prompt on next session start.")
-    print(f"  (bot detects change via prompt_loader.detect_prompt_change)")
+    print("  Bot will read the new prompt on next session start.")
+    print("  (bot detects change via prompt_loader.detect_prompt_change)")
     return 0
 
 
@@ -152,7 +153,7 @@ def cmd_void(organ: str, reason: str) -> int:
 
     print(f"VOID: {organ} prompt change rejected.")
     print(f"  reason: {reason}")
-    print(f"  audit recorded.")
+    print("  audit recorded.")
     return 0
 
 
