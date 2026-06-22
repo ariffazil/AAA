@@ -13,7 +13,7 @@ This is the Band 1 cognition firewall.
 
 from __future__ import annotations
 
-from typing import Any, Literal
+from typing import Any
 
 # The prethink tool schema. This is what the model sees.
 # It must be the FIRST tool called for any cognition that may lead to action.

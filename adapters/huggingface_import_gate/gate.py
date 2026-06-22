@@ -40,7 +40,6 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 
-
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
@@ -595,7 +594,7 @@ def _self_test() -> None:
     print(f"    license_known: {cls1.get('license_known')}")
 
     # 3. Determine promotion for Mistral
-    print(f"\n[3] Promotion level for Mistral-7B...")
+    print("\n[3] Promotion level for Mistral-7B...")
     p1 = gate.determine_promotion_level(c1)
     print(f"    level: {p1['promotion_level']}")
     print(f"    sandbox: {p1['sandbox_required']}")
@@ -615,7 +614,7 @@ def _self_test() -> None:
     print(f"    publisher_trust: {cls2.get('publisher_trust')}")
 
     # 5. Determine promotion for unknown model
-    print(f"\n[5] Promotion level for unknown model...")
+    print("\n[5] Promotion level for unknown model...")
     p2 = gate.determine_promotion_level(c2)
     print(f"    level: {p2['promotion_level']}")
     print(f"    reasoning: {p2['reasoning']}")

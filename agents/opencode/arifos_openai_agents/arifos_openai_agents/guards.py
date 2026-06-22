@@ -40,7 +40,6 @@ from arifos_openai_agents.exceptions import (
     ArifSealMissing,
 )
 
-
 # ─────────────────────────────────────────────────────────────────────────────
 # Floor rules — implemented as code, not as principles (per ChatGPT proposal)
 # ─────────────────────────────────────────────────────────────────────────────
