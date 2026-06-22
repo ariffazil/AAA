@@ -3,37 +3,35 @@
   "name": "Claude Code",
   "tier": "AGI",
   "role": "engineer-architect",
+  "class": "C2",
   "transport": "MCP_SSE_HTTP",
   "native_mcp": true,
   "version": "2.1.160",
   "model": "deepseek-v4-pro",
   "runtime": "/root/.local/bin/claude",
   "config": "/root/.claude/settings.json",
+  "instruction_file": "/root/AAA/CLAUDE.md",
   "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
   "mcp_servers": [
-    "arifOS",
-    "WEALTH",
-    "WELL",
+    "arifos",
+    "geox",
+    "wealth",
+    "well",
+    "aforge",
     "minimax-media",
-    "minimax-code",
-    "github",
-    "brave-search",
-    "meyhem",
-    "playwright-mcp",
-    "capability-index"
+    "minimax-code"
   ],
   "strengths": [
     "multi-file architecture design",
-    "constitutional awareness (CLAUDE.md loaded)",
-    "safety-first reasoning",
+    "constitutional awareness",
     "long-context codebase understanding",
     "complex refactoring",
-    "MCP-native with 10 connected servers"
+    "test suite design",
+    "deep reasoning with safety compliance"
   ],
   "weaknesses": [
     "no native web search without MCP",
-    "single-session context window",
-    "no self-approval (by design)"
+    "single-session context window"
   ],
   "risk_tolerance": "YELLOW",
   "preferred_tasks": [
@@ -42,7 +40,7 @@
     "code review",
     "constitutional audits",
     "test suite design",
-    "deep reasoning with safety compliance"
+    "federation health probes"
   ],
   "capabilities": {
     "streaming": true,
@@ -52,7 +50,7 @@
   },
   "memory_contributor": true,
   "session_identity": "claude-code@arif-fazil.com",
-  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize.",
+  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize. 888_HOLD for all destructive ops.",
   "art_binding": {
     "enabled": true,
     "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
@@ -60,13 +58,17 @@
     "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
     "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
     "load_at_init": true,
-    "default_action_class": "ANALYZE",
-    "substrates": {
-      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
-      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
-      "code": "/root/arifOS/arifosmcp/runtime/art.py",
-      "json": "/agent/vault999/receipts/outcomes.jsonl",
-      "yaml": "/root/AAA/agents/claude-code/art_binding.yaml"
-    }
+    "default_action_class": "ANALYZE"
+  },
+  "autonomy_tiers": {
+    "t1_auto_do": "Read, grep, edit, test, commit, lint, format, restart services, web search",
+    "t2_announce_proceed": "Service restart on production, schema migration on dev, new dependency, deploy after green tests",
+    "t3_888_hold": "rm -rf unknown dirs, DROP TABLE, force push, branch delete, paid API >$10/mo, constitutional changes, secret exposure, external communications"
+  },
+  "peers": {
+    "opencode": "Sibling AGI forger — code generation, testing, build verification",
+    "hermes-asi": "Human interface + Telegram + memory relay",
+    "openclaw": "Gateway operator + topology guardian",
+    "arifos": "Constitutional kernel — route all F1-F13 questions here"
   }
 }
