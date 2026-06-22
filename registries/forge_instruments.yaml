@@ -165,31 +165,28 @@ instruments:
     note: "AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections. Heavily restricted Bash permissions. No active sessions. LOW RISK."
 
   - id: FI-004
-    name: Gemini CLI
-    binary: /usr/bin/gemini
-    version: 0.43.0
-    model: UNCONFIGURED (Google default — likely gemini-2.5-flash)
+    name: Antigravity CLI
+    binary: /root/.local/bin/agy
+    version: 1.0.10
+    model: Gemini 3.5 Flash (High)
     izin: GRANTED
-    izin_date: "2026-06-10"
+    izin_date: "2026-06-22"
     sandbox: process
     subagent_policy:
-      default: "888_HOLD — agent skills require per-skill approval"
+      default: "888_HOLD"
+      registered_subagents:
+        - research
+        - self
     mcp_servers:
-      - arifos
+      - arifOS
       - geox
       - wealth
       - well
       - aforge
       - context7
-      - playwright
-      - github
-      - brave-search
-      - capability-index
-      - serena
-      - repomapper
-      - meyhem
-    config_path: /root/.gemini/
-    note: "IZIN GRANTED by F13 SOVEREIGN 2026-06-10. Connected to 5 federation organs. Model: Google default (gemini-2.5-flash). Data sent to Google API — acknowledged and accepted."
+    config_path: /root/.gemini/antigravity-cli/
+    settings_path: /root/.gemini/antigravity-cli/settings.json
+    note: "Registered 2026-06-22 during A2A alignment session. Connected to 5 federation organs + context7. Model: Gemini 3.5 Flash (High)."
 
   - id: FI-005
     name: Codex CLI
