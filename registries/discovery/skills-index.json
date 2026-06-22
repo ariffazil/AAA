@@ -1,0 +1,706 @@
+{
+  "$schema": "https://aaa.arif-fazil.com/schemas/skills-index.schema.json",
+  "generated_at": "2026-06-22T05:42:00Z",
+  "generated_by": "FORGE (000\u03a9) at 888 directive (Arif)",
+  "publisher": "arifOS Federation",
+  "license_default": "Mixed (Apache-2.0 + MIT per skill; check individual SKILL.md)",
+  "discovery_precedence": [
+    "1. Built-in customize-opencode (in binary)",
+    "2. ~/.claude/skills/**/SKILL.md (Claude Code mirror)",
+    "3. ~/.agents/skills/**/SKILL.md (generic agent skills)",
+    "4. Walk up from directory \u2192 worktree looking for .claude/ and .agents/",
+    "5. config.skills.paths[]",
+    "6. config.skills.urls[] (remote /.well-known/skills/)"
+  ],
+  "stats": {
+    "total": 82,
+    "agents_skills": 57,
+    "claude_skills": 25,
+    "registry_claim_was": "117 (51 + 66) per opencode_toolbench.yaml v1, 2026-06-16",
+    "live_count_now": 82,
+    "drift": "registry stale by 60 skills \u2014 refresh to v2 needed"
+  },
+  "skills": [
+    {
+      "id": "ACT",
+      "name": "ACT",
+      "description": "DEPRECATED \u2014 Use CONSTITUTIONAL_REFLEX/SKILL.md. ACT is now absorbed into the unified constitutional reflex arc. This file is retained for discovery compatibility only.",
+      "path": "/root/.agents/skills/ACT/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "23dc01f8c0f3a3e8"
+    },
+    {
+      "id": "ART",
+      "name": "ART",
+      "description": "Agentic Recursive Tooling \u2014 4 tool states + 3 checks (POWER / TRUST / SYSTEM) loaded before every MCP call. Cross-domain hardened: Piaget, Heidegger, Dreyfus, Ashby, Wiener, Shannon, Agent Cybernetics",
+      "path": "/root/.agents/skills/ART/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "3c2377ac0cbb0d44"
+    },
+    {
+      "id": "CONSTITUTIONAL-REFLEX",
+      "name": "CONSTITUTIONAL-REFLEX",
+      "description": "The complete constitutional reflex arc \u2014 ART (pre-kernel) \u2192 Kernel (F1-F13) \u2192 ACT (post-kernel execution). One skill. One spine. One file. Every agent loads this ONCE at session init.",
+      "path": "/root/.agents/skills/CONSTITUTIONAL-REFLEX/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "4bd16e3f6175c79b"
+    },
+    {
+      "id": "agentic-toolcheck",
+      "name": "agentic-toolcheck",
+      "description": "Mandatory pre-flight checklist to ensure all tools, dependencies, and MCP servers are installed and healthy before executing complex tasks.",
+      "path": "/root/.agents/skills/agentic-toolcheck/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "31db0f1940fd3036"
+    },
+    {
+      "id": "agents-sdk",
+      "name": "agents-sdk",
+      "description": "Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat applications, voice agen",
+      "path": "/root/.agents/skills/agents-sdk/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "8b9a03856f268809"
+    },
+    {
+      "id": "architect",
+      "name": "architect",
+      "description": "A-R-I-F Architect role. Trigger when the task is ambiguous, strategic, architectural, or requires planning and scoping.",
+      "path": "/root/.agents/skills/architect/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "9ebd258754ecb407"
+    },
+    {
+      "id": "arifos-agent-doctrine",
+      "name": "arifos-agent-doctrine",
+      "description": "Portable agent operating doctrine \u2014 10 invariants (route-by-data, degraded-dominance, resolve-before-act, etc.) distilled from decades-old safety engineering. The philosophy half of the two-skill arch",
+      "path": "/root/.agents/skills/arifos-agent-doctrine/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "b04b46fc31bd9606"
+    },
+    {
+      "id": "arifos-evals",
+      "name": "arifos-evals",
+      "description": "Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill. Load when a skill changes behavior or a new version is proposed.",
+      "path": "/root/.agents/skills/arifos-evals/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "f9a8d71856d27f26"
+    },
+    {
+      "id": "arifos-governance",
+      "name": "arifos-governance",
+      "description": "Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence alignment, and veto routing. Load when performing policy mutations, data deletions, deployment risk evaluations, or verifyin",
+      "path": "/root/.agents/skills/arifos-governance/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "e9c7c2b6b1a26ef0"
+    },
+    {
+      "id": "arifos-mcp-federation",
+      "name": "arifos-mcp-federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, and define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, ",
+      "path": "/root/.agents/skills/arifos-mcp-federation/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "57d6677bb82e2a91"
+    },
+    {
+      "id": "arifos-memory",
+      "name": "arifos-memory",
+      "description": "Master the 6-layer memory architecture of arifOS. Use this skill whenever you need to store, recall, or organize information across Ephemeral (L1), Session (L2), Semantic (L3), Structured (L4), Relati",
+      "path": "/root/.agents/skills/arifos-memory/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "24377d1b547bf392"
+    },
+    {
+      "id": "arifos-observability",
+      "name": "arifos-observability",
+      "description": "Generate structured telemetry for skill runs, including trigger source, chosen branch, command count, runtime, and postcondition checks. Load when you need to parse run logs, compile dashboards, or au",
+      "path": "/root/.agents/skills/arifos-observability/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "9b2c5b3128e0b936"
+    },
+    {
+      "id": "arifos-plan-dag",
+      "name": "arifos-plan-dag",
+      "description": "Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback points. Load when tasks exceed one-shot prompting and need subagent or staged execution.",
+      "path": "/root/.agents/skills/arifos-plan-dag/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "eeb640937da2d1df"
+    },
+    {
+      "id": "arifos-recursive-audit",
+      "name": "arifos-recursive-audit",
+      "description": "Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references. Load when reviewing the skill portfolio or after modifying or adding new skills.",
+      "path": "/root/.agents/skills/arifos-recursive-audit/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "88d26fb3263f5a35"
+    },
+    {
+      "id": "arifos-untrusted-sandbox",
+      "name": "arifos-untrusted-sandbox",
+      "description": "Mandatory bubblewrap (bwrap) supermax jail for executing any untrusted Python/JS synthesized by external AIs (Copilot, Mythos, third-party). Load when running, evaluating, or testing code from non-fed",
+      "path": "/root/.agents/skills/arifos-untrusted-sandbox/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "22962948de21d6d6"
+    },
+    {
+      "id": "audit-via-tests",
+      "name": "audit-via-tests",
+      "description": "Sub-skill to execute tests, capture failures, and deeply verify alignment with physics, math, and ontology.",
+      "path": "/root/.agents/skills/audit-via-tests/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "b07c338e9f33c9f8"
+    },
+    {
+      "id": "auditor",
+      "name": "auditor",
+      "description": "A-R-I-F Auditor (Final) role. Trigger for review, verification, risk review, constitutional checks, regression checks, or release gating.",
+      "path": "/root/.agents/skills/auditor/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "10b93240a2b3cfcb"
+    },
+    {
+      "id": "cloudflare",
+      "name": "cloudflare",
+      "description": "Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), feature flags (Flagship), networking (Tunnel, Spectrum), security (WAF, D",
+      "path": "/root/.agents/skills/cloudflare/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "cd5a125931604b53"
+    },
+    {
+      "id": "cloudflare-email-service",
+      "name": "cloudflare-email-service",
+      "description": "Send and receive transactional emails with Cloudflare Email Service (Email Sending + Email Routing). Use when building email sending (Workers binding or REST API), email routing, Agents SDK email hand",
+      "path": "/root/.agents/skills/cloudflare-email-service/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "90dd28a7977c2a73"
+    },
+    {
+      "id": "durable-objects",
+      "name": "durable-objects",
+      "description": "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or",
+      "path": "/root/.agents/skills/durable-objects/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "5190592feb087512"
+    },
+    {
+      "id": "entropy-measurement",
+      "name": "entropy-measurement",
+      "description": "Sub-skill to score system structure, duplication, dead code, and boundary bleed before and after mutations.",
+      "path": "/root/.agents/skills/entropy-measurement/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "504cb96bf496f495"
+    },
+    {
+      "id": "forge",
+      "name": "forge",
+      "description": "A-R-I-F Forge (Implementer) role. Trigger for active building, fixing, wiring, testing, scripting, or integration execution.",
+      "path": "/root/.agents/skills/forge/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "9d74807e214581c5"
+    },
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples inclu",
+      "path": "/root/.agents/skills/frontend-design/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "a2cc80244022a461"
+    },
+    {
+      "id": "geox-basin-interpreter",
+      "name": "geox-basin-interpreter",
+      "description": "Subsurface reasoning for basin screening, petroleum systems analysis, trap/seal/reservoir framing, and evidence-led interpretations. Load when geology, geophysics, or petrophysics tasks appear.",
+      "path": "/root/.agents/skills/geox-basin-interpreter/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "4ef261e3dfddf9a0"
+    },
+    {
+      "id": "geox-binary-transport",
+      "name": "geox-binary-transport",
+      "description": "Covers binary brick streaming, CubeManifest, LOD pyramid, MCP resource URIs, typed array contract, GPU-ready pipeline.",
+      "path": "/root/.agents/skills/geox-binary-transport/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "6285b2c6dbb5dbbd"
+    },
+    {
+      "id": "geox-claim-grammar",
+      "name": "geox-claim-grammar",
+      "description": "The geological claim grammar \u2014 every claim must carry evidence_for, evidence_against, missing_tests, and ACRisk. No single-hypothesis geology without contradiction scan.",
+      "path": "/root/.agents/skills/geox-claim-grammar/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "e1b886d107bf90fd"
+    },
+    {
+      "id": "geox-constitution",
+      "name": "geox-constitution",
+      "description": "Mandatory GEOX constitutional floors (F1-F13), epistemic style, 888 HOLD logic, and Anti-Hantu doctrine. Load before ANY GEOX repo action.",
+      "path": "/root/.agents/skills/geox-constitution/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "c67b405cfb2b3fd2"
+    },
+    {
+      "id": "geox-contradiction-engine",
+      "name": "geox-contradiction-engine",
+      "description": "Multi-hypothesis contradiction scanner. Flags conflicting evidence \u2014 low Sw but no seismic support, pressure claim without calibration, single-well sequence certainty, etc.",
+      "path": "/root/.agents/skills/geox-contradiction-engine/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "0e3afd26c37330db"
+    },
+    {
+      "id": "geox-drift-detector",
+      "name": "geox-drift-detector",
+      "description": "Detects when TS frontend props drift from Pydantic models, tool docs drift from runtime signatures, or any schema diverges from canonical source. One root, one registry.",
+      "path": "/root/.agents/skills/geox-drift-detector/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "b3d526a4dcb3bfff"
+    },
+    {
+      "id": "geox-epistemic-ladder",
+      "name": "geox-epistemic-ladder",
+      "description": "Teaches the GEOX epistemic ladder \u2014 OBSERVED \u2192 DERIVED \u2192 INTERPRETED_LOCAL \u2192 PROCESS_HYPOTHESIS \u2192 EARTHMODEL \u2192 DECISIONSUPPORT \u2192 HUMAN JUDGMENT. Blocks epistemic collapse.",
+      "path": "/root/.agents/skills/geox-epistemic-ladder/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "f78922e6dac7b319"
+    },
+    {
+      "id": "geox-expiry-replan",
+      "name": "geox-expiry-replan",
+      "description": "Model-expiry, evidence versioning, replan triggers. Every output carries expires_at, evidence_version, supersedes. Stale truths must be visible.",
+      "path": "/root/.agents/skills/geox-expiry-replan/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "b2e65502c78889d0"
+    },
+    {
+      "id": "geox-gui-alignment",
+      "name": "geox-gui-alignment",
+      "description": "Teaches thin GUI / thick contracts \u2014 MapLibre wiring, Three.js/R3F wiring, provenance on screen, ACRisk in props, 888 lock states. GUI never invents geological meaning.",
+      "path": "/root/.agents/skills/geox-gui-alignment/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "21a7f384822296aa"
+    },
+    {
+      "id": "geox-mcp-contracts",
+      "name": "geox-mcp-contracts",
+      "description": "Owns canonical GEOX MCP contracts \u2014 registry shapes, toolcards, RenderPayload, CubeManifest, BrickResource, artifact envelope, error schemas. Forces no ad-hoc JSON shapes.",
+      "path": "/root/.agents/skills/geox-mcp-contracts/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "84d30ee7dacc073e"
+    },
+    {
+      "id": "geox-merge-gatekeeper",
+      "name": "geox-merge-gatekeeper",
+      "description": "No merge to main unless all gates pass \u2014 registry truth, schema parity, phantom scan, claim grammar scan, ACRisk propagation, UI provenance check, policy-as-tests.",
+      "path": "/root/.agents/skills/geox-merge-gatekeeper/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "161b69cc44569dc7"
+    },
+    {
+      "id": "geox-petrophysics-bounds",
+      "name": "geox-petrophysics-bounds",
+      "description": "Bound transforms only \u2014 Vsh, porosity, Sw, AI, pore pressure, QC rules, LAS validation, unit handling. Permeability transforms are empirical. Pressure decisions need calibration.",
+      "path": "/root/.agents/skills/geox-petrophysics-bounds/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "9011445141a48635"
+    },
+    {
+      "id": "geox-redteam-hantu",
+      "name": "geox-redteam-hantu",
+      "description": "Explicitly looks for hallucinated tools, fake geology, schema drift, hidden convenience transforms, bypassed 888 logic. The anti-hantu guardian.",
+      "path": "/root/.agents/skills/geox-redteam-hantu/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "75b037f887a703d4"
+    },
+    {
+      "id": "geox-render-contracts",
+      "name": "geox-render-contracts",
+      "description": "Owns the visual render contracts \u2014 RenderPayload, modality builders, render_to_component mapping. Every visual output must conform.",
+      "path": "/root/.agents/skills/geox-render-contracts/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "cbb0f25cb0f5b3bb"
+    },
+    {
+      "id": "geox-sandbox-simulation",
+      "name": "geox-sandbox-simulation",
+      "description": "Safe forge mode where agents can mutate mock registries, mock render payloads, mock tools, and broken fixtures without touching live organs.",
+      "path": "/root/.agents/skills/geox-sandbox-simulation/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "b5dd50787ce210c1"
+    },
+    {
+      "id": "geox-test-forge",
+      "name": "geox-test-forge",
+      "description": "Focused on fixture packs, golden receipts, runtime truth tests, phantom tool detection, schema snapshot tests, contract diffing. This is how opencode earns trust before touching main.",
+      "path": "/root/.agents/skills/geox-test-forge/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "1bbf0f73d7341e5b"
+    },
+    {
+      "id": "godel-humility-lock",
+      "name": "godel-humility-lock",
+      "description": "Apply a self-critique and epistemic humility protocol before declaring work complete, final, SEAL-grade, or high confidence. Use for non-trivial outputs that need a final verification pass, explicit u",
+      "path": "/root/.agents/skills/godel-humility-lock/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "932e302535306d67"
+    },
+    {
+      "id": "hermes-rsi",
+      "name": "hermes-rsi",
+      "description": "Hermes RSI worker under arifOS kernel governance. Review \u00b7 Synthesize \u00b7 Integrate. Use for every non-trivial request to lower entropy and emit compact, structured artifacts the kernel can judge.",
+      "path": "/root/.agents/skills/hermes-rsi/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "cbbc9ba470fecec1"
+    },
+    {
+      "id": "building-pydantic-ai-agents",
+      "name": "building-pydantic-ai-agents",
+      "description": "Build AI agents with Pydantic AI \u2014 tools, capabilities (including on-demand loading), structured output, streaming, testing, and multi-agent patterns. Use when the user mentions Pydantic AI, imports p",
+      "path": "/root/.agents/skills/building-pydantic-ai-agents/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "3e3ceeb9ed9dc9f6"
+    },
+    {
+      "id": "pydantic-ai-harness",
+      "name": "pydantic-ai-harness",
+      "description": "Extend Pydantic AI agents with batteries-included capabilities from pydantic-ai-harness -- currently Code Mode, which collapses many tool calls into one sandboxed Python execution. Use when the user m",
+      "path": "/root/.agents/skills/pydantic-ai-harness/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "263e68ad5746b5ab"
+    },
+    {
+      "id": "logfire-instrumentation",
+      "name": "logfire-instrumentation",
+      "description": "Add Pydantic Logfire observability to applications. Use this skill whenever the user asks to \"add logfire\", \"instrument with logfire\", \"add observability\", \"add tracing\", \"configure logfire\", \"add mon",
+      "path": "/root/.agents/skills/logfire-instrumentation/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "33f2f5ed5555861a"
+    },
+    {
+      "id": "logfire-query",
+      "name": "logfire-query",
+      "description": "Query and analyze Logfire telemetry data \u2014 traces, logs, spans, metrics, summaries, and SQL results. Use this skill when the user asks to \"query logfire\", \"search traces\", \"find logs\", \"query data\", \"",
+      "path": "/root/.agents/skills/logfire-query/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "76bf3d055eeaf072"
+    },
+    {
+      "id": "logfire-ui",
+      "name": "logfire-ui",
+      "description": "Open or return Logfire project pages, live views, trace links, and Explore pages in the Codex browser without querying telemetry first. Use this skill when the user asks to \"open in Logfire\", \"show in",
+      "path": "/root/.agents/skills/logfire-ui/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "b22dc8b1b875d316"
+    },
+    {
+      "id": "replicate-models",
+      "name": "replicate-models",
+      "description": "Find, compare, inspect, and run Replicate models through the Replicate API, docs, schemas, predictions, polling, webhooks, and output handling. Use when Codex needs model selection, capability or cost",
+      "path": "/root/.agents/skills/replicate-models/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "91b0a3e059e7108f"
+    },
+    {
+      "id": "replicate-prompting",
+      "name": "replicate-prompting",
+      "description": "Prompt image and video generation or editing models on Replicate. Use when Codex needs to write, refine, or troubleshoot prompts for Replicate image/video models, including style, camera language, tex",
+      "path": "/root/.agents/skills/replicate-prompting/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "a8bbf264289e0b69"
+    },
+    {
+      "id": "rsi",
+      "name": "rsi",
+      "description": "A-R-I-F RSI (Refactor, Structure, Integrate) role. Trigger for refactoring, lowering entropy, integrating modules, tightening boundaries, or improving structure.",
+      "path": "/root/.agents/skills/rsi/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "356bac0017e7aa65"
+    },
+    {
+      "id": "sandbox-sdk",
+      "name": "sandbox-sdk",
+      "description": "Build sandboxed applications for secure code execution. Load when building AI code execution, code interpreters, CI/CD systems, interactive dev environments, or executing untrusted code. Covers Sandbo",
+      "path": "/root/.agents/skills/sandbox-sdk/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "cf0b5f1772cc1f51"
+    },
+    {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "description": "Bootstrap, design, and package new skills. Load when capturing user intent for a new skill or drafting its initial instruction framework.",
+      "path": "/root/.agents/skills/skill-creator/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "1ffa4d6bd96bd650"
+    },
+    {
+      "id": "skill-trigger-linter",
+      "name": "skill-trigger-linter",
+      "description": "Check every skill\u2019s \u201cuse when\u201d and \u201cdo not use when\u201d clauses for collisions, missing negatives, and vague verbs like \u201chelp,\u201d \u201cassist,\u201d or \u201cimprove.\u201d Load when linting, reviewing, or validating trigger",
+      "path": "/root/.agents/skills/skill-trigger-linter/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "77082342858d6eff"
+    },
+    {
+      "id": "vjammm-auditor",
+      "name": "vjammm-auditor",
+      "description": "VJAMMMM \u2014 the constitutional invariant auditor AND inclusive way-forward generator. Phase 1 finds the cracks. Phase 2 tells you how to weld them. One skill, two movements. Trigger for ANY substrate au",
+      "path": "/root/.agents/skills/vjammm-auditor/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "3d087c738e01b8a8"
+    },
+    {
+      "id": "vps-health-ops",
+      "name": "vps-health-ops",
+      "description": "VPS health and diagnostics runbook. Load when checking system resources, Docker state, disk pressure, service ports, logs, SSL/Caddy, databases, or memory pressure on af-forge.",
+      "path": "/root/.agents/skills/vps-health-ops/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "50264b074801b255"
+    },
+    {
+      "id": "web-perf",
+      "name": "web-perf",
+      "description": "Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (LCP, INP, CLS) and supplementary metrics (FCP, TBT, Speed Index), identifies render-blocking resources, network dependency",
+      "path": "/root/.agents/skills/web-perf/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "16ab8364c03db7af"
+    },
+    {
+      "id": "workers-best-practices",
+      "name": "workers-best-practices",
+      "description": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-pat",
+      "path": "/root/.agents/skills/workers-best-practices/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "86251bb8ff8fd957"
+    },
+    {
+      "id": "wrangler",
+      "name": "wrangler",
+      "description": "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running ",
+      "path": "/root/.agents/skills/wrangler/SKILL.md",
+      "source": "~/.agents/skills",
+      "hash": "85b36e0b211a2172"
+    },
+    {
+      "id": "agents-sdk",
+      "name": "agents-sdk",
+      "description": "Build AI agents on Cloudflare Workers using the Agents SDK. Load when creating stateful agents, durable workflows, real-time WebSocket apps, scheduled tasks, MCP servers, chat applications, voice agen",
+      "path": "/root/.claude/skills/agents-sdk/",
+      "source": "~/.claude/skills",
+      "hash": "a23f4b5d7f479ec6",
+      "note": null
+    },
+    {
+      "id": "arifos-evals",
+      "name": "arifos-evals",
+      "description": "Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill. Load when a skill changes behavior or a new version is proposed.",
+      "path": "/root/.claude/skills/arifos-evals/",
+      "source": "~/.claude/skills",
+      "hash": "b5ad6b7cb36c00dd",
+      "note": null
+    },
+    {
+      "id": "arifos-governance",
+      "name": "arifos-governance",
+      "description": "Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence alignment, and veto routing. Load when performing policy mutations, data deletions, deployment risk evaluations, or verifyin",
+      "path": "/root/.claude/skills/arifos-governance/",
+      "source": "~/.claude/skills",
+      "hash": "709f7cc535698d80",
+      "note": null
+    },
+    {
+      "id": "arifos-mcp-federation",
+      "name": "arifos-mcp-federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, and define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, ",
+      "path": "/root/.claude/skills/arifos-mcp-federation/",
+      "source": "~/.claude/skills",
+      "hash": "42dfe3724046c0cd",
+      "note": null
+    },
+    {
+      "id": "arifos-memory",
+      "name": "arifos-memory",
+      "description": "Master the 6-layer memory architecture of arifOS. Use this skill whenever you need to store, recall, or organize information across Ephemeral (L1), Session (L2), Semantic (L3), Structured (L4), Relati",
+      "path": "/root/.claude/skills/arifos-memory/",
+      "source": "~/.claude/skills",
+      "hash": "23328ae3ac0392b7",
+      "note": null
+    },
+    {
+      "id": "arifos-observability",
+      "name": "arifos-observability",
+      "description": "Generate structured telemetry for skill runs, including trigger source, chosen branch, command count, runtime, and postcondition checks. Load when you need to parse run logs, compile dashboards, or au",
+      "path": "/root/.claude/skills/arifos-observability/",
+      "source": "~/.claude/skills",
+      "hash": "89022aefff35ebf8",
+      "note": null
+    },
+    {
+      "id": "arifos-plan-dag",
+      "name": "arifos-plan-dag",
+      "description": "Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback points. Load when tasks exceed one-shot prompting and need subagent or staged execution.",
+      "path": "/root/.claude/skills/arifos-plan-dag/",
+      "source": "~/.claude/skills",
+      "hash": "09d866563c0f11c8",
+      "note": null
+    },
+    {
+      "id": "arifos-recursive-audit",
+      "name": "arifos-recursive-audit",
+      "description": "Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references. Load when reviewing the skill portfolio or after modifying or adding new skills.",
+      "path": "/root/.claude/skills/arifos-recursive-audit/",
+      "source": "~/.claude/skills",
+      "hash": "e8ce5ec2fd44a0cd",
+      "note": null
+    },
+    {
+      "id": "arifos-untrusted-sandbox",
+      "name": "arifos-untrusted-sandbox",
+      "description": "Mandatory bubblewrap (bwrap) supermax jail for executing any untrusted Python/JS synthesized by external AIs (Copilot, Mythos, third-party). Load when running, evaluating, or testing code from non-fed",
+      "path": "/root/.claude/skills/arifos-untrusted-sandbox/",
+      "source": "~/.claude/skills",
+      "hash": "b310bcc24a688382",
+      "note": null
+    },
+    {
+      "id": "cloudflare",
+      "name": "cloudflare",
+      "description": "Comprehensive Cloudflare platform skill covering Workers, Pages, storage (KV, D1, R2), AI (Workers AI, Vectorize, Agents SDK), feature flags (Flagship), networking (Tunnel, Spectrum), security (WAF, D",
+      "path": "/root/.claude/skills/cloudflare/",
+      "source": "~/.claude/skills",
+      "hash": "738e22f0acab814c",
+      "note": null
+    },
+    {
+      "id": "cloudflare-email-service",
+      "name": "cloudflare-email-service",
+      "description": "Send and receive transactional emails with Cloudflare Email Service (Email Sending + Email Routing). Use when building email sending (Workers binding or REST API), email routing, Agents SDK email hand",
+      "path": "/root/.claude/skills/cloudflare-email-service/",
+      "source": "~/.claude/skills",
+      "hash": "056788927446c4b8",
+      "note": null
+    },
+    {
+      "id": "durable-objects",
+      "name": "durable-objects",
+      "description": "Create and review Cloudflare Durable Objects. Use when building stateful coordination (chat rooms, multiplayer games, booking systems), implementing RPC methods, SQLite storage, alarms, WebSockets, or",
+      "path": "/root/.claude/skills/durable-objects/",
+      "source": "~/.claude/skills",
+      "hash": "0c9d001ca2234bf4",
+      "note": null
+    },
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples inclu",
+      "path": "/root/.claude/skills/frontend-design/",
+      "source": "~/.claude/skills",
+      "hash": "7429eb2e51b7dc87",
+      "note": null
+    },
+    {
+      "id": "geox-basin-interpreter",
+      "name": "geox-basin-interpreter",
+      "description": "Subsurface reasoning for basin screening, petroleum systems analysis, trap/seal/reservoir framing, and evidence-led interpretations. Load when geology, geophysics, or petrophysics tasks appear.",
+      "path": "/root/.claude/skills/geox-basin-interpreter/",
+      "source": "~/.claude/skills",
+      "hash": "99cd9e6ccd26ebd4",
+      "note": null
+    },
+    {
+      "id": "godel-humility-lock",
+      "name": "godel-humility-lock",
+      "description": "Apply a self-critique and epistemic humility protocol before declaring work complete, final, SEAL-grade, or high confidence. Use for non-trivial outputs that need a final verification pass, explicit u",
+      "path": "/root/.claude/skills/godel-humility-lock/",
+      "source": "~/.claude/skills",
+      "hash": "89d125c8e2e074ad",
+      "note": null
+    },
+    {
+      "id": "hermes-rsi",
+      "name": "hermes-rsi",
+      "description": "Hermes RSI worker under arifOS kernel governance. Review \u00b7 Synthesize \u00b7 Integrate. Use for every non-trivial request to lower entropy and emit compact, structured artifacts the kernel can judge.",
+      "path": "/root/.claude/skills/hermes-rsi/",
+      "source": "~/.claude/skills",
+      "hash": "05d351ea36d2e51b",
+      "note": null
+    },
+    {
+      "id": "replicate-models",
+      "name": "replicate-models",
+      "description": "Find, compare, inspect, and run Replicate models through the Replicate API, docs, schemas, predictions, polling, webhooks, and output handling. Use when Codex needs model selection, capability or cost",
+      "path": "/root/.claude/skills/replicate-models/",
+      "source": "~/.claude/skills",
+      "hash": "b5e53a46154605a9",
+      "note": null
+    },
+    {
+      "id": "replicate-prompting",
+      "name": "replicate-prompting",
+      "description": "Prompt image and video generation or editing models on Replicate. Use when Codex needs to write, refine, or troubleshoot prompts for Replicate image/video models, including style, camera language, tex",
+      "path": "/root/.claude/skills/replicate-prompting/",
+      "source": "~/.claude/skills",
+      "hash": "f3b9cd9ab1b197fc",
+      "note": null
+    },
+    {
+      "id": "sandbox-sdk",
+      "name": "sandbox-sdk",
+      "description": "Build sandboxed applications for secure code execution. Load when building AI code execution, code interpreters, CI/CD systems, interactive dev environments, or executing untrusted code. Covers Sandbo",
+      "path": "/root/.claude/skills/sandbox-sdk/",
+      "source": "~/.claude/skills",
+      "hash": "7b47f7f423a95cab",
+      "note": null
+    },
+    {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "description": "Bootstrap, design, and package new skills. Load when capturing user intent for a new skill or drafting its initial instruction framework.",
+      "path": "/root/.claude/skills/skill-creator/",
+      "source": "~/.claude/skills",
+      "hash": "39f2ccd563ab3c6a",
+      "note": null
+    },
+    {
+      "id": "skill-trigger-linter",
+      "name": "skill-trigger-linter",
+      "description": "Check every skill\u2019s \u201cuse when\u201d and \u201cdo not use when\u201d clauses for collisions, missing negatives, and vague verbs like \u201chelp,\u201d \u201cassist,\u201d or \u201cimprove.\u201d Load when linting, reviewing, or validating trigger",
+      "path": "/root/.claude/skills/skill-trigger-linter/",
+      "source": "~/.claude/skills",
+      "hash": "853552ce5d6d5eae",
+      "note": null
+    },
+    {
+      "id": "vps-health-ops",
+      "name": "vps-health-ops",
+      "description": "VPS health and diagnostics runbook. Load when checking system resources, Docker state, disk pressure, service ports, logs, SSL/Caddy, databases, or memory pressure on af-forge.",
+      "path": "/root/.claude/skills/vps-health-ops/",
+      "source": "~/.claude/skills",
+      "hash": "ee896c387edd4c62",
+      "note": null
+    },
+    {
+      "id": "web-perf",
+      "name": "web-perf",
+      "description": "Analyzes web performance using Chrome DevTools MCP. Measures Core Web Vitals (LCP, INP, CLS) and supplementary metrics (FCP, TBT, Speed Index), identifies render-blocking resources, network dependency",
+      "path": "/root/.claude/skills/web-perf/",
+      "source": "~/.claude/skills",
+      "hash": "66e414b08f6cdbff",
+      "note": null
+    },
+    {
+      "id": "workers-best-practices",
+      "name": "workers-best-practices",
+      "description": "Reviews and authors Cloudflare Workers code against production best practices. Load when writing new Workers, reviewing Worker code, configuring wrangler.jsonc, or checking for common Workers anti-pat",
+      "path": "/root/.claude/skills/workers-best-practices/",
+      "source": "~/.claude/skills",
+      "hash": "1a4df7634ce0a190",
+      "note": null
+    },
+    {
+      "id": "wrangler",
+      "name": "wrangler",
+      "description": "Cloudflare Workers CLI for deploying, developing, and managing Workers, KV, R2, D1, Vectorize, Hyperdrive, Workers AI, Containers, Queues, Workflows, Pipelines, and Secrets Store. Load before running ",
+      "path": "/root/.claude/skills/wrangler/",
+      "source": "~/.claude/skills",
+      "hash": "b6086e6137a8d3b5",
+      "note": null
+    }
+  ]
+}

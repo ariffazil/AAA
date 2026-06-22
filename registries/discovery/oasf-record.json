@@ -1,0 +1,93 @@
+{
+  "$schema": "https://github.com/agntcy/oasf/blob/main/schema/v0.5.0/record.json",
+  "schema_version": "oasf/v0.5.0",
+  "name": "arifOS Federation",
+  "version": "2026.06.22",
+  "description": "Constitutional multi-organ AI federation. F1-F13 floors. 888 JUDGE arbitration. 999 VAULT audit chain. 5 HEXAGON warga + 7 organs.",
+  "authors": [
+    {
+      "name": "Muhammad Arif bin Fazil",
+      "did": "did:web:arif-fazil.com",
+      "role": "F13 SOVEREIGN"
+    }
+  ],
+  "created_at": "2026-06-22T05:42:00Z",
+  "extensions": [
+    {
+      "name": "schema.oasf/extensions/agent_description",
+      "version": "v0.5.0"
+    }
+  ],
+  "skills": [
+    {"name": "constitutional_judgment", "category": "governance"},
+    {"name": "session_binding", "category": "governance"},
+    {"name": "vault_sealing", "category": "audit"},
+    {"name": "memory_recall", "category": "memory"},
+    {"name": "basin_resolution", "category": "earth_intelligence"},
+    {"name": "seismic_compute", "category": "earth_intelligence"},
+    {"name": "petrophysics_bounds", "category": "earth_intelligence"},
+    {"name": "prospect_evaluation", "category": "earth_intelligence"},
+    {"name": "claim_grammar", "category": "earth_intelligence"},
+    {"name": "capital_conservation", "category": "capital_intelligence"},
+    {"name": "cashflow_runway", "category": "capital_intelligence"},
+    {"name": "stock_analysis", "category": "capital_intelligence"},
+    {"name": "power_audit", "category": "capital_intelligence"},
+    {"name": "metabolic_assessment", "category": "vitality_intelligence"},
+    {"name": "homeostasis_check", "category": "vitality_intelligence"},
+    {"name": "dignity_guard", "category": "vitality_intelligence"},
+    {"name": "forge_execution", "category": "execution"},
+    {"name": "a2a_dispatch", "category": "execution"},
+    {"name": "leasing_governance", "category": "governance"}
+  ],
+  "locators": [
+    {
+      "type": "docker",
+      "url": "n/a",
+      "notes": "Organs run bare-metal systemd, not Docker. Locator pattern AGNTCY-standard but deployment is sovereign."
+    },
+    {
+      "type": "mcp",
+      "url": "https://arifos.arif-fazil.com/mcp",
+      "notes": "Primary kernel — F1-F13 floors; 888 JUDGE; 999 VAULT"
+    },
+    {
+      "type": "mcp",
+      "url": "https://geox.arif-fazil.com/mcp",
+      "notes": "Earth intelligence — EVIDENCE_ONLY"
+    },
+    {
+      "type": "mcp",
+      "url": "https://wealth.arif-fazil.com/mcp",
+      "notes": "Capital intelligence — EVIDENCE_ONLY"
+    },
+    {
+      "type": "mcp",
+      "url": "https://well.arif-fazil.com/mcp",
+      "notes": "Vitality intelligence — REFLECT_ONLY"
+    },
+    {
+      "type": "a2a",
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "notes": "A2A v1.0.0 gateway; agent card at /.well-known/agent-card.json"
+    }
+  ],
+  "signature": {
+    "method": "TODO",
+    "notes": "PHASE 4 will add F11 cryptographic signature once _ARIF_PUBKEYS is configured (currently empty per 2026-06-15 audit). OASF content-addressing will use the SHA-256 of canonicalized record body as the CID."
+  },
+  "federation_metadata": {
+    "schema_note": "OASF v0.5.0 doesn't have first-class federation fields; this extension block is federation-internal.",
+    "constitution": "F1-F13 (13 floors, sealed in GENESIS/000_CONSTITUTION.md)",
+    "judge_authority": "888_JUDGE (absorbed from APEX into AAA a2a-server deliberation.ts, 2026-06-14)",
+    "vault_authority": "VAULT999 (3-layer: local JSONL + Postgres + Supabase)",
+    "warga_agents": ["333-AGI", "555-ASI", "888-APEX", "A-AUDIT", "A-ARCHIVE"],
+    "organs": ["arifOS", "A-FORGE", "GEOX", "WEALTH", "WELL", "AAA", "APEX-legacy"],
+    "sovereign_id": "888 (Muhammad Arif bin Fazil)"
+  },
+  "publishing_status": {
+    "phase": "1 — local only",
+    "served_at_agntcy_network": false,
+    "awaits_888_approval_for_publish": true,
+    "awaits_F11_signature": true
+  }
+}

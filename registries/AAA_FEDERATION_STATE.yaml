@@ -1,4 +1,5 @@
 # AAA FEDERATION STATE — 2026-06-20T14:20:00+00:00
+# DEPRECATED 2026-06-22 — canonical path: registries/state/federation_state.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new state writes should land in the new path.
 # Forged by FORGE (000Ω)
 # Purpose: Single source of truth for what's running, what's configured, and what drifts
 
