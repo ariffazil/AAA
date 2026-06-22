@@ -345,6 +345,8 @@ Before acting on any request:
 | Secret vault index | `/root/.secrets/INDEX.md` |
 | arifOS source | `/root/arifOS/` |
 | AAA repo (this file lives here) | `github.com/ariffazil/AAA` |
+| **Kernel invariants — Gödel-lock, Strange Loop, Anti-sink** | `/root/AAA/docs/kernel-invariants-godel-strange-loop-anti-sink.md` |
+| Canonical organ map | `/root/AAA/docs/federation-organ-map.md` |
 | Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |
 
