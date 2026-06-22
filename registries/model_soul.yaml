@@ -55,7 +55,6 @@ models:
   - aaa-gateway
   - geox-witness
   - wealth-witness
-  - maxhermes
   - arifos-kernel
   model_capability_profile_v2:
     runtime_name: model_capability_profile

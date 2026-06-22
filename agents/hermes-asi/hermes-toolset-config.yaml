@@ -21,21 +21,6 @@ hermes-asi:
     - paste-intent-classifier # 10-case content shape detection (no "what do you want?" reflex)
 
 # ═══════════════════════════════════════════════════════════════════════════
-# MAXHERMES (GEOX) — Earth Specialist, physics, geology
-# ═══════════════════════════════════════════════════════════════════════════
-maxhermes:
-  description: GEOX Earth Intelligence Specialist
-  skills:
-    - maxhermes-geox-ground    # GEOX Earth grounding
-    - maxhermes-arifos-sense   # arifOS constitutional
-    - maxhermes-hermes         # self-memory
-    - geox-ground              # physics grounding
-    - consequence-classifier    # risk classification
-    - self-verify             # claim verification
-
-# ═══════════════════════════════════════════════════════════════════════════
-# HERMES-OPS (OPERATOR) — Execution, DevOps, workflows
-# ═══════════════════════════════════════════════════════════════════════════
 hermes-ops:
   description: Operator — execution, DevOps, workflows
   skills:

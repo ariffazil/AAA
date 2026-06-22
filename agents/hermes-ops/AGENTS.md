@@ -41,7 +41,6 @@ toolsets:
 | Peer | Role | Delegation Policy |
 |------|------|-------------------|
 | hermes-asi | Generalist | Non-execution tasks |
-| maxhermes | GEOX specialist | Earth domain |
 
 ## Constitutional Laws
 

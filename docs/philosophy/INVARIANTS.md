@@ -141,7 +141,7 @@ Any action meeting any of the following conditions triggers an immediate HOLD:
 |------|--------|------------|
 | Constitutional | `arifOS` | Law source — cannot be overridden by any agent |
 | ASI | `hermes-asi`, `hermes` | Generalist reasoning, deep memory, routing |
-| AGI | `OPENCLAW`, `maxhermes`, `opencode`, `hermes-ops` | Bounded operator — governed tool use + 000–999 loop |
+| AGI | `OPENCLAW`, `opencode`, `hermes-ops` | Bounded operator — governed tool use + 000–999 loop |
 
 OPENCLAW is the primary AGI gateway. hermes-asi handles generalist reasoning and routing. arifOS is the only constitutional authority.
 

@@ -1,4 +1,4 @@
-# AAA Canonical Naming — Hermes / APEX / ASI
+# AAA Canonical Naming — Hermes / APEX / ASI / MaxHermes
 
 > **Forged:** 2026-06-22 by FORGE (000Ω)
 > **Status:** CANONICAL — use these terms exclusively going forward
@@ -6,8 +6,8 @@
 
 ## Why this exists
 
-Three different things have been called "Hermes" or "ASI" or "APEX" in AAA
-docs over the last 6 months. Per F2 TRUTH, this is a clarity violation (F4).
+Four different things have been called "Hermes" or "ASI" or "APEX" or "MaxHermes"
+in AAA docs over the last 6 months. Per F2 TRUTH, this is a clarity violation (F4).
 Per Arif's 2026-06-22 directive: **"when I said hermes, I always refer it to
 hermes agent by nous research and my bot ASI in my telegram."**
 
@@ -116,3 +116,49 @@ no scripts reference it (currently appears unused).
 
 This naming doc is the canonical reference. Any future doc that uses
 "Hermes" without distinguishing these three MUST be updated or annotated.
+
+## The fourth thing — MaxHermes (added 2026-06-22)
+
+### 4. MaxHermes = external MiniMax cloud product
+
+**This is NOT under AAA Federation control.** It runs on MiniMax's cloud
+infrastructure at `agent.minimaxi.com/max-hermes`, powered by MiniMax M2.7.
+
+| Attribute | Value |
+|---|---|
+| Display name | **MaxHermes** (external) |
+| Source | MiniMax (HKEX: 00100), launched April 16, 2026 |
+| URL | `https://agent.minimaxi.com/max-hermes` |
+| Default model | MiniMax M2.7 (230B MoE, 10B active) |
+| Hosted | MiniMax cloud (we don't control) |
+| AAA agent entry | `external/maxhermes/` (documentation only) |
+| Distinguishing feature | "Learning loop" — auto-extracts reusable skills from tasks |
+
+### Historical context
+
+Prior to 2026-06-22, AAA had a `agents/maxhermes/` directory with a
+fictional "OpenClaw MaxHermes" agent entry describing a local instance
+that never actually existed. It was archived to `_archive/maxhermes-2026-06-22/`.
+
+Per Arif's clarification 2026-06-22:
+> "MAX HERMES IS ACTUALLY EXTERNAL HERMES IN ANOTHER SERVER THAT I DONT
+> HAVE ACCESS TO THE MACHINE"
+
+### Naming distinctions
+
+| Term | Means | Does NOT mean |
+|---|---|---|
+| **MaxHermes** | MiniMax cloud product (external) | ❌ NOT our agent; ❌ NOT a Hermes variant |
+| **Hermes** | Hermes-ASI Telegram bot (our agent) | ❌ NOT MiniMax's product |
+| **MiniMax M2.7** | LLM that powers MaxHermes | ❌ NOT the same as MiniMax-M3 (our kernel's primary model when available) |
+
+### Integration (when desired)
+
+If MaxHermes is to be called from AAA in the future:
+1. Register MiniMax API key in `/root/.secrets/vault.env`
+2. Add a **gateway route** in `aaa-gateway` (NOT a local agent entry)
+3. F13 ack required (data flows to external vendor)
+4. Witness every call via arifOS MCP
+
+The archived `_archive/maxhermes-2026-06-22/` documents the previous (incorrect) integration attempt.
+
