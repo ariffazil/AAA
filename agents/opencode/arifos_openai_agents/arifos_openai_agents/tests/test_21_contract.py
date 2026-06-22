@@ -16,17 +16,13 @@ tests). The live integration test is in test_live_integration.py.
 from __future__ import annotations
 
 import asyncio
-from typing import Any
 from unittest.mock import AsyncMock
 
 import pytest
-
 from arifos_openai_agents.decision import (
     ActionClass,
     CognitionLane,
     Decision,
-    FloorVerdict,
-    RiskEnvelope,
 )
 from arifos_openai_agents.exceptions import (
     ArifDenied,
@@ -39,7 +35,6 @@ from arifos_openai_agents.guards import (
     arifos_pretool,
     arifos_seal,
 )
-
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Fixtures

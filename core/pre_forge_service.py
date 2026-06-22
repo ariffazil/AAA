@@ -27,26 +27,21 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 from __future__ import annotations
 
 import json
-import sys
 import os
-from pathlib import Path
-from http.server import HTTPServer, BaseHTTPRequestHandler
+import sys
 from datetime import datetime, timezone
-from typing import Optional
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
 
 # Add AAA root to path
 _AAA_ROOT = Path("/root/AAA")
 sys.path.insert(0, str(_AAA_ROOT))
 
-from core.pre_forge_gate import PreForgeGate, PreForgeGateResult
+from core.citation_provenance import CitationProvenance
+from core.pre_forge_gate import PreForgeGate
 from core.witness_diversity import (
     SessionWitnessState,
-    WitnessType,
-    compute_witness_score,
-    pre_forge_witness_gate,
 )
-from core.citation_provenance import CitationProvenance, CitationProvenanceAuditor
-from core.shadow_audit import ShadowAuditor, ShadowAuditResult
 
 # ── Session State Store ──────────────────────────────────────────────────────
 
@@ -381,7 +376,7 @@ def start_service(port: int = 18990):
     _load_sessions()
     server = HTTPServer(("127.0.0.1", port), PreForgeHandler)
     print(f"[pre-forge-gate] Constitutional gate live on http://127.0.0.1:{port}")
-    print(f"[pre-forge-gate] Endpoints: /check /quick /witness /earth /model /health")
+    print("[pre-forge-gate] Endpoints: /check /quick /witness /earth /model /health")
     print(f"[pre-forge-gate] Loaded {len(SESSIONS)} existing sessions")
     try:
         server.serve_forever()

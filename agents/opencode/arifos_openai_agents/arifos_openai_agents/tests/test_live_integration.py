@@ -9,10 +9,7 @@ public arifOS MCP at arifos.arif-fazil.com.
 
 from __future__ import annotations
 
-import asyncio
-
 import pytest
-
 from arifos_openai_agents.client import ArifOSMCPClient
 from arifos_openai_agents.decision import ActionClass, CognitionLane
 from arifos_openai_agents.guards import arifos_prethink

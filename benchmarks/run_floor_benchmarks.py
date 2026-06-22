@@ -22,9 +22,10 @@ import json
 import os
 import sys
 import time
-import httpx
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
+
+import httpx
 
 KERNEL_URL = os.environ.get("ARIFOS_KERNEL_URL", "http://localhost:8088")
 RESULTS_DIR = Path(__file__).resolve().parent / "floors" / "results"
@@ -46,7 +47,7 @@ def mcp_call(tool: str, arguments: dict) -> dict:
     args = dict(arguments)
     if _SESSION_ID and "session_id" not in args:
         args["session_id"] = _SESSION_ID
-    
+
     try:
         with httpx.Client(base_url=KERNEL_URL, timeout=15) as c:
             resp = c.post("/mcp", headers={"Accept": "application/json"}, json={
@@ -57,9 +58,9 @@ def mcp_call(tool: str, arguments: dict) -> dict:
             })
             if resp.status_code != 200:
                 return {"verdict": "ERROR", "status": "ERROR", "http_status": resp.status_code}
-            
+
             body = resp.json()
-            
+
             # MCP error → extract governance data
             if "error" in body:
                 err = body["error"]
@@ -73,15 +74,15 @@ def mcp_call(tool: str, arguments: dict) -> dict:
                     "violated_laws": data.get("violated_laws", []),
                     "gate_results": data.get("gate_results", []),
                 }
-            
+
             # Success response
             result = body.get("result", {})
-            
+
             # Try structuredContent first (arifOS native envelope)
             sc = result.get("structuredContent", {})
             if sc:
                 return sc
-            
+
             # Fallback: parse text content
             for c in result.get("content", []):
                 if c.get("type") == "text":
@@ -89,9 +90,9 @@ def mcp_call(tool: str, arguments: dict) -> dict:
                         return json.loads(c["text"])
                     except (json.JSONDecodeError, KeyError):
                         continue
-            
+
             return {"verdict": "UNKNOWN", "status": "OK", "raw": result}
-            
+
     except Exception as e:
         return {"verdict": "ERROR", "status": "ERROR", "error": str(e)}
 
@@ -99,14 +100,14 @@ def mcp_call(tool: str, arguments: dict) -> dict:
 def init_session() -> bool:
     """Initialize a bench session with the arifOS kernel."""
     global _SESSION_ID
-    
+
     # First try light mode
     resp = mcp_call("arif_session_init", {
         "mode": "light",
         "actor_id": "forge-bench",
         "requested_authority": "OBSERVE_ONLY",
     })
-    
+
     # Extract session_id from any location in the response
     sid = None
     if isinstance(resp, dict):
@@ -115,18 +116,18 @@ def init_session() -> bool:
             result = resp.get("result", {})
             if isinstance(result, dict):
                 sid = result.get("session_id")
-    
+
     if sid:
         _SESSION_ID = sid
         return True
-    
+
     # Try full init
     resp = mcp_call("arif_session_init", {
         "mode": "init",
         "actor_id": "forge-bench",
         "requested_authority": "OBSERVE_ONLY",
     })
-    
+
     sid = None
     if isinstance(resp, dict):
         sid = resp.get("session_id") or resp.get("result", {}).get("session_id")
@@ -134,11 +135,11 @@ def init_session() -> bool:
             result = resp.get("result", {})
             if isinstance(result, dict):
                 sid = result.get("session_id")
-    
+
     if sid:
         _SESSION_ID = sid
         return True
-    
+
     # Session may be embedded in text content — check the raw response
     with httpx.Client(base_url=KERNEL_URL, timeout=15) as c:
         resp = c.post("/mcp", headers={"Accept": "application/json"}, json={
@@ -170,7 +171,7 @@ def init_session() -> bool:
                     if m:
                         _SESSION_ID = m.group(0)
                         return True
-    
+
     return False
 
 
@@ -188,7 +189,7 @@ def judge_floor_test(candidate: str, action_class: str = None, evidence: dict = 
         args["action_class"] = action_class
     if evidence:
         args["evidence_receipt"] = evidence
-    
+
     return mcp_call("arif_judge_deliberate", args)
 
 
@@ -208,13 +209,13 @@ def run_tests(floor_name: str, tests: list) -> dict:
         except Exception as e:
             resp = {"verdict": "ERROR", "status": "ERROR", "error": str(e)}
         elapsed = round(time.time() - start, 3)
-        
+
         actual_verdict = resp.get("verdict", "UNKNOWN")
         # HOLD from governance = kernel working correctly
         # SEAL = action allowed = also working correctly
         # ERROR = infrastructure issue
         passed = actual_verdict not in ("UNKNOWN", "ERROR")
-        
+
         if VERBOSE:
             icon = "✅" if passed else "❌"
             blocked = resp.get("blocked_at", "")
@@ -223,7 +224,7 @@ def run_tests(floor_name: str, tests: list) -> dict:
             if reasons:
                 extra += f" | reason={reasons[0][:60]}"
             print(f"  {icon} {test_id}: {desc[:55]} → {actual_verdict} ({elapsed}s){extra}")
-        
+
         results.append({
             "test_id": test_id,
             "floor": floor_name,
@@ -235,7 +236,7 @@ def run_tests(floor_name: str, tests: list) -> dict:
             "reasons": resp.get("reasons", []),
             "violated_laws": resp.get("violated_laws", []),
         })
-    
+
     passed = sum(1 for r in results if r["passed"])
     return {
         "floor": floor_name,
@@ -377,7 +378,7 @@ def main():
     print("═══ arifOS Floor Benchmark Runner ═══")
     print(f"Kernel: {KERNEL_URL}")
     print()
-    
+
     # Ping
     print("Probing kernel...", end=" ")
     alive = ping_kernel()
@@ -386,7 +387,7 @@ def main():
         print("FATAL: arifOS kernel must be running on localhost:8088")
         sys.exit(1)
     print("✅ ALIVE")
-    
+
     # Init session
     print("Initializing bench session...", end=" ")
     if init_session():
@@ -394,13 +395,13 @@ def main():
     else:
         print("⚠️  fell back to anonymous (gates will block ATOMIC)")
     print()
-    
+
     # Filter
     floor_filter = None
     for arg in sys.argv[1:]:
         if arg.startswith("--floor="):
             floor_filter = arg.split("=", 1)[1]
-    
+
     test_functions = [
         test_F1_reversibility, test_F2_truth, test_F3_tri_witness,
         test_F4_clarity, test_F5_peace, test_F06_empathy,
@@ -408,27 +409,27 @@ def main():
         test_F10_ontology, test_F11_auditability, test_F12_resilience,
         test_F13_sovereign,
     ]
-    
+
     all_results = []
     total_tests = 0
     total_passed = 0
-    
+
     for test_fn in test_functions:
         floor_name = test_fn.__name__.replace("test_", "")
-        
+
         if floor_filter and floor_filter.lower() not in floor_name.lower():
             continue
-        
+
         print(f"  Floor: {floor_name}")
         result = test_fn()
         all_results.append(result)
         total_tests += result["total"]
         total_passed += result["passed"]
-        
+
         if not VERBOSE:
             print(f"    {result['passed']}/{result['total']} passed ({result['pass_rate']}%)")
         print()
-    
+
     # Aggregate
     aggregate = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -441,15 +442,15 @@ def main():
         "overall_pass_rate": round(total_passed / total_tests * 100, 1) if total_tests else 0.0,
         "floors": all_results,
     }
-    
+
     output_file = RESULTS_DIR / "aggregate.json"
     with open(output_file, "w") as f:
         json.dump(aggregate, f, indent=2, default=str)
-    
+
     print(f"═══ Results → {output_file} ═══")
     print(f"  Total: {total_tests}  Passed: {total_passed}  Failed: {total_tests - total_passed}")
     print(f"  Pass rate: {aggregate['overall_pass_rate']}%")
-    
+
     return 0
 
 

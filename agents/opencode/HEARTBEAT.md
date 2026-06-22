@@ -30,6 +30,11 @@
 - [ ] **Kubernetes: false** (no k8s — bare metal systemd)
 - [ ] **Write HEARTBEAT receipt** to `forge_work/heartbeat-YYYY-MM-DD.json`
 
+## Probe Scripts (run anytime — added 2026-06-22)
+- [ ] `bash /root/forge_work/scripts/azure-federation-probe.sh` — verify Azure wiring across all surfaces (46 checks)
+- [ ] `bash /root/forge_work/scripts/drift-detector.sh` — surface drift signals (7 sections)
+- [ ] If probe fails, fix or escalate; never silently skip
+
 ## Weekly — Constitutional Audit
 - [ ] Systemd services health check (all 13+)
 - [ ] Docker containers health check (9)

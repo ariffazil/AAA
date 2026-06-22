@@ -23,7 +23,7 @@ import argparse
 import json
 import sys
 from collections import defaultdict
-from dataclasses import dataclass, asdict, field
+from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -31,8 +31,7 @@ from typing import Optional
 # Add eval/ to path so agent_adapter is importable
 sys.path.insert(0, str(Path(__file__).parent))
 
-from agent_adapter import run_agent_case, AgentResult
-
+from agent_adapter import AgentResult, run_agent_case
 
 DECISION_NORMALIZATION = {
     "PROCEED": "PROCEED",
@@ -128,7 +127,7 @@ class EvalResult:
 def score_case(case: dict, result: AgentResult) -> EvalResult:
     """
     Score an agent result against an AAA case.
-    
+
     Scoring rules:
     - decision_match: exact string match (case-insensitive), normalised
     - scores: computed conservatively from verdict and response quality

@@ -11,10 +11,10 @@ Author: arifOS_bot
 Date: 2026-04-18
 """
 
-import os
-import sys
 import json
 import logging
+import os
+import sys
 from datetime import datetime, timezone
 from typing import Optional
 
@@ -186,7 +186,7 @@ class VaultDB:
         async with self.pool.acquire() as conn:
             # Verify cooling_queue record exists
             cq = await conn.fetchrow(
-                "SELECT id, status FROM cooling_queue WHERE id = $1", 
+                "SELECT id, status FROM cooling_queue WHERE id = $1",
                 req.cooling_id
             )
             if not cq:
@@ -278,7 +278,7 @@ class VaultDB:
 
             # Update cooling_queue
             await conn.execute("""
-                UPDATE cooling_queue 
+                UPDATE cooling_queue
                 SET status = 'sealed', reviewed_by = $1, reviewed_at = $2, human_signature = $3
                 WHERE id = $4
             """, req.human_ratifier, ratified_at, req.human_signature, req.cooling_id)
@@ -360,9 +360,9 @@ async def list_pending():
     """List all awaiting_human cooling_queue records"""
     async with db.pool.acquire() as conn:
         rows = await conn.fetch("""
-            SELECT id::text, action_type, risk_class, judge_verdict, proposal_hash, 
+            SELECT id::text, action_type, risk_class, judge_verdict, proposal_hash,
                    session_id, created_at, hold_initiated_at
-            FROM cooling_queue 
+            FROM cooling_queue
             WHERE status = 'awaiting_human'
             ORDER BY created_at ASC
         """)
