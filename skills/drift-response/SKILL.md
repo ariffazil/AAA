@@ -1,3 +1,11 @@
+---
+superseded_by: /root/arifOS/skills/recursive-self-improvement/SKILL.md
+superseded_category: constitutional-duplicate
+superseded_date: 2026-06-22
+superseded_authority: Hermes-ASI-for-Arif-F13-SOVEREIGN
+superseded_status: DRAFT-pending-Cycle-B-888-ratification
+---
+
 # Drift Response — OpenClaw Operational Skill
 
 **Skill ID:** `drift-response`  
