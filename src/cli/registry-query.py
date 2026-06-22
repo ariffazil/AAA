@@ -4,7 +4,9 @@ Reads AAA registry YAML/JSON files and outputs parsed JSON.
 Usage: python3 /root/AAA/src/cli/registry-query.py <filename>
 """
 
-import sys, json, os
+import sys
+import json
+import os
 
 try:
     import yaml

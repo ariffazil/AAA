@@ -18,7 +18,6 @@ import os
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
 
 # ── config ────────────────────────────────────────────────────────────
 PG_HOST = os.environ.get("DREAM_PG_HOST", "127.0.0.1")
