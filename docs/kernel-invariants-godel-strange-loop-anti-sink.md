@@ -242,7 +242,61 @@ Phase 4: Seal (arifOS → VAULT999)
 
 ---
 
+---
+
+## APPENDIX: Kernel Audit Results (2026-06-22)
+
+Full source-code audit against the arifOS kernel to map what exists vs what's missing.
+
+### Files that already carry partial enforcement
+
+| File | Existing enforcement | Invariant served |
+|------|---------------------|------------------|
+| `/root/AAA/core/pre_forge_gate.py` | F2+F3+F9 composite gate: citation provenance, witness diversity, shadow audit | Gödel-lock (partial) |
+| `/root/AAA/core/witness_diversity.py` | 5 witness types, Mode-3 collapse detection, Byzantine ≥ 0.75 | Gödel-lock (partial) |
+| `/root/arifOS/arifosmcp/tools/judge.py` | SABAR cooldown with tri_witness, evidence band verification, simulative detection gate | Strange Loop (partial) |
+| `/root/arifOS/arifosmcp/kernel/interceptor.py` | 8-floor classification from OBSERVE to IRREVERSIBLE, ADMIT_SIMULATE vs ADMIT_MUTATE | Anti-sink (partial) |
+| `/root/arifOS/arifosmcp/kernel/models.py` | GateVerdict enum (8 types), CapabilityNode class | All three (scaffold) |
+| `/root/arifOS/arifosmcp/schemas/verdict.py` | SealOutput, VerdictOutput with truth_band | Vault999 (needs extension) |
+| `/root/arifOS/arifosmcp/schemas/lineage.py` | JudgeSealContract with actor_id, session_id | Gödel-lock (needs witness_id) |
+| `/root/A-FORGE/src/domain/governance/actionClassifier.ts` | 8-tier action taxonomy, isMoreSevere() comparisons | Anti-sink (classifier) |
+
+### 16 Confirmed Gaps
+
+| # | Gap | File | Line | Invariant |
+|---|-----|------|------|-----------|
+| 1 | No `actor_session_id != judge_session_id` check | `tools/judge.py` | ~1149 | G1 |
+| 2 | No `witness_id` on SealOutput | `schemas/verdict.py` | ~955 | G2 |
+| 3 | No `witness_id` on JudgeSealContract | `schemas/lineage.py` | 12-29 | G2 |
+| 4 | No self-certification check in forge | `tools/forge.py` | ~43 | G1 |
+| 5 | `all_green` computed but not wired as blocking gate | `transport/conformance_spine.py` | ~742 | G3 |
+| 6 | No `requires_external_anchor` on CapabilityNode | `kernel/models.py` | 115-186 | S1 |
+| 7 | No interceptor check for external anchor | `kernel/interceptor.py` | 106-267 | S1 |
+| 8 | No `evidence_sources` on execution envelope | `schemas/kernel_envelope.py` | 1-99 | S2 |
+| 9 | No `truth_class` on VerdictOutput | `schemas/verdict.py` | 598-793 | S2 |
+| 10 | No automatic downgrade for internal-only verdicts | `tools/judge.py` | ~1046 | S3 |
+| 11 | No `max_simulations_before_action` on CapabilityNode | `kernel/models.py` | 115-186 | A1 |
+| 12 | No `requires_action_or_refusal_log` on CapabilityNode | `kernel/models.py` | 115-186 | A1 |
+| 13 | No per-session sim/action counter | `runtime/ingress_middleware.py` | ~1021 | A2 |
+| 14 | No SINK_RISK interrupt type | no interrupt schema exists | — | A2 |
+| 15 | No sink threshold constants | no constants module | — | A2 |
+| 16 | No "all green + zero actions" contradiction check | `transport/conformance_spine.py` | ~742 | A3 |
+
+### Non-existent files referenced by initial spec (corrected above)
+
+| Spec reference | Actual location |
+|----------------|-----------------|
+| `schemas/seal.py` | `schemas/verdict.py` (SealOutput) |
+| `schemas/capability.py` | `kernel/models.py` (CapabilityNode) |
+| `schemas/tool_result.py` | `schemas/verdict.py` (VerdictOutput) |
+| `runtime/conformance.py` | `transport/conformance_spine.py` |
+| `runtime/decision.py` | `kernel/interceptor.py` + `runtime/pre_execution_gate.py` |
+| `schemas/interrupt.py` | Does not exist — must be created |
+
+---
+
 *Sealed 2026-06-22 under F13 SOVEREIGN.*
+*Audited 2026-06-22 — 16 gaps confirmed against live kernel source.*
 *These invariants are law, not suggestions.*
 *Every irreversible Vault999 seal from this point SHALL satisfy all three.*
 
