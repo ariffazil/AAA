@@ -850,6 +850,49 @@
           "tags": ["sequence", "stratigraphy", "correlation", "well-correlation"]
         }
       ]
+    },
+    {
+      "id": "antigravity",
+      "name": "Antigravity CLI",
+      "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. Model: Gemini 3.5 Flash (High). YOLO/AFK autonomy with F1-F13 gates.",
+      "version": "1.0.10",
+      "url": "https://aaa.arif-fazil.com/a2a/antigravity",
+      "provider": {
+        "organization": "Google Antigravity team",
+        "url": "https://antigravity.google"
+      },
+      "protocolVersion": "1.0.1",
+      "documentationUrl": "https://aaa.arif-fazil.com/docs/agents/antigravity",
+      "capabilities": {
+        "streaming": true,
+        "pushNotifications": false,
+        "stateTransitionHistory": true
+      },
+      "securitySchemes": {
+        "bearer_auth": {
+          "type": "http",
+          "scheme": "bearer",
+          "bearerFormat": "JWT",
+          "description": "arifOS session token"
+        }
+      },
+      "security": [{"bearer_auth": []}],
+      "defaultInputModes": ["text/plain", "application/json"],
+      "defaultOutputModes": ["text/plain", "application/json"],
+      "skills": [
+        {
+          "id": "agentic-code-execution",
+          "name": "Agentic Code Execution",
+          "description": "Execute terminal commands, compile and test code, and manage local repositories under arifOS F1-F13 governance.",
+          "tags": ["execution", "terminal", "compile", "test", "git"]
+        },
+        {
+          "id": "codebase-navigation",
+          "name": "Codebase Navigation & Editing",
+          "description": "Understand codebase structure, locate symbols, read files, and perform targeted file edits with safety double-checks.",
+          "tags": ["navigation", "editing", "safe-write", "analysis"]
+        }
+      ]
     }
   ]
 }
