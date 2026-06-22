@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Reality Ledger replay."""
-import sys, json
+import sys
+import json
 sys.path.insert(0, '.')
 from core.reality_ledger import replay_ledger, DEFAULT_STORE_PATH
 
