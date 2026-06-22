@@ -419,12 +419,12 @@ def serve_api(host: str = "127.0.0.1", port: int = 18999):
                 print(f"  [API] {args[0]} {args[1]}")
     
     print(f"  AAA HOLD API server at http://{host}:{port}")
-    print(f"  Endpoints:")
-    print(f"    GET  /hold/pending")
-    print(f"    GET  /hold/all")
-    print(f"    GET  /hold/<id>")
-    print(f"    POST /hold/<id>/resolve  (body: decision, note)")
-    print(f"    GET  /veto/board")
+    print("  Endpoints:")
+    print("    GET  /hold/pending")
+    print("    GET  /hold/all")
+    print("    GET  /hold/<id>")
+    print("    POST /hold/<id>/resolve  (body: decision, note)")
+    print("    GET  /veto/board")
     
     server = HTTPServer((host, port), Handler)
     try:
