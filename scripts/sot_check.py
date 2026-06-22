@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Source-of-truth drift check."""
-import json, yaml
+import yaml
 
-with open('ESTATE_MANIFEST.yaml') as f:
+with open('docs/ESTATE_MANIFEST.yaml') as f:
     manifest = yaml.safe_load(f)
 organs = manifest.get('organs', {})
 print(f'  Manifest claims {len(organs)} organs')
