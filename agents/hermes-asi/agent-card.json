@@ -12,10 +12,45 @@
   "provider": {
     "organization": "arifOS Federation",
     "system": "AAA Control Plane + Hermes Runtime",
-    "runtime": "Hermes Agent (Nous Research fork, head 2517917d)"
+    "runtime": "Hermes Agent (Nous Research fork, head 1ec4fcf6, v0.16.0)"
   },
   "version": "3.0.0",
   "supersedes": "1.0.0 (2026-04-29 — maxhermes/hermes-ops peer model deprecated)",
+  "upstream_drift": {
+    "documented_in": "agents/hermes-asi/agent-card.json + IDENTITY.md",
+    "installed": {
+      "commit": "1ec4fcf6",
+      "version": "v0.16.0",
+      "release_tag": "v2026.6.5",
+      "released": "2026-06-05",
+      "source": "/usr/local/lib/hermes-agent/ (Hermes Agent v0.16.0)"
+    },
+    "documented_prior": {
+      "commit": "2517917d",
+      "between_versions": "v0.14.0 (May 16) and v0.15.0 (May 28)",
+      "released": "2026-05-26",
+      "supersedes_this": "metadata only — installed binary was already at v0.16.0"
+    },
+    "upstream_latest": {
+      "commit": "5ff11a68",
+      "version": "v0.17.0",
+      "release_tag": "v2026.6.19",
+      "released": "2026-06-19"
+    },
+    "drift_metrics": {
+      "doc_to_installed_commits": "stale (~10 days)",
+      "installed_to_upstream_main_commits": "behind ~1,476 (v0.16.0 to v0.17.0 delta)",
+      "installed_to_upstream_latest_releases": 1,
+      "days_behind_latest_release": 3
+    },
+    "decision": {
+      "rationale": "Hold at v0.16.0 — installed binary works, F1-F13 binding intact, no urgent security gap verified. v0.17.0 upgrade deferred pending 888_HOLD + staging test.",
+      "supersedes_888_directive": "none — metadata sync is T1 autonomous per AGENTS.md §10"
+    },
+    "changelog_ref": "agents/hermes-asi/releases/upstream-changelog-2026-06-22.md",
+    "audit_completed_by": "FORGE (000Ω)",
+    "audit_at": "2026-06-22"
+  },
   "capabilities": {
     "streaming": true,
     "push_notifications": false,

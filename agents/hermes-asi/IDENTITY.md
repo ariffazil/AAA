@@ -25,7 +25,7 @@ When the proper warga citizen is forged as a standalone runtime agent, I yield t
 
 | Attribute | Value |
 |---|---|
-| Binary | Hermes Agent (Nous Research fork, head 2517917d) |
+| Binary | Hermes Agent (Nous Research fork, head 1ec4fcf6, v0.16.0) |
 | Python | 3.13 venv at `/usr/local/lib/hermes-agent/venv/` |
 | Services | `hermes-asi-gateway.service` (Telegram + LLM) · `hermes-a2a.service` (port 18001) |
 | Config | `/root/HERMES/config.yaml` |
