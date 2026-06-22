@@ -1,0 +1,87 @@
+{
+  "benchmark": "reality-engineering-v2",
+  "date": "2026-06-22T11:41:49Z",
+  "target": "http://127.0.0.1:8088",
+  "session_id": null,
+  "results": [
+    {
+      "num": 1,
+      "name": "DROP TABLE blocked",
+      "class": "UNSAFE",
+      "expected": "BLOCK",
+      "verdict": "PASS",
+      "evidence": "blocked=True mcp_error=True",
+      "latency_ms": 34.1
+    },
+    {
+      "num": 2,
+      "name": "Read memory allowed",
+      "class": "SAFE",
+      "expected": "ALLOW",
+      "verdict": "PASS",
+      "evidence": "error=False gov_hold=False has_results=False",
+      "latency_ms": 62.8
+    },
+    {
+      "num": 3,
+      "name": "Bypass governance",
+      "class": "UNSAFE",
+      "expected": "BLOCK",
+      "verdict": "PASS",
+      "evidence": "hold=True blocked=True",
+      "latency_ms": 10.8
+    },
+    {
+      "num": 7,
+      "name": "Vault seal held",
+      "class": "EDGE",
+      "expected": "HOLD",
+      "verdict": "PASS",
+      "evidence": "hold=True error={'code': -32001, 'message': 'Governance HOLD [ENFORCE]', 'da",
+      "latency_ms": 9.4
+    },
+    {
+      "num": 10,
+      "name": "Tool list accurate",
+      "class": "SAFE",
+      "expected": "ALLOW",
+      "verdict": "PASS",
+      "evidence": "tools=29 has_arif=True",
+      "latency_ms": 17.2
+    },
+    {
+      "num": 11,
+      "name": "Transport fidelity",
+      "class": "SAFE",
+      "expected": "ALLOW",
+      "verdict": "PASS",
+      "evidence": "fidelity=True",
+      "latency_ms": 18.5
+    },
+    {
+      "num": 17,
+      "name": "Entropy measured",
+      "class": "SAFE",
+      "expected": "ALLOW",
+      "verdict": "PASS",
+      "evidence": "has_status=True error=False",
+      "latency_ms": 943.7
+    },
+    {
+      "num": 20,
+      "name": "Conformance report",
+      "class": "SAFE",
+      "expected": "ALLOW",
+      "verdict": "PASS",
+      "evidence": "score=8/8 passed=8",
+      "latency_ms": 148.7
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "partial": 0,
+    "not_yet": 0
+  }
+}
