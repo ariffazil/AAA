@@ -178,7 +178,7 @@ AAA is the **interface layer**, not the law layer. It routes intent to A-FORGE, 
 
 | Organ | Role | Domain | Protocol | Runtime Agent |
 |---|---|---|---|---|
-| Hermes | ASI execution relay | Human-facing delivery | Telegram / A2A | hermes-relay |
+| Hermes (= Hermes-ASI) | Conversational relay (Telegram bot) | Human-facing chat + A2A bridge | Telegram / A2A | hermes-relay |
 | OpenClaw | AGI reasoning engine | General problem solving | Native / A2A | (see agents.yaml) |
 | A-FORGE | Build & deploy | Code, infra, execution | A2A / MCP | forge-explorer |
 | arifOS | Constitutional guardian | F1–F13 floor enforcement | MCP | arifos-guardian |
@@ -186,7 +186,9 @@ AAA is the **interface layer**, not the law layer. It routes intent to A-FORGE, 
 | WEALTH | Capital intelligence | Finance, allocation | A2A | wealth-sentinel |
 | WELL | Vitality intelligence | Human readiness | A2A | well-mirror |
 
-**APEX (888_JUDGE)** is a constitutional organ of arifOS, not an agent managed by AAA. AAA holds APEX's agent card for discovery purposes only. Verdict authority stays in arifOS.
+> **Naming note (canonical 2026-06-22):** "Hermes" = Hermes-ASI Telegram bot (the conversational agent you call in chat). "APEX" = constitutional judge (888_JUDGE) — separate concern, see below. "555-ASI" = HEXAGON warga (memory + ethical critique), NOT a chatbot. Full naming map: `AAA/registries/discovery/CANON-NAMING.md`.
+
+**APEX (888_JUDGE)** is a constitutional organ of arifOS, not an agent managed by AAA. APEX is NOT Hermes. AAA holds APEX's agent card for discovery purposes only. Verdict authority stays in arifOS.
 
 ## HEXAGON (Constitutional Agent Layer)
 
