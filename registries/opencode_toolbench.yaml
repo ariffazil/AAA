@@ -1,3 +1,4 @@
+# DEPRECATED 2026-06-22 — canonical path: registries/tools/builtin.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new edits should land in the new path.
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
 last_forged: '2026-06-16T16:30:00Z'

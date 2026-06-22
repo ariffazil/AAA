@@ -1,0 +1,170 @@
+{
+  "$schema": "https://agent-card.github.io/ai-catalog/schema/v0.1",
+  "catalog_version": "0.1.0-draft",
+  "publisher": {
+    "name": "arifOS Federation",
+    "did": "did:web:aaa.arif-fazil.com",
+    "url": "https://aaa.arif-fazil.com",
+    "governance": "F1-F13 constitutional floors; 888_JUDGE arbitration; VAULT999 audit"
+  },
+  "generated_at": "2026-06-22T05:42:00Z",
+  "generated_by": "FORGE (000Ω) at 888 directive (Arif)",
+  "federation": {
+    "name": "arifOS Federation",
+    "version": "2026.06.22",
+    "constitution": "F1-F13 (13 floors, sealed)",
+    "vault": "VAULT999 (3-layer: local JSONL + Postgres + Supabase)",
+    "discovery_endpoint": "https://aaa.arif-fazil.com/.well-known/",
+    "routing_policy": "https://aaa.arif-fazil.com/.well-known/a2a-routing-policy.json"
+  },
+  "entries": [
+    {
+      "id": "arifos-kernel",
+      "type": "mcp-server",
+      "media_type": "application/vnd.model-context-protocol+json",
+      "name": "arifOS Constitutional Kernel",
+      "description": "F1-F13 floor enforcement; 888 JUDGE; 999 VAULT; session/init/judge/seal/memory/observe",
+      "version": "2026.06.22",
+      "url": "http://localhost:8088/mcp",
+      "public_url": "https://arifos.arif-fazil.com/mcp",
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#arifos",
+      "capabilities": ["session_init", "judge_deliberate", "vault_seal", "memory_recall", "sense_observe"],
+      "tags": ["constitutional-ai", "governance", "audit", "judge", "memory"],
+      "trust_manifest": {
+        "did": "did:web:arifos.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0",
+        "attestation": "F1-F13 floor-test gold records (sealed in VAULT999)"
+      }
+    },
+    {
+      "id": "aforge",
+      "type": "mcp-server",
+      "media_type": "application/vnd.model-context-protocol+json",
+      "name": "A-FORGE Execution Shell",
+      "description": "Build, deploy, orchestrate, intent routing. ADAT AGENTIC enforced.",
+      "version": "0.1.0",
+      "url": "http://localhost:7071/mcp",
+      "public_url": null,
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#aforge",
+      "capabilities": ["forge_plan", "forge_dry_run", "forge_approve", "arif_vault_seal"],
+      "tags": ["execution", "build", "deploy", "forge", "adat"],
+      "trust_manifest": {
+        "did": "did:web:af-forge.local",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "geox",
+      "type": "mcp-server",
+      "media_type": "application/vnd.model-context-protocol+json",
+      "name": "GEOX Earth Intelligence",
+      "description": "Subsurface reasoning: basin, seismic, petrophysics, well log QC, prospect evaluation",
+      "version": "2026.06.22",
+      "url": "http://localhost:8081/mcp",
+      "public_url": "https://geox.arif-fazil.com/mcp",
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#geox",
+      "capabilities": ["basin_resolve", "seismic_compute", "data_ingest_bundle", "prospect_evaluate", "claim_create", "claim_seal"],
+      "tags": ["earth", "geoscience", "petrophysics", "evidence-only", "subsurface"],
+      "trust_manifest": {
+        "did": "did:web:geox.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "wealth",
+      "type": "mcp-server",
+      "media_type": "application/vnd.model-context-protocol+json",
+      "name": "WEALTH Capital Intelligence",
+      "description": "Conservation, flow, entropy, signal, game, boundary, stock analysis. EVIDENCE_ONLY.",
+      "version": "2026.06.22",
+      "url": "http://localhost:18082/mcp",
+      "public_url": "https://wealth.arif-fazil.com/mcp",
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#wealth",
+      "capabilities": ["conservation_check", "flow_check", "compute_emv", "compute_npv", "stock_analysis", "power_audit"],
+      "tags": ["capital", "finance", "evidence-only", "allocation"],
+      "trust_manifest": {
+        "did": "did:web:wealth.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "well",
+      "type": "mcp-server",
+      "media_type": "application/vnd.model-context-protocol+json",
+      "name": "WELL Vitality Intelligence",
+      "description": "Human readiness: sleep, fatigue, metabolism, dignity. REFLECT_ONLY.",
+      "version": "2026.06.22",
+      "url": "http://localhost:18083/mcp",
+      "public_url": "https://well.arif-fazil.com/mcp",
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/mcp-server-card.json#well",
+      "capabilities": ["assess_metabolism", "assess_homeostasis", "validate_vitality", "guard_dignity", "check_repair"],
+      "tags": ["vitality", "human", "readiness", "reflect-only", "dignity"],
+      "trust_manifest": {
+        "did": "did:web:well.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0"
+      }
+    },
+    {
+      "id": "aaa-cockpit",
+      "type": "a2a-agent",
+      "media_type": "application/vnd.a2a-agent-card+json",
+      "name": "AAA Cockpit",
+      "description": "Governed A2A v1.0.0 gateway; React 19 cockpit; agent cards; A2A mesh",
+      "version": "1.0.0",
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
+      "capabilities": ["streaming", "authenticated_extended_card"],
+      "tags": ["a2a", "control-plane", "cockpit", "governance"],
+      "trust_manifest": {
+        "did": "did:web:aaa.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Apache-2.0",
+        "attestation": "13 constitutional warga; A-FORGE broker enforcement"
+      }
+    },
+    {
+      "id": "arif-skills-bundle",
+      "type": "skills-index",
+      "media_type": "application/json",
+      "name": "arifOS Skill Bundle",
+      "description": "57 active skills across constitutional governance, governance substrates, model evaluation, repo-specific geoscience/capital/vitality workflows, and infra ops",
+      "version": "2026.06.22",
+      "url": "https://aaa.arif-fazil.com/.well-known/skills-index.json",
+      "card_ref": "https://aaa.arif-fazil.com/.well-known/skills-index.json",
+      "capabilities": ["skill-discovery"],
+      "tags": ["skills", "agent-skills", "discovery"],
+      "trust_manifest": {
+        "did": "did:web:aaa.arif-fazil.com",
+        "publisher": "ariffazil",
+        "license": "Mixed (Apache-2.0 + MIT per skill)"
+      }
+    }
+  ],
+  "trust_manifest": {
+    "schema": "https://agent-card.github.io/ai-catalog/trust-manifest/v0.1",
+    "did_method": "did:web",
+    "publisher_did": "did:web:aaa.arif-fazil.com",
+    "federation_root": "https://arifos.arif-fazil.com",
+    "audit_trail": "https://aaa.arif-fazil.com/.well-known/arifos.json",
+    "revocation": "VAULT999 seal chain — any entry's hash_chain_id can be verified",
+    "notes": "Trust Manifest is optional per LF spec; provided for AAA Federation completeness. DID resolution via did:web requires TLS-verified HTTPS at the domain root."
+  },
+  "schema_notes": {
+    "media_types_used": [
+      "application/vnd.model-context-protocol+json (MCP servers)",
+      "application/vnd.a2a-agent-card+json (A2A agents)",
+      "application/json (skills index)"
+    ],
+    "future_media_types_planned": [
+      "application/vnd.agntcy.oasf.record+json (OASF, when AGNTCY/dir stabilizes)",
+      "application/vnd.model-context-protocol.prompt+json (MCP prompts, v0.3+)"
+    ],
+    "versioning_policy": "catalog_version follows semver. Entries versioned independently. Breaking schema changes require migration of all entries.",
+    "publishing_policy": "PHASE 1 (this file): canonical source-of-truth in repo, not yet served at /.well-known/. PHASE 4 (awaits 888): Caddy static-route at /.well-known/ai-catalog.json."
+  }
+}

@@ -1,3 +1,4 @@
+# DEPRECATED 2026-06-22 — canonical path: registries/policy/unified_agent_protocol.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new edits should land in the new path.
 $schema: ../schemas/forge_session.schema.json
 DITEMPA_BUKAN_DIBERI: true
 applies_to:

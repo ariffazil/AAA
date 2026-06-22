@@ -1,3 +1,4 @@
+# DEPRECATED 2026-06-22 — canonical path: registries/agents/federation.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new edits should land in the new path.
 agents:
 - 888_hold_scope:
   - rm -rf of unknown dirs, DROP TABLE, volume removal
