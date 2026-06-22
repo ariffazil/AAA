@@ -131,6 +131,17 @@ wiki/scars/*.json
 build/
 dist/
 
+# ── Ephemeral benchmark runs — generated, not source ──
+reports/benchmark-run-*.json
+
+# ── Personal artifacts (family/religious content) — never commit ──
+artifacts/ras-laffan-*
+
+# ── Empty placeholder dirs — remove when populated ──
+ADR/
+constitution/
+registry/
+
 # Secrets — never commit
 .env
 .env.local
