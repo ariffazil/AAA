@@ -7,7 +7,9 @@ Outputs JSON to stdout. No LLM. No hallucination. Pure line parsing.
 SOT: /root/.openclaw/workspace/AAA_HOLDS.md
 State: /root/.openclaw/workspace/.aaa-holds-state.json
 """
-import json, re, sys
+import json
+import re
+import sys
 from pathlib import Path
 
 HOLDS_FILE = Path("/root/.openclaw/workspace/AAA_HOLDS.md")
