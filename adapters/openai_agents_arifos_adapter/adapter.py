@@ -29,10 +29,9 @@ DITEMPA BUKAN DIBERI — Forged, Not Given.
 import json
 import uuid
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 import httpx
-
 
 # ---------------------------------------------------------------------------
 # Constants

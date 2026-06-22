@@ -37,7 +37,6 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 
 from __future__ import annotations
 
-import json
 import sys
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -54,19 +53,15 @@ from core.citation_provenance import (
     CitationProvenanceAuditor,
     EvidenceTier,
 )
-from core.witness_diversity import (
-    SessionWitnessState,
-    WitnessType,
-    DiversityLevel,
-    F3Verdict,
-    pre_forge_witness_gate,
-)
 from core.shadow_audit import (
     ShadowAuditor,
     ShadowAuditResult,
-    SHADOW_THRESHOLDS,
 )
-
+from core.witness_diversity import (
+    SessionWitnessState,
+    WitnessType,
+    pre_forge_witness_gate,
+)
 
 # ── Gate Result ────────────────────────────────────────────────────────────────
 

@@ -12,8 +12,8 @@ Fixes from v1.2.0:
 
 import json
 import sys
-from pathlib import Path
 from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 

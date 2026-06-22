@@ -24,7 +24,6 @@ import sys
 from dataclasses import asdict, dataclass
 from typing import Iterable
 
-
 # F10 ONTOLOGY: 8-cardinality. Order = priority. Do not add a 9th label.
 ORGAN_RULES: list[tuple[str, float, str, str]] = [
     (

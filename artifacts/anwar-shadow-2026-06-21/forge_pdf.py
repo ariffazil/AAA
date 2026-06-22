@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Anwar Ibrahim Persona vs Shadow — PDF Forge."""
-from weasyprint import HTML, CSS
 import markdown
+from weasyprint import HTML
 
 with open("/root/AAA/artifacts/anwar-shadow-2026-06-21/anwar-ibrahim-persona-vs-shadow.md") as f:
     md = f.read()

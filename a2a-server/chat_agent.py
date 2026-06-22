@@ -7,22 +7,22 @@ and casts telemetry data directly to the HarnessTelemetry SQLModel table.
 """
 from __future__ import annotations
 
+import asyncio
+import json
 import os
 import sys
-import json
 import time
-import asyncio
 from datetime import datetime, timezone
 
 # Add sandbox src path to import HarnessTelemetry
 sys.path.append("/root/pydantic-ai-pilot/src")
 
 try:
+    from harness_telemetry import HarnessTelemetry
     from pydantic import ValidationError
-    from sqlmodel import Session, create_engine
     from pydantic_ai import Agent, RunContext
     from pydantic_ai.models.openai import OpenAIModel
-    from harness_telemetry import HarnessTelemetry
+    from sqlmodel import Session, create_engine
 except ImportError as e:
     # Fail closed by outputting import failure as an SSE error frame
     print(f"data: {json.dumps({'type': 'error', 'error': f'ImportError: {e}. Ensure virtualenv is active.'})}\n\n", flush=True)
@@ -47,12 +47,12 @@ async def run_chat(params: dict) -> None:
 
     # Start latency tracking
     start_time = time.time()
-    
+
     # 1. Resolve prompt history
     # Extract system messages and format user messages
     system_prompts = []
     agent_messages = []
-    
+
     for msg in messages:
         role = msg.get("role")
         content = msg.get("content", "")
@@ -61,7 +61,7 @@ async def run_chat(params: dict) -> None:
         else:
             # Simple conversion to pydantic-ai compatible messages
             agent_messages.append((role, content))
-            
+
     # Always include a base system prompt for AAA alignment
     base_system = (
         "You are the AAA Cockpit Assistant. Ground all answers in facts. "
@@ -79,9 +79,9 @@ async def run_chat(params: dict) -> None:
         )
     elif provider == "openrouter":
         api_key = (
-            os.environ.get("OPENWEBUI_API_KEY") or 
-            os.environ.get("DEEPSEEK_API_KEY") or 
-            os.environ.get("NOUS_API_KEY") or 
+            os.environ.get("OPENWEBUI_API_KEY") or
+            os.environ.get("DEEPSEEK_API_KEY") or
+            os.environ.get("NOUS_API_KEY") or
             ""
         )
         model_instance = OpenAIModel(
@@ -128,7 +128,7 @@ async def run_chat(params: dict) -> None:
             if role == "user":
                 latest_user_msg = content
                 break
-        
+
         if not latest_user_msg:
             latest_user_msg = "Hello"
 
@@ -137,7 +137,7 @@ async def run_chat(params: dict) -> None:
             async for chunk in result.stream_text():
                 full_text += chunk
                 emit_sse({"type": "chunk", "content": chunk})
-            
+
             # Fetch usage metrics
             usage = result.usage()
             usage_total = (usage.request_tokens or 0) + (usage.response_tokens or 0)
@@ -161,10 +161,10 @@ async def run_chat(params: dict) -> None:
             epsilon_variance=1e-6,
             timestamp=datetime.now(timezone.utc)
         )
-        
+
         # Explicit validation check to raise ValidationError if fields are out-of-bounds
         telemetry.model_validate(telemetry.model_dump())
-        
+
     except ValidationError as val_err:
         # FAIL CLOSED: Emit validation error directly to the frontend, do not fall back
         emit_sse({"type": "error", "error": f"Pydantic ValidationError: {str(val_err)}"})
@@ -200,21 +200,21 @@ async def run_arifos_completion(
     start_time: float
 ) -> None:
     import httpx
-    
+
     # Construct governed prompt
     governed_prompt = "Conversation transcript:\n\n"
     for m in messages:
         governed_prompt += f"{m.get('role', 'user')}: {m.get('content', '')}\n\n"
-    
+
     arifos_url = os.environ.get("ARIFOS_LOCAL_URL", "http://127.0.0.1:8088")
-    
+
     emit_sse({
         "type": "meta",
         "provider": "arifos",
         "model": "arif_reply_compose",
         "citations": citations
     })
-    
+
     full_text = ""
     try:
         async with httpx.AsyncClient() as client:
@@ -227,23 +227,23 @@ async def run_arifos_completion(
                 },
                 timeout=30.0
             )
-            
+
             if resp.status_code != 200:
                 emit_sse({"type": "error", "error": f"arifOS Error: {resp.text}"})
                 sys.exit(1)
-                
+
             payload = resp.json()
             full_text = payload.get("result", {}).get("composed") or payload.get("result", {}).get("result", {}).get("composed") or ""
-            
+
     except Exception as e:
         emit_sse({"type": "error", "error": f"arifOS Connection Failure: {str(e)}"})
         sys.exit(1)
 
     # Stream the arifos text in a single chunk
     emit_sse({"type": "chunk", "content": full_text})
-    
+
     latency_ms = (time.time() - start_time) * 1000
-    
+
     # Cast to Telemetry Envelope
     try:
         telemetry = HarnessTelemetry(
@@ -285,11 +285,11 @@ if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("data: {'type': 'error', 'error': 'Missing parameters'}\n\n")
         sys.exit(1)
-        
+
     try:
         input_params = json.loads(sys.argv[1])
     except Exception as err:
         print(f"data: {json.dumps({'type': 'error', 'error': f'Invalid JSON params: {err}'})}\n\n")
         sys.exit(1)
-        
+
     asyncio.run(run_chat(input_params))

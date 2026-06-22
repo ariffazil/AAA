@@ -176,7 +176,7 @@ def print_report(aggregate: dict[str, Any]) -> None:
     """Print a human-readable summary to stdout."""
     meta = aggregate["meta"]
     print("=" * 70)
-    print(f"  F1–F13 Floor Benchmark Aggregate Report")
+    print("  F1–F13 Floor Benchmark Aggregate Report")
     print(f"  {meta['suite']}")
     print(f"  Forged: {meta['timestamp']}  |  Version: {meta['version']}")
     print("=" * 70)

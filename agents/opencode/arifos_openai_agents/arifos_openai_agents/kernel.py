@@ -28,11 +28,10 @@ import logging
 from typing import Any, Awaitable, Callable
 
 from arifos_openai_agents.client import ArifOSMCPClient
-from arifos_openai_agents.decision import ActionClass, CognitionLane, Decision
-from arifos_openai_agents.exceptions import ArifDenied, ArifHold, ArifSealMissing
+from arifos_openai_agents.decision import CognitionLane, Decision
+from arifos_openai_agents.exceptions import ArifHold, ArifSealMissing
 from arifos_openai_agents.guards import (
     arifos_posttool,
-    arifos_prethink,
     arifos_pretool,
     arifos_seal,
 )

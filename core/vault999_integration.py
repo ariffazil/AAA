@@ -15,19 +15,21 @@ This creates the AGI loop: predict → act → observe → learn → seal.
 """
 
 import json
-import httpx
-from pathlib import Path
-from datetime import datetime, timezone
-from typing import Optional
 
 # Import Reality Ledger core
 import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Optional
+
+import httpx
+
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core.reality_ledger import (
+    DEFAULT_STORE_PATH,
+    compute_accuracy_stats,
     create_event,
     record_outcome,
-    compute_accuracy_stats,
-    DEFAULT_STORE_PATH,
 )
 
 KERNEL_URL = "http://localhost:8088"
@@ -128,7 +130,7 @@ def predict_seal_observe_learn(
         vault999_receipt=vault999_receipt or "",
         store_path=store_path,
     )
-    
+
     # Step 2: Seal prediction to VAULT999
     seal_payload = json.dumps({
         "event_type": "REALITY_LEDGER_PREDICTION",
@@ -139,16 +141,16 @@ def predict_seal_observe_learn(
         "prediction": event["prediction"],
         "timestamp": event["timestamp"],
     })
-    
+
     seal_result = vault_seal(session_id, seal_payload, actor)
     event["_seal_result"] = seal_result
-    
+
     if seal_result.get("status") in ("OK", "SEAL"):
         # Try to extract receipt from seal response
         receipt = seal_result.get("vault999_receipt") or seal_result.get("result", {}).get("vault999_receipt")
         if receipt:
             event["vault999_receipt"] = receipt
-    
+
     return event
 
 
@@ -179,7 +181,7 @@ def close_loop(
         future_rule=future_rule,
         store_path=store_path,
     )
-    
+
     # Seal outcome to VAULT999
     seal_payload = json.dumps({
         "event_type": "REALITY_LEDGER_OUTCOME",
@@ -189,17 +191,17 @@ def close_loop(
         "lesson": updated.get("lesson", {}),
         "timestamp": datetime.now(timezone.utc).isoformat(),
     })
-    
+
     seal_result = vault_seal(session_id, seal_payload, actor)
     updated["_outcome_seal"] = seal_result
-    
+
     return updated
 
 
 def generate_reality_report(store_path: Path = DEFAULT_STORE_PATH) -> dict:
     """Generate a comprehensive Reality Ledger report with VAULT999 linkage."""
     stats = compute_accuracy_stats(store_path)
-    
+
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "stats": stats,
@@ -209,33 +211,33 @@ def generate_reality_report(store_path: Path = DEFAULT_STORE_PATH) -> dict:
         },
         "recommendations": [],
     }
-    
+
     if stats["without_outcome"] > stats["with_outcome"]:
         report["recommendations"].append(
             f"Close the loop: {stats['without_outcome']} events still awaiting outcome observation"
         )
-    
+
     if stats.get("mean_accuracy") is not None and stats["mean_accuracy"] < 0.7:
         report["recommendations"].append(
             f"Prediction accuracy ({stats['mean_accuracy']:.2f}) below 0.70 threshold"
         )
-    
+
     return report
 
 
 if __name__ == "__main__":
     import sys
-    
+
     print("═══ Reality Ledger + VAULT999 Integration ═══")
     print()
-    
+
     if not ping_kernel():
         print("❌ arifOS kernel unreachable.")
         print("   Start with: systemctl start arifos")
         sys.exit(1)
     print("✅ Kernel reachable")
     print()
-    
+
     # Create a test event
     event = predict_seal_observe_learn(
         actor="forge-reality-test",
@@ -246,17 +248,17 @@ if __name__ == "__main__":
         session_id="SEAL-reality-test",
         failure_modes=["Kernel unreachable", "VAULT999 gated"],
     )
-    
+
     print(f"📝 Event created: {event['id']}")
     print(f"   Prediction: {event['prediction']['expected_outcome']}")
     print(f"   Confidence: {event['prediction']['confidence']}")
-    
+
     seal_status = event.get("_seal_result", {}).get("status", "UNKNOWN")
     print(f"🔒 VAULT999 seal: {seal_status}")
-    
+
     if event.get("vault999_receipt"):
         print(f"   Receipt: {event['vault999_receipt'][:40]}...")
-    
+
     # Close the loop
     if seal_status in ("OK", "SEAL"):
         updated = close_loop(
@@ -270,11 +272,11 @@ if __name__ == "__main__":
         )
         outcome_seal = updated.get("_outcome_seal", {}).get("status", "UNKNOWN")
         print(f"🔒 Outcome seal: {outcome_seal}")
-    
+
     # Report
     report = generate_reality_report()
     print(f"\n📊 Report: {report['stats']['total_events']} total events")
     print(f"   With outcome: {report['stats']['with_outcome']}")
     print(f"   Mean accuracy: {report['stats'].get('mean_accuracy', 'N/A')}")
-    
+
     print("\n✅ Integration test complete")

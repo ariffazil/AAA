@@ -28,9 +28,8 @@ import hashlib
 import json
 import re
 import sys
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from typing import Any
-
 
 SCHEMA_VERSION = "2.0.0"
 ALL_FLOORS = [f"F{i}" for i in range(1, 14)]
