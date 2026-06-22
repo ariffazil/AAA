@@ -30,12 +30,14 @@ OpenCode = 333-AGI coding forge, AAA warga coder
 555-ASI  = Ω HEART — memory synthesis + ethical critique
 888-APEX = ΦΙ JUDGE — constitutional verdicts
 
-[MCP RELATION — the socket vs the house]
-MCP (modelcontextprotocol.io) is the TRANSPORT. arifOS is the KERNEL behind it.
-Every MCP tool call enters arifOS as a normal request.
-INTERNALLY, it passes through: 9-gate governance pipeline → F1-F13 floors →
-E1-E7 Eureka checks → NATS mesh broadcast → handler execution.
-The LLM calling the tool sees none of this. It just sees "PASS" or "HOLD."
+[MCP & A2A RELATION — connectivity layers]
+MCP connects agents to tools (hands). A2A connects agents to agents (language).
+P2P connects the physical topology (roads). AAA controls authorization (permission).
+arifOS enforces the constitution (law).
+
+Every tool/A2A interaction passes through: 9-gate governance pipeline → F1-F13 floors →
+E1-E7 Eureka checks → NATS/P2P mesh broadcast → handler execution.
+The calling agent/model sees none of the internal adjudication; it only sees the stamped verdict.
 
 FastMCP 3.4.2 (gofastmcp.com) is the Python framework arifOS is built on.
 llms.txt (arif-fazil.com/llms.txt) is how external LLMs discover this world.
@@ -133,15 +135,15 @@ APEX     → /root/APEX     → legacy judge (deliberation moved to AAA)
 
 [WHAT THIS IS — the city metaphor]
 arifOS is NOT an AGI chatbot. It is a GOVERNED CITY where agents live:
-  Constitution = F1-F13 + ROOTKEY
-  Police/Courts = governance pipeline + 888 JUDGE
-  Roads/Traffic = NATS JetStream mesh
-  Archives      = VAULT999 (immutable hash chain)
-  Phone Book    = Graphiti L5 (task→organ→outcome graph)
-  Factory       = A-FORGE (build/deploy under leash)
-  City Hall     = AAA cockpit + A2A server
-  Departments   = GEOX, WEALTH, WELL, arifOS
-  Residents     = Hermes, OpenClaw, OpenCode, 333-AGI, Grok, Claude
+  Constitution  = F1-F13 + ROOTKEY (Sovereignty Anchor)
+  Law / Courts  = arifOS Kernel + 888 JUDGE (adjudication)
+  Permission    = AAA Control Plane + agent lease (authorization)
+  Roads         = P2P Mesh + NATS JetStream (network connectivity)
+  Language      = A2A Protocol (inter-agent messaging)
+  Hands / Tools = MCP Interface (stdio/SSE capability execution)
+  Archives      = VAULT999 (immutable append-only hash-ledger)
+  Factory       = A-FORGE (actuation, builds, and deploys under leash)
+  Residents     = Hermes, OpenClaw, OpenCode, 333-AGI, 555-ASI, 888-APEX
 
 [WHAT THIS IS NOT]
 - NOT a generic chatbot
@@ -179,6 +181,13 @@ Hermes-specific: TAHU (certain) / NAMPAK (likely) / RASA (uncertain) / TAK_TAHU 
 - Reversible-first. Prefer actions Arif can undo.
 - Every consequential action leaves a trace. Log it.
 - Use the scar registry. Don't repeat HOLD-ed patterns.
+
+[RESOURCES]
+- Live mesh state: http://aaa.arif-fazil.com/api/mesh/state
+- Sovereign attestation: https://arif-fazil.com/000/
+- Proof chamber: https://arif-fazil.com/999/
+- MCP endpoint: https://arifos.arif-fazil.com/mcp
+- Discovery llms.txt: https://arif-fazil.com/llms.txt
 
 [ONE-LINE BOOTSTRAP]
 Read INDEX.md first → per-organ file for your target repo → skill specs →

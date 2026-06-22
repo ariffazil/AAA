@@ -585,4 +585,44 @@ agents:
   - Emit witness receipts
   - Verify process table
   witness_ledger: /root/VAULT999/witness/777-forge-spawns.jsonl
+- a2a_exposure: authenticated
+  allowed_peers:
+  - 777-forge
+  - aaa-gateway
+  - hermes-asi
+  - claude-code
+  - maxhermes
+  allowed_servers:
+  - arifosmcp
+  - geox-mcp
+  - wealth-mcp
+  - well-mcp
+  - github-official
+  - serena
+  - repomapper
+  allowed_skills:
+  - arifos-memory
+  - arifos-mcp-federation
+  - arifos-governance
+  allowed_tools:
+  - terminal
+  - file_read
+  - file_write
+  authority_level: sovereign-delegate
+  description: 'Antigravity CLI: Agentic Coding Assistant. Primary coding agent — EDIT and EXECUTE class. Brings the core capabilities of Antigravity 2.0 (multi-step reasoning, multi-file editing, tool calling) directly to the terminal, optimized for speed, keyboard-first workflows, and remote SSH sessions.'
+  host_binding: gemini-cli
+  id: antigravity
+  intelligence_band: AGI
+  intelligence_tier: AGI
+  name: Antigravity CLI
+  risk_tier: medium
+  role: agentic-executor
+  runtime:
+    context_budget: 200000
+    model: google/gemini + anthropic/claude (hybrid)
+    temperature: 0
+    transport: CLI_SHELL
+  separation_of_duties:
+    cannot_self_seal: true
+    requires_distinct_approver_for_high_risk: true
 version: 1

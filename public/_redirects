@@ -1,12 +1,14 @@
 # Cloudflare Pages Redirects Configuration
+# Ensure llms.json and llms.txt are served directly
 
-# Static assets — must come BEFORE the SPA catch-all or Cloudflare Pages
-# serves index.html for every asset request (confirmed white-screen bug 2026-05-15)
-/assets/*    /assets/:splat    200
-
-# Direct file serve for LLM discovery
 /llms.txt    /llms.txt    200
 /llms.json   /llms.json   200
 
-# SPA fallback for React Router (client-side routes only)
+# SPA fallback for React Router
 /*    /index.html   200
+
+# NOTE: Domain-level redirect (arif.fazil → arif-fazil.com) is NOT possible
+# from this file — _redirects handles path-level only. The proper fix is at
+# the registrar (Namecheap/Porkbun/etc.) or via a Cloudflare Worker that
+# inspects request.host. The SPA itself has a JS guard in index.html that
+# detects window.location.hostname === 'arif.fazil' and redirects.

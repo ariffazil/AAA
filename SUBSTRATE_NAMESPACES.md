@@ -193,7 +193,7 @@ A tool that fails this check is rejected at registration time.
 ## 6. References
 
 - `arifOS/AGENTS.md` "Namespace ruling (F13 SOVEREIGN 2026-06-14)" — authoritative canon
-- `/root/AAA/REPO_AUTHORITY_MATRIX.md` — per-organ authority
+- `/root/AAA/FEDERATION_CONTRACT.md` — per-organ authority and matrix
 - `/root/AAA/schemas/agent_card.schema.json` — namespace_scope in agent cards
 - `/root/arifOS/arifosmcp/arifos_policy/rego/tool_policy.rego` — OPA namespace policy
 - `/root/arifOS/arifosmcp/arifos_registry/mcp_tool_registry.py` — tool manifest

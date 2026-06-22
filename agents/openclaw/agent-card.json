@@ -91,6 +91,22 @@
     }
   ],
   "supports_authenticated_extended_card": false,
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/openclaw/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "MUTATE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/openclaw/art_binding.yaml"
+    }
+  },
   "openclaw_binding": {
     "gateway_target": "openclaw-gateway",
     "bridge_ref": "hermes-a2a.py /opt/arifOS/a2a-adapters/hermes-a2a.py",
