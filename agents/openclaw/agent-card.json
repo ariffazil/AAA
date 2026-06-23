@@ -1,7 +1,13 @@
 {
-  "protocol_version": "1.0.0",
+  "$schema": "arifOS/agent-card/v2.0.0",
   "id": "openclaw",
   "name": "OpenClaw Gateway",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Native A2A agent \u2014 runtime owns itself",
+    "principle_origin": "Self-owned runtime, governed by F1-F13"
+  },
+  "protocol_version": "1.0.0",
   "description": "Live multi-agent gateway hosting main, opencode, codex, and kimi personas. WebSocket-native execution engine for Telegram @AGI_ASI_bot, web search, browser automation, shell execution, and ACP bridges to federation organs.",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
   "preferred_transport": "jsonrpc-https",
@@ -35,12 +41,42 @@
     }
   ],
   "security": [
-    ["openclaw-gateway-password"],
-    ["aaa-a2a-bearer"]
+    [
+      "openclaw-gateway-password"
+    ],
+    [
+      "aaa-a2a-bearer"
+    ]
   ],
-  "default_input_modes": ["text/plain", "application/json"],
-  "default_output_modes": ["text/plain", "application/json"],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
   "skills": [
+    {
+      "id": "role-binding-gateway",
+      "name": "Gateway Role Binding (OpenClaw)",
+      "description": "Polymorphic gateway binding for subagent orchestration and execution handoff. Loads openclaw-doctor-recipes, mcp-boot-failure-diagnosis, kanban-playbook, arif-federation-ops. References contracts/hermes-role-binding.md and AAA_SKILL_BINDING.md. F1, F4, F11 enforced.",
+      "tags": [
+        "role-binding",
+        "openclaw",
+        "gateway",
+        "subagent",
+        "F11"
+      ],
+      "floor_scope": [
+        "F01",
+        "F04",
+        "F11"
+      ],
+      "approval_policy": "auto (per task) + 888 for T3",
+      "reversibility_class": "reversible",
+      "binding_state": "LEASED (gateway execution)"
+    },
     {
       "id": "gateway-routing",
       "name": "Gateway Routing",
@@ -88,6 +124,92 @@
       "name": "Status Query",
       "description": "Read-only gateway, agent, and session status retrieval",
       "approval_policy": "none"
+    },
+    {
+      "id": "openclaw-doctor-recipes",
+      "name": "OpenClaw Doctor Recipes",
+      "description": "Fix common OpenClaw gateway health issues \u2014 model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
+      "tags": [
+        "doctor",
+        "MCP",
+        "Telegram",
+        "drift",
+        "recovery"
+      ],
+      "examples": [
+        "Fix 'M3 not found' model-registry drift",
+        "Recover Telegram webhook 404 after Caddy reload",
+        "Clear orphan transcript cache"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "mcp-boot-failure-diagnosis",
+      "name": "MCP Boot Failure Diagnosis",
+      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports \u2014 distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
+      "tags": [
+        "MCP",
+        "boot",
+        "diagnosis",
+        "transport"
+      ],
+      "examples": [
+        "Distinguish stdio false-negative from SSE handshake failure",
+        "Diagnose playwright dead + agentmail not connecting"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif-federation-ops",
+      "name": "arif Federation Ops",
+      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "tags": [
+        "federation",
+        "topology",
+        "ops",
+        "ports"
+      ],
+      "examples": [
+        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 for routing decisions",
+        "Trace a Telegram request through the gateway to its organ"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "kanban-playbook",
+      "name": "Kanban Playbook",
+      "description": "Hermes Kanban dispatcher \u2014 both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
+      "tags": [
+        "kanban",
+        "dispatcher",
+        "orchestrator",
+        "worker"
+      ],
+      "examples": [
+        "Decompose task into worker lanes with capability_mode",
+        "Recover from worker timeout with retry chain"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     }
   ],
   "supports_authenticated_extended_card": false,
