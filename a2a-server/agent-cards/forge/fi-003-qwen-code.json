@@ -7,7 +7,11 @@
   "config_path": "/root/.qwen/settings.json",
   "model": "MiniMax-M3 (api.minimax.io/v1)",
   "context_window": 1000000,
-  "modalities": ["text", "image", "video"],
+  "modalities": [
+    "text",
+    "image",
+    "video"
+  ],
   "mcp_servers": [
     "arifOS (127.0.0.1:8088/mcp)",
     "GEOX (127.0.0.1:8081/mcp)",
@@ -35,7 +39,11 @@
     "arif_heart_critique"
   ],
   "autonomy_lease": {
-    "scope": ["observe", "reason", "draft"],
+    "scope": [
+      "observe",
+      "reason",
+      "draft"
+    ],
     "ttl_seconds": 3600,
     "cannot_delegate": true,
     "cannot_expand_scope": true
@@ -63,5 +71,23 @@
     "Permissions heavily restricted: Bash(cat *), Bash(ps *), Bash(curl *) — no mutation",
     "Qwen is Arif's preferred lightweight agent for reasoning and exploration",
     "AAA upgrade: MCP servers added to config, federation init wrapper created"
-  ]
+  ],
+  "_deprecated_mcp_servers": [
+    "arifOS (127.0.0.1:8088/mcp)",
+    "GEOX (127.0.0.1:8081/mcp)",
+    "WEALTH (127.0.0.1:18082/mcp)",
+    "WELL (127.0.0.1:18083/mcp)",
+    "A-FORGE (127.0.0.1:7071/mcp)"
+  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "consumed_from": [
+      "arifos",
+      "geox",
+      "wealth",
+      "well",
+      "aforge"
+    ],
+    "endpoints": []
+  }
 }
