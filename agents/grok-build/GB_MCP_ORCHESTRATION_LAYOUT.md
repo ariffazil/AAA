@@ -143,9 +143,11 @@ We adopt the good ideas (narrow per-boundary, allowed_tools as primary knob, des
 
 See also:
 - agents/grok-build/AGENTS.md + TOOLS.md (updated)
+- A-FORGE/services/grok-build-mcp/mcp_arifos_kernel.py (the clean transport of arifOS kernel)
 - /root/AAA/skills/arifos-mcp-federation/SKILL.md
 - A-FORGE contracts/mcp_surface.yaml + src/interfaces/mcp
 - AAA contracts/AAA_SKILL_BINDING.md + mcp_surface.yaml
+- arifOS/arifosmcp/kernel_mcp.py (internal reference narrow kernel surface)
 
 ## 9. Hybrid Pattern with xAI Multi-Agent (grok-4.20-multi-agent)
 
@@ -162,6 +164,7 @@ See also:
 | Planning & Routing | Regular Grok (Grok Build harness) | gb-federation-router + arifos-mcp-federation skill + mcp-repo-read + mcp-memory | Plan (editable) → narrow MCPs |
 | Execution & Change | Regular Grok + Custom MCP | mcp-repo-read (read), A-FORGE leases (change/exec), mcp-memory (reflection) | Lease receipt + telemetry → arifOS 888 if T3 |
 | Reflection/Closure | Grok Build + Hermes | mcp-memory (Cooling Ledger, Dream), A2A handoff | Write to Cooling Ledger / Dream Engine via arifOS |
+| Kernel / Governance depth | Grok Build | **mcp-arifos-kernel** (new 2026-06-23) + check_floors / submit_for_judgment / get_rhythm_context / record_malam | Direct low-entropy kernel health + daily rhythm. Always HOLD on judgment. |
 
 **Handoff mechanism:** Use A2A mesh (AAA) or simple file/VAULT drop of research artifacts into mcp-memory / repo context. Grok Build planner decides when to invoke external multi-agent (via tool that calls xAI API) vs stay in sovereign MCP loop.
 

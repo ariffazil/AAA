@@ -25,6 +25,12 @@ It is **not** a persistent daemon (like hermes-asi or openclaw). It is launched 
 
 ## Tool & MCP Surface (Honest Declaration)
 
+**Narrow sovereign MCPs (preferred for arifOS kernel + federation work):**
+- mcp-arifos-kernel (stdio): get_kernel_health, check_floors, get_rhythm_context, submit_for_judgment (gated), record_malam_reflection, entropy, recall. This is the clean transport of arifOS kernel.
+- mcp-repo-read, mcp-memory (with rhythm + cooling), gb-federation-router, mcp-repo-write (gated).
+
+Use these + arifos-mcp-federation skill before touching full arifOS MCP. Reduces blast radius and entropy.
+
 Native:
 - read_file, search_replace, list_dir, grep (ripgrep full)
 - run_terminal_command (full bash + background), monitor (stream), scheduler (recurring), kill
