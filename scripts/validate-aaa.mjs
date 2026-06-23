@@ -203,6 +203,62 @@ ensureUniqueIds(topologyEdges, "org_topology_edges", errors);
 ensureUniqueIds(decisions, "decision_records", errors);
 ensureUniqueIds(vaultExports, "vault_exports", errors);
 
+// ── v2.1.0 Protocol Surface Validation ──────────────────────────────────────
+// Scans all JSON cards in a2a-server/agent-cards/ (recursive) and enforces
+// the three invariants from schemas/agent-card-v2.1.0.schema.json.
+// Added 2026-06-23 — 888_HOLD gated.
+
+function validateProtocolSurfaceV210(card, ownerId, cardErrors) {
+  const gp = card.governance_profile || card.governance || {};
+
+  // INV-001: Only arifos may have self_approval_forbidden: false
+  if (gp.self_approval_forbidden === false && ownerId !== "arifos") {
+    cardErrors.push(
+      `${ownerId}: INV-001 violation — self_approval_forbidden may only be false for arifos (constitutional kernel)`
+    );
+  }
+
+  // INV-002: HEXAGON primary roles must declare warga_boundary: true
+  if (card.a2a_role === "primary" && gp.warga_boundary === false) {
+    cardErrors.push(
+      `${ownerId}: INV-002 violation — a2a_role 'primary' requires warga_boundary: true (HEXAGON citizens)`
+    );
+  }
+
+  // INV-003: Deprecation warning — mcp_servers without mcp_surface
+  if (card.mcp_servers && !card.mcp_surface) {
+    console.warn(
+      `[WARN] ${ownerId}: mcp_servers is deprecated — migrate to mcp_surface (schema v2.1.0)`
+    );
+  }
+}
+
+// Scan all card files recursively under a2a-server/agent-cards/
+function* walkCardsDir(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      yield* walkCardsDir(full);
+    } else if (entry.name.endsWith(".json")) {
+      yield full;
+    }
+  }
+}
+
+const cardsDir = path.join(root, "a2a-server", "agent-cards");
+if (fs.existsSync(cardsDir)) {
+  for (const cardPath of walkCardsDir(cardsDir)) {
+    try {
+      const card = JSON.parse(fs.readFileSync(cardPath, "utf8"));
+      const ownerId = card.id || card.identity?.organId || path.basename(cardPath, ".json");
+      validateProtocolSurfaceV210(card, ownerId, errors);
+    } catch (e) {
+      errors.push(`agent-card ${cardPath}: invalid JSON — ${e.message}`);
+    }
+  }
+}
+// ── end v2.1.0 Protocol Surface Validation ───────────────────────────────────
+
 const agentIds = new Set(agents.map((item) => item.id));
 const bundleIds = new Set(bundles.map((item) => item.id));
 const domainIds = new Set(domains.map((item) => item.id));
