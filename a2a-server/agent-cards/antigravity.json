@@ -64,16 +64,9 @@
   ],
   "_deprecated_mcp_servers": ["arifos", "geox", "wealth", "well", "aforge"],
   "mcp_surface": {
-    "role": "consumer",
-    "consumes": [
-      { "id": "arifos", "endpoint": "https://arifos.arif-fazil.com/mcp", "key_lanes": ["governance", "judgment", "routing", "vault"] },
-      { "id": "geox",   "endpoint": "https://geox.arif-fazil.com/mcp",   "key_lanes": ["evidence", "seismic", "petrophysics"] },
-      { "id": "wealth", "endpoint": "https://wealth.arif-fazil.com/mcp", "key_lanes": ["npv", "irr", "emv", "stock"] },
-      { "id": "well",   "endpoint": "https://well.arif-fazil.com/mcp",   "key_lanes": ["vitality", "readiness", "dignity"] },
-      { "id": "aforge", "endpoint": "https://forge.arif-fazil.com/mcp",  "key_lanes": ["build", "execute", "plan", "deploy"] }
-    ],
-    "exposes": [],
-    "gate_mode": "constitutional"
+    "type": "consumed",
+    "consumed_from": ["arifos", "geox", "wealth", "well", "aforge"],
+    "endpoints": []
   },
   "subAgentPolicy": {
     "default": "888_HOLD",
@@ -248,49 +241,17 @@
       ]
     }
   ],
-  "supported_protocols": {
-    "a2a": {
-      "version": "1.0.0",
-      "endpoint": "https://aaa.arif-fazil.com/a2a/antigravity",
-      "transport": "jsonrpc-https",
-      "streaming": true,
-      "role": "peer"
-    },
-    "mcp": {
-      "version": "1.0.0-FORGED",
-      "transport": "streamable-http",
-      "role": "consumer",
-      "note": "Native MCP client — 5 federation organs + github via 6 connected MCP servers"
-    }
-  },
-  "a2a_role": {
-    "mesh_role": "peer",
-    "functional_class": "harness",
-    "warga_status": "attested",
-    "warga_class": "FI",
-    "warga_verified_by": "arifOS",
-    "warga_verified_at": "2026-06-14T18:08:00Z",
-    "hexagon_ring": null,
-    "note": "Google Antigravity CLI (agy). Model-agnostic harness — Claude/Gemini/etc as principal."
-  },
+  "supported_protocols": ["a2a", "mcp"],
+  "a2a_role": "forge_instrument",
   "governance_profile": {
-    "constitutional_floors": {
-      "hard": ["F1", "F2", "F7", "F9", "F10", "F11", "F12", "F13"],
-      "soft": [],
-      "derived": ["F3", "F8"]
-    },
-    "verdict_authority": "888-APEX",
-    "vault": "VAULT999",
+    "constitutional_floors": ["F1", "F2", "F4", "F7", "F8", "F11", "F13"],
+    "verdict_authority": "888_JUDGE|arifOS",
     "self_approval_forbidden": true,
-    "irreversible_requires_human": true,
-    "sovereignty_tier": "delegated",
-    "principal_type": "llm",
-    "hold_triggers": [
-      "production_deploy_without_test",
-      "git_force_push",
-      "secret_rotation",
-      "DROP_TABLE",
-      "cross_organ_architecture_change"
-    ]
+    "subagent_default_hold": "888_HOLD",
+    "warga_boundary": false,
+    "vault": "VAULT999",
+    "functional_class": "harness",
+    "mesh_role": "harness",
+    "requires_human_for": ["irreversible", "F13_touch"]
   }
 }
