@@ -67,55 +67,22 @@
     "expiresAt": "2026-07-12T12:00:00Z",
     "heartbeatTtlSec": 60
   },
-  "supported_protocols": {
-    "a2a": {
-      "version": "1.0.0",
-      "endpoint": "http://127.0.0.1:18001",
-      "transport": "jsonrpc-http",
-      "streaming": true,
-      "role": "peer"
-    },
-    "mcp": {
-      "version": "3.4.2",
-      "transport": "streamable-http",
-      "endpoint": "http://127.0.0.1:8088/mcp",
-      "role": "server",
-      "note": "Constitutional kernel — 13 canonical tools across governance, judgment, routing, vault, memory lanes"
-    }
-  },
-  "a2a_role": {
-    "mesh_role": "peer",
-    "functional_class": "organ",
-    "warga_status": "attested",
-    "warga_class": "ORGAN",
-    "warga_verified_by": "self",
-    "hexagon_ring": null,
-    "note": "Constitutional kernel. Issues SEAL/HOLD/VOID. Governs all other organs. Only organ that may self-verify."
-  },
+  "supported_protocols": ["a2a", "mcp"],
+  "a2a_role": "organ",
   "mcp_surface": {
-    "role": "server",
-    "exposes": [
-      { "lane": "governance", "tools": ["arif_session_init", "arif_sense_observe", "arif_mind_reason"] },
-      { "lane": "judgment",   "tools": ["arif_judge_deliberate"] },
-      { "lane": "vault",      "tools": ["arif_seal_vault"] },
-      { "lane": "routing",    "tools": ["arif_route", "arif_triage"] },
-      { "lane": "memory",     "tools": ["arif_memory"] }
-    ],
-    "consumes": [],
-    "gate_mode": "constitutional"
+    "type": "exposed",
+    "endpoints": [
+      { "url": "http://127.0.0.1:8088/mcp", "tool_count": 13, "key_lanes": ["governance", "judge", "route", "seal", "forge"], "version": "a2a.v1" }
+    ]
   },
   "governance_profile": {
-    "constitutional_floors": {
-      "hard": ["F1", "F2", "F3", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
-      "soft": ["F5", "F6"],
-      "derived": []
-    },
-    "verdict_authority": "self",
-    "vault": "VAULT999",
+    "constitutional_floors": ["F1", "F2", "F3", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
+    "verdict_authority": "888_JUDGE|arifOS",
     "self_approval_forbidden": false,
-    "irreversible_requires_human": true,
-    "sovereignty_tier": "constitutional",
-    "principal_type": "kernel",
-    "note": "Only organ permitted to issue SEAL/HOLD/VOID and set self_approval_forbidden: false. INV-001 exemption."
+    "warga_boundary": false,
+    "vault": "VAULT999",
+    "functional_class": "kernel",
+    "requires_human_for": ["irreversible"],
+    "_inv001_note": "Only arifos may set self_approval_forbidden: false — INV-001 exemption"
   }
 }
