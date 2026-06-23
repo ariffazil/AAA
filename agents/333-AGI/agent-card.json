@@ -1,5 +1,12 @@
 {
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "333-AGI",
   "name": "333-AGI",
+  "principal_agent": {
+    "type": "architect",
+    "category": "Constitutional architecture (the constitution itself is the principal)",
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+  },
   "description": "The Reasoner (\u0394 MIND). Primary federation agent \u2014 general intelligence class. Reasons across multi-domain evidence, generates hypotheses, decomposes queries, and produces draft analyses. Hosts on arifOS core with GEOX (geoscience) and WEALTH (finance) substrates. All outputs are DRAFT until ratified by 888-APEX and validated by A-AUDIT.",
   "version": "2.0.0",
   "url": "http://127.0.0.1:18789/a2a",
@@ -47,6 +54,28 @@
     "text/plain"
   ],
   "skills": [
+    {
+      "id": "role-binding-delta",
+      "name": "\u0394 MIND Role Binding (333-AGI)",
+      "description": "Hermes polymorphic binding to 333-AGI (reason + evidence synthesis + federation routing). Loads arifos-mcp-federation, arifos-agent-landscape, arifos-paradox-engine. One runtime. See contracts/hermes-role-binding.md. F2, F3, F4, F11 enforced.",
+      "tags": [
+        "role-binding",
+        "333-AGI",
+        "delta",
+        "reasoning",
+        "federation",
+        "F4",
+        "F11"
+      ],
+      "floor_scope": [
+        "F02",
+        "F03",
+        "F04",
+        "F11"
+      ],
+      "approval_policy": "auto (role intent)",
+      "reversibility_class": "reversible"
+    },
     {
       "id": "evidence-reasoning",
       "name": "Evidence Reasoning",
@@ -107,6 +136,95 @@
         "Design the QC pipeline for a new well log bundle"
       ],
       "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arifos-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, AAA, external APIs). \u0394 axis primary. LEASED.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "examples": [
+        "Sequence GEOX seismic + WEALTH NPV for prospect eval",
+        "Route WELL readiness check before A-FORGE execution",
+        "Define fallback when Qdrant returns DEGRADED"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "sequential-thinking-hermes",
+      "name": "Sequential Thinking (Hermes)",
+      "description": "Real sequential thinking \u2014 step-by-step reasoning with revision, branching, and verification. Reasoning backbone for complex analysis, coding, debugging, diagnosis, planning. NOT optional. F4, F8 enforced. ACTIVE.",
+      "tags": [
+        "reasoning",
+        "sequential",
+        "backbone",
+        "F4",
+        "F8"
+      ],
+      "examples": [
+        "Reason through a 10-step diagnostic with revision branches",
+        "Verify each step before moving to next"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "fff-loop-protocol",
+      "name": "FFF Loop Protocol (Light)",
+      "description": "Light variant of 5-pass recursive audit \u2014 emit diagnosis, attack, fix, verify, seal. Use when full FFF overkill but reasoning needs adversarial pressure. \u0394 axis. LEASED.",
+      "tags": [
+        "audit",
+        "recursive",
+        "light",
+        "F4",
+        "F8"
+      ],
+      "examples": [
+        "Light FFF on a draft analysis before submission",
+        "Adversarial pressure on hypothesis generation"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arifos-paradox-engine",
+      "name": "arifOS Paradox Engine",
+      "description": "Constitutional perception pipeline \u2014 ingest narrative, extract frame geometry, detect paradox tensions. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. \u0394 axis primary. F11, F13 gated.",
+      "tags": [
+        "paradox",
+        "perception",
+        "geometry",
+        "\u0394"
+      ],
+      "examples": [
+        "Ingest news, extract frame, detect paradox",
+        "Score shadow/meaning_leak on a draft"
+      ],
+      "inputModes": [
+        "application/json",
         "text/plain"
       ],
       "outputModes": [

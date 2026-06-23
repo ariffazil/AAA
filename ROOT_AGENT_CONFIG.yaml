@@ -168,7 +168,7 @@ forge_instruments:
     resolved_binary: /root/.npm-global/bin/opencode
     version: "1.17.8"
     model: tokenplan-mimo/mimo-v2.5-pro
-    small_model: tokenplan-mimo/mimo-v2.5
+    small_model: azure-openai/gpt-4.1-mini
     native_mcp: true
     mcp_count: 20
     mcp_servers:
