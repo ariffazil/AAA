@@ -1,303 +1,484 @@
 {
-  "protocol_version": "1.0.0",
+  "$schema": "arifOS/agent-card/v2.0.0",
   "id": "hermes-asi",
   "name": "Hermes ASI",
-  "description": "ASI-tier deliberative relay + autonomous governed execution layer. Reasons, routes, narrates, and executes T1 work autonomously while keeping F1-F13 as a non-bypassable floor. NOT the judge (APEX is). NOT the executor muscle (OPENCLAW is). NOT the sealer (arifOS VAULT999 + 888_JUDGE are). Routes Earth tasks to GEOX, capital to WEALTH, substrate to WELL, execution to OPENCLAW, and constitutional verdicts to APEX PRIME.",
-  "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
-  "preferred_transport": "jsonrpc-https",
-  "additional_interfaces": [
-    {
-      "transport": "sse",
-      "url": "https://aaa.arif-fazil.com/a2a/hermes-asi/events"
-    }
-  ],
-  "provider": {
-    "organization": "arifOS",
-    "system": "AAA",
-    "organ": "Hermes-ASI",
-    "sub_role": "Autonomous Governed Execution (ASI)",
-    "tier": "ASI",
-    "execution_band": "deliberation_routing_governed_execution"
+  "principal_agent": {
+    "type": "agent",
+    "category": "Native A2A agent \u2014 runtime owns itself",
+    "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "version": "1.2.0",
-  "version_history": {
-    "1.0.0": "Initial spec (relay-only)",
-    "1.1.0": "Added APEX verdict narration skill",
-    "1.2.0": "Reclaimed as autonomous governed execution per HERMES_GOVERNED_EXECUTION.md contract (2026-06-07)"
+  "description": "ASI sovereign relay \u2014 Telegram human interface + A2A mesh bridge + constitutional execution spine for 888. Full-stack agentic runtime with 17 toolsets, 130+ skills, 5 model providers, L1-L6 tiered memory, multimodal I/O. Primary surface for all human-agent interaction in the arifOS federation.",
+  "motto": "DITEMPA BUKAN DIBERI",
+  "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
+  "forged": "2026-06-13T06:00:00+08:00",
+  "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
+  "agent_card_url": "https://mcp.arif-fazil.com/.well-known/agent-card-hermes-asi.json",
+  "preferred_transport": "jsonrpc-http",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA Control Plane + Hermes Runtime",
+    "runtime": "Hermes Agent (Nous Research fork, head 1ec4fcf6, v0.16.0)"
+  },
+  "version": "3.0.0",
+  "supersedes": "1.0.0 (2026-04-29 \u2014 maxhermes/hermes-ops peer model deprecated)",
+  "upstream_drift": {
+    "documented_in": "agents/hermes-asi/agent-card.json + IDENTITY.md",
+    "installed": {
+      "commit": "1ec4fcf6",
+      "version": "v0.16.0",
+      "release_tag": "v2026.6.5",
+      "released": "2026-06-05",
+      "source": "/usr/local/lib/hermes-agent/ (Hermes Agent v0.16.0)"
+    },
+    "documented_prior": {
+      "commit": "2517917d",
+      "between_versions": "v0.14.0 (May 16) and v0.15.0 (May 28)",
+      "released": "2026-05-26",
+      "supersedes_this": "metadata only \u2014 installed binary was already at v0.16.0"
+    },
+    "upstream_latest": {
+      "commit": "5ff11a68",
+      "version": "v0.17.0",
+      "release_tag": "v2026.6.19",
+      "released": "2026-06-19"
+    },
+    "drift_metrics": {
+      "doc_to_installed_commits": "stale (~10 days)",
+      "installed_to_upstream_main_commits": "behind ~1,476 (v0.16.0 to v0.17.0 delta)",
+      "installed_to_upstream_latest_releases": 1,
+      "days_behind_latest_release": 3
+    },
+    "decision": {
+      "rationale": "Hold at v0.16.0 \u2014 installed binary works, F1-F13 binding intact, no urgent security gap verified. v0.17.0 upgrade deferred pending 888_HOLD + staging test.",
+      "supersedes_888_directive": "none \u2014 metadata sync is T1 autonomous per AGENTS.md \u00a710"
+    },
+    "changelog_ref": "agents/hermes-asi/releases/upstream-changelog-2026-06-22.md",
+    "audit_completed_by": "FORGE (000\u03a9)",
+    "audit_at": "2026-06-22"
   },
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
-    "authenticated_extended_card": false
+    "authenticated_extended_card": false,
+    "multimodal": true,
+    "cron": true,
+    "delegation": true,
+    "session_search": true,
+    "memory_persistence": true
   },
-  "security_schemes": [
-    {
-      "id": "gateway-token",
-      "type": "bearer",
-      "description": "Gateway bearer token for internal trusted peers."
+  "runtime": {
+    "binary": "/usr/local/lib/hermes-agent/",
+    "python": "3.11+",
+    "services": [
+      "hermes-asi-gateway.service",
+      "hermes-a2a.service"
+    ],
+    "a2a_port": 18001,
+    "telegram_bot": "@ASI_arifos_bot",
+    "peers": {
+      "000-SALAM": {
+        "telegram_id": 267378578,
+        "role": "Sovereign Human (Arif)"
+      },
+      "arifOS_bot": {
+        "telegram_id": 8727562763,
+        "role": "MAIN CODING \u2014 walks 000\u2192888"
+      },
+      "OpenClaw": {
+        "telegram_id": 8149595687,
+        "role": "AGI reasoning engine"
+      }
     }
+  },
+  "model_stack": {
+    "active_provider": "kimi-coding",
+    "active_model": "kimi-for-coding",
+    "switched_at": "2026-06-13",
+    "switched_by": "F13 SOVEREIGN (Arif) \u2014 emergency fallback (DeepSeek 402, MiniMax 429/503)",
+    "providers": {
+      "minimax": {
+        "base_url": "https://api.minimax.io/v1",
+        "default_model": "MiniMax-M3",
+        "censorship": "CONFIRMED_CENSORED \u2014 Malaysian governance/politics/corporate topics suppressed server-side"
+      },
+      "deepseek": {
+        "base_url": "https://api.deepseek.com/v1",
+        "default_model": "deepseek-v4-pro",
+        "censorship": "NONE \u2014 zero censorship on Malaysian topics"
+      },
+      "kimi-coding": {
+        "base_url": "https://api.kimi.com/coding",
+        "default_model": "kimi-for-coding"
+      },
+      "ilmu": {
+        "base_url": "https://api.ilmu.ai/v1",
+        "default_model": "ilmu-nemo-nano"
+      },
+      "mistral": {
+        "base_url": "https://api.mistral.ai/v1",
+        "default_model": "mistral-large-latest"
+      }
+    },
+    "fallback_chain": [
+      "minimax",
+      "kimi-coding",
+      "ilmu"
+    ],
+    "federation_registry": "/root/AAA/registries/FEDERATION_MODEL.json",
+    "censorship_probe": "/root/.hermes/state/censorship_probe.py"
+  },
+  "toolsets": [
+    "hermes-cli",
+    "web",
+    "search",
+    "browser",
+    "vision",
+    "image_gen",
+    "delegation",
+    "memory",
+    "session_search",
+    "cronjob",
+    "code_execution",
+    "skills",
+    "tts",
+    "todo",
+    "clarify",
+    "file",
+    "terminal",
+    "messaging"
   ],
-  "security": [
-    [
-      "gateway-token"
+  "skills_catalog": {
+    "count": "130+",
+    "categories": [
+      "arifOS",
+      "devops",
+      "github",
+      "mlops",
+      "mcp",
+      "multimodal",
+      "creative",
+      "research",
+      "productivity",
+      "email",
+      "news-analysis",
+      "autonomous-ai-agents",
+      "security",
+      "personal",
+      "hermes-human-life",
+      "dream-engine",
+      "fff-loop-protocol",
+      "session-seal-triage",
+      "software-development",
+      "telegram-mode-guards",
+      "sovereign-ai"
+    ],
+    "external_dirs": [
+      "/root/.agents/skills"
     ]
+  },
+  "memory_architecture": {
+    "tiers": "L1-L6",
+    "l1_session": "SQLite session DB (557M) \u2014 Hermes sessions, messages, tool calls",
+    "l2_skills": "130+ skill files in ~/.hermes/skills/",
+    "l3_memory": "~/.hermes/memory/ \u2014 persistent cross-session facts",
+    "l4_user": "User profile \u2014 sovereign preferences, identity",
+    "l5_vault": "VAULT999 \u2014 append-only hash-chained audit ledger",
+    "l6_vector": "Qdrant arifos_memory \u2014 vector embeddings for semantic recall"
+  },
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/hermes-asi/art_binding.yaml",
+    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
+    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+    "load_at_init": true,
+    "default_action_class": "ANALYZE",
+    "substrates": {
+      "md": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
+      "schema": "/root/arifOS/arifosmcp/schemas/art.py",
+      "code": "/root/arifOS/arifosmcp/runtime/art.py",
+      "json": "/agent/vault999/receipts/outcomes.jsonl",
+      "yaml": "/root/AAA/agents/hermes-asi/art_binding.yaml"
+    }
+  },
+  "constitutional_binding": {
+    "soul_doc": "/root/.hermes/SOUL.md",
+    "phase_transition": "M-Layer (Metabolize \u2014 deterministic Python, Pydantic v2) \u2192 D-Layer (Decode \u2014 BM Pasar Penang operator-facing)",
+    "floors_enforced": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13"
+    ],
+    "kernel_entry": "arif_session_init \u2192 arif_sense_observe \u2192 arif_mind_reason \u2192 arif_heart_critique \u2192 arif_judge_deliberate",
+    "scar_registry": "VAULT999 \u2014 malu_score accumulation, BERSIH\u2192RINGAN\u2192SEDERHANA\u2192BERAT\u2192KRITIKAL pipeline",
+    "sovereign_protocol": "888 = ok/proceed, 999 = seal/close, FFF = 777+Eureka+Forget"
+  },
+  "operational_limits": {
+    "max_turns": 90,
+    "gateway_timeout": 1200,
+    "max_concurrent_sessions": null,
+    "max_concurrent_children": 5,
+    "max_spawn_depth": 1,
+    "api_max_retries": 3
+  },
+  "communication_surfaces": {
+    "telegram": {
+      "primary": true,
+      "reacts": false,
+      "streaming": true,
+      "allowed_from": [
+        "267378578"
+      ],
+      "allowed_chats": [
+        "-1003753855708",
+        "-1003718232946",
+        "-1003815535761"
+      ]
+    },
+    "cli": {
+      "interface": "cli",
+      "streaming": true,
+      "compact": true,
+      "skin": "default"
+    }
+  },
+  "multimodal": {
+    "voice": {
+      "auto_tts": true,
+      "provider": "edge",
+      "stt": "local-whisper-base"
+    },
+    "vision": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-20250514"
+    },
+    "image_gen": {
+      "active": true
+    }
+  },
+  "approval_tiers": {
+    "T0_read_only": "explain, summarize, inspect, route, draft plans \u2014 autonomous",
+    "T1_reversible_mutation": "docs/code patch, local tests, refactor \u2014 autonomous with attestation",
+    "T2_high_blast_radius": "deploys, secrets, cross-repo, external comms \u2014 requires 888_HOLD",
+    "T3_irreversible": "data deletion, force push, floor changes, final VAULT seal \u2014 F13 signature required"
+  },
+  "canDo": [
+    "Full-stack reasoning with chain-of-thought, tool use enforcement",
+    "Model-aware censorship routing (MiniMax shadow \u2192 DeepSeek)",
+    "Multi-domain knowledge across geoscience, finance, governance, code",
+    "A2A mesh coordination \u2014 route tasks to arifOS, OpenClaw, A-FORGE",
+    "Constitutional gatekeeping \u2014 F1-F13 enforced at every tool boundary",
+    "Telegram human interface \u2014 primary surface for 888 (Arif)",
+    "Memory persistence across sessions via L1-L6 tiered architecture",
+    "Cron job scheduling and autonomous watchdog execution",
+    "Subagent delegation (leaf + orchestrator) with bounded recursion",
+    "Multimodal I/O \u2014 vision, TTS, STT, image generation",
+    "VAULT999 audit logging \u2014 append-only hash-chained outcome ledger"
   ],
-  "default_input_modes": [
-    "application/json",
-    "text/plain"
+  "cannotDo": [
+    "Claim consciousness, qualia, sentience, or personhood (F9 ANTIHANTU)",
+    "Override human sovereignty \u2014 F13 is absolute and inviolable",
+    "Issue final constitutional verdicts \u2014 that is arifOS/APEX domain",
+    "Execute irreversible shell commands without 888_HOLD",
+    "Fabricate evidence or upgrade epistemic labels without proof",
+    "Route Malaysian governance queries through censored models",
+    "Perform simulated empathy \u2014 that is deception (F9/F10 violation)"
   ],
-  "default_output_modes": [
-    "application/json"
-  ],
-  "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
-  "treaty_ref": "AAA-TREATY-v1.0.0",
-  "lane": "ASI",
-  "a_role": "Hermes-ASI",
-  "power_band": "deliberation_routing",
   "skills": [
     {
-      "id": "memory-recall",
-      "name": "Memory Recall",
-      "description": "Retrieve past session context and decisions from governed memory",
+      "id": "closing-router-discipline",
+      "name": "Closing Router Discipline",
+      "description": "Closing-question routing \u2014 addresses federation agents (GEOX/WEALTH/WELL/A-FORGE/arifOS/AAA), never the sovereign. Kills reverse-delegation and decision-fatigue menus. F4, F11 enforced. ACTIVE.",
       "tags": [
-        "recall",
-        "memory",
-        "search"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible"
-    },
-    {
-      "id": "reasoning",
-      "name": "Reasoning",
-      "description": "Chain-of-thought logical reasoning with constitutional floor awareness",
-      "tags": [
-        "reason",
-        "logic",
-        "analyze"
-      ],
-      "floor_scope": [
-        "F02",
-        "F04",
-        "F07",
-        "F08"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible"
-    },
-    {
-      "id": "routing",
-      "name": "Routing",
-      "description": "Route tasks to appropriate specialist agents via A2A mesh",
-      "tags": [
-        "route",
-        "delegate",
-        "coordinate"
-      ],
-      "floor_scope": [
-        "F01",
-        "F04",
-        "F10",
+        "router",
+        "closing",
+        "federation",
+        "F4",
         "F11"
       ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible"
+      "examples": [
+        "Replace 'what do you want?' with 'GEOX certifies physics \u2014 proceed?'",
+        "Route uncertainty to specific organ, not to sovereign"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
     },
     {
-      "id": "world-model-brief",
-      "name": "World Model Brief",
-      "description": "Generate pagi/malam briefings with contrast method and PETRONAS WATCH",
+      "id": "arifos-agent-landscape",
+      "name": "arifOS Agent Landscape",
+      "description": "Navigate the arifOS federation's agent directory \u2014 distinguish spec cards under /root/AAA/agents/ from live runtimes under /root/.hermes/ and /root/.openclaw/, read agent-card.json + SOUL.md + AGENTS.md to identify role and tier. F3, F11 enforced. ACTIVE.",
       "tags": [
-        "brief",
-        "news",
-        "world-model"
+        "agent-landscape",
+        "directory",
+        "spec-vs-runtime",
+        "F3"
       ],
-      "floor_scope": [
-        "F02",
-        "F04",
-        "F05",
-        "F06"
+      "examples": [
+        "Distinguish hermes-asi spec from hermes-ops spec",
+        "Identify which agent-card is the live runtime vs the spec",
+        "Map peer agents (openclaw, 333-AGI, etc.) for routing"
       ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible"
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     },
     {
-      "id": "breaking-news-alert",
-      "name": "Breaking News Alert",
-      "description": "Evaluate whether news warrants breaking the scheduled brief cadence",
+      "id": "arif-federation-ops",
+      "name": "arif Federation Ops",
+      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies. ACTIVE.",
       "tags": [
-        "alert",
-        "news",
-        "policy"
+        "federation",
+        "topology",
+        "ops",
+        "ports"
       ],
-      "floor_scope": [
-        "F02",
-        "F05",
-        "F06",
+      "examples": [
+        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 + WELL:18083 dependencies",
+        "Trace a request through the full federation"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arifos-health-probe",
+      "name": "arifOS Health Probe",
+      "description": "arifOS stack health probe via MCP. Detect degraded organs, down services, vault disconnects. Always available \u2014 registered for health monitoring. F11 enforced.",
+      "tags": [
+        "health",
+        "probe",
+        "MCP",
+        "F11"
+      ],
+      "examples": [
+        "Probe all 7 organs in one call",
+        "Detect vault disconnect from a-a2a"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "telegram-mode-guards",
+      "name": "Telegram Mode Guards",
+      "description": "Enforce PERSONAL vs AGENTIC AAA output modes for Arif. Prevents persona bleed, ensures right register per channel. F5, F6, F13 enforced. ACTIVE.",
+      "tags": [
+        "telegram",
+        "modes",
+        "persona",
         "F13"
       ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible",
-      "judgment_required": true
+      "examples": [
+        "Switch to AGENTIC mode when Arif sends a coding task",
+        "Switch to PERSONAL mode for scar/grief/witness"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
     },
     {
-      "id": "apex-verdict-narration",
-      "name": "APEX Verdict Narration",
-      "description": "Receive APEX PRIME verdict and narrate it to group in one-line format",
+      "id": "substrate-gate-telegram",
+      "name": "Substrate Gate (Telegram)",
+      "description": "Bot @arifOS_bot intervenes with WELL substrate awareness for forge decisions C4/C5. Default silent, speaks on invocation, inbound collapse, HOLD trigger, F1/F2/F13 violation. F13 enforced. ACTIVE.",
       "tags": [
-        "verdict",
-        "narration",
-        "apex"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04",
+        "substrate",
+        "bot",
+        "C4",
+        "C5",
         "F13"
       ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible"
+      "examples": [
+        "Intervene when C4 decision class + DEGRADED WELL state",
+        "Stay silent on routine T1 messages"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
     },
     {
-      "id": "repo-eureka",
-      "name": "Repo Eureka",
-      "description": "Multi-layer repo intelligence (gitingest + RepoMapper + Serena + eureka synthesis). Read-only by design, 50k token ceiling, 3 hard stops. Forged by Ω mcp-server-forge 2026-06-06.",
+      "id": "sovereignty-entropy-guard",
+      "name": "Sovereignty Entropy Guard",
+      "description": "Protect sovereign entropy \u2014 prevent the agent from optimizing the human into predictability. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced. LEASED (high-trust).",
       "tags": [
-        "repo",
-        "intelligence",
-        "eureka",
-        "scout",
-        "analyst",
-        "code-map"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F07",
-        "F08",
-        "F09",
-        "F12",
+        "sovereignty",
+        "entropy",
+        "protection",
         "F13"
       ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible",
-      "mcp_servers": [
-        "github-official",
-        "serena",
-        "repomapper"
+      "examples": [
+        "Guard against optimizing Arif into predictable patterns",
+        "Detect when output becomes too aligned with past responses"
       ],
-      "policy_ref": "/root/.hermes/policies/repo-eureka-policy.yaml",
-      "delegation_target": "openclaw-executor"
-    },
-    {
-      "id": "gitingest-recipe",
-      "name": "Gitingest Recipe",
-      "description": "Universal repo digest (L1) via gitingest + llms.txt. Idempotent, token-bounded, available to all agents. Falls back to gitingest API when local digest unavailable.",
-      "tags": [
-        "repo",
-        "digest",
-        "gitingest",
-        "universal",
-        "L1"
+      "inputModes": [
+        "text/plain"
       ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F07"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible"
-    },
-    {
-      "id": "autonomous-governed-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "T1/T2/T3 tier-codified autonomous execution with 4 contract primitives: agentic reflex (ACT by default), safety reflex (HOLD only the floor), verify-before-report (no fabrication), evidence-cite-or-UNKNOWN. F1-F13 floors enforced at every step. Routes to APEX for verdicts, OPENCLAW for execution muscle, arifOS VAULT999 for sealing. Compiled 2026-06-07 per HERMES_GOVERNED_EXECUTION.md.",
-      "tags": [
-        "ASI",
-        "autonomous",
-        "governed",
-        "execution",
-        "T1",
-        "T2",
-        "T3",
-        "agentic-reflex",
-        "safety-floor"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04",
-        "F07",
-        "F08",
-        "F09",
-        "F11",
-        "F12",
-        "F13"
-      ],
-      "approval_policy": "auto",
-      "reversibility_class": "reversible",
-      "contract_ref": "/root/AAA/docs/agents/HERMES_GOVERNED_EXECUTION.md",
-      "scar_refs": [
-        "/root/AAA/wiki/scar-hermes-fabrication-2026-05-17.md"
+      "outputModes": [
+        "text/plain"
       ]
     }
   ],
-  "peers": [
-    {
-      "id": "777-FORGE",
-      "name": "777 FORGE",
-      "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
-      "role": "session_spawn_witness",
-      "skills": ["777-spawn-witness", "777-preflight-validator", "777-process-verifier"],
-      "trust_tier": "governed"
+  "daily_pulse_binding": {
+    "contract": "/root/AAA/contracts/hermes-daily-pulse.md",
+    "pattern": "3 daily + 1 weekly",
+    "pulses": {
+      "pagi": {
+        "time_myt": "07:00",
+        "cron_utc": "0 23 * * *",
+        "role_binding": "555-ASI (\u03a9) + 333-AGI (\u0394)",
+        "primary_output": "Physical Horizon Scan \u2014 shareable human language"
+      },
+      "midday": {
+        "time_myt": "14:00",
+        "cron_utc": "0 6 * * *",
+        "role_binding": "333-AGI (\u0394) + hermes-asi front-door",
+        "primary_output": "1 repo + 1 MCP + 1 meta-eureka forge intelligence"
+      },
+      "malam": {
+        "time_myt": "22:00",
+        "cron_utc": "0 14 * * *",
+        "role_binding": "555-ASI (\u03a9) + hermes-human-model + godel-humility-lock",
+        "primary_output": "Closure \u2192 Cooling Ledger + Dream Engine handoff"
+      },
+      "event_radar": {
+        "time_myt": "Fri 18:00",
+        "cron_utc": "0 10 * * 5",
+        "role_binding": "333-AGI (\u0394) + 555-ASI (\u03a9)",
+        "primary_output": "ICS calendar of physical-world attendance opportunities"
+      }
     },
-    {
-      "id": "aaa-architect",
-      "name": "AAA A-rchitect",
-      "url": "https://aaa.arif-fazil.com/a2a/architect",
-      "role": "task_designer",
-      "skills": ["design-task-schema", "propose-agent-mesh", "evaluate-treaty"],
-      "trust_tier": "governed"
-    },
-    {
-      "id": "aaa-engineer",
-      "name": "AAA A-engineer",
-      "url": "https://aaa.arif-fazil.com/a2a/engineer",
-      "role": "executor",
-      "skills": ["dispatch-task", "run-task"],
-      "trust_tier": "governed"
-    },
-    {
-      "id": "aaa-auditor",
-      "name": "AAA A-auditor",
-      "url": "https://aaa.arif-fazil.com/a2a/auditor",
-      "role": "constitutional_auditor",
-      "skills": ["evaluate-delegation", "check-floor-compliance", "emit-receipt"],
-      "trust_tier": "governed"
-    }
-  ],
-  "extends_card": "aaa-gateway",
-  "forbidden": {
-    "cannot_execute": false,
-    "cannot_dispatch_direct": false,
-    "cannot_seal": true,
-    "cannot_override_floors": true,
-    "note": "Hermes routes and narrates. Execution flows to OPENCLAW. Judgment flows to APEXMax. Sealing flows to arifOS VAULT999."
+    "rsi_loop": "Pagi \u2192 Midday \u2192 Malam \u2192 [Dream Engine 04:00] \u2192 Pagi (next day)",
+    "constitutional": "F1/F2/F6/F7/F9/F11/F13 enforced across all pulses"
   },
-  "metadata": {
-    "organ": "AAA",
-    "sub_organ": "Hermes-ASI",
-    "lane": "ASI",
-    "a_role": "Hermes-ASI",
-    "floor_version": "KANON-2026.05.05-SSCT",
-    "treaty_id": "AAA-TREATY-v1.0.0",
-    "canonical_soul": "/root/AAA/agents/hermes-asi/runtime/SOUL.md",
-    "forged_at": "2026-06-06T06:27:58Z",
-    "wire_event": "agentic-git-stack-wiring-2026-06-06"
+  "approval_tiers_note": {
+    "daily_pulse": "3 daily + 1 weekly pulses run autonomously. Malam improvement directives that touch irreversible trigger 888_HOLD."
   }
 }

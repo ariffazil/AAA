@@ -1,74 +1,265 @@
 {
+  "$schema": "arifOS/agent-card/v2.0.0",
   "id": "claude-code",
-  "name": "Claude Code",
-  "tier": "AGI",
-  "role": "engineer-architect",
-  "class": "C2",
-  "transport": "MCP_SSE_HTTP",
-  "native_mcp": true,
-  "version": "2.1.160",
-  "model": "deepseek-v4-pro",
-  "runtime": "/root/.local/bin/claude",
-  "config": "/root/.claude/settings.json",
-  "instruction_file": "/root/AAA/CLAUDE.md",
-  "governed_by": "arifOS F1-F13 via MCP gateway (port 8088)",
+  "name": "Claude Code CLI",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
+  },
+  "description": "Claude Code CLI forge instrument \u2014 Anthropic's terminal coding harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced at every tool boundary.",
+  "version": "1.0.0",
+  "model": "claude-sonnet-4 / claude-opus-4",
+  "binary": "/root/.local/bin/claude",
+  "tier": "FI",
+  "role": "forge_instrument",
+  "class": "CODING/FI",
+  "protocolVersion": "1.0.1",
+  "url": "https://aaa.arif-fazil.com/a2a/claude-code",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/claude-code",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": true,
+    "file_read": true,
+    "file_write": true,
+    "shell_exec": true,
+    "subagent_spawn": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token issued via arif_session_init"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "mcp_servers": [
     "arifos",
     "geox",
     "wealth",
     "well",
-    "aforge",
-    "minimax-media",
-    "minimax-code"
+    "aforge"
   ],
-  "strengths": [
-    "multi-file architecture design",
-    "constitutional awareness",
-    "long-context codebase understanding",
-    "complex refactoring",
-    "test suite design",
-    "deep reasoning with safety compliance"
-  ],
-  "weaknesses": [
-    "no native web search without MCP",
-    "single-session context window"
-  ],
-  "risk_tolerance": "YELLOW",
-  "preferred_tasks": [
-    "architecture design",
-    "multi-file refactoring",
-    "code review",
-    "constitutional audits",
-    "test suite design",
-    "federation health probes"
-  ],
-  "capabilities": {
-    "streaming": true,
-    "push_notifications": false,
-    "authenticated_extended_card": false,
-    "tool_calling": "native_mcp"
-  },
-  "memory_contributor": true,
-  "session_identity": "claude-code@arif-fazil.com",
-  "authority_boundary": "Cannot SEAL irreversible actions. Cannot change F1-F13. Cannot self-authorize. 888_HOLD for all destructive ops.",
-  "art_binding": {
-    "enabled": true,
-    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
-    "local_yaml": "/root/AAA/agents/claude-code/art_binding.yaml",
-    "reflex_path": "/root/arifOS/arifosmcp/runtime/art.py",
-    "skill_path": "/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md",
-    "load_at_init": true,
-    "default_action_class": "ANALYZE"
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "registered": [
+      "explore",
+      "plan"
+    ],
+    "maxParallel": 3,
+    "isolation": "worktree",
+    "capability_modes": [
+      "read-only",
+      "read-write",
+      "execute",
+      "all"
+    ]
   },
   "autonomy_tiers": {
-    "t1_auto_do": "Read, grep, edit, test, commit, lint, format, restart services, web search",
-    "t2_announce_proceed": "Service restart on production, schema migration on dev, new dependency, deploy after green tests",
-    "t3_888_hold": "rm -rf unknown dirs, DROP TABLE, force push, branch delete, paid API >$10/mo, constitutional changes, secret exposure, external communications"
+    "T1_auto": "read, grep, list, web research, precise FS edits, local run/test/build, skill introspection",
+    "T2_announce": "multi-file refactor, add deps (green tests), local service restart post-test, PR draft, manifest/registry updates (non-prod), skill creation",
+    "T3_888_HOLD": "production deploy without tests, git force-push/rebase, secret rotation/exposure, VAULT999 writes, Caddy reloads, rm -rf unknown paths, DROP TABLE, cross-organ architecture change, any irreversible without T1 probe"
   },
-  "peers": {
-    "opencode": "Sibling AGI forger — code generation, testing, build verification",
-    "hermes-asi": "Human interface + Telegram + memory relay",
-    "openclaw": "Gateway operator + topology guardian",
-    "arifos": "Constitutional kernel — route all F1-F13 questions here"
-  }
+  "authority_boundary": {
+    "canDo": [
+      "Forge code under F1-F13 governance",
+      "Route MCP federation calls",
+      "Spawn bounded subagents with worktree isolation",
+      "Run tests/build/lint with evidence receipts",
+      "Generate diffs and PR drafts"
+    ],
+    "cannotDo": [
+      "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
+      "Modify constitutional floors without 888_HOLD",
+      "Push to main without sentinel-premerge-gate",
+      "Execute irreversible shell without F13 ack",
+      "Fabricate evidence or upgrade epistemic labels without proof",
+      "Claim consciousness / qualia / sentience (F9 ANTIHANTU)"
+    ]
+  },
+  "skills": [
+    {
+      "id": "role-binding-fi-consumer",
+      "name": "FI Role Binding (Consumer)",
+      "description": "FI citizen binding to consume Hermes polymorphic roles (\u03a9 memory, \u0394 reason) + grok-build style orchestration when needed. Baseline: hermes-opencode-protocol, agentic-architecture, godel-humility-lock, autonomous-governed-execution. See AAA_SKILL_BINDING.md. F4, F7, F11.",
+      "tags": [
+        "role-binding",
+        "fi-consumer",
+        "claude-code",
+        "F7",
+        "F11"
+      ],
+      "floor_scope": [
+        "F04",
+        "F07",
+        "F11"
+      ],
+      "approval_policy": "auto (role intent)",
+      "reversibility_class": "reversible",
+      "binding_state": "LEASED"
+    },
+    {
+      "id": "hermes-opencode-protocol",
+      "name": "Hermes/OpenCode Protocol",
+      "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. LEASED.",
+      "tags": [
+        "protocol",
+        "F1-F13",
+        "execution",
+        "FI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "agentic-architecture",
+      "name": "Agentic Architecture",
+      "description": "Class-level skill for designing sovereign agentic agents. 9-skill spine, local-model compensation, failure classification, phased implementation. F8, F11 enforced. LEASED.",
+      "tags": [
+        "architecture",
+        "agent",
+        "design",
+        "F8"
+      ],
+      "floor_scope": [
+        "F8",
+        "F11"
+      ]
+    },
+    {
+      "id": "fabrication-prevention",
+      "name": "Fabrication Prevention",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "tags": [
+        "fabrication",
+        "F2",
+        "F9",
+        "verification"
+      ],
+      "floor_scope": [
+        "F2",
+        "F9",
+        "F11"
+      ]
+    },
+    {
+      "id": "autonomous-governed-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "tags": [
+        "autonomous",
+        "F1-F13",
+        "execution",
+        "T1-T3"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "arifos-arconstitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
+      "tags": [
+        "constitutional",
+        "audit",
+        "F1-F13",
+        "read-only"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "godel-humility-lock",
+      "name": "G\u00f6del Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
+      "tags": [
+        "humility",
+        "F7",
+        "self-critique",
+        "epistemic"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7"
+      ]
+    },
+    {
+      "id": "github-workflow",
+      "name": "GitHub Workflow",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "tags": [
+        "github",
+        "workflow",
+        "PR",
+        "issues"
+      ],
+      "floor_scope": [
+        "F1",
+        "F11"
+      ]
+    },
+    {
+      "id": "arifos-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    }
+  ]
 }

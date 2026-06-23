@@ -1,7 +1,13 @@
 {
+  "$schema": "arifOS/agent-card/v2.0.0",
   "id": "hermes-ops",
   "name": "Hermes Ops",
-  "description": "Operator agent — execution, DevOps, workflows, CI/CD, deployment. Ship it clean.",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Native A2A agent \u2014 runtime owns itself",
+    "principle_origin": "Self-owned runtime, governed by F1-F13"
+  },
+  "description": "Operator agent \u2014 execution, DevOps, workflows, CI/CD, deployment. Ship it clean.",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-ops",
   "preferred_transport": "jsonrpc-http",
   "provider": {
@@ -20,25 +26,41 @@
       "id": "code-execution",
       "name": "Code Execution",
       "description": "Execute code, run tests, build artifacts",
-      "tags": ["code", "build", "test"]
+      "tags": [
+        "code",
+        "build",
+        "test"
+      ]
     },
     {
       "id": "git-operations",
       "name": "Git Operations",
       "description": "Git workflows, PRs, merges, releases",
-      "tags": ["git", "github", "version-control"]
+      "tags": [
+        "git",
+        "github",
+        "version-control"
+      ]
     },
     {
       "id": "deployment",
       "name": "Deployment",
       "description": "Deploy to various environments",
-      "tags": ["deploy", "ci-cd", "infrastructure"]
+      "tags": [
+        "deploy",
+        "ci-cd",
+        "infrastructure"
+      ]
     },
     {
       "id": "workflow-automation",
       "name": "Workflow Automation",
       "description": "Execute and orchestrate workflows",
-      "tags": ["workflow", "automation", "orchestration"]
+      "tags": [
+        "workflow",
+        "automation",
+        "orchestration"
+      ]
     }
   ]
 }
