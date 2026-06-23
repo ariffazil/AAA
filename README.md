@@ -1155,7 +1155,7 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  Frontend:       React 19 + TypeScript 6 + Vite 8 + Tailwind 4        │
 │  Backend:        Express 4.x (a2a-server/)                            │
 │  UI primitives:  shadcn/ui (53 Radix components)                      │
-│  Package ver:    2026.06.09 (see package.json)                        │
+│  Package ver:    2026.06.23 (see package.json)                        │
 │                                                                        │
 │  Constitutional  5 HEXAGON (333-AGI · 555-ASI · 888-APEX ·            │
 │  citizens:       A-AUDIT · A-ARCHIVE)                                 │

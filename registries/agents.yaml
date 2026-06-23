@@ -1,4 +1,3 @@
-# DEPRECATED 2026-06-22 — canonical path: registries/agents/federation.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new edits should land in the new path.
 agents:
 - 888_hold_scope:
   - rm -rf of unknown dirs, DROP TABLE, volume removal
@@ -463,6 +462,12 @@ agents:
     and GEOX tool orchestration.
 
     '
+  id: geox-personal
+  name: GEOX Personal Agent
+  host_binding: geox-acp
+  intelligence_band: specialist
+  intelligence_tier: specialist
+  role: analyst
 - a2a_exposure: internal
   allowed_peers:
   - aaa-gateway
@@ -569,7 +574,10 @@ agents:
   - file_read
   - file_write
   authority_level: sovereign-delegate
-  description: 'Antigravity CLI: Agentic Coding Assistant. Primary coding agent — EDIT and EXECUTE class. Brings the core capabilities of Antigravity 2.0 (multi-step reasoning, multi-file editing, tool calling) directly to the terminal, optimized for speed, keyboard-first workflows, and remote SSH sessions.'
+  description: 'Antigravity CLI: Agentic Coding Assistant. Primary coding agent —
+    EDIT and EXECUTE class. Brings the core capabilities of Antigravity 2.0 (multi-step
+    reasoning, multi-file editing, tool calling) directly to the terminal, optimized
+    for speed, keyboard-first workflows, and remote SSH sessions.'
   host_binding: gemini-cli
   id: antigravity
   intelligence_band: AGI

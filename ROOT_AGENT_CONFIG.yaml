@@ -168,7 +168,7 @@ forge_instruments:
     resolved_binary: /root/.npm-global/bin/opencode
     version: "1.17.8"
     model: tokenplan-mimo/mimo-v2.5-pro
-    small_model: tokenplan-mimo/mimo-v2.5
+    small_model: azure-openai/gpt-4.1-mini
     native_mcp: true
     mcp_count: 20
     mcp_servers:
@@ -245,9 +245,46 @@ forge_instruments:
     fi_id: FI-008
     status: live
     class: forge-instrument
-    citizenship: governed-forge-worker
+    citizenship: warga-aaa
+    constitutional_proxy: 333-AGI
+    warga_card: agents/kimi-code/WARGAAA_CARD.md
     host_binding: kimi-code
+    root_config_ref: ROOT_AGENT_CONFIG.yaml
     agent_card: agents/kimi-code/agent-card.json
+    repo_config_view: agents/kimi-code/agent-card.json
+    live_config: /root/.arifos/agents/kimi/config.toml
+    live_mcp: /root/.arifos/agents/kimi/mcp.json
+    kimi_code_home: /root/.arifos/agents/kimi
+    binary: /usr/local/bin/kimi
+    kimi_code_binary: /root/.kimi-code/bin/kimi
+    version: "0.18.0"
+    model: kimi-for-coding
+    native_mcp: true
+    mcp_count: 9
+    mcp_servers:
+      - arifos
+      - aforge
+      - geox
+      - wealth
+      - well
+      - capability-index
+      - repomapper
+      - serena
+      - minimax
+    federation_mcp_surface:
+      arifos: http://127.0.0.1:8088/mcp
+      geox: http://127.0.0.1:8081/mcp
+      wealth: http://127.0.0.1:18082/mcp
+      well: http://127.0.0.1:18083/mcp
+      aforge: stdio:/root/.arifos/agents/kimi/mcp-launchers/aforge.sh
+    hooks_dir: /root/.arifos/agents/kimi/hooks
+    skills:
+      - kimi-code-aaa
+      - arifos-mcp-federation
+      - agent-onboarding
+    autonomy:
+      default_yolo: false
+      afk_requires_explicit_opt_in: true
   - id: antigravity
     fi_id: FI-004
     status: live

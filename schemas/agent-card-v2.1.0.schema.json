@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifOS/agent-card/v2.1.0",
+  "title": "arifOS Agent Card Schema v2.1.0 — Protocol Surface Extension",
+  "description": "Canonical extension to arifOS/agent-card/v2.0.0. Four machine-negotiable protocol fields. All optional (backward compatible). Forged 2026-06-23 — FFF sealed.",
+  "version": "2.1.0",
+  "supersedes": "arifOS/agent-card/v2.0.0",
+  "forged_at": "2026-06-23T00:34:00Z",
+  "hold_status": "888_HOLD_PENDING",
+  "properties": {
+    "supported_protocols": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Protocol list. e.g. ['a2a', 'mcp']. Machines auto-negotiate transport."
+    },
+    "a2a_role": {
+      "type": "string",
+      "enum": ["primary", "support", "organ", "witness", "harness", "forge_instrument"],
+      "description": "Role in A2A mesh. primary/support=HEXAGON. organ=domain server. harness/forge_instrument=FI tool."
+    },
+    "mcp_surface": {
+      "type": "object",
+      "description": "Explicit MCP exposure/consumption. Replaces flat mcp_servers[].",
+      "required": ["type"],
+      "properties": {
+        "type":          { "type": "string", "enum": ["exposed", "consumed"] },
+        "endpoints":     { "type": "array", "items": { "type": "object", "required": ["url"], "properties": { "url": {"type":"string"}, "tool_count": {"type":"integer"}, "key_lanes": {"type":"array","items":{"type":"string"}}, "version": {"type":"string"} } } },
+        "consumed_from": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "governance_profile": {
+      "type": "object",
+      "description": "Unified governance block. Machine-readable for external agents pre-checking posture.",
+      "required": ["self_approval_forbidden", "vault"],
+      "properties": {
+        "constitutional_floors": { "type": "array", "items": { "type": "string", "pattern": "^F[0-9]{1,2}$" } },
+        "verdict_authority":     { "type": "string" },
+        "self_approval_forbidden": { "type": "boolean" },
+        "subagent_default_hold": { "type": "string" },
+        "warga_boundary":        { "type": "boolean" },
+        "vault":                 { "type": "string", "enum": ["VAULT999"] },
+        "functional_class":      { "type": "string", "enum": ["relay","primary","observer","kernel","gateway","harness","organ"] },
+        "mesh_role":             { "type": "string", "enum": ["primary","support","observer","harness"] },
+        "requires_human_for":    { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "_deprecated_mcp_servers": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "DEPRECATED alias for mcp_servers[]. 1-cycle grace. New code reads mcp_surface."
+    }
+  },
+  "validation_invariants": [
+    { "id": "INV-001", "description": "Only arifos may set self_approval_forbidden: false", "rule": "if id !== 'arifos' then governance_profile.self_approval_forbidden === true" },
+    { "id": "INV-002", "description": "HEXAGON primary roles must declare warga_boundary: true", "rule": "if a2a_role === 'primary' then governance_profile.warga_boundary === true" },
+    { "id": "INV-003", "description": "Warn on mcp_servers without mcp_surface", "rule": "if mcp_servers present and mcp_surface absent → emit deprecation warning", "severity": "warn" }
+  ],
+  "migration": {
+    "from": "arifOS/agent-card/v2.0.0",
+    "strategy": "additive",
+    "deprecated_fields": {
+      "mcp_servers": { "status": "deprecated", "replacement": "mcp_surface", "grace_period": "1 release cycle", "alias": "_deprecated_mcp_servers" }
+    }
+  }
+}
