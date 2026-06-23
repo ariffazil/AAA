@@ -1,5 +1,12 @@
 {
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "A-ARCHIVE",
   "name": "A-ARCHIVE",
+  "principal_agent": {
+    "type": "architect",
+    "category": "Constitutional architecture (the constitution itself is the principal)",
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+  },
   "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE",
@@ -104,6 +111,116 @@
         "Verify VAULT999 ledger integrity",
         "Has any entry been tampered with since last audit?",
         "Generate integrity proof for regulatory submission"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "tiered-memory",
+      "name": "Tiered Memory",
+      "description": "L1\u2013L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4\u2192L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1\u2192L6 pipeline log. F11 enforced. ACTIVE.",
+      "tags": [
+        "memory",
+        "L1-L6",
+        "tiering",
+        "F11"
+      ],
+      "examples": [
+        "Write a sealed fact to L6 via seal hash",
+        "Promote L4 to L6 only via verified hash",
+        "Evict TTL-expired L2 without disturbing L6 canon"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "dream-engine",
+      "name": "Dream Engine",
+      "description": "4-stage offline memory consolidation pipeline. Replay \u2192 Cluster \u2192 Synthesize \u2192 Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
+      "tags": [
+        "consolidation",
+        "memory",
+        "nightly",
+        "F01",
+        "F11",
+        "F13"
+      ],
+      "examples": [
+        "Run nightly consolidation on session archive",
+        "Cluster sealed events into patterns",
+        "Defend synthesized patterns against drift"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "constitutional-kernel-patch",
+      "name": "Constitutional Kernel Patch",
+      "description": "Read-before-mutate workflow for patching arifOS constitutional kernel code. Probe, drift diagnosis, surgical patching, test coverage, no-regression check, 888 territory demarcation. ATTESTED then LEASED. F1, F11, F13 enforced.",
+      "tags": [
+        "kernel",
+        "patch",
+        "constitutional",
+        "read-before-mutate"
+      ],
+      "examples": [
+        "Patch F9 ANTIHANTU floor check in arifOS",
+        "Add new constitutional floor test coverage",
+        "Demarcate 888 territory before surgical mutation"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "fff-loop-protocol",
+      "name": "FFF Loop Protocol",
+      "description": "5-pass recursive audit sequence applied to archive integrity. Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
+      "tags": [
+        "audit",
+        "recursive",
+        "archive-integrity",
+        "F11"
+      ],
+      "examples": [
+        "Run FFF on archive to verify chain integrity",
+        "Adversarial pressure test the ledger"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "godel-humility-lock",
+      "name": "G\u00f6del Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before any SEAL-grade archive claim. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
+      "tags": [
+        "humility",
+        "F7",
+        "seal",
+        "epistemic"
+      ],
+      "examples": [
+        "Lock archive write before claiming SEVERITY = CRITICAL",
+        "Apply meta-critique to integrity proof"
       ],
       "inputModes": [
         "application/json"
