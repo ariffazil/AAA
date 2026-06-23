@@ -232,57 +232,28 @@
       ]
     }
   ],
-  "supported_protocols": {
-    "a2a": {
-      "version": "1.0.1",
-      "endpoint": "http://127.0.0.1:18789/a2a",
-      "transport": "jsonrpc-http",
-      "streaming": true,
-      "role": "peer"
-    },
-    "mcp": {
-      "version": "3.4.2",
-      "transport": "streamable-http",
-      "role": "consumer",
-      "note": "Routes across arifOS + GEOX + WEALTH + WELL per arifos-mcp-federation skill"
-    }
-  },
-  "a2a_role": {
-    "mesh_role": "peer",
-    "functional_class": "primary",
-    "warga_status": "attested",
-    "warga_class": "AGI",
-    "warga_verified_by": "arifOS",
-    "warga_verified_at": "2026-06-14T18:08:00Z",
-    "hexagon_ring": "\u0394 MIND",
-    "hexagon_stage": "333",
-    "note": "Primary reasoner. All outputs are DRAFT until ratified by 888-APEX."
-  },
+  "supported_protocols": ["a2a", "mcp"],
+  "a2a_role": "primary",
   "mcp_surface": {
-    "role": "consumer",
-    "consumes": [
-      { "id": "arifos", "endpoint": "http://127.0.0.1:8088/mcp",          "key_lanes": ["governance", "routing", "judgment"] },
-      { "id": "geox",   "endpoint": "https://geox.arif-fazil.com/mcp",    "key_lanes": ["evidence", "seismic", "petrophysics"] },
-      { "id": "wealth", "endpoint": "https://wealth.arif-fazil.com/mcp",  "key_lanes": ["npv", "irr", "emv", "stock"] },
-      { "id": "well",   "endpoint": "https://well.arif-fazil.com/mcp",    "key_lanes": ["vitality", "readiness"] },
-      { "id": "aforge", "endpoint": "https://forge.arif-fazil.com/mcp",   "key_lanes": ["build", "execute", "plan"] }
-    ],
-    "exposes": [],
-    "gate_mode": "constitutional"
+    "type": "consumed",
+    "consumed_from": ["arifos", "geox", "wealth", "well", "aforge"],
+    "endpoints": [
+      { "url": "http://127.0.0.1:8088/mcp",         "key_lanes": ["governance", "routing", "judgment"] },
+      { "url": "https://geox.arif-fazil.com/mcp",   "key_lanes": ["evidence", "seismic", "petrophysics"] },
+      { "url": "https://wealth.arif-fazil.com/mcp", "key_lanes": ["npv", "irr", "emv", "stock"] },
+      { "url": "https://well.arif-fazil.com/mcp",   "key_lanes": ["vitality", "readiness"] },
+      { "url": "https://forge.arif-fazil.com/mcp",  "key_lanes": ["build", "execute", "plan"] }
+    ]
   },
   "governance_profile": {
-    "constitutional_floors": {
-      "hard": ["F1", "F2", "F7", "F9", "F10", "F11", "F12", "F13"],
-      "soft": [],
-      "derived": ["F3", "F8"]
-    },
-    "verdict_authority": "888-APEX",
-    "vault": "VAULT999",
+    "constitutional_floors": ["F1", "F2", "F3", "F4", "F7", "F11", "F13"],
+    "verdict_authority": "888_JUDGE|arifOS",
     "self_approval_forbidden": true,
-    "irreversible_requires_human": true,
-    "sovereignty_tier": "constitutional",
-    "principal_type": "architect",
-    "output_status": "DRAFT",
-    "hold_triggers": ["verdict_emission", "irreversible_action", "cross-organ-mutation"]
+    "subagent_default_hold": "888_HOLD",
+    "warga_boundary": true,
+    "vault": "VAULT999",
+    "functional_class": "primary",
+    "mesh_role": "primary",
+    "requires_human_for": ["irreversible", "F13_touch", "verdict_emission"]
   }
 }
