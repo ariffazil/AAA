@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifOS/agent-card/v2.1.0",
+  "title": "arifOS Agent Card Schema v2.1.0",
+  "description": "Extension to arifOS/agent-card/v2.0.0. Adds four machine-negotiable protocol fields: supported_protocols, a2a_role, mcp_surface, governance_profile. All new fields are optional for backward compatibility. Forged 2026-06-23.",
+  "version": "2.1.0",
+  "supersedes": "arifOS/agent-card/v2.0.0",
+  "forged_at": "2026-06-23T00:30:00Z",
+  "forged_by": "Antigravity CLI (agy) — Constitutional Clerk",
+  "ratified_by": "F13 SOVEREIGN — Arif bin Fazil",
+  "hold_status": "888_HOLD_PENDING — PR review required before merge to main",
+
+  "design_principles": [
+    "Backward compatible — all new fields are optional on existing cards",
+    "Machine-negotiable — supported_protocols enables auto-routing without prose-reading",
+    "Constitutional-native — governance_profile is first-class, not a comment",
+    "Progressive — organs expose, harnesses consume, gateways bridge"
+  ],
+
+  "properties": {
+
+    "supported_protocols": {
+      "type": "object",
+      "description": "Machine-readable protocol negotiation surface. Enables external agents to auto-select transport without reading card prose.",
+      "properties": {
+        "a2a": {
+          "type": "object",
+          "properties": {
+            "version":   { "type": "string", "description": "A2A protocol version. e.g. '1.0.0'" },
+            "endpoint":  { "type": ["string", "null"], "description": "A2A base URL. null if not hosting." },
+            "transport": { "type": "string", "enum": ["jsonrpc-https", "jsonrpc-http", "sse"], "description": "Wire transport." },
+            "streaming": { "type": "boolean" },
+            "role":      { "type": "string", "enum": ["gateway", "peer", "observer"] }
+          },
+          "required": ["version", "transport", "role"]
+        },
+        "mcp": {
+          "type": "object",
+          "properties": {
+            "version":   { "type": "string", "description": "MCP/FastMCP version. e.g. '3.4.2' or '1.0.0-FORGED'" },
+            "transport": { "type": "string", "enum": ["streamable-http", "stdio", "sse"], "description": "Wire transport." },
+            "endpoint":  { "type": ["string", "null"], "description": "MCP URL. null if consumer-only." },
+            "role":      { "type": "string", "enum": ["server", "consumer", "both"] },
+            "note":      { "type": "string" }
+          },
+          "required": ["version", "transport", "role"]
+        }
+      }
+    },
+
+    "a2a_role": {
+      "type": "object",
+      "description": "Role classification in the A2A mesh and warga boundary enforcement.",
+      "properties": {
+        "mesh_role": {
+          "type": "string",
+          "enum": ["gateway", "peer", "observer"],
+          "description": "Structural role in the A2A mesh."
+        },
+        "functional_class": {
+          "type": "string",
+          "enum": ["primary", "support", "relay", "organ", "harness", "gateway"],
+          "description": "Functional classification. primary/support = HEXAGON warga. relay = human-interface bridge. organ = domain server. harness = FI coding instrument. gateway = AAA-Cockpit."
+        },
+        "warga_status": {
+          "type": "string",
+          "enum": ["attested", "leased", "pending", "void"],
+          "description": "Citizenship status in AAA warga boundary. attested = F13-verified. leased = registry-assigned. pending = awaiting verification. void = revoked."
+        },
+        "warga_class": {
+          "type": "string",
+          "enum": ["FI", "AGI", "ASI", "APEX", "ORGAN", "RELAY"],
+          "description": "Warga classification tier."
+        },
+        "warga_verified_by": { "type": "string" },
+        "warga_verified_at": { "type": "string", "format": "date-time" },
+        "hexagon_ring":      { "type": ["string", "null"], "description": "HEXAGON ring designation. null for non-HEXAGON agents." },
+        "hexagon_stage":     { "type": ["string", "null"], "description": "HEXAGON stage number. e.g. '333', '555', '888'." },
+        "note":              { "type": "string" }
+      },
+      "required": ["mesh_role", "functional_class", "warga_status", "warga_class"]
+    },
+
+    "mcp_surface": {
+      "type": "object",
+      "description": "Explicit MCP exposure and consumption declaration. Replaces implicit mcp_servers[] string list.",
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["server", "consumer", "both", "none"]
+        },
+        "consumes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id":         { "type": "string", "description": "Organ/server id. e.g. 'arifos', 'geox'" },
+              "endpoint":   { "type": "string", "description": "MCP URL." },
+              "transport":  { "type": "string" },
+              "version":    { "type": "string" },
+              "tool_count": { "type": "integer" },
+              "key_lanes":  { "type": "array", "items": { "type": "string" } }
+            },
+            "required": ["id"]
+          }
+        },
+        "exposes": {
+          "type": "array",
+          "description": "Tool lanes this agent exposes as an MCP server. Empty array for consumers.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "lane":  { "type": "string" },
+              "tools": { "type": "array", "items": { "type": "string" } }
+            }
+          }
+        },
+        "gate_mode": {
+          "type": "string",
+          "enum": ["constitutional", "passthrough", "restricted"],
+          "description": "How MCP tool calls are gated. constitutional = F1-F13 enforced."
+        }
+      },
+      "required": ["role", "gate_mode"]
+    },
+
+    "governance_profile": {
+      "type": "object",
+      "description": "Unified governance declaration. Machine-readable for external agents pre-checking constitutional posture before submitting tasks.",
+      "properties": {
+        "constitutional_floors": {
+          "type": "object",
+          "properties": {
+            "hard":    { "type": "array", "items": { "type": "string", "pattern": "^F[0-9]{1,2}$" } },
+            "soft":    { "type": "array", "items": { "type": "string", "pattern": "^F[0-9]{1,2}$" } },
+            "derived": { "type": "array", "items": { "type": "string", "pattern": "^F[0-9]{1,2}$" } }
+          }
+        },
+        "verdict_authority": {
+          "type": "string",
+          "description": "Which agent issues SEAL/HOLD/VOID for this card's actions. Usually '888-APEX'. Only 'self' for arifos."
+        },
+        "vault": {
+          "type": "string",
+          "enum": ["VAULT999"],
+          "description": "Immutable audit ledger. Always VAULT999."
+        },
+        "self_approval_forbidden": {
+          "type": "boolean",
+          "description": "Must be true for all agents except arifos kernel."
+        },
+        "irreversible_requires_human": {
+          "type": "boolean",
+          "description": "F13 gate — irreversible actions require Arif veto. Always true."
+        },
+        "sovereignty_tier": {
+          "type": "string",
+          "enum": ["F13-absolute", "constitutional", "delegated", "external"],
+          "description": "F13-absolute = Arif himself. constitutional = native federation agent. delegated = governed FI harness. external = third-party."
+        },
+        "principal_type": {
+          "type": "string",
+          "enum": ["llm", "agent", "architect", "human", "kernel"],
+          "description": "Nature of the principal driving this agent."
+        },
+        "hold_triggers": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Conditions that force 888_HOLD for this agent."
+        },
+        "autonomy_tiers": {
+          "type": "object",
+          "properties": {
+            "T1": { "type": "string" },
+            "T2": { "type": "string" },
+            "T3": { "type": "string" }
+          }
+        },
+        "note": { "type": "string" }
+      },
+      "required": ["verdict_authority", "self_approval_forbidden", "irreversible_requires_human", "sovereignty_tier", "principal_type"]
+    }
+
+  },
+
+  "validation_invariants": [
+    {
+      "id": "INV-001",
+      "description": "Only arifos may set self_approval_forbidden: false",
+      "rule": "if id !== 'arifos' then governance_profile.self_approval_forbidden === true"
+    },
+    {
+      "id": "INV-002",
+      "description": "Organ servers must expose at least one tool lane",
+      "rule": "if mcp_surface.role === 'server' then mcp_surface.exposes.length > 0"
+    },
+    {
+      "id": "INV-003",
+      "description": "HEXAGON primaries must be attested, not leased",
+      "rule": "if a2a_role.functional_class === 'primary' then a2a_role.warga_status === 'attested'"
+    },
+    {
+      "id": "INV-004",
+      "description": "Constitutional sovereignty requires F13 in hard floors",
+      "rule": "if governance_profile.sovereignty_tier === 'constitutional' then 'F13' in governance_profile.constitutional_floors.hard"
+    },
+    {
+      "id": "INV-005",
+      "description": "Organs must set mesh_role to 'peer', not 'observer'",
+      "rule": "if a2a_role.functional_class === 'organ' then a2a_role.mesh_role !== 'observer'"
+    }
+  ],
+
+  "migration": {
+    "from": "arifOS/agent-card/v2.0.0",
+    "strategy": "additive",
+    "deprecated_fields": {
+      "mcp_servers": {
+        "status": "deprecated",
+        "replacement": "mcp_surface.consumes[]",
+        "grace_period": "1 release cycle",
+        "alias": "_deprecated_mcp_servers"
+      }
+    }
+  }
+}
