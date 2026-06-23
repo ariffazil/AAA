@@ -54,7 +54,7 @@ AAA is the governed state — the constitutional substrate in which:
 | **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT · A-ARCHIVE · 777-FORGE (Witness) | `agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/` |
 | **Runtime incarnations** | hermes-asi (Telegram @ASI_arifos_bot) · openclaw (port 18789) | `HERMES/`, `openclaw/` |
 | **Domain organs** | arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA | 6 systemd services, 6 ports |
-| **Forge instruments** | opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli | `a2a-server/agent-cards/forge/fi-001..fi-009` |
+| **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-011` |
 | **Role agents** (bounded leases) | EXTERNAL_WATCHER · KERNEL_SCRIBE · OPS_PLANNER · SELF_FORGE_ADVISOR | `agents/roles/` |
 | **Immutable ledger** | VAULT999 (append-only, hash-chained) | `arifOS/VAULT999/` |
 | **Cockpit** (the surface) | React 19 + A2A gateway (port 3001) | `src/`, `a2a-server/` |
@@ -725,7 +725,7 @@ AAA/
 │   │   ├── A-ARCHIVE/    IDENTITY.md · agent-card.json
 │   │   └── 777-forge/    AGENTS · BOOTSTRAP · HEARTBEAT · IDENTITY · SOUL · TOOLS
 │   ├── RUNTIME dirs: hermes-asi · hermes-ops · openclaw
-│   ├── CODING dirs: claude-code · codex · opencode · copilot · aider · kimi-code · continue-cli · antigravity
+│   ├── CODING dirs: grok-build · claude-code · codex · opencode · copilot · aider · kimi-code · continue-cli · antigravity · gemini-cli
 │   ├── ROLE dirs: external-watcher · kernel-scribe · ops-planner · self-forge-advisor · warga
 │   └── verify_art_binding.py
 │
@@ -1161,9 +1161,10 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  citizens:       A-AUDIT · A-ARCHIVE)                                 │
 │  WITNESS tier:   777-FORGE (session spawn attestation)                │
 │  Runtime:        hermes-asi (Telegram) · openclaw (port 18789)        │
-│  Coding:         opencode · claude-code · qwen-code · antigravity ·   │
-│                  codex · copilot · aider · kimi-code · continue-cli    │
-│                  (9 forge instruments · 97-tool capability fabric)     │
+│  Coding:         grok-build · opencode · claude-code · qwen-code ·     │
+│                  antigravity · codex · copilot · aider ·               │
+│                  kimi-code · continue-cli · gemini-cli                 │
+│                  (11 forge instruments · 97-tool capability fabric)    │
 │  Role agents:    EXTERNAL_WATCHER · KERNEL_SCRIBE ·                   │
 │                  OPS_PLANNER · SELF_FORGE_ADVISOR                     │
 │                                                                        │
