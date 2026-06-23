@@ -5,8 +5,9 @@
 
 meta:
   version: 1
-  last_audit: "2026-06-20T14:20:00+00:00"
-  auditor: FORGE (000Ω)
+  last_audit: "2026-06-22"
+  auditor: Grok Build (self + AAA registry update per Arif)
+  notes: "grok-build (xAI) registered as CODING/HARNESS citizen. See agents/grok-build/ + a2a-server/agent-cards/grok-build.json + updated AGENT_REGISTRY.md / AAA_AGENTS_REGISTRY.json"
   scope: "All federation organs + AAA warga + forge instruments"
 
 # ══════════════════════════════════════════════════════════════

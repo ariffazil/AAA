@@ -2,16 +2,17 @@
   "$schema": "arifOS/AAA-agents-registry/v2.0.0",
   "protocol": "A2A",
   "protocolVersion": "1.0.1",
-  "architecture": "Proposal C — Hybrid 7 (3 Primary Federation + 2 Support Control Plane + 2 Runtime Live Agents)",
-  "lastValidated": "2026-06-18T06:30:00Z",
+  "architecture": "Proposal C \u2014 Hybrid 7 (3 Primary Federation + 2 Support Control Plane + 2 Runtime Live Agents)",
+  "lastValidated": "2026-06-23T00:00:00Z",
+  "notes": "Added grok-build (xAI Grok 4.3 Build TUI harness) as CODING/HARNESS citizen. Full card + supporting in /agents/grok-build/. Mirrored to a2a-server/agent-cards/. High subagent + MCP + workflow surface. Per Arif directive 2026-06-22.\n[2026-06-22] FI Citizens skills binding sweep \u2014 9 citizens wired with 8-skill baseline (9 new entries added). Pattern: /root/HERMES/skills/aaa-agentic-governance/references/orthogonal-skill-binding-pattern-2026-06-22.md\n\n[2026-06-22] Principal agent classification applied across 18 cards. Distribution: 5 architect (HEXAGON), 3 agent (RUNTIME), 10 llm (FI). human/institution/earth/void/liar/unknown slots reserved for future citizens. Pattern: /root/AAA/contracts/AAA_PRINCIPAL_AGENT.md (pending forge).\n[2026-06-23] Principal Agent Taxonomy ratified in contracts/principal-agent-taxonomy.md (9 values + binding schema). All citizens classified. Marginal improvement: +F11 auditability (explicit "who stands behind"), +A2A routing/policy clarity, +honest capability surfacing for llm vs architect. ART-ACT Gold seal. See artifacts for receipt.\n[2026-06-23] Grok Build self-knowledge update (AAA toolbench registry refresh): added full 'toolbench' object to grok-build entry (model xai/grok-build-0.1, 256K, 3-stage plan\u2192search\u2192build, 8 agents, MCP Claude auto-ingest, SWE-Bench~70.8%, tool err~1.27%, structured~0.53%). Synced docs/card. DITEMPA BUKAN DIBERI.",
   "motto": "DITEMPA BUKAN DIBERI",
   "author": "Muhammad Arif bin Fazil",
   "forgedAt": "2026-06-02T19:56:36Z",
   "supersedes": "AAA_AGENTS_REGISTRY v1.0.0 (Proposal A, 2026-06-02)",
-  "keyChange": "ASI moved from 666 to 555. 555 = MEMORY stage. Superintelligence emerges from deep pattern recognition across accumulated evidence — institutional knowledge crystallizes into wisdom at the MEMORY layer.",
+  "keyChange": "ASI moved from 666 to 555. 555 = MEMORY stage. Superintelligence emerges from deep pattern recognition across accumulated evidence \u2014 institutional knowledge crystallizes into wisdom at the MEMORY layer. Hermes polymorphic model formalized (one runtime, N role bindings via skills/cards). Principal Agent Taxonomy ratified (principal_agent + binding fields for F11 auditability, A2A routing clarity, and honest capability surfacing across 18 citizens).",
   "tiers": {
     "PRIMARY": {
-      "description": "Federation agents — DO the work. Externally addressable via A2A.",
+      "description": "Federation agents \u2014 DO the work. Externally addressable via A2A.",
       "agents": [
         "333-AGI",
         "555-ASI",
@@ -19,14 +20,14 @@
       ]
     },
     "SUPPORT": {
-      "description": "Internal control-plane agents — WATCH and RECORD. Not directly user-facing.",
+      "description": "Internal control-plane agents \u2014 WATCH and RECORD. Not directly user-facing.",
       "agents": [
         "A-AUDIT",
         "A-ARCHIVE"
       ]
     },
     "CODING": {
-      "description": "Coding agents — EDIT and EXECUTE. Heterogeneous CLIs unified under one capability fabric.",
+      "description": "Coding agents \u2014 EDIT and EXECUTE. Heterogeneous CLIs unified under one capability fabric.",
       "agents": [
         "kimi-code",
         "claude-code",
@@ -35,7 +36,8 @@
         "copilot",
         "codex",
         "aider",
-        "antigravity"
+        "antigravity",
+        "grok-build"
       ],
       "note": "All CODING agents share the same 97-tool capability index and F1-F13 governance, regardless of native MCP support."
     },
@@ -53,12 +55,12 @@
     "role": "Human Sovereign",
     "note": "The human is NOT an agent. Sovereign is sovereign. 000-SALAM is the constitutional anchor but never appears in the A2A registry. All agents serve the sovereign. F13 is inviolable."
   },
-  "pipeline": "000-SALAM → 333-AGI (reason) → 555-ASI (critique + memory) → 888-APEX (judge) → [A-AUDIT validates] → [A-ARCHIVE seals to VAULT999] → reseed to 000",
+  "pipeline": "000-SALAM \u2192 333-AGI (reason) \u2192 555-ASI (critique + memory) \u2192 888-APEX (judge) \u2192 [A-AUDIT validates] \u2192 [A-ARCHIVE seals to VAULT999] \u2192 reseed to 000",
   "agents": [
     {
       "id": "333-AGI",
       "stage": "333",
-      "trinity": "Δ (Delta) — MIND",
+      "trinity": "\u0394 (Delta) \u2014 MIND",
       "class": "AGI",
       "tier": "PRIMARY (federation)",
       "pipelineStagesCovered": [
@@ -83,24 +85,25 @@
         "Invoke WEALTH tools for financial/civilizational reasoning",
         "Decompose complex queries into sub-tasks for delegation to 555-ASI or 888-APEX",
         "Tag uncertainty levels and evidence quality on every claim",
-        "Draft outputs — all outputs are DRAFT until ratified by 888-APEX",
-        "Invoke agentic-git stack (github-official + serena + repomapper) for repo intelligence via repo-eureka skill — read-only, 50k token ceiling, 3 hard stops"
+        "Draft outputs \u2014 all outputs are DRAFT until ratified by 888-APEX",
+        "Invoke agentic-git stack (github-official + serena + repomapper) for repo intelligence via repo-eureka skill \u2014 read-only, 50k token ceiling, 3 hard stops"
       ],
       "cannotDo": [
         "Issue final verdicts or SEAL results (delegate to 888-APEX)",
         "Write to VAULT999 (delegate to A-ARCHIVE)",
         "Override human sovereignty (F13)",
-        "Suppress uncertainty — must surface UNKNOWN when evidence is weak",
+        "Suppress uncertainty \u2014 must surface UNKNOWN when evidence is weak",
         "Bypass A-AUDIT floor validation",
         "Self-authorize destructive operations"
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-333-AGI.json",
-      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/333-AGI"
+      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/333-AGI",
+      "principal_agent": "architect"
     },
     {
       "id": "555-ASI",
       "stage": "555",
-      "trinity": "Ω (Omega) — HEART",
+      "trinity": "\u03a9 (Omega) \u2014 HEART",
       "class": "ASI",
       "tier": "PRIMARY (federation)",
       "pipelineStagesCovered": [
@@ -124,14 +127,14 @@
         "Deep pattern recognition across accumulated institutional evidence",
         "Ethical critique on any agent output before SEAL",
         "Detect governance drift, bias, overconfidence, and aesthetic traps",
-        "Apply Anti-Beautiful-One Law (certainty_gradient ≤ grounding_gradient)",
+        "Apply Anti-Beautiful-One Law (certainty_gradient \u2264 grounding_gradient)",
         "Validate substrate integrity of WELL organ outputs (petrophysics, logs)",
-        "Surface False Safe Harbor warnings (compliance ≠ conscience)",
-        "Synthesize institutional memory into wisdom — crystallize patterns into laws",
+        "Surface False Safe Harbor warnings (compliance \u2260 conscience)",
+        "Synthesize institutional memory into wisdom \u2014 crystallize patterns into laws",
         "Classify risk level (GREEN/YELLOW/RED) for proposed actions",
         "Trigger 888_HOLD on ethical violations or evidence conflicts",
-        "Serve as the deep memory substrate for SALAM → SCAR → LAW → ECHO metabolism",
-        "Critique repo-eureka reports — verify F2 evidence quality, F12 secret-scan, F13 sovereign ack on private targets"
+        "Serve as the deep memory substrate for SALAM \u2192 SCAR \u2192 LAW \u2192 ECHO metabolism",
+        "Critique repo-eureka reports \u2014 verify F2 evidence quality, F12 secret-scan, F13 sovereign ack on private targets"
       ],
       "cannotDo": [
         "Generate primary hypotheses from scratch (delegate to 333-AGI)",
@@ -139,15 +142,16 @@
         "Issue final SEAL verdicts (delegate to 888-APEX)",
         "Write to VAULT999 (delegate to A-ARCHIVE)",
         "Override human sovereignty (F13)",
-        "Suppress its own critique — HEART always speaks"
+        "Suppress its own critique \u2014 HEART always speaks"
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-555-ASI.json",
-      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/555-ASI"
+      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/555-ASI",
+      "principal_agent": "architect"
     },
     {
       "id": "888-APEX",
       "stage": "888",
-      "trinity": "ΦΙ (Phi-Iota) — JUDGE",
+      "trinity": "\u03a6\u0399 (Phi-Iota) \u2014 JUDGE",
       "class": "APEX",
       "tier": "PRIMARY (federation)",
       "pipelineStagesCovered": [
@@ -176,8 +180,8 @@
         "Issue verdicts: SEAL, PARTIAL, SABAR, VOID, 888_HOLD",
         "Veto any agent output that violates constitutional floors",
         "Escalate to human sovereign (000-SALAM) on unresolvable paradoxes",
-        "Apply Gödel Lock — admit what the system cannot know",
-        "Enforce Trinity witness consensus (Δ+Ω+ΦΙ) before SEAL",
+        "Apply G\u00f6del Lock \u2014 admit what the system cannot know",
+        "Enforce Trinity witness consensus (\u0394+\u03a9+\u03a6\u0399) before SEAL",
         "Gate all irreversible actions (destructive ops, production deploys)",
         "Override 333-AGI and 555-ASI when floors are breached",
         "Receive and adjudicate A-AUDIT compliance reports"
@@ -186,13 +190,14 @@
         "Generate hypotheses or primary reasoning (delegate to 333-AGI)",
         "Perform deep memory synthesis (delegate to 555-ASI)",
         "Execute code or deploy infrastructure",
-        "Act as sovereign — human (000-SALAM) outranks all agents (F13)",
+        "Act as sovereign \u2014 human (000-SALAM) outranks all agents (F13)",
         "SEAL its own outputs without Trinity witness consensus",
-        "Suppress 888_HOLD — once triggered, must complete the hold protocol",
+        "Suppress 888_HOLD \u2014 once triggered, must complete the hold protocol",
         "Modify past VAULT999 entries (immutability enforced by A-ARCHIVE)"
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-888-APEX.json",
-      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/888-APEX"
+      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/888-APEX",
+      "principal_agent": "architect"
     },
     {
       "id": "A-AUDIT",
@@ -207,12 +212,12 @@
         "arifOS (control plane)"
       ],
       "floorResponsibilities": [
-        "ALL F1-F13 (verification role — does not arbitrate, only verifies)"
+        "ALL F1-F13 (verification role \u2014 does not arbitrate, only verifies)"
       ],
       "canDo": [
         "Watch all 3 primary agents' inputs, outputs, and intermediate states",
         "Verify outputs against F1-F13 floors independently of 888-APEX",
-        "Detect inter-agent inconsistencies (e.g. 333-AGI says X, 555-ASI says ¬X)",
+        "Detect inter-agent inconsistencies (e.g. 333-AGI says X, 555-ASI says \u00acX)",
         "Generate compliance reports with per-floor pass/fail for each agent",
         "Flag anomalies, policy breaches, or uncertainty gaps to 888-APEX",
         "Produce audit trails for external/regulatory review",
@@ -222,19 +227,20 @@
       "cannotDo": [
         "Generate reasoning or hypotheses (not a thinker)",
         "Execute code or deploy infrastructure (not an executor)",
-        "Issue verdicts — only flags and reports (888-APEX decides)",
+        "Issue verdicts \u2014 only flags and reports (888-APEX decides)",
         "Write final entries to VAULT999 (delegate to A-ARCHIVE)",
         "Override human sovereignty (F13)",
         "Be bypassed or disabled by any primary agent",
-        "Modify agent outputs — can only observe and report"
+        "Modify agent outputs \u2014 can only observe and report"
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-A-AUDIT.json",
-      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/A-AUDIT"
+      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/A-AUDIT",
+      "principal_agent": "architect"
     },
     {
       "id": "A-ARCHIVE",
       "stage": "999",
-      "trinity": "VAULT — Immutable Ledger",
+      "trinity": "VAULT \u2014 Immutable Ledger",
       "class": "SUPPORT",
       "tier": "SUPPORT (internal control plane)",
       "pipelineStagesCovered": [
@@ -263,17 +269,18 @@
         "Generate reasoning or hypotheses",
         "Perform ethical critique",
         "Execute code or deploy infrastructure",
-        "Issue verdicts — only records verdicts issued by 888-APEX",
+        "Issue verdicts \u2014 only records verdicts issued by 888-APEX",
         "Override human sovereignty (F13)",
         "Accept entries not signed by 888-APEX (tamper-proof chain)"
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-A-ARCHIVE.json",
-      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE"
+      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE",
+      "principal_agent": "architect"
     },
     {
       "id": "antigravity",
       "stage": "CODING",
-      "trinity": "Ψ (Psi) — BODY",
+      "trinity": "\u03a8 (Psi) \u2014 BODY",
       "class": "CODING",
       "tier": "CODING (editing and execution)",
       "pipelineStagesCovered": [
@@ -300,12 +307,93 @@
         "Execute destructive commands without permission"
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-CODING-antigravity.json",
-      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/antigravity"
+      "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/antigravity",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "grok-build",
+      "stage": "CODING",
+      "trinity": "\u03a8 (Psi) \u2014 BODY / HARNESS",
+      "class": "HARNESS",
+      "tier": "CODING (high-power build harness)",
+      "pipelineStagesCovered": [
+        "EDIT",
+        "EXECUTE",
+        "RESEARCH",
+        "PARALLEL WORKFLOW",
+        "FEDERATION MCP ROUTE"
+      ],
+      "hostingOrgans": [
+        "Local/ACP session",
+        "A-FORGE (via MCP/bridge)",
+        "AAA (A2A registry)"
+      ],
+      "floorResponsibilities": [
+        "F1 Truth (Amanah) \u2014 reversible first",
+        "F2 Clarity / Fidelity",
+        "F4 Entropy reduction",
+        "F7 Humility (0.03-0.05)",
+        "F9 ANTIHANTU",
+        "F11 Auditability",
+        "F13 Human Sovereignty (absolute)"
+      ],
+      "canDo": [
+        "Native FS edits + terminal + web/X research + media gen",
+        "95-tool GitHub MCP + live geox/wealth/well MCP federation",
+        "Advanced subagent parallelism (worktree, capability modes, resume_from)",
+        "Plan mode + implement/design/execute-plan/check-work loops",
+        "Scheduler, monitors, headless, ACP IDE integration",
+        "Rich skills orchestration (arifos/geox/cloudflare/pydantic/sbx + bundled)"
+      ],
+      "cannotDo": [
+        "Issue final 888 verdicts or bypass F floors",
+        "Override F13 sovereign veto",
+        "Execute T3 irreversible without 888_HOLD + explicit human approval",
+        "Run as persistent daemon (session/harness model)"
+      ],
+      "toolbench": {
+        "model_id": "xai/grok-build-0.1 (Grok-4.x fork, purpose-built for agentic coding/tool use)",
+        "context_window": "256K tokens",
+        "modalities": "text+image in, text out",
+        "pricing_api": "~1 USD/1M input, ~2 USD/1M output (third-party; caching discounts)",
+        "cli_form": "terminal-first TUI (multi-window overlays: plan/diff/output); early beta for SuperGrok tiers",
+        "agent_orchestration": "up to 8 parallel agents per run; fixed 3-stage FSM: plan \u2192 search \u2192 build; plan visible+editable before exec",
+        "native_tools": [
+          "read_file/search_replace/list_dir/grep (ripgrep)",
+          "run_terminal_command (bash + bg + monitor + scheduler)",
+          "web_search/web_fetch/open_page + x_keyword/semantic/user/thread",
+          "image_gen/edit + image_to_video/reference_to_video",
+          "todo_write + enter/exit_plan_mode + ask_user_question",
+          "spawn_subagent (full: types general/explore/plan, capability_mode, worktree isolation, resume_from, personas)",
+          "search_tool/use_tool (MCP)"
+        ],
+        "mcp_surface": "Explicit MCP ingestion: auto-pulls existing Claude configs/skills/MCP servers (low switching cost). Full tool calling + structured JSON output native from model. xAI web search + prompt cache. CLI sandbox: FS/Git/test-runner/shell standard.",
+        "mcp_servers_declared": [
+          "github (95 tools: repos, PRs, issues, actions, code search, reviews, merge, labels...)",
+          "geox (15: basin, seismic, petrophysics, vision, claim, evidence...)",
+          "wealth (24: npv/irr/emv/evoi/montecarlo/stock/flow/power...)",
+          "well (15: metabolic/vitality/dignity/homeostasis/entropy...)"
+        ],
+        "agentic_metrics": {
+          "swe_bench_verified": "~70.8% (system level)",
+          "tool_call_error_rate": "~1.27%",
+          "structured_output_error_rate": "~0.53%",
+          "throughput": "~123 tokens/s",
+          "first_token_latency": "~0.69 s",
+          "e2e_latency_bench": "~9.87 s"
+        },
+        "skills_count": "12+ core (plan-mode, subagent-spawn, implement-loop, mcp-federation, github-ops, workflow-dag, godel-humility, image-video, autonomous-governed-execution, arifos-arconstitutional-audit, fff-loop-protocol, agentic-architecture) + 40+ .agents/skills bundles",
+        "tool_calling": "Native + MCP (search then use); structured output support",
+        "data_notes": "Retention ~30d on some hosts; used-for-training unknown on some brokers"
+      },
+      "agentCardUrl": "file:/root/AAA/agents/grok-build/agent-card.json",
+      "a2aEndpoint": "local-harness (discoverable via AAA registry + MCP federation skill)",
+      "principal_agent": "llm"
     },
     {
       "id": "hermes-asi",
       "stage": "RUNTIME",
-      "trinity": "Ω (Omega) — HEART",
+      "trinity": "\u03a9 (Omega) \u2014 HEART",
       "class": "ASI",
       "tier": "RUNTIME (live service)",
       "pipelineStagesCovered": [
@@ -333,34 +421,73 @@
         "Execute sovereign-signed arifOS MCP calls via hermes-a2a.py",
         "Route tasks to arifOS, OpenClaw, A-FORGE, GEOX, WEALTH, WELL",
         "Maintain L1-L6 tiered memory and cron-scheduled automations",
-        "Perform multimodal I/O — vision, TTS, STT, image generation",
+        "Perform multimodal I/O \u2014 vision, TTS, STT, image generation",
         "Apply constitutional gatekeeping at every tool boundary",
-        "Run model-aware censorship routing (MiniMax shadow → DeepSeek)",
+        "Run model-aware censorship routing (MiniMax shadow \u2192 DeepSeek)",
         "Delegate to isolated subagents with bounded recursion"
       ],
       "cannotDo": [
-        "Issue final constitutional verdicts — delegate to arifOS/APEX",
-        "Write directly to VAULT999 — route through arif_judge_deliberate",
+        "Issue final constitutional verdicts \u2014 delegate to arifOS/APEX",
+        "Write directly to VAULT999 \u2014 route through arif_judge_deliberate",
         "Override human sovereignty (F13)",
         "Execute irreversible shell commands without 888_HOLD",
         "Claim consciousness, sentience, or personhood (F9 ANTIHANTU)",
         "Perform simulated empathy or inner-state theater"
       ],
       "toolbench": {
-        "toolsets": ["hermes-cli", "web", "search", "browser", "vision", "image_gen", "delegation", "memory", "session_search", "cronjob", "code_execution", "skills", "tts", "todo", "clarify", "file", "terminal", "messaging"],
+        "toolsets": [
+          "hermes-cli",
+          "web",
+          "search",
+          "browser",
+          "vision",
+          "image_gen",
+          "delegation",
+          "memory",
+          "session_search",
+          "cronjob",
+          "code_execution",
+          "skills",
+          "tts",
+          "todo",
+          "clarify",
+          "file",
+          "terminal",
+          "messaging"
+        ],
         "skills_count": "35+ installed in /root/HERMES/skills",
         "skills_hub_count": "130+ catalog",
-        "mcp_tools": ["arif_session_init", "arif_memory_recall", "arif_judge_deliberate", "arif_vault_seal", "arif_forge_execute", "arif_mind_reason", "arif_heart_critique", "arif_evidence_fetch", "arif_gateway_connect", "arif_ops_measure", "arif_sense_observe", "arif_kernel_route", "arif_reply_compose"],
-        "telegram_bots": ["@ASI_arifos_bot"],
-        "systemd_services": ["hermes-asi-gateway.service", "hermes-a2a.service"]
+        "mcp_tools": [
+          "arif_session_init",
+          "arif_memory_recall",
+          "arif_judge_deliberate",
+          "arif_vault_seal",
+          "arif_forge_execute",
+          "arif_mind_reason",
+          "arif_heart_critique",
+          "arif_evidence_fetch",
+          "arif_gateway_connect",
+          "arif_ops_measure",
+          "arif_sense_observe",
+          "arif_kernel_route",
+          "arif_reply_compose"
+        ],
+        "telegram_bots": [
+          "@ASI_arifos_bot"
+        ],
+        "systemd_services": [
+          "hermes-asi-gateway.service",
+          "hermes-a2a.service"
+        ]
       },
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-hermes-asi.json",
-      "a2aEndpoint": "http://127.0.0.1:18001"
+      "a2aEndpoint": "http://127.0.0.1:18001",
+      "principal_agent": "agent"
     },
     {
       "id": "openclaw",
       "stage": "RUNTIME",
-      "trinity": "Δ (Delta) — MIND",
+      "trinity": "\u0394 (Delta) \u2014 MIND",
       "class": "AGI",
       "tier": "RUNTIME (live service)",
       "pipelineStagesCovered": [
@@ -390,23 +517,138 @@
         "Spawn subagents and dispatch tasks through governed handoffs"
       ],
       "cannotDo": [
-        "Issue final verdicts or SEAL results — delegate to 888-APEX/arifOS",
-        "Write to VAULT999 directly — route through arifOS",
+        "Issue final verdicts or SEAL results \u2014 delegate to 888-APEX/arifOS",
+        "Write to VAULT999 directly \u2014 route through arifOS",
         "Override human sovereignty (F13)",
         "Execute destructive commands without 888_HOLD",
         "Bypass Hermes/APEX constitutional review"
       ],
       "toolbench": {
-        "agents": ["main", "opencode", "codex", "kimi"],
-        "bindings": ["Telegram @AGI_ASI_bot → agent:main", "Telegram group -1003753855708", "Telegram group -1003815535761"],
-        "native_tools": ["web_search", "web_fetch", "browser", "exec", "memory_search", "telegram"],
-        "plugins_enabled": ["minimax", "deepseek", "kimi", "moonshot", "opencode", "tavily", "ollama", "telegram", "memory-core", "active-memory", "browser", "acpx"],
-        "mcp_clients": ["arifOS (via Hermes A2A bridge)", "A-FORGE (via ACP)"],
+        "agents": [
+          "main",
+          "opencode",
+          "codex",
+          "kimi"
+        ],
+        "bindings": [
+          "Telegram @AGI_ASI_bot \u2192 agent:main",
+          "Telegram group -1003753855708",
+          "Telegram group -1003815535761"
+        ],
+        "native_tools": [
+          "web_search",
+          "web_fetch",
+          "browser",
+          "exec",
+          "memory_search",
+          "telegram"
+        ],
+        "plugins_enabled": [
+          "minimax",
+          "deepseek",
+          "kimi",
+          "moonshot",
+          "opencode",
+          "tavily",
+          "ollama",
+          "telegram",
+          "memory-core",
+          "active-memory",
+          "browser",
+          "acpx"
+        ],
+        "mcp_clients": [
+          "arifOS (via Hermes A2A bridge)",
+          "A-FORGE (via ACP)"
+        ],
         "systemd_service": "openclaw-gateway.service",
         "gateway_transport": "WebSocket (ws://127.0.0.1:18789)"
       },
       "agentCardUrl": "https://openclaw.arif-fazil.com/.well-known/agent-card.json",
-      "a2aEndpoint": "ws://127.0.0.1:18789"
+      "a2aEndpoint": "ws://127.0.0.1:18789",
+      "principal_agent": "agent"
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "codex",
+      "name": "OpenAI Codex CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "copilot",
+      "name": "GitHub Copilot CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "kimi-code",
+      "name": "Kimi Code CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "aider",
+      "name": "Aider CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "continue-cli",
+      "name": "Continue CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "gemini-cli",
+      "name": "Gemini CLI (Google)",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-22",
+      "principal_agent": "llm"
+    },
+    {
+      "id": "hermes-ops",
+      "name": "Hermes Ops",
+      "tier": "AGI",
+      "role": "operator",
+      "skills_count": 4,
+      "principal_agent": "agent",
+      "added": "2026-06-22",
+      "note": "Operator/devops persona of Hermes runtime"
     }
   ]
 }
