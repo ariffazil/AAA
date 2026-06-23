@@ -112,8 +112,15 @@ type KernelHealth = {
   };
 };
 
+interface OrganAttestationInfo {
+  name: string;
+  healthy: boolean;
+  port: number;
+  detail: string;
+}
+
 const TEST_ALERT_PATTERN = /(Phase1|Test Organ|Verification Test|Dry.?Run)/i;
-const MCP_PROTOCOL = 'JSON-RPC 2.0'; // SOT — all 6 organs unified, streamable-http, ΔS ≤ 0
+const _MCP_PROTOCOL = 'JSON-RPC 2.0'; // SOT — all 6 organs unified, streamable-http, ΔS ≤ 0
 
 const GOLDEN_PATH = ['SENSE', 'MIND', 'HEART', 'JUDGE', 'VAULT'] as const;
 
@@ -180,7 +187,7 @@ export default function Cockpit() {
   });
 
   // Live organ attestation from arifOS + direct health probes
-  const [organAttestation, setOrganAttestation] = useState<{ organs: any[]; arifos_attestation: any; timestamp: string } | null>(null);
+  const [organAttestation, setOrganAttestation] = useState<{ organs: OrganAttestationInfo[]; arifos_attestation: unknown; timestamp: string } | null>(null);
   const [organAttestationLoading, setOrganAttestationLoading] = useState(true);
 
   // Model governance card from spine
@@ -837,7 +844,7 @@ export default function Cockpit() {
                 <p className="text-white/30 font-mono text-xs">Polling arifOS attestation stream…</p>
               </div>
             )}
-            {organAttestation?.organs?.map((organ: any) => (
+            {organAttestation?.organs?.map((organ: OrganAttestationInfo) => (
               <div
                 key={organ.name}
                 className={`p-5 border rounded-lg ${
