@@ -23,13 +23,22 @@
       "server_description": "Read-only code, symbols, files, ADRs for sovereign planning. Ties to arifOS ADRs."
     },
     "mcp-memory": {
-      "_comment": "Narrow memory/governance. ADRs, Cooling Ledger, Dream summaries, F-floor search. Escalate change to arifOS 888.",
+      "_comment": "Narrow memory/governance. ADRs, Cooling Ledger, Dream summaries, F-floor search, rhythm. Escalate change to arifOS 888.",
       "command": "python",
       "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_memory"],
       "env": { "REPO_ROOT": "/root" },
       "transport": "stdio",
       "server_label": "mcp-memory",
-      "server_description": "Sovereign memory surface for reflection, ADRs, Cooling Ledger, Dream Engine. Governance overlay."
+      "server_description": "Sovereign memory surface for reflection, ADRs, Cooling Ledger, Dream Engine, daily rhythm. Governance overlay."
+    },
+    "mcp-arifos-kernel": {
+      "_comment": "Narrow direct transport of arifOS constitutional kernel. Low entropy. Health, floors, rhythm, kernel memory, gated judgment entry, malam reflection writer.",
+      "command": "python",
+      "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_arifos_kernel"],
+      "env": { "REPO_ROOT": "/root" },
+      "transport": "stdio",
+      "server_label": "mcp-arifos-kernel",
+      "server_description": "arifOS kernel (floors, entropy, 888 entry, daily rhythm, sealed memory). Read-first. Escalate via 888/A2A. Optimal for Grok Build."
     },
     "mcp-repo-write": {
       "_comment": "GATED write tier. All tools return HOLD requiring lease/888. Separate from read.",
