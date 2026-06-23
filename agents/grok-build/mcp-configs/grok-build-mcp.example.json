@@ -14,13 +14,13 @@
       "transport": "stdio"
     },
     "mcp-repo-read": {
-      "_comment": "Narrow read tier for Grok Build. list_files, read_file, search_symbols, get_adr, search_memory. No writes.",
+      "_comment": "Narrow read tier (cognitive clarity focus). Evolved tools deliver summary-first, reasoning, related context, limitations, suggestions. query_context for synthesis.",
       "command": "python",
       "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_repo_read"],
       "env": { "REPO_ROOT": "/root" },
       "transport": "stdio",
       "server_label": "mcp-repo-read",
-      "server_description": "Read-only code, symbols, files, ADRs for sovereign planning. Ties to arifOS ADRs."
+      "server_description": "High-clarity read-only surface: repository structure, code symbols, ADRs with synthesis + proactive related context. Strictly bounded, evidence-based. Reduces cognitive load for Grok Build planning."
     },
     "mcp-memory": {
       "_comment": "Narrow memory/governance. ADRs, Cooling Ledger, Dream summaries, F-floor search, rhythm. Escalate change to arifOS 888.",
