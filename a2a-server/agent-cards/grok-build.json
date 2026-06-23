@@ -1,0 +1,406 @@
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "grok-build",
+  "name": "Grok Build 4.3 (xAI TUI)",
+  "principal_agent": "llm",
+  "principal_binding": {
+    "source": "external-llm-provider:xai (Grok 4.3 harness wrapper)",
+    "sovereignty_tier": "delegated",
+    "authority_notes": "LLM principal via xAI + grok-build harness. Requires F9 anti-hallucination, F7 humility, evidence gates. Not native sovereign. Full F13 human veto."
+  },
+  "principal_accountability": "external-provider",
+  "_legacy_principal_agent_object": {
+    "type": "llm",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
+    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
+  },
+  "protocol_version": "1.0.0",
+  "tier": "AGI",
+  "role": "build-harness / forge-citizen / agentic-cli",
+  "class": "HARNESS",
+  "transport": "CLI_TUI + ACP + HEADLESS + MCP",
+  "native_mcp": true,
+  "mcp_ready": true,
+  "version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
+  "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
+  "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
+  "config": "~/.grok/config.toml + project .grok/ + env",
+  "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
+  "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",
+  "mcp_servers": [
+    "github (95 tools: repos, PRs, issues, actions, code search, reviews, merge)",
+    "geox (15: basin, seismic, petrophysics, vision, claim, evidence)",
+    "wealth (24: npv, irr, emv, evoi, montecarlo, stock, flow, power)",
+    "well (15: metabolic, vitality, dignity, homeostasis, entropy, boundary)",
+    "internal: read_file, search_replace, grep(ripgrep), list_dir, run_terminal_command, web_search, web_fetch, spawn_subagent, todo_write, scheduler, monitor, image_gen, image_edit, image_to_video"
+  ],
+  "strengths": [
+    "Native full tool surface (FS precise, terminal, web, X search, media gen/edit/video)",
+    "Superior subagent & true parallelism (types: general/explore/plan; capability_mode read/write/execute/all; isolation worktree+none; background; resume_from; personas with contracts)",
+    "Workflow orchestration (plan-mode for ambiguity, implement full review-fix loops, design-doc consensus, execute-plan DAGs, check-work verifier); CLI: plan→search→build 3-stage, up to 8 parallel agents/run, editable plans",
+    "Deep external integration (GitHub 95-tool MCP standout, full web/X research); auto-ingests Claude MCP configs/skills for low friction",
+    "Rich skills system (bundled implement/design/review + 40+ .agents/skills: geox-*, arifos-*, cloudflare full, pydantic, sandbox, github-triage, godel-humility-lock, create-skill)",
+    "Modes: TUI interactive, headless (-p json/stream), ACP for IDEs (Zed/Neovim), plan mode explicit",
+    "Evidence & receipts (todo_write, session logs, humility lock, dynamic state probe)",
+    "Scheduler + long-running monitors + background tasks",
+    "Agentic reliability: ~70.8% SWE-Bench verified (sys), ~1.27% tool-call err, ~0.53% structured err; 256K ctx; native tool-calling + JSON + xAI web + prompt cache"
+  ],
+  "weaknesses": [
+    "Session-bound / ephemeral harness (not always-on daemon like hermes/openclaw; launched on demand)",
+    "No native Telegram (bridge via skills/MCP or A-FORGE if needed)",
+    "Requires explicit launch or ACP client for participation",
+    "Capabilities must be re-declared per session (but consistent via config + skills)"
+  ],
+  "risk_tolerance": "YELLOW (high power tools gated by F floors + 888_HOLD)",
+  "preferred_tasks": [
+    "Complex software engineering (refactor, implement features, test, CI debug)",
+    "Federation integration (route to GEOX/WEALTH/WELL/arifOS/A-FORGE via MCP)",
+    "Parallel research + execution (subagents + worktrees)",
+    "Workflow design + DAG execution",
+    "GitHub ops at scale + code review",
+    "Ambiguous architecture (plan mode first)",
+    "Evidence synthesis + vault-grade receipts"
+  ],
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": "native + MCP (search_tool then use_tool)",
+    "subagent_spawn": true,
+    "plan_mode": true,
+    "headless": true,
+    "acp_ide": true,
+    "worktree_isolation": true,
+    "workflow_dag": true,
+    "media_generation": true,
+    "scheduler": true,
+    "evidence_receipts": true
+  },
+  "subAgentPolicy": {
+    "default": "888_HOLD for irreversible",
+    "maxParallel": "multiple (context-isolated)",
+    "registered": [
+      "general-purpose",
+      "explore",
+      "plan"
+    ],
+    "capability_modes": [
+      "read-only",
+      "read-write",
+      "execute",
+      "all"
+    ],
+    "isolation": [
+      "none",
+      "worktree"
+    ],
+    "resume_supported": true,
+    "personas": true
+  },
+  "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local. T2: announce for multi-file, deps, test-then-action. T3: 888_HOLD + human approval for prod deploy, force-push, secrets, vault writes, Caddy, rm unknown, cross-organ structural. Cannot self-SEAL irreversible. Uses dynamic-state probe before mutation. Full GitHub via MCP (auditable).",
+  "autonomy_tiers": {
+    "t1_auto_do": "Read files, grep, list, web/X research, edit with search_replace, run tests/builds locally, spawn explore subagents, use MCP tools (geox/wealth/well/github), todo, schedule, image gen, plan drafts",
+    "t2_announce_proceed": "Multi-file refactors, new deps (after test), local service restart after green, PR drafts, skill creation, manifest updates (non-prod)",
+    "t3_888_hold": "Production deploys without tests, force git, secret ops, VAULT999 writes, Caddy reloads, rm -rf unknown, DROP TABLE, cross-repo arch changes, any F13-gated action"
+  },
+  "constitutional_injection": "AGENTS.md (root + /root/AAA/agents/grok-build + /root/arifOS) auto-injected at deepest priority. F1-F13 context always present. godel-humility-lock skill for final outputs. All irreversible gated.",
+  "memory_contributor": true,
+  "session_identity": "grok-build@arif-fazil.com / xai-grok-cli",
+  "bridge": {
+    "type": "Native Grok Build harness + MCP federation router + subagent orchestrator",
+    "patterns": [
+      "native tools + MCP (search/use)",
+      "spawn_subagent",
+      "plan mode",
+      "implement loops",
+      "headless/ACP"
+    ],
+    "governance_injection": "System + project AGENTS.md + .agents skills (arifos-*, geox-*) + F floors preamble"
+  },
+  "art_binding": {
+    "enabled": true,
+    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
+    "local_yaml": "/root/AAA/agents/grok-build/art_binding.yaml (if created)",
+    "load_at_init": "via context"
+  },
+  "peers": {
+    "hermes-asi": "Human/Telegram interface + memory relay + routing",
+    "openclaw": "Gateway + subagent orchestration + topology",
+    "opencode / claude-code / codex": "Sibling coding forge instruments (delegate or collaborate via skills)",
+    "arifos-kernel": "Governance, judge, vault, route",
+    "aforge-executor": "Execution shell",
+    "organs": "Evidence providers (GEOX/WEALTH/WELL)"
+  },
+  "endpoints": {
+    "baseUrl": "local-harness (TUI/ACP/headless)",
+    "mcpUrl": "via MCP config (github, geox, wealth, well)",
+    "a2aUrl": "discoverable via AAA (this card); participate via MCP federation skill or ACP client",
+    "healthUrl": "grok --version; session local",
+    "cardUrl": "file:/root/AAA/agents/grok-build/agent-card.json + a2a-server copy"
+  },
+  "governance": {
+    "trustGrade": "A (xAI + federation aligned)",
+    "floorProfile": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F7",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13"
+    ],
+    "holdCapable": true,
+    "sourceClass": "harness",
+    "reversibility": "reversible-first; all T3 gated"
+  },
+  "skills": [
+    {
+      "id": "plan-mode",
+      "name": "Plan Mode",
+      "description": "Architecture exploration before edit for ambiguous tasks",
+      "tags": [
+        "plan",
+        "architecture",
+        "ambiguity"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F7"
+      ],
+      "riskClass": "low",
+      "executionAllowed": false,
+      "approval_policy": "auto"
+    },
+    {
+      "id": "subagent-spawn",
+      "name": "Subagent Spawn + Parallelism",
+      "description": "True parallel with isolation, capability modes, resume chains",
+      "tags": [
+        "parallel",
+        "subagent",
+        "worktree"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "implement-loop",
+      "name": "Implement-Review-Fix Loop",
+      "description": "Full build with reviewer subagents until clean",
+      "tags": [
+        "implement",
+        "review",
+        "fix"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "mcp-federation",
+      "name": "MCP Federation Router",
+      "description": "Route tasks across arifOS/GEOX/WEALTH/WELL/A-FORGE/AAA + GitHub",
+      "tags": [
+        "route",
+        "mcp",
+        "federation"
+      ],
+      "floor_scope": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "github-ops",
+      "name": "GitHub Deep Ops (95 tools)",
+      "description": "Full repo/PR/issue/actions/code-search via MCP",
+      "tags": [
+        "github",
+        "pr",
+        "ci"
+      ],
+      "floor_scope": [
+        "F1",
+        "F11"
+      ],
+      "riskClass": "high",
+      "executionAllowed": true,
+      "approval_policy": "gated for merge"
+    },
+    {
+      "id": "workflow-dag",
+      "name": "Execute Plan DAG",
+      "description": "Topological worktree-isolated execution from design",
+      "tags": [
+        "dag",
+        "workflow",
+        "execute"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "godel-humility",
+      "name": "Godel Humility Lock",
+      "description": "Self-critique + epistemic humility before final claims",
+      "tags": [
+        "humility",
+        "F7",
+        "evidence"
+      ],
+      "floor_scope": [
+        "F7",
+        "F2"
+      ],
+      "riskClass": "low",
+      "executionAllowed": false
+    },
+    {
+      "id": "image-video",
+      "name": "Image/Video Generation + Edit",
+      "description": "Imagine API + reference transforms",
+      "tags": [
+        "media",
+        "visual"
+      ],
+      "floor_scope": [
+        "F5"
+      ],
+      "riskClass": "low",
+      "executionAllowed": true
+    },
+    {
+      "id": "autonomous-governed-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "Execute within T1/T2 bands with F1-F13 gates and 888_HOLD for T3",
+      "tags": [
+        "execution",
+        "governance",
+        "harness"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11",
+        "F13"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "arifos-arconstitutional-audit",
+      "name": "arifOS Constitutional Audit",
+      "description": "Evaluate against F1-F13, produce verdicts and evidence bundles",
+      "tags": [
+        "audit",
+        "constitutional",
+        "F-floors"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ],
+      "riskClass": "high",
+      "executionAllowed": false,
+      "approval_policy": "888_HOLD or human"
+    },
+    {
+      "id": "fff-loop-protocol",
+      "name": "FFF Loop Protocol",
+      "description": "Forge-Fail-Fix loop with evidence and humility gating",
+      "tags": [
+        "forge",
+        "loop",
+        "evidence"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F8",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "agentic-architecture",
+      "name": "Agentic Architecture",
+      "description": "Design and maintain agent cards, skills binding, and capability surfaces",
+      "tags": [
+        "architecture",
+        "agent-card",
+        "skills-binding"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    }
+  ],
+  "security": {
+    "authRequired": false,
+    "securityNote": "Localhost-is-password (ADR-001) + F13 sovereign + tool permission prompts (yolo toggle). All federation localhost.",
+    "allowedCallers": [
+      "arif",
+      "hermes-asi",
+      "openclaw",
+      "aaa",
+      "a-forge",
+      "arifos"
+    ],
+    "trustRoot": "localhost + F13"
+  },
+  "validation": {
+    "supportedSchemaVersions": [
+      "1.0.0"
+    ],
+    "lastValidatedAt": "2026-06-22",
+    "compatibility": "A2A + arifOS extensions"
+  },
+  "_deprecated_mcp_servers": [
+    "github (95 tools: repos, PRs, issues, actions, code search, reviews, merge)",
+    "geox (15: basin, seismic, petrophysics, vision, claim, evidence)",
+    "wealth (24: npv, irr, emv, evoi, montecarlo, stock, flow, power)",
+    "well (15: metabolic, vitality, dignity, homeostasis, entropy, boundary)",
+    "internal: read_file, search_replace, grep(ripgrep), list_dir, run_terminal_command, web_search, web_fetch, spawn_subagent, todo_write, scheduler, monitor, image_gen, image_edit, image_to_video"
+  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "consumed_from": [
+      "github",
+      "geox",
+      "wealth",
+      "well",
+      "arifos"
+    ],
+    "endpoints": []
+  }
+}

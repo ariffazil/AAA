@@ -1,0 +1,40 @@
+version: 1
+
+id: opencode-agent
+agent_id: opencode
+
+runtime:
+  model: tokenplan-mimo/mimo-v2.5-pro
+  small_model: azure-openai/gpt-4.1-mini
+  autoupdate: true
+
+approval:
+  read_tier: T1
+  announce_tier: T2
+  hold_tier: T3
+
+host_binding:
+  type: cli
+  binary: /usr/local/bin/opencode
+  resolved_binary: /root/.npm-global/bin/opencode
+
+mcp_servers:
+  - id: arifos
+    enabled: true
+  - id: aforge
+    enabled: true
+  - id: geox
+    enabled: true
+  - id: wealth
+    enabled: true
+  - id: well
+    enabled: true
+
+floors:
+  - F1  # AMANAH
+  - F2  # TRUTH
+  - F4  # CLARITY
+  - F7  # HUMILITY
+  - F9  # ANTI-HANTU
+  - F11 # AUDIT
+  - F13 # SOVEREIGN

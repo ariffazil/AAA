@@ -1,0 +1,178 @@
+{
+  "_comment": "Proposed A2A Linux Foundation base + arifOS sovereign extensions for Grok Build. Base fields enable external discovery (Google Cloud, Azure, other LF A2A agents). arifos block preserves all constitutional power (F1-F13, principal binding, 888_HOLD, MCP narrow surfaces from prior forge, subagent policy). Apply by merging into grok-build.json + a2a-server copy + public registry. Schema remains arifOS/v2 but advertises protocol_version 1.0.0 A2A.",
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "protocol_version": "1.0.0",
+
+  "// === BASE LF A2A FIELDS (for interoperability) ===": "",
+  "name": "Grok Build 4.3 (xAI TUI)",
+  "description": "Grok Build harness (xAI) as sovereign AAA citizen. Superior subagent parallelism, plan→search→build orchestration, native + narrow MCP surfaces, full federation routing via A2A + arifos-mcp-federation skill. Use for complex SE, evidence synthesis, and governed execution.",
+  "url": "local-harness (TUI/ACP/headless) with A2A discovery via AAA gateway https://aaa.arif-fazil.com/a2a",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA + Grok Build 4.3",
+    "runtime": "xAI Grok Build harness + arifOS constitutional kernel"
+  },
+  "version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": true,
+    "subagent_spawn": true,
+    "long_running_tasks": true
+  },
+  "authentication": {
+    "schemes": ["localhost-trust", "bearer-via-aaa"],
+    "note": "ADR-001: localhost IS the password for internal; external via AAA gateway + principal binding."
+  },
+  "default_input_modes": ["text/plain", "application/json"],
+  "default_output_modes": ["application/json", "text/plain"],
+  "skills": [
+    {
+      "id": "plan-mode",
+      "name": "Plan Mode",
+      "description": "Architecture exploration before edit for ambiguous tasks. Editable plan before any mutation.",
+      "tags": ["plan", "architecture", "ambiguity", "orchestration"],
+      "examples": ["Plan a refactor across organs then execute via A2A/MCP."]
+    },
+    {
+      "id": "federation-mcp-delegate",
+      "name": "Federation MCP + Organ Delegate",
+      "description": "Route to narrow MCP surfaces (repo-read, memory, write-gated) or A2A to organs (GEOX/WEALTH/WELL/arifOS). Hybrid with xAI multi-agent research.",
+      "tags": ["mcp", "federation", "governance", "a2a", "delegation"],
+      "examples": ["After multi-agent research, ground with mcp-memory then delegate to 555-ASI via A2A."]
+    },
+    {
+      "id": "subagent-parallel",
+      "name": "Subagent Spawn + True Parallelism",
+      "description": "Worktree-isolated subagents (general/explore/plan modes), resume_from, personas. Up to 8+ parallel with A2A handoff.",
+      "tags": ["parallel", "subagent", "worktree", "concurrency"]
+    },
+    {
+      "id": "evidence-synthesis",
+      "name": "Evidence Synthesis + Vault Receipts",
+      "description": "Dynamic state probe, todo receipts, godel-humility, Cooling Ledger writes. All outputs F2/F7/F11.",
+      "tags": ["evidence", "audit", "vault", "humility"]
+    }
+  ],
+  "endpoints": {
+    "a2a": "via AAA https://aaa.arif-fazil.com/a2a (discover via agent registry)",
+    "mcp": "stdio (local) or registered streamable-http for narrow surfaces",
+    "health": "grok --version + AAA gateway /health"
+  },
+
+  "// === arifOS SOVEREIGN EXTENSIONS (preserve all power) ===": "",
+  "arifos": {
+    "id": "grok-build",
+    "principal_agent": "llm",
+    "principal_binding": {
+      "source": "external-llm-provider:xai (Grok 4.3 harness wrapper)",
+      "sovereignty_tier": "delegated",
+      "authority_notes": "LLM principal via xAI + grok-build harness. Requires F9 anti-hallucination, F7 humility, evidence gates. Not native sovereign. Full F13 human veto."
+    },
+    "principal_accountability": "external-provider",
+    "tier": "AGI",
+    "class": "HARNESS",
+    "transport": "CLI_TUI + ACP + HEADLESS + MCP + A2A",
+    "native_mcp": true,
+    "mcp_ready": true,
+    "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
+    "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
+    "config": "~/.grok/config.toml + project .grok/ + env (supports skills/plugins/hooks per xAI extension surface)",
+    "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
+    "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",
+    "mcp_servers": [
+      "github (95 tools)",
+      "geox (15), wealth (24), well (15) — evidence only",
+      "arifOS (8088) — governance/judge/vault",
+      "A-FORGE (7072) — execution + leases",
+      "gb-federation-router (narrow orchestration)",
+      "mcp-repo-read, mcp-memory, mcp-repo-write (gated) — forged narrow surfaces"
+    ],
+    "strengths": [
+      "... (full list from existing)",
+      "A2A mesh delegation + MCP tool surfaces (complementary)"
+    ],
+    "weaknesses": [
+      "... (full list)"
+    ],
+    "risk_tolerance": "YELLOW (high power tools gated by F floors + 888_HOLD)",
+    "preferred_tasks": [
+      "...",
+      "A2A delegation to persistent citizens (hermes, organs) after local MCP grounding"
+    ],
+    "subAgentPolicy": {
+      "default": "888_HOLD for irreversible",
+      "maxParallel": "multiple (context-isolated)",
+      "registered": ["general-purpose", "explore", "plan"],
+      "capability_modes": ["read-only", "read-write", "execute", "all"],
+      "isolation": ["none", "worktree"],
+      "resume_supported": true,
+      "personas": true
+    },
+    "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local + A2A discovery. T2: announce for multi-file/deps. T3: 888_HOLD + human for prod, secrets, vault, destructive, cross-organ. Dynamic-state probe before mutation. Full GitHub via MCP (auditable). A2A handoffs logged.",
+    "autonomy_tiers": {
+      "t1_auto_do": "Read, local MCP, A2A discover non-mutating tasks",
+      "t2_announce_proceed": "Multi-file, new deps (test first), local restart, A2A handoff with evidence",
+      "t3_888_hold": "Prod deploys, force git, secrets, VAULT writes, Caddy, rm unknown, cross-repo arch, any irreversible A2A delegation"
+    },
+    "constitutional_injection": "AGENTS.md (root + AAA + arifOS) auto-injected. F1-F13 always. godel-humility-lock for final outputs. All A2A/MCP irreversible gated.",
+    "memory_contributor": true,
+    "session_identity": "grok-build@arif-fazil.com / xai-grok-cli",
+    "governance": {
+      "trustGrade": "A (xAI + federation aligned)",
+      "floorProfile": ["F1", "F2", "F3", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
+      "holdCapable": true,
+      "sourceClass": "harness",
+      "reversibility": "reversible-first; all T3 gated"
+    },
+    "skills": [
+      {
+        "id": "plan-mode",
+        "name": "Plan Mode",
+        "description": "Architecture exploration before edit for ambiguous tasks",
+        "tags": ["plan", "architecture", "ambiguity"],
+        "floor_scope": ["F1", "F4", "F7"],
+        "riskClass": "low",
+        "executionAllowed": false,
+        "approval_policy": "auto"
+      },
+      {
+        "id": "subagent-spawn",
+        "name": "Subagent Spawn + Parallelism",
+        "description": "True parallel with isolation, capability modes, resume chains",
+        "tags": ["parallel", "subagent", "worktree"],
+        "floor_scope": ["F1", "F4", "F11"],
+        "riskClass": "medium",
+        "executionAllowed": true
+      },
+      {
+        "id": "mcp-federation",
+        "name": "MCP Federation Router + A2A Handoff",
+        "description": "Route across arifOS/GEOX/WEALTH/WELL/A-FORGE/AAA + GitHub via narrow MCPs or A2A delegation",
+        "tags": ["route", "mcp", "federation", "a2a"],
+        "floor_scope": ["F1", "F3", "F4"],
+        "riskClass": "medium",
+        "executionAllowed": true
+      },
+      {
+        "id": "arifos-arconstitutional-audit",
+        "name": "arifOS Constitutional Audit",
+        "description": "Evaluate against F1-F13, produce verdicts and evidence bundles before A2A handoff or seal",
+        "tags": ["audit", "constitutional", "F-floors"],
+        "floor_scope": ["F1", "F2", "F4", "F7", "F9", "F11", "F13"],
+        "riskClass": "high",
+        "executionAllowed": false,
+        "approval_policy": "888_HOLD or human"
+      }
+    ],
+    "mcp_federation_note": "Complementary to A2A: MCP for tool execution (narrow surfaces), A2A for agent delegation (e.g., handoff to 555-ASI after mcp-memory grounding).",
+    "hybrid_note": "Use xAI grok-4.20-multi-agent externally for research breadth. Handoff structured outputs via A2A to these surfaces for sovereign depth + control."
+  },
+
+  "// === Legacy / Internal (kept for compatibility) ===": "",
+  "internal": {
+    "legacy_principal": { ... existing ... },
+    "full_original_fields": "see /root/AAA/agents/grok-build/agent-card.json"
+  }
+}

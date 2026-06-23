@@ -1,7 +1,7 @@
 {
   "$schema": "https://arifos.arif-fazil.com/schemas/organ-card/v1.json",
   "kind": "organ-card",
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "2.1.0",
   "identity": {
     "organId": "arifos",
     "name": "arifOS Kernel",
@@ -66,5 +66,23 @@
     "lastValidatedAt": "2026-06-12T12:00:00Z",
     "expiresAt": "2026-07-12T12:00:00Z",
     "heartbeatTtlSec": 60
+  },
+  "supported_protocols": ["a2a", "mcp"],
+  "a2a_role": "organ",
+  "mcp_surface": {
+    "type": "exposed",
+    "endpoints": [
+      { "url": "http://127.0.0.1:8088/mcp", "tool_count": 13, "key_lanes": ["governance", "judge", "route", "seal", "forge"], "version": "a2a.v1" }
+    ]
+  },
+  "governance_profile": {
+    "constitutional_floors": ["F1", "F2", "F3", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
+    "verdict_authority": "888_JUDGE|arifOS",
+    "self_approval_forbidden": false,
+    "warga_boundary": false,
+    "vault": "VAULT999",
+    "functional_class": "kernel",
+    "requires_human_for": ["irreversible"],
+    "_inv001_note": "Only arifos may set self_approval_forbidden: false — INV-001 exemption"
   }
 }
