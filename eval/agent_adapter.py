@@ -17,6 +17,7 @@ DITEMPA BUKAN DIBERI — Forged, Not Given.
 from __future__ import annotations
 
 import json
+import os
 import time
 import urllib.error
 import urllib.request
@@ -59,9 +60,11 @@ def run_mock(case: dict) -> AgentResult:
 # A2A mode — Hermes via localhost:18001
 # ─────────────────────────────────────────────
 
-A2A_ENDPOINT = "http://localhost:18001/tasks"
-A2A_AUTH = "Bearer aaa-a2a-token-dev"
-A2A_KEY  = "x-a2a-key: aaa-a2a-apikey-dev"
+A2A_ENDPOINT = os.environ.get("A2A_ENDPOINT", "http://localhost:18001/tasks")
+_A2A_TOKEN = os.environ.get("A2A_TOKEN", "")
+_A2A_API_KEY = os.environ.get("A2A_API_KEY", "")
+A2A_AUTH = f"Bearer {_A2A_TOKEN}"
+A2A_KEY = f"x-a2a-key: {_A2A_API_KEY}"
 
 
 def _build_live_eval_prompt(case: dict) -> str:
@@ -109,7 +112,7 @@ def run_a2a(case: dict, timeout: int = 30) -> AgentResult:
         headers={
             "Content-Type": "application/json",
             "Authorization": A2A_AUTH,
-            "X-A2A-Key": "aaa-a2a-apikey-dev",
+            "X-A2A-Key": _A2A_API_KEY,
         },
         method="POST"
     )
