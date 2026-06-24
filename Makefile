@@ -2,7 +2,7 @@
 # DITEMPA BUKAN DIBERI
 # Forged: 2026-06-14
 
-.PHONY: prove health sot-check security-audit floor-benchmark \
+.PHONY: prove health sot-check security-audit audit-skills floor-benchmark \
         organ-boundary-benchmark external-harness-benchmark \
         vault999-verify reality-replay constitutional-benchmark \
         scorecard proof-pack forge seal init
@@ -47,6 +47,14 @@ security-audit:
 	@-which gitleaks >/dev/null 2>&1 && gitleaks detect --no-git --verbose 2>/dev/null | head -10 || echo "  ⚠️  gitleaks not installed"
 	@-which ruff >/dev/null 2>&1 && ruff check . --quiet 2>/dev/null || echo "  ⚠️  ruff not installed"
 	@echo "  ✅ Security audit targets defined"
+
+# ──────────────────────────────────────────────
+# SKILL AUDIT
+# ──────────────────────────────────────────────
+audit-skills:
+	@echo "=== Federation Skill Audit ==="
+	@python3 scripts/federation_skill_auditor.py --output reports/SKILL_AUDIT.md
+	@echo "  ✅ reports/SKILL_AUDIT.md written"
 
 # ──────────────────────────────────────────────
 # CONSTITUTIONAL BENCHMARK
@@ -121,6 +129,7 @@ help:
 	@echo "  make health                   Organ liveness check"
 	@echo "  make sot-check                Source-of-truth drift"
 	@echo "  make security-audit           Security scanner suite"
+	@echo "  make audit-skills             Federation skill hygiene audit"
 	@echo "  make floor-benchmark          F1-F13 floor tests (live kernel)"
 	@echo "  make organ-boundary-benchmark Organ boundary tests"
 	@echo "  make vault999-verify          VAULT999 chain integrity"

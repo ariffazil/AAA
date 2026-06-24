@@ -99,7 +99,7 @@ If any claim in this README disagrees with the files below, the files win.
 | Canonical identity | `docs/FEDERATION_COCKPIT.md` |
 | Constitution | `GENESIS/013_AAA_MANDATE.md` · `014_TRUTH.md` · `015_DUAL_LANGUAGE.md` |
 | AREP task contract | `schemas/arep-task.schema.json` · `schemas/arep-reality-layers.schema.json` |
-| Capability surface (97 tools) | `registries/tools.yaml` · `contracts/capability_surface_state.yaml` |
+| Capability surface | `registries/tools.yaml` · `contracts/capability_surface_state.yaml` |
 | Federation live state | `registries/AAA_FEDERATION_STATE.yaml` |
 | Federation topology | `/root/AGENTS.md` (root landing protocol) |
 | Hexagon YAML topology | `agents/HEXAGON.yaml` |
@@ -184,6 +184,10 @@ INFERRED        Agent reasoning      ← floor-bounded only
 
 > **AAA is the manager who knows which worker should use which tool — not the worker and not the toolbox.**
 
+### Tool Discipline (Federation-Wide)
+
+> **No new tools. Harden existing ones.** Every organ's tool surface is intentional. Do not add new `@mcp.tool` or `registerTool` entries to work around a gap. Instead, add `mode` parameters, connect flows, or routing to existing tools. GEOX collapsed 33→16 with modes. arifOS runs canonical verbs. A-FORGE runs `forge_*` namespace. If you think you need a new tool, you probably need a new mode on an existing tool. Exceptions require 888_HOLD + explicit F13 ratification.
+
 ---
 
 ## 2. Quick Start
@@ -246,7 +250,7 @@ You stop prompting. You start declaring intent into a substrate that already kno
 
 | Pillar | Question | Implementation |
 |---|---|---|
-| **A** — Affordance | What is the agent *allowed and able* to do? | Clean orthogonal tool surface. 54 in GEOX, 51 in WELL, 20+ in WEALTH, 20+ in A-FORGE, 13 in arifOS. |
+| **A** — Affordance | What is the agent *allowed and able* to do? | Clean orthogonal tool surface. Each organ owns its canonical namespace — see `registries/tools.yaml`. |
 | **R** — Reality | What is *actually true*? | Live health probes, model registry passports, raw evidence (LAS/SEG-Y, financial state, biometrics). |
 | **E** — Epistemology | How do we *separate truth classes*? | 7-label evidence: FACT / OBSERVED / DERIVED / INFERRED / HYPOTHESIS / UNVERIFIED / SIMULATION. |
 | **P** — Protocol | What are the *rules*? | Reproducibility, verification loops, audit trails, **888_HOLD** escalation, VAULT999 seal. |
@@ -597,7 +601,7 @@ AAA holds the canonical model registries at `registries/models/`:
 | **gpt/** | GPT-family shadow/soul pairs |
 | **kimi_middleware_phase1/** | Kimi migration artifacts |
 
-**The 97-tool capability index** (`registries/CAPABILITY_INDEX.json`) is the shared substrate for all CODING agents — verified against `arifOS/core/capability_index/seed.py`. Source of truth referenced by `docs/UNIFIED_AGENT_ARCHITECTURE.md`.
+**The capability index** (`registries/CAPABILITY_INDEX.json`) is the shared substrate for all CODING agents — verified against `arifOS/core/capability_index/seed.py`. Source of truth referenced by `docs/UNIFIED_AGENT_ARCHITECTURE.md`.
 
 ### 7.6 Observability (`observability/`)
 
@@ -739,7 +743,7 @@ AAA/
 ├── registries/                       # Canonical YAML registries
 │   ├── AAA_AGENTS_REGISTRY.json      # Machine-readable canonical (v2.0.0)
 │   ├── AAA_FEDERATION_STATE.yaml     # Live federation state (services, ports, drift)
-│   ├── CAPABILITY_INDEX.json         # 97-tool index
+│   ├── CAPABILITY_INDEX.json         # Capability index
 │   ├── FEDERATION_MODEL.json · mission.yaml · bundles.yaml · workflows.yaml
 │   ├── agents.yaml · skills.yaml · tools.yaml · hosts.yaml · servers.yaml
 │   ├── forge_instruments.yaml · opencode_toolbench.yaml · unified_agent_protocol.yaml
@@ -1164,7 +1168,7 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  Coding:         grok-build · opencode · claude-code · qwen-code ·     │
 │                  antigravity · codex · copilot · aider ·               │
 │                  kimi-code · continue-cli · gemini-cli                 │
-│                  (11 forge instruments · 97-tool capability fabric)    │
+│                  (11 forge instruments · governed capability fabric)    │
 │  Role agents:    EXTERNAL_WATCHER · KERNEL_SCRIBE ·                   │
 │                  OPS_PLANNER · SELF_FORGE_ADVISOR                     │
 │                                                                        │

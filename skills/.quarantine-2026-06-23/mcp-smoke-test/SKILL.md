@@ -1,38 +1,60 @@
 ---
 id: mcp-smoke-test
 name: MCP Server Smoke Test
-version: "1.0.0"
-description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors.
+version: 1.0.0
+description: Validate that MCP servers respond correctly to health probes and basic
+  tool calls. Detect down servers, mismatched schemas, and transport errors.
 owner: AAA
 risk_tier: low
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  - kimi
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills: []
   servers: []
   tools:
-    - health-probe
-    - mcp-call
+  - health-probe
+  - mcp-call
 examples:
-  - Daily federation health check across all organs
+- Daily federation health check across all organs
 tests:
-  - arifOS port 8088 responds with 13 tools
-  - GEOX port 8081 responds with petrophysics tools
+- arifOS port 8088 responds with 13 tools
+- GEOX port 8081 responds with petrophysics tools
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Ω
+  functional:
+  - Ops
+  layer: RUNTIME
+  autonomy_tier: T1
+floor_scope:
+- F2
+- F3
+- F11
 ---
 
 # MCP Server Smoke Test
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 Federation organs expose MCP surfaces on different ports. This skill validates that each server is reachable, returns the expected tool count, and responds to a basic tool call without errors.
 

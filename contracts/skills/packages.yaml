@@ -1,16 +1,494 @@
+# Auto-generated from /root/AAA/skills/*/SKILL.md
+# Deprecated skills remain in their natural functional package with status: deprecated,
+# rather than being moved to a separate deprecated package, so consumers see lineage
+# and the successor pointer.
 version: 1
-skill_packages:
-- id: unified-skill-binding
-  skill_ref: unified-skill-binding
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: Unified Skill Binding (Orthogonal + Cross-Organ)
-    description: Meta-skill implementing AAA_SKILL_BINDING.md. Enables discovery,
-      orthogonal mapping, subagent composition across all organs.
-    owner: AAA + grok-build
+packages:
+- id: aaa-cockpit
+  name: AAA Cockpit
+  description: Skills specific to the AAA control plane, agent registry, and cockpit
+    safeguards.
+  skills:
+  - id: kimi-code-aaa
+    name: Kimi Code AAA Configuration
+    version: 1.0.0
+    description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with
+      arifOS kernel and A-FORGE stdio actuator.
+    owner: AAA
     risk_tier: medium
-    maturity: active
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      - ΦΙ
+      functional:
+      - Interface
+      layer: HEXAGON
+      autonomy_tier: T1-T2
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F8
+    - F11
+    - F13
+  - id: parallel-authority-detection
+    name: Parallel Authority Detection
+    version: 1.0.0
+    description: Detect when two or more repos claim the same authority, responsibility,
+      or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
+    owner: AAA
+    risk_tier: high
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F4
+    - F9
+    - F10
+    - F11
+  - id: secret-safety-scan
+    name: Secret Safety Scan
+    version: 1.0.1
+    description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials.
+      Produce a findings report with remediation steps.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      - Audit
+      layer: HEXAGON
+      autonomy_tier: T3
+    floor_scope:
+    - F1
+    - F2
+    - F11
+    - F12
+    - F13
+  - id: vault999-integrity
+    name: Vault999 Integrity — Operational Lens
+    version: 1.0.0
+    description: Operational lens for the append-only hash-chained ledger—what belongs,
+      chain verification, and failure handling.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      - Audit
+      layer: HEXAGON
+      autonomy_tier: T3
+    floor_scope:
+    - F1
+    - F2
+    - F3
+    - F11
+    - F13
+- id: agent-ops
+  name: Agent Operations
+  description: Day-to-day operational skills for running, observing, and validating
+    agents and substrate services.
+  skills:
+  - id: agent-onboarding
+    name: Agent Onboarding
+    version: 1.0.0
+    description: Standard procedure for registering a new agent in the AAA federation.
+      Creates agent identity directory, agent card, registry entry, and SOUL.md.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Interface
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F8
+    - F11
+    - F13
+  - id: arifos-observability
+    name: arifOS Observability
+    version: 1.0.0
+    description: Generate structured telemetry for skill runs, including trigger source,
+      chosen branch, command count, runtime, and postcondition checks. Load when you
+      need to parse run logs, compile dashboards, or audit execution performance.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F4
+    - F11
+  - id: docker-entropy-ops
+    name: Docker Entropy Ops
+    version: 1.0.0
+    description: Thermodynamic reasoning lens for container fleet health, resource
+      pressure, and safe/dangerous intervention boundaries.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Routing
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F1
+    - F2
+    - F3
+    - F8
+  - id: mcp-smoke-test
+    name: MCP Server Smoke Test
+    version: 1.0.0
+    description: Validate that MCP servers respond correctly to health probes and
+      basic tool calls. Detect down servers, mismatched schemas, and transport errors.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F3
+    - F11
+  - id: service-health-triage
+    name: Federation Service Health Triage
+    version: 1.0.1
+    description: Diagnose which federation services are up, down, or drifting. Produce
+      a prioritized remediation plan.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F11
+  - id: vps-docker-runbook
+    name: VPS Docker Runbook
+    version: 1.0.0
+    description: Concrete Docker Compose and container commands for the af-forge VPS
+      stack.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F1
+    - F2
+    - F3
+    - F4
+- id: code-forge
+  name: Code Forge
+  description: Skills used during planning, critique, and documentation of code changes.
+  skills:
+  - id: arifos-plan-dag
+    name: arifOS Plan DAG
+    version: 1.0.0
+    description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints,
+      and rollback points. Load when tasks exceed one-shot prompting and need subagent
+      or staged execution.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Forge
+      layer: CODING/FI
+      autonomy_tier: T2
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F8
+    - F11
+  - id: code-wiki
+    name: Code Wiki — Codebase Documentation Generator
+    version: 1.0.0
+    description: Generate structured wiki docs, module maps, and Mermaid diagrams
+      for unfamiliar codebases.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Interface
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F4
+    - F7
+    - F10
+  - id: multi-discipline-critique
+    name: Multi-Discipline Critique
+    version: 1.0.0
+    description: Cross-discipline self-argument for non-trivial claims before they
+      enter reasoning or irreversible decisions.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Governance
+      - Evidence
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F7
+    - F8
+  - id: precommit-gate
+    name: Precommit Gate
+    version: 1.0.0
+    description: Pre-commit ritual running lint, type-check, tests, constitutional
+      surface scan, and diff review.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      - Audit
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+    - F1
+    - F2
+    - F9
+    - F10
+    - F11
+    - F12
+  - id: recursive-skill-forge
+    name: Recursive Skill Forge
+    version: 1.0.0
+    description: 'Meta-cognitive smithy for forging new skills on demand. Use this
+      skill whenever the federation encounters a novel domain, an unhandled workflow,
+      or a capability gap that no existing skill covers. This skill performs abductive
+      reasoning to infer what capabilities are needed, decomposes them into orthogonal
+      modules, scaffolds a governed SKILL.md, attests it against constitutional floors,
+      and presents the artifact for sovereign seal. It operates recursively: it can
+      forge skills for other organs, and it can forge improved versions of itself.
+      Plastic across domains. Modular by design. Attested before birth.
+
+      '
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      - Ω
+      - ΦΙ
+      functional:
+      - Forge
+      layer: HEXAGON
+      autonomy_tier: T2-T3
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F7
+    - F8
+    - F11
+    - F13
+- id: constitutional-governance
+  name: Constitutional Governance
+  description: Skills that enforce, explain, or bind the constitutional F1-F13 framework
+    across the federation.
+  skills:
+  - id: aaa-agent-invariants
+    name: AAA Agent Operating Invariants
+    version: 1.0.0
+    description: Compact operating constitution for every AAA agent. Load before any
+      non-trivial action. Distills 10 Agent Invariants + 12 governance rules + skills
+      audit into portable doctrine. Covers tool classification, evidence/authority
+      separation, degradation dominance, propose-before-execute, and memory atoms.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      - Audit
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F4
+    - F7
+    - F9
+    - F11
+  - id: aaa-agentic-governance
+    name: AAA Agentic Governance (AAA-Cockpit, canonical)
+    version: 3.0.1
+    description: Governed intelligence skill for AAA as the abstraction, attestation,
+      and abduction control plane across arifOS, APEX, A-FORGE, GEOX, WEALTH, WELL,
+      and the ariffazil profile repository. Use when the user asks to explain or design
+      AAA, route agentic work, reduce chaos/entropy in an arifOS federation task,
+      create AREP/task declarations, classify risk, plan multi-repo changes, review
+      governance boundaries, or translate human intent into evidence-backed, authority-safe,
+      recursively agentic workflows. Provides deterministic F1-F13 floor checking,
+      bounded abduction, and FederationReceipt composition.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T1-T3
+    floor_scope:
+    - F1
+    - F2
+    - F3
+    - F4
+    - F5
+    - F6
+    - F7
+    - F8
+    - F9
+    - F10
+    - F11
+    - F12
+    - F13
+  - id: agentic-dream-engine
+    name: Agentic Dream Engine — Federation Memory Consolidation
+    version: 1.0.0
+    description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,
+      888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate
+      memory without violating F1-F13.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Interface
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F4
+    - F6
+    - F7
+  - id: arifos-act
+    name: arifOS ACT — Constitutional Reflex
+    version: 3.0.0
+    description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel
+      (F1-F13) → ACT (post-kernel execution). Load once. Apply always.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      - Ω
+      - ΦΙ
+      functional:
+      - Governance
+      - Forge
+      layer: RUNTIME
+      autonomy_tier: T3
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F7
+    - F9
+    - F11
+    - F13
+  - id: arifos-governance
+    name: arifos-governance
+    version: 1.0.1
+    description: Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating,
+      evidence alignment, and veto routing. Load when performing policy mutations,
+      data deletions, deployment risk evaluations, or verifying system constraints.
+    owner: AAA
+    risk_tier: high
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T3
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F7
+    - F9
+    - F11
+    - F13
+  - id: unified-skill-binding
+    name: Unified Skill Binding (Orthogonal + Cross-Organ)
+    version: 1.0.0
+    description: Discover, bind, and compose skills across all federation organs using
+      AAA_SKILL_BINDING.md orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces
+      subagent contracts, evidence gates, F1-F13. Meta-skill for agentic elevation.
+    owner: AAA
+    risk_tier: medium
+    status: active
     orthogonal_tags:
       trinitarian:
       - Δ
@@ -19,548 +497,503 @@ skill_packages:
       functional:
       - Governance
       - Routing
-      - Forge
-      - Evidence
-      - Compute
-      - Vitality
-      - Interface
-    knowledge_basis:
-      language: true
-      math: true
-      physics: false
-  dependencies:
-    servers:
-    - arifos-mcp
-    - geox-mcp
-    - wealth-mcp
-    - well-mcp
-    skills: []
-    tools: []
-  host_compatibility:
-  - claude-code
-  - opencode
-  - openclaw-gateway
-  - openclaw-maxhermes
-  - hermes-agent
-  - geox-acp
-  install_hooks: []
-  source_paths:
-  - contracts/AAA_SKILL_BINDING.md
-  - skills/unified-skill-binding/SKILL.md
-  runtime_exports:
-  - skills/unified-skill-binding/SKILL.md
-  examples:
-  - Cross-organ synthesis with full orthogonal + subagent contracts
-  tests:
-  - npm run validate:aaa
-  - orthogonal tags + floor_scope present in all bound skills
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-- id: openclaw-a2a-bridge
-  skill_ref: openclaw-a2a-bridge
-  package_format: yaml
-  version: 0.1.0
-  metadata:
-    name: OpenClaw A2A Bridge
-    description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
-      Legacy skill — retained for workflow compatibility.
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F4
+    - F8
+    - F11
+- id: geox-witness
+  name: GEOX Witness
+  description: Skills that route reasoning through GEOX earth-evidence witness paths.
+  skills:
+  - id: geox-basin-interpreter
+    name: GEOX Basin Interpreter
+    version: 1.0.0
+    description: Subsurface reasoning for basin screening, petroleum systems analysis,
+      trap/seal/reservoir framing, and evidence-led interpretations. Load when geology,
+      geophysics, or petrophysics tasks appear.
     owner: AAA
     risk_tier: medium
-    knowledge_basis:
-      physics: false
-      math: true
-      language: true
-    maturity: candidate
-  dependencies:
-    skills: []
-    servers:
-    - arifos-mcp
-    tools:
-    - agent-dispatch
-    - agent-handoff
-    - status-query
-  host_compatibility:
-  - openclaw-gateway
-  - claude-code
-  - codex
-  - copilot-cli
-  install_hooks:
-  - host_id: openclaw-gateway
-    method: generated-config
-    target_path: skills/openclaw-a2a-bridge
-  source_paths:
-  - registries/skills.yaml
-  - skills/openclaw-a2a-bridge/SKILL.md
-  runtime_exports:
-  - skills/openclaw-a2a-bridge/SKILL.md
-  examples:
-  - OpenClaw-to-AAA gateway handoff
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: geox-grounding
-  skill_ref: geox-grounding
-  package_format: yaml
-  version: 0.1.0
-  metadata:
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Evidence
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F7
+    - F9
+  - id: geox-grounding
     name: GEOX Grounding
+    version: 0.1.0
     description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure
       geological claims are grounded in evidence.
     owner: AAA
     risk_tier: medium
-    knowledge_basis:
-      physics: true
-      math: true
-      language: true
-    maturity: candidate
-  dependencies:
-    skills: []
-    servers:
-    - geox-mcp
-    tools:
-    - geox-query
-  host_compatibility:
-  - openclaw-gateway
-  - claude-code
-  install_hooks:
-  - host_id: openclaw-gateway
-    method: generated-config
-    target_path: skills/geox-grounding
-  source_paths:
-  - registries/skills.yaml
-  - skills/geox-grounding/SKILL.md
-  runtime_exports:
-  - skills/geox-grounding/SKILL.md
-  examples:
-  - Validate subsurface claim against GEOX well data
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: repo-hygiene-audit
-  skill_ref: repo-hygiene-audit
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: Repository Hygiene Audit
-    description: Inspect a GitHub repo for structural chaos, authority conflicts,
-      and cleanup needs. Produce an audit report and remediation plan.
-    owner: AAA
-    risk_tier: medium
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills: []
-    servers: []
-    tools:
-    - web_search
-    - file-read
-    - terminal
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/repo-hygiene-audit/SKILL.md
-  - skills/repo-hygiene-audit/examples.md
-  runtime_exports:
-  - skills/repo-hygiene-audit/SKILL.md
-  examples:
-  - Audit ariffazil/AAA for constitutional leaks and debris
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: mcp-smoke-test
-  skill_ref: mcp-smoke-test
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: MCP Server Smoke Test
-    description: Validate that MCP servers respond correctly to health probes and
-      basic tool calls. Detect down servers, mismatched schemas, and transport errors.
-    owner: AAA
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Evidence
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F7
+    - F9
+  - id: nusantara-intelligence-substrate
+    name: Nusantara Intelligence Substrate
+    version: 1.0.0
+    description: Cultural, dignity, and sovereignty lens for AAA state records. Apply
+      before sealing decisions that touch identity, privacy, boundaries, or sovereign
+      veto.
+    owner: F13 SOVEREIGN
     risk_tier: low
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills: []
-    servers: []
-    tools:
-    - status-query
-    - delegate_task
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/mcp-smoke-test/SKILL.md
-  runtime_exports:
-  - skills/mcp-smoke-test/SKILL.md
-  examples:
-  - Daily federation health check across all organs
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: agent-onboarding
-  skill_ref: agent-onboarding
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: Agent Onboarding
-    description: Standard procedure for registering a new agent in the AAA federation.
-      Creates agent identity directory, agent card, registry entry, and SOUL.md.
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      - Ω
+      functional:
+      - Interface
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F4
+    - F6
+    - F7
+- id: gitops
+  name: GitOps
+  description: Skills that interact with GitHub, Git workflows, repository hygiene,
+    and PR/issue governance.
+  skills:
+  - id: github-ci-diagnose
+    name: GitHub CI Diagnose
+    version: 1.0.0
+    description: 'Parse failing GitHub Actions logs, identify root cause patterns,
+      and propose fixes without executing irreversible changes. Use this skill whenever
+      a federation repo shows a red CI status, a workflow fails, or a build/test/lint
+      gate breaks. This skill reads logs, classifies failure modes, and outputs a
+      diagnostic report — it does not re-run CI, edit workflows, or dismiss security
+      findings without sovereign approval.
+
+      '
     owner: AAA
     risk_tier: medium
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills: []
-    servers: []
-    tools:
-    - file-write
-    - patch
-    - file-read
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/agent-onboarding/SKILL.md
-  runtime_exports:
-  - skills/agent-onboarding/SKILL.md
-  examples:
-  - Onboard a new "security-auditor" agent into AAA
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: github-pr-review
-  skill_ref: github-pr-review
-  package_format: yaml
-  version: 1.0.0
-  metadata:
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Ops
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F4
+    - F9
+    - F11
+  - id: github-issue-triage
+    name: GitHub Issue Triage
+    version: 1.0.0
+    description: 'Governed triage workflow for GitHub issues across the arifOS federation.
+      Use this skill whenever a new issue is opened, an issue lacks labels, or an
+      agent needs to determine if an issue belongs in a different repo or federation
+      organ. This skill classifies, routes, labels, and drafts responses — but never
+      closes, never assigns to Arif, and never promises code fixes without sovereign
+      approval.
+
+      '
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      - Δ
+      - ΦΙ
+      functional:
+      - Ops
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F4
+    - F6
+    - F11
+  - id: github-pr-review
     name: GitHub PR Governance Review
+    version: 1.0.0
     description: Governed checklist for reviewing GitHub pull requests in the arifOS
       federation. Ensures PRs meet constitutional, structural, and safety standards
       before merge.
     owner: AAA
     risk_tier: medium
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills:
-    - repo-hygiene-audit
-    servers: []
-    tools:
-    - web_search
-    - file-read
-    - patch
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/github-pr-review/SKILL.md
-  runtime_exports:
-  - skills/github-pr-review/SKILL.md
-  examples:
-  - Review a cross-repo architectural PR before merge
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: service-health-triage
-  skill_ref: service-health-triage
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: Federation Service Health Triage
-    description: Diagnose which federation services are up, down, or drifting. Produce
-      a prioritized remediation plan.
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: CODING/FI
+      autonomy_tier: T2
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F9
+    - F11
+    - F13
+  - id: github-runbook
+    name: GitHub Runbook — Federation Git & CLI Operations
+    version: 1.0.0
+    description: Basic git status, commit, branch, and GitHub CLI operations across
+      the federation repos.
     owner: AAA
-    risk_tier: low
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills:
-    - mcp-smoke-test
-    servers: []
-    tools:
-    - status-query
-    - terminal
-    - file-read
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/service-health-triage/SKILL.md
-  runtime_exports:
-  - skills/service-health-triage/SKILL.md
-  examples:
-  - Morning federation status check
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: secret-safety-scan
-  skill_ref: secret-safety-scan
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: Secret Safety Scan
-    description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials.
-      Produce a findings report with remediation steps.
-    owner: AAA
-    risk_tier: high
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills: []
-    servers: []
-    tools:
-    - web_search
-    - file-read
-    - session_search
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/secret-safety-scan/SKILL.md
-  runtime_exports:
-  - skills/secret-safety-scan/SKILL.md
-  examples:
-  - Pre-commit secret sweep on AAA repo
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: readme-truth-check
-  skill_ref: readme-truth-check
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: README Truth Check
-    description: Verify that a repo's README accurately describes its current structure,
-      ports, dependencies, and authority boundaries. Detect drift between docs and
-      reality.
-    owner: AAA
-    risk_tier: low
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills:
-    - repo-hygiene-audit
-    servers: []
-    tools:
-    - file-read
-    - terminal
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/readme-truth-check/SKILL.md
-  runtime_exports:
-  - skills/readme-truth-check/SKILL.md
-  examples:
-  - Verify AAA README matches actual directory structure
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: parallel-authority-detection
-  skill_ref: parallel-authority-detection
-  package_format: yaml
-  version: 1.0.0
-  metadata:
-    name: Parallel Authority Detection
-    description: Detect when two or more repos claim the same authority, responsibility,
-      or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
-    owner: AAA
-    risk_tier: high
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills:
-    - repo-hygiene-audit
-    servers: []
-    tools:
-    - web_search
-    - file-read
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/parallel-authority-detection/SKILL.md
-  runtime_exports:
-  - skills/parallel-authority-detection/SKILL.md
-  examples:
-  - Detect both AAA and arifOS claiming 888_JUDGE authority
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: pr-review-governance
-  skill_ref: pr-review-governance
-  package_format: yaml
-  version: 1.0.0
-  metadata:
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Ops
+      layer: CODING/FI
+      autonomy_tier: T1-T2
+    floor_scope:
+    - F2
+    - F4
+    - F10
+    - F11
+    - F13
+  - id: pr-review-governance
     name: PR Review Governance
+    version: 1.0.0
     description: High-level governance layer for pull request review across the federation.
       Ensures separation of duties, required signers, and constitutional compliance
       before merge.
     owner: AAA
     risk_tier: high
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills:
-    - github-pr-review
-    servers: []
-    tools:
-    - web_search
-    - file-read
-    - send_message
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/pr-review-governance/SKILL.md
-  runtime_exports:
-  - skills/pr-review-governance/SKILL.md
-  examples:
-  - Govern a high-risk PR touching multiple organs
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
-- id: incident-escalation
-  skill_ref: incident-escalation
-  package_format: yaml
-  version: 1.0.0
-  metadata:
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: CODING/FI
+      autonomy_tier: T3
+    floor_scope:
+    - F1
+    - F2
+    - F4
+    - F9
+    - F11
+    - F13
+  - id: readme-truth-check
+    name: README Truth Check
+    version: 1.0.0
+    description: Verify that a repo's README accurately describes its current structure,
+      ports, dependencies, and authority boundaries. Detect drift between docs and
+      reality.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F4
+    - F9
+    - F10
+    - F11
+  - id: repo-hygiene-audit
+    name: Repository Hygiene Audit
+    version: 1.0.0
+    description: Inspect a GitHub repo for structural chaos, authority conflicts,
+      and cleanup needs. Produce an audit report and remediation plan.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F4
+    - F9
+    - F10
+    - F11
+- id: incident-response
+  name: Incident Response
+  description: Skills for triaging and escalating federation incidents and drift.
+  skills:
+  - id: drift-response
+    name: Drift Response
+    version: 0.1.0
+    description: Legacy 5-step drift response protocol. Superseded by service-health-triage.
+    owner: AAA
+    risk_tier: medium
+    status: deprecated
+    superseded_by: service-health-triage
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      functional:
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F11
+  - id: federation-health-scan
+    name: Federation Health Scan
+    version: 0.1.0
+    description: Legacy single-command federation health diagnostic (organs, NATS,
+      drift, vault). Superseded by service-health-triage.
+    owner: AAA
+    risk_tier: low
+    status: deprecated
+    superseded_by: service-health-triage
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F11
+  - id: incident-escalation
     name: Incident Escalation Protocol
-    description: Standard protocol for responding to federation incidents — service
-      outages, security breaches, constitutional violations, or agent misbehavior.
+    version: 1.0.0
+    description: 'Standard protocol for responding to federation incidents: service
+      outages, security breaches, constitutional violations, or agent misbehavior.'
     owner: AAA
     risk_tier: critical
-    knowledge_basis:
-      physics: false
-      math: false
-      language: true
-    maturity: active
-  dependencies:
-    skills:
-    - service-health-triage
-    - secret-safety-scan
-    servers: []
-    tools:
-    - status-query
-    - send_message
-    - delegate_task
-  host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  install_hooks: []
-  source_paths:
-  - registries/skills.yaml
-  - skills/incident-escalation/SKILL.md
-  runtime_exports:
-  - skills/incident-escalation/SKILL.md
-  examples:
-  - Hermes agent starts sending unauthorized messages
-  tests:
-  - npm run validate:aaa
-  version_lock:
-    schema_version: '1'
-    artifact_hash: pending
-    lock_file: contracts/skills/packages.yaml
-    export_format: yaml
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      - ΦΙ
+      functional:
+      - Governance
+      - Ops
+      layer: RUNTIME
+      autonomy_tier: T2-T3
+    floor_scope:
+    - F1
+    - F2
+    - F3
+    - F4
+    - F6
+    - F11
+    - F13
+  - id: incident-triage
+    name: Incident Triage
+    version: 1.0.0
+    description: Six-step incident response playbook for federation organs and constitutional
+      floor breaches.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Ω
+      - ΦΙ
+      functional:
+      - Ops
+      - Governance
+      layer: RUNTIME
+      autonomy_tier: T2-T3
+    floor_scope:
+    - F1
+    - F2
+    - F3
+    - F4
+    - F6
+    - F11
+    - F13
+- id: mcp-federation
+  name: MCP Federation
+  description: Skills that route tasks across MCP servers and federation organs.
+  skills:
+  - id: arifos-mcp-federation
+    name: arifOS MCP Federation
+    version: 1.0.0
+    description: Route tasks across MCP servers, choose server/tool sequence, and
+      define fallbacks when one substrate fails. Load when work spans multiple tools
+      in GEOX, WEALTH, WELL, or external APIs.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Routing
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F4
+    - F8
+    - F11
+  - id: mcp-federation-ops
+    name: MCP Federation Operations
+    version: 1.0.0
+    description: Build, inspect, call, and operate FastMCP servers and the mcporter
+      CLI across federation organs.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      functional:
+      - Routing
+      - Forge
+      layer:
+      - RUNTIME
+      - CODING/FI
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F4
+    - F8
+    - F10
+    - F11
+    - F12
+  - id: openclaw-a2a-bridge
+    name: OpenClaw A2A Bridge
+    version: 0.1.0
+    description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
+      Legacy skill — retained for workflow compatibility.
+    owner: AAA
+    risk_tier: medium
+    status: deprecated
+    superseded_by: mcp-federation-ops
+    orthogonal_tags:
+      trinitarian:
+      - Δ
+      - Ω
+      functional:
+      - Routing
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F3
+    - F4
+    - F11
+- id: skill-meta
+  name: Skill Meta
+  description: Skills that audit, lint, evaluate, or create other skills.
+  skills:
+  - id: arifos-evals
+    name: arifOS Evals
+    version: 1.0.0
+    description: Run benchmark prompts, collect pass/fail traces, latency, token cost,
+      and false activation rates for each skill. Load when a skill changes behavior
+      or a new version is proposed.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F7
+    - F9
+    - F11
+  - id: arifos-recursive-audit
+    name: arifOS Recursive Audit
+    version: 1.0.0
+    description: Audit all installed skills for overlap, stale docs, prompt bloat,
+      trigger ambiguity, and broken references. Load when reviewing the skill portfolio
+      or after modifying or adding new skills.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+    - F2
+    - F4
+    - F7
+    - F9
+    - F11
+  - id: skill-creator
+    name: Skill Creator
+    version: 1.0.0
+    description: Bootstrap, design, and package new skills. Load when capturing user
+      intent for a new skill or drafting its initial instruction framework.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Forge
+      layer: HEXAGON
+      autonomy_tier: T1-T2
+    floor_scope:
+    - F2
+    - F4
+    - F7
+    - F8
+    - F11
+  - id: skill-trigger-linter
+    name: Skill Trigger Linter
+    version: 1.0.0
+    description: Check every skill’s “use when” and “do not use when” clauses for
+      collisions, missing negatives, and vague verbs like “help,” “assist,” or “improve.”
+      Load when linting, reviewing, or validating trigger boundaries.
+    owner: AAA
+    risk_tier: low
+    status: active
+    orthogonal_tags:
+      trinitarian:
+      - ΦΙ
+      functional:
+      - Governance
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+    - F2
+    - F4
+    - F7
+    - F9
+    - F10
+    - F11

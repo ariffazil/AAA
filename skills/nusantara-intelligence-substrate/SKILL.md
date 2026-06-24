@@ -1,4 +1,60 @@
+---
+id: nusantara-intelligence-substrate
+name: Nusantara Intelligence Substrate
+version: 1.0.0
+description: Cultural, dignity, and sovereignty lens for AAA state records. Apply
+  before sealing decisions that touch identity, privacy, boundaries, or sovereign
+  veto.
+owner: F13 SOVEREIGN
+risk_tier: low
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills: []
+  servers: []
+  tools: []
+examples:
+- Draft a Nusantara state record for a WEALTH pre-trade decision
+- Assess dignity stakes before sealing a record affecting human identity
+tests:
+- Every required bracket in the one-liner test is filled
+- Adat phase defaults to sabar when evidence is missing
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Δ
+  - Ω
+  functional:
+  - Interface
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F4
+- F6
+- F7
+---
+
 # Nusantara Intelligence Substrate
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 **Trigger:** Use whenever an AAA state record carries cultural, dignity, sovereignty, or relational stakes — especially for decisions that touch F2 (identity), F7 (privacy), F8 (boundaries), or F13 (sovereign veto).
 

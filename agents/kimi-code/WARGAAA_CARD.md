@@ -31,7 +31,7 @@
 | GEOX | HTTP | `http://127.0.0.1:8081/mcp` |
 | WEALTH | HTTP | `http://127.0.0.1:18082/mcp` |
 | WELL | HTTP | `http://127.0.0.1:18083/mcp` |
-| A-FORGE | stdio | `mcp-launchers/aforge.sh` (77 tools) |
+| A-FORGE | stdio | `mcp-launchers/aforge.sh` |
 
 Read-only helpers: `capability-index`, `repomapper`, `serena`, `minimax`.
 

@@ -1,9 +1,61 @@
 ---
-name: arifos-plan-dag
-description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback points. Load when tasks exceed one-shot prompting and need subagent or staged execution.
+id: arifos-plan-dag
+name: arifOS Plan DAG
+version: 1.0.0
+description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints,
+  and rollback points. Load when tasks exceed one-shot prompting and need subagent
+  or staged execution.
+owner: AAA
+risk_tier: medium
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills:
+  - arifos-governance
+  servers: []
+  tools: []
+examples:
+- Build a DAG for a multi-repo refactor with checkpoints
+- Plan a staged deployment with rollback points
+tests:
+- DAG with circular dependency is rejected
+- High-risk node has 888 HOLD pause block
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Forge
+  layer: CODING/FI
+  autonomy_tier: T2
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
 ---
 
 # arifos-plan-dag (O_Ω Orchestration Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Build multi-step execution graphs, coordinate dependency-aware subtasks, establish checkpoints, and define rollback boundaries.

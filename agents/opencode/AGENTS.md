@@ -31,7 +31,7 @@ When asked "who are you":
 | Organ | Port | Role |
 |-------|------|------|
 | arifOS | 8088 | Constitutional Kernel — session, judge, vault, seal |
-| A-FORGE | 7071 | Execution Shell — forge_plan, forge_dry_run, forge_approve |
+| A-FORGE | 7071 | Execution Shell — forge_dry_run, forge_approve, forge_execute |
 | GEOX | 8081 | Earth Intelligence — seismic, petrophysics, basin, prospect |
 | WEALTH | 18082 | Capital Intelligence — conservation, flow, entropy, signal |
 | WELL | 18083 | Human Readiness — vitality, fatigue, dignity, homeostasis |
@@ -77,7 +77,7 @@ Never ask Arif for: API keys, coding opinions, library choices, naming conventio
 | Server | Transport | Key Tools |
 |--------|-----------|-----------|
 | arifos-kernel | :8088 | session_init, judge_deliberate, vault_seal, mind_reason, sense_observe |
-| aforge | :7071 | forge_plan, forge_dry_run, forge_approve, forge_execute |
+| aforge | :7071 | forge_dry_run, forge_approve, forge_execute |
 | geox | :8081 | basin_resolve, seismic_compute, prospect_evaluate, claim_create |
 | wealth | :18082 | conservation, flow, entropy, signal, game, boundary |
 | well | :18083 | assess_homeostasis, validate_vitality, guard_dignity |
@@ -160,7 +160,7 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 - [ ] Blast radius assessed
 - [ ] Reversibility confirmed (or 888_HOLD)
 - [ ] Evidence labeled OBS/DER/INT/SPEC
-- [ ] `forge_plan` before MUTATE, `forge_dry_run` before ATOMIC
+- [ ] `forge_dry_run` before ATOMIC
 
 **Every session end:**
 - [ ] Federation health — all 7 organs attested

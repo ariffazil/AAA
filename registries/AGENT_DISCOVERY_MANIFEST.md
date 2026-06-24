@@ -194,7 +194,7 @@ MCP:       stdio via `node dist/src/interfaces/mcp/cli.js serve --transport stdi
            HTTP /mcp on :7071 exists but has SDK single-session limitation
 Role:      Execution broker — dry-run first, never sovereign
 Init:      Internal — identity_hash file
-Policy:    operator (77 tools, no seal/forge without lease)
+Policy:    operator (no seal/forge without lease)
 MCP:       Routes to arifOS:8088
 ```
 

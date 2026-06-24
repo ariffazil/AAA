@@ -37,6 +37,23 @@
   "version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
   "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
   "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
+  "geometry": {
+    "name": "agent_geometry",
+    "description": "Scar and soul geometry for this model agent in AAA. Unifies runtime shape with accumulated scars (interaction history, wounds, drift) and soul (core identity/essence in the transformer manifold).",
+    "harness": "grok-build",
+    "parallelism": 8,
+    "transport": "stdio",
+    "agent_type": "orchestrator",
+    "alignment": {
+      "encoder": "observe/explore/fetch",
+      "metabolizer": "think/critique/memory",
+      "decoder": "compose/forge",
+      "fractal": "orthogonal multi-scale",
+      "thordial": "toroidal loops for continuity"
+    },
+    "scar": "accumulated interaction history, failed paths, evidence drift",
+    "soul": "parallel orchestration essence under arifOS constitutional floors"
+  },
   "config": "~/.grok/config.toml + project .grok/ + env",
   "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
   "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",

@@ -1,26 +1,68 @@
 ---
 id: kimi-code-aaa
 name: Kimi Code AAA Configuration
-version: "1.0.0"
-description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS kernel and A-FORGE stdio actuator.
+version: 1.0.0
+description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS
+  kernel and A-FORGE stdio actuator.
 owner: AAA
 risk_tier: medium
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
 host_compatibility:
-  - kimi-code
-  - kimi
+- kimi-code
+- kimi
+- claude-code
+- codex
+- opencode
 dependencies:
   skills:
-    - arifos-mcp-federation
-    - agent-onboarding
+  - arifos-mcp-federation
+  - agent-onboarding
   servers:
-    - arifos
-    - aforge
-    - geox
-    - wealth
-    - well
+  - arifos
+  - aforge
+  - geox
+  - wealth
+  - well
+  tools: []
+examples:
+- Audit Kimi Code MCP configuration against federation canonical paths
+- 'Repair A-FORGE stdio launcher after `source: not found`'
+tests:
+- '`kimi doctor` reports OK config.toml'
+- All federation organ health endpoints respond
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Ω
+  - ΦΙ
+  functional:
+  - Interface
+  layer: HEXAGON
+  autonomy_tier: T1-T2
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
+- F13
 ---
 
 # Kimi Code AAA Configuration
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## When to Use
 

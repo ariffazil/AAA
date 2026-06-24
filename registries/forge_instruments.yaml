@@ -275,4 +275,4 @@ instruments:
     config_path: /root/.kimi/config.toml
     mcp_config_path: /root/.kimi/mcp.json
     agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
-    note: "Aligned 2026-06-20. A-FORGE ingress is stdio (HTTP surfaces have SDK single-session limitation). Dedicated MCP service on port 7072 was also fixed to connect McpServer to transport; verified 77 tools over streamable-http. AMANAH + MARUAH embedded in system identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through A-FORGE forge_* tools. Trust tier proposed: 2 pending A-AUDIT + F13 ratification."
+    note: "Aligned 2026-06-20. A-FORGE ingress is stdio (HTTP surfaces have SDK single-session limitation). Dedicated MCP service on port 7072 was also fixed to connect McpServer to transport; verified over streamable-http. AMANAH + MARUAH embedded in system identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through A-FORGE forge_* tools. Trust tier proposed: 2 pending A-AUDIT + F13 ratification."

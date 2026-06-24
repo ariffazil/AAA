@@ -1,14 +1,69 @@
 ---
-name: aaa-agent-invariants
-description: Compact operating constitution for every AAA agent. Load before any non-trivial action. Distills 10 Agent Invariants + 12 governance rules + skills audit into portable doctrine. Covers tool classification, evidence/authority separation, degradation dominance, propose-before-execute, and memory atoms.
+id: aaa-agent-invariants
+name: AAA Agent Operating Invariants
 version: 1.0.0
-forged: 2026-06-21
-source_convergence: ChatGPT-MCP-architecture × Hermes-grounding-verification × arifOS-skills-audit × Saltzer-Schroeder-1975
+description: Compact operating constitution for every AAA agent. Load before any non-trivial
+  action. Distills 10 Agent Invariants + 12 governance rules + skills audit into portable
+  doctrine. Covers tool classification, evidence/authority separation, degradation
+  dominance, propose-before-execute, and memory atoms.
+owner: AAA
 risk_tier: low
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude
+- opencode
+- codex
+- hermes
+- any-aaa-agent
+- claude-code
+- kimi
+- kimi-code
+dependencies:
+  skills: []
+  servers: []
+  tools: []
+examples:
+- Load before a code mutation to classify action class and blast radius
+- Use the memory atom schema before storing long-term memory
+tests:
+- Tool classified as MUTATE triggers propose-before-execute
+- Unresolved actor downgrades action to OBSERVE
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  - Audit
+  layer: HEXAGON
+  autonomy_tier: T1
+floor_scope:
+- F2
+- F4
+- F7
+- F9
+- F11
+forged: 2026-06-21
+source_convergence: ChatGPT-MCP-architecture × Hermes-grounding-verification × arifOS-skills-audit
+  × Saltzer-Schroeder-1975
 hosts: claude | opencode | codex | hermes | any-aaa-agent
 ---
 
 # AAA Agent Operating Invariants
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 > **The compact constitution. Load this before you act.**
 > Every rule here was earned: audit findings, live kernel FAILs, two models converging, and 50 years of safety engineering rediscovered under arifOS names.
