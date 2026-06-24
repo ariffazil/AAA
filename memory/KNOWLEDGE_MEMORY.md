@@ -1,3 +1,9 @@
+> **⚠️ AAA LOCAL COPY — not the live canonical memory.**
+>
+> The live curated memory is at `/root/waw/memory/MEMORY.md` (OpenClaw/Hermes workspace).
+> The federation memory architecture canonical is at `/root/arifOS/FEDERATION_MEMORY.md`.
+> This AAA copy is retained as a historical snapshot and may be stale.
+
 # MEMORY.md - Curated Long-Term Memory
 
 ## About Arif

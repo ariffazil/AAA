@@ -233,7 +233,7 @@ sentinel_invariants:
     - verify_origin_main_before_anything
   enforced_invariants:
     - README_SOT_sections_match_actual_code
-    - tool_count_in_registry_equals_13
+    - tool_count_in_registry_equals_16  # updated from 13 to reflect internal evolution (public surface 13, full 16 per constitutional_map.py)
     - no_critical_path_changes_without_explicit_approval
     - pre_push_check_must_pass
     - BUILD_EPOCH_in_README_matches_registry

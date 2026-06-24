@@ -97,7 +97,7 @@ EDGE AGENTS (MCP clients — connect THROUGH kernel, NOT above it):
 ### Execution Layer
 | Organ | Port | Substrate | Role |
 |-------|------|-----------|------|
-| **A-FORGE** | :7071/:7072 | TypeScript | EXECUTE — 4-layer forge gate, 77 tools, engineering actuator |
+| **A-FORGE** | :7071/:7072 | TypeScript | EXECUTE — 4-layer forge gate, engineering actuator |
 
 ### Immutable Memory Layer
 | Organ | Location | Substrate | Role |

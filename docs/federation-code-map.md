@@ -237,7 +237,7 @@
 │   └── interfaces/           ← Delivery
 │       ├── server.ts          ← Express HTTP (:7071)
 │       ├── mcp/
-│       │   ├── core.ts        ← **MCP core — 77 tools registered**
+│       │   ├── core.ts        ← **MCP core — tools registered**
 │       │   ├── serve.ts       ← Multi-transport bootstrap (:7072)
 │       │   ├── forgeTools.ts  ← 18 forge_* tools
 │       │   ├── gatewayTools.ts← P1 external MCP wrappers
@@ -261,7 +261,7 @@ Layer 3: GovernanceBridge    → SEAL | SABAR | VOID (via arifOS)
 Layer 4: ApprovalBoundary    → APPROVED | 888_HOLD | DENIED
 ```
 
-### 3.3 MCP Tool Groups (77 tools)
+### 3.3 MCP Tool Groups
 
 | Group | Count | Examples |
 |-------|-------|----------|
