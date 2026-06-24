@@ -1,9 +1,58 @@
 ---
-name: arifos-observability
-description: Generate structured telemetry for skill runs, including trigger source, chosen branch, command count, runtime, and postcondition checks. Load when you need to parse run logs, compile dashboards, or audit execution performance.
+id: arifos-observability
+name: arifOS Observability
+version: 1.0.0
+description: Generate structured telemetry for skill runs, including trigger source,
+  chosen branch, command count, runtime, and postcondition checks. Load when you need
+  to parse run logs, compile dashboards, or audit execution performance.
+owner: AAA
+risk_tier: low
+knowledge_basis:
+  language: true
+  math: true
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills: []
+  servers: []
+  tools: []
+examples:
+- Generate a skill health dashboard from telemetry JSONL
+- Audit activation precision and rollback safety across skills
+tests:
+- Dashboard lists all active skills with pass/fail metrics
+- Rollback safety < 1.00 raises alert
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: RUNTIME
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F4
+- F11
 ---
 
 # arifos-observability (O_Ω Orchestration Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Generate and analyze structured telemetry for skill runs, compiling health dashboards and triggering performance warnings.

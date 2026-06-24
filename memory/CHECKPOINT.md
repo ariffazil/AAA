@@ -21,6 +21,12 @@ Before pause:
 
 ## Current State
 
+> **Status: NOT IMPLEMENTED — template only.**
+>
+> This file is not being written on pause. Wake continuity is handled by the
+> federation memory architecture (see `/root/arifOS/FEDERATION_MEMORY.md`) and
+> the OpenClaw/Hermes workspace at `/root/waw/memory/MEMORY.md`.
+
 ```yaml
 last_known_task: ""
 current_objective: ""

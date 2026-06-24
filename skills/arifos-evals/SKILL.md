@@ -1,9 +1,60 @@
 ---
-name: arifos-evals
-description: Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill. Load when a skill changes behavior or a new version is proposed.
+id: arifos-evals
+name: arifOS Evals
+version: 1.0.0
+description: Run benchmark prompts, collect pass/fail traces, latency, token cost,
+  and false activation rates for each skill. Load when a skill changes behavior or
+  a new version is proposed.
+owner: AAA
+risk_tier: low
+knowledge_basis:
+  language: true
+  math: true
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills:
+  - arifos-observability
+  servers: []
+  tools: []
+examples:
+- Run benchmark prompts for a modified skill and compare pass rates
+- Measure token cost and latency of skill invocations
+tests:
+- benchmark.json produced with DevBench-aligned metrics
+- False activation rate < 0.05 for a near-miss prompt
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F7
+- F9
+- F11
 ---
 
 # arifos-evals (O_Ω Constitutional Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill.

@@ -1,9 +1,60 @@
 ---
-name: skill-creator
-description: Bootstrap, design, and package new skills. Load when capturing user intent for a new skill or drafting its initial instruction framework.
+id: skill-creator
+name: Skill Creator
+version: 1.0.0
+description: Bootstrap, design, and package new skills. Load when capturing user intent
+  for a new skill or drafting its initial instruction framework.
+owner: AAA
+risk_tier: medium
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills:
+  - arifos-recursive-audit
+  servers: []
+  tools: []
+examples:
+- Capture user intent for a new Docker health-check skill
+- Draft frontmatter and procedure for a Cloudflare Workers skill
+tests:
+- Generated SKILL.md passes YAML frontmatter parse
+- Trigger boundaries contain at least 3 exclusion rules
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Forge
+  layer: HEXAGON
+  autonomy_tier: T1-T2
+floor_scope:
+- F2
+- F4
+- F7
+- F8
+- F11
 ---
 
 # skill-creator (O_Ψ Verification Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Bootstrap, design, and package new skills.

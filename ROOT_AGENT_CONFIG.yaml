@@ -299,3 +299,17 @@ forge_instruments:
     citizenship: observer-until-mcp
     host_binding: qwen-code
     agent_card: null
+  - id: grok-build
+    fi_id: FI-010
+    status: live
+    class: forge-instrument
+    citizenship: warga-aaa
+    host_binding: grok-build
+    agent_card: agents/grok-build/agent-card.json
+  - id: gemini-cli
+    fi_id: FI-011
+    status: live
+    class: forge-instrument
+    citizenship: governed-forge-worker
+    host_binding: gemini-cli
+    agent_card: agents/gemini-cli/agent-card.json

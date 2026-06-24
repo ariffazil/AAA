@@ -92,6 +92,17 @@
       "transport": "stdio",
       "server_label": "github",
       "server_description": "Repo/PR/issue/actions. Prefer read + propose for most flows."
+    },
+    "cloudflare": {
+      "_comment": "Cloudflare plugin integration for DNS, Workers, KV, R2, AI. Installed per AF-2026-06-23 directive. Use for platform ops behind leases.",
+      "command": "npx",
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare@latest"],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "${CF_TOKEN}"
+      },
+      "transport": "stdio",
+      "server_label": "cloudflare",
+      "server_description": "Cloudflare platform tools. Read tier preferred; writes require forge lease from canonical arifOS."
     }
   },
   "notes_for_grok_build": {

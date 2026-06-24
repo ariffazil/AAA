@@ -1,9 +1,62 @@
 ---
-name: skill-trigger-linter
-description: Check every skill’s “use when” and “do not use when” clauses for collisions, missing negatives, and vague verbs like “help,” “assist,” or “improve.” Load when linting, reviewing, or validating trigger boundaries.
+id: skill-trigger-linter
+name: Skill Trigger Linter
+version: 1.0.0
+description: Check every skill’s “use when” and “do not use when” clauses for collisions,
+  missing negatives, and vague verbs like “help,” “assist,” or “improve.” Load when
+  linting, reviewing, or validating trigger boundaries.
+owner: AAA
+risk_tier: low
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills:
+  - arifos-recursive-audit
+  servers: []
+  tools: []
+examples:
+- Lint a new skill for vague verbs like 'help' or 'improve'
+- Validate that a skill has at least 3 'Do not use when' rules
+tests:
+- Skill missing exclusion block flagged L2
+- Skill with irreversible writes and no governance path flagged L3
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T1
+floor_scope:
+- F2
+- F4
+- F7
+- F9
+- F10
+- F11
 ---
 
 # skill-trigger-linter (O_Ψ Verification Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Check every skill’s “use when” and “do not use when” clauses for collisions, missing negatives, and vague verbs like “help,” “assist,” or “improve.”

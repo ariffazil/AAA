@@ -1,39 +1,68 @@
 ---
 id: incident-escalation
 name: Incident Escalation Protocol
-version: "1.0.0"
-description: "Standard protocol for responding to federation incidents: service outages, security breaches, constitutional violations, or agent misbehavior."
+version: 1.0.0
+description: 'Standard protocol for responding to federation incidents: service outages,
+  security breaches, constitutional violations, or agent misbehavior.'
 owner: AAA
 risk_tier: critical
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills:
-    - service-health-triage
-    - secret-safety-scan
+  - service-health-triage
+  - secret-safety-scan
   servers: []
   tools:
-    - health-probe
-    - telegram-send
-    - a2a-message
+  - health-probe
+  - telegram-send
+  - a2a-message
 examples:
-  - Hermes agent starts sending unauthorized messages
+- Hermes agent starts sending unauthorized messages
 tests:
-  - Verify escalation reaches Arif within 60 seconds for critical incidents
+- Verify escalation reaches Arif within 60 seconds for critical incidents
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Ω
+  - ΦΙ
+  functional:
+  - Governance
+  - Ops
+  layer: RUNTIME
+  autonomy_tier: T2-T3
+floor_scope:
+- F1
+- F2
+- F3
+- F4
+- F6
+- F11
+- F13
 ---
 
 # Incident Escalation Protocol
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 When something goes wrong in the federation, speed and clarity matter. This skill provides the canonical escalation ladder.
 

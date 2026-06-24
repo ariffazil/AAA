@@ -1,46 +1,72 @@
 ---
 id: agentic-dream-engine
 name: Agentic Dream Engine — Federation Memory Consolidation
-version: "1.0.0"
-description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate memory without violating F1-F13.
+version: 1.0.0
+description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,
+  888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate
+  memory without violating F1-F13.
 owner: AAA
-risk_tier: high
+risk_tier: medium
 knowledge_basis:
-  physics: false
-  math: true
   language: true
-  computer_science: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills:
-    - arifos-memory
-    - arifos-mcp-federation
-    - arifos-governance
+  - arifos-memory
+  - arifos-mcp-federation
+  - arifos-governance
   servers:
-    - arifos-kernel
-    - aforge
+  - arifos-kernel
+  - aforge
   tools:
-    - arif_memory_recall
-    - arif_vault_seal
-    - arif_judge_deliberate
+  - arif_memory_recall
+  - arif_vault_seal
+  - arif_judge_deliberate
 examples:
-  - "Design the dream-state protocol for a new AAA warga agent."
-  - "Map how OpenCode's auto-dream.ts should feed into arifOS L4 canon."
-  - "Audit whether an agent's nightly consolidation respects F7 humility and F13 sovereign locks."
+- Design the dream-state protocol for a new AAA warga agent.
+- Map how OpenCode's auto-dream.ts should feed into arifOS L4 canon.
+- Audit whether an agent's nightly consolidation respects F7 humility and F13 sovereign
+  locks.
 tests:
-  - "Verify a warga agent's dream output lands in memory_records with actor_id, session_id, and source_ref.ratified_by."
-  - "Confirm daily cap and threshold lock are enforced before any canon promotion."
+- Verify a warga agent's dream output lands in memory_records with actor_id, session_id,
+  and source_ref.ratified_by.
+- Confirm daily cap and threshold lock are enforced before any canon promotion.
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Ω
+  functional:
+  - Interface
+  layer: RUNTIME
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F4
+- F6
+- F7
 ---
 
 # Agentic Dream Engine — Federation Memory Consolidation
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 The existing dream-engine (`/root/HERMES/skills/dream-engine/`) is a **single-organ**, **single-cadence** nightly batch that consolidates the last 24 hours of `memory_records` into canon. It is an entropy pump, not a phenomenology claim (F9).
 

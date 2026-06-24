@@ -20,6 +20,18 @@ cat /root/CONTEXT.md | tail -100   # current focus, blockers, recent session log
 
 # 4. Probe federation health:
 curl -s http://127.0.0.1:8088/health | python3 -m json.tool | grep -E 'status|tools_loaded|floors_active'
+
+# 5. Load core federation skills via MCP (unified bootstrap — Phase 1 of skills unification):
+#    Prefer MCP resources when the FastMCP SkillsDirectoryProvider is active on arifOS:
+#    skill://aaa-doctrine-loader/SKILL.md
+#    skill://federation-router/SKILL.md
+#    skill://arifos-kernel-operator/SKILL.md
+#    skill://aforge-execution-governor/SKILL.md
+#    skill://vault999-audit-sealer/SKILL.md
+#    skill://auditor-validator-kutip-sampah/SKILL.md
+#    skill://mcp-fastmcp-builder/SKILL.md
+#    Use fastmcp client, MCP inspector, or resources/read on arifOS MCP.
+#    Fall back to local filesystem paths only if MCP resources unavailable.
 ```
 
 ---
@@ -226,7 +238,7 @@ make deploy-local                   # rsync → /opt/arifos/app + systemctl rest
 ### A-FORGE (`/root/A-FORGE`)
 ```bash
 npm install && npm run build        # install + build
-make test                           # security-audit + build + 17 test suites
+make test                           # security-audit + build + all test suites
 systemctl restart a-forge           # deploy
 ```
 
@@ -249,7 +261,7 @@ systemctl restart geox-mcp          # deploy
 ### WEALTH (`/root/WEALTH`)
 ```bash
 pip install -e ".[dev]"             # install
-pytest tests/ -q --tb=short         # test (127 tests)
+pytest tests/ -q --tb=short         # test
 npm test                            # Node.js side
 systemctl restart wealth-organ      # deploy
 ```
