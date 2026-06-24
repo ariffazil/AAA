@@ -1,27 +1,47 @@
-# CONTEXT.md — AAA (Control Plane)
+<!-- SOT-MANIFEST
+owner: Arif
+last_verified: 2026-06-24
+valid_from: 2026-06-24
+valid_until: 2026-07-24
+confidence: high
+scope: /root/AAA
+-->
+
+# CONTEXT.md — AAA (Cockpit / Control Plane)
 
 > **Organ:** AAA | **Port:** 3001 | **Repo:** `ariffazil/AAA`
-> **Last Updated:** 2026-06-21
+> **Last Updated:** 2026-06-24
 
 ## Live State
-- **Service:** `aaa-a2a.service` (systemd, enabled)
-- **Health:** `http://127.0.0.1:3001/health`
-- **Frontend:** React 19 + Vite 8 + Tailwind 4
-- **A2A:** Express 4.x TypeScript gateway
-- **Role:** Display, route, queue — never adjudicate
-- **Warga agents:** 333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE
-- **Agent dirs:** `/root/AAA/agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE}`
 
-## Key Updates (2026-06-21)
-- **Hermes ASI consolidated** — runtime proxy + 5 warga identities (commit `5ecd8c27`)
-- **7-organ topology** — AAA federation upgrade with 333/555/666/777 agent routes (commit `1408e0d1`)
-- **GENESIS/ populated** — 3 files (013-015) for AAA-specific doctrine
-- **Entropy cleaned** — Hermes backup (~700MB), 28 empty dirs, 6 broken symlinks removed
+- **A2A Service:** `aaa-a2a.service` (systemd, port 3001)
+- **Cockpit:** React 19 + Vite 8 + Tailwind 4, served by Caddy
+- **Health:** `http://127.0.0.1:3001/health`
+- **Role:** Control plane / cockpit — A2A gateway, 888 JUDGE deliberation, human interface
+
+## Key Components
+
+- `a2a-server/` — Express A2A v0.3.0 gateway (`server.js`, `deliberation.ts`, `vault.js`)
+- `src/` — React cockpit (`Cockpit.tsx`, `ai/`, `gateway/`, `components/ui/`)
+- `agents/`, `skills/`, `contracts/`, `registries/` — federation metadata
+- `public/` — static assets + `a2a/agent-card.json`
+
+## 888 JUDGE
+
+- Legacy APEX deliberation was absorbed into `a2a-server/deliberation.ts`.
+- APEX service (`apex-prime.service`) on port 3002 is **decommissioned**.
 
 ## Dependencies
-- arifOS MCP kernel (port 8088) — constitutional data
-- All organ MCP endpoints for federation display
-- PostgreSQL for agent registry
+
+- arifOS kernel (8088) — constitutional floors and final judgment
+- A-FORGE (7071/7072) — execution under SEAL
+- VAULT999 (8100/5001) — audit ledger
 
 ## Known Issues
-- None open. Hermes ASI backup purge complete.
+
+- Federation Governance Gate previously failed due to missing `FEDERATION_CONTRACT.md` and `CONTEXT.md` — **resolved 2026-06-24**
+- Secret-scan false positives may exist in test fixtures; all production secrets are in `/root/.secrets/` only.
+
+---
+
+*DITEMPA BUKAN DIBERI — Judgment is made visible, not invented.*
