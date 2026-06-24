@@ -49,15 +49,15 @@ const AAA_AI_COLLECTION = process.env.AAA_AI_COLLECTION || 'aaa_ai_docs';
 const AAA_AI_DEFAULT_MODEL = process.env.AAA_AI_DEFAULT_MODEL || 'qwen2.5:7b';
 const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
 
-const A2A_TOKEN=process.env.A2A_TOKEN || 'aaa-a2a-token-dev';
-const A2A_API_KEY=process.env.A2A_API_KEY || 'aaa-a2a-apikey-dev';
+const A2A_TOKEN = process.env.A2A_TOKEN || '';
+const A2A_API_KEY = process.env.A2A_API_KEY || '';
 const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://apex-prime:3002';
-const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || 'hermes-agent-apikey-dev';
+const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || '';
 const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
 const NATS_URL = process.env.NATS_URL || 'nats://127.0.0.1:4222';
 
 // === GRAFANA WEBHOOK + ORGAN MONITOR + TELEGRAM NOTIFIER ===
-const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8410138119:AAHrXysyxI8yuBM7QW6QTafKsgpqEyd19DA';
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '267378578';
 
 const HTTP = require('http');
@@ -154,8 +154,8 @@ function formatAlert(alert, organChecks, confirmedDown) {
 }
 
 // Fail fast if tokens not configured — no silent dev fallback (F1 AMANAH)
-if (!A2A_TOKEN || !A2A_API_KEY) {
-  console.error('[AAA A2A] FATAL: A2A_TOKEN and A2A_API_KEY must be set. No dev fallback.');
+if (!A2A_TOKEN || !A2A_API_KEY || !TELEGRAM_BOT_TOKEN) {
+  console.error('[AAA A2A] FATAL: A2A_TOKEN, A2A_API_KEY and TELEGRAM_BOT_TOKEN must be set. No dev fallback.');
   process.exit(1);
 }
 
