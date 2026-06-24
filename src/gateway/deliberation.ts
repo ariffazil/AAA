@@ -4,13 +4,16 @@
  * Ported from APEX Prime (apex-prime.service / port 3002).
  * Upgraded with: SABAR verdict, ToAC awareness, paradox anchors.
  *
- * Deterministic F1-F13 pattern scan. No LLM. No state.
+ * Deterministic partial F1-F13 pattern scan (see full list + rules in
+ * arifOS/GENESIS/000_KERNEL_CANON.md). No LLM. No state.
  * Returns SEAL | SABAR | HOLD_888 | VOID with rationale + confidence.
  *
  * Constitutional law itself stays in arifOS. This is the guard rail,
  * not the law.
  *
- * APEX Unified Theory: arifOS/static/arifos/theory/000/APEX_THEORY.md
+ * Full floors: F1 AMANAH, F2 TRUTH, F3 TRI-WITNESS, F4 CLARITY, F5 PEACE²,
+ * F6 EMPATHY, F7 HUMILITY, F8 GENIUS, F9 ANTIHANTU, F10 ONTOLOGY,
+ * F11 AUDITABILITY, F12 RESILIENCE, F13 SOVEREIGN.
  * DITEMPA BUKAN DIBERI — Forged, Not Given
  */
 
