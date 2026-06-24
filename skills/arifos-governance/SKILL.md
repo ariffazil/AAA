@@ -1,12 +1,64 @@
 ---
+id: arifos-governance
 name: arifos-governance
-description: Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence alignment, and veto routing. Load when performing policy mutations, data deletions, deployment risk evaluations, or verifying system constraints.
+version: 1.0.1
+description: Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence
+  alignment, and veto routing. Load when performing policy mutations, data deletions,
+  deployment risk evaluations, or verifying system constraints.
+owner: AAA
+risk_tier: high
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills: []
+  servers: []
+  tools: []
+examples:
+- Apply F1 AMANAH gate before an irreversible file deletion
+- Evaluate whether a proposed change touches constitutional surfaces
+tests:
+- F1 surface scan flags vault/identity/floor references
+- Irreversible action without sovereign ack routes to 888 HOLD
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T3
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+- F9
+- F11
+- F13
 ---
 
 # arifos-governance (O_Ω Constitutional Layer)
 
-## Purpose
-Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence alignment, and veto routing.
+## Overview
+Enforce Floors F1–F13, 888 HOLD logic, irreversible-action gating, evidence alignment, and veto routing.
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
 
 ## Use When
 1. The task involves policy changes, modifying `floors.py` or governance constraints.
@@ -51,6 +103,46 @@ Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence alig
 4.  **Consensus Verification:** Check if the W³ witness multiplication matches or exceeds `0.95`.
 5.  **Audit Trail Serialization:** Generate the append-only audit trace containing timestamp, session identity, floor scores, and reasoning steps.
 6.  **Veto & Hold Gating:** If any constraint fails, write a `HOLD` code, block execution, and escalate to the Sovereign (Arif).
+
+## F1 AMANAH Gate
+
+Use this gate before any change that touches F1-surface state or carries irreversible / mutating / destroyer class power.
+
+### F1 Surfaces
+
+Do not edit without sovereign witness:
+
+- `vault`, `VAULT999`, `outcomes.jsonl`
+- `seal`, `888_HOLD`, `999_SEAL`
+- `identity`, `arif_judge*`, `arif_heart*`
+- `constitutional`, `amanah`, `floor`
+
+### Detection & Hold Logic
+
+1. **Classify power.** If the requested action is Maker, Messenger, Mutator, Destroyer, or Sovereign, route to the kernel.
+2. **Pattern scan.** Run `grep -rE 'vault|seal|identity|constitutional|amanah|floor'` over the proposed diff or target path.
+3. **Hold on hit.** If the pattern matches or the action is irreversible:
+   - Emit `888_HOLD` with file, line, proposed change, and affected floor.
+   - Block commit / deploy until human approval.
+   - Log to `/root/.claude/hooks/f1-gate.log`.
+4. **Override.** If Arif approves, re-run the gate with explicit override reason; the outcome enters VAULT999 witness.
+
+### Verification Loop
+
+- Non-F1 commits must return **zero** matches from the pattern scan.
+- F1 surface hit → `888_HOLD` blocks, human reviews, re-run with witness signature.
+
+### Failure Modes
+
+- **False positive** → human overrides with reason logged.
+- **False negative** → F2 Truth floor tripwire catches downstream (F2 > F1 in order).
+- **Hook disabled** → manual invocation of this skill still applies.
+
+### Constitutional Anchor
+
+- **F1 AMANAH** — reversibility first.
+- **F2 TRUTH** — no F1 edit without witness.
+- **F13 SOVEREIGN** — Arif's approval is the only valid override.
 
 ## Postconditions
 1.  No irreversible command is executed without verified `888_HOLD` release.

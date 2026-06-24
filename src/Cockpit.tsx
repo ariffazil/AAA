@@ -16,6 +16,7 @@ import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 import AutonomyBands from './components/cockpit/AutonomyBands';
 import RealityConsole from './components/cockpit/RealityConsole';
 import HermesCitizenCard from './components/cockpit/HermesCitizenCard';
+import HermesTelemetryPanel from './components/cockpit/HermesTelemetryPanel';
 import AgentModelPanel, { type ModelGovernanceCard } from './components/cockpit/AgentModelPanel';
 import MCPAppsPanel from './components/MCPAppsPanel';
 import ArifOSReceiptViewer from './components/cockpit/ArifOSReceiptViewer';
@@ -933,6 +934,11 @@ export default function Cockpit() {
             </span>
           </div>
           <HermesCitizenCard />
+        </section>
+
+        {/* ── HERMES TELEMETRY (L1/L2 bridge) ── */}
+        <section className="mb-24">
+          <HermesTelemetryPanel />
         </section>
 
         {/* ── AUTONOMY BANDS ── */}

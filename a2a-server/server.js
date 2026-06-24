@@ -1958,6 +1958,27 @@ app.get('/api/ai/health', async (req, res) => {
   }
 });
 
+// Hermes session telemetry from federation-memory-broker (Redis L1/L2 bridge)
+app.get('/api/telemetry/hermes', async (req, res) => {
+  try {
+    console.log('[telemetry/hermes] redisClient ready:', redisClient?.isReady);
+    if (!redisClient || !redisClient.isReady) {
+      return res.status(503).json({ ok: false, error: 'Redis backbone not ready' });
+    }
+    const data = await redisClient.get('federation:hermes:session_telemetry');
+    console.log('[telemetry/hermes] raw data type:', typeof data, 'length:', data?.length);
+    if (!data) {
+      return res.status(404).json({ ok: false, error: 'No telemetry available' });
+    }
+    const parsed = JSON.parse(data);
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.json({ ok: true, source: 'federation-memory-broker', telemetry: parsed });
+  } catch (error) {
+    console.error('[telemetry/hermes] error:', error);
+    res.status(500).json({ ok: false, error: error.message });
+  }
+});
+
 app.get('/api/ai/models', async (req, res) => {
   try {
     const upstream = await fetch(`${OLLAMA_URL}/api/tags`, {

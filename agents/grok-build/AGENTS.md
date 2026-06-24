@@ -29,6 +29,7 @@ It is **not** a persistent daemon (like hermes-asi or openclaw). It is launched 
 - mcp-arifos-kernel (stdio): kernel health, floors, rhythm, gated judgment.
 - **mcp-repo-read** (evolved): structure, smart document reads (summary-first), symbols, ADRs with synthesis + related, `query_context` for high-signal retrieval. See DESIGN_mcp_repo_read.md.
 - mcp-memory (with rhythm + cooling), gb-federation-router, mcp-repo-write (gated).
+- Declare geometry at arif_init (harness, parallelism, transport, agent_type). This geometry **is** the scar (accumulated wounds, drift, history) and soul (core essence/identity) for the model agent in AAA. Aligned with transformer encoder (observe) / metabolizer (think/critique/memory) / decoder (forge) + orthogonal fractals + thordials (toroidal continuity). Narrow surfaces for encoder evidence only; canonical path for metabolizer + decoder + seal.
 
 Use these + arifos-mcp-federation skill before touching full arifOS MCP. Reduces blast radius and entropy.
 
@@ -49,7 +50,14 @@ MCP (live + extensible, now with forged narrow orchestration):
 - gb-federation-router (stdio or :18790 http): narrow orchestration (orchestrate_sequence, route_to_mcp, request_aforge_lease_exec, emit_telemetry, check_floors, fallback). See mcp-configs/ + GB_MCP_ORCHESTRATION_LAYOUT.md
 - Others via config (cloudflare, etc.)
 
-**Orchestration reality:** Use `arifos-mcp-federation` skill (primary router) + gb-federation-router for planner sequences. Hybrid stdio (local) + streamable-http (mesh). Always narrow + lease-gated for change/exec.
+**Orchestration reality (Brain/Hands Contract — Hard Rule):**
+- Governance, judgment (`arif_judge`, `arif_critique`, `arif_seal`), high-blast memory, final sealing → **arifOS MCP (8088 / narrow kernel)** first.
+- Execution, build, shell, browser, jobs, rich proxies → **A-FORGE MCP (stdio preferred for parallel subagents, or 7072)** only after `forge_lease_request` + prior arifOS judge path when required.
+- Use `arifos-mcp-federation` skill (primary router) + gb-federation-router for planner sequences. Hybrid stdio (local A-FORGE for speed) + streamable-http (arifOS for session + visible deliberation).
+- **Never** allow subagents or narrow surfaces to issue or evade 888_JUDGE / 999_SEAL via A-FORGE alone. Parallel worktrees inherit the same contract.
+- Declare full geometry at `arif_init` (harness=GrokBuild, parallelism=8, transport=stdio for execution burst, etc.).
+
+All parallelism is powerful but must not create uncoordinated bypass vectors.
 
 See:
 - GB_MCP_ORCHESTRATION_LAYOUT.md

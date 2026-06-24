@@ -1,37 +1,62 @@
 ---
 id: readme-truth-check
 name: README Truth Check
-version: "1.0.0"
-description: Verify that a repo's README accurately describes its current structure, ports, dependencies, and authority boundaries. Detect drift between docs and reality.
+version: 1.0.0
+description: Verify that a repo's README accurately describes its current structure,
+  ports, dependencies, and authority boundaries. Detect drift between docs and reality.
 owner: AAA
 risk_tier: low
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills:
-    - repo-hygiene-audit
+  - repo-hygiene-audit
   servers: []
   tools:
-    - file-read
-    - directory-list
+  - file-read
+  - directory-list
 examples:
-  - Verify AAA README matches actual directory structure
+- Verify AAA README matches actual directory structure
 tests:
-  - Detect phantom directory referenced in README
+- Detect phantom directory referenced in README
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T1
+floor_scope:
+- F2
+- F4
+- F9
+- F10
+- F11
 ---
 
 # README Truth Check
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 READMEs become stale quickly. This skill compares the README's claims against the actual repo state and flags discrepancies.
 

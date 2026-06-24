@@ -1,9 +1,61 @@
 ---
-name: arifos-recursive-audit
-description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references. Load when reviewing the skill portfolio or after modifying or adding new skills.
+id: arifos-recursive-audit
+name: arifOS Recursive Audit
+version: 1.0.0
+description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger
+  ambiguity, and broken references. Load when reviewing the skill portfolio or after
+  modifying or adding new skills.
+owner: AAA
+risk_tier: medium
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills:
+  - skill-trigger-linter
+  servers: []
+  tools: []
+examples:
+- Audit all installed skills for doc-rot and trigger-rot
+- Flag a skill whose references to wrangler versions are stale
+tests:
+- Circular skill reference detected and logged
+- Skill >30 days old without compatibility check flagged
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F4
+- F7
+- F9
+- F11
 ---
 
 # arifos-recursive-audit (O_Ω Constitutional Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references.

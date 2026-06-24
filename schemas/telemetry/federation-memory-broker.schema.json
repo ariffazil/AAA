@@ -39,8 +39,19 @@
       "type": "integer",
       "minimum": 0
     },
+    "tokens_24h": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Legacy alias for token_usage_24h."
+    },
+    "sessions_24h": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Total sessions started in the last 24 hours."
+    },
     "tool_calls_24h": {
       "type": "object",
+      "description": "Per-source tool call counts. The '_total' key is the aggregate.",
       "additionalProperties": {
         "type": "integer",
         "minimum": 0

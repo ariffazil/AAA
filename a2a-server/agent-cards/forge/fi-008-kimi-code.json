@@ -2,7 +2,7 @@
   "id": "FI-008",
   "name": "Kimi Code CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "Moonshot Kimi Code CLI — K2.7 Code model. Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio (77 tools). AMANAH + MARUAH explicit in system identity.",
+  "description": "Moonshot Kimi Code CLI — K2.7 Code model. Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio. AMANAH + MARUAH explicit in system identity.",
   "version": "1.47.0",
   "model": "kimi-code/kimi-for-coding (K2.7 Code)",
   "izin": "GRANTED",

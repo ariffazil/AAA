@@ -1,9 +1,60 @@
 ---
-name: geox-basin-interpreter
-description: Subsurface reasoning for basin screening, petroleum systems analysis, trap/seal/reservoir framing, and evidence-led interpretations. Load when geology, geophysics, or petrophysics tasks appear.
+id: geox-basin-interpreter
+name: GEOX Basin Interpreter
+version: 1.0.0
+description: Subsurface reasoning for basin screening, petroleum systems analysis,
+  trap/seal/reservoir framing, and evidence-led interpretations. Load when geology,
+  geophysics, or petrophysics tasks appear.
+owner: AAA
+risk_tier: medium
+knowledge_basis:
+  language: true
+  math: true
+  physics: true
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills: []
+  servers:
+  - geox-mcp
+  tools:
+  - geox_basin
+examples:
+- Screen the Malay Basin petroleum system with the five-box GCoS
+- Evaluate trap/seal risk from seismic structural maps
+tests:
+- Every GCoS element cites primary evidence and key risks
+- Interpretation class downgraded to CAUTION when well control is absent
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Δ
+  functional:
+  - Evidence
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F7
+- F9
 ---
 
 # geox-basin-interpreter (Ψ_GEOX Domain Layer)
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 ## Purpose
 Subsurface reasoning for basin screening, petroleum systems analysis, trap/seal/reservoir framing, and evidence-led interpretations.

@@ -106,8 +106,8 @@ const hostContracts = expectArray(
   errors,
 );
 const skillPackages = expectArray(
-  skillPackagesCatalog.skill_packages,
-  "contracts/skills/packages.yaml:skill_packages",
+  skillPackagesCatalog.packages,
+  "contracts/skills/packages.yaml:packages",
   errors,
 );
 const workflowContracts = expectArray(
@@ -187,7 +187,7 @@ ensureUniqueIds(skills, "skills", errors);
 ensureUniqueIds(tools, "tools", errors);
 ensureUniqueIds(workflows, "workflows", errors);
 ensureUniqueIds(hostContracts, "host_contracts", errors);
-ensureUniqueIds(skillPackages, "skill_packages", errors);
+ensureUniqueIds(skillPackages, "packages", errors);
 ensureUniqueIds(workflowContracts, "workflow_contracts", errors);
 ensureUniqueIds(federationPublicSurfaces, "federation_public_surfaces", errors);
 ensureUniqueIds(federationTrustTiers, "federation_trust_tiers", errors);
@@ -270,7 +270,6 @@ const toolIds = new Set(tools.map((item) => item.id));
 const workflowIds = new Set(workflows.map((item) => item.id));
 const a2aAgentIds = new Set(a2aRegistryAgents.map((item) => item.agent_id));
 const hostContractIds = new Set(hostContracts.map((item) => item.id));
-const skillPackageIds = new Set(skillPackages.map((item) => item.id));
 const workflowContractIds = new Set(workflowContracts.map((item) => item.id));
 const requiredRootCanons = new Set(initContract.required_root_canons ?? []);
 const authPeerClasses = new Map(Object.entries(authPolicy.peer_classes ?? {}));
@@ -326,12 +325,22 @@ for (const server of servers) {
   });
 }
 
-for (const skill of skills) {
-  if (skill.package_ref !== skill.id) {
-    errors.push(`${skill.id}: package_ref must match skill id`);
+const skillToPackage = new Map();
+for (const pkg of skillPackages) {
+  for (const pkgSkill of pkg.skills ?? []) {
+    if (skillToPackage.has(pkgSkill.id)) {
+      errors.push(
+        `${pkgSkill.id}: skill assigned to multiple packages (${skillToPackage.get(pkgSkill.id)}, ${pkg.id})`,
+      );
+    } else {
+      skillToPackage.set(pkgSkill.id, pkg.id);
+    }
   }
-  if (!skillPackageIds.has(skill.package_ref)) {
-    errors.push(`${skill.id}: missing skill package '${skill.package_ref}'`);
+}
+
+for (const skill of skills) {
+  if (!skillToPackage.has(skill.id)) {
+    errors.push(`${skill.id}: skill not assigned to any package`);
   }
   pushRefErrors({
     ownerId: skill.id,
@@ -368,64 +377,27 @@ for (const skill of skills) {
   }
 }
 
-for (const skillPackage of skillPackages) {
-  if (!skillIds.has(skillPackage.skill_ref)) {
-    errors.push(`${skillPackage.id}: package references unknown skill '${skillPackage.skill_ref}'`);
+for (const pkg of skillPackages) {
+  if (!pkg.id || !pkg.name || !pkg.description) {
+    errors.push(`${pkg.id || "package"}: package missing id, name, or description`);
     continue;
   }
-  if (skillPackage.id !== skillPackage.skill_ref) {
-    errors.push(`${skillPackage.id}: package id must match skill_ref`);
-  }
-  const skill = skills.find((item) => item.id === skillPackage.skill_ref);
-  if (!skill) {
+  if (!Array.isArray(pkg.skills) || pkg.skills.length === 0) {
+    errors.push(`${pkg.id}: package must contain at least one skill`);
     continue;
   }
-  if (skill.version !== skillPackage.version) {
-    errors.push(`${skill.id}: package version does not match skill registry`);
-  }
-  if (skill.name !== skillPackage.metadata.name) {
-    errors.push(`${skill.id}: package metadata.name does not match skill registry`);
-  }
-  if (skill.description !== skillPackage.metadata.description) {
-    errors.push(`${skill.id}: package description does not match skill registry`);
-  }
-  if (skill.owner !== skillPackage.metadata.owner) {
-    errors.push(`${skill.id}: package owner does not match skill registry`);
-  }
-  if (skill.risk_tier !== skillPackage.metadata.risk_tier) {
-    errors.push(`${skill.id}: package risk_tier does not match skill registry`);
-  }
-  if (JSON.stringify(skill.knowledge_basis) !== JSON.stringify(skillPackage.metadata.knowledge_basis)) {
-    errors.push(`${skill.id}: package knowledge_basis does not match skill registry`);
-  }
-  if (JSON.stringify(skill.dependencies) !== JSON.stringify(skillPackage.dependencies)) {
-    errors.push(`${skill.id}: package dependencies do not match skill registry`);
-  }
-  if (JSON.stringify(skill.host_compatibility) !== JSON.stringify(skillPackage.host_compatibility)) {
-    errors.push(`${skill.id}: package host_compatibility does not match skill registry`);
-  }
-  if (JSON.stringify(skill.install_hooks) !== JSON.stringify(skillPackage.install_hooks)) {
-    errors.push(`${skill.id}: package install_hooks do not match skill registry`);
-  }
-  if (JSON.stringify(skill.examples) !== JSON.stringify(skillPackage.examples)) {
-    errors.push(`${skill.id}: package examples do not match skill registry`);
-  }
-  if (!Array.isArray(skillPackage.runtime_exports) || skillPackage.runtime_exports.length === 0) {
-    errors.push(`${skill.id}: package runtime_exports must contain at least one path`);
-  }
-  if (!Array.isArray(skillPackage.source_paths) || skillPackage.source_paths.length === 0) {
-    errors.push(`${skill.id}: package source_paths must contain at least one path`);
-  }
-  for (const sourcePath of skillPackage.source_paths ?? []) {
-    if (!exists(sourcePath)) {
-      errors.push(`${skill.id}: package source path missing '${sourcePath}'`);
+  for (const pkgSkill of pkg.skills) {
+    if (!skillIds.has(pkgSkill.id)) {
+      errors.push(`${pkg.id}: package references unknown skill '${pkgSkill.id}'`);
+      continue;
     }
-  }
-  if (
-    skill.version_lock?.schema_version !== skillPackage.version_lock?.schema_version ||
-    skill.version_lock?.artifact_hash !== skillPackage.version_lock?.artifact_hash
-  ) {
-    errors.push(`${skill.id}: package version_lock does not match skill registry`);
+    const skill = skills.find((item) => item.id === pkgSkill.id);
+    const fields = ["name", "version", "description", "owner", "risk_tier", "status", "superseded_by", "orthogonal_tags", "floor_scope"];
+    for (const field of fields) {
+      if (JSON.stringify(skill[field]) !== JSON.stringify(pkgSkill[field])) {
+        errors.push(`${pkg.id}/${pkgSkill.id}: package skill ${field} does not match skills registry`);
+      }
+    }
   }
 }
 

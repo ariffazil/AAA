@@ -1,0 +1,57 @@
+# Federation Skill Auditor Configuration
+# DITEMPA BUKAN DIBERI
+
+scopes:
+  kimi:
+    path: /root/.arifos/agents/kimi/skills
+    required_files:
+      - SKILL.md
+      - examples.md
+      - tests.md
+    required_bindings:
+      - cli.yaml
+
+  project:
+    path: /root/.agents/skills
+    required_files:
+      - SKILL.md
+    required_bindings: []
+
+  aaa:
+    path: /root/AAA/skills
+    required_files:
+      - SKILL.md
+    required_bindings: []
+
+  opencode:
+    path: /root/.arifos/agents/opencode/skills
+    required_files:
+      - SKILL.md
+    required_bindings: []
+
+  hermes:
+    path: /root/HERMES/skills
+    required_files:
+      - SKILL.md
+    required_bindings: []
+
+  arifos:
+    path: /root/arifOS/skills
+    required_files:
+      - SKILL.md
+    required_bindings: []
+
+  well:
+    path: /root/WELL/skills
+    required_files:
+      - SKILL.md
+    required_bindings: []
+
+severity_weights:
+  ERROR: 10
+  WARNING: 3
+  INFO: 0
+
+thresholds:
+  max_errors: 0
+  max_warnings: 25

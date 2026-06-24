@@ -1,5 +1,45 @@
 ---
-superseded_by: /root/arifOS/skills/recursive-self-improvement/SKILL.md
+id: drift-response
+name: Drift Response
+version: 0.1.0
+description: Legacy 5-step drift response protocol. Superseded by service-health-triage.
+owner: AAA
+risk_tier: medium
+maturity: deprecated
+status: deprecated
+superseded_by: service-health-triage
+knowledge_basis:
+  language: true
+  math: false
+  physics: false
+host_compatibility:
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  skills: []
+  servers: []
+  tools: []
+examples:
+- Legacy 5-step drift response protocol after a health scan
+tests:
+- Classification outputs NUISANCE, IMPORTANT, or CRITICAL
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Ω
+  functional:
+  - Ops
+  layer: RUNTIME
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F3
+- F11
 superseded_category: constitutional-duplicate
 superseded_date: 2026-06-22
 superseded_authority: Hermes-ASI-for-Arif-F13-SOVEREIGN
@@ -7,6 +47,19 @@ superseded_status: DRAFT-pending-Cycle-B-888-ratification
 ---
 
 # Drift Response — OpenClaw Operational Skill
+
+> **DEPRECATED** — This skill has been superseded by `service-health-triage`. Use that skill instead.
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
+
+> **DEPRECATED** — This skill has been superseded by `service-health-triage`. Use that skill instead.
 
 **Skill ID:** `drift-response`  
 **Agent:** OpenClaw (AGI — Operational Gateway)  
