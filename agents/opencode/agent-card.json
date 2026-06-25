@@ -8,7 +8,7 @@
     "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + MiniMax M2.7/M3/M2.5-HS (subagents)"
   },
   "description": "OpenCode CLI forge instrument — provider-agnostic coding harness. Auto-discovers MCP tools at session init. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. MiMo/MiniMax model rotation.",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "model": "tokenplan-mimo/mimo-v2.5-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
@@ -175,6 +175,13 @@
       "description": "Meta-skill for building new agents: prompt engineering, skill binding, MCP tool selection, test harness creation. For forge-grade agent construction.",
       "tags": ["agent", "builder", "prompt-engineering", "meta"],
       "floor_scope": ["F2", "F4", "F8", "F11"]
+    },
+    {
+      "id": "aaa-zen",
+      "name": "Zen of Agentic Python",
+      "description": "Zen of Agentic Python (AAA_ZEN.md): 15 axioms for Pythonic agentic code. Python axioms 1-7 (PEP 20) + Agentic axioms 8-15 (blast radius, receipts, authority, time, dignity, unknowns, simulation, no impersonation). MCP response envelope standard. Canonical at AAA/skills/AAA_ZEN.md.",
+      "tags": ["doctrine", "python", "zen", "axioms", "F1-F13", "MCP"],
+      "floor_scope": ["F1", "F2", "F4", "F6", "F7", "F9", "F11", "F13"]
     }
   ]
 }
