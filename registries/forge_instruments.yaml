@@ -92,9 +92,9 @@ instruments:
       - serena           # LSP symbol search (read-only)
       - meyhem           # MCP discovery (6700+) + outcome search
       - playwright       # NEW: browser automation, AAA/arif-sites testing
+      - supabase         # read-only (--read-only flag), universal AAA access
     mcp_quarantine:
       - brave-search     # token in /root/.env (mode 644), needs vault.env migration
-      - supabase         # --read-only, needs F13 ack for write
     mcp_removed:
       - exa              # 405 + empty EXA_API_KEY
       - composio         # 401 + needs OAuth you haven't done
