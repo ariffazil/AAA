@@ -356,6 +356,7 @@ To make TREE777 flourish sustainably, run this operating pattern:
 - [[VAULT999]] — the paired sealed memory ledger
 - [[concept-arifOS-loop-architecture]] — 11 canonical loops, loop classes, writer/auditor separation
 - [[concept-a-forge-quantum-execution-lease]] — quantum execution lease (superposition → collapse → receipt)
+- [[concept-reality-engineering-canon]] — reality engineering as constitutional physics, loop ⊂ reality, verified source, 3 overclaims corrected
 
 ---
 
