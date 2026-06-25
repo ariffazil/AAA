@@ -350,7 +350,6 @@ axes:
     quarantine:
       brave-search: 🔒 Token in /root/.env (mode 644) not in vault.env. Move BRAVE_SEARCH_API_KEY to vault.env
         to enable.
-      supabase: 🔒 Token exists but --read-only flag. Remove flag AND ensure F13 ack for write access.
     removed_log:
       exa: 405 Method Not Allowed + EXA_API_KEY empty. Never authenticated.
       composio: 401 Unauthorized + requires OAuth flow you haven't completed. No value to a single-user
