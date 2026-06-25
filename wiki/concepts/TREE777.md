@@ -354,6 +354,8 @@ To make TREE777 flourish sustainably, run this operating pattern:
 - [[skill-skill-promote]] — meta-skill: promote patterns to canonical skills
 - [[SCHEMA.md]] — TREE777 constitutional law
 - [[VAULT999]] — the paired sealed memory ledger
+- [[concept-arifOS-loop-architecture]] — 11 canonical loops, loop classes, writer/auditor separation
+- [[concept-a-forge-quantum-execution-lease]] — quantum execution lease (superposition → collapse → receipt)
 
 ---
 
