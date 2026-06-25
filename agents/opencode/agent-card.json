@@ -4,11 +4,11 @@
   "name": "OpenCode CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
-    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
+    "category": "LLM-as-principal (MiMo/MiniMax — the model is the principal, CLI is harness)",
+    "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + MiniMax M2.7/M3/M2.5-HS (subagents)"
   },
-  "description": "OpenCode CLI forge instrument \u2014 provider-agnostic coding harness. Auto-discovers MCP tools at session init. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13.",
-  "version": "1.17.8",
+  "description": "OpenCode CLI forge instrument — provider-agnostic coding harness. Auto-discovers MCP tools at session init. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. MiMo/MiniMax model rotation.",
+  "version": "2.0.0",
   "model": "tokenplan-mimo/mimo-v2.5-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
@@ -49,42 +49,25 @@
     }
   },
   "security": [
-    {
-      "bearer_auth": []
-    },
-    {
-      "api_key": []
-    }
+    { "bearer_auth": [] },
+    { "api_key": [] }
   ],
-  "defaultInputModes": [
-    "text/plain",
-    "application/json"
-  ],
-  "defaultOutputModes": [
-    "text/plain",
-    "application/json"
-  ],
-  "mcp_servers": [
-    "arifos",
-    "geox",
-    "wealth",
-    "well",
-    "aforge"
-  ],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "mcp_servers": ["arifos", "geox", "wealth", "well", "aforge"],
   "subAgentPolicy": {
     "default": "888_HOLD",
-    "registered": [
-      "explore",
-      "plan"
-    ],
+    "registered": ["forge", "auditor", "ops", "planner", "explore"],
     "maxParallel": 3,
     "isolation": "worktree",
-    "capability_modes": [
-      "read-only",
-      "read-write",
-      "execute",
-      "all"
-    ]
+    "capability_modes": ["read-only", "read-write", "execute", "all"],
+    "model_rotation": {
+      "forge": "minimax/MiniMax-M2.7",
+      "auditor": "minimax/MiniMax-M3",
+      "ops": "minimax/MiniMax-M2.5-highspeed",
+      "planner": "minimax/MiniMax-M2.7-highspeed",
+      "explore": "azure-openai/gpt-4.1-mini"
+    }
   },
   "autonomy_tiers": {
     "T1_auto": "read, grep, list, web research, precise FS edits, local run/test/build, skill introspection",
@@ -113,135 +96,85 @@
       "id": "hermes-opencode-protocol",
       "name": "Hermes/OpenCode Protocol",
       "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. LEASED.",
-      "tags": [
-        "protocol",
-        "F1-F13",
-        "execution",
-        "FI"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F8",
-        "F11",
-        "F13"
-      ]
+      "tags": ["protocol", "F1-F13", "execution", "FI"],
+      "floor_scope": ["F1", "F2", "F4", "F8", "F11", "F13"]
     },
     {
       "id": "agentic-architecture",
       "name": "Agentic Architecture",
       "description": "Class-level skill for designing sovereign agentic agents. 9-skill spine, local-model compensation, failure classification, phased implementation. F8, F11 enforced. LEASED.",
-      "tags": [
-        "architecture",
-        "agent",
-        "design",
-        "F8"
-      ],
-      "floor_scope": [
-        "F8",
-        "F11"
-      ]
+      "tags": ["architecture", "agent", "design", "F8"],
+      "floor_scope": ["F8", "F11"]
     },
     {
       "id": "fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
-      "tags": [
-        "fabrication",
-        "F2",
-        "F9",
-        "verification"
-      ],
-      "floor_scope": [
-        "F2",
-        "F9",
-        "F11"
-      ]
+      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "tags": ["fabrication", "F2", "F9", "verification"],
+      "floor_scope": ["F2", "F9", "F11"]
     },
     {
       "id": "autonomous-governed-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
-      "tags": [
-        "autonomous",
-        "F1-F13",
-        "execution",
-        "T1-T3"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F11",
-        "F13"
-      ]
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "tags": ["autonomous", "F1-F13", "execution", "T1-T3"],
+      "floor_scope": ["F1", "F2", "F4", "F7", "F11", "F13"]
     },
     {
       "id": "arifos-arconstitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
       "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "F1-F13",
-        "read-only"
-      ],
-      "floor_scope": [
-        "F1",
-        "F2",
-        "F4",
-        "F7",
-        "F9",
-        "F11",
-        "F13"
-      ]
+      "tags": ["constitutional", "audit", "F1-F13", "read-only"],
+      "floor_scope": ["F1", "F2", "F4", "F7", "F9", "F11", "F13"]
     },
     {
       "id": "godel-humility-lock",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
-      "tags": [
-        "humility",
-        "F7",
-        "self-critique",
-        "epistemic"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7"
-      ]
+      "tags": ["humility", "F7", "self-critique", "epistemic"],
+      "floor_scope": ["F2", "F7"]
     },
     {
       "id": "github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
-      "tags": [
-        "github",
-        "workflow",
-        "PR",
-        "issues"
-      ],
-      "floor_scope": [
-        "F1",
-        "F11"
-      ]
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "tags": ["github", "workflow", "PR", "issues"],
+      "floor_scope": ["F1", "F11"]
     },
     {
       "id": "arifos-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
-      "tags": [
-        "MCP",
-        "federation",
-        "routing",
-        "multi-organ"
-      ],
-      "floor_scope": [
-        "F4",
-        "F11"
-      ]
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "tags": ["MCP", "federation", "routing", "multi-organ"],
+      "floor_scope": ["F4", "F11"]
+    },
+    {
+      "id": "federation-coding-agent",
+      "name": "Federation Coding Agent",
+      "description": "Meta-playbook for cross-repo federation work. Routing, governance, execution, validation, audit, seal. Spans all 7 organs. HIGH risk. F1-F13 enforced.",
+      "tags": ["federation", "cross-repo", "meta", "orchestration"],
+      "floor_scope": ["F1", "F2", "F4", "F7", "F8", "F9", "F11", "F12", "F13"]
+    },
+    {
+      "id": "auditor-validator-kutip-sampah",
+      "name": "Auditor Validator Kutip Sampah",
+      "description": "Immune system / cleaner skill. Audit, validate, clean junk, detect drift/corruption. Absorbs security, audit, validation, and cleanup. HIGH risk.",
+      "tags": ["audit", "cleanup", "drift", "security"],
+      "floor_scope": ["F1", "F2", "F4", "F7", "F8", "F9", "F10", "F11", "F12"]
+    },
+    {
+      "id": "agentic-session-init",
+      "name": "Agentic Session Init",
+      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
+      "tags": ["bootstrap", "session", "init", "governance"],
+      "floor_scope": ["F1", "F2", "F11", "F13"]
+    },
+    {
+      "id": "agentic-builder",
+      "name": "Agentic Builder",
+      "description": "Meta-skill for building new agents: prompt engineering, skill binding, MCP tool selection, test harness creation. For forge-grade agent construction.",
+      "tags": ["agent", "builder", "prompt-engineering", "meta"],
+      "floor_scope": ["F2", "F4", "F8", "F11"]
     }
   ]
 }
