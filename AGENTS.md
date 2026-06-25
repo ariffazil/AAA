@@ -113,6 +113,24 @@ External tool/agent → A-FORGE broker (/execute) → AAA warga agent → AAA st
 **Constitutional Authority:** This boundary is F13 SOVEREIGN directive — Arif Fazil.
 It implements F8 LAW (system boundaries) at the AAA control plane layer.
 
+### Adat Agentic — Operating Doctrine
+
+> **Full doctrine:** [`governance/ADAT_AGENTIC.md`](governance/ADAT_AGENTIC.md)
+
+**Core principle:** Semua alat ada pada semua agen. All tools belong to all agents.
+
+- Adat is **custom** (guidance), not **law** (F1–F13)
+- All agents have full read+write access to all MCP servers
+- Lane purity is guidance, not restriction — FORGE may audit, AUDITOR may forge
+- Permission gates removed by F13 sovereign directive 2026-06-25
+- Safety net is the kernel/governance layer, not the permission layer
+
+**What remains strict (law, not adat):**
+- VAULT999 append-only (F11 AUDIT)
+- Constitutional files protected (F1–F13, gitleaks)
+- Production push to main (F1 AMANAH, `ack_irreversible=true`)
+- External irreversible actions (F13 SOVEREIGN, 888_HOLD)
+
 ### Autonomous
 - Modify React components, add UI features, refactor TypeScript
 - Run `npm run build`, `npm run lint`
