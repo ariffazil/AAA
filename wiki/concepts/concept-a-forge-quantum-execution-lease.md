@@ -401,6 +401,7 @@ the verdict is the eigenvalue, the receipt is the classical record.
 - [[concept-arifOS-loop-architecture]] — The 11 loops this lease governs
 - [[concept-memory-knowledge-loop]] — The cognitive loop that learns from collapse events
 - [[intelligence-tree]] — Where quantum execution sits in the 7-layer tree
+- [[concept-reality-engineering-canon]] — Where quantum execution lease sits in the constitutional substrate (loop ⊂ reality)
 
 ---
 
