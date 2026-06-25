@@ -10,7 +10,7 @@ hexagon:
     mutation: "333-AGI promoted from SPEC to LIVE — embodied as OpenClaw on port 18789"
   architecture: Hybrid 5 — 3 PRIMARY + 2 SUPPORT
   motto: DITEMPA BUKAN DIBERI
-  total_skills: 20
+  total_skills: 50
   sovereign:
     id: 000-SALAM
     role: Human Sovereign — F13 · above the registry · not an agent
@@ -77,7 +77,7 @@ hexagon:
       class: AGI
       trinity: Δ MIND
       stage: 333-THINK
-      skills: 10
+      skills: 11
       status: live
       runtime: openclaw
       runtime_port: 18789
@@ -87,20 +87,26 @@ hexagon:
       - GEOX
       - WEALTH
       - OpenClaw
+      local_skills:
+      - antigravity
+      - ops-planner
+      - self-forge-advisor
     - id: 555-ASI
       class: ASI
       trinity: Ω HEART
       stage: 555-MEMORY
-      skills: 3
+      skills: 12
       role: ethical + memory + audit lineage
       hosts:
       - WELL
       - arifOS
+      local_skills:
+      - external-watcher
     - id: 888-APEX
       class: APEX
       trinity: ΦΙ JUDGE
       stage: 888-JUDGE
-      skills: 2
+      skills: 9
       role: constitutional judge, F1-F13 arbitration
       hosts:
       - arifOS
@@ -108,14 +114,16 @@ hexagon:
     - id: A-AUDIT
       class: APEX oversight
       role: continuous ethical + safety monitor
-      skills: 2
+      skills: 10
       tag: '[oversight]'
       hosts:
       - arifOS (control plane)
+      local_skills:
+      - kernel-scribe
     - id: A-ARCHIVE
       class: ASI service
       role: immutable ledger keeper + audit trail
-      skills: 3
+      skills: 8
       tag: SEAL
       hosts:
       - VAULT999
