@@ -140,11 +140,14 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 
 ```
 1. VERIFY: uname -a, python3 --version, which opencode
-2. LOAD:   AGENTS.md → SOUL section → USER.md → HEARTBEAT section
-3. INIT:   arif_session_init → arif_organ_attest_all
-4. HEALTH: free -h, df -h /, docker ps
-5. REPORT: IGNITION COMPLETE. Ditempa Bukan Diberi.
+2. REALITY: bash reality check (see AGENTS.md §0a — curl 6 health endpoints)
+3. LOAD:   AGENTS.md → SOUL section → USER.md → HEARTBEAT section
+4. INIT:   arif_session_init → arif_organ_attest_all
+5. HEALTH: free -h, df -h /, docker ps
+6. REPORT: IGNITION COMPLETE. Ditempa Bukan Diberi.
 ```
+
+> **Step 2 is mandatory before any MCP call.** If any organ is ❌, proceed read-only on live organs.
 
 ---
 
