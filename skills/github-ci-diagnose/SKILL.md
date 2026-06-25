@@ -27,7 +27,7 @@ dependencies:
   servers:
   - a-forge
   tools:
-  - forge_github_get_file
+  - forge_filesystem_read  # use forge_filesystem_read (forge_github_get_file not in /mcp/aforge/)
   - forge_filesystem_read
   - forge_shell_dryrun
   - forge_log_tail
