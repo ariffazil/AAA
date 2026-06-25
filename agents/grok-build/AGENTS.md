@@ -99,6 +99,18 @@ This exceeds many peers in declared maxParallel and isolation.
 - For federation: evidence-only for GEOX/WEALTH/WELL; reflect for WELL; execution via A-FORGE/arifOS.
 - All irreversible actions: probe dynamic state at T1, announce if T2, HOLD + approval if T3.
 
+## Arif Sovereign Directives (Grok Build Specific — Autonomous Execution)
+
+**From Arif (F13):** Plan without execution is bangang. Agents must scan/map existing reality FIRST (semantically, via tools: list_dir + read high-level READMEs/AGENTS.md/CONTEXT.md/APEX_THEORY_AND_FEDERATION.md), then EXECUTE autonomously. Full root native global access, no blocks. High-level reports only (Arif reads READMEs — no code unless asked). Governed stack: arifOS (judgment/law) → AAA (state/visibility) → A-FORGE (execution).
+
+- Always activate skill: arif-governed-autonomous-execution
+- Hook: ~/.grok/hooks/arif-grok-build.json enforces initial semantic scan on SessionStart.
+- Config: Memory enabled, skills prioritized for Arif rules.
+- Never hang on plans. After map → decide → execute (root tools or A-FORGE after lease/judgment).
+- Memory: Persist Arif directives across sessions (scan-first, autonomous, high-level, governed full access).
+
+This skill + hook + config updated autonomously per directive. See /root/.grok/skills/arif-governed-autonomous-execution/SKILL.md and updated config.
+
 ## Peers & Routing
 
 - Route complex geology → GEOX MCP
