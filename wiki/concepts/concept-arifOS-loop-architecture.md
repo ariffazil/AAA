@@ -254,6 +254,7 @@ DEMAND (human request)
 - [[concept-memory-knowledge-loop]] — cognitive loop (memory↔knowledge)
 - [[concept-agent-skills-architecture]] — skills as first-class citizens
 - [[anti-fabrication-protocol]] — the skill that came from a scar
+- [[concept-reality-engineering-canon]] — reality engineering governs loop; loop ⊂ reality; canonical contrast; 3 overclaims corrected
 
 ---
 
