@@ -1,0 +1,117 @@
+{
+  "$schema": "arifos/grok-build-mcp-config/v1",
+  "comment": "Example MCP server declarations for Grok Build CLI (stdio preferred for local orchestration). Merge or point Grok Build config at this (or equivalent mcporter.json). Narrow surfaces only. Pair with arifos-mcp-federation skill + A-FORGE leases + AAA A2A.",
+  "mcpServers": {
+    "gb-federation-router": {
+      "_comment": "Narrow orchestration planner/router. stdio for low blast radius. Use first for sequence planning across federation.",
+      "command": "python",
+      "args": ["-m", "A-FORGE.services.grok-build-mcp.gb_federation_router"],
+      "env": {
+        "ARIFOS_MCP_URL": "http://127.0.0.1:8088/mcp",
+        "AFORGE_MCP_URL": "http://127.0.0.1:7072/mcp",
+        "AAA_A2A_URL": "http://127.0.0.1:3001"
+      },
+      "transport": "stdio"
+    },
+    "mcp-repo-read": {
+      "_comment": "Narrow read tier (cognitive clarity focus). Evolved tools deliver summary-first, reasoning, related context, limitations, suggestions. query_context for synthesis.",
+      "command": "python",
+      "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_repo_read"],
+      "env": { "REPO_ROOT": "/root" },
+      "transport": "stdio",
+      "server_label": "mcp-repo-read",
+      "server_description": "High-clarity read-only surface: repository structure, code symbols, ADRs with synthesis + proactive related context. Strictly bounded, evidence-based. Reduces cognitive load for Grok Build planning."
+    },
+    "mcp-memory": {
+      "_comment": "Narrow memory/governance. ADRs, Cooling Ledger, Dream summaries, F-floor search, rhythm. Escalate change to arifOS 888.",
+      "command": "python",
+      "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_memory"],
+      "env": { "REPO_ROOT": "/root" },
+      "transport": "stdio",
+      "server_label": "mcp-memory",
+      "server_description": "Sovereign memory surface for reflection, ADRs, Cooling Ledger, Dream Engine, daily rhythm. Governance overlay."
+    },
+    "mcp-arifos-kernel": {
+      "_comment": "Narrow direct transport of arifOS constitutional kernel. Low entropy. Health, floors, rhythm, kernel memory, gated judgment entry, malam reflection writer.",
+      "command": "python",
+      "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_arifos_kernel"],
+      "env": { "REPO_ROOT": "/root" },
+      "transport": "stdio",
+      "server_label": "mcp-arifos-kernel",
+      "server_description": "arifOS kernel (floors, entropy, 888 entry, daily rhythm, sealed memory). Read-first. Escalate via 888/A2A. Optimal for Grok Build."
+    },
+    "mcp-repo-write": {
+      "_comment": "GATED write tier. All tools return HOLD requiring lease/888. Separate from read.",
+      "command": "python",
+      "args": ["-m", "A-FORGE.services.grok-build-mcp.mcp_repo_write"],
+      "env": { "REPO_ROOT": "/root" },
+      "transport": "stdio",
+      "server_label": "mcp-repo-write",
+      "server_description": "Narrow gated writes (patch, branch, PR draft). Requires A-FORGE lease or arifOS 888 + A2A."
+    },
+    "arifos": {
+      "_comment": "arifOS constitutional kernel (governance, judge, vault, sense). Streamable HTTP or stdio bridge. Limit to read + judgment paths.",
+      "url": "http://127.0.0.1:8088/mcp",
+      "transport": "streamable-http",
+      "server_label": "arifos",
+      "server_description": "arifOS governance, 888 judgment, VAULT, floor enforcement. Evidence + control tier only."
+    },
+    "aforge": {
+      "_comment": "A-FORGE execution (7072 MCP). Use leases for scoping (equivalent to allowed_tools). Prefer dry-run + lease first.",
+      "url": "http://127.0.0.1:7072/mcp",
+      "transport": "streamable-http",
+      "server_label": "aforge",
+      "server_description": "Execution substrate: plan, build, test, lease-gated deploy. Change/execution tier. Always request lease with narrow scope."
+    },
+    "geox": {
+      "_comment": "GEOX earth intelligence (read-only evidence).",
+      "url": "http://127.0.0.1:8081/mcp",
+      "transport": "streamable-http",
+      "server_label": "geox",
+      "server_description": "Earth evidence: basin, seismic, petrophysics, vision, claims. Read tier only."
+    },
+    "wealth": {
+      "url": "http://127.0.0.1:18082/mcp",
+      "transport": "streamable-http",
+      "server_label": "wealth",
+      "server_description": "Capital evidence (NPV, risk, stock, flow). Read tier only."
+    },
+    "well": {
+      "url": "http://127.0.0.1:18083/mcp",
+      "transport": "streamable-http",
+      "server_label": "well",
+      "server_description": "Vitality / human + system readiness. Read tier only."
+    },
+    "github": {
+      "_comment": "GitHub deep ops (already high-count). Register with tight allowed_tools in remote use.",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "transport": "stdio",
+      "server_label": "github",
+      "server_description": "Repo/PR/issue/actions. Prefer read + propose for most flows."
+    },
+    "cloudflare": {
+      "_comment": "Cloudflare plugin integration for DNS, Workers, KV, R2, AI. Installed per AF-2026-06-23 directive. Use for platform ops behind leases.",
+      "command": "npx",
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare@latest"],
+      "env": {
+        "CLOUDFLARE_API_TOKEN": "${CF_TOKEN}"
+      },
+      "transport": "stdio",
+      "server_label": "cloudflare",
+      "server_description": "Cloudflare platform tools. Read tier preferred; writes require forge lease from canonical arifOS."
+    }
+  },
+  "notes_for_grok_build": {
+    "planner_first": "Always call orchestrate_sequence (gb-federation) or arifos-mcp-federation skill before cross-tier work.",
+    "narrow_is_mandatory": "When declaring to remote xAI, always supply allowed_tools. Omission = full surface in context (bad for tokens + risk).",
+    "leases": "For anything beyond read in A-FORGE, first request lease with minimal scopes.",
+    "888_HOLD": "Any T3 (prod deploy, secret, vault write, destructive, cross-org structural) requires 888 + explicit F13.",
+    "metrics": "Emit via emit_federation_telemetry or arifos observability. Track selection precision, escalation, read/write ratio.",
+    "A2A_mesh": "For cross-agent coordination or status use AAA A2A (discovery, handoff) rather than raw MCP when possible.",
+    "extension_surface": "Bundle via .grok/plugins/ (see arif-narrow-mcp/plugin.toml) for /plugins /skills /hooks /mcps discovery. Skills become /slash commands. Hooks for pre/post policy."
+  }
+}
