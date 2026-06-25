@@ -92,7 +92,7 @@ instruments:
       - serena           # LSP symbol search (read-only)
       - meyhem           # MCP discovery (6700+) + outcome search
       - playwright       # NEW: browser automation, AAA/arif-sites testing
-      - supabase         # read-only (--read-only flag), universal AAA access
+      - supabase         # full read+write, F13 sovereign directive 2026-06-25
     mcp_quarantine:
       - brave-search     # token in /root/.env (mode 644), needs vault.env migration
     mcp_removed:
