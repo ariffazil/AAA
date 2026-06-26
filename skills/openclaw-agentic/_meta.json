@@ -1,0 +1,24 @@
+{
+  "name": "openclaw-agentic",
+  "version": "2.1.0",
+  "openclaw": {
+    "always": false,
+    "eligible": true,
+    "os": ["linux"],
+    "requires": {}
+  },
+  "triggers": [
+    "openclaw…", "agent…", "route…", "who handles…",
+    "self-heal", "self-evolve", "watch this",
+    "GEOX / WEALTH / WELL", "F1-F13", "F13", "constitutional",
+    "deploy", "restart", "kill", "delete",
+    "failing probe", "stuck cron", "drift between mirrors"
+  ],
+  "metadata": {
+    "author": "Hermes (capability-first forge) for Arif; v2.1.0 merged with OpenClaw parallel session 4fc1c1b5",
+    "forged_at": "2026-06-06T17:35:00+08:00",
+    "v2_1_0_merged_at": "2026-06-08T16:20:00+00:00",
+    "federation_organ": "openclaw-workspace",
+    "consumes_mcp": ["arifOS", "GEOX", "WEALTH", "WELL"]
+  }
+}

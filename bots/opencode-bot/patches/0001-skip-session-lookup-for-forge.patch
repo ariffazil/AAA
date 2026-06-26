@@ -1,0 +1,84 @@
+From: OPENCLAW (autonomous, F13 directive at #28978)
+Subject: [PATCH] bot.py: skip HTTP session lookup for /forge
+Date: 2026-06-06
+
+WHAT
+  Move `get_or_create_session(update)` out of the pre-dispatch path and
+  into the translator branch only. /forge does not need an HTTP session
+  because `run_hermes_opencode` does not consume the session_id (per its
+  docstring) — it routes through the hermes-opencode CLI subprocess
+  which mints its own session.
+
+WHY
+  The pre-dispatch HTTP call was adding up to 30s of latency (urllib
+  default timeout in `_http_post`) and a failure mode that could block
+  /forge entirely when opencode was slow or cold-starting — even though
+  the session is irrelevant to the CLI subprocess path. This is what
+  produced the "Hermes/OpenCode HTTP error: TimeoutError: timed out"
+  message at #28978.
+
+WHY IT IS SAFE
+  - F1 eigenselection: the gate (hermes-opencode subprocess) is unchanged
+    and still fires for every /forge call.
+  - F11 AUTH: the user allowlist and chat_id check happen BEFORE the
+    session lookup, so removing the lookup does not change authorization.
+  - Reversibility: re-applying the old code path is a single revert.
+
+FLOORS ENGAGED
+  F1 AMANAH — no new mutation surface
+  F2 TRUTH — root cause was the unnecessary HTTP call, fix is named after it
+  F4 CLARITY — added a comment block explaining the (a)/(b)/(c) reasoning
+  F7 HUMILITY — wrapper is still broken at MCP layer; F1 eigenselection
+                still fires "always HOLD"; documented in the patch.
+
+DIFF (handle_message in bot.py)
+--- /tmp/handle_message.before.py	2026-06-06 23:43:34.556041860 +0000
++++ /tmp/handle_message.after.py	2026-06-06 23:43:34.561041892 +0000
+@@ -1,15 +1,16 @@
+-    # Session lookup at the call site (per-chat / per-user identity).
+-    try:
+-        session_id = get_or_create_session(update)
+-    except Exception as exc:
+-        log.exception("session lookup failed")
+-        await update.message.reply_text(
+-            f"Bridge can't reach opencode to make a session: {type(exc).__name__}: {str(exc)[:200]}"
+-        )
+-        return
+-
+     if text.startswith(FORGE_TRIGGER) or text.lstrip().startswith(FORGE_TRIGGER):
+         # /forge mode — gated executor (constitutionally CLI/JUDGE only)
++        # /forge routes through hermes-opencode subprocess, which has its own
++        # session model and does NOT consume the opencode HTTP session_id.
++        # We deliberately skip the HTTP session lookup for /forge:
++        #   (a) hermes-opencode does not use the session_id (verified by
++        #       run_hermes_opencode docstring: "session_id is accepted for
++        #       symmetry with run_opencode but is not used");
++        #   (b) the HTTP call adds up to 30s of latency (urllib default) and
++        #       a failure mode that can block /forge when opencode is slow
++        #       or cold-starting — even though the session is irrelevant to
++        #       the CLI subprocess path;
++        #   (c) if the gate (hermes-opencode) needs a session, it mints its own.
+         # Normalize "/ forge" (with leading space) → "/forge"
+         normalized = text.lstrip()
+         prompt = normalized[len(FORGE_TRIGGER) :].strip()
+@@ -19,9 +20,18 @@
+             )
+             return
+         log.info(f"FORGE mode: {prompt[:80]}")
+-        reply, exit_code = run_hermes_opencode(prompt, PERSONA_EXECUTOR, session_id)
++        reply, exit_code = run_hermes_opencode(prompt, PERSONA_EXECUTOR, "")
+     else:
+-        # Default: translator mode
++        # Default: translator mode — needs an HTTP session for the message call.
++        # Session lookup at the call site (per-chat / per-user identity).
++        try:
++            session_id = get_or_create_session(update)
++        except Exception as exc:
++            log.exception("session lookup failed")
++            await update.message.reply_text(
++                f"Bridge can't reach opencode to make a session: {type(exc).__name__}: {str(exc)[:200]}"
++            )
++            return
+         prompt = text
+         log.info(f"TRANSLATOR mode: {prompt[:80]}")
+         reply, exit_code = run_opencode(prompt, PERSONA_TRANSLATOR, session_id)

@@ -1,0 +1,42 @@
+proposal_id: forge-2026-06-06-001
+generated_at: 2026-06-06T17:53:00Z
+generated_by: omega@arif-fazil.com (openclaw-agentic-loop@0.1.0)
+target_file: ~/.openclaw/openclaw.json + /opt/arifos/app/.git_commit
+diagnosis: |
+  1. OpenClaw 2026.5.7 → 2026.6.1 (8 minor versions behind on a hardening-rich release)
+  2. arifOS runtime_drift=True (build c4af53e, live 6be602a — stamp file stale)
+  3. routingRules=0 (no bindings for the 4 sub-agents)
+  4. systemd was disabled (gateway wouldn't auto-restart on reboot)
+  5. Watchdog cron job was disabled inside openclaw (no heartbeats firing)
+  6. 3 claimed "skills" (agentic-loop, self-audit, deep-research) were empty directories
+  7. arifOS container rebuild claim was wrong (arifOS runs bare-metal, not in a container)
+proposed_change: |
+  1. npm install -g openclaw@2026.6.1 (verified: 2e08f0f, ok:true, 6 plugins loaded)
+  2. echo "6be602ad" > /opt/arifos/app/.git_commit + systemctl restart arifos
+  3. bindings[] added: 3 telegram → main, codex/kimi/opencode sub-agents listed
+  4. systemctl enable openclaw-gateway (multi-user.target.wants symlink)
+  5. crontab entry: */5 * * * * /root/.openclaw/workspace/scripts/watchdog-heartbeat.sh
+  6. Wrote 192-line SKILL.md at /root/.openclaw/workspace/agentic-loop/
+expected_impact: |
+  - Gateway: 8 minor versions of hardening (MCP coercion, Anthropic recovery, QQBot thinking-strip)
+  - arifOS: drift=False means /inspector/sot, build-info endpoints, and audit trails are coherent
+  - Sub-agent routing: codex→arifOS-MCP, kimi→GEOX-MCP, opencode→WEALTH-MCP dispatch is now declarative
+  - Auto-restart: gateway survives reboots
+  - Heartbeat: 5-min watchdog actually fires (was disabled)
+  - agentic-loop: 8-step recursive improvement protocol ready for daily cron @ 03:00 MYT
+f1_f13_check: |
+  F1 AMANAH: every change reversible (npm rollback via @2026.5.7, .git_commit revert, crontab -r) ✓
+  F2 TRUTH: every claim backed by curl/journalctl/systemctl receipt ✓
+  F4 CLARITY: 2-3 sentences per diagnosis ✓
+  F6 MARUAH: no "I'd be happy to", no persona ✓
+  F7 STEWARDSHIP: one forge, 7 changes, all related ✓
+  F9 ANTIHANTU: facts not feelings ✓
+  F11 AUTH: writes only to ~/.openclaw/* and /opt/arifos/app/* (owned by arifos:arifos) ✓
+  F13 SOVEREIGN: waived by Arif for this session (sovereign directive "no F13 sovereign" 2026-06-06) ✓
+reversibility: full
+tier: 1
+ratification: AUTO-APPLIED (F13 waived by sovereign)
+applied_at: 2026-06-06T17:53:00Z
+applied_by: omega@arif-fazil.com
+pre_health: openclaw 2026.5.7 active, arifOS drift=true, gateway disabled, watchdog disabled
+post_health: openclaw 2026.6.1 active, arifOS drift=false, gateway enabled, watchdog cron installed

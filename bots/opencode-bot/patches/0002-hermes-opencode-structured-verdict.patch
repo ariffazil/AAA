@@ -1,0 +1,55 @@
+--- /usr/local/bin/hermes-opencode.broken-structured-2026-06-06	2026-06-06 23:48:16.879510153 +0000
++++ /usr/local/bin/hermes-opencode	2026-06-06 23:49:35.962352999 +0000
+@@ -298,6 +298,17 @@
+     if "error" in outer:
+         raise RuntimeError(f"arifOS MCP error: {outer['error']}")
+ 
++    # Prefer structuredContent (canonical MCP structured verdict, e.g.
++    # {"verdict": "HOLD", "gate": "envelope_validation", ...}) over
++    # content[0].text. The text field is often a plain string like
++    # "888_HOLD: LEGACY_WRAP ..." which is not JSON; falling through to
++    # raw-text would make the main() verdict extractor return UNKNOWN
++    # and incorrectly treat the gate as "always block" instead of a
++    # real verdict.
++    structured = outer.get("result", {}).get("structuredContent")
++    if isinstance(structured, dict):
++        return structured
++
+     content = outer.get("result", {}).get("content", [])
+     if content and isinstance(content[0], dict):
+         text = content[0].get("text")
+@@ -306,8 +317,7 @@
+                 return json.loads(text)
+             except json.JSONDecodeError:
+                 return {"raw": text}
+-    structured = outer.get("result", {}).get("structuredContent")
+-    return structured if isinstance(structured, dict) else outer
++    return outer
+ 
+ 
+ def main() -> int:
+@@ -334,9 +344,24 @@
+         or verdict_packet.get("result", {}).get("judge_contract", {}).get("state_hash")
+         or ""
+     )
++    # Surface the constitutional reason so the journal shows WHY the gate
++    # fired. `gate` is the constitutional floor that triggered (e.g.
++    # "envelope_validation", "irreversibility", "maruah"). `reason` is the
++    # human-readable explanation. Both come from structuredContent.
++    gate = (
++        verdict_packet.get("gate")
++        or verdict_packet.get("result", {}).get("gate")
++        or ""
++    )
++    reason = (
++        verdict_packet.get("reason")
++        or verdict_packet.get("result", {}).get("reason")
++        or ""
++    )
+ 
+     print(
+         f"[hermes-opencode] 888_JUDGE verdict={verdict} state_hash={state_hash} "
++        f"gate={gate or '-'} reason={reason or '-'} "
+         f"actor={HERMES_ACTOR_ID} session={HERMES_SESSION_ID} signed={'yes' if _sign_with_sovereign_key(secrets.token_hex(16)) else 'no'}",
+         file=sys.stderr,
+     )
