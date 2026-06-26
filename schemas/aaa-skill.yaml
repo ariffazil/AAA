@@ -1,0 +1,250 @@
+# aaa-skill.yaml — Canonical AAA Skill Schema v1.0
+#
+# This is the canonical schema for AAA skills.
+# Every skill's SKILL.md frontmatter MUST conform to this schema.
+# Validated by: skills/validate.py (run in CI + TREE777 audit)
+#
+# DITEMPA BUKAN DIBERI — Schema is forged, not given.
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "aaa:schemas:skill:v1.0"
+title: "AAA Skill Schema v1.0"
+description: |
+  Canonical frontmatter schema for AAA skills (skills/<id>/SKILL.md).
+  Derived from: AAA_ZEN.md (Axioms 8-13), AGENTSKILLTREE.md (tier structure),
+  AAA_AGENT_SPECIFICATION_v1.0.md (6-pillar: SKILLS pillar).
+
+type: object
+required:
+  - id
+  - name
+  - version
+  - description
+  - owner
+  - risk_tier
+  - host_compatibility
+  - version_lock
+
+additionalProperties: false
+
+properties:
+
+  # ─── Identity ────────────────────────────────────────────────────
+  id:
+    type: string
+    pattern: "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+    minLength: 3
+    maxLength: 64
+    description: "Kebab-case unique identifier. Must match directory name."
+    examples:
+      - "github-pr-review"
+      - "aaa-agentic-governance"
+      - "repo-hygiene-audit"
+
+  name:
+    type: string
+    minLength: 3
+    maxLength: 128
+    description: "Human-readable skill name."
+
+  version:
+    type: string
+    pattern: "^\\d+\\.\\d+\\.\\d+$"
+    description: "Semantic version (MAJOR.MINOR.PATCH)."
+    examples:
+      - "1.0.0"
+      - "2.1.3"
+
+  description:
+    type: string
+    minLength: 10
+    maxLength: 512
+    description: |
+      One-line purpose. Used by compile.py to generate vendor adapters.
+      Must answer: what does this skill DO and WHEN should an agent invoke it?
+
+  # ─── Ownership & Risk ────────────────────────────────────────────
+  owner:
+    type: string
+    enum:
+      - AAA
+      - arifOS
+      - GEOX
+      - WEALTH
+      - WELL
+      - A-FORGE
+      - HERMES
+    description: "Which federation organ owns this skill."
+
+  risk_tier:
+    type: string
+    enum:
+      - low       # OBSERVE / ANALYZE — no external side effects, no mutations
+      - medium    # DRAFT / PLAN — may produce artifacts, no persistent mutations
+      - high      # MUTATE / IRREVERSIBLE — modifies persistent state
+      - critical  # F13 SOVEREIGN required — irreversible + multi-organ blast radius
+    description: |
+      Risk tier per ZENTOSILICASPEC.md blast radius classification.
+      low  → no arif_judge required
+      medium → arif_think recommended
+      high → arif_judge required before execution
+
+  # ─── Knowledge Basis (Zen Axiom 4: Complex > Complicated) ────────
+  knowledge_basis:
+    type: object
+    additionalProperties: false
+    properties:
+      physics:
+        type: boolean
+        description: "True if skill requires physics/geoscience domain knowledge (GEOX boundary)."
+      math:
+        type: boolean
+        description: "True if skill requires quantitative computation (WEALTH boundary)."
+      language:
+        type: boolean
+        description: "True if skill is primarily language/reasoning (AAA boundary)."
+    required:
+      - physics
+      - math
+      - language
+
+  # ─── Constitutional Floors ────────────────────────────────────────
+  floors:
+    type: array
+    items:
+      type: string
+      enum:
+        - F1   # AMANAH — reversibility
+        - F2   # TRUTH — evidence
+        - F3   # WITNESS — alignment
+        - F4   # CLARITY — entropy
+        - F5   # PEACE — de-escalate
+        - F6   # MARUAH — dignity
+        - F7   # HUMILITY — uncertainty
+        - F8   # GENIUS — simplicity
+        - F9   # ANTI-HANTU — no hallucination
+        - F10  # ONTOLOGY — category integrity
+        - F11  # AUTH — identity
+        - F12  # INJECTION — sanitize
+        - F13  # SOVEREIGN — human veto
+    description: |
+      Constitutional floors this skill is explicitly bound by.
+      Violations trigger HOLD or VOID via arifOS 888_JUDGE.
+      Leave empty for skills with no specific floor constraints.
+
+  # ─── Host Compatibility (compile.py target list) ─────────────────
+  host_compatibility:
+    type: array
+    minItems: 1
+    uniqueItems: true
+    items:
+      type: string
+      enum:
+        - claude-code      # canonical / primary
+        - codex            # OpenAI Codex CLI → openai/README.md
+        - openai           # alias for codex
+        - kimi             # Kimi Code → kimi/skill.md
+        - opencode         # OpenCode → opencode/README.md
+        - grok             # Grok Build → grok/skill.md
+        - copilot          # GitHub Copilot CLI → copilot/<id>.agent.md
+        - copilot-cli      # alias for copilot
+        - continue         # Continue.dev → continue/skill.md
+        - antigravity      # Antigravity → antigravity/skill.md
+        - openclaw         # OpenClaw → openclaw/system.md
+        - openclaw-gateway # alias for openclaw
+        - mcp              # MCP manifest → mcp/manifest.json
+        - hermes-asi       # Hermes ASI internal → hermes/skill.md
+        - apx-judge        # APEX Judge internal → apex/skill.md
+    description: |
+      Which CLI vendor targets to compile to.
+      compile.py reads this list and generates skills/<id>/<vendor>/ outputs.
+      At minimum: include claude-code (canonical). Add others as needed.
+
+  # ─── Dependencies ─────────────────────────────────────────────────
+  dependencies:
+    type: object
+    additionalProperties: false
+    properties:
+      skills:
+        type: array
+        items:
+          type: string
+          pattern: "^[a-z0-9][a-z0-9-]*[a-z0-9]$"
+        description: "Other skills that must be loaded before this one."
+      servers:
+        type: array
+        items:
+          type: string
+        description: "MCP servers required. Format: 'organ (mcp_prefix_*)' or just organ name."
+        examples:
+          - "arifos (mcp_arifos_*)"
+          - "wealth"
+          - "geox"
+      tools:
+        type: array
+        items:
+          type: string
+        description: "Native tools required (outside MCP). E.g. python3, docker, git."
+        examples:
+          - "python3"
+          - "docker"
+          - "git"
+
+  # ─── Examples & Tests (Zen Axiom 7: Readability counts) ──────────
+  examples:
+    type: array
+    items:
+      type: string
+      minLength: 10
+    description: |
+      Brief one-line examples of when to invoke this skill.
+      Each example should describe a real scenario, not a capability.
+
+  tests:
+    type: array
+    items:
+      type: string
+      minLength: 10
+    description: |
+      Brief test case descriptions. Used by TREE777 to assess promotion readiness.
+      Presence of tests + examples signals skill is mature enough to promote.
+
+  # ─── Version Lock (Zen Axiom 9: State changes require receipts) ───
+  version_lock:
+    type: object
+    required:
+      - schema_version
+    additionalProperties: false
+    properties:
+      schema_version:
+        type: string
+        enum:
+          - "1"
+        description: "aaa-skill.yaml schema version this frontmatter was validated against."
+      artifact_hash:
+        type: string
+        description: "SHA-256 of the canonical SKILL.md content at time of last seal. 'pending' if not yet sealed."
+        pattern: "^(pending|[a-f0-9]{64})$"
+
+  # ─── Tier (AGENTSKILLTREE alignment, optional) ───────────────────
+  skill_tree_tier:
+    type: integer
+    minimum: 0
+    maximum: 6
+    description: |
+      AGENTSKILLTREE.md tier alignment (optional). Informational only.
+      0=FOUNDATION, 1=OBSERVE, 2=ANALYZE, 3=PLAN, 4=MUTATE, 5=CRITIQUE, 6=SEAL
+
+  # ─── Blast Radius (Zen Axiom 8) ──────────────────────────────────
+  blast_radius:
+    type: string
+    enum:
+      - OBSERVE              # read-only, no side effects
+      - ANALYZE              # compute, assess, classify
+      - DRAFT                # generate artifacts, no persistent writes
+      - MUTATE               # write to persistent state
+      - EXTERNAL_SIDE_EFFECT # network calls, webhooks
+      - IRREVERSIBLE         # delete, DROP, force-push
+    description: |
+      Blast radius classification per ZENTOSILICASPEC.md §I.
+      If omitted, derive from risk_tier: low=OBSERVE, medium=DRAFT, high=MUTATE.
