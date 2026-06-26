@@ -33,12 +33,15 @@ DITEMPA BUKAN DIBERI — Forged, Not Given.
 """
 
 import json
+import logging
 import re
 import uuid
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import httpx
+
+logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
 # Constants
@@ -109,10 +112,13 @@ def _mcp_tool_call(tool_name: str, arguments: dict) -> Dict[str, Any]:
             resp.raise_for_status()
             body = resp.json()
     except httpx.TimeoutException:
+        logger.error("MCP request timed out for tool %s", tool_name)
         return {"status": "ERROR", "error": "MCP request timed out"}
     except httpx.HTTPStatusError as exc:
+        logger.error("MCP HTTP error %d for tool %s", exc.response.status_code, tool_name)
         return {"status": "ERROR", "error": f"MCP HTTP {exc.response.status_code}: {exc.response.text[:300]}"}
     except (httpx.RequestError, json.JSONDecodeError) as exc:
+        logger.exception("MCP transport error for tool %s", tool_name)
         return {"status": "ERROR", "error": f"MCP transport error: {exc}"}
 
     if "error" in body:
@@ -191,6 +197,7 @@ class MCPConstitutionalGateway:
         arguments = arguments or {}
         all_checks: List[Dict[str, Any]] = []
         check_failed = False
+        logger.info("admit_tool called", extra={"tool_name": tool_name, "declared_scope": declared_scope})
 
         # 1. Description review
         c1 = self.review_description(tool_name, description)

@@ -28,9 +28,12 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 from __future__ import annotations
 
 import hashlib
+import logging
 import re
 import uuid
 from datetime import datetime, timezone
+
+logger = logging.getLogger(__name__)
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -235,6 +238,7 @@ class CitationProvenanceAuditor:
             - recommendation: PASS | DOWNGRADE | HOLD | VOID
         """
         citations = self.extract_citations(text)
+        logger.info("CitationProvenanceAuditor.audit called", extra={"total_citations": len(citations), "claimed_tier": claimed_evidence_tier})
         result = {
             "audited_at": datetime.now(timezone.utc).isoformat(),
             "total_citations": len(citations),

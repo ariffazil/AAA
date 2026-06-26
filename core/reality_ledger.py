@@ -12,10 +12,13 @@ With this, it becomes a reality-learning substrate.
 """
 
 import json
+import logging
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 # Default storage path
 DEFAULT_STORE_PATH = Path("/root/AAA/data/reality_ledger")
@@ -94,9 +97,8 @@ def create_event(
     Raises:
         ValidationError: If required fields are missing or invalid.
     """
+    logger.info("create_event called", extra={"actor": actor, "action_class": action_class})
     _ensure_store(store_path)
-
-    # F7 HUMILITY: cap confidence at 0.90
     confidence = min(confidence, 0.90)
 
     # Validation
@@ -196,6 +198,7 @@ def record_outcome(
     """
     filepath = _event_path(event_id, store_path)
     if not filepath.exists():
+        logger.error("Event not found: %s", event_id)
         raise EventNotFoundError(f"Event {event_id} not found at {filepath}")
 
     with open(filepath, "r") as f:
