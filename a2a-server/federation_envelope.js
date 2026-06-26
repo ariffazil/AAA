@@ -361,6 +361,174 @@ registerAgentPolicy('hermes-asi', {
   irreversibility_threshold: 0.2,
 });
 
+// ── A2A DID Signature Verification (Gap 4 — Day 5) ──────────────────
+// Verifies Ed25519 signatures on A2A envelopes using the DID registry.
+// When A-FORGE sends an envelope to GEOX, GEOX verifies did:arif:a-forge's
+// signature before executing the task. Without this, organs can impersonate.
+
+const crypto = require('crypto');
+const fs = require('fs');
+const path = require('path');
+
+const DID_REGISTRY_PATH =
+  process.env.DID_REGISTRY_PATH || '/root/AAA/secrets/did/registry.json';
+
+let _didRegistryCache = null;
+let _didRegistryCacheTime = 0;
+const DID_CACHE_TTL_MS = 60_000; // 1 minute
+
+function loadDidRegistry() {
+  const now = Date.now();
+  if (_didRegistryCache && (now - _didRegistryCacheTime) < DID_CACHE_TTL_MS) {
+    return _didRegistryCache;
+  }
+  try {
+    const raw = fs.readFileSync(DID_REGISTRY_PATH, 'utf8');
+    _didRegistryCache = JSON.parse(raw);
+    _didRegistryCacheTime = now;
+    return _didRegistryCache;
+  } catch (err) {
+    console.error('[DID] Registry load failed:', err.message);
+    return null;
+  }
+}
+
+function resolveDidPublicKey(did) {
+  const registry = loadDidRegistry();
+  if (!registry || !registry.dids) return null;
+  const entry = registry.dids[did];
+  if (!entry) return null;
+  return {
+    publicKeyHex: entry.public_key_hex,
+    organId: entry.organ_id,
+    algorithm: entry.algorithm || 'Ed25519',
+  };
+}
+
+/**
+ * Verify an Ed25519 signature using a raw 32-byte public key.
+ *
+ * @param {Buffer} message - The canonical message bytes
+ * @param {string} signatureHex - Ed25519 signature as hex
+ * @param {string} publicKeyHex - 32-byte Ed25519 public key as hex
+ * @returns {boolean}
+ */
+function verifyEd25519(message, signatureHex, publicKeyHex) {
+  try {
+    const pubKey = Buffer.from(publicKeyHex, 'hex');
+    if (pubKey.length !== 32) return false;
+
+    // Ed25519 DER SPKI prefix: 302a300506032b6570032100
+    const derPrefix = Buffer.from('302a300506032b6570032100', 'hex');
+    const derKey = Buffer.concat([derPrefix, pubKey]);
+
+    const sig = Buffer.from(signatureHex, 'hex');
+    return crypto.verify(null, message, derKey, sig);
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Verify an A2A envelope's DID signature.
+ *
+ * An A2A envelope carries:
+ *   - from_did: who sent it
+ *   - signature: Ed25519 hex signature by from_did over canonical_bytes()
+ *
+ * This function:
+ *   1. Resolves from_did → public key via DID registry
+ *   2. Recomputes canonical_bytes() from envelope fields
+ *   3. Verifies the Ed25519 signature
+ *
+ * @param {object} envelope - The A2A envelope with from_did and signature
+ * @returns {{ ok: boolean, reason?: string, did?: string, organId?: string }}
+ */
+function verifyA2ASignature(envelope) {
+  if (!envelope || typeof envelope !== 'object') {
+    return { ok: false, reason: 'Missing envelope' };
+  }
+
+  const { from_did, signature } = envelope;
+
+  if (!from_did) {
+    return { ok: false, reason: 'Missing from_did — cannot verify sender' };
+  }
+
+  if (!signature || signature.startsWith('UNSIGNED:')) {
+    return {
+      ok: false,
+      reason: signature
+        ? `Unsigned envelope: ${signature}`
+        : 'Missing signature on envelope',
+    };
+  }
+
+  // Resolve DID → public key
+  const keyInfo = resolveDidPublicKey(from_did);
+  if (!keyInfo) {
+    return {
+      ok: false,
+      reason: `DID not in registry: ${from_did}`,
+    };
+  }
+
+  // Recompute canonical bytes
+  const canonical = buildEnvelopeCanonicalBytes(envelope);
+  if (!canonical) {
+    return { ok: false, reason: 'Cannot compute canonical bytes for envelope' };
+  }
+
+  // Verify
+  const valid = verifyEd25519(canonical, signature, keyInfo.publicKeyHex);
+
+  return {
+    ok: valid,
+    reason: valid ? 'SEAL' : 'Signature verification failed',
+    did: from_did,
+    organId: keyInfo.organId,
+  };
+}
+
+/**
+ * Build canonical bytes for A2A envelope signing/verification.
+ * Mirrors A2A_ENVELOPE.canonical_bytes() in core/capsule.py.
+ */
+function buildEnvelopeCanonicalBytes(envelope) {
+  const fields = {
+    from_did: envelope.from_did || '',
+    to_did: envelope.to_did || '',
+    task_id: envelope.task_id || '',
+    task_type: envelope.task_type || '',
+    issued_at: envelope.issued_at || '',
+    nonce: envelope.nonce || '',
+  };
+  // Deterministic: sort keys, no whitespace
+  return Buffer.from(JSON.stringify(fields, Object.keys(fields).sort()));
+}
+
+/**
+ * Full envelope DID verification with audit logging.
+ * Call this from the A2A task dispatch handler.
+ *
+ * @param {object} envelope - The A2A envelope
+ * @param {object} req - Express request (for logging)
+ * @returns {{ ok: boolean, reason: string, did?: string }}
+ */
+function verifyEnvelopeDidSignature(envelope, req) {
+  const result = verifyA2ASignature(envelope);
+
+  if (!result.ok) {
+    console.error(
+      `[DID VERIFY FAIL] from=${envelope.from_did || '?'} ` +
+      `reason=${result.reason} ` +
+      `ip=${req?.ip || '?'}`,
+    );
+  }
+
+  return result;
+}
+
 // ── Exports ─────────────────────────────────────────────────────────
 module.exports = {
   extractEnvelope,
@@ -375,4 +543,9 @@ module.exports = {
   getAgentPolicy,
   validateAgentPolicy,
   AGENT_POLICIES,
+  // A2A DID Signature Verification (Gap 4 — Day 5)
+  loadDidRegistry,
+  resolveDidPublicKey,
+  verifyA2ASignature,
+  verifyEnvelopeDidSignature,
 };
