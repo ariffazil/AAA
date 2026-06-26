@@ -35,7 +35,7 @@ tests:
 - Verify required reviewer counts match risk tier (peer/architect/auditor/judge)
 version_lock:
   schema_version: '1'
-  artifact_hash: d70dd7343dcdca63
+  artifact_hash: pending
 orthogonal_tags:
   trinitarian:
   - ΦΙ

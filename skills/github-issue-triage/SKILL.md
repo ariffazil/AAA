@@ -19,14 +19,13 @@ host_compatibility:
 - opencode
 - kimi
 - kimi-code
-dependencies: {}
+dependencies:
   servers:
-  - a-forge
+    - a-forge
   tools:
-  - forge_github_search  # forge_github_search_issues not in /mcp/aforge/ — use forge_github_search
-  - forge_github_search  # forge_github_search_repos not in /mcp/aforge/ — use forge_github_search
-  - forge_github_pr  # forge_github_create_issue not in /mcp/aforge/ — use GitHub MCP server directly
-  - forge_filesystem_read  # forge_github_get_file not in /mcp/aforge/
+    - forge_github_search
+    - forge_github_pr
+    - forge_filesystem_read
 examples:
 - New issue opened in ariffazil/arifos with no labels — triage it
 - Issue about GEOX well logs filed in AAA repo — route it correctly
@@ -38,7 +37,7 @@ tests:
 - Never apply `wontfix` or `invalid` without 888_JUDGE seal
 version_lock:
   schema_version: '1'
-  artifact_hash: e69fa003f336111c
+  artifact_hash: pending
 orthogonal_tags:
   trinitarian:
   - Ω

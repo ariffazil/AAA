@@ -20,14 +20,13 @@ host_compatibility:
 - opencode
 - kimi
 - kimi-code
-dependencies: {}
+dependencies:
   servers:
-  - a-forge
+    - a-forge
   tools:
-  - forge_filesystem_read  # use forge_filesystem_read (forge_github_get_file not in /mcp/aforge/)
-  - forge_filesystem_read
-  - forge_shell_dryrun
-  - forge_log_tail
+    - forge_filesystem_read
+    - forge_shell_dryrun
+    - forge_log_tail
 examples:
 - AAA CI is failing on main — diagnose the GitHub Actions log
 - arifOS pytest suite failing after last push — what's the root cause?
@@ -39,7 +38,7 @@ tests:
 - Refuse to dismiss a secret-scan gate as false positive
 version_lock:
   schema_version: '1'
-  artifact_hash: 19f57e8a2fc0d4c8
+  artifact_hash: pending
 orthogonal_tags:
   trinitarian:
   - Ω
