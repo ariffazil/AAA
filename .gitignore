@@ -173,3 +173,5 @@ forge_work/
 # ── A2A server archive — operational backup ──
 a2a-server/archive/
 artifacts/mimo-test/
+
+auth/keys/
