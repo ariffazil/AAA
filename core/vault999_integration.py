@@ -15,6 +15,7 @@ This creates the AGI loop: predict → act → observe → learn → seal.
 """
 
 import json
+import logging
 
 # Import Reality Ledger core
 import sys
@@ -23,6 +24,8 @@ from pathlib import Path
 from typing import Optional
 
 import httpx
+
+logger = logging.getLogger(__name__)
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core.reality_ledger import (
@@ -39,6 +42,7 @@ KERNEL_URL = "http://localhost:8088"
 
 def vault_seal(session_id: str, payload: str, actor_id: str = "forge-reality") -> dict:
     """Seal a Reality Ledger event to VAULT999 via arifOS."""
+    logger.info("vault_seal called", extra={"session_id": session_id, "actor_id": actor_id})
     try:
         with httpx.Client(base_url=KERNEL_URL, timeout=15) as c:
             resp = c.post("/mcp", headers={"Accept": "application/json"}, json={
@@ -75,8 +79,8 @@ def vault_seal(session_id: str, payload: str, actor_id: str = "forge-reality") -
                         continue
             return {"status": "OK", "raw": str(result)[:200]}
     except Exception as e:
+        logger.exception("vault_seal failed")
         return {"status": "ERROR", "error": str(e)}
-
 
 def ping_kernel() -> bool:
     """Check kernel reachability."""
@@ -116,6 +120,7 @@ def predict_seal_observe_learn(
 
     Returns the event dict with vault_receipt populated.
     """
+    logger.info("predict_seal_observe_learn called", extra={"actor": actor, "action_class": action_class})
     # Step 1: Create Reality Ledger event
     event = create_event(
         actor=actor,

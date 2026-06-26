@@ -37,11 +37,14 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 
 from __future__ import annotations
 
+import logging
 import sys
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 # Add parent to path for imports
 _AAA_ROOT = Path("/root/AAA")
@@ -126,6 +129,7 @@ class PreForgeGate:
         """
         result = PreForgeGateResult()
         result.gated_at = datetime.now(timezone.utc).isoformat()
+        logger.info("PreForgeGate.check called", extra={"action_class": action_class, "model_id": model_id})
 
         # ── STEP 0: Action class bypass ────────────────────────────────────
         if action_class in ("observe", "propose"):
