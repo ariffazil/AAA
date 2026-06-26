@@ -5,7 +5,7 @@ version: 1.0.0
 description: Cultural, dignity, and sovereignty lens for AAA state records. Apply
   before sealing decisions that touch identity, privacy, boundaries, or sovereign
   veto.
-owner: F13 SOVEREIGN
+owner: AAA
 risk_tier: low
 knowledge_basis:
   language: true
