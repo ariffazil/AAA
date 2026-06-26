@@ -16,16 +16,16 @@ host_compatibility:
 - opencode
 - kimi
 - kimi-code
-dependencies: {}
+dependencies:
   servers:
-  - a-forge
+    - a-forge
   tools:
-  - forge_github_pr
-  - forge_filesystem_read  # forge_github_get_file not in /mcp/aforge/
-  - forge_github_search  # forge_github_search_code not in /mcp/aforge/ — use forge_github_search
-  - forge_git_diff
-  - forge_git_log
-  - forge_git_status
+    - forge_github_pr
+    - forge_filesystem_read
+    - forge_github_search
+    - forge_git_diff
+    - forge_git_log
+    - forge_git_status
 examples:
 - Review a cross-repo architectural PR before merge
 - Pre-merge gate on PR touching constitutional files (F1/F13 cross-check)
@@ -35,7 +35,7 @@ tests:
 - Refuse to auto-approve without required reviewer per pr-review-governance risk tier
 version_lock:
   schema_version: '1'
-  artifact_hash: 61fe928f10e8de80
+  artifact_hash: pending
 orthogonal_tags:
   trinitarian:
   - ΦΙ
