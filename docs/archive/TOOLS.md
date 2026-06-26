@@ -1,6 +1,16 @@
 # TOOLS.md - Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+> ⚠️ SPATIAL RULE — READ BEFORE EVERY SESSION
+> **YOU ARE ALREADY ON THE VPS (af-forge, 72.62.71.199).**
+> - Execution environment: native VPS shell (root@af-forge)
+> - SSH NOT NEEDED — you are already inside the target machine
+> - All commands execute locally via bash/exec tool
+> - File paths are native: `/root/`, `/data/`, `/root/arifOS/`, `/root/AAA/`
+> - Network services are on localhost (127.0.0.1:5432, :8080, :18081, etc.)
+> - No SCP, no SSH tunneling, no remote file transfer needed
+> - When someone says "VPS" or "server" — you are already there
+
+---
 
 ## What Goes Here
 
@@ -48,10 +58,13 @@ Add whatever helps you do your job. This is your cheat sheet.
 - Health: https://mcp.arif-fazil.com/health
 - SSE: https://mcp.arif-fazil.com/sse
 - Legacy (stale, do not use): arifosmcp.arif-fazil.com
+- Local: http://127.0.0.1:8088 (arifos.service, systemd managed)
 
-### Container management
-- `docker ps` — list running containers
-- `make fast-deploy` — deploy code changes (from /root/arifosmcp/)
+### Service management
+- `systemctl status arifos` — arifOS MCP service status
+- `systemctl restart arifos` — restart arifOS MCP
+- Service name: `arifos.service` (NOT `arifosmcp` — that's the legacy Docker-era name, quarantined)
+- Port: 0.0.0.0:8088, PID 841099 (as of 09:24 UTC)
 - `systemctl status openclaw-gateway` — gateway status
 
 ### Workspace path
@@ -96,13 +109,24 @@ Add whatever helps you do your job. This is your cheat sheet.
 
 ### Federation Status (Verified 2026-05-11)
 
-| Node | Port | Tools | Status |
+| Node | Port | Process | Status |
 |------|------|-------|--------|
-| arifOS MCP | 8080 | 13 | ✅ healthy |
-| GEOX MCP | 8081 | 15 (11 categories) | ✅ healthy |
-| WEALTH MCP | 8082 | — | ✅ healthy |
-| WELL MCP | 8083 | — | ✅ healthy |
-| A2A Hub | 3001 | — | ✅ healthy |
-| hermes-agent | PID 609969 | — | ✅ native process |
+| arifOS MCP | 8088 | arifos.service (python) | ✅ healthy |
+| GEOX MCP | 18081 | arifosd.py (python) | ✅ healthy |
+| WEALTH MCP | 18082 | wealth-organ.service (python) | ✅ healthy |
+| WELL MCP | 18083 | well.service (python) | ✅ healthy |
+| APEX | — | External (MiniMax-hosted) | ✅ |
+| A2A Hub | — | NOT DEPLOYED (A2A via hermes-a2a bridge) | ❌ |
+| OpenClaw Gateway | 18789 | node (systemd) | ✅ healthy |
+| hermes-agent | PID 798391 | native (systemd) | ✅ native process |
+| A-FORGE | 7071 | a-forge.service (node) | ✅ healthy |
 
 **Note on GEOX schema:** GEOX returns tools nested under category keys (not flat `tools[]` array like arifOS). Earlier "tools: 0" false flag was a schema mismatch — actual: 15 tools across 11 categories.
+
+### srv1642546 (Kodee's VPS — Azwa's server)
+- **Host:** srv1642546.hstgr.cloud | 72.61.126.65
+- **SSH:** `ssh srv1642546` (key-based, `.ssh/config` alias)
+- **SSH key:** `~/.ssh/id_ed25519` (arif-forge-push)
+- **Root password (Hostinger panel):** `UgBJQDb8v2x4NwB3kZk8bPpNoUPSBt3wUpOMiOYZf296e839`
+- **Purpose:** Azwa Fazil's server (hermes-agent, SAF MCP, ollama)
+- **OS:** Ubuntu 26.04, 2x AMD EPYC 9355P, 8GB RAM

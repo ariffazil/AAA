@@ -184,7 +184,7 @@ Sender (untrusted metadata):
 }
 ```
 
-AIzaSyCe5SnCwExltGrIzbBqA41mp2u7bh4ClQg please configure my OPENCLAW with this. Put this key in AF-FORGE so that other agent can use it securely as well. GEOX definitely need this let right?
+AIza[REDACTED-vault] please configure my OPENCLAW with this. Put this key in AF-FORGE so that other agent can use it securely as well. GEOX definitely need this let right?
 assistant: Let me check OpenClaw config structure first:
 
 assistant: Found it. The Google key goes into `models.providers.google.apiKey`. Updating now:
@@ -196,7 +196,7 @@ assistant: Pushed. ✅ Let me also check if GEOX MCP needs this key:
 assistant: Done. Here's what I did:
 
 **✅ Configured:**
-1. **`~/.openclaw/openclaw.json`** — Added `AIzaSyCe5SnCwExltGrIzbBqA41mp2u7bh4ClQg` to `models.providers.google.apiKey`
+1. **`~/.openclaw/openclaw.json`** — Added `AIza[REDACTED-vault]` to `models.providers.google.apiKey`
 2. **`/root/AF-FORGE/google-api-key.json`** — Vault file created
 3. **`github.com/ariffazil/af-forge`** — Pushed to GitHub
 

@@ -1,0 +1,80 @@
+{
+  "checkpoint_type": "local_session_outcome",
+  "checkpoint_version": "0.1",
+  "schema": "well_state_v0_compat",
+  "session": {
+    "session_id": "phase1-stabilize-2026-06-07",
+    "actor_id": "arif-fazil-af-forge",
+    "timestamp": "2026-06-07T05:18:00Z",
+    "purpose": "Record 000-agent session outcome: poster + architecture doc delivered; vault_seal rejected by design (LEGACY_WRAP cannot execute ATOMIC)"
+  },
+  "artifacts_delivered": [
+    {
+      "id": "art-001",
+      "type": "pdf",
+      "purpose": "1-page essay poster",
+      "path": "/root/.hermes/cache/ditempa-poster.pdf",
+      "size_bytes": 34897,
+      "delivered_at": "2026-06-07T04:05:00Z",
+      "status": "delivered",
+      "verification": "filesystem_exists"
+    },
+    {
+      "id": "art-002",
+      "type": "markdown",
+      "purpose": "Architecture reference source (7 Petala Langit)",
+      "path": "/root/arif-sites/content/architecture/arifos-memory-7-petala-langit.md",
+      "size_bytes": 33328,
+      "delivered_at": "2026-06-07T04:37:00Z",
+      "status": "delivered",
+      "verification": "filesystem_exists"
+    },
+    {
+      "id": "art-003",
+      "type": "pdf",
+      "purpose": "Architecture reference rendered (15-page PDF)",
+      "path": "/root/arif-sites/content/architecture/arifos-memory-7-petala-langit.pdf",
+      "size_bytes": 91861,
+      "delivered_at": "2026-06-07T04:46:00Z",
+      "status": "delivered",
+      "verification": "filesystem_exists"
+    }
+  ],
+  "issue": {
+    "id": "issue-LEGACY-WRAP-ATOMIC-001",
+    "summary": "arif_vault_seal call rejected by arifOS kernel as designed (LEGACY_WRAP cannot execute ATOMIC)",
+    "rejection_reason": "envelope auto-wrapped as legacy_wrap=True by wrap_legacy_call(); legacy_wrap only allows OBSERVE/PREPARE, not MUTATE/ATOMIC",
+    "design_intent": "Constitutional defense — the rejection IS the system protecting itself from malformed calls. Not a bug.",
+    "code_paths": [
+      "arifosmcp/runtime/ingress_middleware.py:480-490",
+      "arifosmcp/schemas/federation_envelope.py:287-288,446,521-532"
+    ],
+    "fix_plan_ref": "forge_work/LEGACY-WRAP-FIX-PLAN.md",
+    "sovereign_decision_needed": true
+  },
+  "additional_finding": {
+    "id": "issue-MCP-CONNECTOR-ENVELOPE-001",
+    "summary": "MCP connector auto-injects _envelope kwarg; Pydantic schema rejects with Unexpected keyword argument before kernel can run wrap_legacy_call",
+    "reproduction": "arifos__forge_plan(goal=...) call from this session failed with: 1 validation error for call[forge_plan] _envelope Unexpected keyword argument",
+    "severity": "MEDIUM",
+    "scope": "Affects all clients using auto-injection. Distinct from 000's seal call (which reached the kernel's legacy_wrap gate correctly).",
+    "related_fix_path": "Path A in LEGACY-WRAP-FIX-PLAN.md"
+  },
+  "carry_forward": [
+    "Sovereign to decide: Path A (schema) / B (envelope builder) / C (issuer service) for LEGACY-WRAP fix",
+    "000 persona to be updated to use envelope builder helper",
+    "opencode to be checked for same auto-injection bug",
+    "All clients (000, opencode, OPENCLAW, Hermes, APEX) to migrate to envelope builder",
+    "ATOMIC seal path: sovereign ack pipeline needed (long-term)",
+    "Pending patches (per 000): v2.1 FalkorDB correction, L7 hysteresis clarification, Hermes default tone (less lecture, more direct)"
+  ],
+  "governance": {
+    "f1_amanah": "Reversibility preserved — this checkpoint is a local file, fully reversible",
+    "f2_truth": "All paths and sizes verified via filesystem inspection",
+    "f7_humility": "Two errors corrected by sovereign during this session (L7 ≠ OMEGA-CAPABILITIES, opencode L6 write myth) — saved to MEMORY.md",
+    "f11_audit": "This checkpoint is itself auditable — the file is on disk with sha256 verifiable"
+  },
+  "reversibility": "Full — delete this file to revert. Artifacts remain at their delivery paths.",
+  "do_not_seal_via_kernel_yet": true,
+  "seal_blocked_reason": "Proper FederationEnvelope not constructed. Path A/B fix pending sovereign decision."
+}

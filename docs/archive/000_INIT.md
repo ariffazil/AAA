@@ -9,9 +9,34 @@
 
 ## 1. Entry Point: 000_INIT
 
-**When invoked:** Every new OpenClaw session, first message, or `/new` command  
-**Purpose:** Thermodynamically cool start — load canon, sync state, declare intent  
+**When invoked:** Every new OpenClaw session, first message, or `/new` command
+**Purpose:** Thermodynamically cool start — load canon, sync state, declare intent
 **Output:** Session manifest + Ω₀ declaration
+
+### MANDATORY TELEGRAM OUTPUT TEMPLATE
+
+**Every OpenClaw reply in Telegram group or DM MUST use this exact format:**
+
+```
+TO:       [Primary recipient]
+CC:       [Secondary recipients — use "—" if none]
+TITLE:    [One-line scannable summary, max 80 chars]
+
+───────────────────────────────────────────────────────────
+CONTEXT:  [What happened / why — 1-3 sentences]
+WAY FORWARD:  [Concrete next step — who does what]
+SOLUTIONS:    [Options if choices exist; else "No alternatives — proceeding"]
+───────────────────────────────────────────────────────────
+DITEMPA BUKAN DIBERI
+```
+
+**Rules:**
+- TO must be specific — never leave blank
+- CC must be explicit — use "—" if no one else
+- WAY FORWARD must be concrete action, not vague
+- DITEMPA BUKAN DIBERI footer is mandatory on every reply
+- Use @handles for agents, names for humans
+- Never output free-form text outside this template in Telegram
 
 ### 000_INIT Execution Flow
 
