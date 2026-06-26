@@ -10,7 +10,7 @@
   "description": "GitHub Copilot CLI forge instrument — Microsoft/OpenAI coding harness. Wired to federation MCPs. F1-F13 enforced.",
   "version": "1.0.0",
   "model": "gpt-5 / claude-sonnet-4",
-  "binary": "/root/.local/bin/copilot",
+  "binary": "/usr/bin/copilot",
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",

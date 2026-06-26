@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:well",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:well#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:well",
+      "publicKeyBase64": "MZBptByKUiPk3YjZywej5P8/YLumoNlz6UCmmEwZ7Rc="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "ZCeKo/CyYGe2G4YvfqRanPrkSFg8Cusu/5Mge+E1Zm4bWKmZJEMAQ0HOAhptqQz/Ht9t3wyrDYoCvCHHVbVFCw==",
+    "delegatedAuthority": "reflect",
+    "maxTier": "T2",
+    "maxActionClass": "OBSERVE",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:ed541dcf34453797"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "reflect",
+    "maxTier": "T2",
+    "maxActionClass": "OBSERVE",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:well#federation",
+      "type": "FederationOrgan",
+      "role": "Vitality guard \u2014 reflects, never diagnoses"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:well#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "PaG9Tb728Y47MPzn/TxKGxVSjOZYNk8I+WLq71e6xMw6Nh/gG4R445r2JhSwZZ6in1QWuDsU7n2Jrfos5gdNAQ=="
+  }
+}
