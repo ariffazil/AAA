@@ -32,7 +32,7 @@ tests:
 - Skill refuses to push, force-push, or rebase without escalation
 version_lock:
   schema_version: '1'
-  artifact_hash: f2c885157cf2aab1
+  artifact_hash: pending
 orthogonal_tags:
   trinitarian:
   - Ω
