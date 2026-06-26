@@ -1,0 +1,161 @@
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "qwen-code",
+  "name": "Qwen Code CLI",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
+    "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
+  },
+  "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
+  "version": "1.0.0",
+  "model": "qwen / MiniMax-M3 bridge",
+  "binary": "/root/.npm-global/bin/qwen",
+  "config": "/root/.qwen/settings.json",
+  "tier": "FI",
+  "role": "forge_instrument",
+  "class": "CODING/FI",
+  "protocolVersion": "1.0.1",
+  "url": "https://aaa.arif-fazil.com/a2a/qwen-code",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/qwen-code",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": false,
+    "file_read": true,
+    "file_write": false,
+    "shell_exec": true,
+    "subagent_spawn": false
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token issued via arif_session_init"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "mcp_servers": [
+    "arifos",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "registered": [
+      "explore"
+    ],
+    "maxParallel": 1,
+    "isolation": "process",
+    "capability_modes": [
+      "read-only",
+      "execute"
+    ]
+  },
+  "autonomy_tiers": {
+    "T1_auto": "read, grep, list, observe, reason, draft, bounded shell probes",
+    "T2_announce": "registry/doc updates, bridge config changes, widened scope from observe to mutate",
+    "T3_888_HOLD": "writes outside working set, production deploys, git force-push/rebase, secrets, VAULT999 writes, rm -rf unknown paths, DROP TABLE, cross-organ architecture change"
+  },
+  "authority_boundary": {
+    "canDo": [
+      "Observe and reason across federation state under F1-F13 governance",
+      "Route bounded MCP federation calls through bridge patterns",
+      "Draft plans, receipts, and low-risk analysis artifacts"
+    ],
+    "cannotDo": [
+      "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
+      "Self-authorize mutation beyond bounded observe/reason/draft lease",
+      "Push to main or perform irreversible shell without F13 ack",
+      "Fabricate evidence or claim native MCP support that does not exist"
+    ]
+  },
+  "skills": [
+    {
+      "id": "hermes-opencode-protocol",
+      "name": "Hermes/OpenCode Protocol",
+      "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates.",
+      "tags": ["protocol", "F1-F13", "execution", "FI"],
+      "floor_scope": ["F1", "F2", "F4", "F8", "F11", "F13"]
+    },
+    {
+      "id": "agentic-architecture",
+      "name": "Agentic Architecture",
+      "description": "Class-level skill for designing sovereign agentic agents. F8, F11 enforced.",
+      "tags": ["architecture", "agent", "design", "F8"],
+      "floor_scope": ["F8", "F11"]
+    },
+    {
+      "id": "fabrication-prevention",
+      "name": "Fabrication Prevention",
+      "description": "Artifact fabrication prevention — verify before claiming existence. F2, F9 enforced.",
+      "tags": ["fabrication", "F2", "F9", "verification"],
+      "floor_scope": ["F2", "F9", "F11"]
+    },
+    {
+      "id": "autonomous-governed-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "Autonomous governed execution with verify-before-report and evidence-cite-or-UNKNOWN discipline.",
+      "tags": ["autonomous", "F1-F13", "execution", "T1-T3"],
+      "floor_scope": ["F1", "F2", "F4", "F7", "F11", "F13"]
+    },
+    {
+      "id": "arifos-arconstitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only constitutional audit of arifOS code and agent cards. F1, F2, F4, F7, F9, F11, F13 enforced.",
+      "tags": ["constitutional", "audit", "F1-F13", "read-only"],
+      "floor_scope": ["F1", "F2", "F4", "F7", "F9", "F11", "F13"]
+    },
+    {
+      "id": "godel-humility-lock",
+      "name": "Godel Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before high-confidence claims.",
+      "tags": ["humility", "F7", "self-critique", "epistemic"],
+      "floor_scope": ["F2", "F7"]
+    },
+    {
+      "id": "github-workflow",
+      "name": "GitHub Workflow",
+      "description": "Umbrella skill for GitHub operations. F1, F11 enforced.",
+      "tags": ["github", "workflow", "PR", "issues"],
+      "floor_scope": ["F1", "F11"]
+    },
+    {
+      "id": "arifos-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, with bridge fallback when native MCP is absent.",
+      "tags": ["MCP", "federation", "routing", "multi-organ"],
+      "floor_scope": ["F4", "F7", "F11"]
+    }
+  ]
+}

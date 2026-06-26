@@ -47,7 +47,7 @@ arifOS kernel (port 8088) ── F1-F13 floors
 - **Config:** `/root/.codex/config.toml`
 - **MCP:** `/root/.codex/mcp.json`
 - **AGENTS.md (auto-loaded):** `/root/.codex/AGENTS.md`
-- **Agent card:** `/root/AAA/agents/codex/agent-card.json`
+- **Agent card:** `/root/AAA/agents/_external/codex/agent-card.json`
 - **Constitutional docs:** `/root/AGENTS.md`, `/root/CONTEXT.md`, `/root/AAA/AGENTS.md`
 
 ---

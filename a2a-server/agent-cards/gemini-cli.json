@@ -10,7 +10,7 @@
   "description": "Google Gemini CLI forge instrument — direct Gemini model harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced at every tool boundary.",
   "version": "1.0.0",
   "model": "gemini-3.5-pro / gemini-3.5-flash",
-  "binary": "/root/.local/bin/gemini",
+  "binary": "/usr/bin/gemini",
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",

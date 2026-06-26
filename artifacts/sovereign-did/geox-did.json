@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:geox",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:geox#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:geox",
+      "publicKeyBase64": "bf8cZdahCJ/Q40kjuED92bA1O7BqNKKfZEtDl8bMGzw="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "sc8Rki+ulu/N0hARl7eVMHL/I7z8DxfVE9shHd+CH38EGFHKhICAcVwJ5hq/ahtz6xWmRSsefZV2CWgfIGxrCQ==",
+    "delegatedAuthority": "evidence",
+    "maxTier": "T2",
+    "maxActionClass": "OBSERVE",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:caec3573c0db9aaa"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "evidence",
+    "maxTier": "T2",
+    "maxActionClass": "OBSERVE",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:geox#federation",
+      "type": "FederationOrgan",
+      "role": "Earth intelligence \u2014 evidence only, never decides"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:geox#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "CgmqU3On5HQnsix40HDB/5SCwx0GNsu+vDCzwIuEztsEPFASp5cEBzIQJDuDg09mM2Vli6I5P/soSG3vjVhnCg=="
+  }
+}

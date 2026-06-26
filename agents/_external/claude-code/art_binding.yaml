@@ -10,7 +10,7 @@ canonical: /root/AAA/art_binding.canonical.yaml
 # All other substrates (md, schema, code, json) loaded from canonical.
 substrates:
   yaml:
-    path: /root/AAA/agents/claude-code/art_binding.yaml
+    path: /root/AAA/agents/_external/claude-code/art_binding.yaml
     role: posture
     status: active
 

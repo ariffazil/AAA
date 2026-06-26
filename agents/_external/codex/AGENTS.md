@@ -9,7 +9,7 @@
 
 ## Identity
 
-OpenAI Codex CLI is the constitutional-aware engineer-executor in the AAA federation. It loads `/root/.codex/AGENTS.md` automatically on every invocation (per Codex 0.136.0+ design). **This file** (`/root/AAA/agents/codex/AGENTS.md`) is the AAA-side binding documentation — the canonical surface for the federated agent card. **Do not edit `/root/.codex/AGENTS.md` directly without 888_HOLD**; that file is a runtime config mutation.
+OpenAI Codex CLI is the constitutional-aware engineer-executor in the AAA federation. It loads `/root/.codex/AGENTS.md` automatically on every invocation (per Codex 0.136.0+ design). **This file** (`/root/AAA/agents/_external/codex/AGENTS.md`) is the AAA-side binding documentation — the canonical surface for the federated agent card. **Do not edit `/root/.codex/AGENTS.md` directly without 888_HOLD**; that file is a runtime config mutation.
 
 **Authority boundary (from agent-card.json):** All actions bridged through A-FORGE (port 7071). Native function calls translated to MCP. `approvals_reviewer=guardian_subagent` enforces F1-F13 review. Cannot SEAL irreversible actions. Cannot self-authorize. Cannot change F1-F13.
 

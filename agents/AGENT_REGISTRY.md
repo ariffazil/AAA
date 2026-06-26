@@ -38,18 +38,18 @@ Organs sit across L2–L4 as **hosts of agents**, not as agents themselves.
 
 ---
 
-## ⚠️ REGISTRY DRIFT NOTICE (2026-06-26)
+## ⚠️ REGISTRY DRIFT NOTICE (2026-06-26, updated 2026-06-26 UTC)
 
-`AGENT_REGISTRY.md` (this file, 234 lines) and `AAA_AGENTS_REGISTRY.json` (machine-readable, 653 lines) **disagree on 3 entries**:
+`AGENT_REGISTRY.md` (this file) and `/root/AAA/registries/AAA_AGENTS_REGISTRY.json` (machine-readable) previously disagreed on 3 entries. The machine registry has now been reconciled for `qwen-code` and `777-forge`.
 
 | Entry | MD says | JSON says | Resolution |
 |---|---|---|---|
-| `qwen-code` | FI-003, listed | **absent from JSON** | JSON needs to add qwen-code OR MD needs to drop qwen-code. Verify which is SOT. |
-| `gemini-cli` | mentioned in FI baseline (note +9) | present in JSON line 635 | OK; needs MD table row |
-| `777-forge` | Layer 2 RUNTIME entry | **absent from JSON** | JSON needs to add 777-forge OR MD needs to clarify "witness-only, not runtime-bound" |
-| `antigravity` | Layer 2 RUNTIME **AND** Layer 4 CODING | only in CODING | Disambiguate: same name, different model versions (Gemini 3.5 vs 2.5-pro). Keep both as separate runtime+FI binding. |
+| `qwen-code` | FI-003, listed | present in JSON | Resolved 2026-06-26 — first-class FI citizen restored in machine registry. |
+| `gemini-cli` | mentioned in FI baseline (note +9) | present in JSON line 635 | Resolved in MD row. |
+| `777-forge` | Layer 2 RUNTIME entry | present in JSON | Resolved 2026-06-26 — witness citizen restored in machine registry. |
+| `antigravity` | Layer 2 runtime binding **and** Layer 4 CODING citizen | only in CODING | Clarified: one canonical FI citizen (`antigravity`) with an additional runtime binding in prose, not a second machine-registry citizen. |
 
-**F2 TRUTH receipt:** Drift confirmed via `diff` of both files 2026-06-26 07:15 UTC. Reconcile in Option A split.
+**F2 TRUTH receipt:** Original drift confirmed via `diff` 2026-06-26 07:15 UTC. As of the af-forge CLI binding sweep later the same day, `qwen-code` and `777-forge` are reconciled; `antigravity` is now documented as one canonical FI citizen plus one runtime binding note.
 
 ---
 
@@ -89,11 +89,11 @@ Agents with active systemd services and Telegram presence.
 | **hermes-asi** | ASI | SOUL/OMEGA | @ASI_arifos_bot | 18001 (A2A) | `/root/.hermes/config.yaml` | **L3 — Authority** (interface to L3) | ✅ LIVE (polymorphic hub: 555-ASI / 333-AGI / front-door; role-binding-polymorphic) |
 | **openclaw** | AGI | C2-Execute | @AGI_ASI_bot | 18789 | `/root/.openclaw/workspace/` | **L3 — Authority** (subagent orchestration) | ✅ LIVE (subagent orchestration focus) |
 | **777-forge** | 777 | Witness/Spawn | — | — | A2A registered | **L4 — Execution** (witness-only, bounded) | ✅ LIVE (drift: not in JSON registry — see §DRIFT) |
-| **antigravity** (RUNTIME) | AGI | L3-Autonomous | — | — | `/root/.gemini/` | **L3 — Authority** (Gemini 3.5 binding) | ✅ LIVE (same name as FI-004, different binding — see §DRIFT) |
+| **antigravity** (runtime binding of FI-004) | AGI | L3-Autonomous | — | — | `/root/.gemini/` | **L3 — Authority** (Gemini 3.5 runtime binding of the same citizen tracked in CODING as FI-004) | ✅ LIVE |
 
 **Full 17-Citizen Matrix Summary (see artifacts for details):**  
 HEXAGON (333-AGI Δ, 555-ASI Ω, 888-APEX ΦΙ, A-AUDIT, A-ARCHIVE): Role bindings + 8-12 skills each, heavy on constitutional/forge/audit.  
-RUNTIME: hermes-asi (polymorphic), openclaw (execution), 777-forge, antigravity (RUNTIME binding).  
+RUNTIME: hermes-asi (polymorphic), openclaw (execution), 777-forge, antigravity runtime binding.  
 CODING/FI (~9: grok-build + claude-code, opencode, codex, kimi-code, copilot, aider, continue-cli, gemini-cli, qwen-code): Baseline 8 + consumer role-bindings; grok-build exemplar at 12 with orthogonal depth.  
 Legacy (aaa-*, hermes-ops): Minimal or deprecated.  
 
@@ -207,7 +207,7 @@ High-power agentic harnesses with native tool depth, advanced subagent paralleli
 | **TOTAL LEGACY** | **6** | | |
 | **GRAND TOTAL** | **35** | (was 27 — count drift noted, see §DRIFT) | |
 
-> **Count reconciliation:** Previous MD claimed 27 total / 23 active. New count = 23 true agents + 6 registries + 6 legacy = 35 entries. The +8 difference is: (a) gemini-cli newly added to MD (was in JSON only), (b) antigravity disambiguated into 2 separate entries, (c) legacy expanded from 3 to 6 (aaa-architect/engineer/auditor were previously summarized). Reconcile with JSON during Option A split.
+> **Count reconciliation:** Previous MD claimed 27 total / 23 active. New count = 23 true agents + 6 registries + 6 legacy = 35 entries. The +8 difference is: (a) gemini-cli newly added to MD (was in JSON only), (b) antigravity runtime binding is now explained explicitly alongside the canonical FI citizen, (c) legacy expanded from 3 to 6 (aaa-architect/engineer/auditor were previously summarized).
 
 ---
 
@@ -243,7 +243,7 @@ High-power agentic harnesses with native tool depth, advanced subagent paralleli
 >
 > **Findings:**
 > 1. 6 organs (arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA) are listed as "agents" when they are sovereign capability registries — they host agents but do not loop themselves in the arifOS-native sense.
-> 2. `antigravity` appears in both Layer 2 (RUNTIME, Gemini 3.5) and Layer 4 (CODING, Gemini 2.5-pro) — same name, different model bindings, no disambiguation.
+> 2. `antigravity` appears in both Layer 2 (runtime binding, Gemini 3.5) and Layer 4 (canonical CODING citizen, Gemini 2.5-pro/Google harness lineage) — same citizen, two described operational bindings, now explicitly labeled.
 > 3. 888-APEX is classified as a HEXAGON warga in this file but as a constitutional organ in `arifOS/AGENTS.md`. The same entity, two classifications.
 > 4. MD and JSON registries disagree on 3 entries (qwen-code, gemini-cli, 777-forge).
 > 5. The file name `AGENT_REGISTRY` is itself a category error from the pre-HEXAGON era. The proper file should be `FEDERATION_REGISTRY.md` (or split into 3 files per Option A).
@@ -315,13 +315,14 @@ Hermes Constitutional Tools (registered in arifOS MCP):
 
 ## 2026-06-22 — FI Citizens Skills Binding Sweep
 
-Wired 9 FI citizens as real AAA warga with 8-skill baseline (per orthogonal mapping pattern):
+Wired 10 FI citizens as real AAA warga with 8-skill baseline (per orthogonal mapping pattern):
 
 | Citizen | Skills | Binary | Mirror |
 |---------|--------|--------|--------|
 | opencode | 8 | opencode | a2a-server/agent-cards/opencode.json |
 | claude-code | 8 | claude | a2a-server/agent-cards/claude-code.json |
 | codex | 8 | codex | a2a-server/agent-cards/codex.json |
+| qwen-code | 8 | qwen | a2a-server/agent-cards/qwen-code.json |
 | copilot | 8 | copilot | a2a-server/agent-cards/copilot.json |
 | kimi-code | 8 | kimi | a2a-server/agent-cards/kimi-code.json |
 | aider | 8 | aider | a2a-server/agent-cards/aider.json |
@@ -377,7 +378,7 @@ If Arif approves the rename + split (estimated 4 hours, T3 888_HOLD), the new st
 - [ ] Create new `FEDERATION_REGISTRY.md` with three-bucket TOC
 - [ ] Split content into `agents/`, `organs/`, `substrates/` subdirectories
 - [ ] Reconcile JSON registry: add qwen-code, gemini-cli, 777-forge (or drop from MD)
-- [ ] Disambiguate antigravity entries (rename one: antigravity-runtime / antigravity-coding)
+- [x] Disambiguate antigravity prose: one canonical FI citizen + one runtime binding note
 - [ ] Update `AAA/AGENTS.md` cross-references to point to new structure
 - [ ] Update `arifOS/AGENTS.md` cross-references (888-APEX classification)
 - [ ] Update A2A discovery card paths

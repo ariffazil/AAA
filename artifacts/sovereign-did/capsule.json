@@ -1,0 +1,11 @@
+{
+  "did": "did:arif:omega",
+  "ts": 1782465531,
+  "verdict": "SEAL",
+  "artifact_path": "/root/AAA/artifacts/AAA-999-SEAL-2026-06-23.md",
+  "capsule_hash": "sha256:dee40e72d739c59a2cd84e632e835698d78a8e90eac841dbf9b6df8622d10c6e",
+  "actor": "aaa:demo",
+  "authority": "F13_SOVEREIGN",
+  "sig_alg": "Ed25519",
+  "sig": "9yFAOXDxjV/qnx44vk+zxdwzYKHugfZL/1cGChWVL0XFL1Ty9eW8JjsZ5zornpLib/W1y7bXldUlLIRgX8jZCw=="
+}

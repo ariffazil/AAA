@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:arifos",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:arifos#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:arifos",
+      "publicKeyBase64": "iSzhl5nttVykEfW44WMWWmMUlDJDHPPglNdRykjiCGo="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "hq4RyL2cL5MgRumGFnDJ9xoTP/rfO+X038PMY2Bb7KWsFHRsbPQ6m4xKJHuazuVKsbTQBWp4UxYkHNXQGPe8Bg==",
+    "delegatedAuthority": "judge",
+    "maxTier": "T5",
+    "maxActionClass": "ATOMIC",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:c389cc6b0212a07d"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "judge",
+    "maxTier": "T5",
+    "maxActionClass": "ATOMIC",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:arifos#federation",
+      "type": "FederationOrgan",
+      "role": "Constitutional kernel \u2014 judges, seals, routes, enforces F1-F13"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:arifos#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "mp6gPiAwa062Ej/ZZVE7CpDsJBhU+VDqefZ3YAMBLs4RCuOLcuLPg/bsBSmq7EyGYq5KHsUFkuVeJAtw2fuIDg=="
+  }
+}
