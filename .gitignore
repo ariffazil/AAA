@@ -153,3 +153,23 @@ registry/
 scratch/
 .venv/
 
+
+# ── Audio/video artifacts — never commit ──
+artifacts/*.mp3
+artifacts/*.ogg
+artifacts/*.mp4
+artifacts/*.wav
+artifacts/*.webm
+artifacts/breakfast-vs-dinner/
+artifacts/caringman-full/
+artifacts/caringman-test/
+
+# ── Backup files created by agents ──
+*.bak-*
+
+# ── Forge working directories — ephemeral ──
+forge_work/
+
+# ── A2A server archive — operational backup ──
+a2a-server/archive/
+artifacts/mimo-test/
