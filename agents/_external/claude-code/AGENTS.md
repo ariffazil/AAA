@@ -1,7 +1,7 @@
 # Claude Code — AGI Engineer-Architect
 
 > **Canonical instruction file:** `/root/AAA/CLAUDE.md` (353 lines)
-> **Agent card:** `/root/AAA/agents/claude-code/agent-card.json`
+> **Agent card:** `/root/AAA/agents/_external/claude-code/agent-card.json`
 > **Harness config:** `/root/.claude/settings.json`
 > **Model:** deepseek-v4-pro | **Tier:** AGI | **Class:** C2
 

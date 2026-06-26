@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:ingress",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:ingress#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:ingress",
+      "publicKeyBase64": "Pxr5/Y/Piovz78aaEHvGDotiJB1MiLmZIT/lDadQPdM="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "6CcH3z7S91hBrS/GwjKpr09dMKSfAr4STIX1he4gVij4aPPvTSs1qGXHGjTCQvrjxECCqZI6HOsQDDpZ10jlBg==",
+    "delegatedAuthority": "ingest",
+    "maxTier": "T1",
+    "maxActionClass": "SUGGEST",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:502397cb768ec238"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "ingest",
+    "maxTier": "T1",
+    "maxActionClass": "SUGGEST",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:ingress#federation",
+      "type": "FederationOrgan",
+      "role": "Webhook ingress \u2014 HMAC-verifies external events, wraps in signed capsules"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:ingress#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "24T1uoBG9QsEWu3N0DGPCRXb7ziApb2JwOR7EOR/wFZXX4xiUe2Qted+3O6FdE0WWExQi83CYJjjsXwlE1pVBQ=="
+  }
+}

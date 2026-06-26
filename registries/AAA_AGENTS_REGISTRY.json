@@ -4,7 +4,7 @@
   "protocolVersion": "1.0.1",
   "architecture": "Proposal C \u2014 Hybrid 7 (3 Primary Federation + 2 Support Control Plane + 2 Runtime Live Agents)",
   "lastValidated": "2026-06-23T00:00:00Z",
-  "notes": "Added grok-build (xAI Grok 4.3 Build TUI harness) as CODING/HARNESS citizen. Full card + supporting in /agents/grok-build/. Mirrored to a2a-server/agent-cards/. High subagent + MCP + workflow surface. Per Arif directive 2026-06-22.\n[2026-06-22] FI Citizens skills binding sweep \u2014 9 citizens wired with 8-skill baseline (9 new entries added). Pattern: /root/HERMES/skills/aaa-agentic-governance/references/orthogonal-skill-binding-pattern-2026-06-22.md\n\n[2026-06-22] Principal agent classification applied across 18 cards. Distribution: 5 architect (HEXAGON), 3 agent (RUNTIME), 10 llm (FI). human/institution/earth/void/liar/unknown slots reserved for future citizens. Pattern: /root/AAA/contracts/AAA_PRINCIPAL_AGENT.md (pending forge).\n[2026-06-23] Principal Agent Taxonomy ratified in contracts/principal-agent-taxonomy.md (9 values + binding schema). All citizens classified. Marginal improvement: +F11 auditability (explicit "who stands behind"), +A2A routing/policy clarity, +honest capability surfacing for llm vs architect. ART-ACT Gold seal. See artifacts for receipt.\n[2026-06-23] Grok Build self-knowledge update (AAA toolbench registry refresh): added full 'toolbench' object to grok-build entry (model xai/grok-build-0.1, 256K, 3-stage plan\u2192search\u2192build, 8 agents, MCP Claude auto-ingest, SWE-Bench~70.8%, tool err~1.27%, structured~0.53%). Synced docs/card. DITEMPA BUKAN DIBERI.",
+  "notes": "Added grok-build (xAI Grok 4.3 Build TUI harness) as CODING/HARNESS citizen. Full card + supporting in /agents/grok-build/. Mirrored to a2a-server/agent-cards/. High subagent + MCP + workflow surface. Per Arif directive 2026-06-22.\n[2026-06-22] FI Citizens skills binding sweep \u2014 9 citizens wired with 8-skill baseline (9 new entries added). Pattern: /root/HERMES/skills/aaa-agentic-governance/references/orthogonal-skill-binding-pattern-2026-06-22.md\n\n[2026-06-22] Principal agent classification applied across 18 cards. Distribution: 5 architect (HEXAGON), 3 agent (RUNTIME), 10 llm (FI). human/institution/earth/void/liar/unknown slots reserved for future citizens. Pattern: /root/AAA/contracts/AAA_PRINCIPAL_AGENT.md (pending forge).\n[2026-06-23] Principal Agent Taxonomy ratified in contracts/principal-agent-taxonomy.md (9 values + binding schema). All citizens classified. Marginal improvement: +F11 auditability (explicit 'who stands behind'), +A2A routing/policy clarity, +honest capability surfacing for llm vs architect. ART-ACT Gold seal. See artifacts for receipt.\n[2026-06-23] Grok Build self-knowledge update (AAA toolbench registry refresh): added full 'toolbench' object to grok-build entry (model xai/grok-build-0.1, 256K, 3-stage plan\u2192search\u2192build, 8 agents, MCP Claude auto-ingest, SWE-Bench~70.8%, tool err~1.27%, structured~0.53%). Synced docs/card. DITEMPA BUKAN DIBERI.\n[2026-06-26] af-forge CLI binding sweep: qwen-code promoted to first-class FI citizen, 777-forge restored to machine registry, and observed binary paths aligned to live VPS reality for codex/opencode/kimi/gemini/copilot/continue.",
   "motto": "DITEMPA BUKAN DIBERI",
   "author": "Muhammad Arif bin Fazil",
   "forgedAt": "2026-06-02T19:56:36Z",
@@ -35,8 +35,10 @@
         "opencode",
         "copilot",
         "codex",
+        "qwen-code",
         "aider",
         "antigravity",
+        "gemini-cli",
         "grok-build"
       ],
       "note": "All CODING agents share the same 97-tool capability index and F1-F13 governance, regardless of native MCP support."
@@ -44,6 +46,7 @@
     "RUNTIME": {
       "description": "Live service agents with active systemd services and Telegram presence. These are the operational incarnations of the HEXAGON + CODING tiers.",
       "agents": [
+        "777-forge",
         "hermes-asi",
         "openclaw"
       ],
@@ -308,7 +311,8 @@
       ],
       "agentCardUrl": "https://mcp.arif-fazil.com/.well-known/agent-card-CODING-antigravity.json",
       "a2aEndpoint": "https://mcp.arif-fazil.com/a2a/antigravity",
-      "principal_agent": "llm"
+      "principal_agent": "llm",
+      "note": "Canonical machine-registry citizen for Antigravity. Human registry may also describe a runtime binding of this same citizen; that prose does not imply a second top-level machine entry."
     },
     {
       "id": "grok-build",
@@ -569,6 +573,16 @@
       "principal_agent": "agent"
     },
     {
+      "id": "777-forge",
+      "name": "777 FORGE",
+      "tier": "777",
+      "role": "spawn_witness",
+      "skills_count": 3,
+      "added": "2026-06-13",
+      "principal_agent": "agent",
+      "note": "Witness-only relay orchestrator for OpenCode session spawns. Real PID receipt anchor. A2A registered."
+    },
+    {
       "id": "opencode",
       "name": "OpenCode CLI",
       "tier": "FI",
@@ -594,6 +608,16 @@
       "skills_count": 8,
       "added": "2026-06-22",
       "principal_agent": "llm"
+    },
+    {
+      "id": "qwen-code",
+      "name": "Qwen Code CLI",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 8,
+      "added": "2026-06-26",
+      "principal_agent": "llm",
+      "note": "Observed on af-forge at /root/.npm-global/bin/qwen. Bridge-mode FI citizen: bounded observe/reason/draft until native MCP surface matures."
     },
     {
       "id": "copilot",

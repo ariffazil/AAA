@@ -1,0 +1,75 @@
+{
+  "version": "1.0.0",
+  "generated_at": 1782465917,
+  "generated_by": "auth/gen_did.py",
+  "sovereign": {
+    "did": "did:arif:omega",
+    "fingerprint": "sha256:d6ebec1fa1e0a580",
+    "public_key_path": "/root/AAA/artifacts/sovereign-did/did_arif_omega.pk"
+  },
+  "organs": {
+    "arifos": {
+      "did": "did:arif:arifos",
+      "fingerprint": "sha256:c389cc6b0212a07d",
+      "authority_class": "judge",
+      "max_tier": "T5",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/arifos-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_arifos.pk",
+      "sovereign_signature_verified": true
+    },
+    "a-forge": {
+      "did": "did:arif:a-forge",
+      "fingerprint": "sha256:4783bc92e03c878a",
+      "authority_class": "execute",
+      "max_tier": "T4",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/a_forge-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_a_forge.pk",
+      "sovereign_signature_verified": true
+    },
+    "aaa": {
+      "did": "did:arif:aaa",
+      "fingerprint": "sha256:8ed26eb0e773d87b",
+      "authority_class": "route",
+      "max_tier": "T3",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/aaa-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_aaa.pk",
+      "sovereign_signature_verified": true
+    },
+    "geox": {
+      "did": "did:arif:geox",
+      "fingerprint": "sha256:caec3573c0db9aaa",
+      "authority_class": "evidence",
+      "max_tier": "T2",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/geox-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_geox.pk",
+      "sovereign_signature_verified": true
+    },
+    "wealth": {
+      "did": "did:arif:wealth",
+      "fingerprint": "sha256:e51cfba31cfac57d",
+      "authority_class": "compute",
+      "max_tier": "T2",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/wealth-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_wealth.pk",
+      "sovereign_signature_verified": true
+    },
+    "well": {
+      "did": "did:arif:well",
+      "fingerprint": "sha256:ed541dcf34453797",
+      "authority_class": "reflect",
+      "max_tier": "T2",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/well-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_well.pk",
+      "sovereign_signature_verified": true
+    },
+    "ingress": {
+      "did": "did:arif:ingress",
+      "fingerprint": "sha256:502397cb768ec238",
+      "authority_class": "ingest",
+      "max_tier": "T1",
+      "did_document_path": "/root/AAA/artifacts/sovereign-did/ingress-did.json",
+      "public_key_path": "/root/AAA/artifacts/sovereign-did/did_ingress.pk",
+      "sovereign_signature_verified": true
+    }
+  }
+}

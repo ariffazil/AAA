@@ -12,7 +12,7 @@
   "model": "tokenplan-mimo/mimo-v2.5-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
-  "binary": "/root/.local/bin/opencode",
+  "binary": "/root/.npm-global/bin/opencode",
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",

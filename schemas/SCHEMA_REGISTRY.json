@@ -68,6 +68,15 @@
       "coined_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
       "forged_at": "2026-06-17",
       "layer": "CONSTITUTIONAL_ENGINEERING"
+    },
+    {
+      "$id": "https://aaa.arif-fazil.com/schemas/signed-capsule-v1.schema.json",
+      "file": "signed-capsule.schema.json",
+      "title": "Signed Capsule",
+      "description": "Canonical ingress envelope for external events entering the federation. Binds source verification, payload hash, trigger routing, ingress signature, and Merkle audit position into one machine-valid contract.",
+      "coined_by": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+      "forged_at": "2026-06-26",
+      "layer": "CONSTITUTIONAL_ENGINEERING"
     }
   ],
   "layer_legend": {

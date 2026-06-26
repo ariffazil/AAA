@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:wealth",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:wealth#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:wealth",
+      "publicKeyBase64": "4Iyoi7NZx4MP5XvHGWFVm3K3RVahub+3N+GwBOuw2aE="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "HXNlk1zG2mODtAUNSPc8At/Y1DqlitWYf4GgUkVWYplJIJ8srKNna88whNiggzGzBotf1H7nWIbSaDCO8BB0Ag==",
+    "delegatedAuthority": "compute",
+    "maxTier": "T2",
+    "maxActionClass": "OBSERVE",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:e51cfba31cfac57d"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "compute",
+    "maxTier": "T2",
+    "maxActionClass": "OBSERVE",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:wealth#federation",
+      "type": "FederationOrgan",
+      "role": "Capital intelligence \u2014 computes, never allocates"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:wealth#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "aZna/zXuSXXHgp+Kj6460QHstIdYIwtEHknrf2hYgM3pmMxVpbmbH6BEJMtaPEWuP1H92f0AaSBl0aluhL1EAw=="
+  }
+}

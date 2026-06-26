@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:aaa",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:aaa#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:aaa",
+      "publicKeyBase64": "d14UwRv61HBS+icmNXXJy0iLgacqdg9bWr7VD08Q0Zs="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "OVGUef7W6d2CpAwfPcNJwfynXKR+n876gwldqg5tr00UY4+wQSpEFlNd6JFGtz86nqBopLFWes+C5ZMUmls3Dg==",
+    "delegatedAuthority": "route",
+    "maxTier": "T3",
+    "maxActionClass": "EXECUTE_REVERSIBLE",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:8ed26eb0e773d87b"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "route",
+    "maxTier": "T3",
+    "maxActionClass": "EXECUTE_REVERSIBLE",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:aaa#federation",
+      "type": "FederationOrgan",
+      "role": "Control plane \u2014 A2A gateway, agent identity, cockpit display"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:aaa#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "oOhNjwlGZt+LZHa486M6L2xZyWxj8PDsl4hSYBlh+fN5z1JJFytc+mqfNZhmWDqrTLzIcNDgSroSlJ4df40pBg=="
+  }
+}
