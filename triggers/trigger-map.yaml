@@ -1,0 +1,178 @@
+# trigger-map.yaml — AAA Skill Router Configuration
+# Authority: did:arif:aaa | Version: 1.0 | Status: ACTIVE
+#
+# Maps inbound event types to skills and agent pools.
+# This file is the missing wire between "event received" and "skill running".
+#
+# Event format: <source>.<object>.<action>
+# Authority tiers:
+#   Tier0 = read-only  — auto-allowed, no ack needed
+#   Tier1 = mutating   — plan required, Arif soft-ack
+#   Tier2 = high blast — Arif explicit ack required
+#   Tier3 = atomic     — 888_JUDGE gate + Arif hard command
+#
+# floor_gates: constitutional floors checked BEFORE routing to agent.
+#   Any floor violation → HOLD, not PROCEED.
+
+version: "1.0"
+authority: did:arif:aaa
+updated: 2026-06-26
+
+# ── GitHub Events ─────────────────────────────────────────────────────────────
+
+triggers:
+
+  - event: github.pull_request.opened
+    skill: github-pr-review
+    agent_pool: a-forge
+    authority_tier: Tier1
+    floor_gates: [F1, F4, F11, F13]
+    notes: "Every opened PR runs the full governance checklist."
+
+  - event: github.pull_request.synchronize
+    skill: github-pr-review
+    agent_pool: a-forge
+    authority_tier: Tier1
+    floor_gates: [F1, F4, F11, F13]
+    notes: "New push to PR branch re-triggers review."
+
+  - event: github.pull_request.ready_for_review
+    skill: github-pr-review
+    agent_pool: a-forge
+    authority_tier: Tier1
+    floor_gates: [F1, F4, F11, F13]
+    notes: "Draft PR converted to ready-for-review."
+
+  - event: github.workflow_run.completed.failure
+    skill: github-ci-diagnose
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F4]
+    notes: "Any failed workflow triggers CI diagnosis."
+
+  - event: github.issues.opened
+    skill: github-issue-triage
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F4, F6]
+    notes: "New issue → classify, route, label, draft response."
+
+  - event: github.issues.reopened
+    skill: github-issue-triage
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F4, F6]
+
+  - event: github.push.main
+    skill: repo-hygiene-audit
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F2, F4]
+    notes: "Every push to main triggers a hygiene check."
+
+  - event: github.push.main
+    skill: readme-truth-check
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F2]
+    notes: "README must not drift from actual code state after push."
+    # NOTE: two skills can fire on same event — router dispatches both in parallel
+
+  - event: github.secret_scanning.alert_created
+    skill: secret-safety-scan
+    agent_pool: a-forge
+    authority_tier: Tier2
+    floor_gates: [F1, F2, F4, F11]
+    notes: "Secret scan alert → immediate triage. Tier2 because response may require rotation."
+
+# ── Scheduled / Cron Events ───────────────────────────────────────────────────
+
+  - event: cron.daily
+    skill: federation-health-scan
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F4]
+    notes: "Daily: check all organs are reachable and healthy."
+
+  - event: cron.daily
+    skill: drift-response
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F2, F3]
+    notes: "Daily: detect config/state drift vs. sealed artifacts."
+
+  - event: cron.weekly
+    skill: vault999-integrity
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F2, F3]
+    notes: "Weekly: verify VAULT999 Merkle root integrity."
+
+  - event: cron.weekly
+    skill: arifos-recursive-audit
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F2, F3, F10]
+    notes: "Weekly: constitutional compliance audit of all organs."
+
+# ── Manual / API Triggers ─────────────────────────────────────────────────────
+
+  - event: manual.incident
+    skill: incident-escalation
+    agent_pool: a-forge
+    authority_tier: Tier2
+    floor_gates: [F1, F4, F5, F13]
+    notes: "Manual incident declaration → full escalation workflow."
+
+  - event: manual.secret-scan
+    skill: secret-safety-scan
+    agent_pool: a-forge
+    authority_tier: Tier1
+    floor_gates: [F1, F2, F4, F11]
+
+  - event: manual.pr-review
+    skill: github-pr-review
+    agent_pool: a-forge
+    authority_tier: Tier1
+    floor_gates: [F1, F4, F11, F13]
+
+  - event: manual.skill-lint
+    skill: skill-trigger-linter
+    agent_pool: a-forge
+    authority_tier: Tier0
+    floor_gates: [F1, F2]
+    notes: "Manually validate all skill frontmatter + trigger-map consistency."
+
+# ── A2A / Cross-Organ Delegation ──────────────────────────────────────────────
+# These are NOT triggered by external events — they are dispatched by the skill
+# runner when a skill needs cross-organ capability. Listed here for audit trail.
+
+  - event: a2a.delegate.petrophysics
+    skill: geox-grounding
+    agent_pool: geox
+    authority_tier: Tier1
+    floor_gates: [F1, F2, F8]
+    notes: "A-FORGE → GEOX for any petrophysics or basin computation."
+
+  - event: a2a.delegate.capital
+    skill: null  # WEALTH has its own tool surface, not a SKILL.md skill
+    agent_pool: wealth
+    authority_tier: Tier2
+    floor_gates: [F1, F2, F8, F13]
+    notes: "A-FORGE → WEALTH for NPV/IRR/EMV. Tier2: capital decisions."
+
+  - event: a2a.delegate.verdict
+    skill: null  # arifOS kernel handles this via arif_judge
+    agent_pool: arifos
+    authority_tier: Tier3
+    floor_gates: [F1, F4, F13]
+    notes: "Any organ → arifOS for constitutional verdict. Tier3: 888_JUDGE gate."
+
+# ── Catch-All ─────────────────────────────────────────────────────────────────
+
+  - event: "*"
+    skill: null
+    agent_pool: null
+    authority_tier: Tier0
+    action: HOLD
+    notes: "Any unmatched event → HOLD, not PROCEED. Fail closed."
