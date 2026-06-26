@@ -3,41 +3,41 @@ note: Public keys only. Private keys in auth/keys/ (gitignored — never commit)
 dids:
 - did: did:arif:Ω
   organ_id: omega
-  public_key_hex: 0067a69ede6f957d3def8a4b1e21d8dd6fc302b2bd33fcdfac4ffcbff7869c08
+  public_key_hex: ade3ee70f74f2d96c06244e9817612fc1be483b53e460426add7a85813be6f22
   algorithm: Ed25519
   description: Sovereign root — F13-issuer, capability token signer
 - did: did:arif:aaa
   organ_id: aaa
-  public_key_hex: f47273b22dd5d79bd2aeb73f29ecc15e4aa7b77fb590832de2d40dba79a5dbf4
+  public_key_hex: f0ac01994f07d49eb960bbed60f2ea42799408832eaa433aac2336d8be44b43f
   algorithm: Ed25519
   description: AAA control plane — signs ingress capsules, issues capability tokens
 - did: did:arif:a-forge
   organ_id: a-forge
-  public_key_hex: 6f0a16bd97fbadccd2c8a1fdbc4c6466161c6f71b943dc12bc1fba6309f15bf9
+  public_key_hex: 551f494a66011d90dd8271f929088611505d2f9e0afa1ed9f952835997057059
   algorithm: Ed25519
   description: A-FORGE execution — signs skill step receipts
 - did: did:arif:geox
   organ_id: geox
-  public_key_hex: 560c6bb3d401c51ce29dbe3ab36af9217b37eccac55158db103e012e5be4227f
+  public_key_hex: 5d5c1931e704b055092a016e1acf4fc304b949782ed15b29d7f830ceb2146e4d
   algorithm: Ed25519
   description: GEOX domain — signs petrophysics and subsurface outputs
 - did: did:arif:wealth
   organ_id: wealth
-  public_key_hex: 589efbc27497f7c4687efedfd2ee00e9081c368ac1c66761b19bf19257a2d2bf
+  public_key_hex: d761c0c27491f5b699d214b3f65b4e1f92b108f306936fc1bef1be4ef42cb489
   algorithm: Ed25519
   description: WEALTH capital — signs economic verdicts and NPV claims
 - did: did:arif:well
   organ_id: well
-  public_key_hex: cf97413884639feadfb43ddc7072c19289363d705b3946884abe475a463dd66e
+  public_key_hex: 45a7d71a929e659432f02a7de0f5acd1f207e4ece53b7e9b079b7fdf7e56b3fb
   algorithm: Ed25519
   description: WELL vitality — signs substrate assessments
 - did: did:arif:hermes
   organ_id: hermes
-  public_key_hex: ae1635396c643a4509b5a49459b807eb3f63a7d8b7aeb3af7704f54ad9169451
+  public_key_hex: 39ed9013d2f355e40ed88e9fd912253a8db1af0a68860c8b2fa0122697989f9c
   algorithm: Ed25519
   description: HERMES relay — signs A2A envelope routing
 - did: did:arif:arifos
   organ_id: arifos
-  public_key_hex: f9b8829a83afeb03623e60db69faf80f6ba2ba47049b6d4f141259c0c0ce387f
+  public_key_hex: 5118f5273759723bc1f7c0299fbe84011cb417efbfb3d9102d55349561d57417
   algorithm: Ed25519
   description: arifOS kernel — signs constitutional verdicts (SEAL/HOLD/VOID)
