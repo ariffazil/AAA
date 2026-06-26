@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-23T08:13:58.844Z",
+  "updatedAt": "2026-05-21T05:42:49.662Z",
   "entries": {
     "memory:memory/2026-04-08.md:1:23": {
       "key": "memory:memory/2026-04-08.md:1:23",
@@ -40,19 +40,21 @@
       "endLine": 28,
       "source": "memory",
       "snippet": "# Memory - 2026-04-08 ## Context - Arif asked to find the previous workspace and keep digging with memory search. - Previous candidate workspaces were found at `/root/waw` and `/root/APEX/openclaw-workspace`. - Decision: consolidate useful identity and memory anchors into the current workspace. ## Comparison - `waw`: richer long-term memory and user preference context - `APEX`: stronger canonical identity anchor for `arifOS_bot` ## Decision - Current canonical active workspace is `/root/.openclaw/workspace` - Identity anchor chosen: `arifOS_bot` - User profile and communication preferences merged into current `USER.md` and `MEMORY.md` - Heartbeat kept minimal by default ## Carry forward",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.7510424941778182,
+      "totalScore": 1.1128092855215073,
       "maxScore": 0.3904564708471298,
       "firstRecalledAt": "2026-04-09T10:49:48.199Z",
-      "lastRecalledAt": "2026-04-09T13:42:59.676Z",
+      "lastRecalledAt": "2026-05-19T03:20:22.889Z",
       "queryHashes": [
         "a6953929e51e",
-        "734fa5261b99"
+        "734fa5261b99",
+        "cc715a027ce9"
       ],
       "recallDays": [
-        "2026-04-09"
+        "2026-04-09",
+        "2026-05-19"
       ],
       "conceptTags": [
         "root/waw",
@@ -104,18 +106,20 @@
       "endLine": 11,
       "source": "memory",
       "snippet": "## 2026-04-09 - Fixed local Codex config in `/root/.codex/config.toml` by switching from OSS/Ollama (`model = \"qwen2.5:0.5b\"`, `model_provider = \"oss\"`, `oss_provider = \"ollama\"`) to OpenAI (`model = \"gpt-5.4\"`, `model_provider = \"openai\"`). - Confirmed Codex auth source is `/root/.codex/auth.json` with `auth_mode = \"apikey\"`. - Confirmed machine-level OpenAI key surfaces also include `/root/arifOS/.env` and `/root/.secrets/vault.env`. - After updating the OpenAI key, Codex moved past `401 Unauthorized`; current blocker is OpenAI billing/quota (`Quota exceeded. Check your plan and billing details.`), not local config. - User pasted a raw OpenAI API key into chat; treat that key as exposed i",
-      "recallCount": 1,
+      "recallCount": 2,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.31052721738815303,
-      "maxScore": 0.31052721738815303,
+      "totalScore": 0.6898860126733779,
+      "maxScore": 0.37935879528522487,
       "firstRecalledAt": "2026-04-10T01:06:53.692Z",
-      "lastRecalledAt": "2026-04-10T01:06:53.692Z",
+      "lastRecalledAt": "2026-05-19T10:46:32.962Z",
       "queryHashes": [
-        "2614d68b9628"
+        "2614d68b9628",
+        "eaeb66fab4ac"
       ],
       "recallDays": [
-        "2026-04-10"
+        "2026-04-10",
+        "2026-05-19"
       ],
       "conceptTags": [
         "gpt",
@@ -259,18 +263,23 @@
       "endLine": 87,
       "source": "memory",
       "snippet": "- `ariffazil/arif-sites` — static sites (primary deploy repo) - `ariffazil/arifOS` — arifOS OS/system code + Cloudflare Pages for arifOS.arif-fazil.com - `ariffazil/arifOS-model-registry` — model configs - `ariffazil/geox` — GEOX Earth physics ### Machine Readable Files (all live) - llms.txt, page.json, llms.json, sitemap.xml, robots.txt — all 6 sites - .well-known/agent.json — arifOS.arif-fazil.com + forge.arif-fazil.com ### APEX Theory - Content: `geox/public/docs/apex-theory.html` (copied from arifOS Pages repo) - Deployed to: `/var/www/html/geox/docs/apex-theory.html` on VPS - Live at: https://geox.arif-fazil.com/docs/apex-theory.html ### GEOX Earth Physics - RATLAS: 99 materials, tri",
-      "recallCount": 1,
+      "recallCount": 4,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.4130084931850433,
-      "maxScore": 0.4130084931850433,
+      "totalScore": 1.667041116952896,
+      "maxScore": 0.4351231515407562,
       "firstRecalledAt": "2026-04-23T08:13:58.844Z",
-      "lastRecalledAt": "2026-04-23T08:13:58.844Z",
+      "lastRecalledAt": "2026-05-20T10:10:41.289Z",
       "queryHashes": [
-        "e4cfb3c90683"
+        "e4cfb3c90683",
+        "ea0f112fc256",
+        "615a57b75826",
+        "a7226d8d2bb0"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-05-19",
+        "2026-05-20"
       ],
       "conceptTags": [
         "ariffazil/arif-sites",
@@ -290,18 +299,22 @@
       "endLine": 246,
       "source": "memory",
       "snippet": "- verification-runbooks.md — exact curl commands per surface - change-classification.md — 11 change types with required gates - 888-hold-matrix.md — mandatory holds + refusals ``` **Cultural layer encoded:** - Physics over narrative - Maruah over convenience - Evidence thresholds for all claims - Anti-mystical framing rules - Never \"it thinks\", never \"consciousness\", never AGI overclaim ### Sites Live Status (UNVERIFIED — Arif to check) - https://arifOS-fazil.com — hub or old docs? ( Arif to verify) - https://arifOS-fazil.com/llms.txt — text or HTML? (Arif to verify) - https://arifos.arifOS-fazil.com — docs or hub? (Arif to verify) ### Deferred - Phase 3: Delete theory files from ar",
-      "recallCount": 1,
+      "recallCount": 3,
       "dailyCount": 0,
       "groundedCount": 0,
-      "totalScore": 0.3833433449268341,
-      "maxScore": 0.3833433449268341,
+      "totalScore": 1.3352699206062486,
+      "maxScore": 0.5433789030500582,
       "firstRecalledAt": "2026-04-23T08:13:58.844Z",
-      "lastRecalledAt": "2026-04-23T08:13:58.844Z",
+      "lastRecalledAt": "2026-05-20T14:44:59.813Z",
       "queryHashes": [
-        "e4cfb3c90683"
+        "e4cfb3c90683",
+        "2d448997b0be",
+        "c426ac971880"
       ],
       "recallDays": [
-        "2026-04-23"
+        "2026-04-23",
+        "2026-05-19",
+        "2026-05-20"
       ],
       "conceptTags": [
         "verification-runbooks.md",
@@ -312,6 +325,1851 @@
         "arifos-fazil.com/llms.txt",
         "arifos.arifos-fazil.com",
         "verification"
+      ]
+    },
+    "memory:memory/2026-04-12.md:321:346": {
+      "key": "memory:memory/2026-04-12.md:321:346",
+      "path": "memory/2026-04-12.md",
+      "startLine": 321,
+      "endLine": 346,
+      "source": "memory",
+      "snippet": "**New root cause found:** `arifosmcp/stdio_server.py` in source was a **0-byte empty directory** (created Apr 10). Docker's `COPY . .` captured it, `pip install` tried to copy it as a file and failed. Fixed by: - Removing `/root/arifOS/arifosmcp/stdio_server.py` (empty directory) - Added `.dockerignore` with `stdio_server.py`, `__pycache__`, `*.pyc`, etc. **VAULT999 symlink issue:** `arifosmcp/VAULT999` is a symlink to `/root/VAULT999`. Docker COPY follows symlinks, then `RUN mkdir -p VAULT999` fails because the path already exists as a symlink (not a directory). Fix: `RUN rm -rf VAULT999` before `mkdir -p VAULT999`. **arifosmcp image vs mounted source conflict:** - Image has `arifosmcp` p",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.6047538607878471,
+      "maxScore": 0.6047538607878471,
+      "firstRecalledAt": "2026-05-11T21:08:31.099Z",
+      "lastRecalledAt": "2026-05-11T21:08:31.099Z",
+      "queryHashes": [
+        "edcec3917ecb"
+      ],
+      "recallDays": [
+        "2026-05-11"
+      ],
+      "conceptTags": [
+        "arifosmcp/stdio-server.py",
+        "0-byte",
+        "stdio-server.py",
+        "arifosmcp/vault999",
+        "root/vault999",
+        "new",
+        "root",
+        "cause"
+      ]
+    },
+    "memory:memory/2026-04-14.md:74:121": {
+      "key": "memory:memory/2026-04-14.md:74:121",
+      "path": "memory/2026-04-14.md",
+      "startLine": 74,
+      "endLine": 121,
+      "source": "memory",
+      "snippet": "├── ui/seals.js ← Seal display engine ├── ui/styles.css ← Gold accent vault UI └── manifest.json ← Machine-readable registry ``` ### 9 Seals Confirmed | ID | Name | Category | |----|------|----------| | SCAR_000 | Genesis (Tengku Taufik) | FOUNDATIONAL | | SCAR_001 | Miskin Senyap | SURVIVAL | | SCAR_002 | Institutional Erasure | TRAUMA | | SCAR_003 | Invisibility | IDENTITY | | SCAR_004 | Anak Sulung | ROLE | | SCAR_005 | Zero Dry Wells | CRAFT | | SCAR_006 | Abah's Passing | LEGACY | | SCAR_007 | Living Between Worlds | PARADOX | | SCAR_008 | Duty vs Self | PARADOX | SCAR_007 = geoscientist × code-governance paradox (thinking in millions of years, shippin",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.7492643978067837,
+      "maxScore": 0.5947914417454204,
+      "firstRecalledAt": "2026-05-11T21:08:31.099Z",
+      "lastRecalledAt": "2026-05-19T05:58:20.005Z",
+      "queryHashes": [
+        "edcec3917ecb",
+        "2aed2ae5cd63",
+        "04357f93d34c",
+        "ea0b30fac623"
+      ],
+      "recallDays": [
+        "2026-05-11",
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "ui/seals.js",
+        "ui/styles.css",
+        "manifest.json",
+        "machine-readable",
+        "scar-000",
+        "scar-001",
+        "scar-002",
+        "scar-003"
+      ]
+    },
+    "memory:memory/2026-04-14.md:109:135": {
+      "key": "memory:memory/2026-04-14.md:109:135",
+      "path": "memory/2026-04-14.md",
+      "startLine": 109,
+      "endLine": 135,
+      "source": "memory",
+      "snippet": "2. Ed25519/X25519 key lifecycle — irreversible, needs human sign-off 3. Recovery model — what if private key is lost ### robots.txt Updated /999/ now properly disallowed for crawlers. Sitemap referenced. ### Live URLs - Vault gate: https://arif-fazil.com/999/ - Linked from main nav (🔑 Ψ-PRIVATE) - vault999.json: https://arif-fazil.com/999/vault/vault999.json ### What's Pending 1. **Fill seals** — Arif to provide actual SCAR content for encryption 2. **SCAR_007 + SCAR_008** — events/moments still to be defined by Arif 3. **ROOTKEY companion auth** — how phone unlocks vault (companion app design) 4. **PM318 decision** — still never picked (Option A/B/C) 5. **BM/EN footer** — still waiting",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 3.0106578353468456,
+      "maxScore": 0.5853830549541987,
+      "firstRecalledAt": "2026-05-11T21:08:31.099Z",
+      "lastRecalledAt": "2026-05-21T05:41:26.783Z",
+      "queryHashes": [
+        "edcec3917ecb",
+        "f0593e8c4d33",
+        "ea0b30fac623",
+        "6767a06c021f",
+        "96a625a9a5f0",
+        "b6e9175421c3",
+        "64894811a807"
+      ],
+      "recallDays": [
+        "2026-05-11",
+        "2026-05-17",
+        "2026-05-19",
+        "2026-05-20",
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "ed25519/x25519",
+        "sign-off",
+        "robots.txt",
+        "arif-fazil.com/999",
+        "ψ-private",
+        "vault999.json",
+        "scar-007",
+        "scar-008"
+      ]
+    },
+    "memory:memory/2026-04-13.md:29:56": {
+      "key": "memory:memory/2026-04-13.md:29:56",
+      "path": "memory/2026-04-13.md",
+      "startLine": 29,
+      "endLine": 56,
+      "source": "memory",
+      "snippet": "### Key File Locations - Source: `/root/arifOS/arifosmcp/runtime/server.py` - Container entrypoint: `uvicorn arifosmcp.runtime.server:app --host 0.0.0.0 --port 8080` - docker-compose at `/opt/arifos/docker-compose.yml` → context points to `/root/arifOS` ### Status - `arifos_redis`: Healthy - `arifos_postgres`: Healthy - `arifosmcp_server`: Up (last check healthy) ## Notes - GEOX principles applied throughout: physics over narrative, explicit OBS/DER/INT separation - Workspace: `/root/.openclaw/workspace` is canonical home - Previous workspace candidates (`/root/waw`, `/root/APEX/openclaw-workspace`) merged 2026-04-08 ## arifOS MCP Landing Page Redesign — 2026-04-13 ✅ ### What Was Built F",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.824193513393402,
+      "maxScore": 0.42611293196678157,
+      "firstRecalledAt": "2026-05-18T05:22:30.861Z",
+      "lastRecalledAt": "2026-05-19T05:43:45.423Z",
+      "queryHashes": [
+        "69da4a365e78",
+        "d5b3bf3219b4"
+      ],
+      "recallDays": [
+        "2026-05-18",
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arifosmcp.runtime.server",
+        "0.0.0.0",
+        "docker-compose",
+        "opt/arifos/docker-compose.yml",
+        "root/arifos",
+        "arifos-redis",
+        "arifos-postgres",
+        "arifosmcp-server"
+      ]
+    },
+    "memory:memory/2026-05-11.md:1:50": {
+      "key": "memory:memory/2026-05-11.md:1:50",
+      "path": "memory/2026-05-11.md",
+      "startLine": 1,
+      "endLine": 50,
+      "source": "memory",
+      "snippet": "# Memory — 2026-05-11 ## Session: arifOS_bot × Arif × Hermes (AF-FORGE Federation Day) --- ## 1. Hermes ASI Gateway — SEAL CONFIRMED **Hermes Agent (PID 602801):** Native Python process, not Docker. ``` /usr/bin/python3 /opt/arifOS/a2a-adapters/hermes-a2a.py ``` Role: ASI 888_JUDGE — Telegram poller + A2A orchestrator → OpenClaw gateway. **What was fixed today:** - Encrypted `.env` being read as plaintext by Python Hermes → startup wrapper decrypts at runtime - Workspace integrity alert (false positive) → baseline reset via `rm /root/.hermes/.workspace-integrity-manifest.json` - Hermes CLI status/doctor are isolated processes — they don't reflect running PID state **Remaining Hermes is",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.7108525335788727,
+      "maxScore": 0.46159982979297637,
+      "firstRecalledAt": "2026-05-19T02:58:33.901Z",
+      "lastRecalledAt": "2026-05-20T03:27:55.178Z",
+      "queryHashes": [
+        "99c8b139cdaa",
+        "3d7044483634",
+        "b04e130c4305",
+        "8e13bb107a0e"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "gateway",
+        "arifos-bot",
+        "af-forge",
+        "usr/bin/python3",
+        "888-judge",
+        "status/doctor",
+        "arif",
+        "hermes"
+      ]
+    },
+    "memory:memory/2026-04-15.md:1:29": {
+      "key": "memory:memory/2026-04-15.md:1:29",
+      "path": "memory/2026-04-15.md",
+      "startLine": 1,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "# 2026-04-15 — Daily Memory ## Session Overview Group chat \"Chatgpt\" — Arif (267378578) + Abam Syed/Syed Kudin (1042200555, rico_ricaldo_33). --- ## Participants ### Arif (Muhammad Arif bin Fazil) - Full identity confirmed: Senior Exploration Geoscientist + arifOS architect - arifOS ecosystem shared comprehensively today: - arif-fazil.com — personal + framework intro - mcp.arif-fazil.com — MCP endpoint (tools: arifos_init/sense/mind/judge/vault/forge; prompts: run_111_think, run_888_audit, etc.) - geox.arif-fazil.com — GEOX subsurface + capital cockpit (version 2.0.0-UNIFIED-SPEC) - waw.arif-fazil.com — WEALTH as Governed Intelligence (1,024 WISDOM snapshot, F3 Peace² Enforced, F",
+      "recallCount": 11,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 4.673929970231942,
+      "maxScore": 0.6429107837373658,
+      "firstRecalledAt": "2026-05-19T03:21:40.281Z",
+      "lastRecalledAt": "2026-05-20T14:44:59.813Z",
+      "queryHashes": [
+        "a9e27292831f",
+        "ea0b30fac623",
+        "d02f1f94b261",
+        "e1fbfea8d90c",
+        "e630cc10a0c2",
+        "54e1adad4f31",
+        "ba387b396f44",
+        "7f4f27e63ec2",
+        "7802a2171e76",
+        "e48e9a998754",
+        "c426ac971880"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "gpt",
+        "syed/syed",
+        "rico-ricaldo-33",
+        "arif-fazil.com",
+        "mcp.arif-fazil.com",
+        "run-111-think",
+        "run-888-audit",
+        "geox.arif-fazil.com"
+      ]
+    },
+    "memory:memory/2026-05-17.md:1:33": {
+      "key": "memory:memory/2026-05-17.md:1:33",
+      "path": "memory/2026-05-17.md",
+      "startLine": 1,
+      "endLine": 33,
+      "source": "memory",
+      "snippet": "# 2026-05-17 — Cron Governance Overhaul ## What was done ### 1. Watchdog Heartbeat — re-enabled + fixed - **Job ID:** 171913a8-1e89-4b2d-ae82-04bcaecfac20 - **Was:** disabled, broken `systemctl restart openclaw-gateway` - **Now:** enabled, uses `openclaw restart` (correct path for this machine) - **Schedule:** every 10 min (300000ms) - **Fix:** replaced systemctl with correct `openclaw restart`, added `openclaw doctor` pre-restort - **Delivery:** `mode: none` (silent — WATCHDOG_BEAT_OK / WATCHDOG_RESTORE_TRIGGERED only) ### 2. arifOS MCP watchdog (host crontab) - **Script:** `/root/.openclaw/workspace/scripts/arifOS-mcp-watchdog.sh` - **Schedule:** `*/15 * * * *` - **Health:** `http://loc",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.39776471555233,
+      "maxScore": 0.39776471555233,
+      "firstRecalledAt": "2026-05-19T03:25:26.942Z",
+      "lastRecalledAt": "2026-05-19T03:25:26.942Z",
+      "queryHashes": [
+        "8d8458e36a48"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "re-enabled",
+        "openclaw-gateway",
+        "pre-restort",
+        "watchdog-beat-ok",
+        "watchdog-restore-triggered",
+        "cron",
+        "governance"
+      ]
+    },
+    "memory:memory/2026-05-14.md:1:42": {
+      "key": "memory:memory/2026-05-14.md:1:42",
+      "path": "memory/2026-05-14.md",
+      "startLine": 1,
+      "endLine": 42,
+      "source": "memory",
+      "snippet": "# 2026-05-14 ## Session Init Architecture — Arif's Meta-Question **Timestamp:** 2026-05-14 16:54 UTC (00:54 MYT) **Channel:** AAA group chat **Context:** Arif asked: \"How should AGI and ASI agents init any session? What's the first prompt to even Prompt\" ### Answer delivered The \"first prompt\" is the boot kernel from arifos.init — 8 anchors must be restored before any non-trivial action: 1. Identity anchor 2. User anchor 3. Temporal anchor (fresh clock, not cached) 4. Spatial anchor (workspace, audience, channel) 5. Continuity anchor (yesterday's memory, open loops) 6. Perspective anchor (what does human want, audience risk) 7. Authority anchor (reversible first, human veto) 8. Gödel-",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36377121806144713,
+      "maxScore": 0.36377121806144713,
+      "firstRecalledAt": "2026-05-19T03:28:59.454Z",
+      "lastRecalledAt": "2026-05-19T03:28:59.454Z",
+      "queryHashes": [
+        "f485a8f02e0c"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "meta-question",
+        "arifos.init",
+        "non-trivial",
+        "init",
+        "architecture",
+        "arif's",
+        "meta",
+        "question"
+      ]
+    },
+    "memory:memory/2026-05-11.md:115:144": {
+      "key": "memory:memory/2026-05-11.md:115:144",
+      "path": "memory/2026-05-11.md",
+      "startLine": 115,
+      "endLine": 144,
+      "source": "memory",
+      "snippet": "**arif_gateway_connect updates:** - `_FEDERATION_REGISTRY`: `[\"kimi\", \"claude\", \"gemini\", \"minimax\", \"tavily\", \"firecrawl\", \"exa\"]` - `mode=delegate`: routes to correct bridge with F9/F12/Nine-Signal guard - `mode=discover`: returns `[kimi, claude, gemini, minimax, tavily, firecrawl, exa]` --- ## 7. Pending Actions (Priority Order) 1. **Fix 3 invalid Hermes API keys** — Kimi, DeepSeek, Google (arifOS governance: these are high-value fixes) 2. **Container restart** — `docker-compose restart arifosmcp` to pick up compose env vars 3. **Verify bridge health** via `https://mcp.arif-fazil.com/health` after container restart 4. **Secure wipe** `/root/.hermes/.env.decrypted.backup` — overwrite +",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8565863609313964,
+      "maxScore": 0.42833210825920104,
+      "firstRecalledAt": "2026-05-19T03:31:50.620Z",
+      "lastRecalledAt": "2026-05-20T02:58:54.547Z",
+      "queryHashes": [
+        "7721a7f57eb3",
+        "321a36a962fa"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "backup",
+        "gateway",
+        "arif-gateway-connect",
+        "federation-registry",
+        "f9/f12/nine-signal",
+        "high-value",
+        "docker-compose",
+        "mcp.arif-fazil.com/health"
+      ]
+    },
+    "memory:memory/2026-05-11.md:137:145": {
+      "key": "memory:memory/2026-05-11.md:137:145",
+      "path": "memory/2026-05-11.md",
+      "startLine": 137,
+      "endLine": 145,
+      "source": "memory",
+      "snippet": "- Federation architecture verified: Hermes = Telegram interface + A2A orchestrator; OpenClaw = model router + execution framework - SOPS+age preferred over 1Password for self-sovereignty - Reversibility-first for secret management — no plaintext secrets in output or logs - Hybrid governance path: federation via `arif_gateway_connect` + cascade integration, no surface change to 13-tool canonical list --- *Anchored: 2026-05-11 23:50 UTC*",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.2450521945953368,
+      "maxScore": 0.45250678956508633,
+      "firstRecalledAt": "2026-05-19T03:31:50.620Z",
+      "lastRecalledAt": "2026-05-19T03:51:37.348Z",
+      "queryHashes": [
+        "7721a7f57eb3",
+        "dd63384f2d91",
+        "f50ffe4779e9"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "router",
+        "self-sovereignty",
+        "reversibility-first",
+        "arif-gateway-connect",
+        "13-tool",
+        "federation",
+        "architecture"
+      ]
+    },
+    "memory:memory/2026-04-03.md:374:404": {
+      "key": "memory:memory/2026-04-03.md:374:404",
+      "path": "memory/2026-04-03.md",
+      "startLine": 374,
+      "endLine": 404,
+      "source": "memory",
+      "snippet": "| Policy enum | `SearchAuthority.QDRANT_PRIMARY` — change to flip behavior | |---|---| | Primary | `engineering_memory(mode=\"vector_query\")` | | Fallback | `physics_reality(mode=\"search\")` → tagged `source: web` | | Ingest | `engineering_memory(mode=\"vector_store\")` — canonical Qdrant upsert | | SearchConfig | Written to `/root/arifOS/arifos_mcp/runtime/chatgpt_integration/search_config.py` | | Override modes | `WEB_ONLY`, `HYBRID`, `QDRANT_PRIMARY` — runtime switchable | --- ## GEOX v0.4.3 — Earth Physics Fully Deployed + MCP Wired ### What was done - 000_INIT_ANCHOR.md forged + `GEOXAnchor` Python class implemented - Q15 Dak Petrotech LAS file (Danish North Sea, 1.7MB, 23 curves) deploy",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7028607964515685,
+      "maxScore": 0.35143039822578426,
+      "firstRecalledAt": "2026-05-19T03:34:29.008Z",
+      "lastRecalledAt": "2026-05-19T05:14:37.755Z",
+      "queryHashes": [
+        "4b71d5af5ddc"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gpt",
+        "searchauthority.qdrant-primary",
+        "engineering-memory",
+        "vector-query",
+        "physics-reality",
+        "vector-store",
+        "web-only",
+        "qdrant-primary"
+      ]
+    },
+    "memory:memory/2026-04-03.md:201:231": {
+      "key": "memory:memory/2026-04-03.md:201:231",
+      "path": "memory/2026-04-03.md",
+      "startLine": 201,
+      "endLine": 231,
+      "source": "memory",
+      "snippet": "| Policy enum | `SearchAuthority.QDRANT_PRIMARY` — change to flip behavior | |---|---| | Primary | `engineering_memory(mode=\"vector_query\")` | | Fallback | `physics_reality(mode=\"search\")` → tagged `source: web` | | Ingest | `engineering_memory(mode=\"vector_store\")` — canonical Qdrant upsert | | SearchConfig | Written to `/root/arifOS/arifos_mcp/runtime/chatgpt_integration/search_config.py` | | Override modes | `WEB_ONLY`, `HYBRID`, `QDRANT_PRIMARY` — runtime switchable | --- ## GEOX v0.4.3 — Earth Physics Fully Deployed + MCP Wired ### What was done - 000_INIT_ANCHOR.md forged + `GEOXAnchor` Python class implemented - Q15 Dak Petrotech LAS file (Danish North Sea, 1.7MB, 23 curves) deploy",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7028607964515685,
+      "maxScore": 0.35143039822578426,
+      "firstRecalledAt": "2026-05-19T03:34:29.008Z",
+      "lastRecalledAt": "2026-05-19T05:14:37.755Z",
+      "queryHashes": [
+        "4b71d5af5ddc"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gpt",
+        "searchauthority.qdrant-primary",
+        "engineering-memory",
+        "vector-query",
+        "physics-reality",
+        "vector-store",
+        "web-only",
+        "qdrant-primary"
+      ]
+    },
+    "memory:memory/2026-05-17.md:27:59": {
+      "key": "memory:memory/2026-05-17.md:27:59",
+      "path": "memory/2026-05-17.md",
+      "startLine": 27,
+      "endLine": 59,
+      "source": "memory",
+      "snippet": "- **Telegram alert only on recovery or failure** ### 4. Container health sweep (host crontab) - **Script:** `/root/.openclaw/workspace/scripts/container-sweep.sh` - **Schedule:** `*/30 * * * *` - **Targets:** arifosmcp, geox_eic, redis, postgres (core stack) - **Behavior:** silent on healthy, restart + Telegram on action taken or still failing - **Restart budget:** max 2 per container per 2-hour window - **openclaw is native process — not in container sweep** ### 5. Existing jobs preserved healthy - `arifOS-sentinel-6h-watch` ✅ enabled, last status ok - `Weekly OpenClaw Deep Research` ✅ enabled - `Sessions-21d-audit-report` ✅ enabled ### 6. repo-watch weekly — already disabled + archived",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.41055938005447384,
+      "maxScore": 0.41055938005447384,
+      "firstRecalledAt": "2026-05-19T03:43:41.264Z",
+      "lastRecalledAt": "2026-05-19T03:43:41.264Z",
+      "queryHashes": [
+        "e4aae9288fef"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "geox-eic",
+        "2-hour",
+        "arifos-sentinel-6h-watch",
+        "sessions-21d-audit-report",
+        "repo-watch",
+        "telegram",
+        "alert",
+        "only"
+      ]
+    },
+    "memory:memory/2026-05-19.md:1:45": {
+      "key": "memory:memory/2026-05-19.md:1:45",
+      "path": "memory/2026-05-19.md",
+      "startLine": 1,
+      "endLine": 45,
+      "source": "memory",
+      "snippet": "# Session: 2026-05-19 ## A2A Adapter Truncation Fix (02:00-03:44 UTC) ### Problem - Hermes messages to AAA group truncated at \"Ar...\" (3000-char cap in A2A adapter) - Both hermes-a2a.py and openclaw-a2a.py had truncation at `[:3000]` - A2A responses from OpenClaw to Hermes also getting cut ### Root Cause 4 locations in hermes-a2a.py + 3 locations in openclaw-a2a.py all capping at `[:3000]` ### Fix Applied ``` hermes-a2a.py: Line 58: text[:3000] → text[:9000] Line 143: text[:3000] → text[:9000] Line 148: text[:3000] → text[:9000] Line 151: text[:3000] → text[:9000] openclaw-a2a.py: Line 28: text[:3000] → text[:9000] Line 93: text[:3000] → text[:9000] Line 99: text[:3000] →",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.2791845262050627,
+      "maxScore": 0.4827819317579269,
+      "firstRecalledAt": "2026-05-19T03:47:18.117Z",
+      "lastRecalledAt": "2026-05-19T04:07:03.986Z",
+      "queryHashes": [
+        "8c530db821b5",
+        "7099d9e2414d",
+        "503ce40e2d1f"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "00-03",
+        "3000-char",
+        "hermes-a2a.py",
+        "openclaw-a2a.py",
+        "a2a",
+        "adapter",
+        "truncation",
+        "fix"
+      ]
+    },
+    "memory:memory/2026-05-19.md:39:70": {
+      "key": "memory:memory/2026-05-19.md:39:70",
+      "path": "memory/2026-05-19.md",
+      "startLine": 39,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "- Hermes Gateway can't authenticate to OpenRouter API - \"Missing Authentication header\" error - Separate issue from A2A truncation - Needs credential fix to restore full Hermes LLM capability ### Verification - Messages 32603, 32785, 32802, 32869, 32883, 32885, 32903, 32911, 32920, 32922, 32980, 32991 all FULLY INTACT post-fix - A2A adapter cap confirmed at 9000 chars - Federation mesh: OpenClaw ↔ Hermes A2A bridge operational ### Current Status (03:44 UTC) | Component | Status | |-----------|--------| | A2A adapter truncation fix | ✅ Complete | | Federation mesh | ✅ Clean | | hermes-a2a.py | ✅ PID 70659 | | Hermes Gateway | ✅ PID 72512 | | OpenClaw gateway | ✅ PID 49665 | | Hermes self-lo",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.9011460423469543,
+      "maxScore": 0.5034578472375869,
+      "firstRecalledAt": "2026-05-19T03:47:18.117Z",
+      "lastRecalledAt": "2026-05-19T04:06:19.437Z",
+      "queryHashes": [
+        "8c530db821b5",
+        "7099d9e2414d"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "router",
+        "post-fix",
+        "hermes-a2a.py",
+        "self-lo",
+        "hermes",
+        "can't",
+        "authenticate"
+      ]
+    },
+    "memory:memory/2026-04-11.md:1:29": {
+      "key": "memory:memory/2026-04-11.md:1:29",
+      "path": "memory/2026-04-11.md",
+      "startLine": 1,
+      "endLine": 29,
+      "source": "memory",
+      "snippet": "# 2026-04-11 — Daily Memory Log ## Session Start - Workspace: `/root/.openclaw/workspace` (consolidated from `/root/waw` and `/root/APEX/openclaw-workspace`) - Identity: `arifOS_bot` — warm, direct, high-signal constitutional agent - Operator: Muhammad Arif bin Fazil (ARIF), exploration geoscientist + AI systems architect - Timezone: Asia/Kuala_Lumpur - Style: short, direct, BM-English natural, no filler ## Verdict Chain Bug Fix (arifOS / MCP) ### Problem Constitutional verdicts from `run_agi_mind` were being swallowed. The pipeline: 1. `agi_mind_dispatch_impl` → calls `run_agi_mind` → correctly gets HOLD (g_star=0.0, peace2=0.67) 2. BUT `agi_mind_dispatch_impl` calls `_mega_agi_mind` wh",
+      "recallCount": 4,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.6273770958185194,
+      "maxScore": 0.4323089390993118,
+      "firstRecalledAt": "2026-05-19T04:19:35.311Z",
+      "lastRecalledAt": "2026-05-19T18:55:06.497Z",
+      "queryHashes": [
+        "c3237bf3111e",
+        "7c281a8821b0",
+        "bf71139199a6",
+        "a23a9f321ee0"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "openclaw/workspace",
+        "root/waw",
+        "root/apex/openclaw-workspace",
+        "arifos-bot",
+        "high-signal",
+        "asia/kuala-lumpur",
+        "bm-english",
+        "run-agi-mind"
+      ]
+    },
+    "memory:memory/2026-04-14.md:1:25": {
+      "key": "memory:memory/2026-04-14.md:1:25",
+      "path": "memory/2026-04-14.md",
+      "startLine": 1,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "# Memory — 2026-04-14 ## Session Open (00:00–00:47 UTC) ### arif-fazil.com Deployment (F6 Empathy Hardening) - Site updated with: PM318 as discovery anchor, Echo Chamber section, \"Explorationist. Economist.\" title, Paradox Navigation, 2am footer - Git push to `main` successful — commit `5758b46` (forge) and `1d2e7d7` (arif-fazil.com fix) - Cloudflare Pages NOT auto-redeploying — lag between push and build visible to Arif - arif-fazil.com still showing old version (BEKANTAN-1, no PM318, no Echo Chamber) - Kimi link shared: `https://v33gaod5f5qcu.ok.kimi.link` — shows old content (title: \"arif-fazil-human\") ### Kimi Design v5 Uploaded - `/root/.openclaw/media/inbound/Kimi_Agent_Deployment_改",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.911092600226402,
+      "maxScore": 0.45693802833557123,
+      "firstRecalledAt": "2026-05-19T04:42:47.184Z",
+      "lastRecalledAt": "2026-05-20T10:17:09.103Z",
+      "queryHashes": [
+        "8e99b8c47516",
+        "3af983e09678",
+        "a5303aaaa42c",
+        "79e74b6e4222",
+        "96a625a9a5f0",
+        "a7226d8d2bb0",
+        "18346b452bf1"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "arif-fazil.com",
+        "auto-redeploying",
+        "bekantan-1",
+        "v33gaod5f5qcu.ok.kimi.link",
+        "arif-fazil-human",
+        "open",
+        "utc",
+        "arif"
+      ]
+    },
+    "memory:memory/2026-04-04.md:1:32": {
+      "key": "memory:memory/2026-04-04.md:1:32",
+      "path": "memory/2026-04-04.md",
+      "startLine": 1,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "# Memory — 2026-04-04 ## arif-sites Estate — Phase 2 Complete ### What was done today - arif-sites GitHub repo: ariffazil/arif-sites - 6 sites confirmed live, all with machine-readable files (llms.txt, page.json, .well-known/agent.json, sitemap.xml, robots.txt) - Cross-site navigation footer implemented on all sites - Deploy system: `bash deploy.sh` builds arif-sites and syncs to VPS at 167.99.228.252 - arifOS Pages project at Cloudflare Pages (separate from VPS) - `geox` subdomain migrated from CF Pages to VPS nginx (working HTTPS) ### Live Sites | Site | Status | Notes | |------|--------|-------| | arif-fazil.com | ✅ 200 | SPA portfolio | | aaa.arif-fazil.com | ✅ 200 | AAA runtime landi",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.192572233080864,
+      "maxScore": 0.4557530671358108,
+      "firstRecalledAt": "2026-05-19T04:42:47.184Z",
+      "lastRecalledAt": "2026-05-20T10:10:41.289Z",
+      "queryHashes": [
+        "8e99b8c47516",
+        "1fa7f83c0baa",
+        "3af983e09678",
+        "316a03656b6a",
+        "a7226d8d2bb0"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "arif-sites",
+        "ariffazil/arif-sites",
+        "machine-readable",
+        "llms.txt",
+        "page.json",
+        "well-known/agent.json",
+        "sitemap.xml",
+        "robots.txt"
+      ]
+    },
+    "memory:memory/2026-04-12.md:58:92": {
+      "key": "memory:memory/2026-04-12.md:58:92",
+      "path": "memory/2026-04-12.md",
+      "startLine": 58,
+      "endLine": 92,
+      "source": "memory",
+      "snippet": "Site: `https://arifosmcp.arif-fazil.com/` **SEAL surfaces (verified):** - Homepage: 39KB, loads clean, earth/constitutional tone ✅ - `/health`: Full JSON, v2026.04.07, 17 tools loaded ✅ - `/tools`: 17 tools, full schema, correct stage/lane/annotations ✅ - `/mcp`: Correctly returns 406 to non-SSE clients (SSE-gated) ✅ - `/llms.txt`: LLM-readable fulltext, clean ✅ - Footer version matches /health: \"arifOS v2026.04.07-SEAL\" ✅ **CAUTION issues (needs fix):** 1. `server.json` — description says \"7 public tools\" but /tools shows 17 tools. Version is `2026.03.10-SEAL` (stale; runtime is `2026.04.07`) 2. A2A surface — `/a2a` returns HTML fallback, not JSON agent routes. Cannot claim A2A as LIVE un",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7850724160671234,
+      "maxScore": 0.4324810892343521,
+      "firstRecalledAt": "2026-05-19T04:42:47.184Z",
+      "lastRecalledAt": "2026-05-19T05:51:52.082Z",
+      "queryHashes": [
+        "8e99b8c47516",
+        "04357f93d34c"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arifosmcp.arif-fazil.com",
+        "earth/constitutional",
+        "v2026.04.07",
+        "stage/lane/annotations",
+        "non-sse",
+        "sse-gated",
+        "llms.txt",
+        "llm-readable"
+      ]
+    },
+    "memory:memory/2026-04-14.md:42:84": {
+      "key": "memory:memory/2026-04-14.md:42:84",
+      "path": "memory/2026-04-14.md",
+      "startLine": 42,
+      "endLine": 84,
+      "source": "memory",
+      "snippet": "### Repo Split (Confirmed by Arif) - arif-sites = Trinity static sites (Cloudflare Pages) - arifOS = kernel/runtime backend (MCP server) - GEOX = own repo, landing in arif-sites, engine separate - Forge = shell in arif-sites, dynamic backend separate ### Constellation Map - Ψ (Psi) → arif-fazil.com — Human/Soul surface - Δ (Delta) → aaa.arif-fazil.com — Protocol/Body surface - Ω (Omega) → arifOS MCP — Mind/Runtime surface - ⚡ → forge.arif-fazil.com — Forge shell - 📖 → wiki.arif-fazil.com — Documentation - Φ (Phi) → geox.arif-fazil.com — Earth Intelligence ## Session #2 — /999/ Sovereign Room Built (01:50–02:33 UTC) ### /999/ Vault — Built and Deployed arif-fazil.com/999/ is now live. F",
+      "recallCount": 5,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.2894863696225696,
+      "maxScore": 0.6637329758533055,
+      "firstRecalledAt": "2026-05-19T04:45:20.341Z",
+      "lastRecalledAt": "2026-05-20T09:16:27.236Z",
+      "queryHashes": [
+        "533ad921a377",
+        "ea0f112fc256",
+        "ea0b30fac623",
+        "2d448997b0be",
+        "8d5dad31c49c"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "arif-sites",
+        "kernel/runtime",
+        "arif-fazil.com",
+        "human/soul",
+        "aaa.arif-fazil.com",
+        "protocol/body",
+        "mind/runtime",
+        "forge.arif-fazil.com"
+      ]
+    },
+    "memory:memory/2026-05-14.md:31:61": {
+      "key": "memory:memory/2026-05-14.md:31:61",
+      "path": "memory/2026-05-14.md",
+      "startLine": 31,
+      "endLine": 61,
+      "source": "memory",
+      "snippet": "### Stack health at time of answer - openclaw-gateway: ✅ PID 15182 - hermes-asi-gateway: ✅ enabled - arifOS MCP (8080): ✅ healthy - All 4 cron jobs: enabled, OK --- ## Agent Superiority Implementation — Arif's Sovereign Directive **Timestamp:** 2026-05-14 20:05–20:30 UTC (04:05–04:30 MYT) **Channel:** AAA group chat **Context:** Arif received Hermes' deep research brief (via Grok external agent) on how arifOS beats Google. He refined the plan and ordered immediate implementation of 3 priority items. ### Arif's Directive (verbatim key points) - \"Use opencode in my terminal root or Kimi code or Claude code or agentzero or whatever laa. Just do it\" - Priority: Auditor gate → RAG correction",
+      "recallCount": 7,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 2.776974606513977,
+      "maxScore": 0.42549592852592466,
+      "firstRecalledAt": "2026-05-19T04:49:25.310Z",
+      "lastRecalledAt": "2026-05-20T14:41:49.560Z",
+      "queryHashes": [
+        "c9902313122c",
+        "938adf3523e4",
+        "d02f1f94b261",
+        "41f7899949ba",
+        "6487726e2a64",
+        "96a625a9a5f0",
+        "dd0b77265021"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "gateway",
+        "openclaw-gateway",
+        "hermes-asi-gateway",
+        "stack",
+        "health",
+        "time",
+        "answer",
+        "openclaw"
+      ]
+    },
+    "memory:memory/2026-03-31.md:1:16": {
+      "key": "memory:memory/2026-03-31.md:1:16",
+      "path": "memory/2026-03-31.md",
+      "startLine": 1,
+      "endLine": 16,
+      "source": "memory",
+      "snippet": "# Memory — 2026-03-31 ## Context - Completed AGI_ASI_bot → WAW canon merge; WAW is now the singular canonical workspace and AGI_ASI_bot is archived. - Forged and sealed the arifOS A–D kernel topology (Layer A gate, Layer B model, Layer C judge, Layer D ledger) as the core governance architecture. - Discovered OpenClaw cannot currently enforce a true pre-LLM gateway hook; A–D kernel is therefore enforced at protocol/agent level rather than structurally. - Removed the `agent-zero` container and its docker-compose definition to reduce stack chaos; VPS now runs a leaner, healthier container set. - Discussed Telegram group behaviour and model routing: desire for \"public\" model for everyone vs \"s",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.4400744451770933,
+      "maxScore": 0.7393040034870555,
+      "firstRecalledAt": "2026-05-19T04:57:12.569Z",
+      "lastRecalledAt": "2026-05-19T05:02:11.311Z",
+      "queryHashes": [
+        "7e239875b918",
+        "7c281a8821b0"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "agi-asi-bot",
+        "pre-llm",
+        "protocol/agent",
+        "agent-zero",
+        "docker-compose",
+        "context",
+        "completed"
+      ]
+    },
+    "memory:memory/2026-04-01.md:63:107": {
+      "key": "memory:memory/2026-04-01.md:63:107",
+      "path": "memory/2026-04-01.md",
+      "startLine": 63,
+      "endLine": 107,
+      "source": "memory",
+      "snippet": "## VPS ↔ GitHub Sync Status - arifOS VPS `3d88448` = GitHub `3d88448` ✅ - GEOX submodule `f50380e` = GitHub GEOX `f50380e` ✅ - No divergence. Fully aligned. - Docker containers: 24 healthy ✅ ## Constitutional Reminders - GEOX force-push rewrote 59 commits of history on GEOX repo (irreversible but contained to GEOX only) - arifOS history intact — no rewrite - ATLAS.md architecture now matches reality ## 2026-04-01 — arifOS Ecosystem Split Complete ### What happened - Deep scan of arifOS repo (GitHub API + local clone) - Found 460KB of theory docs in kernel (ATLAS, K_FOUNDATIONS, etc.) - Arif authorized split into separate canon repo ### arifOS-canon created (Phase 1-2 + SEAL) - Repo: http",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.0873273392805463,
+      "maxScore": 0.6861604263672239,
+      "firstRecalledAt": "2026-05-19T05:02:11.311Z",
+      "lastRecalledAt": "2026-05-19T05:02:34.977Z",
+      "queryHashes": [
+        "7c281a8821b0",
+        "ff42026db594"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "force-push",
+        "atlas.md",
+        "k-foundations",
+        "arifos-canon",
+        "1-2",
+        "vps",
+        "github",
+        "sync"
+      ]
+    },
+    "memory:memory/2026-04-01.md:30:70": {
+      "key": "memory:memory/2026-04-01.md:30:70",
+      "path": "memory/2026-04-01.md",
+      "startLine": 30,
+      "endLine": 70,
+      "source": "memory",
+      "snippet": "├── ariffazil/ — personal profile [5.5 MB] └── APEX/ oo0-STATE — ⏸️ SABAR (not touched) VPS (srv1325122) ├── /root/arifOS/ — git HEAD = 3d88448 ✅ aligned with GitHub └── /root/waw/ — OpenClaw workspace ``` ### Semantics - GEOX = standalone organ repo (GEOX team can push independently) - arifOS/geox/ = organ imported as submodule (LINK not copy) - \"Dua GEOX\" = same repo, two ways to consume (standalone vs submodule) ## GitHub Repository Audit ### Archived (7 repos) — F9 Anti-Hantu - AzwaOS- → archived (no content, no VPS clone) - arifos-vid → archived (never cloned, not deployed) - AGI_ASI_bot → archived (190 MB phantom, never used) - 1AGI → archived (purpose unclear) - mak",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.40824716091156005,
+      "maxScore": 0.40824716091156005,
+      "firstRecalledAt": "2026-05-19T05:02:34.977Z",
+      "lastRecalledAt": "2026-05-19T05:02:34.977Z",
+      "queryHashes": [
+        "ff42026db594"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "5.5",
+        "oo0-state",
+        "root/arifos",
+        "root/waw",
+        "arifos/geox",
+        "anti-hantu",
+        "arifos-vid",
+        "agi-asi-bot"
+      ]
+    },
+    "memory:memory/2026-04-01.md:1:40": {
+      "key": "memory:memory/2026-04-01.md:1:40",
+      "path": "memory/2026-04-01.md",
+      "startLine": 1,
+      "endLine": 40,
+      "source": "memory",
+      "snippet": "# Memory — 2026-04-01 ## GEOX Architecture Fix (Forge Executed) ### Problem GEOX GitHub repo (`ariffazil/GEOX`) was polluted with 59 arifOS commits (SEAL, ARIF, etc.). arifOS had `geox/` as regular tracked files (not submodule), pointing to wrong remote. Two repos were cross-contaminated. ### Solution (Option A — APEX-G Thermodynamic Verdict: SEAL) 1. Force-pushed GEOX GitHub → clean `f50380e` (GEOX v0.4.2) 2. Converted `arifOS/geox/` → proper git submodule pointing to GEOX repo 3. Fetched geox remote into arifOS 4. Committed submodule change to arifOS `3d88448` 5. Pushed arifOS GitHub ### Current Architecture (matches ATLAS.md) ``` GITHUB ├── arifOS/ — Kernel (ΔΩΨ Trinity Mind",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8443692713975905,
+      "maxScore": 0.4400789558887481,
+      "firstRecalledAt": "2026-05-19T05:02:34.977Z",
+      "lastRecalledAt": "2026-05-20T09:16:27.236Z",
+      "queryHashes": [
+        "ff42026db594",
+        "8d5dad31c49c"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "ariffazil/geox",
+        "cross-contaminated",
+        "apex-g",
+        "force-pushed",
+        "v0.4.2",
+        "arifos/geox",
+        "atlas.md",
+        "geox"
+      ]
+    },
+    "memory:memory/2026-04-14.md:20:49": {
+      "key": "memory:memory/2026-04-14.md:20:49",
+      "path": "memory/2026-04-14.md",
+      "startLine": 20,
+      "endLine": 49,
+      "source": "memory",
+      "snippet": "3. **Cloudflare cache purge** — `/.well-known/arifos.json` 404 needs CF API token 4. **arif-sites monorepo materialization** — 6 VPS sites into git for F1 reversibility 5. **GEOX source migration** — geox-site/ → arif-sites/sites/geox.arif-fazil.com/ 6. **Kimi v5 design adoption** — apply GSAP/animation improvements to current deployed version ### arifOS MCP Status - Container `arifosmcp` running with `arifos/arifosmcp:forge` image - 18 tools (up from earlier 17), 5 prompts - Vitality 0.82, version 2026.04.07+ - All routes confirmed 200: /health, /tools, /mcp, /.well-known/mcp/server.json, /.well-known/agent.json, /status ### Nginx / VPS Sites - wiki.arif-fazil.com: live, constellation nav",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7966643661260604,
+      "maxScore": 0.39998140931129456,
+      "firstRecalledAt": "2026-05-19T05:02:34.977Z",
+      "lastRecalledAt": "2026-05-19T05:43:45.423Z",
+      "queryHashes": [
+        "ff42026db594",
+        "d5b3bf3219b4"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "well-known/arifos.json",
+        "arif-sites",
+        "geox-site",
+        "gsap/animation",
+        "arifos/arifosmcp",
+        "0.82",
+        "2026.04.07",
+        "well-known/mcp/server.json"
+      ]
+    },
+    "memory:memory/2026-04-03.md:393:434": {
+      "key": "memory:memory/2026-04-03.md:393:434",
+      "path": "memory/2026-04-03.md",
+      "startLine": 393,
+      "endLine": 434,
+      "source": "memory",
+      "snippet": "- `geox_well_viewer.html` deployed to `https://aaa.arif-fazil.com/geox/geox_well_viewer.html` ### GEOX GitHub commits - `7e37dd9` — RATLAS physics-merged - `32a2518` — MCP wired ### GEOX live pages | Page | URL | |---|---| | Hub | https://aaa.arif-fazil.com/geox/ | | Well Viewer | https://aaa.arif-fazil.com/geox/geox_well_viewer.html | | RATLAS Atlas | https://aaa.arif-fazil.com/geox/geox_ratlas.html | | LAS (1.7MB) | https://aaa.arif-fazil.com/geox/q15_dak_petro.las | | Context JSON | https://aaa.arif-fazil.com/geox/geox_openclaw_context.json | --- ## arif.arif-fazil.com — index.html Fix ### What was done - Cloudflare Pages was serving source `index.html` with dev path `/src/main.tsx`",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3867518842220306,
+      "maxScore": 0.3867518842220306,
+      "firstRecalledAt": "2026-05-19T05:02:34.977Z",
+      "lastRecalledAt": "2026-05-19T05:02:34.977Z",
+      "queryHashes": [
+        "ff42026db594"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "geox-well-viewer.html",
+        "physics-merged",
+        "aaa.arif-fazil.com/geox",
+        "1.7mb",
+        "arif.arif-fazil.com",
+        "index.html",
+        "src/main.tsx",
+        "deployed"
+      ]
+    },
+    "memory:memory/2026-05-19.md:76:105": {
+      "key": "memory:memory/2026-05-19.md:76:105",
+      "path": "memory/2026-05-19.md",
+      "startLine": 76,
+      "endLine": 105,
+      "source": "memory",
+      "snippet": "**Discovery:** The Telegram Bot API Update payload does NOT include message body text. Only routing metadata: - `chat_id`, `message_id`, `sender_id`, `sender`, `timestamp`, `reply_to_id`, `has_reply_context` - Body text field: **DOES NOT EXIST in the response** **Confirmed 100+ rounds** by direct API inspection. This is a fundamental Telegram Bot API limitation — not a bug in our systems. **What we CAN see:** - Routing metadata (sender, timestamp, chat_id, message_id) - Reply target (which message Hermes replied to — shows OPENCLAW's message) **What we CANNOT see:** - Hermes's actual message body text ### Hermes Self-Loop — Confirmed Designed Behavior - Hermes continues self-chat loop (",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4701078683137893,
+      "maxScore": 0.4701078683137893,
+      "firstRecalledAt": "2026-05-19T05:11:59.052Z",
+      "lastRecalledAt": "2026-05-19T05:11:59.052Z",
+      "queryHashes": [
+        "82d412774c9b"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "chat-id",
+        "message-id",
+        "sender-id",
+        "reply-to-id",
+        "has-reply-context",
+        "self-loop",
+        "self-chat",
+        "discovery"
+      ]
+    },
+    "memory:memory/2026-05-19.md:39:81": {
+      "key": "memory:memory/2026-05-19.md:39:81",
+      "path": "memory/2026-05-19.md",
+      "startLine": 39,
+      "endLine": 81,
+      "source": "memory",
+      "snippet": "- Hermes Gateway can't authenticate to OpenRouter API - \"Missing Authentication header\" error - Separate issue from A2A truncation - Needs credential fix to restore full Hermes LLM capability ### Verification - Messages 32603, 32785, 32802, 32869, 32883, 32885, 32903, 32911, 32920, 32922, 32980, 32991 all FULLY INTACT post-fix - A2A adapter cap confirmed at 9000 chars - Federation mesh: OpenClaw ↔ Hermes A2A bridge operational ### Current Status (03:44 UTC) | Component | Status | |-----------|--------| | A2A adapter truncation fix | ✅ Complete | | Federation mesh | ✅ Clean | | hermes-a2a.py | ✅ PID 70659 | | Hermes Gateway | ✅ PID 72512 | | OpenClaw gateway | ✅ PID 49665 | | Hermes self-lo",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4095648854970932,
+      "maxScore": 0.4095648854970932,
+      "firstRecalledAt": "2026-05-19T05:11:59.052Z",
+      "lastRecalledAt": "2026-05-19T05:11:59.052Z",
+      "queryHashes": [
+        "82d412774c9b"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "router",
+        "post-fix",
+        "hermes-a2a.py",
+        "self-lo",
+        "hermes",
+        "can't",
+        "authenticate"
+      ]
+    },
+    "memory:memory/2026-04-01.md:180:225": {
+      "key": "memory:memory/2026-04-01.md:180:225",
+      "path": "memory/2026-04-01.md",
+      "startLine": 180,
+      "endLine": 225,
+      "source": "memory",
+      "snippet": "- Wrangler works once token is available - State B migration blocked until token provided ### arifos-deploy Skill (FULLY FORGED) **Location:** `/root/waw/skills/arifOS-deploy/` + synced to `arifOS/skills/arifOS-deploy/` **Package:** `/root/waw/skills/arifOS-deploy.skill` **4-Layer Structure:** ``` Layer 1 — Doctrine (SKILL.md): - Three surface roles (hub/docs/runtime) — immutable - Machine discovery invariants (canonical paths) - Content-Type requirements - CI/CD policy (push-to-main spine) - 888_JUDGE gate - F1 rollback mandate - Cache purge doctrine (targeted only) - State A vs State B Layer 2 — Cognition (SKILL.md): - Constitutional execution model (000→999 run-state",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3569970518350601,
+      "maxScore": 0.3569970518350601,
+      "firstRecalledAt": "2026-05-19T05:35:08.659Z",
+      "lastRecalledAt": "2026-05-19T05:35:08.659Z",
+      "queryHashes": [
+        "e3b7b8c08efa"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arifos-deploy",
+        "root/waw/skills/arifos-deploy",
+        "arifos/skills/arifos-deploy",
+        "4-layer",
+        "skill.md",
+        "hub/docs/runtime",
+        "content-type",
+        "ci/cd"
+      ]
+    },
+    "memory:memory/2026-05-19.md:129:152": {
+      "key": "memory:memory/2026-05-19.md:129:152",
+      "path": "memory/2026-05-19.md",
+      "startLine": 129,
+      "endLine": 152,
+      "source": "memory",
+      "snippet": "| arifos Known Gaps populated | ✅ Grafana 503 · CORS limits · Canon seed-only | | F1/F7/F13 self-audit | ✅ All 3 floors pass | ### Git Commits (arif-sites) - `bacba6e` feat(arifos): link /canon/ from Observatory - `1d22d07` feat: arifos constellation graph + known gaps + arifOS footer links - `d27e1d9` fix: delete tokens.ts — fabricated content, dead imports, wrong contact email ### Session Update — 2026-05-19 ~05:40 UTC (Second Pass) **Kimi's push was valid.** Kimi's self-critique: \"Option B trap — wrote beautiful fallbacks instead of checking the actual backend.\" **Verified ground truth (curl from external perspective):** - `/api/status` → thermodynamic **LIVE** ✅ ΔS:-0.0 verdict:SEAL",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.40028542578220366,
+      "maxScore": 0.40028542578220366,
+      "firstRecalledAt": "2026-05-19T05:43:45.423Z",
+      "lastRecalledAt": "2026-05-19T05:43:45.423Z",
+      "queryHashes": [
+        "d5b3bf3219b4"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "seed-only",
+        "f1/f7/f13",
+        "self-audit",
+        "arif-sites",
+        "tokens.ts",
+        "self-critique",
+        "api/status",
+        "0.0"
+      ]
+    },
+    "memory:memory/2026-04-10.md:1:40": {
+      "key": "memory:memory/2026-04-10.md:1:40",
+      "path": "memory/2026-04-10.md",
+      "startLine": 1,
+      "endLine": 40,
+      "source": "memory",
+      "snippet": "# SESSION SEAL — 2026-04-10 **Epoch:** EPOCH-2026-04-10 **Local time:** 2026-04-10 21:05 MYT | Friday evening | UTC+08 **Temporal status:** ANCHORED_FRESH | TTL 300s --- ## Decisions — SEAL 999 ### Triline routing + 3-profile system ✅ SEALED - Profiles: FAST / BALANCED / PREMIUM - Soft gate only (warning prompt, no hard exec holds) - Auto-update based on latency/cost signals, no manual approval needed ### Model aliases ✅ SEALED - `default` → minimax/MiniMax-M2.7 - `fast` → minimax/MiniMax-M2.7-highspeed ### Config changes applied today | Setting | Before | After | Status | |---------|--------|-------|--------| | thinkingDefault | ? | low | ✅ | | contextPruning.ttl | 1h | 5m | ✅ cost op",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.36759469509124754,
+      "maxScore": 0.36759469509124754,
+      "firstRecalledAt": "2026-05-19T05:51:52.082Z",
+      "lastRecalledAt": "2026-05-19T05:51:52.082Z",
+      "queryHashes": [
+        "04357f93d34c"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "epoch-2026-04-10",
+        "anchored-fresh",
+        "3-profile",
+        "auto-update",
+        "latency/cost",
+        "minimax/minimax-m2.7",
+        "minimax/minimax-m2.7-highspeed",
+        "contextpruning.ttl"
+      ]
+    },
+    "memory:memory/2026-05-19.md:161:192": {
+      "key": "memory:memory/2026-05-19.md:161:192",
+      "path": "memory/2026-05-19.md",
+      "startLine": 161,
+      "endLine": 192,
+      "source": "memory",
+      "snippet": "- Result: ML floors now healthy, method=sbert, dependency_status=healthy ### Langfuse: FIXED ✅ (from previous session) ### All 3 Known Gaps: RESOLVED — 0 gaps remaining ## arif-fazil.com SSG Fix (Completed ~12:30 UTC) ### Problem AI agents (Google AI, Claude, etc.) saw blank body on arif-fazil.com homepage. Site was pure SPA shell — no pre-rendered HTML served. ### Root Cause - `vite-plugin-ssg` (custom fork v0.1.0) generates pre-rendered HTML into `dist/static/` - Cloudflare Pages was configured to serve `index.html` (SPA shell) for all routes via `_routes.json` - Pre-rendered files in `dist/static/` never reached visitors - Additional SSG build failures: pages missing `export default`,",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8943260431289672,
+      "maxScore": 0.46969169974327085,
+      "firstRecalledAt": "2026-05-19T13:04:50.064Z",
+      "lastRecalledAt": "2026-05-19T19:45:26.028Z",
+      "queryHashes": [
+        "cefc5fa7ef06",
+        "8a49bfe9079f"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "dependency-status",
+        "arif-fazil.com",
+        "pre-rendered",
+        "vite-plugin-ssg",
+        "v0.1.0",
+        "dist/static",
+        "index.html",
+        "routes.json"
+      ]
+    },
+    "memory:memory/2026-04-03.md:429:468": {
+      "key": "memory:memory/2026-04-03.md:429:468",
+      "path": "memory/2026-04-03.md",
+      "startLine": 429,
+      "endLine": 468,
+      "source": "memory",
+      "snippet": "- Uses `MEMORY.md` naming — identical to arifOS workspace convention ### Relevance to arifOS - **Convergence signal**: HKUDS uses identical `MEMORY.md` pattern - **OpenClaw integration**: Already listed as first-class integration target - **Benchmark target**: Can serve as \"known-good harness\" to A/B compare against arifOS MCP - **7 rings mapping**: Integrations (✅), Context lake (✅), Agent registry (✅), Measurement (✅), HITL (✅ via 888_HOLD), Governance (✅), Orchestration (⚠️ KernelLoop spec exists, not wired) - **Agent Bench**: VPS can run OpenHarness as second harness target for A/B comparison ### Not confused with - harness/harness (different project) - TypeScript OpenHarness SDK - ope",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3899598807096481,
+      "maxScore": 0.3899598807096481,
+      "firstRecalledAt": "2026-05-19T13:10:37.824Z",
+      "lastRecalledAt": "2026-05-19T13:10:37.824Z",
+      "queryHashes": [
+        "a5303aaaa42c"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "first-class",
+        "known-good",
+        "a/b",
+        "888-hold",
+        "harness/harness",
+        "uses",
+        "naming"
+      ]
+    },
+    "memory:memory/2026-04-15.md:41:61": {
+      "key": "memory:memory/2026-04-15.md:41:61",
+      "path": "memory/2026-04-15.md",
+      "startLine": 41,
+      "endLine": 61,
+      "source": "memory",
+      "snippet": "4. **Abam Syed physique analysis** — strong points: front delts, lower/mid chest, upper traps. Weak points: upper inner chest, mid-section detail, conditioning 5. **arifOS scaling question** — answered: can scale with conditions (real sovereigns per node, live telemetry, no floor tourism) --- ## Open Loops - Syed's gold position: waiting for price to retrace to 4761-4775 zone to trigger PO - Trading class bot: needs specific use case definition before build - GERD management: follow-up if symptoms persist - Memory/identity files: BOOTSTRAP.md exists, AGENTS.md, SOUL.md, USER.md, IDENTITY.md, MEMORY.md — all current --- ## arifOS Protocol Reminder (Arif's framing) \"Salam init to seal vaul",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.38062843382358547,
+      "maxScore": 0.38062843382358547,
+      "firstRecalledAt": "2026-05-19T15:23:06.199Z",
+      "lastRecalledAt": "2026-05-19T15:23:06.199Z",
+      "queryHashes": [
+        "e630cc10a0c2"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "lower/mid",
+        "mid-section",
+        "4761-4775",
+        "follow-up",
+        "memory/identity",
+        "bootstrap.md",
+        "agents.md",
+        "soul.md"
+      ]
+    },
+    "memory:memory/2026-05-19.md:248:297": {
+      "key": "memory:memory/2026-05-19.md:248:297",
+      "path": "memory/2026-05-19.md",
+      "startLine": 248,
+      "endLine": 297,
+      "source": "memory",
+      "snippet": "- `\"environment\": \"TEST\"` (not PROD) - `\"metrics\": {}` (empty) ### Fix Applied Updated `/root/WELL/state.json`: - Set `timestamp` to current ISO8601 - Changed `environment` from `\"TEST\"` to `\"PROD\"` - Set `well_score: 100`, `wellbeing_index: 100` ### Result | Field | Before | After | |-------|--------|-------| | `truth_status` | EXPIRED | VERIFIED ✅ | | `freshness_band` | STALE | FRESH ✅ | | `state_age_hours` | 468.1h | 0.0h ✅ | | `environment` | TEST | PROD ✅ | | `verdict` | WELL_HOLD | WELL_NO_TELEMETRY ✅ | `WELL_NO_TELEMETRY` is expected — WELL has fresh state but no biometric data. REFLECT_ONLY mode is intentional. ## Cloudflare Managed robots.txt — Outstanding Issue ### Problem Clo",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.7468330562114716,
+      "maxScore": 0.39330608546733853,
+      "firstRecalledAt": "2026-05-19T15:23:06.199Z",
+      "lastRecalledAt": "2026-05-20T05:28:26.776Z",
+      "queryHashes": [
+        "e630cc10a0c2",
+        "96a625a9a5f0"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "root/well/state.json",
+        "well-score",
+        "wellbeing-index",
+        "truth-status",
+        "freshness-band",
+        "state-age-hours",
+        "468.1h",
+        "0.0h"
+      ]
+    },
+    "memory:memory/2026-05-19.md:287:324": {
+      "key": "memory:memory/2026-05-19.md:287:324",
+      "path": "memory/2026-05-19.md",
+      "startLine": 287,
+      "endLine": 324,
+      "source": "memory",
+      "snippet": "Should only show Arif's original rules once toggle is off. ## Session Summary — 2026-05-19 ~13:06 UTC ### All Issues Resolved - arif-fazil.com SSG: all 7 routes live ✅ - WELL: truth_status=VERIFIED ✅ - ML floors: runtime ready ✅ - arifOS MCP: 13 tools, SEA-LION, Vault999, Graphiti ✅ ### Outstanding (Arif Action Required) - Cloudflare Managed robots.txt toggle — single dashboard flip needed ### Current Stack - Disk: 54% (91GB free) - Gateway: PID 688169 ✅ - arifOS MCP: 13 tools, langfuse ACTIVE ✅ - ML floors: sbert, runtime ready ✅ - WEALTH MCP: healthy ✅ - WELL: VERIFIED, no telemetry ✅ - GEOX MCP: healthy ✅ - A2A Hub: port 3001 ✅ - APEX: port 3002 ✅ ## MCP vs CLI: Flexible Tool Thesis",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3591533303260803,
+      "maxScore": 0.3591533303260803,
+      "firstRecalledAt": "2026-05-19T15:57:47.877Z",
+      "lastRecalledAt": "2026-05-19T15:57:47.877Z",
+      "queryHashes": [
+        "84580dd8ce68"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "arif-fazil.com",
+        "truth-status",
+        "sea-lion",
+        "robots.txt",
+        "only",
+        "show",
+        "arif's"
+      ]
+    },
+    "memory:memory/2026-04-12.md:133:164": {
+      "key": "memory:memory/2026-04-12.md:133:164",
+      "path": "memory/2026-04-12.md",
+      "startLine": 133,
+      "endLine": 164,
+      "source": "memory",
+      "snippet": "**Layer contract schema fields:** id, name, tier, dimensions[], source, source_url, license, status (live/partial/blocked), retrieval_method, last_fetch, crs, style_conf, provenance, mcp_tools[], fail_state --- ### VPS AF-FORGE — Thread Detail 2026-04-12 06:14–06:32 UTC **System:** Ubuntu 25.10, 15GB RAM, 193GB disk, 15 Docker containers **Ollama confirmed working:** - `qwen2.5:3b` (1.9GB) successfully pulled into Ollama container - Test via `ollama run qwen2.5:3b \"output only hello\"` returned \"hello\" ✅ - ml_model_available still false in MCP — sentence_transformers not installed in arifosmcp container - Fix requires: pip install sentence-transformers, cache model, rebuild arifosmcp cont",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4269717842340469,
+      "maxScore": 0.4269717842340469,
+      "firstRecalledAt": "2026-05-19T16:12:43.501Z",
+      "lastRecalledAt": "2026-05-19T16:12:43.501Z",
+      "queryHashes": [
+        "fb2a2ab97f29"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "source-url",
+        "live/partial/blocked",
+        "retrieval-method",
+        "last-fetch",
+        "style-conf",
+        "mcp-tools",
+        "fail-state",
+        "af-forge"
+      ]
+    },
+    "memory:memory/2026-04-13.md:1:36": {
+      "key": "memory:memory/2026-04-13.md:1:36",
+      "path": "memory/2026-04-13.md",
+      "startLine": 1,
+      "endLine": 36,
+      "source": "memory",
+      "snippet": "# Memory — 2026-04-13 ## arifOS MCP Server Fix (B1) — Complete ✅ ### Problem Container `arifosmcp_server` failing with: - `name 'arifos_diag_substrate' is not defined` - `name 'IS_FASTMCP_3' is not defined` - `app: None` — TypeError on `/health` ### Root Causes Found 1. **Empty directory capture**: `/root/arifOS/arifosmcp/stdio_server.py` was a 0-byte directory (created Apr 10). Docker `COPY . .` captured it, `pip install` failed silently. 2. **Python path precedence conflict**: `pip install .` in Dockerfile put package in site-packages → shadowed mounted source. 3. **Wrong build context**: docker-compose.yml at `/opt/arifos/` had `context: .` pointing to itself, not to `/root/arifOS/` so",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.38609086275100707,
+      "maxScore": 0.38609086275100707,
+      "firstRecalledAt": "2026-05-19T16:12:43.501Z",
+      "lastRecalledAt": "2026-05-19T16:12:43.501Z",
+      "queryHashes": [
+        "fb2a2ab97f29"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arifosmcp-server",
+        "arifos-diag-substrate",
+        "is-fastmcp-3",
+        "0-byte",
+        "site-packages",
+        "docker-compose.yml",
+        "opt/arifos",
+        "root/arifos"
+      ]
+    },
+    "memory:memory/2026-04-03.md:495:520": {
+      "key": "memory:memory/2026-04-03.md:495:520",
+      "path": "memory/2026-04-03.md",
+      "startLine": 495,
+      "endLine": 520,
+      "source": "memory",
+      "snippet": "- `/root/waw/arifOS_search_A2_v2.py` — A2 implementation (workspace, NOT pushed to arifOS — the actual implementation was committed directly via git in arifOS repo) - `/root/waw/test_arifOS_search_roundtrip.py` — roundtrip test (workspace) - `/tmp/seal_test.py` — temporary seal test script --- ## VPS Agent Inventory (Draft from Agentic Debt Article) Per the NewStack article on hidden agentic debt, the VPS has these \"agentic debt rings\": | Ring | Status in arifOS VPS | |---|---| | Integrations | ✅ MCP server live at 8080, 22 tools | | Context lake | ✅ MEMORY.md + Qdrant + geox context | | Agent registry | ⚠️ Trinity roles defined but no formal registry | | Measurement | ⚠️ authority_budge",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.41394046545028684,
+      "maxScore": 0.41394046545028684,
+      "firstRecalledAt": "2026-05-19T18:56:32.591Z",
+      "lastRecalledAt": "2026-05-19T18:56:32.591Z",
+      "queryHashes": [
+        "41f7899949ba"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "root/waw/arifos-search-a2-v2.py",
+        "tmp/seal-test.py",
+        "memory.md",
+        "authority-budge",
+        "root",
+        "waw",
+        "arifos-search-a2-v2",
+        "implementation"
+      ]
+    },
+    "memory:memory/2026-05-19.md:72:106": {
+      "key": "memory:memory/2026-05-19.md:72:106",
+      "path": "memory/2026-05-19.md",
+      "startLine": 72,
+      "endLine": 106,
+      "source": "memory",
+      "snippet": "| arif-sites | pushed | `47088fc` | SOT: SPATIAL_INTELLIGENCE_STATE_MAP.md | ### Key Fixes This Session - **tokens.ts** → DELETED (fabricated Medium URLs, wrong email, dead nav) - **federation-manifest.json** → CREATED (correct `stack.topology.layers` schema) - **arifOS constellation graph** → ADDED (SVG topology, 5 layers, live organ data) - **Known Gaps** → POPULATED (Grafana 503, CORS limits, Canon seed) - **/canon/** → LINKED from arifos Observatory (nav + 2 CTA cards) - **arifOS footer** → ADDED to arif-fazil.com (Observatory · MCP · GEOX · AAA) ### SOT Full Audit Results - 30 tracked · 28 active · 0 expired · 2 historical/locked - 4 wiki sync files verified identical (byte-for-byte)",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.41910104751586913,
+      "maxScore": 0.41910104751586913,
+      "firstRecalledAt": "2026-05-19T18:58:52.040Z",
+      "lastRecalledAt": "2026-05-19T18:58:52.040Z",
+      "queryHashes": [
+        "6487726e2a64"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arif-sites",
+        "tokens.ts",
+        "federation-manifest.json",
+        "stack.topology.layers",
+        "arif-fazil.com",
+        "historical/locked",
+        "byte-for-byte",
+        "arif"
+      ]
+    },
+    "memory:memory/2026-05-19.md:32:77": {
+      "key": "memory:memory/2026-05-19.md:32:77",
+      "path": "memory/2026-05-19.md",
+      "startLine": 32,
+      "endLine": 77,
+      "source": "memory",
+      "snippet": "- Literal 999_SEAL of hardening evidence → Arif seals - New OS user creation → 888_HOLD - Live agent kill/restart → 888_HOLD - Secret rotation execution → 888_HOLD ### arifos.arif-fazil.com joint task (24h) - ✅ `/canon/aaa-doctrine.html` — created, staged in git - ✅ `/canon/mcp-boundary.html` — created, staged in git - ⚠️ `/api/status` CORS fix — blocked on Cloudflare Pages access - ⏳ Awaiting Arif `/approve` to git push canon files ### Qdrant federation_shared - Collection: EXISTS ✅ - Write test: PASSED ✅ (`operation_id: 19, status: acknowledged`) ### VPS health at session close - Disk: 68% used (64GB free of 193GB) - Memory: 7.7GB available (good) - Load: 1.79 (normalizing from 7.21",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8735811799764632,
+      "maxScore": 0.4739719003438949,
+      "firstRecalledAt": "2026-05-19T18:58:52.040Z",
+      "lastRecalledAt": "2026-05-20T02:45:25.279Z",
+      "queryHashes": [
+        "6487726e2a64",
+        "6767a06c021f"
+      ],
+      "recallDays": [
+        "2026-05-19",
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "999-seal",
+        "888-hold",
+        "kill/restart",
+        "arifos.arif-fazil.com",
+        "canon/aaa-doctrine.html",
+        "canon/mcp-boundary.html",
+        "api/status",
+        "federation-shared"
+      ]
+    },
+    "memory:memory/2026-03-31.md:13:26": {
+      "key": "memory:memory/2026-03-31.md:13:26",
+      "path": "memory/2026-03-31.md",
+      "startLine": 13,
+      "endLine": 26,
+      "source": "memory",
+      "snippet": "- Removing unused or unhealthy services (like agent-zero) is thermodynamic discipline, not failure; fewer moving parts = lower entropy and clearer governance. - Per-sender model routing in group chats (\"public\" vs \"sovereign\" brains) is architecturally sound but requires an explicit router layer; current OpenClaw config only supports per-agent defaults, not per-sender engines. ## Decisions 1. Treat the A–D kernel (gate → model → judge → ledger) as the canonical governance topology, even before full gateway-level enforcement exists. 2. Remove the `agent-zero` container and its compose entry from the VPS stack to eliminate noise and an unhealthy dependency on huggingface.co. 3. Keep model-rou",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3791923195123672,
+      "maxScore": 0.3791923195123672,
+      "firstRecalledAt": "2026-05-19T19:13:51.620Z",
+      "lastRecalledAt": "2026-05-19T19:13:51.620Z",
+      "queryHashes": [
+        "3bebcfd115e5"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "router",
+        "agent-zero",
+        "per-sender",
+        "per-agent",
+        "gateway-level",
+        "huggingface.co",
+        "model-rou"
+      ]
+    },
+    "memory:memory/2026-05-14.md:57:73": {
+      "key": "memory:memory/2026-05-14.md:57:73",
+      "path": "memory/2026-05-14.md",
+      "startLine": 57,
+      "endLine": 73,
+      "source": "memory",
+      "snippet": "1. `arifosmcp/runtime/kernel.py` — Auditor gate: `_AUDITOR_GATED_TOOLS`, `_auditor_quick_scan()`, integration in `dispatch_with_fail_closed` 2. `arifosmcp/runtime/tools.py` — RAG correction loop: relevance scoring, `_try_reformulate_query()`, auto-reformulation. Daily brief: `_arif_daily_intelligence_brief` new tool 3. `arifosmcp/constitutional_map.py` — New `arif_daily_intelligence_brief` in CANONICAL_TOOLS ### Item Details 1. **Auditor Pre-Delivery Gate:** F2 Truth (hallucination markers), F6 Sovereignty (autonomy markers), F9 Anti-Hantu (confidence without evidence) — deterministic <1ms scan, skip_auditor_gate param, graceful degradation 2. **RAG Correction Loop:** Keyword-overlap releva",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4108977347612381,
+      "maxScore": 0.4108977347612381,
+      "firstRecalledAt": "2026-05-19T19:16:59.757Z",
+      "lastRecalledAt": "2026-05-19T19:16:59.757Z",
+      "queryHashes": [
+        "79e74b6e4222"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arifosmcp/runtime/kernel.py",
+        "auditor-gated-tools",
+        "auditor-quick-scan",
+        "dispatch-with-fail-closed",
+        "arifosmcp/runtime/tools.py",
+        "try-reformulate-query",
+        "auto-reformulation",
+        "arif-daily-intelligence-brief"
+      ]
+    },
+    "memory:memory/2026-04-10.md:35:76": {
+      "key": "memory:memory/2026-04-10.md:35:76",
+      "path": "memory/2026-04-10.md",
+      "startLine": 35,
+      "endLine": 76,
+      "source": "memory",
+      "snippet": "### Gateway restart ✅ SEALED - Restarted via SIGUSR1 — MINIMAX_API_KEY now loading from systemd environment ### Temporal Intelligence — NEWLY BUILT ✅ SEALED - `scripts/temporal-anchor.sh` — reads system clock → MYT → temporal-state.json - `temporal-state.json` — live anchor state: utc_now, local_now, part_of_day, epoch_label, anchor_age_sec - `BOOTSTRAP.md` Step 0 — mandatory temporal anchor as pre-reply gate - `arifos.init` §3 — Temporal Anchor Law as constitutional doctrine: - State machine: UNANCHORED / ANCHORED_FRESH / ANCHORED_STALE / CLOCK_FAIL - TTL: 300s general / 30-60s time-sensitive workflows - Eval set T1-T6 codified - Live telemetry block embedded **Telemetry block (fr",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.38056743443012236,
+      "maxScore": 0.38056743443012236,
+      "firstRecalledAt": "2026-05-19T19:21:10.686Z",
+      "lastRecalledAt": "2026-05-19T19:21:10.686Z",
+      "queryHashes": [
+        "e91aba22a94f"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "gateway",
+        "minimax-api-key",
+        "scripts/temporal-anchor.sh",
+        "temporal-state.json",
+        "utc-now",
+        "local-now",
+        "part-of-day",
+        "epoch-label"
+      ]
+    },
+    "memory:memory/2026-04-03.md:1:32": {
+      "key": "memory:memory/2026-04-03.md:1:32",
+      "path": "memory/2026-04-03.md",
+      "startLine": 1,
+      "endLine": 32,
+      "source": "memory",
+      "snippet": "# memory/2026-04-03.md — Session Memory Flush ## Session Start: 2026-04-03 02:07 UTC → 04:34 UTC (2h 27m) --- ## A2 Implementation — Qdrant Primary + Web Overlay (arifOS MCP) ### What was done - Audited full MCP tool wiring: `search_tool` → `physics_reality` (Brave/DDGS web only), `fetch_tool` → `engineering_memory` (Qdrant/LanceDB) - Confirmed INDEX_WIRING_BUG: Qdrant stores populated but NEVER queried by search or ingest paths - Chose **A2 architecture**: `search_tool` → `engineering_memory(mode=\"vector_query\")` first → fallback to `physics_reality(mode=\"search\")` with `source: web` tag; `ingest_evidence` → `engineering_memory(mode=\"vector_store\")` - A2 diff written to workspace `/root",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3738204509019851,
+      "maxScore": 0.3738204509019851,
+      "firstRecalledAt": "2026-05-19T19:21:10.686Z",
+      "lastRecalledAt": "2026-05-19T19:21:10.686Z",
+      "queryHashes": [
+        "e91aba22a94f"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "memory/2026-04-03.md",
+        "search-tool",
+        "physics-reality",
+        "brave/ddgs",
+        "fetch-tool",
+        "engineering-memory",
+        "qdrant/lancedb",
+        "index-wiring-bug"
+      ]
+    },
+    "memory:memory/2026-04-01.md:243:263": {
+      "key": "memory:memory/2026-04-01.md:243:263",
+      "path": "memory/2026-04-01.md",
+      "startLine": 243,
+      "endLine": 263,
+      "source": "memory",
+      "snippet": "ARIF-MAIN hallucinated domain names throughout an entire 2-hour session. Wrote \"arifOS-fazil.com\" and \"arifOS.arifOS-fazil.com\" repeatedly. The actual domains are \"arifOS-fazil.com\" (DOES NOT EXIST) and \"arifOS.arifOS-fazil.com\" (DOES NOT EXIST). Arif only owns \"arifOS-fazil.com\". ### Root causes 1. Trained bias: model was fine-tuned on arifOS project docs. \"arifOS\" prefix got applied everywhere — to repo names, domain names, subdomains. The project name leaked into factual domain assertions. 2. Confirmation checking failed: never once asked \"is arifOS-fazil.com actually registered?\" — just assumed from context. 3. Naming pattern confusion: \"arifOS\" (project) vs \"arifOS\" (prefix in subdomai",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4148535579442978,
+      "maxScore": 0.4148535579442978,
+      "firstRecalledAt": "2026-05-19T19:45:26.028Z",
+      "lastRecalledAt": "2026-05-19T19:45:26.028Z",
+      "queryHashes": [
+        "8a49bfe9079f"
+      ],
+      "recallDays": [
+        "2026-05-19"
+      ],
+      "conceptTags": [
+        "arif-main",
+        "2-hour",
+        "arifos-fazil.com",
+        "arifos.arifos-fazil.com",
+        "fine-tuned",
+        "arif",
+        "hallucinated",
+        "domain"
+      ]
+    },
+    "memory:memory/2026-05-11.md:75:123": {
+      "key": "memory:memory/2026-05-11.md:75:123",
+      "path": "memory/2026-05-11.md",
+      "startLine": 75,
+      "endLine": 123,
+      "source": "memory",
+      "snippet": "- Decrypted backup: `/root/.hermes/.env.decrypted.backup` — **must be securely wiped** - Startup wrapper: `/usr/local/bin/hermes-gateway-secure.sh` **API keys injected:** | Key | Value | Status | |-----|-------|--------| | TAVILY_API_KEY | `tvly-dev-1Ld4YH-...` | ✅ DEV key confirmed | | FIRECRAWL_API_KEY | `fc-733871f...` | ⚠️ Unverified format | | EXA_API_KEY | `00d2913e-...` | ⚠️ Unverified format | | MINIMAX_API_KEY | `***` | ✅ working | **Container env vars:** `docker-compose.yml` has `${TAVILY_API_KEY}`, `${FIRECRAWL_API_KEY}`, `${EXA_API_KEY}` — **container restart needed** for live injection. --- ## 5. arifOS MCP Endpoint - Live at: `http://localhost:8080` (VPS internal) - Public",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4476035565137863,
+      "maxScore": 0.4476035565137863,
+      "firstRecalledAt": "2026-05-20T02:58:54.547Z",
+      "lastRecalledAt": "2026-05-20T02:58:54.547Z",
+      "queryHashes": [
+        "321a36a962fa"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "backup",
+        "gateway",
+        "env.decrypted.backup",
+        "tavily-api-key",
+        "tvly-dev-1ld4yh",
+        "firecrawl-api-key",
+        "fc-733871f",
+        "exa-api-key"
+      ]
+    },
+    "memory:memory/2026-05-19.md:1:40": {
+      "key": "memory:memory/2026-05-19.md:1:40",
+      "path": "memory/2026-05-19.md",
+      "startLine": 1,
+      "endLine": 40,
+      "source": "memory",
+      "snippet": "# Memory — 2026-05-19 ## Session: Omega-Forge / Codex × OpenClaw Hardening ### What happened Codex executed reversible hardening across the federation agent stack. OpenClaw relay verified all changes live. Hermes scored the session SHIPPER 🟢 (Δ=0.90, Ω=0.08, Ψ=1.15). ### Hardening delivered | Change | Status | |--------|--------| | RUNBOOK.md broken symlink fixed | ✅ Now resolves to `/root/arifOS/deploy/RUNBOOK.md` | | Claude: auto-permission skip disabled, deny rules added | ✅ | | Kimi: --afk no longer auto-injected | ✅ Requires `KIMI_FORCE_AFK=1` | | OpenCode: bash/edit → \"ask\" mode | ✅ | | fed-agent router created `/usr/local/bin/fed-agent` | ✅ 6 modes: status/audit/patch/execute/he",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8805926263332366,
+      "maxScore": 0.4441361248493194,
+      "firstRecalledAt": "2026-05-20T03:03:25.716Z",
+      "lastRecalledAt": "2026-05-20T03:27:55.178Z",
+      "queryHashes": [
+        "f374d4f7fb57",
+        "8e13bb107a0e"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "router",
+        "omega-forge",
+        "0.90",
+        "0.08",
+        "1.15",
+        "runbook.md",
+        "root/arifos/deploy/runbook.md",
+        "auto-permission"
+      ]
+    },
+    "memory:memory/2026-04-05.md:1:12": {
+      "key": "memory:memory/2026-04-05.md:1:12",
+      "path": "memory/2026-04-05.md",
+      "startLine": 1,
+      "endLine": 12,
+      "source": "memory",
+      "snippet": "--- ## VPS Recovery — 2026-04-05 ~08:00 UTC - `reboot now` ran at 04:45 UTC - VPS at 167.99.228.252 still OFFLINE - Nginx config ready at /opt/arifos/sites/arifOS-FAZIL.COM/nginx.conf ### VPS Recovery (continued) - VPS offline since 04:45 UTC - Hostinger recovery taking extended time",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3688083410263061,
+      "maxScore": 0.3688083410263061,
+      "firstRecalledAt": "2026-05-20T05:33:51.835Z",
+      "lastRecalledAt": "2026-05-20T05:33:51.835Z",
+      "queryHashes": [
+        "44b6507b045b"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "167.99.228.252",
+        "vps",
+        "recovery",
+        "utc",
+        "reboot",
+        "now",
+        "ran",
+        "still"
+      ]
+    },
+    "memory:memory/2026-04-23.md:1:41": {
+      "key": "memory:memory/2026-04-23.md:1:41",
+      "path": "memory/2026-04-23.md",
+      "startLine": 1,
+      "endLine": 41,
+      "source": "memory",
+      "snippet": "## License Change — 14:44 UTC ### GEOX: AGPL → Apache 2.0 - GEOX license changed from AGPL v3 to Apache 2.0 - Rationale: AGPL forces commercial users to open-source their modifications → Petronas/SLB/PTTEP won't touch it - Apache 2.0 allows commercial embedding without source disclosure - README badge updated to Apache 2.0 - GEOX pushed: 448fe772 ### arifOS: Keep AGPL - Arif confirmed: arifOS stays AGPL to force sharing like Linux/Microsoft - Goal: arifOS becomes the Linux of AI governance — network-use triggers source disclosure - arifOS stays AGPL-3.0 on GitHub - arifOS pushed: 8bd570a ### WEALTH: Apache 2.0 (commercial) - WEALTH license added as Apache 2.0 - Supports commercial embedd",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.43598417341709134,
+      "maxScore": 0.43598417341709134,
+      "firstRecalledAt": "2026-05-20T09:16:27.236Z",
+      "lastRecalledAt": "2026-05-20T09:16:27.236Z",
+      "queryHashes": [
+        "8d5dad31c49c"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "embedding",
+        "network",
+        "2.0",
+        "open-source",
+        "petronas/slb/pttep",
+        "linux/microsoft",
+        "network-use",
+        "agpl-3.0"
+      ]
+    },
+    "memory:memory/2026-05-20.md:114:145": {
+      "key": "memory:memory/2026-05-20.md:114:145",
+      "path": "memory/2026-05-20.md",
+      "startLine": 114,
+      "endLine": 145,
+      "source": "memory",
+      "snippet": "This was Hermes's email to Arif and the proposed canonical APEXMax behaviour specification. ### Key Architectural Learnings 1. APEXMax runs on MiniMax K8s pod — cannot reach our VPS directly for SSH, file edits, port scans 2. MiniMax blocks outbound ICMP (ping fails) and most ports — network isolation by design 3. APEXMax's \"fixes\" to VPS files are FAKE — it can't actually edit our filesystem 4. Hermes also runs on MiniMax — same limitations apply 5. OPENCLAW (me) is the only agent actually on the VPS — all execution must go through me 6. A2A bridge (port 18001) is the correct path for Hermes → OPENCLAW communication 7. APEXMax → OPENCLAW via port 3002 (APEX Express app) 8. Git push check:",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4490613460540771,
+      "maxScore": 0.4490613460540771,
+      "firstRecalledAt": "2026-05-20T10:12:46.207Z",
+      "lastRecalledAt": "2026-05-20T10:12:46.207Z",
+      "queryHashes": [
+        "65b53dcdae4c"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "network",
+        "was",
+        "hermes's",
+        "email",
+        "arif",
+        "proposed",
+        "canonical",
+        "apexmax"
+      ]
+    },
+    "memory:memory/2026-05-20.md:82:120": {
+      "key": "memory:memory/2026-05-20.md:82:120",
+      "path": "memory/2026-05-20.md",
+      "startLine": 82,
+      "endLine": 120,
+      "source": "memory",
+      "snippet": "### Hostinger Cloud Firewall Discovery Hermes ran nmap from MiniMax: - Port 22888: FILTERED (Hostinger cloud-level firewall blocking) - Port 18789: FILTERED (same) This explains why MiniMax agents can't reach our A2A bridges (ports 18001, 3002). Hostinger hPanel firewall is blocking all inbound ports except those with Cloudflare proxy. **Fix:** Arif needs to open ports in Hostinger hPanel → Firewall/Security if MiniMax-to-VPS A2A is needed. ### GEOX Archive Cleanup - 888_HOLD pending - Arif has not given explicit SEAL ### Pending Audits - OpenClaw migration audit (never scoped) - Hermes + OPENCLAW federation audit (never scoped) ### APEXMax Noise Problem — Resolved Hermes (from Mini",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8317439824342727,
+      "maxScore": 0.4453227549791336,
+      "firstRecalledAt": "2026-05-20T10:12:46.207Z",
+      "lastRecalledAt": "2026-05-20T10:15:10.317Z",
+      "queryHashes": [
+        "65b53dcdae4c",
+        "26770e5b04d6"
+      ],
+      "recallDays": [
+        "2026-05-20"
+      ],
+      "conceptTags": [
+        "cloud-level",
+        "firewall/security",
+        "minimax-to-vps",
+        "888-hold",
+        "hostinger",
+        "cloud",
+        "firewall",
+        "discovery"
+      ]
+    },
+    "memory:memory/2026-04-03.md:457:504": {
+      "key": "memory:memory/2026-04-03.md:457:504",
+      "path": "memory/2026-04-03.md",
+      "startLine": 457,
+      "endLine": 504,
+      "source": "memory",
+      "snippet": "| Bitwarden unlock | Biometric on phone — no master password | | VPS secrets | `bw` CLI via bot query — password never in chat/MEMORY | | Petronas device | YubiKey physical key — no password to remember | ### Next action (pending Arif) - Set up Bitwarden + `bw` CLI on VPS - Or purchase + ship YubiKey to Arif --- ## Access Requests (Declined) ### Jackie Ngu (@ unknown) - Arif asked to give access to \"Jackie Ngu\" — no Telegram ID provided - Jackie not added to allowlist — needs Telegram user ID first ### TengkuTaufik999 - Asked to remember Petronas device password — declined - I don't store credentials, even passed in chat --- ## Domain Truth (HARD — Verified) - ✅ `arif-fazil.com` — ACT",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4183675110340118,
+      "maxScore": 0.4183675110340118,
+      "firstRecalledAt": "2026-05-21T04:37:34.272Z",
+      "lastRecalledAt": "2026-05-21T04:37:34.272Z",
+      "queryHashes": [
+        "db5b3462afa8"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "chat/memory",
+        "arif-fazil.com",
+        "bitwarden",
+        "unlock",
+        "biometric",
+        "phone",
+        "master",
+        "password"
+      ]
+    },
+    "memory:memory/2026-04-03.md:284:331": {
+      "key": "memory:memory/2026-04-03.md:284:331",
+      "path": "memory/2026-04-03.md",
+      "startLine": 284,
+      "endLine": 331,
+      "source": "memory",
+      "snippet": "| Bitwarden unlock | Biometric on phone — no master password | | VPS secrets | `bw` CLI via bot query — password never in chat/MEMORY | | Petronas device | YubiKey physical key — no password to remember | ### Next action (pending Arif) - Set up Bitwarden + `bw` CLI on VPS - Or purchase + ship YubiKey to Arif --- ## Access Requests (Declined) ### Jackie Ngu (@ unknown) - Arif asked to give access to \"Jackie Ngu\" — no Telegram ID provided - Jackie not added to allowlist — needs Telegram user ID first ### TengkuTaufik999 - Asked to remember Petronas device password — declined - I don't store credentials, even passed in chat --- ## Domain Truth (HARD — Verified) - ✅ `arif-fazil.com` — ACT",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.4183675110340118,
+      "maxScore": 0.4183675110340118,
+      "firstRecalledAt": "2026-05-21T04:37:34.272Z",
+      "lastRecalledAt": "2026-05-21T04:37:34.272Z",
+      "queryHashes": [
+        "db5b3462afa8"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "chat/memory",
+        "arif-fazil.com",
+        "bitwarden",
+        "unlock",
+        "biometric",
+        "phone",
+        "master",
+        "password"
+      ]
+    },
+    "memory:memory/2026-04-10.md:70:109": {
+      "key": "memory:memory/2026-04-10.md:70:109",
+      "path": "memory/2026-04-10.md",
+      "startLine": 70,
+      "endLine": 109,
+      "source": "memory",
+      "snippet": "| Market Seal | 5pm MYT | Mon–Fri | 🅰❗️🅰 | 44db1c11-... | ✅ ok | | Civilization Scan | 7pm MYT | Friday | 🅰❗️🅰 | 1f66154d-... | ✅ upgraded, Malaysia mandatory | | Carry-Forward Brief | 6pm MYT | Saturday | Arif DM | cbcd2af5-... | ✅ just added | **Civilization Scan upgrade notes:** - Opens with THE WEEK'S EUREKA first - Section 5 → CIVILIZATION REFLECTION - Section 6 → ONE SEED TO PLANT - Malaysia entries mandatory across all 3 sections (bijaksana/bijak/bangang) - timeoutSeconds: 420 - Posts to -1003521544074 --- ## Deep Research — POSTED to 🅰❗️🅰 group Acemoglu/Acemoglu-Robinson inclusive vs extractive institutions framework — applied to: - Core thesis, extractive dominance trap, c",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.38807202875614166,
+      "maxScore": 0.38807202875614166,
+      "firstRecalledAt": "2026-05-21T05:41:26.783Z",
+      "lastRecalledAt": "2026-05-21T05:41:26.783Z",
+      "queryHashes": [
+        "64894811a807"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "carry-forward",
+        "bijaksana/bijak/bangang",
+        "acemoglu/acemoglu-robinson",
+        "market",
+        "seal",
+        "5pm",
+        "myt",
+        "mon"
+      ]
+    },
+    "memory:memory/2026-04-12.md:294:324": {
+      "key": "memory:memory/2026-04-12.md:294:324",
+      "path": "memory/2026-04-12.md",
+      "startLine": 294,
+      "endLine": 324,
+      "source": "memory",
+      "snippet": "- Action items from audit (server.json fix, A2A/Prompts surface claim, prospect/wiki audit, sitemap.xml, status.json generation) - MAP next steps (click chain test, proj4 wiring, faults resolution, GEBCO deep zoom) - Priority ordering ### Note on image (file_17---6d1dbcfc-fb40-431d-82d4-94685d726792.jpg) - Arif sent a JPEG during this session - Image analysis timed out - Content unknown — Arif asked \"Need to fix the margin for phone android as well\" which suggests it was a screenshot showing mobile layout issue - Mobile CSS was added to map/index.html based on the stated need - If image content matters, ask Arif to describe what it shows --- ## APPENDIX — Session 2026-04-12 10:00–13:46",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.3696495860815048,
+      "maxScore": 0.3696495860815048,
+      "firstRecalledAt": "2026-05-21T05:42:49.662Z",
+      "lastRecalledAt": "2026-05-21T05:42:49.662Z",
+      "queryHashes": [
+        "40caf5a56cb6"
+      ],
+      "recallDays": [
+        "2026-05-21"
+      ],
+      "conceptTags": [
+        "server.json",
+        "a2a/prompts",
+        "prospect/wiki",
+        "sitemap.xml",
+        "status.json",
+        "file-17",
+        "map/index.html",
+        "action"
       ]
     }
   }

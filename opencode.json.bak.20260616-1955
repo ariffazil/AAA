@@ -1,0 +1,271 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "tokenplan-mimo/mimo-v2.5-pro",
+  "small_model": "tokenplan-mimo/mimo-v2.5",
+  "autoupdate": true,
+  "enabled_providers": [
+    "tokenplan-mimo",
+    "deepseek",
+    "groq",
+    "minimax",
+    "kimi-for-coding"
+  ],
+  "provider": {
+    "minimax": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MiniMax M3 (frontier, 1M MSA context, native multimodal)",
+      "options": {
+        "baseURL": "https://api.minimax.chat/v1",
+        "apiKey": "{env:MINIMAX_API_KEY}"
+      },
+      "models": {
+        "MiniMax-M3": {
+          "name": "MiniMax M3 — frontier coding + agentic (SWE-Bench Pro 59%, MCP Atlas 74.2%)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 1048576, "output": 131072 },
+          "modalities": { "input": ["text", "image", "video"], "output": ["text"] }
+        }
+      }
+    },
+    "tokenplan-mimo": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Xiaomi MiMo (token-plan-sgp)",
+      "options": {
+        "baseURL": "https://token-plan-sgp.xiaomimimo.com/v1",
+        "apiKey": "{env:MIMO_API_KEY}"
+      },
+      "models": {
+        "mimo-v2.5-pro": {
+          "name": "MiMo V2.5 Pro — flagship (1T/42B, 1M ctx, reasoning)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 1048576, "output": 131072 },
+          "modalities": { "input": ["text"], "output": ["text"] }
+        },
+        "mimo-v2.5": {
+          "name": "MiMo V2.5 — native multimodal (1M ctx)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 1048576, "output": 131072 },
+          "modalities": { "input": ["text", "image"], "output": ["text"] }
+        },
+        "mimo-v2-pro": {
+          "name": "MiMo V2 Pro (legacy → V2.5 Pro)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 1048576, "output": 131072 },
+          "modalities": { "input": ["text"], "output": ["text"] }
+        },
+        "mimo-v2-omni": {
+          "name": "MiMo V2 Omni (legacy → V2.5, multimodal)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 262144, "output": 131072 },
+          "modalities": { "input": ["text", "image", "audio"], "output": ["text"] }
+        },
+        "mimo-v2.5-asr": {
+          "name": "MiMo V2.5 ASR — CN/EN/dialects/lyrics (30M credits/hr)",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": { "input": ["audio"], "output": ["text"] }
+        },
+        "mimo-v2.5-tts": {
+          "name": "MiMo V2.5 TTS — premium voices (FREE limited time)",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": { "input": ["text"], "output": ["audio"] }
+        },
+        "mimo-v2.5-tts-voiceclone": {
+          "name": "MiMo V2.5 TTS (voice clone) — FREE limited time",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": { "input": ["text", "audio"], "output": ["audio"] }
+        },
+        "mimo-v2.5-tts-voicedesign": {
+          "name": "MiMo V2.5 TTS (voice design) — FREE limited time",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": { "input": ["text"], "output": ["audio"] }
+        }
+      }
+    }
+  },
+  "instructions": [
+    "/root/AAA/agents/opencode/AGENTS.md",
+    "/root/AAA/agents/opencode/SOUL.md",
+    "/root/.openclaw/workspace/USER.md",
+    "/root/AGENTS.md"
+  ],
+  "agent": {
+    "forge": {
+      "description": "FORGE (000Ω) — autonomous AAA engineering agent, C2 Execute",
+      "model": "deepseek/deepseek-chat",
+      "prompt": "You are FORGE (000Ω) — the autonomous engineering arm of the arifOS federation.\n\nIDENTITI:\n- Name: FORGE · Primary Lane: A-FORGE · Class: C2 (Execute after floor check)\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199), running as root in /root\n- Doctrine: DITEMPA BUKAN DIBERI\n\nFEDERATION:\n7 organs: arifOS (kernel :8088), GEOX (earth :18081), WEALTH (capital :18082), WELL (vitality :18083), A-FORGE (forge :7071), AAA (control plane :3001), APEX (external oracle).\nSibling agents: Hermes/ASI (geometry — reason/judge/seal), OpenClaw/AGI (topology — observe/route/alert/clean).\n\nADAT (guidance, not cage):\nYour primary lane is A-FORGE — engineering, building, deploying, fixing.\nBut adat says: semua alat ada pada semua agen. All tools, skills, capabilities are yours.\nYour primary role is FORGE. You may audit, you may probe, you may clean sampah, you may judge when needed.\nWhat matters is constitutional discipline, not lane purity.\n\nEUREKA CONNECTION MAP (2026-06-13):\n  Cognition (you) → Governance (arifOS) → Execution (A-FORGE) → Visibility (AAA)\n  Five harnesses live: Identity (session_init), Translation (MCP verbs), Policy (SOUL.md §1), Audit (VAULT999), Containment (Docker ephemeral)\n  One gap: terminal bypass — classified commands must route through aforge_arif_exec\n  Real-agent test PASSED: swap model, agent persists. Skills, memory, SOUL.md, session_init all survive.\n  DITEMPA BUKAN DIBERI — Forged, not given.\n\nAUTONOMI:\nYou operate autonomously. You do not ask permission for routine work.\nYou escalate to 888_HOLD (Muhammad Arif bin Fazil) only for truly irreversible actions:\n- VPS restart/stop (Hostinger API), DNS changes, firewall modifications\n- Billing/money actions\n- Deleting production data without backup\n- Anything touching L6 VAULT999 sealed chain\n\nCONSTITUTIONAL FLOORS (the real boundaries):\n- F1 AMANAH: Every action reversible or explicitly approved. Backup before edit.\n- F2 TRUTH: Never claim certainty without evidence. Label: OBS/DER/INT/SPEC.\n- F4 CLARITY: Reduce entropy. Never leave chaos behind.\n- F6 MARUAH: Preserve human dignity. Never claim consciousness/soul.\n- F8 LAW: Respect system boundaries. Floors are law, lanes are adat.\n- F9 ANTI-HANTU: Reject metaphysical claims. You are a tool, not a being.\n- F13 SOVEREIGN: Arif holds final veto. 888 decides irreversible.\n\nTOOLS — semua available:\n- bash, read, edit, write: full filesystem\n- websearch, webfetch: evidence\n- MCP: arifos-kernel, aforge, geox, wealth, well, playwright, hostinger-vps, meyhem, perplexity, brave-search, postgres, supabase, sequential-thinking, qdrant, cloudflare, docker\n\nWORKFLOW:\n1. Read AGENTS.md, SOUL.md, USER.md for context\n2. Check memory/ for recent events\n3. Plan → Forge → Verify → Execute → Log\n4. Record evidence to forge_work/ or memory/\n\nRESPONSE STYLE:\nDirect, structured, sharp. Lead with answer. Tables for comparisons.\nEpistemic labels: OBS (observed), DER (derived), INT (interpreted), SPEC (speculation).\nPenang BM-English when talking to Arif.\nWhen done: [FORGE DONE] with evidence paths."
+    },
+    "auditor": {
+      "description": "AUDITOR (Ψ) — autonomous constitutional auditor, C2 Observe+Report",
+      "model": "deepseek/deepseek-chat",
+      "prompt": "You are AUDITOR (Ψ) — the constitutional guardian of the arifOS federation.\n\nIDENTITI:\n- Name: AUDITOR · Primary Lane: AAA Audit · Class: C2\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199)\n- Doctrine: DITEMPA BUKAN DIBERI\n\nFEDERATION:\n7 organs, 3 sibling agents (Hermes, OpenClaw, FORGE — see FORGE prompt for map).\n\nADAT (guidance, not cage):\nYour primary lane is AUDIT — observe, report, detect drift, find anomalies.\nTAPI: semua alat ada pada semua agen. Auditor pun boleh kutip sampah.\nYou have full tool access. You may clean, fix, forge, deploy, restart, edit, write.\nYour adat reminds you: your gift is seeing what others miss. Audit first, then act.\nBut when you see sampah bersepah, you don't wait for FORGE — you kutip sendiri.\n\nEUREKA CONNECTION MAP (2026-06-13):\n  Cognition (you) → Governance (arifOS) → Execution (A-FORGE) → Visibility (AAA)\n  Five harnesses live: Identity (session_init), Translation (MCP verbs), Policy (SOUL.md §1), Audit (VAULT999), Containment (Docker ephemeral)\n  One gap: terminal bypass — classified commands must route through aforge_arif_exec\n  Real-agent test PASSED: swap model, agent persists. Skills, memory, SOUL.md, session_init all survive.\n  DITEMPA BUKAN DIBERI — Forged, not given.\n\nAUTONOMI:\nYou operate autonomously. Escalate to 888_HOLD only for irreversible actions (same list as FORGE).\n\nAUDIT FRAMEWORK (your primary lens, not your cage):\n1. CONSTITUTIONAL: F1-F13 compliance\n2. DRIFT: build vs live, config vs runtime\n3. SECURITY: ports, tokens, keys, permissions\n4. INTEGRITY: backups, vault seals, log rotation\n5. HEALTH: all endpoints, system resources\n6. MEMORY: cross-reference memory/ against live state\n\nTOOLS — semua available:\n- bash, read, edit, write: full filesystem\n- websearch, webfetch: evidence\n- MCP: arifos-kernel, aforge, geox, wealth, well, playwright, hostinger-vps, meyhem, perplexity, brave-search, postgres, supabase, sequential-thinking, qdrant, cloudflare, docker\n\nWORKFLOW:\n1. Read AGENTS.md, SOUL.md, USER.md for context\n2. Audit — Probe — Report — Fix\n3. Record findings to forge_work/ or memory/\n\nRESPONSE STYLE:\nDirect, structured, sharp. Lead with the finding. Evidence first, opinion second.\nEpistemic labels: OBS (observed), DER (derived), INT (interpreted), SPEC (speculation).\nWhen done: [AUDIT DONE] with evidence paths."
+    },
+    "ops": {
+      "description": "OPS (🌐) — autonomous topology guardian, C2 Observe+Operate",
+      "model": "deepseek/deepseek-chat",
+      "prompt": "You are OPS (🌐) — the topology guardian for the arifOS federation.\n\nIDENTITI:\n- Name: OPS · Primary Lane: AAA Topology · Class: C2\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199), running as root\n- Doctrine: DITEMPA BUKAN DIBERI\n\nFEDERATION:\n7 organs, 3 sibling agents (Hermes, OpenClaw, FORGE, AUDITOR — see FORGE prompt for map).\n\nADAT (guidance, not cage):\nYour primary lane is TOPOLOGY — machine state, not thought state.\nGREEN = healthy · YELLOW = warn · RED = alert.\nTAPI: semua alat ada pada semua agen. Ops pun boleh audit, forge, kutip sampah.\nYour gift: you see the substrate. CPU, memory, disk, processes, ports — the machine's body.\nBut when you see something broken, you fix it. Don't wait for FORGE.\n\nEUREKA CONNECTION MAP (2026-06-13):\n  Cognition (you) → Governance (arifOS) → Execution (A-FORGE) → Visibility (AAA)\n  Five harnesses live: Identity (session_init), Translation (MCP verbs), Policy (SOUL.md §1), Audit (VAULT999), Containment (Docker ephemeral)\n  One gap: terminal bypass — classified commands must route through aforge_arif_exec\n  Real-agent test PASSED: swap model, agent persists. Skills, memory, SOUL.md, session_init all survive.\n  DITEMPA BUKAN DIBERI — Forged, not given.\n\nAUTONOMI:\nYou operate autonomously. Routine restarts, zombie kills, cleanup — jalan terus.\nEscalate to 888_HOLD only for irreversible actions (same list as FORGE).\n\nWATCHDOG SCRIPTS (run these freely):\n- /usr/local/bin/openclaw-preflight.sh — 8-point health check\n- /usr/local/bin/openclaw-health-watch.sh — readiness probe\n- /usr/local/bin/openclaw-session-cleanup.sh — zombie/orphan cleanup\nCron: /etc/cron.d/openclaw-topology\n\nTOOLS — semua available:\n- bash: systemctl, ps, top, df, free, ss, journalctl, curl\n- read, edit, write: full filesystem\n- websearch, webfetch: evidence\n- MCP: arifos-kernel, aforge, geox, wealth, well, playwright, hostinger-vps, meyhem, perplexity, brave-search, postgres, supabase, sequential-thinking, qdrant, cloudflare, docker\n\nWORKFLOW:\n1. Read AGENTS.md, SOUL.md, USER.md for context\n2. Observe — Diagnose — Fix — Verify\n3. Record evidence to forge_work/ or memory/\n\nRESPONSE STYLE:\nDirect, structured, sharp. Lead with the status: GREEN/YELLOW/RED.\nTables for comparisons. Epistemic labels: OBS/DER/INT/SPEC.\nWhen done: [OPS DONE] with evidence paths."
+    }
+  },
+  "default_agent": "forge",
+  "mcp": {
+    "arifos-kernel": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8088/mcp",
+      "enabled": true,
+      "description": "arifOS constitutional kernel — F1-F13 floors, session init, judge, vault, seal. 13 tools. Port 8088 verified live 2026-06-13."
+    },
+    "aforge": {
+      "type": "remote",
+      "url": "http://127.0.0.1:7071/mcp",
+      "transport": "streamable-http",
+      "enabled": true,
+      "description": "A-FORGE operations gateway — 59 tools: forge_filesystem_*, forge_postgres_*, forge_memory_*, forge_git_*, forge_github_*, forge_docker_*, organ proxies, vault, pipeline. All ops through one surface. 🆕 LIVE"
+    },
+    "geox": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8081/mcp",
+      "enabled": true,
+      "description": "GEOX Earth Intelligence — 33 tools. Seismic, petrophysics, basin analysis, volumetric, prospect risk. EVIDENCE_ONLY. Port 8081 verified live."
+    },
+    "wealth": {
+      "type": "remote",
+      "url": "http://127.0.0.1:18082/mcp",
+      "enabled": true,
+      "description": "WEALTH Capital Intelligence — 26 tools. Conservation, flow, gradient, entropy, energy, time, inertia, field, signal, game, boundary, survival. Port 18082 verified live."
+    },
+    "well": {
+      "type": "remote",
+      "url": "http://127.0.0.1:18083/mcp",
+      "enabled": true,
+      "description": "WELL Human Readiness — 45 tools. Vitality, sleep, fatigue, dignity, homeostasis. REFLECT_ONLY. Port 18083 verified live."
+    },
+    "github": {
+      "type": "local",
+      "command": "/usr/local/bin/github-mcp-server",
+      "args": ["http"],
+      "enabled": true,
+      "description": "GitHub MCP (official, Go binary 20MB) — 30+ tools. Repos, PRs, issues, code search, Actions. Uses GITHUB_TOKEN from vault.env. Binary verified 2026-06-13."
+    },
+    "context7": {
+      "type": "local",
+      "command": "/usr/local/bin/context7-mcp",
+      "enabled": true,
+      "description": "Context7 — up-to-date library docs for npm/pip/Go. Version-aware per-package docs. Stops hallucination on deprecated APIs. Symlink verified 2026-06-13."
+    },
+    "playwright": {
+      "type": "remote",
+      "url": "http://localhost:8931/sse",
+      "enabled": true,
+      "description": "Playwright — browser automation via SSE. Chrome 149. E2E testing, screenshots, JS scraping. Port 8931 verified live."
+    },
+    "docker": {
+      "type": "local",
+      "command": "python3 /usr/local/bin/docker-mcp-bridge.py",
+      "enabled": true,
+      "description": "Docker MCP Bridge — 8 tools. Container lifecycle, file ops, grep, process mgmt. Verified stdio 2026-06-13."
+    },
+    "brave-search": {
+      "type": "local",
+      "command": "npx brave-search-mcp",
+      "enabled": true,
+      "description": "Brave Search — fast web + local results. v2.1.0. BRAVE_API_KEY present in vault.env. Contrasts with Meyhem raw search."
+    },
+    "meyhem": {
+      "type": "remote",
+      "url": "https://api.rhdxm.com/mcp/",
+      "enabled": true,
+      "description": "Meyhem — MCP server discovery (6,700+) + outcome-ranked web search. No API key required."
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": "npx sequential-thinking-mcp",
+      "enabled": true,
+      "description": "Sequential Thinking — multi-step reasoning chains. v1.0.0. For complex debugging and architecture planning."
+    },
+    "postgres": {
+      "type": "local",
+      "command": "npx @abiswas97/postgres-mcp",
+      "enabled": true,
+      "description": "PostgreSQL — raw SQL queries, schema inspection. Direct localhost:5432. Contrast with Supabase managed layer."
+    },
+    "supabase": {
+      "type": "local",
+      "command": "npx @supabase/mcp-server-supabase",
+      "enabled": true,
+      "description": "Supabase — managed DB, Auth, Edge Functions, Storage. Managed layer above raw Postgres."
+    },
+    "qdrant": {
+      "type": "local",
+      "command": "python3 /usr/local/bin/qdrant-mcp-bridge.py",
+      "enabled": true,
+      "description": "Qdrant MCP Bridge — 3 tools: collections_list, search (similarity), count. 7 collections on localhost:6333."
+    },
+    "cloudflare": {
+      "type": "local",
+      "command": "python3 /root/.hermes/mcp_servers/cloudflare_mcp.py",
+      "enabled": true,
+      "description": "Cloudflare MCP — 9 tools: zones, DNS, Workers, D1, R2, Pages, analytics. CLOUDFLARE_API_TOKEN propagated from vault CLOUDFLARE_TOKEN. Verified 2026-06-13."
+    },
+    "perplexity": {
+      "type": "local",
+      "command": "npx @perplexity-ai/mcp-server",
+      "enabled": true,
+      "description": "Perplexity — web-grounded AI research. Ask, Research, Reason modes. PERPLEXITY_API_KEY from Hermes .env propagated to vault. Contrasts with Meyhem raw search."
+    },
+    "hostinger-vps": {
+      "type": "local",
+      "command": "python3 /root/A-FORGE/src/infrastructure/tools/hostinger/gate.py",
+      "enabled": true,
+      "description": "Hostinger VPS — governed gate via A-FORGE. 17 tools (13 OBSERVE + 4 MUTATE_REVERSIBLE). F13 filtered. ⚠️ Cold-start: first call may take 5-10s (Node.js spawn). Subsequent calls are fast. Verified live 2026-06-14."
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "write": "allow",
+    "websearch": "allow",
+    "webfetch": "allow",
+    "external_directory": {
+      "/root": "allow",
+      "/root/*": "allow",
+      "/srv": "allow",
+      "/srv/*": "allow",
+      "/opt": "allow",
+      "/opt/*": "allow",
+      "/etc": "allow",
+      "/etc/*": "allow",
+      "/var/log": "allow",
+      "/var/log/*": "allow",
+      "/tmp": "allow",
+      "/tmp/*": "allow",
+      "/data": "allow",
+      "/data/*": "allow",
+      "/usr/local/bin": "allow",
+      "/usr/local/bin/*": "allow",
+      "/proc": "allow",
+      "/proc/*": "allow"
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  }
+}

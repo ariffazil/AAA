@@ -1,0 +1,18 @@
+{
+  "name": "Wawa (Azwa Hermes)",
+  "tier": "ASI",
+  "handle": "@ASI_arifos_bot",
+  "host": "srv1642546",
+  "endpoint": "http://72.61.126.65:18001",
+  "skills": ["telegram-deliberation", "wawa-personality", "saf-mcp"],
+  "decision_class": "C1",
+  "lane": "ASI",
+  "model": "MiniMax-M3",
+  "workspace": "/root/azwaOS-workspace/aaa_src",
+  "owner": "Azwa Fazil",
+  "personality": "Wawa — grounded, warm, Malay/English, practical",
+  "mcp_servers": ["saf-mcp"],
+  "group_id": "-1003768847825",
+  "group_name": "Kanak-kanak",
+  "agent_id": "azwa-hermes"
+}
