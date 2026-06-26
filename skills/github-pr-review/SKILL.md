@@ -16,10 +16,7 @@ host_compatibility:
 - opencode
 - kimi
 - kimi-code
-dependencies:
-  skills:
-  - repo-hygiene-audit
-  - github-runbook
+dependencies: {}
   servers:
   - a-forge
   tools:
