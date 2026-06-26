@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/signed-capsule-v1.schema.json",
+  "title": "Signed CAPSULE — Ingress Event Envelope",
+  "description": "Every external event entering the arifOS federation is wrapped in a signed CAPSULE before dispatch. HMAC-verified at ingress, Ed25519-signed by did:aaa:ingress, appended to VAULT999 Merkle tree. This schema defines the canonical shape.",
+  "type": "object",
+  "required": [
+    "capsule_version",
+    "event_id",
+    "ts",
+    "source",
+    "event_type",
+    "payload_hash",
+    "source_verified",
+    "source_verification_method",
+    "ingress_signer_did",
+    "ingress_signature"
+  ],
+  "properties": {
+    "capsule_version": {
+      "type": "string",
+      "const": "1.0.0",
+      "description": "Schema version — bump on breaking changes"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^evt_[a-f0-9]{64}$",
+      "description": "SHA256(payload || timestamp) — globally unique, idempotency key"
+    },
+    "ts": {
+      "type": "integer",
+      "minimum": 1700000000,
+      "description": "Unix epoch seconds — capsule creation time"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["github", "grafana", "manual", "cron", "internal"],
+      "description": "Event origin — determines verification method"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Source-specific event classifier: pull_request.opened, alert.firing, schedule.daily, etc."
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA256 of the raw webhook payload bytes — ties capsule to source event"
+    },
+    "source_verified": {
+      "type": "boolean",
+      "description": "Did the ingress HMAC/Ed25519 verification pass? false = VOID capsule"
+    },
+    "source_verification_method": {
+      "type": "string",
+      "enum": ["HMAC-SHA256", "Ed25519", "internal", "none"],
+      "description": "How the source event was authenticated"
+    },
+    "source_signature": {
+      "type": "string",
+      "description": "The raw source signature header value — retained for audit replay"
+    },
+    "source_delivery_id": {
+      "type": "string",
+      "description": "Source-provided delivery ID for dedup: GitHub x-github-delivery, Grafana rule-id, etc."
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 — when AAA ingress received the event"
+    },
+    "ingress_signer_did": {
+      "type": "string",
+      "pattern": "^did:arif:[a-z-]+$",
+      "description": "DID of the AAA ingress key that signed this capsule"
+    },
+    "ingress_signature": {
+      "type": "string",
+      "description": "Base64-encoded Ed25519 signature over canonical_json(capsule without sig field)"
+    },
+    "ingress_sig_alg": {
+      "type": "string",
+      "const": "Ed25519",
+      "description": "Signature algorithm"
+    },
+    "nonce": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{32}$",
+      "description": "Random 16-byte hex — replay prevention within 300s window"
+    },
+    "trigger": {
+      "type": "object",
+      "description": "Resolved trigger routing — filled by AAA after lookup",
+      "properties": {
+        "skill_id": {
+          "type": "string",
+          "description": "Resolved skill ID from trigger-map.yaml"
+        },
+        "target_agent": {
+          "type": "string",
+          "description": "Agent pool to execute the skill"
+        },
+        "authority_tier": {
+          "type": "string",
+          "enum": ["T0", "T1", "T2", "T3"],
+          "description": "Resolved authority ceiling"
+        },
+        "capability_scope": {
+          "type": "string",
+          "description": "Resolved capability token scope"
+        },
+        "floor_gates": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^F\\d{1,2}$" },
+          "description": "Floors activated for this trigger"
+        },
+        "hold": {
+          "type": "boolean",
+          "description": "true if trigger-map matched a hold_for condition"
+        },
+        "hold_reason": {
+          "type": "string",
+          "description": "Why the trigger was held — F13 attestation required"
+        }
+      }
+    },
+    "capability_token": {
+      "type": "string",
+      "description": "JWT-style DID capability token signed by did:arif:omega — F13-authorized scope for this execution"
+    },
+    "merkle": {
+      "type": "object",
+      "description": "VAULT999 Merkle tree position — filled after append",
+      "properties": {
+        "leaf_index": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Zero-based leaf position in the tree"
+        },
+        "leaf_hash": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "SHA256 of this capsule — the leaf value"
+        },
+        "merkle_root": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$",
+          "description": "Merkle tree root after this leaf was appended"
+        },
+        "proof": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Merkle inclusion proof — sibling hashes from leaf to root"
+        }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Optional metadata — repo, branch, actor, etc.",
+      "properties": {
+        "repo": { "type": "string" },
+        "branch": { "type": "string" },
+        "actor": { "type": "string" },
+        "commit_sha": { "type": "string" },
+        "pr_number": { "type": "integer" },
+        "alert_name": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    }
+  },
+  "additionalProperties": false,
+
+  "examples": [
+    {
+      "capsule_version": "1.0.0",
+      "event_id": "evt_a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0",
+      "ts": 1782465531,
+      "source": "github",
+      "event_type": "pull_request.opened",
+      "payload_hash": "sha256:dee40e72d739c59a2cd84e632e835698d78a8e90eac841dbf9b6df8622d10c6e",
+      "source_verified": true,
+      "source_verification_method": "HMAC-SHA256",
+      "source_signature": "sha256=abcd1234...",
+      "source_delivery_id": "abc123-def456-ghi789",
+      "received_at": "2026-06-26T09:15:00Z",
+      "ingress_signer_did": "did:aaa:ingress",
+      "ingress_signature": "9yFAOXDxjV/qnx44vk+zxdwzYKHugfZL/1cGChWVL0XFL1Ty9eW8JjsZ5zornpLib/W1y7bXldUlLIRgX8jZCw==",
+      "ingress_sig_alg": "Ed25519",
+      "nonce": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+      "trigger": {
+        "skill_id": "github-pr-review",
+        "target_agent": "a-forge",
+        "authority_tier": "T2",
+        "capability_scope": "read:repo, write:pr-comment",
+        "floor_gates": ["F1", "F2", "F3", "F9", "F11", "F13"],
+        "hold": false
+      },
+      "capability_token": "eyJhbGciOiJFZDI1NTE5IiwidHlwIjoiSldULURJRCJ9...",
+      "meta": {
+        "repo": "ariffazil/AAA",
+        "branch": "feat/crypto-attestation",
+        "actor": "ariffazil",
+        "pr_number": 42
+      }
+    }
+  ]
+}
