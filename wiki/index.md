@@ -1,7 +1,7 @@
 ---
 title: AAA Wiki Index
 created: 2026-05-17
-updated: 2026-05-20
+updated: 2026-06-26
 type: index
 tags: [federation, wiki, index]
 confidence: high
@@ -10,133 +10,198 @@ confidence: high
 # AAA Wiki — Federation Knowledge Base Index
 
 > Content catalog. Every wiki page listed under its type with a one-line summary.
-> Last updated: 2026-06-19 | Total markdown pages: 113
+> Last updated: 2026-06-26 | Total markdown pages: 121
 
----
+
+## Schemas
+
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[SCHEMA]] | 2026-05-17 |  |
+
+## Indexes
+
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[axioms.index]] | 2026-06-06 |  |
+| [[index]] | 2026-06-26 |  |
 
 ## Axioms — Dimension 0: Foundational Invariants
 
 | # | Axiom | File | Role |
 |---|-------|------|------|
-| 1 | **Physics** | [[axiom-physics]] | Causality, entropy, mass-energy, time |
-| 2 | **Mathematics** | [[axiom-mathematics]] | Logic, proof, probability, computation |
-| 3 | **Language** | [[axiom-language]] | Semantics, syntax, semiotics, communication |
-| 4 | **Ethics** | [[axiom-ethics]] | Moral reasoning, harm, dignity, F1–F13 |
-| 5 | **Epistemology** | [[axiom-epistemology]] | Evidence, justification, anti-fabrication |
-| 6 | **Ritual** | [[ritual-precedence]] | MANDATORY [MODE]/[PREFLIGHT] entry protocol |
+| 1 | **AXIOM: Epistemology** | [[axioms.epistemology]] |  |
+| 2 | **AXIOM: Ethics** | [[axioms.ethics]] |  |
+| 3 | **AXIOM: Language** | [[axioms.language]] |  |
+| 4 | **AXIOM: Mathematics** | [[axioms.mathematics]] |  |
+| 5 | **AXIOM: Physics** | [[axioms.physics]] |  |
+| 6 | **Axiom: The [MODE]/[PREFLIGHT] Ritual** | [[axioms.ritual-precedence]] |  |
 
----
+## Concepts
 
-## Skills (STEEL LAW ENFORCED)
+| Page | Confidence | Summary |
+|------|------------|---------|
+| [[MEMORY_EUREKA_DOSSIER]] | MEDIUM |  |
+| [[concepts.AGI_MIN_VIABLE]] | MEDIUM |  |
+| [[concepts.TREE777]] | HIGH |  |
+| [[concepts.agent-skills-architecture]] | MEDIUM |  |
+| [[concepts.anti-fabrication-protocol]] | HIGH |  |
+| [[concepts.claude-code-skills-architecture]] | HIGH | - https://code.claude.com/docs/en/skills |
+| [[concepts.concept-a-forge-quantum-execution-lease]] | MEDIUM | - concept-arifOS-loop-architecture |
+| [[concepts.concept-arifOS-F13-self-certification-fix]] | HIGH |  |
+| [[concepts.concept-arifOS-heart-critique-verdict-split]] | HIGH |  |
+| [[concepts.concept-arifOS-kernel-not-LLM]] | HIGH |  |
+| [[concepts.concept-arifOS-loop-architecture]] | MEDIUM | - concept-memory-knowledge-loop |
+| [[concepts.concept-browser-io-surfaces-arifos]] | HIGH | - /root/HERMES/skills/autonomous-ai-agents/hermes-agent/references/arifos-mcp-wi |
+| [[concepts.concept-memory-knowledge-loop]] | HIGH | "research/EMBODIMENT_SKILLS_KNOWLEDGE_DEEP_RESEARCH.md", |
+| [[concepts.concept-memory-knowledge-paradox]] | HIGH |  |
+| [[concepts.concept-memory-layers-architecture]] | HIGH |  |
+| [[concepts.concept-mirror-and-paradox]] | HIGH | "research/EMBODIMENT_SKILLS_KNOWLEDGE_DEEP_RESEARCH.md", |
+| [[concepts.concept-physics9-as-shadow-mirror]] | HIGH | - wiki/concepts/concept-mirror-and-paradox.md |
+| [[concepts.concept-skills-tool-map]] | HIGH |  |
+| [[concepts.concept-skills-vs-workflows]] | HIGH | "arifOS/arifosmcp/providers/meta_skills.py", |
+| [[concepts.concept-tREE777-domains]] | HIGH |  |
+| [[concepts.concept-telegram-dual-bot-architecture]] | HIGH |  |
+| [[concepts.concept-tools-and-embodiment]] | HIGH | "arifOS/arifosmcp/providers/meta_skills.py", |
+| [[concepts.intelligence-tree]] | HIGH |  |
+| [[concepts.mcp-architecture-mapping]] | HIGH |  |
+| [[hermes-arifos-integration-spec]] | MEDIUM |  |
 
-### 🔷 Federation / Multi-Agent
-| Page | Summary | Status |
-|------|---------|--------|
-| [[skill-gemini-cli]] | Clerk mandates and native root embodiment | CANONICAL |
-| [[skill-memory-bridge-protocol]] | MANDATORY arifOS L4 (Postgres) persistence | STEEL LAW |
-| [[skill-hermes-ops]] | Hermes judgment oracle operations | CANONICAL |
-| [[skill-site-architecture]] | arif-fazil.com estate design, Caddy, Docker compose | CANONICAL |
-| [[skill-aaa-workspace]] | AAA workspace operations | CANONICAL |
-| [[skill-adapter-sync]] | Wiki-to-platform sync | CANONICAL |
-| [[skill-agent-onboarding]] | Agent spatial grounding + TREE777 bind | CANONICAL |
-| [[skill-agent-zero]] | A-FORGE agent delegation | CANONICAL |
+## Skills — Reusable Capability Documents
 
-### 🔶 Infrastructure / Operations
-| Page | Summary | Status |
-|------|---------|--------|
-| [[skill-sot-parity-enforcement]] | MANDATORY .env / .env.sot synchronization | STEEL LAW |
-| [[skill-vps-management]] | VPS server management and root operations | CANONICAL |
-| [[skill-cloudflare]] | Cloudflare Workers, Pages, D1, R2, KV | CANONICAL |
-| [[skill-wrangler]] | Wrangler CLI deployment | CANONICAL |
-| [[skill-durable-objects]] | Cloudflare Durable Objects | CANONICAL |
-| [[skill-agents-sdk]] | Cloudflare Agents SDK | CANONICAL |
-| [[skill-sandbox-sdk]] | Cloudflare Sandbox SDK | CANONICAL |
-| [[skill-mcp-unified]] | Unified MCP server lifecycle | CANONICAL |
-| [[skill-cloudflare-email-service]] | Cloudflare Email Sending + Routing | CANONICAL |
-| [[skill-workers-best-practices]] | Workers production anti-patterns | CANONICAL |
-| [[skill-web-perf]] | Core Web Vitals, Lighthouse, DevTools | CANONICAL |
-| [[skill-replicate-media]] | Replicate AI models (images, videos, LLMs) | CANONICAL |
-| [[skill-docker-thermodynamics]] | Docker entropy, health, resource governance | CANONICAL |
-| [[skill-secret-hygiene]] | Secret rotation, hygiene, leak prevention | CANONICAL |
-| [[skill-caddy-cloudflare]] | Caddy + Cloudflare TLS reverse proxy | CANONICAL |
-| [[skill-fastmcp-deploy]] | FastMCP deployment patterns | CANONICAL |
-| [[skill-vps-audit]] | VPS security and compliance audit | CANONICAL |
-| [[skill-github-issues]] | GitHub issue/PR workflow | CANONICAL |
+| Page | Confidence | Summary |
+|------|------------|---------|
+| [[skills.arifos.skill-arifos-federation]] | HIGH |  |
+| [[skills.arifos.skill-arifos-memory]] | HIGH |  |
+| [[skills.arifos.skill-arifos-operator]] | HIGH |  |
+| [[skills.arifos.skill-constitutional-advisor]] | HIGH |  |
+| [[skills.arifos.skill-constitutional-reasoning]] | HIGH |  |
+| [[skills.arifos.skill-scar-distill]] | HIGH |  |
+| [[skills.arifos.skill-skill-creator]] | HIGH |  |
+| [[skills.arifos.skill-skill-promote]] | HIGH |  |
+| [[skills.arifos.skill-skill-reflector]] | HIGH |  |
+| [[skills.arifos.skill-trace-capture]] | HIGH |  |
+| [[skills.arifos.skill-vault-integrity]] | HIGH |  |
+| [[skills.arifos.skill-vault999-ops]] | HIGH |  |
+| [[skills.federation.skill-aaa-workspace]] | HIGH |  |
+| [[skills.federation.skill-adapter-sync]] | LOW |  |
+| [[skills.federation.skill-agent-onboarding]] | LOW |  |
+| [[skills.federation.skill-agent-zero]] | HIGH |  |
+| [[skills.federation.skill-arifos-mcp-federation]] | HIGH |  |
+| [[skills.federation.skill-gemini-cli]] | HIGH |  |
+| [[skills.federation.skill-hermes-ops]] | HIGH |  |
+| [[skills.federation.skill-memory-bridge-protocol]] | HIGH |  |
+| [[skills.federation.skill-site-architecture]] | HIGH |  |
+| [[skills.geox.skill-spatial-grounding]] | HIGH |  |
+| [[skills.infrastructure.skill-agents-sdk]] | HIGH |  |
+| [[skills.infrastructure.skill-backup-dr]] | HIGH |  |
+| [[skills.infrastructure.skill-caddy-cloudflare]] | HIGH |  |
+| [[skills.infrastructure.skill-claude-code-ops]] | HIGH |  |
+| [[skills.infrastructure.skill-cloudflare-email-service]] | HIGH |  |
+| [[skills.infrastructure.skill-cloudflare]] | HIGH |  |
+| [[skills.infrastructure.skill-database-tuning]] | HIGH |  |
+| [[skills.infrastructure.skill-docker-security]] | HIGH |  |
+| [[skills.infrastructure.skill-docker-thermodynamics]] | HIGH |  |
+| [[skills.infrastructure.skill-durable-objects]] | HIGH |  |
+| [[skills.infrastructure.skill-evidence-verification]] | MEDIUM |  |
+| [[skills.infrastructure.skill-fastmcp-deploy]] | HIGH |  |
+| [[skills.infrastructure.skill-forge-claude-skill]] | HIGH | - wiki/concepts/claude-code-skills-architecture.md |
+| [[skills.infrastructure.skill-github-issues]] | HIGH |  |
+| [[skills.infrastructure.skill-mcp-builder]] | HIGH |  |
+| [[skills.infrastructure.skill-mcp-unified]] | HIGH |  |
+| [[skills.infrastructure.skill-replicate-media]] | HIGH | /root/.agents/skills/compare-models/SKILL.md, |
+| [[skills.infrastructure.skill-sandbox-sdk]] | HIGH |  |
+| [[skills.infrastructure.skill-secret-hygiene]] | HIGH |  |
+| [[skills.infrastructure.skill-secret-rotation-guide]] | HIGH |  |
+| [[skills.infrastructure.skill-sot-parity-enforcement]] | HIGH |  |
+| [[skills.infrastructure.skill-staff-engineer-review]] | HIGH |  |
+| [[skills.infrastructure.skill-vps-audit]] | HIGH |  |
+| [[skills.infrastructure.skill-vps-docker]] | HIGH |  |
+| [[skills.infrastructure.skill-vps-management]] | HIGH |  |
+| [[skills.infrastructure.skill-web-perf]] | HIGH |  |
+| [[skills.infrastructure.skill-workers-best-practices]] | HIGH |  |
+| [[skills.infrastructure.skill-wrangler]] | HIGH |  |
+| [[skills.skill-anti-cascade-diagnostic]] | HIGH |  |
+| [[skills.well.skill-well-governance-ops]] | HIGH |  |
 
-### 🟣 arifOS / Governance
-| Page | Summary | Status |
-|------|---------|--------|
-| [[skill-constitutional-reasoning]] | F1–F13 pre-flight doctrine | CANONICAL |
-| [[skill-constitutional-advisor]] | F-floor advisory (prompt/template) | CANONICAL |
-| [[skill-vault-integrity]] | VAULT999 doctrine and sealing rules | CANONICAL |
-| [[skill-vault999-ops]] | VAULT999 read/write/verify/merge | CANONICAL |
-| [[skill-arifos-federation]] | Federation mesh topology + A2A | CANONICAL |
-| [[skill-arifos-operator]] | Kernel routing + session management | CANONICAL |
-| [[skill-scar-distill]] | Scar creation from failures | CANONICAL |
-| [[skill-skill-promote]] | Skill promotion via 888 deliberation | CANONICAL |
-| [[skill-skill-reflector]] | Skill quality auditing | CANONICAL |
-| [[skill-trace-capture]] | Post-task evidence bundle emission | CANONICAL |
-| [[skill-arifos-memory]] | 6-layer memory architecture (L1–L6) | CANONICAL |
-| [[skill-skill-creator]] | Meta-skill: create, eval, optimize skills | CANONICAL |
+## Workflows
 
-### 🟢 GEOX / Earth
-| Page | Summary | Status |
-|------|---------|--------|
-| [[skill-spatial-grounding]] | VPS spatial awareness for agents | CANONICAL |
+| Workflow | Updated | Summary |
+|----------|---------|---------|
+| [[playbook.OPERATOR_PLAYBOOK]] | 2026-06-14 |  |
+| [[workflows.workflow-agent-onboarding.reasoning.summary]] | 2026-06-06 |  |
+| [[workflows.workflow-scar-to-skill.reasoning.summary]] | 2026-06-06 |  |
+| [[workflows.workflow-session-cycle.reasoning.summary]] | 2026-06-06 |  |
+| [[workflows.workflow-tree777-agent-cron-loop]] | 2026-05-20 |  |
 
-### 🟡 WELL / Vitality
-| Page | Summary | Status |
-|------|---------|--------|
-| [[skill-well-governance-ops]] | WELL substrate governance | CANONICAL |
+## Entities
 
-### 🔴 Cross-Cutting
-| Page | Summary | Status |
-|------|---------|--------|
-| [[skill-anti-cascade-diagnostic]] | Entropy-first diagnostic protocol | CANONICAL |
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[AGENT_IDENTITY_MATRIX]] | 2026-06-06 |  |
+| [[arif-fazil-metabolized]] | 2026-06-16 |  |
+| [[entities.agent-opencode]] | 2026-05-17 |  |
+| [[entities.federation-entities]] | 2026-05-17 |  |
 
----
+## Scars — Lessons Sealed as Doctrine
 
-## Concepts (Architectural Truths)
+| Scar | Date | Summary |
+|------|------|---------|
+| [[scar-hermes-fabrication-2026-05-17]] | 2026-05-17 |  |
+| [[scars.scar-graphiti-hyphen-escape-2026-05-17]] | 2026-05-17 |  |
+| [[scars.scar-kimi-site-audit-fabrication-2026-05-17]] | 2026-05-17 | - /root/.config/caddy/Caddyfile |
+| [[scars.scar-openclaw-diagnostic-cascade-2026-05-17]] | 2026-05-17 |  |
+| [[scars.scar-openclaw-telegram-409-2026-05-17]] | 2026-05-17 |  |
+| [[scars.scar-route-hijacking-dead-code-2026-05-17]] | 2026-05-17 | - /root/arifOS/Caddyfile |
 
-| Page | Summary |
-|------|---------|
-| [[mcp-architecture-mapping]] | **ARCHITECTURE CANON** — Skills=Resources, Lenses=Prompts |
-| [[intelligence-tree]] | The 7-layer ontology starting point |
-| [[TREE777]] | Named intelligence tree with promotion ladder |
-| [[concept-arifOS-F13-self-certification-fix]] | **F13 FIX** — arif_judge_deliberate always elicits |
-| [[concept-arifOS-kernel-not-LLM]] | arifOS = governance kernel, NOT LLM |
-| [[concept-memory-layers-architecture]] | True shared memory = workspace file coupling |
-| [[concept-telegram-dual-bot-architecture]] | Dual-bot intentional: OpenClaw vs Hermes |
-| [[concept-skills-tool-map]] | TREE777 skills → MCP tool doctrine-to-actuator map |
-| [[concept-browser-io-surfaces-arifos]] | Browser transport alignment: MCP default, harness privileged |
+## Raw Sources — Immutable Input Material
 
----
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[raw.notes.CONTEXT_TOKEN_WEALTH_DEEP_RESEARCH]] | 2026-06-06 |  |
+| [[raw.notes.ILMU_CLAW_DOSSIER]] | 2026-06-06 |  |
+| [[raw.repos.2026-04-30_ARIFOS_CHAOS_AUDIT]] | 2026-06-06 |  |
+| [[raw.repos.2026-04-30_DELETION_RANK]] | 2026-06-06 |  |
+| [[raw.repos.2026-04-30_SITES_CHAOS_AUDIT]] | 2026-06-06 |  |
+| [[raw.repos.AGENTS_REFERENCE]] | 2026-06-14 |  |
+| [[raw.repos.ARCHITECTURE_CONTRAST]] | 2026-06-14 |  |
+| [[raw.repos.ARCHITECTURE_SCORECARD]] | 2026-06-14 |  |
+| [[raw.repos.ARIF-REGISTRY]] | 2026-06-14 |  |
+| [[raw.repos.EUREKA_INSIGHTS.2026-04-30_EUREKA_EXTRACT]] | 2026-06-06 |  |
+| [[raw.repos.EXTERNAL_CONTRIBUTION_WORKFLOW]] | 2026-06-06 |  |
+| [[raw.repos.INVARIANTS]] | 2026-06-06 |  |
+| [[raw.repos.VPS_ARCHITECTURE_2026-05-07]] | 2026-06-06 |  |
+| [[raw.repos.VPS_MAP]] | 2026-06-06 |  |
+| [[raw.repos.ZKPC]] | 2026-06-06 |  |
 
-## Scars (Forged from Failure)
+## Logs
 
-| Page | Incident | Severity |
-|------|----------|----------|
-| [[scar-hermes-fabrication-2026-05-17]] | Hermes claimed non-existent artifacts | HIGH |
-| [[scar-openclaw-diagnostic-cascade-2026-05-17]] | Diagnostic cascade → false failure | MEDIUM |
-| [[scar-openclaw-telegram-409-2026-05-17]] | Telegram 409 conflict | LOW |
-| [[scar-graphiti-hyphen-escape-2026-05-17]] | FalkorDB hyphen escape bug | HIGH |
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[log]] | 2026-06-22 |  |
 
----
+## Canonical Records
 
-## Entities (Federation Nodes)
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[concepts.concept-reality-engineering-canon]] | 2026-06-25 | - agent: FORGE (000Ω) |
 
-| Page | Role |
-|------|------|
-| [[federation-entities]] | Canonical registry of all nodes, agents, services |
+## Governance Documents
 
----
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[post-task-update-prompt-contract]] | 2026-05-17 |  |
 
-## Quick Navigation
+## Human Maps
 
-- [[SCHEMA.md]] — wiki governance and schema
-- [[log.md]] — action history
-- [[tree-manifest.json]] — page registry (95 pages)
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[arif-fazil-complete-map]] | 2026-06-16T19:10Z |  |
 
----
+## Terrain Scars
 
-*DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
+| Page | Updated | Summary |
+|------|---------|---------|
+| [[scar-terrain-arif-fazil]] | 2026-06-16T18:55Z |  |
+
+_Generated: 2026-06-26 02:19:21_
