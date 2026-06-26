@@ -10,7 +10,7 @@
   "description": "OpenCode CLI forge instrument — provider-agnostic coding harness. Auto-discovers MCP tools at session init. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13.",
   "version": "1.0.0",
   "model": "provider-agnostic (openrouter/anthropic/local)",
-  "binary": "/root/.local/bin/opencode",
+  "binary": "/root/.npm-global/bin/opencode",
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",

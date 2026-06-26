@@ -1,0 +1,45 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1"
+  ],
+  "id": "did:arif:a-forge",
+  "controller": "did:arif:omega",
+  "verificationMethod": [
+    {
+      "id": "did:arif:a-forge#ed25519-key-1",
+      "type": "Ed25519VerificationKey2020",
+      "controller": "did:arif:a-forge",
+      "publicKeyBase64": "fzLasY4pnvGwuY/pOUmojaurCcgccJoAiwO1FZt9Fdo="
+    }
+  ],
+  "sovereignDelegation": {
+    "sovereignDid": "did:arif:omega",
+    "sovereignPublicKeyBase64": "Kzfh6nTgLpKKL0IUgPV2SGS48EalgtE1DcgNLV4uxlY=",
+    "sovereignSignature": "htpgfBe7vzM0BH4k50hEg3VEjwcfnKSHliglT1RNb1hPBMKucpukdIeZgv/CbbtBn0K6NfXy87hPshsCIMjtBA==",
+    "delegatedAuthority": "execute",
+    "maxTier": "T4",
+    "maxActionClass": "EXECUTE_HIGH_IMPACT",
+    "issuedAt": 1782465917,
+    "fingerprint": "sha256:4783bc92e03c878a"
+  },
+  "capabilityDelegation": {
+    "authorityClass": "execute",
+    "maxTier": "T4",
+    "maxActionClass": "EXECUTE_HIGH_IMPACT",
+    "parentDid": "did:arif:omega"
+  },
+  "service": [
+    {
+      "id": "did:arif:a-forge#federation",
+      "type": "FederationOrgan",
+      "role": "Engineering executor \u2014 plans, simulates, executes, rolls back"
+    }
+  ],
+  "proof": {
+    "type": "Ed25519Signature2020",
+    "created": "2026-06-26T09:25:17Z",
+    "verificationMethod": "did:arif:a-forge#ed25519-key-1",
+    "proofPurpose": "assertionMethod",
+    "proofValue": "L8STGHn7RGhh262byFSXYeAQvjnFhsm+6HyIxnVHkegdLs9H6NQamG09cltcQW0B6vMwTnopbytTkCOgnqmjDw=="
+  }
+}
