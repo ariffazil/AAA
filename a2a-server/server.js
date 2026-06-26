@@ -303,6 +303,112 @@ const taskStore = {
       throw new Error('SYNC_GET_UNAVAILABLE');
     }
     return _memTaskStore.get(taskId);
+  },
+
+  // List tasks with optional filter (G3 — added 2026-06-26)
+  // Filter: { contextId?, status?, limit? }
+  async list(filter = {}) {
+    const { contextId, status, limit = 50 } = filter;
+    const safeLimit = Math.min(Math.max(parseInt(limit) || 50, 1), 500);
+    const results = [];
+
+    if (redisClient && redisClient.isReady) {
+      const ids = await redisClient.sMembers('task:_index_');
+      for (const id of ids) {
+        if (results.length >= safeLimit) break;
+        const t = await taskStore.get(id);
+        if (!t) continue;
+        if (contextId && t.contextId !== contextId) continue;
+        if (status && t.status?.state !== status) continue;
+        results.push(t);
+      }
+      return results;
+    }
+
+    // In-memory fallback
+    for (const t of _memTaskStore.values()) {
+      if (results.length >= safeLimit) break;
+      if (contextId && t.contextId !== contextId) continue;
+      if (status && t.status?.state !== status) continue;
+      results.push(t);
+    }
+    return results;
+  }
+};
+
+// === pushNotificationStore (G3 — added 2026-06-26) ===
+// A2A v1.0.0 push notification config persistence.
+// Schema: { taskId, url, token?, headers?, events: string[], createdAt }
+const _memPushStore = new Map(); // key = `${taskId}:${configId}`
+
+const pushNotificationStore = {
+  async set(taskId, configId, config) {
+    const key = `${taskId}:${configId}`;
+    const record = { ...config, taskId, configId, createdAt: new Date().toISOString() };
+    if (redisClient && redisClient.isReady) {
+      await redisClient.hSet(`pnc:${key}`, {
+        taskId, configId, url: config.url || '',
+        token: config.token || '', headers: JSON.stringify(config.headers || {}),
+        events: JSON.stringify(config.events || []), createdAt: record.createdAt,
+      });
+      await redisClient.sAdd('pnc:_index_', key);
+    } else {
+      _memPushStore.set(key, record);
+    }
+    return record;
+  },
+
+  async get(taskId, configId) {
+    const key = `${taskId}:${configId}`;
+    if (redisClient && redisClient.isReady) {
+      const data = await redisClient.hGetAll(`pnc:${key}`);
+      if (!data || Object.keys(data).length === 0) return null;
+      return {
+        taskId: data.taskId, configId: data.configId, url: data.url,
+        token: data.token, headers: JSON.parse(data.headers || '{}'),
+        events: JSON.parse(data.events || '[]'), createdAt: data.createdAt,
+      };
+    }
+    return _memPushStore.get(key) || null;
+  },
+
+  async list(taskId) {
+    if (redisClient && redisClient.isReady) {
+      const allKeys = await redisClient.sMembers('pnc:_index_');
+      const out = [];
+      for (const k of allKeys) {
+        if (!k.startsWith(`${taskId}:`)) continue;
+        const [tId, cId] = k.split(':');
+        const cfg = await pushNotificationStore.get(tId, cId);
+        if (cfg) out.push(cfg);
+      }
+      return out;
+    }
+    return Array.from(_memPushStore.values()).filter(c => c.taskId === taskId);
+  },
+
+  async delete(taskId, configId) {
+    const key = `${taskId}:${configId}`;
+    if (redisClient && redisClient.isReady) {
+      await redisClient.del(`pnc:${key}`);
+      await redisClient.sRem('pnc:_index_', key);
+      return true;
+    }
+    return _memPushStore.delete(key);
+  },
+
+  async listAll() {
+    if (redisClient && redisClient.isReady) {
+      const allKeys = await redisClient.sMembers('pnc:_index_');
+      const out = [];
+      for (const k of allKeys) {
+        const [tId, cId] = k.split(':');
+        const cfg = await pushNotificationStore.get(tId, cId);
+        if (cfg) out.push(cfg);
+      }
+      return out;
+    }
+    return Array.from(_memPushStore.values());
   }
 };
 
@@ -574,7 +680,7 @@ const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
 const ENGINEER_CARD = require('./agent-cards/aaa-engineer.json');
 const AUDITOR_CARD = require('./agent-cards/aaa-auditor.json');
 const HERMES_CARD = require('./agent-cards/hermes-asi.json');
-const ANTIGRAVITY_CARD = require('../agents/antigravity/agent-card.json');
+const ANTIGRAVITY_CARD = require('./agent-cards/antigravity.json');
 
 // === ERROR CODES ===
 const ERROR_CODES = {
@@ -2715,8 +2821,14 @@ app.post('/tasks/:taskId/cancel', authMiddleware, jsonRpcValidate, async (req, r
   res.json(createJSONRPCResponse(req.jsonrpc.id, { id: task.id, status: task.status, kind: 'task' }));
 });
 
-// GET /tasks/:taskId/subscribe — A2A v1.0.0 spec SSE subscription
+// GET /tasks/:taskId/subscribe — A2A v1.0.0 spec SSE subscription (legacy → resubscribe)
 app.get('/tasks/:taskId/subscribe', authMiddleware, async (req, res) => {
+  // A2A v1.0.0 spec renamed /subscribe to /resubscribe. Redirect for backwards compat.
+  res.redirect(308, `/tasks/${req.params.taskId}/resubscribe`);
+});
+
+// GET /tasks/:taskId/resubscribe — A2A v1.0.0 spec SSE subscription (canonical)
+app.get('/tasks/:taskId/resubscribe', authMiddleware, async (req, res) => {
   const taskId = req.params.taskId;
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
@@ -2731,6 +2843,110 @@ app.get('/tasks/:taskId/subscribe', authMiddleware, async (req, res) => {
   });
 
   req.on('close', () => { unsubscribe(); });
+});
+
+// POST /tasks/list — A2A v1.0.0 spec task list (G3 — added 2026-06-26)
+app.post('/tasks/list', authMiddleware, jsonRpcValidate, async (req, res) => {
+  const filter = req.body?.params || {};
+  const tasks = await taskStore.list(filter);
+  res.json(createJSONRPCResponse(req.jsonrpc.id, {
+    kind: 'task-list',
+    tasks: tasks.map(t => ({
+      id: t.id, contextId: t.contextId, status: t.status,
+      created_at: t.created_at, updated_at: t.updated_at,
+    })),
+    count: tasks.length,
+  }));
+});
+
+// POST /tasks/pushNotificationConfig/set — A2A v1.0.0 spec (G3 — added 2026-06-26)
+app.post('/tasks/pushNotificationConfig/set', authMiddleware, jsonRpcValidate, async (req, res) => {
+  const { taskId, configId, url, token, headers, events } = req.body?.params || {};
+  if (!taskId || !configId || !url) {
+    return res.status(400).json(createJSONRPCError(
+      req.jsonrpc.id, ERROR_CODES.INVALID_REQUEST,
+      'taskId, configId, and url are required'
+    ));
+  }
+  const record = await pushNotificationStore.set(taskId, configId, { url, token, headers, events });
+  res.json(createJSONRPCResponse(req.jsonrpc.id, { kind: 'push-notification-config', ...record }));
+});
+
+// GET /tasks/pushNotificationConfig/get — A2A v1.0.0 spec (G3 — added 2026-06-26)
+app.get('/tasks/pushNotificationConfig/get', authMiddleware, async (req, res) => {
+  const taskId = req.query.taskId;
+  const configId = req.query.configId;
+  if (!taskId || !configId) {
+    return res.status(400).json(createJSONRPCError(
+      null, ERROR_CODES.INVALID_REQUEST, 'taskId and configId query params required'
+    ));
+  }
+  const cfg = await pushNotificationStore.get(taskId, configId);
+  if (!cfg) {
+    return res.status(404).json(createJSONRPCError(
+      null, ERROR_CODES.TASK_NOT_FOUND, `Push config ${taskId}:${configId} not found`
+    ));
+  }
+  res.json(createJSONRPCResponse(null, { kind: 'push-notification-config', ...cfg }));
+});
+
+// GET /tasks/pushNotificationConfig/list — A2A v1.0.0 spec (G3 — added 2026-06-26)
+app.get('/tasks/pushNotificationConfig/list', authMiddleware, async (req, res) => {
+  const taskId = req.query.taskId;
+  if (!taskId) {
+    return res.status(400).json(createJSONRPCError(
+      null, ERROR_CODES.INVALID_REQUEST, 'taskId query param required'
+    ));
+  }
+  const configs = await pushNotificationStore.list(taskId);
+  res.json(createJSONRPCResponse(null, { kind: 'push-notification-config-list', configs, count: configs.length }));
+});
+
+// DELETE /tasks/pushNotificationConfig/delete — A2A v1.0.0 spec (G3 — added 2026-06-26)
+app.delete('/tasks/pushNotificationConfig/delete', authMiddleware, async (req, res) => {
+  const taskId = req.query.taskId;
+  const configId = req.query.configId;
+  if (!taskId || !configId) {
+    return res.status(400).json(createJSONRPCError(
+      null, ERROR_CODES.INVALID_REQUEST, 'taskId and configId query params required'
+    ));
+  }
+  const ok = await pushNotificationStore.delete(taskId, configId);
+  res.json(createJSONRPCResponse(null, { kind: 'push-notification-config-delete', taskId, configId, deleted: ok }));
+});
+
+// GET /agent/getAuthenticatedExtendedCard — A2A v1.0.0 spec (G3 — added 2026-06-26)
+app.get('/agent/getAuthenticatedExtendedCard', authMiddleware, async (req, res) => {
+  // Extended card includes additional metadata only visible to authenticated callers
+  res.json(createJSONRPCResponse(null, {
+    kind: 'agent-card',
+    ...AAA_AGENT_CARD,
+    extensions: {
+      aaa_extension: {
+        version: 'v1.0',
+        governance: {
+          floors_active: ['F1','F2','F4','F6','F7','F8','F9','F11','F13'],
+          reflexion_loop_required: true,
+          authority_resolution_chain: ['arifOS → AAA → A-FORGE → organs'],
+        },
+        routing: {
+          default_organ: 'auto-route',
+          mesh_topology: 'peer-mesh',
+          transport_protocols: ['json-rpc', 'rest'],
+        },
+        audit: {
+          vault: 'VAULT999',
+          conformance_spine: 'v0.2',
+          seal_protocol: '999_SEAL',
+        },
+      },
+    },
+    stats: {
+      total_agent_cards: 29,
+      organ_count: 7,
+      federation_uptime: process.uptime(),
+    },
+  }));
 });
 
 // =======================
