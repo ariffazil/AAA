@@ -27,11 +27,14 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 from __future__ import annotations
 
 import json
+import logging
 import os
 import sys
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
+
+logger = logging.getLogger(__name__)
 
 # Add AAA root to path
 _AAA_ROOT = Path("/root/AAA")
@@ -237,9 +240,8 @@ class PreForgeHandler(BaseHTTPRequestHandler):
             }
             self._send_json(response)
         except Exception as e:
+            logger.exception("Error in /check handler")
             self._send_json({"ok": False, "error": str(e)}, 500)
-
-    def _handle_quick(self):
         """POST /quick — Quick boolean check."""
         try:
             body = self._read_body()
@@ -256,6 +258,7 @@ class PreForgeHandler(BaseHTTPRequestHandler):
                 "violations": [v.get("step", "unknown") for v in result.violations],
             })
         except Exception as e:
+            logger.exception("Error in /quick handler")
             self._send_json({"ok": False, "error": str(e)}, 500)
 
     def _handle_witness_register(self):
@@ -268,6 +271,7 @@ class PreForgeHandler(BaseHTTPRequestHandler):
             result = register_witness(session_id, witness_type, evidence_ref)
             self._send_json(result)
         except Exception as e:
+            logger.exception("Error in /witness handler")
             self._send_json({"ok": False, "error": str(e)}, 500)
 
     def _handle_earth_register(self):
@@ -318,6 +322,7 @@ class PreForgeHandler(BaseHTTPRequestHandler):
                 },
             })
         except Exception as e:
+            logger.exception("Error in /citation handler")
             self._send_json({"ok": False, "error": str(e)}, 500)
 
     def _handle_provenance_batch(self):
@@ -362,9 +367,8 @@ class PreForgeHandler(BaseHTTPRequestHandler):
                 "timestamp": timestamp,
             })
         except Exception as e:
+            logger.exception("Error in /provenance/batch handler")
             self._send_json({"ok": False, "error": str(e)}, 500)
-
-    def log_message(self, format, *args):
         """Suppress default HTTP request logging (use arifOS event log instead)."""
         pass
 
@@ -375,6 +379,7 @@ def start_service(port: int = 18990):
     """Start the pre-forge gate HTTP service."""
     _load_sessions()
     server = HTTPServer(("127.0.0.1", port), PreForgeHandler)
+    logger.info("pre-forge-gate starting on port %d, loaded %d sessions", port, len(SESSIONS))
     print(f"[pre-forge-gate] Constitutional gate live on http://127.0.0.1:{port}")
     print("[pre-forge-gate] Endpoints: /check /quick /witness /earth /model /health")
     print(f"[pre-forge-gate] Loaded {len(SESSIONS)} existing sessions")
