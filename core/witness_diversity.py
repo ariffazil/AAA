@@ -39,8 +39,11 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 
 from __future__ import annotations
 
+import logging
 from datetime import datetime, timezone
 from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -130,6 +133,7 @@ class SessionWitnessState:
             raise ValueError(f"Unknown witness type: {witness_type}")
 
         was_active = self.witnesses[witness_type]["active"]
+        logger.info("Witness registered", extra={"witness_type": witness_type, "session_id": self.session_id})
         self.witnesses[witness_type] = {
             "active": True,
             "last_seen": datetime.now(timezone.utc).isoformat(),

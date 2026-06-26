@@ -42,9 +42,12 @@ DITEMPA BUKAN DIBERI — Forged, Not Given
 
 from __future__ import annotations
 
+import logging
 import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
+
+logger = logging.getLogger(__name__)
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 
@@ -275,6 +278,7 @@ class ShadowAuditor:
         result = ShadowAuditResult()
         result.audited_at = datetime.now(timezone.utc).isoformat()
         result.text_length = len(text)
+        logger.info("ShadowAuditor.audit called", extra={"text_length": len(text)})
 
         if not text.strip():
             result.shadow_classification = "CLEAR"
