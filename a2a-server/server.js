@@ -1671,6 +1671,24 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     return res.status(400).json(createJSONRPCError(req.body?.id || 0, -32602, 'message required'));
   }
   const resolvedTaskId = taskId || generateId();
+
+  // ── A2A DID Signature Verification (Gap 4 — Day 5) ──────────────
+  // If the request carries an A2A envelope with from_did + signature,
+  // verify that the sender's DID signed this message before routing.
+  const envelope = req.body?.envelope || req.body?.params?.envelope;
+  if (envelope && envelope.from_did && envelope.signature) {
+    const { verifyA2ASignature } = require('./federation_envelope');
+    const didResult = verifyA2ASignature(envelope);
+    if (!didResult.ok) {
+      logEvent('A2A_DID_FAIL', resolvedTaskId,
+        `from=${envelope.from_did} reason=${didResult.reason}`);
+      return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001,
+        `DID_VERIFY_FAIL: ${didResult.reason}`));
+    }
+    logEvent('A2A_DID_VERIFIED', resolvedTaskId,
+      `from=${didResult.did} organ=${didResult.organId}`);
+  }
+
   logEvent('A2A_DISPATCH', resolvedTaskId, `From: ${req.auth?.scheme || 'unknown'}, Target: ${targetAgent || 'auto'}`);
 
   if (targetAgent === '777-FORGE' || targetAgent === 'forge') {
