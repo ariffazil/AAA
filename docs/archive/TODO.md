@@ -91,4 +91,32 @@
 
 ---
 
+## 🟣 v0.2 Backlog — Repo-Eureka L3 LSP Client (Deferred 2026-06-06)
+
+> **Decision (Arif, 2026-06-06 08:38 UTC, 888):** Install-only path taken. L3 LSP *client* deferred.
+> **Foundation sealed:** pyright 1.1.409 + gopls v0.16.1 + typescript-language-server 5.2.0 + tsc 6.0.3 — all verified end-to-end.
+> **L3 gap:** Serena MCP can `start-mcp-server --mode no-memories` but the JSON-RPC LSP *client* surface that drives these binaries and exposes symbol/type/hover/definition to Repo-Eureka L3 is **NOT BUILT**. Current pipeline falls back to L1+ripgrep+read_file.
+
+### Scope (when picked up)
+- [ ] **LSP client runtime** — JSON-RPC framing, Content-Length, lifecycle (initialize/initialized/shutdown/exit), per-workspace process pool
+- [ ] **Per-language adapter** — pyright (py), gopls (go), ts-language-server (ts/js/tsx/jsx). Capability negotiation per server.
+- [ ] **Symbol surface** — `textDocument/documentSymbol`, `textDocument/definition`, `textDocument/references`, `textDocument/hover`. Map to Repo-Eureka L3 schema.
+- [ ] **Workspace indexing** — cache symbols per repo, invalidation on file change
+- [ ] **Serena integration** — wire as `--mode lsp-aware` (or compose with current `--mode no-memories`)
+- [ ] **L2 (RepoMapper) .go bug fix** — separate from L3; the bytes/str crash on Go files was named but not fixed in this round
+- [ ] **Test harness** — golden tests for symbol/definition/refs against fixture repos
+- [ ] **Estimate:** hours, not minutes (per AGI framing 2026-06-06)
+
+### Triggers
+- Repo-Eureka L3 starts failing >X% in production → promote
+- A new language is needed urgently → promote
+- Federation Phi-3 phase requires symbol-level queries → promote
+
+### Reversibility
+- Foundation installs (apt + npm -g) are trivially reversible
+- No code modified, no seal touched in v0.1 install-only path
+- Backlog item carries no deployment state
+
+---
+
 **DITEMPA BUKAN DIBERI — Identity is forged, not given.**

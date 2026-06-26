@@ -135,5 +135,64 @@ Do not create new `hermes-*` directories at repo root.
 
 ---
 
-*Last updated: 2026-05-01*
-*Governed by: /root/AAA/AGENTS.md + LOOP.md + AUTONOMY.md + HEARTBEAT.md*
+## Unified Protocol Binding (2026-06-13)
+
+**Reference:** `/root/arifOS/HERMES_OPENCODE_PROTOCOL.md` (human, VAULT999 ID 1806, merkle b0c880...)
+**AAA variant:** `AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md` (machine, 324 lines, pushed main@87966843)
+**Per-agent:** `AAA/agents/protocols/openclaw-agi-protocol.md`
+**Schema:** `AAA/schemas/forge_session.schema.json`
+
+### Session Lifecycle
+
+Every task follows: **INTENT_CAPTURE → PREFLIGHT → PLAN → FORGE → VERIFY → HOLD → SEAL → CLEAN**
+
+**Completion rule (HARD):** A forge is NOT complete because a process stopped. It is complete only when:
+1. Process exited (non-hung)
+2. Changed files readable and match intent
+3. Declared verification (tests/checks) passed
+4. Clean-state confirmed (no orphans, no drift)
+
+### OpenClaw Action Classification
+
+| Class | Examples | Requires 888? |
+|-------|----------|--------------|
+| OBSERVE | Read logs, check health, list files, Hostinger state | Never |
+| PROPOSE | Plan, risk analysis, runbook | Never |
+| OPERATE (safe) | Restart service, clean orphans, test, snapshot, safe infra | No, if reversible & scoped |
+| 888_HOLD | Push main, deploy prod, DNS, reboot, delete, rotate secrets, billing, destructive Hostinger | Always |
+
+Default when unsure: **treat as 888_HOLD**.
+
+### Authority Ladder
+
+1. PROVENANCE → admissibility (NOT authority)
+2. EVIDENCE → credibility
+3. REASONING → coherence
+4. AUTHORITY → lease required to act
+5. RISK → blast radius
+6. ACTION → final verdict
+
+**Invariant:** No claim may gain authority from its source. AI provenance ≠ authority. LLM output ≠ truth. Confidence ≠ permission. Only lease + actor + sovereign authority can grant action.
+
+### 777 FORGE Witness Layer (2026-06-13)
+
+**Position:** `Hermes → 777 FORGE → OpenCode` — Hermes no longer spawns OpenCode directly.
+
+| Aspect | Before | After |
+|--------|--------|-------|
+| Spawn authority | Hermes (direct) | 777 FORGE (witnessed) |
+| Verification | Hermes self-reports | PID-based witness receipt |
+| Fabrication risk | High (hermes-fabrication-2026-05-17) | Zero (receipt must have real PID) |
+
+**Trust anchor:** If Hermes claims a session but cannot produce a 777 FORGE witness receipt with `{forge_id, pid, process_started_at}` → the session DID NOT HAPPEN. Arif can verify: `ps -p <pid>` must return the real process.
+
+**For OpenClaw specifically:** Does NOT spawn OpenCode directly. Any forge request routes through 777 FORGE. OpenClaw's infra lane is independent.
+
+**References:**
+- `AAA/agents/protocols/777-forge-witness-protocol.md`
+- `/root/.config/opencode/agents/777-forge.md`
+- `/root/VAULT999/witness/777-forge-spawns.jsonl`
+- `AAA@main 6ed2e8c9`
+
+*Last updated: 2026-06-13*
+*Governed by: /root/AAA/AGENTS.md + LOOP.md + AUTONOMY.md + HEARTBEAT.md + HERMES_OPENCODE_PROTOCOL.md*
