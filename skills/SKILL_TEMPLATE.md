@@ -10,9 +10,20 @@ knowledge_basis:
   math: false
   language: true
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
+  # Declare every vendor this skill should compile to.
+  # compile.py reads this and generates skills/<id>/<vendor>/ adapters.
+  - claude-code    # canonical (already SKILL.md)
+  - codex          # OpenAI Codex CLI → openai/README.md
+  - opencode       # OpenCode → opencode/README.md
+  # - kimi         # Kimi Code → kimi/skill.md
+  # - grok         # Grok Build → grok/skill.md
+  # - copilot      # GitHub Copilot CLI → copilot/<id>.agent.md
+  # - continue     # Continue.dev → continue/skill.md
+  # - antigravity  # Antigravity → antigravity/skill.md
+  # - openclaw     # OpenClaw → openclaw/system.md
+  # - mcp          # MCP manifest → mcp/manifest.json
+  # - hermes-asi   # Hermes ASI internal → hermes/skill.md
+  # - apx-judge    # APEX Judge internal → apex/skill.md
 dependencies:
   skills: []
   servers: []
