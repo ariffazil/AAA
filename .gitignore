@@ -133,6 +133,10 @@ dist/
 
 # ── Ephemeral benchmark runs — generated, not source ──
 reports/benchmark-run-*.json
+benchmarks/floors/results/aggregate.json
+reports/ARIFOS_PROOF_PACK.md
+reports/ARIFOS_SCORECARD.json
+reports/ARIFOS_SCORECARD.md
 
 # ── Personal artifacts (family/religious content) — never commit ──
 artifacts/ras-laffan-*
