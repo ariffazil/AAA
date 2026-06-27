@@ -4,6 +4,8 @@
 **Author:** FORGE (000Ω) → 333-AGI
 **Lane:** A-FORGE (engineering)
 **Version:** 0.1.0
+**Canonical Home:** [`ariffazil/a2b`](https://github.com/ariffazil/a2b) — eval harness, results, docs
+**HF Dataset:** [`ariffazil/a2b-eval-results`](https://huggingface.co/datasets/ariffazil/a2b-eval-results) — structured eval data
 
 > The bridge makes arifOS federation organs AssetOpsBench-aware without
 > mutating constitution, organs, or envelope. It is a thin layer, by design.
