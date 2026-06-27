@@ -1,0 +1,23 @@
+{
+  "organ": "aaa",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.588979+00:00",
+  "prompt_count": 3,
+  "prompts": [
+    {
+      "name": "aaa_routing_prompt",
+      "version": "2026.06.28",
+      "prompt_sha256": "bf7b8fcca240d369bdb5784173f96396ed3ca927f6aba6c4b15733ccccfa9f15"
+    },
+    {
+      "name": "aaa_session_init_prompt",
+      "version": "2026.06.28",
+      "prompt_sha256": "9a421e86f63d093d33dfe52bd5f73de5133334dd066e1680ce67925efb4e06b1"
+    },
+    {
+      "name": "aaa_federation_probe_prompt",
+      "version": "2026.06.28",
+      "prompt_sha256": "5ca0cf1a1e844db495e9d479723f5dd7d68812ddd7335e722503811a382c43b6"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "organ": "aforge",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.589222+00:00",
+  "resource_count": 6,
+  "resources": [
+    {
+      "uri": "aforge://schema",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "39f04bddbd12ce4c8e6afa9345556dad7069e592297a1d0caf49e32af5152fe4",
+      "read_only": true
+    },
+    {
+      "uri": "aforge://health",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "be978ea1c8b94ebbfd6b9eee6bd7eb708920e58971e2c340f1adc0c10582dc55",
+      "read_only": true
+    },
+    {
+      "uri": "aforge://contract",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "82fd1a4b30df2bcf986aa8290cc0e7bcb9e4062573f95f953e70abb73e2f26b1",
+      "read_only": true
+    },
+    {
+      "uri": "aforge://lease/active",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "0d430f0d624eb7a6a302054a77bad7f04cb2373b83ddf512571d9eedb973747f",
+      "read_only": true
+    },
+    {
+      "uri": "aforge://tools/registry",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "3e050daf05102f81b1506293dca057527946e564f814952031ba756a266610be",
+      "read_only": true
+    },
+    {
+      "uri": "aforge://execution/log",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "1259482e2b132a28782ef42294b5399adc5ff7486a3c25c0dfe72e7f1905c4cf",
+      "read_only": true
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "organ": "wealth",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.579006+00:00",
+  "resource_count": 15,
+  "resources": [
+    {
+      "uri": "wealth://schema",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "317a37d5c737188c37d8d3c38fd2b13a474387be5486c4861d33f8b7a46178ff",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://health",
+      "version": "2026.06.28",
+      "mime_type": "text/markdown",
+      "resource_sha256": "63a8f902e3c7a106d2130b5a5ce05ebe98d6232846179a6d0349f57b1facbf93",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://tools/registry",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "5f2520ccac467bc14f60bf1605aec98300549e3d435e7345e9077e685cfc42e6",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://prompts/index",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "86e13ff830a9903dd6d83bf522bac0fd293ac600a65787e47d687c2ada4d4625",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://domains/index",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "12c975aae58c5861789544a4d190034430a3c71d2b91851219fe6c1c95c58736",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://glossary",
+      "version": "2026.06.28",
+      "mime_type": "text/markdown",
+      "resource_sha256": "2389dc891d1c587c6057d2dd3d57a2e5f0acdc23f72170e4b6a33aa41e8f9fc1",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://federation/contract",
+      "version": "2026.06.28",
+      "mime_type": "text/markdown",
+      "resource_sha256": "44e0fa25d750c5caddbf4980c61a118b2d031d46af2188786483e87828379ab3",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://affordance/contracts",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "e0025a3eb0ec93458601c0dc0969070d217a57e961ffbb984af2749d860b6e08",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://handoff/arifos-schema",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "29c76a7a3bdd9ee05433b57a8aea823d71b65afb433562abf533205a5e82c863",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://replay/receipt-schema",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "2521905b72376ab774b009fba4f06b0888c0a9c15de7bf9ec1814a0c922879f4",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://risk/thresholds",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "452c62a208a5e6b032d0691ead4d9d7f88d1847e286c6a93514e54a6c0d7cddf",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://runtime/policy",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "ab124e3ca3da27e43c23b0bd19586fc15826c2df4485ff58cc88fe1acfd55dce",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://reality/context",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "8c37285aece4e7df008c5042fcd14a6cf3f69110b2d1f4c02ceb8468d9c6be05",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://market/sources",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "ad8184e10cc9f23759e2794661188c20bab9dbb193d3e61584a89e75edf26e1f",
+      "read_only": true
+    },
+    {
+      "uri": "wealth://canon/002-human-law",
+      "version": "2026.06.28",
+      "mime_type": "text/markdown",
+      "resource_sha256": "f338bd67c0dbbfbafaab98db1eeb792b2ac17cf0fbb447ff49cd60266d4345f6",
+      "read_only": true
+    }
+  ]
+}

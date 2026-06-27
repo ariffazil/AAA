@@ -1,0 +1,91 @@
+{
+  "$id": "https://arifos/schema/replay-receipt.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_id",
+    "started_at",
+    "ended_at",
+    "caller",
+    "steps",
+    "result_hash",
+    "previous_receipt_hash",
+    "receipt_hash"
+  ],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ended_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "caller": {
+      "type": "string",
+      "description": "Identity of the caller (agent_id or organ name)"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["organ", "surface", "name", "input_hash", "output_hash", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "organ": {
+            "type": "string",
+            "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+          },
+          "surface": {
+            "type": "string",
+            "enum": ["tool", "resource", "prompt"]
+          },
+          "name": {
+            "type": "string"
+          },
+          "input_hash": {
+            "type": "string",
+            "description": "SHA256 of canonicalized input"
+          },
+          "output_hash": {
+            "type": "string",
+            "description": "SHA256 of canonicalized output"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["OK", "ERROR", "BLOCKED", "TIMEOUT"]
+          },
+          "duration_ms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "manifest_ref": {
+            "type": "string",
+            "description": "SHA256 of the organ manifest active at time of this step"
+          }
+        }
+      }
+    },
+    "result_hash": {
+      "type": "string",
+      "description": "SHA256 of the final result"
+    },
+    "previous_receipt_hash": {
+      "type": "string",
+      "description": "SHA256 of the previous receipt in the chain (genesis = 0x00)"
+    },
+    "receipt_hash": {
+      "type": "string",
+      "description": "SHA256 of this receipt (all fields except receipt_hash itself)"
+    },
+    "hmac_signature": {
+      "type": "string",
+      "description": "HMAC-SHA256 signature of the receipt"
+    }
+  }
+}

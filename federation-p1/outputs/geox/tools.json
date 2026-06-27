@@ -1,0 +1,404 @@
+{
+  "organ": "geox",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.580063+00:00",
+  "tool_count": 44,
+  "tools": [
+    {
+      "name": "geox_prithvi_eo_inference",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "09c4c2dae713c6435a18e71cabee911c993270c279d0a5c0322d5c8385aaa14d",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_gravity_magnetic_forward",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "85ba739e698a0d04c5bf14ab372057973cae459c6e63a05df0a557bd00fdc1a2",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_emag2_ingest",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "7673694aae75f3fab42baa634113be4eecf2f9606cc6508af1e1a2d89e5d8be0",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_icgem_models",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "c3a7e532b3a39b5352ef60989aa386f01ded9b067120e4c24d2323fb5441f99d",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_joint_inversion",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "394e04e1b24127d50a38afa505224125fc60bbbf84607d9680b63278399eec69",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_mt_forward",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5b994dba384d026740e854d1e6a435c23ddb4c09c1c719a48000c727c0e408e5",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_biostrat_constraint",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "41e209dc1e2696ad98edab038f46fdc56b2c29fa9ce27f6da88b2d33053a844f",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_seismic_inversion",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "649648bded9cb65f7b079f62604f8b0728f6623da85848bd9d7aecfc62dc06e6",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_geomechanics",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "714f4783965660ad7d3d8f9de58c1296a0e2813607d57316eb76ad8ad267e245",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_gravity_screen",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d306280d216d089e5100484ccb128170a0d2f4e279bf1fe5478d4a11ad2bf25e",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_judgment_preflight",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d51bcad6c4fd30d093cc3b8ea80105792f887899d24d580a0054d8f724c0c6dc",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_lem_predict",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "6e40bf57ba341b52a6f0a3e9627eb957f01831937efb93796f47bfd336bb94c5",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_deep_time_state",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b63691eb202c21870f6e17f00ae005a35da80e1ddca7ee23f5af695187ba8c76",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_query_macrostrat",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "accb9ec833004cc6e637c0a4de4d9ee6265edd2032875775731da1bd04407570",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_well_ingest",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "37a07048e6d1816baa6f41b8cdbe82b89f7d72ee9466054555ed8850fca322dc",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_well_qc",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "133a9012d99d527f3c1a10dbf8bffeb4a0fcd3294557e242fdbf6fd727d7a662",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_petrophysics",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "322717e72632289cecb5a567c4457bac90c4f27a200e31f05ffeb355145fdde6",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_sequence",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "6e97def26d2c7c806b6d2cbfc1a14321a8869685875d0ef7c81cd6de70fb0621",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_surface_status",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "49f47558665d592cb42ef3a25dcbb7355e351eab653aea1b17e1e8a7edd4a220",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_seismic_ingest",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "25abe8e8f7b8803cf14fca57bb431a6ea8dd3f32428a4b13914bf6f7f0ff8027",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_seismic_interpret",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "3f11f9f8d9e3d09b8ca2351ebd95497b56c2bea354a13ff851d722093b1d5405",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_vision",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "2b786e3293ea4a5f6847991a6a5b9c3b3b62482b3ced7e259abfad6e33198eb5",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_subsurface_model",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fe5d5ba16f655bd52fc5c686c0c696873411181582d41e4c667fbd7400bc2f4d",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_basin",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f47cbe0a8a6cc0a908747aba49af573ad89fcf6af478e80145ca68e3728f9c28",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_claim",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f4afbe7074846f993ac26935a2fc3ed0842716cc38bc9635ae3079df8f2eea34",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_evidence",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fa4ca76f3e91c086a67bae02105c2ee560e12123a33b1ef2ed4ebe55a62a7303",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_prospect",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5d513eb3ce3895fd42d64f404037cc6e17a0b4839b10d5dfd34174a50bd0ab95",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_earthquake_catalog",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "4c0b766fae2390c1d04d9cd800e157f2931f29f1ad0d71b0b3698b4f147478a3",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_relief_ingest",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8d2fb8dca1fd8b701167a447ff74c702fae698aa5d5b5ffddb380ecd8b8f6f61",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_bathymetry_ingest",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "db8da30547d3894ccda8ab427d6104cc1037490499ff736a9ad0e13557ac7965",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_heatflow_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5919b1590554bfbbd636dda0688dd70c94c7312556e6901a5a6a7b785592cf31",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_stress_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d4bbeb3bb4b74ceca3451ed0deac74d7872ce40218fa7391399cb1dc956052d2",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_geochem_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "10b61a0810e515a5120d730363e224b6d0bf6d306570dfe4f5f996b4c4dcd682",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_plate_reconstruct",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "c1978fbc1fda19eca7337e53c29227f96bdd9238b3e1c0c59d07742125e933c7",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_paleomag_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "cc70204a3359dc7e23930b8c8c08d129c7a13f0d6915322d3055b61d5d53121c",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_gravity_change_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fcc85caef6e0410cc1e08c29b16afa09624acd1da433342c9985fd8119543779",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_ocean_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fe13a36a725a52485898d72c6925fe1e0db5eb2360efde9aaad4f103e2f00342",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_erddap_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "1d41f98ad482e023bfa3fef202b940eec9ac3d713bf23dddf06e554122babb6a",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_climate_reanalysis",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b2718092de50b31c53d4afea96b662ab1d2b2339580160f142637ebc08a9936b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_hydrology_query",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "f90345dd09f965387f84914d0ed15299f44c97f30008323b1c7be084094c7baa",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_satellite_catalog",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "fa61e3d80b523538cd69a9ce3e10f6ac5195914a661609402e8292bee8a33c15",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_uk_petroleum_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "a21a413e3183984b1e742cba0a822657b8cee6215b2cd998c9a77dded5aa5e89",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_geology_map_query",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "a71718892a3bff98697986d52760bbfbf924bb58a007dba0e1cefa95b66beec5",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "geox_space_weather",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "ab8b06a68e319d004145659685b120d9f9bfffe652c8a7f540552c5211edf875",
+      "authority_required": "NONE"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "organ": "aaa",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.588351+00:00",
+  "tool_count": 3,
+  "tools": [
+    {
+      "name": "aaa_agent_card",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8e40e4ad6111c5307181ce69eb6c9a98935d8877a9cbbf3c09fdefb3825971f4",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "aaa_session_status",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "9da1f672bbc9bf2e571e3332a3e2f5f98caaa71c0bd00f1808dce8412cc83c0b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "aaa_federation_health",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "eb693f743766547c6a144527482192b3325f207362a98307f2891d6b7adde778",
+      "authority_required": "NONE"
+    }
+  ]
+}

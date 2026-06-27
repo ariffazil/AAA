@@ -1,0 +1,113 @@
+{
+  "organ": "geox",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.580242+00:00",
+  "resource_count": 15,
+  "resources": [
+    {
+      "uri": "geox://capabilities",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "7487370fb8ebfad12f3322adaf94470d872798f6c0c62dbeb35eadea5412deda",
+      "read_only": true
+    },
+    {
+      "uri": "geox://identity",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "12f08bef1be773a4c364a42501cd5b8e5da10887c7343c5befee841521ae071b",
+      "read_only": true
+    },
+    {
+      "uri": "geox://surface/truth",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "9621aa56c2099e64f4193637d9cb9758e2eb21fd5f42d6a08e7ad8cd9b197557",
+      "read_only": true
+    },
+    {
+      "uri": "geox://resources/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "2026ec6f41a02777d807d14e00040eb2f5c1d7e57157db2ab0927f369a603aa9",
+      "read_only": true
+    },
+    {
+      "uri": "geox://claims/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "0dd501b73ff0a52fc4b046eb0eb23e37ddcdde638166bdaa0b46de71ad581eeb",
+      "read_only": true
+    },
+    {
+      "uri": "geox://claims/graph",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "4e239e615e5a829dcb9ab5cdebb5d32912c8fb9cd23545edb35f57370d68703c",
+      "read_only": true
+    },
+    {
+      "uri": "geox://basins/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "8a4bda27fdff7051dad70e6b6045d140e26c2f701d28cb7e2e8efb8378b2511c",
+      "read_only": true
+    },
+    {
+      "uri": "geox://literature/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "867f00a9ec9e0fc1765affce9ffff39eab07fb69685b04e98439abddcaf352ba",
+      "read_only": true
+    },
+    {
+      "uri": "geox://reality/context",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "0ce0d37fcf396d1b421e8b4eeffe8726d38a318065010f9c78521e6b557672f7",
+      "read_only": true
+    },
+    {
+      "uri": "geox://resources/ontology/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "2c427fbff5326cbf9678c90e8217be1ebfb149258b2ee77cbc10eaed572b511b",
+      "read_only": true
+    },
+    {
+      "uri": "geox://resources/playbooks/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "dbf49a96596d6adab7804f1fc010bd0ce4ddf1793cebe2d7d8d0db8ca086670b",
+      "read_only": true
+    },
+    {
+      "uri": "geox://resources/prompts/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "fe4dcb4b7864391a265ee122b6a3cffc7938d61ea7c043d5be6296dff453886e",
+      "read_only": true
+    },
+    {
+      "uri": "geox://resources/schemas/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "fa8eb870f09b3c6616a4e5574c4277db2739d8e52a12160659234ac213e89816",
+      "read_only": true
+    },
+    {
+      "uri": "geox://artifacts/index",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "0df9422a91f2df47cb8a7ee56ca369736cd1d77f9e258dabf0784f4e1a19e107",
+      "read_only": true
+    },
+    {
+      "uri": "geox://registry/apps",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "0d9c52c1226b6202b4cdbe5a969f18efeb56eff65c0e882c032d9f95947eda8f",
+      "read_only": true
+    }
+  ]
+}

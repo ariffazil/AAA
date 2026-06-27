@@ -1,0 +1,52 @@
+{
+  "trace_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "started_at": "2026-06-28T10:00:00Z",
+  "ended_at": "2026-06-28T10:05:00Z",
+  "caller": "opencode-agent",
+  "steps": [
+    {
+      "organ": "wealth",
+      "surface": "tool",
+      "name": "wealth_compute_npv",
+      "input_hash": "02d65eaba54a0064317fe3ccf1f813a4a65d48161a446dc36d31f08c789380c7",
+      "output_hash": "cb84cb4d70e3b48b863f34159c412772b32f2e14b45c95b6d51ad0e2d95e94d1",
+      "status": "OK",
+      "duration_ms": 150,
+      "manifest_ref": "ce599347d82e759871b2c2018d26295c0afa1319e65bee0cb07824ea31283653"
+    },
+    {
+      "organ": "wealth",
+      "surface": "tool",
+      "name": "wealth_risk_downside_loop",
+      "input_hash": "2adb4ccc25090eedb82735e65a85693488295c0eb517d4ad67709ab2eefea4b7",
+      "output_hash": "8bc28582354c63d8472b704d825f2cf6a535767abdaf1fa4f8e0d410f3f8cbf2",
+      "status": "OK",
+      "duration_ms": 200,
+      "manifest_ref": "a46425013139ce00e0e17f2a6b366382afd5184aca9a1537f36e0e3bc920023d"
+    },
+    {
+      "organ": "wealth",
+      "surface": "tool",
+      "name": "wealth_arifos_handoff_loop",
+      "input_hash": "3218cd09ed51bc8b7b4924e87c95d6300bdd1d156afe27b528eb41bde51b4602",
+      "output_hash": "a7158d8b75f75c5034cdb15479d1fb92ffbfabe78053a9183fa93f3d005a2870",
+      "status": "OK",
+      "duration_ms": 100,
+      "manifest_ref": "00f947a8dc85406d3c2d25a764d3b9525821540273d8ddaacf392ab1318db07e"
+    },
+    {
+      "organ": "arifos",
+      "surface": "tool",
+      "name": "arif_judge",
+      "input_hash": "88c703bb028649129891c5b253cadb8eccdef9e3f7954ecbf431b6748ae6e08f",
+      "output_hash": "8e5bb5f1d13ab7d1727c7bac644fd14e035aa8cc5d1ef608a9a2158170dd35c3",
+      "status": "OK",
+      "duration_ms": 300,
+      "manifest_ref": "614efa2c7effa3ea11faf74974bdf7a9c813dc8e7838b6c87465bfcc49c255a4"
+    }
+  ],
+  "result_hash": "f6850bc9b7dc7db03f8f891e9da36d65975870934acf321c9f378d811c03323f",
+  "previous_receipt_hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "receipt_hash": "feea659d79f6119babf603c57656cd8024c792bff2b2514fd5525e2f5fb81639",
+  "hmac_signature": "pending_hmac_signature"
+}

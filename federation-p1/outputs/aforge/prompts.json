@@ -1,0 +1,23 @@
+{
+  "organ": "aforge",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.589302+00:00",
+  "prompt_count": 3,
+  "prompts": [
+    {
+      "name": "aforge_dry_run_prompt",
+      "version": "2026.06.28",
+      "prompt_sha256": "4e15accedc4ae6705883f09474798c9628f9959a351e16c412f82b7806ec3246"
+    },
+    {
+      "name": "aforge_execute_prompt",
+      "version": "2026.06.28",
+      "prompt_sha256": "0d59c6e1a90a7ea271ad98a5790caaeff6bdfe4a638cd0849696a7782a79397c"
+    },
+    {
+      "name": "aforge_verify_prompt",
+      "version": "2026.06.28",
+      "prompt_sha256": "61b8b3084cf1a25b8fe6615e3cee1ab4a393fd74d1168f1a83408e4e6dfb50c2"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/federation_transport/prompt_contract.schema.json",
+  "title": "Prompt Contract",
+  "description": "Prompts are not optional guidance — they are workflow gates. A prompt_contract declares which tools must run before others, what outputs are required, and what hard stops prevent progression. Agents that skip prompt contracts produce shallow, ungoverned calls. DITEMPA BUKAN DIBERI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["prompt", "organ", "workflow_class", "must_run_before", "required_outputs", "forbidden_outputs"],
+  "properties": {
+    "prompt": {
+      "type": "string",
+      "description": "Canonical prompt name. Matches MCP prompt registration.",
+      "examples": ["wealth_capital_deal_brief", "geox_interpret", "judge_deliberation"]
+    },
+    "organ": {
+      "type": "string",
+      "enum": ["GEOX", "WEALTH", "WELL", "arifOS", "A-FORGE", "AAA"],
+      "description": "Which organ owns this prompt."
+    },
+    "workflow_class": {
+      "type": "string",
+      "description": "Class of workflow this prompt governs.",
+      "examples": ["earth_interpretation", "capital_deal", "vitality_assessment", "constitutional_judgment"]
+    },
+    "applies_to": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Which tools this prompt applies to. If absent, prompt is general guidance.",
+      "examples": [["wealth_omni_wisdom", "wealth_compute_npv", "wealth_compute_irr"], ["geox_claim_create", "geox_prospect_evaluate"]],
+      "default": []
+    },
+    "must_run_before": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tools that MUST have run and produced acceptable output before the applies_to tools can be called.",
+      "examples": [["wealth_conservation_check", "wealth_flow_check", "wealth_compute_emv"], ["geox_well_qc", "geox_petrophysics"]]
+    },
+    "minimum_sequence": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Ordered list of tools that represents the minimum governed sequence for this workflow. Agents should follow this order.",
+      "examples": [["wealth_conservation_check", "wealth_flow_check", "wealth_compute_emv", "wealth_compute_npv", "wealth_compute_evoi", "wealth_power_audit", "wealth_capture_scan", "wealth_arifos_judge_handoff"]]
+    },
+    "required_outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "What the prompt must ensure is present in tool outputs before workflow can proceed.",
+      "examples": [["evidence_for", "evidence_against", "missing_tests"], ["downside_case", "risk_tier", "capture_scan"]]
+    },
+    "forbidden_outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Phrases or conclusions that, if present in any tool output, halt the workflow.",
+      "examples": [["drill recommendation", "capital allocation", "SEAL verdict"], ["buy", "sell", "guaranteed return"]]
+    },
+    "hard_stops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["condition", "action"],
+        "properties": {
+          "condition": {
+            "type": "string",
+            "description": "Condition that triggers the stop.",
+            "examples": ["HIGH risk detected", "CRITICAL risk detected", "missing downside case", "irreversible=true without 888_HOLD"]
+          },
+          "action": {
+            "type": "string",
+            "enum": ["888_HOLD", "HOLD", "SEAL", "VOID", "RETURN_TO_USER"],
+            "description": "What happens when condition is met."
+          }
+        }
+      },
+      "description": "Explicit stop conditions that prevent workflow progression. Each stop is a falsifiable trigger."
+    },
+    "context_required": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Resources that must be loaded before this prompt is invoked.",
+      "default": []
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    }
+  }
+}

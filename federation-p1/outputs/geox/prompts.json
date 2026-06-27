@@ -1,0 +1,43 @@
+{
+  "organ": "geox",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.580349+00:00",
+  "prompt_count": 7,
+  "prompts": [
+    {
+      "name": "geox_reality_intake_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "94300fff88631cd1644a53fb19e2038fca3c3986a2ef4bd5f71914818ee38181"
+    },
+    {
+      "name": "geox_earth_diagnosis_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "78e80b4ce8736f38e3e50b530e2b17b44928630501558bce4d592244df977d3c"
+    },
+    {
+      "name": "geox_uncertainty_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "89472e72d4eb16ec2ef380e4c668ab9eaf1b603c0234c47db0e918d43db28d41"
+    },
+    {
+      "name": "geox_basin_regime_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "0c573e5979caf822c5d9f45f91d8bf6013a5220ea3a609722b349fd5dbf7c85b"
+    },
+    {
+      "name": "geox_decision_support_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "c42016266643b9f027bee9af95d0976ff59691983c464088b67d4a8183c39cc3"
+    },
+    {
+      "name": "geox_contradiction_challenge_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "cf2c962af5e50298ed9b90975dfe9ce62dee788d64777536a7511b09f975294c"
+    },
+    {
+      "name": "geox_arifos_handoff_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "a63cc9f754e5783bc7bafdd38b0efb52a5605bfc5727279338ac04ab100f4705"
+    }
+  ]
+}

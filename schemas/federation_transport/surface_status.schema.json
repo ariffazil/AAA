@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/federation_transport/surface_status.schema.json",
+  "title": "Surface Status",
+  "description": "Standardized registry probe for every federation organ. Every organ MUST expose <organ>_surface_status(mode=registry|health|contracts|resources|prompts|domains). This is Gap 1 fix: registry is now federation-standard. DITEMPA BUKAN DIBERI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["organ", "mode", "surface_version", "canonical_tools", "registered_at"],
+  "properties": {
+    "organ": {
+      "type": "string",
+      "enum": ["GEOX", "WEALTH", "WELL", "arifOS", "A-FORGE", "AAA"],
+      "description": "Which organ this status report is from."
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["registry", "health", "contracts", "resources", "prompts", "domains"],
+      "description": "What mode this status report covers. registry = tool surface. health = service status. contracts = affordance contracts. resources = resource index. prompts = prompt index. domains = domain coverage."
+    },
+    "surface_version": {
+      "type": "string",
+      "description": "Git commit hash or version tag of the surface at time of query.",
+      "examples": ["geox-2f2e65d4", "v2026.06.15", "arifOS-449bff4a"]
+    },
+    "canonical_tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "action_class", "domain", "affordance_contract_ref"],
+        "properties": {
+          "name": { "type": "string" },
+          "action_class": { "type": "string", "enum": ["OBSERVE", "ANALYZE", "DRAFT", "MUTATE", "EXTERNAL_SIDE_EFFECT", "IRREVERSIBLE"] },
+          "domain": { "type": "string" },
+          "affordance_contract_ref": { "type": "string", "description": "URI to the affordance contract for this tool." },
+          "is_alias": { "type": "boolean", "default": false, "description": "True if this is a backward-compatibility alias." },
+          "canonical_name": { "type": ["string", "null"], "description": "If is_alias=true, the canonical tool name." }
+        }
+      }
+    },
+    "health": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "description": "Present when mode=health or mode=registry.",
+      "properties": {
+        "status": { "type": "string", "enum": ["healthy", "degraded", "down"] },
+        "uptime_seconds": { "type": "number" },
+        "last_commit": { "type": "string" },
+        "mcp_transport": { "type": "string", "enum": ["stdio", "http", "sse"] },
+        "mcp_port": { "type": ["number", "null"] }
+      }
+    },
+    "resources": {
+      "type": ["array", "null"],
+      "description": "Present when mode=resources or mode=registry. All resource URIs this organ exposes.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["uri", "resource_class"],
+        "properties": {
+          "uri": { "type": "string" },
+          "resource_class": { "type": "string", "enum": ["identity", "capabilities", "domain_profiles", "claims", "artifacts", "render", "schema", "federation_contract", "constitution"] }
+        }
+      }
+    },
+    "prompts": {
+      "type": ["array", "null"],
+      "description": "Present when mode=prompts or mode=registry. All prompt contracts this organ exposes.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "workflow_class"],
+        "properties": {
+          "name": { "type": "string" },
+          "workflow_class": { "type": "string" },
+          "tools_count": { "type": "number" }
+        }
+      }
+    },
+    "domains": {
+      "type": ["array", "null"],
+      "description": "Present when mode=domains. All domain subspaces this organ covers.",
+      "items": { "type": "string" }
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    }
+  }
+}

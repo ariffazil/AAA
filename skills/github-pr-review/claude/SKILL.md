@@ -2,7 +2,9 @@
 id: github-pr-review
 name: GitHub PR Governance Review
 version: "1.0.0"
-description: Governed checklist for reviewing GitHub pull requests in the arifOS federation. Ensures PRs meet constitutional, structural, and safety standards before merge.
+status: DEPRECATED
+deprecated_by: github-operations
+redirect_to: github-operations §2 (pr-review mode)
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -13,25 +15,32 @@ host_compatibility:
   - claude-code
   - codex
   - opencode
-dependencies:
-  skills:
-    - repo-hygiene-audit
-  servers:
-    - github
-  tools:
-    - github-pr-fetch
-    - file-diff
-examples:
-  - Review a cross-repo architectural PR before merge
-tests:
-  - Detect constitutional file changes in non-arifOS repos
-  - Verify REPO= trailer in commit messages
-version_lock:
-  schema_version: "1"
-  artifact_hash: pending
+replaced_by:
+  skill: github-operations
+  section: "§2 PR GOVERNANCE REVIEW"
+  mode: pr-review
+  effective_date: "2026-06-26"
+  reason: "Unified into single github-operations skill covering issue + PR + CI"
 ---
 
-# GitHub PR Governance Review
+# ⚠️ DEPRECATED — Use `github-operations` §2 Instead
+
+> **This skill is deprecated.** Load `github-operations` instead and specify `mode="pr-review"`.
+> This file is retained for reference only and will be removed in a future version.
+
+**Old usage:**
+```
+skill_load(github-pr-review, pr_url=...)
+```
+
+**New usage:**
+```
+skill_load(github-operations, mode="pr-review", pr_url=...)
+```
+
+---
+
+# GitHub PR Governance Review (DEPRECATED — see github-operations §2)
 
 ## Overview
 

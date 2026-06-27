@@ -1,0 +1,92 @@
+{
+  "$id": "https://arifos/schema/surface-manifest.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "organ",
+    "manifest_version",
+    "generated_at",
+    "bind",
+    "tools",
+    "resources",
+    "prompts",
+    "authority_boundary",
+    "sha256"
+  ],
+  "properties": {
+    "organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "manifest_version": {
+      "type": "string",
+      "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}$"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "bind": {
+      "type": "string",
+      "description": "Transport bind address (e.g. 127.0.0.1:8088)"
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "version", "read_only", "output_schema_sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "read_only": { "type": "boolean" },
+          "destructive": { "type": "boolean", "default": false },
+          "idempotent": { "type": "boolean", "default": false },
+          "output_schema_sha256": { "type": "string" },
+          "authority_required": {
+            "type": "string",
+            "enum": ["NONE", "READ_ONLY", "888_HOLD", "JUDGE_SEAL_AUTHORIZATION"],
+            "default": "NONE"
+          }
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["uri", "version", "mime_type", "resource_sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "uri": { "type": "string" },
+          "version": { "type": "string" },
+          "mime_type": { "type": "string" },
+          "resource_sha256": { "type": "string" },
+          "read_only": { "type": "boolean", "default": true }
+        }
+      }
+    },
+    "prompts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "version", "prompt_sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "prompt_sha256": { "type": "string" }
+        }
+      }
+    },
+    "authority_boundary": {
+      "type": "string",
+      "enum": ["JUDGE_ONLY", "COMPUTE_ONLY", "EVIDENCE_ONLY", "REFLECT_ONLY", "EXECUTE_ONLY", "SURFACE_ONLY"]
+    },
+    "sha256": {
+      "type": "string",
+      "description": "SHA256 hash of canonicalized manifest content (excluding this field)"
+    }
+  }
+}
