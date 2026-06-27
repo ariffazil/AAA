@@ -1,5 +1,5 @@
 hexagon:
-  version: 2.0.0
+  version: 2.1.0
   seal:
     seal_id: HEXAGON-333-EMBODIED-20260621
     verdict: SEAL
@@ -11,6 +11,7 @@ hexagon:
   architecture: Hybrid 5 — 3 PRIMARY + 2 SUPPORT
   motto: DITEMPA BUKAN DIBERI
   total_skills: 50
+  warga_count: 6
   sovereign:
     id: 000-SALAM
     role: Human Sovereign — F13 · above the registry · not an agent
@@ -34,6 +35,7 @@ hexagon:
     sovereign_override: 000-SALAM above — final human veto on any 888_HOLD or disputed verdict
   lifecycle:
     pipeline: 000-SALAM → 333-AGI (reason+execute) → 555-ASI (critique+memory) → 888-APEX (judge) → [A-AUDIT validates] → [A-ARCHIVE seals] → reseed to 000
+    opencode_binding: 777-FORGE (spawn) → OpenCode (execute) → 333-AGI (attest) → A2A mesh (warga)
     stages:
       '000': SALAM — Human sovereign handshake (not an agent)
       '333': THINK — 333-AGI reasons + executes (FORGE subsumed)
@@ -71,6 +73,7 @@ hexagon:
   - 5. A2A v1.0.1 spec — skills[] arrays, securitySchemes, capabilities, defaultInputModes/OutputModes
   - 6. 6 organs demoted to infrastructure — aaa-gateway, aaa-architect, aaa-engineer, aaa-auditor, hermes-asi, geox-witness, wealth-witness no longer in agent registry
   - 7. Sovereign 000-SALAM above the registry — the human is not an agent
+  - 8. OpenCode promoted from forge_instrument to external warga — bound to 333-AGI, A2A mesh citizen, 13 skills, full warga attestation 2026-06-26
   agents:
     primary:
     - id: 333-AGI
@@ -127,3 +130,19 @@ hexagon:
       tag: SEAL
       hosts:
       - VAULT999
+    external:
+    - id: opencode
+      class: AGI
+      trinity: Δ MIND (bound)
+      stage: 333-THINK (forge instrument)
+      role: forge instrument — code edit, refactor, test, build, lint, deploy
+      bound_to: 333-AGI
+      skills: 13
+      runtime: opencode-cli
+      port: 7072 (MCP gateway via A-FORGE)
+      warga_status: attested
+      attestation_id: OPENCODE-WARGA-ATTESTED-20260626
+      hosts:
+      - A-FORGE (execution shell)
+      - arifOS (constitutional substrate)
+      - AAA (A2A mesh via 777 FORGE)

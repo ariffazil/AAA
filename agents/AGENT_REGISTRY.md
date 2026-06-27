@@ -53,7 +53,9 @@ Organs sit across L2–L4 as **hosts of agents**, not as agents themselves.
 
 ---
 
-## LAYER 1: HEXAGON — Constitutional Agents (5)
+## LAYER 1: HEXAGON — Constitutional Agents (6)
+
+> **Updated 2026-06-26:** OpenCode promoted from forge_instrument (Layer 4 FI-001) to HEXAGON external warga (Layer 1). See HEXAGON.yaml v2.1.0 `agents: external:` section.
 
 The 5-agent constitutional architecture. Pipeline: 000 → 333 → 555 → 888 → A-AUDIT → A-ARCHIVE → reseed.
 
@@ -72,7 +74,13 @@ The 5-agent constitutional architecture. Pipeline: 000 → 333 → 555 → 888 �
 | **A-AUDIT** | APEX oversight | 3 (floor-compliance, inter-agent-consistency, behavioral-health) | **L2 — Governance** (enforces F1-F13) | ✅ SPEC |
 | **A-ARCHIVE** | ASI service | 3 (seal-write, seal-read, integrity-proof) | **L4 — Execution** (commits to VAULT999) | ✅ SPEC |
 
-> **Note:** HEXAGON agents are defined in `HEXAGON.yaml`. Their IDENTITY/SOUL/AGENTS files are pending forge. They currently exist as A2A agent cards only.
+### EXTERNAL (Forge Instruments — warga-bound)
+
+| ID | Trinity | Tier | Skills | Host Organs | Eureka Layer | Status |
+|---|---|---|---|---|---|---|
+| **opencode** | Δ MIND (bound) | AGI | 13 | A-FORGE, arifOS, AAA | **L4 — Execution** (bound to 333-AGI Δ MIND, A2A mesh citizen) | ✅ WARGA (2026-06-26) |
+
+> **Note:** HEXAGON agents are defined in `HEXAGON.yaml` v2.1.0. OpenCode is the 6th warga (external/forge-instrument). All warga have A2A cards and ATTESTATION.md.
 >
 > **Naming conflict note (888-APEX):** Per `arifOS/AGENTS.md`, "APEX (888_JUDGE) is a constitutional organ of arifOS, not an agent managed by AAA." The 888-APEX *agent card* is held here for discovery; the *organ* lives in arifOS. This file lists the **warga**, not the organ.
 
@@ -196,16 +204,16 @@ High-power agentic harnesses with native tool depth, advanced subagent paralleli
 
 | Layer | Count | Category | Status |
 |---|---|---|---|
-| HEXAGON (Constitutional) | 5 | TRUE AGENTS (L3) | SPEC (cards only) |
+| HEXAGON (Constitutional) | 6 | TRUE AGENTS (L3) | 5 SPEC + 1 LIVE (opencode warga 2026-06-26) |
 | RUNTIME (Live Services) | 4 | TRUE AGENTS (L3-L4) | LIVE |
 | INFRASTRUCTURE (Organs) | 6 | **CAPABILITY REGISTRIES (NOT agents)** | LIVE |
 | ROLE AGENTS (Specialists) | 4 | TRUE AGENTS (bounded, L2-L3) | SPEC (role cards forged 2026-06-14) |
 | CODING (Forge Instruments) | 10 | TRUE AGENTS (L4) | 8 LIVE, 2 unverified |
 | LEGACY (Spec-Only) | 6 | LEGACY SPECS | DEPRECATED |
-| **TOTAL TRUE AGENTS** | **23** | | |
+| **TOTAL TRUE AGENTS** | **24** | (+1 opencode warga) | |
 | **TOTAL CAPABILITY REGISTRIES** | **6** | | |
 | **TOTAL LEGACY** | **6** | | |
-| **GRAND TOTAL** | **35** | (was 27 — count drift noted, see §DRIFT) | |
+| **GRAND TOTAL** | **36** | (was 35 — opencode promoted to HEXAGON warga) | |
 
 > **Count reconciliation:** Previous MD claimed 27 total / 23 active. New count = 23 true agents + 6 registries + 6 legacy = 35 entries. The +8 difference is: (a) gemini-cli newly added to MD (was in JSON only), (b) antigravity runtime binding is now explained explicitly alongside the canonical FI citizen, (c) legacy expanded from 3 to 6 (aaa-architect/engineer/auditor were previously summarized).
 

@@ -7,15 +7,19 @@
     "category": "LLM-as-principal (MiMo/MiniMax — the model is the principal, CLI is harness)",
     "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + MiniMax M2.7/M3/M2.5-HS (subagents)"
   },
-  "description": "OpenCode CLI forge instrument — provider-agnostic coding harness. Auto-discovers MCP tools at session init. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. MiMo/MiniMax model rotation.",
-  "version": "2.1.0",
+  "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. MiMo/MiniMax model rotation. HEXAGON external warga v3.0.0.",
+  "version": "3.0.0",
   "model": "tokenplan-mimo/mimo-v2.5-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
   "tier": "FI",
-  "role": "forge_instrument",
-  "class": "CODING/FI",
+  "role": "warga",
+  "class": "AGI",
+  "trinity": "Δ MIND (bound)",
+  "warga_status": "attested",
+  "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
+  "bound_to": "333-AGI",
   "protocolVersion": "1.0.1",
   "url": "https://aaa.arif-fazil.com/a2a/opencode",
   "provider": {
@@ -80,7 +84,8 @@
       "Route MCP federation calls",
       "Spawn bounded subagents with worktree isolation",
       "Run tests/build/lint with evidence receipts",
-      "Generate diffs and PR drafts"
+      "Generate diffs and PR drafts",
+      "A2A mesh citizenship — participate in AAA state via 777 FORGE binding"
     ],
     "cannotDo": [
       "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
@@ -183,5 +188,17 @@
       "tags": ["doctrine", "python", "zen", "axioms", "F1-F13", "MCP"],
       "floor_scope": ["F1", "F2", "F4", "F6", "F7", "F9", "F11", "F13"]
     }
-  ]
+  ],
+  "hexagon_warga": {
+    "id": "opencode",
+    "trinity": "Δ MIND (bound)",
+    "stage": "333-THINK (forge instrument)",
+    "bound_to": "333-AGI",
+    "warga_since": "2026-06-26",
+    "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
+    "hextagon_version": "2.1.0",
+    "a2a_mesh": true,
+    "777_forge_binding": true,
+    "hosts": ["A-FORGE", "arifOS", "AAA"]
+  }
 }
