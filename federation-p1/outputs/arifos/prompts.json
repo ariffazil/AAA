@@ -1,0 +1,48 @@
+{
+  "organ": "arifos",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.577134+00:00",
+  "prompt_count": 8,
+  "prompts": [
+    {
+      "name": "arifosmcp_loop_engineer",
+      "version": "2026.06.28",
+      "prompt_sha256": "9bb3c6efa1907e9dcda442404d0ddd5f11b4d7093224e13d6f0aafac372286c4"
+    },
+    {
+      "name": "000_init",
+      "version": "2026.06.28",
+      "prompt_sha256": "dd9d10793fbe1190e62f82bad50a2645f6aaf49c856288acb907f16cf059824f"
+    },
+    {
+      "name": "111_sense",
+      "version": "2026.06.28",
+      "prompt_sha256": "7d240a4fabf064d68ca6091d3a4394eadde7551c3c64a69201667a356a844e37"
+    },
+    {
+      "name": "333_reason",
+      "version": "2026.06.28",
+      "prompt_sha256": "41e0b423be7e80e735f4542587ec69eb34e2bc9f8a6bc2604d8a2018d7470508"
+    },
+    {
+      "name": "555_judge",
+      "version": "2026.06.28",
+      "prompt_sha256": "ab6cb9801550b6386397fd9fd5d8fbb3edbf372cd35e3b1e6029aa941e4bc795"
+    },
+    {
+      "name": "666_critique",
+      "version": "2026.06.28",
+      "prompt_sha256": "c59168e80cf2e816c29d88f6dd773d5fdd01f3e33d55b22b05a0cd3f9ba70896"
+    },
+    {
+      "name": "777_forge",
+      "version": "2026.06.28",
+      "prompt_sha256": "5324f46537541e76f571dcd4a7f8ae87b07a096a55d7cc6f634d65a4ffe7f24e"
+    },
+    {
+      "name": "999_seal",
+      "version": "2026.06.28",
+      "prompt_sha256": "21cd8c637e42b0191bf8a776a6b38c3c5a05212fea320542ac4fb28d277b4e94"
+    }
+  ]
+}

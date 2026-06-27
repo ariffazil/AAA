@@ -1,0 +1,73 @@
+{
+  "organ": "well",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.588200+00:00",
+  "prompt_count": 13,
+  "prompts": [
+    {
+      "name": "prompt_daily_reflection",
+      "version": "2026.06.28",
+      "prompt_sha256": "95c4b607258e7543e89b08fa20ae355cd4b6d4fdd1de42f2a9979fa7c1ad6daf"
+    },
+    {
+      "name": "prompt_recovery_protocol",
+      "version": "2026.06.28",
+      "prompt_sha256": "ddf29561b71e94267e30364f2971d7bc538d365f8a9b677b205e3784368af816"
+    },
+    {
+      "name": "prompt_readiness_brief",
+      "version": "2026.06.28",
+      "prompt_sha256": "0cebcfa44ea0cfd4e67a90a27bb1602712c3c1caa637720046990b76e0b01006"
+    },
+    {
+      "name": "prompt_substrate_classify",
+      "version": "2026.06.28",
+      "prompt_sha256": "e442f9ae4a75aca3398e1328b83c9daf881a3dfcec549fabd78967160af5ad08"
+    },
+    {
+      "name": "prompt_niat_check",
+      "version": "2026.06.28",
+      "prompt_sha256": "f5b399e8426c2e8db2b2a9533658981cc7db8fd9e1f05b173645e496b53e2c66"
+    },
+    {
+      "name": "prompt_fatigue_boundary_review",
+      "version": "2026.06.28",
+      "prompt_sha256": "fa958aa6f17237561f92f8aade3fcbfd17b65378b4100ad5d8a548b906ae6760"
+    },
+    {
+      "name": "well_reality_intake_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "a9c66483bded4148d5f17683d02518cbded15e770aa0f05f202433e8525cb1f3"
+    },
+    {
+      "name": "well_readiness_diagnosis_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "60375e0c29e7fa98f5411dcaed616dca5ee5c8736c7bda2de928622d43f35c44"
+    },
+    {
+      "name": "well_risk_bandwidth_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "b2ac160959cc3ac9d06074298794a99f648ef981b06691ff47a0cbc2f7eba046"
+    },
+    {
+      "name": "well_substrate_regime_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "2852623b6a86c3e4067d95864582e5afa0baaa0e171c4fcc76d910c3bdce59f1"
+    },
+    {
+      "name": "well_decision_bandwidth_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "2797cb44047dfdd5d708ce70724c8388f6cb1a0a3c68190301b31de04aed13af"
+    },
+    {
+      "name": "well_intent_alignment_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "62bbbb2aa902364faee2b059e5278bf5bed2ac73b4f43a5b4c1c1343a00132ef"
+    },
+    {
+      "name": "well_arifos_handoff_loop",
+      "version": "2026.06.28",
+      "prompt_sha256": "c812990e127a138f757390b7ff49b87df7a445e23a9744ecab5335bd116c3d05"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$id": "https://arifos/schema/domain-translation-card.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "card_id",
+    "from_organ",
+    "to_organ",
+    "source_measure",
+    "target_assumption",
+    "transform_rule",
+    "uncertainty_mapping",
+    "evidence_refs",
+    "version"
+  ],
+  "properties": {
+    "card_id": {
+      "type": "string",
+      "pattern": "^dtc-[a-z]+-[a-z]+-[a-z-]+-v\\d+$"
+    },
+    "from_organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "to_organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "source_measure": {
+      "type": "string",
+      "description": "The measure or signal from the source organ"
+    },
+    "target_assumption": {
+      "type": "string",
+      "description": "What the target organ assumes this means"
+    },
+    "transform_rule": {
+      "type": "string",
+      "description": "Explicit transformation rule (not prose — machine-parseable)"
+    },
+    "uncertainty_mapping": {
+      "type": "object",
+      "required": ["p10", "p50", "p90"],
+      "additionalProperties": false,
+      "properties": {
+        "p10": { "type": "number", "minimum": 0, "maximum": 1 },
+        "p50": { "type": "number", "minimum": 0, "maximum": 1 },
+        "p90": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}$"
+    }
+  }
+}
