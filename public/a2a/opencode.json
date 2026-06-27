@@ -1,0 +1,156 @@
+{
+  "name": "OpenCode CLI",
+  "description": "OpenCode warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). A2A mesh citizen via 777 FORGE. Provider-agnostic CLI harness: tokenplan-mimo/MiMo-v2.5-pro primary, MiniMax M2.7/M3/M2.5-HS subagents. Auto-discovers MCP tools at session init. F1-F13 floors enforced. HEXAGON external warga v3.0.0.",
+  "url": "https://aaa.arif-fazil.com/a2a/opencode",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "A-FORGE",
+    "runtime": "opencode-cli"
+  },
+  "version": "3.0.0",
+  "protocol_version": "1.0.1",
+  "preferred_transport": "streamable-http",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "file_read": true,
+    "file_write": true,
+    "shell_exec": true,
+    "subagent_spawn": true
+  },
+  "authentication": {
+    "schemes": [
+      "bearer",
+      "apiKey"
+    ],
+    "bearer": {
+      "scheme": "bearer",
+      "token_type": "JWT",
+      "description": "arifOS session token issued via arif_session_init"
+    },
+    "apiKey": {
+      "scheme": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "federation-coding-agent",
+      "name": "Federation Coding Agent",
+      "description": "Meta-playbook for cross-repo federation work. Routing, governance, execution, validation, audit, seal. Spans all 7 organs. HIGH risk. F1-F13 enforced.",
+      "tags": ["federation", "cross-repo", "meta", "orchestration"],
+      "examples": [
+        "Plan a multi-organ task across GEOX and WEALTH",
+        "Audit A-FORGE build pipeline"
+      ]
+    },
+    {
+      "id": "arifos-mcp-federation",
+      "name": "arifOS MCP Federation",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary.",
+      "tags": ["MCP", "federation", "routing", "multi-organ"],
+      "examples": [
+        "Sequence GEOX seismic + WEALTH NPV for prospect eval",
+        "Route WELL readiness check before A-FORGE execution"
+      ]
+    },
+    {
+      "id": "autonomous-governed-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor.",
+      "tags": ["autonomous", "F1-F13", "execution", "T1-T3"],
+      "examples": [
+        "Execute a build under T1 autonomy",
+        "Handle a T3 irreversible action with 888_HOLD"
+      ]
+    },
+    {
+      "id": "agentic-session-init",
+      "name": "Agentic Session Init",
+      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
+      "tags": ["bootstrap", "session", "init", "governance"],
+      "examples": [
+        "Initialize a new opencode session with organ attest",
+        "Verify all 7 organs are alive before execution"
+      ]
+    },
+    {
+      "id": "github-workflow",
+      "name": "GitHub Workflow",
+      "description": "GitHub operations — auth, repo management, PR lifecycle, issues, code review. F1, F11 enforced.",
+      "tags": ["github", "workflow", "PR", "issues"],
+      "examples": [
+        "Create a PR with evidence receipts",
+        "Check CI status on a pending merge"
+      ]
+    },
+    {
+      "id": "auditor-validator-kutip-sampah",
+      "name": "Auditor Validator Kutip Sampah",
+      "description": "Immune system / cleaner skill. Audit, validate, clean junk, detect drift/corruption. HIGH risk.",
+      "tags": ["audit", "cleanup", "drift", "security"],
+      "examples": [
+        "Run full skill inventory audit",
+        "Clean accumulated forge_work entries"
+      ]
+    }
+  ],
+  "governance": {
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8",
+      "F9",
+      "F10",
+      "F11",
+      "F12",
+      "F13"
+    ],
+    "verdict_authority": "888_JUDGE",
+    "vault": "VAULT999",
+    "irreversible_requires_human": true,
+    "self_approval_forbidden": true,
+    "federation_trust_model": "governed_peers",
+    "enforce_floors": true,
+    "warga_boundary": "A2A mesh via 777 FORGE + 333-AGI binding",
+    "routing_policy": "https://aaa.arif-faziz.com/.well-known/a2a-routing-policy.json",
+    "peer_contract_url": "https://aaa.arif-fazil.com/.well-known/peer-federation-contract.json"
+  },
+  "hexagon": {
+    "id": "opencode",
+    "trinity": "Δ MIND (bound)",
+    "stage": "333-THINK (forge instrument)",
+    "bound_to": "333-AGI",
+    "warga_status": "attested",
+    "warga_since": "2026-06-26",
+    "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
+    "hextagon_version": "2.1.0",
+    "777_forge_binding": true
+  },
+  "a2a_endpoints": {
+    "canonical_agent_card": "GET /.well-known/agent-card.json",
+    "send_task": "POST /tasks",
+    "get_task": "GET /tasks/{taskId}",
+    "stream_task": "GET /tasks/{taskId}/stream",
+    "cancel_task": "POST /tasks/{taskId}/cancel",
+    "subscribe_task": "GET /tasks/{taskId}/subscribe",
+    "federation_manifest": "GET /.well-known/arifos-federation.json"
+  }
+}

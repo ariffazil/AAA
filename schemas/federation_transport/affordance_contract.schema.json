@@ -1,0 +1,67 @@
+{
+  "$id": "https://arifos/schema/affordance-contract.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "organ",
+    "surface_type",
+    "surface_name",
+    "affordance_class",
+    "authority_required",
+    "blast_radius",
+    "reversibility",
+    "version"
+  ],
+  "properties": {
+    "contract_id": {
+      "type": "string",
+      "pattern": "^ac-[a-z]+-[a-z-]+-v\\d+$"
+    },
+    "organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "surface_type": {
+      "type": "string",
+      "enum": ["tool", "resource", "prompt"]
+    },
+    "surface_name": {
+      "type": "string"
+    },
+    "affordance_class": {
+      "type": "string",
+      "enum": ["READ_ONLY", "ADVISORY", "MUTATION", "IRREVERSIBLE"],
+      "description": "READ_ONLY=read data, ADVISORY=compute+return, MUTATION=changes state, IRREVERSIBLE=cannot undo"
+    },
+    "authority_required": {
+      "type": "string",
+      "enum": ["NONE", "READ_ONLY", "888_HOLD", "JUDGE_SEAL_AUTHORIZATION"]
+    },
+    "blast_radius": {
+      "type": "string",
+      "enum": ["NONE", "LOCAL", "ORGAN_WIDE", "FEDERATION_WIDE", "IRREVERSIBLE"]
+    },
+    "reversibility": {
+      "type": "string",
+      "enum": ["FULLY_REVERSIBLE", "REVERSIBLE_WITH_BACKUP", "REQUIRES_JUDGE", "IRREVERSIBLE"]
+    },
+    "human_confirmation_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "decision_thresholds": {
+      "type": "object",
+      "properties": {
+        "min_decision_class": { "type": "string", "enum": ["C0", "C1", "C2", "C3", "C4", "C5"] },
+        "min_well_score": { "type": "number" },
+        "requires_seal": { "type": "boolean" }
+      }
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}$"
+    }
+  }
+}

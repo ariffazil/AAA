@@ -1,0 +1,155 @@
+{
+  "organ": "arifos",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.577010+00:00",
+  "resource_count": 21,
+  "resources": [
+    {
+      "uri": "arifos://schema",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "0da6b61138f98d3179b6f86b0316ecc464c08a41ddfa9244b927a040100eb37d",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://doctrine",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "04f342cd9d7ba898fb814199269e90707e42ee5ec5717a33b02432b314a85dc2",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://vitals",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "069d0e6991053312f709a81d205679cab9e90b8ddf6aba737e4be082b264a835",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://bootstrap",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "b6c4aef6c6c97855cbeb14d17126af11724814ce70bdc21d0b4d6e2d12467da1",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://identity",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "5a608176c9afb17ca42b321bedee7e6df4661c9b85e78080a86e0c7783cc3929",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://jurisdiction",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "f2a48ad2654158a1a3e105e401394a915f4ddf39dc0c7c892152d85abaca179a",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://memory",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "370855a8c4cda1589e188999a3526395910260934c52cf95251d099288a55264",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://civilization",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "99e6cd49381500f16a7f3e37122317ea62fc28781472865e27fef538b68360ac",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://seal-readiness",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "6bf2e1cccb4e3f2bf8d6d43b6d6124a390cd53fa6ae09cc3a849f309a4a8f5a1",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://quickstart",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "874eb4c5e98c32c67c6a631acdc4c8e211b12821e2c25d6a37691242c0c1bec0",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://mcp-alignment",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "b23559676e795128e74fe9c32d7c42bde53d89e50d236fea9ef3298c5425aff0",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://trinity",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "4ab08fcb4be1b0394b77a6857c99c69b62ad0f7ff1e3063ce56cf49179194025",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://loop-engineering",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "4de49b8b5c52efbcaacf556e10d3de40bc481f855d1a87df16097fe4ae9ef981",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://reality/state",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "b3e969436d45b8d38223576c885789bdfd3a9ea812985e6554f2171b99cd923f",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://resources/index",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "3f2dcd80ab0e2dc717a75523546b6293ba6c0f3357db7a6453ac7588f2ee3587",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://resources/audit",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "7f7fa8ebb282563483b5bb9e71065abaa7063239b954f0d72c5a511928ceae17",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://skills-catalog",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "4c8b009c6e2652e9883e9c22a35e89f56ca30a4181bd356551d1337ba1cd5981",
+      "read_only": true
+    },
+    {
+      "uri": "arifos://human/metabolized",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "e9587a7694f150dfba555d566ecfe7338539b89e9930268846144f5f34a5906c",
+      "read_only": true
+    },
+    {
+      "uri": "arif://tools/affordance",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "3e2988378af02fdf0572d96c653e2961203d48801e724227f1898dfbf78ebef2",
+      "read_only": true
+    },
+    {
+      "uri": "arif://tools/discovery",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "2fb426eb7231db836b35a790a280e5a08ece3272477835761d0f68c91070bfc1",
+      "read_only": true
+    },
+    {
+      "uri": "arif://core/seven",
+      "version": "2026.06.28",
+      "mime_type": "application/json",
+      "resource_sha256": "2647400d8957e0592250b321b31499762195673cff9a8d2450934e1a9742aa10",
+      "read_only": true
+    }
+  ]
+}

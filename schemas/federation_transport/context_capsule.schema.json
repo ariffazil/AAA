@@ -1,0 +1,50 @@
+{
+  "$id": "https://arifos/schema/context-capsule.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_id",
+    "session_id",
+    "origin_organ",
+    "decision_class",
+    "epistemic_state",
+    "timebox",
+    "payload_refs"
+  ],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "origin_organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "decision_class": {
+      "type": "string",
+      "enum": ["C0", "C1", "C2", "C3", "C4", "C5"],
+      "description": "C0=observe, C1=low-risk, C2=moderate, C3=reversible-only, C4=C5=888_HOLD"
+    },
+    "epistemic_state": {
+      "type": "string",
+      "enum": ["OBSERVED", "DERIVED", "INTERPRETED", "ESTIMATE", "UNKNOWN"]
+    },
+    "timebox": {
+      "type": "string",
+      "description": "ISO 8601 duration or timestamp for context freshness"
+    },
+    "payload_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "URI references to payload data (afwealth://, geox://, well://, etc.)"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

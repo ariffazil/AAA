@@ -1,0 +1,260 @@
+{
+  "organ": "wealth",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.578822+00:00",
+  "tool_count": 28,
+  "tools": [
+    {
+      "name": "wealth_wisdom_evaluate",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "536ed2bbd58bd2054ee93b81809b55919495526159588894d0d74edeaf90cbab",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_power_audit",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "37c788858c92341fc7653a7fd3f8fb8d41fdaa39ef5524621ebeec9cfaee505f",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_capture_scan",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "871054fb7a9d06500f70164c23b999c23426743ed12a192e4b1552970bd4f906",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_compute_npv",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "2be3432efbf9a624c7709eaa02a0a225905228636ce45766144d19799e3a0e44",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_compute_irr",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "9aaf50e3f26e328f0d5aecdb58ca549f82be1cf4493892d62db0781f69cf5183",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_conservation_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "16e611c933885f04d9c56f873e7aae11098d80e77b18547fd70fe4eb990f9fa5",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_flow_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "ade266c78b09b3d3c47f9bbe4ca0bf8cfaea68c1302111e98e4cae8a5f545698",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_runway_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "17d6a3d140ca1f2143b2f1273852080ab45486159c61b083c214398578626cb9",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_compute_emv",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "4140f0181345fed69ff61675a4f6f50e1a0301a3def623307d641cc18030583d",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_emv_compute",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "272362789908ce26d424534d0226a3b946c40772b48056ce329c0f2ab5b21823",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_monte_carlo_simulate",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "57339b87c521b6b3473b7d743b996ccaa1c47b5bd9ac176985d18d8d8e5f2b9b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_monte_carlo",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "292349c7d3407aa4e4f2c5f4d5f510309d60804b3321f45bbf96a4c6e15e81e1",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_compute_evoi",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "1ff8f8a83a7a3beb8afd9c8e448df25ff0244ff22ce142cef301338eedd335ff",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_evoi_compute",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e65e1e4650e9754dee7d1c0c56bfcdb2be50165e3eb4601c259a9a6aad441dbb",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_confluence_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5a0fcdda78ace7ee8a919cbbc2c771333d3d518b4bd41776ec8616bf2b3b84f1",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_asymmetry_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "7b104b0ace485e54fc0276b682ddfb423ed7938a227e13eb57cf26b58e4b6bbb",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_fiscal_breakeven",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "9720e40f5b666b5e43d6dfe628cd6f49e837f847c63e3c7e9e2f1f2845a78cca",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_stock_analysis",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e7c6c7bf664653b5916097f7c2a9736a5f324adbeb517bdbaf9f59fce1ea2089",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_personal_finance",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "00eed0a07643a0c219e79bea931bdd8f7a4a723a5683b8321b20e7250f69df43",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_market_data",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "ed031aebc569f0e6dc88f38a54eb5d4ca338950d8bf16d665110b22be7eb0a62",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_omni_wisdom",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "2785ec427e02b2aeadab62f262bc50ed3124d9c6ae250ea50becf5456f1396ae",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_agent_path",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "99d82538e4f623f81145a36a629b9428ce66946c8c5beaaef69fbadc4486125a",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_vault_write",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "e599867014dccdc9b16c3194a7c40193f3b3e11d7e0dcb751a2a169172a3e54e",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_vault_query",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "ef229eed3cce2fc8099c6e464d24b982bfcfbfc005702d5a22a0a09077e4c933",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_system_registry_status",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d5e9a195f317926614415a12a08a9ad72f6394e972fedf3ddfee02c4bbce13b8",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_collapse_signature_scan",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "1ab0d1c6b78f98ef862c05f33d4475dd89b9b4fa5dfb838f3df199cd0daf5090",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_beautiful_mouse_scan",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "a2a8ef633d79ae5fd363710cb5f5efc43fc6562d5847e1fa41f753527c5c8fa5",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "wealth_arifos_judge_handoff",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f3468c039949e1132977a2b4db1cc72ad14c729187548f238403d8c266715e42",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.593620+00:00",
+  "pins": {
+    "arifos": {
+      "sha256": "26964a327175a9f1328e851716f2c1dcd5711199ad934588f52c85112d0738dc",
+      "path": "/root/federation-p1/manifests/arifos/manifest.json",
+      "size_bytes": 6731
+    },
+    "wealth": {
+      "sha256": "274e2cfde55896ddf9cc428617d5d6c9fbe1ff81f3e368b7fc7a4aa84a57b7c4",
+      "path": "/root/federation-p1/manifests/wealth/manifest.json",
+      "size_bytes": 10573
+    },
+    "geox": {
+      "sha256": "c035ffd7c2838522b7a3d8cf9fd51390915bad051a391e34c2c72d55155da3b5",
+      "path": "/root/federation-p1/manifests/geox/manifest.json",
+      "size_bytes": 14011
+    },
+    "well": {
+      "sha256": "76305ca3b3b8fb93f177575bd7df28f4e464917c718c33c2165fdad8b2959c6a",
+      "path": "/root/federation-p1/manifests/well/manifest.json",
+      "size_bytes": 24968
+    },
+    "aaa": {
+      "sha256": "e41239b602b6ac54ec30a435212612fc330d83106381aec000ba531917fd7247",
+      "path": "/root/federation-p1/manifests/aaa/manifest.json",
+      "size_bytes": 2472
+    },
+    "aforge": {
+      "sha256": "c8f9a6585935aabde17d85b7a7c9ada54fb501586310aa15659e4fdb4b5fb1df",
+      "path": "/root/federation-p1/manifests/aforge/manifest.json",
+      "size_bytes": 3413
+    }
+  }
+}
