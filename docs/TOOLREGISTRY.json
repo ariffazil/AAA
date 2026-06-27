@@ -1,6 +1,6 @@
 {
   "registry_version": "1.0.0",
-  "last_updated": "2026-06-27",
+  "last_updated": "2026-06-27T21:30:00Z",
   "owner": "FORGE (000Ω) / AAA",
   "description": "Canonical registry of all MCP tools and SKILLs in the arifOS federation. This file is the single source of truth for tool deduplication, capability mapping, and invariant constraint enforcement. No tool may be created if it overlaps ≥2 tags with an existing tool.",
 
@@ -85,6 +85,14 @@
       "organ": "arifOS",
       "implemented": true,
       "location": "/root/.agents/skills/arifos-federation-router/SKILL.md"
+    },
+    {
+      "name": "hf-governed-intelligence",
+      "description": "Constitutional HF operating skill — Hub sovereignty, dataset metabolism (AAA→FFF), tokenization doctrine, inference discipline (F5 Gödel band), fine-tune governance (F1 Amanah), FFF 6-gate promotion, eval & SEAL receipt chain. Every HF act is a constitutional act.",
+      "capability_tags": ["hf-hub", "hf-dataset", "hf-inference", "hf-tokenization", "hf-finetune", "hf-eval", "hf-security", "hf-governance"],
+      "organ": "A-FORGE",
+      "implemented": true,
+      "location": "/root/.agents/skills/hf-mastery/SKILL.md"
     }
   ],
 
@@ -172,7 +180,15 @@
     "hygiene": "Code and artifact hygiene",
     "routing": "Intent routing between organs",
     "intent": "Intent classification and parsing",
-    "organ-bridge": "Cross-organ communication"
+    "organ-bridge": "Cross-organ communication",
+    "hf-hub": "Hugging Face Hub repo management, auth, sync, cards, branches, tags",
+    "hf-dataset": "HF dataset loading, schema validation, streaming, format conversion",
+    "hf-inference": "HF model loading, pipeline, generation, batched inference, quantization",
+    "hf-tokenization": "HF tokenizer discipline, token measurement, chunking, bilingual packing",
+    "hf-finetune": "HF PEFT/LoRA/QLoRA fine-tuning, adapter management, SFT training",
+    "hf-eval": "HF evaluation gating, benchmarks, promotion/demotion, regression checks",
+    "hf-security": "HF license review, gating check, PII scan, provenance tracking",
+    "hf-governance": "Constitutional HF operations — floor binding, FFF gates, eval receipts, VAULT999 sealing"
   },
 
   "antipatterns": [
