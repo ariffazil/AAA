@@ -75,6 +75,29 @@ Violating any Gödel-Lock invariant is a constitutional breach, not a warning.
 
 ***
 
+## IVb. Cross-Cutting Constitutional Invariants (MIND · TIME · SYMBOLIC ORDER)
+
+> **Declared: 2026-06-27** | These invariants constrain ALL organs. No organ owns them.
+> Enforcement: tool-level, not prose. Declaration without enforcement is advisory, not constitutional.
+
+| Invariant | Function | Enforcement Mechanism | Status |
+|-----------|----------|----------------------|--------|
+| **MIND** | Belief-state tracking, uncertainty propagation, epistemic discipline, attention management, deception detection | `arif_think` (uncertainty_chain, attention_context), `arif_memory_recall` (belief_snapshot, belief_restore, belief_delta) | **IMPLEMENTED** — Phase 1 complete |
+| **TIME** | Source-of-truth propagation, freshness decay, irreversibility chains, temporal consistency, session continuity | `arif_route` (SOT chain), `arif_observe` (freshness_weight), `arif_seal` (irreversibility_chain), `arif_judge` (temporal_consistency) | **IMPLEMENTED** — Phase 2 complete |
+| **SYMBOLIC ORDER** | Institutional dynamics, legitimacy scoring, population behavior, cultural collapse patterns, collective action | WEALTH tools (population_mode, institutional_trust, cultural priors, collective_action, legitimacy_score) | **SPECIFIED** — Phase 3 spec written, server-side implementation pending WEALTH code restoration |
+
+### What These Invariants Mean
+
+- **MIND** is not "just thinking." It is the epistemic discipline that ensures every reasoning step carries its uncertainty, every belief has a snapshot, and every session knows what changed since last contact.
+- **TIME** is not "just timestamps." It is the arrow of truth — evidence decays, seals chain, routing carries provenance, and judges check temporal consistency before verdicts.
+- **SYMBOLIC ORDER** is not "just culture." It is the collective dynamics layer — how institutions behave, how trust forms and collapses, how populations coordinate or fail.
+
+### The Binding Rule
+
+No organ may produce output that violates these invariants. If a tool cannot enforce an invariant, it must declare the gap — not silently skip it.
+
+***
+
 ## V. Constitutional Laws F1–F13
 
 ### Hard Floors — VOID on Violation (Immediate Block)
