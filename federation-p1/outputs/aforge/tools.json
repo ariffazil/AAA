@@ -1,0 +1,71 @@
+{
+  "organ": "aforge",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.589137+00:00",
+  "tool_count": 7,
+  "tools": [
+    {
+      "name": "forge_dry_run",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fc84667087eb054f030de2e239bbbe5fad0eb380a800263befa335992de15c26",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "forge_approve",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "617b3442057b6d7d87bf3647c556132cf0f83dd6302496e21e8966dbb2d65523",
+      "authority_required": "888_HOLD"
+    },
+    {
+      "name": "forge_execute",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "7c053af7890e9d46a40f60fddac2b241f0aaad0f319d686bab670f2345e7ab9b",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    },
+    {
+      "name": "forge_run",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "68bdbc25d4978b587745104ca61eab49f73889f28fb8f1ca5c725d7c7bb4bd6a",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    },
+    {
+      "name": "forge_lease_request",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "a8f17c4bbffb13c12d007d0f6361b2957c80c5c100b5420273b133147ab14d9f",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "forge_lease_status",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8fead547ca220cba64e7fb81bc0c9e6c81689f66bc8eae50a62b9bac3e7502e2",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "forge_federation_probe",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "c31bc520b550ebe971fa52e1091a0be88aa9e63a0c0b576809bfbbb9cb450680",
+      "authority_required": "NONE"
+    }
+  ]
+}

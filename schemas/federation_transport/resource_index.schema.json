@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/federation_transport/resource_index.schema.json",
+  "title": "Resource Index",
+  "description": "Every organ MUST expose a resource index that maps resource classes to URIs and declares autoload rules — which resources must be loaded before which tool domains. This is Gap 7 fix: resource autoload rules. DITEMPA BUKAN DIBERI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["organ", "resource_index_uri", "resource_classes", "autoload_rules"],
+  "properties": {
+    "organ": {
+      "type": "string",
+      "enum": ["GEOX", "WEALTH", "WELL", "arifOS", "A-FORGE", "AAA"]
+    },
+    "resource_index_uri": {
+      "type": "string",
+      "description": "URI of this index itself. E.g. geox://resources/index.",
+      "examples": ["geox://resources/index", "afwealth://resources/index"]
+    },
+    "resource_classes": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Map of resource class to list of resource URIs in that class.",
+      "properties": {
+        "identity": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Organ identity and authority declarations.",
+          "examples": [["geox://identity"], ["afwealth://identity"]]
+        },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Tool surface and capability declarations.",
+          "examples": [["geox://capabilities"], ["afwealth://capabilities"]]
+        },
+        "domain_profiles": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Domain-specific profiles. Basin, portfolio, etc.",
+          "examples": [["geox://basins/index"], ["afwealth://portfolios/index"]]
+        },
+        "claims": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Claim registry and status.",
+          "examples": [["geox://claims/index", "geox://surface/truth"]]
+        },
+        "artifacts": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Non-tool outputs: reports, charts, models.",
+          "examples": [["geox://artifacts/index"]]
+        },
+        "render": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Renderable resources: cubes, cross-sections, dashboards.",
+          "examples": [["geox://render/cubes/{cube_id}/manifest"]]
+        },
+        "schema": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Schema and type definitions.",
+          "examples": [["afwealth://schema"]]
+        },
+        "federation_contract": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Federation contract and handoff protocols.",
+          "examples": [["afwealth://federation/contract"], ["arifos://federation/contract"]]
+        },
+        "constitution": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Constitutional documents: floors, invariants, sovereignty.",
+          "examples": [["arifos://constitution/current"]]
+        }
+      }
+    },
+    "autoload_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["when_tool_domain", "load"],
+        "properties": {
+          "when_tool_domain": {
+            "type": "string",
+            "description": "Tool domain prefix that triggers this autoload rule. E.g. basin, claim, prospect, valuation.",
+            "examples": ["basin", "claim", "prospect", "valuation", "homeostasis"]
+          },
+          "load": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Resource URIs to automatically load when this domain is targeted.",
+            "examples": [["geox://basins/{basin}/profile"], ["afwealth://portfolios/{portfolio}/summary"]]
+          },
+          "optional": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, these resources are recommendations. If false, they are required before the tool call proceeds."
+          }
+        }
+      },
+      "description": "Rules that auto-load resources based on which tool domain is being targeted."
+    },
+    "registered_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    }
+  }
+}

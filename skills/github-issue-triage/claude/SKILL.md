@@ -2,13 +2,9 @@
 id: github-issue-triage
 name: GitHub Issue Triage
 version: "1.0.0"
-description: >
-  Governed triage workflow for GitHub issues across the arifOS federation.
-  Use this skill whenever a new issue is opened, an issue lacks labels, or
-  an agent needs to determine if an issue belongs in a different repo or
-  federation organ. This skill classifies, routes, labels, and drafts
-  responses — but never closes, never assigns to Arif, and never promises
-  code fixes without sovereign approval.
+status: DEPRECATED
+deprecated_by: github-operations
+redirect_to: github-operations §1 (issue-triage mode)
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -19,29 +15,32 @@ host_compatibility:
   - claude-code
   - codex
   - opencode
-dependencies:
-  skills:
-    - repo-hygiene-audit
-  servers:
-    - github
-  tools:
-    - issue-read
-    - label-apply
-    - comment-post
-examples:
-  - "New issue opened in ariffazil/arifos with no labels — triage it"
-  - "Issue about GEOX well logs filed in AAA repo — route it correctly"
-  - "Detect duplicate of an existing issue and link them"
-tests:
-  - Correctly classify a bug report vs feature request vs question
-  - Route a constitutional floor issue to arifOS, not A-FORGE
-  - Detect duplicate issue and draft linking comment without closing
-version_lock:
-  schema_version: "1"
-  artifact_hash: pending
+replaced_by:
+  skill: github-operations
+  section: "§1 ISSUE TRIAGE"
+  mode: issue-triage
+  effective_date: "2026-06-26"
+  reason: "Unified into single github-operations skill covering issue + PR + CI"
 ---
 
-# GitHub Issue Triage
+# ⚠️ DEPRECATED — Use `github-operations` §1 Instead
+
+> **This skill is deprecated.** Load `github-operations` instead and specify `mode="issue-triage"`.
+> This file is retained for reference only and will be removed in a future version.
+
+**Old usage:**
+```
+skill_load(github-issue-triage, issue_url=...)
+```
+
+**New usage:**
+```
+skill_load(github-operations, mode="issue-triage", issue_url=...)
+```
+
+---
+
+# GitHub Issue Triage (DEPRECATED — see github-operations §1)
 
 ## Overview
 

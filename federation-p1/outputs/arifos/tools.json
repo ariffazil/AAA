@@ -1,0 +1,71 @@
+{
+  "organ": "arifos",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.576842+00:00",
+  "tool_count": 7,
+  "tools": [
+    {
+      "name": "arif_init",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "52423ae719213ee9ba7211d1bdb6498ca757a07f778f8fb12262a8de39a8012b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "arif_observe",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f9102a65260bed5e1dfb61781f2e3fe0cba6969b51d92844fc1f05b508034427",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "arif_think",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "15f7d07d03e6b9230fe2cbd769a74d064927c49fa5e4646f8aec52ff4b6f51d7",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "arif_route",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b4ded87e9e94d00e48310a2bb0dee3ba2e600a9f4cacc4000ab56979652900f3",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "arif_judge",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "81ccbd3fe09d5376b8b563b16a0decd3bb6201895e68f3e50bb588204d02a622",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    },
+    {
+      "name": "arif_act",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "388d4582c1c3d19400d0f7d36fe1f9a09aa660998b587ce73efd665b03ba7b4d",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    },
+    {
+      "name": "arif_seal",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "83aa99b79c4da92d4f19ee6dcbe5aad0855fe588fa5290717c3520db2468fcc6",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    }
+  ]
+}

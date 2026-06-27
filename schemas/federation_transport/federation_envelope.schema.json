@@ -1,0 +1,70 @@
+{
+  "$id": "https://arifos/schema/federation-envelope.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_id",
+    "from_organ",
+    "to_organ",
+    "intent",
+    "capability",
+    "authority_required",
+    "context_capsule",
+    "translation_cards",
+    "payload",
+    "manifest_refs"
+  ],
+  "properties": {
+    "trace_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$"
+    },
+    "from_organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "to_organ": {
+      "type": "string",
+      "enum": ["arifos", "wealth", "geox", "well", "aaa", "aforge"]
+    },
+    "intent": {
+      "type": "string",
+      "description": "Human-readable intent declaration"
+    },
+    "capability": {
+      "type": "string",
+      "description": "Specific capability being invoked on the target organ"
+    },
+    "authority_required": {
+      "type": "string",
+      "enum": ["NONE", "READ_ONLY", "888_HOLD", "JUDGE_SEAL_AUTHORIZATION"]
+    },
+    "context_capsule": {
+      "$ref": "context_capsule.schema.json"
+    },
+    "translation_cards": {
+      "type": "array",
+      "items": {
+        "$ref": "domain_translation_card.schema.json"
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "The actual data being transported"
+    },
+    "manifest_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "SHA256 hashes of the manifests active at time of envelope creation"
+    },
+    "hmac_signature": {
+      "type": "string",
+      "description": "HMAC-SHA256 signature of the envelope contents"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

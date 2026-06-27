@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/federation_transport/federation_intelligence_bus.schema.json",
+  "title": "Federation Intelligence Bus",
+  "description": "The complete routing manifest for a multi-organ federation workflow. Every high-consequence cross-organ path MUST be declared as an intelligence bus manifest. This is the transport contract that makes intelligence portable, inspectable, and replayable. DITEMPA BUKAN DIBERI.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["intent_id", "actor_id", "session_id", "authority", "domain_route", "hard_stops", "created_at"],
+  "properties": {
+    "intent_id": {
+      "type": "string",
+      "pattern": "^INTENT-[0-9]{8}-[0-9]{6}$",
+      "description": "Unique intent identifier. Format: INTENT-YYYYMMDD-NNNNNN.",
+      "examples": ["INTENT-20260627-000001"]
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "Who initiated this workflow.",
+      "examples": ["ARIF", "agent/opencode", "agent/auditor"]
+    },
+    "session_id": {
+      "type": ["string", "null"],
+      "description": "Governed session ID from arif_session_init."
+    },
+    "context_capsule_id": {
+      "type": ["string", "null"],
+      "description": "Context capsule this bus operates within."
+    },
+    "authority": {
+      "type": "string",
+      "enum": ["OBSERVE_ONLY", "ANALYZE", "DRAFT", "MUTATE", "EXECUTE", "IRREVERSIBLE"],
+      "description": "Maximum authority granted by this bus. Caps all organ calls."
+    },
+    "intent_summary": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "F4 CLARITY: one-sentence summary of what this workflow aims to do."
+    },
+    "domain_route": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["organ", "role", "tools"],
+        "properties": {
+          "organ": {
+            "type": "string",
+            "enum": ["GEOX", "WEALTH", "WELL", "arifOS", "A-FORGE", "AAA"]
+          },
+          "role": {
+            "type": "string",
+            "description": "What this organ contributes to the workflow.",
+            "examples": ["earth evidence", "capital evidence", "constitutional adjudication", "execution"]
+          },
+          "tools": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Tools to call on this organ, in call order.",
+            "examples": [["geox_data_qc_bundle", "geox_prospect_evaluate"], ["wealth_compute_npv", "wealth_compute_evoi", "wealth_power_audit"]]
+          },
+          "resources": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Resources to load before calling tools on this organ.",
+            "default": []
+          },
+          "prompt": {
+            "type": ["string", "null"],
+            "description": "Prompt contract to guide this organ's contribution.",
+            "examples": ["geox_interpret", "wealth_capital_deal_brief"]
+          },
+          "expected_output_domains": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "What domain outputs we expect from this organ.",
+            "examples": [["earth.prospect"], ["capital.valuation", "capital.risk"]]
+          }
+        }
+      }
+    },
+    "hard_stops": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["condition", "action"],
+        "properties": {
+          "condition": {
+            "type": "string",
+            "description": "Falsifiable condition that triggers the stop.",
+            "examples": ["irreversible=true without 888_HOLD", "capital allocation without arifOS judge", "earth claim without evidence_refs", "financial claim without downside case"]
+          },
+          "action": {
+            "type": "string",
+            "enum": ["888_HOLD", "HOLD", "SEAL", "VOID", "RETURN_TO_USER", "ABORT_WORKFLOW"],
+            "description": "What happens when condition is met."
+          }
+        }
+      },
+      "description": "Explicit stop conditions. Any condition met = workflow halts. These are non-negotiable gates."
+    },
+    "domain_translation_cards": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Card IDs for any domain translation cards created during this workflow.",
+      "default": []
+    },
+    "executed_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tools that have been executed so far in this workflow. For replay and audit.",
+      "default": []
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "in_progress", "completed", "halted", "aborted", "sealed"],
+      "description": "Current workflow status."
+    },
+    "halt_reason": {
+      "type": ["string", "null"],
+      "description": "If status=halted or aborted, why."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$",
+      "default": "1.0.0"
+    }
+  }
+}

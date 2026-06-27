@@ -1,0 +1,239 @@
+{
+  "organ": "well",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.588073+00:00",
+  "resource_count": 33,
+  "resources": [
+    {
+      "uri": "well://schema",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "443a6e606fbba32e74d82da5ecded4f6a4e741fff3ac9774144e2521d3e41c21",
+      "read_only": true
+    },
+    {
+      "uri": "well://state/arif",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "dfd072980be26ad1644cf6a2682b7f1f6497902608e91e582d9547105e137a47",
+      "read_only": true
+    },
+    {
+      "uri": "well://events/recent",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "20b00d070d1d1e4431e015303a3913122a3f744135b71974048187624287b8f7",
+      "read_only": true
+    },
+    {
+      "uri": "well://floors/well_floors",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "bb4e7b359acb80a19eb6a41fa52b67a28b712e22a626cab303de027dc27857d3",
+      "read_only": true
+    },
+    {
+      "uri": "well://vitals/arif",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "b83cfd698b58dfd638e025dd48159627870a4171efd744d124668569b79822d1",
+      "read_only": true
+    },
+    {
+      "uri": "well://substrate/registry",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "1fdfa54ff5fd5c5f3d6893dc6622089d6040b1389799e3263741a67e97d33d1b",
+      "read_only": true
+    },
+    {
+      "uri": "well://telemetry/arif",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "24c3479a54e26ded7bc2717b54c8192399498f1bec238cbec0adf5d893d6dce8",
+      "read_only": true
+    },
+    {
+      "uri": "well://readiness/arif",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "a391d8c2cb93350bb7a260d8c31cff8bd7a3c2304c1eeace948340b77a6c8b2a",
+      "read_only": true
+    },
+    {
+      "uri": "well://sovereign_entropy/arif",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "2619d2c0c829378413783694b8df962aa1316d004efe607c38d86a1c26319739",
+      "read_only": true
+    },
+    {
+      "uri": "well://causal_dag",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "212a28e92c3292d569d026a9b5af04a95d6e8d75104989f66d20782a77b341d0",
+      "read_only": true
+    },
+    {
+      "uri": "tree777://skills/well/{name}",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "20129d1116e605fce4116f2c3952d5e6fe5c470a07cefa982ad4e28aa2624781",
+      "read_only": true
+    },
+    {
+      "uri": "tree777://well/concepts/{name}",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "a1f9a88371a8b8c1baf7d3cb25b0a77fa90ce396dcbbfc86a5221f2e8802ae3c",
+      "read_only": true
+    },
+    {
+      "uri": "tree777://well/scars/{name}",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "9f07ba5552dc87b7f068f29a30723fb52e86ddd726899224ea7051192e0ef975",
+      "read_only": true
+    },
+    {
+      "uri": "well://identity",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "3f26cfa8847675162c3d58a920899a5e0b831b3ee196e9135f5c61d235f4bad1",
+      "read_only": true
+    },
+    {
+      "uri": "well://doctrine",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "d0c8c44b8a4a8b2812639f572c727afa8c2e3ec57885dc09a855edf08d66150f",
+      "read_only": true
+    },
+    {
+      "uri": "well://registry",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "ee3b0ffb30ae13ab376f2344ad9bce262f4a7f9b0e6419daaf207689586f331d",
+      "read_only": true
+    },
+    {
+      "uri": "well://tools/canon_map",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "2d3dfdc11f5be3e3bd65524b65510f3a9c52c9347126e59a42d7b61c7d692bfa",
+      "read_only": true
+    },
+    {
+      "uri": "well://decision/classes",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "9a516361f40922934b91b2e98b92a67bbe489fc073770be4ff231060428876bf",
+      "read_only": true
+    },
+    {
+      "uri": "well://bio/signals",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "3dd594050c1fc862f32b16f33f9b7c1264d2412bd3660e20f08e868e75a6333e",
+      "read_only": true
+    },
+    {
+      "uri": "well://physics/laws",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "2e9b4f9346a797b8dbbed2731de900443d6656d12e02f8f45156bb4870b7984c",
+      "read_only": true
+    },
+    {
+      "uri": "well://human/substrate",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "917746f6f6c6ecb0f1556cb7d9f843be54da8b6d43c52386f5bc0b8eb7729e6e",
+      "read_only": true
+    },
+    {
+      "uri": "well://machine/substrate",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "8c6dbc1049786291043129f995089bf301fba15266a6b4e1055d133fe813543c",
+      "read_only": true
+    },
+    {
+      "uri": "well://substrate/interaction",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "4109e519238379ce752c5301522ff49128606fd09751ab6e68c2fa689247cc7d",
+      "read_only": true
+    },
+    {
+      "uri": "well://coupling",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "f98194d6e259d2933a8a6bf3db584f16c3c38bc32db13b040ea9107969f535b4",
+      "read_only": true
+    },
+    {
+      "uri": "well://chemistry/glue",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "4819e04466cc9b204e1ce14744b60488daa90e88db71ce8372be4771906c6fc9",
+      "read_only": true
+    },
+    {
+      "uri": "well://transport/loop",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "801f007612deaec2487204e3d32ef270f86cbddd4f0c0a79279e96ecfcc996b4",
+      "read_only": true
+    },
+    {
+      "uri": "well://transport/stages",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "6bd305455eab53f4eff79e02ace7123162b525fac573d1cdfda8ab938df04b6b",
+      "read_only": true
+    },
+    {
+      "uri": "well://metabolic/flux",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "98317e3b7459ea2cf2d081d4a045ec5ea74a2f39c68adf9ff8dbd30abd5377e7",
+      "read_only": true
+    },
+    {
+      "uri": "well://bridge/arifos-kernel",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "71ef76a741138b2ac4ce57590cd4a300120a95182bc4b23212bc3b5749060886",
+      "read_only": true
+    },
+    {
+      "uri": "well://bridge/geox",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "38d79465237751d8674e8007b3d8d7aaba2ca44fadba0f5ba90159d6aa1e961d",
+      "read_only": true
+    },
+    {
+      "uri": "well://bridge/wealth",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "4d2aa5ce895e2dea4240d7f5b680efd99adc0af86fed563637c58ab9d770ba59",
+      "read_only": true
+    },
+    {
+      "uri": "well://signals/consent-integrity",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "2f91db8e360dc2d166ec1a091a226199eb8ac2317bac0985818bd992fb2246bf",
+      "read_only": true
+    },
+    {
+      "uri": "well://signals/information-asymmetry",
+      "version": "2026.06.28",
+      "mime_type": "text/plain",
+      "resource_sha256": "1be78665391ba2694ccd99811504b7446dc8a86e9dabfc945cb15a7a03c961e7",
+      "read_only": true
+    }
+  ]
+}

@@ -1,0 +1,674 @@
+{
+  "organ": "well",
+  "version": "2026.06.28",
+  "generated_at": "2026-06-27T18:10:58.587815+00:00",
+  "tool_count": 74,
+  "tools": [
+    {
+      "name": "well_health_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "20a0e0d62fc883fd5cc5e10fdb080dc0a23f6e4fa49031dc02f43e94f51752a6",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_state",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "6247ddb55b490836b912dd67714e0776345daace379129914c0452f1c337e419",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_log",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "224daeb7e373a73871cd8535925d289ccce1cabffdfd6a8d5598909a2cbbfe50",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_readiness",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "9e07cb1683f55f2d4cd869ea7c5b45ba8bf7123f975cd7db3f312e4827f6dd24",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_contrast_report",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fd2d0e08542d9fda6cc0e333376f58c1bd0ea8df07e6ef4d404d921270ad0c29",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_init",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fc175001e899ba049c14c6d9cea866164803c23ea584a720d9f3068d87bceddd",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_check_floors",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e8cd7adfe01fc320cfcac0c8ec3cab288fb2eacf01b90a85ee9b4620cb2bee15",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_log_state",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "d97b22afa3b0ea914af460100703a8d39a2dbb285ce59f685abb06072c553044",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_get_readiness",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f0fcffc7b5cf3d99a4f7a06c417efb6daa1f8fbf4a80069aa8dcb18abe67077a",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_check_floor",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "21419bcf0d186227ad2daedb3449711790f737d5692d59aa82b5ace2eb526c93",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_list_log",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "b5351cd7e6407d4827b9a88cac6b66f0732c4dc139ffab5f364e2dd54272fcea",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_trend_analysis",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "0407c9ac6c362061732f0417e16c405b9a6c3ed558dcdd71d98103605c4ea973",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_bandwidth_recommendation",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "47d3b23863d6df7b4dde07f42f70d7c5058ebd952a2f4e0f0836aae151d4d4df",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_niat_check",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "50d836dcbaf3cea2f0e9fffaba8d5a1317100ef7e2667a71e19b9379f57b09f2",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_decision_classify",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d7e4cf4f23ed001270767b851562c29f088aafc293eea4b8ef25fa8f8d971c00",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_medical_boundary",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "18563e2fb1199d7594cebd0a83ead5e477e3b771a3710d0f88ae7dddb7d0e46b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_daily_brief",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "6d5aa5fdf10be059082c068b075ec4ab92dd22b2978261b2776fdf1f036da5d3",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_machine_state",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "c9fe4dbeef19f6f2ea69789dfd10de3e55a614ece3176e112dcae9dee87ecc03",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_coupled_readiness",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "7be234a5995075402d4cf052aa7e9df2c05e04f059a6b49164f8e20d1ed68cf3",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_decision_bandwidth",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8e2cc0a8fe4cecd02fff6caadcaec235d26a688985ebfd6fd470f69327401bd7",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_forge_precheck",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8b2f3c376f7fb3dd2782524b16b86a3b897886ec267ea2a5b6f817d78a4328d3",
+      "authority_required": "888_HOLD"
+    },
+    {
+      "name": "well_forge_closeout",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "3fd9cfdc1710bb96994d56c5a8d352e321ffb1720551b5fabc24431c84800823",
+      "authority_required": "888_HOLD"
+    },
+    {
+      "name": "well_get_health",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "096134d2d22e7d14204ffcc9a8de16fd72254f7f3552f6f7ba438132b1e8ccec",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_get_state",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d4ecd33b27844651c69f5ba28362205d5dbdeae7c70cc46d3878a9aef423c24f",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_check_invariant",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "81be4d7cb41a153981afe826f54427b6f9e9bb3795a977571d2ac4cb0dceb8d0",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_log_signal",
+      "version": "2026.06.28",
+      "read_only": false,
+      "destructive": true,
+      "idempotent": false,
+      "output_schema_sha256": "d71a43cb23f5308b0d205877a31ce4d965a957a3de70471f303ea615a4d4a93b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_list_events",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "a26dfb5e8a7242847e50f15d43a760e9d291840667987171a22da0502dd9887b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_reflect_trend",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5a1ed6aaf573d9eb563d677b03eb51fe96e51b88d8b774a3924178b1ca7b3073",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_reflect_readiness",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "87e2409ef5d12b9c1f26d1a84e66bafdc57e3349ed88eeb248f3ca23851a7e03",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_suggest_mode",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "0e7c852b9c363d2a4641c16dc9c5d894b7fa4654d75a35e2aea54f170a53b943",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_suggest_recovery",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "953ea70d0a5353cb6073a362fea57fd45801d3ed286817ef1a3f71076549e5c4",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_reflect_niat",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "212889adce575bbfe0ad3f7563352bf601d7305c66728d155af939117519e3ba",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_classify_task",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "6543c1f0cd5563cdcdbfadfa35fb55ec9bf53b5ade758db7280f6950a58299cd",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_get_packet",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "84d60f900b5b2d91bfea325329037236d5c2a2cdccaf47093b0ac312910530dd",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_request_anchor",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b0f6c88d89bbb9daea7d544f7b714210a913a06fef771bf8062047ae84883aed",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_000_init",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b6a66200484ab953d03b026068b51ad8ad29d934b7e0e70e71cb0d356b5163fd",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_111_sense",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "2d3a064c356635dec61b5eb4ffdbffa3ce2d2a1314d65e6033c40005a03d743e",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_222_fetch",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "339c520a928d47dc06abd70baefcc917a37bdb21cd9a166a95b9a194aa5a140e",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_333_mind",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "9bef3fcf6ba27c6aa559defc9e8a9b76fc8c993693cdac51261d0c1a1094b1b8",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_444_kernel",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b067e2989855e283463f1cba8f903150d377fbb420e40723f59573471ef07d76",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_555_memory",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "1e6ec66d8e32fab56c5cf088524a1dd2b225058020f50161847f7284e5afa762",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_666_heart",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "2b12d82fe8c8efe531123934a740255d0f80dc2d6ac99d0ddc9c851454049432",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_777_forge",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8289faba2a53a6b7f3a1b13ebd2e2b529b3a41b36a16d8d4a64758d7f80925c7",
+      "authority_required": "888_HOLD"
+    },
+    {
+      "name": "well_888_judge",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f410886c05f9bb2a6fe4f65ec40c5eb84677bdf96f7ea48add1c0a2941d4c6ca",
+      "authority_required": "JUDGE_SEAL_AUTHORIZATION"
+    },
+    {
+      "name": "well_444_reply",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "bc6f7544b6f40924155180a4ff51e8da4044eaceaa6dc2408ff88bf68837178e",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_444_gateway",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "b4bf82e6fc59f066bcf8401e7d88cb9bf52ad2994c01a36e04f73bf252807b3a",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_000_ops",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "4ea68468f72b410d36b61bee726da6e1f80c530e1742fa3e8831674fbda0b9f4",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_13_signal_coverage",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "cef022b7e925593eff1803c4c3e70f87b67fa6b43f25e4e6e58f4d27dd611996",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_signal_coverage",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "570dd93de7efa01fb8c54ebe20248bf6a663dcfb373856cee09626611f3e7e7b",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_handoff_dignity_to_arifos",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "658967fdfb4977792f11d7608f3a89192ca59a83a9f0fdfdac1223e730dd49bc",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_handoff_livelihood_to_wealth",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "fdf7116d4f509877284fe55888813b57c4ebba59013985be5990f842db365e8e",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_attest_to_kernel",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e7c8a2e5219fb7414fabb0b46c37f969eb090019a17e4ed7db3575f40a552e65",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_fatigue_accumulator",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "bfcc2a938a405acc40ff5a92f2cdc733185573661b6b026e470392c1103c503a",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_classify_substrate",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e02bea727e2dc7626a53d7c82a13ed16eb1e5e04652db3574b6025d5738d4199",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_trace_lineage",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "4aacd3f25f742f84acfb561d7057153b7ac429ea6d379160e746a51811e2fe2c",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_detect_boundary",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "98d42f029a7205ec65f7adf025697bdc421d8f6a0136ae3f551bcdff17736696",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_measure_gradient",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5c5711d026e58f9914269b1a9f1866a843ba9c45b558cf4b2777f82f6c6911f1",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_assess_metabolism",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f726e7e6725a6170d258d8d8f2b3714027b5b9bd71e2b244707b30d892153f02",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_assess_homeostasis",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "5b1b22070b6f3912e2edd33ac1cc5413faa118f5d203699f9560b276bd023819",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_check_repair",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e85dc5a0345d16f82b57db749ba867cc5b2bf8c12fead155825f5fceb9f8fa08",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_validate_vitality",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "1d63f3a362aa1d9fd593717ed99119c1392bba301d355dbd1c6a011110cac9bd",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_assess_livelihood",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "0c521b422713d19eb6ff0f45d5c5978292d4f86b15899c42b0eed17deb105381",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_daily_checkin",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "3209fb6f5808f02299f9c364d2702de7389463b6e5ac75dba7cb35cf0b745d2c",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_assess_reliability",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "6c13cc53a1af09683c76a60c49fb30220f11f28a14cd96a6b6983909e2d24e7d",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_compute_metabolic_flux",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "3337e99969d1f5de76d452406f94618544cf7bef275bfcb8323debde57660832",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_reflect_intelligence",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "d2d0e3bd938a5d217d5a9cb523c1ce67521eb831bc02ae31483e393788c8ac74",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_guard_dignity",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "f7c2d444a3caeda5a788bf3b0a8a7386d9126e9e5354d74bee242802635eae30",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_anchor_evidence",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e05cb457da27e23bbb1b34ccf5c6982d4d25f5824d4d5484cf41e216f1a218ae",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_assess_governance",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "c0771b161d183bdf9f3be947ff6e2985a161051cde52f79e9bf02fbdf09bd075",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_trace_decision",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "0aabbbaa2945b70a3676e8a808a2bcd5d6e7605babb4657448156d456a12d858",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_validate_consensus",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "8d9338f18de6ed03b71c8f14e44e808f92ed9a08e528e041835812953894c262",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_system_registry_status",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "7e17e6e9701680185722be7ddce69c1983add712c8c9ac7f57fe63679f2ceb26",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_registry_status",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "4e79b7a4412969751cb3b85c868a11e6d214334b1346d8a3d022e3fdcae2bbcc",
+      "authority_required": "NONE"
+    },
+    {
+      "name": "well_classify_state",
+      "version": "2026.06.28",
+      "read_only": true,
+      "destructive": false,
+      "idempotent": true,
+      "output_schema_sha256": "e69b069f164661b7a51f557738b43821be5352aaeb62cfbf1fe90565602401eb",
+      "authority_required": "NONE"
+    }
+  ]
+}
