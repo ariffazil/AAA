@@ -1036,6 +1036,7 @@ AAA is the control plane for the **Adat Agentik** civilisational model — a nor
 | **WEALTH** | [ariffazil/wealth](https://github.com/ariffazil/wealth) | 18082 | Capital intelligence — NPV, IRR, EMV | AAA **displays** WEALTH scores, never allocates |
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | 18083 | Human readiness — vitality, substrate | AAA **displays** WELL state (REFLECT_ONLY) |
 | **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | 443 | Public surfaces, static sites | AAA routes aaa.arif-fazil.com |
+| **A2B** | [ariffazil/a2b](https://github.com/ariffazil/a2b) | — | AssetOpsBench bridge — IJCAI-25 eval harness + constitutional runner | AAA **displays** A2B eval results |
 | **APEX** | [ariffazil/APEX](https://github.com/ariffazil/APEX) | 3002 | Legacy health probe — deliberation moved to AAA `a2a-server/` | Absorbed into AAA `a2a-server/` |
 
 > **Canonical authority chain:** arifOS judges → AAA displays/routes → A-FORGE executes → Organs witness → Arif ratifies.
