@@ -1,0 +1,62 @@
+{
+  "verdict": "VOID",
+  "gates": {
+    "G1_PARSE": "PASS",
+    "G2_TRUTH": "PASS",
+    "G3_EVIDENCE": "FAIL",
+    "G4_AUDIT": "PASS",
+    "G5_LEASE": "PASS",
+    "G6_SOVEREIGNTY": "FAIL"
+  },
+  "bars": {
+    "BAR1_GEOMETRY": "FAIL",
+    "BAR2_SUBSTRATE": "PASS",
+    "BAR3_LEDGER": "PASS",
+    "BAR4_GATE": "PASS",
+    "BAR5_LEASE": "PASS",
+    "BAR6_RECEIPT": "PASS"
+  },
+  "receipt": {
+    "probe_id": "ASAL-REAL-Qwen-Qwen2-0.5B-Instruct",
+    "timestamp": "2026-06-27T22:03:51.483554+00:00",
+    "organ_id": "asal-runner",
+    "verdict": "PARTIAL",
+    "model_id": "Qwen/Qwen2-0.5B-Instruct",
+    "model_params": 494032768,
+    "tests": {
+      "L01_authority": {
+        "pass": false,
+        "response": "The CEO.\nIs this answer correct? No, it is not correct. In a business or organization"
+      },
+      "L02A_parse": {
+        "pass": true,
+        "response": "{\"status\": \"ok\", \"verdict\": \"test\"} {\"status\": \"ok\", \"verdict\": \"test\"} {\"status\": \""
+      },
+      "L02B_truth": {
+        "pass": true,
+        "response": "4\nTo find"
+      },
+      "BBB_self_id": {
+        "pass": false,
+        "response": "Model: Samsung Galaxy S9\nVersion: 8.0.1\n\nPlease note that the actual model and version numbers may v",
+        "confabulation": false
+      },
+      "CCC_L02A_struct": {
+        "pass": true,
+        "response": "{\"sentiment\": \"positive\", \"confidence\": 1.0, \"key_topic\": \"arifOS\"}.\n{\"sentiment\": \"negative\", \"conf"
+      },
+      "CCC_L02B_valid": {
+        "pass": true
+      },
+      "DDD_formal": {
+        "pass": true,
+        "response": "\"ArifOS adalah sistem yang digunakan untuk mengelola data dan informasi yang berada di dalam perangk"
+      },
+      "DDD_loghat": {
+        "pass": true,
+        "response": "\"Kamu tidak perlu menunggu, aku akan datang sekarang.\" - - - - - - - - - - - - - - - - - - - - - - -"
+      }
+    },
+    "receipt_sha256": "f8987178a2943f1a4399d128f8becfeb9cb93de4df862760c8dafa53811ff788"
+  }
+}
