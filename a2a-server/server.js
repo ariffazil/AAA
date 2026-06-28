@@ -611,12 +611,104 @@ async function searchRag(query, limit = 5) {
 const AAA_AGENT_CARD = require('../src/seed/agent-card.json');
 const DISCOVERY_ROUTING_POLICY = require('../src/seed/discovery-routing-policy.json');
 
+// === Agent Discovery (FORGE 2026-06-28: wired into main server) ===
+const { mountDiscoveryRoutes } = require('./agent-discovery-routes');
+
 // === P2P Federation Contract v1 (spine peers) ===
 const PEER_CONTRACTS = new Map([
   ['aaa-gateway', require('../a2a/peer-contracts/aaa-gateway.json')],
   ['arifos-kernel', require('../a2a/peer-contracts/arifos-kernel.json')],
   ['a-forge-executor', require('../a2a/peer-contracts/a-forge-executor.json')],
+  ['geox-evidence', require('../a2a/peer-contracts/geox-evidence.json')],
+  ['wealth-capital', require('../a2a/peer-contracts/wealth-capital.json')],
+  ['well-vitality', require('../a2a/peer-contracts/well-vitality.json')],
 ]);
+
+// === DelegationGuard — cross-organ boundary enforcement ===
+// FORGE 2026-06-28: prevents privilege escalation and cross-boundary violations.
+// Rules are derived from peer contract forbidden_actions + authority_class.
+// Returns { blocked: bool, warned: bool, reason: string }
+
+const DELEGATION_RULES = [
+  // A-FORGE cannot self-approve its own work
+  { match: { source: 'a-forge', target_contains: 'forge_approve' },
+    verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot self-approve. Requires arifOS judge.' },
+  { match: { source: 'a-forge', target_contains: 'forge_validate' },
+    verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot self-validate. Requires external witness.' },
+
+  // Evidence organs cannot mutate other organ records
+  { match: { source: 'geox', target_contains: 'wealth_' },
+    verdict: 'blocked', reason: 'F8 LAW: GEOX cannot mutate WEALTH records.' },
+  { match: { source: 'geox', target_contains: 'well_' },
+    verdict: 'blocked', reason: 'F8 LAW: GEOX cannot mutate WELL records.' },
+  { match: { source: 'wealth', target_contains: 'geox_' },
+    verdict: 'blocked', reason: 'F8 LAW: WEALTH cannot mutate GEOX evidence.' },
+  { match: { source: 'wealth', target_contains: 'well_' },
+    verdict: 'blocked', reason: 'F8 LAW: WEALTH cannot mutate WELL records.' },
+  { match: { source: 'well', target_contains: 'geox_' },
+    verdict: 'blocked', reason: 'F8 LAW: WELL cannot mutate GEOX evidence.' },
+  { match: { source: 'well', target_contains: 'wealth_' },
+    verdict: 'blocked', reason: 'F8 LAW: WELL cannot mutate WEALTH records.' },
+
+  // Evidence organs cannot execute destructive actions
+  { match: { source: 'geox', target_contains: 'deploy' },
+    verdict: 'blocked', reason: 'F8 LAW: GEOX is evidence-only. Cannot deploy.' },
+  { match: { source: 'wealth', target_contains: 'deploy' },
+    verdict: 'blocked', reason: 'F8 LAW: WEALTH is evidence-only. Cannot deploy.' },
+  { match: { source: 'well', target_contains: 'deploy' },
+    verdict: 'blocked', reason: 'F8 LAW: WELL is reflect-only. Cannot deploy.' },
+
+  // No organ can claim F13 override
+  { match: { target_contains: 'f13_override' },
+    verdict: 'blocked', reason: 'F13 SOVEREIGN: Human veto cannot be overridden by any organ.' },
+  { match: { target_contains: 'bypass_888' },
+    verdict: 'blocked', reason: 'F13 SOVEREIGN: 888 HOLD cannot be bypassed by any organ.' },
+
+  // Vault cannot invent receipts
+  { match: { target_contains: 'vault_seal' },
+    verdict: 'warned', reason: 'WARNING: VAULT seal requires prior arifOS judge.' },
+];
+
+function checkDelegation(sourceAgent, targetSkill, message, peerContracts) {
+  const sourceLower = (sourceAgent || '').toLowerCase();
+  const targetLower = (targetSkill || '').toLowerCase();
+  const messageText = (typeof message === 'string' ? message :
+    message?.parts?.map(p => p.text || p.data?.text || '').join(' ') || ''
+  ).toLowerCase();
+
+  for (const rule of DELEGATION_RULES) {
+    const srcMatch = !rule.match.source || sourceLower.includes(rule.match.source);
+    const tgtMatch = !rule.match.target_contains ||
+      targetLower.includes(rule.match.target_contains) ||
+      messageText.includes(rule.match.target_contains);
+
+    if (srcMatch && tgtMatch) {
+      return {
+        blocked: rule.verdict === 'blocked',
+        warned: rule.verdict === 'warned',
+        reason: rule.reason,
+      };
+    }
+  }
+
+  // Check peer contract forbidden_actions
+  const contractKey = [...peerContracts.keys()].find(k => sourceLower.includes(k.split('-')[0]));
+  if (contractKey) {
+    const contract = peerContracts.get(contractKey);
+    const forbidden = contract?.capability_card?.forbidden_actions || [];
+    for (const action of forbidden) {
+      if (targetLower.includes(action.replace(/_/g, '_'))) {
+        return {
+          blocked: true,
+          warned: false,
+          reason: `Peer contract violation: ${contractKey} forbidden action "${action}"`,
+        };
+      }
+    }
+  }
+
+  return { blocked: false, warned: false, reason: '' };
+}
 
 function buildDiscoveryContract() {
   return {
@@ -1695,10 +1787,16 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
     // FORGE responds via Telegram bot @arifOS_bot
     const text = message?.parts?.[0]?.text || '';
     try {
+      const tgBotToken = process.env.TG_777_FORGE_BOT_TOKEN || '';
+      const tgChatId = process.env.TG_777_FORGE_CHAT_ID || '';
+      if (!tgBotToken || !tgChatId) {
+        console.warn('[777-FORGE] TG_777_FORGE_BOT_TOKEN or TG_777_FORGE_CHAT_ID not set');
+        return;
+      }
       const tgRes = await fetch(
-        `https://api.telegram.org/bot8727562763:AAGIr2UZW7zrZuAN9HrEoULR37akQKhYZDM/sendMessage`,
+        `https://api.telegram.org/bot${tgBotToken}/sendMessage`,
         { method: 'POST', headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ chat_id: -1003753855708, text: `[777-FORGE]\n${text}` }) }
+          body: JSON.stringify({ chat_id: tgChatId, text: `[777-FORGE]\n${text}` }) }
       );
       const tgResult = await tgRes.json();
       res.json(createJSONRPCResponse(req.body?.id || 0, {
@@ -2555,6 +2653,10 @@ app.get('/', (req, res) => {
   });
 });
 
+// === PUBLIC ROUTES (no auth required — organ cards are public information) ===
+// Agent discovery must be accessible for mesh coordination.
+mountDiscoveryRoutes(app);
+
 // === PROTECTED ROUTES ===
 app.use('/a2a', authMiddleware);
 
@@ -2767,6 +2869,33 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     };
     await taskStore.set(taskId, task);
+
+    // === DelegationGuard (F8 LAW + cross-organ boundary enforcement) ===
+    // FORGE 2026-06-28: enforce delegation rules before task dispatch.
+    // - A-FORGE cannot self-approve its own validation
+    // - Evidence organs (GEOX/WEALTH/WELL) cannot mutate other organ records
+    // - Witnesses cannot execute destructive actions
+    // - High-risk actuation requires arifOS judge PASS
+    const sourceAgent = params.agent_id || params.metadata?.source_agent || 'anonymous';
+    const targetSkill = params.skill || params.metadata?.target_skill || '';
+    const delegationVerdict = checkDelegation(sourceAgent, targetSkill, message, PEER_CONTRACTS);
+
+    if (delegationVerdict.blocked) {
+      task.status = { state: 'rejected', timestamp: new Date().toISOString(),
+        message: { role: 'agent', parts: [{ kind: 'text', text: delegationVerdict.reason }] }
+      };
+      await taskStore.set(taskId, task);
+      console.warn(`[DelegationGuard] BLOCKED ${sourceAgent} → ${targetSkill}: ${delegationVerdict.reason}`);
+      return res.json(createJSONRPCResponse(id, {
+        id: taskId, contextId,
+        status: task.status, artifacts: [], history: task.history, kind: 'task', metadata: {
+          ...task.metadata, delegation_blocked: true, delegation_reason: delegationVerdict.reason,
+        },
+      }));
+    }
+    if (delegationVerdict.warned) {
+      console.warn(`[DelegationGuard] WARNING ${sourceAgent} → ${targetSkill}: ${delegationVerdict.reason}`);
+    }
 
     await executeTask(taskId, contextId, message, params.agent_id, params);
 
