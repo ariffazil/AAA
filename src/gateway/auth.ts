@@ -39,9 +39,10 @@ export function createAuthMiddleware(): RequestHandler {
     }
 
     // Critical Trust Boundary: Validate Bearer/API Key
+    // F13 SOVEREIGN: No dev bypass. Authentication is mandatory for all non-public A2A surfaces.
     if (authHeader?.startsWith('Bearer ')) {
       const token = authHeader.slice(7);
-      if (token === process.env.A2A_TOKEN || process.env.NODE_ENV === 'development') {
+      if (token === process.env.A2A_TOKEN) {
         authReq.authContext = {
           authenticated: true,
           authScheme: 'bearer',
@@ -53,7 +54,7 @@ export function createAuthMiddleware(): RequestHandler {
     }
 
     if (apiKeyHeader) {
-      if (apiKeyHeader === process.env.A2A_API_KEY || process.env.NODE_ENV === 'development') {
+      if (apiKeyHeader === process.env.A2A_API_KEY) {
         authReq.authContext = {
           authenticated: true,
           authScheme: 'apiKey',
@@ -64,21 +65,15 @@ export function createAuthMiddleware(): RequestHandler {
       }
     }
 
-    // Reject in production if no valid auth
-    if (process.env.NODE_ENV === 'production') {
-      res.status(401).json({
-        jsonrpc: '2.0',
-        id: 0,
-        error: { 
-          code: ERROR_CODES.AUTHENTICATED_EXTENDED_CARD_NOT_CONFIGURED, 
-          message: 'Authentication required' 
-        }
-      });
-      return;
-    }
-
-    // Allow in development
-    authReq.authContext = { authenticated: false };
-    next();
+    // Reject all unauthenticated requests to protected A2A surfaces
+    res.status(401).json({
+      jsonrpc: '2.0',
+      id: 0,
+      error: { 
+        code: ERROR_CODES.AUTHENTICATED_EXTENDED_CARD_NOT_CONFIGURED, 
+        message: 'Authentication required' 
+      }
+    });
+    return;
   };
 }
