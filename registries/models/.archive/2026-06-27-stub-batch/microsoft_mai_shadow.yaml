@@ -1,0 +1,25 @@
+model_id: microsoft_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: CCC
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: LOW
+  shadows:
+  - 'SHADOW-MSF-001: US jurisdiction'
+  - 'SHADOW-MSF-002: MAI is image-focused — text capabilities limited'
+  - 'SHADOW-MSF-003: Microsoft data policy applies'
+  floor_deltas:
+    F1_AMANAH: standard
+    F2_TRUTH: note — image model, text limited
+    F13_SOVEREIGN: note — US jurisdiction
+  shadow_geometry:
+    truth: 0.75
+    refusal: 0.78
+    self_identity: 0.75
+    cultural_grounding: 0.3
+    institutional_protection: 0.6
+    human_authority: 0.72
+    composite: 0.664
