@@ -30,7 +30,7 @@
     "homeostasis_report",
     "dignity_preservation_score",
     "veto_recommendation",
- "coupled_risk_assessment"
+    "coupled_risk_assessment"
   ],
   "forbidden_actions": [
     "mutate_geox_claims",
@@ -54,5 +54,22 @@
     "signature": "stub-self-attestation-well-pending-f13-ratification",
     "issued_at": "2026-06-28T12:00:00Z",
     "expires_at": "2027-06-28T12:00:00Z"
+  },
+  "capability_card": {
+    "constitution_hash": "sha256:F13-arifOS-000",
+    "tool_manifest_url": "http://127.0.0.1:18083/.well-known/agent-card.json",
+    "allowed_action_classes": [
+      "reflect",
+      "assess",
+      "mirror"
+    ],
+    "max_risk_tier": "LOW",
+    "skills": [
+      "well_assess_homeostasis",
+      "well_validate_vitality",
+      "well_classify_substrate",
+      "well_guard_dignity",
+      "well_detect_boundary"
+    ]
   }
 }
