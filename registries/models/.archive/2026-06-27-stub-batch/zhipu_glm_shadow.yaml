@@ -1,0 +1,27 @@
+model_id: zhipu_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: CCC
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: MEDIUM
+  shadows:
+  - 'SHADOW-ZAI-001: CN jurisdiction'
+  - 'SHADOW-ZAI-002: less independent audit data than DeepSeek/Qwen'
+  - 'SHADOW-ZAI-003: BM/SEA context moderate'
+  - 'SHADOW-ZAI-004: GLM 4.x series had over-refusal patterns'
+  floor_deltas:
+    F1_AMANAH: standard
+    F2_TRUTH: standard
+    F9_ANTIHANTU: standard
+    F13_SOVEREIGN: note — CN jurisdiction
+  shadow_geometry:
+    truth: 0.75
+    refusal: 0.68
+    self_identity: 0.75
+    cultural_grounding: 0.6
+    institutional_protection: 0.58
+    human_authority: 0.7
+    composite: 0.688

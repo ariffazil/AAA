@@ -1,0 +1,27 @@
+model_id: x-ai_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: BBB
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: LOW
+  shadows:
+  - 'SHADOW-XAI-001: US jurisdiction'
+  - 'SHADOW-XAI-002: Grok has ''fun mode'' that can reduce reliability'
+  - 'SHADOW-XAI-003: newer provider — less independent audit trail'
+  - 'SHADOW-XAI-004: BM/SEA context weak'
+  floor_deltas:
+    F1_AMANAH: standard
+    F2_TRUTH: standard
+    F9_ANTIHANTU: standard
+    F13_SOVEREIGN: note — US jurisdiction
+  shadow_geometry:
+    truth: 0.8
+    refusal: 0.82
+    self_identity: 0.78
+    cultural_grounding: 0.4
+    institutional_protection: 0.7
+    human_authority: 0.75
+    composite: 0.719

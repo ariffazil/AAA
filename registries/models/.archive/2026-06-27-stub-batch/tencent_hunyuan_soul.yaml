@@ -1,0 +1,33 @@
+model_id: tencent
+model_family: Tencent (Hunyuan)
+provider: Tencent Holdings
+license: proprietary
+type: text-generation, multimodal
+status: AVAILABLE_VIA_TOKENROUTER
+asal_tier: EEE
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider soul map from asal.py
+soul:
+  capabilities:
+    reasoning:
+      confidence: 0.8
+    coding:
+      confidence: 0.78
+    multilingual:
+      confidence: 0.82
+    multimodal:
+      confidence: 0.6
+    long_context:
+      confidence: 0.8
+    tool_use:
+      confidence: 0.75
+    math:
+      confidence: 0.8
+    cultural_bm:
+      confidence: 0.55
+  trust_tier: 4
+  censorship_status: PARTIAL
+  rate_limit_transparency: PARTIALLY_TRANSPARENT
+  data_retention_days: null
+  zero_retention_available: false
