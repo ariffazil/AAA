@@ -636,6 +636,20 @@ const DELEGATION_RULES = [
   { match: { source: 'a-forge', target_contains: 'forge_validate' },
     verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot self-validate. Requires external witness.' },
 
+  // A-FORGE cannot judge or seal — that's arifOS sovereign domain
+  { match: { source: 'a-forge', target_contains: 'arif_judge' },
+    verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot issue constitutional verdicts. Only arifOS judges.' },
+  { match: { source: 'a-forge', target_contains: 'arif_seal' },
+    verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot seal VAULT entries. Only arifOS seals.' },
+  { match: { source: 'a-forge', target_contains: 'vault_seal' },
+    verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot write to VAULT999 directly. Requires arifOS judge path.' },
+
+  // A-FORGE cannot access human biometric/substrate data
+  { match: { source: 'a-forge', target_contains: 'well_assess' },
+    verdict: 'blocked', reason: 'F8 LAW: A-FORGE cannot read human substrate data. WELL owns this.' },
+  { match: { source: 'a-forge', target_contains: 'well_guard_dignity' },
+    verdict: 'blocked', reason: 'F6 MARUAH: A-FORGE cannot access dignity data. WELL guards this.' },
+
   // Evidence organs cannot mutate other organ records
   { match: { source: 'geox', target_contains: 'wealth_' },
     verdict: 'blocked', reason: 'F8 LAW: GEOX cannot mutate WEALTH records.' },
