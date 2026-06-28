@@ -1,0 +1,153 @@
+{
+  "$schema": "arifOS Deprecation Registry v1 — 2026-06-26",
+  "$purpose": "Single source of truth for all deprecated tools, endpoints, services, skills, patterns, and conventions across the arifOS Federation. Agents MUST consult this before using any tool or endpoint. Updated whenever something is deprecated, migrated, or decommissioned.",
+  "$rule": "If a tool/endpoint/pattern IS in this registry → use the migration_path, not the deprecated item. If a tool/endpoint/pattern is NOT in this registry but seems stale → escalate as HOLD, do not use blindly.",
+
+  "deprecated_tools": {
+    "mcp__arifos__forge_*": {
+      "status": "DEPRECATED_PROXY",
+      "since": "2026-06-02",
+      "migration": "Use mcp__aforge__forge_* instead. Connect to https://forge.arif-fazil.com/mcp.",
+      "reason": "Role separation: arifOS governs/judges, A-FORGE engineers. forge_* on arifOS is a deprecated proxy forwarding to A-FORGE.",
+      "blast_radius": "Any mutation attempted via deprecated proxy may fail or lack proper A-FORGE governance."
+    },
+    "mcp__arifos__arif_judge_deliberate": {
+      "status": "DEPRECATED",
+      "since": "2026-06-02",
+      "migration": "Use mcp__aforge__forge_judge_proxy on A-FORGE. Deliberation ported into AAA a2a-server.",
+      "reason": "APEX absorbed into AAA. Deterministic F1-F13 deliberation() now lives in AAA a2a-server."
+    },
+    "mcp__arifos__mcp_health_check": {
+      "status": "DEPRECATED",
+      "since": "2026-06-22",
+      "migration": "Use mcp__well__well_assess_reliability(mode='health') instead.",
+      "reason": "Health checking consolidated under WELL organ."
+    },
+    "mcp__arifos__arif_triage": {
+      "status": "DEGRADED",
+      "since": "2026-06-22",
+      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use with caution. Fix pending.",
+      "reason": "Pre-existing FastMCP outputSchema incompatibility."
+    },
+    "mcp__arifos__arif_measure": {
+      "status": "DEGRADED",
+      "since": "2026-06-22",
+      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use with caution. Fix pending.",
+      "reason": "Pre-existing FastMCP outputSchema incompatibility."
+    },
+    "mcp__arifos__arif_route": {
+      "status": "DEGRADED",
+      "since": "2026-06-22",
+      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use with caution. Fix pending.",
+      "reason": "Pre-existing FastMCP outputSchema incompatibility."
+    }
+  },
+
+  "deprecated_services": {
+    "apex-prime.service": {
+      "status": "STOPPED_DISABLED",
+      "since": "2026-06-02",
+      "migration": "Deliberation now in AAA a2a-server (port 3001).",
+      "reason": "APEX absorbed into AAA. Decommissioned."
+    },
+    "certbot-renew.timer": {
+      "status": "STOPPED_DISABLED",
+      "since": "2026-06-22",
+      "migration": "Caddy uses Cloudflare Origin CA + auto HTTPS. Certbot not needed.",
+      "reason": "No certs managed by certbot."
+    },
+    "openclaw-a2a.service": {
+      "status": "REMOVED",
+      "since": "2026-05-26",
+      "migration": "OpenClaw GW (port 18789) covers A2A mesh.",
+      "reason": "Dead adapter — NameError. Service file deleted."
+    }
+  },
+
+  "deprecated_endpoints": {
+    "apex.arif-fazil.com": {
+      "status": "REDIRECTED",
+      "since": "2026-06-02",
+      "migration": "Routes to AAA:3001. Caddy block commented out.",
+      "reason": "APEX absorbed into AAA."
+    },
+    "https://arifos.arif-fazil.com/mcp (forge_* tools)": {
+      "status": "DEPRECATED_PROXY",
+      "since": "2026-06-02",
+      "migration": "Use https://forge.arif-fazil.com/mcp for all forge_* tools.",
+      "reason": "Substrate split: governance (arifOS) ≠ engineering (A-FORGE)."
+    }
+  },
+
+  "deprecated_patterns": {
+    "non_date_tags": {
+      "status": "FORBIDDEN",
+      "since": "2026-06-05",
+      "migration": "Use vYYYY.MM.DD format only (e.g., v2026.06.26).",
+      "reason": "Date-stamp tags are iron rule. The forge date IS the version. Existing cikai tags (v55.*, v0.1.*) are legacy — do not replicate.",
+      "existing_legacy": ["v55.*", "v0.1.*"]
+    },
+    "containerize_core_organs": {
+      "status": "FORBIDDEN",
+      "since": "2026-05-23",
+      "migration": "Core organs (arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA) run bare-metal systemd. Only supporting services (Postgres, Redis, Qdrant, Graphiti, Temporal) run in Docker.",
+      "reason": "Docker Doctrine: core organs are not containers."
+    },
+    "old_claude_md_locations": {
+      "status": "REPLACED",
+      "since": "2026-06-22",
+      "migration": "Canonical CLAUDE.md is /root/AAA/CLAUDE.md. Replaces: /root/.claude/CLAUDE.md, /root/CLAUDE.md, /root/AGENT_KICKSTART.md, /root/AGENT_SELF_SOLVE.md, /root/AGENT_TOKEN_TAKEOVER.md.",
+      "reason": "Unified agent instruction surface."
+    },
+    "hardcode_api_keys": {
+      "status": "FORBIDDEN",
+      "since": "2026-05-23",
+      "migration": "All secrets in /root/.secrets/vault.env. Reference via env vars, never hardcode.",
+      "reason": "F1 AMANAH: secret exposure is irreversible."
+    }
+  },
+
+  "deprecated_skills": {
+    "openclaw-a2a-bridge (v0.1.0)": {
+      "status": "LEGACY",
+      "since": "2026-06-02",
+      "location": "AAA/skills/openclaw-a2a-bridge/",
+      "migration": "Use canonical A2A gateway on OpenClaw GW (port 18789).",
+      "reason": "Legacy bridge. Canonical A2A mesh is live."
+    }
+  },
+
+  "deprecated_conventions": {
+    "gemini_workspace_tools": {
+      "status": "REMOVED",
+      "since": "2026-05-20",
+      "migration": "Google Workspace moved to private peripheral adapter. No longer in arifOS core.",
+      "reason": "Kernel Purity Seal — arifOS core only contains constitutional tools."
+    },
+    "wealth_hidden_aliases": {
+      "status": "LEGACY",
+      "since": "2026-06-22",
+      "migration": "WEALTH has 20 public tools (+34 hidden aliases, 65 decorators). Use only the 20 public tools. Hidden aliases are backward-compat only.",
+      "reason": "Tool surface canonicalization."
+    }
+  },
+
+  "deprecation_lifecycle": {
+    "stages": {
+      "ANNOUNCED": "Deprecation declared. Old item still works but emits warning.",
+      "DEPRECATED_PROXY": "Old item forwards to new canonical. Use new directly.",
+      "STOPPED_DISABLED": "Service stopped and disabled. Will not restart on boot.",
+      "REMOVED": "Gone. Do not reference. Do not resurrect.",
+      "FORBIDDEN": "Never do this. Constitutional violation."
+    },
+    "cleanup_checklist": [
+      "1. Announce deprecation in CONTEXT_SESSION.md",
+      "2. Add entry to this registry",
+      "3. Update CLAUDE.md if the deprecated item was referenced there",
+      "4. Update hooks if the deprecated item was in hook config",
+      "5. Update skills if the deprecated item was in skill instructions",
+      "6. Wait one session before REMOVED status (F1 AMANAH: reversible window)",
+      "7. After removal, grep codebase for residual references and clean up"
+    ]
+  }
+}

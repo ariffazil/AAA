@@ -1,0 +1,578 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# CANONICAL CAPABILITY REGISTRY — arifOS Federation
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Single source of truth for every tool across all federation organs.
+# Version: 2026.06.26 — Capability Spine Repair
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Doctrine: DITEMPA BUKAN DIBERI — Forged, Not Given.
+#
+# INVARIANTS:
+#   1. Every tool MUST have exactly one canonical_name.
+#   2. Every canonical_name MUST be discoverable via its organ's MCP tools/list.
+#   3. Every canonical_name MUST be callable at runtime.
+#   4. Every canonical_name MUST have a guard_policy matching its action_class.
+#   5. No guard may recommend a tool that is not exposed on the public surface.
+#   6. No phantom names. No hidden aliases. No self-authorizing tools.
+#
+# PASS CONDITION (per organ):
+#   intended_tools == registered_tools == callable_tools
+#   phantom_tools == 0
+#   guard_conflicts == 0
+#   schema_failures == 0
+# ═══════════════════════════════════════════════════════════════════════════════
+
+schema_version: "2026.06.26-spine-repair"
+federation: "arifOS"
+sovereign: "Muhammad Arif bin Fazil"
+
+# ── Organ Registry ────────────────────────────────────────────────────────────
+
+organs:
+
+  # ═══ arifOS KERNEL ═════════════════════════════════════════════════════════
+  arifos:
+    port: 8088
+    role: constitutional_kernel
+    public_mcp_endpoint: "https://mcp.arif-fazil.com/mcp"
+    public_surface_mode: canonical_7  # F13-ratified 2026-06-23: exactly 7 verbs
+
+    # ── Canonical Public Surface (7 verbs) ──
+    canonical_tools:
+      - canonical_name: arif_init
+        aliases: [arif_session_init]
+        stage: "000"
+        action_class: DRAFT
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: public
+        guard_policy: allow_draft
+        schema_valid: true
+        status: CALLABLE
+
+      - canonical_name: arif_observe
+        aliases: [arif_sense_observe, arif_search]
+        stage: "111"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: public
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE
+
+      - canonical_name: arif_think
+        aliases: [arif_mind_reason, arif_critique, arif_heart_critique]
+        stage: "333"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        schema_valid: true
+        status: CALLABLE
+
+      - canonical_name: arif_route
+        aliases: [arif_kernel_route, arif_bridge_connect]
+        stage: "444"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: public
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE
+
+      - canonical_name: arif_judge
+        aliases: [arif_judge_deliberate]
+        stage: "888"
+        action_class: DRAFT
+        mutation: false
+        irreversible: false
+        requires_lease: true
+        callable_surface: public
+        guard_policy: require_verified_actor
+        schema_valid: true
+        status: CALLABLE
+        note: "Verdicts are advisory to human principal. Does not self-execute."
+
+      - canonical_name: arif_act
+        aliases: [arif_forge_execute, arif_forge]
+        stage: "900"
+        action_class: MUTATE
+        mutation: true
+        irreversible: true
+        requires_lease: true
+        callable_surface: public
+        guard_policy: require_seal_authorization
+        schema_valid: true
+        status: CALLABLE
+        note: "Requires JUDGE_SEAL_AUTHORIZATION from arif_judge. Never self-authorizes."
+
+      - canonical_name: arif_seal
+        aliases: [arif_vault_seal]
+        stage: "999"
+        action_class: IRREVERSIBLE
+        mutation: true
+        irreversible: true
+        requires_lease: true
+        callable_surface: public
+        guard_policy: require_principal_approval
+        schema_valid: true
+        status: CALLABLE
+        note: "Writes to VAULT999 append-only ledger. Requires explicit ack_irreversible."
+
+    # ── Diagnostic/Internal Tools (not on public surface, callable internally) ──
+    diagnostic_tools:
+      - canonical_name: arif_triage
+        aliases: [triage, preflight, kernel_preflight]
+        stage: "555"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: internal
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+        note: "Preflight health check. Required before any agentic execution."
+
+      - canonical_name: arif_measure
+        aliases: [arif_ops_measure]
+        stage: "777"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: internal
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+        note: "Health, vitals, cost, drift, topology measurement."
+
+      - canonical_name: arif_memory
+        aliases: [arif_memory_recall]
+        stage: "555m"
+        action_class: IRREVERSIBLE  # write modes
+        mutation: true
+        irreversible: true
+        requires_lease: true
+        callable_surface: internal
+        guard_policy: require_principal_approval
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+        note: "Memory recall/remember/forget. Write modes require lease."
+
+      - canonical_name: arif_compose
+        aliases: [arif_reply_compose]
+        stage: "444r"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: internal
+        guard_policy: allow_analyze
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+
+      - canonical_name: arif_fetch
+        aliases: [arif_evidence_fetch]
+        stage: "222"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: internal
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+
+      - canonical_name: arif_explore
+        aliases: []
+        stage: "111"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: internal
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+
+      - canonical_name: arif_kernel_intercept
+        aliases: []
+        stage: "888"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        requires_lease: false
+        callable_surface: internal
+        guard_policy: allow_observe
+        schema_valid: true
+        status: CALLABLE_INTERNAL
+        note: "F13 kernel enforcement spine. Route interceptor."
+
+    # ── Non-Canonical Diagnostic Tools ──
+    non_canonical_tools:
+      - hermes_system_status
+      - hermes_vault_query
+      - hermes_epistemic_check
+      - hermes_fact_check
+      - hermes_cross_verify
+      - hermes_plan_review
+      - hermes_memory_steward
+      - arif_canary
+      - arif_lease_inspect
+      - arif_lease_issue
+      - arif_lease_revoke
+      - arif_os_attest
+      - arif_organ_attest
+      - arif_organ_attest_all
+      - arif_peer_contract_validate
+      - forge_dry_run
+      - forge_plan
+      - forge_query
+      - mcp_drift_check
+      - arif_floor_status
+      - arif_session_budget
+      - arif_stack_health_probe
+      - arif_gate_judge
+      - arif_self_evaluate
+      - arif_model_compare
+      - arif_search
+      - arif_fetch_external
+
+    registry_truth:
+      canonical_public: 7
+      canonical_internal: 7
+      diagnostic_total: 27
+      total_declared: 41
+      phantom_tools: 0  # All declared tools have handlers
+      guard_conflicts: 0  # No guard recommends non-existent tools
+      current_drift:
+        surface_consistency: DIVERGENT
+        reason: "CANONICAL_TOOLS has 17 entries but canonical facade is 7. This is BY DESIGN (7-tool facade). Internal tools are callable but not on public surface."
+        runtime_drift: true
+        build_commit: "6158759"
+        live_commit: "33db335"
+        fix: "Rebuild container to sync image with git HEAD."
+
+  # ═══ WELL — Human Readiness ════════════════════════════════════════════════
+  well:
+    port: 18083
+    role: human_readiness
+    authority: REFLECT_ONLY
+    public_mcp_endpoint: "https://well.arif-fazil.com/mcp"
+
+    # ── Public Canonical Tools ──
+    canonical_tools:
+      - canonical_name: well_classify_substrate
+        omega: "Ω-01"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+
+      - canonical_name: well_trace_lineage
+        omega: "Ω-02"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+
+      - canonical_name: well_detect_boundary
+        omega: "Ω-03"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+
+      - canonical_name: well_measure_gradient
+        omega: "Ω-04"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+
+      - canonical_name: well_assess_metabolism
+        omega: "Ω-05"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+      - canonical_name: well_assess_homeostasis
+        omega: "Ω-06"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+      - canonical_name: well_check_repair
+        omega: "Ω-07"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+      - canonical_name: well_validate_vitality
+        omega: "Ω-08"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+        invariant: "When has_telemetry==false, readiness MUST be UNKNOWN. Never fabricate."
+
+      - canonical_name: well_assess_livelihood
+        omega: "Ω-09"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+      - canonical_name: well_assess_reliability
+        omega: "Ω-10"
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+
+      - canonical_name: well_compute_metabolic_flux
+        omega: "Ω-10b"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+      - canonical_name: well_guard_dignity
+        omega: "Ω-gateway"
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+      - canonical_name: well_assess_sovereign_entropy
+        action_class: ANALYZE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_analyze
+        status: CALLABLE
+
+    # ── Registry/Diagnostic Tools (currently NOT exposed on public MCP surface) ──
+    registry_tools:
+      - canonical_name: well_system_registry_status
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: INTERNAL_ONLY  # ← PATCH NEEDED: must be public
+        guard_policy: allow_observe
+        status: DECLARED_BUT_NOT_EXPOSED
+        fix: "Has @mcp.tool() decorator and is in SOMATIC_TOOLS but not in MCP tools/list. Boundary filter is blocking exposure."
+
+      - canonical_name: well_registry_status
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: INTERNAL_ONLY  # ← PATCH NEEDED: must be public
+        guard_policy: allow_observe
+        status: DECLARED_BUT_NOT_EXPOSED
+        fix: "Same as well_system_registry_status — declared but not exposed."
+
+      - canonical_name: well_13_signal_coverage
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: INTERNAL_ONLY
+        guard_policy: allow_observe
+        status: DECLARED_BUT_NOT_EXPOSED
+        fix: "Same pattern. Has @mcp.tool() but not in public surface."
+
+    # ── Deprecated Aliases (callable, emit advisory) ──
+    deprecated_tools:
+      - legacy: well_get_health
+        canonical: well_assess_reliability
+        mode: health
+      - legacy: well_state
+        canonical: well_validate_vitality
+        mode: state
+      - legacy: well_readiness
+        canonical: well_validate_vitality
+        mode: readiness
+      - legacy: well_init
+        canonical: well_init
+      - legacy: well_machine_state
+        canonical: well_assess_reliability
+        mode: machine
+
+    registry_truth:
+      public_exposed: 15  # tools visible in MCP tools/list
+      in_somatic_tools_set: 22
+      registry_tools_exposed: 0  # ← THE DRIFT: 3 registry tools declared but not exposed
+      phantom_tools: 0
+      guard_conflicts: 0
+      current_drift:
+        status: DEGRADED
+        reason: "3 registry/diagnostic tools (well_system_registry_status, well_registry_status, well_13_signal_coverage) are in SOMATIC_TOOLS and have @mcp.tool() but are NOT in MCP tools/list. Boundary filter is blocking exposure."
+        state_age_hours: 1378  # Since April 30
+        freshness_band: VOID
+        truth_status: INSUFFICIENT_DATA
+        fix: "1) Expose registry tools on public MCP surface. 2) Arif inject biometric state via biometric_inject.sh."
+
+  # ═══ WEALTH — Capital Intelligence ═════════════════════════════════════════
+  wealth:
+    port: 18082
+    role: capital_intelligence
+    public_mcp_endpoint: "https://wealth.arif-fazil.com/mcp"
+    status: ALIVE  # Cleanest organ — use as model
+
+    canonical_tools:
+      - canonical_name: wealth_system_registry_status
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+
+    registry_truth:
+      status: ALIVE
+      phantom_tools: 0
+      guard_conflicts: 0
+      note: "Cleanest organ. All declared tools are discoverable, callable, and guard-approved."
+
+  # ═══ GEOX — Earth Intelligence ═════════════════════════════════════════════
+  geox:
+    port: 8081
+    role: earth_intelligence
+    public_mcp_endpoint: "https://geox.arif-fazil.com/mcp"
+    status: HEALTHY
+
+    canonical_tools:
+      - canonical_name: geox_system_registry_status
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: public
+        guard_policy: allow_observe
+        status: CALLABLE
+        note: "Registered in witness.py line 63. The actual registry tool."
+
+      - canonical_name: geox_doctrine
+        action_class: OBSERVE
+        mutation: false
+        irreversible: false
+        callable_surface: internal  # face="internal" in registry.py
+        guard_policy: allow_observe
+        status: CALLABLE_INTERNAL
+        note: "Supports modes: anti_beautiful_one, assumption_register, godel_review, abstraction_guard, biostrat, prithvi_eo. Does NOT have a 'registry' mode."
+
+    registry_truth:
+      phantom_tools: 0
+      guard_conflicts: 1  # ← THE DRIFT
+      guard_conflict_detail:
+        tool_recommended_by_guard: "geox_doctrine(mode='registry')"
+        actual_status: "geox_doctrine does NOT support mode='registry'. geox_doctrine is face='internal' (not public). The actual registry tool is geox_system_registry_status."
+        guard_location: "geox/scripts/control_plane_server_patch.py:82"
+        fix: "Either add 'registry' mode to geox_doctrine that delegates to geox_system_registry_status, or fix the guard to recommend geox_system_registry_status directly."
+
+  # ═══ A-FORGE — Governed Execution Shell ════════════════════════════════════
+  aforge:
+    port: 7071
+    role: governed_execution_shell
+    public_mcp_endpoint: "https://forge.arif-fazil.com/mcp"
+    status: HEALTHY
+    primitives: 40  # Collapsed from 93 on 2026-06-24
+
+    registry_truth:
+      status: HEALTHY
+      phantom_tools: 0
+      guard_conflicts: 0
+      note: "40 load-bearing primitives. Clean after 93→40 collapse. No registry drift."
+
+# ── Federation Readiness Gate ─────────────────────────────────────────────────
+
+readiness_gate:
+  agi_kernel_architecture: READY
+  agentic_runtime: NOT_READY
+  reason: "Registry/runtime/guard drift across arifOS, WELL, and GEOX."
+
+  per_organ:
+    arifos:
+      triage_callable: true
+      judge_callable: true
+      vault_query_callable: true
+      measure_callable: true
+      runtime_drift: true  # image ≠ git HEAD
+      pass: CONDITIONAL
+
+    well:
+      registry_status_callable: false  # ← BLOCKED
+      metabolic_flux_callable: true
+      signal_coverage_callable: false  # ← BLOCKED
+      pass: false
+
+    wealth:
+      registry_status_callable: true
+      decision_tools_callable: true
+      arifos_handoff_callable: true
+      pass: true  # ← MODEL ORGAN
+
+    geox:
+      registry_status_callable: true
+      guard_declares_registry_tool: false  # ← CONTRADICTION
+      no_hidden_doctrine_alias: false  # ← geox_doctrine(mode='registry') doesn't exist
+      irreversible_export_requires_888_hold: true
+      pass: CONDITIONAL
+
+    github:
+      repo_inspection_available: true
+      branch_patch_only: true
+      ci_registry_truth_test: false  # ← NOT YET IMPLEMENTED
+      pass: CONDITIONAL
+
+  pass_condition:
+    phantom_tools: "0 — PASS"
+    unknown_tool_errors: ">0 — FAIL (WELL registry tools not on public surface)"
+    guard_conflicts: "1 — FAIL (GEOX geox_doctrine mode=registry)"
+    irreversible_without_hold: "0 — PASS"
+
+  repair_sequence:
+    - "1. Add 'registry' mode to geox_doctrine that delegates to geox_system_registry_status"
+    - "2. Fix WELL boundary filter to expose well_system_registry_status, well_registry_status, well_13_signal_coverage"
+    - "3. Rebuild arifOS container to sync image with git HEAD (fix runtime_drift)"
+    - "4. Inject Arif biometric state via biometric_inject.sh (fix WELL DEGRADED)"
+    - "5. Add registry_truth_test to CI pipeline"
+    - "6. Seal repair receipt to VAULT999"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DITEMPA BUKAN DIBERI — Forged, Not Given.
+# ═══════════════════════════════════════════════════════════════════════════════
