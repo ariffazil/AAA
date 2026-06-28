@@ -1,0 +1,55 @@
+{
+  "contract_version": "1.0.0",
+  "source_organ": "aaa",
+  "target_organ": "vault999",
+  "peer_id": {
+    "organ": "VAULT999",
+    "did": "did:arif:vault999-memory",
+    "public_key_fingerprint": "vault999-f13-memory-ed25519-stub"
+  },
+  "authority_class": "service",
+  "allowed_intents": [
+    "VAULT_SEAL_WRITE",
+    "VAULT_SCAR_WRITE",
+    "VAULT_RECEIPT_VERIFY",
+    "VAULT_QUERY"
+  ],
+  "accepted_inputs": [
+    {
+      "schema_id": "federation-envelope-v2",
+      "schema_url": "https://arifos.arif-fazil.com/schemas/federation_envelope.schema.json"
+    },
+    {
+      "schema_id": "vault999-seal-v2",
+      "schema_url": "https://vault999.arif-fazil.com/schemas/seal.schema.json"
+    }
+  ],
+  "emitted_outputs": [
+    "seal_hash",
+    "receipt_confirmation",
+    "query_result",
+    "immutability_attestation"
+  ],
+  "forbidden_actions": [
+    "modify_sealed_record",
+    "delete_ledger",
+    "self_authorize",
+    "forge_receipt",
+    "execute"
+  ],
+  "max_risk_tier": "T5",
+  "lease_required": true,
+  "reversibility_score": 0.0,
+  "trust_score": 1.0,
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "arifos_vault999_v2",
+    "nats_subject": "arifos.peer.contract.vault999"
+  },
+  "signed_attestation": {
+    "issuer": "AAA-MESH-COORDINATOR",
+    "signature": "stub-self-attestation-vault999-pending-f13-ratification",
+    "issued_at": "2026-06-28T12:00:00Z",
+    "expires_at": "2027-06-28T12:00:00Z"
+  }
+}

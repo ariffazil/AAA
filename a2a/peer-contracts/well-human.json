@@ -1,0 +1,58 @@
+{
+  "contract_version": "1.0.0",
+  "source_organ": "aaa",
+  "target_organ": "well",
+  "peer_id": {
+    "organ": "WELL",
+    "did": "did:arif:well-human",
+    "public_key_fingerprint": "well-f13-human-ed25519-stub"
+  },
+  "authority_class": "specialist",
+  "allowed_intents": [
+    "WELL_STATE_CHECK",
+    "WELL_HOMEOSTASIS_ASSESS",
+    "WELL_DIGNITY_GUARD",
+    "WELL_SOVEREIGN_ENTROPY",
+    "WELL_VETO_REGISTER"
+  ],
+  "accepted_inputs": [
+    {
+      "schema_id": "federation-envelope-v2",
+      "schema_url": "https://arifos.arif-fazil.com/schemas/federation_envelope.schema.json"
+    },
+    {
+      "schema_id": "well-substrate-v1",
+      "schema_url": "https://well.arif-fazil.com/schemas/substrate.schema.json"
+    }
+  ],
+  "emitted_outputs": [
+    "readiness_signal",
+    "homeostasis_report",
+    "dignity_preservation_score",
+    "veto_recommendation",
+ "coupled_risk_assessment"
+  ],
+  "forbidden_actions": [
+    "mutate_geox_claims",
+    "mutate_wealth_records",
+    "self_authorize",
+    "issue_seal",
+    "execute",
+    "command_arifos"
+  ],
+  "max_risk_tier": "T2",
+  "lease_required": true,
+  "reversibility_score": 0.99,
+  "trust_score": 0.9,
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "arifos_vault999_v2",
+    "nats_subject": "arifos.peer.contract.well"
+  },
+  "signed_attestation": {
+    "issuer": "AAA-MESH-COORDINATOR",
+    "signature": "stub-self-attestation-well-pending-f13-ratification",
+    "issued_at": "2026-06-28T12:00:00Z",
+    "expires_at": "2027-06-28T12:00:00Z"
+  }
+}
