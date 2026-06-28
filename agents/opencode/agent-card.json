@@ -133,7 +133,7 @@
       "floor_scope": ["F1", "F2", "F4", "F7", "F9", "F11", "F13"]
     },
     {
-      "id": "godel-humility-lock",
+      "id": "070-lock-humility-godel",
       "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": ["humility", "F7", "self-critique", "epistemic"],
@@ -161,14 +161,14 @@
       "floor_scope": ["F1", "F2", "F4", "F7", "F8", "F9", "F11", "F12", "F13"]
     },
     {
-      "id": "auditor-validator-kutip-sampah",
+      "id": "700-clean-audit-immune",
       "name": "Auditor Validator Kutip Sampah",
       "description": "Immune system / cleaner skill. Audit, validate, clean junk, detect drift/corruption. Absorbs security, audit, validation, and cleanup. HIGH risk.",
       "tags": ["audit", "cleanup", "drift", "security"],
       "floor_scope": ["F1", "F2", "F4", "F7", "F8", "F9", "F10", "F11", "F12"]
     },
     {
-      "id": "agentic-session-init",
+      "id": "555-memory-session-bind",
       "name": "Agentic Session Init",
       "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
       "tags": ["bootstrap", "session", "init", "governance"],

@@ -32,7 +32,7 @@
 
 ## Weekly Maintenance
 
-- [ ] Run `auditor-validator-kutip-sampah` on full skill inventory
+- [ ] Run `700-clean-audit-immune` on full skill inventory
 - [ ] Check for stale AGENTS.md across all repos
 - [ ] Verify MCP server versions match expectations
 - [ ] Review forge_work/ for accumulated findings

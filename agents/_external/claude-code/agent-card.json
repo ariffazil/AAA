@@ -110,7 +110,7 @@
     {
       "id": "role-binding-fi-consumer",
       "name": "FI Role Binding (Consumer)",
-      "description": "FI citizen binding to consume Hermes polymorphic roles (\u03a9 memory, \u0394 reason) + grok-build style orchestration when needed. Baseline: hermes-opencode-protocol, agentic-architecture, godel-humility-lock, autonomous-governed-execution. See AAA_SKILL_BINDING.md. F4, F7, F11.",
+      "description": "FI citizen binding to consume Hermes polymorphic roles (\u03a9 memory, \u0394 reason) + grok-build style orchestration when needed. Baseline: hermes-opencode-protocol, agentic-architecture, 070-lock-humility-godel, autonomous-governed-execution. See AAA_SKILL_BINDING.md. F4, F7, F11.",
       "tags": [
         "role-binding",
         "fi-consumer",
@@ -217,7 +217,7 @@
       ]
     },
     {
-      "id": "godel-humility-lock",
+      "id": "070-lock-humility-godel",
       "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [

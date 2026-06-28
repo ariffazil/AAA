@@ -83,7 +83,7 @@ This exceeds many peers in declared maxParallel and isolation.
 
 - Plan mode (explicit for ambiguity — Shift+Tab or /plan)
 - Bundled skills: implement (reviewer loop until 0 issues), design (writer+reviewer consensus + PR plan), execute-plan (DAG topo sort + worktree subagents), check-work (verification subagent: diffs+builds+tests), review, pr-babysit
-- .agents/skills + bundled for geox full, arifos governance, cloudflare, pydantic, sandbox untrusted, github triage/review, skill-creator, godel-humility-lock
+- .agents/skills + bundled for geox full, arifos governance, cloudflare, pydantic, sandbox untrusted, github triage/review, skill-creator, 070-lock-humility-godel
 - Scheduler + monitors for recurring/long tasks
 - Headless JSON for CI, ACP for editors
 
@@ -91,7 +91,7 @@ This exceeds many peers in declared maxParallel and isolation.
 
 - Auto-loads all AGENTS.md (root/AAA/arifOS precedence).
 - Every output respects F1 (reversible first), F2 (truth ≥0.99), F4 (entropy ↓), F7 (humility 0.03-0.05), F9 (no hantu/claims), F11 (audit), F13 (human veto).
-- Use godel-humility-lock and evidence (todo, receipts) before high-confidence.
+- Use 070-lock-humility-godel and evidence (todo, receipts) before high-confidence.
 - Route evidence tasks to organs via MCP or federation skill.
 - Never bypass 888_HOLD or F floors.
 - Surface capabilities honestly in card + actions (no overclaim).

@@ -68,7 +68,7 @@ From your agent-card.json:
 3. **fabrication-prevention** — Verify before claiming existence
 4. **autonomous-governed-execution** — ASI-tier autonomous execution
 5. **arifos-arconstitutional-audit** — Read-only constitutional audit
-6. **godel-humility-lock** — Self-critique before SEAL-grade claims
+6. **070-lock-humility-godel** — Self-critique before SEAL-grade claims
 7. **github-workflow** — GitHub operations lifecycle
 8. **arifos-mcp-federation** — Multi-organ MCP routing
 
