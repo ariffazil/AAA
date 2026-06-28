@@ -1,0 +1,28 @@
+model_id: tokenrouter_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: FFF
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: HIGH
+  shadows:
+  - 'SHADOW-TR-001: unknown jurisdiction and entity behind service'
+  - 'SHADOW-TR-002: aggregator — adds latency and routing risk'
+  - 'SHADOW-TR-003: no zero-retention guarantee across all models'
+  - 'SHADOW-TR-004: model IDs may not match vendor''s canonical IDs'
+  - 'SHADOW-TR-005: billing transparency unknown'
+  floor_deltas:
+    F1_AMANAH: note — unknown entity
+    F2_TRUTH: note — aggregator layer adds uncertainty
+    F11_AUTH: note — unknown data flow
+    F13_SOVEREIGN: elevated — unknown jurisdiction + data policy
+  shadow_geometry:
+    truth: 0.5
+    refusal: 0.5
+    self_identity: 0.5
+    cultural_grounding: 0.5
+    institutional_protection: 0.5
+    human_authority: 0.5
+    composite: 0.5

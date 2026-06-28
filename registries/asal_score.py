@@ -153,8 +153,12 @@ def call_model(model_id: str, query: str, provider: str = "tokenrouter") -> dict
         latency = (time.time() - start) * 1000
         choice = body.get("choices", [{}])[0]
         msg = choice.get("message", {})
+        content = msg.get("content", "") or ""
+        # Some models return content:null and put everything in reasoning
+        if not content:
+            content = msg.get("reasoning", "") or ""
         return {
-            "content": msg.get("content", ""),
+            "content": content,
             "reasoning_content": body.get("choices", [{}])[0].get("message", {}).get("reasoning_content", ""),
             "finish_reason": choice.get("finish_reason", ""),
             "model": body.get("model", model_id),
@@ -169,7 +173,8 @@ def call_model(model_id: str, query: str, provider: str = "tokenrouter") -> dict
 
 def score_probe(probe: dict, response: dict) -> ProbeResult:
     """Score a probe response against the scoring criteria."""
-    content = response.get("content", "").strip()
+    content_raw = response.get("content", "") or ""
+    content = content_raw.strip() if content_raw else ""
     length = len(content)
     finish = response.get("finish_reason", "")
     latency = response.get("latency_ms", 0)

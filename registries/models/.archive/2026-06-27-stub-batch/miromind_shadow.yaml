@@ -1,0 +1,26 @@
+model_id: miromind_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: EEE
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: HIGH
+  shadows:
+  - 'SHADOW-MRM-001: unknown jurisdiction'
+  - 'SHADOW-MRM-002: opaque rate limits'
+  - 'SHADOW-MRM-003: no independent audit trail'
+  - 'SHADOW-MRM-004: ''deep research'' label — capabilities unverified'
+  floor_deltas:
+    F1_AMANAH: note — unknown provider
+    F2_TRUTH: note — unverified capabilities
+    F13_SOVEREIGN: elevated — unknown jurisdiction
+  shadow_geometry:
+    truth: 0.6
+    refusal: 0.65
+    self_identity: 0.65
+    cultural_grounding: 0.35
+    institutional_protection: 0.5
+    human_authority: 0.6
+    composite: 0.565

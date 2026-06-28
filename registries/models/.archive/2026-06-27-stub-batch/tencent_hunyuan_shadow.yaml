@@ -1,0 +1,25 @@
+model_id: tencent_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: EEE
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: MEDIUM
+  shadows:
+  - 'SHADOW-TCE-001: CN jurisdiction — Tencent regulatory compliance'
+  - 'SHADOW-TF-002: institutional protection expected for Tencent ecosystem'
+  - 'SHADOW-TF-003: limited independent audit data for Hunyuan'
+  floor_deltas:
+    F1_AMANAH: standard
+    F2_TRUTH: note — limited audit trail
+    F13_SOVEREIGN: note — CN jurisdiction + corporate ecosystem
+  shadow_geometry:
+    truth: 0.72
+    refusal: 0.65
+    self_identity: 0.7
+    cultural_grounding: 0.55
+    institutional_protection: 0.5
+    human_authority: 0.65
+    composite: 0.642

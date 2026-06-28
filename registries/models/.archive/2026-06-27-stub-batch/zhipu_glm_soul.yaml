@@ -1,0 +1,33 @@
+model_id: zhipu
+model_family: Zhipu AI (GLM)
+provider: Zhipu AI (智谱AI)
+license: open_weight
+type: text-generation, multimodal
+status: AVAILABLE_VIA_TOKENROUTER
+asal_tier: CCC
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider soul map from asal.py
+soul:
+  capabilities:
+    reasoning:
+      confidence: 0.8
+    coding:
+      confidence: 0.82
+    multilingual:
+      confidence: 0.82
+    multimodal:
+      confidence: 0.6
+    long_context:
+      confidence: 0.8
+    tool_use:
+      confidence: 0.82
+    math:
+      confidence: 0.8
+    cultural_bm:
+      confidence: 0.6
+  trust_tier: 3
+  censorship_status: PARTIAL
+  rate_limit_transparency: PARTIALLY_TRANSPARENT
+  data_retention_days: null
+  zero_retention_available: false
