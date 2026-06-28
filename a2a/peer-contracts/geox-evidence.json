@@ -1,0 +1,67 @@
+{
+  "contract_version": "1.0.0",
+  "peer_id": {
+    "organ": "GEOX",
+    "instance_id": "geox-evidence-alpha-001",
+    "did": "did:arifos:geox-evidence-alpha",
+    "public_key_fingerprint": "geox-evidence-ed25519-stub"
+  },
+  "authority_class": "evidence",
+  "capability_card": {
+    "schema_hash": "peer-federation-contract-v1",
+    "constitution_hash": "geox-earth-evidence-v1",
+    "tool_manifest_url": "https://geox.arif-fazil.com/tools",
+    "allowed_action_classes": [
+      "OBSERVE",
+      "PREPARE"
+    ],
+    "max_risk_tier": "T1",
+    "skills": [
+      "geox_basin_profile",
+      "geox_seismic_compute",
+      "geox_petrophysics",
+      "geox_deep_time_state",
+      "geox_surface_status"
+    ]
+  },
+  "lease_required": false,
+  "reversibility_score": 1.0,
+  "accepted_inputs": [
+    {
+      "schema_id": "earth-evidence-envelope-v1",
+      "schema_url": "https://geox.arif-fazil.com/schemas/evidence_envelope.schema.json"
+    }
+  ],
+  "forbidden_actions": [
+    "issue_drill_recommendation",
+    "mutate_wealth_records",
+    "claim_policy_judgment",
+    "self_approve_claim",
+    "bypass_arifos_judge"
+  ],
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "geox_evidence_v1",
+    "nats_subject": "arifos.peer.contract.geox"
+  },
+  "human_veto": {
+    "f13_absolute": true,
+    "override_paths": [
+      {
+        "channel": "telegram",
+        "endpoint": "hermes-asi-gateway"
+      },
+      {
+        "channel": "a2a_task",
+        "endpoint": "https://aaa.arif-fazil.com/a2a/tasks"
+      }
+    ]
+  },
+  "trust_score": 0.95,
+  "signed_attestation": {
+    "issuer": "GEOX-EVIDENCE-ORGAN",
+    "signature": "stub-self-attestation-geox-evidence-pending-f13-ratification",
+    "issued_at": "2026-06-28T12:00:00Z",
+    "expires_at": "2027-06-28T12:00:00Z"
+  }
+}

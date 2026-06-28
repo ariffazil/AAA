@@ -1,0 +1,57 @@
+{
+  "contract_version": "1.0.0",
+  "source_organ": "aaa",
+  "target_organ": "wealth",
+  "peer_id": {
+    "organ": "WEALTH",
+    "did": "did:arif:wealth-capital",
+    "public_key_fingerprint": "wealth-f13-capital-ed25519-stub"
+  },
+  "authority_class": "specialist",
+  "allowed_intents": [
+    "WEALTH_NPV_REQUEST",
+    "WEALTH_RISK_PROFILE",
+    "WEALTH_COLLAPSE_SCAN",
+    "WEALTH_FISCAL_BREAKEVEN",
+    "WEALTH_LEDGER_QUERY"
+  ],
+  "accepted_inputs": [
+    {
+      "schema_id": "federation-envelope-v2",
+      "schema_url": "https://arifos.arif-fazil.com/schemas/federation_envelope.schema.json"
+    },
+    {
+      "schema_id": "wealth-scenario-v1",
+      "schema_url": "https://wealth.arif-fazil.com/schemas/scenario.schema.json"
+    }
+  ],
+  "emitted_outputs": [
+    "npv_assessment",
+    "risk_profile",
+    "collapse_signature",
+    "fiscal_breakeven",
+    "ledger_view"
+  ],
+  "forbidden_actions": [
+    "mutate_geox_claims",
+    "mutate_well_state",
+    "self_authorize",
+    "issue_seal",
+    "move_capital"
+  ],
+  "max_risk_tier": "T3",
+  "lease_required": true,
+  "reversibility_score": 0.95,
+  "trust_score": 0.85,
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "arifos_vault999_v2",
+    "nats_subject": "arifos.peer.contract.wealth"
+  },
+  "signed_attestation": {
+    "issuer": "AAA-MESH-COORDINATOR",
+    "signature": "stub-self-attestation-wealth-pending-f13-ratification",
+    "issued_at": "2026-06-28T12:00:00Z",
+    "expires_at": "2027-06-28T12:00:00Z"
+  }
+}
