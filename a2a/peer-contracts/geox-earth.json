@@ -1,0 +1,56 @@
+{
+  "contract_version": "1.0.0",
+  "source_organ": "aaa",
+  "target_organ": "geox",
+  "peer_id": {
+    "organ": "GEOX",
+    "did": "did:arif:geox-earth",
+    "public_key_fingerprint": "geox-f13-earth-ed25519-stub"
+  },
+  "authority_class": "specialist",
+  "allowed_intents": [
+    "GEOX_PHYSICS_QUERY",
+    "GEOX_CLAIM_CREATE",
+    "GEOX_CLAIM_CHALLENGE",
+    "GEOX_EVIDENCE_REQUEST",
+    "GEOX_PROSPECT_SCREEN"
+  ],
+  "accepted_inputs": [
+    {
+      "schema_id": "federation-envelope-v2",
+      "schema_url": "https://arifos.arif-fazil.com/schemas/federation_envelope.schema.json"
+    },
+    {
+      "schema_id": "geox-query-v1",
+      "schema_url": "https://geox.arif-fazil.com/schemas/query.schema.json"
+    }
+  ],
+  "emitted_outputs": [
+    "geological_claim",
+    "evidence_bundle",
+    "uncertainty_assessment",
+    "physics_verdict"
+  ],
+  "forbidden_actions": [
+    "mutate_wealth_records",
+    "mutate_well_state",
+    "self_authorize",
+    "issue_seal",
+    "execute"
+  ],
+  "max_risk_tier": "T3",
+  "lease_required": true,
+  "reversibility_score": 0.9,
+  "trust_score": 0.85,
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "arifos_vault999_v2",
+    "nats_subject": "arifos.peer.contract.geox"
+  },
+  "signed_attestation": {
+    "issuer": "AAA-MESH-COORDINATOR",
+    "signature": "stub-self-attestation-geox-pending-f13-ratification",
+    "issued_at": "2026-06-28T12:00:00Z",
+    "expires_at": "2027-06-28T12:00:00Z"
+  }
+}
