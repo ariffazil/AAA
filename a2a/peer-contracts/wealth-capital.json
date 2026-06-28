@@ -53,5 +53,22 @@
     "signature": "stub-self-attestation-wealth-pending-f13-ratification",
     "issued_at": "2026-06-28T12:00:00Z",
     "expires_at": "2027-06-28T12:00:00Z"
+  },
+  "capability_card": {
+    "constitution_hash": "sha256:F13-arifOS-000",
+    "tool_manifest_url": "http://127.0.0.1:18082/.well-known/agent-card.json",
+    "allowed_action_classes": [
+      "compute",
+      "analyze",
+      "advise"
+    ],
+    "max_risk_tier": "MEDIUM",
+    "skills": [
+      "wealth_compute_npv",
+      "wealth_monte_carlo_simulate",
+      "wealth_conservation_check",
+      "wealth_flow_check",
+      "wealth_omni_wisdom"
+    ]
   }
 }
