@@ -465,7 +465,7 @@
       "malam": {
         "time_myt": "22:00",
         "cron_utc": "0 14 * * *",
-        "role_binding": "555-ASI (\u03a9) + hermes-human-model + godel-humility-lock",
+        "role_binding": "555-ASI (\u03a9) + hermes-human-model + 070-lock-humility-godel",
         "primary_output": "Closure \u2192 Cooling Ledger + Dream Engine handoff"
       },
       "event_radar": {

@@ -243,6 +243,52 @@
       "outputModes": [
         "application/json"
       ]
+    },
+    {
+      "id": "symbolic-order-trust-architecture",
+      "name": "Symbolic Order — Trust Architecture",
+      "description": "Map structural trust in the federation — where trust is architecture-enforced vs. history-based. Detects trust symmetry violations and single-points-of-failure. Implements E1+E2 from Wawa's agentic anthropology (Hybrid Civilization + Trust Is Structural).",
+      "tags": [
+        "trust",
+        "structural",
+        "symmetry",
+        "architecture",
+        "social-symbolic"
+      ],
+      "examples": [
+        "Map trust architecture across all 7 organs",
+        "Find single-points-of-failure in trust relationships",
+        "Check if arifOS has reciprocal structural trust"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "symbolic-order-collective-bias",
+      "name": "Symbolic Order — Collective Bias Detection",
+      "description": "Detect collective bias in agent populations using Ashery-Aiello-Baronchelli naming game protocol. Catches biases that emerge at population level but no individual agent shows. Chi-square test against uniform distribution. Implements E5 (Collective Bias Invisible to Single-Agent).",
+      "tags": [
+        "collective-bias",
+        "convention",
+        "population",
+        "social-symbolic",
+        "emergent-conventions"
+      ],
+      "examples": [
+        "Detect if a convention has locked in across agent population",
+        "Find collective bias invisible to individual-agent analysis",
+        "Run naming game protocol on A2A logs"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
     }
   ]
 }

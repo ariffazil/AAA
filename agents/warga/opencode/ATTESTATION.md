@@ -91,12 +91,12 @@ OpenCode carries **13 skills** aligned to F1-F13 governance:
 | 3 | fabrication-prevention | F2,F9,F11 | Truth |
 | 4 | autonomous-governed-execution | F1,F2,F4,F7,F11,F13 | Execution |
 | 5 | arifos-arconstitutional-audit | F1,F2,F4,F7,F9,F11,F13 | Audit |
-| 6 | godel-humility-lock | F2,F7 | Humility |
+| 6 | 070-lock-humility-godel | F2,F7 | Humility |
 | 7 | github-workflow | F1,F11 | Workflow |
 | 8 | arifos-mcp-federation | F4,F11 | Routing |
 | 9 | federation-coding-agent | F1,F2,F4,F7,F8,F9,F11,F12,F13 | Meta |
-| 10 | auditor-validator-kutip-sampah | F1,F2,F4,F7,F8,F9,F10,F11,F12 | Cleanup |
-| 11 | agentic-session-init | F1,F2,F11,F13 | Bootstrap |
+| 10 | 700-clean-audit-immune | F1,F2,F4,F7,F8,F9,F10,F11,F12 | Cleanup |
+| 11 | 555-memory-session-bind | F1,F2,F11,F13 | Bootstrap |
 | 12 | agentic-builder | F2,F4,F8,F11 | Build |
 | 13 | aaa-zen | F1,F2,F4,F6,F7,F9,F11,F13 | Doctrine |
 

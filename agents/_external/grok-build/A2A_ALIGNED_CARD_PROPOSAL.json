@@ -116,7 +116,7 @@
       "t2_announce_proceed": "Multi-file, new deps (test first), local restart, A2A handoff with evidence",
       "t3_888_hold": "Prod deploys, force git, secrets, VAULT writes, Caddy, rm unknown, cross-repo arch, any irreversible A2A delegation"
     },
-    "constitutional_injection": "AGENTS.md (root + AAA + arifOS) auto-injected. F1-F13 always. godel-humility-lock for final outputs. All A2A/MCP irreversible gated.",
+    "constitutional_injection": "AGENTS.md (root + AAA + arifOS) auto-injected. F1-F13 always. 070-lock-humility-godel for final outputs. All A2A/MCP irreversible gated.",
     "memory_contributor": true,
     "session_identity": "grok-build@arif-fazil.com / xai-grok-cli",
     "governance": {

@@ -71,7 +71,7 @@ The 5-agent constitutional architecture. Pipeline: 000 → 333 → 555 → 888 �
 
 | ID | Tier | Skills | Eureka Layer | Status |
 |---|---|---|---|---|
-| **A-AUDIT** | APEX oversight | 3 (floor-compliance, inter-agent-consistency, behavioral-health) | **L2 — Governance** (enforces F1-F13) | ✅ SPEC |
+| **A-AUDIT** | APEX oversight | 5 (floor-compliance, inter-agent-consistency, behavioral-health, **symbolic-order-trust-architecture, symbolic-order-collective-bias**) | **L2 — Governance** (enforces F1-F13) | ✅ SPEC |
 | **A-ARCHIVE** | ASI service | 3 (seal-write, seal-read, integrity-proof) | **L4 — Execution** (commits to VAULT999) | ✅ SPEC |
 
 ### EXTERNAL (Forge Instruments — warga-bound)
@@ -344,7 +344,7 @@ Wired 10 FI citizens as real AAA warga with 8-skill baseline (per orthogonal map
 3. fabrication-prevention
 4. autonomous-governed-execution
 5. arifos-arconstitutional-audit (light)
-6. godel-humility-lock
+6. 070-lock-humility-godel
 7. github-workflow
 8. arifos-mcp-federation
 

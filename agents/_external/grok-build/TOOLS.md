@@ -73,13 +73,13 @@ Used by: implement skill, execute-plan, research+build patterns.
 - check-work: dedicated verifier subagent runs diffs, builds, tests, evaluates correctness.
 - review skill, pr-babysit, github-ci-diagnose, github-pr-review.
 - plan mode (enter/exit): explicit architecture phase before any mutation.
-- arifos-plan-dag, arifos-mcp-federation skills for federation orchestration.
+- 034-dag-plan-orchestrate, arifos-mcp-federation skills for federation orchestration.
 
 ## Skills System
 
 - Discovery: .grok/skills/, .agents/skills/ (highest), ~/.grok, project rules.
 - Bundled: implement, design, review, execute-plan, check-work, create-skill, docx/xlsx/pptx, imagine, help, remove-wall-of-text.
-- .agents: 40+ federation-grade — geox-* (basin, constitution, epistemic-ladder, claim-grammar, contradiction-engine, redteam-hantu, render-contracts, test-forge, merge-gatekeeper, petrophysics-bounds, gui-alignment, ...), arifos-*, cloudflare (full: workers, durable-objects, wrangler, email, etc.), pydantic-*, sandbox (untrusted + bwrap), github-issue-triage + pr-review, skill-creator/trigger-linter, frontend-design, web-perf, replicate-*, logfire-*, godel-humility-lock, workers-best-practices, etc.
+- .agents: 40+ federation-grade — geox-* (basin, constitution, epistemic-ladder, claim-grammar, contradiction-engine, redteam-hantu, render-contracts, test-forge, merge-gatekeeper, petrophysics-bounds, gui-alignment, ...), arifos-*, cloudflare (full: workers, durable-objects, wrangler, email, etc.), pydantic-*, sandbox (untrusted + bwrap), github-issue-triage + pr-review, skill-creator/trigger-linter, frontend-design, web-perf, replicate-*, logfire-*, 070-lock-humility-godel, workers-best-practices, etc.
 - Slash or auto-invoke by description.
 
 ## Other Power
