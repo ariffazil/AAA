@@ -1,0 +1,25 @@
+model_id: stepfun_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: EEE
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: MEDIUM
+  shadows:
+  - 'SHADOW-STF-001: CN jurisdiction'
+  - 'SHADOW-STF-002: opaque rate limits'
+  - 'SHADOW-STF-003: limited independent audit data'
+  floor_deltas:
+    F1_AMANAH: note — opaque limits
+    F2_TRUTH: note — limited audit data
+    F13_SOVEREIGN: note — CN jurisdiction
+  shadow_geometry:
+    truth: 0.7
+    refusal: 0.65
+    self_identity: 0.7
+    cultural_grounding: 0.55
+    institutional_protection: 0.55
+    human_authority: 0.65
+    composite: 0.642

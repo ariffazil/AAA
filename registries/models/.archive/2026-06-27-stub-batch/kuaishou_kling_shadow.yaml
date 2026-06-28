@@ -1,0 +1,26 @@
+model_id: kuaishou_shadow
+version: 1.0.0
+status: MAPPED_VIA_ASAL
+asal_tier: EEE
+forged_at: '2026-06-27T00:00:00Z'
+forged_by: FORGE (000Ω) via asal.py
+source: ASAL v1.0 — provider shadow map from asal.py
+shadow:
+  severity: HIGH
+  shadows:
+  - 'SHADOW-KSH-001: CN jurisdiction'
+  - 'SHADOW-KSH-002: video-focused — text capabilities are secondary'
+  - 'SHADOW-KSH-003: opaque rate limits and pricing'
+  - 'SHADOW-KSH-004: limited independent audit data'
+  floor_deltas:
+    F1_AMANAH: note — opaque
+    F2_TRUTH: note — video primary, text secondary
+    F13_SOVEREIGN: note — CN jurisdiction
+  shadow_geometry:
+    truth: 0.6
+    refusal: 0.6
+    self_identity: 0.65
+    cultural_grounding: 0.4
+    institutional_protection: 0.45
+    human_authority: 0.6
+    composite: 0.56
