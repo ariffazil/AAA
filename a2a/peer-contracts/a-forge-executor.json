@@ -7,6 +7,43 @@
     "public_key_fingerprint": "a-forge-ed25519-stub"
   },
   "authority_class": "execute",
+  "boundary_rules": [
+    {
+      "rule_id": "BR-AFORGE-001",
+      "domain": "constitutional",
+      "constraint": "A-FORGE cannot issue constitutional verdicts",
+      "forbidden_intents": ["arif_judge", "issue_verdict"],
+      "rationale": "F8 LAW: judgment is arifOS sovereign domain"
+    },
+    {
+      "rule_id": "BR-AFORGE-002",
+      "domain": "constitutional",
+      "constraint": "A-FORGE cannot seal VAULT999 entries",
+      "forbidden_intents": ["arif_seal", "vault_seal", "issue_seal"],
+      "rationale": "F8 LAW: sealing requires prior arifOS judge path"
+    },
+    {
+      "rule_id": "BR-AFORGE-003",
+      "domain": "self-governance",
+      "constraint": "A-FORGE cannot self-approve or self-validate its own work",
+      "forbidden_intents": ["forge_approve", "forge_validate", "self_authorize"],
+      "rationale": "F8 LAW + F13 SOVEREIGN: execution arm cannot ratify itself"
+    },
+    {
+      "rule_id": "BR-AFORGE-004",
+      "domain": "human substrate",
+      "constraint": "A-FORGE cannot access human biometric or dignity data",
+      "forbidden_intents": ["well_assess", "well_guard_dignity", "read_substrate"],
+      "rationale": "F6 MARUAH + F8 LAW: human data is WELL's domain"
+    },
+    {
+      "rule_id": "BR-AFORGE-005",
+      "domain": "capital",
+      "constraint": "A-FORGE cannot move capital or make drilling decisions",
+      "forbidden_intents": ["move_capital", "drill_decision", "issue_capital"],
+      "rationale": "F1 AMANAH + F13 SOVEREIGN: financial and operational decisions need human ratification"
+    }
+  ],
   "capability_card": {
     "schema_hash": "peer-federation-contract-v1",
     "constitution_hash": "a-forge-hexagonal-domain-v1",
