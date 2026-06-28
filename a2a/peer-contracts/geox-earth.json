@@ -52,5 +52,22 @@
     "signature": "stub-self-attestation-geox-pending-f13-ratification",
     "issued_at": "2026-06-28T12:00:00Z",
     "expires_at": "2027-06-28T12:00:00Z"
+  },
+  "capability_card": {
+    "constitution_hash": "sha256:F13-arifOS-000",
+    "tool_manifest_url": "http://127.0.0.1:8081/.well-known/agent-card.json",
+    "allowed_action_classes": [
+      "observe",
+      "analyze",
+      "profile"
+    ],
+    "max_risk_tier": "MEDIUM",
+    "skills": [
+      "geox_basin_profile",
+      "geox_sequence",
+      "geox_evidence",
+      "geox_subsurface_model",
+      "geox_vision"
+    ]
   }
 }
