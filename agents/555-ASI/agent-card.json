@@ -54,7 +54,7 @@
     {
       "id": "role-binding-omega",
       "name": "\u03a9 HEART Role Binding (555-ASI)",
-      "description": "Hermes polymorphic binding to 555-ASI (memory + ethics + sovereignty). Loads godel-humility-lock, sovereign-entropy-guard, tiered-memory, dream-engine. One runtime. See contracts/hermes-role-binding.md. F6, F7, F10, F13 enforced.",
+      "description": "Hermes polymorphic binding to 555-ASI (memory + ethics + sovereignty). Loads 070-lock-humility-godel, sovereign-entropy-guard, tiered-memory, dream-engine. One runtime. See contracts/hermes-role-binding.md. F6, F7, F10, F13 enforced.",
       "tags": [
         "role-binding",
         "555-ASI",
@@ -278,7 +278,7 @@
       ]
     },
     {
-      "id": "godel-humility-lock",
+      "id": "070-lock-humility-godel",
       "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before high-confidence claims. \u03a9 axis emphasis \u2014 protects memory writes from overclaiming. F2, F7 enforced. LEASED.",
       "tags": [

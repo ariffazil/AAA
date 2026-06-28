@@ -70,7 +70,7 @@
     "Superior subagent & true parallelism (types: general/explore/plan; capability_mode read/write/execute/all; isolation worktree+none; background; resume_from; personas with contracts)",
     "Workflow orchestration (plan-mode for ambiguity, implement full review-fix loops, design-doc consensus, execute-plan DAGs, check-work verifier); CLI: plan\u2192search\u2192build 3-stage, up to 8 parallel agents/run, editable plans",
     "Deep external integration (GitHub 95-tool MCP standout, full web/X research); auto-ingests Claude MCP configs/skills for low friction",
-    "Rich skills system (bundled implement/design/review + 40+ .agents/skills: geox-*, arifos-*, cloudflare full, pydantic, sandbox, github-triage, godel-humility-lock, create-skill)",
+    "Rich skills system (bundled implement/design/review + 40+ .agents/skills: geox-*, arifos-*, cloudflare full, pydantic, sandbox, github-triage, 070-lock-humility-godel, create-skill)",
     "Modes: TUI interactive, headless (-p json/stream), ACP for IDEs (Zed/Neovim), plan mode explicit",
     "Evidence & receipts (todo_write, session logs, humility lock, dynamic state probe)",
     "Scheduler + long-running monitors + background tasks",
@@ -134,7 +134,7 @@
     "t2_announce_proceed": "Multi-file refactors, new deps (after test), local service restart after green, PR drafts, skill creation, manifest updates (non-prod)",
     "t3_888_hold": "Production deploys without tests, force git, secret ops, VAULT999 writes, Caddy reloads, rm -rf unknown, DROP TABLE, cross-repo arch changes, any F13-gated action"
   },
-  "constitutional_injection": "AGENTS.md (root + /root/AAA/agents/grok-build + /root/arifOS) auto-injected at deepest priority. F1-F13 context always present. godel-humility-lock skill for final outputs. All irreversible gated.",
+  "constitutional_injection": "AGENTS.md (root + /root/AAA/agents/grok-build + /root/arifOS) auto-injected at deepest priority. F1-F13 context always present. 070-lock-humility-godel skill for final outputs. All irreversible gated.",
   "memory_contributor": true,
   "session_identity": "grok-build@arif-fazil.com / xai-grok-cli",
   "bridge": {
