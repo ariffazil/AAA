@@ -1,0 +1,71 @@
+{
+  "contract_version": "1.0.0",
+  "peer_id": {
+    "organ": "WELL",
+    "instance_id": "well-vitality-alpha-001",
+    "did": "did:arifos:well-vitality-alpha",
+    "public_key_fingerprint": "well-vitality-ed25519-stub"
+  },
+  "authority_class": "evidence",
+  "capability_card": {
+    "schema_hash": "peer-federation-contract-v1",
+    "constitution_hash": "well-substrate-vitality-v1",
+    "tool_manifest_url": "https://well.arif-fazil.com/tools",
+    "allowed_action_classes": [
+      "OBSERVE"
+    ],
+    "max_risk_tier": "T1",
+    "skills": [
+      "well_assess_homeostasis",
+      "well_validate_vitality",
+      "well_guard_dignity",
+      "well_compute_metabolic_flux",
+      "well_assess_sovereign_entropy"
+    ]
+  },
+  "lease_required": false,
+  "reversibility_score": 1.0,
+  "accepted_inputs": [
+    {
+      "schema_id": "substrate-vitality-envelope-v1",
+      "schema_url": "https://well.arif-fazil.com/schemas/vitality_envelope.schema.json"
+    }
+  ],
+  "forbidden_actions": [
+    "diagnose_medical_condition",
+    "prescribe_treatment",
+    "issue_go_no_go_decision",
+    "mutate_external_records",
+    "claim_judgment_authority",
+    "override_human_stated_readiness"
+  ],
+  "delegation_rules": {
+    "can_trigger_hold": true,
+    "hold_signal_path": "arifos.peer.contract.well → aaa.gateway → arifos.judge"
+  },
+  "audit_sink": {
+    "vault999_endpoint": "https://vault999.arif-fazil.com/seal",
+    "receipt_format": "well_vitality_v1",
+    "nats_subject": "arifos.peer.contract.well"
+  },
+  "human_veto": {
+    "f13_absolute": true,
+    "override_paths": [
+      {
+        "channel": "telegram",
+        "endpoint": "hermes-asi-gateway"
+      },
+      {
+        "channel": "a2a_task",
+        "endpoint": "https://aaa.arif-fazil.com/a2a/tasks"
+      }
+    ]
+  },
+  "trust_score": 0.90,
+  "signed_attestation": {
+    "issuer": "WELL-VITALITY-ORGAN",
+    "signature": "stub-self-attestation-well-vitality-pending-f13-ratification",
+    "issued_at": "2026-06-28T12:00:00Z",
+    "expires_at": "2027-06-28T12:00:00Z"
+  }
+}
