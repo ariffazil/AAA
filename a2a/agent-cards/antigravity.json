@@ -28,7 +28,7 @@
     "AGENTIC_capability_index": "python:/root/arifOS/core/capability_index/mcp_server.py",
     "DISCOVERY_meyhem": "npx://mcp-remote https://api.rhdxm.com/mcp/"
   },
-  "total_tools_approx": 108,
+  "total_tools_approx": 109,
   "strengths": [
     "full native MCP access to all 5 federation organs",
     "YOLO/AFK autonomy — T1 auto-do, T2 announce+proceed, T3 hold",
