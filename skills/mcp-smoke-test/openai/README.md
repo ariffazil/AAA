@@ -1,7 +1,7 @@
 # MCP Server Smoke Test — OpenAI / Codex Adapter
 
 > **Canonical:** `skills/mcp-smoke-test/SKILL.md`  
-> **Risk tier:** low | Tools: health-probe, mcp-call
+> **Risk tier:** low | Tools: see canonical
 
 Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors.
 

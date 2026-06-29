@@ -1,7 +1,7 @@
 # GitHub PR Governance Review — OpenAI / Codex Adapter
 
 > **Canonical:** `skills/github-pr-review/SKILL.md`  
-> **Risk tier:** medium | Tools: github-pr-fetch, file-diff
+> **Risk tier:** medium | Tools: forge_github_pr, forge_filesystem_read, forge_github_search, forge_git_diff, forge_git_log, forge_git_status
 
 Governed checklist for reviewing GitHub pull requests in the arifOS federation. Ensures PRs meet constitutional, structural, and safety standards before merge.
 

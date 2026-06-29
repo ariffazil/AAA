@@ -1,6 +1,6 @@
 # Secret Safety Scan — OpenCode Adapter
 
-> **Canonical:** `skills/secret-safety-scan/SKILL.md` | **Risk:** high
+> **Canonical:** `skills/secret-safety-scan/SKILL.md` | **Risk:** critical
 
 Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Produce a findings report with remediation steps.
 
@@ -11,7 +11,7 @@ Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Pro
   "agents": {
     "secret-safety-scan": {
       "description": "Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Produce a findings report with remediation steps.",
-      "risk_tier": "high",
+      "risk_tier": "critical",
       "canonical_skill": "skills/secret-safety-scan/SKILL.md"
     }
   }

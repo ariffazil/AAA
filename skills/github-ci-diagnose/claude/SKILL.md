@@ -1,48 +1,88 @@
 ---
 id: github-ci-diagnose
 name: GitHub CI Diagnose
-version: "1.0.0"
-status: DEPRECATED
-deprecated_by: github-operations
-redirect_to: github-operations §3 (ci-diagnose mode)
+version: 1.1.0
+description: 'Parse failing GitHub Actions logs, identify root cause patterns, and
+  propose fixes without executing irreversible changes. Use this skill whenever a
+  federation repo shows a red CI status, a workflow fails, or a build/test/lint gate
+  breaks. This skill reads logs, classifies failure modes, and outputs a diagnostic
+  report — it does not re-run CI, edit workflows, or dismiss security findings without
+  sovereign approval.'
 owner: AAA
 risk_tier: medium
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-replaced_by:
-  skill: github-operations
-  section: "§3 CI DIAGNOSE"
-  mode: ci-diagnose
-  effective_date: "2026-06-26"
-  reason: "Unified into single github-operations skill covering issue + PR + CI"
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  servers:
+    - a-forge
+  tools:
+    - forge_filesystem_read
+    - forge_shell_dryrun
+    - forge_log_tail
+examples:
+- AAA CI is failing on main — diagnose the GitHub Actions log
+- arifOS pytest suite failing after last push — what's the root cause?
+- Secret scan gate blocking A-FORGE PR — analyze and propose fix
+tests:
+- Identify a failing test from a 500-line Actions log
+- Distinguish between flake, dependency break, and code regression
+- Propose fix for a lint failure without editing workflow files
+- Refuse to dismiss a secret-scan gate as false positive
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Ω
+  functional:
+  - Ops
+  layer: CODING/FI
+  autonomy_tier: T1
+floor_scope:
+- F1
+- F2
+- F4
+- F9
+- F11
+- F13
+canonical_siblings:
+- github-pr-review        # gate reviewer on PR-branch CI failure
+- secret-safety-scan      # if root cause is secret-gate
+- parallel-authority-detection  # if root cause is cross-repo break
 ---
 
-# ⚠️ DEPRECATED — Use `github-operations` §3 Instead
-
-> **This skill is deprecated.** Load `github-operations` instead and specify `mode="ci-diagnose"`.
-> This file is retained for reference only and will be removed in a future version.
-
-**Old usage:**
-```
-skill_load(github-ci-diagnose, repo=..., workflow_name=..., run_id=...)
-```
-
-**New usage:**
-```
-skill_load(github-operations, mode="ci-diagnose", repo=..., workflow_name=..., run_id=...)
-```
-
----
-
-# GitHub CI Diagnose (DEPRECATED — see github-operations §3)
+# GitHub CI Diagnose
 
 ## Overview
+
+CI failures are symptoms, not diseases. This skill treats the GitHub Actions
+log as a patient: parse it, classify the symptom, name the disease, prescribe
+a reversible fix — but do not perform surgery without consent.
+
+Companion skills:
+- `github-pr-review` — for the PR branch whose CI failed
+- `secret-safety-scan` — if root cause class is `secret-gate`
+- `parallel-authority-detection` — if root cause class is `cross-repo-break`
+
+This skill reads and reports. It never edits `.github/workflows/*.yml` and
+never re-runs CI without sovereign ack.
+
+## When to Use
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 CI failures are symptoms, not diseases. This skill treats the log as a patient:
 listen to it, classify the symptom, name the disease, prescribe a fix — but do
