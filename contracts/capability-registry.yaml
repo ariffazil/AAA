@@ -510,13 +510,22 @@ organs:
     role: governed_execution_shell
     public_mcp_endpoint: "https://forge.arif-fazil.com/mcp"
     status: HEALTHY
-    primitives: 40  # Collapsed from 93 on 2026-06-24
+    primitives: 41  # 40 + document_ingest (2026-06-29)
+
+    document_ingest:
+      status: LIVE
+      modes: [analyze, extract, chunk, compare]
+      engine: pymupdf + tesseract
+      blast_radius: LOW
+      reversibility: FULL
+      provenance: sha256 + per-element bbox
+      note: "Layout-first document intelligence. Phase 1 MVP — 2026-06-29."
 
     registry_truth:
       status: HEALTHY
       phantom_tools: 0
       guard_conflicts: 0
-      note: "40 load-bearing primitives. Clean after 93→40 collapse. No registry drift."
+      note: "41 load-bearing primitives. document_ingest added 2026-06-29. No registry drift."
 
 # ── Federation Readiness Gate ─────────────────────────────────────────────────
 
