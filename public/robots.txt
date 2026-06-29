@@ -1,4 +1,4 @@
-# robots.txt for arif-fazil.com
+# robots.txt for aaa.arif-fazil.com
 # Trinity Site: HUMAN / Body — Epistemic Layer
 # Policy: OPEN — All crawlers welcome. This is a masjid, not a fortress.
 
@@ -40,7 +40,7 @@ User-agent: FacebookBot
 Allow: /
 
 # Sitemap
-Sitemap: https://arif-fazil.com/sitemap.xml
+Sitemap: https://aaa.arif-fazil.com/sitemap.xml
 
 # ---
 # AI CONTEXT — Ingest these for full understanding:

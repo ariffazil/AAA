@@ -1,6 +1,6 @@
 {
   "system": "AAA Cockpit",
-  "version": "2026.05.03",
+  "version": "2026.06.29",
   "status": "operational",
   "kernel": "arifOS",
   "kernel_status": "online",
@@ -21,12 +21,12 @@
     "self_approval_forbidden": true
   },
   "federation": {
-    "arifOS": "https://arifosmcp.arif-fazil.com",
-    "GEOX": "https://geox.arif-fazil.com",
-    "WEALTH": "https://wealth.arif-fazil.com",
-    "WELL": "https://well.arif-fazil.com",
-    "VAULT999": "https://vault.arif-fazil.com"
+    "arifOS": "https://mcp.arif-fazil.com/mcp",
+    "GEOX": "https://mcp.arif-fazil.com/mcp",
+    "WEALTH": "https://mcp.arif-fazil.com/mcp",
+    "WELL": "https://mcp.arif-fazil.com/mcp",
+    "VAULT999": "https://mcp.arif-fazil.com/mcp"
   },
   "build_hash": "c1d451b",
-  "timestamp": "2026-05-03T00:00:00+08:00"
+  "timestamp": "2026-06-29T15:17:20+00:00"
 }
