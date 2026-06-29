@@ -15,7 +15,7 @@
 
 > **AAA is the control plane for the arifOS Federation — the cockpit where the human operator sees every agent, every verdict, and every sealed decision. It routes tasks, manages the A2A mesh, queues approvals, and displays governed state. It is the parliament and the air traffic control tower — never the judge, never the executor, never the constitution.**
 
-[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.0-8b5cf6)](a2a-server/)
+[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.1-8b5cf6)](a2a-server/)
 [![Node](https://img.shields.io/badge/node-22-339933?logo=node.js)](package.json)
 [![React](https://img.shields.io/badge/react-19-61DAFB?logo=react)](package.json)
 [![TypeScript](https://img.shields.io/badge/ts-6.0-3178c6?logo=typescript)](package.json)
@@ -38,7 +38,7 @@ DITEMPA BUKAN DIBERI — Control is forged, not given.
 
 ## 0. The State Thesis
 
-> **AAA is not a control plane. AAA is the governed state of the arifOS agentic civilization — a constitutional substrate in which 14+ agents, 6 organs, and 1 sovereign operate under F1–F13 law.**
+> **AAA is not a control plane. AAA is the governed state of the arifOS agentic civilization — a constitutional substrate in which 14+ agents, 7 organs, and 1 sovereign operate under F1–F13 law.**
 
 This README is the canonical public-facing SOT for that state. Every claim below is sourced. Where SOT files exist, they are cited. **Where this README disagrees with disk, disk wins.**
 
@@ -53,8 +53,8 @@ AAA is the governed state — the constitutional substrate in which:
 | **Sovereign** | Muhammad Arif bin Fazil (F13) — final veto | `agents/arif-fazil-identity.yaml` |
 | **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT · A-ARCHIVE · 777-FORGE (Witness) | `agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/` |
 | **Runtime incarnations** | hermes-asi (Telegram @ASI_arifos_bot) · openclaw (port 18789) | `HERMES/`, `openclaw/` |
-| **Domain organs** | arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA | 6 systemd services, 6 ports |
-| **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-011` |
+| **Domain organs** | arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA · VAULT999 | 7 organs: 6 systemd services, 6 ports + immutable ledger |
+| **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-009` |
 | **Role agents** (bounded leases) | EXTERNAL_WATCHER · KERNEL_SCRIBE · OPS_PLANNER · SELF_FORGE_ADVISOR | `agents/roles/` |
 | **Immutable ledger** | VAULT999 (append-only, hash-chained) | `arifOS/VAULT999/` |
 | **Cockpit** (the surface) | React 19 + A2A gateway (port 3001) | `src/`, `a2a-server/` |
@@ -157,6 +157,8 @@ INFERRED        Agent reasoning      ← floor-bounded only
 **The one-sentence identity:**
 
 > **AAA is the cockpit. arifOS is the judge. A-FORGE is the executor. The domain organs provide evidence. Arif holds the veto.**
+>
+> **Canonical execution flow:** Arif (F13) → AAA/Hermes/OpenClaw (IDENTITY) → arifOS (GOVERNANCE/JUDGE) → Domain Organs (EVIDENCE) → A-FORGE (EXECUTE) → VAULT999 (SEAL)
 
 ### What AAA Is
 
@@ -181,6 +183,9 @@ INFERRED        Agent reasoning      ← floor-bounded only
 | **A secret store** | Secrets live in `/root/.secrets/` — never in AAA |
 | **The sealed ledger** | VAULT999 is owned by arifOS; AAA displays it, never writes it |
 | **A general dumping ground** | Session logs, backups, runtime artifacts belong elsewhere |
+| **A replacement for arifOS** | arifOS:8088 is the judge and the constitution. AAA is the window, never the wall. |
+| **A replacement for A-FORGE** | A-FORGE:7071/7072 executes. AAA routes tasks there, never executes itself. |
+| **A standalone system** | AAA is useless without arifOS judging and A-FORGE executing. It is the cockpit in a federation of 7 organs. |
 
 > **AAA is the manager who knows which worker should use which tool — not the worker and not the toolbox.**
 
@@ -215,7 +220,7 @@ npm run validate:aaa               # registry consistency + card validity
 
 # Health check
 curl -s http://localhost:3001/health | python3 -m json.tool
-# → {"status":"healthy","protocol":"A2A","version":"1.0.0","agents":5}
+# → {"status":"healthy","protocol":"A2A","version":"1.0.0","gateway":"AAA","motto":"Ditempa Bukan Diberi","vault":"CONNECTED"}
 
 # A2A conformance test
 npm run a2a:conformance
@@ -509,7 +514,7 @@ Every agent in the AAA registry follows a four-stage lifecycle. The cockpit trac
 
 ### 7.1 Cockpit Dashboard (`src/`)
 
-Verified against disk on 2026-06-22. Only files that actually exist are listed.
+Verified against disk on 2026-06-30. Only files that actually exist are listed.
 
 | Component | Purpose |
 |-----------|---------|
@@ -653,7 +658,7 @@ Monitors: organ health, agent telemetry, A2A message throughput, VAULT999 chain 
 
 ## 9. Architecture — Directory Tree
 
-Verified against disk on 2026-06-22. Comments that would mislead a contributor are removed; only real files are listed.
+Verified against disk on 2026-06-30. Comments that would mislead a contributor are removed; only real files are listed.
 
 ```
 AAA/
@@ -764,7 +769,7 @@ AAA/
 │   ├── cock-pit-model.schema.json · cross-agent-telemetry.schema.json
 │   └── SCHEMA_REGISTRY.json          # Master schema index
 │
-├── skills/                           # 32 skill modules (see §11.3)
+├── skills/                           # 64+ skill modules (see §11.3)
 │   ├── aaa-agent-invariants · aaa-agentic-governance
 │   ├── arifos-{evals,governance,mcp-federation,observability,plan-dag,recursive-audit}
 │   ├── geox-{basin-interpreter,grounding}
@@ -1031,7 +1036,7 @@ AAA is the control plane for the **Adat Agentik** civilisational model — a nor
 | Organ | Repository | Port | Role | AAA Relationship |
 |-------|-----------|------|------|-----------------|
 | **arifOS** | [ariffazil/arifos](https://github.com/ariffazil/arifos) | 8088 | Constitutional kernel — F1-F13, 888_JUDGE, VAULT999 | AAA **displays** arifOS verdicts, never issues them |
-| **A-FORGE** | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) | 7071 | Execution shell — builds, deploys, forges | AAA **routes** tasks to A-FORGE, never executes |
+| **A-FORGE** | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) | 7071/7072 | Execution shell — builds, deploys, forges | AAA **routes** tasks to A-FORGE, never executes |
 | **GEOX** | [ariffazil/geox](https://github.com/ariffazil/geox) | 8081 | Earth intelligence — petrophysics, seismic | AAA **displays** GEOX evidence, never interprets |
 | **WEALTH** | [ariffazil/wealth](https://github.com/ariffazil/wealth) | 18082 | Capital intelligence — NPV, IRR, EMV | AAA **displays** WEALTH scores, never allocates |
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | 18083 | Human readiness — vitality, substrate | AAA **displays** WELL state (REFLECT_ONLY) |
@@ -1169,7 +1174,7 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  Coding:         grok-build · opencode · claude-code · qwen-code ·     │
 │                  antigravity · codex · copilot · aider ·               │
 │                  kimi-code · continue-cli · gemini-cli                 │
-│                  (11 forge instruments · governed capability fabric)    │
+│                  (9 forge instruments · governed capability fabric)    │
 │  Role agents:    EXTERNAL_WATCHER · KERNEL_SCRIBE ·                   │
 │                  OPS_PLANNER · SELF_FORGE_ADVISOR                     │
 │                                                                        │
