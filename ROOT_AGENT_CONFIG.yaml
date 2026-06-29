@@ -166,11 +166,11 @@ forge_instruments:
     legacy_status: retired_absent
     binary: /usr/local/bin/opencode
     resolved_binary: /root/.npm-global/bin/opencode
-    version: "1.17.8"
-    model: tokenplan-mimo/mimo-v2.5-pro
-    small_model: azure-openai/gpt-4.1-mini
+    version: "3.0.0"
+    model: kimi-coding/kimi-for-coding
+    small_model: minimax/MiniMax-M2.5-highspeed
     native_mcp: true
-    mcp_count: 20
+    mcp_count: 23
     mcp_servers:
       - arifos
       - aforge
@@ -188,10 +188,13 @@ forge_instruments:
       - supabase
       - qdrant
       - cloudflare
-      - hostinger-vps
       - perplexity
+      - hostinger-vps
       - minimax-media
       - minimax-code
+      - chrome-devtools
+      - exa
+      - hermes
     local_agents:
       - forge
       - auditor

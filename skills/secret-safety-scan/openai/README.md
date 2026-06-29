@@ -1,7 +1,7 @@
 # Secret Safety Scan — OpenAI / Codex Adapter
 
 > **Canonical:** `skills/secret-safety-scan/SKILL.md`  
-> **Risk tier:** high | Tools: grep, file-read, git-log
+> **Risk tier:** critical | Tools: grep, file-read, git-log
 
 Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Produce a findings report with remediation steps.
 

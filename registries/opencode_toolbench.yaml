@@ -3,7 +3,7 @@ $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
 last_forged: '2026-06-16T16:30:00Z'
 forged_by: Codex RSI/Forge
-opencode_version: 1.17.8
+opencode_version: 3.0.0
 opencode_binary: /usr/local/bin/opencode
 config_paths:
   root_config: /root/AAA/ROOT_AGENT_CONFIG.yaml

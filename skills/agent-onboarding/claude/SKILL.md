@@ -1,39 +1,64 @@
 ---
 id: agent-onboarding
 name: Agent Onboarding
-version: "1.0.0"
-description: Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent card, registry entry, and SOUL.md.
+version: 1.0.0
+description: Standard procedure for registering a new agent in the AAA federation.
+  Creates agent identity directory, agent card, registry entry, and SOUL.md.
 owner: AAA
 risk_tier: medium
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  - kimi
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills: []
   servers: []
   tools:
-    - file-write
-    - directory-create
-    - registry-update
+  - file-write
+  - directory-create
+  - registry-update
 examples:
-  - Onboard a new "security-auditor" agent into AAA
+- Onboard a new "security-auditor" agent into AAA
 tests:
-  - Agent directory created with all required files
-  - Registry entry validates with `npm run validate:aaa`
+- Agent directory created with all required files
+- Registry entry validates with `npm run validate:aaa`
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Interface
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
+- F13
 ---
 
 # Agent Onboarding
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 When a new agent joins the federation, it needs an identity card, a home directory, and a registry entry. This skill ensures every agent is created with the same canonical structure and does not claim authority it does not own.
 

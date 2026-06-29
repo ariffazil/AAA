@@ -1,0 +1,81 @@
+{
+  "namespace": "arifOS",
+  "position": "/999",
+  "version": "1.0.0",
+  "sealed": "2026-06-14",
+  "access": "PUBLIC",
+  "claims": [
+    {
+      "id": "999-CLAIM-001",
+      "type": "ATTESTATION",
+      "subject": "VAULT999",
+      "predicate": "is",
+      "object": "append-only immutable audit ledger",
+      "integrity_model": "hash-chain",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate that a sealed record has been altered, deleted, or retroactively modified without breaking the hash chain."
+    },
+    {
+      "id": "999-CLAIM-002",
+      "type": "ATTESTATION",
+      "subject": "Constitutional Floors (F1\u2013F13)",
+      "predicate": "govern",
+      "object": "every record sealed in VAULT999",
+      "floors": [
+        "F1_AMANAH",
+        "F2_TRUTH",
+        "F3_NAMING",
+        "F4_CLARITY",
+        "F5_HUMILITY",
+        "F6_REPAIR",
+        "F7_ANTI_BEHAVIOR_SINK",
+        "F8_PARADOX",
+        "F9_ANTI_HANTU",
+        "F10_BOUNDARY",
+        "F11_BRIDGE",
+        "F12_INEQUALITY",
+        "F13_SOVEREIGN"
+      ],
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate a sealed record that bypassed any constitutional floor."
+    },
+    {
+      "id": "999-CLAIM-003",
+      "type": "ATTESTATION",
+      "subject": "/000 \u2194 /999 Loop",
+      "predicate": "forms",
+      "object": "complete governed intelligence architecture",
+      "components": [
+        "sovereign_human_root (/000)",
+        "constitutional_process (F1-F13)",
+        "immutable_record (/999)",
+        "auditable_return"
+      ],
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate that the loop is broken \u2014 that intelligence flows without root, or that records seal without constitution."
+    },
+    {
+      "id": "999-CLAIM-004",
+      "type": "ABDUCTION",
+      "subject": "Immutable Memory",
+      "predicate": "is_prerequisite_for",
+      "object": "governed intelligence at AGI level",
+      "reasoning": "Intelligence without memory is pattern matching. Memory without immutability is narrative. Accountability across time requires records that cannot be rewritten. Without a vault, governance is performance.",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate a governed intelligence system that maintains accountability across time without immutable records."
+    },
+    {
+      "id": "999-CLAIM-005",
+      "type": "ATTESTATION",
+      "subject": "This Page",
+      "predicate": "contains",
+      "object": "no secrets, no keys, no personal data, no locked content",
+      "access": "PUBLIC",
+      "falsifiable": true,
+      "falsification_condition": "Find any secret, key, personal identifier, or locked content on this page."
+    }
+  ],
+  "companion_position": "/000",
+  "loop_complete": true,
+  "seal": "DITEMPA BUKAN DIBERI \u2014 999 SEAL ALIVE"
+}
