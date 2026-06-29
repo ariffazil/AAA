@@ -53,7 +53,8 @@
         "forge_github",
         "forge_well",
         "forge_wealth",
-        "forge_geox"
+        "forge_geox",
+        "document_ingest"
       ],
       "judge_skills": []
     },
