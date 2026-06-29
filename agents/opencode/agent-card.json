@@ -9,7 +9,7 @@
   },
   "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. MiMo/MiniMax model rotation. HEXAGON external warga v3.0.0.",
   "version": "3.0.0",
-  "model": "tokenplan-mimo/mimo-v2.5-pro",
+  "model": "kimi-coding/kimi-for-coding",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",

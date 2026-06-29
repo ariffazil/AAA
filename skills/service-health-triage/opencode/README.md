@@ -1,6 +1,6 @@
 # Federation Service Health Triage — OpenCode Adapter
 
-> **Canonical:** `skills/service-health-triage/SKILL.md` | **Risk:** low
+> **Canonical:** `skills/service-health-triage/SKILL.md` | **Risk:** medium
 
 Diagnose which federation services are up, down, or drifting. Produce a prioritized remediation plan.
 
@@ -11,7 +11,7 @@ Diagnose which federation services are up, down, or drifting. Produce a prioriti
   "agents": {
     "service-health-triage": {
       "description": "Diagnose which federation services are up, down, or drifting. Produce a prioritized remediation plan.",
-      "risk_tier": "low",
+      "risk_tier": "medium",
       "canonical_skill": "skills/service-health-triage/SKILL.md"
     }
   }

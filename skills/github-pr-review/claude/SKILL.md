@@ -1,50 +1,80 @@
 ---
 id: github-pr-review
 name: GitHub PR Governance Review
-version: "1.0.0"
-status: DEPRECATED
-deprecated_by: github-operations
-redirect_to: github-operations §2 (pr-review mode)
+version: 1.1.0
+description: Governed checklist for reviewing GitHub pull requests in the arifOS federation.
+  Ensures PRs meet constitutional, structural, and safety standards before merge.
 owner: AAA
 risk_tier: medium
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-replaced_by:
-  skill: github-operations
-  section: "§2 PR GOVERNANCE REVIEW"
-  mode: pr-review
-  effective_date: "2026-06-26"
-  reason: "Unified into single github-operations skill covering issue + PR + CI"
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
+dependencies:
+  servers:
+    - a-forge
+  tools:
+    - forge_github_pr
+    - forge_filesystem_read
+    - forge_github_search
+    - forge_git_diff
+    - forge_git_log
+    - forge_git_status
+examples:
+- Review a cross-repo architectural PR before merge
+- Pre-merge gate on PR touching constitutional files (F1/F13 cross-check)
+tests:
+- Detect constitutional file changes in non-arifOS repos
+- Verify REPO= trailer in commit messages
+- Refuse to auto-approve without required reviewer per pr-review-governance risk tier
+version_lock:
+  schema_version: '1'
+  artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: CODING/FI
+  autonomy_tier: T2
+floor_scope:
+- F1
+- F2
+- F4
+- F9
+- F11
+- F13
+canonical_siblings:
+- pr-review-governance    # risk-tier + reviewer routing
+- github-runbook          # local git/gh inspection
+- github-ci-diagnose      # workflow failure analysis
+- github-issue-triage     # pre-PR context
+- github-issues           # OpenCode-scope: monitoring shell
 ---
 
-# ⚠️ DEPRECATED — Use `github-operations` §2 Instead
-
-> **This skill is deprecated.** Load `github-operations` instead and specify `mode="pr-review"`.
-> This file is retained for reference only and will be removed in a future version.
-
-**Old usage:**
-```
-skill_load(github-pr-review, pr_url=...)
-```
-
-**New usage:**
-```
-skill_load(github-operations, mode="pr-review", pr_url=...)
-```
-
----
-
-# GitHub PR Governance Review (DEPRECATED — see github-operations §2)
+# GitHub PR Governance Review
 
 ## Overview
 
-Every PR in the federation must pass a governance review before merge. This skill provides the canonical checklist.
+Pull requests are the constitutional boundary of a federation repo. A PR is the
+unit at which code, governance, and human judgment meet. This skill defines the
+**per-PR checklist** an agent must run before recommending merge or approval.
+
+Scope: structural review of the diff itself, not the high-level risk-tier and
+reviewer-routing rules (those live in `pr-review-governance`). This skill is the
+**checklist**, that skill is the **policy layer**.
+
+Companion skills:
+- `github-runbook` — local git/gh inspection (read-only first)
+- `github-ci-diagnose` — if CI is red on the PR branch
+- `github-issue-triage` — if the PR resolves an open issue
+- `pr-review-governance` — risk tier + reviewer routing (delegate first if risk ≥ high)
 
 ## When to Use
 
@@ -53,49 +83,18 @@ Every PR in the federation must pass a governance review before merge. This skil
 - Any PR from an external contributor
 - Any PR marked as "high risk" by the author
 
-## Procedure
+## When NOT to Use
 
-### Step 1: Scope Check
+- **Do NOT use on cross-repo PRs without first invoking `pr-review-governance`** to determine risk tier.
+- **Do NOT use as a substitute for CI** — CI runs first, this skill reads CI artifacts second.
+- **Do NOT use to approve your own PR** — F1 AMANAH + F13 SOVEREIGN prohibit self-seal.
+- **Do NOT use to dismiss a security finding** — escalate to `secret-safety-scan` + 888_JUDGE.
+- **Do NOT use to merge to main directly** — merge is F13 SOVEREIGN unless branch protection already enforces the policy.
 
-- [ ] PR touches only the repo it claims to touch
-- [ ] No cross-repo changes without explicit approval
-- [ ] Commit messages include `REPO=<owner/repo>` trailer
+## arifOS-ACT Embedding
 
-### Step 2: Authority Check
-
-- [ ] No constitutional files added to non-arifOS repos
-- [ ] No `ROOT_CANON.yaml`, `arifos.init`, or `floors.py` in diff
-- [ ] No secret exposure (env files, tokens, keys)
-
-### Step 3: Structural Check
-
-- [ ] New files follow repo's canonical structure
-- [ ] No phantom directories (referenced but empty)
-- [ ] Tests added or updated for new logic
-
-### Step 4: Safety Check
-
-- [ ] No `rm -rf` or destructive commands
-- [ ] No irreversible database migrations without rollback plan
-- [ ] No force-push or rebase references
-
-### Step 5: Verdict
-
-| Result | Action |
-|--------|--------|
-| All checks pass | Approve with comment |
-| Minor issues | Request changes with checklist |
-| Authority violation | Request 888_JUDGE review |
-| Secret exposure | Immediate HOLD + alert Arif |
-
-## Escalation Path
-
-| Condition | Escalate To |
-|-----------|-------------|
-| Constitutional file changed | arifOS 888_JUDGE |
-| Secret exposed | Arim + security.agent |
-| Cross-repo architectural change | Arif |
-
----
-
-*Skill version 1.0.0 — AAA Skill Library*
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.

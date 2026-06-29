@@ -1,559 +1,1144 @@
+# AAA Tool Registry — Federation tool surface (auto-generated + curated)
+# Generated: 2026-06-29 | A-FORGE tools: 69 added | Total: 125
 version: 1
-
 tools:
-  - id: status-query
-    name: Status Query
-    description: Read-only task and system status query.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: arifos-init
-    name: arifOS Init
-    description: Open a governed arifOS intake session before downstream action.
-    source_type: mcp
-    server_ref: arifos-mcp
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses:
-      - ARIFOS
-
-  - id: arifos-judge
-    name: arifOS Judge
-    description: Request constitutional judgment and verdict routing from arifOS.
-    source_type: mcp
-    server_ref: arifos-mcp
-    risk_tier: high
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-      - HUMAN
-
-  - id: agent-dispatch
-    name: Agent Dispatch
-    description: Dispatch a bounded task to an approved internal or authenticated peer agent.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: agent-handoff
-    name: Agent Handoff
-    description: Transfer work through governed A2A handoff flow.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: geox-query
-    name: GEOX Query
-    description: Grounded Earth-domain query through GEOX.
-    source_type: mcp
-    server_ref: geox-mcp
-    risk_tier: medium
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses:
-      - GEOX
-
-  - id: wealth-query
-    name: WEALTH Query
-    description: Capital-domain query through WEALTH.
-    source_type: mcp
-    server_ref: wealth-mcp
-    risk_tier: high
-    approval_policy: hold
-    execution_kind: read
-    required_witnesses:
-      - WEALTH
-
-  - id: well-readiness
-    name: WELL Readiness
-    description: Human-substrate readiness check through WELL.
-    source_type: mcp
-    server_ref: well-mcp
-    risk_tier: medium
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses:
-      - WELL
-
-  - id: terminal
-    name: Terminal
-    description: Shell execution surface for bounded local commands.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: file_read
-    name: File Read
-    description: Read local files.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: file_write
-    name: File Write
-    description: Write local files.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: patch
-    name: Patch
-    description: Apply focused file edits.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: browser_navigate
-    name: Browser Navigate
-    description: Navigate browser pages.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: browser_snapshot
-    name: Browser Snapshot
-    description: Capture a browser snapshot.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: browser_vision
-    name: Browser Vision
-    description: Inspect browser content visually.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: cronjob
-    name: Cronjob
-    description: Schedule a bounded background job.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: delegate_task
-    name: Delegate Task
-    description: Delegate a bounded task to another agent.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: memory
-    name: Memory
-    description: Read or recall bounded memory state.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses:
-      - ARIFOS
-
-  - id: session_search
-    name: Session Search
-    description: Search session traces.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: skill_view
-    name: Skill View
-    description: View installed skill metadata.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: skill_manage
-    name: Skill Manage
-    description: Manage skill configuration.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: send_message
-    name: Send Message
-    description: Send a governed message to an agent or peer.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: text_to_speech
-    name: Text To Speech
-    description: Convert text into spoken output.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: execute
-    required_witnesses: []
-
-  - id: vision_analyze
-    name: Vision Analyze
-    description: Analyze visual input.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: web_search
-    name: Web Search
-    description: Search the web.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: web-search
-    name: Web Search Alias
-    description: Alias for web search.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: file-read
-    name: File Read Alias
-    description: Alias for reading local files.
-    source_type: builtin
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: file-write
-    name: File Write Alias
-    description: Alias for writing local files.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: hold
-    execution_kind: execute
-    required_witnesses:
-      - ARIFOS
-
-  - id: geox-vault-read
-    name: GEOX Vault Read
-    description: Read GEOX vault data.
-    source_type: builtin
-    risk_tier: medium
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses:
-      - GEOX
-
-  # ── github-official MCP tools (repo-eureka skill, read-only) ──────────────
-  - id: get_file_contents
-    name: Get File Contents
-    description: Read file contents from a GitHub repository.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: search_repositories
-    name: Search Repositories
-    description: Search GitHub repositories.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: search_code
-    name: Search Code
-    description: Search code across GitHub repositories.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: search_issues
-    name: Search Issues
-    description: Search GitHub issues.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: search_users
-    name: Search Users
-    description: Search GitHub users.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: list_issues
-    name: List Issues
-    description: List issues in a GitHub repository.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_issue
-    name: Get Issue
-    description: Get a single GitHub issue.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: list_pull_requests
-    name: List Pull Requests
-    description: List pull requests in a GitHub repository.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_pull_request
-    name: Get Pull Request
-    description: Get a single pull request.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_pull_request_files
-    name: Get Pull Request Files
-    description: Get files changed in a pull request.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_pull_request_status
-    name: Get Pull Request Status
-    description: Get the CI/CD status of a pull request.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_pull_request_comments
-    name: Get Pull Request Comments
-    description: Get comments on a pull request.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_pull_request_reviews
-    name: Get Pull Request Reviews
-    description: Get reviews on a pull request.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: list_commits
-    name: List Commits
-    description: List commits in a GitHub repository.
-    source_type: mcp
-    server_ref: github-official
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  # ── serena MCP tools (symbol-level semantic retrieval, read-only) ─────────
-  - id: read_file
-    name: Read File (Serena)
-    description: Read a file via Serena LSP-backed semantic retrieval.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: list_dir
-    name: List Directory (Serena)
-    description: List directory contents via Serena.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: find_file
-    name: Find File (Serena)
-    description: Find files by name via Serena.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: search_for_pattern
-    name: Search For Pattern (Serena)
-    description: Search for a pattern in the codebase via Serena.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: find_symbol
-    name: Find Symbol (Serena)
-    description: Find a symbol definition via Serena LSP.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: find_referencing_symbols
-    name: Find Referencing Symbols (Serena)
-    description: Find symbols that reference a given symbol via Serena LSP.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_symbols_overview
-    name: Get Symbols Overview (Serena)
-    description: Get a high-level overview of symbols in a file or directory.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: list_memories
-    name: List Memories (Serena)
-    description: List Serena memory entries (no-memories mode — returns empty).
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: read_memory
-    name: Read Memory (Serena)
-    description: Read a Serena memory entry (no-memories mode — blocked).
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: get_current_config
-    name: Get Current Config (Serena)
-    description: Get Serena's current runtime configuration.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: onboarding
-    name: Onboarding (Serena)
-    description: Serena onboarding tool — provides usage guidance.
-    source_type: mcp
-    server_ref: serena
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  # ── repomapper MCP tools (Aider-style tree-sitter + PageRank map) ─────────
-  - id: repomap
-    name: Repomap
-    description: Generate an Aider-style tree-sitter + PageRank repo map.
-    source_type: mcp
-    server_ref: repomapper
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
-
-  - id: language_detect
-    name: Language Detect (RepoMapper)
-    description: Detect programming languages in a repository.
-    source_type: mcp
-    server_ref: repomapper
-    risk_tier: low
-    approval_policy: on-demand
-    execution_kind: read
-    required_witnesses: []
+- id: status-query
+  name: Status Query
+  description: Read-only task and system status query.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: arifos-init
+  name: arifOS Init
+  description: Open a governed arifOS intake session before downstream action.
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arifos-judge
+  name: arifOS Judge
+  description: Request constitutional judgment and verdict routing from arifOS.
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+  - HUMAN
+- id: agent-dispatch
+  name: Agent Dispatch
+  description: Dispatch a bounded task to an approved internal or authenticated peer agent.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: agent-handoff
+  name: Agent Handoff
+  description: Transfer work through governed A2A handoff flow.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: geox-query
+  name: GEOX Query
+  description: Grounded Earth-domain query through GEOX.
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: wealth-query
+  name: WEALTH Query
+  description: Capital-domain query through WEALTH.
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: well-readiness
+  name: WELL Readiness
+  description: Human-substrate readiness check through WELL.
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: terminal
+  name: Terminal
+  description: Shell execution surface for bounded local commands.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: file_read
+  name: File Read
+  description: Read local files.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: file_write
+  name: File Write
+  description: Write local files.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: patch
+  name: Patch
+  description: Apply focused file edits.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: browser_navigate
+  name: Browser Navigate
+  description: Navigate browser pages.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: browser_snapshot
+  name: Browser Snapshot
+  description: Capture a browser snapshot.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: browser_vision
+  name: Browser Vision
+  description: Inspect browser content visually.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: cronjob
+  name: Cronjob
+  description: Schedule a bounded background job.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: delegate_task
+  name: Delegate Task
+  description: Delegate a bounded task to another agent.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: memory
+  name: Memory
+  description: Read or recall bounded memory state.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: session_search
+  name: Session Search
+  description: Search session traces.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: skill_view
+  name: Skill View
+  description: View installed skill metadata.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: skill_manage
+  name: Skill Manage
+  description: Manage skill configuration.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: send_message
+  name: Send Message
+  description: Send a governed message to an agent or peer.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: text_to_speech
+  name: Text To Speech
+  description: Convert text into spoken output.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: vision_analyze
+  name: Vision Analyze
+  description: Analyze visual input.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: web_search
+  name: Web Search
+  description: Search the web.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: web-search
+  name: Web Search Alias
+  description: Alias for web search.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: file-read
+  name: File Read Alias
+  description: Alias for reading local files.
+  source_type: builtin
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: file-write
+  name: File Write Alias
+  description: Alias for writing local files.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: geox-vault-read
+  name: GEOX Vault Read
+  description: Read GEOX vault data.
+  source_type: builtin
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: get_file_contents
+  name: Get File Contents
+  description: Read file contents from a GitHub repository.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: search_repositories
+  name: Search Repositories
+  description: Search GitHub repositories.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: search_code
+  name: Search Code
+  description: Search code across GitHub repositories.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: search_issues
+  name: Search Issues
+  description: Search GitHub issues.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: search_users
+  name: Search Users
+  description: Search GitHub users.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: list_issues
+  name: List Issues
+  description: List issues in a GitHub repository.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_issue
+  name: Get Issue
+  description: Get a single GitHub issue.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: list_pull_requests
+  name: List Pull Requests
+  description: List pull requests in a GitHub repository.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_pull_request
+  name: Get Pull Request
+  description: Get a single pull request.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_pull_request_files
+  name: Get Pull Request Files
+  description: Get files changed in a pull request.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_pull_request_status
+  name: Get Pull Request Status
+  description: Get the CI/CD status of a pull request.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_pull_request_comments
+  name: Get Pull Request Comments
+  description: Get comments on a pull request.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_pull_request_reviews
+  name: Get Pull Request Reviews
+  description: Get reviews on a pull request.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: list_commits
+  name: List Commits
+  description: List commits in a GitHub repository.
+  source_type: mcp
+  server_ref: github-official
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: read_file
+  name: Read File (Serena)
+  description: Read a file via Serena LSP-backed semantic retrieval.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: list_dir
+  name: List Directory (Serena)
+  description: List directory contents via Serena.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: find_file
+  name: Find File (Serena)
+  description: Find files by name via Serena.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: search_for_pattern
+  name: Search For Pattern (Serena)
+  description: Search for a pattern in the codebase via Serena.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: find_symbol
+  name: Find Symbol (Serena)
+  description: Find a symbol definition via Serena LSP.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: find_referencing_symbols
+  name: Find Referencing Symbols (Serena)
+  description: Find symbols that reference a given symbol via Serena LSP.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_symbols_overview
+  name: Get Symbols Overview (Serena)
+  description: Get a high-level overview of symbols in a file or directory.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: list_memories
+  name: List Memories (Serena)
+  description: List Serena memory entries (no-memories mode — returns empty).
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: read_memory
+  name: Read Memory (Serena)
+  description: Read a Serena memory entry (no-memories mode — blocked).
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: get_current_config
+  name: Get Current Config (Serena)
+  description: Get Serena's current runtime configuration.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: onboarding
+  name: Onboarding (Serena)
+  description: Serena onboarding tool — provides usage guidance.
+  source_type: mcp
+  server_ref: serena
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: repomap
+  name: Repomap
+  description: Generate an Aider-style tree-sitter + PageRank repo map.
+  source_type: mcp
+  server_ref: repomapper
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: language_detect
+  name: Language Detect (RepoMapper)
+  description: Detect programming languages in a repository.
+  source_type: mcp
+  server_ref: repomapper
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_execute
+  name: forge_execute
+  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires cc_id for mutations.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_plan
+  name: forge_plan
+  description: Generate an engineering plan for a given task. Returns plan with rollback strategy.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_dry_run
+  name: forge_dry_run
+  description: Simulate execution without side effects. Returns predicted outcomes.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_abort
+  name: forge_abort
+  description: Safe stop + rollback for running execution. Requires lease or session auth.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_agent
+  name: forge_agent
+  description: 'Agent identity management. Modes: register, status, list, kill.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_session_init
+  name: forge_session_init
+  description: Constitutional session ignition. Proxies to arifOS kernel.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_check_governance
+  name: forge_check_governance
+  description: Constitutional governance check — delegates to arifOS.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: forge_judge_proxy
+  name: forge_judge_proxy
+  description: Proxy forwarder to canonical arifOS constitutional judge.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_approve
+  name: forge_approve
+  description: 888_HOLD approval handler — routes to arifOS for adjudication.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_heart_critique
+  name: forge_heart_critique
+  description: Risk assessment and ethical review — delegates to arifOS 666 HEART pipeline.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: forge_lease
+  name: forge_lease
+  description: 'Lease lifecycle. Modes: request, status, revoke.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_lock
+  name: forge_lock
+  description: 'Amanah/F1 lock primitive. Modes: acquire, release.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_registry
+  name: forge_registry
+  description: 'Dynamic skill registry. Modes: list, get, scars, fingerprint, scan.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_registry_status
+  name: forge_registry_status
+  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift status.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_register
+  name: forge_register
+  description: APEX v36Ω gated registration gate. Registers a tool after all gates pass.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_skill
+  name: forge_skill
+  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM scan.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_evaluate
+  name: forge_evaluate
+  description: APEX v36Ω evaluation gate. Computes G = A·P·E·X·Φ and C_dark.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_witness
+  name: forge_witness
+  description: APEX v36Ω tri-witness consensus gate. Computes W3 = ∛(Human × AI × External).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_scar
+  name: forge_scar
+  description: APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional constraints.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_seal
+  name: forge_seal
+  description: Seal a Tri-Witness validated skill into permanent VAULT999 memory.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_status
+  name: forge_status
+  description: 'Active execution state: jobs, leases, agents.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_job
+  name: forge_job
+  description: 'Background job system. Modes: submit, status.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_reality_loop
+  name: forge_reality_loop
+  description: THE 13TH TOOL — Chains all 12 MCP prompts into a perpetual autonomous reality loop.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_shell
+  name: forge_shell
+  description: Canonical governed shell execution. Executes commands through constitutional gate + hash-chain audit.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_shell_dryrun
+  name: forge_shell_dryrun
+  description: Preview a shell command's output WITHOUT executing it.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_shell_status
+  name: forge_shell_status
+  description: 'Check forge_shell subsystem health: ledger state, judge pattern count, defaults.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_shell_alert_history
+  name: forge_shell_alert_history
+  description: View recent ArifJudge alert history (DENY/GATE/self-modification events).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_shell_ledger
+  name: forge_shell_ledger
+  description: Query recent ArifSeal hash-chain ledger entries. Read-only, paged.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_filesystem
+  name: forge_filesystem
+  description: 'Canonical filesystem primitive. Modes: read, write, glob, grep, stat.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_git
+  name: forge_git
+  description: 'Canonical git primitive. Modes: status, diff, log, commit.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_github
+  name: forge_github
+  description: 'Canonical GitHub primitive. Modes: search, pr.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_docker
+  name: forge_docker
+  description: 'Canonical Docker primitive. Modes: ps, logs, exec, images.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_postgres
+  name: forge_postgres
+  description: 'Canonical Postgres primitive. Modes: query, schema.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_memory
+  name: forge_memory
+  description: 'Canonical memory primitive. Modes: recall.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_vault
+  name: forge_vault
+  description: 'VAULT999 primitive. Modes: read, list, write, seal.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_systemctl
+  name: forge_systemctl
+  description: 'Query systemd. Modes: status, list_units.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_journalctl
+  name: forge_journalctl
+  description: Query systemd journal logs (read-only, PII-redacted).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_browser_navigate
+  name: forge_browser_navigate
+  description: Navigate browser to URL.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_browser_click
+  name: forge_browser_click
+  description: Click a browser element.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_browser_type
+  name: forge_browser_type
+  description: Type text into a browser element.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_browser_screenshot
+  name: forge_browser_screenshot
+  description: Take a browser screenshot.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_browser_extract_text
+  name: forge_browser_extract_text
+  description: Extract text from browser page.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_browser_evaluate_js
+  name: forge_browser_evaluate_js
+  description: Evaluate JS in browser context.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_github_search_repos
+  name: forge_github_search_repos
+  description: Search GitHub repositories.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_github_search_code
+  name: forge_github_search_code
+  description: Search GitHub code.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_github_get_file
+  name: forge_github_get_file
+  description: Read a file from GitHub.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_github_create_issue
+  name: forge_github_create_issue
+  description: Create a GitHub issue. MUTATE — lease required.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_github_create_pull_request
+  name: forge_github_create_pull_request
+  description: Create a GitHub pull request. MUTATE — lease required.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_github_create_or_update_file
+  name: forge_github_create_or_update_file
+  description: Create or update a file on GitHub. MUTATE — lease required.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_search
+  name: forge_search
+  description: Governed web search via Brave.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_research
+  name: forge_research
+  description: Governed research across web sources.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_docs_lookup
+  name: forge_docs_lookup
+  description: Governed docs lookup via Context7.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_minimax_search
+  name: forge_minimax_search
+  description: Search the web via MiniMax.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_netdata_alarms
+  name: forge_netdata_alarms
+  description: Read Netdata alarms.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_netdata_metrics
+  name: forge_netdata_metrics
+  description: Read Netdata chart data.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_probe
+  name: forge_probe
+  description: Federation organ liveness. Probes all 5 organs + latency.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_health_check
+  name: forge_health_check
+  description: Return A-FORGE server health and constitutional genome status.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_wealth
+  name: forge_wealth
+  description: Route to WEALTH capital intelligence organ.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_well
+  name: forge_well
+  description: 'WELL human readiness primitive. Modes: state, readiness, floors, anchor.'
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_pipeline_run
+  name: forge_pipeline_run
+  description: Autonomous intelligence pipeline. Routes organs, evidence→compute→judge+seal.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge8_execute
+  name: forge8_execute
+  description: Execute with VAULT999 seal. FAILS HARD without valid seal.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_synthesize
+  name: forge_synthesize
+  description: Create artifact from intent. Code goes to temporary buffer ONLY.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_stage
+  name: forge_stage
+  description: Move artifact to quarantine staging. Spec becomes IMMUTABLE after staging.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_sandbox_run
+  name: forge_sandbox_run
+  description: Execute staged artifact in isolated sandbox. ABSOLUTE timeout.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_scar_scan
+  name: forge_scar_scan
+  description: Check artifact against SCAR database.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_tier_bind
+  name: forge_tier_bind
+  description: Set trust tier LOWER BOUND only. A-FORGE cannot promote.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: forge_docket_prep
+  name: forge_docket_prep
+  description: Package all evidence and hand off to arifOS.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge_skillstore_read
+  name: forge_skillstore_read
+  description: Query artifact store. Semantic search with tag filtering.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_skillstore_write
+  name: forge_skillstore_write
+  description: Store artifact with provenance. WRITE mode only.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []

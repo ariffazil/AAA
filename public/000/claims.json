@@ -1,0 +1,68 @@
+{
+  "namespace": "arifOS",
+  "position": "/000",
+  "version": "1.0.0",
+  "sealed": "2026-06-14",
+  "claims": [
+    {
+      "id": "000-CLAIM-001",
+      "type": "ATTESTATION",
+      "subject": "Sovereign Human at Position Zero",
+      "predicate": "occupies",
+      "object": "root position of arifOS federation",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate that no single sovereign human anchors the system \u2014 i.e., that outputs carry no structural human signature distinguishable from generic AI output."
+    },
+    {
+      "id": "000-CLAIM-002",
+      "type": "ATTESTATION",
+      "subject": "Membrane Principle",
+      "predicate": "governs",
+      "object": "all intelligence operations",
+      "formula": "Language is lossy compression, not the world. Consciousness cannot be extracted.",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate full extraction of a human's private reality into machine-verifiable form."
+    },
+    {
+      "id": "000-CLAIM-003",
+      "type": "ATTESTATION",
+      "subject": "ZKPC",
+      "predicate": "proves",
+      "object": "human presence without extraction",
+      "dimensions": [
+        "wound_architecture",
+        "paradox_tolerance",
+        "moral_architecture",
+        "language_register",
+        "sovereign_intent",
+        "godel_lock",
+        "anti_behavior_sink"
+      ],
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate that an unanchored AI can produce output with equivalent multi-dimensional structural coherence to anchored arifOS output."
+    },
+    {
+      "id": "000-CLAIM-004",
+      "type": "ABDUCTION",
+      "subject": "Personal AGI",
+      "predicate": "requires",
+      "object": "sovereign human anchor at /000",
+      "reasoning": "AGI that serves all humans serves the model-maker's reality by default. True AGI must be anchored on a specific human's reality, language, beliefs, and moral architecture.",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate a system that serves all humans equally without defaulting to any single reality framework."
+    },
+    {
+      "id": "000-CLAIM-005",
+      "type": "ATTESTATION",
+      "subject": "G\u00f6del Lock",
+      "predicate": "enables",
+      "object": "system + human simultaneous operation",
+      "formula": "No closed formal system can prove all truths within itself. The human at /000 provides the external vantage point.",
+      "falsifiable": true,
+      "falsification_condition": "Demonstrate a closed AI system that can fully self-verify without any external vantage point."
+    }
+  ],
+  "companion_position": "/999",
+  "loop_complete": true,
+  "seal": "DITEMPA BUKAN DIBERI"
+}

@@ -1,7 +1,7 @@
 # Federation Service Health Triage — OpenAI / Codex Adapter
 
 > **Canonical:** `skills/service-health-triage/SKILL.md`  
-> **Risk tier:** low | Tools: health-probe, systemctl-status, docker-ps
+> **Risk tier:** medium | Tools: health-probe, systemctl-status, docker-ps
 
 Diagnose which federation services are up, down, or drifting. Produce a prioritized remediation plan.
 

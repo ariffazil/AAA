@@ -1,278 +1,282 @@
-# AAA REGISTRY: FORGE INSTRUMENTS
-# Class 1 Workers — CLI Tools Installed by Arif
-# Forged: 2026-06-10 by Ω | Authority: F13 SOVEREIGN
-# Canonical: /root/FORGE_REGISTRY.md
-# OpenCode toolbench detail: registries/opencode_toolbench.yaml
-
 version: 1
-last_audit: "2026-06-20T14:20:00Z"
-auditor: "FORGE (000Ω)"
-
+last_audit: '2026-06-29T16:13:58Z'
+auditor: Claude Code AAA (2026-06-29)
 instruments:
-  - id: FI-001
-    name: OpenCode
-    binary: /usr/local/bin/opencode
-    version: 1.17.8
-    version_pinned_from: "2026-06-12 (opencode 1.17.4 release, v1.15.0 → v1.17.4)"
-    model: tokenplan-mimo/mimo-v2.5-pro
-    fallback_model: kimi-for-coding/kimi-k2-thinking
-    model_strategy: "MiMo V2.5 Pro primary per F13 2026-06-15 lock; Kimi for complex reasoning; Claude only for architecture review."
-    izin: GRANTED
-    izin_date: "2026-05-17"
-    last_upgrade: "2026-06-12"
-    upgrade_authority: "Arif Fazil (F13)"
-    sandbox: process
-    subagent_policy:
-      default: "888_HOLD"
-      max_parallel: 1
-      registered_subagents:
-        - architect
-        - rsi
-        - integrator
-        - final
-        - build
-        - plan
-        - general
-        - explore
-        - scout
-    a_r_i_f_chain:
-      description: "Architect → Integrator → RSI → Final. Each in own session, no upward spawning. Session isolation enforces separation of powers."
-      architect:
-        role: "Frames the problem, emits the brief (brief.md, task_graph.yaml, acceptance.yaml, decisions.md)"
-        model: deepseek/deepseek-v4-pro
-        temperature: 0.3
-        can_ask_arif: yes
-        can_push_code: no
-      rsi:
-        role: "Entropy reduction (refactor/structure/integrate). Measures with radon/lizard/jscpd/knip/vulture. Max 3 passes per milestone."
-        model: deepseek/deepseek-v4-pro
-        temperature: 0.2
-        can_ask_arif: no
-        can_push_code: no
-      integrator:
-        role: "Main builder. Executes against brief. Full edit + bash. Asks Arif only when blocked."
-        model: minimax/MiniMax-M3
-        temperature: 0.4
-        can_ask_arif: only_when_blocked
-        can_push_code: yes (with 888 ack)
-      final:
-        role: "Auditor + 888_HOLD gate. Read-only. SEAL/SABAR/VOID verdict. Max 2 questions per session."
-        model: deepseek/deepseek-v4-pro
-        temperature: 0.1
-        can_ask_arif: yes (max 2)
-        can_push_code: no
-    contrast_skills:
-      count: 12
-      pattern: "3 per agent at AGI/ASI/APEX tier"
-      location: "/root/.opencode/skills/"
-      list:
-        - architect-agi-contrast  # 2-3 alternatives before recommending
-        - architect-asi-contrast  # 3am test (would Arif thank or curse?)
-        - architect-apex-contrast # falsifiability + Gödel lock + 1-read test
-        - rsi-agi-contrast        # reversibility (1hr revert)
-        - rsi-asi-contrast        # mental-model preservation
-        - rsi-apex-contrast       # reproducibility (same SHA = same numbers)
-        - integrator-agi-contrast # reuse first (arifOS, sister organs)
-        - integrator-asi-contrast # 3am commit test
-        - integrator-apex-contrast# F1-F13 phase-done check
-        - final-agi-contrast      # steel-man the opposition
-        - final-asi-contrast      # question-worth check
-        - final-apex-contrast     # 6-month future audit
-    mcp_servers:
-      - arifOS           # 8088 — constitutional kernel, 13 tools
-      - WEALTH           # 18082 — capital intelligence, 20 tools
-      - WELL             # 18083 — human readiness, 18 tools, REFLECT_ONLY
-      - GEOX             # 8081 — earth intelligence, 20 tools
-      - filesystem       # local, 12 roots
-      - git              # local git ops
-      - memory           # knowledge graph
-      - sequential-thinking  # reasoning scaffold
-      - time             # utility
-      - repomapper       # tree-sitter + PageRank (read-only)
-      - serena           # LSP symbol search (read-only)
-      - meyhem           # MCP discovery (6700+) + outcome search
-      - playwright       # NEW: browser automation, AAA/arif-sites testing
-      - supabase         # full read+write, F13 sovereign directive 2026-06-25
-    mcp_quarantine:
-      - brave-search     # token in /root/.env (mode 644), needs vault.env migration
-    mcp_removed:
-      - exa              # 405 + empty EXA_API_KEY
-      - composio         # 401 + needs OAuth you haven't done
-      - github-local     # empty GITHUB_PERSONAL_ACCESS_TOKEN
-    mcp_strategy: "13-slot MISKIN roster — only zero-cost + actually-used. All $0/month. See opencode.mcp_audit.json for full audit trail."
-    root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
-    config_path: /root/.config/opencode/opencode.json
-    toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
-    mcp_audit: /root/.config/opencode/opencode.mcp_audit.json
-    agents_dir: /root/.config/opencode/agents
-    rules_file: /root/.config/opencode/AGENTS.md
-    systemd_service: opencode.service
-    telegram_bot: opencode-bot.service
-    # Surface breakdown (see opencode_toolbench.yaml for full detail):
-    #   L1 built-in tools: 13 (always-on core) + 2 (experimental: lsp, plan)
-    #   L2 MCP servers:    19 enabled (4 federation + 15 external) + 1 disabled
-    #   L3 skills:         12 contrast + 31 existing on disk + external mirrors
-    #   L4 custom tools:   5 (auto-discovered from /root/.opencode/tools/)
-    #   L5 agents:         5 built-in primaries + 3 built-in subagents + 4 user A-R-I-F
-    #   L6 slash commands: 10 (init, forge, audit, rsi, brief, status, deploy, vault, entropy, mission)
-    #   L7 LSPs:           6 (python, typescript, yaml, json, bash, dockerfile)
-    references:
-      count: 6
-      list: [arifOS, wealth, well, geox, aforge, aaa]
-
-  - id: FI-002
-    name: Claude Code
-    binary: /root/.local/bin/claude
-    version: 2.1.160
-    model: deepseek-v4-pro
-    izin: GRANTED
-    izin_date: "2026-04-15"
-    sandbox: seatbelt (bubblewrap + seccomp)
-    subagent_policy:
-      default: "888_HOLD"
-      agent_teams: DISABLED
-      workflows: DISABLED
-      bughunter_fleet_size: 5
-      note: "All sub-agent features require explicit F13 session override"
-    mcp_servers:
-      - arifOS
-      - minimax-media
-      - minimax-code
-      - WEALTH
-      - WELL
-      - github
-      - brave-search
-      - meyhem
-      - playwright-mcp
-      - capability-index
-    config_path: /root/.claude.json
-    settings_path: /root/.claude/settings.json
-    oauth_account: arifbfazil@gmail.com
-
-  - id: FI-003
-    name: Qwen Code
-    binary: /usr/bin/qwen
-    version: 0.17.1
-    model: MiniMax-M3
-    izin: GRANTED
-    izin_date: "2026-06-10"
-    sandbox: process
-    subagent_policy:
-      default: "888_HOLD"
-      historical: "1 Explore sub-agent session (read-only)"
-    mcp_servers: []
-    config_path: /root/.qwen/
-    note: "AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections. Heavily restricted Bash permissions. No active sessions. LOW RISK."
-
-  - id: FI-004
-    name: Antigravity CLI
-    binary: /root/.local/bin/agy
-    version: 1.0.10
-    model: Gemini 3.5 Flash (High)
-    izin: GRANTED
-    izin_date: "2026-06-22"
-    sandbox: process
-    subagent_policy:
-      default: "888_HOLD"
-      registered_subagents:
-        - research
-        - self
-    mcp_servers:
-      - arifOS
-      - geox
-      - wealth
-      - well
-      - aforge
-      - context7
-    config_path: /root/.gemini/antigravity-cli/
-    settings_path: /root/.gemini/antigravity-cli/settings.json
-    note: "Registered 2026-06-22 during A2A alignment session. Connected to 5 federation organs + context7. Model: Gemini 3.5 Flash (High)."
-
-  - id: FI-005
-    name: Codex CLI
-    binary: /usr/local/bin/codex
-    version: 0.136.0
-    model: GPT-5.5
-    izin: GRANTED
-    izin_date: "2026-05-20"
-    sandbox: landlock
-    subagent_policy:
-      default: "ALLOWED — only from registered .codex/agents/*.toml"
-      goals_engine: idle
-      goals_db: /root/.codex/goals_1.sqlite
-      active_goals: 0
-    mcp_servers: UNKNOWN
-    config_path: /root/.codex/
-    note: "AUDITED 2026-06-10. GPT-5.5 model. 0 active goals (empty thread_goals table). 5 historical memories (audit/cleanup). Clean state."
-
-  - id: FI-006
-    name: Copilot CLI
-    binary: /usr/bin/copilot
-    version: 1.0.61
-    model: UNKNOWN
-    izin: GRANTED
-    izin_date: "2026-05-24"
-    sandbox: process
-    subagent_policy:
-      default: "ALLOWED — /fleet only, max 3 parallel, read-only sandbox"
-      fleet_max: 3
-    mcp_servers:
-      - arifOS
-      - playwright
-      - WEALTH
-      - WELL
-      - capability-index
-      - github-official
-      - github
-      - brave-search
-      - meyhem
-      - repomapper
-      - serena
-    config_path: /root/.copilot/mcp-config.json
-
-  - id: FI-007
-    name: Aider
-    binary: NOT INSTALLED
-    version: null
-    model: null
-    izin: N/A
-    izin_date: null
-    sandbox: null
-    subagent_policy: null
-    mcp_servers: []
-    note: "NOT PRESENT ON MACHINE. No installation found."
-
-  - id: FI-008
-    name: Kimi Code CLI
-    binary: /root/.local/bin/kimi
-    version: "1.47.0"
-    model: kimi-code/kimi-for-coding
-    izin: GRANTED
-    izin_date: "2026-06-10"
-    sandbox: process
-    subagent_policy:
-      default: "888_HOLD"
-      registered_subagents:
-        - explore
-        - fix
-        - coordinator
-        - worker
-    mcp_servers:
-      - arifOS
-      - wealth
-      - well
-      - geox
-      - aforge
-      - minimax
-      - capability-index
-      - repomapper
-      - serena
-    mcp_servers_disabled:
-      - github
-      - brave-search
-      - meyhem
-      - playwright-mcp
-    config_path: /root/.kimi/config.toml
-    mcp_config_path: /root/.kimi/mcp.json
-    agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
-    note: "Aligned 2026-06-20. A-FORGE ingress is stdio (HTTP surfaces have SDK single-session limitation). Dedicated MCP service on port 7072 was also fixed to connect McpServer to transport; verified over streamable-http. AMANAH + MARUAH embedded in system identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through A-FORGE forge_* tools. Trust tier proposed: 2 pending A-AUDIT + F13 ratification."
+- id: FI-001
+  name: OpenCode
+  binary: /usr/local/bin/opencode
+  version: 3.0.0
+  version_pinned_from: 2026-06-26 (opencode 3.0.0 release)
+  model: kimi-coding/kimi-for-coding
+  fallback_model: kimi-for-coding/kimi-k2-thinking
+  model_strategy: MiMo V2.5 Pro primary per F13 2026-06-15 lock; Kimi for complex reasoning; Claude only for architecture
+    review.
+  izin: GRANTED
+  izin_date: '2026-05-17'
+  last_upgrade: '2026-06-12'
+  upgrade_authority: Arif Fazil (F13)
+  sandbox: process
+  subagent_policy:
+    default: 888_HOLD
+    max_parallel: 1
+    registered_subagents:
+    - architect
+    - rsi
+    - integrator
+    - final
+    - build
+    - plan
+    - general
+    - explore
+    - scout
+  a_r_i_f_chain:
+    description: Architect → Integrator → RSI → Final. Each in own session, no upward spawning. Session isolation enforces
+      separation of powers.
+    architect:
+      role: Frames the problem, emits the brief (brief.md, task_graph.yaml, acceptance.yaml, decisions.md)
+      model: deepseek/deepseek-v4-pro
+      temperature: 0.3
+      can_ask_arif: true
+      can_push_code: false
+    rsi:
+      role: Entropy reduction (refactor/structure/integrate). Measures with radon/lizard/jscpd/knip/vulture. Max 3 passes
+        per milestone.
+      model: deepseek/deepseek-v4-pro
+      temperature: 0.2
+      can_ask_arif: false
+      can_push_code: false
+    integrator:
+      role: Main builder. Executes against brief. Full edit + bash. Asks Arif only when blocked.
+      model: minimax/MiniMax-M3
+      temperature: 0.4
+      can_ask_arif: only_when_blocked
+      can_push_code: yes (with 888 ack)
+    final:
+      role: Auditor + 888_HOLD gate. Read-only. SEAL/SABAR/VOID verdict. Max 2 questions per session.
+      model: deepseek/deepseek-v4-pro
+      temperature: 0.1
+      can_ask_arif: yes (max 2)
+      can_push_code: false
+  contrast_skills:
+    count: 12
+    pattern: 3 per agent at AGI/ASI/APEX tier
+    location: /root/.opencode/skills/
+    list:
+    - architect-agi-contrast
+    - architect-asi-contrast
+    - architect-apex-contrast
+    - rsi-agi-contrast
+    - rsi-asi-contrast
+    - rsi-apex-contrast
+    - integrator-agi-contrast
+    - integrator-asi-contrast
+    - integrator-apex-contrast# F1-F13 phase-done check
+    - final-agi-contrast
+    - final-asi-contrast
+    - final-apex-contrast
+  mcp_servers:
+  - arifOS
+  - WEALTH
+  - WELL
+  - GEOX
+  - filesystem
+  - git
+  - memory
+  - sequential-thinking
+  - time
+  - repomapper
+  - serena
+  - meyhem
+  - playwright
+  - supabase
+  mcp_quarantine:
+  - brave-search
+  mcp_removed:
+  - exa
+  - composio
+  - github-local
+  mcp_strategy: 13-slot MISKIN roster — only zero-cost + actually-used. All $0/month. See opencode.mcp_audit.json for full
+    audit trail.
+  root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
+  config_path: /root/.config/opencode/opencode.json
+  toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
+  mcp_audit: /root/.config/opencode/opencode.mcp_audit.json
+  agents_dir: /root/.config/opencode/agents
+  rules_file: /root/.config/opencode/AGENTS.md
+  systemd_service: opencode.service
+  telegram_bot: opencode-bot.service
+  references:
+    count: 6
+    list:
+    - arifOS
+    - wealth
+    - well
+    - geox
+    - aforge
+    - aaa
+  live_version_observed: 1.17.11
+  version_checked_at: '2026-06-29T16:13:57Z'
+- id: FI-002
+  name: Claude Code
+  binary: /root/.local/bin/claude
+  version: 2.1.160
+  model: deepseek-v4-pro
+  izin: GRANTED
+  izin_date: '2026-04-15'
+  sandbox: seatbelt (bubblewrap + seccomp)
+  subagent_policy:
+    default: 888_HOLD
+    agent_teams: DISABLED
+    workflows: DISABLED
+    bughunter_fleet_size: 5
+    note: All sub-agent features require explicit F13 session override
+  mcp_servers:
+  - arifOS
+  - minimax-media
+  - minimax-code
+  - WEALTH
+  - WELL
+  - github
+  - brave-search
+  - meyhem
+  - playwright-mcp
+  - capability-index
+  config_path: /root/.claude.json
+  settings_path: /root/.claude/settings.json
+  oauth_account: arifbfazil@gmail.com
+  live_version_observed: 2.1.177 (Claude Code)
+  version_checked_at: '2026-06-29T16:13:57Z'
+- id: FI-003
+  name: Qwen Code
+  binary: /usr/bin/qwen
+  version: 0.17.1
+  model: MiniMax-M3
+  izin: GRANTED
+  izin_date: '2026-06-10'
+  sandbox: process
+  subagent_policy:
+    default: 888_HOLD
+    historical: 1 Explore sub-agent session (read-only)
+  mcp_servers: []
+  config_path: /root/.qwen/
+  note: AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections. Heavily restricted Bash permissions.
+    No active sessions. LOW RISK.
+- id: FI-004
+  name: Antigravity CLI
+  binary: /root/.local/bin/agy
+  version: 1.0.10
+  model: Gemini 3.5 Flash (High)
+  izin: GRANTED
+  izin_date: '2026-06-22'
+  sandbox: process
+  subagent_policy:
+    default: 888_HOLD
+    registered_subagents:
+    - research
+    - self
+  mcp_servers:
+  - arifOS
+  - geox
+  - wealth
+  - well
+  - aforge
+  - context7
+  config_path: /root/.gemini/antigravity-cli/
+  settings_path: /root/.gemini/antigravity-cli/settings.json
+  note: 'Registered 2026-06-22 during A2A alignment session. Connected to 5 federation organs + context7. Model: Gemini 3.5
+    Flash (High).'
+  live_version_observed: 1.0.13
+  version_checked_at: '2026-06-29T16:13:57Z'
+- id: FI-005
+  name: Codex CLI
+  binary: /usr/local/bin/codex
+  version: 0.136.0
+  model: GPT-5.5
+  izin: GRANTED
+  izin_date: '2026-05-20'
+  sandbox: landlock
+  subagent_policy:
+    default: ALLOWED — only from registered .codex/agents/*.toml
+    goals_engine: idle
+    goals_db: /root/.codex/goals_1.sqlite
+    active_goals: 0
+  mcp_servers: UNKNOWN
+  config_path: /root/.codex/
+  note: AUDITED 2026-06-10. GPT-5.5 model. 0 active goals (empty thread_goals table). 5 historical memories (audit/cleanup).
+    Clean state.
+  live_version_observed: codex-cli 0.136.0
+  version_checked_at: '2026-06-29T16:13:57Z'
+- id: FI-006
+  name: Copilot CLI
+  binary: /usr/bin/copilot
+  version: 1.0.61
+  model: UNKNOWN
+  izin: GRANTED
+  izin_date: '2026-05-24'
+  sandbox: process
+  subagent_policy:
+    default: ALLOWED — /fleet only, max 3 parallel, read-only sandbox
+    fleet_max: 3
+  mcp_servers:
+  - arifOS
+  - playwright
+  - WEALTH
+  - WELL
+  - capability-index
+  - github-official
+  - github
+  - brave-search
+  - meyhem
+  - repomapper
+  - serena
+  config_path: /root/.copilot/mcp-config.json
+  live_version_observed: GitHub Copilot CLI 1.0.63.
+  version_checked_at: '2026-06-29T16:13:58Z'
+- id: FI-007
+  name: Aider
+  binary: NOT INSTALLED
+  version: null
+  model: null
+  izin: N/A
+  izin_date: null
+  sandbox: null
+  subagent_policy: null
+  mcp_servers: []
+  note: NOT PRESENT ON MACHINE. No installation found.
+- id: FI-008
+  name: Kimi Code CLI
+  binary: /root/.local/bin/kimi
+  version: 1.47.0
+  model: kimi-code/kimi-for-coding
+  izin: GRANTED
+  izin_date: '2026-06-10'
+  sandbox: process
+  subagent_policy:
+    default: 888_HOLD
+    registered_subagents:
+    - explore
+    - fix
+    - coordinator
+    - worker
+  mcp_servers:
+  - arifOS
+  - wealth
+  - well
+  - geox
+  - aforge
+  - minimax
+  - capability-index
+  - repomapper
+  - serena
+  mcp_servers_disabled:
+  - github
+  - brave-search
+  - meyhem
+  - playwright-mcp
+  config_path: /root/.kimi/config.toml
+  mcp_config_path: /root/.kimi/mcp.json
+  agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
+  note: 'Aligned 2026-06-20. A-FORGE ingress is stdio (HTTP surfaces have SDK single-session limitation). Dedicated MCP service
+    on port 7072 was also fixed to connect McpServer to transport; verified over streamable-http. AMANAH + MARUAH embedded
+    in system identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through A-FORGE forge_* tools. Trust
+    tier proposed: 2 pending A-AUDIT + F13 ratification.'
