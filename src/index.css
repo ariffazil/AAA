@@ -14,7 +14,7 @@
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
     --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 60%;
+    --muted-foreground: 0 0% 65%;
     --accent: 43 74% 63%; /* #e6c25d Gold Forged */
     --accent-foreground: 0 0% 0%;
     --destructive: 0 84% 60%;
@@ -22,7 +22,7 @@
     --border: 0 50% 15%;
     --input: 0 50% 15%;
     --ring: 43 74% 63%;
-    --radius: 0.5rem;
+    --radius: 0px;
     /* AAA Unified Design System */
     --color-bg: 30 7% 4%;
     --color-surface: 30 6% 7%;
@@ -31,15 +31,15 @@
     --color-divider: 30 4% 15%;
     --color-border: 30 3% 20%;
     --color-text: 30 6% 83%;
-    --color-text-muted: 30 3% 47%;
-    --color-text-faint: 30 3% 30%;
-    --color-primary: 186 69% 41%; /* #3a9ea8 teal */
-    --color-primary-hover: 186 69% 36%;
-    --color-primary-active: 186 69% 30%;
-    --color-primary-highlight: 186 50% 17%;
-    --color-success: 100 50% 38%;
-    --color-warning: 26 72% 47%;
-    --color-error: 340 55% 47%;
+    --color-text-muted: 30 3% 65%;
+    --color-text-faint: 30 3% 48%;
+    --color-primary: 186 69% 48%; /* #2aa5b4 teal */
+    --color-primary-hover: 186 69% 42%;
+    --color-primary-active: 186 69% 36%;
+    --color-primary-highlight: 186 50% 20%;
+    --color-success: 100 50% 52%;
+    --color-warning: 26 72% 55%;
+    --color-error: 340 65% 58%;
     --color-hold: 35 80% 54%;
     --color-gold: 40 65% 55%;
     --color-gold-dim: 40 45% 40%;
@@ -49,6 +49,7 @@
 @layer base {
   * {
     @apply border-border;
+    border-radius: var(--radius) !important;
   }
   html {
     scroll-behavior: smooth;
