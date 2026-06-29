@@ -1,40 +1,64 @@
 ---
 id: repo-hygiene-audit
 name: Repository Hygiene Audit
-version: "1.0.0"
-description: Inspect a GitHub repo for structural chaos, authority conflicts, and cleanup needs. Produce an audit report and remediation plan.
+version: 1.0.0
+description: Inspect a GitHub repo for structural chaos, authority conflicts, and
+  cleanup needs. Produce an audit report and remediation plan.
 owner: AAA
 risk_tier: medium
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
-  - kimi
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills: []
   servers:
-    - github
+  - github
   tools:
-    - github-search
-    - file-read
-    - directory-list
+  - github-search
+  - file-read
+  - directory-list
 examples:
-  - Audit ariffazil/AAA for constitutional leaks and debris
+- Audit ariffazil/AAA for constitutional leaks and debris
 tests:
-  - Detect duplicate authority files in wrong repos
-  - Detect stale references to moved directories
+- Detect duplicate authority files in wrong repos
+- Detect stale references to moved directories
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F4
+- F9
+- F10
+- F11
 ---
 
 # Repository Hygiene Audit
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 Repos absorb debris over time: duplicate authority files, stale references, runtime artifacts, backup dumps, and constitutional leaks. This skill systematically inspects a repo and produces a cleanup plan.
 

@@ -1,37 +1,62 @@
 ---
 id: parallel-authority-detection
 name: Parallel Authority Detection
-version: "1.0.0"
-description: Detect when two or more repos claim the same authority, responsibility, or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
+version: 1.0.0
+description: Detect when two or more repos claim the same authority, responsibility,
+  or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
 owner: AAA
 risk_tier: high
 knowledge_basis:
-  physics: false
-  math: false
   language: true
+  math: false
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills:
-    - repo-hygiene-audit
+  - repo-hygiene-audit
   servers: []
   tools:
-    - github-search
-    - file-read
+  - github-search
+  - file-read
 examples:
-  - Detect both AAA and arifOS claiming 888_JUDGE authority
+- Detect both AAA and arifOS claiming 888_JUDGE authority
 tests:
-  - Find duplicate `CONSTITUTION.md` files across repos
+- Find duplicate `CONSTITUTION.md` files across repos
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - ΦΙ
+  functional:
+  - Governance
+  layer: HEXAGON
+  autonomy_tier: T2
+floor_scope:
+- F2
+- F4
+- F9
+- F10
+- F11
 ---
 
 # Parallel Authority Detection
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 When two repos claim to be the "source of truth" for the same thing, agents get confused and chaos follows. This skill detects parallel authority claims.
 

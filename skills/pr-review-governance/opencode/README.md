@@ -2,7 +2,7 @@
 
 > **Canonical:** `skills/pr-review-governance/SKILL.md` | **Risk:** high
 
-High-level governance layer for pull request review across the federation. Ensures separation of duties, required signers, and constitutional compliance before merge.
+High-level governance layer for pull request review across the federation. Ensures separation of duties, required signers, and constitutional compliance before merge. This is the **policy layer** that decides who must approve. The **checklist** lives in `github-pr-review`; do not duplicate it here.
 
 ## OpenCode Agent Config Fragment
 
@@ -10,7 +10,7 @@ High-level governance layer for pull request review across the federation. Ensur
 {
   "agents": {
     "pr-review-governance": {
-      "description": "High-level governance layer for pull request review across the federation. Ensures separation of duties, required signers, and constitutional compliance before merge.",
+      "description": "High-level governance layer for pull request review across the federation. Ensures separation of duties, required signers, and constitutional compliance before merge. This is the **policy layer** that decides who must approve. The **checklist** lives in `github-pr-review`; do not duplicate it here.",
       "risk_tier": "high",
       "canonical_skill": "skills/pr-review-governance/SKILL.md"
     }

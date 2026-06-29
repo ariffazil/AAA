@@ -1,23 +1,19 @@
 # Auto-generated from /root/AAA/skills/*/SKILL.md
-# Do not hand-edit skill entries; update the SKILL.md frontmatter instead.
+# Generated: 2026-06-29 | 64 skills
 version: 1
 skills:
 - id: aaa-agent-invariants
   name: AAA Agent Operating Invariants
   version: 1.0.0
-  description: Compact operating constitution for every AAA agent. Load before any
-    non-trivial action. Distills 10 Agent Invariants + 12 governance rules + skills
-    audit into portable doctrine. Covers tool classification, evidence/authority separation,
+  description: Compact operating constitution for every AAA agent. Load before any non-trivial action. Distills 10 Agent Invariants
+    + 12 governance rules + skills audit into portable doctrine. Covers tool classification, evidence/authority separation,
     degradation dominance, propose-before-execute, and memory atoms.
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    - Audit
+    trinitarian: []
+    functional: []
     layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
@@ -29,24 +25,19 @@ skills:
 - id: aaa-agentic-governance
   name: AAA Agentic Governance (AAA-Cockpit, canonical)
   version: 3.0.1
-  description: Governed intelligence skill for AAA as the abstraction, attestation,
-    and abduction control plane across arifOS, APEX, A-FORGE, GEOX, WEALTH, WELL,
-    and the ariffazil profile repository. Use when the user asks to explain or design
-    AAA, route agentic work, reduce chaos/entropy in an arifOS federation task, create
-    AREP/task declarations, classify risk, plan multi-repo changes, review governance
-    boundaries, or translate human intent into evidence-backed, authority-safe, recursively
-    agentic workflows. Provides deterministic F1-F13 floor checking, bounded abduction,
-    and FederationReceipt composition.
+  description: Governed intelligence skill for AAA as the abstraction, attestation, and abduction control plane across arifOS,
+    APEX, A-FORGE, GEOX, WEALTH, WELL, and the ariffazil profile repository. Use when the user asks to explain or design AAA,
+    route agentic work, reduce chaos/entropy in an arifOS federation task, create AREP/task declarations, classify risk, plan
+    multi-repo changes, review governance boundaries, or translate human intent into evidence-backed, authority-safe, recursively
+    agentic workflows. Provides deterministic F1-F13 floor checking, bounded abduction, and FederationReceipt composition.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T1-T3
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -61,21 +52,47 @@ skills:
   - F11
   - F12
   - F13
+- id: active-maintenance
+  name: active-maintenance
+  version: 1.0.0
+  description: ''
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: agent-memory-bridge
+  name: agent-memory-bridge
+  version: 1.0.0
+  description: 'Bridge OpenClaw session logs to arifOS L4 (Postgres), L5 (Graphiti), L6 (Vault999). Extract facts, decisions,
+    and verdicts from sessions and persist them to the constitutional memory substrate. USE WHEN: "sync session to arifOS",
+    "bridge memory", "session to vault", "extract to Graphiti".'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: agent-onboarding
   name: Agent Onboarding
   version: 1.0.0
-  description: Standard procedure for registering a new agent in the AAA federation.
-    Creates agent identity directory, agent card, registry entry, and SOUL.md.
+  description: Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent
+    card, registry entry, and SOUL.md.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -86,42 +103,48 @@ skills:
 - id: agentic-dream-engine
   name: Agentic Dream Engine — Federation Memory Consolidation
   version: 1.0.0
-  description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,
-    888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate
-    memory without violating F1-F13.
+  description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode,
+    and OpenClaw can autonomously consolidate memory without violating F1-F13.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    functional:
-    - Interface
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F4
   - F6
   - F7
+- id: arif-mcp-governor
+  name: arif-mcp-governor
+  version: 1.0.0
+  description: Governed MCP routing via arifOS F1-F13. All calls to GEOX, WEALTH, WELL organs must route through arifOS kernel
+    for C2+/IRREVERSIBLE tools. Uses mcporter for stdio/HTTP bridging.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: arifos-act
   name: arifOS ACT — Constitutional Reflex
   version: 3.0.0
-  description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel
-    (F1-F13) → ACT (post-kernel execution). Load once. Apply always.
+  description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution).
+    Load once. Apply always.
   owner: AAA
   risk_tier: critical
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    - Ω
-    - ΦΙ
-    functional:
-    - Governance
-    - Forge
-    layer: RUNTIME
-    autonomy_tier: T3
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -133,19 +156,16 @@ skills:
 - id: arifos-evals
   name: arifOS Evals
   version: 1.0.0
-  description: Run benchmark prompts, collect pass/fail traces, latency, token cost,
-    and false activation rates for each skill. Load when a skill changes behavior
-    or a new version is proposed.
+  description: Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill.
+    Load when a skill changes behavior or a new version is proposed.
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F7
@@ -154,19 +174,16 @@ skills:
 - id: arifos-governance
   name: arifos-governance
   version: 1.0.1
-  description: Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating,
-    evidence alignment, and veto routing. Load when performing policy mutations, data
-    deletions, deployment risk evaluations, or verifying system constraints.
+  description: Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence alignment, and veto routing. Load
+    when performing policy mutations, data deletions, deployment risk evaluations, or verifying system constraints.
   owner: AAA
   risk_tier: high
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T3
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -178,19 +195,16 @@ skills:
 - id: arifos-mcp-federation
   name: arifOS MCP Federation
   version: 1.0.0
-  description: Route tasks across MCP servers, choose server/tool sequence, and define
-    fallbacks when one substrate fails. Load when work spans multiple tools in GEOX,
-    WEALTH, WELL, or external APIs.
+  description: Route tasks across MCP servers, choose server/tool sequence, and define fallbacks when one substrate fails.
+    Load when work spans multiple tools in GEOX, WEALTH, WELL, or external APIs.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Routing
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
@@ -200,19 +214,16 @@ skills:
 - id: arifos-observability
   name: arifOS Observability
   version: 1.0.0
-  description: Generate structured telemetry for skill runs, including trigger source,
-    chosen branch, command count, runtime, and postcondition checks. Load when you
-    need to parse run logs, compile dashboards, or audit execution performance.
+  description: Generate structured telemetry for skill runs, including trigger source, chosen branch, command count, runtime,
+    and postcondition checks. Load when you need to parse run logs, compile dashboards, or audit execution performance.
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F4
@@ -220,19 +231,16 @@ skills:
 - id: arifos-plan-dag
   name: arifOS Plan DAG
   version: 1.0.0
-  description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints,
-    and rollback points. Load when tasks exceed one-shot prompting and need subagent
-    or staged execution.
+  description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback points. Load when tasks
+    exceed one-shot prompting and need subagent or staged execution.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Forge
-    layer: CODING/FI
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -242,81 +250,132 @@ skills:
 - id: arifos-recursive-audit
   name: arifOS Recursive Audit
   version: 1.0.0
-  description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger
-    ambiguity, and broken references. Load when reviewing the skill portfolio or after
-    modifying or adding new skills.
+  description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references.
+    Load when reviewing the skill portfolio or after modifying or adding new skills.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F4
   - F7
   - F9
   - F11
-- id: code-wiki
-  name: Code Wiki — Codebase Documentation Generator
+- id: code-analysis-skills
+  name: code-analysis
   version: 1.0.0
-  description: Generate structured wiki docs, module maps, and Mermaid diagrams for
-    unfamiliar codebases.
+  description: This skill should be used when the user needs to analyze Git repositories, compare developer commit patterns,
+    work habits, development efficiency, code style, code quality, and slacking behaviors. It generates honest, direct developer
+    evaluations with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger phrases include "analyze code",
+    "analyze repository", "compare developers", "code quality report", "commit patterns", "developer efficiency", "developer
+    evaluation", "slacking index", "摸鱼指数", "工作习惯分析", "代码分析", "研发效率", "代码质量", "开发者评估", "developer score".
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Interface
-    layer: CODING/FI
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: code-wiki
+  name: Code Wiki — Codebase Documentation Generator
+  version: 1.0.0
+  description: Generate structured wiki docs, module maps, and Mermaid diagrams for unfamiliar codebases.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
   - F2
   - F4
   - F7
   - F10
+- id: constitutional-auditor
+  name: constitutional-auditor
+  version: 1.0.0
+  description: 'Audit OpenClaw workspace for F1-F13 constitutional floor compliance. Read floors.py, check vault chain integrity
+    (VAULT999), verify memory tiering, flag floor violations. USE WHEN: "audit constitutional", "check floors", "vault integrity",
+    "F1-F13 compliance", "constitution audit".'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: docker
+  name: Docker
+  version: 1.0.4
+  description: Docker containers, images, Compose stacks, networking, volumes, debugging, production hardening, and the commands
+    that keep real environments stable. Use when (1) the task touches Docker, Dockerfiles, images, containers, or Compose;
+    (2) build reliability, runtime behavior, logs, ports, volumes, or security matter; (3) the agent needs Docker guidance
+    and should apply it by default.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: docker-entropy-ops
   name: Docker Entropy Ops
   version: 1.0.0
-  description: Thermodynamic reasoning lens for container fleet health, resource pressure,
-    and safe/dangerous intervention boundaries.
+  description: Thermodynamic reasoning lens for container fleet health, resource pressure, and safe/dangerous intervention
+    boundaries.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    functional:
-    - Routing
-    - Ops
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
   - F3
   - F8
+- id: docker-guardian
+  name: Docker Guardian
+  version: 1.0.0
+  description: Federation stack guardian for OpenClaw. Monitors Docker containers, auto-restarts unhealthy services, tracks
+    restart counts, and alerts on disk pressure. Built for the arifOS constitutional federation (arifOS, GEOX, WEALTH, WELL,
+    AAA, APEX, A-FORGE).
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: drift-response
   name: Drift Response
   version: 0.1.0
   description: Legacy 5-step drift response protocol. Superseded by service-health-triage.
   owner: AAA
   risk_tier: medium
-  status: deprecated
-  superseded_by: service-health-triage
+  status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    functional:
-    - Ops
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
@@ -324,131 +383,122 @@ skills:
 - id: federation-health-scan
   name: Federation Health Scan
   version: 0.1.0
-  description: Legacy single-command federation health diagnostic (organs, NATS, drift,
-    vault). Superseded by service-health-triage.
+  description: Legacy single-command federation health diagnostic (organs, NATS, drift, vault). Superseded by service-health-triage.
   owner: AAA
   risk_tier: low
-  status: deprecated
-  superseded_by: service-health-triage
+  status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Ops
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
   - F11
-- id: geox-basin-interpreter
-  name: GEOX Basin Interpreter
+- id: federation-orchestrator
+  name: federation-orchestrator
   version: 1.0.0
-  description: Subsurface reasoning for basin screening, petroleum systems analysis,
-    trap/seal/reservoir framing, and evidence-led interpretations. Load when geology,
-    geophysics, or petrophysics tasks appear.
+  description: 'Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (8080-8083),
+    container drift detection, restart count monitoring. USE WHEN: "federation status", "restart dead container", "container
+    health", "docker drift", "service down", "probe MCP", "health check federation". Runs on af-forge (VPS) — native docker
+    and curl required.'
   owner: AAA
-  risk_tier: medium
+  risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Evidence
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
-  floor_scope:
-  - F2
-  - F7
-  - F9
+    autonomy_tier: T1
+  floor_scope: []
 - id: geox-grounding
   name: GEOX Grounding
   version: 0.1.0
-  description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure
-    geological claims are grounded in evidence.
+  description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure geological claims are grounded in evidence.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Evidence
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F7
   - F9
+- id: github
+  name: github
+  version: 1.0.0
+  description: Interact with GitHub using the `gh` CLI. Use `gh issue`, `gh pr`, `gh run`, and `gh api` for issues, PRs, CI
+    runs, and advanced queries.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: github-ci-diagnose
   name: GitHub CI Diagnose
-  version: 1.0.0
-  description: 'Parse failing GitHub Actions logs, identify root cause patterns, and
-    propose fixes without executing irreversible changes. Use this skill whenever
-    a federation repo shows a red CI status, a workflow fails, or a build/test/lint
-    gate breaks. This skill reads logs, classifies failure modes, and outputs a diagnostic
-    report — it does not re-run CI, edit workflows, or dismiss security findings without
-    sovereign approval.
-
-    '
+  version: 1.1.0
+  description: Parse failing GitHub Actions logs, identify root cause patterns, and propose fixes without executing irreversible
+    changes. Use this skill whenever a federation repo shows a red CI status, a workflow fails, or a build/test/lint gate
+    breaks. This skill reads logs, classifies failure modes, and outputs a diagnostic report — it does not re-run CI, edit
+    workflows, or dismiss security findings without sovereign approval.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    functional:
-    - Ops
-    layer: CODING/FI
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
+  - F1
   - F2
   - F4
   - F9
   - F11
+  - F13
 - id: github-issue-triage
   name: GitHub Issue Triage
-  version: 1.0.0
-  description: 'Governed triage workflow for GitHub issues across the arifOS federation.
-    Use this skill whenever a new issue is opened, an issue lacks labels, or an agent
-    needs to determine if an issue belongs in a different repo or federation organ.
-    This skill classifies, routes, labels, and drafts responses — but never closes,
-    never assigns to Arif, and never promises code fixes without sovereign approval.
-
-    '
+  version: 1.1.0
+  description: Governed triage workflow for GitHub issues across the arifOS federation. Use this skill whenever a new issue
+    is opened, an issue lacks labels, or an agent needs to determine if it belongs in a different repo or federation organ.
+    This skill classifies, routes, labels, and drafts responses — but never closes, never assigns to Arif, and never promises
+    code fixes without sovereign approval.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    - Δ
-    - ΦΙ
-    functional:
-    - Ops
-    layer: CODING/FI
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
+  - F1
   - F2
   - F4
   - F6
   - F11
+  - F13
 - id: github-pr-review
   name: GitHub PR Governance Review
-  version: 1.0.0
-  description: Governed checklist for reviewing GitHub pull requests in the arifOS
-    federation. Ensures PRs meet constitutional, structural, and safety standards
-    before merge.
+  version: 1.1.0
+  description: Governed checklist for reviewing GitHub pull requests in the arifOS federation. Ensures PRs meet constitutional,
+    structural, and safety standards before merge.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    layer: CODING/FI
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -459,41 +509,49 @@ skills:
 - id: github-runbook
   name: GitHub Runbook — Federation Git & CLI Operations
   version: 1.0.0
-  description: Basic git status, commit, branch, and GitHub CLI operations across
-    the federation repos.
+  description: Basic git status, commit, branch, and GitHub CLI operations across the federation repos.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    functional:
-    - Ops
-    layer: CODING/FI
-    autonomy_tier: T1-T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
+  - F1
   - F2
   - F4
   - F10
   - F11
   - F13
+- id: google-workspace-cli
+  name: Google Workspace CLI
+  version: 1.0.0
+  description: Operate Google Workspace from one CLI using dynamic API discovery, secure OAuth flows, and agent-ready automation
+    patterns for Drive and Gmail.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: incident-escalation
   name: Incident Escalation Protocol
   version: 1.0.0
-  description: 'Standard protocol for responding to federation incidents: service
-    outages, security breaches, constitutional violations, or agent misbehavior.'
+  description: 'Standard protocol for responding to federation incidents: service outages, security breaches, constitutional
+    violations, or agent misbehavior.'
   owner: AAA
   risk_tier: critical
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    - ΦΙ
-    functional:
-    - Governance
-    - Ops
-    layer: RUNTIME
-    autonomy_tier: T2-T3
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -505,20 +563,15 @@ skills:
 - id: incident-triage
   name: Incident Triage
   version: 1.0.0
-  description: Six-step incident response playbook for federation organs and constitutional
-    floor breaches.
+  description: Six-step incident response playbook for federation organs and constitutional floor breaches.
   owner: AAA
   risk_tier: critical
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    - ΦΙ
-    functional:
-    - Ops
-    - Governance
-    layer: RUNTIME
-    autonomy_tier: T2-T3
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -527,22 +580,33 @@ skills:
   - F6
   - F11
   - F13
+- id: infra-guardian
+  name: infra-guardian
+  version: 1.0.0
+  description: 'Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel status, and Cloudflare
+    tunnel exposure. USE WHEN: "check SSL", "Caddy config valid", "tunnel status", "DNS parity", "SSL expiry", "infra health",
+    "Cloudflare check".'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: kimi-code-aaa
   name: Kimi Code AAA Configuration
   version: 1.0.0
-  description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with
-    arifOS kernel and A-FORGE stdio actuator.
+  description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS kernel and A-FORGE stdio actuator.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    - ΦΙ
-    functional:
-    - Interface
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T1-T2
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -553,21 +617,15 @@ skills:
 - id: mcp-federation-ops
   name: MCP Federation Operations
   version: 1.0.0
-  description: Build, inspect, call, and operate FastMCP servers and the mcporter
-    CLI across federation organs.
+  description: Build, inspect, call, and operate FastMCP servers and the mcporter CLI across federation organs.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Routing
-    - Forge
-    layer:
-    - RUNTIME
-    - CODING/FI
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
@@ -576,11 +634,25 @@ skills:
   - F10
   - F11
   - F12
+- id: mcp-lifeguard
+  name: MCP Lifeguard
+  version: 1.0.0
+  description: Health probe and auto-recovery for constitutional federation MCP servers. Pings arifOS (8080), GEOX (8081),
+    WEALTH (8082), WELL (8083) every 5 minutes. Restarts dead containers and alerts on model fallback chain failures.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: mcp-smoke-test
   name: MCP Server Smoke Test
   version: 1.0.0
-  description: Validate that MCP servers respond correctly to health probes and basic
-    tool calls. Detect down servers, mismatched schemas, and transport errors.
+  description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched
+    schemas, and transport errors.
   owner: AAA
   risk_tier: low
   status: active
@@ -589,26 +661,57 @@ skills:
     - Ω
     functional:
     - Ops
+    - Audit
     layer: RUNTIME
     autonomy_tier: T1
   floor_scope:
   - F2
-  - F3
+  - F4
   - F11
-- id: multi-discipline-critique
-  name: Multi-Discipline Critique
+- id: meta-mesa-skill-atlas
+  name: meta-mesa-skill-atlas
   version: 1.0.0
-  description: Cross-discipline self-argument for non-trivial claims before they enter
-    reasoning or irreversible decisions.
+  description: Unified skill inventory, gap detection, and cross-cutting orchestration for all 35 arifOS federation skills.
+    The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing
+    skill health, onboarding a new organ, or when you don't know which skill to load.
+  owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope:
+  - F2
+  - F4
+  - F7
+  - F9
+- id: model-fallback-monitor
+  name: model-fallback-monitor
+  version: 1.0.0
+  description: 'Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap), Kimi, Ollama qwen2.5:7b (local).
+    Track latency, billing failures (402), cold-start failures, and auto-pause dead models. USE WHEN: "model health", "check
+    fallback chain", "DeepSeek balance", "model latency", "billing alert".'
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Governance
-    - Evidence
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: multi-discipline-critique
+  name: Multi-Discipline Critique
+  version: 1.0.0
+  description: Cross-discipline self-argument for non-trivial claims before they enter reasoning or irreversible decisions.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
     layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
@@ -618,20 +721,16 @@ skills:
 - id: nusantara-intelligence-substrate
   name: Nusantara Intelligence Substrate
   version: 1.0.0
-  description: Cultural, dignity, and sovereignty lens for AAA state records. Apply
-    before sealing decisions that touch identity, privacy, boundaries, or sovereign
-    veto.
-  owner: F13 SOVEREIGN
+  description: Cultural, dignity, and sovereignty lens for AAA state records. Apply before sealing decisions that touch identity,
+    privacy, boundaries, or sovereign veto.
+  owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    - Ω
-    functional:
-    - Interface
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F4
@@ -640,40 +739,79 @@ skills:
 - id: openclaw-a2a-bridge
   name: OpenClaw A2A Bridge
   version: 0.1.0
-  description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch.
-    Legacy skill — retained for workflow compatibility.
+  description: Governed A2A bridge skill for OpenClaw-facing handoff and dispatch. Legacy skill — retained for workflow compatibility.
   owner: AAA
   risk_tier: medium
-  status: deprecated
-  superseded_by: mcp-federation-ops
+  status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    - Ω
-    functional:
-    - Routing
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
   - F4
   - F11
+- id: openclaw-agentic
+  name: openclaw-agentic
+  version: 2.2.0
+  description: 'Make OpenClaw truly agentic — autonomous probing, self-evolving skill curation, organ-aware routing, constitutional
+    passthrough to arifOS MCP, multi-agent spawning, and session continuity across L4/L5/L6 memory. Use when: (1) OpenClaw
+    needs to do something without being asked (auto-fix a stuck cron, detect a failing organ, restart a dead MCP), (2) work
+    needs to land in the right organ (GEOX for earth, WEALTH for capital, WELL for vitality, arifOS for constitutional), (3)
+    a task is T2/T3 and needs to pass through F1-F13 review, (4) you want OpenClaw to spawn parallel sub-agents, (5) you want
+    session state to survive without re-prompting.'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: openclaw-memory
+  name: openclaw-memory
+  version: 1.0.0
+  description: ''
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: openclaw-skill-vetter
+  name: skill-vetter
+  version: 1.0.0
+  description: Security vetting protocol before installing any AI agent skill. Red flag detection for credential theft, obfuscated
+    code, exfiltration. Risk classification LOW/MEDIUM/HIGH/EXTREME. Produces structured vetting reports. Never install untrusted
+    skills without running this first.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: parallel-authority-detection
   name: Parallel Authority Detection
   version: 1.0.0
-  description: Detect when two or more repos claim the same authority, responsibility,
-    or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
+  description: Detect when two or more repos claim the same authority, responsibility, or canonical source of truth. Resolve
+    conflicts through ROOT_CANON.yaml precedence.
   owner: AAA
   risk_tier: high
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F4
@@ -682,20 +820,18 @@ skills:
   - F11
 - id: pr-review-governance
   name: PR Review Governance
-  version: 1.0.0
-  description: High-level governance layer for pull request review across the federation.
-    Ensures separation of duties, required signers, and constitutional compliance
-    before merge.
+  version: 1.1.0
+  description: High-level governance layer for pull request review across the federation. Ensures separation of duties, required
+    signers, and constitutional compliance before merge. This is the **policy layer** that decides who must approve. The **checklist**
+    lives in `github-pr-review`; do not duplicate it here.
   owner: AAA
   risk_tier: high
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    layer: CODING/FI
-    autonomy_tier: T3
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -706,18 +842,14 @@ skills:
 - id: precommit-gate
   name: Precommit Gate
   version: 1.0.0
-  description: Pre-commit ritual running lint, type-check, tests, constitutional surface
-    scan, and diff review.
+  description: Pre-commit ritual running lint, type-check, tests, constitutional surface scan, and diff review.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    - Audit
-    layer: CODING/FI
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
   - F1
@@ -729,16 +861,14 @@ skills:
 - id: readme-truth-check
   name: README Truth Check
   version: 1.0.0
-  description: Verify that a repo's README accurately describes its current structure,
-    ports, dependencies, and authority boundaries. Detect drift between docs and reality.
+  description: Verify that a repo's README accurately describes its current structure, ports, dependencies, and authority
+    boundaries. Detect drift between docs and reality.
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
@@ -750,28 +880,20 @@ skills:
 - id: recursive-skill-forge
   name: Recursive Skill Forge
   version: 1.0.0
-  description: 'Meta-cognitive smithy for forging new skills on demand. Use this skill
-    whenever the federation encounters a novel domain, an unhandled workflow, or a
-    capability gap that no existing skill covers. This skill performs abductive reasoning
-    to infer what capabilities are needed, decomposes them into orthogonal modules,
-    scaffolds a governed SKILL.md, attests it against constitutional floors, and presents
-    the artifact for sovereign seal. It operates recursively: it can forge skills
-    for other organs, and it can forge improved versions of itself. Plastic across
-    domains. Modular by design. Attested before birth.
-
-    '
+  description: 'Meta-cognitive smithy for forging new skills on demand. Use this skill whenever the federation encounters
+    a novel domain, an unhandled workflow, or a capability gap that no existing skill covers. This skill performs abductive
+    reasoning to infer what capabilities are needed, decomposes them into orthogonal modules, scaffolds a governed SKILL.md,
+    attests it against constitutional floors, and presents the artifact for sovereign seal. It operates recursively: it can
+    forge skills for other organs, and it can forge improved versions of itself. Plastic across domains. Modular by design.
+    Attested before birth.'
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    - Ω
-    - ΦΙ
-    functional:
-    - Forge
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2-T3
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -783,40 +905,50 @@ skills:
 - id: repo-hygiene-audit
   name: Repository Hygiene Audit
   version: 1.0.0
-  description: Inspect a GitHub repo for structural chaos, authority conflicts, and
-    cleanup needs. Produce an audit report and remediation plan.
+  description: Inspect a GitHub repo for structural chaos, authority conflicts, and cleanup needs. Produce an audit report
+    and remediation plan.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F4
   - F9
   - F10
   - F11
+- id: secret-hygiene
+  name: secret-hygiene
+  version: 1.0.0
+  description: 'Audit env.local, SOPS .env, and config files for plaintext secret leaks, key age, missing rotation dates,
+    and overlong-lived credentials. USE WHEN: "secret audit", "key age", "rotate secrets", "credential hygiene", "API key
+    check", "env audit", "secret leak scan".'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: secret-safety-scan
   name: Secret Safety Scan
   version: 1.0.1
-  description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials.
-    Produce a findings report with remediation steps.
+  description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials. Produce a findings report with
+    remediation steps.
   owner: AAA
   risk_tier: critical
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    - Audit
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T3
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
@@ -826,57 +958,30 @@ skills:
 - id: service-health-triage
   name: Federation Service Health Triage
   version: 1.0.1
-  description: Diagnose which federation services are up, down, or drifting. Produce
-    a prioritized remediation plan.
+  description: Diagnose which federation services are up, down, or drifting. Produce a prioritized remediation plan.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Ops
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
   - F11
-- id: skill-creator
-  name: Skill Creator
-  version: 1.0.0
-  description: Bootstrap, design, and package new skills. Load when capturing user
-    intent for a new skill or drafting its initial instruction framework.
-  owner: AAA
-  risk_tier: medium
-  status: active
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Forge
-    layer: HEXAGON
-    autonomy_tier: T1-T2
-  floor_scope:
-  - F2
-  - F4
-  - F7
-  - F8
-  - F11
 - id: skill-trigger-linter
   name: Skill Trigger Linter
   version: 1.0.0
-  description: Check every skill’s “use when” and “do not use when” clauses for collisions,
-    missing negatives, and vague verbs like “help,” “assist,” or “improve.” Load when
-    linting, reviewing, or validating trigger boundaries.
+  description: Check every skill’s “use when” and “do not use when” clauses for collisions, missing negatives, and vague verbs
+    like “help,” “assist,” or “improve.” Load when linting, reviewing, or validating trigger boundaries.
   owner: AAA
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
+    trinitarian: []
+    functional: []
     layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
@@ -886,25 +991,97 @@ skills:
   - F9
   - F10
   - F11
-- id: unified-skill-binding
-  name: Unified Skill Binding (Orthogonal + Cross-Organ)
+- id: spatial-grounding
+  name: Spatial Grounding
   version: 1.0.0
-  description: Discover, bind, and compose skills across all federation organs using
-    AAA_SKILL_BINDING.md orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces
-    subagent contracts, evidence gates, F1-F13. Meta-skill for agentic elevation.
+  description: Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in
+    af-forge VPS reality.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
     trinitarian:
-    - Δ
-    - Ω
     - ΦΙ
     functional:
+    - Infra
     - Governance
-    - Routing
     layer: HEXAGON
-    autonomy_tier: T2
+    autonomy_tier: T1
+  floor_scope:
+  - F1
+  - F7
+  - F9
+- id: subagent-spawn-template
+  name: subagent-spawn-template
+  version: 1.0.0
+  description: ''
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: summarize-pro
+  name: summarize-pro
+  version: 1.0.0
+  description: When user asks to summarize text, articles, documents, meetings, emails, YouTube transcripts, books, PDFs,
+    reports, conversations, or any long content. Also handles bullet points, key takeaways, action items, TL;DR, ELI5, executive
+    summaries, chapter summaries, comparison summaries, translation summaries, thread summaries, and custom-length summaries.
+    20-feature AI summarizer with multiple formats, languages, and export options. All processing happens locally — NO external
+    API calls, NO network requests, NO data sent to any server.
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: telegram-security-audit
+  name: telegram-security-audit
+  version: 1.0.0
+  description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation, bot permission scope, and A2A
+    bridge security. USE WHEN: "telegram audit", "bot security", "webhook check", "token isolation", "TREE777 check", "telegram
+    permissions".'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: tool-health-check
+  name: tool-health-check
+  version: 1.0.0
+  description: ''
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
+- id: unified-skill-binding
+  name: Unified Skill Binding (Orthogonal + Cross-Organ)
+  version: 1.0.0
+  description: Discover, bind, and compose skills across all federation organs using AAA_SKILL_BINDING.md orthogonal axes
+    (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces subagent contracts, evidence gates, F1-F13. Meta-skill for agentic elevation.
+  owner: AAA
+  risk_tier: medium
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F2
   - F3
@@ -914,40 +1091,47 @@ skills:
 - id: vault999-integrity
   name: Vault999 Integrity — Operational Lens
   version: 1.0.0
-  description: Operational lens for the append-only hash-chained ledger—what belongs,
-    chain verification, and failure handling.
+  description: Operational lens for the append-only hash-chained ledger—what belongs, chain verification, and failure handling.
   owner: AAA
   risk_tier: critical
   status: active
   orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    - Audit
+    trinitarian: []
+    functional: []
     layer: HEXAGON
-    autonomy_tier: T3
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2
   - F3
   - F11
   - F13
+- id: vault999-reader
+  name: vault999-reader
+  version: 1.0.0
+  description: 'Bridge to arifOS VAULT999 append-only ledger. Read seal entries, verify chain integrity, list recent vault
+    operations. USE WHEN: "check vault", "vault999 status", "read seals", "ledger integrity", "arifOS vault".'
+  owner: AAA
+  risk_tier: low
+  status: active
+  orthogonal_tags:
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
+  floor_scope: []
 - id: vps-docker-runbook
   name: VPS Docker Runbook
   version: 1.0.0
-  description: Concrete Docker Compose and container commands for the af-forge VPS
-    stack.
+  description: Concrete Docker Compose and container commands for the af-forge VPS stack.
   owner: AAA
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian:
-    - Ω
-    functional:
-    - Ops
-    layer: RUNTIME
-    autonomy_tier: T2
+    trinitarian: []
+    functional: []
+    layer: HEXAGON
+    autonomy_tier: T1
   floor_scope:
   - F1
   - F2

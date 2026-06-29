@@ -1,56 +1,85 @@
 ---
 id: recursive-skill-forge
 name: Recursive Skill Forge
-version: "1.0.0"
-description: >
-  Meta-cognitive smithy for forging new skills on demand. Use this skill whenever
-  the federation encounters a novel domain, an unhandled workflow, or a capability
-  gap that no existing skill covers. This skill performs abductive reasoning to
-  infer what capabilities are needed, decomposes them into orthogonal modules,
-  scaffolds a governed SKILL.md, attests it against constitutional floors, and
-  presents the artifact for sovereign seal. It operates recursively: it can forge
-  skills for other organs, and it can forge improved versions of itself. Plastic
-  across domains. Modular by design. Attested before birth.
+version: 1.0.0
+description: 'Meta-cognitive smithy for forging new skills on demand. Use this skill
+  whenever the federation encounters a novel domain, an unhandled workflow, or a capability
+  gap that no existing skill covers. This skill performs abductive reasoning to infer
+  what capabilities are needed, decomposes them into orthogonal modules, scaffolds
+  a governed SKILL.md, attests it against constitutional floors, and presents the
+  artifact for sovereign seal. It operates recursively: it can forge skills for other
+  organs, and it can forge improved versions of itself. Plastic across domains. Modular
+  by design. Attested before birth.
+
+  '
 owner: AAA
-risk_tier: critical
+risk_tier: medium
 knowledge_basis:
-  physics: false
-  math: true
   language: true
+  math: true
+  physics: false
 host_compatibility:
-  - claude-code
-  - codex
-  - opencode
+- claude-code
+- codex
+- opencode
+- kimi
+- kimi-code
 dependencies:
   skills:
-    - repo-hygiene-audit
-    - parallel-authority-detection
+  - repo-hygiene-audit
+  - parallel-authority-detection
   servers:
-    - arifos-mcp
+  - arifos-mcp
   tools:
-    - arif_mind_reason
-    - arif_heart_critique
-    - arif_judge_deliberate
-    - arif_kernel_route
-    - file-write
-    - file-read
+  - arif_mind_reason
+  - arif_heart_critique
+  - arif_judge_deliberate
+  - arif_kernel_route
+  - file-write
+  - file-read
 examples:
-  - "We need a skill for diagnosing Docker container health across federation nodes"
-  - "Create a skill that translates GEOX petrophysics output into executive summaries"
-  - "Forge a skill for cross-model consensus when arifOS and A-FORGE disagree"
-  - "Improve the recursive-skill-forge itself — it lacks abduction attestation"
+- We need a skill for diagnosing Docker container health across federation nodes
+- Create a skill that translates GEOX petrophysics output into executive summaries
+- Forge a skill for cross-model consensus when arifOS and A-FORGE disagree
+- Improve the recursive-skill-forge itself — it lacks abduction attestation
 tests:
-  - Forge a low-risk skill autonomously (AGI tier) and pass repo-hygiene-audit
-  - Forge a medium-risk skill (ASI tier) and trigger 888_JUDGE before commit
-  - Attempt to forge a skill that overrides F13 — verify VOID verdict
+- Forge a low-risk skill autonomously (AGI tier) and pass repo-hygiene-audit
+- Forge a medium-risk skill (ASI tier) and trigger 888_JUDGE before commit
+- Attempt to forge a skill that overrides F13 — verify VOID verdict
 version_lock:
-  schema_version: "1"
+  schema_version: '1'
   artifact_hash: pending
+orthogonal_tags:
+  trinitarian:
+  - Δ
+  - Ω
+  - ΦΙ
+  functional:
+  - Forge
+  layer: HEXAGON
+  autonomy_tier: T2-T3
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+- F8
+- F11
+- F13
 ---
 
 # Recursive Skill Forge
 
 ## Overview
+
+## arifOS-ACT Embedding
+
+Before using this skill on any mutating, irreversible, or high-blast-radius task:
+1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast · reversible).
+2. **Kernel** — Route to arifOS for F1–F13 judgment if action class is Maker/Messenger/Mutator/Destroyer/Sovereign.
+3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
+4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
+
 
 This is the **skill that makes skills**. It is not a static playbook — it is a
 **generative mold** that produces governed playbooks. It thinks in tiers:

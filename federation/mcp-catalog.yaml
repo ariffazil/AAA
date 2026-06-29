@@ -75,7 +75,7 @@ servers:
   wealth:
     agent: WEALTH
     type: remote
-    serverUrl: https://wealth.arif-fazil.com/mcp
+    serverUrl: https://mcp.arif-fazil.com/mcp
     enabled: true
     auto_start: false
     approval_policy: on-demand
@@ -84,7 +84,7 @@ servers:
   well:
     agent: WELL
     type: remote
-    serverUrl: https://well.arif-fazil.com/mcp
+    serverUrl: https://mcp.arif-fazil.com/mcp
     enabled: true
     auto_start: false
     approval_policy: on-demand
