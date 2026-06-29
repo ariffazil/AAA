@@ -40,6 +40,126 @@
       "since": "2026-06-22",
       "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use with caution. Fix pending.",
       "reason": "Pre-existing FastMCP outputSchema incompatibility."
+    },
+    "mcp__arifos__arif_forge": {
+      "status": "DEPRECATED_PROXY",
+      "since": "2026-06-02",
+      "migration": "Use mcp__aforge__forge_execute on A-FORGE port 7072. arif_forge is a legacy proxy from pre-Brain/Hands split.",
+      "reason": "Role separation: arifOS governs/judges, A-FORGE engineers. arif_forge predates the split."
+    },
+    "mcp__arifos__arif_forge_execute": {
+      "status": "DEPRECATED_PROXY",
+      "since": "2026-06-02",
+      "migration": "Use mcp__aforge__forge_execute on A-FORGE port 7072.",
+      "reason": "Same as arif_forge. Legacy pre-split execute proxy."
+    },
+    "mcp__arifos__arif_critique": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use arif_think(mode='critique') or arif_heart_critique. arif_critique predates the unified thinking pipeline.",
+      "reason": "Zen: arif_critique vs arif_heart_critique naming inconsistency. Critique folded into arif_think."
+    },
+    "mcp__arifos__arif_memory": {
+      "status": "DEGRADED",
+      "since": "2026-06-28",
+      "migration": "Use arif_vault_query for reading. Use arif_seal for writing. arif_memory overlaps with vault query.",
+      "reason": "Zen: arif_memory vs arif_memory_recall naming inconsistency. Memory functions consolidated into vault."
+    },
+    "mcp__arifos__arif_memory_recall": {
+      "status": "DEGRADED",
+      "since": "2026-06-28",
+      "migration": "Use arif_vault_query for reading vault records.",
+      "reason": "Zen: duplicate memory tool. Vault query is the canonical read path."
+    },
+    "mcp__arifos__arif_fetch": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use arif_observe(mode='ingest') for URL fetching.",
+      "reason": "Zen: arif_fetch vs arif_evidence_fetch unclear distinction. Both folded into arif_observe."
+    },
+    "mcp__arifos__arif_evidence_fetch": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use arif_observe(mode='ingest') for URL fetching.",
+      "reason": "Zen: same as arif_fetch. Both consolidated into arif_observe."
+    },
+    "mcp__arifos__arif_measure": {
+      "status": "DEGRADED",
+      "since": "2026-06-22",
+      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use arif_ops_measure or arif_observe(mode='vitals') instead.",
+      "reason": "Pre-existing FastMCP incompatibility + zen naming overlap with arif_ops_measure."
+    },
+    "mcp__arifos__hermes_system_status": {
+      "status": "DEPRECATED",
+      "since": "2026-06-28",
+      "migration": "These 6 Hermes tools (hermes_system_status, hermes_epistemic_check, hermes_fact_check, hermes_cross_verify, hermes_plan_review, hermes_memory_steward) should migrate to a dedicated Hermes MCP server.",
+      "reason": "Zen: Hermes-domain tools should not live in arifOS kernel MCP. They leak Telegram agent operations into the constitutional surface."
+    },
+    "mcp__arifos__hermes_epistemic_check": {
+      "status": "DEPRECATED",
+      "since": "2026-06-28",
+      "migration": "Migrate to Hermes MCP server (TBD).",
+      "reason": "Part of 6 Hermes tools that should move out of arifOS kernel."
+    },
+    "mcp__arifos__hermes_fact_check": {
+      "status": "DEPRECATED",
+      "since": "2026-06-28",
+      "migration": "Migrate to Hermes MCP server (TBD).",
+      "reason": "Part of 6 Hermes tools that should move out of arifOS kernel."
+    },
+    "mcp__arifos__hermes_cross_verify": {
+      "status": "DEPRECATED",
+      "since": "2026-06-28",
+      "migration": "Migrate to Hermes MCP server (TBD).",
+      "reason": "Part of 6 Hermes tools that should move out of arifOS kernel."
+    },
+    "mcp__arifos__hermes_plan_review": {
+      "status": "DEPRECATED",
+      "since": "2026-06-28",
+      "migration": "Migrate to Hermes MCP server (TBD).",
+      "reason": "Part of 6 Hermes tools that should move out of arifOS kernel."
+    },
+    "mcp__arifos__hermes_memory_steward": {
+      "status": "DEPRECATED",
+      "since": "2026-06-28",
+      "migration": "Migrate to Hermes MCP server (TBD).",
+      "reason": "Part of 6 Hermes tools that should move out of arifOS kernel."
+    },
+    "mcp__geox__pattern_a_wrappers": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "GEOX has Pattern A wrapper tools (geox_claim, geox_evidence) that overlap with EGS granular tools. Use EGS tools for detailed operations, Pattern A for unified access.",
+      "reason": "Zen: Pattern A vs EGS overlap creates 3+ tool pairs doing similar things."
+    },
+    "mcp__geox__egs_seismic_compute": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use mcp__geox__geox_seismic_compute (unified seismic engine) instead.",
+      "reason": "Zen: geox_seismic_compute is the unified canonical tool. geox_egs_seismic_compute is redundant."
+    },
+    "mcp__well__well_system_registry_status": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use mcp__well__well_registry_status (blueprint canonical format) instead.",
+      "reason": "Zen: WELL has TWO registry tools. well_registry_status is canonical."
+    },
+    "mcp__aforge__forge_browser": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use chrome-devtools MCP as canonical browser interface. 3 concurrent browser systems exist (forge_browser_*, chrome-devtools, playwright).",
+      "reason": "Zen: 3-way browser overlap. chrome-devtools is canonical."
+    },
+    "mcp__geox__geox_surface_status": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Consider renaming to geox_system_registry_status for naming consistency with WEALTH (wealth_system_registry_status) and WELL (well_registry_status).",
+      "reason": "Zen: naming inconsistency across organs."
+    },
+    "mcp__arifos__arif_ops_measure": {
+      "status": "LEGACY",
+      "since": "2026-06-28",
+      "migration": "Use arif_observe(mode='vitals') or forge_health_check for system metrics.",
+      "reason": "Zen: naming overlap with arif_measure. Ops metrics consolidate under arif_observe."
     }
   },
 
@@ -129,6 +249,55 @@
       "since": "2026-06-22",
       "migration": "WEALTH has 20 public tools (+34 hidden aliases, 65 decorators). Use only the 20 public tools. Hidden aliases are backward-compat only.",
       "reason": "Tool surface canonicalization."
+    }
+  },
+
+  "zen_issues": {
+    "$note": "These are NOT deprecations — they are tool-zen issues identified in the 2026-06-28 audit. They represent naming inconsistencies, organizational drift, and simplification opportunities. Listed here until resolved or formally deprecated.",
+    "arifos_hermes_6_tools": {
+      "severity": "MEDIUM",
+      "description": "6 Hermes tools leak into arifOS MCP surface (hermes_system_status, hermes_epistemic_check, hermes_fact_check, hermes_cross_verify, hermes_plan_review, hermes_memory_steward). Should migrate to dedicated Hermes MCP server.",
+      "status": "UNRESOLVED"
+    },
+    "arifos_arif_forge_legacy": {
+      "severity": "LOW",
+      "description": "arif_forge and arif_forge_execute are legacy pre-Brain/Hands split proxies. A-FORGE forge_execute is canonical.",
+      "status": "UNRESOLVED"
+    },
+    "geox_pattern_a_vs_egs": {
+      "severity": "MEDIUM",
+      "description": "GEOX has 3+ pairs of overlapping tools: geox_claim vs egs_claim_create, geox_evidence vs egs_evidence_attach, geox_seismic_compute vs egs_seismic_compute. Pattern A wrappers vs EGS granular.",
+      "status": "UNRESOLVED"
+    },
+    "well_double_registry": {
+      "severity": "LOW",
+      "description": "WELL exposes both well_registry_status and well_system_registry_status. Two tools doing the same thing.",
+      "status": "UNRESOLVED"
+    },
+    "registry_naming_inconsistency": {
+      "severity": "LOW",
+      "description": "GEOX uses geox_surface_status, WEALTH uses wealth_system_registry_status, WELL uses well_registry_status + well_system_registry_status. Inconsistent naming.",
+      "status": "UNRESOLVED"
+    },
+    "three_browser_systems": {
+      "severity": "LOW",
+      "description": "3 concurrent browser tool systems: forge_browser_*, chrome-devtools MCP, playwright MCP. chrome-devtools is canonical.",
+      "status": "UNRESOLVED"
+    },
+    "arifos_naming_inconsistencies": {
+      "severity": "LOW",
+      "description": "arif_critique vs arif_heart_critique, arif_memory vs arif_memory_recall, arif_measure vs arif_ops_measure, arif_fetch vs arif_evidence_fetch. Multiple naming inconsistencies in arifOS.",
+      "status": "UNRESOLVED"
+    },
+    "aforge_registry_empty": {
+      "severity": "LOW",
+      "description": "forge_registry returns 0 registered tools. APEX Decision Field registry is empty — all forge_* tools come from static registration, not the dynamic APEX system.",
+      "status": "UNRESOLVED"
+    },
+    "minimax_accept_header": {
+      "severity": "LOW",
+      "description": "MiniMax MCP servers :18090/:18091 reject single Accept header. Require 'Accept: application/json, text/event-stream'. Inconsistent with other organs.",
+      "status": "UNRESOLVED"
     }
   },
 

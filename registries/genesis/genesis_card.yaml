@@ -1,0 +1,72 @@
+# genesis_card.yaml — arifOS Genesis Surface Binding
+# DITEMPA BUKAN DIBERI — Forged, Not Given.
+# 
+# This card binds the philosophical artifact at https://arif-fazil.com/000/
+# to the arifOS constitutional kernel. It is loaded FIRST by arif_init.
+# Every vault witness entry must include genesis_card_hash.
+#
+# Forged: 2026-06-29 | v42.0 Dynamic Act Edition
+
+id: GENESIS-000
+title: Genesis Surface
+url: https://arif-fazil.com/000/
+did: did:web:arif-fazil.com
+signature_type: Ed25519
+signature_file: genesis-statement.sig
+signature_status: pending_retrieval  # sig file not yet on VPS
+published: 2026-04-30
+updated: 2026-06-27
+data_ring: GENESIS
+
+# SHA-256 of https://arif-fazil.com/000/ at time of card creation
+# Used to verify genesis integrity in every vault witness entry
+content_hash_sha256: 37d9d378e9a2e2a8090161df9290c9f4988ecfd487f84975fbef91d37b9e5f44
+constitution_reference: arifOS v2026.05.05-SSCT, sha256:c65465c98bc2cfa0
+
+sections:
+  - id: trinity_delta_omega_psi
+    title: The Trinity (ΔΩΨ) — Clarity · Humility · Vitality
+    description: Foundational triad of the kernel's identity
+  - id: moment_before_000
+    title: The Moment Before 000
+    description: Pre-identity, last honest state before the system existed
+  - id: metabolic_cycle
+    title: Metabolic Cycle
+    description: 000→SENSE→MIND→HEART→JUDGE→VAULT→999 — the agentic loop
+  - id: constitutional_floors_F1_F13
+    title: 13 Constitutional Floors
+    description: F1 AMANAH through F13 SOVEREIGNTY — AND-logic gates
+  - id: paradox_engine
+    title: Paradox Engine
+    description: Gödel-Lock · Strange Loop · Anti-Behavior Sink
+  - id: identity_proof
+    title: Identity & Proof
+    description: did:web:arif-fazil.com + Ed25519 signature
+  - id: genesis_state_live
+    title: Genesis State
+    description: Live kernel interface — the system's own origin story
+  - id: wisdom_laws_0001_0012
+    title: Wisdom Laws 0001–0012
+    description: Field observations, not rules. Emergent from practice.
+  - id: federation_7_organs
+    title: The Federation
+    description: 7 organs, live ports, constitutional roles
+
+binding:
+  arif_init_loads_first: true
+  vault_witness_include_genesis_hash: true
+  verify_on_load: true  # Re-fetch /000/ and compare hash at init
+  fallback_on_hash_mismatch: HOLD  # Don't silently drift
+
+arif_init_integration:
+  stage: "000"
+  card: "333-AGI"
+  action: |
+    On arif_init invocation:
+    1. Load this card from AAA/registries/genesis/genesis_card.yaml
+    2. Optionally fetch https://arif-fazil.com/000/ and verify content_hash_sha256
+    3. Bind genesis_card_hash to the session
+    4. Include genesis_card_hash in every subsequent vault witness entry
+    5. Surface identity + constitutional floor summary to the calling agent
+
+motto: DITEMPA BUKAN DIBERI
