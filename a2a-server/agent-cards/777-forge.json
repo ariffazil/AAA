@@ -82,6 +82,19 @@
       ],
       "inputModes": ["application/json"],
       "outputModes": ["application/json"]
+    },
+    {
+      "id": "777-document-ingest-gate",
+      "name": "Document Ingest Gate",
+      "description": "Route document processing requests to A-FORGE document_ingest MCP tool. Validate file existence, verify SHA-256 provenance, log extraction receipt to VAULT999. All 4 modes supported: analyze, extract, chunk, compare.",
+      "tags": ["document", "ingest", "pdf", "ocr", "chunk", "provenance", "VAULT999"],
+      "examples": [
+        "Ingest PDF report → structured JSON with bounding boxes",
+        "Chunk document for RAG with semantic strategy",
+        "Compare two document versions with structural diff"
+      ],
+      "inputModes": ["application/json"],
+      "outputModes": ["application/json"]
     }
   ]
 }
