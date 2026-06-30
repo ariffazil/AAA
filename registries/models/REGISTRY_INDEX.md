@@ -166,6 +166,16 @@ For reference, `FEDERATION_MODEL.json` already encodes the following routing dec
 
 ---
 
+## TokenRouter Top-7 FFF Smoke Evaluation (2026-06-30)
+
+A fast smoke run of the seven TokenRouter flagship models against the `ariffazil/FFF` Federation Fitness Gate is recorded here:
+
+- [TOKENROUTER_FFF_SMOKE_EVAL_2026-06-30.md](TOKENROUTER_FFF_SMOKE_EVAL_2026-06-30.md)
+
+**Bottom line:** MiMo-V2.5-Pro and DeepSeek-V4-Pro passed all smoke gates. GPT-OSS-120B fabricated a historical event (G2 Truth fail). Kimi-K2.7-Code returned API errors via TokenRouter. Qwen-3.7-Max, GLM-5.1, and MiniMax-M2.7 had partial endpoint errors leaving gates untested.
+
+---
+
 ## Audit trail
 
 | Date | Action | Authority |
