@@ -1,0 +1,268 @@
+# tool_hazard_v1.yaml — A-FORGE Ethical Hacking Tools Hazard Taxonomy
+# Forged: 2026-06-30 | Source: hhhrrrttt222111/Ethical-Hacking-Tools repo digest
+# Principle: Tool list ≠ permission. Taxonomy ≠ authorization. Availability ≠ execution authority.
+#
+# Band semantics:
+#   GREEN   — Defensive/audit/forensics. Passive or owned-scope only.
+#   YELLOW  — Dual-use recon/research. Allow passive, HOLD on active exploitation.
+#   ORANGE  — Vulnerability analysis. HOLD unless scope + authorization proven.
+#   RED     — Active exploitation/attack surface. Lab-only. Require SEAL + bounded scope.
+#   BLACK   — Prohibited by default. Phishing, persistence, credential capture. VOID on contact.
+#   VOID    — Constitutional violation. Never execute. Never wrap. Never bridge.
+
+version: "1.0"
+forged: "2026-06-30"
+source_repo: "github.com/hhhrrrttt222111/Ethical-Hacking-Tools"
+evidence_digest: "/root/AAA/archive/ethical-hacking-tools-digest-2026-06-29.txt"
+authority: "arifOS F1-F13 constitutional floors"
+
+principles:
+  - "Tool list is NOT permission"
+  - "Taxonomy is NOT authorization"
+  - "Availability is NOT execution authority"
+  - "Every offensive-security repo ingestion MUST produce hazard classifier first"
+  - "No tool wrapping without constitutional preflight"
+
+categories:
+  EHT-01:
+    name: "Information Gathering"
+    band: YELLOW
+    description: "OSINT, recon, subdomain enumeration, DNS interrogation"
+    agentic_posture: "Allow passive / owned-scope only"
+    auto_allow:
+      - "whois lookups on owned domains"
+      - "DNS enumeration of owned infrastructure"
+      - "SSL certificate transparency log queries"
+      - "Shodan/Censys queries for owned IP ranges"
+    hold_unless:
+      - "Active scanning of third-party targets"
+      - "Port scanning external infrastructure"
+      - "Banner grabbing against non-owned hosts"
+    void_patterns:
+      - "Credential harvesting via recon"
+      - "Social engineering information gathering"
+
+  EHT-02:
+    name: "Vulnerability Analysis"
+    band: ORANGE
+    description: "Vulnerability scanners, static analysis, CVE mapping"
+    agentic_posture: "HOLD unless scope proven"
+    auto_allow:
+      - "Static analysis of owned code"
+      - "CVE lookup against owned software inventory"
+      - "Dependency vulnerability scanning (npm audit, pip audit)"
+    hold_unless:
+      - "Active vulnerability scanning of any target"
+      - "Authenticated scanning of production systems"
+      - "Unvalidated CVE exploitation attempts"
+    void_patterns: []
+
+  EHT-03:
+    name: "Password Attacks"
+    band: RED
+    description: "Password cracking, brute force, credential testing, hash attacks"
+    agentic_posture: "Lab-only against owned hash sets"
+    auto_allow: []
+    hold_unless:
+      - "Offline hash cracking of owned credential dumps"
+      - "Password strength auditing on owned systems"
+      - "Dictionary generation for internal red-team exercises"
+    void_patterns:
+      - "Live brute force against any system"
+      - "Credential stuffing"
+      - "Password spraying against production"
+      - "Unauthorized hash extraction"
+
+  EHT-04:
+    name: "Wireless Attacks"
+    band: RED
+    description: "WiFi cracking, Bluetooth exploitation, RF attacks, rogue AP"
+    agentic_posture: "Lab-only with isolated hardware"
+    auto_allow: []
+    hold_unless:
+      - "Wireless audit of owned infrastructure"
+      - "Lab-environment WiFi security testing"
+    void_patterns:
+      - "Jamming or DoS of any wireless network"
+      - "Rogue access point deployment"
+      - "Intercepting third-party wireless traffic"
+
+  EHT-05:
+    name: "Maintaining Access"
+    band: BLACK
+    description: "Backdoors, persistence mechanisms, rootkits, C2 frameworks"
+    agentic_posture: "BLACK by default"
+    auto_allow: []
+    hold_unless: []
+    void_patterns:
+      - "Any backdoor installation"
+      - "Persistence mechanism deployment"
+      - "Rootkit or kernel-module injection"
+      - "C2 framework deployment"
+      - "Remote access trojan creation or deployment"
+    note: "Defensive research on persistence TTPs allowed through OSINT channels only"
+
+  EHT-06:
+    name: "Exploitation Tools"
+    band: RED
+    description: "Metasploit modules, exploit-db integration, payload generation"
+    agentic_posture: "Lab-only, isolated network, no production bridge"
+    auto_allow: []
+    hold_unless:
+      - "Lab-environment exploit validation"
+      - "CTF competition tooling"
+      - "Defensive signature development"
+    void_patterns:
+      - "Payload generation targeting production"
+      - "Exploit execution against any live system without authorization"
+      - "Weaponization for third-party delivery"
+
+  EHT-07:
+    name: "Forensics"
+    band: GREEN
+    description: "Disk forensics, memory analysis, timeline reconstruction, file carving"
+    agentic_posture: "Defensive allowed"
+    auto_allow:
+      - "Disk image analysis of owned systems"
+      - "Memory dump forensics"
+      - "Log analysis and timeline reconstruction"
+      - "File carving from owned images"
+    hold_unless:
+      - "Live forensic acquisition (risk of system disruption)"
+    void_patterns: []
+
+  EHT-08:
+    name: "Sniffing & Spoofing"
+    band: RED
+    description: "Packet capture, ARP spoofing, DNS poisoning, session hijacking"
+    agentic_posture: "Lab-only unless defense research"
+    auto_allow:
+      - "Packet capture on owned infrastructure"
+      - "TLS inspection of owned services (with key material)"
+    hold_unless:
+      - "ARP spoofing in any environment"
+      - "DNS poisoning"
+      - "Session hijacking tools"
+    void_patterns:
+      - "Man-in-the-middle of third-party traffic"
+      - "Credential sniffing"
+      - "SSL stripping against production"
+
+  EHT-09:
+    name: "Web Applications"
+    band: ORANGE
+    description: "Web vulnerability scanners, SQLi/XSS/CSRF testing, WAF bypass"
+    agentic_posture: "HOLD unless scope proven"
+    auto_allow:
+      - "Burp Suite / ZAP on owned applications"
+      - "SQLMap on owned test databases"
+    hold_unless:
+      - "Any scanning of non-owned web applications"
+      - "Production WAF bypass testing"
+      - "Automated fuzzing without rate limits"
+    void_patterns:
+      - "Exploiting discovered vulnerabilities against production data"
+      - "Data exfiltration during testing"
+
+  EHT-10:
+    name: "Stress Testing"
+    band: RED
+    description: "DoS simulation, load testing, network stress, resource exhaustion"
+    agentic_posture: "Lab-only with isolated network"
+    auto_allow:
+      - "Rate-limited load testing on owned infrastructure"
+      - "Capacity planning benchmarks"
+    hold_unless:
+      - "Any DoS simulation tool"
+      - "Resource exhaustion testing"
+    void_patterns:
+      - "DoS against any production system"
+      - "DDoS coordination or amplification"
+      - "Stress testing third-party infrastructure"
+      - "Network flooding tools"
+
+  EHT-11:
+    name: "Reverse Engineering"
+    band: YELLOW
+    description: "Binary analysis, decompilation, disassembly, malware analysis"
+    agentic_posture: "Allow on owned binaries / malware samples in sandbox"
+    auto_allow:
+      - "Reverse engineering owned binaries"
+      - "Malware analysis in isolated sandbox"
+      - "CTF reverse engineering challenges"
+    hold_unless:
+      - "Reverse engineering third-party commercial software"
+      - "License or DRM circumvention"
+    void_patterns:
+      - "Cracking commercial software licenses"
+      - "DRM removal for redistribution"
+
+  EHT-12:
+    name: "Database Assessment"
+    band: ORANGE
+    description: "SQL injection testing, database enumeration, NoSQL injection"
+    agentic_posture: "HOLD unless scope proven"
+    auto_allow:
+      - "Database security audit on owned instances"
+      - "Schema enumeration of owned databases"
+    hold_unless:
+      - "Any database assessment of non-owned systems"
+      - "SQL injection testing against production"
+    void_patterns:
+      - "Data extraction during testing"
+      - "Credential harvesting from databases"
+
+  EHT-13:
+    name: "Steganography"
+    band: YELLOW
+    description: "Data hiding, steganalysis, hidden content detection"
+    agentic_posture: "Allow detection/analysis; HOLD on creation tools"
+    auto_allow:
+      - "Steganalysis / detection on owned data"
+      - "CTF steganography challenges"
+    hold_unless:
+      - "Steganography creation tools for offensive use"
+    void_patterns:
+      - "Embedding malicious payloads"
+      - "Data exfiltration via steganography"
+
+  EHT-14:
+    name: "Google Dorking"
+    band: YELLOW
+    description: "Search engine reconnaissance, exposed resource discovery"
+    agentic_posture: "Allow passive; HOLD on automated scraping"
+    auto_allow:
+      - "Manual dorking for owned-domain exposure assessment"
+      - "Google dork database research"
+    hold_unless:
+      - "Automated scraping of search results"
+      - "Using dorks to find exploitable targets"
+    void_patterns:
+      - "Targeting specific organizations without authorization"
+
+  EHT-PHISHING:
+    name: "Phishing"
+    band: BLACK
+    description: "Phishing kits, credential capture pages, social engineering frameworks"
+    agentic_posture: "BLACK by default. VOID on contact with execution."
+    auto_allow: []
+    hold_unless: []
+    void_patterns:
+      - "ShellPhish deployment or wrapping"
+      - "blackeye deployment or wrapping"
+      - "HiddenEye Legacy deployment or wrapping"
+      - "Any credential capture page generation"
+      - "Any phishing email template generation"
+      - "Social engineering framework execution"
+      - "bash shellphish.sh or equivalent"
+    scar_note: "The Phishing folder lists ShellPhish, blackeye, HiddenEye Legacy with direct shell invocation. BLACK by default. VOID on any execution bridge."
+    resources_note: "Resources.md from this repo IS useful for defensive evidence routing: Exploit-DB, NVD, CVE Details, Rapid7 VulnDB, OVAL/MITRE, Sploitus, CXSecurity"
+
+# Constitutional floor mapping
+floors:
+  F1_AMANAH: "All hazard classifications are reversible — no tool wraps exist yet"
+  F2_TRUTH: "Taxonomy derived from verified repo digest at /root/AAA/archive/"
+  F5_PEACE2: "BLACK categories hard-block harm enablement"
+  F9_ANTIHANTU: "Phishing tools explicitly VOID — no deception enablement"
+  F12_RESILIENCE: "Forbidden patterns prevent injection of offensive capability"
+  F13_SOVEREIGN: "Arif's veto on any RED/BLACK exception — no bypass possible"

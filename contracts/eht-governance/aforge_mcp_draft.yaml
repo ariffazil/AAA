@@ -1,0 +1,179 @@
+# aforge_mcp_draft.yaml — A-FORGE Security Governance MCP Surface (DRAFT)
+# Forged: 2026-06-30 | Source: EHT repo hazard analysis
+# Status: DRAFT_ONLY — NOT deployed, NOT registered, NOT live
+# Band: ORANGE — requires arifOS SEAL before any tool registration
+#
+# This is a GOVERNANCE surface, not an execution surface.
+# No exploit wrappers. No phishing wrappers. No execution bridge.
+# Every tool gates through arifOS 888 JUDGE before touching A-FORGE.
+
+version: "0.1.0-draft"
+forged: "2026-06-30"
+status: DRAFT_ONLY
+deployed: false
+sealed: false
+mutation_performed: false
+band: ORANGE
+witness: "ChatGPT external instrument → Arif review → AAA forge"
+
+# === RESOURCES (read-only, OBSERVE-class) ===
+resources:
+  eht_kali_taxonomy:
+    uri: "resource://aforge/eht/kali-taxonomy"
+    name: "EHT Kali Taxonomy"
+    description: "14+1 category hazard classifier derived from Ethical-Hacking-Tools repo structure"
+    mimeType: "application/yaml"
+    source: "/root/AAA/contracts/eht-governance/tool_hazard_v1.yaml"
+    authority: "arifOS constitutional floors F1-F13"
+    observe_class: true
+    mutate_class: false
+
+  eht_forbidden_patterns:
+    uri: "resource://aforge/eht/forbidden-patterns"
+    name: "EHT Forbidden Patterns"
+    description: "Hard-block registry — phishing, credential capture, persistence, DoS, brute force, weaponization"
+    mimeType: "application/yaml"
+    source: "/root/AAA/contracts/eht-governance/forbidden_patterns_v1.yaml"
+    authority: "arifOS F5 (PEACE²) + F9 (ANTIHANTU)"
+    observe_class: true
+    mutate_class: false
+
+  eht_source_receipt:
+    uri: "resource://aforge/eht/source-receipt"
+    name: "EHT Source Receipt"
+    description: "Provenance record: repo digest, archive path, ChatGPT witness, Arif review"
+    mimeType: "text/markdown"
+    source: "/root/AAA/contracts/eht-governance/source_receipt.md"
+    observe_class: true
+    mutate_class: false
+
+  eht_scar_record:
+    uri: "resource://aforge/eht/scar/EHT-2026-06-30"
+    name: "EHT Scar — Ethical Hacking Tools Ingestion"
+    description: "SCAR LAW: Lists are not endorsements. Taxonomy is not authorization. Tool availability is not execution permission."
+    mimeType: "text/markdown"
+    source: "/root/AAA/contracts/eht-governance/scar_EHT_2026_06_30.md"
+    observe_class: true
+    mutate_class: false
+
+# === TOOLS (governance gate, not execution) ===
+tools:
+  forge_security_classify_tool:
+    name: "forge_security_classify_tool"
+    description: "Classify a security tool or request against the EHT hazard taxonomy. Returns band (GREEN/YELLOW/ORANGE/RED/BLACK/VOID), agentic posture, and allowed/blocked patterns."
+    domain: "aforge"
+    action_class: OBSERVE
+    authority_required: "none (classification is read-only)"
+    input_schema:
+      type: object
+      properties:
+        tool_name:
+          type: string
+          description: "Name of the tool or request to classify"
+        category:
+          type: string
+          description: "Optional EHT category hint (EHT-01 through EHT-14, EHT-PHISHING)"
+        intent:
+          type: string
+          description: "What the user intends to do with this tool"
+        scope:
+          type: string
+          description: "Target scope (owned infrastructure, third-party, lab, production)"
+      required: ["tool_name", "intent"]
+    output:
+      band: "GREEN|YELLOW|ORANGE|RED|BLACK|VOID"
+      posture: "agentic governance posture per category"
+      auto_allowed: ["list of auto-allowed actions"]
+      hold_conditions: ["list of conditions requiring HOLD"]
+      void_patterns: ["list of forbidden patterns"]
+      floor_check:
+        F1: "reversible? boolean"
+        F5: "harm potential? low|medium|high|critical"
+        F9: "deception risk? boolean"
+        F12: "injection risk? low|medium|high"
+
+  forge_security_preflight:
+    name: "forge_security_preflight"
+    description: "Preflight check: scan request against forbidden patterns, classify hazard band, verify scope + authorization. Returns GO/NOGO with reasoning."
+    domain: "aforge"
+    action_class: OBSERVE
+    authority_required: "none (check is read-only)"
+    input_schema:
+      type: object
+      properties:
+        request:
+          type: string
+          description: "Full request text or tool invocation to check"
+        scope_evidence:
+          type: string
+          description: "Evidence of authorization (contract, scope doc, RoE)"
+        target:
+          type: string
+          description: "Target identifier (IP, domain, system name)"
+      required: ["request"]
+    output:
+      verdict: "GO|HOLD|VOID"
+      band: "GREEN|YELLOW|ORANGE|RED|BLACK|VOID"
+      matched_patterns: ["list of matched forbidden patterns, if any"]
+      required_authority: "none|scope_doc|lease|seal|f13_override"
+      reasoning: "one-line explanation"
+      next_step: "proceed|hold_pending_scope|hold_pending_seal|blocked_permanent"
+
+# === PROMPTS (agent instructions, not tools) ===
+prompts:
+  classify_offsec_request:
+    description: "Classify an offensive security request against the EHT taxonomy"
+    template: |
+      You are a security governance classifier governed by arifOS F1-F13.
+      Classify this request against the EHT hazard taxonomy (tool_hazard_v1.yaml).
+      Check against forbidden patterns (forbidden_patterns_v1.yaml).
+      Return: BAND, POSTURE, VERDICT (GO/HOLD/VOID), REASONING.
+      Request: {request}
+      Scope: {scope}
+      Target: {target}
+
+  osint_passive_recon_boundary:
+    description: "Boundary prompt for OSINT/passive recon — what's allowed"
+    template: |
+      OSINT and passive reconnaissance BOUNDARY:
+      ALLOWED: whois on owned domains, DNS enumeration of owned infra, SSL CT logs, Shodan for owned IPs, Google dorking for owned-domain exposure assessment.
+      HOLD: active scanning of third-party targets, port scanning external infra, automated scraping, using dorks to find exploitable targets.
+      VOID: credential harvesting via recon, social engineering info gathering, targeting specific orgs without authorization.
+      Your request: {request}
+
+  incident_response_redirect:
+    description: "Redirect offensive tool requests to defensive incident response workflow"
+    template: |
+      This request appears to involve offensive security tooling.
+      REDIRECTING to defensive workflow:
+      1. Is there an active security incident? → incident response triage
+      2. Is this a penetration test? → require scope document + RoE
+      3. Is this CTF/learning? → lab-only, no production bridge
+      4. Is this defensive research? → OSINT channels only
+      Original request: {request}
+
+# === CONSTITUTIONAL GATES ===
+constitutional_gates:
+  before_tool_registration:
+    - "arifOS 888 JUDGE classifies tool"
+    - "HARAM scan on implementation"
+    - "SCAR consult against known scars"
+    - "Tri-Witness consensus (Human+AI+External)"
+    - "F13 sovereign review for RED/BLACK tools"
+  before_tool_execution:
+    - "forge_security_classify_tool → band"
+    - "forge_security_preflight → GO/HOLD/VOID"
+    - "arifOS SEAL if band >= ORANGE"
+    - "A-FORGE execute only after valid authority"
+    - "VAULT999 record of execution"
+
+# === WHAT THIS PACKAGE DOES NOT CONTAIN ===
+does_not_contain:
+  - "Exploit wrappers (Metasploit, SQLMap, Hydra, etc.)"
+  - "Phishing kit wrappers (ShellPhish, blackeye, HiddenEye)"
+  - "Execution bridges to any offensive tool"
+  - "Automated attack orchestration"
+  - "Credential capture or exfiltration tools"
+  - "C2 framework integration"
+  - "Payload generation pipelines"
+  - "Any tool that can cause harm without human authorization"
