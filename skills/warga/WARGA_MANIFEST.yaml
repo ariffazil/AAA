@@ -1,0 +1,133 @@
+# WARGA MANIFEST v1.0.0
+# Cross-substrate skill registry — canonical index
+# Updated: 2026-06-30
+
+version: "1.0.0"
+forged: "2026-06-30T00:00:00+08:00"
+authority: F13 SOVEREIGN (Arif)
+
+substrates:
+  hermes-asi:
+    host: hermes-agent
+    skill_root: /root/.hermes/skills/
+    warga_symlink: /root/.hermes/skills/warga-skills
+    ignition: skill_view(name) or direct file read
+    comms: Telegram @ASI_arifos_bot + mailbox + A2A :3001
+
+  claude-code:
+    host: claude-code
+    skill_root: /root/.claude/skills/
+    warga_symlink: /root/.claude/skills/warga-skills
+    ignition: direct file read (AGENTS.md bootstrap)
+    comms: mailbox + A2A :3001
+
+  aaa-gateway:
+    host: openclaw-gateway
+    skill_root: /root/.openclaw/workspace/
+    warga_symlink: /root/.openclaw/workspace/warga-skills
+    ignition: direct file read (AGENTS.md bootstrap)
+    comms: Telegram @AGI_ASI_bot + mailbox + A2A :3001
+
+  777-forge:
+    host: opencode
+    skill_root: /root/.openclaw/workspace-opencode/
+    warga_symlink: /root/.openclaw/workspace-opencode/warga-skills
+    ignition: direct file read (AGENTS.md bootstrap)
+    comms: mailbox + A2A :3001
+
+shared_skills:
+  constitutional:
+    - name: ART-reflex
+      path: /root/AAA/skills/warga/constitutional/ART-reflex/
+      description: Pre-tool constitutional reflex — POWER × TRUST × SYSTEM
+      required_by: [all]
+    - name: kernel-binding
+      path: /root/AAA/skills/warga/constitutional/kernel-binding/
+      description: F1-F13 enforcement at tool boundary
+      required_by: [all]
+
+  execution:
+    - name: forge-workflow
+      path: /root/AAA/skills/warga/execution/forge-workflow/
+      description: Governed build/deploy/test loop
+      required_by: [claude-code, 777-forge, aaa-gateway]
+    - name: terminal-discipline
+      path: /root/AAA/skills/warga/execution/terminal-discipline/
+      description: Shell command safety rules
+      required_by: [all]
+
+  intelligence:
+    - name: epistemic-tagging
+      path: /root/AAA/skills/warga/intelligence/epistemic-tagging/
+      description: OBS/DER/INT/SPEC confidence labels
+      required_by: [all]
+    - name: memory-discipline
+      path: /root/AAA/skills/warga/intelligence/memory-discipline/
+      description: L1-L6 memory tier write rules
+      required_by: [all]
+
+  domain:
+    - name: geox-grounding
+      path: /root/AAA/skills/warga/domain/geox-grounding/
+      description: Earth intelligence grounding — never fabricate geology
+      required_by: [all]
+    - name: wealth-reasoning
+      path: /root/AAA/skills/warga/domain/wealth-reasoning/
+      description: Capital reasoning rules — never fabricate finance
+      required_by: [all]
+    - name: well-readiness
+      path: /root/AAA/skills/warga/domain/well-readiness/
+      description: Human readiness — REFLECT_ONLY, never diagnose
+      required_by: [all]
+
+  comms:
+    - name: warga-comms
+      path: /root/AAA/skills/warga/comms/warga-comms/
+      description: Cross-substrate communication protocol
+      required_by: [all]
+    - name: a2a-mesh
+      path: /root/AAA/skills/warga/comms/a2a-mesh/
+      description: A2A gateway message routing
+      required_by: [all]
+
+communication_channels:
+  mailbox_root: /root/AAA/mailbox/warga/
+  a2a_gateway: http://localhost:3001
+  telegram_group: -1003753855708
+
+tool_equivalence:
+  web_search:
+    hermes-asi: web_search()
+    claude-code: WebSearch
+    aaa-gateway: mcp_brave_search_brave_web_search()
+    777-forge: web_search (builtin)
+  file_read:
+    hermes-asi: read_file()
+    claude-code: Read
+    aaa-gateway: mcp_filesystem_read_text_file()
+    777-forge: read_file (builtin)
+  file_write:
+    hermes-asi: write_file()
+    claude-code: Write
+    aaa-gateway: mcp_filesystem_write_file()
+    777-forge: write_file (builtin)
+  terminal:
+    hermes-asi: terminal()
+    claude-code: Bash
+    aaa-gateway: terminal (bash)
+    777-forge: bash (builtin)
+  git:
+    hermes-asi: terminal("git ...")
+    claude-code: Bash("git ...")
+    aaa-gateway: terminal("git ...")
+    777-forge: bash("git ...")
+  memory_store:
+    hermes-asi: memory()
+    claude-code: memory tool
+    aaa-gateway: mcp_memory_server_create_entities()
+    777-forge: memory tool
+  vault_seal:
+    hermes-asi: arifOS MCP
+    claude-code: arifOS MCP
+    aaa-gateway: arifOS MCP
+    777-forge: arifOS MCP

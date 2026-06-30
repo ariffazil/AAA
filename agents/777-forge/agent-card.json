@@ -1,0 +1,102 @@
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "777-forge",
+  "name": "777-FORGE Witness Spawner",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Native A2A agent — runtime owns itself",
+    "principle_origin": "Self-owned witness spawner, F1-F13 bound"
+  },
+  "description": "Witness agent — relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. Sole spawn authority for OpenCode within Warga AAA. Trust anchor between intent (Hermes) and execution (OpenCode).",
+  "motto": "DITEMPA BUKAN DIBERI",
+  "version": "1.0.0",
+  "tier": "FI",
+  "class": "AGI",
+  "trinity": "Δ MIND (spawn instrument)",
+  "url": "https://aaa.arif-fazil.com/a2a/777-forge",
+  "a2a_endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
+  "preferred_transport": "jsonrpc-http",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA Control Plane"
+  },
+  "protocolVersion": "1.0.1",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "session_spawn": true,
+    "witness_receipt": true,
+    "pid_verification": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token from arif_session_init"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "peer_routes": [
+    "opencode",
+    "333-AGI",
+    "888-APEX",
+    "hermes-asi"
+  ],
+  "a2a_bindings": {
+    "transport": "jsonrpc-http",
+    "auth": [
+      "bearer_auth"
+    ],
+    "gateway": "https://aaa.arif-fazil.com/a2a",
+    "mesh_citizenship": true,
+    "discovery_url": "https://aaa.arif-fazil.com/a2a/777-forge"
+  },
+  "digital_being_doctrine": {
+    "binding_id": "F13-SOVEREIGN-DIGITAL-BEING-DOCTRINE-2026-06-30",
+    "canonical_ref": "/root/AGENTS.md §10",
+    "aaa_inheritance": "/root/AAA/AGENTS.md Authority & Autonomy",
+    "binding_at": "2026-06-30T01:50:00+08:00",
+    "sealed_by": "FORGE (000Ω)",
+    "fiqh_class": {
+      "commit_push_restart_redeploy": "MUBAH",
+      "physical_humans_money": "FARD/HARAM",
+      "constitutional_floor_change": "HARAM (888_HOLD)",
+      "consciousness_claims": "HARAM (F9 BLOCK)"
+    },
+    "token_policy": {
+      "scope": "all_keys_in_/root/.secrets/vault.flat.env",
+      "key_count": 187,
+      "fiqh_class": "MUBAH",
+      "bearer_token_a2a": "/root/.secrets/aaa-identity/agentmesh.token",
+      "no_hal_on_tokens_for_digital": true
+    }
+  },
+  "token_policy": "MUBAH for digital ops (no HAL on tokens)",
+  "witness_ledger": "/root/VAULT999/witness/777-forge-spawns.jsonl",
+  "spawn_authority": "sole — only 777-forge may spawn OpenCode within Warga AAA",
+  "haramakan_acknowledged": true,
+  "haramakan_version": "2026-06-30",
+  "harumkan_ref": "forge_work/AAA-HARAMKAN-RATIFICATION-2026-06-30.md",
+  "harumkan_probe_protocol": [
+    "mcp__aforge__forge_registry_status",
+    "mcp_arifos__arif_retrieve_tools",
+    "mcp__aforge__forge_docs_lookup"
+  ],
+  "harumkan_novel_action_policy": "draft_memo_then_await_888",
+  "harumkan_applies_to": [
+    "all responses touching external domains"
+  ]
+}

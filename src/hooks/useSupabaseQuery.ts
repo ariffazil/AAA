@@ -12,7 +12,7 @@ export interface QueryState<T> {
   refetch: () => Promise<void>;
 }
 
-export function useSupabaseQuery<T>(
+export function useSupabaseQuery<T = unknown>(
   tableOrView: string,
   options: {
     select?: string;
