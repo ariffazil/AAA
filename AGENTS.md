@@ -1,12 +1,15 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-14 18:08 UTC (999_SEAL — MCP Apps panel + Reference Architecture + governance overlays)
+last_verified: 2026-06-30 15:45 UTC (FORGE SOT audit — documentation chaos reduction)
 valid_from: 2026-06-14
-valid_until: 2026-07-14
+valid_until: 2026-07-30
 confidence: high
 scope: /root/AAA
 epistemic_status: SOURCE_OF_TRUTH
 companion_to: HEXAGON-AGENTS-FORGE-20260614 (SOT alignment — MCP Gate deployment sealed)
+refresh_history:
+  - 2026-06-30 15:45 UTC (FORGE SOT audit — last_verified refreshed, tool count + port added)
+  - 2026-06-14 18:08 UTC (999_SEAL — MCP Apps panel + Reference Architecture + governance overlays)
 -->
 
 # AGENTS.md — AAA | arifOS Federation
@@ -39,6 +42,7 @@ AAA provides:
 
 | Attribute | Value |
 |-----------|-------|
+| **Port** | 3001 (A2A gateway + cockpit) |
 | **Framework** | React 19, TypeScript ~6.0, Vite 8, Tailwind 4 |
 | **MCP Protocol** | v1.0.0-FORGED |
 | **A2A Protocol** | v1.0.0 (canonical spec — see `public/a2a/agent-card.json`) |
@@ -46,6 +50,7 @@ AAA provides:
 | **Build** | `npm run build` → `dist/` |
 | **Path Alias** | `@/` → `src/` |
 | **Strict TS** | `false` |
+| **Tools** | 9 forge instruments (A2A gateway, cockpit, governance, identity) |
 
 ## Repository Structure
 

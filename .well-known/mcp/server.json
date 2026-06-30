@@ -1,0 +1,19 @@
+{
+  "schema": "mcp",
+  "version": "2026.06.30",
+  "protocolVersion": "2025-11-25",
+  "name": "AAA MCP",
+  "description": "Control plane — A2A gateway, cockpit dashboard, agent registry.",
+  "tools": 0,
+  "endpoint": "https://aaa.arif-fazil.com/mcp",
+  "identity": {
+    "canonical_name": "AAA Control Plane",
+    "service_id": "aaa-mcp",
+    "authority": "F13_SOVEREIGN",
+    "port": 3001
+  },
+  "governance": {
+    "floors": ["F1","F2","F4","F6","F7","F9","F11","F13"],
+    "authority_boundary": "F13_SOVEREIGN"
+  }
+}

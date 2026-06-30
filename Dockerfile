@@ -32,4 +32,11 @@ RUN echo 'server { \
 
 EXPOSE 8080
 
+LABEL org.opencontainers.image.source="https://github.com/ariffazil/AAA" \
+      org.opencontainers.image.description="Control plane — A2A gateway, cockpit dashboard" \
+      org.opencontainers.image.version="2026.06.30" \
+      org.opencontainers.image.licenses="BSL-1.1" \
+      arifos.organ="AAA" \
+      arifos.authority="F13_SOVEREIGN"
+
 CMD ["nginx", "-g", "daemon off;"]
