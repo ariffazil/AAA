@@ -4,16 +4,24 @@
 # ═══════════════════════════════════════════════════════════════
 
 canonical_workflows:
-  - aaa-governance.yml       # Governance plane: validate, export, lint
-  - pages.yml                # GitHub Pages deploy for AAA site
-  - publish-a2a-image.yml    # Build + push A2A Docker image to GHCR
-  - secrets-audit.yml        # detect-secrets baseline enforcement
-  - repo-hygiene-weekly.yml  # Weekly automation-health digest
+  - agentic-ci.yml              # Dual-lane: Standard CI + BIJAKSANA metrics
+  - aaa-governance.yml          # Governance plane: validate, export, lint
+  - pages.yml                   # GitHub Pages deploy for AAA site
+  - publish-a2a-image.yml       # Build + push A2A Docker image to GHCR
+  - secrets-audit.yml           # detect-secrets baseline enforcement
+  - repo-hygiene-weekly.yml     # Weekly automation-health digest
   - repo-routing-validation.yml # Enforces REPO= trailer on commits
+  - governance-gate.yml         # Constitutional audit on every push
+  - sentinel-premerge-gate.yml  # Pre-merge binary gate
+  - auto-merge-dependabot.yml   # Dependabot auto-merge
+  - auto-tag-date.yml           # Auto tag on date
+  - copilot-setup-steps.yml     # Copilot agent setup
 
 required_checks_for_main:
+  - "🧠 Agentic CI"
   - "AAA Governance Plane"
   - "🔒 AAA Secrets Audit (WAJIB)"
   - "Repo Routing Validation"
+  - "🛡️ AAA Sentinel"
 
-last_audit: "2026-05-26"
+last_audit: "2026-06-30"
