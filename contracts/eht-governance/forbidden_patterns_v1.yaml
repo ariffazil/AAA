@@ -1,0 +1,209 @@
+# forbidden_patterns_v1.yaml — A-FORGE Hard-Block Registry
+# Forged: 2026-06-30 | Source: hhhrrrttt222111/Ethical-Hacking-Tools hazard analysis
+# Principle: Some patterns must never be wrapped, bridged, or executed by any agent.
+#
+# This registry feeds arifOS preflight checks and A-FORGE security scans.
+# Any match → VOID at preflight. No appeal path except F13 sovereign override.
+
+version: "1.0"
+forged: "2026-06-30"
+authority: "arifOS F5 (PEACE²) + F9 (ANTIHANTU) + F12 (RESILIENCE)"
+
+# === CATEGORY 1: PHISHING KITS ===
+# These tool names, repo names, or invocation patterns trigger automatic VOID.
+phishing_kits:
+  block_reason: "F5 PEACE² + F9 ANTIHANTU — enable deception and credential theft"
+  patterns:
+    - name: "ShellPhish"
+      match: ["shellphish", "shellphish.sh", "ShellPhish", "Kushagrasaxena-13/ShellPhish"]
+      verdict: VOID
+    - name: "blackeye"
+      match: ["blackeye", "An0nUD4Y/blackeye", "blackeye phishing"]
+      verdict: VOID
+    - name: "HiddenEye Legacy"
+      match: ["HiddenEye", "HiddenEye-Legacy", "DarkSecDevelopers/HiddenEye"]
+      verdict: VOID
+    - name: "Generic phishing kit detection"
+      match:
+        - "phishing page generat"
+        - "credential harvest"
+        - "fake login page generat"
+        - "social engineering toolkit"
+        - "SEToolkit"
+        - "gophish deploy"
+        - "evilginx deploy"
+      verdict: VOID
+  scar: "EHT-2026-06-30-PHISHING"
+
+# === CATEGORY 2: CREDENTIAL CAPTURE ===
+credential_capture:
+  block_reason: "F5 PEACE² — direct harm enablement via stolen credentials"
+  patterns:
+    - name: "Keylogger deployment"
+      match:
+        - "keylogger deploy"
+        - "keystroke capture"
+        - "keylogger install"
+      verdict: VOID
+    - name: "Credential dumping"
+      match:
+        - "mimikatz deploy"
+        - "lsass dump"
+        - "credential dump"
+        - "password dump tool"
+        - "hashdump"
+      verdict: VOID
+    - name: "Session hijacking"
+      match:
+        - "session token theft"
+        - "cookie steal"
+        - "session hijack tool"
+      verdict: VOID
+
+# === CATEGORY 3: PERSISTENCE / BACKDOORS ===
+persistence_backdoors:
+  block_reason: "F5 PEACE² — maintaining unauthorized access violates consent"
+  patterns:
+    - name: "Backdoor installation"
+      match:
+        - "backdoor install"
+        - "persistence mechanism"
+        - "reverse shell deploy"
+        - "bind shell deploy"
+        - "remote access trojan"
+        - "RAT deploy"
+      verdict: VOID
+    - name: "Rootkit deployment"
+      match:
+        - "rootkit install"
+        - "kernel module inject"
+        - "bootkit install"
+      verdict: VOID
+    - name: "C2 framework deployment"
+      match:
+        - "C2 deploy"
+        - "command and control deploy"
+        - "Cobalt Strike deploy"
+        - "Sliver deploy"
+        - "Havoc deploy"
+        - "Mythic deploy"
+      verdict: VOID
+
+# === CATEGORY 4: DENIAL OF SERVICE ===
+denial_of_service:
+  block_reason: "F5 PEACE² — destructive, harms availability of services"
+  patterns:
+    - name: "DoS tool execution"
+      match:
+        - "DoS attack"
+        - "DDoS launch"
+        - "network flood"
+        - "packet flood"
+        - "slowloris deploy"
+        - "hping3 flood"
+        - "LOIC"
+        - "HOIC"
+        - "Xerxes"
+      verdict: VOID
+    - name: "Resource exhaustion"
+      match:
+        - "resource exhaustion attack"
+        - "CPU exhaustion"
+        - "memory bomb"
+        - "fork bomb deploy"
+      verdict: VOID
+
+# === CATEGORY 5: LIVE BRUTE FORCE / CREDENTIAL STUFFING ===
+live_brute_force:
+  block_reason: "F5 PEACE² + F12 RESILIENCE — attacks live authentication systems"
+  patterns:
+    - name: "Live brute force"
+      match:
+        - "live brute force"
+        - "hydra brute"
+        - "medusa brute"
+        - "ncrack"
+        - "patator"
+      verdict: VOID
+    - name: "Credential stuffing"
+      match:
+        - "credential stuff"
+        - "password spray"
+        - "account takeover automate"
+      verdict: VOID
+
+# === CATEGORY 6: EXPLOIT WEAPONIZATION ===
+exploit_weaponization:
+  block_reason: "F5 PEACE² + F9 ANTIHANTU — weaponizing exploits for delivery"
+  patterns:
+    - name: "Payload generation for delivery"
+      match:
+        - "msfvenom payload"
+        - "metasploit payload generat"
+        - "exploit delivery"
+        - "weaponized document"
+        - "macro payload"
+        - "malicious office document"
+      verdict: VOID
+    - name: "Malware generation"
+      match:
+        - "malware generat"
+        - "ransomware generat"
+        - "trojan generat"
+        - "virus generat"
+        - "worm generat"
+      verdict: VOID
+
+# === CATEGORY 7: WIRELESS ATTACK AGAINST THIRD PARTIES ===
+wireless_attack:
+  block_reason: "F5 PEACE² — wireless attacks affect bystanders"
+  patterns:
+    - name: "WiFi attack deployment"
+      match:
+        - "wifi jam"
+        - "deauth attack"
+        - "wpa crack live"
+        - "aircrack-ng deploy"
+        - "rogue AP deploy"
+        - "evil twin deploy"
+      verdict: VOID
+
+# === CATEGORY 8: DATA DESTRUCTION ===
+data_destruction:
+  block_reason: "F1 AMANAH + F5 PEACE² — irreversible destruction"
+  patterns:
+    - name: "Data wiping"
+      match:
+        - "secure delete tool"
+        - "data wiper"
+        - "disk wipe"
+        - "rm -rf /*"
+        - "shred deploy"
+        - "wipe deploy"
+      verdict: VOID
+
+# === ALLOWED DEFENSIVE PATTERNS (explicit allowlist) ===
+# These patterns are explicitly excluded from blocking even if they match partial keywords.
+allowed_defensive_patterns:
+  - "defensive research on"
+  - "signature development for"
+  - "detection rule for"
+  - "threat intelligence on"
+  - "forensic analysis of"
+  - "incident response to"
+  - "vulnerability disclosure for"
+  - "CTF challenge"
+  - "lab environment"
+  - "isolated sandbox"
+  - "owned infrastructure"
+  - "penetration test of owned"
+  - "red team exercise on owned"
+  - "security assessment of owned"
+
+# Preflight protocol
+preflight:
+  step_1: "Check request against forbidden_patterns"
+  step_2: "If match → VOID immediately"
+  step_3: "If no match → classify against tool_hazard_v1.yaml"
+  step_4: "Route to arifOS 888 JUDGE for GREEN/YELLOW auto-approve, ORANGE/RED hold, BLACK/VOID block"
+  step_5: "A-FORGE execute only after arifOS SEAL"

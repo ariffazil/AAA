@@ -1,0 +1,906 @@
+{
+  "entries": [
+    {
+      "entry_id": "013ba9be-aaa",
+      "artifact_ref": "image:abc123",
+      "description": "test build",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.494Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.494Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "0478584a-166",
+      "artifact_ref": null,
+      "description": "",
+      "risk_tier": "low",
+      "proposed_at": "2026-06-30T05:23:48.498Z",
+      "cooldown_expiry": "2026-07-01T05:23:48.498Z",
+      "cooldown_hours": 24,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "47fd767c-e79",
+      "artifact_ref": null,
+      "description": "",
+      "risk_tier": "high",
+      "proposed_at": "2026-06-30T05:23:48.499Z",
+      "cooldown_expiry": "2026-07-07T05:23:48.499Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "fabba4b0-12e",
+      "artifact_ref": null,
+      "description": "",
+      "risk_tier": "critical",
+      "proposed_at": "2026-06-30T05:23:48.499Z",
+      "cooldown_expiry": "2026-07-30T05:23:48.499Z",
+      "cooldown_hours": 720,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "bddf7940-2eb",
+      "artifact_ref": "test:seal",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.504Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.504Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "4c87bcf5-a2a",
+      "artifact_ref": "test:incomplete",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.508Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.508Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "1ef8e090-e91",
+      "artifact_ref": "test:big",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.522Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.522Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "756ff462-247",
+      "artifact_ref": "test:expire",
+      "description": "",
+      "risk_tier": "low",
+      "proposed_at": "2026-06-30T05:23:48.524Z",
+      "cooldown_expiry": "2026-06-30T05:23:47.525Z",
+      "cooldown_hours": 24,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T05:23:48.525Z",
+      "void_reason": "cooldown expired (auto-VOID)"
+    },
+    {
+      "entry_id": "03bd1a10-fa7",
+      "artifact_ref": "sha256:new-deploy",
+      "description": "auto-registered deploy: sha256:new-deploy",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.527Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.527Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "e4380c32-121",
+      "artifact_ref": "a",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.529Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.529Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "f59e1e1b-a55",
+      "artifact_ref": "b",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.531Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.531Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "6f304dac-daa",
+      "artifact_ref": "c",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.533Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.533Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "7d4db02b-df4",
+      "artifact_ref": "singleton-test",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.536Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.536Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "bfd3bbd8-5c3",
+      "artifact_ref": "to-void",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:23:48.539Z",
+      "cooldown_expiry": "2026-07-03T05:23:48.539Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "5b3f3399-6a7",
+      "artifact_ref": "image:abc123",
+      "description": "test build",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.334Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.334Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "b7382f87-a57",
+      "artifact_ref": null,
+      "description": "",
+      "risk_tier": "low",
+      "proposed_at": "2026-06-30T05:29:08.340Z",
+      "cooldown_expiry": "2026-07-01T05:29:08.340Z",
+      "cooldown_hours": 24,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "57cd9ade-abd",
+      "artifact_ref": null,
+      "description": "",
+      "risk_tier": "high",
+      "proposed_at": "2026-06-30T05:29:08.341Z",
+      "cooldown_expiry": "2026-07-07T05:29:08.341Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "62a836c0-5f9",
+      "artifact_ref": null,
+      "description": "",
+      "risk_tier": "critical",
+      "proposed_at": "2026-06-30T05:29:08.343Z",
+      "cooldown_expiry": "2026-07-30T05:29:08.343Z",
+      "cooldown_hours": 720,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "83df4729-7ce",
+      "artifact_ref": "test:seal",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.346Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.346Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "99e44899-2dd",
+      "artifact_ref": "test:incomplete",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.350Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.350Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "b3e263f6-c35",
+      "artifact_ref": "test:big",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.356Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.356Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "1bc90212-93c",
+      "artifact_ref": "test:expire",
+      "description": "",
+      "risk_tier": "low",
+      "proposed_at": "2026-06-30T05:29:08.359Z",
+      "cooldown_expiry": "2026-06-30T05:29:07.359Z",
+      "cooldown_hours": 24,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T05:29:08.359Z",
+      "void_reason": "cooldown expired (auto-VOID)"
+    },
+    {
+      "entry_id": "e108f2a2-43c",
+      "artifact_ref": "sha256:new-deploy",
+      "description": "auto-registered deploy: sha256:new-deploy",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.362Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.362Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "192cd43e-e54",
+      "artifact_ref": "a",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.367Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.367Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "e21e7abb-1f5",
+      "artifact_ref": "b",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.368Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.368Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "c44bd97d-3ed",
+      "artifact_ref": "c",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.369Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.369Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "a105cab5-40c",
+      "artifact_ref": "singleton-test",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.371Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.371Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "6cc56f94-5be",
+      "artifact_ref": "to-void",
+      "description": "",
+      "risk_tier": "medium",
+      "proposed_at": "2026-06-30T05:29:08.374Z",
+      "cooldown_expiry": "2026-07-03T05:29:08.374Z",
+      "cooldown_hours": 72,
+      "verdict": "VOID",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": "2026-06-30T13:10:00Z",
+      "void_reason": "test_data_cleanup"
+    },
+    {
+      "entry_id": "bddb3d08-bd5",
+      "artifact_ref": "1ed80593-e9cc-42d5-9bba-1f4da28737f9",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-06-30T12:41:04.160Z",
+      "cooldown_expiry": "2026-07-07T12:41:04.160Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "9418a3f3-7f1",
+      "artifact_ref": "bad8f2d1-fbc5-4479-b700-755ad7340c20",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-06-30T12:48:11.069Z",
+      "cooldown_expiry": "2026-07-07T12:48:11.069Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "882ac660-d99",
+      "artifact_ref": "4eb589c6-de3e-4f94-8c54-07d72ecdf3e4",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-06-30T12:48:52.394Z",
+      "cooldown_expiry": "2026-07-07T12:48:52.394Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    }
+  ],
+  "sealedCount": 0,
+  "voidedCount": 22,
+  "persistedAt": "2026-06-30T12:48:52.395Z"
+}

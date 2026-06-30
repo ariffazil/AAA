@@ -13,6 +13,18 @@ import {
 } from 'lucide-react';
 import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
+import HumanPatternReport from './components/cockpit/HumanPatternReport';
+import { useSupabaseQuery } from './hooks/useSupabaseQuery';
+import JackieNguTribute from './jackie-ngu-tribute';
+
+function CockpitSupabaseQueryProbe() {
+  const { data, loading, error } = useSupabaseQuery('aaa.memory_records', { limit: 1 });
+  return (
+    <div className="hidden">
+      {loading ? 'loading' : error ? `error: ${error}` : `rows: ${Array.isArray(data) ? data.length : 0}`}
+    </div>
+  );
+}
 import AutonomyBands from './components/cockpit/AutonomyBands';
 import RealityConsole from './components/cockpit/RealityConsole';
 import HermesCitizenCard from './components/cockpit/HermesCitizenCard';
@@ -1001,6 +1013,16 @@ export default function Cockpit() {
 
         {/* ── SUPABASE FEDERATION MEMORY (Phase 3A Read-Only) ── */}
         <SupabaseMemoryPanel />
+
+        {/* ── HUMAN PATTERN REPORT (Phase 3B Operator Rhythm) ── */}
+        <HumanPatternReport />
+
+        {/* ── JACKIE NGU TRIBUTE ── */}
+        <section className="mb-8">
+          <JackieNguTribute />
+        </section>
+
+        <CockpitSupabaseQueryProbe />
 
         {/* ── ARIFOS VAULT999 RECEIPT VIEWER ── recent sealed events */}
         <section className="mb-8">

@@ -113,7 +113,6 @@ If any answer is NO → drop, replace with a passing item, or deliver silence ru
 [Skills loaded: X | Latency: <Ns]
 Selangor, [DATE] | 14:00 MYT
 Tiada item forge-intel lulus gate hari ini. Sabar.
-DITEMPA BUKAN DIBERI
 ```
 
 **Skills:** `repo-eureka` (for the repo scan), `arifos-mcp-federation` (for MCP surface), `constitutional-expository-forge` (for the meta insight), `fabrication-prevention` (mandatory).
