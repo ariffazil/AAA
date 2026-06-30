@@ -17,6 +17,8 @@
  * DITEMPA BUKAN DIBERI — Forged, Not Given
  */
 
+import { getAnchorsByEvent, type ParadoxAnchor } from './paradox_anchors.js';
+
 export type VerdictType = 'SEAL' | 'SABAR' | 'HOLD_888' | 'VOID';
 
 export interface DeliberationResult {
@@ -275,5 +277,13 @@ export function deliberate(
     acRisk,
     activeAnchors,
     retryCycle,
+    anchorDetails: getAnchorsByEvent('seal_verdict'),
   };
+}
+
+/** Resolve active anchor IDs to full anchor definitions. */
+export function resolveAnchors(activeAnchorIds: string[]): ParadoxAnchor[] {
+  return activeAnchorIds
+    .map((id) => getAnchorsByEvent(id).find((a) => a.id === id))
+    .filter((a): a is ParadoxAnchor => a !== undefined);
 }

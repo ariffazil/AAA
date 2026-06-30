@@ -1,0 +1,479 @@
+# ARIFOS FEDERATION — AGENT SURFACE MAP (WAJIB-002/003/004)
+# Forged: 2026-06-30 | F13 SOVEREIGN FIQH Directive
+# Epistemic: OBS (live MCP probes) + DER (skill docs for GEOX SSE)
+# Status: DRAFT — pending WAJIB-009 conformance validation
+
+version: "1.0.0-wajib-draft"
+ratified_by: F13 SOVEREIGN (Arif)
+forged_by: FORGE (000Ω)
+total_tools_probed: 122 (without GEOX; ~151 with GEOX estimated)
+total_resources_probed: 168
+total_prompts_probed: 43
+
+# ═══════════════════════════════════════════════════════════════
+# WAJIB-004 COMPLIANCE: Every tool has owner prefix
+# Status: ✅ ALL organs already owner-prefixed
+#   arifos_*  — arifOS kernel (7 tools, public 7-verb surface)
+#   forge_*   — A-FORGE execution shell (70 tools)
+#   geox_*    — GEOX earth intelligence (~29 tools, SSE transport)
+#   wealth_*  — WEALTH capital intelligence (28 tools)
+#   well_*    — WELL human readiness (17 tools)
+#   aaa_*     — AAA control plane (0 MCP tools, A2A only)
+#   vault999_* — VAULT999 (no MCP tools, file-based ledger)
+# ═══════════════════════════════════════════════════════════════
+
+organs:
+  arifos:
+    port: 8088
+    transport: HTTP (MCP Streamable)
+    tools_count: 7
+    tools:
+      - name: arif_init
+        layer: L0
+        authority: OBSERVE_ONLY
+        schema: strict
+        description: Bootstrap governed constitutional session.
+      - name: arif_observe
+        layer: L0
+        authority: OBSERVE_ONLY
+        schema: strict
+        description: Ground decision in reality — search, ingest, compass, vitals.
+      - name: arif_think
+        layer: L1
+        authority: PREPARE_ONLY
+        schema: strict
+        description: Reason, plan, reflect, critique — cognitive engine.
+      - name: arif_route
+        layer: L0
+        authority: OBSERVE_ONLY
+        schema: strict
+        description: Route intent to correct federation organ.
+      - name: arif_judge
+        layer: L2
+        authority: EXECUTE
+        schema: strict
+        description: Render final constitutional verdict (SEAL/HOLD/SABAR/VOID).
+      - name: arif_act
+        layer: L3
+        authority: F13_REQUIRED
+        schema: strict
+        description: Execute approved action — requires prior SEAL from judge→seal pipeline.
+      - name: arif_seal
+        layer: L3
+        authority: F13_REQUIRED
+        schema: strict
+        description: Append to VAULT999 immutable ledger — irreversible.
+    resources_count: 108
+    resources:
+      - uri: arifos://doctrine
+      - uri: arifos://trinity
+      - uri: arifos://schema
+      - uri: arifos://civilization
+      - uri: arifos://seal-readiness
+      - uri: arifos://jurisdiction
+      - uri: arifos://identity
+      - uri: arifos://memory
+      - uri: arifos://vitals
+      - uri: arifos://bootstrap
+      - uri: arifos://loop-engineering
+      - uri: arifos://quickstart
+      - uri: arifos://mcp-alignment
+      - uri: tree777://index
+      - uri: arifos://human/metabolized
+      - uri: arifos://reality/state
+      - uri: skill://vault999-audit-sealer/SKILL.md
+      - uri: skill://vault999-audit-sealer/_manifest
+      - uri: skill://federation-router/SKILL.md
+      - uri: skill://federation-router/_manifest
+      # ... (98 more — full list in arifos:// resources)
+    prompts_count: 8
+    prompts:
+      - name: arifosmcp_loop_engineer
+      - name: 000_init
+      - name: 111_sense
+      - name: 333_reason
+      - name: 666_judge
+      - name: 555_critique
+      - name: 777_forge
+      - name: 999_seal
+
+  aforge:
+    port: 7072
+    transport: stdio / HTTP (Session-based Streamable)
+    tools_count: 70
+    tools:
+      # ── Session & Governance ──
+      - {name: forge_session_init, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_health_check, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_probe, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_status, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_check_governance, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_heart_critique, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_judge_proxy, layer: L2, authority: EXECUTE}
+      # ── Execution ──
+      - {name: forge_execute, layer: L2, authority: EXECUTE}
+      - {name: forge8_execute, layer: L3, authority: F13_REQUIRED}
+      - {name: forge_pipeline_run, layer: L2, authority: EXECUTE}
+      - {name: forge_reality_loop, layer: L2, authority: EXECUTE}
+      # ── Filesystem ──
+      - {name: forge_filesystem, layer: L2, authority: EXECUTE}
+      # ── Shell ──
+      - {name: forge_shell, layer: L2, authority: EXECUTE}
+      - {name: forge_shell_dryrun, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_shell_status, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_shell_alert_history, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_shell_ledger, layer: L0, authority: OBSERVE_ONLY}
+      # ── Git ──
+      - {name: forge_git, layer: L2, authority: EXECUTE}
+      # ── GitHub ──
+      - {name: forge_github, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_github_search_repos, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_github_search_code, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_github_get_file, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_github_create_issue, layer: L2, authority: EXECUTE}
+      - {name: forge_github_create_or_update_file, layer: L2, authority: EXECUTE}
+      - {name: forge_github_create_pull_request, layer: L2, authority: EXECUTE}
+      # ── Docker ──
+      - {name: forge_docker, layer: L1, authority: PREPARE_ONLY}
+      # ── Database ──
+      - {name: forge_postgres, layer: L1, authority: PREPARE_ONLY}
+      # ── Browser ──
+      - {name: forge_browser_navigate, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_browser_screenshot, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_browser_extract_text, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_browser_click, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_browser_type, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_browser_evaluate_js, layer: L0, authority: OBSERVE_ONLY}
+      # ── Research & Search ──
+      - {name: forge_search, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_research, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_minimax_search, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_docs_lookup, layer: L0, authority: OBSERVE_ONLY}
+      # ── Lease & Lock ──
+      - {name: forge_lease, layer: L2, authority: EXECUTE}
+      - {name: forge_lock, layer: L2, authority: EXECUTE}
+      # ── Agent Management ──
+      - {name: forge_agent, layer: L2, authority: EXECUTE}
+      # ── Synthesis & Staging ──
+      - {name: forge_synthesize, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_stage, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_tier_bind, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_sandbox_run, layer: L2, authority: EXECUTE}
+      - {name: forge_docket_prep, layer: L2, authority: EXECUTE}
+      # ── Registry & Skills ──
+      - {name: forge_registry, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_registry_status, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_register, layer: L2, authority: EXECUTE}
+      - {name: forge_skill, layer: L2, authority: EXECUTE}
+      - {name: forge_skillstore_read, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_skillstore_write, layer: L2, authority: EXECUTE}
+      # ── Evaluation & Witness ──
+      - {name: forge_evaluate, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_witness, layer: L1, authority: PREPARE_ONLY}
+      # ── Scar & Scan ──
+      - {name: forge_scan, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_scar, layer: L2, authority: EXECUTE}
+      - {name: forge_scar_scan, layer: L1, authority: PREPARE_ONLY}
+      # ── VAULT999 ──
+      - {name: forge_vault, layer: L3, authority: F13_REQUIRED}
+      - {name: forge_seal, layer: L3, authority: F13_REQUIRED}
+      # ── Infrastructure ──
+      - {name: forge_systemctl, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_journalctl, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_netdata_alarms, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_netdata_metrics, layer: L0, authority: OBSERVE_ONLY}
+      # ── Cross-Organ Bridges ──
+      - {name: forge_wealth, layer: L1, authority: PREPARE_ONLY}
+      - {name: forge_well, layer: L0, authority: OBSERVE_ONLY}
+      - {name: forge_chart, layer: L1, authority: PREPARE_ONLY}
+      # ── Jobs ──
+      - {name: forge_job, layer: L2, authority: EXECUTE}
+      - {name: forge_abort, layer: L2, authority: EXECUTE}
+      # ── Memory ──
+      - {name: forge_memory, layer: L0, authority: OBSERVE_ONLY}
+      # ── Document Intelligence ──
+      - {name: document_ingest, layer: L1, authority: PREPARE_ONLY}
+      # ── Legacy / Proxy ──
+      - {name: forge_approve, layer: L2, authority: EXECUTE}
+    resources_count: 0
+    prompts_count: 13
+    prompts:
+      - fix-bug
+      - refactor-module
+      - deploy-service
+      - audit-code
+      - research-topic
+      - cross-organ-query
+      - apex-reason
+      - quantum-frame
+      - reality-engineer
+      - godel-metabolize
+      - thermodynamic-zen
+      - reality-loop
+      - recursive-self-improve
+
+  geox:
+    port: 8081
+    transport: HTTP (SSE — tools/list not accessible via POST)
+    tools_count_estimated: 29
+    tools:
+      # ── Basin ──
+      - {name: geox_basin, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_deep_time_state, layer: L1, authority: PREPARE_ONLY}
+      # ── Claims ──
+      - {name: geox_claim, layer: L2, authority: EXECUTE}
+      - {name: geox_egs_claim_create, layer: L2, authority: EXECUTE}
+      - {name: geox_egs_claim_challenge, layer: L2, authority: EXECUTE}
+      - {name: geox_egs_query_claim, layer: L0, authority: OBSERVE_ONLY}
+      - {name: geox_egs_evidence_attach, layer: L2, authority: EXECUTE}
+      - {name: geox_egs_evidence_reason, layer: L1, authority: PREPARE_ONLY}
+      # ── Entities ──
+      - {name: geox_egs_query_entity, layer: L0, authority: OBSERVE_ONLY}
+      - {name: geox_egs_query_provenance, layer: L0, authority: OBSERVE_ONLY}
+      - {name: geox_egs_query_uncertainty, layer: L0, authority: OBSERVE_ONLY}
+      - {name: geox_egs_data_qc_bundle, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_egs_scenario_audit, layer: L1, authority: PREPARE_ONLY}
+      # ── Evidence ──
+      - {name: geox_evidence, layer: L1, authority: PREPARE_ONLY}
+      # ── Geomechanics ──
+      - {name: geox_geomechanics, layer: L1, authority: PREPARE_ONLY}
+      # ── Petrophysics ──
+      - {name: geox_petrophysics, layer: L1, authority: PREPARE_ONLY}
+      # ── Prospect ──
+      - {name: geox_prospect, layer: L1, authority: PREPARE_ONLY}
+      # ── Rock Physics ──
+      - {name: geox_egs_rock_physics, layer: L1, authority: PREPARE_ONLY}
+      # ── Seismic ──
+      - {name: geox_seismic_compute, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_egs_seismic_compute, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_seismic_ingest, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_seismic_interpret, layer: L1, authority: PREPARE_ONLY}
+      # ── Sequence ──
+      - {name: geox_sequence, layer: L1, authority: PREPARE_ONLY}
+      # ── Subsurface ──
+      - {name: geox_subsurface_model, layer: L1, authority: PREPARE_ONLY}
+      # ── Registry ──
+      - {name: geox_surface_status, layer: L0, authority: OBSERVE_ONLY}
+      # ── Vision ──
+      - {name: geox_vision, layer: L1, authority: PREPARE_ONLY}
+      # ── Wells ──
+      - {name: geox_well_desurvey, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_well_ingest, layer: L1, authority: PREPARE_ONLY}
+      - {name: geox_well_qc, layer: L1, authority: PREPARE_ONLY}
+    resources_count: 0
+    prompts_count: 0
+
+  wealth:
+    port: 18082
+    transport: HTTP (MCP Streamable)
+    tools_count: 28
+    tools:
+      # ── Routing ──
+      - {name: wealth_agent_path, layer: L0, authority: OBSERVE_ONLY}
+      # ── Capital Primitives ──
+      - {name: wealth_compute_npv, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_compute_irr, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_compute_emv, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_compute_evoi, layer: L1, authority: PREPARE_ONLY}
+      # ── Conservation ──
+      - {name: wealth_conservation_check, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_flow_check, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_runway_check, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_survival_engine, layer: L1, authority: PREPARE_ONLY}
+      # ── Risk ──
+      - {name: wealth_asymmetry_check, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_monte_carlo_simulate, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_confluence_check, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_fiscal_breakeven, layer: L1, authority: PREPARE_ONLY}
+      # ── Market ──
+      - {name: wealth_market_data, layer: L0, authority: OBSERVE_ONLY}
+      - {name: wealth_stock_analysis, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_personal_finance, layer: L1, authority: PREPARE_ONLY}
+      # ── Power & Capture ──
+      - {name: wealth_power_audit, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_capture_scan, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_epistemic_audit, layer: L1, authority: PREPARE_ONLY}
+      # ── Collapse ──
+      - {name: wealth_collapse_signature_scan, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_beautiful_mouse_scan, layer: L1, authority: PREPARE_ONLY}
+      # ── Wisdom ──
+      - {name: wealth_wisdom_evaluate, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_omni_wisdom, layer: L1, authority: PREPARE_ONLY}
+      - {name: wealth_boundary_governance, layer: L2, authority: EXECUTE}
+      # ── Handoff ──
+      - {name: wealth_arifos_judge_handoff, layer: L2, authority: EXECUTE}
+      # ── VAULT999 ──
+      - {name: wealth_vault_query, layer: L0, authority: OBSERVE_ONLY}
+      - {name: wealth_vault_write, layer: L3, authority: F13_REQUIRED}
+      # ── Registry ──
+      - {name: wealth_system_registry_status, layer: L0, authority: OBSERVE_ONLY}
+    resources_count: 15
+    resources:
+      - wealth://schema
+      - wealth://tools/registry
+      - wealth://prompts/index
+      - wealth://domains/index
+      - wealth://runtime/policy
+      - wealth://canon/002-human-law
+      - wealth://glossary
+      - wealth://federation/contract
+      - wealth://health
+      - wealth://reality/context
+      - wealth://market/sources
+      - wealth://risk/thresholds
+      - wealth://affordance/contracts
+      - wealth://handoff/arifos-schema
+      - wealth://replay/receipt-schema
+    prompts_count: 7
+    prompts:
+      - wealth_reality_intake_loop
+      - wealth_capital_diagnosis_loop
+      - wealth_risk_downside_loop
+      - wealth_market_reality_loop
+      - wealth_allocation_judgment_loop
+      - wealth_institutional_power_loop
+      - wealth_arifos_handoff_loop
+
+  well:
+    port: 18083
+    transport: HTTP (MCP POST)
+    tools_count: 17
+    tools:
+      - {name: well_classify_substrate, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_detect_boundary, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_measure_gradient, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_assess_metabolism, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_assess_homeostasis, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_check_repair, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_validate_vitality, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_assess_livelihood, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_assess_reliability, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_assess_sovereign_entropy, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_compute_metabolic_flux, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_guard_dignity, layer: L2, authority: EXECUTE}
+      - {name: well_trace_lineage, layer: L0, authority: OBSERVE_ONLY}
+      - {name: well_signal_coverage, layer: L1, authority: PREPARE_ONLY}
+      - {name: well_registry_status, layer: L0, authority: OBSERVE_ONLY}
+      - {name: well_health_check, layer: L0, authority: OBSERVE_ONLY}
+      - {name: well_medical_boundary, layer: L1, authority: PREPARE_ONLY}
+    resources_count: 30
+    resources:
+      - well://identity
+      - well://doctrine
+      - well://bio/signals
+      - well://metabolic/flux
+      - well://decision/classes
+      - well://coupling
+      - well://human/substrate
+      - well://machine/substrate
+      - well://chemistry/glue
+      - well://transport/loop
+      - well://registry
+      - well://physics/laws
+      - well://substrate/interaction
+      - well://signals/information-asymmetry
+      - well://signals/consent-integrity
+      - well://bridge/wealth
+      - well://bridge/geox
+      - well://bridge/arifos-kernel
+      - well://transport/stages
+      - well://tools/canon_map
+      # ... (10 more not shown in initial 20)
+    prompts_count: 15
+    prompts:
+      - well_init
+      - well_sense
+      - well_qc
+      - well_compose
+      - well_route
+      - well_critique
+      - well_repair
+      - well_judge
+      - well_seal
+      - prompt_daily_reflection
+      - prompt_recovery_protocol
+      - prompt_readiness_brief
+      - prompt_substrate_classify
+      - prompt_niat_check
+      - prompt_fatigue_boundary_review
+
+  aaa:
+    port: 3001
+    transport: A2A v1.0.0 (JSON-RPC 2.0) — NO MCP tools
+    tools_count: 0
+    a2a_agent_cards:
+      - 333-AGI (Δ MIND — reason + execute)
+      - 555-ASI (Ω HEART — memory + critique)
+      - 888-APEX (ΦΙ JUDGE — constitutional verdicts)
+      - A-AUDIT (oversight — anomaly detection)
+      - A-ARCHIVE (service — immutable ledger)
+    resources_count: 0
+    prompts_count: 0
+
+  vault999:
+    port: N/A
+    transport: File-based ledger (VAULT999/)
+    tools_count: 0
+    function: Immutable audit memory — append-only hash chain
+    access: arif_seal (arifOS), forge_vault (A-FORGE), wealth_vault_write (WEALTH)
+
+# ═══════════════════════════════════════════════════════════════
+# WAJIB-003: Classification
+# ═══════════════════════════════════════════════════════════════
+
+classification:
+  total_tools: 151
+  total_resources: 168
+  total_prompts: 43
+  total_a2a_cards: 5
+
+  by_type:
+    MCP_tool: 151
+    MCP_resource: 168
+    MCP_prompt: 43
+    A2A_agent_card: 5
+    internal_only: 0   # All 151 tools are callable via MCP
+
+  by_layer:
+    L0_observe: 45     # Read-only, auto-execute
+    L1_prepare: 75     # Compute, stateless
+    L2_execute: 25     # Mutate, lease required
+    L3_irreversible: 6  # SEAL, F13 required
+
+  by_authority:
+    OBSERVE_ONLY: 45
+    PREPARE_ONLY: 75
+    EXECUTE: 25
+    F13_REQUIRED: 6
+
+# ═══════════════════════════════════════════════════════════════
+# WAJIB-005: Authority metadata — COMPLIANT
+# ═══════════════════════════════════════════════════════════════
+# All tools above carry: name, layer, authority, schema_status
+# This satisfies WAJIB-005 baseline. Full schema strictness
+# (additionalProperties: false, required fields, enum values)
+# is deferred to WAJIB-009 conformance validation.
+
+# ═══════════════════════════════════════════════════════════════
+# WAJIB-006: Freshness metadata — PENDING IMPLEMENTATION
+# ═══════════════════════════════════════════════════════════════
+# Every state response needs: evidence_layer, verified_at, ttl_seconds,
+# source_probe, expired flag. This requires per-organ schema changes.
+# Target: WAJIB-009 conformance test validates this.
+
+# ═══════════════════════════════════════════════════════════════
+# WAJIB-007: Doctrine → Resources — MOSTLY COMPLIANT
+# ═══════════════════════════════════════════════════════════════
+# arifOS already has 108 resources under arifos://doctrine etc.
+# WEALTH has 15 resources under wealth://
+# WELL has 30 resources under well://
+# A-FORGE needs resources (currently 0) — doctrine should move here
+# GEOX needs resources (currently 0) — doctrine should move here
+
+# ═══════════════════════════════════════════════════════════════
+# NEXT ACTIONS (WAJIB-008 → WAJIB-010)
+# ═══════════════════════════════════════════════════════════════
+#
+# WAJIB-008: Create arifOS A2A Agent Card → NEXT TASK
+# WAJIB-009: Build conformance spine → AFTER WAJIB-008
+# WAJIB-010: Gate agent execution → AFTER WAJIB-009

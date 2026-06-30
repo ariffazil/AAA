@@ -1,4 +1,5 @@
 import { TaskMessage } from '../gateway/schema';
+import { deliberate } from '../gateway/deliberation';
 
 export type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 
@@ -16,6 +17,29 @@ export class GovernanceAdapter {
   async assessRisk(message: TaskMessage): Promise<RoutingDecision> {
     const prompt = this.extractText(message);
     const peer_contract_id = this.extractPeerContractId(message);
+
+    // AAA local constitutional pre-flight (888 deliberation)
+    const local = deliberate(message);
+    if (local.verdict === 'VOID') {
+      return {
+        path: 'HOLD',
+        reason: `AAA deliberation VOID: ${local.rationale}`,
+        riskLevel: 'CRITICAL',
+        requiresConfirmation: true,
+        irreversibilityBond: 'Constitutional void — cannot proceed',
+        peer_contract_id,
+      };
+    }
+    if (local.verdict === 'HOLD_888' || local.verdict === 'SABAR') {
+      return {
+        path: 'HOLD',
+        reason: `AAA deliberation ${local.verdict}: ${local.rationale}`,
+        riskLevel: local.verdict === 'HOLD_888' ? 'HIGH' : 'MEDIUM',
+        requiresConfirmation: true,
+        irreversibilityBond: `Required after AAA ${local.verdict}`,
+        peer_contract_id,
+      };
+    }
 
     try {
       // Call A-FORGE /sense for authoritative risk assessment
