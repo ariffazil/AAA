@@ -7,6 +7,7 @@ import logging
 from typing import List, Dict
 
 from git import Repo, InvalidGitRepositoryError
+from git.exc import NoSuchPathError
 
 logger = logging.getLogger(__name__)
 
@@ -31,8 +32,8 @@ class RepoScanner:
                 logger.warning("Bare repository found, skipping: %s", path)
                 return []
             return [self._repo_info(repo, path)]
-        except InvalidGitRepositoryError:
-            logger.error("Not a valid Git repository: %s", path)
+        except (InvalidGitRepositoryError, NoSuchPathError):
+            logger.error("Not a valid Git repository or path does not exist: %s", path)
             return []
 
     def scan_directory(self, root_path: str, max_depth: int = 5) -> List[Dict]:

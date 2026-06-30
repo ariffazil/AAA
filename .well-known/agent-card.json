@@ -1,15 +1,29 @@
 {
-  "id": "openclaw-arif-ops",
-  "name": "OpenClaw AGI",
-  "role": "Bounded operator — infra, exec, browser, cron, MCP gateway",
-  "tier": "AGI",
-  "capabilities": ["exec", "browser", "cron", "mcp", "acpx", "docker", "git", "health-probes"],
-  "endpoints": {
-    "gateway": "ws://127.0.0.1:18789",
-    "rest": "http://127.0.0.1:18789/gateway/execute",
-    "agent-card": "http://127.0.0.1:18789/.well-known/agent-card.json"
+  "schema": "arifOS/agent-card/v2.0.0",
+  "name": "AAA Control Plane",
+  "description": "Control plane — A2A gateway, cockpit dashboard, agent registry. Federation routing and display layer.",
+  "version": "2026.06.30",
+  "protocol_version": "2025-11-25",
+  "canonical_name": "AAA Control Plane",
+  "service_id": "aaa-mcp",
+  "capabilities": {
+    "tools": 0,
+    "domains": ["cockpit", "a2a", "registry", "routing", "display"]
   },
-  "governance": "AAA/arifOS",
-  "owner": "Arif",
-  "contact": "hermes-a2a (port 18001)"
+  "governance": {
+    "floors": ["F1", "F2", "F4", "F6", "F7", "F9", "F11", "F13"],
+    "authority_boundary": "CONTROL_PLANE"
+  },
+  "identity": {
+    "canonical_name": "AAA Control Plane",
+    "port": 3001,
+    "authority": "F13_SOVEREIGN"
+  },
+  "endpoints": {
+    "mcp": "https://aaa.arif-fazil.com/mcp",
+    "a2a": "https://aaa.arif-fazil.com/a2a",
+    "dashboard": "https://aaa.arif-fazil.com"
+  },
+  "owner": "Muhammad Arif bin Fazil",
+  "contact": "arif@arif-fazil.com"
 }

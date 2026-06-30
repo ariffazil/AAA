@@ -263,6 +263,123 @@ A-FORGE:    forge_dry_run, forge_execute, forge_approve
 
 **Axiom 6 (Sparse):** One tool, one concept. Do not create `do_everything_tool`.
 
+### MCP Tool Fitness — Fewer Doors, Not More Handles
+
+Python SDKs and agent-facing MCP surfaces obey different physics.
+
+- **SDK surface** exists for human builders.
+- **MCP surface** exists for machine choosers.
+- **Builder convenience aliases** are acceptable inside code.
+- **Agent-facing aliases** are usually entropy leaks.
+
+The federation therefore applies a stricter rule to public tool surfaces:
+
+> **A public MCP tool is not a helper function. It is a possible reality transition.**
+
+This changes the design test.
+
+**SDK design question:**
+- Does this helper make software easier to build?
+
+**MCP design question:**
+- Does this affordance make agent action harder to misunderstand?
+
+If two public tools can satisfy the same agent intent, one of them is probably unfit.
+
+#### The Fitness Function
+
+Digital tools survive by reducing entropy faster than they consume agent attention.
+
+```
+Fitness = (Value × Adoption) / (Entropy × BlastRadius × CognitiveCost)
+```
+
+Where:
+
+- **Value** = unique capability delivered
+- **Adoption** = how often agents lawfully choose it
+- **Entropy** = confusion added by aliases, overlap, vague naming, hidden routing
+- **BlastRadius** = damage potential if misunderstood
+- **CognitiveCost** = how hard the affordance is to reason about correctly
+
+**Sharpest form:**
+
+> **Agentic fitness = entropy reduction per unit of agent attention.**
+
+#### Surface Rules
+
+1. **One public intent, one canonical tool.**
+2. **Aliases may exist in code, but not as independent public doors.**
+3. **Execution aliases are the least fit class.**
+4. **Read-only aliases are tolerated briefly, then routed or removed.**
+5. **If consequence is hidden, the abstraction is unfit.**
+
+#### Fitness Classes
+
+| Tool shape | Federation judgment |
+|---|---|
+| Unique canonical affordance, clear blast radius | **Survive** |
+| Internal SDK wrapper hidden behind canonical tool | **Survive internally** |
+| Public alias of same intent, read-only | **Makruh** — route or merge |
+| Public alias of same intent, mutating/executing | **Haram-adjacent** — remove from agent surface |
+| Tool that bypasses governance geometry | **Kill** |
+
+#### The Alias Law
+
+Inside code:
+
+```python
+def arif_forge_execute(...):
+    return arif_act(...)
+```
+
+This may be acceptable as an internal compatibility wrapper.
+
+On the public agent surface, exposing both names is unfit because the model now has
+to solve a fake decision:
+
+- Which one is canonical?
+- Which one is safer?
+- Which one mutates?
+- Which one logs?
+- Which one requires lease?
+
+That is not capability. That is cognitive tax.
+
+#### Canonical Public Surface Rule
+
+The public surface must expose **constitutional verbs**, not SDK convenience.
+
+- Public: canonical, consequence-bearing, governable affordances
+- Internal: wrappers, adapters, retries, compatibility shims, transport glue
+
+The correct membrane is:
+
+```text
+agent intent -> one canonical affordance -> governed routing -> internal implementation
+```
+
+Not:
+
+```text
+internal helper exists -> publish helper -> hope the agent chooses correctly
+```
+
+#### Survival Doctrine
+
+What survives in the federation is not the most clever tool.
+What survives is the tool that:
+
+- lowers decision entropy
+- exposes consequence
+- preserves governance geometry
+- minimizes keys-to-spell
+- remains obvious under pressure
+
+One-line law:
+
+> **The coder wants more handles; the agent needs fewer doors.**
+
 ### MCP Response Envelope
 
 Every MCP tool returns this structure (Axioms 2, 9, 13):
@@ -320,6 +437,18 @@ except ValidationError as e:
 | `MUTATE` | `write`, `update`, `edit` | Yes |
 | `EXTERNAL_SIDE_EFFECT` | `network_call`, `webhook`, `email` | Yes + arif_judge |
 | `IRREVERSIBLE` | `delete`, `DROP`, `force_push`, `seal` | F13 + arif_seal |
+
+### Canonicalization Test
+
+Before adding or keeping any public MCP tool, ask:
+
+1. Does this expose a unique agent decision point?
+2. Does it reduce or increase surface entropy?
+3. Is the blast radius explicit from the name and schema?
+4. Is it canonical, or merely convenient for implementers?
+5. If another public tool already satisfies the same intent, why does this one still exist?
+
+If question 5 has no strong answer, the tool is a deprecation candidate.
 
 ---
 
