@@ -44,6 +44,13 @@ STEP 5: SESSION INIT (optional — for governed work)
 Call arif_session_init via MCP to bind constitutional session.
 Call arif_organ_attest_all to verify 7 organs alive.
 
+STEP 5.5: TOOL DISCOVERY
+─────────────────────────
+Run arif_retrieve_tools(query="*") to discover ALL available tools
+across all 7 federation organs before acting. Or check the public
+manifest at https://mcp.arif-fazil.com/manifest/tools.json for
+the canonical 7-tool surface.
+
 STEP 6: REPORT
 ──────────────
 IGNITION COMPLETE. State:
