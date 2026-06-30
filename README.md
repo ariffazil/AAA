@@ -15,7 +15,7 @@
 
 > **AAA is the control plane for the arifOS Federation — the cockpit where the human operator sees every agent, every verdict, and every sealed decision. It routes tasks, manages the A2A mesh, queues approvals, and displays governed state. It is the parliament and the air traffic control tower — never the judge, never the executor, never the constitution.**
 
-[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.1-8b5cf6)](a2a-server/)
+[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.0-8b5cf6)](a2a-server/)
 [![Node](https://img.shields.io/badge/node-22-339933?logo=node.js)](package.json)
 [![React](https://img.shields.io/badge/react-19-61DAFB?logo=react)](package.json)
 [![TypeScript](https://img.shields.io/badge/ts-6.0-3178c6?logo=typescript)](package.json)
@@ -87,6 +87,14 @@ Arif         → F13 final sovereign authority
 ```
 
 AAA is the **fifth position**. It is the **window, not the wall**.
+
+### Federation Context (read all 3 for full picture)
+
+| Read this | For | Link |
+|-----------|-----|------|
+| **arifOS** | Constitutional kernel. 10 public verbs. 13 floors. VAULT999. The judge. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
+| **A-FORGE** | Executor. 75 MCP tools. Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
+| **AAA** (this repo) | Cockpit. A2A mesh. Agent registry. React 19 dashboard. What Arif reads. | ← you are here |
 
 ### 0.4 SOT alignment — the 60-second audit
 
