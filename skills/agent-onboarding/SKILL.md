@@ -1,9 +1,10 @@
 ---
 id: agent-onboarding
 name: Agent Onboarding
-version: 1.0.0
+version: 2.0.0
 description: Standard procedure for registering a new agent in the AAA federation.
-  Creates agent identity directory, agent card, registry entry, and SOUL.md.
+  Creates agent identity directory, agent card (v2.0.0 schema), registry entry, and SOUL.md.
+  Updated 2026-07-01: canonical card location is AAA/agents/<id>/agent-card.json.
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -119,13 +120,40 @@ agents/<agent_id>/
 - Escalation path to arifOS 888_JUDGE for dangerous actions
 - Escalation path to Arif for irreversible actions
 
-### Step 3: Create A2A Agent Card
+### Step 3: Create Agent Card (v2.0.0 Schema)
 
-Create `a2a/agent-cards/<agent_id>.json` with:
-- `agent_id`, `name`, `description`
-- `capabilities` array
-- `endpoints` object
-- `auth_required: true`
+Create `agents/<agent_id>/agent-card.json` using the canonical v2.0.0 schema baseline.
+
+**Canonical location:** `AAA/agents/<agent_id>/agent-card.json`
+
+**Minimum viable schema:**
+```json
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "<agent-id>",
+  "name": "<Human Name>",
+  "description": "<What this agent does>",
+  "version": "2026.07.01",
+  "url": "<discovery-url>",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "capabilities": {
+    "streaming": true|false,
+    "pushNotifications": false,
+    "authenticated_extended_card": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["application/json", "text/plain"]
+}
+```
+
+**Recommended additions:** `principal_agent`, `charter`, `securitySchemes`, `skills[]`, `governance`, `identity_hash`.
+
+**Discovery routing:** Cards are copied to `.well-known/` via `make sync-agent-cards` (build step). Do NOT create cards directly in `.well-known/` — always create in `agents/<id>/` first.
+
+**Schema reference:** See `forge_work/2026-07-01/AAA-AGENT-CARD-CONSOLIDATION.md` for the full v2.0.0 baseline and consolidation map.
 
 ### Step 4: Register in AAA Registry
 

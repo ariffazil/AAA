@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aaa.arif-fazil.com/schemas/agent-card-v2.0.0.schema.json",
+  "title": "arifOS Agent Card v2.0.0 — Canonical CamelCase Standard",
+  "description": "THE canonical agent-card schema for the arifOS federation. CamelCase fields per sovereign convention. Supersedes all snake_case variants. Ratified 2026-07-01 under APEX Master Seal.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "arifOS/agent-card/v2.0.0",
+      "description": "Schema identifier — all federation agent cards MUST use this value"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "2.0.0",
+      "description": "Explicit schema version — was missing from all cards pre-JITU"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique agent identifier within the federation"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable agent name"
+    },
+    "principal_agent": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["llm", "architect", "agent", "human", "institution", "earth", "void", "liar", "unknown"]
+        },
+        "category": { "type": "string" },
+        "principle_origin": { "type": "string" }
+      },
+      "required": ["type"]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "protocolVersion": {
+      "type": "string",
+      "description": "A2A protocol version — MUST be present on all cards"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "organization": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "documentationUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "streaming": { "type": "boolean" },
+        "pushNotifications": { "type": "boolean" },
+        "authenticated_extended_card": { "type": "boolean" },
+        "tool_calling": { "type": "boolean" },
+        "mcp_native": { "type": "boolean" },
+        "file_read": { "type": "boolean" },
+        "file_write": { "type": "boolean" },
+        "shell_exec": { "type": "boolean" },
+        "subagent_spawn": { "type": "boolean" }
+      }
+    },
+    "securitySchemes": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Security scheme definitions (bearer_auth, api_key, etc.)"
+    },
+    "security": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "defaultInputModes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "defaultOutputModes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "floor_scope": { "type": "array", "items": { "type": "string" } },
+          "approval_policy": { "type": "string" }
+        }
+      }
+    },
+    "tier": {
+      "type": "string",
+      "enum": ["FI", "AGI", "ASI", "APEX"],
+      "description": "Intelligence tier"
+    },
+    "role": {
+      "type": "string",
+      "description": "Agent role within the federation"
+    },
+    "class": {
+      "type": "string",
+      "description": "Agent execution class"
+    },
+    "mcp_servers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "MCP servers this agent connects to (flat array — v2.0.0. v2.1.0 replaces with mcp_surface)"
+    },
+    "subAgentPolicy": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Subagent spawning policy"
+    },
+    "autonomy_tiers": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "T1/T2/T3 autonomy tier definitions"
+    },
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "canDo": { "type": "array", "items": { "type": "string" } },
+        "cannotDo": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "name",
+    "description",
+    "version",
+    "protocolVersion",
+    "url",
+    "provider",
+    "capabilities",
+    "defaultInputModes",
+    "defaultOutputModes",
+    "skills"
+  ]
+}

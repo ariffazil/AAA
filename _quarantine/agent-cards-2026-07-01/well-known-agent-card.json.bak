@@ -1,0 +1,139 @@
+{
+    "$schema": "arifOS/agent-card/v2.0.0",
+    "id": "aaa-gateway",
+    "name": "AAA Control Plane",
+    "description": "Control plane — A2A gateway, cockpit dashboard, agent registry. Federation routing and display layer. Serves as the A2A v1.0.0 mesh gateway for the arifOS federation. Constitutional F1-F13 governed. Non-warga access routed through A-FORGE broker.",
+    "version": "2026.07.01",
+    "protocolVersion": "1.0.0",
+    "url": "https://aaa.arif-fazil.com/a2a",
+    "provider": {
+        "organization": "arifOS Federation",
+        "url": "https://arif-fazil.com"
+    },
+    "documentationUrl": "https://aaa.arif-fazil.com/docs",
+    "canonical_name": "AAA Control Plane",
+    "service_id": "aaa-mcp",
+    "port": 3001,
+    "capabilities": {
+        "streaming": true,
+        "pushNotifications": false,
+        "authenticated_extended_card": true,
+        "a2a_gateway": true,
+        "cockpit_dashboard": true,
+        "agent_registry": true
+    },
+    "domains": [
+        "cockpit",
+        "a2a",
+        "registry",
+        "routing",
+        "display"
+    ],
+    "defaultInputModes": [
+        "text/plain",
+        "application/json"
+    ],
+    "defaultOutputModes": [
+        "text/plain",
+        "application/json"
+    ],
+    "securitySchemes": {
+        "bearer_auth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT",
+            "description": "arifOS session token for warga agents"
+        },
+        "api_key": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "X-A2A-Key",
+            "description": "Static API key for organ-to-organ federation calls"
+        }
+    },
+    "security": [
+        {
+            "bearer_auth": []
+        },
+        {
+            "api_key": []
+        }
+    ],
+    "skills": [
+        {
+            "id": "agent-dispatch",
+            "name": "Agent Dispatch",
+            "description": "Non-blocking supervised task dispatch to approved internal agents.",
+            "tags": ["dispatch", "task", "coordination"],
+            "floor_scope": ["F1", "F8", "F11"]
+        },
+        {
+            "id": "agent-handoff",
+            "name": "Agent Handoff",
+            "description": "Delegation to approved agents through governed handoff workflows.",
+            "tags": ["handoff", "delegation", "transfer"],
+            "floor_scope": ["F1", "F8", "F11"]
+        },
+        {
+            "id": "status-query",
+            "name": "Status Query",
+            "description": "Read-only task and run status retrieval.",
+            "tags": ["query", "status", "read-only"],
+            "floor_scope": ["F2", "F11"]
+        },
+        {
+            "id": "federation-routing",
+            "name": "Federation Routing",
+            "description": "Route A2A tasks to correct organ: GEOX (earth), WEALTH (capital), WELL (vitality), A-FORGE (execution).",
+            "tags": ["routing", "federation", "a2a"],
+            "floor_scope": ["F4", "F8", "F11"]
+        },
+        {
+            "id": "warga-auth",
+            "name": "Warga Authentication",
+            "description": "Enforce HEXAGON warga boundary. Non-warga access routed through A-FORGE broker.",
+            "tags": ["auth", "warga", "boundary"],
+            "floor_scope": ["F8", "F13"]
+        }
+    ],
+    "authority_boundary": {
+        "canDo": [
+            "Route A2A tasks between federation organs",
+            "Display cockpit dashboard and agent status",
+            "Maintain agent registry and discovery",
+            "Enforce warga boundary for AAA state access"
+        ],
+        "cannotDo": [
+            "Issue constitutional verdicts (arifOS 888_JUDGE only)",
+            "Execute irreversible actions without F13 ratification",
+            "Modify F1-F13 constitutional floors",
+            "Self-authorize beyond CONTROL_PLANE"
+        ]
+    },
+    "constitutional_binding": {
+        "floors": ["F1", "F2", "F4", "F7", "F8", "F9", "F11", "F13"],
+        "verdict_authority": "888_JUDGE (arifOS)",
+        "vault": "VAULT999",
+        "irreversible_requires_human": true,
+        "self_approval_forbidden": true,
+        "federation_trust_model": "governed_peers",
+        "routing_policy": "https://aaa.arif-fazil.com/.well-known/a2a-routing-policy.json",
+        "peer_contract_url": "https://aaa.arif-fazil.com/.well-known/peer-federation-contract.json"
+    },
+    "a2a_endpoints": {
+        "canonical_agent_card": "GET /.well-known/agent-card.json",
+        "send_task": "POST /tasks",
+        "get_task": "GET /tasks/{taskId}",
+        "stream_task": "GET /tasks/{taskId}/stream",
+        "cancel_task": "POST /tasks/{taskId}/cancel",
+        "federation_manifest": "GET /.well-known/arifos-federation.json"
+    },
+    "owner": "Muhammad Arif bin Fazil",
+    "contact": "arif@arif-fazil.com",
+    "metadata": {
+        "doctrine": "DITEMPA BUKAN DIBERI",
+        "forged": "2026-07-01T18:00:00Z",
+        "forged_by": "FORGE (000Ω) — Phase 1 entropy reduction",
+        "canonical_agent_card_location": "AAA/agents/888-APEX/agent-card.json"
+    }
+}

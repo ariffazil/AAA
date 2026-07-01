@@ -452,7 +452,51 @@ If question 5 has no strong answer, the tool is a deprecation candidate.
 
 ---
 
-## Part IV — Constitutional Floor Alignment
+## Part IV — Agent Card Schema Standard (v2.0.0)
+
+> **Sealed: 2026-07-01** — after ZEN-SEAL-2026-07-01 entropy reduction.
+
+Every agent in the federation has an `agent-card.json`. The canonical v2.0.0 schema is:
+
+### Required Fields
+
+```json
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "<agent-id>",
+  "name": "<Human Name>",
+  "description": "<What this agent does>",
+  "version": "2026.07.01",
+  "url": "<discovery-url>",
+  "provider": { "organization": "arifOS Federation", "url": "https://arif-fazil.com" },
+  "capabilities": { "streaming": true|false, "pushNotifications": false },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["application/json", "text/plain"]
+}
+```
+
+### Canonical Locations
+
+| Card Type | Location | Purpose |
+|-----------|----------|---------|
+| **Agent cards** | `AAA/agents/<id>/agent-card.json` | Per-agent identity (26 cards) |
+| **Organ cards** | `<organ>/.well-known/agent-card.json` | Organ-level discovery (6 cards) |
+| **Discovery surfaces** | `AAA/public/a2a/agents/<id>.json` | Built via `make sync-agent-cards` |
+
+### Anti-Patterns
+
+- ❌ Creating cards directly in `.well-known/` (source of truth is `agents/<id>/`)
+- ❌ Using `"schema"` instead of `"$schema"` (JSON Schema standard)
+- ❌ Multiple cards for the same agent in different locations
+- ❌ Version strings like `1.0.0` — use date-based versions: `2026.07.01`
+
+### Consolidation Reference
+
+Full audit: `forge_work/2026-07-01/AAA-AGENT-CARD-CONSOLIDATION.md`
+
+---
+
+## Part V — Constitutional Floor Alignment
 
 | Axiom | Relevant Floors | Enforcement |
 |---|---|---|
@@ -474,7 +518,7 @@ If question 5 has no strong answer, the tool is a deprecation candidate.
 
 ---
 
-## Part V — Enforcement
+## Part VI — Enforcement
 
 ### 400_AUDIT Stage (Federation Coding Agent)
 
@@ -535,4 +579,4 @@ AGENTIC AXIOMS (8–15)
 ---
 
 *DITEMPA BUKAN DIBERI — Axioms are forged, not given.*
-*AAA_ZEN.md sealed: 2026-06-25*
+*AAA_ZEN.md sealed: 2026-06-25 · updated: 2026-07-01 (Part IV: Agent Card Schema Standard v2.0.0)*
