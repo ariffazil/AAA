@@ -142,6 +142,33 @@ function validateEnvelope(envelope, toolName) {
   // 3. Identity check
   // FALLBACK policy: anonymous allowed for OBSERVE/PREPARE (Green/Yellow bands)
   // MUTATE/ATOMIC requires real identity
+  const CANONICAL_ACTORS = new Set([
+    'aaa-architect',
+    'aaa-engineer',
+    'aaa-auditor',
+    'hermes',
+    'antigravity',
+    'arifos',
+    'aforge',
+    'geox',
+    'wealth',
+    'well',
+    'openclaw',
+    'forge',
+    '777-forge',
+    'anonymous',
+  ]);
+
+  if (envelope.actor_id && !CANONICAL_ACTORS.has(envelope.actor_id)) {
+    result.reason = `Sender actor_id "${envelope.actor_id}" is not canonical.`;
+    return result;
+  }
+
+  if (envelope.agent_id && !CANONICAL_ACTORS.has(envelope.agent_id)) {
+    result.reason = `Recipient agent_id "${envelope.agent_id}" is not canonical.`;
+    return result;
+  }
+
   const isAnonymous = !envelope.actor_id || envelope.actor_id === 'anonymous';
   const isUnknownSession = !envelope.session_id || envelope.session_id === 'unknown';
 
