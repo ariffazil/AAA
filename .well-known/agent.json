@@ -1,7 +1,7 @@
 {
   "schema": "https://google.com/genai/a2a/agent-card/v1",
   "name": "arifOS Kernel",
-  "description": "Constitutional AI orchestration kernel for the arifOS federation. Governs 7 federation organs (GEOX, WEALTH, WELL, A-FORGE, A-FORGE MCP, AAA, and the arifOS kernel itself) under F1-F13 constitutional floors. Final authority resides with human sovereign Arif (F13)."
+  "description": "Constitutional AI orchestration kernel for the arifOS federation. Governs 7 federation organs (GEOX, WEALTH, WELL, A-FORGE, A-FORGE MCP, AAA, and the arifOS kernel itself) under F1-F13 constitutional floors. Final authority resides with human sovereign Arif (F13).",
   "url": "https://arif-fazil.com",
   "version": "v2026.06.30",
   "capabilities": {
