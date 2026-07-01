@@ -15,15 +15,10 @@
 
 > **AAA is the control plane for the arifOS Federation — the cockpit where the human operator sees every agent, every verdict, and every sealed decision. It routes tasks, manages the A2A mesh, queues approvals, and displays governed state. It is the parliament and the air traffic control tower — never the judge, never the executor, never the constitution.**
 
-[![A2A Protocol](https://img.shields.io/badge/A2A-v1.0.0-8b5cf6)](a2a-server/)
-[![Node](https://img.shields.io/badge/node-22-339933?logo=node.js)](package.json)
-[![React](https://img.shields.io/badge/react-19-61DAFB?logo=react)](package.json)
-[![TypeScript](https://img.shields.io/badge/ts-6.0-3178c6?logo=typescript)](package.json)
-[![Vite](https://img.shields.io/badge/vite-8-646CFF?logo=vite)](package.json)
-[![Tailwind](https://img.shields.io/badge/tailwind-4-06b6d4?logo=tailwindcss)](package.json)
-[![Port](https://img.shields.io/badge/port-3001-64748b)](FEDERATION_COCKPIT.md)
-[![License](https://img.shields.io/badge/license-AGPL--3.0-ef4444?logo=gnu)](LICENSE)
-[![Systemd](https://img.shields.io/badge/systemd-aaa--a2a.service-30b53f)](deploy/)
+[![Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
+[![Governance Plane](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml)
+[![Pages Deploy](https://github.com/ariffazil/AAA/actions/workflows/pages.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/pages.yml)
+[![License](https://img.shields.io/github/license/ariffazil/AAA?label=License)](LICENSE)
 
 **Repository:** https://github.com/ariffazil/AAA
 **Canonical identity doc:** `FEDERATION_COCKPIT.md`
