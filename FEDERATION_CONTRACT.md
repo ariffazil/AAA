@@ -1,8 +1,8 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-24
+last_verified: 2026-07-01
 valid_from: 2026-06-24
-valid_until: 2026-07-24
+valid_until: 2026-07-31
 confidence: high
 scope: /root/AAA
 -->
@@ -22,20 +22,20 @@ scope: /root/AAA
 Arif (F13 SOVEREIGN)
   → arifOS kernel (8088) — constitutional judgment
     → Domain organs (GEOX / WEALTH / WELL) — evidence
-      → AAA a2a-server (3001) — A2A v0.3.0 deliberation + 888 JUDGE
+      → AAA a2a-server (3001) — A2A v1.0.0/1.0.1 deliberation + 888 JUDGE
         → AAA cockpit — display and human interface
           → A-FORGE (7071/7072) — execution under SEAL
             → VAULT999 — immutable audit ledger
 ```
 
-AAA is the **Control Plane / Cockpit**. It absorbs the legacy APEX 888 JUDGE deliberation, hosts the React cockpit, and provides the A2A v0.3.0 gateway. It displays; it does not compute domain truth or execute mutations.
+AAA is the **Control Plane / Cockpit**. It absorbs the legacy APEX 888 JUDGE deliberation, hosts the React cockpit, and provides the A2A v1.0.0/1.0.1 gateway. It displays; it does not compute domain truth or execute mutations.
 
 ---
 
 ## 2. Authority
 
 ### AAA OWNS
-- A2A v0.3.0 agent gateway (`a2a-server/`)
+- A2A v1.0.0/1.0.1 agent gateway (`a2a-server/`)
 - 888 JUDGE deliberation engine (`a2a-server/deliberation.ts`)
 - Cockpit dashboard (`src/`) for human visibility
 - Agent cards, agent registry, and skill registries

@@ -21,7 +21,7 @@
 [![License](https://img.shields.io/github/license/ariffazil/AAA?label=License)](LICENSE)
 
 **Repository:** https://github.com/ariffazil/AAA
-**Canonical identity doc:** `FEDERATION_COCKPIT.md`
+**Canonical identity doc:** `docs/FEDERATION_COCKPIT.md`
 **Service:** `aaa-a2a.service` (systemd)
 **Genesis:** `GENESIS/013_AAA_MANDATE.md`
 
@@ -49,7 +49,7 @@ AAA is the governed state — the constitutional substrate in which:
 | **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT · A-ARCHIVE · 777-FORGE (Witness) | `agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/` |
 | **Runtime incarnations** | hermes-asi (Telegram @ASI_arifos_bot) · openclaw (port 18789) | `HERMES/`, `openclaw/` |
 | **Domain organs** | arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA · VAULT999 | 7 organs: 6 systemd services, 6 ports + immutable ledger |
-| **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-009` |
+| **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-008` (8 on-disk cards; 11 instruments in `ROOT_AGENT_CONFIG.yaml`) |
 | **Role agents** (bounded leases) | EXTERNAL_WATCHER · KERNEL_SCRIBE · OPS_PLANNER · SELF_FORGE_ADVISOR | `agents/roles/` |
 | **Immutable ledger** | VAULT999 (append-only, hash-chained) | `arifOS/VAULT999/` |
 | **Cockpit** (the surface) | React 19 + A2A gateway (port 3001) | `src/`, `a2a-server/` |
@@ -88,7 +88,7 @@ AAA is the **fifth position**. It is the **window, not the wall**.
 | Read this | For | Link |
 |-----------|-----|------|
 | **arifOS** | Constitutional kernel. 10 public verbs. 13 floors. VAULT999. The judge. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
-| **A-FORGE** | Executor. 75 MCP tools. Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
+| **A-FORGE** | Executor. 21 stateless MCP tools (live `:7072/health`). Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
 | **AAA** (this repo) | Cockpit. A2A mesh. Agent registry. React 19 dashboard. What Arif reads. | ← you are here |
 
 ### 0.4 SOT alignment — the 60-second audit
@@ -98,7 +98,7 @@ If any claim in this README disagrees with the files below, the files win.
 | Claim category | SOT file |
 |---|---|
 | Agent registry, tiers, canDo / cannotDo | `registries/AAA_AGENTS_REGISTRY.json` + `agents/AGENT_REGISTRY.md` |
-| Live HEXAGON + WITNESS A2A cards | `public/a2a/agents.json` (SEAL `HEXAGON-333-EMBODIED-20260621`) |
+| Live HEXAGON + WITNESS A2A cards | `public/a2a/agents.json` (SEAL `HEXAGON-AGENTS-FORGE-20260602`) |
 | Canonical identity | `docs/FEDERATION_COCKPIT.md` |
 | Constitution | `GENESIS/013_AAA_MANDATE.md` · `014_TRUTH.md` · `015_DUAL_LANGUAGE.md` |
 | AREP task contract | `schemas/arep-task.schema.json` · `schemas/arep-reality-layers.schema.json` |
@@ -563,7 +563,7 @@ Endpoints verified against `public/a2a/status.json` (live) and `a2a-server/serve
 | `/.well-known/a2a-routing-policy.json` | GET | Routing policy | live |
 | `/a2a/agent-card.json` | GET | Canonical A2A card under /a2a/ | live (v1.0.0) |
 | `/a2a/agent.json` | GET | Legacy A2A card under /a2a/ | live (legacy) |
-| `/a2a/agents.json` | GET | HEXAGON + 777-FORGE registry | live (v1.0.1, SEAL `HEXAGON-333-EMBODIED-20260621`) |
+| `/a2a/agents.json` | GET | HEXAGON + 777-FORGE registry | live (v1.0.1, SEAL `HEXAGON-AGENTS-FORGE-20260602`) |
 | `/a2a/tasks` | POST | Submit A2A task for routing | live |
 | `/a2a/tasks/:id` | GET | Check task status | live |
 | `/a2a/message` | POST | Federated message ingress | **888_HOLD** — static deployment does not implement POST message handling (per `status.json`) |
@@ -580,10 +580,10 @@ SOT files for agent identity:
 | `registries/AAA_FEDERATION_STATE.yaml` | Live federation state (services, ports, drift) |
 | `registries/forge_instruments.yaml` | Forge instrument canon |
 | `agents/AGENT_REGISTRY.md` | Human-readable canonical agent index (supersedes JSON for narrative) |
-| `agents/HEXAGON.yaml` | HEXAGON YAML topology spec (v2.0.0, SEAL `HEXAGON-333-EMBODIED-20260621`) |
+| `agents/HEXAGON.yaml` | HEXAGON YAML topology spec (v2.0.0, SEAL `HEXAGON-AGENTS-FORGE-20260602`) |
 | `agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/agent-card.json` | Per-agent identity cards |
 | `public/a2a/agents.json` | Live runtime registry served at `/a2a/agents.json` |
-| `a2a-server/agent-cards/forge/fi-001..fi-009` | 9 forge instrument runtime cards |
+| `a2a-server/agent-cards/forge/fi-001..fi-008` | 8 on-disk forge instrument cards (11 instruments in `ROOT_AGENT_CONFIG.yaml`) |
 | `a2a-server/agent-cards/organs/{aforge,arifos,geox,wealth,well}.json` | 5 organ runtime cards |
 
 ### 7.4 Governance Contracts (`contracts/`)
@@ -719,7 +719,7 @@ AAA/
 │   │   ├── hermes-asi.json · 777-forge.json
 │   │   ├── aaa-{architect,auditor,engineer}.json
 │   │   ├── organs/{aforge,arifos,geox,wealth,well}.json
-│   │   └── forge/fi-001..fi-009.json  # 9 forge instruments
+│   │   └── forge/fi-001..fi-008.json  # 8 on-disk cards; 11 instruments in ROOT_AGENT_CONFIG.yaml
 │   ├── agent-state/{index,registry,schemas}.js
 │   ├── Dockerfile · docker-compose.yml · package.json
 │
@@ -729,7 +729,7 @@ AAA/
 │   ├── federation-bridge.yaml · A2A_DIALOGUE.md · AAA_TREATY_LAW.md
 │
 ├── agents/                           # Per-agent identity directories (22 dirs + 3 root configs)
-│   ├── HEXAGON.yaml                  # Canonical 5-agent topology (SEAL HEXAGON-333-EMBODIED-20260621)
+│   ├── HEXAGON.yaml                  # Canonical 5-agent topology (SEAL HEXAGON-AGENTS-FORGE-20260602)
 │   ├── AGENT_REGISTRY.md             # Human-readable canonical agent index
 │   ├── ROLE_AGENTS_OPencode.yaml
 │   ├── CODING_AGENT_FEDERATION.md
@@ -806,12 +806,13 @@ AAA/
 │
 ├── public/                           # Static-served assets (mirrored to dist/)
 │   ├── a2a/
-│   │   ├── agent-card.json           # Canonical (v1.0.0)
 │   │   ├── agent.json                # Legacy (v1.0.0)
-│   │   ├── agents.json               # Live registry (v1.0.1, SEAL HEXAGON-333-EMBODIED-20260621)
+│   │   ├── agents.json               # Live registry (v1.0.1, SEAL HEXAGON-AGENTS-FORGE-20260602)
 │   │   ├── status.json               # Gateway health (live)
 │   │   ├── entropy-report.json
 │   │   └── index.html
+│   ├── .well-known/
+│   │   └── agent-card.json           # Served dynamically; canonical A2A discovery (v1.0.0)
 │   ├── llms.json · llms.txt · manifest.json · sitemap.xml · robots.txt · humans.txt
 │   ├── 13-floors-geometric.jpg · constitutional-floors.jpg · entropy-cooling.jpg
 │   ├── forge-background.jpg · mind-hero.jpg · three-judges*.jpg · mcp-*.jpg
@@ -1039,7 +1040,7 @@ AAA is the control plane for the **Adat Agentik** civilisational model — a nor
 | **Build-only frontend** | React app is statically built; no SSR, no backend rendering | Use `npm run build` → serve `dist/` |
 | **APEX is decommissioned** | Original APEX repo is archived; deliberation lives in `a2a-server/` | See `src/gateway/deliberation.ts` |
 | **No domain calculations** | AAA routes to GEOX/WEALTH/WELL but never computes | Trust the domain organs for evidence |
-| **A2A protocol** | v1.0.0 — ratified federation protocol | Pin to agent card protocol_version |
+| **A2A protocol** | v1.0.1 — ratified federation registry protocol | Pin to agent card protocol_version |
 | **Single VPS** | No high availability; cockpit goes down if VPS goes down | Monitored by systemd auto-restart |
 
 ---
@@ -1187,7 +1188,7 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  Coding:         grok-build · opencode · claude-code · qwen-code ·     │
 │                  antigravity · codex · copilot · aider ·               │
 │                  kimi-code · continue-cli · gemini-cli                 │
-│                  (9 forge instruments · governed capability fabric)    │
+│                  (11 forge instruments · governed capability fabric)   │
 │  Role agents:    EXTERNAL_WATCHER · KERNEL_SCRIBE ·                   │
 │                  OPS_PLANNER · SELF_FORGE_ADVISOR                     │
 │                                                                        │
@@ -1195,7 +1196,7 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  License:        AGPL-3.0                                             │
 │  Constitution:   GENESIS/013 (mandate) · 014 (truth) · 015 (language) │
 │  Canon:          docs/FEDERATION_COCKPIT.md                           │
-│  Last HEXAGON SEAL: HEXAGON-333-EMBODIED-20260621                     │
+│  Last HEXAGON SEAL: HEXAGON-AGENTS-FORGE-20260602                     │
 │                                                                        │
 │  OWNS:           Display · Route · Queue · Register                   │
 │  NEVER:          Judge · Execute · Seal · Compute                    │
