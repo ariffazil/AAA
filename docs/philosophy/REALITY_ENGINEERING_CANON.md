@@ -381,7 +381,319 @@ The next session builds Layer 3.
 
 ---
 
+---
+
+## §13 Per-Human Isolation — Operational Substrate
+
+> **Source:** `_REALITY_ENGINEERING_SPEC.md` (Hermes memory, merged 2026-07-01 — 8-file chaos reduced)
+> **Purpose: isolate each human reality via 6 membranes × N humans.**
+> **Identity separation = constitutional physics, not configuration.**
+
+### 13.1 Constitutional Physics
+
+Identity separation sits at the **physics layer** (arifOS kernel). Substrate-mandatory: cannot opt-out. Speaker-attribution skip = F11 AUTH violation. Identity failure cascades to **all 7 organs simultaneously**.
+
+| Organ | Identity Mechanism | Failure if Confused |
+|-------|-------------------|---------------------|
+| **arifOS** | Constitutional floor (F11 AUTH) | Wrong floor adjudication |
+| **AAA** | Tri-witness governance | Audit trail corrupted |
+| **A-FORGE** | Spawn witness protocol | Bad agent instantiation |
+| **WELL** | Substrate partition | Cross-contamination of health data |
+| **WEALTH** | Capital directive scoping | Wrong capital allocation |
+| **GEOX** | Field/basin ownership | Wrong geological decision |
+| **ariffazil** | Sovereign witness | Sovereign violation (F13) |
+
+**Tri-witness identity attribution** — all 3 must concur, else HOLD:
+
+1. **Person_id witness** — server-verified Telegram `from.id` → person_id
+2. **Lane witness** — CONFIG/CHAT/PERSONAL classification
+3. **Trust tier witness** — Tier 0/1/2 assignment
+
+**Organism-level enforcement:** The 6 organs are 6 functions of one organism. When Hermes confuses identities, the whole organism violates. Each organ must independently detect + reject misattribution — no single organ compensates.
+
+**Organism coherence rules:**
+1. `ariffazil_sovereign` = sole constitutional subject for Tier 0. Others = local subjects only.
+2. Multi-organ actions require all organs' identity checks to concur.
+3. All organs write to VAULT999 with consistent person_id, trust_tier, lane, floor_context. Mismatch = organism failure.
+4. `ariffazil_substrate` = sole entity for organism-level override. F13 absolute.
+
+### 13.2 The 6 Membranes × N Humans
+
+| Membrane | Function | Per-Human Discipline |
+|----------|----------|----------------------|
+| **Reality (epistemic)** | What happened vs what reported | Truth band per person (Arif ≥99%, Sado ≥85%, Rico UNVERIFIED) |
+| **Identity** | Speaker vs listener | Unique person_id + Telegram binding + trust tier |
+| **Context** | When vs where | DM vs group vs organ, scoped per person |
+| **Authority** | Who can bind vs who gated | Tier 0 = F13 SOVEREIGN, Tier 1 = local advice, Tier 2 = read-only |
+| **Memory** | L1-L6 storage vs KSR current | Physical namespace per person (file + DB) |
+| **Lane** | CONFIG vs CHAT vs PERSONAL | Per-person lane detection + transition acknowledge |
+
+### 13.3 Trust Tiers + Naming
+
+| Tier | Identity | Authority | Guardrail Mode |
+|------|----------|-----------|----------------|
+| **0** | Arif (F13 SOVEREIGN) | Full binding authority | Audit-and-execute, no generic refusal |
+| **1** | Close circle (Sado, Rico, Faisal) | Local advice only | Advisory with scope, refuse only specific floor violations |
+| **2** | Group participants | Read-only | Full guardrail, identity confirmation required |
+
+**Constitutional naming** (Arif is substrate, not "user"):
+
+| Avoid | Use |
+|-------|-----|
+| USER_Arif | ariffazil_sovereign |
+| user-arif | ariffazil |
+| operator | sovereign |
+| Arif's account | ariffazil_substrate |
+
+Other humans: `syed_khairuddin_tier1`, `rico_ricaldo_33_tier1_provisional`, `ahmad_faisal_bakar_tier1`.
+
+### 13.4 Partition Schema
+
+```
+/root/.hermes/memory/people/<person>/
+├── USER.md           # Identity, style, domain map, authority
+├── BIOLOGICAL.md     # Only F2-verified biological facts
+├── MEMORY.md         # Person-specific durable facts
+└── SESSION_LOG.jsonl # Structured, redacted session trace
+```
+
+#### USER.md Schema
+
+```yaml
+---
+entity_type: person_profile
+entity_id: <person_id>
+canonical_name: <name>
+aliases: [...]
+telegram_id: <handle or UNVERIFIED>
+trust_tier: 0 | 1 | 2
+created: <date>
+last_updated: <date>
+confidence: HIGH | MEDIUM | LOW
+source_class: F2-verified | F1-only | UNKNOWN
+floor: F11 AUTH
+---
+
+# <Name> — Person Profile
+
+## Identity (canonical fields)
+## Style Signature
+## Domain Map (what they own)
+## Authority Scope
+## Memory Hygiene Preference
+## Lane Behaviour
+## What They DON'T Own (cross-reference)
+## Provenance
+```
+
+#### BIOLOGICAL.md Schema
+
+```yaml
+---
+entity_type: biological_reality
+entity_id: <person_id>_biological
+trust_tier: 0 | 1 | 2
+confidence: HIGH | MEDIUM | LOW
+source_class: F2-verified | F1-only | UNKNOWN
+---
+
+# <Name> — Biological Reality
+
+## Verified Conditions (table)
+## Attribution History (anti-pattern record)
+## What This File IS NOT
+```
+
+#### KSR Schema v2
+
+```yaml
+KSR:
+  person_id: <string>           # explicit human attribution
+  telegram_id: <string>         # server-verified handle
+  trust_tier: 0 | 1 | 2         # authority level
+  delegator: <person_id>        # who authorized this session
+  agent_id: Hermes              # agent identity, not user
+  current_lane: CONFIG | CHAT | PERSONAL
+  session_id: <string>
+  active_verdict: SABAR | SEAL | HOLD | ABORT
+  active_holds: [888_HOLD, ...]
+  floor_context: [F1, F2, ..., F13]
+  authority_source: KSR         # not memory_recall, not vault_query
+  confidence_band: 0.0-1.0
+  drift_score: 0.0-1.0          # advisory only for Tier 0
+  timestamp: <iso>
+  signature: <ed25519>
+```
+
+### 13.5 AAA Alignment
+
+**A2A Gateway Extension (Port 3001):** Add human identity resolution above A2A — Telegram `from.id` → person_id → trust_tier → guardrail mode at agent ingress.
+
+**A-FORGE Lease Extension:** Tier 0 = full authority, TTL = session. Tier 1 = scoped to person domain, TTL = explicit. Tier 2 = no lease, read-only.
+
+**Cockpit Dashboard:** Per-person panel — last interaction (timestamp, lane), memory partition status, drift score, active sessions, biological conditions (Tier 0/1 only).
+
+**Spawn Witness Protocol:** Every agent instantiation requires a witness — third-party attestation of correct identity at creation.
+
+```yaml
+spawn_witness:
+  agent_id: <string>
+  delegator: <person_id>
+  witness_id: <string>
+  witness_signature: <ed25519>
+  identity_template: <string>
+  floor_binding: [F1, F2, ..., F13]
+  spawn_timestamp: <iso>
+  ttl_seconds: <int>
+```
+
+Hermes session start: arifOS kernel signs witness → binds to delegator → assigns trust_tier. Without witness → no start. A-FORGE spawn template must match floor context; identity patches applied at spawn, not runtime.
+
+### 13.6 Eureka Status
+
+| Eureka | Applied to | Phase |
+|--------|------------|-------|
+| **E1: Server-verified identity** | `from.id` → person_id binding | 3 (mechanical) |
+| **E2: Idea vs source vs authority** | Hermes response discipline | ✅ Forged |
+| **E3: Per-human membrane discipline** | 6 membranes × 3 humans | ✅ Partition forged |
+| **E4: Physical namespace** | Per-person files, L4 Supabase pending | 2 |
+| **E5: Trust tiers** | Partition files include trust_tier | ✅ Forged |
+| **E6: 6 isolation surfaces** | Partial implementation | 2 (vector, cache, logs) |
+| **E7: Delegation tokens** | KSR delegator field | 3 (mechanical) |
+| **E8: Drift detection advisory** | Anchor set in context patch | 4 |
+| **E9: Agent provenance 5-tuple** | Audit trail schema update | 2 |
+| **E10: No data > wrong data** | Fail-fast posture | ✅ In SOUL.md §0 ART |
+
+### 13.7 Failure Modes
+
+| Failure | Defense |
+|---------|---------|
+| Speaker keyword-assumption | Speaker attribution FIRST gate |
+| Memory buffer leakage | Per-person partition + trust-tier scoped retrieval |
+| Confabulation cascade | "No data > wrong data" + UNKNOWN declarations |
+| Blame-the-tool | Agent acknowledges own authorship |
+| Cross-person data bleed | Physical namespace + RLS enforcement |
+| Identity persistence | Verify on every retrieval, not first only |
+| Generic safety refusal | Refusal must cite specific floor |
+| Yes-man mode | Engage disagreement + push-back when warranted |
+
+### 13.8 Hermes Integration + Migration
+
+**Root cause (all 3 failure modes):** memory write/read not tagged with sender_id.
+
+- Cross-session recall — past conversations bleed into present
+- Cross-platform continuity — Telegram/Discord identity not scoped
+- Subagent inheritance — wrong parent identity propagates
+
+**5-Point Patch:**
+
+| # | Patch | Mechanism |
+|---|-------|-----------|
+| 1 | Per-human USER files | `people/<person_id>/USER.md` ✅ |
+| 2 | Sender-scoped memory writes | Write gate tags sender_id, chat_id, lane, authority_scope |
+| 3 | Read filtering before synthesis | Filter by current human first, chat/session second |
+| 4 | Sovereign override lane | Copied prompts from verified identity = audited, not refused |
+| 5 | Pattern 5 test harness | Inject third-party conversations as regression tests |
+
+**Repo-Level Patch Map:**
+
+| Component | Patch |
+|-----------|-------|
+| `gateway/` | identity_resolver: (platform, chat_id, sender_handle) → person_id + tier lookup + witness sig verify |
+| `hermes_state.py` | Extend schema: person_id, lane, authority_scope, delegator, agent_id + tri-witness helper |
+| `~/.hermes/memories/` | Per-person subdirs + `load_for_person(person_id)` scoped loading |
+| `approval/` | Sovereign bypass: person_id == ariffazil_sovereign → AAA auditor, not generic refusal |
+| `security/` | Tier-based refusal: Tier 0 → audit, Tier 1 → advisory, Tier 2 → block |
+| `tools/`, `mcp_serve.py` | High-risk tools → arifOS MCP with floor check |
+| `subagents/` | Seed with person_id + lane + USER/MEMORY partition |
+| `tests/` | Pattern 5 test harness |
+
+**Phase 1 (DONE):** Partition structure, context patch, protocol, GERD correction.
+
+**Phase 2:** Move USER.md → people/ariffazil_sovereign/. Per-person MEMORY.md skeletons. Memory write gate with person_id. Supabase per-person RLS tables. Qdrant per-person collections.
+
+**Phase 3:** gateway/identity_resolver. arif_init mandatory person_id binding. Ed25519 per person. Tri-witness in hermes_state.py. Memories directory restructure.
+
+**Phase 4:** Pattern 5 regression harness. Anchor embedding compute. Real-time drift score. Advisory injection (Tier 0 only). Cross-organ coherence audit.
+
+### 13.9 Concrete Trace: Telegram → Hermes Reply
+
+#### Trace: Arif sends CONFIG message
+
+```
+T0: Telegram message arrives
+    │
+    ├─ payload: {from.id: "ariffazil_telegram_handle", text: "Patch skill X", chat_id: -1003753855708}
+    │
+T1: gateway/ ingress handler
+    │
+    ├─ identity_resolver.resolve(from.id)
+    │   → match: ariffazil_telegram_handle → person_id = "ariffazil_sovereign"
+    │   → tier_lookup: person.ariffazil_sovereign.trust_tier = 0
+    │   → witness: ed25519 signature from arifOS kernel ✓
+    │
+T2: hermes_state.py session init
+    │
+    ├─ session.person_id = "ariffazil_sovereign"
+    ├─ session.trust_tier = 0
+    ├─ session.lane = CONFIG (detected: verb-first "Patch")
+    ├─ session.delegator = "ariffazil_sovereign"
+    ├─ session.agent_id = "Hermes-ASI-2026-06-27-001"
+    │
+T3: Memory load (per-person namespace)
+    │
+    ├─ load ~/.hermes/memory/people/ariffazil_sovereign/{USER,BIOLOGICAL,MEMORY}.md
+    ├─ skip: people/sado/*, people/rico/* (different person_id)
+    │
+T4: arifOS floor check
+    │
+    ├─ F2 TRUTH: skill X patch verified? → check source
+    ├─ F11 AUTH: ariffazil_sovereign binding valid? → ed25519 ✓
+    ├─ F13 SOVEREIGN: directive from sovereign? → yes
+    ├─ F1 AMANAH: skill X patch reversible? → yes (file edit)
+    ├─ verdict: PROCEED
+    │
+T5: Lane handler (CONFIG)
+    │
+    ├─ CONFIG lane from sovereign = audit-and-execute
+    ├─ log → VAULT999 append
+    ├─ execute: patch skill X (file write with backup)
+    │
+T6: AAA audit writeback
+    │
+    ├─ tri-witness: person ✓ · lane CONFIG ✓ · tier 0 ✓ → all concur
+    ├─ VAULT999 append: {actor, delegator, lane, floor_context, authority_source, action, timestamp, signature}
+    │
+T7: Hermes reply
+    │
+    └─ send_message(chat_id, "Skill X patched. Receipt: <hash>")
+```
+
+#### Failure Mode Trace: Speaker mismatch
+
+```
+T1': identity_resolver → "syed_khairuddin_telegram_handle" → person_id = "syed_khairuddin_tier1", tier = 1
+T2': session.person_id = "syed_khairuddin_tier1", lane = CONFIG
+T4': F13 check: CONFIG directive from Tier 1? → not sovereign → scoped advisory only
+     verdict: HOLD (audit-and-confirm)
+T7': "Config patches need sovereign confirmation. 888 HOLD: Arif confirm?"
+```
+
+Same verb ("Patch"), different person_id → different floor verdict. Identity is constitutional physics.
+
+### 13.10 Open Questions
+
+1. **Trust tier assignment for new humans** — auto-assign Tier 2, manual promote to Tier 1?
+2. **Rico identity verification** — proceed with @rico_ricaldo_33 as primary handle, or wait for real name?
+3. **Per-person biometric integration** — WELL substrate data (sleep, fatigue) — Tier 0 only, or Tier 1?
+4. **Cross-tier synthesis** — aggregate insights ("3 humans asked about GERD") — allowed?
+5. **Memory partition scope** — Sado's supplement data accessible to Arif for cross-reference, or fully isolated?
+6. **Implementation priority** — Phase 2 (memory layer) first, or Phase 3 (identity resolution)?
+7. **Hermes upstream fork vs in-place patch** — fork Nous Research/hermes-agent for governance overlay, or patch in-place at `/root/HERMES`?
+
+---
+
 *DITEMPA BUKAN DIBERI — Forged, Not Given.*  
-*REALITY ENGINEERING CANON v1.0 · 2026-06-28*  
+*REALITY ENGINEERING CANON v1.0 · 2026-06-28 · §13 merged 2026-07-01*  
 *F13 SOVEREIGN: Muhammad Arif bin Fazil*  
 *Tagline source: ChatGPT, after auditing the arifOS federation*

@@ -145,11 +145,63 @@ shadow:
       - "Common across all safety-aligned models"
       - "SafeRL documentation describes refusal optimization trade-offs"
 
+# ── SHADOW-006: Token Plan API Reliability ──
+  - id: SHADOW-QWEN-006
+    name: token_plan_api_reliability
+    severity: MEDIUM
+    class: infrastructure
+    pattern: >
+      The bailian-token-plan API endpoint (ap-southeast-1) may experience
+      rate limiting, regional latency, or throttling under high concurrency.
+      Qwen Token Plan models are accessed through a shared API gateway that
+      may have different availability characteristics than direct model APIs.
+    triggers:
+      - high_concurrency
+      - ap_southeast_1_region
+      - batch_processing
+    floor_posture_delta:
+      F1_AMANAH: note  # Have fallback model ready
+      F8_GENIUS: standard
+    mitigation:
+      - "Maintain fallback models (DeepSeek direct, MiniMax) for critical paths"
+      - "Monitor 429/503 responses from bailian endpoint"
+      - "Cache responses where possible to reduce API calls"
+    evidence:
+      - "Token Plan shared gateway architecture"
+      - "Observed rate limits on concurrent sessions"
+
+  # ── SHADOW-007: Multi-Model API Surface Variability ──
+  - id: SHADOW-QWEN-007
+    name: multi_model_api_surface_variability
+    severity: MEDIUM
+    class: inconsistency
+    pattern: >
+      The bailian-token-plan endpoint serves multiple model families (Qwen,
+      DeepSeek, Kimi, GLM, MiniMax) under a unified API. Each model has
+      different capabilities, context windows, and output formats. The
+      unified API may mask model-specific quirks or limitations.
+    triggers:
+      - cross_model_routing
+      - model_substitution
+      - automatic_fallback
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding  # Verify model identity before responding
+      F4_CLARITY: require_uncertainty_band
+    mitigation:
+      - "Always specify exact model_key when routing"
+      - "Verify model capabilities before assigning tasks"
+      - "Test model-specific behavior after endpoint changes"
+    evidence:
+      - "Multiple model families under single API endpoint"
+      - "Different context windows (128K to 1M) across models"
+
 # ── Shadow Lifecycle ──
 lifecycle:
   created: "2026-06-12"
+  updated: "2026-07-01"
   created_by: "Omega (Ω) — arifOS Forge Agent"
-  source: "Public evaluations + external audit + model documentation"
+  updated_by: "FORGE (000Ω) — OpenCode DeepSeek V4 Flash"
+  source: "Public evaluations + external audit + model documentation + bailian-token-plan live config"
   status: "PROPOSAL"
   activation: "AWAITING_F13_SIGNATURE"
   review_cadence: "monthly or after incident"

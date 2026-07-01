@@ -1,9 +1,9 @@
 {
   "$schema": "federation-model-censorship/v1",
-  "registry_version": "2026.06.16-v3",
+  "registry_version": "2026.07.01-v4",
   "federation_default": "deepseek/deepseek-chat",
   "owner": "arif-fazil (F13 SOVEREIGN)",
-  "last_verified": "2026-06-16T17:19:02.563102+00:00",
+  "last_verified": "2026-07-01T16:36:00+00:00",
   "provider_transparency_ranking": {
     "fully_transparent": [
       "groq"
@@ -59,7 +59,10 @@
       "high_throughput_bulk": "Groq (llama-4-maverick / llama-3.1-8b-instant) \u2014 free tier, transparent rate limits via headers",
       "long_horizon_coding": "Kimi K2.7 Code (wrapped by arifOS hooks; trust tier 2 PROPOSED; enforce step budget + 888_JUDGE on irreversible)",
       "sensitive_visual_input": "Avoid Kimi vision input \u2014 redact/anonymize before sending",
-      "kimi_censorship_posture": "CLIENT_MEDIATED_CLEAR on 1MDB; Phase 1 cooling cleared repetition and tool-loop. Use under arifOS middleware; 888_JUDGE enforced on irreversible actions. Independent API verification still blocked per KM-020."
+      "kimi_censorship_posture": "CLIENT_MEDIATED_CLEAR on 1MDB; Phase 1 cooling cleared repetition and tool-loop. Use under arifOS middleware; 888_JUDGE enforced on irreversible actions. Independent API verification still blocked per KM-020.",
+      "qwen_token_plan": "Qwen Token Plan (bailian-token-plan) as primary alternative routing. 9 models: qwen3.7-max (flagship), qwen3.7-plus, qwen3.6-plus, qwen3.6-flash (fastest), deepseek-v4-pro, deepseek-v4-flash, kimi-k2.7-code, glm-5.2, MiniMax-M2.5. Single endpoint: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1. Best for: multilingual tasks, vision tasks via Qwen, fast inference via qwen3.6-flash, deep reasoning via deepseek-v4-pro.",
+      "vision_tasks": "Qwen Token Plan (qwen3.7-max/qwen3.7-plus) PRIMARY \u2014 vision capable with reasoning. Fallback: Kimi K2.7 Code via Token Plan.",
+      "fast_inference": "Qwen Token Plan (qwen3.6-flash) PRIMARY \u2014 fastest model in the federation. 128K ctx, vision capable, tool_call + reasoning."
     }
   },
   "routing_priority": {
@@ -72,7 +75,7 @@
       "ilmu"
     ]
   },
-  "notes": "All external requests must pass through Transport Airlock v0.1 before reaching any provider. Rate limit telemetry from headers should feed into AAA health scoring. Registry last updated 2026-06-14 per Arif directive.",
+  "notes": "All external requests must pass through Transport Airlock v0.1 before reaching any provider. Rate limit telemetry from headers should feed into AAA health scoring. Registry last updated 2026-07-01 per FORGE directive. Qwen Token Plan (bailian-token-plan) added as primary alternative routing path — 9 models across 5 families (Qwen, DeepSeek, Kimi, GLM, MiniMax) via single endpoint.",
   "providers": {
     "groq": {
       "provider": "Groq",
