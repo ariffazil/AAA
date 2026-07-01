@@ -1383,23 +1383,16 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
     try {
-      // Route directly to Hermes via OpenClaw gateway (Telegram — the primary Hermes channel)
-      // Hermes A2A bridge (port 18001) decommissioned 2026-06-21
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send',
-        params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 30000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body,
-        signal: AbortSignal.timeout(30000)
-      });
-      if (!res.ok) throw new Error(`OpenClaw returned ${res.status}`);
-      const data = await res.json();
-      const agentResult = data.result || {};
 
-      const responseText = extractText(agentResult.status?.message || {});
+      const responseText = agentResult.text;
       const f9 = await invokeF9Check(responseText, taskId);
       if (!f9.clean) {
         const rejectedStatus = {
@@ -1414,7 +1407,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       }
 
       task.status = {
-        state: agentResult.status?.state || 'completed',
+        state: agentResult.status === 'failed' ? 'failed' : 'completed',
         message: {
           role: 'agent',
           parts: [{ kind: 'text', text: `[AAA→Hermes ASI]\n${responseText}` }],
@@ -1422,8 +1415,8 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
         },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = agentResult.artifacts || [];
-      task.history = agentResult.history || [message];
+      task.artifacts = [];
+      task.history = [message];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -1451,21 +1444,21 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
     try {
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send', params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 30000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body,
-        signal: AbortSignal.timeout(30000)
-      });
-      if (!res.ok) throw new Error(`333-AGI returned ${res.status}`);
-      const data = await res.json(); const agentResult = data.result || {};
+      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: agentResult.status?.state || 'completed',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→333-AGI]\n${extractText(agentResult.status?.message || {})}` }], messageId: generateId(), taskId, contextId },
+        state: 'completed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→333-AGI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = agentResult.artifacts || [];
+      task.artifacts = [];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -1491,21 +1484,21 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
     try {
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send', params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 30000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body,
-        signal: AbortSignal.timeout(30000)
-      });
-      if (!res.ok) throw new Error(`555-ASI returned ${res.status}`);
-      const data = await res.json(); const agentResult = data.result || {};
+      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: agentResult.status?.state || 'completed',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→555-ASI]\n${extractText(agentResult.status?.message || {})}` }], messageId: generateId(), taskId, contextId },
+        state: 'completed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→555-ASI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = agentResult.artifacts || [];
+      task.artifacts = [];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -1531,21 +1524,21 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
     try {
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send', params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 30000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body,
-        signal: AbortSignal.timeout(30000)
-      });
-      if (!res.ok) throw new Error(`888-APEX returned ${res.status}`);
-      const data = await res.json(); const agentResult = data.result || {};
+      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: agentResult.status?.state || 'completed',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→888-APEX]\n${extractText(agentResult.status?.message || {})}` }], messageId: generateId(), taskId, contextId },
+        state: 'completed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→888-APEX]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = agentResult.artifacts || [];
+      task.artifacts = [];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -1571,21 +1564,21 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
     try {
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send', params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 30000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body,
-        signal: AbortSignal.timeout(30000)
-      });
-      if (!res.ok) throw new Error(`A-AUDIT returned ${res.status}`);
-      const data = await res.json(); const agentResult = data.result || {};
+      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: agentResult.status?.state || 'completed',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-AUDIT]\n${extractText(agentResult.status?.message || {})}` }], messageId: generateId(), taskId, contextId },
+        state: 'completed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-AUDIT]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = agentResult.artifacts || [];
+      task.artifacts = [];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -1611,21 +1604,21 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     await taskStore.set(taskId, task);
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
     try {
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send', params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 30000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body,
-        signal: AbortSignal.timeout(30000)
-      });
-      if (!res.ok) throw new Error(`A-ARCHIVE returned ${res.status}`);
-      const data = await res.json(); const agentResult = data.result || {};
+      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: agentResult.status?.state || 'completed',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-ARCHIVE]\n${extractText(agentResult.status?.message || {})}` }], messageId: generateId(), taskId, contextId },
+        state: 'completed',
+        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-ARCHIVE]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = agentResult.artifacts || [];
+      task.artifacts = [];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -1652,31 +1645,27 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
 
     try {
-      const body = JSON.stringify({
-        jsonrpc: '2.0', id: 1, method: 'message/send',
-        params: { message, taskId, contextId }
+      const agentResult = await dispatchOpenClawTask({
+        targetAgent,
+        message,
+        skill,
+        taskId,
+        contextId,
+        timeoutMs: 60000,
       });
-      const res = await fetch(`${OPENCLAW_A2A_URL}/tasks`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body,
-        signal: AbortSignal.timeout(60000)
-      });
-      if (!res.ok) throw new Error(`OpenClaw returned ${res.status}`);
-      const data = await res.json();
-      const ocResult = data.result || {};
+      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
 
       task.status = {
-        state: ocResult.status?.state || 'completed',
+        state: 'completed',
         message: {
           role: 'agent',
-          parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI]\n${extractText(ocResult.status?.message || {})}` }],
+          parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI]\n${agentResult.text}` }],
           messageId: generateId(), taskId, contextId
         },
         timestamp: new Date().toISOString()
       };
-      task.artifacts = ocResult.artifacts || [];
-      task.history = ocResult.history || [message];
+      task.artifacts = [];
+      task.history = [message];
       await taskStore.set(taskId, task);
       publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
       return;
@@ -2017,6 +2006,32 @@ app.get('/mcp-apps/:app_id', async (req, res) => {
 // Routes to target agent via Telegram or OpenClaw gateway.
 app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   const { targetAgent, message, skill, taskId } = req.body;
+  
+  const CANONICAL_ACTORS = new Set([
+    'aaa-architect',
+    'aaa-engineer',
+    'aaa-auditor',
+    'hermes',
+    'antigravity',
+    'arifos',
+    'aforge',
+    'geox',
+    'wealth',
+    'well',
+    'openclaw',
+    'forge',
+    '777-forge',
+    'anonymous',
+  ]);
+
+  const sourceAgent = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || 'anonymous';
+  if (!CANONICAL_ACTORS.has(sourceAgent)) {
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Source agent "${sourceAgent}" is not canonical`));
+  }
+  if (targetAgent && !CANONICAL_ACTORS.has(targetAgent)) {
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001, `Target agent "${targetAgent}" is not canonical`));
+  }
+
   if (!message) {
     return res.status(400).json(createJSONRPCError(req.body?.id || 0, -32602, 'message required'));
   }
@@ -2069,16 +2084,27 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
 
   // Default: route through OpenClaw gateway (handles Hermes, 333-AGI, etc.)
   try {
-    const body = JSON.stringify({
-      jsonrpc: '2.0', id: resolvedTaskId, method: 'message/send',
-      params: { message, taskId: resolvedTaskId, contextId: req.body?.contextId || generateId() }
+    const contextId = req.body?.contextId || generateId();
+    const agentResult = await dispatchOpenClawTask({
+      targetAgent,
+      message,
+      skill: skill || 'agent-dispatch',
+      taskId: resolvedTaskId,
+      contextId,
+      timeoutMs: 30000,
     });
-    const ocRes = await fetch(`http://127.0.0.1:18789/tasks`, {
-      method: 'POST', headers: {'Content-Type':'application/json'}, body,
-      signal: AbortSignal.timeout(30000)
-    });
-    const data = ocRes.ok ? await ocRes.json() : { error: `OpenClaw returned ${ocRes.status}` };
-    res.json(createJSONRPCResponse(req.body?.id || 0, data.result || data));
+    if (agentResult.status === 'failed') {
+      throw new Error(agentResult.error || 'OpenClaw failed');
+    }
+    res.json(createJSONRPCResponse(req.body?.id || 0, {
+      runId: resolvedTaskId,
+      sessionKey: agentResult.sessionKey,
+      status: agentResult.status,
+      message: {
+        role: 'agent',
+        parts: [{ kind: 'text', text: agentResult.text }],
+      },
+    }));
   } catch (e) {
     res.status(502).json(createJSONRPCError(req.body?.id || 0, -32000, `OpenClaw unreachable: ${e.message}`));
   }
