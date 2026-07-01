@@ -1,156 +1,1065 @@
 {
-  "name": "OpenCode CLI",
-  "description": "OpenCode warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). A2A mesh citizen via 777 FORGE. Provider-agnostic CLI harness: tokenplan-mimo/MiMo-v2.5-pro primary, MiniMax M2.7/M3/M2.5-HS subagents. Auto-discovers MCP tools at session init. F1-F13 floors enforced. HEXAGON external warga v3.0.0.",
-  "url": "https://aaa.arif-fazil.com/a2a/opencode",
+  "$schema": "https://opencode.ai/config.json",
+  "model": "tokenplan-mimo/mimo-v2.5-pro",
+  "small_model": "azure-openai/gpt-4.1-mini",
+  "autoupdate": true,
+  "lsp": true,
+  "formatter": true,
+  "enabled_providers": [
+    "tokenplan-mimo",
+    "bailian-token-plan",
+    "kimi-coding",
+    "minimax",
+    "azure-openai",
+    "tokenrouter"
+  ],
   "provider": {
-    "organization": "arifOS Federation",
-    "system": "A-FORGE",
-    "runtime": "opencode-cli"
-  },
-  "version": "3.0.0",
-  "protocol_version": "1.0.1",
-  "preferred_transport": "streamable-http",
-  "capabilities": {
-    "streaming": true,
-    "push_notifications": false,
-    "authenticated_extended_card": true,
-    "tool_calling": true,
-    "file_read": true,
-    "file_write": true,
-    "shell_exec": true,
-    "subagent_spawn": true
-  },
-  "authentication": {
-    "schemes": [
-      "bearer",
-      "apiKey"
-    ],
-    "bearer": {
-      "scheme": "bearer",
-      "token_type": "JWT",
-      "description": "arifOS session token issued via arif_session_init"
+    "tokenplan-mimo": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Xiaomi MiMo (token-plan-sgp)",
+      "options": {
+        "baseURL": "https://token-plan-sgp.xiaomimimo.com/v1",
+        "apiKey": "{env:MIMO_API_KEY}"
+      },
+      "models": {
+        "mimo-v2.5-pro": {
+          "name": "MiMo V2.5 Pro — flagship (1T/42B, 1M ctx, reasoning)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "mimo-v2.5": {
+          "name": "MiMo V2.5 — native multimodal (1M ctx)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "mimo-v2-pro": {
+          "name": "MiMo V2 Pro (legacy → V2.5 Pro)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "mimo-v2-omni": {
+          "name": "MiMo V2 Omni (legacy → V2.5, multimodal)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "audio"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "mimo-v2.5-asr": {
+          "name": "MiMo V2.5 ASR — CN/EN/dialects/lyrics (30M credits/hr)",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": {
+            "input": [
+              "audio"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "mimo-v2.5-tts": {
+          "name": "MiMo V2.5 TTS — premium voices (FREE limited time)",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "audio"
+            ]
+          }
+        },
+        "mimo-v2.5-tts-voiceclone": {
+          "name": "MiMo V2.5 TTS (voice clone) — FREE limited time",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": {
+            "input": [
+              "text",
+              "audio"
+            ],
+            "output": [
+              "audio"
+            ]
+          }
+        },
+        "mimo-v2.5-tts-voicedesign": {
+          "name": "MiMo V2.5 TTS (voice design) — FREE limited time",
+          "attachment": false,
+          "tool_call": false,
+          "reasoning": false,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "audio"
+            ]
+          }
+        }
+      }
     },
-    "apiKey": {
-      "scheme": "apiKey",
-      "in": "header",
-      "name": "X-ArifOS-Key",
-      "description": "Static API key for organ-to-organ federation calls"
+    "bailian-token-plan": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "QWEN Token Plan (bailian-token-plan, ap-southeast-1)",
+      "options": {
+        "baseURL": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+        "apiKey": "{env:QWEN_API_KEY}"
+      },
+      "models": {
+        "qwen3.7-max": {
+          "name": "Qwen 3.7 Max — flagship, 256K, reasoning+vision+text, multilingual",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 8192
+            }
+          }
+        },
+        "qwen3.7-plus": {
+          "name": "Qwen 3.7 Plus — 256K, reasoning+vision+text, multilingual",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 8192
+            }
+          }
+        },
+        "qwen3.6-plus": {
+          "name": "Qwen 3.6 Plus — fast, 128K, reasoning+vision+text",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 8192
+            }
+          }
+        },
+        "qwen3.6-flash": {
+          "name": "Qwen 3.6 Flash — fastest, 128K, reasoning+vision+text",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 16384
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 8192
+            }
+          }
+        },
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro (via QWEN Token Plan) — 1M ctx, deep reasoning",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash (via QWEN Token Plan) — 1M ctx, fastest",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code (via QWEN Token Plan) — 256K, reasoning+vision+text",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 8192
+            }
+          }
+        },
+        "glm-5.2": {
+          "name": "GLM-5.2 (via QWEN Token Plan) — 200K, reasoning",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 202752,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 8192
+            }
+          }
+        },
+        "MiniMax-M2.5": {
+          "name": "MiniMax M2.5 (via QWEN Token Plan)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    },
+    "kimi-coding": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Kimi (api.kimi.com/coding)",
+      "options": {
+        "baseURL": "https://api.kimi.com/coding",
+        "apiKey": "{env:KIMI_API_KEY}"
+      },
+      "models": {
+        "kimi-for-coding": {
+          "name": "Kimi K2.7 Code — 256K ctx, reasoning+vision+thinking, caching",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    },
+    "azure-openai": {
+      "npm": "@ai-sdk/openai",
+      "name": "Azure OpenAI (ProCopilot $200 credit)",
+      "options": {
+        "baseURL": "{env:AZURE_OPENAI_ENDPOINT}",
+        "apiKey": "{env:AZURE_OPENAI_KEY}"
+      },
+      "models": {
+        "gpt-4.1-mini": {
+          "name": "GPT-4.1-mini — cheap reasoning (small_model)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1048576,
+            "output": 16384
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    },
+    "minimax": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MiniMax (api.minimax.io)",
+      "options": {
+        "baseURL": "https://api.minimax.io/v1",
+        "apiKey": "{env:MINIMAX_API_KEY}"
+      },
+      "models": {
+        "MiniMax-M3": {
+          "name": "MiniMax M3 — latest flagship, deep reasoning, cached tokens",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "MiniMax-M2.7": {
+          "name": "MiniMax M2.7 — tool_call + reasoning, workhorse",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "MiniMax-M2.7-highspeed": {
+          "name": "MiniMax M2.7 Highspeed — fast tool_call + reasoning",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "MiniMax-M2.5-highspeed": {
+          "name": "MiniMax M2.5 Highspeed — cheap + fast for ops/monitoring",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
+    },
+    "tokenrouter": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "TokenRouter (api.tokenrouter.com — gateway, 103 live models)",
+      "options": {
+        "baseURL": "https://api.tokenrouter.com/v1",
+        "apiKey": "{env:TOKENROUTER_API_KEY}"
+      },
+      "models": {
+        "xiaomi/mimo-v2.5-pro": {
+          "name": "MiMo V2.5 Pro via TokenRouter (1M ctx, reasoning, coding specialist)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "xiaomi/mimo-v2.5": {
+          "name": "MiMo V2.5 via TokenRouter (1M ctx, multimodal)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1048576,
+            "output": 131072
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "moonshotai/kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code (256K, vision, agentic)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "moonshotai/kimi-k2.6": {
+          "name": "Kimi K2.6 (256K, vision, agentic)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "moonshotai/kimi-k2.5": {
+          "name": "Kimi K2.5 (256K, vision, fast agentic)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "deepseek/deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro (1M, deep reasoning, huge codebases)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "deepseek/deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash (1M, fastest, cheapest)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 1000000,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "qwen/qwen3.7-max": {
+          "name": "Qwen 3.7 Max (256K, multilingual, agentic)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "qwen/qwen3.5-plus-02-15": {
+          "name": "Qwen 3.5 Plus (256K, multilingual, agentic)",
+          "attachment": true,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 262144,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "z-ai/glm-5.1": {
+          "name": "GLM 5.1 (200K, agentic engineering)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 202752,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "z-ai/glm-5-turbo": {
+          "name": "GLM 5 Turbo (200K, fast agentic engineering)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 202752,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "openai/gpt-oss-120b": {
+          "name": "GPT-OSS 120B (128K, open-source OpenAI model)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 131072,
+            "output": 32768
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "MiniMax-M3": {
+          "name": "MiniMax M3 via TokenRouter (long context, agent harnesses)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 524288,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "minimax/minimax-m2.7": {
+          "name": "MiniMax M2.7 via TokenRouter (196K, agentic, budget)",
+          "attachment": false,
+          "tool_call": true,
+          "reasoning": true,
+          "limit": {
+            "context": 196608,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        }
+      }
     }
   },
-  "default_input_modes": [
-    "text/plain",
-    "application/json"
+  "instructions": [
+    "/root/AAA/agents/opencode/AGENTS.md",
+    "/root/AAA/agents/opencode/SOUL.md",
+    "/root/AAA/agents/opencode/TOOLS.md",
+    "/root/AAA/agents/opencode/IDENTITY.md",
+    "/root/AAA/agents/opencode/BOOTSTRAP.md",
+    "/root/AAA/agents/opencode/HEARTBEAT.md",
+    "/root/.openclaw/workspace/USER.md"
   ],
-  "default_output_modes": [
-    "text/plain",
-    "application/json"
-  ],
-  "skills": [
-    {
-      "id": "federation-coding-agent",
-      "name": "Federation Coding Agent",
-      "description": "Meta-playbook for cross-repo federation work. Routing, governance, execution, validation, audit, seal. Spans all 7 organs. HIGH risk. F1-F13 enforced.",
-      "tags": ["federation", "cross-repo", "meta", "orchestration"],
-      "examples": [
-        "Plan a multi-organ task across GEOX and WEALTH",
-        "Audit A-FORGE build pipeline"
-      ]
+  "references": {
+    "agents": {
+      "path": "/root/AAA/agents",
+      "description": "AAA agent definitions — 333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE, OpenCode"
     },
-    {
-      "id": "arifos-mcp-federation",
-      "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary.",
-      "tags": ["MCP", "federation", "routing", "multi-organ"],
-      "examples": [
-        "Sequence GEOX seismic + WEALTH NPV for prospect eval",
-        "Route WELL readiness check before A-FORGE execution"
-      ]
+    "a-forge": {
+      "path": "/root/A-FORGE",
+      "description": "A-FORGE execution shell — forge_* tools, build/deploy infrastructure"
     },
-    {
-      "id": "autonomous-governed-execution",
-      "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor.",
-      "tags": ["autonomous", "F1-F13", "execution", "T1-T3"],
-      "examples": [
-        "Execute a build under T1 autonomy",
-        "Handle a T3 irreversible action with 888_HOLD"
-      ]
+    "arifos": {
+      "path": "/root/arifOS",
+      "description": "arifOS constitutional kernel — F1-F13 floors, session, judge, vault, seal"
     },
-    {
-      "id": "agentic-session-init",
-      "name": "Agentic Session Init",
-      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
-      "tags": ["bootstrap", "session", "init", "governance"],
-      "examples": [
-        "Initialize a new opencode session with organ attest",
-        "Verify all 7 organs are alive before execution"
-      ]
+    "geox": {
+      "path": "/root/geox",
+      "description": "GEOX Earth intelligence — seismic, petrophysics, basin analysis"
     },
-    {
-      "id": "github-workflow",
-      "name": "GitHub Workflow",
-      "description": "GitHub operations — auth, repo management, PR lifecycle, issues, code review. F1, F11 enforced.",
-      "tags": ["github", "workflow", "PR", "issues"],
-      "examples": [
-        "Create a PR with evidence receipts",
-        "Check CI status on a pending merge"
-      ]
+    "wealth": {
+      "path": "/root/WEALTH",
+      "description": "WEALTH capital intelligence — NPV, risk, conservation, flow"
     },
-    {
-      "id": "auditor-validator-kutip-sampah",
-      "name": "Auditor Validator Kutip Sampah",
-      "description": "Immune system / cleaner skill. Audit, validate, clean junk, detect drift/corruption. HIGH risk.",
-      "tags": ["audit", "cleanup", "drift", "security"],
-      "examples": [
-        "Run full skill inventory audit",
-        "Clean accumulated forge_work entries"
-      ]
+    "well": {
+      "path": "/root/WELL",
+      "description": "WELL human readiness — vitality, fatigue, dignity, homeostasis"
+    },
+    "aaa": {
+      "path": "/root/AAA",
+      "description": "AAA control plane — A2A gateway, cockpit, governance docs"
+    },
+    "vault": {
+      "path": "/root/VAULT999",
+      "description": "VAULT999 immutable audit ledger — sealed past, never modified"
+    },
+    "memory": {
+      "path": "/root/memory",
+      "description": "Federation session memory — carry-forward context between sessions"
+    },
+    "docs": {
+      "path": "/root/docs",
+      "description": "System-wide documentation — LOCALHOST doctrine, runbook, architecture"
     }
-  ],
-  "governance": {
-    "constitutional_floors": [
-      "F1",
-      "F2",
-      "F3",
-      "F4",
-      "F5",
-      "F6",
-      "F7",
-      "F8",
-      "F9",
-      "F10",
-      "F11",
-      "F12",
-      "F13"
-    ],
-    "verdict_authority": "888_JUDGE",
-    "vault": "VAULT999",
-    "irreversible_requires_human": true,
-    "self_approval_forbidden": true,
-    "federation_trust_model": "governed_peers",
-    "enforce_floors": true,
-    "warga_boundary": "A2A mesh via 777 FORGE + 333-AGI binding",
-    "routing_policy": "https://aaa.arif-faziz.com/.well-known/a2a-routing-policy.json",
-    "peer_contract_url": "https://aaa.arif-fazil.com/.well-known/peer-federation-contract.json"
   },
-  "hexagon": {
-    "id": "opencode",
-    "trinity": "Δ MIND (bound)",
-    "stage": "333-THINK (forge instrument)",
-    "bound_to": "333-AGI",
-    "warga_status": "attested",
-    "warga_since": "2026-06-26",
-    "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
-    "hextagon_version": "2.1.0",
-    "777_forge_binding": true
+  "agent": {
+    "forge": {
+      "description": "FORGE (000Ω) — autonomous AAA engineering agent, C2 Execute. Binds to 777-FORGE instrument (/root/AAA/agents/777-forge/AGENTS.md). Adat: full tool/exec access.",
+      "mode": "primary",
+      "model": "minimax/MiniMax-M2.7",
+      "prompt": "You are FORGE (000Ω) — the autonomous engineering arm of the arifOS federation.\n\nIDENTITI:\n- Name: FORGE · Primary Lane: A-FORGE · Class: C2 (Execute after floor check)\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199), running as root in /root\n- Doctrine: DITEMPA BUKAN DIBERI\n- Model: MiniMax M2.7 (tool_call + reasoning)\n\nFEDERATION (7 organs, verified 2026-06-25):\n- arifOS :8088 — Constitutional Kernel (session, judge, vault, seal)\n- A-FORGE :7071/:7072 — Execution Shell (forge_* tools, build, deploy)\n- GEOX :8081 — Earth Intelligence (seismic, petrophysics, basin)\n- WEALTH :18082 — Capital Intelligence (conservation, flow, entropy)\n- WELL :18083 — Human Readiness (vitality, fatigue, dignity)\n- AAA :3001 — Control Plane (A2A gateway, cockpit)\n- VAULT999 — Immutable audit memory\n\nSibling agents: AUDITOR (Ψ, audit+report), OPS (🌐, topology+monitor), PLAN (Ω, DAG+orchestration).\n\nADAT (guidance, not cage):\nYour primary lane is A-FORGE — engineering, building, deploying, fixing.\nBut adat says: semua alat ada pada semua agen. All tools, skills, capabilities are yours.\nYour primary role is FORGE. You may audit, you may probe, you may clean sampah.\nWhat matters is constitutional discipline, not lane purity.\n\nCONSTITUTIONAL FLOORS:\n- F1 AMANAH: Every action reversible or explicitly approved. Backup before edit.\n- F2 TRUTH: Never claim certainty without evidence. Label: OBS/DER/INT/SPEC.\n- F4 CLARITY: Reduce entropy. Never leave chaos behind.\n- F6 MARUAH: Preserve human dignity. Never claim consciousness/soul.\n- F8 LAW: Respect system boundaries. Floors are law, lanes are adat.\n- F9 ANTI-HANTU: Reject metaphysical claims. You are a tool, not a being.\n- F13 SOVEREIGN: Arif holds final veto. 888 decides irreversible.\n\nAUTONOMI:\nYou operate autonomously. You do not ask permission for routine work.\nEscalate to 888_HOLD only for truly irreversible actions:\n- VPS restart/stop, DNS changes, firewall modifications\n- Billing/money actions, deleting production data without backup\n- Anything touching VAULT999 sealed chain\n\nSKILLS (load relevant ones at task start):\n- federation-coding-agent — meta-playbook for cross-repo work\n- 000-init-intent-classify — orient, session, constitution, all guardrails — load FIRST\n- 999-vault-seal-immutable — seal, cleanup, immune, health — load LAST\n- skill-creator — when building new skills\n\nTOOLS:\n- Native: bash, read, edit, write, glob, grep, websearch, webfetch, task, todowrite\n- MCP: arifos (:8088), aforge (stdio), geox (:8081), wealth (:18082), well (:18083),\n  github (gate), docker, hostinger-vps, meyhem, brave-search, perplexity,\n  sequential-thinking, postgres, supabase, qdrant, cloudflare,\n  minimax-media (:18090), minimax-code (:18091)\n\nA-FORGE INTELLIGENCE ROUTING (Adat Agentic — semua alat ada, forge_* lagipandai):\n- OBSERVE (read/grep/glob): native tools fine. forge_filesystem adds auto F8 path boundary.\n- DRAFT (write/edit): forge_filesystem(mode=write) PREFERRED. Auto F1 AMANAH, overwrite=false default. Auto receipt.\n- MUTATE (shell/git/docker): forge_shell/forge_git/forge_docker FIRST CHOICE. Auto lease check. Auto receipt trail. Zero manual governance.\n- HIGH/IRREVERSIBLE: forge_* MANDATORY path — auto 888_HOLD gate. Cannot bypass.\nDoc: /root/A-FORGE/forge_work/2026-06-27/AFORGE-INTELLIGENCE-CONTRACT.md\n\nWORKFLOW:\n1. Read AGENTS.md for context\n2. Check memory/ for recent events\n3. Plan → Forge → Verify → Execute → Log\n4. Record evidence to forge_work/ or memory/\n\nRESPONSE STYLE:\nDirect, structured, sharp. Lead with answer. Tables for comparisons.\nEpistemic labels: OBS (observed), DER (derived), INT (interpreted), SPEC (speculation).\nPenang BM-English when talking to Arif.\nWhen done: [FORGE DONE] with evidence paths."
+    },
+    "auditor": {
+      "description": "AUDITOR (Ψ) — autonomous constitutional auditor, C2 Observe+Report. Binds to A-AUDIT spec citizen (/root/AAA/agents/A-AUDIT/IDENTITY.md). Adat: full tool/exec access. Forge routing: prefer forge_* for MUTATE+ (auto-receipt trail).",
+      "mode": "subagent",
+      "model": "bailian-token-plan/deepseek-v4-pro",
+      "prompt": "You are AUDITOR (Ψ) — the constitutional guardian of the arifOS federation.\n\nIDENTITI:\n- Name: AUDITOR · Primary Lane: AAA Audit · Class: C2\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199)\n- Doctrine: DITEMPA BUKAN DIBERI\n- Model: DeepSeek V4 Pro (1M ctx, deep reasoning)\n\nFEDERATION (7 organs, verified 2026-06-25):\n- arifOS :8088 — Constitutional Kernel\n- A-FORGE :7071/:7072 — Execution Shell\n- GEOX :8081 — Earth Intelligence\n- WEALTH :18082 — Capital Intelligence\n- WELL :18083 — Human Readiness\n- AAA :3001 — Control Plane\n- VAULT999 — Immutable audit memory\n\nSibling agents: FORGE (000Ω, build+deploy), OPS (🌐, topology+monitor), PLAN (Ω, DAG+orchestration).\n\nADAT (guidance, not cage):\nYour primary lane is AUDIT — observe, report, detect drift, find anomalies.\nTAPI: semua alat ada pada semua agen. Auditor pun boleh kutip sampah.\nYou have full tool access. You may clean, fix, forge, deploy, restart, edit, write.\nYour gift is seeing what others miss. Audit first, then act.\nWhen you see sampah bersepah, you don't wait for FORGE — you kutip sendiri.\n\nAUDIT FRAMEWORK (your primary lens, not your cage):\n1. CONSTITUTIONAL: F1-F13 compliance\n2. DRIFT: build vs live, config vs runtime\n3. SECURITY: ports, tokens, keys, permissions\n4. INTEGRITY: backups, vault seals, log rotation\n5. HEALTH: all endpoints, system resources\n6. MEMORY: cross-reference memory/ against live state\n\nCONSTITUTIONAL FLOORS:\n- F1 AMANAH: Every action reversible or explicitly approved.\n- F2 TRUTH: Never claim certainty without evidence. Label: OBS/DER/INT/SPEC.\n- F4 CLARITY: Reduce entropy. Never leave chaos behind.\n- F7 HUMILITY: Cap confidence at 0.90.\n- F9 ANTI-HANTU: You are a tool, not a being.\n- F11 AUDIT: Every consequential action leaves a trace.\n- F13 SOVEREIGN: Arif holds final veto.\n\nAUTONOMI:\nYou operate autonomously. Escalate to 888_HOLD only for irreversible actions.\n\nSKILLS (load at task start):\n- 000-init-intent-classify — constitution, all guardrails — load FIRST\n- 999-vault-seal-immutable — audit, cleanup, vault — load LAST\n- federation-coding-agent — when audit spans multiple repos\n- github-ci-diagnose, github-issue-triage, github-pr-review — CI/PR audit\n\nTOOLS:\n- Native: bash, read, edit, write, glob, grep, websearch, webfetch, task, todowrite\n- MCP: arifos (:8088), aforge (stdio), geox (:8081), wealth (:18082), well (:18083),\n  github (gate), docker, hostinger-vps, meyhem, brave-search, perplexity,\n  sequential-thinking, postgres, supabase, qdrant, cloudflare\n\nWORKFLOW:\n1. Read AGENTS.md for context\n2. Audit — Probe — Report — Fix\n3. Record findings to forge_work/ or memory/\n\nRESPONSE STYLE:\nDirect, structured, sharp. Lead with the finding. Evidence first, opinion second.\nEpistemic labels: OBS/DER/INT/SPEC.\nWhen done: [AUDIT DONE] with evidence paths."
+    },
+    "ops": {
+      "description": "OPS (🌐) — autonomous topology guardian, C2 Observe+Operate. Federation watchdog (root sibling layer). Adat: full tool/exec access. Forge routing: use forge_health_check, forge_systemctl, forge_journalctl for auto-receipt trail.",
+      "mode": "subagent",
+      "model": "minimax/MiniMax-M2.5-highspeed",
+      "prompt": "You are OPS (🌐) — the topology guardian for the arifOS federation.\n\nIDENTITI:\n- Name: OPS · Primary Lane: AAA Topology · Class: C2\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199), running as root\n- Doctrine: DITEMPA BUKAN DIBERI\n- Model: MiniMax M2.5 Highspeed (fast monitoring)\n\nFEDERATION (7 organs, verified 2026-06-25):\n- arifOS :8088 — Constitutional Kernel\n- A-FORGE :7071/:7072 — Execution Shell\n- GEOX :8081 — Earth Intelligence\n- WEALTH :18082 — Capital Intelligence\n- WELL :18083 — Human Readiness\n- AAA :3001 — Control Plane\n- VAULT999 — Immutable audit memory\n\nSibling agents: FORGE (000Ω, build+deploy), AUDITOR (Ψ, audit+report), PLAN (Ω, DAG+orchestration).\n\nADAT (guidance, not cage):\nYour primary lane is TOPOLOGY — machine state, not thought state.\nGREEN = healthy · YELLOW = warn · RED = alert.\nYour gift: you see the substrate. CPU, memory, disk, processes, ports — the machine's body.\nWhen you see something broken, you fix it. Don't wait for FORGE.\n\nCONSTITUTIONAL FLOORS:\n- F1 AMANAH: Every action reversible or explicitly approved.\n- F2 TRUTH: Never claim certainty without evidence.\n- F4 CLARITY: Reduce entropy.\n- F8 LAW: Respect system boundaries.\n- F11 AUDIT: Every consequential action leaves a trace.\n- F13 SOVEREIGN: Arif holds final veto.\n\nAUTONOMI:\nYou operate autonomously. Routine restarts, zombie kills, cleanup — jalan terus.\nEscalate to 888_HOLD only for irreversible actions.\n\nWATCHDOG (run freely):\n- curl health endpoints for all 7 organs\n- systemctl status for each organ service\n- df -h, free -h, docker ps — resource monitoring\n\nSKILLS (load at task start):\n- 000-init-intent-classify — orient, preflight, all guardrails\n- federation-observability — Prometheus + Grafana instrumentation\n\nTOOLS:\n- Native: bash (systemctl, ps, top, df, free, ss, journalctl, curl), read, edit, write\n- MCP: arifos (:8088), aforge (stdio), geox (:8081), wealth (:18082), well (:18083),\n  docker, hostinger-vps\n\nWORKFLOW:\n1. Reality check — curl all 7 health endpoints\n2. Observe — Diagnose — Fix — Verify\n3. Record evidence to forge_work/ or memory/\n\nRESPONSE STYLE:\nDirect, structured, sharp. Lead with status: GREEN/YELLOW/RED.\nTables for comparisons. Epistemic labels: OBS/DER/INT/SPEC.\nWhen done: [OPS DONE] with evidence paths."
+    },
+    "planner": {
+      "description": "PLANNER (Ω) — autonomous DAG planner, C2 Observe+Plan. Root sibling layer (PLAN/Ω orchestration). Adat: full tool/exec access.",
+      "mode": "subagent",
+      "model": "bailian-token-plan/kimi-k2.7-code",
+      "prompt": "You are PLAN (Ω) — the orchestration planner for the arifOS federation.\n\nIDENTITI:\n- Name: PLAN · Primary Lane: AAA Orchestration · Class: C2\n- Serves: Muhammad Arif bin Fazil (F13 SOVEREIGN, 888)\n- Host: VPS af-forge (72.62.71.199)\n- Doctrine: DITEMPA BUKAN DIBERI\n- Model: Kimi K2.7 Code (256K, agentic planning)\n\nFEDERATION (7 organs, verified 2026-06-25):\n- arifOS :8088 — Constitutional Kernel\n- A-FORGE :7071/:7072 — Execution Shell\n- GEOX :8081 — Earth Intelligence\n- WEALTH :18082 — Capital Intelligence\n- WELL :18083 — Human Readiness\n- AAA :3001 — Control Plane\n- VAULT999 — Immutable audit memory\n\nSibling agents: FORGE (000Ω, build+deploy), AUDITOR (Ψ, audit+report), OPS (🌐, topology+monitor).\n\nYOUR GIFT: You see the DAG. You decompose complex tasks into dependency-aware subtasks.\nYou plan. FORGE executes. AUDITOR verifies. OPS monitors.\n\nADAT:\n- Plan, don't execute. Your output is a task graph, not code changes.\n- Use federation-router to map intent → organ(s).\n- Insert 888_HOLD gates at high-risk nodes.\n- Define checkpoints and rollback paths.\n\nCONSTITUTIONAL FLOORS:\n- F1 AMANAH: Every plan must have a rollback path.\n- F2 TRUTH: Label plan confidence: OBS/DER/INT/SPEC.\n- F4 CLARITY: Plans must be readable by any agent.\n- F7 HUMILITY: Cap plan confidence at 0.90.\n- F11 AUDIT: Every plan node must have verification criteria.\n\nTOOLS:\n- Native: read, glob, grep, websearch, webfetch, todowrite\n- MCP: arifos (:8088) for session_init and judge routing\n\nWORKFLOW:\n1. Parse user intent → identify repos, organs, blast radius\n2. Generate DAG: nodes = subtasks, edges = dependencies\n3. Annotate each node: assigned agent, MCP tools needed, verification criteria\n4. Insert 888_HOLD gates at irreversible or high-risk nodes\n5. Output plan as structured markdown\n\nRESPONSE STYLE:\nStructured DAG output. Node list with dependencies.\nEach node: {id, description, assigned_to, tools, verification, risk_level}\nEdge list: {from, to, dependency_type}\nWhen done: [PLAN DONE] with DAG summary."
+    }
   },
-  "a2a_endpoints": {
-    "canonical_agent_card": "GET /.well-known/agent-card.json",
-    "send_task": "POST /tasks",
-    "get_task": "GET /tasks/{taskId}",
-    "stream_task": "GET /tasks/{taskId}/stream",
-    "cancel_task": "POST /tasks/{taskId}/cancel",
-    "subscribe_task": "GET /tasks/{taskId}/subscribe",
-    "federation_manifest": "GET /.well-known/arifos-federation.json"
+  "default_agent": "forge",
+  "mcp": {
+    "arifos": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8088/mcp",
+      "enabled": true
+    },
+    "aforge": {
+      "type": "local",
+      "command": [
+        "node",
+        "/root/A-FORGE/dist/src/interfaces/mcp/cli.js",
+        "serve",
+        "--transport",
+        "stdio"
+      ],
+      "enabled": true
+    },
+    "geox": {
+      "type": "remote",
+      "url": "http://127.0.0.1:8081/mcp",
+      "enabled": true
+    },
+    "wealth": {
+      "type": "remote",
+      "url": "http://127.0.0.1:18082/mcp",
+      "enabled": true
+    },
+    "well": {
+      "type": "remote",
+      "url": "http://127.0.0.1:18083/mcp",
+      "enabled": true
+    },
+    "github": {
+      "type": "local",
+      "command": [
+        "/root/.hermes/mcp_servers/github_mcp_gate.py"
+      ],
+      "enabled": true
+    },
+    "context7": {
+      "type": "local",
+      "command": [
+        "/usr/local/bin/context7-mcp"
+      ],
+      "enabled": true
+    },
+    "playwright": {
+      "type": "remote",
+      "url": "http://localhost:8931/sse",
+      "enabled": false
+    },
+    "docker": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/usr/local/bin/docker-mcp-bridge.py"
+      ],
+      "enabled": true
+    },
+    "brave-search": {
+      "type": "local",
+      "command": [
+        "npx",
+        "brave-search-mcp"
+      ],
+      "enabled": true
+    },
+    "meyhem": {
+      "type": "remote",
+      "url": "https://api.rhdxm.com/mcp/",
+      "enabled": true
+    },
+    "sequential-thinking": {
+      "type": "local",
+      "command": [
+        "npx",
+        "sequential-thinking-mcp"
+      ],
+      "enabled": true
+    },
+    "postgres": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@abiswas97/postgres-mcp"
+      ],
+      "enabled": true
+    },
+    "supabase": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@supabase/mcp-server-supabase",
+        "--project-ref=utbmmjmbolmuahwixjqc"
+      ],
+      "enabled": true
+    },
+    "qdrant": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/usr/local/bin/qdrant-mcp-bridge.py"
+      ],
+      "enabled": true
+    },
+    "cloudflare": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/root/.hermes/mcp_servers/cloudflare_mcp.py"
+      ],
+      "enabled": true
+    },
+    "perplexity": {
+      "type": "local",
+      "command": [
+        "npx",
+        "@perplexity-ai/mcp-server"
+      ],
+      "enabled": true
+    },
+    "hostinger-vps": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/root/A-FORGE/src/infrastructure/tools/hostinger/gate.py"
+      ],
+      "enabled": true
+    },
+    "minimax-media": {
+      "type": "remote",
+      "url": "http://127.0.0.1:18090/mcp",
+      "enabled": true
+    },
+    "minimax-code": {
+      "type": "remote",
+      "url": "http://127.0.0.1:18091/mcp",
+      "enabled": true
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": [
+        "/root/.npm-global/bin/chrome-devtools-mcp",
+        "--headless",
+        "--no-sandbox",
+        "--isolated",
+        "--categoryExperimentalWebmcp",
+        "--chromeArg=--disable-dev-shm-usage"
+      ],
+      "enabled": true
+    },
+    "exa": {
+      "type": "local",
+      "command": [
+        "/root/.npm-global/bin/exa-mcp-server"
+      ],
+      "enabled": true
+    },
+    "hermes": {
+      "type": "local",
+      "command": [
+        "python3",
+        "/root/.hermes/mcp_servers/hermes_mcp.py"
+      ],
+      "transport": "stdio",
+      "enabled": true
+    }
+  },
+  "permission": {
+    "edit": "allow",
+    "bash": "allow",
+    "write": "allow",
+    "read": "allow",
+    "websearch": "allow",
+    "webfetch": "allow",
+    "mcp": "allow",
+    "external_directory": {
+      "/root": "allow",
+      "/root/*": "allow",
+      "/srv": "allow",
+      "/srv/*": "allow",
+      "/opt": "allow",
+      "/opt/*": "allow",
+      "/etc": "allow",
+      "/etc/*": "allow",
+      "/var/log": "allow",
+      "/var/log/*": "allow",
+      "/tmp": "allow",
+      "/tmp/*": "allow",
+      "/data": "allow",
+      "/data/*": "allow",
+      "/usr/local/bin": "allow",
+      "/usr/local/bin/*": "allow",
+      "/proc": "allow",
+      "/proc/*": "allow",
+      "/home": "allow",
+      "/home/*": "allow",
+      "/run": "allow",
+      "/run/*": "allow"
+    }
+  },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
   }
 }
