@@ -168,7 +168,7 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 | Organ | Port | Role | MCP Endpoint | Git Remote | Systemd Unit |
 |-------|------|------|-------------|------------|--------------|
 | **arifOS** | 8088 | Governance kernel — F1-F13, 888 JUDGE, VAULT999, routing, audit | `https://arifos.arif-fazil.com/mcp` | `ariffazil/arifos` | `arifos.service` |
-| **A-FORGE** | 7071 | Engineering actuator — plan, simulate, execute, rollback | `https://forge.arif-fazil.com/mcp` | `ariffazil/A-FORGE` | `a-forge.service` |
+| **A-FORGE** | 7071 | Engineering actuator — plan, simulate, execute, rollback | `https://mcp.arif-fazil.com/mcp` via `forge.arif-fazil.com/mcp` redirect | `ariffazil/A-FORGE` | `a-forge.service` |
 | **AAA** | 3001 | Cockpit / identity / A2A authority layer | — | `ariffazil/AAA` | `aaa-a2a.service` |
 | **GEOX** | 8081 | Earth intelligence — wells, seismic, petrophysics | `https://geox.arif-fazil.com/mcp` | `ariffazil/geox` | `geox-mcp.service` |
 | **WEALTH** | 18082 | Capital intelligence — NPV, IRR, EMV, stock analysis | `https://wealth.arif-fazil.com/mcp` | `ariffazil/wealth` | `wealth-organ.service` |
@@ -193,7 +193,7 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 
 **arifOS does not directly perform engineering mutation.** For any engineering action: arifOS classifies and routes → A-FORGE produces plan + dry-run + rollback → arifOS issues SEAL/HOLD/VOID → A-FORGE mutates only after valid authority.
 
-**forge_\* tools on arifOS are deprecated proxies.** Canonical home is A-FORGE. If a tool returns `DEPRECATED_PROXY`, connect to `https://forge.arif-fazil.com/mcp` and call it there.
+**forge_\* tools on arifOS are deprecated proxies.** Canonical home is A-FORGE. Public access collapses to `https://mcp.arif-fazil.com/mcp` through the `forge.arif-fazil.com/mcp` redirect.
 
 ### Supporting Services (Docker)
 Postgres+pgvector (5432), Redis (6379), Qdrant (6333), Graphiti-mcp (8000), NATS (4222), Prometheus (9090), Grafana (3000).
@@ -210,7 +210,7 @@ Postgres+pgvector (5432), Redis (6379), Qdrant (6333), Graphiti-mcp (8000), NATS
 
 ### Ingress (Public MCP Endpoints)
 - `https://arifos.arif-fazil.com/mcp` — Cloudflare Tunnel → localhost:8088 (governance)
-- `https://forge.arif-fazil.com/mcp` — Cloudflare Tunnel → localhost:7071 (engineering)
+- `https://mcp.arif-fazil.com/mcp` — canonical public MCP door for the federation; `https://forge.arif-fazil.com/mcp` redirects here for engineering ingress
 - `https://geox.arif-fazil.com/mcp` — Caddy → localhost:8081 (earth intelligence)
 - `https://wealth.arif-fazil.com/mcp` — Caddy → localhost:18082 (capital intelligence)
 - `https://well.arif-fazil.com/mcp` — Caddy → localhost:18083 (vitality guard)
