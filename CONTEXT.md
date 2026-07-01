@@ -1,8 +1,8 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-24
+last_verified: 2026-07-01
 valid_from: 2026-06-24
-valid_until: 2026-07-24
+valid_until: 2026-07-31
 confidence: high
 scope: /root/AAA
 -->
@@ -10,7 +10,7 @@ scope: /root/AAA
 # CONTEXT.md — AAA (Cockpit / Control Plane)
 
 > **Organ:** AAA | **Port:** 3001 | **Repo:** `ariffazil/AAA`
-> **Last Updated:** 2026-06-24
+> **Last Updated:** 2026-07-01
 
 ## Live State
 
@@ -21,7 +21,7 @@ scope: /root/AAA
 
 ## Key Components
 
-- `a2a-server/` — Express A2A v0.3.0 gateway (`server.js`, `deliberation.ts`, `vault.js`)
+- `a2a-server/` — Express A2A v1.0.0/1.0.1 gateway (`server.js`, `deliberation.ts`, `vault.js`)
 - `src/` — React cockpit (`Cockpit.tsx`, `ai/`, `gateway/`, `components/ui/`)
 - `agents/`, `skills/`, `contracts/`, `registries/` — federation metadata
 - `public/` — static assets + `a2a/agent-card.json`

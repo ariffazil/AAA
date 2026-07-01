@@ -1,13 +1,14 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-06-30 15:45 UTC (FORGE SOT audit — documentation chaos reduction)
+last_verified: 2026-07-01
 valid_from: 2026-06-14
-valid_until: 2026-07-30
+valid_until: 2026-07-31
 confidence: high
 scope: /root/AAA
 epistemic_status: SOURCE_OF_TRUTH
 companion_to: HEXAGON-AGENTS-FORGE-20260614 (SOT alignment — MCP Gate deployment sealed)
 refresh_history:
+  - 2026-07-01 (FORGE SOT audit — A2A versions, tool counts, seal ID, doc paths aligned to live state)
   - 2026-06-30 15:45 UTC (FORGE SOT audit — last_verified refreshed, tool count + port added)
   - 2026-06-14 18:08 UTC (999_SEAL — MCP Apps panel + Reference Architecture + governance overlays)
 -->
@@ -21,7 +22,7 @@ refresh_history:
 > 4. Read this file (Repo-Specific Build/Test/Run rules)
 
 > **Canonical Identity:** Agent Operations Cockpit / Federation Control Plane
-> **Authoritative Doc:** `FEDERATION_COCKPIT.md`
+> **Authoritative Doc:** `docs/FEDERATION_COCKPIT.md`
 
 > **DITEMPA BUKAN DIBERI** — Control is forged, not given.
 
@@ -36,7 +37,7 @@ Arif. This is the **AAA** organ of the arifOS federation — the Control Plane A
 The human-facing control plane and A2A agent gateway for the arifOS Federation.
 AAA provides:
 - **React 19 dashboard** (Cockpit) — constitutional floors, domain health, operator tasks
-- **A2A v1.0.0 TypeScript server** — Agent-to-Agent mesh protocol (port 3001) — *canonical spec per public agent card*
+- **A2A v1.0.0/1.0.1 TypeScript server** — Agent-to-Agent mesh protocol (port 3001) — *gateway v1.0.0, canonical registry v1.0.1 per public agents.json*
 - **shadcn/ui component library** — 50+ Radix + Tailwind primitives
 - **AI chat panel** — Ollama / arifOS / OpenRouter client
 
@@ -45,12 +46,12 @@ AAA provides:
 | **Port** | 3001 (A2A gateway + cockpit) |
 | **Framework** | React 19, TypeScript ~6.0, Vite 8, Tailwind 4 |
 | **MCP Protocol** | v1.0.0-FORGED |
-| **A2A Protocol** | v1.0.0 (canonical spec — see `public/a2a/agent-card.json`) |
+| **A2A Protocol** | v1.0.0 gateway / v1.0.1 canonical registry (see `public/a2a/agents.json`) |
 | **A2A Server** | Express 4.x, TypeScript, port 3001 |
 | **Build** | `npm run build` → `dist/` |
 | **Path Alias** | `@/` → `src/` |
 | **Strict TS** | `false` |
-| **Tools** | 9 forge instruments (A2A gateway, cockpit, governance, identity) |
+| **Tools** | 11 forge instruments (per `ROOT_AGENT_CONFIG.yaml`; 8 on-disk cards in `a2a-server/agent-cards/forge/`) |
 
 ## Repository Structure
 
@@ -61,7 +62,7 @@ AAA/
 │   ├── App.tsx           # Root component (hash router)
 │   ├── Cockpit.tsx       # Main dashboard
 │   ├── ai/               # AI chat panel + client
-│   ├── gateway/          # A2A v1.0.0 TypeScript server
+│   ├── gateway/          # A2A v1.0.0/1.0.1 TypeScript server
 │   │   └── deliberation.ts  # 888-judgment deliberation (absorbed from APEX)
 │   ├── components/ui/    # shadcn/ui primitives (50+)
 │   ├── adapter/          # GovernanceAdapter → A-FORGE /sense
@@ -244,7 +245,7 @@ The 5-agent constitutional architecture (HEXAGON, formerly PENTAGON) sits **abov
 
 The 10-3-2 ratio encodes the truth: **thinking is cheap, memory is hard, judgment is rare.**
 
-A2A v1.0.0 spec compliance at `https://aaa.arif-fazil.com/a2a/agents.json`.
+A2A v1.0.1 registry compliance at `https://aaa.arif-fazil.com/a2a/agents.json`.
 
 ## Canonical Authority Notice
 
@@ -319,8 +320,8 @@ This prompt enforces the **Reflexion Loop** (000→111→333→555→777→888�
 
 <!--
 SOT-MANIFEST footer
-last_verified: 2026-06-14 (FORGE SOT audit — timestamps bumped, federation aligned)
-prev_valid: 2026-06-02
+last_verified: 2026-07-01 (FORGE SOT audit — A2A versions, tool counts, seal ID, doc paths aligned)
+prev_valid: 2026-06-30
 next_action: Production-readiness campaign — community files, metadata, CHANGELOG
 -->
 
