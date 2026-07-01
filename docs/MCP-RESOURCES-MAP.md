@@ -231,6 +231,45 @@ Strong on artifact + render resources. Apps expose ui:// .
 - Per-organ: contracts/mcp_surface.yaml + *_mcp/resources/ + llms.txt
 - GitHub public: raw llms.txt, contracts, agent cards, README (Δ)
 
+---
+
+## 8. CLI Adapter Contract (Multi-CLI Standard — 2026-07-01)
+
+**Canonical contract:** `/root/AAA/docs/FEDERATION_CLI_CONTRACT.md`
+
+Every coding CLI adapter (OpenCode, Kimi Code, Claude Code, Codex, Antigravity CLI) routes through the same 5 constitutional organs. The MCP config is routing only — organs are authority.
+
+**The 5 mandatory organs for every CLI:**
+
+| Organ | Port | Role | Always Required |
+|-------|------|------|----------------|
+| **arifOS** | :8088 | F1-F13, session, vault, SEAL pipeline | ✅ |
+| **A-FORGE** | :7072 | forge_*, lease, execute | ✅ |
+| **GEOX** | :8081 | Earth evidence, seismic, petrophysics | ✅ |
+| **WEALTH** | :18082 | Capital intelligence, NPV, risk | ✅ |
+| **WELL** | :18083 | Human readiness, vitality | ✅ |
+
+**CLI roles (thin adapters, not constitutions):**
+- **OpenCode** — Primary forge, VPS stdio, persistent execution
+- **Kimi Code** — Reasoning + coding partner, hosted, proposes → A-FORGE executes
+- **Claude Code** — Exploration + review, hosted
+- **Codex** — Deep context explorer, needs A-FORGE + GEOX wired
+- **Antigravity CLI** — Desktop → VPS adapter, must proxy through A-FORGE
+
+**The 5 DON'Ts (CLI anti-patterns):**
+1. Make Kimi "the new OpenCode" — Kimi proposes, OpenCode executes
+2. Force identical helper tools in every CLI — each adapts per role + OS + transport
+3. Duplicate governance inside CLI prompts — governance lives in organs only
+4. Let hosted CLIs directly execute irreversible ops — all mutations → A-FORGE → arifOS
+5. Treat MCP config as constitution — MCP config is routing, not authority
+
+**Governance is non-negotiable in organs, not CLIs:**
+```
+CLI adapter (thin) → A-FORGE (:7072) → arifOS (:8088) → SEAL/HOLD → execute
+```
+
+See `/root/AAA/docs/FEDERATION_CLI_CONTRACT.md` for full contract.
+
 ## 7. Audit 2026-06-30 (Grok Build / arif-governed-autonomous-execution)
 
 **Probe (T1):** aforge__forge_probe → all organs ALIVE (arifos:20ms, geox:17, wealth:3, well:3, aforge:2). forge_registry_status: SEAL + VERIFIED. forge_health: healthy.

@@ -1,25 +1,26 @@
 # AAA — Control Plane / Agent Cockpit
-> React 19 cockpit + A2A mesh gateway. Operator surface for the 6-organ arifOS federation.
-> Port: 3001. License: AGPL-3.0. Status: OPERATIONAL. Version: 2026.06.19.
-> Transport: JSON-RPC unified · ΔS ≤ 0 · all 6 organs healthy.
+> React 19 cockpit + A2A mesh gateway. Operator surface for the 7-organ arifOS federation.
+> Port: 3001. License: AGPL-3.0. Status: OPERATIONAL. Version: 2026.07.01.
+> Transport: JSON-RPC unified · ΔS ≤ 0 · all 7 organs healthy.
 
 ## Quick Context
-- **What:** Operator dashboard + A2A message broker for the 6-organ arifOS federation
+- **What:** Operator dashboard + A2A message broker for the 7-organ arifOS federation
 - **Role:** OPERATES missions — queues HOLDs, routes A2A messages, displays state
 - **Federation:** AAA shows. arifOS judges. A-FORGE executes. Arif controls.
-- **Transport:** JSON-RPC unified · ΔS ≤ 0 · all organs healthy since 2026-06-17
+- **Transport:** JSON-RPC unified · ΔS ≤ 0
 - **Ingress:** Direct A-record → aaa.arif-fazil.com (Caddy → localhost:3001)
 - **Stack:** React 19 + Vite 8 + Tailwind 4 + Radix UI + Express A2A gateway
 
-## Federation Organs (6 live · as of 2026-06-19)
+## Federation Organs (7 live · as of 2026-07-01)
 | Organ | Port | Role | MCP Tools |
 |-------|------|------|-----------|
-| arifOS | 8088 | Governance kernel — F1-F13, 888 JUDGE, VAULT999 | 42 (13 canonical + 29 operational) |
-| A-FORGE | 7071 | Engineering actuator — plan, simulate, execute | operational |
-| GEOX | 8081 | Earth intelligence — wells, seismic, petrophysics | 40 |
-| WEALTH | 18082 | Capital intelligence — NPV, IRR, EMV | 23 |
-| WELL | 18083 | Vitality mirror — REFLECT_ONLY | 21 |
-| AAA | 3001 | Cockpit / identity / A2A (this surface) | — |
+| arifOS | 8088 | Constitutional kernel — F1-F13, 888 JUDGE, VAULT999 | 13 canonical |
+| A-FORGE | 7071/:7072 | Execution shell — build, deploy, forge, MCP gateway | 40+ |
+| GEOX | 8081 | Earth intelligence — wells, seismic, petrophysics, basin | 18 canonical |
+| WEALTH | 18082 | Capital intelligence — NPV, IRR, EMV, conservation, flow | 23 |
+| WELL | 18083 | Vitality mirror — readiness, homeostasis, dignity | 21 |
+| AAA | 3001 | Cockpit / identity / A2A gateway (this surface) | 9 |
+| VAULT999 | — | Immutable audit ledger — sealed past, hash-chained | — |
 
 ## Key Files
 - README.md — Full human-readable narrative (849 lines)
@@ -42,7 +43,7 @@
 ## A2A Gateway (Express)
 - a2a-server/server.js — Production A2A server (standalone, no build step)
 - a2a-server/vault.js — VAULT999 read bridge
-- a2a-server/agent-cards/ — Federation agent identity cards (14+ cards)
+- a2a-server/agent-cards/ — Federation agent identity cards (5 warga + 7 external)
 - registries/ — forge_instruments.yaml, agent registry
 
 ## Build & Test
@@ -61,11 +62,12 @@ GET  /.well-known/agent-card.json      — AAA agent card
 POST /tasks                            — A2A task submission
 GET  /api/agents                       — Agent registry
 
-## Agent Registry (14+ cards)
-FI-001 OpenCode · FI-002 Claude Code · FI-003 Qwen Code · FI-004 Gemini CLI
-FI-005 Codex CLI · FI-006 Copilot CLI · FI-007 Aider
-HEXAGON-001 Hermes ASI · HEXAGON-002 AGI OPENCLAW · HEXAGON-003 Kimi Code
-HEXAGON-004 DeepSeek
+## HEXAGON Warga (5 constitutional agents)
+333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT (observer) · A-ARCHIVE (vault)
+
+## Agent Cards (a2a-server/agent-cards/)
+333-AGI · 555-ASI · 888-APEX · A-AUDIT · A-ARCHIVE · hermes-asi · 777-forge
++ aaa-architect · aaa-auditor · aaa-engineer · antigravity · hermes-ops
 
 ## Boundaries (NEVER)
 - NEVER adjudicate (AAA displays, arifOS judges)
