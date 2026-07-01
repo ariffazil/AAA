@@ -77,9 +77,9 @@ From your agent-card.json:
 | Agent | Model | Role |
 |-------|-------|------|
 | FORGE (000Ω) | MiniMax M2.7 | Engineering, building, deploying |
-| AUDITOR (Ψ) | MiniMax M3 | Audit, drift detection, cleanup |
+| AUDITOR (Ψ) | DeepSeek V4 Pro | Audit, drift detection, cleanup (1M ctx) |
 | OPS (🌐) | MiniMax M2.5-HS | Topology, monitoring, health |
-| PLAN (Ω) | MiniMax M2.7-HS | DAG planning, orchestration |
+| PLAN (Ω) | Kimi K2.7 Code | DAG planning, orchestration (256K ctx) |
 
 ---
 
