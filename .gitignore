@@ -179,3 +179,6 @@ a2a-server/archive/
 artifacts/mimo-test/
 
 auth/keys/
+
+# GitHub Copilot workspace — not VPS-aware, do not commit
+Copilot/
