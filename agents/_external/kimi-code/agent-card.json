@@ -7,8 +7,8 @@
     "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness. Wired to federation MCPs. F1-F13 enforced.",
-  "version": "1.0.0",
+  "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced.",
+  "version": "1.1.0",
   "model": "kimi-k2 / kimi-for-coding",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.arifos/agents/kimi",
@@ -71,7 +71,8 @@
     "geox",
     "wealth",
     "well",
-    "aforge"
+    "aforge",
+    "aforge-mcp"
   ],
   "subAgentPolicy": {
     "default": "888_HOLD",
@@ -244,6 +245,48 @@
         "F4",
         "F11"
       ]
+    },
+    {
+      "id": "agentic-builder",
+      "name": "Agentic Builder",
+      "description": "Meta-skill for building governed agents: identity, SOUL.md prompt, skills binding, MCP tool selection, agent-card registration, and test harness. T2 guarded write under F2/F4/F8/F11.",
+      "tags": [
+        "agent",
+        "architecture",
+        "prompt-engineering",
+        "agent-card",
+        "F8"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F8",
+        "F11"
+      ],
+      "approval_policy": "888_HOLD for new agent SEAL",
+      "reversibility_class": "reversible"
+    },
+    {
+      "id": "webmcp-site-builder",
+      "name": "WebMCP Site Builder",
+      "description": "Build browser-as-MCP-server sites using navigator.modelContext (declarative + imperative), MCP-B bridge, HITL for irreversible actions, and agent-legibility checklist (llms.txt, agents.md, schema.org). T2 under F1/F2/F4/F8/F11/F12.",
+      "tags": [
+        "webmcp",
+        "browser",
+        "mcp",
+        "site-builder",
+        "F12"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F12"
+      ],
+      "approval_policy": "auto (T2)",
+      "reversibility_class": "reversible"
     }
   ]
 }
