@@ -1,5 +1,12 @@
 import { TaskMessage } from '../gateway/schema';
 import { deliberate } from '../gateway/deliberation';
+import {
+  loadCognitiveHierarchy,
+  validatePipelineInvariant,
+  getActiveGenerators,
+  getEpistemicFloorModel,
+  type RingId,
+} from './cognitive_hierarchy';
 
 export type RiskLevel = 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
 
@@ -9,6 +16,17 @@ export interface RoutingDecision {
   riskLevel: RiskLevel;
   requiresConfirmation: boolean;
   irreversibilityBond?: string;
+  /**
+   * APEX Master Seal 2026-07-01:
+   * Cognitive hierarchy ring that produced this routing decision.
+   * - 'generator': Outer Ring — entropy source, diverse heuristics
+   * - 'epistemic_floor': Inner Core — entropy sink, constraint satisfaction
+   */
+  cognitive_ring?: RingId;
+  /**
+   * Resolved model name for the active ring (from env var or config default).
+   */
+  resolved_model?: string;
 }
 
 export class GovernanceAdapter {
@@ -17,6 +35,28 @@ export class GovernanceAdapter {
   async assessRisk(message: TaskMessage): Promise<RoutingDecision> {
     const prompt = this.extractText(message);
     const peer_contract_id = this.extractPeerContractId(message);
+
+    // ── APEX Master Seal: Cognitive Hierarchy invariant check ───────────
+    // Hassabis Inversion: Role over Model.
+    // EpistemicFloor must NOT be invoked before at least one generator is active.
+    try {
+      const hierarchy = loadCognitiveHierarchy();
+      const invariant = validatePipelineInvariant();
+      if (!invariant.ok) {
+        return {
+          path: 'HOLD',
+          reason: `Cognitive hierarchy invariant violation: ${invariant.reason}`,
+          riskLevel: 'CRITICAL',
+          requiresConfirmation: true,
+          irreversibilityBond: 'Pipeline invariant — generators must be active before EpistemicFloor',
+          cognitive_ring: 'generator',
+          resolved_model: undefined,
+        };
+      }
+    } catch (err) {
+      console.error('[Adapter] Cognitive hierarchy load error:', err);
+      // Fail open to deliberation-only routing if hierarchy is unavailable
+    }
 
     // AAA local constitutional pre-flight (888 deliberation)
     const local = deliberate(message);
@@ -28,6 +68,8 @@ export class GovernanceAdapter {
         requiresConfirmation: true,
         irreversibilityBond: 'Constitutional void — cannot proceed',
         peer_contract_id,
+        cognitive_ring: 'epistemic_floor',
+        resolved_model: getEpistemicFloorModel() || undefined,
       };
     }
     if (local.verdict === 'HOLD_888' || local.verdict === 'SABAR') {
@@ -38,6 +80,8 @@ export class GovernanceAdapter {
         requiresConfirmation: true,
         irreversibilityBond: `Required after AAA ${local.verdict}`,
         peer_contract_id,
+        cognitive_ring: 'epistemic_floor',
+        resolved_model: getEpistemicFloorModel() || undefined,
       };
     }
 
@@ -62,6 +106,10 @@ export class GovernanceAdapter {
         requiresConfirmation,
         irreversibilityBond: requiresConfirmation ? `Required for ${riskTier} risk operations` : undefined,
         peer_contract_id,
+        cognitive_ring: riskTier === 'LOW' ? 'generator' : 'epistemic_floor',
+        resolved_model: riskTier === 'LOW'
+          ? (getActiveGenerators()[0] || undefined)
+          : (getEpistemicFloorModel() || undefined),
       };
 
     } catch (error) {
@@ -70,7 +118,9 @@ export class GovernanceAdapter {
         path: 'HOLD', 
         reason: 'A-FORGE connectivity failure - manual review required', 
         riskLevel: 'CRITICAL',
-        requiresConfirmation: true
+        requiresConfirmation: true,
+        cognitive_ring: 'epistemic_floor',
+        resolved_model: getEpistemicFloorModel() || undefined,
       };
     }
   }

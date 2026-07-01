@@ -14,6 +14,12 @@ root_policy:
   per_agent_dirs_are_views: true
   live_runtime_configs_external: true
   no_new_per_agent_config_without_root_entry: true
+  # APEX Master Seal 2026-07-01: Hassabis Inversion — Role over Model
+  # Cognitive hierarchy defines the thermodynamic gradient:
+  #   Outer Ring (Generator) -> entropy source
+  #   Inner Core (EpistemicFloor) -> entropy sink, DeltaS < 0
+  cognitive_hierarchy: contracts/cognitive_hierarchy.yaml
+  cognitive_hierarchy_seal: "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json"
   routing_rule: "external agent -> A-FORGE/arifOS lease -> AAA warga/proxy -> AAA state"
   protected_actions:
     - force_push

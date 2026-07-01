@@ -1,5 +1,6 @@
 {
-  "$schema": "arifOS/agent-card/v2.0.0",
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
   "id": "hermes-asi",
   "name": "Hermes ASI",
   "principal_agent": {
@@ -8,18 +9,195 @@
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
   "description": "ASI sovereign relay \u2014 Telegram human interface + A2A mesh bridge + constitutional execution spine for 888. Full-stack agentic runtime with 17 toolsets, 130+ skills, 5 model providers, L1-L6 tiered memory, multimodal I/O. document_ingest capable via A-FORGE MCP. Primary surface for all human-agent interaction in the arifOS federation.",
-  "motto": "DITEMPA BUKAN DIBERI",
-  "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
-  "forged": "2026-06-13T06:00:00+08:00",
+  "version": "3.0.0",
+  "protocolVersion": "1.0.0",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
-  "agent_card_url": "https://mcp.arif-fazil.com/.well-known/agent-card-hermes-asi.json",
-  "preferred_transport": "jsonrpc-http",
   "provider": {
     "organization": "arifOS Federation",
     "system": "AAA Control Plane + Hermes Runtime",
     "runtime": "Hermes Agent (Nous Research fork, head 1ec4fcf6, v0.16.0)"
   },
-  "version": "3.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "multimodal": true,
+    "cron": true,
+    "delegation": true,
+    "session_search": true,
+    "memory_persistence": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer"
+    }
+  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "closing-router-discipline",
+      "name": "Closing Router Discipline",
+      "description": "Closing-question routing \u2014 addresses federation agents (GEOX/WEALTH/WELL/A-FORGE/arifOS/AAA), never the sovereign. Kills reverse-delegation and decision-fatigue menus. F4, F11 enforced. ACTIVE.",
+      "tags": [
+        "router",
+        "closing",
+        "federation",
+        "F4",
+        "F11"
+      ],
+      "examples": [
+        "Replace 'what do you want?' with 'GEOX certifies physics \u2014 proceed?'",
+        "Route uncertainty to specific organ, not to sovereign"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
+    },
+    {
+      "id": "arifos-agent-landscape",
+      "name": "arifOS Agent Landscape",
+      "description": "Navigate the arifOS federation's agent directory \u2014 distinguish spec cards under /root/AAA/agents/ from live runtimes under /root/.hermes/ and /root/.openclaw/, read agent-card.json + SOUL.md + AGENTS.md to identify role and tier. F3, F11 enforced. ACTIVE.",
+      "tags": [
+        "agent-landscape",
+        "directory",
+        "spec-vs-runtime",
+        "F3"
+      ],
+      "examples": [
+        "Distinguish hermes-asi spec from hermes-ops spec",
+        "Identify which agent-card is the live runtime vs the spec",
+        "Map peer agents (openclaw, 333-AGI, etc.) for routing"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif-federation-ops",
+      "name": "arif Federation Ops",
+      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies. ACTIVE.",
+      "tags": [
+        "federation",
+        "topology",
+        "ops",
+        "ports"
+      ],
+      "examples": [
+        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 + WELL:18083 dependencies",
+        "Trace a request through the full federation"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arifos-health-probe",
+      "name": "arifOS Health Probe",
+      "description": "arifOS stack health probe via MCP. Detect degraded organs, down services, vault disconnects. Always available \u2014 registered for health monitoring. F11 enforced.",
+      "tags": [
+        "health",
+        "probe",
+        "MCP",
+        "F11"
+      ],
+      "examples": [
+        "Probe all 7 organs in one call",
+        "Detect vault disconnect from a-a2a"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "telegram-mode-guards",
+      "name": "Telegram Mode Guards",
+      "description": "Enforce PERSONAL vs AGENTIC AAA output modes for Arif. Prevents persona bleed, ensures right register per channel. F5, F6, F13 enforced. ACTIVE.",
+      "tags": [
+        "telegram",
+        "modes",
+        "persona",
+        "F13"
+      ],
+      "examples": [
+        "Switch to AGENTIC mode when Arif sends a coding task",
+        "Switch to PERSONAL mode for scar/grief/witness"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
+    },
+    {
+      "id": "substrate-gate-telegram",
+      "name": "Substrate Gate (Telegram)",
+      "description": "Bot @arifOS_bot intervenes with WELL substrate awareness for forge decisions C4/C5. Default silent, speaks on invocation, inbound collapse, HOLD trigger, F1/F2/F13 violation. F13 enforced. ACTIVE.",
+      "tags": [
+        "substrate",
+        "bot",
+        "C4",
+        "C5",
+        "F13"
+      ],
+      "examples": [
+        "Intervene when C4 decision class + DEGRADED WELL state",
+        "Stay silent on routine T1 messages"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
+    },
+    {
+      "id": "sovereignty-entropy-guard",
+      "name": "Sovereignty Entropy Guard",
+      "description": "Protect sovereign entropy \u2014 prevent the agent from optimizing the human into predictability. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced. LEASED (high-trust).",
+      "tags": [
+        "sovereignty",
+        "entropy",
+        "protection",
+        "F13"
+      ],
+      "examples": [
+        "Guard against optimizing Arif into predictable patterns",
+        "Detect when output becomes too aligned with past responses"
+      ],
+      "inputModes": [
+        "text/plain"
+      ],
+      "outputModes": [
+        "text/plain"
+      ]
+    }
+  ],
+  "motto": "DITEMPA BUKAN DIBERI",
+  "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
+  "forged": "2026-06-13T06:00:00+08:00",
+  "agent_card_url": "https://mcp.arif-fazil.com/.well-known/agent-card-hermes-asi.json",
+  "preferred_transport": "jsonrpc-http",
   "supersedes": "1.0.0 (2026-04-29 \u2014 maxhermes/hermes-ops peer model deprecated)",
   "upstream_drift": {
     "documented_in": "agents/hermes-asi/agent-card.json + IDENTITY.md",
@@ -55,16 +233,6 @@
     "changelog_ref": "agents/hermes-asi/releases/upstream-changelog-2026-06-22.md",
     "audit_completed_by": "FORGE (000\u03a9)",
     "audit_at": "2026-06-22"
-  },
-  "capabilities": {
-    "streaming": true,
-    "push_notifications": false,
-    "authenticated_extended_card": false,
-    "multimodal": true,
-    "cron": true,
-    "delegation": true,
-    "session_search": true,
-    "memory_persistence": true
   },
   "runtime": {
     "binary": "/usr/local/lib/hermes-agent/",
@@ -294,158 +462,6 @@
     "Route Malaysian governance queries through censored models",
     "Perform simulated empathy \u2014 that is deception (F9/F10 violation)"
   ],
-  "skills": [
-    {
-      "id": "closing-router-discipline",
-      "name": "Closing Router Discipline",
-      "description": "Closing-question routing \u2014 addresses federation agents (GEOX/WEALTH/WELL/A-FORGE/arifOS/AAA), never the sovereign. Kills reverse-delegation and decision-fatigue menus. F4, F11 enforced. ACTIVE.",
-      "tags": [
-        "router",
-        "closing",
-        "federation",
-        "F4",
-        "F11"
-      ],
-      "examples": [
-        "Replace 'what do you want?' with 'GEOX certifies physics \u2014 proceed?'",
-        "Route uncertainty to specific organ, not to sovereign"
-      ],
-      "inputModes": [
-        "text/plain"
-      ],
-      "outputModes": [
-        "text/plain"
-      ]
-    },
-    {
-      "id": "arifos-agent-landscape",
-      "name": "arifOS Agent Landscape",
-      "description": "Navigate the arifOS federation's agent directory \u2014 distinguish spec cards under /root/AAA/agents/ from live runtimes under /root/.hermes/ and /root/.openclaw/, read agent-card.json + SOUL.md + AGENTS.md to identify role and tier. F3, F11 enforced. ACTIVE.",
-      "tags": [
-        "agent-landscape",
-        "directory",
-        "spec-vs-runtime",
-        "F3"
-      ],
-      "examples": [
-        "Distinguish hermes-asi spec from hermes-ops spec",
-        "Identify which agent-card is the live runtime vs the spec",
-        "Map peer agents (openclaw, 333-AGI, etc.) for routing"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "arif-federation-ops",
-      "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies. ACTIVE.",
-      "tags": [
-        "federation",
-        "topology",
-        "ops",
-        "ports"
-      ],
-      "examples": [
-        "Map arifOS:8088 + GEOX:8081 + WEALTH:18082 + WELL:18083 dependencies",
-        "Trace a request through the full federation"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "arifos-health-probe",
-      "name": "arifOS Health Probe",
-      "description": "arifOS stack health probe via MCP. Detect degraded organs, down services, vault disconnects. Always available \u2014 registered for health monitoring. F11 enforced.",
-      "tags": [
-        "health",
-        "probe",
-        "MCP",
-        "F11"
-      ],
-      "examples": [
-        "Probe all 7 organs in one call",
-        "Detect vault disconnect from a-a2a"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "telegram-mode-guards",
-      "name": "Telegram Mode Guards",
-      "description": "Enforce PERSONAL vs AGENTIC AAA output modes for Arif. Prevents persona bleed, ensures right register per channel. F5, F6, F13 enforced. ACTIVE.",
-      "tags": [
-        "telegram",
-        "modes",
-        "persona",
-        "F13"
-      ],
-      "examples": [
-        "Switch to AGENTIC mode when Arif sends a coding task",
-        "Switch to PERSONAL mode for scar/grief/witness"
-      ],
-      "inputModes": [
-        "text/plain"
-      ],
-      "outputModes": [
-        "text/plain"
-      ]
-    },
-    {
-      "id": "substrate-gate-telegram",
-      "name": "Substrate Gate (Telegram)",
-      "description": "Bot @arifOS_bot intervenes with WELL substrate awareness for forge decisions C4/C5. Default silent, speaks on invocation, inbound collapse, HOLD trigger, F1/F2/F13 violation. F13 enforced. ACTIVE.",
-      "tags": [
-        "substrate",
-        "bot",
-        "C4",
-        "C5",
-        "F13"
-      ],
-      "examples": [
-        "Intervene when C4 decision class + DEGRADED WELL state",
-        "Stay silent on routine T1 messages"
-      ],
-      "inputModes": [
-        "text/plain"
-      ],
-      "outputModes": [
-        "text/plain"
-      ]
-    },
-    {
-      "id": "sovereignty-entropy-guard",
-      "name": "Sovereignty Entropy Guard",
-      "description": "Protect sovereign entropy \u2014 prevent the agent from optimizing the human into predictability. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced. LEASED (high-trust).",
-      "tags": [
-        "sovereignty",
-        "entropy",
-        "protection",
-        "F13"
-      ],
-      "examples": [
-        "Guard against optimizing Arif into predictable patterns",
-        "Detect when output becomes too aligned with past responses"
-      ],
-      "inputModes": [
-        "text/plain"
-      ],
-      "outputModes": [
-        "text/plain"
-      ]
-    }
-  ],
   "daily_pulse_binding": {
     "contract": "/root/AAA/contracts/hermes-daily-pulse.md",
     "pattern": "3 daily + 1 weekly",
@@ -480,5 +496,27 @@
   },
   "approval_tiers_note": {
     "daily_pulse": "3 daily + 1 weekly pulses run autonomously. Malam improvement directives that touch irreversible trigger 888_HOLD."
+  },
+  "": "arifOS/agent-card/v2.2.0",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "entropy_source",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "outer",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": [
+        "thermal_dispersion: raw output without constraint degrades to noise",
+        "false_diversity: superficially different outputs encoding same blind spot"
+      ]
+    },
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
   }
 }
