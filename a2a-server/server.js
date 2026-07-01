@@ -8,6 +8,7 @@
 
 const express = require('express');
 const crypto = require('crypto');
+const fs = require('fs');
 const { writeSeal, writeVoid, checkHealth: checkVaultHealth } = require('./vault');
 const { processAREPTask, sealAREPTask, probeFederation } = require('./arep-task-manager');
 const { createClient } = require('redis');
@@ -39,7 +40,11 @@ app.use(express.json({ limit: '12mb' }));
 // 2026-06-21: Consolidated to single A2A mesh on port 3001.
 // Hermes A2A bridge (port 18001) decommissioned — all routing through AAA.
 const HERMES_A2A_URL = process.env.HERMES_A2A_URL || '';  // removed — route direct via Telegram
-const OPENCLAW_A2A_URL = process.env.OPENCLAW_A2A_URL || 'http://127.0.0.1:18789';
+const OPENCLAW_GATEWAY_URL = process.env.OPENCLAW_GATEWAY_URL || 'ws://127.0.0.1:18789';
+const OPENCLAW_GATEWAY_PASSWORD =
+  process.env.OPENCLAW_GATEWAY_PASSWORD || readEnvFileValue('/root/.openclaw/.env', 'OPENCLAW_GATEWAY_PASSWORD') || '';
+const OPENCLAW_AGENT_ID = process.env.OPENCLAW_AGENT_ID || 'main';
+const OPENCLAW_PROTOCOL_VERSION = Number.parseInt(process.env.OPENCLAW_PROTOCOL_VERSION || '4', 10);
 const OLLAMA_URL = process.env.OLLAMA_URL || 'http://127.0.0.1:11434';
 const OPENWEBUI_API_KEY = process.env.OPENWEBUI_API_KEY || '';
 const OPENWEBUI_URL = process.env.OPENWEBUI_URL || '';
@@ -62,6 +67,7 @@ const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '267378578';
 
 const HTTP = require('http');
 const HTTPS = require('https');
+const { WebSocket } = globalThis;
 
 const ORGANS = [
   { name: 'arifOS MCP', port: 8088 },
@@ -110,6 +116,244 @@ function httpsPost(url, body) {
     req.write(JSON.stringify(body));
     req.end();
   });
+}
+
+function readEnvFileValue(filePath, key) {
+  try {
+    if (!fs.existsSync(filePath)) return '';
+    const lines = fs.readFileSync(filePath, 'utf8').split(/\r?\n/);
+    const prefix = `${key}=`;
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#') || !line.startsWith(prefix)) continue;
+      return line.slice(prefix.length).trim().replace(/^['"]|['"]$/g, '');
+    }
+  } catch {
+    // best effort only
+  }
+  return '';
+}
+
+function sanitizeSessionSuffix(value) {
+  return String(value || 'task').replace(/[^a-zA-Z0-9:_-]+/g, '-');
+}
+
+function createOpenClawSessionKey(taskId) {
+  return `agent:${OPENCLAW_AGENT_ID}:aaa-a2a:${sanitizeSessionSuffix(taskId)}`;
+}
+
+function extractOpenClawAssistantText(messages) {
+  if (!Array.isArray(messages)) return '';
+  for (let idx = messages.length - 1; idx >= 0; idx -= 1) {
+    const message = messages[idx];
+    if (message?.role !== 'assistant') continue;
+    const chunks = Array.isArray(message?.content) ? message.content : [];
+    const text = chunks
+      .filter((chunk) => chunk?.type === 'text' && typeof chunk?.text === 'string')
+      .map((chunk) => chunk.text)
+      .join('\n')
+      .trim();
+    if (text) return text;
+  }
+  return '';
+}
+
+async function openOpenClawGatewayConnection(timeoutMs = 15000) {
+  if (typeof WebSocket !== 'function') {
+    throw new Error('WebSocket client unavailable in this Node runtime');
+  }
+  if (!OPENCLAW_GATEWAY_PASSWORD) {
+    throw new Error('OPENCLAW_GATEWAY_PASSWORD missing');
+  }
+
+  return await new Promise((resolve, reject) => {
+    const ws = new WebSocket(OPENCLAW_GATEWAY_URL);
+    const pending = new Map();
+    let ready = false;
+    let settled = false;
+
+    const closeWithError = (error) => {
+      const err = error instanceof Error ? error : new Error(String(error));
+      for (const { reject: rejectPending } of pending.values()) {
+        rejectPending(err);
+      }
+      pending.clear();
+      if (!settled) {
+        settled = true;
+        reject(err);
+      }
+      try {
+        ws.close();
+      } catch {
+        // ignore close errors
+      }
+    };
+
+    const timer = setTimeout(() => {
+      closeWithError(new Error('OpenClaw gateway handshake timeout'));
+    }, timeoutMs);
+
+    const sendFrame = (frame) => {
+      ws.send(JSON.stringify(frame));
+    };
+
+    const request = (method, params) => {
+      return new Promise((resolveRequest, rejectRequest) => {
+        const id = crypto.randomUUID();
+        pending.set(id, { resolve: resolveRequest, reject: rejectRequest });
+        sendFrame({ type: 'req', id, method, params });
+      });
+    };
+
+    ws.onmessage = (event) => {
+      let frame;
+      try {
+        frame = JSON.parse(String(event.data));
+      } catch (error) {
+        closeWithError(new Error(`OpenClaw gateway invalid JSON: ${error.message}`));
+        return;
+      }
+
+      if (frame?.type === 'event' && frame?.event === 'connect.challenge') {
+        sendFrame({
+          type: 'req',
+          id: crypto.randomUUID(),
+          method: 'connect',
+          params: {
+            minProtocol: OPENCLAW_PROTOCOL_VERSION,
+            maxProtocol: OPENCLAW_PROTOCOL_VERSION,
+            client: {
+              id: 'gateway-client',
+              version: 'aaa-a2a-bridge',
+              platform: process.platform,
+              mode: 'backend',
+            },
+            role: 'operator',
+            scopes: ['operator.admin'],
+            auth: {
+              password: OPENCLAW_GATEWAY_PASSWORD,
+            },
+          },
+        });
+        return;
+      }
+
+      if (frame?.type !== 'res' || typeof frame?.id !== 'string') {
+        return;
+      }
+
+      const pendingRequest = pending.get(frame.id);
+      if (!pendingRequest) {
+        if (!ready && frame.ok && frame.payload?.type === 'hello-ok') {
+          ready = true;
+          clearTimeout(timer);
+          if (!settled) {
+            settled = true;
+            resolve({
+              request,
+              close: () => {
+                try {
+                  ws.close();
+                } catch {
+                  // ignore close errors
+                }
+              },
+            });
+          }
+        }
+        return;
+      }
+
+      pending.delete(frame.id);
+      if (frame.ok) {
+        if (!ready && frame.payload?.type === 'hello-ok') {
+          ready = true;
+          clearTimeout(timer);
+          pendingRequest.resolve(frame.payload);
+          if (!settled) {
+            settled = true;
+            resolve({
+              request,
+              close: () => {
+                try {
+                  ws.close();
+                } catch {
+                  // ignore close errors
+                }
+              },
+            });
+          }
+          return;
+        }
+        pendingRequest.resolve(frame.payload);
+        return;
+      }
+
+      const err = new Error(frame.error?.message || 'OpenClaw gateway request failed');
+      err.details = frame.error?.details;
+      pendingRequest.reject(err);
+      if (!ready) {
+        closeWithError(err);
+      }
+    };
+
+    ws.onerror = () => {
+      closeWithError(new Error('OpenClaw gateway websocket error'));
+    };
+
+    ws.onclose = () => {
+      clearTimeout(timer);
+      if (!ready) {
+        closeWithError(new Error('OpenClaw gateway closed before handshake'));
+      }
+    };
+  });
+}
+
+async function dispatchOpenClawTask({ targetAgent, message, skill, taskId, contextId, timeoutMs = 60000 }) {
+  const connection = await openOpenClawGatewayConnection(Math.min(timeoutMs, 15000));
+  const sessionKey = createOpenClawSessionKey(taskId);
+  const text = extractText(message).trim();
+  const prompt = [
+    targetAgent ? `AAA route target: ${targetAgent}` : '',
+    skill ? `AAA requested skill: ${skill}` : '',
+    `AAA context ID: ${contextId}`,
+    `AAA task ID: ${taskId}`,
+    text,
+  ].filter(Boolean).join('\n');
+
+  try {
+    const agent = await connection.request('agent', {
+      agentId: OPENCLAW_AGENT_ID,
+      sessionKey,
+      message: prompt,
+      idempotencyKey: crypto.randomUUID(),
+      timeout: Math.max(1, Math.ceil(timeoutMs / 1000)),
+    });
+
+    const wait = await connection.request('agent.wait', {
+      runId: agent.runId,
+      timeoutMs,
+    });
+
+    const history = await connection.request('chat.history', {
+      sessionKey,
+      limit: 20,
+    });
+
+    const responseText = extractOpenClawAssistantText(history?.messages);
+    const failed = wait?.status === 'error';
+
+    return {
+      runId: agent.runId,
+      sessionKey,
+      status: failed ? 'failed' : (wait?.status === 'ok' ? 'completed' : 'working'),
+      text: responseText || wait?.error || 'OpenClaw completed without transcript text.',
+      error: wait?.error || null,
+    };
+  } finally {
+    connection.close();
+  }
 }
 
 async function checkOrganHealth(name, port) {
