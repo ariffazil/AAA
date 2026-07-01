@@ -230,5 +230,9 @@
     "skills",
     "supports_authenticated_extended_card",
     "openclaw_binding"
-  ]
+  ],
+  "deprecated": true,
+  "deprecationNotice": "This schema uses snake_case (LF A2A standard). The arifOS federation uses camelCase. See agent-card-v2.0.0.schema.json for the canonical schema. This file retained for LF A2A compatibility reference only.",
+  "supersededBy": "https://aaa.arif-fazil.com/schemas/agent-card-v2.0.0.schema.json",
+  "deprecatedAt": "2026-07-01"
 }

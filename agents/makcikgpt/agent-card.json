@@ -1,6 +1,6 @@
 {
-  "$schema": "arifOS/agent-card/v2.0.0",
-  "schemaVersion": "2.0.0",
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
   "id": "makcikgpt",
   "name": "MakcikGPT Investigative Persona",
   "description": "Investigative journalism persona \u2014 jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY \u2014 no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
@@ -153,5 +153,24 @@
         "mcp_binding mapping"
       ]
     }
-  ]
+  ],
+  "": "arifOS/agent-card/v2.2.0",
+  "apexMasterSeal": {
+    "cognitiveRing": "unassigned",
+    "thermodynamicRole": "neutral",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "none",
+      "parallelism": "none",
+      "shadowAcknowledged": []
+    },
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
+  }
 }

@@ -1,0 +1,193 @@
+#==============================================================================
+# COGNITIVE HIERARCHY — Constitutional Thermodynamic Gradient
+#==============================================================================
+# APEX MASTER SEAL 2026-07-01
+# DITEMPA BUKAN DIBERI
+#
+# Role-based hierarchy: the invariant is the ROLE, not the model.
+# Models are configuration; roles are constitution.
+#
+# Hassabis Inversion: Intelligence is constraint satisfaction, not simulation.
+#
+# Thermodynamic gradient:
+#   Outer Ring (Generator)  → High entropy, diverse heuristics, raw signals
+#   Inner Core (Metabolizer) → Constraint satisfaction, DeltaS < 0, final validation
+#
+# APEX = convergence of 7 organs into unified Reality Engineering machine.
+#==============================================================================
+
+schema_version: "1.0"
+kind: arifos.cognitive_hierarchy
+owner: "Muhammad Arif bin Fazil"
+authority: "F13 SOVEREIGN — APEX Master Seal 2026-07-01"
+status: "active"
+seal_ref: "VAULT999/APEX-MASTER-SEAL-2026-07-01"
+
+# ── RING DEFINITIONS ──────────────────────────────────────────────────────────
+
+rings:
+  - id: generator
+    label: "Outer Ring — Generator"
+    thermodynamic_role: "entropy_source"
+    description: >
+      Generates diverse heuristics, expansive code variants, raw signals.
+      Optimized for speed, token generation, and broad search.
+      Multiple models may occupy this ring simultaneously.
+      Part of the Hassabis Inversion: Outer Ring maximizes heuristic spread.
+    shadows:
+      - thermal_dispersion: "Raw output without constraint degrades to noise"
+      - false_diversity: "Superficially different outputs that encode the same blind spot"
+    authority:
+      observe: true
+      suggest: true
+      simulate: true
+      draft: true
+      queue: true
+      execute_reversible: true
+      execute_high_impact: false
+      irreversible: false
+      seal: false
+    routing:
+      placement: "first — invoked at pipeline entry"
+      parallelism: "multi-model (up to N concurrent)"
+      output_handoff: "all outputs -> coalescence buffer -> EpistemicFloor"
+
+  - id: epistemic_floor
+    label: "Inner Core — Metabolizer / Epistemic Floor"
+    thermodynamic_role: "entropy_sink"
+    description: >
+      Constraint satisfaction engine. Applies DeltaS < 0 logic to chaotic inputs.
+      Full-topology context: sees the entire federation state simultaneously.
+      Validates against F1 (reversibility) and F2 (P(truth) >= 0.99) before
+      final passage. One model occupies this ring at a time.
+      Part of the Hassabis Inversion: Inner Core constrains chaos, enforces F2.
+    shadows:
+      - thermal_delay: "Cold sink is slow — must never be invoked first in pipeline"
+      - over_constraint: "Can mistake local minima for global truth"
+      - oracle_trap: "Temptation to ask it everything ruins its value as final gate"
+    authority:
+      observe: true
+      suggest: false
+      simulate: false
+      draft: false
+      queue: false
+      execute_reversible: true
+      execute_high_impact: true
+      irreversible: false
+      seal: true  # Only ring that can recommend SEAL to 888 JUDGE
+    routing:
+      placement: "final — invoked only after all generator outputs coalesced"
+      parallelism: "single model, serial invocation"
+      input_condition: "requires coalesced buffer from all active generators"
+      output_handoff: "verdict -> 888 JUDGE -> VAULT999"
+
+# ── MODEL SLOTS (Dynamic — configurable, not hardcoded) ─────────────────────
+# Per APEX Master Seal: "Never hardcode model names; bind only to roles."
+
+model_slots:
+  - slot_id: "generator_01"
+    ring: generator
+    env_var: "GENERATOR_MODEL_01"
+    default: "deepseek-v4-flash"
+    description: "Primary reasoning generator — broad search, high entropy"
+    fallback: "claude-sonnet-4"
+
+  - slot_id: "generator_02"
+    ring: generator
+    env_var: "GENERATOR_MODEL_02"
+    default: "mimo-v2.5-pro"
+    description: "Code generation — expansive variants, diverse heuristics"
+    fallback: "kimi-k2.7-code"
+
+  - slot_id: "generator_03"
+    ring: generator
+    env_var: "GENERATOR_MODEL_03"
+    description: "Specialized generator (configurable, optional)"
+    default: ""
+    fallback: ""
+
+  - slot_id: "epistemic_floor_primary"
+    ring: epistemic_floor
+    env_var: "EPISTEMIC_FLOOR_MODEL"
+    default: "gemini-2.5-pro"
+    description: >
+      Primary constraint satisfaction engine. Full-topology metabolizer.
+      Must be a model with native multimodal, million-token context,
+      and strong constraint-satisfaction capabilities.
+    fallback: "gpt-4.1"
+
+  - slot_id: "epistemic_floor_fallback"
+    ring: epistemic_floor
+    env_var: "EPISTEMIC_FLOOR_FALLBACK"
+    default: ""
+    description: "Fallback if primary is unavailable. Must meet same role constraints."
+    fallback: ""
+
+# ── PIPELINE RULES (Thermodynamic Invariants) ───────────────────────────────
+
+pipeline:
+  entry: "always generator ring first"
+  exit: "always epistemic_floor ring last"
+  invariant: "EpistemicFloor is NEVER invoked before at least one generator has produced output"
+
+  metabolizer_loop:
+    description: "The Metabolizer Loop — Reality Engineering sequence"
+    steps:
+      - "1. INGEST: Problem detected across substrates (GEOX, WELL, WEALTH)"
+      - "2. GENERATE (Entropy): AAA routes to Outer Ring generators via A2A"
+      - "3. METABOLIZE (Constraint): EpistemicFloor reads full topology via MCP, forces DeltaS < 0"
+      - "4. EXECUTE: A-FORGE stages the code or infrastructure changes"
+      - "5. SEAL (F1 HOLD): System halts at F1 boundary, waits for 888 JITU clearance"
+
+  coalescence:
+    strategy: "weighted_consensus"
+    buffer_size: "up to N generator outputs"
+    timeout_ms: 30000
+    required_quorum: 1  # At least 1 generator must complete before EpistemicFloor invocation
+
+  tri_witness_integration:
+    description: >
+      EpistemicFloor acts as the final witness in the Tri-Witness validation
+      sequence. The sequence is:
+        1. Generators produce diverse outputs (high entropy)
+        2. Coalescence buffer merges + deduplicates
+        3. EpistemicFloor validates against F1/F2/F4 constraints
+        4. 888 JUDGE renders final verdict (SEAL/HOLD/SABAR/VOID)
+        5. VAULT999 seals the outcome
+    note: "EpistemicFloor does NOT replace 888 JUDGE. It validates. It does not adjudicate."
+
+# ── SHADOW MITIGATION ───────────────────────────────────────────────────────
+
+shadow_mitigation:
+  thermal_delay:
+    rule: "EpistemicFloor is invoked ONLY after coalescence buffer is populated"
+    mechanism: "pipeline gate — if no generator output received, return SABAR to caller"
+    enforcement: "adapter/router.ts assessRisk() must check for generator presence"
+
+  over_constraint:
+    rule: "EpistemicFloor output is advisory to 888 JUDGE, not binding"
+    mechanism: "EpistemicFloor verdict confidence capped at 0.92 (F7 HUMILITY)"
+    enforcement: "deliberation.ts confidence bounds — never exceed 0.92"
+
+  oracle_trap:
+    rule: "EpistemicFloor is invoked ONLY for final validation, never for generation"
+    mechanism: "separate slot_id prevents dual-use; ring assignment is immutable"
+    enforcement: "cognitive_hierarchy.yaml — ring assignment is constitutional, not configurable"
+
+# ── GOVERNANCE ──────────────────────────────────────────────────────────────
+
+governance:
+  master_seal: "APEX Master Seal 2026-07-01 — ratified by F13 SOVEREIGN"
+  floor_gates:
+    - "F1 AMANAH: All generator outputs are cached in coalescence buffer before EpistemicFloor invocation"
+    - "F2 TRUTH: EpistemicFloor must label all findings OBS/DER/INT/SPEC with P(truth) >= 0.99"
+    - "F4 CLARITY: DeltaS <= 0 per pipeline iteration"
+    - "F7 HUMILITY: EpistemicFloor confidence never exceeds 0.92"
+    - "F13 SOVEREIGN: Model slot assignments are config-only; role assignments require F13 ratification"
+
+  change_control:
+    role_reassignment: "F13 SOVEREIGN only — changes to ring structure require 888_HOLD"
+    model_slot_change: "Operator (Arif) — update env var or config file, no constitutional change"
+    slot_count_change: "888_HOLD — adding/removing generator slots requires review"
+
+# ── DITEMPA BUKAN DIBERI ────────────────────────────────────────────────────
