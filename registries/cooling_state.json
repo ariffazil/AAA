@@ -898,9 +898,38 @@
       "sealed_at": null,
       "voided_at": null,
       "void_reason": null
+    },
+    {
+      "entry_id": "001b56b6-c99",
+      "artifact_ref": "a784b047-20b9-4e0f-948e-c07e58c5e623",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-06-30T17:05:02.322Z",
+      "cooldown_expiry": "2026-07-07T17:05:02.322Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
     }
   ],
   "sealedCount": 0,
   "voidedCount": 22,
-  "persistedAt": "2026-06-30T12:48:52.395Z"
+  "persistedAt": "2026-06-30T17:05:02.327Z"
 }
