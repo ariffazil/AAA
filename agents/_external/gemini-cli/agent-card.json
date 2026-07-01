@@ -1,6 +1,6 @@
 {
-  "$schema": "arifOS/agent-card/v2.0.0",
-  "schemaVersion": "2.0.0",
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
   "id": "gemini-cli",
   "name": "Gemini CLI (Google)",
   "principal_agent": {
@@ -279,5 +279,37 @@
         "mcp_binding mapping"
       ]
     }
-  ]
+  ],
+  "": "arifOS/agent-card/v2.2.0",
+  "apexMasterSeal": {
+    "cognitiveRing": "epistemic_floor",
+    "thermodynamicRole": "entropy_sink",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "inner",
+      "parallelism": "single-model",
+      "shadowAcknowledged": [
+        "thermal_delay: cold sink is slow \u2014 never invoked first",
+        "over_constraint: can mistake local minima for global truth",
+        "oracle_trap: asking it everything ruins its value as final gate"
+      ]
+    },
+    "jituGate": {
+      "requiresJitu": true,
+      "jituTriggerPatterns": [
+        "delete",
+        "drop",
+        "rm -rf",
+        "truncate",
+        "push to prod",
+        "force push",
+        "DROP TABLE",
+        "remove --force"
+      ],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
+  }
 }

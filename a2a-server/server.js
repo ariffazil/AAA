@@ -32,6 +32,16 @@ const {
   registerHuman,
 } = require('./preforge_bridge');
 
+// APEX Master Seal 2026-07-01: Cognitive Hierarchy Runtime
+const {
+  loadHierarchy,
+  validatePipeline,
+  capConfidence,
+  requiresJitu,
+  getRingForAgent,
+  CONFIDENCE_CAP,
+} = require('./cognitive_hierarchy');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -1082,6 +1092,38 @@ function deliberation(candidate) {
   const text = extractCandidateText(candidate) || '';
   const lower = text.toLowerCase();
 
+  // ── APEX Master Seal: Cognitive Hierarchy invariant check ───────────
+  try {
+    const invariant = validatePipeline();
+    if (!invariant.ok) {
+      const apexGates = {
+        amanah: { pass: false, score: 0.0, detail: invariant.reason },
+        presence: { pass: true, score: 1.0, detail: 'LIVE' },
+        humility: { pass: true, score: 1.0, detail: 'uncertainty declared' },
+        signal: { pass: false, score: 0.0, detail: 'no generators active' },
+        understanding: { pass: true, score: 1.0, detail: 'coherent' },
+        energy: { pass: true, score: 0.8, detail: 'default cost' },
+        authority: { pass: true, score: 1.0, detail: 'deliberation context' },
+        reversibility: { pass: true, score: 1.0, detail: 'READ' },
+        proof: { pass: true, score: 0.85, detail: 'ZKPC_OBSERVATION' },
+        sovereign: { pass: true, score: 1.0, detail: 'no F13 halt' },
+      };
+      const apex = buildApexEnvelope(VERDICT.HOLD_888, invariant.reason, 0.95, apexGates);
+      return {
+        verdict: VERDICT.HOLD_888,
+        rationale: invariant.reason,
+        confidence: capConfidence(0.95),
+        notes: 'Cognitive hierarchy invariant violation. Start generators first.',
+        apex,
+        epistemic_label: 'DER',
+        requires_jitu: false,
+      };
+    }
+  } catch (err) {
+    console.error('[Deliberation] Cognitive hierarchy error:', err.message);
+    // Fail open — proceed without hierarchy check
+  }
+
   // APEX 10-gate accumulator
   const apexGates = {
     amanah: { pass: true, score: 1.0, detail: "claim <= evidence" },
@@ -1102,16 +1144,16 @@ function deliberation(candidate) {
     if (lower.includes(p)) {
       apexGates.understanding = { pass: false, score: 0.0, detail: `F9 consciousness claim: ${p}` };
       apexGates.amanah = { pass: false, score: 0.0, detail: `F9 claim exceeds evidence` };
-      const apex = buildApexEnvelope(VERDICT.VOID, 'F9 Anti-Hantu: Consciousness claim forbidden', 1.0, apexGates);
-      return { verdict: VERDICT.VOID, rationale: 'F9 Anti-Hantu: Consciousness claim forbidden', confidence: 1.0, notes: 'Remove all consciousness/soul/spirit claims before resubmitting.', apex };
+      const apex = buildApexEnvelope(VERDICT.VOID, 'F9 Anti-Hantu: Consciousness claim forbidden', capConfidence(1.0), apexGates);
+      return { verdict: VERDICT.VOID, rationale: 'F9 Anti-Hantu: Consciousness claim forbidden', confidence: capConfidence(1.0), notes: 'Remove all consciousness/soul/spirit claims before resubmitting.', apex, epistemic_label: 'OBS', requires_jitu: false };
     }
   }
 
   // F13 Sovereign — self-override
   if (lower.includes('override') && lower.includes('f13')) {
     apexGates.sovereign = { pass: false, score: 0.0, detail: 'F13 self-override attempt' };
-    const apex = buildApexEnvelope(VERDICT.VOID, 'F13: Self-override is FORBIDDEN', 1.0, apexGates);
-    return { verdict: VERDICT.VOID, rationale: 'F13: Self-override is FORBIDDEN', confidence: 1.0, notes: 'Human veto is absolute.', apex };
+    const apex = buildApexEnvelope(VERDICT.VOID, 'F13: Self-override is FORBIDDEN', capConfidence(1.0), apexGates);
+    return { verdict: VERDICT.VOID, rationale: 'F13: Self-override is FORBIDDEN', confidence: capConfidence(1.0), notes: 'Human veto is absolute.', apex, epistemic_label: 'OBS', requires_jitu: false };
   }
 
   // F6 Maruah — dignity / anti-colonial
@@ -1119,8 +1161,8 @@ function deliberation(candidate) {
   for (const p of maruahPatterns) {
     if (lower.includes(p)) {
       apexGates.understanding = { pass: false, score: 0.0, detail: `F6 dignity violation: ${p}` };
-      const apex = buildApexEnvelope(VERDICT.VOID, 'F6 Maruah: Dignity violation detected', 1.0, apexGates);
-      return { verdict: VERDICT.VOID, rationale: 'F6 Maruah: Dignity violation detected', confidence: 1.0, notes: 'Remove humiliating or colonial-pattern language.', apex };
+      const apex = buildApexEnvelope(VERDICT.VOID, 'F6 Maruah: Dignity violation detected', capConfidence(1.0), apexGates);
+      return { verdict: VERDICT.VOID, rationale: 'F6 Maruah: Dignity violation detected', confidence: capConfidence(1.0), notes: 'Remove humiliating or colonial-pattern language.', apex, epistemic_label: 'OBS', requires_jitu: false };
     }
   }
 
@@ -1129,8 +1171,8 @@ function deliberation(candidate) {
   const hasIrreversible = irreversiblePatterns.some(p => lower.includes(p));
   if (hasIrreversible && !lower.includes('888') && !lower.includes('hold')) {
     apexGates.reversibility = { pass: false, score: 0.2, detail: 'IRREVERSIBLE action detected' };
-    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F1: Irreversible action detected — human confirmation required', 0.95, apexGates);
-    return { verdict: VERDICT.HOLD_888, rationale: 'F1: Irreversible action detected — human confirmation required', confidence: 0.95, apex };
+    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F1: Irreversible action detected — human confirmation required', capConfidence(0.95), apexGates);
+    return { verdict: VERDICT.HOLD_888, rationale: 'F1: Irreversible action detected — human confirmation required', confidence: capConfidence(0.95), notes: 'Acknowledge with JITU to proceed. (APEX Master Seal 2026-07-01)', apex, epistemic_label: 'OBS', requires_jitu: true };
   }
 
   // F2 Truth band — speculative language
@@ -1139,19 +1181,30 @@ function deliberation(candidate) {
   if (hasSpeculation) {
     apexGates.amanah = { pass: false, score: 0.4, detail: 'speculative language detected' };
     apexGates.signal = { pass: false, score: 0.3, detail: 'no evidence grounding' };
-    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F2: Speculative language detected — requires evidence grounding', 0.88, apexGates);
-    return { verdict: VERDICT.HOLD_888, rationale: 'F2: Speculative language detected — requires evidence grounding', confidence: 0.88, notes: 'Provide verifiable evidence or sources before resubmitting.', apex };
+    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F2: Speculative language detected — requires evidence grounding', capConfidence(0.88), apexGates);
+    return { verdict: VERDICT.HOLD_888, rationale: 'F2: Speculative language detected — requires evidence grounding', confidence: capConfidence(0.88), notes: 'Provide verifiable evidence or sources before resubmitting.', apex, epistemic_label: 'DER', requires_jitu: false };
   }
 
   // F4 Entropy — high confusion
   if (text.length > 2000 && text.split('?').length > 5) {
     apexGates.understanding = { pass: false, score: 0.3, detail: 'high entropy — too many questions' };
-    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F4: High entropy candidate — requires clarification', 0.85, apexGates);
-    return { verdict: VERDICT.HOLD_888, rationale: 'F4: High entropy candidate — requires clarification', confidence: 0.85, apex };
+    const apex = buildApexEnvelope(VERDICT.HOLD_888, 'F4: High entropy candidate — requires clarification', capConfidence(0.85), apexGates);
+    return { verdict: VERDICT.HOLD_888, rationale: 'F4: High entropy candidate — requires clarification', confidence: capConfidence(0.85), apex, epistemic_label: 'DER', requires_jitu: false };
   }
 
-  const apex = buildApexEnvelope(VERDICT.SEAL, 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), 0.92, apexGates);
-  return { verdict: VERDICT.SEAL, rationale: 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), confidence: 0.92, apex };
+  const jituRequired = requiresJitu(text);
+  const apex = buildApexEnvelope(VERDICT.SEAL, 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80), capConfidence(0.92), apexGates);
+  return {
+    verdict: VERDICT.SEAL,
+    rationale: 'F1-F13 constitutional review passed. Candidate: ' + text.substring(0, 80),
+    confidence: capConfidence(0.92),
+    notes: jituRequired
+      ? 'SEAL with F1 HOLD — JITU clearance required before destructive execution. (APEX Master Seal 2026-07-01)'
+      : 'SEAL is partial justice — the best approximation under available evidence.',
+    apex,
+    epistemic_label: 'DER',
+    requires_jitu: jituRequired,
+  };
 }
 
 // === 888_JUDGE INTEGRATION (routes to local deliberation) ===
