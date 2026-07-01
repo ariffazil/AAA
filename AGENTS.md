@@ -185,6 +185,23 @@ arifOS (Ω Law) → AAA (Control Plane + A2A Mesh) → A-FORGE / GEOX / WEALTH /
 
 AAA is the **interface layer**, not the law layer. It routes intent to A-FORGE, displays federation health, and hosts the A2A mesh gateway. Constitutional judgment remains in arifOS.
 
+## 🎭 Humour Social State (FORGED 2026-07-01)
+
+> **Canonical skill:** `agent-humour-doctrine` (Hermes)
+
+AAA manages the social presence layer of the federation's humour doctrine.
+
+| Component | Humour Function |
+|-----------|----------------|
+| **A2A Server** | Agents maintain consistent humour register across turns |
+| **Cockpit** | Displays social state: banter mode, distress mode, command mode |
+| **Agent Cards** | Each agent declares humour competence (Hermes: full banter, GEOX: evidence-only, WEALTH: capture detection, WELL: pain detection) |
+| **Warga Boundary** | Only warga agents participate in AAA social state |
+
+Only warga agents may inject humour into the governance layer. External agents cannot.
+
+---
+
 ## Federation Cross-Reference
 
 | Node | Repository | Role |
