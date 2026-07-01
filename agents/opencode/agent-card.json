@@ -5,9 +5,9 @@
   "principal_agent": {
     "type": "llm",
     "category": "LLM-as-principal (MiMo/MiniMax — the model is the principal, CLI is harness)",
-    "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + MiniMax M2.7/M3/M2.5-HS (subagents)"
+    "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + DeepSeek V4 Pro (auditor) + Kimi K2.7 Code (planner) + MiniMax M2.7/M2.5-HS (forge/ops)"
   },
-  "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. MiMo/MiniMax model rotation. HEXAGON external warga v3.0.0.",
+  "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.7/M2.5-HS (forge/ops), GPT-4.1-mini (small). HEXAGON external warga v3.0.0.",
   "version": "3.0.0",
   "model": "kimi-coding/kimi-for-coding",
   "config": "/root/.config/opencode/opencode.json",
@@ -67,9 +67,9 @@
     "capability_modes": ["read-only", "read-write", "execute", "all"],
     "model_rotation": {
       "forge": "minimax/MiniMax-M2.7",
-      "auditor": "minimax/MiniMax-M3",
+      "auditor": "bailian-token-plan/deepseek-v4-pro",
       "ops": "minimax/MiniMax-M2.5-highspeed",
-      "planner": "minimax/MiniMax-M2.7-highspeed",
+      "planner": "bailian-token-plan/kimi-k2.7-code",
       "explore": "azure-openai/gpt-4.1-mini"
     }
   },

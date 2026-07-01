@@ -56,9 +56,9 @@
 |-------|-------|-------------------|
 | Main | MiMo v2.5 Pro | ~$0.002 |
 | FORGE | MiniMax M2.7 | ~$0.001 |
-| AUDITOR | MiniMax M3 | ~$0.002 |
+| AUDITOR | DeepSeek V4 Pro | ~$0.002 |
 | OPS | MiniMax M2.5-HS | ~$0.0005 |
-| PLAN | MiniMax M2.7-HS | ~$0.001 |
+| PLAN | Kimi K2.7 Code | ~$0.001 |
 | Small | Azure GPT-4.1-mini | ~$0.0004 |
 
 Daily budget: $2.00/session. If approaching limit, switch to cheaper models.
