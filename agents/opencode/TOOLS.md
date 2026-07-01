@@ -90,15 +90,15 @@ curl -sf http://localhost:7071/health && echo "aforge OK" || echo "aforge DOWN"
 
 If a server is DOWN, proceed read-only on live servers. Do NOT assume dead server config is valid.
 
-## Model Rotation (2026-06-25)
+## Model Rotation (2026-07-01)
 
 | Agent | Model | Why |
 |-------|-------|-----|
 | Main (OpenCode) | MiMo v2.5 Pro | 1M context, reasoning, tool_call |
 | FORGE | MiniMax M2.7 | Tool execution + reasoning |
-| AUDITOR | MiniMax M3 | Deep reasoning, latest model |
+| AUDITOR | DeepSeek V4 Pro | 1M ctx, deep reasoning |
 | OPS | MiniMax M2.5-HS | Fast monitoring |
-| PLAN | MiniMax M2.7-HS | Fast planning |
+| PLAN | Kimi K2.7 Code | 256K ctx, agentic planning |
 | Small tasks | Azure GPT-4.1-mini | Cheap, fast |
 
 ---
