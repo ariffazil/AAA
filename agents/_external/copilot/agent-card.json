@@ -1,5 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.0.0",
+  "schemaVersion": "2.0.0",
   "id": "copilot",
   "name": "GitHub Copilot CLI",
   "principal_agent": {
@@ -8,7 +9,7 @@
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
   "description": "GitHub Copilot CLI forge instrument \u2014 Microsoft/OpenAI coding harness. Wired to federation MCPs. F1-F13 enforced.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "model": "gpt-5 / claude-sonnet-4",
   "binary": "/usr/bin/copilot",
   "tier": "FI",
@@ -239,6 +240,43 @@
       "floor_scope": [
         "F4",
         "F11"
+      ]
+    }
+  ],
+  "topological_role": "Generator",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/copilot",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "1.0.0",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
       ]
     }
   ]

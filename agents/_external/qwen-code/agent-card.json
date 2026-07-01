@@ -1,14 +1,15 @@
 {
   "$schema": "arifOS/agent-card/v2.0.0",
+  "schemaVersion": "2.0.0",
   "id": "qwen-code",
   "name": "Qwen Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Qwen/MiniMax bridge — the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Qwen/MiniMax bridge \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Qwen CLI harness on af-forge, bridged into arifOS federation"
   },
-  "description": "Qwen Code CLI forge instrument — lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
-  "version": "1.0.0",
+  "description": "Qwen Code CLI forge instrument \u2014 lightweight reasoning and exploration harness on af-forge. Bound to AAA as a bridge-mode FI citizen. F1-F13 enforced.",
+  "version": "2.0.0",
   "model": "qwen / MiniMax-M3 bridge",
   "binary": "/root/.npm-global/bin/qwen",
   "config": "/root/.qwen/settings.json",
@@ -105,57 +106,173 @@
       "id": "hermes-opencode-protocol",
       "name": "Hermes/OpenCode Protocol",
       "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates.",
-      "tags": ["protocol", "F1-F13", "execution", "FI"],
-      "floor_scope": ["F1", "F2", "F4", "F8", "F11", "F13"]
+      "tags": [
+        "protocol",
+        "F1-F13",
+        "execution",
+        "FI"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F13"
+      ]
     },
     {
       "id": "agentic-architecture",
       "name": "Agentic Architecture",
       "description": "Class-level skill for designing sovereign agentic agents. F8, F11 enforced.",
-      "tags": ["architecture", "agent", "design", "F8"],
-      "floor_scope": ["F8", "F11"]
+      "tags": [
+        "architecture",
+        "agent",
+        "design",
+        "F8"
+      ],
+      "floor_scope": [
+        "F8",
+        "F11"
+      ]
     },
     {
       "id": "fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. F2, F9 enforced.",
-      "tags": ["fabrication", "F2", "F9", "verification"],
-      "floor_scope": ["F2", "F9", "F11"]
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. F2, F9 enforced.",
+      "tags": [
+        "fabrication",
+        "F2",
+        "F9",
+        "verification"
+      ],
+      "floor_scope": [
+        "F2",
+        "F9",
+        "F11"
+      ]
     },
     {
       "id": "autonomous-governed-execution",
       "name": "Autonomous Governed Execution",
       "description": "Autonomous governed execution with verify-before-report and evidence-cite-or-UNKNOWN discipline.",
-      "tags": ["autonomous", "F1-F13", "execution", "T1-T3"],
-      "floor_scope": ["F1", "F2", "F4", "F7", "F11", "F13"]
+      "tags": [
+        "autonomous",
+        "F1-F13",
+        "execution",
+        "T1-T3"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F11",
+        "F13"
+      ]
     },
     {
       "id": "arifos-arconstitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
       "description": "Read-only constitutional audit of arifOS code and agent cards. F1, F2, F4, F7, F9, F11, F13 enforced.",
-      "tags": ["constitutional", "audit", "F1-F13", "read-only"],
-      "floor_scope": ["F1", "F2", "F4", "F7", "F9", "F11", "F13"]
+      "tags": [
+        "constitutional",
+        "audit",
+        "F1-F13",
+        "read-only"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ]
     },
     {
       "id": "070-lock-humility-godel",
       "name": "Godel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before high-confidence claims.",
-      "tags": ["humility", "F7", "self-critique", "epistemic"],
-      "floor_scope": ["F2", "F7"]
+      "tags": [
+        "humility",
+        "F7",
+        "self-critique",
+        "epistemic"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7"
+      ]
     },
     {
       "id": "github-workflow",
       "name": "GitHub Workflow",
       "description": "Umbrella skill for GitHub operations. F1, F11 enforced.",
-      "tags": ["github", "workflow", "PR", "issues"],
-      "floor_scope": ["F1", "F11"]
+      "tags": [
+        "github",
+        "workflow",
+        "PR",
+        "issues"
+      ],
+      "floor_scope": [
+        "F1",
+        "F11"
+      ]
     },
     {
       "id": "arifos-mcp-federation",
       "name": "arifOS MCP Federation",
       "description": "Route tasks across two or more federation MCP servers, with bridge fallback when native MCP is absent.",
-      "tags": ["MCP", "federation", "routing", "multi-organ"],
-      "floor_scope": ["F4", "F7", "F11"]
+      "tags": [
+        "MCP",
+        "federation",
+        "routing",
+        "multi-organ"
+      ],
+      "floor_scope": [
+        "F4",
+        "F7",
+        "F11"
+      ]
+    }
+  ],
+  "topological_role": "Generator",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/qwen-code",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "1.0.0",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
+      ]
     }
   ]
 }

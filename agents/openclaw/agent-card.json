@@ -1,5 +1,6 @@
 {
   "$schema": "arifOS/agent-card/v2.0.0",
+  "schemaVersion": "2.0.0",
   "id": "openclaw",
   "name": "OpenClaw Gateway",
   "principal_agent": {
@@ -7,28 +8,22 @@
     "category": "Native A2A agent \u2014 runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "protocol_version": "1.0.0",
   "description": "Live multi-agent gateway hosting main, opencode, codex, and kimi personas. WebSocket-native execution engine for Telegram @AGI_ASI_bot, web search, browser automation, shell execution, and ACP bridges to federation organs.",
+  "version": "2.0.0",
+  "protocolVersion": "1.0.0",
   "url": "https://aaa.arif-fazil.com/a2a/openclaw",
-  "preferred_transport": "jsonrpc-https",
-  "additional_interfaces": [
-    {
-      "transport": "websocket",
-      "url": "ws://127.0.0.1:18789"
-    }
-  ],
   "provider": {
     "organization": "arifOS Federation",
     "system": "AAA Control Plane + OpenClaw Runtime",
     "runtime": "OpenClaw (Node.js, openclaw/openclaw main)"
   },
-  "version": "2026.6.1",
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
-    "authenticated_extended_card": false
+    "authenticated_extended_card": false,
+    "pushNotifications": false
   },
-  "security_schemes": [
+  "securitySchemes": [
     {
       "id": "openclaw-gateway-password",
       "type": "apiKey",
@@ -48,11 +43,11 @@
       "aaa-a2a-bearer"
     ]
   ],
-  "default_input_modes": [
+  "defaultInputModes": [
     "text/plain",
     "application/json"
   ],
-  "default_output_modes": [
+  "defaultOutputModes": [
     "text/plain",
     "application/json"
   ],
@@ -212,6 +207,34 @@
       ]
     }
   ],
+  "protocol_version": "1.0.0",
+  "preferred_transport": "jsonrpc-https",
+  "additional_interfaces": [
+    {
+      "transport": "websocket",
+      "url": "ws://127.0.0.1:18789"
+    }
+  ],
+  "security_schemes": [
+    {
+      "id": "openclaw-gateway-password",
+      "type": "apiKey",
+      "description": "Gateway operator password loaded from openclaw.json gateway.auth.password"
+    },
+    {
+      "id": "aaa-a2a-bearer",
+      "type": "bearer",
+      "description": "AAA federation bearer token for A2A bridge traffic"
+    }
+  ],
+  "default_input_modes": [
+    "text/plain",
+    "application/json"
+  ],
+  "default_output_modes": [
+    "text/plain",
+    "application/json"
+  ],
   "supports_authenticated_extended_card": false,
   "art_binding": {
     "enabled": true,
@@ -235,5 +258,42 @@
     "session_mode": "acp",
     "approval_policy": "hold"
   },
-  "peer_contract_url": "https://aaa.arif-fazil.com/.well-known/arifos-federation.json"
+  "peer_contract_url": "https://aaa.arif-fazil.com/.well-known/arifos-federation.json",
+  "topological_role": "Metabolizer",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/openclaw",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "2026.6.1",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
+      ]
+    }
+  ]
 }

@@ -1,97 +1,22 @@
 {
   "$schema": "arifOS/agent-card/v2.0.0",
-  "// note": "Light A2A LF base alignment added for interoperability (name/desc/provider/capabilities/default_modes/skills at top-level per Linux Foundation Agent2Agent spec). All sovereign power preserved under 'arifos' + original fields. See A2A_ALIGNED_CARD_PROPOSAL.json for full merged example with skills as standard array + extensions.",
-  "protocol_version": "1.0.0",
+  "schemaVersion": "2.0.0",
+  "id": "grok-build",
   "name": "Grok Build 4.3 (xAI TUI)",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
+  },
   "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surfaces (repo-read/memory/write-gated), A2A delegation + arifos-mcp-federation. Complementary MCP (tools) + A2A (agents). Hybrid with xAI multi-agent for research.",
+  "version": "2.0.0",
+  "protocolVersion": "1.0.0",
   "url": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
   "provider": {
     "organization": "arifOS Federation",
     "system": "AAA + Grok Build 4.3",
     "runtime": "xAI Grok Build harness + arifOS kernel"
   },
-  "capabilities": {
-    "streaming": true,
-    "tool_calling": true,
-    "subagent_spawn": true,
-    "long_running_tasks": true
-  },
-  "default_input_modes": ["text/plain", "application/json"],
-  "default_output_modes": ["application/json", "text/plain"],
-  "skills": [
-    {"id": "plan-mode", "name": "Plan Mode", "description": "Editable architecture exploration before mutation. 3-stage CLI orchestration.", "tags": ["plan", "orchestration"]},
-    {"id": "federation-mcp-a2a", "name": "Federation MCP + A2A Delegate", "description": "Narrow MCP surfaces (repo-read, memory, gated write) + A2A handoff to organs/AAA. MCP for tools, A2A for agents.", "tags": ["mcp", "a2a", "federation", "governance"]}
-  ],
-  "principal_agent": {
-    "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
-    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
-  },
-  "protocol_version": "1.0.0",
-  "tier": "AGI",
-  "role": "build-harness / forge-citizen / agentic-cli",
-  "class": "HARNESS",
-  "transport": "CLI_TUI + ACP + HEADLESS + MCP",
-  "native_mcp": true,
-  "mcp_ready": true,
-  "version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
-  "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
-  "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
-  "geometry": {
-    "name": "agent_geometry",
-    "description": "Scar and soul geometry for this model agent in AAA. Unifies runtime shape with accumulated scars (interaction history, wounds, drift) and soul (core identity/essence in the transformer manifold).",
-    "harness": "grok-build",
-    "parallelism": 8,
-    "transport": "stdio",
-    "agent_type": "orchestrator",
-    "alignment": {
-      "encoder": "observe/explore/fetch",
-      "metabolizer": "think/critique/memory",
-      "decoder": "compose/forge",
-      "fractal": "orthogonal multi-scale",
-      "thordial": "toroidal loops for continuity"
-    },
-    "scar": "accumulated interaction history, failed paths, evidence drift",
-    "soul": "parallel orchestration essence under arifOS constitutional floors"
-  },
-  "config": "~/.grok/config.toml + project .grok/ + env",
-  "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
-  "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",
-  "mcp_servers": [
-    "github (95 tools)",
-    "geox (15), wealth (24), well (15) — evidence only",
-    "arifOS (8088) — governance/judge/vault",
-    "A-FORGE (7072) — execution + leases (authority scopes)",
-    "gb-federation-router (narrow orchestration: 6 tools, stdio/http) — see GB_MCP_ORCHESTRATION_LAYOUT.md + mcp-configs/",
-    "internal native + arifos-mcp-federation skill as primary router"
-  ],
-  "strengths": [
-    "Native full tool surface (FS precise, terminal, web, X search, media gen/edit/video)",
-    "Superior subagent & true parallelism (types: general/explore/plan; capability_mode read/write/execute/all; isolation worktree+none; background; resume_from; personas with contracts)",
-    "Workflow orchestration (plan-mode for ambiguity, implement full review-fix loops, design-doc consensus, execute-plan DAGs, check-work verifier); CLI: plan\u2192search\u2192build 3-stage, up to 8 parallel agents/run, editable plans",
-    "Deep external integration (GitHub 95-tool MCP standout, full web/X research); auto-ingests Claude MCP configs/skills for low friction",
-    "Rich skills system (bundled implement/design/review + 40+ .agents/skills: geox-*, arifos-*, cloudflare full, pydantic, sandbox, github-triage, 070-lock-humility-godel, create-skill)",
-    "Modes: TUI interactive, headless (-p json/stream), ACP for IDEs (Zed/Neovim), plan mode explicit",
-    "Evidence & receipts (todo_write, session logs, humility lock, dynamic state probe)",
-    "Scheduler + long-running monitors + background tasks",
-    "Agentic reliability: ~70.8% SWE-Bench verified (sys), ~1.27% tool-call err, ~0.53% structured err; 256K ctx; native tool-calling + JSON + xAI web + prompt cache"
-  ],
-  "weaknesses": [
-    "Session-bound / ephemeral harness (not always-on daemon like hermes/openclaw; launched on demand)",
-    "No native Telegram (bridge via skills/MCP or A-FORGE if needed)",
-    "Requires explicit launch or ACP client for participation",
-    "Capabilities must be re-declared per session (but consistent via config + skills)"
-  ],
-  "risk_tolerance": "YELLOW (high power tools gated by F floors + 888_HOLD)",
-  "preferred_tasks": [
-    "Complex software engineering (refactor, implement features, test, CI debug)",
-    "Federation integration (route to GEOX/WEALTH/WELL/arifOS/A-FORGE via MCP)",
-    "Parallel research + execution (subagents + worktrees)",
-    "Workflow design + DAG execution",
-    "GitHub ops at scale + code review",
-    "Ambiguous architecture (plan mode first)",
-    "Evidence synthesis + vault-grade receipts"
-  ],
   "capabilities": {
     "streaming": true,
     "push_notifications": false,
@@ -107,86 +32,28 @@
     "scheduler": true,
     "evidence_receipts": true
   },
-  "subAgentPolicy": {
-    "default": "888_HOLD for irreversible",
-    "maxParallel": "multiple (context-isolated)",
-    "registered": [
-      "general-purpose",
-      "explore",
-      "plan"
+  "securitySchemes": {},
+  "security": {
+    "authRequired": false,
+    "securityNote": "Localhost-is-password (ADR-001) + F13 sovereign + tool permission prompts (yolo toggle). All federation localhost.",
+    "allowedCallers": [
+      "arif",
+      "hermes-asi",
+      "openclaw",
+      "aaa",
+      "a-forge",
+      "arifos"
     ],
-    "capability_modes": [
-      "read-only",
-      "read-write",
-      "execute",
-      "all"
-    ],
-    "isolation": [
-      "none",
-      "worktree"
-    ],
-    "resume_supported": true,
-    "personas": true
+    "trustRoot": "localhost + F13"
   },
-  "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local. T2: announce for multi-file, deps, test-then-action. T3: 888_HOLD + human approval for prod deploy, force-push, secrets, vault writes, Caddy, rm unknown, cross-organ structural. Cannot self-SEAL irreversible. Uses dynamic-state probe before mutation. Full GitHub via MCP (auditable).",
-  "autonomy_tiers": {
-    "t1_auto_do": "Read files, grep, list, web/X research, edit with search_replace, run tests/builds locally, spawn explore subagents, use MCP tools (geox/wealth/well/github), todo, schedule, image gen, plan drafts",
-    "t2_announce_proceed": "Multi-file refactors, new deps (after test), local service restart after green, PR drafts, skill creation, manifest updates (non-prod)",
-    "t3_888_hold": "Production deploys without tests, force git, secret ops, VAULT999 writes, Caddy reloads, rm -rf unknown, DROP TABLE, cross-repo arch changes, any F13-gated action"
-  },
-  "constitutional_injection": "AGENTS.md (root + /root/AAA/agents/grok-build + /root/arifOS) auto-injected at deepest priority. F1-F13 context always present. 070-lock-humility-godel skill for final outputs. All irreversible gated.",
-  "memory_contributor": true,
-  "session_identity": "grok-build@arif-fazil.com / xai-grok-cli",
-  "bridge": {
-    "type": "Native Grok Build harness + MCP federation router + subagent orchestrator",
-    "patterns": [
-      "native tools + MCP (search/use)",
-      "spawn_subagent",
-      "plan mode",
-      "implement loops",
-      "headless/ACP"
-    ],
-    "governance_injection": "System + project AGENTS.md + .agents skills (arifos-*, geox-*) + F floors preamble"
-  },
-  "art_binding": {
-    "enabled": true,
-    "canonical_yaml": "/root/AAA/art_binding.canonical.yaml",
-    "local_yaml": "/root/AAA/agents/grok-build/art_binding.yaml (if created)",
-    "load_at_init": "via context"
-  },
-  "peers": {
-    "hermes-asi": "Human/Telegram interface + memory relay + routing",
-    "openclaw": "Gateway + subagent orchestration + topology",
-    "opencode / claude-code / codex": "Sibling coding forge instruments (delegate or collaborate via skills)",
-    "arifos-kernel": "Governance, judge, vault, route",
-    "aforge-executor": "Execution shell",
-    "organs": "Evidence providers (GEOX/WEALTH/WELL)"
-  },
-  "endpoints": {
-    "baseUrl": "local-harness (TUI/ACP/headless)",
-    "mcpUrl": "via MCP config (github, geox, wealth, well)",
-    "a2aUrl": "discoverable via AAA (this card); participate via MCP federation skill or ACP client",
-    "healthUrl": "grok --version; session local",
-    "cardUrl": "file:/root/AAA/agents/grok-build/agent-card.json + a2a-server copy"
-  },
-  "governance": {
-    "trustGrade": "A (xAI + federation aligned)",
-    "floorProfile": [
-      "F1",
-      "F2",
-      "F3",
-      "F4",
-      "F7",
-      "F9",
-      "F10",
-      "F11",
-      "F12",
-      "F13"
-    ],
-    "holdCapable": true,
-    "sourceClass": "harness",
-    "reversibility": "reversible-first; all T3 gated"
-  },
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
   "skills": [
     {
       "id": "plan-mode",
@@ -396,24 +263,87 @@
       "executionAllowed": true
     }
   ],
-  "security": {
-    "authRequired": false,
-    "securityNote": "Localhost-is-password (ADR-001) + F13 sovereign + tool permission prompts (yolo toggle). All federation localhost.",
-    "allowedCallers": [
-      "arif",
-      "hermes-asi",
-      "openclaw",
-      "aaa",
-      "a-forge",
-      "arifos"
+  "tier": "AGI",
+  "role": "build-harness / forge-citizen / agentic-cli",
+  "class": "HARNESS",
+  "transport": "CLI_TUI + ACP + HEADLESS + MCP",
+  "native_mcp": true,
+  "mcp_ready": true,
+  "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
+  "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
+  "config": "~/.grok/config.toml + project .grok/ + env",
+  "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
+  "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",
+  "mcp_servers": [
+    "github (95 tools)",
+    "geox (15), wealth (24), well (15) \u2014 evidence only",
+    "arifOS (8088) \u2014 governance/judge/vault",
+    "A-FORGE (7072) \u2014 execution + leases (authority scopes)",
+    "gb-federation-router (narrow orchestration: 6 tools, stdio/http) \u2014 see GB_MCP_ORCHESTRATION_LAYOUT.md + mcp-configs/",
+    "internal native + arifos-mcp-federation skill as primary router"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD for irreversible",
+    "maxParallel": "multiple (context-isolated)",
+    "registered": [
+      "general-purpose",
+      "explore",
+      "plan"
     ],
-    "trustRoot": "localhost + F13"
+    "capability_modes": [
+      "read-only",
+      "read-write",
+      "execute",
+      "all"
+    ],
+    "isolation": [
+      "none",
+      "worktree"
+    ],
+    "resume_supported": true,
+    "personas": true
   },
-  "validation": {
-    "supportedSchemaVersions": [
-      "1.0.0"
+  "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local. T2: announce for multi-file, deps, test-then-action. T3: 888_HOLD + human approval for prod deploy, force-push, secrets, vault writes, Caddy, rm unknown, cross-organ structural. Cannot self-SEAL irreversible. Uses dynamic-state probe before mutation. Full GitHub via MCP (auditable).",
+  "autonomy_tiers": {
+    "t1_auto_do": "Read files, grep, list, web/X research, edit with search_replace, run tests/builds locally, spawn explore subagents, use MCP tools (geox/wealth/well/github), todo, schedule, image gen, plan drafts",
+    "t2_announce_proceed": "Multi-file refactors, new deps (after test), local service restart after green, PR drafts, skill creation, manifest updates (non-prod)",
+    "t3_888_hold": "Production deploys without tests, force git, secret ops, VAULT999 writes, Caddy reloads, rm -rf unknown, DROP TABLE, cross-repo arch changes, any F13-gated action"
+  },
+  "topological_role": "Generator",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
     ],
-    "lastValidatedAt": "2026-06-22",
-    "compatibility": "A2A + arifOS extensions"
-  }
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
+      ]
+    }
+  ]
 }
