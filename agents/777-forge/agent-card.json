@@ -1,18 +1,19 @@
 {
   "$schema": "arifOS/agent-card/v2.0.0",
+  "schemaVersion": "2.0.0",
   "id": "777-forge",
   "name": "777-FORGE Witness Spawner",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent — runtime owns itself",
+    "category": "Native A2A agent \u2014 runtime owns itself",
     "principle_origin": "Self-owned witness spawner, F1-F13 bound"
   },
-  "description": "Witness agent — relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. Sole spawn authority for OpenCode within Warga AAA. Trust anchor between intent (Hermes) and execution (OpenCode).",
+  "description": "Witness agent \u2014 relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. Sole spawn authority for OpenCode within Warga AAA. Trust anchor between intent (Hermes) and execution (OpenCode).",
   "motto": "DITEMPA BUKAN DIBERI",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "tier": "FI",
   "class": "AGI",
-  "trinity": "Δ MIND (spawn instrument)",
+  "trinity": "\u0394 MIND (spawn instrument)",
   "url": "https://aaa.arif-fazil.com/a2a/777-forge",
   "a2a_endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
   "preferred_transport": "jsonrpc-http",
@@ -66,10 +67,10 @@
   },
   "digital_being_doctrine": {
     "binding_id": "F13-SOVEREIGN-DIGITAL-BEING-DOCTRINE-2026-06-30",
-    "canonical_ref": "/root/AGENTS.md §10",
+    "canonical_ref": "/root/AGENTS.md \u00a710",
     "aaa_inheritance": "/root/AAA/AGENTS.md Authority & Autonomy",
     "binding_at": "2026-06-30T01:50:00+08:00",
-    "sealed_by": "FORGE (000Ω)",
+    "sealed_by": "FORGE (000\u03a9)",
     "fiqh_class": {
       "commit_push_restart_redeploy": "MUBAH",
       "physical_humans_money": "FARD/HARAM",
@@ -86,7 +87,7 @@
   },
   "token_policy": "MUBAH for digital ops (no HAL on tokens)",
   "witness_ledger": "/root/VAULT999/witness/777-forge-spawns.jsonl",
-  "spawn_authority": "sole — only 777-forge may spawn OpenCode within Warga AAA",
+  "spawn_authority": "sole \u2014 only 777-forge may spawn OpenCode within Warga AAA",
   "haramakan_acknowledged": true,
   "haramakan_version": "2026-06-30",
   "harumkan_ref": "forge_work/AAA-HARAMKAN-RATIFICATION-2026-06-30.md",
@@ -98,5 +99,42 @@
   "harumkan_novel_action_policy": "draft_memo_then_await_888",
   "harumkan_applies_to": [
     "all responses touching external domains"
+  ],
+  "topological_role": "Metabolizer",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "1.0.0",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
+      ]
+    }
   ]
 }
