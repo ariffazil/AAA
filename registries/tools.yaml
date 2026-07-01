@@ -1142,13 +1142,13 @@ tools:
   approval_policy: on-demand
   execution_kind: execute
   required_witnesses: []
-  - id: document_ingest
-    name: document_ingest
-    description: Layout-first document intelligence engine. Modes - analyze (structure tree), extract (full pipeline with bbox provenance), chunk (semantic/section/page for RAG), compare (structural diff). Uses pymupdf + tesseract eng+msa. Read-only, blast_radius LOW. SHA-256 provenance on every extraction. VAULT999-compatible bounding-box coordinates.
-    source_type: mcp
-    server_ref: a-forge-mcp
-    risk_tier: low
-    approval_policy: auto
-    execution_kind: observe
-    required_witnesses: []
+- id: document_ingest
+  name: document_ingest
+  description: Layout-first document intelligence engine. Modes - analyze (structure tree), extract (full pipeline with bbox provenance), chunk (semantic/section/page for RAG), compare (structural diff). Uses pymupdf + tesseract eng+msa. Read-only, blast_radius LOW. SHA-256 provenance on every extraction. VAULT999-compatible bounding-box coordinates.
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: auto
+  execution_kind: observe
+  required_witnesses: []
 
