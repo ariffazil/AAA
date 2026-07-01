@@ -149,6 +149,30 @@
       "migration": "Use chrome-devtools MCP as canonical browser interface. 3 concurrent browser systems exist (forge_browser_*, chrome-devtools, playwright).",
       "reason": "Zen: 3-way browser overlap. chrome-devtools is canonical."
     },
+    "mcp__aforge__forge_search": {
+      "status": "DEPRECATED",
+      "since": "2026-07-01",
+      "migration": "Use mcp_brave_search or arif_observe(mode='search').",
+      "reason": "Zen: redundant wrapper around Brave. 17→7 search surface. Canonical: mcp_brave_search."
+    },
+    "mcp__aforge__forge_research": {
+      "status": "DEPRECATED",
+      "since": "2026-07-01",
+      "migration": "Use mcp_perplexity_ask, mcp_perplexity_reason, or mcp_perplexity_research.",
+      "reason": "Zen: redundant wrapper around Perplexity. 17→7 search surface. Canonical: hermes mcp_perplexity_*."
+    },
+    "mcp__hermes__web_extract": {
+      "status": "DEPRECATED",
+      "since": "2026-07-01",
+      "migration": "Use forge_web_extract (Playwright + Readability).",
+      "reason": "Zen: Tavily API is DEAD (402). forge_web_extract is the replacement."
+    },
+    "mcp__hermes__mcp_perplexity_search": {
+      "status": "DEPRECATED",
+      "since": "2026-07-01",
+      "migration": "Use mcp_brave_search for raw results. Use mcp_perplexity_ask for AI-synthesized answers.",
+      "reason": "Zen: redundant with mcp_brave_search. 17→7 search surface."
+    },
     "mcp__geox__geox_surface_status": {
       "status": "LEGACY",
       "since": "2026-06-28",
