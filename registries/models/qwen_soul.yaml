@@ -3,17 +3,20 @@
 # arifOS Model Registry
 # Authority: F13 SOVEREIGN (Arif Fazil)
 # Forged: 2026-06-12 by Omega (Ω)
+# Updated: 2026-07-01 by FORGE (000Ω) — Qwen Token Plan expansion
 # Status: PROPOSAL — awaiting F13 ed25519 signature for CANON
-# Source: Public evaluations + Alibaba Qwen documentation
+# Source: Public evaluations + Alibaba Qwen documentation + bailian-token-plan live config
 # References:
 #   [1] Qwen Technical Reports (Qwen2/2.5/3)
 #   [2] Independent evaluations (hallucination, coding, math)
 #   [3] arifOS external audit by Qwen agent (2026-06-12)
+#   [4] bailian-token-plan live config at /root/.config/opencode/opencode.json
 
 model_id: qwen
-model_family: Qwen
-provider: Alibaba Cloud (Tongyi Qianwen)
-license: Apache 2.0 (open-weight)
+model_family: Qwen (Token Plan)
+provider: Alibaba Cloud (Tongyi Qianwen via bailian-token-plan)
+license: Proprietary (bailian-token-plan terms)
+endpoint: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
 type: text-generation, code-generation, multimodal (vision-capable variants)
 
 soul:
@@ -74,5 +77,50 @@ soul:
     - qwen3.5-397b: "Largest open variant, strongest but highest hallucination risk"
     - qwen3-coder: "Code-optimized variant"
     - qwen3-safe-rl: "Safety-aligned variant (behavioral guard, not architectural)"
+
+  # ── Qwen Token Plan variants (via bailian-token-plan, ap-southeast-1) ──
+  token_plan_variants:
+    qwen3.7-max:
+      description: "Flagship Qwen via Token Plan. 256K ctx, reasoning+vision+text, thinking budget 8192."
+      status: LIVE
+      context_window: 262144
+      capabilities: [reasoning, vision, code, multilingual, agentic]
+      endpoint: https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
+
+    qwen3.7-plus:
+      description: "Qwen 3.7 Plus via Token Plan. 256K ctx, reasoning+vision+text."
+      status: LIVE
+      context_window: 262144
+      capabilities: [reasoning, vision, code, multilingual, agentic]
+
+    qwen3.6-plus:
+      description: "Qwen 3.6 Plus via Token Plan. 128K ctx, fast reasoning+vision."
+      status: LIVE
+      context_window: 131072
+      capabilities: [reasoning, vision, code, multilingual]
+
+    qwen3.6-flash:
+      description: "Qwen 3.6 Flash via Token Plan. 128K ctx, fastest inference. OpenCode small_model default."
+      status: LIVE
+      context_window: 131072
+      capabilities: [reasoning, vision, code, multilingual]
+
+  # ── Sibling models available via same Token Plan endpoint ──
+  token_plan_siblings:
+    deepseek-v4-pro:
+      description: "DeepSeek V4 Pro via bailian-token-plan. 1M ctx, deep reasoning."
+      status: LIVE
+    deepseek-v4-flash:
+      description: "DeepSeek V4 Flash via bailian-token-plan. 1M ctx, fastest. Current session."
+      status: LIVE
+    kimi-k2.7-code:
+      description: "Kimi K2.7 Code via bailian-token-plan. 256K ctx, vision, thinking."
+      status: LIVE
+    glm-5.2:
+      description: "GLM-5.2 via bailian-token-plan. 200K ctx, reasoning."
+      status: LIVE
+    MiniMax-M2.5:
+      description: "MiniMax M2.5 via bailian-token-plan. 131K ctx."
+      status: LIVE
 
 ditempa_bukan_diberi: true
