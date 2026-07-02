@@ -6,11 +6,11 @@
   "principal_agent": {
     "type": "llm",
     "category": "LLM-as-principal (MiMo/MiniMax \u2014 the model is the principal, CLI is harness)",
-    "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + DeepSeek V4 Pro (auditor) + Kimi K2.7 Code (planner) + MiniMax M2.7/M2.5-HS (forge/ops)"
+    "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + GLM-5.2 (forge) + DeepSeek V4 Pro (auditor) + Kimi K2.7 Code (planner) + MiniMax M2.5-HS (ops) + Qwen 3.6 Flash (small)"
   },
-  "description": "OpenCode CLI warga (external forge instrument) \u2014 provider-agnostic coding harness bound to 333-AGI (\u0394 MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.7/M2.5-HS (forge/ops), GPT-4.1-mini (small). HEXAGON external warga v3.0.0.",
-  "version": "3.0.0",
-  "model": "kimi-coding/kimi-for-coding",
+  "description": "OpenCode CLI warga (external forge instrument) \u2014 provider-agnostic coding harness bound to 333-AGI (\u0394 MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0.",
+  "version": "3.1.0",
+  "model": "tokenplan-mimo/mimo-v2.5-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
@@ -94,11 +94,11 @@
       "all"
     ],
     "model_rotation": {
-      "forge": "minimax/MiniMax-M2.7",
+      "forge": "bailian-token-plan/glm-5.2",
       "auditor": "bailian-token-plan/deepseek-v4-pro",
       "ops": "minimax/MiniMax-M2.5-highspeed",
       "planner": "bailian-token-plan/kimi-k2.7-code",
-      "explore": "azure-openai/gpt-4.1-mini"
+      "explore": "bailian-token-plan/qwen3.6-flash"
     }
   },
   "autonomy_tiers": {

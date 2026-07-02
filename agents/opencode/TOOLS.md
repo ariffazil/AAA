@@ -90,18 +90,27 @@ curl -sf http://localhost:7071/health && echo "aforge OK" || echo "aforge DOWN"
 
 If a server is DOWN, proceed read-only on live servers. Do NOT assume dead server config is valid.
 
-## Model Rotation (2026-07-01)
+## Model Rotation (2026-07-02 — corrected)
 
-| Agent | Model | Why |
-|-------|-------|-----|
-| Main (OpenCode) | MiMo v2.5 Pro | 1M context, reasoning, tool_call |
-| FORGE | MiniMax M2.7 | Tool execution + reasoning |
-| AUDITOR | DeepSeek V4 Pro | 1M ctx, deep reasoning |
-| OPS | MiniMax M2.5-HS | Fast monitoring |
-| PLAN | Kimi K2.7 Code | 256K ctx, agentic planning |
-| Small tasks | Azure GPT-4.1-mini | Cheap, fast |
+| Agent | Model | Provider | Why |
+|-------|-------|----------|-----|
+| Main (OpenCode) | MiMo V2.5 Pro | Xiaomi token-plan-sgp | Flagship reasoning, 1M ctx, tool_call |
+| FORGE | GLM-5.2 | Bailian token-plan | 200K ctx, tool_call + reasoning |
+| AUDITOR | DeepSeek V4 Pro | Bailian token-plan | 1M ctx, deep reasoning |
+| OPS | MiniMax M2.7 Highspeed | MiniMax direct | Fast + reasoning, 200K, monitoring |
+| PLAN | Kimi K2.7 Code | Bailian token-plan | 256K ctx, agentic planning |
+| Small | Qwen 3.6 Flash | Bailian token-plan | 128K ctx, fast, vision |
+
+### MiniMax Tier Map (corrected 2026-07-02)
+
+| Model | Context | Use Case | Cost per M |
+|-------|---------|----------|------------|
+| M3 | **1M** | Flagship, long-context, multimodal | $0.30/$1.20 promo → $0.60/$2.40 |
+| M2.7 | **200K** | Workhorse, tool_call, reasoning | $0.30/$1.20 |
+| M2.7 Highspeed | **200K** | Fast workhorse, ops/monitoring | ~$0.30/$1.20 |
+| M2.5 Highspeed | 131K | Cheapest, text-only, basic ops | $0.15/M |
 
 ---
 
-*Forged: 2026-06-25*
+*Forged: 2026-06-25 · Model rotation corrected: 2026-07-02*
 *DITEMPA BUKAN DIBERI*

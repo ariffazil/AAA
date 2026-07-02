@@ -47,15 +47,13 @@ function getA2ADiscoveryContract() {
 const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const TASK_STATES: readonly TaskState[] = [
-  'submitted',
-  'working',
-  'input-required',
-  'completed',
-  'failed',
-  'canceled',
-  'rejected',
-  'auth-required',
-  'unknown',
+  'TASK_STATE_SUBMITTED',
+  'TASK_STATE_WORKING',
+  'TASK_STATE_INPUT_REQUIRED',
+  'TASK_STATE_COMPLETED',
+  'TASK_STATE_FAILED',
+  'TASK_STATE_CANCELED',
+  'TASK_STATE_REJECTED',
 ];
 
 const ORGANS = [
