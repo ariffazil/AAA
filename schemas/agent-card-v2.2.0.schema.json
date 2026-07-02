@@ -116,7 +116,7 @@
       "type": "object",
       "properties": {
         "type": { "type": "string", "enum": ["exposed", "consumed"] },
-        "endpoints": { "type": "array", "items": { "type": "object", "required": ["url"], "properties": { "url": {"type":"string"}, "tool_count": {"type":"integer"}, "key_lanes": {"type":"array","items":{"type":"string"}}, "version": {"type":"string"} } } },
+        "endpoints": { "type": "array", "items": { "type": "object", "required": ["url"], "properties": { "url": {"type":"string"}, "tool_count": {"type":"integer"}, "tools": {"type":"array","items":{"type":"string"},"description":"Canonical tool names this agent exposes/consumes. Enables A2A tool discovery: 'who has geox_basin?'"}, "key_lanes": {"type":"array","items":{"type":"string"}}, "version": {"type":"string"} } } },
         "consumed_from": { "type": "array", "items": { "type": "string" } }
       }
     },
@@ -347,6 +347,12 @@
       "id": "INV-003",
       "description": "Warn on mcp_servers without mcp_surface",
       "rule": "if mcp_servers present and mcp_surface absent -> emit deprecation warning",
+      "severity": "warn"
+    },
+    {
+      "id": "INV-004",
+      "description": "mcp_surface.endpoints should declare tools for A2A tool discovery",
+      "rule": "if mcp_surface.endpoints present then each endpoint with tool_count > 0 should have tools array with length > 0",
       "severity": "warn"
     }
   ],
