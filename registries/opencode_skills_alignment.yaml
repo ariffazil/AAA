@@ -1,0 +1,554 @@
+# Auto-generated: 2026-07-02T03:18:23.196360
+# Source: /root/.agents/skills/ (47 skills)
+# OpenCode discovery path: ~/.agents/skills/**/SKILL.md
+# TREE777: alive but stale — reports 51, indexes ~10
+# AKAR: alive — 000-AKAR with SKILL.md + prompts/
+# Forged by: FORGE (000Ω) — GLM-5.2
+# DITEMPA BUKAN DIBERI
+
+version: 2
+generated: '2026-07-02T03:18:23.196360'
+source: /root/.agents/skills/
+total_skills: 47
+discovery_path: ~/.agents/skills/**/SKILL.md
+
+opencode_agents:
+  forge: bailian-token-plan/glm-5.2
+  auditor: bailian-token-plan/deepseek-v4-pro
+  ops: minimax/MiniMax-M2.5-highspeed
+  planner: bailian-token-plan/kimi-k2.7-code
+
+status:
+  tree777: 'alive but stale — reports 51, indexes ~10'
+  akar: 'alive — 000-AKAR with SKILL.md + prompts/'
+
+domains:
+  aaa: 1 skills
+  aforge: 5 skills
+  federation: 2 skills
+  general: 6 skills
+  geox: 7 skills
+  infrastructure: 8 skills
+  meta: 11 skills
+  symbolic: 2 skills
+  wealth: 4 skills
+  well: 1 skills
+
+skills:
+- id: 000-init-intent-classify
+  dir: 000-init-intent-classify
+  description: 'Golden path entry — classify intent, route, initialize session. Stage 1.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: general
+  stage: 1
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['session', 'routing']
+  path: /root/.agents/skills/000-init-intent-classify/SKILL.md
+
+- id: 010-forge-execute-warrant
+  dir: 010-forge-execute-warrant
+  description: 'Execution gate — valid SEAL required. Stage 6.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: aforge
+  stage: 6
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['forge']
+  path: /root/.agents/skills/010-forge-execute-warrant/SKILL.md
+
+- id: 111-sense-evidence-observe
+  dir: 111-sense-evidence-observe
+  description: 'Evidence binding — OBSERVED, RETRIEVED, MEMORY, INFERENCE labels. Stage 2.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: general
+  stage: 2
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['evidence', 'audit']
+  path: /root/.agents/skills/111-sense-evidence-observe/SKILL.md
+
+- id: 333-mind-plan-generate
+  dir: 333-mind-plan-generate
+  description: 'Evidence to plan — no self-approval, no hidden uncertainty. Stage 3.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: general
+  stage: 3
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/333-mind-plan-generate/SKILL.md
+
+- id: 666-heart-critique-stress
+  dir: 666-heart-critique-stress
+  description: 'Stress-test plan — ethics, harm, dignity, capital. Stage 4.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: general
+  stage: 4
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/666-heart-critique-stress/SKILL.md
+
+- id: 888-judge-verdict-render
+  dir: 888-judge-verdict-render
+  description: 'Constitutional verdict — SEAL/SABAR/HOLD/VOID. Stage 5 of 7.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: general
+  stage: 5
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['judge']
+  path: /root/.agents/skills/888-judge-verdict-render/SKILL.md
+
+- id: 999-vault-seal-immutable
+  dir: 999-vault-seal-immutable
+  description: 'Seal action to civilizational memory. VAULT999 record. Stage 7.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: general
+  stage: 7
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['seal']
+  path: /root/.agents/skills/999-vault-seal-immutable/SKILL.md
+
+- id: HOST_MEMBRANE_AWARENESS
+  dir: HOST_MEMBRANE_AWARENESS
+  description: ''
+  version: 'unknown'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/HOST_MEMBRANE_AWARENESS/SKILL.md
+
+- id: a2a-federation-builder
+  dir: a2a-federation-builder
+  description: 'Build A2A inter-agent surface — Agent Cards at /.well-known/agent.json, JSON-RPC 2.0 /a2a endpoint, AGENT_REGISTRY.json federation directory. Aligned to /canon/A2A.md v1.0 (2026-06-27).'
+  version: '1.1.0-2026.06.27'
+  forged: 'unknown'
+  domain: federation
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['organ-bridge', 'build']
+  path: /root/.agents/skills/a2a-federation-builder/SKILL.md
+
+- id: aaa-state-cockpit
+  dir: aaa-cockpit
+  description: 'AAA control plane — agent registry, session cockpit, A2A gateway.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: aaa
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'ops', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/aaa-cockpit/SKILL.md
+
+- id: aforger-governed-execution
+  dir: aforge-execution
+  description: 'A-FORGE execution — build, deploy, verify. Gated by arifOS SEAL.'
+  version: '1.1.0-2026.06.27'
+  forged: 'unknown'
+  domain: aforge
+  stage: 0
+  opencode_agents: ['forge']
+  capability_tags: ['forge']
+  path: /root/.agents/skills/aforge-execution/SKILL.md
+
+- id: agentic-builder
+  dir: agentic-builder
+  description: 'Meta-skill for building governed agents. Identity, skills, tools.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['build']
+  path: /root/.agents/skills/agentic-builder/SKILL.md
+
+- id: agentic-fitness-law
+  dir: agentic-fitness-law
+  description: 'The sealed Eureka insight about agentic intelligence, digital tool physics, entropy, and governed MCP evolution. Load when designing tools, evaluating fitness, pruning aliases, or reasoning about why '
+  version: '1.0.0'
+  forged: '2026-06-30'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['audit']
+  path: /root/.agents/skills/agentic-fitness-law/SKILL.md
+
+- id: agentic-web-optimization
+  dir: agentic-web-optimization
+  description: ''
+  version: 'unknown'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/agentic-web-optimization/SKILL.md
+
+- id: apex-theory
+  dir: apex-theory
+  description: 'Unified APEX Theory — physics + math + symbolic code + meaning. Three-stream synthesis: Federation APEX (constitutional self-critique), arXiv APEX (physics-grounded LLM planning), Thermodynamic APEX ('
+  version: '1.0.0'
+  forged: '2026-06-28'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/apex-theory/SKILL.md
+
+- id: arif-fazil-site
+  dir: arif-fazil-site
+  description: ''
+  version: 'unknown'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/arif-fazil-site/SKILL.md
+
+- id: entropy-thermo-zen
+  dir: entropy-thermo-zen
+  description: 'Thermodynamic entropy management for the arifOS federation. Measures system chaos, classifies entropy sources (stash/archivable/stale/active), executes reduction via Zen observation → thermodynamic an'
+  version: '1.0.0'
+  forged: '2026-06-28'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['cleanup']
+  path: /root/.agents/skills/entropy-thermo-zen/SKILL.md
+
+- id: federation-observability
+  dir: federation-observability
+  description: 'Instrument federation with OpenTelemetry, Prometheus, Grafana, LGTM stack.'
+  version: '1.1.0-2026.06.27'
+  forged: 'unknown'
+  domain: federation
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['organ-bridge', 'audit']
+  path: /root/.agents/skills/federation-observability/SKILL.md
+
+- id: forge-document-intelligence
+  dir: forge-document-intelligence
+  description: 'EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill. OCR is basic'
+  version: '1.0.0'
+  forged: '2026-07-02'
+  domain: aforge
+  stage: 0
+  opencode_agents: ['forge']
+  capability_tags: ['forge', 'evidence']
+  path: /root/.agents/skills/forge-document-intelligence/SKILL.md
+
+- id: forge-opencode-spawn
+  dir: forge-opencode-spawn
+  description: 'Spawn OpenCode CLI sessions with git worktree isolation, session tracking, and witness receipts. Use when a task requires governed OpenCode execution, multiple isolated worktrees, or hash-chained audi'
+  version: 'unknown'
+  forged: 'unknown'
+  domain: aforge
+  stage: 0
+  opencode_agents: ['forge']
+  capability_tags: ['forge']
+  path: /root/.agents/skills/forge-opencode-spawn/SKILL.md
+
+- id: geox-claim-grammar
+  dir: geox-claim-grammar
+  description: 'Geological claim structure — evidence_for, evidence_against, missing_tests.'
+  version: '1.0.0-2026.06.24'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['claim']
+  path: /root/.agents/skills/geox-claim-grammar/SKILL.md
+
+- id: geox-constitution
+  dir: geox-constitution
+  description: 'GEOX constitutional floors, epistemic style, 888 HOLD triggers.'
+  version: '1.0.0-2026.06.24'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/geox-constitution/SKILL.md
+
+- id: geox-contradiction-engine
+  dir: geox-contradiction-engine
+  description: 'Multi-hypothesis contradiction scanner. Flags conflicting evidence.'
+  version: '1.0.0-2026.06.24'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/geox-contradiction-engine/SKILL.md
+
+- id: geox-earth-evidence
+  dir: geox-earth-evidence
+  description: 'GEOX evidence discipline — artifact refs, uncertainty, handoff protocol.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['evidence']
+  path: /root/.agents/skills/geox-earth-evidence/SKILL.md
+
+- id: geox-epistemic-ladder
+  dir: geox-epistemic-ladder
+  description: 'Epistemic rungs — OBSERVED → DERIVED → INTERPRETED → HYPOTHESIS.'
+  version: '1.0.0-2026.06.24'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/geox-epistemic-ladder/SKILL.md
+
+- id: geox-petrophysics-bounds
+  dir: geox-petrophysics-bounds
+  description: 'Bounded transforms — Vsh, porosity, Sw, AI, permeability, QC.'
+  version: '1.0.0-2026.06.24'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['geoscience']
+  path: /root/.agents/skills/geox-petrophysics-bounds/SKILL.md
+
+- id: geox-redteam-hantu
+  dir: geox-redteam-hantu
+  description: 'Anti-hallucination guardian for GEOX. F9 enforcement.'
+  version: '1.0.0-2026.06.24'
+  forged: 'unknown'
+  domain: geox
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/geox-redteam-hantu/SKILL.md
+
+- id: GitHub Operations
+  dir: github-operations/claude
+  description: '>'
+  version: '1.1.0'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/github-operations/claude/SKILL.md
+
+- id: hf-mastery
+  dir: hf-mastery
+  description: 'Governed Hugging Face operations for arifOS, covering Hub actions, datasets, tokenization, inference, fine-tuning, evaluation, and security checks under constitutional constraints. Use when work touch'
+  version: 'unknown'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/hf-mastery/SKILL.md
+
+- id: iron-shell-render
+  dir: iron-shell-render
+  description: 'Three-layer site architecture — Static Shell (t=0 guaranteed render) / Dynamic Data (schema-gated) / Canon (append-only). Plus PanelBoundary fallback + agent discovery files.'
+  version: '1.0.0-2026.06.27'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/iron-shell-render/SKILL.md
+
+- id: mcp-apps-builder
+  dir: mcp-apps-builder
+  description: 'Build MCP Apps (SEP-1865) — interactive HTML UI inside AI conversations. Tools return UI components rendered in sandboxed iframe.'
+  version: '1.0.0-2026.06.27'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['api-discovery', 'build']
+  path: /root/.agents/skills/mcp-apps-builder/SKILL.md
+
+- id: MCP Mastery
+  dir: mcp-mastery
+  description: '>'
+  version: '1.2.0-2026.06.30'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['api-discovery']
+  path: /root/.agents/skills/mcp-mastery/SKILL.md
+
+- id: mcp-zen-authoring
+  dir: mcp-zen-authoring
+  description: ''
+  version: 'unknown'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['api-discovery', 'cleanup']
+  path: /root/.agents/skills/mcp-zen-authoring/SKILL.md
+
+- id: meta-mesa-skill-atlas
+  dir: meta-mesa-skill-atlas
+  description: 'Unified skill inventory, gap detection, and cross-cutting orchestration for all 35 arifOS federation skills. The mesa above the terrain — see the whole, find the missing, route the right skill. Load w'
+  version: '1.0.0'
+  forged: '2026-06-28'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/meta-mesa-skill-atlas/SKILL.md
+
+- id: reality-loop-operator
+  dir: reality-loop-operator
+  description: 'Operate the perpetual A-FORGE reality loop across observation, hypothesis generation, execution, entropy checks, and sealing. Use when an agent needs to run or reason through the autonomous multi-stag'
+  version: 'unknown'
+  forged: 'unknown'
+  domain: aforge
+  stage: 0
+  opencode_agents: ['forge']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/reality-loop-operator/SKILL.md
+
+- id: skill-creator
+  dir: skill-creator
+  description: 'Bootstrap, design, and package new skills.'
+  version: '1.0.0'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/skill-creator/SKILL.md
+
+- id: symbolic-order-collective-bias
+  dir: symbolic-order-collective-bias
+  description: '>'
+  version: '1.0.0-2026.06.28'
+  forged: 'unknown'
+  domain: symbolic
+  stage: 0
+  opencode_agents: ['auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/symbolic-order-collective-bias/SKILL.md
+
+- id: symbolic-order-trust-architecture
+  dir: symbolic-order-trust-architecture
+  description: '>'
+  version: '1.0.0-2026.06.28'
+  forged: 'unknown'
+  domain: symbolic
+  stage: 0
+  opencode_agents: ['auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/symbolic-order-trust-architecture/SKILL.md
+
+- id: tool-fitness-compiler
+  dir: tool-fitness-compiler
+  description: '>'
+  version: '1.0.0'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['audit']
+  path: /root/.agents/skills/tool-fitness-compiler/SKILL.md
+
+- id: tools-embodiment-application
+  dir: tools-embodiment-application
+  description: 'Unified embodiment map for 100+ federation MCP tools — which organ, which transport, which authority, and how to choose the right tool for a given goal.'
+  version: '1.0.0-2026.06.28'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/tools-embodiment-application/SKILL.md
+
+- id: wealth-capital-reasoning
+  dir: wealth-capital-reasoning
+  description: 'WEALTH capital reasoning — POS, EMV, valuation, governed consequence.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: wealth
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['capital']
+  path: /root/.agents/skills/wealth-capital-reasoning/SKILL.md
+
+- id: wealth-capital-thermodynamics
+  dir: wealth-capital-thermodynamics
+  description: '>'
+  version: '1.0.0'
+  forged: 'unknown'
+  domain: wealth
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['capital']
+  path: /root/.agents/skills/wealth-capital-thermodynamics/SKILL.md
+
+- id: wealth-collapse-signature
+  dir: wealth-collapse-signature
+  description: '>'
+  version: '1.0.0'
+  forged: 'unknown'
+  domain: wealth
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['finance']
+  path: /root/.agents/skills/wealth-collapse-signature/SKILL.md
+
+- id: wealth-law-anthropology
+  dir: wealth-law-anthropology
+  description: '>'
+  version: '1.0.0'
+  forged: 'unknown'
+  domain: wealth
+  stage: 0
+  opencode_agents: ['forge', 'planner']
+  capability_tags: ['orchestrate']
+  path: /root/.agents/skills/wealth-law-anthropology/SKILL.md
+
+- id: webmcp-site-builder
+  dir: webmcp-site-builder
+  description: 'Build WebMCP sites — declare tools via navigator.modelContext. W3C origin trial Chrome 149-156.'
+  version: '1.0.0-2026.06.27'
+  forged: 'unknown'
+  domain: infrastructure
+  stage: 0
+  opencode_agents: ['forge', 'ops']
+  capability_tags: ['api-discovery', 'build']
+  path: /root/.agents/skills/webmcp-site-builder/SKILL.md
+
+- id: well-substrate-readiness
+  dir: well-substrate-readiness
+  description: 'Human readiness — vitality, fatigue, dignity. Reflect, never diagnose.'
+  version: '1.0.0-2026.06.25'
+  forged: 'unknown'
+  domain: well
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'ops']
+  capability_tags: ['vitality']
+  path: /root/.agents/skills/well-substrate-readiness/SKILL.md
+
+- id: zen-diagnostic-probe
+  dir: zen-diagnostic-probe
+  description: ''
+  version: 'unknown'
+  forged: 'unknown'
+  domain: meta
+  stage: 0
+  opencode_agents: ['forge', 'auditor', 'planner']
+  capability_tags: ['cleanup']
+  path: /root/.agents/skills/zen-diagnostic-probe/SKILL.md
+
