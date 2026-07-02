@@ -52,18 +52,18 @@
 
 ## Model Cost Tracking
 
-| Agent | Model | Est. Cost/1K tokens |
-|-------|-------|-------------------|
-| Main | MiMo v2.5 Pro | ~$0.002 |
-| FORGE | MiniMax M2.7 | ~$0.001 |
-| AUDITOR | DeepSeek V4 Pro | ~$0.002 |
-| OPS | MiniMax M2.5-HS | ~$0.0005 |
-| PLAN | Kimi K2.7 Code | ~$0.001 |
-| Small | Azure GPT-4.1-mini | ~$0.0004 |
+| Agent | Model | Provider |
+|-------|-------|----------|
+| Main | MiMo V2.5 Pro | Xiaomi token-plan-sgp |
+| FORGE | GLM-5.2 | Bailian token-plan |
+| AUDITOR | DeepSeek V4 Pro | Bailian token-plan |
+| OPS | MiniMax M2.7 Highspeed | MiniMax direct |
+| PLAN | Kimi K2.7 Code | Bailian token-plan |
+| Small | Qwen 3.6 Flash | Bailian token-plan |
 
-Daily budget: $2.00/session. If approaching limit, switch to cheaper models.
+Daily budget: $2.00/session. 3 providers, 15 models, 1 unified billing (Bailian covers 4 agents).
 
 ---
 
-*Forged: 2026-06-25*
+*Forged: 2026-06-25 · Model rotation corrected: 2026-07-02*
 *DITEMPA BUKAN DIBERI*

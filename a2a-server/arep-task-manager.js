@@ -357,15 +357,15 @@ function validateAREPDeclaration(task) {
 // ARET TASK LIFECYCLE — state machine
 // ═══════════════════════════════════════════════════════════════════
 
-const VALID_STATES = ['submitted', 'working', 'input-required', 'completed', 'failed', 'canceled', 'rejected'];
+const VALID_STATES = ['TASK_STATE_SUBMITTED', 'TASK_STATE_WORKING', 'TASK_STATE_INPUT_REQUIRED', 'TASK_STATE_COMPLETED', 'TASK_STATE_FAILED', 'TASK_STATE_CANCELED', 'TASK_STATE_REJECTED'];
 const VALID_TRANSITIONS = {
-  'submitted':     ['working', 'rejected', 'canceled'],
-  'working':       ['completed', 'failed', 'input-required', 'canceled'],
-  'input-required': ['working', 'canceled', 'rejected'],
-  'completed':     [],  // terminal
-  'failed':        [],  // terminal
-  'canceled':      [],  // terminal
-  'rejected':      [],  // terminal
+  'TASK_STATE_SUBMITTED':     ['TASK_STATE_WORKING', 'TASK_STATE_REJECTED', 'TASK_STATE_CANCELED'],
+  'TASK_STATE_WORKING':       ['TASK_STATE_COMPLETED', 'TASK_STATE_FAILED', 'TASK_STATE_INPUT_REQUIRED', 'TASK_STATE_CANCELED'],
+  'TASK_STATE_INPUT_REQUIRED': ['TASK_STATE_WORKING', 'TASK_STATE_CANCELED', 'TASK_STATE_REJECTED'],
+  'TASK_STATE_COMPLETED':     [],  // terminal
+  'TASK_STATE_FAILED':        [],  // terminal
+  'TASK_STATE_CANCELED':      [],  // terminal
+  'TASK_STATE_REJECTED':      [],  // terminal
 };
 
 /**
@@ -376,7 +376,7 @@ function transitionTaskState(task, newState, actorId, note) {
     throw new Error(`Invalid state: ${newState}`);
   }
 
-  const currentState = task.task_lifecycle?.current_state || 'submitted';
+  const currentState = task.task_lifecycle?.current_state || 'TASK_STATE_SUBMITTED';
   const allowed = VALID_TRANSITIONS[currentState] || [];
   
   if (!allowed.includes(newState)) {
@@ -427,7 +427,7 @@ async function processAREPTask(task, taskStore, executeFn) {
   const validation = validateAREPDeclaration(task);
   if (!validation.valid) {
     task.task_lifecycle = task.task_lifecycle || {};
-    task.task_lifecycle.current_state = 'rejected';
+    task.task_lifecycle.current_state = 'TASK_STATE_REJECTED';
     return {
       accepted: false,
       task,
@@ -439,9 +439,9 @@ async function processAREPTask(task, taskStore, executeFn) {
 
   // 2. Initialize task
   task.task_lifecycle = task.task_lifecycle || {};
-  task.task_lifecycle.current_state = 'submitted';
+  task.task_lifecycle.current_state = 'TASK_STATE_SUBMITTED';
   task.task_lifecycle.state_history = [{
-    state: 'submitted',
+    state: 'TASK_STATE_SUBMITTED',
     timestamp: new Date().toISOString(),
     actor_id: task.principal.actor_id,
     evidence_layer_at_transition: 'INFERRED',
@@ -461,7 +461,7 @@ async function processAREPTask(task, taskStore, executeFn) {
 
   if (LAYER_ORDINALS[currentLayer] > LAYER_ORDINALS[requiredLayer]) {
     // Evidence insufficient → hold or reject
-    transitionTaskState(task, 'input-required', 'arifos-kernel',
+    transitionTaskState(task, 'TASK_STATE_INPUT_REQUIRED', 'arifos-kernel',
       `Evidence insufficient: required ${requiredLayer}, current ${currentLayer}. Waiting for human ratification.`);
     
     return {
@@ -476,7 +476,7 @@ async function processAREPTask(task, taskStore, executeFn) {
   // 5. Check for HALT violations
   const haltViolations = gateResult.violations.filter(v => v.action === 'HALT');
   if (haltViolations.length > 0) {
-    transitionTaskState(task, 'rejected', 'arifos-kernel',
+    transitionTaskState(task, 'TASK_STATE_REJECTED', 'arifos-kernel',
       `Reality gate HALT: ${haltViolations.map(v => v.message).join('; ')}`);
     
     return {
@@ -491,7 +491,7 @@ async function processAREPTask(task, taskStore, executeFn) {
   // 6. Check for ESCALATE violations
   const escalateViolations = gateResult.violations.filter(v => v.action === 'ESCALATE');
   if (escalateViolations.length > 0) {
-    transitionTaskState(task, 'input-required', 'arifos-kernel',
+    transitionTaskState(task, 'TASK_STATE_INPUT_REQUIRED', 'arifos-kernel',
       `Reality gate ESCALATE: ${escalateViolations.map(v => v.message).join('; ')}`);
     
     return {
@@ -504,7 +504,7 @@ async function processAREPTask(task, taskStore, executeFn) {
   }
 
   // 7. All gates passed → execute
-  transitionTaskState(task, 'working', 'arifos-kernel', 'Reality gates passed. Executing task.');
+  transitionTaskState(task, 'TASK_STATE_WORKING', 'arifos-kernel', 'Reality gates passed. Executing task.');
 
   // Store task
   if (taskStore) {
@@ -517,7 +517,7 @@ async function processAREPTask(task, taskStore, executeFn) {
     try {
       await executeFn(task);
     } catch (execErr) {
-      transitionTaskState(task, 'failed', 'arifos-kernel', `Execution error: ${execErr.message}`);
+      transitionTaskState(task, 'TASK_STATE_FAILED', 'arifos-kernel', `Execution error: ${execErr.message}`);
       return {
         accepted: true,
         task,
@@ -541,7 +541,7 @@ async function processAREPTask(task, taskStore, executeFn) {
  * Seal a completed AREP task to VAULT999.
  */
 async function sealAREPTask(task) {
-  transitionTaskState(task, 'completed', 'arifos-kernel', 'Task completed. Sealing to VAULT999.');
+  transitionTaskState(task, 'TASK_STATE_COMPLETED', 'arifos-kernel', 'Task completed. Sealing to VAULT999.');
 
   task.task_lifecycle.artifacts = task.task_lifecycle.artifacts || [];
   task.task_lifecycle.artifacts.push({
