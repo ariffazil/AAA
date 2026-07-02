@@ -2,7 +2,10 @@
   "$schema": "arifOS/agent-card/v2.2.0",
   "schemaVersion": "2.2.0",
   "id": "777-forge",
-  "name": "777-FORGE Witness Spawner",
+  "name": "777-FORGE Witness Spawner (RETIRED)",
+  "status": "retired",
+  "retired_at": "2026-07-02T15:40:00Z",
+  "retired_reason": "Protocol band-aid. Agent that receives the task IS the executor. No meta-executor needed. Witness protocol kept in AAA/agents/protocols/777-forge-witness-protocol.md.",
   "principal_agent": {
     "type": "agent",
     "category": "Native A2A agent \u2014 runtime owns itself",
