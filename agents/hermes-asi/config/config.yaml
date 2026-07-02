@@ -4,7 +4,7 @@ id: hermes-asi-agent
 agent_id: hermes-asi
 
 runtime:
-  model: minimax/MiniMax-M2.7
+  model: mimo-v2.5
   temperature: 0.2
   max_turns: 90
   show_reasoning: true
@@ -40,3 +40,9 @@ floors:
   - F13 # SOVEREIGNTY
 
 max_risk_tier: medium
+
+fallback_providers:
+  - provider: mimo
+    model: mimo-v2.5
+    base_url: https://token-plan-sgp.xiaomimimo.com/v1
+    api_key_env: MIMO_API_KEY

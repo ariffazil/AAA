@@ -87,18 +87,18 @@ done
 4. **geox/wealth/well down** → Domain organ offline. Skip its tools, proceed with others.
 5. **All down** → VPS issue. Check `systemctl status`, `docker ps`, `journalctl`.
 
-## Model Rotation (Active 2026-07-01)
+## Model Rotation (Active 2026-07-02)
 
 | Agent | Model | Provider |
 |-------|-------|----------|
-| Main | MiMo v2.5 Pro | Xiaomi (token-plan-sgp) |
-| FORGE | MiniMax M2.7 | MiniMax (api.minimax.io) |
-| AUDITOR | DeepSeek V4 Pro | Bailian Token Plan |
-| OPS | MiniMax M2.5-HS | MiniMax |
-| PLAN | Kimi K2.7 Code | Bailian Token Plan |
-| Small | Azure GPT-4.1-mini | Azure OpenAI |
+| Main | MiMo V2.5 Pro | Xiaomi token-plan-sgp |
+| FORGE | GLM-5.2 | Bailian token-plan |
+| AUDITOR | DeepSeek V4 Pro | Bailian token-plan |
+| OPS | MiniMax M2.7 Highspeed | MiniMax direct |
+| PLAN | Kimi K2.7 Code | Bailian token-plan |
+| Small | Qwen 3.6 Flash | Bailian token-plan |
 
 ---
 
-*Forged: 2026-06-25*
+*Forged: 2026-06-25 · Model rotation corrected: 2026-07-02*
 *DITEMPA BUKAN DIBERI*

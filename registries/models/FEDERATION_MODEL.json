@@ -1,0 +1,95 @@
+{
+  "schema": "arifos-federation-model-registry-v1",
+  "forged": "2026-07-02",
+  "authority": "F13 SOVEREIGN (Arif Fazil)",
+  "note": "Canonical lane→model mapping. Soul/shadow profiles in same directory.",
+  "models": [
+    {
+      "lane": "MAIN",
+      "agent": "FORGECODE (OpenCode)",
+      "model": "MiMo V2.5 Pro",
+      "provider": "Xiaomi / bailian-token-plan",
+      "api_key_ref": "secrets::bailian",
+      "context": 1000000,
+      "status": "ACTIVE",
+      "soul_file": "xiaomi_mimo_soul.yaml"
+    },
+    {
+      "lane": "FORGE",
+      "agent": "FORGE (000Ω)",
+      "model": "GLM-5.2",
+      "provider": "Zhipu / bailian-token-plan",
+      "api_key_ref": "secrets::bailian",
+      "context": 200000,
+      "status": "ACTIVE",
+      "soul_file": null
+    },
+    {
+      "lane": "AUDITOR",
+      "agent": "AUDITOR (Ψ)",
+      "model": "DeepSeek V4 Pro",
+      "provider": "bailian-token-plan",
+      "api_key_ref": "secrets::bailian",
+      "context": 1000000,
+      "status": "ACTIVE",
+      "soul_file": "deepseek_soul.yaml"
+    },
+    {
+      "lane": "OPS",
+      "agent": "OPS (🌐)",
+      "model": "MiniMax M2.7 Highspeed",
+      "provider": "MiniMax",
+      "api_key_ref": "secrets::minimax",
+      "context": 200000,
+      "status": "ACTIVE",
+      "soul_file": "minimax_soul.yaml"
+    },
+    {
+      "lane": "PLAN",
+      "agent": "PLAN (Ω)",
+      "model": "Kimi K2.7 Code",
+      "provider": "Moonshot / bailian-token-plan",
+      "api_key_ref": "secrets::bailian",
+      "context": 256000,
+      "status": "ACTIVE",
+      "soul_file": "kimi_soul.yaml"
+    },
+    {
+      "lane": "SMALL",
+      "agent": "Small",
+      "model": "Qwen 3.6 Flash",
+      "provider": "bailian-token-plan",
+      "api_key_ref": "secrets::bailian",
+      "context": 128000,
+      "status": "ACTIVE",
+      "soul_file": "qwen_soul.yaml"
+    },
+    {
+      "lane": "VERIFIER",
+      "agent": "AGY (333-AGI)",
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "api_key_ref": "secrets::gemini (pending)",
+      "context": 2000000,
+      "status": "PLANNED",
+      "soul_file": null
+    }
+  ],
+  "providers": {
+    "bailian": {
+      "name": "bailian-token-plan",
+      "endpoint": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "models": ["MiMo V2.5 Pro", "GLM-5.2", "DeepSeek V4 Pro", "Kimi K2.7 Code", "Qwen 3.6 Flash"]
+    },
+    "minimax": {
+      "name": "MiniMax",
+      "endpoint": "https://api.minimax.chat/v1",
+      "models": ["MiniMax M2.7 Highspeed", "MiniMax M3"]
+    },
+    "google": {
+      "name": "Google Gemini",
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta",
+      "models": ["Gemini 2.5 Pro"]
+    }
+  }
+}

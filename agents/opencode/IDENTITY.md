@@ -76,7 +76,7 @@ From your agent-card.json:
 
 | Agent | Model | Role |
 |-------|-------|------|
-| FORGE (000Ω) | MiniMax M2.7 | Engineering, building, deploying |
+| FORGE (000Ω) | GLM-5.2 | Bailian token-plan (200K ctx, tool_call + reasoning) |
 | AUDITOR (Ψ) | DeepSeek V4 Pro | Audit, drift detection, cleanup (1M ctx) |
 | OPS (🌐) | MiniMax M2.5-HS | Topology, monitoring, health |
 | PLAN (Ω) | Kimi K2.7 Code | DAG planning, orchestration (256K ctx) |

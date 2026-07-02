@@ -7,6 +7,9 @@ export interface TaskMessage {
   metadata?: Record<string, unknown>;
 }
 
+// A2A v1.0.0 Part types (official format — see schema-v1.ts for full types)
+// Phase 1: keeping legacy kind discriminator for backward compat
+// Phase 2: migrate to direct text/raw/url/data fields
 export type Part = 
   | { kind: 'text'; text: string }
   | { kind: 'file'; file: { name?: string; mimeType: string; bytes?: string; uri?: string } }
@@ -28,15 +31,13 @@ export interface Task {
 }
 
 export type TaskState = 
-  | 'submitted' 
-  | 'working' 
-  | 'input-required' 
-  | 'completed' 
-  | 'failed' 
-  | 'canceled' 
-  | 'rejected' 
-  | 'auth-required' 
-  | 'unknown';
+  | 'TASK_STATE_SUBMITTED' 
+  | 'TASK_STATE_WORKING' 
+  | 'TASK_STATE_INPUT_REQUIRED' 
+  | 'TASK_STATE_COMPLETED' 
+  | 'TASK_STATE_FAILED' 
+  | 'TASK_STATE_CANCELED' 
+  | 'TASK_STATE_REJECTED';
 
 export interface Artifact {
   artifactId: string;
