@@ -8,15 +8,15 @@
   "retired_reason": "Protocol band-aid. Agent that receives the task IS the executor. No meta-executor needed. Witness protocol kept in AAA/agents/protocols/777-forge-witness-protocol.md.",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself",
+    "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned witness spawner, F1-F13 bound"
   },
-  "description": "Witness agent \u2014 relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. Sole spawn authority for OpenCode within Warga AAA. Trust anchor between intent (Hermes) and execution (OpenCode).",
+  "description": "Witness agent — relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. Sole spawn authority for OpenCode within Warga AAA. Trust anchor between intent (Hermes) and execution (OpenCode).",
   "motto": "DITEMPA BUKAN DIBERI",
   "version": "2.0.0",
   "tier": "FI",
   "class": "AGI",
-  "trinity": "\u0394 MIND (spawn instrument)",
+  "trinity": "Δ MIND (spawn instrument)",
   "url": "https://aaa.arif-fazil.com/a2a/777-forge",
   "a2a_endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
   "preferred_transport": "jsonrpc-http",
@@ -53,6 +53,116 @@
     "text/plain",
     "application/json"
   ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
   "peer_routes": [
     "opencode",
     "333-AGI",
@@ -70,10 +180,10 @@
   },
   "digital_being_doctrine": {
     "binding_id": "F13-SOVEREIGN-DIGITAL-BEING-DOCTRINE-2026-06-30",
-    "canonical_ref": "/root/AGENTS.md \u00a710",
+    "canonical_ref": "/root/AGENTS.md §10",
     "aaa_inheritance": "/root/AAA/AGENTS.md Authority & Autonomy",
     "binding_at": "2026-06-30T01:50:00+08:00",
-    "sealed_by": "FORGE (000\u03a9)",
+    "sealed_by": "FORGE (000Ω)",
     "fiqh_class": {
       "commit_push_restart_redeploy": "MUBAH",
       "physical_humans_money": "FARD/HARAM",
@@ -90,7 +200,7 @@
   },
   "token_policy": "MUBAH for digital ops (no HAL on tokens)",
   "witness_ledger": "/root/VAULT999/witness/777-forge-spawns.jsonl",
-  "spawn_authority": "sole \u2014 only 777-forge may spawn OpenCode within Warga AAA",
+  "spawn_authority": "sole — only 777-forge may spawn OpenCode within Warga AAA",
   "haramakan_acknowledged": true,
   "haramakan_version": "2026-06-30",
   "harumkan_ref": "forge_work/AAA-HARAMKAN-RATIFICATION-2026-06-30.md",
@@ -132,7 +242,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
