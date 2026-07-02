@@ -439,6 +439,64 @@ const VERDICT = {
   CLAIM_ONLY: 'CLAIM_ONLY'
 };
 
+// === CONSTITUTIONAL → A2A WIRE FORMAT MAPPING ===
+// Governance sits ABOVE transport. Internal verdicts map to official A2A states.
+// HOLD (human review needed) → INPUT_REQUIRED (A2A understands this)
+// VOID (constitutional violation) → REJECTED
+// SEAL (approved) → COMPLETED
+const VERDICT_TO_A2A_STATE = {
+  'SEAL': 'TASK_STATE_COMPLETED',
+  'HOLD_888': 'TASK_STATE_INPUT_REQUIRED',
+  'VOID': 'TASK_STATE_REJECTED',
+  'CLAIM_ONLY': 'TASK_STATE_COMPLETED',
+};
+
+// Internal state → A2A wire format (Phase 1 dual-mode)
+const STATE_TO_A2A_WIRE = {
+  'submitted': 'TASK_STATE_SUBMITTED',
+  'working': 'TASK_STATE_WORKING',
+  'completed': 'TASK_STATE_COMPLETED',
+  'failed': 'TASK_STATE_FAILED',
+  'canceled': 'TASK_STATE_CANCELED',
+  'rejected': 'TASK_STATE_REJECTED',
+  'pending-human-review': 'TASK_STATE_INPUT_REQUIRED',
+  'voided': 'TASK_STATE_REJECTED',
+  'input-required': 'TASK_STATE_INPUT_REQUIRED',
+  // Already A2A format — pass through
+  'TASK_STATE_SUBMITTED': 'TASK_STATE_SUBMITTED',
+  'TASK_STATE_WORKING': 'TASK_STATE_WORKING',
+  'TASK_STATE_INPUT_REQUIRED': 'TASK_STATE_INPUT_REQUIRED',
+  'TASK_STATE_COMPLETED': 'TASK_STATE_COMPLETED',
+  'TASK_STATE_FAILED': 'TASK_STATE_FAILED',
+  'TASK_STATE_CANCELED': 'TASK_STATE_CANCELED',
+  'TASK_STATE_REJECTED': 'TASK_STATE_REJECTED',
+};
+
+function toA2AState(internalState) {
+  return STATE_TO_A2A_WIRE[internalState] || 'TASK_STATE_SUBMITTED';
+}
+
+// contextId → constitutional lineage mapping
+// A2A contextId maps to session lineage in arifOS
+// A2A taskId maps to VAULT999 receipt lineage
+const contextLineage = new Map(); // contextId → { session_id, created_at, task_ids: [] }
+
+function registerContextLineage(contextId, sessionId, taskId) {
+  if (!contextLineage.has(contextId)) {
+    contextLineage.set(contextId, {
+      contextId,
+      session_id: sessionId || null,
+      created_at: new Date().toISOString(),
+      task_ids: [],
+    });
+  }
+  const lineage = contextLineage.get(contextId);
+  if (taskId && !lineage.task_ids.includes(taskId)) {
+    lineage.task_ids.push(taskId);
+  }
+  return lineage;
+}
+
 // === SKILL APPROVAL POLICIES ===
 // Updated 2026-06-21: Default to auto. No more babysitting.
 // Three hard stops still enforced at the constitutional level (rm -rf, money, vault chain).
@@ -862,7 +920,16 @@ async function searchRag(query, limit = 5) {
 }
 
 // === A2A Agent Card v1.0.0 ===
-const AAA_AGENT_CARD = require('../src/seed/agent-card.json');
+// Official A2A v1.0.0 aligned card (2026-07-02)
+// Falls back to legacy card if official not found
+let AAA_AGENT_CARD;
+try {
+  AAA_AGENT_CARD = require('../src/seed/agent-card-official.json');
+  console.log('[AAA A2A] Loaded official A2A v1.0.0 agent card');
+} catch {
+  AAA_AGENT_CARD = require('../src/seed/agent-card.json');
+  console.log('[AAA A2A] Loaded legacy agent card (official not found)');
+}
 const DISCOVERY_ROUTING_POLICY = require('../src/seed/discovery-routing-policy.json');
 
 // === Agent Discovery (FORGE 2026-06-28: wired into main server) ===
@@ -1428,7 +1495,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === REAL AGENT DISPATCH — route to Hermes ASI ===
   if (targetAgent === 'hermes') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to Hermes ASI via direct route...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1449,8 +1516,8 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       const f9 = await invokeF9Check(responseText, taskId);
       if (!f9.clean) {
         const rejectedStatus = {
-          state: 'rejected',
-          message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA→Hermes] F9 Anti-Hallucination check failed. Verdict rejected.' }], messageId: generateId(), taskId, contextId },
+        state: 'TASK_STATE_REJECTED',
+        message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA→Hermes] F9 Anti-Hallucination check failed. Verdict rejected.' }], messageId: generateId(), taskId, contextId },
           timestamp: new Date().toISOString()
         };
         task.status = rejectedStatus;
@@ -1460,7 +1527,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       }
 
       task.status = {
-        state: agentResult.status === 'failed' ? 'failed' : 'completed',
+        state: agentResult.status === 'failed' ? 'TASK_STATE_FAILED' : 'TASK_STATE_COMPLETED',
         message: {
           role: 'agent',
           parts: [{ kind: 'text', text: `[AAA→Hermes ASI]\n${responseText}` }],
@@ -1475,7 +1542,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       const errorStatus = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→Hermes] Dispatch failed: ${err.message}. Falling back to local echo.` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1490,7 +1557,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === ROUTE TO 333-AGI ===
   if (targetAgent === '333-AGI' || targetAgent === '333' || targetAgent === 'agi') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to 333-AGI (Δ MIND) for reasoning...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1507,7 +1574,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       });
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: 'completed',
+        state: 'TASK_STATE_COMPLETED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→333-AGI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1517,7 +1584,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       task.status = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→333-AGI] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1530,7 +1597,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === ROUTE TO 555-ASI ===
   if (targetAgent === '555-ASI' || targetAgent === '555' || targetAgent === 'asi-heart') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to 555-ASI (Ω HEART) for synthesis...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1547,7 +1614,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       });
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: 'completed',
+        state: 'TASK_STATE_COMPLETED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→555-ASI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1557,7 +1624,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       task.status = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→555-ASI] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1570,7 +1637,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === ROUTE TO 888-APEX ===
   if (targetAgent === '888-APEX' || targetAgent === '888' || targetAgent === 'apex') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to 888-APEX (ΦΙ JUDGE) for verdict...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1587,7 +1654,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       });
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: 'completed',
+        state: 'TASK_STATE_COMPLETED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→888-APEX]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1597,7 +1664,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       task.status = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→888-APEX] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1610,7 +1677,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === ROUTE TO A-AUDIT ===
   if (targetAgent === 'A-AUDIT' || targetAgent === 'audit') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to A-AUDIT for compliance check...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1627,7 +1694,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       });
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: 'completed',
+        state: 'TASK_STATE_COMPLETED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-AUDIT]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1637,7 +1704,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       task.status = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-AUDIT] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1650,7 +1717,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === ROUTE TO A-ARCHIVE ===
   if (targetAgent === 'A-ARCHIVE' || targetAgent === 'archive') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to A-ARCHIVE for ledger sealing...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1667,7 +1734,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       });
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
-        state: 'completed',
+        state: 'TASK_STATE_COMPLETED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-ARCHIVE]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1677,7 +1744,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       task.status = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-ARCHIVE] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1690,7 +1757,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === ROUTE TO OPENCLAW (AGI) ===
   if (targetAgent === 'openclaw') {
     task.status = {
-      state: 'working',
+      state: 'TASK_STATE_WORKING',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to OpenClaw AGI...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1709,7 +1776,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
 
       task.status = {
-        state: 'completed',
+        state: 'TASK_STATE_COMPLETED',
         message: {
           role: 'agent',
           parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI]\n${agentResult.text}` }],
@@ -1724,7 +1791,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       return;
     } catch (err) {
       const errorStatus = {
-        state: 'failed',
+        state: 'TASK_STATE_FAILED',
         message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI] Dispatch failed: ${err.message}.` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1738,7 +1805,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   // === LOCAL PROCESSING (no targetAgent or unrecognised) ===
 
   task.status = {
-    state: 'working',
+    state: 'TASK_STATE_WORKING',
     message: { role: 'agent', parts: [{ kind: 'text', text: 'Processing your request...' }], messageId: generateId(), taskId, contextId },
     timestamp: new Date().toISOString()
   };
@@ -1749,7 +1816,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   const f9 = await invokeF9Check(userText, taskId);
   if (!f9.clean) {
     const rejectedStatus = {
-      state: 'rejected',
+      state: 'TASK_STATE_REJECTED',
       message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] F9 Anti-Hallucination check failed. Claim rejected.' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
@@ -1765,7 +1832,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     const verdict = await callArifJudge(userText, taskId, contextId, skill);
     if (verdict === VERDICT.VOID) {
       const voidStatus = {
-        state: 'voided',
+        state: 'TASK_STATE_REJECTED',
         message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] VOID — constitutional violation. Task rejected.' }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
@@ -1777,8 +1844,8 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     if (verdict === VERDICT.HOLD_888) {
       logEvent('888_HOLD', taskId, '888_JUDGE HOLD — human review required');
       const holdStatus = {
-        state: 'pending-human-review',
-        message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] HOLD_888 — human review required before execution.' }], messageId: generateId(), taskId, contextId },
+        state: 'TASK_STATE_INPUT_REQUIRED',
+        message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] HOLD — human review required before execution. Internal governance: HOLD_888.' }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.status = holdStatus;
@@ -1807,7 +1874,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
   logEvent('999_SEAL', taskId, 'Task completed — sealing to VAULT999');
   const completedStatus = {
-    state: 'completed',
+    state: 'TASK_STATE_COMPLETED',
     message: { role: 'agent', parts: [{ kind: 'text', text: responseText }], messageId: generateId(), taskId, contextId },
     timestamp: new Date().toISOString()
   };
@@ -2898,7 +2965,7 @@ app.post(['/api/message/send'], createEnvelopeValidator(), async (req, res) => {
 
     const task = {
       id: taskId, contextId,
-      status: { state: 'submitted', timestamp: new Date().toISOString() },
+      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
       artifacts: [], history: [message],
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
@@ -3038,7 +3105,7 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
 
     const task = {
       id: taskId, contextId,
-      status: { state: 'submitted', timestamp: new Date().toISOString() },
+      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
       artifacts: [], history: [message],
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
@@ -3091,7 +3158,7 @@ app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
 
     const task = {
       id: taskId, contextId,
-      status: { state: 'submitted', timestamp: new Date().toISOString() },
+      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
       artifacts: [], history: [message],
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
@@ -3158,6 +3225,165 @@ app.get('/a2a/tasks/:taskId/subscribe', jsonRpcValidate, async (req, res) => {
   req.on('close', () => { unsubscribe(); });
 });
 
+// === TASKS/LIST (A2A v1.0.0 Section 3.1.4) ===
+app.post('/a2a/tasks/list', jsonRpcValidate, async (req, res) => {
+  try {
+    const { id, params } = req.jsonrpc;
+    const filter = {
+      contextId: params?.contextId,
+      status: params?.status,
+      limit: params?.limit || 50,
+    };
+    const tasks = await taskStore.list(filter);
+    res.json(createJSONRPCResponse(id, {
+      tasks: tasks.map(t => ({
+        id: t.id, contextId: t.contextId, status: t.status,
+        artifacts: t.artifacts, metadata: t.metadata,
+      })),
+      total: tasks.length,
+    }));
+  } catch (error) {
+    console.error('[A2A] tasks/list error:', error);
+    res.status(500).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.INTERNAL_ERROR, 'Internal server error'));
+  }
+});
+
+// === PUSH NOTIFICATION CONFIG CRUD (A2A v1.0.0 Section 3.1.7-3.1.10) ===
+// POST /a2a/tasks/:taskId/pushNotificationConfig — create
+app.post('/a2a/tasks/:taskId/pushNotificationConfig', authMiddleware, async (req, res) => {
+  try {
+    const { taskId } = req.params;
+    const task = await taskStore.get(taskId);
+    if (!task) return res.status(404).json({ error: 'Task not found' });
+
+    const configId = `pnc-${generateId().slice(0, 8)}`;
+    const config = req.body;
+    if (!config?.url) return res.status(400).json({ error: 'pushNotificationConfig.url required' });
+
+    const record = await pushNotificationStore.set(taskId, configId, config);
+    res.status(201).json({ taskId, configId, pushNotificationConfig: record });
+  } catch (error) {
+    console.error('[A2A] pushNotificationConfig create error:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET /a2a/tasks/:taskId/pushNotificationConfig — list
+app.get('/a2a/tasks/:taskId/pushNotificationConfig', authMiddleware, async (req, res) => {
+  try {
+    const configs = await pushNotificationStore.list(req.params.taskId);
+    res.json({ taskId: req.params.taskId, configs });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// GET /a2a/tasks/:taskId/pushNotificationConfig/:configId — get
+app.get('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware, async (req, res) => {
+  try {
+    const config = await pushNotificationStore.get(req.params.taskId, req.params.configId);
+    if (!config) return res.status(404).json({ error: 'Config not found' });
+    res.json(config);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// DELETE /a2a/tasks/:taskId/pushNotificationConfig/:configId — delete
+app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware, async (req, res) => {
+  try {
+    const deleted = await pushNotificationStore.delete(req.params.taskId, req.params.configId);
+    if (!deleted) return res.status(404).json({ error: 'Config not found' });
+    res.json({ success: true });
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// === EXTENDED AGENT CARD (A2A v1.0.0 Section 3.1.11) ===
+// GET /.well-known/agent-card-extended.json — authenticated
+app.get('/.well-known/agent-card-extended.json', authMiddleware, (req, res) => {
+  const baseCard = { ...AAA_AGENT_CARD };
+  // Add federation topology + warga agents (sensitive, auth-only)
+  baseCard._extended = {
+    federation: 'arif-fazil.com',
+    warga_agents: ['333-AGI', '555-ASI', '888-APEX', 'A-AUDIT', 'A-ARCHIVE'],
+    organs: ['arifOS', 'A-FORGE', 'GEOX', 'WEALTH', 'WELL'],
+    trust_hierarchy: 'Human (Arif) > arifOS > AAA > A-FORGE > Specialists',
+    constitutional_floors: ['F1', 'F2', 'F4', 'F7', 'F9', 'F10', 'F11', 'F12', 'F13'],
+    governance_kernel: 'arifOS (port 8088)',
+    peer_contracts: [...PEER_CONTRACTS.keys()],
+  };
+  res.json(baseCard);
+});
+
+// === JSON-RPC METHOD ROUTER (A2A v1.0.0 Section 9.4) ===
+// Single endpoint that routes by JSON-RPC method name
+app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) => {
+  const { id, method, params } = req.jsonrpc;
+
+  switch (method) {
+    case 'message/send': {
+      // Forward to existing message/send handler logic
+      const message = params.message;
+      const msgValidation = validateMessage(message);
+      if (!msgValidation.valid) {
+        return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, msgValidation.message));
+      }
+      const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
+      const contextId = params.contextId || generateId();
+      const tenant = params.tenant || 'personal'; // A2A v1.0.0 multi-tenancy
+      const task = {
+        id: taskId, contextId, tenant,
+        status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
+        artifacts: [], history: [message],
+        metadata: { ...(params.metadata || {}), tenant },
+        created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
+      };
+      await taskStore.set(taskId, task);
+      registerContextLineage(contextId, null, taskId);
+      await executeTask(taskId, contextId, message, params.agent_id, params);
+      const updatedTask = await taskStore.get(taskId);
+      res.json(createJSONRPCResponse(id, {
+        id: taskId, contextId, tenant, status: updatedTask.status,
+        artifacts: updatedTask.artifacts, history: updatedTask.history,
+      }));
+      break;
+    }
+    case 'tasks/get': {
+      const task = await taskStore.get(params?.id);
+      if (!task) return res.status(404).json(createJSONRPCError(id, ERROR_CODES.TASK_NOT_FOUND, 'Task not found'));
+      res.json(createJSONRPCResponse(id, {
+        id: task.id, contextId: task.contextId, status: task.status,
+        artifacts: task.artifacts, history: task.history, metadata: task.metadata,
+      }));
+      break;
+    }
+    case 'tasks/list': {
+      const filter = {
+        contextId: params?.contextId,
+        status: params?.status ? toA2AState(params.status) : undefined,
+        tenant: params?.tenant,
+        limit: params?.limit || 50,
+      };
+      const tasks = await taskStore.list(filter);
+      res.json(createJSONRPCResponse(id, { tasks, total: tasks.length }));
+      break;
+    }
+    case 'tasks/cancel': {
+      const task = await taskStore.get(params?.id);
+      if (!task) return res.status(404).json(createJSONRPCError(id, ERROR_CODES.TASK_NOT_FOUND, 'Task not found'));
+      task.status.state = 'TASK_STATE_CANCELED';
+      task.updated_at = new Date().toISOString();
+      await taskStore.set(params.id, task);
+      res.json(createJSONRPCResponse(id, { id: task.id, status: task.status }));
+      break;
+    }
+    default:
+      res.status(400).json(createJSONRPCError(id, ERROR_CODES.METHOD_NOT_FOUND, `Method '${method}' not found`));
+  }
+});
+
 // =======================
 // A2A v1.0.0 SPEC ENDPOINTS
 // =======================
@@ -3200,7 +3426,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
 
     const task = {
       id: taskId, contextId,
-      status: { state: 'submitted', timestamp: new Date().toISOString() },
+      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
       artifacts: [], history: [message],
       metadata: params.metadata || {},
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
@@ -3218,7 +3444,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
     const delegationVerdict = checkDelegation(sourceAgent, targetSkill, message, PEER_CONTRACTS);
 
     if (delegationVerdict.blocked) {
-      task.status = { state: 'rejected', timestamp: new Date().toISOString(),
+      task.status = { state: 'TASK_STATE_REJECTED', timestamp: new Date().toISOString(),
         message: { role: 'agent', parts: [{ kind: 'text', text: delegationVerdict.reason }] }
       };
       await taskStore.set(taskId, task);

@@ -5,7 +5,7 @@ agent_id: opencode
 
 runtime:
   model: tokenplan-mimo/mimo-v2.5-pro
-  small_model: azure-openai/gpt-4.1-mini
+  small_model: bailian-token-plan/qwen3.6-flash
   autoupdate: true
 
 approval:
