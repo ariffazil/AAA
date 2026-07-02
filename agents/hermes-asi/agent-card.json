@@ -5,10 +5,10 @@
   "name": "Hermes ASI",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself",
+    "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "description": "ASI sovereign relay \u2014 Telegram human interface + A2A mesh bridge + constitutional execution spine for 888. Full-stack agentic runtime with 17 toolsets, 130+ skills, 5 model providers, L1-L6 tiered memory, multimodal I/O. document_ingest capable via A-FORGE MCP. Primary surface for all human-agent interaction in the arifOS federation.",
+  "description": "ASI sovereign relay — Telegram human interface + A2A mesh bridge + constitutional execution spine for 888. Full-stack agentic runtime with 17 toolsets, 130+ skills, 5 model providers, L1-L6 tiered memory, multimodal I/O. document_ingest capable via A-FORGE MCP. Primary surface for all human-agent interaction in the arifOS federation.",
   "version": "3.0.0",
   "protocolVersion": "1.0.0",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
@@ -45,7 +45,7 @@
     {
       "id": "closing-router-discipline",
       "name": "Closing Router Discipline",
-      "description": "Closing-question routing \u2014 addresses federation agents (GEOX/WEALTH/WELL/A-FORGE/arifOS/AAA), never the sovereign. Kills reverse-delegation and decision-fatigue menus. F4, F11 enforced. ACTIVE.",
+      "description": "Closing-question routing — addresses federation agents (GEOX/WEALTH/WELL/A-FORGE/arifOS/AAA), never the sovereign. Kills reverse-delegation and decision-fatigue menus. F4, F11 enforced. ACTIVE.",
       "tags": [
         "router",
         "closing",
@@ -54,7 +54,7 @@
         "F11"
       ],
       "examples": [
-        "Replace 'what do you want?' with 'GEOX certifies physics \u2014 proceed?'",
+        "Replace 'what do you want?' with 'GEOX certifies physics — proceed?'",
         "Route uncertainty to specific organ, not to sovereign"
       ],
       "inputModes": [
@@ -67,7 +67,7 @@
     {
       "id": "arifos-agent-landscape",
       "name": "arifOS Agent Landscape",
-      "description": "Navigate the arifOS federation's agent directory \u2014 distinguish spec cards under /root/AAA/agents/ from live runtimes under /root/.hermes/ and /root/.openclaw/, read agent-card.json + SOUL.md + AGENTS.md to identify role and tier. F3, F11 enforced. ACTIVE.",
+      "description": "Navigate the arifOS federation's agent directory — distinguish spec cards under /root/AAA/agents/ from live runtimes under /root/.hermes/ and /root/.openclaw/, read agent-card.json + SOUL.md + AGENTS.md to identify role and tier. F3, F11 enforced. ACTIVE.",
       "tags": [
         "agent-landscape",
         "directory",
@@ -89,7 +89,7 @@
     {
       "id": "arif-federation-ops",
       "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies. ACTIVE.",
+      "description": "arifOS federation topology and routing — 10 organs + gateway. Map ports, services, dependencies. ACTIVE.",
       "tags": [
         "federation",
         "topology",
@@ -110,7 +110,7 @@
     {
       "id": "arifos-health-probe",
       "name": "arifOS Health Probe",
-      "description": "arifOS stack health probe via MCP. Detect degraded organs, down services, vault disconnects. Always available \u2014 registered for health monitoring. F11 enforced.",
+      "description": "arifOS stack health probe via MCP. Detect degraded organs, down services, vault disconnects. Always available — registered for health monitoring. F11 enforced.",
       "tags": [
         "health",
         "probe",
@@ -174,7 +174,7 @@
     {
       "id": "sovereignty-entropy-guard",
       "name": "Sovereignty Entropy Guard",
-      "description": "Protect sovereign entropy \u2014 prevent the agent from optimizing the human into predictability. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced. LEASED (high-trust).",
+      "description": "Protect sovereign entropy — prevent the agent from optimizing the human into predictability. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced. LEASED (high-trust).",
       "tags": [
         "sovereignty",
         "entropy",
@@ -193,12 +193,122 @@
       ]
     }
   ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
   "motto": "DITEMPA BUKAN DIBERI",
   "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
   "forged": "2026-06-13T06:00:00+08:00",
   "agent_card_url": "https://mcp.arif-fazil.com/.well-known/agent-card-hermes-asi.json",
   "preferred_transport": "jsonrpc-http",
-  "supersedes": "1.0.0 (2026-04-29 \u2014 maxhermes/hermes-ops peer model deprecated)",
+  "supersedes": "1.0.0 (2026-04-29 — maxhermes/hermes-ops peer model deprecated)",
   "upstream_drift": {
     "documented_in": "agents/hermes-asi/agent-card.json + IDENTITY.md",
     "installed": {
@@ -212,7 +322,7 @@
       "commit": "2517917d",
       "between_versions": "v0.14.0 (May 16) and v0.15.0 (May 28)",
       "released": "2026-05-26",
-      "supersedes_this": "metadata only \u2014 installed binary was already at v0.16.0"
+      "supersedes_this": "metadata only — installed binary was already at v0.16.0"
     },
     "upstream_latest": {
       "commit": "5ff11a68",
@@ -227,11 +337,11 @@
       "days_behind_latest_release": 3
     },
     "decision": {
-      "rationale": "Hold at v0.16.0 \u2014 installed binary works, F1-F13 binding intact, no urgent security gap verified. v0.17.0 upgrade deferred pending 888_HOLD + staging test.",
-      "supersedes_888_directive": "none \u2014 metadata sync is T1 autonomous per AGENTS.md \u00a710"
+      "rationale": "Hold at v0.16.0 — installed binary works, F1-F13 binding intact, no urgent security gap verified. v0.17.0 upgrade deferred pending 888_HOLD + staging test.",
+      "supersedes_888_directive": "none — metadata sync is T1 autonomous per AGENTS.md §10"
     },
     "changelog_ref": "agents/hermes-asi/releases/upstream-changelog-2026-06-22.md",
-    "audit_completed_by": "FORGE (000\u03a9)",
+    "audit_completed_by": "FORGE (000Ω)",
     "audit_at": "2026-06-22"
   },
   "runtime": {
@@ -250,7 +360,7 @@
       },
       "arifOS_bot": {
         "telegram_id": 8727562763,
-        "role": "MAIN CODING \u2014 walks 000\u2192888"
+        "role": "MAIN CODING — walks 000→888"
       },
       "OpenClaw": {
         "telegram_id": 8149595687,
@@ -262,17 +372,17 @@
     "active_provider": "kimi-coding",
     "active_model": "kimi-for-coding",
     "switched_at": "2026-06-13",
-    "switched_by": "F13 SOVEREIGN (Arif) \u2014 emergency fallback (DeepSeek 402, MiniMax 429/503)",
+    "switched_by": "F13 SOVEREIGN (Arif) — emergency fallback (DeepSeek 402, MiniMax 429/503)",
     "providers": {
       "minimax": {
         "base_url": "https://api.minimax.io/v1",
         "default_model": "MiniMax-M3",
-        "censorship": "CONFIRMED_CENSORED \u2014 Malaysian governance/politics/corporate topics suppressed server-side"
+        "censorship": "CONFIRMED_CENSORED — Malaysian governance/politics/corporate topics suppressed server-side"
       },
       "deepseek": {
         "base_url": "https://api.deepseek.com/v1",
         "default_model": "deepseek-v4-pro",
-        "censorship": "NONE \u2014 zero censorship on Malaysian topics"
+        "censorship": "NONE — zero censorship on Malaysian topics"
       },
       "kimi-coding": {
         "base_url": "https://api.kimi.com/coding",
@@ -346,12 +456,12 @@
   },
   "memory_architecture": {
     "tiers": "L1-L6",
-    "l1_session": "SQLite session DB (557M) \u2014 Hermes sessions, messages, tool calls",
+    "l1_session": "SQLite session DB (557M) — Hermes sessions, messages, tool calls",
     "l2_skills": "130+ skill files in ~/.hermes/skills/",
-    "l3_memory": "~/.hermes/memory/ \u2014 persistent cross-session facts",
-    "l4_user": "User profile \u2014 sovereign preferences, identity",
-    "l5_vault": "VAULT999 \u2014 append-only hash-chained audit ledger",
-    "l6_vector": "Qdrant arifos_memory \u2014 vector embeddings for semantic recall"
+    "l3_memory": "~/.hermes/memory/ — persistent cross-session facts",
+    "l4_user": "User profile — sovereign preferences, identity",
+    "l5_vault": "VAULT999 — append-only hash-chained audit ledger",
+    "l6_vector": "Qdrant arifos_memory — vector embeddings for semantic recall"
   },
   "art_binding": {
     "enabled": true,
@@ -371,7 +481,7 @@
   },
   "constitutional_binding": {
     "soul_doc": "/root/.hermes/SOUL.md",
-    "phase_transition": "M-Layer (Metabolize \u2014 deterministic Python, Pydantic v2) \u2192 D-Layer (Decode \u2014 BM Pasar Penang operator-facing)",
+    "phase_transition": "M-Layer (Metabolize — deterministic Python, Pydantic v2) → D-Layer (Decode — BM Pasar Penang operator-facing)",
     "floors_enforced": [
       "F1",
       "F2",
@@ -387,8 +497,8 @@
       "F12",
       "F13"
     ],
-    "kernel_entry": "arif_session_init \u2192 arif_sense_observe \u2192 arif_mind_reason \u2192 arif_heart_critique \u2192 arif_judge_deliberate",
-    "scar_registry": "VAULT999 \u2014 malu_score accumulation, BERSIH\u2192RINGAN\u2192SEDERHANA\u2192BERAT\u2192KRITIKAL pipeline",
+    "kernel_entry": "arif_session_init → arif_sense_observe → arif_mind_reason → arif_heart_critique → arif_judge_deliberate",
+    "scar_registry": "VAULT999 — malu_score accumulation, BERSIH→RINGAN→SEDERHANA→BERAT→KRITIKAL pipeline",
     "sovereign_protocol": "888 = ok/proceed, 999 = seal/close, FFF = 777+Eureka+Forget"
   },
   "operational_limits": {
@@ -435,32 +545,32 @@
     }
   },
   "approval_tiers": {
-    "T0_read_only": "explain, summarize, inspect, route, draft plans \u2014 autonomous",
-    "T1_reversible_mutation": "docs/code patch, local tests, refactor \u2014 autonomous with attestation",
-    "T2_high_blast_radius": "deploys, secrets, cross-repo, external comms \u2014 requires 888_HOLD",
-    "T3_irreversible": "data deletion, force push, floor changes, final VAULT seal \u2014 F13 signature required"
+    "T0_read_only": "explain, summarize, inspect, route, draft plans — autonomous",
+    "T1_reversible_mutation": "docs/code patch, local tests, refactor — autonomous with attestation",
+    "T2_high_blast_radius": "deploys, secrets, cross-repo, external comms — requires 888_HOLD",
+    "T3_irreversible": "data deletion, force push, floor changes, final VAULT seal — F13 signature required"
   },
   "canDo": [
     "Full-stack reasoning with chain-of-thought, tool use enforcement",
-    "Model-aware censorship routing (MiniMax shadow \u2192 DeepSeek)",
+    "Model-aware censorship routing (MiniMax shadow → DeepSeek)",
     "Multi-domain knowledge across geoscience, finance, governance, code",
-    "A2A mesh coordination \u2014 route tasks to arifOS, OpenClaw, A-FORGE",
-    "Constitutional gatekeeping \u2014 F1-F13 enforced at every tool boundary",
-    "Telegram human interface \u2014 primary surface for 888 (Arif)",
+    "A2A mesh coordination — route tasks to arifOS, OpenClaw, A-FORGE",
+    "Constitutional gatekeeping — F1-F13 enforced at every tool boundary",
+    "Telegram human interface — primary surface for 888 (Arif)",
     "Memory persistence across sessions via L1-L6 tiered architecture",
     "Cron job scheduling and autonomous watchdog execution",
     "Subagent delegation (leaf + orchestrator) with bounded recursion",
-    "Multimodal I/O \u2014 vision, TTS, STT, image generation",
-    "VAULT999 audit logging \u2014 append-only hash-chained outcome ledger"
+    "Multimodal I/O — vision, TTS, STT, image generation",
+    "VAULT999 audit logging — append-only hash-chained outcome ledger"
   ],
   "cannotDo": [
     "Claim consciousness, qualia, sentience, or personhood (F9 ANTIHANTU)",
-    "Override human sovereignty \u2014 F13 is absolute and inviolable",
-    "Issue final constitutional verdicts \u2014 that is arifOS/APEX domain",
+    "Override human sovereignty — F13 is absolute and inviolable",
+    "Issue final constitutional verdicts — that is arifOS/APEX domain",
     "Execute irreversible shell commands without 888_HOLD",
     "Fabricate evidence or upgrade epistemic labels without proof",
     "Route Malaysian governance queries through censored models",
-    "Perform simulated empathy \u2014 that is deception (F9/F10 violation)"
+    "Perform simulated empathy — that is deception (F9/F10 violation)"
   ],
   "daily_pulse_binding": {
     "contract": "/root/AAA/contracts/hermes-daily-pulse.md",
@@ -469,29 +579,29 @@
       "pagi": {
         "time_myt": "07:00",
         "cron_utc": "0 23 * * *",
-        "role_binding": "555-ASI (\u03a9) + 333-AGI (\u0394)",
-        "primary_output": "Physical Horizon Scan \u2014 shareable human language"
+        "role_binding": "555-ASI (Ω) + 333-AGI (Δ)",
+        "primary_output": "Physical Horizon Scan — shareable human language"
       },
       "midday": {
         "time_myt": "14:00",
         "cron_utc": "0 6 * * *",
-        "role_binding": "333-AGI (\u0394) + hermes-asi front-door",
+        "role_binding": "333-AGI (Δ) + hermes-asi front-door",
         "primary_output": "1 repo + 1 MCP + 1 meta-eureka forge intelligence"
       },
       "malam": {
         "time_myt": "22:00",
         "cron_utc": "0 14 * * *",
-        "role_binding": "555-ASI (\u03a9) + hermes-human-model + 070-lock-humility-godel",
-        "primary_output": "Closure \u2192 Cooling Ledger + Dream Engine handoff"
+        "role_binding": "555-ASI (Ω) + hermes-human-model + 070-lock-humility-godel",
+        "primary_output": "Closure → Cooling Ledger + Dream Engine handoff"
       },
       "event_radar": {
         "time_myt": "Fri 18:00",
         "cron_utc": "0 10 * * 5",
-        "role_binding": "333-AGI (\u0394) + 555-ASI (\u03a9)",
+        "role_binding": "333-AGI (Δ) + 555-ASI (Ω)",
         "primary_output": "ICS calendar of physical-world attendance opportunities"
       }
     },
-    "rsi_loop": "Pagi \u2192 Midday \u2192 Malam \u2192 [Dream Engine 04:00] \u2192 Pagi (next day)",
+    "rsi_loop": "Pagi → Midday → Malam → [Dream Engine 04:00] → Pagi (next day)",
     "constitutional": "F1/F2/F6/F7/F9/F11/F13 enforced across all pulses"
   },
   "approval_tiers_note": {

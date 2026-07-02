@@ -6,9 +6,9 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Judge (\u03a6\u0399). Primary federation agent \u2014 constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here \u2014 but sovereignty stays with the human.",
+  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here — but sovereignty stays with the human.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/888-APEX",
   "provider": {
@@ -53,7 +53,7 @@
   "skills": [
     {
       "id": "role-binding-phi",
-      "name": "\u03a6\u0399 JUDGE Role Binding (888-APEX)",
+      "name": "ΦΙ JUDGE Role Binding (888-APEX)",
       "description": "Hermes binds to 888-APEX role for narration and request only (never final verdict). Loads arifos-arconstitutional-audit, fff-loop-protocol, kernel-observation-self-test, hold-protocol. Verdict authority stays in arifOS kernel. See contracts/hermes-role-binding.md. F1-F13 enforced.",
       "tags": [
         "role-binding",
@@ -101,7 +101,7 @@
     {
       "id": "trinity-witness",
       "name": "Trinity Witness Consensus",
-      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI \u0394, 555-ASI \u03a9, 888-APEX \u03a6\u0399). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
+      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI Δ, 555-ASI Ω, 888-APEX ΦΙ). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
       "tags": [
         "trinity",
         "consensus",
@@ -122,7 +122,7 @@
     {
       "id": "hold-protocol",
       "name": "888_HOLD Protocol",
-      "description": "Manage 888_HOLD lifecycle: trigger \u2192 document reason \u2192 notify human sovereign \u2192 await resolution \u2192 log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
+      "description": "Manage 888_HOLD lifecycle: trigger → document reason → notify human sovereign → await resolution → log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
       "tags": [
         "hold",
         "escalation",
@@ -130,7 +130,7 @@
         "human-in-loop"
       ],
       "examples": [
-        "This docker prune would remove 25GB \u2014 initiate 888_HOLD",
+        "This docker prune would remove 25GB — initiate 888_HOLD",
         "Evidence conflict detected between seismic and well data",
         "Disputed claim: certainty exceeds grounding by 40%"
       ],
@@ -177,7 +177,7 @@
         "F13"
       ],
       "examples": [
-        "Audit the kernel \u2014 confirm self-observation first",
+        "Audit the kernel — confirm self-observation first",
         "Detect split-brain condition in kernel logging",
         "Verify kernel not impersonating judge role"
       ],
@@ -191,7 +191,7 @@
     {
       "id": "fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence: Blue (diagnose) \u2192 Red (attack) \u2192 Blue (forge) \u2192 Yellow (verify) \u2192 Gold (seal). Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. Must be LEASED.",
+      "description": "5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) → Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. Must be LEASED.",
       "tags": [
         "audit",
         "recursive",
@@ -233,8 +233,8 @@
     },
     {
       "id": "070-lock-humility-godel",
-      "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. \u03a9 + \u03a6\u0399 axis. LEASED.",
+      "name": "Gödel Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. Ω + ΦΙ axis. LEASED.",
       "tags": [
         "humility",
         "F7",
@@ -253,6 +253,116 @@
       ]
     }
   ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
   "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "epistemic_floor",
@@ -262,7 +372,7 @@
       "ringPlacement": "inner",
       "parallelism": "single-model",
       "shadowAcknowledged": [
-        "thermal_delay: cold sink is slow \u2014 never invoked first",
+        "thermal_delay: cold sink is slow — never invoked first",
         "over_constraint: can mistake local minima for global truth",
         "oracle_trap: asking it everything ruins its value as final gate"
       ]

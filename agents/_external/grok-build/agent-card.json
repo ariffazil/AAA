@@ -274,14 +274,46 @@
   "config": "~/.grok/config.toml + project .grok/ + env",
   "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
   "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",
-  "mcp_servers": [
-    "github (95 tools)",
-    "geox (15), wealth (24), well (15) \u2014 evidence only",
-    "arifOS (8088) \u2014 governance/judge/vault",
-    "A-FORGE (7072) \u2014 execution + leases (authority scopes)",
-    "gb-federation-router (narrow orchestration: 6 tools, stdio/http) \u2014 see GB_MCP_ORCHESTRATION_LAYOUT.md + mcp-configs/",
-    "internal native + arifos-mcp-federation skill as primary router"
-  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": ["arif_init","arif_observe","arif_think","arif_route","arif_judge","arif_act","arif_seal"],
+        "key_lanes": ["governance","judgment","session"],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": ["forge_shell","forge_git","forge_filesystem","forge_docker","forge_execute","forge_lease","forge_probe","forge_registry","forge_vault","forge_document_ingest"],
+        "key_lanes": ["execution","build","deploy"],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": ["geox_basin","geox_prospect","geox_evidence","geox_petrophysics","geox_seismic_compute","geox_well_desurvey","geox_claim","geox_map_layers_list","geox_vision","geox_atlas"],
+        "key_lanes": ["earth","basin","seismic"],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": ["wealth_compute_emv","wealth_compute_npv","wealth_compute_irr","wealth_collapse_signature_scan","wealth_boundary_governance","wealth_wisdom_evaluate","wealth_power_audit","wealth_survival_engine","wealth_stock_analysis","wealth_monte_carlo_simulate"],
+        "key_lanes": ["capital","risk","wisdom"],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": ["well_validate_vitality","well_assess_homeostasis","well_guard_dignity","well_assess_metabolism","well_readiness","well_classify_substrate","well_health_check","well_signal_coverage"],
+        "key_lanes": ["vitality","dignity","homeostasis"],
+        "version": "2025-11-25"
+      }
+    ]
+  },
   "subAgentPolicy": {
     "default": "888_HOLD for irreversible",
     "maxParallel": "multiple (context-isolated)",
