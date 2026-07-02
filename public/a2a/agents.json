@@ -722,8 +722,8 @@
     },
     {
       "id": "777-FORGE",
-      "name": "777 FORGE 🔥🧠⚒️🌎💎",
-      "description": "The Witness (WITNESS tier). Relay Orchestrator + Session Spawn Witness. Only 777 FORGE may spawn OpenCode sessions. Hermes requests, 777 FORGE spawns and attests. Every spawn emits a cryptographically verifiable witness receipt with real PID, wall-clock timestamp, and SHA-256 hash to /root/VAULT999/witness/777-forge-spawns.jsonl. Created to prevent hermes-fabrication-2026-05-17. Arif can verify independently: ps -p <pid>.",
+      "name": "777 FORGE 🔥🧠⚒️🌎💎 [RETIRED]",
+      "description": "[RETIRED 2026-07-02] Protocol band-aid. The agent that receives the task IS the executor. No meta-executor needed. Witness protocol preserved at AAA/agents/protocols/777-forge-witness-protocol.md.",
       "version": "1.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
       "provider": {

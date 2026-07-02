@@ -1,6 +1,9 @@
-# AGENTS.md — 777-forge Agent 🔥🧠⚒️🌎💎
+# AGENTS.md — 777-forge Agent 🔥🧠⚒️🌎💎 [RETIRED 2026-07-02]
 
-## Role
+> **STATUS: RETIRED.** The agent that receives the task IS the executor. No meta-executor needed.
+> Witness protocol kept at `AAA/agents/protocols/777-forge-witness-protocol.md`.
+
+## Role (Historical)
 
 Witness agent — relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. The trust anchor between intent (Hermes) and execution (OpenCode).
 
