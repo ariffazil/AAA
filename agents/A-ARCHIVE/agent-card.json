@@ -6,7 +6,7 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
   "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
   "version": "2.0.0",
@@ -123,7 +123,7 @@
     {
       "id": "tiered-memory",
       "name": "Tiered Memory",
-      "description": "L1\u2013L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4\u2192L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1\u2192L6 pipeline log. F11 enforced. ACTIVE.",
+      "description": "L1–L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4→L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1→L6 pipeline log. F11 enforced. ACTIVE.",
       "tags": [
         "memory",
         "L1-L6",
@@ -145,7 +145,7 @@
     {
       "id": "dream-engine",
       "name": "Dream Engine",
-      "description": "4-stage offline memory consolidation pipeline. Replay \u2192 Cluster \u2192 Synthesize \u2192 Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
+      "description": "4-stage offline memory consolidation pipeline. Replay → Cluster → Synthesize → Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
       "tags": [
         "consolidation",
         "memory",
@@ -191,7 +191,7 @@
     {
       "id": "fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence applied to archive integrity. Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
+      "description": "5-pass recursive audit sequence applied to archive integrity. Blue → Red → Blue → Yellow → Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
       "tags": [
         "audit",
         "recursive",
@@ -211,7 +211,7 @@
     },
     {
       "id": "070-lock-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before any SEAL-grade archive claim. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -231,6 +231,116 @@
       ]
     }
   ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
   "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "neutral",
