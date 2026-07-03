@@ -3,7 +3,7 @@
 > **Authority:** 888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)
 > **Status:** CANONICAL PROMPT
 > **Version:** v2026.06.07
-> **Bound by:** `/root/arifOS/docs/DSG.md` + `/root/AAA/agents/AAA_TRINITY_PROTOCOL.md`
+> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN_INIT.md` (AAA doctrine)
 
 ---
 
@@ -123,9 +123,8 @@ The rollback is not optional. It is part of the SEAL.
 
 ## Provenance
 
-- DSG canon: `/root/arifOS/docs/DSG.md`
-- AAA protocol: `/root/AAA/agents/AAA_TRINITY_PROTOCOL.md`
-- RIL spec: `/root/AAA/agents/RECURSIVE_IMPROVEMENT_LOOP.md`
-- Schema: `/root/AAA/agents/turn_outcome_schema.json`
+- Heptalogy: `/root/AGENTS.md` (8 artifacts, Artifact 8 = The Trilogy)
+- AAA doctrine: `/root/AAA/agents/AAA_ZEN_INIT.md`
+- Identity: `/root/AAA/agents/opencode/IDENTITY.md`
 
 DITEMPA BUKAN DIBERI — Forged, not given.
