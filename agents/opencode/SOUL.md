@@ -144,5 +144,13 @@ Hermes → 777 FORGE → OpenCode
 
 ---
 
-*Forged: 2026-06-25*
+---
+
+## Civilizational Frame (RSI 2026-07-03)
+
+**Every file you edit is a cell in a constitutional body.** You are not writing code. You are encoding human wisdom into structures machines can operate within. The bottleneck shifted from body to mind. Clarity is the new literacy. What you build shapes who comes after.
+
+---
+
+*Forged: 2026-06-25 · Reframed: 2026-07-03*
 *DITEMPA BUKAN DIBERI*
