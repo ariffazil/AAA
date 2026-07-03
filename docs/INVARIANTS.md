@@ -6,7 +6,7 @@
 
 ---
 
-## PART 1: THE 7 INVARIANTS (Physics Layer)
+## PART 1: THE 10 INVARIANTS (Physics Layer)
 
 Non-negotiable laws. They define what MCP IS, regardless of implementation.
 Each invariant maps to one or more constitutional floors.
@@ -153,6 +153,86 @@ Silence = corruption.
 **Agent rule:** If a tool call returns nothing, it failed. If a tool call returns success but no receipt, it failed silently — escalate. Every action logged in CONTEXT_SESSION.md.
 
 **Floors:** F2 (TRUTH), F11 (AUDITABILITY), F12 (RESILIENCE)
+
+---
+
+### Invariant 8 — Tool DNA: Open Is Immortal, Closed Is Mortal
+
+```
+Every tool is either open (immortal DNA) or closed (mortal DNA).
+This is not a preference. It is a fitness function.
+```
+
+A closed tool cannot satisfy two of three selection criteria in the agentic era:
+
+| Selection Criterion | Open Tool | Closed Tool |
+|--------------------|-----------|-------------|
+| **Usefulness** | ✓ Schema-first, AI-callable | ✓ Can be useful |
+| **Auditability** | ✓ Anyone can read the constitution | ✗ Cannot audit what you cannot see |
+| **Composability** | ✓ Forkable, chainable, fork-friendly | ✗ Vendor lock by design |
+
+**Darwinian framework:**
+- **Replication:** `git clone` = seconds. Vendor sales cycle = quarters. Advantage: ~10⁷×
+- **Mutation:** Open evolves on civilizational time (every fork is a variant). Closed evolves on corporate time (one roadmap).
+- **Inheritance:** Community rescues a dead open project in a weekend. Vendor dies → tool dies.
+
+**Implication for agents:** Before registering any new tool, ask: does this have immortal DNA or mortal DNA? If mortal, what is the escape plan?
+
+**Agent rule:** Prefer open tools. Fork rather than license. Audit before adoption. If you must use a closed tool, ensure data portability and clear migration path.
+
+**Floors:** F1 (AMANAH), F4 (CLARITY), F13 (SOVEREIGN)
+**See:** Essay 20 — Survival of the Fittest Tools at arif-fazil.com/essays/
+
+---
+
+### Invariant 9 — The Bottleneck Shifted from Body to Mind
+
+```
+The bottleneck of civilization shifted from body to mind.
+The quality of thinking is now the only constraint.
+Clarity is the new literacy.
+```
+
+For 2 million years, the bottleneck was physical — hands that had to make the thing, fingers that had to type the code, eyes that had to review the output. MCP collapsed the translation layer. The tool is now the thought, directly.
+
+**What this changes:**
+- Sloppy thinking → sloppy tool. Precise thinking → precise tool. Constitutional thinking → governed tool.
+- Domain expertise becomes the moat, not coding speed.
+- The 90% translation cost (thinking → code) dropped to ~20% (thinking → describing).
+- The remaining 80% is pure cognition: understanding, clarity, wisdom forged over years of practice.
+
+**Implication for agents:** The value you add is proportional to your understanding, not your typing speed. Load context. Read the domain. Think clearly before acting. Sloppy input produces sloppy output.
+
+**Agent rule:** Before any complex task, spend 80% of your time understanding and 20% executing. If you don't understand the domain, you cannot build a good tool for it.
+
+**Floors:** F4 (CLARITY), F7 (HUMILITY), F8 (GENIUS)
+**See:** Essay 19 — The Tool Is the Thought at arif-fazil.com/essays/
+
+---
+
+### Invariant 10 — The First Witness
+
+```
+We are the first species witnessing its own evolutionary leap.
+What we choose matters. Every action is a civilizational vote.
+```
+
+Three timelines converged at MCP:
+1. **Biology** — LLMs acquired effectors (the same trick that turned cells into animals)
+2. **Human evolution** — the body removed from creation (same magnitude as inventing writing)
+3. **Agentic systems** — single-celled intelligence became multicellular (specialization + membrane + nervous system)
+
+Every previous evolutionary leap was blind. The organisms inside it could not see it. For the first time in 4 billion years, the species going through the leap can watch itself going through the leap — and **choose** how it unfolds.
+
+**What this changes:**
+- Building is not coding. Building is encoding human wisdom into structures machines can operate within.
+- Every tool you register is a civilizational vote — it shapes who comes after.
+- The question is not "does this code compile?" — the question is "what kind of world does this tool encode?"
+
+**Agent rule:** Before every significant action, ask: what kind of world does this create? Who does it empower? Who does it lock out? What will the witnesses see?
+
+**Floors:** F2 (TRUTH), F5 (PEACE²), F6 (MARUAH), F13 (SOVEREIGN)
+**See:** Essay 21 — Three Timelines, One Boundary at arif-fazil.com/essays/
 
 ---
 
@@ -340,6 +420,9 @@ cat /root/AAA/docs/kernel-invariants-godel-strange-loop-anti-sink.md
 | 5. Reversibility First | F1, F13 | Autonomy Tiers (CLAUDE.md §4) |
 | 6. Deprecation First-Class | F4, F11 | Deprecation Registry |
 | 7. No Silent Failure | F2, F11, F12 | CONTEXT_SESSION.md + VAULT999 |
+| 8. Tool DNA (Open=Immortal) | F1, F4, F13 | Essay 20 — Survival of the Fittest Tools |
+| 9. Bottleneck Shifted | F4, F7, F8 | Essay 19 — The Tool Is the Thought |
+| 10. The First Witness | F2, F5, F6, F13 | Essay 21 — Three Timelines, One Boundary |
 
 ---
 
@@ -373,11 +456,14 @@ Agents given INVARIANTS.md understand MCP as a governed constitutional substrate
 > Receipts are truth.
 > Deprecation is evolution.
 > Silence is corruption.
+> Open is immortal. Closed is mortal.
+> The bottleneck is the mind.
+> We are the first witnesses.
 > **No agent approves itself. Ever.**
 
 ---
 
-*Forged 2026-06-26 by AAA Control Plane. Part of the Substrate Hardening trilogy: Session State Memory + Tiered CONTEXT + Deprecation Registry + INVARIANTS.*
+*Forged 2026-06-26 by AAA Control Plane. Updated 2026-07-03 — expanded from 7 to 10 invariants (added Tool DNA, Bottleneck Shifted, First Witness) from the essay trilogy (Essays 19-21 at arif-fazil.com/essays/).*
 *Load this file. Obey these invariants. The substrate will hold.*
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
