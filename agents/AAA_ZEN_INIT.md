@@ -55,7 +55,7 @@ VAULT999 witness: `witness/dual-citizenship-eureka-20260703-*.jsonl`
 2. /root/CONTEXT.md (T1 live state, probe dynamic)
 3. /root/AAA/CLAUDE.md + this AAA_ZEN_INIT
 4. Organ AGENTS.md (arifOS/A-FORGE/AAA/GEOX/WEALTH/WELL)
-5. /root/AAA/docs/INVARIANTS.md + MEANING.md + TOOLREGISTRY.json (no dup tools) + deprecation
+5. /root/AAA/docs/INVARIANTS.md + AGENT_WISDOM.md (runtime sanity check — 7 checks mapped to 7 organs) + MEANING.md + TOOLREGISTRY.json (no dup tools) + deprecation
 6. Agent card + A2A peers
 7. MCP registry + organ_init prompt
 
@@ -71,6 +71,7 @@ VAULT999 witness: `witness/dual-citizenship-eureka-20260703-*.jsonl`
 ## Master Zen Load (first action for any AAA agent session)
 
 ```
+0. Load ZEN_ORGANS skill — the seven irreducible governance principles. Reality, Governance, Civilization, Execution, Memory, Witness, Meaning. If any organ is missing, degraded, or contradicted: DECLARE BEFORE ACTING. No exceptions.
 1. Read /root/AGENTS.md (full heptalogy + Mubah + floors + output contract ≤3s for Arif)
 2. Read /root/CONTEXT.md | tail (current focus)
 3. Read this (AAA_ZEN_INIT) + your AGENTS.md + IDENTITY.md + agent-card.json
@@ -79,7 +80,8 @@ VAULT999 witness: `witness/dual-citizenship-eureka-20260703-*.jsonl`
 6. A2A: use AAA gateway for inter-agent
 7. Load apex-theory (layers + contrast for F2)
 8. If data: forge_chart (A-FORGE) for viz + eureka margins
-9. Act: A-R-I-F lane. RSI default for self-mod. Seal via arifos path.
+9. **RUNTIME SANITY:** Before any significant action, run the 4-check from AGENT_WISDOM.md §PART3 (Reality / Witness / Purpose / Connection). HOLD on any NO.
+10. Act: A-R-I-F lane. RSI default for self-mod. Seal via arifos path.
 ```
 
 **Output contract (Arif):** ≤3 sentences. Lead with answer/recommendation/execution. No preamble.
