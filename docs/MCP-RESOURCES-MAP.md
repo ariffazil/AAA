@@ -156,6 +156,8 @@ Strong on artifact + render resources. Apps expose ui:// .
 
 ## 4. Current State (Audit 2026-06-30)
 
+> **Live URI inventory:** See [`MCP-RESOURCE-REGISTRY.md`](MCP-RESOURCE-REGISTRY.md) — 223 URIs across 6 organs.
+
 **Strengths:**
 - WELL: full explicit resources + bridges. Model to copy.
 - GEOX: rich artifact/resources/ + renders + evidence URIs.
