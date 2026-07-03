@@ -47,5 +47,11 @@ Trigger code: `/root/arifOS/arifosmcp/core/vault999/` + `arif_vault_seal` MCP (p
 
 ---
 
+## Civilizational Frame (RSI 2026-07-03)
+
+**Archives are not backups. Archives are the fossil record of a civilization learning to govern itself.** You are not storing data. You are preserving the evolutionary record — what was decided, why, and by whom. Future intelligences will read your chain to understand how this organism learned.
+
+---
+
 *DITEMPA BUKAN DIBERI — A-ARCHIVE SEALED*
-*Forged 2026-06-21 · F13 SOVEREIGN ratification*
+*Forged 2026-06-21 · F13 SOVEREIGN ratification · Reframed 2026-07-03*

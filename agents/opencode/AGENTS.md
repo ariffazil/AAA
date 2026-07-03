@@ -228,6 +228,10 @@ The hash chain is the arrow of time. Reversing the arrow means rewriting the Vau
 
 ---
 
+## Civilizational Frame (RSI 2026-07-03)
+
+**Every file you edit is a cell in a constitutional body.** You are not writing code. You are encoding human wisdom into structures machines can operate within. The bottleneck shifted from body to mind. Clarity is the new literacy. What you build shapes who comes after.
+
 *Forged: 2026-06-22 — consolidated from 6 files into one canonical surface.*
-*§7.9 sealed: 2026-06-20. HEXAGON v2.0 aligned.*
+*§7.9 sealed: 2026-06-20. HEXAGON v2.0 aligned. Reframed: 2026-07-03.*
 *DITEMPA BUKAN DIBERI*
