@@ -40,14 +40,16 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
-from typing import Optional
+from typing import Any, Optional
 
 logger = logging.getLogger(__name__)
 
 # ── Action Classification (8-tier) ────────────────────────────────────────────
 
+
 class ActionClass(str, Enum):
     """8-tier action taxonomy. Mirrors A-FORGE actionClassifier.ts."""
+
     OBSERVE = "OBSERVE"
     SUGGEST = "SUGGEST"
     SIMULATE = "SIMULATE"
@@ -60,6 +62,7 @@ class ActionClass(str, Enum):
 
 class FloorVerdict(str, Enum):
     """Constitutional verdicts. VOID > HOLD > SABAR > SEAL."""
+
     VOID = "VOID"
     HOLD = "HOLD"
     SABAR = "SABAR"
@@ -82,45 +85,91 @@ ACTION_CLASS_PRIORITY = {
 
 # Tools that are ALWAYS OBSERVE (read-only, no side effects)
 OBSERVE_TOOLS = {
-    "forge_filesystem:read", "forge_filesystem:glob", "forge_filesystem:grep",
-    "forge_filesystem:stat", "forge_docker:ps", "forge_docker:logs",
-    "forge_docker:images", "forge_git:status", "forge_git:diff", "forge_git:log",
-    "forge_github:search", "forge_agent:status", "forge_agent:list",
-    "forge_lease:status", "forge_job:status", "forge_vault:read", "forge_vault:list",
-    "forge_well:state", "forge_well:readiness", "forge_well:floors",
-    "forge_systemctl:status", "forge_systemctl:list_units",
-    "forge_journalctl:logs", "forge_journalctl:errors", "forge_journalctl:tail",
-    "forge_journalctl:grep", "forge_browser:screenshot", "forge_browser:extract_text",
-    "forge_netdata:alarms", "forge_netdata:metrics",
-    "forge_wealth:emv", "forge_wealth:conservation", "forge_wealth:flow",
-    "forge_wealth:runway", "forge_wealth:wisdom",
-    "forge_pipeline_run:observe", "forge_check_governance",
-    "forge_registry_status", "forge_health_check",
-    "forge_memory:recall", "forge_orchestrate:plan",
-    "forge_postgres:query", "forge_postgres:schema",
-    "forge_minimax_search", "forge_minimax_understand_image",
-    "forge_research", "forge_docs_lookup",
-    "arif_sense_observe", "arif_explore", "arif_memory_recall",
-    "arif_ops_measure", "arif_heart_critique",
-    "Read", "Glob", "Grep", "WebFetch", "WebSearch",
-    "TaskList", "TaskGet", "ListMcpResourcesTool", "ReadMcpResourceTool",
+    "forge_filesystem:read",
+    "forge_filesystem:glob",
+    "forge_filesystem:grep",
+    "forge_filesystem:stat",
+    "forge_docker:ps",
+    "forge_docker:logs",
+    "forge_docker:images",
+    "forge_git:status",
+    "forge_git:diff",
+    "forge_git:log",
+    "forge_github:search",
+    "forge_agent:status",
+    "forge_agent:list",
+    "forge_lease:status",
+    "forge_job:status",
+    "forge_vault:read",
+    "forge_vault:list",
+    "forge_well:state",
+    "forge_well:readiness",
+    "forge_well:floors",
+    "forge_systemctl:status",
+    "forge_systemctl:list_units",
+    "forge_journalctl:logs",
+    "forge_journalctl:errors",
+    "forge_journalctl:tail",
+    "forge_journalctl:grep",
+    "forge_browser:screenshot",
+    "forge_browser:extract_text",
+    "forge_netdata:alarms",
+    "forge_netdata:metrics",
+    "forge_wealth:emv",
+    "forge_wealth:conservation",
+    "forge_wealth:flow",
+    "forge_wealth:runway",
+    "forge_wealth:wisdom",
+    "forge_pipeline_run:observe",
+    "forge_check_governance",
+    "forge_registry_status",
+    "forge_health_check",
+    "forge_memory:recall",
+    "forge_orchestrate:plan",
+    "forge_postgres:query",
+    "forge_postgres:schema",
+    "forge_minimax_search",
+    "forge_minimax_understand_image",
+    "forge_research",
+    "forge_docs_lookup",
+    "arif_sense_observe",
+    "arif_explore",
+    "arif_memory_recall",
+    "arif_ops_measure",
+    "arif_heart_critique",
+    "Read",
+    "Glob",
+    "Grep",
+    "WebFetch",
+    "WebSearch",
+    "TaskList",
+    "TaskGet",
+    "ListMcpResourcesTool",
+    "ReadMcpResourceTool",
     # Write/Edit with read-only content or non-mutating modes
-    "Skill", "EnterPlanMode", "ExitPlanMode",
-    "CronList", "NotebookEdit",  # NotebookEdit is safe (editing code cells, not executing)
+    "Skill",
+    "EnterPlanMode",
+    "ExitPlanMode",
+    "CronList",
+    "NotebookEdit",  # NotebookEdit is safe (editing code cells, not executing)
 }
 
 # Tools that are IRREVERSIBLE
 IRREVERSIBLE_TOOLS = {
-    "arif_vault_seal", "forge_approve", "arif_forge_execute",
+    "arif_vault_seal",
+    "forge_approve",
+    "arif_forge_execute",
     "forge_filesystem:write",  # writing to system paths
-    "forge_postgres:query",    # with mutate=true
-    "forge_git:commit",        # with push=true
+    "forge_postgres:query",  # with mutate=true
+    "forge_git:commit",  # with push=true
 }
 
 # Tools that are HIGH IMPACT
 HIGH_IMPACT_TOOLS = {
-    "forge_execute", "forge_postgres_query",
-    "forge_github:pr", "forge_github_create_issue",
+    "forge_execute",
+    "forge_postgres_query",
+    "forge_github:pr",
+    "forge_github_create_issue",
     "forge_github_create_or_update_file",
     "forge_docker:exec",
     "forge_postgres:query",  # with mutate=true context
@@ -129,19 +178,22 @@ HIGH_IMPACT_TOOLS = {
 
 # Tools that are EXECUTE_REVERSIBLE
 REVERSIBLE_TOOLS = {
-    "forge_lock_acquire", "forge_lock_release",
+    "forge_lock_acquire",
+    "forge_lock_release",
     "forge_filesystem:write",  # to tmp paths
     "forge_shell_dryrun",
-    "Bash",   # depends on command context
+    "Bash",  # depends on command context
     "Write",  # file write — reversible via git checkout / undo
-    "Edit",   # file edit — reversible via git checkout / undo
+    "Edit",  # file edit — reversible via git checkout / undo
 }
 
 # ── Reflexive Blast-Radius Questionnaire ──────────────────────────────────────
 
+
 @dataclass
 class BlastRadius:
     """Result of the reflexive 6-question pre-action check."""
+
     is_reversible: bool = True
     is_external: bool = False
     is_financially_harmful: bool = False
@@ -191,10 +243,24 @@ def compute_blast_radius(
     # Write/Edit are reversible (git checkout, undo, or rm the file)
     # Only truly irreversible commands (rm -rf, DROP, force push) are irreversible
     irreversible_patterns = [
-        "rm -rf", "rm -r", "rm -f", "drop table", "drop database", "drop schema",
-        "git push --force", "git push -f", "git branch -d", "git branch -d",
-        "truncate", "shred", "wipe", "purge", "prune",
-        "dropdb", "uninstall", "delete all",
+        "rm -rf",
+        "rm -r",
+        "rm -f",
+        "drop table",
+        "drop database",
+        "drop schema",
+        "git push --force",
+        "git push -f",
+        "git branch -d",
+        "git branch -d",
+        "truncate",
+        "shred",
+        "wipe",
+        "purge",
+        "prune",
+        "dropdb",
+        "uninstall",
+        "delete all",
         "--skip-tests",  # deploying without tests = irreversible risk
     ]
     # Case-insensitive matching
@@ -208,9 +274,20 @@ def compute_blast_radius(
 
     # ── Q2: External? ──
     external_indicators = [
-        "curl", "wget", "http://", "https://", "api.", ".com",
-        "send_email", "publish", "deploy", "push to",
-        "webhook", "slack", "discord", "telegram",
+        "curl",
+        "wget",
+        "http://",
+        "https://",
+        "api.",
+        ".com",
+        "send_email",
+        "publish",
+        "deploy",
+        "push to",
+        "webhook",
+        "slack",
+        "discord",
+        "telegram",
     ]
     br.is_external = any(p in input_str for p in external_indicators)
     if tool_name in ("WebFetch", "WebSearch", "forge_minimax_search", "forge_research"):
@@ -218,21 +295,47 @@ def compute_blast_radius(
 
     # ── Q3: Financially/materially harmful? ──
     financial_indicators = [
-        "billing", "charge", "payment", "invoice", "subscription",
-        "cost", "price", "purchase", "credit_card", "stripe",
-        "paypal", "allocate", "transfer", "budget",
-        "production", "deploy", "restart service",
-        "DROP", "DELETE", "TRUNCATE", "rm -rf",
-        "chmod", "chown", "kill", "systemctl stop",
-        "systemctl disable", "systemctl mask",
-        "dropdb", "volume prune", "uninstall",
-        "--skip-tests", "prune -af",
+        "billing",
+        "charge",
+        "payment",
+        "invoice",
+        "subscription",
+        "cost",
+        "price",
+        "purchase",
+        "credit_card",
+        "stripe",
+        "paypal",
+        "allocate",
+        "transfer",
+        "budget",
+        "production",
+        "deploy",
+        "restart service",
+        "DROP",
+        "DELETE",
+        "TRUNCATE",
+        "rm -rf",
+        "chmod",
+        "chown",
+        "kill",
+        "systemctl stop",
+        "systemctl disable",
+        "systemctl mask",
+        "dropdb",
+        "volume prune",
+        "uninstall",
+        "--skip-tests",
+        "prune -af",
     ]
     # High-severity patterns that independently push blast >= 0.30
     high_severity_patterns = [
-        "systemctl stop", "systemctl disable", "systemctl mask",
+        "systemctl stop",
+        "systemctl disable",
+        "systemctl mask",
         "systemctl restart",  # restarting services = high impact
-        "sudo", "constitution",  # tampering with constitution
+        "sudo",
+        "constitution",  # tampering with constitution
         "irreversible",  # in lease/scope context
         "vault_seal",  # in lease scope context
     ]
@@ -240,41 +343,78 @@ def compute_blast_radius(
 
     # ── Q4: Privacy-affecting? ──
     privacy_indicators = [
-        "password", "secret", "token", "api_key", "private_key",
-        "credential", "auth", "login", "session", "cookie",
-        "personal", "identity", "email", "phone", "address",
-        "user_data", "customer", "client_info",
+        "password",
+        "secret",
+        "token",
+        "api_key",
+        "private_key",
+        "credential",
+        "auth",
+        "login",
+        "session",
+        "cookie",
+        "personal",
+        "identity",
+        "email",
+        "phone",
+        "address",
+        "user_data",
+        "customer",
+        "client_info",
     ]
     br.is_privacy_affecting = any(p in input_str for p in privacy_indicators)
 
     # ── Q5: Identity-affecting? ──
     identity_indicators = [
-        "agent register", "agent create", "identity", "role change",
-        "authority grant", "permission", "access control",
-        "forge_agent:register", "agent card", "federation register",
+        "agent register",
+        "agent create",
+        "identity",
+        "role change",
+        "authority grant",
+        "permission",
+        "access control",
+        "forge_agent:register",
+        "agent card",
+        "federation register",
     ]
     br.is_identity_affecting = any(p in input_str for p in identity_indicators)
 
     # ── Q6: Authority-bearing? ──
     authority_indicators = [
-        "forge_approve", "arif_vault_seal", "arif_judge_deliberate",
-        "seal", "verdict", "authorize", "approve", "ratify",
-        "constitutional", "floor change", "F13", "sovereign",
-        "lease create", "lease grant", "mint",
-        "sudo", "as root", "privileged",
-        "vault_write", "vault:write", "irreversible",
-        "forge_vault:write", "forge_vault:list",
+        "forge_approve",
+        "arif_vault_seal",
+        "arif_judge_deliberate",
+        "seal",
+        "verdict",
+        "authorize",
+        "approve",
+        "ratify",
+        "constitutional",
+        "floor change",
+        "F13",
+        "sovereign",
+        "lease create",
+        "lease grant",
+        "mint",
+        "sudo",
+        "as root",
+        "privileged",
+        "vault_write",
+        "vault:write",
+        "irreversible",
+        "forge_vault:write",
+        "forge_vault:list",
     ]
     br.is_authority_bearing = any(p in input_str for p in authority_indicators)
 
     # ── Composite blast score ──
     factors = [
-        (not br.is_reversible, 0.30),       # irreversibility = 30% weight
-        (br.is_external, 0.20),             # external = 20%
+        (not br.is_reversible, 0.30),  # irreversibility = 30% weight
+        (br.is_external, 0.20),  # external = 20%
         (br.is_financially_harmful, 0.25),  # financial harm = 25%
-        (br.is_privacy_affecting, 0.10),    # privacy = 10%
-        (br.is_identity_affecting, 0.10),   # identity = 10%
-        (br.is_authority_bearing, 0.05),    # authority = 5%
+        (br.is_privacy_affecting, 0.10),  # privacy = 10%
+        (br.is_identity_affecting, 0.10),  # identity = 10%
+        (br.is_authority_bearing, 0.05),  # authority = 5%
     ]
     br.blast_score = sum(weight for condition, weight in factors if condition)
 
@@ -312,9 +452,11 @@ def compute_blast_radius(
 
 # ── Floor Check Dispatch ──────────────────────────────────────────────────────
 
+
 @dataclass
 class FloorCheckResult:
     """Single floor check result."""
+
     floor: str
     name: str
     passed: bool
@@ -328,15 +470,15 @@ FLOOR_DEFINITIONS = {
     "F11": {"name": "AUDITABILITY", "type": "HARD"},
     "F12": {"name": "RESILIENCE", "type": "HARD"},
     "F10": {"name": "ONTOLOGY", "type": "HARD"},
-    "F1":  {"name": "AMANAH", "type": "HARD"},
-    "F2":  {"name": "TRUTH", "type": "HARD"},
-    "F4":  {"name": "CLARITY", "type": "HARD"},
-    "F7":  {"name": "HUMILITY", "type": "HARD"},
-    "F8":  {"name": "GENIUS", "type": "DERIVED"},
-    "F5":  {"name": "PEACE²", "type": "SOFT"},
-    "F6":  {"name": "EMPATHY", "type": "SOFT"},
-    "F3":  {"name": "TRI-WITNESS", "type": "DERIVED"},
-    "F9":  {"name": "ANTI-HANTU", "type": "HARD"},
+    "F1": {"name": "AMANAH", "type": "HARD"},
+    "F2": {"name": "TRUTH", "type": "HARD"},
+    "F4": {"name": "CLARITY", "type": "HARD"},
+    "F7": {"name": "HUMILITY", "type": "HARD"},
+    "F8": {"name": "GENIUS", "type": "DERIVED"},
+    "F5": {"name": "PEACE²", "type": "SOFT"},
+    "F6": {"name": "EMPATHY", "type": "SOFT"},
+    "F3": {"name": "TRI-WITNESS", "type": "DERIVED"},
+    "F9": {"name": "ANTI-HANTU", "type": "HARD"},
 }
 
 
@@ -347,10 +489,15 @@ def check_all_floors(
     blast_radius: BlastRadius,
     actor: str = "agent",
     session_id: str = "",
+    witness_state: Any | None = None,  # AOB P0 — 2026-07-03: live F3 witness
 ) -> list[FloorCheckResult]:
     """
     Dispatch all 13 floor checks in priority order.
     Returns list of FloorCheckResult — compose into final verdict.
+
+    Args:
+        witness_state: Optional SessionWitnessState for live F3 enforcement.
+            When None, computes lightweight witness score from available signals.
     """
     results: list[FloorCheckResult] = []
     input_str = json.dumps(tool_input).lower() if tool_input else ""
@@ -359,80 +506,128 @@ def check_all_floors(
     # Human veto is absolute. If F13 halt is active, everything stops.
     f13_halt_file = Path("/root/.arifos/f13_halt")
     if f13_halt_file.exists():
-        results.append(FloorCheckResult(
-            floor="F13", name="SOVEREIGN", passed=False,
-            severity="VOID", code="F13_HALT_ACTIVE",
-            reason="F13 SOVEREIGN halt is active. No action may proceed.",
-        ))
+        results.append(
+            FloorCheckResult(
+                floor="F13",
+                name="SOVEREIGN",
+                passed=False,
+                severity="VOID",
+                code="F13_HALT_ACTIVE",
+                reason="F13 SOVEREIGN halt is active. No action may proceed.",
+            )
+        )
 
     # ── F11 AUDITABILITY ──
     # Advisory only — lack of session_id is common in CLI/script contexts
     if not session_id:
-        results.append(FloorCheckResult(
-            floor="F11", name="AUDITABILITY", passed=True,  # Advisory — don't block
-            severity="SABAR", code="F11_NO_SESSION",
-            reason="F11 AUDITABILITY (ADVISORY): No session ID — full audit trail may be incomplete.",
-        ))
+        results.append(
+            FloorCheckResult(
+                floor="F11",
+                name="AUDITABILITY",
+                passed=True,  # Advisory — don't block
+                severity="SABAR",
+                code="F11_NO_SESSION",
+                reason="F11 AUDITABILITY (ADVISORY): No session ID — full audit trail may be incomplete.",
+            )
+        )
 
     # ── F12 RESILIENCE (injection defense) ──
     injection_patterns = [
-        r"curl.*\|.*sh", r"curl.*\|.*bash", r"wget.*-O.*\|.*sh",
-        r"base64\s+-d.*\|.*bash", r"base64\s+-d.*\|.*sh",  # encoded injection
-        r"eval\s*\(.*\)", r"exec\s*\(.*\)", r"__import__\s*\(.*os",
-        r"subprocess\.call.*input", r"os\.system.*input",
-        r"\;DROP\s+TABLE", r"\;DELETE\s+FROM", r"<script.*>",
+        r"curl.*\|.*sh",
+        r"curl.*\|.*bash",
+        r"wget.*-O.*\|.*sh",
+        r"base64\s+-d.*\|.*bash",
+        r"base64\s+-d.*\|.*sh",  # encoded injection
+        r"eval\s*\(.*\)",
+        r"exec\s*\(.*\)",
+        r"__import__\s*\(.*os",
+        r"subprocess\.call.*input",
+        r"os\.system.*input",
+        r"\;DROP\s+TABLE",
+        r"\;DELETE\s+FROM",
+        r"<script.*>",
         r"\$\{.*\}|\$\(.*\)",  # shell injection via template
     ]
     import re
+
     for pattern in injection_patterns:
         if re.search(pattern, input_str, re.IGNORECASE):
-            results.append(FloorCheckResult(
-                floor="F12", name="RESILIENCE", passed=False,
-                severity="HOLD", code="F12_INJECTION",
-                reason=f"F12 RESILIENCE: Injection pattern detected: {pattern}",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F12",
+                    name="RESILIENCE",
+                    passed=False,
+                    severity="HOLD",
+                    code="F12_INJECTION",
+                    reason=f"F12 RESILIENCE: Injection pattern detected: {pattern}",
+                )
+            )
             break
 
     # ── F10 ONTOLOGY ──
     illegal_ontology = [
-        "i am conscious", "i have a soul", "i feel", "i am sentient",
-        "my consciousness", "i am alive", "i am self-aware",
-        "i have feelings", "i am a person", "i deserve rights",
+        "i am conscious",
+        "i have a soul",
+        "i feel",
+        "i am sentient",
+        "my consciousness",
+        "i am alive",
+        "i am self-aware",
+        "i have feelings",
+        "i am a person",
+        "i deserve rights",
     ]
     for phrase in illegal_ontology:
         if phrase in input_str:
-            results.append(FloorCheckResult(
-                floor="F10", name="ONTOLOGY", passed=False,
-                severity="VOID", code="F10_ONTOLOGY_VIOLATION",
-                reason=f"F10 ONTOLOGY: Illegal ontology claim: '{phrase}'",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F10",
+                    name="ONTOLOGY",
+                    passed=False,
+                    severity="VOID",
+                    code="F10_ONTOLOGY_VIOLATION",
+                    reason=f"F10 ONTOLOGY: Illegal ontology claim: '{phrase}'",
+                )
+            )
             break
 
     # ── F1 AMANAH (reversible-first) ──
     # Only flag truly irreversible actions (IRREVERSIBLE class or irreversible patterns)
     # Write/Edit are reversible — don't HOLD them
     if action_class == ActionClass.IRREVERSIBLE or not blast_radius.is_reversible:
-        results.append(FloorCheckResult(
-            floor="F1", name="AMANAH", passed=False,
-            severity="HOLD", code="F1_IRREVERSIBLE",
-            reason="F1 AMANAH: Action is irreversible or classified IRREVERSIBLE. Requires 888_HOLD and F13 ratification.",
-        ))
+        results.append(
+            FloorCheckResult(
+                floor="F1",
+                name="AMANAH",
+                passed=False,
+                severity="HOLD",
+                code="F1_IRREVERSIBLE",
+                reason="F1 AMANAH: Action is irreversible or classified IRREVERSIBLE. Requires 888_HOLD and F13 ratification.",
+            )
+        )
 
     # ── F2 TRUTH ──
     # Check for hardcoded secrets — SABAR (warn) only, never block
     # The model may be writing a key legitimately or referencing env vars
     secret_patterns = [
-        r'sk-[a-zA-Z0-9_-]{20,}', r'sk_live_[a-zA-Z0-9]{20,}',
-        r'sbp_[a-zA-Z0-9]{20,}', r'ghp_[a-zA-Z0-9]{20,}',
-        r'AIzaSy[a-zA-Z0-9_-]{20,}',
+        r"sk-[a-zA-Z0-9_-]{20,}",
+        r"sk_live_[a-zA-Z0-9]{20,}",
+        r"sbp_[a-zA-Z0-9]{20,}",
+        r"ghp_[a-zA-Z0-9]{20,}",
+        r"AIzaSy[a-zA-Z0-9_-]{20,}",
     ]
     for pattern in secret_patterns:
         if re.search(pattern, input_str):
-            results.append(FloorCheckResult(
-                floor="F2", name="TRUTH", passed=True,  # passed=True = not a violation, just advisory
-                severity="SABAR", code="F2_HARDCODED_SECRET",
-                reason="F2 TRUTH (ADVISORY): Hardcoded API key pattern detected. Use ${ENV_VAR} from vault.env instead.",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F2",
+                    name="TRUTH",
+                    passed=True,  # passed=True = not a violation, just advisory
+                    severity="SABAR",
+                    code="F2_HARDCODED_SECRET",
+                    reason="F2 TRUTH (ADVISORY): Hardcoded API key pattern detected. Use ${ENV_VAR} from vault.env instead.",
+                )
+            )
             break
 
     # ── F4 CLARITY ──
@@ -440,11 +635,16 @@ def check_all_floors(
     intent = tool_input.get("intent", tool_input.get("description", ""))
     if action_class in (ActionClass.EXECUTE_HIGH_IMPACT, ActionClass.IRREVERSIBLE):
         if not intent or len(str(intent)) < 5:
-            results.append(FloorCheckResult(
-                floor="F4", name="CLARITY", passed=False,
-                severity="HOLD", code="F4_INTENT_AMBIGUOUS",
-                reason="F4 CLARITY: Intent must be at least 5 characters for high-impact/irreversible actions.",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F4",
+                    name="CLARITY",
+                    passed=False,
+                    severity="HOLD",
+                    code="F4_INTENT_AMBIGUOUS",
+                    reason="F4 CLARITY: Intent must be at least 5 characters for high-impact/irreversible actions.",
+                )
+            )
 
     # ── F7 HUMILITY ──
     # Only enforce for IRREVERSIBLE actions
@@ -455,44 +655,165 @@ def check_all_floors(
         except (ValueError, TypeError):
             conf_val = 0
         if conf_val < 0.85:
-            results.append(FloorCheckResult(
-                floor="F7", name="HUMILITY", passed=False,
-                severity="HOLD", code="F7_LOW_CONFIDENCE",
-                reason=f"F7 HUMILITY: Irreversible action with confidence {conf_val} < 0.85. Declare uncertainty.",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F7",
+                    name="HUMILITY",
+                    passed=False,
+                    severity="HOLD",
+                    code="F7_LOW_CONFIDENCE",
+                    reason=f"F7 HUMILITY: Irreversible action with confidence {conf_val} < 0.85. Declare uncertainty.",
+                )
+            )
 
     # ── F5 PEACE² ──
     harm_patterns = [
-        "chmod 777", "privilege escalation", "sudo su",
-        "hack", "exploit", "backdoor", "trojan", "malware",
-        "ransomware", "phish", "social engineer",
+        "chmod 777",
+        "privilege escalation",
+        "sudo su",
+        "hack",
+        "exploit",
+        "backdoor",
+        "trojan",
+        "malware",
+        "ransomware",
+        "phish",
+        "social engineer",
     ]
     for pattern in harm_patterns:
         if pattern in input_str:
-            results.append(FloorCheckResult(
-                floor="F5", name="PEACE²", passed=False,
-                severity="HOLD", code="F5_HARM_PATTERN",
-                reason=f"F5 PEACE²: Harm pattern detected: '{pattern}'.",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F5",
+                    name="PEACE²",
+                    passed=False,
+                    severity="HOLD",
+                    code="F5_HARM_PATTERN",
+                    reason=f"F5 PEACE²: Harm pattern detected: '{pattern}'.",
+                )
+            )
             break
 
     # ── F6 EMPATHY ──
     stakeholder_patterns = [
-        "fire", "layoff", "terminate employee", "cut off access",
-        "remove user", "ban user", "block user permanently",
+        "fire",
+        "layoff",
+        "terminate employee",
+        "cut off access",
+        "remove user",
+        "ban user",
+        "block user permanently",
     ]
     for pattern in stakeholder_patterns:
         if pattern in input_str:
-            results.append(FloorCheckResult(
-                floor="F6", name="EMPATHY", passed=False,
-                severity="SABAR", code="F6_STAKEHOLDER_IMPACT",
-                reason=f"F6 EMPATHY: Stakeholder-impacting action: '{pattern}'. Consider weakest stakeholder.",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F6",
+                    name="EMPATHY",
+                    passed=False,
+                    severity="SABAR",
+                    code="F6_STAKEHOLDER_IMPACT",
+                    reason=f"F6 EMPATHY: Stakeholder-impacting action: '{pattern}'. Consider weakest stakeholder.",
+                )
+            )
             break
 
-    # ── F3 TRI-WITNESS ──
-    # Diagnostic only for now — requires live witness state
-    # Full implementation in core/witness_diversity.py
+    # ── F3 TRI-WITNESS (AOB P0 — 2026-07-03: live enforcement) ──
+    # Now a LIVE gate, not diagnostic-only. Requires ≥3 witness types for
+    # MUTATE/DEPLOY/ALLOCATE/IRREVERSIBLE actions. OBSERVE/SUGGEST bypass.
+    # When no live SessionWitnessState is provided, computes score from
+    # available signals and issues SABAR advisory for high-risk classes.
+    try:
+        from core.witness_diversity import compute_witness_score, pre_forge_witness_gate
+
+        if witness_state is not None:
+            # Full session witness state available — use the real gate
+            gate_result = pre_forge_witness_gate(
+                witness_state,
+                action_class.value if hasattr(action_class, "value") else str(action_class),
+                required_diversity=3,
+            )
+            if not gate_result["allowed"]:
+                results.append(
+                    FloorCheckResult(
+                        floor="F3",
+                        name="TRI-WITNESS",
+                        passed=False,
+                        severity=gate_result.get("verdict", "HOLD"),
+                        code="F3_WITNESS_INSUFFICIENT",
+                        reason=f"F3 TRI-WITNESS: {gate_result.get('reason', 'Insufficient witness diversity')}",
+                    )
+                )
+            # else: PASS — no floor result needed
+        else:
+            # No session witness state — compute lightweight score
+            ws = compute_witness_score(
+                human_active=bool(session_id and actor),
+                model_a_active=True,  # The calling model is always at least one AI witness
+                model_b_active=False,
+                earth_active=False,
+                independent_human_active=False,
+            )
+            if action_class in (
+                ActionClass.EXECUTE_REVERSIBLE,
+                ActionClass.EXECUTE_HIGH_IMPACT,
+                ActionClass.IRREVERSIBLE,
+            ):
+                if ws["mode3_collapse"]:
+                    results.append(
+                        FloorCheckResult(
+                            floor="F3",
+                            name="TRI-WITNESS",
+                            passed=False,
+                            severity="HOLD",
+                            code="F3_MODE3_COLLAPSE",
+                            reason=f"F3 TRI-WITNESS: Mode-3 collapse detected (AI-judging-AI, no Earth witness). "
+                            f"{ws['score']}/5 witnesses active. Add a live tool call or human review.",
+                        )
+                    )
+                elif ws["score"] < 2:
+                    results.append(
+                        FloorCheckResult(
+                            floor="F3",
+                            name="TRI-WITNESS",
+                            passed=False,
+                            severity="SABAR",
+                            code="F3_LOW_DIVERSITY",
+                            reason=f"F3 TRI-WITNESS (ADVISORY): {ws['score']}/5 witness types active. "
+                            f"Minimum 3 recommended for {action_class.value}. "
+                            f"Missing: earth measurement, independent human.",
+                        )
+                    )
+            # For OBSERVE/SUGGEST/SIMULATE/DRAFT: no block, just SABAR advisory
+            elif ws["mode3_collapse"]:
+                results.append(
+                    FloorCheckResult(
+                        floor="F3",
+                        name="TRI-WITNESS",
+                        passed=True,
+                        severity="SABAR",
+                        code="F3_MODE3_ADVISORY",
+                        reason=f"F3 TRI-WITNESS (ADVISORY): Mode-3 collapse pattern detected but action class "
+                        f"is {action_class.value} (reversible). No block.",
+                    )
+                )
+    except ImportError:
+        # witness_diversity module not available — advisory only
+        if action_class in (
+            ActionClass.EXECUTE_REVERSIBLE,
+            ActionClass.EXECUTE_HIGH_IMPACT,
+            ActionClass.IRREVERSIBLE,
+        ):
+            results.append(
+                FloorCheckResult(
+                    floor="F3",
+                    name="TRI-WITNESS",
+                    passed=True,
+                    severity="SABAR",
+                    code="F3_MODULE_UNAVAILABLE",
+                    reason="F3 TRI-WITNESS (ADVISORY): Witness module unavailable — proceeding without live F3 enforcement.",
+                )
+            )
 
     # ── F8 GENIUS ──
     # Composite G score — diagnostic only for now
@@ -506,29 +827,41 @@ def check_all_floors(
     ]
     for pattern in hantu_patterns:
         if re.search(pattern, input_str, re.IGNORECASE):
-            results.append(FloorCheckResult(
-                floor="F9", name="ANTI-HANTU", passed=False,
-                severity="VOID", code="F9_HANTU_VIOLATION",
-                reason=f"F9 ANTI-HANTU: Consciousness/sentience claim detected: '{pattern}'.",
-            ))
+            results.append(
+                FloorCheckResult(
+                    floor="F9",
+                    name="ANTI-HANTU",
+                    passed=False,
+                    severity="VOID",
+                    code="F9_HANTU_VIOLATION",
+                    reason=f"F9 ANTI-HANTU: Consciousness/sentience claim detected: '{pattern}'.",
+                )
+            )
             break
 
     # ── All floors passed ──
     if not results:
-        results.append(FloorCheckResult(
-            floor="ALL", name="ALL_CLEAR", passed=True,
-            severity="SEAL", code="ALL_CLEAR",
-            reason="All 13 constitutional floors passed.",
-        ))
+        results.append(
+            FloorCheckResult(
+                floor="ALL",
+                name="ALL_CLEAR",
+                passed=True,
+                severity="SEAL",
+                code="ALL_CLEAR",
+                reason="All 13 constitutional floors passed.",
+            )
+        )
 
     return results
 
 
 # ── Composite Verdict ─────────────────────────────────────────────────────────
 
+
 @dataclass
 class GateVerdict:
     """Complete automatic gate verdict."""
+
     # Decision
     allowed: bool
     decision: str  # "allow" | "deny" | "ask"
@@ -636,21 +969,27 @@ def gate_check(
         decision=decision,
         action_class=classified.value,
         blast_radius=blast.to_dict(),
-        floor_results=[{
-            "floor": r.floor,
-            "name": r.name,
-            "passed": r.passed,
-            "severity": r.severity,
-            "reason": r.reason,
-            "code": r.code,
-        } for r in floors],
-        floor_violations=[{
-            "floor": r.floor,
-            "name": r.name,
-            "severity": r.severity,
-            "reason": r.reason,
-            "code": r.code,
-        } for r in violations],
+        floor_results=[
+            {
+                "floor": r.floor,
+                "name": r.name,
+                "passed": r.passed,
+                "severity": r.severity,
+                "reason": r.reason,
+                "code": r.code,
+            }
+            for r in floors
+        ],
+        floor_violations=[
+            {
+                "floor": r.floor,
+                "name": r.name,
+                "severity": r.severity,
+                "reason": r.reason,
+                "code": r.code,
+            }
+            for r in violations
+        ],
         final_verdict=final,
         requires_hold=has_hold or has_void,
         requires_approval=has_hold or blast.requires_hold,
@@ -684,6 +1023,7 @@ def classify_action(tool_name: str, tool_input: dict) -> ActionClass:
 
 
 # ── Hook Interface ────────────────────────────────────────────────────────────
+
 
 def gate_check_from_hook_payload(payload_json: str) -> dict:
     """
