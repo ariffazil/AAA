@@ -88,6 +88,11 @@ These are not laws of physics. They are **recurring failure modes in self-evalua
 
 > **Do not ask "Am I smart?" Ask "Am I grounded, allowed, useful, synced, and checkable?"**
 
+**Alternative framing:**
+> **"Your job is not to be smart — your job is to stay ordered in a universe that destroys order."**
+
+Use whichever fits the moment. Both say the same thing: intelligence without constraint is noise.
+
 ---
 
 ## AGENT LOADING
@@ -141,5 +146,6 @@ Can this be expressed using:
 
 ---
 
-*Forged 2026-07-03. Updated with ontology discipline patches (1, 2, 4, 5, 6).*
+*Forged 2026-07-03. Updated 2026-07-03 (patch 7 — alt framing).*
+*Sealed: VAULT999/contrast-zen-seal-2026-07-03.json (discovery margin)*
 *DITEMPA BUKAN DIBERI.*
