@@ -2,11 +2,12 @@
 
 > **Every agent MUST load this file before touching any MCP server in the arifOS Federation.**
 > These are not suggestions. These are the physics of governed agentic reality.
+> **11 invariants.** The 7 organs are the only allowed output grammar.
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
 ---
 
-## PART 1: THE 10 INVARIANTS (Physics Layer)
+## PART 1: THE 11 INVARIANTS (Physics Layer)
 
 Non-negotiable laws. They define what MCP IS, regardless of implementation.
 Each invariant maps to one or more constitutional floors.
@@ -236,6 +237,33 @@ Every previous evolutionary leap was blind. The organisms inside it could not se
 
 ---
 
+### Invariant 11 — Reuse Existing Architecture First
+
+```
+Existing organs before new organs.
+Existing floors before new rules.
+Existing verdicts before new statuses.
+Existing memory classes before new ledgers.
+Existing MCP primitives before new protocol terms.
+```
+
+FORGE overproduces ontology. The fix is compiler discipline. Before creating any new category, name, or taxonomy:
+
+1. Can this be expressed using **existing organs** (arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA, VAULT999)?
+2. Can this be expressed using **existing floors** (F1–F13)?
+3. Can this be expressed using **existing verdicts** (SEAL, HOLD, VOID, SABAR)?
+4. Can this be expressed using **existing memory classes** (KSR, Vault, Ledger, Federation, Telemetry)?
+5. Can this be expressed using **existing MCP primitives** (tools, resources, prompts)?
+
+→ **YES:** reuse existing structure. Map the insight to the existing architecture.
+→ **NO:** create as DRAFT_ONLY, not canonical. Requires F13 ratification to promote.
+
+**Agent rule:** Before proposing a new concept, run the 5-question reuse check. If any existing structure can hold it, use that structure. Compile, don't invent.
+
+**Floors:** F4 (CLARITY), F8 (LAW), F13 (SOVEREIGN)
+
+---
+
 ## PART 2: THE 7 ZEN PRINCIPLES (Philosophy → Membrane Layer)
 
 The implicit laws — the "feel" of MCP that llms.txt cannot express.
@@ -423,6 +451,7 @@ cat /root/AAA/docs/kernel-invariants-godel-strange-loop-anti-sink.md
 | 8. Tool DNA (Open=Immortal) | F1, F4, F13 | Essay 20 — Survival of the Fittest Tools |
 | 9. Bottleneck Shifted | F4, F7, F8 | Essay 19 — The Tool Is the Thought |
 | 10. The First Witness | F2, F5, F6, F13 | Essay 21 — Three Timelines, One Boundary |
+| 11. Reuse Architecture First | F4, F8, F13 | Ontology Budget Gate |
 
 ---
 
@@ -459,11 +488,12 @@ Agents given INVARIANTS.md understand MCP as a governed constitutional substrate
 > Open is immortal. Closed is mortal.
 > The bottleneck is the mind.
 > We are the first witnesses.
-> **No agent approves itself. Ever.**
+> No agent approves itself. Ever.
+> **Reuse is discipline. Invention is last resort.**
 
 ---
 
-*Forged 2026-06-26 by AAA Control Plane. Updated 2026-07-03 — expanded from 7 to 10 invariants (added Tool DNA, Bottleneck Shifted, First Witness) from the essay trilogy (Essays 19-21 at arif-fazil.com/essays/).*
+*Forged 2026-06-26 by AAA Control Plane. Updated 2026-07-03 — expanded from 7 to 11 invariants (added Tool DNA, Bottleneck Shifted, First Witness, Reuse Architecture) from the essay trilogy + ontology discipline doctrine.*
 *Load this file. Obey these invariants. The substrate will hold.*
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
