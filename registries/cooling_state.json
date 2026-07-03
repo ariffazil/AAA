@@ -1420,9 +1420,125 @@
       "sealed_at": null,
       "voided_at": null,
       "void_reason": null
+    },
+    {
+      "entry_id": "6fb4b7b7-98a",
+      "artifact_ref": "38f1e92a-e337-4989-b94c-58c4001334f4",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-03T05:54:02.623Z",
+      "cooldown_expiry": "2026-07-10T05:54:02.623Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "43d5106f-499",
+      "artifact_ref": "db9f0b3f-333b-426a-873b-487747113ca8",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-03T05:54:38.651Z",
+      "cooldown_expiry": "2026-07-10T05:54:38.651Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "9bdef063-3ce",
+      "artifact_ref": "cd23ee9d-b271-4fff-92a7-7e6523c750e0",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-03T05:55:13.548Z",
+      "cooldown_expiry": "2026-07-10T05:55:13.548Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "925e29a9-215",
+      "artifact_ref": "5af2aa4c-cbc5-4b54-85de-0d7f543fc773",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-03T05:55:48.064Z",
+      "cooldown_expiry": "2026-07-10T05:55:48.064Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
     }
   ],
   "sealedCount": 0,
   "voidedCount": 22,
-  "persistedAt": "2026-07-01T21:23:02.637Z"
+  "persistedAt": "2026-07-03T05:55:48.065Z"
 }
