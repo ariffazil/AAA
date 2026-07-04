@@ -193,30 +193,30 @@ function App() {
 ## References
 
 ### Core
-- **[references/state-scheduling.md](references/state-scheduling.md)** — State persistence, scheduling, SQL
-- **[references/callable.md](references/callable.md)** — RPC methods, streaming, timeouts
-- **[references/routing.md](references/routing.md)** — URL patterns, custom routing, `getAgentByName`
-- **[references/configuration.md](references/configuration.md)** — Wrangler config, bindings, Vite setup
+- **[references/STATE_SCHEDULING.md](references/STATE_SCHEDULING.md)** — State persistence, scheduling, SQL
+- **[references/CALLABLE_MD.md](references/CALLABLE_MD.md)** — RPC methods, streaming, timeouts
+- **[references/ROUTING_MD.md](references/ROUTING_MD.md)** — URL patterns, custom routing, `getAgentByName`
+- **[references/CONFIGURATION_MD.md](references/CONFIGURATION_MD.md)** — Wrangler config, bindings, Vite setup
 
 ### Chat & Streaming
-- **[references/streaming-chat.md](references/streaming-chat.md)** — AIChatAgent, resumable streams, tools
-- **[references/client-sdk.md](references/client-sdk.md)** — `useAgent`, `useAgentChat`, `AgentClient`
-- **[references/server-driven-messages.md](references/server-driven-messages.md)** — Trigger patterns, `saveMessages`
-- **[references/human-in-the-loop.md](references/human-in-the-loop.md)** — Approval flows, `needsApproval`
+- **[references/STREAMING_CHAT.md](references/STREAMING_CHAT.md)** — AIChatAgent, resumable streams, tools
+- **[references/CLIENT_SDK.md](references/CLIENT_SDK.md)** — `useAgent`, `useAgentChat`, `AgentClient`
+- **[references/SERVER_DRIVEN.md](references/SERVER_DRIVEN.md)** — Trigger patterns, `saveMessages`
+- **[references/HUMAN_IN.md](references/HUMAN_IN.md)** — Approval flows, `needsApproval`
 
 ### Background Processing
-- **[references/workflows.md](references/workflows.md)** — Durable Workflows integration
-- **[references/durable-execution.md](references/durable-execution.md)** — `runFiber`, `stash`, surviving eviction
-- **[references/queue-retries.md](references/queue-retries.md)** — Built-in queue, retry with backoff
+- **[references/WORKFLOWS_MD.md](references/WORKFLOWS_MD.md)** — Durable Workflows integration
+- **[references/DURABLE_EXECUTION.md](references/DURABLE_EXECUTION.md)** — `runFiber`, `stash`, surviving eviction
+- **[references/QUEUE_RETRIES.md](references/QUEUE_RETRIES.md)** — Built-in queue, retry with backoff
 
 ### Integrations
-- **[references/mcp.md](references/mcp.md)** — MCP client and server, transports, securing
-- **[references/email.md](references/email.md)** — Email routing and handling
-- **[references/webhooks-push.md](references/webhooks-push.md)** — Webhooks, push notifications
-- **[references/observability.md](references/observability.md)** — Diagnostics-channel events
+- **[references/MCP_MD.md](references/MCP_MD.md)** — MCP client and server, transports, securing
+- **[references/EMAIL_MD.md](references/EMAIL_MD.md)** — Email routing and handling
+- **[references/WEBHOOKS_PUSH.md](references/WEBHOOKS_PUSH.md)** — Webhooks, push notifications
+- **[references/OBSERVABILITY_MD.md](references/OBSERVABILITY_MD.md)** — Diagnostics-channel events
 
 ### Experimental
-- **[references/think.md](references/think.md)** — `@cloudflare/think` higher-level chat agent
-- **[references/voice.md](references/voice.md)** — `@cloudflare/voice` STT/TTS
-- **[references/codemode.md](references/codemode.md)** — Code Mode for tool orchestration
-- **[references/browse-the-web.md](references/browse-the-web.md)** — CDP browser tools
+- **[references/THINK_MD.md](references/THINK_MD.md)** — `@cloudflare/think` higher-level chat agent
+- **[references/VOICE_MD.md](references/VOICE_MD.md)** — `@cloudflare/voice` STT/TTS
+- **[references/CODEMODE_MD.md](references/CODEMODE_MD.md)** — Code Mode for tool orchestration
+- **[references/BROWSE_THE.md](references/BROWSE_THE.md)** — CDP browser tools

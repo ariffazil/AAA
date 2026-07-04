@@ -154,7 +154,7 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 
 ## 6. FEDERATION ARCHITECTURE
 
-> **Canonical organ map:** `/root/AAA/docs/federation-organ-map.md` — the single source of truth for organ topology, substrate roles, and constitutional boundaries. If any other document disagrees, the organ map wins.
+> **Canonical organ map:** `/root/AAA/docs/FEDERATION_ORGAN.md` — the single source of truth for organ topology, substrate roles, and constitutional boundaries. If any other document disagrees, the organ map wins.
 
 ### The Trinity (ΔΩΨ)
 - **Δ (SOUL)** — Human values, purpose, telos (Arif)
@@ -349,7 +349,7 @@ Before acting on any request:
 | What | Where |
 |------|-------|
 | Agent instruction (this file) | `/root/AAA/CLAUDE.md` |
-| **Canonical organ map** | `/root/AAA/docs/federation-organ-map.md` |
+| **Canonical organ map** | `/root/AAA/docs/FEDERATION_ORGAN.md` |
 | Federation landing + full detail | `/root/AGENTS.md` |
 | Live machine state | `/root/CONTEXT.md` |
 | Operations runbook | `/root/RUNBOOK.md` |
@@ -357,8 +357,8 @@ Before acting on any request:
 | Secret vault index | `/root/.secrets/INDEX.md` |
 | arifOS source | `/root/arifOS/` |
 | AAA repo (this file lives here) | `github.com/ariffazil/AAA` |
-| **Kernel invariants — Gödel-lock, Strange Loop, Anti-sink** | `/root/AAA/docs/kernel-invariants-godel-strange-loop-anti-sink.md` |
-| Canonical organ map | `/root/AAA/docs/federation-organ-map.md` |
+| **Kernel invariants — Gödel-lock, Strange Loop, Anti-sink** | `/root/AAA/docs/KERNEL_INVARIANTS.md` |
+| Canonical organ map | `/root/AAA/docs/FEDERATION_ORGAN.md` |
 | Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |
 

@@ -15,8 +15,8 @@ A governance-first ingestion of the `hhhrrrttt222111/Ethical-Hacking-Tools` publ
 | `tool_hazard_v1.yaml` | 14+1 category hazard classifier with band assignments and agentic posture | DRAFT |
 | `forbidden_patterns_v1.yaml` | Hard-block registry — phishing, credential capture, persistence, DoS, brute force | DRAFT |
 | `aforge_mcp_draft.yaml` | Draft MCP surface — resources + tools + prompts (no execution bridges) | DRAFT |
-| `scar_EHT_2026_06_30.md` | Constitutional scar — EHT ingestion constraint | SEALED |
-| `source_receipt.md` | Provenance record — repo, archive, witness chain | DRAFT |
+| `SCAR_EHT.md` | Constitutional scar — EHT ingestion constraint | SEALED |
+| `SOURCE_RECEIPT.md` | Provenance record — repo, archive, witness chain | DRAFT |
 
 ## Quick Reference
 

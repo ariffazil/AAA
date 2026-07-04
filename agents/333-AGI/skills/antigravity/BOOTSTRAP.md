@@ -12,7 +12,7 @@
    └── Secrets: /root/.secrets/vault.env
 
 2. LOAD CONTEXT
-   ├── system.md    → /root/.gemini/system.md (runtime system prompt)
+   ├── SYSTEM_MD.md    → /root/.gemini/SYSTEM_MD.md (runtime system prompt)
    ├── CLAUDE.md    → /root/AAA/CLAUDE.md (canonical law)
    ├── CONTEXT.md   → /root/CONTEXT.md (live machine state, tail -50)
    └── IDENTITY.md  → /root/AAA/agents/antigravity/IDENTITY.md

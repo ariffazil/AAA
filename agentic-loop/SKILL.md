@@ -58,7 +58,7 @@ Sources of drift signal:
 │   ├── CHECKPOINT.md       # warm-wake context
 │   ├── HEARTBEAT.md        # heartbeat prompt
 │   └── cron/jobs.json      # agent-managed cron jobs
-└── system.md               # system prompt
+└── SYSTEM_MD.md               # system prompt
 ```
 
 ### 3. SCORE — against F1-F13 (subset applicable to runtime)

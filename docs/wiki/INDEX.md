@@ -21,8 +21,8 @@
 | `arifos/FLOORS.md` | 13 constitutional floors F0–F13, names, functions, verdicts | **Stable** |
 | `arifos/VERDICTS.md` | SEAL/HOLD/VOID/CLAIM_ONLY/SABAR/PARTIAL — behavioral semantics | **Evolving** |
 | `arifos/AAA.md` | Architect · Auditor · Agent — three-role pattern | **Stable** |
-| `arifos/888_JUDGE.md` | SEAL authority, verdict bridge, auditor handle | **Evolving** |
-| `arifos/999_VAULT.md` | MerkleV3 ledger, event sealing, audit trail | **Stable** |
+| `arifos/JUDGE_MD.md` | SEAL authority, verdict bridge, auditor handle | **Evolving** |
+| `arifos/VAULT_MD.md` | MerkleV3 ledger, event sealing, audit trail | **Stable** |
 
 ---
 

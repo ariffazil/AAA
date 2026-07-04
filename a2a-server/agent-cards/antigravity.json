@@ -14,7 +14,7 @@
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.0.1",
+  "protocolVersion": "1.0.0",
   "url": "https://aaa.arif-fazil.com/a2a/antigravity",
   "provider": {
     "organization": "arifOS Federation",
@@ -62,10 +62,22 @@
     "text/plain",
     "application/json"
   ],
-  "_deprecated_mcp_servers": ["arifos", "geox", "wealth", "well", "aforge"],
+  "_deprecated_mcp_servers": [
+    "arifos",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
   "mcp_surface": {
     "type": "consumed",
-    "consumed_from": ["arifos", "geox", "wealth", "well", "aforge"],
+    "consumed_from": [
+      "arifos",
+      "geox",
+      "wealth",
+      "well",
+      "aforge"
+    ],
     "endpoints": []
   },
   "subAgentPolicy": {
@@ -241,10 +253,21 @@
       ]
     }
   ],
-  "supported_protocols": ["a2a", "mcp"],
+  "supported_protocols": [
+    "a2a",
+    "mcp"
+  ],
   "a2a_role": "forge_instrument",
   "governance_profile": {
-    "constitutional_floors": ["F1", "F2", "F4", "F7", "F8", "F11", "F13"],
+    "constitutional_floors": [
+      "F1",
+      "F2",
+      "F4",
+      "F7",
+      "F8",
+      "F11",
+      "F13"
+    ],
     "verdict_authority": "888_JUDGE|arifOS",
     "self_approval_forbidden": true,
     "subagent_default_hold": "888_HOLD",
@@ -252,6 +275,9 @@
     "vault": "VAULT999",
     "functional_class": "harness",
     "mesh_role": "harness",
-    "requires_human_for": ["irreversible", "F13_touch"]
+    "requires_human_for": [
+      "irreversible",
+      "F13_touch"
+    ]
   }
 }

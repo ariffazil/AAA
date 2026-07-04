@@ -32,6 +32,7 @@ import HermesTelemetryPanel from './components/cockpit/HermesTelemetryPanel';
 import AgentModelPanel, { type ModelGovernanceCard } from './components/cockpit/AgentModelPanel';
 import MCPAppsPanel from './components/MCPAppsPanel';
 import ArifOSReceiptViewer from './components/cockpit/ArifOSReceiptViewer';
+import ConstitutionalOverlay from './components/cockpit/ConstitutionalOverlay';
 
 type OperatorTask = {
   id: string;
@@ -927,6 +928,19 @@ export default function Cockpit() {
 
         {/* ── MCP APPS (SEP-1865 Interactive UIs) ── */}
         <MCPAppsPanel />
+
+        {/* ── CONSTITUTIONAL OVERLAY (aaa-a2a governance) ── */}
+        <section className="mb-12">
+          <div className="flex items-baseline gap-4 mb-6">
+            <span className="text-4xl font-black text-white/10 font-mono italic">02.</span>
+            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Constitutional Overlay</h2>
+            <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
+              <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+              aaa-a2a
+            </span>
+          </div>
+          <ConstitutionalOverlay />
+        </section>
 
         {/* ── AGENT MODEL IDENTITY (Governance Spine) ── */}
         <AgentModelPanel

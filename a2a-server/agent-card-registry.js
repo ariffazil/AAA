@@ -169,8 +169,8 @@ function loadDirectory(dirPath) {
     console.warn(`[agent-card-registry] Directory not found: ${resolved}`);
     return { loaded: 0, errors: [e.message] };
   }
+  const jsonFiles = entries.filter((e) => (e.isFile() || e.isSymbolicLink()) && e.name.endsWith('.json'));
 
-  const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith('.json'));
   const loaded = [];
   const errors = [];
 
@@ -200,7 +200,7 @@ function loadDirectoryRecursive(rootPath) {
   let results = { loaded: [], errors: [], dirs: 0 };
   try {
     const entries = fs.readdirSync(resolved, { withFileTypes: true });
-    const jsonFiles = entries.filter((e) => e.isFile() && e.name.endsWith('.json'));
+  const jsonFiles = entries.filter((e) => (e.isFile() || e.isSymbolicLink()) && e.name.endsWith('.json'));
     const subdirs = entries.filter((e) => e.isDirectory());
 
     // Load JSON files at this level

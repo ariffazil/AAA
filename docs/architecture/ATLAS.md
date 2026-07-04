@@ -5,7 +5,7 @@
 > **Authority:** F2 TRUTH, F4 CLARITY, F9 ANTI-HANTU | ADAT overlay
 > **Status:** LIVE — 2026-06-26
 > **Lineage:** AAA → BBB → CCC → DDD → EEE → FFF → **ATLAS** → AKAR000 → III
-> **Derives from:** ATLAS-333 (permanent constitution), AAA_ZEN.md (15 axioms), AGENTSKILLTREE.md (22 skills), ZENTOSILICASPEC.md (floor→substrate), AAA_AGENT_SPECIFICATION_v1.0.md (5-clause definition)
+> **Derives from:** ATLAS-333 (permanent constitution), AAA_ZEN.md (15 axioms), AGENTSKILLTREE.md (22 skills), ZENTOSILICASPEC.md (floor→substrate), AAA_AGENT.md (5-clause definition)
 
 ---
 
@@ -47,7 +47,7 @@ Every major CLI in 2026 has converged on the same five primitives:
 
 | Primitive | OpenCode | Claude Code | Codex CLI | Kimi Code | Grok Build | Copilot CLI | Continue.dev | Antigravity CLI |
 |-----------|----------|-------------|-----------|-----------|------------|-------------|--------------|-----------------|
-| **Project Instructions** | `AGENTS.md` | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `.github/copilot-instructions.md` → `AGENTS.md` | `.continue/rules/` | `AGENTS.md` |
+| **Project Instructions** | `AGENTS.md` | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `.github/COPILOT_INSTRUCTIONS.md` → `AGENTS.md` | `.continue/rules/` | `AGENTS.md` |
 | **Main Agent** | Primary agent (Build/Plan) | Claude Code agent | Codex CLI agent | Okabe agent | Grok CLI agent | Copilot CLI agent | Chat/Plan/Agent modes | Antigravity agent |
 | **Tools** | Built-in (bash, read, write, edit) | Built-in + MCP | Built-in + MCP | Built-in + MCP | Built-in + MCP | Configurable (YAML) | Built-in + MCP | Built-in + MCP |
 | **Skills** | (not first-class) | `SKILL.md` | Skills system | `.agents/skills/` | `.grok/skills/` | Agent skills | `.continue/skills/` | Skill bundles |
@@ -81,7 +81,7 @@ Every major CLI in 2026 has converged on the same five primitives:
 
 | Convention | OpenCode | Claude Code | Codex CLI | Kimi Code | Grok Build | Copilot CLI | Continue.dev | Antigravity CLI |
 |------------|----------|-------------|-----------|-----------|------------|-------------|--------------|-----------------|
-| **Config file** | `opencode.json` | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `.github/copilot-instructions.md` | `.continue/config.yaml` | Harness config |
+| **Config file** | `opencode.json` | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `.github/COPILOT_INSTRUCTIONS.md` | `.continue/config.yaml` | Harness config |
 | **Skill location** | `~/.agents/skills/` | `.claude/skills/` | `.codex/skills/` | `.agents/skills/` | `.grok/skills/` | `.github/agents/` | `.continue/skills/` | `skills/` |
 | **Agent definition** | `opencode.json` (agent block) | (implicit) | (implicit) | Agent YAML config | Agent YAML config | `.agent.md` frontmatter | (mode-based) | Harness config |
 | **Memory location** | `AGENTS.md` | `CLAUDE.md` | `AGENTS.md` | `AGENTS.md` | `AGENTS.md` | `copilot init` | `.continue/rules/` | Harness config |
@@ -196,7 +196,7 @@ schema (blueprint)           registry (inventory)
 
 - [x] Maps minimum 8 CLIs × 8 primitives (table form)
 - [x] Every row grounded in vendor documentation
-- [x] "AAA canonical" column references AAA_AGENT_SPECIFICATION_v1.0.md
+- [x] "AAA canonical" column references AAA_AGENT.md
 - [x] "Constitutional Floor" column references ZENTOSILICASPEC.md
 - [x] Closes with the three primitives NO vendor has (Floor / Verdict / Receipt)
 - [x] EVIDENCE/INTERPRET/UNKNOWN tagging on any non-cited claim

@@ -138,8 +138,8 @@ Do not create new `hermes-*` directories at repo root.
 ## Unified Protocol Binding (2026-06-13)
 
 **Reference:** `/root/arifOS/HERMES_OPENCODE_PROTOCOL.md` (human, VAULT999 ID 1806, merkle b0c880...)
-**AAA variant:** `AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md` (machine, 324 lines, pushed main@87966843)
-**Per-agent:** `AAA/agents/protocols/openclaw-agi-protocol.md`
+**AAA variant:** `AAA/docs/architecture/UNIFIED_AGENT_4.md` (machine, 324 lines, pushed main@87966843)
+**Per-agent:** `AAA/agents/protocols/OPENCLAW_AGI.md`
 **Schema:** `AAA/schemas/forge_session.schema.json`
 
 ### Session Lifecycle
@@ -189,7 +189,7 @@ Default when unsure: **treat as 888_HOLD**.
 **For OpenClaw specifically:** Does NOT spawn OpenCode directly. Any forge request routes through 777 FORGE. OpenClaw's infra lane is independent.
 
 **References:**
-- `AAA/agents/protocols/777-forge-witness-protocol.md`
+- `AAA/agents/protocols/FORGE_WITNESS.md`
 - `/root/.config/opencode/agents/777-forge.md`
 - `/root/VAULT999/witness/777-forge-spawns.jsonl`
 - `AAA@main 6ed2e8c9`

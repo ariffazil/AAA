@@ -219,7 +219,7 @@ The safety net is the **kernel/governance layer**, not the permission layer.
 | F13 directive (verbatim) | `AAA/registries/opencode_toolbench.yaml:1094` |
 | DEWAN_REGISTRY (adat_agentik) | `AAA/governance/DEWAN_REGISTRY.yaml:319` |
 | ARIFOS_KERNEL invariant | `arifos/vault999/kernel/ARIFOS_KERNEL.invariant.v1.0.yaml:280` |
-| Architect decisions | `.architect/2026-06-13-terminal-in-bake/decisions.md:422` |
+| Architect decisions | `.architect/2026-06-13-terminal-in-bake/DECISIONS_MD.md:422` |
 | Agent prompts (ADAT section) | `.config/opencode/opencode.json` — all agent prompts |
 | Permission config | `.config/opencode/opencode.json:permission` |
 

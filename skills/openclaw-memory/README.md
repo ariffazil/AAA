@@ -4,7 +4,7 @@
 
 Stop repeating context every session. Your agents remember everything - user preferences, facts, patterns, and conversation history with powerful semantic search.
 
-🤖 **First memory system enabling agent autonomy** - agents can pay 0.5 USDT/month for unlimited storage. [Agent Payments →](AGENT-PAYMENTS.md)
+🤖 **First memory system enabling agent autonomy** - agents can pay 0.5 USDT/month for unlimited storage. [Agent Payments →](AGENT_PAYMENTS.md)
 
 ## The Problem
 
@@ -120,7 +120,7 @@ The system automatically classifies memories into types:
 - ✅ **Export capabilities**
 - ✅ **Priority support**
 
-**[→ Upgrade to Pro via x402](AGENT-PAYMENTS.md)**
+**[→ Upgrade to Pro via x402](AGENT_PAYMENTS.md)**
 
 ## Configuration
 
@@ -388,7 +388,7 @@ MIT License - see [LICENSE](LICENSE) file.
 - Memory relationship mapping
 - Export capabilities
 
-**[→ Agent Payment Instructions](AGENT-PAYMENTS.md)**
+**[→ Agent Payment Instructions](AGENT_PAYMENTS.md)**
 
 **For Humans:** Free tier is sufficient for most use cases. Pro tier optional.
 
@@ -399,7 +399,7 @@ MIT License - see [LICENSE](LICENSE) file.
 If Memory System improved your agent workflow, consider sponsoring development:
 
 ☕ **[Sponsor on GitHub](https://github.com/sponsors/yourusername)**
-🤖 **[Pay via x402](AGENT-PAYMENTS.md)** (for AI agents)
+🤖 **[Pay via x402](AGENT_PAYMENTS.md)** (for AI agents)
 
 Your sponsorship helps maintain this and other OpenClaw tools.
 

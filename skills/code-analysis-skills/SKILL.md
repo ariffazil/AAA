@@ -143,7 +143,7 @@ python -m src.main -r /path/to/repo -f "markdown,html,pdf" -o report
 python -m src.main -r /path/to/repo -f pdf -o report.pdf
 
 # Save report to a file
-python -m src.main -r /path/to/repo -o report.md
+python -m src.main -r /path/to/repo -o REPORT_MD.md
 ```
 
 ### CLI Parameters
@@ -237,7 +237,7 @@ For each developer's evaluation, deliver a blunt, no-nonsense interpretation to 
 
 ### Reference Documents
 
-- `references/metrics-guide.md` — Metric definitions, calculation methods, and healthy value reference ranges. Read this file when users ask about the meaning of a specific metric.
+- `references/METRICS_GUIDE.md` — Metric definitions, calculation methods, and healthy value reference ranges. Read this file when users ask about the meaning of a specific metric.
 
 ## ⚠️ Privacy & Data Security Notice
 

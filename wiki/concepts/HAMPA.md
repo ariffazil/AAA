@@ -134,9 +134,9 @@ All HAMPA cards live in `/root/AAA/wiki/entities/human-*.md`
 
 | Human | Card | Type | Status |
 |-------|------|------|--------|
-| Muhammad Arif bin Fazil | `arif-fazil-metabolized.md` | Full (sovereign testimony) | Canonical |
-| Laletha Jeevachandran | `human-laletha-jeevachandran.md` | Reality prism | Active |
-| Siti Suhana (Kak Su) | `human-kak-su-siti-suhana.md` | Reality prism | Active |
+| Muhammad Arif bin Fazil | `ARIF_FAZIL_3.md` | Full (sovereign testimony) | Canonical |
+| Laletha Jeevachandran | `HUMAN_LALETHA.md` | Reality prism | Active |
+| Siti Suhana (Kak Su) | `HUMAN_KAK.md` | Reality prism | Active |
 | Aliff Husna | — | Not yet mapped | Pending |
 
 ---

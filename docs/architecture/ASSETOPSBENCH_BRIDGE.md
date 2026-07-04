@@ -237,7 +237,7 @@ rm -rf /root/geox/geox_timeseries/
 
 # Bridge docs
 rm /root/AAA/docs/architecture/ASSETOPSBENCH_BRIDGE.md
-rm /root/AAA/docs/architecture/CONSTITUTIONAL_ABSTRACTION_LAYER.md
+rm /root/AAA/docs/architecture/CONSTITUTIONAL_ABSTRACTION.md
 ```
 
 **All bridge artifacts are self-contained. arifOS core untouched.**

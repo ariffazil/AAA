@@ -180,4 +180,4 @@ One-paragraph summary of what was checked and whether the gate passed.
 
 ---
 
-*Skill imported from `/root/.claude/skills/precommit-review.md` — AAA Skill Library*
+*Skill imported from `/root/.claude/skills/precommit-REVIEW_MD.md` — AAA Skill Library*

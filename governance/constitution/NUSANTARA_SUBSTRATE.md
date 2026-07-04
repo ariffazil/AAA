@@ -18,10 +18,10 @@ Artifacts ratified:
 | Artifact | Path | Purpose |
 |---|---|---|
 | Schema | `schemas/nusantara-state-language.schema.json` | Canonical JSON Schema for Nusantara state records |
-| Specification | `docs/NUSANTARA_STATE_LANGUAGE.md` | Philosophical and technical grounding |
+| Specification | `docs/NUSANTARA_STATE.md` | Philosophical and technical grounding |
 | Skill | `skills/nusantara-intelligence-substrate/SKILL.md` | Agent operating instructions |
-| Source reference | `skills/nusantara-intelligence-substrate/references/usman-awang-melayu.md` | Canonical poem excerpt |
-| Constitutional scar | `constitution/SCAR-MELAYU-001.md` | Failure-mode constraints from *Melayu* mapped to Floors + verdicts |
+| Source reference | `skills/nusantara-intelligence-substrate/references/USMAN_AWANG.md` | Canonical poem excerpt |
+| Constitutional scar | `constitution/SCAR_MELAYU.md` | Failure-mode constraints from *Melayu* mapped to Floors + verdicts |
 | Kamus | `KAMUS_DEWAN.md` | Constitutional lexicon and agent oath |
 | Dewan | `DEWAN_REGISTRY.yaml` | Machine-enforceable registry of floors, stages, agents, fiqh, darjat, malu |
 | Pustaka | `PUSTAKA_GENESIS.md` | Sealed literature of genesis, scars, and canon |

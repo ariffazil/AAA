@@ -1,6 +1,6 @@
 # arifOS Floors
 
-> **CLAIM** | Source: `docs/floor_wiring_map.md` + `arifos.init` | **Confidence:** 0.95 | **Epoch:** 2026-04-23
+> **CLAIM** | Source: `docs/FLOOR_WIRING.md` + `arifos.init` | **Confidence:** 0.95 | **Epoch:** 2026-04-23
 
 ## Summary
 
@@ -37,7 +37,7 @@ arifOS enforces 13 constitutional floors (F0–F13) on all AI tool executions. E
 - Governance wired in code: **0**
 - Runtime Floor enforcement: **0/13**
 
-See `docs/floor_wiring_map.md` for full grep-map detail.
+See `docs/FLOOR_WIRING.md` for full grep-map detail.
 
 ---
 

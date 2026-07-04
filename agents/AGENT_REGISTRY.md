@@ -90,7 +90,7 @@ The 5-agent constitutional architecture. Pipeline: 000 → 333 → 555 → 888 �
 
 Agents with active systemd services and Telegram presence.
 
-**Polymorphic Model (per contracts/hermes-role-binding.md and contracts/AAA_SKILL_BINDING.md):** One Hermes runtime, N explicit role bindings via skills[] (Ω 555-ASI, Δ 333-AGI, etc.). No duplicate processes for role-binds. Orthogonal mapping (Trinitarian Δ/Ω/ΦΙ + Functional) applied. Spawns only for distinct citizens when native capability exceeds Hermes + kernel. See artifacts/AAA-17-CITIZEN-ORTHOGONAL-MATRIX-2026-06-22.md for full 17-citizen matrix.
+**Polymorphic Model (per contracts/HERMES_ROLE.md and contracts/AAA_SKILL.md):** One Hermes runtime, N explicit role bindings via skills[] (Ω 555-ASI, Δ 333-AGI, etc.). No duplicate processes for role-binds. Orthogonal mapping (Trinitarian Δ/Ω/ΦΙ + Functional) applied. Spawns only for distinct citizens when native capability exceeds Hermes + kernel. See artifacts/AAA_CITIZEN.md for full 17-citizen matrix.
 
 | ID | Tier | Lane | Telegram | Port | Config | Eureka Layer | Status |
 |---|---|---|---|---|---|---|---|
@@ -107,9 +107,9 @@ Legacy (aaa-*, hermes-ops): Minimal or deprecated.
 
 All focus citizens now declare explicit role-binding-* skills with references to contracts and orthogonal axes. Skills counts increased; F11 auditability strengthened.
 
-**999_SEAL:** /root/AAA/artifacts/AAA-999-SEAL-2026-06-23.md (Gold). Polymorphic + Principal Agent Taxonomy phase complete.
+**999_SEAL:** /root/AAA/artifacts/AAA_SEAL.md (Gold). Polymorphic + Principal Agent Taxonomy phase complete.
 
-**Principal Agent Taxonomy (see contracts/principal-agent-taxonomy.md):**  
+**Principal Agent Taxonomy (see contracts/PRINCIPAL_AGENT.md):**  
 `principal_agent` is now a first-class field (human | architect | agent | earth | llm | institution | void | liar | unknown) with `principal_binding` object. Enables A2A routing, F11 audit, polymorphic clarity, and honest capability surfacing.  
 
 Classification (18 citizens):  
@@ -180,7 +180,7 @@ High-power agentic harnesses with native tool depth, advanced subagent paralleli
 |---|---|---|---|---|---|---|
 | **Kernel Scribe** | C2 | SERVICE | arifOS, AAA | OBSERVE + PROPOSE | **L3 — Authority** (proposal) | `roles/KERNEL_SCRIBE.md` |
 | **Ops Planner** | C2 | SERVICE | AAA, WEALTH, WELL | OBSERVE + PROPOSE | **L3 — Authority** (proposal) | `roles/OPS_PLANNER.md` |
-| **Self-Forge Advisor** | C3 | Δ MIND | A-FORGE, arifOS | PROPOSE + MUTATE (gated) | **L3 — Authority** (proposal + bounded mutation) | `roles/SELF_FORGE_ADVISOR.md` |
+| **Self-Forge Advisor** | C3 | Δ MIND | A-FORGE, arifOS | PROPOSE + MUTATE (gated) | **L3 — Authority** (proposal + bounded mutation) | `roles/SELF_FORGE.md` |
 | **External Watcher** | C1 | SERVICE | AAA | OBSERVE only | **L2 — Governance** (observation) | `roles/EXTERNAL_WATCHER.md` |
 
 **Communication Rule:** Role agents are SUBORDINATE to HEXAGON agents. They do not execute independently — they feed analysis and proposals to HEXAGON agents (333-AGI, 555-ASI, 888-APEX) for judgment and execution.
@@ -235,7 +235,7 @@ High-power agentic harnesses with native tool depth, advanced subagent paralleli
 | `ROOT_AGENT_CONFIG.yaml` | Root config for AAA warga, peers, forge instruments, and config pointers |
 | `HEXAGON.yaml` | Constitutional agent topology (5 agents, pipeline) |
 | `AAA_AGENTS_REGISTRY.json` | Machine-readable registry (v2.0.0) — **drift noted, see §DRIFT** |
-| `CODING_AGENT_FEDERATION.md` | Forge instrument reference (8 agents, 97 tools) |
+| `CODING_AGENT.md` | Forge instrument reference (8 agents, 97 tools) |
 | `a2a-server/agent-cards/` | A2A discovery cards (JSON-LD) |
 | `/root/arifOS/arifosmcp/config/model_registry.json` | **Substrate registry** (LLM models — NOT agents) |
 
@@ -243,7 +243,7 @@ High-power agentic harnesses with native tool depth, advanced subagent paralleli
 
 ## §SCAR-13 — AGENT_REGISTRY CATEGORY ERROR (FULL TEXT)
 
-> **Canonical specification:** [`/root/AAA/specs/AAA_AGENT_SPECIFICATION_v1.0.md`](../specs/AAA_AGENT_SPECIFICATION_v1.0.md) (v1.0 DRAFT, 278 lines, pending 999_SEAL after F13 review).
+> **Canonical specification:** [`/root/AAA/specs/AAA_AGENT.md`](../specs/AAA_AGENT.md) (v1.0 DRAFT, 278 lines, pending 999_SEAL after F13 review).
 > This file is the **operational index**. The spec is the **formal definition**.
 
 > **Forged:** 2026-06-26
@@ -350,7 +350,7 @@ Wired 10 FI citizens as real AAA warga with 8-skill baseline (per orthogonal map
 
 Pattern reference: `/root/HERMES/skills/aaa-agentic-governance/references/orthogonal-skill-binding-pattern-2026-06-22.md`
 
-**Receipt:** `/root/AAA/artifacts/fi-warga-binding-sweep-2026-06-22.md`
+**Receipt:** `/root/AAA/artifacts/FI_WARGA.md`
 
 ---
 

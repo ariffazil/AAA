@@ -73,13 +73,13 @@
 
 | Time | Job | Workflow File | Status |
 |------|-----|---------------|--------|
-| 06:30 | subuh-brief | `WORKFLOWS/WORKFLOW_SUBUH_BRIEF.md` | ✅ Active |
-| 08:00 | human-arif | `WORKFLOWS/WORKFLOW_HUMAN_ARIF.md` | ✅ Active |
-| 09:00 Mon | repo-steward | `WORKFLOWS/WORKFLOW_REPO_STEWARD.md` | ✅ Active |
-| 10:00 | sovereign-wiring | `WORKFLOWS/WORKFLOW_SOVEREIGN_WIRING.md` | ✅ Active |
-| 10:30 | event-scout | `WORKFLOWS/WORKFLOW_EVENT_SCOUT.md` | ✅ Active |
-| 12:00 | godel-lock | `WORKFLOWS/WORKFLOW_GODEL_LOCK.md` | ✅ Active |
-| 13:00 | morning-synthesis | `WORKFLOWS/WORKFLOW_MORNING_SYNTHESIS.md` | ✅ Active |
+| 06:30 | subuh-brief | `WORKFLOWS/WORKFLOW_SUBUH.md` | ✅ Active |
+| 08:00 | human-arif | `WORKFLOWS/WORKFLOW_HUMAN.md` | ✅ Active |
+| 09:00 Mon | repo-steward | `WORKFLOWS/WORKFLOW_REPO.md` | ✅ Active |
+| 10:00 | sovereign-wiring | `WORKFLOWS/WORKFLOW_SOVEREIGN.md` | ✅ Active |
+| 10:30 | event-scout | `WORKFLOWS/WORKFLOW_EVENT.md` | ✅ Active |
+| 12:00 | godel-lock | `WORKFLOWS/WORKFLOW_GODEL.md` | ✅ Active |
+| 13:00 | morning-synthesis | `WORKFLOWS/WORKFLOW_MORNING.md` | ✅ Active |
 
 ### Where Cron Reads From
 
