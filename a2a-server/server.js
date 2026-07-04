@@ -66,7 +66,11 @@ const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
 
 const A2A_TOKEN = process.env.A2A_TOKEN || '';
 const A2A_API_KEY = process.env.A2A_API_KEY || '';
-const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://apex-prime:3002';
+// APEX was decommissioned 2026-06-27 (per Federation Cross-Reference).
+// The default intentionally points at the local arifOS kernel (which now
+// owns the `/mind/reason` endpoint that the AAA A2A gateway calls).
+// Override with ARIFOS_JUDGE_URL env var to point elsewhere.
+const ARIFOS_JUDGE_URL = process.env.ARIFOS_JUDGE_URL || 'http://127.0.0.1:8088';
 const ARIFOS_API_KEY = process.env.ARIFOS_API_KEY || '';
 const REDIS_URL = process.env.REDIS_URL || 'redis://127.0.0.1:6379';
 const NATS_URL = process.env.NATS_URL || 'nats://127.0.0.1:4222';
@@ -2372,7 +2376,8 @@ app.post('/federation/register', async (req, res) => {
       return res.status(503).json({ ok: false, error: 'HEALTH_FAIL', detail: `Health returned ${healthResp.status}` });
     }
     const health = await healthResp.json();
-    if (health.status !== 'healthy') {
+    const healthyStates = ['healthy', 'ALIVE', 'live', 'ok', 'UP', 'degraded'];
+    if (!healthyStates.includes(health.status) && health.ok !== true) {
       return res.status(503).json({ ok: false, error: 'UNHEALTHY', detail: health.status });
     }
   } catch (e) {
@@ -3810,6 +3815,17 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Lifecycle: http://localhost:${PORT}/api/agents/federation-status`);
   await initAsyncBackbone();
   startRetryWorker();
+
+  // Auto-register federation organs on startup
+  const { autoRegisterOrgans } = require('./auto-register-organs');
+  setTimeout(async () => {
+    try {
+      const result = await autoRegisterOrgans(PORT);
+      console.log(`[AAA A2A] Federation bootstrap: ${result.registered}/${result.total} organs online`);
+    } catch (e) {
+      console.warn('[AAA A2A] Auto-registration failed:', e.message);
+    }
+  }, 3000); // 3s delay to let organs' health endpoints settle
 });
 
 module.exports = { app };
