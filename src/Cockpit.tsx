@@ -15,7 +15,6 @@ import { ConsentDialog, SessionBadge, SessionManifest } from './components/Sessi
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
 import HumanPatternReport from './components/cockpit/HumanPatternReport';
 import { useSupabaseQuery } from './hooks/useSupabaseQuery';
-import JackieNguTribute from './jackie-ngu-tribute';
 
 function CockpitSupabaseQueryProbe() {
   const { data, loading, error } = useSupabaseQuery('aaa.memory_records', { limit: 1 });
@@ -1030,11 +1029,6 @@ export default function Cockpit() {
 
         {/* ── HUMAN PATTERN REPORT (Phase 3B Operator Rhythm) ── */}
         <HumanPatternReport />
-
-        {/* ── JACKIE NGU TRIBUTE ── */}
-        <section className="mb-8">
-          <JackieNguTribute />
-        </section>
 
         <CockpitSupabaseQueryProbe />
 
