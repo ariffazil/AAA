@@ -2580,7 +2580,7 @@ app.get('/api/attestation/organs', async (req, res) => {
             jsonrpc: '2.0',
             id: 1,
             method: 'tools/call',
-            params: { name: 'arif_kernel_attest', arguments: { organ: 'all' } }
+            params: { name: 'arif_organ_attest_all', arguments: {} }
           }));
           req2.end();
         });
