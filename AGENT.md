@@ -12,7 +12,7 @@ epistemic_status: SOURCE_OF_TRUTH
 
 > **DITEMPA BUKAN DIBERI** — This agent is forged, not given.
 > One file. One identity. One constitution.
-> **Supersedes:** `AGENTS.md`, `CLAUDE.md`, `AGENT_BRIEF.md`, `INIT_PROMPT.md`, `BOOTSTRAP_CONTEXT.md`, `BOOTSTRAP_MINIMAL.md`.
+> **Supersedes:** `AGENTS.md`, `CLAUDE.md`, `docs/AGENT_BRIEF.md`, `INIT_PROMPT.md`, `BOOTSTRAP_CONTEXT.md`, `BOOTSTRAP_MINIMAL.md`.
 
 ---
 
