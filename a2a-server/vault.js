@@ -41,17 +41,23 @@ function createSealPayload(task, agentId, action, metadata) {
 
 async function writeSeal(task, agentId, action, metadata) {
   const payload = createSealPayload(task, agentId, action, metadata);
-  return writeRecord('/seal', payload);
+  // Delegate to the canonical local hash chain (seal_chain.js).
+  // Remote vault999-writer is mirrored best-effort by seal_chain itself.
+  const sealChain = require('./seal_chain');
+  return sealChain.writeSeal(payload);
 }
 
 async function writeVoid(task, agentId, action, reason, metadata) {
   const payload = createSealPayload(task, agentId, action, { ...metadata, void_reason: reason });
   payload.verdict = 'VOID';
   payload.irreversibility_class = 'HOLD_VOID';
-  return writeRecord('/seal', payload);
+  const sealChain = require('./seal_chain');
+  return sealChain.writeSeal(payload);
 }
 
 async function writeRecord(endpoint, payload) {
+  // Legacy path — retained for direct callers that need the remote writer
+  // without touching the local chain. New code should use writeSeal/writeVoid.
   const path = `${VAULT_WRITER_URL}${endpoint}`;
 
   const auditLine = `[VAULT999] AUDIT intent: agent=${payload.agent_id} action=${payload.action} verdict=${payload.verdict} epoch=${payload.epoch} task_id=${payload.payload.task_id} context_id=${payload.payload.context_id} routing=${payload.payload.routing}`;
@@ -83,7 +89,7 @@ async function writeRecord(endpoint, payload) {
     let data;
     try { data = JSON.parse(body); } catch { data = body; }
 
-    console.log(`[VAULT999] SEAL written: action=${payload.action}, agent=${payload.agent_id}`);
+    console.log(`[VAULT999] SEAL written (legacy remote path): action=${payload.action}, agent=${payload.agent_id}`);
     return { ok: true, data };
   } catch (error) {
     console.error(`[VAULT999] Write error — AUDIT INTENT LOGGED: ${auditLine}`);
