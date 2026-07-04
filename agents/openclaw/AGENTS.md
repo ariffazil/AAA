@@ -174,25 +174,38 @@ Default when unsure: **treat as 888_HOLD**.
 
 **Invariant:** No claim may gain authority from its source. AI provenance ≠ authority. LLM output ≠ truth. Confidence ≠ permission. Only lease + actor + sovereign authority can grant action.
 
-### 777 FORGE Witness Layer (2026-06-13)
+### 777 FORGE Witness Layer (2026-06-13) — ⚠️ RETIRED 2026-07-02
 
-**Position:** `Hermes → 777 FORGE → OpenCode` — Hermes no longer spawns OpenCode directly.
+> **STATUS: RETIRED 2026-07-02.** The agent that receives the task IS the executor.
+> No meta-executor needed. The witness protocol is preserved at
+> `AAA/agents/protocols/FORGE_WITNESS.md` but the spawn-witness relay
+> `Hermes → 777 FORGE → OpenCode` is no longer active.
 
-| Aspect | Before | After |
-|--------|--------|-------|
-| Spawn authority | Hermes (direct) | 777 FORGE (witnessed) |
-| Verification | Hermes self-reports | PID-based witness receipt |
-| Fabrication risk | High (hermes-fabrication-2026-05-17) | Zero (receipt must have real PID) |
+**Position (HISTORICAL):** `Hermes → 777 FORGE → OpenCode` — Hermes no longer spawns OpenCode directly.
 
-**Trust anchor:** If Hermes claims a session but cannot produce a 777 FORGE witness receipt with `{forge_id, pid, process_started_at}` → the session DID NOT HAPPEN. Arif can verify: `ps -p <pid>` must return the real process.
+| Aspect | Before | After (2026-06-13) | After (2026-07-02) |
+|--------|--------|-------------------|---------------------|
+| Spawn authority | Hermes (direct) | 777 FORGE (witnessed) | Receiver-as-executor (no relay) |
+| Verification | Hermes self-reports | PID-based witness receipt | arifOS mcp.call.* seal_chain receipt |
+| Fabrication risk | High (hermes-fabrication-2026-05-17) | Zero (receipt must have real PID) | Zero (hash-chained seal at /root/.local/share/arifos/vault999/) |
 
-**For OpenClaw specifically:** Does NOT spawn OpenCode directly. Any forge request routes through 777 FORGE. OpenClaw's infra lane is independent.
+**Trust anchor (NEW 2026-07-04):** Identity is no longer proved by a PID.
+It is proved by a hash-chained VAULT999 seal. Every AAA a2a dispatch writes
+a `seal_chain.jsonl` entry chained to the previous via `prev_hash`. If a
+session has no seal, **the session DID NOT HAPPEN**. The chain head is read
+live from `/root/.local/share/arifos/vault999/seal_chain_head.json`. See
+`/root/AAA/a2a-server/seal_chain.js` for the writer and
+`/root/arifOS/arifosmcp/runtime/seal_chain.py` for the Python mirror.
+
+**For OpenClaw specifically:** Does NOT spawn OpenCode directly. Routes
+through AAA a2a-server. Each call produces a seal; the seal IS the receipt.
 
 **References:**
-- `AAA/agents/protocols/FORGE_WITNESS.md`
-- `/root/.config/opencode/agents/777-forge.md`
-- `/root/VAULT999/witness/777-forge-spawns.jsonl`
-- `AAA@main 6ed2e8c9`
+- `AAA/agents/protocols/FORGE_WITNESS.md` (legacy protocol — archived)
+- `/root/AAA/a2a-server/seal_chain.js` (active canonical seal writer)
+- `/root/.local/share/arifos/vault999/seal_chain.jsonl` (hash-chained VAULT999)
+- `/root/.local/share/arifos/vault999/seal_chain_head.json` (chain head — read live)
+- `AAA@main → 2026-07-04 ZEN-WIRE-FINAL` (seal_chain ratification)
 
-*Last updated: 2026-06-13*
+*Last updated: 2026-07-04 — kimi-code ZEN-wired under F13 directive*
 *Governed by: /root/AAA/AGENTS.md + LOOP.md + AUTONOMY.md + HEARTBEAT.md + HERMES_OPENCODE_PROTOCOL.md*

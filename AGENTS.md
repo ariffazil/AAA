@@ -1,16 +1,23 @@
 <!-- SOT-MANIFEST
 owner: Arif
-last_verified: 2026-07-01
+last_verified: 2026-07-04
 valid_from: 2026-06-14
-valid_until: 2026-07-31
+valid_until: 2026-08-03
 confidence: high
 scope: /root/AAA
 epistemic_status: SOURCE_OF_TRUTH
 companion_to: HEXAGON-AGENTS-FORGE-20260614 (SOT alignment — MCP Gate deployment sealed)
 refresh_history:
+  - 2026-07-04 (ZEN — acknowledge seal_chain ratification; align valid_until to master 2026-08-03; clarify 888-APEX HEXAGON warga vs retired APEX port 3002)
   - 2026-07-01 (FORGE SOT audit — A2A versions, tool counts, seal ID, doc paths aligned to live state)
   - 2026-06-30 15:45 UTC (FORGE SOT audit — last_verified refreshed, tool count + port added)
   - 2026-06-14 18:08 UTC (999_SEAL — MCP Apps panel + Reference Architecture + governance overlays)
+seal_chain_state:
+  writer: /root/AAA/a2a-server/seal_chain.js (canonical, ratified 2026-07-04)
+  mirror: /root/arifOS/arifosmcp/runtime/seal_chain.py
+  chain  : /root/.local/share/arifos/vault999/seal_chain.jsonl
+  head   : /root/.local/share/arifos/vault999/seal_chain_head.json
+  status : LIVE — every a2a dispatch appends a hash-chained seal; chain break = detected
 -->
 
 # AGENTS.md — AAA | arifOS Federation
