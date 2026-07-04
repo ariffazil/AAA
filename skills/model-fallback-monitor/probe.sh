@@ -18,7 +18,7 @@ log "=== model-fallback-monitor probe start ==="
 # ─── 1. MiniMax (primary) ─────────────────────────────────────────
 mm_start=$(date +%s%N)
 mm_resp=$(curl -s -X POST https://api.minimaxi.chat/v1/text/chatcompletion_v2 \
-  -H "Authorization: Bearer sk-cp-xL0YZe_eFlMBtT1FEjhkwpGzfzu6Y8aveXZNp1fX26CJsg2nIO8D6BxQOwj-rIm9jqqZVY0WwpbgEcxOs0YC0erEYBq0pe2S0v10YGlDZhxFavSaz2naD08" \
+  -H "Authorization: Bearer ${MINIMAX_API_KEY:-}" \
   -H "Content-Type: application/json" \
   -d '{"model":"MiniMax-M2.7-highspeed","messages":[{"role":"user","content":"ping"}],"max_tokens":5}' \
   --max-time 15 2>/dev/null || true)
