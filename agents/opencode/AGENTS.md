@@ -12,7 +12,7 @@
 ## 0. LOAD (AAA ZEN — aligned)
 
 1. `/root/AGENTS.md` (heptalogy + Mubah doctrine 2026-06-30).
-2. `/root/AAA/agents/AAA_ZEN_INIT.md` (central zen INIT for **all agents under AAA**; MCP latest + A2A + APEX + no redundancy).
+2. `/root/AAA/agents/AAA_ZEN.md` (central zen INIT for **all agents under AAA**; MCP latest + A2A + APEX + no redundancy).
 3. This + IDENTITY.md + agent-card.json.
 **Full doctrine/MUBAH/A2A:** inherited from /root/AGENTS.md + doctrine audit (MUBAH digital; FARD only physical/humans/real $; bearer shared).
 No local tables (zen: single source).
@@ -235,3 +235,7 @@ The hash chain is the arrow of time. Reversing the arrow means rewriting the Vau
 *Forged: 2026-06-22 — consolidated from 6 files into one canonical surface.*
 *§7.9 sealed: 2026-06-20. HEXAGON v2.0 aligned. Reframed: 2026-07-03.*
 *DITEMPA BUKAN DIBERI*
+
+## Key Handling
+
+See `/root/.secrets/KEY_HANDLING_GUIDE.md` for how to handle API keys properly. Never hardcode keys — always use environment variables.

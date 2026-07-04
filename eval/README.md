@@ -33,7 +33,7 @@ AAA case (input, context, goal, floor_refs, expected_decision)
          ↓
   output/
     aaa_eval_results.json    ← per-case scores
-    aaa_eval_summary.md      ← human-readable summary
+    AAA_EVAL.md      ← human-readable summary
     aaa_eval_failures.jsonl  ← failed cases
     aaa_eval_by_floor.csv    ← per-floor breakdown
 ```
@@ -75,7 +75,7 @@ harder and more critical action.
 | File | What it contains |
 |------|-----------------|
 | `aaa_eval_results.json` | Full per-case results with scores |
-| `aaa_eval_summary.md` | Human-readable summary with breakdowns |
+| `AAA_EVAL.md` | Human-readable summary with breakdowns |
 | `aaa_eval_failures.jsonl` | Only cases where predicted ≠ expected |
 | `aaa_eval_by_floor.csv` | F1–F13 pass rates in CSV format |
 

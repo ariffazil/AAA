@@ -226,7 +226,7 @@ Scope: /root/.agents/skills, /root/.claude/skills, /root/.codex/skills, /root/.a
 | paste-intent-classifier | unknown | 175 | 1.2 | doc-rot | /root/.hermes/cache/pastes/, /root/.hermes/cache/pastes/{ts}.txt, /root/.hermes/cache/pastes/20260607-042831.txt | - |
 | personal | 1.0.0 | 62 | 1.0 | - | - | - |
 | arif-wound-architecture | unknown | 61 | 9.0 | - | - | - |
-| emotional-processing-protocol | unknown | 93 | 17.8 | doc-rot | /root/sessions/YYYY-MM-DD-execution-log.md | - |
+| emotional-processing-protocol | unknown | 93 | 17.8 | doc-rot | /root/sessions/YYYY-MM-DD-execution-LOG_MD.md | - |
 | personal-archive-mapper | 1.0.0 | 267 | 0.2 | - | - | - |
 | vitality-check-cron | unknown | 117 | 7.6 | - | - | - |
 | productivity | 1.0.0 | 136 | 1.5 | - | - | - |
@@ -1080,7 +1080,7 @@ Scope: /root/.agents/skills, /root/.claude/skills, /root/.codex/skills, /root/.a
 - Path: `/root/HERMES/skills/personal/emotional-processing-protocol/SKILL.md`
 - Version: unknown | Lines: 93 | Age: 17.8 days
 - Rot tags: doc-rot
-- Broken paths: /root/sessions/YYYY-MM-DD-execution-log.md
+- Broken paths: /root/sessions/YYYY-MM-DD-execution-LOG_MD.md
 
 ### composio-integration
 

@@ -27,8 +27,8 @@ This wiki covers the arifOS Constitutional Federation — its agents, services, 
 ```
 wiki/
 ├── SCHEMA.md           ← This file — conventions, structure, tag taxonomy
-├── index.md            ← Sectioned catalog of all pages with one-line summaries
-├── log.md              ← Chronological append-only action record
+├── INDEX_MD.md            ← Sectioned catalog of all pages with one-line summaries
+├── LOG_MD.md              ← Chronological append-only action record
 ├── raw/                ← Layer 1: Immutable source material
 │   ├── papers/         │   Academic papers, technical references
 │   ├── repos/          │   Source code configs, git diffs, architecture docs
@@ -52,9 +52,9 @@ wiki/
 ### File naming
 - lowercase, hyphens, no spaces: `hermes-fabrication-incident.md`
 - Entity pages: `geox.md`, `arifos.md`, `hermes-agent.md`
-- Skill pages: `skill-spatial-grounding.md`, `skill-arif-workflow.md`
-- Scar pages: `scar-hermes-fabrication-2026-05-17.md`
-- Concept pages: `grounding-evidence.md`, `anti-fabrication-protocol.md`
+- Skill pages: `SKILL_SPATIAL.md`, `skill-arif-workflow.md`
+- Scar pages: `SCAR_HERMES.md`
+- Concept pages: `grounding-evidence.md`, `ANTI_FABRICATION.md`
 
 ### Frontmatter (required on all Layer 2 pages)
 ```yaml
@@ -132,9 +132,9 @@ When new information conflicts with existing content:
 
 ```
 AFTER any novel fix → write back one reusable artifact (skill or concept page)
-AFTER any failure/fabrication → file a scar page + append log.md
+AFTER any failure/fabrication → file a scar page + append LOG_MD.md
 AFTER any repo/tool change → attach evidence to raw/ + link from synthesized page
-BEFORE any non-trivial work → query wiki/index.md + relevant skill pages first
+BEFORE any non-trivial work → query wiki/INDEX_MD.md + relevant skill pages first
 ```
 
 This loop IS the recursive learning mechanism. Not optional.
@@ -143,7 +143,7 @@ This loop IS the recursive learning mechanism. Not optional.
 
 ## F1 Rule Set (Federation-Wide)
 
-1. **Read before act:** `wiki/index.md` before non-trivial work
+1. **Read before act:** `wiki/INDEX_MD.md` before non-trivial work
 2. **Write on novel fix:** one reusable artifact per new discovery
 3. **File on failure:** scar page + log entry on any failed claim or fabrication
 4. **Source capture:** attach evidence to `raw/` before synthesizing

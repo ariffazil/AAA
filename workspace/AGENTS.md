@@ -154,7 +154,7 @@ The workspace should behave like a compiled wiki, not a random note dump.
 - `MEMORY.md` keeps durable truths only
 - If a fact is transient, keep it out of long-term memory
 - If something matters later, write it down now
-- Lowercase `memory.md` is legacy fallback only, do not intentionally maintain both
+- Lowercase `MEMORY_MD.md` is legacy fallback only, do not intentionally maintain both
 
 ## Safety defaults
 

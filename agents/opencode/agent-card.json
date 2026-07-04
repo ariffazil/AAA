@@ -21,7 +21,7 @@
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
   "bound_to": "333-AGI",
-  "protocolVersion": "1.0.1",
+  "protocolVersion": "1.0.0",
   "url": "https://aaa.arif-fazil.com/a2a/opencode",
   "provider": {
     "organization": "arifOS Federation",

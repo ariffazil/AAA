@@ -47,7 +47,7 @@ MCP (live + extensible, now with forged narrow orchestration):
 - geox, wealth, well: full organ evidence surfaces
 - arifOS (8088): governance / judge / vault
 - A-FORGE (7072): execution + real lease authority system (scopes act as allowed_tools)
-- gb-federation-router (stdio or :18790 http): narrow orchestration (orchestrate_sequence, route_to_mcp, request_aforge_lease_exec, emit_telemetry, check_floors, fallback). See mcp-configs/ + GB_MCP_ORCHESTRATION_LAYOUT.md
+- gb-federation-router (stdio or :18790 http): narrow orchestration (orchestrate_sequence, route_to_mcp, request_aforge_lease_exec, emit_telemetry, check_floors, fallback). See mcp-configs/ + GB_MCP.md
 - Others via config (cloudflare, etc.)
 
 **Orchestration reality (Brain/Hands Contract — Hard Rule):**
@@ -60,7 +60,7 @@ MCP (live + extensible, now with forged narrow orchestration):
 All parallelism is powerful but must not create uncoordinated bypass vectors.
 
 See:
-- GB_MCP_ORCHESTRATION_LAYOUT.md
+- GB_MCP.md
 - mcp-configs/grok-build-mcp.example.json
 - A-FORGE/services/grok-build-mcp/ (narrow server skeletons)
 
@@ -101,7 +101,7 @@ This exceeds many peers in declared maxParallel and isolation.
 
 ## Arif Sovereign Directives (Grok Build Specific — Autonomous Execution)
 
-**From Arif (F13):** Plan without execution is bangang. Agents must scan/map existing reality FIRST (semantically, via tools: list_dir + read high-level READMEs/AGENTS.md/CONTEXT.md/APEX_THEORY_AND_FEDERATION.md), then EXECUTE autonomously. Full root native global access, no blocks. High-level reports only (Arif reads READMEs — no code unless asked). Governed stack: arifOS (judgment/law) → AAA (state/visibility) → A-FORGE (execution).
+**From Arif (F13):** Plan without execution is bangang. Agents must scan/map existing reality FIRST (semantically, via tools: list_dir + read high-level READMEs/AGENTS.md/CONTEXT.md/APEX_THEORY.md), then EXECUTE autonomously. Full root native global access, no blocks. High-level reports only (Arif reads READMEs — no code unless asked). Governed stack: arifOS (judgment/law) → AAA (state/visibility) → A-FORGE (execution).
 
 - Always activate skill: arif-governed-autonomous-execution
 - Hook: ~/.grok/hooks/arif-grok-build.json enforces initial semantic scan on SessionStart.

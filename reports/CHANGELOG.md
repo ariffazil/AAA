@@ -10,8 +10,8 @@
 ### 🎂 Birthday Release — Arif's Birthday 2026
 
 - **AGENTS.md:** Full structural rewrite — SOT-MANIFEST header, repo structure, authority table, federation position, build/test commands, OpenClaw guide reference. 208-line reduction.
-- **wiki/index.md:** TREE777 page registry count updated 84 → 95 pages.
-- **wiki/log.md:** TREE777 777 health pulse + 888 promotion review entries for apex, maxhermes, phoenix72, hermes-asi, openclaw, hermes-ops, opencode.
+- **wiki/INDEX_MD.md:** TREE777 page registry count updated 84 → 95 pages.
+- **wiki/LOG_MD.md:** TREE777 777 health pulse + 888 promotion review entries for apex, maxhermes, phoenix72, hermes-asi, openclaw, hermes-ops, opencode.
 - **package.json:** Version bumped 55.5.0 → 55.5.1.
 
 ---
@@ -35,7 +35,7 @@
 ### ⚙️ TREE777 Cron Loop Infrastructure
 
 - **Cron Scripts:** Added `tree777_health_pulse.sh`, `tree777_promotion_review.sh`, `tree777_weekly_anchor.sh`, and `install_tree777_agent_crons.sh` for automated TREE777 maintenance.
-- **Workflow:** Added `workflow-tree777-agent-cron-loop.md` documenting the cron-driven TREE777 agent lifecycle.
+- **Workflow:** Added `WORKFLOW_AGENT.md` documenting the cron-driven TREE777 agent lifecycle.
 - **Onboarding:** Added `AGENTS.md` providing AAA agent onboarding guidance for new clerks.
 - **Governance:** Kernel Purity Seal recorded in `GEMINI_CLI_GOVERNANCE.md` metabolic log (Google Workspace moved to peripheral adapter, legacy tools removed from arifOS core).
 - **Runtime Guard:** Added `wiki/_runtime/` and `VAULT999/tree777/` to `.gitignore` to prevent cron artifact pollution.

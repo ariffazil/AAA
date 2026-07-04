@@ -26,7 +26,7 @@ Each workflow has:
 - `state.json` — Current execution state (written by engine)
 - `gates/` — Per-step gate files: `{"status": "passed/failed/pending", "passed": true/false/null}`
 - `artifacts/` — Step outputs written before gate advances
-- `reasoning/summary.md` — Design rationale
+- `reasoning/SUMMARY_MD.md` — Design rationale
 
 ## Recovery
 - Resume from last validated gate (not from scratch)

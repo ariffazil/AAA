@@ -17,7 +17,7 @@ auto_gen_agent = {
     "role": "analyst | researcher | executor | reviewer",
     "allowed_tools": ["read_file", "search_web", "compute"],
     "forbidden_actions": ["delete_file", "send_email", "deploy"],
-    "authority_level": "L1 | L2 | L3",  # see ORGAN_AUTHORITY_MAP.md
+    "authority_level": "L1 | L2 | L3",  # see ORGAN_AUTHORITY.md
     "lease_scope": ["earth_data", "capital_data"],
     "may_propose": True,
     "may_authorize": False,

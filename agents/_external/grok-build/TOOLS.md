@@ -42,7 +42,7 @@ Core federation (narrow + policy-scoped in practice):
 5. **gb-federation-router** (new narrow, stdio or http:18790) — planner/router for Grok Build. 6 tools only: orchestrate_sequence, route_to_mcp, request_aforge_lease_exec, emit_federation_telemetry, check_constitutional_floors, fallback_route.
 6. Internal harness + others via config.
 
-**See forged layout:** GB_MCP_ORCHESTRATION_LAYOUT.md + mcp-configs/grok-build-mcp.example.json + A-FORGE/services/grok-build-mcp/README.md
+**See forged layout:** GB_MCP.md + mcp-configs/grok-build-mcp.example.json + A-FORGE/services/grok-build-mcp/README.md
 
 Use arifos-mcp-federation skill as primary cross-MCP router.
 

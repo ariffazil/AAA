@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aaa-a2a"
+version = "0.1.0a2"
+description = "Constitutional Python wrapper around official a2a-sdk for the AAA control plane."
+requires-python = ">=3.13"
+license = { text = "Proprietary" }
+authors = [
+    { name = "AAA Forge", email = "forge@arif-fazil.com" },
+]
+keywords = ["a2a", "arifos", "constitutional-ai", "agent-governance"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "a2a-sdk>=0.2.3",
+    "fastmcp>=2.3.4",
+    "httpx>=0.28.0",
+    "pydantic>=2.10.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"

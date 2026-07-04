@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: aaa-a2a
+Version: 0.1.0a2
+Summary: Constitutional Python wrapper around official a2a-sdk for the AAA control plane.
+Author-email: AAA Forge <forge@arif-fazil.com>
+License: Proprietary
+Keywords: a2a,arifos,constitutional-ai,agent-governance
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Requires-Python: >=3.13
+Requires-Dist: a2a-sdk>=0.2.3
+Requires-Dist: fastmcp>=2.3.4
+Requires-Dist: httpx>=0.28.0
+Requires-Dist: pydantic>=2.10.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
+Requires-Dist: ruff>=0.4; extra == "dev"
