@@ -2326,6 +2326,13 @@ print(json.dumps(json.load(open(RUNTIME_PATH / 'vps_main_arifos.json'))))
 
 app.get('/health', async (req, res) => {
   const vaultHealthy = await checkVaultHealth();
+  // Include seal chain head — the real heartbeat
+  let chain = { seq: 0, hash: 'sha256:0' };
+  try {
+    const sealChain = require('./seal_chain');
+    const head = sealChain.getHead();
+    if (head && head.seq > 0) chain = { seq: head.seq, hash: head.hash, epoch: head.epoch, actor: head.actor, verdict: head.verdict };
+  } catch (_) { /* seal chain not available */ }
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.json({
@@ -2334,8 +2341,44 @@ app.get('/health', async (req, res) => {
     version: '1.0.0',
     gateway: 'AAA',
     motto: 'Ditempa Bukan Diberi',
-    vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED'
+    vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED',
+    chain,
   });
+});
+
+// ── Seal Chain Head — the real heartbeat for Δ BODY overlay
+app.get('/api/seal-chain/head', async (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  try {
+    const sealChain = require('./seal_chain');
+    const head = sealChain.getHead();
+    const verify = sealChain.verifyChain();
+    const summary = sealChain.getChainSummary();
+    const recent = sealChain.getRecent(3);
+    res.json({
+      ok: true,
+      head,
+      chain_ok: verify.ok,
+      chain_length: verify.length,
+      chain_head_hash: verify.head,
+      v1_entries: summary.v1_entries,
+      v2_entries: summary.v2_entries,
+      seal_version: head.seal_version || 1,
+      merkle_root: head.merkle_root || null,
+      recent_v2_merkle_roots: summary.merkle_roots.slice(-3),
+      last_entry: recent.length > 0 ? {
+        seq: recent[recent.length - 1].seq,
+        event_type: recent[recent.length - 1].event_type || null,
+        principal: recent[recent.length - 1].principal || null,
+        witness: recent[recent.length - 1].witness || null,
+      } : null,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
 // ── Mesh State — real-time mesh intelligence for cockpit (P3 2026-06-14)

@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 /**
- * VAULT999 Client for AAA A2A Gateway
- * Writes SEAL/HOLD audit records to the constitutional ledger
+ * VAULT999 Client for AAA A2A Gateway — v2 ENRICHED
+ * Writes SEAL/HOLD audit records to the constitutional ledger.
+ *
+ * v2.0.0 (FORGED 2026-07-04): Enriched seal envelope.
+ * Adds: event_type, principal, policy_hash, input/output hashes, delegation chain.
  *
  * DITEMPA BUKAN DIBERI — Forged, Not Given
  */
@@ -9,10 +12,19 @@
 const VAULT_WRITER_URL = process.env.VAULT_WRITER_URL || 'http://vault999-writer:5001';
 const VAULT_WRITER_TOKEN = process.env.VAULT_WRITER_TOKEN || '';
 
-function createSealPayload(task, agentId, action, metadata) {
+const crypto = require('crypto');
+function sha256Hex(input) {
+  return 'sha256:' + crypto.createHash('sha256').update(input).digest('hex');
+}
+
+/**
+ * Create an enriched seal payload for the canonical hash chain.
+ * v2: includes cryptographic event envelope fields alongside the original payload.
+ */
+function createSealPayload(task, agentId, action, metadata, opts = {}) {
   const now = new Date().toISOString();
 
-  return {
+  const payload = {
     agent_id: agentId || 'aaa-gateway',
     action: action,
     payload: {
@@ -37,22 +49,55 @@ function createSealPayload(task, agentId, action, metadata) {
       ...metadata
     }
   };
+
+  // ── Enriched seal options (v2) ──
+  // These are passed through to seal_chain.writeSeal() as the second argument.
+  // vault.js doesn't compute hashes — seal_chain.js does. vault.js passes
+  // raw data and seal_chain.js canonicalizes/hashes.
+  payload._seal_opts = {
+    event_type: opts.event_type || classifyEventType(action),
+    principal: opts.principal || `agent:${agentId || 'aaa-gateway'}`,
+    tool_schema_hash: opts.tool_schema_hash || null,
+    active_floors: opts.active_floors || ['F1', 'F2', 'F4', 'F6', 'F8', 'F9', 'F11', 'F13'],
+    input_hash: null,  // computed by seal_chain.js from the payload
+    output_hash: opts.output_hash || null,
+    delegation_chain: opts.delegation_chain || [],
+  };
+
+  return payload;
 }
 
-async function writeSeal(task, agentId, action, metadata) {
-  const payload = createSealPayload(task, agentId, action, metadata);
-  // Delegate to the canonical local hash chain (seal_chain.js).
-  // Remote vault999-writer is mirrored best-effort by seal_chain itself.
+function classifyEventType(action) {
+  const a = (action || '').toLowerCase();
+  if (a.startsWith('a2a.')) return 'a2a.dispatch';
+  if (a.includes('shell') || a.includes('forge.execute')) return 'forge.shell';
+  if (a.includes('judge') || a.includes('verdict')) return 'constitutional.verdict';
+  if (a.includes('register') || a.includes('forge.skill')) return 'tool.register';
+  if (a.includes('seal') || a.includes('session')) return 'session.seal';
+  return 'a2a.general';
+}
+
+async function writeSeal(task, agentId, action, metadata, opts = {}) {
+  const fullPayload = createSealPayload(task, agentId, action, metadata, opts);
+  // Extract enrichment options before delegating to seal_chain
+  const sealOpts = fullPayload._seal_opts || {};
+  delete fullPayload._seal_opts;
+
   const sealChain = require('./seal_chain');
-  return sealChain.writeSeal(payload);
+  return sealChain.writeSeal(fullPayload, sealOpts);
 }
 
 async function writeVoid(task, agentId, action, reason, metadata) {
   const payload = createSealPayload(task, agentId, action, { ...metadata, void_reason: reason });
   payload.verdict = 'VOID';
   payload.irreversibility_class = 'HOLD_VOID';
+  // Preserve seal options
+  const sealOpts = payload._seal_opts || { event_type: 'a2a.general' };
+  sealOpts.event_type = sealOpts.event_type || 'a2a.general';
+  delete payload._seal_opts;
+
   const sealChain = require('./seal_chain');
-  return sealChain.writeSeal(payload);
+  return sealChain.writeSeal(payload, sealOpts);
 }
 
 async function writeRecord(endpoint, payload) {
