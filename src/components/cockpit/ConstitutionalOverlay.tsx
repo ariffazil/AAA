@@ -30,6 +30,8 @@ interface OverlayStatus {
   delegationRules: number;
   floorChecks: number;
   auditChainValid: boolean;
+  chainSeq: number;
+  chainHash: string;
   agentCount: number;
   skillCount: number;
   organHealth: Record<string, boolean>;
@@ -60,6 +62,8 @@ export default function ConstitutionalOverlay() {
     delegationRules: 0,
     floorChecks: 0,
     auditChainValid: false,
+    chainSeq: 0,
+    chainHash: '',
     agentCount: 0,
     skillCount: 0,
     organHealth: {},
@@ -94,12 +98,28 @@ export default function ConstitutionalOverlay() {
         }
       }
 
+      // Fetch seal chain head — the real heartbeat
+      let chainSeq = 0;
+      let chainHash = '';
+      let chainValid = false;
+      try {
+        const chainRes = await fetch('/api/seal-chain/head', { cache: 'no-store' });
+        if (chainRes.ok) {
+          const chain = await chainRes.json();
+          chainSeq = chain.head?.seq || 0;
+          chainHash = (chain.head?.hash || '').slice(0, 15);
+          chainValid = chain.chain_ok === true;
+        }
+      } catch { /* seal chain not available */ }
+
       setStatus({
         server: healthRes.ok ? 'online' : 'offline',
         version: health.version || health.protocol || '',
         delegationRules: 18, // Hard-coded from guard.py
         floorChecks: FLOOR_IDS.length,
-        auditChainValid: true, // Will be dynamic when Python server is live
+        auditChainValid: chainValid,
+        chainSeq,
+        chainHash,
         agentCount: stats?.totalAgents || 0,
         skillCount: stats?.totalSkills || 0,
         organHealth,
@@ -166,10 +186,22 @@ export default function ConstitutionalOverlay() {
           sub="F1-F13 active"
         />
         <StatCard
-          icon={<FileText className="w-4 h-4 text-purple-400" />}
-          label="Audit Chain"
-          value={status.auditChainValid ? '✓' : '✗'}
-          sub="hash-chained"
+          icon={<Zap className={`w-4 h-4 ${status.auditChainValid ? 'text-purple-400' : 'text-red-400'}`} />}
+          label="Seal Chain"
+          value={
+            !status.auditChainValid
+              ? 'BROKEN'
+              : status.chainSeq > 0
+                ? `#${status.chainSeq}`
+                : 'GENESIS'
+          }
+          sub={
+            !status.auditChainValid
+              ? 'arrow snapped'
+              : status.chainHash
+                ? `${status.chainHash}…`
+                : 'awaiting first seal'
+          }
         />
       </div>
 
