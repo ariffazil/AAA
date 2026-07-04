@@ -1219,6 +1219,39 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 
 ---
 
+## 🔌 Protocol Connection
+
+AAA uses the **Agent-to-Agent (A2A)** protocol, not MCP. Connect via:
+
+| Property | Value |
+|----------|-------|
+| **A2A Endpoint** | `https://aaa.arif-fazil.com/a2a/` |
+| **Agent Card** | `https://aaa.arif-fazil.com/.well-known/agent-card.json` |
+| **Health** | `https://aaa.arif-fazil.com/health` |
+| **Seal Chain** | `https://aaa.arif-fazil.com/api/seal-chain/head` |
+
+### A2A Client
+
+```bash
+# List agents in the federation
+curl -s https://aaa.arif-fazil.com/a2a/agents.json
+```
+
+### MCP Gateway (arifOS)
+
+For MCP access to AAA-governed tools, use the canonical MCP gateway:
+```json
+{
+  "mcpServers": {
+    "arifos": {
+      "url": "https://mcp.arif-fazil.com/mcp"
+    }
+  }
+}
+```
+
+---
+
 ```
     ┌──────────────────────────────────────────────────┐
     │                                                  │
