@@ -87,7 +87,7 @@ AAA is the **fifth position**. It is the **window, not the wall**.
 
 | Read this | For | Link |
 |-----------|-----|------|
-| **arifOS** | Constitutional kernel. 10 public verbs. 13 floors. VAULT999. The judge. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
+| **arifOS** | Constitutional kernel. 12 canonical public verbs (F13 ratified 2026-07-04; prior freeze was 7). 13 floors. VAULT999. The judge. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
 | **A-FORGE** | Executor. 21 stateless MCP tools (live `:7072/health`). Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
 | **AAA** (this repo) | Cockpit. A2A mesh. Agent registry. React 19 dashboard. What Arif reads. | ← you are here |
 
