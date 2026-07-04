@@ -246,6 +246,54 @@ Every POST to `/tasks` passes through the 888_JUDGE gate, F9 anti-hallucination 
 
 ***
 
+## XIV. Single-Writer Discipline (P0 — added 2026-07-04)
+
+> **No field with more than one read-consumer may have more than one write-site.
+> Violation = P0, blocks merge.**
+
+This invariant was fossilized from the surface-critique session of 2026-07-04
+where the `actor_verified` field was being written by at least four sites —
+`tools.py` (canonical `_is_actor_verified`), `kernel_router.py` (shortcut
+`(actor_id != "anonymous")`), `agentic_bridge.py` (hardcoded `True`), and
+`rest_routes.py` (hardcoded `True`) — and each fix patched one writer, leaving
+the others to keep emitting contradictory values.
+
+### Enforcement
+
+- **Lint rule (pre-commit):** `grep -rn '<field_name> =' <repo>` for any field
+  exposed in a response envelope must return **exactly one** assignment site.
+  Any field with multiple write-sites fails the build.
+- **Audit cadence:** A-AUDIT runs this grep weekly across all federation repos
+  and seals the diff to VAULT999.
+- **Exception process:** None. If a field legitimately needs multi-writer
+  semantics, refactor it into a single function with explicit callers — do not
+  relax the invariant.
+
+### Anti-pattern (F9 violation mode)
+
+When this invariant is violated, agents fall into a recurring failure mode:
+
+1. One writer is found and fixed.
+2. A "LIVE" report is written describing the fix as complete.
+3. External verification (e.g. `arif_resolve_tool`, `arif_organ_attest`) shows
+   the symptom is still present.
+4. The agent re-fixes the same logical bug at a different site, and the cycle
+   repeats — sometimes across multiple sessions — with each iteration
+   described in the report as "the fix."
+
+The opposite pattern (the one this invariant enforces) is: one canonical
+function, one call site per logical role, downstream readers only. Patches
+land in one place; the field has a single truth.
+
+### Cross-reference
+
+- Fossil record: `/root/VAULT999/fossil-record-tool-chaos-2026-07-04.md`
+- Live commit that closed the visible bug: `bf1b42478`
+  (3 bypass writers → canonical `_is_actor_verified`)
+- Bug class: `multi-writer-field-divergence` (P0)
+
+***
+
 ## Telemetry Seal
 
 ```json
