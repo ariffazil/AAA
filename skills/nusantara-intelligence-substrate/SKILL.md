@@ -63,7 +63,7 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 **Owner:** F13 SOVEREIGN — Muhammad Arif bin Fazil  
 **Forged:** 2026-06-17  
 **Schema:** `schemas/nusantara-state-language.schema.json`  
-**Doc:** `docs/NUSANTARA_STATE_LANGUAGE.md`
+**Doc:** `docs/NUSANTARA_STATE.md`
 
 ---
 
@@ -192,10 +192,10 @@ In those cases, the standard AAA state record is sufficient. Do not over-apply.
 
 ## 9. References
 
-- `references/usman-awang-melayu.md` — source poem excerpt
-- `docs/NUSANTARA_STATE_LANGUAGE.md` — full philosophical grounding
+- `references/USMAN_AWANG.md` — source poem excerpt
+- `docs/NUSANTARA_STATE.md` — full philosophical grounding
 - `schemas/nusantara-state-language.schema.json` — canonical schema
-- `constitution/SCAR-MELAYU-001.md` — failure-mode constraints mapped to Floors + verdicts
+- `constitution/SCAR_MELAYU.md` — failure-mode constraints mapped to Floors + verdicts
 
 ---
 

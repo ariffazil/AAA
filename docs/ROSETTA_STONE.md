@@ -3,7 +3,7 @@
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 > **Status:** ACTIVE | **Author:** AAA Federation | **Date:** 2026-06-26
-> **Authority:** Builds on `AAA_AGENT_SPECIFICATION_v1.0.md`, `AAA_ZEN.md`, `AGENTSKILLTREE.md`
+> **Authority:** Builds on `AAA_AGENT.md`, `AAA_ZEN.md`, `AGENTSKILLTREE.md`
 > **Purpose:** Every major coding CLI uses different names for the same 5 primitives.
 > This document is the translation key. One canonical concept → 8 vendor names.
 > Plus: the 3 primitives **only AAA has** (Floor, Verdict, Receipt).
@@ -89,7 +89,7 @@ all vendor-specific formats from the canonical `SKILL.md`. Write once, deploy to
 | **AAA Canonical** | **AAA Agent** (A2A mesh) | Separate context + organ + VAULT999 | Yes + constitutional |
 
 **AAA note:** An AAA Agent is not just an isolated context — it is a **sovereign-ratified
-Golden Path traversal** (see `AAA_AGENT_SPECIFICATION_v1.0.md` §2). It terminates in a
+Golden Path traversal** (see `AAA_AGENT.md` §2). It terminates in a
 VAULT999-sealed verdict. Vendor subagents terminate in a summary. That's the difference.
 
 ---
@@ -174,7 +174,7 @@ Violation response: HOLD → escalate to 888_JUDGE → notify Arif (see `ZENTOSI
 
 > A Verdict is a constitutional judgment produced by the 888_JUDGE after deliberation.
 > It terminates an Agent loop. Without a Verdict, there is no Agent — only a Model.
-> (See `AAA_AGENT_SPECIFICATION_v1.0.md` §1 Definitional Ladder)
+> (See `AAA_AGENT.md` §1 Definitional Ladder)
 
 **Verdict types:**
 
@@ -284,12 +284,12 @@ skills/<id>/SKILL.md                 ← canonical source (AAA)
 │
 ├── skills/<id>/claude/SKILL.md      ← Claude Code
 ├── skills/<id>/openai/README.md     ← Codex / OpenAI CLI
-├── skills/<id>/kimi/skill.md        ← Kimi Code
+├── skills/<id>/kimi/SKILL_MD.md        ← Kimi Code
 ├── skills/<id>/opencode/README.md   ← OpenCode
-├── skills/<id>/grok/skill.md        ← Grok Build
+├── skills/<id>/grok/SKILL_MD.md        ← Grok Build
 ├── skills/<id>/copilot/<id>.agent.md ← GitHub Copilot CLI
-├── skills/<id>/continue/skill.md    ← Continue.dev
-└── skills/<id>/antigravity/skill.md ← Antigravity
+├── skills/<id>/continue/SKILL_MD.md    ← Continue.dev
+└── skills/<id>/antigravity/SKILL_MD.md ← Antigravity
 ```
 
 **Tool:** `python skills/compile.py` — reads `host_compatibility` from SKILL.md frontmatter,
@@ -330,7 +330,7 @@ See `hooks/` directory for reference implementations.
 ### Step 5 — Agent Card (A2A, for true AAA Agents)
 If the CLI wraps a governed agent (not just uses AAA tools), publish:
 `/.well-known/agent-card.json` with `aaa_extension` block.
-See `AAA_AGENT_SPECIFICATION_v1.0.md` §3.
+See `AAA_AGENT.md` §3.
 
 ---
 
@@ -365,13 +365,13 @@ They require the arifOS constitutional kernel.
 
 | Document | Role |
 |---|---|
-| `AAA_AGENT_SPECIFICATION_v1.0.md` | Formal 5-clause definition of an AAA Agent |
+| `AAA_AGENT.md` | Formal 5-clause definition of an AAA Agent |
 | `AAA_ZEN.md` | 15 axioms of the Zen of Agentic Python |
 | `AGENTSKILLTREE.md` | 22 machine self-optimization skills, 6 tiers |
 | `ZENTOSILICASPEC.md` | Constitutional floors → machine substrate specification |
 | `skills/SKILL_TEMPLATE.md` | Canonical skill template with `host_compatibility` |
 | `skills/compile.py` | Multi-CLI skill compiler (reads `host_compatibility`, writes vendor outputs) |
-| `UNIFIED_AGENT_ARCHITECTURE.md` | Architecture: 8 agents, one constitutional kernel |
+| `UNIFIED_AGENT.md` | Architecture: 8 agents, one constitutional kernel |
 | `AAA_FEDERATION_CONSTITUTION.md` | Full F1–F13 constitutional text |
 
 ---

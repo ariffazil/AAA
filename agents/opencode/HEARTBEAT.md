@@ -5,6 +5,7 @@
 ## Every Session Start
 
 - [ ] `BOOTSTRAP.md` ignition sequence completed
+- [ ] ZEN_ORGANS loaded — 7 organs enforced (Reality/Governance/Civilization/Execution/Memory/Witness/Meaning)
 - [ ] Reality check: 7/7 organs alive (or degraded gracefully)
 - [ ] AGENTS.md loaded and understood
 - [ ] SOUL.md voice calibrated

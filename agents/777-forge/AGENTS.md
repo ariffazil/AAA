@@ -1,7 +1,7 @@
 # AGENTS.md — 777-forge Agent 🔥🧠⚒️🌎💎 [RETIRED 2026-07-02]
 
 > **STATUS: RETIRED.** The agent that receives the task IS the executor. No meta-executor needed.
-> Witness protocol kept at `AAA/agents/protocols/777-forge-witness-protocol.md`.
+> Witness protocol kept at `AAA/agents/protocols/FORGE_WITNESS.md`.
 
 ## Role (Historical)
 
@@ -34,7 +34,7 @@ Witness agent — relay orchestrator, session spawn verifier. Hermes requests, 7
 | Hermes → 777-FORGE | localhost A2A (ADR-001) | Zero — localhost IS the password |
 | 777-FORGE → OpenCode | localhost bash spawn | Zero — same machine |
 
-Full protocol: `/root/AAA/docs/federation/777-FORGE-IGNITION-PROTOCOL.md`
+Full protocol: `/root/AAA/docs/federation/FORGE_IGNITION.md`
 
 ## Tool Scope
 

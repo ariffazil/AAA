@@ -87,7 +87,7 @@ From your agent-card.json (13 primary skills):
 - **Meta:** apex-theory, entropy-thermo-zen, agentic-fitness-law, symbolic-order-*, meta-mesa-skill-atlas, skill-creator
 - **AAA:** aaa-cockpit, a2a-federation-builder, tools-embodiment-application
 
-**Civilizational alignment (loaded via AAA_ZEN_INIT.md):**
+**Civilizational alignment (loaded via AAA_ZEN.md):**
 Every tool is either open (immortal DNA) or closed (mortal DNA). Building is encoding wisdom, not writing code.
 
 **RSI civilizational frame (2026-07-03):**

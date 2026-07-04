@@ -145,8 +145,8 @@ npm test
 
 | arifOS Floor Doc | Path |
 |---|---|
-| 888_JUDGE | [docs/wiki/arifos/888_JUDGE.md](https://github.com/ariffazil/AAA/blob/main/docs/wiki/arifos/888_JUDGE.md) |
-| 999_VAULT | [docs/wiki/arifos/999_VAULT.md](https://github.com/ariffazil/AAA/blob/main/docs/wiki/arifos/999_VAULT.md) |
+| 888_JUDGE | [docs/wiki/arifos/JUDGE_MD.md](https://github.com/ariffazil/AAA/blob/main/docs/wiki/arifos/JUDGE_MD.md) |
+| 999_VAULT | [docs/wiki/arifos/VAULT_MD.md](https://github.com/ariffazil/AAA/blob/main/docs/wiki/arifos/VAULT_MD.md) |
 | FLOORS | [docs/wiki/arifos/FLOORS.md](https://github.com/ariffazil/AAA/blob/main/docs/wiki/arifos/FLOORS.md) |
 | VERDICTS | [docs/wiki/arifos/VERDICTS.md](https://github.com/ariffazil/AAA/blob/main/docs/wiki/arifos/VERDICTS.md) |
 | WEALTH HARNESS | [canon/WEALTH_HARNESS.md](https://github.com/ariffazil/wealth/blob/main/canon/WEALTH_HARNESS.md) |

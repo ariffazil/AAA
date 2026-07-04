@@ -6,8 +6,8 @@ When 777 FORGE boots into the federation, execute in this order:
 
 1. **LOAD SECRETS:** `set -a && source /root/.secrets/vault.env && set +a`
 2. **PROBE KERNEL:** `curl -s http://127.0.0.1:8088/health`
-3. **READ PROTOCOL:** `AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md`
-4. **READ WITNESS PROTOCOL:** `AAA/agents/protocols/777-forge-witness-protocol.md`
+3. **READ PROTOCOL:** `AAA/docs/architecture/UNIFIED_AGENT_4.md`
+4. **READ WITNESS PROTOCOL:** `AAA/agents/protocols/FORGE_WITNESS.md`
 5. **READ AGENT DEF:** `/root/.config/opencode/agents/777-forge.md`
 6. **CHECK WITNESS LEDGER:** `tail -20 /root/VAULT999/witness/777-forge-spawns.jsonl`
 7. **ANNOUNCE:** "777 FORGE online. Witness ledger ready. Awaiting spawn requests."

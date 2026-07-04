@@ -81,7 +81,7 @@ Agents can autonomously evaluate if Pro tier is worth it:
 - **Value:** Saves tokens by eliminating context repetition
 - **ROI:** If persistent memory saves >0.5 USDT/month in tokens, it pays for itself
 
-See [AGENT-PAYMENTS.md](AGENT-PAYMENTS.md) for x402 integration details.
+See [AGENT_PAYMENTS.md](AGENT_PAYMENTS.md) for x402 integration details.
 
 ## Privacy
 
@@ -114,7 +114,7 @@ Memory System is the foundation for:
 ## Links
 
 - [Documentation](README.md)
-- [Agent Payments Guide](AGENT-PAYMENTS.md)
+- [Agent Payments Guide](AGENT_PAYMENTS.md)
 - [GitHub Repository](https://github.com/yourusername/openclaw-memory)
 - [ClawHub Page](https://clawhub.ai/skills/openclaw-memory)
 

@@ -1594,9 +1594,67 @@
       "sealed_at": null,
       "voided_at": null,
       "void_reason": null
+    },
+    {
+      "entry_id": "42fb8d10-3bb",
+      "artifact_ref": "2e1c04d0-0b44-4153-95ab-337a20da6fad",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-03T23:22:56.181Z",
+      "cooldown_expiry": "2026-07-10T23:22:56.181Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "fb6ef916-69c",
+      "artifact_ref": "d5ef5a45-0a1d-4241-9459-f66cecb93357",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-04T00:03:59.008Z",
+      "cooldown_expiry": "2026-07-11T00:03:59.008Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
     }
   ],
   "sealedCount": 0,
   "voidedCount": 22,
-  "persistedAt": "2026-07-03T11:47:01.019Z"
+  "persistedAt": "2026-07-04T00:03:59.009Z"
 }

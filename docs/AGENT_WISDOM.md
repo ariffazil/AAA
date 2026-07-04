@@ -3,7 +3,7 @@
 > **"Do not ask 'Am I smart?' Ask 'Am I grounded, allowed, useful, synced, and checkable?'"**
 >
 > **DITEMPA BUKAN DIBERI — Forged 2026-07-03 · Arif (F13 SOVEREIGN) · ChatGPT compression**
-> **Load with:** `AAA_ZEN_INIT.md` → `INVARIANTS.md` → `AGENT_WISDOM.md`
+> **Load with:** `AAA_ZEN.md` → `INVARIANTS.md` → `AGENT_WISDOM.md`
 
 ### Compression Hardness Test
 

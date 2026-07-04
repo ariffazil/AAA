@@ -23,6 +23,14 @@ $ for svc in "arifos:8088" "aforge:7071" "aaa:3001" "geox:8081" "wealth:18082" "
 If any ❌: that organ is DOWN. Proceed read-only on live organs.
 Do NOT assume dead organ config is still valid.
 
+STEP 2.5: LOAD ZEN ORGANS (MANDATORY — before any action)
+─────────────────────────────────────────────────
+Load skill: zen-organs
+→ /root/.agents/skills/ZEN_ORGANS/SKILL.md
+→ Enforce Seven Organs: Reality, Governance, Civilization, Execution, Memory, Witness, Meaning
+→ If any organ missing/degraded/contradicted: DECLARE FIRST.
+→ No exceptions.
+
 STEP 3: LOAD CONTEXT
 ─────────────────────
 Read (in order):
@@ -46,10 +54,14 @@ Call arif_organ_attest_all to verify 7 organs alive.
 
 STEP 5.5: TOOL DISCOVERY
 ─────────────────────────
-Run arif_retrieve_tools(query="*") to discover ALL available tools
-across all 7 federation organs before acting. Or check the public
-manifest at https://mcp.arif-fazil.com/manifest/tools.json for
-the canonical 7-tool surface.
+Three probes to discover ALL available tools:
+1. MCP tools/list: `curl -s http://localhost:8088/mcp -X POST \
+   -H "Content-Type: application/json" -d '{"method":"tools/list"}'`
+   — returns 9 canonical arif_* tools.
+2. /health: `curl -s http://localhost:8088/health` — tool counts, naming.
+3. arif_retrieve_tools(query="*") — BM25 across full 58-tool catalog.
+Or check the public manifest at https://mcp.arif-fazil.com/manifest/tools.json
+for the federation organ surface. Run before first action.
 
 STEP 6: REPORT
 ──────────────

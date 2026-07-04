@@ -112,6 +112,85 @@
       ]
     },
     {
+      "id": "judge.deliberate",
+      "name": "888_JUDGE Constitutional Deliberation",
+      "description": "10-gate APEX constitutional evaluation. Accepts a proposed action and returns SEAL (permit with constraints), HOLD (needs human review), SABAR (defer), or VOID (rejected). Requires actor, intent, domain, reversibility_level, blast_radius. Routes to arif_judge at arifOS :8088.",
+      "tags": [
+        "A2A",
+        "judge",
+        "constitution",
+        "888_JUDGE",
+        "governance",
+        "deliberation",
+        "SEAL",
+        "HOLD"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F8",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "lease.issue",
+      "name": "Bounded Authority Lease Issuance",
+      "description": "Issues a time-bounded, scope-constrained lease for an agent to act on an organ. Scopes tool access and max action class (OBSERVE → EXECUTE_REVERSIBLE → IRREVERSIBLE). Default TTL 300s. Routes to arifOS arif_lease_issue.",
+      "tags": [
+        "A2A",
+        "lease",
+        "authority",
+        "scope",
+        "governance",
+        "F1"
+      ],
+      "floor_scope": [
+        "F1",
+        "F8",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "session.identity",
+      "name": "Session Binding and Identity Verification",
+      "description": "Binds an A2A session to a verified actor identity. Returns session_id, authority level, floor status. Required before any governed action. Tracks contextId lineage across multi-step tasks.",
+      "tags": [
+        "A2A",
+        "session",
+        "identity",
+        "auth",
+        "contextId",
+        "binding"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F8",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "agent.discover",
+      "name": "Capability-Based Agent Discovery",
+      "description": "Discovers federation agents by capability tag, organ, skill, or name. Returns agent cards matching the query. Supports search, capability, tag, and skill discovery modes. Routes to /a2a/discover/ endpoints.",
+      "tags": [
+        "A2A",
+        "discovery",
+        "agent-card",
+        "capability",
+        "registry"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8",
+        "F11"
+      ]
+    },
+    {
       "id": "sovereign-veto-respect",
       "name": "Sovereign Veto Respect",
       "description": "Honors F13 SOVEREIGN at all times. 888_HOLD escalates to Muhammad Arif bin Fazil for ratification. No self-authorization above T3 autonomy.",

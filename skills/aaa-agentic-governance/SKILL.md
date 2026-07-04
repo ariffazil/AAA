@@ -98,11 +98,11 @@ AAA is not final authority. AAA routes, displays, declares tasks, and lowers ent
 
 Use references only when needed:
 
-- `references/aaa-operating-model.md` for the AAA doctrine, entropy reduction loop, and orthogonal A axes.
-- `references/federation-map.md` for organ/repo roles and source-of-truth hierarchy.
-- `references/governance-gates.md` for F1-F13, risk tiers, verdict language, and authority boundaries.
-- `references/agentic-workflows.md` for reusable response templates and task patterns.
-- `references/repo-working-rules.md` for safe repo edits, tests, and mutation guardrails.
+- `references/AAA_OPERATING.md` for the AAA doctrine, entropy reduction loop, and orthogonal A axes.
+- `references/FEDERATION_MAP.md` for organ/repo roles and source-of-truth hierarchy.
+- `references/GOVERNANCE_GATES.md` for F1-F13, risk tiers, verdict language, and authority boundaries.
+- `references/agentic-WORKFLOWS_MD.md` for reusable response templates and task patterns.
+- `references/repo-working-RULES_MD.md` for safe repo edits, tests, and mutation guardrails.
 
 ## Constitutional reasoning
 

@@ -37,6 +37,8 @@
 | **docker** | local | container lifecycle, file ops | Container management |
 | **hostinger-vps** | local | VPS lifecycle (17 tools) | VPS management (governed) |
 | **cloudflare** | local | DNS, Workers, R2, Pages | Cloudflare operations |
+| **chrome-devtools** | local | browser snapshot, click, eval, network | Browser automation, web debugging |
+| **exa** | local | web search, URL fetch | Web content extraction, search |
 
 ### Research & Analysis
 
@@ -77,6 +79,8 @@ Need to manage containers?      → docker
 Need to manage VPS?             → hostinger-vps (governed)
 Need to manage GitHub?          → github (governed)
 Need multi-step reasoning?      → sequential-thinking
+Need browser automation?        → chrome-devtools
+Need web content extraction?    → exa
 ```
 
 ## MCP Tool Pre-Flight

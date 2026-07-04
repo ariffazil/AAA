@@ -307,7 +307,7 @@ Load `apex-theory` when:
 - Federation APEX: `/root/.arifos/agents/opencode/skills/*apex-contrast/SKILL.md`
 - arXiv APEX: `https://arxiv.org/abs/2505.13921`
 - Deep map: `/root/forge_work/APEX-THEORY-DEEP-RESEARCH-2026-06-28/apex-theory-deep-map.md`
-- APEX Theory & Federation: `/root/HERMES/APEX_THEORY_AND_FEDERATION.md`
+- APEX Theory & Federation: `/root/HERMES/APEX_THEORY.md`
 
 ---
 

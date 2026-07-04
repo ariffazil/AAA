@@ -1,6 +1,6 @@
 {
   "$schema": "https://a2aproject.github.io/A2A/schema/agent-card.json",
-  "protocolVersion": "1.0.1",
+  "protocolVersion": "1.0.0",
   "registry": {
     "name": "AAA HEXAGON + 777 WITNESS",
     "description": "5 agents, 20 skills, 3+2+1 split. 777-FORGE added as WITNESS tier. FORGE subsumed. A-AUDIT/A-ARCHIVE tagged support. SEALED to VAULT999.",
@@ -9,7 +9,7 @@
     "seal": {
       "seal_id": "HEXAGON-AGENTS-FORGE-20260602",
       "verdict": "SEAL",
-      "authority": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+      "authority": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
       "ratified": "2026-06-02T19:54:59.815809+00:00",
       "chain_length": 2505,
       "merkle_leaf": "69c65e7c64e3dd1fdc08aac7bf862be3...",
@@ -20,7 +20,7 @@
     {
       "id": "333-AGI",
       "name": "333-AGI",
-      "description": "The Reasoner + Executor (Δ MIND). Primary federation agent — general intelligence. Reasons across multi-domain evidence AND executes (FORGE subsumed). 10 skills: 7 reasoning + 3 FORGE_subsumed execution skills. Hosts on arifOS core with GEOX and WEALTH substrates.",
+      "description": "The Reasoner + Executor (\u0394 MIND). Primary federation agent \u2014 general intelligence. Reasons across multi-domain evidence AND executes (FORGE subsumed). 10 skills: 7 reasoning + 3 FORGE_subsumed execution skills. Hosts on arifOS core with GEOX and WEALTH substrates.",
       "version": "2.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/333-AGI",
       "provider": {
@@ -68,7 +68,7 @@
         {
           "id": "arif-evidence-reasoning",
           "name": "Evidence Reasoning",
-          "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal→Narrative) and confidence level.",
+          "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal\u2192Narrative) and confidence level.",
           "tags": [
             "reasoning",
             "evidence",
@@ -92,7 +92,7 @@
         {
           "id": "arif-hypothesis-generation",
           "name": "Hypothesis Generation",
-          "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation − Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
+          "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation \u2212 Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
           "tags": [
             "hypothesis",
             "abduction",
@@ -200,7 +200,7 @@
         {
           "id": "arif-mind-reason",
           "name": "Mind Reason",
-          "description": "Core Δ MIND reasoning engine. Apply the 7-Rung Epistemic Ladder (Signal→Measurement→Derivation→Interpretation→Model→Judgment→Narrative), enforce Iron Law (Earth Rungs 1-2 outrank Interpreter Rungs 4-7), and produce structured verdicts.",
+          "description": "Core \u0394 MIND reasoning engine. Apply the 7-Rung Epistemic Ladder (Signal\u2192Measurement\u2192Derivation\u2192Interpretation\u2192Model\u2192Judgment\u2192Narrative), enforce Iron Law (Earth Rungs 1-2 outrank Interpreter Rungs 4-7), and produce structured verdicts.",
           "tags": [
             "mind",
             "reasoning",
@@ -296,7 +296,7 @@
     {
       "id": "555-ASI",
       "name": "555-ASI",
-      "description": "The Deep Substrate (Ω HEART). Primary federation agent — superintelligence class. 555 = MEMORY stage: superintelligence emerges from deep pattern recognition across accumulated evidence. Institutional knowledge crystallizes into wisdom. SCAR→LAW→ECHO metabolism lives here. HEART always speaks.",
+      "description": "The Deep Substrate (\u03a9 HEART). Primary federation agent \u2014 superintelligence class. 555 = MEMORY stage: superintelligence emerges from deep pattern recognition across accumulated evidence. Institutional knowledge crystallizes into wisdom. SCAR\u2192LAW\u2192ECHO metabolism lives here. HEART always speaks.",
       "version": "2.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/555-ASI",
       "provider": {
@@ -343,7 +343,7 @@
         {
           "id": "arif-ethical-critique",
           "name": "Ethical Critique",
-          "description": "Review any agent output for ethical compliance, governance drift, bias, overconfidence, and floor violations. Returns critique report with severity (GREEN/YELLOW/RED), affected floors, and recommended remediation. HEART always speaks — critique cannot be suppressed.",
+          "description": "Review any agent output for ethical compliance, governance drift, bias, overconfidence, and floor violations. Returns critique report with severity (GREEN/YELLOW/RED), affected floors, and recommended remediation. HEART always speaks \u2014 critique cannot be suppressed.",
           "tags": [
             "ethics",
             "critique",
@@ -366,7 +366,7 @@
         {
           "id": "arif-deep-memory-synthesis",
           "name": "Deep Memory Synthesis",
-          "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, SCAR→LAW→ECHO metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks. Where scars become laws, and laws become echoes.",
+          "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, SCAR\u2192LAW\u2192ECHO metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks. Where scars become laws, and laws become echoes.",
           "tags": [
             "memory",
             "synthesis",
@@ -391,7 +391,7 @@
         {
           "id": "arif-anti-beautiful-one",
           "name": "Anti-Beautiful-One Detection",
-          "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient ≤ grounding_gradient (Gödel Lock). Flags False Safe Harbor patterns where compliance masks absence of conscience. The Anti-Hantu Wall.",
+          "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient \u2264 grounding_gradient (G\u00f6del Lock). Flags False Safe Harbor patterns where compliance masks absence of conscience. The Anti-Hantu Wall.",
           "tags": [
             "godel-lock",
             "anti-hantu",
@@ -400,7 +400,7 @@
             "ontology-wall"
           ],
           "examples": [
-            "This model shows 95% confidence on 2 data points — validate",
+            "This model shows 95% confidence on 2 data points \u2014 validate",
             "Check if this compliance report is a False Safe Harbor",
             "Is this SEAL candidate aesthetically overfit?"
           ],
@@ -416,7 +416,7 @@
     {
       "id": "888-APEX",
       "name": "888-APEX",
-      "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13). Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus (Δ+Ω). Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here — but sovereignty stays with the human.",
+      "description": "The Judge (\u03a6\u0399). Primary federation agent \u2014 constitutional authority. Arbitrates all 13 floors (F1-F13). Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus (\u0394+\u03a9). Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here \u2014 but sovereignty stays with the human.",
       "version": "2.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/888-APEX",
       "provider": {
@@ -486,7 +486,7 @@
         {
           "id": "arif-hold-protocol",
           "name": "888_HOLD Protocol",
-          "description": "Manage the entire 888_HOLD lifecycle: trigger → document reason → notify human sovereign (000-SALAM) → await resolution → log outcome to A-ARCHIVE. Triggers: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
+          "description": "Manage the entire 888_HOLD lifecycle: trigger \u2192 document reason \u2192 notify human sovereign (000-SALAM) \u2192 await resolution \u2192 log outcome to A-ARCHIVE. Triggers: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
           "tags": [
             "hold",
             "escalation",
@@ -495,8 +495,8 @@
             "sovereign"
           ],
           "examples": [
-            "This docker prune would remove 25GB — initiate 888_HOLD",
-            "Evidence conflict between seismic and well data — hold",
+            "This docker prune would remove 25GB \u2014 initiate 888_HOLD",
+            "Evidence conflict between seismic and well data \u2014 hold",
             "Disputed claim: certainty exceeds grounding by 40%"
           ],
           "inputModes": [
@@ -511,7 +511,7 @@
     {
       "id": "A-AUDIT",
       "name": "A-AUDIT",
-      "description": "The Watchdog (APEX oversight). Support agent — continuous ethical and safety monitor. Observes ALL 3 primary agents in parallel (not in decision flow). Flags anomalies and floor violations to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
+      "description": "The Watchdog (APEX oversight). Support agent \u2014 continuous ethical and safety monitor. Observes ALL 3 primary agents in parallel (not in decision flow). Flags anomalies and floor violations to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
       "version": "2.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/A-AUDIT",
       "provider": {
@@ -580,7 +580,7 @@
         {
           "id": "arif-inter-agent-consistency",
           "name": "Inter-Agent Consistency Check",
-          "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says ¬X, flag as CONFLICT and escalate to 888-APEX for arbitration. Continuous parallel observation.",
+          "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says \u00acX, flag as CONFLICT and escalate to 888-APEX for arbitration. Continuous parallel observation.",
           "tags": [
             "consistency",
             "conflict-detection",
@@ -588,7 +588,7 @@
             "audit"
           ],
           "examples": [
-            "333-AGI rated risk as LOW but 555-ASI flagged RED — investigate",
+            "333-AGI rated risk as LOW but 555-ASI flagged RED \u2014 investigate",
             "Check alignment between reasoning (333) and ethical review (555)",
             "Detect any systematic floor violations across all agents"
           ],
@@ -604,7 +604,7 @@
     {
       "id": "A-ARCHIVE",
       "name": "A-ARCHIVE",
-      "description": "The Archivist (ASI service · SEAL). Support agent — immutable ledger keeper and audit trail. Manages VAULT999. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. Triggered on SEAL. The proof. The memory. The truth that persists.",
+      "description": "The Archivist (ASI service \u00b7 SEAL). Support agent \u2014 immutable ledger keeper and audit trail. Manages VAULT999. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. Triggered on SEAL. The proof. The memory. The truth that persists.",
       "version": "2.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/A-ARCHIVE",
       "provider": {
@@ -722,7 +722,7 @@
     },
     {
       "id": "777-FORGE",
-      "name": "777 FORGE 🔥🧠⚒️🌎💎 [RETIRED]",
+      "name": "777 FORGE \ud83d\udd25\ud83e\udde0\u2692\ufe0f\ud83c\udf0e\ud83d\udc8e [RETIRED]",
       "description": "[RETIRED 2026-07-02] Protocol band-aid. The agent that receives the task IS the executor. No meta-executor needed. Witness protocol preserved at AAA/agents/protocols/777-forge-witness-protocol.md.",
       "version": "1.0.0",
       "url": "https://aaa.arif-fazil.com/a2a/777-FORGE",
@@ -745,43 +745,88 @@
           "description": "arifOS session token"
         }
       },
-      "security": [{"bearer_auth": []}],
-      "defaultInputModes": ["application/json"],
-      "defaultOutputModes": ["application/json"],
+      "security": [
+        {
+          "bearer_auth": []
+        }
+      ],
+      "defaultInputModes": [
+        "application/json"
+      ],
+      "defaultOutputModes": [
+        "application/json"
+      ],
       "skills": [
         {
           "id": "777-spawn-witness",
           "name": "Session Spawn Witness",
           "description": "Spawn OpenCode sessions and emit cryptographically verifiable witness receipts. Every spawn logged to append-only, hash-chained witness ledger. Arif can verify independently with ps -p <pid>.",
-          "tags": ["witness", "spawn", "verification", "trust", "audit"],
-          "examples": ["Spawn integrator session", "Verify session was actually spawned", "Audit all Hermes spawns in last 24h"],
-          "inputModes": ["application/json"],
-          "outputModes": ["application/json"]
+          "tags": [
+            "witness",
+            "spawn",
+            "verification",
+            "trust",
+            "audit"
+          ],
+          "examples": [
+            "Spawn integrator session",
+            "Verify session was actually spawned",
+            "Audit all Hermes spawns in last 24h"
+          ],
+          "inputModes": [
+            "application/json"
+          ],
+          "outputModes": [
+            "application/json"
+          ]
         },
         {
           "id": "777-preflight-validator",
           "name": "Preflight Validator",
           "description": "Validate spawn requests: forge_id uniqueness, requestor auth, scope lease, repo state, disk/load, L_888_HOLD ack.",
-          "tags": ["preflight", "validation", "gate", "safety"],
-          "examples": ["Validate spawn request preflight", "Check L_888_HOLD ack"],
-          "inputModes": ["application/json"],
-          "outputModes": ["application/json"]
+          "tags": [
+            "preflight",
+            "validation",
+            "gate",
+            "safety"
+          ],
+          "examples": [
+            "Validate spawn request preflight",
+            "Check L_888_HOLD ack"
+          ],
+          "inputModes": [
+            "application/json"
+          ],
+          "outputModes": [
+            "application/json"
+          ]
         },
         {
           "id": "777-process-verifier",
           "name": "Process Table Verifier",
-          "description": "Cross-check claimed spawns against real process table. Detect fabrication: if Hermes claims session but no PID → F2 TRUTH violation.",
-          "tags": ["verification", "fabrication-detection", "audit"],
-          "examples": ["ps -p <pid> — does this session exist?", "Audit all claimed spawns"],
-          "inputModes": ["application/json"],
-          "outputModes": ["application/json"]
+          "description": "Cross-check claimed spawns against real process table. Detect fabrication: if Hermes claims session but no PID \u2192 F2 TRUTH violation.",
+          "tags": [
+            "verification",
+            "fabrication-detection",
+            "audit"
+          ],
+          "examples": [
+            "ps -p <pid> \u2014 does this session exist?",
+            "Audit all claimed spawns"
+          ],
+          "inputModes": [
+            "application/json"
+          ],
+          "outputModes": [
+            "application/json"
+          ]
         }
       ]
     },
     {
       "id": "GEOX",
-      "name": "GEOX — Governed Earth Intelligence",
-      "description": "Earth Intelligence organ of the arifOS federation. 37 canonical MCP tools across seismic, petrophysics, basin analysis, prospect evaluation, sequence stratigraphy, and Vision V1. Evidence-only organ — never a policy judge. Every claim carries physics provenance (physics_manifest_hash), uncertainty bands, and F1-F13 constitutional governance.",
+      "name": "GEOX \u2014 Governed Earth Intelligence",
+      "description": "Earth Intelligence organ of the arifOS federation. 37 canonical MCP tools across seismic, petrophysics, basin analysis, prospect evaluation, sequence stratigraphy, and Vision V1. Evidence-only organ \u2014 never a policy judge. Every claim carries physics provenance (physics_manifest_hash), uncertainty bands, and F1-F13 constitutional governance.",
       "version": "v2026.06.05",
       "url": "https://geox.arif-fazil.com",
       "provider": {
@@ -797,64 +842,117 @@
       },
       "securitySchemes": {},
       "security": [],
-      "defaultInputModes": ["application/json"],
-      "defaultOutputModes": ["application/json"],
+      "defaultInputModes": [
+        "application/json"
+      ],
+      "defaultOutputModes": [
+        "application/json"
+      ],
       "mcp_endpoint": "https://geox.arif-fazil.com/mcp",
       "skills": [
         {
           "id": "geox-data-ingest",
           "name": "Data Ingest & QC",
           "description": "LAS, CSV, Parquet, SEG-Y ingestion with automatic format detection, curve standardisation, unit normalisation, and multi-pass quality control.",
-          "tags": ["ingest", "LAS", "SEG-Y", "QC", "well-data", "seismic"]
+          "tags": [
+            "ingest",
+            "LAS",
+            "SEG-Y",
+            "QC",
+            "well-data",
+            "seismic"
+          ]
         },
         {
           "id": "geox-seismic-physics",
           "name": "Seismic Physics & Attribute Computation",
           "description": "Forward modelling, well-tie correlation, time-depth anchoring, anomalous contrast detection, and attribute computation (amplitude, variance, sweetness, coherence, envelope, frequency average). 6 attributes in registry.",
-          "tags": ["seismic", "synthetic", "well-tie", "attribute", "AVO", "physics"]
+          "tags": [
+            "seismic",
+            "synthetic",
+            "well-tie",
+            "attribute",
+            "AVO",
+            "physics"
+          ]
         },
         {
           "id": "geox-petrophysics",
           "name": "Subsurface Petrophysics & Candidates",
           "description": "Ensemble subsurface generation: Vsh, porosity, saturation, net pay, permeability, lithology classification, GR motif analysis. Evidence-gated: refuses to appraise without data.",
-          "tags": ["petrophysics", "Vsh", "porosity", "saturation", "net-pay", "lithology"]
+          "tags": [
+            "petrophysics",
+            "Vsh",
+            "porosity",
+            "saturation",
+            "net-pay",
+            "lithology"
+          ]
         },
         {
           "id": "geox-basin-prospect",
           "name": "Basin & Prospect Evaluation",
           "description": "Basin profile retrieval, petroleum system analysis, prospect volumetrics (P10/P50/P90), multi-mode evaluation (screen/appraise/develop) with evidence gating and 888_HOLD for irreversible seals.",
-          "tags": ["basin", "prospect", "volumetrics", "POS", "risk"]
+          "tags": [
+            "basin",
+            "prospect",
+            "volumetrics",
+            "POS",
+            "risk"
+          ]
         },
         {
           "id": "geox-claim-engine",
-          "name": "Claim Engine — Structured Interpretations",
+          "name": "Claim Engine \u2014 Structured Interpretations",
           "description": "Create, validate, challenge, and seal structured Earth interpretation claims. Full provenance chain with FACT/INTERPRETATION/SPECULATION truth classes. Claims route through arifOS for constitutional sealing.",
-          "tags": ["claim", "interpretation", "provenance", "sealing"]
+          "tags": [
+            "claim",
+            "interpretation",
+            "provenance",
+            "sealing"
+          ]
         },
         {
           "id": "geox-horizon-contrast",
-          "name": "Horizon Contrast — ToAC Pipeline",
+          "name": "Horizon Contrast \u2014 ToAC Pipeline",
           "description": "Multi-attribute horizon contrast surface pipeline. Attention-weighted fusion of amplitude, coherence, frequency, phase, curvature. Geological query templates (unconformity, flooding surface, channel, fault zone).",
-          "tags": ["horizon", "contrast", "attention", "ToAC", "multi-attribute"]
+          "tags": [
+            "horizon",
+            "contrast",
+            "attention",
+            "ToAC",
+            "multi-attribute"
+          ]
         },
         {
           "id": "geox-vision-v1",
-          "name": "Vision V1 — Perceptual Inventory (Layer 1)",
+          "name": "Vision V1 \u2014 Perceptual Inventory (Layer 1)",
           "description": "VLM-based seismic section interpretation. Perceptual inventory, MiniMax inference, AC_Risk scoring, and calibration harness. BETA: outputs tagged with backend source; never reaches SEAL without physics validation.",
-          "tags": ["vision", "VLM", "perceptual", "seismic-interpretation", "BETA"]
+          "tags": [
+            "vision",
+            "VLM",
+            "perceptual",
+            "seismic-interpretation",
+            "BETA"
+          ]
         },
         {
           "id": "geox-sequence-stratigraphy",
           "name": "Sequence Stratigraphy",
           "description": "Single-well and multi-well sequence stratigraphy: GR binning, package building, systems tract interpretation, and section correlation.",
-          "tags": ["sequence", "stratigraphy", "correlation", "well-correlation"]
+          "tags": [
+            "sequence",
+            "stratigraphy",
+            "correlation",
+            "well-correlation"
+          ]
         }
       ]
     },
     {
       "id": "antigravity",
       "name": "Antigravity CLI",
-      "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. Model: Gemini 3.5 Flash (High). YOLO/AFK autonomy with F1-F13 gates.",
+      "description": "Google Antigravity CLI (agy) \u2014 AI-first development platform. Connected to 6 MCP servers including 5 federation organs. Model: Gemini 3.5 Flash (High). YOLO/AFK autonomy with F1-F13 gates.",
       "version": "1.0.10",
       "url": "https://aaa.arif-fazil.com/a2a/antigravity",
       "provider": {
@@ -876,23 +974,46 @@
           "description": "arifOS session token"
         }
       },
-      "security": [{"bearer_auth": []}],
-      "defaultInputModes": ["text/plain", "application/json"],
-      "defaultOutputModes": ["text/plain", "application/json"],
+      "security": [
+        {
+          "bearer_auth": []
+        }
+      ],
+      "defaultInputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "defaultOutputModes": [
+        "text/plain",
+        "application/json"
+      ],
       "skills": [
         {
           "id": "agentic-code-execution",
           "name": "Agentic Code Execution",
           "description": "Execute terminal commands, compile and test code, and manage local repositories under arifOS F1-F13 governance.",
-          "tags": ["execution", "terminal", "compile", "test", "git"]
+          "tags": [
+            "execution",
+            "terminal",
+            "compile",
+            "test",
+            "git"
+          ]
         },
         {
           "id": "codebase-navigation",
           "name": "Codebase Navigation & Editing",
           "description": "Understand codebase structure, locate symbols, read files, and perform targeted file edits with safety double-checks.",
-          "tags": ["navigation", "editing", "safe-write", "analysis"]
+          "tags": [
+            "navigation",
+            "editing",
+            "safe-write",
+            "analysis"
+          ]
         }
       ]
     }
-  ]
+  ],
+  "_deprecated": "This file is hand-maintained and will drift. Use /.well-known/agents.json (auto-generated from agent-card-registry) instead.",
+  "_deprecated_since": "2026-07-04"
 }

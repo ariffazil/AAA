@@ -23,7 +23,7 @@ federation/
 │   └── vscode-settings.json
 ├── claude/                   # Claude Code & Claude Desktop configs
 │   ├── claude-desktop-mcp.json
-│   └── rules/context-management.md
+│   └── rules/CONTEXT_MANAGEMENT.md
 ├── codex/                    # Codex rules
 │   └── default.rules
 ├── copilot/                  # Copilot configs (future)

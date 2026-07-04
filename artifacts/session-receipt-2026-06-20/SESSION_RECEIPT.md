@@ -143,7 +143,7 @@ Penang Pasar BM-English, autonomous execution, no ceremony, additive architectur
 
 ## Next Session Recommendation
 
-On resumption: ratify VAULT999 sealing of ILMU_BLOCKED_v1 + FFF_v2 + SESSION_RECEIPT payloads. Convert PUBLIC-ILMU-BANGANG-DRAFT.md to published Medium/arif-fazil.com essay if desired. Run MalMMLU audit pilot with API keys. Implement EEE register/loghat extension.
+On resumption: ratify VAULT999 sealing of ILMU_BLOCKED_v1 + FFF_v2 + SESSION_RECEIPT payloads. Convert PUBLIC_ILMU.md to published Medium/arif-fazil.com essay if desired. Run MalMMLU audit pilot with API keys. Implement EEE register/loghat extension.
 
 
 ---

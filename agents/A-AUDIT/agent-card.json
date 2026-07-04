@@ -15,7 +15,7 @@
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
   },
-  "protocolVersion": "1.0.1",
+  "protocolVersion": "1.0.0",
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/A-AUDIT",
   "capabilities": {
     "streaming": false,

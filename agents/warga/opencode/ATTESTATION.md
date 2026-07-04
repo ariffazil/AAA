@@ -100,7 +100,7 @@ OpenCode carries **13 skills** aligned to F1-F13 governance:
 | 12 | agentic-builder | F2,F4,F8,F11 | Build |
 | 13 | aaa-zen | F1,F2,F4,F6,F7,F9,F11,F13 | Doctrine |
 
-**Overlap audit:** See `AAA/forge_work/opencode-warga-skill-audit-2026-06-26.md`
+**Overlap audit:** See `AAA/forge_work/OPENCODE_WARGA.md`
 
 ---
 

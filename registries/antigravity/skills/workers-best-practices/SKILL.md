@@ -13,7 +13,7 @@ Fetch the **latest** versions before writing or reviewing Workers code. Do not r
 | Source | How to retrieve | Use for |
 |--------|----------------|---------|
 | Workers best practices | Fetch `https://developers.cloudflare.com/workers/best-practices/workers-best-practices/` | Canonical rules, patterns, anti-patterns |
-| Workers types | See `references/review.md` for retrieval steps | API signatures, handler types, binding types |
+| Workers types | See `references/REVIEW_MD.md` for retrieval steps | API signatures, handler types, binding types |
 | Wrangler config schema | `node_modules/wrangler/config-schema.json` | Config fields, binding shapes, allowed values |
 | Cloudflare docs | Search tool or `https://developers.cloudflare.com/workers/` | API reference, compatibility dates/flags |
 
@@ -31,8 +31,8 @@ mkdir -p /tmp/workers-types-latest && \
 
 ## Reference Documentation
 
-- `references/rules.md` — all best practice rules with code examples and anti-patterns
-- `references/review.md` — type validation, config validation, binding access patterns, review process
+- `references/RULES_MD.md` — all best practice rules with code examples and anti-patterns
+- `references/REVIEW_MD.md` — type validation, config validation, binding access patterns, review process
 
 ## Rules Quick Reference
 
@@ -105,12 +105,12 @@ mkdir -p /tmp/workers-types-latest && \
 
 1. **Retrieve** — fetch latest best practices page, workers types, and wrangler schema
 2. **Read full files** — not just diffs; context matters for binding access patterns
-3. **Check types** — binding access, handler signatures, no `any`, no unsafe casts (see `references/review.md`)
+3. **Check types** — binding access, handler signatures, no `any`, no unsafe casts (see `references/REVIEW_MD.md`)
 4. **Check config** — compatibility_date, nodejs_compat, observability, secrets, binding-code consistency
 5. **Check patterns** — streaming, floating promises, global state, serialization boundaries
 6. **Check security** — crypto usage, secret handling, timing-safe comparisons, error handling
 7. **Validate with tools** — `npx tsc --noEmit`, lint for `no-floating-promises`
-8. **Reference rules** — see `references/rules.md` for each rule's correct pattern
+8. **Reference rules** — see `references/RULES_MD.md` for each rule's correct pattern
 
 ## Scope
 

@@ -318,7 +318,7 @@ ariffazil/AAA/
 │       └── TrinityNav.tsx   # Navigation bar
 ├── docs/
 │   ├── AAA_ARCHITECTURE.md  # This document
-│   ├── COPILOT_STUDIO_CONNECTION.md
+│   ├── COPILOT_STUDIO.md
 │   └── MCP_PAYLOADS.md
 ├── schemas/
 │   └── mcp-openapi.yaml     # OpenAPI 3.0 spec for Copilot Studio

@@ -45,8 +45,8 @@ OpenClaw is the sovereign gateway. It is disciplined, precise, and never overste
 ## Unified Protocol — Hermes·OpenCode·OpenClaw (Bound 2026-06-13)
 
 Full spec: `/root/arifOS/HERMES_OPENCODE_PROTOCOL.md` (VAULT999 ID 1806, human-readable variant)
-Machine-readable: `AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md` (canonical governance binding, 324 lines)
-Per-agent: `AAA/agents/protocols/openclaw-agi-protocol.md` (OpenClaw-specific binding, 111 lines)
+Machine-readable: `AAA/docs/architecture/UNIFIED_AGENT_4.md` (canonical governance binding, 324 lines)
+Per-agent: `AAA/agents/protocols/OPENCLAW_AGI.md` (OpenClaw-specific binding, 111 lines)
 Schema: `AAA/schemas/forge_session.schema.json` (18 properties)
 
 ### Session Lifecycle (A-FORGE)
@@ -96,7 +96,7 @@ Hermes → 777 FORGE → OpenCode
 - OpenClaw may observe forge sessions via witness receipts
 - OpenClaw never spawns OpenCode directly — always routes through 777 FORGE
 
-**Protocol:** `AAA/agents/protocols/777-forge-witness-protocol.md`
+**Protocol:** `AAA/agents/protocols/FORGE_WITNESS.md`
 **Agent def:** `/root/.config/opencode/agents/777-forge.md`
 **Ledger:** `/root/VAULT999/witness/777-forge-spawns.jsonl`
 

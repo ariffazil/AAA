@@ -3,7 +3,7 @@ id: unified-skill-binding
 name: Unified Skill Binding (Orthogonal + Cross-Organ)
 version: 1.0.0
 description: Discover, bind, and compose skills across all federation organs using
-  AAA_SKILL_BINDING.md orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces
+  AAA_SKILL.md orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces
   subagent contracts, evidence gates, F1-F13. Meta-skill for agentic elevation.
 owner: AAA
 risk_tier: medium
@@ -74,7 +74,7 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 3. **ACT** — Apply narrow, Constrain scope, Trace witness, STOP before corruption.
 4. **Receipt** — Leave evidence of what changed, why, and under whose authority.
 
-This meta-skill provides the single entry point for any agent (grok-build, Hermes roles, FI citizens) to interact with the federation's skill surface in a constitutionally governed way. It implements the unified contract in /root/AAA/contracts/AAA_SKILL_BINDING.md.
+This meta-skill provides the single entry point for any agent (grok-build, Hermes roles, FI citizens) to interact with the federation's skill surface in a constitutionally governed way. It implements the unified contract in /root/AAA/contracts/AAA_SKILL.md.
 
 It turns fragmented organ skills (AAA 31, GEOX ~15, WEALTH 20+, WELL 21, arifOS 13, Hermes 236 catalog, A-FORGE auto-discovered) into a composable, orthogonal, subagent-aware system.
 
@@ -138,8 +138,8 @@ It turns fragmented organ skills (AAA 31, GEOX ~15, WEALTH 20+, WELL 21, arifOS 
 - Drift detected → AAA sentinel + HF contrast dataset.
 
 ## References
-- contracts/AAA_SKILL_BINDING.md (full orthogonal + subagent contract spec)
-- contracts/hermes-role-binding.md (polymorphic runtime)
+- contracts/AAA_SKILL.md (full orthogonal + subagent contract spec)
+- contracts/HERMES_ROLE.md (polymorphic runtime)
 - skills/arifos-mcp-federation/SKILL.md
 - skills/arifos-plan-dag/SKILL.md
 - skills/skill-creator/SKILL.md

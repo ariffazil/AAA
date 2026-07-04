@@ -117,7 +117,7 @@ federation-health-scan → 6 organs + NATS + drift + vault in one command
 drift-response → 5-step standard: detect→verify→classify→propose→route to 888
   (/root/AAA/skills/drift-response/SKILL.md)
 subagent-spawn → bounded task contract: output schema + time budget + evidence
-  (/root/AAA/agents/openclaw/procedures/subagent-spawn.md)
+  (/root/AAA/agents/openclaw/procedures/SUBAGENT_SPAWN.md)
 
 [HERMES TOOLS — registered in arifOS MCP]
 hermes_system_status → live organ health + NATS + drift diagnostic

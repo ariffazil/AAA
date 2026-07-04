@@ -2,9 +2,9 @@
 
 > Forged: 2026-06-13 | VAULT999 ID 1806 | merkle b0c88025
 > Status: BOUND
-> Canonical: /root/AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md (Ω forge)
+> Canonical: /root/AAA/docs/architecture/UNIFIED_AGENT_4.md (Ω forge)
 > Human-readable: /root/arifOS/HERMES_OPENCODE_PROTOCOL.md (ASI💃 forge)
-> OpenClaw binding: /root/AAA/agents/protocols/openclaw-agi-protocol.md
+> OpenClaw binding: /root/AAA/agents/protocols/OPENCLAW_AGI.md
 > Schema: /root/AAA/schemas/forge_session.schema.json
 > Registry: /root/AAA/registries/unified_agent_protocol.yaml
 > 
@@ -31,7 +31,7 @@ INTENT → PREFLIGHT → PLAN → FORGE → VERIFY → HOLD → SEAL → CLEAN
 - Audit trails on every change
 - Completion = process exit + verification + clean-state
 
-### From Ω forge (AAA/agents/protocols/openclaw-agi-protocol.md)
+### From Ω forge (AAA/agents/protocols/OPENCLAW_AGI.md)
 
 **OpenClaw MUST:**
 - Watch health of all organs continuously (via /api/federation-probe on :7071)

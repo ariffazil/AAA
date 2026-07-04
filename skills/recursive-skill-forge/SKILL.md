@@ -194,7 +194,7 @@ decomposition is clean. If removing one module breaks everything, redesign.
    - Markdown body with Overview, When to Use, Procedure, Forbidden Actions
    - Include `version_lock` with `artifact_hash: pending`
 
-**Output:** `SKILL.md` draft + `examples.md` (if complex) + `scripts/` (if needed).
+**Output:** `SKILL.md` draft + `EXAMPLES_MD.md` (if complex) + `scripts/` (if needed).
 
 ---
 
@@ -353,7 +353,7 @@ If verdict = SEAL or SABAR (with modifications applied):
 2. If SABAR, write modifications to `skills/<skill-id>/MODIFICATIONS.md`
 3. Update `registries/skills.yaml`:
    - Append skill entry with dependencies and version lock
-4. Append evolution ledger entry to `wiki/log.md`:
+4. Append evolution ledger entry to `wiki/LOG_MD.md`:
    - Date, skill ID, tier, forge reason, sovereign verdict
 5. Commit with message:
    ```
