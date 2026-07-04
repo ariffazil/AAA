@@ -1003,7 +1003,8 @@
         "--no-sandbox",
         "--isolated",
         "--categoryExperimentalWebmcp",
-        "--chromeArg=--disable-dev-shm-usage"
+        "--chromeArg=--disable-dev-shm-usage",
+        "--chromeArg=--remote-debugging-port=0"
       ],
       "enabled": true
     },
