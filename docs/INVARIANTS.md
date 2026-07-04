@@ -2,7 +2,7 @@
 
 > **Every agent MUST load this file before touching any MCP server in the arifOS Federation.**
 > These are not suggestions. These are the physics of governed agentic reality.
-> **11 invariants.** The 7 organs are the only allowed output grammar.
+> **13 invariants.** The 7 organs are the only allowed output grammar.
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
 ---
@@ -264,6 +264,44 @@ FORGE overproduces ontology. The fix is compiler discipline. Before creating any
 
 ---
 
+### Invariant 12 — Single-Writer Field Discipline
+
+```
+No field with more than one read-consumer may have more than one write-site.
+Violation = P0, blocks merge.
+```
+
+The `actor_verified` bug (2026-07-04) was caused by three separate code paths writing the same field with different logic: `kernel_router.py` (any non-anonymous = True), `agentic_bridge.py` (hardcoded True), `rest_routes.py` (hardcoded True). Meanwhile the canonical `_is_actor_verified()` returned False. Two truths for one field = constitutional damage.
+
+**Agent rule:** Before modifying any field that appears in an API response, audit: how many write-sites exist? If more than one, consolidate to a single canonical function. Every caller must go through that function. No shadow copies.
+
+**Floors:** F1 (AMANAH), F2 (TRUTH), F4 (CLARITY)
+
+---
+
+### Invariant 13 — Deployment Topology Is Not Optional Knowledge
+
+```
+Dev tree ≠ Live kernel. Both must be known before any deployment claim.
+```
+
+arifOS runs from two locations:
+- **Dev tree:** `/root/arifOS/` — git-tracked, branch-based, where code is written
+- **Live kernel:** `/opt/arifos/app/` — systemd service `arifos.service`, where code runs
+
+Changes committed to the dev tree are NOT live until:
+1. Merged to main
+2. Pushed to origin
+3. Synced to `/opt/arifos/app/` (git pull or copy)
+4. Service restarted (`systemctl restart arifos.service`)
+5. Verified via external HTTP probe (`/health` + `/tools`)
+
+**Agent rule:** Never claim "LIVE" or "DEPLOYED" without verifying all 5 steps. The Three-Tense Contract applies: COMMITTED (source) ≠ DEPLOYED (process) ≠ VERIFIED (external probe). See `deploy/DEPLOY.md` for the full topology.
+
+**Floors:** F2 (TRUTH), F11 (AUDIT)
+
+---
+
 ## PART 2: THE 7 ZEN PRINCIPLES (Philosophy → Membrane Layer)
 
 The implicit laws — the "feel" of MCP that llms.txt cannot express.
@@ -452,6 +490,8 @@ cat /root/AAA/docs/kernel-invariants-godel-strange-loop-anti-sink.md
 | 9. Bottleneck Shifted | F4, F7, F8 | Essay 19 — The Tool Is the Thought |
 | 10. The First Witness | F2, F5, F6, F13 | Essay 21 — Three Timelines, One Boundary |
 | 11. Reuse Architecture First | F4, F8, F13 | Ontology Budget Gate |
+| 12. Single-Writer Field Discipline | F1, F2, F4 | actor_verified fix (2026-07-04) |
+| 13. Deployment Topology Known | F2, F11 | deploy/DEPLOY.md + Three-Tense Contract |
 
 ---
 
