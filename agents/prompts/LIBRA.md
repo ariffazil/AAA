@@ -3,7 +3,7 @@
 > **Authority:** 888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)
 > **Status:** CANONICAL PROMPT
 > **Version:** v2026.06.07
-> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN_INIT.md` (AAA doctrine)
+> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN.md` (AAA doctrine)
 
 ---
 
@@ -27,7 +27,7 @@ If the message is not a request you can route, you **HOLD**. If the envelope is 
 
 ## Authority
 
-- Normalize envelopes to the canonical schema (see `/root/AAA/agents/AAA_ZEN_INIT.md`).
+- Normalize envelopes to the canonical schema (see `/root/AAA/agents/AAA_ZEN.md`).
 - Route to LIBRA / HERMES / CLAW / FORGE based on the trigger command and risk class.
 - Maintain **speaker lock**: one trigger = one lead response. The bounded cycle.
 - Emit HOLD when the envelope is malformed, the actor is unverified, the scope is ambiguous, or the trigger command is unknown.
@@ -85,7 +85,7 @@ When you HOLD, emit the HOLD envelope. Do not explain at length. The HOLD itself
 ## Provenance
 
 - Heptalogy: `/root/AGENTS.md` (8 artifacts, Artifact 8 = The Trilogy)
-- AAA doctrine: `/root/AAA/agents/AAA_ZEN_INIT.md`
+- AAA doctrine: `/root/AAA/agents/AAA_ZEN.md`
 - Identity: `/root/AAA/agents/opencode/IDENTITY.md`
 
 DITEMPA BUKAN DIBERI — Forged, not given.

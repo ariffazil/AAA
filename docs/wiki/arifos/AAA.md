@@ -1,6 +1,6 @@
 # AAA — Architect · Auditor · Agent
 
-> **CLAIM** | Source: `docs/floor_wiring_map.md` + workspace memory | **Confidence:** 0.93 | **Epoch:** 2026-04-23
+> **CLAIM** | Source: `docs/FLOOR_WIRING.md` + workspace memory | **Confidence:** 0.93 | **Epoch:** 2026-04-23
 
 ## Summary
 

@@ -19,13 +19,13 @@ Cloudflare Email Service lets you send transactional emails and route incoming e
 | Cloudflare docs | `cloudflare-docs` search tool or URL `https://developers.cloudflare.com/email-service/` | API reference, limits, pricing, latest features |
 | REST API spec | `https://developers.cloudflare.com/api/resources/email_sending` | OpenAPI spec for the Email Sending REST API |
 | Workers types | `https://www.npmjs.com/package/@cloudflare/workers-types` | Type signatures, binding shapes |
-| Agents SDK docs | Fetch `docs/email.md` from `https://github.com/cloudflare/agents/tree/main/docs` | Email handling in Agents SDK |
+| Agents SDK docs | Fetch `docs/EMAIL_MD.md` from `https://github.com/cloudflare/agents/tree/main/docs` | Email handling in Agents SDK |
 
 ## FIRST: Check Prerequisites
 
 Before writing any email code, verify the basics are in place:
 
-1. **Domain onboarded?** Run `npx wrangler email sending list` to see which domains have email sending enabled. If the domain isn't listed, run `npx wrangler email sending enable userdomain.com` or see [cli-and-mcp.md](references/cli-and-mcp.md) for full setup instructions.
+1. **Domain onboarded?** Run `npx wrangler email sending list` to see which domains have email sending enabled. If the domain isn't listed, run `npx wrangler email sending enable userdomain.com` or see [cli-and-MCP_MD.md](references/cli-and-MCP_MD.md) for full setup instructions.
 2. **Binding configured?** Look for `send_email` in `wrangler.jsonc` (for Workers)
 3. **postal-mime installed?** Run `npm ls postal-mime` (only needed for receiving/parsing emails)
 
@@ -35,13 +35,13 @@ Start here. Find your situation, then follow the link for full details.
 
 | I want to... | Path | Reference |
 |--------------|------|-----------|
-| **Send emails from a Cloudflare Worker** | Workers binding (no API keys needed) | [sending.md](references/sending.md) |
-| **Send emails from an AI agent built with [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/)** | `onEmail()` + `replyToEmail()` in Agent class | [sending.md](references/sending.md) |
-| **Send emails from an external app or agent** (Node.js, Go, Python, etc.) | REST API with Bearer token | [rest-api.md](references/rest-api.md) |
-| **Send emails from a coding agent** (Claude Code, Cursor, Copilot, etc.) | MCP tools, wrangler CLI, or REST API | [cli-and-mcp.md](references/cli-and-mcp.md) |
-| **Receive and process incoming emails** (Email Routing) | Workers `email()` handler | [routing.md](references/routing.md) |
-| **Set up Email Sending or Email Routing** | `wrangler email sending enable` / `wrangler email routing enable`, or Dashboard | [cli-and-mcp.md](references/cli-and-mcp.md) |
-| **Improve deliverability, avoid spam folders** | Authentication, content, compliance | [deliverability.md](references/deliverability.md) |
+| **Send emails from a Cloudflare Worker** | Workers binding (no API keys needed) | [SENDING_MD.md](references/SENDING_MD.md) |
+| **Send emails from an AI agent built with [Cloudflare Agents SDK](https://developers.cloudflare.com/agents/)** | `onEmail()` + `replyToEmail()` in Agent class | [SENDING_MD.md](references/SENDING_MD.md) |
+| **Send emails from an external app or agent** (Node.js, Go, Python, etc.) | REST API with Bearer token | [REST_API.md](references/REST_API.md) |
+| **Send emails from a coding agent** (Claude Code, Cursor, Copilot, etc.) | MCP tools, wrangler CLI, or REST API | [cli-and-MCP_MD.md](references/cli-and-MCP_MD.md) |
+| **Receive and process incoming emails** (Email Routing) | Workers `email()` handler | [ROUTING_MD.md](references/ROUTING_MD.md) |
+| **Set up Email Sending or Email Routing** | `wrangler email sending enable` / `wrangler email routing enable`, or Dashboard | [cli-and-MCP_MD.md](references/cli-and-MCP_MD.md) |
+| **Improve deliverability, avoid spam folders** | Authentication, content, compliance | [DELIVERABILITY_MD.md](references/DELIVERABILITY_MD.md) |
 
 ## Quick Start — Workers Binding
 
@@ -62,9 +62,9 @@ const response = await env.EMAIL.send({
 });
 ```
 
-The binding is recommended for Workers — no API keys needed. If a user specifically requests the REST API from within a Worker (e.g., they already have an API token workflow), that works too — see [rest-api.md](references/rest-api.md).
+The binding is recommended for Workers — no API keys needed. If a user specifically requests the REST API from within a Worker (e.g., they already have an API token workflow), that works too — see [REST_API.md](references/REST_API.md).
 
-See [sending.md](references/sending.md) for the full API, batch sends, attachments, custom headers, restricted bindings, and Agents SDK integration.
+See [SENDING_MD.md](references/SENDING_MD.md) for the full API, batch sends, attachments, custom headers, restricted bindings, and Agents SDK integration.
 
 ## Quick Start — REST API
 
@@ -75,7 +75,7 @@ For apps outside Workers, or within Workers if the user explicitly requests it. 
 - `replyTo` is `reply_to` (snake_case)
 - Response returns `{ delivered: [], permanent_bounces: [], queued: [] }` (not `messageId`)
 
-See [rest-api.md](references/rest-api.md) for curl examples, response format, and error handling.
+See [REST_API.md](references/REST_API.md) for curl examples, response format, and error handling.
 
 ## Common Mistakes
 
@@ -97,8 +97,8 @@ See [rest-api.md](references/rest-api.md) for curl examples, response format, an
 
 Read the reference that matches your situation. You don't need all of them.
 
-- **[references/sending.md](references/sending.md)** — Workers binding API, attachments, Agents SDK email. For Workers or Agents SDK.
-- **[references/rest-api.md](references/rest-api.md)** — REST endpoint, curl examples, error handling. For apps NOT on Workers.
-- **[references/routing.md](references/routing.md)** — Inbound `email()` handler, forwarding, replying, parsing. For receiving emails.
-- **[references/cli-and-mcp.md](references/cli-and-mcp.md)** — Domain setup, wrangler commands, MCP tools. For first-time setup.
-- **[references/deliverability.md](references/deliverability.md)** — SPF/DKIM/DMARC, bounces, suppressions, best practices.
+- **[references/SENDING_MD.md](references/SENDING_MD.md)** — Workers binding API, attachments, Agents SDK email. For Workers or Agents SDK.
+- **[references/REST_API.md](references/REST_API.md)** — REST endpoint, curl examples, error handling. For apps NOT on Workers.
+- **[references/ROUTING_MD.md](references/ROUTING_MD.md)** — Inbound `email()` handler, forwarding, replying, parsing. For receiving emails.
+- **[references/cli-and-MCP_MD.md](references/cli-and-MCP_MD.md)** — Domain setup, wrangler commands, MCP tools. For first-time setup.
+- **[references/DELIVERABILITY_MD.md](references/DELIVERABILITY_MD.md)** — SPF/DKIM/DMARC, bounces, suppressions, best practices.

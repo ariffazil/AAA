@@ -110,7 +110,7 @@ All GEOX content tagged with one or more:
 - [arifOS](../arifOS/) — constitutional governance kernel
 - [GEOX_ROADMAP.md](./GEOX_ROADMAP.md) — full horizon map
 - [TODO.md](./TODO.md) — current action items
-- [GEOX_NAMING_SPEC.md](./GEOX_NAMING_SPEC.md) — naming conventions
+- [GEOX_NAMING.md](./GEOX_NAMING.md) — naming conventions
 
 ---
 

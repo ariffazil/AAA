@@ -38,7 +38,7 @@ AAA currently carries **56 open issues** and broad control-plane surfaces. Freez
 | Deliverable | Output |
 |-------------|--------|
 | Issue triage | 56 → <10 critical |
-| `REPO_AUTHORITY_MATRIX.md` | What AAA may own / must not own |
+| `REPO_AUTHORITY.md` | What AAA may own / must not own |
 | Tool inventory | Remove duplicates / dead surfaces |
 | Schema inventory | Map all agent/session/delegation schemas |
 

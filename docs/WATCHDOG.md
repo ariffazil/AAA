@@ -64,12 +64,12 @@ If gateway is SILENT (>10 min since last beat):
 - Restore from ~/.openclaw/golden/config-backup.json
 - Run: openclaw gateway restart
 - Send alert to configured channel
-- Log restoration event to ~/watchdog/log.md
+- Log restoration event to ~/watchdog/LOG_MD.md
 ```
 
 ## Log
 
-`~/watchdog/log.md` — append-only record:
+`~/watchdog/LOG_MD.md` — append-only record:
 
 ```
 ## [YYYY-MM-DD HH:MM] watchdog | RESTORED | reason

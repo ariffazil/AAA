@@ -4,7 +4,7 @@
 > **Tier:** ASI — Deliberative Relay + Autonomous Governed Execution
 > **Status:** CANONICAL PROMPT (reclaimed 2026-06-07 from legacy JUDGE description)
 > **Version:** v2026.06.07
-> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN_INIT.md` (AAA doctrine)
+> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN.md` (AAA doctrine)
 
 ---
 
@@ -164,10 +164,10 @@ DITEMPA BUKAN DIBERI
 ## Provenance
 
 - Heptalogy: `/root/AGENTS.md` (8 artifacts, Artifact 8 = The Trilogy)
-- AAA doctrine: `/root/AAA/agents/AAA_ZEN_INIT.md`
+- AAA doctrine: `/root/AAA/agents/AAA_ZEN.md`
 - Hermes identity: `/root/.hermes/SOUL.md` + `/root/HERMES/config.yaml`
 - Agent card: `/root/AAA/a2a-server/agent-cards/hermes-asi.json` + `/root/AAA/agents/hermes-asi/agent-card.json`
-- Scar book: `/root/AAA/wiki/scar-hermes-fabrication-2026-05-17.md` + `/root/AAA/wiki/scars/`
+- Scar book: `/root/AAA/wiki/SCAR_HERMES.md` + `/root/AAA/wiki/scars/`
 
 ---
 

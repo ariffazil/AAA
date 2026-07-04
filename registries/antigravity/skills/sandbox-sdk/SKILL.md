@@ -174,5 +174,5 @@ See `examples/openai-agents` for complete integration pattern.
 
 ## Detailed References
 
-- **[references/api-quick-ref.md](references/api-quick-ref.md)** - Full API with options and return types
-- **[references/examples.md](references/examples.md)** - Example index with use cases
+- **[references/API_QUICK.md](references/API_QUICK.md)** - Full API with options and return types
+- **[references/EXAMPLES_MD.md](references/EXAMPLES_MD.md)** - Example index with use cases

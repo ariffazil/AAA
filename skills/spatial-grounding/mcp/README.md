@@ -2,7 +2,7 @@
 
 > **Status:** 🚧 Not yet created
 > **Format:** MCP tool manifest (`manifest.json`)
-> **Canonical source:** `AAA/wiki/skills/skill-spatial-grounding.md`
+> **Canonical source:** `AAA/wiki/skills/SKILL_SPATIAL.md`
 
 ## What to Create
 
@@ -50,9 +50,9 @@ When creating the MCP adapter, translate the canonical skill into an MCP tool ma
 
 ## See Also
 
-- Canonical skill: `AAA/wiki/skills/skill-spatial-grounding.md`
+- Canonical skill: `AAA/wiki/skills/SKILL_SPATIAL.md`
 - Claude adapter: `AAA/skills/spatial-grounding/claude/SKILL.md`
-- OpenClaw adapter: `AAA/skills/spatial-grounding/openclaw/system.md`
-- Scar: `wiki/scar-hermes-fabrication-2026-05-17.md`
+- OpenClaw adapter: `AAA/skills/spatial-grounding/openclaw/SYSTEM_MD.md`
+- Scar: `wiki/SCAR_HERMES.md`
 
 *DITEMPA BUKAN DIBERI — MCP manifests describe the tool; the skill procedure is the canonical.*

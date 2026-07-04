@@ -73,7 +73,7 @@ Curated truth: `MEMORY.md`
 
 **Recent:**
 - `memory/2026-04-25.md` — README SOT migration: arifOS, WEALTH, GEOX done
-- `memory/eureka-log.md` — Long-term carry-forward notes
+- `memory/eureka-LOG_MD.md` — Long-term carry-forward notes
 
 ---
 

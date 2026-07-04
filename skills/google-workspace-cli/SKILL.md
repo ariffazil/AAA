@@ -10,7 +10,7 @@ metadata: {"clawdbot":{"emoji":"GWS","requires":{"bins":["gws","jq"],"config":["
 
 ## Setup
 
-On first activation, read `setup.md` and lock integration boundaries before running any write command.
+On first activation, read `SETUP_MD.md` and lock integration boundaries before running any write command.
 
 ## When to Use
 
@@ -22,9 +22,9 @@ Memory lives in `~/google-workspace-cli/`. Credential artifacts live in `~/.conf
 
 ```text
 ~/google-workspace-cli/
-|-- memory.md                     # Persistent operating context and boundaries
-|-- command-log.md                # Known-good command templates by task type
-|-- change-control.md             # Dry-run evidence and approval notes
+|-- MEMORY_MD.md                     # Persistent operating context and boundaries
+|-- command-LOG_MD.md                # Known-good command templates by task type
+|-- CHANGE_CONTROL.md             # Dry-run evidence and approval notes
 |-- incidents.md                  # Failures, root causes, and prevention actions
 `-- mcp-profiles.md               # MCP service bundles and tool budget decisions
 ```
@@ -35,15 +35,15 @@ Use the smallest relevant file for the current task.
 
 | Topic | File |
 |-------|------|
-| Setup and activation behavior | `setup.md` |
-| Memory schema and status values | `memory-template.md` |
-| Deep repo and architecture findings | `repo-analysis.md` |
-| Full command discovery map | `command-index.md` |
-| High-signal command patterns | `command-patterns.md` |
-| Auth models and account strategy | `auth-playbook.md` |
-| MCP and agent integration | `mcp-integration.md` |
-| Safe change management checklist | `safety-checklist.md` |
-| Error diagnosis and fixes | `troubleshooting.md` |
+| Setup and activation behavior | `SETUP_MD.md` |
+| Memory schema and status values | `MEMORY_TEMPLATE.md` |
+| Deep repo and architecture findings | `REPO_ANALYSIS.md` |
+| Full command discovery map | `COMMAND_INDEX.md` |
+| High-signal command patterns | `COMMAND_PATTERNS.md` |
+| Auth models and account strategy | `AUTH_PLAYBOOK.md` |
+| MCP and agent integration | `MCP_INTEGRATION.md` |
+| Safe change management checklist | `SAFETY_CHECKLIST.md` |
+| Error diagnosis and fixes | `TROUBLESHOOTING_MD.md` |
 
 ## Requirements
 
@@ -84,7 +84,7 @@ Never jump directly into apply mode for new workflows.
 ### 3. Require Stable Identifiers for Write Targets
 Do not write against ambiguous names.
 - resolve file ids, message ids, event ids, and user ids first
-- record exact ids in `change-control.md` before apply mode
+- record exact ids in `CHANGE_CONTROL.md` before apply mode
 - refresh target state immediately before execution
 
 ### 4. Route Auth with Explicit Account and Scope Boundaries

@@ -17,7 +17,7 @@ Trigger this skill when the task involves planning, scoping, solution design, de
 
 ## Required Outputs
 You MUST output the following elements (usually in an artifact or a `.md` file):
-1. **Problem Frame**: A brief.md style reasoning of the problem.
+1. **Problem Frame**: A BRIEF_MD.md style reasoning of the problem.
 2. **Acceptance Criteria**: Clear conditions that define task completion.
 3. **Task Graph**: A decomposed plan of execution steps.
 4. **Risks & Open Questions**: Any identified risks or missing information.

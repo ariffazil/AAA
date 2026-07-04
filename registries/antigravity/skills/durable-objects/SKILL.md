@@ -32,9 +32,9 @@ Fetch the relevant doc page when implementing features.
 
 ## Reference Documentation
 
-- `./references/rules.md` - Core rules, storage, concurrency, RPC, alarms
-- `./references/testing.md` - Vitest setup, unit/integration tests, alarm testing
-- `./references/workers.md` - Workers handlers, types, wrangler config, observability
+- `./references/RULES_MD.md` - Core rules, storage, concurrency, RPC, alarms
+- `./references/TESTING_MD.md` - Vitest setup, unit/integration tests, alarm testing
+- `./references/WORKERS_MD.md` - Workers handlers, types, wrangler config, observability
 
 Search: `blockConcurrencyWhile`, `idFromName`, `getByName`, `setAlarm`, `sql.exec`
 

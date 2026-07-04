@@ -18,7 +18,7 @@ refresh_history:
 > **MANDATORY BOOT SEQUENCE**
 > 1. Read `/root/AGENTS.md` (Global Federation Rules & Identity)
 > 2. Read `/root/CONTEXT.md` (Live Machine State & Ports)
-> 3. Read `docs/architecture/UNIFIED_AGENT_PROTOCOL.md` (Unified Agent Protocol — canonical governance binding)
+> 3. Read `docs/architecture/UNIFIED_AGENT_4.md` (Unified Agent Protocol — canonical governance binding)
 > 4. Read this file (Repo-Specific Build/Test/Run rules)
 
 > **Canonical Identity:** Agent Operations Cockpit / Federation Control Plane
@@ -227,7 +227,7 @@ Only warga agents may inject humour into the governance layer. External agents c
 | WEALTH | Capital intelligence | Finance, allocation | A2A | wealth-sentinel |
 | WELL | Vitality intelligence | Human readiness | A2A | well-mirror |
 
-> **Naming note (canonical 2026-06-22):** "Hermes" = Hermes-ASI Telegram bot (the conversational agent you call in chat). "APEX" = constitutional judge (888_JUDGE) — separate concern, see below. "555-ASI" = HEXAGON warga (memory + ethical critique), NOT a chatbot. Full naming map: `AAA/registries/discovery/CANON-NAMING.md`.
+> **Naming note (canonical 2026-06-22):** "Hermes" = Hermes-ASI Telegram bot (the conversational agent you call in chat). "APEX" = constitutional judge (888_JUDGE) — separate concern, see below. "555-ASI" = HEXAGON warga (memory + ethical critique), NOT a chatbot. Full naming map: `AAA/registries/discovery/CANON_NAMING.md`.
 
 **APEX (888_JUDGE)** is a constitutional organ of arifOS, not an agent managed by AAA. APEX is NOT Hermes. AAA holds APEX's agent card for discovery purposes only. Verdict authority stays in arifOS.
 
@@ -301,7 +301,7 @@ Arif         remains F13 final sovereign authority.
 
 The canonical self-audit and hardening prompt for AAA lives at:
 
-→ [`SELF_AUDIT_PROMPT.md`](./SELF_AUDIT_PROMPT.md)
+→ [`SELF_AUDIT.md`](./SELF_AUDIT.md)
 
 This prompt enforces the **Reflexion Loop** (000→111→333→555→777→888→999) before ANY AAA mutation. It contains:
 - Live AAA state baseline from 2026-06-14
@@ -310,7 +310,7 @@ This prompt enforces the **Reflexion Loop** (000→111→333→555→777→888�
 - Output format with telemetry stub
 
 **Loading instruction:** When an AAA agent receives a hardening or mutation task, it MUST:
-1. Read `SELF_AUDIT_PROMPT.md`
+1. Read `SELF_AUDIT.md`
 2. Run the full Reflexion Loop before any file change
 3. Store the audit trail in `a2a-server/vault/` or forward to VAULT999
 

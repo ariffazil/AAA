@@ -32,6 +32,9 @@ const {
   registerHuman,
 } = require('./preforge_bridge');
 
+// Agent Card Registry — canonical identity store (loaded from agent-cards/)
+const { AgentCardRegistry } = require('./agent-card-registry');
+
 // APEX Master Seal 2026-07-01: Cognitive Hierarchy Runtime
 const {
   loadHierarchy,
@@ -1386,10 +1389,12 @@ function validateMessage(message) {
   if (message.parts.length > MAX_PARTS) return { valid: false, message: `message.parts exceeds ${MAX_PARTS}` };
   for (const part of message.parts) {
     if (!part || typeof part !== 'object') return { valid: false, message: 'each part must be an object' };
-    if (!part.kind || typeof part.kind !== 'string') return { valid: false, message: 'Each message part must have a string kind' };
-    // F1 AMANAH: whitelist allowed kinds — reject unknown injection kinds
-    if (!ALLOWED_PART_KINDS.has(part.kind)) return { valid: false, message: `Unknown part kind: ${part.kind}. Allowed: ${[...ALLOWED_PART_KINDS].join(', ')}` };
-    if (part.kind === 'text') {
+    // A2A v1.0: accept 'type' (canonical) or 'kind' (legacy backward compat)
+    part._discriminator = part.type || part.kind;
+    if (!part._discriminator || typeof part._discriminator !== 'string') return { valid: false, message: 'Each message part must have a string type/kind' };
+    // F1 AMANAH: whitelist allowed types — reject unknown injection types
+    if (!ALLOWED_PART_KINDS.has(part._discriminator)) return { valid: false, message: `Unknown part type: ${part._discriminator}. Allowed: ${[...ALLOWED_PART_KINDS].join(', ')}` };
+    if (part._discriminator === 'text') {
       if (typeof part.text !== 'string') return { valid: false, message: 'text parts must have string text' };
       // F1 AMANAH: text length guard — prevent DoS via massive payloads
       if (part.text.length > MAX_STRING_LENGTH) return { valid: false, message: `text exceeds ${MAX_STRING_LENGTH} chars` };
@@ -1500,7 +1505,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === 'hermes') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to Hermes ASI via direct route...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Forwarding to Hermes ASI via direct route...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1521,7 +1526,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (!f9.clean) {
         const rejectedStatus = {
         state: 'TASK_STATE_REJECTED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA→Hermes] F9 Anti-Hallucination check failed. Verdict rejected.' }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: '[AAA→Hermes] F9 Anti-Hallucination check failed. Verdict rejected.' }], messageId: generateId(), taskId, contextId },
           timestamp: new Date().toISOString()
         };
         task.status = rejectedStatus;
@@ -1534,7 +1539,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
         state: agentResult.status === 'failed' ? 'TASK_STATE_FAILED' : 'TASK_STATE_COMPLETED',
         message: {
           role: 'agent',
-          parts: [{ kind: 'text', text: `[AAA→Hermes ASI]\n${responseText}` }],
+          parts: [{ type: 'text', text: `[AAA→Hermes ASI]\n${responseText}` }],
           messageId: generateId(), taskId, contextId
         },
         timestamp: new Date().toISOString()
@@ -1547,7 +1552,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       const errorStatus = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→Hermes] Dispatch failed: ${err.message}. Falling back to local echo.` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→Hermes] Dispatch failed: ${err.message}. Falling back to local echo.` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.status = errorStatus;
@@ -1562,7 +1567,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === '333-AGI' || targetAgent === '333' || targetAgent === 'agi') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to 333-AGI (Δ MIND) for reasoning...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to 333-AGI (Δ MIND) for reasoning...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1579,7 +1584,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
         state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→333-AGI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→333-AGI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.artifacts = [];
@@ -1589,7 +1594,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       task.status = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→333-AGI] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→333-AGI] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       await taskStore.set(taskId, task);
@@ -1602,7 +1607,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === '555-ASI' || targetAgent === '555' || targetAgent === 'asi-heart') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to 555-ASI (Ω HEART) for synthesis...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to 555-ASI (Ω HEART) for synthesis...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1619,7 +1624,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
         state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→555-ASI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→555-ASI]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.artifacts = [];
@@ -1629,7 +1634,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       task.status = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→555-ASI] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→555-ASI] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       await taskStore.set(taskId, task);
@@ -1642,7 +1647,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === '888-APEX' || targetAgent === '888' || targetAgent === 'apex') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to 888-APEX (ΦΙ JUDGE) for verdict...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to 888-APEX (ΦΙ JUDGE) for verdict...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1659,7 +1664,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
         state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→888-APEX]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→888-APEX]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.artifacts = [];
@@ -1669,7 +1674,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       task.status = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→888-APEX] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→888-APEX] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       await taskStore.set(taskId, task);
@@ -1682,7 +1687,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === 'A-AUDIT' || targetAgent === 'audit') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to A-AUDIT for compliance check...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to A-AUDIT for compliance check...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1699,7 +1704,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
         state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-AUDIT]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-AUDIT]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.artifacts = [];
@@ -1709,7 +1714,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       task.status = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-AUDIT] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-AUDIT] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       await taskStore.set(taskId, task);
@@ -1722,7 +1727,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === 'A-ARCHIVE' || targetAgent === 'archive') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Routing to A-ARCHIVE for ledger sealing...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to A-ARCHIVE for ledger sealing...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1739,7 +1744,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
       task.status = {
         state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-ARCHIVE]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-ARCHIVE]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.artifacts = [];
@@ -1749,7 +1754,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       task.status = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→A-ARCHIVE] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-ARCHIVE] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       await taskStore.set(taskId, task);
@@ -1762,7 +1767,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (targetAgent === 'openclaw') {
     task.status = {
       state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[AAA] Forwarding to OpenClaw AGI...' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Forwarding to OpenClaw AGI...' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     await taskStore.set(taskId, task);
@@ -1783,7 +1788,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
         state: 'TASK_STATE_COMPLETED',
         message: {
           role: 'agent',
-          parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI]\n${agentResult.text}` }],
+          parts: [{ type: 'text', text: `[AAA→OpenClaw AGI]\n${agentResult.text}` }],
           messageId: generateId(), taskId, contextId
         },
         timestamp: new Date().toISOString()
@@ -1796,7 +1801,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     } catch (err) {
       const errorStatus = {
         state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: `[AAA→OpenClaw AGI] Dispatch failed: ${err.message}.` }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→OpenClaw AGI] Dispatch failed: ${err.message}.` }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.status = errorStatus;
@@ -1810,7 +1815,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
   task.status = {
     state: 'TASK_STATE_WORKING',
-    message: { role: 'agent', parts: [{ kind: 'text', text: 'Processing your request...' }], messageId: generateId(), taskId, contextId },
+    message: { role: 'agent', parts: [{ type: 'text', text: 'Processing your request...' }], messageId: generateId(), taskId, contextId },
     timestamp: new Date().toISOString()
   };
   await taskStore.set(taskId, task);
@@ -1821,7 +1826,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   if (!f9.clean) {
     const rejectedStatus = {
       state: 'TASK_STATE_REJECTED',
-      message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] F9 Anti-Hallucination check failed. Claim rejected.' }], messageId: generateId(), taskId, contextId },
+      message: { role: 'agent', parts: [{ type: 'text', text: '[888_JUDGE] F9 Anti-Hallucination check failed. Claim rejected.' }], messageId: generateId(), taskId, contextId },
       timestamp: new Date().toISOString()
     };
     task.status = rejectedStatus;
@@ -1837,7 +1842,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     if (verdict === VERDICT.VOID) {
       const voidStatus = {
         state: 'TASK_STATE_REJECTED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] VOID — constitutional violation. Task rejected.' }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: '[888_JUDGE] VOID — constitutional violation. Task rejected.' }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.status = voidStatus;
@@ -1849,7 +1854,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       logEvent('888_HOLD', taskId, '888_JUDGE HOLD — human review required');
       const holdStatus = {
         state: 'TASK_STATE_INPUT_REQUIRED',
-        message: { role: 'agent', parts: [{ kind: 'text', text: '[888_JUDGE] HOLD — human review required before execution. Internal governance: HOLD_888.' }], messageId: generateId(), taskId, contextId },
+        message: { role: 'agent', parts: [{ type: 'text', text: '[888_JUDGE] HOLD — human review required before execution. Internal governance: HOLD_888.' }], messageId: generateId(), taskId, contextId },
         timestamp: new Date().toISOString()
       };
       task.status = holdStatus;
@@ -1879,7 +1884,7 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
   logEvent('999_SEAL', taskId, 'Task completed — sealing to VAULT999');
   const completedStatus = {
     state: 'TASK_STATE_COMPLETED',
-    message: { role: 'agent', parts: [{ kind: 'text', text: responseText }], messageId: generateId(), taskId, contextId },
+    message: { role: 'agent', parts: [{ type: 'text', text: responseText }], messageId: generateId(), taskId, contextId },
     timestamp: new Date().toISOString()
   };
   task.status = completedStatus;
@@ -1889,25 +1894,50 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
 // === PUBLIC ROUTES (no auth) ===
 
-// A2A v1.0.0 spec: canonical agent card + compatibility aliases
-for (const discoveryPath of [
-  '/.well-known/a2a-discovery.json',
-  '/.well-known/agent-card.json',
-  '/agent-card.json',
-  '/.well-known/agent.json',
-  '/agent.json',
-  '/a2a/agent-card.json',
-  '/a2a/agent.json',
-]) {
-  app.get(discoveryPath, (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-    if (discoveryPath === '/.well-known/a2a-discovery.json') {
-      return res.json(buildDiscoveryContract());
-    }
-    return res.json(AAA_AGENT_CARD);
-  });
-}
+// A2A v1.0.0 spec: canonical agent card — single path, no aliases
+app.get('/.well-known/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(AAA_AGENT_CARD);
+});
+
+// A2A discovery contract
+app.get('/.well-known/a2a-discovery.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(buildDiscoveryContract());
+});
+
+// Federation agents registry — GENERATED from agent-card-registry (not hand-maintained)
+app.get('/.well-known/agents.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  const allCards = AgentCardRegistry.getAll();
+  const agents = allCards.map(card => ({
+    id: card.agentId,
+    name: card.name,
+    description: card.description,
+    version: card.version,
+    url: card.endpoints?.baseUrl || '',
+    provider: card.provider,
+    protocolVersion: card.protocolVersion || '1.0.0',
+    capabilities: {
+      streaming: card.capabilities?.streaming || false,
+      pushNotifications: card.capabilities?.pushNotifications || false,
+      stateTransitionHistory: card.capabilities?.stateTransitionHistory || false,
+    },
+    defaultInputModes: ['application/json', 'text/plain'],
+    defaultOutputModes: ['application/json', 'text/plain'],
+    skills: (card.skills || []).map(s => ({
+      id: s.id,
+      name: s.name,
+      description: s.description,
+      tags: s.tags || [],
+      examples: s.examples || [],
+    })),
+  }));
+  res.json({ agents, total: agents.length, generatedAt: new Date().toISOString() });
+});
 
 app.get('/a2a/discovery-contract.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
@@ -2198,7 +2228,7 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
       const tgResult = await tgRes.json();
       res.json(createJSONRPCResponse(req.body?.id || 0, {
         state: tgResult.ok ? 'completed' : 'failed',
-        message: { role: 'agent', parts: [{ kind: 'text', text: tgResult.ok ? 'Sent via @arifOS_bot' : 'Failed' }] }
+        message: { role: 'agent', parts: [{ type: 'text', text: tgResult.ok ? 'Sent via @arifOS_bot' : 'Failed' }] }
       }));
     } catch (e) {
       res.status(500).json(createJSONRPCError(req.body?.id || 0, -32000, e.message));
@@ -2226,7 +2256,7 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
       status: agentResult.status,
       message: {
         role: 'agent',
-        parts: [{ kind: 'text', text: agentResult.text }],
+        parts: [{ type: 'text', text: agentResult.text }],
       },
     }));
   } catch (e) {
@@ -2962,7 +2992,7 @@ app.post(['/api/message/send'], createEnvelopeValidator(), async (req, res) => {
   try {
     const body = req.body;
     const params = (body.params) || {};
-    const message = params.message || (typeof params.text === 'string' ? { role: 'user', parts: [{ kind: 'text', text: params.text }], messageId: Math.random().toString(36).slice(2) } : null);
+    const message = params.message || (typeof params.text === 'string' ? { role: 'user', parts: [{ type: 'text', text: params.text }], messageId: Math.random().toString(36).slice(2) } : null);
     if (!message) return res.status(400).json({ ok: false, error: 'params.message required' });
 
     const taskId = params.taskId || `aaa-${Math.random().toString(36).slice(2, 14)}`;
@@ -3403,8 +3433,8 @@ app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) =>
 function extractMessageFromParams(params) {
   if (!params) return null;
   if (params.message) return params.message;
-  if (params.text) return { parts: [{ kind: 'text', text: params.text }] };
-  if (typeof params === 'string') return { parts: [{ kind: 'text', text: params }] };
+  if (params.text) return { parts: [{ type: 'text', text: params.text }] };
+  if (typeof params === 'string') return { parts: [{ type: 'text', text: params }] };
   return null;
 }
 
@@ -3450,7 +3480,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
 
     if (delegationVerdict.blocked) {
       task.status = { state: 'TASK_STATE_REJECTED', timestamp: new Date().toISOString(),
-        message: { role: 'agent', parts: [{ kind: 'text', text: delegationVerdict.reason }] }
+        message: { role: 'agent', parts: [{ type: 'text', text: delegationVerdict.reason }] }
       };
       await taskStore.set(taskId, task);
       console.warn(`[DelegationGuard] BLOCKED ${sourceAgent} → ${targetSkill}: ${delegationVerdict.reason}`);
@@ -3811,6 +3841,7 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Agent Card: http://localhost:${PORT}/.well-known/agent-card.json`);
   console.log(`[AAA A2A] Federation: http://localhost:${PORT}/.well-known/arifos-federation.json`);
   console.log(`[AAA A2A] Peer Contract: http://localhost:${PORT}/.well-known/peer-federation-contract.json`);
+  console.log(`[AAA A2A] Agents Registry: http://localhost:${PORT}/.well-known/agents.json (generated from registry)`);
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
   console.log(`[AAA A2A] Lifecycle: http://localhost:${PORT}/api/agents/federation-status`);
   await initAsyncBackbone();

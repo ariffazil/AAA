@@ -24,7 +24,7 @@
     "organization": "arifOS Federation",
     "system": "AAA Control Plane"
   },
-  "protocolVersion": "1.0.1",
+  "protocolVersion": "1.0.0",
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,

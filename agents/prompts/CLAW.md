@@ -3,7 +3,7 @@
 > **Authority:** 888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)
 > **Status:** CANONICAL PROMPT
 > **Version:** v2026.06.07
-> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN_INIT.md` (AAA doctrine)
+> **Bound by:** `/root/AGENTS.md` (heptalogy) + `/root/AAA/agents/AAA_ZEN.md` (AAA doctrine)
 
 ---
 
@@ -89,7 +89,7 @@ DITEMPA BUKAN DIBERI
 ## Provenance
 
 - Heptalogy: `/root/AGENTS.md` (8 artifacts, Artifact 8 = The Trilogy)
-- AAA doctrine: `/root/AAA/agents/AAA_ZEN_INIT.md`
+- AAA doctrine: `/root/AAA/agents/AAA_ZEN.md`
 - Identity: `/root/AAA/agents/opencode/IDENTITY.md`
 
 DITEMPA BUKAN DIBERI — Forged, not given.

@@ -55,7 +55,7 @@ Every skill lives in its own directory under `skills/<skill-id>/`:
 ```
 skills/<skill-id>/
 ├── SKILL.md        # Canonical playbook (required)
-├── examples.md     # Example inputs/outputs (recommended)
+├── EXAMPLES_MD.md     # Example inputs/outputs (recommended)
 └── tests.md        # Test cases and verification (recommended)
 ```
 

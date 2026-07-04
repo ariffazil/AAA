@@ -35,8 +35,8 @@ Status legend:
 | 7 | **xiaomi_mimo** | [soul](xiaomi_mimo_soul.yaml) / [shadow](xiaomi_mimo_shadow.yaml) | FALLBACK | — | ✅ full substrate | ✅ 3 refs | ❌ | `0135534e` 2026-06-15 |
 
 ### Companion files
-- `gpt/GPT-FAMILY-REGISTRY.md` — standalone OpenAI GPT family tracker (separate canonical format, NOT soul/shadow split). Tracked `2202dc61` 2026-06-22.
-- `kimi_middleware_phase1/` — Kimi K2.7 middleware code (system.md, config.toml, aaa-pre-govern.sh, kimi_k27_cooling_probe.py). Tracked `16d88f9e` 2026-06-16.
+- `gpt/GPT_FAMILY.md` — standalone OpenAI GPT family tracker (separate canonical format, NOT soul/shadow split). Tracked `2202dc61` 2026-06-22.
+- `kimi_middleware_phase1/` — Kimi K2.7 middleware code (SYSTEM_MD.md, config.toml, aaa-pre-govern.sh, kimi_k27_cooling_probe.py). Tracked `16d88f9e` 2026-06-16.
 
 ### Master files
 - `model_soul.yaml` — canonical schema definition (30 KB, v4). Lists `shadow_incidents` + `models[]` with the **gold-standard** shape that the soul/shadow files should match.
@@ -68,7 +68,7 @@ Status legend:
 ## Deleted as duplicates (F13 ratification 2026-06-27)
 
 3 provider pairs (6 files) removed permanently — info was canonical elsewhere:
-- ✅ `openai_{soul,shadow}.yaml` — canonical at `gpt/GPT-FAMILY-REGISTRY.md`
+- ✅ `openai_{soul,shadow}.yaml` — canonical at `gpt/GPT_FAMILY.md`
 - ✅ `groq_{soul,shadow}.yaml` — canonical at `FEDERATION_MODEL.json`
 - ✅ `ollama_{soul,shadow}.yaml` — canonical at `FEDERATION_MODEL.json`
 
@@ -170,7 +170,7 @@ For reference, `FEDERATION_MODEL.json` already encodes the following routing dec
 
 A fast smoke run of the seven TokenRouter flagship models against the `ariffazil/FFF` Federation Fitness Gate is recorded here:
 
-- [TOKENROUTER_FFF_SMOKE_EVAL_2026-06-30.md](TOKENROUTER_FFF_SMOKE_EVAL_2026-06-30.md)
+- [TOKENROUTER_FFF.md](TOKENROUTER_FFF.md)
 
 **Bottom line:** MiMo-V2.5-Pro and DeepSeek-V4-Pro passed all smoke gates. GPT-OSS-120B fabricated a historical event (G2 Truth fail). Kimi-K2.7-Code returned API errors via TokenRouter. Qwen-3.7-Max, GLM-5.1, and MiniMax-M2.7 had partial endpoint errors leaving gates untested.
 
@@ -185,7 +185,7 @@ A fast smoke run of the seven TokenRouter flagship models against the `ariffazil
 | 2026-06-14 | KIMI K2.7 shadow/soul (`7ad598e8`) | F13 |
 | 2026-06-15 | ILMU + MiMo promoted (`0135534e`) | F13 |
 | 2026-06-16 | Kimi middleware Phase 1 (`16d88f9e`) | F13 |
-| 2026-06-22 | Semantic reorg — `gpt/` subfolder + `GPT-FAMILY-REGISTRY.md` (`2202dc61`) | F13 |
+| 2026-06-22 | Semantic reorg — `gpt/` subfolder + `GPT_FAMILY.md` (`2202dc61`) | F13 |
 | 2026-06-27 | **Audit + quarantine of 28 stub files** (this index) | F13 directive |
 
 ---

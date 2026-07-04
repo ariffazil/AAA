@@ -16,11 +16,11 @@ Use when the task involves Docker, Dockerfiles, container builds, Compose, image
 
 | Topic | File |
 |-------|------|
-| Essential commands | `commands.md` |
-| Dockerfile patterns | `images.md` |
-| Compose orchestration | `compose.md` |
-| Networking & volumes | `infrastructure.md` |
-| Security hardening | `security.md` |
+| Essential commands | `COMMANDS_MD.md` |
+| Dockerfile patterns | `IMAGES_MD.md` |
+| Compose orchestration | `COMPOSE_MD.md` |
+| Networking & volumes | `INFRASTRUCTURE_MD.md` |
+| Security hardening | `SECURITY_MD.md` |
 
 ## Core Rules
 

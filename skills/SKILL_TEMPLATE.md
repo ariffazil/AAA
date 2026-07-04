@@ -15,15 +15,15 @@ host_compatibility:
   - claude-code    # canonical (already SKILL.md)
   - codex          # OpenAI Codex CLI → openai/README.md
   - opencode       # OpenCode → opencode/README.md
-  # - kimi         # Kimi Code → kimi/skill.md
-  # - grok         # Grok Build → grok/skill.md
+  # - kimi         # Kimi Code → kimi/SKILL_MD.md
+  # - grok         # Grok Build → grok/SKILL_MD.md
   # - copilot      # GitHub Copilot CLI → copilot/<id>.agent.md
-  # - continue     # Continue.dev → continue/skill.md
-  # - antigravity  # Antigravity → antigravity/skill.md
-  # - openclaw     # OpenClaw → openclaw/system.md
+  # - continue     # Continue.dev → continue/SKILL_MD.md
+  # - antigravity  # Antigravity → antigravity/SKILL_MD.md
+  # - openclaw     # OpenClaw → openclaw/SYSTEM_MD.md
   # - mcp          # MCP manifest → mcp/manifest.json
-  # - hermes-asi   # Hermes ASI internal → hermes/skill.md
-  # - apx-judge    # APEX Judge internal → apex/skill.md
+  # - hermes-asi   # Hermes ASI internal → hermes/SKILL_MD.md
+  # - apx-judge    # APEX Judge internal → apex/SKILL_MD.md
 dependencies:
   skills: []
   servers: []

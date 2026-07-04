@@ -23,7 +23,7 @@
 **Repository:** https://github.com/ariffazil/AAA
 **Canonical identity doc:** `docs/FEDERATION_COCKPIT.md`
 **Service:** `aaa-a2a.service` (systemd)
-**Genesis:** `GENESIS/013_AAA_MANDATE.md`
+**Genesis:** `GENESIS/AAA_MANDATE.md`
 
 ```
 DITEMPA BUKAN DIBERI — Control is forged, not given.
@@ -62,11 +62,11 @@ The state identity is anchored in three GENESIS documents. Two are sealed; one a
 
 | # | Doc | What it anchors | Status |
 |---|---|---|---|
-| **013** | `GENESIS/013_AAA_MANDATE.md` | The mandate: *Display, never adjudicate. Route, never execute. Queue, never seal. The cockpit is not the engine.* | **STUB** — full canon pending F13 ratification |
-| **014** | `GENESIS/014_TRUTH.md` | Truth as **Haqq** held by three cords: Correspondence (F2) · Coherence (F2+F4) · Pragmatic (F3 witness + F11 safety). What remains after language has been forced through the constitutional sieve. | FORGED 2026-06-20 |
-| **015** | `GENESIS/015_DUAL_LANGUAGE.md` | A sovereign AI substrate requires **two languages simultaneously**: human civilisational (maruah, amanah, daulat, adab, budi, tanah air) and machine constitutional (authority, evidence, reversibility, SEAL/HOLD/VOID). *Without the first, the agent is foreign. Without the second, it is a ghost with hands.* | SEALED 2026-06-20 |
+| **013** | `GENESIS/AAA_MANDATE.md` | The mandate: *Display, never adjudicate. Route, never execute. Queue, never seal. The cockpit is not the engine.* | **STUB** — full canon pending F13 ratification |
+| **014** | `GENESIS/TRUTH_MD.md` | Truth as **Haqq** held by three cords: Correspondence (F2) · Coherence (F2+F4) · Pragmatic (F3 witness + F11 safety). What remains after language has been forced through the constitutional sieve. | FORGED 2026-06-20 |
+| **015** | `GENESIS/DUAL_LANGUAGE.md` | A sovereign AI substrate requires **two languages simultaneously**: human civilisational (maruah, amanah, daulat, adab, budi, tanah air) and machine constitutional (authority, evidence, reversibility, SEAL/HOLD/VOID). *Without the first, the agent is foreign. Without the second, it is a ghost with hands.* | SEALED 2026-06-20 |
 
-> The deeper truth: **Maruah without SEAL is just sentiment. SEAL without Maruah is just enforcement.** arifOS holds both at once. (paraphrased from `015_DUAL_LANGUAGE.md`)
+> The deeper truth: **Maruah without SEAL is just sentiment. SEAL without Maruah is just enforcement.** arifOS holds both at once. (paraphrased from `DUAL_LANGUAGE.md`)
 
 ### 0.3 The invariant chain (where AAA sits)
 
@@ -100,13 +100,13 @@ If any claim in this README disagrees with the files below, the files win.
 | Agent registry, tiers, canDo / cannotDo | `registries/AAA_AGENTS_REGISTRY.json` + `agents/AGENT_REGISTRY.md` |
 | Live HEXAGON + WITNESS A2A cards | `public/a2a/agents.json` (SEAL `HEXAGON-AGENTS-FORGE-20260602`) |
 | Canonical identity | `docs/FEDERATION_COCKPIT.md` |
-| Constitution | `GENESIS/013_AAA_MANDATE.md` · `014_TRUTH.md` · `015_DUAL_LANGUAGE.md` |
+| Constitution | `GENESIS/AAA_MANDATE.md` · `TRUTH_MD.md` · `DUAL_LANGUAGE.md` |
 | AREP task contract | `schemas/arep-task.schema.json` · `schemas/arep-reality-layers.schema.json` |
 | Capability surface | `registries/tools.yaml` · `contracts/capability_surface_state.yaml` |
 | Federation live state | `registries/AAA_FEDERATION_STATE.yaml` |
 | Federation topology | `/root/AGENTS.md` (root landing protocol) |
 | Hexagon YAML topology | `agents/HEXAGON.yaml` |
-| Adat Agentik decisions | `agents/decisions/2026-06-21-bahasa-malu-genesis.md` · `agents/decisions/2026-06-21-melayu-policy.md` |
+| Adat Agentik decisions | `agents/decisions/BAHASA_MALU.md` · `agents/decisions/MELAYU_POLICY.md` |
 
 ### 0.5 The four-layer truth stack (state bedrock)
 
@@ -619,7 +619,7 @@ AAA holds the canonical model registries at `registries/models/`:
 | **gpt/** | GPT-family shadow/soul pairs |
 | **kimi_middleware_phase1/** | Kimi migration artifacts |
 
-**The capability index** (`registries/CAPABILITY_INDEX.json`) is the shared substrate for all CODING agents — verified against `arifOS/core/capability_index/seed.py`. Source of truth referenced by `docs/UNIFIED_AGENT_ARCHITECTURE.md`.
+**The capability index** (`registries/CAPABILITY_INDEX.json`) is the shared substrate for all CODING agents — verified against `arifOS/core/capability_index/seed.py`. Source of truth referenced by `docs/UNIFIED_AGENT.md`.
 
 ### 7.6 Observability (`observability/`)
 
@@ -726,15 +726,15 @@ AAA/
 ├── a2a/                              # A2A design surface (specs, doctrine)
 │   ├── agent-cards/ · registry/{agents.yaml,agent-cards.json}
 │   ├── policies/                     # auth, trust, skills-exposure
-│   ├── federation-bridge.yaml · A2A_DIALOGUE.md · AAA_TREATY_LAW.md
+│   ├── federation-bridge.yaml · DIALOGUE_MD.md · AAA_TREATY.md
 │
 ├── agents/                           # Per-agent identity directories (22 dirs + 3 root configs)
 │   ├── HEXAGON.yaml                  # Canonical 5-agent topology (SEAL HEXAGON-AGENTS-FORGE-20260602)
 │   ├── AGENT_REGISTRY.md             # Human-readable canonical agent index
 │   ├── ROLE_AGENTS_OPencode.yaml
-│   ├── CODING_AGENT_FEDERATION.md
+│   ├── CODING_AGENT.md
 │   ├── arif-fazil-identity.yaml      # Sovereign identity file
-│   ├── _brief/SESSIONSPEC_2026-06-17_AGENTIC-MACHINE.md
+│   ├── _brief/SESSIONSPEC_AGENTIC.md
 │   ├── decisions/                    # 2026-06-21 bahasa-malu-genesis, melayu-policy
 │   ├── prompts/{CLAW,FORGE,HERMES,LIBRA}.md
 │   ├── roles/{EXTERNAL_WATCHER,KERNEL_SCRIBE,OPS_PLANNER,SELF_FORGE_ADVISOR}.md
@@ -769,7 +769,7 @@ AAA/
 │   ├── TOOL_MANIFEST.json · SUBSTRATE_GATE_POLICY.yaml · HOSTINGER_MCP_ACCESS.toml
 │   ├── models/                       # soul + shadow per provider
 │   ├── antigravity/ · audit/ · bundles/ · cooling_ledger/ · discovery/ · external/
-│   └── AGENT_DISCOVERY_MANIFEST.md · AGENT_INIT_COMMANDS.md · AGENT_INTELLIGENCE_BENCH.md
+│   └── AGENT_DISCOVERY.md · AGENT_INIT.md · AGENT_INTELLIGENCE.md
 │
 ├── schemas/                          # JSON/YAML schemas + AREP contracts
 │   ├── arep-task.schema.json · arep-reality-layers.schema.json · arep-example-forge-integration.json
@@ -800,9 +800,9 @@ AAA/
 │   ├── AGI_CANONICAL.md · ASI_SPEC.md · keys/arif_public.pem
 │
 ├── GENESIS/                          # State constitutions (see §0.2)
-│   ├── 013_AAA_MANDATE.md            # The mandate (STUB)
-│   ├── 014_TRUTH.md                  # Haqq doctrine (FORGED 2026-06-20)
-│   └── 015_DUAL_LANGUAGE.md          # Dual language theorem (SEALED 2026-06-20)
+│   ├── AAA_MANDATE.md            # The mandate (STUB)
+│   ├── TRUTH_MD.md                  # Haqq doctrine (FORGED 2026-06-20)
+│   └── DUAL_LANGUAGE.md          # Dual language theorem (SEALED 2026-06-20)
 │
 ├── public/                           # Static-served assets (mirrored to dist/)
 │   ├── a2a/
@@ -828,22 +828,22 @@ AAA/
 │
 ├── docs/                             # Architecture + federation docs (60+ files)
 │   ├── FEDERATION_COCKPIT.md         # Canonical identity doc
-│   ├── UNIFIED_AGENT_ARCHITECTURE.md # 8-agent federation architecture
+│   ├── UNIFIED_AGENT.md # 8-agent federation architecture
 │   ├── FEDERATION.md · FEDERATION_STATUS.md
-│   ├── CANONICAL_AGENT_ARCHITECTURE.md · ARCHITECTURE.md
+│   ├── CANONICAL_AGENT.md · ARCHITECTURE.md
 │   ├── REALITY_ENGINEERING.md · REALITY_ENGINEERING_PROTOCOL.md
-│   ├── A2A_SPEC.md · MCP-STATE.md · MCP_PAYLOADS.md
-│   ├── ORGAN_AUTHORITY_MAP.md · floor_wiring_map.md
-│   ├── PR3_TRUTH_BOUND_COCKPIT_SPEC.md · AGENT_LAYOUT_CONTRACT.md
-│   ├── OPTIMAL-AGENT-CONFIG.md · COPILOT_STUDIO_CONNECTION.md
-│   ├── HF_AAA_CARD_EXPANSION.md · SUBSTRATE_MANIFEST.md · SUBSTRATE_NAMESPACES.md
-│   ├── RECURSIVE_IMPROVEMENT_LOOP.md · repo-role-boundary.md
+│   ├── SPEC_MD.md · MCP_STATE.md · MCP_PAYLOADS.md
+│   ├── ORGAN_AUTHORITY.md · FLOOR_WIRING.md
+│   ├── TRUTH_BOUND.md · AGENT_LAYOUT.md
+│   ├── OPTIMAL_AGENT.md · COPILOT_STUDIO.md
+│   ├── HF_AAA.md · SUBSTRATE_MANIFEST.md · SUBSTRATE_NAMESPACES.md
+│   ├── RECURSIVE_IMPROVEMENT_LOOP.md · REPO_ROLE.md
 │   ├── agents/ · architecture/ · archive/ · ecosystem/ · eureka/ · federation/
-│   ├── geox/ · history/ · human-interface/ · mcp-endpoint-registry.md
+│   ├── geox/ · history/ · human-interface/ · MCP_ENDPOINT.md
 │   ├── operations/ · philosophy/ · plans/ · protocols/ · wiki/
 │
 ├── memory/                           # Session memory (100+ dated MD files, knowledge, scars, sessions)
-│   ├── MEMORY.md · CHECKPOINT.md · KNOWLEDGE_MEMORY.md · eureka-log.md
+│   ├── MEMORY.md · CHECKPOINT.md · KNOWLEDGE_MEMORY.md · eureka-LOG_MD.md
 │   ├── 2026-03-31..2026-05-17.md · investigations/ · research/ · scars/
 │   └── sessions/ · scars_archived_20260620/
 │
@@ -852,7 +852,7 @@ AAA/
 ├── ADR/                              # Architecture Decision Records
 │
 ├── benchmarks/                       # floor benchmark results
-├── reports/                          # ARIFOS_PROOF_PACK.md · ARIFOS_SCORECARD.json
+├── reports/                          # ARIFOS_PROOF.md · ARIFOS_SCORECARD.json
 ├── wiki/                             # Operational wiki
 ├── artifacts/                        # Live forge artifacts
 │
@@ -1129,7 +1129,7 @@ arifOS/GENESIS/000_KERNEL_CANON.md  ───  Root constitution (F1–F13, sove
                   │
    ┌──────────────┼──────────────────┐
    ▼              ▼                  ▼
-013_AAA_      014_TRUTH.md       015_DUAL_LANGUAGE.md
+013_AAA_      TRUTH_MD.md       DUAL_LANGUAGE.md
 MANDATE.md    (FORGED 2026-06-20) (SEALED 2026-06-20)
   STUB         Haqq =             Two languages at once:
                Correspondence +   Maruah (civilisational)

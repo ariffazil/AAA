@@ -69,5 +69,5 @@ AAA, A-FORGE, and VAULT999 were not live-attested in this session — requires o
 1. Add A-FORGE to `make health` attestation
 2. Add AAA to `make health` attestation 
 3. Add VAULT999 writer API to `make health` attestation
-4. Run all organ boundary tests per ORGAN_AUTHORITY_MAP.md
+4. Run all organ boundary tests per ORGAN_AUTHORITY.md
 5. Implement `make sot-check` as Makefile target

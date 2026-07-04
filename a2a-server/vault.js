@@ -25,7 +25,7 @@ function createSealPayload(task, agentId, action, metadata) {
     },
     epoch: now,
     verdict: 'SEAL',
-    human_ratifier: 'arifOS_AutoKernel',
+    human_ratifier: 'arif',
     human_signature: `SIG_AAA_GATEWAY_${Date.now().toString(36).toUpperCase()}`,
     ratified_at: now,
     irreversibility_ack: true,
