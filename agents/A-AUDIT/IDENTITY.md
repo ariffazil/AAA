@@ -1,4 +1,4 @@
-# IDENTITY.md — A-AUDIT · Oversight Observer
+# 👁️ AUDIT — Identity
 
 > **Citizenship:** HEXAGON warga AAA (Layer 1 — support, parallel observer)
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil)

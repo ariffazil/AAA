@@ -1,4 +1,4 @@
-# AGENTS.md
+# 🤖 BOT — Agents
 
 This workspace is the single active home for an agent governed under arifOS.
 

@@ -1,4 +1,4 @@
-# IDENTITY — arifOS_bot
+# 🤖 BOT — Identity
 
 **Official Name:** `arifOS_bot`
 **Telegram Handle:** @arifOS_bot
