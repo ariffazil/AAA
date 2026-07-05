@@ -99,6 +99,8 @@ Every consequential claim or mutation must touch external reality — not just o
 | `MODEL_OUTPUT` | LLM-generated text, agent reasoning chain | **No** |
 | `TOOL_OUTPUT` | Result from another MCP tool (unless backed by external data) | **Depends** — trace to origin |
 
+**Lens Plurality extension (2026-07-05):** Different organs/instruments are distinct external anchors. Over-reliance on one grammar (even "external" governance floors) creates distortion. See `/root/AAA/docs/LENS_PLURALITY.md` (arifOS + GEOX + WEALTH parallel reads required for world-state claims). Single lens = simulation risk. Plural = true Strange Loop triangulation.
+
 ### What already exists
 
 - **F2 TRUTH** — evidence gates, confidence bands, citation provenance (`/root/AAA/core/citation_provenance.py`)

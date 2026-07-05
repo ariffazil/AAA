@@ -132,6 +132,13 @@
       "description": "F12 injection defense at gateway layer. All external A2A tasks scanned before routing to internal organs.",
       "tags": ["security", "injection", "F12", "defense"],
       "floor_scope": ["F12"]
+    },
+    {
+      "id": "federated-memory-query",
+      "name": "Federated Memory Query",
+      "description": "Query the zen federated memory state (L1-L6 layers, flow, rule). Surfaces kernel-governed memory (bands, provenance, no-bypass) as AA state. Kernel owns, AAA surfaces via Redis + /federation/memory.",
+      "tags": ["memory", "federation", "state", "L1-L6", "zen"],
+      "floor_scope": ["F2", "F4", "F11"]
     }
   ],
   "governance": {

@@ -6,6 +6,30 @@
 
 ---
 
+## Constitutional Test Suite (NEW 2026-07-05 — Stage 4)
+
+**Location:** `/root/AAA/tests/constitutional/`
+**Runner:** `python /root/AAA/tests/constitutional/constitutional_runner.py all`
+**Forged by:** Kimi Code (FI-008) under F13 SOVEREIGN directive.
+
+| Test file | Covers | Stage |
+|---|---|---|
+| `test_drift_detection.py` | VAULT999 chain integrity, identity anchor materialization, hash drift detection | 0.2 |
+| `test_conformance_spine.py` | 9-point kernel conformance spine + harmonic ID resolution + invariant counts | 1 |
+| `test_tool_proliferation_gate.py` | TOOLCREATIONGATE 3-check enforcement (retrieval / YAML / scar) | 2 |
+| `test_identity_binding.py` | actor_verified default state, BRIDGING_SEAL dataclass constraints, JWT/DPoP stub raises | 3 |
+| `test_bridging_seal_overrides.py` | TTL bounds, fail-closed semantics, audit-first | 3 |
+| `test_well_freshness.py` | WELL :18083/health thresholds (GREEN/YELLOW/RED/STALE) | e2e |
+| `constitutional_runner.py` | CLI for stage-targeted or all-tests runs | — |
+
+**Total:** ~52 tests. All skip cleanly if dependencies missing.
+
+**Cross-reference:** AGENTS.md refers to this file as `MCP-TEST-SUITE.md` (filename drift). The canonical name is `MCP_TEST.md` (this file). See `forge_work/2026-07-05/constitutional-repair/cleanup/AGENTS_PATH_DRIFT.md` for the audit.
+
+---
+
+---
+
 ## 0. WHY CODE COVERAGE IS MEANINGLESS FOR MCP
 
 Traditional tests verify: `f(x) → y` — deterministic functions with fixed inputs/outputs.

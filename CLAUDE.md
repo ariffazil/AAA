@@ -18,6 +18,12 @@ cat /root/AAA/CLAUDE.md   # ← this file — you are reading it
 # 3. Know the live state:
 cat /root/CONTEXT.md | tail -100   # current focus, blockers, recent session log
 
+# 3.5 Rebuild continuity before acting:
+cat /root/.claude/projects/-root/memory/session-state.md
+
+# 3.6 Check the live deprecation map before calling tools:
+cat /root/AAA/docs/deprecation-registry.json | python3 -m json.tool | head -80
+
 # 4. Probe federation health:
 curl -s http://127.0.0.1:8088/health | python3 -m json.tool | grep -E 'status|tools_loaded|floors_active'
 

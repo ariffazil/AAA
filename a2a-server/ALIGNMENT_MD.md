@@ -36,6 +36,19 @@ arifOS    → evaluates authority
 A-FORGE   → executes
 ```
 
+## Memory Federation (Zen Flow into AAA A2A State, 2026-07-05)
+
+- Memory governed by kernel (arif_memory + L1-L6 + bands + provenance + canonical paths + no-bypass per FEDERATION_MEMORY.md + memory_store.py + AGENTIC_MEMORY_ROUTING.md).
+- AAA observes + surfaces as federated AA state:
+  - Redis: aaa:federation:memory:L1, L6, etc. (light snapshots)
+  - GET /federation/memory on a2a-server (returns layers + flow + rule)
+  - Updated AAA_FEDERATION_STATE.yaml with memory_layers + federated_memory_state
+- Flow (zen): kernel → L1-L6 → AAA Redis + /federation/memory + YAML
+- Bootstrap sets keys on start (after redis init).
+- Exposed as A2A skill "federated-memory-query" in main agent card.
+- Test: curl http://localhost:3001/federation/memory ; redis-cli KEYS 'aaa:federation:memory:*'
+- All per "no over-engineer, kernel governs, AAA surfaces".
+
 ## Phase 2 Fixes (2026-07-02)
 
 ### 1. HOLD → INPUT_REQUIRED Wire Mapping
