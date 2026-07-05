@@ -1,4 +1,4 @@
-# HEARTBEAT.md — Hermes ASI Agent
+# 📡 HERMES — Heartbeat
 
 ## Health Check Contract
 

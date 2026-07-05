@@ -1,4 +1,4 @@
-# TOOLS.md — OpenCode Tool Surface
+# ⚒️ OPENCODE — Tools
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

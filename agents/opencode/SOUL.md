@@ -1,4 +1,4 @@
-# SOUL.md — OpenCode Voice & Personality
+# ⚒️ OPENCODE — Soul
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

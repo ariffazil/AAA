@@ -1,4 +1,4 @@
-# HEARTBEAT.md — openclaw Agent
+# 🌀 OPENCLAW — Heartbeat
 
 ## Health Check Contract
 
