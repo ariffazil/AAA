@@ -331,6 +331,14 @@ async function writeSeal(payload, opts = {}) {
     actor: payload.agent_id || 'unknown',
     verdict: payload.verdict || 'SEAL',
 
+    // ── L11 AUTH lineage (added 2026-07-05) — forge-000-omega, sovereign ack 'ok 333' ──
+    // AAA writer previously trusted payload.agent_id without consulting arifOS interceptor.
+    // Now lineage status is explicit on every entry: jwt_verified | dpop_verified | self_report.
+    // 'self_report' is F11-ADVISORY (caps at MEDIUM authority); only jwt/dpop verified SOVEREIGN.
+    // Future writes through arifOS arif_judge → arif_seal carry actor_source=jwt_verified.
+    actor_source: payload.actor_source || 'self_report',
+    kernel_verdict: payload.kernel_verdict || (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : 'UNKNOWN'),
+
     // Enriched fields
     seal_version: ENRICHED_VERSION,
     event_type: eventType,
