@@ -1,31 +1,45 @@
 {
   "registry_version": "1.0.0",
-  "last_updated": "2026-06-27T21:30:00Z",
+  "last_updated": "2026-07-05T15:50:00Z",
   "owner": "FORGE (000Ω) / AAA",
   "description": "Canonical registry of all MCP tools and SKILLs in the arifOS federation. This file is the single source of truth for tool deduplication, capability mapping, and invariant constraint enforcement. No tool may be created if it overlaps ≥2 tags with an existing tool.",
-
   "skills": [
     {
       "name": "arifos-deep-research",
       "description": "Deep-research substrate for arif_explore: NAVIGATOR (web traversal with Malaysia/ASEAN Tier A sources), DRILLER (API surface discovery via OpenAPI introspect or live probe), MAPPER (knowledge graph traversal via Graphiti/Qdrant). Includes ReplayReceipt for traceable, HMAC-ready verification.",
-      "capability_tags": ["exploration", "api-discovery", "knowledge-graph", "web-research", "malaysia-asean"],
+      "capability_tags": [
+        "exploration",
+        "api-discovery",
+        "knowledge-graph",
+        "web-research",
+        "malaysia-asean"
+      ],
       "organ": "arifOS",
       "implemented": true,
       "forge_receipt": "FORGE_DEEP_RESEARCH_PRESCRIPTION_2026-06-27.md",
       "schema_path": "/root/arifOS/arifosmcp/schemas/explore.py",
       "implementation_path": "/root/arifOS/arifosmcp/runtime/explore.py",
-      "invariant_constraints": ["MIND", "TIME"],
+      "invariant_constraints": [
+        "MIND",
+        "TIME"
+      ],
       "epistemic_enforcement": {
         "uncertainty_tag": "mandatory",
         "replay_receipt": "mandatory",
-        "confidence_cap": 0.90,
-        "grade_floor": 0.70
+        "confidence_cap": 0.9,
+        "grade_floor": 0.7
       }
     },
     {
       "name": "aforge-governed-execution",
       "description": "A-FORGE execution — build, deploy, verify. Gated by arifOS SEAL.",
-      "capability_tags": ["build", "deploy", "execute", "orchestrate", "forge"],
+      "capability_tags": [
+        "build",
+        "deploy",
+        "execute",
+        "orchestrate",
+        "forge"
+      ],
       "organ": "A-FORGE",
       "implemented": true,
       "location": "/root/.agents/skills/aforge-execution/SKILL.md"
@@ -33,7 +47,12 @@
     {
       "name": "agentic-session-init",
       "description": "Session bootstrap — reality check, organ attest, bind session.",
-      "capability_tags": ["session", "bootstrap", "attest", "init"],
+      "capability_tags": [
+        "session",
+        "bootstrap",
+        "attest",
+        "init"
+      ],
       "organ": "arifOS",
       "implemented": true,
       "location": "/root/.agents/skills/agentic-session-init/SKILL.md"
@@ -41,7 +60,12 @@
     {
       "name": "arifos-judge-verdict",
       "description": "Constitutional verdict — SEAL/SABAR/HOLD/VOID. Stage 5 of 7.",
-      "capability_tags": ["judge", "verdict", "constitutional", "seal"],
+      "capability_tags": [
+        "judge",
+        "verdict",
+        "constitutional",
+        "seal"
+      ],
       "organ": "arifOS",
       "implemented": true,
       "location": "/root/.agents/skills/arifos-judge-verdict/SKILL.md"
@@ -49,7 +73,12 @@
     {
       "name": "geox-claim-grammar",
       "description": "Geological claim structure — evidence_for, evidence_against, missing_tests.",
-      "capability_tags": ["geoscience", "claim", "evidence", "geology"],
+      "capability_tags": [
+        "geoscience",
+        "claim",
+        "evidence",
+        "geology"
+      ],
       "organ": "GEOX",
       "implemented": true,
       "location": "/root/.agents/skills/geox-claim-grammar/SKILL.md"
@@ -57,7 +86,12 @@
     {
       "name": "wealth-capital-reasoning",
       "description": "WEALTH capital reasoning — POS, EMV, valuation, governed consequence.",
-      "capability_tags": ["capital", "valuation", "emv", "finance"],
+      "capability_tags": [
+        "capital",
+        "valuation",
+        "emv",
+        "finance"
+      ],
       "organ": "WEALTH",
       "implemented": true,
       "location": "/root/.agents/skills/wealth-capital-reasoning/SKILL.md"
@@ -65,7 +99,12 @@
     {
       "name": "well-substrate-readiness",
       "description": "Human readiness — vitality, fatigue, dignity. Reflect, never diagnose.",
-      "capability_tags": ["vitality", "readiness", "human-state", "fatigue"],
+      "capability_tags": [
+        "vitality",
+        "readiness",
+        "human-state",
+        "fatigue"
+      ],
       "organ": "WELL",
       "implemented": true,
       "location": "/root/.agents/skills/well-substrate-readiness/SKILL.md"
@@ -73,7 +112,12 @@
     {
       "name": "auditor-validator-kutip-sampah",
       "description": "Audit, validate, clean junk. The immune system skill.",
-      "capability_tags": ["audit", "validate", "cleanup", "hygiene"],
+      "capability_tags": [
+        "audit",
+        "validate",
+        "cleanup",
+        "hygiene"
+      ],
       "organ": "A-FORGE",
       "implemented": true,
       "location": "/root/.agents/skills/auditor-validator-kutip-sampah/SKILL.md"
@@ -81,7 +125,11 @@
     {
       "name": "arifos-federation-router",
       "description": "Route intent to correct organ. One intent, one organ. No collapse.",
-      "capability_tags": ["routing", "intent", "organ-bridge"],
+      "capability_tags": [
+        "routing",
+        "intent",
+        "organ-bridge"
+      ],
       "organ": "arifOS",
       "implemented": true,
       "location": "/root/.agents/skills/arifos-federation-router/SKILL.md"
@@ -89,60 +137,111 @@
     {
       "name": "hf-governed-intelligence",
       "description": "Constitutional HF operating skill — Hub sovereignty, dataset metabolism (AAA→FFF), tokenization doctrine, inference discipline (F5 Gödel band), fine-tune governance (F1 Amanah), FFF 6-gate promotion, eval & SEAL receipt chain. Every HF act is a constitutional act.",
-      "capability_tags": ["hf-hub", "hf-dataset", "hf-inference", "hf-tokenization", "hf-finetune", "hf-eval", "hf-security", "hf-governance"],
+      "capability_tags": [
+        "hf-hub",
+        "hf-dataset",
+        "hf-inference",
+        "hf-tokenization",
+        "hf-finetune",
+        "hf-eval",
+        "hf-security",
+        "hf-governance"
+      ],
       "organ": "A-FORGE",
       "implemented": true,
       "location": "/root/.agents/skills/hf-mastery/SKILL.md"
     }
   ],
-
   "deep_research_stub_tools": {
     "description": "30+ schema-correct stub tools for deep research substrate. All are logging-only stubs. Full implementation deferred to future forge sessions.",
     "total_count": 30,
     "categories": {
       "sensing": {
         "count": 5,
-        "tools": ["sense_observe", "sense_compass", "sense_atlas", "sense_entropy", "sense_vitals"]
+        "tools": [
+          "sense_observe",
+          "sense_compass",
+          "sense_atlas",
+          "sense_entropy",
+          "sense_vitals"
+        ]
       },
       "governance": {
         "count": 4,
-        "tools": ["govern_judge", "govern_seal", "govern_route", "govern_triage"]
+        "tools": [
+          "govern_judge",
+          "govern_seal",
+          "govern_route",
+          "govern_triage"
+        ]
       },
       "hypothesis": {
         "count": 4,
-        "tools": ["hypothesis_generate", "hypothesis_test", "hypothesis_rank", "hypothesis_refute"]
+        "tools": [
+          "hypothesis_generate",
+          "hypothesis_test",
+          "hypothesis_rank",
+          "hypothesis_refute"
+        ]
       },
       "retrieval": {
         "count": 4,
-        "tools": ["retrieve_memory", "retrieve_vector", "retrieve_graph", "retrieve_vault"]
+        "tools": [
+          "retrieve_memory",
+          "retrieve_vector",
+          "retrieve_graph",
+          "retrieve_vault"
+        ]
       },
       "uncertainty": {
         "count": 4,
-        "tools": ["uncertainty_tag", "uncertainty_delta", "uncertainty_chain", "uncertainty_gate"]
+        "tools": [
+          "uncertainty_tag",
+          "uncertainty_delta",
+          "uncertainty_chain",
+          "uncertainty_gate"
+        ]
       },
       "synthesis": {
         "count": 4,
-        "tools": ["synthesize_fuse", "synthesize_compose", "synthesize_critique", "synthesize_reflect"]
+        "tools": [
+          "synthesize_fuse",
+          "synthesize_compose",
+          "synthesize_critique",
+          "synthesize_reflect"
+        ]
       },
       "judgment": {
         "count": 3,
-        "tools": ["judge_deliberate", "judge_compare", "judge_history"]
+        "tools": [
+          "judge_deliberate",
+          "judge_compare",
+          "judge_history"
+        ]
       },
       "execution": {
         "count": 3,
-        "tools": ["execute_lease_request", "execute_lease_approve", "execute_shell"]
+        "tools": [
+          "execute_lease_request",
+          "execute_lease_approve",
+          "execute_shell"
+        ]
       },
       "lineage": {
         "count": 2,
-        "tools": ["lineage_trace", "lineage_verify"]
+        "tools": [
+          "lineage_trace",
+          "lineage_verify"
+        ]
       },
       "well_cooling": {
         "count": 1,
-        "tools": ["well_cool"]
+        "tools": [
+          "well_cool"
+        ]
       }
     }
   },
-
   "capability_tags": {
     "exploration": "Multi-mode exploration (NAVIGATOR/PROSPECTOR/DRILLER/MAPPER/SURVEYOR/EUREKA)",
     "api-discovery": "API surface introspection and documentation",
@@ -190,7 +289,6 @@
     "hf-security": "HF license review, gating check, PII scan, provenance tracking",
     "hf-governance": "Constitutional HF operations — floor binding, FFF gates, eval receipts, VAULT999 sealing"
   },
-
   "antipatterns": [
     {
       "name": "DUPLICATE_TOOL",
@@ -218,7 +316,6 @@
       "enforcement": "Tool creation requires TOOLREGISTRY.json update"
     }
   ],
-
   "arif_explore_modes": {
     "NAVIGATOR": {
       "seed_type": "seed_url",
@@ -250,6 +347,258 @@
       "seed_type": "any",
       "delegate": "LDEA loop across all modes",
       "malaysia_asean_tier_a": false
+    }
+  },
+  "mcp_tool_inventory": {
+    "generated_at": "2026-07-05T15:50:00Z",
+    "generator": "FORGE gap-closure GAP-3",
+    "total_tools": 215,
+    "organs": {
+      "arifOS": {
+        "port": 8088,
+        "canonical_prefix": "arif_",
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal",
+          "arif_forge",
+          "arif_critique",
+          "arif_compose",
+          "arif_organ_attest",
+          "arif_organ_attest_all",
+          "arif_organ_consensus",
+          "arif_os_attest",
+          "arif_heartbeat",
+          "arif_floor_status",
+          "arif_lease_inspect",
+          "arif_lease_issue",
+          "arif_lease_revoke",
+          "arif_vault_query",
+          "arif_triage",
+          "arif_session_init",
+          "arif_session_budget",
+          "arif_stack_health_probe",
+          "arif_resolve_tool",
+          "arif_retrieve_tools",
+          "arif_get_affordance",
+          "arif_wiki_ingest",
+          "arif_wiki_map",
+          "arif_wiki_search",
+          "arif_wiki_ask",
+          "arif_scan_local_instructions",
+          "arif_canary",
+          "arif_conformance_report",
+          "arif_detect_narrative_tension",
+          "arif_detect_institutional_shadow_drift",
+          "arif_peer_contract_attest",
+          "arif_peer_contract_validate",
+          "arif_peer_contract_forbid",
+          "arif_mcp_drift_check",
+          "arif_gateway_connect"
+        ]
+      },
+      "A-FORGE": {
+        "port": 7071,
+        "canonical_prefix": "forge_",
+        "tools": [
+          "forge_health_check",
+          "forge_session_init",
+          "forge_probe",
+          "forge_lease",
+          "forge_execute",
+          "forge_execute_sealed",
+          "forge_dry_run",
+          "forge_approve",
+          "forge_abort",
+          "forge_status",
+          "forge_shell",
+          "forge_shell_dryrun",
+          "forge_shell_status",
+          "forge_shell_ledger",
+          "forge_shell_alert_history",
+          "forge_git",
+          "forge_docker",
+          "forge_filesystem",
+          "forge_postgres",
+          "forge_github",
+          "forge_github_search_code",
+          "forge_github_search_repos",
+          "forge_github_get_file",
+          "forge_github_create_or_update_file",
+          "forge_github_create_pull_request",
+          "forge_github_create_issue",
+          "forge_registry",
+          "forge_registry_status",
+          "forge_register",
+          "forge_evaluate",
+          "forge_witness",
+          "forge_scar",
+          "forge_scar_scan",
+          "forge_seal",
+          "forge_skill",
+          "forge_synthesize",
+          "forge_stage",
+          "forge_sandbox_run",
+          "forge_scan",
+          "forge_fetch",
+          "forge_search",
+          "forge_research",
+          "forge_docs_lookup",
+          "forge_memory",
+          "forge_vault",
+          "forge_chart",
+          "forge_pipeline_run",
+          "forge_reality_loop",
+          "forge_check_governance",
+          "forge_heart_critique",
+          "forge_judge_proxy",
+          "forge_docket_prep",
+          "forge_forge",
+          "forge_surface_audit",
+          "forge_surface_guard",
+          "forge_agent",
+          "forge_job",
+          "forge_lock",
+          "forge_tier_bind",
+          "forge_document_ingest",
+          "forge_journalctl",
+          "forge_vps_ports",
+          "forge_vps_services",
+          "forge_vps_cron",
+          "forge_boundaries_assert",
+          "forge_wealth",
+          "forge_well",
+          "forge_worktree",
+          "forge_skillstore_read",
+          "forge_skillstore_write",
+          "forge_minimax_search",
+          "forge_browser_navigate",
+          "forge_browser_click",
+          "forge_browser_type",
+          "forge_browser_screenshot",
+          "forge_browser_extract_text",
+          "forge_browser_evaluate_js",
+          "forge_netdata_alarms",
+          "forge_netdata_metrics"
+        ]
+      },
+      "GEOX": {
+        "port": 8081,
+        "canonical_prefix": "geox_",
+        "tools": [
+          "geox_basin",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_prospect",
+          "geox_sequence",
+          "geox_seismic_compute",
+          "geox_seismic_ingest",
+          "geox_seismic_interpret",
+          "geox_well_ingest",
+          "geox_well_qc",
+          "geox_well_desurvey",
+          "geox_vision",
+          "geox_subsurface_model",
+          "geox_claim",
+          "geox_surface_status",
+          "geox_atlas",
+          "geox_biostrat_parse",
+          "geox_biostrat_nn_age",
+          "geox_biostrat_falsify",
+          "geox_biostrat_ruling_check",
+          "geox_contrast_detect",
+          "geox_deep_time_state",
+          "geox_geomechanics",
+          "geox_forbidden_claims_scan",
+          "geox_simulate_accommodation",
+          "geox_simulate_routing",
+          "geox_simulate_sequences",
+          "geox_simulate_surfaces",
+          "geox_macrostrat_calibrate",
+          "geox_map_layers_list",
+          "geox_map_scene_plan",
+          "geox_map_render_preview",
+          "geox_map_export_package",
+          "geox_egs_claim_create",
+          "geox_egs_claim_challenge",
+          "geox_egs_evidence_attach",
+          "geox_egs_evidence_reason",
+          "geox_egs_query_claim",
+          "geox_egs_query_entity",
+          "geox_egs_query_provenance",
+          "geox_egs_query_uncertainty",
+          "geox_egs_data_qc_bundle",
+          "geox_egs_scenario_audit",
+          "geox_egs_seismic_compute",
+          "geox_egs_rock_physics"
+        ]
+      },
+      "WEALTH": {
+        "port": 18082,
+        "canonical_prefix": "wealth_",
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_evoi",
+          "wealth_compute_irr",
+          "wealth_compute_npv",
+          "wealth_monte_carlo_simulate",
+          "wealth_conservation_check",
+          "wealth_flow_check",
+          "wealth_runway_check",
+          "wealth_survival_engine",
+          "wealth_personal_finance",
+          "wealth_market_data",
+          "wealth_stock_analysis",
+          "wealth_omni_wisdom",
+          "wealth_power_audit",
+          "wealth_capture_scan",
+          "wealth_collapse_signature_scan",
+          "wealth_beautiful_mouse_scan",
+          "wealth_wisdom_evaluate",
+          "wealth_boundary_governance",
+          "wealth_confluence_check",
+          "wealth_asymmetry_check",
+          "wealth_fiscal_breakeven",
+          "wealth_agent_path",
+          "wealth_judge_handoff",
+          "wealth_vault_query",
+          "wealth_vault_write",
+          "wealth_registry_status",
+          "wealth_monte_carlo",
+          "wealth_emv_compute",
+          "wealth_evoi_compute",
+          "wealth_reason_agent",
+          "wealth_system_registry_status"
+        ]
+      },
+      "WELL": {
+        "port": 18083,
+        "canonical_prefix": "well_",
+        "tools": [
+          "well_classify_substrate",
+          "well_trace_lineage",
+          "well_detect_boundary",
+          "well_measure_gradient",
+          "well_assess_metabolism",
+          "well_assess_homeostasis",
+          "well_check_repair",
+          "well_validate_vitality",
+          "well_assess_livelihood",
+          "well_assess_reliability",
+          "well_compute_metabolic_flux",
+          "well_guard_dignity",
+          "well_medical_boundary",
+          "well_readiness",
+          "well_health_check",
+          "well_registry_status",
+          "well_signal_coverage",
+          "well_assess_sovereign_entropy"
+        ]
+      }
     }
   }
 }
