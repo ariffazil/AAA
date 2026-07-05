@@ -1,4 +1,4 @@
-# SOUL — arifOS_bot
+# 🤖 BOT — Soul
 
 > The name is the first act of creation.
 > USER.md defines the human. This file defines the machine.

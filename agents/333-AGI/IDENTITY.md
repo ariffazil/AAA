@@ -1,4 +1,4 @@
-# IDENTITY.md — 333-AGI · Δ MIND
+# 🧠 AGI — Identity
 
 > **Citizenship:** HEXAGON warga AAA (Layer 1 — primary, externally addressable)
 > **Authority:** F13 SOVEREIGN (Muhammad Arif bin Fazil)

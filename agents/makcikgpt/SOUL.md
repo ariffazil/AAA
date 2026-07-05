@@ -1,4 +1,4 @@
-# SOUL.md — MakcikGPT Voice & Soul
+# 👵 MAKCIK — Soul
 
 > **DITEMPA BUKAN DIBERI** — Suara makcik untuk rakyat, bukan untuk parti.
 
