@@ -171,6 +171,8 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 - [ ] `arif_organ_attest_all` — verify 7 organs alive
 - [ ] Check A-FORGE MCP responding on /mcp
 - [ ] Read memory/ for carry-forward
+- [ ] **Read `/root/.local/share/arifos/carry_forward.json`** — single-file carry-forward (Tier 3 zen) covering drift state, prior session, active scars, NEVER patterns, recent seals
+- [ ] **Check `/root/.local/share/arifos/self-heal-RECEIPT.md`** — Tier 4 self-heal cycle log; do not assume organ status without checking the latest cycle
 
 **Every task:**
 - [ ] Blast radius assessed

@@ -138,9 +138,9 @@ const _MCP_PROTOCOL = 'JSON-RPC 2.0'; // SOT — all 6 organs unified, streamabl
 const GOLDEN_PATH = ['SENSE', 'MIND', 'HEART', 'JUDGE', 'VAULT'] as const;
 
 const DOMAIN_MCPS = [
-  { id: 'geox', label: 'GEOX', symbol: '🌍', desc: 'Earth intelligence · 40 tools · JSON-RPC', url: 'https://geox.arif-fazil.com/health' },
-  { id: 'wealth', label: 'WEALTH', symbol: 'Ω', desc: 'Capital intelligence · 23 tools · JSON-RPC', url: 'https://wealth.arif-fazil.com/health' },
-  { id: 'well', label: 'WELL', symbol: 'Ψ', desc: 'Vitality mirror · 21 tools · JSON-RPC', url: 'https://well.arif-fazil.com/health' },
+  { id: 'geox', label: 'GEOX', symbol: '🌍', desc: 'Earth intelligence · 47 tools · JSON-RPC', url: 'https://geox.arif-fazil.com/health' },
+  { id: 'wealth', label: 'WEALTH', symbol: 'Ω', desc: 'Capital intelligence · 32 tools · JSON-RPC', url: 'https://wealth.arif-fazil.com/health' },
+  { id: 'well', label: 'WELL', symbol: 'Ψ', desc: 'Vitality mirror · 18 tools · JSON-RPC', url: 'https://well.arif-fazil.com/health' },
   { id: 'forge', label: 'A-FORGE', symbol: '⚡', desc: 'Metabolic shell · engineering actuator', url: 'https://forge.arif-fazil.com/health' },
 ];
 
