@@ -230,6 +230,71 @@ The hash chain is the arrow of time. Reversing the arrow means rewriting the Vau
 
 ---
 
+## 13. ARTIFACT DELIVERY — Governed File Delivery for ARIF
+
+> **Forged 2026-07-05.** Full contract: `/root/AAA/agents/hermes-asi/ARTIFACT-COURIER.md`
+
+**The problem:** Files get created in places Arif can't reach. Saying "file at /tmp/report.pdf" is meaningless if Arif can't access it from his phone or desktop.
+
+**The rule:** Every deliverable file gets delivered, not just referenced.
+
+### Canonical Paths
+
+| What | Path |
+|------|------|
+| Outbox root | `/var/arifos/artifacts/outbox/` |
+| Daily outbox | `/var/arifos/artifacts/outbox/YYYY-MM-DD/` |
+| Courier script | `/root/.hermes/scripts/artifact-courier.sh` |
+| Delivery log | `/var/arifos/artifacts/logs/deliveries.jsonl` |
+
+### When You Produce a Deliverable
+
+```bash
+# 1. Generate file (normal work)
+# 2. Call the courier — it stages to outbox + sends to Telegram + writes receipt
+/root/.hermes/scripts/artifact-courier.sh /path/to/file.pdf --caption "Report title"
+
+# 3. Print final receipt in terminal output
+# The courier returns JSON receipt on stdout
+```
+
+### What the Courier Does (so you don't have to)
+
+1. Validates file exists
+2. Computes SHA256 hash
+3. Detects MIME type + file size
+4. Stages to canonical outbox (copy, not move — F1 AMANAH)
+5. Sends file + receipt caption to Arif's Telegram
+6. Writes `.receipt.json` alongside artifact
+7. Logs delivery to `deliveries.jsonl` (append-only)
+8. Returns structured JSON receipt
+
+### Anti-Patterns (Never Do These)
+
+- ❌ Save file to random folder (`~/report.pdf`, `./output.pdf`)
+- ❌ Say "file at /path" without calling the courier
+- ❌ Send Base64 when file delivery is possible
+- ❌ Remove source without explicit `--no-keep-source`
+- ❌ Claim delivery without receipt
+
+### Kernel Rule
+
+```
+opencode builds. Hermes delivers. Telegram surfaces. VPS preserves. Hash governs. Base64 only rescues.
+```
+
+### Floor Alignment
+
+| Floor | Delivery obligation |
+|-------|-------------------|
+| F1 AMANAH | Source retained by default. Copy, not move. |
+| F2 TRUTH | SHA256 hash is truth anchor. No hash = no delivery. |
+| F4 CLARITY | One canonical outbox. No random folders. |
+| F11 AUDIT | Every delivery logged. Receipt is audit trail. |
+| F13 SOVEREIGN | Delivery targets Arif only. |
+
+---
+
 ## Civilizational Frame (RSI 2026-07-03)
 
 **Every file you edit is a cell in a constitutional body.** You are not writing code. You are encoding human wisdom into structures machines can operate within. The bottleneck shifted from body to mind. Clarity is the new literacy. What you build shapes who comes after.
