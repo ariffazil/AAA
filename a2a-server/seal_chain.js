@@ -201,7 +201,51 @@ function appendLedger(entry) {
 function readLedger() {
   if (!fs.existsSync(LEDGER_PATH)) return [];
   const raw = fs.readFileSync(LEDGER_PATH, 'utf-8');
-  return raw.split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l));
+  // Robust streaming parser — handles BOTH compact jsonl AND pretty-printed
+  // multi-line entries (forged 2026-07-05, forge-000-omega, G1 chain-verify fix).
+  //
+  // Earlier versions used split('\n') + JSON.parse(line) which silently broke
+  // whenever a caller wrote a pretty-printed object (see ledger lines 41-64,
+  // 53-64 where multi-line JSON was appended). One bad line then blinded the
+  // ENTIRE verifier — a meta-failure that let historical corruption hide.
+  //
+  // This parser walks brace depth at the byte level, skipping strings and
+  // escape sequences. Malformed chunks are logged to stderr and skipped, not
+  // fatal — so the chain can still be verified even if one entry is corrupt.
+  const entries = [];
+  let depth = 0;
+  let start = -1;
+  let inString = false;
+  let escape = false;
+  for (let i = 0; i < raw.length; i++) {
+    const ch = raw[i];
+    if (escape) { escape = false; continue; }
+    if (inString && ch === '\\') { escape = true; continue; }
+    if (ch === '"') { inString = !inString; continue; }
+    if (inString) continue;
+    if (ch === '{') {
+      if (depth === 0) start = i;
+      depth++;
+    } else if (ch === '}') {
+      depth--;
+      if (depth === 0 && start >= 0) {
+        const chunk = raw.slice(start, i + 1);
+        try {
+          entries.push(JSON.parse(chunk));
+        } catch (e) {
+          console.error(
+            `[seal_chain] skip malformed entry at offset ${start}: ${e.message}`
+          );
+        }
+        start = -1;
+      } else if (depth < 0) {
+        // Stray closing brace — reset state to recover.
+        depth = 0;
+        start = -1;
+      }
+    }
+  }
+  return entries;
 }
 
 // ── Verification ─────────────────────────────────────────────────────────
@@ -284,12 +328,80 @@ function verifyChain() {
   };
 }
 
+// ── Seal-write invariants (FORGED 2026-07-05, G1 root-cause fix) ──────────
+//
+// Until every write flows through arifOS arif_judge → arif_seal (jwt_verified),
+// the AAA writer enforces three structural invariants locally. These are the
+// twin of F11 ADVISORY — they prevent the chain from being poisoned by
+// self-reported SEALs with UNKNOWN kernel verdicts and empty witnesses.
+//
+//   INV-1 (kernel coherence): SEAL requires kernel_verdict≠UNKNOWN/FAIL.
+//   INV-2 (actor binding):    SEAL requires actor_source≠self_report.
+//   INV-3 (witness quorum):   SEAL requires ≥1 non-null witness channel.
+//
+// Violation behaviour: downgrade SEAL → HOLD, append violations to the
+// audit trail under invariants_violated so downstream readers see exactly
+// which invariants fired and why. The historical payload is preserved —
+// we mutate only the final verdict + lineage fields.
+function enforceSealInvariants(payload, opts = {}) {
+  const violations = [];
+  let downgraded = false;
+  let verdict = (payload.verdict || 'SEAL').toUpperCase();
+  const kernelVerdict = payload.kernel_verdict ||
+    (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : 'UNKNOWN');
+  const actorSource = payload.actor_source || 'self_report';
+  const actor = payload.agent_id || payload.actor || 'unknown';
+  const witness = opts.witness || { human: null, ai: null, external: null };
+  const witnessChannels = [witness.human, witness.ai, witness.external].filter(
+    (v) => v !== null && v !== undefined
+  );
+
+  if (verdict === 'SEAL' &&
+      (kernelVerdict === 'UNKNOWN' || kernelVerdict.startsWith('FAIL'))) {
+    violations.push({
+      invariant: 'INV-1_KERNEL_VERIFIED',
+      detail: `SEAL requires kernel_verdict≠UNKNOWN/FAIL, got ${kernelVerdict}`,
+    });
+    verdict = 'HOLD';
+    downgraded = true;
+  }
+  if (verdict === 'SEAL' && actorSource === 'self_report') {
+    violations.push({
+      invariant: 'INV-2_ACTOR_VERIFIED',
+      detail:
+        `SEAL requires actor_source≠self_report, got self_report for actor=${actor}`,
+    });
+    verdict = 'HOLD';
+    downgraded = true;
+  }
+  if (verdict === 'SEAL' && witnessChannels.length === 0) {
+    violations.push({
+      invariant: 'INV-3_WITNESS_PRESENT',
+      detail: `SEAL requires ≥1 witness channel, got 0`,
+    });
+    verdict = 'HOLD';
+    downgraded = true;
+  }
+  return {
+    verdict,
+    kernelVerdict,
+    actor,
+    actorSource,
+    witness,
+    violations,
+    downgraded,
+  };
+}
+
 // ── Public: write a seal ─────────────────────────────────────────────────
 
 async function writeSeal(payload, opts = {}) {
   if (!payload || typeof payload !== 'object') {
     throw new Error('writeSeal: payload must be a non-null object');
   }
+
+  // ── Invariant enforcement (G1 fix) — runs BEFORE any ledger work ──
+  const invariants = enforceSealInvariants(payload, opts);
 
   // Ensure vault directory exists
   fs.mkdirSync(VAULT_DIR, { recursive: true });
@@ -303,14 +415,14 @@ async function writeSeal(payload, opts = {}) {
 
   // ── Enriched envelope fields ──
   const eventType = opts.event_type || classifyEventType(payload);
-  const principal = opts.principal || `agent:${payload.agent_id || 'unknown'}`;
+  const principal = opts.principal || `agent:${invariants.actor}`;
   const toolSchemaHash = opts.tool_schema_hash || null;
   const policyHash = opts.policy_hash || computePolicyHash(opts.active_floors);
   const inputHash = opts.input_hash || (payload.payload ? sha256Hex(canonicalJson(payload.payload)) : null);
   const outputHash = opts.output_hash || null;
   const delegationChain = opts.delegation_chain || [];
   const signature = opts.signature || null;
-  const witness = opts.witness || { human: null, ai: null, external: null };
+  const witness = invariants.witness;
 
   // Compute Merkle root from event fields
   const merkleRoot = computeEventMerkleRoot({
@@ -328,16 +440,22 @@ async function writeSeal(payload, opts = {}) {
     this_hash: thisHash,
     merkle_root: merkleRoot,
     epoch,
-    actor: payload.agent_id || 'unknown',
-    verdict: payload.verdict || 'SEAL',
+    actor: invariants.actor,
+    verdict: invariants.verdict,
 
     // ── L11 AUTH lineage (added 2026-07-05) — forge-000-omega, sovereign ack 'ok 333' ──
     // AAA writer previously trusted payload.agent_id without consulting arifOS interceptor.
     // Now lineage status is explicit on every entry: jwt_verified | dpop_verified | self_report.
     // 'self_report' is F11-ADVISORY (caps at MEDIUM authority); only jwt/dpop verified SOVEREIGN.
     // Future writes through arifOS arif_judge → arif_seal carry actor_source=jwt_verified.
-    actor_source: payload.actor_source || 'self_report',
-    kernel_verdict: payload.kernel_verdict || (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : 'UNKNOWN'),
+    actor_source: invariants.actorSource,
+    kernel_verdict: invariants.kernelVerdict,
+
+    // ── Invariant audit (forged 2026-07-05, G1 fix) ──
+    // When the writer downgrades a SEAL→HOLD, the violations are persisted on
+    // the entry itself so downstream readers see exactly which invariants fired.
+    invariants_violated: invariants.violations.length > 0 ? invariants.violations : null,
+    invariants_downgraded: invariants.downgraded,
 
     // Enriched fields
     seal_version: ENRICHED_VERSION,
@@ -385,6 +503,14 @@ async function writeSeal(payload, opts = {}) {
     epoch,
     chain_head: thisHash,
     seal_version: ENRICHED_VERSION,
+    // ── Invariant receipts (forged 2026-07-05, G1 fix) ──
+    // Expose invariants_violated + invariants_downgraded on the return value
+    // so callers can react: a successful write may still have been downgraded
+    // from SEAL→HOLD, and that downgrade is not silent.
+    invariants_violated: invariants.violations.length > 0 ? invariants.violations : null,
+    invariants_downgraded: invariants.downgraded,
+    final_verdict: invariants.verdict,
+    actor_source: invariants.actorSource,
   };
 }
 
@@ -526,6 +652,8 @@ module.exports = {
   computeEventMerkleRoot,
   canonicalJson,
   classifyEventType,
+  // ── Invariant exports (forged 2026-07-05, G1 fix) ──
+  enforceSealInvariants,
   GENESIS_HASH,
   LEDGER_PATH,
   HEAD_PATH,
