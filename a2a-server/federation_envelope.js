@@ -43,8 +43,15 @@ function extractEnvelope(params) {
   if (!params || typeof params !== 'object') return null;
 
   // 1. Try nested envelope
+  //    Accept both `envelope` (canonical) and `_envelope` (legacy/
+  //    hosted-runtime convention). Some MCP wrappers and ChatGPT-hosted
+  //    clients prefix envelope params with `_`; treat as equivalent.
+  //    Fix landed 2026-07-05 to unblock hosted-runtime bridge gap.
   if (params.envelope && typeof params.envelope === 'object') {
     return params.envelope;
+  }
+  if (params._envelope && typeof params._envelope === 'object') {
+    return params._envelope;
   }
 
   // 2. Try flattened fields
