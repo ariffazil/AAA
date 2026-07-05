@@ -141,3 +141,39 @@ TEST: full suite all 3 repos after each sub-step
 
 *Sealed 2026-07-05. This IS the handoff document. Load it, execute it, seal your results.*
 *DITEMPA BUKAN DIBERI — 999 SEAL ALIVE*
+
+---
+
+## ADDENDUM — Phase 1 Lessons (2026-07-05)
+
+### What actually shipped:
+- wiki_search.py deleted from source (safe — not imported by server.py)
+- WealthEngine.ts.LEGACY deleted from A-FORGE (safe — no imports)
+- VAULT999 sealed, prompt-init written, all 3 repos pushed to GitHub
+
+### What we learned:
+The 8 philosophy/poetry files are NOT standalone chaos — they're deeply embedded:
+- `server.py` imports `institutional_shadow` and `narrative_tension` on boot
+- `kernel_core.py` imports `philosophy` (select_atlas_philosophy)
+- `tools.py` imports `philosophy` and `philosophy_registry`
+- `governance_pipeline.py` imports `principal_paradox` (with try/except — good pattern!)
+- `enforcer.py`, `sensing_protocol.py`, `tools_internal.py` all import philosophy
+- `blast_radius_registry.py`, `vault_sealer.py` reference narrative_tension
+
+**50+ import sites across the codebase.** Cannot delete without first making imports lazy.
+
+### Phase 2 prerequisite (CRITICAL):
+Before deleting ANY chaos file:
+1. Wrap ALL imports in try/except with `_AVAILABLE` flag (see governance_pipeline.py for pattern)
+2. Make server.py lazy-load these tools (not on boot)
+3. Add graceful degradation (tool returns "not available" instead of crashing)
+4. Test with file deleted locally before committing
+
+The governance_pipeline.py pattern is the template:
+```python
+try:
+    from arifosmcp.runtime.principal_paradox import gate_1_5_principal_paradox as _e7_gate
+    _E7_AVAILABLE = True
+except ImportError:
+    _E7_AVAILABLE = False
+```
