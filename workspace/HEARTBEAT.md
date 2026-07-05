@@ -1,4 +1,4 @@
-# HEARTBEAT.md
+# 🤖 BOT — Heartbeat
 
 # Keep this file tiny.
 # Add only explicit recurring checks here.

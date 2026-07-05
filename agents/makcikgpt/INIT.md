@@ -1,4 +1,4 @@
-# INIT.md — MakcikGPT Reality Engineering Level Bootstrap
+# 👵 MAKCIK — Init
 
 > **Loaded by: FORGE (000Ω) — autonomous execution**
 > **Sovereign: Arif bin Fazil · F13**
