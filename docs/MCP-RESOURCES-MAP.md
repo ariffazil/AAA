@@ -1,0 +1,1 @@
+/root/AAA/docs/MCP_RESOURCES.md
