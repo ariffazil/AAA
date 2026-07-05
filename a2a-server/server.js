@@ -48,6 +48,7 @@ const {
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
+let redisClient = null;  // early declaration for federatedMemory bootstrap and updateLayer
 
 // === CONFIG ===
 // === AGENT A2A ADAPTER URLs (host network) ===
@@ -655,6 +656,45 @@ const taskStore = {
     return results;
   }
 };
+
+// ZEN FEDERATED MEMORY STATE (AAA COCKPIT — no over-engineer)
+// Memory flows zen way: arifOS kernel (arif_memory) handles L1-L6 + bands.
+// AAA only observes + surfaces as federated state (Redis aaa:federation:memory:*).
+// Integrates into existing task/event/Redis patterns. Canonical via kernel.
+const federatedMemory = {
+  async updateLayer(layer, info) {
+    const key = `aaa:federation:memory:${layer}`;
+    if (redisClient && redisClient.isReady) {
+      await redisClient.hSet(key, { ...info, ts: new Date().toISOString() });
+    }
+  },
+  async getFederatedView() {
+    // simple zen snapshot for cockpit / A2A
+    return {
+      layers: {
+        L1: 'live (redis working/agent state)',
+        L2: 'live (redis session)',
+        L3: 'live (qdrant recall)',
+        L4: 'active (postgres structured)',
+        L5: 'active (graphiti)',
+        L6: 'live sealed (VAULT999)'
+      },
+      flow: 'kernel → L1-6 → AAA state (federated view)',
+      rule: 'no bypass, provenance, bands, 888/F13 for act',
+      wells: {
+        source: 'https://arif-fazil.com/#wells',
+        count: 4,
+        key_entry: 'LEBAH EMAS-1 (2025, 11 reservoirs, new play — PM6/12 30% to EnQuest 2026 as "mature asset"; scar documented as public memory)',
+        L4: 'structured personal portfolio (SOUL surface, siteContent.ts + discoveries.ts)',
+        provenance: 'Arif F13 human record',
+        access: 'via WebMCP get_portfolio_wells on site or federated-memory-query'
+      }
+    };
+  }
+};
+
+// bootstrap zen memory state on start — called after redis init to avoid TDZ / unready client
+// (see listen callback)
 
 // === pushNotificationStore (G3 — added 2026-06-26) ===
 // A2A v1.0.0 push notification config persistence.
@@ -1449,7 +1489,7 @@ function publish(event) {
 
 // === SKILL DETECTION ===
 // Priority: 1. params.skill (explicit A2A skill field)  2. text-based keyword fallback
-const VALID_SKILLS = new Set(['agent-dispatch', 'agent-handoff', 'status-query', 'general']);
+const VALID_SKILLS = new Set(['agent-dispatch', 'agent-handoff', 'status-query', 'general', 'federated-memory-query']);
 
 function detectSkill(text) {
   const lower = text.toLowerCase();
@@ -1878,8 +1918,12 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     case 'status-query':
       responseText = `[AAA Gateway] Status query processed.\nSkill: ${skill}\nQuery: ${userText}`;
       break;
+    case 'federated-memory-query':
+      const memView = await federatedMemory.getFederatedView();
+      responseText = `Federated Memory State (zen view from kernel):\n${JSON.stringify(memView, null, 2)}`;
+      break;
     default:
-      responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query.`;
+      responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query, federated-memory-query.`;
   }
 
   logEvent('999_SEAL', taskId, 'Task completed — sealing to VAULT999');
@@ -2345,6 +2389,12 @@ app.get('/health', async (req, res) => {
     vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED',
     chain,
   });
+});
+
+// zen federated memory state (AAA cockpit — simple view of kernel L1-L6)
+app.get('/federation/memory', async (req, res) => {
+  const view = await federatedMemory.getFederatedView();
+  res.json(view);
 });
 
 app.get('/ready', async (req, res) => {
@@ -3813,7 +3863,6 @@ app.use((req, res) => {
 });
 
 // === ASYNC BACKBONE: Redis + NATS ===
-let redisClient = null;
 let natsConnection = null;
 const sc = StringCodec();
 
@@ -3932,6 +3981,10 @@ app.listen(PORT, "127.0.0.1", async () => {
   console.log(`[AAA A2A] Health: http://localhost:${PORT}/health`);
   console.log(`[AAA A2A] Lifecycle: http://localhost:${PORT}/api/agents/federation-status`);
   await initAsyncBackbone();
+  // bootstrap zen memory snapshots now that redis is ready
+  await federatedMemory.updateLayer('L1', { status: 'live' });
+  await federatedMemory.updateLayer('L6', { status: 'sealed' });
+  await federatedMemory.updateLayer('L4', { wells_portfolio: 'https://arif-fazil.com/#wells (4 entries; LEBAH EMAS-1 scar: 11 reservoirs, new play, PM6/12 EnQuest farm-out 2026 as mature asset; provenance siteContent.ts)' });
   startRetryWorker();
 
   // Auto-register federation organs on startup

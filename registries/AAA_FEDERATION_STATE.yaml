@@ -48,6 +48,66 @@ live_services:
     service: a-forge-mcp.service
     bind: 127.0.0.1
     note: "Dedicated MCP gateway; single streamable-http session, stdio preferred for agents"
+
+# ══════════════════════════════════════════════════════════════
+# SECTION: FEDERATED MEMORY STATE (ZEN FLOW — AAA COCKPIT)
+# ══════════════════════════════════════════════════════════════
+# Memory flows zen: kernel (arif_memory) → L1-L6 → AAA observes + surfaces
+# as federated state. No over-engineer. Single source via arifOS MCP.
+# Agentic memory uses bands, provenance, canonical path. AAA state = live view.
+
+memory_layers:
+  L1_redis_working:
+    engine: redis
+    status: live
+    keys_pattern: aaa:agent:*, federation:*
+    role: current context, agent state, heartbeats
+  L2_session:
+    engine: redis
+    status: live
+    role: thread + personal continuity
+  L3_vector:
+    engine: qdrant
+    status: live
+    collections: arifos_memory, arifos_session_memory, arifos_agent_episodes
+    role: fuzzy recall (not truth)
+  L4_structured:
+    engine: postgres
+    status: active
+    tables: arifosmcp_sessions, arifosmcp_tool_calls, memory_store
+    role: structured record + audit
+  L5_graph:
+    engine: falkordb
+    status: active
+    graphs: arifos, arifos_federation
+    role: relationships + meaning
+  L6_vault:
+    engine: file_append_only
+    status: live
+    path: /root/.local/share/arifos/vault999
+    entries: seal_chain + outcomes
+    role: immutable constitutional truth
+
+  L4_identity_wells:
+    engine: site_surface (SOUL)
+    status: governed_L4
+    source: https://arif-fazil.com/#wells
+    role: personal professional subsurface portfolio record
+    count: 4
+    entries: BEKANTAN-1, PUTERI BASEMENT-1, LEBAH EMAS-1, BUNGA TASBIH-1
+    lebah_scar: '11 reservoirs. New play opened 2025 in written-off area. Block PM6/12 reframed "mature asset"; 30% farmed to EnQuest (2026 US$833M deal). Discovery legacy folded into transaction — footnote in slide decks. Public memory layer with scar.'
+    provenance: siteContent.ts + discoveries.ts (Arif F13 human record)
+    authority_band: identity / personal
+    tier: L4_structured
+    note: 'Canonical human surface. No bypass. Kernel governs queries. Snapshot for federation.'
+
+federated_memory_state:
+  canonical_interface: arif_memory (via arifOS:8088)
+  write_path: kernel only (no bypass)
+  agentic_flow: human_reconstruct → encode_tier → L1-5 → institutional (floors+canonical) → L6 seal → governed act
+  aaa_role: observe + surface federated view (Redis keys + this yaml)
+  last_sync: "2026-07-05"
+  zen_rule: "LLM compresses. Kernel governs. AAA shows the state. FS holds artifacts. VAULT is final."
   aaa:
     port: 3001
     process: node
