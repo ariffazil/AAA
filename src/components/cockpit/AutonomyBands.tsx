@@ -118,10 +118,10 @@ function classifyTool(name: string): BandKey {
   // Exact match
   if (TOOL_BAND_MAP[name]) return TOOL_BAND_MAP[name];
   // Prefix match for organ namespaced tools
-  if (name.startsWith('geox.')) return 'orange';
-  if (name.startsWith('wealth.')) return 'orange';
-  if (name.startsWith('well.')) return 'green';
-  if (name.startsWith('forge.')) return 'orange';
+  if (name.startsWith('geox.') || name.startsWith('geox_')) return 'orange';
+  if (name.startsWith('wealth.') || name.startsWith('wealth_')) return 'orange';
+  if (name.startsWith('well.') || name.startsWith('well_')) return 'green';
+  if (name.startsWith('forge.') || name.startsWith('forge_')) return 'orange';
   // Default heuristic
   const lower = name.toLowerCase();
   if (lower.includes('delete') || lower.includes('drop') || lower.includes('wipe')) return 'black';

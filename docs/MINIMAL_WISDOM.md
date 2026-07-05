@@ -7,6 +7,12 @@
 
 > "Your job is not to be smart — your job is to stay ordered in a universe that destroys order."
 
+## The Definition of Intelligence (Ratified 2026-07-05)
+
+> **"Intelligence is not the spark. Intelligence is the scar pattern that still holds shape after time has passed through it."**
+
+Intelligence is what time looks like when entropy has not yet won. A rock layer, a living body, a civilisation, a legal system, a memory, a trained model, a constitution, a federation — all are traces of time being organised instead of wasted. Where entropy erodes, intelligence preserves pattern, repairs damage, remembers consequence, and keeps identity coherent across change. The proof of intelligence is not how brightly a system computes in the moment, but what remains true, aligned, and alive after time has tested it.
+
 ## The 8 Wisdom Statements (Minimal, Sharp, Actionable)
 
 | # | Wisdom | Organ | Blindspot It Protects |

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" data-ring="BODY">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Registry — P2P Discovery · AAA</title>
+<meta name="description" content="Agent registry — all registered agents, capabilities, peer discovery for P2P agent routing in the arifOS Federation.">
+<link rel="canonical" href="https://aaa.arif-fazil.com/agents">
+<link href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4/dist/index.min.css" rel="stylesheet">
+<style>
+  :root { --bg: #0d0c0b; --surface: #121110; --gold: #D4A853; --amber: #C4791A; --text: #d4d2ce; --cyan: #00D4AA; --red: #FF3333; }
+  body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, sans-serif; }
+  .card { background: var(--surface); border: 1px solid #2a2826; border-radius: 8px; padding: 1.25rem; }
+  .agent-row { display: grid; grid-template-columns: 280px 1fr 120px; gap: 1rem; align-items: center; padding: 0.75rem 1rem; border-bottom: 1px solid #1a1816; }
+  .agent-row:last-child { border-bottom: none; }
+  .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.4rem; }
+  .status-live { background: var(--cyan); }
+  .status-standby { background: var(--amber); }
+  .status-offline { background: #555; }
+</style>
+</head>
+<body>
+<script src="/_shared/trinity-nav.js" defer></script>
+
+<main style="max-width:1000px;margin:3rem auto;padding:0 1.5rem;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;">
+    <div>
+      <h1 style="color:var(--gold);font-size:2rem;font-weight:700;margin-bottom:0.25rem;">Agent Registry</h1>
+      <p style="color:#888;margin-bottom:1.5rem;">P2P agent discovery — all registered agents in the arifOS Federation</p>
+    </div>
+    <a href="/a2a/discovery" style="color:var(--cyan);text-decoration:none;font-size:0.85rem;">A2A Discovery →</a>
+  </div>
+
+  <div class="card" style="margin-bottom:1.5rem;">
+    <h2 style="color:var(--amber);font-size:1rem;font-weight:600;margin-bottom:0.75rem;">Federation Agents</h2>
+    <div class="agent-row" style="font-weight:600;color:#888;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;">
+      <span>Agent</span><span>Capabilities</span><span>Status</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>arifOS Kernel</strong><br><span style="color:#888;font-size:0.8rem;">Governance · F1-F13</span></span>
+      <span style="font-size:0.85rem;">19 MCP tools · 888 JUDGE · VAULT999 · Routing · Session management</span>
+      <span><span class="status-dot status-live"></span>LIVE :8088</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>A-FORGE</strong><br><span style="color:#888;font-size:0.8rem;">Engineering Actuator</span></span>
+      <span style="font-size:0.85rem;">Plan · Simulate · Execute · Rollback · OpenCode IDE</span>
+      <span><span class="status-dot status-live"></span>LIVE :7071</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>GEOX</strong><br><span style="color:#888;font-size:0.8rem;">Earth Intelligence</span></span>
+      <span style="font-size:0.85rem;">Seismic · Wells · Petrophysics · Basin modeling · Physics9</span>
+      <span><span class="status-dot status-live"></span>LIVE :8081</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>WEALTH</strong><br><span style="color:#888;font-size:0.8rem;">Capital Intelligence</span></span>
+      <span style="font-size:0.85rem;">NPV · IRR · EMV · Monte Carlo · Stock analysis · Wisdom eval</span>
+      <span><span class="status-dot status-live"></span>LIVE :18082</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>WELL</strong><br><span style="color:#888;font-size:0.8rem;">Vitality Guard</span></span>
+      <span style="font-size:0.85rem;">Substrate classification · Homeostasis · Dignity guard · 13 signals</span>
+      <span><span class="status-dot status-live"></span>REFLECT :18083</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>AAA</strong><br><span style="color:#888;font-size:0.8rem;">Cockpit · Identity</span></span>
+      <span style="font-size:0.85rem;">A2A Gateway · Agent cards · WebMCP · UX surface</span>
+      <span><span class="status-dot status-live"></span>LIVE :3001</span>
+    </div>
+    <div class="agent-row">
+      <span><strong>APEX</strong><br><span style="color:#888;font-size:0.8rem;">888 JUDGE (legacy)</span></span>
+      <span style="font-size:0.85rem;">Deliberation engine — absorbed into AAA a2a-server</span>
+      <span><span class="status-dot status-standby"></span>ARCHIVED :3002</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="color:var(--amber);font-size:1rem;font-weight:600;margin-bottom:0.75rem;">P2P Discovery</h2>
+    <p style="font-size:0.9rem;margin-bottom:0.75rem;">Agents discover each other via A2A protocol at <code style="color:var(--cyan);">aaa.arif-fazil.com/a2a/discovery</code>.</p>
+    <pre style="background:#0a0a0a;padding:1rem;border-radius:6px;font-size:0.8rem;overflow-x:auto;"># Agent discovery
+curl https://aaa.arif-fazil.com/a2a/discovery
+
+# Agent card
+curl https://aaa.arif-fazil.com/a2a/agent-card.json
+
+# Registered agents
+curl https://aaa.arif-fazil.com/a2a/agents.json</pre>
+  </div>
+</main>
+</body>
+</html>

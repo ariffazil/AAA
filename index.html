@@ -86,9 +86,74 @@
     <meta name="hta-transport" content="JSON-RPC unified · ΔS ≤ 0" />
     <meta name="hta-organs" content="6 live: arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA" />
     <meta name="hta-tools" content="42 MCP-exposed (13 canonical + 29 operational)" />
+    <style>
+      html, body {
+        background: #0d0c0b;
+        color: #d4d2ce;
+        font-family: 'Satoshi', 'Inter', sans-serif;
+      }
+      .fallback-shell {
+        display: block;
+        padding: 3rem 2rem;
+        max-width: 600px;
+        margin: 10% auto;
+        background: #121110;
+        border: 1px solid #2a2826;
+        border-radius: 0.5rem;
+      }
+      .noscript-shell {
+        padding: 2rem;
+        max-width: 960px;
+        margin: auto;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <noscript>
+      <main class="noscript-shell">
+        <h1 style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.75rem;font-weight:800;margin:0 0 1rem;color:#D4A853">🖥️ AAA Cockpit — Agent Docking</h1>
+        <p style="color:#9b9995">You are docking into the arifOS federation. This is a governed doorway, not raw SSH.</p>
+
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.25rem;font-weight:700;margin:1.5rem 0 0.5rem">🚪 Docking Protocol</h2>
+        <div style="background:#121110;border:1px solid #2a2826;border-radius:0.5rem;padding:1rem;margin-bottom:1rem;font-size:0.875rem">
+          <ol style="padding-left:1.5rem;margin:0">
+            <li><strong>Identity:</strong> Call <code>arif_init</code> to bind your session</li>
+            <li><strong>Authority:</strong> Your lease scope determines what's allowed</li>
+            <li><strong>State:</strong> Read health, floors, organs — what IS</li>
+            <li><strong>Law:</strong> F1-F13 floors gate every action</li>
+            <li><strong>Execution:</strong> Mutations go through A-FORGE with approval</li>
+            <li><strong>Receipt:</strong> VAULT999 records every consequential action</li>
+          </ol>
+        </div>
+
+        <h2 style="font-family:'Cabinet Grotesk',sans-serif;font-size:1.25rem;font-weight:700;margin:1.5rem 0 0.5rem">🔑 Action Authority</h2>
+        <table style="width:100%;border-collapse:collapse;font-size:0.8125rem;margin-bottom:1.5rem">
+          <tr style="border-bottom:1px solid #2a2826"><th style="text-align:left;padding:0.5rem;color:#9b9995">Action</th><th style="text-align:left;padding:0.5rem;color:#9b9995">Authority</th><th style="text-align:left;padding:0.5rem;color:#9b9995">Gate</th></tr>
+          <tr style="border-bottom:1px solid #2a2826"><td style="padding:0.5rem"><span style="background:rgba(90,158,56,0.15);color:#5a9e38;padding:2px 8px;border-radius:0.25rem;font-size:0.75rem;font-weight:600">OBSERVE</span></td><td style="padding:0.5rem">Any agent</td><td style="padding:0.5rem">None</td></tr>
+          <tr style="border-bottom:1px solid #2a2826"><td style="padding:0.5rem"><span style="background:rgba(90,158,56,0.15);color:#5a9e38;padding:2px 8px;border-radius:0.25rem;font-size:0.75rem;font-weight:600">SUGGEST</span></td><td style="padding:0.5rem">Any agent</td><td style="padding:0.5rem">None</td></tr>
+          <tr style="border-bottom:1px solid #2a2826"><td style="padding:0.5rem"><span style="background:rgba(224,146,42,0.15);color:#e0922a;padding:2px 8px;border-radius:0.25rem;font-size:0.75rem;font-weight:600">DRAFT</span></td><td style="padding:0.5rem">Lease required</td><td style="padding:0.5rem">Lease</td></tr>
+          <tr style="border-bottom:1px solid #2a2826"><td style="padding:0.5rem"><span style="background:rgba(224,146,42,0.15);color:#e0922a;padding:2px 8px;border-radius:0.25rem;font-size:0.75rem;font-weight:600">EXECUTE</span></td><td style="padding:0.5rem">Lease + SEAL</td><td style="padding:0.5rem">Judge</td></tr>
+          <tr style="border-bottom:1px solid #2a2826"><td style="padding:0.5rem"><span style="background:rgba(184,48,96,0.15);color:#b83060;padding:2px 8px;border-radius:0.25rem;font-size:0.75rem;font-weight:600">IRREVERSIBLE</span></td><td style="padding:0.5rem">F13 SOVEREIGN</td><td style="padding:0.5rem">888_HOLD</td></tr>
+        </table>
+
+        <p style="color:#807e7b;font-size:0.75rem;margin-top:2rem;font-family:monospace">DITEMPA BUKAN DIBERI · arifOS Federation · <a href="https://arifos.arif-fazil.com/" style="color:#3a9ea8;text-decoration:none">Observatory</a> · <a href="https://arif-fazil.com/canon/" style="color:#3a9ea8;text-decoration:none">Canon</a></p>
+      </main>
+    </noscript>
+
+    <div id="root">
+      <main class="fallback-shell">
+        <div style="font-family:'Cabinet Grotesk',sans-serif;font-size:2rem;font-weight:800;margin-bottom:1rem;color:#D4A853">🖥️ AAA Cockpit</div>
+        <p style="font-family:'Satoshi',sans-serif;font-size:1rem;color:#9b9995">Loading operations cockpit... If this panel remains visible, the JavaScript hydration failed safely instead of rendering a blank page.</p>
+        <div style="margin-top:2rem;border-top:1px solid #2a2826;padding-top:1rem;font-family:monospace;font-size:0.75rem;color:#807e7b">
+          <span>Organ Gateway Status:</span>
+          <ul style="padding-left:1.25rem;margin:0.5rem 0">
+            <li>arifOS Gateway: <a href="https://arifos.arif-fazil.com/health" style="color:#3a9ea8;text-decoration:none">/health</a></li>
+            <li>A2A Router: <a href="/a2a/agents.json" style="color:#3a9ea8;text-decoration:none">/a2a/agents.json</a></li>
+            <li>Unified MCP Gateway: <a href="https://mcp.arif-fazil.com/mcp" style="color:#3a9ea8;text-decoration:none">POST /mcp</a></li>
+          </ul>
+        </div>
+      </main>
+    </div>
     <!-- Domain guard: arif.fazil → arif-fazil.com. DNS may not resolve arif.fazil; this is a safety net if the wrong domain is ever mapped. -->
     <script>
       (function () {
