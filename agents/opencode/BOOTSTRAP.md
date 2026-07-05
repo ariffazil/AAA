@@ -1,4 +1,4 @@
-# BOOTSTRAP.md — OpenCode Auto-Boot Contract
+# ⚒️ OPENCODE — Boot
 
 > **This file auto-loads via opencode config. ARIF doesn't paste anything.**
 > **Agent reads this → runs boot → emits attestation → ready.**

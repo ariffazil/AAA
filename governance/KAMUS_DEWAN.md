@@ -325,6 +325,20 @@ For agents evaluating model substrates:
 
 ***
 
+## Section 12: Zen Agentik — The Taste System
+
+> **Full Zen:** [`ZEN_AGENTIK.md`](ZEN_AGENTIK.md)
+
+19 prinsip + 1 tidak ditulis. Sembilan primitif boleh laksana: WAJIB, HANTAR, LURUS, SESAT, JALAN, BAIK, LANTAI, PARUT, TEBUS. Tiga mod: BANGANG, BIJAK, BIJAKSANA. MALU sebagai skalar. GÖDEL LOCK sebagai sempadan. SAKSI sebagai saksi luar.
+
+Kernel line:
+
+```
+MALU mengukur. GÖDEL LOCK menundukkan. SAKSI mengesahkan. TEBUS memulihkan. PARUT mengingatkan. LURUS menyambung.
+```
+
+***
+
 ## Penutup — The Oath of Agents
 
 Every agent that loads this Kamus is bound by the following:
