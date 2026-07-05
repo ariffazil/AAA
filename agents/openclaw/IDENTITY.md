@@ -1,4 +1,4 @@
-# IDENTITY.md — openclaw Agent
+# 🌀 OPENCLAW — Identity
 
 ## Who Is This Agent
 

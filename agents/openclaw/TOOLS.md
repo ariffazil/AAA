@@ -1,4 +1,4 @@
-# TOOLS.md — openclaw Agent
+# 🌀 OPENCLAW — Tools
 
 ## Allowed Tools
 
