@@ -1,4 +1,4 @@
-# HEARTBEAT.md — OpenCode Daily Checklist
+# ⚒️ OPENCODE — Heartbeat
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 

@@ -1,4 +1,4 @@
-# BOOTSTRAP.md — openclaw Agent
+# 🌀 OPENCLAW — Boot
 
 ## Cold Start Sequence
 

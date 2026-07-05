@@ -1,4 +1,4 @@
-# TOOLS.md — Hermes ASI Agent
+# 📡 HERMES — Tools
 
 ## Active Toolsets (17)
 

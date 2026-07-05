@@ -1,4 +1,4 @@
-# BOOTSTRAP.md — Hermes ASI Agent
+# 📡 HERMES — Boot
 
 ## Cold Start Sequence
 
