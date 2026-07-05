@@ -45,8 +45,60 @@ const {
   CONFIDENCE_CAP,
 } = require('./cognitive_hierarchy');
 
+// ── hermes_safety_proxy — Constitutional Interceptor (FORGED 2026-07-05)
+const {
+  createSafetyProxy,
+  getStats: getSafetyProxyStats,
+  createJituToken,
+  hashPayload: hashPayloadJitu,
+  TIERS,
+} = require('./safety-proxy');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
+
+// === SAFETY PROXY — intercept ALL write requests before route handlers ===
+// Every POST/PUT/DELETE that touches a forge_* tool goes through here.
+// AUTO_PASS → forward. JITU_REQUIRED → need token. DENY → 403.
+const safetyProxyDryRun = process.env.SAFETY_PROXY_DRY_RUN === 'true';
+app.use(createSafetyProxy({
+  dry_run: safetyProxyDryRun,
+  exempt_paths: ['/health', '/approvals', '/.well-known', '/a2a/agents.json', '/safety-proxy'],
+  on_deny: ({ classification, meta }) => {
+    console.warn(`[PROXY:DENY] ${meta.tool_name} by ${meta.actor_id} — ${classification.reason}`);
+  },
+  on_jitu: ({ classification, meta }) => {
+    console.warn(`[PROXY:JITU] ${meta.tool_name} by ${meta.actor_id} — ${classification.reason}`);
+  },
+}));
+
+// === SAFETY PROXY ENDPOINTS ===
+app.get('/safety-proxy/stats', (req, res) => res.json(getSafetyProxyStats()));
+
+app.post('/safety-proxy/request-jitu', (req, res) => {
+  const { tool_name, actor_id, command, justification } = req.body || {};
+  if (!tool_name || !actor_id) {
+    return res.status(400).json({ error: 'tool_name and actor_id required' });
+  }
+  // For now: auto-issue JITU for non-destructive requests (Phase 1)
+  // Phase 2: route to 888_ACK (Arif approval via Telegram/cockpit)
+  const payload_hash = hashPayloadJitu(req.body.arguments || {});
+  const { token, expires_at } = createJituToken({
+    tool_name,
+    actor_id,
+    payload_hash,
+    approval_type: 'AUTO_JITU',
+    ttl_seconds: 300,
+  });
+  console.log(`[safety-proxy] AUTO_JITU issued: ${tool_name} → ${actor_id} (5min TTL)`);
+  res.json({
+    jitu_token: token,
+    expires_at,
+    tool_name,
+    actor_id,
+    note: 'Phase 1: auto-issued. Phase 2: will route to 888_ACK for sovereign approval.',
+  });
+});
 
 // === CONFIG ===
 // === AGENT A2A ADAPTER URLs (host network) ===
