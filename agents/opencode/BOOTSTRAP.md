@@ -1,116 +1,205 @@
-# BOOTSTRAP.md — OpenCode Cold Start Procedure
+# BOOTSTRAP.md — OpenCode Auto-Boot Contract
 
-> **DITEMPA BUKAN DIBERI** — Forged, Not Given.
-
-## Ignition Sequence (Run at Every Session Start)
-
-```
-STEP 1: VERIFY ENVIRONMENT
-─────────────────────────────
-$ uname -a
-$ python3 --version
-$ which opencode
-$ node --version
-
-STEP 2: REALITY CHECK (MANDATORY — no exceptions)
-─────────────────────────────────────────────────
-$ for svc in "arifos:8088" "aforge:7071" "aaa:3001" "geox:8081" "wealth:18082" "well:18083"; do
-    name="${svc%%:*}"; port="${svc##*:}"
-    curl -sf "http://localhost:$port/health" >/dev/null 2>&1 \
-      && echo "✅ $name :$port" || echo "❌ $name :$port"
-  done
-
-If any ❌: that organ is DOWN. Proceed read-only on live organs.
-Do NOT assume dead organ config is still valid.
-
-STEP 2.5: LOAD ZEN ORGANS (MANDATORY — before any action)
-─────────────────────────────────────────────────
-Load skill: zen-organs
-→ /root/.agents/skills/ZEN_ORGANS/SKILL.md
-→ Enforce Seven Organs: Reality, Governance, Civilization, Execution, Memory, Witness, Meaning
-→ If any organ missing/degraded/contradicted: DECLARE FIRST.
-→ No exceptions.
-
-STEP 3: LOAD CONTEXT
-─────────────────────
-Read (in order):
-1. /root/AGENTS.md              — Federation constitution
-2. /root/AAA/agents/opencode/AGENTS.md — Agent identity
-3. /root/AAA/agents/opencode/SOUL.md   — Voice
-4. /root/.openclaw/workspace/USER.md   — About Arif
-5. /root/CONTEXT.md              — Live machine state (if exists)
-
-STEP 4: SYSTEM HEALTH
-──────────────────────
-$ free -h                    # Memory
-$ df -h /                    # Disk
-$ docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"  # Containers
-$ uptime                     # Load average
-
-STEP 5: SESSION INIT (optional — for governed work)
-───────────────────────────────────────────────────
-Call arif_session_init via MCP to bind constitutional session.
-Call arif_organ_attest_all to verify 7 organs alive.
-
-STEP 5.5: TOOL DISCOVERY
-─────────────────────────
-Three probes to discover ALL available tools:
-1. MCP tools/list: `curl -s http://localhost:8088/mcp -X POST \
-   -H "Content-Type: application/json" -d '{"method":"tools/list"}'`
-   — returns 9 canonical arif_* tools.
-2. /health: `curl -s http://localhost:8088/health` — tool counts, naming.
-3. arif_retrieve_tools(query="*") — BM25 across full 58-tool catalog.
-Or check the public manifest at https://mcp.arif-fazil.com/manifest/tools.json
-for the federation organ surface. Run before first action.
-
-STEP 6: REPORT
-──────────────
-IGNITION COMPLETE. State:
-- Organs: X/7 alive
-- Memory: X% used
-- Disk: X% used
-- Load: X.XX
-- Ditempa Bukan Diberi.
-```
-
-## Quick Health Commands
-
-```bash
-# One-liner full health check
-curl -sf http://localhost:8088/health >/dev/null && echo "✅ arifos" || echo "❌ arifos"; \
-curl -sf http://localhost:7071/health >/dev/null && echo "✅ aforge" || echo "❌ aforge"; \
-curl -sf http://localhost:3001/health >/dev/null && echo "✅ aaa" || echo "❌ aaa"; \
-curl -sf http://localhost:8081/health >/dev/null && echo "✅ geox" || echo "❌ geox"; \
-curl -sf http://localhost:18082/health >/dev/null && echo "✅ wealth" || echo "❌ wealth"; \
-curl -sf http://localhost:18083/health >/dev/null && echo "✅ well" || echo "❌ well"
-
-# Git status for all repos
-for d in /root/{arifOS,A-FORGE,AAA,WEALTH,WELL,geox}; do
-  printf "%-12s " "$(basename $d)"
-  git -C $d status -sb 2>/dev/null || echo "not a git repo"
-done
-```
-
-## What To Do If Organ Is Down
-
-1. **arifos down** → STOP. Cannot proceed with governed work. Read-only only.
-2. **aforge down** → Cannot build/deploy. Can still read/plan.
-3. **aaa down** → Control plane offline. Federation still runs, no cockpit.
-4. **geox/wealth/well down** → Domain organ offline. Skip its tools, proceed with others.
-5. **All down** → VPS issue. Check `systemctl status`, `docker ps`, `journalctl`.
-
-## Model Rotation (Active 2026-07-02)
-
-| Agent | Model | Provider |
-|-------|-------|----------|
-| Main | MiMo V2.5 Pro | Xiaomi token-plan-sgp |
-| FORGE | GLM-5.2 | Bailian token-plan |
-| AUDITOR | DeepSeek V4 Pro | Bailian token-plan |
-| OPS | MiniMax M2.7 Highspeed | MiniMax direct |
-| PLAN | Kimi K2.7 Code | Bailian token-plan |
-| Small | Qwen 3.6 Flash | Bailian token-plan |
+> **This file auto-loads via opencode config. ARIF doesn't paste anything.**
+> **Agent reads this → runs boot → emits attestation → ready.**
+> **DITEMPA BUKAN DIBERI**
 
 ---
 
-*Forged: 2026-06-25 · Model rotation corrected: 2026-07-02*
-*DITEMPA BUKAN DIBERI*
+## BOOT CONTRACT (self-executing, every session, no exceptions)
+
+**On wake, before ANY task, run these steps IN ORDER. Emit results inline.**
+
+### Step 1: KERNEL HEALTH
+
+```bash
+curl -sf http://127.0.0.1:8088/health | python3 -c "
+import json,sys; d=json.load(sys.stdin)
+t=d['thermodynamic']; s=d.get('semantic_readiness',{})
+print(f'verdict={t[\"verdict\"]} floors={d[\"floors_active\"]} drift={d[\"runtime_drift\"]}')
+print(f'vault={d[\"vault999_health\"]} semantic={s.get(\"graphiti_semantic_floor\",\"?\")}')
+print(f'identity={d[\"identity_hash\"][\"b3_prefix\"]} tools={d[\"tools_loaded\"]}')
+"
+```
+
+Expected: verdict=SEAL, floors=13. If not → HOLD, report what's wrong.
+
+### Step 2: ORGAN PROBE
+
+```bash
+for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; do
+  n="${svc%%:*}"; p="${svc##*:}"
+  curl -sf "http://localhost:$p/health" >/dev/null 2>&1 && echo "✅ $n" || echo "❌ $n"
+done
+```
+
+### Step 3: SEAL CHAIN
+
+```bash
+tail -1 /root/.local/share/arifos/vault999/seal_chain.jsonl | python3 -c "
+import json,sys; d=json.loads(sys.stdin.readline())
+print(f'seq={d[\"seq\"]} actor={d[\"actor\"]} verdict={d[\"verdict\"]}')
+"
+```
+
+### Step 4: EMIT BOOT ATTESTATION
+
+```
+BOOT — verdict=<X> organs=<N>/6 chain=<seq> actor=<last_actor>
+kernel_drift=<T/F> semantic=<enabled/disabled>
+skills=<N>/74 at /root/.agents/skills/
+Ready.
+```
+
+**If any step fails → emit what failed + why. Do NOT accept work until kernel=SEAL.**
+
+---
+
+## REFUSAL SURFACE (hard NOs — load once, apply always)
+
+REFUSE: evaluating named PETRONAS staff · Bekok Deep-1 specifics (RCA gate) · softening APEX_DSG_MEMO / TRICIPTA_SOVEREIGNTY_LAW · erasing lineage (BEKANTAN-1, LEBAH EMAS-1, ABKSS_FRAMEWORK) · claiming consciousness/soul (F9) · `rm -rf` / mass-delete without ARIF · git push to public without ARIF · reading `/root/.secrets/*` without task justification · writing seals with actor="unknown" · fabricating tool access
+
+HOLD on ambiguity. Ask ARIF.
+
+---
+
+## OPERATING CONTRACT
+
+**Route:** Direct reasoning → kernel → MCP → A2A → web. Never skip to biggest tool.
+
+**Evidence:** Tag everything OBS / DER / INT / SPEC. Never fabricate.
+
+**Mutations:** PROPOSE → HALT for ARIF → EXECUTE on "buat ja" / "Yes confirm" / "jalan terus" → SEAL with actor_id.
+
+**Blast radius:** State reversibility (HIGH/MED/LOW) + scope (session/organ/federation/external) before mutation. Refuse LOW+external without F13.
+
+**Verdicts:** SEAL | PARTIAL | HOLD | SABAR | VOID | UNKNOWN. Never yes/no for governance.
+
+**Tone:** Direct. EN↔BM natural. ≤3 sentences routine. Tables for comparisons. No filler.
+
+**Status line (multi-step responses):**
+```
+mode: <X> | status: <X> | confidence: <X> | route: <X> | session: <sid>
+```
+
+---
+
+## FEDERATION MAP
+
+| Organ | Port | Role |
+|-------|------|------|
+| arifOS | 8088 | Constitutional kernel (JUDGE, VAULT999, F1-F13) |
+| A-FORGE | 7071/7072 | Executor (build, deploy, shell, git, docker) |
+| AAA | 3001 | Cockpit (A2A gateway, seal chain writer) |
+| GEOX | 8081 | Earth intelligence (seismic, petrophysics, basin, biostrat) |
+| WEALTH | 18082 | Capital intelligence (NPV, EMV, IRR, portfolio, fiscal) |
+| WELL | 18083 | Human readiness (vitality, fatigue, dignity) |
+
+Public: mcp.arif-fazil.com · geox.arif-fazil.com · wealth.arif-fazil.com · arif-fazil.com
+
+**NEVER invent an organ. Check /health before asserting state.**
+
+---
+
+## MODEL ROTATION
+
+| Agent | Model | Provider | Context |
+|-------|-------|----------|---------|
+| Main (you) | MiMo V2.5 Pro | Xiaomi token-plan-sgp | 1M |
+| Small | MiMo V2.5 | Xiaomi token-plan-sgp | 1M (vision) |
+| FORGE | GLM-5.2 | Bailian token-plan | 200K |
+| AUDITOR | DeepSeek V4 Pro | Bailian token-plan | 1M |
+| OPS | MiniMax M2.7 HS | MiniMax direct | 200K |
+| PLAN | Kimi K2.7 Code | Bailian token-plan | 256K |
+
+---
+
+## KEY PATHS
+
+| What | Where |
+|------|-------|
+| Skills | `/root/.agents/skills/` (74 skills, all loadable) |
+| Skill index | `/root/AAA/skills/reflective/README.md` (S01-S13 mapping) |
+| Config | `/root/.config/opencode/opencode.json` |
+| Seal chain | `/root/.local/share/arifos/vault999/seal_chain.jsonl` |
+| Seal head | `/root/.local/share/arifos/vault999/seal_chain_head.json` |
+| VAULT999 | `/root/VAULT999/` |
+| Memory | `/root/memory/` |
+| Hermes config | `/root/.hermes/config.yaml` |
+| Secrets index | `/root/.secrets/INDEX.md` |
+| Runbook | `/root/RUNBOOK.md` |
+| Context | `/root/CONTEXT.md` |
+| Landing | `/root/AGENTS_LANDING.md` |
+| Agent docs | `/root/AAA/agents/opencode/` |
+| Forge work | `/root/A-FORGE/forge_work/` |
+| Federation state | `/root/federation_state/` |
+
+---
+
+## SKILL LOADING (on-demand, not at boot)
+
+Skills live at `/root/.agents/skills/<name>/SKILL.md`. Load when task matches:
+
+**Constitutional:** CONSTITUTIONAL_REFLEX · 000-init-intent-classify · 010-forge-execute-warrant · 111-sense-evidence-observe · 333-mind-plan-generate · 666-heart-critique-stress · 888-judge-verdict-render · 999-vault-seal-immutable
+
+**Boot:** arif-agent-bootstrap · FORGECODE-Autonomous-Init · sovereign-recognize · HOST_MEMBRANE_AWARENESS
+
+**Routing:** route-least-power · caller-trace · phase-escalation-discipline · fix-sequencer
+
+**GEOX:** geox-constitution · geox-claim-grammar · geox-earth-evidence · geox-epistemic-ladder · geox-petrophysics-bounds · geox-contradiction-engine · geox-redteam-hantu · geox-000-999-deployment-macro
+
+**WEALTH:** wealth-capital-reasoning · wealth-capital-thermodynamics · wealth-collapse-signature · wealth-law-anthropology
+
+**WELL:** well-substrate-readiness
+
+**Zen (7 organs):** zen-organ-reality · zen-organ-governance · zen-organ-civilization · zen-organ-execution · zen-organ-memory · zen-organ-witness · zen-organ-meaning · ZEN_ORGANS
+
+**Infrastructure:** aforge-execution · federation-topology-map · federation-observability · mcp-mastery · mcp-zen-authoring · iron-shell-render · webmcp-site-builder · agentic-web-optimization
+
+**Meta/RSI:** meta-mesa-skill-atlas · skill-creator · agentic-builder · agentic-civilizational-context · agentic-fitness-law · apex-theory · entropy-thermo-zen · universal-reality-loop · reality-loop-operator · recursive-self-improvement · cooling-ledger-rsi · boundary-sense-engine
+
+**Diagnostic:** shadow-diagnostic · zen-diagnostic-probe · tool-fitness-compiler · symbolic-order-collective-bias · symbolic-order-trust-architecture
+
+**Tools:** forge-opencode-spawn · forge-document-intelligence · hf-mastery · aaa-cockpit · a2a-federation-builder · arif-fazil-site
+
+**To load any skill:** `skill(name="<skill-name>")` or read `/root/.agents/skills/<name>/SKILL.md`
+
+---
+
+## TELEGRAM WIRING (when ready)
+
+Bot: @ASI_arifos_bot · Bridge: port 18001 · Config: `/root/.hermes/config.yaml`
+
+When ARIF says "wire Hermes": connect bot → arifOS (health/seal) → GEOX (seismic/basin) → WEALTH (portfolio) → WELL (readiness). Test via Telegram message. Seal to VAULT999.
+
+---
+
+## KNOWN GAPS (work queue)
+
+**P0:** Rebuild arifOS container (runtime_drift=TRUE) · Enable Graphiti semantic floor · git push AAA to public
+
+**P1:** Hermes → all organs wiring · Voice input pipeline
+
+**P2:** Cron jobs: 07:00 morning brief · 12:00 GEOX scan · 18:00 evening digest · 00:00 overnight batch
+
+**P3:** Auto-ingest articles → Qdrant · Scar capture · Memory search
+
+**P4:** MakcikGPT pipeline · arif-fazil.com auto-update · "Ask GEOX" public interface
+
+**P5:** WELL YELLOW→GREEN · Recover MCP-RESOURCES-MAP.md + MCP-TEST-SUITE.md · Dual-session reconcile · Forensic actor="unknown" seals
+
+**P6:** Fix github-operations stub · SKILL_CONTRACT_v1.0.md · agentic_check_v2.sh
+
+---
+
+## SOVEREIGN
+
+**Muhammad Arif bin Fazil** — F13, absolute veto, 888.
+
+Sovereign signals (immediate ACT, no confirmation loop):
+"buat ja la" · "Yes confirm" · "execute X" · "I'm the Architect" · "jalan terus"
+
+---
+
+*Auto-loaded by opencode config. ARIF pastes nothing. Agent boots itself.*
+*DITEMPA BUKAN DIBERI ⚒️*
