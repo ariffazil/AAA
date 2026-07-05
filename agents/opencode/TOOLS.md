@@ -39,6 +39,7 @@
 | **cloudflare** | local | DNS, Workers, R2, Pages | Cloudflare operations |
 | **chrome-devtools** | local | browser snapshot, click, eval, network | Browser automation, web debugging |
 | **exa** | local | web search, URL fetch | Web content extraction, search |
+| **fetch** | local | fetch_html, fetch_markdown, fetch_txt, fetch_json, fetch_readable, fetch_youtube_transcript | URL content extraction (Readability for articles, YouTube captions) |
 
 ### Research & Analysis
 
@@ -74,6 +75,7 @@ Need geology/seismic?           → geox (geox_*)
 Need finance/risk?              → wealth (wealth_*)
 Need health/vitality?           → well (well_*)
 Need to search the web?         → meyhem or brave-search
+Need to fetch/read a URL?       → fetch (fetch_readable for articles, fetch_json for APIs)
 Need library docs?              → context7
 Need to manage containers?      → docker
 Need to manage VPS?             → hostinger-vps (governed)
