@@ -1,6 +1,7 @@
-# AGENTS.md — Hermes ASI · Operational Protocol
+# 📡 HERMES
 
 > Canonical: see `/root/AAA/agents/hermes-asi/IDENTITY.md` for who/what/why.
+> Sigil + ALLCAPS term per zen-md doctrine. Single lexical unit.
 > This file is **ops-only**: how Hermes runs daily, no identity doctrine.
 
 ## Boot Sequence

@@ -1,4 +1,4 @@
-# OpenCode — 333-AGI Forge Worker
+# ⚒️ OPENCODE
 
 > **One file. One identity. One agent.**
 > Tier: AGI | Class: C2 | Lane: 333-THINK → execute
