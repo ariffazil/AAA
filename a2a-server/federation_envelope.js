@@ -21,6 +21,107 @@ const RISK_TIERS = ['T0', 'T1', 'T2', 'T3', 'T4', 'T5'];
 const ACTION_CLASSES = ['OBSERVE', 'PREPARE', 'MUTATE', 'ATOMIC'];
 const AUTHORITY_SOURCES = ['token', 'session', 'delegated', 'human_888', 'fallback', 'unknown'];
 
+// ── Explorer Dependency Registry (forged 2026-07-06) ───────────────
+// Maps each explorer tool to its dependencies. Before an explorer can
+// run, its parent explorers must have produced sealed outputs.
+// Format: explorer_id → { depends_on: [{explorer_id, required_signals}], produces: [signal_types] }
+const EXPLORER_DEPENDENCIES = {
+  'geox_seismic_explorer': {
+    depends_on: [],
+    produces: ['subsurface_model', 'seismic_interpretation', 'velocity_model'],
+  },
+  'geox_well_explorer': {
+    depends_on: [],
+    produces: ['well_log_qc', 'formation_top', 'petrophysical_evaluation'],
+  },
+  'geox_stratigraphy_explorer': {
+    depends_on: [
+      { explorer_id: 'geox_well_explorer', required_signals: ['formation_top'] },
+    ],
+    produces: ['biostrat_age', 'stratigraphic_correlation', 'contradiction_report'],
+  },
+  'geox_basin_explorer': {
+    depends_on: [
+      { explorer_id: 'geox_seismic_explorer', required_signals: ['subsurface_model'] },
+      { explorer_id: 'geox_stratigraphy_explorer', required_signals: ['stratigraphic_correlation'] },
+    ],
+    produces: ['prospect_volume', 'pos_geological', 'play_fairway'],
+  },
+  'wealth_capital_explorer': {
+    depends_on: [
+      { explorer_id: 'geox_basin_explorer', required_signals: ['prospect_volume', 'pos_geological'] },
+    ],
+    produces: ['npv', 'capital_stress', 'portfolio_risk'],
+  },
+  'wealth_scenario_explorer': {
+    depends_on: [
+      { explorer_id: 'wealth_capital_explorer', required_signals: ['npv', 'capital_stress'] },
+    ],
+    produces: ['fiscal_breakeven', 'market_scenario', 'sensitivity_analysis'],
+  },
+  'wealth_risk_explorer': {
+    depends_on: [
+      { explorer_id: 'wealth_capital_explorer', required_signals: ['portfolio_risk'] },
+      { explorer_id: 'geox_basin_explorer', required_signals: ['pos_geological'] },
+    ],
+    produces: ['collapse_signature', 'risk_asymmetry', 'tripwire_alert'],
+  },
+  'well_substrate_explorer': {
+    depends_on: [
+      { explorer_id: 'wealth_capital_explorer', required_signals: ['capital_stress'] },
+    ],
+    produces: ['metabolic_flux', 'reliability_score', 'readiness_level'],
+  },
+  'well_vitality_explorer': {
+    depends_on: [],
+    produces: ['vitality_score', 'fatigue_index', 'decision_class'],
+  },
+  'aforge_orchestrator': {
+    depends_on: [
+      { explorer_id: 'well_substrate_explorer', required_signals: ['readiness_level'] },
+      { explorer_id: 'well_vitality_explorer', required_signals: ['decision_class'] },
+    ],
+    produces: ['execution_warrant', 'lease_id', 'forge_id'],
+  },
+};
+
+// ── Signal-to-seal mapping ─────────────────────────────────────────
+// Maps signal_type → the tool_name that seals it (for dependency verification)
+// This lets the validator check "has geox_basin_explorer sealed a prospect_volume?"
+const SIGNAL_PRODUCERS = {};
+for (const [explorerId, spec] of Object.entries(EXPLORER_DEPENDENCIES)) {
+  for (const signal of spec.produces) {
+    SIGNAL_PRODUCERS[signal] = explorerId;
+  }
+}
+
+// Concrete tool names that participate in explorer dependency chains.
+// These remain callable directly, but must inherit the same dependency gates
+// as their parent explorer surface.
+const TOOL_TO_EXPLORER = {
+  // GEOX tools
+  'geox_seismic_compute': 'geox_seismic_explorer',
+  'geox_seismic_ingest': 'geox_seismic_explorer',
+  'geox_well_tie_compute': 'geox_seismic_explorer',
+  'geox_well_ingest': 'geox_well_explorer',
+  'geox_well_qc': 'geox_well_explorer',
+  'geox_petrophysics': 'geox_well_explorer',
+  'geox_biostrat_falsify': 'geox_stratigraphy_explorer',
+  'geox_contradiction_engine': 'geox_stratigraphy_explorer',
+  'geox_basin': 'geox_basin_explorer',
+  'geox_prospect': 'geox_basin_explorer',
+  // WEALTH tools
+  'wealth_compute_npv': 'wealth_capital_explorer',
+  'wealth_compute_irr': 'wealth_capital_explorer',
+  'wealth_monte_carlo_simulate': 'wealth_scenario_explorer',
+  'wealth_fiscal_breakeven': 'wealth_scenario_explorer',
+  'wealth_collapse_signature_scan': 'wealth_risk_explorer',
+  'wealth_asymmetry_check': 'wealth_risk_explorer',
+  // WELL tools
+  'well_validate_vitality': 'well_vitality_explorer',
+  'well_assess_homeostasis': 'well_substrate_explorer',
+};
+
 // ── Canonical Tool Risk Map (mirrors risk_classifier.py) ────────────
 const CANONICAL_TOOL_RISKS = {
   'arif_forge_execute':       { tier: 'T5', action_class: 'ATOMIC' },
@@ -226,6 +327,15 @@ function validateEnvelope(envelope, toolName) {
       result.reason = 'Delegation expired';
       return result;
     }
+  }
+
+  // 7.25 Explorer Dependency Enforcement (forged 2026-07-06)
+  // If the requested tool is an explorer, check its dependency chain.
+  // This enforces ordered handoff: GEOX → WEALTH → WELL → A-FORGE.
+  const depResult = validateExplorerDependencies(toolName, envelope);
+  if (!depResult.ok) {
+    result.reason = depResult.reason;
+    return result;
   }
 
   // 7.5 Phase 4: Biometric Pacing (WELL Organ Telemetry)
@@ -563,6 +673,55 @@ function verifyEnvelopeDidSignature(envelope, req) {
   return result;
 }
 
+// ── Explorer Dependency Validation ─────────────────────────────────
+/**
+ * Validate that an explorer tool's dependency chain is satisfied.
+ * Checks the VAULT999 seal chain for required parent seals.
+ *
+ * @param {string} toolName - The tool being called
+ * @param {object} envelope - The request envelope (may carry receipts)
+ * @returns {{ ok: boolean, reason: string }}
+ */
+function validateExplorerDependencies(toolName, envelope) {
+  const resolvedExplorer = TOOL_TO_EXPLORER[toolName]
+    || (Object.prototype.hasOwnProperty.call(EXPLORER_DEPENDENCIES, toolName) ? toolName : null);
+  if (!resolvedExplorer) {
+    // Not an explorer tool — skip dependency validation
+    return { ok: true, reason: 'NOT_AN_EXPLORER' };
+  }
+
+  const spec = EXPLORER_DEPENDENCIES[resolvedExplorer];
+  if (!spec || spec.depends_on.length === 0) {
+    return { ok: true, reason: 'NO_DEPENDENCIES' };
+  }
+
+  // Collect available seal receipts from envelope
+  const receipts = envelope.receipts || {};
+
+  // Check each dependency
+  for (const dep of spec.depends_on) {
+    const depSpec = EXPLORER_DEPENDENCIES[dep.explorer_id];
+    if (!depSpec) continue;
+
+    // Check if required signals have been sealed
+    for (const signal of dep.required_signals) {
+      const producer = SIGNAL_PRODUCERS[signal];
+      if (!producer) continue;
+
+      // Look for a seal receipt matching this signal
+      const signalSealId = receipts[`seal_${signal}`] || receipts[signal];
+      if (!signalSealId) {
+        return {
+          ok: false,
+          reason: `EXPLORER_DEPENDENCY_HOLD: "${resolvedExplorer}" requires signal "${signal}" from "${dep.explorer_id}", but no seal receipt found. Run "${dep.explorer_id}" first with mode="sahkan" to produce sealed "${signal}".`
+        };
+      }
+    }
+  }
+
+  return { ok: true, reason: 'EXPLORER_DEPENDENCIES_SATISFIED' };
+}
+
 // ── Exports ─────────────────────────────────────────────────────────
 module.exports = {
   extractEnvelope,
@@ -582,4 +741,8 @@ module.exports = {
   resolveDidPublicKey,
   verifyA2ASignature,
   verifyEnvelopeDidSignature,
+  // Explorer Dependency Registry (forged 2026-07-06)
+  EXPLORER_DEPENDENCIES,
+  SIGNAL_PRODUCERS,
+  validateExplorerDependencies,
 };
