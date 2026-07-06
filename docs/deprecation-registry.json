@@ -220,6 +220,24 @@
       "since": "2026-07-05",
       "migration": "Use mcp__wealth__wealth_agent_path instead. Identical behavior, canonical name.",
       "reason": "Fitness audit 2026-07-05: legacy alias. wealth_agent_path is the canonical tool."
+    },
+    "mcp__geox__geox_seismic_ingest": {
+      "status": "REMOVED",
+      "since": "2026-07-06",
+      "migration": "Use mcp__geox__geox_seismic_compute(mode='tengok') instead.",
+      "reason": "Seismic consolidation: merged into unified seismic_compute explorer."
+    },
+    "mcp__geox__geox_seismic_interpret": {
+      "status": "REMOVED",
+      "since": "2026-07-06",
+      "migration": "Use mcp__geox__geox_seismic_compute(mode='agak') instead.",
+      "reason": "Seismic consolidation: merged into unified seismic_compute explorer."
+    },
+    "mcp__well__well_guard_dignity": {
+      "status": "REMOVED",
+      "since": "2026-07-06",
+      "migration": "Use mcp__well__well_validate_vitality(mode='cabar') instead.",
+      "reason": "Dignity tools pruned per constitutional alignment (reflection only)."
     }
   },
 

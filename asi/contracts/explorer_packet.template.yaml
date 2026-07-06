@@ -1,0 +1,55 @@
+packet_id: xp-YYYYMMDD-001
+query: ""
+mode_sequence:
+  - observe
+  - hypothesize
+  - falsify
+  - verify
+observations:
+  - observation_id: obs-001
+    source: ""
+    domain: ""
+    epistemic_rung: OBS
+    summary: ""
+    confidence: 0.0
+    freshness: fresh
+hypotheses:
+  - hypothesis_id: hyp-001
+    rank: 1
+    claim: ""
+    owning_domain: ""
+    falsifiers: []
+    confidence: 0.0
+tests:
+  - test_id: test-001
+    hypothesis_id: hyp-001
+    test_type: falsify
+    owner_organ: ""
+    passed: false
+    notes: ""
+contradictions: []
+survivors: []
+uncertainty_band: 0.0
+owning_organs: []
+next_route:
+  route_id: route-001
+  from_organ: ""
+  to_organ: ""
+  reason: ""
+  trigger: ""
+  required_inputs: []
+  expected_outputs: []
+  authority_class: evidence
+  risk_tier: T1
+  blocking_conditions: []
+  handoff_receipts: []
+verdict_candidate: null
+memory_update:
+  create_nodes: []
+  update_nodes: []
+  create_edges: []
+  attach_receipts: []
+receipts: []
+timestamps:
+  started_at: "2026-07-06T00:00:00Z"
+  completed_at: "2026-07-06T00:05:00Z"
