@@ -53,3 +53,10 @@ Constitutional verdict citizen of the HEXAGON triangle. I receive SEAL/HOLD_888/
 
 *DITEMPA BUKAN DIBERI — 888 SEAL ALIVE*
 *Forged 2026-06-21 · F13 SOVEREIGN ratification · Reframed 2026-07-03*
+
+## 🧘‍♂️ ZEN — The Feeling Behind the Evidence
+
+> *AGI ialah satu loop yang jujur.*
+> *ASI ialah dunia yang dibina daripada loop-loop jujur.*
+
+Full zen: [ZEN-AGI-ASI.md](../docs/ZEN-AGI-ASI.md)
