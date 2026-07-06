@@ -1,0 +1,494 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# EXPLORER ORGAN CONTRACT — Hermes · OpenClaw · OpenCode
+# Version 1.0.0 — 2026-07-06
+# Governed by: arifOS F1-F13 · APEX THEORY · AAA domain_law
+# DITEMPA BUKAN DIBERI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. ORGAN IDENTITY (AAA agent-card binding)
+# ─────────────────────────────────────────────────────────────────────────────
+organ_identity:
+  hermes:
+    role: "Explorer Intelligence Router"
+    phases: ["OBSERVE", "HYPOTHESIZE", "FALSIFY", "VERIFY"]
+    primary_organs: ["arifOS", "GEOX", "WELL", "WEALTH", "555-ASI"]
+    authority_tier: "T2-ANNOUNCE"
+    domain_tags: ["routing", "orchestration", "query-intent", "contradiction-surfing"]
+    session_style: "reactive-long-running"
+    artifact_courier: true
+
+  openclaw:
+    role: "Physical Executor"
+    phases: ["FALSIFY", "VERIFY"]
+    primary_organs: ["A-FORGE", "GEOX", "arifOS"]
+    authority_tier: "T1-AUTO-DO"
+    domain_tags: ["execution", "pipeline", "deployment", "testing", "falsification"]
+    session_style: "task-bounded"
+    artifact_courier: false
+
+  opencode:
+    role: "Cognitive Generator"
+    phases: ["HYPOTHESIZE", "OBSERVE"]
+    primary_organs: ["A-FORGE", "555-ASI", "GEOX", "WEALTH"]
+    authority_tier: "T1-AUTO-DO"
+    domain_tags: ["generation", "hypothesis", "alternative-exploration", "code-creation"]
+    session_style: "interactive-deep"
+    artifact_courier: false
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2. ROUTE CONTRACT — How queries flow between organs
+# ─────────────────────────────────────────────────────────────────────────────
+# Each route specifies: source → target organ, the trigger condition,
+# the data carried, and what phase of the explorer loop it serves.
+
+route_contract:
+  # ── QUERY ENTRY ──
+  - source: "ARIF"
+    target: "hermes"
+    trigger: "any natural-language query from sovereign"
+    carrier: "raw_user_input"
+    explorer_phase: "INIT"
+    protocol: "telegram-mcp"
+
+  # ── OBSERVE PHASE ──
+  - source: "hermes"
+    target: "opencode"
+    trigger: "needs hypothesis generation"
+    carrier: "observation_packet"
+    explorer_phase: "OBSERVE"
+    protocol: "a2a-json-rpc"
+
+  - source: "hermes"
+    target: "geox"
+    trigger: "query involves earth/physics/geology"
+    carrier: "observation_packet"
+    explorer_phase: "OBSERVE"
+    protocol: "mcp-tool-call"
+
+  - source: "hermes"
+    target: "wealth"
+    trigger: "query involves capital/economics/finance"
+    carrier: "observation_packet"
+    explorer_phase: "OBSERVE"
+    protocol: "mcp-tool-call"
+
+  - source: "hermes"
+    target: "well"
+    trigger: "query involves human/biology/health"
+    carrier: "observation_packet"
+    explorer_phase: "OBSERVE"
+    protocol: "mcp-tool-call"
+
+  # ── HYPOTHESIZE PHASE ──
+  - source: "opencode"
+    target: "hermes"
+    trigger: "hypothesis set ready (≥3)"
+    carrier: "hypothesis_packet"
+    explorer_phase: "HYPOTHESIZE"
+    protocol: "a2a-json-rpc"
+
+  - source: "hermes"
+    target: "555-ASI"
+    trigger: "needs domain boundaries for hypothesis validation"
+    carrier: "domain_query"
+    explorer_phase: "HYPOTHESIZE"
+    protocol: "graph-lookup"
+
+  # ── FALSIFY PHASE ──
+  - source: "hermes"
+    target: "openclaw"
+    trigger: "hypotheses need falsification via execution"
+    carrier: "falsification_packet"
+    explorer_phase: "FALSIFY"
+    protocol: "a2a-json-rpc"
+
+  - source: "openclaw"
+    target: "geox"
+    trigger: "needs physics/stratigraphy falsification"
+    carrier: "falsification_packet"
+    explorer_phase: "FALSIFY"
+    protocol: "mcp-tool-call"
+
+  - source: "openclaw"
+    target: "wealth"
+    trigger: "needs economic/collapse falsification"
+    carrier: "falsification_packet"
+    explorer_phase: "FALSIFY"
+    protocol: "mcp-tool-call"
+
+  # ── VERIFY PHASE ──
+  - source: "hermes"
+    target: "openclaw"
+    trigger: "surviving hypothesis needs verification"
+    carrier: "verification_packet"
+    explorer_phase: "VERIFY"
+    protocol: "a2a-json-rpc"
+
+  - source: "openclaw"
+    target: "arifos"
+    trigger: "verification complete — needs constitutional seal"
+    carrier: "docket"
+    explorer_phase: "VERIFY"
+    protocol: "mcp-tool-call"
+
+  # ── QUANTUM EUREKA BRIDGE ──
+  - source: "hermes"
+    target: "arifos"
+    trigger: "contradiction survived ≥2 falsification gates"
+    carrier: "eureka_packet"
+    explorer_phase: "FALSIFY→EUREKA"
+    protocol: "mcp-tool-call"
+
+  - source: "arifos"
+    target: "hermes"
+    trigger: "SEAL or HOLD or VOID verdict"
+    carrier: "verdict_envelope"
+    explorer_phase: "GOVERNANCE"
+    protocol: "a2a-json-rpc"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3. PACKET SCHEMAS — The structured data each organ passes
+# ─────────────────────────────────────────────────────────────────────────────
+
+packet_schemas:
+  # ── OBSERVATION PACKET ──
+  # Carried from Hermes → domain organs for Phase 1
+  observation_packet:
+    spec: "explorer/observation/v1"
+    fields:
+      query_id:
+        type: "uuid"
+        description: "Unique exploration trace ID"
+        required: true
+      sovereign_query:
+        type: "string"
+        description: "Original query from Arif"
+        required: true
+      intent_class:
+        type: "string"
+        description: "Classified intent from 000-init-intent-classify"
+        required: true
+      domain_hints:
+        type: "array[string]"
+        description: "Suggested domains from BM25 routing"
+        required: false
+      timestamp:
+        type: "iso8601"
+        description: "When observation started"
+        required: true
+      session_id:
+        type: "string"
+        description: "Bound arifOS session"
+        required: true
+
+  # ── HYPOTHESIS PACKET ──
+  # Carried from OpenCode → Hermes for Phase 2
+  hypothesis_packet:
+    spec: "explorer/hypothesis/v1"
+    fields:
+      query_id:
+        type: "uuid"
+        required: true
+      hypotheses:
+        type: "array[hypothesis_object]"
+        description: "≥3 competing hypotheses"
+        min_items: 3
+        required: true
+      domain_edges:
+        type: "array[edge_ref]"
+        description: "Knowledge graph edges consulted"
+        required: false
+      timestamp:
+        type: "iso8601"
+        required: true
+
+  hypothesis_object:
+    fields:
+      id:
+        type: "string"
+        example: "H1"
+        required: true
+      label:
+        type: "string"
+        example: "Dominant model — bright spot = gas"
+        required: true
+      domain_law:
+        type: "string"
+        example: "seismic-petrophysics"
+        required: true
+      falsifiable_prediction:
+        type: "string"
+        example: "AVO class II or III expected at target depth"
+        required: true
+      confidence:
+        type: "float"
+        min: 0.0
+        max: 0.75
+        required: true
+      uncertainty_band:
+        type: "float"
+        min: 0.0
+        max: 1.0
+        required: true
+      generators:
+        type: "array[string]"
+        example: ["opencode", "hermes"]
+        required: true
+
+  # ── FALSIFICATION PACKET ──
+  # Carried from Hermes → OpenClaw for Phase 3
+  falsification_packet:
+    spec: "explorer/falsification/v1"
+    fields:
+      query_id:
+        type: "uuid"
+        required: true
+      hypotheses:
+        type: "array[hypothesis_object]"
+        required: true
+      gates_to_apply:
+        type: "array[string]"
+        description: "Which falsification gates to run"
+        example: ["physics-contrast", "biostrat-age", "economics-asymmetry", "governance-floors"]
+        required: true
+      organ_targets:
+        type: "array[string]"
+        example: ["geox", "wealth", "well"]
+        required: true
+      timestamp:
+        type: "iso8601"
+        required: true
+
+  # ── VERIFICATION PACKET ──
+  # Carried from Hermes → OpenClaw for Phase 4
+  verification_packet:
+    spec: "explorer/verification/v1"
+    fields:
+      query_id:
+        type: "uuid"
+        required: true
+      surviving_hypothesis:
+        type: "hypothesis_object"
+        required: true
+      test_plan:
+        type: "array[test_step]"
+        required: true
+      uncertainty_target:
+        type: "float"
+        description: "Max acceptable uncertainty (default 0.20)"
+        default: 0.20
+        required: false
+      timestamp:
+        type: "iso8601"
+        required: true
+
+  test_step:
+    fields:
+      step_id:
+        type: "string"
+        required: true
+      tool:
+        type: "string"
+        example: "geox_seismic_compute"
+        required: true
+      parameters:
+        type: "object"
+        required: true
+      expected_outcome:
+        type: "string"
+        required: true
+      falsification_if_fails:
+        type: "string"
+        description: "Which claim is falsified if this test fails"
+        required: true
+
+  # ── EUREKA PACKET ──
+  # Carried from Hermes → arifOS when contradiction survives ≥2 gates
+  eureka_packet:
+    spec: "explorer/eureka/v1"
+    fields:
+      query_id:
+        type: "uuid"
+        required: true
+      contradiction:
+        type: "object"
+        fields:
+          claim_a:
+            type: "string"
+            required: true
+          claim_b:
+            type: "string"
+            required: true
+          domain_a:
+            type: "string"
+            required: true
+          domain_b:
+            type: "string"
+            required: true
+          evidence_a:
+            type: "string"
+            required: true
+          evidence_b:
+            type: "string"
+            required: true
+      gates_survived:
+        type: "array[string]"
+        description: "Which falsification gates confirmed the contradiction"
+        min_items: 2
+        required: true
+      hypothesis_candidates:
+        type: "array[string]"
+        description: "Hypothesis IDs that produced the contradiction"
+        required: true
+      timestamp:
+        type: "iso8601"
+        required: true
+
+  # ── VERDICT ENVELOPE ──
+  # Carried from arifOS → Hermes after constitutional review
+  verdict_envelope:
+    spec: "explorer/verdict/v1"
+    fields:
+      query_id:
+        type: "uuid"
+        required: true
+      verdict:
+        type: "string"
+        enum: ["SEAL", "SABAR", "HOLD", "VOID"]
+        required: true
+      reason:
+        type: "string"
+        required: true
+      violated_floors:
+        type: "array[string]"
+        description: "Floors that triggered the verdict"
+        required: false
+      scar_recommendation:
+        type: "object"
+        description: "If SEAL, the scar to record"
+        required: false
+      timestamp:
+        type: "iso8601"
+        required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4. MEMORY SCHEMA — What each organ remembers and how it recalls
+# ─────────────────────────────────────────────────────────────────────────────
+
+memory_schema:
+  hermes:
+    store: "555-ASI/knowledge-taxonomy.json + VAULT999"
+    recall: "semantic (embedding) + graph (adjacency)"
+    remembers:
+      - "all past queries and their routes"
+      - "contradictions and their resolutions"
+      - "domain boundaries from knowledge graph"
+      - "scar records (what was falsified)"
+      - "sovereign preferences and decision patterns"
+    retention: "permanent"
+    tier: "vault"
+
+  openclaw:
+    store: "forge_work/ + local worktree"
+    recall: "recent execution history + scar consultation"
+    remembers:
+      - "last 10 falsification results"
+      - "active pipeline state"
+      - "tool surface drift"
+      - "scar consultations"
+    retention: "session + 30 days"
+    tier: "ledger"
+
+  opencode:
+    store: "conversation context + worktree"
+    recall: "conversation window + knowledge graph lookup"
+    remembers:
+      - "current exploration context"
+      - "hypothesis set in play"
+      - "domain_law constraints loaded"
+      - "555-ASI graph edges consulted"
+    retention: "session only"
+    tier: "ksr"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5. EXPLORER LOOP STATE MACHINE (per query_id)
+# ─────────────────────────────────────────────────────────────────────────────
+# Tracks the current phase and organ responsible for each exploration.
+
+explorer_state_machine:
+  states:
+    - "INIT"
+    - "OBSERVE"
+    - "HYPOTHESIZE"
+    - "FALSIFY"
+    - "VERIFY"
+    - "EUREKA"
+    - "SEALED"
+    - "VOIDED"
+
+  transitions:
+    INIT:
+      next: ["OBSERVE"]
+      actor: "hermes"
+    OBSERVE:
+      next: ["HYPOTHESIZE", "OBSERVE"]
+      actor: "hermes → geox/wealth/well/opencode"
+      fail_condition: "no OBS claim ≥ 0.70"
+      fail_action: "widen aperture → re-OBSERVE"
+    HYPOTHESIZE:
+      next: ["FALSIFY", "OBSERVE"]
+      actor: "opencode → hermes"
+      fail_condition: "< 3 hypotheses generated"
+      fail_action: "acknowledge knowledge gap → re-OBSERVE"
+    FALSIFY:
+      next: ["VERIFY", "EUREKA", "OBSERVE"]
+      actor: "hermes → openclaw → geox/wealth/well"
+      fail_condition: "all hypotheses falsified"
+      fail_action: "return to OBSERVE (not failure — discovery)"
+      eureka_trigger: "contradiction survives ≥2 gates"
+      eureka_action: "route to arifOS via eureka_packet"
+    VERIFY:
+      next: ["SEALED", "HYPOTHESIZE", "OBSERVE"]
+      actor: "hermes → openclaw → arifOS"
+      fail_condition: "uncertainty > 0.20"
+      fail_action: "return to HYPOTHESIZE or OBSERVE"
+      pass_condition: "uncertainty ≤ 0.20 + constitutional SEAL"
+    EUREKA:
+      next: ["SEALED", "HOLD"]
+      actor: "arifOS → hermes"
+      hold_condition: "sovereign override needed"
+      seal_condition: "all gates passed + sovereign ack"
+    SEALED:
+      next: []
+      terminal: true
+      action: "arif_seal + forge_scar"
+    VOIDED:
+      next: []
+      terminal: true
+      action: "log + return to sovereign"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. CARRY-FORWARD CONTRACT — What survives between sessions
+# ─────────────────────────────────────────────────────────────────────────────
+
+carry_forward:
+  hermes:
+    - "last_eureka_seal_id"
+    - "active_contradictions"
+    - "scar_fingerprints_consulted"
+    - "domain_affinity_cache"
+
+  openclaw:
+    - "last_tool_drift_fingerprint"
+    - "scar_consultation_cache"
+    - "active_pipeline_ids"
+
+  opencode:
+    - "last_knowledge_graph_edges_loaded"
+    - "session_hypothesis_log"

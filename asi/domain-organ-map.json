@@ -1,0 +1,811 @@
+{
+  "asi": {
+    "organ": "asi",
+    "domains": [
+      "I",
+      "II",
+      "IV",
+      "VI"
+    ],
+    "branches": [
+      {
+        "branch_id": "I.1",
+        "name": "Mathematics",
+        "domain": "I",
+        "domain_name": "FORMAL",
+        "leaves_count": 13,
+        "affinity_tags": [
+          "mathematics"
+        ]
+      },
+      {
+        "branch_id": "I.2",
+        "name": "Logic & Foundations",
+        "domain": "I",
+        "domain_name": "FORMAL",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "logic-foundations"
+        ]
+      },
+      {
+        "branch_id": "II.8",
+        "name": "Cosmology & Fundamental",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "cosmology-fundamental"
+        ]
+      },
+      {
+        "branch_id": "IV.3",
+        "name": "Cognitive Science",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "cognitive-science"
+        ]
+      },
+      {
+        "branch_id": "IV.4",
+        "name": "Linguistics",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 15,
+        "affinity_tags": [
+          "linguistics"
+        ]
+      },
+      {
+        "branch_id": "IV.5",
+        "name": "Anthropology",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "anthropology"
+        ]
+      },
+      {
+        "branch_id": "IV.6",
+        "name": "Archaeology",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "archaeology"
+        ]
+      },
+      {
+        "branch_id": "IV.7",
+        "name": "Sociology",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 19,
+        "affinity_tags": [
+          "sociology"
+        ]
+      },
+      {
+        "branch_id": "IV.12",
+        "name": "Communication & Media",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "communication-media"
+        ]
+      },
+      {
+        "branch_id": "VI.2",
+        "name": "History",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 17,
+        "affinity_tags": [
+          "history"
+        ]
+      },
+      {
+        "branch_id": "VI.3",
+        "name": "Literature",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 15,
+        "affinity_tags": [
+          "literature"
+        ]
+      },
+      {
+        "branch_id": "VI.5",
+        "name": "Visual Arts",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 12,
+        "affinity_tags": [
+          "visual-arts"
+        ]
+      },
+      {
+        "branch_id": "VI.6",
+        "name": "Performing Arts",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "performing-arts"
+        ]
+      },
+      {
+        "branch_id": "VI.7",
+        "name": "Media Arts",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "media-arts"
+        ]
+      },
+      {
+        "branch_id": "VI.9",
+        "name": "Cultural Studies",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "cultural-studies"
+        ]
+      }
+    ],
+    "branch_count": 15
+  },
+  "wealth": {
+    "organ": "wealth",
+    "domains": [
+      "I",
+      "IV"
+    ],
+    "branches": [
+      {
+        "branch_id": "I.3",
+        "name": "Statistics & Probability",
+        "domain": "I",
+        "domain_name": "FORMAL",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "statistics-probability"
+        ]
+      },
+      {
+        "branch_id": "I.5",
+        "name": "Decision & Game Theory",
+        "domain": "I",
+        "domain_name": "FORMAL",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "decision-game-theory"
+        ]
+      },
+      {
+        "branch_id": "IV.8",
+        "name": "Economics",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 22,
+        "affinity_tags": [
+          "economics"
+        ]
+      },
+      {
+        "branch_id": "IV.14",
+        "name": "Demography",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "demography"
+        ]
+      }
+    ],
+    "branch_count": 4
+  },
+  "aaa": {
+    "organ": "aaa",
+    "domains": [
+      "I",
+      "VII",
+      "IV",
+      "III"
+    ],
+    "branches": [
+      {
+        "branch_id": "I.4",
+        "name": "Computation",
+        "domain": "I",
+        "domain_name": "FORMAL",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "computation"
+        ]
+      },
+      {
+        "branch_id": "I.6",
+        "name": "Systems & Cybernetics",
+        "domain": "I",
+        "domain_name": "FORMAL",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "systems-cybernetics"
+        ]
+      },
+      {
+        "branch_id": "III.9",
+        "name": "Bioinformatics & Systems Biology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 5,
+        "affinity_tags": [
+          "bioinformatics-systems-biology"
+        ]
+      },
+      {
+        "branch_id": "IV.11",
+        "name": "Education & Pedagogy",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 11,
+        "affinity_tags": [
+          "education-pedagogy"
+        ]
+      },
+      {
+        "branch_id": "VII.5",
+        "name": "Computer Science",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 18,
+        "affinity_tags": [
+          "computer-science"
+        ]
+      }
+    ],
+    "branch_count": 5
+  },
+  "geox": {
+    "organ": "geox",
+    "domains": [
+      "VII",
+      "II",
+      "IV",
+      "III"
+    ],
+    "branches": [
+      {
+        "branch_id": "II.1",
+        "name": "Physics (General)",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "physics-(general)"
+        ]
+      },
+      {
+        "branch_id": "II.2",
+        "name": "Particle & Nuclear Physics",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 4,
+        "affinity_tags": [
+          "particle-nuclear-physics"
+        ]
+      },
+      {
+        "branch_id": "II.4",
+        "name": "Chemistry",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 16,
+        "affinity_tags": [
+          "chemistry"
+        ]
+      },
+      {
+        "branch_id": "II.5",
+        "name": "Astronomy & Space",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 11,
+        "affinity_tags": [
+          "astronomy-space"
+        ]
+      },
+      {
+        "branch_id": "II.6",
+        "name": "Earth Science",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 18,
+        "affinity_tags": [
+          "earth-science"
+        ]
+      },
+      {
+        "branch_id": "III.5",
+        "name": "Botany",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "botany"
+        ]
+      },
+      {
+        "branch_id": "III.7",
+        "name": "Ecology & Environment",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "ecology-environment"
+        ]
+      },
+      {
+        "branch_id": "III.10",
+        "name": "Paleontology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "paleontology"
+        ]
+      },
+      {
+        "branch_id": "IV.13",
+        "name": "Geography",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 12,
+        "affinity_tags": [
+          "geography"
+        ]
+      },
+      {
+        "branch_id": "VII.10",
+        "name": "Petroleum & Mining",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "petroleum-mining"
+        ]
+      }
+    ],
+    "branch_count": 10
+  },
+  "aforge": {
+    "organ": "aforge",
+    "domains": [
+      "VI",
+      "VII",
+      "II",
+      "IV"
+    ],
+    "branches": [
+      {
+        "branch_id": "II.3",
+        "name": "Condensed Matter & Applied Physics",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "condensed-matter-applied-physics"
+        ]
+      },
+      {
+        "branch_id": "II.7",
+        "name": "Materials Science",
+        "domain": "II",
+        "domain_name": "PHYSICAL",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "materials-science"
+        ]
+      },
+      {
+        "branch_id": "IV.15",
+        "name": "Urban Studies",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "urban-studies"
+        ]
+      },
+      {
+        "branch_id": "VI.8",
+        "name": "Architecture & Design",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "architecture-design"
+        ]
+      },
+      {
+        "branch_id": "VI.10",
+        "name": "Applied Arts",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 11,
+        "affinity_tags": [
+          "applied-arts"
+        ]
+      },
+      {
+        "branch_id": "VII.1",
+        "name": "Mechanical Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "mechanical-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.2",
+        "name": "Civil Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "civil-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.3",
+        "name": "Electrical & Electronic",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "electrical-electronic"
+        ]
+      },
+      {
+        "branch_id": "VII.4",
+        "name": "Chemical Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "chemical-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.6",
+        "name": "Aerospace Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "aerospace-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.7",
+        "name": "Biomedical Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "biomedical-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.8",
+        "name": "Environmental Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "environmental-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.9",
+        "name": "Industrial & Systems Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "industrial-systems-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.11",
+        "name": "Nuclear Engineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "nuclear-engineering"
+        ]
+      },
+      {
+        "branch_id": "VII.12",
+        "name": "Agricultural & Bioengineering",
+        "domain": "VII",
+        "domain_name": "APPLIED & ENGINEERED",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "agricultural-bioengineering"
+        ]
+      }
+    ],
+    "branch_count": 15
+  },
+  "well": {
+    "organ": "well",
+    "domains": [
+      "V",
+      "IV",
+      "III"
+    ],
+    "branches": [
+      {
+        "branch_id": "III.1",
+        "name": "Molecular & Cellular Biology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "molecular-cellular-biology"
+        ]
+      },
+      {
+        "branch_id": "III.2",
+        "name": "Organismal Biology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "organismal-biology"
+        ]
+      },
+      {
+        "branch_id": "III.3",
+        "name": "Immunology & Neurobiology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 5,
+        "affinity_tags": [
+          "immunology-neurobiology"
+        ]
+      },
+      {
+        "branch_id": "III.4",
+        "name": "Microbiology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 7,
+        "affinity_tags": [
+          "microbiology"
+        ]
+      },
+      {
+        "branch_id": "III.6",
+        "name": "Zoology",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "zoology"
+        ]
+      },
+      {
+        "branch_id": "III.8",
+        "name": "Ethology & Behavior",
+        "domain": "III",
+        "domain_name": "LIFE",
+        "leaves_count": 6,
+        "affinity_tags": [
+          "ethology-behavior"
+        ]
+      },
+      {
+        "branch_id": "IV.1",
+        "name": "Neuroscience",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 11,
+        "affinity_tags": [
+          "neuroscience"
+        ]
+      },
+      {
+        "branch_id": "IV.2",
+        "name": "Psychology",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 16,
+        "affinity_tags": [
+          "psychology"
+        ]
+      },
+      {
+        "branch_id": "V.1",
+        "name": "Internal Medicine",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 17,
+        "affinity_tags": [
+          "internal-medicine"
+        ]
+      },
+      {
+        "branch_id": "V.2",
+        "name": "Clinical Specialties",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 14,
+        "affinity_tags": [
+          "clinical-specialties"
+        ]
+      },
+      {
+        "branch_id": "V.3",
+        "name": "Surgery",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 12,
+        "affinity_tags": [
+          "surgery"
+        ]
+      },
+      {
+        "branch_id": "V.4",
+        "name": "Pharmacology",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 9,
+        "affinity_tags": [
+          "pharmacology"
+        ]
+      },
+      {
+        "branch_id": "V.5",
+        "name": "Public & Global Health",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 15,
+        "affinity_tags": [
+          "public-global-health"
+        ]
+      },
+      {
+        "branch_id": "V.6",
+        "name": "Nutrition",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 8,
+        "affinity_tags": [
+          "nutrition"
+        ]
+      },
+      {
+        "branch_id": "V.7",
+        "name": "Psychiatry & Mental Health",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 14,
+        "affinity_tags": [
+          "psychiatry-mental-health"
+        ]
+      },
+      {
+        "branch_id": "V.8",
+        "name": "Nursing",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 13,
+        "affinity_tags": [
+          "nursing"
+        ]
+      },
+      {
+        "branch_id": "V.9",
+        "name": "Dentistry",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "dentistry"
+        ]
+      },
+      {
+        "branch_id": "V.10",
+        "name": "Veterinary Medicine",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 13,
+        "affinity_tags": [
+          "veterinary-medicine"
+        ]
+      },
+      {
+        "branch_id": "V.11",
+        "name": "Alternative & Traditional Medicine",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 13,
+        "affinity_tags": [
+          "alternative-traditional-medicine"
+        ]
+      },
+      {
+        "branch_id": "V.12",
+        "name": "Allied Health",
+        "domain": "V",
+        "domain_name": "MEDICINE & HEALTH",
+        "leaves_count": 13,
+        "affinity_tags": [
+          "allied-health"
+        ]
+      }
+    ],
+    "branch_count": 20
+  },
+  "arifos": {
+    "organ": "arifos",
+    "domains": [
+      "VI",
+      "IV"
+    ],
+    "branches": [
+      {
+        "branch_id": "IV.9",
+        "name": "Political Science",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 10,
+        "affinity_tags": [
+          "political-science"
+        ]
+      },
+      {
+        "branch_id": "IV.10",
+        "name": "Law & Jurisprudence",
+        "domain": "IV",
+        "domain_name": "HUMAN",
+        "leaves_count": 14,
+        "affinity_tags": [
+          "law-jurisprudence"
+        ]
+      },
+      {
+        "branch_id": "VI.1",
+        "name": "Philosophy",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 21,
+        "affinity_tags": [
+          "philosophy"
+        ]
+      },
+      {
+        "branch_id": "VI.4",
+        "name": "Religious Studies",
+        "domain": "VI",
+        "domain_name": "HUMANITIES & ARTS",
+        "leaves_count": 11,
+        "affinity_tags": [
+          "religious-studies"
+        ]
+      }
+    ],
+    "branch_count": 4
+  }
+}

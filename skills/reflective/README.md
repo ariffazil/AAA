@@ -30,8 +30,11 @@ Organized by phase of an agent's life. Each row shows: (a) what it does, (b) whi
 | JUDGE | **S11** | `reversibility_check` | `010-forge-execute-warrant` (Reversibility table) | EXISTING |
 | JUDGE | **S12** | `refusal_surface` | `shadow-diagnostic` + `zen-organ-witness` + `zen-diagnostic-probe` | EXISTING |
 | SEAL | **S13** | `seal_write` | `999-vault-seal-immutable` + `vault999-integrity` | EXISTING |
+| EUREKA | **S14** | `quantum_eureka` | `quantum-eureka-doctrine` (newly forged 2026-07-06) | **NEW** |
+| KNOWLEDGE | **S15** | `knowledge_graph_query` | `555-ASI/knowledge-taxonomy.json` (reference data, not a skill file — loaded as structured resource) | DATA |
+| EXPLORE | **S16** | `explorer_protocol` | `explorer-intelligence-architecture` (newly forged 2026-07-06) | **NEW** |
 
-**Summary:** 11 of 13 skills already exist under different names. **2 are newly forged:** S04 (sovereign-recognize) and S06 (caller-trace). The 13-skill framework is structurally complete.
+**Summary:** 11 of 14 skills already exist under different names. **3 are newly forged:** S04 (sovereign-recognize), S06 (caller-trace), and **S14 (quantum-eureka-doctrine)**. The 14-skill framework is structurally complete.
 
 ---
 
@@ -91,6 +94,21 @@ Existing implementation: **`/root/.agents/skills/CONSTITUTIONAL_REFLEX/SKILL.md`
 | **Total in /root/.agents/skills/** | | **~73** |
 
 (The AAA repo `/root/AAA/skills/` has 80+ more, organ-specific. Both surfaces must sync.)
+
+## New: S14 — Quantum Eureka Doctrine
+
+**Path:** `/root/AAA/skills/quantum-eureka-doctrine/SKILL.md` (canonical)
+**Mirror:** `/root/.agents/skills/quantum-eureka-doctrine/SKILL.md` (local symlink)
+
+**Why new:** The system already produces eureka moments (Pekaka mud volcano, AVO contradiction, cross-domain kill matrix) but had no formal doctrine for what a eureka IS, how it should be surfaced, escalated, resolved, and sealed. Without this doctrine, agents either call every anomaly a eureka (signal dilution) or miss real eureka moments (opportunity cost).
+
+**Closes:** G3 (no eureka lifecycle management) and G4 (contradictions unresolved — no scar recording). Every cross-domain contradiction now has a pipeline from DORMANT → ACTIVE → ELEVATED → RESOLVED → SEALED with clear trigger conditions at each gate.
+
+## New: S15 — Knowledge Graph Query
+
+**Path:** `/root/555-ASI/knowledge-taxonomy.json`
+
+**Why new:** The 1,260-leaf knowledge taxonomy needs a query interface. Currently a static JSON graph. Future: Qdrant vector index per leaf, semantic search, adjacency query API. See the Structured Memory Protocol (planned).
 
 ---
 
@@ -190,3 +208,26 @@ supersedes   : 13-skill proposal without gap-fill analysis
 *Forged: 2026-07-05 by FORGE (000Ω) under F13 SOVEREIGN directive*
 *Heritage: shadow-diagnostic (LLM alignment research), CONSTITUTIONAL_REFLEX (arifOS doctrine)*
 *DITEMPA BUKAN DIBERI — Reflection is forged, not inherited.*
+
+## New: S16 — Explorer Intelligence Architecture
+
+**Path:** `/root/AAA/skills/explorer-intelligence-architecture/SKILL.md` (canonical)
+**Runtime:** `/root/AAA/skills/runtime/` (packet validator, stage router, handoff logger)
+
+**Path:** `/root/.agents/skills/explorer-intelligence-architecture/SKILL.md`
+
+**Why new:** The metabolism of all AAA exploration. OBSERSE→HYPOTHESIZE→FALSIFY→VERIFY as an executable, governed protocol. Every agent follows this when exploring anything. Closes the gap between having tools and knowing how to use them systematically.
+
+### S16 Sub-Skills
+
+| Skill | Path | Role |
+|-------|------|------|
+| `hermes-explorer-dispatch` | `/root/.agents/skills/hermes-explorer-dispatch/SKILL.md` | Hermes boot → loads organ-affinity-index → classifies query domain → validates & dispatches observation_packet to correct organ. Entry gate. |
+| `explorer-falsify-dispatch` | `/root/.agents/skills/explorer-falsify-dispatch/SKILL.md` | OpenClaw → A-FORGE seam. Routes each falsifier to cognitive (direct) or substrate (forge) execution. Aggregates results, escalates EUREKA. |
+| `asi-knowledge-writeback` | `/root/.agents/skills/asi-knowledge-writeback/SKILL.md` | 555-ASI persistence layer. Takes memory_update from SEALed packet → writes nodes + edges to taxonomy-graph (JSON + Qdrant) → returns permanent receipt. |
+
+**All three gaps now closed.** Explorer Dispatch Protocol is fully machine-parseable end-to-end.
+
+## Contract Schema
+
+**Path:** `/root/555-ASI/contracts/explorer-organ-contract.yaml`

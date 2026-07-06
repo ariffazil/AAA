@@ -1,0 +1,2 @@
+{"from_agent": "hermes", "next_route": {"escalation_reason": "", "route_mode": "local", "route_owner": "openclaw"}, "packet_id": "fp-YYYYMMDD-001", "packet_type": "falsification_packet", "query": "", "to_agent": null, "ts_utc": "2026-07-06T14:36:04.720912+00:00"}
+{"from_agent": "hermes", "next_route": {"escalation_reason": "", "route_mode": "local", "route_owner": "openclaw"}, "packet_id": "fp-YYYYMMDD-001", "packet_type": "falsification_packet", "query": "", "to_agent": null, "ts_utc": "2026-07-06T14:43:02.446947+00:00"}

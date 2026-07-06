@@ -1,0 +1,27 @@
+packet_type: falsification_packet
+packet_id: fp-YYYYMMDD-001
+source_agent: hermes
+source_stage: observe | hypothesize
+query: ""
+hypothesis_refs:
+  - hyp-001
+falsifiers:
+  - falsifier_id: fals-001
+    hypothesis_id: hyp-001
+    description: ""
+    tool_hint: ""
+    domain: ""
+    requires_runtime: false
+    requires_code_execution: false
+    requires_build_or_deploy: false
+    cross_domain: false
+tests: []
+next_route:
+  route_owner: openclaw
+  route_mode: local
+  escalation_reason: ""
+owning_organs: []
+receipts: []
+timestamps:
+  started_at: "2026-07-06T00:00:00Z"
+  completed_at: null

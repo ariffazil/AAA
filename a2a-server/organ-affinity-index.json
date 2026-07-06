@@ -1,0 +1,117 @@
+{
+  "asi": {
+    "organ": "asi",
+    "affinity_tags": [
+      "anthropology",
+      "archaeology",
+      "cognitive-science",
+      "communication-media",
+      "cosmology-fundamental",
+      "cultural-studies",
+      "history",
+      "linguistics",
+      "literature",
+      "logic-foundations",
+      "mathematics",
+      "media-arts",
+      "performing-arts",
+      "sociology",
+      "visual-arts"
+    ],
+    "branches_count": 15
+  },
+  "wealth": {
+    "organ": "wealth",
+    "affinity_tags": [
+      "decision-game-theory",
+      "demography",
+      "economics",
+      "statistics-probability"
+    ],
+    "branches_count": 4
+  },
+  "aaa": {
+    "organ": "aaa",
+    "affinity_tags": [
+      "bioinformatics-systems-biology",
+      "computation",
+      "computer-science",
+      "education-pedagogy",
+      "systems-cybernetics"
+    ],
+    "branches_count": 5
+  },
+  "geox": {
+    "organ": "geox",
+    "affinity_tags": [
+      "astronomy-space",
+      "botany",
+      "chemistry",
+      "earth-science",
+      "ecology-environment",
+      "geography",
+      "paleontology",
+      "particle-nuclear-physics",
+      "petroleum-mining",
+      "physics-(general)"
+    ],
+    "branches_count": 10
+  },
+  "aforge": {
+    "organ": "aforge",
+    "affinity_tags": [
+      "aerospace-engineering",
+      "agricultural-bioengineering",
+      "applied-arts",
+      "architecture-design",
+      "biomedical-engineering",
+      "chemical-engineering",
+      "civil-engineering",
+      "condensed-matter-applied-physics",
+      "electrical-electronic",
+      "environmental-engineering",
+      "industrial-systems-engineering",
+      "materials-science",
+      "mechanical-engineering",
+      "nuclear-engineering",
+      "urban-studies"
+    ],
+    "branches_count": 15
+  },
+  "well": {
+    "organ": "well",
+    "affinity_tags": [
+      "allied-health",
+      "alternative-traditional-medicine",
+      "clinical-specialties",
+      "dentistry",
+      "ethology-behavior",
+      "immunology-neurobiology",
+      "internal-medicine",
+      "microbiology",
+      "molecular-cellular-biology",
+      "neuroscience",
+      "nursing",
+      "nutrition",
+      "organismal-biology",
+      "pharmacology",
+      "psychiatry-mental-health",
+      "psychology",
+      "public-global-health",
+      "surgery",
+      "veterinary-medicine",
+      "zoology"
+    ],
+    "branches_count": 20
+  },
+  "arifos": {
+    "organ": "arifos",
+    "affinity_tags": [
+      "law-jurisprudence",
+      "philosophy",
+      "political-science",
+      "religious-studies"
+    ],
+    "branches_count": 4
+  }
+}

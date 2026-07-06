@@ -1,0 +1,630 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# DISPATCH PACKET TEMPLATES — Machine-readable carrier schemas
+# Version 1.0.0 — 2026-07-06
+# Schema: explorer/dispatch-packet-template/v1
+# DITEMPA BUKAN DIBERI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# Every handoff in the explorer dispatch carries one of these packets.
+# Fields marked REQUIRED must be present. All others are optional.
+# Validation happens at each handoff boundary.
+
+meta:
+  spec: explorer/dispatch-packet-template/v1
+  generated: 2026-07-06T14:30:00Z
+  by: FORGE (000Ω)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. DISPATCH ENVELOPE — Wraps every carrier packet
+# ─────────────────────────────────────────────────────────────────────────────
+dispatch_envelope:
+  spec: explorer/dispatch-envelope/v1
+  description: >
+    Every handoff carries this envelope. It identifies the query,
+    the handoff stage, the source and target agents, and the carrier.
+  fields:
+    spec:                                 # REQUIRED — must be "explorer/dispatch-envelope/v1"
+      type: string
+      example: "explorer/dispatch-envelope/v1"
+    handoff:                              # REQUIRED — H0-H4 or E1
+      type: string
+      enum: ["H0", "H1", "H2", "H3", "H4", "E1"]
+    query_id:                             # REQUIRED — UUID for traceability
+      type: string
+      format: uuid
+      example: "qry_a1b2c3-d4e5-6789-f012-3456789abcde"
+    from:                                 # REQUIRED — source agent
+      type: string
+      enum: ["hermes", "opencode", "openclaw", "aforge", "arifos", "asi"]
+    to:                                   # REQUIRED — target agent
+      type: string
+      enum: ["hermes", "opencode", "openclaw", "aforge", "arifos", "asi", "geox", "wealth", "well"]
+    relay_by:                             # OPTIONAL — only if relayed through Hermes
+      type: string
+      default: "hermes"
+    phase:                                # REQUIRED — current explorer phase
+      type: string
+      enum: ["INIT", "OBSERVE", "HYPOTHESIZE", "FALSIFY", "VERIFY", "EUREKA", "SEALED", "VOIDED"]
+    carrier_packet_type:                  # REQUIRED — which packet is inside
+      type: string
+      enum: [
+        "observation_packet",
+        "hypothesis_packet",
+        "falsification_packet",
+        "verification_packet",
+        "eureka_packet",
+        "verdict_envelope",
+        "scar_packet"
+      ]
+    carrier:                              # REQUIRED — the actual packet (one of below)
+      type: object
+    protocol:                             # REQUIRED — timeout, failover, retry
+      type: object
+      fields:
+        timeout_s:
+          type: integer
+          default: 30
+        retry_count:
+          type: integer
+          default: 1
+        failover:
+          type: string
+          default: "halt"
+        require_verdict:
+          type: boolean
+          default: false
+    sovereign_override:                   # OPTIONAL — Arif can override any field
+      type: boolean
+      default: false
+    timestamp:                            # REQUIRED — ISO8601
+      type: string
+      format: iso8601
+    trace:                                # OPTIONAL — OpenTelemetry trace context
+      type: object
+      fields:
+        trace_id:
+          type: string
+        span_id:
+          type: string
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2. OBSERVATION PACKET — H0 carrier (Hermes → domain organs)
+# ─────────────────────────────────────────────────────────────────────────────
+observation_packet:
+  spec: explorer/observation/v1
+  description: >
+    Carries the original sovereign query and routing context to
+    domain organs for Phase 1 (OBSERVE).
+  fields:
+    query_id:
+      type: string
+      required: true
+    sovereign_query:
+      type: string
+      required: true
+      example: "What is this bright spot in the seismic?"
+    intent_class:
+      type: string
+      required: true
+      enum: ["EVIDENCE", "CAPITAL", "SUBSTRATE", "EXECUTION", "COCKPIT", "JUDGMENT", "COMPOSITE"]
+      example: "EVIDENCE"
+    domain_hints:
+      type: array
+      items: string
+      required: false
+      example: ["seismic", "petroleum-systems", "geology"]
+    organ_targets:
+      type: array
+      items: string
+      required: true
+      example: ["geox", "wealth"]
+    session_id:
+      type: string
+      required: true
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3. HYPOTHESIS PACKET — H1 carrier (Hermes → OpenCode → Hermes)
+# ─────────────────────────────────────────────────────────────────────────────
+hypothesis_packet:
+  spec: explorer/hypothesis/v1
+  description: >
+    Carries the observation context to OpenCode for Phase 2 (HYPOTHESIZE).
+    OpenCode returns this packet with the hypotheses filled in.
+  fields:
+    query_id:
+      type: string
+      required: true
+    observations:
+      type: array
+      items:
+        type: object
+        fields:
+          organ:
+            type: string
+            required: true
+          claim:
+            type: string
+            required: true
+          confidence:
+            type: number
+            min: 0.0
+            max: 1.0
+            required: true
+          label:
+            type: string
+            enum: ["OBS", "DER", "INT", "SPEC"]
+            required: true
+      required: true
+      min_items: 1
+    domain_hints:
+      type: array
+      items: string
+      required: false
+    knowledge_edges_loaded:
+      type: array
+      items: string
+      required: false
+      description: "Which 555-ASI graph edges were consulted"
+      example: ["II.6→VII.10", "I.3→IV.8"]
+    # ── FILLED BY OPENCODE ──
+    hypotheses:
+      type: array
+      items:
+        type: object
+        fields:
+          id:
+            type: string
+            required: true
+            example: "H1"
+          label:
+            type: string
+            required: true
+            example: "bright_spot = gas reservoir"
+          domain_law:
+            type: string
+            required: true
+            example: "seismic-petrophysics"
+          falsifiable_prediction:
+            type: string
+            required: true
+            example: "AVO class II or III at target depth"
+          confidence:
+            type: number
+            min: 0.0
+            max: 0.75
+            required: true
+          uncertainty_band:
+            type: number
+            min: 0.0
+            max: 1.0
+            required: true
+          domain_boundary:
+            type: string
+            required: false
+            example: "Confidence capped at 0.75 — no well tie available"
+      required: true
+      min_items: 3
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4. FALSIFICATION PACKET — H2 carrier (OpenCode → Hermes → A-FORGE)
+# ─────────────────────────────────────────────────────────────────────────────
+falsification_packet:
+  spec: explorer/falsification/v1
+  description: >
+    Carries hypotheses to be falsified. A-FORGE runs the gates and
+    returns the results.
+  fields:
+    query_id:
+      type: string
+      required: true
+    hypotheses:
+      type: array
+      items:
+        $ref: "#/hypothesis_packet/fields/hypotheses/items"
+      required: true
+    gates_to_apply:
+      type: array
+      items:
+        type: string
+        enum: ["physics-contrast", "rock-physics-transform", "biostrat-age",
+               "biostrat-facies", "sequence-stratigraphy", "economics-asymmetry",
+               "economics-collapse", "governance-floors", "governance-maruah",
+               "governance-capture"]
+      required: true
+      min_items: 1
+    scar_check_first:
+      type: boolean
+      default: true
+      required: false
+    organ_targets:
+      type: array
+      items: string
+      required: true
+      example: ["geox", "wealth"]
+    # ── FILLED BY A-FORGE ──
+    scar_check_result:
+      type: object
+      required: false
+      fields:
+        performed:
+          type: boolean
+        found:
+          type: boolean
+        scar_id:
+          type: string
+          required: false
+    gate_results:
+      type: array
+      items:
+        type: object
+        fields:
+          gate:
+            type: string
+          hypothesis_id:
+            type: string
+          verdict:
+            type: string
+            enum: ["PASS", "FAIL", "CONTRADICTION", "INCONCLUSIVE"]
+          evidence:
+            type: string
+          organ_used:
+            type: string
+      required: false
+    eureka_triggered:
+      type: boolean
+      default: false
+      required: false
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5. VERIFICATION PACKET — H3 carrier (A-FORGE → Hermes → arifOS)
+# ─────────────────────────────────────────────────────────────────────────────
+verification_packet:
+  spec: explorer/verification/v1
+  description: >
+    Carries the surviving hypothesis and full falsification trail to
+    arifOS for constitutional verdict.
+  fields:
+    query_id:
+      type: string
+      required: true
+    surviving_hypothesis:
+      type: object
+      fields:
+        id:
+          type: string
+          required: true
+        label:
+          type: string
+          required: true
+        confidence:
+          type: number
+          min: 0.0
+          max: 1.0
+          required: true
+        uncertainty:
+          type: number
+          min: 0.0
+          max: 1.0
+          required: true
+    falsification_summary:
+      type: object
+      required: true
+      additional_properties:
+        type: object
+        fields:
+          gates_passed:
+            type: integer
+          gates_failed:
+            type: integer
+          verdict:
+            type: string
+            enum: ["FALSIFIED", "SURVIVED", "INCONCLUSIVE"]
+    scar_check:
+      type: object
+      fields:
+        performed:
+          type: boolean
+        found:
+          type: boolean
+        scar_id:
+          type: string
+          required: false
+    test_plan:
+      type: array
+      items:
+        type: object
+        fields:
+          step_id:
+            type: string
+          tool:
+            type: string
+          parameters:
+            type: object
+          expected_outcome:
+            type: string
+          falsification_if_fails:
+            type: string
+      required: false
+    # ── FILLED BY arifOS ──
+    verdict:
+      type: string
+      enum: ["SEAL", "SABAR", "HOLD", "VOID"]
+      required: false
+    violated_floors:
+      type: array
+      items: string
+      required: false
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. EUREKA PACKET — E1 carrier (A-FORGE → Hermes → arifOS)
+# ─────────────────────────────────────────────────────────────────────────────
+eureka_packet:
+  spec: explorer/eureka/v1
+  description: >
+    Triggered when a contradiction survives ≥2 falsification gates.
+    Routes directly to arifOS for constitutional eureka review.
+  fields:
+    query_id:
+      type: string
+      required: true
+    contradiction:
+      type: object
+      required: true
+      fields:
+        claim_a:
+          type: string
+          required: true
+          example: "bright amplitude = gas (AVO class III)"
+        claim_b:
+          type: string
+          required: true
+          example: "burial depth < 800m (AVO class III requires >1500m)"
+        domain_a:
+          type: string
+          required: true
+          example: "seismic"
+        domain_b:
+          type: string
+          required: true
+          example: "burial-history"
+        evidence_a:
+          type: object
+          required: true
+          fields:
+            label:
+              type: string
+              enum: ["OBS", "DER", "INT", "SPEC"]
+            confidence:
+              type: number
+              min: 0.0
+              max: 1.0
+        evidence_b:
+          type: object
+          required: true
+          fields:
+            label:
+              type: string
+              enum: ["OBS", "DER", "INT", "SPEC"]
+            confidence:
+              type: number
+              min: 0.0
+              max: 1.0
+    gates_survived:
+      type: array
+      items: string
+      required: true
+      min_items: 2
+    hypothesis_candidates:
+      type: array
+      items: string
+      required: true
+      example: ["H1", "H2"]
+    scar_check:
+      type: object
+      fields:
+        performed:
+          type: boolean
+        found:
+          type: boolean
+      required: false
+    # ── FILLED BY arifOS ──
+    eureka_verdict:
+      type: string
+      enum: ["SEAL", "HOLD", "SABAR", "VOID"]
+      required: false
+    new_graph_edge:
+      type: object
+      required: false
+    scar_recommendation:
+      type: object
+      required: false
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7. VERDICT ENVELOPE — H4 carrier (arifOS → Hermes → 555-ASI)
+# ─────────────────────────────────────────────────────────────────────────────
+verdict_envelope:
+  spec: explorer/verdict/v1
+  description: >
+    Final constitutional outcome. Sealed to VAULT999 and recorded
+    as new knowledge graph edge in 555-ASI.
+  fields:
+    query_id:
+      type: string
+      required: true
+    verdict:
+      type: string
+      required: true
+      enum: ["SEAL", "SABAR", "HOLD", "VOID"]
+    reason:
+      type: string
+      required: true
+    violated_floors:
+      type: array
+      items:
+        type: string
+        example: "F9 ANTI-HANTU — confidence exceeded 0.90 with SPEC evidence"
+      required: false
+    new_graph_edges:
+      type: array
+      items:
+        type: object
+        fields:
+          source:
+            type: string
+            required: true
+          target:
+            type: string
+            required: true
+          type:
+            type: string
+            enum: ["discovered", "resolved_contradiction", "prerequisite", "overlap"]
+            required: true
+          note:
+            type: string
+            required: true
+      required: false
+    scar:
+      type: object
+      required: false
+      fields:
+        falsified_assumption:
+          type: string
+          required: true
+        enforced_rule:
+          type: string
+          required: true
+        domain:
+          type: string
+          required: true
+    witness:
+      type: object
+      required: false
+      fields:
+        human:
+          type: string
+          default: "Arif (F13 SOVEREIGN)"
+        ai:
+          type: array
+          items: string
+        external:
+          type: string
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 8. SCAR PACKET — Side effect of any SEAL verdict
+# ─────────────────────────────────────────────────────────────────────────────
+scar_packet:
+  spec: explorer/scar/v1
+  description: >
+    Records a falsified assumption as a permanent constraint.
+    Always accompanies a SEAL verdict.
+  fields:
+    query_id:
+      type: string
+      required: true
+    scar_id:
+      type: string
+      required: true
+      example: "scar_seismic_avodepth_001"
+    falsified_assumption:
+      type: string
+      required: true
+      example: "bright amplitude = hydrocarbon without depth context"
+    enforced_rule:
+      type: string
+      required: true
+      example: "AVO class must be validated against burial depth and thermal history"
+    domain:
+      type: string
+      required: true
+      example: "seismic"
+    severity:
+      type: string
+      enum: ["low", "medium", "high", "critical"]
+      required: true
+    originated_from:
+      type: string
+      required: true
+      example: "eureka_packet E1 — contradiction: AVO class vs burial depth"
+    timestamp:
+      type: string
+      format: iso8601
+      required: true
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 9. EXAMPLE: Complete H2 handoff (OBSERVE → HYPOTHESIZE)
+# ─────────────────────────────────────────────────────────────────────────────
+example_h2_handoff:
+  spec: explorer/dispatch-envelope/v1
+  handoff: "H2"
+  query_id: "qry_a1b2c3-d4e5-6789-f012-3456789abcde"
+  from: "opencode"
+  to: "aforge"
+  relay_by: "hermes"
+  phase: "FALSIFY"
+  carrier_packet_type: "falsification_packet"
+  carrier:
+    spec: explorer/falsification/v1
+    query_id: "qry_a1b2c3-d4e5-6789-f012-3456789abcde"
+    hypotheses:
+      - id: "H1"
+        label: "bright_spot = gas reservoir"
+        domain_law: "seismic-petrophysics"
+        falsifiable_prediction: "AVO class II or III at 1200m depth"
+        confidence: 0.70
+        uncertainty_band: 0.25
+      - id: "H2"
+        label: "bright_spot = coal seam"
+        domain_law: "geology-coal"
+        falsifiable_prediction: "Low impedance contrast, no AVO anomaly"
+        confidence: 0.65
+        uncertainty_band: 0.20
+      - id: "H3"
+        label: "bright_spot = processing artifact"
+        domain_law: "seismic-processing"
+        falsifiable_prediction: "Not reproducible on raw stack"
+        confidence: 0.55
+        uncertainty_band: 0.30
+    gates_to_apply:
+      - "physics-contrast"
+      - "rock-physics-transform"
+      - "economics-asymmetry"
+    scar_check_first: true
+    organ_targets: ["geox", "wealth"]
+  protocol:
+    timeout_s: 300
+    retry_count: 1
+    failover: "geox-direct"
+    require_verdict: false
+  timestamp: "2026-07-06T14:30:00Z"
