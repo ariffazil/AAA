@@ -238,6 +238,14 @@ Only warga agents may inject humour into the governance layer. External agents c
 
 **APEX (888_JUDGE)** is a constitutional organ of arifOS, not an agent managed by AAA. APEX is NOT Hermes. AAA holds APEX's agent card for discovery purposes only. Verdict authority stays in arifOS.
 
+## 🧬 EVIDENCE — AGI/ASI Honest Status
+
+> **Zen:** `docs/ZEN-AGI-ASI.md` (2026-07-06) — the philosophical essence. Read this first.
+> **Dossier:** `docs/AGI-ASI-EVIDENCE.md` (2026-07-06) — full OBS-tagged evidence assessment.
+> **Verdict:** AGI architecture proven, AGI evidence NOT YET. ASI substrate ready, ASI emergence NOT YET.
+> **The gap:** No agent has completed a full OBSERVE→HYPOTHESIZE→FALSIFY→VERIFY→SEAL loop.
+> **AGI/ASI labels are directional** — they describe what the system is built to become, not what it has proven.
+
 ## HEXAGON (Constitutional Agent Layer)
 
 The 5-agent constitutional architecture (HEXAGON, formerly PENTAGON) sits **above** the 7-organ runtime topology. Each HEXAGON agent maps to one or more physical organs:
