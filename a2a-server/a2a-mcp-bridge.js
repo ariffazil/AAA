@@ -126,6 +126,44 @@ async function callMCPTool(organKey, toolName, args, timeoutMs = 15000) {
 // ── A2A Bridge ──────────────────────────────────────────────────────
 
 /**
+ * Validate explorer nodes dependencies to ensure data flow integrity.
+ */
+function validateExplorerDependencies(organKey, toolName, args) {
+  const provenance = args?.provenance || args || {};
+  const dependencySeal = provenance.parent_seal_hash || args?.parent_seal_hash || args?.judge_state_hash;
+
+  // Enforce explorer dependency rules only for the explicit explorer chain.
+  if (toolName === 'wealth_capital_explorer' || toolName === 'wealth_compute_npv' || toolName === 'wealth_compute_irr') {
+    if (!dependencySeal) {
+      return {
+        ok: false,
+        error: "Dependency violation: wealth_capital_explorer depends on geox_subsurface_explorer. Missing required parent seal or judge state reference in payload.provenance."
+      };
+    }
+  }
+  
+  if (toolName === 'well_substrate_explorer' || toolName === 'well_assess_homeostasis') {
+    if (!dependencySeal) {
+      return {
+        ok: false,
+        error: "Dependency violation: well_substrate_explorer depends on wealth_capital_explorer. Missing required parent seal or judge state reference in payload.provenance."
+      };
+    }
+  }
+  
+  if (toolName === 'aforge_orchestrator') {
+    if (!dependencySeal) {
+      return {
+        ok: false,
+        error: "Dependency violation: aforge_orchestrator depends on well_substrate_explorer. Missing required parent seal or judge state reference in payload.provenance."
+      };
+    }
+  }
+
+  return { ok: true };
+}
+
+/**
  * Bridge an A2A task to an MCP tool call and return an A2A response.
  *
  * Expected A2A task structure:
@@ -179,6 +217,28 @@ async function bridgeTask(task, options = {}) {
 
   // Mark as WORKING in task store
   const taskId = params.id || `bridge-${Date.now()}`;
+
+  // Enforce explorer dependency rules
+  const depCheck = validateExplorerDependencies(resolvedOrgan, toolName, args);
+  if (!depCheck.ok) {
+    try {
+      await writeSeal(
+        { id: taskId, contextId: params.contextId || taskId, status: { state: 'FAILED' }, metadata },
+        'aaa-bridge',
+        `mcp.call.${resolvedOrgan}.${toolName}.dependency_error`,
+        { error: depCheck.error, organ: resolvedOrgan, tool: toolName }
+      );
+    } catch { /* best effort */ }
+
+    return buildA2AResponse(task, {
+      status: 'FAILED',
+      error: {
+        code: -32602,
+        message: depCheck.error,
+        data: { organ: resolvedOrgan, tool: toolName },
+      },
+    });
+  }
 
   // Call the MCP tool
   const mcpResult = await callMCPTool(resolvedOrgan, toolName, args);
@@ -368,4 +428,5 @@ module.exports = {
   bridgeHealth,
   getOrganMap,
   ORGAN_MAP,
+  validateExplorerDependencies,
 };
