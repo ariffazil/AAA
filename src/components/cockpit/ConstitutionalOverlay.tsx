@@ -71,12 +71,6 @@ export default function ConstitutionalOverlay() {
   const [rules, setRules] = useState<DelegationRule[]>([]);
   const [expanded, setExpanded] = useState(false);
 
-  useEffect(() => {
-    fetchOverlayStatus();
-    const interval = setInterval(fetchOverlayStatus, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
   const fetchOverlayStatus = async () => {
     try {
       // Fetch aaa-a2a health (Python server on :3002 when ready, fallback to Express :3001)
@@ -140,6 +134,12 @@ export default function ConstitutionalOverlay() {
       setStatus(prev => ({ ...prev, server: 'offline' }));
     }
   };
+
+  useEffect(() => {
+    fetchOverlayStatus();
+    const interval = setInterval(fetchOverlayStatus, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   const serverColor = status.server === 'online' ? 'text-emerald-400' : status.server === 'offline' ? 'text-red-400' : 'text-yellow-400';
   const serverIcon = status.server === 'online' ? <ShieldCheck className="w-5 h-5" /> : <ShieldAlert className="w-5 h-5" />;
