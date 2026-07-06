@@ -1,0 +1,271 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# AGENT-STAGE-MAP — Machine-readable explorer choreography
+# Version 1.0.0 — 2026-07-06
+# Schema: explorer/agent-stage-map/v1
+# DITEMPA BUKAN DIBERI
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# This file is parsed by Hermes at dispatch time to determine:
+#   - which agent handles each phase
+#   - what transport to use
+#   - what timeout applies
+#   - what failover to attempt
+#   - what capability each agent must expose
+
+meta:
+  spec: explorer/agent-stage-map/v1
+  generated: 2026-07-06T14:30:00Z
+  by: FORGE (000Ω)
+  sovereign: Arif (F13)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# AGENT REGISTRY — Every agent in the explorer civilization
+# ─────────────────────────────────────────────────────────────────────────────
+agents:
+  hermes:
+    role: explorer-router
+    entry: true                          # receives sovereign query first
+    phases: ["INIT", "OBSERVE", "DISPATCH", "EUREKA"]
+    transport: a2a-json-rpc              # speaks A2A to other agents
+    timeout_default_s: 30
+    max_concurrent: 5
+    capabilities:
+      - route-query
+      - orchestrate-handoff
+      - surface-verdict
+      - track-dispatch-state
+    failover: null                       # no failover — Hermes is the brainstem
+    session_style: reactive-long-running
+
+  opencode:
+    role: hypothesis-engine
+    entry: false
+    phases: ["HYPOTHESIZE"]
+    transport: a2a-json-rpc
+    timeout_default_s: 60
+    max_concurrent: 3
+    capabilities:
+      - generate-hypotheses
+      - consult-knowledge-graph
+      - tag-uncertainty
+      - declare-domain-boundaries
+    failover: arif-think                 # if unreachable, Hermes falls back to arif_think
+    session_style: interactive-deep
+
+  openclaw:
+    role: falsify-executor
+    entry: false
+    phases: ["FALSIFY", "VERIFY"]
+    transport: a2a-json-rpc
+    timeout_default_s: 300
+    max_concurrent: 2
+    capabilities:
+      - run-falsification-gates
+      - execute-test-suite
+      - check-scars
+      - run-verification
+    failover: hermes-lite                # if unreachable, Hermes runs lightweight falsify
+    session_style: task-bounded
+
+  aforge:
+    role: test-substrate
+    entry: false
+    phases: ["FALSIFY"]
+    transport: mcp-stdio
+    timeout_default_s: 120
+    max_concurrent: 4
+    capabilities:
+      - forge-execute
+      - forge-sandbox-run
+      - forge-scar-consult
+      - forge-surface-audit
+    failover: geox-direct                # if unreachable, call GEOX tools directly
+    session_style: ephemeral
+
+  arifos:
+    role: constitutional-judge
+    entry: false
+    phases: ["VERIFY", "EUREKA"]
+    transport: mcp-http
+    timeout_default_s: 10
+    max_concurrent: 10
+    capabilities:
+      - judge-verdict
+      - critique-floors
+      - seal-eureka
+      - render-hold
+    failover: halt                       # if unreachable, cannot proceed — constitutional
+    session_style: synchronous
+
+  asi:
+    role: knowledge-graph
+    entry: false
+    phases: ["SEALED"]
+    transport: filesystem
+    timeout_default_s: 5
+    max_concurrent: 10
+    capabilities:
+      - append-graph-edge
+      - record-scar
+      - update-integrity-hash
+    failover: log-for-manual-merge
+    session_style: append-only
+
+  aaa:
+    role: continuity-layer
+    entry: false
+    phases: ["ALL"]
+    transport: mcp-http
+    timeout_default_s: 5
+    max_concurrent: 10
+    capabilities:
+      - bind-identity
+      - issue-lease
+      - verify-domain-law
+      - track-session
+    failover: use-cached-identity
+    session_style: persistent
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# STAGE MAP — Which agent handles each phase in what order
+# ─────────────────────────────────────────────────────────────────────────────
+stages:
+  init:
+    order: 0
+    agent: hermes
+    action: classify-intent
+    next: observe
+
+  observe:
+    order: 1
+    agent: hermes
+    action: route-to-domain-organs
+    next: hypothesize
+    fail_next: observe                     # no OBS claim ≥ 0.70 → widen aperture
+    requires: [arifos]                     # session must be bound
+
+  hypothesize:
+    order: 2
+    agent: opencode
+    action: generate-competing-hypotheses
+    min_output: 3                          # must return ≥3 hypotheses
+    next: falsify
+    fail_next: observe                     # < 3 hypotheses → knowledge gap → re-observe
+    requires: [asi]                        # must consult knowledge graph
+
+  falsify:
+    order: 3
+    agent: openclaw
+    action: run-falsification-gates
+    subcontractors: [aforge]               # actual execution runs on A-FORGE substrate
+    next: verify
+    eureka_next: eureka                    # if contradiction ≥2 gates
+    fail_next: observe                     # all falsified → re-observe (not failure)
+    requires: [asi, arifos]                # scar check + constitutional awareness
+    max_iterations: 3                      # anti-mirror-loop
+
+  verify:
+    order: 4
+    agent: arifos
+    action: render-constitutional-verdict
+    next: sealed
+    fail_next: hypothesize                 # uncertainty > 0.20 → new hypotheses needed
+    hold_next: sovereign                   # HOLD verdict → surface to sovereign
+    requires: [arifos]                     # self — constitutional layer
+    min_confidence: 0.80                   # minimum confidence to SEAL
+
+  eureka:
+    order: 5
+    agent: arifos
+    action: constitutional-eureka-review
+    next: sealed
+    hold_next: sovereign
+    requires: [arifos, asi]               # judgment + graph update
+    min_gates: 2                           # contradiction must survive ≥2 gates
+
+  sealed:
+    order: 6
+    agent: asi
+    action: record-to-graph
+    next: null                             # terminal
+    requires: [arifos]                     # must have SEAL verdict
+    side_effects: [scar-record, vault999-append]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# HANDOFF MATRIX (derived from stages above)
+# ─────────────────────────────────────────────────────────────────────────────
+# Machine-readable version of the dispatch protocol.
+# Hermes reads this to determine the next handoff.
+
+handoffs:
+  h0:
+    from: hermes
+    to: geox, wealth, well               # domain organs
+    phase: OBSERVE
+    timeout_s: 30
+    carrier_spec: explorer/observation/v1
+    fail_safe: use-cached-data
+
+  h1:
+    from: hermes
+    to: opencode
+    phase: HYPOTHESIZE
+    timeout_s: 60
+    carrier_spec: explorer/observation/v1
+    failover: arif-think
+    fail_safe: return-to-observe
+
+  h2:
+    from: opencode
+    relay: hermes                        # Hermes always relays
+    to: aforge
+    phase: FALSIFY
+    timeout_s: 300
+    carrier_spec: explorer/falsification/v1
+    failover: geox-direct
+    fail_safe: return-partial
+
+  h3:
+    from: aforge
+    relay: hermes
+    to: arifos
+    phase: VERIFY
+    timeout_s: 10
+    carrier_spec: explorer/verification/v1
+    failover: halt
+    fail_safe: halt                      # constitutional — cannot bypass
+
+  h4:
+    from: arifos
+    relay: hermes
+    to: asi
+    phase: SEALED
+    timeout_s: 5
+    carrier_spec: explorer/verdict/v1
+    failover: log-for-manual-merge
+    fail_safe: log-for-manual-merge
+
+  e1:
+    from: aforge
+    relay: hermes
+    to: arifos
+    phase: EUREKA
+    timeout_s: 10
+    carrier_spec: explorer/eureka/v1
+    failover: surface-to-sovereign
+    fail_safe: surface-to-sovereign
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CONSTRAINTS (global invariants for dispatch)
+# ─────────────────────────────────────────────────────────────────────────────
+constraints:
+  max_dispatch_time_s: 600               # total wall clock
+  max_iterations_per_phase: 3            # anti-mirror-loop
+  require_session: true                  # every dispatch must have active session
+  require_lease_for_mutate: true         # FALSIFY + VERIFY need lease
+  health_check_before_dispatch: true     # verify target organ is alive
+  log_every_handoff: true                # F11 audit
+  sovereign_override_allowed: true       # Arif can override any handoff

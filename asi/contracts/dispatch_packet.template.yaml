@@ -1,0 +1,85 @@
+dispatch_envelope:
+  packet_type: dispatch_envelope
+  handoff_id: h-YYYYMMDD-001
+  query_id: q-YYYYMMDD-001
+  from_agent: hermes
+  to_agent: opencode
+  phase: observe
+  route_reason: ""
+  packet_ref: observation_packet
+  validated: false
+  timestamps:
+    started_at: "2026-07-06T00:00:00Z"
+    completed_at: null
+
+observation_packet:
+  packet_type: observation_packet
+  packet_id: op-YYYYMMDD-001
+  query: ""
+  observations: []
+  domain_hints: []
+  owning_organs: []
+  next_route: opencode
+  receipts: []
+
+hypothesis_packet:
+  packet_type: hypothesis_packet
+  packet_id: hp-YYYYMMDD-001
+  query: ""
+  observation_refs: []
+  hypotheses: []
+  next_route: router
+  receipts: []
+
+falsification_packet:
+  packet_type: falsification_packet
+  packet_id: fp-YYYYMMDD-001
+  query: ""
+  hypothesis_refs: []
+  falsifiers: []
+  tests: []
+  next_route:
+    route_owner: openclaw
+    route_mode: local
+    escalation_reason: ""
+  owning_organs: []
+  receipts: []
+
+verification_packet:
+  packet_type: verification_packet
+  packet_id: vp-YYYYMMDD-001
+  query: ""
+  survivor_refs: []
+  falsification_summary: {}
+  uncertainty_band: 0.0
+  verdict_candidate: null
+  next_route: arifos
+  receipts: []
+
+eureka_packet:
+  packet_type: eureka_packet
+  packet_id: ep-YYYYMMDD-001
+  contradiction_refs: []
+  domains_touched: []
+  compression_failure: ""
+  constitutional_review_required: true
+  next_route: arifos
+  receipts: []
+
+verdict_envelope:
+  packet_type: verdict_envelope
+  packet_id: ve-YYYYMMDD-001
+  verdict: HOLD
+  source_packet: verification_packet
+  graph_updates: []
+  next_route: asi
+  receipts: []
+
+scar_packet:
+  packet_type: scar_packet
+  packet_id: sp-YYYYMMDD-001
+  falsified_assumption: ""
+  permanent_constraint: ""
+  scope: ""
+  next_route: asi
+  receipts: []

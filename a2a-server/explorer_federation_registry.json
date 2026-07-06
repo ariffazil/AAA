@@ -1,0 +1,163 @@
+{
+  "$schema": "arifos:federation:explorer-dependency-registry:v1:2026-07-06",
+  "description": "Concrete dependency registry for all explorer tools across GEOX, WEALTH, WELL, A-FORGE. Each edge enforces ordered handoff: parent explorer must have sealed output before child explorer can run.",
+  "ratified": "2026-07-06",
+  "ratified_by": "F13 SOVEREIGN — Arif",
+  "explorers": [
+    {
+      "explorer_id": "geox_seismic_explorer",
+      "domain": "earth",
+      "organ": "GEOX",
+      "tools": ["geox_seismic_compute", "geox_seismic_ingest", "geox_well_tie_compute"],
+      "depends_on": [],
+      "produces": [
+        { "signal_type": "subsurface_model", "payload_schema": { "velocity_model": "object", "horizon_picks": "array", "fault_polygons": "array" } },
+        { "signal_type": "seismic_interpretation", "payload_schema": { "horizons": "array", "faults": "array", "confidence": "number" } },
+        { "signal_type": "velocity_model", "payload_schema": { "type": "string", "depth_m": "array", "vp_m_s": "array", "qc_flag": "boolean" } }
+      ]
+    },
+    {
+      "explorer_id": "geox_well_explorer",
+      "domain": "earth",
+      "organ": "GEOX",
+      "tools": ["geox_well_ingest", "geox_well_qc", "geox_petrophysics", "geox_well_desurvey"],
+      "depends_on": [],
+      "produces": [
+        { "signal_type": "well_log_qc", "payload_schema": { "curves_loaded": "array", "depth_range": "object", "missing_intervals": "array", "qc_verdict": "string" } },
+        { "signal_type": "formation_top", "payload_schema": { "top_name": "string", "depth_md_m": "number", "depth_tvdss_m": "number", "confidence": "string" } },
+        { "signal_type": "petrophysical_evaluation", "payload_schema": { "vsh": "array", "porosity": "array", "sw": "array", "net_pay_m": "number" } }
+      ]
+    },
+    {
+      "explorer_id": "geox_stratigraphy_explorer",
+      "domain": "earth",
+      "organ": "GEOX",
+      "tools": ["geox_biostrat_falsify", "geox_contradiction_engine", "geox_sequence"],
+      "depends_on": [
+        { "explorer_id": "geox_well_explorer", "required_signals": ["formation_top"] }
+      ],
+      "produces": [
+        { "signal_type": "biostrat_age", "payload_schema": { "zone": "string", "age_top_ma": "number", "age_base_ma": "number", "calibration": "string" } },
+        { "signal_type": "stratigraphic_correlation", "payload_schema": { "wells": "array", "correlation_type": "string", "confidence": "number", "contradictions": "array" } },
+        { "signal_type": "contradiction_report", "payload_schema": { "falsified": "boolean", "checks": "array", "conclusion": "string" } }
+      ]
+    },
+    {
+      "explorer_id": "geox_basin_explorer",
+      "domain": "earth",
+      "organ": "GEOX",
+      "tools": ["geox_basin", "geox_prospect", "geox_deep_time_state", "geox_atlas"],
+      "depends_on": [
+        { "explorer_id": "geox_seismic_explorer", "required_signals": ["subsurface_model"] },
+        { "explorer_id": "geox_stratigraphy_explorer", "required_signals": ["stratigraphic_correlation"] },
+        { "explorer_id": "geox_well_explorer", "required_signals": ["petrophysical_evaluation"] }
+      ],
+      "produces": [
+        { "signal_type": "prospect_volume", "payload_schema": { "p90_volume_bcm": "number", "p50_volume_bcm": "number", "p10_volume_bcm": "number", "units": "string" } },
+        { "signal_type": "pos_geological", "payload_schema": { "pos_charge": "number", "pos_reservoir": "number", "pos_seal": "number", "pos_trap": "number", "pos_timing": "number", "pos_geological": "number" } },
+        { "signal_type": "play_fairway", "payload_schema": { "basin": "string", "play": "string", "area_km2": "number", "risk_profile": "object" } }
+      ]
+    },
+    {
+      "explorer_id": "wealth_capital_explorer",
+      "domain": "capital",
+      "organ": "WEALTH",
+      "tools": ["wealth_compute_npv", "wealth_compute_irr", "wealth_conservation_check", "wealth_flow_check", "wealth_survival_engine"],
+      "depends_on": [
+        { "explorer_id": "geox_basin_explorer", "required_signals": ["prospect_volume", "pos_geological"] }
+      ],
+      "produces": [
+        { "signal_type": "npv", "payload_schema": { "value_musd": "number", "discount_rate": "number", "cashflows": "array" } },
+        { "signal_type": "capital_stress", "payload_schema": { "runway_months": "number", "burn_rate": "number", "liquidity_ratio": "number" } },
+        { "signal_type": "portfolio_risk", "payload_schema": { "var_95": "number", "cvar_95": "number", "sharpe_ratio": "number", "max_drawdown_pct": "number" } }
+      ]
+    },
+    {
+      "explorer_id": "wealth_scenario_explorer",
+      "domain": "capital",
+      "organ": "WEALTH",
+      "tools": ["wealth_monte_carlo_simulate", "wealth_fiscal_breakeven", "wealth_stock_analysis"],
+      "depends_on": [
+        { "explorer_id": "wealth_capital_explorer", "required_signals": ["npv", "capital_stress"] }
+      ],
+      "produces": [
+        { "signal_type": "fiscal_breakeven", "payload_schema": { "breakeven_price_usd": "number", "pressure": "string", "sensitivity": "object" } },
+        { "signal_type": "market_scenario", "payload_schema": { "base_case": "object", "bull_case": "object", "bear_case": "object", "probabilities": "object" } },
+        { "signal_type": "sensitivity_analysis", "payload_schema": { "parameters": "array", "tornado_chart": "object" } }
+      ]
+    },
+    {
+      "explorer_id": "wealth_risk_explorer",
+      "domain": "capital",
+      "organ": "WEALTH",
+      "tools": ["wealth_collapse_signature_scan", "wealth_asymmetry_check", "wealth_power_audit", "wealth_confluence_check"],
+      "depends_on": [
+        { "explorer_id": "wealth_capital_explorer", "required_signals": ["portfolio_risk"] },
+        { "explorer_id": "geox_basin_explorer", "required_signals": ["pos_geological"] },
+        { "explorer_id": "wealth_scenario_explorer", "required_signals": ["market_scenario"] }
+      ],
+      "produces": [
+        { "signal_type": "collapse_signature", "payload_schema": { "risk_score": "number", "profile": "object", "tripwires": "array", "priors_used": "array" } },
+        { "signal_type": "risk_asymmetry", "payload_schema": { "upside_potential": "number", "downside_potential": "number", "skew": "string" } },
+        { "signal_type": "tripwire_alert", "payload_schema": { "severity": "string", "signal": "string", "threshold_exceeded": "boolean" } }
+      ]
+    },
+    {
+      "explorer_id": "well_substrate_explorer",
+      "domain": "wellness",
+      "organ": "WELL",
+      "tools": ["well_assess_homeostasis", "well_assess_metabolism", "well_assess_reliability"],
+      "depends_on": [
+        { "explorer_id": "wealth_capital_explorer", "required_signals": ["capital_stress"] },
+        { "explorer_id": "well_vitality_explorer", "required_signals": ["vitality_score"] }
+      ],
+      "produces": [
+        { "signal_type": "metabolic_flux", "payload_schema": { "cognitive_entropy": "number", "machine_entropy": "number", "flux": "number", "reallocation_signal": "boolean" } },
+        { "signal_type": "reliability_score", "payload_schema": { "tool_reliability": "number", "system_stability": "number", "degraded_services": "array" } },
+        { "signal_type": "readiness_level", "payload_schema": { "decision_class": "string", "fatigue_index": "number", "stress_load": "number" } }
+      ]
+    },
+    {
+      "explorer_id": "well_vitality_explorer",
+      "domain": "wellness",
+      "organ": "WELL",
+      "tools": ["well_validate_vitality", "well_readiness"],
+      "depends_on": [],
+      "produces": [
+        { "signal_type": "vitality_score", "payload_schema": { "score": "number", "color": "string", "ttl_hours": "number" } },
+        { "signal_type": "fatigue_index", "payload_schema": { "decision_fatigue": "number", "sleep_debt_days": "number", "cognitive_clarity": "number" } },
+        { "signal_type": "decision_class", "payload_schema": { "class": "string", "meaning": "string", "auto_throttle": "boolean" } }
+      ]
+    },
+    {
+      "explorer_id": "aforge_orchestrator",
+      "domain": "forge",
+      "organ": "A-FORGE",
+      "tools": ["forge_execute", "forge_approve", "forge_seal", "forge_pipeline_run"],
+      "depends_on": [
+        { "explorer_id": "well_substrate_explorer", "required_signals": ["readiness_level"] },
+        { "explorer_id": "well_vitality_explorer", "required_signals": ["decision_class"] },
+        { "explorer_id": "wealth_risk_explorer", "required_signals": ["tripwire_alert"] }
+      ],
+      "produces": [
+        { "signal_type": "execution_warrant", "payload_schema": { "allowed_blast_radius": "string", "lease_duration_sec": "integer", "tool_scope": "array" } },
+        { "signal_type": "forge_id", "payload_schema": { "forge_id": "string", "session_id": "string", "witness_receipt": "string" } }
+      ]
+    }
+  ],
+  "dependency_graph": {
+    "description": "Ordered handoff chain: GEOX → WEALTH → WELL → A-FORGE",
+    "chain": [
+      "geox_seismic_explorer (no deps)",
+      "geox_well_explorer (no deps)",
+      "  └─ geox_stratigraphy_explorer (needs: formation_top)",
+      "    └─ geox_basin_explorer (needs: subsurface_model + stratigraphic_correlation + petrophysical_evaluation)",
+      "      └─ wealth_capital_explorer (needs: prospect_volume + pos_geological)",
+      "        ├─ wealth_scenario_explorer (needs: npv + capital_stress)",
+        "        └─ wealth_risk_explorer (needs: portfolio_risk + pos_geological + market_scenario)",
+      "well_vitality_explorer (no deps)",
+        "└─ well_substrate_explorer (needs: capital_stress + vitality_score)",
+        "  └─ aforge_orchestrator (needs: readiness_level + decision_class + tripwire_alert)"
+    ]
+  }
+}

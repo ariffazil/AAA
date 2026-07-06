@@ -1,0 +1,304 @@
+# ═══════════════════════════════════════════════════════════════
+# 555-ASI Knowledge Graph Schema — v1.0
+# The territory. Every node is a place in the universe of knowing.
+# ═══════════════════════════════════════════════════════════════
+# Storage: Postgres (structured) + Qdrant (vectors) + FalkorDB (graph)
+# Authority: 555-ASI synthesizes, arifOS judges, Arif decides.
+# ═══════════════════════════════════════════════════════════════
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "arifos://schemas/555-asi/knowledge-graph/v1.0"
+title: "555-ASI Knowledge Graph"
+description: >
+  Node and edge schema for the ASI knowledge constitution.
+  7 domains × ~84 branches × ~1,260 subfields. Infinite claims and evidence.
+  Nodes are typed. Edges are directed and labeled. Provenance is mandatory.
+
+# ─────────────────────────────────────────────────────────────
+# NODE TYPES — what exists in the graph
+# ─────────────────────────────────────────────────────────────
+
+definitions:
+
+  # ── DOMAIN (level 0) — the seven master territories ──
+  DomainNode:
+    type: object
+    required: [id, type, name, law_type, invariants]
+    properties:
+      id:
+        type: string
+        pattern: "^domain:[a-z_]+$"
+        description: "Canonical ID. e.g. domain:formal, domain:physical"
+      type:
+        const: "domain"
+      name:
+        type: string
+        description: "Human-readable. e.g. 'Physical — What the Universe Does'"
+      law_type:
+        type: string
+        enum: [formal, natural, biological, cultural, engineered, social, hybrid]
+        description: "What kind of law governs this domain"
+      invariants:
+        type: array
+        items:
+          type: object
+          properties:
+            name: { type: string }
+            description: { type: string }
+            enforced_by: { type: string, enum: [kernel, organ, agent, human] }
+        description: "Domain-specific invariants (beyond Δ·Ω·Ψ)"
+      organs:
+        type: array
+        items: { type: string }
+        description: "Which federation organs operate in this domain"
+      branches:
+        type: array
+        items: { type: string }
+        description: "References to BranchNode IDs"
+      uncertainty_cap:
+        type: number
+        minimum: 0
+        maximum: 1
+        default: 0.90
+        description: "Maximum confidence allowed in this domain (F7 HUMILITY)"
+      metadata:
+        $ref: "#/definitions/NodeMetadata"
+
+  # ── BRANCH (level 1) — major subdivision ──
+  BranchNode:
+    type: object
+    required: [id, type, name, domain]
+    properties:
+      id:
+        type: string
+        pattern: "^branch:[a-z_]+:[a-z_]+$"
+        description: "e.g. branch:physical:physics, branch:life:biology"
+      type:
+        const: "branch"
+      name: { type: string }
+      domain:
+        type: string
+        description: "Parent DomainNode ID"
+      subfields:
+        type: array
+        items: { type: string }
+        description: "References to SubfieldNode IDs"
+      tools:
+        type: array
+        items: { type: string }
+        description: "Federation tools that operate in this branch"
+      epistemic_floor:
+        type: string
+        enum: [OBS, DER, INT, SPEC]
+        description: "Minimum evidence class required for claims here"
+      metadata:
+        $ref: "#/definitions/NodeMetadata"
+
+  # ── SUBFIELD (level 2) — specific area of knowledge ──
+  SubfieldNode:
+    type: object
+    required: [id, type, name, branch]
+    properties:
+      id:
+        type: string
+        pattern: "^subfield:[a-z_]+:[a-z_]+:[a-z_]+$"
+        description: "e.g. subfield:physical:physics:quantum_mechanics"
+      type:
+        const: "subfield"
+      name: { type: string }
+      branch:
+        type: string
+        description: "Parent BranchNode ID"
+      description: { type: string }
+      active_claims:
+        type: array
+        items: { type: string }
+        description: "References to ClaimNode IDs"
+      cross_refs:
+        type: array
+        items:
+          type: object
+          properties:
+            target: { type: string, description: "Another SubfieldNode ID" }
+            relation: { type: string, enum: [overlaps, derives_from, constrains, informs] }
+            strength: { type: number, minimum: 0, maximum: 1 }
+      metadata:
+        $ref: "#/definitions/NodeMetadata"
+
+  # ── CLAIM (level 3) — a falsifiable assertion ──
+  ClaimNode:
+    type: object
+    required: [id, type, statement, epistemic_class, domain]
+    properties:
+      id:
+        type: string
+        pattern: "^claim:[a-f0-9]{8}$"
+        description: "8-char hex ID, generated on creation"
+      type:
+        const: "claim"
+      statement:
+        type: string
+        description: "The falsifiable assertion. Must be testable."
+      epistemic_class:
+        type: string
+        enum: [OBS, DER, INT, SPEC]
+        description: >
+          OBS = directly observed
+          DER = derived from OBS via calculation
+          INT = interpreted from OBS/DER
+          SPEC = speculated, no direct evidence
+      confidence:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "Calibrated confidence. Capped by domain uncertainty_cap."
+      domain:
+        type: string
+        description: "DomainNode ID this claim belongs to"
+      subfield:
+        type: string
+        description: "SubfieldNode ID"
+      evidence_for:
+        type: array
+        items: { type: string }
+        description: "EvidenceNode IDs that support this claim"
+      evidence_against:
+        type: array
+        items: { type: string }
+        description: "EvidenceNode IDs that contradict this claim"
+      missing_tests:
+        type: array
+        items: { type: string }
+        description: "What would falsify this claim but hasn't been tested"
+      falsification_criteria:
+        type: string
+        description: "What observation would make this claim false"
+      status:
+        type: string
+        enum: [active, challenged, sealed, void, retired]
+        default: "active"
+      sealed_at:
+        type: string
+        format: date-time
+        description: "Timestamp if sealed to VAULT999"
+      metadata:
+        $ref: "#/definitions/NodeMetadata"
+
+  # ── EVIDENCE (level 4) — observable support ──
+  EvidenceNode:
+    type: object
+    required: [id, type, evidence_class, source]
+    properties:
+      id:
+        type: string
+        pattern: "^ev:[a-f0-9]{8}$"
+      type:
+        const: "evidence"
+      evidence_class:
+        type: string
+        enum: [observation, measurement, citation, computation, expert, analogy, experiment]
+      content:
+        type: string
+        description: "What was observed/measured/found"
+      source:
+        type: object
+        required: [kind]
+        properties:
+          kind:
+            type: string
+            enum: [tool_output, paper, well_data, seismic, field_observation, human_report, computation]
+          reference:
+            type: string
+            description: "DOI, file path, tool call ID, etc."
+          timestamp:
+            type: string
+            format: date-time
+          actor_id:
+            type: string
+            description: "Who/what produced this evidence"
+      supports:
+        type: array
+        items: { type: string }
+        description: "ClaimNode IDs this evidence supports"
+      contradicts:
+        type: array
+        items: { type: string }
+        description: "ClaimNode IDs this evidence contradicts"
+      reliability:
+        type: number
+        minimum: 0
+        maximum: 1
+        description: "How reliable is this evidence source"
+      metadata:
+        $ref: "#/definitions/NodeMetadata"
+
+  # ── CROSS-DOMAIN LINK ──
+  CrossDomainEdge:
+    type: object
+    required: [source, target, relation]
+    properties:
+      source:
+        type: string
+        description: "Any node ID"
+      target:
+        type: string
+        description: "Any node ID"
+      relation:
+        type: string
+        enum:
+          - constrains      # A limits what B can claim
+          - informs         # A provides context for B
+          - derives_from    # B is derived from A
+          - contradicts     # A and B are in tension
+          - analogizes      # A is structurally similar to B
+          - requires        # B cannot be resolved without A
+      strength:
+        type: number
+        minimum: 0
+        maximum: 1
+      direction:
+        type: string
+        enum: [forward, bidirectional]
+        default: "forward"
+      metadata:
+        $ref: "#/definitions/NodeMetadata"
+
+  # ── SHARED METADATA ──
+  NodeMetadata:
+    type: object
+    properties:
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+      created_by:
+        type: string
+        description: "actor_id that created this node"
+      provenance:
+        type: array
+        items:
+          type: object
+          properties:
+            action: { type: string }
+            actor: { type: string }
+            timestamp: { type: string, format: date-time }
+            seal_id: { type: string, description: "VAULT999 seal if applicable" }
+      tags:
+        type: array
+        items: { type: string }
+      notes:
+        type: string
+
+# ─────────────────────────────────────────────────────────────
+# THE SEVEN DOMAINS — canonical IDs
+# ─────────────────────────────────────────────────────────────
+# domain:formal      — What Must Be True (no empirical dependency)
+# domain:physical    — What the Universe Does
+# domain:life        — What Replicates and Adapts
+# domain:human_body  — The Biological Machine
+# domain:social      — What Humans Do Together
+# domain:humanities  — What Humans Mean
+# domain:engineered  — What Humans Build
+# ─────────────────────────────────────────────────────────────
