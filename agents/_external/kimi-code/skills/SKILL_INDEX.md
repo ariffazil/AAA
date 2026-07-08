@@ -56,6 +56,7 @@ User-scope skills added to align Kimi Code with the OpenCode AAA citizen contras
 | `kimi-integrator-apex-contrast` | Integrator | Constitutional floor pass/fail before declaring a phase done. |
 | `kimi-rsi-apex-contrast` | RSI | Measurement reproducibility / omega_0 honesty for entropy reports. |
 | `kimi-skill-reflector` | Cross-cutting | Bounded autonomous skill audit & upgrade ritual (max 3 iterations, ΔS ≤ 0, 888_HOLD for governed skills). |
+| `KIMI_RSI_INIT_PROMPT` | Session entry | Wake ritual: load core skills, run reflector, route task-class → contrast skill. |
 
 ---
 

@@ -32,7 +32,7 @@
 - `.arifos/agents/kimi/skills/SKILL_INDEX.md` updated with §2.5 mapping.
 - `A-FORGE/forge_work/2026-07-08/KIMI-SKILL-UPGRADE-SEAL.md` produced.
 - VAULT999 record: `kimi_skill_upgrade_2026-07-08_r1` → **memory_id:** `mem_1783550613150_90olg`.
-- Artifact hash: `sha256:c91b3ca16253ac8a208c7c8a5c4381383f13f067fe622ed6e23a6ec1af5a4a89`.
+- Artifact hash: `sha256:2501fc2100bf7cc9ab0e06907afc5f0682b7a14bb000ecdb483e446ab1210dcc`.
 
 ### Ω₀ / Open Questions
 
@@ -49,7 +49,7 @@
 - **Commits pushed:** 2
 - **Repos pushed:** A-FORGE, AAA
 - **VAULT999 RSI record:** `kimi_skill_rsi_2026-07-08` → **memory_id:** `mem_1783551768935_5s7bd`
-- **Final artifact hash:** `sha256:c91b3ca16253ac8a208c7c8a5c4381383f13f067fe622ed6e23a6ec1af5a4a89`
+- **Final artifact hash:** `sha256:2501fc2100bf7cc9ab0e06907afc5f0682b7a14bb000ecdb483e446ab1210dcc`
 
 ### Improvements
 
@@ -62,5 +62,15 @@
 - A-FORGE commit `f52a37b` pushed to `origin/main`.
 - AAA commit `1350a1b7` pushed to `origin/main`.
 - `forge_vault` returned `SEAL`, `tier: permanent`, `memoryId: mem_1783551768935_5s7bd`.
+
+---
+
+## RSI Init Prompt 2026-07-08 — session SEAL-dce8fd188e31429e
+
+- **New artifact:** `KIMI_RSI_INIT_PROMPT.md`
+- **Purpose:** Session wake ritual and task-class → contrast-skill routing.
+- **Updated artifacts:** `KIMI_HANDOVER_PROMPT.md`, `SKILL_INDEX.md`
+- **Authority:** Domain — proposed; no governed skills modified.
+- **VAULT999 context:** `kimi_skill_rsi_2026-07-08` → `mem_1783551768935_5s7bd`
 
 ---
