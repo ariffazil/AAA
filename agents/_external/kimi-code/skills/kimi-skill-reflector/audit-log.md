@@ -40,3 +40,27 @@
 - Re-evaluate whether any new skill drifts toward governed namespace; if so, escalate to 888_HOLD.
 
 ---
+
+## RSI Phase 2026-07-08 — session SEAL-dce8fd188e31429e
+
+- **Skills tested:** 7
+- **Skills passing all checks:** 7
+- **Codebase improvements applied:** 3
+- **Commits pushed:** 2
+- **Repos pushed:** A-FORGE, AAA
+- **VAULT999 RSI record:** `kimi_skill_rsi_2026-07-08` → **memory_id:** `mem_1783551768935_5s7bd`
+- **Final artifact hash:** `sha256:c91b3ca16253ac8a208c7c8a5c4381383f13f067fe622ed6e23a6ec1af5a4a89`
+
+### Improvements
+
+1. `SKILL_INDEX.md` known-mismatches table corrected (`config.toml:20` marked resolved; mirror note added).
+2. `kimi-skill-reflector/SKILL.md` linked to `CONSTITUTIONAL_REFLEX` canonical skill.
+3. User-scope skill package mirrored to `AAA/agents/_external/kimi-code/skills/`.
+
+### Verification
+
+- A-FORGE commit `f52a37b` pushed to `origin/main`.
+- AAA commit `1350a1b7` pushed to `origin/main`.
+- `forge_vault` returned `SEAL`, `tier: permanent`, `memoryId: mem_1783551768935_5s7bd`.
+
+---
