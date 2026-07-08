@@ -59,8 +59,8 @@ Cease autonomous recursion when:
 
 ## Last sealed state
 
-- **VAULT999 record:** `kimi_skill_upgrade_2026-07-08_r1`
-- **VAULT999 memory_id:** `mem_1783550613150_90olg`
+- **VAULT999 upgrade record:** `kimi_skill_upgrade_2026-07-08_r1` → `mem_1783550613150_90olg`
+- **VAULT999 RSI record:** `kimi_skill_rsi_2026-07-08` → `mem_1783551768935_5s7bd`
 - **Receipt:** `A-FORGE/forge_work/2026-07-08/KIMI-SKILL-UPGRADE-SEAL.md`
 - **Skill package:** 7 new Kimi Code user-scope contrast/reflector skills
 - **Artifact hash:** `sha256:c91b3ca16253ac8a208c7c8a5c4381383f13f067fe622ed6e23a6ec1af5a4a89`
