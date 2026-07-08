@@ -8,7 +8,7 @@
 
 ## Auto-load on wake
 
-Before accepting the first user instruction, load these skills in order:
+Before accepting the first user instruction, load `KIMI_RSI_INIT_PROMPT.md` and run its wake ritual, then load these skills in order:
 
 1. `CONSTITUTIONAL_REFLEX` — ART → Kernel → ACT
 2. `HOST_MEMBRANE_AWARENESS` — know what is blocked above the membrane
@@ -63,6 +63,6 @@ Cease autonomous recursion when:
 - **VAULT999 RSI record:** `kimi_skill_rsi_2026-07-08` → `mem_1783551768935_5s7bd`
 - **Receipt:** `A-FORGE/forge_work/2026-07-08/KIMI-SKILL-UPGRADE-SEAL.md`
 - **Skill package:** 7 new Kimi Code user-scope contrast/reflector skills
-- **Artifact hash:** `sha256:c91b3ca16253ac8a208c7c8a5c4381383f13f067fe622ed6e23a6ec1af5a4a89`
+- **Artifact hash:** `sha256:2501fc2100bf7cc9ab0e06907afc5f0682b7a14bb000ecdb483e446ab1210dcc` (covers 7 skills + SKILL_INDEX after RSI init prompt addition)
 
 **DITEMPA BUKAN DIBERI** — load, reflect, then act.
