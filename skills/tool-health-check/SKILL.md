@@ -15,14 +15,14 @@ python3 /root/.openclaw/workspace/skills/tool-health-check/tool_health_check.py
 - `arif_ops_measure` — system vitals
 - `arif_heartbeat` — organ liveness
 - `arif_organ_attest_all` — cross-organ attestation
-- `arif_sense_observe` — vitals observation
+- `arif_observe` — vitals observation
 - `arif_memory_recall` — memory search
 - `gateway_health` — gateway liveness
 - `gateway_receipts` — audit receipt listing
 - `gateway_lease_inspect` — lease inspection
 
 ### arifOS UNTESTABLE tools (6 — require full session)
-- `arif_session_init`, `arif_lease_issue`, `arif_judge_deliberate`, `arif_vault_seal`, `arif_forge_execute`, `arif_gateway_connect`
+- `arif_init`, `arif_lease_issue`, `arif_judge`, `arif_seal`, `arif_forge_execute`, `arif_gateway_connect`
 
 ### Organ tools (3 smoke-tested)
 - `GEOX: geox_system_registry_status`

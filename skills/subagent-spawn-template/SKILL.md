@@ -87,7 +87,7 @@ rollback_plan: "No changes — read-only"
   "findings": [
     {
       "severity": "IMPORTANT",
-      "description": "tools.py differs at line 147: arif_sense_observe has mode=vitals logic in /root/ but not in /opt/",
+      "description": "tools.py differs at line 147: arif_observe has mode=vitals logic in /root/ but not in /opt/",
       "file_1": "/root/arifOS/arifosmcp/runtime/tools.py",
       "file_2": "/opt/arifos/app/arifosmcp/runtime/tools.py"
     }

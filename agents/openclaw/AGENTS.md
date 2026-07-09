@@ -6,6 +6,8 @@
 **Role:** Primary agentic runtime gateway. Message routing + task execution. Connects external channels (Telegram, Discord, WhatsApp, Signal) to AI agents.
 **Governed by:** `/root/AAA/AGENTS.md` (federation operating contract), `/root/AAA/LOOP.md` (000-999 operational loop), `/root/AAA/AUTONOMY.md` (L0-L5 permission ladder)
 
+**TRUTH RECEIPT (all warga):** Any claim/statement/assertion MUST pass `enforce_for_warga("openclaw", statement)` or `claim_must_use_receipt`. No receipt = L4 (no irreversible). See arifos_vault/truth_enforcement + GENESIS/020 + AAA_ZEN_INIT.
+
 ---
 
 ## Governing Loop — 000–999

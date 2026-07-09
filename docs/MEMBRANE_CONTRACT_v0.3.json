@@ -1,0 +1,269 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "membrane-contract-v0.3",
+  "title": "MEMBRANE_CONTRACT v0.3",
+  "description": "Unified membrane schema for all AAA federation organ boundary crossings. Every message crossing organ boundaries MUST validate against this schema. HOLD \u2192 RATIFY status.",
+  "version": "0.3.0",
+  "status": "RATIFIED",
+  "ratified_by": "F13_SOVEREIGN",
+  "ratified_at": "2026-07-08T22:30:42.200240+00:00",
+  "definitions": {
+    "authority": {
+      "type": "string",
+      "enum": [
+        "THINK",
+        "MEMORY",
+        "JUDGE",
+        "AUDIT",
+        "ARCHIVE",
+        "EXECUTE",
+        "SENSE"
+      ],
+      "description": "Which cognitive authority is acting"
+    },
+    "uncertainty": {
+      "type": "string",
+      "enum": [
+        "OBS",
+        "DER",
+        "INT",
+        "SPEC"
+      ],
+      "description": "Epistemic classification of the claim",
+      "caps": {
+        "OBS": 0.9,
+        "DER": 0.85,
+        "INT": 0.75,
+        "SPEC": 0.6
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "SEAL",
+        "HOLD",
+        "SABAR",
+        "VOID",
+        "UNKNOWN"
+      ],
+      "description": "Constitutional verdict"
+    },
+    "action_class": {
+      "type": "string",
+      "enum": [
+        "OBSERVE",
+        "ANALYZE",
+        "DRAFT",
+        "MUTATE",
+        "EXTERNAL_SIDE_EFFECT",
+        "IRREVERSIBLE"
+      ],
+      "description": "Class of action being attempted"
+    },
+    "organ": {
+      "type": "string",
+      "enum": [
+        "arifOS",
+        "A-FORGE",
+        "GEOX",
+        "WEALTH",
+        "WELL",
+        "AAA",
+        "VAULT999",
+        "HERMES",
+        "OPENCLAW",
+        "OPENCODE"
+      ],
+      "description": "Source or target organ"
+    },
+    "blast_radius": {
+      "type": "string",
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "description": "Potential impact scope"
+    },
+    "reversibility": {
+      "type": "string",
+      "enum": [
+        "FULL",
+        "PARTIAL",
+        "NONE"
+      ],
+      "description": "Can this action be undone"
+    }
+  },
+  "properties": {
+    "membrane_version": {
+      "type": "string",
+      "const": "0.3",
+      "description": "Schema version"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp"
+    },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "organ": {
+          "$ref": "#/definitions/organ"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "session_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "organ"
+      ]
+    },
+    "authority": {
+      "$ref": "#/definitions/authority"
+    },
+    "uncertainty": {
+      "$ref": "#/definitions/uncertainty"
+    },
+    "verdict": {
+      "$ref": "#/definitions/verdict"
+    },
+    "action_class": {
+      "$ref": "#/definitions/action_class"
+    },
+    "blast_radius": {
+      "$ref": "#/definitions/blast_radius"
+    },
+    "reversibility": {
+      "$ref": "#/definitions/reversibility"
+    },
+    "receipt": {
+      "type": "object",
+      "properties": {
+        "lineage_id": {
+          "type": "string",
+          "description": "Hash chain reference"
+        },
+        "parent_id": {
+          "type": "string",
+          "description": "Previous receipt in chain"
+        },
+        "sealed": {
+          "type": "boolean",
+          "description": "Whether sealed to VAULT999"
+        }
+      },
+      "required": [
+        "lineage_id"
+      ]
+    },
+    "cooling": {
+      "type": "object",
+      "properties": {
+        "C_dark": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Hallucination detector \u2014 A\u00b7(1-P)\u00b7(1-X)"
+        },
+        "C_light": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Grounding signal"
+        }
+      },
+      "description": "APEX cooling metrics"
+    },
+    "witness": {
+      "type": "object",
+      "properties": {
+        "human": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "ai": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "external": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "W3": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "\u221b(H \u00d7 AI \u00d7 Ext)"
+        }
+      },
+      "description": "Tri-witness consensus. Any channel = 0 \u2192 W3 = 0"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Organ-specific payload"
+    },
+    "floors_checked": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F7",
+          "F8",
+          "F9",
+          "F10",
+          "F11",
+          "F12",
+          "F13"
+        ]
+      },
+      "description": "Which constitutional floors were evaluated"
+    },
+    "drift_events": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Any drift detected during this crossing"
+    }
+  },
+  "required": [
+    "membrane_version",
+    "timestamp",
+    "actor",
+    "authority",
+    "uncertainty",
+    "verdict"
+  ],
+  "validation_rules": {
+    "rule_1": "If verdict = SEAL \u2192 receipt.sealed MUST be true",
+    "rule_2": "If action_class = IRREVERSIBLE \u2192 reversibility = NONE \u2192 requires F13 ack",
+    "rule_3": "If blast_radius = CRITICAL \u2192 floors_checked MUST include F1, F13",
+    "rule_4": "If C_dark > 0.30 \u2192 verdict MUST NOT be SEAL (F9 ANTI-HANTU)",
+    "rule_5": "If witness.W3 = 0 \u2192 verdict MUST NOT be SEAL (F3 WITNESS)",
+    "rule_6": "If uncertainty = SPEC \u2192 verdict MUST NOT be SEAL (F2 TRUTH)",
+    "rule_7": "If any floor F1-F13 violated \u2192 verdict MUST be VOID or HOLD"
+  },
+  "error_codes": {
+    "MEMBRANE_MISSING_FIELD": "Required field missing from envelope",
+    "MEMBRANE_INVALID_VERDICT": "Verdict not in allowed set",
+    "MEMBRANE_FLOOR_VIOLATION": "Constitutional floor check failed",
+    "MEMBRANE_C_DARK_HIGH": "C_dark exceeds 0.30 threshold",
+    "MEMBRANE_W3_ZERO": "Tri-witness collapsed",
+    "MEMBRANE_SPEC_SEAL": "Attempted SEAL on SPEC-class claim"
+  }
+}

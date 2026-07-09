@@ -1,7 +1,7 @@
 # Agentic Dream Engine — Federation Memory Consolidation — OpenAI / Codex Adapter
 
 > **Canonical:** `skills/agentic-dream-engine/SKILL.md`  
-> **Risk tier:** medium | Tools: arif_memory_recall, arif_vault_seal, arif_judge_deliberate
+> **Risk tier:** medium | Tools: arif_memory_recall, arif_seal, arif_judge
 
 Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate memory without violating F1-F13.
 
