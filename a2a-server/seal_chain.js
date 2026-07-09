@@ -377,7 +377,12 @@ function enforceSealInvariants(payload, opts = {}) {
     (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : 'UNKNOWN');
   const actorSource = payload.actor_source || 'self_report';
   const actor = payload.agent_id || payload.actor || 'unknown';
-  const witness = opts.witness || { human: null, ai: null, external: null };
+  // CLI `write` only passes payload; accept witness on payload or opts (2026-07-09 RSI).
+  const witness =
+    opts.witness ||
+    payload.witness ||
+    (payload.payload && payload.payload.witness) ||
+    { human: null, ai: null, external: null };
   const witnessChannels = [witness.human, witness.ai, witness.external].filter(
     (v) => v !== null && v !== undefined
   );
