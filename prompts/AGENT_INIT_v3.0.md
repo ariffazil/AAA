@@ -408,9 +408,27 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **VAULT999** | `/root/VAULT999/` |
 | **Memory** | `/root/memory/` |
 | **Forge work** | `/root/A-FORGE/forge_work/` |
+| **APA skill (Grok)** | `/root/.grok/skills/apa-sovereign-connector/SKILL.md` |
+| **APA session seal** | `/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md` |
+| **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
 | **Context** | `/root/CONTEXT.md` |
 | **Landing** | `/root/AGENTS_LANDING.md` |
+
+---
+
+## 12.5 APA — AUTONOMOUS PROTOCOL FOR APPLICATIONS (mandatory wake · 2026-07-09)
+
+```
+ART → KERNEL → APA(lease×manifest) → ACT(bridge) → VAULT999
+```
+
+- **Δ law:** bridges only on lived human sovereignty. **No APA-Slack.** Telegram = #4 F13 veto.
+- **T1 ports:** 18093 email · 18094 calendar · 18095 github · 18096 telegram
+- **Canonical code:** `/root/A-FORGE/bridges/` + `apa/core/act_executor.py` + `leases/lease_engine.py`
+- **Open loop:** `forge_telegram` + `telegram.yaml` + secrets out of systemd drop-ins
+- **Load:** `/root/.grok/skills/apa-sovereign-connector/SKILL.md` + APA session seal + eureka gaps
+- **Do not re-spec v1 from zero.** Close the green bridges first.
 
 ---
 
