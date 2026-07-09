@@ -45,8 +45,15 @@ const {
   CONFIDENCE_CAP,
 } = require('./cognitive_hierarchy');
 
+// ── Membrane Middleware — ZEN-ALL v0.3 (2026-07-08) ─────────────────
+const { membraneMiddleware, membraneResponseHook } = require('./membrane_middleware');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
+
+// Membrane gate — every cross-organ message must pass through
+app.use(membraneMiddleware);
+app.use(membraneResponseHook);
 
 let redisClient = null;  // early declaration for federatedMemory bootstrap and updateLayer
 
@@ -490,20 +497,100 @@ function toA2AState(internalState) {
 // A2A taskId maps to VAULT999 receipt lineage
 const contextLineage = new Map(); // contextId → { session_id, created_at, task_ids: [] }
 
+// Ghost Tasks = work with no umbilical to a session (seals #9902, #84, #85 class).
+// Mandatory lineage: real session_id (+ contextId). Unknown/placeholder IDs are blocked.
+const GHOST_SESSION_DENY = new Set([
+  '', 'unknown', 'session-unknown', 'session_unknown', 'null', 'undefined', 'none', 'n/a',
+]);
+
+function extractSessionId(params = {}, body = null) {
+  const meta = params.metadata || {};
+  return (
+    params.sessionId ||
+    params.session_id ||
+    meta.session_id ||
+    meta.sessionId ||
+    (body && (body.session_id || body.sessionId)) ||
+    null
+  );
+}
+
+function isValidSessionId(sessionId) {
+  if (sessionId == null || typeof sessionId !== 'string') return false;
+  const s = sessionId.trim();
+  if (!s) return false;
+  if (GHOST_SESSION_DENY.has(s.toLowerCase())) return false;
+  if (s.toLowerCase().startsWith('session-unknown')) return false;
+  return true;
+}
+
+/**
+ * Gate every task/message create path. Missing lineage → hard reject (no ghost row).
+ * Returns { ok, sessionId, contextId } or { ok:false, response args via error }.
+ */
+function requireTaskLineage(params = {}, rpcId = 0, body = null) {
+  const sessionId = extractSessionId(params, body);
+  if (!isValidSessionId(sessionId)) {
+    return {
+      ok: false,
+      error: createJSONRPCError(
+        rpcId,
+        ERROR_CODES.INVALID_REQUEST,
+        'Invalid params: session_id is mandatory (Ghost Task blocked — F4 CLARITY / A2A lineage). No task or VAULT entry without contextLineage bound to a real session.',
+      ),
+    };
+  }
+  const contextId = params.contextId || params.context_id || generateId();
+  return { ok: true, sessionId: sessionId.trim(), contextId };
+}
+
 function registerContextLineage(contextId, sessionId, taskId) {
+  if (!isValidSessionId(sessionId)) {
+    throw new Error('registerContextLineage refused: session_id required (Ghost Task prevention)');
+  }
+  if (!contextId) {
+    throw new Error('registerContextLineage refused: contextId required');
+  }
   if (!contextLineage.has(contextId)) {
     contextLineage.set(contextId, {
       contextId,
-      session_id: sessionId || null,
+      session_id: sessionId.trim(),
       created_at: new Date().toISOString(),
       task_ids: [],
     });
   }
   const lineage = contextLineage.get(contextId);
+  // Session must not drift across the same contextId
+  if (lineage.session_id && lineage.session_id !== sessionId.trim()) {
+    throw new Error(
+      `contextLineage session mismatch for ${contextId}: bound=${lineage.session_id} got=${sessionId}`,
+    );
+  }
+  lineage.session_id = sessionId.trim();
   if (taskId && !lineage.task_ids.includes(taskId)) {
     lineage.task_ids.push(taskId);
   }
   return lineage;
+}
+
+/** Build a task record with lineage fields always present (no ghosts). */
+function buildLineageTask(taskId, contextId, sessionId, message, params = {}) {
+  return {
+    id: taskId,
+    contextId,
+    session_id: sessionId,
+    status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
+    artifacts: [],
+    history: message ? [message] : [],
+    metadata: {
+      ...(params.metadata || {}),
+      session_id: sessionId,
+      context_id: contextId,
+      lineage: 'bound',
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  };
 }
 
 // === SKILL APPROVAL POLICIES ===
@@ -3272,6 +3359,11 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
+    const sessionId = params.sessionId || params.session_id;
+    if (!sessionId) {
+      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, 'Invalid params: session_id is mandatory to prevent Ghost Tasks (F4 CLARITY)'));
+    }
+
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
     const contextId = params.contextId || generateId();
 
@@ -3283,6 +3375,7 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     };
     await taskStore.set(taskId, task);
+    registerContextLineage(contextId, sessionId, taskId);
 
     await executeTask(taskId, contextId, message, params.agent_id, params);
 
@@ -3502,6 +3595,10 @@ app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) =>
       if (!msgValidation.valid) {
         return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, msgValidation.message));
       }
+      const sessionId = params.sessionId || params.session_id;
+      if (!sessionId) {
+        return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, 'Invalid params: session_id is mandatory to prevent Ghost Tasks (F4 CLARITY)'));
+      }
       const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
       const contextId = params.contextId || generateId();
       const tenant = params.tenant || 'personal'; // A2A v1.0.0 multi-tenancy
@@ -3513,7 +3610,7 @@ app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) =>
         created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
       };
       await taskStore.set(taskId, task);
-      registerContextLineage(contextId, null, taskId);
+      registerContextLineage(contextId, sessionId, taskId);
       await executeTask(taskId, contextId, message, params.agent_id, params);
       const updatedTask = await taskStore.get(taskId);
       res.json(createJSONRPCResponse(id, {
@@ -3593,6 +3690,10 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
+    const sessionId = params.sessionId || params.session_id;
+    if (!sessionId) {
+      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, 'Invalid params: session_id is mandatory to prevent Ghost Tasks (F4 CLARITY)'));
+    }
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
     const contextId = params.contextId || generateId();
 
@@ -3604,6 +3705,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
     };
     await taskStore.set(taskId, task);
+    registerContextLineage(contextId, sessionId, taskId);
 
     // === DelegationGuard (F8 LAW + cross-organ boundary enforcement) ===
     // FORGE 2026-06-28: enforce delegation rules before task dispatch.
