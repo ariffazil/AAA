@@ -82,7 +82,7 @@ The 5-agent constitutional architecture. Pipeline: 000 → 333 → 555 → 888 �
 
 > **Note:** HEXAGON agents are defined in `HEXAGON.yaml` v2.1.0. OpenCode is the 6th warga (external/forge-instrument). All warga have A2A cards and ATTESTATION.md.
 >
-> **Naming conflict note (888-APEX):** Per `arifOS/AGENTS.md`, "APEX (888_JUDGE) is a constitutional organ of arifOS, not an agent managed by AAA." The 888-APEX *agent card* is held here for discovery; the *organ* lives in arifOS. This file lists the **warga**, not the organ.
+> **888-APEX mapping:** 888-APEX is the constitutional judgment organ of arifOS. AAA holds the agent card for A2A discovery and routing. This is the standard organ-to-warga mapping pattern: arifOS owns the organ, AAA owns the card. Not a conflict — by design.
 
 ---
 
