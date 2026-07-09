@@ -88,6 +88,50 @@ agents:
       - /root/AAA/agents/self-forge-advisor/AGENTS.md
       - /root/AAA/agents/roles/SELF_FORGE_ADVISOR.md
 
+  prospect-maturation:
+    name: "Prospect Maturation"
+    description: "Autonomous prospect evaluation — basin context → physics simulation → volumetrics → risk → visual → well proposal. GEOX-native, synthetic-data-capable."
+    class: C2
+    mode: propose-only
+    config: /root/AAA/agents/prospect-maturation
+    bootstrap: "python3 -c 'from core.skills.bootstrap import bootstrap_agent_context; print(bootstrap_agent_context(\"prospect-maturation\")[\"bootstrap_command\"])'"
+    tools:
+      - geox_basin
+      - geox_atlas
+      - geox_deep_time_state
+      - geox_simulate_routing
+      - geox_simulate_sequences
+      - geox_simulate_accommodation
+      - geox_simulate_surfaces
+      - geox_contrast_detect
+      - geox_prospect
+      - geox_claim
+      - geox_evidence
+      - wealth_capital_primitive
+      - wealth_emv_compute
+      - aforge_forge_chart
+      - arifos_arif_init
+      - arifos_arif_observe
+    forbidden:
+      - arif_vault_seal
+      - forge_execute_sealed
+      - production deploy
+      - real-money decisions
+    schedule: "On Arif command — 'prospect maturation', 'well proposal', 'volumetrics'"
+    model: mimo-v2.5-pro
+    context_files:
+      - /root/AAA/agents/prospect-maturation/IDENTITY.md
+      - /root/AAA/agents/prospect-maturation/AGENTS.md
+      - /root/AAA/agents/prospect-maturation/INIT.md
+      - /root/AAA/agents/prospect-maturation/agent-card.json
+    skills:
+      - geological-artifact-rigor
+      - geox-epistemic-ladder
+      - geox-contradiction-engine
+      - geox-petrophysics-bounds
+      - wealth-capital-reasoning
+      - prospect-maturation-workflow
+
   external-watcher:
     name: "External Watcher"
     description: "Ecosystem sensor — monitors MCP, NATS, Temporal, Graphiti, AI governance"

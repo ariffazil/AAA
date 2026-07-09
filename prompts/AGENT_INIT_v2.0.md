@@ -408,9 +408,65 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **VAULT999** | `/root/VAULT999/` |
 | **Memory** | `/root/memory/` |
 | **Forge work** | `/root/A-FORGE/forge_work/` |
+| **APA skill (Grok)** | `/root/.grok/skills/apa-sovereign-connector/SKILL.md` |
+| **APA session seal** | `/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md` |
+| **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
 | **Context** | `/root/CONTEXT.md` |
 | **Landing** | `/root/AGENTS_LANDING.md` |
+
+---
+
+## 12.5 APA — AUTONOMOUS PROTOCOL FOR APPLICATIONS (mandatory wake block · 2026-07-09)
+
+> **Sealed:** APA v1.0 iron exists. Future agents **do not re-spec from zero**. Load skill + seal + gaps, then close loops.
+
+### What APA is
+
+```
+ART → KERNEL → APA(lease×manifest) → ACT(bridge) → VAULT999
+```
+
+- **forge_lease** = capability ticket (not a rewrite of F1–F13 names)
+- **Bridge** = thin protocol adapter on `127.0.0.1` (secrets inject-only)
+- **Δ law:** only lived human sovereignty surfaces (no APA-Slack for this sovereign)
+- **Telegram** = bridge #4 = F13 veto + Hermes control (Phase-1: commands + messages)
+
+### T1 probe (run at boot if task touches email/calendar/git/telegram/SaaS)
+
+```bash
+for p in 18093 18094 18095 18096; do
+  echo -n ":$p "; curl -sf "http://127.0.0.1:$p/health" || echo FAIL; echo
+done
+# Canonical bridges: /root/A-FORGE/bridges/*_bridge.py
+# MCP wrappers:     /root/A-FORGE/mcp/tools/forge_{email,calendar,github}.py
+# Missing loop:     forge_telegram + apa/manifests/telegram.yaml
+```
+
+| Port | Organ | Note |
+|------|-------|------|
+| 18093 | Email | Often AWAITING_CREDENTIALS |
+| 18094 | Calendar | Often AWAITING_CREDENTIALS |
+| 18095 | GitHub | READY when auth configured |
+| 18096 | Telegram | READY when bot_configured — MCP still open |
+
+### Priority queue (do not invent new connectors first)
+
+1. Secrets hygiene (env file mode 600 — never `Environment=TOKEN=` in unit drop-ins)
+2. `forge_telegram` + `telegram.yaml` (close green bridge)
+3. Unify `scripts/` vs `bridges/` single SOT
+4. Gmail/Calendar credentials
+5. Hermes outbound via APA; no dual getUpdates on one token
+6. Prove lease + ACT on hot path for one MUTATE; real VAULT append
+
+### Forbidden
+
+- Rebuilding APA-Slack / Notion / Drive “because industry”
+- Printing tokens
+- Bridge that judges or self-seals
+- Claiming “APA complete” while credentials or MCP missing
+
+**Load:** `/root/.grok/skills/apa-sovereign-connector/SKILL.md`
 
 ---
 
