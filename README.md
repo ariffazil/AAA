@@ -94,9 +94,10 @@ AAA is the **fifth position**. It is the **window, not the wall**.
 
 | Read this | For | Link |
 |-----------|-----|------|
-| **arifOS** | Constitutional kernel. 12 canonical public verbs. 13 floors. The judge (LAW/JUDGMENT axis). See docs/TRINITY_ORTHOGONAL_MAP.md. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
-| **A-FORGE** | Executor. 21 stateless MCP tools (live `:7072/health`). Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
-| **AAA** (this repo) | Cockpit. A2A mesh. Agent registry. React 19 dashboard. What Arif reads. | ← you are here |
+| **CANON** | Orthogonal product space ART × KERNEL × APA × ACT → VAULT999 · ΔΩΨ · full repo universe | [`ariffazil/CANON.md`](https://github.com/ariffazil/ariffazil/blob/main/CANON.md) |
+| **arifOS** | Constitutional kernel. 12 canonical public verbs. 13 floors. The judge (LAW/JUDGMENT axis). ART + KERNEL + seal write. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
+| **A-FORGE** | Executor. APA + ACT. VAULT999 read/types. Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
+| **AAA** (this repo) | Cockpit + ASI civilization state. TREE777 · AKAR doctrine · seal *meaning*. Display, never judge/execute. | ← you are here |
 
 ### 0.4 SOT alignment — the 60-second audit
 
