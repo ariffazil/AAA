@@ -24,10 +24,22 @@
       "reason": "Health checking consolidated under WELL organ."
     },
     "mcp__arifos__arif_triage": {
-      "status": "DEGRADED",
-      "since": "2026-06-22",
-      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use with caution. Fix pending.",
-      "reason": "Pre-existing FastMCP outputSchema incompatibility."
+      "status": "DEPRECATED",
+      "since": "2026-07-09",
+      "migration": "Use arif_init(mode='preflight'|'triage'). Thin wire wrapper logs deprecation for one release.",
+      "reason": "Audit dual-existence kill — session preflight absorbed into arif_init (Spine P0 / MCP convergence)."
+    },
+    "mcp__arifos__arif_act": {
+      "status": "INTERNAL_ONLY",
+      "since": "2026-07-09",
+      "migration": "Use arif_forge. arif_act must never appear in allowed_next_verbs.",
+      "reason": "Public surface leak fixed; forge is the sole execute verb."
+    },
+    "mcp__arifos__arif_mind_reason": {
+      "status": "INTERNAL_ONLY",
+      "since": "2026-07-09",
+      "migration": "Use arif_think. mind_reason is internal implementation name only.",
+      "reason": "Orphan undeclared purpose killed; resolves to arif_think affordance."
     },
     "mcp__arifos__arif_measure": {
       "status": "DEGRADED",
