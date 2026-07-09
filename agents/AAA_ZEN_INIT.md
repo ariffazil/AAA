@@ -1,1 +1,1 @@
-/root/AAA/agents/AAA_ZEN.md
+_docs/AAA_ZEN.md
