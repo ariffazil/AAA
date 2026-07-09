@@ -198,6 +198,14 @@ export default function Cockpit() {
   const [domainHealth, setDomainHealth] = useState<Record<string, DomainStatus>>({
     geox: 'loading', wealth: 'loading', well: 'loading', forge: 'loading',
   });
+  // WELL honesty banner (STALE / MOCK / SELF-REPORT) — permanent surface, F2
+  const [wellHonesty, setWellHonesty] = useState<{
+    code?: string;
+    banner?: string;
+    truth?: string;
+    color?: string;
+    cockpitRequired?: boolean;
+  } | null>(null);
 
   // Live organ attestation from arifOS + direct health probes
   const [organAttestation, setOrganAttestation] = useState<{ organs: OrganAttestationInfo[]; arifos_attestation: unknown; timestamp: string } | null>(null);
@@ -481,14 +489,35 @@ export default function Cockpit() {
     return () => clearInterval(interval);
   }, []);
 
-  // Domain MCP health polling
+  // Domain MCP health polling (+ WELL honesty payload)
   useEffect(() => {
     const checkDomain = async (id: string, url: string) => {
       try {
         const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
         setDomainHealth(prev => ({ ...prev, [id]: res.ok ? 'ok' : 'err' }));
+        if (id === 'well' && res.ok) {
+          try {
+            const data = await res.json() as {
+              honesty?: { code?: string; banner?: string; cockpit_banner_required?: boolean };
+              honesty_banner?: string;
+              truth_status?: string;
+              owner_summary?: { color?: string };
+            };
+            const banner = data.honesty?.banner || data.honesty_banner;
+            setWellHonesty({
+              code: data.honesty?.code || data.truth_status,
+              banner,
+              truth: data.truth_status,
+              color: data.owner_summary?.color,
+              cockpitRequired: data.honesty?.cockpit_banner_required ?? Boolean(banner),
+            });
+          } catch {
+            /* body parse optional */
+          }
+        }
       } catch {
         setDomainHealth(prev => ({ ...prev, [id]: 'err' }));
+        if (id === 'well') setWellHonesty(null);
       }
     };
     DOMAIN_MCPS.forEach(({ id, url }) => checkDomain(id, url));
@@ -818,23 +847,48 @@ export default function Cockpit() {
             <span className="text-4xl font-black text-white/10 font-mono italic">Φ</span>
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Domain Specialists</h2>
           </div>
+          {/* Permanent WELL honesty banner — STALE / MOCK / SELF-REPORT (F2) */}
+          {wellHonesty?.banner && (
+            <div className="mb-6 p-4 border border-amber-500/40 bg-amber-950/20 rounded-lg">
+              <div className="flex items-center gap-3 mb-1">
+                <span className="text-[10px] font-mono font-bold tracking-widest text-amber-400 uppercase">
+                  WELL · HONESTY · {wellHonesty.code || 'NOTICE'}
+                </span>
+                {wellHonesty.color && (
+                  <span className="text-[9px] font-mono text-amber-300/70">owner={wellHonesty.color}</span>
+                )}
+                {wellHonesty.truth && (
+                  <span className="text-[9px] font-mono text-white/40">truth={wellHonesty.truth}</span>
+                )}
+              </div>
+              <p className="text-sm text-amber-100/90 font-light leading-relaxed">{wellHonesty.banner}</p>
+              <p className="text-[10px] font-mono text-white/30 mt-2">
+                Mirror only — not diagnosis. Sensor feed or fresh sovereign inject required for GREEN body truth.
+              </p>
+            </div>
+          )}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {DOMAIN_MCPS.map(({ id, label, symbol, desc }) => {
               const status = domainHealth[id];
+              const wellBadge = id === 'well' && wellHonesty?.code ? wellHonesty.code : null;
               return (
                 <div key={id} className={`p-6 border rounded-lg ${
-                  status === 'ok' ? 'border-emerald-500/20 bg-emerald-950/5' :
+                  id === 'well' && wellHonesty?.cockpitRequired
+                    ? 'border-amber-500/30 bg-amber-950/10'
+                    : status === 'ok' ? 'border-emerald-500/20 bg-emerald-950/5' :
                   status === 'err' ? 'border-red-500/20 bg-red-950/5' :
                   'border-white/10 bg-white/[0.02]'
                 }`}>
                   <div className="flex items-start justify-between mb-3">
                     <div className="text-2xl">{symbol}</div>
                     <div className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
-                      status === 'ok' ? 'text-emerald-400 bg-emerald-950/30' :
+                      id === 'well' && wellHonesty?.cockpitRequired
+                        ? 'text-amber-300 bg-amber-950/40'
+                        : status === 'ok' ? 'text-emerald-400 bg-emerald-950/30' :
                       status === 'err' ? 'text-red-400 bg-red-950/30' :
                       'text-white/30 bg-white/5'
                     }`}>
-                      {status === 'ok' ? 'ONLINE' : status === 'err' ? 'OFFLINE' : 'PROBING'}
+                      {wellBadge || (status === 'ok' ? 'ONLINE' : status === 'err' ? 'OFFLINE' : 'PROBING')}
                     </div>
                   </div>
                   <div className="text-sm font-black text-white tracking-tight mb-1">{label}</div>
