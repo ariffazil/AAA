@@ -1,0 +1,8 @@
+FROM node:22-slim
+WORKDIR /app
+COPY package.json pnpm-lock.yaml* ./
+RUN npm install -g pnpm && pnpm install
+COPY bot/ ./bot/
+COPY shared/ ./shared/
+COPY tsconfig.json ./
+CMD ["pnpm", "tsx", "bot/index.ts"]

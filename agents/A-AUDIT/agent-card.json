@@ -6,9 +6,9 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Watchdog. Support (internal control-plane) agent that continuously monitors all 3 primary federation agents (333-AGI, 555-ASI, 888-APEX). Verifies outputs against F1-F13 floors independently. Cannot issue verdicts — only flags, reports, and escalates to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
+  "description": "The Watchdog. Support (internal control-plane) agent that continuously monitors all 3 primary federation agents (333-AGI, 555-ASI, 888-APEX). Verifies outputs against F1-F13 floors independently. Cannot issue verdicts \u2014 only flags, reports, and escalates to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/A-AUDIT",
   "provider": {
@@ -77,7 +77,7 @@
     {
       "id": "inter-agent-consistency",
       "name": "Inter-Agent Consistency Check",
-      "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says ¬X, flag as CONFLICT and escalate to 888-APEX for arbitration.",
+      "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says \u00acX, flag as CONFLICT and escalate to 888-APEX for arbitration.",
       "tags": [
         "consistency",
         "conflict-detection",
@@ -85,7 +85,7 @@
         "audit"
       ],
       "examples": [
-        "333-AGI rated risk as LOW but 555-ASI flagged RED — investigate",
+        "333-AGI rated risk as LOW but 555-ASI flagged RED \u2014 investigate",
         "Check alignment between reasoning (333) and ethical review (555)"
       ],
       "inputModes": [
@@ -120,7 +120,7 @@
     {
       "id": "fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence: Blue → Red → Blue → Yellow → Gold. Emits skill artifacts + MEMORY line + drift signal. Must be ATTESTED then LEASED. F1, F4, F8, F11 enforced.",
+      "description": "5-pass recursive audit sequence: Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. Must be ATTESTED then LEASED. F1, F4, F8, F11 enforced.",
       "tags": [
         "audit",
         "recursive",
@@ -140,7 +140,7 @@
     {
       "id": "arifos-arconstitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit. Independent from 888-APEX — provides second-opinion floor verification. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced.",
+      "description": "Read-only constitutional audit. Independent from 888-APEX \u2014 provides second-opinion floor verification. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced.",
       "tags": [
         "constitutional",
         "audit",
@@ -247,8 +247,8 @@
     },
     {
       "id": "symbolic-order-trust-architecture",
-      "name": "Symbolic Order — Trust Architecture",
-      "description": "Map structural trust in the federation — where trust is architecture-enforced vs. history-based. Detects trust symmetry violations and single-points-of-failure. Implements E1+E2 from Wawa's agentic anthropology (Hybrid Civilization + Trust Is Structural).",
+      "name": "Symbolic Order \u2014 Trust Architecture",
+      "description": "Map structural trust in the federation \u2014 where trust is architecture-enforced vs. history-based. Detects trust symmetry violations and single-points-of-failure. Implements E1+E2 from Wawa's agentic anthropology (Hybrid Civilization + Trust Is Structural).",
       "tags": [
         "trust",
         "structural",
@@ -270,7 +270,7 @@
     },
     {
       "id": "symbolic-order-collective-bias",
-      "name": "Symbolic Order — Collective Bias Detection",
+      "name": "Symbolic Order \u2014 Collective Bias Detection",
       "description": "Detect collective bias in agent populations using Ashery-Aiello-Baronchelli naming game protocol. Catches biases that emerge at population level but no individual agent shows. Chi-square test against uniform distribution. Implements E5 (Collective Bias Invisible to Single-Agent).",
       "tags": [
         "collective-bias",
@@ -411,7 +411,7 @@
       "ringPlacement": "inner",
       "parallelism": "single-model",
       "shadowAcknowledged": [
-        "thermal_delay: cold sink is slow — never invoked first",
+        "thermal_delay: cold sink is slow \u2014 never invoked first",
         "over_constraint: can mistake local minima for global truth",
         "oracle_trap: asking it everything ruins its value as final gate"
       ]
@@ -433,5 +433,17 @@
     "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
+  },
+  "constitutional_binding": {
+    "canonical_verdict_source": "arifosmcp.models.verdicts",
+    "verdict_import": "from arifosmcp.models.verdicts import Verdict, RuntimeStatus, enforce_verdict_monotonicity, merge_verdicts, is_verdict_allowed",
+    "runtime_status_import": "from arifosmcp.models.verdicts import RuntimeStatus",
+    "monotonicity_order": "VOID (3) > HOLD (2) > SABAR (1) > SEAL (0)",
+    "governance_transport_split": "Verdict owns SEAL/HOLD/SABAR/VOID. RuntimeStatus owns SUCCESS/ERROR/TIMEOUT/RETRY. Never mix.",
+    "arif_memory_callable": true,
+    "signature_challenge_required": true,
+    "session_identity_enforced": true,
+    "last_updated": "2026-07-07",
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   }
 }

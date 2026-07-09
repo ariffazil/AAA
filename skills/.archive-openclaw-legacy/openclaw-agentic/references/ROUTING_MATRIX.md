@@ -27,8 +27,8 @@ For any task that needs a fact, use this matrix:
 | "Is this geophysics claim right?" | GEOX | `geox_claim_seal` | Earth evidence is GEOX's job |
 | "What's the NPV of this prospect?" | WEALTH | `wealth_time_discount` (NPV) | Capital is WEALTH's job |
 | "Is Arif too tired for a T3 decision?" | WELL | `well_assess_homeostasis` | Vitality is WELL's job |
-| "Should I do X?" (constitutional) | arifOS | `arif_judge_deliberate` | Judgment is arifOS's job |
-| "I have a 'no' from a floor" | arifOS | `arif_vault_seal` (record the HOLD) | Audit trail |
+| "Should I do X?" (constitutional) | arifOS | `arif_judge` | Judgment is arifOS's job |
+| "I have a 'no' from a floor" | arifOS | `arif_seal` (record the HOLD) | Audit trail |
 | "Send a Telegram" | OpenClaw (this) | `sessions_send` | Don't route to an organ |
 | "Forge a file" | A-FORGE | (via A2A or opencode) | Code is A-FORGE's job |
 | "Compute 4 MCP system check" | OpenClaw + this skill | `autonomous_probe.py` | Heartbeat |

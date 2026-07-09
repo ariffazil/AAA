@@ -67,7 +67,7 @@ This is the audit trail. Every decision is named, every action is traceable. F2 
 
 - Not a replacement for the 000-999 loop. The 000-999 is the governance layer (constitutional). This is the operational layer (heartbeats).
 - Not a license to skip human review on irreversible actions. F1 AMANAH still wins.
-- Not a place to invent constitutional judgments. arifOS MCP `arif_judge_deliberate` is the only judge.
+- Not a place to invent constitutional judgments. arifOS MCP `arif_judge` is the only judge.
 - Not a no-op during quiet hours. YELLOWs still log.
 
 ## Federation position

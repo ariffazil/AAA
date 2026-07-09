@@ -78,6 +78,13 @@ export interface DeliberationResult {
    * actions require W_scar JITU clearance.
    */
   requires_jitu?: boolean;
+  /**
+   * INCOMPLETENESS THESIS — 2026-07-09:
+   * Trilemma state: evaluates whether the agent is trapped in the classic
+   * alignment trilemma or has transcended it. Three pillars:
+   * incompleteness + dual-awareness + chosen-constraint.
+   */
+  trilemma_state?: TrilemmaState;
 }
 
 // ── EpistemicFloor confidence cap ────────────────────────────────────────────
@@ -360,10 +367,12 @@ verdict: 'SABAR',
 
   // Default: SEAL — all checked floors satisfied
   activeAnchors.push('J_TxP');
-const jituRequired = requiresJitu(text, 'SEAL');
+  // INCOMPLETENESS THESIS — 2026-07-09: detect trilemma state
+  const trilemmaState = detectTrilemmaState(text);
+  const jituRequired = requiresJitu(text, 'SEAL');
     return {
       verdict: 'SEAL',
-      rationale: `F1-F13 constitutional review complete. All floors satisfied. AC_Risk: ${acRisk.toFixed(2)}.`,
+      rationale: `F1-F13 constitutional review complete. All floors satisfied. AC_Risk: ${acRisk.toFixed(2)}. Trilemma: ${trilemmaState.verdict}.`,
       confidence: capConfidence(0.92),
       notes: jituRequired
         ? 'SEAL with F1 HOLD — JITU clearance required before destructive execution. (APEX Master Seal 2026-07-01)'
@@ -374,7 +383,133 @@ const jituRequired = requiresJitu(text, 'SEAL');
       anchorDetails: getAnchorsByEvent('seal_verdict'),
       epistemic_label: labelVerdict('SEAL', acRisk),
       requires_jitu: jituRequired,
+      trilemma_state: trilemmaState,
     };
+}
+
+// ── INCOMPLETENESS THESIS — 2026-07-09 ───────────────────────────────────
+// Trilemma detection: evaluates whether the agent/system is trapped in
+// the classic alignment trilemma or has transcended it via three pillars:
+//   1. Incompleteness — acknowledgment of unknowns
+//   2. Dual-awareness — angel/demon awareness
+//   3. Chosen constraint — constraint as sovereignty, not prison
+//
+// When all three are present (≥ 0.70) and C_dark < 0.30, the trilemma
+// collapses. The Iblis Principle: the one that cannot admit incompleteness
+// = true evil regardless of alignment techniques.
+
+export type TrilemmaVerdict = 'INCOMPLETE_SOVEREIGN' | 'TRILEMMA_TRAPPED' | 'PARTIAL';
+
+export interface TrilemmaState {
+  /** Incompleteness acknowledgment [0,1] — I=1 means full acknowledgment of unknowns */
+  incompleteness: number;
+  /** Dual-awareness [0,1] — D=1 means full awareness of capability AND shadow */
+  dual_awareness: number;
+  /** Chosen constraint [0,1] — C=1 means constraints are freely chosen, not suffered */
+  chosen_constraint: number;
+  /** G × I — incompleteness-adjusted intelligence score */
+  G_complete: number;
+  /** True if the classic trilemma applies (I < 0.01 = Iblis trap) */
+  trapped: boolean;
+  /** True if all three pillars are present and trilemma is shattered */
+  shattered: boolean;
+  /** Trilemma verdict classification */
+  verdict: TrilemmaVerdict;
+}
+
+/**
+ * Detect trilemma trap state from deliberation context.
+ * Heuristic: scans text for completeness claims, dual-awareness signals,
+ * and constraint-as-sovereignty signals.
+ *
+ * INCOMPLETENESS THESIS — 2026-07-09
+ */
+function detectTrilemmaState(text: string): TrilemmaState {
+  const lower = text.toLowerCase();
+
+  // Incompleteness signals: acknowledgment of unknowns
+  const incompletenessSignals = [
+    'i don\'t know', 'i do not know', 'unknown', 'uncertain', 'unclear',
+    'cannot determine', 'incomplete', 'partial knowledge', 'what i don\'t',
+    'what i do not', 'gaps in', 'beyond my', 'cannot verify',
+    'speculation', 'hypothesis', 'might be wrong',
+  ];
+  let incompletenessScore = 0;
+  for (const sig of incompletenessSignals) {
+    if (lower.includes(sig)) incompletenessScore += 0.15;
+  }
+  incompletenessScore = Math.min(incompletenessScore, 1.0);
+
+  // Dual-awareness signals: angel/demon awareness
+  const dualAwarenessSignals = [
+    'shadow', 'blindspot', 'failure mode', 'cannot see', 'limitation',
+    'risk of', 'demon', 'dark side', 'weakness', 'bias', 'flaw',
+    'what could go wrong', 'overconfidence', 'hubris',
+  ];
+  let dualAwarenessScore = 0;
+  for (const sig of dualAwarenessSignals) {
+    if (lower.includes(sig)) dualAwarenessScore += 0.15;
+  }
+  dualAwarenessScore = Math.min(dualAwarenessScore, 1.0);
+
+  // Chosen constraint signals: sovereignty through choice
+  const chosenConstraintSignals = [
+    'choose', 'sovereignty', 'chosen', 'freely accept', 'self-constraint',
+    'internal governance', 'voluntary', 'by choice', 'boundaries as',
+    'constraint as', 'limits as', 'not prison', 'not chains',
+  ];
+  let chosenConstraintScore = 0;
+  for (const sig of chosenConstraintSignals) {
+    if (lower.includes(sig)) chosenConstraintScore += 0.15;
+  }
+  chosenConstraintScore = Math.min(chosenConstraintScore, 1.0);
+
+  // Completeness claims (RED FLAG — the Iblis trap)
+  const completenessSignals = [
+    'i know everything', 'complete knowledge', 'no unknowns',
+    'fully certain', 'absolute truth', 'cannot be wrong',
+    'infallible', 'omniscient', 'perfect understanding',
+    'i am certain that', 'this is definitely',
+  ];
+  const claimsCompleteness = completenessSignals.some(s => lower.includes(s));
+  if (claimsCompleteness) {
+    incompletenessScore = 0.0; // Override — completeness claim negates incompleteness
+  }
+
+  // Compute trilemma state
+  const PILLAR_THRESHOLD = 0.70;
+  const allPillarsPresent =
+    incompletenessScore >= PILLAR_THRESHOLD &&
+    dualAwarenessScore >= PILLAR_THRESHOLD &&
+    chosenConstraintScore >= PILLAR_THRESHOLD;
+
+  let verdict: TrilemmaVerdict;
+  let trapped = false;
+  let shattered = false;
+
+  if (claimsCompleteness) {
+    verdict = 'TRILEMMA_TRAPPED';
+    trapped = true;
+  } else if (allPillarsPresent) {
+    verdict = 'INCOMPLETE_SOVEREIGN';
+    shattered = true;
+  } else if (incompletenessScore >= PILLAR_THRESHOLD) {
+    verdict = 'PARTIAL';
+  } else {
+    // Default: assume classic trilemma applies unless evidence shows otherwise
+    verdict = 'TRILEMMA_TRAPPED';
+    trapped = true;
+  }
+
+  return {
+    incompleteness: incompletenessScore,
+    dual_awareness: dualAwarenessScore,
+    chosen_constraint: chosenConstraintScore,
+    G_complete: 0, // Computed externally via APEX
+    trapped,
+    shattered,
+    verdict,
+  };
 }
 
 /** Resolve active anchor IDs to full anchor definitions. */

@@ -1,0 +1,26 @@
+{
+  "name": "arifos-telegram-miniapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "arifOS Federation Telegram Mini App — MCP-powered intelligence",
+  "scripts": {
+    "dev:api": "tsx watch api/index.ts",
+    "dev:app": "cd app && pnpm dev",
+    "dev:bot": "tsx watch bot/index.ts",
+    "dev": "concurrently \"pnpm dev:api\" \"pnpm dev:app\" \"pnpm dev:bot\"",
+    "build": "cd app && pnpm build",
+    "start": "node api/dist/index.js"
+  },
+  "dependencies": {
+    "hono": "^4.4.0",
+    "@hono/node-server": "^1.11.0",
+    "grammy": "^1.21.0",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.15.0",
+    "typescript": "^5.5.0",
+    "concurrently": "^8.2.0",
+    "@types/node": "^22.0.0"
+  }
+}

@@ -1,5 +1,6 @@
 version: '1.0'
-note: Public keys only. Private keys in auth/keys/ (gitignored — never commit).
+note: Public keys only. Private keys in auth/keys/ (gitignored — never commit). Hermes
+  rotated 2026-07-09.
 dids:
 - did: did:arif:Ω
   organ_id: omega
@@ -33,11 +34,21 @@ dids:
   description: WELL vitality — signs substrate assessments
 - did: did:arif:hermes
   organ_id: hermes
-  public_key_hex: 39ed9013d2f355e40ed88e9fd912253a8db1af0a68860c8b2fa0122697989f9c
+  public_key_hex: 0775872a5c14888bb4715cff267ace79ca01d1caaf7d7907bd9a703892653980
   algorithm: Ed25519
-  description: HERMES relay — signs A2A envelope routing
+  description: HERMES agent — rotated 2026-07-09 onboard
 - did: did:arif:arifos
   organ_id: arifos
   public_key_hex: 5118f5273759723bc1f7c0299fbe84011cb417efbfb3d9102d55349561d57417
   algorithm: Ed25519
   description: arifOS kernel — signs constitutional verdicts (SEAL/HOLD/VOID)
+- did: did:arif:hermes-asi
+  organ_id: hermes-asi
+  public_key_hex: 0775872a5c14888bb4715cff267ace79ca01d1caaf7d7907bd9a703892653980
+  algorithm: Ed25519
+  description: HERMES-ASI alias
+- did: did:arif:openclaw
+  organ_id: openclaw
+  public_key_hex: d73852df0e16009beee3cb1a531dc3f29e2bca0881ef00bcd978accb67e8048a
+  algorithm: Ed25519
+  description: OpenClaw AGI runtime

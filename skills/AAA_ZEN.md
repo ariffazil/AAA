@@ -209,7 +209,7 @@ def assess_risk(well_data: dict, calibration: CalibrationData | None) -> RiskAss
 ```python
 # Standard federation pattern:
 # 1. OBSERVE (read-only, no side effects)
-# 2. PLAN (arif_think, arif_mind_reason)
+# 2. PLAN (arif_think, arif_think)
 # 3. SIMULATE (forge_dry_run — shows what would happen)
 # 4. JUDGE (arif_judge + arif_seal)
 # 5. EXECUTE (forge_execute — only after verdict)

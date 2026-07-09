@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    ports:
+      - "3100:3100"
+    environment:
+      - GEOX_URL=http://host.docker.internal:8081
+      - WEALTH_URL=http://host.docker.internal:18082
+      - WELL_URL=http://host.docker.internal:18083
+      - ARIFOS_URL=http://host.docker.internal:8088
+      - API_PORT=3100
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile.bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - MINIAPP_URL=${MINIAPP_URL:-https://app.arif-fazil.com}
+    depends_on:
+      - api
+
+  app:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"

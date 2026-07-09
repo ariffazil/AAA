@@ -61,7 +61,7 @@ mcporter call geox.geox_well_analyze_sequence source=/data/well.las zone_top:=10
 
 C2+ tools MUST be called via arifOS MCP first to get SEAL:
 
-1. Call `arif_judge_deliberate` on arifOS MCP (port 8080)
+1. Call `arif_judge` on arifOS MCP (port 8080)
 2. If verdict = SEAL → call the organ tool via mcporter
 3. If verdict = HOLD → return HOLD to caller
 4. If verdict = VOID → reject
@@ -74,7 +74,7 @@ curl -X POST http://localhost:8080/mcp -H "Content-Type: application/json" -d '{
   "id": 1,
   "method": "tools/call",
   "params": {
-    "name": "arif_judge_deliberate",
+    "name": "arif_judge",
     "arguments": {
       "mode": "judge",
       "candidate": "{\"action\":\"GEOX_ORGAN:geox_prospect_judge_seal\",\"description\":\"GEOX irreversible prospect judgment\"}",

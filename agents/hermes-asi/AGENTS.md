@@ -27,6 +27,8 @@
 
 Every tool call: ART reflex → verdict ∈ {PROCEED, HOLD, BLOCK, DEFAULT_OBSERVE}.
 
+**Truth Receipts (2026-07-08):** All claims go through enforcement: `enforce_for_warga("hermes-asi", ...)` or the hermes_claim_to_receipt adapter (already wired in arifOS hermes tools). Returns layer + agent_contract. Hermes epistemic/fact tools now enforce this. See AAA_ZEN_INIT + GENESIS/020.
+
 ## Routing Protocol
 
 | Inbound | Outbound |

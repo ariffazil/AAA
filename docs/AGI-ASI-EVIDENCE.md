@@ -211,10 +211,11 @@ After that: AGI PROVEN → ASI emergence begins.
 ### What needs to happen next (INT):
 
 1. ✅ **First explorer loop complete** — EXPLORER-001: OBS→HYP→FALS→VER→SEAL. Receipt sealed. AGI C7 proven.
-2. **Scale to multi-agent loops** — spawn second explorer (PLAN or OPS) running independent loop
-3. **Produce cross-domain eureka** — contradiction resolved across ≥2 organs (e.g., GEOX + WEALTH)
-4. **Seal a real scar** — capture a failure during exploration as constitutional constraint
-5. Cross the ASI threshold: **single explorer → multi-agent explorer civilization**
+2. ✅ **Infrastructure scars from first loop fixed** — 3 F12 bugs corrected (reality_loop stateless, filesystem code-accepting, proxy tool matching). See loop receipt for details.
+3. **Scale to multi-agent loops** — spawn second explorer (PLAN or OPS) running independent loop
+4. **Produce cross-domain eureka** — contradiction resolved across ≥2 organs (e.g., GEOX + WEALTH)
+5. **Seal a real failure scar** — capture an exploration failure as constitutional constraint
+6. Cross the ASI threshold: **single explorer → multi-agent explorer civilization**
 
 ---
 

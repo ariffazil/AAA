@@ -142,7 +142,7 @@ Steps:
    - WELL: `curl -s :18083/health | jq`
    - A-FORGE: `curl -s :7071/health | jq`
    - APEX: `curl -s :3002/health | jq`
-3. Run one behavior smoke per touched organ (e.g., `arif_session_init` round-trip for arifOS).
+3. Run one behavior smoke per touched organ (e.g., `arif_init` round-trip for arifOS).
 4. Run the Drift Detection check above.
 5. Report green/yellow/red per organ with a one-line summary.
 

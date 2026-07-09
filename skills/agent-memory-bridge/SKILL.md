@@ -74,4 +74,4 @@ bridge-recent --hours 24 --confirm
 
 - `arifos-memory` (L3–L6 access)
 - `session-logs` (read session history)
-- `arif_vault_seal` (L6 immutable ledger)
+- `arif_seal` (L6 immutable ledger)
