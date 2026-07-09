@@ -24,12 +24,38 @@ function sha256Hex(input) {
 function createSealPayload(task, agentId, action, metadata, opts = {}) {
   const now = new Date().toISOString();
 
+  const sessionId =
+    task.session_id ||
+    task.metadata?.session_id ||
+    metadata?.session_id ||
+    null;
+  const contextId = task.contextId || metadata?.context_id || null;
+
+  // Ghost Task prevention: refuse to build SEAL payload without lineage
+  if (!sessionId || sessionId === 'session-unknown' || sessionId === 'unknown') {
+    const err = new Error(
+      'VAULT999 write refused: session_id required (Ghost Task / missing contextLineage)',
+    );
+    err.code = 'GHOST_TASK_BLOCKED';
+    throw err;
+  }
+  if (!contextId) {
+    const err = new Error(
+      'VAULT999 write refused: context_id required (Ghost Task / missing contextLineage)',
+    );
+    err.code = 'GHOST_TASK_BLOCKED';
+    throw err;
+  }
+
   const payload = {
     agent_id: agentId || 'aaa-gateway',
+    actor: agentId || 'aaa-gateway',
+    session_id: sessionId,
     action: action,
     payload: {
       task_id: task.id,
-      context_id: task.contextId,
+      context_id: contextId,
+      session_id: sessionId,
       status: task.status?.state,
       routing: task.metadata?.routing || 'direct',
       skill: task.metadata?.skill || null,
@@ -42,10 +68,12 @@ function createSealPayload(task, agentId, action, metadata, opts = {}) {
     ratified_at: now,
     irreversibility_ack: true,
     irreversibility_class: 'LOW_RISK_DIRECT',
-    tags: ['aaa', 'a2a', 'audit'],
+    tags: ['aaa', 'a2a', 'audit', 'lineage-bound'],
     metadata: {
       source: 'aaa-a2a-gateway',
       protocol: 'A2A/AAA-v1.0',
+      session_id: sessionId,
+      context_id: contextId,
       ...metadata
     }
   };
