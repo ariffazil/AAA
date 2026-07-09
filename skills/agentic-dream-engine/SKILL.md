@@ -27,8 +27,8 @@ dependencies:
   - aforge
   tools:
   - arif_memory_recall
-  - arif_vault_seal
-  - arif_judge_deliberate
+  - arif_seal
+  - arif_judge
 examples:
 - Design the dream-state protocol for a new AAA warga agent.
 - Map how OpenCode's auto-dream.ts should feed into arifOS L4 canon.
@@ -88,7 +88,7 @@ This skill extends that engine into a **federation protocol**: every AAA warga a
 ## When NOT to Use
 
 - **Never** use this skill to let an agent raise its own synthesis threshold or daily cap. That is F13 territory.
-- **Never** let an agent write directly to VAULT999 (L6) during a dream cycle. L6 seals require `arif_vault_seal` with human ack or 888_JUDGE verdict.
+- **Never** let an agent write directly to VAULT999 (L6) during a dream cycle. L6 seals require `arif_seal` with human ack or 888_JUDGE verdict.
 - **Never** treat dream output as truth without counterfactual challenge and provenance.
 
 ## Core Doctrine

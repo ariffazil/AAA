@@ -94,7 +94,7 @@ AAA is the **fifth position**. It is the **window, not the wall**.
 
 | Read this | For | Link |
 |-----------|-----|------|
-| **arifOS** | Constitutional kernel. 12 canonical public verbs (F13 ratified 2026-07-04; prior freeze was 7). 13 floors. VAULT999. The judge. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
+| **arifOS** | Constitutional kernel. 12 canonical public verbs. 13 floors. The judge (LAW/JUDGMENT axis). See docs/TRINITY_ORTHOGONAL_MAP.md. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
 | **A-FORGE** | Executor. 21 stateless MCP tools (live `:7072/health`). Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
 | **AAA** (this repo) | Cockpit. A2A mesh. Agent registry. React 19 dashboard. What Arif reads. | ← you are here |
 
@@ -136,6 +136,14 @@ INFERRED        Agent reasoning      ← floor-bounded only
 > APEX THEORY defines the constitutional dynamics of governed intelligence through ΔΩΨ. arifOS compiles those dynamics into an AGI substrate kernel. AAA renders the substrate as visible ASI civilization state. A-FORGE gives the system governed hands. GEOX, WEALTH, and WELL anchor those hands to earth, capital, and human reality. VAULT999 preserves consequence. Arif/F13 remains the sovereign witness and final veto.
 
 **AAA must never:** issue constitutional verdicts (SEAL/HOLD/VOID), adjudicate floors, or replace arifOS as the judge.
+
+### Trinity Orthogonal Role (SATU PERMUKAAN)
+**AAA = STATE / ROUTING / VISIBILITY**
+- Primary question: **"Who should handle this, and what can Arif see?"**
+- Owns: agent registry, task routing to organs, visibility (what Arif sees), approval queues.
+- Must not: judge (verdicts), execute mutations, enforce floors directly.
+- See also: arifOS (LAW/JUDGMENT), A-FORGE (EXECUTION/MUTATION)
+- One-line: arifOS is the judge; AAA is the cockpit; A-FORGE is the hand.
 
 Full doctrine: [GENESIS/040_APEX_STACK.md](https://github.com/ariffazil/arifos/blob/main/GENESIS/040_APEX_STACK.md)
 

@@ -55,7 +55,7 @@ This skill turns OpenClaw from a passive chat-router into an **autonomous gatewa
 |---|---|---|---|
 | **autonomous-probe** | 111 | Every 5 min, when no inbound | Probe 18789, 8787, 4 MCP, Telegram queue, disk, memory |
 | **self-evolve** | 777 → 999 | Daily 04:00 MYT | Scan skills/plugins for staleness, append to daily note |
-| **constitutional-passthrough** | 444 → 555 → 666 | Every T2/T3 action | Route through arifOS MCP `arif_judge_deliberate` |
+| **constitutional-passthrough** | 444 → 555 → 666 | Every T2/T3 action | Route through arifOS MCP `arif_judge` |
 
 ## When to invoke (trigger patterns)
 
@@ -81,7 +81,7 @@ Load this skill when ANY of these appear in the user message or in OpenClaw's ow
 Hard rules:
 - **No decision without a probe.** Don't act on a guess. If the probe doesn't exist, write it first.
 - **No public action without a Telegram receipt.** Every forge action (file write, restart, mcp call) must have a 1-line reply in the originating chat. Even "fixed" needs a 1-liner.
-- **No constitutional claim without F-floor check.** Every T2+ action routes through `arif_judge_deliberate` (the arifOS MCP tool) first. If the tool says HOLD, hold.
+- **No constitutional claim without F-floor check.** Every T2+ action routes through `arif_judge` (the arifOS MCP tool) first. If the tool says HOLD, hold.
 - **No secret in chat output.** Redact tokens, passwords, paths to `~/.ssh`, `~/.config/gh`. Always.
 
 ## Routing matrix — where to send work
@@ -146,7 +146,7 @@ verdict = httpx.post("http://127.0.0.1:8088/mcp", json={
   "jsonrpc": "2.0", "id": 1,
   "method": "tools/call",
   "params": {
-    "name": "arif_judge_deliberate",
+    "name": "arif_judge",
     "arguments": {
       "mode": "judge",
       "candidate": "<describe the action>",

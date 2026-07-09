@@ -1,0 +1,4 @@
+# Public keys in DID registry — not secrets, these are Ed25519 public keys
+auth/did_registry.yaml:generic-api-key:37
+auth/did_registry.yaml:generic-api-key:47
+auth/did_registry.yaml:generic-api-key:52

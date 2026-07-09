@@ -125,6 +125,13 @@
       "migration": "Migrate to Hermes MCP server (TBD).",
       "reason": "Part of 6 Hermes tools that should move out of arifOS kernel."
     },
+    "mcp__aforge__forge_vault": {
+      "status": "DEPRECATED",
+      "since": "2026-07-08",
+      "migration": "Use mcp__arifos__arif_seal for VAULT999 writes and mcp__arifos__arif_memory or mcp__arifos__arif_vault_query for reads. See unified-memory-federation skill for tier routing.",
+      "reason": "forge_vault duplicates arif_seal and bypasses arifOS constitutional judgment. Only arifOS may write the immutable VAULT999 ledger.",
+      "blast_radius": "Writing VAULT999 through forge_vault skips judge/witness gates and fragments memory authority."
+    },
     "mcp__geox__pattern_a_wrappers": {
       "status": "LEGACY",
       "since": "2026-06-28",
@@ -136,7 +143,93 @@
       "since": "2026-06-28",
       "migration": "Use mcp__geox__geox_seismic_compute (unified seismic engine) instead.",
       "reason": "Zen: geox_seismic_compute is the unified canonical tool. geox_egs_seismic_compute is redundant."
+    }
+  },
+  "deprecated_grok_skills_2026-07-07": {
+    "code-review": {
+      "status": "DEPRECATED",
+      "since": "2026-07-07",
+      "migration": "Use bundled review + orthogonal-skill-update + grok-zen-aaa-substrate. For GitHub: github-operations.",
+      "reason": "Haram fitness 0.06 from equivalent compiler. Duplicate with bundled/federation review, contradicts Zen Witness (W³ collapse) + quant G/W³ in substrate. High entropy/chaos in review paths.",
+      "blast_radius": "Multiple review implementations cause contradictions and skill overload."
     },
+    "create-skill": {
+      "status": "DEPRECATED",
+      "since": "2026-07-07",
+      "migration": "Use grok-federation-skill-upgrader + grok-zen-aaa-substrate (or federation skill-creator for .agents).",
+      "reason": "Haram 0.018. Legacy duplicates upgrader and federation creator. No Zen/quant/quantum. Violates no-proliferation, tool-creation-gate, route-least-power.",
+      "blast_radius": "Unresolved superposition in skill creation = chaos."
+    },
+    "docx": {
+      "status": "DEPRECATED (general)",
+      "since": "2026-07-07",
+      "migration": "Use grok-zen-aaa-substrate for grounded/quant output or forge-document-intelligence.",
+      "reason": "Haram 0.007. High entropy schemas (XSD chaos), low fitness. Contradicts substrate physics/math/code/symbol + ΔS<=0. Overlap with federation doc intelligence.",
+      "blast_radius": "Bloat adds entropy without qual/quant/quantum value."
+    },
+    "pptx": {
+      "status": "DEPRECATED (general)",
+      "since": "2026-07-07",
+      "migration": "Use grok-zen-aaa-substrate + imagine for visuals/presentations.",
+      "reason": "Haram 0.006. Extreme entropy 4.5, complex unpack. No grounding. Contradicts Zen Reality.",
+      "blast_radius": "High cog cost, visual overlap chaos."
+    },
+    "xlsx": {
+      "status": "DEPRECATED (general)",
+      "since": "2026-07-07",
+      "migration": "Use grok-zen-aaa-substrate or wealth tools for data.",
+      "reason": "Haram 0.007. High entropy, low substrate value.",
+      "blast_radius": "Maintenance chaos for simple tasks."
+    },
+    "help": {
+      "status": "DEPRECATED",
+      "since": "2026-07-07",
+      "migration": "Use grok-zen-aaa-substrate, orthogonal-skill-update or meta-mesa-skill-atlas.",
+      "reason": "Haram 0.04. Thin, low adoption. Contradicts Zen Meaning and meta-routing.",
+      "blast_radius": "Unnecessary entry point = overload."
+    },
+    "check-work": {
+      "status": "MAKRUH (ROUTE/MERGE)",
+      "since": "2026-07-07",
+      "migration": "Merge into orthogonal-skill-update + grok-zen-aaa-substrate + bundled.",
+      "reason": "Makruh 0.14. Some overlap with new substrate verification. Monitor but prefer harden new.",
+      "blast_radius": "Moderate duplication."
+    },
+    "imagine": {
+      "status": "MAKRUH (INTEGRATE)",
+      "since": "2026-07-07",
+      "migration": "Integrate into grok-zen-aaa-substrate for symbol/visual grounding.",
+      "reason": "Makruh 0.1. Useful but overlaps federation creative; route to substrate use.",
+      "blast_radius": "Low if not Zen-grounded."
+    }
+  },
+  "grok_federation_overlap": {
+    "aforge_low_fitness": ["forge8_execute", "forge_vault (route/merge per compiler mean F 0.491)"],
+    "grok_federation_dups": "create-skill<->skill-creator; code-review<->github-operations; office<->forge-document-intelligence; orthogonal<->meta-mesa; governed<->constitutional. Grok mean F 0.085 signals high chaos vs federation.",
+    "action": "Prune legacy Grok; harden grok-zen-aaa-substrate + orthogonal-skill-update + upgrader + arif-governed."
+  },
+  "hermes_opencode_openclaw_pre_substrate_prunes_2026-07-07": {
+    "status": "ANNOUNCED",
+    "since": "2026-07-07",
+    "prune_list": [
+      "hermes runtime/skills/apple/* (pre-substrate, high entropy, no Zen grounding)",
+      "hermes creative/gaming/gifs/social (contradict substrate, add chaos nodes)",
+      "openclaw workspace/skills/777-forge-* old contrasts (superseded by grok-zen-aaa-substrate)",
+      "opencode legacy skill bundles without 000-999 + Zen (pre-orthogonal)"
+    ],
+    "reason": "Old skills create entropy leaks, contradictions with new Zen/quant/quantum substrate, block Marginal Zen Zero. Fitness low, overlap with hardened Grok skills.",
+    "migration": "Route to grok-zen-aaa-substrate + orthogonal-skill-update + hermes-prime-reflex-v2. Use cooling-ledger to track.",
+    "blast_radius": "Prevents single coherent mind; ghost reflexes and chaos persist."
+  },
+  "reflex_unification": {
+    "hermes-prime-reflex-v1": {
+      "status": "DEPRECATED",
+      "since": "2026-07-07",
+      "migration": "All to hermes-prime-reflex-v2 as single governing reflex.",
+      "reason": "Multiple reflex layers = ghost reflexes firing, contradicts Zen Governance and single coherent execution. v2 is the substrate-aligned one.",
+      "blast_radius": "Reflex chaos blocks Zen Zero."
+    }
+  },
     "mcp__well__well_system_registry_status": {
       "status": "LEGACY",
       "since": "2026-06-28",
@@ -238,8 +331,7 @@
       "since": "2026-07-06",
       "migration": "Use mcp__well__well_validate_vitality(mode='cabar') instead.",
       "reason": "Dignity tools pruned per constitutional alignment (reflection only)."
-    }
-  },
+    },
 
   "deprecated_services": {
     "apex-prime.service": {
@@ -312,6 +404,21 @@
       "location": "AAA/skills/openclaw-a2a-bridge/",
       "migration": "Use canonical A2A gateway on OpenClaw GW (port 18789).",
       "reason": "Legacy bridge. Canonical A2A mesh is live."
+    },
+    "skill-cleanup-2026-07-08": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "location": "/root/.agents/skills/.archive-2026-07-08/",
+      "count": 31,
+      "migration": "All 31 archived skills have canonical surfaced counterparts or are obsolete. Use surfaced skills via skills_list().",
+      "reason": "Fitness audit: 96→65 orphaned reduction. High-entropy legacy/duplicate/Apple skills archived. F4 (ΔS ≤ 0): entropy reduced from 209→178 active.",
+      "categories": {
+        "legacy_agents (14)": ["FORGECODE-Autonomous-Init", "aforge-execution", "agentic-builder", "agentic-civilizational-context", "agentic-fitness-law", "agentic-web-optimization", "forge-document-intelligence", "forge-opencode-spawn", "mcp-apps-builder", "webmcp-site-builder", "arif-agent-bootstrap", "arif-fazil-site", "asi-knowledge-writeback", "hermes-explorer-dispatch"],
+        "duplicates (7)": ["mmx-cli→minimax-cli", "universal-reality-loop→reality-loop-operator", "skill-creator→hermes-agent-skill-authoring", "shadow-diagnostic→shadow-alignment-test", "auditor-shadow-diagnostic→shadow-alignment-test", "explorer-falsify-dispatch→explorer-dispatch-protocol", "explorer-intelligence-architecture→explorer-dispatch-protocol"],
+        "apple_ecosystem (3)": ["apple-notes", "apple-reminders", "findmy"],
+        "other_review (7)": ["caller-trace", "claude", "fix-sequencer", "hf-mastery", "iron-shell-render", "mcp-mastery", "serpapi-intelligence", "pre-action-prediction", "tools-embodiment-application"]
+      },
+      "blast_radius": "Low. All 31 have canonical surfaced counterparts or were already unused."
     }
   },
 
@@ -377,6 +484,44 @@
       "description": "MiniMax MCP servers :18090/:18091 reject single Accept header. Require 'Accept: application/json, text/event-stream'. Inconsistent with other organs.",
       "status": "UNRESOLVED"
     }
+  },
+
+  "deprecated_skills_2026-07-08": {
+    "skill_FORGECODE-Autonomous-Init": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use hermes-prime-reflex-v2 + forge_session_init.","reason":"Pre-reflex-v2. Superseded by 000→999 metabolic cycle."},
+    "skill_aforge-execution": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_execute directly.","reason":"Wrapper. A-FORGE directly callable."},
+    "skill_agentic-builder": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_synthesize + forge_execute.","reason":"Superseded by A-FORGE pipeline."},
+    "skill_agentic-civilizational-context": {"status":"ARCHIVED","since":"2026-07-08","migration":"In AGENTS.md Heptalogy §8.","reason":"Absorbed into AGENTS.md."},
+    "skill_agentic-fitness-law": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use apex-governance + forge_evaluate.","reason":"Superseded by APEX gates."},
+    "skill_agentic-web-optimization": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use web_search + web_extract.","reason":"Superseded."},
+    "skill_forge-document-intelligence": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_document_ingest.","reason":"Native A-FORGE tool now."},
+    "skill_forge-opencode-spawn": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use delegate_task or opencode skill.","reason":"Superseded."},
+    "skill_mcp-apps-builder": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use mcp-server-building skill.","reason":"Consolidated."},
+    "skill_webmcp-site-builder": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use claude-design or popular-web-designs.","reason":"Superseded."},
+    "skill_arif-agent-bootstrap": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use AGENTS.md Heptalogy bootstrap.","reason":"Absorbed."},
+    "skill_arif-fazil-site": {"status":"ARCHIVED","since":"2026-07-08","migration":"Via AAA cockpit + forge_git.","reason":"Consolidated under AAA."},
+    "skill_asi-knowledge-writeback": {"status":"REACTIVATED","since":"2026-07-08","migration":"Write path for 555-ASI knowledge graph. Pair with knowledge-graph-query (S15). Governed by unified-memory-federation.","reason":"Part of unified memory architecture; provides SEAL-gated knowledge graph writes."},
+    "skill_hermes-explorer-dispatch": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use explorer-dispatch-protocol.","reason":"Renamed."},
+    "skill_mmx-cli": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use minimax-cli.","reason":"Duplicate."},
+    "skill_serpapi-intelligence": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use web_search + forge_search.","reason":"Superseded by Brave."},
+    "skill_mcp-mastery": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use mcp-server-building.","reason":"Superseded."},
+    "skill_hf-mastery": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use huggingface-hub.","reason":"Superseded."},
+    "skill_tools-embodiment-application": {"status":"ARCHIVED","since":"2026-07-08","migration":"Unknown. Contact sovereign.","reason":"Orphaned."},
+    "skill_fix-sequencer": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use systematic-debugging.","reason":"Superseded."},
+    "skill_caller-trace": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_judge_proxy + arif_triage.","reason":"No longer needed."},
+    "skill_iron-shell-render": {"status":"ARCHIVED","since":"2026-07-08","migration":"Unknown. Contact sovereign.","reason":"Orphaned."},
+    "skill_skill-creator": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use hermes-agent-skill-authoring.","reason":"Duplicate."},
+    "skill_shadow-diagnostic": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use shadow-alignment-test.","reason":"Consolidated."},
+    "skill_auditor-shadow-diagnostic": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use shadow-alignment-test.","reason":"Duplicate variant."},
+    "skill_explorer-falsify-dispatch": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use explorer-dispatch-protocol.","reason":"Consolidated."},
+    "skill_explorer-intelligence-architecture": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use explorer-dispatch-protocol.","reason":"Consolidated."},
+    "skill_reality-loop-operator": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_reality_loop + reflex-v2.","reason":"Canonical is forge_reality_loop."},
+    "skill_universal-reality-loop": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_reality_loop + reflex-v2.","reason":"Duplicate variant."},
+    "skill_pre-action-prediction": {"status":"ARCHIVED","since":"2026-07-08","migration":"In reflex-v2 §0.","reason":"Absorbed."},
+    "skill_github-operations-claude": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use claude-code.","reason":"Duplicate."},
+    "apex-9-kernel-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use trinity-33-canonical (final 33-repo Trinity) + /root/AAA/docs/TRINITY_33_REPOS.md. The 9 was absorbed into 11-per-axis orthogonal model.","reason":"Final 33-repo Trinity (K11+C11+F11) is canonical. APEX-9 lists are legacy framing."},
+    "aforge-apex-9-execution": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use trinity-33-canonical (final 33-repo Trinity). A-FORGE axis is now F1–F11.","reason":"Final 33 supersedes prior 9-per-axis lists. Sharper separation of duties."},
+    "aforge-apex-9-execution-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use trinity-33-canonical.","reason":"Superseded by 33-repo canonical."},
+    "apex-trinity-orthogonal": {"status":"SUPERSEDED_FRAMING","since":"2026-07-08","migration":"Still useful for orthogonal thinking. Primary repo authority is trinity-33-canonical + TRINITY_33_REPOS.md (33 wajib).","reason":"18-repo (two 9s) view absorbed; 33 is final."}
   },
 
   "deprecation_lifecycle": {

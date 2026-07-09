@@ -1,0 +1,548 @@
+{
+  "manifest_version": "1.0.0",
+  "created": "2026-07-08",
+  "authority": "ARIF",
+  "description": "Model Tool Capability Manifest \u2014 what each LLM runtime can do natively, independent of MCP/federation tools. 5-layer schema: Model + Tools + Data + Authority + Governance.",
+  "schema": "arifos.model_tool_manifest.v1",
+  "runtimes": {
+    "azure-foundry": {
+      "provider": "Microsoft Azure",
+      "product": "Azure AI Foundry",
+      "environment": "PETRONAS corporate (arif.fazil@petronas.com)",
+      "auth": "API key (S2S)",
+      "api_surface": {
+        "chat_completions": true,
+        "responses": true,
+        "agents_api": "needs_entra_id",
+        "file_search": "needs_vector_store"
+      },
+      "models": {
+        "gpt-4.1-mini": {
+          "model_family": "GPT-4.1",
+          "exact_version": "2025-04-14",
+          "lifecycle": "deprecating",
+          "retirement": "2026-10-14",
+          "context_window": 1047576,
+          "output_limit": 32768,
+          "tool_call": false,
+          "reason": "Azure 128-tool limit vs 323 federation tools. Responses API builtin tools used instead.",
+          "builtin_tools": {
+            "web_search": {
+              "available": true,
+              "endpoint": "responses",
+              "grounded": true
+            },
+            "code_interpreter": {
+              "available": true,
+              "endpoint": "responses",
+              "sandbox": "auto_container"
+            },
+            "file_search": {
+              "available": false,
+              "reason": "needs vector store (vs_* ID)"
+            }
+          },
+          "federation_tools": {
+            "available": false,
+            "reason": "tool_call disabled \u2014 128-tool Azure limit",
+            "workaround": "Use Chat Completions endpoint with filtered tools (future)"
+          },
+          "rate_limits": {
+            "requests_per_minute": 50,
+            "tokens_per_minute": 50000
+          },
+          "latency_ms": 200,
+          "cost_model": "PETRONAS $200 credit (expires ~2026-07-19)",
+          "best_for": [
+            "web_research",
+            "quick_computation",
+            "live_data_queries"
+          ],
+          "avoid_for": [
+            "federation_ops",
+            "file_operations",
+            "long_context_reasoning"
+          ]
+        }
+      },
+      "access_method": "callable_tool (azure_call.py)",
+      "opencode_provider": false,
+      "reason": "Azure 128-tool limit blocks OpenCode integration. Use azure_call.py script instead.",
+      "modes": {
+        "raw": "Chat Completions, no tools, fastest",
+        "search": "Responses API + web_search",
+        "tools": "Responses API + web_search + code_interpreter"
+      },
+      "usage": "python3 /root/AAA/scripts/azure_call.py --tools \"your prompt\""
+    },
+    "qwen-token": {
+      "provider": "Alibaba Cloud (DashScope)",
+      "product": "Qwen Token Plan (SGP)",
+      "environment": "Token plan credits",
+      "auth": "API key",
+      "api_surface": {
+        "chat_completions": true,
+        "responses": true
+      },
+      "models": {
+        "qwen3.7-max": {
+          "model_family": "Qwen 3.7",
+          "context_window": 1000000,
+          "output_limit": 65536,
+          "tool_call": true,
+          "builtin_tools": {
+            "web_search": {
+              "available": true,
+              "endpoint": "responses"
+            },
+            "code_interpreter": {
+              "available": true,
+              "endpoint": "responses"
+            },
+            "web_extractor": {
+              "available": true,
+              "endpoint": "responses"
+            },
+            "image_search": {
+              "available": true,
+              "endpoint": "responses"
+            },
+            "web_search_image": {
+              "available": true,
+              "endpoint": "responses"
+            }
+          },
+          "federation_tools": {
+            "available": true,
+            "count": "323+",
+            "limit": "no_128_cap"
+          },
+          "best_for": [
+            "web_research",
+            "computation",
+            "image_analysis",
+            "federation_ops"
+          ],
+          "avoid_for": []
+        },
+        "qwen3.6-flash": {
+          "model_family": "Qwen 3.6",
+          "context_window": 1000000,
+          "output_limit": 16384,
+          "tool_call": true,
+          "builtin_tools": {
+            "web_search": {
+              "available": true
+            },
+            "code_interpreter": {
+              "available": true
+            },
+            "web_extractor": {
+              "available": true
+            },
+            "image_search": {
+              "available": true
+            },
+            "web_search_image": {
+              "available": true
+            }
+          },
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "fast_research",
+            "quick_computation"
+          ],
+          "avoid_for": [
+            "deep_reasoning",
+            "long_output"
+          ]
+        },
+        "deepseek-v4-pro": {
+          "model_family": "DeepSeek V4",
+          "context_window": 1000000,
+          "output_limit": 65536,
+          "tool_call": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "deep_reasoning",
+            "long_context"
+          ],
+          "avoid_for": [
+            "web_research_no_builtin"
+          ]
+        },
+        "kimi-k2.7-code": {
+          "model_family": "Kimi K2.7",
+          "context_window": 262144,
+          "output_limit": 65536,
+          "tool_call": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "code_generation",
+            "technical_tasks"
+          ],
+          "avoid_for": [
+            "web_research_no_builtin"
+          ]
+        },
+        "glm-5.2": {
+          "model_family": "GLM 5.2",
+          "context_window": 202752,
+          "output_limit": 65536,
+          "tool_call": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "forge_agent",
+            "reasoning",
+            "tool_calling"
+          ],
+          "avoid_for": []
+        }
+      }
+    },
+    "tokenplan-mimo": {
+      "provider": "Xiaomi (MiMo)",
+      "product": "Token Plan SGP",
+      "auth": "API key",
+      "models": {
+        "mimo-v2.5-pro": {
+          "model_family": "MiMo V2.5",
+          "context_window": 1048576,
+          "output_limit": 131072,
+          "tool_call": true,
+          "reasoning": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true,
+            "count": "323+"
+          },
+          "best_for": [
+            "primary_agent",
+            "code_editing",
+            "federation_ops",
+            "long_reasoning"
+          ],
+          "avoid_for": [
+            "web_research_no_builtin"
+          ],
+          "tool_tiers": {
+            "T0_core_skeleton": {
+              "load": "always",
+              "count": 48,
+              "token_cost": 14400,
+              "includes": "filesystem(7), shell(3), git(1), docker(1), session/governance(8), arif_kernel(10), memory(4), web(4), native(10)"
+            },
+            "T1_domain": {
+              "load": "conditional",
+              "count_per_domain": {
+                "geox": 13,
+                "wealth": 19,
+                "well": 18,
+                "aforge": 20
+              },
+              "token_cost_per_domain": "3900-6000",
+              "trigger": "arif_route or intent keywords"
+            },
+            "T2_on_demand": {
+              "load": "explicit_or_tool_discover",
+              "count": "~80 total",
+              "families": {
+                "github": "8 forge + ~15 native",
+                "browser": "7 forge + ~15 native",
+                "infrastructure": "9 forge + ~15 VPS",
+                "data_search": "~20 supabase + 3 qdrant + 2 context7 + 4 perplexity + 4 meyhem + 4 sequential-thinking"
+              }
+            },
+            "T3_excluded": {
+              "reason": "wrong_runtime_duplicate_deprecated",
+              "items": [
+                "m365-copilot tools",
+                "duplicate aliases",
+                "deprecated tools"
+              ]
+            },
+            "T4_forbidden": {
+              "reason": "self_authorization_or_policy_blocked",
+              "items": [
+                "forge_approve (self-auth)",
+                "forge_abort (emergency break-glass only)"
+              ]
+            },
+            "typical_session": {
+              "tools_loaded": "T0(48) + T1(13-20) = 61-68",
+              "tokens_used": "18K-21K",
+              "savings_vs_all_323": "78%"
+            }
+          }
+        },
+        "mimo-v2.5": {
+          "model_family": "MiMo V2.5",
+          "context_window": 1048576,
+          "output_limit": 131072,
+          "tool_call": true,
+          "reasoning": true,
+          "attachment": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "vision_tasks",
+            "image_analysis"
+          ],
+          "avoid_for": []
+        }
+      }
+    },
+    "minimax": {
+      "provider": "MiniMax",
+      "product": "Direct API",
+      "auth": "API key",
+      "models": {
+        "MiniMax-M3": {
+          "model_family": "MiniMax M3",
+          "context_window": 1048576,
+          "output_limit": 65536,
+          "tool_call": true,
+          "reasoning": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "flagship_workhorse",
+            "long_context",
+            "reasoning"
+          ],
+          "avoid_for": []
+        },
+        "MiniMax-M2.7-highspeed": {
+          "model_family": "MiniMax M2.7",
+          "context_window": 200000,
+          "output_limit": 16384,
+          "tool_call": true,
+          "reasoning": true,
+          "builtin_tools": {},
+          "federation_tools": {
+            "available": true
+          },
+          "best_for": [
+            "ops_monitoring",
+            "fast_tasks"
+          ],
+          "avoid_for": []
+        }
+      }
+    },
+    "opencode-go": {
+      "provider": "OpenCode",
+      "product": "OpenCode Go (proxy)",
+      "auth": "API key",
+      "description": "Multi-model proxy \u2014 routes to underlying providers",
+      "models": {
+        "claude-sonnet-5": {
+          "tool_call": true,
+          "reasoning": true,
+          "context_window": 200000,
+          "federation_tools": {
+            "available": true
+          }
+        },
+        "claude-opus-4-8": {
+          "tool_call": true,
+          "reasoning": true,
+          "context_window": 200000,
+          "federation_tools": {
+            "available": true
+          }
+        },
+        "gpt-5.5": {
+          "tool_call": true,
+          "reasoning": true,
+          "context_window": 128000,
+          "federation_tools": {
+            "available": true
+          }
+        },
+        "gemini-3.1-pro": {
+          "tool_call": true,
+          "reasoning": true,
+          "context_window": 1000000,
+          "federation_tools": {
+            "available": true
+          }
+        },
+        "deepseek-v4-pro": {
+          "tool_call": true,
+          "reasoning": true,
+          "context_window": 1000000,
+          "federation_tools": {
+            "available": true
+          }
+        }
+      }
+    }
+  },
+  "routing_rules": {
+    "web_research": {
+      "primary": "azure-foundry (via azure_call.py --search)",
+      "fallback": "qwen-token/qwen3.7-max (OpenCode provider)",
+      "reason": "Built-in web_search, fastest latency"
+    },
+    "computation": {
+      "primary": "azure-foundry (via azure_call.py --tools)",
+      "fallback": "qwen-token/qwen3.7-max (OpenCode provider)",
+      "reason": "Built-in code_interpreter"
+    },
+    "federation_ops": {
+      "primary": "tokenplan-mimo/mimo-v2.5-pro",
+      "fallback": "qwen-token/glm-5.2",
+      "reason": "323+ federation tools via function calling"
+    },
+    "deep_reasoning": {
+      "primary": "qwen-token/deepseek-v4-pro",
+      "fallback": "opencode-go/claude-opus-4-8",
+      "reason": "1M context, deep reasoning"
+    },
+    "code_generation": {
+      "primary": "qwen-token/kimi-k2.7-code",
+      "fallback": "tokenplan-mimo/mimo-v2.5-pro",
+      "reason": "Code-specialized model"
+    },
+    "enterprise_search": {
+      "primary": "m365-copilot (external \u2014 Arif laptop only)",
+      "fallback": "qwen-token/qwen3.7-max (web search proxy)",
+      "reason": "Only runtime with M365 access",
+      "note": "M365 not on af-forge. Use web search as fallback."
+    },
+    "office_artifacts": {
+      "primary": "m365-copilot",
+      "fallback": null,
+      "reason": "docx/pdf/slides/xlsx skills only available here"
+    },
+    "image_generation": {
+      "primary": "qwen-image/qwen-image-2.0",
+      "fallback": "m365-copilot/image_gen",
+      "reason": "Dedicated image model"
+    },
+    "geox": {
+      "primary": "tokenplan-mimo/mimo-v2.5-pro",
+      "fallback": "qwen-token/glm-5.2",
+      "reason": "Federation tools (geox_*) available via function calling"
+    },
+    "well": {
+      "primary": "tokenplan-mimo/mimo-v2.5-pro",
+      "fallback": "qwen-token/glm-5.2",
+      "reason": "Federation tools (well_*) available via function calling"
+    },
+    "github": {
+      "primary": "tokenplan-mimo/mimo-v2.5-pro",
+      "fallback": "qwen-token/glm-5.2",
+      "reason": "Federation tools (forge_github_*) available via function calling"
+    },
+    "browser": {
+      "primary": "tokenplan-mimo/mimo-v2.5-pro",
+      "fallback": "qwen-token/glm-5.2",
+      "reason": "Federation tools (forge_browser_*, chrome-devtools_*) available"
+    },
+    "infrastructure": {
+      "primary": "tokenplan-mimo/mimo-v2.5-pro",
+      "fallback": "qwen-token/glm-5.2",
+      "reason": "Federation tools (forge_shell, forge_docker, hostinger-vps_*) available"
+    }
+  },
+  "external_runtimes": {
+    "m365-copilot": {
+      "provider": "Microsoft",
+      "product": "Microsoft 365 Copilot",
+      "environment": "PETRONAS corporate laptop (arif.fazil@petronas.com)",
+      "auth": "Entra ID (delegated)",
+      "model_family": "GPT-5 reasoning (exact version UNKNOWN)",
+      "builtin_tools": {
+        "retrieval": [
+          "office365_search",
+          "office365_open",
+          "office365_find",
+          "search_web",
+          "open"
+        ],
+        "code": [
+          "python",
+          "container_exec",
+          "container_open_image",
+          "container_download"
+        ],
+        "artifacts": [
+          "docx",
+          "pdfs",
+          "slides",
+          "spreadsheets"
+        ],
+        "image": [
+          "image_gen"
+        ],
+        "memory": [
+          "record_memory"
+        ],
+        "calendar": [
+          "find_availability",
+          "schedule_meeting",
+          "find_room"
+        ],
+        "email": [
+          "flag",
+          "archive",
+          "mark_read_unread",
+          "pin_unpin",
+          "inbox_rules",
+          "automatic_replies"
+        ],
+        "guardrails": [
+          "workplace_harm"
+        ],
+        "interactive": [
+          "canmore_create_textdoc"
+        ]
+      },
+      "federation_tools": {
+        "available": false,
+        "reason": "No MCP connection to arifOS"
+      },
+      "side_effects": {
+        "read_only_default": true,
+        "approval_required": [
+          "schedule_meeting",
+          "create_inbox_rule",
+          "flag_email",
+          "archive_email",
+          "record_memory"
+        ]
+      },
+      "best_for": [
+        "enterprise_search",
+        "office_artifacts",
+        "calendar_management",
+        "email_triage"
+      ],
+      "avoid_for": [
+        "federation_ops",
+        "geoscience",
+        "capital_analysis",
+        "vps_management"
+      ],
+      "note": "NOT on af-forge. Available on Arif's PETRONAS corporate laptop only. Cannot be called from federation agents.",
+      "af_forge_accessible": false
+    }
+  }
+}

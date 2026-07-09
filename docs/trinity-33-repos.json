@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "version": "2026.07.08",
+    "status": "CANONICAL_FINAL",
+    "total": 33,
+    "axes": { "arifOS": 11, "AAA": 11, "A-FORGE": 11 },
+    "source": "/root/AAA/docs/TRINITY_33_REPOS.md",
+    "skill": "trinity-33-canonical",
+    "governing_rule": "NEVER let the forge outrun the kernel. Law, cockpit, execution mature together but not in same order.",
+    "protocol_specs": ["modelcontextprotocol/modelcontextprotocol", "a2aproject/A2A", "cloudevents/spec"],
+    "deltas_from_prior_3_skills": {
+      "11_per_axis": "arifOS K1-K11 (was 9), A-FORGE F1-F11 (was 9), AAA C1-C11 (new)",
+      "aaa_axis_explicit": ["a2aproject/A2A", "nats-io/nats-server", "envoyproxy/envoy", "backstage/backstage", "keycloak/keycloak", "grafana/grafana", "prometheus/prometheus", "jaegertracing/jaeger", "cloudevents/spec", "grpc/grpc", "apache/kafka"],
+      "arifos_additions": ["openfga/openfga", "spiffe/spire", "cedar-policy/cedar", "guacsec/guac"],
+      "aforge_additions": ["moby/buildkit", "argoproj/argo-cd"],
+      "new_class": "PROTOCOL_SPEC for MCP, A2A, CloudEvents (constitutional source text)",
+      "integration_order": "5 phases, constitutional membrane first",
+      "iron_rule": "Never let the forge outrun the kernel",
+      "verified_checksums": ["nats-server", "buildkit", "argocd", "renovate"]
+    }
+  },
+  "arifOS": [
+    {"code": "K1", "repo": "modelcontextprotocol/modelcontextprotocol", "role": "Protocol law for tools/resources/prompts/transports", "class": "PROTOCOL_SPEC", "wajib": true},
+    {"code": "K2", "repo": "open-policy-agent/opa", "role": "General-purpose policy decision engine (Rego)", "class": "Runtime", "wajib": true},
+    {"code": "K3", "repo": "temporalio/temporal", "role": "Durable workflow and state-history engine", "class": "Runtime", "wajib": true},
+    {"code": "K4", "repo": "sigstore/cosign", "role": "Artifact signing and verification (keyless)", "class": "Runtime", "wajib": true},
+    {"code": "K5", "repo": "in-toto/in-toto", "role": "Supply-chain step attestation (layout+link)", "class": "Runtime", "wajib": true},
+    {"code": "K6", "repo": "qdrant/qdrant", "role": "Vector memory and semantic retrieval substrate", "class": "Runtime", "wajib": true},
+    {"code": "K7", "repo": "open-telemetry/opentelemetry-collector", "role": "Vendor-neutral telemetry intake/processing/export", "class": "Runtime", "wajib": true},
+    {"code": "K8", "repo": "openfga/openfga", "role": "Relationship-based authorization (Zanzibar)", "class": "Runtime", "wajib": true},
+    {"code": "K9", "repo": "spiffe/spire", "role": "Workload identity runtime (zero-trust)", "class": "Runtime", "wajib": true},
+    {"code": "K10", "repo": "cedar-policy/cedar", "role": "Analyzable authorization language/engine", "class": "Runtime", "wajib": true},
+    {"code": "K11", "repo": "guacsec/guac", "role": "Evidence graph for supply-chain metadata", "class": "Runtime", "wajib": true}
+  ],
+  "AAA": [
+    {"code": "C1", "repo": "a2aproject/A2A", "role": "Agent-to-agent interoperability protocol", "class": "PROTOCOL_SPEC", "wajib": true},
+    {"code": "C2", "repo": "nats-io/nats-server", "role": "Real-time message fabric (NATS+JetStream)", "class": "Runtime", "wajib": true},
+    {"code": "C3", "repo": "envoyproxy/envoy", "role": "Edge/middle/service proxy (programmable routing)", "class": "Runtime", "wajib": true},
+    {"code": "C4", "repo": "backstage/backstage", "role": "Catalog and portal framework", "class": "Runtime", "wajib": true},
+    {"code": "C5", "repo": "keycloak/keycloak", "role": "IAM and federation (human+service)", "class": "Runtime", "wajib": true},
+    {"code": "C6", "repo": "grafana/grafana", "role": "Dashboards and alert visualization", "class": "Runtime", "wajib": true},
+    {"code": "C7", "repo": "prometheus/prometheus", "role": "Metrics collection, rules, alerts", "class": "Runtime", "wajib": true},
+    {"code": "C8", "repo": "jaegertracing/jaeger", "role": "Distributed trace exploration", "class": "Runtime", "wajib": true},
+    {"code": "C9", "repo": "cloudevents/spec", "role": "Canonical event envelope specification", "class": "PROTOCOL_SPEC", "wajib": true},
+    {"code": "C10", "repo": "grpc/grpc", "role": "High-performance typed RPC backbone", "class": "Runtime", "wajib": true},
+    {"code": "C11", "repo": "apache/kafka", "role": "Durable event log and replayable streams (contrast to NATS)", "class": "Runtime", "wajib": true}
+  ],
+  "A-FORGE": [
+    {"code": "F1", "repo": "dagger/dagger", "role": "Programmable workflow runtime (local/CI parity, OTel)", "class": "Runtime", "wajib": true},
+    {"code": "F2", "repo": "earthly/earthly", "role": "Repeatable build DSL (Dockerfile+Makefile grammar)", "class": "Runtime", "wajib": true},
+    {"code": "F3", "repo": "moby/buildkit", "role": "Low-level build engine (caching, rootless, multiple outputs)", "class": "Runtime", "wajib": true},
+    {"code": "F4", "repo": "nektos/act", "role": "Local GitHub Actions runner (pre-flight rehearsal)", "class": "Runtime", "wajib": true},
+    {"code": "F5", "repo": "opentofu/opentofu", "role": "Declarative infrastructure engine", "class": "Runtime", "wajib": true},
+    {"code": "F6", "repo": "aquasecurity/trivy", "role": "All-in-one scanner (vulns, misconfig, secrets, SBOM)", "class": "Runtime", "wajib": true},
+    {"code": "F7", "repo": "gitleaks/gitleaks", "role": "Secret leakage detection", "class": "Runtime", "wajib": true},
+    {"code": "F8", "repo": "slsa-framework/slsa-github-generator", "role": "SLSA provenance generation (GitHub-native)", "class": "Runtime", "wajib": true},
+    {"code": "F9", "repo": "argoproj/argo-cd", "role": "Declarative CD and GitOps", "class": "Runtime", "wajib": true},
+    {"code": "F10", "repo": "renovatebot/renovate", "role": "Automated dependency updates (auditable)", "class": "Runtime", "wajib": true},
+    {"code": "F11", "repo": "ossf/scorecard", "role": "Security-health scoring for repos", "class": "Runtime", "wajib": true}
+  ],
+  "integration_order": {
+    "phase1_constitutional_membrane": ["MCP", "OPA", "SPIRE", "Keycloak", "OTel"],
+    "phase2_durable_coordination": ["A2A", "CloudEvents", "gRPC", "NATS", "Envoy"],
+    "phase3_evidence_trust": ["Temporal", "Cosign", "in-toto", "GUAC", "SLSA", "Qdrant"],
+    "phase4_execution_deployment": ["Trivy", "Gitleaks", "Scorecard", "Dagger", "Earthly", "BuildKit", "act"],
+    "phase5_semantic_refinement": ["OpenTofu", "Argo CD", "Renovate", "OpenFGA", "Cedar", "Kafka"]
+  },
+  "checksums": {
+    "nats-server-v2.14.3-amd64.deb": "e0c053fc2abe991f17b2be794897bb3f94ca1857bf886498c741ba69fb62522a",
+    "buildkit-v0.26.2.linux-amd64.tar.gz": "1ef7c888f808e7f3f49d9aeeca11f661afe5c0880a4b114cc31c56dee86acd35",
+    "argocd-linux-amd64": "b93c312956880c9597a246a7d1e705fbb7ee7f19c5229affdec99b26d5663e09",
+    "renovate_docs.tgz": "bfb47a76cbe466769f647fec3e348f2e4d4fae7e8b7665a0cec612e885c485d4"
+  }
+}

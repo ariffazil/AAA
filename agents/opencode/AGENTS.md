@@ -17,6 +17,8 @@
 **Full doctrine/MUBAH/A2A:** inherited from /root/AGENTS.md + doctrine audit (MUBAH digital; FARD only physical/humans/real $; bearer shared).
 No local tables (zen: single source).
 
+**TRUTH RECEIPT RULE (MANDATORY — all claims):** Before any claim, hypothesis, or recommendation: `from arifosmcp.arifos_vault.truth_enforcement import enforce_for_warga, claim_must_use_receipt; enforce_for_warga("opencode", statement, irreversible=...)`. Obey the agent_contract. L4 = analysis only. See AAA_ZEN_INIT + GENESIS/020.
+
 ---
 
 
