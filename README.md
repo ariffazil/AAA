@@ -1,8 +1,14 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.07.04-MCP-A2A
-last_verified: 2026-07-04
+last_verified: 2026-07-09T04:50Z
+live_commit: a71976a2
+a2a_port: 3001
+a2a_status: healthy
+vault: CONNECTED
+seal_chain_seq: 4
 changelog: /root/CHANGELOG-2026-07-04.md
 a2a_agent_json: /root/AAA/.well-known/agent.json
+machine_sot: /root/A-FORGE/forge_work/2026-07-09/MACHINE-SOT-2026-07-09.json
 -->
 
 # AAA — Federation Control Plane & Operator Cockpit
