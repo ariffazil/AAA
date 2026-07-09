@@ -2,6 +2,7 @@
 
 > **Sealed:** 2026-06-22 | **Authority:** F13 SOVEREIGN — Arif
 > **Status:** CANONICAL — supersedes all prior organ diagrams
+> **Repo substrate:** Final 33 (see trinity-33-canonical + /root/AAA/docs/TRINITY_33_REPOS.md) — 11 arifOS (law), 11 AAA (cockpit), 11 A-FORGE (execution). Orthogonal. Never let forge outrun kernel.
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
 ---

@@ -15,5 +15,5 @@ description: >
 
 - VAULT999 directory and file existence
 - vault999.jsonl entry count and JSON validity
-- arifOS MCP `arif_vault_seal` and `arif_judge_deliberate` tool availability
+- arifOS MCP `arif_seal` and `arif_judge` tool availability
 - Chain integrity (all entries valid JSON objects)

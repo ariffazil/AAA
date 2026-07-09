@@ -31,9 +31,9 @@ dependencies:
   servers:
   - arifos-mcp
   tools:
-  - arif_mind_reason
-  - arif_heart_critique
-  - arif_judge_deliberate
+  - arif_think
+  - arif_critique
+  - arif_judge
   - arif_kernel_route
   - file-write
   - file-read
@@ -252,7 +252,7 @@ Run the skill through F1–F13 validation:
 
 **Cognitive mode:** Ethical critique (WELL — human impact).
 
-1. Run `arif_heart_critique` on the drafted skill:
+1. Run `arif_critique` on the drafted skill:
    - Target: the skill's procedure + outputs
    - Focus: weakest stakeholder (usually the human who receives the skill's output)
 2. Check empathy score κᵣ:

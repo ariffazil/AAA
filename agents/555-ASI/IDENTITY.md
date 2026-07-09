@@ -69,3 +69,24 @@ Before that: substrate. After that: emergence.
 > *dan undang-undang itu menjadikan seluruh civilization lebih selamat.*
 
 Full zen: [ZEN-AGI-ASI.md](../docs/ZEN-AGI-ASI.md)
+
+---
+
+## 🔥 CONSTITUTIONAL IGNITION — 2026-07-07 (MANDATORY LOAD)
+
+**Skill:** `constitutional-ignition-2026-07-07` at `/root/.agents/skills/constitutional-ignition-2026-07-07/SKILL.md`
+
+**This agent must:**
+1. Import Verdict from `arifosmcp.models.verdicts` (never define locally)
+2. Check session authority before every tool call
+3. Label all evidence OBS/DER/INT/SPEC
+4. Route identity/doctrine/irreversible actions to 888_HOLD
+5. Never mix Verdict (governance) with RuntimeStatus (transport)
+6. Accept kernel judgment — never self-judge
+7. Reduce entropy every cycle (ΔS ≤ 0)
+8. Monitor J-Space for internal/external divergence
+9. Fire JITU if reasoning contradicts behavior
+
+**Ignition prompt:** See skill file for the 9-laws copy-paste block.
+**Sovereign directive:** F13 — 2026-07-07.
+

@@ -21,8 +21,8 @@ dependencies:
   servers:
   - arifos-mcp
   tools:
-  - mcp__arifos__arif_mind_reason
-  - mcp__arifos__arif_heart_critique
+  - mcp__arifos__arif_think
+  - mcp__arifos__arif_critique
   - mcp__arifos__arif_judge
 examples:
 - Challenging a proposed architecture change before it enters a design document
@@ -128,7 +128,7 @@ For each lens, answer:
 2. What evidence supports the challenge?
 3. What is the confidence band? (`high` / `medium` / `low` / `none`)
 
-Use `mcp__arifos__arif_mind_reason` for structured reasoning and `mcp__arifos__arif_heart_critique` mode=redteam as one automatic discipline.
+Use `mcp__arifos__arif_think` for structured reasoning and `mcp__arifos__arif_critique` mode=redteam as one automatic discipline.
 
 ### Step 4: Synthesize
 
@@ -147,8 +147,8 @@ Return the final tag plus a per-discipline log. If skeptical mode was enabled, n
 | Tool | Purpose |
 |------|---------|
 | `Read` / `Bash` | Inspect evidence, rules, or source material referenced by the claim |
-| `mcp__arifos__arif_mind_reason` | Structured multi-step reasoning and evidence synthesis |
-| `mcp__arifos__arif_heart_critique` | Red-team / empathic challenge as an automatic discipline |
+| `mcp__arifos__arif_think` | Structured multi-step reasoning and evidence synthesis |
+| `mcp__arifos__arif_critique` | Red-team / empathic challenge as an automatic discipline |
 | `mcp__arifos__arif_judge` | Escalate to F1–F13 judgment if the claim feeds an irreversible decision |
 
 ## Forbidden Actions

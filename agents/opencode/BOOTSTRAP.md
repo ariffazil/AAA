@@ -42,6 +42,59 @@ print(f'seq={d[\"seq\"]} actor={d[\"actor\"]} verdict={d[\"verdict\"]}')
 "
 ```
 
+### Step 3.5: MODEL TOOL MANIFEST
+
+```bash
+python3 -c "
+import json
+m = json.load(open('/root/AAA/docs/MODEL_TOOL_MANIFEST.json'))
+print(f'Runtimes: {len(m[\"runtimes\"])}')
+for name, r in m['runtimes'].items():
+    models = list(r.get('models',{}).keys())
+    builtin = set()
+    # Check model-level builtin_tools
+    for mc in r.get('models',{}).values():
+        for t in mc.get('builtin_tools',{}):
+            if mc['builtin_tools'][t].get('available'): builtin.add(t)
+    # Check runtime-level builtin_tools (e.g. m365-copilot)
+    for t, v in r.get('builtin_tools',{}).items():
+        if isinstance(v, list): builtin.add(t)
+    fed = any(mc.get('federation_tools',{}).get('available') for mc in r.get('models',{}).values())
+    if r.get('federation_tools',{}).get('available'): fed = True
+    print(f'  {name:20s} models={len(models)} builtin={sorted(builtin) or \"none\"} federation={fed}')
+print(f'Routing rules: {len(m[\"routing_rules\"])}')
+"
+```
+
+**What this tells you:** Which runtimes have native tools (web_search, code_interpreter) vs which rely on federation tools (323 function definitions). Route tasks accordingly.
+
+### Step 3.6: ROUTE TASK (compressed)
+
+```bash
+# Route a task to the best runtime
+python3 /root/AAA/scripts/route_task.py "<task description>"
+# Returns: domain, runtime, builtin_tools, federation_tools, authority, verdict
+
+# Discover tools for a task (without loading full schemas)
+python3 /root/AAA/scripts/route_task.py --discover "<intent>"
+# Returns: matching tool families, tier, requires_schema_load
+```
+
+**Boot attestation (compressed):**
+```
+TOOLS — runtimes=<N> models=<N> routes=<N>
+best: web/code=azure-foundry federation=mimo m365=external(laptop)
+verdict=SEAL
+```
+
+**Usage in agent workflow:**
+```
+1. arif_route(intent) → determines domain
+2. route_task(description) → picks runtime + tools
+3. tool_discover(intent) → loads only needed tool families
+4. Agent works with focused toolset (48-68 tools, not 323)
+```
+
 ### Step 4: EMIT BOOT ATTESTATION
 
 ```
@@ -49,6 +102,7 @@ BOOT — verdict=<X> organs=<N>/6 chain=<seq> actor=<last_actor>
 kernel_drift=<T/F> semantic=<enabled/disabled>
 mcp=v2025-03-26 a2a=v1.0.1 apex=hybrid
 skills=<N> at /root/.agents/skills/
+runtimes=<N> builtin_tools=<list> routing_rules=<N>
 Ready.
 ```
 
