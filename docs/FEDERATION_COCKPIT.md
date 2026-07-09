@@ -60,11 +60,11 @@ AAA/
 │   ├── agent-cards/        # Runtime agent cards
 │   └── vault.js            # Vault integration client
 ├── agents/                 # Agent identity directories
-│   ├── hermes-asi/
-│   ├── hermes-ops/
-│   ├── openclaw/
-│   ├── opencode/
-│   └── apex/
+│   ├── hermes-asi/         # runtime mind
+│   ├── openclaw/           # hands / gateway
+│   ├── opencode/           # forge worker
+│   ├── _external/          # FI harnesses
+│   └── _lanes/             # constitutional lanes (not live organs)
 ├── contracts/              # YAML governance contracts
 ├── registries/             # Canonical YAML registries
 ├── schemas/                # JSON/YAML schemas
