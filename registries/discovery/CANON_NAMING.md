@@ -51,7 +51,7 @@ repo/service; deliberation logic now lives in AAA a2a-server.
 | Legacy repo | `/root/APEX/` (archived on GitHub, branch `apex`) |
 | Legacy service | `apex-prime.service` on port 3002 — kept for legacy health probes ONLY |
 | Deliberation (live) | `/root/AAA/src/gateway/deliberation.ts` (888-judgment module) |
-| Constitutional citizen | `888-APEX` HEXAGON warga (`/root/AAA/agents/888-APEX/`) |
+| Constitutional citizen | `888-APEX` HEXAGON warga (`/root/AAA/agents/_lanes/888-APEX/`) |
 | Use case | Constitutional verdict issuance (SEAL/SABAR/VOID); F1-F13 floor enforcement |
 | Distinguishing feature | NEVER a chatbot; NEVER replies on Telegram; only emits verdicts to arifOS kernel |
 
@@ -68,7 +68,7 @@ not part of the user-facing surface.
 | Class | ASI (here meaning **Artificial Super Intelligence** — class name) |
 | Role | Ω HEART — Memory synthesis + ethical critique |
 | Skills | 3 (per AGENTS.md) |
-| Path | `/root/AAA/agents/555-ASI/` |
+| Path | `/root/AAA/agents/_lanes/555-ASI/` |
 | Use case | Constitutional memory + heart critique, invoked by arifOS kernel |
 | Distinguishing feature | NOT the Hermes-ASI bot. Same "ASI" string, completely different meaning. |
 
@@ -91,8 +91,8 @@ not part of the user-facing surface.
 | `/root/AAA/agents/hermes-asi/` | ✅ LIVE | AAA agent card + SOUL/AGENTS docs for Hermes-ASI |
 | `/root/HERMES/` | ❌ DEAD | Pre-2026-05-19 dir; never migrated (per README.MIGRATED_TO_APEX.md) |
 | `/root/APEX/` | ⚠️ LEGACY | APEX repo, archived; deliberation moved to AAA a2a-server |
-| `/root/AAA/agents/888-APEX/` | ✅ LIVE | APEX constitutional warga (888) |
-| `/root/AAA/agents/555-ASI/` | ✅ LIVE | 555-ASI HEXAGON warga (memory + ethical critique) |
+| `/root/AAA/agents/_lanes/888-APEX/` | LANE (not live organ) | APEX constitutional lane (888) |
+| `/root/AAA/agents/_lanes/555-ASI/` | LANE (not live organ) | 555-ASI HEXAGON lane (memory + ethical critique) |
 | `/root/AAA/agents/apex/` | ⚠️ LEGACY | Old APEX agent entry; superseded by 888-APEX |
 | `/root/AAA/src/gateway/deliberation.ts` | ✅ LIVE | Where APEX deliberation logic lives NOW |
 

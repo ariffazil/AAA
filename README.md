@@ -29,6 +29,7 @@ a2a_agent_json: /root/AAA/.well-known/agent.json
 
 **Repository:** https://github.com/ariffazil/AAA
 **Canonical identity doc:** `docs/FEDERATION_COCKPIT.md`
+**Repo layout (organized):** `docs/repo/REPO_LAYOUT.md`
 **Service:** `aaa-a2a.service` (systemd)
 **Genesis:** `GENESIS/AAA_MANDATE.md`
 
@@ -53,7 +54,7 @@ AAA is the governed state — the constitutional substrate in which:
 | Layer | Population | Lives in |
 |---|---|---|
 | **Sovereign** | Muhammad Arif bin Fazil (F13) — final veto | `agents/arif-fazil-identity.yaml` |
-| **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT · A-ARCHIVE · 777-FORGE (Witness) | `agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/` |
+| **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT · A-ARCHIVE · 777-FORGE (Witness) | `agents/_lanes/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/` (compat symlinks at `agents/<name>`) |
 | **Runtime incarnations** | hermes-asi (Telegram @ASI_arifos_bot) · openclaw (port 18789) | `HERMES/`, `openclaw/` |
 | **Domain organs** | arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA · VAULT999 | 7 organs: 6 systemd services, 6 ports + immutable ledger |
 | **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-008` (8 on-disk cards; 11 instruments in `ROOT_AGENT_CONFIG.yaml`) |
