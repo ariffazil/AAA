@@ -3038,9 +3038,16 @@ app.post('/api/ai/chat', async (req, res) => {
       provider,
       model,
       messages,
-      session_id: req.body?.session_id || 'session-unknown',
+      // Ghost Task lock: never invent session-unknown umbilical
+      session_id: (req.body?.session_id && isValidSessionId(req.body.session_id))
+        ? req.body.session_id
+        : null,
       citations
     };
+    if (!payload.session_id) {
+      res.write(`data: ${JSON.stringify({ error: 'session_id is mandatory (Ghost Task blocked)' })}\n\n`);
+      return res.end();
+    }
 
     const child = spawn(pythonPath, [scriptPath, JSON.stringify(payload)], {
       env: { ...process.env, PYTHONPATH: '/root/pydantic-ai-pilot/src' }
@@ -3219,28 +3226,27 @@ app.post(['/api/message/send'], createEnvelopeValidator(), async (req, res) => {
     const message = params.message || (typeof params.text === 'string' ? { role: 'user', parts: [{ type: 'text', text: params.text }], messageId: Math.random().toString(36).slice(2) } : null);
     if (!message) return res.status(400).json({ ok: false, error: 'params.message required' });
 
+    // Ghost Task lock (operator path previously allowed null session)
+    const lineage = requireTaskLineage(params, body.id || 0, body);
+    if (!lineage.ok) {
+      return res.status(400).json({ ok: false, error: 'session_id is mandatory (Ghost Task blocked)', detail: lineage.error });
+    }
+    const { sessionId, contextId } = lineage;
     const taskId = params.taskId || `aaa-${Math.random().toString(36).slice(2, 14)}`;
-    const contextId = params.contextId || Math.random().toString(36).slice(2);
 
-    const task = {
-      id: taskId, contextId,
-      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
-      artifacts: [], history: [message],
-      metadata: params.metadata || {},
-      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-    };
+    const task = buildLineageTask(taskId, contextId, sessionId, message, params);
     await taskStore.set(taskId, task);
-    logEvent('TASK_START', taskId, `Operator mission: "${(message.parts?.[0]?.text || '').slice(0, 60)}"`);
+    registerContextLineage(contextId, sessionId, taskId);
+    logEvent('TASK_START', taskId, `Operator mission session=${sessionId}: "${(message.parts?.[0]?.text || '').slice(0, 60)}"`);
 
     // ── Register witness: human sovereign (always present) ──
-    const sid = params.session_id || params.metadata?.session_id;
-    if (sid) registerHuman(sid);
+    registerHuman(sessionId);
 
     executeTask(taskId, contextId, message, params.agent_id || null, params).catch(err => {
       logEvent('ERROR', taskId, `Mission failed: ${err.message}`);
     });
 
-    res.json({ jsonrpc: '2.0', id: body.id || 0, result: { id: taskId, contextId, status: task.status } });
+    res.json({ jsonrpc: '2.0', id: body.id || 0, result: { id: taskId, contextId, session_id: sessionId, status: task.status } });
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
   }
@@ -3359,21 +3365,14 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
-    const sessionId = params.sessionId || params.session_id;
-    if (!sessionId) {
-      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, 'Invalid params: session_id is mandatory to prevent Ghost Tasks (F4 CLARITY)'));
+    const lineage = requireTaskLineage(params, id);
+    if (!lineage.ok) {
+      return res.status(400).json(lineage.error);
     }
+    const { sessionId, contextId } = lineage;
 
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
-    const contextId = params.contextId || generateId();
-
-    const task = {
-      id: taskId, contextId,
-      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
-      artifacts: [], history: [message],
-      metadata: params.metadata || {},
-      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-    };
+    const task = buildLineageTask(taskId, contextId, sessionId, message, params);
     await taskStore.set(taskId, task);
     registerContextLineage(contextId, sessionId, taskId);
 
@@ -3382,11 +3381,12 @@ app.post('/a2a/message/send', jsonRpcValidate, createEnvelopeValidator(), async 
     const updatedTask = await taskStore.get(taskId);
     const skill = updatedTask.metadata?.skill || 'general';
 
-    // Write SEAL to Vault999 (async, non-blocking)
+    // Write SEAL to Vault999 (async, non-blocking) — lineage fields required
     writeSeal(updatedTask, 'aaa-gateway', `a2a.${skill}`, {
       routing: 'direct_mcp_simulation',
       task_id: taskId,
-      context_id: contextId
+      context_id: contextId,
+      session_id: sessionId,
     }).catch(err => console.error('[VAULT999] SEAL write failed:', err.message));
 
     res.json(createJSONRPCResponse(id, {
@@ -3418,17 +3418,17 @@ app.post('/a2a/message/stream', jsonRpcValidate, async (req, res) => {
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
-    const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
-    const contextId = params.contextId || generateId();
+    // Ghost Task lock: stream path previously minted tasks without session_id
+    const lineage = requireTaskLineage(params, id);
+    if (!lineage.ok) {
+      return res.status(400).json(lineage.error);
+    }
+    const { sessionId, contextId } = lineage;
 
-    const task = {
-      id: taskId, contextId,
-      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
-      artifacts: [], history: [message],
-      metadata: params.metadata || {},
-      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-    };
+    const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
+    const task = buildLineageTask(taskId, contextId, sessionId, message, params);
     await taskStore.set(taskId, task);
+    registerContextLineage(contextId, sessionId, taskId);
 
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
@@ -3595,26 +3595,24 @@ app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) =>
       if (!msgValidation.valid) {
         return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, msgValidation.message));
       }
-      const sessionId = params.sessionId || params.session_id;
-      if (!sessionId) {
-        return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, 'Invalid params: session_id is mandatory to prevent Ghost Tasks (F4 CLARITY)'));
+      const lineage = requireTaskLineage(params, id);
+      if (!lineage.ok) {
+        return res.status(400).json(lineage.error);
       }
+      const { sessionId, contextId } = lineage;
       const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
-      const contextId = params.contextId || generateId();
       const tenant = params.tenant || 'personal'; // A2A v1.0.0 multi-tenancy
-      const task = {
-        id: taskId, contextId, tenant,
-        status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
-        artifacts: [], history: [message],
+      const task = buildLineageTask(taskId, contextId, sessionId, message, {
+        ...params,
         metadata: { ...(params.metadata || {}), tenant },
-        created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-      };
+      });
+      task.tenant = tenant;
       await taskStore.set(taskId, task);
       registerContextLineage(contextId, sessionId, taskId);
       await executeTask(taskId, contextId, message, params.agent_id, params);
       const updatedTask = await taskStore.get(taskId);
       res.json(createJSONRPCResponse(id, {
-        id: taskId, contextId, tenant, status: updatedTask.status,
+        id: taskId, contextId, session_id: sessionId, tenant, status: updatedTask.status,
         artifacts: updatedTask.artifacts, history: updatedTask.history,
       }));
       break;
@@ -3690,20 +3688,14 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       return res.status(400).json(createJSONRPCError(id, ERROR_CODES.NONCE_REPLAY, 'Duplicate request detected'));
     }
 
-    const sessionId = params.sessionId || params.session_id;
-    if (!sessionId) {
-      return res.status(400).json(createJSONRPCError(id, ERROR_CODES.INVALID_REQUEST, 'Invalid params: session_id is mandatory to prevent Ghost Tasks (F4 CLARITY)'));
+    const lineage = requireTaskLineage(params, id);
+    if (!lineage.ok) {
+      return res.status(400).json(lineage.error);
     }
+    const { sessionId, contextId } = lineage;
     const taskId = params.taskId || `aaa-${generateId().slice(0, 12)}`;
-    const contextId = params.contextId || generateId();
 
-    const task = {
-      id: taskId, contextId,
-      status: { state: 'TASK_STATE_SUBMITTED', timestamp: new Date().toISOString() },
-      artifacts: [], history: [message],
-      metadata: params.metadata || {},
-      created_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-    };
+    const task = buildLineageTask(taskId, contextId, sessionId, message, params);
     await taskStore.set(taskId, task);
     registerContextLineage(contextId, sessionId, taskId);
 
@@ -3724,7 +3716,7 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
       await taskStore.set(taskId, task);
       console.warn(`[DelegationGuard] BLOCKED ${sourceAgent} → ${targetSkill}: ${delegationVerdict.reason}`);
       return res.json(createJSONRPCResponse(id, {
-        id: taskId, contextId,
+        id: taskId, contextId, session_id: sessionId,
         status: task.status, artifacts: [], history: task.history, kind: 'task', metadata: {
           ...task.metadata, delegation_blocked: true, delegation_reason: delegationVerdict.reason,
         },
@@ -3741,11 +3733,12 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
     writeSeal(updatedTask, 'aaa-gateway', 'a2a.task', {
       routing: 'POST /tasks v1.0.0',
       task_id: taskId,
-      context_id: contextId
+      context_id: contextId,
+      session_id: sessionId,
     }).catch(err => console.error('[VAULT999] SEAL write failed:', err.message));
 
     res.json(createJSONRPCResponse(id, {
-      id: taskId, contextId,
+      id: taskId, contextId, session_id: sessionId,
       status: updatedTask.status,
       artifacts: updatedTask.artifacts,
       history: updatedTask.history,

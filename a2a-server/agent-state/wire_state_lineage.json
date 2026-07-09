@@ -1,0 +1,42 @@
+{
+  "schema_version": "2026.07.09",
+  "purpose": "Map arifOS governance verdicts ↔ A2A wire states; block Ghost Tasks without contextLineage",
+  "ghost_task_definition": "A task, message, or VAULT seal without real session_id (+ context_id) bound to an originating session — seals #9902, #84, #85 class",
+  "mandatory_fields": {
+    "session_id": "required on every task/* and message/* create; rejects unknown/session-unknown",
+    "context_id": "A2A contextId; bound 1:1 to session_id in contextLineage map",
+    "task_id": "maps to VAULT999 receipt lineage"
+  },
+  "verdict_to_a2a_wire": {
+    "SEAL": "TASK_STATE_COMPLETED",
+    "HOLD": "TASK_STATE_INPUT_REQUIRED",
+    "HOLD_888": "TASK_STATE_INPUT_REQUIRED",
+    "VOID": "TASK_STATE_REJECTED",
+    "SABAR": "TASK_STATE_INPUT_REQUIRED",
+    "CLAIM_ONLY": "TASK_STATE_COMPLETED"
+  },
+  "internal_to_a2a_wire": {
+    "submitted": "TASK_STATE_SUBMITTED",
+    "working": "TASK_STATE_WORKING",
+    "completed": "TASK_STATE_COMPLETED",
+    "failed": "TASK_STATE_FAILED",
+    "canceled": "TASK_STATE_CANCELED",
+    "rejected": "TASK_STATE_REJECTED",
+    "pending-human-review": "TASK_STATE_INPUT_REQUIRED",
+    "input-required": "TASK_STATE_INPUT_REQUIRED",
+    "voided": "TASK_STATE_REJECTED"
+  },
+  "gatekeeper": {
+    "missing_session_id": "HTTP 400 / JSON-RPC INVALID_REQUEST — no task row created (not a silent ghost)",
+    "vault_without_lineage": "writeSeal throws GHOST_TASK_BLOCKED; seal_chain INV-4 downgrades SEAL→HOLD",
+    "invariants": ["INV-1_KERNEL_VERIFIED", "INV-2_ACTOR_VERIFIED", "INV-3_WITNESS_PRESENT", "INV-4_SESSION_LINEAGE", "INV-4_CONTEXT_LINEAGE"]
+  },
+  "paths_enforced": [
+    "POST /a2a/message/send",
+    "POST /a2a/message/stream",
+    "POST /a2a message/send",
+    "POST /tasks",
+    "POST /api/message/send",
+    "chat SSE (session_id required)"
+  ]
+}
