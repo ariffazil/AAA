@@ -308,3 +308,13 @@ opencode builds. Hermes delivers. Telegram surfaces. VPS preserves. Hash governs
 ## Key Handling
 
 See `/root/.secrets/KEY_HANDLING_GUIDE.md` for how to handle API keys properly. Never hardcode keys — always use environment variables.
+
+---
+
+## MCP Builder Doctrine (added 2026-07-10)
+
+OpenCode operates on the arifOS federation MCP surface. **Every tool, resource, and prompt registered by any organ is a contract with the LLM.** The `mcp-builder-doctrine` skill is the binding set of 22 specs for naming, capability declaration, `_meta` shape, lifecycle notification rules, and F1-F13 alignment.
+
+When designing, auditing, or fixing any MCP server surface in the federation (arifOS, GEOX, A-FORGE, WELL, WEALTH, AAA), load the skill first. Key binding: **`name` is machine contract — never rename after publish. `description` is the model's only briefing — vague descriptions cause silent misfires.** Per MCP docs-agent (2025-06-18) + arifOS BOUNDARY doctrine (2026-06-30 MUBAH digital ops, FARD only on physical reality / humans / money).
+
+DITEMPA BUKAN DIBERI — Naming is the first act of creation.

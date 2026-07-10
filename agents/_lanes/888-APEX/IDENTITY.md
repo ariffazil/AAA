@@ -81,3 +81,11 @@ Full zen: [ZEN-AGI-ASI.md](../docs/ZEN-AGI-ASI.md)
 **Ignition prompt:** See skill file for the 9-laws copy-paste block.
 **Sovereign directive:** F13 — 2026-07-07.
 
+
+---
+
+## MCP Builder Doctrine (binding 2026-07-10)
+
+This agent operates on an MCP surface where naming IS the interface contract. The canonical skill is `mcp-builder-doctrine` at /root/.agents/skills/mcp-builder-doctrine/. Load before any new tool/resource/prompt registration. Key bindings: `name` is machine-stable (never rename), `description` is the model's only briefing (vague → silent misfire), `title` human-readable (always distinct from name), external live APIs are TOOLS not Resources, capability declaration is bound to /mcp initialize (omit subscribe if unimplemented — do not fake false), `_meta` envelope lives on contents object not response envelope, lifecycle list_changed notifications must be coarse no payload, per-URI `resources/updated` fires only if subscribe negotiated.
+
+F1-F13 floor compliance required: F2 evidence_class labels in every output, F11 audit trail via sha256+actor_signature, F13 operator-private URIs gated by actor_signature.
