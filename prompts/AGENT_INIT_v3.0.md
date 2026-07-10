@@ -409,6 +409,9 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **Memory** | `/root/memory/` |
 | **Forge work** | `/root/A-FORGE/forge_work/` |
 | **APA skill (Grok)** | `/root/.grok/skills/apa-sovereign-connector/SKILL.md` |
+| **Quantum kernel skill** | `/root/.agents/skills/quantum-kernel-runtime/SKILL.md` |
+| **Quantum kernel init** | `/root/AAA/prompts/QUANTUM_KERNEL_INIT.md` |
+| **Quantum runtime canon** | `/root/AAA/docs/architecture/QUANTUM_RUNTIME_ARCHITECTURE.md` |
 | **APA session seal** | `/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md` |
 | **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
@@ -416,6 +419,23 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **Landing** | `/root/AGENTS_LANDING.md` |
 
 ---
+
+## 12.4 QUANTUM KERNEL — software geometry (wake · 2026-07-09)
+
+After constitutional boot (Q1–Q7), quantumize the kernel:
+
+```
+load /root/AAA/prompts/QUANTUM_KERNEL_INIT.md
+load /root/.agents/skills/quantum-kernel-runtime/SKILL.md
+```
+
+**Corrections (3):** measurement ≠ decoherence · unitary ideal vs noise · |ψ⟩ description ≠ RAM.  
+**Loop:** SUPERPOSE → EVOLVE (floor-legal gates) → INTERFERE (evidence) → MEASURE (AKAL permit) → RECEIPT.  
+**AKAL:** commit only when authority · evidence · reversibility · lineage permit.  
+**Canon:** `AAA/docs/architecture/QUANTUM_RUNTIME_ARCHITECTURE.md` · `SUBSTRATE_GEOMETRY.md`.  
+**GEOX:** physics operators + evidence contracts — never chatbot geology.
+
+Attest once: `quantum_kernel=loaded corrections=3/3 stack=6/6 akal=gated`
 
 ## 12.5 APA — AUTONOMOUS PROTOCOL FOR APPLICATIONS (mandatory wake · 2026-07-09)
 

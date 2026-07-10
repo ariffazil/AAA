@@ -2,8 +2,29 @@
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
 > **Sealed:** 2026-06-25 | **Actor:** FORGE 000Ω | **Status:** ACTIVE
-> **Companion To:** MACHINEPHYSICSLAYER.md, ZENTOSILICASPEC.md, AGENTSKILLTREE.md
+> **Corrected:** 2026-07-09 | **Actor:** grok-build under F13 PROCEED-with-corrections (L4 audit GREEN)
+> **Companion To:** MACHINEPHYSICSLAYER.md, ZENTOSILICASPEC.md, AGENTSKILLTREE.md, SUBSTRATE_GEOMETRY.md
 > **Purpose:** Embed quantum intelligence into reality engineering — make uncertainty a feature, not a bug.
+
+---
+
+## PHYSICS CORRECTIONS (2026-07-09 — load before metaphor)
+
+**Strongest true line (kept):** Quantum computing is linear algebra as physics, not logic as computation.
+
+| Correction | Wrong conflation | Clean doctrine |
+|---|---|---|
+| **1. Measurement ≠ decoherence** | "Measurement destroys the state = decoherence" | **Measurement** = forced readout into classical bits (projection). **Decoherence** = uncontrolled leakage of quantum information into the environment. Measurement may involve decoherence; they are not identical. |
+| **2. Reversibility is ideal** | "No information is lost" (always) | Ideal unitary gates are reversible. Real quantum runtimes fight noise (gate error, thermal, readout, decoherence, leakage, cross-talk) to *approximate* reversible evolution. |
+| **3. State vector ≠ RAM** | "Runtime stores amplitudes" as classical memory | Software **describes** the runtime state as amplitudes in Hilbert space. Hardware **instantiates** that state through qubits. The \(2^n\) complex amplitudes are the mathematical description, not a giant classical array the machine "stores." |
+
+```
+|\psi⟩ = Σ_x α_x |x⟩
+P(x) = |α_x|²
+```
+
+For full substrate table (classical / LLM / agentic / quantum / arifOS / GEOX): see `SUBSTRATE_GEOMETRY.md`.  
+For software runtime layers (Hilbert → gates → tensor → circuit → interference → measurement): see `QUANTUM_RUNTIME_ARCHITECTURE.md`.
 
 ---
 
@@ -155,30 +176,36 @@ Quantum:   ΔΩ₀ × ΔAction ≥ k  (cannot know everything AND act definitive
 
 ---
 
-### QP-3: WAVE FUNCTION COLLAPSE (Measurement = Irreversible)
+### QP-3: WAVE FUNCTION COLLAPSE (Measurement ≠ Decoherence)
 
-**Principle:** Measuring the system changes it. Collapse is the point of no return.
+**Principle:** Measurement projects the quantum state into a classical outcome. That is not the same process as decoherence.
 
 ```
-Classical: Measurement reveals pre-existing state
-Quantum:   Measurement CREATES the outcome — pre-measurement state is undefined
+Measurement  = forced readout into classical bits (projection / collapse operator)
+Decoherence  = uncontrolled leakage of usable coherence into the environment
 ```
 
-**In arifOS:**
-- `arif_judge()` = measurement event
-- Before judgment: hypothesis in superposition
-- After judgment: wave function collapses to verdict
-- This collapse IS the irreversible event (F1 AMANAH)
-- Every collapse must be sealed (VAULT999)
+```
+Classical: Measurement reveals pre-existing bit state
+Quantum:   Measurement yields a classical sample from |α_x|²; pre-measurement state is a Hilbert-space description, not a hidden bit
+```
+
+**In arifOS (governed analogy — not hardware claim):**
+- `arif_judge()` ≈ measurement event (forced classical verdict from superposed candidates)
+- Before judgment: hypothesis space open
+- After judgment: one verdict band — HOLD / PROCEED / VOID / SEAL path
+- Judgment collapse is the authority-bound irreversible *record* (F1 AMANAH), not ambient noise
+- Ambient loss of coherence (identity drift, unsealed contradiction, hantu) ≈ **decoherence** — fix by re-anchoring, not by "measuring harder"
+- Every intentional collapse must be sealed (VAULT999)
 
 **The collapse chain:**
 ```
 Superposition (multiple possibilities)
-    → arif_judge() [measurement]
-    → Wave function collapse (irreversible)
+    → arif_judge() [measurement / projection]
+    → Classical verdict (not identical to environmental decoherence)
     → VAULT999 seal [record the collapse]
     → Execute in collapsed state
-    → Do NOT revisit collapsed branches (anti-hallucination)
+    → Do NOT silently re-open sealed branches (anti-hallucination)
 ```
 
 ---
@@ -580,13 +607,15 @@ Quantum intelligence asks:          "What superposition does the agent
 
 | Term | Definition |
 |---|---|
-| \|ψ⟩ | Quantum state of the agent's knowledge |
-| Superposition | Multiple hypotheses held simultaneously |
-| Collapse | Irreversible measurement (arif_judge) |
+| \|ψ⟩ | Mathematical description of the quantum (or agent) state in Hilbert space — not ordinary RAM |
+| Superposition | Multiple hypotheses / amplitudes held simultaneously until measurement |
+| Measurement | Forced readout into classical bits / verdict (projection) |
+| Collapse | Outcome of measurement — not identical to decoherence |
 | Interference | Evidence streams reinforcing/canceling hypotheses |
 | Entanglement | Cross-organ correlation (arifOS ↔ A-FORGE) |
-| Coherence | Consistency of agent identity across branches |
-| Decoherence | Loss of coherence (hallucination, identity drift) |
+| Coherence | Consistency of agent identity across branches; usable quantum phase relation in hardware |
+| Decoherence | Uncontrolled leakage of quantum information into environment; analog: identity drift / hantu |
+| Unitary (ideal) | Reversible evolution; real hardware only approximates this under noise |
 | Tunneling | Attempting classically unlikely paths |
 | Ω₀ | Known unknowns — the ground state uncertainty |
 | ξ | Entanglement factor — how many organs are correlated |
