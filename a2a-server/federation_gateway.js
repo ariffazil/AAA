@@ -263,8 +263,32 @@ async function federationStatus() {
  * @param {import('express').Express} app
  */
 function mountFederationRoutes(app) {
+  // ── Auth Middleware ──────────────────────────────────────────────────
+  // FIX 2026-07-10: Gateway had zero-auth — any client reaching AAA:3001 could
+  // probe all organs' MCP interfaces and chain pipelines without credentials.
+  // Token sourced from vault.flat.env → process.env.A2A_TOKEN (loaded by systemd).
+  const FEDERATION_TOKEN = process.env.A2A_TOKEN;
+  if (!FEDERATION_TOKEN) {
+    console.error('[federation_gateway] FATAL: A2A_TOKEN env var not set — refusing to mount routes');
+    return;
+  }
+
+  function authMiddleware(req, res, next) {
+    const token = req.headers['x-arifos-token'];
+    if (!token || token !== FEDERATION_TOKEN) {
+      return res.status(401).json({
+        ok: false,
+        error: 'Unauthorized',
+        detail: 'Missing or invalid x-arifos-token header',
+      });
+    }
+    next();
+  }
+
+  // ── Federated Routes — all auth-gated ───────────────────────────────
+
   // POST /federation/resource — Resolve cross-organ resource URI
-  app.post('/federation/resource', async (req, res) => {
+  app.post('/federation/resource', authMiddleware, async (req, res) => {
     const { uri } = req.body || {};
     if (!uri) {
       return res.status(400).json({ ok: false, error: 'Missing "uri" in request body' });
@@ -274,14 +298,14 @@ function mountFederationRoutes(app) {
   });
 
   // GET /federation/resource/:scheme/* — URL-encoded resource resolution
-  app.get('/federation/resource/:scheme/*', async (req, res) => {
+  app.get('/federation/resource/:scheme/*', authMiddleware, async (req, res) => {
     const uri = `${req.params.scheme}://${req.params[0] || ''}`;
     const result = await resolveResource(uri);
     res.status(result.ok ? 200 : 404).json(result);
   });
 
   // POST /federation/pipeline — Execute a cross-organ pipeline
-  app.post('/federation/pipeline', async (req, res) => {
+  app.post('/federation/pipeline', authMiddleware, async (req, res) => {
     const { pipeline, options } = req.body || {};
     if (!pipeline || !Array.isArray(pipeline) || pipeline.length === 0) {
       return res.status(400).json({ ok: false, error: 'Missing or empty "pipeline" array in request body' });
@@ -291,13 +315,13 @@ function mountFederationRoutes(app) {
   });
 
   // GET /federation/status — Live cross-organ census
-  app.get('/federation/status', async (req, res) => {
+  app.get('/federation/status', authMiddleware, async (req, res) => {
     const result = await federationStatus();
     res.status(200).json(result);
   });
 
   // GET /federation/capabilities — What the federation gateway can do
-  app.get('/federation/capabilities', (req, res) => {
+  app.get('/federation/capabilities', authMiddleware, (req, res) => {
     res.json({
       ok: true,
       gateway: 'Federation Gateway v1.0.0 — 2026-07-10',
@@ -315,7 +339,7 @@ function mountFederationRoutes(app) {
     });
   });
 
-  console.log('[federation_gateway] Routes mounted: /federation/resource, /federation/pipeline, /federation/status, /federation/capabilities');
+  console.log('[federation_gateway] Routes mounted with A2A_TOKEN auth: /federation/resource, /federation/pipeline, /federation/status, /federation/capabilities');
 }
 
 // ── Exports ───────────────────────────────────────────────────────────
