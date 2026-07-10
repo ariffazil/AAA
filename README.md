@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.04-MCP-A2A
-last_verified: 2026-07-09T04:50Z
+federation_release: v2026.07.10-FEDERATION-GATEWAY
+last_verified: 2026-07-10T05:50Z
 live_commit: a71976a2
 a2a_port: 3001
 a2a_status: healthy
@@ -591,6 +591,11 @@ Endpoints verified against `public/a2a/status.json` (live) and `a2a-server/serve
 | `/a2a/tasks/:id` | GET | Check task status | live |
 | `/a2a/message` | POST | Federated message ingress | **888_HOLD** — static deployment does not implement POST message handling (per `status.json`) |
 | `/api/arep/submit` | POST | AREP task declaration (reality-gated) | live |
+| `/federation/status` | GET | Live 5-organ census (tools, prompts, health) | live (v1.0.0, 2026-07-10) |
+| `/federation/resource` | POST | Cross-organ resource proxy (`wealth://capabilities`, etc.) | live |
+| `/federation/pipeline` | POST | Sequential cross-organ pipeline execution | live |
+| `/federation/prompts` | GET | 3 orchestration workflow prompts | live |
+| `/federation/capabilities` | GET | Gateway capability manifest | live |
 
 ### 7.3 Agent Registry & Cards
 
