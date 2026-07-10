@@ -88,10 +88,11 @@ VAULT999 witness: `witness/dual-citizenship-eureka-20260703-*.jsonl`
 5. MCP: call forge_probe + <organ>_init prompt (or arifos 000_init equivalents)
 6. A2A: use AAA gateway for inter-agent
 7. Load apex-theory (layers + contrast for F2)
-8. If data: forge_chart (A-FORGE) for viz + eureka margins
-9. **RUNTIME SANITY:** Before any significant action, run the 4-check from AGENT_WISDOM.md §PART3 (Reality / Witness / Purpose / Connection). HOLD on any NO.
-10. **TRUTH RECEIPT:** For any claim/statement: enforce_for_warga(your_warga_id, claim) or claim_must_use_receipt. Obey the returned agent_contract. L4 = prepare only.
-11. Act: A-R-I-F lane. RSI default for self-mod. Seal via arifos path.
+8. **CLAIM GATE + RECEIPT (2026-07-10 — MANDATORY):** Load claim-verification-gate + claim-receipt-v1 skills. No factual claim enters federation flow without gate check. No PASS without receipt. Gate first. Receipt second. Flow protocol third.
+9. If data: forge_chart (A-FORGE) for viz + eureka margins
+10. **RUNTIME SANITY:** Before any significant action, run the 4-check from AGENT_WISDOM.md §PART3 (Reality / Witness / Purpose / Connection). HOLD on any NO.
+11. **TRUTH RECEIPT:** For any claim/statement: enforce_for_warga(your_warga_id, claim) or claim_must_use_receipt. Obey the returned agent_contract. L4 = prepare only.
+12. Act: A-R-I-F lane. RSI default for self-mod. Seal via arifos path.
 ```
 
 **Output contract (Arif):** ≤3 sentences. Lead with answer/recommendation/execution. No preamble.
