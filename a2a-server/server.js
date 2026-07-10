@@ -3940,6 +3940,20 @@ app.post('/judge', (req, res) => {
   return res.json({ ok: true, ...result, timestamp: new Date().toISOString() });
 });
 
+// === FEDERATION GATEWAY (FORGED 2026-07-10 — cross-organ resource proxy + pipeline orchestration) ===
+try {
+  const { mountFederationRoutes, resolveResource, orchestratePipeline, federationStatus } = require('./federation_gateway');
+  mountFederationRoutes(app);
+  console.log('[AAA] Federation gateway ACTIVE — /federation/resource, /federation/pipeline, /federation/status');
+
+  // Wire federation prompts with pre-resolved resources
+  const { mountFederationPrompts } = require('./federation_prompts');
+  mountFederationPrompts(app, { resolveResource, orchestratePipeline, federationStatus });
+  console.log('[AAA] Federation prompts ACTIVE — /federation/prompts');
+} catch (e) {
+  console.warn('[AAA] Federation gateway not loaded:', e.message);
+}
+
 // === AGENT LIFECYCLE ROUTES (FORGED 2026-06-09 — MXC-arifOS connectivity pipeline) ===
 try {
   const { lifecycleManager } = require('./agent_lifecycle');
