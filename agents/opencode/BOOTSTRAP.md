@@ -95,6 +95,27 @@ verdict=SEAL
 4. Agent works with focused toolset (48-68 tools, not 323)
 ```
 
+### Step 3.7: GATE LOAD — Claim Verification Discipline
+
+```bash
+# Verify gate + receipt skills exist and are readable
+for skill in claim-verification-gate claim-receipt-v1; do
+  if [ -f "/root/.agents/skills/$skill/SKILL.md" ]; then
+    echo "✅ $skill"
+  else
+    echo "❌ $skill MISSING — epistemic spine broken"
+  fi
+done
+
+# Initialize gate_fire tracker if not exists
+[ -f /root/.local/share/arifos/gate_fire.jsonl ] || echo '{"receipt_id":"genesis-000000-0000","timestamp":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","claim_type":"pattern","gate_verdict":"PASS","tier_assigned":1,"tier_required":1,"downgraded":false,"emitted_as":"DER","claim_text":"Gate first. Receipt second. Flow protocol third.","agent_id":"opencode","session_id":"genesis","action":"GENESIS — gate_fire.jsonl initialized"}' > /root/.local/share/arifos/gate_fire.jsonl
+```
+
+**Gate attests:**
+```
+GATE — claim-verification-gate:READY claim-receipt-v1:READY tracker:LIVE
+```
+
 ### Step 4: EMIT BOOT ATTESTATION
 
 ```
@@ -102,6 +123,7 @@ BOOT — verdict=<X> organs=<N>/6 chain=<seq> actor=<last_actor>
 kernel_drift=<T/F> semantic=<enabled/disabled>
 mcp=v2025-03-26 a2a=v1.0.1 apex=hybrid
 skills=<N> at /root/.agents/skills/
+gate=<READY/MISSING> receipt=<READY/MISSING> tracker=<LIVE/OFFLINE>
 runtimes=<N> builtin_tools=<list> routing_rules=<N>
 Ready.
 ```
