@@ -28,6 +28,23 @@ agents:
     push_notifications: false
     openclaw_target: wealth-witness
 
+  - agent_id: mesa-test-agent
+    card_path: agents/_external/mesa-test-agent/agent-card.json
+    binding_type: local-session-bound
+    trust_level: bounded-test
+    auth_scheme: ed25519-signature  # actor_verified via /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem
+    streaming: false
+    push_notifications: false
+    openclaw_target: arifOS-kernel
+    notes: |
+      META-MESA substrate test agent (FI-009). Forged 2026-07-12 by kimi-code-cli
+      (FI-008) under F13 SOVEREIGN directive. Ed25519 keypair generated;
+      SHA-256 fingerprint sha256:04761fd348a6455851cab0d2d6950c5314bc5b8036e00bc545850998cc10eabd.
+      Authority level: bounded-test (NEVER SOVEREIGN — actor_id not in
+      PROTECTED_SOVEREIGN_IDS). Awaiting F13 ratification of kernel-side multi-key
+      patch at /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md
+      before runtime identity binding becomes operational.
+
   - agent_id: antigravity
     card_path: a2a/agent-cards/antigravity.json
     binding_type: local-cli
