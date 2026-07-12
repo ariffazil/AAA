@@ -61,7 +61,6 @@ const ORGANS = [
   { name: 'GEOX', port: 8081 },
   { name: 'WEALTH', port: 18082 },
   { name: 'WELL', port: 18083 },
-  { name: 'APEX Prime', port: 3002 },
   { name: 'A-FORGE', port: 7071 },
 ] as const;
 
