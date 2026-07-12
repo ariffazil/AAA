@@ -1,0 +1,54 @@
+{
+  "contract_type": "VETO_GENERATOR",
+  "version": "1.0.0",
+  "principle": "Universal skills VETO (boundary conditions). Domain skills GENERATE (empirical priors). Sequential, not compressed.",
+  "epistemic_stack": [
+    {
+      "layer": "GENERATOR",
+      "role": "Domain skills produce hypotheses from empirical data",
+      "examples": [
+        "geo-basin: 'this basin has source rock'",
+        "wealth-reason: 'NPV is positive'"
+      ],
+      "authority": "ADVISORY — generates candidates, does not decide",
+      "evidence_type": "empirical, local, lossy"
+    },
+    {
+      "layer": "VETO",
+      "role": "Universal skills enforce boundary conditions on generated claims",
+      "examples": [
+        "know-physics: 'conservation of mass violated'",
+        "know-math: 'confidence interval missing'"
+      ],
+      "authority": "BINDING — can kill any claim that violates physical/mathematical law",
+      "evidence_type": "theoretical, universal, lossless"
+    },
+    {
+      "layer": "SOVEREIGN",
+      "role": "Arif ratifies axioms the framework cannot verify",
+      "examples": [
+        "'entropy decreases' claim",
+        "new substrate skill manifest"
+      ],
+      "authority": "ABSOLUTE — F13 veto on any axiom",
+      "evidence_type": "human judgment, consequence-tested"
+    }
+  ],
+  "contract_rules": [
+    "Generator claims carry scope tags: {global|regional|local} and evidence: {theory|empirical|simulation}",
+    "Veto layer runs AFTER generator, never before — physics constrains, it doesn't hypothesize",
+    "Veto violations are HARD BLOCKS, not advisory — claim dies immediately",
+    "Sovereign ratification required for any new substrate axiom (not domain skills)",
+    "Lossy compression must include lossiness_metadata: {what_was_dropped, fallback_to_raw}"
+  ],
+  "scope_tags": {
+    "global": "Universal physical/mathematical law. No exceptions.",
+    "regional": "Empirically validated in a domain but not universally. Requires provenance.",
+    "local": "Site-specific observation. Highest uncertainty. Must carry sample/test refs."
+  },
+  "evidence_tags": {
+    "theory": "Derived from first principles. Mathematically provable.",
+    "empirical": "Measured. Has sample/test/observation reference.",
+    "simulation": "Modeled. Has model spec + uncertainty band."
+  }
+}

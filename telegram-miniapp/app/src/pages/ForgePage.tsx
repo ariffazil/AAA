@@ -14,12 +14,6 @@ export default function ForgePage() {
   const [health, setHealth] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadData();
-    const interval = setInterval(loadData, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
   const loadData = async () => {
     try {
       const [h, s] = await Promise.allSettled([

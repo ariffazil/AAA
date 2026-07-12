@@ -1,0 +1,124 @@
+{
+  "manifest_version": "1.0.0",
+  "manifest_type": "BOOTSTRAP_PRIMITIVE",
+  "bootstrap_id": "bootstrap-2026-07-11-001",
+  "forged": "2026-07-11T16:15:41.176433",
+  "description": "Immutable bootstrap manifest. Not a skill. Data consumed by kernel primitive bootstrap-load.",
+  "universal_skills": [
+    {
+      "name": "kernel-bind",
+      "layer": "substrate",
+      "phase": 1,
+      "hash": "sha256:1c79ab4128dd2275",
+      "purpose": "Session governance binding",
+      "kernel_verb": "arif_init"
+    },
+    {
+      "name": "observe-ground",
+      "layer": "substrate",
+      "phase": 2,
+      "hash": "sha256:7ec559c2a924f8f9",
+      "purpose": "Evidence before narrative",
+      "kernel_verb": "arif_observe"
+    },
+    {
+      "name": "route-dispatch",
+      "layer": "substrate",
+      "phase": 3,
+      "hash": "sha256:11be3457d373f061",
+      "purpose": "Right organ for right intent",
+      "kernel_verb": "arif_route"
+    },
+    {
+      "name": "memory-manage",
+      "layer": "substrate",
+      "phase": 4,
+      "hash": "sha256:0450da626c98fee4",
+      "purpose": "Memory lifecycle discipline",
+      "kernel_verb": "arif_memory"
+    },
+    {
+      "name": "verify-gate",
+      "layer": "substrate",
+      "phase": 5,
+      "hash": "sha256:34053ca6ef78d0dc",
+      "purpose": "4-gate verification before commitment",
+      "kernel_verb": "arif_verify"
+    },
+    {
+      "name": "audit-seal",
+      "layer": "substrate",
+      "phase": 6,
+      "hash": "sha256:1836779c00125ce0",
+      "purpose": "Decision logging and sealing",
+      "kernel_verb": "arif_seal"
+    },
+    {
+      "name": "know-physics",
+      "layer": "knowledge",
+      "phase": 7,
+      "hash": "sha256:bee0a3590849d5a2",
+      "purpose": "Physical law veto layer",
+      "kernel_verb": "arif_observe"
+    },
+    {
+      "name": "know-math",
+      "layer": "knowledge",
+      "phase": 7,
+      "hash": "sha256:2fab84864271bc88",
+      "purpose": "Mathematical reasoning veto layer",
+      "kernel_verb": "arif_verify"
+    },
+    {
+      "name": "know-language",
+      "layer": "knowledge",
+      "phase": 7,
+      "hash": "sha256:6d633976cbe3ae7c",
+      "purpose": "Linguistic competence substrate",
+      "kernel_verb": "arif_compose"
+    }
+  ],
+  "boot_sequence": {
+    "phases": 8,
+    "order": [
+      "BIND",
+      "GROUND",
+      "ROUTE",
+      "RECALL",
+      "VERIFY",
+      "SEAL",
+      "KNOW",
+      "READY"
+    ],
+    "gate_rule": "Each phase must complete before next. Failure at any phase = HOLD + audit event.",
+    "quarantine_rule": "All external skill YAML quarantined until manifest phase 8 (READY) completes."
+  },
+  "root_keys": [
+    {
+      "key_id": "root-arif-888",
+      "algorithm": "ed25519",
+      "public_key": "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIExd3hQNJl8h/XrAdkH0Pa+lc+t58uI34ZXNgA8gpK2E root-arif-888@arifOS",
+      "role": "sovereign"
+    },
+    {
+      "key_id": "kernel-steward-001",
+      "algorithm": "ed25519",
+      "public_key": "PENDING_STEWARD_SIGNATURE",
+      "role": "kernel_steward"
+    }
+  ],
+  "signatures": [
+    {
+      "key_id": "root-arif-888",
+      "algorithm": "ed25519",
+      "signature": "HV2zUv6BQPminOAoJPsf9xVVJDKggCRyCdAYZt0EXPArD18GnWqKBmXwDuSrRKGOpjT5UYp0Bp80L1mxX1BeBA==",
+      "signed_at": "2026-07-11T08:19:00Z",
+      "covers": "full_manifest",
+      "fingerprint": "SHA256:cBCE6qYAIueX4dyPPE9PeZrW7Ou3M84CoFrN1nJ5Kuw"
+    }
+  ],
+  "timestamp": "2026-07-11T16:15:41.176433",
+  "expires": "2026-10-11T00:00:00Z",
+  "content_hash": "sha256:1b48a9f6e2d1d71c7f9368d69d49876b",
+  "status": "SIGNED"
+}

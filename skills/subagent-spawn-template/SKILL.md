@@ -1,3 +1,15 @@
+---
+id: subagent-spawn-template
+name: subagent-spawn-template
+version: 1.0.0
+description: "Standard contract for spawning bounded, auditable sub-agents — input contract, output schema, evidence requirements."
+owner: AAA
+risk_tier: medium
+floor_scope: [F1, F2, F11]
+autonomy_tier: T1
+tags: [subagent, spawn, contract, template]
+---
+
 # Sub-Agent Spawn Template — OpenClaw
 
 ## Purpose

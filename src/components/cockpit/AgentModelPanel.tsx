@@ -211,7 +211,8 @@ function riskTierBadge(tier?: string): {
   }
 }
 
-function formatActionLabel(action: string): string {
+function formatActionLabel(action: string | undefined | null): string {
+  if (!action) return 'UNKNOWN';
   return action
     .replace(/_/g, ' ')
     .replace(/\b\w/g, (c) => c.toUpperCase());

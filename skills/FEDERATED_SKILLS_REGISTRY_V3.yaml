@@ -1,0 +1,133 @@
+version: 3
+last_updated: '2026-07-11'
+canonical_home: /root/AAA/skills
+architecture: 3-layer-3-axis
+layers:
+  substrate:
+    count: 6
+    path: /root/AAA/skills/substrate
+    skills:
+    - kernel-bind
+    - observe-ground
+    - route-dispatch
+    - memory-manage
+    - verify-gate
+    - audit-seal
+    load: ALL agents, ALWAYS, FIRST
+  knowledge:
+    count: 3
+    path: /root/AAA/skills/knowledge
+    skills:
+    - know-physics
+    - know-math
+    - know-language
+    load: ALL agents, ALWAYS, AFTER substrate
+  domain:
+    count: 54
+    load: Per-agent, per-task, on demand
+    domains:
+      geo:
+      - geo-basin
+      - geo-constitution
+      - geo-petrophysics
+      - geo-writing
+      - geo-well-tie
+      - geo-artifact-rigor
+      - geo-prospect
+      wealth:
+      - wealth-reason
+      - wealth-thermo
+      - wealth-collapse
+      well:
+      - well-boundary
+      - well-readiness
+      forge:
+      - forge-exec
+      - forge-verbs
+      dev:
+      - dev-github
+      - dev-ci-diagnose
+      - dev-issue-triage
+      - dev-pr-review
+      - dev-pr-governance
+      - dev-wiki
+      - dev-analysis
+      - dev-repo-audit
+      ops:
+      - ops-docker
+      - ops-vps
+      - ops-mcp-builder
+      - ops-mcp-probe
+      - ops-infra
+      - ops-incident
+      - ops-spatial
+      - ops-health
+      - ops-mcp-lifeguard
+      - ops-model-monitor
+      - ops-google
+      - ops-transport
+      meta:
+      - meta-skill-create
+      - meta-skill-lint
+      - meta-rsi
+      - meta-rsi-audit
+      - meta-evals
+      - meta-plan
+      - meta-atlas
+      - meta-rsi-cool
+      - meta-trust-map
+      a2a:
+      - a2a-onboard
+      - a2a-kimi
+      - a2a-sovereign
+      - a2a-spawn
+      sec:
+      - sec-secrets
+      - sec-telegram
+      research:
+      - research-summarize
+      - research-search
+      - research-deep
+      kernel:
+      - kernel-eureka
+      - kernel-superposition
+agent_profiles:
+  hermes:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - research
+    - meta
+    - geo
+    - wealth
+    - well
+  claude:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    - ops
+    - meta
+  openclaw:
+    substrates: 4
+    knowledge: 3
+    domains:
+    - mem
+    - ops
+    - a2a
+  codex:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    - ops
+  kimi:
+    substrates: 3
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+total_skills: 63
+reduction_from_original: 124 -> 63

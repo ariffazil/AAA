@@ -1,0 +1,978 @@
+# AAA Federated Skills Registry — Single Source of Truth
+# Forged: 2026-07-10 by AAA Control Plane
+# Authority: F13 SOVEREIGN
+# DITEMPA BUKAN DIBERI
+#
+# Every skill in the federation has ONE canonical entry here.
+# Agent-local directories are rebuilt from this registry by skill-sync.sh.
+#
+# Agents: claude(FI-002), opencode(FI-001), kimi(FI-008), codex(FI-005),
+#         grok(FI-010), agy(FI-004), copilot(FI-006), hermes(FI-relay)
+
+version: 2
+last_updated: '2026-07-10'
+canonical_home: /root/AAA/skills
+
+# ──────────────────────────────────────────────────────────────
+# GOVERNANCE — Constitutional floors, judgment, routing
+# ──────────────────────────────────────────────────────────────
+governance:
+  - id: aaa-agent-invariants
+    path: /root/AAA/skills/aaa-agent-invariants
+    desc: Compact operating constitution for every agent. F1-F13 distilled.
+    available_to: all
+    floors: [F2, F4, F7, F9, F11]
+    status: active
+
+  - id: aaa-agentic-governance
+    path: /root/AAA/skills/aaa-agentic-governance
+    desc: Governed intelligence for AAA control plane. F1-F13 floor checking.
+    available_to: all
+    floors: [F1-F13]
+    status: active
+
+  - id: arifos-governance
+    path: /root/AAA/skills/arifos-governance
+    desc: Enforce Floors F1-F13, 888 HOLD, irreversible-action gating.
+    available_to: all
+    floors: [F1, F2, F4, F7, F9, F11, F13]
+    status: active
+
+  - id: arifos-act
+    path: /root/AAA/skills/arifos-act
+    desc: Constitutional reflex arc — ART → Kernel → ACT.
+    available_to: all
+    floors: [F1, F2, F4, F7, F9, F11, F13]
+    status: active
+
+  - id: constitutional-reasoning
+    path: /root/AAA/skills/constitutional-reasoning
+    source: /root/.claude/skills/constitutional-reasoning.md
+    desc: Constitutional reasoning through F1-F13 floors.
+    available_to: all
+    status: active
+
+  - id: f1-gate
+    path: /root/AAA/skills/f1-gate
+    source: /root/.claude/skills/f1-gate.md
+    desc: F1 AMANAH gate — reversibility-first protocol.
+    available_to: all
+    floors: [F1]
+    status: active
+
+  - id: sovereign-recognize
+    path: /root/.agents/skills/sovereign-recognize
+    desc: Recognize sovereign signals and F13 authority.
+    available_to: all
+    floors: [F13]
+    status: active
+
+  - id: phase-escalation-discipline
+    path: /root/.agents/skills/phase-escalation-discipline
+    desc: Escalation discipline across autonomy tiers.
+    available_to: all
+    status: active
+
+  - id: parallel-authority-detection
+    path: /root/AAA/skills/parallel-authority-detection
+    desc: Detect conflicting authority claims across repos.
+    available_to: all
+    floors: [F2, F4, F9, F10, F11]
+    status: active
+
+  - id: incident-escalation
+    path: /root/AAA/skills/incident-escalation
+    desc: Standard incident response protocol.
+    available_to: all
+    floors: [F1, F2, F3, F4, F6, F11, F13]
+    status: active
+
+  - id: incident-triage
+    path: /root/AAA/skills/incident-triage
+    desc: Six-step incident response playbook.
+    available_to: all
+    floors: [F1, F2, F3, F4, F6, F11, F13]
+    status: active
+
+  - id: pr-review-governance
+    path: /root/AAA/skills/pr-review-governance
+    desc: Governance layer for PR review — who must approve.
+    available_to: all
+    floors: [F1, F2, F4, F9, F11, F13]
+    status: active
+
+  - id: nusantara-intelligence-substrate
+    path: /root/AAA/skills/nusantara-intelligence-substrate
+    desc: Cultural, dignity, sovereignty lens for decisions.
+    available_to: all
+    floors: [F2, F4, F6, F7]
+    status: active
+
+  - id: spatial-grounding
+    path: /root/AAA/skills/spatial-grounding
+    desc: VPS spatial context — prevents spatial amnesia.
+    available_to: all
+    floors: [F1, F7, F9]
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# ENGINEERING — Build, deploy, execute, rollback
+# ──────────────────────────────────────────────────────────────
+engineering:
+  - id: aforge-apex-9-execution
+    path: /root/.agents/skills/aforge-apex-9-execution
+    desc: A-FORGE execution protocol.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: aforge-apex-9-execution-reference
+    path: /root/.agents/skills/aforge-apex-9-execution-reference
+    desc: A-FORGE execution reference.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: kernel-verbs-aforge-hands
+    path: /root/.agents/skills/kernel-verbs-aforge-hands
+    desc: Kernel verbs for A-FORGE actuator hands.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: precommit-gate
+    path: /root/AAA/skills/precommit-gate
+    desc: Pre-commit ritual — lint, type-check, tests, diff review.
+    available_to: all
+    floors: [F1, F2, F9, F10, F11, F12]
+    status: active
+
+  - id: precommit-review
+    path: /root/AAA/skills/precommit-review
+    source: /root/.claude/skills/precommit-review.md
+    desc: Pre-commit review protocol.
+    available_to: all
+    status: active
+
+  - id: docker
+    path: /root/AAA/skills/docker
+    desc: Docker containers, images, Compose, production hardening.
+    available_to: all
+    status: active
+
+  - id: docker-entropy-ops
+    path: /root/AAA/skills/docker-entropy-ops
+    desc: Thermodynamic reasoning for container fleet health.
+    available_to: all
+    floors: [F1, F2, F3, F8]
+    status: active
+
+  - id: docker-thermodynamics
+    path: /root/AAA/skills/docker-thermodynamics
+    source: /root/.claude/skills/docker-thermodynamics.md
+    desc: Docker container lifecycle management.
+    available_to: all
+    status: active
+
+  - id: vps-docker-runbook
+    path: /root/AAA/skills/vps-docker-runbook
+    desc: Concrete Docker Compose commands for af-forge VPS.
+    available_to: all
+    floors: [F1, F2, F3, F4]
+    status: active
+
+  - id: vps-docker-ops
+    path: /root/AAA/skills/vps-docker-ops
+    source: /root/.claude/skills/vps-docker-ops.md
+    desc: VPS Docker operations.
+    available_to: all
+    status: active
+
+  - id: mcp-ops
+    path: /root/AAA/skills/mcp-ops
+    source: /root/.claude/skills/mcp-ops.md
+    desc: MCP server operations.
+    available_to: all
+    status: active
+
+  - id: mcp-federation-ops
+    path: /root/AAA/skills/mcp-federation-ops
+    desc: Build, inspect, call FastMCP servers across federation.
+    available_to: all
+    floors: [F2, F3, F4, F8, F10, F11, F12]
+    status: active
+
+  - id: mcp-builder-doctrine
+    path: /root/.agents/skills/mcp-builder-doctrine
+    desc: MCP builder doctrine and patterns.
+    available_to: all
+    status: active
+
+  - id: mcp-zen-authoring
+    path: /root/.agents/skills/mcp-zen-authoring
+    desc: MCP zen authoring principles.
+    available_to: all
+    status: active
+
+  - id: mcp-smoke-test
+    path: /root/AAA/skills/mcp-smoke-test
+    desc: MCP server smoke test — health probes + basic tool calls.
+    available_to: all
+    floors: [F2, F4, F11]
+    status: active
+
+  - id: arif-mcp-governor
+    path: /root/AAA/skills/arif-mcp-governor
+    desc: Governed MCP routing via arifOS F1-F13.
+    available_to: all
+    status: active
+
+  - id: arifos-mcp-federation
+    path: /root/AAA/skills/arifos-mcp-federation
+    desc: Route tasks across MCP servers with fallbacks.
+    available_to: all
+    floors: [F2, F3, F4, F8, F11]
+    status: active
+
+  - id: github
+    path: /root/AAA/skills/github
+    desc: GitHub CLI operations — gh issue, pr, run, api.
+    available_to: all
+    status: active
+
+  - id: github-ops
+    path: /root/AAA/skills/github-ops
+    source: /root/.claude/skills/github-ops.md
+    desc: GitHub operations skill (Claude Code local).
+    available_to: all
+    supersedes: github-operations
+    status: active
+
+  - id: github-runbook
+    path: /root/AAA/skills/github-runbook
+    desc: Federation git & CLI operations runbook.
+    available_to: all
+    floors: [F1, F2, F4, F10, F11, F13]
+    status: active
+
+  - id: github-ci-diagnose
+    path: /root/AAA/skills/github-ci-diagnose
+    desc: Parse failing GitHub Actions logs, identify root cause.
+    available_to: all
+    floors: [F1, F2, F4, F9, F11, F13]
+    status: active
+
+  - id: github-issue-triage
+    path: /root/AAA/skills/github-issue-triage
+    desc: Governed triage for GitHub issues.
+    available_to: all
+    floors: [F1, F2, F4, F6, F11, F13]
+    status: active
+
+  - id: github-pr-review
+    path: /root/AAA/skills/github-pr-review
+    desc: Governed checklist for PR review.
+    available_to: all
+    floors: [F1, F2, F4, F9, F11, F13]
+    status: active
+
+  - id: secret-hygiene
+    path: /root/AAA/skills/secret-hygiene
+    desc: Audit for plaintext secret leaks, key age, rotation.
+    available_to: all
+    status: active
+
+  - id: secret-safety-scan
+    path: /root/AAA/skills/secret-safety-scan
+    desc: Scan repo for exposed secrets, tokens, credentials.
+    available_to: all
+    floors: [F1, F2, F11, F12, F13]
+    status: active
+
+  - id: infra-guardian
+    path: /root/AAA/skills/infra-guardian
+    desc: Caddy, Cloudflare, DNS, tunnel validation.
+    available_to: all
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# DOMAIN — GEOX, WEALTH, WELL intelligence
+# ──────────────────────────────────────────────────────────────
+domain:
+  - id: geox-grounding
+    path: /root/AAA/skills/geox-grounding
+    desc: Force Earth-sensitive reasoning through GEOX witness paths.
+    available_to: all
+    floors: [F2, F7, F9]
+    status: active
+
+  - id: geox-basin-engines
+    path: /root/.agents/skills/geox-basin-engines
+    desc: Basin modeling engines.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-claim-grammar
+    path: /root/.agents/skills/geox-claim-grammar
+    desc: Geological claim grammar and epistemic tags.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-constitution
+    path: /root/.agents/skills/geox-constitution
+    desc: GEOX constitutional rules.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-contradiction-engine
+    path: /root/.agents/skills/geox-contradiction-engine
+    desc: Detect contradictions in geological evidence.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-earth-evidence
+    path: /root/.agents/skills/geox-earth-evidence
+    desc: Earth evidence handling protocol.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-epistemic-ladder
+    path: /root/.agents/skills/geox-epistemic-ladder
+    desc: Epistemic ladder for geological claims.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-petrophysics-bounds
+    path: /root/.agents/skills/geox-petrophysics-bounds
+    desc: Physics9-bounded petrophysics.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-redteam-hantu
+    path: /root/.agents/skills/geox-redteam-hantu
+    desc: Red-team geological claims for hantu (ghost) data.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-scientific-writing
+    path: /root/.agents/skills/geox-scientific-writing
+    desc: Scientific writing standards for geoscience.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geox-well-tie-pipeline
+    path: /root/.agents/skills/geox-well-tie-pipeline
+    desc: Well-tie seismic pipeline.
+    available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
+    status: active
+
+  - id: geological-artifact-rigor
+    path: /root/.agents/skills/geological-artifact-rigor
+    desc: Rigor standards for geological artifacts.
+    available_to: all
+    status: active
+
+  - id: prospect-maturation-workflow
+    path: /root/.agents/skills/prospect-maturation-workflow
+    desc: Prospect maturation workflow from lead to drill-ready.
+    available_to: all
+    status: active
+
+  - id: wealth-capital-reasoning
+    path: /root/.agents/skills/wealth-capital-reasoning
+    desc: Capital intelligence reasoning framework.
+    available_to: all
+    status: active
+
+  - id: wealth-capital-thermodynamics
+    path: /root/.agents/skills/wealth-capital-thermodynamics
+    desc: Capital thermodynamics — entropy in financial systems.
+    available_to: all
+    status: active
+
+  - id: wealth-collapse-signature
+    path: /root/.agents/skills/wealth-collapse-signature
+    desc: Detect collapse signatures in financial data.
+    available_to: all
+    status: active
+
+  - id: wealth-law-anthropology
+    path: /root/.agents/skills/wealth-law-anthropology
+    desc: Law and anthropology lens for capital decisions.
+    available_to: all
+    status: active
+
+  - id: well-substrate-readiness
+    path: /root/.agents/skills/well-substrate-readiness
+    desc: Human readiness substrate — sleep, fatigue, vitality.
+    available_to: all
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# META — Skill management, RSI, audit, observability
+# ──────────────────────────────────────────────────────────────
+meta:
+  - id: skill-creator
+    path: /root/.agents/skills/skill-creator
+    desc: Create new skills with governance gates.
+    available_to: all
+    status: active
+
+  - id: skill-trigger-linter
+    path: /root/AAA/skills/skill-trigger-linter
+    desc: Lint skill triggers for collisions and vague verbs.
+    available_to: all
+    floors: [F2, F4, F7, F9, F10, F11]
+    status: active
+
+  - id: recursive-skill-forge
+    path: /root/AAA/skills/recursive-skill-forge
+    desc: Meta-cognitive smithy for forging new skills on demand.
+    available_to: all
+    floors: [F1, F2, F4, F7, F8, F11, F13]
+    status: active
+
+  - id: recursive-self-improvement
+    path: /root/.agents/skills/recursive-self-improvement
+    desc: RSI protocol — trace, diagnose, remediate, ledger, seal.
+    available_to: all
+    status: active
+
+  - id: arifos-recursive-audit
+    path: /root/AAA/skills/arifos-recursive-audit
+    desc: Audit all installed skills for overlap, stale docs, drift.
+    available_to: all
+    floors: [F2, F4, F7, F9, F11]
+    status: active
+
+  - id: arifos-evals
+    path: /root/AAA/skills/arifos-evals
+    desc: Benchmark prompts, pass/fail traces, latency, token cost.
+    available_to: all
+    floors: [F2, F7, F9, F11]
+    status: active
+
+  - id: arifos-observability
+    path: /root/AAA/skills/arifos-observability
+    desc: Structured telemetry for skill runs.
+    available_to: all
+    floors: [F2, F4, F11]
+    status: active
+
+  - id: arifos-plan-dag
+    path: /root/AAA/skills/arifos-plan-dag
+    desc: Multi-step execution graphs with dependency awareness.
+    available_to: all
+    floors: [F1, F2, F4, F8, F11]
+    status: active
+
+  - id: multi-discipline-critique
+    path: /root/AAA/skills/multi-discipline-critique
+    desc: Cross-discipline self-argument for non-trivial claims.
+    available_to: all
+    floors: [F2, F7, F8]
+    status: active
+
+  - id: meta-mesa-skill-atlas
+    path: /root/AAA/skills/meta-mesa-skill-atlas
+    desc: Unified skill inventory, gap detection, orchestration.
+    available_to: all
+    floors: [F2, F4, F7, F9]
+    status: active
+
+  - id: unified-skill-binding
+    path: /root/AAA/skills/unified-skill-binding
+    desc: Discover, bind, compose skills across all organs.
+    available_to: all
+    floors: [F2, F3, F4, F8, F11]
+    status: active
+
+  - id: drift-watch
+    path: /root/AAA/skills/drift-watch
+    source: /root/.claude/skills/drift-watch.md
+    desc: Schema/runtime drift detection.
+    available_to: all
+    status: active
+
+  - id: drift-response
+    path: /root/AAA/skills/drift-response
+    desc: Legacy 5-step drift response. Superseded by service-health-triage.
+    available_to: all
+    status: deprecated
+    supersedes: null
+
+  - id: service-health-triage
+    path: /root/AAA/skills/service-health-triage
+    desc: Diagnose federation services — up, down, or drifting.
+    available_to: all
+    floors: [F2, F3, F11]
+    status: active
+
+  - id: verify-runtime
+    path: /root/AAA/skills/verify-runtime
+    source: /root/.claude/skills/verify-runtime.md
+    desc: Runtime verification protocol.
+    available_to: all
+    status: active
+
+  - id: code-wiki
+    path: /root/AAA/skills/code-wiki
+    desc: Generate structured wiki docs, module maps, Mermaid diagrams.
+    available_to: all
+    floors: [F2, F4, F7, F10]
+    status: active
+
+  - id: code-analysis-skills
+    path: /root/AAA/skills/code-analysis-skills
+    desc: Analyze Git repos, developer patterns, code quality.
+    available_to: all
+    status: active
+
+  - id: readme-truth-check
+    path: /root/AAA/skills/readme-truth-check
+    desc: Verify README matches current reality.
+    available_to: all
+    floors: [F2, F4, F9, F10, F11]
+    status: active
+
+  - id: repo-hygiene-audit
+    path: /root/AAA/skills/repo-hygiene-audit
+    desc: Inspect repo for structural chaos and authority conflicts.
+    available_to: all
+    floors: [F2, F4, F9, F10, F11]
+    status: active
+
+  - id: summarize-pro
+    path: /root/AAA/skills/summarize-pro
+    desc: 20-feature AI summarizer — all local, no API calls.
+    available_to: all
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# MEMORY — Vault, session continuity, knowledge graphs
+# ──────────────────────────────────────────────────────────────
+memory:
+  - id: vault999-integrity
+    path: /root/AAA/skills/vault999-integrity
+    desc: VAULT999 append-only hash-chained ledger operations.
+    available_to: all
+    floors: [F1, F2, F3, F11, F13]
+    status: active
+
+  - id: vault999-reader
+    path: /root/AAA/skills/vault999-reader
+    desc: Read VAULT999 seal entries, verify chain integrity.
+    available_to: all
+    status: active
+
+  - id: vault-integrity
+    path: /root/AAA/skills/vault-integrity
+    source: /root/.claude/skills/vault-integrity.md
+    desc: VAULT999 integrity checks.
+    available_to: all
+    status: active
+
+  - id: 999-vault-seal-immutable
+    path: /root/.agents/skills/999-vault-seal-immutable
+    desc: Immutable vault seal protocol.
+    available_to: all
+    status: active
+
+  - id: session-continuity-inhabit
+    path: /root/.agents/skills/session-continuity-inhabit
+    desc: Session continuity — survive compaction, maintain state.
+    available_to: all
+    status: active
+
+  - id: agent-memory-bridge
+    path: /root/AAA/skills/agent-memory-bridge
+    desc: Bridge session logs to arifOS L4/L5/L6 memory.
+    available_to: all
+    status: active
+
+  - id: unified-memory-federation
+    path: /root/.agents/skills/unified-memory-federation
+    desc: Unified memory across 6 levels (Redis→VAULT999).
+    available_to: all
+    status: active
+
+  - id: knowledge-graph-query
+    path: /root/.agents/skills/knowledge-graph-query
+    desc: Query FalkorDB/Graphiti knowledge graphs.
+    available_to: all
+    status: active
+
+  - id: asi-knowledge-writeback
+    path: /root/.agents/skills/asi-knowledge-writeback
+    desc: Write back ASI knowledge to persistent memory.
+    available_to: all
+    status: active
+
+  - id: agentic-dream-engine
+    path: /root/AAA/skills/agentic-dream-engine
+    desc: Federation memory consolidation — autonomous dream cycles.
+    available_to: all
+    floors: [F2, F4, F6, F7]
+    status: active
+
+  - id: claim-receipt-v1
+    path: /root/.agents/skills/claim-receipt-v1
+    desc: Claim receipt protocol v1.
+    available_to: all
+    status: active
+
+  - id: claim-verification-gate
+    path: /root/.agents/skills/claim-verification-gate
+    desc: Verification gate for claims before sealing.
+    available_to: all
+    status: active
+
+  - id: truth-receipt-enforcer
+    path: /root/.agents/skills/truth-receipt-enforcer
+    desc: Enforce truth receipts on all sealed claims.
+    available_to: all
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# TRINITY — 33-repo map, orthogonality, quantum kernel
+# ──────────────────────────────────────────────────────────────
+trinity:
+  - id: trinity-33-canonical
+    path: /root/.agents/skills/trinity-33-canonical
+    desc: The canonical 33-repo map — arifOS/AAA/A-FORGE axes.
+    available_to: all
+    status: active
+
+  - id: trinity-orthogonal-map
+    path: /root/.agents/skills/trinity-orthogonal-map
+    desc: Orthogonal mapping of trinity axes.
+    available_to: all
+    status: active
+
+  - id: quantum-eureka-doctrine
+    path: /root/AAA/skills/quantum-eureka-doctrine
+    desc: Quantum eureka discovery margin patterns.
+    available_to: all
+    status: active
+
+  - id: quantum-kernel-runtime
+    path: /root/.agents/skills/quantum-kernel-runtime
+    desc: Quantum kernel runtime — software geometry.
+    available_to: all
+    status: active
+
+  - id: clarity-canon-001
+    path: /root/.agents/skills/clarity-canon-001
+    desc: Clarity canon — ΔS ≤ 0 entropy reduction.
+    available_to: all
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# CONSCIOUSNESS — Boundary, membrane, symbolic order
+# ──────────────────────────────────────────────────────────────
+consciousness:
+  - id: HOST_MEMBRANE_AWARENESS
+    path: /root/.agents/skills/HOST_MEMBRANE_AWARENESS
+    desc: Host membrane awareness — boundary between agent and host.
+    available_to: all
+    status: active
+
+  - id: boundary-sense-engine
+    path: /root/.agents/skills/boundary-sense-engine
+    desc: Sense and enforce boundaries between domains.
+    available_to: all
+    status: active
+
+  - id: symbolic-order-collective-bias
+    path: /root/.agents/skills/symbolic-order-collective-bias
+    desc: Collective bias detection in symbolic reasoning.
+    available_to: all
+    status: active
+
+  - id: symbolic-order-trust-architecture
+    path: /root/.agents/skills/symbolic-order-trust-architecture
+    desc: Trust architecture for symbolic reasoning.
+    available_to: all
+    status: active
+
+  - id: transport-physics-intelligence
+    path: /root/.agents/skills/transport-physics-intelligence
+    desc: Transport physics intelligence substrate.
+    available_to: all
+    status: active
+
+  - id: cooling-ledger-rsi
+    path: /root/.agents/skills/cooling-ledger-rsi
+    desc: Cooling ledger for RSI cycles.
+    available_to: all
+    status: active
+
+  - id: zen-organ-memory
+    path: /root/.agents/skills/zen-organ-memory
+    desc: Zen organ memory — calm, bounded memory operations.
+    available_to: all
+    status: active
+
+  - id: route-least-power
+    path: /root/AAA/skills/route-least-power
+    desc: Route to least-power organ that can handle the task.
+    available_to: all
+    status: active
+
+  - id: 🜂-qubit-substrate
+    path: /root/.agents/skills/🜂-qubit-substrate
+    desc: Qubit substrate — quantum-classical boundary.
+    available_to: all
+    status: active
+
+# ──────────────────────────────────────────────────────────────
+# AGENT-SPECIFIC — Skills that must stay local to one agent
+# ──────────────────────────────────────────────────────────────
+agent_specific:
+  # Kimi Code (FI-008) — 7-skill spine is a constitutional invariant
+  kimi_spine:
+    - id: kimi-architect-agi-contrast
+      path: /root/.kimi/skills/kimi-architect-agi-contrast
+      agent: FI-008
+      desc: Architect AGI contrast skill for Kimi.
+      status: active
+
+    - id: kimi-architect-apex-contrast
+      path: /root/.kimi/skills/kimi-architect-apex-contrast
+      agent: FI-008
+      desc: Architect APEX contrast skill for Kimi.
+      status: active
+
+    - id: kimi-architect-asi-contrast
+      path: /root/.kimi/skills/kimi-architect-asi-contrast
+      agent: FI-008
+      desc: Architect ASI contrast skill for Kimi.
+      status: active
+
+    - id: kimi-final-apex-contrast
+      path: /root/.kimi/skills/kimi-final-apex-contrast
+      agent: FI-008
+      desc: Final APEX contrast skill for Kimi.
+      status: active
+
+    - id: kimi-integrator-apex-contrast
+      path: /root/.kimi/skills/kimi-integrator-apex-contrast
+      agent: FI-008
+      desc: Integrator APEX contrast skill for Kimi.
+      status: active
+
+    - id: kimi-rsi-apex-contrast
+      path: /root/.kimi/skills/kimi-rsi-apex-contrast
+      agent: FI-008
+      desc: RSI APEX contrast skill for Kimi.
+      status: active
+
+    - id: kimi-skill-reflector
+      path: /root/.kimi/skills/kimi-skill-reflector
+      agent: FI-008
+      desc: Skill reflector for Kimi meta-cognition.
+      status: active
+
+  # Grok Build (FI-010) — unique skills
+  grok_unique:
+    - id: arif-governed-autonomous-execution
+      path: /root/.grok/skills/arif-governed-autonomous-execution
+      agent: FI-010
+      desc: Arif-governed autonomous execution for Grok.
+      status: active
+
+    - id: grok-federation-skill-upgrader
+      path: /root/.grok/skills/grok-federation-skill-upgrader
+      agent: FI-010
+      desc: Federation skill upgrader for Grok.
+      status: active
+
+    - id: grok-zen-aaa-substrate
+      path: /root/.grok/skills/grok-zen-aaa-substrate
+      agent: FI-010
+      desc: Zen AAA substrate for Grok.
+      status: active
+
+    - id: orthogonal-skill-update
+      path: /root/.grok/skills/orthogonal-skill-update
+      agent: FI-010
+      desc: Orthogonal skill update protocol for Grok.
+      status: active
+
+    - id: check-work
+      path: /root/.grok/skills/check-work
+      agent: FI-010
+      desc: Check work quality for Grok.
+      status: active
+
+    - id: code-review
+      path: /root/.grok/skills/code-review
+      agent: FI-010
+      desc: Code review skill for Grok.
+      status: active
+
+    - id: create-skill
+      path: /root/.grok/skills/create-skill
+      agent: FI-010
+      desc: Create skill for Grok.
+      status: active
+
+    - id: imagine
+      path: /root/.grok/skills/imagine
+      agent: FI-010
+      desc: Imagine/visualize skill for Grok.
+      status: active
+
+    - id: help
+      path: /root/.grok/skills/help
+      agent: FI-010
+      desc: Help skill for Grok.
+      status: active
+
+  # Grok Build — document skills (unique capability)
+  grok_docs:
+    - id: docx
+      path: /root/.grok/skills/docx
+      agent: FI-010
+      desc: DOCX document generation.
+      status: active
+
+    - id: pptx
+      path: /root/.grok/skills/pptx
+      agent: FI-010
+      desc: PPTX presentation generation.
+      status: active
+
+    - id: xlsx
+      path: /root/.grok/skills/xlsx
+      agent: FI-010
+      desc: XLSX spreadsheet generation.
+      status: active
+
+  # Claude Code (FI-002) — unique skills
+  claude_unique:
+    - id: forge-opencode-spawn
+      path: /root/.claude/skills/forge-opencode-spawn
+      source: /root/.agents/skills/forge-opencode-spawn
+      agent: FI-002
+      desc: Spawn OpenCode instances from Claude Code.
+      status: active
+
+    - id: opencode-acp
+      path: /root/.claude/skills/opencode-acp
+      agent: FI-002
+      desc: OpenCode ACP integration.
+      status: active
+
+    - id: opencode
+      path: /root/.claude/skills/opencode
+      agent: FI-002
+      desc: OpenCode integration skill.
+      status: active
+
+    - id: minimax-cli
+      path: /root/.claude/skills/minimax-cli
+      agent: FI-002
+      desc: MiniMax CLI integration.
+      status: active
+
+  # Codex (FI-005) — unique skills
+  codex_unique:
+    - id: fastmcp
+      path: /root/.codex/skills/fastmcp
+      agent: FI-005
+      desc: FastMCP builder for Codex.
+      status: active
+
+    - id: mcporter
+      path: /root/.codex/skills/mcporter
+      agent: FI-005
+      desc: MCP transport porter for Codex.
+      status: active
+
+# ──────────────────────────────────────────────────────────────
+# SPECIAL — Init, bootstrap, agent onboarding
+# ──────────────────────────────────────────────────────────────
+special:
+  - id: agent-onboarding
+    path: /root/AAA/skills/agent-onboarding
+    desc: Register new agent in AAA federation.
+    available_to: all
+    floors: [F1, F2, F4, F8, F11, F13]
+    status: active
+
+  - id: arif-agent-bootstrap
+    path: /root/AAA/skills/arif-agent-bootstrap
+    desc: Agent bootstrap protocol.
+    available_to: all
+    status: active
+
+  - id: kimi-code-aaa
+    path: /root/AAA/skills/kimi-code-aaa
+    desc: Configure Kimi Code as AAA warga FI-008.
+    available_to: [FI-008]
+    floors: [F1, F2, F4, F8, F11, F13]
+    status: active
+
+  - id: apa-sovereign-connector
+    path: /root/.agents/skills/apa-sovereign-connector
+    desc: APA sovereign connector — autonomous protocol for applications.
+    available_to: all
+    status: active
+
+  - id: explorer-intelligence-architecture
+    path: /root/AAA/skills/explorer-intelligence-architecture
+    desc: Explorer intelligence architecture.
+    available_to: all
+    status: active
+
+  - id: ask-search
+    path: /root/.agents/skills/ask-search
+    desc: Web search skill.
+    available_to: all
+    status: active
+
+  - id: seek
+    path: /root/.agents/skills/seek
+    desc: Deep search and research skill.
+    available_to: all
+    status: active
+
+  - id: federation-orchestrator
+    path: /root/AAA/skills/federation-orchestrator
+    desc: Monitor and manage the arifOS federation.
+    available_to: all
+    status: active
+
+  - id: mcp-lifeguard
+    path: /root/AAA/skills/mcp-lifeguard
+    desc: Health probe and auto-recovery for MCP servers.
+    available_to: all
+    status: active
+
+  - id: model-fallback-monitor
+    path: /root/AAA/skills/model-fallback-monitor
+    desc: Monitor model fallback chain health.
+    available_to: all
+    status: active
+
+  - id: telegram-security-audit
+    path: /root/AAA/skills/telegram-security-audit
+    desc: Telegram bot security audit.
+    available_to: all
+    status: active
+
+  - id: google-workspace-cli
+    path: /root/AAA/skills/google-workspace-cli
+    desc: Google Workspace CLI operations.
+    available_to: all
+    status: active
+
+  - id: agentic-web-optimization
+    path: /root/AAA/skills/agentic-web-optimization
+    desc: Web optimization for agentic workflows.
+    available_to: all
+    status: active
+
+  - id: subagent-spawn-template
+    path: /root/AAA/skills/subagent-spawn-template
+    desc: Template for spawning subagents.
+    available_to: all
+    status: active

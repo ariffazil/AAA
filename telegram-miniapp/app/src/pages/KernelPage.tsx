@@ -6,12 +6,6 @@ export default function KernelPage() {
   const [health, setHealth] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadHealth();
-    const interval = setInterval(loadHealth, 30000);
-    return () => clearInterval(interval);
-  }, []);
-
   const loadHealth = async () => {
     try {
       const resp = await fetch("/api/kernel/health");
@@ -23,6 +17,12 @@ export default function KernelPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadHealth();
+    const interval = setInterval(loadHealth, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   const floors = [
     { id: "F1", name: "AMANAH", rule: "Reversible-first. Irreversible → 888_HOLD", icon: "🔒" },

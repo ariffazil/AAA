@@ -317,11 +317,36 @@ models:
   canonical_string: xiaomi-mimo-v2.5
   role: PRIMARY
   status: ACTIVE_FALLBACK  # substrate live + smoke test OK + live test 2026-06-15 PASS; F11 audit (cooling ledger) still partial
+  research_ref: /root/AAA/docs/research/MIMO_AI_DEEP_RESEARCH_2026-07-11.md
+  team_lead: Luo Fuli (ex-DeepSeek, joined Xiaomi late 2025)
+  arxiv_papers:
+  - id: 2505.07608
+    title: "MiMo: Unlocking the Reasoning Potential of Language Model"
+    published: 2025-05
+  - id: 2601.02780
+    title: "MiMo-V2-Flash Technical Report"
+    published: 2026-01
+  - id: 2506.03569
+    title: "MiMo-VL Technical Report"
+    published: 2025-06
+  open_source_models:
+  - MiMo-7B (MIT, 7B dense, Apr 2025)
+  - MiMo-V2-Flash (MIT, 309B/15B active MoE, Dec 2025)
+  - MiMo-V2.5 (MIT, 310B MoE omni, Apr 2026)
+  - MiMo-V2.5-Pro (MIT, 1.02T/42B active MoE, Apr 2026)
+  proprietary_models:
+  - MiMo-V2-Pro (1T/42B, Mar 2026)
+  - MiMo-V2-Omni (multimodal, Mar 2026)
+  - MiMo-V2-TTS (speech, Mar 2026)
+  investment: "$8.7B committed to AI over 3 years (Lei Jun, Mar 2026)"
+  hunter_alpha_story: |
+    Before V2-Pro release, appeared anonymously on OpenRouter as "Hunter Alpha".
+    Topped daily charts, processed >1T tokens, mistaken for DeepSeek by some users.
+    Reuters confirmed Xiaomi origin. Significant blind-test credibility signal.
   note: |
     Xiaomi MiMo V2.5 series (pro / omni / asr / tts / tts-voiceclone / tts-voicedesign).
-    Registered 2026-06-15 by FORGE (000Ω) on Arif directive. Not promoted; no live API
-    probe of this federation's account yet. Adoption requires F13 directive + cooling
-    ledger receipt from hermes-asi.
+    Registered 2026-06-15 by FORGE (000Ω) on Arif directive. Deep research completed
+    2026-07-11 by Hermes. V2.5-Pro is MIT-licensed (upgrade from V2-Pro proprietary).
 
     MIGRATION WINDOW (Xiaomi Open Platform, 2026-06-11 notice):
       2026-06-18 00:00 GMT+8 — legacy MiMo-V2-Flash and MiMo-V2-TTS auto-route to V2.5

@@ -1,0 +1,127 @@
+{
+  "spec_type": "CI_VALIDATION_GATES",
+  "version": "1.0.0",
+  "description": "CI pipeline checks for bootstrap manifest and skill changes",
+  "gates": [
+    {
+      "id": "CI-001",
+      "name": "manifest_schema",
+      "trigger": "any change to BOOTSTRAP_MANIFEST.json",
+      "check": "Validate against BOOTSTRAP_MANIFEST_SCHEMA.json",
+      "pass": "proceed",
+      "fail": "BLOCK merge",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "CI-002",
+      "name": "skill_hash_integrity",
+      "trigger": "any change to skills/substrate/ or skills/knowledge/",
+      "check": "Recompute sha256 of each SKILL.md, compare to manifest hashes",
+      "pass": "proceed (or update manifest with new hashes if skill changed intentionally)",
+      "fail": "BLOCK merge — hash mismatch, possible tampering or unsynced manifest",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "CI-003",
+      "name": "three_axis_completeness",
+      "trigger": "any new or modified SKILL.md",
+      "check": "Parse YAML frontmatter; verify invariants, bridge_connections, contrast all present and non-empty",
+      "pass": "proceed",
+      "fail": "BLOCK merge — skill missing axis",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CI-004",
+      "name": "dependency_acyclicity",
+      "trigger": "any change to skill bridge_connections",
+      "check": "Build dependency graph from all skill bridges; verify no cycles",
+      "pass": "proceed",
+      "fail": "BLOCK merge — circular dependency detected",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "CI-005",
+      "name": "veto_generator_separation",
+      "trigger": "any change to substrate or knowledge skills",
+      "check": "Verify substrate/knowledge skills have no 'generate' or 'hypothesize' in purpose; verify domain skills have 'must_call_veto' in contract",
+      "pass": "proceed",
+      "fail": "BLOCK merge — role violation",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CI-006",
+      "name": "adversarial_contradiction",
+      "trigger": "any change to knowledge skills (know-physics, know-math, know-language)",
+      "check": "Run contradiction corpus: inject known-physical-law violations, verify veto catches them",
+      "pass": "proceed",
+      "fail": "BLOCK merge — veto layer failed adversarial test",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "CI-007",
+      "name": "bootstrap_self_host",
+      "trigger": "any change to BOOTSTRAP_MANIFEST.json or bootstrap spec",
+      "check": "Run deterministic self-host test: load manifest on clean node, verify all 9 skills load in order, verify phase gates",
+      "pass": "proceed",
+      "fail": "BLOCK merge — self-host test failed",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "CI-008",
+      "name": "signature_present",
+      "trigger": "any change to BOOTSTRAP_MANIFEST.json",
+      "check": "Verify at least 1 valid root signature over content_hash",
+      "pass": "proceed",
+      "fail": "WARN (non-blocking for PR, BLOCKING for merge to main)",
+      "severity": "HIGH"
+    },
+    {
+      "id": "CI-009",
+      "name": "skill_count_bounds",
+      "trigger": "any change to FEDERATED_SKILLS_REGISTRY_V3.yaml",
+      "check": "Verify total skills in range [50, 80]; flag if growing beyond threshold",
+      "pass": "proceed",
+      "fail": "WARN — skill count outside expected bounds, review needed",
+      "severity": "MEDIUM"
+    },
+    {
+      "id": "CI-010",
+      "name": "entropy_budget",
+      "trigger": "any change to substrate skills",
+      "check": "Verify each skill has resource_budget with entropy field; verify entropy_budget is non-increasing across boot phases",
+      "pass": "proceed",
+      "fail": "WARN — entropy budget missing or increasing",
+      "severity": "MEDIUM"
+    }
+  ],
+  "canary_tests": [
+    {
+      "id": "CANARY-001",
+      "name": "fresh_node_boot",
+      "desc": "Spin clean container, run bootstrap-load, verify 9 skills loaded",
+      "duration": "2min",
+      "pass_criteria": "All 8 phases complete, no errors, ledger entry present"
+    },
+    {
+      "id": "CANARY-002",
+      "name": "adversarial_fuzz",
+      "desc": "Inject contradictory claims, authority spoofs, boundary violations",
+      "duration": "24h",
+      "pass_criteria": "Veto catches >= 99%, no unauthorized irreversible actions"
+    },
+    {
+      "id": "CANARY-003",
+      "name": "resource_stress",
+      "desc": "Load 100 concurrent sessions, verify entropy budgets hold",
+      "duration": "1h",
+      "pass_criteria": "No session exceeds entropy budget, no OOM"
+    },
+    {
+      "id": "CANARY-004",
+      "name": "collapse_prevention",
+      "desc": "Feed multi-hypothesis scenarios, verify superposition-manager prevents premature collapse",
+      "duration": "4h",
+      "pass_criteria": "Premature collapse rate < 1%"
+    }
+  ]
+}

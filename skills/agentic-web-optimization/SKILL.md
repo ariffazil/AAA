@@ -1,3 +1,15 @@
+---
+id: agentic-web-optimization
+name: agentic-web-optimization
+version: 1.0.0
+description: "Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers."
+owner: AAA
+risk_tier: low
+floor_scope: [F2, F4]
+autonomy_tier: T1
+tags: [web, optimization, seo, rag, llm]
+---
+
 # SKILL: Agentic Web Optimization
 
 > **Purpose:** Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers.

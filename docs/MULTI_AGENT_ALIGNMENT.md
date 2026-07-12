@@ -160,3 +160,23 @@ Best of both: AAA's constitutional spine + OpenAI's in-API parallelism
 **The 6 hosted actions already exist in AAA.** The gap is latency (cross-process vs in-API) and convenience (single call vs multi-hop). Neither gap requires abandoning AAA's architecture — just adding lightweight orchestration tools.
 
 **DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
+
+---
+
+## 9. CORRECTION — 2026-07-11 (POST-AUDIT)
+
+> **Prior claim:** "AAA already has all 6 primitives" — **FALSE.**
+> **Corrected:** Live code audit of `/root/AAA/a2a-server/server.js` found 2/6 direct matches, 1 partial, 3 missing.
+
+| OpenAI Action | Audit Result | AAA Code |
+|---|---|---|
+| `spawn_agent` | ❌ NOT IMPLEMENTED | No code path |
+| `send_message` | ✅ LIVE | `message/send` (L3591, L3342, L3222) |
+| `followup_task` | ⚠️ PARTIAL | `message/send` with `taskId` (no dedicated verb) |
+| `wait_agent` | ⚠️ PARTIAL | `tasks/subscribe` SSE (L3480), no blocking wait |
+| `interrupt_agent` | ✅ LIVE | `tasks/cancel` (L3640) |
+| `list_agents` | ❌ NOT IMPLEMENTED | `tasks/list` exists (L3629), not `list_agents` |
+
+**Implication:** `forge_parallel` must compose existing A2A verbs, not assume primitives exist.
+
+See: `/root/A-FORGE/forge_work/2026-07-11/AUDIT-a2a-primitives.md`
