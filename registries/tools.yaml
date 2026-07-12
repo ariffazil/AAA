@@ -510,24 +510,6 @@ tools:
   execution_kind: execute
   required_witnesses:
   - ARIFOS
-- id: forge_plan
-  name: forge_plan
-  description: Generate an engineering plan for a given task. Returns plan with rollback strategy.
-  source_type: mcp
-  server_ref: a-forge-mcp
-  risk_tier: medium
-  approval_policy: on-demand
-  execution_kind: execute
-  required_witnesses: []
-- id: forge_dry_run
-  name: forge_dry_run
-  description: Simulate execution without side effects. Returns predicted outcomes.
-  source_type: mcp
-  server_ref: a-forge-mcp
-  risk_tier: medium
-  approval_policy: on-demand
-  execution_kind: read
-  required_witnesses: []
 - id: forge_abort
   name: forge_abort
   description: Safe stop + rollback for running execution. Requires lease or session auth.
@@ -829,15 +811,6 @@ tools:
   execution_kind: execute
   required_witnesses:
   - ARIFOS
-- id: forge_systemctl
-  name: forge_systemctl
-  description: 'Query systemd. Modes: status, list_units.'
-  source_type: mcp
-  server_ref: a-forge-mcp
-  risk_tier: low
-  approval_policy: on-demand
-  execution_kind: read
-  required_witnesses: []
 - id: forge_journalctl
   name: forge_journalctl
   description: Query systemd journal logs (read-only, PII-redacted).
