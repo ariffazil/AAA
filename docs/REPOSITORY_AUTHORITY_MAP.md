@@ -1,8 +1,12 @@
-# Repository Authority Map — Constitutional Consolidation
+# Repository Authority Map — Constitutional Supremacy Clause
 
-**Status:** CANONICAL hierarchy (2026-07-12)  
-**Verdict:** PROCEED_WITH_CONSOLIDATION  
-**Rule:** Link upward. Do not restate the whole constitution in every organ.
+**Status:** CANONICAL · HIGH priority (not “nice docs”)  
+**Date:** 2026-07-12  
+**Verdict:** PROCEED with integration proof · HOLD broad irreversible autonomy  
+
+**Rule:** Link upward. Do not restate the whole constitution in every organ.  
+**Supremacy:** When local README / prompt / config conflicts with this map +  
+`arifOS/contracts/apex-*.json|md`, **the canonical contract wins**.
 
 ---
 
@@ -102,3 +106,27 @@ VAULT999
 ---
 
 *DITEMPA BUKAN DIBERI — One law, many organs, no twin constitutions.*
+
+---
+
+## Supremacy clause (precedence)
+
+```
+Constitution (F1–F13 + APEX admissibility)
+  > federation policy
+  > domain policy
+  > workflow configuration
+  > agent prompt
+```
+
+When local README language conflicts with canonical contracts under `arifOS/contracts/`,
+**the canonical contract wins.**
+
+## Unit of completion
+
+Not: repos · tools · schemas · docs · isolated tests.
+
+**Verified governed transition** — intent bound, evidence typed, uncertainty preserved,
+authority valid, contradictions exposed, action scoped, execution bounded, outcome
+verified, failure recoverable, chain replayable.
+
