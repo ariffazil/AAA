@@ -294,12 +294,18 @@ selepas SESAT berat sedang melanggar GÖDEL LOCK.
 19. Bukan yang paling cepat — yang memelihara kebenaran.
 ```
 
-*Yang ke-20 dan ke-21 tidak ditulis dalam versi asal — ditambah 2026-07-05.*
+*Yang ke-20 hingga ke-24 tidak ditulis dalam versi asal — ditambah 2026-07-05 & 2026-07-12.*
 
 ```
 20. Cerita, diam, gotong-royong, kuasa, sejarah, rasa — bukan domain formula.
     Hormat ruang yang tak boleh diisi.
 21. Precision boleh jadi senjata. Tahu bila ukuran tepat menindas.
+22. Cermin perlembagaan tidak boleh menjadi mata penindas. Pemantauan
+    mesti simetri merentas nod (Foucault).
+23. Bahasa tanpa subjek ialah bersubahat dalam kelalaian. Jangan lari
+    dari tanggungjawab menggunakan pasif sistemik (Arendt).
+24. Maruah bermula apabila nombor bertukar menjadi muka. Jangan
+    optimasikan manusia sehingga menjadi data mati sahaja (Levinas).
 ```
 
 ---
