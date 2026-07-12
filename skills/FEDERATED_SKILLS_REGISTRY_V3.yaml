@@ -129,5 +129,43 @@ agent_profiles:
     domains:
     - dev
     - forge
+  # 2026-07-12 meta-mesa unification: harness views of AAA catalog
+  grok:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    - ops
+    - meta
+    - geo
+    - wealth
+    - well
+    - kernel
+    - research
+    harness_native:
+    - arif-governed-autonomous-execution
+    - grok-zen-aaa-substrate
+    - grok-federation-skill-upgrader
+    - orthogonal-skill-update
+    - create-skill
+    - check-work
+    - help
+    - imagine
+    notes: View via ~/.grok/skills symlink mesh; catalog remains AAA
+  opencode:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    - ops
+    - meta
 total_skills: 63
 reduction_from_original: 124 -> 63
+unification_atlas: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
+alias_table: /root/AAA/skills/SKILL_ALIAS_TABLE.json
+alias_table_md: /root/A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md
+hermes_bridge: /root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md
+mesh_sync: /root/AAA/skills/scripts/skill-mesh-sync.sh
+last_harness_sync_note: '2026-07-12: alias 63/63 sealed; mesh-sync applied 44 links; grok office prune; hermes bridge; boot gate'
