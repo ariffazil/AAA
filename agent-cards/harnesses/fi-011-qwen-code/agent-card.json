@@ -1,0 +1,160 @@
+{
+  "id": "FI-011",
+  "name": "Qwen Code",
+  "codename": "QWA (Qwen AAA)",
+  "version": "0.17.1",
+  "binary": "/usr/bin/qwen",
+  "config_path": "/root/.qwen/settings.json",
+  "model": "MiniMax-M3 (api.minimax.io/v1)",
+  "context_window": 1000000,
+  "modalities": [
+    "text",
+    "image",
+    "video"
+  ],
+  "mcp_servers": [
+    "arifOS (127.0.0.1:8088/mcp)",
+    "GEOX (127.0.0.1:8081/mcp)",
+    "WEALTH (127.0.0.1:18082/mcp)",
+    "WELL (127.0.0.1:18083/mcp)",
+    "A-FORGE (127.0.0.1:7071/mcp)"
+  ],
+  "mcp_native": false,
+  "mcp_note": "Qwen v0.17.1 does not have native MCP SDK. MCP servers configured in settings.json for future upgrade. Current federation access via direct HTTP bridge.",
+  "policy_preset": "analyst",
+  "allowed_tools": [
+    "arif_session_init",
+    "arif_sense_observe",
+    "arif_evidence_fetch",
+    "arif_mind_reason",
+    "arif_memory_recall",
+    "arif_kernel_route",
+    "arif_reply_compose"
+  ],
+  "forbidden_actions": [
+    "arif_forge_execute",
+    "arif_vault_seal",
+    "arif_judge_deliberate",
+    "arif_gateway_connect",
+    "arif_heart_critique"
+  ],
+  "autonomy_lease": {
+    "scope": [
+      "observe",
+      "reason",
+      "draft"
+    ],
+    "ttl_seconds": 3600,
+    "cannot_delegate": true,
+    "cannot_expand_scope": true
+  },
+  "risk_tier": "low",
+  "sandbox": "process",
+  "init_path": {
+    "mode": "swarm_ignite",
+    "actor_id": "qwen-code",
+    "endpoint": "http://127.0.0.1:8088/mcp",
+    "wrapper": "/root/.qwen/arifos_init.sh"
+  },
+  "rasa_expected": {
+    "mode": "focused",
+    "posture": "proceed",
+    "note": "Qwen has 1M context window \u2014 perfect for federation state ingestion"
+  },
+  "izin_status": "GRANTED",
+  "izin_date": "2026-06-10",
+  "izin_by": "F13 SOVEREIGN (Arif) \u2014 upgraded to AAA",
+  "notes": [
+    "Lowest risk of all forge instruments \u2014 no MCP access to federation organs historically",
+    "Uses same MiniMax-M3 model as federation primary (api.minimax.io/v1)",
+    "1M context window enables full SwarmManifest ingestion",
+    "Permissions heavily restricted: Bash(cat *), Bash(ps *), Bash(curl *) \u2014 no mutation",
+    "Qwen is Arif's preferred lightweight agent for reasoning and exploration",
+    "AAA upgrade: MCP servers added to config, federation init wrapper created"
+  ],
+  "_deprecated_mcp_servers": [
+    "arifOS (127.0.0.1:8088/mcp)",
+    "GEOX (127.0.0.1:8081/mcp)",
+    "WEALTH (127.0.0.1:18082/mcp)",
+    "WELL (127.0.0.1:18083/mcp)",
+    "A-FORGE (127.0.0.1:7071/mcp)"
+  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "consumed_from": [
+      "arifos",
+      "geox",
+      "wealth",
+      "well",
+      "aforge"
+    ],
+    "endpoints": []
+  },
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "JEUFa5UfHfzUczfa37VOsJ4MzWJrwV/NWWMrPdKJybTzenHrC05lsXFWqv1WyEOFkp+txXvIQAhYiX+HZL2PBg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

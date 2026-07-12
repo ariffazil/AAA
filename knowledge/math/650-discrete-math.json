@@ -1,0 +1,35 @@
+{
+  "id": "650",
+  "name": "Discrete Mathematics",
+  "band": "math",
+  "description": "Graph theory, combinatorics, formal logic, set theory, recursion, generating functions. The mathematics of countable, separable, finite objects. Foundation of computer science, network theory, formal verification, and combinatorial optimization. Depends on 444 (algebra via finite fields). Feeds into 666 (computation via automata and complexity), 699 (optimization via graph algorithms), and 700 (numerical methods via discrete approximation).",
+  "axioms": [
+    "Pigeonhole principle: n items into m < n boxes \u2192 at least one box contains \u2265 \u2308n/m\u2309 items",
+    "Handshaking lemma: sum of vertex degrees = 2|E| in any graph",
+    "Principle of mathematical induction: P(0) \u2227 (P(k) \u2192 P(k+1)) \u2192 \u2200n P(n)",
+    "Inclusion-exclusion principle: |A\u222aB| = |A| + |B| - |A\u2229B| (generalized to n sets)",
+    "Binomial theorem: (x+y)\u207f = \u03a3\u2096 C(n,k)\u00b7x\u1d4f\u00b7y\u207f\u207b\u1d4f",
+    "Graph duality: every planar graph has a dual graph",
+    "Kuratowski's theorem: a graph is planar iff it contains no K\u2085 or K\u2083,\u2083 minor"
+  ],
+  "reasoning_patterns": [
+    "graph traversal (DFS, BFS, topological sort)",
+    "combinatorial counting (permutations, combinations, stars and bars)",
+    "inductive and recursive proof construction",
+    "state machine modeling of discrete systems",
+    "generating functions for counting sequences",
+    "graph coloring and network flow analysis",
+    "extremal combinatorics (Tur\u00e1n-type results)"
+  ],
+  "boundary_conditions": [
+    "NP-complete problems (graph coloring, Hamiltonian path) have no known polynomial algorithm",
+    "Some combinatorial problems are #P-complete (counting variants even harder)",
+    "Graph isomorphism is in NP but not known to be NP-complete or polynomial",
+    "Ramsey numbers grow superexponentially \u2014 R(6,6) is unknown despite being a finite number",
+    "Many combinatorial structures are not classifiable"
+  ],
+  "dependencies": [
+    "444-algebra"
+  ],
+  "epistemic_floor": "DERIVED"
+}

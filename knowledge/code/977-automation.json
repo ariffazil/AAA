@@ -1,0 +1,48 @@
+{
+  "id": "977",
+  "name": "Automation",
+  "band": "code",
+  "description": "Scripting, workflow orchestration, RPA, and agent automation",
+  "axioms": [
+    "Automate the boring stuff: if it's repetitive, it's automatable",
+    "Idempotency: running automation twice produces same result as once",
+    "Observability: automation must log what it does (audit trail)",
+    "Graceful failure: automation should fail safely, not catastrophically",
+    "Human-in-the-loop: some decisions need human judgment (888_HOLD pattern)",
+    "Automation amplifies: good processes get better, bad processes get worse"
+  ],
+  "reasoning_patterns": [
+    "Workflow design: DAG of tasks with dependencies, retries, and timeouts",
+    "Event-driven automation: trigger on events, not schedules",
+    "Idempotent scripting: design scripts to be safely re-runnable",
+    "Automation testing: test automation code like production code",
+    "Gradual rollout: deploy automation to subset before full rollout"
+  ],
+  "boundary_conditions": [
+    "Does not cover RPA (Robotic Process Automation) tools in depth",
+    "Does not cover ML automation (AutoML, hyperparameter tuning)",
+    "Physical automation (robotics) is a separate field",
+    "Autonomous agents require governance framework (see 888)"
+  ],
+  "dependencies": [
+    "666",
+    "777",
+    "850",
+    "888",
+    "933"
+  ],
+  "key_references": [
+    "Sweigart, A. Automate the Boring Stuff with Python",
+    "Nagios/Zabbix/Prometheus documentation (monitoring automation)",
+    "Ansible/Terraform documentation (infrastructure automation)",
+    "Temporal/Cadence documentation (workflow orchestration)",
+    "Apache Airflow documentation (data pipeline orchestration)"
+  ],
+  "canonical_truths": [
+    "Manual processes don't scale. Automation does.",
+    "Automation without monitoring is automation without feedback",
+    "The hardest part of automation is handling edge cases",
+    "If you can't explain what the automation does, you shouldn't run it",
+    "Automation debt (unmaintained scripts) is worse than manual processes"
+  ]
+}

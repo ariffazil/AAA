@@ -2,7 +2,7 @@
   "id": "FI-006",
   "name": "Copilot CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "GitHub Copilot CLI — agentic coding assistant. Connected to 10 MCP servers. Fleet parallel agent capability (max 3).",
+  "description": "GitHub Copilot CLI \u2014 agentic coding assistant. Connected to 10 MCP servers. Fleet parallel agent capability (max 3).",
   "version": "1.0.61",
   "model": "UNKNOWN (GitHub Copilot models)",
   "izin": "GRANTED",
@@ -25,7 +25,7 @@
     "serena"
   ],
   "subAgentPolicy": {
-    "default": "ALLOWED — /fleet only, max 3 parallel, read-only sandbox",
+    "default": "ALLOWED \u2014 /fleet only, max 3 parallel, read-only sandbox",
     "fleetMax": 3
   },
   "authority": "engineer",
@@ -58,5 +58,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "mbvizPGnS9RfQvy+D9ss+pTa/pukDLdYqfUTpEavH8RRpc/YhXjCcTY8xlQB2atmgWjazVsWTTZQuUj5le8tBg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

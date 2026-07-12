@@ -1,0 +1,43 @@
+{
+  "id": "700",
+  "name": "Numerical Methods",
+  "band": "math",
+  "description": "Finite element methods (FEM), Monte Carlo simulation, numerical integration, finite difference schemes, iterative solvers, spectral methods, and uncertainty quantification. The mathematics of computing approximate solutions to problems that are analytically intractable \u2014 the bridge from pure math to real computation. Every numerical solution has error, and understanding, bounding, and controlling that error is the core discipline. Depends on 444 (algebra), 500 (calculus), 533 (analysis via stability), 566 (linear algebra via matrix solvers), 650 (discrete math via meshes), 666 (computation via algorithm complexity), and 699 (optimization via numerical optimization). Terminal node in the math dependency tree.",
+  "axioms": [
+    "Error decomposition: total error = discretization error + round-off error + statistical error",
+    "Stability: a method is stable if small input errors produce small output errors",
+    "Convergence: the numerical solution approaches the true solution as discretization parameters refine (Lax equivalence theorem: consistency + stability \u2192 convergence)",
+    "Lax-Richtmyer equivalence theorem: for well-posed linear PDEs, consistency + stability \u21d4 convergence",
+    "Monte Carlo error scales as O(1/\u221aN) \u2014 dimension-independent but slow",
+    "Courant-Friedrichs-Lewy (CFL) condition: time step must respect grid spacing for explicit PDE solvers",
+    "Condition number \u03ba(A) = ||A||\u00b7||A\u207b\u00b9|| bounds the sensitivity of linear system solutions"
+  ],
+  "reasoning_patterns": [
+    "error bound estimation and convergence rate analysis",
+    "Monte Carlo sampling and variance reduction (importance sampling, antithetic variates)",
+    "finite element discretization: variational formulation, basis functions, element assembly",
+    "finite difference schemes and truncation error analysis",
+    "iterative solver selection and preconditioning",
+    "stiffness detection and appropriate solver choice",
+    "uncertainty quantification and confidence intervals on numerical outputs"
+  ],
+  "boundary_conditions": [
+    "All numerical solutions have error \u2014 it must be bounded and reported",
+    "Stiff ODEs require implicit methods \u2014 explicit methods are unstable",
+    "Monte Carlo converges at 1/\u221aN \u2014 universal but slow; quasi-Monte Carlo helps for low dimensions",
+    "High-dimensional integration suffers the curse of dimensionality (except Monte Carlo)",
+    "Ill-conditioned problems (high condition number) amplify input errors catastrophically",
+    "Mesh generation for complex 3D geometries is a major practical bottleneck",
+    "Parallel scaling is limited by Amdahl's law for serial portions of the algorithm"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "500-calculus",
+    "533-analysis",
+    "566-linear-algebra",
+    "650-discrete-mathematics",
+    "666-computation",
+    "699-optimization"
+  ],
+  "epistemic_floor": "DERIVED"
+}

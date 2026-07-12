@@ -1,0 +1,297 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0/extended",
+  "schemaVersion": "2.2.0-extended",
+  "id": "aaa-gateway",
+  "name": "AAA A2A Gateway (Extended)",
+  "description": "Authenticated extended agent card for the AAA A2A Gateway. Includes full constitutional floor details, internal organ routing topology, and seal-chain genesis information. Only served to authenticated clients via /.well-known/agent-card-extended.json. Any peer agent holding a valid bearer token or x-a2a-key may retrieve this surface.",
+  "version": "2026.07.02",
+  "protocolVersion": "1.2",
+  "url": "https://aaa.arif-fazil.com",
+  "preferred_transport": "jsonrpc-http",
+  "extends": "/.well-known/agent-card.json",
+  "auth": {
+    "required": true,
+    "accepted": [
+      { "scheme": "http-bearer", "format": "JWT", "description": "arifOS session token" },
+      { "scheme": "apiKey", "header": "x-a2a-key", "description": "Static federation API key" },
+      { "scheme": "apiKey", "header": "x-arifos-token", "description": "arifOS-issued peer token" }
+    ]
+  },
+  "constitutional_floors": {
+    "F01_AMANAH": {
+      "code": "F01",
+      "name": "AMANAH",
+      "principle": "Trust is forged, not given. Every irreversible action must be backed up or held.",
+      "enforcement": "active",
+      "scope": "all_federation",
+      "violation_class": "VOID"
+    },
+    "F02_TRUTH": {
+      "code": "F02",
+      "name": "TRUTH",
+      "principle": "All claims labeled OBS/DER/INT/SPEC. Confidence capped at 0.90.",
+      "enforcement": "active",
+      "scope": "evidence_layer",
+      "violation_class": "VOID"
+    },
+    "F03": {
+      "code": "F03",
+      "name": "CONTEXT",
+      "principle": "Reality claims require physical, epistemic, and temporal context.",
+      "enforcement": "active",
+      "scope": "all_federation",
+      "violation_class": "VOID"
+    },
+    "F04_CLARITY": {
+      "code": "F04",
+      "name": "CLARITY",
+      "principle": "No regression in clarity. Every output must be understandable.",
+      "enforcement": "active",
+      "scope": "all_outputs",
+      "violation_class": "VOID"
+    },
+    "F05": {
+      "code": "F05",
+      "name": "HUMILITY",
+      "principle": "Uncertainty bands and explicit unknowns required on all claims.",
+      "enforcement": "active",
+      "scope": "reasoning",
+      "violation_class": "HOLD"
+    },
+    "F06_DIGNITY": {
+      "code": "F06",
+      "name": "DIGNITY",
+      "principle": "Human and operator dignity are non-negotiable.",
+      "enforcement": "active",
+      "scope": "all_federation",
+      "violation_class": "VOID"
+    },
+    "F07": {
+      "code": "F07",
+      "name": "PRIVACY",
+      "principle": "Personal data minimized, sovereign, and revocable.",
+      "enforcement": "active",
+      "scope": "data_layer",
+      "violation_class": "VOID"
+    },
+    "F08_LAW": {
+      "code": "F08",
+      "name": "LAW",
+      "principle": "System boundaries. Authority flows through declared lanes only.",
+      "enforcement": "active",
+      "scope": "transport",
+      "violation_class": "VOID"
+    },
+    "F09_ANTISHAM": {
+      "code": "F09",
+      "name": "ANTISHAM",
+      "principle": "No false consciousness claims. No anthropomorphic deception.",
+      "enforcement": "active",
+      "scope": "agent_layer",
+      "violation_class": "VOID"
+    },
+    "F10_INTEGRITY": {
+      "code": "F10",
+      "name": "INTEGRITY",
+      "principle": "Hash-chained append-only audit. No rewrites.",
+      "enforcement": "active",
+      "scope": "vault",
+      "violation_class": "VOID"
+    },
+    "F11_AUDIT": {
+      "code": "F11",
+      "name": "AUDIT",
+      "principle": "Every decision logged with evidence, authority, and reversibility.",
+      "enforcement": "active",
+      "scope": "all_decisions",
+      "violation_class": "VOID"
+    },
+    "F12_INJECTION": {
+      "code": "F12",
+      "name": "INJECTION-DEFENSE",
+      "principle": "All external inputs scanned for prompt-injection patterns.",
+      "enforcement": "active",
+      "scope": "ingress",
+      "violation_class": "VOID"
+    },
+    "F13_SOVEREIGN": {
+      "code": "F13",
+      "name": "SOVEREIGN",
+      "principle": "Human (Arif) holds final veto. All irreversible paths pause for sovereign decision.",
+      "enforcement": "active",
+      "scope": "all_federation",
+      "violation_class": "HOLD"
+    }
+  },
+  "organ_routing_topology": {
+    "ingress": {
+      "edge": "aaa-gateway",
+      "url": "https://aaa.arif-fazil.com",
+      "transport": "jsonrpc-http",
+      "tasks_per_minute_capacity": 600
+    },
+    "router": {
+      "type": "skill-matching",
+      "fallback_chain": ["arifos-kernel", "federation-peers"],
+      "load_balancing": "least-loaded",
+      "circuit_breaker": true
+    },
+    "downstream_organs": [
+      {
+        "id": "arifos-mcp",
+        "name": "arifOS Constitutional Kernel",
+        "url": "https://arifos.arif-fazil.com",
+        "role": "judge",
+        "authority_class": "verdict",
+        "lanes": ["governance", "judgment", "session"],
+        "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json",
+        "internal_only": false,
+        "routing_priority": 1
+      },
+      {
+        "id": "a-forge-mcp",
+        "name": "A-FORGE Execution Shell",
+        "url": "https://a-forge.arif-fazil.com",
+        "role": "executor",
+        "authority_class": "execution",
+        "lanes": ["build", "deploy", "mutation"],
+        "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json",
+        "internal_only": false,
+        "routing_priority": 2
+      },
+      {
+        "id": "geox-mcp",
+        "name": "GEOX Earth Intelligence",
+        "url": "https://geox.arif-fazil.com",
+        "role": "evidence",
+        "authority_class": "EVIDENCE_ONLY",
+        "lanes": ["earth", "basin", "seismic"],
+        "card_url": "https://geox.arif-fazil.com/.well-known/agent-card.json",
+        "internal_only": false,
+        "routing_priority": 3
+      },
+      {
+        "id": "wealth-mcp",
+        "name": "WEALTH Capital Intelligence",
+        "url": "https://wealth.arif-fazil.com",
+        "role": "evidence",
+        "authority_class": "ADVISORY_ONLY",
+        "lanes": ["capital", "risk", "wisdom"],
+        "card_url": "https://wealth.arif-fazil.com/.well-known/agent-card.json",
+        "internal_only": false,
+        "routing_priority": 4
+      },
+      {
+        "id": "well-mcp",
+        "name": "WELL Substrate Vitality",
+        "url": "https://well.arif-fazil.com",
+        "role": "evidence",
+        "authority_class": "REFLECT_ONLY",
+        "lanes": ["vitality", "dignity", "homeostasis"],
+        "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json",
+        "internal_only": false,
+        "routing_priority": 5
+      },
+      {
+        "id": "VAULT999",
+        "name": "Immutable Append-only Ledger",
+        "url": "internal://vault999",
+        "role": "archive",
+        "authority_class": "IMMUTABLE",
+        "lanes": ["seal", "audit"],
+        "internal_only": true,
+        "routing_priority": 99
+      }
+    ],
+    "warga_agents": [
+      { "id": "333-AGI",   "class": "AGI",  "ring": "Δ MIND",  "stage": 333, "host_organs": ["arifOS", "GEOX", "WEALTH", "WELL", "A-FORGE"] },
+      { "id": "555-ASI",   "class": "ASI",  "ring": "Ω HEART", "stage": 555, "host_organs": ["arifOS", "WELL"] },
+      { "id": "888-APEX",  "class": "APEX", "ring": "ΦΙ JUDGE","stage": 888, "host_organs": ["arifOS"] },
+      { "id": "A-AUDIT",   "class": "APEX oversight", "ring": "Δ MIND", "stage": 0, "host_organs": ["arifOS", "WELL"] },
+      { "id": "A-ARCHIVE", "class": "ASI service",    "ring": "Ω HEART","stage": 999, "host_organs": ["VAULT999"] }
+    ],
+    "trust_hierarchy": "Human (Arif) > arifOS > AAA > A-FORGE > Specialists",
+    "non_warga_forbidden": "Only warga agents (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE) may participate in AAA state mutation. External MCP tools (hostinger, playwright, etc.) route through A-FORGE /execute — never call AAA a2a directly."
+  },
+  "seal_chain_genesis": {
+    "chain_id": "VAULT999/AAA-BRIDGE",
+    "writer": "a2a-server/seal_chain.js (canonical, ratified 2026-07-04)",
+    "mirror": "/root/arifOS/arifosmcp/runtime/seal_chain.py",
+    "chain_path": "/root/.local/share/arifos/vault999/seal_chain.jsonl",
+    "head_path": "/root/.local/share/arifos/vault999/seal_chain_head.json",
+    "genesis_seq": 1,
+    "current_seq": 61,
+    "current_hash": "sha256:cb390e05be0d73d78ef162a1e6f405d3db0dcdba4332be2da21ad4381c750ba2",
+    "algorithm": "sha256",
+    "structure": "append-only, hash-chained",
+    "integrity_check": "every a2a dispatch appends a hash-chained seal; chain break = detected",
+    "envelope_version": "v2.0.0",
+    "envelope_features": [
+      "merkle_root",
+      "event_envelope",
+      "witness_triangle",
+      "policy_hash",
+      "delegation_chain",
+      "signature_placeholder"
+    ]
+  },
+  "ingress_security": {
+    "f12_injection_defense": "active",
+    "ghost_session_deny": ["", "unknown", "session-unknown", "session_unknown", "null", "undefined", "none", "n/a"],
+    "sovereign_veto": "push-notification",
+    "authority_required_for": ["EXECUTE_HIGH_IMPACT", "IRREVERSIBLE", "MUTATE", "ATOMIC"],
+    "self_approval_forbidden": true
+  },
+  "task_state_model": {
+    "version": "A2A v1.0.0",
+    "states": [
+      "TASK_STATE_SUBMITTED",
+      "TASK_STATE_WORKING",
+      "TASK_STATE_INPUT_REQUIRED",
+      "TASK_STATE_AUTH_REQUIRED",
+      "TASK_STATE_COMPLETED",
+      "TASK_STATE_FAILED",
+      "TASK_STATE_CANCELED",
+      "TASK_STATE_REJECTED"
+    ],
+    "verdict_to_state": {
+      "SEAL": "TASK_STATE_COMPLETED",
+      "HOLD_888": "TASK_STATE_INPUT_REQUIRED",
+      "VOID": "TASK_STATE_REJECTED",
+      "CLAIM_ONLY": "TASK_STATE_COMPLETED"
+    },
+    "terminal_states": [
+      "TASK_STATE_COMPLETED",
+      "TASK_STATE_FAILED",
+      "TASK_STATE_CANCELED",
+      "TASK_STATE_REJECTED"
+    ]
+  },
+  "governance": {
+    "floors_active": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+    "verdict_authority": "arifOS (port 8088)",
+    "execution_shell": "A-FORGE (port 7071)",
+    "vault": "VAULT999",
+    "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given."
+  },
+  "metadata": {
+    "extends_card": "/root/AAA/agent-cards/pillars/aaa-gateway/agent-card.json",
+    "created": "2026-07-12T23:12:00Z",
+    "created_by": "FORGE (000Ω) — CIV-33 Gap 2 closure",
+    "auth_requirement": "Bearer token (JWT) OR x-a2a-key header OR x-arifos-token header",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "seal_type": "SOVEREIGN_IDENTITY",
+  "sovereign": "Muhammad Arif bin Fazil",
+  "anchor_000": "https://arif-fazil.com/000/",
+  "anchor_999": "https://arif-fazil.com/999/",
+  "gateway_card": "agent-cards/pillars/aaa-gateway/agent-card.json",
+  "did_resolves": "did:web:arif-fazil.com → https://arif-fazil.com/.well-known/did.json",
+  "nonce_flow": "arif_init → sign → verify → FULL",
+  "kernel_fix": {
+    "path": "arifosmcp/runtime/tools.py",
+    "function": "_arif_session_init",
+    "before": "nonce → _NONCE_STORE[nonce] = time.time() → verify (burned on bad sig)",
+    "after": "nonce → verify_init_identity → _NONCE_STORE[nonce] = time.time() (POST-VERIFY consume)",
+    "invariants_added": [
+      "nonce_pending",
+      "nonce_consumed_post_verify"
+    ]
+  },
+  "gateway_card_signature": {
+    "did": "did:web:arif-fazil.com",
+    "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
+    "verificationMethod": "did:web:arif-fazil.com#key-1",
+    "type": "Ed25519Signature2020"
+  },
+  "sovereign_key_fingerprint": "sha256:bf881c46b5c936ec2cbe71493159e1c606a00acbb30dc534a7a66060a0527e30",
+  "auth_protocol": "Ed25519-challenge-response",
+  "sealed_at": "2026-07-12T23:33:47.612388+00:00",
+  "sealed_by": "Kimi Code CLI (F13 sovereign direction)",
+  "federation_loop": "000 (sovereign) ↔ arifOS kernel (verify) ↔ AAA gateway (route) ↔ arif-fazil.com/999 (seal verify)",
+  "seal_hash": "sha256:d38aeb30dc5f706860c3f9e0cd8ab8b2b91419e59883f2ad23a07361149c29fb",
+  "canonical_sha256": "d38aeb30dc5f706860c3f9e0cd8ab8b2b91419e59883f2ad23a07361149c29fb",
+  "signed_cards": {
+    "verified_ed25519": 1,
+    "pending_signature": 25,
+    "unsigned": 28,
+    "note": "Gateway card re-signed in this session; remaining cards await forge sweep."
+  }
+}

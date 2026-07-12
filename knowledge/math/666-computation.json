@@ -1,0 +1,36 @@
+{
+  "id": "666",
+  "name": "Theory of Computation",
+  "band": "math",
+  "description": "Automata theory, formal languages, computability, computational complexity, algorithmic analysis. The mathematics of what machines can and cannot do, how fast they can do it, and the fundamental limits of mechanized reasoning. This is the ceiling of AI capability \u2014 no machine can transcend the Turing limit. Depends on 444 (algebra) and 650 (discrete math via automata and formal languages). Feeds into 699 (optimization via complexity-constrained algorithms) and 700 (numerical methods via algorithmic efficiency).",
+  "axioms": [
+    "Church-Turing thesis: effectively calculable functions = Turing-computable functions",
+    "P vs NP: the central open problem \u2014 can every efficiently verifiable problem be efficiently solved?",
+    "Halting problem is undecidable (Turing 1936): there is no general algorithm to determine if an arbitrary program halts",
+    "G\u00f6del's incompleteness theorems: consistent formal systems cannot prove their own consistency, and there exist true but unprovable statements",
+    "Cook-Levin theorem: SAT is NP-complete \u2014 every NP problem reduces to SAT",
+    "Time hierarchy theorem: more time allows more problems to be solved",
+    "Rice's theorem: all non-trivial semantic properties of programs are undecidable"
+  ],
+  "reasoning_patterns": [
+    "complexity class analysis (P, NP, PSPACE, EXPTIME, BPP)",
+    "reduction proof (polynomial-time, log-space, Turing)",
+    "algorithm design and asymptotic analysis (Big-O, \u03a9, \u0398)",
+    "undecidability detection via reduction from the halting problem",
+    "G\u00f6delian boundary identification: what a system cannot know about itself",
+    "formal language classification (regular, context-free, context-sensitive, recursively enumerable)",
+    "amortized analysis for data structure performance"
+  ],
+  "boundary_conditions": [
+    "Cannot solve the halting problem (no exceptions)",
+    "Cannot prove system completeness or consistency from within (G\u00f6del)",
+    "NP-complete problems require exponential time if P \u2260 NP (widely believed)",
+    "AI systems cannot exceed the Turing limit \u2014 they remain in the same computability class as Turing machines",
+    "Some problems are decidable but require astronomically large time/memory"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "650-discrete-mathematics"
+  ],
+  "epistemic_floor": "DERIVED"
+}

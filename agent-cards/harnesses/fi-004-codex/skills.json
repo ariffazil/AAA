@@ -1,0 +1,108 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "codex",
+  "fi": "FI-004",
+  "layer": "harnesses",
+  "ring": "Forge Harness (Codex)",
+  "role": "Chain-of-thought + numbered-step executor",
+  "skill_count": 19,
+  "skills": [
+    {
+      "id": "FORGE-github",
+      "source": ".agents/skills/FORGE-github",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-ops",
+      "source": ".agents/skills/FORGE-github-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-runbook",
+      "source": ".agents/skills/FORGE-github-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-gate",
+      "source": ".agents/skills/FORGE-precommit-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-review",
+      "source": ".agents/skills/FORGE-precommit-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-review",
+      "source": ".agents/skills/FORGE-pr-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-governance",
+      "source": ".agents/skills/FORGE-pr-governance",
+      "why": ""
+    },
+    {
+      "id": "FORGE-readme-truth-check",
+      "source": ".agents/skills/FORGE-readme-truth-check",
+      "why": ""
+    },
+    {
+      "id": "FORGE-route-least-power",
+      "source": ".agents/skills/FORGE-route-least-power",
+      "why": ""
+    },
+    {
+      "id": "FORGE-context-compress",
+      "source": ".agents/skills/FORGE-context-compress",
+      "why": ""
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": ""
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": ""
+    },
+    {
+      "id": "AGI-codex-chain-of-thought",
+      "source": ".aaa/skills/AGI-codex-chain-of-thought",
+      "why": ""
+    },
+    {
+      "id": "AGI-claude-xml-structured-reasoning",
+      "source": ".aaa/skills/AGI-claude-xml-structured-reasoning",
+      "why": ""
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": ""
+    },
+    {
+      "id": "FORGE-fastmcp",
+      "source": ".agents/skills/FORGE-fastmcp",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-smoke-test",
+      "source": ".agents/skills/FORGE-mcp-smoke-test",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

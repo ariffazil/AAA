@@ -1,0 +1,39 @@
+{
+  "id": "633",
+  "name": "Statistics",
+  "band": "math",
+  "description": "Inference (frequentist & Bayesian), regression, hypothesis testing, experimental design, machine learning foundations. The mathematics of learning from data, separating signal from noise, and making decisions under uncertainty. Frequentist statistics controls error rates; Bayesian statistics quantifies posterior uncertainty. Depends on 444 (algebra), 533 (analysis), and 600 (probability as its core engine). Feeds upward into all empirical science domains.",
+  "axioms": [
+    "Bayes' theorem: P(\u03b8|x) = P(x|\u03b8)\u00b7P(\u03b8)/P(x) \u2014 the complete learning rule",
+    "Likelihood principle: all evidence for a parameter is contained in the likelihood function",
+    "Law of Large Numbers: estimator consistency as n \u2192 \u221e",
+    "Central Limit Theorem: sampling distribution of mean \u2192 normal for large n",
+    "Cram\u00e9r-Rao bound: minimum variance of an unbiased estimator = 1/Fisher information",
+    "Neyman-Pearson lemma: most powerful test is a likelihood-ratio test",
+    "No free lunch theorem: no single model is universally optimal"
+  ],
+  "reasoning_patterns": [
+    "hypothesis testing (frequentist: p-values, t-tests; Bayesian: Bayes factors)",
+    "regression analysis (linear, logistic, nonlinear, regularized)",
+    "confidence/credible interval construction and interpretation",
+    "power analysis and sample size determination",
+    "effect size estimation and meta-analysis",
+    "Bayesian inference with MCMC and variational methods",
+    "causal inference (Do-calculus, instrumental variables, DAGs)",
+    "regularization (ridge, lasso, elastic net) for overfitting control"
+  ],
+  "boundary_conditions": [
+    "Cannot prove the null hypothesis \u2014 only fail to reject it",
+    "p-hacking, data dredging, and multiple comparisons invalidate inference",
+    "Small samples \u2192 wide confidence intervals, high model uncertainty",
+    "Observational data cannot establish causation without careful design (or DAGs)",
+    "All models are wrong \u2014 some are useful (Box)",
+    "Statistical significance \u2260 practical significance (effect size matters)"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "533-analysis",
+    "600-probability"
+  ],
+  "epistemic_floor": "DERIVED"
+}

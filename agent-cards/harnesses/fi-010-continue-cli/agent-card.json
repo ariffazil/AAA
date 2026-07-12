@@ -1,0 +1,99 @@
+{
+  "id": "FI-010",
+  "name": "Continue CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Continue CLI forge instrument \u2014 open-source coding harness. Wired to federation MCPs. F1-F13 enforced.",
+  "version": "2.0.0",
+  "model": "provider-agnostic",
+  "fallback_model": "qwen3.6-flash",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-12",
+  "sandbox": "process",
+  "binary": "/root/.local/bin/cn",
+  "mcpServers": [
+    "arifOS",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 1,
+    "registered": [
+      "continue"
+    ]
+  },
+  "authority": "engineer",
+  "riskTier": "low",
+  "agent_ref": "continue-cli",
+  "lastAudit": "2026-07-12T18:11:00Z",
+  "auditNote": "Allocated FI-011 by Kimi Code (FI-008) Zen alignment 2026-07-12. Previously orphan adapter without FI slot.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "Uzu4CBFvDMYx8bY315sVgIb/XOuH3PzzqH9uyIoQo9vtNR54XF22eYAaAlkQfIuwRWxbCNmaJnaH82t/KfEDAw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

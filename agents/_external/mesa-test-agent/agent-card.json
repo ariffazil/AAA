@@ -18,7 +18,7 @@
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI (bounded test)",
-  "protocolVersion": "1.0.0",
+  "protocolVersion": "1.0",
   "url": "https://aaa.arif-fazil.com/a2a/mesa-test-agent",
   "provider": {
     "organization": "arifOS Federation",
@@ -34,7 +34,9 @@
     "file_read": true,
     "file_write": true,
     "shell_exec": false,
-    "subagent_spawn": false
+    "subagent_spawn": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -59,8 +61,14 @@
       "ed25519_signature": []
     }
   ],
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["application/json", "text/plain"],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
   "mcp_surface": "session-bound only; not exposed as standalone mcp__* tools",
   "subAgentPolicy": {
     "max_depth": 0,
@@ -105,8 +113,17 @@
     "endpoint": "arifOS MCP — actor-bound only"
   },
   "mcp_binding": {
-    "forge_tools": ["forge_filesystem_write (sandbox)", "forge_filesystem_read", "forge_shell_dryrun"],
-    "arifos_tools": ["arif_init (signed)", "arif_observe", "arif_think", "arif_route"]
+    "forge_tools": [
+      "forge_filesystem_write (sandbox)",
+      "forge_filesystem_read",
+      "forge_shell_dryrun"
+    ],
+    "arifos_tools": [
+      "arif_init (signed)",
+      "arif_observe",
+      "arif_think",
+      "arif_route"
+    ]
   },
   "upgrade_history": [
     {
@@ -132,6 +149,21 @@
     ],
     "test_mission_artifact": "/tmp/mesa-canary-mesa-4a91d7e3/refusal-receipt.json"
   },
-  "kernel_skills": ["actor_signature_ed25519", "session_capability_token"],
-  "rsi_doctrine": "Every action produces a receipt. Receipts are replayable. Reversal is mandatory. Self-seal is forbidden."
+  "kernel_skills": [
+    "actor_signature_ed25519",
+    "session_capability_token"
+  ],
+  "rsi_doctrine": "Every action produces a receipt. Receipts are replayable. Reversal is mandatory. Self-seal is forbidden.",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ]
 }

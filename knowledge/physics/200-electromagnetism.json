@@ -1,0 +1,55 @@
+{
+  "id": "200",
+  "name": "Electromagnetism",
+  "band": "physics",
+  "description": "Maxwell's equations, electromagnetic waves, optics, and classical field theory. The unification of electricity, magnetism, and light into a single classical field. From the glow of a lightbulb to the propagation of radio waves, electromagnetism governs all phenomena involving charged particles and electromagnetic fields.",
+  "axioms": [
+    "Gauss's law: \u2207\u00b7E = \u03c1/\u03b5\u2080 (electric charges produce diverging electric fields)",
+    "Gauss's law for magnetism: \u2207\u00b7B = 0 (no magnetic monopoles exist)",
+    "Faraday's law: \u2207\u00d7E = -\u2202B/\u2202t (a changing magnetic field induces an electric field)",
+    "Amp\u00e8re-Maxwell law: \u2207\u00d7B = \u03bc\u2080J + \u03bc\u2080\u03b5\u2080\u2202E/\u2202t (currents and changing electric fields produce magnetic fields)",
+    "Lorentz force: F = q(E + v\u00d7B) \u2014 the force on a charged particle in electromagnetic fields",
+    "Electromagnetic waves travel at c = 1/\u221a(\u03bc\u2080\u03b5\u2080) in vacuum \u2014 light is EM radiation",
+    "Charge is conserved: \u2202\u03c1/\u2202t + \u2207\u00b7J = 0 (continuity equation, follows from Maxwell's equations)"
+  ],
+  "reasoning_patterns": [
+    "Boundary value problems: solve Laplace/Poisson equation with boundary conditions for E and V",
+    "Multipole expansion: approximate distant charge/current distributions by monopole, dipole, quadrupole terms",
+    "Retarded potentials: account for finite propagation speed using Lienard-Wiechert potentials",
+    "Gauge transformation: exploit freedom in A and \u03c6 to simplify calculations (Coulomb gauge, Lorenz gauge)",
+    "Symmetry exploitation: cylindrical, spherical, planar symmetry reduces vector PDEs to scalar ODEs",
+    "Method of images: replace boundary conditions with fictitious charges to solve Laplace's equation",
+    "Faraday's law application: changing magnetic flux induces EMF in loops (generators, transformers)"
+  ],
+  "boundary_conditions": [
+    "Classical EM breaks down at quantum scales \u2014 needs quantum electrodynamics (QED)",
+    "Does not cover optical coherence theory or quantum optics in depth",
+    "Does not cover antenna engineering or microwave engineering (applied domains)",
+    "Radiation reaction and self-force on accelerating charges are problematic classically (Abraham-Lorentz force)",
+    "Classical EM has no explanation for photon discreteness \u2014 requires QED for photoelectric effect"
+  ],
+  "dependencies": [
+    "000",
+    "100",
+    "233",
+    "266",
+    "300",
+    "366"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Jackson, J.D. Classical Electrodynamics (3rd ed.)",
+    "Griffiths, D.J. Introduction to Electrodynamics",
+    "Feynman, R. The Feynman Lectures on Physics Vol.2",
+    "Landau & Lifshitz. The Classical Theory of Fields (Vol.2)",
+    "Maxwell, J.C. (1865). A Dynamical Theory of the Electromagnetic Field"
+  ],
+  "canonical_truths": [
+    "Maxwell's equations unify electricity, magnetism, and optics into a single theory",
+    "Electromagnetic waves propagate at c \u2014 light IS electromagnetic radiation",
+    "Charge is conserved (\u2202\u03c1/\u2202t + \u2207\u00b7J = 0) \u2014 follows from Maxwell's equations",
+    "The speed of light is the same in all inertial frames \u2014 the central clue leading to special relativity",
+    "Electromagnetic energy density: u = \u00bd(\u03b5\u2080E\u00b2 + B\u00b2/\u03bc\u2080); Poynting vector S = E\u00d7H gives energy flux",
+    "Maxwell's equations are not invariant under Galilean transformation \u2014 they motivated Lorentz invariance"
+  ]
+}

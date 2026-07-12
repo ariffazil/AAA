@@ -1,0 +1,48 @@
+{
+  "id": "920",
+  "name": "Backend Engineering",
+  "band": "code",
+  "description": "APIs, databases, distributed systems, and microservices",
+  "axioms": [
+    "CAP theorem: distributed system can have at most 2 of Consistency, Availability, Partition tolerance",
+    "ACID: Atomicity, Consistency, Isolation, Durability for transactions",
+    "REST: stateless, resource-based, standard HTTP methods, hypermedia links",
+    "Database normalization reduces redundancy; denormalization improves read performance",
+    "Every dependency is a potential failure point",
+    "APIs are contracts: design for backward compatibility and versioning"
+  ],
+  "reasoning_patterns": [
+    "API design: resource modeling, endpoint naming, versioning strategy",
+    "Database schema design: normalize for writes, denormalize for reads",
+    "Caching strategy: cache-aside, write-through, write-behind (trade consistency for speed)",
+    "Circuit breaker: fail fast when dependency is down, recover gracefully",
+    "Event sourcing: store state changes as immutable events, derive current state"
+  ],
+  "boundary_conditions": [
+    "Does not cover specific databases (Postgres, MongoDB) internals in depth",
+    "Does not cover service mesh (Istio, Linkerd) in detail",
+    "Serverless architecture has specialized patterns",
+    "GraphQL has different tradeoffs than REST"
+  ],
+  "dependencies": [
+    "777",
+    "833",
+    "850",
+    "933",
+    "950"
+  ],
+  "key_references": [
+    "Kleppmann, M. Designing Data-Intensive Applications",
+    "Richardson, L. RESTful Web Services",
+    "Newman, S. Building Microservices",
+    "Bernstein, P. Principles of Transaction Processing",
+    "Fowler, M. Patterns of Enterprise Application Architecture"
+  ],
+  "canonical_truths": [
+    "Network calls can fail. Always design for timeout, retry, and fallback.",
+    "Database indexes speed up reads but slow down writes and consume storage",
+    "Microservices trade complexity for independent deployability",
+    "Idempotency keys prevent duplicate processing in unreliable networks",
+    "Connection pooling is essential for database performance at scale"
+  ]
+}

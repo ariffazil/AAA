@@ -55,6 +55,19 @@ app.use(express.json({ limit: '12mb' }));
 app.use(membraneMiddleware);
 app.use(membraneResponseHook);
 
+// ── A2A-Version Header Middleware (A2A Protocol v1.0.0 §9.2) ────────────
+const { createA2AVersionMiddleware, setA2AVersionResponseHeader } = require('./a2a-version-middleware');
+
+// Apply A2A-Version validation to all JSON-RPC routes (relaxed for non-rpc)
+app.use('/a2a', createA2AVersionMiddleware({ required: true }));
+app.use('/tasks', createA2AVersionMiddleware({ required: true }));
+app.use('/.well-known', setA2AVersionResponseHeader);
+
+// ── A2A Part Types (A2A Protocol v1.0.0 §3.3) ──────────────────────────
+const a2aParts = require('./a2a-part-types');
+// Replaces the inline validateMessage with spec-compliant version
+// (Original validateMessage stays for backward compat; we augment it)
+
 let redisClient = null;  // early declaration for federatedMemory bootstrap and updateLayer
 
 // === CONFIG ===
@@ -485,7 +498,9 @@ const STATE_TO_A2A_WIRE = {
   'TASK_STATE_COMPLETED': 'TASK_STATE_COMPLETED',
   'TASK_STATE_FAILED': 'TASK_STATE_FAILED',
   'TASK_STATE_CANCELED': 'TASK_STATE_CANCELED',
+  'TASK_STATE_CANCELLED': 'TASK_STATE_CANCELED',
   'TASK_STATE_REJECTED': 'TASK_STATE_REJECTED',
+  'TASK_STATE_AUTH_REQUIRED': 'TASK_STATE_AUTH_REQUIRED',
 };
 
 function toA2AState(internalState) {
@@ -1238,11 +1253,11 @@ function resolveDiscoveryRouting(queryText) {
 }
 
 // === A-ROLE AGENT CARDS ===
-const ARCHITECT_CARD = require('./agent-cards/aaa-architect.json');
-const ENGINEER_CARD = require('./agent-cards/aaa-engineer.json');
-const AUDITOR_CARD = require('./agent-cards/aaa-auditor.json');
-const HERMES_CARD = require('./agent-cards/hermes-asi.json');
-const ANTIGRAVITY_CARD = require('./agent-cards/antigravity.json');
+const ARCHITECT_CARD = require('./agent-cards/roles/aaa-architect.json');
+const ENGINEER_CARD = require('./agent-cards/roles/aaa-engineer.json');
+const AUDITOR_CARD = require('./agent-cards/roles/aaa-auditor.json');
+const HERMES_CARD = require('./agent-cards/extensions/hermes-asi.json');
+const ANTIGRAVITY_CARD = require('./agent-cards/harnesses/antigravity.json');
 
 // === ERROR CODES ===
 const ERROR_CODES = {
@@ -1481,6 +1496,7 @@ function now() { return Date.now(); }
 function authMiddleware(req, res, next) {
   const bearer = req.headers['authorization'];
   const apiKey = req.headers['x-a2a-key'];
+  const arifosToken = req.headers['x-arifos-token'];
 
   if (bearer && bearer.startsWith('Bearer ') && bearer.slice(7) === A2A_TOKEN) {
     req.auth = { scheme: 'bearer', valid: true };
@@ -1490,14 +1506,24 @@ function authMiddleware(req, res, next) {
     req.auth = { scheme: 'apikey', valid: true };
     return next();
   }
+  if (arifosToken && arifosToken === A2A_TOKEN) {
+    // CIV-33 Gap 2: x-arifos-token recognized as a peer-federation header
+    // for /.well-known/agent-card-extended.json and other auth-gated surfaces.
+    req.auth = { scheme: 'arifos-token', valid: true };
+    return next();
+  }
 
   res.setHeader('Content-Type', 'application/json');
-  res.status(401).json(createJSONRPCError(0, ERROR_CODES.UNAUTHORIZED, 'Unauthorized: provide Bearer token or x-a2a-key'));
+  res.status(401).json(createJSONRPCError(0, ERROR_CODES.UNAUTHORIZED, 'Unauthorized: provide Bearer token, x-a2a-key, or x-arifos-token'));
 }
 
 // === SCHEMA VALIDATION ===
 const ALLOWED_METHODS = new Set([
-  'message/send', 'message/stream', 'tasks/get', 'tasks/cancel', 'tasks/subscribe',
+  // A2A v1.2 standard methods
+  'tasks/send', 'tasks/get', 'tasks/cancel', 'tasks/subscribe',
+  'tasks/sendSubscribe', 'tasks/list',
+  'message/send', 'message/stream',
+  // arifOS federation methods
   'agent.dispatch', 'agent.handoff', 'status.query',
   'kernel.handshake', 'kernel.ping'
 ]);
@@ -1511,23 +1537,13 @@ function validateEnvelope(body) {
 }
 
 function validateMessage(message) {
-  if (!message || typeof message !== 'object') return { valid: false, message: 'message must be an object' };
-  if (!message.parts || !Array.isArray(message.parts)) return { valid: false, message: 'message.parts must be an array' };
-  // F1 AMANAH: parts count guard
-  if (message.parts.length > MAX_PARTS) return { valid: false, message: `message.parts exceeds ${MAX_PARTS}` };
-  for (const part of message.parts) {
-    if (!part || typeof part !== 'object') return { valid: false, message: 'each part must be an object' };
-    // A2A v1.0: accept 'type' (canonical) or 'kind' (legacy backward compat)
-    part._discriminator = part.type || part.kind;
-    if (!part._discriminator || typeof part._discriminator !== 'string') return { valid: false, message: 'Each message part must have a string type/kind' };
-    // F1 AMANAH: whitelist allowed types — reject unknown injection types
-    if (!ALLOWED_PART_KINDS.has(part._discriminator)) return { valid: false, message: `Unknown part type: ${part._discriminator}. Allowed: ${[...ALLOWED_PART_KINDS].join(', ')}` };
-    if (part._discriminator === 'text') {
-      if (typeof part.text !== 'string') return { valid: false, message: 'text parts must have string text' };
-      // F1 AMANAH: text length guard — prevent DoS via massive payloads
-      if (part.text.length > MAX_STRING_LENGTH) return { valid: false, message: `text exceeds ${MAX_STRING_LENGTH} chars` };
-    }
+  // Use A2A v1.0.0 Part types validation (supports TextPart, FilePart, DataPart)
+  const result = a2aParts.validateMessage(message);
+  if (!result.valid) {
+    return { valid: false, code: ERROR_CODES.INVALID_REQUEST, message: result.message };
   }
+  // F1 AMANAH: parts count guard (redundant with a2aParts but kept for safety)
+  if (message.parts.length > MAX_PARTS) return { valid: false, code: ERROR_CODES.INVALID_REQUEST, message: `message.parts exceeds ${MAX_PARTS}` };
   return { valid: true };
 }
 
@@ -1605,14 +1621,8 @@ function resolveSkill(params, message) {
 }
 
 function extractText(message) {
-  if (!message || !message.parts) return '';
-  // F1 AMANAH: sanitize extracted text — truncate, strip null bytes, enforce safety limits
-  const extracted = (message.parts || [])
-    .filter(p => p && p.kind === 'text' && typeof p.text === 'string')
-    .map(p => p.text.replace(/\x00/g, '')) // strip null bytes
-    .join(' ')
-    .slice(0, MAX_TEXT_LENGTH); // hard truncate — no DoS via unbounded text
-  return extracted;
+  // Use A2A v1.0.0 Part types extractor (supports type and kind discriminators)
+  return a2aParts.extractText(message, { maxLength: MAX_TEXT_LENGTH });
 }
 
 // === EXECUTE TASK ===
@@ -2026,10 +2036,16 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
 // === PUBLIC ROUTES (no auth) ===
 
-// A2A v1.0.0 spec: canonical agent card — single path, no aliases
-app.get('/.well-known/agent-card.json', (req, res) => {
+// ── SDK Integration: agentCardHandler + jsonRpcHandler ──────────────────
+const { createSDKAgentCardRouter, createSDKRequestHandler, createSDKJsonRPCRouter } = require('./a2a-sdk-bridge');
+
+// A2A v1.0.0 spec: canonical agent card — served via SDK's agentCardHandler
+app.use('/.well-known/agent-card.json', createSDKAgentCardRouter(AAA_AGENT_CARD));
+// Also keep the agent.json alias
+app.get('/.well-known/agent.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('A2A-Version', '1.0');
   res.json(AAA_AGENT_CARD);
 });
 
@@ -3327,8 +3343,9 @@ app.get('/api/arep/reality-feed', async (req, res) => {
 app.get('/', (req, res) => {
   res.json({
     service: 'AAA A2A Gateway',
-    version: '1.0.0',
-    protocol_version: '1.0.0',
+    version: '1.2',
+    protocol_version: '1.2',
+    protocolVersion: '1.2',
     auth: 'required',
     endpoints: {
       discoveryContract: '/.well-known/a2a-discovery.json',
@@ -3340,6 +3357,14 @@ app.get('/', (req, res) => {
       cancelTask: 'POST /tasks/{taskId}/cancel',
       subscribeTask: 'GET /tasks/{taskId}/subscribe',
       health: '/health'
+    },
+    // Tier-1.3: A2A v1.2 standard method aliases (canonical names from upstream)
+    methodAliases: {
+      sendTask: 'message/send',
+      getTask: 'tasks/get',
+      cancelTask: 'tasks/cancel',
+      sendTaskStreaming: 'message/stream',
+      resubscribeTask: 'tasks/subscribe'
     }
   });
 });
@@ -3588,19 +3613,53 @@ app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware
 });
 
 // === EXTENDED AGENT CARD (A2A v1.0.0 Section 3.1.11) ===
-// GET /.well-known/agent-card-extended.json — authenticated
+// GET /.well-known/agent-card-extended.json — authenticated only (CIV-33 Gap 2)
+const EXTENDED_AGENT_CARD = (() => {
+  try {
+    return require('../agent-cards/pillars/aaa-gateway/agent-card-extended.json');
+  } catch (e) {
+    console.warn('[AAA A2A] extended agent card not found, falling back to inline:', e.message);
+    return null;
+  }
+})();
 app.get('/.well-known/agent-card-extended.json', authMiddleware, (req, res) => {
   const baseCard = { ...AAA_AGENT_CARD };
-  // Add federation topology + warga agents (sensitive, auth-only)
-  baseCard._extended = {
-    federation: 'arif-fazil.com',
-    warga_agents: ['333-AGI', '555-ASI', '888-APEX', 'A-AUDIT', 'A-ARCHIVE'],
-    organs: ['arifOS', 'A-FORGE', 'GEOX', 'WEALTH', 'WELL'],
-    trust_hierarchy: 'Human (Arif) > arifOS > AAA > A-FORGE > Specialists',
-    constitutional_floors: ['F1', 'F2', 'F4', 'F7', 'F9', 'F10', 'F11', 'F12', 'F13'],
-    governance_kernel: 'arifOS (port 8088)',
-    peer_contracts: [...PEER_CONTRACTS.keys()],
-  };
+  if (EXTENDED_AGENT_CARD) {
+    // Serve the canonical extended card file. Merge top-level extended fields
+    // onto the base card under an `_extended` namespace for backward compat,
+    // and surface the full file under `extended_card` for forward compat.
+    baseCard._extended = {
+      federation: 'arif-fazil.com',
+      warga_agents: EXTENDED_AGENT_CARD.organ_routing_topology?.warga_agents?.map(a => a.id) || [],
+      organs: (EXTENDED_AGENT_CARD.organ_routing_topology?.downstream_organs || [])
+        .filter(o => !o.internal_only)
+        .map(o => o.id),
+      trust_hierarchy: EXTENDED_AGENT_CARD.organ_routing_topology?.trust_hierarchy,
+      constitutional_floors: Object.keys(EXTENDED_AGENT_CARD.constitutional_floors || {}),
+      governance_kernel: 'arifOS (port 8088)',
+      peer_contracts: [...PEER_CONTRACTS.keys()],
+    };
+    baseCard.extended_card = EXTENDED_AGENT_CARD;
+    baseCard.constitutional_floors = EXTENDED_AGENT_CARD.constitutional_floors;
+    baseCard.organ_routing_topology = EXTENDED_AGENT_CARD.organ_routing_topology;
+    baseCard.seal_chain_genesis = EXTENDED_AGENT_CARD.seal_chain_genesis;
+    baseCard.task_state_model = EXTENDED_AGENT_CARD.task_state_model;
+    baseCard.ingress_security = EXTENDED_AGENT_CARD.ingress_security;
+    baseCard.governance = EXTENDED_AGENT_CARD.governance;
+  } else {
+    // Fallback: minimal inline extended block (legacy behavior)
+    baseCard._extended = {
+      federation: 'arif-fazil.com',
+      warga_agents: ['333-AGI', '555-ASI', '888-APEX', 'A-AUDIT', 'A-ARCHIVE'],
+      organs: ['arifOS', 'A-FORGE', 'GEOX', 'WEALTH', 'WELL'],
+      trust_hierarchy: 'Human (Arif) > arifOS > AAA > A-FORGE > Specialists',
+      constitutional_floors: ['F1', 'F2', 'F4', 'F7', 'F9', 'F10', 'F11', 'F12', 'F13'],
+      governance_kernel: 'arifOS (port 8088)',
+      peer_contracts: [...PEER_CONTRACTS.keys()],
+    };
+  }
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.setHeader('X-AAA-Extended-Card', 'authenticated');
   res.json(baseCard);
 });
 
@@ -3648,6 +3707,63 @@ app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) =>
       }));
       break;
     }
+    case 'tasks/send': {
+      // A2A v1.2: Create and dispatch a new task
+      const message = params?.message || { role: 'user', parts: [{ type: 'text', text: params?.text || '' }] };
+      const lineage = requireTaskLineage(params, id);
+      if (!lineage.ok) {
+        return res.status(400).json(lineage.error);
+      }
+      const { sessionId, contextId } = lineage;
+      const taskId = `aaa-${generateId().slice(0, 12)}`;
+      const tenant = params?.tenant || 'personal';
+      const task = buildLineageTask(taskId, contextId, sessionId, message, {
+        ...params,
+        metadata: { ...(params?.metadata || {}), tenant },
+      });
+      task.tenant = tenant;
+      await taskStore.set(taskId, task);
+      registerContextLineage(contextId, sessionId, taskId);
+      await executeTask(taskId, contextId, message, params?.agent_id, params);
+      const updatedTask = await taskStore.get(taskId);
+      res.json(createJSONRPCResponse(id, {
+        id: taskId, contextId, session_id: sessionId,
+        status: updatedTask.status, artifacts: updatedTask.artifacts,
+        history: updatedTask.history, kind: 'task',
+        metadata: updatedTask.metadata,
+      }));
+      break;
+    }
+    case 'tasks/sendSubscribe': {
+      // A2A v1.2: Create task + stream results via SSE
+      const message = params?.message || { role: 'user', parts: [{ type: 'text', text: params?.text || '' }] };
+      const lineage = requireTaskLineage(params, id);
+      if (!lineage.ok) {
+        return res.status(400).json(lineage.error);
+      }
+      const { sessionId, contextId } = lineage;
+      const taskId = `aaa-${generateId().slice(0, 12)}`;
+      const task = buildLineageTask(taskId, contextId, sessionId, message, {
+        ...params,
+        metadata: { ...(params?.metadata || {}), tenant: params?.tenant || 'personal' },
+      });
+      await taskStore.set(taskId, task);
+      registerContextLineage(contextId, sessionId, taskId);
+
+      res.setHeader('Content-Type', 'text/event-stream');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+      res.setHeader('X-Accel-Buffering', 'no');
+
+      const unsubscribe = subscribe(taskId, (event) => {
+        res.write(`data: ${JSON.stringify({ jsonrpc: '2.0', id, result: event })}\n\n`);
+        if (event.final) res.end();
+      });
+      req.on('close', () => { unsubscribe(); });
+
+      await executeTask(taskId, contextId, message, params?.agent_id, params);
+      break;
+    }
     case 'tasks/list': {
       const filter = {
         contextId: params?.contextId,
@@ -3672,6 +3788,29 @@ app.post('/a2a', jsonRpcValidate, createEnvelopeValidator(), async (req, res) =>
       res.status(400).json(createJSONRPCError(id, ERROR_CODES.METHOD_NOT_FOUND, `Method '${method}' not found`));
   }
 });
+
+// ── SDK JSON-RPC Handler — spec-compliant A2A methods at /a2a/sdk/jsonrpc ──
+// Mounts the SDK's jsonRpcHandler which provides standard tasks/send, tasks/get,
+// tasks/cancel, tasks/sendSubscribe handlers with built-in SSE streaming.
+// NOTE: This is ADDITIVE to existing routes — not a replacement. Our custom routes
+// provide arifOS constitutional extensions (seal chain, delegation guard, envelope).
+const sdkRequestHandler = createSDKRequestHandler({
+  taskStoreGet: (id) => taskStore.get(id),
+  taskStoreSet: (id, task) => taskStore.set(id, task),
+  agentCard: AAA_AGENT_CARD,
+  taskDispatcher: async (taskId, message, params) => {
+    // Delegate to our existing task executor
+    try {
+      const ctxId = params?.metadata?.contextId || `sdk-${taskId}`;
+      await executeTask(taskId, ctxId, message, params?.agent_id, params);
+    } catch (err) {
+      console.error(`[SDK Bridge] Task ${taskId} dispatch failed:`, err.message);
+    }
+  },
+});
+app.use('/a2a/sdk/jsonrpc', createSDKJsonRPCRouter(sdkRequestHandler));
+console.log('[SDK Bridge] Mounted /a2a/sdk/jsonrpc — SDK JSON-RPC handler');
+console.log('[SDK Bridge] Mounted /.well-known/agent-card.json — SDK agentCardHandler');
 
 // =======================
 // A2A v1.0.0 SPEC ENDPOINTS
@@ -3771,6 +3910,21 @@ app.post('/tasks', authMiddleware, jsonRpcValidate, createEnvelopeValidator(), a
     console.error('[A2A v1.0.0] POST /tasks error:', error);
     res.status(500).json(createJSONRPCError(req.body?.id || 0, ERROR_CODES.INTERNAL_ERROR, 'Internal server error'));
   }
+});
+
+// POST /tasks/send — A2A v1.2 root-level alias (standard spec path)
+app.post('/tasks/send', authMiddleware, (req, res) => {
+  // Re-dispatch to canonical /a2a/tasks/send handler
+  req.url = '/a2a/tasks/send';
+  app.handle(req, res);
+});
+
+// POST /tasks/sendSubscribe — A2A v1.2 streaming task send (alias to /a2a/tasks/send with stream flag)
+app.post('/tasks/sendSubscribe', authMiddleware, (req, res) => {
+  req.url = '/a2a/tasks/send';
+  if (!req.body) req.body = {};
+  req.body.stream = true;
+  app.handle(req, res);
 });
 
 // GET /tasks/:taskId — A2A v1.0.0 spec task retrieval

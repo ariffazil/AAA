@@ -102,5 +102,6 @@
       "confidence_band",
       "citations"
     ]
-  }
+  },
+  "protocolVersion": "1.2"
 }

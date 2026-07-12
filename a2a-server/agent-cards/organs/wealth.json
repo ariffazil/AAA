@@ -1,1 +1,225 @@
-{"kind":"organ-card","schemaVersion":"1.0.0","identity":{"organId":"wealth","name":"WEALTH","description":"Capital intelligence organ — valuation, risk, portfolio, stock analysis. 20 MCP tools. ADVISORY_ONLY.","version":"2026.06.12","protocolVersion":"a2a.v1","tags":["finance","valuation","risk","macro"]},"endpoints":{"baseUrl":"http://127.0.0.1:18082","mcpUrl":"http://127.0.0.1:18082/mcp","healthUrl":"http://127.0.0.1:18082/health","cardUrl":"http://127.0.0.1:18082/.well-known/organ-card.json"},"capabilities":{"streaming":true,"asyncTasks":true,"supportsDelegation":true,"supportsToolDiscovery":true},"skills":[{"id":"stock_analysis","name":"Stock Analysis","description":"19-mode stock analysis: Bursa snapshot/screen/evidence, Global snapshot/dashboard/list, verify_math, fundamentals, TAC-9, etc.","tags":["stocks","bursa","global","analysis"],"riskClass":"medium","executionAllowed":false}],"security":{"authRequired":false,"securityNote":"Localhost IS the password (ADR-001)","allowedCallers":["arifos","aaa","a-forge","geox","well","apex","hermes","openclaw"]},"governance":{"trustGrade":"A","sourceClass":"canonical","holdCapable":true,"floorProfile":["F1","F2","F4","F8"]},"validation":{"heartbeatTtlSec":60,"compatibility":"backward"}}
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "wealth",
+  "name": "WEALTH",
+  "description": "Capital intelligence \u2014 NPV/IRR, markets, institutional stress, entropy, wisdom.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "capital_primitive",
+      "name": "Capital Math",
+      "description": "NPV, IRR, EMV, Monte Carlo, Kelly.",
+      "tags": [
+        "finance"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_health",
+      "name": "Financial Health",
+      "description": "Conservation, flow, runway, survival.",
+      "tags": [
+        "finance"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_market",
+      "name": "Market Data",
+      "description": "FX, commodities, stocks.",
+      "tags": [
+        "finance"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_wisdom",
+      "name": "Capital Wisdom",
+      "description": "Wisdom-weighted proposal evaluation.",
+      "tags": [
+        "finance"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_diagnose",
+      "name": "Institutional Diagnostics",
+      "description": "Stress index, governance, collapse.",
+      "tags": [
+        "institution"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_entropy",
+      "name": "Capital Entropy",
+      "description": "Power map, metric audit, trust decay.",
+      "tags": [
+        "institution"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_ledger",
+      "name": "VAULT999 Ledger",
+      "description": "Capital transactions on immutable ledger.",
+      "tags": [
+        "vault"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "capital_registry",
+      "name": "Registry Status",
+      "description": "WEALTH tool introspection.",
+      "tags": [
+        "meta"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "wealth_institutional_stress",
+      "name": "Stress Index",
+      "description": "Composite institutional stress.",
+      "tags": [
+        "institution"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "wealth_governance_capacity",
+      "name": "Governance Capacity",
+      "description": "Board governance vs stress.",
+      "tags": [
+        "governance"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "wealth_cascade_model",
+      "name": "Cascade Model",
+      "description": "Feedback loops between stress dimensions.",
+      "tags": [
+        "cascade"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "wealth_external_exploitation",
+      "name": "Exploitation Detection",
+      "description": "Simulative neutral behavior detection.",
+      "tags": [
+        "exploitation"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "/Hfc52GfOBNbAa8T8ei691BS92Yt8RilvFHpiuQp2w59M+jRaEQoRiocQT5FnXr7gcQ9qcDOK4eYtYMscoQHAg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
+}

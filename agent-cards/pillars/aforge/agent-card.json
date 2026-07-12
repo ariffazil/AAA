@@ -1,0 +1,106 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "a-forge-mcp",
+  "name": "A-FORGE Execution Shell",
+  "description": "Governed execution actuator. Hands, not law. Build, deploy, orchestrate, document, git.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "governed-execution",
+      "name": "Governed Execution",
+      "description": "Engineer/dry_run/query modes. Requires prior SEAL.",
+      "tags": [
+        "forge",
+        "execute",
+        "f1"
+      ]
+    },
+    {
+      "id": "cross-organ-orchestration",
+      "name": "Cross-Organ Orchestration",
+      "description": "Multi-step workflows across organs via A2A.",
+      "tags": [
+        "forge",
+        "orchestrate",
+        "f4"
+      ]
+    },
+    {
+      "id": "document-intelligence",
+      "name": "Document Intelligence",
+      "description": "PDF/image extraction, OCR, structured parsing.",
+      "tags": [
+        "forge",
+        "documents",
+        "f2"
+      ]
+    },
+    {
+      "id": "git-operations",
+      "name": "Git Operations",
+      "description": "Commit, push, PR lifecycle. SEAL-verified.",
+      "tags": [
+        "forge",
+        "git",
+        "f1"
+      ]
+    },
+    {
+      "id": "lease-acquisition",
+      "name": "Lease Acquisition",
+      "description": "Resource lease lifecycle with blast radius caps.",
+      "tags": [
+        "forge",
+        "lease",
+        "f1"
+      ]
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:20:00Z",
+      "type": "Ed25519Signature2020",
+      "proofValue": "pending"
+    }
+  ]
+}

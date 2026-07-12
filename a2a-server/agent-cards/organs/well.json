@@ -1,1 +1,253 @@
-{"kind":"organ-card","schemaVersion":"1.0.0","identity":{"organId":"well","name":"WELL","description":"Human vitality organ — biometric readiness, homeostasis. REFLECT_ONLY. 21 somatic MCP tools.","version":"2026.06.10","protocolVersion":"a2a.v1","tags":["vitality","biometric","readiness","human"]},"endpoints":{"baseUrl":"http://127.0.0.1:18083","mcpUrl":"http://127.0.0.1:18083/mcp","healthUrl":"http://127.0.0.1:18083/health","cardUrl":"http://127.0.0.1:18083/.well-known/organ-card.json"},"capabilities":{"streaming":true,"supportsDelegation":true},"skills":[{"id":"assess_homeostasis","name":"Assess Homeostasis","description":"Regulation, stability, fatigue assessment. F13 sovereign territory.","tags":["homeostasis","fatigue","readiness"],"riskClass":"high","executionAllowed":false}],"security":{"authRequired":false,"securityNote":"Localhost IS the password (ADR-001). F13 biometric territory."},"governance":{"trustGrade":"B","sourceClass":"canonical","holdCapable":true,"floorProfile":["F1","F2","F5","F6","F7","F13"]},"validation":{"heartbeatTtlSec":60,"compatibility":"backward"}}
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "well",
+  "name": "WELL",
+  "description": "Human readiness and vitality \u2014 substrate classification, dignity guard, homeostasis, dark geometry mirror.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "well_classify_substrate",
+      "name": "Classify Substrate",
+      "description": "Substrate classification and boundary sensing.",
+      "tags": [
+        "classification"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_detect_boundary",
+      "name": "Detect Boundary",
+      "description": "Membrane, body, machine, federation.",
+      "tags": [
+        "boundary"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_measure_gradient",
+      "name": "Measure Gradient",
+      "description": "Chemical, energy, pressure, attention.",
+      "tags": [
+        "gradient"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_metabolism",
+      "name": "Assess Metabolism",
+      "description": "Biological metabolism and throughput.",
+      "tags": [
+        "metabolism"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_homeostasis",
+      "name": "Assess Homeostasis",
+      "description": "Regulation, stability, fatigue.",
+      "tags": [
+        "homeostasis"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_check_repair",
+      "name": "Check Repair",
+      "description": "Recovery, resilience, forge integrity.",
+      "tags": [
+        "repair"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_validate_vitality",
+      "name": "Validate Vitality",
+      "description": "Vitality, readiness, NIAT.",
+      "tags": [
+        "vitality"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_livelihood",
+      "name": "Assess Livelihood",
+      "description": "Human wellness, role, dignity.",
+      "tags": [
+        "livelihood"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_reliability",
+      "name": "Assess Reliability",
+      "description": "Machine, tool, institution reliability.",
+      "tags": [
+        "reliability"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_guard_dignity",
+      "name": "Guard Dignity",
+      "description": "Soul, personhood, symbolic boundaries.",
+      "tags": [
+        "dignity"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_trace_lineage",
+      "name": "Trace Lineage",
+      "description": "Memory, trend, ledger, vault chain.",
+      "tags": [
+        "lineage"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_signal_coverage",
+      "name": "Signal Coverage",
+      "description": "Audit canonical human substrate signals.",
+      "tags": [
+        "audit"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_classify_state",
+      "name": "Classify State",
+      "description": "Polyvagal + SDT psychological state.",
+      "tags": [
+        "psychology"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_dark_geometry_mirror",
+      "name": "Dark Geometry Mirror",
+      "description": "Mirror language for dark patterns.",
+      "tags": [
+        "dark-geometry"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "Ktb7ZXXlt5aqjiiphSGEFDW9g3mMzzzcREUDrF+E7veSoTFROrSjvG2irUa8j1mBcwvr3bQgGuTn+ZwVb484AA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
+}

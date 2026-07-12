@@ -1,0 +1,353 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "opencode",
+  "fi": "FI-001",
+  "layer": "harnesses",
+  "ring": "Primary Executor (DeepSeek-V4-Pro)",
+  "role": "PRIMARY forge instrument — receives ALL forge harness skills",
+  "skill_count": 68,
+  "skills": [
+    {
+      "id": "agentic-builder",
+      "source": ".hermes/skills/software-development",
+      "why": "Builder doctrine"
+    },
+    {
+      "id": "mcp-server-building",
+      "source": ".hermes/skills/software-development",
+      "why": "MCP server builder"
+    },
+    {
+      "id": "github-pr-workflow",
+      "source": ".hermes/skills/github",
+      "why": "PR workflow"
+    },
+    {
+      "id": "test-driven-development",
+      "source": ".hermes/skills/software-development",
+      "why": "TDD"
+    },
+    {
+      "id": "systematic-debugging",
+      "source": ".hermes/skills/software-development",
+      "why": "Debug doctrine"
+    },
+    {
+      "id": "deep-codebase-audit",
+      "source": ".hermes/skills/software-development/deep-codebase-audit",
+      "why": "Codebase audit"
+    },
+    {
+      "id": "forge-before-build",
+      "source": ".hermes/skills/software-development",
+      "why": "Forge-then-build"
+    },
+    {
+      "id": "simplify-code",
+      "source": ".hermes/skills/software-development",
+      "why": "Code simplification"
+    },
+    {
+      "id": "python-debugpy",
+      "source": ".hermes/skills/software-development",
+      "why": "Python debugger"
+    },
+    {
+      "id": "node-inspect-debugger",
+      "source": ".hermes/skills/software-development",
+      "why": "Node debugger"
+    },
+    {
+      "id": "requesting-code-review",
+      "source": ".hermes/skills/software-development",
+      "why": "Review request"
+    },
+    {
+      "id": "spike",
+      "source": ".hermes/skills/software-development",
+      "why": "Spike prototype"
+    },
+    {
+      "id": "plan",
+      "source": ".hermes/skills/software-development",
+      "why": "Plan mode"
+    },
+    {
+      "id": "measure-before-acting",
+      "source": ".hermes/skills/software-development",
+      "why": "Measure first"
+    },
+    {
+      "id": "non-mutating-review-harness",
+      "source": ".hermes/skills/software-development",
+      "why": "Non-mutating review"
+    },
+    {
+      "id": "asi-readiness-audit-contract",
+      "source": ".hermes/skills/software-development",
+      "why": "ASI readiness"
+    },
+    {
+      "id": "governance-eval-benchmark",
+      "source": ".hermes/skills/software-development",
+      "why": "Gov eval"
+    },
+    {
+      "id": "constitutional-auditor",
+      "source": ".hermes/skills/software-development",
+      "why": "Constitutional audit"
+    },
+    {
+      "id": "FORGE-ci-diagnose",
+      "source": ".agents/skills/FORGE-ci-diagnose",
+      "why": ""
+    },
+    {
+      "id": "FORGE-code-analysis",
+      "source": ".agents/skills/FORGE-code-analysis",
+      "why": ""
+    },
+    {
+      "id": "FORGE-code-wiki",
+      "source": ".agents/skills/FORGE-code-wiki",
+      "why": ""
+    },
+    {
+      "id": "FORGE-context-compress",
+      "source": ".agents/skills/FORGE-context-compress",
+      "why": ""
+    },
+    {
+      "id": "FORGE-docker",
+      "source": ".agents/skills/FORGE-docker",
+      "why": ""
+    },
+    {
+      "id": "FORGE-docker-entropy",
+      "source": ".agents/skills/FORGE-docker-entropy",
+      "why": ""
+    },
+    {
+      "id": "FORGE-docker-thermo",
+      "source": ".agents/skills/FORGE-docker-thermo",
+      "why": ""
+    },
+    {
+      "id": "FORGE-fastmcp",
+      "source": ".agents/skills/FORGE-fastmcp",
+      "why": ""
+    },
+    {
+      "id": "FORGE-federation-orchestrator",
+      "source": ".agents/skills/FORGE-federation-orchestrator",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github",
+      "source": ".agents/skills/FORGE-github",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-ops",
+      "source": ".agents/skills/FORGE-github-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-runbook",
+      "source": ".agents/skills/FORGE-github-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-google-workspace",
+      "source": ".agents/skills/FORGE-google-workspace",
+      "why": ""
+    },
+    {
+      "id": "FORGE-incident-escalation",
+      "source": ".agents/skills/FORGE-incident-escalation",
+      "why": ""
+    },
+    {
+      "id": "FORGE-incident-triage",
+      "source": ".agents/skills/FORGE-incident-triage",
+      "why": ""
+    },
+    {
+      "id": "FORGE-infra-crons",
+      "source": ".agents/skills/FORGE-infra-crons",
+      "why": ""
+    },
+    {
+      "id": "FORGE-infra-guardian",
+      "source": ".agents/skills/FORGE-infra-guardian",
+      "why": ""
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": ""
+    },
+    {
+      "id": "FORGE-issue-triage",
+      "source": ".agents/skills/FORGE-issue-triage",
+      "why": ""
+    },
+    {
+      "id": "FORGE-kimi-code",
+      "source": ".agents/skills/FORGE-kimi-code",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-federation-ops",
+      "source": ".agents/skills/FORGE-mcp-federation-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-lifeguard",
+      "source": ".agents/skills/FORGE-mcp-lifeguard",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-ops",
+      "source": ".agents/skills/FORGE-mcp-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-smoke-test",
+      "source": ".agents/skills/FORGE-mcp-smoke-test",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcporter",
+      "source": ".agents/skills/FORGE-mcporter",
+      "why": ""
+    },
+    {
+      "id": "FORGE-model-monitor",
+      "source": ".agents/skills/FORGE-model-monitor",
+      "why": ""
+    },
+    {
+      "id": "FORGE-onboarding",
+      "source": ".agents/skills/FORGE-onboarding",
+      "why": ""
+    },
+    {
+      "id": "FORGE-phase-escalation",
+      "source": ".agents/skills/FORGE-phase-escalation",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-governance",
+      "source": ".agents/skills/FORGE-pr-governance",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-review",
+      "source": ".agents/skills/FORGE-pr-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-gate",
+      "source": ".agents/skills/FORGE-precommit-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-review",
+      "source": ".agents/skills/FORGE-precommit-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-readme-truth-check",
+      "source": ".agents/skills/FORGE-readme-truth-check",
+      "why": ""
+    },
+    {
+      "id": "FORGE-route-least-power",
+      "source": ".agents/skills/FORGE-route-least-power",
+      "why": ""
+    },
+    {
+      "id": "FORGE-search",
+      "source": ".agents/skills/FORGE-search",
+      "why": ""
+    },
+    {
+      "id": "FORGE-secret-hygiene",
+      "source": ".agents/skills/FORGE-secret-hygiene",
+      "why": ""
+    },
+    {
+      "id": "FORGE-secret-safety-scan",
+      "source": ".agents/skills/FORGE-secret-safety-scan",
+      "why": ""
+    },
+    {
+      "id": "FORGE-seek",
+      "source": ".agents/skills/FORGE-seek",
+      "why": ""
+    },
+    {
+      "id": "FORGE-skill-creator",
+      "source": ".agents/skills/FORGE-skill-creator",
+      "why": ""
+    },
+    {
+      "id": "FORGE-skill-linter",
+      "source": ".agents/skills/FORGE-skill-linter",
+      "why": ""
+    },
+    {
+      "id": "FORGE-spatial-grounding",
+      "source": ".agents/skills/FORGE-spatial-grounding",
+      "why": ""
+    },
+    {
+      "id": "FORGE-subagent-spawn",
+      "source": ".agents/skills/FORGE-subagent-spawn",
+      "why": ""
+    },
+    {
+      "id": "FORGE-telegram-audit",
+      "source": ".agents/skills/FORGE-telegram-audit",
+      "why": ""
+    },
+    {
+      "id": "FORGE-verify-runtime",
+      "source": ".agents/skills/FORGE-verify-runtime",
+      "why": ""
+    },
+    {
+      "id": "FORGE-vps-docker",
+      "source": ".aaa/skills/ARCHIVE-docker",
+      "why": ""
+    },
+    {
+      "id": "FORGE-vps-runbook",
+      "source": ".aaa/skills/ARCHIVE-vps-docker-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-well-boundary-repair",
+      "source": ".agents/skills/FORGE-well-boundary-repair",
+      "why": ""
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": ""
+    },
+    {
+      "id": "APEX-governance",
+      "source": ".agents/skills/APEX-governance",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}
