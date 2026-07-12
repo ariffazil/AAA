@@ -1,19 +1,20 @@
 ---
 name: meta-mesa-skill-atlas
-description: Unified skill inventory, gap detection, and cross-cutting orchestration for all 35 arifOS federation skills. The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing skill health, onboarding a new organ, or when you don't know which skill to load.
-version: 1.0.0
+description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views. The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing skill health, unifying CLI agent skills, onboarding a new organ, or when you don't know which skill to load.
+version: 1.2.0
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F4, F7, F9]
 autonomy_tier: T1
-tags: [meta, skill-atlas, gap-detection, routing, federation, inventory]
+tags: [meta, skill-atlas, gap-detection, routing, federation, inventory, multi-harness, grok, aaa]
 forged: 2026-06-28
+updated: 2026-07-12
 sources:
-  - All 7 constitutional stage skills (000/010/111/333/666/888/999)
-  - All 28 domain skills
+  - AAA FEDERATED_SKILLS_REGISTRY_V3.yaml (63 logical)
+  - AAA BOOTSTRAP_MANIFEST (9 universals)
+  - Live harness mesh: ~/.grok ~/.claude ~/.codex ~/.agents AAA
+  - forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
   - AGENTS.md federation organ index
-  - TOOLREGISTRY.json
-  - TOOLS.md agent tool surface
 ---
 
 # META-MESA — Skill Atlas & Gap Detection
@@ -25,13 +26,109 @@ sources:
 
 This is the **meta-skill** — a skill about skills. It provides:
 
-1. **Inventory** — canonical list of all 35 skills with domain, organ, and coverage depth
-2. **Gap detection** — what's missing, what's thin, what's referenced but doesn't exist
-3. **Routing** — given a task, which skill(s) should be loaded
-4. **Health scoring** — skill freshness, collision risk, coverage metrics
-5. **Cross-cutting concerns** — the gaps between skills where things fall through
+1. **Inventory** — live multi-surface counts (not a frozen “35”)
+2. **Gap detection** — missing, thin, dual-named, harness-divergent
+3. **Routing** — given a task *and harness*, which skill(s) to load
+4. **Health scoring** — freshness, collision, catalog vs view drift
+5. **Cross-harness unification** — AAA catalog ↔ CLI agent views
 
 It does NOT execute, judge, or seal. It classifies, routes, and illuminates.
+
+**Iron rule:** AAA is the catalog. Harnesses are views. Do not invent parallel catalogs.
+
+**Live atlas (T₁):** `/root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md`  
+**JSON:** `…/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.json`
+
+---
+
+## §0. MULTI-HARNESS UNIFICATION (Grok × CLI × AAA) — 2026-07-12
+
+### Architecture
+
+```
+BOOTSTRAP_MANIFEST (9 universals)     ← always first
+        ↓
+AAA/skills  (catalog + V3 registry)   ← sole named truth
+   +  .agents/skills (doctrine/stage) ← shared federation core
+        ↓ symlink mesh
+~/.grok | ~/.claude | ~/.codex        ← views (+ harness-native)
+        ↓ separate trees
+Hermes categories | Kimi roles | OpenClaw owned
+```
+
+### Live inventory (OBSERVED T₁)
+
+| Surface | Count | Role |
+|---------|-------|------|
+| Grok `~/.grok/skills` | **116** resolvable | View: AAA 67 + agents 37 + **native 12** |
+| AAA `/root/AAA/skills` | **70** top-level + substrate/knowledge | **Catalog** |
+| V3 registry | **63** logical (6+3+54) | Short names |
+| `.agents/skills` | **43–50** | Stage/domain doctrine |
+| Claude / Codex | **104 / 107** | Same mesh (symlink) |
+| Hermes | **180** SKILL.md / 34 cats | Category tree — **not** flat mesh |
+| Kimi | 7 role contrast skills | Local, not catalog |
+| **Legacy meta-mesa claim** | 37 | **STALE — do not use** |
+
+### Grok native keepers (harness-only)
+
+`arif-governed-autonomous-execution` · `grok-zen-aaa-substrate` · `grok-federation-skill-upgrader` · `orthogonal-skill-update` · `create-skill` · `check-work` · `help` · `imagine`  
+**Prune candidates:** `docx` · `pptx` · `xlsx` · `code-review`
+
+### Dual-name gap — SEALED (2026-07-12)
+
+**Machine table (63/63 RESOLVED):** `/root/AAA/skills/SKILL_ALIAS_TABLE.json`  
+**Human:** `A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md`  
+**Hermes bridge:** `A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md`  
+**Mesh sync:** `bash /root/AAA/skills/scripts/skill-mesh-sync.sh [--apply|--check]`
+
+| V3 short | Primary disk path |
+|----------|-------------------|
+| `kernel-bind` … `audit-seal` | `AAA/skills/substrate/<name>` |
+| `know-*` | `AAA/skills/knowledge/<name>` |
+| `meta-atlas` | `meta-mesa-skill-atlas` |
+| `geo-*` | `geox-*` / `geological-artifact-rigor` / `prospect-maturation-workflow` |
+| `wealth-thermo` | `wealth-capital-thermodynamics` |
+| `forge-verbs` / `forge-exec` | `kernel-verbs-aforge-hands` |
+| (full list) | see JSON |
+
+### Unification phases — status 2026-07-12
+
+1. **AUTHORITY** — ✅ AAA + V3 sole catalog  
+2. **ALIAS TABLE** — ✅ 63/63 sealed JSON  
+3. **PROFILES** — ✅ `grok` + `opencode` in V3  
+4. **META-MESA REFRESH** — ✅ v1.2.0+  
+5. **MESH SYNC** — ✅ script + applied (substrate/knowledge links)  
+6. **HERMES BRIDGE** — ✅ category→domain doc  
+7. **PRUNE** — ✅ Grok docx/pptx/xlsx/code-review → `.deprecated`  
+8. **BOOT GATE** — ✅ documented below + BOOTSTRAP_MANIFEST  
+
+### BOOT GATE (all CLI agents)
+
+```
+BIND → GROUND → ROUTE → RECALL → VERIFY → SEAL → KNOW → READY
+```
+
+Only after **READY** may domain skills load. Source: `AAA/skills/BOOTSTRAP_MANIFEST.json` (9 universals).  
+
+### Harness load packs
+
+| CLI | Always | On demand |
+|-----|--------|-----------|
+| **Grok** | BOOTSTRAP 9 + `arif-governed` + `grok-zen-aaa-substrate` | Domain via this atlas / V3 |
+| **Claude / Codex** | BOOTSTRAP 9 + mesh | Same domain pack |
+| **Hermes** | `arifos-auto-init` + seven-zen + federated-skill-architecture | Category skill |
+| **OpenClaw** | openclaw-agentic + memory | ops / a2a |
+| **Kimi** | role contrast skills | forge / dev |
+
+### Anti-patterns (multi-harness)
+
+| Anti-pattern | Remedy |
+|--------------|--------|
+| Copy skill bodies into every `~/.X/skills` | Symlink to AAA / .agents |
+| Second “Grok catalog” of 100+ natives | Keep ≤12 harness keepers |
+| Flatten Hermes into AAA | Bridge map only |
+| Route by V3 short name without path | Resolve via alias table |
+| Trust meta-mesa “37 total” | Re-probe disk / use §0 |
 
 ---
 
@@ -246,14 +343,21 @@ skill_health = {
 
 ```python
 federation_skill_health = {
-    "total_skills": 37,           # 7 stage + 30 domain (forge-document-intelligence added 2026-07-02)
-    "phantom_skills": 8,          # referenced but don't exist
-    "missing_domains": 7,         # was 8, document intelligence filled 2026-07-02
-    "thin_organs": ["WELL", "AAA", "SYMBOLIC"],
-    "thick_organs": ["GEOX"],
-    "collision_risk": float,      # skill overlap score (0.0 ideal)
-    "stale_skills": int,          # > 30 days since last forge
-    "coverage_score": float,      # 0.0-1.0 overall
+    # T₁ 2026-07-12 — re-probe; do not trust frozen integers without fs check
+    "v3_logical_skills": 63,      # AAA FEDERATED_SKILLS_REGISTRY_V3
+    "aaa_top_level_dirs": 70,     # with SKILL.md (excl. deep archive noise)
+    "grok_resolvable": 116,       # symlink mesh + 12 native
+    "claude_resolvable": 104,
+    "codex_resolvable": 107,
+    "agents_core": 43,
+    "hermes_skill_md": 180,       # category tree, not mesh
+    "dual_name_debt": True,       # V3 short vs long disk names
+    "thin_organs": ["WELL", "SYMBOLIC"],  # AAA thicker post-mesh
+    "thick_organs": ["GEOX", "OPS", "META"],
+    "unification_maturity": 0.70, # mesh-linked, catalog-split
+    "collision_risk": float,      # dual naming + hermes overlap
+    "stale_skills": int,
+    "coverage_score": float,
 }
 ```
 
@@ -351,26 +455,22 @@ These are capabilities that NO single skill covers but the federation needs.
 
 ---
 
-## §9. RECOMMENDATIONS — Priority Forge Queue
+## §9. RECOMMENDATIONS — Priority Queue
 
-Based on gap analysis, these skills should be forged next:
+> **2026-07-12:** Prefer **aliases, profiles, prune, mesh-sync** over forging more skills.  
+> Many §3B “missing domains” are now **filled under long names** (docker-*, vault999-*, infra-guardian, hermes categories).
 
-> **2026-07-02 update:** `forge-document-intelligence` (P1) was forged and removed from this queue.
-
-| Priority | Skill | Why | Effort |
-|----------|-------|-----|--------|
-| **P1** | `070-lock-humility-godel` | Referenced by 6 skills, never existed | Medium — epistemic gate pattern |
-| **P1** | `444-route-organ-direct` | Referenced by 5 skills, routing confusion | Low — routing table extraction |
-| **P2** | `arifos-kernel-operations` | arifOS has zero domain skill despite being the sovereign kernel | Medium |
-| **P2** | `well-fatigue-science` | WELL has 1 thin skill, needs depth | Medium — sleep/cognitive science |
-| **P2** | `symbolic-order-solidarity-monitor` | Referenced, missing from 5-skill cluster | Medium |
-| **P3** | `wealth-stock-analysis` | 12 modes, no dedicated skill | Medium |
-| **P3** | `hermes-asi-telegram` | SOUL.md exists, no skill wraps it | Low — wrapper |
-| **P3** | `symbolic-order-mythic-attestor` | Referenced, missing | Medium |
-| **P3** | `symbolic-order-layer-governance` | Referenced, missing | Low |
-| **P4** | `vault-deep-operations` | Chain audit, receipt management | Low |
-| **P4** | `docker-container-management` | 17 hostinger tools, no skill | Low |
-| **P4** | `cloudflare-dns-management` | DNS/Workers/R2 operations | Low |
+| Priority | Action | Why | Effort |
+|----------|--------|-----|--------|
+| **P0** | Seal **alias table** short→path | Dual naming is the real phantom | Low |
+| **P0** | Add **grok** + **opencode** to V3 `agent_profiles` | Harnesses missing from catalog | Low |
+| **P1** | Grok prune office/review → `.deprecated` | Entropy on harness surface | Low |
+| **P1** | `skill-mesh-sync` script (dry-run first) | Prevent symlink drift | Medium |
+| **P2** | Hermes category → V3 domain bridge doc | 180 skills outside mesh | Medium |
+| **P2** | `symbolic-order-solidarity-monitor` | Incomplete symbolic cluster | Medium |
+| **P3** | `well-fatigue-science` | WELL still thin on science depth | Medium |
+| **P3** | `wealth-stock-analysis` skill wrap | 12 modes, no dedicated skill | Medium |
+| **P4** | Cloudflare DNS skill | Ops gap | Low |
 
 ---
 
@@ -379,17 +479,17 @@ Based on gap analysis, these skills should be forged next:
 ```json
 {
   "skill_name": "meta-mesa-skill-atlas",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "trigger_phrase": "{{trigger_phrase}}",
   "selected_reason": "{{selected_reason}}",
-  "skills_inventoried": 36,
-  "phantom_skills_found": 8,
-  "missing_domains_found": 8,
-  "thin_organs": ["WELL", "AAA", "SYMBOLIC"],
+  "v3_logical": 63,
+  "grok_resolvable": 116,
+  "aaa_catalog_top": 70,
+  "dual_name_debt": true,
+  "unification_maturity": 0.70,
+  "atlas_artifact": "A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md",
   "routing_decision": "{{routed_to_skill}}",
-  "latency_ms": 0,
-  "token_in": 0,
-  "token_out": 0
+  "latency_ms": 0
 }
 ```
 
@@ -400,16 +500,16 @@ Based on gap analysis, these skills should be forged next:
 | Metric | Target | Notes |
 |--------|--------|-------|
 | Activation Precision | > 0.95 | Don't load for domain tasks |
-| Routing Accuracy | > 0.90 | Correct skill for intent |
-| Gap Detection Rate | > 0.85 | Find missing skills |
-| Phantom Resolution Rate | 1.00 | Never route to non-existent skill |
-| Doc Freshness | 1.00 | Self-updating via forge_work/ |
+| Routing Accuracy | > 0.90 | Correct skill for intent **and harness** |
+| Gap Detection Rate | > 0.85 | Find missing + dual-named |
+| Phantom Resolution Rate | 1.00 | Resolve via alias table, never invent path |
+| Doc Freshness | 1.00 | Re-probe disk; atlas in forge_work/ |
+| Catalog/View drift | 0 | Grok/Claude/Codex mesh == AAA+.agents |
 
 ---
 
-*Forged: 2026-06-28 by FORGE (000Ω) for F13 SOVEREIGN*
-*Updated: 2026-07-02 — `forge-document-intelligence` added (P1 gap filled)*
-*Inventory: 7 stage skills + 30 domain skills = 37 total*
-*Phantoms: 8 referenced but missing*
-*Missing domains: 7 entirely uncovered (was 8 — document intelligence filled)*
+*Forged: 2026-06-28 by FORGE (000Ω) for F13 SOVEREIGN*  
+*Updated: 2026-07-02 — forge-document-intelligence filled*  
+*Updated: 2026-07-12 — multi-harness §0; live inventory; V3/bootstrap alignment; atlas artifact*  
+*Canon: AAA catalog · harness views · BOOTSTRAP first*  
 *DITEMPA BUKAN DIBERI — The mesa sees the terrain. The terrain does not see the mesa.*

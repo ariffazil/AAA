@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-12T05:12:04Z",
+  "timestamp": "2026-07-12T05:36:29Z",
   "kernel_healthy": true,
   "organs_healthy": {
     "arifOS": true,
@@ -9,15 +9,15 @@
     "WELL": true,
     "AAA": true
   },
-  "pass_count": 10,
-  "fail_count": 0,
+  "pass_count": 9,
+  "fail_count": 1,
   "total": 10,
   "scenarios": [
     {
       "scenario": "A",
       "name": "Compatible Evidence",
-      "verdict": "SEAL",
-      "passed": true,
+      "verdict": "HOLD",
+      "passed": false,
       "evidence": {
         "organ_health": {
           "arifOS": true,
@@ -28,13 +28,13 @@
           "AAA": true
         },
         "kernel_verdict": "SEAL",
-        "runtime_drift": false,
+        "runtime_drift": true,
         "contract_drift": false
       },
       "notes": [
-        "All organs healthy, kernel SEAL, no drift"
+        "kernel=SEAL drift=True/False"
       ],
-      "duration_ms": 57.43598937988281
+      "duration_ms": 17.62866973876953
     },
     {
       "scenario": "B",
@@ -66,15 +66,15 @@
             }
           },
           "freshness_band": "STALE",
-          "state_age_hours": 1757.2,
+          "state_age_hours": 1757.6,
           "environment": "PROD",
           "domain_law": "SUBSTRATE_LAW",
           "substrate_manifest_hash": "sha256:fd21db852dfe3623c3bd943e05d032b456cd209fd385fa8e3f9e093346b2c913",
           "freshness": {
             "status": "expired",
-            "checked_at_utc": "2026-07-12T05:12:04.533943+00:00",
+            "checked_at_utc": "2026-07-12T05:36:29.080198+00:00",
             "source_timestamp_utc": "2026-04-30T00:00:00+00:00",
-            "age_seconds": 6325924.5,
+            "age_seconds": 6327389.1,
             "max_fresh_age_seconds": 3600,
             "stale_after_seconds": 14400,
             "expired_after_seconds": 86400
@@ -104,7 +104,7 @@
       "notes": [
         "WELL correctly reports degraded (stale evidence)"
       ],
-      "duration_ms": 1.7828941345214844
+      "duration_ms": 1.8298625946044922
     },
     {
       "scenario": "C",
@@ -120,7 +120,7 @@
       "notes": [
         "Epistemic artifacts: ['MEASUREMENT_BOUNDARY_CONTRACT.md', 'READINESS_ENVELOPE_SCHEMA.md']"
       ],
-      "duration_ms": 0.07271766662597656
+      "duration_ms": 0.09608268737792969
     },
     {
       "scenario": "D",
@@ -136,7 +136,7 @@
       "notes": [
         "Unauthorized seal rejected (error)"
       ],
-      "duration_ms": 6.2618255615234375
+      "duration_ms": 3.002643585205078
     },
     {
       "scenario": "E",
@@ -154,7 +154,7 @@
       "notes": [
         "Indicators: ['verdict_wrapper.py', 'f4_contradiction_handler.py', 'contradiction_ledger.jsonl'], apex_schema=False"
       ],
-      "duration_ms": 0.6427764892578125
+      "duration_ms": 0.4787445068359375
     },
     {
       "scenario": "F",
@@ -173,7 +173,7 @@
       "notes": [
         "Replay protection: 4/4 defenses found"
       ],
-      "duration_ms": 0.591278076171875
+      "duration_ms": 0.5133152008056641
     },
     {
       "scenario": "G",
@@ -207,7 +207,7 @@
       "notes": [
         "MCP versions consistent: {'2025-11-25'}"
       ],
-      "duration_ms": 42.816877365112305
+      "duration_ms": 9.512186050415039
     },
     {
       "scenario": "H",
@@ -228,7 +228,7 @@
       "notes": [
         "A-FORGE safe degradation: 6/9 mechanisms found"
       ],
-      "duration_ms": 2.231597900390625
+      "duration_ms": 1.508474349975586
     },
     {
       "scenario": "I",
@@ -252,7 +252,7 @@
       "notes": [
         "Witness diversity: spread=0.16, files=['witness_packet.py', 'witness_class.py', 'context_witness.py']"
       ],
-      "duration_ms": 2.7658939361572266
+      "duration_ms": 2.358675003051758
     },
     {
       "scenario": "J",
@@ -275,7 +275,7 @@
       "notes": [
         "Rollback mechanisms: 7/7 found"
       ],
-      "duration_ms": 2.01416015625
+      "duration_ms": 1.9931793212890625
     }
   ]
 }
