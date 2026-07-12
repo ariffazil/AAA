@@ -45,10 +45,6 @@ export default function ExplorePage() {
   const [error, setError] = useState<string | null>(null);
 
   // Auto-load earthquakes on mount
-  useEffect(() => {
-    loadEarthquakes();
-  }, []);
-
   const loadEarthquakes = async () => {
     setEqLoading(true);
     try {
@@ -59,7 +55,13 @@ export default function ExplorePage() {
     } finally {
       setEqLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    loadEarthquakes();
+  }, [loadEarthquakes]);
+
+  ;
 
   const exploreLocation = useCallback(async (latitude: number, longitude: number) => {
     setLat(latitude);

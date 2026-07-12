@@ -41,7 +41,8 @@
  *
  *     // ── Enriched event fields ──
  *     "event_type": "a2a.dispatch" | "forge.shell" | "constitutional.verdict"
- *                  | "tool.register" | "session.seal",
+ *                  | "tool.register" | "session.seal"
+ *                  | "seal.issued" | "seal.verified",
  *     "principal":  "agent:opencode-333-FORGE",  // cryptographic identity claim
  *     "tool_schema_hash": "sha256:..." | null,   // hash of tool inputSchema
  *     "policy_hash": "sha256:..." | null,        // hash of active F1-F13 floors
@@ -594,7 +595,11 @@ function classifyEventType(payload) {
   if (action.includes('shell') || action.includes('forge.execute')) return 'forge.shell';
   if (action.includes('judge') || action.includes('verdict')) return 'constitutional.verdict';
   if (action.includes('register') || action.includes('forge.skill')) return 'tool.register';
-  if (action.includes('seal') || action.includes('session')) return 'session.seal';
+  // E1 FORGE: SEAL lifecycle event types (specific before generic)
+  if (action.includes('seal.issued') || action === 'seal_issued') return 'seal.issued';
+  if (action.includes('seal.verified') || action === 'seal_verified') return 'seal.verified';
+  if (action.includes('session')) return 'session.seal';
+  if (action.includes('seal')) return 'session.seal';
   return 'a2a.general';
 }
 

@@ -13,12 +13,6 @@ export default function StatusPage() {
   const [health, setHealth] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadHealth();
-    const interval = setInterval(loadHealth, 30000); // Refresh every 30s
-    return () => clearInterval(interval);
-  }, []);
-
   const loadHealth = async () => {
     try {
       const data = await getFederationHealth();
@@ -29,6 +23,12 @@ export default function StatusPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadHealth();
+    const interval = setInterval(loadHealth, 30000); // Refresh every 30s
+    return () => clearInterval(interval);
+  }, []);
 
   const aliveCount = health?.organs?.filter((o: any) => o.status === "alive").length || 0;
   const totalCount = health?.organs?.length || 0;

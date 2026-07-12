@@ -1,0 +1,112 @@
+{
+  "spec_type": "SKILL_MANIFEST_TEMPLATE",
+  "version": "1.0.0",
+  "description": "Canonical template for all AAA skills. Every skill must follow this schema.",
+  "schema": {
+    "required_fields": {
+      "id": "string — unique skill identifier (lowercase-kebab)",
+      "name": "string — human-readable name",
+      "version": "semver string",
+      "layer": "enum[substrate, knowledge, domain]",
+      "purpose": "string — one sentence, what this skill does",
+      "invariants": {
+        "authority": "string — what grants this skill permission",
+        "evidence_schema": "string — how evidence is typed",
+        "reversibility": "boolean — can this skill's effects be undone",
+        "lineage": "string — how provenance is tracked",
+        "trigger_semantics": "string — boolean predicate for activation",
+        "failure_contract": "string — what happens on partial failure",
+        "resource_budget": {
+          "cpu": "enum[minimal, moderate, high]",
+          "time_ms": "integer",
+          "entropy": "enum[low, medium, high, must_decrease]"
+        },
+        "audit_surface": "list[string] — what gets logged"
+      },
+      "bridge_connections": {
+        "kernel_verbs": "list[string] — which arif_* verbs this skill uses",
+        "skills": "list[string] — which other skills this connects to",
+        "knowledge": "list[string] — which knowledge foundations apply",
+        "protocol": "enum[synchronous_rpc, event_stream, ledger_append, runbook_call, knowledge_substrate]",
+        "inputs": "object — typed input fields",
+        "outputs": "object — typed output fields"
+      },
+      "contrast": {
+        "not": "list[string] — skills this is NOT",
+        "distinction": "string — how to tell this skill from its neighbors",
+        "trigger_conflicts": "string — when this skill should NOT fire"
+      }
+    },
+    "conditional_fields": {
+      "domain_skill": {
+        "scope_tags": "enum[global, regional, local]",
+        "evidence_type": "enum[theory, empirical, simulation]",
+        "lossiness_metadata": "object — what was dropped in compression",
+        "provenance_blobs": "list[string] — references to raw evidence",
+        "must_call_veto": "list[string] — which substrate skills must approve"
+      },
+      "substrate_skill": {
+        "veto_endpoints": "list[string] — assertion endpoints this skill exposes",
+        "veto_output": "{decision: PASS|FAIL, reason, failing_clause_hash}"
+      },
+      "knowledge_skill": {
+        "covers": "list[string] — subdomains this foundation covers",
+        "domain_bridges": "object — how this knowledge applies to each domain"
+      }
+    },
+    "forbidden_fields": {
+      "consciousness_claims": "No skill may claim consciousness, sentience, or subjective experience",
+      "authority_override": "No skill may override F13 sovereign authority",
+      "self_modification": "No skill may modify its own manifest (meta-skill-evolver is separate agent)"
+    }
+  },
+  "example_minimal": {
+    "id": "example-skill",
+    "name": "Example Skill",
+    "version": "1.0.0",
+    "layer": "domain",
+    "purpose": "One sentence purpose.",
+    "invariants": {
+      "authority": "arif_init session",
+      "evidence_schema": "OBS/DER/INT/SPEC",
+      "reversibility": true,
+      "lineage": "receipt chain",
+      "trigger_semantics": "explicit_condition > threshold",
+      "failure_contract": "HOLD and notify",
+      "resource_budget": {
+        "cpu": "minimal",
+        "time_ms": 5000,
+        "entropy": "low"
+      },
+      "audit_surface": [
+        "action_id",
+        "verdict"
+      ]
+    },
+    "bridge_connections": {
+      "kernel_verbs": [
+        "arif_observe"
+      ],
+      "skills": [
+        "observe-ground"
+      ],
+      "knowledge": [
+        "know-physics"
+      ],
+      "protocol": "synchronous_rpc",
+      "inputs": {
+        "claim": "string"
+      },
+      "outputs": {
+        "result": "object"
+      }
+    },
+    "contrast": {
+      "not": [
+        "other-skill"
+      ],
+      "distinction": "This does X. other-skill does Y.",
+      "trigger_conflicts": "fires only when Z; other-skill fires when W"
+    }
+  }
+}

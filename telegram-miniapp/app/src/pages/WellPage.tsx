@@ -6,11 +6,8 @@ export default function WellPage() {
   const [readiness, setReadiness] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadReadiness();
-  }, []);
-
-  const loadReadiness = async () => {
+// eslint-disable-next-line no-use-before-define
+const loadReadiness = async () => {
     setLoading(true);
     try {
       const data = await getReadiness();
@@ -22,7 +19,13 @@ export default function WellPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    loadReadiness();
+  }, [loadReadiness]);
+
+  ;
 
   const colorMap: Record<string, string> = {
     GREEN: "var(--green)",

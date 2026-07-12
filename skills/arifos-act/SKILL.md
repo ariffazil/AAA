@@ -2,8 +2,10 @@
 id: arifos-act
 name: arifOS ACT — Constitutional Reflex
 version: 3.0.0
-description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13)
-  → ACT (post-kernel execution). Load once. Apply always.
+description: >
+  CANONICAL constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution).
+  Supersedes: CONSTITUTIONAL_REFLEX (v2.0.0-legacy, .agents/skills), constitutional-governance (arifOS/skills).
+  Load once. Apply always.
 owner: AAA
 risk_tier: critical
 knowledge_basis:
