@@ -371,6 +371,7 @@ Before acting on any request:
 | Canonical organ map | `/root/AAA/docs/FEDERATION_ORGAN.md` |
 | **Trinity 33 (final repo map — arifOS/AAA/A-FORGE axes)** | `/root/.agents/skills/trinity-33-canonical/SKILL.md` + `/root/AAA/docs/TRINITY_33_REPOS.md` |
 | **Agent INIT v3.0 (TRINITY-33 + RSI embedded)** | `/root/AAA/prompts/AGENT_INIT_v2.0.md` (active, v3.0 content; SHA f196bdab6fb9f211dd574118ac0cd27cc2f65bd0c9eced30b78477dd9f53024d) |
+| **Governed Theory of Mind** | `/root/A-FORGE/docs/GOVERNED_THEORY_OF_MIND.md` |
 | Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |
 
