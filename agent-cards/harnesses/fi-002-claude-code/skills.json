@@ -1,0 +1,103 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "claude-code",
+  "fi": "FI-002",
+  "layer": "harnesses",
+  "ring": "Forge Harness (Claude Code)",
+  "role": "XML-tagged reasoning, structured critique",
+  "skill_count": 18,
+  "skills": [
+    {
+      "id": "FORGE-github",
+      "source": ".agents/skills/FORGE-github",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-ops",
+      "source": ".agents/skills/FORGE-github-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-runbook",
+      "source": ".agents/skills/FORGE-github-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-gate",
+      "source": ".agents/skills/FORGE-precommit-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-review",
+      "source": ".agents/skills/FORGE-precommit-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-review",
+      "source": ".agents/skills/FORGE-pr-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-governance",
+      "source": ".agents/skills/FORGE-pr-governance",
+      "why": ""
+    },
+    {
+      "id": "FORGE-readme-truth-check",
+      "source": ".agents/skills/FORGE-readme-truth-check",
+      "why": ""
+    },
+    {
+      "id": "FORGE-route-least-power",
+      "source": ".agents/skills/FORGE-route-least-power",
+      "why": ""
+    },
+    {
+      "id": "FORGE-context-compress",
+      "source": ".agents/skills/FORGE-context-compress",
+      "why": ""
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": ""
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": ""
+    },
+    {
+      "id": "AGI-claude-xml-structured-reasoning",
+      "source": ".aaa/skills/AGI-claude-xml-structured-reasoning",
+      "why": ""
+    },
+    {
+      "id": "APEX-fff-loop-protocol",
+      "source": ".aaa/skills/APEX-fff-loop-protocol",
+      "why": ""
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "source": ".aaa/skills/APEX-constitutional-audit",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-recursive-audit",
+      "source": ".agents/skills/AUDIT-recursive-audit",
+      "why": ""
+    },
+    {
+      "id": "ASI-multi-discipline-critique",
+      "source": ".agents/skills/ASI-multi-discipline-critique",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

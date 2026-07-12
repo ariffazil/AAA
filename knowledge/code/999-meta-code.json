@@ -1,0 +1,47 @@
+{
+  "id": "999",
+  "name": "Meta-Code",
+  "band": "code",
+  "description": "Compilers, interpreters, language design, and domain-specific languages",
+  "axioms": [
+    "Compilation pipeline: source \u2192 lex \u2192 parse \u2192 AST \u2192 typecheck \u2192 optimize \u2192 codegen \u2192 execute",
+    "Turing completeness: any Turing-complete language can compute anything computable",
+    "Type systems prevent errors: static types catch bugs at compile time, not runtime",
+    "Syntax is surface; semantics is substance \u2014 two languages can look different but compute the same",
+    "Metaprogramming: code that writes code \u2014 powerful but dangerous (complexity explosion)",
+    "DSL design: constrain the language to the domain, not the domain to the language"
+  ],
+  "reasoning_patterns": [
+    "Grammar design: BNF/PEG to define language syntax, handle ambiguity",
+    "Type inference: algorithm W, unification, Hindley-Milner",
+    "Optimization passes: constant folding, dead code elimination, loop optimization",
+    "Code generation: target platform constraints, register allocation, instruction selection",
+    "DSL design: identify domain concepts, map to language constructs, provide escape hatches"
+  ],
+  "boundary_conditions": [
+    "Does not cover specific language implementations (CPython, V8) in depth",
+    "Does not cover formal verification of compilers (CompCert)",
+    "Quantum programming languages are frontier research",
+    "Natural language processing is a separate field"
+  ],
+  "dependencies": [
+    "444",
+    "666",
+    "777",
+    "888"
+  ],
+  "key_references": [
+    "Aho, Lam, Sethi & Ullman. Compilers: Principles, Techniques, and Tools (Dragon Book)",
+    "Abelson & Sussman. Structure and Interpretation of Computer Programs (SICP)",
+    "Pierce, B. Types and Programming Languages",
+    "Fowler, M. Domain-Specific Languages",
+    "Nystrom, R. Crafting Interpreters"
+  ],
+  "canonical_truths": [
+    "Regular expressions can parse regular languages, not all context-free grammars",
+    "Halting problem: no algorithm can decide if arbitrary program halts (Turing, 1936)",
+    "Garbage collection trades latency for convenience (no free lunch)",
+    "JIT compilation: compile hot paths at runtime for performance",
+    "The best DSLs look like the problem domain, not like code"
+  ]
+}

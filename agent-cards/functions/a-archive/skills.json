@@ -1,0 +1,78 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "a-archive",
+  "fi": "F2-AR",
+  "layer": "functions",
+  "ring": "Vault Service",
+  "role": "Immutable ledger + seal chain (VAULT999 substrate)",
+  "skill_count": 13,
+  "skills": [
+    {
+      "id": "ARCHIVE-vault-integrity",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Hash-chained ledger lens"
+    },
+    {
+      "id": "ARCHIVE-vault-seal",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "End-of-session seal"
+    },
+    {
+      "id": "ARCHIVE-vault999-reader",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Read vault entries"
+    },
+    {
+      "id": "ARCHIVE-vault999-integrity",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Operational lens"
+    },
+    {
+      "id": "ASI-unified-memory",
+      "source": ".agents/skills/ASI-unified-memory",
+      "why": "6-tier memory router"
+    },
+    {
+      "id": "ASI-knowledge-writeback",
+      "source": ".agents/skills/ASI-knowledge-writeback",
+      "why": "Persist verified edges"
+    },
+    {
+      "id": "ASI-knowledge-graph-query",
+      "source": ".agents/skills/ASI-knowledge-graph-query",
+      "why": "Taxonomy read"
+    },
+    {
+      "id": "ASI-memory-bridge",
+      "source": ".agents/skills/ASI-memory-bridge",
+      "why": "Session → L4/L5/L6"
+    },
+    {
+      "id": "ASI-cooling-ledger-rsi",
+      "source": ".agents/skills/ASI-cooling-ledger-rsi",
+      "why": "Append-only cooling ledger"
+    },
+    {
+      "id": "CLAIM-receipt-v1",
+      "source": ".agents/skills/CLAIM-receipt-v1",
+      "why": "Sealing receipts"
+    },
+    {
+      "id": "CLAIM-verification-gate",
+      "source": ".agents/skills/CLAIM-verification-gate",
+      "why": "Pre-emission evidence"
+    },
+    {
+      "id": "ASI-evals",
+      "source": ".agents/skills/ASI-evals",
+      "why": "Audit eval benchmark"
+    },
+    {
+      "id": "ASI-zen-organ-memory",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Sealed fossil memory"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

@@ -6,7 +6,7 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
   "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
   "version": "2.0.0",
@@ -15,13 +15,14 @@
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
   },
-  "protocolVersion": "1.0.0",
+  "protocolVersion": "1.2",
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/A-ARCHIVE",
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
     "stateTransitionHistory": true,
-    "spawnAgents": true
+    "spawnAgents": true,
+    "extendedAgentCard": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -124,7 +125,7 @@
     {
       "id": "tiered-memory",
       "name": "Tiered Memory",
-      "description": "L1–L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4→L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1→L6 pipeline log. F11 enforced. ACTIVE.",
+      "description": "L1\u2013L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4\u2192L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1\u2192L6 pipeline log. F11 enforced. ACTIVE.",
       "tags": [
         "memory",
         "L1-L6",
@@ -146,7 +147,7 @@
     {
       "id": "dream-engine",
       "name": "Dream Engine",
-      "description": "4-stage offline memory consolidation pipeline. Replay → Cluster → Synthesize → Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
+      "description": "4-stage offline memory consolidation pipeline. Replay \u2192 Cluster \u2192 Synthesize \u2192 Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
       "tags": [
         "consolidation",
         "memory",
@@ -192,7 +193,7 @@
     {
       "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence applied to archive integrity. Blue → Red → Blue → Yellow → Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
+      "description": "5-pass recursive audit sequence applied to archive integrity. Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
       "tags": [
         "audit",
         "recursive",
@@ -212,7 +213,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before any SEAL-grade archive claim. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -264,7 +265,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -280,7 +281,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -325,7 +326,7 @@
     {
       "id": "KERNEL-quantum-runtime",
       "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
+      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
       "tags": [
         "kernel",
         "quantum",
@@ -498,7 +499,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -510,15 +511,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -559,5 +560,26 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "fnrAvq2XI6CZ9rJjLmevg8j4Q8OltGHZoGo3tjg0dZvCy+pEZ5t3UBlVoWtibk3E2NUIWyumIkDTk1etor+6Bw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

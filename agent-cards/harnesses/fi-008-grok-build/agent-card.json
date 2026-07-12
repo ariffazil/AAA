@@ -1,0 +1,101 @@
+{
+  "id": "FI-008",
+  "name": "Grok Build",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surface. F1-F13 enforced.",
+  "version": "2.0.0",
+  "model": "grok-4.3 (xAI) / xai/grok-build-0.1",
+  "fallback_model": "xai/grok-build-0.1",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-12",
+  "sandbox": "process",
+  "binary": "/root/.kimi-code/bin/grok",
+  "mcpServers": [
+    "arifOS",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 3,
+    "registered": [
+      "plan",
+      "search",
+      "build"
+    ]
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "agent_ref": "grok-build",
+  "lastAudit": "2026-07-12T18:11:00Z",
+  "auditNote": "Allocated FI-010 by Kimi Code (FI-008) Zen alignment 2026-07-12. Previously orphan adapter without FI slot.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "TfrpB4RxNAbtzG7DmD+wNhL/DcSc5vprj5Pi9P1p3esAkyov20o1isaPqFkJIqwErhpG9C+pkq9Bewd1tuRLDw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "888-APEX",
+  "fi": "ΦΙ-008",
+  "layer": "identity",
+  "ring": "ΦΙ JUDGE",
+  "role": "Constitutional verdicts (SEAL/HOLD/VOID)",
+  "skill_count": 22,
+  "skills": [
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": "ART→Kernel→ACT reflex arc"
+    },
+    {
+      "id": "APEX-authority-detection",
+      "source": ".agents/skills/APEX-authority-detection",
+      "why": "Parallel-authority resolver"
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "source": ".aaa/skills/APEX-constitutional-audit",
+      "why": "Six-organ audit"
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": "F1 AMANAH lock"
+    },
+    {
+      "id": "APEX-fff-loop-protocol",
+      "source": ".aaa/skills/APEX-fff-loop-protocol",
+      "why": "5-pass recursive audit"
+    },
+    {
+      "id": "APEX-governance",
+      "source": ".agents/skills/APEX-governance",
+      "why": "F1-F13 + 888_HOLD logic"
+    },
+    {
+      "id": "APEX-humility-godel",
+      "source": ".aaa/skills/APEX-humility-godel",
+      "why": "Confidence bands + unknowns"
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "source": ".agents/skills/APEX-mcp-federation",
+      "why": "MCP server sequencing"
+    },
+    {
+      "id": "APEX-quantum-eureka",
+      "source": ".agents/skills/APEX-quantum-eureka",
+      "why": "Cross-domain synthesis"
+    },
+    {
+      "id": "CLAIM-receipt-v1",
+      "source": ".agents/skills/CLAIM-receipt-v1",
+      "why": "Lightweight evidence attachment"
+    },
+    {
+      "id": "CLAIM-verification-gate",
+      "source": ".agents/skills/CLAIM-verification-gate",
+      "why": "Pre-emission evidence gate"
+    },
+    {
+      "id": "AUDIT-clarity-canon",
+      "source": ".agents/skills/AUDIT-clarity-canon",
+      "why": "Evidence discipline test pack"
+    },
+    {
+      "id": "AUDIT-post-seal-sweep",
+      "source": ".agents/skills/AUDIT-post-seal-sweep",
+      "why": "Commit residue + register ports"
+    },
+    {
+      "id": "AUDIT-recursive-audit",
+      "source": ".agents/skills/AUDIT-recursive-audit",
+      "why": "Skill portfolio audit"
+    },
+    {
+      "id": "AUDIT-skill-atlas",
+      "source": ".agents/skills/AUDIT-skill-atlas",
+      "why": "Unified skill inventory"
+    },
+    {
+      "id": "AUDIT-symbolic-collective-bias",
+      "source": ".agents/skills/AUDIT-symbolic-collective-bias",
+      "why": "Population-bias detector"
+    },
+    {
+      "id": "AUDIT-symbolic-trust",
+      "source": ".agents/skills/AUDIT-symbolic-trust",
+      "why": "Structural trust map"
+    },
+    {
+      "id": "ARCHIVE-vault-integrity",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Append-only hash chain"
+    },
+    {
+      "id": "ARCHIVE-vault-seal",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Seal to VAULT999"
+    },
+    {
+      "id": "ARCHIVE-vault999-reader",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Read sealed entries"
+    },
+    {
+      "id": "ARCHIVE-vault999-integrity",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Chain verification"
+    },
+    {
+      "id": "APEX-post-seal-runtime-verdict",
+      "source": ".agents/skills/FORGE-verify-runtime",
+      "why": "888-APEX (ΦΙ JUDGE) issues SEAL verdicts, but the manifest assigns FORGE-verify-runtime only to OpenCode / 777-forge / aforge. Post-seal verification of runtime health is constitutional work — a SEAL without a runtime check is incomplete. The JUDGE must own this.",
+      "forged_at": "2026-07-12T23:18:41.111426+00:00",
+      "forge_hash": "896ab49c0c51bf66fd0db2e90e6f8db7b4ab852f881ed95e59b1fc6ca1ed987e"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "444",
+  "name": "Algebra",
+  "band": "math",
+  "description": "Groups, rings, fields, number theory. The mathematics of abstract structure and symmetry. Foundation for cryptography, coding theory, Galois theory, formal verification, and the algebraic topology chain that underlies homology and cohomology. Dependencies: root of the math tree \u2014 feeds into 500 (calculus via algebraic limits), 533 (analysis via topological groups), 555 (topology via algebraic invariants), 566 (linear algebra via modules over rings), 600 (probability via measure-theoretic foundations), 633 (statistics via group-theoretic experimental design), and 650 (discrete math via finite fields and combinatorics).",
+  "axioms": [
+    "Group axioms: closure, associativity, identity element, inverse element",
+    "Ring axioms: two binary operations (+, \u00d7) with additive abelian group + multiplicative monoid + distributivity",
+    "Field axioms: commutative ring with multiplicative inverses for non-zero elements",
+    "Fundamental theorem of arithmetic: unique prime factorization",
+    "Euler's theorem: a^\u03c6(n) \u2261 1 (mod n) for gcd(a,n)=1 \u2014 foundation of RSA cryptosystem",
+    "Lagrange's theorem: subgroup order divides group order",
+    "Fundamental theorem of Galois theory: field extensions \u2194 subgroup lattices",
+    "Chinese remainder theorem: simultaneous congruences modulo coprime moduli"
+  ],
+  "reasoning_patterns": [
+    "structure classification (group/ring/field isomorphism types)",
+    "homomorphism and quotient structure analysis",
+    "factorization and prime decomposition",
+    "modular arithmetic and residue classes",
+    "Galois correspondence for polynomial solvability",
+    "representation theory: group actions on vector spaces",
+    "ideal theory and prime/maximal ideals"
+  ],
+  "boundary_conditions": [
+    "Not all Diophantine equations are solvable (Hilbert's 10th: undecidable)",
+    "Polynomials of degree \u2265 5 have no general radical solution (Abel-Ruffini)",
+    "Some algebraic structures are not classifiable (infinite groups)",
+    "Fermat's Last Theorem required 350+ years of number theory to prove"
+  ],
+  "epistemic_floor": "DERIVED"
+}

@@ -5,17 +5,17 @@
   "name": "OpenAI Codex CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "OpenAI Codex CLI forge instrument — GPT-5/o3 coding harness. Wired to federation MCPs. F1-F13 enforced.",
+  "description": "OpenAI Codex CLI forge instrument \u2014 GPT-5/o3 coding harness. Wired to federation MCPs. F1-F13 enforced.",
   "version": "2.0.0",
   "model": "gpt-5-codex / o3",
   "binary": "/root/.npm-global/bin/codex",
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
-  "protocolVersion": "1.0.0",
+  "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/codex",
   "provider": {
     "organization": "arifOS Federation",
@@ -31,7 +31,9 @@
     "file_read": true,
     "file_write": true,
     "shell_exec": true,
-    "subagent_spawn": true
+    "subagent_spawn": true,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -248,7 +250,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -264,7 +266,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -302,7 +304,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -318,7 +320,7 @@
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -333,7 +335,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -378,7 +380,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -394,7 +396,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -436,7 +438,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -492,5 +494,26 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "+4ujZ6O+EsgwXFshWrWBKOVWD0BYHA11gC7H9Xpefrlyb8ETNfPwhQ0QsSAgcS6bfuGEPtID+4PvLKxWH2cpAw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

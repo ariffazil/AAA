@@ -1,0 +1,87 @@
+{
+  "id": "FI-006",
+  "name": "Aider",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Aider AI pair programming tool. NOT INSTALLED on this machine.",
+  "version": null,
+  "model": null,
+  "izin": "N/A",
+  "izin_date": null,
+  "sandbox": null,
+  "binary": "NOT FOUND",
+  "config": null,
+  "services": [],
+  "mcpServers": [],
+  "subAgentPolicy": null,
+  "authority": "none",
+  "riskTier": "none",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "auditNote": "Not present on the machine. No installation found via which/pip/npm.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "8r0ttTSfe2nf9dMgaPbLNnqh0dt1NdfEHb7CjG9kJ3nYW86A37EU6qu+eVnQ0zd5hcJaEX2/4NF+unp/M20QBw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

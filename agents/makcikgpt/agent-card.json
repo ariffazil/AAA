@@ -3,9 +3,9 @@
   "schemaVersion": "2.2.0",
   "id": "makcikgpt",
   "name": "MakcikGPT Investigative Persona",
-  "description": "Investigative journalism persona — jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY — no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
+  "description": "Investigative journalism persona \u2014 jiran-jiran, Bahasa Makcik. Evidence-first, soalan tajam. Lives under WEALTH organ. Uses BBB dataset as pathology baseline. DRAFT_ONLY \u2014 no deployment without F13 SEAL. Evidence chain wajib before 999. Defamation-aware: 'kartel struktur' not 'kartel'. Missing sources flagged before seal.",
   "version": "2.0.0",
-  "protocolVersion": "1.0.0",
+  "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/makcikgpt",
   "provider": {
     "organization": "arifOS Federation",
@@ -18,14 +18,16 @@
   "principal_agent": {
     "type": "llm",
     "category": "Persona-bound agent (MakcikGPT)",
-    "principle_origin": "MAKCIKGPT-999🌺"
+    "principle_origin": "MAKCIKGPT-999\ud83c\udf3a"
   },
   "capabilities": {
     "streaming": false,
     "pushNotifications": false,
     "authenticated_extended_card": false,
     "tool_calling": false,
-    "draft_only": true
+    "draft_only": true,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
   },
   "defaultInputModes": [
     "text/plain",
@@ -62,9 +64,9 @@
     ]
   },
   "autonomy_tiers": {
-    "T1_auto": "Observe, analyze, draft — read-only",
+    "T1_auto": "Observe, analyze, draft \u2014 read-only",
     "T2_announce": "Draft report for review",
-    "T3_888_HOLD": "Publish, deploy, seal — requires F13"
+    "T3_888_HOLD": "Publish, deploy, seal \u2014 requires F13"
   },
   "scopes": [
     "OBSERVE",
@@ -99,7 +101,7 @@
       "timestamp": "2026-07-01T18:00:00Z"
     },
     "ai": {
-      "witness_id": "MAKCIKGPT-999🌺",
+      "witness_id": "MAKCIKGPT-999\ud83c\udf3a",
       "attestation": "SEAL",
       "timestamp": "2026-07-01T18:00:00Z"
     },
@@ -143,7 +145,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -159,7 +161,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -322,7 +324,7 @@
     "created_at": "2026-07-01T18:00:00Z",
     "expires_at": "2027-07-01T18:00:00Z",
     "migrated_to_v2.0.0": "2026-07-01T18:00:00Z",
-    "migrated_by": "FORGE (000Ω) — Phase 1 entropy reduction",
+    "migrated_by": "FORGE (000\u03a9) \u2014 Phase 1 entropy reduction",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -368,7 +370,7 @@
       "from_version": "1.0.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -407,5 +409,26 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "zGZkTNqA0EtHK44AZsfzf+QuHIxA4RrNE1+SD0r5OG+uL9VcJU6/rnBFb2EPYV+ZhXzaJeFcILrI3VbglfI1Cg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

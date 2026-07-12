@@ -1,0 +1,48 @@
+{
+  "id": "933",
+  "name": "DevOps",
+  "band": "code",
+  "description": "CI/CD, containers, infrastructure-as-code, and monitoring",
+  "axioms": [
+    "Infrastructure as code: version control your infrastructure like application code",
+    "Continuous integration: merge to main frequently, test automatically",
+    "Continuous delivery: every commit is a release candidate",
+    "Observability: logs, metrics, traces \u2014 you can't fix what you can't see",
+    "Immutable infrastructure: replace, don't patch (cattle, not pets)",
+    "Automation: if you do it twice, script it; if you script it, version control it"
+  ],
+  "reasoning_patterns": [
+    "Deployment strategy: blue-green, canary, rolling \u2014 choose by risk tolerance",
+    "Incident response: detect \u2192 triage \u2192 mitigate \u2192 resolve \u2192 postmortem",
+    "Capacity planning: predict resource needs from growth trends",
+    "Chaos engineering: inject failures to test system resilience",
+    "GitOps: desired state in git, controller reconciles actual state"
+  ],
+  "boundary_conditions": [
+    "Does not cover specific cloud providers (AWS, GCP, Azure) in depth",
+    "Does not cover networking (load balancers, DNS) in detail",
+    "Cost optimization requires FinOps expertise",
+    "Compliance (SOC2, ISO27001) requires specialized knowledge"
+  ],
+  "dependencies": [
+    "777",
+    "833",
+    "850",
+    "920",
+    "950"
+  ],
+  "key_references": [
+    "Humble & Farley. Continuous Delivery",
+    "Beyer, B. et al. Site Reliability Engineering (Google SRE book)",
+    "Kelsey Hightower. Kubernetes Up & Running",
+    "HashiCorp documentation (Terraform, Vault, Consul)",
+    "Prometheus/Grafana documentation (monitoring)"
+  ],
+  "canonical_truths": [
+    "If it's not in version control, it doesn't exist",
+    "Monitoring without alerting is just logging; alerting without action is just noise",
+    "Containers share the host kernel \u2014 they are NOT VMs",
+    "Terraform state is the source of truth for infrastructure (protect it)",
+    "The best postmortems are blameless and focus on systems, not people"
+  ]
+}

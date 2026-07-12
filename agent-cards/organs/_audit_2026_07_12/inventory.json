@@ -1,0 +1,82 @@
+{
+  "audit_id": "alignment-audit-2026-07-12",
+  "audit_scope": "all federation organs",
+  "audited_at": "2026-07-12T23:23:00+00:00",
+  "auditor": "Kimi Code CLI",
+  "spec": {
+    "mcp": "2025-03-26",
+    "a2a": "1.0 (CIV-33 path)"
+  },
+  "organs": {
+    "arifOS": {
+      "port": 8088,
+      "agent_card": "agent-cards/organs/arifos/agent-card.json",
+      "tools": 8,
+      "resources": 259,
+      "prompts": 13,
+      "mcp_endpoint": "http://127.0.0.1:8088/mcp",
+      "well_known_endpoint": "http://127.0.0.1:8088/.well-known/agent-card.json",
+      "health_endpoint": "http://127.0.0.1:8088/health",
+      "has_well_known": true
+    },
+    "A-FORGE": {
+      "port": 7071,
+      "agent_card": "agent-cards/organs/aforge/agent-card.json",
+      "tools": 102,
+      "resources": 11,
+      "prompts": 14,
+      "mcp_endpoint": "http://127.0.0.1:7071/mcp",
+      "well_known_endpoint": "http://127.0.0.1:7071/.well-known/agent-card.json",
+      "health_endpoint": "http://127.0.0.1:7071/health",
+      "has_well_known": false
+    },
+    "GEOX": {
+      "port": 8081,
+      "agent_card": "agent-cards/organs/geox/agent-card.json",
+      "tools": 31,
+      "resources": 31,
+      "prompts": 14,
+      "mcp_endpoint": "http://127.0.0.1:8081/mcp",
+      "well_known_endpoint": "http://127.0.0.1:8081/.well-known/agent-card.json",
+      "health_endpoint": "http://127.0.0.1:8081/health",
+      "has_well_known": true
+    },
+    "WEALTH": {
+      "port": 18082,
+      "agent_card": "agent-cards/organs/wealth/agent-card.json",
+      "tools": 12,
+      "resources": 15,
+      "prompts": 7,
+      "mcp_endpoint": "http://127.0.0.1:18082/mcp",
+      "well_known_endpoint": "http://127.0.0.1:18082/.well-known/agent-card.json",
+      "health_endpoint": "http://127.0.0.1:18082/health",
+      "has_well_known": true
+    },
+    "WELL": {
+      "port": 18083,
+      "agent_card": "agent-cards/organs/well/agent-card.json",
+      "tools": 29,
+      "resources": 30,
+      "prompts": 15,
+      "mcp_endpoint": "http://127.0.0.1:18083/mcp",
+      "well_known_endpoint": "http://127.0.0.1:18083/.well-known/agent-card.json",
+      "health_endpoint": "http://127.0.0.1:18083/health",
+      "has_well_known": true
+    },
+    "AAA": {
+      "port": 3001,
+      "agent_card": "agent-cards/organs/aaa/agent-card.json",
+      "tools": 0,
+      "resources": 0,
+      "prompts": 0,
+      "mcp_endpoint": "http://127.0.0.1:3001/mcp",
+      "well_known_endpoint": "http://127.0.0.1:3001/.well-known/agent-card.json",
+      "health_endpoint": "http://127.0.0.1:3001/health",
+      "has_well_known": true,
+      "registry_agent_count": -1
+    }
+  },
+  "total_tools": 182,
+  "total_resources": 346,
+  "total_prompts": 63
+}

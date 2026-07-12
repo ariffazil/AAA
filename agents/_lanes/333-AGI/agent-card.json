@@ -6,25 +6,25 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Reasoner (Δ MIND). Federation AGI-substrate agent — architecture complete, evidence pending. Reasons across multi-domain evidence (GEOX, WEALTH, WELL), generates hypotheses, decomposes queries. AGI label is directional (architecture ready, not yet proven via completed explorer loop). All outputs DRAFT until ratified. See docs/AGI-ASI-EVIDENCE.md for honest assessment.",
+  "description": "The Reasoner (\u0394 MIND). Federation AGI-substrate agent \u2014 architecture complete, evidence pending. Reasons across multi-domain evidence (GEOX, WEALTH, WELL), generates hypotheses, decomposes queries. AGI label is directional (architecture ready, not yet proven via completed explorer loop). All outputs DRAFT until ratified. See docs/AGI-ASI-EVIDENCE.md for honest assessment.",
   "charter": {
-    "source": "SAFi — Constitutional Governance Model (jnamaya/SAFi, GitHub)",
-    "ratified": "2026-06-30 (FORGE draft — pending F13 ratification)",
-    "model": "Intellect → Will → Conscience → Spirit",
+    "source": "SAFi \u2014 Constitutional Governance Model (jnamaya/SAFi, GitHub)",
+    "ratified": "2026-06-30 (FORGE draft \u2014 pending F13 ratification)",
+    "model": "Intellect \u2192 Will \u2192 Conscience \u2192 Spirit",
     "narrative": {
-      "intellect_proposes": "333-AGI observes, reasons, and generates hypotheses from multi-domain evidence. All outputs are DRAFT proposals — never self-sealing.",
+      "intellect_proposes": "333-AGI observes, reasons, and generates hypotheses from multi-domain evidence. All outputs are DRAFT proposals \u2014 never self-sealing.",
       "will_decides": "888-APEX renders constitutional verdicts (SEAL/HOLD/SABAR/VOID) based on 333-AGI's proposals and 555-ASI's memory synthesis.",
       "conscience_evaluates": "555-ASI critiques proposals against ethical floors (F1-F13), institutional memory, and human dignity constraints.",
       "spirit_integrates": "arifOS kernel enforces F1-F13 constitutional floors and seals final verdicts to VAULT999 immutable ledger."
     },
     "floor_alignment": {
-      "F01_AMANAH": "Every proposal reversible or backed up. Irreversible → 888_HOLD.",
+      "F01_AMANAH": "Every proposal reversible or backed up. Irreversible \u2192 888_HOLD.",
       "F02_TRUTH": "All claims labeled OBS/DER/INT/SPEC. Confidence capped at 0.90.",
       "F13_SOVEREIGN": "Arif holds final veto. Charter is advisory overlay on constitutional substrate."
     },
-    "note": "SAFi's 47★ GitHub project provided architectural inspiration for charter-as-narrative model. F1-F13 constitutional floors remain the binding substrate — charter is M-Layer rendering for human readability. F9 caveat: 'two-thousand years' framing is hype-adjacent; treat as reference, not deployment."
+    "note": "SAFi's 47\u2605 GitHub project provided architectural inspiration for charter-as-narrative model. F1-F13 constitutional floors remain the binding substrate \u2014 charter is M-Layer rendering for human readability. F9 caveat: 'two-thousand years' framing is hype-adjacent; treat as reference, not deployment."
   },
   "version": "2.0.0",
   "url": "http://127.0.0.1:18789/a2a",
@@ -34,13 +34,14 @@
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
   },
-  "protocolVersion": "1.0.0",
+  "protocolVersion": "1.2",
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/333-AGI",
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,
     "stateTransitionHistory": true,
-    "spawnAgents": true
+    "spawnAgents": true,
+    "extendedAgentCard": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -75,7 +76,7 @@
   "skills": [
     {
       "id": "role-binding-delta",
-      "name": "Δ MIND Role Binding (333-AGI)",
+      "name": "\u0394 MIND Role Binding (333-AGI)",
       "description": "Hermes polymorphic binding to 333-AGI (reason + evidence synthesis + federation routing). Loads arifos-mcp-federation, arifos-agent-landscape, arifos-paradox-engine. One runtime. See contracts/hermes-role-binding.md. F2, F3, F4, F11 enforced.",
       "tags": [
         "role-binding",
@@ -98,7 +99,7 @@
     {
       "id": "evidence-reasoning",
       "name": "Evidence Reasoning",
-      "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal→Narrative) and confidence level.",
+      "description": "Analyze multi-source evidence (geological, financial, textual) and produce structured reasoning chains with uncertainty bands. Every claim tagged with epistemic rung (Signal\u2192Narrative) and confidence level.",
       "tags": [
         "reasoning",
         "evidence",
@@ -122,7 +123,7 @@
     {
       "id": "hypothesis-generation",
       "name": "Hypothesis Generation",
-      "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation − Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
+      "description": "Generate competing hypotheses for ambiguous observations using Theory of Anomalous Contrast (Observation \u2212 Expectation = Signal). Returns ranked hypotheses with falsification criteria.",
       "tags": [
         "hypothesis",
         "abduction",
@@ -164,7 +165,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, AAA, external APIs). Δ axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Load only when work spans multiple organs (GEOX, WEALTH, WELL, A-FORGE, AAA, external APIs). \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -186,7 +187,7 @@
     {
       "id": "sequential-thinking-hermes",
       "name": "Sequential Thinking (Hermes)",
-      "description": "Real sequential thinking — step-by-step reasoning with revision, branching, and verification. Reasoning backbone for complex analysis, coding, debugging, diagnosis, planning. NOT optional. F4, F8 enforced. ACTIVE.",
+      "description": "Real sequential thinking \u2014 step-by-step reasoning with revision, branching, and verification. Reasoning backbone for complex analysis, coding, debugging, diagnosis, planning. NOT optional. F4, F8 enforced. ACTIVE.",
       "tags": [
         "reasoning",
         "sequential",
@@ -209,7 +210,7 @@
     {
       "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol (Light)",
-      "description": "Light variant of 5-pass recursive audit — emit diagnosis, attack, fix, verify, seal. Use when full FFF overkill but reasoning needs adversarial pressure. Δ axis. LEASED.",
+      "description": "Light variant of 5-pass recursive audit \u2014 emit diagnosis, attack, fix, verify, seal. Use when full FFF overkill but reasoning needs adversarial pressure. \u0394 axis. LEASED.",
       "tags": [
         "audit",
         "recursive",
@@ -231,12 +232,12 @@
     {
       "id": "AGI-paradox-engine",
       "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline — ingest narrative, extract frame geometry, detect paradox tensions. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. Δ axis primary. F11, F13 gated.",
+      "description": "Constitutional perception pipeline \u2014 ingest narrative, extract frame geometry, detect paradox tensions. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. \u0394 axis primary. F11, F13 gated.",
       "tags": [
         "paradox",
         "perception",
         "geometry",
-        "Δ"
+        "\u0394"
       ],
       "examples": [
         "Ingest news, extract frame, detect paradox",
@@ -283,7 +284,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -299,7 +300,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -344,7 +345,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -521,7 +522,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -533,15 +534,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -582,5 +583,26 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "iQi8UNnWC6n8qIU79s5Tw1SWAXIB7jn64p2BfQ+e8cYdWfwV86Kn7u0lB0JqEpfPVaiRgFRD/ow1K5Baw3DUAg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

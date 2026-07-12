@@ -1,0 +1,37 @@
+{
+  "id": "555",
+  "name": "Topology & Geometry",
+  "band": "math",
+  "description": "General topology, algebraic topology (homology, homotopy), differential geometry, Riemannian geometry. The mathematics of shape, space, continuity without coordinates, and intrinsic curvature. Homology groups and homotopy groups are powerful algebraic invariants for classifying spaces. Differential geometry is the language of general relativity. Depends on 444 (algebra via groups/homology) and 500 (calculus via smooth manifolds) and 533 (analysis via analytic structures). Feeds into 566 (linear algebra via tensors and fiber bundles).",
+  "axioms": [
+    "Topological space axioms: open sets are closed under arbitrary unions and finite intersections",
+    "Hausdorff separation axiom: distinct points have disjoint neighborhoods",
+    "Brouwer fixed-point theorem: every continuous map f: D\u207f \u2192 D\u207f has a fixed point",
+    "Fundamental group \u03c0\u2081: homotopy classes of loops based at a point form a group",
+    "Euler characteristic \u03c7 = V - E + F is a homotopy invariant",
+    "Gauss-Bonnet theorem: \u222b_M K dA = 2\u03c0\u03c7(M) \u2014 total curvature = topology",
+    "Stokes' theorem: \u222b_\u2202\u03a9 \u03c9 = \u222b_\u03a9 d\u03c9 \u2014 the fundamental theorem of differential forms"
+  ],
+  "reasoning_patterns": [
+    "invariant computation (Euler characteristic, Betti numbers, fundamental group)",
+    "connectedness and path-connectedness analysis",
+    "compactness analysis (Heine-Borel, generalizations)",
+    "manifold detection and dimension estimation in data",
+    "cohomology: dual of homology, richer algebraic structure",
+    "curvature computation (sectional, Ricci, scalar)",
+    "fiber bundle classification (vector bundles, principal bundles)"
+  ],
+  "boundary_conditions": [
+    "Topological equivalence (homeomorphism) \u2260 geometric equivalence (isometry)",
+    "High-dimensional topology (\u2265 dimension 4) is fundamentally different \u2014 exotic R\u2074 exists",
+    "Classification of 3- and 4-manifolds is incomplete or very difficult",
+    "Topological data analysis is sensitive to metric choice in practice",
+    "The Poincar\u00e9 conjecture (proved by Perelman) was open for a century"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "500-calculus",
+    "533-analysis"
+  ],
+  "epistemic_floor": "DERIVED"
+}

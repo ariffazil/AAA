@@ -1,0 +1,83 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "a-audit",
+  "fi": "F2-AU",
+  "layer": "functions",
+  "ring": "Oversight Observer",
+  "role": "Anomaly detection + compliance + drift watch",
+  "skill_count": 14,
+  "skills": [
+    {
+      "id": "AUDIT-clarity-canon",
+      "source": ".agents/skills/AUDIT-clarity-canon",
+      "why": "Chaos-detection test pack"
+    },
+    {
+      "id": "AUDIT-post-seal-sweep",
+      "source": ".agents/skills/AUDIT-post-seal-sweep",
+      "why": "Commit residue + port registry"
+    },
+    {
+      "id": "AUDIT-recursive-audit",
+      "source": ".agents/skills/AUDIT-recursive-audit",
+      "why": "Skill portfolio audit"
+    },
+    {
+      "id": "AUDIT-skill-atlas",
+      "source": ".agents/skills/AUDIT-skill-atlas",
+      "why": "Unified inventory"
+    },
+    {
+      "id": "AUDIT-symbolic-collective-bias",
+      "source": ".agents/skills/AUDIT-symbolic-collective-bias",
+      "why": "Population bias detector"
+    },
+    {
+      "id": "AUDIT-symbolic-trust",
+      "source": ".agents/skills/AUDIT-symbolic-trust",
+      "why": "Structural trust map"
+    },
+    {
+      "id": "AUDIT-drift-detector",
+      "source": ".aaa/skills/AUDIT-drift-detector",
+      "why": "Real-time drift"
+    },
+    {
+      "id": "ASI-drift-watch",
+      "source": ".agents/skills/ASI-drift-watch",
+      "why": "Source vs runtime drift"
+    },
+    {
+      "id": "ASI-drift-response",
+      "source": ".agents/skills/ASI-drift-response",
+      "why": "5-step legacy response"
+    },
+    {
+      "id": "ASI-observability",
+      "source": ".agents/skills/ASI-observability",
+      "why": "Telemetry for oversight"
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "source": ".aaa/skills/APEX-constitutional-audit",
+      "why": "Six-organ audit"
+    },
+    {
+      "id": "APEX-authority-detection",
+      "source": ".agents/skills/APEX-authority-detection",
+      "why": "Parallel-authority resolver"
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": "F1 mutation gate"
+    },
+    {
+      "id": "APEX-humility-godel",
+      "source": ".aaa/skills/APEX-humility-godel",
+      "why": "Confidence bands"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

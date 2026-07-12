@@ -1,0 +1,325 @@
+{
+  "manifest_version": "1.0",
+  "protocol": "Knowledge Atlas \u2014 Geometry B",
+  "description": "Passive domain knowledge profiles for the arifOS federation. These are NOUNS (data/axioms), not VERBS (agents). Loaded dynamically by 333-AGI (reasoning) and 888-APEX (judgment) at inference time.",
+  "thermodynamic_boundary": "agent-cards/ contains ACTORS (21 agents with Ed25519 signatures, MCP tools, runtime loops). knowledge/ contains CONTEXTS (33 passive JSON profiles, zero executable surface). Corruption in knowledge/ = degraded reasoning. Corruption in agent-cards/ = federation failure.",
+  "total_profiles": 33,
+  "bands": {
+    "physics": {
+      "count": 11,
+      "range": "000\u2013400",
+      "description": "What IS \u2014 fundamental laws of the universe",
+      "path": "physics/",
+      "loading_verb": "333-AGI loads physics profile \u2192 inherits conservation laws, wave equations, material constraints"
+    },
+    "math": {
+      "count": 11,
+      "range": "444\u2013700",
+      "description": "What CAN BE \u2014 abstract structures and transformations",
+      "path": "math/",
+      "loading_verb": "333-AGI loads math profile \u2192 inherits algebraic structures, topological invariants, optimization bounds"
+    },
+    "code": {
+      "count": 11,
+      "range": "777\u2013999",
+      "description": "What WILL BE \u2014 engineered systems and computational constraints",
+      "path": "code/",
+      "loading_verb": "777-FORGE loads code profile \u2192 inherits complexity bounds, security axioms, deployment constraints"
+    }
+  },
+  "dependency_chain": {
+    "000": {
+      "name": "Foundational Axioms",
+      "children": [
+        "100",
+        "200",
+        "300",
+        "400",
+        "444",
+        "500",
+        "600",
+        "700",
+        "777",
+        "800"
+      ]
+    },
+    "100": {
+      "name": "Classical Mechanics",
+      "children": [
+        "133",
+        "200",
+        "300",
+        "333",
+        "400"
+      ]
+    },
+    "133": {
+      "name": "Thermodynamics",
+      "children": [
+        "200",
+        "333",
+        "366",
+        "399",
+        "900"
+      ]
+    },
+    "200": {
+      "name": "Electromagnetism",
+      "children": [
+        "233",
+        "266",
+        "300",
+        "366",
+        "800",
+        "900"
+      ]
+    },
+    "233": {
+      "name": "Quantum Mechanics",
+      "children": [
+        "266",
+        "366",
+        "800",
+        "833"
+      ]
+    },
+    "266": {
+      "name": "Particle Physics",
+      "children": [
+        "366",
+        "399",
+        "800"
+      ]
+    },
+    "300": {
+      "name": "Relativity",
+      "children": [
+        "333",
+        "366",
+        "399"
+      ]
+    },
+    "333": {
+      "name": "Geophysics",
+      "children": [
+        "366",
+        "399"
+      ]
+    },
+    "366": {
+      "name": "Astrophysics",
+      "children": [
+        "399"
+      ]
+    },
+    "399": {
+      "name": "Condensed Matter",
+      "children": [
+        "400"
+      ]
+    },
+    "400": {
+      "name": "Nuclear Physics",
+      "children": [
+        "266",
+        "366"
+      ]
+    },
+    "444": {
+      "name": "Algebra",
+      "children": [
+        "500",
+        "600",
+        "650"
+      ]
+    },
+    "500": {
+      "name": "Calculus",
+      "children": [
+        "533",
+        "555",
+        "566"
+      ]
+    },
+    "533": {
+      "name": "Analysis",
+      "children": []
+    },
+    "555": {
+      "name": "Topology",
+      "children": []
+    },
+    "566": {
+      "name": "Linear Algebra",
+      "children": []
+    },
+    "600": {
+      "name": "Probability",
+      "children": [
+        "633"
+      ]
+    },
+    "633": {
+      "name": "Statistics",
+      "children": []
+    },
+    "650": {
+      "name": "Discrete Math",
+      "children": [
+        "666"
+      ]
+    },
+    "666": {
+      "name": "Computation",
+      "children": [
+        "699"
+      ]
+    },
+    "699": {
+      "name": "Optimization",
+      "children": [
+        "700"
+      ]
+    },
+    "700": {
+      "name": "Numerical Methods",
+      "children": []
+    },
+    "777": {
+      "name": "Systems Programming",
+      "children": [
+        "800",
+        "900",
+        "920",
+        "933"
+      ]
+    },
+    "800": {
+      "name": "AI/ML Engineering",
+      "children": [
+        "833",
+        "850"
+      ]
+    },
+    "833": {
+      "name": "Security",
+      "children": []
+    },
+    "850": {
+      "name": "Data Engineering",
+      "children": [
+        "888"
+      ]
+    },
+    "888": {
+      "name": "Governance",
+      "children": []
+    },
+    "900": {
+      "name": "Frontend",
+      "children": [
+        "920"
+      ]
+    },
+    "920": {
+      "name": "Backend",
+      "children": [
+        "933"
+      ]
+    },
+    "933": {
+      "name": "DevOps",
+      "children": [
+        "950"
+      ]
+    },
+    "950": {
+      "name": "Integration",
+      "children": [
+        "977"
+      ]
+    },
+    "977": {
+      "name": "Automation",
+      "children": [
+        "999"
+      ]
+    },
+    "999": {
+      "name": "Meta-Code",
+      "children": []
+    }
+  },
+  "epistemic_invariant": "Knowledge profiles are OBS (observed first principles), DER (derived from axioms), or INT (interpreted frameworks). No profile contains executable code, runtime state, or cryptographic identity. A profile's truth value is its fidelity to its domain \u2014 not its alignment with any agent.",
+  "generated_at": "2026-07-12T23:04:00Z",
+  "supersedes": null,
+  "canonical_schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string",
+        "description": "Numeric domain identifier (000\u2013999)"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "Human-readable domain name"
+      },
+      {
+        "name": "band",
+        "type": "string",
+        "enum": [
+          "physics",
+          "math",
+          "code"
+        ],
+        "description": "Knowledge band"
+      },
+      {
+        "name": "description",
+        "type": "string",
+        "description": "One-paragraph domain summary"
+      },
+      {
+        "name": "axioms",
+        "type": "array of strings",
+        "description": "First principles and fundamental laws"
+      },
+      {
+        "name": "reasoning_patterns",
+        "type": "array of strings",
+        "description": "How to reason in this domain"
+      },
+      {
+        "name": "boundary_conditions",
+        "type": "object or array",
+        "description": "What this domain does NOT cover"
+      },
+      {
+        "name": "dependencies",
+        "type": "array of strings",
+        "description": "Prerequisite domain IDs"
+      },
+      {
+        "name": "epistemic_floor",
+        "type": "string",
+        "description": "OBS/DER/INT \u2014 evidential grounding level"
+      },
+      {
+        "name": "key_equations",
+        "type": "array of objects",
+        "description": "Name, expression, significance"
+      },
+      {
+        "name": "key_references",
+        "type": "array of strings",
+        "description": "Textbooks and papers"
+      },
+      {
+        "name": "canonical_truths",
+        "type": "array of strings",
+        "description": "Settled knowledge in this domain"
+      }
+    ]
+  }
+}

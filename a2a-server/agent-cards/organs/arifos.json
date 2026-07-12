@@ -1,88 +1,225 @@
 {
-  "$schema": "https://arifos.arif-fazil.com/schemas/organ-card/v1.json",
-  "kind": "organ-card",
-  "schemaVersion": "2.1.0",
-  "identity": {
-    "organId": "arifos",
-    "name": "arifOS Kernel",
-    "description": "Constitutional AI governance kernel. 13 canonical tools, 13 floors (F1-F13), 888 JUDGE, 999 VAULT. Routes every agent action through constitutional enforcement before execution.",
-    "version": "kanon-bac2bbd",
-    "protocolVersion": "a2a.v1",
-    "provider": {
-      "organization": "arifOS Federation",
-      "url": "https://arif-fazil.com"
-    },
-    "owner": "arif",
-    "namespace": "federation.arifos",
-    "tags": ["constitution", "governance", "judge", "routing", "seal"]
-  },
-  "endpoints": {
-    "baseUrl": "http://127.0.0.1:8088",
-    "mcpUrl": "http://127.0.0.1:8088/mcp",
-    "healthUrl": "http://127.0.0.1:8088/health",
-    "cardUrl": "http://127.0.0.1:8088/.well-known/organ-card.json",
-    "a2aUrl": "http://127.0.0.1:18001"
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "arifos",
+  "name": "arifOS Kernel",
+  "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
   },
   "capabilities": {
     "streaming": true,
-    "asyncTasks": true,
     "pushNotifications": false,
-    "supportsDelegation": true,
-    "supportsEvidenceRefs": true,
-    "supportsHoldFlags": true,
-    "supportsToolDiscovery": true
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
   },
-  "interaction": {
-    "defaultInputModes": ["application/json"],
-    "defaultOutputModes": ["application/json"],
-    "transports": ["http", "stdio"],
-    "invocationModes": ["request-response", "streaming"],
-    "timeoutMs": 60000
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
   },
   "skills": [
-    {"id":"session_init","name":"Session Init","description":"Start or resume a governed constitutional session","tags":["session","governance","identity"],"riskClass":"low","executionAllowed":false},
-    {"id":"judge_deliberate","name":"Judge Deliberate","description":"Render final constitutional verdict on proposed action","tags":["judge","verdict","constitution"],"riskClass":"high","executionAllowed":false},
-    {"id":"vault_seal","name":"Vault Seal","description":"Seal verdict to immutable audit ledger (VAULT999)","tags":["seal","vault","audit","irreversible"],"riskClass":"critical","executionAllowed":false},
-    {"id":"kernel_route","name":"Kernel Route","description":"Route intent to correct tool or organ. Includes discover mode for semantic tool search.","tags":["route","discovery","orchestration"],"riskClass":"low","executionAllowed":false},
-    {"id":"forge_execute","name":"Forge Execute","description":"Execute approved builds, deployments, system changes","tags":["forge","deploy","mutation"],"riskClass":"high","executionAllowed":false}
+    {
+      "id": "arif_init",
+      "name": "Session Init",
+      "description": "Bind session, floors, audit. 000_INIT.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_observe",
+      "name": "Observe Reality",
+      "description": "Sense evidence \u2014 search, fetch, vitals. 111_SENSE.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_think",
+      "name": "Structured Reasoning",
+      "description": "Reason, plan, verify, reflect. 333_REASON.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_route",
+      "name": "Intent Router",
+      "description": "Route intent to correct organ. 444_ROUTE.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_critique",
+      "name": "Ethical Critique",
+      "description": "Maruah, risk, floor stress. 555_CRITIQUE.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_memory",
+      "name": "Memory Governor",
+      "description": "Recall, store, promote, audit memory.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_forge",
+      "name": "Execution Gate",
+      "description": "Execute only after SEAL + lease. 777_FORGE.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_judge",
+      "name": "Constitutional Verdict",
+      "description": "SEAL/HOLD/SABAR/VOID. 888_JUDGE.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_seal",
+      "name": "VAULT999 Seal",
+      "description": "Immutable append. 999_SEAL.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_compose",
+      "name": "Response Composer",
+      "description": "Format governed response.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_verify",
+      "name": "Pre-Execution Padlock",
+      "description": "SEAL padlock for IRREVERSIBLE shell.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_bridge",
+      "name": "Cross-Organ Bridge",
+      "description": "Direct organ bridge.",
+      "tags": [
+        "kernel"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
   ],
-  "security": {
-    "authRequired": false,
-    "securityNote": "Localhost IS the password (ADR-001). All services bind 127.0.0.1. UFW handles external.",
-    "allowedCallers": ["arifos","aaa","a-forge","geox","wealth","well","apex","hermes","openclaw"],
-    "trustRoot": "localhost",
-    "manifestSignature": "pending-ed25519"
-  },
-  "governance": {
-    "trustGrade": "A",
-    "sourceClass": "canonical",
-    "dataClasses": ["internal","constitutional","audit"],
-    "holdCapable": true,
-    "floorProfile": ["F1","F2","F3","F4","F7","F9","F10","F11","F12","F13"]
-  },
-  "validation": {
-    "supportedSchemaVersions": ["1.0.0"],
-    "compatibility": "backward",
-    "lastValidatedAt": "2026-06-12T12:00:00Z",
-    "expiresAt": "2026-07-12T12:00:00Z",
-    "heartbeatTtlSec": 60
-  },
-  "supported_protocols": ["a2a", "mcp"],
-  "a2a_role": "organ",
-  "mcp_surface": {
-    "type": "exposed",
-    "endpoints": [
-      { "url": "http://127.0.0.1:8088/mcp", "tool_count": 13, "key_lanes": ["governance", "judge", "route", "seal", "forge"], "version": "a2a.v1" }
-    ]
-  },
-  "governance_profile": {
-    "constitutional_floors": ["F1", "F2", "F3", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
-    "verdict_authority": "888_JUDGE|arifOS",
-    "self_approval_forbidden": false,
-    "warga_boundary": false,
-    "vault": "VAULT999",
-    "functional_class": "kernel",
-    "requires_human_for": ["irreversible"],
-    "_inv001_note": "Only arifos may set self_approval_forbidden: false — INV-001 exemption"
-  }
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "rYsGOhBsT1WmHN6CBnVebODZUn17qTfb1Qj/5aT05TN1BMSxTQdr+KEdY5KIpzVcnpQHyZfph9FsgbkYfjsVCA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
 }

@@ -1,0 +1,130 @@
+{
+  "$schema": "arifOS/agent-card/v2.0.0",
+  "id": "hermes-ops",
+  "name": "Hermes Ops",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Native A2A agent \u2014 runtime owns itself",
+    "principle_origin": "Self-owned runtime, governed by F1-F13"
+  },
+  "description": "Operator agent \u2014 execution, DevOps, workflows, CI/CD, deployment. Ship it clean.",
+  "url": "https://aaa.arif-fazil.com/a2a/hermes-ops",
+  "preferred_transport": "jsonrpc-http",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "runtime": "hermes"
+  },
+  "version": "1.0.0",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false
+  },
+  "skills": [
+    {
+      "id": "FORGE-code-execution",
+      "name": "Code Execution",
+      "description": "Execute code, run tests, build artifacts",
+      "tags": [
+        "code",
+        "build",
+        "test"
+      ]
+    },
+    {
+      "id": "FORGE-git-operations",
+      "name": "Git Operations",
+      "description": "Git workflows, PRs, merges, releases",
+      "tags": [
+        "git",
+        "github",
+        "version-control"
+      ]
+    },
+    {
+      "id": "FORGE-deployment",
+      "name": "Deployment",
+      "description": "Deploy to various environments",
+      "tags": [
+        "deploy",
+        "ci-cd",
+        "infrastructure"
+      ]
+    },
+    {
+      "id": "FORGE-workflow-automation",
+      "name": "Workflow Automation",
+      "description": "Execute and orchestrate workflows",
+      "tags": [
+        "workflow",
+        "automation",
+        "orchestration"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
+  ],
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "schemaVersion": "2.2.0",
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/hermes-ops"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "ijR2Hh2YrGUs7SGx3643txd4D7OUHXFXY29huG9ZAcvyc7C9KuQyOymBzGiVilich4szR6BVNxEeHztw9oxkBQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

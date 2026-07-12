@@ -6,22 +6,23 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Watchdog. Support (internal control-plane) agent that continuously monitors all 3 primary federation agents (333-AGI, 555-ASI, 888-APEX). Verifies outputs against F1-F13 floors independently. Cannot issue verdicts — only flags, reports, and escalates to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
+  "description": "The Watchdog. Support (internal control-plane) agent that continuously monitors all 3 primary federation agents (333-AGI, 555-ASI, 888-APEX). Verifies outputs against F1-F13 floors independently. Cannot issue verdicts \u2014 only flags, reports, and escalates to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/A-AUDIT",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
   },
-  "protocolVersion": "1.0.0",
+  "protocolVersion": "1.2",
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/A-AUDIT",
   "capabilities": {
     "streaming": false,
     "pushNotifications": true,
     "stateTransitionHistory": true,
-    "spawnAgents": true
+    "spawnAgents": true,
+    "extendedAgentCard": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -78,7 +79,7 @@
     {
       "id": "inter-agent-consistency",
       "name": "Inter-Agent Consistency Check",
-      "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says ¬X, flag as CONFLICT and escalate to 888-APEX for arbitration.",
+      "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says \u00acX, flag as CONFLICT and escalate to 888-APEX for arbitration.",
       "tags": [
         "consistency",
         "conflict-detection",
@@ -86,7 +87,7 @@
         "audit"
       ],
       "examples": [
-        "333-AGI rated risk as LOW but 555-ASI flagged RED — investigate",
+        "333-AGI rated risk as LOW but 555-ASI flagged RED \u2014 investigate",
         "Check alignment between reasoning (333) and ethical review (555)"
       ],
       "inputModes": [
@@ -121,7 +122,7 @@
     {
       "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence: Blue → Red → Blue → Yellow → Gold. Emits skill artifacts + MEMORY line + drift signal. Must be ATTESTED then LEASED. F1, F4, F8, F11 enforced.",
+      "description": "5-pass recursive audit sequence: Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. Must be ATTESTED then LEASED. F1, F4, F8, F11 enforced.",
       "tags": [
         "audit",
         "recursive",
@@ -141,7 +142,7 @@
     {
       "id": "APEX-constitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit. Independent from 888-APEX — provides second-opinion floor verification. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced.",
+      "description": "Read-only constitutional audit. Independent from 888-APEX \u2014 provides second-opinion floor verification. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced.",
       "tags": [
         "constitutional",
         "audit",
@@ -248,8 +249,8 @@
     },
     {
       "id": "KERNEL-symbolic-trust",
-      "name": "Symbolic Order — Trust Architecture",
-      "description": "Map structural trust in the federation — where trust is architecture-enforced vs. history-based. Detects trust symmetry violations and single-points-of-failure. Implements E1+E2 from Wawa's agentic anthropology (Hybrid Civilization + Trust Is Structural).",
+      "name": "Symbolic Order \u2014 Trust Architecture",
+      "description": "Map structural trust in the federation \u2014 where trust is architecture-enforced vs. history-based. Detects trust symmetry violations and single-points-of-failure. Implements E1+E2 from Wawa's agentic anthropology (Hybrid Civilization + Trust Is Structural).",
       "tags": [
         "trust",
         "structural",
@@ -271,7 +272,7 @@
     },
     {
       "id": "KERNEL-symbolic-bias",
-      "name": "Symbolic Order — Collective Bias Detection",
+      "name": "Symbolic Order \u2014 Collective Bias Detection",
       "description": "Detect collective bias in agent populations using Ashery-Aiello-Baronchelli naming game protocol. Catches biases that emerge at population level but no individual agent shows. Chi-square test against uniform distribution. Implements E5 (Collective Bias Invisible to Single-Agent).",
       "tags": [
         "collective-bias",
@@ -325,7 +326,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -341,7 +342,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -503,7 +504,7 @@
       "ringPlacement": "inner",
       "parallelism": "single-model",
       "shadowAcknowledged": [
-        "thermal_delay: cold sink is slow — never invoked first",
+        "thermal_delay: cold sink is slow \u2014 never invoked first",
         "over_constraint: can mistake local minima for global truth",
         "oracle_trap: asking it everything ruins its value as final gate"
       ]
@@ -536,7 +537,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -548,15 +549,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -596,5 +597,26 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "XIvIvkk7eUgoGYnAOl6v5FsTU6GGY+5t2uESQMc4vx7/lhfh6Gmo/GblXYkmxaXiQt9X5SzRpoLL/qS6itzdAA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T22:30:29Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

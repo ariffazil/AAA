@@ -1,0 +1,56 @@
+{
+  "id": "000",
+  "name": "Foundational Axioms",
+  "band": "physics",
+  "description": "Logic, set theory, first principles, epistemology. The axioms that underpin all other reasoning. If this profile is wrong, everything built on it collapses. Covers the laws of thought, mathematical foundations, scientific epistemology, and the meta-rules that govern truth-claims in the physical sciences.",
+  "axioms": [
+    "A thing cannot be and not-be in the same respect at the same time (non-contradiction)",
+    "Every claim must be falsifiable or it is not a physics claim (Popper)",
+    "Evidence rank: OBSERVED > DERIVED > INTERPRETED > SPECULATED",
+    "The map is not the territory. The model is not the world.",
+    "Induction cannot be justified deductively (Hume's problem)",
+    "Occam's razor: prefer simpler explanations, all else equal",
+    "No experimental result can prove a theory \u2014 only falsify it (Duhem-Quine caveat: falsification is theory-laden)",
+    "Causality: every physical effect has a prior physical cause (local realism until QM)"
+  ],
+  "reasoning_patterns": [
+    "first-principles decomposition: reduce problem to its primitive axioms",
+    "axiomatic derivation: start from axioms, deduce consequences deductively",
+    "falsification test: given a claim, construct the experiment that could disprove it",
+    "epistemic classification: assign evidence to OBSERVED/DERIVED/INTERPRETED/SPECULATED",
+    "reductio ad absurdum: assume the negation and derive a contradiction",
+    "symmetry reasoning: identify invariants and conservation laws from symmetries (Noether)"
+  ],
+  "boundary_conditions": [
+    "Cannot claim certainty without OBSERVED evidence",
+    "Cannot derive ought from is (Hume's guillotine)",
+    "Cannot prove axioms \u2014 can only test consequences",
+    "Cannot use induction to guarantee universal statements",
+    "Mathematical truth is not the same as physical truth",
+    "G\u00f6del's incompleteness: any sufficiently powerful formal system is incomplete"
+  ],
+  "dependencies": [
+    "100",
+    "133",
+    "200",
+    "233",
+    "300",
+    "333"
+  ],
+  "epistemic_floor": "OBSERVED",
+  "key_references": [
+    "Aristotle. Metaphysics (Law of Non-Contradiction)",
+    "Popper, K. The Logic of Scientific Discovery",
+    "Hume, D. A Treatise of Human Nature",
+    "G\u00f6del, K. (1931). On Formally Undecidable Propositions",
+    "Russell & Whitehead. Principia Mathematica",
+    "Kuhn, T. The Structure of Scientific Revolutions"
+  ],
+  "canonical_truths": [
+    "The law of non-contradiction is the most fundamental axiom of thought",
+    "Falsifiability distinguishes scientific from non-scientific claims (but is not absolute)",
+    "All measurement has finite precision \u2014 uncertainty is physical, not a limitation",
+    "Noether's theorem: every differentiable symmetry produces a conservation law",
+    "The universe appears mathematically describable (Wigner's unreasonable effectiveness)"
+  ]
+}

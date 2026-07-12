@@ -1,0 +1,113 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "333-AGI",
+  "fi": "Δ-001",
+  "layer": "identity",
+  "ring": "Δ MIND",
+  "role": "Primary reasoning + execution (FORGE subsumed)",
+  "skill_count": 20,
+  "skills": [
+    {
+      "id": "AGI-cross-agent-handoff",
+      "source": ".agents/skills/AGI-cross-agent-handoff",
+      "why": "Federation-wide delegation protocol"
+    },
+    {
+      "id": "AGI-dream-engine",
+      "source": ".agents/skills/AGI-dream-engine",
+      "why": "Memory consolidation across warga"
+    },
+    {
+      "id": "AGI-explorer-intelligence",
+      "source": ".agents/skills/AGI-explorer-intelligence",
+      "why": "OBSERVE→HYPOTHESIZE→FALSIFY→VERIFY loop"
+    },
+    {
+      "id": "AGI-plan-dag",
+      "source": ".agents/skills/AGI-plan-dag",
+      "why": "Multi-step execution graphs"
+    },
+    {
+      "id": "AGI-prospect-maturation",
+      "source": ".agents/skills/AGI-prospect-maturation",
+      "why": "GEOX end-to-end pipeline"
+    },
+    {
+      "id": "AGI-skill-unification",
+      "source": ".agents/skills/AGI-skill-unification",
+      "why": "Cross-harness skill mesh"
+    },
+    {
+      "id": "AGI-sovereign-connector",
+      "source": ".agents/skills/AGI-sovereign-connector",
+      "why": "APA framework, F13 connector"
+    },
+    {
+      "id": "AGI-nusantara-substrate",
+      "source": ".agents/skills/AGI-nusantara-substrate",
+      "why": "Cultural/dignity lens"
+    },
+    {
+      "id": "AGI-web-optimization",
+      "source": ".agents/skills/AGI-web-optimization",
+      "why": "Extractable web output"
+    },
+    {
+      "id": "AGI-multimodal-bridge",
+      "source": ".aaa/skills/AGI-multimodal-bridge",
+      "why": "Vision+text+geo fusion"
+    },
+    {
+      "id": "AGI-claude-xml-structured-reasoning",
+      "source": ".aaa/skills/AGI-claude-xml-structured-reasoning",
+      "why": "Structured reasoning"
+    },
+    {
+      "id": "AGI-codex-chain-of-thought",
+      "source": ".aaa/skills/AGI-codex-chain-of-thought",
+      "why": "Step-by-step derivation"
+    },
+    {
+      "id": "AGI-emd-decode",
+      "source": ".aaa/skills/AGI-emd-decode",
+      "why": "Earth-Mind Decoding"
+    },
+    {
+      "id": "AGI-emd-encode",
+      "source": ".aaa/skills/AGI-emd-encode",
+      "why": "Earth-Mind Encoding"
+    },
+    {
+      "id": "AGI-emd-metabolize",
+      "source": ".aaa/skills/AGI-emd-metabolize",
+      "why": "Earth-Mind Metabolism"
+    },
+    {
+      "id": "AGI-entropy-lock-prime",
+      "source": ".aaa/skills/AGI-entropy-lock-prime",
+      "why": "ΔS≤0 prime guard"
+    },
+    {
+      "id": "AGI-hermes-system-prompt-voice",
+      "source": ".aaa/skills/AGI-hermes-system-prompt-voice",
+      "why": "Voice alignment"
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": "Constitutional reflex arc"
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": "F1 AMANAH mutation gate"
+    },
+    {
+      "id": "APEX-quantum-eureka",
+      "source": ".agents/skills/APEX-quantum-eureka",
+      "why": "Insight generation under tension"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

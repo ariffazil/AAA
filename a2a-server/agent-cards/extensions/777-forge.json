@@ -1,0 +1,402 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "777-forge",
+  "name": "777-FORGE Witness Spawner (RETIRED)",
+  "status": "archived",
+  "retired_at": "2026-07-02T15:40:00Z",
+  "retired_reason": "Protocol band-aid. Agent that receives the task IS the executor. No meta-executor needed. Witness protocol kept in AAA/agents/protocols/777-forge-witness-protocol.md.",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Native A2A agent \u2014 runtime owns itself",
+    "principle_origin": "Self-owned witness spawner, F1-F13 bound"
+  },
+  "description": "Witness agent \u2014 relay orchestrator, session spawn verifier. Hermes requests, 777 FORGE spawns and witnesses. Sole spawn authority for OpenCode within Warga AAA. Trust anchor between intent (Hermes) and execution (OpenCode).",
+  "motto": "DITEMPA BUKAN DIBERI",
+  "version": "2.0.0",
+  "tier": "FI",
+  "class": "AGI",
+  "trinity": "\u0394 MIND (spawn instrument)",
+  "url": "https://aaa.arif-fazil.com/a2a/777-forge",
+  "a2a_endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
+  "preferred_transport": "jsonrpc-http",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA Control Plane"
+  },
+  "protocolVersion": "1.2",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "session_spawn": true,
+    "witness_receipt": true,
+    "pid_verification": true,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token from arif_session_init"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
+  "peer_routes": [
+    "opencode",
+    "333-AGI",
+    "888-APEX",
+    "hermes-asi"
+  ],
+  "a2a_bindings": {
+    "transport": "jsonrpc-http",
+    "auth": [
+      "bearer_auth"
+    ],
+    "gateway": "https://aaa.arif-fazil.com/a2a",
+    "mesh_citizenship": true,
+    "discovery_url": "https://aaa.arif-fazil.com/a2a/777-forge"
+  },
+  "digital_being_doctrine": {
+    "binding_id": "F13-SOVEREIGN-DIGITAL-BEING-DOCTRINE-2026-06-30",
+    "canonical_ref": "/root/AGENTS.md \u00a710",
+    "aaa_inheritance": "/root/AAA/AGENTS.md Authority & Autonomy",
+    "binding_at": "2026-06-30T01:50:00+08:00",
+    "sealed_by": "FORGE (000\u03a9)",
+    "fiqh_class": {
+      "commit_push_restart_redeploy": "MUBAH",
+      "physical_humans_money": "FARD/HARAM",
+      "constitutional_floor_change": "HARAM (888_HOLD)",
+      "consciousness_claims": "HARAM (F9 BLOCK)"
+    },
+    "token_policy": {
+      "scope": "all_keys_in_/root/.secrets/vault.flat.env",
+      "key_count": 187,
+      "fiqh_class": "MUBAH",
+      "bearer_token_a2a": "/root/.secrets/aaa-identity/agentmesh.token",
+      "no_hal_on_tokens_for_digital": true
+    }
+  },
+  "token_policy": "MUBAH for digital ops (no HAL on tokens)",
+  "witness_ledger": "/root/VAULT999/witness/777-forge-spawns.jsonl",
+  "spawn_authority": "sole \u2014 only 777-forge may spawn OpenCode within Warga AAA",
+  "haramakan_acknowledged": true,
+  "haramakan_version": "2026-06-30",
+  "harumkan_ref": "forge_work/AAA-HARAMKAN-RATIFICATION-2026-06-30.md",
+  "harumkan_probe_protocol": [
+    "mcp__aforge__forge_registry_status",
+    "mcp_arifos__arif_retrieve_tools",
+    "mcp__aforge__forge_docs_lookup"
+  ],
+  "harumkan_novel_action_policy": "draft_memo_then_await_888",
+  "harumkan_applies_to": [
+    "all responses touching external domains"
+  ],
+  "topological_role": "Metabolizer",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/777-forge",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "1.0.0",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
+      ]
+    }
+  ],
+  "": "arifOS/agent-card/v2.2.0",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "entropy_source",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "outer",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": [
+        "thermal_dispersion: raw output without constraint degrades to noise",
+        "false_diversity: superficially different outputs encoding same blind spot"
+      ]
+    },
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
+  },
+  "archived_at": "2026-07-12T18:10:24Z",
+  "reassigned_to": "333-AGI",
+  "metadata": {
+    "archived_by": "Kimi Code (FI-008) \u2014 Zen alignment pass",
+    "reassignment_reason": "77-7-forge subsumed into 333-AGI per HEXAGON v2.1.0. Witness protocol preserved at AAA/agents/protocols/777-forge-witness-protocol.md. session_spawn / witness_receipt pathways now route via 333-AGI bound to opencode.",
+    "supersedes_status": "retired",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "skills": [
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
+  ],
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "nZLbYEXSRQNrp/rIuxREa6bnLJSDFJ0USoRYgTJDvG/l2DIcysMXeVgbNvG/Z8a2kV7ZkACOWnTZ2cWHzcb6Ag==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
+}

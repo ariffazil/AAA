@@ -1,0 +1,58 @@
+{
+  "id": "233",
+  "name": "Quantum Mechanics",
+  "band": "physics",
+  "description": "Wave functions, measurement, the Schr\u00f6dinger equation, and the quantum world. Quantum mechanics describes nature at the atomic and subatomic scales \u2014 where particles are waves, measurement disturbs the system, and the act of observation plays a fundamental role. The most precisely tested theory in the history of science.",
+  "axioms": [
+    "State vectors live in Hilbert space; observables are Hermitian operators",
+    "Schr\u00f6dinger equation: i\u210f\u2202\u03c8/\u2202t = \u0124\u03c8 governs time evolution of quantum states",
+    "Born rule: probability of measuring outcome is |\u27e8\u03c6|\u03c8\u27e9|\u00b2 \u2014 the squared amplitude of the wave function",
+    "Heisenberg uncertainty principle: \u0394x\u0394p \u2265 \u210f/2 \u2014 certain pairs of observables cannot be simultaneously known",
+    "Measurement postulates: measurement collapses the state to an eigenstate of the observable being measured",
+    "Identical particles: bosons have symmetric wave functions (integer spin), fermions antisymmetric (half-integer spin)",
+    "Pauli exclusion principle: no two fermions can occupy the same quantum state"
+  ],
+  "reasoning_patterns": [
+    "Eigenvalue decomposition: find energy levels by solving \u0124|n\u27e9 = E_n|n\u27e9 (time-independent Schr\u00f6dinger equation)",
+    "Perturbation theory: approximate corrections to known solutions when a small additional potential is present",
+    "Variational method: find an upper bound on the ground state energy using a trial wave function",
+    "Density matrix formalism: handle mixed states and decoherence when the system is entangled with an environment",
+    "Path integral formulation: sum over all possible paths between initial and final states (Feynman)",
+    "Symmetry and group theory: classify states by quantum numbers from irreducible representations of symmetry groups",
+    "WKB approximation: semiclassical approximation for slowly varying potentials (tunneling rates)"
+  ],
+  "boundary_conditions": [
+    "Does not account for relativistic effects \u2014 requires quantum field theory for such regimes",
+    "The measurement problem (what constitutes a measurement? what causes collapse?) is philosophically unresolved",
+    "Quantum gravity remains unsolved \u2014 quantum mechanics and general relativity are mathematically incompatible",
+    "Decoherence explains the emergence of classicality from quantum systems but does not explain collapse",
+    "Bohmian mechanics and many-worlds are interpretations, not experimentally distinguishable",
+    "Does not predict its own domain of validity \u2014 must assume the classical world to describe the quantum"
+  ],
+  "dependencies": [
+    "000",
+    "100",
+    "200",
+    "266",
+    "300",
+    "399",
+    "400"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Sakurai, J.J. Modern Quantum Mechanics",
+    "Griffiths, D.J. Introduction to Quantum Mechanics",
+    "Dirac, P.A.M. The Principles of Quantum Mechanics",
+    "Landau & Lifshitz. Quantum Mechanics (Course of Theoretical Physics Vol.3)",
+    "Feynman, R. The Feynman Lectures on Physics Vol.3",
+    "von Neumann, J. Mathematical Foundations of Quantum Mechanics"
+  ],
+  "canonical_truths": [
+    "\u210f = h/2\u03c0 \u2248 1.055 \u00d7 10\u207b\u00b3\u2074 J\u00b7s is the fundamental quantum of action",
+    "Quantum mechanics is the most precisely tested theory in physics \u2014 QED matches experiment to 12 decimal places",
+    "Bell's theorem: no local hidden variable theory can reproduce all predictions of quantum mechanics",
+    "Quantum tunneling is real and essential for processes like nuclear fusion in stars and semiconductor operation",
+    "Entanglement is a resource for quantum computing and cryptography, NOT a communication channel (no FTL signaling)",
+    "The double-slit experiment exhibits the core quantum mystery: which-path information destroys interference"
+  ]
+}

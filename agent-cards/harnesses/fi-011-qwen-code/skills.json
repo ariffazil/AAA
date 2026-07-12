@@ -1,0 +1,108 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "qwen-code",
+  "fi": "FI-011",
+  "layer": "harnesses",
+  "ring": "Forge Harness (Qwen Code)",
+  "role": "Local model forge + Docker",
+  "skill_count": 19,
+  "skills": [
+    {
+      "id": "FORGE-github",
+      "source": ".agents/skills/FORGE-github",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-ops",
+      "source": ".agents/skills/FORGE-github-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-runbook",
+      "source": ".agents/skills/FORGE-github-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-gate",
+      "source": ".agents/skills/FORGE-precommit-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-review",
+      "source": ".agents/skills/FORGE-precommit-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-review",
+      "source": ".agents/skills/FORGE-pr-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-governance",
+      "source": ".agents/skills/FORGE-pr-governance",
+      "why": ""
+    },
+    {
+      "id": "FORGE-readme-truth-check",
+      "source": ".agents/skills/FORGE-readme-truth-check",
+      "why": ""
+    },
+    {
+      "id": "FORGE-route-least-power",
+      "source": ".agents/skills/FORGE-route-least-power",
+      "why": ""
+    },
+    {
+      "id": "FORGE-context-compress",
+      "source": ".agents/skills/FORGE-context-compress",
+      "why": ""
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": ""
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-docker",
+      "source": ".agents/skills/FORGE-docker",
+      "why": ""
+    },
+    {
+      "id": "FORGE-docker-entropy",
+      "source": ".agents/skills/FORGE-docker-entropy",
+      "why": ""
+    },
+    {
+      "id": "FORGE-docker-thermo",
+      "source": ".agents/skills/FORGE-docker-thermo",
+      "why": ""
+    },
+    {
+      "id": "FORGE-vps-docker",
+      "source": ".aaa/skills/ARCHIVE-docker",
+      "why": ""
+    },
+    {
+      "id": "FORGE-vps-runbook",
+      "source": ".aaa/skills/ARCHIVE-vps-docker-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-federation-orchestrator",
+      "source": ".agents/skills/FORGE-federation-orchestrator",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

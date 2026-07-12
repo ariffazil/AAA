@@ -1,0 +1,39 @@
+{
+  "id": "533",
+  "name": "Analysis",
+  "band": "math",
+  "description": "Real analysis, complex analysis, functional analysis. The rigorous mathematical study of limits, continuity, measure, integrability, and infinite-dimensional spaces. Complex analysis reveals the deep structure of holomorphic functions \u2014 arguably the most beautiful and surprising theory in mathematics. Functional analysis extends linear algebra to infinite dimensions, essential for quantum mechanics, signal processing, and PDE theory. Depends on 444 (algebra) and 500 (calculus). Feeds into 555 (topology via function spaces) and 566 (linear algebra via Banach/Hilbert spaces).",
+  "axioms": [
+    "Completeness axiom of real numbers (least upper bound property / Cauchy completeness)",
+    "\u03b5-\u03b4 definition of limit: continuity defined via precision, not motion",
+    "Cauchy convergence criterion: real sequence converges iff Cauchy",
+    "Cauchy integral formula: f(z\u2080) = (1/2\u03c0i)\u222e f(z)/(z-z\u2080) dz \u2014 the most beautiful formula in complex analysis",
+    "Liouville's theorem: bounded entire functions are constant",
+    "Arzel\u00e0-Ascoli theorem: compactness criterion for function spaces",
+    "Open mapping theorem, closed graph theorem, uniform boundedness principle (Banach-Steinhaus)",
+    "Riesz representation theorem: dual space of Hilbert space is itself",
+    "Weierstrass approximation theorem: polynomials are dense in C[a,b]"
+  ],
+  "reasoning_patterns": [
+    "convergence testing (series, sequences, function sequences)",
+    "bound estimation and inequality crafting (triangle, Cauchy-Schwarz, H\u00f6lder)",
+    "functional space analysis (Lp spaces, Sobolev spaces)",
+    "singularity classification (removable, pole, essential in complex analysis)",
+    "residue theorem: evaluation of complex contour integrals",
+    "spectral analysis of operators in Banach/Hilbert spaces",
+    "measure theory and Lebesgue integration",
+    "fixed-point arguments (Banach contraction, Schauder)"
+  ],
+  "boundary_conditions": [
+    "Pathological functions exist (nowhere continuous, nowhere differentiable, space-filling curves)",
+    "Some series converge conditionally \u2014 rearrangement changes sum (Riemann rearrangement theorem)",
+    "Not all infinite-dimensional spaces are equivalent (\u2113\u00b9, \u2113\u00b2, \u2113\u221e have different geometries)",
+    "Some functions are Lebesgue integrable but not Riemann integrable (and vice versa for improper cases)",
+    "Axiom of Choice is required for many functional analysis theorems (Hahn-Banach, Banach-Alaoglu)"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "500-calculus"
+  ],
+  "epistemic_floor": "DERIVED"
+}

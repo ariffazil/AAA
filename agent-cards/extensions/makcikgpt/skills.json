@@ -1,0 +1,88 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "makcikgpt",
+  "fi": "F3-MG",
+  "layer": "extensions",
+  "ring": "Executive Assistant",
+  "role": "Operational support — research, brief, dossier",
+  "skill_count": 15,
+  "skills": [
+    {
+      "id": "cognitive-commands",
+      "source": ".hermes/skills/cognitive-commands",
+      "why": "Structured cognition"
+    },
+    {
+      "id": "agent-role-mode-flagging",
+      "source": ".hermes/skills/agent-role-mode-flagging",
+      "why": "Role classification"
+    },
+    {
+      "id": "sovereign-conversation-protocol",
+      "source": ".hermes/skills/governance/sovereign-conversation-protocol",
+      "why": "F13 protocol"
+    },
+    {
+      "id": "human-envelope-architecture",
+      "source": ".hermes/skills/governance/human-envelope-architecture",
+      "why": "Human surface"
+    },
+    {
+      "id": "consult-external-llm",
+      "source": ".hermes/skills/consult-external-llm",
+      "why": "External voice"
+    },
+    {
+      "id": "deep-research",
+      "source": ".hermes/skills/research/deep-research",
+      "why": "Deep research"
+    },
+    {
+      "id": "research-paper-writing",
+      "source": ".hermes/skills/research/research-paper-writing",
+      "why": "Paper writing"
+    },
+    {
+      "id": "institutional-case-building",
+      "source": ".hermes/skills/research/institutional-case-building",
+      "why": "Case dossier"
+    },
+    {
+      "id": "professional-intelligence-briefing",
+      "source": ".hermes/skills/research/professional-intelligence-briefing",
+      "why": "Prof brief"
+    },
+    {
+      "id": "executive-intelligence-briefing",
+      "source": ".hermes/skills/research/executive-intelligence-briefing",
+      "why": "Exec brief"
+    },
+    {
+      "id": "summarize-pro",
+      "source": ".hermes/skills/research/summarize-pro",
+      "why": "Long summary"
+    },
+    {
+      "id": "news-research-briefing",
+      "source": ".hermes/skills/research/news-research-briefing",
+      "why": "News brief"
+    },
+    {
+      "id": "person-intelligence-dossier",
+      "source": ".hermes/skills/research/person-intelligence-dossier",
+      "why": "Person dossier"
+    },
+    {
+      "id": "weekly-federation-deep-brief",
+      "source": ".hermes/skills/weekly-federation-deep-brief",
+      "why": "Weekly brief"
+    },
+    {
+      "id": "uncertainty-routing-protocol",
+      "source": ".hermes/skills/uncertainty-routing-protocol",
+      "why": "Route on uncertainty"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

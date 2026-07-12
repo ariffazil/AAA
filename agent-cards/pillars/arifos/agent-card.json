@@ -1,0 +1,136 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "arifos",
+  "name": "arifOS Kernel",
+  "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "session-governance",
+      "name": "Session Governance",
+      "description": "Session lifecycle bind, authority enforcement, preflight checks.",
+      "tags": [
+        "kernel",
+        "session",
+        "f1"
+      ]
+    },
+    {
+      "id": "observation-intelligence",
+      "name": "Observation Intelligence",
+      "description": "Web search, URL fetch, entropy measurement, system vitals.",
+      "tags": [
+        "kernel",
+        "observe",
+        "f2"
+      ]
+    },
+    {
+      "id": "structured-reasoning",
+      "name": "Structured Reasoning",
+      "description": "Plan, verify, reflect, metabolize, simulate under F2/F7 constraints.",
+      "tags": [
+        "kernel",
+        "reason",
+        "f7"
+      ]
+    },
+    {
+      "id": "intent-routing",
+      "name": "Intent Routing",
+      "description": "Route intents to correct federation organ via BM25 matching.",
+      "tags": [
+        "kernel",
+        "route",
+        "f4"
+      ]
+    },
+    {
+      "id": "constitutional-judgment",
+      "name": "Constitutional Judgment",
+      "description": "F1-F13 arbitration, SEAL/HOLD/SABAR/VOID. Only 888.",
+      "tags": [
+        "kernel",
+        "judge",
+        "f13"
+      ]
+    },
+    {
+      "id": "governed-execution",
+      "name": "Governed Execution",
+      "description": "A-FORGE bridge. Never self-authorizes.",
+      "tags": [
+        "kernel",
+        "forge",
+        "f1"
+      ]
+    },
+    {
+      "id": "vault-sealing",
+      "name": "VAULT999 Sealing",
+      "description": "Immutable append-only ledger. Chain integrity verify.",
+      "tags": [
+        "kernel",
+        "vault",
+        "f13"
+      ]
+    },
+    {
+      "id": "memory-governance",
+      "name": "Memory Governance",
+      "description": "L1-L6 tiers. Recall, remember, promote, forget under F1/F2/F4.",
+      "tags": [
+        "kernel",
+        "memory",
+        "f11"
+      ]
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:20:00Z",
+      "type": "Ed25519Signature2020",
+      "proofValue": "pending"
+    }
+  ]
+}

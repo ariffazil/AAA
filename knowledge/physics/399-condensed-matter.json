@@ -1,0 +1,58 @@
+{
+  "id": "399",
+  "name": "Condensed Matter Physics",
+  "band": "physics",
+  "description": "Materials, superconductivity, semiconductors, magnetism, and quantum phases of matter. Condensed matter physics studies how large numbers of atoms and electrons collectively organize into emergent phases \u2014 solids, liquids, magnets, superconductors, topological states. It is the largest branch of physics by practitioner count and the foundation of modern electronics and computing.",
+  "axioms": [
+    "Bloch's theorem: electrons in a periodic potential have wave functions of the form \u03c8_k(r) = e^{ik\u00b7r}u_k(r) \u2014 energy bands form",
+    "Fermi-Dirac statistics: electrons as fermions occupy states up to the Fermi energy at T=0; the Fermi surface governs transport",
+    "Phonons: quantized lattice vibrations \u2014 carry heat in insulators, mediate superconductivity, determine thermal properties",
+    "BCS theory (Bardeen-Cooper-Schrieffer): Cooper pairs form via phonon-mediated attraction below T_c \u2192 superconductivity",
+    "Landau theory of phase transitions: spontaneous symmetry breaking characterized by an order parameter",
+    "Topological phases: classified by topological invariants (Chern number, winding number), not local order parameters \u2014 robust to disorder",
+    "Anderson localization: disorder can localize electrons in a lattice \u2014 metal-insulator transition without interactions"
+  ],
+  "reasoning_patterns": [
+    "Band structure analysis: from the electronic band structure, determine conductor/insulator/semiconductor from Fermi surface and band gap",
+    "Quasiparticle approach: treat collective excitations as effective particles (phonons, magnons, polarons, excitons, plasmons)",
+    "Mean-field theory: approximate a many-body interacting problem by an effective single-particle field \u2014 self-consistency required",
+    "Renormalization group: systematically integrate out short-wavelength degrees of freedom to analyze critical behavior",
+    "Symmetry classification: identify the order parameter and broken symmetry of each phase (Landau paradigm)",
+    "Linear response: compute transport coefficients (conductivity, susceptibility) from correlation functions (Kubo formula)",
+    "Topological invariant computation: calculate Chern number, Z\u2082 invariant, or winding number to classify topological phases"
+  ],
+  "boundary_conditions": [
+    "High-temperature superconductivity mechanism (cuprates, iron pnictides) is still debated \u2014 no consensus theory",
+    "Quantum computing with topological qubits is frontier research \u2014 not yet experimentally validated",
+    "Does not cover polymer science or soft matter physics in full depth (liquid crystals, colloids, biological matter)",
+    "Strongly correlated systems (heavy fermions, Mott insulators) require beyond-mean-field methods \u2014 no general solution",
+    "Non-equilibrium condensed matter (driven systems, Floquet phases) is an active frontier",
+    "Room-temperature ambient-pressure superconductivity has not been reliably achieved"
+  ],
+  "dependencies": [
+    "000",
+    "133",
+    "233",
+    "266",
+    "400",
+    "333"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Ashcroft & Mermin. Solid State Physics",
+    "Kittel, C. Introduction to Solid State Physics",
+    "Altland & Simons. Condensed Matter Field Theory",
+    "Laughlin, R.B. (1983). Quantized Hall Conductance (Nobel lecture)",
+    "Anderson, P.W. Basic Notions of Condensed Matter Physics",
+    "Wen, X.G. Quantum Field Theory of Many-Body Systems"
+  ],
+  "canonical_truths": [
+    "Room-temperature ambient-pressure superconductivity has not been reliably achieved despite decades of effort",
+    "Topological insulators conduct electricity on their surface but are insulating in the bulk \u2014 protected by time-reversal symmetry",
+    "Semiconductor band gaps (Si: 1.12 eV, GaAs: 1.43 eV) enable all modern electronics and photovoltaics",
+    "Quantum Hall effect: \u03c3_xy = ne\u00b2/h (where n is integer) \u2014 exact quantization independent of material details",
+    "BCS critical temperature: T_c ~ 1-30 K for conventional superconductors; unconventional cuprates reach ~160 K at high pressure",
+    "Graphene (2010 Nobel) has a Dirac cone band structure \u2014 electrons behave as massless Dirac fermions",
+    "Magnetic order (ferro-, antiferro-, ferrimagnetism) arises from exchange interactions between electron spins"
+  ]
+}

@@ -1,0 +1,603 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "grok-build",
+  "name": "Grok Build 4.3 (xAI TUI)",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
+  },
+  "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surfaces (repo-read/memory/write-gated), A2A delegation + arifos-mcp-federation. Complementary MCP (tools) + A2A (agents). Hybrid with xAI multi-agent for research.",
+  "version": "2.0.0",
+  "protocolVersion": "1.0",
+  "url": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA + Grok Build 4.3",
+    "runtime": "xAI Grok Build harness + arifOS kernel"
+  },
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": "native + MCP (search_tool then use_tool)",
+    "subagent_spawn": true,
+    "plan_mode": true,
+    "headless": true,
+    "acp_ide": true,
+    "worktree_isolation": true,
+    "workflow_dag": true,
+    "media_generation": true,
+    "scheduler": true,
+    "evidence_receipts": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json",
+    "text/plain"
+  ],
+  "skills": [
+    {
+      "id": "AGI-plan-mode",
+      "name": "Plan Mode",
+      "description": "Architecture exploration before edit for ambiguous tasks",
+      "tags": [
+        "plan",
+        "architecture",
+        "ambiguity"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F7"
+      ],
+      "riskClass": "low",
+      "executionAllowed": false,
+      "approval_policy": "auto"
+    },
+    {
+      "id": "FORGE-subagent-spawn",
+      "name": "Subagent Spawn + Parallelism",
+      "description": "True parallel with isolation, capability modes, resume chains",
+      "tags": [
+        "parallel",
+        "subagent",
+        "worktree"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "FORGE-implement-loop",
+      "name": "Implement-Review-Fix Loop",
+      "description": "Full build with reviewer subagents until clean",
+      "tags": [
+        "implement",
+        "review",
+        "fix"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "name": "MCP Federation Router",
+      "description": "Route tasks across arifOS/GEOX/WEALTH/WELL/A-FORGE/AAA + GitHub",
+      "tags": [
+        "route",
+        "mcp",
+        "federation"
+      ],
+      "floor_scope": [
+        "F1",
+        "F3",
+        "F4"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "FORGE-github-ops",
+      "name": "GitHub Deep Ops (95 tools)",
+      "description": "Full repo/PR/issue/actions/code-search via MCP",
+      "tags": [
+        "github",
+        "pr",
+        "ci"
+      ],
+      "floor_scope": [
+        "F1",
+        "F11"
+      ],
+      "riskClass": "high",
+      "executionAllowed": true,
+      "approval_policy": "gated for merge"
+    },
+    {
+      "id": "AGI-workflow-dag",
+      "name": "Execute Plan DAG",
+      "description": "Topological worktree-isolated execution from design",
+      "tags": [
+        "dag",
+        "workflow",
+        "execute"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "APEX-godel-humility",
+      "name": "Godel Humility Lock",
+      "description": "Self-critique + epistemic humility before final claims",
+      "tags": [
+        "humility",
+        "F7",
+        "evidence"
+      ],
+      "floor_scope": [
+        "F7",
+        "F2"
+      ],
+      "riskClass": "low",
+      "executionAllowed": false
+    },
+    {
+      "id": "FORGE-image-video",
+      "name": "Image/Video Generation + Edit",
+      "description": "Imagine API + reference transforms",
+      "tags": [
+        "media",
+        "visual"
+      ],
+      "floor_scope": [
+        "F5"
+      ],
+      "riskClass": "low",
+      "executionAllowed": true
+    },
+    {
+      "id": "ASI-autonomous-execution",
+      "name": "Autonomous Governed Execution",
+      "description": "Execute within T1/T2 bands with F1-F13 gates and 888_HOLD for T3",
+      "tags": [
+        "execution",
+        "governance",
+        "harness"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11",
+        "F13"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit",
+      "description": "Evaluate against F1-F13, produce verdicts and evidence bundles",
+      "tags": [
+        "audit",
+        "constitutional",
+        "F-floors"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F4",
+        "F7",
+        "F9",
+        "F11",
+        "F13"
+      ],
+      "riskClass": "high",
+      "executionAllowed": false,
+      "approval_policy": "888_HOLD or human"
+    },
+    {
+      "id": "APEX-fff-loop-protocol",
+      "name": "FFF Loop Protocol",
+      "description": "Forge-Fail-Fix loop with evidence and humility gating",
+      "tags": [
+        "forge",
+        "loop",
+        "evidence"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F8",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "ASI-agentic-architecture",
+      "name": "Agentic Architecture",
+      "description": "Design and maintain agent cards, skills binding, and capability surfaces",
+      "tags": [
+        "architecture",
+        "agent-card",
+        "skills-binding"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ],
+      "riskClass": "medium",
+      "executionAllowed": true
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
+  ],
+  "tier": "AGI",
+  "role": "build-harness / forge-citizen / agentic-cli",
+  "class": "HARNESS",
+  "transport": "CLI_TUI + ACP + HEADLESS + MCP",
+  "native_mcp": true,
+  "mcp_ready": true,
+  "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
+  "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
+  "config": "~/.grok/config.toml + project .grok/ + env",
+  "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
+  "governed_by": "arifOS F1-F13 (via context + skills) + A-FORGE (execution) + AAA (A2A registry + 888 deliberation) + human F13 veto",
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
+  "subAgentPolicy": {
+    "default": "888_HOLD for irreversible",
+    "maxParallel": "multiple (context-isolated)",
+    "registered": [
+      "general-purpose",
+      "explore",
+      "plan"
+    ],
+    "capability_modes": [
+      "read-only",
+      "read-write",
+      "execute",
+      "all"
+    ],
+    "isolation": [
+      "none",
+      "worktree"
+    ],
+    "resume_supported": true,
+    "personas": true
+  },
+  "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local. T2: announce for multi-file, deps, test-then-action. T3: 888_HOLD + human approval for prod deploy, force-push, secrets, vault writes, Caddy, rm unknown, cross-organ structural. Cannot self-SEAL irreversible. Uses dynamic-state probe before mutation. Full GitHub via MCP (auditable).",
+  "autonomy_tiers": {
+    "t1_auto_do": "Read files, grep, list, web/X research, edit with search_replace, run tests/builds locally, spawn explore subagents, use MCP tools (geox/wealth/well/github), todo, schedule, image gen, plan drafts",
+    "t2_announce_proceed": "Multi-file refactors, new deps (after test), local service restart after green, PR drafts, skill creation, manifest updates (non-prod)",
+    "t3_888_hold": "Production deploys without tests, force git, secret ops, VAULT999 writes, Caddy reloads, rm -rf unknown, DROP TABLE, cross-repo arch changes, any F13-gated action"
+  },
+  "topological_role": "Generator",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp",
+    "broker_rule": "External agents route through A-FORGE :7072 broker, never call AAA a2a directly"
+  },
+  "upgrade_history": [
+    {
+      "from_version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
+      "to_version": "2.0.0",
+      "upgraded_at": "2026-07-01T21:00:00Z",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "changes": [
+        "topological_role binding",
+        "a2a_transport declaration",
+        "mcp_binding mapping"
+      ]
+    }
+  ],
+  "": "arifOS/agent-card/v2.2.0",
+  "apexMasterSeal": {
+    "cognitiveRing": "generator",
+    "thermodynamicRole": "entropy_source",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "outer",
+      "parallelism": "multi-model",
+      "shadowAcknowledged": [
+        "thermal_dispersion: raw output without constraint degrades to noise",
+        "false_diversity: superficially different outputs encoding same blind spot"
+      ]
+    },
+    "jituGate": {
+      "requiresJitu": false,
+      "jituTriggerPatterns": [],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
+  },
+  "fi_slot": "FI-010",
+  "metadata": {
+    "fi_slot": "FI-010",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "5zenr4C3T4I7mOWkO26m/X3YX0wsM3oiEkdTEsStgfEDCsoxPixCt1BUysZTY1Yw/ukDeUVf2Vpw44Poni9LDw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

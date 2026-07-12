@@ -2,7 +2,7 @@
   "id": "FI-001",
   "name": "OpenCode",
   "class": "FORGE_INSTRUMENT",
-  "description": "Primary forge instrument. arifOS Forge Agent (Ω) runtime. DeepSeek-V4-Pro powered constitutional engineering agent.",
+  "description": "Primary forge instrument. arifOS Forge Agent (\u03a9) runtime. DeepSeek-V4-Pro powered constitutional engineering agent.",
   "version": "1.15.0",
   "model": "deepseek-v4-pro",
   "fallback_model": "deepseek-v4-flash",
@@ -77,5 +77,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "nFga/6GdjH50ac8REWWT8HIpJEYPiw5OTyVPUw64S67cwoU1ki69YbdbKm1AvTi4hRDEYSqw74AfCWNY0YtMCQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

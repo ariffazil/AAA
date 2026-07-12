@@ -1,0 +1,231 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "hermes-asi",
+  "name": "Hermes ASI",
+  "class": "ASI-Peripheral",
+  "bound_to": "555-ASI",
+  "power_band": "conversation_media_routing",
+  "skills_prefix": [
+    "HERMES-"
+  ],
+  "runtime_harness": "hermes_cli",
+  "identity_anchor": "/root/HERMES/SOUL.md",
+  "mcp_servers": [
+    "creative",
+    "media"
+  ],
+  "epistemic_floor": "F5",
+  "f1_boundary": "Read-only outside of conversational context. Mutative execution must route to FORGE- / opencode.",
+  "rollback_plan": "Terminate hermes_cli process and isolate from :3001 gateway.",
+  "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
+  "forged": "2026-07-13T00:00:00+08:00",
+  "motto": "DITEMPA BUKAN DIBERI",
+  "skills": [
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-quantum-runtime",
+      "name": "Quantum Runtime (APEX)",
+      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
+      "tags": [
+        "kernel",
+        "quantum",
+        "apex",
+        "intelligence"
+      ],
+      "floor_scope": [
+        "F2",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-qubit-substrate",
+      "name": "Qubit Substrate (Physics)",
+      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
+      "tags": [
+        "kernel",
+        "substrate",
+        "quantum",
+        "physics"
+      ],
+      "floor_scope": [
+        "F2",
+        "F10"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
+  ],
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.2",
+  "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "H+cOBtutzEGlLTXj9Ay8FLMrbFwUAlDQDeRV4xFfPS8TXD8/ycN9U9Lbodei/WdCp6o11zdenzAHQTxw4US7Cw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
+}

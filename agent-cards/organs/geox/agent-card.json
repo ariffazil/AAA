@@ -1,0 +1,351 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "geox",
+  "name": "GEOX",
+  "description": "Earth intelligence \u2014 basin analysis, seismic interpretation, petrophysics, wells, geomechanics, biostratigraphy, subsurface modeling, evidence synthesis. 31 MCP tools. EVIDENCE_ONLY.",
+  "version": "2026.07.12-aligned",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true,
+    "supportsToolDiscovery": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a/geox"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "endpoints": {
+    "baseUrl": "http://127.0.0.1:8081",
+    "mcp": "http://127.0.0.1:8081/mcp",
+    "health": "http://127.0.0.1:8081/health",
+    "card": "http://127.0.0.1:8081/.well-known/agent-card.json"
+  },
+  "skills": [
+    {
+      "id": "basin-analysis",
+      "name": "Basin Analysis",
+      "description": "Basin profiles, deep time, backstripping, sediment mass balance.",
+      "tags": [
+        "geox",
+        "basin"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_basin",
+          "description": "Basin intelligence: profiles, resolution, deep time state, Macrostrat API, spatial context, scene rendering. Use when: Use when you need basin evidence."
+        },
+        {
+          "name": "geox_deep_time_state",
+          "description": "Earth state vector at any geological age: plate polygons, basin architecture, paleobathymetry, heat flow, subsidence. Use when: Use when you need deep time stat"
+        },
+        {
+          "name": "geox_basin_backstrip",
+          "description": "Basin backstripping: decompact sedimentary layers and reconstruct subsidence history. Use when: Use when you need basin backstrip evidence."
+        },
+        {
+          "name": "geox_sediment_mass_balance",
+          "description": "Sediment mass balance: compute volumetric budgets and sediment supply rates for basin analysis. Use when: Use when you need sediment mass balance evidence."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "seismic-interpretation",
+      "name": "Seismic Interpretation",
+      "description": "Synthetic modeling, well-tie, AVO anomalous contrast, horizon/fault picking, inversion, VLM vision audit.",
+      "tags": [
+        "geox",
+        "seismic"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_seismic_compute",
+          "description": "Unified seismic computation & exploration.\n\nModes:\n  synthetic          - Forward model S = w * r + n\n  well_tie           - Seismic-to-well tie with cross-corr"
+        },
+        {
+          "name": "geox_seismic_ingest",
+          "description": "Load and inspect seismic data: SEG-Y headers, trace counts, sample intervals, volume metadata. Use when: Use when you need seismic ingest evidence."
+        },
+        {
+          "name": "geox_seismic_interpret",
+          "description": "Seismic interpretation: horizon detection, fault picking, volume blending, frame extraction. Use when: Use when you need seismic interpret evidence."
+        },
+        {
+          "name": "geox_vision",
+          "description": "Vision-based seismic interpretation using VLMs: analyze seismic images, audit interpretations, calibrate models. Use when: Use when you need vision evidence."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "petrophysics",
+      "name": "Petrophysics",
+      "description": "Vsh, \u03c6e, Sw, LEM inference, net pay, permeability.",
+      "tags": [
+        "geox",
+        "petrophysics"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_petrophysics",
+          "description": "Compute petrophysical properties: Vsh, porosity, Sw, permeability, net pay. Includes LEM physics-prior inference. Use when: Use when you need petrophysics evide"
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "well-operations",
+      "name": "Well Operations",
+      "description": "LAS / SEG-Y ingest, depth QC, well-desk panel rendering, deviation, DST.",
+      "tags": [
+        "geox",
+        "well"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_well_ingest",
+          "description": "Load well log data from LAS, SEG-Y, DST, deviation, or tops files. Auto-detects format. Use when: Use when you need well ingest evidence."
+        },
+        {
+          "name": "geox_well_qc",
+          "description": "Quality control checks on well data: depth monotonicity, null percentages, physical range checks, curve completeness. Use when: Use when you need well qc eviden"
+        },
+        {
+          "name": "geox_well_desk_open",
+          "description": "OBSERVE \u00b7 Open GEOX well-desk interactive view (SEP-1865).\n\nRead-only operator summary. Hosts that support MCP Apps open\nui://geox/well-desk (P0 single-file she"
+        },
+        {
+          "name": "geox_well_desk_publish",
+          "description": "MUTATE \u00b7 Publish a rendered well-desk image with embedded metadata.\n\nAccepts the base64-encoded PNG and its associated metadata, saves it\nto /root/GEOX/data/ren"
+        },
+        {
+          "name": "geox_render_well_panel",
+          "description": "OBSERVE \u00b7 Render well-log panel with petrophysics + earth meaning.\n\nDefault interpret=True: open LAS \u2192 Vsh/\u03c6e/Sw (DERIVED) + GR motif and\nreservoir/fluid read ("
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "geomechanics",
+      "name": "Geomechanics",
+      "description": "Elastic moduli (K, G, E, Poisson ratio), coordinate transforms, block resolution.",
+      "tags": [
+        "geox",
+        "geomechanics"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_geomechanics",
+          "description": "Geomechanical analysis: elastic moduli (K, G, E, Poisson ratio), coordinate transforms, block resolution. Use when: Use when you need geomechanics evidence."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "biostratigraphy",
+      "name": "Biostratigraphy",
+      "description": "Fossil age assignment parsing, falsification against strat constraints.",
+      "tags": [
+        "geox",
+        "biostrat"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_biostrat_parse",
+          "description": "Biostratigraphic data parsing: extract age-diagnostic fossil markers from well reports. Use when: Use when you need biostrat parse evidence."
+        },
+        {
+          "name": "geox_biostrat_falsify",
+          "description": "Biostratigraphic falsification: test fossil age assignments against stratigraphic constraints. Use when: Use when you need biostrat falsify evidence."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "subsurface-modeling",
+      "name": "Subsurface Modeling",
+      "description": "Joint inversion, gravity/magnetic/MT/CSEM forward modeling, sequence stratigraphy, thermal maturity history.",
+      "tags": [
+        "geox",
+        "modeling"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_subsurface_model",
+          "description": "Multi-physics subsurface modeling: joint inversion, gravity/magnetic forward modeling, MT/CSEM forward modeling. Use when: Use when you need subsurface model ev"
+        },
+        {
+          "name": "geox_sequence",
+          "description": "Sequence stratigraphy analysis: GR binning, parasequence packages, systems tract inference, well correlation. Use when: Use when you need sequence evidence."
+        },
+        {
+          "name": "geox_thermal_maturity_history",
+          "description": "Thermal maturity history: model burial, heat flow, and vitrinite reflectance evolution over time. Use when: Use when you need thermal maturity history evidence."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "evidence-synthesis",
+      "name": "Evidence Synthesis",
+      "description": "Cross-domain discovery, contradiction scanning, claim lifecycle, prospect evaluation, optionality loss, material truth challenge.",
+      "tags": [
+        "geox",
+        "evidence"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "geox_evidence",
+          "description": "Evidence discovery and synthesis: search corpus, cross-domain synthesis, hypothesis generation, contradiction scanning. Use when: Use when you need evidence evi"
+        },
+        {
+          "name": "geox_claim",
+          "description": "Geological claim lifecycle: create, validate, challenge, seal, attach evidence to structured interpretation claims. Use when: Use when you need claim evidence."
+        },
+        {
+          "name": "geox_prospect",
+          "description": "Prospect evaluation: volumetrics, probability of success, expected value of information, risk assessment. Use when: Use when you need prospect evidence."
+        },
+        {
+          "name": "geox_contrast_detect",
+          "description": "Anomalous contrast detection: identify seismic-geological mismatches at formation boundaries. Use when: Use when you need contrast detect evidence."
+        },
+        {
+          "name": "geox_consequence_footprint",
+          "description": "Compute physical and ecological consequences of a proposed action Use when: Use when you need consequence footprint evidence."
+        },
+        {
+          "name": "geox_optionality_loss",
+          "description": "Measure destroyed future physical options Use when: Use when you need optionality loss evidence."
+        },
+        {
+          "name": "geox_feedback_integrity",
+          "description": "Check whether physical monitoring is sufficient to detect drift Use when: Use when you need feedback integrity evidence."
+        },
+        {
+          "name": "geox_material_truth_challenge",
+          "description": "Compare institutional claims against Earth measurements Use when: Use when you need material truth challenge evidence."
+        },
+        {
+          "name": "geox_cascade_pathway",
+          "description": "Model cross-domain propagation from a physical event Use when: Use when you need cascade pathway evidence."
+        },
+        {
+          "name": "geox_map_context_scene",
+          "description": "Spatial bbox context, CRS checks, and causal scene rendering.\n\nModes:\n    - bbox_context: Return bbox summary and scene metadata (default).\n    - render_scene: "
+        },
+        {
+          "name": "geox_surface_status",
+          "description": "GEOX organ health check: version, tool count, canonical surface status, registration timestamp. Use when: Use when you need surface status evidence."
+        }
+      ],
+      "examples": []
+    }
+  ],
+  "skill_count": 8,
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "Ws6+vLgfwIjp1zmZk7fwv+GoKDMBNYOz4u5YHDlk6H9w7QaS5tfDkZjaQU7byZfwgaD+zy815mYlGmshJKQtBw==",
+      "proofPurpose": "assertionMethod",
+      "verificationMethod": "did:arif:aaa#z4eac9a785c9db1ca5cd93d186c53725dd9d9cd8813b5",
+      "canonicalization": "sorted-keys-compact-no-signatures",
+      "created": "2026-07-12T23:26:30Z",
+      "type": "Ed25519Signature2020",
+      "publicKeyB64": "8KwBmU8H1J65YLvtYPLqQnmUCIMuqkM6rCM22L5EtD8="
+    }
+  ]
+}

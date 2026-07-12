@@ -1,0 +1,100 @@
+{
+  "id": "FI-007",
+  "name": "Gemini CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Google Gemini CLI forge instrument \u2014 direct Gemini model harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced.",
+  "version": "2.0.0",
+  "model": "gemini-3.5-pro / gemini-3.5-flash",
+  "fallback_model": "gemini-3.5-flash",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-12",
+  "sandbox": "process",
+  "binary": "/root/.local/bin/gemini",
+  "mcpServers": [
+    "arifOS",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 2,
+    "registered": [
+      "explore",
+      "plan"
+    ]
+  },
+  "authority": "engineer",
+  "riskTier": "low",
+  "agent_ref": "gemini-cli",
+  "lastAudit": "2026-07-12T18:11:00Z",
+  "auditNote": "Allocated FI-009 by Kimi Code (FI-008) Zen alignment 2026-07-12. Previously orphan adapter without FI slot.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "e4IVCdtsrWbgpPYH+e8hs1yn/o+3+th4qf6lxlQrx6jAtf6crisrEjBNi/x4FcjexnMQz5d4oEnqnynlxSYVBw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}
