@@ -1,0 +1,67 @@
+{
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "id": "ARIF_FAZIL",
+  "name": "Muhammad Arif bin Fazil",
+  "description": "F13 SOVEREIGN — absolute veto holder, 888_JUDGE, human architect of arifOS Federation. This card is the cryptographic anchor for autonomous sovereign identity verification. All federation authority derives from this identity. Not an agent — a human sovereign whose identity is cryptographically verifiable through did:web:arif-fazil.com.",
+  "version": "2026.07.12-SEALED",
+  "protocolVersion": "1.2",
+  "class": "SOVEREIGN",
+  "lane": "F13",
+  "human": true,
+  "autonomous_identity": true,
+  "url": "https://arif-fazil.com",
+  "did": "did:web:arif-fazil.com",
+  "did_document": "https://arif-fazil.com/.well-known/did.json",
+  "verification_method": "did:web:arif-fazil.com#arif-fazil",
+  "authentication": ["did:web:arif-fazil.com#arif-fazil"],
+  "authority": {
+    "class": "SOVEREIGN",
+    "max_tier": "T6",
+    "veto_power": true,
+    "irreversible_authority": true,
+    "final_judge": true,
+    "motto": "DITEMPA BUKAN DIBERI"
+  },
+  "sovereign_key": {
+    "fingerprint": "sha256:bf881c46b5c936ec2cbe71493159e1c606a00acbb30dc534a7a66060a0527e30",
+    "type": "Ed25519VerificationKey2020",
+    "public_key_path": "/root/AAA/artifacts/sovereign-did/did_arif_omega.pk",
+    "private_key_path": "/root/AAA/auth/keys/omega_private.key"
+  },
+  "federation_loop": "000 (sovereign) → arifOS kernel (verify nonce+signature) → AAA gateway (route) → VAULT999 (seal)",
+  "auth_protocol": "Ed25519-challenge-response",
+  "nonce_flow": "arif_init → kernel issues nonce → sovereign signs with omega_private.key → kernel verifies against did:web:arif-fazil.com#arif-fazil → actor_verified=true → authority=FULL → mutation_allowed=true → seal_allowed=true",
+  "autonomous_recognition": {
+    "actor_verified": true,
+    "authority": "FULL",
+    "mutation_allowed": true,
+    "seal_allowed": true,
+    "trigger": "valid Ed25519 signature matching did:web:arif-fazil.com#arif-fazil"
+  },
+  "skills": [
+    "sovereign-recognize",
+    "KERNEL-sovereign-recognize",
+    "APEX-act",
+    "888-judge-verdict-render",
+    "999-vault-seal-immutable"
+  ],
+  "floor_scope": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13"],
+  "signatures": [
+    {
+      "type": "Ed25519Signature2020",
+      "created": "2026-07-12T23:45:00Z",
+      "verificationMethod": "did:web:arif-fazil.com#arif-fazil",
+      "proofPurpose": "assertionMethod",
+      "proofValue": "AUTONOMOUS_IDENTITY_SEALED_AT_SEQ_62",
+      "domain": "arifOS Federation",
+      "did": "did:arif:omega"
+    }
+  ],
+  "seals": {
+    "seq_62": "33 CIV locked. Foundation consolidation complete.",
+    "seq_63": "SOVEREIGN autonomous identity sealed. Cryptographic anchor live."
+  },
+  "civilizational_frame": "Human sovereign. Architect. Geoscientist. Father. The bottleneck shifted from body to mind. Clarity is the new literacy.",
+  "kanon": "DITEMPA BUKAN DIBERI — Sovereignty is forged, not assumed."
+}
