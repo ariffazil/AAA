@@ -4,10 +4,10 @@
   "name": "Hermes Ops",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself",
+    "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
-  "description": "Operator agent \u2014 execution, DevOps, workflows, CI/CD, deployment. Ship it clean.",
+  "description": "Operator agent — execution, DevOps, workflows, CI/CD, deployment. Ship it clean.",
   "url": "https://aaa.arif-fazil.com/a2a/hermes-ops",
   "preferred_transport": "jsonrpc-http",
   "provider": {
@@ -23,7 +23,7 @@
   },
   "skills": [
     {
-      "id": "code-execution",
+      "id": "FORGE-code-execution",
       "name": "Code Execution",
       "description": "Execute code, run tests, build artifacts",
       "tags": [
@@ -33,7 +33,7 @@
       ]
     },
     {
-      "id": "git-operations",
+      "id": "FORGE-git-operations",
       "name": "Git Operations",
       "description": "Git workflows, PRs, merges, releases",
       "tags": [
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "id": "deployment",
+      "id": "FORGE-deployment",
       "name": "Deployment",
       "description": "Deploy to various environments",
       "tags": [
@@ -53,7 +53,7 @@
       ]
     },
     {
-      "id": "workflow-automation",
+      "id": "FORGE-workflow-automation",
       "name": "Workflow Automation",
       "description": "Execute and orchestrate workflows",
       "tags": [
@@ -61,6 +61,41 @@
         "automation",
         "orchestration"
       ]
-    }
-  ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
+  ],
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

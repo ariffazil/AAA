@@ -20,7 +20,9 @@
     "authenticated_extended_card": true,
     "tool_calling": true,
     "mcp_native": true,
-    "extensions": ["arifos.verdict-grammar.v1"],
+    "extensions": [
+      "arifos.verdict-grammar.v1"
+    ],
     "gateway": {
       "task_routing": true,
       "skill_aggregation": true,
@@ -29,8 +31,14 @@
       "injection_defense": true
     }
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "securitySchemes": {
     "oauth2": {
       "type": "oauth2",
@@ -49,7 +57,11 @@
       "description": "arifOS session token"
     }
   },
-  "security": [{"bearer_auth": []}],
+  "security": [
+    {
+      "bearer_auth": []
+    }
+  ],
   "federation_organs": [
     {
       "id": "arifos-mcp",
@@ -57,7 +69,13 @@
       "url": "https://arifos.arif-fazil.com",
       "role": "judge",
       "authority": "verdict",
-      "skills": ["render_verdict", "gather_evidence", "reason", "route_intent", "seal_receipt"],
+      "skills": [
+        "render_verdict",
+        "gather_evidence",
+        "reason",
+        "route_intent",
+        "seal_receipt"
+      ],
       "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
     },
     {
@@ -66,7 +84,15 @@
       "url": "https://a-forge.arif-fazil.com",
       "role": "executor",
       "authority": "execution",
-      "skills": ["forge_execute", "forge_orchestrate", "forge_document_intelligence", "forge_browser", "forge_git", "forge_lease_acquire", "forge_vault_seal"],
+      "skills": [
+        "forge_execute",
+        "forge_orchestrate",
+        "forge_document_intelligence",
+        "forge_browser",
+        "forge_git",
+        "forge_lease_acquire",
+        "forge_vault_seal"
+      ],
       "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json"
     },
     {
@@ -75,7 +101,13 @@
       "url": "https://geox.arif-fazil.com",
       "role": "evidence",
       "authority": "EVIDENCE_ONLY",
-      "skills": ["evaluate_basin", "analyze_well", "rank_prospects", "falsify_hypothesis", "earth_evidence"],
+      "skills": [
+        "evaluate_basin",
+        "analyze_well",
+        "rank_prospects",
+        "falsify_hypothesis",
+        "earth_evidence"
+      ],
       "card_url": "https://geox.arif-fazil.com/.well-known/agent-card.json"
     },
     {
@@ -84,7 +116,14 @@
       "url": "https://wealth.arif-fazil.com",
       "role": "evidence",
       "authority": "ADVISORY_ONLY",
-      "skills": ["compute_npv", "compute_emv", "evaluate_wisdom", "audit_power", "scan_collapse", "stock_analysis"],
+      "skills": [
+        "compute_npv",
+        "compute_emv",
+        "evaluate_wisdom",
+        "audit_power",
+        "scan_collapse",
+        "stock_analysis"
+      ],
       "card_url": "https://wealth.arif-fazil.com/.well-known/agent-card.json"
     },
     {
@@ -93,56 +132,118 @@
       "url": "https://well.arif-fazil.com",
       "role": "evidence",
       "authority": "REFLECT_ONLY",
-      "skills": ["assess_homeostasis", "assess_livelihood", "guard_dignity", "validate_vitality", "classify_substrate"],
+      "skills": [
+        "assess_homeostasis",
+        "assess_livelihood",
+        "guard_dignity",
+        "validate_vitality",
+        "classify_substrate"
+      ],
       "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json"
     }
   ],
   "skills": [
     {
-      "id": "route_task",
+      "id": "FORGE-route-task",
       "name": "Task Routing",
       "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task → matches skill → routes to organ → streams result.",
-      "tags": ["routing", "gateway", "A2A", "orchestration"],
-      "floor_scope": ["F4","F8","F11"]
+      "tags": [
+        "routing",
+        "gateway",
+        "A2A",
+        "orchestration"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8",
+        "F11"
+      ]
     },
     {
-      "id": "enforce_sovereign_veto",
+      "id": "APEX-enforce-sovereign-veto",
       "name": "Sovereign Veto Enforcement",
       "description": "When any organ emits auth-required (HOLD), pause task, push-notify ARIF, await sovereign decision. Implements F13 at A2A protocol level.",
-      "tags": ["F13", "sovereign", "veto", "auth-required"],
-      "floor_scope": ["F11","F13"]
+      "tags": [
+        "F13",
+        "sovereign",
+        "veto",
+        "auth-required"
+      ],
+      "floor_scope": [
+        "F11",
+        "F13"
+      ]
     },
     {
-      "id": "aggregate_capabilities",
+      "id": "AGI-aggregate-capabilities",
       "name": "Capability Aggregation",
       "description": "Aggregate AgentCards from all 6 organs into a single federation manifest. Any A2A peer discovers the entire federation through this gateway.",
-      "tags": ["discovery", "aggregation", "manifest"],
-      "floor_scope": ["F4","F11"]
+      "tags": [
+        "discovery",
+        "aggregation",
+        "manifest"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
     },
     {
-      "id": "broker_webhooks",
+      "id": "FORGE-broker-webhooks",
       "name": "Webhook Broker",
       "description": "Relay push notifications from long-running organ tasks to registered webhook endpoints. GEOX basin analysis, WEALTH simulation, WELL monitoring.",
-      "tags": ["webhook", "push", "notification", "async"],
-      "floor_scope": ["F11"]
+      "tags": [
+        "webhook",
+        "push",
+        "notification",
+        "async"
+      ],
+      "floor_scope": [
+        "F11"
+      ]
     },
     {
-      "id": "defend_injection",
+      "id": "AUDIT-defend-injection",
       "name": "Injection Defense",
       "description": "F12 injection defense at gateway layer. All external A2A tasks scanned before routing to internal organs.",
-      "tags": ["security", "injection", "F12", "defense"],
-      "floor_scope": ["F12"]
+      "tags": [
+        "security",
+        "injection",
+        "F12",
+        "defense"
+      ],
+      "floor_scope": [
+        "F12"
+      ]
     },
     {
-      "id": "federated-memory-query",
+      "id": "ASI-federated-memory-query",
       "name": "Federated Memory Query",
       "description": "Query the zen federated memory state (L1-L6 layers, flow, rule). Surfaces kernel-governed memory (bands, provenance, no-bypass) as AA state. Kernel owns, AAA surfaces via Redis + /federation/memory.",
-      "tags": ["memory", "federation", "state", "L1-L6", "zen"],
-      "floor_scope": ["F2", "F4", "F11"]
+      "tags": [
+        "memory",
+        "federation",
+        "state",
+        "L1-L6",
+        "zen"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F11"
+      ]
     }
   ],
   "governance": {
-    "floors": ["F1","F2","F4","F8","F11","F12","F13"],
+    "floors": [
+      "F1",
+      "F2",
+      "F4",
+      "F8",
+      "F11",
+      "F12",
+      "F13"
+    ],
     "verdict_authority": "arifOS (port 8088)",
     "self_approval_forbidden": true,
     "authority_class": "gateway",
@@ -150,7 +251,15 @@
     "sovereign_veto": "push-notification"
   },
   "constitution": {
-    "floors_active": ["F1","F2","F4","F8","F11","F12","F13"],
+    "floors_active": [
+      "F1",
+      "F2",
+      "F4",
+      "F8",
+      "F11",
+      "F12",
+      "F13"
+    ],
     "governance_kernel": "arifOS (port 8088)",
     "execution_shell": "A-FORGE (port 7071)",
     "vault": "VAULT999"
@@ -160,6 +269,33 @@
     "created": "2026-07-02T04:50:00Z",
     "created_by": "FORGE (000Ω) — A2A Gateway pattern",
     "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
-    "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/"
-  }
+    "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "power_band": "routing",
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

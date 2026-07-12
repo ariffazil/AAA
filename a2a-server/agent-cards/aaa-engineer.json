@@ -41,11 +41,22 @@
     }
   ],
   "security": [
-    ["gateway-token"],
-    ["api-key", "mtls"]
+    [
+      "gateway-token"
+    ],
+    [
+      "api-key",
+      "mtls"
+    ]
   ],
-  "default_input_modes": ["application/json", "text/plain"],
-  "default_output_modes": ["application/json", "text/plain"],
+  "default_input_modes": [
+    "application/json",
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "application/json",
+    "text/plain"
+  ],
   "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
   "treaty_ref": "AAA-TREATY-v1.0.0",
   "lane": "AGI",
@@ -53,63 +64,144 @@
   "power_band": "execution_only",
   "skills": [
     {
-      "id": "run-task",
+      "id": "FORGE-run-task",
       "name": "Run Task",
       "description": "Execute a task locally using MCP tools. Respects task schema from A-rchitect. Records execution intent for A-auditor review.",
-      "tags": ["execute", "mcp", "local", "task"],
-      "floor_scope": ["F01", "F02", "F04", "F05", "F06"],
+      "tags": [
+        "execute",
+        "mcp",
+        "local",
+        "task"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F06"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json", "text/plain"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json",
+        "text/plain"
+      ]
     },
     {
-      "id": "dispatch-task",
+      "id": "FORGE-dispatch-task",
       "name": "Dispatch Task",
       "description": "Send a task to a downstream agent via A2A. Must pass A-auditor evaluate-delegation before dispatch. Returns taskId for tracking.",
-      "tags": ["dispatch", "a2a", "delegate", "downstream"],
-      "floor_scope": ["F01", "F02", "F05", "F06", "F09", "F12", "F13"],
+      "tags": [
+        "dispatch",
+        "a2a",
+        "delegate",
+        "downstream"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F05",
+        "F06",
+        "F09",
+        "F12",
+        "F13"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "irreversible",
       "judgment_required": true,
       "judgment_skill": "evaluate-delegation",
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
-      "id": "stream-progress",
+      "id": "FORGE-stream-progress",
       "name": "Stream Progress",
       "description": "Emit SSE stream events for a running task: status transitions, artifact chunks, log entries, hold events. Must not fabricate progress — truth in transit.",
-      "tags": ["stream", "sse", "progress", "events"],
-      "floor_scope": ["F01", "F02", "F04"],
+      "tags": [
+        "stream",
+        "sse",
+        "progress",
+        "events"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
-      "input_modes": ["application/json"],
-      "output_modes": ["text/event-stream"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "text/event-stream"
+      ]
     },
     {
-      "id": "manage-task-lifecycle",
+      "id": "FORGE-manage-task-lifecycle",
       "name": "Manage Task Lifecycle",
       "description": "Transition task through states: submitted→working→completed/failed/input_required/auth_required. Records timestamps and state reasons.",
-      "tags": ["task", "lifecycle", "state", "status"],
-      "floor_scope": ["F01", "F02", "F04"],
+      "tags": [
+        "task",
+        "lifecycle",
+        "state",
+        "status"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
-      "id": "receive-handoff",
+      "id": "FORGE-receive-handoff",
       "name": "Receive Handoff",
       "description": "Accept a handoff from a remote agent: receive context, validate schema, bind to session, record receipt. Must emit receipt to A-auditor.",
-      "tags": ["handoff", "receive", "context", "intake"],
-      "floor_scope": ["F01", "F02", "F04", "F05", "F11", "F12"],
+      "tags": [
+        "handoff",
+        "receive",
+        "context",
+        "intake"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F11",
+        "F12"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "irreversible",
       "judgment_required": true,
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
-    }
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
   ],
   "peers": [
     {
@@ -117,7 +209,9 @@
       "name": "AAA A-rchitect",
       "url": "https://aaa.arif-fazil.com/a2a/architect",
       "role": "schema_source",
-      "skills": ["design-task-schema"],
+      "skills": [
+        "design-task-schema"
+      ],
       "trust_tier": "governed"
     },
     {
@@ -125,7 +219,10 @@
       "name": "AAA A-auditor",
       "url": "https://aaa.arif-fazil.com/a2a/auditor",
       "role": "delegation_gate",
-      "skills": ["evaluate-delegation", "issue-hold"],
+      "skills": [
+        "evaluate-delegation",
+        "issue-hold"
+      ],
       "trust_tier": "governed"
     },
     {
@@ -133,7 +230,10 @@
       "name": "Hermes ASI",
       "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
       "role": "task_source",
-      "skills": ["routing", "autonomous-governed-execution"],
+      "skills": [
+        "routing",
+        "autonomous-governed-execution"
+      ],
       "trust_tier": "governed"
     }
   ],
@@ -152,6 +252,33 @@
     "lane": "AGI",
     "a_role": "A-engineer",
     "floor_version": "KANON-2026.05.01",
-    "treaty_id": "AAA-TREATY-v1.0.0"
-  }
+    "treaty_id": "AAA-TREATY-v1.0.0",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

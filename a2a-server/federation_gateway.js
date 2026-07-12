@@ -41,7 +41,7 @@ const SCHEME_MAP = {
 };
 
 // ── MCP Call Helper ───────────────────────────────────────────────────
-async function mcpCall(organKey, method, params = {}, timeoutMs = 10000) {
+async function mcpCall(organKey, method, params = {}, timeoutMs = 10000, identity = {}) {
   const organ = ORGANS[organKey];
   if (!organ) return { ok: false, error: `Unknown organ: ${organKey}` };
 
@@ -52,15 +52,19 @@ async function mcpCall(organKey, method, params = {}, timeoutMs = 10000) {
     id: `fgw-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,
   });
 
+  const headers = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Content-Length': Buffer.byteLength(payload),
+  };
+  if (identity.actor_id) headers['X-Actor-Id'] = identity.actor_id;
+  if (identity.session_id) headers['X-Session-Id'] = identity.session_id;
+
   return new Promise((resolve) => {
     const req = HTTP.request({
       hostname: organ.host, port: organ.port, path: '/mcp',
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Content-Length': Buffer.byteLength(payload),
-      },
+      headers,
       timeout: timeoutMs,
     }, (res) => {
       let data = '';

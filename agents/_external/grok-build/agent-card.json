@@ -5,10 +5,10 @@
   "name": "Grok Build 4.3 (xAI TUI)",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surfaces (repo-read/memory/write-gated), A2A delegation + arifos-mcp-federation. Complementary MCP (tools) + A2A (agents). Hybrid with xAI multi-agent for research.",
+  "description": "Grok Build harness as sovereign AAA citizen. Plan→search→build, superior parallelism (worktree/subagents), narrow MCP surfaces (repo-read/memory/write-gated), A2A delegation + arifos-mcp-federation. Complementary MCP (tools) + A2A (agents). Hybrid with xAI multi-agent for research.",
   "version": "2.0.0",
   "protocolVersion": "1.0.0",
   "url": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
@@ -56,7 +56,7 @@
   ],
   "skills": [
     {
-      "id": "plan-mode",
+      "id": "AGI-plan-mode",
       "name": "Plan Mode",
       "description": "Architecture exploration before edit for ambiguous tasks",
       "tags": [
@@ -74,7 +74,7 @@
       "approval_policy": "auto"
     },
     {
-      "id": "subagent-spawn",
+      "id": "FORGE-subagent-spawn",
       "name": "Subagent Spawn + Parallelism",
       "description": "True parallel with isolation, capability modes, resume chains",
       "tags": [
@@ -91,7 +91,7 @@
       "executionAllowed": true
     },
     {
-      "id": "implement-loop",
+      "id": "FORGE-implement-loop",
       "name": "Implement-Review-Fix Loop",
       "description": "Full build with reviewer subagents until clean",
       "tags": [
@@ -109,7 +109,7 @@
       "executionAllowed": true
     },
     {
-      "id": "mcp-federation",
+      "id": "APEX-mcp-federation",
       "name": "MCP Federation Router",
       "description": "Route tasks across arifOS/GEOX/WEALTH/WELL/A-FORGE/AAA + GitHub",
       "tags": [
@@ -126,7 +126,7 @@
       "executionAllowed": true
     },
     {
-      "id": "github-ops",
+      "id": "FORGE-github-ops",
       "name": "GitHub Deep Ops (95 tools)",
       "description": "Full repo/PR/issue/actions/code-search via MCP",
       "tags": [
@@ -143,7 +143,7 @@
       "approval_policy": "gated for merge"
     },
     {
-      "id": "workflow-dag",
+      "id": "AGI-workflow-dag",
       "name": "Execute Plan DAG",
       "description": "Topological worktree-isolated execution from design",
       "tags": [
@@ -159,7 +159,7 @@
       "executionAllowed": true
     },
     {
-      "id": "godel-humility",
+      "id": "APEX-godel-humility",
       "name": "Godel Humility Lock",
       "description": "Self-critique + epistemic humility before final claims",
       "tags": [
@@ -175,7 +175,7 @@
       "executionAllowed": false
     },
     {
-      "id": "image-video",
+      "id": "FORGE-image-video",
       "name": "Image/Video Generation + Edit",
       "description": "Imagine API + reference transforms",
       "tags": [
@@ -189,7 +189,7 @@
       "executionAllowed": true
     },
     {
-      "id": "autonomous-governed-execution",
+      "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
       "description": "Execute within T1/T2 bands with F1-F13 gates and 888_HOLD for T3",
       "tags": [
@@ -207,7 +207,7 @@
       "executionAllowed": true
     },
     {
-      "id": "arifos-arconstitutional-audit",
+      "id": "APEX-constitutional-audit",
       "name": "arifOS Constitutional Audit",
       "description": "Evaluate against F1-F13, produce verdicts and evidence bundles",
       "tags": [
@@ -229,7 +229,7 @@
       "approval_policy": "888_HOLD or human"
     },
     {
-      "id": "fff-loop-protocol",
+      "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol",
       "description": "Forge-Fail-Fix loop with evidence and humility gating",
       "tags": [
@@ -247,7 +247,7 @@
       "executionAllowed": true
     },
     {
-      "id": "agentic-architecture",
+      "id": "ASI-agentic-architecture",
       "name": "Agentic Architecture",
       "description": "Design and maintain agent cards, skills binding, and capability surfaces",
       "tags": [
@@ -261,7 +261,74 @@
       ],
       "riskClass": "medium",
       "executionAllowed": true
-    }
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
   ],
   "tier": "AGI",
   "role": "build-harness / forge-citizen / agentic-cli",
@@ -280,36 +347,106 @@
       {
         "url": "http://localhost:8088/mcp",
         "tool_count": 7,
-        "tools": ["arif_init","arif_observe","arif_think","arif_route","arif_judge","arif_act","arif_seal"],
-        "key_lanes": ["governance","judgment","session"],
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:7072/mcp",
         "tool_count": 72,
-        "tools": ["forge_shell","forge_git","forge_filesystem","forge_docker","forge_execute","forge_lease","forge_probe","forge_registry","forge_vault","forge_document_ingest"],
-        "key_lanes": ["execution","build","deploy"],
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:8081/mcp",
         "tool_count": 35,
-        "tools": ["geox_basin","geox_prospect","geox_evidence","geox_petrophysics","geox_seismic_compute","geox_well_desurvey","geox_claim","geox_map_layers_list","geox_vision","geox_atlas"],
-        "key_lanes": ["earth","basin","seismic"],
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:18082/mcp",
         "tool_count": 26,
-        "tools": ["wealth_compute_emv","wealth_compute_npv","wealth_compute_irr","wealth_collapse_signature_scan","wealth_boundary_governance","wealth_wisdom_evaluate","wealth_power_audit","wealth_survival_engine","wealth_stock_analysis","wealth_monte_carlo_simulate"],
-        "key_lanes": ["capital","risk","wisdom"],
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:18083/mcp",
         "tool_count": 22,
-        "tools": ["well_validate_vitality","well_assess_homeostasis","well_guard_dignity","well_assess_metabolism","well_readiness","well_classify_substrate","well_health_check","well_signal_coverage"],
-        "key_lanes": ["vitality","dignity","homeostasis"],
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
         "version": "2025-11-25"
       }
     ]
@@ -370,7 +507,7 @@
       "from_version": "4.3.0 / build-tui ~0.2.60 (Grok Build 0.1 model lineage)",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -399,5 +536,36 @@
     "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
-  }
+  },
+  "fi_slot": "FI-010",
+  "metadata": {
+    "fi_slot": "FI-010",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

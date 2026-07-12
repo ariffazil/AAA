@@ -1,0 +1,43 @@
+---
+name: FORGE-grok-profile
+forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
+forged: 2026-07-12T18:28Z
+rationale: Grok-build (FI-010) has 0 specifically-authored skills. Audit flagged: general FORGE- surface is excellent, but grok's xAI-flavored execution harness (worktree/subagent parallel, 256K ctx, Grok-4.3 fork tuned for agentic SE/tool-calling/structured) is under-bridged. Phase 3 gap fill.
+floor_scope: [F1, F2, F4, F8, F11, F13]
+tags: [forge, grok, fi-010, worktree, parallel-subagent, 256k-context]
+status: NEW (Phase 3 gap fill)
+---
+
+# FORGE · grok-profile
+
+> Wrapper that aligns generic FORGE- skills with Grok Build 4.3's native execution profile.
+> Use: bind to FI-010 (`grok-build`); Claude/Kimi/Hermes wrappers don't apply.
+
+## Native profile (Grok Build 4.3 — xAI fork)
+
+- **Context window:** 256K tokens (long-log, large-repo)
+- **Tool calling:** structured / strict schema preferred
+- **Parallelism:** `subAgentPolicy.maxParallel = 3` via worktree isolation
+- **Bias:** raw code compilation, CLI exec, heavy engineering
+
+## Mandatory FOOTPRINT for any Grok-bound FORGE skill
+
+1. **Prefer worktree-isolated execution.** `isolation: worktree` on `forge_execute`.
+2. **Long-context compression gate.** When raw log > 256k, run `FORGE-context-compress` first.
+3. **Strict schema on tool calls.** Use OpenAPI-style typed returns, not free-form JSON.
+4. **Parallel subagent budget.** Default `maxParallel=2` for grok; escalate to 3 only with 888_HOLD.
+5. **T3 audits logged to VAULT999.** Grok is `T3_888_HOLD`-sensitive on:
+   - `rm -rf` unknowns
+   - secret handling
+   - Caddy reloads
+   - production deploy without test
+
+## Profile flag
+
+Set `agent_type: grok-build` in skill frontmatter to opt into this profile. Grok profile is mutually exclusive with `agent_type: claude` / `agent_type: hermes` / `agent_type: codex`.
+
+## Not instead of
+
+Adapts existing FORGE- skills (FORGE-docker, FORGE-fastmcp, FORGE-precommit-gate, etc.) to Grok's bias. Does not replace the underlying FORGE skill — only the discipline around its invocation.
+
+DITEMPA BUKAN DIBERI.
