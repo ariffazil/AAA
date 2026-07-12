@@ -2221,15 +2221,28 @@ app.get('/a2a/sense/vision', async (req, res) => {
 // Maps ui://geox/well-desk → /mcp-apps/well-desk
 // DITEMPA BUKAN DIBERI — MIME type per SEP-1865 stable 2026-01-26
 const APP_ROOTS = {
-  'well-desk': '/root/geox/apps/well-desk/index.html',
-  'earth-volume': '/root/geox/apps/earth-volume/index.html',
-  'judge-console': '/root/geox/apps/judge-console/index.html',
+  // G3 / Viz P0+: CSP-tight canvas shell (full desk remains at index.html)
+  'well-desk': '/root/GEOX/apps/well-desk/p0-viz.html',
+  'earth-volume': '/root/GEOX/apps/earth-volume/index.html',
+  'judge-console': '/root/GEOX/apps/judge-console/index.html',
 };
 const APP_MANIFESTS = {
   'well-desk': '/root/geox/apps/well-desk/manifest.json',
   'earth-volume': '/root/geox/apps/earth-volume/manifest.json',
   'judge-console': '/root/geox/apps/judge-console/manifest.json',
 };
+const P0_MCP_APP_CSP = [
+  "default-src 'none'",
+  "script-src 'unsafe-inline'",
+  "style-src 'unsafe-inline'",
+  "img-src data: blob:",
+  "font-src data:",
+  "connect-src 'none'",
+  "frame-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+  "object-src 'none'",
+].join('; ');
 function isSafeAppId(id) {
   return /^[a-z0-9][a-z0-9-_]*$/.test(id);
 }
@@ -2268,17 +2281,20 @@ app.get('/mcp-apps/:app_id', async (req, res) => {
   }
   try {
     const fs = await import('node:fs/promises');
-    const path = await import('node:path');
+    const isP0 = htmlPath.endsWith('/p0.html') || htmlPath.endsWith('/p0-viz.html');
     const [html, manifestRaw] = await Promise.all([
       fs.readFile(htmlPath, 'utf8'),
-      APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], 'utf8').catch(() => '{}') : Promise.resolve('{}'),
+      !isP0 && APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], 'utf8').catch(() => '{}') : Promise.resolve('{}'),
     ]);
     const manifest = JSON.parse(manifestRaw || '{}');
+    const csp = isP0 ? P0_MCP_APP_CSP : buildCspFromManifest(manifest);
+    console.info('mcp-app-csp', { appId, isP0, csp, ts: new Date().toISOString() });
     res.status(200);
     res.setHeader('Content-Type', 'text/html;profile=mcp-app; charset=utf-8');
     res.setHeader('X-Content-Type-Options', 'nosniff');
     res.setHeader('Cache-Control', 'private, max-age=60');
-    res.setHeader('Content-Security-Policy', buildCspFromManifest(manifest));
+    res.setHeader('Content-Security-Policy', csp);
+    res.setHeader('X-MCP-App-CSP-Mode', isP0 ? 'p0-strict' : 'manifest');
     res.setHeader('Cross-Origin-Resource-Policy', 'cross-origin');
     res.send(html);
   } catch (error) {
@@ -2286,6 +2302,12 @@ app.get('/mcp-apps/:app_id', async (req, res) => {
     res.status(500).json({ error: 'app_serve_failed' });
   }
 });
+
+// ── MCP Apps tools/call proxy (G4 wire) — guest→host→organ, never browser→organ ──
+// POST /api/mcp-apps/tools/call  { appId, tool, arguments }
+// OBSERVE allowlist → GEOX with session lifecycle; mutate → 403 HOLD
+const { mountMcpAppsToolsCall } = require('./mcp_apps_tools_call');
+mountMcpAppsToolsCall(app);
 
 // ── A2A TASK DISPATCH (forged 2026-06-21) ──────────────────────────────────
 // Standard A2A endpoint for agents to send tasks through the mesh.

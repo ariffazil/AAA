@@ -20,6 +20,7 @@ import {
   AlertCircle,
   LayoutGrid,
 } from 'lucide-react';
+import { MCPAppsHostBridge } from '../host/MCPAppsHostBridge';
 
 // ── App Registry ────────────────────────────────────────────────────────────
 // Canonical list of registered MCP Apps with metadata.
@@ -167,9 +168,9 @@ function parseJsonRpcMessage(value: unknown): JsonRpcMessage | null {
 export default function MCPAppsPanel() {
   const [activeApps, setActiveApps] = useState<Map<string, ActiveApp>>(new Map());
   const [fullscreenApp, setFullscreenApp] = useState<string | null>(null);
-  const pendingRequestsRef = useRef<Map<string, Map<number, PendingRequest>>>(new Map());
-  const messageHandlersRef = useRef<Map<string, (event: MessageEvent) => void>>(new Map());
-  const nextIdRef = useRef<Map<string, number>>(new Map());
+  /** G3: mount points for double-iframe Sandbox Proxy via MCPAppsHostBridge */
+  const mountRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+  const bridgesRef = useRef<Map<string, MCPAppsHostBridge>>(new Map());
 
   // ── Launch an MCP App ─────────────────────────────────────────────────
 
@@ -190,23 +191,16 @@ export default function MCPAppsPanel() {
   // ── Close an MCP App ──────────────────────────────────────────────────
 
   const closeApp = useCallback((appId: string) => {
-    // Send teardown notification
-    const iframe = document.querySelector(`iframe[data-app-id="${appId}"]`) as HTMLIFrameElement | null;
-    if (iframe?.contentWindow) {
-      iframe.contentWindow.postMessage({
-        jsonrpc: '2.0',
-        method: 'ui/resource-teardown',
-        params: { reason: 'user_closed' },
-      }, '*');
+    const bridge = bridgesRef.current.get(appId);
+    if (bridge) {
+      try {
+        bridge.teardownApp(appId, 'user_closed');
+      } catch {
+        /* ignore */
+      }
+      bridgesRef.current.delete(appId);
     }
-    // Clean up message handler
-    const handler = messageHandlersRef.current.get(appId);
-    if (handler) {
-      window.removeEventListener('message', handler);
-      messageHandlersRef.current.delete(appId);
-    }
-    pendingRequestsRef.current.delete(appId);
-    nextIdRef.current.delete(appId);
+    mountRefs.current.delete(appId);
 
     setActiveApps(prev => {
       const next = new Map(prev);
@@ -232,76 +226,79 @@ export default function MCPAppsPanel() {
     setFullscreenApp(prev => prev === appId ? null : appId);
   }, []);
 
-  // ── Post message to iframe ─────────────────────────────────────────────
+  // ── G3: mount Sandbox Proxy when mount node is ready ─────────────────
 
-  const postToView = useCallback((appId: string, payload: Record<string, unknown>) => {
-    const iframe = document.querySelector(`iframe[data-app-id="${appId}"]`) as HTMLIFrameElement | null;
-    if (iframe?.contentWindow) {
-      iframe.contentWindow.postMessage(payload, window.location.origin);
+  const setMountNode = useCallback((appId: string, node: HTMLDivElement | null) => {
+    if (!node) {
+      mountRefs.current.delete(appId);
+      return;
     }
-  }, []);
+    mountRefs.current.set(appId, node);
+    if (bridgesRef.current.has(appId)) return;
 
-  // ── Wire message listener for each app ────────────────────────────────
+    const bridge = new MCPAppsHostBridge(node);
+    bridgesRef.current.set(appId, bridge);
 
-  const wireMessageListener = useCallback((appId: string) => {
-    // Clean up existing handler
-    const oldHandler = messageHandlersRef.current.get(appId);
-    if (oldHandler) window.removeEventListener('message', oldHandler);
+    bridge.onToolResult((_id, envelope) => {
+      setActiveApps(prev => {
+        const app = prev.get(appId);
+        if (!app) return prev;
+        const next = new Map(prev);
+        next.set(appId, {
+          ...app,
+          governanceState: envelope as ArifOsEnvelope,
+        });
+        return next;
+      });
+    });
 
-    if (!nextIdRef.current.has(appId)) {
-      nextIdRef.current.set(appId, 1);
-    }
-    if (!pendingRequestsRef.current.has(appId)) {
-      pendingRequestsRef.current.set(appId, new Map());
-    }
-
-    const handler = (event: MessageEvent) => {
-      const iframe = document.querySelector(`iframe[data-app-id="${appId}"]`) as HTMLIFrameElement | null;
-      if (!iframe || event.source !== iframe.contentWindow) return;
-
-      const data = parseJsonRpcMessage(event.data);
-      if (!data) return;
-
-      // Response correlation
-      if (typeof data.id === 'number' && (data.result !== undefined || data.error !== undefined)) {
-        const pending = pendingRequestsRef.current.get(appId);
-        if (pending) {
-          const pendingEntry = pending.get(data.id);
-          if (pendingEntry) {
-            pending.delete(data.id);
-            if (data.error) pendingEntry.reject(new Error(data.error.message ?? 'RPC error'));
-            else pendingEntry.resolve(data.result);
-          }
+    // tools/call from guest → AAA host proxy (connect-src none on guest).
+    // OBSERVE allowlist → GEOX session path; mutate → 403 HOLD (arifOS lease later).
+    bridge.onToolCall(async (id, name, args) => {
+      console.info(`[MCP Apps] tools/call app=${id} tool=${name}`, args);
+      try {
+        const res = await fetch('/api/mcp-apps/tools/call', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            appId: id,
+            tool: name,
+            arguments: args || {},
+          }),
+        });
+        const data = await res.json().catch(() => null);
+        if (!data || typeof data !== 'object') {
+          return {
+            ok: false,
+            isError: true,
+            message: `Host proxy HTTP ${res.status} — empty body`,
+            tool: name,
+          };
         }
-        return;
+        if (!res.ok && data.hold) {
+          // Policy HOLD — return envelope so guest can render
+          return data;
+        }
+        if (!res.ok && data.ok === false) {
+          return data;
+        }
+        return data;
+      } catch (err) {
+        console.error(`[MCP Apps] tools/call proxy failed app=${id} tool=${name}`, err);
+        return {
+          ok: false,
+          isError: true,
+          message: err instanceof Error ? err.message : 'tools/call proxy failed',
+          tool: name,
+        };
       }
+    });
 
-      // Handle View-initiated methods
-      switch (data.method) {
-        case 'ui/initialize': {
-          postToView(appId, {
-            jsonrpc: '2.0',
-            id: data.id,
-            result: {
-              protocolVersion: '2026-01-26',
-              hostCapabilities: {
-                serverTools: {},
-                serverResources: {},
-                logging: {},
-                sandbox: {},
-              },
-              hostInfo: { name: 'aaa-cockpit', version: '1.0.0' },
-              hostContext: {
-                theme: document.documentElement.getAttribute('data-theme') || 'dark',
-                displayMode: 'inline',
-                platform: 'desktop',
-              },
-            },
-          });
-          break;
-        }
-
-        case 'ui/notifications/initialized': {
+    try {
+      bridge.mountApp(appId, {
+        displayMode: 'inline',
+        onReady: () => {
           setActiveApps(prev => {
             const app = prev.get(appId);
             if (!app) return prev;
@@ -309,71 +306,35 @@ export default function MCPAppsPanel() {
             next.set(appId, { ...app, state: 'ready' });
             return next;
           });
-          break;
-        }
-
-        case 'ui/update-model-context': {
-          const sc = data.params?.structuredContent;
-          const envelope = isRecord(sc) ? sc.envelope : null;
-          if (envelope) {
-            setActiveApps(prev => {
-              const app = prev.get(appId);
-              if (!app) return prev;
-              const next = new Map(prev);
-              next.set(appId, { ...app, governanceState: envelope as ArifOsEnvelope });
-              return next;
-            });
-          }
-          postToView(appId, {
-            jsonrpc: '2.0',
-            id: data.id,
-            result: { ok: true },
-          });
-          break;
-        }
-
-        case 'ui/open-link': {
-          const url = data.params?.url;
-          if (typeof url === 'string') window.open(url, '_blank');
-          break;
-        }
-
-        case 'resources/read': {
-          postToView(appId, {
-            jsonrpc: '2.0',
-            id: data.id,
-            error: { code: -32601, message: 'resources/read not available in cockpit bridge' },
-          });
-          break;
-        }
-      }
-    };
-
-    window.addEventListener('message', handler);
-    messageHandlersRef.current.set(appId, handler);
-  }, [postToView]);
-
-  // Wire message listeners when active apps change
-  useEffect(() => {
-    for (const [appId, app] of activeApps) {
-      if (app.state === 'initializing') {
-        wireMessageListener(appId);
-      }
+        },
+      });
+    } catch (err) {
+      setActiveApps(prev => {
+        const app = prev.get(appId);
+        if (!app) return prev;
+        const next = new Map(prev);
+        next.set(appId, {
+          ...app,
+          state: 'error',
+          errorMessage: err instanceof Error ? err.message : 'mount failed',
+        });
+        return next;
+      });
     }
-  }, [activeApps, wireMessageListener]);
+  }, []);
 
-  // Cleanup on unmount
+  // Cleanup bridges on unmount
   useEffect(() => {
-    const messageHandlers = messageHandlersRef.current;
-    const pendingRequests = pendingRequestsRef.current;
-    const nextIds = nextIdRef.current;
+    const bridges = bridgesRef.current;
     return () => {
-      for (const handler of messageHandlers.values()) {
-        window.removeEventListener('message', handler);
+      for (const [appId, bridge] of bridges) {
+        try {
+          bridge.teardownApp(appId, 'panel_unmount');
+        } catch {
+          /* ignore */
+        }
       }
-      messageHandlers.clear();
-      pendingRequests.clear();
-      nextIds.clear();
+      bridges.clear();
     };
   }, []);
 
@@ -433,7 +394,7 @@ export default function MCPAppsPanel() {
             Launch an MCP App above to see its interface here
           </p>
           <p className="text-[10px] text-white/20 font-mono mt-2">
-            MCP Apps render sandboxed UIs via the SEP-1865 iframe/postMessage protocol
+            SEP-1865 · G3 double-iframe Sandbox Proxy · postMessage JSON-RPC
           </p>
         </div>
       ) : (
@@ -493,10 +454,10 @@ export default function MCPAppsPanel() {
                 </div>
               </div>
 
-              {/* Iframe Container */}
+              {/* G3 double-iframe mount (Sandbox Proxy + guest) */}
               <div className={`relative ${app.displayMode === 'fullscreen' ? 'h-[calc(100vh-48px)]' : 'min-h-[500px]'}`}>
                 {app.state === 'error' && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-red-950/20">
+                  <div className="absolute inset-0 flex items-center justify-center bg-red-950/20 z-10">
                     <div className="text-center">
                       <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
                       <p className="text-sm text-red-400 font-mono">Failed to load {app.descriptor.label}</p>
@@ -506,23 +467,16 @@ export default function MCPAppsPanel() {
                     </div>
                   </div>
                 )}
-                <iframe
+                <div
+                  ref={(node) => setMountNode(appId, node)}
                   data-app-id={appId}
-                  src={`/mcp-apps/${appId}`}
-                  className="w-full h-full min-h-[500px] border-0"
-                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                  allow="clipboard-read; clipboard-write"
-                  onError={() => {
-                    setActiveApps(prev => {
-                      const a = prev.get(appId);
-                      if (!a) return prev;
-                      const next = new Map(prev);
-                      next.set(appId, { ...a, state: 'error', errorMessage: 'iframe load error' });
-                      return next;
-                    });
-                  }}
+                  data-g3="true"
+                  className="w-full h-full min-h-[500px]"
                   title={app.descriptor.label}
                 />
+                <div className="absolute bottom-2 right-2 text-[8px] font-mono text-white/25 uppercase tracking-widest pointer-events-none">
+                  G3 Sandbox Proxy · double-iframe
+                </div>
 
                 {/* Governance Overlay */}
                 {app.governanceState && renderGovernanceOverlay(app.governanceState)}
