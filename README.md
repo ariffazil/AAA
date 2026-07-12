@@ -1,5 +1,5 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.10-FEDERATION-GATEWAY
+federation_release: v2026.07.12-CONSOLIDATION-EPOCH
 last_verified: 2026-07-10T05:50Z
 live_commit: a71976a2
 a2a_port: 3001
