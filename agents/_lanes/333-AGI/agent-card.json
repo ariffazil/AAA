@@ -39,7 +39,8 @@
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,
-    "stateTransitionHistory": true
+    "stateTransitionHistory": true,
+    "spawnAgents": true
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -393,5 +394,36 @@
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
     "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+  },
+  "spawning": {
+    "protocol": "forge_parallel",
+    "pre_seal_audit": true,
+    "can_spawn": [
+      "auditor",
+      "ops",
+      "planner",
+      "general",
+      "explore"
+    ],
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "tools": [
+      "task",
+      "forge_parallel",
+      "forge_pipeline_run"
+    ],
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "recursive_uncertainty_protocol": {
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "recursive": true,
+      "max_depth": 5,
+      "ask_human_only_for": "human_intent",
+      "never": [
+        "stop_early",
+        "collapse",
+        "ask_questions",
+        "return_unvetted"
+      ],
+      "directive": "F13 SOVEREIGN 2026-07-12"
+    }
   }
 }
