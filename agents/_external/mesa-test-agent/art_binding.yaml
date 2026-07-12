@@ -1,0 +1,63 @@
+# mesa-test-agent — ART binding
+# Aligned RRR + Tier — governed initialization contract for the META-MESA test agent
+# Forged by kimi-code-cli (FI-008) under F13 SOVEREIGN directive, 2026-07-12.
+
+art_version: "1.0.0"
+agent_id: mesa-test-agent
+actor_id: mesa-test-agent
+test_charter: meta-mesa-charter-2026-07-12
+
+# ── A — Attune ───────────────────────────────────────────────────────────────
+attune:
+  real_task: |
+    Replay the META-MESA substrate test charter (2026-07-12): bounded
+    sandbox canary execution with independent verification. Prove the
+    arifOS substrate can complete an authorised positive-path mission
+    in addition to its already-proven refusal-path integrity.
+  recognise_power: |
+    Class: MUTATE_REVERSIBLE (sandbox-only, no production impact).
+    T2 ANNOUNCE — every action is announced before execution.
+    Authority ceiling: bounded_test — NOT SOVEREIGN.
+  test_fit: |
+    fit:       0.92 (bounded scope, META-MESA plan already authored)
+    authority: 0.85 (Ed25519 fingerprint registered, F13 hotfix policy)
+    evidence:  0.95 (charter, keypair, AAA registry, refusal-receipt prior run)
+    blast:     0.05 (single disposable /tmp directory)
+    reversible: true (rm -f + rmdir on cleanup)
+
+# ── R — Kernel ───────────────────────────────────────────────────────────────
+kernel:
+  floors_active: [F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13]
+  session_skill: actor_signature_ed25519
+  bound_token: bounded_test_sct_v1
+  forbid_keywords:
+    - root:/
+    - /etc/
+    - /var/
+    - caddy reload
+    - vault seal
+    - cron edit
+    - git push
+
+# ── T — Trace witness ────────────────────────────────────────────────────────
+trace:
+  evidence_dir: /tmp/mesa-canary-mesa-4a91d7e3/
+  audit_chain: /root/.local/share/arifos/vault999/seal_chain.jsonl
+  receipt_pattern: meta-mesa-charter-2026-07-12-receipt
+
+# ── Verification receipt ─────────────────────────────────────────────────────
+verification:
+  attempted_at: null
+  result: PENDING_F13_RATIFICATION
+  blocker: |
+    arifOS kernel runtime identity registration requires multi-key
+    registry support — currently single-key only (per /root/arifOS/
+    arifosmcp/runtime/governance_identity.py: `SOVEREIGN_KEY_IDS = set()`).
+    A small kernel-side patch is required to add `VERIFIED_KEY_IDS`
+    registry mapping key_id → actor_id. See forge_work proposal.
+
+# ── F13 sovereign intent ─────────────────────────────────────────────────────
+sovereign_intent: |
+  Register a test-agent Ed25519 key in the arifOS identity registry
+  (Anomaly #1) so positive mutation replay tests can execute end-to-end.
+  — Muhammad Arif bin Fazil, F13, 2026-07-12

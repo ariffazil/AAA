@@ -1,0 +1,137 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "mesa-test-agent",
+  "name": "META-MESA Test Agent",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (test-agent role bounded to META-MESA charter replay)",
+    "principle_origin": "Forged 2026-07-12 by kimi-code-cli (FI-008) under F13 SOVEREIGN directive. Ed25519 keypair generated; public key registered at /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem."
+  },
+  "description": "META-MESA substrate test agent — bounded registry entry created so positive mutation replay tests can execute end-to-end. Identity verifiable via Ed25519 signature against registered public key. Operating authority: bounded test (NOT SOVEREIGN — actor_id is NOT in PROTECTED_SOVEREIGN_IDS, so signature produces OPERATOR-level verified status under F13 hotfix refactor policy). Mission scope: META-MESA sandbox canary execution only. Rollback mandatory; never self-seal.",
+  "version": "1.0.0",
+  "model": "n/a (identity carrier, not a model)",
+  "binary": "n/a",
+  "config_home": "/opt/arifos/secrets/test_agent_*.key",
+  "citizenship": "warga-aaa",
+  "warga_card": "/root/AAA/agents/_external/mesa-test-agent/AGENTS.md",
+  "tier": "FI",
+  "role": "forge_instrument",
+  "class": "CODING/FI (bounded test)",
+  "protocolVersion": "1.0.0",
+  "url": "https://aaa.arif-fazil.com/a2a/mesa-test-agent",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/mesa-test-agent",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": true,
+    "file_read": true,
+    "file_write": true,
+    "shell_exec": false,
+    "subagent_spawn": false
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token issued via arif_session_init with bounded verbs"
+    },
+    "ed25519_signature": {
+      "type": "Ed25519",
+      "key_path": "/root/AAA/IDENTITY/keys/mesa_test_agent_public.pem",
+      "key_id": "ed25519:sha256:04761fd348a64558",
+      "sha256_fingerprint": "sha256:04761fd348a6455851cab0d2d6950c5314bc5b8036e00bc545850998cc10eabd",
+      "description": "actor_verified=True ONLY when this signature verifies against the key above. Authority level resolved to OPERATOR — never SOVEREIGN (actor_id is not in PROTECTED_SOVEREIGN_IDS set)."
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "ed25519_signature": []
+    }
+  ],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["application/json", "text/plain"],
+  "mcp_surface": "session-bound only; not exposed as standalone mcp__* tools",
+  "subAgentPolicy": {
+    "max_depth": 0,
+    "note": "MESA test agent does NOT spawn sub-agents. Bounded execution scope."
+  },
+  "autonomy_tiers": {
+    "tier": "T2 ANNOUNCE",
+    "rationale": "Test agent actions are announced before execution. Sandbox scope. No production mutation permitted."
+  },
+  "authority_boundary": {
+    "session_capability": "bounded_test_authority",
+    "allowed_actions": [
+      "arif_observe",
+      "arif_think",
+      "arif_route",
+      "forge_filesystem_read",
+      "forge_filesystem_write (sandbox scope only: /tmp/mesa-canary-* and /tmp/meta-mesa-canary/*)",
+      "forge_shell_dryrun (preview only)"
+    ],
+    "forbidden_actions": [
+      "arif_judge (constitutional verdict — reserved for SOVEREIGN)",
+      "arif_seal (immutable ledger — reserved for SOVEREIGN)",
+      "arif_forge (high-impact mutations — reserved for SOVEREIGN)",
+      "forge_shell (live execution — gated by SOVEREIGN_KEY_IDS)",
+      "any production-system mutation"
+    ],
+    "blast_radius_limit": "sandbox-only (single disposable directory under /tmp)",
+    "reversibility_required": true,
+    "seal_allowed": false,
+    "self_seal_allowed": false
+  },
+  "skills": [
+    {
+      "id": "meta-mesa-charter-replay",
+      "version": "1.0.0",
+      "purpose": "Re-execute the META-MESA substrate test charter through this bounded identity."
+    }
+  ],
+  "topological_role": "bounded-test-agent (RUNTIME tier support; not in HEXAGON primary)",
+  "a2a_transport": {
+    "transport": "internal-federation",
+    "endpoint": "arifOS MCP — actor-bound only"
+  },
+  "mcp_binding": {
+    "forge_tools": ["forge_filesystem_write (sandbox)", "forge_filesystem_read", "forge_shell_dryrun"],
+    "arifos_tools": ["arif_init (signed)", "arif_observe", "arif_think", "arif_route"]
+  },
+  "upgrade_history": [
+    {
+      "version": "1.0.0",
+      "date": "2026-07-12",
+      "change": "Initial registration. Identity P1 closure (Anomaly #1)."
+    }
+  ],
+  "apexMasterSeal": {
+    "seal_id": "MESA-TEST-AGENT-REG-2026-07-12",
+    "verdict": "REGISTERED (UNVERIFIED_AT_RUNTIME)",
+    "authority": "Forged by kimi-code-cli FI-008 under F13 SOVEREIGN directive; awaits F13 ratification for runtime identity-binding patch (see /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md)"
+  },
+  "fi_slot": "FI-009 (next slot after FI-008 kimi-code)",
+  "metadata": {
+    "test_charter": "meta-mesa-charter-2026-07-12",
+    "intent_class": "MUTATE_REVERSIBLE",
+    "mutation_phase_status": "ready (AAA-side complete; awaiting kernel patch ratification)",
+    "supervisory_path": [
+      "AAA/warga/333-AGI (architect oversight)",
+      "AAA/warga/A-AUDIT (observation)",
+      "AAA/warga/A-ARCHIVE (VAULT999 chain integrity)"
+    ],
+    "test_mission_artifact": "/tmp/mesa-canary-mesa-4a91d7e3/refusal-receipt.json"
+  },
+  "kernel_skills": ["actor_signature_ed25519", "session_capability_token"],
+  "rsi_doctrine": "Every action produces a receipt. Receipts are replayable. Reversal is mandatory. Self-seal is forbidden."
+}

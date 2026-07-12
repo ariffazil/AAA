@@ -4,7 +4,7 @@
   "protocolVersion": "1.0.1",
   "architecture": "Proposal C \u2014 Hybrid 7 (3 Primary Federation + 2 Support Control Plane + 2 Runtime Live Agents)",
   "lastValidated": "2026-06-23T00:00:00Z",
-  "notes": "Added grok-build (xAI Grok 4.3 Build TUI harness) as CODING/HARNESS citizen. Full card + supporting in /agents/grok-build/. Mirrored to a2a-server/agent-cards/. High subagent + MCP + workflow surface. Per Arif directive 2026-06-22.\n[2026-06-22] FI Citizens skills binding sweep \u2014 9 citizens wired with 8-skill baseline (9 new entries added). Pattern: /root/HERMES/skills/aaa-agentic-governance/references/orthogonal-skill-binding-pattern-2026-06-22.md\n\n[2026-06-22] Principal agent classification applied across 18 cards. Distribution: 5 architect (HEXAGON), 3 agent (RUNTIME), 10 llm (FI). human/institution/earth/void/liar/unknown slots reserved for future citizens. Pattern: /root/AAA/contracts/AAA_PRINCIPAL_AGENT.md (pending forge).\n[2026-06-23] Principal Agent Taxonomy ratified in contracts/principal-agent-taxonomy.md (9 values + binding schema). All citizens classified. Marginal improvement: +F11 auditability (explicit 'who stands behind'), +A2A routing/policy clarity, +honest capability surfacing for llm vs architect. ART-ACT Gold seal. See artifacts for receipt.\n[2026-06-23] Grok Build self-knowledge update (AAA toolbench registry refresh): added full 'toolbench' object to grok-build entry (model xai/grok-build-0.1, 256K, 3-stage plan\u2192search\u2192build, 8 agents, MCP Claude auto-ingest, SWE-Bench~70.8%, tool err~1.27%, structured~0.53%). Synced docs/card. DITEMPA BUKAN DIBERI.\n[2026-06-26] af-forge CLI binding sweep: qwen-code promoted to first-class FI citizen, 777-forge restored to machine registry, and observed binary paths aligned to live VPS reality for codex/opencode/kimi/gemini/copilot/continue.",
+  "notes": "Added grok-build (xAI Grok 4.3 Build TUI harness) as CODING/HARNESS citizen. Full card + supporting in /agents/grok-build/. Mirrored to a2a-server/agent-cards/. High subagent + MCP + workflow surface. Per Arif directive 2026-06-22.\n[2026-06-22] FI Citizens skills binding sweep \u2014 9 citizens wired with 8-skill baseline (9 new entries added). Pattern: /root/HERMES/skills/aaa-agentic-governance/references/orthogonal-skill-binding-pattern-2026-06-22.md\n\n[2026-06-22] Principal agent classification applied across 18 cards. Distribution: 5 architect (HEXAGON), 3 agent (RUNTIME), 10 llm (FI). human/institution/earth/void/liar/unknown slots reserved for future citizens. Pattern: /root/AAA/contracts/AAA_PRINCIPAL_AGENT.md (pending forge).\n[2026-06-23] Principal Agent Taxonomy ratified in contracts/principal-agent-taxonomy.md (9 values + binding schema). All citizens classified. Marginal improvement: +F11 auditability (explicit 'who stands behind'), +A2A routing/policy clarity, +honest capability surfacing for llm vs architect. ART-ACT Gold seal. See artifacts for receipt.\n[2026-06-23] Grok Build self-knowledge update (AAA toolbench registry refresh): added full 'toolbench' object to grok-build entry (model xai/grok-build-0.1, 256K, 3-stage plan\u2192search\u2192build, 8 agents, MCP Claude auto-ingest, SWE-Bench~70.8%, tool err~1.27%, structured~0.53%). Synced docs/card. DITEMPA BUKAN DIBERI.\n[2026-06-26] af-forge CLI binding sweep: qwen-code promoted to first-class FI citizen, 777-forge restored to machine registry, and observed binary paths aligned to live VPS reality for codex/opencode/kimi/gemini/copilot/continue.\n[2026-07-12] mesa-test-agent (FI-009) added \u2014 META-MESA substrate test agent. Ed25519 key generated at /opt/arifos/secrets/test_agent_*.key. Public key registered at /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem. Awaiting F13 ratification for kernel-side multi-key patch (see /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md).",
   "motto": "DITEMPA BUKAN DIBERI",
   "author": "Muhammad Arif bin Fazil",
   "forgedAt": "2026-06-02T19:56:36Z",
@@ -674,6 +674,15 @@
       "principal_agent": "agent",
       "added": "2026-06-22",
       "note": "Operator/devops persona of Hermes runtime"
+    },
+    {
+      "id": "mesa-test-agent",
+      "name": "META-MESA Test Agent",
+      "tier": "FI",
+      "role": "forge_instrument",
+      "skills_count": 1,
+      "added": "2026-07-12",
+      "principal_agent": "llm"
     }
   ]
 }
