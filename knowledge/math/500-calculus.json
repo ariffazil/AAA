@@ -1,0 +1,35 @@
+{
+  "id": "500",
+  "name": "Calculus",
+  "band": "math",
+  "description": "Differential calculus, integral calculus, ordinary differential equations. The mathematics of rates of change, accumulation, and continuous-time dynamics. Foundation of all physics modeling, control theory, and economic dynamics. Depends on 444 (algebra) for limit structure and field properties. Feeds into 533 (analysis as its rigorous foundation), 555 (topology via differentiable manifolds), and 566 (linear algebra via Jacobians and gradients).",
+  "axioms": [
+    "Fundamental theorem of calculus (Parts I & II): differentiation and integration are inverse operations",
+    "Mean value theorem: \u2203 c \u2208 (a,b) such that f'(c) = (f(b)-f(a))/(b-a)",
+    "Chain rule: d/dx f(g(x)) = f'(g(x))\u00b7g'(x)",
+    "Product rule: (fg)' = f'g + fg'",
+    "Leibniz integral rule: differentiation under the integral sign",
+    "Existence and uniqueness theorem for ODE initial value problems (Picard-Lindel\u00f6f)",
+    "Taylor's theorem: C\u207f functions can be approximated by polynomials"
+  ],
+  "reasoning_patterns": [
+    "rate analysis via derivatives",
+    "accumulation computation via integrals",
+    "optimization via critical point analysis",
+    "ODE classification (linear/nonlinear, autonomous, order) and solving",
+    "series expansion (Taylor, Maclaurin, Fourier)",
+    "implicit differentiation and related rates",
+    "separation of variables for ODEs"
+  ],
+  "boundary_conditions": [
+    "Not all functions are differentiable (Weierstrass function is continuous but nowhere differentiable)",
+    "Not all ODEs have closed-form solutions \u2014 most real systems require numerical methods",
+    "Improper integrals may diverge",
+    "Many integrals have no elementary antiderivative (Liouville's theorem)",
+    "Taylor series may converge to wrong function (smooth non-analytic functions exist)"
+  ],
+  "dependencies": [
+    "444-algebra"
+  ],
+  "epistemic_floor": "DERIVED"
+}

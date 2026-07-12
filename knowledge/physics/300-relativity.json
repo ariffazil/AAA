@@ -1,0 +1,57 @@
+{
+  "id": "300",
+  "name": "Relativity",
+  "band": "physics",
+  "description": "Special relativity (1905) and general relativity (1915) \u2014 Einstein's theories of space, time, and gravity. Special relativity unifies space and time into spacetime and reveals the equivalence of mass and energy. General relativity extends this to describe gravity as the curvature of spacetime produced by mass-energy.",
+  "axioms": [
+    "Special relativity: the laws of physics are the same in all inertial reference frames",
+    "Light postulate: the speed of light in vacuum, c, is constant in all inertial frames",
+    "Spacetime interval: ds\u00b2 = -c\u00b2dt\u00b2 + dx\u00b2 + dy\u00b2 + dz\u00b2 is invariant under Lorentz transformations",
+    "Equivalence principle: gravitational and inertial mass are identical; locally, gravity is indistinguishable from acceleration",
+    "General relativity: mass-energy tells spacetime how to curve; curved spacetime tells mass-energy how to move (Einstein field equations)",
+    "Geodesic equation: free-falling particles follow straightest possible paths (geodesics) in curved spacetime",
+    "The cosmological constant \u039b can be included in the Einstein field equations: G_\u03bc\u03bd + \u039bg_\u03bc\u03bd = (8\u03c0G/c\u2074)T_\u03bc\u03bd"
+  ],
+  "reasoning_patterns": [
+    "Tensor calculus: systematic index manipulation with covariant/contravariant components and Einstein summation",
+    "Metric analysis: from a given metric, extract distances, angles, time dilation, and causal structure",
+    "Geodesic computation: solve the geodesic equation to find particle trajectories and light paths in curved spacetime",
+    "Symmetry exploitation: identify Killing vectors \u2192 conserved quantities along geodesics in GR",
+    "Limiting case reduction: reduce to Newtonian gravity when v \u226a c and the gravitational field is weak",
+    "Lorentz transformation: calculate time dilation, length contraction, and relativity of simultaneity in SR",
+    "Stress-energy analysis: construct T_\u03bc\u03bd for the matter/energy distribution to source the Einstein equations"
+  ],
+  "boundary_conditions": [
+    "Singularities (black hole centers, Big Bang) signal the breakdown of classical GR \u2014 needs quantum gravity",
+    "Does not cover quantum gravity \u2014 GR and quantum mechanics are mathematically incompatible (non-renormalizable)",
+    "Dark energy requires a cosmological constant or modified gravity \u2014 the nature of dark energy is unknown",
+    "Gravitational wave detection is observational, not theoretical \u2014 GR predicted them in 1916, LIGO confirmed in 2015",
+    "No preferred frame exists \u2014 Mach's principle (that inertia derives from distant masses) is not fully incorporated"
+  ],
+  "dependencies": [
+    "000",
+    "100",
+    "200",
+    "233",
+    "333",
+    "366",
+    "400"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Einstein, A. (1905). Zur Elektrodynamik bewegter K\u00f6rper (SR)",
+    "Einstein, A. (1915). Die Feldgleichungen der Gravitation (GR)",
+    "Misner, Thorne & Wheeler. Gravitation",
+    "Weinberg, S. Gravitation and Cosmology",
+    "Carroll, S. Spacetime and Geometry",
+    "Penrose, R. The Road to Reality (GR chapters)"
+  ],
+  "canonical_truths": [
+    "E = mc\u00b2 \u2014 mass and energy are equivalent; the most famous equation in physics",
+    "Time dilation: moving clocks run slower (confirmed by GPS satellites to ~10\u207b\u2079 precision)",
+    "Gravitational lensing: light bends around massive objects (first confirmed by Eddington 1919 eclipse expedition)",
+    "Black holes exist \u2014 confirmed by LIGO gravitational wave detections (GW150914) and Event Horizon Telescope imaging (M87*)",
+    "The universe is expanding (Hubble 1929) and accelerating (Riess, Perlmutter, Schmidt 1998 \u2014 Nobel 2011)",
+    "Gravitational waves travel at c \u2014 confirmed by GW170817 electromagnetic counterpart detection"
+  ]
+}

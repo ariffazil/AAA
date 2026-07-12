@@ -1,151 +1,248 @@
 {
-  "name": "arifOS AAA Control Plane",
-  "description": "Sovereign ASI civilization control plane for the arif-fazil.com federation. Issues HOLD and SEAL decisions. Accepts tasks from agents and routes to A-FORGE after human approval. Constitutional governance via F1-F13 floors.",
-  "url": "https://aaa.arif-fazil.com",
-  "provider": {
-    "organization": "arifOS Federation",
-    "url": "https://arif-fazil.com"
-  },
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
   "version": "1.0.0",
-  "documentationUrl": "https://aaa.arif-fazil.com/docs",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
   "capabilities": {
     "streaming": true,
-    "pushNotifications": true,
+    "pushNotifications": false,
     "stateTransitionHistory": true,
-    "supportsAuthenticatedExtendedCard": true
+    "extendedAgentCard": true
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "securitySchemes": {
-    "bearer_auth": {
-      "type": "http",
+    "bearer": {
       "scheme": "bearer",
-      "bearerFormat": "JWT",
-      "description": "A2A bearer token (A2A_TOKEN env)"
+      "description": "AAA-issued JWT bearer token"
     },
-    "api_key": {
-      "type": "apiKey",
+    "apikey": {
+      "scheme": "apikey",
       "in": "header",
-      "name": "x-a2a-key",
-      "description": "A2A API key for service-to-service auth"
+      "name": "x-a2a-key"
     }
   },
-  "security": [
-    { "bearer_auth": [] },
-    { "api_key": [] }
-  ],
+  "agentId": "arifos",
+  "name": "arifOS Kernel",
+  "description": "Constitutional kernel \u2014 F1-F13 governance, session lifecycle, judgment, VAULT999 sealing, and sovereign routing for the arifOS federation.",
   "skills": [
     {
-      "id": "hold.request",
-      "name": "Request HOLD",
-      "description": "Registers a HOLD for human review. Maps to A2A INPUT_REQUIRED state. Blocks execution until human SEAL or REJECT.",
-      "tags": ["hold", "human-veto", "governance", "888"],
-      "inputModes": ["application/json"],
-      "outputModes": ["application/json"],
-      "examples": [
-        "Request HOLD for irreversible deployment action",
-        "Request HOLD for financial transaction above threshold"
+      "id": "arif_init",
+      "name": "Session Init",
+      "description": "Bind session, floors, audit. 000_INIT stage.",
+      "tags": [
+        "kernel",
+        "session",
+        "000"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "forge.delegate",
-      "name": "Delegate to A-FORGE",
-      "description": "After SEAL, delegates a task to A-FORGE execution engine. Requires valid seal_id from prior judge path. Returns task receipt.",
-      "tags": ["delegation", "execution", "a-forge", "sealed"],
-      "inputModes": ["application/json"],
-      "outputModes": ["application/json"],
-      "examples": [
-        "Delegate code deployment task with SEAL",
-        "Delegate infrastructure change with prior approval"
+      "id": "arif_observe",
+      "name": "Observe Reality",
+      "description": "Sense evidence \u2014 search, fetch, vitals, atlas. 111_SENSE stage.",
+      "tags": [
+        "kernel",
+        "evidence",
+        "111"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "federation.status",
-      "name": "Federation Status",
-      "description": "Returns live health status of all federation organs (arifOS, A-FORGE, GEOX, WEALTH, WELL). Read-only, no side effects.",
-      "tags": ["status", "health", "federation", "read-only"],
-      "inputModes": ["application/json"],
-      "outputModes": ["application/json"],
-      "examples": [
-        "Check which federation organs are alive",
-        "Get federation health dashboard data"
+      "id": "arif_think",
+      "name": "Structured Reasoning",
+      "description": "Reason, plan, verify, reflect. 333_REASON stage.",
+      "tags": [
+        "kernel",
+        "reasoning",
+        "333"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "agent.dispatch",
-      "name": "Agent Dispatch",
-      "description": "Dispatches a task to a specific warga agent (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE). Agent routing through OpenClaw gateway.",
-      "tags": ["dispatch", "routing", "warga", "agents"],
-      "inputModes": ["text/plain", "application/json"],
-      "outputModes": ["text/plain", "application/json"],
-      "examples": [
-        "Dispatch reasoning task to 333-AGI",
-        "Dispatch audit task to A-AUDIT"
+      "id": "arif_route",
+      "name": "Intent Router",
+      "description": "Route intent to correct organ. 444_ROUTE stage.",
+      "tags": [
+        "kernel",
+        "routing",
+        "444"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "constitutional.boot",
-      "name": "Constitutional Boot Sequence",
-      "description": "Reads ROOT_CANON.yaml, SOUL.md, USER.md, AGENTS.md, IDENTITY.md at session start. Establishes F1-F13 binding before any interaction.",
-      "tags": ["boot", "constitution", "f1-f13", "session-init"],
-      "inputModes": ["application/json"],
-      "outputModes": ["application/json"],
-      "examples": [
-        "Initialize constitutional session",
-        "Boot agent with F1-F13 floor binding"
+      "id": "arif_critique",
+      "name": "Ethical Critique",
+      "description": "Maruah, risk, floor stress. 555_CRITIQUE stage.",
+      "tags": [
+        "kernel",
+        "ethics",
+        "555"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "vault.seal",
-      "name": "VAULT999 Sealing",
-      "description": "Submits consequential events to VAULT999 (append-only, hash-chained). Requires ack_irreversible=true and actor_signature per F1 AMANAH.",
-      "tags": ["vault", "seal", "audit", "immutable"],
-      "inputModes": ["application/json"],
-      "outputModes": ["application/json"],
-      "examples": [
-        "Seal completed task receipt to VAULT999",
-        "Record constitutional decision in immutable ledger"
+      "id": "arif_memory",
+      "name": "Memory Governor",
+      "description": "Recall, store, promote, audit memory across tiers.",
+      "tags": [
+        "kernel",
+        "memory"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_forge",
+      "name": "Execution Gate",
+      "description": "Execute only after SEAL + lease. 777_FORGE stage.",
+      "tags": [
+        "kernel",
+        "execution",
+        "777"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_judge",
+      "name": "Constitutional Verdict",
+      "description": "SEAL/HOLD/SABAR/VOID. 888_JUDGE stage.",
+      "tags": [
+        "kernel",
+        "judgment",
+        "888"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_seal",
+      "name": "VAULT999 Seal",
+      "description": "Immutable append to civilization memory. 999_SEAL stage.",
+      "tags": [
+        "kernel",
+        "vault",
+        "999"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_compose",
+      "name": "Response Composer",
+      "description": "Format governed response for human consumption.",
+      "tags": [
+        "kernel",
+        "output"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_verify",
+      "name": "Pre-Execution Padlock",
+      "description": "SEAL padlock for IRREVERSIBLE shell commands.",
+      "tags": [
+        "kernel",
+        "security",
+        "irreversible"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "arif_bridge",
+      "name": "Cross-Organ Bridge",
+      "description": "Direct organ bridge for HIGH-priority routing.",
+      "tags": [
+        "kernel",
+        "routing",
+        "bridge"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     }
   ],
-  "extensions": [
+  "signatures": [
     {
-      "uri": "arif-fazil.com/ext/constitution",
-      "description": "arifOS constitutional floors (F1-F13) binding",
-      "data": {
-        "floors_active": ["F1", "F2", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
-        "governance_kernel": "arifOS (port 8088)",
-        "control_plane": "AAA (ariffazil/AAA)",
-        "execution_shell": "A-FORGE (ariffazil/A-FORGE)"
-      }
-    },
-    {
-      "uri": "arif-fazil.com/ext/federation",
-      "description": "Federation topology and warga agents",
-      "data": {
-        "warga": ["333-AGI", "555-ASI", "888-APEX", "A-AUDIT", "A-ARCHIVE"],
-        "organs": ["arifOS", "A-FORGE", "GEOX", "WEALTH", "WELL"],
-        "trust_hierarchy": "Human (Arif) > arifOS > AAA > A-FORGE > Specialists"
-      }
-    },
-    {
-      "uri": "arif-fazil.com/ext/tenancy",
-      "description": "Multi-tenancy support for protocol-level isolation",
-      "data": {
-        "supported_tenants": ["personal", "PETRONAS"],
-        "default_tenant": "personal",
-        "tenant_routing": "body-based"
-      }
+      "did": "did:arif:aaa",
+      "proofValue": "FS+d/Tm94jjMTmlnDjVw+2oNflBSAqn41n+4bLiwFwlHs4oPRMrU41uV/JfEu2r8udB0UCNjVY4bOk5IpWNKCA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:23:15Z",
+      "type": "Ed25519Signature2020"
     }
   ],
-  "metadata": {
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "a2a_spec_version": "1.0.0",
-    "aligned_at": "2026-07-02",
-    "aligned_by": "FORGE (000Ω)",
-    "previous_version": "2.2.0",
-    "rationale": "Aligned to official A2A Protocol v1.0.0. Extensions preserve arifOS governance. HOLD maps to INPUT_REQUIRED in wire format. contextId maps to session lineage.",
-    "constitutional_overlay": true,
-    "governance_above_transport": true
-  }
+  "did": "did:web:arif-fazil.com",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
 }

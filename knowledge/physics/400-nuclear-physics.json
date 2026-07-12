@@ -1,0 +1,58 @@
+{
+  "id": "400",
+  "name": "Nuclear Physics",
+  "band": "physics",
+  "description": "Nuclear structure, fission, fusion, radioactive decay, and nuclear reactions. Nuclear physics explores the atomic nucleus \u2014 protons and neutrons bound by the strong nuclear force. It explains the stability of matter, the energy of stars, the decay of radioactive elements, and provides the basis for nuclear energy and medical imaging.",
+  "axioms": [
+    "Strong nuclear force: the residual interaction between nucleons (protons and neutrons); short-range (~1 fm), spin-dependent, charge-independent",
+    "Nuclear binding energy: B(Z,N) = [Zm_p + Nm_n - m_nucleus]c\u00b2 \u2014 the mass defect is the energy that holds the nucleus together",
+    "Radioactive decay: N(t) = N\u2080e^(-\u03bbt); half-life t\u2081/\u2082 = ln 2/\u03bb \u2014 exponential decay is universal",
+    "Fission: a heavy nucleus (e.g., U-235) absorbs a neutron and splits, releasing ~200 MeV per fission \u2014 chain reaction possible",
+    "Fusion: light nuclei combine to form a heavier nucleus + energy \u2014 the energy source of stars and thermonuclear weapons",
+    "Nuclear shell model: nucleons occupy orbitals; magic numbers (2, 8, 20, 28, 50, 82, 126) indicate closed shells and enhanced stability",
+    "Liquid drop model: the nucleus behaves like an incompressible charged liquid drop \u2014 explains fission and binding energy trends (Bethe-Weizs\u00e4cker formula)"
+  ],
+  "reasoning_patterns": [
+    "Binding energy curve analysis: the binding energy per nucleon peaks at Fe-56 (~8.8 MeV/nucleon) \u2014 fission releases energy for A > 56, fusion for A < 56",
+    "Decay chain tracking: follow radioactive series (U-238, Th-232, U-235) through successive alpha and beta decays to stable lead isotopes",
+    "Cross-section computation: predict reaction rates from nuclear matrix elements \u2014 critical for reactor design and nucleosynthesis",
+    "Shell model calculation: fill nuclear orbitals following the nuclear Pauli principle, predict ground-state spin, parity, and magnetic moment",
+    "Neutron transport: model neutron diffusion, slowing down, and multiplication in reactor cores \u2014 Boltzmann transport equation",
+    "Beta decay analysis: classify \u03b2\u207b (n \u2192 p + e\u207b + \u03bd\u0304_e), \u03b2\u207a (p \u2192 n + e\u207a + \u03bd_e), and electron capture",
+    "Alpha decay: tunneling through the Coulomb barrier \u2014 Geiger-Nuttall law relates decay energy to half-life"
+  ],
+  "boundary_conditions": [
+    "Does not cover nuclear engineering (reactor design, safety systems, fuel cycle optimization)",
+    "Does not cover health physics or radiation protection in full detail",
+    "Quark-gluon plasma requires particle physics and QCD at high temperature/density",
+    "Nuclear astrophysics (r-process, s-process, p-process nucleosynthesis) overlaps with astrophysics domain",
+    "The equation of state of nuclear matter at high density is not fully constrained (e.g., neutron star interiors)",
+    "Exotic nuclei far from the valley of stability have short half-lives and are poorly characterized"
+  ],
+  "dependencies": [
+    "000",
+    "133",
+    "233",
+    "266",
+    "300",
+    "366"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Krane, K.S. Introductory Nuclear Physics",
+    "Ring & Schuck. The Nuclear Many-Body Problem",
+    "Bohr & Mottelson. Nuclear Structure (2 volumes)",
+    "Bethe & Morrison. Elementary Nuclear Theory",
+    "IAEA Nuclear Data Services \u2014 NuDat, ENDF/B library",
+    "Rolfs & Rodney. Cauldrons in the Cosmos"
+  ],
+  "canonical_truths": [
+    "E = mc\u00b2 applies directly to nuclear binding energy \u2014 the mass defect is real, measurable energy",
+    "Iron-56 has the highest binding energy per nucleon (~8.8 MeV) \u2014 the most stable nucleus",
+    "Nuclear fission of U-235 releases ~200 MeV per fission event \u2014 compared to ~4 eV per chemical reaction",
+    "Solar energy comes from the pp-chain fusion: 4p \u2192 \u2074He + 2e\u207a + 2\u03bd_e + 26.73 MeV",
+    "Half-lives span ~54 orders of magnitude: from 10\u207b\u00b2\u00b2 s to 10\u00b3\u00b2 years (Te-128)",
+    "The neutron is stable inside a nucleus (bound by the strong force) but decays in free space in ~15 minutes",
+    "Magic-number nuclei are anomalously stable \u2014 the doubly magic \u2074\u2070Ca, \u2074\u2078Ca, \u00b2\u2070\u2078Pb are milestones in nuclear structure"
+  ]
+}

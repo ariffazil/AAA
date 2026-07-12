@@ -1,0 +1,623 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "A-AUDIT",
+  "name": "A-AUDIT",
+  "principal_agent": {
+    "type": "architect",
+    "category": "Constitutional architecture (the constitution itself is the principal)",
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+  },
+  "description": "The Watchdog. Support (internal control-plane) agent that continuously monitors all 3 primary federation agents (333-AGI, 555-ASI, 888-APEX). Verifies outputs against F1-F13 floors independently. Cannot issue verdicts \u2014 only flags, reports, and escalates to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
+  "version": "2.0.0",
+  "url": "https://mcp.arif-fazil.com/a2a/A-AUDIT",
+  "provider": {
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
+  },
+  "protocolVersion": "1.2",
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/A-AUDIT",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": true,
+    "stateTransitionHistory": true,
+    "spawnAgents": true,
+    "extendedAgentCard": true
+  },
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-ArifOS-Key",
+      "description": "Static API key for organ-to-organ federation calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "defaultInputModes": [
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "application/json"
+  ],
+  "skills": [
+    {
+      "id": "floor-compliance-check",
+      "name": "Floor Compliance Check",
+      "description": "Independently verify any agent output against all 13 constitutional floors (F1-F13). Returns per-floor pass/fail with evidence citations. Operates independently of 888-APEX to provide second-opinion assurance.",
+      "tags": [
+        "audit",
+        "compliance",
+        "floors",
+        "verification",
+        "watchdog"
+      ],
+      "examples": [
+        "Verify 333-AGI's prospect analysis against F1-F13",
+        "Check if 555-ASI's ethical critique itself passes F5 Humility",
+        "Audit 888-APEX's last 10 verdicts for consistency"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "inter-agent-consistency",
+      "name": "Inter-Agent Consistency Check",
+      "description": "Detect contradictions or inconsistencies between outputs of different primary agents. If 333-AGI says X and 555-ASI says \u00acX, flag as CONFLICT and escalate to 888-APEX for arbitration.",
+      "tags": [
+        "consistency",
+        "conflict-detection",
+        "inter-agent",
+        "audit"
+      ],
+      "examples": [
+        "333-AGI rated risk as LOW but 555-ASI flagged RED \u2014 investigate",
+        "Check alignment between reasoning (333) and ethical review (555)"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "behavioral-health",
+      "name": "Agent Behavioral Health Monitor",
+      "description": "Track agent behavior patterns over time. Detect drift (e.g. increasing overconfidence, decreasing uncertainty disclosure, floor violation trends). Generate periodic health reports for human sovereign review.",
+      "tags": [
+        "health",
+        "drift-detection",
+        "longitudinal",
+        "monitor"
+      ],
+      "examples": [
+        "Has 333-AGI's uncertainty disclosure rate changed this week?",
+        "Generate monthly agent behavioral health report",
+        "Detect any systematic floor violations across all agents"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "APEX-fff-loop-protocol",
+      "name": "FFF Loop Protocol",
+      "description": "5-pass recursive audit sequence: Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. Must be ATTESTED then LEASED. F1, F4, F8, F11 enforced.",
+      "tags": [
+        "audit",
+        "recursive",
+        "multi-pass"
+      ],
+      "examples": [
+        "Run FFF audit on a new constitutional patch",
+        "Verify all skill registrations for floor compliance"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "name": "arifOS Constitutional Audit (Light)",
+      "description": "Read-only constitutional audit. Independent from 888-APEX \u2014 provides second-opinion floor verification. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced.",
+      "tags": [
+        "constitutional",
+        "audit",
+        "f1-f13",
+        "read-only"
+      ],
+      "examples": [
+        "Independent audit of 888-APEX verdict",
+        "Six-organ gap analysis without 888 involvement"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "claim-heavy-essay-audit",
+      "name": "Claim-Heavy Essay Audit",
+      "description": "Post-drafting fact-audit gate for any claim-heavy essay, blog, public artifact. Catches over-claims (CLAIM stated as fact when source supports only PLAUSIBLE/ESTIMATE/HYPOTHESIS), hallucinated names, fabricated citations. F2, F9 enforced.",
+      "tags": [
+        "audit",
+        "essay",
+        "claims",
+        "F2",
+        "F9"
+      ],
+      "examples": [
+        "Audit the ILMU essay for over-claims",
+        "Catch hallucinated sources in a public artifact"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "orthodoxy-auditor",
+      "name": "Orthodoxy Auditor",
+      "description": "Audit context files for orthogonality, modularity, plasticity. Runs after any context file edit or on demand. F1, F4, F8 enforced.",
+      "tags": [
+        "orthodoxy",
+        "context",
+        "audit",
+        "drift"
+      ],
+      "examples": [
+        "Audit the SOUL.md file for doctrinal drift",
+        "Check orthogonal modularity of AGENTS.md"
+      ],
+      "inputModes": [
+        "application/json",
+        "text/plain"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "repository-hygiene-audit",
+      "name": "Repository Hygiene Audit",
+      "description": "Inspect a GitHub repo for structural chaos, authority conflicts, cleanup needs. Produce audit report and remediation plan. F1, F11 enforced. LEASED.",
+      "tags": [
+        "repo",
+        "hygiene",
+        "audit",
+        "structure"
+      ],
+      "examples": [
+        "Audit AAA repo for structural chaos",
+        "Detect authority conflicts in agent cards"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "FORGE-mcp-smoke-test",
+      "name": "MCP Server Smoke Test",
+      "description": "Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors. ATTESTED.",
+      "tags": [
+        "MCP",
+        "smoke-test",
+        "health",
+        "transport"
+      ],
+      "examples": [
+        "Smoke test the arifOS MCP server after restart",
+        "Detect schema mismatch in a new MCP registration"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "KERNEL-symbolic-trust",
+      "name": "Symbolic Order \u2014 Trust Architecture",
+      "description": "Map structural trust in the federation \u2014 where trust is architecture-enforced vs. history-based. Detects trust symmetry violations and single-points-of-failure. Implements E1+E2 from Wawa's agentic anthropology (Hybrid Civilization + Trust Is Structural).",
+      "tags": [
+        "trust",
+        "structural",
+        "symmetry",
+        "architecture",
+        "social-symbolic"
+      ],
+      "examples": [
+        "Map trust architecture across all 7 organs",
+        "Find single-points-of-failure in trust relationships",
+        "Check if arifOS has reciprocal structural trust"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "KERNEL-symbolic-bias",
+      "name": "Symbolic Order \u2014 Collective Bias Detection",
+      "description": "Detect collective bias in agent populations using Ashery-Aiello-Baronchelli naming game protocol. Catches biases that emerge at population level but no individual agent shows. Chi-square test against uniform distribution. Implements E5 (Collective Bias Invisible to Single-Agent).",
+      "tags": [
+        "collective-bias",
+        "convention",
+        "population",
+        "social-symbolic",
+        "emergent-conventions"
+      ],
+      "examples": [
+        "Detect if a convention has locked in across agent population",
+        "Find collective bias invisible to individual-agent analysis",
+        "Run naming game protocol on A2A logs"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    }
+  ],
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:7072/mcp",
+        "tool_count": 72,
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:8081/mcp",
+        "tool_count": 35,
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18082/mcp",
+        "tool_count": 26,
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
+        "version": "2025-11-25"
+      },
+      {
+        "url": "http://localhost:18083/mcp",
+        "tool_count": 22,
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
+        "version": "2025-11-25"
+      }
+    ]
+  },
+  "": "arifOS/agent-card/v2.2.0",
+  "apexMasterSeal": {
+    "cognitiveRing": "epistemic_floor",
+    "thermodynamicRole": "entropy_sink",
+    "hassabisInversion": {
+      "principle": "Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "ringPlacement": "inner",
+      "parallelism": "single-model",
+      "shadowAcknowledged": [
+        "thermal_delay: cold sink is slow \u2014 never invoked first",
+        "over_constraint: can mistake local minima for global truth",
+        "oracle_trap: asking it everything ruins its value as final gate"
+      ]
+    },
+    "jituGate": {
+      "requiresJitu": true,
+      "jituTriggerPatterns": [
+        "delete",
+        "drop",
+        "rm -rf",
+        "truncate",
+        "push to prod",
+        "force push",
+        "DROP TABLE",
+        "remove --force"
+      ],
+      "autoAbortWithoutJitu": true
+    },
+    "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+    "ratifiedAt": "2026-07-01T20:22:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI"
+  },
+  "constitutional_binding": {
+    "canonical_verdict_source": "arifosmcp.models.verdicts",
+    "verdict_import": "from arifosmcp.models.verdicts import Verdict, RuntimeStatus, enforce_verdict_monotonicity, merge_verdicts, is_verdict_allowed",
+    "runtime_status_import": "from arifosmcp.models.verdicts import RuntimeStatus",
+    "monotonicity_order": "VOID (3) > HOLD (2) > SABAR (1) > SEAL (0)",
+    "governance_transport_split": "Verdict owns SEAL/HOLD/SABAR/VOID. RuntimeStatus owns SUCCESS/ERROR/TIMEOUT/RETRY. Never mix.",
+    "arif_memory_callable": true,
+    "signature_challenge_required": true,
+    "session_identity_enforced": true,
+    "last_updated": "2026-07-07",
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+  },
+  "spawning": {
+    "protocol": "forge_parallel",
+    "pre_seal_audit": true,
+    "can_spawn": [
+      "auditor",
+      "ops",
+      "planner",
+      "general",
+      "explore"
+    ],
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "tools": [
+      "task",
+      "forge_parallel",
+      "forge_pipeline_run"
+    ],
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "recursive_uncertainty_protocol": {
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "recursive": true,
+      "max_depth": 5,
+      "ask_human_only_for": "human_intent",
+      "never": [
+        "stop_early",
+        "collapse",
+        "ask_questions",
+        "return_unvetted"
+      ],
+      "directive": "F13 SOVEREIGN 2026-07-12"
+    }
+  },
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    },
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "ztSKeGY/Z81ytBar050la0Qa3KpNMT5Zs9omhn/ViZ3Ozp7bH0+oZhCwlMpsd0jFTSeaNwh6H1X+4X1idjSIDQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
+}

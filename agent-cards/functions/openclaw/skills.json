@@ -1,0 +1,108 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "openclaw",
+  "fi": "F2-OC",
+  "layer": "functions",
+  "ring": "Routing/Gateway/Channel",
+  "role": "Institutionalized AGI — routing, channels, delegation, infra",
+  "skill_count": 19,
+  "skills": [
+    {
+      "id": "agent-role-mode-flagging",
+      "source": ".hermes/skills/agent-role-mode-flagging",
+      "why": "Role classification gate"
+    },
+    {
+      "id": "telegram-forum-management",
+      "source": ".hermes/skills",
+      "why": "Telegram forum routing"
+    },
+    {
+      "id": "telegram-group-relay",
+      "source": ".hermes/skills",
+      "why": "Group message relay"
+    },
+    {
+      "id": "telegram-security-audit",
+      "source": ".hermes/skills",
+      "why": "TREE777 bot audit"
+    },
+    {
+      "id": "FORGE-subagent-spawn-template",
+      "source": ".agents/skills/FORGE-cross-agent-handoff",
+      "why": "Bounded sub-agent spawn"
+    },
+    {
+      "id": "FORGE-infra-guardian",
+      "source": ".agents/skills/FORGE-infra-guardian",
+      "why": "Caddy/Cloudflare/SSL audit"
+    },
+    {
+      "id": "FORGE-federation-orchestrator",
+      "source": ".agents/skills/FORGE-federation-orchestrator",
+      "why": "Container health + restart"
+    },
+    {
+      "id": "FORGE-vps-docker",
+      "source": ".aaa/skills/ARCHIVE-docker",
+      "why": "Docker compose ops"
+    },
+    {
+      "id": "FORGE-vps-runbook",
+      "source": ".aaa/skills/ARCHIVE-vps-docker-runbook",
+      "why": "VPS compose commands"
+    },
+    {
+      "id": "FORGE-infra-crons",
+      "source": ".agents/skills/FORGE-infra-crons",
+      "why": "Cron audit (read-only)"
+    },
+    {
+      "id": "FORGE-mcp-lifeguard",
+      "source": ".aaa/skills/ARCHIVE-mcp-lifeguard",
+      "why": "Auto-recover MCP"
+    },
+    {
+      "id": "FORGE-secret-safety-scan",
+      "source": ".agents/skills/FORGE-secret-safety-scan",
+      "why": "Plaintext secret scan"
+    },
+    {
+      "id": "FORGE-secret-hygiene",
+      "source": ".agents/skills/FORGE-secret-hygiene",
+      "why": "Key age + rotation audit"
+    },
+    {
+      "id": "ASI-mcp-governor",
+      "source": ".agents/skills/ASI-mcp-governor",
+      "why": "F1-F13 MCP routing"
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "source": ".agents/skills/APEX-mcp-federation",
+      "why": "Cross-MCP sequencing"
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "source": ".agents/skills",
+      "why": "MCP server doctrine"
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "source": ".agents/skills",
+      "why": "Minimal governance-free MCP"
+    },
+    {
+      "id": "ASI-observability",
+      "source": ".agents/skills/ASI-observability",
+      "why": "Telemetry emission"
+    },
+    {
+      "id": "FORGE-model-monitor",
+      "source": ".agents/skills/FORGE-model-monitor",
+      "why": "Fallback chain monitor"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

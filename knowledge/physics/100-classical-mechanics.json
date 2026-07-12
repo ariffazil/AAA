@@ -1,0 +1,56 @@
+{
+  "id": "100",
+  "name": "Classical Mechanics",
+  "band": "physics",
+  "description": "Newtonian, Lagrangian, and Hamiltonian mechanics. Conservation laws, forces, motion, energy, rigid-body dynamics, fluid mechanics, and chaos theory. The physics of the visible, human-scale world \u2014 and the foundation upon which all other physics is built. Predicts the trajectories of planets, the stability of bridges, and the flow of rivers.",
+  "axioms": [
+    "F = ma (Newton's second law \u2014 net force equals mass times acceleration)",
+    "Newton's first law: objects maintain uniform motion unless acted upon by a net force (inertia)",
+    "Newton's third law: every action has an equal and opposite reaction",
+    "Conservation of energy: total energy in an isolated system is constant",
+    "Conservation of momentum: total linear momentum in an isolated system is constant",
+    "Conservation of angular momentum: total angular momentum is constant under central forces",
+    "Principle of least action: physical paths extremize the action functional S = \u222bL dt",
+    "Newton's law of universal gravitation: F = -GMm/r\u00b2"
+  ],
+  "reasoning_patterns": [
+    "force decomposition: resolve forces into components, apply F=ma along each axis",
+    "energy conservation: when forces are conservative, use E = T + V rather than integrating F=ma",
+    "phase space analysis: plot trajectories in (q, p) space to identify fixed points and cycles",
+    "symmetry \u2192 conserved quantity: time symmetry \u2192 energy; translation \u2192 momentum; rotation \u2192 angular momentum (Noether)",
+    "Lagrangian method: choose generalized coordinates, write L = T - V, solve Euler-Lagrange equations",
+    "Hamiltonian method: Legendre transform to (q, p), solve Hamilton's equations of motion",
+    "Small oscillations: linearize about equilibrium, find normal modes and frequencies",
+    "Chaos detection: compute Lyapunov exponents for non-integrable systems"
+  ],
+  "boundary_conditions": [
+    "Breaks down at quantum scale (< atomic diameters)",
+    "Breaks down at relativistic speeds (> 0.1c)",
+    "Assumes continuous spacetime \u2014 no discreteness",
+    "F = ma is invalid for variable mass systems (requires careful momentum accounting)",
+    "Determinism breaks for chaotic systems despite deterministic equations",
+    "Does not cover quantum superposition, entanglement, or wave-particle duality"
+  ],
+  "dependencies": [
+    "000",
+    "133",
+    "200",
+    "300",
+    "333"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Goldstein, H. Classical Mechanics (3rd ed.)",
+    "Landau & Lifshitz. Mechanics (Course of Theoretical Physics Vol.1)",
+    "Feynman, R. The Feynman Lectures on Physics Vol.1",
+    "Arnold, V.I. Mathematical Methods of Classical Mechanics",
+    "Newton, I. Philosophi\u00e6 Naturalis Principia Mathematica (1687)"
+  ],
+  "canonical_truths": [
+    "Newton's laws reproduce Kepler's planetary laws exactly (gravitational inverse-square law)",
+    "Lagrangian and Hamiltonian formulations are equivalent to Newtonian but more general",
+    "Simple harmonic oscillator is the most important model \u2014 it approximates nearly all stable equilibria",
+    "Chaotic systems are deterministic but unpredictable beyond Lyapunov timescale",
+    "The three-body problem has no general closed-form solution (proved by Bruns-Poincar\u00e9)"
+  ]
+}

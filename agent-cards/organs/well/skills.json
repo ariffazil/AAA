@@ -1,0 +1,53 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "well",
+  "fi": "P-006",
+  "layer": "organs",
+  "ring": "Human Vitality",
+  "role": "Biometric readiness, homeostasis — REFLECT_ONLY",
+  "skill_count": 8,
+  "skills": [
+    {
+      "id": "WELL-boundary-sense",
+      "source": ".agents/skills/WELL-boundary-sense",
+      "why": ""
+    },
+    {
+      "id": "WELL-somatic-kernel",
+      "source": ".agents/skills/WELL-somatic-kernel",
+      "why": ""
+    },
+    {
+      "id": "well-substrate-readiness",
+      "source": ".agents/skills/well-substrate-readiness",
+      "why": ""
+    },
+    {
+      "id": "HERMES-human-model",
+      "source": ".agents/skills/HERMES-human-model",
+      "why": ""
+    },
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": ""
+    },
+    {
+      "id": "ASI-zen-organ-memory",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": ""
+    },
+    {
+      "id": "human-envelope-architecture",
+      "source": ".hermes/skills/governance/human-envelope-architecture",
+      "why": ""
+    },
+    {
+      "id": "somatic-intelligence",
+      "source": ".hermes/skills/governance/somatic-intelligence",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

@@ -1,0 +1,248 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "777-forge",
+  "fi": "F3-FG",
+  "layer": "extensions",
+  "ring": "Execution Stage",
+  "role": "Stage 777 FORGE — execution actuator",
+  "skill_count": 47,
+  "skills": [
+    {
+      "id": "FORGE-ci-diagnose",
+      "source": ".agents/skills/FORGE-ci-diagnose",
+      "why": "CI log parse"
+    },
+    {
+      "id": "FORGE-code-analysis",
+      "source": ".agents/skills/FORGE-code-analysis",
+      "why": "Developer commit pattern analysis"
+    },
+    {
+      "id": "FORGE-code-wiki",
+      "source": ".agents/skills/FORGE-code-wiki",
+      "why": "Wiki doc generator"
+    },
+    {
+      "id": "FORGE-context-compress",
+      "source": ".agents/skills/FORGE-context-compress",
+      "why": "Log/token compression"
+    },
+    {
+      "id": "FORGE-docker",
+      "source": ".agents/skills/FORGE-docker",
+      "why": "Docker doctrine"
+    },
+    {
+      "id": "FORGE-docker-entropy",
+      "source": ".agents/skills/FORGE-docker-entropy",
+      "why": "Container thermo lens"
+    },
+    {
+      "id": "FORGE-docker-thermo",
+      "source": ".agents/skills/FORGE-docker-thermo",
+      "why": "Container entropy lens"
+    },
+    {
+      "id": "FORGE-fastmcp",
+      "source": ".agents/skills/FORGE-fastmcp",
+      "why": "FastMCP builder"
+    },
+    {
+      "id": "FORGE-federation-orchestrator",
+      "source": ".agents/skills/FORGE-federation-orchestrator",
+      "why": "Container restart + probe"
+    },
+    {
+      "id": "FORGE-github",
+      "source": ".agents/skills/FORGE-github",
+      "why": "gh CLI wrapper"
+    },
+    {
+      "id": "FORGE-github-ops",
+      "source": ".agents/skills/FORGE-github-ops",
+      "why": "Commit/PR ops"
+    },
+    {
+      "id": "FORGE-github-runbook",
+      "source": ".agents/skills/FORGE-github-runbook",
+      "why": "Git+gh CLI runbook"
+    },
+    {
+      "id": "FORGE-google-workspace",
+      "source": ".agents/skills/FORGE-google-workspace",
+      "why": "Workspace automation"
+    },
+    {
+      "id": "FORGE-incident-escalation",
+      "source": ".agents/skills/FORGE-incident-escalation",
+      "why": "Incident protocol"
+    },
+    {
+      "id": "FORGE-incident-triage",
+      "source": ".agents/skills/FORGE-incident-triage",
+      "why": "6-step incident"
+    },
+    {
+      "id": "FORGE-infra-crons",
+      "source": ".agents/skills/FORGE-infra-crons",
+      "why": "Cron audit"
+    },
+    {
+      "id": "FORGE-infra-guardian",
+      "source": ".agents/skills/FORGE-infra-guardian",
+      "why": "Caddy/Cloudflare audit"
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": "Golden path entry"
+    },
+    {
+      "id": "FORGE-issue-triage",
+      "source": ".agents/skills/FORGE-issue-triage",
+      "why": "Issue classification"
+    },
+    {
+      "id": "FORGE-kimi-code",
+      "source": ".agents/skills/FORGE-kimi-code",
+      "why": "Kimi alignment"
+    },
+    {
+      "id": "FORGE-mcp-federation-ops",
+      "source": ".agents/skills/FORGE-mcp-federation-ops",
+      "why": "FastMCP + mcporter"
+    },
+    {
+      "id": "FORGE-mcp-lifeguard",
+      "source": ".agents/skills/FORGE-mcp-lifeguard",
+      "why": "MCP auto-recover"
+    },
+    {
+      "id": "FORGE-mcp-ops",
+      "source": ".agents/skills/FORGE-mcp-ops",
+      "why": "mcporter CLI"
+    },
+    {
+      "id": "FORGE-mcp-smoke-test",
+      "source": ".agents/skills/FORGE-mcp-smoke-test",
+      "why": "MCP health probe"
+    },
+    {
+      "id": "FORGE-mcporter",
+      "source": ".agents/skills/FORGE-mcporter",
+      "why": "mcporter CLI"
+    },
+    {
+      "id": "FORGE-model-monitor",
+      "source": ".agents/skills/FORGE-model-monitor",
+      "why": "Fallback chain monitor"
+    },
+    {
+      "id": "FORGE-onboarding",
+      "source": ".agents/skills/FORGE-onboarding",
+      "why": "Agent onboarding"
+    },
+    {
+      "id": "FORGE-phase-escalation",
+      "source": ".agents/skills/FORGE-phase-escalation",
+      "why": "Authority phase split"
+    },
+    {
+      "id": "FORGE-pr-governance",
+      "source": ".agents/skills/FORGE-pr-governance",
+      "why": "PR policy layer"
+    },
+    {
+      "id": "FORGE-pr-review",
+      "source": ".agents/skills/FORGE-pr-review",
+      "why": "PR review checklist"
+    },
+    {
+      "id": "FORGE-precommit-gate",
+      "source": ".agents/skills/FORGE-precommit-gate",
+      "why": "Pre-commit ritual"
+    },
+    {
+      "id": "FORGE-precommit-review",
+      "source": ".agents/skills/FORGE-precommit-review",
+      "why": "Pre-commit review"
+    },
+    {
+      "id": "FORGE-readme-truth-check",
+      "source": ".agents/skills/FORGE-readme-truth-check",
+      "why": "README drift check"
+    },
+    {
+      "id": "FORGE-route-least-power",
+      "source": ".agents/skills/FORGE-route-least-power",
+      "why": "Smallest-capability routing"
+    },
+    {
+      "id": "FORGE-search",
+      "source": ".agents/skills/FORGE-search",
+      "why": "Sovereign SearxNG search"
+    },
+    {
+      "id": "FORGE-secret-hygiene",
+      "source": ".agents/skills/FORGE-secret-hygiene",
+      "why": "Credential audit"
+    },
+    {
+      "id": "FORGE-secret-safety-scan",
+      "source": ".agents/skills/FORGE-secret-safety-scan",
+      "why": "Secret leak scan"
+    },
+    {
+      "id": "FORGE-seek",
+      "source": ".agents/skills/FORGE-seek",
+      "why": "Web exploration doctrine"
+    },
+    {
+      "id": "FORGE-skill-creator",
+      "source": ".agents/skills/FORGE-skill-creator",
+      "why": "Bootstrap new skill"
+    },
+    {
+      "id": "FORGE-skill-linter",
+      "source": ".agents/skills/FORGE-skill-linter",
+      "why": "Trigger-boundary lint"
+    },
+    {
+      "id": "FORGE-spatial-grounding",
+      "source": ".agents/skills/FORGE-spatial-grounding",
+      "why": "VPS spatial context"
+    },
+    {
+      "id": "FORGE-subagent-spawn",
+      "source": ".agents/skills/FORGE-subagent-spawn",
+      "why": "Sub-agent contract"
+    },
+    {
+      "id": "FORGE-telegram-audit",
+      "source": ".agents/skills/FORGE-telegram-audit",
+      "why": "Telegram TREE777"
+    },
+    {
+      "id": "FORGE-verify-runtime",
+      "source": ".agents/skills/FORGE-verify-runtime",
+      "why": "Post-deploy verification"
+    },
+    {
+      "id": "FORGE-vps-docker",
+      "source": ".aaa/skills/ARCHIVE-docker",
+      "why": "VPS docker runbook"
+    },
+    {
+      "id": "FORGE-vps-runbook",
+      "source": ".aaa/skills/ARCHIVE-vps-docker-runbook",
+      "why": "Concrete compose"
+    },
+    {
+      "id": "FORGE-well-boundary-repair",
+      "source": ".agents/skills/FORGE-well-boundary-repair",
+      "why": "WELL boundary fix"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

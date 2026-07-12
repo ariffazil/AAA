@@ -1,0 +1,36 @@
+{
+  "id": "600",
+  "name": "Probability Theory",
+  "band": "math",
+  "description": "Probability measures, random variables, distributions, stochastic processes, martingales, measure-theoretic probability. The mathematics of uncertainty, randomness, and chance \u2014 the foundation for all risk assessment, stochastic modeling, Monte Carlo methods, and stochastic calculus (Black-Scholes, It\u014d calculus). Depends on 444 (algebra via \u03c3-algebras) and 533 (analysis via measure theory and integration). Feeds into 633 (statistics as its inverse problem), 699 (optimization via stochastic optimization), and 700 (numerical methods via Monte Carlo).",
+  "axioms": [
+    "Kolmogorov axioms: non-negativity, unit measure over sample space, countable additivity for disjoint events",
+    "Law of Large Numbers (weak & strong): sample mean converges to expectation as n \u2192 \u221e",
+    "Central Limit Theorem: sum of i.i.d. random variables \u2192 normal distribution",
+    "Bayes' theorem: P(H|E) = P(E|H)\u00b7P(H)/P(E)",
+    "Borel-Cantelli lemma: infinite occurrences of independent events depend on sum of probabilities",
+    "Optional stopping theorem: fair martingales stay fair under bounded stopping times",
+    "It\u014d's lemma: core of stochastic calculus for diffusion processes"
+  ],
+  "reasoning_patterns": [
+    "Bayesian updating of beliefs from evidence",
+    "distribution fitting and selection (Gaussian, Poisson, exponential, heavy-tailed)",
+    "expectation, variance, and higher moment computation",
+    "tail risk assessment (extreme value theory, VaR, expected shortfall)",
+    "martingale analysis for fair-game processes",
+    "stochastic process classification (Markov, Poisson, Wiener, renewal)",
+    "Large deviation theory: probability of rare events decays exponentially"
+  ],
+  "boundary_conditions": [
+    "Probability \u2260 frequency for single/unique events (Knightian uncertainty)",
+    "Fat-tailed distributions (Cauchy, Pareto with \u03b1<2) defy CLT and normal statistics",
+    "Prior choice affects posterior \u2014 subjectivity is irreducible without strong data",
+    "Martingale theory requires careful stopping rules",
+    "Measure-theoretic subtleties arise for uncountable sample spaces (non-measurable sets exist under AC)"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "533-analysis"
+  ],
+  "epistemic_floor": "DERIVED"
+}

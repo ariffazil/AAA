@@ -1,0 +1,58 @@
+{
+  "id": "366",
+  "name": "Astrophysics & Cosmology",
+  "band": "physics",
+  "description": "Stars, galaxies, cosmology, dark matter, and dark energy. Astrophysics applies physics to the cosmos \u2014 from stellar structure and evolution to the large-scale structure of the universe. Cosmology seeks to understand the origin, evolution, and ultimate fate of the universe as a whole.",
+  "axioms": [
+    "Stellar structure: hydrostatic equilibrium (dP/dr = -Gm(r)\u03c1/r\u00b2) balanced by energy transport (radiation, convection, conduction)",
+    "Hertzsprung-Russell diagram: stars are classified by luminosity and surface temperature \u2014 main sequence, giants, white dwarfs",
+    "Hubble's law: v = H\u2080d \u2014 galaxies recede from us at a velocity proportional to their distance (cosmological expansion)",
+    "Friedmann equations: govern the expansion of the universe from GR under the assumptions of homogeneity and isotropy",
+    "Cosmic Microwave Background (CMB): blackbody radiation at T = 2.725 K \u2014 relic radiation from ~380,000 years after the Big Bang",
+    "Dark matter: ~27% of the universe's mass-energy \u2014 inferred from gravitational effects (galaxy rotation curves, gravitational lensing)",
+    "Dark energy: ~68% of the universe \u2014 drives the accelerating expansion (cosmological constant or dynamical field)"
+  ],
+  "reasoning_patterns": [
+    "Spectroscopic analysis: identify elements, temperature, density, and radial velocity from absorption/emission line spectra",
+    "Light curve analysis: extract binary parameters, stellar pulsation periods, exoplanet transits, and supernova timing",
+    "Cosmological distance ladder: parallax (Gaia) \u2192 Cepheid variables \u2192 Type Ia supernovae \u2192 baryon acoustic oscillations",
+    "Nucleosynthesis tracking: trace element formation from Big Bang (H, He, Li) through stellar evolution (C, N, O, Fe) to supernovae (r-process, s-process)",
+    "N-body/hydrodynamic simulation: model gravitational dynamics of dark matter halos, galaxy formation, and cluster mergers",
+    "CMB power spectrum analysis: extract cosmological parameters (\u03a9_m, \u03a9_\u039b, H\u2080, n_s, \u03c4) from angular power spectrum peaks",
+    "Gravitational wave astronomy: extract source parameters (masses, spins, distance) from waveform templates"
+  ],
+  "boundary_conditions": [
+    "Dark matter particle identity is unknown \u2014 only gravitational effects are observed",
+    "Dark energy mechanism is unknown \u2014 could be cosmological constant, quintessence, or modified gravity",
+    "Black hole information paradox remains unresolved (Hawking radiation vs. unitary evolution)",
+    "First stars (Population III, metal-free) have not yet been directly observed",
+    "Inflationary cosmology is a paradigm, not a unique theory \u2014 many models fit current data",
+    "The Hubble tension (~5\u03c3 discrepancy in H\u2080 measurements) is unresolved"
+  ],
+  "dependencies": [
+    "000",
+    "233",
+    "266",
+    "300",
+    "333",
+    "400"
+  ],
+  "epistemic_floor": "OBSERVED",
+  "key_references": [
+    "Carroll & Ostlie. An Introduction to Modern Astrophysics",
+    "Binney & Merrifield. Galactic Astronomy",
+    "Ryden, B. Introduction to Cosmology",
+    "Weinberg, S. Cosmology",
+    "Peebles, P.J.E. Principles of Physical Cosmology",
+    "Planck Collaboration (2018/2020). Cosmological Parameters"
+  ],
+  "canonical_truths": [
+    "The Sun is a G2V main-sequence star, ~4.6 billion years old \u2014 one of ~100 billion stars in the Milky Way",
+    "The observable universe is ~93 billion light-years in diameter (comoving distance)",
+    "Age of the universe: ~13.8 billion years (Planck 2018 \u2014 \u039bCDM best fit)",
+    "Neutron star density: ~10\u00b9\u2077 kg/m\u00b3 (nuclear density \u2014 a teaspoon weighs billions of tons)",
+    "Gravitational waves from binary mergers have been detected by LIGO/Virgo since 2015 \u2014 opening a new observational window",
+    "The cosmic microwave background is the most perfect blackbody spectrum ever measured",
+    "The universe contains ~2 trillion galaxies (Hubble Ultra Deep Field + deep surveys)"
+  ]
+}

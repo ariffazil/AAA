@@ -1,0 +1,58 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "wealth",
+  "fi": "P-005",
+  "layer": "organs",
+  "ring": "Capital Intelligence",
+  "role": "Valuation, risk, portfolio — ADVISORY_ONLY",
+  "skill_count": 9,
+  "skills": [
+    {
+      "id": "wealth-capital-reasoning",
+      "source": ".agents/skills/wealth-capital-reasoning",
+      "why": ""
+    },
+    {
+      "id": "wealth-capital-thermodynamics",
+      "source": ".agents/skills/wealth-capital-thermodynamics",
+      "why": ""
+    },
+    {
+      "id": "wealth-collapse-signature",
+      "source": ".agents/skills/wealth-collapse-signature",
+      "why": ""
+    },
+    {
+      "id": "wealth-law-anthropology",
+      "source": ".agents/skills/wealth-law-anthropology",
+      "why": ""
+    },
+    {
+      "id": "ASI-drift-watch",
+      "source": ".agents/skills/ASI-drift-watch",
+      "why": ""
+    },
+    {
+      "id": "ASI-unified-memory",
+      "source": ".agents/skills/ASI-unified-memory",
+      "why": ""
+    },
+    {
+      "id": "CLAIM-verification-gate",
+      "source": ".agents/skills/CLAIM-verification-gate",
+      "why": ""
+    },
+    {
+      "id": "CLAIM-receipt-v1",
+      "source": ".agents/skills/CLAIM-receipt-v1",
+      "why": ""
+    },
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

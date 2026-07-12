@@ -1,0 +1,35 @@
+{
+  "id": "566",
+  "name": "Linear Algebra",
+  "band": "math",
+  "description": "Vector spaces, matrices, eigenvalues/eigenvectors, inner products, tensors, multilinear algebra. The mathematics of linearity \u2014 the single most important computational tool in all of science and engineering. Every linear problem reduces to matrix operations. Tensors extend vectors to higher orders while preserving linear transformation properties. Depends on 444 (algebra via fields and modules). Feeds into 500 (calculus via Jacobians), 533 (analysis via operator theory), 555 (topology via tangent spaces and differential forms), and every applied domain.",
+  "axioms": [
+    "Vector space axioms: additive abelian group over a field with scalar multiplication",
+    "Linear map \u2194 matrix representation after choice of basis",
+    "Spectral theorem: every symmetric/self-adjoint matrix/operator has an orthonormal eigenbasis with real eigenvalues",
+    "Rank-nullity theorem: dim(im T) + dim(ker T) = dim(domain)",
+    "Determinant = volume scaling factor of linear transformation",
+    "Gram-Schmidt orthogonalization process",
+    "Cayley-Hamilton theorem: every matrix satisfies its own characteristic polynomial"
+  ],
+  "reasoning_patterns": [
+    "eigendecomposition and diagonalization",
+    "dimensionality analysis (rank, nullity, basis dimension)",
+    "matrix factorization (LU, QR, Cholesky, SVD, Jordan normal form)",
+    "tensor contraction and index notation (Einstein summation)",
+    "inner product and orthogonal projection",
+    "linear system solving (direct and iterative methods)",
+    "Krylov subspace methods (Arnoldi, Lanczos, GMRES, CG)"
+  ],
+  "boundary_conditions": [
+    "Nonlinear systems require different tools (manifolds, calculus)",
+    "Large sparse systems need specialized iterative methods",
+    "Not all matrices are diagonalizable (defective matrices)",
+    "Tensor networks grow exponentially in naive representation",
+    "Numerical linear algebra has stability issues (condition number matters)"
+  ],
+  "dependencies": [
+    "444-algebra"
+  ],
+  "epistemic_floor": "DERIVED"
+}

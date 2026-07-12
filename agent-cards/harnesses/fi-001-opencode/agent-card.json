@@ -1,0 +1,120 @@
+{
+  "id": "FI-001",
+  "name": "OpenCode",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Primary forge instrument. arifOS Forge Agent (\u03a9) runtime. DeepSeek-V4-Pro powered constitutional engineering agent.",
+  "version": "1.15.0",
+  "model": "deepseek-v4-pro",
+  "fallback_model": "deepseek-v4-flash",
+  "izin": "GRANTED",
+  "izin_date": "2026-05-17",
+  "sandbox": "process",
+  "binary": "/usr/local/bin/opencode",
+  "config": "/root/.config/opencode/opencode.json",
+  "services": [
+    "opencode.service",
+    "opencode-bot.service"
+  ],
+  "mcpServers": [
+    "arifOS",
+    "WEALTH",
+    "WELL",
+    "GEOX",
+    "supabase",
+    "exa",
+    "minimax-media",
+    "minimax-code",
+    "filesystem",
+    "memory",
+    "sequential-thinking",
+    "time",
+    "github",
+    "brave-search",
+    "git",
+    "repomapper",
+    "serena",
+    "meyhem",
+    "composio"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 1,
+    "registered": [
+      "forge",
+      "auditor",
+      "explore",
+      "general"
+    ]
+  },
+  "telegramBot": "@777_FORGE_bot (via opencode-bot.service)",
+  "authority": "engineer",
+  "riskTier": "low",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "gh2UP9MLw5yi1CdFYaeZzC8K3aCUDZlqH9nr5zepzBph8S9hfWcdkXsovvIJ6BJPBPjAreX+XM9ixpKWimdxDw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:24Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

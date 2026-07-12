@@ -1,1 +1,505 @@
-{"kind":"organ-card","schemaVersion":"1.0.0","identity":{"organId":"geox","name":"GEOX","description":"Earth intelligence organ — petrophysics, seismic, basin analysis. 37 MCP tools. EVIDENCE_ONLY.","version":"2026.06.07","protocolVersion":"a2a.v1","tags":["geoscience","petrophysics","seismic","basin"]},"endpoints":{"baseUrl":"http://127.0.0.1:8081","mcpUrl":"http://127.0.0.1:8081/mcp","healthUrl":"http://127.0.0.1:8081/health","cardUrl":"http://127.0.0.1:8081/.well-known/organ-card.json"},"capabilities":{"streaming":true,"asyncTasks":true,"supportsDelegation":true},"skills":[{"id":"seismic_compute","name":"Seismic Compute","description":"Forward modeling, well-tie, anomalous contrast detection with AVO class I-IV","tags":["seismic","forward-model","anomalous-contrast"],"riskClass":"medium","executionAllowed":false}],"security":{"authRequired":false,"securityNote":"Localhost IS the password (ADR-001)"},"governance":{"trustGrade":"A","sourceClass":"canonical","holdCapable":true,"floorProfile":["F1","F2","F4","F7","F8","F9"]},"validation":{"heartbeatTtlSec":60,"compatibility":"backward"}}
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "geox",
+  "name": "GEOX",
+  "description": "Earth intelligence \u2014 basin analysis, seismic, petrophysics, wells, geomechanics, biostratigraphy.",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "geox_well_ingest",
+      "name": "Well Ingest",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_well_qc",
+      "name": "Well Qc",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_well_desk_open",
+      "name": "Well Desk Open",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_well_desk_publish",
+      "name": "Well Desk Publish",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_render_well_panel",
+      "name": "Render Well Panel",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_petrophysics",
+      "name": "Petrophysics",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_sequence",
+      "name": "Sequence",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_seismic_ingest",
+      "name": "Seismic Ingest",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_seismic_compute",
+      "name": "Seismic Compute",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_seismic_interpret",
+      "name": "Seismic Interpret",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_vision",
+      "name": "Vision",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_subsurface_model",
+      "name": "Subsurface Model",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_geomechanics",
+      "name": "Geomechanics",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_basin",
+      "name": "Basin",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_deep_time_state",
+      "name": "Deep Time State",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_surface_status",
+      "name": "Surface Status",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_claim",
+      "name": "Claim",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_evidence",
+      "name": "Evidence",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_prospect",
+      "name": "Prospect",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_map_context_scene",
+      "name": "Map Context Scene",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_contrast_detect",
+      "name": "Contrast Detect",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_biostrat_parse",
+      "name": "Biostrat Parse",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_biostrat_falsify",
+      "name": "Biostrat Falsify",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_basin_backstrip",
+      "name": "Basin Backstrip",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_sediment_mass_balance",
+      "name": "Sediment Mass Balance",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_thermal_maturity_history",
+      "name": "Thermal Maturity History",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_claim_graph_evaluate",
+      "name": "Claim Graph Evaluate",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_consequence_footprint",
+      "name": "Consequence Footprint",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_optionality_loss",
+      "name": "Optionality Loss",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_feedback_integrity",
+      "name": "Feedback Integrity",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_material_truth_challenge",
+      "name": "Material Truth Challenge",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "geox_cascade_pathway",
+      "name": "Cascade Pathway",
+      "description": "GEOX geoscience tool",
+      "tags": [
+        "geoscience"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "LVkeJKrOyMuHUU/GCC4etf1g5ZELzYnef24iYGAndYoeovD2Slvz62CqNfvQ+PaluK1neN3rLcjHgPnMMwDBAw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
+}

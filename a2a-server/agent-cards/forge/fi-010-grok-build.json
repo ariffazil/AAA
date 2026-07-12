@@ -2,7 +2,7 @@
   "id": "FI-010",
   "name": "Grok Build",
   "class": "FORGE_INSTRUMENT",
-  "description": "Grok Build harness as sovereign AAA citizen. Plan→search→build, superior parallelism (worktree/subagents), narrow MCP surface. F1-F13 enforced.",
+  "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surface. F1-F13 enforced.",
   "version": "2.0.0",
   "model": "grok-4.3 (xAI) / xai/grok-build-0.1",
   "fallback_model": "xai/grok-build-0.1",
@@ -58,5 +58,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "tsAane1YEmNRmRmY3OVq4qIIHotAIW5RvTMmFpK7MnLyxUczrxKB2KSbW6dGERypLHOmoVHRHQyldhkJ7FKrDg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }
