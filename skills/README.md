@@ -152,3 +152,8 @@ Results are anchored to `VAULT999` for audit continuity.
 - **Mesh sync:** [`scripts/skill-mesh-sync.sh`](./scripts/skill-mesh-sync.sh)
 - **Complete receipt:** [`docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md`](./docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md)
 - **Canon:** AAA catalog; `~/.grok` / `~/.claude` / `~/.codex` are views
+
+### Ops skill (load this)
+
+- **`skill-unification`** — alias table, mesh-sync, BOOT gate (also linked in `~/.grok/skills/skill-unification`)
+- **`meta-mesa-skill-atlas`** — inventory / routing / gaps

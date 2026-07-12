@@ -1,7 +1,7 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "status": "SEALED_TABLE_AUDITED",
-  "forged": "2026-07-12T05:54:43.275785+00:00",
+  "forged": "2026-07-12T06:04:19.847962+00:00",
   "canonical_catalog": "/root/AAA/skills",
   "doctrine_core": "/root/.agents/skills",
   "bootstrap": "/root/AAA/skills/BOOTSTRAP_MANIFEST.json",
@@ -1247,6 +1247,29 @@
       "status": "RESOLVED",
       "tombstone": false,
       "restored_live": false
+    },
+    {
+      "v3_name": "meta-skill-unification",
+      "layer": "domain",
+      "primary_disk_name": "skill-unification",
+      "primary_path": "/root/AAA/skills/skill-unification",
+      "primary_resolved": "/root/AAA/skills/skill-unification",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "skill-unification",
+          "path": "/root/AAA/skills/skill-unification",
+          "home": "aaa"
+        },
+        {
+          "name": "meta-mesa-skill-atlas",
+          "path": "/root/AAA/skills/meta-mesa-skill-atlas",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     }
   ],
   "reverse_disk_to_v3": {
@@ -1325,7 +1348,8 @@
     "multi-discipline-critique": "research-deep",
     "quantum-eureka-doctrine": "kernel-eureka",
     "quantum-kernel-runtime": "kernel-superposition",
-    "🜂-qubit-substrate": "kernel-superposition"
+    "🜂-qubit-substrate": "kernel-superposition",
+    "skill-unification": "meta-skill-unification"
   },
   "harness_native": {
     "grok": [
@@ -1347,8 +1371,8 @@
   },
   "unresolved": [],
   "stats": {
-    "v3_mapped": 63,
-    "resolved": 63,
+    "v3_mapped": 64,
+    "resolved": 64,
     "unresolved": 0,
     "unique_disk_skills_indexed": 140
   },
