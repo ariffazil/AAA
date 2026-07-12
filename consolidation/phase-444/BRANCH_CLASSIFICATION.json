@@ -1,0 +1,55 @@
+{
+  "created": "2026-07-12T05:35Z",
+  "phase": "444",
+  "branches": {
+    "arifOS": [
+      {"name": "main", "classification": "ACTIVE", "protected": true},
+      {"name": "zen-migration-2026-07-11", "classification": "MERGE_CANDIDATE", "note": "Current working branch, has session continuity + replay protection fixes"},
+      {"name": "lifecycle-kernel-v0.2-post-hold-2026-07-04", "classification": "EXPERIMENTAL", "note": "Lifecycle kernel experiment"},
+      {"name": "archive/pre-consolidation-2026-07-12", "classification": "ARCHIVE", "note": "Pre-consolidation snapshot"}
+    ],
+    "A-FORGE": [
+      {"name": "main", "classification": "ACTIVE", "protected": true},
+      {"name": "docs/readme-sot-alignment-2026-06-30", "classification": "MERGE_CANDIDATE", "note": "README alignment work"},
+      {"name": "fix/agi-tool-readiness-2026-06-24", "classification": "MERGE_CANDIDATE", "note": "Tool readiness fix"},
+      {"name": "feat/document-ingest", "classification": "EXPERIMENTAL", "note": "Document ingestion feature"},
+      {"name": "forge/tool-collapse-2026-06-24", "classification": "EXPERIMENTAL", "note": "Tool collapse experiment"},
+      {"name": "archive/pre-consolidation-2026-07-12", "classification": "ARCHIVE", "note": "Pre-consolidation snapshot"}
+    ],
+    "AAA": [
+      {"name": "main", "classification": "ACTIVE", "protected": true},
+      {"name": "feat/multi-agent-alignment", "classification": "EXPERIMENTAL", "note": "Current working branch, has conformance harness + replay protection"},
+      {"name": "feat/document-ingest-hexagon", "classification": "EXPERIMENTAL", "note": "Document ingest feature"},
+      {"name": "docs/readme-sot-alignment-2026-06-30", "classification": "MERGE_CANDIDATE", "note": "README alignment"},
+      {"name": "archive/pre-consolidation-2026-07-12", "classification": "ARCHIVE", "note": "Pre-consolidation snapshot"}
+    ],
+    "geox": [
+      {"name": "main", "classification": "ACTIVE", "protected": true},
+      {"name": "zen-migration-2026-07-11", "classification": "MERGE_CANDIDATE", "note": "Zen migration work"},
+      {"name": "pr-121", "classification": "MERGE_CANDIDATE", "note": "PR branch"},
+      {"name": "refactor/zen-surface-reduction", "classification": "UNKNOWN_OWNER", "note": "Needs owner verification"},
+      {"name": "archive/pre-consolidation-2026-07-12", "classification": "ARCHIVE", "note": "Pre-consolidation snapshot"}
+    ],
+    "WEALTH": [
+      {"name": "main", "classification": "ACTIVE", "protected": true},
+      {"name": "feat/calibration-collapse-signature", "classification": "EXPERIMENTAL"},
+      {"name": "feat/federated-domain", "classification": "EXPERIMENTAL"},
+      {"name": "forge/kinabalu-energy-domain-2026-07-03", "classification": "EXPERIMENTAL"},
+      {"name": "wealth-zen-clean", "classification": "EXPERIMENTAL"},
+      {"name": "archive/pre-consolidation-2026-07-12", "classification": "ARCHIVE", "note": "Pre-consolidation snapshot"}
+    ],
+    "well": [
+      {"name": "main", "classification": "ACTIVE", "protected": true},
+      {"name": "zen-migration-2026-07-11", "classification": "MERGE_CANDIDATE", "note": "Zen migration work"},
+      {"name": "archive/pre-consolidation-2026-07-12", "classification": "ARCHIVE", "note": "Pre-consolidation snapshot"}
+    ]
+  },
+  "summary": {
+    "total_branches": 29,
+    "ACTIVE": 6,
+    "MERGE_CANDIDATE": 8,
+    "EXPERIMENTAL": 9,
+    "ARCHIVE": 6,
+    "UNKNOWN_OWNER": 1
+  }
+}

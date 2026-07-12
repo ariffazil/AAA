@@ -1,0 +1,66 @@
+{
+  "created": "2026-07-12T05:35Z",
+  "phase": "222",
+  "purpose": "Define canonical ownership for all duplicated doctrine",
+  "duplicated_doctrines": [
+    {
+      "artifact": "FEDERATION_CONTRACT.md",
+      "locations": {
+        "arifOS": {"hash": "5f4b86da52fd", "lines": 342, "status": "CANONICAL"},
+        "A-FORGE": {"hash": "c2344655533d", "lines": 92, "status": "DERIVATIVE"},
+        "AAA": {"hash": "f7b4320544fa", "lines": 84, "status": "DERIVATIVE"},
+        "geox": {"hash": "1efc1525d38e", "lines": 90, "status": "DERIVATIVE"},
+        "WEALTH": {"hash": "1eeba127723b", "lines": 85, "status": "DERIVATIVE"}
+      },
+      "canonical_owner": "arifOS",
+      "canonical_path": "/root/arifOS/FEDERATION_CONTRACT.md",
+      "reason": "Most complete (342 lines), constitutional source",
+      "action": "All other repos should import/reference, not maintain independent copies"
+    },
+    {
+      "artifact": "AGENTS.md",
+      "locations": {
+        "arifOS": {"hash": "84205bbede77", "lines": 221},
+        "A-FORGE": {"hash": "b4fcfdd03ba6", "lines": 427},
+        "AAA": {"hash": "f74195fa6b06", "lines": 351},
+        "geox": {"hash": "7fefe0af5062", "lines": 422},
+        "WEALTH": {"hash": "77cba0bf13c6", "lines": 184},
+        "WELL": {"hash": "cbc90489e2c6", "lines": 194}
+      },
+      "canonical_owner": "AAA",
+      "canonical_path": "/root/AAA/AGENTS.md",
+      "reason": "AAA is the agent instruction surface per federation contract",
+      "action": "Per-organ AGENTS.md should be organ-specific bootstraps, not independent doctrine"
+    },
+    {
+      "artifact": "CLAUDE.md",
+      "locations": {
+        "arifOS": {"hash": "9281a3693994", "lines": 225},
+        "A-FORGE": {"hash": "ad5c9a4ec29c", "lines": 126},
+        "AAA": {"hash": "7b0cca7e5ab6", "lines": 382},
+        "geox": {"hash": "22bbf0d651ae", "lines": 65},
+        "WEALTH": {"hash": "beb80f1b9259", "lines": 89}
+      },
+      "canonical_owner": "AAA",
+      "canonical_path": "/root/AAA/CLAUDE.md",
+      "reason": "AAA CLAUDE.md is the canonical 382-line agent instruction surface",
+      "action": "Other CLAUDE.md files should be thin wrappers or symlinks"
+    }
+  ],
+  "tool_count_claims": {
+    "actual_arifos_tools": 12,
+    "actual_aforge_tools": 59,
+    "claims_in_docs": [5, 11, 13, 16, 32, 48, 58, 72],
+    "canonical_source": "live /tools and /health endpoints",
+    "action": "All docs must reference live counts, not hardcoded numbers"
+  },
+  "port_assignments": {
+    "arifos": 8088,
+    "a-forge": 7071,
+    "aaa": 3001,
+    "geox": 8081,
+    "wealth": 18082,
+    "well": 18083,
+    "conflicts": [":7072 appears in some docs but A-FORGE runs on :7071"]
+  }
+}

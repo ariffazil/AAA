@@ -1,0 +1,71 @@
+{
+  "created": "2026-07-12T05:35Z",
+  "contradictions": [
+    {
+      "id": "C1",
+      "claim_a": "arifOS FEDERATION_CONTRACT.md (342 lines, 5f4b86da)",
+      "claim_b": "A-FORGE FEDERATION_CONTRACT.md (92 lines, c2344655)",
+      "canonical_owner": "arifOS",
+      "evidence": "5 different hashes across 5 repos",
+      "affected_consumers": ["all agents reading any FEDERATION_CONTRACT.md"],
+      "risk": "HIGH",
+      "resolution": "arifOS owns canonical, others import",
+      "migration_required": true
+    },
+    {
+      "id": "C2",
+      "claim_a": "arifOS AGENTS.md (221 lines)",
+      "claim_b": "geox AGENTS.md (422 lines)",
+      "canonical_owner": "AAA",
+      "evidence": "6 different hashes across 6 repos",
+      "affected_consumers": ["all agent bootstraps"],
+      "risk": "MEDIUM",
+      "resolution": "AAA owns canonical, per-organ files are thin bootstraps",
+      "migration_required": true
+    },
+    {
+      "id": "C3",
+      "claim_a": "Docs claim 5-72 tools",
+      "claim_b": "Live endpoints: arifOS=12, A-FORGE=59",
+      "canonical_owner": "live endpoints",
+      "evidence": "grep across all docs vs curl /tools and /health",
+      "affected_consumers": ["tool discovery, conformance harness"],
+      "risk": "MEDIUM",
+      "resolution": "Reference live counts, not hardcoded",
+      "migration_required": true
+    },
+    {
+      "id": "C4",
+      "claim_a": "Port :7072 for A-FORGE in some docs",
+      "claim_b": "A-FORGE runs on :7071",
+      "canonical_owner": "CLAUDE.md §6",
+      "evidence": "systemctl shows :7071",
+      "affected_consumers": ["health probes, agents"],
+      "risk": "LOW",
+      "resolution": "Fix all :7072 references to :7071",
+      "migration_required": true
+    },
+    {
+      "id": "C5",
+      "claim_a": "forge_systemctl, forge_accessible, etc. in docs",
+      "claim_b": "These tools don't exist in A-FORGE source",
+      "canonical_owner": "A-FORGE source code",
+      "evidence": "comm -23 between doc grep and source grep",
+      "affected_consumers": ["agents expecting non-existent tools"],
+      "risk": "MEDIUM",
+      "resolution": "Remove non-existent tool references",
+      "migration_required": true
+    },
+    {
+      "id": "C6",
+      "claim_a": "WELL health='degraded' means organ down",
+      "claim_b": "WELL 'degraded' = evidence freshness, not organ failure",
+      "canonical_owner": "WELL contract",
+      "evidence": "conformance harness fix, WELL README",
+      "affected_consumers": ["conformance harness, health probes"],
+      "risk": "HIGH",
+      "resolution": "Code must accept 'degraded' as valid for WELL",
+      "migration_required": true
+    }
+  ]
+}

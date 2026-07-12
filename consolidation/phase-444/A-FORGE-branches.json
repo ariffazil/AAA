@@ -1,0 +1,6 @@
+{"name":"archive/pre-consolidation-2026-07-12","protected":false,"sha":"602332c08b24aa15d4c611de65fde4bab5bba985"}
+{"name":"docs/readme-sot-alignment-2026-06-30","protected":false,"sha":"0a0aff52fe2fb428c67bde54b34653e9e81edf34"}
+{"name":"feat/document-ingest","protected":false,"sha":"d2e5e4441620d5ad56740edf09c159b2b5ad1d68"}
+{"name":"fix/agi-tool-readiness-2026-06-24","protected":false,"sha":"d83e9c1845d40ba5b3b23d1ff4d8a8fa607143e5"}
+{"name":"forge/tool-collapse-2026-06-24","protected":false,"sha":"a4f3249842da1c36fe0bc2f82a6a02b7424bf8a9"}
+{"name":"main","protected":true,"sha":"ff58dd29fd8195135924bb21a52bfcf13cf7de15"}
