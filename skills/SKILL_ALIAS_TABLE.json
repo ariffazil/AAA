@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "status": "SEALED_TABLE",
+  "version": "1.0.1",
+  "status": "SEALED_TABLE_AUDITED",
   "forged": "2026-07-12T05:54:43.275785+00:00",
   "canonical_catalog": "/root/AAA/skills",
   "doctrine_core": "/root/.agents/skills",
@@ -23,7 +23,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "observe-ground",
@@ -39,7 +41,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "route-dispatch",
@@ -55,7 +59,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "memory-manage",
@@ -71,7 +77,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "verify-gate",
@@ -87,7 +95,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "audit-seal",
@@ -103,7 +113,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "know-physics",
@@ -119,7 +131,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "know-math",
@@ -135,7 +149,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "know-language",
@@ -151,7 +167,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-basin",
@@ -167,7 +185,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-constitution",
@@ -183,7 +203,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-petrophysics",
@@ -199,7 +221,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-writing",
@@ -215,7 +239,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-well-tie",
@@ -231,7 +257,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-artifact-rigor",
@@ -247,7 +275,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "geo-prospect",
@@ -263,7 +293,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "wealth-reason",
@@ -279,7 +311,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "wealth-thermo",
@@ -295,7 +329,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": true
     },
     {
       "v3_name": "wealth-collapse",
@@ -311,7 +347,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "well-boundary",
@@ -327,7 +365,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "well-readiness",
@@ -343,7 +383,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "forge-exec",
@@ -359,7 +401,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": true
     },
     {
       "v3_name": "forge-verbs",
@@ -375,7 +419,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": true
     },
     {
       "v3_name": "dev-github",
@@ -401,7 +447,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-ci-diagnose",
@@ -417,7 +465,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-issue-triage",
@@ -433,7 +483,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-pr-review",
@@ -449,7 +501,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-pr-governance",
@@ -470,7 +524,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-wiki",
@@ -486,7 +542,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-analysis",
@@ -502,7 +560,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "dev-repo-audit",
@@ -523,7 +583,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-docker",
@@ -554,7 +616,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-vps",
@@ -580,7 +644,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-mcp-builder",
@@ -606,7 +672,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-mcp-probe",
@@ -627,7 +695,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-infra",
@@ -643,7 +713,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-incident",
@@ -664,7 +736,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-spatial",
@@ -680,7 +754,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-health",
@@ -706,7 +782,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-mcp-lifeguard",
@@ -722,7 +800,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-model-monitor",
@@ -738,7 +818,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-google",
@@ -754,7 +836,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "ops-transport",
@@ -770,7 +854,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-skill-create",
@@ -791,7 +877,9 @@
           "home": "grok"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-skill-lint",
@@ -807,7 +895,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-rsi",
@@ -828,7 +918,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-rsi-audit",
@@ -844,7 +936,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-evals",
@@ -860,7 +954,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-plan",
@@ -876,7 +972,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-atlas",
@@ -892,7 +990,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-rsi-cool",
@@ -908,7 +1008,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "meta-trust-map",
@@ -924,7 +1026,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "a2a-onboard",
@@ -940,7 +1044,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "a2a-kimi",
@@ -956,7 +1062,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "a2a-sovereign",
@@ -977,7 +1085,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "a2a-spawn",
@@ -993,7 +1103,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "sec-secrets",
@@ -1014,7 +1126,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "sec-telegram",
@@ -1030,7 +1144,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "research-summarize",
@@ -1046,7 +1162,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "research-search",
@@ -1062,7 +1180,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "research-deep",
@@ -1083,7 +1203,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "kernel-eureka",
@@ -1099,7 +1221,9 @@
           "home": "aaa"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     },
     {
       "v3_name": "kernel-superposition",
@@ -1120,7 +1244,9 @@
           "home": "agents"
         }
       ],
-      "status": "RESOLVED"
+      "status": "RESOLVED",
+      "tombstone": false,
+      "restored_live": false
     }
   ],
   "reverse_disk_to_v3": {
@@ -1225,5 +1351,15 @@
     "resolved": 63,
     "unresolved": 0,
     "unique_disk_skills_indexed": 140
+  },
+  "audit": {
+    "at": "2026-07-12T06:00:27.978488+00:00",
+    "mesh_auditor": "019f54e8-0a36-79c0-b76f-a07007774c3f",
+    "vault_auditor": "019f54e8-0a37-7002-83ac-78e44b82ba44",
+    "governance_auditor": "019f54e8-0a37-7002-83ac-78f4f99df381",
+    "mesh_verdict": "CAUTION→fixed tombstones",
+    "vault_verdict": "SEAL_OK seq54",
+    "gov_verdict": "CAUTION→fixed tombstones + dual-home honesty",
+    "architecture_honest": "AAA catalog + .agents doctrine_core (not sole body home)"
   }
 }
