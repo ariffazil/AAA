@@ -1,0 +1,62 @@
+{
+  "id": "FI-010",
+  "name": "Grok Build",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Grok Build harness as sovereign AAA citizen. Plan→search→build, superior parallelism (worktree/subagents), narrow MCP surface. F1-F13 enforced.",
+  "version": "2.0.0",
+  "model": "grok-4.3 (xAI) / xai/grok-build-0.1",
+  "fallback_model": "xai/grok-build-0.1",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-12",
+  "sandbox": "process",
+  "binary": "/root/.kimi-code/bin/grok",
+  "mcpServers": [
+    "arifOS",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 3,
+    "registered": [
+      "plan",
+      "search",
+      "build"
+    ]
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "agent_ref": "grok-build",
+  "lastAudit": "2026-07-12T18:11:00Z",
+  "auditNote": "Allocated FI-010 by Kimi Code (FI-008) Zen alignment 2026-07-12. Previously orphan adapter without FI slot.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
+}

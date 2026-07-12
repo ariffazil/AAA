@@ -141,6 +141,17 @@ function normaliseCard(card) {
     security,
     governance,
     peers,
+    // Custom constitutional fields (hermes-asi, arifOS specific)
+    class: card.class || null,
+    bound_to: card.bound_to || null,
+    power_band: card.power_band || null,
+    skills_prefix: card.skills_prefix || [],
+    runtime_harness: card.runtime_harness || null,
+    identity_anchor: card.identity_anchor || null,
+    mcp_servers: card.mcp_servers || [],
+    epistemic_floor: card.epistemic_floor || null,
+    f1_boundary: card.f1_boundary || null,
+    rollback_plan: card.rollback_plan || null,
     // Keep the raw original for downstream consumers
     _raw: card,
     _normalisedAt: new Date().toISOString(),

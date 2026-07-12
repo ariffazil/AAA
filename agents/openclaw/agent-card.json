@@ -73,55 +73,55 @@
       "binding_state": "LEASED (gateway execution)"
     },
     {
-      "id": "gateway-routing",
+      "id": "FORGE-gateway-routing",
       "name": "Gateway Routing",
       "description": "Route inbound Telegram messages to the correct agent persona via deterministic bindings",
       "approval_policy": "none"
     },
     {
-      "id": "agent-dispatch",
+      "id": "FORGE-agent-dispatch",
       "name": "Agent Dispatch",
       "description": "Dispatch tasks to internal OpenClaw personas or external federation agents",
       "approval_policy": "on-demand"
     },
     {
-      "id": "agent-handoff",
+      "id": "FORGE-agent-handoff",
       "name": "Agent Handoff",
       "description": "Governed handoff to Hermes, A-FORGE, or arifOS through A2A/ACP bridges",
       "approval_policy": "hold"
     },
     {
-      "id": "web-research",
+      "id": "ASI-web-research",
       "name": "Web Research",
       "description": "Search and fetch web content via MiniMax and Tavily plugins",
       "approval_policy": "none"
     },
     {
-      "id": "browser-automation",
+      "id": "FORGE-browser-automation",
       "name": "Browser Automation",
       "description": "Chrome-based browser automation for E2E testing, screenshots, and scraping",
       "approval_policy": "on-demand"
     },
     {
-      "id": "shell-execution",
+      "id": "FORGE-shell-execution",
       "name": "Shell Execution",
       "description": "Local shell command execution on VPS af-forge under constitutional F1-F13 governance",
       "approval_policy": "hold"
     },
     {
-      "id": "memory-search",
+      "id": "ASI-memory-search",
       "name": "Memory Search",
       "description": "QMD session transcript search and Ollama bge-m3 embedding retrieval",
       "approval_policy": "none"
     },
     {
-      "id": "status-query",
+      "id": "FORGE-status-query",
       "name": "Status Query",
       "description": "Read-only gateway, agent, and session status retrieval",
       "approval_policy": "none"
     },
     {
-      "id": "openclaw-doctor-recipes",
+      "id": "FORGE-openclaw-doctor",
       "name": "OpenClaw Doctor Recipes",
       "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
       "tags": [
@@ -144,7 +144,7 @@
       ]
     },
     {
-      "id": "mcp-boot-failure-diagnosis",
+      "id": "FORGE-mcp-boot-diagnosis",
       "name": "MCP Boot Failure Diagnosis",
       "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
       "tags": [
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "id": "arif-federation-ops",
+      "id": "FORGE-federation-ops",
       "name": "arif Federation Ops",
       "description": "arifOS federation topology and routing — 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
       "tags": [
@@ -186,7 +186,7 @@
       ]
     },
     {
-      "id": "kanban-playbook",
+      "id": "AGI-kanban-playbook",
       "name": "Kanban Playbook",
       "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
       "tags": [
@@ -205,7 +205,135 @@
       "outputModes": [
         "application/json"
       ]
-    }
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
   ],
   "mcp_surface": {
     "type": "consumed",
@@ -427,5 +555,34 @@
     "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
-  }
+  },
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

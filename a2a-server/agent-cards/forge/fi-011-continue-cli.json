@@ -1,0 +1,60 @@
+{
+  "id": "FI-011",
+  "name": "Continue CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Continue CLI forge instrument — open-source coding harness. Wired to federation MCPs. F1-F13 enforced.",
+  "version": "2.0.0",
+  "model": "provider-agnostic",
+  "fallback_model": "qwen3.6-flash",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-12",
+  "sandbox": "process",
+  "binary": "/root/.local/bin/cn",
+  "mcpServers": [
+    "arifOS",
+    "geox",
+    "wealth",
+    "well",
+    "aforge"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "maxParallel": 1,
+    "registered": [
+      "continue"
+    ]
+  },
+  "authority": "engineer",
+  "riskTier": "low",
+  "agent_ref": "continue-cli",
+  "lastAudit": "2026-07-12T18:11:00Z",
+  "auditNote": "Allocated FI-011 by Kimi Code (FI-008) Zen alignment 2026-07-12. Previously orphan adapter without FI slot.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
+}
