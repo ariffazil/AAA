@@ -1,0 +1,34 @@
+{
+  "kind": "PRE_SEAL_CHECKLIST",
+  "at": "2026-07-12T06:04:46.716942+00:00",
+  "checks": {
+    "mesh_exit": 0,
+    "alias_stats": {
+      "v3_mapped": 64,
+      "resolved": 64,
+      "unresolved": 0,
+      "unique_disk_skills_indexed": 140
+    },
+    "alias_version": "1.0.2",
+    "tombstone_count": 0,
+    "skill_unification_aaa": true,
+    "skill_unification_grok": true,
+    "skill_unification_resolves_to_aaa": true,
+    "prune_ok": true,
+    "meta_mesa_version": "1.2.2",
+    "all_pass": true
+  },
+  "files": {
+    "/root/AAA/skills/skill-unification/SKILL.md": "sha256:352d9d690b5cd32ed122d2c456f18de758e64ceef62f884e91ec1f5c6128756c",
+    "/root/AAA/skills/SKILL_ALIAS_TABLE.json": "sha256:3043a50300638309141b208869f90788e53db55c7f0629f53baa446470af25c1",
+    "/root/AAA/skills/scripts/skill-mesh-sync.sh": "sha256:6a8fada837d98a13f3e196c966b67662ce2820c7b70d885e7c07c3fead1a7b13",
+    "/root/AAA/skills/meta-mesa-skill-atlas/SKILL.md": "sha256:17b99966f348898317d46be52a789b83db1d6781c62568d62d7ad84aaa230f9e",
+    "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml": "sha256:15a6897bca22e143507d41f41cef39314bc5099f462c54d4f888168dec098893"
+  },
+  "mesh_tail": [
+    "--- harness /root/.grok/skills",
+    "--- harness /root/.claude/skills",
+    "--- harness /root/.codex/skills",
+    "summary ok\u2248378 missing_or_drift=0 broken=0 created=0"
+  ]
+}
