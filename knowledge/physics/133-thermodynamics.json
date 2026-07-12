@@ -1,0 +1,56 @@
+{
+  "id": "133",
+  "name": "Thermodynamics & Statistical Mechanics",
+  "band": "physics",
+  "description": "Entropy, statistical mechanics, phase transitions, and the arrow of time. The laws that govern heat, work, and the statistical behavior of large ensembles of particles. Thermodynamics is the physics of the many \u2014 where microscopic rules produce macroscopic inevitability.",
+  "axioms": [
+    "Zeroth law: thermal equilibrium is transitive (defines temperature)",
+    "First law: energy is conserved (dU = \u03b4Q - \u03b4W)",
+    "Second law: entropy of an isolated system never decreases (\u0394S \u2265 0)",
+    "Third law: entropy approaches zero as T \u2192 0 (Nernst theorem \u2014 absolute zero is unattainable)",
+    "Boltzmann: S = k_B ln(\u03a9) \u2014 entropy is a measure of the number of accessible microstates",
+    "Clausius inequality: \u03b4Q/T \u2264 dS for any process",
+    "Gibbs: the thermodynamic free energies (F, G, H) determine spontaneity under different constraints"
+  ],
+  "reasoning_patterns": [
+    "State function analysis: identify which quantities depend only on state, not path (U, S, F, G, H)",
+    "Maxwell relations: derive partial derivative identities from exactness of thermodynamic potentials",
+    "Carnot efficiency: the maximum work extractable between two temperatures is \u03b7 = 1 - T_c/T_h",
+    "Ensemble method: microcanonical (fixed E,V,N), canonical (fixed T,V,N), grand canonical (fixed T,V,\u03bc)",
+    "Phase diagram analysis: identify coexistence curves, critical points, triple points, order parameters",
+    "Mean-field approximation: replace many-body interactions with an effective field to solve phase transitions",
+    "Chemical reaction equilibrium: use Gibbs free energy to find equilibrium composition"
+  ],
+  "boundary_conditions": [
+    "Does not cover heat transfer mechanisms (conduction/convection/radiation \u2014 engineering domain)",
+    "Statistical mechanics assumes the ergodic hypothesis (time average = ensemble average), not always valid",
+    "Third law has exceptions in disordered systems (glasses, frustrated systems)",
+    "Non-equilibrium thermodynamics requires extended frameworks (Onsager, Prigogine)",
+    "The arrow of time is statistical, not fundamental \u2014 microscopic equations are time-reversible"
+  ],
+  "dependencies": [
+    "000",
+    "100",
+    "233",
+    "300",
+    "400",
+    "399"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Callen, H.B. Thermodynamics and an Introduction to Thermostatistics",
+    "Landau & Lifshitz. Statistical Physics (Course of Theoretical Physics Vol.5)",
+    "Kittel, C. Thermal Physics",
+    "Fermi, E. Thermodynamics",
+    "Jaynes, E.T. (1957). Information Theory and Statistical Mechanics",
+    "Onsager, L. (1931). Reciprocal Relations in Irreversible Processes"
+  ],
+  "canonical_truths": [
+    "Entropy is a state function \u2014 path independent",
+    "Perpetual motion machines of both kinds are impossible",
+    "Carnot efficiency \u03b7 = 1 - T_c/T_h is the theoretical maximum for any heat engine",
+    "Phase transitions are classified by discontinuities in derivatives of free energy (Ehrenfest classification)",
+    "The arrow of time is encoded in the second law, not in fundamental time-symmetric equations",
+    "Boltzmann's constant k_B \u2248 1.38 \u00d7 10\u207b\u00b2\u00b3 J/K connects microscopic and macroscopic scales"
+  ]
+}

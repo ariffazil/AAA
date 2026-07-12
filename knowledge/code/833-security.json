@@ -1,0 +1,48 @@
+{
+  "id": "833",
+  "name": "Security",
+  "band": "code",
+  "description": "Cryptography, penetration testing, threat modeling, and defensive security",
+  "axioms": [
+    "Kerckhoffs's principle: security should depend on key secrecy, not algorithm secrecy",
+    "Defense in depth: multiple layers of security, no single point of failure",
+    "Least privilege: grant minimum permissions required for task",
+    "Fail secure: default to deny access on error, not allow",
+    "Security is a process, not a product (Schneier)",
+    "Attacker needs one vulnerability; defender must protect everything"
+  ],
+  "reasoning_patterns": [
+    "Threat modeling: identify assets, threats, vulnerabilities, and mitigations",
+    "Attack surface analysis: enumerate all entry points and trust boundaries",
+    "Cryptographic protocol analysis: verify key exchange, authentication, confidentiality",
+    "Code review for security: SQL injection, XSS, CSRF, buffer overflow patterns",
+    "Incident response: detect, contain, eradicate, recover, lessons learned"
+  ],
+  "boundary_conditions": [
+    "Does not cover physical security in depth",
+    "Does not cover social engineering in detail",
+    "Formal verification of security properties is specialized",
+    "Quantum-resistant cryptography is frontier research"
+  ],
+  "dependencies": [
+    "666",
+    "777",
+    "888",
+    "920",
+    "933"
+  ],
+  "key_references": [
+    "Schneier, B. Applied Cryptography",
+    "Stallings, W. Cryptography and Network Security",
+    "OWASP Top 10 (web application security)",
+    "MITRE ATT&CK Framework (adversarial tactics)",
+    "NIST Cybersecurity Framework"
+  ],
+  "canonical_truths": [
+    "Never roll your own crypto (use vetted libraries)",
+    "MD5 and SHA-1 are broken for collision resistance",
+    "TLS 1.3 is the current standard for transport encryption",
+    "SQL injection is still the #1 web vulnerability after 20+ years",
+    "Zero-trust architecture: never trust, always verify (even internal traffic)"
+  ]
+}

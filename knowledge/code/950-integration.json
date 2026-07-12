@@ -1,0 +1,49 @@
+{
+  "id": "950",
+  "name": "Integration & Testing",
+  "band": "code",
+  "description": "Testing strategies, E2E testing, contract testing, and chaos engineering",
+  "axioms": [
+    "Testing pyramid: many unit tests, some integration tests, few E2E tests",
+    "Test isolation: tests should not depend on external state or other tests",
+    "Arrange-Act-Assert: set up, execute, verify (AAA pattern)",
+    "Test doubles: mocks, stubs, fakes \u2014 choose by what you're verifying",
+    "Property-based testing: specify properties, let framework generate test cases",
+    "Shift left: test earlier in the development cycle (cheaper to fix)"
+  ],
+  "reasoning_patterns": [
+    "Test design: boundary values, equivalence classes, error conditions",
+    "Contract testing: verify API contracts between services (Pact)",
+    "Mutation testing: verify test quality by introducing bugs",
+    "Chaos engineering: inject failures to verify resilience (Netflix Chaos Monkey)",
+    "Test data management: factories, fixtures, realistic synthetic data"
+  ],
+  "boundary_conditions": [
+    "Does not cover performance testing in depth (load, stress, soak)",
+    "Does not cover security testing (see 833)",
+    "Visual regression testing requires specialized tools",
+    "Formal verification is a separate field"
+  ],
+  "dependencies": [
+    "666",
+    "777",
+    "833",
+    "888",
+    "920",
+    "933"
+  ],
+  "key_references": [
+    "Fowler, M. Refactoring",
+    "Feathers, M. Working Effectively with Legacy Code",
+    "Meszaros, G. xUnit Test Patterns",
+    "Humble & Farley. Continuous Delivery (testing chapters)",
+    "QuickCheck documentation (property-based testing)"
+  ],
+  "canonical_truths": [
+    "Tests are code. Maintain them like code.",
+    "100% code coverage does not mean bug-free (only tests what you wrote)",
+    "Flaky tests destroy trust in the test suite (fix or delete them)",
+    "The best tests document intent, not implementation",
+    "TDD is a design technique, not a testing technique"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "888",
+  "name": "Governance",
+  "band": "code",
+  "description": "Constitutional programming, policy engines, compliance, and AI governance",
+  "axioms": [
+    "Constitutional programming: encode rules as enforceable policy, not documentation",
+    "Separation of concerns: policy (what) is separate from enforcement (how)",
+    "Auditability: every decision must be logged, inspectable, attributable",
+    "Least authority: agents get minimum permissions for their task",
+    "Irreversibility requires higher authority: 888_HOLD for hard-to-reverse actions",
+    "Governance is not restriction \u2014 it is the structure that enables trust"
+  ],
+  "reasoning_patterns": [
+    "Policy-as-code: write rules in executable language, test like code",
+    "Decision logging: every governance decision gets a receipt with provenance",
+    "Constitutional review: check proposed action against F1-F13 floors",
+    "Authority chain: trace who authorized what, when, with what evidence",
+    "Graceful degradation: governance should degrade, not fail catastrophically"
+  ],
+  "boundary_conditions": [
+    "Does not cover legal compliance (GDPR, HIPAA) in detail",
+    "Does not cover organizational governance (board structure, voting)",
+    "Ethical AI frameworks are complementary, not replacements",
+    "Governance of non-AI systems is a broader field"
+  ],
+  "dependencies": [
+    "666",
+    "777",
+    "833",
+    "933",
+    "950"
+  ],
+  "key_references": [
+    "arifOS Constitution: F1-F13 floors (this federation)",
+    "OPA (Open Policy Agent): policy-as-code engine",
+    "Cedar: AWS authorization language",
+    "SPIFFE/SPIRE: workload identity framework",
+    "in-toto: software supply chain integrity"
+  ],
+  "canonical_truths": [
+    "Policy-as-code beats policy-as-documentation every time",
+    "The 888_HOLD pattern: pause \u2192 evaluate \u2192 authorize \u2192 execute",
+    "Audit trails are worthless if they can be tampered with",
+    "Governance overhead should be proportional to blast radius",
+    "The best governance is invisible when things go right, visible when they don't"
+  ]
+}

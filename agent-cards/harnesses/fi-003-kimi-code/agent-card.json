@@ -1,0 +1,112 @@
+{
+  "id": "FI-003",
+  "name": "Kimi Code CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Moonshot Kimi Code CLI \u2014 K2.7 Code model. Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio. AMANAH + MARUAH explicit in system identity.",
+  "version": "1.47.0",
+  "model": "kimi-code/kimi-for-coding (K2.7 Code)",
+  "izin": "GRANTED",
+  "izin_date": "2026-06-10",
+  "sandbox": "process",
+  "binary": "/root/.local/bin/kimi",
+  "config": "/root/.kimi/config.toml",
+  "mcpConfig": "/root/.kimi/mcp.json",
+  "services": [],
+  "mcpServers": [
+    "arifOS",
+    "wealth",
+    "well",
+    "geox",
+    "aforge",
+    "minimax",
+    "capability-index",
+    "repomapper",
+    "serena"
+  ],
+  "mcpServersDisabled": [
+    "github",
+    "brave-search",
+    "meyhem",
+    "playwright-mcp"
+  ],
+  "mcpStrategy": "A-FORGE stdio is the stable engineering ingress. Legacy direct MCPs disabled; all MUTATE/SEARCH/BROWSER/GITHUB route through A-FORGE forge_* tools with kernel leases.",
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "explore": "read-only",
+    "fix": "888_HOLD aware",
+    "coordinator": "Planner/Executor/Verifier triad",
+    "worker": "minimal tool surface"
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "trustTier": "proposed: 2 (pending A-AUDIT + F13 ratification)",
+  "lastAudit": "2026-06-20T13:50:00Z",
+  "auditNote": "Aligned 2026-06-20: A-FORGE moved to stdio due to HTTP single-session SDK limitation; amanah/maruah principles embedded in config + system prompt; legacy direct MCPs disabled.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "T72+nbg0gidGhOpuRL3u0/Sm3a+Gk3698NBq1Rp67OT7Y0fKiFrR6Fb33LtUuQwpkcMauigWD5BEei0sEHQIBw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

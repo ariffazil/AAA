@@ -1,0 +1,38 @@
+{
+  "id": "699",
+  "name": "Optimization",
+  "band": "math",
+  "description": "Linear programming, convex optimization, dynamic programming, gradient-based methods, combinatorial optimization, and optimal control. The mathematics of finding the best solution under constraints \u2014 minimize cost, maximize return, or achieve the best trade-off. Foundation for engineering design, portfolio optimization, resource allocation, and machine learning training. Depends on 444 (algebra), 566 (linear algebra via gradient methods), 650 (discrete math via combinatorial opt), and 666 (computation via complexity). Feeds into 700 (numerical methods via numerical optimization algorithms).",
+  "axioms": [
+    "Karush-Kuhn-Tucker (KKT) conditions: necessary conditions for constrained local optima \u2014 stationarity, primal feasibility, dual feasibility, complementary slackness",
+    "Convex functions have unique global minima: any local minimum in a convex problem is global",
+    "Bellman optimality principle: optimal policy has the property that whatever the initial state and decision, remaining decisions must constitute an optimal policy for the resulting state",
+    "Strong duality for convex problems: primal and dual optimal values coincide under Slater's condition",
+    "No free lunch theorem for optimization: no single algorithm works best for all problems",
+    "Stochastic gradient descent converges to a minimum under appropriate step-size conditions"
+  ],
+  "reasoning_patterns": [
+    "objective function formulation and constraint identification",
+    "constraint satisfaction via Lagrangian duality",
+    "gradient descent and its variants (SGD, Adam, conjugate gradient)",
+    "convexity verification of objective and constraints",
+    "Pareto frontier analysis for multi-objective problems",
+    "combinatorial optimization: branch-and-bound, integer programming",
+    "sensitivity analysis: how does the optimum shift with parameter changes?"
+  ],
+  "boundary_conditions": [
+    "Non-convex problems may have exponentially many local optima",
+    "High-dimensional optimization (d > 10\u00b3) suffers from the curse of dimensionality",
+    "Multi-objective problems have no single 'best' \u2014 Pareto front required",
+    "NP-hard combinatorial problems need heuristics for large instances",
+    "Gradient methods get stuck in saddles and local minima in non-convex landscapes",
+    "Convergence guarantees require assumptions that may not hold in practice"
+  ],
+  "dependencies": [
+    "444-algebra",
+    "566-linear-algebra",
+    "650-discrete-mathematics",
+    "666-computation"
+  ],
+  "epistemic_floor": "DERIVED"
+}

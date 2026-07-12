@@ -2,7 +2,7 @@
   "id": "FI-004",
   "name": "Antigravity CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "Google Antigravity CLI (agy) — AI-first development platform. Connected to 6 MCP servers including 5 federation organs. Model: Gemini 3.5 Flash (High). YOLO/AFK autonomy with F1-F13 gates.",
+  "description": "Google Antigravity CLI (agy) \u2014 AI-first development platform. Connected to 6 MCP servers including 5 federation organs. Model: Gemini 3.5 Flash (High). YOLO/AFK autonomy with F1-F13 gates.",
   "version": "1.0.10",
   "model": "Gemini 3.5 Flash (High)",
   "izin": "GRANTED",
@@ -58,5 +58,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "FEPOZ/MDcRYXLATPyYUYEzBhcB1a2ll9dRzJAQufOahqp1UC5i/pOp05dHk/w62pZB/EPESTlqF3Ye1orsAOCg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

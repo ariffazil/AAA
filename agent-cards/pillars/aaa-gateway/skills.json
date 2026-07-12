@@ -1,0 +1,68 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "aaa-gateway",
+  "fi": "P-001",
+  "layer": "pillars",
+  "ring": "Federation Edge",
+  "role": "A2A gateway + authN/Z + skill catalog aggregator",
+  "skill_count": 11,
+  "skills": [
+    {
+      "id": "agent-role-mode-flagging",
+      "source": ".hermes/skills/agent-role-mode-flagging",
+      "why": ""
+    },
+    {
+      "id": "FORGE-infra-guardian",
+      "source": ".agents/skills/FORGE-infra-guardian",
+      "why": ""
+    },
+    {
+      "id": "FORGE-federation-orchestrator",
+      "source": ".agents/skills/FORGE-federation-orchestrator",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-lifeguard",
+      "source": ".aaa/skills/ARCHIVE-mcp-lifeguard",
+      "why": ""
+    },
+    {
+      "id": "FORGE-secret-safety-scan",
+      "source": ".agents/skills/FORGE-secret-safety-scan",
+      "why": ""
+    },
+    {
+      "id": "FORGE-secret-hygiene",
+      "source": ".agents/skills/FORGE-secret-hygiene",
+      "why": ""
+    },
+    {
+      "id": "ASI-mcp-governor",
+      "source": ".agents/skills/ASI-mcp-governor",
+      "why": ""
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "source": ".agents/skills/APEX-mcp-federation",
+      "why": ""
+    },
+    {
+      "id": "FORGE-mcp-smoke-test",
+      "source": ".aaa/skills/ARCHIVE-mcp-smoke-test",
+      "why": ""
+    },
+    {
+      "id": "ASI-observability",
+      "source": ".agents/skills/ASI-observability",
+      "why": ""
+    },
+    {
+      "id": "FORGE-model-monitor",
+      "source": ".agents/skills/FORGE-model-monitor",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

@@ -1,0 +1,105 @@
+{
+  "id": "FI-002",
+  "name": "Claude Code",
+  "class": "FORGE_INSTRUMENT",
+  "description": "Anthropic Claude Code CLI \u2014 native agentic coding assistant. DeepSeek-V4-Pro via Anthropic-compatible endpoint. Has Agent Teams, workflows, and bughunter capabilities (all DISABLED by default).",
+  "version": "2.1.160",
+  "model": "deepseek-v4-pro (via Anthropic compat endpoint)",
+  "izin": "GRANTED",
+  "izin_date": "2026-04-15",
+  "sandbox": "seatbelt (bubblewrap + seccomp + Landlock)",
+  "binary": "/root/.local/bin/claude",
+  "config": "/root/.claude.json",
+  "settings": "/root/.claude/settings.json",
+  "oauthAccount": "arifbfazil@gmail.com",
+  "services": [],
+  "mcpServers": [
+    "arifOS",
+    "minimax-media",
+    "minimax-code",
+    "WEALTH",
+    "WELL",
+    "github",
+    "brave-search",
+    "meyhem",
+    "playwright-mcp",
+    "capability-index"
+  ],
+  "subAgentPolicy": {
+    "default": "888_HOLD",
+    "agentTeams": "DISABLED",
+    "workflows": "DISABLED",
+    "bughunterFleetSize": 5,
+    "note": "All sub-agent features require explicit F13 session override"
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "y1DqjrkB4WBg9uKzbD2YN4aBQbHo1yKXAOurJaXExrbHe3WX7r6MxBR2YyHXQrei3YF7ggPz3Lrf6RiCddfuDQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

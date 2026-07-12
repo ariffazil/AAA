@@ -1,0 +1,49 @@
+{
+  "id": "800",
+  "name": "AI/ML Engineering",
+  "band": "code",
+  "description": "Machine learning, deep learning, training, inference, and MLOps",
+  "axioms": [
+    "Bias-variance tradeoff: model complexity trades off between underfitting and overfitting",
+    "Gradient descent: follow negative gradient to minimize loss function",
+    "Backpropagation: chain rule applied layer-by-layer to compute gradients",
+    "Universal approximation: sufficiently wide neural network can approximate any function",
+    "No free lunch: no single algorithm is best for all problems",
+    "Data quality > model complexity: garbage in, garbage out"
+  ],
+  "reasoning_patterns": [
+    "Data pipeline: collect \u2192 clean \u2192 feature engineer \u2192 split \u2192 train \u2192 evaluate \u2192 deploy",
+    "Hyperparameter tuning: grid search, random search, Bayesian optimization",
+    "Transfer learning: pre-train on large dataset, fine-tune on target task",
+    "Ensemble methods: combine multiple models (bagging, boosting, stacking)",
+    "A/B testing: measure model improvement in production with statistical rigor"
+  ],
+  "boundary_conditions": [
+    "Does not cover ML theory (convergence proofs, generalization bounds) in depth",
+    "Does not cover specific frameworks (PyTorch, TensorFlow) API details",
+    "Computer vision and NLP are specialized applications",
+    "Reinforcement learning is a separate subfield with distinct challenges"
+  ],
+  "dependencies": [
+    "566",
+    "600",
+    "633",
+    "666",
+    "699",
+    "850"
+  ],
+  "key_references": [
+    "Goodfellow, Bengio & Courville. Deep Learning",
+    "Bishop, C. Pattern Recognition and Machine Learning",
+    "Sutton & Barto. Reinforcement Learning: An Introduction",
+    "Murphy, K. Machine Learning: A Probabilistic Perspective",
+    "MLOps papers: MLflow, Kubeflow, TFX"
+  ],
+  "canonical_truths": [
+    "Transformers (attention mechanism) are the dominant architecture for language tasks",
+    "Scaling laws: performance improves predictably with more data, compute, and parameters",
+    "Overfitting is the default \u2014 regularization is required, not optional",
+    "Feature engineering is often more important than model selection",
+    "Production ML is 80% data engineering, 20% modeling"
+  ]
+}

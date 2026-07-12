@@ -1,0 +1,93 @@
+{
+  "id": "FI-004",
+  "name": "Codex CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "OpenAI Codex CLI \u2014 GPT-5.5 powered. Goal-based agentic coding with Landlock sandbox. 0 active goals.",
+  "version": "0.136.0",
+  "model": "GPT-5.5 (OpenAI API)",
+  "izin": "GRANTED",
+  "izin_date": "2026-05-20",
+  "sandbox": "landlock",
+  "binary": "/usr/local/bin/codex",
+  "config": "/root/.codex/",
+  "services": [],
+  "mcpServers": "UNKNOWN",
+  "subAgentPolicy": {
+    "default": "ALLOWED \u2014 only from registered .codex/agents/*.toml",
+    "goalsEngine": "idle",
+    "goalsDb": "/root/.codex/goals_1.sqlite",
+    "activeGoals": 0,
+    "note": "Goals DB is empty. 5 historical memories from May 27 - June 2 (audit/cleanup). Clean state."
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "lastAudit": "2026-06-10T18:45:00Z",
+  "auditNote": "AUDITED. GPT-5.5 model confirmed. 0 active goals. 5 historical rollout summaries (all audit/cleanup). LOW RISK.",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "oeYxbgrMNz/Ak1+aYvMOdomccuL2IPtCmf1cnmEJ2T77oTuv5KL8C+skEfV4FWo7aIKT8zdEDfMC5ReUJ155BQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}

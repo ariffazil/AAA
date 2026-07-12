@@ -2,7 +2,7 @@
   "id": "FI-002",
   "name": "Claude Code",
   "class": "FORGE_INSTRUMENT",
-  "description": "Anthropic Claude Code CLI — native agentic coding assistant. DeepSeek-V4-Pro via Anthropic-compatible endpoint. Has Agent Teams, workflows, and bughunter capabilities (all DISABLED by default).",
+  "description": "Anthropic Claude Code CLI \u2014 native agentic coding assistant. DeepSeek-V4-Pro via Anthropic-compatible endpoint. Has Agent Teams, workflows, and bughunter capabilities (all DISABLED by default).",
   "version": "2.1.160",
   "model": "deepseek-v4-pro (via Anthropic compat endpoint)",
   "izin": "GRANTED",
@@ -62,5 +62,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "jN6I9lXIV/gLd/QEsfoqB3AElV+iylLLrTL4neYM8+6iZLkinJGb2G1SrnwFHp4Znnkh7dDsPCVSl+haUJUwCw==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

@@ -1,0 +1,20 @@
+{
+  "spec_type": "META_MESA_SEAL",
+  "version": "1.0.0",
+  "sealed_at": "2026-07-12T23:18:41.111426+00:00",
+  "operator": "Kimi Code CLI",
+  "scope": "/root/AAA",
+  "test": "audit→identify→forge→assign→seal",
+  "result": "PASS",
+  "evidence": {
+    "agents_audited": 25,
+    "agents_with_3plus_skills": 25,
+    "gaps_detected": 1,
+    "skills_forged": 1,
+    "skills_assigned": 1,
+    "forged_skill_id": "APEX-post-seal-runtime-verdict",
+    "forge_hash": "896ab49c0c51bf66fd0db2e90e6f8db7b4ab852f881ed95e59b1fc6ca1ed987e"
+  },
+  "manifest_sha256": "214a86cc238d868816995fc677614d706e73a60f6bf14bca9f31936e385df9dc",
+  "seal_hash": "1c837e20822cd7dcec8210c272c257ff28a22657ba304341875f71ffe5074a46"
+}

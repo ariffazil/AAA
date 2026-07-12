@@ -2,7 +2,7 @@
   "id": "FI-005",
   "name": "Codex CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "OpenAI Codex CLI — GPT-5.5 powered. Goal-based agentic coding with Landlock sandbox. 0 active goals.",
+  "description": "OpenAI Codex CLI \u2014 GPT-5.5 powered. Goal-based agentic coding with Landlock sandbox. 0 active goals.",
   "version": "0.136.0",
   "model": "GPT-5.5 (OpenAI API)",
   "izin": "GRANTED",
@@ -13,7 +13,7 @@
   "services": [],
   "mcpServers": "UNKNOWN",
   "subAgentPolicy": {
-    "default": "ALLOWED — only from registered .codex/agents/*.toml",
+    "default": "ALLOWED \u2014 only from registered .codex/agents/*.toml",
     "goalsEngine": "idle",
     "goalsDb": "/root/.codex/goals_1.sqlite",
     "activeGoals": 0,
@@ -50,5 +50,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "JjUKKnkj5BjyRvFM3dasMZdXRThQDxxqOGtZqGJY5dRdA+h7ZvMKBUy5DW5Kifc+hbYzeRCh6c2RgCYUOQ3aAQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

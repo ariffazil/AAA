@@ -1,0 +1,48 @@
+{
+  "id": "777",
+  "name": "Systems Programming",
+  "band": "code",
+  "description": "Operating systems, networking, protocols, and low-level programming",
+  "axioms": [
+    "Everything is a file (Unix philosophy): devices, sockets, pipes are file descriptors",
+    "Memory is just bytes: all abstractions (types, structs, objects) are interpretation",
+    "Concurrency requires synchronization: races, deadlocks, livelocks are inevitable without it",
+    "Network is unreliable: design for latency, packet loss, and partial failure",
+    "Premature optimization is the root of all evil (Knuth)",
+    "Abstraction has cost: every layer adds latency and complexity"
+  ],
+  "reasoning_patterns": [
+    "Strace/ltrace: trace system calls and library calls to understand behavior",
+    "Packet capture: tcpdump/Wireshark to debug network issues",
+    "Memory debugging: Valgrind, AddressSanitizer, gdb for memory corruption",
+    "Performance profiling: perf, flame graphs to find bottlenecks",
+    "Race condition analysis: identify shared state, lock ordering, atomicity"
+  ],
+  "boundary_conditions": [
+    "Does not cover embedded systems in depth",
+    "Does not cover kernel development (device drivers, scheduler) in detail",
+    "Distributed systems require separate treatment (see 920)",
+    "Real-time systems have specialized constraints"
+  ],
+  "dependencies": [
+    "000",
+    "666",
+    "833",
+    "920",
+    "933"
+  ],
+  "key_references": [
+    "Stevens, W. Unix Network Programming",
+    "Tanenbaum, A. Modern Operating Systems",
+    "W. Richard Stevens. Advanced Programming in the UNIX Environment",
+    "Comer, D. Internetworking with TCP/IP",
+    "Kerrisk, M. The Linux Programming Interface"
+  ],
+  "canonical_truths": [
+    "TCP is reliable, ordered, connection-oriented; UDP is unreliable, unordered, connectionless",
+    "Context switch cost: ~1-10 \u03bcs (depends on cache state)",
+    "System call overhead: ~100-1000 ns (user\u2192kernel\u2192user)",
+    "Memory-mapped I/O avoids kernel buffer copies",
+    "The C language has no bounds checking \u2014 buffer overflows are a C problem"
+  ]
+}

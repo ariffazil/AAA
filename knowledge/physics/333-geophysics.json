@@ -1,0 +1,58 @@
+{
+  "id": "333",
+  "name": "Geophysics",
+  "band": "physics",
+  "description": "Earth structure, seismic wave propagation, petrophysics, plate tectonics, and the physical processes that shape our planet. Geophysics applies the principles of physics to understand the Earth from its deep interior (core, mantle) to its surface expressions (volcanoes, earthquakes, mountain belts).",
+  "axioms": [
+    "Seismic waves: P-waves (compressional, fastest, travel through solids and liquids) and S-waves (shear, travel only through solids)",
+    "Snell's law governs seismic ray paths through layers of varying velocity (critical for refraction/reflection seismology)",
+    "Gravity anomalies reveal subsurface density variations \u2014 corrections for latitude, elevation, and terrain required",
+    "Plate tectonics: the lithosphere is divided into rigid plates moving on the asthenosphere \u2014 the unifying theory of geology",
+    "Magnetic anomalies record geomagnetic reversals in oceanic crust \u2014 the Vine-Matthews-Morley hypothesis confirms seafloor spreading",
+    "Heat flow: Earth's interior (core ~6000\u00b0C) is hotter than its surface; convection in the mantle drives plate motion",
+    "Isostasy: the lithosphere floats on the asthenosphere \u2014 mountains have deep roots (Airy) or density variations (Pratt)",
+    "Seismic tomography: arrival-time inversions reveal 3D velocity structure \u2014 analogous to medical CT scanning of the Earth"
+  ],
+  "reasoning_patterns": [
+    "Seismic interpretation: trace reflectors on seismic sections, identify structural traps, distinguish lithology and fluid content",
+    "Rock physics: link elastic properties (Vp, Vs, density) to porosity, lithology, and pore fluid content (Gassmann, Biot theory)",
+    "Gravity/magnetic modeling: forward model subsurface bodies from known geometry and density; invert observed anomalies for geometry",
+    "Well log analysis: integrate multiple logs (gamma ray, density, neutron, resistivity, sonic) to characterize formations",
+    "Plate reconstruction: use magnetic isochrons, hot spot tracks, and paleomagnetism to reconstruct past plate configurations",
+    "Earthquake seismology: locate hypocenters from arrival times; compute moment tensors from waveform inversion",
+    "Geodetic monitoring: use GPS and InSAR to measure surface deformation at mm-scale precision"
+  ],
+  "boundary_conditions": [
+    "Deep Earth (> 2000 km) is poorly constrained seismically \u2014 resolution decreases with depth",
+    "Does not cover petroleum engineering (reservoir simulation, production optimization)",
+    "Does not cover mining geology or mineral exploration in full detail",
+    "Climate-geology interactions are cross-disciplinary between geophysics, oceanography, and atmospheric science",
+    "Core dynamics and geodynamo theory remain incompletely understood (why does the field reverse?)"
+  ],
+  "dependencies": [
+    "000",
+    "100",
+    "133",
+    "200",
+    "300",
+    "366",
+    "400"
+  ],
+  "epistemic_floor": "OBSERVED",
+  "key_references": [
+    "Shearer, P.M. Introduction to Seismology",
+    "Lowrie, W. Fundamentals of Geophysics",
+    "Turcotte & Schubert. Geodynamics",
+    "Telford, Geldart & Sheriff. Applied Geophysics",
+    "Aki & Richards. Quantitative Seismology",
+    "Stein & Wysession. An Introduction to Seismology, Earthquakes, and Earth Structure"
+  ],
+  "canonical_truths": [
+    "Earth is ~4.54 billion years old \u2014 established by radiometric dating of meteorites and oldest Earth rocks",
+    "The outer core is liquid (S-waves do not propagate); the inner core is solid (PKJKP phases confirm)",
+    "Seismic tomography reveals downwelling slabs and upwelling plumes in the mantle \u2014 slab pull drives plate tectonics",
+    "Continental drift rate: ~2-10 cm/year \u2014 directly measured by GPS geodesy",
+    "P-wave velocity in crust: ~5-7 km/s; in mantle: ~8-13 km/s; in core: ~8-11 km/s",
+    "Earth's magnetic field reverses irregularly every ~200,000-300,000 years on average"
+  ]
+}

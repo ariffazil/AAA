@@ -72,7 +72,36 @@ const { writeSeal } = require('./vault');
 
 // ─── STATE ENUM ────────────────────────────────────────────────────────────
 
-/** Canonical agent lifecycle states. */
+/**
+ * Canonical agent lifecycle states.
+ *
+ * A2A 9-STATE TASK MODEL ALIGNMENT (CIV-33 Gap 4 — 2026-07-12)
+ * ============================================================
+ * The agent lifecycle (this file) operates at the agent-instance level.
+ * The A2A task lifecycle (`arep-task-manager.js`) operates at the
+ * per-task level. They are NOT the same model, but they align:
+ *
+ * ┌─────────────────────────┬──────────────────────────┬──────────────────────┐
+ * │ Agent Lifecycle         │ A2A Task State           │ Notes                │
+ * ├─────────────────────────┼──────────────────────────┼──────────────────────┤
+ * │ REGISTERED              │ TASK_STATE_SUBMITTED     │ Task queued          │
+ * │ PROVISIONED             │ TASK_STATE_WORKING       │ Session bound, exec  │
+ * │ AUTHORIZED              │ TASK_STATE_WORKING       │ Floors cleared       │
+ * │ EXECUTING               │ TASK_STATE_WORKING       │ Tool call in flight  │
+ * │ AUDITING                │ TASK_STATE_WORKING       │ Vault sealing        │
+ * │ HELD                    │ TASK_STATE_INPUT_REQUIRED│ Awaiting human input │
+ * │ HELD (auth-needed)      │ TASK_STATE_AUTH_REQUIRED │ Awaiting auth token  │
+ * │ DEGRADED                │ TASK_STATE_FAILED        │ Tool error / partial │
+ * │ STOPPED                 │ TASK_STATE_COMPLETED     │ Session closed clean │
+ * │ DEPROVISIONED           │ TASK_STATE_COMPLETED     │ Terminal cleanup     │
+ * │ TERMINATED              │ TASK_STATE_CANCELED      │ Operator kill        │
+ * │ (constitutional VOID)   │ TASK_STATE_REJECTED      │ Floor breach         │
+ * └─────────────────────────┴──────────────────────────┴──────────────────────┘
+ *
+ * The mapping is bidirectional via `toA2AState()` in server.js. CIV-33 Gap 4
+ * added TASK_STATE_AUTH_REQUIRED so that sovereign-veto / auth-required flows
+ * (F13) can pause tasks at the A2A protocol layer without losing them.
+ */
 const AgentState = Object.freeze({
   REGISTERED:       'registered',
   PROVISIONED:      'provisioned',
@@ -82,9 +111,9 @@ const AgentState = Object.freeze({
   STOPPED:          'stopped',
   DEPROVISIONED:    'deprovisioned',
   // Exception states
-  HELD:             'held',           // 888_HOLD triggered
-  DEGRADED:         'degraded',       // Error or partial failure
-  TERMINATED:       'terminated',     // Killed by operator
+  HELD:             'held',           // 888_HOLD triggered (→ INPUT_REQUIRED or AUTH_REQUIRED)
+  DEGRADED:         'degraded',       // Error or partial failure (→ FAILED)
+  TERMINATED:       'terminated',     // Killed by operator (→ CANCELED)
 });
 
 // ─── VALID TRANSITIONS ─────────────────────────────────────────────────────

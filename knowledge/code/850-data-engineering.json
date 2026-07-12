@@ -1,0 +1,48 @@
+{
+  "id": "850",
+  "name": "Data Engineering",
+  "band": "code",
+  "description": "Data pipelines, ETL, warehousing, and streaming systems",
+  "axioms": [
+    "ETL vs ELT: extract-transform-load vs extract-load-transform (modern = ELT)",
+    "Schema evolution: schemas change; pipelines must handle backward/forward compatibility",
+    "Idempotency: running pipeline twice produces same result as running once",
+    "Data quality: completeness, accuracy, consistency, timeliness, validity",
+    "Partitioning: split data by time/key for parallel access and lifecycle management",
+    "Exactly-once semantics is hard; at-least-once + idempotency is practical"
+  ],
+  "reasoning_patterns": [
+    "Data modeling: star schema, snowflake, data vault for warehousing",
+    "Pipeline design: batch vs streaming vs micro-batch (choose by latency requirements)",
+    "Data quality checks: schema validation, null checks, range checks, anomaly detection",
+    "Backfill strategy: how to reprocess historical data without breaking downstream",
+    "Data lineage: track where data came from and how it was transformed"
+  ],
+  "boundary_conditions": [
+    "Does not cover data science/analysis in depth (see 633)",
+    "Does not cover specific cloud services (AWS, GCP, Azure) in detail",
+    "Real-time systems have specialized constraints",
+    "Data governance and privacy (GDPR) require legal expertise"
+  ],
+  "dependencies": [
+    "633",
+    "777",
+    "800",
+    "920",
+    "933"
+  ],
+  "key_references": [
+    "Kleppmann, M. Designing Data-Intensive Applications",
+    "Kimball & Ross. The Data Warehouse Toolkit",
+    "Housley, M. Data Engineering with Python",
+    "Apache Kafka documentation (streaming)",
+    "Apache Spark documentation (batch processing)"
+  ],
+  "canonical_truths": [
+    "Data pipelines break. Design for failure, not success.",
+    "Schema-on-read vs schema-on-write is a fundamental architectural choice",
+    "Partitioning by date is almost always the right first partition",
+    "CDC (Change Data Capture) is the modern way to sync databases",
+    "Data lakes become data swamps without governance and cataloging"
+  ]
+}

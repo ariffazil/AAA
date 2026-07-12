@@ -1,0 +1,158 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "arifos",
+  "fi": "P-003",
+  "layer": "organs",
+  "ring": "Constitutional Kernel",
+  "role": "F1-F13 floor enforcement + 888_JUDGE + 999_VAULT",
+  "skill_count": 29,
+  "skills": [
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "APEX-authority-detection",
+      "source": ".agents/skills/APEX-authority-detection",
+      "why": ""
+    },
+    {
+      "id": "APEX-constitutional-audit",
+      "source": ".aaa/skills/APEX-constitutional-audit",
+      "why": ""
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": ""
+    },
+    {
+      "id": "APEX-fff-loop-protocol",
+      "source": ".aaa/skills/APEX-fff-loop-protocol",
+      "why": ""
+    },
+    {
+      "id": "APEX-governance",
+      "source": ".agents/skills/APEX-governance",
+      "why": ""
+    },
+    {
+      "id": "APEX-humility-godel",
+      "source": ".aaa/skills/APEX-humility-godel",
+      "why": ""
+    },
+    {
+      "id": "APEX-mcp-federation",
+      "source": ".agents/skills/APEX-mcp-federation",
+      "why": ""
+    },
+    {
+      "id": "APEX-quantum-eureka",
+      "source": ".agents/skills/APEX-quantum-eureka",
+      "why": ""
+    },
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": ""
+    },
+    {
+      "id": "ASI-constitutional-reasoning",
+      "source": ".agents/skills/ASI-constitutional-reasoning",
+      "why": ""
+    },
+    {
+      "id": "ASI-cooling-ledger-rsi",
+      "source": ".agents/skills/ASI-cooling-ledger-rsi",
+      "why": ""
+    },
+    {
+      "id": "ASI-unified-memory",
+      "source": ".agents/skills/ASI-unified-memory",
+      "why": ""
+    },
+    {
+      "id": "ASI-knowledge-writeback",
+      "source": ".agents/skills/ASI-knowledge-writeback",
+      "why": ""
+    },
+    {
+      "id": "ASI-multi-discipline-critique",
+      "source": ".agents/skills/ASI-multi-discipline-critique",
+      "why": ""
+    },
+    {
+      "id": "ASI-observability",
+      "source": ".agents/skills/ASI-observability",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-clarity-canon",
+      "source": ".agents/skills/AUDIT-clarity-canon",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-post-seal-sweep",
+      "source": ".agents/skills/AUDIT-post-seal-sweep",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-recursive-audit",
+      "source": ".agents/skills/AUDIT-recursive-audit",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-skill-atlas",
+      "source": ".agents/skills/AUDIT-skill-atlas",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-symbolic-collective-bias",
+      "source": ".agents/skills/AUDIT-symbolic-collective-bias",
+      "why": ""
+    },
+    {
+      "id": "AUDIT-symbolic-trust",
+      "source": ".agents/skills/AUDIT-symbolic-trust",
+      "why": ""
+    },
+    {
+      "id": "ARCHIVE-vault-integrity",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": ""
+    },
+    {
+      "id": "ARCHIVE-vault-seal",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": ""
+    },
+    {
+      "id": "ARCHIVE-vault999-reader",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": ""
+    },
+    {
+      "id": "ARCHIVE-vault999-integrity",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": ""
+    },
+    {
+      "id": "CLAIM-receipt-v1",
+      "source": ".agents/skills/CLAIM-receipt-v1",
+      "why": ""
+    },
+    {
+      "id": "CLAIM-verification-gate",
+      "source": ".agents/skills/CLAIM-verification-gate",
+      "why": ""
+    },
+    {
+      "id": "AGI-cross-agent-handoff",
+      "source": ".agents/skills/AGI-cross-agent-handoff",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

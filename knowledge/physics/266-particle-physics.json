@@ -1,0 +1,57 @@
+{
+  "id": "266",
+  "name": "Particle Physics",
+  "band": "physics",
+  "description": "The Standard Model of particle physics, gauge symmetries, quarks, leptons, gauge bosons, and the Higgs mechanism. Particle physics seeks the most fundamental building blocks of matter and the laws that govern their interactions. The Standard Model is one of the most successful theories ever devised, confirmed to extraordinary precision.",
+  "axioms": [
+    "Standard Model gauge group: SU(3)_C \u00d7 SU(2)_L \u00d7 U(1)_Y \u2014 color, weak isospin, hypercharge",
+    "Quarks: 6 flavors (up, down, charm, strange, top, bottom); 3 colors each; fractional electric charge (\u00b1\u2153, \u00b1\u2154)",
+    "Leptons: electron, muon, tau, and their corresponding neutrinos (\u03bd_e, \u03bd_\u03bc, \u03bd_\u03c4); integer charge",
+    "Four fundamental forces: strong (gluons), weak (W\u00b1, Z\u2070), electromagnetic (photons), gravitational (gravitons \u2014 hypothetical)",
+    "Higgs mechanism: spontaneous symmetry breaking of electroweak symmetry gives W\u00b1 and Z\u2070 their masses",
+    "Conservation laws: baryon number, lepton number, charge, CPT symmetry (all fundamental interactions conserve CPT)",
+    "Confinement: quarks are never observed in isolation \u2014 only color-neutral hadrons (baryons and mesons)"
+  ],
+  "reasoning_patterns": [
+    "Feynman diagram calculation: vertices (interactions) \u00d7 propagators (particle exchange) \u00d7 external lines (initial/final states)",
+    "Cross-section computation: compute matrix element \u2192 integrate over phase space \u2192 differential cross-section",
+    "Renormalization: systematically absorb UV divergences into redefined coupling constants and masses",
+    "Group theory: classify particles by their representation under the Standard Model gauge group",
+    "Conservation law check: verify all quantum numbers (baryon, lepton, charge, color, isospin) balance before and after interaction",
+    "Symmetry breaking analysis: identify how symmetries are spontaneously or anomalously broken",
+    "Phase space estimation: use available energy to estimate branching ratios and decay widths"
+  ],
+  "boundary_conditions": [
+    "Does not include quantum gravity \u2014 the Standard Model has no gravitational interaction",
+    "Neutrino masses require beyond-Standard-Model physics (seesaw mechanism, sterile neutrinos)",
+    "Dark matter is not explained by the Standard Model \u2014 requires new particles (WIMPs, axions, etc.)",
+    "Matter-antimatter asymmetry (baryogenesis) is not explained within the Standard Model's CP violation",
+    "The hierarchy problem (why is Higgs mass so light?) is unresolved within the Standard Model",
+    "Strong CP problem (why is there no observed neutron electric dipole moment?) points to new physics"
+  ],
+  "dependencies": [
+    "000",
+    "233",
+    "300",
+    "399",
+    "400",
+    "366"
+  ],
+  "epistemic_floor": "DERIVED",
+  "key_references": [
+    "Peskin & Schroeder. An Introduction to Quantum Field Theory",
+    "Weinberg, S. The Quantum Theory of Fields (3 volumes)",
+    "Griffiths, D. Introduction to Elementary Particles",
+    "Halzen & Martin. Quarks and Leptons",
+    "PDG (Particle Data Group). Review of Particle Physics (annual)",
+    "'t Hooft, G. & Veltman, M. (1972). Regularization and Renormalization of Gauge Fields"
+  ],
+  "canonical_truths": [
+    "The Standard Model has been tested to extraordinary precision at LEP, Tevatron, and LHC",
+    "Quarks are never observed in isolation (confinement \u2014 only hadrons exist as free particles)",
+    "The Higgs boson was discovered at CERN in 2012 at 125 GeV \u2014 completing the Standard Model particle content",
+    "There are exactly 3 generations of quarks and leptons (established by LEP measurement of Z\u2070 decay width)",
+    "CP violation exists in the weak sector (K\u2070 and B\u2070 systems) \u2014 necessary but insufficient for baryogenesis",
+    "The top quark (~173 GeV) is the heaviest known elementary particle \u2014 comparable to a gold atom"
+  ]
+}

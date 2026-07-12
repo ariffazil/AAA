@@ -1,0 +1,47 @@
+{
+  "id": "900",
+  "name": "Frontend Engineering",
+  "band": "code",
+  "description": "UI/UX, design systems, accessibility, and component architecture",
+  "axioms": [
+    "User-centered design: start with user needs, not technical capabilities",
+    "Accessibility is not optional: WCAG 2.1 AA is the minimum standard",
+    "Component-based architecture: UI is a tree of reusable, composable components",
+    "Responsive design: content adapts to viewport size and input method",
+    "Performance is a feature: 100ms response time feels instant, 1s keeps flow",
+    "Progressive enhancement: core functionality works without JavaScript"
+  ],
+  "reasoning_patterns": [
+    "Component decomposition: break UI into atomic/molecular/organism hierarchy",
+    "State management: local vs global, unidirectional data flow",
+    "Performance budget: set targets for LCP, FID, CLS (Core Web Vitals)",
+    "Accessibility audit: screen reader testing, keyboard navigation, color contrast",
+    "Design token system: colors, spacing, typography as variables"
+  ],
+  "boundary_conditions": [
+    "Does not cover backend APIs in depth (see 920)",
+    "Does not cover mobile native development (iOS/Android) in detail",
+    "3D graphics and game UI have specialized requirements",
+    "AR/VR interfaces are frontier UX"
+  ],
+  "dependencies": [
+    "666",
+    "777",
+    "920",
+    "950"
+  ],
+  "key_references": [
+    "Nielsen, J. Usability Engineering",
+    "Norman, D. The Design of Everyday Things",
+    "WCAG 2.1 Guidelines (W3C)",
+    "React/Vue/Svelte documentation (component frameworks)",
+    "Material Design / Human Interface Guidelines (design systems)"
+  ],
+  "canonical_truths": [
+    "JavaScript bundle size directly impacts time-to-interactive",
+    "CSS specificity wars are solved by design systems and utility classes",
+    "Single-page applications trade initial load time for navigation speed",
+    "Server-side rendering (SSR) improves first contentful paint and SEO",
+    "The best UI is invisible \u2014 users accomplish tasks without thinking about the interface"
+  ]
+}

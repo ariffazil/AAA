@@ -18,8 +18,21 @@ const path = require('path');
 // ── In-memory store ─────────────────────────────────────────────────────
 const cards = new Map();
 
+// ── CIV-33 layer classification ──────────────────────────────────────────
+// Maps top-level directory → CIV-33 layer label. Used to enrich normalised
+// cards with `civ_layer` so /a2a/discover and dashboards can group by layer.
+const CIV33_LAYERS = {
+  identity: 'identity',
+  functions: 'function',
+  extensions: 'extension',
+  harnesses: 'harness',
+  pillars: 'pillar',
+  organs: 'organ',
+  _retired: 'retired',
+};
+
 // ── Normalise agent card to a canonical internal shape ──────────────────
-function normaliseCard(card) {
+function normaliseCard(card, sourcePath) {
   if (!card || typeof card !== 'object') return null;
 
   // Derive agentId from various possible keys
@@ -121,11 +134,26 @@ function normaliseCard(card) {
   // Version
   const version = card.version || (card.identity && card.identity.version) || 'unknown';
 
-  // Protocol version
-  const protocolVersion = card.protocolVersion || card.protocol_version || 'a2a.v1';
+  // Protocol version (Tier-1.2: A2A v1.2 aligned — flat shape, Ed25519-signed)
+  // Accepts: '1.2', '1.0.0', '0.2.5', 'a2a.v1' — anything not '1.2' is normalised to '1.2'
+  const rawProtocol =
+    card.protocolVersion ||
+    card.protocol_version ||
+    (card.identity && card.identity.protocolVersion) ||
+    '1.2';
+  const protocolVersion = rawProtocol === '1.2' ? '1.2' : '1.2';
 
   // Peers
   const peers = card.peers || [];
+
+  // CIV-33 layer detection from sourcePath (e.g. .../agent-cards/identity/333-AGI/agent-card.json)
+  let civLayer = null;
+  if (typeof sourcePath === 'string') {
+    const m = sourcePath.match(/\/agent-cards\/([^/]+)\//);
+    if (m && Object.prototype.hasOwnProperty.call(CIV33_LAYERS, m[1])) {
+      civLayer = CIV33_LAYERS[m[1]];
+    }
+  }
 
   return {
     agentId,
@@ -152,6 +180,9 @@ function normaliseCard(card) {
     epistemic_floor: card.epistemic_floor || null,
     f1_boundary: card.f1_boundary || null,
     rollback_plan: card.rollback_plan || null,
+    // CIV-33 layer classification (identity / function / extension / harness / pillar / organ / retired)
+    civ_layer: civLayer,
+    civ_source: sourcePath || null,
     // Keep the raw original for downstream consumers
     _raw: card,
     _normalisedAt: new Date().toISOString(),
@@ -159,8 +190,8 @@ function normaliseCard(card) {
 }
 
 // ── Register a single agent card ────────────────────────────────────────
-function register(card) {
-  const normalised = normaliseCard(card);
+function register(card, sourcePath) {
+  const normalised = normaliseCard(card, sourcePath);
   if (!normalised) {
     const err = new Error('Agent card missing agentId/identity.organId/id');
     err.code = 'INVALID_CARD';
@@ -192,7 +223,7 @@ function loadDirectory(dirPath) {
       const card = JSON.parse(raw);
       // Single card
       if (card.agentId || card.id || (card.identity && card.identity.organId)) {
-        const result = register(card);
+        const result = register(card, fullPath);
         loaded.push(result.agentId);
       } else {
         errors.push(`${entry.name}: no identifiable agent ID in any schema`);
@@ -221,7 +252,7 @@ function loadDirectoryRecursive(rootPath) {
         const raw = fs.readFileSync(fullPath, 'utf-8');
         const card = JSON.parse(raw);
         if (card.agentId || card.id || (card.identity && card.identity.organId)) {
-          const result = register(card);
+          const result = register(card, fullPath);
           results.loaded.push(`${entry.name} → ${result.agentId}`);
         } else {
           results.errors.push(`${entry.name}: no identifiable agent ID`);
@@ -320,26 +351,15 @@ function findBySkill(skillId) {
   );
 }
 
-function getStats() {
-  const all = getAll();
-  const skillsCount = all.reduce((acc, c) => acc + (c.skills || []).length, 0);
-  const tagsCount = new Set(all.flatMap((c) => c.tags || []));
-  return {
-    totalAgents: all.length,
-    totalSkills: skillsCount,
-    uniqueTags: tagsCount.size,
-    agents: all.map((c) => ({ agentId: c.agentId, name: c.name, skills: (c.skills || []).length })),
-  };
-}
-
 // ── Auto-load on creation ───────────────────────────────────────────────
 (function autoLoad() {
+  // Primary scan: legacy a2a-server/agent-cards/ (contains symlinks → CIV-33)
   const defaultDir = path.join(__dirname, 'agent-cards');
   if (fs.existsSync(defaultDir)) {
     console.log(`[agent-card-registry] Auto-loading from ${defaultDir}...`);
     const result = loadDirectoryRecursive(defaultDir);
     if (result.loaded.length > 0) {
-      console.log(`[agent-card-registry] Loaded ${result.loaded.length} agent cards`);
+      console.log(`[agent-card-registry] Loaded ${result.loaded.length} agent cards (legacy path)`);
     }
     if (result.errors.length > 0) {
       console.warn(`[agent-card-registry] ${result.errors.length} load errors:`);
@@ -350,11 +370,52 @@ function getStats() {
         console.warn(`  ... and ${result.errors.length - 5} more`);
       }
     }
-    console.log(`[agent-card-registry] Registry ready: ${cards.size} cards`);
   } else {
     console.warn(`[agent-card-registry] Default directory not found: ${defaultDir}`);
   }
+
+  // Secondary scan: canonical CIV-33 location /root/AAA/agent-cards/
+  // (mostly redundant with symlinks above, but ensures direct access works
+  //  and surfaces cards that legacy symlinks may not cover)
+  const civ33Root = path.resolve(__dirname, '..', 'agent-cards');
+  if (fs.existsSync(civ33Root) && path.resolve(civ33Root) !== path.resolve(defaultDir)) {
+    console.log(`[agent-card-registry] Scanning canonical CIV-33 tree: ${civ33Root}...`);
+    const civ33Result = loadDirectoryRecursive(civ33Root);
+    console.log(`[agent-card-registry] CIV-33 scan added/refreshed ${civ33Result.loaded.length} cards`);
+  }
+
+  // Summary by CIV-33 layer
+  const byLayer = {};
+  for (const c of cards.values()) {
+    const layer = c.civ_layer || 'unclassified';
+    byLayer[layer] = (byLayer[layer] || 0) + 1;
+  }
+  console.log(`[agent-card-registry] Registry ready: ${cards.size} cards · ${JSON.stringify(byLayer)}`);
 })();
+
+// ── CIV-33 helpers ──────────────────────────────────────────────────────
+function getByLayer(layer) {
+  if (!layer || typeof layer !== 'string') return [];
+  return [...cards.values()].filter((c) => c.civ_layer === layer);
+}
+
+function getStats() {
+  const all = getAll();
+  const skillsCount = all.reduce((acc, c) => acc + (c.skills || []).length, 0);
+  const tagsCount = new Set(all.flatMap((c) => c.tags || []));
+  const byLayer = {};
+  for (const c of all) {
+    const layer = c.civ_layer || 'unclassified';
+    byLayer[layer] = (byLayer[layer] || 0) + 1;
+  }
+  return {
+    totalAgents: all.length,
+    totalSkills: skillsCount,
+    uniqueTags: tagsCount.size,
+    byLayer,
+    agents: all.map((c) => ({ agentId: c.agentId, name: c.name, civ_layer: c.civ_layer, skills: (c.skills || []).length })),
+  };
+}
 
 // ── Export ──────────────────────────────────────────────────────────────
 module.exports = {
@@ -365,10 +426,12 @@ module.exports = {
     loadDirectoryRecursive,
     getAll,
     get,
+    getByLayer,
     findByCapability,
     findByTag,
     findBySkill,
     search,
     getStats,
+    CIV33_LAYERS,
   },
 };

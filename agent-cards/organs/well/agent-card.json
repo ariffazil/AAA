@@ -1,0 +1,343 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "protocolVersion": "1.2",
+  "agentId": "well",
+  "name": "WELL",
+  "description": "Human substrate vitality \u2014 substrate classification, boundary detection, dignity guard, homeostasis regulation, dark-geometry mirror, niat-impact mirror, federation attestation. 29 MCP tools. REFLECT_ONLY.",
+  "version": "2026.07.12-aligned",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true,
+    "supportsToolDiscovery": true
+  },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a/well"
+    }
+  ],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "endpoints": {
+    "baseUrl": "http://127.0.0.1:18083",
+    "mcp": "http://127.0.0.1:18083/mcp",
+    "health": "http://127.0.0.1:18083/health",
+    "card": "http://127.0.0.1:18083/.well-known/agent-card.json"
+  },
+  "skills": [
+    {
+      "id": "vitality-assessment",
+      "name": "Vitality Assessment",
+      "description": "Validate vitality, readiness, NIAT, fatigue with biometric overrides. F13 sovereign territory.",
+      "tags": [
+        "well",
+        "vitality"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_validate_vitality",
+          "description": "\u03a9-WELL-08: Validate vitality, readiness, and NIAT. (Floor compliance removed \u2014 arifOS adjudicates floors.)"
+        },
+        {
+          "name": "well_readiness",
+          "description": "LEGACY ALIAS (deprecated 2026-07-12) \u2192 well_validate_vitality(mode=\"readiness\").\n\nStill callable for federation clients. Prefer the canonical tool for new code."
+        },
+        {
+          "name": "well_assess_homeostasis",
+          "description": "\u03a9-WELL-06: Assess regulation, stability, and empathic balance under change.\n\nWhen mode=\"fatigue\", accepts biometric overrides to support contrast scenarios\nand "
+        },
+        {
+          "name": "well_assess_metabolism",
+          "description": "\u03a9-WELL-05: Assess biological metabolism and system throughput across substrates."
+        },
+        {
+          "name": "well_assess_livelihood",
+          "description": "\u03a9-WELL-09: Assess human wellness, role, dignity, support, and meaning.\n\nZEN ADDITION (2026-07-12): The voluntary parameter distinguishes chosen burden\nfrom impo"
+        },
+        {
+          "name": "well_assess_reliability",
+          "description": "\u03a9-WELL-10: Assess machine, tool, institution, and operational reliability."
+        },
+        {
+          "name": "well_compute_metabolic_flux",
+          "description": "\u03a9-WELL-10b: Compute metabolic_flux \u2014 unified thermodynamic entropy rate.\n\nComputes cognitive_entropy_rate + machine_entropy into a 0.0\u20131.0 scalar.\nTriggers comp"
+        },
+        {
+          "name": "well_assess_sovereign_entropy",
+          "description": "\u03a9-WELL-SE: Measure the sovereign's resistance to behavioral modeling.\n\nSOVEREIGNTY ENTROPY = how unpredictable and therefore unextractable the\nhuman operator is"
+        },
+        {
+          "name": "well_check_repair",
+          "description": "\u03a9-WELL-07: Check repair, recovery, resilience, and forge cycle integrity."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "substrate-classification",
+      "name": "Substrate Classification",
+      "description": "Universal substrate typing (H/M/G/C/U-WELL), message-driven state classification.",
+      "tags": [
+        "well",
+        "substrate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_classify_substrate",
+          "description": "\u03a9-WELL-01: Substrate classification and boundary sensing."
+        },
+        {
+          "name": "well_classify_state",
+          "description": "Classify human psychological state from message.\n\nPhase 1: Deterministic rule-based Polyvagal + SDT classification.\nPhase 3: Contradiction detector (stated inte"
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "boundary-detection",
+      "name": "Boundary Detection",
+      "description": "Detect boundaries across membrane, body, machine, federation; measure chemical, energy, pressure, attention, compute gradients.",
+      "tags": [
+        "well",
+        "boundary"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_detect_boundary",
+          "description": "\u03a9-WELL-03: Boundary detection across membrane, body, machine, and federation."
+        },
+        {
+          "name": "well_measure_gradient",
+          "description": "\u03a9-WELL-04: Measure chemical, energy, pressure, attention, and compute gradients."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "dignity-guard",
+      "name": "Dignity Guard",
+      "description": "Guard soul, personhood, meaning, symbolic boundaries; handoff S12 to arifOS; medical non-diagnosis boundary.",
+      "tags": [
+        "well",
+        "dignity"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_guard_dignity",
+          "description": "\u03a9-WELL-12: Guard soul, personhood, meaning, and symbolic boundaries."
+        },
+        {
+          "name": "well_handoff_dignity_to_arifos",
+          "description": "\u03a9-WELL-FED-S12: Explicit handoff of S12 (social_dignity_consent) signal\nfrom WELL \u2192 arifOS 888_JUDGE for constitutional deliberation.\n\nWELL observes, signals, a"
+        },
+        {
+          "name": "well_medical_boundary",
+          "description": "Explicit non-diagnosis guard for WELL.\nWELL is not a doctor, therapist, or diagnostic authority.\nIt tracks readiness signals only.\nFor severe, persistent, or ur"
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "homeostasis-regulation",
+      "name": "Homeostasis Regulation",
+      "description": "Recovery after activation, regulation evidence, correction capacity.",
+      "tags": [
+        "well",
+        "homeostasis"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_regulation_recovery",
+          "description": "\u03a9-WELL-RR: Measure recovery after activation.\nA human who becomes angry and repairs may have better integrity\nthan one who remains outwardly calm while suppress"
+        },
+        {
+          "name": "well_correction_capacity",
+          "description": "\u03a9-WELL-CC: Score observable correctability.\nCan add context, revise, tolerate ambiguity, separate self from error, hear consequence."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "dark-geometry-mirror",
+      "name": "Dark Geometry Mirror",
+      "description": "Mirror language and behavioral signals for dark-geometry patterns; metabolize content; emit reflection questions.",
+      "tags": [
+        "well",
+        "dark-geometry"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_dark_geometry_mirror",
+          "description": "\u03a9-WELL-DG: Mirror language and behavioral signals for dark geometry patterns.\n\nObserved patterns are mapped to trajectory and checked against dignity constraint"
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "niat-impact-mirror",
+      "name": "Niat Impact Mirror",
+      "description": "Mirror declared niat vs acknowledged impact, sabar latency, trust compression.",
+      "tags": [
+        "well",
+        "niat"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_niat_impact_mirror",
+          "description": "\u03a9-WELL-NIM: Compare declared niat with acknowledged impact.\nPermitted: 'Impact was answered primarily with intention language.'\nForbidden: 'The intention was fa"
+        },
+        {
+          "name": "well_sabar_latency",
+          "description": "\u03a9-WELL-SL: Measure temporal compression between stimulus and response.\nDoes NOT say 'loss of sabar' based on speed alone."
+        },
+        {
+          "name": "well_trust_compression",
+          "description": "\u03a9-WELL-TC: Detect narrowing trust patterns.\nAll-or-nothing trust, universal threat, loyalty tests, witness narrowing."
+        }
+      ],
+      "examples": []
+    },
+    {
+      "id": "federation-attestation",
+      "name": "Federation Attestation",
+      "description": "Signal coverage audit (13 canonical substrate signals), active attestation to arifOS kernel, livelihood handoff to WEALTH, lineage trace, registry status, federated health.",
+      "tags": [
+        "well",
+        "federation"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "tools": [
+        {
+          "name": "well_signal_coverage",
+          "description": "DREAM ENGINE: Audit WELL's coverage of canonical human substrate\nsignals. Returns per-signal status (active/partial/missing), coverage\nsummary, and cross-organ "
+        },
+        {
+          "name": "well_13_signal_coverage",
+          "description": "[DEPRECATED \u2014 USE well_signal_coverage]\nThis tool has been deprecated and replaced. Please use well_signal_coverage instead."
+        },
+        {
+          "name": "well_attest_to_kernel",
+          "description": "\u03a9-WELL-FED-ATTEST: Active organ attestation from WELL \u2192 arifOS kernel.\n\nThe external organ_heartbeat_daemon polls /health (read-only, one-way).\nThis tool perfor"
+        },
+        {
+          "name": "well_handoff_livelihood_to_wealth",
+          "description": "\u03a9-WELL-FED-S13: Explicit handoff of S13 (environment_livelihood) signal\nfrom WELL \u2192 WEALTH for capital/cashflow evidence pull.\n\nWELL does not compute capital. W"
+        },
+        {
+          "name": "well_trace_lineage",
+          "description": "\u03a9-WELL-02: Memory, trend, ledger, and vault chain tracing."
+        },
+        {
+          "name": "well_registry_status",
+          "description": "WELL registry truth diagnostic \u2014 blueprint canonical format.\n\nPerforms live callable tests against all known WELL tool names.\nReturns structured drift report: i"
+        },
+        {
+          "name": "well_health_check",
+          "description": "WELL organ health check with provenance and schema version.\nCanonical name: well_health_check. Legacy alias: mcp_health_check."
+        }
+      ],
+      "examples": []
+    }
+  ],
+  "skill_count": 8,
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "yHocXgoNJFRk5gFh65HVHsAhbC6ZG1MXJ6WmvOpsxtnUdx9O1mOppVPE/jJf6FiFUbtxii40RId01/frYX5uAg==",
+      "proofPurpose": "assertionMethod",
+      "verificationMethod": "did:arif:aaa#z4eac9a785c9db1ca5cd93d186c53725dd9d9cd8813b5",
+      "canonicalization": "sorted-keys-compact-no-signatures",
+      "created": "2026-07-12T23:26:30Z",
+      "type": "Ed25519Signature2020",
+      "publicKeyB64": "8KwBmU8H1J65YLvtYPLqQnmUCIMuqkM6rCM22L5EtD8="
+    }
+  ]
+}

@@ -1,1 +1,0 @@
-../scripts/skill-mesh-sync.sh

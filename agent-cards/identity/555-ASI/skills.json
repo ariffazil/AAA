@@ -1,0 +1,103 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "555-ASI",
+  "fi": "Ω-005",
+  "layer": "identity",
+  "ring": "Ω HEART",
+  "role": "Memory synthesis + ethical critique",
+  "skill_count": 18,
+  "skills": [
+    {
+      "id": "ASI-agent-bootstrap",
+      "source": ".agents/skills/ASI-agent-bootstrap",
+      "why": "Spawn protocol for any new agent"
+    },
+    {
+      "id": "ASI-agent-invariants",
+      "source": ".agents/skills/ASI-agent-invariants",
+      "why": "10 invariants + 12 governance rules"
+    },
+    {
+      "id": "ASI-agentic-governance",
+      "source": ".agents/skills/ASI-agentic-governance",
+      "why": "AAA abstraction/attestation plane"
+    },
+    {
+      "id": "ASI-constitutional-reasoning",
+      "source": ".agents/skills/ASI-constitutional-reasoning",
+      "why": "F1-F13 floor logic"
+    },
+    {
+      "id": "ASI-cooling-ledger-rsi",
+      "source": ".agents/skills/ASI-cooling-ledger-rsi",
+      "why": "Session-end entropy accounting"
+    },
+    {
+      "id": "ASI-drift-watch",
+      "source": ".agents/skills/ASI-drift-watch",
+      "why": "Source vs runtime drift"
+    },
+    {
+      "id": "ASI-drift-response",
+      "source": ".agents/skills/ASI-drift-response",
+      "why": "5-step legacy drift response"
+    },
+    {
+      "id": "ASI-evals",
+      "source": ".agents/skills/ASI-evals",
+      "why": "Skill-level benchmarks"
+    },
+    {
+      "id": "ASI-knowledge-graph-query",
+      "source": ".agents/skills/ASI-knowledge-graph-query",
+      "why": "841-node taxonomy read"
+    },
+    {
+      "id": "ASI-knowledge-writeback",
+      "source": ".agents/skills/ASI-knowledge-writeback",
+      "why": "Persist verified edges"
+    },
+    {
+      "id": "ASI-mcp-governor",
+      "source": ".agents/skills/ASI-mcp-governor",
+      "why": "Governed MCP routing"
+    },
+    {
+      "id": "ASI-memory-bridge",
+      "source": ".agents/skills/ASI-memory-bridge",
+      "why": "Session logs → L4/L5/L6"
+    },
+    {
+      "id": "ASI-multi-discipline-critique",
+      "source": ".agents/skills/ASI-multi-discipline-critique",
+      "why": "Cross-discipline self-argument"
+    },
+    {
+      "id": "ASI-observability",
+      "source": ".agents/skills/ASI-observability",
+      "why": "Skill-run telemetry"
+    },
+    {
+      "id": "ASI-skill-binding",
+      "source": ".agents/skills/ASI-skill-binding",
+      "why": "Skill composition across organs"
+    },
+    {
+      "id": "ASI-summarize",
+      "source": ".agents/skills/ASI-summarize",
+      "why": "Long-content compression"
+    },
+    {
+      "id": "ASI-unified-memory",
+      "source": ".agents/skills/ASI-unified-memory",
+      "why": "6-tier memory router"
+    },
+    {
+      "id": "ASI-zen-organ-memory",
+      "source": ".agents/skills/ARCHIVE-chaos-quarantine",
+      "why": "Sealed fossil memory"
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

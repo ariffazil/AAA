@@ -2,7 +2,7 @@
   "id": "FI-009",
   "name": "Gemini CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "Google Gemini CLI forge instrument — direct Gemini model harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced.",
+  "description": "Google Gemini CLI forge instrument \u2014 direct Gemini model harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced.",
   "version": "2.0.0",
   "model": "gemini-3.5-pro / gemini-3.5-flash",
   "fallback_model": "gemini-3.5-flash",
@@ -57,5 +57,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "e6ywdC9z5tdcEbgEp2bdp3Yw+NIxks/CYf9kAFTpgG7pr55Cco46c3veQA0wunzCWSWH7X7X7RwZBOBmKy7FAQ==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

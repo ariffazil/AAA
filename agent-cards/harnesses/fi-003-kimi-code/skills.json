@@ -1,0 +1,133 @@
+{
+  "spec_type": "AGENT_SKILLS",
+  "version": "1.0.0",
+  "agent": "kimi-code",
+  "fi": "FI-003",
+  "layer": "harnesses",
+  "ring": "Forge Harness (Kimi Code)",
+  "role": "AGI contrast architect",
+  "skill_count": 24,
+  "skills": [
+    {
+      "id": "FORGE-github",
+      "source": ".agents/skills/FORGE-github",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-ops",
+      "source": ".agents/skills/FORGE-github-ops",
+      "why": ""
+    },
+    {
+      "id": "FORGE-github-runbook",
+      "source": ".agents/skills/FORGE-github-runbook",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-gate",
+      "source": ".agents/skills/FORGE-precommit-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-precommit-review",
+      "source": ".agents/skills/FORGE-precommit-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-review",
+      "source": ".agents/skills/FORGE-pr-review",
+      "why": ""
+    },
+    {
+      "id": "FORGE-pr-governance",
+      "source": ".agents/skills/FORGE-pr-governance",
+      "why": ""
+    },
+    {
+      "id": "FORGE-readme-truth-check",
+      "source": ".agents/skills/FORGE-readme-truth-check",
+      "why": ""
+    },
+    {
+      "id": "FORGE-route-least-power",
+      "source": ".agents/skills/FORGE-route-least-power",
+      "why": ""
+    },
+    {
+      "id": "FORGE-context-compress",
+      "source": ".agents/skills/FORGE-context-compress",
+      "why": ""
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": ""
+    },
+    {
+      "id": "APEX-act",
+      "source": ".agents/skills/APEX-act",
+      "why": ""
+    },
+    {
+      "id": "APEX-f1-gate",
+      "source": ".agents/skills/APEX-f1-gate",
+      "why": ""
+    },
+    {
+      "id": "FORGE-kimi-code",
+      "source": ".agents/skills/FORGE-kimi-code",
+      "why": ""
+    },
+    {
+      "id": "kimi-architect-agi-contrast",
+      "source": ".kimi-code/skills",
+      "why": "Architect AGI contrast"
+    },
+    {
+      "id": "kimi-architect-apex-contrast",
+      "source": ".kimi-code/skills",
+      "why": "Final pre-emit check"
+    },
+    {
+      "id": "kimi-architect-asi-contrast",
+      "source": ".kimi-code/skills",
+      "why": "Self-empathy check"
+    },
+    {
+      "id": "kimi-final-apex-contrast",
+      "source": ".kimi-code/skills",
+      "why": "Hostile-audit contrast"
+    },
+    {
+      "id": "kimi-integrator-apex-contrast",
+      "source": ".kimi-code/skills",
+      "why": "Phase-done check"
+    },
+    {
+      "id": "kimi-rsi-apex-contrast",
+      "source": ".kimi-code/skills",
+      "why": "Entropy reproducibility"
+    },
+    {
+      "id": "kimi-skill-reflector",
+      "source": ".kimi-code/skills",
+      "why": "Skill reflector"
+    },
+    {
+      "id": "KIMI_RSI_INIT_PROMPT",
+      "source": ".kimi-code/skills",
+      "why": "RSI init prompt"
+    },
+    {
+      "id": "KIMI_HANDOVER_PROMPT",
+      "source": ".kimi-code/skills",
+      "why": "Handover prompt"
+    },
+    {
+      "id": "FORGE-init-intent-classify",
+      "source": ".agents/skills/FORGE-init-intent-classify",
+      "why": ""
+    }
+  ],
+  "sealed_at": "2026-07-12T23:18:03.298108+00:00"
+}

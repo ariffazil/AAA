@@ -2,7 +2,7 @@
   "id": "FI-008",
   "name": "Kimi Code CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "Moonshot Kimi Code CLI — K2.7 Code model. Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio. AMANAH + MARUAH explicit in system identity.",
+  "description": "Moonshot Kimi Code CLI \u2014 K2.7 Code model. Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio. AMANAH + MARUAH explicit in system identity.",
   "version": "1.47.0",
   "model": "kimi-code/kimi-for-coding (K2.7 Code)",
   "izin": "GRANTED",
@@ -69,5 +69,44 @@
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
   ],
-  "rsi_doctrine": "RSI-recursive-improvement"
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key",
+      "description": "Static API key for service-to-service calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "hnXLPI6w39+0XQHb2b5h5I0cFY4mBHAKUT9dEA6nG8S1FXzrqnX26Cc5XnVvxC8AP7WY5LoijzT/hgERS8gjCg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
 }

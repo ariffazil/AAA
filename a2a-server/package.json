@@ -9,6 +9,7 @@
     "dev": "node --watch server.js"
   },
   "dependencies": {
+    "@a2a-js/sdk": "^0.3.14",
     "express": "^4.21.0",
     "nats": "^2.29.3",
     "redis": "^5.12.1"

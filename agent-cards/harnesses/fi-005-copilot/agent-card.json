@@ -1,0 +1,101 @@
+{
+  "id": "FI-005",
+  "name": "Copilot CLI",
+  "class": "FORGE_INSTRUMENT",
+  "description": "GitHub Copilot CLI \u2014 agentic coding assistant. Connected to 10 MCP servers. Fleet parallel agent capability (max 3).",
+  "version": "1.0.61",
+  "model": "UNKNOWN (GitHub Copilot models)",
+  "izin": "GRANTED",
+  "izin_date": "2026-05-24",
+  "sandbox": "process",
+  "binary": "/usr/bin/copilot",
+  "config": "/root/.copilot/mcp-config.json",
+  "services": [],
+  "mcpServers": [
+    "arifOS",
+    "playwright",
+    "WEALTH",
+    "WELL",
+    "capability-index",
+    "github-official",
+    "github",
+    "brave-search",
+    "meyhem",
+    "repomapper",
+    "serena"
+  ],
+  "subAgentPolicy": {
+    "default": "ALLOWED \u2014 /fleet only, max 3 parallel, read-only sandbox",
+    "fleetMax": 3
+  },
+  "authority": "engineer",
+  "riskTier": "medium",
+  "lastAudit": "2026-06-10T10:50:00Z",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    {
+      "bearer_auth": []
+    },
+    {
+      "api_key": []
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "HHT+xsDxI3UXHECHrTmlmD7nHPuOySWLX4N9VaG0Fbvuv58sCoqQ2WD8xTR8CscFzizGgh2rNcEn7Xmum/VbCA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:12:25Z",
+      "type": "Ed25519Signature2020"
+    }
+  ]
+}
