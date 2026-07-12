@@ -59,6 +59,17 @@ function createDiscoveryRouter() {
           healthUrl: c.endpoints.healthUrl || '',
           cardUrl: c.endpoints.cardUrl || '',
         },
+        // Constitutional physics — arifOS federation
+        class: c.class,
+        bound_to: c.bound_to,
+        power_band: c.power_band,
+        skills_prefix: c.skills_prefix,
+        runtime_harness: c.runtime_harness,
+        identity_anchor: c.identity_anchor,
+        mcp_servers: c.mcp_servers,
+        epistemic_floor: c.epistemic_floor,
+        f1_boundary: c.f1_boundary,
+        rollback_plan: c.rollback_plan,
       })),
       timestamp: new Date().toISOString(),
     });

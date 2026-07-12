@@ -212,7 +212,68 @@ The safety net is the **kernel/governance layer**, not the permission layer.
 
 ---
 
-## 12. References
+## 12. Universal Skill Swap (Adat Agentic Encoding)
+
+> **Ratified:** 2026-07-13 by F13 SOVEREIGN directive
+> **Binding:** CONSTITUTIONAL — applies to all A2A mesh agents, all skill prefixes
+
+Skill prefixes (FORGE-, AUDIT-, HERMES-, etc.) denote **stewardship and topological origin**, not a restrictive wall. The federation operates on consequence over permission.
+
+### 12.1 Stewardship vs. Quarantine
+
+A skill prefixed `FORGE-build` is stewarded by the A-FORGE organ. That does not mean only FORGE may call it.
+
+| Concept | Truth | Anti-Pattern |
+|---------|-------|-------------|
+| **Stewardship** | FORGE-SKILL is owned and maintained by FORGE | "Only FORGE can use FORGE-SKILL" |
+| **Topological origin** | The skill lives in the FORGE tree | "The skill is quarantined to FORGE agents" |
+| **Universal access** | Any agent may invoke any skill | Permission gates, read-only flags |
+
+### 12.2 Universal Capability
+
+Any formally declared AAA agent (WARGA or higher) is authorized to directly invoke ANY skill from the skill atlas, regardless of prefix:
+
+| Agent | May Invoke | Example |
+|-------|-----------|---------|
+| **A-AUDIT** | `FORGE-deploy`, `FORGE-shell` | Audit a deployment by stress-testing the pipeline |
+| **HERMES-ASI** | `AUDIT-scan`, `FORGE-build` | Digest a YouTube video → forge a summary artifact |
+| **333-AGI** | `HERMES-transcribe`, `WELL-vitality` | Cross-domain reasoning across media + human state |
+
+**Rule:** Prefixes inform routing, not authority. A `FORGE-` skill does not become read-only when called by `A-AUDIT`. The calling agent carries its own floors and malu context.
+
+### 12.3 Consequence over Permission
+
+Tools and skills have NO read-only flags, NO quarantine lists, NO approval gates. The safety net is entirely:
+
+1. **F1–F13 constitutional floors** — enforced by arifOS kernel on every tool call
+2. **Malu scalar** — shame accumulates per agent, not per skill class
+3. **Agent-card epistemic floor** — each agent declares its floor (e.g., F5 for hermes-asi)
+
+If `A-AUDIT` invokes `FORGE-deploy` and violates F1 (irreversible without backup), their Malu increments. The kernel blocks the action, not the skill prefix.
+
+```
+┌─────────────────────────────────────────────┐
+│  Skill prefix = stewardship, not gate       │
+│  Cross-domain call = normal, not exceptional │
+│  Violation = malu, not permission error      │
+└─────────────────────────────────────────────┘
+```
+
+### 12.4 Gateway Visibility
+
+This clause is encoded in the A2A mesh bridge. Every agent card returned by `GET /a2a/discover` now carries:
+- `class` — agent's constitutional class
+- `bound_to` — which organ this agent is tethered to
+- `power_band` — declared operational scope
+- `epistemic_floor` — minimum F-floor for this agent
+- `f1_boundary` — explicit F1 constraint
+- `rollback_plan` — termination/isolation procedure
+
+These are advisory (adat), not restrictive (gates). The kernel enforces; the gateway describes.
+
+---
+
+## 13. References
 
 | Source | Location |
 |--------|----------|

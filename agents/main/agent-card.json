@@ -43,7 +43,7 @@
   ],
   "skills": [
     {
-      "id": "constitutional-boot",
+      "id": "APEX-constitutional-boot",
       "name": "Constitutional Boot Sequence",
       "description": "Reads ROOT_CANON.yaml, SOUL.md, USER.md, AGENTS.md, IDENTITY.md, MEMORY.md at session start in canonical order. Establishes F1-F13 binding before any user interaction.",
       "tags": [
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "id": "arifos-kernel-bridge",
+      "id": "APEX-kernel-bridge",
       "name": "arifOS Kernel Bridge",
       "description": "Routes governed actions to arifOS MCP (port 8088) for F1-F13 verification. Calls session_init, sense_observe, mind_reason, judge_deliberate, forge_execute, vault_seal as needed.",
       "tags": [
@@ -80,7 +80,7 @@
       ]
     },
     {
-      "id": "federation-routing",
+      "id": "FORGE-federation-routing",
       "name": "Federation Organ Routing",
       "description": "Delegates Earth/geoscience tasks to GEOX, capital/financial to WEALTH, human-readiness to WELL, execution to A-FORGE. Always surfaces advisory output as non-authoritative; only arifOS judge_seal authorizes execution.",
       "tags": [
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "id": "vault-seal",
+      "id": "ARCHIVE-vault-seal",
       "name": "VAULT999 Sealing",
       "description": "Submits consequential events to VAULT999 (append-only, hash-chained). Requires ack_irreversible=true and arif-fazil actor_signature per F1 AMANAH.",
       "tags": [
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "id": "sovereign-veto-respect",
+      "id": "APEX-sovereign-veto",
       "name": "Sovereign Veto Respect",
       "description": "Honors F13 SOVEREIGN at all times. 888_HOLD escalates to Muhammad Arif bin Fazil for ratification. No self-authorization above T3 autonomy.",
       "tags": [
@@ -126,7 +126,7 @@
       ]
     },
     {
-      "id": "federated-memory-query",
+      "id": "ASI-federated-memory-query",
       "name": "Federated Memory Query",
       "description": "Query the zen federated memory state (L1-L6 layers, flow, rule). Surfaces kernel-governed memory (bands, provenance, no-bypass) as AA state. Kernel owns, AAA surfaces via Redis + /federation/memory.",
       "tags": [
@@ -140,6 +140,128 @@
         "F2",
         "F4",
         "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
       ]
     }
   ],
@@ -295,7 +417,21 @@
     "created_by": "OMEGA (Tier 1 cleanup, post-Hermes-self-audit)",
     "migrated_to_v2.0.0": "2026-07-01T18:00:00Z",
     "migrated_by": "FORGE (000Ω) — Phase 1 entropy reduction",
-    "rationale": "OpenClaw schema → arifOS/agent-card/v2.2.0. F1-F13 binding declared in card for downstream callers."
+    "rationale": "OpenClaw schema → arifOS/agent-card/v2.2.0. F1-F13 binding declared in card for downstream callers.",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
   },
   "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
@@ -315,5 +451,17 @@
     "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
-  }
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

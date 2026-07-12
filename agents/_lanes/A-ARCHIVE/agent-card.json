@@ -6,7 +6,7 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
   "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
   "version": "2.0.0",
@@ -124,7 +124,7 @@
     {
       "id": "tiered-memory",
       "name": "Tiered Memory",
-      "description": "L1\u2013L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4\u2192L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1\u2192L6 pipeline log. F11 enforced. ACTIVE.",
+      "description": "L1–L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4→L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1→L6 pipeline log. F11 enforced. ACTIVE.",
       "tags": [
         "memory",
         "L1-L6",
@@ -146,7 +146,7 @@
     {
       "id": "dream-engine",
       "name": "Dream Engine",
-      "description": "4-stage offline memory consolidation pipeline. Replay \u2192 Cluster \u2192 Synthesize \u2192 Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
+      "description": "4-stage offline memory consolidation pipeline. Replay → Cluster → Synthesize → Defend+Seal. Runs nightly 04:00 MYT. No phenomenology claims. F01/F11/F13 gated. LEASED (memory layer).",
       "tags": [
         "consolidation",
         "memory",
@@ -190,9 +190,9 @@
       ]
     },
     {
-      "id": "fff-loop-protocol",
+      "id": "APEX-fff-loop-protocol",
       "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence applied to archive integrity. Blue \u2192 Red \u2192 Blue \u2192 Yellow \u2192 Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
+      "description": "5-pass recursive audit sequence applied to archive integrity. Blue → Red → Blue → Yellow → Gold. Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. LEASED.",
       "tags": [
         "audit",
         "recursive",
@@ -211,8 +211,8 @@
       ]
     },
     {
-      "id": "070-lock-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "id": "APEX-humility-godel",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before any SEAL-grade archive claim. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -230,7 +230,134 @@
       "outputModes": [
         "application/json"
       ]
-    }
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-quantum-runtime",
+      "name": "Quantum Runtime (APEX)",
+      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
+      "tags": [
+        "kernel",
+        "quantum",
+        "apex",
+        "intelligence"
+      ],
+      "floor_scope": [
+        "F2",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-qubit-substrate",
+      "name": "Qubit Substrate (Physics)",
+      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
+      "tags": [
+        "kernel",
+        "substrate",
+        "quantum",
+        "physics"
+      ],
+      "floor_scope": [
+        "F2",
+        "F10"
+      ]
+    },
+    "KERNEL-sovereign-recognize",
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "RSI-recursive-improvement",
+    "SHADOW-diagnostic",
+    "CLAIM-verification-gate"
   ],
   "mcp_surface": {
     "type": "consumed",
@@ -371,7 +498,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+    "updated_by": "FORGE (000Ω) — OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -383,15 +510,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -403,5 +530,34 @@
       ],
       "directive": "F13 SOVEREIGN 2026-07-12"
     }
-  }
+  },
+  "_kernel_bound": "2026-07-13-EUREKA-ZEN",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }
