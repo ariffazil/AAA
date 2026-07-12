@@ -1,0 +1,20 @@
+{
+  "schema": "do_all_the_right_way.v1",
+  "epoch": "2026-07-12T05:45:42.267210+00:00",
+  "deletions": 0,
+  "executed": {
+    "wealth_p0": {
+      "npv_irr": "VERIFIED_FIXED live 13.72 / IRR 0.10; golden 16 pass; issues #32 #33 closed",
+      "stress_index": "FIXED anti-silent-drop + type-safe departures; tests pass; #34 #35 closed"
+    },
+    "tool_count_docs": "WEALTH 7 live; GEOX 23 live vs 77 target; WELL 24 live",
+    "branches": "BRANCH_DECISIONS.md \u2014 HOLD delete; keep archive/main/working",
+    "well_biometrics": "ACCEPT_DEGRADED formalized",
+    "prior": "Batch A vocab + Batch B C-010/C-007/C-009 + doctrine pointers + 9 hygiene issues closed"
+  },
+  "held": {
+    "branch_merge": "no auto-merge of MERGE_CANDIDATE without PR+CI",
+    "geox_expose_77": "catalog target not force-registered",
+    "wealth_expose_37": "monolith full surface not force-exposed"
+  }
+}
