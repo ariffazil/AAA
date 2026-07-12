@@ -97,10 +97,7 @@ else
     log "OK: OpenClaw Gateway (localhost:18789) → HTTP $openclaw_code"
 fi
 
-# ─── Check APEX via Hermes A2A bridge ─────────────────────────────────
-# APEX and A2A run via hermes-a2a.py bridge, not direct HTTP on 3001/3002.
-# Skip port checks — hermes-a2a.py is not an HTTP server, it speaks A2A over WS.
-log "OK: APEX/A2A handled via hermes-a2a bridge (not HTTP-direct)"
+# Deliberation is part of the canonical AAA service already probed on :3001.
 
 # ─── Check Hermes A2A Bridge (port 18001) ─────────────────────────
 hermes_code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "http://localhost:18001/.well-known/agent-card.json" 2>/dev/null || echo "000")

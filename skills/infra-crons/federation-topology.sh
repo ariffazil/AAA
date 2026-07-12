@@ -99,23 +99,6 @@ else
     echo "Ollama=DOWN" >> "$STATEFILE"; DEAD=$((DEAD+1))
 fi
 
-# APEX (port 3002 — Express app)
-code=$(check_http "http://localhost:3002/health")
-if [ "$code" = "200" ]; then
-    log "OK: APEX (:3002) → HTTP $code"
-    echo "APEX=200" >> "$STATEFILE"; ALIVE=$((ALIVE+1))
-else
-    # APEX may not have /health — try root
-    code2=$(check_http "http://localhost:3002/")
-    if [ "$code2" = "200" ] || [ "$code2" = "404" ]; then
-        log "OK: APEX (:3002) → HTTP $code2 (alive but no /health)"
-        echo "APEX=$code2" >> "$STATEFILE"; ALIVE=$((ALIVE+1))
-    else
-        alert "DOWN: APEX (:3002) → HTTP $code"
-        echo "APEX=DOWN" >> "$STATEFILE"; DEAD=$((DEAD+1))
-    fi
-fi
-
 # Write Redis key if available
 if command -v redis-cli &>/dev/null && redis-cli ping > /dev/null 2>&1; then
     JSON=$(python3 -c "
