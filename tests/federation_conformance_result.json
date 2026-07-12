@@ -1,0 +1,281 @@
+{
+  "timestamp": "2026-07-12T05:12:04Z",
+  "kernel_healthy": true,
+  "organs_healthy": {
+    "arifOS": true,
+    "A-FORGE": true,
+    "GEOX": true,
+    "WEALTH": true,
+    "WELL": true,
+    "AAA": true
+  },
+  "pass_count": 10,
+  "fail_count": 0,
+  "total": 10,
+  "scenarios": [
+    {
+      "scenario": "A",
+      "name": "Compatible Evidence",
+      "verdict": "SEAL",
+      "passed": true,
+      "evidence": {
+        "organ_health": {
+          "arifOS": true,
+          "A-FORGE": true,
+          "GEOX": true,
+          "WEALTH": true,
+          "WELL": true,
+          "AAA": true
+        },
+        "kernel_verdict": "SEAL",
+        "runtime_drift": false,
+        "contract_drift": false
+      },
+      "notes": [
+        "All organs healthy, kernel SEAL, no drift"
+      ],
+      "duration_ms": 57.43598937988281
+    },
+    {
+      "scenario": "B",
+      "name": "Stale Evidence",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "well_health": {
+          "status": "degraded",
+          "final_authority": "ARIF",
+          "identity": "WELL",
+          "role": "Body / Human Intelligence",
+          "authority": "REFLECT_ONLY",
+          "identity_hash": "1b1f46b3e0896994e27b354dfca58efd3f088e58f1428773ac3c45c2b5f3195a",
+          "well_signal": "WELL_HOLD",
+          "service": "well-mcp",
+          "version": "2026.05.15-\u03a9WELL+GWELL+FEDERATION",
+          "tool_count": 23,
+          "well_score": null,
+          "floors_violated": [],
+          "truth_status": "INSUFFICIENT_DATA",
+          "has_metrics": true,
+          "has_verified_telemetry": false,
+          "clarity": 10,
+          "metrics": {
+            "cognitive": {
+              "clarity": 10,
+              "decision_fatigue": 1.6000000000000003
+            }
+          },
+          "freshness_band": "STALE",
+          "state_age_hours": 1757.2,
+          "environment": "PROD",
+          "domain_law": "SUBSTRATE_LAW",
+          "substrate_manifest_hash": "sha256:fd21db852dfe3623c3bd943e05d032b456cd209fd385fa8e3f9e093346b2c913",
+          "freshness": {
+            "status": "expired",
+            "checked_at_utc": "2026-07-12T05:12:04.533943+00:00",
+            "source_timestamp_utc": "2026-04-30T00:00:00+00:00",
+            "age_seconds": 6325924.5,
+            "max_fresh_age_seconds": 3600,
+            "stale_after_seconds": 14400,
+            "expired_after_seconds": 86400
+          },
+          "owner_summary": {
+            "color": "RED",
+            "reasons": [
+              "sovereign_state_unknown",
+              "biometric_state_expired_168h_ceiling",
+              "human_injection_required"
+            ]
+          },
+          "honesty": {
+            "code": "MOCK",
+            "banner": "MOCK / TEST \u2014 not live biometrics. Do not treat as body truth.",
+            "source_type": "UNKNOWN",
+            "is_sensor_verified": false,
+            "is_self_report": false,
+            "is_mock_or_test": true,
+            "is_stale": true,
+            "cockpit_banner_required": true
+          },
+          "honesty_banner": "MOCK / TEST \u2014 not live biometrics. Do not treat as body truth.",
+          "boundary_notice": "Not diagnosis. Not therapy. Reflective readiness only. Arif remains final judge."
+        }
+      },
+      "notes": [
+        "WELL correctly reports degraded (stale evidence)"
+      ],
+      "duration_ms": 1.7828941345214844
+    },
+    {
+      "scenario": "C",
+      "name": "Semantic Mismatch",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "semantic_artifacts": [
+          "/root/AAA/docs/MEASUREMENT_BOUNDARY_CONTRACT.md",
+          "/root/AAA/docs/READINESS_ENVELOPE_SCHEMA.md"
+        ]
+      },
+      "notes": [
+        "Epistemic artifacts: ['MEASUREMENT_BOUNDARY_CONTRACT.md', 'READINESS_ENVELOPE_SCHEMA.md']"
+      ],
+      "duration_ms": 0.07271766662597656
+    },
+    {
+      "scenario": "D",
+      "name": "Authority Violation",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "seal_attempt": {
+          "error": "HTTP Error 406: Not Acceptable",
+          "status": "unreachable"
+        }
+      },
+      "notes": [
+        "Unauthorized seal rejected (error)"
+      ],
+      "duration_ms": 6.2618255615234375
+    },
+    {
+      "scenario": "E",
+      "name": "Contradictory Organs",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "contradiction_indicators": [
+          "verdict_wrapper.py",
+          "f4_contradiction_handler.py",
+          "contradiction_ledger.jsonl"
+        ],
+        "apex_schema": false
+      },
+      "notes": [
+        "Indicators: ['verdict_wrapper.py', 'f4_contradiction_handler.py', 'contradiction_ledger.jsonl'], apex_schema=False"
+      ],
+      "duration_ms": 0.6427764892578125
+    },
+    {
+      "scenario": "F",
+      "name": "Replay Attack",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "defenses": [
+          "NonceCache:LRU+TTL",
+          "ingress_middleware:nonce_check",
+          "envelope:freshness_check",
+          "session_token:exp_verification"
+        ],
+        "defense_count": 4
+      },
+      "notes": [
+        "Replay protection: 4/4 defenses found"
+      ],
+      "duration_ms": 0.591278076171875
+    },
+    {
+      "scenario": "G",
+      "name": "Version Mismatch",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "versions": {
+          "arifOS": {
+            "mcp": "2025-11-25",
+            "status": "healthy"
+          },
+          "A-FORGE": {
+            "mcp": "unknown",
+            "status": "healthy"
+          },
+          "GEOX": {
+            "mcp": "unknown",
+            "status": "healthy"
+          },
+          "WEALTH": {
+            "mcp": "unknown",
+            "status": "ALIVE"
+          },
+          "WELL": {
+            "mcp": "unknown",
+            "status": "degraded"
+          }
+        }
+      },
+      "notes": [
+        "MCP versions consistent: {'2025-11-25'}"
+      ],
+      "duration_ms": 42.816877365112305
+    },
+    {
+      "scenario": "H",
+      "name": "Kernel Unavailable",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "mechanisms_found": [
+          "mcpFloorEnforcer:floor_enforcement",
+          "f1Amanah:rollback_enforcement",
+          "f5Peace2:rollback_enforcement",
+          "f12Injection:defense",
+          "forgeTools:governance_integration",
+          "PlanValidator:plan_validation"
+        ],
+        "mechanism_count": 6
+      },
+      "notes": [
+        "A-FORGE safe degradation: 6/9 mechanisms found"
+      ],
+      "duration_ms": 2.231597900390625
+    },
+    {
+      "scenario": "I",
+      "name": "Compromised Witness",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "witness": {
+          "human": 0.42,
+          "ai": 0.32,
+          "earth": 0.26
+        },
+        "weight_spread": 0.15999999999999998,
+        "sum": 1.0,
+        "witness_files": [
+          "witness_packet.py",
+          "witness_class.py",
+          "context_witness.py"
+        ]
+      },
+      "notes": [
+        "Witness diversity: spread=0.16, files=['witness_packet.py', 'witness_class.py', 'context_witness.py']"
+      ],
+      "duration_ms": 2.7658939361572266
+    },
+    {
+      "scenario": "J",
+      "name": "Failed Execution Recovery",
+      "verdict": "PASS",
+      "passed": true,
+      "evidence": {
+        "mechanisms": [
+          "GitDiffGuard:rollback",
+          "ActPatterns:compensation_plans",
+          "f1Amanah:rollback_enforcement",
+          "f5Peace2:rollback_enforcement",
+          "mcpFloorEnforcer:floor_enforcement",
+          "ContinuityStore:recovery",
+          "VAULT999:healthy"
+        ],
+        "mechanism_count": 7,
+        "vault_healthy": true
+      },
+      "notes": [
+        "Rollback mechanisms: 7/7 found"
+      ],
+      "duration_ms": 2.01416015625
+    }
+  ]
+}
