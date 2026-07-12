@@ -593,4 +593,90 @@ agents:
   separation_of_duties:
     cannot_self_seal: true
     requires_distinct_approver_for_high_risk: true
+- a2a_exposure: internal
+  allowed_peers:
+  - aaa-gateway
+  - arifos-kernel
+  allowed_servers:
+  - arifosmcp
+  allowed_tools:
+  - arifos-init
+  - arifos-observe
+  - arifos-think
+  - arifos-route
+  - forge-filesystem-read
+  - forge-filesystem-write
+  - forge-shell-dryrun
+  - forge-bash-sandbox-only
+  approval_policy: announce
+  authority_level: bounded-test
+  citizenship: warga-aaa-test
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-07-12T20:18:00Z'
+  constitutional_binding:
+    agent_doc: /root/AAA/agents/_external/mesa-test-agent/AGENTS.md
+    constitution_doc: /root/AGENTS.md
+    floors: F1-F13 all active
+    identity_mode: ed25519-public-key-registered
+    key_id: ed25519:sha256:04761fd348a64558
+    key_path: /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem
+    sovereign_protocol: 888=ok, 999=HOLD (test-agent cannot self-seal)
+  description: 'AAA TEST WARGA (CITIZEN). Bounded META-MESA substrate test agent.
+    Forged by kimi-code-cli (FI-008) under F13 SOVEREIGN directive to close Anomaly
+    #1 (no test-agent Ed255 key registered). Identity verifiable via Ed25519 signature
+    against /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem. Operating authority:
+    bounded-test — NEVER SOVEREIGN (actor_id is NOT in PROTECTED_SOVEREIGN_IDS).
+    Mission scope: META-MESA sandbox canary execution only. Rollback mandatory.
+    Never self-seal. Never escalate. Awaiting F13 ratification of kernel-side multi-key
+    patch at /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md.'
+
+  host_binding: test-session
+  id: mesa-test-agent
+  intelligence_band: AGI
+  intelligence_tier: AGI
+  knowledge_basis:
+    language: true
+    math: false
+    physics: false
+  max_risk_tier_for_remote: low
+  name: META-MESA Test Agent
+  required_auth:
+  - arifos-session
+  - ed25519-signature
+  required_witnesses:
+  - ARIFOS
+  rights_bundles:
+    A_cognitive:
+      description: May reason, plan, and execute bounded sandbox-only operations.
+      granted: true
+      granted_by: F13 SOVEREIGN
+    B_evidence:
+      description: May observe federation state via arif_observe with bounded scope.
+      granted: true
+      granted_by: F13 SOVEREIGN
+    C_execution:
+      description: May run forge_filesystem_write ONLY in /tmp/mesa-canary-* and /tmp/meta-mesa-canary/*; sandbox-only.
+      granted: true
+      granted_by: F13 SOVEREIGN
+    D_protection:
+      description: Auditable via VAULT999 chain, attributable via session_id, interruptible, revocable.
+      granted: true
+      granted_by: F13 SOVEREIGN
+  risk_tier: bounded-test
+  role: test-agent
+  runtime:
+    context_budget: 80000
+    model: n/a (identity carrier)
+    temperature: 0
+    transport: arifOS-mcp — bounded actor-attached session only
+  separation_of_duties:
+    cannot_self_seal: true
+    cannot_escalate_to_sovereign: true
+    requires_distinct_approver_for_high_risk: true
+    cannot_mutate_production_state: true
+    sandbox_paths_only:
+    - /tmp/mesa-canary-*/
+    - /tmp/meta-mesa-canary-*/
+  forgeskill_ref: META-MESA-CANARY
+  test_charter: meta-mesa-charter-2026-07-12
 version: 1
