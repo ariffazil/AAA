@@ -1,0 +1,94 @@
+{
+  "created": "2026-07-12T05:25Z",
+  "purpose": "Complete runtime surface inventory of all MCP servers, tools, and capabilities",
+  "mcp_servers": {
+    "arifos": {
+      "port": 8088,
+      "health": "healthy",
+      "endpoint": "http://127.0.0.1:8088",
+      "mcp_endpoint": "/mcp",
+      "tools_count": 12,
+      "tools": [
+        "arif_init", "arif_observe", "arif_think", "arif_route",
+        "arif_bridge_connect", "arif_critique", "arif_memory",
+        "arif_judge", "arif_forge", "arif_compose", "arif_seal", "arif_verify"
+      ],
+      "transport": "SSE",
+      "systemd": "arifos.service"
+    },
+    "a-forge": {
+      "port": 7071,
+      "health": "healthy",
+      "endpoint": "http://127.0.0.1:7071",
+      "mcp_endpoint": "/mcp",
+      "tools_count": 59,
+      "transport": "SSE",
+      "systemd": "a-forge.service",
+      "tool_categories": {
+        "browser": ["forge_browser_navigate", "forge_browser_click", "forge_browser_type", "forge_browser_screenshot", "forge_browser_extract_text", "forge_browser_evaluate_js"],
+        "governance": ["forge_evaluate", "forge_witness", "forge_judge_proxy", "forge_check_governance", "forge_heart_critique"],
+        "execution": ["forge_execute", "forge_execute_sealed", "forge_pipeline_run", "forge_sandbox_run"],
+        "vault": ["forge_vault", "forge_seal", "forge_scar", "forge_scar_scan", "forge_receipt_draft", "forge_stage"],
+        "registry": ["forge_register", "forge_registry", "forge_registry_status", "forge_agent", "forge_lease", "forge_lock", "forge_policy", "forge_status", "forge_tier_bind"],
+        "research": ["forge_fetch", "forge_fetch_url", "forge_fetch_json", "forge_fetch_links", "forge_fetch_metadata", "forge_search", "forge_research", "forge_minimax_search", "forge_docs_lookup", "forge_verify_timeline"],
+        "fs": ["forge_filesystem", "forge_filesystem_read", "forge_filesystem_write", "forge_filesystem_patch", "forge_filesystem_search", "forge_filesystem_stat", "forge_filesystem_tree", "forge_filesystem_move", "forge_filesystem_delete"],
+        "git": ["forge_git", "forge_github", "forge_github_create_issue", "forge_github_create_or_update_file", "forge_github_create_pull_request", "forge_github_get_file", "forge_github_search_code", "forge_github_search_repos"],
+        "health": ["forge_health_check", "forge_netdata_alarms", "forge_netdata_metrics"],
+        "shell": ["forge_shell", "forge_shell_dryrun", "forge_shell_status", "forge_shell_alert_history", "forge_shell_ledger"],
+        "probe": ["forge_probe", "forge_probe_site", "forge_scan", "forge_fingerprint_check", "forge_isomorphism_check", "forge_surface_audit", "forge_surface_guard", "forge_security_drift_scan"],
+        "skill": ["forge_skill", "forge_synthesize", "forge_skillstore_read", "forge_skillstore_write"],
+        "meta": ["forge_chart", "forge_docket_prep", "forge_reality_loop", "forge_document_ingest"],
+        "db": ["forge_postgres"],
+        "docker": ["forge_docker"],
+        "confirm": ["forge_send_confirm", "forge_transfer_confirm"],
+        "memory": ["forge_memory"],
+        "session": ["forge_session_init"],
+        "parallel": ["forge_parallel", "forge_parallel_cancel", "forge_parallel_list", "forge_parallel_status"],
+        "abort": ["forge_abort"],
+        "predict": ["forge_predict"],
+        "vps": ["forge_vps_ports", "forge_vps_services", "forge_vps_cron", "forge_journalctl"]
+      }
+    },
+    "geox": {
+      "port": 8081,
+      "health": "healthy",
+      "endpoint": "http://127.0.0.1:8081",
+      "systemd": "geox-mcp.service"
+    },
+    "wealth": {
+      "port": 18082,
+      "health": "ALIVE",
+      "endpoint": "http://127.0.0.1:18082",
+      "systemd": "wealth-organ.service"
+    },
+    "well": {
+      "port": 18083,
+      "health": "degraded",
+      "endpoint": "http://127.0.0.1:18083",
+      "systemd": "well.service",
+      "degradation_reason": "biometrics_expired_73_days"
+    }
+  },
+  "supporting_services": {
+    "postgres": {"port": 5432, "type": "docker", "container": "postgres"},
+    "redis": {"port": 6379, "type": "docker", "container": "redis"},
+    "qdrant": {"port": 6333, "type": "docker", "container": "qdrant"},
+    "falkordb": {"port": 6380, "type": "docker", "container": "falkordb"},
+    "graphiti_mcp": {"port": 8000, "type": "docker", "container": "graphiti-mcp"},
+    "nats": {"port": 4222, "type": "systemd", "service": "nats-server.service"},
+    "prometheus": {"port": 9090, "type": "systemd", "service": "prometheus.service"},
+    "grafana": {"port": 3000, "type": "systemd", "service": "grafana-server.service"},
+    "caddy": {"port": "443/80", "type": "systemd", "service": "caddy.service"},
+    "searxng": {"port": 8080, "type": "docker", "container": "searxng"},
+    "cadvisor": {"port": 8082, "type": "docker", "container": "cadvisor"},
+    "jaeger": {"port": 16686, "type": "docker", "container": "membrane-jaeger"}
+  },
+  "memory_layers": {
+    "L1_redis": "ephemeral/now",
+    "L2_redis": "session thread",
+    "L3_qdrant": "fuzzy similarity (arifos_memory collection)",
+    "L4_supabase": "official structured record (25 domain tables)",
+    "L5_graphiti": "relationships (FalkorDB + Ollama)",
+    "L6_vault999": "immutable sealed truth"
+  }
+}

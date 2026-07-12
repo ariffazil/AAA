@@ -1,0 +1,59 @@
+{
+  "created": "2026-07-12T05:25Z",
+  "purpose": "Rollback procedures for all federation components",
+  "git_rollback": {
+    "strategy": "archive branches + tags",
+    "archive_branches": {
+      "arifos": "archive/pre-consolidation-2026-07-12",
+      "a-forge": "archive/pre-consolidation-2026-07-12",
+      "aaa": "archive/pre-consolidation-2026-07-12",
+      "geox": "archive/pre-consolidation-2026-07-12",
+      "wealth": "archive/pre-consolidation-2026-07-12",
+      "well": "archive/pre-consolidation-2026-07-12"
+    },
+    "rollback_command": "git checkout main && git reset --hard archive/pre-consolidation-2026-07-12"
+  },
+  "service_rollback": {
+    "arifos": {
+      "systemd": "systemctl restart arifos",
+      "deploy": "make deploy-local",
+      "health_check": "curl -s http://127.0.0.1:8088/health"
+    },
+    "a-forge": {
+      "systemd": "systemctl restart a-forge",
+      "deploy": "npm run build && systemctl restart a-forge",
+      "health_check": "curl -s http://127.0.0.1:7071/health"
+    },
+    "aaa": {
+      "systemd": "systemctl restart aaa-a2a",
+      "deploy": "npm run build && systemctl restart aaa-a2a",
+      "health_check": "curl -s http://127.0.0.1:3001/health"
+    },
+    "geox": {
+      "systemd": "systemctl restart geox-mcp",
+      "deploy": "pip install -e '.[dev]' && systemctl restart geox-mcp",
+      "health_check": "curl -s http://127.0.0.1:8081/health"
+    },
+    "wealth": {
+      "systemd": "systemctl restart wealth-organ",
+      "deploy": "pip install -e '.[dev]' && systemctl restart wealth-organ",
+      "health_check": "curl -s http://127.0.0.1:18082/health"
+    },
+    "well": {
+      "systemd": "systemctl restart well",
+      "deploy": "pip install -e . && systemctl restart well",
+      "health_check": "curl -s http://127.0.0.1:18083/health"
+    }
+  },
+  "data_rollback": {
+    "postgres": "docker exec postgres pg_dump > backup.sql (before changes)",
+    "redis": "redis-cli BGSAVE (before changes)",
+    "qdrant": "qdrant snapshot API",
+    "vault999": "append-only — never rollback, add corrective entries",
+    "falkordb": "falkordb snapshot"
+  },
+  "dns_rollback": {
+    "caddy": "systemctl restart caddy",
+    "cloudflare_tunnel": "systemctl restart cloudflared"
+  }
+}

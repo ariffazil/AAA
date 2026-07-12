@@ -1,0 +1,75 @@
+{
+  "created": "2026-07-12T05:25Z",
+  "purpose": "Define canonical authority hierarchy for federation repos",
+  "authority_hierarchy": {
+    "sovereign": {
+      "owner": "Arif (Muhammad Arif bin Fazil)",
+      "authority": "sovereign purpose, constitutional amendment, final irreversible approval",
+      "repos": ["all"]
+    },
+    "apex": {
+      "owner": "APEX",
+      "authority": "epistemic and admissibility semantics",
+      "repos": ["arifOS"],
+      "note": "APEX absorbed into AAA a2a-server (2026-06-02)"
+    },
+    "arifos": {
+      "owner": "arifOS",
+      "authority": "constitutional floors, authority, verdicts, runtime enforcement, routing, audit",
+      "repos": ["arifOS"],
+      "port": 8088,
+      "tools": 12,
+      "canonical_for": ["F1-F13", "sessions", "identity", "verdicts", "VAULT999", "tool_registry", "routing"]
+    },
+    "a-forge": {
+      "owner": "A-FORGE",
+      "authority": "bounded execution, verification, rollback, engineering planning, simulation",
+      "repos": ["A-FORGE"],
+      "port": 7071,
+      "tools": 59,
+      "canonical_for": ["engineering_plans", "dry_runs", "build_SHAs", "deploy_orchestration", "code_execution"]
+    },
+    "aaa": {
+      "owner": "AAA",
+      "authority": "state, registry, coordination, display, observability, identity, A2A gateway",
+      "repos": ["AAA"],
+      "port": 3001,
+      "canonical_for": ["UX_surface", "agent_identity", "A2A_gateway", "cockpit_dashboard"]
+    },
+    "geox": {
+      "owner": "GEOX",
+      "authority": "domain evidence, earth intelligence, petrophysics, prospect evaluations",
+      "repos": ["geox"],
+      "port": 8081,
+      "canonical_for": ["earth_truth_artifacts", "petrophysics", "prospect_evaluations", "seismic_evidence"]
+    },
+    "wealth": {
+      "owner": "WEALTH",
+      "authority": "capital and economic intelligence, NPV/IRR/EMV, stock analysis",
+      "repos": ["WEALTH"],
+      "port": 18082,
+      "canonical_for": ["capital_scores", "NPV_IRR_EMV", "stock_analysis", "decision_memos"]
+    },
+    "well": {
+      "owner": "WELL",
+      "authority": "human readiness, vitality metrics, sleep/fatigue signals (REFLECT_ONLY)",
+      "repos": ["WELL"],
+      "port": 18083,
+      "canonical_for": ["human_readiness", "vitality_metrics", "sleep_fatigue_signals"]
+    },
+    "vault999": {
+      "owner": "VAULT999",
+      "authority": "immutable audit memory, provenance, replay, institutional memory",
+      "repos": ["arifOS"],
+      "canonical_for": ["sealed_records", "hash_chain_integrity", "audit_history"]
+    }
+  },
+  "boundary_rules": [
+    "No organ may seal without arifOS",
+    "Only 888_JUDGE → 999_VAULT emits seals",
+    "No organ may self-authorize mutation",
+    "Engineering requires arifOS SEAL → A-FORGE execute",
+    "arifOS does not directly perform engineering mutation",
+    "Domain organs provide evidence, not decisions"
+  ]
+}
