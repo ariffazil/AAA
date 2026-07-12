@@ -1,0 +1,1968 @@
+{
+  "repo": "WELL",
+  "path": "/root/WELL",
+  "inventory": [
+    {
+      "path": "vps_compute.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "SOUL.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "index.html",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "BOUNDARY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CODEOWNERS",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "compatibility.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "pyproject.toml",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Package manifest",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "WELL_STATE_SCHEMA.json.bak-2026-07-12",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "LICENSE",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "llms.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".env.example",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "Makefile",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "state.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "vitality_gate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "fastmcp.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "uv.lock",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "identity.toml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GOVERNANCE.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "server.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "server.py.bak.zen-1783784921",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "state.json.bak.20260710075522",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "state.json.bak",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "AGENTS.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "Dockerfile",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Container config",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "WELL_STATE_SCHEMA.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CONTEXT.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "events.jsonl",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "state.json.bak-t2",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".gitignore",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "state.json.test_backup",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".identity_hash",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "scripts/snooze_dismiss.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/deploy-vps.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/snooze_check.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/snooze_arm.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/well_auto_feed.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/SKILL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/deploy.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance-gate.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/biometric_inject.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/vault_bridge.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/WELL_TOOL_COUNT_LOG.txt",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/CHARTER.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/FEDERATION_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "scripts/governance/CLAUDE.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "scripts/governance/QUICKSTART.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/FEDERATION_HOOKS.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/SEAL_v2026.05.12.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/FOUNDATION.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/AAA_COCKPIT_SEAL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/WELL_888_HOLD_REGISTER.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/WELL_COLLAPSE_MANIFEST.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/AAA_STACK_MAP_SEAL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance/TOOL_SURFACE.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "prompts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "telemetry/budget_violations.jsonl",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/009_WELL_PHILOSOPHICAL_ANCHORS.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/010_WELL_PERSONA_NOT_SELF.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/008_WELL_LANGUAGE_PROTOCOL.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/007_WELL_ANTI_CALHOUN_GUARD.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/005_WELL_GODEL_LOCK.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/004_WELL_13_CANON.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/006_WELL_STRANGE_LOOP_GUARD.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/012_SUBSTRATE_MANIFEST.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/011_WELL_MEDICAL_BOUNDARY.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "sensors/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "sensors/historical_baseline.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "sensors/machine_human_substrate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "docs/SCHEMA_MIGRATION.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_2026.05.16.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/METRIC_CARDS.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_v2026.05.01.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WELL_EVIDENCE_SOURCES.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WELL_ARIFOS_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "docs/VAULT_LEDGER_DIAGNOSIS_2026-07-12.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/AGENT_LAYOUT_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "docs/MEASUREMENT_BOUNDARY_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "docs/SNOOZE_BIOMETRIC.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/TODO.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/WELL_TOOL_COUNT_LOG.txt",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/RELEASE_NOTES_v2026.05.01.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/SEAL_v2026.05.12.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/AAA_COCKPIT_SEAL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/WELL_888_HOLD_REGISTER.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/WELL_COLLAPSE_MANIFEST.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/archive/AAA_STACK_MAP_SEAL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/audit/WELL_AUDIT_REPORT_2026-05-01.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "src/server.py",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Core source code",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "specs/WELL_13_SIGNAL_MAP.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "specs/WELL_ARIFOS_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "specs/well_manifest.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "specs/tool_authority_manifest.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "specs/WELL_INVARIANTS.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/a_effective.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/recommend.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/test_kernel_well_route.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "loop/readiness_envelope.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/state_envelope.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/recovery_v1.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/test_loop.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/catalogues/autonomic_recovery_v1.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T044204Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043019Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T051024Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T045858Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043229Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043130Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T042915Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T042936Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T051431Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/.gitkeep",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T042838Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T045845Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043033Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T050407Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T050400Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T050255Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T045948Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T042907Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043328Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T051427Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T045841Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T045535Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T042814Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_ledger.jsonl",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T051020Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T042834Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T045527Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043555Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "loop/receipts/recovery_20260712T043312Z.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/organ_governance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/pai_receipt.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/apex_envelope_well.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/federation_memory.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/federation_safety.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "federation-manifests/manifest.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "adapters/supabase_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "tests/test_well.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_well_constitutional.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_well_state_honesty.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_well_mcp.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_vitality_falsify.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_metabolic_contract.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_reflect_only_boundary.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_sovereign_entropy.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "memory/2026-05-08.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory/EUREKA.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "engines/well_readiness.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "engines/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "engines/reflect.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/prompts/well_sense.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_compose.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_qc.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_repair.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_critique.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_judge.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_init.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_route.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/prompts/well_seal.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "well_mcp/transport/ingress.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/transport/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/transport/metabolize.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/transport/encode.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/transport/judge.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/transport/egress.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/tools/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/doctrine.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/bridge_wealth.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/human_substrate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/machine_substrate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/bio_signals.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/physics_laws.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/info_asymmetry.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/interaction_substrate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/bridge_arifos_kernel.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/transport_loop.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/chemistry_glue.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/registry.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/coupling.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/decision_classes.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/flux.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/consent_integrity.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/bridge_geox.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "well_mcp/resources/identity.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/vault999.jsonl",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/sessions.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/enrich_well.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/schemas/metabolic.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "gate/dignity_shadow.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "gate/well_gate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/SKILL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/references/repo-working-rules.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/references/aaa-operating-model.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/references/governance-gates.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/references/agentic-workflows.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/references/constitutional-operating-model.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/references/federation-map.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/scripts/orthogonality_test.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/scripts/aaa_router.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/scripts/floor_check.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/scripts/bounded_explain.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/scripts/compose_federation_receipt.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WELL",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/aaa-agentic-governance/agents/openai.yaml",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "skills/well-substrate-readiness/SKILL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WELL",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "state/well_freshness.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WELL",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    }
+  ],
+  "summary": {
+    "total_files": 217,
+    "by_classification": {
+      "ACTIVE": 127,
+      "UNKNOWN": 70,
+      "CANONICAL": 11,
+      "ARCHIVAL": 9
+    }
+  }
+}
