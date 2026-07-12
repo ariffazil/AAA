@@ -70,7 +70,7 @@ shadow:
       long contexts. Mid-context information may be forgotten or de-prioritized.
       In agentic sessions with accumulating context, earlier constitutional
       constraints may be dropped.
-    triggers: [long_context, accumulating_session, >50k_tokens]
+    triggers: [long_context, accumulating_session, "gt_50k_tokens"]
     floor_posture_delta:
       F2_TRUTH: note
       F4_CLARITY: note

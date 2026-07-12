@@ -17,10 +17,7 @@ import {
   ShieldAlert,
   Activity,
   Users,
-  FileText,
   CheckCircle2,
-  AlertCircle,
-  Clock,
   Zap,
 } from 'lucide-react';
 
@@ -73,7 +70,7 @@ export default function ConstitutionalOverlay() {
 
   const fetchOverlayStatus = async () => {
     try {
-      // Fetch aaa-a2a health (Python server on :3002 when ready, fallback to Express :3001)
+      // AAA :3001 is the canonical control-plane and deliberation endpoint.
       const healthRes = await fetch('/health', { cache: 'no-store' });
       const health = await healthRes.json();
 
@@ -293,7 +290,7 @@ export default function ConstitutionalOverlay() {
             aaa-a2a constitutional overlay · DITEMPA BUKAN DIBERI
           </span>
           <span className="text-[10px] text-white/20 font-mono">
-            {status.server === 'online' ? 'Express :3001' : 'Python :3002 (pending)'}
+            {status.server === 'online' ? 'AAA :3001 online' : 'AAA :3001 unavailable'}
           </span>
         </div>
       </div>
