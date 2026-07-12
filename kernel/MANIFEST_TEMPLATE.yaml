@@ -1,0 +1,112 @@
+# AAA Canonical Skill Manifest Template
+# Every skill in AAA/skills/ MUST have a MANIFEST.yaml alongside SKILL.md
+# SKILL.md = the content. MANIFEST.yaml = the contract.
+# DITEMPA BUKAN DIBERI.
+
+# ── REQUIRED FIELDS ──
+
+skill: <skill-name>                    # kebab-case, unique in registry
+version: <semver>                      # e.g. 2.0.0
+purpose: <one sentence>                # What it does. Not what it believes.
+
+# ── INVARIANTS (all 4 required) ──
+
+invariants:
+  authority: <lease_id | kernel-issued | sovereign-signed>
+  evidence_schema: [OBS, DER, INT, SPEC]   # which labels this skill produces
+  reversibility: <true | false | conditional>
+  lineage: <VAULT999 | ledger_append | session_log>
+
+# ── TRIGGER (required, must be boolean predicate) ──
+
+trigger: <boolean expression>          # e.g. "contradiction_score > 0.8"
+preconditions:                         # what must be true before trigger fires
+  - <condition>
+postconditions:                        # what is true after execution
+  - <condition>
+
+# ── INPUTS (required, typed) ──
+
+inputs:
+  <field_name>:
+    type: <type>                       # float | bool | string | list<type> | dict
+    range: <optional>                  # e.g. "0.0-1.0"
+    required: true                     # default true
+
+# ── OUTPUTS (required, typed) ──
+
+outputs:
+  <field_name>:
+    type: <type>
+    values: <optional enum values>     # e.g. [PASS, FAIL, HOLD]
+    nullable: <true | false>
+
+# ── BRIDGES (required, at least 1) ──
+
+bridges:
+  - protocol: <rpc | ledger_append | runbook_call | event_stream | shadow_tap>
+    endpoint: <target>                 # e.g. "arif_judge", "VAULT999/seal_chain"
+    when: <condition>                  # when this bridge fires
+    failure_mode: <what happens if bridge fails>
+
+# ── FAILURE CONTRACT (required) ──
+
+failure_contract:
+  partial_failure: <action>            # e.g. "emit HOLD + diagnostic receipt"
+  timeout: <action>                    # e.g. "abort after 30s"
+  bridge_unavailable: <action>         # e.g. "queue for retry, do NOT silently drop"
+
+# ── RESOURCE BUDGET (required) ──
+
+resource_budget:
+  cpu_seconds: <int>
+  wall_seconds: <int>
+  entropy_budget: "ΔS ≤ 0"            # always this value
+  token_budget: <int>
+
+# ── AUDIT POINTS (required, at least 1) ──
+
+audit_points:
+  - <ledger_key>                       # e.g. "verdict_emitted", "bridge_called"
+
+# ── CONTRAST (required — why this is NOT another skill) ──
+
+contrast: "<one sentence explaining unique trigger/purpose vs nearest neighbor>"
+
+# ── EPISTEMIC FIELDS (required for domain skills) ──
+
+physics:
+  entropy_budget:
+    type: float
+    constraint: "ΔS ≤ 0"
+  confidence_interval:
+    type: float
+    range: "0.0-1.0"
+
+math:
+  statistical_test: <description>     # e.g. "Bayesian posterior update"
+  threshold_calibration: <source>      # e.g. "empirical from VAULT999"
+
+linguistics:
+  ambiguity_score:
+    type: float
+    range: "0.0-1.0"
+    constraint: "< 0.3 for high-confidence outputs"
+  intent_parsing: <description>        # e.g. "structured claim extraction"
+
+# ── SCOPE TAGS (required for domain skills) ──
+
+scope:
+  domain: <global | regional | basin | local>
+  evidence_type: <theory | empirical | simulation | hybrid>
+  lossiness: <lossless | best_effort | authoritative>
+  lossiness_notes: <what was dropped and why>
+
+# ── SOVEREIGN SIGNATURE (required for substrate skills) ──
+
+sovereign_signature:
+  status: <SIGNED | UNSIGNED | QUARANTINED>
+  signer: <key_id>                     # e.g. "root-arif-888"
+  signed_at: <ISO-8601>
+  ratification_hash: <sha256:...>
+  note: "Until signed, this skill is quarantined to OBSERVE_ONLY mode."

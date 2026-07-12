@@ -101,6 +101,8 @@ function classifyEventType(action) {
   if (a.includes('shell') || a.includes('forge.execute')) return 'forge.shell';
   if (a.includes('judge') || a.includes('verdict')) return 'constitutional.verdict';
   if (a.includes('register') || a.includes('forge.skill')) return 'tool.register';
+  if (a.includes('seal.issued') || a === 'seal_issued') return 'seal.issued';
+  if (a.includes('seal.verified') || a === 'seal_verified') return 'seal.verified';
   if (a.includes('seal') || a.includes('session')) return 'session.seal';
   return 'a2a.general';
 }

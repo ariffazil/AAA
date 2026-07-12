@@ -1,0 +1,116 @@
+{
+  "spec_type": "KERNEL_PRIMITIVE",
+  "name": "bootstrap-load",
+  "version": "1.0.0",
+  "description": "Immutable kernel verb. Not a skill. Hardcoded in runtime image. Loads and locks 9 universal skills from signed manifest.",
+  "properties": {
+    "immutable": true,
+    "hardcoded_in_runtime": true,
+    "cannot_be_overridden": true,
+    "idempotent": true,
+    "deterministic": true
+  },
+  "inputs": {
+    "manifest_path": {
+      "type": "string",
+      "default": "/root/AAA/skills/BOOTSTRAP_MANIFEST.json",
+      "description": "Path to signed bootstrap manifest JSON"
+    },
+    "root_keys_path": {
+      "type": "string",
+      "default": "/root/.secrets/bootstrap/root_keys.json",
+      "description": "Path to root public keys for signature verification"
+    }
+  },
+  "execution_sequence": {
+    "step_1": {
+      "name": "LOAD_MANIFEST",
+      "action": "Read manifest JSON from manifest_path",
+      "failure": "ABORT + audit: manifest file not found or malformed JSON"
+    },
+    "step_2": {
+      "name": "VERIFY_SCHEMA",
+      "action": "Validate manifest against BOOTSTRAP_MANIFEST_SCHEMA.json",
+      "checks": [
+        "manifest_version present and supported",
+        "universal_skills array has exactly 9 entries",
+        "each skill has name, layer, phase, hash",
+        "boot_sequence.phases == 8",
+        "root_keys array has >= 1 entry"
+      ],
+      "failure": "ABORT + audit: schema validation failed"
+    },
+    "step_3": {
+      "name": "VERIFY_SIGNATURES",
+      "action": "Verify at least 1 root signature over content_hash",
+      "checks": [
+        "Load root public keys from root_keys_path",
+        "For each signature in manifest.signatures:",
+        "  - key_id must exist in root_keys",
+        "  - Verify signature over manifest.content_hash",
+        "  - Check signature timestamp < manifest.expires",
+        "At least 1 valid signature required (sovereign key preferred)"
+      ],
+      "failure": "ABORT + audit: no valid signature found"
+    },
+    "step_4": {
+      "name": "VERIFY_SKILL_HASHES",
+      "action": "For each skill in universal_skills, verify file hash",
+      "checks": [
+        "Skill file exists at expected path",
+        "sha256(file_content) matches manifest hash",
+        "No extra files in skill directory beyond SKILL.md"
+      ],
+      "failure": "ABORT + audit: hash mismatch (possible tampering)"
+    },
+    "step_5": {
+      "name": "SELF_HOST_TEST",
+      "action": "Deterministic self-host verification",
+      "checks": [
+        "Load each skill into memory",
+        "Verify each skill has valid 3-axis manifest (invariant/bridge/contrast)",
+        "Verify no skill references a kernel verb that doesn't exist",
+        "Verify boot_sequence phases are acyclic",
+        "Verify veto-generator contract: substrates don't generate, domains don't veto"
+      ],
+      "failure": "ABORT + audit: self-host test failed"
+    },
+    "step_6": {
+      "name": "LOAD_AND_LOCK",
+      "action": "Atomically load 9 skills into agent runtime",
+      "checks": [
+        "Load in phase order (1-8)",
+        "Each phase gate must pass before next",
+        "Lock loaded skills (no runtime override)",
+        "Mark all other skill YAML as QUARANTINED"
+      ],
+      "failure": "ABORT + audit: load failed at phase N"
+    },
+    "step_7": {
+      "name": "LEDGER_BOOT",
+      "action": "Append boot event to audit ledger",
+      "payload": {
+        "event": "BOOTSTRAP_COMPLETE",
+        "manifest_hash": "content_hash",
+        "signature_count": "N",
+        "skills_loaded": 9,
+        "timestamp": "now",
+        "agent_id": "from arif_init"
+      },
+      "failure": "WARN (non-blocking): ledger append failed, boot continues"
+    }
+  },
+  "failure_modes": {
+    "manifest_missing": "Refuse to run any external skill. Emit audit event. Require sovereign intervention.",
+    "signature_invalid": "Refuse to load. Treat as unverified external signal.",
+    "hash_mismatch": "Refuse to load. Possible tampering. Alert kernel steward.",
+    "self_host_fail": "Refuse to load. Skill system inconsistent. Alert governance council.",
+    "phase_gate_fail": "HOLD at failed phase. Do not skip. Require human review."
+  },
+  "security": {
+    "root_keys_immutable": "Root keys embedded in runtime image, not loaded from disk",
+    "manifest_is_data": "Manifest is JSON data, not executable code",
+    "no_skill_can_override": "No skill YAML can override bootstrap-load behavior",
+    "quarantine_until_ready": "All external skills quarantined until phase 8 completes"
+  }
+}

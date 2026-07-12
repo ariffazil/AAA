@@ -8,11 +8,8 @@ export default function WealthPage() {
   const [market, setMarket] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    loadData();
-  }, []);
-
-  const loadData = async () => {
+// eslint-disable-next-line no-use-before-define
+const loadData = async () => {
     setLoading(true);
     try {
       const [f, m] = await Promise.allSettled([getFiscal(), getMarket("commodity")]);
@@ -31,7 +28,13 @@ export default function WealthPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  ;
 
   return (
     <div className="app-container">

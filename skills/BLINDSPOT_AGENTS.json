@@ -1,0 +1,37 @@
+{
+  "contract_type": "BLINDSPOT_AGENTS",
+  "version": "1.0.0",
+  "principle": "Three agents that operate on the SKILL SYSTEM itself, not on domain problems.",
+  "agents": [
+    {
+      "id": "superposition-manager",
+      "role": "Hold competing hypotheses structurally until evidence forces collapse",
+      "invariant": "Evidence labels (OBS/DER/INT/SPEC) + Reversibility flag",
+      "bridge": "hypothesis_store (L1-L4 memory) + governance_rpc (arif_judge)",
+      "contrast": "≠ verify-gate (that VERIFIES claims; this HOLDS competing claims alive)",
+      "trigger": "hypothesis_count > 1 AND contradiction_score > 0.7",
+      "action": "prevent premature collapse, route to more evidence, escalate to sovereign if stuck",
+      "anti_pattern": "sycophantic collapse (picking 'most likely' to please)"
+    },
+    {
+      "id": "flow-diagnostics",
+      "role": "Detect strategy collapse, surface prune/evolve candidates",
+      "invariant": "Audit surface (every skill invocation logged) + Resource budget (CPU/time/entropy caps)",
+      "bridge": "event_stream (skill invocation logs) + ledger_append (VAULT999)",
+      "contrast": "≠ meta-evals (that BENCHMARKS skills; this MONITORS live skill behavior)",
+      "trigger": "skill_failure_rate > 0.3 OR entropy_increase_detected OR stagnation_cycles > 5",
+      "action": "flag skill for prune/evolve, surface to meta-skill-evolver, log to audit",
+      "anti_pattern": "infinite fix loops (cap 3 retries → escalate)"
+    },
+    {
+      "id": "lineage-attester",
+      "role": "Verify provenance chain integrity for all sealed claims",
+      "invariant": "Lineage token (hash + signer) + Immutable receipt chain",
+      "bridge": "seal_chain (VAULT999) + verify-gate (4-gate check)",
+      "contrast": "≠ audit-seal (that CREATES seals; this VERIFIES seal chain integrity)",
+      "trigger": "seal_created OR chain_verify_requested OR drift_detected",
+      "action": "verify hash chain, flag breaks, surface to sovereign if chain compromised",
+      "anti_pattern": "chain gaps tolerated (zero tolerance: any break = HOLD)"
+    }
+  ]
+}

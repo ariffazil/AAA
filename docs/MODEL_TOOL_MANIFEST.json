@@ -390,6 +390,24 @@
           "federation_tools": {
             "available": true
           }
+        },
+        "claude-fable-5": {
+          "tool_call": true,
+          "reasoning": true,
+          "context_window": 200000,
+          "output_limit": 32000,
+          "modalities": {
+            "input": [
+              "text"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "federation_tools": {
+            "available": true
+          },
+          "notes": "Claude-family model via OpenCode Zen proxy. Text-only (no vision/attachment). Added 2026-07-11 after registry gap found by FORGE self-audit."
         }
       }
     }

@@ -145,7 +145,7 @@ bot.command("update", async (ctx) => {
   const edit = async (text: string) => {
     try {
       await ctx.api.editMessageText(msg.chat.id, msg.message_id, text, { parse_mode: "Markdown" });
-    } catch {}
+    } catch { /* ignore */ }
   };
 
   try {

@@ -1,0 +1,12 @@
+{
+  "manifest_hash": "sha256:4a4fade78a9b3c61b5b19c08168f49ea2f62a5b24dba7888f6073294d41e2c3d",
+  "ratifier_id": "root-arif-888",
+  "public_key_fingerprint": "SHA256:cBCE6qYAIueX4dyPPE9PeZrW7Ou3M84CoFrN1nJ5Kuw",
+  "timestamp": "2026-07-11T08:42:07.173007+00:00",
+  "signature": "-----BEGIN SSH SIGNATURE-----\nU1NIU0lHAAAAAQAAADMAAAALc3NoLWVkMjU1MTkAAAAgTF3eFA0mXyH9esB2QfQ9r6Vz63\nny4jfhlc2ADyCkrYQAAAAIbWFuaWZlc3QAAAAAAAAABnNoYTUxMgAAAFMAAAALc3NoLWVk\nMjU1MTkAAABA3eIrNlKuwNBYBaGIJEaI0iTH4zkXBzGbwFHwKlPdxJF9r7dVHj1WwMLTwv\n96QZYMRMs2zmEw4QPS07mPGpf+Cw==\n-----END SSH SIGNATURE-----",
+  "algorithm": "ed25519",
+  "signed_by": "ARIF",
+  "custody": "VPS_TEMPORARY",
+  "migration_deadline": "2026-07-14",
+  "verification_status": "HASH_MATCHED"
+}

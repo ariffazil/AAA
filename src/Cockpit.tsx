@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { FormEvent, KeyboardEvent } from 'react';
 import {
   ArrowRight,
@@ -10,6 +10,7 @@ import {
   CheckCircle2,
   Circle,
   AlertCircle,
+  AlertTriangle,
 } from 'lucide-react';
 import { ConsentDialog, SessionBadge, SessionManifest } from './components/SessionConsent';
 import SupabaseMemoryPanel from './components/cockpit/SupabaseMemoryPanel';
@@ -138,10 +139,19 @@ const _MCP_PROTOCOL = 'JSON-RPC 2.0'; // SOT — all 6 organs unified, streamabl
 const GOLDEN_PATH = ['SENSE', 'MIND', 'HEART', 'JUDGE', 'VAULT'] as const;
 
 const DOMAIN_MCPS = [
-  { id: 'geox', label: 'GEOX', symbol: '🌍', desc: 'Earth intelligence · 47 tools · JSON-RPC', url: 'https://geox.arif-fazil.com/health' },
-  { id: 'wealth', label: 'WEALTH', symbol: 'Ω', desc: 'Capital intelligence · 32 tools · JSON-RPC', url: 'https://wealth.arif-fazil.com/health' },
-  { id: 'well', label: 'WELL', symbol: 'Ψ', desc: 'Vitality mirror · 18 tools · JSON-RPC', url: 'https://well.arif-fazil.com/health' },
+  { id: 'geox', label: 'GEOX', symbol: '🌍', desc: 'Earth intelligence · 81 tools · JSON-RPC', url: 'https://geox.arif-fazil.com/health' },
+  { id: 'wealth', label: 'WEALTH', symbol: 'Ω', desc: 'Capital intelligence · 7 tools · JSON-RPC', url: 'https://wealth.arif-fazil.com/health' },
+  { id: 'well', label: 'WELL', symbol: '🫀', desc: 'Vitality mirror · 18 tools · REFLECT_ONLY', url: 'https://well.arif-fazil.com/health' },
   { id: 'forge', label: 'A-FORGE', symbol: '⚡', desc: 'Metabolic shell · engineering actuator', url: 'https://forge.arif-fazil.com/health' },
+];
+
+const FEDERATION_ORGANS_6 = [
+  { id: 'arifOS', label: 'arifOS', port: 8088, url: 'http://127.0.0.1:8088/health', key: 'arifos' as const },
+  { id: 'GEOX', label: 'GEOX', port: 8081, url: 'https://geox.arif-fazil.com/health', key: 'geox' as const },
+  { id: 'WEALTH', label: 'WEALTH', port: 18082, url: 'https://wealth.arif-fazil.com/health', key: 'wealth' as const },
+  { id: 'WELL', label: 'WELL', port: 18083, url: 'https://well.arif-fazil.com/health', key: 'well' as const },
+  { id: 'A-FORGE', label: 'A-FORGE', port: 7071, url: 'http://127.0.0.1:7071/health', key: 'forge' as const },
+  { id: 'AAA', label: 'AAA', port: 3001, url: 'http://127.0.0.1:3001/health', key: 'aaa' as const },
 ];
 
 // Map A2A task state → golden path step index (0–4)
@@ -165,6 +175,38 @@ const EVENT_COLORS: Record<string, string> = {
 };
 
 const OPERATOR_API = '/api/operator';
+
+// ErrorBoundaryPanel — catches render errors from child panels without killing the whole cockpit
+class ErrorBoundaryPanel extends React.Component<
+  { label: string; children: React.ReactNode },
+  { hasError: boolean; errorMsg: string }
+> {
+  constructor(props: { label: string; children: React.ReactNode }) {
+    super(props)
+    this.state = { hasError: false, errorMsg: '' }
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, errorMsg: error?.message || 'unknown' }
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="p-6 border border-red-500/20 bg-red-950/10 rounded-lg mb-8">
+          <div className="text-[10px] font-mono text-red-400 mb-1">⚠ {this.props.label} failed to load</div>
+          <div className="text-[9px] text-white/30 mb-2">External service unavailable (Supabase mock credentials). Cockpit core is unaffected.</div>
+          <div className="text-[8px] text-white/20 font-mono mb-2 truncate">{this.state.errorMsg}</div>
+          <button
+            onClick={() => this.setState({ hasError: false, errorMsg: '' })}
+            className="text-[9px] font-mono text-white/40 hover:text-white transition-colors underline"
+          >
+            retry
+          </button>
+        </div>
+      )
+    }
+    return this.props.children
+  }
+}
 
 export default function Cockpit() {
   const [tasks, setTasks] = useState<OperatorTask[]>([]);
@@ -206,6 +248,14 @@ export default function Cockpit() {
     color?: string;
     cockpitRequired?: boolean;
   } | null>(null);
+
+  // Federation 6-organ health strip — GREEN/YELLOW/RED per organ
+  const [fedHealth, setFedHealth] = useState<Record<string, DomainStatus>>(
+    Object.fromEntries(FEDERATION_ORGANS_6.map(o => [o.id, 'loading']))
+  );
+
+  // Recent agent activity — last submitted mission + ratification status
+  const [ratificationFlag, setRatificationFlag] = useState<string | null>(null);
 
   // Live organ attestation from arifOS + direct health probes
   const [organAttestation, setOrganAttestation] = useState<{ organs: OrganAttestationInfo[]; arifos_attestation: unknown; timestamp: string } | null>(null);
@@ -527,6 +577,36 @@ export default function Cockpit() {
     return () => clearInterval(interval);
   }, []);
 
+  // Federation 6-organ health strip polling
+  useEffect(() => {
+    const checkOrgan = async (id: string, url: string) => {
+      try {
+        const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
+        setFedHealth(prev => ({ ...prev, [id]: res.ok ? 'ok' : 'err' }));
+      } catch {
+        setFedHealth(prev => ({ ...prev, [id]: 'err' }));
+      }
+    };
+    FEDERATION_ORGANS_6.forEach(({ id, url }) => checkOrgan(id, url));
+    const interval = setInterval(() => {
+      FEDERATION_ORGANS_6.forEach(({ id, url }) => checkOrgan(id, url));
+    }, 20000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Ratification flag: set when a mission is in input-required or auth-required state
+  useEffect(() => {
+    if (lastMission && (lastMission.state === 'input-required' || lastMission.state === 'auth-required')) {
+      setRatificationFlag('⚠️ ACTION PENDING — F13 ratification required');
+    } else if (lastMission && lastMission.state === 'completed') {
+      setRatificationFlag('✅ Completed — sealed or delivered');
+    } else if (lastMission && lastMission.state === 'failed') {
+      setRatificationFlag('❌ Failed — check task log');
+    } else {
+      setRatificationFlag(null);
+    }
+  }, [lastMission]);
+
   useEffect(() => {
     if (!sessionManifest || sessionManifest.state !== 'TEMPORAL' || !sessionManifest.valid_until) return;
     const checkExpiry = () => {
@@ -586,11 +666,36 @@ export default function Cockpit() {
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-emerald-950/20 border border-emerald-500/30 rounded text-[9px] font-mono text-emerald-400" title="JSON-RPC 2.0 + streamable-http — all 6 organs unified, ΔS ≤ 0">
               JSON-RPC · ΔS≤0 <span className="text-emerald-500">[LIVE]</span>
             </div>
+            {/* Federation Health Strip — 6 organs */}
+            <div className="hidden lg:flex items-center gap-1.5 px-3 py-1 bg-white/5 border border-white/10 rounded text-[9px] font-mono">
+              {FEDERATION_ORGANS_6.map(org => {
+                const health = fedHealth[org.id] || 'loading';
+                const color = health === 'ok' ? 'bg-emerald-500' : health === 'err' ? 'bg-red-500' : 'bg-yellow-500';
+                const label = health === 'ok' ? 'GREEN' : health === 'err' ? 'RED' : health === 'loading' ? 'WAIT' : 'YELLOW';
+                return (
+                  <span key={org.id} className="flex items-center gap-1" title={`${org.label}:${org.port} → ${label}`}>
+                    <div className={`w-1.5 h-1.5 rounded-full ${color} ${health === 'loading' ? 'animate-pulse' : ''}`} />
+                    <span className="text-white/30">{org.label}</span>
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-6 pt-40">
+      {/* ── HERMES IS AGENT BANNER ── */}
+      <div className="bg-red-950/40 border-b border-red-500/30">
+        <div className="max-w-6xl mx-auto px-6 py-2 flex items-center gap-3">
+          <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse flex-shrink-0" />
+          <p className="text-[10px] font-mono text-red-200 tracking-wide">
+            <span className="font-bold text-red-400">HERMES is AGENT, not SOVEREIGN.</span>
+            {' '}All execution requires F13 (Arif) ratification. VAULT999 is the only immutable record.
+          </p>
+        </div>
+      </div>
+
+      <main className="max-w-4xl mx-auto px-6 pt-44">
 
         {/* HERO / INTRO */}
         <section className="mb-20">
@@ -650,6 +755,16 @@ export default function Cockpit() {
               <span className={`ml-3 ${lastMission.state === 'completed' ? 'text-emerald-400' : lastMission.state === 'input-required' || lastMission.state === 'auth-required' ? 'text-amber-400' : lastMission.state === 'failed' ? 'text-red-400' : 'text-white/40'}`}>
                 [{lastMission.state.toUpperCase()}]
               </span>
+            </div>
+          )}
+          {ratificationFlag && (
+            <div className={`mt-2 px-4 py-2 border rounded text-[10px] font-mono font-bold tracking-wide ${
+              ratificationFlag.startsWith('⚠️') ? 'bg-amber-950/20 border-amber-500/40 text-amber-300' :
+              ratificationFlag.startsWith('✅') ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-400' :
+              ratificationFlag.startsWith('❌') ? 'bg-red-950/20 border-red-500/40 text-red-400' :
+              'bg-white/5 border-white/10 text-white/40'
+            }`}>
+              {ratificationFlag}
             </div>
           )}
         </section>
@@ -826,7 +941,15 @@ export default function Cockpit() {
               <div key={a.id} className="group border-b border-white/5 pb-6 hover:border-red-500/50 transition-colors">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-lg font-bold text-white font-mono">{a.id}</h3>
-                  <div className="text-[9px] font-mono px-2 py-0.5 border border-white/20 text-white/40 uppercase tracking-widest">{a.type}</div>
+                  <div className="flex flex-col items-end gap-1">
+                    <div className="text-[9px] font-mono px-2 py-0.5 border border-white/20 text-white/40 uppercase tracking-widest">{a.type}</div>
+                    {a.type === 'AGENT' && (
+                      <div className="text-[8px] font-mono px-1.5 py-0.5 bg-red-950/40 border border-red-500/30 text-red-400 uppercase tracking-widest flex items-center gap-1">
+                        <span className="w-1 h-1 rounded-full bg-red-500 animate-pulse" />
+                        F13 Required
+                      </div>
+                    )}
+                  </div>
                 </div>
                 <p className="text-sm text-white/40 font-light mb-4">{a.role}</p>
                 <div className="flex items-center gap-4 text-[9px] font-mono tracking-tighter uppercase">
@@ -1079,7 +1202,9 @@ export default function Cockpit() {
         </section>
 
         {/* ── SUPABASE FEDERATION MEMORY (Phase 3A Read-Only) ── */}
-        <SupabaseMemoryPanel />
+        <ErrorBoundaryPanel label="Supabase Memory">
+          <SupabaseMemoryPanel />
+        </ErrorBoundaryPanel>
 
         {/* ── HUMAN PATTERN REPORT (Phase 3B Operator Rhythm) ── */}
         <HumanPatternReport />

@@ -2,7 +2,8 @@
 id: agent-onboarding
 name: Agent Onboarding
 version: 2.0.0
-description: Standard procedure for registering a new agent in the AAA federation.
+description: >
+  Standard procedure for registering a new agent in the AAA federation.
   Creates agent identity directory, agent card (v2.0.0 schema), registry entry, and SOUL.md.
   Updated 2026-07-01: canonical card location is AAA/agents/<id>/agent-card.json.
 owner: AAA

@@ -17,10 +17,6 @@ export default function SealPage() {
   const [loading, setLoading] = useState(true);
   const [chainValid, setChainValid] = useState<boolean | null>(null);
 
-  useEffect(() => {
-    loadChain();
-  }, []);
-
   const loadChain = async () => {
     setLoading(true);
     try {
@@ -40,7 +36,13 @@ export default function SealPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    loadChain();
+  }, [loadChain]);
+
+  ;
 
   return (
     <div className="app-container">
