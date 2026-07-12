@@ -1,0 +1,306 @@
+{
+  "created": "2026-07-12T05:35Z",
+  "phase": "444",
+  "issues": {
+    "arifOS": [
+      {
+        "number": 564,
+        "title": "ACT Engine Test \u2014 7-Phase Execution",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Engine test task"
+      },
+      {
+        "number": 560,
+        "title": "OpenCode harness on af-forge stuck at OBSERVE_ONLY \u2014 identity bootstrap path for",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "constitution",
+          "actor-verify",
+          "good-first-issue",
+          "priority:medium"
+        ],
+        "note": "Cross-platform compatibility"
+      },
+      {
+        "number": 559,
+        "title": "\ud83c\udf10 Federation Health \u2014 2026-07-06",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [
+          "automation"
+        ],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 545,
+        "title": "\ud83c\udf10 Federation Health \u2014 2026-06-29",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [
+          "automation"
+        ],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 544,
+        "title": "Weekly Automation Health \u2014 2026-06-29",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [
+          "automation"
+        ],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 531,
+        "title": "KILL CHAOS: enforce canonical 7-tool MCP public surface",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "cleanup",
+          "mcp",
+          "governance",
+          "agent-task"
+        ],
+        "note": "Architecture cleanup task"
+      },
+      {
+        "number": 529,
+        "title": "EUREKA: collapse A-FORGE into 8-tool governed execution body",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "architecture",
+          "mcp",
+          "governance",
+          "agent-task",
+          "aforge"
+        ],
+        "note": "Architecture cleanup task"
+      },
+      {
+        "number": 526,
+        "title": "KILL CHAOS: enforce canonical 7-tool MCP public surface",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "cleanup",
+          "mcp",
+          "governance",
+          "agent-task"
+        ],
+        "note": "Architecture cleanup task"
+      }
+    ],
+    "well": [
+      {
+        "number": 21,
+        "title": "Weekly Repo Hygiene",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 2,
+        "title": "[H1] Cognitive Load Forecasting \u2014 research sprint NOT engineering sprint",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      },
+      {
+        "number": 1,
+        "title": "[H1] CRITICAL: WELL Emergency Sprint \u2014 restore compose + biometric bridge",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      }
+    ],
+    "WEALTH": [
+      {
+        "number": 41,
+        "title": "[P2] Signal detection sensitivity: capture_scan, power_audit, beautiful_mouse_sc",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 2 issue"
+      },
+      {
+        "number": 40,
+        "title": "[P1] 4 phantom tools in registry: registered but not callable via MCP or bridge",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 1 issue"
+      },
+      {
+        "number": 39,
+        "title": "[P1] Preload resources broken: wealth://risk/thresholds, wealth://federation/con",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 1 issue"
+      },
+      {
+        "number": 38,
+        "title": "[P1] survival_engine: inconsistent verdict fields + null actor_id (cross-organ p",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 1 issue"
+      },
+      {
+        "number": 36,
+        "title": "[P1] governance_capacity + cascade_model: opaque \"No approval received\" \u2014 no err",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 1 issue"
+      },
+      {
+        "number": 35,
+        "title": "[P1] institutional_stress_index: undocumented type contract causes fatal crash o",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 1 issue"
+      },
+      {
+        "number": 34,
+        "title": "[P0] institutional_stress_index: silent field-dropping \u2192 false negative on real ",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 0 bug"
+      },
+      {
+        "number": 33,
+        "title": "[P0] compute_irr: solver returns null on trivial case, no diagnostic emitted",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 0 bug"
+      },
+      {
+        "number": 32,
+        "title": "[P0] compute_npv: systematic off-by-one discounting \u2014 every NPV call wrong by fa",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "Priority 0 bug"
+      },
+      {
+        "number": 31,
+        "title": "[F1] registry_status returns flat public_tools array \u2014 upgrade to WELL rich-drif",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "enhancement",
+          "F2-TRUTH",
+          "cross-organ",
+          "federation-surface"
+        ],
+        "note": "Constitutional floor issue"
+      },
+      {
+        "number": 28,
+        "title": "Weekly Repo Hygiene",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 7,
+        "title": "[H1] Cross-Scale Stress Testing \u2014 personal to civilizational in 60s",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      },
+      {
+        "number": 6,
+        "title": "[H1] Thermodynamic Capital \u2014 exergy and negentropy as first-class",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      }
+    ],
+    "A-FORGE": [
+      {
+        "number": 43,
+        "title": "Weekly Repo Hygiene",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 8,
+        "title": "[H1] Federation Boot Sequence \u2014 formalize cold-start order",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "H1",
+          "infrastructure",
+          "boot"
+        ],
+        "note": "High-priority architectural work"
+      },
+      {
+        "number": 7,
+        "title": "[H1] Rollback Atomicity \u2014 revert state on floor violation",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "H1",
+          "governance",
+          "rollback"
+        ],
+        "note": "High-priority architectural work"
+      },
+      {
+        "number": 6,
+        "title": "[H1] Dry-Run Sandboxing \u2014 execution plan isolation before live execution",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      }
+    ],
+    "geox": [
+      {
+        "number": 120,
+        "title": "[F1] surface_status session enforcement blocks L0_OBSERVE health probes + phanto",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [
+          "bug",
+          "F1-AMANAH",
+          "cross-organ",
+          "federation-surface"
+        ],
+        "note": "Constitutional floor issue"
+      },
+      {
+        "number": 117,
+        "title": "Weekly Repo Hygiene",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [],
+        "note": "Automation/health report \u2014 close or archive"
+      },
+      {
+        "number": 41,
+        "title": "[H1] Uncertainty Quantification \u2014 confidence intervals on all outputs",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      },
+      {
+        "number": 40,
+        "title": "[H1] Real-Time Sensor Bridge \u2014 MQTT/IoT streaming ingestion",
+        "classification": "VALID_OPEN_RISK",
+        "labels": [],
+        "note": "High-priority architectural work"
+      }
+    ],
+    "AAA": [
+      {
+        "number": 124,
+        "title": "[VOID] Sentinel VETO: uncommitted changes in AAA workspace",
+        "classification": "INVALID_WITH_EVIDENCE",
+        "labels": [],
+        "note": "Marked VOID \u2014 close with evidence"
+      },
+      {
+        "number": 122,
+        "title": "Weekly Repo Hygiene",
+        "classification": "RESOLVED_BY_DECISION",
+        "labels": [],
+        "note": "Automation/health report \u2014 close or archive"
+      }
+    ]
+  },
+  "summary": {
+    "VALID_OPEN_RISK": 25,
+    "RESOLVED_BY_DECISION": 8,
+    "INVALID_WITH_EVIDENCE": 1
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "phase": "111",
+  "status": "COMPLETE",
+  "created": "2026-07-12T05:30Z",
+  "total_files": 11908,
+  "by_classification": {
+    "UNKNOWN": 4619,
+    "CANONICAL": 1298,
+    "ACTIVE": 5772,
+    "ARCHIVAL": 219
+  },
+  "by_deletion_risk": {
+    "LOW": 6585,
+    "HIGH": 1298,
+    "MEDIUM": 4025
+  },
+  "by_deployment_relevance": {
+    "NONE": 6882,
+    "HIGH": 1551,
+    "MEDIUM": 3475
+  },
+  "repos": [
+    {
+      "repo": "A-FORGE",
+      "path": "/root/A-FORGE",
+      "total_files": 1419,
+      "by_classification": {
+        "UNKNOWN": 731,
+        "CANONICAL": 203,
+        "ACTIVE": 441,
+        "ARCHIVAL": 44
+      }
+    },
+    {
+      "repo": "AAA",
+      "path": "/root/AAA",
+      "total_files": 4697,
+      "by_classification": {
+        "UNKNOWN": 2408,
+        "CANONICAL": 882,
+        "ACTIVE": 1335,
+        "ARCHIVAL": 72
+      }
+    },
+    {
+      "repo": "arifOS",
+      "path": "/root/arifOS",
+      "total_files": 3282,
+      "by_classification": {
+        "UNKNOWN": 770,
+        "ACTIVE": 2300,
+        "CANONICAL": 156,
+        "ARCHIVAL": 56
+      }
+    },
+    {
+      "repo": "GEOX",
+      "path": "/root/geox",
+      "total_files": 1769,
+      "by_classification": {
+        "UNKNOWN": 470,
+        "CANONICAL": 23,
+        "ACTIVE": 1239,
+        "ARCHIVAL": 37
+      }
+    },
+    {
+      "repo": "WEALTH",
+      "path": "/root/WEALTH",
+      "total_files": 524,
+      "by_classification": {
+        "ACTIVE": 330,
+        "UNKNOWN": 170,
+        "CANONICAL": 23,
+        "ARCHIVAL": 1
+      }
+    },
+    {
+      "repo": "WELL",
+      "path": "/root/WELL",
+      "total_files": 217,
+      "by_classification": {
+        "ACTIVE": 127,
+        "UNKNOWN": 70,
+        "CANONICAL": 11,
+        "ARCHIVAL": 9
+      }
+    }
+  ],
+  "high_unknown_count": 179,
+  "note": "UNKNOWN files need manual review before Phase 666 quarantine decisions"
+}

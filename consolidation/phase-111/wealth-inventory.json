@@ -1,0 +1,4731 @@
+{
+  "repo": "WEALTH",
+  "path": "/root/WEALTH",
+  "inventory": [
+    {
+      "path": "meme_gen_safe.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "FEDERATION_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "index.html",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "BOUNDARY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "ROADMAP.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "BRANCH_UNIFICATION.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CODEOWNERS",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "pyproject.toml",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Package manifest",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "LICENSE",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "REPO_ROUTING_CONSTITUTION.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "QUICKSTART.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "llms.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".env.example",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "RELEASE_NOTES_v2026.05.01.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "Makefile",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "server_federated.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "styles.css",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "fastmcp.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "pyrightconfig.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Configuration",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "uv.lock",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "claude_desktop_config.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Configuration",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "CNAME",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "SECURITY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "cli.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "entrypoint.sh",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "888_ACTIVE.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "mcp.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "server.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "package.json",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Package manifest",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "cashflow_defaults.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "NOTICE",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "WEALTH_SNAPSHOT.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "FEDERATION_TRANSPORT.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "sitemap.xml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "AGENTS.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "Dockerfile",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Container config",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "TOOL_SURFACE.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_health_standard.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "SECURITY_MINIMAL.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "package-lock.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".gitignore",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "SPEC.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "v2_systemic_intelligence_test.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_import_smoke.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "requirements.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".dockerignore",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Container config",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "script.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "robots.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": ".opencode.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/inheritance/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "domains/markets/analysis.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/regulatory/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "domains/land-law/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "domains/food/security_index.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/energy/kinabalu_falsification_framework_2026-07-03.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/energy/kinabalu_post_subduction_review_2026-07-03.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/energy/TODO_epistemic_collapse_scan.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/energy/kinabalu_institutional_pattern_2026-07-03.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/energy/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "domains/energy/kinabalu_depth_convert.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/energy/crisis_assess.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/law/ONTOLOGY.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/law/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "domains/law/TOOL_ROADMAP.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "domains/contracts/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "raw/CANON.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/POST_AGI_ECONOMICS_MANIFESTO.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/COSMOLOGY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/TRINITY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/ARCHITECTURE.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/STRATEGY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/WAW_WEALTH_OVERVIEW.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "raw/CANON_LAW.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "scripts/deploy-vps.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/split_monolith.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/run-first-loop.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "scripts/invoke_tool.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/governance-gate.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/test-mcp-loop.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/sync_manifest.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/.manifest_state.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/hooks/install_hooks.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/hooks/pre-push/pre-push.sh",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "scripts/hooks/pre-push/repo_guard.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "civilizational/boundary_monitor.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "civilizational/prosperity_index.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "civilizational/cascade_detector.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory_tools/run_cycle.sh",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory_tools/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "memory_tools/memory_pipeline.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "capitalx/DESIGN.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "migration/rename_map.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "migration/alias_registry.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "migration/deprecation_plan.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/counterfactual.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/transport.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/macro/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/rent_extraction.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/rule_asymmetry.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/opacity_scorer.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/coercion_detector.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/capture_detector.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/power/incentive_map.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/stock/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/beautiful_mouse.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/scanner.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/historical.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/patterns.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/corpus/enron_2000_ar.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/corpus/enron_1999_ar.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/corpus/enron_2000_ar.pdf",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/corpus/enron_1999_ar.pdf",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/collapse_signature/corpus/enron_2001_ar.pdf",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/game/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/institutional/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/institutional/stress_index.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/institutional/cascade.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/institutional/exploitation.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/institutional/governance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/personal/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/math/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/inequality_effect.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/ecological_cost.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/signal_state.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/dignity_impact.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/resilience_score.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/sovereignty_risk.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/wisdom/optionality_preserve.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/governance/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/governance/tri_witness.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/governance/pipeline.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/capital/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/two_stage.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/chance_constrained.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/markowitz.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/apex_mapping.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/kelly.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/optimizers/robust.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/risk/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/signal_demotion.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/analog_anchoring.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/pipeline_inertia.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/governance_constraint.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/zweig_mapping.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/contradiction_density.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_core/epistemic/model_ownership.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/governance_metadata.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/server.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/federation_safety.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/mcp_logging.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_intake.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_institutional_power.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_arifos_handoff.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_market_reality.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_capital_diagnosis.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_allocation_judgment.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/prompts/wealth_risk_downside.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_mcp/tools/institutional.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/tools/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/tools/bid_surface.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/tools/optimize_mwc.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/tools/canonical.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/translation/geox-to-well/field-risk.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/translation/wealth-to-arifos/allocation.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/translation/well-to-wealth/readiness.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/translation/geox-to-wealth/prospect.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/translation/geox-to-wealth/prospect.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/sources/catalog.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/sources/catalog.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/sot/manifest.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/registry/prompts.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/registry/tools.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/policy/action-boundaries.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/policy/epistemic-ladder.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/examples/wealth-to-arifos.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_mcp/resources/examples/geox-to-wealth.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_compat/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "apps/capital-judge/index.html",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "apps/capital-judge/manifest.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/011_WEALTH_MANDATE.md",
+      "type": "file",
+      "classification": "ARCHIVAL",
+      "purpose": "Historical record",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "GENESIS/README-archive-2026-06-27.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "scratch/final_test_scenario.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "scratch/adversarial_optimization_test.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "kernels/MAKCIKGPT_KERNEL_MS.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "kernels/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "docs/04-glosari-nusantara.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/floors-spec.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_2026.05.16.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/VAULT999_WEALTH_MCP_FIX.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/POST_AGI_ECONOMICS_MANIFESTO.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/SPLIT_PLAN.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/THERMODYNAMIC-METABOLIZER.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_NEXT_HORIZON_BLUEPRINT_FINAL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/888-hold-log.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_CONTRAST_ANALYSIS.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/AGENT_LAYOUT_CONTRACT.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "docs/WEALTH_MCP_ARCHITECTURE.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/ZEN_OF_WEALTH.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_SOT.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_NEXT_HORIZON_BLUEPRINT_v2026.05.07.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_UNIFIED_ARCHITECTURE.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/01-suara-makcikgpt.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_FEDERATED_AGI_DOMAIN_FIX_SPEC.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/epistemic-tags.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/02-batas-penolakan.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/first-loop-checklist.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/SOVEREIGN_WEALTH_SPEC.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/RELEASE_NOTES_2026.05.22.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/03-ujian-keselamatan.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/00-niat-dan-amanah.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/REPO_HYGIENE_AUDIT_2026-05-21.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/wealth-basis-spec.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/TODO.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/MODULE_MAP.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/WEALTH_NEXT_HORIZON.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/repo-role-boundary.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/mcp-tool-families-spec.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/FEDERATION_LOOP_WEALTH_SPACE.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/waw-envelope-spec.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/operations/repo-mcp-stabilization.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/seals/2026-06-12-fff-999-engine.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/seals/2026-06-12-bursa-global-forge.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/datasources/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "docs/audits/decorator-audit-2026-06-03.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/integration/FEDERATION_NOTES.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "docs/integration/WEALTH_PATCH_REVIEW_2026-05-02.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "datasources/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "host/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/civilizational/boundary_monitor.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/civilizational/prosperity_index.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/civilizational/cascade_detector.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/wealth/networth.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/wealth/projection.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/wealth/maruah-score.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/wealth/cashflow.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/coordination/cooperative.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/coordination/commons.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/coordination/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/coordination/lp_allocator.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/coordination/strategic.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/schema.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/registry.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/health.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/adapters/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/adapters/owid.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/adapters/fred.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/adapters/worldbank.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/adapters/ember.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/ingest/adapters/ecb.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/kernel/capitalx.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/kernel/telemetry.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/kernel/vault999.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/kernel/seal.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/kernel/finance.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/kernel/floors.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/governance/floors.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/governance/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/governance/vault_supabase.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/governance/policy_engine.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/governance/harness_alarm.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/governance/vault.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/SKILL.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/references/repo-working-rules.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/references/aaa-operating-model.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/references/governance-gates.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/references/agentic-workflows.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/references/constitutional-operating-model.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/references/federation-map.md",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/scripts/orthogonality_test.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/scripts/aaa_router.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/scripts/floor_check.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/scripts/bounded_explain.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/scripts/compose_federation_receipt.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Operational script",
+      "owner": "WEALTH",
+      "deployment_relevance": "HIGH",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/skills/aaa-agentic-governance/agents/openai.yaml",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "host/epistemic/correlation_guard.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/epistemic/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/epistemic/evoi.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "host/epistemic/schema_validator.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/GLOSSARY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/ROADMAP.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/CAPITALX_SPEC.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/WEALTH_HARNESS.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/001_CAPITAL_MANIFEST.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/COSMOLOGY.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/TELEMETRY_SCHEMA.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "canon/002_HUMAN_LAW.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/GOVERNANCE.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/002a_LAW_SHADOW.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/015_LAW_MANIFEST.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/NODE_SPEC.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/CASE_STUDIES.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/STRESS_TESTS.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/THREAT_MODEL.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "canon/ECONOMIC_MODEL.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "tools/wealth_finance_serpapi.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "forge_work/vault999-seal-wealth-critical-fix-2026-06-25.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "forge_work/wealth-improvement-plan-2026-06-25.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "forge_work/zen-wealth-audit-2026-06-25.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "forge_work/2026-06-30-wealth-mcp-zen-receipt.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "forge_work/faisal_dossier/PETRONAS_INSTITUTIONAL_DECAY_2026-06-25.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/db_schema.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/organ_governance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/pai_receipt.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/market_data.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/vps_metrics.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/invariants.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/personal_finance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/governance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/federation_memory.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/kernel_math.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/apex_envelope_wealth.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_gates.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/inequality_panel.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/monolith.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/domains/PLAN.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/domains/capital/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/domains/time/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/pyportfolioopt_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/quantlib_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/mesa_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/openlineage_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/pymc_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/riskfolio_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_adapters/langgraph_workflow.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/shared/base.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/shared/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/engine_888.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/fundamentals.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/risk_tools.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/backtest.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/contrast.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/calhoun_guard.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/screener_9.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/math_tools.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/indicators.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/behavior_tools.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/governance_singularity.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/technical.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/engine_999.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/stock/market_intelligence.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_observability/otel_tracer.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_observability/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/prompts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Skill/prompt definition",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "internal/wealth_civilization/policy_counterfactual.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_civilization/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_civilization/inequality_stress.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/world/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_security/tool_manifest.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_security/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_security/policy_inputs.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_security/mcp_description_linter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_security/opa_wiring.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_security/source_scorecard.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/bursa/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/bursa/klse_adapter.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/bursa/schemas.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/bursa/evidence.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/money.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/envelopes.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/epistemic.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/lineage.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/units.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/wealth_contracts/verdicts.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/engines/exergy.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/engines/canonical_tools.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/engines/advisory.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/engines/compatibility_map.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "internal/engines/five_seals.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "AGENTS/INGEST_GUIDE.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "api/columns/index.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "api/schemas/waw-envelope.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "api/schemas/article.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "api/schemas/wealth-basis.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "api/docs/index.json",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Documentation",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "wealth_arifos_bridge/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_arifos_bridge/judge_handoff.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "assets/favicon.svg",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "assets/DESIGN_BRIEF.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "assets/logo.svg",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-thermodynamic-ethics.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/entity-wealth.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-888-hold.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/synthesis-foundations-of-wealth.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/index.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/source-post-agi-manifesto.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/source-trinity.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/entity-arifos.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-stewardship-shift.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-cooling-prosperity.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-maruah.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/layered-architecture.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/source-strategy.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/capitalx-risk-pricing-engine.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/knowledge-spine.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/source-architecture.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-contextual-vitality.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/civilizational-mcp-architecture.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-proxy-efficiency-test.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-12-foundations.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/log.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/mcp-server-packaging.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/source-waw-wealth-overview.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/entity-waw-federation.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-999-seal.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/source-cosmology.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/concept-post-agi-economics.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wiki/cosmology.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "tests/finance.test.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_simulative_tools.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_wealth_gates.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_market_data.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_exergy_gate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_omni_wisdom.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core.test.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_gradient.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_time.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_vault_supabase_sync.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_conservation.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_federation_memory.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_optimizers.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_personal_finance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/governance.test.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_flow.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/ingest.test.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_ghost_retirement.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_bid_surface_mwc.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_smoke.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/governed_loop.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_survival_engine.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_internal_imports.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_metabolic_contract.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_advisory_boundary.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_organ_governance.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_stock_analysis.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/coordination.test.js",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/v2_systemic_intelligence_test.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_imports.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/test_entropy.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/compat/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/fixtures/micro-loan-loop.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/bridge/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/golden/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/golden/test_math_primitives.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/test_capital.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/test_math.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/test_risk.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/test_power.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/test_wisdom.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/core/test_optimize_mwc.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/integration/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/contracts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/contracts/test_envelope_contract.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/mcp/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/mcp/test_direct_session_gate.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "tests/mcp/test_registry_truth.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Test suite",
+      "owner": "WEALTH",
+      "deployment_relevance": "MEDIUM",
+      "deletion_risk": "MEDIUM"
+    },
+    {
+      "path": "memory/2026-02-28.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory/2026-02-26.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory/2026-02-28-boot-check.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory/inbox.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory/2026-02-28-archive-agent-main-main.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "memory/2026-03-01.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_contracts/authority.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_contracts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_contracts/epistemic.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_contracts/envelope.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_contracts/schemas/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_valuation_kernel.egg-info/PKG-INFO",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_valuation_kernel.egg-info/top_level.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_valuation_kernel.egg-info/SOURCES.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_valuation_kernel.egg-info/requires.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "wealth_valuation_kernel.egg-info/dependency_links.txt",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "reality_contracts/wire_contract.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "reality_contracts/per_call_envelope.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "reality_contracts/federation_call_graph.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "reality_contracts/wealth_reality_contract.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "reality_contracts/ISA_MAP.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "reality_contracts/arifos_kernel_sdk.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/vault999.jsonl",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/ingest_health.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/law_ontology.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/legal_ontology.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/sample-state.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "data/law_pack/MANIFEST.md",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/__init__.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/context-capsule.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/affordance-contract.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/replay-receipt.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/federation-envelope.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/enrich_wealth.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/domain-translation-card.schema.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/capability_manifest.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/mcp_surface.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/tools.yaml",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "contracts/schemas/metabolic.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "mcp/README.md",
+      "type": "file",
+      "classification": "CANONICAL",
+      "purpose": "Agent instruction surface",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "HIGH"
+    },
+    {
+      "path": "mcp/server.py",
+      "type": "file",
+      "classification": "ACTIVE",
+      "purpose": "Source code",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "mcp/manifests/wealth-markets.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "mcp/manifests/wealth-food.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    },
+    {
+      "path": "mcp/manifests/wealth-energy.json",
+      "type": "file",
+      "classification": "UNKNOWN",
+      "purpose": "Unclassified",
+      "owner": "WEALTH",
+      "deployment_relevance": "NONE",
+      "deletion_risk": "LOW"
+    }
+  ],
+  "summary": {
+    "total_files": 524,
+    "by_classification": {
+      "ACTIVE": 330,
+      "UNKNOWN": 170,
+      "CANONICAL": 23,
+      "ARCHIVAL": 1
+    }
+  }
+}
