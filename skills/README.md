@@ -145,3 +145,10 @@ Results are anchored to `VAULT999` for audit continuity.
 ---
 
 **DITEMPA BUKAN DIBERI** — Skills are forged, not given.
+
+## Multi-harness unification (2026-07-12)
+
+- **Alias table:** [`SKILL_ALIAS_TABLE.json`](./SKILL_ALIAS_TABLE.json) — V3 short → disk path (63/63)
+- **Mesh sync:** [`scripts/skill-mesh-sync.sh`](./scripts/skill-mesh-sync.sh)
+- **Complete receipt:** [`docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md`](./docs/SKILL-UNIFICATION-COMPLETE-2026-07-12.md)
+- **Canon:** AAA catalog; `~/.grok` / `~/.claude` / `~/.codex` are views
