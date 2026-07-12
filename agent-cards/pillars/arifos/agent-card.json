@@ -127,10 +127,10 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
+      "proofValue": "dWuF8Azu5z5qttXHY2SiJUZ9GQHoe17Qu9U4UEPgDxxrbSSC7DkAARuSSNpMKt9nI4nQvOkDs8QUJaJ6ZDeCAg==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:20:00Z",
-      "type": "Ed25519Signature2020",
-      "proofValue": "pending"
+      "created": "2026-07-12T23:36:09Z",
+      "type": "Ed25519Signature2020"
     }
   ]
 }

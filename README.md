@@ -1,7 +1,8 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.07.12-CONSOLIDATION-EPOCH
-last_verified: 2026-07-10T05:50Z
-live_commit: a71976a2
+last_verified: 2026-07-12T23:38Z
+live_commit: c7622d13
+truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy
 vault: CONNECTED
@@ -11,7 +12,7 @@ a2a_agent_json: /root/AAA/.well-known/agent.json
 machine_sot: /root/A-FORGE/forge_work/2026-07-09/MACHINE-SOT-2026-07-09.json
 -->
 
-# AAA — Federation Control Plane & Operator Cockpit
+# AAA — Federation State & Operator Cockpit
 
 ```
     █████╗  █████╗  █████╗
@@ -26,7 +27,7 @@ machine_sot: /root/A-FORGE/forge_work/2026-07-09/MACHINE-SOT-2026-07-09.json
    The Control Tower of the arifOS Federation
 ```
 
-> **AAA is the control plane for the arifOS Federation — the cockpit where the human operator sees every agent, every verdict, and every sealed decision. It routes tasks, manages the A2A mesh, queues approvals, and displays governed state. It is the parliament and the air traffic control tower — never the judge, never the executor, never the constitution.**
+> **AAA is the federation state and operator cockpit — the cockpit where the human operator sees every agent, every verdict, and every sealed decision. It routes tasks, manages the A2A mesh, queues approvals, and displays governed state. It is the parliament and the air traffic control tower — never the judge, never the executor, never the constitution. It controls visibility, routing metadata, registries, and approval queues. It does not adjudicate constitutional verdicts and does not execute mutations.**
 
 [![Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
 [![Governance Plane](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml)
