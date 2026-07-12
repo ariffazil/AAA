@@ -47,7 +47,8 @@ This agent **will refuse** to:
 |---|---|---|
 | `/opt/arifos/secrets/test_agent_private.key` | signing | 0600 — root only |
 | `/opt/arifos/secrets/test_agent_public.key` | distribution | 0644 |
-| `/root/AAA/IDENTITY/keys/mesa_test_agent_public.pem` | AAA canonical path | 0644 |
+| `/root/AAA/IDENTITY/keys/mesa-test-agent_public.pem` | AAA canonical path (kernel uses dashes in filename) | 0644 |
+| `/root/AAA/IDENTITY/keys/mesa_test_agent_public.pem` | backup underscore variant (also resolves via kernel) | 0644 |
 | `/opt/arifos/secrets/test_agent_key_id.json` | metadata fingerprint | 0600 |
 
 The private key **never** enters agent context windows. Sign-on-demand only.
