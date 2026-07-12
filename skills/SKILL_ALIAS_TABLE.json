@@ -1,0 +1,1229 @@
+{
+  "version": "1.0.0",
+  "status": "SEALED_TABLE",
+  "forged": "2026-07-12T05:54:43.275785+00:00",
+  "canonical_catalog": "/root/AAA/skills",
+  "doctrine_core": "/root/.agents/skills",
+  "bootstrap": "/root/AAA/skills/BOOTSTRAP_MANIFEST.json",
+  "registry_v3": "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+  "rule": "Resolve V3 short name via this table before loading. Prefer primary_path (or primary_resolved). Harness views symlink primary.",
+  "boot_gate": "Load BOOTSTRAP 9 universals (substrate+knowledge) through READY before any domain skill. Quarantine external skill YAML until READY.",
+  "aliases": [
+    {
+      "v3_name": "kernel-bind",
+      "layer": "substrate",
+      "primary_disk_name": "kernel-bind",
+      "primary_path": "/root/AAA/skills/substrate/kernel-bind",
+      "primary_resolved": "/root/AAA/skills/substrate/kernel-bind",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "kernel-bind",
+          "path": "/root/AAA/skills/substrate/kernel-bind",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "observe-ground",
+      "layer": "substrate",
+      "primary_disk_name": "observe-ground",
+      "primary_path": "/root/AAA/skills/substrate/observe-ground",
+      "primary_resolved": "/root/AAA/skills/substrate/observe-ground",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "observe-ground",
+          "path": "/root/AAA/skills/substrate/observe-ground",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "route-dispatch",
+      "layer": "substrate",
+      "primary_disk_name": "route-dispatch",
+      "primary_path": "/root/AAA/skills/substrate/route-dispatch",
+      "primary_resolved": "/root/AAA/skills/substrate/route-dispatch",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "route-dispatch",
+          "path": "/root/AAA/skills/substrate/route-dispatch",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "memory-manage",
+      "layer": "substrate",
+      "primary_disk_name": "memory-manage",
+      "primary_path": "/root/AAA/skills/substrate/memory-manage",
+      "primary_resolved": "/root/AAA/skills/substrate/memory-manage",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "memory-manage",
+          "path": "/root/AAA/skills/substrate/memory-manage",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "verify-gate",
+      "layer": "substrate",
+      "primary_disk_name": "verify-gate",
+      "primary_path": "/root/AAA/skills/substrate/verify-gate",
+      "primary_resolved": "/root/AAA/skills/substrate/verify-gate",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "verify-gate",
+          "path": "/root/AAA/skills/substrate/verify-gate",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "audit-seal",
+      "layer": "substrate",
+      "primary_disk_name": "audit-seal",
+      "primary_path": "/root/AAA/skills/substrate/audit-seal",
+      "primary_resolved": "/root/AAA/skills/substrate/audit-seal",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "audit-seal",
+          "path": "/root/AAA/skills/substrate/audit-seal",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "know-physics",
+      "layer": "knowledge",
+      "primary_disk_name": "know-physics",
+      "primary_path": "/root/AAA/skills/knowledge/know-physics",
+      "primary_resolved": "/root/AAA/skills/knowledge/know-physics",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "know-physics",
+          "path": "/root/AAA/skills/knowledge/know-physics",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "know-math",
+      "layer": "knowledge",
+      "primary_disk_name": "know-math",
+      "primary_path": "/root/AAA/skills/knowledge/know-math",
+      "primary_resolved": "/root/AAA/skills/knowledge/know-math",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "know-math",
+          "path": "/root/AAA/skills/knowledge/know-math",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "know-language",
+      "layer": "knowledge",
+      "primary_disk_name": "know-language",
+      "primary_path": "/root/AAA/skills/knowledge/know-language",
+      "primary_resolved": "/root/AAA/skills/knowledge/know-language",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "know-language",
+          "path": "/root/AAA/skills/knowledge/know-language",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-basin",
+      "layer": "domain",
+      "primary_disk_name": "geox-basin-engines",
+      "primary_path": "/root/.agents/skills/geox-basin-engines",
+      "primary_resolved": "/root/.agents/skills/geox-basin-engines",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "geox-basin-engines",
+          "path": "/root/.agents/skills/geox-basin-engines",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-constitution",
+      "layer": "domain",
+      "primary_disk_name": "geox-constitution",
+      "primary_path": "/root/.agents/skills/geox-constitution",
+      "primary_resolved": "/root/.agents/skills/geox-constitution",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "geox-constitution",
+          "path": "/root/.agents/skills/geox-constitution",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-petrophysics",
+      "layer": "domain",
+      "primary_disk_name": "geox-petrophysics-bounds",
+      "primary_path": "/root/.agents/skills/geox-petrophysics-bounds",
+      "primary_resolved": "/root/.agents/skills/geox-petrophysics-bounds",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "geox-petrophysics-bounds",
+          "path": "/root/.agents/skills/geox-petrophysics-bounds",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-writing",
+      "layer": "domain",
+      "primary_disk_name": "geox-scientific-writing",
+      "primary_path": "/root/.agents/skills/geox-scientific-writing",
+      "primary_resolved": "/root/.agents/skills/geox-scientific-writing",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "geox-scientific-writing",
+          "path": "/root/.agents/skills/geox-scientific-writing",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-well-tie",
+      "layer": "domain",
+      "primary_disk_name": "geox-well-tie-pipeline",
+      "primary_path": "/root/.agents/skills/geox-well-tie-pipeline",
+      "primary_resolved": "/root/.agents/skills/geox-well-tie-pipeline",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "geox-well-tie-pipeline",
+          "path": "/root/.agents/skills/geox-well-tie-pipeline",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-artifact-rigor",
+      "layer": "domain",
+      "primary_disk_name": "geological-artifact-rigor",
+      "primary_path": "/root/.agents/skills/geological-artifact-rigor",
+      "primary_resolved": "/root/.agents/skills/geological-artifact-rigor",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "geological-artifact-rigor",
+          "path": "/root/.agents/skills/geological-artifact-rigor",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "geo-prospect",
+      "layer": "domain",
+      "primary_disk_name": "prospect-maturation-workflow",
+      "primary_path": "/root/.agents/skills/prospect-maturation-workflow",
+      "primary_resolved": "/root/.agents/skills/prospect-maturation-workflow",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "prospect-maturation-workflow",
+          "path": "/root/.agents/skills/prospect-maturation-workflow",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "wealth-reason",
+      "layer": "domain",
+      "primary_disk_name": "wealth-capital-reasoning",
+      "primary_path": "/root/.agents/skills/wealth-capital-reasoning",
+      "primary_resolved": "/root/.agents/skills/wealth-capital-reasoning",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "wealth-capital-reasoning",
+          "path": "/root/.agents/skills/wealth-capital-reasoning",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "wealth-thermo",
+      "layer": "domain",
+      "primary_disk_name": "wealth-capital-thermodynamics",
+      "primary_path": "/root/.agents/skills/wealth-capital-thermodynamics",
+      "primary_resolved": "/root/.agents/skills/wealth-capital-thermodynamics",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "wealth-capital-thermodynamics",
+          "path": "/root/.agents/skills/wealth-capital-thermodynamics",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "wealth-collapse",
+      "layer": "domain",
+      "primary_disk_name": "wealth-collapse-signature",
+      "primary_path": "/root/.agents/skills/wealth-collapse-signature",
+      "primary_resolved": "/root/.agents/skills/wealth-collapse-signature",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "wealth-collapse-signature",
+          "path": "/root/.agents/skills/wealth-collapse-signature",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "well-boundary",
+      "layer": "domain",
+      "primary_disk_name": "well-substrate-readiness",
+      "primary_path": "/root/.agents/skills/well-substrate-readiness",
+      "primary_resolved": "/root/.agents/skills/well-substrate-readiness",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "well-substrate-readiness",
+          "path": "/root/.agents/skills/well-substrate-readiness",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "well-readiness",
+      "layer": "domain",
+      "primary_disk_name": "well-substrate-readiness",
+      "primary_path": "/root/.agents/skills/well-substrate-readiness",
+      "primary_resolved": "/root/.agents/skills/well-substrate-readiness",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "well-substrate-readiness",
+          "path": "/root/.agents/skills/well-substrate-readiness",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "forge-exec",
+      "layer": "domain",
+      "primary_disk_name": "kernel-verbs-aforge-hands",
+      "primary_path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+      "primary_resolved": "/root/.agents/skills/kernel-verbs-aforge-hands",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "kernel-verbs-aforge-hands",
+          "path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "forge-verbs",
+      "layer": "domain",
+      "primary_disk_name": "kernel-verbs-aforge-hands",
+      "primary_path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+      "primary_resolved": "/root/.agents/skills/kernel-verbs-aforge-hands",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "kernel-verbs-aforge-hands",
+          "path": "/root/.agents/skills/kernel-verbs-aforge-hands",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-github",
+      "layer": "domain",
+      "primary_disk_name": "github",
+      "primary_path": "/root/AAA/skills/github",
+      "primary_resolved": "/root/AAA/skills/github",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "github",
+          "path": "/root/AAA/skills/github",
+          "home": "aaa"
+        },
+        {
+          "name": "github-ops",
+          "path": "/root/AAA/skills/github-ops",
+          "home": "aaa"
+        },
+        {
+          "name": "github-runbook",
+          "path": "/root/AAA/skills/github-runbook",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-ci-diagnose",
+      "layer": "domain",
+      "primary_disk_name": "github-ci-diagnose",
+      "primary_path": "/root/AAA/skills/github-ci-diagnose",
+      "primary_resolved": "/root/AAA/skills/github-ci-diagnose",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "github-ci-diagnose",
+          "path": "/root/AAA/skills/github-ci-diagnose",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-issue-triage",
+      "layer": "domain",
+      "primary_disk_name": "github-issue-triage",
+      "primary_path": "/root/AAA/skills/github-issue-triage",
+      "primary_resolved": "/root/AAA/skills/github-issue-triage",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "github-issue-triage",
+          "path": "/root/AAA/skills/github-issue-triage",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-pr-review",
+      "layer": "domain",
+      "primary_disk_name": "github-pr-review",
+      "primary_path": "/root/AAA/skills/github-pr-review",
+      "primary_resolved": "/root/AAA/skills/github-pr-review",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "github-pr-review",
+          "path": "/root/AAA/skills/github-pr-review",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-pr-governance",
+      "layer": "domain",
+      "primary_disk_name": "pr-review-governance",
+      "primary_path": "/root/AAA/skills/pr-review-governance",
+      "primary_resolved": "/root/AAA/skills/pr-review-governance",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "pr-review-governance",
+          "path": "/root/AAA/skills/pr-review-governance",
+          "home": "aaa"
+        },
+        {
+          "name": "github-pr-review",
+          "path": "/root/AAA/skills/github-pr-review",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-wiki",
+      "layer": "domain",
+      "primary_disk_name": "code-wiki",
+      "primary_path": "/root/AAA/skills/code-wiki",
+      "primary_resolved": "/root/AAA/skills/code-wiki",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "code-wiki",
+          "path": "/root/AAA/skills/code-wiki",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-analysis",
+      "layer": "domain",
+      "primary_disk_name": "code-analysis-skills",
+      "primary_path": "/root/AAA/skills/code-analysis-skills",
+      "primary_resolved": "/root/AAA/skills/code-analysis-skills",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "code-analysis-skills",
+          "path": "/root/AAA/skills/code-analysis-skills",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "dev-repo-audit",
+      "layer": "domain",
+      "primary_disk_name": "readme-truth-check",
+      "primary_path": "/root/AAA/skills/readme-truth-check",
+      "primary_resolved": "/root/AAA/skills/readme-truth-check",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "readme-truth-check",
+          "path": "/root/AAA/skills/readme-truth-check",
+          "home": "aaa"
+        },
+        {
+          "name": "arifos-recursive-audit",
+          "path": "/root/AAA/skills/arifos-recursive-audit",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-docker",
+      "layer": "domain",
+      "primary_disk_name": "docker",
+      "primary_path": "/root/AAA/skills/docker",
+      "primary_resolved": "/root/AAA/skills/docker",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "docker",
+          "path": "/root/AAA/skills/docker",
+          "home": "aaa"
+        },
+        {
+          "name": "vps-docker-ops",
+          "path": "/root/AAA/skills/vps-docker-ops",
+          "home": "aaa"
+        },
+        {
+          "name": "docker-entropy-ops",
+          "path": "/root/AAA/skills/docker-entropy-ops",
+          "home": "aaa"
+        },
+        {
+          "name": "docker-thermodynamics",
+          "path": "/root/AAA/skills/docker-thermodynamics",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-vps",
+      "layer": "domain",
+      "primary_disk_name": "vps-docker-ops",
+      "primary_path": "/root/AAA/skills/vps-docker-ops",
+      "primary_resolved": "/root/AAA/skills/vps-docker-ops",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "vps-docker-ops",
+          "path": "/root/AAA/skills/vps-docker-ops",
+          "home": "aaa"
+        },
+        {
+          "name": "vps-docker-runbook",
+          "path": "/root/AAA/skills/vps-docker-runbook",
+          "home": "aaa"
+        },
+        {
+          "name": "spatial-grounding",
+          "path": "/root/AAA/skills/spatial-grounding",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-mcp-builder",
+      "layer": "domain",
+      "primary_disk_name": "mcp-builder-doctrine",
+      "primary_path": "/root/.agents/skills/mcp-builder-doctrine",
+      "primary_resolved": "/root/.agents/skills/mcp-builder-doctrine",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "mcp-builder-doctrine",
+          "path": "/root/.agents/skills/mcp-builder-doctrine",
+          "home": "agents"
+        },
+        {
+          "name": "mcp-zen-authoring",
+          "path": "/root/.agents/skills/mcp-zen-authoring",
+          "home": "agents"
+        },
+        {
+          "name": "mcp-federation-ops",
+          "path": "/root/AAA/skills/mcp-federation-ops",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-mcp-probe",
+      "layer": "domain",
+      "primary_disk_name": "mcp-smoke-test",
+      "primary_path": "/root/AAA/skills/mcp-smoke-test",
+      "primary_resolved": "/root/AAA/skills/mcp-smoke-test",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "mcp-smoke-test",
+          "path": "/root/AAA/skills/mcp-smoke-test",
+          "home": "aaa"
+        },
+        {
+          "name": "mcp-ops",
+          "path": "/root/AAA/skills/mcp-ops",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-infra",
+      "layer": "domain",
+      "primary_disk_name": "infra-guardian",
+      "primary_path": "/root/AAA/skills/infra-guardian",
+      "primary_resolved": "/root/AAA/skills/infra-guardian",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "infra-guardian",
+          "path": "/root/AAA/skills/infra-guardian",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-incident",
+      "layer": "domain",
+      "primary_disk_name": "incident-triage",
+      "primary_path": "/root/AAA/skills/incident-triage",
+      "primary_resolved": "/root/AAA/skills/incident-triage",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "incident-triage",
+          "path": "/root/AAA/skills/incident-triage",
+          "home": "aaa"
+        },
+        {
+          "name": "incident-escalation",
+          "path": "/root/AAA/skills/incident-escalation",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-spatial",
+      "layer": "domain",
+      "primary_disk_name": "spatial-grounding",
+      "primary_path": "/root/AAA/skills/spatial-grounding",
+      "primary_resolved": "/root/AAA/skills/spatial-grounding",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "spatial-grounding",
+          "path": "/root/AAA/skills/spatial-grounding",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-health",
+      "layer": "domain",
+      "primary_disk_name": "verify-runtime",
+      "primary_path": "/root/AAA/skills/verify-runtime",
+      "primary_resolved": "/root/AAA/skills/verify-runtime",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "verify-runtime",
+          "path": "/root/AAA/skills/verify-runtime",
+          "home": "aaa"
+        },
+        {
+          "name": "federation-orchestrator",
+          "path": "/root/AAA/skills/federation-orchestrator",
+          "home": "aaa"
+        },
+        {
+          "name": "mcp-lifeguard",
+          "path": "/root/AAA/skills/mcp-lifeguard",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-mcp-lifeguard",
+      "layer": "domain",
+      "primary_disk_name": "mcp-lifeguard",
+      "primary_path": "/root/AAA/skills/mcp-lifeguard",
+      "primary_resolved": "/root/AAA/skills/mcp-lifeguard",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "mcp-lifeguard",
+          "path": "/root/AAA/skills/mcp-lifeguard",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-model-monitor",
+      "layer": "domain",
+      "primary_disk_name": "model-fallback-monitor",
+      "primary_path": "/root/AAA/skills/model-fallback-monitor",
+      "primary_resolved": "/root/AAA/skills/model-fallback-monitor",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "model-fallback-monitor",
+          "path": "/root/AAA/skills/model-fallback-monitor",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-google",
+      "layer": "domain",
+      "primary_disk_name": "google-workspace-cli",
+      "primary_path": "/root/AAA/skills/google-workspace-cli",
+      "primary_resolved": "/root/AAA/skills/google-workspace-cli",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "google-workspace-cli",
+          "path": "/root/AAA/skills/google-workspace-cli",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "ops-transport",
+      "layer": "domain",
+      "primary_disk_name": "transport-physics-intelligence",
+      "primary_path": "/root/.agents/skills/transport-physics-intelligence",
+      "primary_resolved": "/root/.agents/skills/transport-physics-intelligence",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "transport-physics-intelligence",
+          "path": "/root/.agents/skills/transport-physics-intelligence",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-skill-create",
+      "layer": "domain",
+      "primary_disk_name": "skill-creator",
+      "primary_path": "/root/AAA/skills/skill-creator",
+      "primary_resolved": "/root/AAA/skills/skill-creator",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "skill-creator",
+          "path": "/root/AAA/skills/skill-creator",
+          "home": "aaa"
+        },
+        {
+          "name": "create-skill",
+          "path": "/root/.grok/skills/create-skill",
+          "home": "grok"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-skill-lint",
+      "layer": "domain",
+      "primary_disk_name": "skill-trigger-linter",
+      "primary_path": "/root/AAA/skills/skill-trigger-linter",
+      "primary_resolved": "/root/AAA/skills/skill-trigger-linter",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "skill-trigger-linter",
+          "path": "/root/AAA/skills/skill-trigger-linter",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-rsi",
+      "layer": "domain",
+      "primary_disk_name": "recursive-self-improvement",
+      "primary_path": "/root/.agents/skills/recursive-self-improvement",
+      "primary_resolved": "/root/.agents/skills/recursive-self-improvement",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "recursive-self-improvement",
+          "path": "/root/.agents/skills/recursive-self-improvement",
+          "home": "agents"
+        },
+        {
+          "name": "cooling-ledger-rsi",
+          "path": "/root/.agents/skills/cooling-ledger-rsi",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-rsi-audit",
+      "layer": "domain",
+      "primary_disk_name": "arifos-recursive-audit",
+      "primary_path": "/root/AAA/skills/arifos-recursive-audit",
+      "primary_resolved": "/root/AAA/skills/arifos-recursive-audit",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "arifos-recursive-audit",
+          "path": "/root/AAA/skills/arifos-recursive-audit",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-evals",
+      "layer": "domain",
+      "primary_disk_name": "arifos-evals",
+      "primary_path": "/root/AAA/skills/arifos-evals",
+      "primary_resolved": "/root/AAA/skills/arifos-evals",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "arifos-evals",
+          "path": "/root/AAA/skills/arifos-evals",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-plan",
+      "layer": "domain",
+      "primary_disk_name": "arifos-plan-dag",
+      "primary_path": "/root/AAA/skills/arifos-plan-dag",
+      "primary_resolved": "/root/AAA/skills/arifos-plan-dag",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "arifos-plan-dag",
+          "path": "/root/AAA/skills/arifos-plan-dag",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-atlas",
+      "layer": "domain",
+      "primary_disk_name": "meta-mesa-skill-atlas",
+      "primary_path": "/root/AAA/skills/meta-mesa-skill-atlas",
+      "primary_resolved": "/root/AAA/skills/meta-mesa-skill-atlas",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "meta-mesa-skill-atlas",
+          "path": "/root/AAA/skills/meta-mesa-skill-atlas",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-rsi-cool",
+      "layer": "domain",
+      "primary_disk_name": "cooling-ledger-rsi",
+      "primary_path": "/root/.agents/skills/cooling-ledger-rsi",
+      "primary_resolved": "/root/.agents/skills/cooling-ledger-rsi",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "cooling-ledger-rsi",
+          "path": "/root/.agents/skills/cooling-ledger-rsi",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "meta-trust-map",
+      "layer": "domain",
+      "primary_disk_name": "symbolic-order-trust-architecture",
+      "primary_path": "/root/.agents/skills/symbolic-order-trust-architecture",
+      "primary_resolved": "/root/.agents/skills/symbolic-order-trust-architecture",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "symbolic-order-trust-architecture",
+          "path": "/root/.agents/skills/symbolic-order-trust-architecture",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "a2a-onboard",
+      "layer": "domain",
+      "primary_disk_name": "agent-onboarding",
+      "primary_path": "/root/AAA/skills/agent-onboarding",
+      "primary_resolved": "/root/AAA/skills/agent-onboarding",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "agent-onboarding",
+          "path": "/root/AAA/skills/agent-onboarding",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "a2a-kimi",
+      "layer": "domain",
+      "primary_disk_name": "kimi-code-aaa",
+      "primary_path": "/root/AAA/skills/kimi-code-aaa",
+      "primary_resolved": "/root/AAA/skills/kimi-code-aaa",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "kimi-code-aaa",
+          "path": "/root/AAA/skills/kimi-code-aaa",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "a2a-sovereign",
+      "layer": "domain",
+      "primary_disk_name": "sovereign-recognize",
+      "primary_path": "/root/AAA/skills/reflective/sovereign-recognize",
+      "primary_resolved": "/root/AAA/skills/reflective/sovereign-recognize",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "sovereign-recognize",
+          "path": "/root/AAA/skills/reflective/sovereign-recognize",
+          "home": "aaa"
+        },
+        {
+          "name": "apa-sovereign-connector",
+          "path": "/root/.agents/skills/apa-sovereign-connector",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "a2a-spawn",
+      "layer": "domain",
+      "primary_disk_name": "subagent-spawn-template",
+      "primary_path": "/root/AAA/skills/subagent-spawn-template",
+      "primary_resolved": "/root/AAA/skills/subagent-spawn-template",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "subagent-spawn-template",
+          "path": "/root/AAA/skills/subagent-spawn-template",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "sec-secrets",
+      "layer": "domain",
+      "primary_disk_name": "secret-hygiene",
+      "primary_path": "/root/AAA/skills/secret-hygiene",
+      "primary_resolved": "/root/AAA/skills/secret-hygiene",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "secret-hygiene",
+          "path": "/root/AAA/skills/secret-hygiene",
+          "home": "aaa"
+        },
+        {
+          "name": "secret-safety-scan",
+          "path": "/root/AAA/skills/secret-safety-scan",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "sec-telegram",
+      "layer": "domain",
+      "primary_disk_name": "telegram-security-audit",
+      "primary_path": "/root/AAA/skills/telegram-security-audit",
+      "primary_resolved": "/root/AAA/skills/telegram-security-audit",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "telegram-security-audit",
+          "path": "/root/AAA/skills/telegram-security-audit",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "research-summarize",
+      "layer": "domain",
+      "primary_disk_name": "summarize-pro",
+      "primary_path": "/root/AAA/skills/summarize-pro",
+      "primary_resolved": "/root/AAA/skills/summarize-pro",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "summarize-pro",
+          "path": "/root/AAA/skills/summarize-pro",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "research-search",
+      "layer": "domain",
+      "primary_disk_name": "ask-search",
+      "primary_path": "/root/.agents/skills/ask-search",
+      "primary_resolved": "/root/.agents/skills/ask-search",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "ask-search",
+          "path": "/root/.agents/skills/ask-search",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "research-deep",
+      "layer": "domain",
+      "primary_disk_name": "explorer-intelligence-architecture",
+      "primary_path": "/root/AAA/skills/explorer-intelligence-architecture",
+      "primary_resolved": "/root/AAA/skills/explorer-intelligence-architecture",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "explorer-intelligence-architecture",
+          "path": "/root/AAA/skills/explorer-intelligence-architecture",
+          "home": "aaa"
+        },
+        {
+          "name": "multi-discipline-critique",
+          "path": "/root/AAA/skills/multi-discipline-critique",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "kernel-eureka",
+      "layer": "domain",
+      "primary_disk_name": "quantum-eureka-doctrine",
+      "primary_path": "/root/AAA/skills/quantum-eureka-doctrine",
+      "primary_resolved": "/root/AAA/skills/quantum-eureka-doctrine",
+      "primary_home": "aaa",
+      "related": [
+        {
+          "name": "quantum-eureka-doctrine",
+          "path": "/root/AAA/skills/quantum-eureka-doctrine",
+          "home": "aaa"
+        }
+      ],
+      "status": "RESOLVED"
+    },
+    {
+      "v3_name": "kernel-superposition",
+      "layer": "domain",
+      "primary_disk_name": "quantum-kernel-runtime",
+      "primary_path": "/root/.agents/skills/quantum-kernel-runtime",
+      "primary_resolved": "/root/.agents/skills/quantum-kernel-runtime",
+      "primary_home": "agents",
+      "related": [
+        {
+          "name": "quantum-kernel-runtime",
+          "path": "/root/.agents/skills/quantum-kernel-runtime",
+          "home": "agents"
+        },
+        {
+          "name": "🜂-qubit-substrate",
+          "path": "/root/.agents/skills/🜂-qubit-substrate",
+          "home": "agents"
+        }
+      ],
+      "status": "RESOLVED"
+    }
+  ],
+  "reverse_disk_to_v3": {
+    "kernel-bind": "kernel-bind",
+    "observe-ground": "observe-ground",
+    "route-dispatch": "route-dispatch",
+    "memory-manage": "memory-manage",
+    "verify-gate": "verify-gate",
+    "audit-seal": "audit-seal",
+    "know-physics": "know-physics",
+    "know-math": "know-math",
+    "know-language": "know-language",
+    "geox-basin-engines": "geo-basin",
+    "geox-constitution": "geo-constitution",
+    "geox-petrophysics-bounds": "geo-petrophysics",
+    "geox-scientific-writing": "geo-writing",
+    "geox-well-tie-pipeline": "geo-well-tie",
+    "geological-artifact-rigor": "geo-artifact-rigor",
+    "prospect-maturation-workflow": "geo-prospect",
+    "wealth-capital-reasoning": "wealth-reason",
+    "wealth-capital-thermodynamics": "wealth-thermo",
+    "wealth-collapse-signature": "wealth-collapse",
+    "well-substrate-readiness": "well-readiness",
+    "kernel-verbs-aforge-hands": "forge-verbs",
+    "github": "dev-github",
+    "github-ops": "dev-github",
+    "github-runbook": "dev-github",
+    "github-ci-diagnose": "dev-ci-diagnose",
+    "github-issue-triage": "dev-issue-triage",
+    "github-pr-review": "dev-pr-review",
+    "pr-review-governance": "dev-pr-governance",
+    "code-wiki": "dev-wiki",
+    "code-analysis-skills": "dev-analysis",
+    "readme-truth-check": "dev-repo-audit",
+    "arifos-recursive-audit": "meta-rsi-audit",
+    "docker": "ops-docker",
+    "vps-docker-ops": "ops-vps",
+    "docker-entropy-ops": "ops-docker",
+    "docker-thermodynamics": "ops-docker",
+    "vps-docker-runbook": "ops-vps",
+    "spatial-grounding": "ops-spatial",
+    "mcp-builder-doctrine": "ops-mcp-builder",
+    "mcp-zen-authoring": "ops-mcp-builder",
+    "mcp-federation-ops": "ops-mcp-builder",
+    "mcp-smoke-test": "ops-mcp-probe",
+    "mcp-ops": "ops-mcp-probe",
+    "infra-guardian": "ops-infra",
+    "incident-triage": "ops-incident",
+    "incident-escalation": "ops-incident",
+    "verify-runtime": "ops-health",
+    "federation-orchestrator": "ops-health",
+    "mcp-lifeguard": "ops-mcp-lifeguard",
+    "model-fallback-monitor": "ops-model-monitor",
+    "google-workspace-cli": "ops-google",
+    "transport-physics-intelligence": "ops-transport",
+    "skill-creator": "meta-skill-create",
+    "create-skill": "meta-skill-create",
+    "skill-trigger-linter": "meta-skill-lint",
+    "recursive-self-improvement": "meta-rsi",
+    "cooling-ledger-rsi": "meta-rsi-cool",
+    "arifos-evals": "meta-evals",
+    "arifos-plan-dag": "meta-plan",
+    "meta-mesa-skill-atlas": "meta-atlas",
+    "symbolic-order-trust-architecture": "meta-trust-map",
+    "agent-onboarding": "a2a-onboard",
+    "kimi-code-aaa": "a2a-kimi",
+    "sovereign-recognize": "a2a-sovereign",
+    "apa-sovereign-connector": "a2a-sovereign",
+    "subagent-spawn-template": "a2a-spawn",
+    "secret-hygiene": "sec-secrets",
+    "secret-safety-scan": "sec-secrets",
+    "telegram-security-audit": "sec-telegram",
+    "summarize-pro": "research-summarize",
+    "ask-search": "research-search",
+    "explorer-intelligence-architecture": "research-deep",
+    "multi-discipline-critique": "research-deep",
+    "quantum-eureka-doctrine": "kernel-eureka",
+    "quantum-kernel-runtime": "kernel-superposition",
+    "🜂-qubit-substrate": "kernel-superposition"
+  },
+  "harness_native": {
+    "grok": [
+      "arif-governed-autonomous-execution",
+      "grok-zen-aaa-substrate",
+      "grok-federation-skill-upgrader",
+      "orthogonal-skill-update",
+      "create-skill",
+      "check-work",
+      "help",
+      "imagine"
+    ],
+    "grok_deprecated": [
+      "docx",
+      "pptx",
+      "xlsx",
+      "code-review"
+    ]
+  },
+  "unresolved": [],
+  "stats": {
+    "v3_mapped": 63,
+    "resolved": 63,
+    "unresolved": 0,
+    "unique_disk_skills_indexed": 140
+  }
+}
