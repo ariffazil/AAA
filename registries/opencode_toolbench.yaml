@@ -222,7 +222,7 @@ axes:
       - /root/WEALTH
       - /root/WELL
       - /root/HERMES
-      - /root/arif-sites
+      - /root/ARIF-SITES
       - /root/compose
       - /root/.config/opencode
       - /root/.arifos
@@ -321,7 +321,7 @@ axes:
       - chromium
       - --headless
       tools: 14
-      sot: Playwright / 14 tools / browser automation, screenshots, navigation, AAA/arif-sites testing
+      sot: Playwright / 14 tools / browser automation, screenshots, navigation, AAA/ARIF-SITES testing
       tier: testing
       auth: none (local Chromium)
       cost: $0
@@ -357,7 +357,7 @@ axes:
       github-local: GITHUB_PERSONAL_ACCESS_TOKEN empty. Would fall back to public read-only (useless).
         Replaced by 'gh' CLI in shell for commit-aware workflows.
     added_1:
-      playwright: Fills the AAA / arif-sites / observability-dashboard testing gap. Replaces the dead
+      playwright: Fills the AAA / ARIF-SITES / observability-dashboard testing gap. Replaces the dead
         minimax-code slot. Zero cost (npx @playwright/mcp). The integration (I) and final (F) agents can
         now actually test web surfaces they build.
     total_cost: $0/month — all 15 are zero-cost (local npx/uvx, federation organs, or vendor-charged per call)
@@ -932,7 +932,7 @@ axes:
     - HOLD
     - SEAL
     - CLEAN
-    binding_repos: [arifOS, A-FORGE, AAA, geox, WEALTH, WELL, APEX, HERMES, arif-sites]
+    binding_repos: [arifOS, A-FORGE, AAA, geox, WEALTH, WELL, APEX, HERMES, ARIF-SITES]
     applies_to_agents: [hermes-asi, openclaw-agi, opencode-forge, architect, rsi, integrator, final]
     applies_to_mcp_servers: [arifOS, WEALTH, WELL, GEOX, hostinger-mcp]
   L6_commands:

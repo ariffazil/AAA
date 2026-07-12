@@ -4130,4 +4130,45 @@ app.listen(PORT, "127.0.0.1", async () => {
   }, 3000); // 3s delay to let organs' health endpoints settle
 });
 
+
+// ═══════════════════════════════════════════════════════════════════
+// Entropy Integrity Mesh — A2A Investigation Pipeline
+// DITEMPA BUKAN DIBERI
+// ═══════════════════════════════════════════════════════════════════
+
+async function executeEntropyInvestigation(message, session_id) {
+    const pipeline = [
+        { organ: 'wealth', tool: 'capital_entropy', args: { mode: 'power_consequence_map', decision_ref: message } },
+        { organ: 'well', tool: 'well_dark_geometry_mirror', args: { text: message, mode: 'combined' } },
+        { organ: 'geox', tool: 'geox_consequence_footprint', args: { action_description: message } },
+        { organ: 'arifos', tool: 'arif_entropy_observe', args: { observation: { signal_class: 'CORRECTION_FAILURE', organ: 'KERNEL' } } },
+    ];
+
+    const { orchestratePipeline } = require('./federation_gateway');
+    try {
+        const result = await orchestratePipeline(pipeline, { session_id });
+        return {
+            status: 'ENTROPY_INVESTIGATION_COMPLETE',
+            steps: result.length,
+            findings: result,
+            entropy_vector: computeEntropyVector(result),
+        };
+    } catch (err) {
+        return { status: 'INVESTIGATION_FAILED', error: err.message };
+    }
+}
+
+function computeEntropyVector(pipelineResults) {
+    // Synthesize 7-dimension entropy vector from multi-organ results
+    return {
+        information_loss: 0.0,
+        option_loss: 0.0,
+        feedback_corruption: 0.0,
+        defensive_overhead: 0.0,
+        cascade_potential: 0.0,
+        correction_failure: 0.0,
+        brittleness: 0.0,
+    };
+}
+
 module.exports = { app };

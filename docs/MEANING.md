@@ -307,7 +307,35 @@ cat /root/AAA/docs/MEANING.md | grep -A3 "What a Tool IS" | head -20
 
 ---
 
-## PART 10: THE ZEN OF THE STACK (in one breath)
+---
+
+## PART 10: THE 19-DOMAIN CONVERGENCE MAP
+
+Under the APEX Product, the agent's integrity ($G = A \cdot P \cdot E \cdot X \cdot \Phi$) is observed across 19 physical, cybernetic, philosophical, and social domains:
+
+1. **Thermodynamics & Hysteresis:** Energy dispersal, irreversibility, and path-dependent trust memory (Boltzmann / Clausius).
+2. **Information Theory:** Shannon entropy over reports vs mutual information with underlying reality.
+3. **Cybernetics:** Requisite variety and Ashby's Law (destroying environment variety degrades resilience).
+4. **Control Theory:** Wiener feedback loops, Kalman filtering, and system-theoretic accident models (STAMP).
+5. **Practical Wisdom (Phronesis):** Aristotelian practical wisdom constraining raw capability.
+6. **Intention, Action & Consequence:** Aquinas separation of intent (niat) from actual consequence.
+7. **Power & Domination:** Foucault's compulsory visibility (panopticon) and Nietzsche's will to power.
+8. **Principal-Agent Problem:** Microeconomic moral hazard and consequence gap tracking.
+9. **Goodhart & Campbell Laws:** Metric substitution and qualitative optimization drift.
+10. **Trust & Social Capital:** Relational trust capital decay and transaction cost analysis (Coase).
+11. **Trauma & Threat:** Polyvagal regulation; separating protective vigilance from active malice.
+12. **Responsibility Diffusion:** Arendt's Banality of Evil, systemic thoughtlessness, and passive voice.
+13. **Religious Ethics:** Fiqh of Amanah (custodianship), Niat, and Shura (plural consultation).
+14. **Tragedy & Art:** Orwellian vocabulary drift, Kafkaesque opacity, and alternative explanation layers.
+15. **AI Alignment & Corrigibility:** Objective misspecification, specification gaming, and calibration.
+16. **Tool-Mediated Authority:** Multi-agent coordination bounds and agentic delegation constraints.
+17. **Safety Engineering:** Perrow's normal accident coupling and high-reliability organizations (CRM).
+18. **Constitutional Design:** Montesquieu separation of powers (Sovereign veto vs execution).
+19. **Detection Ethics & Contest:** Rawlsian Veil of Ignorance symmetry and Levinas human faces.
+
+---
+
+## PART 11: THE ZEN OF THE STACK (in one breath)
 
 ```
 APEX gives meaning.
