@@ -1,7 +1,7 @@
 ---
 name: meta-mesa-skill-atlas
 description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views. The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing skill health, unifying CLI agent skills, onboarding a new organ, or when you don't know which skill to load.
-version: 1.2.1
+version: 1.2.2
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F4, F7, F9]
@@ -35,6 +35,8 @@ This is the **meta-skill** — a skill about skills. It provides:
 It does NOT execute, judge, or seal. It classifies, routes, and illuminates.
 
 **Iron rule:** AAA is the catalog. Harnesses are views. Do not invent parallel catalogs.
+
+**Ops skill:** `skill-unification` (AAA + mesh views) — alias/mesh/boot contract.
 
 **Live atlas (T₁):** `/root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md`  
 **JSON:** `…/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.json`

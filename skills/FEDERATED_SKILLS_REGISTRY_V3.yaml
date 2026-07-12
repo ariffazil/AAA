@@ -23,7 +23,7 @@ layers:
     - know-language
     load: ALL agents, ALWAYS, AFTER substrate
   domain:
-    count: 54
+    count: 55
     load: Per-agent, per-task, on demand
     domains:
       geo:
@@ -76,6 +76,7 @@ layers:
       - meta-atlas
       - meta-rsi-cool
       - meta-trust-map
+      - meta-skill-unification
       a2a:
       - a2a-onboard
       - a2a-kimi
@@ -161,7 +162,7 @@ agent_profiles:
     - forge
     - ops
     - meta
-total_skills: 63
+total_skills: 64
 reduction_from_original: 124 -> 63
 unification_atlas: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
 alias_table: /root/AAA/skills/SKILL_ALIAS_TABLE.json
