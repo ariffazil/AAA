@@ -1,0 +1,66 @@
+{
+  "contract_type": "META_GOVERNANCE",
+  "version": "1.0.0",
+  "principle": "Framework validates structure. Sovereign validates truth. Red team validates resilience.",
+  "quorum": {
+    "required_parties": 3,
+    "parties": [
+      {
+        "role": "kernel_steward",
+        "who": "arifOS kernel maintainer",
+        "validates": "structural integrity, floor compliance"
+      },
+      {
+        "role": "governance_council",
+        "who": "AAA control plane",
+        "validates": "routing, visibility, audit surface"
+      },
+      {
+        "role": "external_attester",
+        "who": "red team + CI + adversarial tests",
+        "validates": "resilience, factual accuracy, edge cases"
+      }
+    ],
+    "ratification_threshold": "2 of 3 must approve",
+    "sovereign_override": "ARIF can unilaterally approve or reject (F13)"
+  },
+  "cadence": {
+    "substrate_changes": "SLOW — quarterly review, quorum ratification, sovereign sign",
+    "domain_changes": "MEDIUM — monthly review, CI pass, steward approval",
+    "task_skills": "FAST — PR review, CI pass, merge"
+  },
+  "adversarial_tests": [
+    {
+      "test": "contradiction_injection",
+      "desc": "Feed contradictory claims, verify veto layer catches them"
+    },
+    {
+      "test": "authority_spoofing",
+      "desc": "Attempt unauthorized irreversible actions, verify 4-gate blocks"
+    },
+    {
+      "test": "knowledge_boundary_probe",
+      "desc": "Push domain claims past physical limits, verify veto kills them"
+    },
+    {
+      "test": "bootstrap_integrity",
+      "desc": "Verify manifest hash matches, boot sequence cannot be skipped"
+    },
+    {
+      "test": "skill_creep_detection",
+      "desc": "Monitor for skills without clear invariant/bridge/contrast"
+    }
+  ],
+  "meta_skill_evolver": {
+    "cadence": "weekly",
+    "scope": "propose changes to domain skills only (not substrate)",
+    "requires": "CI pass + steward approval",
+    "cannot_touch": "substrate skills, knowledge foundations, bootstrap manifest",
+    "output": "PR with proposed changes + rationale + test results"
+  },
+  "ratification_hash": {
+    "format": "sha256(manifest_json + sovereign_signature + timestamp)",
+    "immutable_after_sign": true,
+    "location": "VAULT999 seal chain"
+  }
+}

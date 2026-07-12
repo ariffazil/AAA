@@ -2,7 +2,7 @@
 id: staging-awareness
 name: GitHub Staging Awareness
 version: 1.0.0
-description: Staging is the thinking buffer. Three states: working / staged / committed.
+description: "Staging is the thinking buffer. Three states: working / staged / committed."
 owner: AAA
 risk_tier: low
 glyph: "🜄"
