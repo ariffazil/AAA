@@ -12,18 +12,19 @@
 ARIF (ariffazil/ariffazil)
   Sovereign meaning · final veto · maruah · amanah
         ↓
-APEX THEORY (arifOS GENESIS/040 + docs/APEX_CANON.md + contracts/apex.schema.json)
-  Decision geometry · admissibility · veto combination rules
+APEX (admissibility framework — NOT scientific theory yet)
+  docs/APEX_SCIENTIFIC_STATUS.md · APEX_CANON.md · contracts/apex.schema.json
+  Decision geometry · constraints · veto rules · GOVERNANCE PROGRAMME
         ↓
 AAA (ariffazil/AAA)
-  Civilisation state · coordination · cockpit · registry · display
-  Does NOT judge floors or seal mutations
+  Federated state · coordination · cockpit · registry · display
+  NOT “ASI civilisation-state” until proven · Does NOT judge or self-SEAL
         ↓
 arifOS KERNEL (ariffazil/arifos)
   Constitutional judgment · sessions · leases · F1–F13 · HOLD/SEAL/VOID
         ↓
 WELL | WEALTH | GEOX
-  Domain evidence only (vitality · capital · earth)
+  Domain evidence only (vitality · capital · earth) — typed claims, not universal verdicts
         ↓
 A-FORGE (ariffazil/A-FORGE)
   Governed execution · dry-run · rollback · recovery actuators
@@ -32,7 +33,8 @@ VAULT999
   Append-only memory · audit · consequence
 ```
 
-**Circulation, not pure pyramid:** evidence flows up; execution results flow back.
+**Circulation, not pure pyramid:** evidence flows up; execution results flow back.  
+**LLM ≠ APEX ≠ arifOS.**
 
 ---
 
