@@ -5,10 +5,10 @@
   "name": "OpenCode CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (MiMo/MiniMax \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (MiMo/MiniMax — the model is the principal, CLI is harness)",
     "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + GLM-5.2 (forge) + DeepSeek V4 Pro (auditor) + Kimi K2.7 Code (planner) + MiniMax M2.5-HS (ops) + Qwen 3.6 Flash (small)"
   },
-  "description": "OpenCode CLI warga (external forge instrument) \u2014 provider-agnostic coding harness bound to 333-AGI (\u0394 MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0.",
+  "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0.",
   "version": "3.1.0",
   "model": "tokenplan-mimo/mimo-v2.5-pro",
   "config": "/root/.config/opencode/opencode.json",
@@ -17,7 +17,7 @@
   "tier": "FI",
   "role": "warga",
   "class": "AGI",
-  "trinity": "\u0394 MIND (bound)",
+  "trinity": "Δ MIND (bound)",
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
   "bound_to": "333-AGI",
@@ -75,36 +75,106 @@
       {
         "url": "http://localhost:8088/mcp",
         "tool_count": 7,
-        "tools": ["arif_init","arif_observe","arif_think","arif_route","arif_judge","arif_act","arif_seal"],
-        "key_lanes": ["governance","judgment","session"],
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_act",
+          "arif_seal"
+        ],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:7072/mcp",
         "tool_count": 72,
-        "tools": ["forge_shell","forge_git","forge_filesystem","forge_docker","forge_execute","forge_lease","forge_probe","forge_registry","forge_vault","forge_document_ingest"],
-        "key_lanes": ["execution","build","deploy"],
+        "tools": [
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
+          "forge_document_ingest"
+        ],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:8081/mcp",
         "tool_count": 35,
-        "tools": ["geox_basin","geox_prospect","geox_evidence","geox_petrophysics","geox_seismic_compute","geox_well_desurvey","geox_claim","geox_map_layers_list","geox_vision","geox_atlas"],
-        "key_lanes": ["earth","basin","seismic"],
+        "tools": [
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_well_desurvey",
+          "geox_claim",
+          "geox_map_layers_list",
+          "geox_vision",
+          "geox_atlas"
+        ],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:18082/mcp",
         "tool_count": 26,
-        "tools": ["wealth_compute_emv","wealth_compute_npv","wealth_compute_irr","wealth_collapse_signature_scan","wealth_boundary_governance","wealth_wisdom_evaluate","wealth_power_audit","wealth_survival_engine","wealth_stock_analysis","wealth_monte_carlo_simulate"],
-        "key_lanes": ["capital","risk","wisdom"],
+        "tools": [
+          "wealth_compute_emv",
+          "wealth_compute_npv",
+          "wealth_compute_irr",
+          "wealth_collapse_signature_scan",
+          "wealth_boundary_governance",
+          "wealth_wisdom_evaluate",
+          "wealth_power_audit",
+          "wealth_survival_engine",
+          "wealth_stock_analysis",
+          "wealth_monte_carlo_simulate"
+        ],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
         "version": "2025-11-25"
       },
       {
         "url": "http://localhost:18083/mcp",
         "tool_count": 22,
-        "tools": ["well_validate_vitality","well_assess_homeostasis","well_guard_dignity","well_assess_metabolism","well_readiness","well_classify_substrate","well_health_check","well_signal_coverage"],
-        "key_lanes": ["vitality","dignity","homeostasis"],
+        "tools": [
+          "well_validate_vitality",
+          "well_assess_homeostasis",
+          "well_guard_dignity",
+          "well_assess_metabolism",
+          "well_readiness",
+          "well_classify_substrate",
+          "well_health_check",
+          "well_signal_coverage"
+        ],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
         "version": "2025-11-25"
       }
     ]
@@ -146,7 +216,7 @@
       "Spawn bounded subagents with worktree isolation",
       "Run tests/build/lint with evidence receipts",
       "Generate diffs and PR drafts",
-      "A2A mesh citizenship \u2014 participate in AAA state via 777 FORGE binding"
+      "A2A mesh citizenship — participate in AAA state via 777 FORGE binding"
     ],
     "cannotDo": [
       "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
@@ -159,7 +229,7 @@
   },
   "skills": [
     {
-      "id": "hermes-opencode-protocol",
+      "id": "HERMES-opencode-protocol",
       "name": "Hermes/OpenCode Protocol",
       "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. LEASED.",
       "tags": [
@@ -178,7 +248,7 @@
       ]
     },
     {
-      "id": "agentic-architecture",
+      "id": "ASI-agentic-architecture",
       "name": "Agentic Architecture",
       "description": "Class-level skill for designing sovereign agentic agents. 9-skill spine, local-model compensation, failure classification, phased implementation. F8, F11 enforced. LEASED.",
       "tags": [
@@ -193,9 +263,9 @@
       ]
     },
     {
-      "id": "fabrication-prevention",
+      "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -209,9 +279,9 @@
       ]
     },
     {
-      "id": "autonomous-governed-execution",
+      "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -228,7 +298,7 @@
       ]
     },
     {
-      "id": "arifos-arconstitutional-audit",
+      "id": "APEX-constitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
       "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
       "tags": [
@@ -248,8 +318,8 @@
       ]
     },
     {
-      "id": "070-lock-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "id": "APEX-humility-godel",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -263,9 +333,9 @@
       ]
     },
     {
-      "id": "github-workflow",
+      "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -278,9 +348,9 @@
       ]
     },
     {
-      "id": "arifos-mcp-federation",
+      "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -293,7 +363,7 @@
       ]
     },
     {
-      "id": "federation-coding-agent",
+      "id": "FORGE-federation-coding-agent",
       "name": "Federation Coding Agent",
       "description": "Meta-playbook for cross-repo federation work. Routing, governance, execution, validation, audit, seal. Spans all 7 organs. HIGH risk. F1-F13 enforced.",
       "tags": [
@@ -315,7 +385,7 @@
       ]
     },
     {
-      "id": "700-clean-audit-immune",
+      "id": "AUDIT-clean-audit-immune",
       "name": "Auditor Validator Kutip Sampah",
       "description": "Immune system / cleaner skill. Audit, validate, clean junk, detect drift/corruption. Absorbs security, audit, validation, and cleanup. HIGH risk.",
       "tags": [
@@ -337,9 +407,9 @@
       ]
     },
     {
-      "id": "555-memory-session-bind",
+      "id": "ASI-memory-session-bind",
       "name": "Agentic Session Init",
-      "description": "Unified bootstrap: reality check \u2192 skill load \u2192 organ attest \u2192 session bind. Mandatory first action for any governed agent session.",
+      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
       "tags": [
         "bootstrap",
         "session",
@@ -354,7 +424,7 @@
       ]
     },
     {
-      "id": "agentic-builder",
+      "id": "FORGE-agentic-builder",
       "name": "Agentic Builder",
       "description": "Meta-skill for building new agents: prompt engineering, skill binding, MCP tool selection, test harness creation. For forge-grade agent construction.",
       "tags": [
@@ -371,7 +441,7 @@
       ]
     },
     {
-      "id": "aaa-zen",
+      "id": "ASI-aaa-zen",
       "name": "Zen of Agentic Python",
       "description": "Zen of Agentic Python (AAA_ZEN.md): 15 axioms for Pythonic agentic code. Python axioms 1-7 (PEP 20) + Agentic axioms 8-15 (blast radius, receipts, authority, time, dignity, unknowns, simulation, no impersonation). MCP response envelope standard. Canonical at AAA/skills/AAA_ZEN.md.",
       "tags": [
@@ -392,11 +462,133 @@
         "F11",
         "F13"
       ]
+    },
+    {
+      "id": "KERNEL-reality-skills",
+      "name": "Reality Skills (F2 Grounding)",
+      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "tags": [
+        "kernel",
+        "f2",
+        "reality",
+        "grounding"
+      ],
+      "floor_scope": [
+        "F2",
+        "F7",
+        "F9"
+      ]
+    },
+    {
+      "id": "KERNEL-sovereign-recognize",
+      "name": "Sovereign Recognition (F13)",
+      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "tags": [
+        "kernel",
+        "f13",
+        "sovereign",
+        "identity"
+      ],
+      "floor_scope": [
+        "F13"
+      ]
+    },
+    {
+      "id": "KERNEL-session-inhabit",
+      "name": "Session Inhabit (Lifecycle)",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "tags": [
+        "kernel",
+        "session",
+        "lifecycle",
+        "000-999"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "RSI-recursive-improvement",
+      "name": "RSI Recursive Improvement",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "tags": [
+        "kernel",
+        "rsi",
+        "improvement",
+        "entropy"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-trinity-33",
+      "name": "Trinity-33 Architecture",
+      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "tags": [
+        "kernel",
+        "trinity",
+        "architecture",
+        "33"
+      ],
+      "floor_scope": [
+        "F4",
+        "F8"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-zen",
+      "name": "MCP Zen Architecture",
+      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "zen",
+        "architecture"
+      ],
+      "floor_scope": [
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-verbs-forge-hands",
+      "name": "Forge Verbs (Execution)",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "tags": [
+        "kernel",
+        "forge",
+        "execution",
+        "verbs"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4",
+        "F11"
+      ]
+    },
+    {
+      "id": "KERNEL-mcp-builder",
+      "name": "MCP Builder",
+      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "tags": [
+        "kernel",
+        "mcp",
+        "builder",
+        "forge"
+      ],
+      "floor_scope": [
+        "F1",
+        "F4"
+      ]
     }
   ],
   "hexagon_warga": {
     "id": "opencode",
-    "trinity": "\u0394 MIND (bound)",
+    "trinity": "Δ MIND (bound)",
     "stage": "333-THINK (forge instrument)",
     "bound_to": "333-AGI",
     "warga_since": "2026-06-26",
@@ -408,7 +600,8 @@
       "A-FORGE",
       "arifOS",
       "AAA"
-    ]
+    ],
+    "fi_slot": "FI-001"
   },
   "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
@@ -431,5 +624,34 @@
     "sealRef": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
-  }
+  },
+  "fi_slot": "FI-001",
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }

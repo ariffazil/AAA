@@ -36,11 +36,20 @@
     }
   ],
   "security": [
-    ["gateway-token"],
-    ["oauth2"]
+    [
+      "gateway-token"
+    ],
+    [
+      "oauth2"
+    ]
   ],
-  "default_input_modes": ["application/json", "text/plain"],
-  "default_output_modes": ["application/json"],
+  "default_input_modes": [
+    "application/json",
+    "text/plain"
+  ],
+  "default_output_modes": [
+    "application/json"
+  ],
   "governance_uri": "https://aaa.arif-fazil.com/aaa-card-treaty",
   "treaty_ref": "AAA-TREATY-v1.0.0",
   "lane": "AGI",
@@ -48,61 +57,137 @@
   "power_band": "design_only",
   "skills": [
     {
-      "id": "design-task-schema",
+      "id": "AGI-design-task-schema",
       "name": "Design Task Schema",
       "description": "Define the canonical JSON structure for a class of tasks: mandatory fields, reversibility class, floor scope, handoff points, and artifact shape.",
-      "tags": ["design", "schema", "task-structure"],
-      "floor_scope": ["F01", "F02", "F04", "F08"],
+      "tags": [
+        "design",
+        "schema",
+        "task-structure"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F08"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
-      "input_modes": ["text/plain", "application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "text/plain",
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
-      "id": "propose-agent-mesh",
+      "id": "AGI-propose-agent-mesh",
       "name": "Propose Agent Mesh",
       "description": "Given a capability requirement, propose which agents AAA should discover, which AgentCards to trust, and which treaties to establish. Output is a candidate mesh with treaty draft.",
-      "tags": ["discovery", "mesh", "topology", "treaty"],
-      "floor_scope": ["F01", "F02", "F04", "F05", "F06"],
+      "tags": [
+        "discovery",
+        "mesh",
+        "topology",
+        "treaty"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F06"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
-      "id": "update-skill-exposure",
+      "id": "ASI-update-skill-exposure",
       "name": "Update Skill Exposure",
       "description": "Change the exposure class of a skill: public, authenticated, or forbidden. Affects AgentCard published surface. Requires human confirmation for public changes.",
-      "tags": ["skill", "exposure", "public", "auth"],
-      "floor_scope": ["F01", "F02", "F04", "F11", "F13"],
+      "tags": [
+        "skill",
+        "exposure",
+        "public",
+        "auth"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F11",
+        "F13"
+      ],
       "approval_policy": "sovereign",
       "reversibility_class": "irreversible",
       "human_confirmation_required": true,
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
-      "id": "design-handoff-object",
+      "id": "AGI-design-handoff-object",
       "name": "Design Handoff Object",
       "description": "Define the structure of a handoff object: what context transfers, what authority transfers, what receipts are required, and what the receiving agent is bound by.",
-      "tags": ["design", "handoff", "context", "authority"],
-      "floor_scope": ["F01", "F02", "F04", "F08", "F11"],
+      "tags": [
+        "design",
+        "handoff",
+        "context",
+        "authority"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F08",
+        "F11"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     },
     {
-      "id": "evaluate-treaty",
+      "id": "APEX-evaluate-treaty",
       "name": "Evaluate Treaty",
       "description": "Review a proposed treaty between two agents: check for floor violations, contradictory promises, hidden capability surface, or F09 ANTIHANTU violations.",
-      "tags": ["treaty", "review", "governance", "floor"],
-      "floor_scope": ["F01", "F02", "F04", "F05", "F06", "F09", "F13"],
+      "tags": [
+        "treaty",
+        "review",
+        "governance",
+        "floor"
+      ],
+      "floor_scope": [
+        "F01",
+        "F02",
+        "F04",
+        "F05",
+        "F06",
+        "F09",
+        "F13"
+      ],
       "approval_policy": "auto",
       "reversibility_class": "reversible",
       "judgment_required": true,
-      "input_modes": ["application/json"],
-      "output_modes": ["application/json"]
+      "input_modes": [
+        "application/json"
+      ],
+      "output_modes": [
+        "application/json"
+      ]
     }
   ],
   "peers": [
@@ -111,7 +196,10 @@
       "name": "AAA A-engineer",
       "url": "https://aaa.arif-fazil.com/a2a/engineer",
       "role": "executor",
-      "skills": ["run-task", "dispatch-task"],
+      "skills": [
+        "run-task",
+        "dispatch-task"
+      ],
       "trust_tier": "governed"
     },
     {
@@ -119,7 +207,10 @@
       "name": "AAA A-auditor",
       "url": "https://aaa.arif-fazil.com/a2a/auditor",
       "role": "constitutional_auditor",
-      "skills": ["evaluate-delegation", "check-floor-compliance"],
+      "skills": [
+        "evaluate-delegation",
+        "check-floor-compliance"
+      ],
       "trust_tier": "governed"
     },
     {
@@ -127,7 +218,10 @@
       "name": "Hermes ASI",
       "url": "https://aaa.arif-fazil.com/a2a/hermes-asi",
       "role": "intent_source",
-      "skills": ["routing", "world-model-brief"],
+      "skills": [
+        "routing",
+        "world-model-brief"
+      ],
       "trust_tier": "governed"
     }
   ],
@@ -145,6 +239,32 @@
     "lane": "AGI",
     "a_role": "A-rchitect",
     "floor_version": "KANON-2026.05.01",
-    "treaty_id": "AAA-TREATY-v1.0.0"
-  }
+    "treaty_id": "AAA-TREATY-v1.0.0",
+    "kernel_deps": [
+      "KERNEL-trinity-33",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-mcp-zen",
+      "KERNEL-mcp-builder"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z",
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33",
+    "KERNEL-session-inhabit",
+    "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands",
+    "KERNEL-quantum-runtime",
+    "KERNEL-qubit-substrate",
+    "KERNEL-reality-skills",
+    "KERNEL-mcp-zen",
+    "KERNEL-mcp-builder"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement"
 }
