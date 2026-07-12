@@ -1,7 +1,7 @@
 ---
 name: meta-mesa-skill-atlas
 description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views. The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing skill health, unifying CLI agent skills, onboarding a new organ, or when you don't know which skill to load.
-version: 1.2.0
+version: 1.2.1
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F4, F7, F9]
@@ -72,7 +72,7 @@ Hermes categories | Kimi roles | OpenClaw owned
 ### Grok native keepers (harness-only)
 
 `arif-governed-autonomous-execution` · `grok-zen-aaa-substrate` · `grok-federation-skill-upgrader` · `orthogonal-skill-update` · `create-skill` · `check-work` · `help` · `imagine`  
-**Prune candidates:** `docx` · `pptx` · `xlsx` · `code-review`
+**Pruned (2026-07-12):** `docx` · `pptx` · `xlsx` · `code-review` → `~/.grok/skills/.deprecated/`
 
 ### Dual-name gap — SEALED (2026-07-12)
 
@@ -161,7 +161,7 @@ The golden path. Every governed action flows through these stages.
 
 ---
 
-## §2. DOMAIN SKILLS BY ORGAN (30 Skills)
+## §2. DOMAIN SKILLS BY ORGAN (legacy inventory — prefer §0 + SKILL_ALIAS_TABLE.json)
 
 ### GEOX — Earth Intelligence (7 skills, THICK coverage)
 
@@ -351,11 +351,12 @@ federation_skill_health = {
     "codex_resolvable": 107,
     "agents_core": 43,
     "hermes_skill_md": 180,       # category tree, not mesh
-    "dual_name_debt": True,       # V3 short vs long disk names
-    "thin_organs": ["WELL", "SYMBOLIC"],  # AAA thicker post-mesh
+    "dual_name_debt": False,      # alias table 63/63 sealed + audited
+    "body_homes": ["AAA/skills", ".agents/skills"],  # doctrine_core dual body — honest
+    "thin_organs": ["WELL", "SYMBOLIC"],
     "thick_organs": ["GEOX", "OPS", "META"],
-    "unification_maturity": 0.70, # mesh-linked, catalog-split
-    "collision_risk": float,      # dual naming + hermes overlap
+    "unification_maturity": 0.92, # audited multi-agent 2026-07-12
+    "collision_risk": float,
     "stale_skills": int,
     "coverage_score": float,
 }
@@ -460,17 +461,18 @@ These are capabilities that NO single skill covers but the federation needs.
 > **2026-07-12:** Prefer **aliases, profiles, prune, mesh-sync** over forging more skills.  
 > Many §3B “missing domains” are now **filled under long names** (docker-*, vault999-*, infra-guardian, hermes categories).
 
-| Priority | Action | Why | Effort |
-|----------|--------|-----|--------|
-| **P0** | Seal **alias table** short→path | Dual naming is the real phantom | Low |
-| **P0** | Add **grok** + **opencode** to V3 `agent_profiles` | Harnesses missing from catalog | Low |
-| **P1** | Grok prune office/review → `.deprecated` | Entropy on harness surface | Low |
-| **P1** | `skill-mesh-sync` script (dry-run first) | Prevent symlink drift | Medium |
-| **P2** | Hermes category → V3 domain bridge doc | 180 skills outside mesh | Medium |
-| **P2** | `symbolic-order-solidarity-monitor` | Incomplete symbolic cluster | Medium |
-| **P3** | `well-fatigue-science` | WELL still thin on science depth | Medium |
-| **P3** | `wealth-stock-analysis` skill wrap | 12 modes, no dedicated skill | Medium |
-| **P4** | Cloudflare DNS skill | Ops gap | Low |
+| Priority | Action | Status / Why |
+|----------|--------|----------------|
+| **P0** | Alias table short→path | ✅ 63/63 + multi-agent audit |
+| **P0** | V3 `grok` + `opencode` profiles | ✅ |
+| **P0** | Mesh sync + check clean | ✅ |
+| **P0** | Grok office prune | ✅ `.deprecated` |
+| **P0** | Hermes bridge (no flatten) | ✅ |
+| **P0** | Tombstone dual-state normalize | ✅ RESTORED_LIVE after auditor CAUTION |
+| **P1** | Migrate high-traffic `.agents` geo/wealth bodies into AAA (optional) | Open — honesty already documented as doctrine_core |
+| **P2** | `symbolic-order-solidarity-monitor` | Open |
+| **P3** | `well-fatigue-science` | Open |
+| **P3** | Rewrite residual §2 phantom long-names to V3 | Open (use alias table / §0 until then) |
 
 ---
 
@@ -485,8 +487,8 @@ These are capabilities that NO single skill covers but the federation needs.
   "v3_logical": 63,
   "grok_resolvable": 116,
   "aaa_catalog_top": 70,
-  "dual_name_debt": true,
-  "unification_maturity": 0.70,
+  "dual_name_debt": false,
+  "unification_maturity": 0.92,
   "atlas_artifact": "A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md",
   "routing_decision": "{{routed_to_skill}}",
   "latency_ms": 0
