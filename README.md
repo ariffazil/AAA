@@ -104,7 +104,7 @@ AAA is the **fifth position**. It is the **window, not the wall**.
 | **CANON** | Orthogonal product space ART × KERNEL × APA × ACT → VAULT999 · ΔΩΨ · full repo universe | [`ariffazil/CANON.md`](https://github.com/ariffazil/ariffazil/blob/main/CANON.md) |
 | **arifOS** | Constitutional kernel. 12 canonical public verbs. 13 floors. The judge (LAW/JUDGMENT axis). ART + KERNEL + seal write. | [`ariffazil/arifos`](https://github.com/ariffazil/arifos) |
 | **A-FORGE** | Executor. APA + ACT. VAULT999 read/types. Gates + A-THINK law at border. | [`ariffazil/A-FORGE`](https://github.com/ariffazil/A-FORGE) |
-| **AAA** (this repo) | Cockpit + ASI civilization state. TREE777 · AKAR doctrine · seal *meaning*. Display, never judge/execute. | ← you are here |
+| **AAA** (this repo) | Cockpit + federation-state / coordination layer. TREE777 · AKAR doctrine · seal *meaning*. Display, never judge/execute. | ← you are here |
 
 ### 0.4 SOT alignment — the 60-second audit
 
@@ -141,7 +141,7 @@ INFERRED        Agent reasoning      ← floor-bounded only
 
 ## APEX STACK Bridge
 
-> APEX THEORY defines the constitutional dynamics of governed intelligence through ΔΩΨ. arifOS compiles those dynamics into an AGI substrate kernel. AAA renders the substrate as visible ASI civilization state. A-FORGE gives the system governed hands. GEOX, WEALTH, and WELL anchor those hands to earth, capital, and human reality. VAULT999 preserves consequence. Arif/F13 remains the sovereign witness and final veto.
+> APEX is the admissibility framework for decisions under uncertainty (ΔΩΨ). arifOS compiles those dynamics into a constitutional orchestration substrate. AAA renders federation-state and coordination (display layer — not ASI-civilisation claims). A-FORGE gives the system governed hands. GEOX, WEALTH, and WELL anchor those hands to earth, capital, and human reality. VAULT999 preserves consequence. Arif/F13 remains the sovereign witness and final veto.
 
 **AAA must never:** issue constitutional verdicts (SEAL/HOLD/VOID), adjudicate floors, or replace arifOS as the judge.
 
