@@ -341,9 +341,10 @@ export function createApp(): express.Application {
 // ── MCP Apps Routes ──────────────────────────────────────────────────────────
 
 const APP_ROOTS: Record<string, string> = {
-  "well-desk": "/root/geox/apps/well-desk/index.html",
-  "earth-volume": "/root/geox/apps/earth-volume/index.html",
-  "judge-console": "/root/geox/apps/judge-console/index.html"
+  // P0 shell (CSP-tight) — full multi-file desk via GEOX_WELL_DESK_UI=full on organ side
+  "well-desk": "/root/GEOX/apps/well-desk/p0-viz.html",
+  "earth-volume": "/root/GEOX/apps/earth-volume/index.html",
+  "judge-console": "/root/GEOX/apps/judge-console/index.html"
 };
 
 const APP_MANIFESTS: Record<string, string> = {
@@ -355,6 +356,20 @@ const APP_MANIFESTS: Record<string, string> = {
 function isSafeAppId(appId: string): boolean {
   return /^[a-z0-9][a-z0-9-_]*$/.test(appId);
 }
+
+/** P0 / G3 guest posture — must match DEFAULT_GUEST_CSP in MCPAppsSandboxProxy */
+const P0_MCP_APP_CSP = [
+  "default-src 'none'",
+  "script-src 'unsafe-inline'",
+  "style-src 'unsafe-inline'",
+  "img-src data: blob:",
+  "font-src data:",
+  "connect-src 'none'",
+  "frame-src 'none'",
+  "base-uri 'none'",
+  "form-action 'none'",
+  "object-src 'none'",
+].join("; ");
 
 function buildCspFromManifest(manifest: McpAppManifest): string {
   const csp = manifest._meta?.ui?.csp || manifest.csp || {};
@@ -391,18 +406,36 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
   }
 
   try {
+    const isP0Shell =
+      htmlPath.endsWith("/p0.html") ||
+      htmlPath.endsWith("/p0-viz.html") ||
+      process.env.GEOX_WELL_DESK_UI === "p0";
+
     const [html, manifestRaw] = await Promise.all([
       fs.readFile(htmlPath, "utf8"),
-      APP_MANIFESTS[appId] ? fs.readFile(APP_MANIFESTS[appId], "utf8").catch(() => "{}") : Promise.resolve("{}")
+      !isP0Shell && APP_MANIFESTS[appId]
+        ? fs.readFile(APP_MANIFESTS[appId], "utf8").catch(() => "{}")
+        : Promise.resolve("{}"),
     ]);
 
     const manifest = JSON.parse(manifestRaw || "{}") as McpAppManifest;
+    const cspHeader = isP0Shell ? P0_MCP_APP_CSP : buildCspFromManifest(manifest);
+
+    // F11 audit: log applied CSP for MCP App serves
+    console.info("mcp-app-csp", {
+      appId,
+      isP0Shell,
+      htmlPath,
+      csp: cspHeader,
+      ts: new Date().toISOString(),
+    });
 
     res.status(200);
     res.setHeader("Content-Type", "text/html;profile=mcp-app; charset=utf-8");
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Cache-Control", "private, max-age=60");
-    res.setHeader("Content-Security-Policy", buildCspFromManifest(manifest));
+    res.setHeader("Content-Security-Policy", cspHeader);
+    res.setHeader("X-MCP-App-CSP-Mode", isP0Shell ? "p0-strict" : "manifest");
     res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
     res.send(html);
   } catch (error) {
