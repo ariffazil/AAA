@@ -309,5 +309,7 @@
       "created": "2026-07-12T23:25:58Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "did": "did:web:arif-fazil.com",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
 }
