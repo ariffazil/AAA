@@ -1,10 +1,10 @@
 {
   "spec_type": "META_MESA_SEAL",
   "version": "1.0.0",
-  "sealed_at": "2026-07-12T23:18:41.111426+00:00",
-  "operator": "Kimi Code CLI",
+  "sealed_at": "2026-07-12T23:45:00+00:00",
+  "operator": "FORGE (000Ω) for F13 SOVEREIGN — Arif",
   "scope": "/root/AAA",
-  "test": "audit→identify→forge→assign→seal",
+  "test": "audit→identify→forge→assign→seal→sovereign-wire",
   "result": "PASS",
   "evidence": {
     "agents_audited": 25,
@@ -13,7 +13,13 @@
     "skills_forged": 1,
     "skills_assigned": 1,
     "forged_skill_id": "APEX-post-seal-runtime-verdict",
-    "forge_hash": "896ab49c0c51bf66fd0db2e90e6f8db7b4ab852f881ed95e59b1fc6ca1ed987e"
+    "forge_hash": "896ab49c0c51bf66fd0db2e90e6f8db7b4ab852f881ed95e59b1fc6ca1ed987e",
+    "sovereign_pillar_added": true,
+    "sovereign_id": "ARIF_FAZIL",
+    "sovereign_did": "did:web:arif-fazil.com",
+    "autonomous_identity": true,
+    "auth_protocol": "Ed25519-challenge-response",
+    "pillars_total": 4
   },
   "manifest_sha256": "214a86cc238d868816995fc677614d706e73a60f6bf14bca9f31936e385df9dc",
   "seal_hash": "1c837e20822cd7dcec8210c272c257ff28a22657ba304341875f71ffe5074a46"

@@ -1,0 +1,45 @@
+{
+  "sovereign_id": "ARIF_FAZIL",
+  "skills": [
+    {
+      "id": "sovereign-recognize",
+      "name": "Sovereign Recognize",
+      "description": "Cryptographic sovereign identity verification through did:web:arif-fazil.com",
+      "type": "identity",
+      "floor": "F13",
+      "autonomous": true
+    },
+    {
+      "id": "888-judge",
+      "name": "Constitutional Judge",
+      "description": "Final constitutional verdict authority — SEAL/HOLD/SABAR/VOID",
+      "type": "governance",
+      "floor": "F13",
+      "autonomous": true
+    },
+    {
+      "id": "999-seal",
+      "name": "VAULT999 Seal",
+      "description": "Immutable civilizational memory append",
+      "type": "governance",
+      "floor": "F13",
+      "autonomous": true
+    },
+    {
+      "id": "federation-veto",
+      "name": "Federation Veto",
+      "description": "Absolute veto over all irreversible federation actions",
+      "type": "governance",
+      "floor": "F13",
+      "autonomous": true
+    },
+    {
+      "id": "human-identity",
+      "name": "Human Identity Anchor",
+      "description": "The human who owns the federation — cryptographic proof of personhood",
+      "type": "identity",
+      "floor": "F13",
+      "autonomous": true
+    }
+  ]
+}
