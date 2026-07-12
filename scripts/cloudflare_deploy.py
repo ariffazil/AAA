@@ -21,7 +21,7 @@ r = subprocess.run(
         "wrangler",
         "pages",
         "deploy",
-        "/root/arif-sites/arif/dist",
+        "/root/ARIF-SITES/arif/dist",
         "--project-name",
         "arifOS",
         "--branch",
