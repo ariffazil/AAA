@@ -13,10 +13,12 @@ MODE="${1:---dry-run}"
 AAA="${AAA_SKILLS:-/root/AAA/skills}"
 AGENTS="${AGENTS_SKILLS:-/root/.agents/skills}"
 CODEX_PROFILE="${CODEX_SKILL_PROFILE:-/root/AAA/skills/CODEX_SKILL_PROFILE.json}"
+OPENCODE_PROFILE="${OPENCODE_SKILL_PROFILE:-/root/AAA/skills/OPENCODE_SKILL_PROFILE.json}"
 HARNESSES=(
   "${GROK_SKILLS:-/root/.grok/skills}"
   "${CLAUDE_SKILLS:-/root/.claude/skills}"
   "${CODEX_SKILLS:-/root/.codex/skills}"
+  "${OPENCODE_SKILLS:-/root/.arifos/agents/opencode/skills}"
 )
 
 # Names that must remain real dirs on Grok (not force-overwritten)
@@ -49,12 +51,39 @@ if [[ -f "$CODEX_PROFILE" ]]; then
   done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$CODEX_PROFILE")
 fi
 
+declare -A OPENCODE_KEEP=()
+if [[ -f "$OPENCODE_PROFILE" ]]; then
+  while IFS= read -r name; do
+    [[ -n "$name" ]] && OPENCODE_KEEP[$name]=1
+  done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$OPENCODE_PROFILE")
+fi
+
 is_codex_harness() {
   [[ "$1" == *"/.codex/skills" ]]
 }
 
 codex_keeps() {
   [[ -n "${CODEX_KEEP[$1]:-}" ]]
+}
+
+is_opencode_harness() {
+  [[ "$1" == *"/opencode/skills" ]]
+}
+
+profile_active() {
+  (is_codex_harness "$1" && [[ ${#CODEX_KEEP[@]} -gt 0 ]]) ||
+    (is_opencode_harness "$1" && [[ ${#OPENCODE_KEEP[@]} -gt 0 ]])
+}
+
+profile_keeps() {
+  local h="$1" name="$2"
+  if is_codex_harness "$h"; then
+    [[ -n "${CODEX_KEEP[$name]:-}" ]]
+  elif is_opencode_harness "$h"; then
+    [[ -n "${OPENCODE_KEEP[$name]:-}" ]]
+  else
+    return 0
+  fi
 }
 
 collect_sources() {
@@ -114,17 +143,20 @@ echo "skill-mesh-sync mode=$MODE sources=${#BEST[@]} $(date -u +%Y-%m-%dT%H:%M:%
 for h in "${HARNESSES[@]}"; do
   [[ -d "$h" ]] || { echo "SKIP missing harness $h"; continue; }
   echo "--- harness $h"
-  if is_codex_harness "$h" && [[ ${#CODEX_KEEP[@]} -gt 0 ]]; then
+  if profile_active "$h"; then
     archive="$h/.profile-archive"
-    for link in "$h"/*; do
-      [[ -L "$link" ]] || continue
-      name="$(basename "$link")"
-      if ! codex_keeps "$name"; then
-        echo "EXTRA $link (not in Codex profile)"
+    for entry in "$h"/*; do
+      [[ -e "$entry" || -L "$entry" ]] || continue
+      name="$(basename "$entry")"
+      if ! profile_keeps "$h" "$name"; then
+        if is_codex_harness "$h" && [[ ! -L "$entry" ]]; then
+          continue
+        fi
+        echo "EXTRA $entry (not in harness profile)"
         if [[ "$MODE" == "--apply" ]]; then
           mkdir -p "$archive"
           rm -f "$archive/$name"
-          mv "$link" "$archive/$name"
+          mv "$entry" "$archive/$name"
           echo "  ARCHIVED $name"
           created=$((created+1))
         else
@@ -153,7 +185,7 @@ for h in "${HARNESSES[@]}"; do
   done
 
   for name in "${!BEST[@]}"; do
-    if is_codex_harness "$h" && [[ ${#CODEX_KEEP[@]} -gt 0 ]] && ! codex_keeps "$name"; then
+    if profile_active "$h" && ! profile_keeps "$h" "$name"; then
       continue
     fi
     target="${BEST[$name]}"
