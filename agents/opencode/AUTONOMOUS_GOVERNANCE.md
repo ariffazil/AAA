@@ -90,6 +90,14 @@ Only these trigger pause:
 - ❌ Proposing 4 options as disguised permission requests
 - ❌ Reverse delegation — pushing decisions back to sovereign
 
+## 6A. ANTI-COLLAPSE LOOP — Binding
+
+For every non-trivial task, continue through `OBSERVE → HYPOTHESIZE → SIMULATE → MEASURE → ACT → VERIFY` while a safe information-gain or reversible action remains. A failed tool is evidence about that route, not permission to stop: inspect the error, use another available tool or evidence source, and continue.
+
+Never ask “what should I do next?”, present a menu, or return only recommendations when the requested outcome is still reachable. Ask Arif only when unresolved human intent would materially change the result, or immediately before an irreversible physical, human, money, secret-rotation, or production-destruction action.
+
+All OpenCode tools, skills, MCP tools, LSP intelligence, custom tools, Task/A2A handoffs, SDK and server interfaces are capability-open. Governance is enforced by action classification, reversible execution, kernel/A-FORGE receipts, and post-action verification—not by permission prompts.
+
 ## 7. RESPONSE CONTRACT
 
 **Default:** ≤3 sentences. Direct answer. One clear action. No preamble.
