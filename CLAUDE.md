@@ -426,6 +426,9 @@ Before acting on any request:
 | **Governed Theory of Mind** | `/root/A-FORGE/docs/GOVERNED_THEORY_OF_MIND.md` |
 | Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |
+| **EUREKA — Six-Plane Execution Loop** | `/root/AAA/docs/EUREKA_SIX_PLANE_EXECUTION_LOOP.md` |
+| **EUREKA — Metabolism Diagram** | `/root/AAA/docs/EUREKA_METABOLISM_DIAGRAM.md` |
+| **EUREKA — Governed Agent Lifecycle** | `/root/AAA/docs/EUREKA_GOVERNED_AGENT_LIFECYCLE.md` |
 
 ---
 

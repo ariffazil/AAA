@@ -1,5 +1,6 @@
 ---
 name: AGI-emd-metabolize
+description: Decide which decoded EMD segments remain ephemeral or promote to durable memory, with witness gates for constitutional and canon-grade records.
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
 forged: 2026-07-12T18:28Z
 rationale: Audit showed only 6 of 244 active skills mention "metabolize" — narrow, concentrated in dream-engine + audit-skill-atlas. Add explicit contract between encode→decode with witness check. Phase 3 gap fill.
