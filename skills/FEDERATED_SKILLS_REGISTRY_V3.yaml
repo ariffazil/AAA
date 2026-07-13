@@ -167,6 +167,10 @@ agent_profiles:
     - forge
     - ops
     - meta
+    - a2a
+    - kernel
+    profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json
+    notes: Curated AAA/A2A view; GitHub split into transport, CI, issue, review, and governance only
 total_skills: 64
 reduction_from_original: 124 -> 63
 unification_atlas: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
