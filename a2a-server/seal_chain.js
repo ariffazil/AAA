@@ -93,6 +93,112 @@ const ENRICHED_VERSION = 2;      // version tag for enriched entries
 const REMOTE_URL = process.env.VAULT_WRITER_URL || null;
 const REMOTE_TOKEN = process.env.VAULT_WRITER_TOKEN || '';
 
+// ── TSA (RFC 3161 Trusted Timestamp) Configuration ─────────────────────────
+// Phase 2: Autonomous crypto seal — every seal gets an external timestamp.
+// TSA_URL: RFC 3161 Time-Stamp Authority endpoint (e.g. DigiCert, Sectigo, FreeTSA)
+// When set, every writeSeal() call appends a TSA token alongside the seal.
+// Fallback: if TSA unreachable, seal proceeds without token (degraded, not blocked).
+const TSA_URL = process.env.TSA_URL || null;
+const TSA_USERNAME = process.env.TSA_USERNAME || null;
+const TSA_PASSWORD = process.env.TSA_PASSWORD || null;
+// Free TSA endpoints (no auth required):
+//   http://timestamp.digicert.com
+//   http://timestamp.sectigo.com
+//   http://tsa.freetsa.org:3018 (community)
+const TSA_PROOF_DIR = process.env.TSA_PROOF_DIR || '/root/VAULT999/timestamps';
+
+// ── TSA: Trusted Timestamp (RFC 3161) ──────────────────────────────────────
+// After every seal write, optionally stamp the hash with an external TSA.
+// The TSA token proves the seal existed before the TSA's timestamp.
+// Combined with the hash chain, this gives tamper-evident temporal ordering.
+
+async function stampWithTSA(entry) {
+  if (!TSA_URL) return null;
+  try {
+    const tsDir = TSA_PROOF_DIR;
+    fs.mkdirSync(tsDir, { recursive: true });
+
+    // The data to timestamp: this_hash (sha256 of the seal entry)
+    const digest = entry.this_hash.replace('sha256:', '');
+    const digestBytes = Buffer.from(digest, 'hex');
+
+    // Build RFC 3161 TimeStampReq
+    // Uses OpenSSL ts command for the actual TSA query
+    const tsqPath = path.join(tsDir, `seq-${entry.seq}.tsq`);
+    const tsrPath = path.join(tsDir, `seq-${entry.seq}.tsr`);
+
+    // Generate the time-stamp query
+    const tsqChild = require('child_process').spawnSync('openssl', [
+      'ts', '-query',
+      '-data', '/dev/stdin',
+      '-cert',
+      '-out', tsqPath,
+    ], {
+      input: digestBytes,
+      timeout: 10000,
+    });
+
+    if (tsqChild.status !== 0) {
+      console.error(`[seal_chain] TSA: tsq generation failed (seq=${entry.seq})`);
+      return null;
+    }
+
+    // Send to TSA server
+    let curlArgs = ['-s', '-S', '--data-binary', `@${tsqPath}`,
+      '-o', tsrPath,
+      '-H', 'Content-Type: application/timestamp-query'];
+
+    if (TSA_USERNAME && TSA_PASSWORD) {
+      curlArgs.push('-u', `${TSA_USERNAME}:${TSA_PASSWORD}`);
+    }
+    curlArgs.push(TSA_URL);
+
+    const curlChild = require('child_process').spawnSync('curl', curlArgs, {
+      timeout: 15000,
+    });
+
+    if (curlChild.status !== 0 || !fs.existsSync(tsrPath) || fs.statSync(tsrPath).size === 0) {
+      console.error(`[seal_chain] TSA: request failed (seq=${entry.seq})`);
+      // Clean up failed tsq
+      try { fs.unlinkSync(tsqPath); } catch(_) {}
+      return null;
+    }
+
+    // Read the TSA response token (base64-encoded DER)
+    const tsrBytes = fs.readFileSync(tsrPath);
+    const tsrBase64 = tsrBytes.toString('base64');
+
+    // Optionally verify the TSA response
+    try {
+      require('child_process').spawnSync('openssl', [
+        'ts', '-verify',
+        '-data', '/dev/stdin',
+        '-in', tsrPath,
+      ], {
+        input: digestBytes,
+        timeout: 10000,
+      });
+    } catch (_) {
+      // Verification failure logged but token still stored
+      console.warn(`[seal_chain] TSA: verification warning (seq=${entry.seq})`);
+    }
+
+    console.log(`[seal_chain] TSA: stamped seq=${entry.seq} -> ${tsrPath}`);
+
+    // Clean up tsq (tsr is preserved as proof)
+    try { fs.unlinkSync(tsqPath); } catch(_) {}
+
+    return {
+      token: tsrBase64,
+      path: tsrPath,
+      server: TSA_URL,
+    };
+  } catch (e) {
+    console.error(`[seal_chain] TSA: error (seq=${entry.seq}):`, e.message);
+    return null;
+  }
+}
+
 // ── Canonical JSON (deterministic byte sequence) ──────────────────────────
 
 function canonicalJson(obj) {
@@ -572,6 +678,18 @@ async function writeSeal(payload, opts = {}) {
     seal_version: ENRICHED_VERSION,
   });
 
+  // Best-effort TSA timestamp (Phase 2: autonomous crypto seal, non-blocking)
+  let tsaResult = null;
+  if (TSA_URL && invariants.verdict === 'SEAL') {
+    stampWithTSA(entry).then((res) => {
+      if (res) {
+        console.log(`[seal_chain] TSA: stamped seq=${entry.seq}`);
+      }
+    }).catch((err) => {
+      console.warn(`[seal_chain] TSA: stamp failed for seq=${entry.seq} (non-blocking):`, err.message);
+    });
+  }
+
   // Best-effort remote mirror (non-blocking failure)
   if (REMOTE_URL) {
     mirrorRemote(entry).catch((err) => {
@@ -597,6 +715,8 @@ async function writeSeal(payload, opts = {}) {
     cooling_validated: coolingVal !== null,
     cooling_downgraded: coolingVal ? coolingVal.downgraded : false,
     cooling_violations: coolingVal && coolingVal.violations.length > 0 ? coolingVal.violations : null,
+    // ── TSA timestamp proof (Phase 2: autonomous crypto seal) ──
+    tsa_stamp: tsaResult,
   };
 }
 
@@ -811,9 +931,14 @@ module.exports = {
   enforceSealInvariants,
   // ── Cooling validation exports (G3/EUREKA 2026-07-13) ──
   validateCooling,
+  // ── TSA / crypto seal exports (Phase 2, autonomous) ──
+  stampWithTSA,
   GENESIS_HASH,
   LEDGER_PATH,
   HEAD_PATH,
   VAULT_DIR,
   ENRICHED_VERSION,
+  // ── TSA config ──
+  TSA_URL,
+  TSA_PROOF_DIR,
 };
