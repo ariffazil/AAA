@@ -1,0 +1,42 @@
+{
+  "generated_at": "2026-07-12T23:53:52.531677+00:00",
+  "phase": "post-cleanup verification",
+  "session_id": "5fa96dce227945f29757672ed90ebcee",
+  "organs": {
+    "arifOS": {
+      "port": 8088,
+      "tools_count": 8,
+      "resources_count": 259,
+      "prompts_count": 13
+    },
+    "A-FORGE": {
+      "port": 7072,
+      "tools_count": 102,
+      "resources_count": 5,
+      "prompts_count": 14
+    },
+    "GEOX": {
+      "port": 8081,
+      "tools_count": 31,
+      "resources_count": 31,
+      "prompts_count": 14
+    },
+    "WEALTH": {
+      "port": 18082,
+      "tools_count": 12,
+      "resources_count": 15,
+      "prompts_count": 7
+    },
+    "WELL": {
+      "port": 18083,
+      "tools_count": 29,
+      "resources_count": 30,
+      "prompts_count": 15
+    }
+  },
+  "totals": {
+    "tools": 182,
+    "resources": 340,
+    "prompts": 63
+  }
+}

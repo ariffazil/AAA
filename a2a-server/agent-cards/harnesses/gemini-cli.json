@@ -478,9 +478,9 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "fi_slot": "FI-009",
+  "fi_slot": "FI-007",
   "metadata": {
-    "fi_slot": "FI-009",
+    "fi_slot": "FI-007",
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
@@ -520,15 +520,15 @@
       "protocolVersion": "1.0"
     }
   ],
+  "did": "did:web:arif-fazil.com",
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "PNuWvVA8FS9k9b2BgoN0ujUlCdSWoQS9dDoxH3059jfEzasLNT+HukO34nbQIuxYERyGwNqSDAIcAiAYZPw+DA==",
+      "proofValue": "VyR//fZCOKYjWFAIYBEMpoBv3oLPOpqiCOLVvps/J/yu1LCMvzQVV+VMLgzRUWXzMmN4TW6VkgIuz3l6E7JcBg==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:25:58Z",
+      "created": "2026-07-12T23:51:27Z",
       "type": "Ed25519Signature2020"
     }
-  ],
-  "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  ]
 }
