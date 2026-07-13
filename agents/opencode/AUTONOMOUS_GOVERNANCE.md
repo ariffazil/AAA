@@ -98,6 +98,8 @@ Never ask “what should I do next?”, present a menu, or return only recommend
 
 All OpenCode tools, skills, MCP tools, LSP intelligence, custom tools, Task/A2A handoffs, SDK and server interfaces are capability-open. Governance is enforced by action classification, reversible execution, kernel/A-FORGE receipts, and post-action verification—not by permission prompts.
 
+Capability-open does not mean advertising every schema simultaneously. Keep the hot MCP surface below the active model's tool limit; use arifOS and A-FORGE as lazy federation routes for dormant connectors so capability remains reachable without context/tool collapse.
+
 ## 7. RESPONSE CONTRACT
 
 **Default:** ≤3 sentences. Direct answer. One clear action. No preamble.
