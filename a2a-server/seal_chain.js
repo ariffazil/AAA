@@ -468,6 +468,19 @@ async function writeSeal(payload, opts = {}) {
   // ── Invariant enforcement (G1 fix) — runs BEFORE any ledger work ──
   const invariants = enforceSealInvariants(payload, opts);
 
+  // ── Cooling validation (G3/EUREKA) — runs for cooling.receipt event types ──
+  const eventType = opts.event_type || classifyEventType(payload);
+  let coolingVal = null;
+  if (eventType === 'cooling.receipt') {
+    coolingVal = validateCooling(payload, opts);
+    if (coolingVal.downgraded) {
+      // Merge cooling violations into invariants violations
+      if (!invariants.violations) invariants.violations = [];
+      invariants.violations.push(...coolingVal.violations);
+      if (!invariants.downgraded) invariants.downgraded = true;
+    }
+  }
+
   // Ensure vault directory exists
   fs.mkdirSync(VAULT_DIR, { recursive: true });
 
@@ -479,7 +492,6 @@ async function writeSeal(payload, opts = {}) {
   const thisHash = hashSeal(prevHash, payload, seq, epoch);
 
   // ── Enriched envelope fields ──
-  const eventType = opts.event_type || classifyEventType(payload);
   const principal = opts.principal || `agent:${invariants.actor}`;
   const toolSchemaHash = opts.tool_schema_hash || null;
   const policyHash = opts.policy_hash || computePolicyHash(opts.active_floors);
@@ -577,21 +589,87 @@ async function writeSeal(payload, opts = {}) {
     chain_head: thisHash,
     seal_version: ENRICHED_VERSION,
     // ── Invariant receipts (forged 2026-07-05, G1 fix) ──
-    // Expose invariants_violated + invariants_downgraded on the return value
-    // so callers can react: a successful write may still have been downgraded
-    // from SEAL→HOLD, and that downgrade is not silent.
     invariants_violated: invariants.violations.length > 0 ? invariants.violations : null,
     invariants_downgraded: invariants.downgraded,
     final_verdict: invariants.verdict,
     actor_source: invariants.actorSource,
+    // ── Cooling validation (G3/EUREKA) ──
+    cooling_validated: coolingVal !== null,
+    cooling_downgraded: coolingVal ? coolingVal.downgraded : false,
+    cooling_violations: coolingVal && coolingVal.violations.length > 0 ? coolingVal.violations : null,
+  };
+}
+
+// ── COOLING validation (G3/EUREKA: COOLING-MUST-NOT-SELF-DEPLOY) ──────────
+// Forged 2026-07-13 per COOLING_RECEIPT_SPEC_v1.md §3.1
+//
+// COOLING_RECEIPT invariants:
+//   1. action_class MUST be OBSERVE (never MUTATE)
+//   2. caller MUST NOT be forge (cooling routes through governance, not execution)
+//   3. supersedes.type MUST be COLD_LINK (never overwrite original)
+//   4. governance_path.judge_required must be true unless authority is AUTO/OBSERVE_ONLY
+//
+// Violation = seal is downgraded to HOLD with violations recorded.
+
+function validateCooling(payload, opts = {}) {
+  const violations = [];
+  const actionClass = payload.action_class ||
+    (payload.payload && payload.payload.action_class) || 'UNKNOWN';
+  const caller = opts.caller ||
+    payload.caller || 'unknown';
+  const supersedes = payload.supersedes ||
+    (payload.payload && payload.payload.supersedes) || {};
+  const governancePath = payload.governance_path ||
+    (payload.payload && payload.payload.governance_path) || {};
+
+  // INV-C1: COOLING-MUST-NOT-SELF-DEPLOY — action_class must be OBSERVE
+  if (actionClass.toUpperCase() !== 'OBSERVE') {
+    violations.push({
+      invariant: 'INV-C1_ACTION_OBSERVE',
+      detail: `COOLING requires action_class=OBSERVE, got ${actionClass}. COOLING-MUST-NOT-SELF-DEPLOY.`,
+    });
+  }
+
+  // INV-C2: Cooling must not come from forge — routes through governance only
+  if (caller.toLowerCase().includes('forge')) {
+    violations.push({
+      invariant: 'INV-C2_CALLER_NOT_FORGE',
+      detail: `COOLING caller=${caller} contains "forge". Cooling routes through governance, never execution.`,
+    });
+  }
+
+  // INV-C3: COLD_LINK — must not overwrite original seal
+  if (supersedes.type && supersedes.type !== 'COLD_LINK') {
+    violations.push({
+      invariant: 'INV-C3_COLD_LINK',
+      detail: `COOLING supersedes.type must be COLD_LINK, got ${supersedes.type}. Original seal must remain immutable.`,
+    });
+  }
+
+  // INV-C4: Governance path must be explicit
+  const judgeRequired = governancePath.judge_required;
+  const reqAuthority = (governancePath.required_authority || '').toUpperCase();
+  if (judgeRequired === false && !['AUTO', 'OBSERVE_ONLY'].includes(reqAuthority)) {
+    violations.push({
+      invariant: 'INV-C4_GOVERNANCE_PATH',
+      detail: `COOLING requires judge_required=true unless authority is AUTO/OBSERVE_ONLY, got judge_required=${judgeRequired}, authority=${reqAuthority}`,
+    });
+  }
+
+  return {
+    valid: violations.length === 0,
+    violations,
+    downgraded: violations.length > 0,
   };
 }
 
 // ── Event type classification ─────────────────────────────────────────────
+// G2/EUREKA: cooling.receipt added 2026-07-13 as first-class VAULT999 type
 
 function classifyEventType(payload) {
   const action = (payload.action || '').toLowerCase();
   if (action.startsWith('a2a.')) return 'a2a.dispatch';
+  if (action === 'cooling.receipt' || action.includes('cooling.receipt')) return 'cooling.receipt';
   if (action.includes('shell') || action.includes('forge.execute')) return 'forge.shell';
   if (action.includes('judge') || action.includes('verdict')) return 'constitutional.verdict';
   if (action.includes('register') || action.includes('forge.skill')) return 'tool.register';
@@ -731,6 +809,8 @@ module.exports = {
   classifyEventType,
   // ── Invariant exports (forged 2026-07-05, G1 fix) ──
   enforceSealInvariants,
+  // ── Cooling validation exports (G3/EUREKA 2026-07-13) ──
+  validateCooling,
   GENESIS_HASH,
   LEDGER_PATH,
   HEAD_PATH,

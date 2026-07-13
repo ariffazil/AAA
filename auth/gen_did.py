@@ -11,6 +11,7 @@ Usage:
     python auth/gen_did.py --force       # regenerate ALL (DANGER: breaks existing signatures)
     python auth/gen_did.py --sign <hex>  # sign hex data with did:arif:aaa (test)
 """
+
 from __future__ import annotations
 
 import argparse
@@ -26,20 +27,20 @@ REGISTRY_FILE = Path(__file__).parent / "did_registry.yaml"
 
 # Canonical organ DIDs — ordered by authority (Ω is root of trust)
 ORGANS: list[tuple[str, str, str]] = [
-    ("omega",   "did:arif:Ω",       "Sovereign root — F13-issuer, capability token signer"),
-    ("aaa",     "did:arif:aaa",     "AAA control plane — signs ingress capsules, issues capability tokens"),
+    ("omega", "did:arif:Ω", "Sovereign root — F13-issuer, capability token signer"),
+    ("aaa", "did:arif:aaa", "AAA control plane — signs ingress capsules, issues capability tokens"),
     ("a-forge", "did:arif:a-forge", "A-FORGE execution — signs skill step receipts"),
-    ("geox",    "did:arif:geox",    "GEOX domain — signs petrophysics and subsurface outputs"),
-    ("wealth",  "did:arif:wealth",  "WEALTH capital — signs economic verdicts and NPV claims"),
-    ("well",    "did:arif:well",    "WELL vitality — signs substrate assessments"),
-    ("hermes",  "did:arif:hermes",  "HERMES relay — signs A2A envelope routing"),
-    ("arifos",  "did:arif:arifos",  "arifOS kernel — signs constitutional verdicts (SEAL/HOLD/VOID)"),
+    ("geox", "did:arif:geox", "GEOX domain — signs petrophysics and subsurface outputs"),
+    ("wealth", "did:arif:wealth", "WEALTH capital — signs economic verdicts and NPV claims"),
+    ("well", "did:arif:well", "WELL vitality — signs substrate assessments"),
+    ("hermes", "did:arif:hermes", "HERMES relay — signs A2A envelope routing"),
+    ("arifos", "did:arif:arifos", "arifOS kernel — signs constitutional verdicts (SEAL/HOLD/VOID)"),
 ]
 
 
 def _load_or_generate(organ_id: str, did: str, force: bool = False) -> tuple[SigningKey, dict]:
     priv_path = KEYS_DIR / f"{organ_id}_private.key"
-    pub_path  = KEYS_DIR / f"{organ_id}_public.key"
+    pub_path = KEYS_DIR / f"{organ_id}_public.key"
 
     if priv_path.exists() and not force:
         sk = SigningKey(priv_path.read_text().strip(), encoder=HexEncoder)
@@ -65,10 +66,7 @@ def load_signing_key(organ_id: str) -> SigningKey:
     """Load an organ's private key for runtime signing."""
     priv_path = KEYS_DIR / f"{organ_id}_private.key"
     if not priv_path.exists():
-        raise FileNotFoundError(
-            f"Private key for '{organ_id}' not found at {priv_path}. "
-            "Run: python auth/gen_did.py"
-        )
+        raise FileNotFoundError(f"Private key for '{organ_id}' not found at {priv_path}. Run: python auth/gen_did.py")
     return SigningKey(priv_path.read_text().strip(), encoder=HexEncoder)
 
 
@@ -83,9 +81,7 @@ def load_verify_key(organ_id: str) -> VerifyKey:
 
 def load_registry() -> dict:
     if not REGISTRY_FILE.exists():
-        raise FileNotFoundError(
-            f"DID registry not found at {REGISTRY_FILE}. Run: python auth/gen_did.py"
-        )
+        raise FileNotFoundError(f"DID registry not found at {REGISTRY_FILE}. Run: python auth/gen_did.py")
     return yaml.safe_load(REGISTRY_FILE.read_text()) or {}
 
 
@@ -110,11 +106,14 @@ def main() -> None:
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[union-attr]
     parser = argparse.ArgumentParser(description="arifOS DID keypair generator")
-    parser.add_argument("--force",  action="store_true",
-                        help="Regenerate ALL keys (DANGER: invalidates existing signatures)")
-    parser.add_argument("--list",   action="store_true", help="Show DID registry")
-    parser.add_argument("--sign",   metavar="HEX_DATA",
-                        help="Sign hex-encoded data with did:arif:aaa (smoke test)")
+    parser.add_argument(
+        "--force", action="store_true", help="Regenerate ALL keys (DANGER: invalidates existing signatures)"
+    )
+    parser.add_argument(
+        "--batch", action="store_true", help="Non-interactive mode — skip confirmation prompts (use with --force)"
+    )
+    parser.add_argument("--list", action="store_true", help="Show DID registry")
+    parser.add_argument("--sign", metavar="HEX_DATA", help="Sign hex-encoded data with did:arif:aaa (smoke test)")
     args = parser.parse_args()
 
     if args.list:
@@ -124,24 +123,25 @@ def main() -> None:
         reg = load_registry()
         print(f"\nDID Registry v{reg.get('version', '?')} — {len(reg.get('dids', []))} organs\n")
         for entry in reg.get("dids", []):
-            pub = entry['public_key_hex'][:16] + "…"
+            pub = entry["public_key_hex"][:16] + "…"
             print(f"  {entry['did']:30s}  {pub}  [{entry['algorithm']}]")
         return
 
     if args.sign:
         data = bytes.fromhex(args.sign)
         sig = sign(data, "aaa")
-        ok  = verify(data, sig, "aaa")
+        ok = verify(data, sig, "aaa")
         print(f"signature : {sig}")
         print(f"verified  : {ok}")
         return
 
     if args.force:
         print("WARNING: --force regenerates ALL keys. Existing capsule signatures become unverifiable.")
-        confirm = input("Type 'yes' to continue: ").strip()
-        if confirm != "yes":
-            print("Aborted.")
-            sys.exit(0)
+        if not args.batch:
+            confirm = input("Type 'yes' to continue: ").strip()
+            if confirm != "yes":
+                print("Aborted.")
+                sys.exit(0)
 
     KEYS_DIR.mkdir(exist_ok=True)
 

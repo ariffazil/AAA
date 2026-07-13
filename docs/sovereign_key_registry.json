@@ -1,0 +1,14 @@
+{
+  "sovereign_signing": {
+    "key_id": "omega-2026-01",
+    "algorithm": "Ed25519",
+    "path_env": "OMEGA_PRIVATE_KEY_PATH",
+    "default_path": "/root/.secrets/aaa-identity/keys/arif_private.pem",
+    "public_key_did": "did:web:arif-fazil.com#arif-fazil",
+    "public_key_multibase": "z9AafFEn8WYCaE1ooiAud5gVLFapgkyyCvj34HSFgxoBK",
+    "fingerprint": "ed25519:sha256:a8fbb5ae8b4772b0",
+    "status": "active",
+    "signer_service": "arifOS kernel (SOVEREIGN_KEY_IDS)",
+    "notes": "Set OMEGA_PRIVATE_KEY_PATH env var. Path outside Git. Mode 0400."
+  }
+}
