@@ -1,5 +1,6 @@
 ---
 name: AGI-claude-xml-structured-reasoning
+description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit XML boundaries when outputs exceed one screen or require parser-stable sections.
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample
 forged: 2026-07-12T18:28Z
 native_architecture: claude

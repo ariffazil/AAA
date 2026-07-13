@@ -1,5 +1,6 @@
 ---
 name: AGI-emd-encode
+description: Encode raw observations, requests, documents, and signals into typed, provenance-bound, witness-ready EMD segments for downstream processing.
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · completing EMD chain)
 forged: 2026-07-12T18:33:00Z
 rationale: EMD stack has M (`AGI-emd-metabolize`) and D (`AGI-emd-decode`); the E (encode) was the missing link. Audit found 120 random 'encode' word mentions but no dedicated doctrine. Phase 3 gap fill.
