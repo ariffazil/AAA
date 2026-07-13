@@ -124,6 +124,11 @@ agent_profiles:
     - dev
     - forge
     - ops
+    - meta
+    - a2a
+    - kernel
+    profile: /root/AAA/skills/CODEX_SKILL_PROFILE.json
+    notes: Curated AAA A2A view with explicit AGI/ASI/APEX contrast; no full-catalog mirroring
   kimi:
     substrates: 3
     knowledge: 3

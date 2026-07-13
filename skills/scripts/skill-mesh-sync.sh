@@ -12,6 +12,7 @@ set -euo pipefail
 MODE="${1:---dry-run}"
 AAA="${AAA_SKILLS:-/root/AAA/skills}"
 AGENTS="${AGENTS_SKILLS:-/root/.agents/skills}"
+CODEX_PROFILE="${CODEX_SKILL_PROFILE:-/root/AAA/skills/CODEX_SKILL_PROFILE.json}"
 HARNESSES=(
   "${GROK_SKILLS:-/root/.grok/skills}"
   "${CLAUDE_SKILLS:-/root/.claude/skills}"
@@ -39,6 +40,21 @@ is_native_keep() {
     [[ "$name" == "$k" ]] && return 0
   done
   return 1
+}
+
+declare -A CODEX_KEEP=()
+if [[ -f "$CODEX_PROFILE" ]]; then
+  while IFS= read -r name; do
+    [[ -n "$name" ]] && CODEX_KEEP[$name]=1
+  done < <(python3 -c 'import json,sys; print("\n".join(x["name"] for x in json.load(open(sys.argv[1]))["skills"]))' "$CODEX_PROFILE")
+fi
+
+is_codex_harness() {
+  [[ "$1" == *"/.codex/skills" ]]
+}
+
+codex_keeps() {
+  [[ -n "${CODEX_KEEP[$1]:-}" ]]
 }
 
 collect_sources() {
@@ -98,6 +114,25 @@ echo "skill-mesh-sync mode=$MODE sources=${#BEST[@]} $(date -u +%Y-%m-%dT%H:%M:%
 for h in "${HARNESSES[@]}"; do
   [[ -d "$h" ]] || { echo "SKIP missing harness $h"; continue; }
   echo "--- harness $h"
+  if is_codex_harness "$h" && [[ ${#CODEX_KEEP[@]} -gt 0 ]]; then
+    archive="$h/.profile-archive"
+    for link in "$h"/*; do
+      [[ -L "$link" ]] || continue
+      name="$(basename "$link")"
+      if ! codex_keeps "$name"; then
+        echo "EXTRA $link (not in Codex profile)"
+        if [[ "$MODE" == "--apply" ]]; then
+          mkdir -p "$archive"
+          rm -f "$archive/$name"
+          mv "$link" "$archive/$name"
+          echo "  ARCHIVED $name"
+          created=$((created+1))
+        else
+          missing=$((missing+1))
+        fi
+      fi
+    done
+  fi
   # broken links first
   for link in "$h"/*; do
     [[ -L "$link" ]] || continue
@@ -118,6 +153,9 @@ for h in "${HARNESSES[@]}"; do
   done
 
   for name in "${!BEST[@]}"; do
+    if is_codex_harness "$h" && [[ ${#CODEX_KEEP[@]} -gt 0 ]] && ! codex_keeps "$name"; then
+      continue
+    fi
     target="${BEST[$name]}"
     dest="$h/$name"
     if is_native_keep "$name" "$h"; then
