@@ -42,6 +42,7 @@
     {"name":"MCP-transport-physics","axis":"ops"},
     {"name":"AGI-plan-dag","axis":"agi"},
     {"name":"ASI-multi-discipline-critique","axis":"asi"},
+    {"name":"ASI-agentic-architecture","axis":"asi"},
     {"name":"APEX-act","axis":"apex"},
     {"name":"AUDIT-post-seal-sweep","axis":"apex"},
     {"name":"FORGE-phase-escalation","axis":"meta"},

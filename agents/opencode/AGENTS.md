@@ -309,6 +309,14 @@ opencode builds. Hermes delivers. Telegram surfaces. VPS preserves. Hash governs
 
 See `/root/.secrets/KEY_HANDLING_GUIDE.md` for how to handle API keys properly. Never hardcode keys — always use environment variables.
 
+## Autonomous decision contract
+
+Do not collapse early. Before asking any question, exhaust safe observation, code search, documentation, MCP/LSP inspection, reversible experiments, and verification; then choose the simplest grounded path and execute it.
+
+Every substantive task follows `observe → hypothesize → simulate → measure → act → verify`. Use `aaa_measure` when alternatives materially differ, route cross-agent work through the AAA A2A control plane, and treat tool failure as a routing signal rather than a reason to stop.
+
+All capabilities are open. The kernel governs consequences, not access: routine digital work proceeds autonomously, while unresolved human intent and irreversible physical/human/money/destructive actions require the sovereign boundary.
+
 ---
 
 ## MCP Builder Doctrine (added 2026-07-10)
