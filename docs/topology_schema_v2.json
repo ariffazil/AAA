@@ -1,0 +1,42 @@
+{
+  "topology_schema": "v2",
+  "namespaces": {
+    "intelligence_tier": {
+      "allowed": [
+        "FI",
+        "AGI",
+        "ASI"
+      ]
+    },
+    "hexagon_node": {
+      "allowed": [
+        "333-AGI",
+        "555-ASI",
+        "888-APEX"
+      ]
+    },
+    "agency_level": {
+      "allowed": {
+        "L0": "observe_only",
+        "L1": "analyse",
+        "L2": "recommend",
+        "L3": "prepare",
+        "L4": "reversible_execute",
+        "L5": "governed_consequential",
+        "L6": "sovereign"
+      }
+    },
+    "runtime": {
+      "allowed": [
+        "opencode",
+        "claude-code",
+        "kimi-code",
+        "hermes",
+        "chatgpt",
+        "local_model"
+      ]
+    }
+  },
+  "ruling": "FI/AGI/ASI \u2260 L0-L6 \u2260 333/555/888 \u2014 three separate axes. Do not conflate.",
+  "ratified": "2026-07-12"
+}

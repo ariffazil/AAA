@@ -14,7 +14,7 @@
     "F3": "OpenCode receives ALL forge harness skills (primary executor)",
     "F4": "Seal (manifest complete + META-MESA verified)"
   },
-  "generated_at": "2026-07-12T23:18:03.298108+00:00",
+  "generated_at": "2026-07-12T23:50:59.524514+00:00",
   "agent_count": 25,
   "agents": {
     "\u0394-001": {
@@ -1528,6 +1528,21 @@
     "phase_2": "5 organ cards rewritten, MCP tools\u2192skills[] alignment verified (8/102/31/12/29 = 182 tool refs)",
     "phase_3": "P2P_READINESS.md written; A-FORGE flagged missing /.well-known; JSON-RPC verbs missing on 5 organs",
     "phase_4": "schemas harmonized to v2.2.0; signature convention locked; dedup confirmed 0 overlap across 36 unique skills",
-    "forge_hash_placeholder": "TBD-at-next-mesa"
+    "forge_hash_placeholder": "TBD-at-next-mesa",
+    "survival_phase_5": {
+      "ts": "2026-07-12T23:50:59.524488+00:00",
+      "operator": "kimi-code (FI-003)",
+      "session": "survival-of-the-fittest",
+      "actions": [
+        "archived_777-forge_to_archive_2026-07-12",
+        "flagged_well_readiness_2026-09-01_removal",
+        "flagged_well_13_signal_coverage_replacement_well_signal_coverage",
+        "fixed_stale_FI-009_in_agents/_external/gemini-cli/agent-card.json_to_FI-007",
+        "fixed_stale_FI-009_in_a2a-server/agent-cards/harnesses/gemini-cli.json_to_FI-007"
+      ],
+      "contradictions_found": 4,
+      "contradictions_resolved": 3,
+      "pending_server_side": 1
+    }
   }
 }

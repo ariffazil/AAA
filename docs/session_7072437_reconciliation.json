@@ -1,0 +1,14 @@
+{
+  "session_id": "SEAL-7072437b2a364b31",
+  "status": "UNKNOWN",
+  "classification": "NO_EVIDENCE_FOUND",
+  "searched_locations": [
+    "active_sessions",
+    "expired_sessions",
+    "receipt_outbox",
+    "writer_logs",
+    "vault_records"
+  ],
+  "finding": "Genuine absence. Absence remains absence.",
+  "recorded": "2026-07-12"
+}
