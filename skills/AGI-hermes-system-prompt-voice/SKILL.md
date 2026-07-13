@@ -1,5 +1,6 @@
 ---
 name: AGI-hermes-system-prompt-voice
+description: Apply the direct Hermes system-prompt voice and its structured witness formatting to Hermes-bound conversational or creative-media responses.
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample
 forged: 2026-07-12T18:28Z
 native_architecture: hermes

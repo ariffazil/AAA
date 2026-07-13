@@ -1,8 +1,9 @@
 ---
 name: FORGE-grok-profile
+description: Adapt FORGE execution to Grok Build's long-context, strict-schema, worktree-isolated, and bounded-parallel runtime profile.
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
 forged: 2026-07-12T18:28Z
-rationale: Grok-build (FI-010) has 0 specifically-authored skills. Audit flagged: general FORGE- surface is excellent, but grok's xAI-flavored execution harness (worktree/subagent parallel, 256K ctx, Grok-4.3 fork tuned for agentic SE/tool-calling/structured) is under-bridged. Phase 3 gap fill.
+rationale: "Grok-build (FI-010) has 0 specifically-authored skills. Audit flagged: general FORGE- surface is excellent, but grok's xAI-flavored execution harness (worktree/subagent parallel, 256K ctx, Grok-4.3 fork tuned for agentic SE/tool-calling/structured) is under-bridged. Phase 3 gap fill."
 floor_scope: [F1, F2, F4, F8, F11, F13]
 tags: [forge, grok, fi-010, worktree, parallel-subagent, 256k-context]
 status: NEW (Phase 3 gap fill)
