@@ -478,9 +478,9 @@
     "ratifiedAt": "2026-07-01T20:22:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI"
   },
-  "fi_slot": "FI-009",
+  "fi_slot": "FI-007",
   "metadata": {
-    "fi_slot": "FI-009",
+    "fi_slot": "FI-007",
     "kernel_deps": [
       "KERNEL-trinity-33",
       "KERNEL-session-inhabit",
@@ -523,9 +523,9 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "JSlcbNfP1/vLDvqNI1FgmuJQkdwmhED0G772XblNxFIz2Uhc47wX96ktH4dx3MWMqC4jNF71fSpn2pqL45oVCQ==",
+      "proofValue": "p0hLbUOkwCVy80ln17ibRyhlYNjF+jaoJzjyCR1vbyDDd6w9ZavZE8o1S+OsZK2vAsRve6ZEb7wN8o9MkAiBAw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
+      "created": "2026-07-12T23:51:27Z",
       "type": "Ed25519Signature2020"
     }
   ]
