@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Primary Meta -->
-<title>/999 — The Sealed Vault | arifOS Federation</title>
-<meta name="title" content="/999 — The Sealed Vault | arifOS Federation">
-<meta name="description" content="The immutable audit ledger of the arifOS federation. Every constitutional verdict, every sealed record, every irreversibility decision. Hash-chain integrity. Constitutional floors (F1-F13). Public attestation — no secrets, no keys. The output anchor that closes the loop with /000.">
-<meta name="keywords" content="VAULT999, immutable ledger, hash-chain, constitutional floors, F1-F13, sealed records, arifOS kernel, audit trail, agentic intelligence, governed memory">
-<meta name="author" content="arifOS Federation">
+<title>/999 — Proof · Sealed Vault | Arif Fazil</title>
+<meta name="title" content="/999 — Proof · Sealed Vault | Arif Fazil">
+<meta name="description" content="The immutable proof chamber. Cryptographic signatures, sealed records, DID documents, and the hash-chain audit trail. /999 closes the verification loop — evidence governs truth. Public attestation. No secrets, no keys.">
+<meta name="keywords" content="VAULT999, immutable ledger, hash-chain, constitutional floors, F1-F13, sealed records, arifOS, audit trail, governed intelligence, DID, verification">
+<meta name="author" content="Muhammad Arif bin Fazil">
 <meta name="robots" content="index, follow">
 
 <!-- Canonical -->
@@ -18,14 +18,14 @@
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://arif-fazil.com/999/">
-<meta property="og:title" content="/999 — The Sealed Vault | arifOS Federation">
-<meta property="og:description" content="The immutable audit ledger. Every constitutional verdict, every sealed record. Public attestation — the output anchor that closes the loop with /000.">
-<meta property="og:site_name" content="arifOS Federation">
+<meta property="og:title" content="/999 — Proof · Sealed Vault | Arif Fazil">
+<meta property="og:description" content="The immutable proof chamber. Cryptographic signatures, sealed records, DID documents, and the hash-chain audit trail. Evidence governs truth.">
+<meta property="og:site_name" content="arif-fazil.com">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:title" content="/999 — The Sealed Vault | arifOS Federation">
-<meta property="twitter:description" content="The immutable audit ledger. Every constitutional verdict sealed. The output anchor of governed intelligence.">
+<meta property="twitter:title" content="/999 — Proof · Sealed Vault | Arif Fazil">
+<meta property="twitter:description" content="Cryptographic proof chamber. Sealed records, DID documents, hash-chain audit trail. Evidence governs truth.">
 
 <!-- LLM Discovery -->
 <meta name="llms-full-content" content="true">
@@ -135,11 +135,59 @@
     .container { padding: 1.25rem 1rem 4rem; }
     .floor-table { font-size: 0.72rem; }
   }
+
+  /* ── Accessibility ── */
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html { scroll-behavior: auto; }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .sr-only:focus {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+    height: auto;
+    padding: 0.75rem 1.25rem;
+    clip: auto;
+    background: var(--surface);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    z-index: 10000;
+  }
 </style>
 </head>
 <body>
 
-<div class="container">
+<a href="#main-content" class="sr-only">Skip to content</a>
+
+<div id="main-content" class="container">
 
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header>
