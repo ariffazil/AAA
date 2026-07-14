@@ -86,8 +86,11 @@ const crypto = require('crypto');
 const VAULT_DIR = process.env.VAULT_DIR || '/root/VAULT999';
 const LEDGER_PATH = path.join(VAULT_DIR, 'seal_chain.jsonl');
 const HEAD_PATH = path.join(VAULT_DIR, 'seal_chain_head.json');
+const LOCK_PATH = path.join(VAULT_DIR, '.seal_chain.lock');
 const GENESIS_HASH = 'sha256:0'; // sentinel — never a real sha256
 const ENRICHED_VERSION = 2;      // version tag for enriched entries
+const LOCK_WAIT_MS = Number.parseInt(process.env.SEAL_CHAIN_LOCK_WAIT_MS || '5000', 10);
+const LOCK_STALE_MS = Number.parseInt(process.env.SEAL_CHAIN_LOCK_STALE_MS || '30000', 10);
 
 // Optional remote mirror (vault999-writer) — best-effort, never blocks local chain
 const REMOTE_URL = process.env.VAULT_WRITER_URL || null;
@@ -303,12 +306,68 @@ function sealVersion(entry) {
 function readHead() {
   try {
     const raw = fs.readFileSync(HEAD_PATH, 'utf-8');
-    return JSON.parse(raw);
+    const parsed = JSON.parse(raw);
+    const hash = parsed.hash || parsed.this_hash;
+    if (!Number.isInteger(parsed.seq) || !hash) {
+      throw new Error('seal chain head is missing integer seq or hash');
+    }
+    return { ...parsed, hash };
   } catch (e) {
     if (e.code === 'ENOENT') {
       return { seq: 0, hash: GENESIS_HASH, epoch: null };
     }
     throw e;
+  }
+}
+
+function sleepSync(ms) {
+  const signal = new Int32Array(new SharedArrayBuffer(4));
+  Atomics.wait(signal, 0, 0, ms);
+}
+
+function processIsAlive(pid) {
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (e) {
+    return e.code === 'EPERM';
+  }
+}
+
+function acquireWriteLock() {
+  fs.mkdirSync(VAULT_DIR, { recursive: true });
+  const deadline = Date.now() + LOCK_WAIT_MS;
+  while (true) {
+    try {
+      const fd = fs.openSync(LOCK_PATH, 'wx', 0o600);
+      fs.writeFileSync(fd, JSON.stringify({ pid: process.pid, acquired_at_ms: Date.now() }));
+      fs.fsyncSync(fd);
+      return fd;
+    } catch (e) {
+      if (e.code !== 'EEXIST') throw e;
+      try {
+        const owner = JSON.parse(fs.readFileSync(LOCK_PATH, 'utf-8'));
+        const stale = Date.now() - Number(owner.acquired_at_ms || 0) > LOCK_STALE_MS;
+        if (stale && !processIsAlive(Number(owner.pid))) {
+          fs.unlinkSync(LOCK_PATH);
+          continue;
+        }
+      } catch (_) {
+        // A newly-created lock may be momentarily empty; wait for its owner.
+      }
+      if (Date.now() >= deadline) {
+        throw new Error(`seal chain writer lock timeout after ${LOCK_WAIT_MS}ms`);
+      }
+      sleepSync(10);
+    }
+  }
+}
+
+function releaseWriteLock(fd) {
+  try { fs.closeSync(fd); } catch (_) {}
+  try { fs.unlinkSync(LOCK_PATH); } catch (e) {
+    if (e.code !== 'ENOENT') throw e;
   }
 }
 
@@ -614,15 +673,22 @@ async function writeSeal(payload, opts = {}) {
     }
   }
 
-  // Ensure vault directory exists
-  fs.mkdirSync(VAULT_DIR, { recursive: true });
-
-  // Atomic head read-modify-write
-  let head = readHead();
-  const seq = head.seq + 1;
-  const epoch = new Date().toISOString();
-  const prevHash = head.hash;
-  const thisHash = hashSeal(prevHash, payload, seq, epoch);
+  // Serialize the complete head-read → ledger-append → head-write transaction.
+  // Multiple AAA workers and CLI callers share this one canonical lock.
+  const writeLock = acquireWriteLock();
+  let head;
+  let seq;
+  let epoch;
+  let prevHash;
+  let thisHash;
+  let merkleRoot;
+  let entry;
+  try {
+  head = readHead();
+  seq = head.seq + 1;
+  epoch = new Date().toISOString();
+  prevHash = head.hash;
+  thisHash = hashSeal(prevHash, payload, seq, epoch);
 
   // ── Enriched envelope fields ──
   const principal = opts.principal || `agent:${invariants.actor}`;
@@ -639,7 +705,7 @@ async function writeSeal(payload, opts = {}) {
   const violatedFloors = opts.violated_floors || null;
 
   // Compute Merkle root from event fields
-  const merkleRoot = computeEventMerkleRoot({
+  merkleRoot = computeEventMerkleRoot({
     event_type: eventType,
     principal,
     tool_schema_hash: toolSchemaHash,
@@ -648,7 +714,7 @@ async function writeSeal(payload, opts = {}) {
     output_hash: outputHash,
   });
 
-  const entry = {
+  entry = {
     seq,
     prev_hash: prevHash,
     this_hash: thisHash,
@@ -704,6 +770,9 @@ async function writeSeal(payload, opts = {}) {
     verdict: entry.verdict,
     seal_version: ENRICHED_VERSION,
   });
+  } finally {
+    releaseWriteLock(writeLock);
+  }
 
   // Best-effort TSA timestamp (Phase 2: autonomous crypto seal, non-blocking)
   let tsaResult = null;
@@ -963,6 +1032,7 @@ module.exports = {
   GENESIS_HASH,
   LEDGER_PATH,
   HEAD_PATH,
+  LOCK_PATH,
   VAULT_DIR,
   ENRICHED_VERSION,
   // ── TSA config ──
