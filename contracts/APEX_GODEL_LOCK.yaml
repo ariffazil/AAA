@@ -42,8 +42,26 @@
 
 godel_lock:
   name: "APEX Gödel Lock — External Witness Integration"
-  version: "1.0.0"
-  formula: "G = A · P · E · X · (Φ_internal · Φ_external)"
+  version: "1.1.0"
+  formula: "G = A · P · E · X · Φ_effective"
+  enforcement_code: "/root/AAA/contracts/godel_lock_enforcement.py"
+  validation_protocol: "/root/.hermes/skills/arifos-external-council/references/external-auditor-validation.md"
+
+  # P0-2 FIX: Tiered Φ_external by claim severity (not one-size-fits-all)
+  # P1-1 FIX: Anti-overconfidence — max(Φ_int, Φ_ext) for low-stakes
+  phi_effective_rules:
+    observation:
+      phi: "1.0"
+      requires_external: false
+    reasoning:
+      phi: "max(Φ_internal, Φ_external)"
+      requires_external: false
+    consequential:
+      phi: "0.70"
+      requires_external: true
+    seal_bound:
+      phi: "Φ_external (overrides internal)"
+      requires_external: true
 
   phi_external_values:
     no_auditor_available:
