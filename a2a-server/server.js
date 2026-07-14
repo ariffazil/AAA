@@ -2509,6 +2509,7 @@ app.get('/health', async (req, res) => {
     status: 'healthy',
     protocol: 'A2A',
     version: '1.0.0',
+    federation_schema_version: '2.0.0',
     gateway: 'AAA',
     motto: 'Ditempa Bukan Diberi',
     vault: vaultHealthy ? 'CONNECTED' : 'DISCONNECTED',
