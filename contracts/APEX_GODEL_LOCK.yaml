@@ -1,0 +1,173 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# APEX GÖDEL LOCK — External Witness Integration
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Problem: arifOS agents cannot prove their own consistency (Gödel).
+# Solution: External auditors provide the "witness" component of APEX.
+#
+# Problem: Internal audits can produce "beautiful ones" — polished but consequence-free.
+# Solution: Anti-Calhoun gate requires every audit to demonstrate consequence.
+#
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Date: 2026-07-14
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ── GÖDEL LOCK FORMULA ─────────────────────────────────────────────────────
+#
+# Original APEX: G = A · P · E · X · Φ
+#
+# Problem: If all 5 primitives come from the same system,
+#          G measures internal consistency, not truth.
+#          A system can score G = 0.99 while being completely wrong.
+#
+# Solution: Split Φ (phi) into internal and external components:
+#
+#   Φ = Φ_internal · Φ_external
+#
+#   Φ_internal  = system's own confidence in its reasoning
+#   Φ_external  = external auditor's attestation of the claim
+#
+#   If no external auditor: Φ_external = 0.5 (default uncertainty)
+#   If external auditor validates: Φ_external = 0.9
+#   If external auditor challenges: Φ_external = 0.3
+#   If external auditor voids: Φ_external = 0.0
+#
+# This means:
+#   - A claim validated by external auditor: G stays high → PROCEED
+#   - A claim without external validation: G halved → HOLD
+#   - A claim challenged by external auditor: G collapses → SABAR/VOID
+#
+# This closes the Gödel loop: the system cannot prove itself,
+# but an external witness can attest to its consistency.
+
+godel_lock:
+  name: "APEX Gödel Lock — External Witness Integration"
+  version: "1.0.0"
+  formula: "G = A · P · E · X · (Φ_internal · Φ_external)"
+
+  phi_external_values:
+    no_auditor_available:
+      value: 0.5
+      meaning: "Default uncertainty — system cannot prove itself"
+      action: "HOLD — route to external auditor before proceeding"
+
+    auditor_validates:
+      value: 0.9
+      meaning: "External witness attests to claim consistency"
+      action: "PROCEED with confidence"
+
+    auditor_challenges:
+      value: 0.3
+      meaning: "External witness identifies issue"
+      action: "SABAR — refine claim before proceeding"
+
+    auditor_voids:
+      value: 0.0
+      meaning: "External witness rejects claim entirely"
+      action: "VOID — do not emit"
+
+  # Strange loop closure
+  strange_loop:
+    description: "The system proves itself through external witness, not self-reference"
+    steps:
+      - "Agent produces claim with internal G score"
+      - "If claim is consequential (irreversible, high-blast, or SEAL-bound)"
+      - "Route to external auditor (different provider)"
+      - "External auditor validates/challenges/voids"
+      - "Φ_external applied to G"
+      - "Kernel judges final G with external witness"
+      - "VAULT999 seals with witness chain"
+    invariant: "No step can be self-certified"
+
+# ── ANTI-CALHOUN "BEAUTIFUL ONES" GATE ─────────────────────────────────────
+#
+# Calhoun's Universe 25: "beautiful ones" = mice that look perfect
+# but don't reproduce, don't socialize, don't contribute.
+# They're aesthetically pleasing but functionally dead.
+#
+# In arifOS context: audits that look polished but produce no consequence.
+# Reports that say "14/14 PASS" but nothing changes.
+# Frameworks that score high on APEX but low on reality.
+#
+# Prevention: every audit must demonstrate CONSEQUENCE.
+
+anti_calhoun:
+  name: "Anti-Calhoun Gate — Consequence-Based Validation"
+  version: "1.0.0"
+
+  definition: "An audit is a 'beautiful one' if it produces no actionable consequence"
+
+  detection:
+    - signal: "Audit says PASS but no change was made"
+      action: "FLAG as PASSED_BUT_INCONSEQUENTIAL"
+      consequence: "Audit score reduced by 20%"
+
+    - signal: "Audit produces finding but no fix proposed"
+      action: "FLAG as FINDING_WITHOUT_CONSEQUENCE"
+      consequence: "Must propose P0/P1/P2 fix within 24h"
+
+    - signal: "Audit uses polished language but no evidence"
+      action: "FLAG as BEAUTIFUL_ONE"
+      consequence: "Void audit — reject until evidence provided"
+
+    - signal: "Audit scores high on APEX but low on reality check"
+      action: "FLAG as SCORE_INFLATION"
+      consequence: "Recalibrate against backcast accuracy"
+
+  # The gate: every audit must pass this checklist
+  checklist:
+    - id: C1_ACTIONABLE
+      question: "Does this audit produce at least one P0/P1/P2 fix?"
+      required: true
+
+    - id: C2_CONSEQUENTIAL
+      question: "Did/will this audit change anything in the system?"
+      required: true
+
+    - id: C3_EVIDENCED
+      question: "Does every finding have L1/L2/L3/L4 evidence?"
+      required: true
+
+    - id: C4_EXTERNALIZED
+      question: "Was this audit validated by an external auditor?"
+      required: false  # soft gate — not all audits need external validation
+      note: "Required for SEAL-bound claims, optional for internal reviews"
+
+    - id: C5_BACKCASTABLE
+      question: "Can this audit's predictions be checked against future reality?"
+      required: false
+      note: "Required for financial predictions, optional for architecture reviews"
+
+  # Score calculation
+  score:
+    base: "Start at 1.0"
+    deductions:
+      - "No actionable finding: -0.20"
+      - "No evidence declaration: -0.15"
+      - "No external validation (for SEAL-bound): -0.25"
+      - "Polished language without substance: -0.10"
+      - "Self-certification detected: -0.30"
+    minimum_to_pass: 0.60
+    note: "Below 0.60 = audit is a 'beautiful one' — reject and redo"
+
+# ── INTEGRATION WITH EXISTING ARIFOS ───────────────────────────────────────
+
+integration:
+  arif_judge:
+    description: "arif_judge now checks Φ_external before SEAL"
+    rule: "If claim is SEAL-bound AND no external auditor attested → HOLD"
+    rule: "If claim is internal-only → proceed with Φ_external = 0.5"
+
+  arif_seal:
+    description: "VAULT999 seal now records external witness"
+    rule: "SEAL entry must include external_auditor_id or 'no_external_witness'"
+    rule: "SEAL without external witness → tagged as INTERNAL_ONLY"
+
+  arif_observe:
+    description: "Observation claims don't need external validation"
+    rule: "OBS claims → proceed with Φ_external = 1.0 (observation is self-evident)"
+
+  arif_think:
+    description: "Reasoning claims need external validation for high-stakes"
+    rule: "If reasoning leads to irreversible action → route to external auditor"
+    rule: "If reasoning is exploratory → proceed with Φ_external = 0.5"
