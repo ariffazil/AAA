@@ -1,0 +1,73 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Federation Disagreement Object",
+  "description": "Formal disagreement mechanics for multi-organ federation. Preserves legitimate conflict without allowing fragmentation or concealed contradiction.",
+  "type": "object",
+  "required": ["proposition", "positions", "conflict_type"],
+  "properties": {
+    "proposition": {
+      "type": "string",
+      "description": "The contested claim"
+    },
+    "positions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["conclusion", "confidence"],
+        "properties": {
+          "conclusion": { "type": "string" },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "epistemic_label": {
+            "type": "string",
+            "enum": ["OBSERVED", "DERIVED", "INTERPRETED", "SPECULATIVE", "UNKNOWN"]
+          },
+          "model_version": { "type": "string" }
+        }
+      }
+    },
+    "conflict_type": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "evidence_conflict",
+          "value_conflict",
+          "time_horizon_conflict",
+          "authority_conflict",
+          "ontology_conflict",
+          "model_drift_conflict"
+        ]
+      }
+    },
+    "common_ground": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Claims all positions agree on"
+    },
+    "unresolved": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Claims that remain contested"
+    },
+    "irreversible_consequence": {
+      "type": "boolean",
+      "description": "True if any resolution path involves irreversible action"
+    },
+    "escalation": {
+      "type": "string",
+      "enum": ["auto_resolve", "F11_audit", "F13"],
+      "description": "Escalation path: auto_resolve for minor, F11_audit for medium, F13 for irreversible"
+    },
+    "resolution": {
+      "type": "object",
+      "properties": {
+        "method": { "type": "string" },
+        "chosen_position": { "type": "string" },
+        "reason": { "type": "string" },
+        "minority_reports": { "type": "array", "items": { "type": "string" } },
+        "sealed_to": { "type": "string" }
+      }
+    }
+  }
+}

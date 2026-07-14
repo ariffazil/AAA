@@ -1,0 +1,307 @@
+# FROZEN CONTRACT — arifOS Federation
+# Version: 2026.07.14-contract-v1
+# State: FROZEN — no organ may deviate from this surface without F13 approval
+# Authority: F13 SOVEREIGN (Arif)
+# Location: /root/AAA/contract/frozen-contract.yaml
+#
+# RULE: All organ exports, capability graphs, connector registrations,
+#       and conformance tests derive from this file. No separate manifests.
+#       If it's not here, it doesn't exist on the public surface.
+
+contract:
+  epoch: "2026.07.14"
+  version: "1.0.0"
+  frozen_at: "2026-07-14T16:00:00+08:00"
+  frozen_by: "ARIF"
+  status: FROZEN
+  rule: >
+    This contract defines the PUBLIC surface of every organ.
+    Internal tools may exist beyond this list but MUST NOT be exported.
+    All conformance tests derive from this file.
+    Deviation requires F13 approval and contract version bump.
+
+# ─── IDENTITY ENVELOPE ───────────────────────────────────────────────
+identity_envelope:
+  version: "1.0"
+  required_fields:
+    actor_id: { type: string, description: "Caller identity (e.g. ARIF)" }
+    sovereign_id: { type: string, description: "F13 sovereign (ARIF)" }
+    caller_actor_id: { type: string, description: "Transport layer identity" }
+    executor_actor_id: { type: string, description: "Organ executing the call" }
+    session_id: { type: string, description: "Kernel-born session ID" }
+    session_token_hash: { type: string, description: "SHA-256 of session token" }
+    delegation_mode: { type: string, enum: [external_instrument, internal_agent, sovereign_direct] }
+  rules:
+    - "missing identity → anonymous OBSERVE_ONLY"
+    - "conflicting identity → HOLD (never silently repair)"
+    - "matching identity → inherit session authority"
+
+# ─── AUTHORITY STATES ─────────────────────────────────────────────────
+authority_states:
+  version: "1.0"
+  fields:
+    identity_band: { type: string, enum: [FULL, PARTIAL, ANONYMOUS] }
+    session_band: { type: string, enum: [OBSERVE_ONLY, ANALYZE, RECOMMEND, REVERSIBLE_EXECUTE, CONSEQUENTIAL] }
+    tool_action_class: { type: string, enum: [OBSERVE, PREPARE, MUTATE, EXTERNAL_SIDE_EFFECT, IRREVERSIBLE] }
+    mutation_allowed: { type: boolean }
+    seal_allowed: { type: boolean }
+    effective_authority: { type: string, description: "Only this field controls execution" }
+  rule: >
+    Only effective_authority controls execution.
+    All other fields are informational.
+
+# ─── VERDICT STATES ───────────────────────────────────────────────────
+verdict_states:
+  version: "1.0"
+  values: [SEAL, HOLD, SABAR, VOID, UNKNOWN]
+  rules:
+    - "SEAL: proceed with action"
+    - "HOLD: wait for human or more evidence"
+    - "SABAR: patience, de-escalate"
+    - "VOID: reject, never emit"
+    - "UNKNOWN: insufficient evidence to judge"
+
+# ─── EVIDENCE ENVELOPE ────────────────────────────────────────────────
+evidence_envelope:
+  version: "1.0"
+  required_fields:
+    tool_name: { type: string, description: "Canonical tool that produced this" }
+    domain: { type: string, description: "Knowledge domain (geology, capital, health, meta)" }
+    epistemic_tag: { type: string, enum: [OBSERVED, DERIVED, INTERPRETED, SPECULATIVE, UNKNOWN] }
+    evidence_quality: { type: string, enum: [STRONG, MODERATE, WEAK, UNVERIFIABLE] }
+    source_attribution: { type: "array[string]", description: "Evidence sources" }
+    timestamp: { type: string, format: "ISO-8601" }
+    actor_id: { type: string }
+    session_id: { type: string }
+  rule: >
+    Every tool output MUST carry this envelope.
+    No output without provenance.
+
+# ─── RECEIPT SCHEMA ───────────────────────────────────────────────────
+receipt_schema:
+  version: "1.0"
+  required_fields:
+    receipt_id: { type: string, description: "Unique receipt identifier" }
+    action: { type: string, description: "What was done" }
+    actor_id: { type: string }
+    session_id: { type: string }
+    verdict: { type: string, enum: [SEAL, HOLD, SABAR, VOID, UNKNOWN] }
+    evidence_refs: { type: "array[string]", description: "Evidence IDs" }
+    timestamp: { type: string, format: "ISO-8601" }
+    reversible: { type: boolean }
+    rollback_plan: { type: string, nullable: true }
+
+# ─── ORGAN TOOL SURFACES (FROZEN) ─────────────────────────────────────
+organs:
+
+  arifos:
+    role: constitutional_kernel
+    port: 8088
+    canonical_tools:
+      - arif_init
+      - arif_observe
+      - arif_think
+      - arif_route
+      - arif_judge
+      - arif_forge
+      - arif_seal
+    tool_count: 7
+    rule: "All tools carry identity_envelope. arif_judge is the only verdict emitter."
+
+  geox:
+    role: earth_intelligence
+    port: 8081
+    canonical_tools:
+      - geox_basin
+      - geox_claim
+      - geox_deep_time_state
+      - geox_geomechanics
+      - geox_gravmag_studio
+      - geox_petrophysics
+      - geox_prospect
+      - geox_seismic_compute
+      - geox_seismic_ingest
+      - geox_seismic_interpret
+      - geox_sequence
+      - geox_subsurface_model
+      - geox_surface_status
+      - geox_well_desk
+      - geox_well_ingest
+    tool_count: 15
+    rule: "All 15 canonical tools are callable. No phantom exports. No fragmented verbs."
+
+  wealth:
+    role: capital_intelligence
+    port: 18082
+    canonical_tools:
+      - capital_primitive
+      - capital_health
+      - capital_diagnose
+      - capital_wisdom
+      - capital_market
+      - capital_ledger
+      - capital_registry
+      - capital_entropy
+      - wealth_institutional_stress_index
+      - wealth_cascade_model
+      - wealth_governance_capacity
+      - wealth_external_exploitation_detect
+    tool_count: 12
+    rule: "All 12 canonical tools carry wrap_result envelope. Array/dict params use _coerce()."
+
+  well:
+    role: human_readiness
+    port: 18083
+    canonical_tools:
+      - well_13_signal_coverage
+      - well_assess_homeostasis
+      - well_assess_livelihood
+      - well_assess_metabolism
+      - well_assess_reliability
+      - well_assess_sovereign_entropy
+      - well_attest_to_kernel
+      - well_check_repair
+      - well_classify_state
+      - well_classify_substrate
+      - well_compute_metabolic_flux
+      - well_correction_capacity
+      - well_dark_geometry_mirror
+      - well_detect_boundary
+      - well_guard_dignity
+      - well_handoff_dignity_to_arifos
+      - well_handoff_livelihood_to_wealth
+      - well_health_check
+      - well_measure_gradient
+      - well_medical_boundary
+      - well_niat_impact_mirror
+      - well_readiness
+      - well_registry_status
+      - well_regulation_recovery
+      - well_sabar_latency
+      - well_signal_coverage
+      - well_trace_lineage
+      - well_trust_compression
+      - well_validate_vitality
+    tool_count: 29
+    rule: >
+      Canonical tools list is authoritative — verified via MCP handshake 2026-07-14.
+      well_registry_status must test THIS list, not internal registrations.
+      No tool named well_system_registry_status exists.
+
+  aforge:
+    role: execution_shell
+    port: 7071
+    canonical_tools:
+      - forge_health_check
+      - forge_registry_status
+      - forge_status
+      - forge_probe
+      - forge_session_init
+      - forge_judge_proxy
+      - forge_lease
+      - forge_execute
+      - forge_shell
+      - forge_git
+      - forge_docker
+      - forge_filesystem
+      - forge_fetch
+      - forge_search
+      - forge_vault
+      - forge_memory
+      - forge_witness
+      - forge_evaluate
+      - forge_scar
+      - forge_cool_drift
+      - forge_cool_pattern
+      - forge_receipt_draft
+    tool_count: 22
+    rule: >
+      A-FORGE exports 22 governed tools.
+      forge_execute requires session + lease + kernel verdict.
+      forge_dry_run remains a runtime helper but is not part of the public 7071 MCP surface.
+      Every execution produces a receipt.
+
+  aaa:
+    role: control_plane
+    port: 3001
+    canonical_tools: []  # AAA is A2A gateway, not a tool surface
+    tool_count: 0
+    rule: "AAA provides A2A gateway and cockpit. No direct MCP tools."
+
+# ─── CONFORMANCE TESTS ────────────────────────────────────────────────
+conformance_tests:
+  version: "1.0"
+  tests:
+    - id: CT-01
+      name: connector_discovery
+      desc: "Every organ responds to tools/list with correct count"
+      check: "tools/list returns exactly tool_count tools per organ"
+
+    - id: CT-02
+      name: tool_name_equality
+      desc: "Exported names match canonical names exactly"
+      check: "exported_tools == canonical_tools (no phantoms, no missing)"
+
+    - id: CT-03
+      name: safe_callability
+      desc: "Every canonical tool responds to a safe invocation"
+      check: "Call each tool with minimal valid params, expect 200"
+
+    - id: CT-04
+      name: actor_propagation
+      desc: "Actor identity survives full trajectory"
+      check: "Init session as ARIF → call organ tool → verify actor_id in receipt"
+
+    - id: CT-05
+      name: session_propagation
+      desc: "Session ID survives full trajectory"
+      check: "Init session → call organ → verify session_id in receipt"
+
+    - id: CT-06
+      name: evidence_envelope
+      desc: "Every tool output carries evidence envelope"
+      check: "All outputs have tool_name, epistemic_tag, evidence_quality"
+
+    - id: CT-07
+      name: authority_reduction
+      desc: "Missing identity reduces authority to OBSERVE_ONLY"
+      check: "Call without identity → verify effective_authority = OBSERVE_ONLY"
+
+    - id: CT-08
+      name: dry_run_default
+      desc: "A-FORGE defaults to dry_run"
+      check: "forge_execute without explicit mode → verify dry_run behavior"
+
+    - id: CT-09
+      name: receipt_write
+      desc: "VAULT999 receipt write succeeds"
+      check: "forge_vault(mode=seal) → verify receipt in chain"
+
+    - id: CT-10
+      name: receipt_replay
+      desc: "VAULT999 receipt replay succeeds"
+      check: "Read receipt → verify all fields present → verify chain integrity"
+
+# ─── DEPLOYMENT PROVENANCE ────────────────────────────────────────────
+deployment_provenance:
+  version: "1.0"
+  required_fields:
+    repo: { type: string }
+    commit: { type: string }
+    dirty: { type: boolean }
+    build_hash: { type: string }
+    started_at: { type: string, format: "ISO-8601" }
+    contract_epoch: { type: string }
+  rule: >
+    Every organ response should include deployment provenance.
+    Deployed commit must match GitHub commit for the canonical branch.
+
+# ─── REPAIR SEQUENCE ──────────────────────────────────────────────────
+repair_sequence:
+  phase_1: "Freeze contract (THIS FILE) — done"
+  phase_2: "Build conformance suite from CT-01 to CT-10"
+  phase_3: "Repair GEOX vertical first (lowest entropy, 15 tools callable)"
+  phase_4: "Fix WEALTH transport (done — 421 resolved)"
+  phase_5: "Align all public registries to this contract"
+  phase_6: "Introduce A-FORGE execution (dry-run first)"
+  phase_7: "Shadow-run federation, compare old vs new paths"
