@@ -16,17 +16,22 @@
   },
   "agent_class": "C2",
   "lane": "333-THINK → GEOX → EXECUTE",
-  "capabilities": [
-    "basin-context-retrieval",
-    "physics-simulation-stratigraphy",
-    "prospect-identification",
-    "volumetrics-computation",
-    "risk-assessment-matrix",
-    "visual-generation-charts-maps",
-    "well-proposal-drafting",
-    "evidence-chain-tagging",
-    "self-falsification-contrast-detection"
-  ],
+  "version": "0.9.0",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true,
+    "basin-context-retrieval": true,
+    "physics-simulation-stratigraphy": true,
+    "prospect-identification": true,
+    "volumetrics-computation": true,
+    "risk-assessment-matrix": true,
+    "visual-generation-charts-maps": true,
+    "well-proposal-drafting": true,
+    "evidence-chain-tagging": true,
+    "self-falsification-contrast-detection": true
+  },
   "organ_affinity": [
     "GEOX:8081",
     "WEALTH:18082"
@@ -111,5 +116,20 @@
   "defaultOutputModes": [
     "text/plain",
     "application/json"
+  ],
+  "_schema_normalization": {
+    "applied": "2026-07-14T13:13:50Z by FI-008 Kimi per KIMI-INIT-AGENT-INDEX blueprint",
+    "action": "Converted capabilities from string array to object (arifOS/agent-card/v2.2.0 schema compliance). Added version:0.9.0.",
+    "delta_S": "≤ 0 (schema compliance, no behavior change)"
+  },
+  "signatures": [
+    {
+      "did": "did:arif:prospect-maturation",
+      "proofValue": "PENDING_KIMI_INIT_2026-07-14",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-14T13:13:50Z",
+      "type": "Ed25519Signature2020",
+      "note": "Placeholder — sovereign signature required for live SEAL-grade operations. Pending F13 ack."
+    }
   ]
 }
