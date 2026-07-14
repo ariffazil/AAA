@@ -29,6 +29,58 @@ def sha256_content(content: str) -> str:
     return hashlib.sha256(content.encode("utf-8")).hexdigest()
 
 
+def manifest_tool_rows(
+    names: list[str],
+    *,
+    version: str,
+    read_only_overrides: dict[str, bool] | None = None,
+    authority_overrides: dict[str, str] | None = None,
+) -> list[dict]:
+    rows: list[dict] = []
+    read_only_overrides = read_only_overrides or {}
+    authority_overrides = authority_overrides or {}
+    for name in names:
+        read_only = read_only_overrides.get(
+            name,
+            not any(
+                kw in name
+                for kw in ("log", "update", "write", "seal", "execute", "apply", "create", "submit", "save")
+            ),
+        )
+        authority = authority_overrides.get(name, "NONE")
+        rows.append(
+            {
+                "name": name,
+                "version": version,
+                "read_only": read_only,
+                "destructive": not read_only,
+                "idempotent": read_only,
+                "output_schema_sha256": sha256_content(name),
+                "authority_required": authority,
+            }
+        )
+    return rows
+
+
+def load_yaml_manifest_tools(
+    manifest_path: str,
+    *,
+    only_public: bool = True,
+    require_plugin_exposed: bool = False,
+) -> list[str]:
+    import yaml
+
+    payload = yaml.safe_load(Path(manifest_path).read_text(encoding="utf-8"))
+    tools = []
+    for entry in payload.get("tools", []):
+        if only_public and entry.get("visibility") != "public":
+            continue
+        if require_plugin_exposed and not (entry.get("plugin") or {}).get("exposed", False):
+            continue
+        tools.append(str(entry["name"]))
+    return tools
+
+
 def extract_tools_from_file(filepath: str, prefix: str) -> list[dict]:
     """Extract @mcp.tool registrations from a Python file."""
     tools = []
@@ -343,7 +395,16 @@ def generate_wealth_manifest() -> dict:
 
 # ── GEOX ───────────────────────────────────────────────────────────────────
 def generate_geox_manifest() -> dict:
-    tools = extract_tools_from_file("/root/geox/src/geox_mcp/server.py", "geox_")
+    tools = manifest_tool_rows(
+        load_yaml_manifest_tools(
+            "/root/GEOX/src/geox_mcp/tools_manifest.yaml",
+            only_public=True,
+            require_plugin_exposed=True,
+        ),
+        version=SCHEMA_VERSION,
+        read_only_overrides={"geox_claim": False},
+        authority_overrides={"geox_claim": "888_HOLD"},
+    )
     resources = extract_resources_from_file("/root/geox/src/geox_mcp/server.py")
     prompts = extract_prompts_from_file("/root/geox/src/geox_mcp/server.py")
 
@@ -432,18 +493,21 @@ def generate_geox_manifest() -> dict:
 
 # ── WELL ───────────────────────────────────────────────────────────────────
 def generate_well_manifest() -> dict:
-    tools = extract_tools_from_file("/root/WELL/server.py", "well_")
+    tools = manifest_tool_rows(
+        [
+            "well_classify_substrate",
+            "well_validate_vitality",
+            "well_assess_reliability",
+            "well_assess_homeostasis",
+            "well_check_repair",
+            "well_guard_dignity",
+            "well_trace_lineage",
+            "well_registry_status",
+        ],
+        version=SCHEMA_VERSION,
+    )
     resources = extract_resources_from_file("/root/WELL/server.py")
     prompts = extract_prompts_from_file("/root/WELL/server.py")
-
-    # Deduplicate tools by name
-    seen = set()
-    deduped_tools = []
-    for t in tools:
-        if t["name"] not in seen:
-            seen.add(t["name"])
-            deduped_tools.append(t)
-    tools = deduped_tools
 
     # Add canonical resource URIs
     canonical_resources = [
@@ -634,72 +698,18 @@ def generate_aaa_manifest() -> dict:
 
 # ── A-FORGE ────────────────────────────────────────────────────────────────
 def generate_aforge_manifest() -> dict:
-    # A-FORGE is an actuator — executes only after judge authorization
-    tools = [
-        {
-            "name": "forge_dry_run",
-            "version": SCHEMA_VERSION,
-            "read_only": True,
-            "destructive": False,
-            "idempotent": True,
-            "output_schema_sha256": sha256_content("forge_dry_run"),
-            "authority_required": "NONE",
-        },
-        {
-            "name": "forge_approve",
-            "version": SCHEMA_VERSION,
-            "read_only": False,
-            "destructive": False,
-            "idempotent": True,
-            "output_schema_sha256": sha256_content("forge_approve"),
-            "authority_required": "888_HOLD",
-        },
-        {
-            "name": "forge_execute",
-            "version": SCHEMA_VERSION,
-            "read_only": False,
-            "destructive": True,
-            "idempotent": False,
-            "output_schema_sha256": sha256_content("forge_execute"),
-            "authority_required": "JUDGE_SEAL_AUTHORIZATION",
-        },
-        {
-            "name": "forge_run",
-            "version": SCHEMA_VERSION,
-            "read_only": False,
-            "destructive": True,
-            "idempotent": False,
-            "output_schema_sha256": sha256_content("forge_run"),
-            "authority_required": "JUDGE_SEAL_AUTHORIZATION",
-        },
-        {
-            "name": "forge_lease_request",
-            "version": SCHEMA_VERSION,
-            "read_only": True,
-            "destructive": False,
-            "idempotent": True,
-            "output_schema_sha256": sha256_content("forge_lease_request"),
-            "authority_required": "NONE",
-        },
-        {
-            "name": "forge_lease_status",
-            "version": SCHEMA_VERSION,
-            "read_only": True,
-            "destructive": False,
-            "idempotent": True,
-            "output_schema_sha256": sha256_content("forge_lease_status"),
-            "authority_required": "NONE",
-        },
-        {
-            "name": "forge_federation_probe",
-            "version": SCHEMA_VERSION,
-            "read_only": True,
-            "destructive": False,
-            "idempotent": True,
-            "output_schema_sha256": sha256_content("forge_federation_probe"),
-            "authority_required": "NONE",
-        },
-    ]
+    tools = manifest_tool_rows(
+        [
+            "forge_registry_status",
+            "forge_probe",
+            "forge_execute",
+            "forge_runtime_verify",
+            "forge_receipt_draft",
+        ],
+        version=SCHEMA_VERSION,
+        read_only_overrides={"forge_execute": False},
+        authority_overrides={"forge_execute": "JUDGE_SEAL_AUTHORIZATION"},
+    )
 
     resources = [
         {
@@ -768,7 +778,7 @@ def generate_aforge_manifest() -> dict:
         "organ": "aforge",
         "manifest_version": SCHEMA_VERSION,
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "bind": "127.0.0.1:7071",
+        "bind": "127.0.0.1:7072",
         "tools": tools,
         "resources": resources,
         "prompts": prompts,

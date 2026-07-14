@@ -229,7 +229,7 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 | Organ | Port | Role | MCP Endpoint | Git Remote | Systemd Unit |
 |-------|------|------|-------------|------------|--------------|
 | **arifOS** | 8088 | Governance kernel — F1-F13, 888 JUDGE, VAULT999, routing, audit | `https://arifos.arif-fazil.com/mcp` | `ariffazil/arifos` | `arifos.service` |
-| **A-FORGE** | 7071 | Engineering actuator — plan, simulate, execute, rollback | `https://mcp.arif-fazil.com/mcp` via `forge.arif-fazil.com/mcp` redirect | `ariffazil/A-FORGE` | `a-forge.service` |
+| **A-FORGE** | 7071 | Engineering actuator — plan, simulate, execute, rollback | `https://mcp.arif-fazil.com/mcp` via `forge.arif-fazil.com/mcp` redirect | `ariffazil/A-FORGE` | `a-forge-mcp.service` |
 | **AAA** | 3001 | Cockpit / identity / A2A authority layer | — | `ariffazil/AAA` | `aaa-a2a.service` |
 | **GEOX** | 8081 | Earth intelligence — wells, seismic, petrophysics | `https://geox.arif-fazil.com/mcp` | `ariffazil/geox` | `geox-mcp.service` |
 | **WEALTH** | 18082 | Capital intelligence — NPV, IRR, EMV, stock analysis | `https://wealth.arif-fazil.com/mcp` | `ariffazil/wealth` | `wealth-organ.service` |

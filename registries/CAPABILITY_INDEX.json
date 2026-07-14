@@ -3,11 +3,11 @@
   "protocol": "MCP",
   "protocolVersion": "3.4.0",
   "forgedAt": "2026-06-06T06:26:44.495194+00:00",
-  "total_tools": 163,
+  "total_tools": 164,
   "servers": [
     {
       "name": "WEALTH",
-      "tools": 26,
+      "tools": 27,
       "port": 18082,
       "bind": "127.0.0.1"
     },
@@ -491,7 +491,7 @@
     {
       "id": "wealth_governance_verdict",
       "name": "wealth_governance_verdict",
-      "description": "Final Allocation Verdict — sovereign governance recommendation.",
+      "description": "Final Allocation Verdict \u2014 sovereign governance recommendation.",
       "server": "WEALTH",
       "tags": [
         "governance",
@@ -509,7 +509,7 @@
     {
       "id": "wealth_preference_rank",
       "name": "wealth_preference_rank",
-      "description": "Personal Utility Ranking — preference ordering under constraints.",
+      "description": "Personal Utility Ranking \u2014 preference ordering under constraints.",
       "server": "WEALTH",
       "tags": [
         "preference",
@@ -527,7 +527,7 @@
     {
       "id": "wealth_agent_path",
       "name": "wealth_agent_path",
-      "description": "Sovereign Intent Router — classifies tasks into L1/L2 physics-economic paths.",
+      "description": "Sovereign Intent Router \u2014 classifies tasks into L1/L2 physics-economic paths.",
       "server": "WEALTH",
       "tags": [
         "routing",
@@ -545,7 +545,7 @@
     {
       "id": "wealth_ledger_query",
       "name": "wealth_ledger_query",
-      "description": "Ledger Read — query the immutable governance ledger.",
+      "description": "Ledger Read \u2014 query the immutable governance ledger.",
       "server": "WEALTH",
       "tags": [
         "ledger",
@@ -562,7 +562,7 @@
     {
       "id": "wealth_ledger_write",
       "name": "wealth_ledger_write",
-      "description": "Ledger Append — irreversible state transition to VAULT999.",
+      "description": "Ledger Append \u2014 irreversible state transition to VAULT999.",
       "server": "WEALTH",
       "tags": [
         "ledger",
@@ -580,7 +580,7 @@
     {
       "id": "wealth_conservation_capital",
       "name": "wealth_conservation_capital",
-      "description": "Conservation — capital stock reality (assets, liabilities, reserves).",
+      "description": "Conservation \u2014 capital stock reality (assets, liabilities, reserves).",
       "server": "WEALTH",
       "tags": [
         "capital",
@@ -598,7 +598,7 @@
     {
       "id": "wealth_flow_liquidity",
       "name": "wealth_flow_liquidity",
-      "description": "Flow — liquidity movement (cashflow, burn, runway, survival).",
+      "description": "Flow \u2014 liquidity movement (cashflow, burn, runway, survival).",
       "server": "WEALTH",
       "tags": [
         "liquidity",
@@ -616,7 +616,7 @@
     {
       "id": "wealth_gradient_price",
       "name": "wealth_gradient_price",
-      "description": "Gradient — price pressure, spread, mispricing detection.",
+      "description": "Gradient \u2014 price pressure, spread, mispricing detection.",
       "server": "WEALTH",
       "tags": [
         "price",
@@ -634,7 +634,7 @@
     {
       "id": "wealth_entropy_risk",
       "name": "wealth_entropy_risk",
-      "description": "Entropy — uncertainty, dispersion, tail risk, disorder.",
+      "description": "Entropy \u2014 uncertainty, dispersion, tail risk, disorder.",
       "server": "WEALTH",
       "tags": [
         "risk",
@@ -652,7 +652,7 @@
     {
       "id": "wealth_energy_productivity",
       "name": "wealth_energy_productivity",
-      "description": "Energy — output per input, productivity, capital efficiency.",
+      "description": "Energy \u2014 output per input, productivity, capital efficiency.",
       "server": "WEALTH",
       "tags": [
         "productivity",
@@ -669,7 +669,7 @@
     {
       "id": "wealth_time_discount",
       "name": "wealth_time_discount",
-      "description": "Time — NPV, IRR, payback, compounding, decay.",
+      "description": "Time \u2014 NPV, IRR, payback, compounding, decay.",
       "server": "WEALTH",
       "tags": [
         "npv",
@@ -687,7 +687,7 @@
     {
       "id": "wealth_inertia_leverage",
       "name": "wealth_inertia_leverage",
-      "description": "Inertia — resistance to change, leverage stress, fragility.",
+      "description": "Inertia \u2014 resistance to change, leverage stress, fragility.",
       "server": "WEALTH",
       "tags": [
         "leverage",
@@ -705,7 +705,7 @@
     {
       "id": "wealth_field_macro",
       "name": "wealth_field_macro",
-      "description": "Field — macro environment (rates, FX, energy, carbon, regime).",
+      "description": "Field \u2014 macro environment (rates, FX, energy, carbon, regime).",
       "server": "WEALTH",
       "tags": [
         "macro",
@@ -724,7 +724,7 @@
     {
       "id": "wealth_signal_information",
       "name": "wealth_signal_information",
-      "description": "Signal — information value, evidence quality, schema validity.",
+      "description": "Signal \u2014 information value, evidence quality, schema validity.",
       "server": "WEALTH",
       "tags": [
         "signal",
@@ -742,7 +742,7 @@
     {
       "id": "wealth_game_coordination",
       "name": "wealth_game_coordination",
-      "description": "Game — multi-agent incentives, bargaining, coordination.",
+      "description": "Game \u2014 multi-agent incentives, bargaining, coordination.",
       "server": "WEALTH",
       "tags": [
         "game-theory",
@@ -760,7 +760,7 @@
     {
       "id": "wealth_boundary_governance",
       "name": "wealth_boundary_governance",
-      "description": "Boundary — constitutional floors, maruah, stewardship, constraint.",
+      "description": "Boundary \u2014 constitutional floors, maruah, stewardship, constraint.",
       "server": "WEALTH",
       "tags": [
         "boundary",
@@ -778,7 +778,7 @@
     {
       "id": "wealth_system_registry_status",
       "name": "wealth_system_registry_status",
-      "description": "Registry truth diagnostic — intended, registered, and alias surfaces.",
+      "description": "Registry truth diagnostic \u2014 intended, registered, and alias surfaces.",
       "server": "WEALTH",
       "tags": [
         "registry",
@@ -795,7 +795,7 @@
     {
       "id": "wealth_omni_wisdom",
       "name": "wealth_omni_wisdom",
-      "description": "Unified capital intelligence — synthesis + deal + hysteresis in one tool.",
+      "description": "Unified capital intelligence \u2014 synthesis + deal + hysteresis in one tool.",
       "server": "WEALTH",
       "tags": [
         "synthesis",
@@ -813,7 +813,7 @@
     {
       "id": "wealth_inequality_kernel",
       "name": "wealth_inequality_kernel",
-      "description": "Inequality Kernel — unified diagnosis across all 5 inequality dimensions.",
+      "description": "Inequality Kernel \u2014 unified diagnosis across all 5 inequality dimensions.",
       "server": "WEALTH",
       "tags": [
         "inequality",
@@ -827,6 +827,26 @@
       "approval_policy": "hold",
       "requires_888": false,
       "version": "2026.06.05"
+    },
+    {
+      "id": "capital_market",
+      "name": "capital_market",
+      "description": "Market data surface \u2014 FX, commodities, macro indicators, and gold intelligence. Modes: fx, commodity, indicator, stock, gold.",
+      "server": "WEALTH",
+      "tags": [
+        "market",
+        "fx",
+        "commodity",
+        "gold",
+        "macro",
+        "capital"
+      ],
+      "epistemic_tag": "OBSERVED",
+      "risk_tier": "low",
+      "execution_kind": "read",
+      "approval_policy": "auto",
+      "requires_888": false,
+      "version": "2026.07.14"
     },
     {
       "id": "mcp_health_check",
@@ -1024,7 +1044,7 @@
     {
       "id": "well_compute_metabolic_flux",
       "name": "well_compute_metabolic_flux",
-      "description": "Compute metabolic_flux — unified thermodynamic entropy rate.",
+      "description": "Compute metabolic_flux \u2014 unified thermodynamic entropy rate.",
       "server": "WELL",
       "tags": [
         "metabolic-flux",
@@ -1076,7 +1096,7 @@
     {
       "id": "well_system_registry_status",
       "name": "well_system_registry_status",
-      "description": "WELL registry truth probe — somatic surface vs autonomic internals.",
+      "description": "WELL registry truth probe \u2014 somatic surface vs autonomic internals.",
       "server": "WELL",
       "tags": [
         "registry",
@@ -1093,7 +1113,7 @@
     {
       "id": "well_registry_status",
       "name": "well_registry_status",
-      "description": "WELL registry truth diagnostic — blueprint canonical format.",
+      "description": "WELL registry truth diagnostic \u2014 blueprint canonical format.",
       "server": "WELL",
       "tags": [
         "registry",
@@ -2185,7 +2205,7 @@
     {
       "id": "geox_blend_volume_alpha_tool",
       "name": "geox_blend_volume_alpha_tool",
-      "description": "Alpha blend 2 or 3 seismic volumes with weighted opacities. Pure geoscience compute — no file I/O.",
+      "description": "Alpha blend 2 or 3 seismic volumes with weighted opacities. Pure geoscience compute \u2014 no file I/O.",
       "server": "GEOX",
       "tags": [
         "geoscience",

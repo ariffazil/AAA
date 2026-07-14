@@ -1,0 +1,207 @@
+# Federation Manifest — Single Source of Truth
+# Generated: 2026-07-14T16:00:00+08:00
+# Canonical location: /root/AAA/federation-manifest.yaml
+# Every organ's deployment must match this manifest.
+
+federation:
+  epoch: "2026.07"
+  schema_version: "2.0.0"
+  sovereign: ARIF
+  contract_hash: null  # Computed after all organs attest
+
+organs:
+
+  arifos:
+    role: constitutional_kernel
+    repo: ariffazil/arifos
+    branch: main
+    local_port: 8088
+    external_endpoint: https://arifos.arif-fazil.com
+    mcp_endpoint: /mcp
+    transport: streamable-http
+    health_endpoint: /health
+    deployment:
+      commit: a3c983a
+      release: v2026.07.09-SPINE-P0
+      started_at: "2026-07-14T14:25:15Z"
+      marker: /opt/arifos/app/.git_commit
+    tools:
+      public: 8
+      internal_registry: 59
+      diagnostic: 40
+    status: HOLD
+    known_issues:
+      - identity_propagation_loss (ARIF → openclaw-anon)
+      - capability_graph_unregistered_compose
+      - contradictory_authority_fields
+
+  aforge:
+    role: execution_shell
+    repo: ariffazil/A-FORGE
+    branch: main
+    local_port: 7071
+    external_endpoint: https://forge.arif-fazil.com
+    mcp_endpoint: /mcp
+    transport: streamable-http
+    health_endpoint: /health
+    deployment:
+      commit: b463cf3
+      started_at: null
+    tools:
+      mcp_reported: 59
+    status: ALIVE
+    known_issues:
+      - chatgpt_connector_discovers_no_tools
+      - needs_export_surface_audit
+
+  geox:
+    role: earth_intelligence
+    repo: ariffazil/GEOX
+    branch: main
+    local_port: 8081
+    external_endpoint: https://geox.arif-fazil.com
+    mcp_endpoint: /mcp
+    transport: streamable-http
+    health_endpoint: /health
+    deployment:
+      commit: 5d9647a
+      branch_actual: fix/evidence-uncertainty-type-guard
+    tools:
+      canonical: 15
+      all_callable: true
+    status: ALIVE
+    known_issues:
+      - plugin_export_21_phantom_names
+      - plugin_export_14_export_only_tools
+      - registry_reports_DRIFT
+      - on_feature_branch_not_main
+
+  wealth:
+    role: capital_intelligence
+    repo: ariffazil/wealth
+    branch: main
+    local_port: 18082
+    external_endpoint: https://wealth.arif-fazil.com
+    mcp_endpoint: /mcp
+    transport: streamable-http
+    health_endpoint: /health
+    deployment:
+      commit: e743512
+      dirty_files: 5
+    tools:
+      canonical: 7
+    status: ALIVE_LOCAL_ONLY
+    known_issues:
+      - external_mcp_returns_421 (Caddy/CF routing)
+      - pycache_serialization_bug (FIXED 2026-07-14)
+      - output_envelope_missing_tool_name (FIXED 2026-07-14)
+      - fiscal_breakeven_formula_bug
+      - github_duplicate_arifWEALTH_empty
+
+  well:
+    role: human_readiness
+    repo: ariffazil/well
+    branch: main
+    local_port: 18083
+    external_endpoint: https://well.arif-fazil.com
+    mcp_endpoint: /mcp
+    transport: json-rpc + streamable-http
+    health_endpoint: /health
+    deployment:
+      commit: 653be6c
+    tools:
+      mcp_reported: 78
+    status: ALIVE
+    known_issues:
+      - false_REGISTRY_PASS (well_system_registry_status not callable)
+      - intended_vs_registered_count_ambiguity
+      - registry_tests_internal_not_exported_surface
+
+  aaa:
+    role: control_plane
+    repo: ariffazil/AAA
+    branch: main
+    local_port: 3001
+    external_endpoint: https://aaa.arif-fazil.com
+    deployment:
+      commit: 6c63c8c
+      dirty_files: 5
+    status: ALIVE
+
+  vault999:
+    role: immutable_audit
+    records: 171
+    head_seq: 9915
+    timestamps_present: 22
+    timestamps_missing: 140
+    chain_breaks: 1
+    status: INTACT_BUT_DEGRADED
+
+# Cross-organ contracts
+contracts:
+  identity_envelope:
+    required_fields: [actor_id, sovereign_id, session_id, delegation_mode]
+    version: "1.0"
+  
+  evidence_receipt:
+    required_fields: [tool_name, domain, epistemic_tag, evidence_quality, source_attribution]
+    version: "1.0"
+  
+  verdict_enums: [SEAL, HOLD, SABAR, VOID, UNKNOWN]
+  
+  autonomy_bands: [OBSERVE_ONLY, ANALYZE, RECOMMEND, REVERSIBLE_EXECUTE, CONSEQUENTIAL]
+
+  connector_diagnostic:
+    required_fields:
+      - status: [PASS, DRIFT, FAIL]
+      - transport.reachable
+      - transport.protocol
+      - identity.actor_propagation_test
+      - registry.intended
+      - registry.registered
+      - registry.exported
+      - registry.callable
+      - registry.phantom
+      - deployment.repo
+      - deployment.commit
+      - contracts.federation_epoch
+      - contracts.compatible
+
+# Priority fix sequence
+priority_fixes:
+  P0:
+    - id: P0.1
+      desc: WEALTH external MCP 421 routing
+      organ: wealth
+      status: LOCAL_WORKS_EXTERNAL_BLOCKED
+      action: Debug Caddy/CF TLS routing for /mcp path
+
+    - id: P0.2
+      desc: A-FORGE ChatGPT connector discovery
+      organ: aforge
+      status: TOOLS_EXIST_BUT_UNDISCOVERABLE
+      action: Audit ChatGPT plugin registration and export surface
+
+    - id: P0.3
+      desc: arifOS identity propagation
+      organ: arifos
+      status: ACTOR_LOST_BETWEEN_LAYERS
+      action: Fix session token passthrough in all wrappers
+
+    - id: P0.4
+      desc: Single manifest for capability graph
+      organ: all
+      status: MULTIPLE_INCONSISTENT_REGISTRIES
+      action: Generate all surfaces from this manifest
+
+    - id: P0.5
+      desc: WELL false REGISTRY_PASS
+      organ: well
+      status: REGISTRY_TESTS_WRONG_SURFACE
+      action: Test exported connector surface, not internal
+
+    - id: P0.6
+      desc: GEOX plugin export alignment
+      organ: geox
+      status: 21_PHANTOM_14_EXPORT_ONLY
+      action: Remove stale exports, keep 15 canonical
