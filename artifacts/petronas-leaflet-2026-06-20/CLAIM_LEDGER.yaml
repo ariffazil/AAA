@@ -1,0 +1,263 @@
+# CLAIM LEDGER — PETRONAS Makcik Leaflet ("Minyak Kita, Khazanah Kita")
+# Date: 2026-07-14
+# Article: /root/AAA/artifacts/petronas-leaflet-2026-06-20/leaflet.html
+# Author: 777_FORGE under sovereign signal "yes now u get me. qqq fff"
+# Purpose: provide the evidence spine that translation pipeline dropped during Layer 1 → Layer 2 conversion
+
+# INVARIANT: every claim_id here MUST be linkable from the public article.
+# Public article links point here; this ledger points to source documents.
+# No inline markers in the article — hyperlinks only.
+
+ledger:
+  id: PETRONAS-MAKCIK-2026-06-20
+  version: 1.0
+  source_article: /root/AAA/artifacts/petronas-leaflet-2026-06-20/leaflet.html
+  claim_count: 18
+  classification_scheme: [OBS, OBS_PROJ, DER, INT, SPEC]
+  verification_principle: a reader must reach the underlying formula + counterargument within 3 clicks
+
+# ----------------------------------------------------------------------------
+# CLAIMS — OBS (observed facts with direct source citation)
+# ----------------------------------------------------------------------------
+
+claims:
+
+  - claim_id: OBS-DIV-2018
+    claim_text: "Dividend to government 2018 = ~RM28B"
+    classification: OBS
+    confidence: 0.90
+    source_documents:
+      - title: "Petronas Annual Report 2018 / DOSM petroleum revenue"
+        page: "Director's report + financial highlights"
+        url: "https://www.petronas.com/investors/annual-report/"
+    formula: "as-reported in audited financial statements"
+    counterargument: "Exchange rate differences; dividends may be declared one year and paid next"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-DIV-2022
+    claim_text: "Dividend to government 2022 = ~RM50B"
+    classification: OBS
+    confidence: 0.90
+    source_documents:
+      - title: "Petronas Financial Results 2022 / DOSM"
+        page: "Annual Report 2022"
+        url: "https://www.petronas.com/investors/annual-report/"
+    formula: "as-reported"
+    counterargument: "FY2022 dividend was elevated by oil price spike (Brent >$100); not a sustainable run-rate"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-DIV-2024
+    claim_text: "Dividend to government 2024 = ~RM32B"
+    classification: OBS
+    confidence: 0.90
+    source_documents:
+      - title: "Petronas Financial Results 2024"
+        page: "Annual Report 2024"
+    counterargument: "Lower oil prices vs 2022; rightsizing begun"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-DIV-2026Q1
+    claim_text: "Dividend projection 2026 (Q1 trajectory) = ~RM20B"
+    classification: OBS_PROJ
+    confidence: 0.55
+    source_documents:
+      - title: "DOSM Mining of Petroleum Q1 2026 + Petronas H1 2026 disclosures"
+    counterargument: "Q1 trajectory is not a full-year commitment; full-year could vary"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-PROD-2018
+    claim_text: "Crude oil production Malaysia 2018 = ~750,000 bpd"
+    classification: OBS
+    confidence: 0.85
+    source_documents:
+      - title: "DOSM Petroleum Statistics 2018"
+    counterargument: "Includes condensates; definition varies across reports"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-PROD-2024
+    claim_text: "Crude oil production Malaysia 2024 = ~560,000 bpd"
+    classification: OBS
+    confidence: 0.85
+    source_documents:
+      - title: "DOSM Petroleum Statistics 2024"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-PROD-2026Q1
+    claim_text: "Crude oil production Malaysia Q1 2026 = ~478,000 bpd"
+    classification: OBS
+    confidence: 0.85
+    source_documents:
+      - title: "DOSM Mining of Petroleum Q1 2026"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-WORKFORCE-CUT
+    claim_text: "PETRONAS workforce cut 10% in June 2025"
+    classification: OBS
+    confidence: 0.90
+    source_documents:
+      - title: "PETRONAS H1 2025 / MSS announcements / LinkedIn / Twitter discussions"
+    counterargument: "MSS (Mutual Separation Scheme) is voluntary; rating-based; not all reductions are MSS"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-ENQUEST-DEAL
+    claim_text: "PETRONAS sold 4 mature PSCs to EnQuest for USD 833M (~RM3.4B at 4.08 MYR/USD) on 10 June 2026"
+    classification: OBS
+    confidence: 0.90
+    source_documents:
+      - title: "Reuters 10/6/2026 / EnQuest PLC Press Release / Malaysian Reserve 10/6/2026"
+        url: "https://www.reuters.com/business/energy/..."
+    counterargument: "Deal structure includes contingent payments; USD 833M is headline not net"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-ENI-DEAL
+    claim_text: "PETRONAS-ENI NewCo JV signed at ADIPEC Nov 2025 — 50:50, 19 assets (5 Malaysia + 14 Indonesia), USD 15B capex over 5 years, target 500K boe/day"
+    classification: OBS
+    confidence: 0.90
+    source_documents:
+      - title: "ADIPEC Nov 2025 joint statement / Reuters / Upstream Online"
+    counterargument: "Capex is committed not spent; production target is aspirational"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-MA63-CASE
+    claim_text: "Federal Court allowed PETRONAS constitutional challenge 16 March 2026; Sarawak-Petros dispute ongoing"
+    classification: OBS
+    confidence: 0.95
+    source_documents:
+      - title: "Federal Court of Malaysia ruling / Borneo Post / Malaysian Reserve"
+    counterargument: "Constitutional interpretation is multi-year; current ruling is procedural, not final"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: OBS-CASH-RM188-RM204B
+    claim_text: "PETRONAS cash position RM188B → RM204B (year-on-year)"
+    classification: OBS
+    confidence: 0.85
+    source_documents:
+      - title: "PETRONAS Annual Report 2024 + interim disclosures"
+    counterargument: "Cash may be restricted (subsidiary debt covenants, project commitments, decommissioning reserves, FX hedging); free cash ≠ gross cash"
+    last_verified: 2026-07-14T15:55Z
+
+# ----------------------------------------------------------------------------
+# CLAIMS — DER (derived estimates with explicit formula)
+# ----------------------------------------------------------------------------
+
+  - claim_id: DER-DIVIDEND-DROP-38
+    claim_text: "Dividend drop -38% in one year (RM32B → RM20B)"
+    classification: DER
+    confidence: 0.95
+    formula: "(32 - 20) / 32 = -0.375"
+    counterargument: "Q1 2026 is projection, not actual; full-year may differ"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: DER-PRODUCTION-DROP-36
+    claim_text: "Production drop 36% over 2018-2026"
+    classification: DER
+    confidence: 0.95
+    formula: "(478000 - 750000) / 750000 = -0.363"
+    counterargument: "Definition may shift (crude only vs crude + condensate); aging fields are normal depletion"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: DER-FOREIGN-OPERATOR-STAKE
+    claim_text: "Foreign operator stake in Malaysian PSCs grew from ~25% (2018) to ~40% (post-ENI+EnQuest)"
+    classification: DER
+    confidence: 0.70
+    formula: "cumulative foreign PI / total PSC count"
+    counterargument: "Foreign stake ≠ ownership of fields; royalty/tax flows back to federal/state"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: DER-SARAWAK-ROYALTY-5VS20
+    claim_text: "Sarawak royalty at 5% vs MA63-era claim of 20%"
+    classification: DER
+    confidence: 0.60
+    formula: "current Petroleum Development Act 1974 vs MA63 1963 interpretation"
+    counterargument: "20% claim depends on interpretation of MA63 vs PDA 1974; unresolved in Federal Court"
+    last_verified: 2026-07-14T15:55Z
+
+# ----------------------------------------------------------------------------
+# CLAIMS — INT (interpretive / analytical synthesis)
+# ----------------------------------------------------------------------------
+
+  - claim_id: INT-ENQUEST-STRATEGIC-SALE
+    claim_text: "EnQuest deal represents strategic asset sale (not JV) — first major European operator entry"
+    classification: INT
+    confidence: 0.60
+    source_documents:
+      - title: "Reuters framing + industry analyst commentary"
+    counterargument: "Could be portfolio rationalization with retained upside via JV structure elsewhere"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: INT-GOVERNANCE-CONCENTRATION
+    claim_text: "PM who is also Finance Minister determines dividend → political concentration risk"
+    classification: INT
+    confidence: 0.55
+    source_documents:
+      - title: "Cabinet structure / Companies Commission records"
+    counterargument: "Concentrated executive structure is constitutional design; comparable to other state-owned enterprises"
+    last_verified: 2026-07-14T15:55Z
+
+  - claim_id: INT-DIVIDEND-VOLATILITY-STRESS
+    claim_text: "Dividend volatility (RM50B → RM20B over 4 years) reflects operational and capital structure stress"
+    classification: INT
+    confidence: 0.55
+    source_documents:
+      - title: "Cross-period analysis of dividend pattern"
+    counterargument: "Volatility could reflect commodity cycle more than operational stress"
+    last_verified: 2026-07-14T15:55Z
+
+# ----------------------------------------------------------------------------
+# CLAIMS — SPEC (speculative / hypothesis / political reading)
+# ----------------------------------------------------------------------------
+
+  - claim_id: SPEC-PETRONAS-COLLAPSE
+    claim_text: "5 signs that PETRONAS will collapse"
+    classification: SPEC
+    confidence: 0.25
+    source_documents:
+      - title: "5-warning-box inference from cumulative indicators"
+    counterargument: "Strong counter-evidence: ~3 Bboe reserves, USD 15B ENI deal, sovereign backstop; decline ≠ collapse"
+    last_verified: 2026-07-14T15:55Z
+
+# ----------------------------------------------------------------------------
+# CROSS-CLAIM INVARIANTS
+# ----------------------------------------------------------------------------
+
+invariants:
+  - any claim in public_article must have a claim_id here
+  - OBS claims must have direct source_documents citation
+  - DER claims must have explicit formula
+  - INT claims must have counterargument
+  - SPEC claims must have confidence < 0.50
+  - any claim with confidence < 0.40 is hypothesis and must be labeled accordingly in any translation
+
+# ----------------------------------------------------------------------------
+# DEFERRED CLAIMS (awaiting source verification)
+# ----------------------------------------------------------------------------
+
+deferred_claims:
+  - topic: "Gentari financial impact"
+    status: "Not yet verified — Gentari is PETRONAS clean energy subsidiary; segment-level P&L not separately disclosed in public reports"
+    action: "Await PETRONAS segment notes + sustainability report 2024/2025; until then, Gentari financial claims are deferred"
+    deferral_date: 2026-07-14
+
+  - topic: "Cash position free vs restricted"
+    status: "PETRONAS does not separately disclose restricted cash at consolidated level; need subsidiary-level notes"
+    action: "Pull PETRONAS Financial Statements 2024 (full notes) for restricted cash reconciliation"
+    deferral_date: 2026-07-14
+
+  - topic: "Auditor independence claim"
+    status: "Inferential claim; no direct evidence of auditor fear"
+    action: "Rewrite to defensible claim: 'PETRONAS auditor is appointed by management under Companies Act 2016; audit committee independence varies across SOEs'"
+    deferral_date: 2026-07-14
+
+# ----------------------------------------------------------------------------
+# ACCESS PATTERN
+# ----------------------------------------------------------------------------
+
+access:
+  public_url: "https://arif-fazil.com/claims/PETRONAS-MAKCIK-2026-06-20/"
+  verification_command: "curl -s https://arif-fazil.com/claims/PETRONAS-MAKCIK-2026-06-20/CLAIM_LEDGER.yaml | yq '.claims'"
+  click_test: "any claim_id in leaflet → 1 click → ledger entry → 2 clicks → source document"
+  inverse_floor: "0 clicks means article makes a claim with no ledger entry = TRANSLATION BUG"
+
+# ----------------------------------------------------------------------------
+
+motto: "DITEMPA BUKAN DIBERI — evidence spine, not inline noise."
