@@ -482,6 +482,8 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     });
   }
 
+  // FEDERATION SCHEMA ALIGNMENT L2 (canonical: arifOS/arifosmcp/schemas/federation_enums.py)
+  // See: /root/AAA/governance/FEDERATION_SCHEMA_ALIGNMENT.md
   mainRouter.get('/health', (req, res) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
     res.setHeader('Pragma', 'no-cache');
@@ -489,6 +491,7 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
       status: 'healthy',
       protocol: 'A2A',
       version: '1.0.0',
+      federation_schema_version: '2.0.0',
       gateway: 'AAA',
       auth: (req as AuthenticatedRequest).authContext?.authenticated ? 'enabled' : 'development',
     });

@@ -412,6 +412,7 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **Quantum kernel skill** | `/root/.agents/skills/quantum-kernel-runtime/SKILL.md` |
 | **Quantum kernel init** | `/root/AAA/prompts/QUANTUM_KERNEL_INIT.md` |
 | **Quantum runtime canon** | `/root/AAA/docs/architecture/QUANTUM_RUNTIME_ARCHITECTURE.md` |
+| **QQQ doctrine** | `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md` |
 | **APA session seal** | `/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md` |
 | **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
@@ -429,9 +430,81 @@ load /root/AAA/prompts/QUANTUM_KERNEL_INIT.md
 load /root/.agents/skills/quantum-kernel-runtime/SKILL.md
 ```
 
-**Corrections (3):** measurement ≠ decoherence · unitary ideal vs noise · |ψ⟩ description ≠ RAM.  
-**Loop:** SUPERPOSE → EVOLVE (floor-legal gates) → INTERFERE (evidence) → MEASURE (AKAL permit) → RECEIPT.  
-**AKAL:** commit only when authority · evidence · reversibility · lineage permit.  
+**Corrections (3):** measurement ≠ decoherence · unitary ideal vs noise · |ψ⟩ description ≠ RAM.
+**Loop:** SUPERPOSE → EVOLVE (floor-legal gates) → INTERFERE (evidence) → MEASURE (AKAL permit) → RECEIPT.
+**AKAL:** commit only when authority · evidence · reversibility · lineage permit.
+
+---
+
+## 13. QQQ — RECOMMENDATION DISCIPLINE (F2 + F4 + F7 operationalization)
+
+> **Doctrine:** `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md`
+> **Type:** Jurisprudence — operational protocol expressing existing floors, NOT a new floor
+> **Flow:** enumerate → measure → surface → recommend
+
+### When QQQ triggers
+
+QQQ activates on any output classified as `RECOMMENDATION`, `DECISION`, or `VERDICT`.
+It does NOT activate on `OBSERVATION`, `STATUS_REPORT`, or `QUESTION`.
+
+### The flow (not a checklist — a discipline)
+
+```
+BEFORE you recommend:
+
+1. Q1 QUALITATIVE — enumerate the full option space
+   - Minimum 5 paths
+   - Must include NULL (do nothing) and INVERSE (do the opposite)
+   - Categorize: CONSERVATIVE | AGGRESSIVE | NULL | INVERSE | LATERAL
+
+2. Q2 QUANTITATIVE — measure, don't assert
+   - Per path: blast_radius (BR-0..5), reversibility (REV-0..5), time_cost, confidence (0.0-1.0), prior_art (NONE|WEAK|STRONG)
+   - State dominance: which paths win on which metrics
+
+3. Q3 QUANTUM — surface what local reasoning misses
+   - Precedent: what pattern does this canonize?
+   - Interference: what non-local systems are affected?
+   - Superposition: what options collapse by choosing this?
+   - Observer: how does choosing change the choice space?
+
+THEN recommend. Only then.
+```
+
+### The rejection pattern
+
+When you see a recommendation missing QQQ:
+> "Recommendation inadmissible. QQQ envelope incomplete. Missing: [Q1/Q2/Q3]. Re-submit with full envelope."
+
+### The sovereignty boundary
+
+- You propose. Arif judges.
+- QQQ does not authorize. It ensures the proposal is well-formed.
+- INADMISSIBLE label, never suppression. Weak recommendations reach Arif with a scar.
+
+### The canonical envelope
+
+```
+RECOMMENDATION_ENVELOPE::v1.0
+--- Q1 QUALITATIVE ---
+paths: [{path_id, name, description, category}]  # min 5, incl NULL + INVERSE
+--- Q2 QUANTITATIVE ---
+metrics_per_path: [{blast_radius, reversibility, time_cost, confidence, prior_art}]
+dominance_analysis: [which paths dominate on which metrics]
+--- Q3 QUANTUM ---
+quantum_analysis: {precedent_effect, interference_effect, superposition_effect, observer_effect}
+--- VERDICT ---
+recommended_path_id | reasoning_trace | refusal_surface | sovereign_gate_required | qqq_compliance
+```
+
+### Floor binding
+
+| Floor | Binding | Why |
+|-------|---------|-----|
+| F2 TRUTH | HARD | Q1 demands option-space honesty |
+| F4 CLARITY | HARD | Q2 demands measured entropy reduction |
+| F7 HUMILITY | HARD | Q3 demands second-order awareness |
+| F11 AUDITABILITY | DERIVED | Envelope is fully auditable |
+| F13 SOVEREIGN | HARD | Arif's judgment is final |
 **Canon:** `AAA/docs/architecture/QUANTUM_RUNTIME_ARCHITECTURE.md` · `SUBSTRATE_GEOMETRY.md`.  
 **GEOX:** physics operators + evidence contracts — never chatbot geology.
 
