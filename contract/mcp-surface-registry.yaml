@@ -1,0 +1,222 @@
+# MCP Surface Registry — Single Source of Truth
+# Generated: 2026-07-14T17:00:00+08:00
+# Verified: LIVE scan via tools/list on all organs
+# Canonical location: /root/AAA/contract/mcp-surface-registry.yaml
+#
+# RULE: This file defines the PUBLIC tool surface of every organ.
+#       If a tool is not listed here, it does not exist for external callers.
+#       Internal/autonomic tools may exist beyond this list.
+#       Conformance tests derive from this file.
+
+registry:
+  version: "1.0.0"
+  generated: "2026-07-14T17:00:00+08:00"
+  verified_by: "live MCP tools/list scan"
+  total_tools: 169
+  total_organs: 6
+
+organs:
+
+  arifos:
+    port: 8088
+    role: constitutional_kernel
+    status: UP
+    transport: stateless
+    tools: 7
+    canonical_tools:
+      - arif_init
+      - arif_observe
+      - arif_think
+      - arif_route
+      - arif_judge
+      - arif_forge
+      - arif_seal
+    internal_tools: 60  # registered internally, not exported
+    notes: >
+      Kernel governs. Does not execute.
+      arif_judge is the only verdict emitter.
+      arif_seal writes to VAULT999.
+      All tools require identity envelope for non-OBSERVE actions.
+
+  geox:
+    port: 8081
+    role: earth_intelligence
+    status: UP
+    transport: session  # requires Mcp-Session-Id
+    tools: 15
+    canonical_tools:
+      - geox_basin          # Basin profile, resolve, macrostrat, backstrip
+      - geox_claim           # Claim lifecycle: create, validate, challenge, seal
+      - geox_deep_time_state # Earth state vector through deep time
+      - geox_geomechanics    # Bulk/shear/young modulus, stress polygon
+      - geox_gravmag_studio  # Gravity/magnetic forward modeling
+      - geox_petrophysics    # Vsh, porosity, Sw, permeability, QC
+      - geox_prospect        # Volumetrics, POS, EVOI, risk assessment
+      - geox_seismic_compute # Synthetic, well_tie, attribute, inversion
+      - geox_seismic_ingest  # SEG-Y I/O, header inspection
+      - geox_seismic_interpret # Horizon/fault picking, RSI, vision
+      - geox_sequence        # Sequence analysis, biostrat parsing
+      - geox_subsurface_model # Joint inversion, gravity/mag/MT forward
+      - geox_surface_status  # Registry probe, tool discovery
+      - geox_well_desk       # Interactive well view, publish, render
+      - geox_well_ingest     # LAS, SEG-Y, DST, deviation, tops
+    notes: >
+      All 15 tools callable. Physics guard enforced.
+      Evidence envelope mandatory (OBS/DER/INT/SPEC).
+      GEOX does NOT authorize drilling. arifOS judges.
+
+  wealth:
+    port: 18082
+    role: capital_intelligence
+    status: UP
+    transport: stateless
+    tools: 12
+    canonical_tools:
+      - capital_primitive                    # NPV, IRR, EMV, Monte Carlo, Kelly, Markowitz
+      - capital_health                       # Conservation, flow, runway, survival, breakeven
+      - capital_diagnose                     # Stress index, governance, cascade, exploitation
+      - capital_wisdom                       # Multi-dimensional wisdom evaluation
+      - capital_market                       # FX, commodity, indicator, stock data
+      - capital_ledger                       # VAULT999 capital ledger access
+      - capital_registry                     # Meta/introspection, schema, domains, health
+      - capital_entropy                      # Entropy integrity mesh
+      - wealth_institutional_stress_index    # Composite stress index
+      - wealth_cascade_model                 # Feedback loops between stress dimensions
+      - wealth_governance_capacity           # Board governance capacity
+      - wealth_external_exploitation_detect  # Simulative neutral detection
+    notes: >
+      Array/dict params use Coerced* Annotated types (BeforeValidator).
+      All tools carry wrap_result envelope with tool_name.
+      WEALTH computes. arifOS judges. Arif decides.
+      External MCP access: allowed_hosts includes wealth.arif-fazil.com.
+
+  well:
+    port: 18083
+    role: human_readiness
+    status: UP
+    transport: stateless
+    tools: 29
+    canonical_tools:
+      - well_13_signal_coverage
+      - well_assess_homeostasis
+      - well_assess_livelihood
+      - well_assess_metabolism
+      - well_assess_reliability
+      - well_assess_sovereign_entropy
+      - well_attest_to_kernel
+      - well_check_repair
+      - well_classify_state
+      - well_classify_substrate
+      - well_compute_metabolic_flux
+      - well_correction_capacity
+      - well_dark_geometry_mirror
+      - well_detect_boundary
+      - well_guard_dignity
+      - well_handoff_dignity_to_arifos
+      - well_handoff_livelihood_to_wealth
+      - well_health_check
+      - well_measure_gradient
+      - well_medical_boundary
+      - well_niat_impact_mirror
+      - well_readiness
+      - well_registry_status
+      - well_regulation_recovery
+      - well_sabar_latency
+      - well_signal_coverage
+      - well_trace_lineage
+      - well_trust_compression
+      - well_validate_vitality
+    notes: >
+      REFLECT_ONLY. WELL holds a mirror, never a veto.
+      No tool named well_system_registry_status exists.
+      well_registry_status tests THIS list.
+
+  aforge:
+    port: 7071
+    alt_port: 7072  # stateless MCP surface (51 tools)
+    role: execution_shell
+    status: UP
+    transport: session  # :7071 requires Mcp-Session-Id
+    alt_transport: stateless  # :7072 no session required
+    tools: 105
+    alt_tools: 51
+    canonical_tools:  # 22 governed public tools
+      - forge_health_check
+      - forge_registry_status
+      - forge_status
+      - forge_probe
+      - forge_session_init
+      - forge_judge_proxy
+      - forge_lease
+      - forge_execute
+      - forge_shell
+      - forge_git
+      - forge_docker
+      - forge_filesystem
+      - forge_fetch
+      - forge_search
+      - forge_vault
+      - forge_memory
+      - forge_witness
+      - forge_evaluate
+      - forge_scar
+      - forge_cool_drift
+      - forge_cool_pattern
+      - forge_receipt_draft
+    internal_tools: 83  # forge_browser_*, forge_github_*, forge_parallel_*, forge_vps_*, plus runtime dry-run helper
+    notes: >
+      A-FORGE executes. Does not judge.
+      forge_execute requires session + lease + kernel verdict.
+      forge_dry_run remains a runtime helper but is not part of the public 7071 MCP surface.
+      105 total public tools; 22 canonical public, 83 internal/autonomic.
+
+  aaa:
+    port: 3001
+    role: control_plane
+    status: UP
+    transport: N/A  # A2A gateway, not MCP
+    tools: 0
+    canonical_tools: []
+    notes: >
+      AAA provides A2A gateway and cockpit dashboard.
+      No direct MCP tools. Agent registry and routing only.
+
+# CROSS-ORGAN CONTRACTS
+contracts:
+  identity_envelope:
+    required: [actor_id, sovereign_id, session_id, delegation_mode]
+    rule: "missing → anonymous OBSERVE_ONLY; conflicting → HOLD"
+  
+  evidence_envelope:
+    required: [tool_name, domain, epistemic_tag, evidence_quality, source_attribution]
+    rule: "every tool output must carry this"
+  
+  verdict_states: [SEAL, HOLD, SABAR, VOID, UNKNOWN]
+  
+  authority_states:
+    fields: [identity_band, session_band, tool_action_class, mutation_allowed, seal_allowed, effective_authority]
+    rule: "only effective_authority controls execution"
+
+  transport_rules:
+    stateless: [arifos, wealth, well]  # no session required
+    session: [geox, aforge]            # Mcp-Session-Id required
+    na: [aaa]                          # A2A only
+
+# DEPLOYMENT STATE
+deployment:
+  arifos:
+    commit: a3c983a
+    release: v2026.07.09-SPINE-P0
+    marker: /opt/arifos/app/.git_commit
+  geox:
+    commit: 5d9647a
+    branch: fix/evidence-uncertainty-type-guard
+  wealth:
+    commit: 4ec7067
+    fixes: [pydantic_coercion, evidence_quality_enum, allowed_hosts]
+  well:
+    commit: 653be6c
+  aforge:
+    commit: b463cf3
+  aaa:
+    commit: 6c63c8c
