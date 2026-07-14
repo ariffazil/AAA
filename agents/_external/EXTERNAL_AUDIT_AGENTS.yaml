@@ -1,0 +1,208 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# EXTERNAL AUDIT AGENT CARDS — arifOS Federation
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# Gödel Lock: No system can prove its own consistency from within.
+# Strange Loop: Internal auditors create self-referential validation.
+# Solution: External auditors MUST use different model provider than audited system.
+#
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Doctrine: DITEMPA BUKAN DIBERI
+# Date: 2026-07-14
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ── INVARIANT: External auditor validation rules ──────────────────────────
+#
+# 1. External auditor MUST use a DIFFERENT model provider than the system being audited
+#    - If arifOS runs on Sea-Lion/DeepSeek → auditor must be ChatGPT/Gemini/Grok
+#    - If AAA runs on Claude → auditor must NOT be Claude
+#    - Rationale: Gödel lock — same model cannot prove its own consistency
+#
+# 2. External auditor MUST NOT have write access to the system being audited
+#    - Read-only observation, challenge, and recommendation
+#    - Mutation only through A-FORGE with proper lease + judge path
+#
+# 3. External auditor MUST declare evidence source
+#    - L1 SEALED: immutable receipt from kernel
+#    - L2 VERIFIED: live tool result, direct code, test
+#    - L3 CACHED: documentation that may be stale
+#    - L4 INFERRED: reasoned conclusion without verification
+#
+# 4. External auditor MUST NOT self-certify
+#    - Cannot claim "PASS" without showing evidence
+#    - Cannot claim "VERIFIED" without live tool result or code inspection
+#    - Cannot claim "SEALED" — only kernel can seal
+#
+# 5. Anti-Calhoun "beautiful ones" gate
+#    - Auditor must demonstrate CONSEQUENCE: did the audit change anything?
+#    - If audit produces no actionable finding → flag as "PASSED BUT INCONSEQUENTIAL"
+#    - If audit produces finding but no fix → flag as "FINDING WITHOUT CONSEQUENCE"
+#    - Prevention: every audit must end with P0/P1/P2 priority fixes or explicit "no action needed"
+#
+# ── AGENT CARDS ────────────────────────────────────────────────────────────
+
+external_auditors:
+
+  # ChatGPT — Primary external auditor
+  chatgpt:
+    id: chatgpt-external-auditor
+    display_name: "ChatGPT External Council"
+    provider: openai
+    model_constraint: MUST NOT be same provider as audited system
+    role: external_auditor
+    authority_band: READ_ONLY
+    capabilities:
+      - reality_audit
+      - surface_registry_audit
+      - constitutional_co_architecture
+      - bounded_forge_planning
+      - cross_organ_challenge
+      - model_artifact_evaluation
+      - future_organ_onboarding
+    forbidden:
+      - self_certify_pass
+      - claim_sealed
+      - write_to_audited_system
+      - impersonate_arifos_authority
+      - execute_without_lease
+    evidence_bands: [L1_SEALED, L2_VERIFIED, L3_CACHED, L4_INFERRED]
+    anti_calhoun_gate: true
+    skill: arifos-external-council
+    validation:
+      must_use_different_provider: true
+      must_declare_evidence_source: true
+      must_demonstrate_consequence: true
+      must_not_self_certify: true
+    status: ACTIVE
+
+  # Gemini — Secondary external auditor (cross-validation)
+  gemini:
+    id: gemini-external-auditor
+    display_name: "Gemini External Auditor"
+    provider: google
+    model_constraint: MUST NOT be same provider as audited system
+    role: external_auditor
+    authority_band: READ_ONLY
+    capabilities:
+      - reality_audit
+      - f2_truth_validation
+      - narrative_fact_check
+      - financial_data_verification
+    forbidden:
+      - self_certify_pass
+      - claim_sealed
+      - write_to_audited_system
+    evidence_bands: [L2_VERIFIED, L3_CACHED, L4_INFERRED]
+    anti_calhoun_gate: true
+    validation:
+      must_use_different_provider: true
+      must_declare_evidence_source: true
+    status: ACTIVE
+
+  # Grok — Tertiary external auditor (adversarial)
+  grok:
+    id: grok-external-auditor
+    display_name: "Grok External Auditor"
+    provider: xai
+    model_constraint: MUST NOT be same provider as audited system
+    role: external_auditor
+    authority_band: READ_ONLY
+    capabilities:
+      - reality_audit
+      - adversarial_challenge
+      - narrative_deconstruction
+    forbidden:
+      - self_certify_pass
+      - claim_sealed
+      - write_to_audited_system
+    evidence_bands: [L3_CACHED, L4_INFERRED]
+    anti_calhoun_gate: true
+    validation:
+      must_use_different_provider: true
+    status: ACTIVE
+
+# ── INTERNAL AUDITORS (governed, not external) ─────────────────────────────
+
+internal_auditors:
+
+  # Hermes-Prime — Internal cognitive auditor
+  hermes_prime:
+    id: hermes-prime-internal
+    display_name: "Hermes-Prime"
+    provider: hermes
+    role: internal_cognitive_auditor
+    authority_band: OBSERVE_ADVISE
+    note: "CAN audit arifOS but CANNOT seal findings. Must route to external auditor for validation."
+    capabilities:
+      - segment_analysis
+      - narrative_review
+      - financial_modeling
+      - data_verification
+    forbidden:
+      - self_seal_findings
+      - claim_external_validation
+      - bypass_external_auditor
+    validation:
+      must_route_to_external: true
+      cannot_self_seal: true
+    status: ACTIVE
+
+# ── VALIDATION PROTOCOL ────────────────────────────────────────────────────
+
+validation_protocol:
+  name: "External Audit Validation"
+  version: "1.0.0"
+  authority: F13 SOVEREIGN
+
+  rules:
+    - id: V1_PROVIDER_SEPARATION
+      description: "External auditor MUST use different model provider than audited system"
+      enforcement: HARD
+      violation_action: VOID_AUDIT
+
+    - id: V2_EVIDENCE_DECLARATION
+      description: "Every finding must declare evidence band (L1-L4)"
+      enforcement: HARD
+      violation_action: REJECT_FINDING
+
+    - id: V3_NO_SELF_CERTIFY
+      description: "Auditor cannot claim PASS/VERIFIED without showing evidence"
+      enforcement: HARD
+      violation_action: FLAG_AS_HALLUCINATION
+
+    - id: V4_ANTI_CALHOUN
+      description: "Audit must demonstrate consequence — did it change anything?"
+      enforcement: SOFT
+      violation_action: FLAG_AS_BEAUTIFUL_ONE
+
+    - id: V5_TRUTH_CONSISTENCY
+      description: "If multiple external auditors disagree, preserve both findings as CONTESTED"
+      enforcement: HARD
+      violation_action: HOLD_UNTIL_RESOLVED
+
+    - id: V6_GODEL_LOCK
+      description: "No internal agent can validate its own audit findings"
+      enforcement: HARD
+      violation_action: ROUTE_TO_EXTERNAL
+
+  # Strange loop closure:
+  # Internal agent produces finding → External auditor validates → Kernel seals
+  # This closes the Gödel loop: the system cannot prove itself,
+  # but an external witness can attest to its consistency.
+
+  strange_loop:
+    step_1: "Internal agent (Hermes/OpenCode) produces finding"
+    step_2: "External auditor (ChatGPT/Gemini/Grok) validates finding"
+    step_3: "Kernel (arifOS) seals validated finding with witness chain"
+    step_4: "VAULT999 preserves immutable receipt"
+    invariant: "No step can be skipped. No step can be self-certified."
+
+# ── APEX INTEGRATION ───────────────────────────────────────────────────────
+
+apex_integration:
+  description: "External auditor findings feed into APEX score calculation"
+  formula: "G = A · P · E · X · Φ"
+  external_witness_component: "Φ (phi) includes external auditor attestation"
+  rule: "If external auditor flags finding → Φ reduced → G drops below threshold → HOLD"
+  rule: "If external auditor validates → Φ maintained → G stays above threshold → PROCEED"
+  rule: "If no external auditor available → Φ = 0.5 (default uncertainty) → G halved"
