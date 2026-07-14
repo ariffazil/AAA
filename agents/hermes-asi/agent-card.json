@@ -20,6 +20,12 @@
   "rollback_plan": "Terminate hermes_cli process and isolate from :3001 gateway.",
   "sovereign": "888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)",
   "forged": "2026-07-13T00:00:00+08:00",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "arifOS Federation",
+    "system": "AAA Control Plane + Hermes Runtime",
+    "runtime": "hermes_cli (Node.js)"
+  },
   "motto": "DITEMPA BUKAN DIBERI",
   "skills": [
     {
@@ -150,6 +156,11 @@
     "SHADOW-diagnostic",
     "CLAIM-verification-gate"
   ],
+  "_schema_normalization": {
+    "applied": "2026-07-14T13:13:50Z by FI-008 Kimi per KIMI-INIT-AGENT-INDEX blueprint",
+    "action": "Removed 6 bare-string skills (duplicates of object entries at lines 26-145). All skills are now objects per arifOS/agent-card/v2.2.0 schema. Added version:1.0.0 and provider block.",
+    "delta_S": "≤ 0 (schema compliance, no behavior change)"
+  },
   "_kernel_bound": "2026-07-13-EUREKA-ZEN",
   "metadata": {
     "kernel_deps": [
