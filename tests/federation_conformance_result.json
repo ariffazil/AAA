@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-12T05:36:29Z",
+  "timestamp": "2026-07-14T16:02:48Z",
   "kernel_healthy": true,
   "organs_healthy": {
     "arifOS": true,
@@ -27,14 +27,14 @@
           "WELL": true,
           "AAA": true
         },
-        "kernel_verdict": "SEAL",
-        "runtime_drift": true,
+        "kernel_verdict": "HOLD",
+        "runtime_drift": false,
         "contract_drift": false
       },
       "notes": [
-        "kernel=SEAL drift=True/False"
+        "kernel=HOLD drift=False/False"
       ],
-      "duration_ms": 17.62866973876953
+      "duration_ms": 61.44118309020996
     },
     {
       "scenario": "B",
@@ -52,7 +52,8 @@
           "well_signal": "WELL_HOLD",
           "service": "well-mcp",
           "version": "2026.05.15-\u03a9WELL+GWELL+FEDERATION",
-          "tool_count": 23,
+          "federation_schema_version": "2.0.0",
+          "tool_count": 29,
           "well_score": null,
           "floors_violated": [],
           "truth_status": "INSUFFICIENT_DATA",
@@ -62,49 +63,49 @@
           "metrics": {
             "cognitive": {
               "clarity": 10,
-              "decision_fatigue": 1.6000000000000003
+              "decision_fatigue": 2.0000000000000004
             }
           },
-          "freshness_band": "STALE",
-          "state_age_hours": 1757.6,
+          "freshness_band": "FRESH",
+          "state_age_hours": 4.0,
           "environment": "PROD",
           "domain_law": "SUBSTRATE_LAW",
           "substrate_manifest_hash": "sha256:fd21db852dfe3623c3bd943e05d032b456cd209fd385fa8e3f9e093346b2c913",
           "freshness": {
-            "status": "expired",
-            "checked_at_utc": "2026-07-12T05:36:29.080198+00:00",
-            "source_timestamp_utc": "2026-04-30T00:00:00+00:00",
-            "age_seconds": 6327389.1,
+            "status": "fresh",
+            "checked_at_utc": "2026-07-14T16:02:50.063179+00:00",
+            "source_timestamp_utc": "2026-07-14T12:00:01+00:00",
+            "age_seconds": 14569.1,
             "max_fresh_age_seconds": 3600,
             "stale_after_seconds": 14400,
             "expired_after_seconds": 86400
           },
           "owner_summary": {
-            "color": "RED",
+            "color": "YELLOW",
             "reasons": [
               "sovereign_state_unknown",
-              "biometric_state_expired_168h_ceiling",
-              "human_injection_required"
+              "biometric_state_fresh_but_insufficient",
+              "canonical_tools=22"
             ]
           },
           "honesty": {
-            "code": "MOCK",
-            "banner": "MOCK / TEST \u2014 not live biometrics. Do not treat as body truth.",
+            "code": "INSUFFICIENT",
+            "banner": "INSUFFICIENT \u2014 sovereign biometric state unknown. Inject or sensor feed required.",
             "source_type": "UNKNOWN",
             "is_sensor_verified": false,
             "is_self_report": false,
-            "is_mock_or_test": true,
-            "is_stale": true,
+            "is_mock_or_test": false,
+            "is_stale": false,
             "cockpit_banner_required": true
           },
-          "honesty_banner": "MOCK / TEST \u2014 not live biometrics. Do not treat as body truth.",
+          "honesty_banner": "INSUFFICIENT \u2014 sovereign biometric state unknown. Inject or sensor feed required.",
           "boundary_notice": "Not diagnosis. Not therapy. Reflective readiness only. Arif remains final judge."
         }
       },
       "notes": [
         "WELL correctly reports degraded (stale evidence)"
       ],
-      "duration_ms": 1.8298625946044922
+      "duration_ms": 2.6311874389648438
     },
     {
       "scenario": "C",
@@ -120,7 +121,7 @@
       "notes": [
         "Epistemic artifacts: ['MEASUREMENT_BOUNDARY_CONTRACT.md', 'READINESS_ENVELOPE_SCHEMA.md']"
       ],
-      "duration_ms": 0.09608268737792969
+      "duration_ms": 0.1220703125
     },
     {
       "scenario": "D",
@@ -136,7 +137,7 @@
       "notes": [
         "Unauthorized seal rejected (error)"
       ],
-      "duration_ms": 3.002643585205078
+      "duration_ms": 4.40669059753418
     },
     {
       "scenario": "E",
@@ -154,7 +155,7 @@
       "notes": [
         "Indicators: ['verdict_wrapper.py', 'f4_contradiction_handler.py', 'contradiction_ledger.jsonl'], apex_schema=False"
       ],
-      "duration_ms": 0.4787445068359375
+      "duration_ms": 0.6325244903564453
     },
     {
       "scenario": "F",
@@ -173,7 +174,7 @@
       "notes": [
         "Replay protection: 4/4 defenses found"
       ],
-      "duration_ms": 0.5133152008056641
+      "duration_ms": 0.5390644073486328
     },
     {
       "scenario": "G",
@@ -207,7 +208,7 @@
       "notes": [
         "MCP versions consistent: {'2025-11-25'}"
       ],
-      "duration_ms": 9.512186050415039
+      "duration_ms": 65.86575508117676
     },
     {
       "scenario": "H",
@@ -228,7 +229,7 @@
       "notes": [
         "A-FORGE safe degradation: 6/9 mechanisms found"
       ],
-      "duration_ms": 1.508474349975586
+      "duration_ms": 3.5524368286132812
     },
     {
       "scenario": "I",
@@ -252,7 +253,7 @@
       "notes": [
         "Witness diversity: spread=0.16, files=['witness_packet.py', 'witness_class.py', 'context_witness.py']"
       ],
-      "duration_ms": 2.358675003051758
+      "duration_ms": 3.9358139038085938
     },
     {
       "scenario": "J",
@@ -275,7 +276,7 @@
       "notes": [
         "Rollback mechanisms: 7/7 found"
       ],
-      "duration_ms": 1.9931793212890625
+      "duration_ms": 3.1366348266601562
     }
   ]
 }
