@@ -1,0 +1,373 @@
+# ============================================================================
+# FEDERATION CONTRACT — Canonical Source of Truth
+# ============================================================================
+# Document Identity: FEDERATION-CONTRACT-v2026.07.14-FROZEN
+# Authority: F13 SOVEREIGN (Muhammad Arif bin Fazil)
+# Status: FROZEN — no new tools, no renaming, no new aliases
+# Source: GPT-5.6 connector audit rounds (5) + live substrate probes
+# ----------------------------------------------------------------------------
+# This contract is the load-bearing decision that all organs converge upon.
+# Any divergence from this contract constitutes contract drift (REPAIR).
+# ----------------------------------------------------------------------------
+# Mutation rule: changes to this file require F13 ratification.
+# Downstream artifacts (plugin exports, capability graphs, agent cards,
+# .well-known/mcp.json, documentation) MUST be generated FROM this contract,
+# never maintained as independent sources of truth.
+# ============================================================================
+
+contract:
+  id: arifos-federation-contract
+  version: 2026.07.14
+  epoch: "2026.07"
+  contract_hash: pending-sha256-at-seal-time
+  status: FROZEN
+  ratified_by: ARIF_FAZIL
+  ratified_at: "2026-07-14T15:55+08:00"
+  prior_contracts:
+    - id: FEDERATION-SOT-CANONICAL-v2026.07.13
+      path: /root/AAA/docs/FEDERATION_SOT_CONSOLIDATION_EPOCH_CANONICAL.md
+      status: superseded-for-connector-drift-only  # architecture-level retained
+
+# ============================================================================
+# SECTION 1 — ORGAN NAMES (frozen)
+# ============================================================================
+organs:
+  arifOS:
+    role: constitutional_kernel
+    repo: ariffazil/arifos
+    branch: main
+    runtime: container
+    local_endpoint: http://localhost:8088
+    public_endpoint: https://mcp.arif-fazil.com/mcp
+    public_routing: caddy_reverse_proxy
+    expected_public_tools: 7       # OBSERVED public surface version
+    actual_runtime_verbs: 9        # observed in session grant (drift: P0.4)
+    governance_role: judge_seal
+
+  GEOX:
+    role: earth_intelligence
+    repo: ariffazil/GEOX
+    branch: main
+    runtime: container
+    local_endpoint: http://localhost:8081
+    public_endpoint: https://geox.arif-fazil.com/mcp
+    public_routing: caddy_reverse_proxy
+    expected_public_tools: 15       # CANONICAL — verified by agent C
+    actual_runtime_tools: 15       # verified live
+    governance_role: evidence_provider
+
+  WEALTH:
+    role: capital_intelligence
+    repo: ariffazil/wealth
+    branch: main
+    runtime: host
+    local_endpoint: http://localhost:18082
+    public_endpoint: https://wealth.arif-fazil.com/mcp
+    public_routing: caddy_reverse_proxy  # CURRENTLY FAILING (HTTP 421)
+    expected_public_tools: 20
+    actual_runtime_tools: unknown    # awaiting probe
+    governance_role: consequence_provider
+
+  WELL:
+    role: human_readiness
+    repo: ariffazil/well
+    branch: main
+    runtime: host
+    local_endpoint: http://localhost:18083
+    public_endpoint: https://well.arif-fazil.com/mcp  # CADDY ROUTE MISSING
+    public_routing: MISSING_BLOCK
+    expected_public_tools: 8
+    actual_runtime_tools: 14
+    governance_role: substrate_mirror
+
+  A_FORGE:
+    role: execution_shell
+    repo: ariffazil/A-FORGE
+    branch: main
+    runtime: host
+    local_endpoint: http://localhost:7072
+    public_endpoint: null          # POLICY: internal only
+    public_routing: NONE_BY_POLICY
+    reachable_via: arifOS_arif_forge
+    internal_surface: 105_tools    # verified by agent A
+    affordances_yaml: 102_entries  # reconciled to 105 by agent A
+    governance_role: bounded_executor
+
+  AAA:
+    role: cockpit_control_plane
+    repo: ariffazil/AAA
+    branch: main
+    runtime: container
+    local_endpoint: http://localhost:3001
+    public_endpoint: https://aaa.arif-fazil.com
+    governance_role: state_routing_visibility
+
+  VAULT999:
+    role: immutable_audit_ledger
+    storage: /root/.local/share/arifos/vault999/
+    governance_role: append_only_seal_chain
+
+# ============================================================================
+# SECTION 2 — TOOL NAMES (frozen per canonical 15-GEOX / 9-arifOS / 8-WELL)
+# ============================================================================
+canonical_tools:
+
+  arifOS_public_surface:  # 7 declared
+    - arif_init
+    - arif_observe
+    - arif_think
+    - arif_route
+    - arif_judge
+    - arif_forge
+    - arif_seal
+    # NOTE: arif_memory and arif_compose are runtime-granted but NOT in declared
+    # public surface — this is a known drift (P0.4) requiring sovereign decision
+
+  arifOS_runtime_grant:    # 9 granted (includes the 2 drift entries)
+    - arif_init
+    - arif_observe
+    - arif_think
+    - arif_route
+    - arif_memory        # runtime only
+    - arif_judge
+    - arif_forge
+    - arif_seal
+    - arif_compose       # runtime only — capability graph rejection observed
+
+  arifOS_extensions:      # additional canonical verbs (per 777_FORGE charter)
+    - arif_critique      # 555 heart/maruah path
+    - arif_bridge_connect # 444b organ bridge
+    - arif_verify        # E1 SEAL padlock for irreversible shell
+
+  GEOX_canonical_15:
+    - geox_basin
+    - geox_claim
+    - geox_deep_time_state
+    - geox_geomechanics
+    - geox_gravmag_studio        # modes: open | screen | analyze
+    - geox_petrophysics
+    - geox_prospect
+    - geox_seismic_compute
+    - geox_seismic_ingest
+    - geox_seismic_interpret
+    - geox_sequence
+    - geox_subsurface_model
+    - geox_surface_status
+    - geox_well_desk              # modes: open | publish | render
+    - geox_well_ingest
+
+  # WEALTH, WELL, A-FORGE tool lists to be ratified after sovereign ack
+  # of internal surface audit results
+
+# ============================================================================
+# SECTION 3 — IDENTITY ENVELOPE (frozen)
+# ============================================================================
+identity_envelope:
+  required_fields:
+    - actor_id                  # e.g., ARIF
+    - sovereign_id              # e.g., ARIF_FAZIL
+    - caller_actor_id           # e.g., ChatGPT, openclaw-anon, arifOS
+    - executor_actor_id         # e.g., arifOS, geox, wealth
+    - session_id                # e.g., SEAL-cf670a9b5b0a4e25
+    - session_token_hash        # sha256:...
+    - delegation_mode           # external_instrument | internal_executor | sovereign_direct
+    - trace_id                  # trc-...
+    - contract_epoch            # 2026.07
+
+  rules:
+    missing_identity: anonymous_OBSERVE_ONLY
+    conflicting_identity: HOLD
+    matching_identity: inherit_session_authority
+    silent_repair: PROHIBITED
+
+# ============================================================================
+# SECTION 4 — AUTHORITY STATE MODEL (frozen, F4-CLARITY enforced)
+# ============================================================================
+authority_state_model:
+  fields:
+    identity_authority: SOVEREIGN | VERIFIED_OPERATOR | VERIFIED_AGENT | ANONYMOUS
+    session_authority: FULL | LIMITED_MUTATE | OBSERVE_ONLY | SABAR
+    tool_action_class: OBSERVE | ANALYZE | DRAFT | MUTATE | IRREVERSIBLE
+    mutation_allowed: bool
+    seal_allowed: bool
+    effective_authority: FULL | LIMITED_MUTATE | OBSERVE_ONLY | SABAR | VOID
+
+  invariant: only_effective_authority_controls_execution
+  rule: contradictory_upstream_states_REDUCE_authority_not_expand_it
+  contradictory_combinations_to_reject:
+    - pattern: "authority=FULL AND session=OBSERVE_ONLY"
+      resolution: effective_authority = OBSERVE_ONLY
+    - pattern: "mutation_allowed=true AND session=OBSERVE_ONLY"
+      resolution: effective_authority = OBSERVE_ONLY
+
+# ============================================================================
+# SECTION 5 — VERDICT STATES (frozen)
+# ============================================================================
+verdict_states:
+  - SEAL              # approved, may proceed (with witness quorum)
+  - HOLD              # paused, awaiting decision or evidence
+  - SABAR             # constrained, proceed with caution
+  - VOID              # rejected, no execution permitted
+
+# ============================================================================
+# SECTION 6 — EVIDENCE ENVELOPE (frozen, F2-TRUTH enforced)
+# ============================================================================
+evidence_envelope:
+  required_fields:
+    - proposition              # the claim
+    - evidence_refs            # list of obs/message/decision refs
+    - confidence               # 0.0-1.0, capped at 0.90 for OBS
+    - epistemic_state          # OBSERVED | INFERRED | CONTESTED | EXPIRED | UNKNOWN
+    - formed_by:
+        - model                # e.g., GPT-5.6-Sol
+        - model_version        # e.g., 2026-07-09-r1
+        - runtime_policy       # e.g., RP-17
+        - arifOS_version       # e.g., 0.5.6
+        - session_id           # sct_v1
+    - formed_at: ISO-8601
+    - expiry: ISO-8601          # when claim auto-expires if not reaffirmed
+
+  rule: never_seal_speculative_interpretation_as_ground_truth
+
+# ============================================================================
+# SECTION 7 — RECEIPT SCHEMA (frozen, F11-AUDIT enforced)
+# ============================================================================
+receipt_schema:
+  required_fields:
+    - receipt_id                # unique
+    - session_id
+    - actor_id
+    - action                    # what was done
+    - outcome                   # what resulted
+    - evidence_refs
+    - verdict_ref               # arif_judge SEAL/HOLD/etc.
+    - timestamp: ISO-8601
+    - signature                 # ed25519 or vault999_hash
+  preserved_dissent: true       # minority reports must be stored
+  rollback_point: required      # for any non-OBSERVE action
+
+# ============================================================================
+# SECTION 8 — ACTION CLASSES (frozen, 5-class taxonomy)
+# ============================================================================
+action_classes:
+  - OBSERVE
+  - ANALYZE
+  - DRAFT
+  - MUTATE
+  - IRREVERSIBLE
+
+authority_required:
+  OBSERVE: anonymous_OK
+  ANALYZE: identity_authority >= VERIFIED_OPERATOR
+  DRAFT: identity_authority >= VERIFIED_OPERATOR
+  MUTATE: identity_authority = SOVEREIGN OR valid_delegation_with_lease
+  IRREVERSIBLE: identity_authority = SOVEREIGN AND ack_irreversible
+
+# ============================================================================
+# SECTION 9 — WITNESS QUORUM (frozen, F3-WITNESS enforced)
+# ============================================================================
+witness_quorum:
+  action_sensitive_thresholds:
+    registry_status_read:
+      required: 1_deterministic_source
+    reversible_analysis:
+      required_count_min: 1
+      required_count_max: 2
+      sources: independent
+    external_mutation:
+      required_count: 2
+      sources: independent
+    irreversible_or_constitutional:
+      required_count: 3
+      sources: heterogeneous
+      plus_required: F13
+      channels:
+        - Human: arif_critique_or_arif_judge
+        - AI: primary_model
+        - External: earth_measurement_OR_independent_human
+
+  rule: zero_in_any_channel_collapses_consensus
+
+# ============================================================================
+# SECTION 10 — DEPLOYMENT PROVENANCE (frozen, contract-epoch enforcement)
+# ============================================================================
+deployment_provenance:
+  required_fields:
+    - repository
+    - commit_sha
+    - build_hash: sha256
+    - runtime_manifest_hash: sha256
+    - service_started_at: ISO-8601
+    - contract_epoch: "2026.07"
+    - dirty_state: bool
+  rules:
+    - github_commit_does_not_prove_deployment
+    - every_response_must_include_provenance_envelope
+
+# ============================================================================
+# SECTION 11 — COMPATIBILITY POLICY (frozen)
+# ============================================================================
+compatibility_policy:
+  aliases:
+    - permitted_only_at_thin_boundary
+    - must_have_expiry_date
+    - must_be_tested
+    - must_be_classified_as_hidden_alias_in_manifest
+  deprecation:
+    - well_system_registry_status -> REMOVED (well_registry_status canonical)
+    - arif_session_init -> REMOVED (arif_init canonical)
+    - arif_vault_seal -> REMOVED (arif_seal canonical)
+    - arif_judge_deliberate -> REMOVED (arif_judge canonical)
+
+# ============================================================================
+# SECTION 12 — OPEN DEFECTS (freezing with the contract, repair-bound)
+# ============================================================================
+open_defects:
+  P0_1_WEALTH_HTTP_421:
+    status: KNOWN
+    diagnosis_required: caddy_reverse_proxy_host_routing
+    sovereign_decision_required: false  # agent can diagnose + propose fix
+    repair_owner: agent_or_arif_decision
+
+  P0_2_A_FORGE_AFFORDANCES_DRIFT:
+    status: REPAIRED_BY_AGENT_A
+    yaml_now_aligned: true  # 105 tools = 105 live (verified)
+    residual: forge_surface_audit_tool_uses_stale_snapshot
+
+  P0_3_ARIFOS_ACTOR_PROPAGATION:
+    status: KNOWN
+    diagnosis_required: identity_envelope_through_wrappers
+    sovereign_decision_required: true  # which wrapper owns the canonical envelope
+
+  P0_4_CAPABILITY_GRAPH_SOT:
+    status: PARTIALLY_RESOLVED  # this contract is the SOT
+    sovereign_decision_required: true  # ratify this contract, declare SOT
+
+  P0_5_WELL_FALSE_REGISTRY_PASS:
+    status: SOURCE_REPAIRED_BY_AGENT_B
+    deployment_required: true  # source updated, runtime not yet
+    sovereign_decision_required: true  # service restart
+
+  P0_6_GEOX_PLUGIN_EXPORT_DRIFT:
+    status: SURFACES_ALIGNED_BY_AGENT_C
+    signature_invalidated: true  # Ed25519 signature broken, needs re-sign
+    sovereign_decision_required: true  # re-sign via AAA
+
+# ============================================================================
+# SECTION 13 — REPAIR SEQUENCE (per GPT-5.6 charter)
+# ============================================================================
+repair_sequence:
+  phase_1_freeze_contract: COMPLETE  # this file
+  phase_2_conformance_suite: PENDING
+  phase_3_vertical_path_repair: PENDING
+  phase_4_transport_repair: PENDING  # includes P0.1 WEALTH 421
+  phase_5_registry_alignment: PENDING  # generate from this contract
+  phase_6_a_forge_executor: PENDING
+  phase_7_shadow_run: PENDING
+
+# ============================================================================
+# END OF CONTRACT
+# ============================================================================
+# Until this contract is superseded, every organ MUST converge upon it.
+# Divergence is repair work, not evolution.
+# DITEMPA BUKAN DIBERI.
