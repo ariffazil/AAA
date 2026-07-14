@@ -147,6 +147,37 @@ internal_auditors:
       cannot_self_seal: true
     status: ACTIVE
 
+# ── AUTHORITY LEVELS BY TRANSPORT ──────────────────────────────────────────
+# MCP HTTP = unauthenticated → caps at OBSERVE_ONLY (by design)
+# stdio = authenticated → FULL authority
+# Ed25519 signed = cryptographic proof → SOVEREIGN
+#
+# External auditors MUST use MCP for observation.
+# Authority-bound tests (judge, seal) will return HOLD/MEDIUM via MCP.
+# This is CORRECT security behavior, not a bug.
+
+authority_levels:
+  mcp_http:
+    band: OBSERVE_ONLY
+    reason: "No Ed25519 signature, no session capability token"
+    mutation_allowed: false
+    seal_allowed: false
+  mcp_with_session:
+    band: LIMITED_MUTATE
+    reason: "Session bound but no cryptographic auth"
+    mutation_allowed: false
+    seal_allowed: false
+  stdio:
+    band: FULL
+    reason: "Authenticated local session"
+    mutation_allowed: true
+    seal_allowed: false
+  ed25519:
+    band: SOVEREIGN
+    reason: "Cryptographic proof of identity"
+    mutation_allowed: true
+    seal_allowed: true
+
 # ── VALIDATION PROTOCOL ────────────────────────────────────────────────────
 
 validation_protocol:
