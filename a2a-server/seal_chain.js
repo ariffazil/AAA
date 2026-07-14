@@ -482,7 +482,12 @@ function enforceSealInvariants(payload, opts = {}) {
   let verdict = (payload.verdict || 'SEAL').toUpperCase();
   const kernelVerdict = payload.kernel_verdict ||
     (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : 'UNKNOWN');
-  const actorSource = payload.actor_source || 'self_report';
+  // F2 TRUTH: inherit kernel verification state when present (2026-07-13 fix).
+  // Distinguishes "field absent" from "field explicitly set to self_report".
+  // If kernel_verdict is PASS but actor_source is absent, the kernel verified
+  // the actor — treat as kernel_evaluated, not self_report.
+  const actorSource = payload.actor_source ||
+    (kernelVerdict === 'PASS' ? 'kernel_evaluated' : 'self_report');
   const actor = payload.agent_id || payload.actor || 'unknown';
   // CLI `write` only passes payload; accept witness on payload or opts (2026-07-09 RSI).
   const witness =
