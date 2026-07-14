@@ -377,6 +377,14 @@ L6 VAULT999  = immutable sealed truth
 `CLAIM` · `PLAUSIBLE` · `HYPOTHESIS` · `ESTIMATE` · `UNKNOWN`
 Overconfidence = F7 violation. Uncertainty is a feature, not a defect.
 
+### QQQ Recommendation Discipline (mandatory on RECOMMENDATION/DECISION/VERDICT)
+Every recommendation must pass three layers before emission:
+- **Q1 Qualitative:** ≥5 paths enumerated (incl. NULL + INVERSE), categorized
+- **Q2 Quantitative:** BR, REV, Time, Conf, PA per path, dominance analysis
+- **Q3 Quantum:** precedent, interference, superposition, observer effects
+Missing any → tag `INADMISSIBLE-QQQ-INCOMPLETE`. Never suppress. Always surface.
+Full doctrine: `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md`
+
 ### Code Style
 - Python: Ruff (line length 100 arifOS, 130 GEOX), mypy, absolute imports
 - TypeScript: ESLint 10, Node >=22, ES modules (`"type": "module"`)
@@ -396,7 +404,7 @@ Before acting on any request:
 
 - [ ] Sourced `/root/.secrets/vault.env`
 - [ ] Read this file (`/root/AAA/CLAUDE.md`)
-- [ ] Loaded active INIT: `/root/AAA/prompts/AGENT_INIT_v2.0.md` (v3.0 content — TRINITY-33 + RSI)
+- [ ] Loaded active INIT: `/root/AAA/prompts/AGENT_INIT_v3.0.md` (TRINITY-33 + RSI + QQQ)
 - [ ] Checked live state (`/root/CONTEXT.md` tail)
 - [ ] Probed federation health (`curl :8088/health`)
 
@@ -426,6 +434,7 @@ Before acting on any request:
 | **Governed Theory of Mind** | `/root/A-FORGE/docs/GOVERNED_THEORY_OF_MIND.md` |
 | Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |
+| **QQQ Recommendation Doctrine** | `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md` |
 | **EUREKA — Six-Plane Execution Loop** | `/root/AAA/docs/EUREKA_SIX_PLANE_EXECUTION_LOOP.md` |
 | **EUREKA — Metabolism Diagram** | `/root/AAA/docs/EUREKA_METABOLISM_DIAGRAM.md` |
 | **EUREKA — Governed Agent Lifecycle** | `/root/AAA/docs/EUREKA_GOVERNED_AGENT_LIFECYCLE.md` |

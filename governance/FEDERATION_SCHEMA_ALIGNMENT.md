@@ -1,0 +1,163 @@
+# MCP Federation Schema Alignment (v2.0) — Single Source of Truth
+
+> **Status:** LIVE (federation-wide schema alignment enforced via `/health`)
+> **Level:** L2 — Passive Alignment (runtime convention, not protocol negotiation)
+> **Ratified:** 2026-07-14 (Arif bin Fazil, F13)
+> **Author:** kimi-code-FI-008
+> **Renamed:** 2026-07-14 — "MCP Federation Handshake" → "MCP Federation Schema Alignment (v2.0)" to reflect actual capability, not aspirational protocol.
+
+---
+
+## L2 Acknowledgment
+
+**This is NOT a handshake.** A handshake implies active negotiation — two parties exchanging capabilities, agreeing on a protocol, and establishing a session. What we have is **schema alignment**: each organ declares a version string in `/health`, and external verification confirms they all match.
+
+**Current level: L2 — Passive Alignment.**
+- Every organ echoes `federation_schema_version: "2.0.0"` in `/health`
+- Verification is done by curl loop, CI gate, and agent instructions
+- No runtime gate rejects cross-organ calls on mismatch
+- No automatic organ-to-organ capability negotiation
+- No mandatory registration at boot
+
+**Next level: L3 — Runtime Gate (planned).**
+- Schema check in MCP request path
+- Cross-organ calls rejected on mismatch
+- AAA registration mandatory at boot
+
+**Future level: L4 — Protocol Handshake (deferred).**
+- Only when external Reference Actors join the federation
+- Active capability exchange and version negotiation
+- Not needed until then — paying complexity cost with no benefit
+
+---
+
+## The Contract
+
+Every federation organ exposes `federation_schema_version` in its `/health`
+response. The value MUST equal the string in
+[`arifOS/arifosmcp/schemas/federation_enums.py`](../../arifOS/arifosmcp/schemas/federation_enums.py)
+at the bottom of the file:
+
+```python
+FEDERATION_ENUMS_SCHEMA_VERSION = "2.0.0"
+```
+
+If an organ's `/health` does not echo this string, that organ is on a
+**different enum schema** than the federation. Agents MUST refuse to consume
+its tools until the gap is reconciled.
+
+---
+
+## Why this exists
+
+Before this alignment, every organ emitted its own version string:
+
+| Organ  | Field name   | Format                                  |
+| ------ | ------------ | --------------------------------------- |
+| arifOS | `version`    | `kanon-<short-sha>`                     |
+| GEOX   | `version`    | `v2026.07.06-phase3.1-rsi-pipeline`     |
+| WEALTH | `version`    | `2026.07.12` (date only)                |
+| WELL   | `version`    | `2026.05.15-ΩWELL+GWELL+FEDERATION`     |
+| A-FORGE | `version`   | `0.1.0` (semver)                        |
+| AAA    | `version`    | `1.0.0` (A2A protocol version)          |
+
+Five different formats. No shared constant. No enforcement. If the canonical
+enum values in `federation_enums.py` drift, no one knows until something
+breaks at runtime — usually with a stale verdict or wrong session-state
+comparison.
+
+The fix: one field, one string, six places. The alignment is enforced by
+curl, by CI gate, and by agents reading `/health` before consuming tools.
+
+---
+
+## What it guarantees
+
+When all six organs echo `"federation_schema_version": "2.0.0"`:
+
+- Every organ is reading the same `Verdict` enum (SEAL / HOLD / SABAR / VOID / OBSERVE / PARTIAL / UNKNOWN)
+- Every organ is reading the same `SessionState` enum (OBSERVE_ONLY / LIMITED_MUTATE / FULL / SABAR / ANONYMOUS / UNKNOWN)
+- Every organ is reading the same `GovernanceLane` enum (OBSERVE / REASONING / JUDGMENT / EXECUTION / COCKPIT / UNKNOWN)
+- Every organ is reading the same `EpistemicTag` enum (OBSERVED / DERIVED / INTERPRETED / SPECULATED / ASSUMED)
+- Every organ is reading the same `EvidenceQuality`, `ConfidenceLevel`, `OutputClass`, `ReceiptState`, `ToolAffordanceState`, `EvidenceSourceRank` enums
+
+If any organ is missing the field, or the value differs, that organ is on a
+fork. **Stop. Re-sync the enum import. Do not consume its tools.**
+
+---
+
+## The Six Alignment Sites
+
+| Organ  | Source file                                                       |
+| ------ | ----------------------------------------------------------------- |
+| arifOS | `arifOS/arifosmcp/runtime/rest_routes/rest_routes.py` (line ~2659) |
+| GEOX   | `GEOX/src/geox_mcp/server.py` (line ~2583)                        |
+| WEALTH | `WEALTH/server_federated.py` (line ~36)                           |
+| WELL   | `WELL/server.py` (`_mcp_health_check_impl`, line ~1730)            |
+| A-FORGE | `A-FORGE/src/interfaces/server.ts` (`/health` handler, line ~944) |
+| AAA    | `AAA/src/gateway/server.ts` (`/health` handler, line ~488)         |
+
+---
+
+## How to verify alignment
+
+```bash
+for organ in arifos:8088 geox:8081 wealth:18082 well:18083 aforge:7071 aaa:3001; do
+  name="${organ%%:*}"; port="${organ##*:}"
+  v=$(curl -sf "http://localhost:$port/health" | grep -o '"federation_schema_version":"[^"]*"' || echo "MISSING")
+  echo "$name :$port → $v"
+done
+```
+
+Expected output (all six align):
+
+```
+arifos :8088 → "federation_schema_version":"2.0.0"
+geox :8081 → "federation_schema_version":"2.0.0"
+wealth :18082 → "federation_schema_version":"2.0.0"
+well :18083 → "federation_schema_version":"2.0.0"
+aforge :7071 → "federation_schema_version":"2.0.0"
+aaa :3001 → "federation_schema_version":"2.0.0"
+```
+
+If any organ returns `MISSING`, or a different version string, that organ
+has drifted. Investigate before consuming its tools.
+
+---
+
+## How to bump the version
+
+When you change any enum value in `federation_enums.py`:
+
+1. Update the constant:
+   ```python
+   FEDERATION_ENUMS_SCHEMA_VERSION = "2.0.1"   # was 2.0.0
+   FEDERATION_ENUMS_LAST_UPDATED = "2026-07-XX"
+   ```
+2. Update the value in **all six** `/health` handlers.
+3. Run the verify loop above — every organ must echo the new string.
+4. Commit a forge_work note documenting the breaking change and which enum(s) shifted.
+
+---
+
+## What it does NOT cover
+
+- The MCP transport protocol version (`mcp-protocol-version` header) — separate concern, owned by MCP spec.
+- Per-organ build versions (`kanon-XXX`, `geox-XXX`, `0.1.0`, etc.) — those identify the organ's own release, not the federation enum contract.
+- Tool affordance schema (per-tool input/output shapes) — owned by `contracts/tools.yaml` per organ, not by `federation_enums.py`.
+
+The alignment covers only the **10 enum families** in `federation_enums.py`:
+Verdict, EpistemicTag, EvidenceQuality, ConfidenceLevel, OutputClass,
+SessionState, GovernanceLane, ReceiptState, ToolAffordanceState,
+EvidenceSourceRank.
+
+---
+
+## History
+
+- **2026-07-14:** Original "MCP Federation Handshake" created by kimi-code-FI-008, ratified by Arif F13.
+- **2026-07-14:** Renamed to "MCP Federation Schema Alignment (v2.0)" — the name "handshake" created a promise the architecture did not keep. Honesty over aspiration.
+
+---
+
+DITEMPA BUKAN DIBERI — One schema to govern them all. L2 acknowledged. L3 next.
