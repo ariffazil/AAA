@@ -115,7 +115,7 @@ external_auditors:
       - self_certify_pass
       - claim_sealed
       - write_to_audited_system
-    evidence_bands: [L3_CACHED, L4_INFERRED]
+    evidence_bands: [L2_VERIFIED, L3_CACHED, L4_INFERRED]
     anti_calhoun_gate: true
     validation:
       must_use_different_provider: true
