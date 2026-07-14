@@ -107,6 +107,28 @@ const TSA_PASSWORD = process.env.TSA_PASSWORD || null;
 //   http://tsa.freetsa.org:3018 (community)
 const TSA_PROOF_DIR = process.env.TSA_PROOF_DIR || '/root/VAULT999/timestamps';
 
+// Canonical enum values -- must match arifosmcp/core/federation_contracts.py
+// Single source of truth for seal chain identity verification state.
+const ACTOR_SOURCE = Object.freeze({
+  ED25519_VERIFIED: 'ed25519_verified',
+  SOVEREIGN_DIRECTIVE: 'sovereign_directive',
+  JWT_VERIFIED: 'jwt_verified',
+  KERNEL_EVALUATED: 'kernel_evaluated',
+  SELF_REPORT: 'self_report',
+});
+
+const KERNEL_VERDICT = Object.freeze({
+  PASS: 'PASS',
+  FAIL: 'FAIL',
+  UNKNOWN: 'UNKNOWN',
+});
+
+const SEAL_AUTHORITY = Object.freeze({
+  SOVEREIGN: 'SOVEREIGN',
+  OPERATOR: 'OPERATOR',
+});
+
+
 // ── TSA: Trusted Timestamp (RFC 3161) ──────────────────────────────────────
 // After every seal write, optionally stamp the hash with an external TSA.
 // The TSA token proves the seal existed before the TSA's timestamp.
@@ -481,13 +503,13 @@ function enforceSealInvariants(payload, opts = {}) {
   let downgraded = false;
   let verdict = (payload.verdict || 'SEAL').toUpperCase();
   const kernelVerdict = payload.kernel_verdict ||
-    (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : 'UNKNOWN');
+    (payload._l11_unverified ? 'FAIL_L11_NOT_VERIFIED' : KERNEL_VERDICT.UNKNOWN);
   // F2 TRUTH: inherit kernel verification state when present (2026-07-13 fix).
   // Distinguishes "field absent" from "field explicitly set to self_report".
   // If kernel_verdict is PASS but actor_source is absent, the kernel verified
   // the actor — treat as kernel_evaluated, not self_report.
   const actorSource = payload.actor_source ||
-    (kernelVerdict === 'PASS' ? 'kernel_evaluated' : 'self_report');
+    (kernelVerdict === KERNEL_VERDICT.PASS ? ACTOR_SOURCE.KERNEL_EVALUATED : ACTOR_SOURCE.SELF_REPORT);
   const actor = payload.agent_id || payload.actor || 'unknown';
   // CLI `write` only passes payload; accept witness on payload or opts (2026-07-09 RSI).
   const witness =
@@ -500,7 +522,7 @@ function enforceSealInvariants(payload, opts = {}) {
   );
 
   if (verdict === 'SEAL' &&
-      (kernelVerdict === 'UNKNOWN' || kernelVerdict.startsWith('FAIL'))) {
+      (kernelVerdict === KERNEL_VERDICT.UNKNOWN || kernelVerdict.startsWith('FAIL'))) {
     violations.push({
       invariant: 'INV-1_KERNEL_VERIFIED',
       detail: `SEAL requires kernel_verdict≠UNKNOWN/FAIL, got ${kernelVerdict}`,
@@ -508,7 +530,7 @@ function enforceSealInvariants(payload, opts = {}) {
     verdict = 'HOLD';
     downgraded = true;
   }
-  if (verdict === 'SEAL' && actorSource === 'self_report') {
+  if (verdict === 'SEAL' && actorSource === ACTOR_SOURCE.SELF_REPORT) {
     violations.push({
       invariant: 'INV-2_ACTOR_VERIFIED',
       detail:
