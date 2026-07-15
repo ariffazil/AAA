@@ -1,17 +1,8 @@
 ---
-id: APEX-constitutional-audit
-name: APEX-constitutional-audit
-version: 2.0.0
-description: >
-  Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis,
-  lexical priority check, blast-radius 888 HOLD bypass detection, dignity packet inspection,
-  drift monitor presence. ATTESTED + LEASED before activation.
-  BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
-floor_scope: [F01, F02, F04, F07, F09, F11, F13]
-cognitive_hints:
-  claude: "Use <audit-scope>, <findings>, <verdict> XML tags. Extended context for cross-referencing prior audits."
-  codex: "Follow audit checklist step-by-step. Each step: check → evidence → pass/fail. Log reasoning."
-  hermes: "Audit. Check each floor. Report findings. Done."
+name: apex_audit_coverage_check
+agent: 888-APEX
+namespace: apex_*
+cluster: AUDIT
 ---
 
 # APEX-constitutional-audit

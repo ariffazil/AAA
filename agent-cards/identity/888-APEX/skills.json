@@ -6,26 +6,31 @@
   "layer": "identity",
   "ring": "ΦΙ JUDGE",
   "role": "Constitutional verdicts (SEAL/HOLD/VOID)",
-  "skill_count": 22,
+  "skill_count": 24,
   "skills": [
     {
-      "id": "APEX-act",
-      "source": ".agents/skills/APEX-act",
+      "id": "apex_verdict_seal",
+      "source": ".aaa/skills/apex_verdict_seal",
       "why": "ART→Kernel→ACT reflex arc"
     },
     {
-      "id": "APEX-authority-detection",
-      "source": ".agents/skills/APEX-authority-detection",
+      "id": "apex_verdict_hold",
+      "source": ".aaa/skills/apex_verdict_hold",
+      "why": "ART→Kernel→ACT reflex arc"
+    },
+    {
+      "id": "apex_authority_check",
+      "source": ".aaa/skills/apex_authority_check",
       "why": "Parallel-authority resolver"
     },
     {
-      "id": "APEX-constitutional-audit",
-      "source": ".aaa/skills/APEX-constitutional-audit",
+      "id": "apex_audit_coverage_check",
+      "source": ".aaa/skills/apex_audit_coverage_check",
       "why": "Six-organ audit"
     },
     {
-      "id": "APEX-f1-gate",
-      "source": ".agents/skills/APEX-f1-gate",
+      "id": "apex_reversibility_test",
+      "source": ".aaa/skills/apex_reversibility_test",
       "why": "F1 AMANAH lock"
     },
     {
@@ -34,8 +39,13 @@
       "why": "5-pass recursive audit"
     },
     {
-      "id": "APEX-governance",
-      "source": ".agents/skills/APEX-governance",
+      "id": "apex_floor_check",
+      "source": ".aaa/skills/apex_floor_check",
+      "why": "F1-F13 + 888_HOLD logic"
+    },
+    {
+      "id": "apex_scope_check",
+      "source": ".aaa/skills/apex_scope_check",
       "why": "F1-F13 + 888_HOLD logic"
     },
     {
@@ -44,8 +54,8 @@
       "why": "Confidence bands + unknowns"
     },
     {
-      "id": "APEX-mcp-federation",
-      "source": ".agents/skills/APEX-mcp-federation",
+      "id": "apex_tool_approval_gate",
+      "source": ".aaa/skills/apex_tool_approval_gate",
       "why": "MCP server sequencing"
     },
     {

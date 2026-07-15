@@ -1,48 +1,8 @@
 ---
-id: parallel-authority-detection
-name: APEX-authority-detection
-version: 1.0.0
-description: Detect when two or more repos claim the same authority, responsibility,
-  or canonical source of truth. Resolve conflicts through ROOT_CANON.yaml precedence.
-owner: AAA
-risk_tier: high
-knowledge_basis:
-  language: true
-  math: false
-  physics: false
-host_compatibility:
-- claude-code
-- codex
-- opencode
-- kimi
-- kimi-code
-dependencies:
-  skills:
-  - repo-hygiene-audit
-  servers: []
-  tools:
-  - github-search
-  - file-read
-examples:
-- Detect both AAA and arifOS claiming 888_JUDGE authority
-tests:
-- Find duplicate `CONSTITUTION.md` files across repos
-version_lock:
-  schema_version: '1'
-  artifact_hash: pending
-orthogonal_tags:
-  trinitarian:
-  - ΦΙ
-  functional:
-  - Governance
-  layer: HEXAGON
-  autonomy_tier: T2
-floor_scope:
-- F2
-- F4
-- F9
-- F10
-- F11
+name: apex_authority_check
+agent: 888-APEX
+namespace: apex_*
+cluster: IDENTITY
 ---
 
 # Parallel Authority Detection
