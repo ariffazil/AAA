@@ -89,11 +89,14 @@ EDGE AGENTS (MCP clients — connect THROUGH kernel, NOT above it):
 | **arifOS** | :8088 | Python | LAW — F1-F13 floors, session init, judge deliberation, vault seal, capability graph, interrupt routing |
 
 ### Domain Intelligence Layer
-| Organ | Port | Substrate | Role |
-|-------|------|-----------|------|
-| **GEOX** | :8081 | Python | EARTH — seismic, petrophysics, basin, prospect (Physics9-bounded) |
-| **WEALTH** | :18082 | Python/Node | CAPITAL — NPV, IRR, EMV, conservation, flow, entropy |
-| **WELL** | :18083 | Python | VITALITY — human readiness, fatigue, dignity, homeostasis (REFLECT_ONLY) |
+| Organ | Port | Substrate | Role | `domain_law` |
+|-------|------|-----------|------|--------------|
+| **GEOX** | :8081 | Python | EARTH — seismic, petrophysics, basin, prospect (Physics9-bounded) | `NATURAL_LAW` |
+| **WEALTH** | :18082 | Python/Node | CAPITAL — NPV, IRR, EMV, conservation, flow, entropy | `CAPITAL_LAW` |
+| **WELL** | :18083 | Python | VITALITY — human readiness, fatigue, dignity, homeostasis (REFLECT_ONLY) | `SUBSTRATE_LAW` |
+
+> **Domain contrast (Math · Physics · Code · MCP flow):** [`DOMAIN_ORGAN_CONTRAST.md`](./DOMAIN_ORGAN_CONTRAST.md) — orthogonal axes, live tool contracts, agentic handoffs.  
+> **Architecture seal v2026.07.15:** [`ARIFOS_MCP_ARCHITECTURE_v2026.07.15.md`](./ARIFOS_MCP_ARCHITECTURE_v2026.07.15.md) — Foundations · Organs · Contrast · READMEs · Flow · 999 SEAL.
 
 ### Execution Layer
 | Organ | Port | Substrate | Role |
