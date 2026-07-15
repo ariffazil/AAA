@@ -1,5 +1,5 @@
 version: 3
-last_updated: '2026-07-11'
+last_updated: '2026-07-15'
 canonical_home: /root/AAA/skills
 architecture: 3-layer-3-axis
 layers:
@@ -172,10 +172,14 @@ agent_profiles:
     profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json
     notes: Curated AAA/A2A view; GitHub split into transport, CI, issue, review, and governance only
 total_skills: 64
-reduction_from_original: 124 -> 63
+logical_registry_count: 64
+alias_table_rows: 133
+active_alias_rows: 104
+tombstone_alias_rows: 29
+reduction_from_original: '124 -> 64 logical registry entries; alias rows are a separate mapping/history dimension'
 unification_atlas: /root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
 alias_table: /root/AAA/skills/SKILL_ALIAS_TABLE.json
 alias_table_md: /root/A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md
 hermes_bridge: /root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md
 mesh_sync: /root/AAA/skills/scripts/skill-mesh-sync.sh
-last_harness_sync_note: '2026-07-12: alias 63/63 sealed; mesh-sync applied 44 links; grok office prune; hermes bridge; boot gate'
+last_harness_sync_note: '2026-07-15: 133 alias rows (104 active, 29 tombstone); 79 links repaired/added; 2 source-less broken aliases quarantined; mesh --check clean'
