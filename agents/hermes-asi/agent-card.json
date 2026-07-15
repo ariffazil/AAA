@@ -3,9 +3,9 @@
   "schemaVersion": "2.2.0",
   "id": "hermes-asi",
   "name": "Hermes ASI",
-  "class": "ASI-Peripheral",
-  "bound_to": "555-ASI",
-  "power_band": "conversation_media_routing",
+  "class": "AAA-Core",
+  "bound_to": "AAA",
+  "power_band": "semantic_routing_human_interface_federation_voice",
   "skills_prefix": [
     "HERMES-"
   ],
