@@ -43,7 +43,7 @@ channels:
     approval_policy: none
 
 # MCP servers (gateway-proxied)
-mcp_servers:
+mcp_surface:
   - id: arifos-mcp
     url: http://arifosmcp:8080
     enabled: true

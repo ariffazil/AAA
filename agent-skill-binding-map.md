@@ -116,12 +116,19 @@
 
 | Skill ID | Agents Binding This Skill |
 |----------|--------------------------|
-| **role-binding-omega** | 555-ASI |
+| **asi_identity_acknowledge** (was role-binding-omega) | 555-ASI |
+| **asi_intent_hear** (was HERMES-human-model) | 555-ASI |
+| **asi_tone_read** (was HERMES-human-model, 1→2 split) | 555-ASI |
+| **asi_interface_adapt** (was HERMES-multi-modal-bridge) | 555-ASI |
+| **asi_presence_open** (was ASI-agent-bootstrap) | 555-ASI |
+| **asi_uncertainty_signal** (was ASI-drift-response) | 555-ASI |
+| **asi_evidence_tier_express** (was ASI-evals) | 555-ASI |
+| **asi_context_compress** (was asi-cooling-ledger-rsi) | 555-ASI |
+| **asi_position_contrast** (was ASI-multi-discipline-critique) | 555-ASI |
 | **ASI-ethical-critique** | 555-ASI |
 | **ASI-deep-memory-synthesis** | 555-ASI |
 | **ASI-anti-beautiful-one** | 555-ASI |
 | **ASI-substrate-validation** | 555-ASI |
-| **HERMES-human-model** | 555-ASI |
 | **ASI-sovereignty-entropy-guard** | 555-ASI |
 | **ASI-scar-forge** | 555-ASI |
 | **ASI-aaa-zen** | opencode |

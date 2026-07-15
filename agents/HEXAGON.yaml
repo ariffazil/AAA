@@ -29,9 +29,7 @@ hexagon:
       - '888→333: verdict + correction directives'
       - '888→555: judgment for memory archival'
     support_layer:
-      description: Parallel observation, not in decision flow
-      A-AUDIT: Observes ALL 3 primaries continuously → flags anomalies → escalates to 888-APEX
-      A-ARCHIVE: Triggered on SEAL → writes to VAULT999 → append-only
+      description: "[COLLAPSED 2026-07-15] A-AUDIT and A-ARCHIVE removed from HEXAGON. Audit = 888-APEX.apex_audit_embed (cross-cutting). Archive = VAULT999 (append-only ledger, via arif_seal). Legacy content at agents/_archive/A-{AUDIT,ARCHIVE}-deprecated-20260715/."
     sovereign_override: 000-SALAM above — final human veto on any 888_HOLD or disputed verdict
   lifecycle:
     pipeline: 000-SALAM → 333-AGI (reason+execute) → 555-ASI (critique+memory) → 888-APEX (judge) → [A-AUDIT validates] → [A-ARCHIVE seals] → reseed to 000
@@ -113,23 +111,11 @@ hexagon:
       role: constitutional judge, F1-F13 arbitration
       hosts:
       - arifOS
-    support:
-    - id: A-AUDIT
-      class: APEX oversight
-      role: continuous ethical + safety monitor
-      skills: 10
-      tag: '[oversight]'
-      hosts:
-      - arifOS (control plane)
-      local_skills:
-      - kernel-scribe
-    - id: A-ARCHIVE
-      class: ASI service
-      role: immutable ledger keeper + audit trail
-      skills: 8
-      tag: SEAL
-      hosts:
-      - VAULT999
+    support: []
+    # [COLLAPSED 2026-07-15] A-AUDIT + A-ARCHIVE removed from HEXAGON support layer.
+    # - A-AUDIT → 888-APEX.apex_audit_embed (cross-cutting audit)
+    # - A-ARCHIVE → VAULT999 (append-only ledger, via arif_seal)
+    # Legacy archived at agents/_archive/A-{AUDIT,ARCHIVE}-deprecated-20260715/
     external:
     - id: opencode
       class: AGI

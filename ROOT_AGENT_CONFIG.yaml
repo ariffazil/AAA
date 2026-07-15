@@ -169,7 +169,7 @@ forge_instruments:
   small_model: minimax/MiniMax-M2.5-highspeed
   native_mcp: true
   mcp_count: 23
-  mcp_servers:
+  mcp_surface:
   - arifos
   - aforge
   - geox
@@ -261,7 +261,7 @@ forge_instruments:
   model: kimi-for-coding
   native_mcp: true
   mcp_count: 9
-  mcp_servers:
+  mcp_surface:
   - arifos
   - aforge
   - geox
