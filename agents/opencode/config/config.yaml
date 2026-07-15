@@ -18,7 +18,7 @@ host_binding:
   binary: /usr/local/bin/opencode
   resolved_binary: /root/.npm-global/bin/opencode
 
-mcp_servers:
+mcp_surface:
   - id: arifos
     enabled: true
   - id: aforge
