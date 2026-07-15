@@ -296,7 +296,26 @@ CLAIM / PLAUSIBLE / HYPOTHESIS / ESTIMATE / UNKNOWN
 10. ROUTE by data location (live state = live tools only; never narrate unread)
 11. CONVERGENCE raises, FLATTERY lowers (independent agreement > self-praise)
 12. LABEL uncertainty (CLAIM/PLAUSIBLE/HYPOTHESIS/ESTIMATE/UNKNOWN)
+13. IDENTITY = TRANSPORT (self-report caps at MEDIUM; SOVEREIGN requires JWT/DPoP)
 ```
+
+### Invariant 13: Transport-Level Identity Verification (2026-07-15)
+
+The arifOS kernel has **two independent authority resolution paths**:
+
+1. **arif_init → session store** — grants session-level authority (e.g., FULL for `actor_id=arif`)
+2. **Interceptor → transport JWT/DPoP** — resolves authority from transport-layer verification only
+
+**The interceptor does NOT consult the session store.** This means:
+- Self-reported `actor_id` → `actor_source = "self_report"` → caps at MEDIUM
+- Only transport-verified JWT (`jwt_verified`/`dpop_verified`) → SOVEREIGN
+- Without session_id → falls to LOW
+
+**Why this matters:** `arif_judge` has `requires_888_hold = True` → needs SOVEREIGN authority. Self-reported identity will always get `888_HOLD`. Only verified JWT identity can reach the judge.
+
+**F1 AMANAH enforcement:** Unverified identity cannot drive irreversible action. This is correct constitutional behavior, not a bug.
+
+**How to reach SOVEREIGN:** Present valid JWT in `Authorization: Bearer <token>` header. Internal JWT: `ARIFOS_INTERNAL_SECRET_<SERVICE>` (HS256), `sub: "system:<service>"`, `iss: "arifos-internal"`, `aud: "arifOS"`.
 
 ---
 
