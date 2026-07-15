@@ -1,9 +1,8 @@
 ---
-name: APEX-f1-gate
-description: F1 AMANAH constitutional gate. Manual invocation to review any F1-surface change (vault, seal, identity, judge, heart, constitutional, amanah, floor, VAULT999, outcomes.jsonl, 888_HOLD, 999_SEAL). Returns 888 HOLD verdict for human witness. Auto-fires as a hook on Edit/Write/MultiEdit for the same patterns.
-when_to_use: Before committing any F1-surface change; before any seal; before any constitutional floor edit; before any identity rotation.
-disable-model-invocation: true
-allowed_tools: [Bash, Read, Grep]
+name: apex_reversibility_test
+agent: 888-APEX
+namespace: apex_*
+cluster: REVERSIBILITY
 ---
 
 # F1 AMANAH Gate

@@ -71,8 +71,10 @@
     {"name":"AGI-codex-chain-of-thought","axis":"agi"},
     {"name":"ASI-agent-invariants","axis":"asi"},
     {"name":"ASI-agentic-architecture","axis":"asi"},
-    {"name":"APEX-governance","axis":"apex"},
-    {"name":"APEX-act","axis":"apex"},
+    {"name":"apex_floor_check","axis":"apex"},
+    {"name":"apex_scope_check","axis":"apex"},
+    {"name":"apex_verdict_seal","axis":"apex"},
+    {"name":"apex_verdict_hold","axis":"apex"},
     {"name":"KERNEL-trinity-33","axis":"apex"}
   ]
 }
