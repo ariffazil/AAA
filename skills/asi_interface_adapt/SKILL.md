@@ -1,7 +1,9 @@
 ---
-agent: hermes-asi
-name: Hermes Multi-Modal Bridge
-skill_id: hermes-multi-modal-bridge
+name: asi_interface_adapt
+agent: 555-ASI
+namespace: asi_*
+cluster: DELIVERY
+skill_id: asi_interface_adapt
 version: 1.0.0
 description: >
   A2A protocol bridge for routing multi-modal inputs (vision, audio,
