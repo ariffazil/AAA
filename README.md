@@ -130,6 +130,7 @@ If any claim in this README disagrees with the files below, the files win.
 | Federation topology | `/root/AGENTS.md` (root landing protocol) |
 | Hexagon YAML topology | `agents/HEXAGON.yaml` |
 | Adat Agentik decisions | `agents/decisions/BAHASA_MALU.md` · `agents/decisions/MELAYU_POLICY.md` |
+| **Single entry point** (since 2026-07-15) | `ZEN.md` — 10-step load order, links to everything |
 
 ### 0.5 The four-layer truth stack (state bedrock)
 
@@ -477,7 +478,7 @@ Each AREP task declares a minimum evidence floor (`reality_constraints.evidence_
 
 ## 5. HEXAGON Agent Architecture
 
-The 5-agent constitutional architecture (HEXAGON, ratified 2026-06-02) sits above the 7-organ runtime topology. Three primary agents form a decision triangle; two support agents observe and record in parallel.
+The 3-agent constitutional architecture (HEXAGON, ratified 2026-06-02) sits above the 7-organ runtime topology. Three primary agents form a decision triangle. (Audit + Archive support agents collapsed 2026-07-15 — embedded as cross-cutting functions in every organ.)
 
 ```
                          ┌──────────────┐
@@ -633,7 +634,7 @@ SOT files for agent identity:
 | `registries/forge_instruments.yaml` | Forge instrument canon |
 | `agents/AGENT_REGISTRY.md` | Human-readable canonical agent index (supersedes JSON for narrative) |
 | `agents/HEXAGON.yaml` | HEXAGON YAML topology spec (v2.0.0, SEAL `HEXAGON-AGENTS-FORGE-20260602`) |
-| `agents/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/agent-card.json` | Per-agent identity cards |
+| `agents/_lanes/{333-AGI,555-ASI,888-APEX,777-forge}/agent-card.json` | Per-agent identity cards (A-AUDIT + A-ARCHIVE collapsed 2026-07-15 — see `agents/_archive/`) |
 | `public/a2a/agents.json` | Live runtime registry served at `/a2a/agents.json` |
 | `a2a-server/agent-cards/forge/fi-001..fi-008` | 8 on-disk forge instrument cards (11 instruments in `ROOT_AGENT_CONFIG.yaml`) |
 | `a2a-server/agent-cards/organs/{aforge,arifos,geox,wealth,well}.json` | 5 organ runtime cards |
@@ -795,9 +796,8 @@ AAA/
 │   │   ├── 333-AGI/      IDENTITY.md · agent-card.json
 │   │   ├── 555-ASI/      IDENTITY.md · agent-card.json
 │   │   ├── 888-APEX/     IDENTITY.md · agent-card.json
-│   │   ├── A-AUDIT/      IDENTITY.md (no card — oversight)
-│   │   ├── A-ARCHIVE/    IDENTITY.md · agent-card.json
 │   │   └── 777-forge/    AGENTS · BOOTSTRAP · HEARTBEAT · IDENTITY · SOUL · TOOLS
+│   │   (A-AUDIT + A-ARCHIVE collapsed 2026-07-15 — archived at _archive/)
 │   ├── RUNTIME dirs: hermes-asi · hermes-ops · openclaw
 │   ├── CODING dirs: grok-build · claude-code · codex · opencode · copilot · aider · kimi-code · continue-cli · antigravity · gemini-cli
 │   ├── ROLE dirs: external-watcher · kernel-scribe · ops-planner · self-forge-advisor · warga
