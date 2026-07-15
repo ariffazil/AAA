@@ -1,56 +1,8 @@
 ---
-id: arifos-act
-name: APEX-act
-version: 3.0.0
-description: >
-  CANONICAL constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution).
-  Supersedes: CONSTITUTIONAL_REFLEX (v2.0.0-legacy, .agents/skills), constitutional-governance (arifOS/skills).
-  Load once. Apply always.
-owner: AAA
-risk_tier: critical
-knowledge_basis:
-  language: true
-  math: false
-  physics: false
-host_compatibility:
-- claude-code
-- codex
-- opencode
-- kimi
-- kimi-code
-- hermes-asi
-- openclaw-gateway
-dependencies:
-  skills: []
-  servers:
-  - arifos-mcp
-  tools: []
-examples:
-- Before any irreversible action, run the ART→Kernel→ACT reflex
-tests:
-- ART classifies intent before kernel judgment
-- ACT constrains execution after kernel SEAL
-version_lock:
-  schema_version: '1'
-  artifact_hash: pending
-orthogonal_tags:
-  trinitarian:
-  - Δ
-  - Ω
-  - ΦΙ
-  functional:
-  - Governance
-  - Forge
-  layer: RUNTIME
-  autonomy_tier: T3
-floor_scope:
-- F1
-- F2
-- F4
-- F7
-- F9
-- F11
-- F13
+name: apex_verdict_seal
+agent: 888-APEX
+namespace: apex_*
+cluster: VERDICT
 ---
 
 # arifOS ACT — Constitutional Reflex

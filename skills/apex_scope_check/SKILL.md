@@ -1,50 +1,8 @@
 ---
-id: arifos-governance
-name: APEX-governance
-version: 1.0.1
-description: Enforce Floors F1-F13, 888 HOLD logic, irreversible-action gating, evidence
-  alignment, and veto routing. Load when performing policy mutations, data deletions,
-  deployment risk evaluations, or verifying system constraints.
-owner: AAA
-risk_tier: high
-knowledge_basis:
-  language: true
-  math: false
-  physics: false
-host_compatibility:
-- claude-code
-- codex
-- opencode
-- kimi
-- kimi-code
-dependencies:
-  skills: []
-  servers: []
-  tools: []
-examples:
-- Apply F1 AMANAH gate before an irreversible file deletion
-- Evaluate whether a proposed change touches constitutional surfaces
-tests:
-- F1 surface scan flags vault/identity/floor references
-- Irreversible action without sovereign ack routes to 888 HOLD
-version_lock:
-  schema_version: '1'
-  artifact_hash: pending
-orthogonal_tags:
-  trinitarian:
-  - ΦΙ
-  functional:
-  - Governance
-  layer: HEXAGON
-  autonomy_tier: T3
-floor_scope:
-- F1
-- F2
-- F4
-- F7
-- F9
-- F11
-- F13
+name: apex_scope_check
+agent: 888-APEX
+namespace: apex_*
+cluster: CONSTITUTION
 ---
 
 # arifos-governance (O_Ω Constitutional Layer)

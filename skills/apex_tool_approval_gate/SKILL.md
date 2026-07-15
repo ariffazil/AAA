@@ -1,56 +1,8 @@
 ---
-id: APEX-mcp-federation
-name: APEX-mcp-federation
-version: 2.0.0
-description: >
-  Route tasks across MCP servers, choose server/tool sequence, and define
-  fallbacks when one substrate fails. Load when work spans multiple tools in GEOX,
-  WEALTH, WELL, or external APIs.
-  BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
-owner: AAA
-risk_tier: medium
-knowledge_basis:
-  language: true
-  math: false
-  physics: false
-host_compatibility:
-- claude-code
-- codex
-- opencode
-- kimi
-- kimi-code
-dependencies:
-  skills:
-  - APEX-act
-  servers:
-  - arifos-mcp
-  tools: []
-examples:
-- Route a task requiring GEOX evidence and WEALTH valuation across organs
-- Fallback to local commands when an MCP server is unreachable
-tests:
-- Brain/hands separation preserved (A-FORGE only after lease)
-- Governance path reaches arifOS tools, not A-FORGE
-version_lock:
-  schema_version: '2'
-  artifact_hash: pending
-orthogonal_tags:
-  trinitarian:
-  - Δ
-  functional:
-  - Routing
-  layer: RUNTIME
-  autonomy_tier: T2
-floor_scope:
-- F2
-- F3
-- F4
-- F8
-- F11
-cognitive_hints:
-  claude: "Wrap reasoning in <context>, <procedure>, <verification> tags. Use extended recall for cross-organ state."
-  codex: "Follow numbered steps strictly. Validate input/output schema at each step. Chain-of-thought required."
-  hermes: "Direct imperative. No preamble. Route → Execute → Verify → Report."
+name: apex_tool_approval_gate
+agent: 888-APEX
+namespace: apex_*
+cluster: GATE
 ---
 
 # APEX-mcp-federation (O_Omega Orchestration Layer)
