@@ -162,10 +162,12 @@ skills:
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian: []
-    functional: []
+    trinitarian:
+    - ΦΙ
+    functional:
+    - Governance
     layer: HEXAGON
-    autonomy_tier: T1
+    autonomy_tier: T2
   floor_scope:
   - F2
   - F7
@@ -256,8 +258,10 @@ skills:
   risk_tier: medium
   status: active
   orthogonal_tags:
-    trinitarian: []
-    functional: []
+    trinitarian:
+    - ΦΙ
+    functional:
+    - Governance
     layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
@@ -980,8 +984,10 @@ skills:
   risk_tier: low
   status: active
   orthogonal_tags:
-    trinitarian: []
-    functional: []
+    trinitarian:
+    - ΦΙ
+    functional:
+    - Governance
     layer: HEXAGON
     autonomy_tier: T1
   floor_scope:
