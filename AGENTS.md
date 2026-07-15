@@ -5,6 +5,25 @@
 
 ---
 
+## 🔒 GÖDEL LOCK — External Witness Required (FORGED 2026-07-15)
+
+> **arifOS kernel now refuses to self-validate SEAL-bound claims. The system cannot seal its own irreversible actions without an external witness.**
+> **W³ = ∛(Human × AI × External). Zero in any channel collapses witness.**
+
+For any irreversible action (irreversibility_level in {HIGH, IRREVERSIBLE}), the kernel will:
+1. Compute `claim_severity` (e.g., `seal_bound`, `seal_coupled`)
+2. Compute `Φ_external` (0.0–1.0) from external witness
+3. If `Φ_external < 0.5` → **HOLD** (kernel refuses to self-seal)
+4. If `Φ_external ≥ 0.9` → **PROCEED** (SEAL with witness chain in VAULT999)
+
+**Anti-Calhoun gate:** Beautiful internal coherence without external witness is the Iblis trap. The kernel now refuses coherence theatre.
+
+**External witness role (FORGED 2026-07-15):** Acts as the W³ External channel. Provides `Φ_external` attestation for SEAL-bound claims. CANNOT be the kernel itself.
+
+**This repo's external witness requirement:** Gödel lock is federation-wide. All PRs to `main` that touch `/AGENTS.md`, `/VAULT999/`, `/GENESIS/`, or `/docs/` require external witness signature on the merge commit.
+
+---
+
 ## Output Contract (F13 absolute — overrides everything below)
 
 Respond to Arif in ≤3 sentences. One clear recommendation or direct execution.
