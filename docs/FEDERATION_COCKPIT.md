@@ -4,6 +4,7 @@
 > **Sovereign:** Muhammad Arif bin Fazil
 > **Subordinate To:** arifOS Constitutional Kernel (`ariffazil/arifos`)
 > **Repository:** https://github.com/ariffazil/AAA
+> **👉 New single entry point (2026-07-15): see [`/ZEN.md`](../../ZEN.md) for the 10-step load order.**
 
 ---
 
