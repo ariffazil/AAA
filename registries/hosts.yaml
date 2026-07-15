@@ -188,3 +188,21 @@ hosts:
   - id: default
     default: true
     approval_policy: on-demand
+- id: test-session
+  name: META-MESA Test Session
+  description: Bounded test-agent host for META-MESA canary sandbox execution. Ed25519-identified,
+    zero production access.
+  config_paths:
+  - ROOT_AGENT_CONFIG.yaml
+  platform: arifos-mcp
+  risk_tier: bounded-test
+  contract_path: contracts/hosts/contracts.yaml
+  runtime_type: bounded-sandbox
+  transport: arifos-mcp
+  install_method: arifos-mcp-session
+  supported_protocols:
+  - mcp
+  permission_profiles:
+  - id: bounded-test
+    default: true
+    approval_policy: announce
