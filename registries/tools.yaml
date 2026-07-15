@@ -1,5 +1,3 @@
-# AAA Tool Registry — Federation tool surface (auto-generated + curated)
-# Generated: 2026-06-29 | A-FORGE tools: 69 added | Total: 125
 version: 1
 tools:
 - id: status-query
@@ -33,7 +31,8 @@ tools:
   - HUMAN
 - id: agent-dispatch
   name: Agent Dispatch
-  description: Dispatch a bounded task to an approved internal or authenticated peer agent.
+  description: Dispatch a bounded task to an approved internal or authenticated peer
+    agent.
   source_type: builtin
   risk_tier: medium
   approval_policy: hold
@@ -502,7 +501,8 @@ tools:
   required_witnesses: []
 - id: forge_execute
   name: forge_execute
-  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires cc_id for mutations.
+  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an
+    action plan. Requires cc_id for mutations.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -512,7 +512,8 @@ tools:
   - ARIFOS
 - id: forge_abort
   name: forge_abort
-  description: Safe stop + rollback for running execution. Requires lease or session auth.
+  description: Safe stop + rollback for running execution. Requires lease or session
+    auth.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -570,7 +571,8 @@ tools:
   - ARIFOS
 - id: forge_heart_critique
   name: forge_heart_critique
-  description: Risk assessment and ethical review — delegates to arifOS 666 HEART pipeline.
+  description: Risk assessment and ethical review — delegates to arifOS 666 HEART
+    pipeline.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -608,7 +610,8 @@ tools:
   required_witnesses: []
 - id: forge_registry_status
   name: forge_registry_status
-  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift status.'
+  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift
+    status.'
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -617,7 +620,8 @@ tools:
   required_witnesses: []
 - id: forge_register
   name: forge_register
-  description: APEX v36Ω gated registration gate. Registers a tool after all gates pass.
+  description: APEX v36Ω gated registration gate. Registers a tool after all gates
+    pass.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -627,7 +631,8 @@ tools:
   - ARIFOS
 - id: forge_skill
   name: forge_skill
-  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM scan.
+  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM
+    scan.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -646,7 +651,8 @@ tools:
   required_witnesses: []
 - id: forge_witness
   name: forge_witness
-  description: APEX v36Ω tri-witness consensus gate. Computes W3 = ∛(Human × AI × External).
+  description: APEX v36Ω tri-witness consensus gate. Computes W3 = ∛(Human × AI ×
+    External).
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: medium
@@ -655,7 +661,8 @@ tools:
   required_witnesses: []
 - id: forge_scar
   name: forge_scar
-  description: APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional constraints.
+  description: APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional
+    constraints.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -693,7 +700,8 @@ tools:
   required_witnesses: []
 - id: forge_reality_loop
   name: forge_reality_loop
-  description: THE 13TH TOOL — Chains all 12 MCP prompts into a perpetual autonomous reality loop.
+  description: THE 13TH TOOL — Chains all 12 MCP prompts into a perpetual autonomous
+    reality loop.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -703,7 +711,8 @@ tools:
   - ARIFOS
 - id: forge_shell
   name: forge_shell
-  description: Canonical governed shell execution. Executes commands through constitutional gate + hash-chain audit.
+  description: Canonical governed shell execution. Executes commands through constitutional
+    gate + hash-chain audit.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -722,7 +731,8 @@ tools:
   required_witnesses: []
 - id: forge_shell_status
   name: forge_shell_status
-  description: 'Check forge_shell subsystem health: ledger state, judge pattern count, defaults.'
+  description: 'Check forge_shell subsystem health: ledger state, judge pattern count,
+    defaults.'
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -1117,11 +1127,83 @@ tools:
   required_witnesses: []
 - id: document_ingest
   name: document_ingest
-  description: Layout-first document intelligence engine. Modes - analyze (structure tree), extract (full pipeline with bbox provenance), chunk (semantic/section/page for RAG), compare (structural diff). Uses pymupdf + tesseract eng+msa. Read-only, blast_radius LOW. SHA-256 provenance on every extraction. VAULT999-compatible bounding-box coordinates.
+  description: Layout-first document intelligence engine. Modes - analyze (structure
+    tree), extract (full pipeline with bbox provenance), chunk (semantic/section/page
+    for RAG), compare (structural diff). Uses pymupdf + tesseract eng+msa. Read-only,
+    blast_radius LOW. SHA-256 provenance on every extraction. VAULT999-compatible
+    bounding-box coordinates.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
   approval_policy: auto
   execution_kind: observe
   required_witnesses: []
-
+- id: arifos-observe
+  name: arifOS Observe
+  description: Observe and sense system state via arifOS kernel.
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arifos-think
+  name: arifOS Think
+  description: Execute reasoning step via arifOS mind_reason kernel verb.
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arifos-route
+  name: arifOS Route
+  description: Route a task to the appropriate organ via arifOS kernel_route.
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: forge-filesystem-read
+  name: Forge Filesystem Read
+  description: Bounded read-only filesystem access through A-FORGE sandbox.
+  source_type: mcp
+  server_ref: aforge-executor
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge-filesystem-write
+  name: Forge Filesystem Write
+  description: Bounded sandbox-only filesystem write through A-FORGE. Sandbox paths
+    only.
+  source_type: mcp
+  server_ref: aforge-executor
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: forge-shell-dryrun
+  name: Forge Shell Dry-Run
+  description: Dry-run shell command execution — prints plan without executing.
+  source_type: mcp
+  server_ref: aforge-executor
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge-bash-sandbox-only
+  name: Forge Bash Sandbox
+  description: Bash execution strictly scoped to /tmp/mesa-canary-* sandbox paths.
+  source_type: mcp
+  server_ref: aforge-executor
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
