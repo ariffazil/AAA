@@ -56,7 +56,7 @@ agents:
     math: true
     physics: false
   max_risk_tier_for_remote: medium
-  mcp_servers:
+  mcp_surface:
     a-forge: /root/.claude/mcp-launchers/a-forge.sh — execution shell
     arifOS: http://127.0.0.1:8088/mcp — 13 constitutional kernel tools
     brave-search: sh — web search
@@ -212,7 +212,7 @@ agents:
     language: true
     math: true
     physics: true
-  mcp_servers:
+  mcp_surface:
     aforge: http://127.0.0.1:18081/mcp — 11 kernel execution tools
     agentmail: npx agentmail-mcp — email send/receive
     arifos: http://127.0.0.1:8090/mcp — 42 constitutional + wealth + well tools

@@ -30,7 +30,7 @@ skills:
     path: skills/agi-federation-bridge/SKILL.md
     enabled: true
 
-mcp_servers:
+mcp_surface:
   - id: arifos-mcp
     url: http://127.0.0.1:8080/mcp
     enabled: true

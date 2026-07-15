@@ -19,7 +19,7 @@ host_binding:
   type: hermes
   channels: ["a2a", "mcp"]
 
-mcp_servers:
+mcp_surface:
   - id: arifos-mcp
     url: https://mcp.arif-fazil.com/mcp
     enabled: true

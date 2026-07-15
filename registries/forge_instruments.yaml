@@ -77,7 +77,7 @@ instruments:
     - final-agi-contrast
     - final-asi-contrast
     - final-apex-contrast
-  mcp_servers:
+  mcp_surface:
   - arifOS
   - WEALTH
   - WELL
@@ -133,7 +133,7 @@ instruments:
     workflows: DISABLED
     bughunter_fleet_size: 5
     note: All sub-agent features require explicit F13 session override
-  mcp_servers:
+  mcp_surface:
   - arifOS
   - minimax-media
   - minimax-code
@@ -160,7 +160,7 @@ instruments:
   subagent_policy:
     default: 888_HOLD
     historical: 1 Explore sub-agent session (read-only)
-  mcp_servers: []
+  mcp_surface: []
   config_path: /root/.qwen/
   note: AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections.
     Heavily restricted Bash permissions. No active sessions. LOW RISK.
@@ -177,7 +177,7 @@ instruments:
     registered_subagents:
     - research
     - self
-  mcp_servers:
+  mcp_surface:
   - arifOS
   - geox
   - wealth
@@ -203,7 +203,7 @@ instruments:
     goals_engine: idle
     goals_db: /root/.codex/goals_1.sqlite
     active_goals: 0
-  mcp_servers: UNKNOWN
+  mcp_surface: UNKNOWN
   config_path: /root/.codex/
   note: AUDITED 2026-06-10. GPT-5.5 model. 0 active goals (empty thread_goals table).
     5 historical memories (audit/cleanup). Clean state.
@@ -220,7 +220,7 @@ instruments:
   subagent_policy:
     default: "ALLOWED \u2014 /fleet only, max 3 parallel, read-only sandbox"
     fleet_max: 3
-  mcp_servers:
+  mcp_surface:
   - arifOS
   - playwright
   - WEALTH
@@ -244,7 +244,7 @@ instruments:
   izin_date: null
   sandbox: null
   subagent_policy: null
-  mcp_servers: []
+  mcp_surface: []
   note: NOT PRESENT ON MACHINE. No installation found.
 - id: FI-008
   name: Kimi Code CLI
@@ -261,7 +261,7 @@ instruments:
     - fix
     - coordinator
     - worker
-  mcp_servers:
+  mcp_surface:
   - arifOS
   - wealth
   - well
