@@ -5,12 +5,12 @@ instruments:
 - id: FI-001
   name: OpenCode
   binary: /usr/local/bin/opencode
-  version: 3.0.0
+  version: 3.1.0
   version_pinned_from: 2026-06-26 (opencode 3.0.0 release)
-  model: kimi-coding/kimi-for-coding
+  model: tokenplan-mimo/mimo-v2.5-pro
   fallback_model: kimi-for-coding/kimi-k2-thinking
-  model_strategy: MiMo V2.5 Pro primary per F13 2026-06-15 lock; Kimi for complex reasoning; Claude only for architecture
-    review.
+  model_strategy: MiMo V2.5 Pro primary per F13 2026-06-15 lock; Kimi for complex
+    reasoning; Claude only for architecture review.
   izin: GRANTED
   izin_date: '2026-05-17'
   last_upgrade: '2026-06-12'
@@ -30,29 +30,32 @@ instruments:
     - explore
     - scout
   a_r_i_f_chain:
-    description: Architect → Integrator → RSI → Final. Each in own session, no upward spawning. Session isolation enforces
-      separation of powers.
+    description: "Architect \u2192 Integrator \u2192 RSI \u2192 Final. Each in own\
+      \ session, no upward spawning. Session isolation enforces separation of powers."
     architect:
-      role: Frames the problem, emits the brief (brief.md, task_graph.yaml, acceptance.yaml, decisions.md)
+      role: Frames the problem, emits the brief (brief.md, task_graph.yaml, acceptance.yaml,
+        decisions.md)
       model: deepseek/deepseek-v4-pro
       temperature: 0.3
       can_ask_arif: true
       can_push_code: false
     rsi:
-      role: Entropy reduction (refactor/structure/integrate). Measures with radon/lizard/jscpd/knip/vulture. Max 3 passes
-        per milestone.
+      role: Entropy reduction (refactor/structure/integrate). Measures with radon/lizard/jscpd/knip/vulture.
+        Max 3 passes per milestone.
       model: deepseek/deepseek-v4-pro
       temperature: 0.2
       can_ask_arif: false
       can_push_code: false
     integrator:
-      role: Main builder. Executes against brief. Full edit + bash. Asks Arif only when blocked.
+      role: Main builder. Executes against brief. Full edit + bash. Asks Arif only
+        when blocked.
       model: minimax/MiniMax-M3
       temperature: 0.4
       can_ask_arif: only_when_blocked
       can_push_code: yes (with 888 ack)
     final:
-      role: Auditor + 888_HOLD gate. Read-only. SEAL/SABAR/VOID verdict. Max 2 questions per session.
+      role: Auditor + 888_HOLD gate. Read-only. SEAL/SABAR/VOID verdict. Max 2 questions
+        per session.
       model: deepseek/deepseek-v4-pro
       temperature: 0.1
       can_ask_arif: yes (max 2)
@@ -95,8 +98,8 @@ instruments:
   - exa
   - composio
   - github-local
-  mcp_strategy: 13-slot MISKIN roster — only zero-cost + actually-used. All $0/month. See opencode.mcp_audit.json for full
-    audit trail.
+  mcp_strategy: "13-slot MISKIN roster \u2014 only zero-cost + actually-used. All\
+    \ $0/month. See opencode.mcp_audit.json for full audit trail."
   root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
   config_path: /root/.config/opencode/opencode.json
   toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
@@ -159,8 +162,8 @@ instruments:
     historical: 1 Explore sub-agent session (read-only)
   mcp_servers: []
   config_path: /root/.qwen/
-  note: AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections. Heavily restricted Bash permissions.
-    No active sessions. LOW RISK.
+  note: AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections.
+    Heavily restricted Bash permissions. No active sessions. LOW RISK.
 - id: FI-004
   name: Antigravity CLI
   binary: /root/.local/bin/agy
@@ -183,8 +186,8 @@ instruments:
   - context7
   config_path: /root/.gemini/antigravity-cli/
   settings_path: /root/.gemini/antigravity-cli/settings.json
-  note: 'Registered 2026-06-22 during A2A alignment session. Connected to 5 federation organs + context7. Model: Gemini 3.5
-    Flash (High).'
+  note: 'Registered 2026-06-22 during A2A alignment session. Connected to 5 federation
+    organs + context7. Model: Gemini 3.5 Flash (High).'
   live_version_observed: 1.0.13
   version_checked_at: '2026-06-29T16:13:57Z'
 - id: FI-005
@@ -196,14 +199,14 @@ instruments:
   izin_date: '2026-05-20'
   sandbox: landlock
   subagent_policy:
-    default: ALLOWED — only from registered .codex/agents/*.toml
+    default: "ALLOWED \u2014 only from registered .codex/agents/*.toml"
     goals_engine: idle
     goals_db: /root/.codex/goals_1.sqlite
     active_goals: 0
   mcp_servers: UNKNOWN
   config_path: /root/.codex/
-  note: AUDITED 2026-06-10. GPT-5.5 model. 0 active goals (empty thread_goals table). 5 historical memories (audit/cleanup).
-    Clean state.
+  note: AUDITED 2026-06-10. GPT-5.5 model. 0 active goals (empty thread_goals table).
+    5 historical memories (audit/cleanup). Clean state.
   live_version_observed: codex-cli 0.136.0
   version_checked_at: '2026-06-29T16:13:57Z'
 - id: FI-006
@@ -215,7 +218,7 @@ instruments:
   izin_date: '2026-05-24'
   sandbox: process
   subagent_policy:
-    default: ALLOWED — /fleet only, max 3 parallel, read-only sandbox
+    default: "ALLOWED \u2014 /fleet only, max 3 parallel, read-only sandbox"
     fleet_max: 3
   mcp_servers:
   - arifOS
@@ -276,7 +279,8 @@ instruments:
   config_path: /root/.kimi/config.toml
   mcp_config_path: /root/.kimi/mcp.json
   agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
-  note: 'Aligned 2026-06-20. A-FORGE ingress is stdio (HTTP surfaces have SDK single-session limitation). Dedicated MCP service
-    on port 7072 was also fixed to connect McpServer to transport; verified over streamable-http. AMANAH + MARUAH embedded
-    in system identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through A-FORGE forge_* tools. Trust
-    tier proposed: 2 pending A-AUDIT + F13 ratification.'
+  note: 'Aligned 2026-06-20. A-FORGE ingress is stdio (HTTP surfaces have SDK single-session
+    limitation). Dedicated MCP service on port 7072 was also fixed to connect McpServer
+    to transport; verified over streamable-http. AMANAH + MARUAH embedded in system
+    identity. Legacy direct MCPs disabled; route MUTATE/SEARCH/BROWSER/GITHUB through
+    A-FORGE forge_* tools. Trust tier proposed: 2 pending A-AUDIT + F13 ratification.'
