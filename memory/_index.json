@@ -1,0 +1,1957 @@
+{
+  "count": 277,
+  "files": [
+    {
+      "bytes": 7964,
+      "date": "2026-03-31",
+      "path": "memory/2026-03-31-github-500-retry.md",
+      "tags": [],
+      "title": "# Session: 2026-03-31 23:14:44 UTC"
+    },
+    {
+      "bytes": 25479,
+      "date": "2026-03-31",
+      "path": "memory/2026-03-31-plan-mode-routing.md",
+      "tags": [],
+      "title": "# Session: 2026-03-31 12:41:14 UTC"
+    },
+    {
+      "bytes": 3042,
+      "date": "2026-03-31",
+      "path": "memory/2026-03-31.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-03-31"
+    },
+    {
+      "bytes": 7894,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-agent-introduction.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 14:42:38 UTC"
+    },
+    {
+      "bytes": 21119,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-context-drift.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 17:46:12 UTC"
+    },
+    {
+      "bytes": 11068,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-domain-alignment.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 17:09:59 UTC"
+    },
+    {
+      "bytes": 4928,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-ghost-welllogtool.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 06:12:57 UTC"
+    },
+    {
+      "bytes": 6054,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-request-timed-out-before-a-res.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 05:55:34 UTC"
+    },
+    {
+      "bytes": 22722,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-semantic-bleed.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 14:30:43 UTC"
+    },
+    {
+      "bytes": 8628,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01-workspace-setup.md",
+      "tags": [],
+      "title": "# Session: 2026-04-01 00:24:02 UTC"
+    },
+    {
+      "bytes": 13849,
+      "date": "2026-04-01",
+      "path": "memory/2026-04-01.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-04-01"
+    },
+    {
+      "bytes": 17749,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-geox-arifos.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 12:44:32 UTC"
+    },
+    {
+      "bytes": 8013,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-geox-ratlas-integration.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 12:46:49 UTC"
+    },
+    {
+      "bytes": 5486,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-github-repo-manager.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 23:43:52 UTC"
+    },
+    {
+      "bytes": 5854,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-gui-widgets.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 03:23:20 UTC"
+    },
+    {
+      "bytes": 2032,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-llms-headers-fix.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 00:13:36 UTC"
+    },
+    {
+      "bytes": 262,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-new-session.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 00:22:02 UTC"
+    },
+    {
+      "bytes": 8296,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-repo-sync-vps.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 06:37:39 UTC"
+    },
+    {
+      "bytes": 6259,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-request-timed-out-before-a-res.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 03:30:01 UTC"
+    },
+    {
+      "bytes": 1778,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-spacetime-sync.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 03:39:18 UTC"
+    },
+    {
+      "bytes": 6894,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-telegram-group-privacy-setup.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 11:04:11 UTC"
+    },
+    {
+      "bytes": 8086,
+      "date": "2026-04-02",
+      "path": "memory/2026-04-02-version-sync-plan.md",
+      "tags": [],
+      "title": "# Session: 2026-04-02 01:46:34 UTC"
+    },
+    {
+      "bytes": 3199,
+      "date": "2026-04-03",
+      "path": "memory/2026-04-03-soul.md",
+      "tags": [],
+      "title": "# memory/2026-04-03-soul.md \u2014 Arif Fazil Identity Anchor (Source: Arif Fazil direct)"
+    },
+    {
+      "bytes": 21396,
+      "date": "2026-04-03",
+      "path": "memory/2026-04-03.md",
+      "tags": [],
+      "title": "# memory/2026-04-03.md \u2014 Session Memory Flush"
+    },
+    {
+      "bytes": 23324,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04-energy-civilization-report.md",
+      "tags": [],
+      "title": "# arifOS Civilization Analysis Report"
+    },
+    {
+      "bytes": 22041,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04-energy-crisis-human-report.md",
+      "tags": [],
+      "title": "# MALAYSIA ENERGY CRISIS"
+    },
+    {
+      "bytes": 15098,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04-geox-csp-fix.md",
+      "tags": [],
+      "title": "# Session: 2026-04-04 10:18:39 UTC"
+    },
+    {
+      "bytes": 20115,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04-group-brunch-bangi.md",
+      "tags": [],
+      "title": "# Session: 2026-04-04 04:14:39 UTC"
+    },
+    {
+      "bytes": 16426,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04-putrajaya-daytrip.md",
+      "tags": [],
+      "title": "# Session: 2026-04-04 15:48:17 UTC"
+    },
+    {
+      "bytes": 10602,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04-sovereign-architect.md",
+      "tags": [],
+      "title": "# Session: 2026-04-04 07:09:35 UTC"
+    },
+    {
+      "bytes": 4081,
+      "date": "2026-04-04",
+      "path": "memory/2026-04-04.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-04-04"
+    },
+    {
+      "bytes": 6383,
+      "date": "2026-04-05",
+      "path": "memory/2026-04-05-vps-offline-recovery.md",
+      "tags": [],
+      "title": "# Session: 2026-04-05 08:28:29 UTC"
+    },
+    {
+      "bytes": 290,
+      "date": "2026-04-05",
+      "path": "memory/2026-04-05.md",
+      "tags": [],
+      "title": "---"
+    },
+    {
+      "bytes": 984,
+      "date": "2026-04-08",
+      "path": "memory/2026-04-08-wiki-reflection.md",
+      "tags": [],
+      "title": "# Reflection - 2026-04-08 - arifOS and GEOX wiki"
+    },
+    {
+      "bytes": 1289,
+      "date": "2026-04-08",
+      "path": "memory/2026-04-08.md",
+      "tags": [],
+      "title": "# Memory - 2026-04-08"
+    },
+    {
+      "bytes": 12819,
+      "date": "2026-04-09",
+      "path": "memory/2026-04-09-acp-backend.md",
+      "tags": [],
+      "title": "# Session: 2026-04-09 10:42:01 UTC"
+    },
+    {
+      "bytes": 33721,
+      "date": "2026-04-09",
+      "path": "memory/2026-04-09-session-end.md",
+      "tags": [],
+      "title": "# Session: 2026-04-09 13:45:53 UTC"
+    },
+    {
+      "bytes": 6364,
+      "date": "2026-04-09",
+      "path": "memory/2026-04-09-telegram-group.md",
+      "tags": [],
+      "title": "# Session: 2026-04-09 14:00:07 UTC"
+    },
+    {
+      "bytes": 1383,
+      "date": "2026-04-09",
+      "path": "memory/2026-04-09.md",
+      "tags": [],
+      "title": "## 2026-04-09"
+    },
+    {
+      "bytes": 149,
+      "date": "2026-04-10",
+      "path": "memory/2026-04-10-0532.md",
+      "tags": [],
+      "title": "# Session: 2026-04-10 05:32:23 UTC"
+    },
+    {
+      "bytes": 149,
+      "date": "2026-04-10",
+      "path": "memory/2026-04-10-1425.md",
+      "tags": [],
+      "title": "# Session: 2026-04-10 14:25:58 UTC"
+    },
+    {
+      "bytes": 37274,
+      "date": "2026-04-10",
+      "path": "memory/2026-04-10-rhetoric-reality.md",
+      "tags": [],
+      "title": "# Session: 2026-04-10 13:56:09 UTC"
+    },
+    {
+      "bytes": 8971,
+      "date": "2026-04-10",
+      "path": "memory/2026-04-10-soft-gate.md",
+      "tags": [],
+      "title": "# Session: 2026-04-10 07:19:29 UTC"
+    },
+    {
+      "bytes": 1765,
+      "date": "2026-04-10",
+      "path": "memory/2026-04-10-you-have-hit-your-chatgpt-usag.md",
+      "tags": [],
+      "title": "# Session: 2026-04-10 02:55:18 UTC"
+    },
+    {
+      "bytes": 10544,
+      "date": "2026-04-10",
+      "path": "memory/2026-04-10.md",
+      "tags": [],
+      "title": "# SESSION SEAL \u2014 2026-04-10"
+    },
+    {
+      "bytes": 2540,
+      "date": "2026-04-11",
+      "path": "memory/2026-04-11-git-bridge-fix.md",
+      "tags": [],
+      "title": "# Session: 2026-04-11 04:50:11 UTC"
+    },
+    {
+      "bytes": 4824,
+      "date": "2026-04-11",
+      "path": "memory/2026-04-11.md",
+      "tags": [],
+      "title": "# 2026-04-11 \u2014 Daily Memory Log"
+    },
+    {
+      "bytes": 12189,
+      "date": "2026-04-12",
+      "path": "memory/2026-04-12-edge-be.md",
+      "tags": [],
+      "title": "# Session: 2026-04-12 05:54:57 UTC"
+    },
+    {
+      "bytes": 18224,
+      "date": "2026-04-12",
+      "path": "memory/2026-04-12.md",
+      "tags": [],
+      "title": "# memory/2026-04-12.md"
+    },
+    {
+      "bytes": 5419,
+      "date": "2026-04-13",
+      "path": "memory/2026-04-13-arifos-mcp-audit-blueprint.md",
+      "tags": [],
+      "title": "# Session: 2026-04-13 14:42:36 UTC"
+    },
+    {
+      "bytes": 11616,
+      "date": "2026-04-13",
+      "path": "memory/2026-04-13-clawhub-rate-limit.md",
+      "tags": [],
+      "title": "# Session: 2026-04-13 12:55:25 UTC"
+    },
+    {
+      "bytes": 8949,
+      "date": "2026-04-13",
+      "path": "memory/2026-04-13.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-04-13"
+    },
+    {
+      "bytes": 6278,
+      "date": "2026-04-14",
+      "path": "memory/2026-04-14-vault-999-seals.md",
+      "tags": [],
+      "title": "# Session: 2026-04-14 15:17:24 UTC"
+    },
+    {
+      "bytes": 6011,
+      "date": "2026-04-14",
+      "path": "memory/2026-04-14.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-04-14"
+    },
+    {
+      "bytes": 13250,
+      "date": "2026-04-15",
+      "path": "memory/2026-04-15-makcik-cron-setup.md",
+      "tags": [],
+      "title": "# Session: 2026-04-15 06:39:24 UTC"
+    },
+    {
+      "bytes": 3241,
+      "date": "2026-04-15",
+      "path": "memory/2026-04-15.md",
+      "tags": [
+        "abumsyed",
+        "arifos",
+        "bodybuilding",
+        "geox",
+        "gerd",
+        "gold",
+        "syedkudin",
+        "trading"
+      ],
+      "title": "# 2026-04-15 \u2014 Daily Memory"
+    },
+    {
+      "bytes": 11180,
+      "date": "2026-04-20",
+      "path": "memory/2026-04-20-1155.md",
+      "tags": [],
+      "title": "# Session: 2026-04-20 11:55:50 UTC"
+    },
+    {
+      "bytes": 19043,
+      "date": "2026-04-21",
+      "path": "memory/2026-04-21-0823.md",
+      "tags": [],
+      "title": "# Session: 2026-04-21 08:23:38 UTC"
+    },
+    {
+      "bytes": 6576,
+      "date": "2026-04-21",
+      "path": "memory/2026-04-21-0848.md",
+      "tags": [],
+      "title": "# Session: 2026-04-21 08:48:36 UTC"
+    },
+    {
+      "bytes": 905,
+      "date": "2026-04-21",
+      "path": "memory/2026-04-21-1343.md",
+      "tags": [],
+      "title": "# Session: 2026-04-21 13:43:20 UTC"
+    },
+    {
+      "bytes": 26111,
+      "date": "2026-04-21",
+      "path": "memory/2026-04-21-2245.md",
+      "tags": [],
+      "title": "# Session: 2026-04-21 22:45:51 UTC"
+    },
+    {
+      "bytes": 9776,
+      "date": "2026-04-23",
+      "path": "memory/2026-04-23-1452.md",
+      "tags": [],
+      "title": "# Session: 2026-04-23 14:52:41 UTC"
+    },
+    {
+      "bytes": 1559,
+      "date": "2026-04-23",
+      "path": "memory/2026-04-23.md",
+      "tags": [],
+      "title": "## License Change \u2014 14:44 UTC"
+    },
+    {
+      "bytes": 1879,
+      "date": "2026-04-26",
+      "path": "memory/2026-04-26.md",
+      "tags": [],
+      "title": "# 2026-04-26 \u2014 Deployment Sprint Closure"
+    },
+    {
+      "bytes": 4139,
+      "date": "2026-05-06",
+      "path": "memory/2026-05-06-searah-deep-dive.md",
+      "tags": [],
+      "title": "# 2026-05-06 Daily Memory"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-09",
+      "path": "memory/2026-05-09-0343.md",
+      "tags": [],
+      "title": "# Session: 2026-05-09 03:43:25 UTC"
+    },
+    {
+      "bytes": 1961,
+      "date": "2026-05-09",
+      "path": "memory/2026-05-09-0551.md",
+      "tags": [],
+      "title": "# Session: 2026-05-09 05:51:27 UTC"
+    },
+    {
+      "bytes": 1088,
+      "date": "2026-05-09",
+      "path": "memory/2026-05-09-0555.md",
+      "tags": [],
+      "title": "# Session: 2026-05-09 05:55:11 UTC"
+    },
+    {
+      "bytes": 7034,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-0108.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 01:08:57 UTC"
+    },
+    {
+      "bytes": 13859,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-0553.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 05:53:37 UTC"
+    },
+    {
+      "bytes": 1311,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1044.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 10:44:05 UTC"
+    },
+    {
+      "bytes": 2084,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1246.md",
+      "tags": [],
+      "title": "# memory/2026-05-11-1246.md"
+    },
+    {
+      "bytes": 5585,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1435-SEAL.md",
+      "tags": [],
+      "title": "# Session Seal \u2014 2026-05-11 14:35 UTC"
+    },
+    {
+      "bytes": 31268,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1450.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 14:50:38 UTC"
+    },
+    {
+      "bytes": 1386,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1629.md",
+      "tags": [],
+      "title": "## Session Seal \u2014 2026-05-11 16:29 UTC"
+    },
+    {
+      "bytes": 2862,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1758.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 17:58:57 UTC"
+    },
+    {
+      "bytes": 12516,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1824.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 18:24:47 UTC"
+    },
+    {
+      "bytes": 10132,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-1852-CRON-RESEARCH.md",
+      "tags": [],
+      "title": "# Deep Research Plan: arifOS Cron Architecture"
+    },
+    {
+      "bytes": 12879,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11-2039.md",
+      "tags": [],
+      "title": "# Session: 2026-05-11 20:39:31 UTC"
+    },
+    {
+      "bytes": 5514,
+      "date": "2026-05-11",
+      "path": "memory/2026-05-11.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-05-11"
+    },
+    {
+      "bytes": 6727,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-0621.md",
+      "tags": [],
+      "title": "# memory/2026-05-12-0621.md"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-0725.md",
+      "tags": [],
+      "title": "# Session: 2026-05-12 07:25:55 UTC"
+    },
+    {
+      "bytes": 6626,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-1509.md",
+      "tags": [
+        "ai"
+      ],
+      "title": "# Session: 2026-05-12 15:09:12 UTC"
+    },
+    {
+      "bytes": 184,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-1559.md",
+      "tags": [],
+      "title": "# Session: 2026-05-12 15:59:47 UTC"
+    },
+    {
+      "bytes": 184,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-1602.md",
+      "tags": [],
+      "title": "# Session: 2026-05-12 16:02:36 UTC"
+    },
+    {
+      "bytes": 4174,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-cron-no-agent-fix.md",
+      "tags": [],
+      "title": "# Session: 2026-05-12 09:18:52 UTC"
+    },
+    {
+      "bytes": 8463,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-federation-audit.md",
+      "tags": [],
+      "title": "# 2026-05-12 \u2014 Federation Audit + Sessions Bloat Diagnostic"
+    },
+    {
+      "bytes": 2922,
+      "date": "2026-05-12",
+      "path": "memory/2026-05-12-hermes-gateway-lock.md",
+      "tags": [],
+      "title": "# Session: 2026-05-12 15:49:25 UTC"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-13",
+      "path": "memory/2026-05-13-0727.md",
+      "tags": [],
+      "title": "# Session: 2026-05-13 07:27:23 UTC"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-13",
+      "path": "memory/2026-05-13-1327.md",
+      "tags": [],
+      "title": "# Session: 2026-05-13 13:27:49 UTC"
+    },
+    {
+      "bytes": 8104,
+      "date": "2026-05-13",
+      "path": "memory/2026-05-13-1453.md",
+      "tags": [],
+      "title": "# Session: 2026-05-13 14:53:06 UTC"
+    },
+    {
+      "bytes": 3241,
+      "date": "2026-05-13",
+      "path": "memory/2026-05-13-disk-reclaim-safe.md",
+      "tags": [],
+      "title": "# Session: 2026-05-13 03:47:31 UTC"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14-0138.md",
+      "tags": [],
+      "title": "# Session: 2026-05-14 01:38:21 UTC"
+    },
+    {
+      "bytes": 342,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14-0218.md",
+      "tags": [],
+      "title": "# Session: 2026-05-14 02:18:12 UTC"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14-0448.md",
+      "tags": [],
+      "title": "# Session: 2026-05-14 04:48:45 UTC"
+    },
+    {
+      "bytes": 19634,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14-0907.md",
+      "tags": [],
+      "title": "# Session: 2026-05-14 09:07:50 UTC"
+    },
+    {
+      "bytes": 11520,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14-1653.md",
+      "tags": [],
+      "title": "# Session: 2026-05-14 16:53:32 UTC"
+    },
+    {
+      "bytes": 1177,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14-2004.md",
+      "tags": [],
+      "title": "# Session: 2026-05-14 20:04:31 UTC"
+    },
+    {
+      "bytes": 3558,
+      "date": "2026-05-14",
+      "path": "memory/2026-05-14.md",
+      "tags": [],
+      "title": "# 2026-05-14"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-17",
+      "path": "memory/2026-05-17-0031.md",
+      "tags": [],
+      "title": "# Session: 2026-05-17 00:31:57 UTC"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-17",
+      "path": "memory/2026-05-17-0148.md",
+      "tags": [],
+      "title": "# Session: 2026-05-17 01:48:40 UTC"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-17",
+      "path": "memory/2026-05-17-0435.md",
+      "tags": [],
+      "title": "# Session: 2026-05-17 04:35:50 UTC"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-17",
+      "path": "memory/2026-05-17-0503.md",
+      "tags": [],
+      "title": "# Session: 2026-05-17 05:03:16 UTC"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-17",
+      "path": "memory/2026-05-17-0547.md",
+      "tags": [],
+      "title": "# Session: 2026-05-17 05:47:54 UTC"
+    },
+    {
+      "bytes": 1954,
+      "date": "2026-05-17",
+      "path": "memory/2026-05-17.md",
+      "tags": [],
+      "title": "## 02:30 UTC \u2014 Self-correction on chain test claim"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-18",
+      "path": "memory/2026-05-18-0340-2.md",
+      "tags": [],
+      "title": "# Session: 2026-05-18 03:40:29 UTC"
+    },
+    {
+      "bytes": 215,
+      "date": "2026-05-18",
+      "path": "memory/2026-05-18-0340-3.md",
+      "tags": [],
+      "title": "# Session: 2026-05-18 03:40:47 UTC"
+    },
+    {
+      "bytes": 4614,
+      "date": "2026-05-18",
+      "path": "memory/2026-05-18-0340.md",
+      "tags": [],
+      "title": "# Session: 2026-05-18 03:40:28 UTC"
+    },
+    {
+      "bytes": 161,
+      "date": "2026-05-18",
+      "path": "memory/2026-05-18-0521.md",
+      "tags": [],
+      "title": "# Session: 2026-05-18 05:21:43 UTC"
+    },
+    {
+      "bytes": 1554,
+      "date": "2026-05-18",
+      "path": "memory/2026-05-18-0549.md",
+      "tags": [],
+      "title": "# Session: 2026-05-18 05:49:50 UTC"
+    },
+    {
+      "bytes": 9924,
+      "date": "2026-05-18",
+      "path": "memory/2026-05-18-0854.md",
+      "tags": [],
+      "title": "# Session: 2026-05-18 08:54:15 UTC"
+    },
+    {
+      "bytes": 11548,
+      "date": "2026-05-19",
+      "path": "memory/2026-05-19-0037.md",
+      "tags": [],
+      "title": "# Session: 2026-05-19 00:37:26 UTC"
+    },
+    {
+      "bytes": 11044,
+      "date": "2026-05-19",
+      "path": "memory/2026-05-19-0556.md",
+      "tags": [],
+      "title": "# Session: 2026-05-19 05:56:03 UTC"
+    },
+    {
+      "bytes": 43754,
+      "date": "2026-05-19",
+      "path": "memory/2026-05-19-1519.md",
+      "tags": [],
+      "title": "# Session: 2026-05-19 15:19:50 UTC"
+    },
+    {
+      "bytes": 17665,
+      "date": "2026-05-19",
+      "path": "memory/2026-05-19-1716.md",
+      "tags": [],
+      "title": "# Session: 2026-05-19 17:16:29 UTC"
+    },
+    {
+      "bytes": 21444,
+      "date": "2026-05-19",
+      "path": "memory/2026-05-19.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-05-19"
+    },
+    {
+      "bytes": 18344,
+      "date": "2026-05-20",
+      "path": "memory/2026-05-20-0213.md",
+      "tags": [],
+      "title": "# Session: 2026-05-20 02:13:57 UTC"
+    },
+    {
+      "bytes": 23120,
+      "date": "2026-05-20",
+      "path": "memory/2026-05-20-0327.md",
+      "tags": [],
+      "title": "# Session: 2026-05-20 03:27:15 UTC"
+    },
+    {
+      "bytes": 2387,
+      "date": "2026-05-20",
+      "path": "memory/2026-05-20-0501.md",
+      "tags": [],
+      "title": "# Session: 2026-05-20 05:01:37 UTC"
+    },
+    {
+      "bytes": 10513,
+      "date": "2026-05-20",
+      "path": "memory/2026-05-20-1008.md",
+      "tags": [],
+      "title": "# Session: 2026-05-20 10:08:56 UTC"
+    },
+    {
+      "bytes": 6080,
+      "date": "2026-05-20",
+      "path": "memory/2026-05-20.md",
+      "tags": [],
+      "title": "# Memory \u2014 2026-05-20"
+    },
+    {
+      "bytes": 13578,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-0015.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 00:15:23 UTC"
+    },
+    {
+      "bytes": 1904,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-0515.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 05:15:22 UTC"
+    },
+    {
+      "bytes": 20685,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-0541.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 05:41:44 UTC"
+    },
+    {
+      "bytes": 2523,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-1049.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 10:49:49 UTC"
+    },
+    {
+      "bytes": 2977,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-1545.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 15:45:34 UTC"
+    },
+    {
+      "bytes": 38356,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-1710.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 17:10:05 UTC"
+    },
+    {
+      "bytes": 4068,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-2013.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 20:13:03 UTC"
+    },
+    {
+      "bytes": 13277,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-2107.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 21:07:55 UTC"
+    },
+    {
+      "bytes": 7981,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-2134.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 21:34:59 UTC"
+    },
+    {
+      "bytes": 3485,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-2219.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 22:19:30 UTC"
+    },
+    {
+      "bytes": 9338,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21-2223.md",
+      "tags": [],
+      "title": "# Session: 2026-05-21 22:23:58 UTC"
+    },
+    {
+      "bytes": 4839,
+      "date": "2026-05-21",
+      "path": "memory/2026-05-21.md",
+      "tags": [],
+      "title": "### WEALTH MCP \u2014 CONFIRMED CLEAN (false alarm)"
+    },
+    {
+      "bytes": 40058,
+      "date": "2026-05-22",
+      "path": "memory/2026-05-22-1459.md",
+      "tags": [],
+      "title": "# Session: 2026-05-22 14:59:05 UTC"
+    },
+    {
+      "bytes": 3287,
+      "date": "2026-05-22",
+      "path": "memory/2026-05-22-1603.md",
+      "tags": [],
+      "title": "# Session: 2026-05-22 16:03:27 UTC"
+    },
+    {
+      "bytes": 1586,
+      "date": "2026-05-22",
+      "path": "memory/2026-05-22.md",
+      "tags": [],
+      "title": "## Session 2026-05-22T02:XX UTC \u2014 Federation Health + Container Recovery"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-05-25",
+      "path": "memory/2026-05-25-1251.md",
+      "tags": [],
+      "title": "# Session: 2026-05-25 12:51:58 UTC"
+    },
+    {
+      "bytes": 29530,
+      "date": "2026-05-25",
+      "path": "memory/2026-05-25-1456.md",
+      "tags": [],
+      "title": "# Session: 2026-05-25 14:56:43 UTC"
+    },
+    {
+      "bytes": 19072,
+      "date": "2026-05-25",
+      "path": "memory/2026-05-25-2021.md",
+      "tags": [],
+      "title": "# Session: 2026-05-25 20:21:02 UTC"
+    },
+    {
+      "bytes": 7133,
+      "date": "2026-05-25",
+      "path": "memory/2026-05-25T1539-AGENTIC_MEMORY_L1_L6.md",
+      "tags": [],
+      "title": "# Agentic Memory Architecture \u2014 L1\u2013L6 Metabolic Model"
+    },
+    {
+      "bytes": 9760,
+      "date": "2026-05-25",
+      "path": "memory/2026-05-25T1542-AGENTIC_MEMORY_CANONICAL_L1_L6.md",
+      "tags": [],
+      "title": "# Agentic Memory \u2014 Canonical L1\u2013L6 Architecture"
+    },
+    {
+      "bytes": 30695,
+      "date": "2026-05-26",
+      "path": "memory/2026-05-26-0626.md",
+      "tags": [],
+      "title": "# Session: 2026-05-26 06:26:34 UTC"
+    },
+    {
+      "bytes": 7172,
+      "date": "2026-05-26",
+      "path": "memory/2026-05-26-0641.md",
+      "tags": [],
+      "title": "# Session: 2026-05-26 06:41:01 UTC"
+    },
+    {
+      "bytes": 1676,
+      "date": "2026-05-26",
+      "path": "memory/2026-05-26.md",
+      "tags": [],
+      "title": "## Session: 2026-05-26T13:00 UTC \u2014 Federation Audit + Memory Architecture Map"
+    },
+    {
+      "bytes": 10312,
+      "date": "2026-06-05",
+      "path": "memory/2026-06-05-0038.md",
+      "tags": [],
+      "title": "# Session: 2026-06-05 00:38:23 UTC"
+    },
+    {
+      "bytes": 1023,
+      "date": "2026-06-05",
+      "path": "memory/2026-06-05-1024.md",
+      "tags": [],
+      "title": "# Session: 2026-06-05 10:24:03 UTC"
+    },
+    {
+      "bytes": 1082,
+      "date": "2026-06-05",
+      "path": "memory/2026-06-05.md",
+      "tags": [],
+      "title": "# 2026-06-05 \u2014 Morning Briefing + Webhook Fix"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-0200-2.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 02:00:13 UTC"
+    },
+    {
+      "bytes": 3619,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-0200.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 02:00:10 UTC"
+    },
+    {
+      "bytes": 13829,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-0202.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 02:02:58 UTC"
+    },
+    {
+      "bytes": 9555,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-0248.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 02:48:43 UTC"
+    },
+    {
+      "bytes": 18744,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1105.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 11:05:26 UTC"
+    },
+    {
+      "bytes": 34904,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1225.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 12:25:23 UTC"
+    },
+    {
+      "bytes": 19214,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1254.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 12:54:29 UTC"
+    },
+    {
+      "bytes": 43711,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1359.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 13:59:08 UTC"
+    },
+    {
+      "bytes": 37530,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1646.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 16:46:17 UTC"
+    },
+    {
+      "bytes": 5397,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1724.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 17:24:39 UTC"
+    },
+    {
+      "bytes": 2937,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1830.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 18:30:33 UTC"
+    },
+    {
+      "bytes": 5695,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1832.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 18:32:52 UTC"
+    },
+    {
+      "bytes": 584,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-1919.md",
+      "tags": [],
+      "title": "# Session: 2026-06-06 19:19:08 UTC"
+    },
+    {
+      "bytes": 5322,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-c1-constitutional-integration-drafted.md",
+      "tags": [],
+      "title": "# 2026-06-06 \u2014 GEOX-C1-CONSTITUTIONAL-INTEGRATION drafted"
+    },
+    {
+      "bytes": 3500,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-c1-mcp-native-surface-sealed.md",
+      "tags": [],
+      "title": "# 2026-06-06 \u2014 C1-MCP-NATIVE-SURFACE Sealed"
+    },
+    {
+      "bytes": 8735,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-geox-canon-31-sealed.md",
+      "tags": [],
+      "title": "# 2026-06-06 \u2014 GEOX-CANON-31 sealed"
+    },
+    {
+      "bytes": 7939,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-opencode-bridge.md",
+      "tags": [],
+      "title": "# 2026-06-06 \u2014 OpenCode Bridge Live + Seal HOLD"
+    },
+    {
+      "bytes": 5615,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06-ui-readiness-drafted.md",
+      "tags": [],
+      "title": "# 2026-06-06 \u2014 GEOX-UI-READINESS drafted"
+    },
+    {
+      "bytes": 11073,
+      "date": "2026-06-06",
+      "path": "memory/2026-06-06.md",
+      "tags": [],
+      "title": "# 2026-06-06 \u2014 OPENCLAW Audit + Recursive Improvement"
+    },
+    {
+      "bytes": 6900,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0323.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 03:23:57 UTC"
+    },
+    {
+      "bytes": 3208,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0330-opencode-000-revival.md",
+      "tags": [],
+      "title": "# 2026-06-07 03:30Z \u2014 OpenCode 000\u264e Revival (3-layer outage)"
+    },
+    {
+      "bytes": 4050,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0348-opencode-permissions-fix.md",
+      "tags": [],
+      "title": "# 2026-06-07 03:48Z \u2014 OpenCode 000\u264e Permission Deadlock Fix"
+    },
+    {
+      "bytes": 3810,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0407-session-seal.md",
+      "tags": [],
+      "title": "# 2026-06-07 04:07Z \u2014 Session Seal (Phase 1 Stabilize + 000\u264e Revival complete)"
+    },
+    {
+      "bytes": 10978,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0412.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 04:12:29 UTC"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0448.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 04:48:36 UTC"
+    },
+    {
+      "bytes": 12943,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0603.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 06:03:45 UTC"
+    },
+    {
+      "bytes": 5964,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0645.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 06:45:05 UTC"
+    },
+    {
+      "bytes": 7792,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0830.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 08:30:29 UTC"
+    },
+    {
+      "bytes": 9097,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0947.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 09:47:27 UTC"
+    },
+    {
+      "bytes": 7647,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-0956-mcp-ui-declarative-first.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 09:53\u201310:01 UTC \u2014 T3 Forge Spec: MCP-UI-DECLARATIVE-FIRST-v1"
+    },
+    {
+      "bytes": 15680,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-1120.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 11:20:52 UTC"
+    },
+    {
+      "bytes": 5907,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-1818.md",
+      "tags": [],
+      "title": "# Session: 2026-06-07 18:18:58 UTC"
+    },
+    {
+      "bytes": 7341,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-777-forge-ignition.md",
+      "tags": [],
+      "title": "# 777 FORGE Ignition \u2014 2026-06-07 06:25 UTC"
+    },
+    {
+      "bytes": 3750,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-dream-engine-forged.md",
+      "tags": [],
+      "title": "# 2026-06-07 \u2014 dream_engine v0.1 forged"
+    },
+    {
+      "bytes": 4385,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-literature-ingest-nusa-llm.md",
+      "tags": [],
+      "title": "# 2026-06-07 07:08 UTC \u2014 NUSA-LLM Literature Ingest (F2 finding)"
+    },
+    {
+      "bytes": 5719,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07-petronas-crisis-map.md",
+      "tags": [],
+      "title": "# 2026-06-07 \u2014 Crisis Map Session: Petronas State of the Company"
+    },
+    {
+      "bytes": 3018,
+      "date": "2026-06-07",
+      "path": "memory/2026-06-07.md",
+      "tags": [],
+      "title": "# 2026-06-07 \u2014 777 FORGE Ignition (Omega)"
+    },
+    {
+      "bytes": 10858,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-0220.md",
+      "tags": [],
+      "title": "# Session: 2026-06-08 02:20:26 UTC"
+    },
+    {
+      "bytes": 6584,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-0222-arif-memory-graph-recursive.md",
+      "tags": [],
+      "title": "# 2026-06-08 02:22 \u2014 Memory Graph Recursive Improvement v1"
+    },
+    {
+      "bytes": 35897,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-0834.md",
+      "tags": [],
+      "title": "# Session: 2026-06-08 08:34:45 UTC"
+    },
+    {
+      "bytes": 11238,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-0836-propa-hermes-admin.md",
+      "tags": [],
+      "title": "# PROPA Group \u2014 Hermes Full Admin + Identity Reveal"
+    },
+    {
+      "bytes": 3367,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-1002.md",
+      "tags": [],
+      "title": "# Session: 2026-06-08 10:02:48 UTC"
+    },
+    {
+      "bytes": 3376,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-1525-telegram-red-probe.md",
+      "tags": [],
+      "title": "# 2026-06-08 15:25 UTC \u2014 Telegram channel RED \u2014 root cause"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-1633-2.md",
+      "tags": [],
+      "title": "# Session: 2026-06-08 16:33:19 UTC"
+    },
+    {
+      "bytes": 9332,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08-1633.md",
+      "tags": [],
+      "title": "# Session: 2026-06-08 16:33:14 UTC"
+    },
+    {
+      "bytes": 388,
+      "date": "2026-06-08",
+      "path": "memory/2026-06-08.md",
+      "tags": [],
+      "title": "## 23:16 MYT \u2014 autonomous_probe (cron:9462d54f)"
+    },
+    {
+      "bytes": 5381,
+      "date": "2026-06-09",
+      "path": "memory/2026-06-09-1742-optimize-machine.md",
+      "tags": [],
+      "title": "# 2026-06-09 17:42Z \u2014 arifOS Drift Resolved + Machine Optimization"
+    },
+    {
+      "bytes": 3291,
+      "date": "2026-06-09",
+      "path": "memory/2026-06-09-1745.md",
+      "tags": [],
+      "title": "# Session: 2026-06-09 17:45:20 UTC"
+    },
+    {
+      "bytes": 6929,
+      "date": "2026-06-09",
+      "path": "memory/2026-06-09-vision-validation.md",
+      "tags": [],
+      "title": "# 2026-06-09 Vision Validation \u2014 Independent Third-Party Pass"
+    },
+    {
+      "bytes": 26350,
+      "date": "2026-06-10",
+      "path": "memory/2026-06-10-2301.md",
+      "tags": [],
+      "title": "# Session: 2026-06-10 23:01:26 UTC"
+    },
+    {
+      "bytes": 2170,
+      "date": "2026-06-10",
+      "path": "memory/2026-06-10-morning-briefing-f2-confession.md",
+      "tags": [],
+      "title": "# 2026-06-10 01:42 UTC \u2014 Morning Briefing F2 Confession"
+    },
+    {
+      "bytes": 937,
+      "date": "2026-06-10",
+      "path": "memory/2026-06-10.md",
+      "tags": [],
+      "title": "# 2026-06-10 \u2014 Wednesday"
+    },
+    {
+      "bytes": 4834,
+      "date": "2026-06-11",
+      "path": "memory/2026-06-11-0932.md",
+      "tags": [],
+      "title": "# Session: 2026-06-11 09:32:42 UTC"
+    },
+    {
+      "bytes": 4763,
+      "date": "2026-06-11",
+      "path": "memory/2026-06-11-0948.md",
+      "tags": [],
+      "title": "# Session: 2026-06-11 09:48:35 UTC"
+    },
+    {
+      "bytes": 174,
+      "date": "2026-06-11",
+      "path": "memory/2026-06-11-1029.md",
+      "tags": [],
+      "title": "# Session: 2026-06-11 10:29:32 UTC"
+    },
+    {
+      "bytes": 40031,
+      "date": "2026-06-11",
+      "path": "memory/2026-06-11-1148.md",
+      "tags": [],
+      "title": "# Session: 2026-06-11 11:48:23 UTC"
+    },
+    {
+      "bytes": 12064,
+      "date": "2026-06-11",
+      "path": "memory/2026-06-11-1412.md",
+      "tags": [],
+      "title": "# Session: 2026-06-11 14:12:56 UTC"
+    },
+    {
+      "bytes": 6997,
+      "date": "2026-06-11",
+      "path": "memory/2026-06-11-hermes-arifos-audit.md",
+      "tags": [],
+      "title": "# 2026-06-11 \u2014 Hermes\u2192arifOS Audit (Scope A)"
+    },
+    {
+      "bytes": 6019,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-0221.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 02:21:15 UTC"
+    },
+    {
+      "bytes": 3405,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-0308-pass-fail-receipt.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 03:08Z \u2014 RUNNER-001 pass/fail test PASSES"
+    },
+    {
+      "bytes": 4005,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-0318-v1-contract-sealed.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 03:18Z \u2014 ARIFOS_CONTEXT_MCP_V1 sealed"
+    },
+    {
+      "bytes": 4488,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-1618.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 16:18:32 UTC"
+    },
+    {
+      "bytes": 2758,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-1818.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 18:18:55 UTC"
+    },
+    {
+      "bytes": 67301,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-2046.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 20:46:06 UTC"
+    },
+    {
+      "bytes": 7784,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-2236.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 22:36:37 UTC"
+    },
+    {
+      "bytes": 4217,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-f11-auth-auto-load.md",
+      "tags": [],
+      "title": "# F11 AUTH Auto-Load + Seal Attempt \u2014 2026-06-12"
+    },
+    {
+      "bytes": 6191,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-godel-lock-agi-verification.md",
+      "tags": [],
+      "title": "# 2026-06-12 \u2014 G\u00d6DEL LOCK: AGI EXECUTION-GRADE VERIFICATION"
+    },
+    {
+      "bytes": 3512,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-godel-patch.md",
+      "tags": [],
+      "title": "# 2026-06-12 \u2014 G\u00d6DEL \u00d7 STRANGE LOOP \u00d7 ANTI-BEAUTIFUL-ONE PATCH SEAL"
+    },
+    {
+      "bytes": 4372,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-ksh-witness-seal.md",
+      "tags": [],
+      "title": "# 2026-06-12 \u2014 KSS-WITNESS SEAL POINTER"
+    },
+    {
+      "bytes": 3232,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-mail-witness-seal.md",
+      "tags": [],
+      "title": "# 2026-06-12 \u2014 MAIL-WITNESS SEAL POINTER"
+    },
+    {
+      "bytes": 4833,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-peer-allowlist-fix.md",
+      "tags": [],
+      "title": "# 2026-06-12 \u2014 FEDERATION PEER ALLOWLIST FIX (F13 directive)"
+    },
+    {
+      "bytes": 4743,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-post-agi-kernel-forged.md",
+      "tags": [],
+      "title": "# Forge Receipt \u2014 2026-06-12 Post-AGI Kernel Forged"
+    },
+    {
+      "bytes": 4006,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-runner-001.md",
+      "tags": [],
+      "title": "# Session: 2026-06-12 02:54Z \u2014 RUNNER-001 forged"
+    },
+    {
+      "bytes": 4108,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-sensor-coverage-audit.md",
+      "tags": [],
+      "title": "# Sensor Coverage Audit \u2014 2026-06-12"
+    },
+    {
+      "bytes": 4365,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-ssh-phone-key-added.md",
+      "tags": [],
+      "title": "# 2026-06-12 20:50 UTC \u2014 Phone SSH key added to ariffazil authorized_keys"
+    },
+    {
+      "bytes": 5594,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12-wealth-endpoint-fix.md",
+      "tags": [],
+      "title": "# WEALTH Public Endpoint Fix \u2014 2026-06-12"
+    },
+    {
+      "bytes": 33301,
+      "date": "2026-06-12",
+      "path": "memory/2026-06-12.md",
+      "tags": [],
+      "title": "## 2026-06-12 11:36 UTC \u2014 Tool-log leak + ASI churn F2 confession"
+    },
+    {
+      "bytes": 15972,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0442.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 04:42:54 UTC"
+    },
+    {
+      "bytes": 5735,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0443.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 04:43:02 UTC"
+    },
+    {
+      "bytes": 13009,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0525-foundation-hardening-sprint-proposal.md",
+      "tags": [],
+      "title": "# 2026-06-13 ~05:25Z \u2014 Foundation Hardening Sprint (Proposal Receipt)"
+    },
+    {
+      "bytes": 3997,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0652.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 06:52:47 UTC"
+    },
+    {
+      "bytes": 359,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0728.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 07:28:56 UTC"
+    },
+    {
+      "bytes": 1154,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0809.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 08:09:13 UTC"
+    },
+    {
+      "bytes": 8834,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-0839.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 08:39:56 UTC"
+    },
+    {
+      "bytes": 1546,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-1236.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 12:36:40 UTC"
+    },
+    {
+      "bytes": 23169,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-1303.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 13:03:58 UTC"
+    },
+    {
+      "bytes": 1921,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-1445.md",
+      "tags": [],
+      "title": "# Session: 2026-06-13 14:45:58 UTC"
+    },
+    {
+      "bytes": 4413,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-hermes-deepseek-402-loop.md",
+      "tags": [],
+      "title": "# 2026-06-13 04:55Z \u2014 Hermes: DeepSeek 402 + crash + bootstrap failure"
+    },
+    {
+      "bytes": 4740,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-hermes-kimi-emergency-switch.md",
+      "tags": [],
+      "title": "# 2026-06-13 ~04:47-04:57Z \u2014 Hermes Emergency Switch to Kimi"
+    },
+    {
+      "bytes": 2115,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-hermes-model-failure.md",
+      "tags": [],
+      "title": "# 2026-06-13 04:43Z \u2014 Hermes model provider failure + arifOS MCP timeout"
+    },
+    {
+      "bytes": 1079,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-memory-paradox.md",
+      "tags": [],
+      "title": "# 2026-06-13 \u2014 Memory-Intelligence Paradox Sealed"
+    },
+    {
+      "bytes": 2747,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-niat-relay-v2.md",
+      "tags": [],
+      "title": "# 2026-06-13 \u2014 Decoder\u2192Encoder\u2192Metabolizer Relay v2 (Corrected)"
+    },
+    {
+      "bytes": 5165,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-niat-relay.md",
+      "tags": [],
+      "title": "# 2026-06-13 \u2014 Niat Inference Relay Session"
+    },
+    {
+      "bytes": 2762,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13-sovereign-status-report.md",
+      "tags": [],
+      "title": "# 2026-06-13 04:48Z \u2014 Sovereign status request + new arifOS drift"
+    },
+    {
+      "bytes": 9242,
+      "date": "2026-06-13",
+      "path": "memory/2026-06-13.md",
+      "tags": [],
+      "title": "# 2026-06-13 \u2014 Sequential Thinking MCP Deployment"
+    },
+    {
+      "bytes": 40006,
+      "date": "2026-06-14",
+      "path": "memory/2026-06-14-1449.md",
+      "tags": [],
+      "title": "# Session: 2026-06-14 14:49:02 UTC"
+    },
+    {
+      "bytes": 1951,
+      "date": "2026-06-14",
+      "path": "memory/2026-06-14.md",
+      "tags": [],
+      "title": "# 2026-06-14 \u2014 Hardening Sprint Ignition"
+    },
+    {
+      "bytes": 878,
+      "date": "2026-06-15",
+      "path": "memory/2026-06-15-1213.md",
+      "tags": [],
+      "title": "# Session: 2026-06-15 12:13:58 UTC"
+    },
+    {
+      "bytes": 2311,
+      "date": "2026-06-15",
+      "path": "memory/2026-06-15-qdrant-memory-fabric.md",
+      "tags": [],
+      "title": "# 2026-06-15 Qdrant Memory Fabric Architecture"
+    },
+    {
+      "bytes": 5483,
+      "date": "2026-06-15",
+      "path": "memory/2026-06-15.md",
+      "tags": [],
+      "title": "# 2026-06-15 \u2014 Morning Briefing"
+    },
+    {
+      "bytes": 3080,
+      "date": "2026-06-16",
+      "path": "memory/2026-06-16-0319.md",
+      "tags": [],
+      "title": "# Session: 2026-06-16 03:19:46 UTC"
+    },
+    {
+      "bytes": 4620,
+      "date": "2026-06-16",
+      "path": "memory/2026-06-16-1952.md",
+      "tags": [],
+      "title": "# Session: 2026-06-16 19:52:36 UTC"
+    },
+    {
+      "bytes": 11155,
+      "date": "2026-06-16",
+      "path": "memory/2026-06-16.md",
+      "tags": [],
+      "title": "# 2026-06-16"
+    },
+    {
+      "bytes": 6007,
+      "date": "2026-06-17",
+      "path": "memory/2026-06-17-0634.md",
+      "tags": [],
+      "title": "# Session: 2026-06-17 06:34:27 UTC"
+    },
+    {
+      "bytes": 2247,
+      "date": "2026-06-17",
+      "path": "memory/2026-06-17-mcp-telemetry.md",
+      "tags": [],
+      "title": "# Memory \u2014 MCP Telemetry Proxy (2026-06-17)"
+    },
+    {
+      "bytes": 15613,
+      "date": "2026-06-17",
+      "path": "memory/2026-06-17.md",
+      "tags": [],
+      "title": "# 2026-06-17 \u2014 Daily log"
+    },
+    {
+      "bytes": 1256,
+      "date": "2026-06-18",
+      "path": "memory/2026-06-18-1043.md",
+      "tags": [],
+      "title": "# Session: 2026-06-18 10:43:31 UTC"
+    },
+    {
+      "bytes": 5216,
+      "date": "2026-06-18",
+      "path": "memory/2026-06-18-ffff.md",
+      "tags": [],
+      "title": "# FFFF Session Receipt \u2014 2026-06-18 13:30 UTC"
+    },
+    {
+      "bytes": 4792,
+      "date": "2026-06-18",
+      "path": "memory/2026-06-18.md",
+      "tags": [],
+      "title": "## Morning Briefing \u2014 2026-06-18 00:06 UTC"
+    },
+    {
+      "bytes": 1061,
+      "date": "2026-06-26",
+      "path": "memory/2026-06-26-status-snapshot.md",
+      "tags": [],
+      "title": "# SYSTEM STATUS - MORNING BRIEFING"
+    },
+    {
+      "bytes": 7770,
+      "date": null,
+      "path": "memory/CHECKPOINT.md",
+      "tags": [],
+      "title": "# CHECKPOINT.md \u2014 Wake / Recovery Continuity"
+    },
+    {
+      "bytes": 13839,
+      "date": null,
+      "path": "memory/KNOWLEDGE_MEMORY.md",
+      "tags": [],
+      "title": "> **\u26a0\ufe0f AAA LOCAL COPY \u2014 not the live canonical memory.**"
+    },
+    {
+      "bytes": 1393,
+      "date": null,
+      "path": "memory/README.md",
+      "tags": [],
+      "title": "# AAA Memory Directory"
+    },
+    {
+      "bytes": 7910,
+      "date": null,
+      "path": "memory/copilot-cli-vs-claude-code-research.md",
+      "tags": [],
+      "title": "# Red Team: Copilot CLI vs Claude Code vs OpenClaw"
+    },
+    {
+      "bytes": 7033,
+      "date": null,
+      "path": "memory/deep-research-petronas-third-axis.md",
+      "tags": [],
+      "title": "# PETRONAS DEEP RESEARCH"
+    },
+    {
+      "bytes": 14941,
+      "date": null,
+      "path": "memory/eureka-log.md",
+      "tags": [],
+      "title": "# EUREKA LOG \u2014 April 10, 2026"
+    },
+    {
+      "bytes": 13020,
+      "date": "2026-04-15",
+      "path": "memory/investigations/2026-04-15-SEARAH-PETROS-INVESTIGATION.md",
+      "tags": [],
+      "title": "# SEARAH \u00d7 PETROS Investigation File"
+    },
+    {
+      "bytes": 3810,
+      "date": null,
+      "path": "memory/investigations/APEX_PRIME_PROTOCOL.md",
+      "tags": [],
+      "title": "# APEX PRIME Protocol \u2014 Canonical Documentation"
+    },
+    {
+      "bytes": 17508,
+      "date": null,
+      "path": "memory/investigations/SEARAH-TRUTH-DB.md",
+      "tags": [],
+      "title": "# SEARAH INVESTIGATION \u2014 EVIDENCE DATABASE"
+    },
+    {
+      "bytes": 23731,
+      "date": null,
+      "path": "memory/investigations/SEARAH-TRUTH.md",
+      "tags": [],
+      "title": "# SEARAH \u00d7 PETROS INVESTIGATION"
+    },
+    {
+      "bytes": 1589,
+      "date": null,
+      "path": "memory/joint-seal-2026-05-17.md",
+      "tags": [],
+      "title": "# AAA JOINT SEAL \u2014 2026-05-17"
+    },
+    {
+      "bytes": 14792,
+      "date": null,
+      "path": "memory/research/STT-VOICE-LOOP-RESEARCH.md",
+      "tags": [],
+      "title": "# STT/Voice Loop Research \u2014 arifOS Agent Ears"
+    },
+    {
+      "bytes": 3029,
+      "date": null,
+      "path": "memory/research/cognitive-shadows-ARIF-SYNTHESIS-2026.md",
+      "tags": [],
+      "title": "# Cognitive Shadows \u2014 Arif's Synthesis"
+    },
+    {
+      "bytes": 2728,
+      "date": null,
+      "path": "memory/research/cognitive-shadows-ARIF-SYNTHESIS-FINAL-2026.md",
+      "tags": [],
+      "title": "# Cognitive Shadows \u2014 Arif FINAL Synthesis"
+    },
+    {
+      "bytes": 5690,
+      "date": null,
+      "path": "memory/research/cognitive-shadows-ARIF-SYNTHESIS-v2-2026.md",
+      "tags": [],
+      "title": "# Cognitive Shadows \u2014 Arif Synthesis v2"
+    },
+    {
+      "bytes": 3279,
+      "date": null,
+      "path": "memory/research/cognitive-shadows-EUREKA-2026.md",
+      "tags": [],
+      "title": "# EUREKA: Cognitive Shadows \u2014 Core Insights"
+    },
+    {
+      "bytes": 6492,
+      "date": null,
+      "path": "memory/research/cognitive-shadows-LLM-2026.md",
+      "tags": [],
+      "title": "# The Science Behind \"Cognitive Shadows\" in Large Language Models"
+    },
+    {
+      "bytes": 728,
+      "date": null,
+      "path": "memory/sentinel-watch-report-2026-05-29.md",
+      "tags": [],
+      "title": "# Sentinel Watch Report - 2026-05-29 00:02 UTC"
+    },
+    {
+      "bytes": 898,
+      "date": null,
+      "path": "memory/sentinel-watch-report.md",
+      "tags": [],
+      "title": "# Sentinel Watch Report - May 31, 2026"
+    },
+    {
+      "bytes": 2775,
+      "date": null,
+      "path": "memory/todo-2026-04-03.md",
+      "tags": [],
+      "title": "# TODO \u2014 2026-04-03"
+    }
+  ],
+  "generated_at": "2026-07-15T04:09:02.320023+00:00",
+  "schema": "memory-index/v1"
+}

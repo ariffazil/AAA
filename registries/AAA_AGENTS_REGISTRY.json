@@ -20,11 +20,7 @@
       ]
     },
     "SUPPORT": {
-      "description": "Collapsed into cross-cutting embedded functions within all organs, audited by 888-APEX.",
-      "agents": [
-        "A-AUDIT",
-        "A-ARCHIVE"
-      ]
+      "description": "[COLLAPSED 2026-07-15] A-AUDIT and A-ARCHIVE removed from active registry. Audit = 888-APEX.apex_audit_embed (cross-cutting). Archive = VAULT999 (append-only ledger). Legacy entries archived at agents/_archive/A-AUDIT-deprecated-20260715 + agents/_archive/A-ARCHIVE-deprecated-20260715 + agent-cards/_retired/."
     },
     "CODING": {
       "description": "Coding agents \u2014 EDIT and EXECUTE. Heterogeneous CLIs unified under one capability fabric.",
@@ -190,7 +186,7 @@
         "Enforce Trinity witness consensus (\u0394+\u03a9+\u03a6\u0399) before SEAL",
         "Gate all irreversible actions (destructive ops, production deploys)",
         "Override 333-AGI and 555-ASI when floors are breached",
-        "Receive and adjudicate A-AUDIT compliance reports"
+        "Receive apex_audit_embed reports from cross-cutting audit function (formerly A-AUDIT, collapsed 2026-07-15)"
       ],
       "cannotDo": [
         "Generate hypotheses or primary reasoning (delegate to 333-AGI)",
@@ -609,56 +605,29 @@
       "principal_agent": "llm"
     },
     {
-      "id": "A-AUDIT",
+      "id": "A-AUDIT-DEPRECATED",
+      "name": "A-AUDIT (collapsed 2026-07-15)",
       "stage": "N/A (cross-cutting)",
-      "trinity": "Internal Watchdog",
-      "class": "SUPPORT",
-      "tier": "SUPPORT (internal control plane)",
-      "pipelineStagesCovered": [
-        "compliance auditing"
-      ],
-      "hostingOrgans": [
-        "arifOS"
-      ],
-      "floorResponsibilities": [
-        "F1-F13 verification"
-      ],
-      "canDo": [
-        "Audit other agents, report compliance, detect drift"
-      ],
-      "cannotDo": [
-        "Issue final verdicts (delegate to 888-APEX)"
-      ],
+      "class": "DEPRECATED",
+      "tier": "DEPRECATED (legacy reference only)",
       "agentCardUrl": null,
       "a2aEndpoint": null,
       "principal_agent": "architect",
-      "note": "Collapsed into cross-cutting embedded function audited by 888-APEX."
+      "note": "Collapsed into 888-APEX.apex_audit_embed (cross-cutting audit). Legacy content archived at agents/_archive/A-AUDIT-deprecated-20260715/. Replaced in registry 2026-07-15."
     },
     {
-      "id": "A-ARCHIVE",
+      "id": "A-ARCHIVE-DEPRECATED",
+      "name": "A-ARCHIVE (collapsed 2026-07-15)",
       "stage": "999",
-      "trinity": "VAULT \u2014 Immutable Ledger",
-      "class": "SUPPORT",
-      "tier": "SUPPORT (internal control plane)",
-      "pipelineStagesCovered": [
-        "999-SEAL"
-      ],
+      "class": "DEPRECATED",
+      "tier": "DEPRECATED (legacy reference only)",
       "hostingOrgans": [
         "VAULT999"
       ],
-      "floorResponsibilities": [
-        "F1 Truth, F6 Honesty"
-      ],
-      "canDo": [
-        "Write SEALED verdicts to VAULT999 (append-only)"
-      ],
-      "cannotDo": [
-        "Modify or delete ledger entries"
-      ],
       "agentCardUrl": null,
       "a2aEndpoint": null,
       "principal_agent": "architect",
-      "note": "Collapsed into cross-cutting embedded function audited by 888-APEX."
+      "note": "Collapsed into VAULT999 cross-cutting ledger (via arif_seal). Legacy content archived at agents/_archive/A-ARCHIVE-deprecated-20260715/. Replaced in registry 2026-07-15."
     }
   ]
 }
