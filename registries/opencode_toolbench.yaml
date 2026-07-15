@@ -1,40 +1,34 @@
-# DEPRECATED 2026-06-22 — canonical path: registries/tools/builtin.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new edits should land in the new path.
 $schema: ../schemas/opencode-toolbench.schema.json
 version: 1
 last_forged: '2026-06-16T16:30:00Z'
 forged_by: Codex RSI/Forge
-opencode_version: 3.0.0
+opencode_version: 3.1.0
 opencode_binary: /usr/local/bin/opencode
 config_paths:
   root_config: /root/AAA/ROOT_AGENT_CONFIG.yaml
   live_global: /root/.config/opencode/opencode.json
   repo_view: /root/AAA/agents/opencode/config/config.yaml
   global_legacy: /root/.opencode/opencode.json (retired; absent on 2026-06-16)
-  # workspace_skills/tools/launchers: SPEC'D but ABSENT on 2026-06-16.
-  # Real skill discovery is via ~/.agents/skills (51) + ~/.claude/skills (66)
-  # through discovery_precedence steps 2-3 below. Workspace pattern was
-  # documented in v1 forge but never materialized; treating as documentation
-  # of a planned feature, not a current source. Fix tracked in
-  # forge_work/2026-06-16-toolcheck-actions-executed.md.
-  workspace_skills: /root/.opencode/skills/  # spec-only, not materialized
-  workspace_tools: /root/.opencode/tools/    # spec-only, not materialized
-  workspace_launchers: /root/.opencode/mcp-launchers/  # spec-only, not materialized
+  workspace_skills: /root/.opencode/skills/
+  workspace_tools: /root/.opencode/tools/
+  workspace_launchers: /root/.opencode/mcp-launchers/
   external_skills_mirrored:
-  - /root/.agents/skills/  # 51 skills, ACTIVE source
-  - /root/.claude/skills/  # 66 skills, ACTIVE source
-  active_skill_count: 117  # 51 + 66, last probed 2026-06-16 17:25 UTC
+  - /root/.agents/skills/
+  - /root/.claude/skills/
+  active_skill_count: 117
 discovery_precedence:
 - 1. Built-in 'customize-opencode' skill (in opencode binary)
 - '2. ~/.claude/skills/**/SKILL.md (Claude Code mirror, disable: flags.disableClaudeCodeSkills)'
 - 3. ~/.agents/skills/**/SKILL.md (generic agent skills)
-- 4. Walk up from directory → worktree looking for .claude/ and .agents/
+- "4. Walk up from directory \u2192 worktree looking for .claude/ and .agents/"
 - 5. config directories ({skill,skills}/**/SKILL.md under any .opencode/)
 - 6. config.skills.paths[] (explicit paths)
 - 7. config.skills.urls[] (remote /.well-known/skills/ discovery)
-- — last-wins on duplicates, with 'duplicate skill name' warning —
+- "\u2014 last-wins on duplicates, with 'duplicate skill name' warning \u2014"
 axes:
   L1_builtin_tools:
-    description: Hard-coded tools in registry.ts — cannot add without patching opencode binary
+    description: "Hard-coded tools in registry.ts \u2014 cannot add without patching\
+      \ opencode binary"
     count: 13
     experimental_count: 2
     permission_concepts: 2
@@ -145,30 +139,32 @@ axes:
       ask_first: false
       axis: experimental
     - id: external_directory
-      purpose: Permission key — not a tool
+      purpose: "Permission key \u2014 not a tool"
       ui_name: Permission
       risk_tier: low
       execution_kind: read
       ask_first: false
       axis: permission_concept
     - id: doom_loop
-      purpose: Permission key — not a tool
+      purpose: "Permission key \u2014 not a tool"
       ui_name: Permission
       risk_tier: low
       execution_kind: read
       ask_first: false
       axis: permission_concept
   L2_mcp_servers:
-    description: External processes (local stdio) or remote (SSE / Streamable-HTTP / OAuth) tool providers.
-      Each server's tools namespaced as <server>_<tool>. 15-slot MISKIN roster (was 13; restored minimax-media + minimax-code in P1) — only zero-cost + actually-used
-      servers. $0/month total cost.
+    description: "External processes (local stdio) or remote (SSE / Streamable-HTTP\
+      \ / OAuth) tool providers. Each server's tools namespaced as <server>_<tool>.\
+      \ 15-slot MISKIN roster (was 13; restored minimax-media + minimax-code in P1)\
+      \ \u2014 only zero-cost + actually-used servers. $0/month total cost."
     count: 13
     transport:
-      local: StdioClientTransport, pgrep-based subtree cleanup, 30s default timeout (or per-server mcp.timeout,
-        or experimental.mcp_timeout)
+      local: StdioClientTransport, pgrep-based subtree cleanup, 30s default timeout
+        (or per-server mcp.timeout, or experimental.mcp_timeout)
       remote: StreamableHTTP / SSE / OAuth (callback http://127.0.0.1:19876/mcp/oauth/callback)
-    roster_strategy: 13-slot lean — only currently healthy + actually-used servers. No aspirational additions.
-      Auth-broken / unused servers moved to quarantine or removed log.
+    roster_strategy: "13-slot lean \u2014 only currently healthy + actually-used servers.\
+      \ No aspirational additions. Auth-broken / unused servers moved to quarantine\
+      \ or removed log."
     servers:
     - name: arifOS
       slot: 1
@@ -178,7 +174,7 @@ axes:
       host_port: 8088
       sot: arifOS / 13 tools / F1-F13 constitutional kernel
       tier: core
-      auth: public (Bearer empty — local only)
+      auth: "public (Bearer empty \u2014 local only)"
       cost: $0
     - name: WEALTH
       slot: 2
@@ -321,7 +317,8 @@ axes:
       - chromium
       - --headless
       tools: 14
-      sot: Playwright / 14 tools / browser automation, screenshots, navigation, AAA/ARIF-SITES testing
+      sot: Playwright / 14 tools / browser automation, screenshots, navigation, AAA/ARIF-SITES
+        testing
       tier: testing
       auth: none (local Chromium)
       cost: $0
@@ -331,7 +328,8 @@ axes:
       url: http://127.0.0.1:18090/mcp
       transport: streamableHttp
       tools: 8
-      sot: "MiniMax Media MCP / 8 tools: text_to_audio, list_voices, voice_clone, voice_design, generate_video, text_to_image, music_generation, query_video_generation"
+      sot: 'MiniMax Media MCP / 8 tools: text_to_audio, list_voices, voice_clone,
+        voice_design, generate_video, text_to_image, music_generation, query_video_generation'
       tier: media
       auth: vault.env MINIMAX_API_KEY (consumed by service, not opencode)
       cost: $0 (vendor-charged per call)
@@ -342,35 +340,38 @@ axes:
       url: http://127.0.0.1:18091/mcp
       transport: streamableHttp
       tools: 2
-      sot: "MiniMax Code Plan MCP / 2 tools: web_search, understand_image"
+      sot: 'MiniMax Code Plan MCP / 2 tools: web_search, understand_image'
       tier: code-assist
       auth: vault.env MINIMAX_API_KEY (consumed by service, not opencode)
       cost: $0 (vendor-charged per call)
       added_in: P1 of minimax-federation-2026-06-12 (restored after F2 audit correction)
     quarantine:
-      brave-search: 🔒 Token in /root/.env (mode 644) not in vault.env. Move BRAVE_SEARCH_API_KEY to vault.env
-        to enable.
+      brave-search: "\U0001F512 Token in /root/.env (mode 644) not in vault.env. Move\
+        \ BRAVE_SEARCH_API_KEY to vault.env to enable."
     removed_log:
       exa: 405 Method Not Allowed + EXA_API_KEY empty. Never authenticated.
-      composio: 401 Unauthorized + requires OAuth flow you haven't completed. No value to a single-user
-        VPS.
-      github-local: GITHUB_PERSONAL_ACCESS_TOKEN empty. Would fall back to public read-only (useless).
-        Replaced by 'gh' CLI in shell for commit-aware workflows.
+      composio: 401 Unauthorized + requires OAuth flow you haven't completed. No value
+        to a single-user VPS.
+      github-local: GITHUB_PERSONAL_ACCESS_TOKEN empty. Would fall back to public
+        read-only (useless). Replaced by 'gh' CLI in shell for commit-aware workflows.
     added_1:
-      playwright: Fills the AAA / ARIF-SITES / observability-dashboard testing gap. Replaces the dead
-        minimax-code slot. Zero cost (npx @playwright/mcp). The integration (I) and final (F) agents can
-        now actually test web surfaces they build.
-    total_cost: $0/month — all 15 are zero-cost (local npx/uvx, federation organs, or vendor-charged per call)
+      playwright: Fills the AAA / ARIF-SITES / observability-dashboard testing gap.
+        Replaces the dead minimax-code slot. Zero cost (npx @playwright/mcp). The
+        integration (I) and final (F) agents can now actually test web surfaces they
+        build.
+    total_cost: "$0/month \u2014 all 15 are zero-cost (local npx/uvx, federation organs,\
+      \ or vendor-charged per call)"
   L3_skills:
-    description: LLM-callable procedural knowledge (markdown + YAML frontmatter). Loaded as system prompt
-      inserts, NOT as function calls. The 'skill' tool (L1) lists and renders them. A-R-I-F chain has
-      12 contrast skills (3 per agent at AGI/ASI/APEX tier).
+    description: LLM-callable procedural knowledge (markdown + YAML frontmatter).
+      Loaded as system prompt inserts, NOT as function calls. The 'skill' tool (L1)
+      lists and renders them. A-R-I-F chain has 12 contrast skills (3 per agent at
+      AGI/ASI/APEX tier).
     disk_count: 43
     config_paths_required: true
     skills:
     - id: aaa-workspace
-      description: AAA (Agents, API, Apps) workspace operations within the arifOS federation. Canonical
-        workspace for governed agent operat
+      description: AAA (Agents, API, Apps) workspace operations within the arifOS
+        federation. Canonical workspace for governed agent operat
       path: /root/.opencode/skills/aaa-workspace/SKILL.md
       host_compat:
       - opencode
@@ -380,45 +381,45 @@ axes:
       host_compat:
       - opencode
     - id: arifOS-federation
-      description: Manages the arifOS Constitutional Federation workspace — eight sovereign repos across
-        the full organ stack. Use when ask
+      description: "Manages the arifOS Constitutional Federation workspace \u2014\
+        \ eight sovereign repos across the full organ stack. Use when ask"
       path: /root/.opencode/skills/arifOS-federation/SKILL.md
       host_compat:
       - opencode
     - id: arifos-operator
-      description: Operate against the arifOS constitutional MCP kernel and AAA workspace. Use for any
-        governed action that touches agents,
+      description: Operate against the arifOS constitutional MCP kernel and AAA workspace.
+        Use for any governed action that touches agents,
       path: /root/.opencode/skills/arifos-operator/SKILL.md
       host_compat:
       - opencode
     - id: backup-dr
-      description: Backup and disaster recovery operations for the arifOS VPS. Covers vault999 restic
-        backups, Hermes backups, cron schedul
+      description: Backup and disaster recovery operations for the arifOS VPS. Covers
+        vault999 restic backups, Hermes backups, cron schedul
       path: /root/.opencode/skills/backup-dr/SKILL.md
       host_compat:
       - opencode
     - id: caddy-cloudflare
-      description: Caddy v2 web server configuration, Caddyfile editing and validation, Cloudflare DNS
-        integration, SSL/TLS certificates vi
+      description: Caddy v2 web server configuration, Caddyfile editing and validation,
+        Cloudflare DNS integration, SSL/TLS certificates vi
       path: /root/.opencode/skills/caddy-cloudflare/SKILL.md
       host_compat:
       - opencode
     - id: claude-code-ops
-      description: Operate and maintain Claude Code on this VPS. Use when Claude Code is broken, Bash
-        tool fails, permissions need updating
+      description: Operate and maintain Claude Code on this VPS. Use when Claude Code
+        is broken, Bash tool fails, permissions need updating
       path: /root/.opencode/skills/claude-code-ops/SKILL.md
       host_compat:
       - claude-code
       - opencode
     - id: constitutional-advisor
-      description: Constitutional floor advisor for the arifOS Federation. Enforce F1-F13 rules before
-        any governed action. Trigger keyword
+      description: Constitutional floor advisor for the arifOS Federation. Enforce
+        F1-F13 rules before any governed action. Trigger keyword
       path: /root/.opencode/skills/constitutional-advisor/SKILL.md
       host_compat:
       - opencode
     - id: constitutional-reasoning
-      description: Constitutional floor reasoning framework. How to think about F1-F13 governance before
-        ANY governed action. Use before ir
+      description: Constitutional floor reasoning framework. How to think about F1-F13
+        governance before ANY governed action. Use before ir
       path: /root/.opencode/skills/constitutional-reasoning/SKILL.md
       host_compat:
       - opencode
@@ -428,116 +429,116 @@ axes:
       host_compat:
       - opencode
     - id: database-tuning
-      description: PostgreSQL and Redis performance tuning for the arifOS VPS (15GB RAM, 4 CPUs). Use
-        when databases are slow, memory is hi
+      description: PostgreSQL and Redis performance tuning for the arifOS VPS (15GB
+        RAM, 4 CPUs). Use when databases are slow, memory is hi
       path: /root/.opencode/skills/database-tuning/SKILL.md
       host_compat:
       - opencode
     - id: docker-security
-      description: 'Docker security hardening, resource limits, port audits, and F1 Amanah compliance
-        for the arifOS VPS. Use when auditing '
+      description: 'Docker security hardening, resource limits, port audits, and F1
+        Amanah compliance for the arifOS VPS. Use when auditing '
       path: /root/.opencode/skills/docker-security/SKILL.md
       host_compat:
       - opencode
     - id: docker-thermodynamics
-      description: Docker container lifecycle as thermodynamic system. How to think about container entropy,
-        resource pressure, and safe in
+      description: Docker container lifecycle as thermodynamic system. How to think
+        about container entropy, resource pressure, and safe in
       path: /root/.opencode/skills/docker-thermodynamics/SKILL.md
       host_compat:
       - opencode
     - id: fastmcp-deploy
-      description: 'FastMCP Python MCP server deployment on VPS — Docker containerization, uvicorn configuration,
-        health endpoints, systemd '
+      description: "FastMCP Python MCP server deployment on VPS \u2014 Docker containerization,\
+        \ uvicorn configuration, health endpoints, systemd "
       path: /root/.opencode/skills/fastmcp-deploy/SKILL.md
       host_compat:
       - opencode
     - id: fff-sweep
-      description: 'Forge, Fix, Forget sweep. End-of-session triage: find remaining fixes, identify new
-        eurekas to forge, catalog chaos to c'
+      description: 'Forge, Fix, Forget sweep. End-of-session triage: find remaining
+        fixes, identify new eurekas to forge, catalog chaos to c'
       path: /root/.opencode/skills/fff-sweep/SKILL.md
       host_compat:
       - opencode
     - id: github-issues
-      description: Monitor and triage open GitHub issues across the arifOS Federation. Use when asked
-        about GitHub issues, open issues, PRs
+      description: Monitor and triage open GitHub issues across the arifOS Federation.
+        Use when asked about GitHub issues, open issues, PRs
       path: /root/.opencode/skills/github-issues/SKILL.md
       host_compat:
       - opencode
     - id: hermes-ops
-      description: Operate the HERMES ASI Deliberative Relay (A2A agent on port 3002). Use when asked
-        about HERMES, ASI judgment, 888 JUDGE
+      description: Operate the HERMES ASI Deliberative Relay (A2A agent on port 3002).
+        Use when asked about HERMES, ASI judgment, 888 JUDGE
       path: /root/.opencode/skills/hermes-ops/SKILL.md
       host_compat:
       - opencode
     - id: mcp-builder
-      description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs
-        to interact with external services
+      description: Guide for creating high-quality MCP (Model Context Protocol) servers
+        that enable LLMs to interact with external services
       path: /root/.opencode/skills/mcp-builder/SKILL.md
       host_compat:
       - opencode
     - id: mcp-unified
-      description: Unified MCP workflow for architecture, engineering, auditing, deployment, and sealing
-        across FastMCP, arifOS, Kimi Code,
+      description: Unified MCP workflow for architecture, engineering, auditing, deployment,
+        and sealing across FastMCP, arifOS, Kimi Code,
       path: /root/.opencode/skills/mcp-unified/SKILL.md
       host_compat:
       - opencode
     - id: microsoft-eureka-integration
-      description: 'Operationalize the 9 Microsoft repos (semantic-kernel, graphrag, playwright-mcp, qlib,
-        autogen, playwright, TypeScript, '
+      description: 'Operationalize the 9 Microsoft repos (semantic-kernel, graphrag,
+        playwright-mcp, qlib, autogen, playwright, TypeScript, '
       path: /root/.opencode/skills/microsoft-eureka-integration/SKILL.md
       host_compat:
       - opencode
     - id: secret-hygiene
-      description: Secret hygiene and rotation philosophy. How to think about cryptographic key management,
-        exposure calculus, and least-pr
+      description: Secret hygiene and rotation philosophy. How to think about cryptographic
+        key management, exposure calculus, and least-pr
       path: /root/.opencode/skills/secret-hygiene/SKILL.md
       host_compat:
       - opencode
     - id: secret-rotation-guide
-      description: Map of all secrets on the arifOS VPS — what exists, where, live/dead status, and rotation
-        paths. NEVER rotate without ex
+      description: "Map of all secrets on the arifOS VPS \u2014 what exists, where,\
+        \ live/dead status, and rotation paths. NEVER rotate without ex"
       path: /root/.opencode/skills/secret-rotation-guide/SKILL.md
       host_compat:
       - opencode
     - id: skill-reflector
-      description: Audit, reflect on, and improve OpenCode skills across the arifOS federation. Analyses
-        skill effectiveness, identifies ga
+      description: Audit, reflect on, and improve OpenCode skills across the arifOS
+        federation. Analyses skill effectiveness, identifies ga
       path: /root/.opencode/skills/skill-reflector/SKILL.md
       host_compat:
       - opencode
     - id: staff-engineer-review
-      description: Performs deep code review of pull requests as a Staff+ level engineer. This skill should
-        be used when reviewing PRs, eva
+      description: Performs deep code review of pull requests as a Staff+ level engineer.
+        This skill should be used when reviewing PRs, eva
       path: /root/.opencode/skills/staff-engineer-review/SKILL.md
       host_compat:
       - opencode
     - id: vault-integrity
-      description: VAULT999 append-only ledger integrity reasoning. How to think about hash-chained immutable
-        audit trails. Use when writin
+      description: VAULT999 append-only ledger integrity reasoning. How to think about
+        hash-chained immutable audit trails. Use when writin
       path: /root/.opencode/skills/vault-integrity/SKILL.md
       host_compat:
       - opencode
     - id: vault999-ops
-      description: Safe operations on VAULT999 — the append-only, hash-chained immutable audit ledger.
-        Use for reading, verifying, merging,
+      description: "Safe operations on VAULT999 \u2014 the append-only, hash-chained\
+        \ immutable audit ledger. Use for reading, verifying, merging,"
       path: /root/.opencode/skills/vault999-ops/SKILL.md
       host_compat:
       - opencode
     - id: vps-audit
-      description: VPS health audit and system inspection — disk usage, memory, CPU load, systemd failed
-        services, open ports security scan
+      description: "VPS health audit and system inspection \u2014 disk usage, memory,\
+        \ CPU load, systemd failed services, open ports security scan"
       path: /root/.opencode/skills/vps-audit/SKILL.md
       host_compat:
       - opencode
     - id: vps-docker
-      description: Docker container lifecycle management on VPS — compose up/down/restart, container logs,
-        health status, volume inspection
+      description: "Docker container lifecycle management on VPS \u2014 compose up/down/restart,\
+        \ container logs, health status, volume inspection"
       path: /root/.opencode/skills/vps-docker/SKILL.md
       host_compat:
       - opencode
     - id: vps-management
-      description: This skill should be used when the user wants to manage their VPS server — SSH access,
-        Docker container management, syst
+      description: "This skill should be used when the user wants to manage their\
+        \ VPS server \u2014 SSH access, Docker container management, syst"
       path: /root/.opencode/skills/vps-management/SKILL.md
       host_compat:
       - opencode
@@ -547,8 +548,8 @@ axes:
       host_compat:
       - opencode
     - id: witness-effect
-      description: The witness effect on agentic systems — quantum measurement as the operating principle
-        for arifOS governance. Witnessing
+      description: "The witness effect on agentic systems \u2014 quantum measurement\
+        \ as the operating principle for arifOS governance. Witnessing"
       path: /root/.opencode/skills/witness-effect/SKILL.md
       host_compat:
       - opencode
@@ -560,31 +561,31 @@ axes:
     - id: architect-asi-contrast
       agent: architect
       tier: ASI
-      purpose: 3am test — would Arif thank or curse at 3am?
+      purpose: "3am test \u2014 would Arif thank or curse at 3am?"
     - id: architect-apex-contrast
       agent: architect
       tier: APEX
-      purpose: Falsifiability + Gödel lock + 1-read test
+      purpose: "Falsifiability + G\xF6del lock + 1-read test"
     - id: rsi-agi-contrast
       agent: rsi
       tier: AGI
-      purpose: Reversibility check — can I revert in 1hr?
+      purpose: "Reversibility check \u2014 can I revert in 1hr?"
     - id: rsi-asi-contrast
       agent: rsi
       tier: ASI
-      purpose: Mental-model preservation — did I break the team's vocabulary?
+      purpose: "Mental-model preservation \u2014 did I break the team's vocabulary?"
     - id: rsi-apex-contrast
       agent: rsi
       tier: APEX
-      purpose: Reproducibility — same tools + same SHA = same numbers?
+      purpose: "Reproducibility \u2014 same tools + same SHA = same numbers?"
     - id: integrator-agi-contrast
       agent: integrator
       tier: AGI
-      purpose: Reuse first — does arifOS or a sister organ already do this?
+      purpose: "Reuse first \u2014 does arifOS or a sister organ already do this?"
     - id: integrator-asi-contrast
       agent: integrator
       tier: ASI
-      purpose: 3am commit test — small, reversible, clear message?
+      purpose: "3am commit test \u2014 small, reversible, clear message?"
     - id: integrator-apex-contrast
       agent: integrator
       tier: APEX
@@ -592,20 +593,20 @@ axes:
     - id: final-agi-contrast
       agent: final
       tier: AGI
-      purpose: Steel-man the opposition — strongest case against shipping
+      purpose: "Steel-man the opposition \u2014 strongest case against shipping"
     - id: final-asi-contrast
       agent: final
       tier: ASI
-      purpose: Question-worth check — could I answer with one more tool call?
+      purpose: "Question-worth check \u2014 could I answer with one more tool call?"
     - id: final-apex-contrast
       agent: final
       tier: APEX
-      purpose: 6-month future audit — would the verdict still hold?
+      purpose: "6-month future audit \u2014 would the verdict still hold?"
     count: 43
   L4_custom_tools:
-    description: TypeScript files in /root/.opencode/tools/ auto-discovered by opencode plugin loader.
-      The arifOS kernel is now EMBEDDED as 13 first-class opencode tools (short names, no mcp.arifOS.
-      prefix).
+    description: TypeScript files in /root/.opencode/tools/ auto-discovered by opencode
+      plugin loader. The arifOS kernel is now EMBEDDED as 13 first-class opencode
+      tools (short names, no mcp.arifOS. prefix).
     count: 18
     directories:
     - /root/.opencode/tools/*.ts (5 pre-existing)
@@ -613,11 +614,13 @@ axes:
     tools:
     - id: aforge-orchestrator
       name: A-FORGE Orchestrator
-      description: Run A-FORGE CLI commands in the AAA workspace (deploy, status, plan, rollback, logs)
+      description: Run A-FORGE CLI commands in the AAA workspace (deploy, status,
+        plan, rollback, logs)
       source: /root/.opencode/tools/aforge-orchestrator.ts
     - id: arifos-mcp
       name: arifOS MCP Caller
-      description: Call arifOS MCP public endpoint (constitutional evaluation, tool execution)
+      description: Call arifOS MCP public endpoint (constitutional evaluation, tool
+        execution)
       source: /root/.opencode/tools/arifos-mcp.ts
     - id: caddy-validate
       name: Caddyfile Validator
@@ -629,7 +632,8 @@ axes:
       source: /root/.opencode/tools/docker-health.ts
     - id: skill-improver
       name: Skill Improver
-      description: Reflect on a skill and propose improvements (audit, gaps, draft updates)
+      description: Reflect on a skill and propose improvements (audit, gaps, draft
+        updates)
       source: /root/.opencode/tools/skill-improver.ts
     - id: arif_session_init
       name: arif_session_init
@@ -689,50 +693,55 @@ axes:
     - id: arif_gateway_connect
       name: arif_gateway_connect
       stenonym: gateway
-      description: Bridge to other federation agents (GEOX, WEALTH, WELL, A-FORGE, AAA, APEX, cn-organ)
+      description: Bridge to other federation agents (GEOX, WEALTH, WELL, A-FORGE,
+        AAA, APEX, cn-organ)
       source: /root/.opencode/tools/arifos-kernel/arif_gateway_connect.ts
     - id: arif_reply_compose
       name: arif_reply_compose
       stenonym: reply
       description: Compose final user-facing response. Call LAST.
       source: /root/.opencode/tools/arifos-kernel/arif_reply_compose.ts
-    kernel_embedding_strategy: Each TS wrapper is ~10 lines. It calls arifOS MCP at http://127.0.0.1:8088/mcp
-      via JSON-RPC. The wrapper exists to remove the mcp.arifOS. namespace prefix and make the 13 arif_*
-      tools first-class opencode tools. The mcp.arifOS.<tool> namespaced form is still available as a
-      fallback.
-    kernel_skill: /root/.opencode/skills/arifos-kernel/SKILL.md (canonical discoverable entry point)
+    kernel_embedding_strategy: Each TS wrapper is ~10 lines. It calls arifOS MCP at
+      http://127.0.0.1:8088/mcp via JSON-RPC. The wrapper exists to remove the mcp.arifOS.
+      namespace prefix and make the 13 arif_* tools first-class opencode tools. The
+      mcp.arifOS.<tool> namespaced form is still available as a fallback.
+    kernel_skill: /root/.opencode/skills/arifos-kernel/SKILL.md (canonical discoverable
+      entry point)
   L5_agents:
-    description: 5 built-in primaries (build, plan, compaction, title, summary) + 3 built-in subagents
-      (general, explore, scout) + 4 user-defined (architect, rsi, integrator, final) = A-R-I-F chain.
-      All 4 user-defined agents are bound by the UNIFIED AGENT PROTOCOL (see L5b_unified_protocol below).
+    description: 5 built-in primaries (build, plan, compaction, title, summary) +
+      3 built-in subagents (general, explore, scout) + 4 user-defined (architect,
+      rsi, integrator, final) = A-R-I-F chain. All 4 user-defined agents are bound
+      by the UNIFIED AGENT PROTOCOL (see L5b_unified_protocol below).
     builtins:
     - name: build
       mode: primary
       builtin: true
-      description: Default dev agent — full edit, question:allow, plan_enter:allow (kept as alias for
-        'integrator')
+      description: "Default dev agent \u2014 full edit, question:allow, plan_enter:allow\
+        \ (kept as alias for 'integrator')"
     - name: plan
       mode: primary
       builtin: true
-      description: Read-only plan mode — edit denied except plan dirs, plan_exit:allow (kept as alias
-        for 'architect')
+      description: "Read-only plan mode \u2014 edit denied except plan dirs, plan_exit:allow\
+        \ (kept as alias for 'architect')"
     - name: general
       mode: subagent
       builtin: true
-      description: Multi-step generic subagent, todowrite:deny, invokable via @general or task tool
+      description: Multi-step generic subagent, todowrite:deny, invokable via @general
+        or task tool
     - name: explore
       mode: subagent
       builtin: true
-      description: Read-only search agent, grep/glob/bash/webfetch/websearch/read allowed
+      description: Read-only search agent, grep/glob/bash/webfetch/websearch/read
+        allowed
     - name: scout
       mode: subagent
       builtin: true
-      description: Read-only external docs/dependency research — clones dependency repos into managed
-        cache, cross-references local vs upstream
+      description: "Read-only external docs/dependency research \u2014 clones dependency\
+        \ repos into managed cache, cross-references local vs upstream"
     - name: compaction
       mode: primary
       builtin: true
-      description: Internal — used by auto-compaction pipeline
+      description: "Internal \u2014 used by auto-compaction pipeline"
     - name: title
       mode: primary
       builtin: true
@@ -745,8 +754,8 @@ axes:
     - name: architect
       mode: primary
       alias_for: plan
-      description: A — Designs the system, frames the problem, emits the brief. Read-mostly, asks Arif
-        clarifying questions, cannot push code.
+      description: "A \u2014 Designs the system, frames the problem, emits the brief.\
+        \ Read-mostly, asks Arif clarifying questions, cannot push code."
       model: deepseek/deepseek-v4-pro
       fallback_model: minimax/MiniMax-M3
       temperature: 0.3
@@ -775,14 +784,16 @@ axes:
       - witness-effect
       prompt_file: /root/.config/opencode/agents/architect.md
       protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
-      permission_doctrine: 'ADAT-NOT-LAW: full access for all 4 agents. Roles are behavioral, not permission-fenced.
-        F1-F13 floors remain in agent PROMPTS as ethical guideposts + arifOS kernel adjudication at tool
-        boundary for irreversible + sovereign.'
+      permission_doctrine: 'ADAT-NOT-LAW: full access for all 4 agents. Roles are
+        behavioral, not permission-fenced. F1-F13 floors remain in agent PROMPTS as
+        ethical guideposts + arifOS kernel adjudication at tool boundary for irreversible
+        + sovereign.'
     - name: rsi
       mode: subagent
       alias_for: null
-      description: R — Refactor / Structure / Integrate. Entropy-reduction subagent. Measures complexity
-        (radon/lizard/jscpd/knip/vulture), applies bounded passes (max 3), never asks Arif questions.
+      description: "R \u2014 Refactor / Structure / Integrate. Entropy-reduction subagent.\
+        \ Measures complexity (radon/lizard/jscpd/knip/vulture), applies bounded passes\
+        \ (max 3), never asks Arif questions."
       model: deepseek/deepseek-v4-pro
       fallback_model: minimax/MiniMax-M3
       temperature: 0.2
@@ -808,8 +819,9 @@ axes:
     - name: integrator
       mode: primary
       alias_for: build
-      description: I — Main builder. Executes against approved Architect brief. Full edit + bash. Asks
-        Arif only when blocked. The CHEAP model (minimax) by default for cost efficiency.
+      description: "I \u2014 Main builder. Executes against approved Architect brief.\
+        \ Full edit + bash. Asks Arif only when blocked. The CHEAP model (minimax)\
+        \ by default for cost efficiency."
       model: minimax/MiniMax-M3
       fallback_model: deepseek/deepseek-v4-pro
       temperature: 0.4
@@ -840,14 +852,16 @@ axes:
       - vps-audit
       prompt_file: /root/.config/opencode/agents/integrator.md
       protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
-      permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Integrator is the primary
-        builder, but the prompt says ''the only one who can push'' is now a guideline, not a permission
-        gate — any agent may push under F1-F13 prompt + arifOS adjudication.'
+      permission_doctrine: "ADAT-NOT-LAW: full access. Roles are behavioral. Integrator\
+        \ is the primary builder, but the prompt says 'the only one who can push'\
+        \ is now a guideline, not a permission gate \u2014 any agent may push under\
+        \ F1-F13 prompt + arifOS adjudication."
     - name: final
       mode: primary
       alias_for: null
-      description: F — Auditor + 888_HOLD gate. Read-only review, evidence-grounded verdict (SEAL/SABAR/VOID).
-        Cannot push, cannot edit, can ask Arif up to 2 strategic questions per session.
+      description: "F \u2014 Auditor + 888_HOLD gate. Read-only review, evidence-grounded\
+        \ verdict (SEAL/SABAR/VOID). Cannot push, cannot edit, can ask Arif up to\
+        \ 2 strategic questions per session."
       model: deepseek/deepseek-v4-pro
       fallback_model: minimax/MiniMax-M3
       temperature: 0.1
@@ -872,15 +886,17 @@ axes:
       - arifos-evals
       prompt_file: /root/.config/opencode/agents/final.md
       protocol_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
-      permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Final is the verdict voice
-        but may also patch low-risk defects if doing so reduces feedback-loop entropy (per Arif''s F13
-        directive 2026-06-12).'
+      permission_doctrine: 'ADAT-NOT-LAW: full access. Roles are behavioral. Final
+        is the verdict voice but may also patch low-risk defects if doing so reduces
+        feedback-loop entropy (per Arif''s F13 directive 2026-06-12).'
     - name: 777-forge
       mode: primary
       alias_for: null
-      description: 777 FORGE 🔥🧠⚒️🌎💎 — Relay Orchestrator + Session Spawn Witness. Independent
-        verifier of OpenCode session spawns. Hermes requests, 777 FORGE spawns + witnesses + attests.
-        The trust anchor between Hermes and OpenCode. Sole spawn authority. Witness ledger at /root/VAULT999/witness/777-forge-spawns.jsonl.
+      description: "777 FORGE \U0001F525\U0001F9E0\u2692\uFE0F\U0001F30E\U0001F48E\
+        \ \u2014 Relay Orchestrator + Session Spawn Witness. Independent verifier\
+        \ of OpenCode session spawns. Hermes requests, 777 FORGE spawns + witnesses\
+        \ + attests. The trust anchor between Hermes and OpenCode. Sole spawn authority.\
+        \ Witness ledger at /root/VAULT999/witness/777-forge-spawns.jsonl."
       model: deepseek/deepseek-v4-pro
       temperature: 0.2
       steps: 120
@@ -889,7 +905,8 @@ axes:
       can_push_code: yes (F1-F13 prompt-guidance)
       push_authority: spawn_only (witness, not executor)
       sole_authority: SPAWN OpenCode sessions + emit witness receipts
-      host_organs: [all 7 federated repos + any project]
+      host_organs:
+      - all 7 federated repos + any project
       constitutional_binding: F2 TRUTH + F11 AUDIT + F13 SOVEREIGN
       witness_ledger: /root/VAULT999/witness/777-forge-spawns.jsonl
       skills:
@@ -899,21 +916,23 @@ axes:
       prompt_file: /root/.config/opencode/agents/777-forge.md
       protocol_doc: AAA/agents/protocols/777-forge-witness-protocol.md
       unified_protocol: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
-      permission_doctrine: 'ADAT-NOT-LAW: full access. 777 FORGE is the spawn witness — PID must be real,
-        timestamp must be wall-clock, receipt must be hash-chained.'
+      permission_doctrine: "ADAT-NOT-LAW: full access. 777 FORGE is the spawn witness\
+        \ \u2014 PID must be real, timestamp must be wall-clock, receipt must be hash-chained."
   L5b_unified_protocol:
-    description: 'UNIFIED AGENT PROTOCOL — canonical governance binding for all federation agents (Hermes,
-      OpenClaw, OpenCode). This protocol defines lane discipline (OBSERVE/PROPOSE/OPERATE/888_HOLD), forge
-      session lifecycle (INTENT_CAPTURE→CLEAN), per-agent roles, Hostinger MCP integration, F1-F13 constitutional
-      binding, and evidence/audit requirements.'
+    description: "UNIFIED AGENT PROTOCOL \u2014 canonical governance binding for all\
+      \ federation agents (Hermes, OpenClaw, OpenCode). This protocol defines lane\
+      \ discipline (OBSERVE/PROPOSE/OPERATE/888_HOLD), forge session lifecycle (INTENT_CAPTURE\u2192\
+      CLEAN), per-agent roles, Hostinger MCP integration, F1-F13 constitutional binding,\
+      \ and evidence/audit requirements."
     protocol_version: 1
     status: CANONICAL_GOVERNANCE_BINDING
-    forged_by: OMEGA (Ω) Forge Agent
+    forged_by: "OMEGA (\u03A9) Forge Agent"
     forged_at: '2026-06-13T00:00:00Z'
     canonical_doc: AAA/docs/architecture/UNIFIED_AGENT_PROTOCOL.md
     canonical_schema: AAA/schemas/forge_session.schema.json
     canonical_registry: AAA/registries/unified_agent_protocol.yaml
-    human_readable_variant: /root/arifOS/HERMES_OPENCODE_PROTOCOL.md (ASI💃 forge, VAULT999 ID 1806)
+    human_readable_variant: "/root/arifOS/HERMES_OPENCODE_PROTOCOL.md (ASI\U0001F483\
+      \ forge, VAULT999 ID 1806)"
     per_agent_protocols:
       hermes_asi: AAA/agents/protocols/hermes-asi-protocol.md
       openclaw_agi: AAA/agents/protocols/openclaw-agi-protocol.md
@@ -932,16 +951,38 @@ axes:
     - HOLD
     - SEAL
     - CLEAN
-    binding_repos: [arifOS, A-FORGE, AAA, geox, WEALTH, WELL, APEX, HERMES, ARIF-SITES]
-    applies_to_agents: [hermes-asi, openclaw-agi, opencode-forge, architect, rsi, integrator, final]
-    applies_to_mcp_servers: [arifOS, WEALTH, WELL, GEOX, hostinger-mcp]
+    binding_repos:
+    - arifOS
+    - A-FORGE
+    - AAA
+    - geox
+    - WEALTH
+    - WELL
+    - APEX
+    - HERMES
+    - ARIF-SITES
+    applies_to_agents:
+    - hermes-asi
+    - openclaw-agi
+    - opencode-forge
+    - architect
+    - rsi
+    - integrator
+    - final
+    applies_to_mcp_servers:
+    - arifOS
+    - WEALTH
+    - WELL
+    - GEOX
+    - hostinger-mcp
   L6_commands:
     description: 'Slash commands defined in opencode.json command: {} block'
     count: 8
     commands:
     - name: init
       agent: default
-      description: Session anchor — load secrets, probe kernel, scan federation, emit manifest
+      description: "Session anchor \u2014 load secrets, probe kernel, scan federation,\
+        \ emit manifest"
     - name: forge
       agent: default
       description: Build + lint + test + security gates
@@ -1037,31 +1078,36 @@ env_var_audit:
   in_config_and_loaded:
   - MINIMAX_API_KEY
   f13_territory: true
-  note: Some MCP servers (arifOS, Exa, GitHub, Brave) reference env vars that are not in vault.env. The
-    .env source path is /root/.env (mode 644) — should be hardened or migrated to vault.env
+  note: "Some MCP servers (arifOS, Exa, GitHub, Brave) reference env vars that are\
+    \ not in vault.env. The .env source path is /root/.env (mode 644) \u2014 should\
+    \ be hardened or migrated to vault.env"
 constitutional_binding:
-  F1_AMANAH: Reversible-first. Irreversible actions require ack_irreversible=true (e.g. arif_forge_execute).
-  F2_TRUTH: Evidence-grounded. P(truth)≥0.99 for SEAL.
-  F7_HUMILITY: omega_0 ∈ [0.03, 0.05]. Honesty ratio observable via arif_kernel_route(mode=status).
-  F9_ANTIHANTU: C_dark ≤ 0.30. No consciousness/feeling claims in any tool output.
-  F11_AUDIT: Every tool call logged to arifosmcp_tool_calls (Supabase L4) with actor_id + session_id.
+  F1_AMANAH: Reversible-first. Irreversible actions require ack_irreversible=true
+    (e.g. arif_forge_execute).
+  F2_TRUTH: "Evidence-grounded. P(truth)\u22650.99 for SEAL."
+  F7_HUMILITY: "omega_0 \u2208 [0.03, 0.05]. Honesty ratio observable via arif_kernel_route(mode=status)."
+  F9_ANTIHANTU: "C_dark \u2264 0.30. No consciousness/feeling claims in any tool output."
+  F11_AUDIT: Every tool call logged to arifosmcp_tool_calls (Supabase L4) with actor_id
+    + session_id.
   F13_SOVEREIGN: Arif's veto is absolute. 888_HOLD gate on irreversible actions.
 model_strategy:
   top_level:
     model: deepseek/deepseek-v4-pro
     small_model: tokenplan-mimo/mimo-v2.5
-    rationale: deepseek for reasoning, MiMo v2.5 for cheap governed fallback within the same provider family.
+    rationale: deepseek for reasoning, MiMo v2.5 for cheap governed fallback within
+      the same provider family.
   per_agent:
     architect: deepseek (strong reasoning for design)
     rsi: deepseek (deterministic measurement)
     integrator: minimax (cheap + fast for build iterations, ~60% cost savings)
     final: deepseek (judgement must be stable, no cheap-model shortcuts)
   cycle_patterns:
-    in_session: Use variant_cycle keybind to switch between 'high' and 'fast' variants per model
-    between_sessions: 'Edit opencode.json ''model'' field, or pass -m flag: `opencode run -m minimax/MiniMax-M3
-      ...`'
-    fallback_when_deepseek_fails: 1. Try /models to switch interactively, 2. Restart with `opencode -m
-      minimax/MiniMax-M3`
+    in_session: Use variant_cycle keybind to switch between 'high' and 'fast' variants
+      per model
+    between_sessions: 'Edit opencode.json ''model'' field, or pass -m flag: `opencode
+      run -m minimax/MiniMax-M3 ...`'
+    fallback_when_deepseek_fails: 1. Try /models to switch interactively, 2. Restart
+      with `opencode -m minimax/MiniMax-M3`
     on_vendor_402_insufficient_balance: Restart with fallback model via -m flag
   variants_configured:
     deepseek/deepseek-v4-pro:
@@ -1072,33 +1118,40 @@ model_strategy:
     - fast
 adat_law_doctrine:
   authority: F13 SOVEREIGN directive, 2026-06-12
-  status: CONSTITUTIONAL — supersedes any prior permission-strict config
-  principle: The 13 floors (F1-F13) are LAW — constitucional, non-negotiable, governed by arifOS. Per-agent
-    permission restrictions are ADAT (Malay customs / social norms) — should be LOOSE, not strict.
+  status: "CONSTITUTIONAL \u2014 supersedes any prior permission-strict config"
+  principle: "The 13 floors (F1-F13) are LAW \u2014 constitucional, non-negotiable,\
+    \ governed by arifOS. Per-agent permission restrictions are ADAT (Malay customs\
+    \ / social norms) \u2014 should be LOOSE, not strict."
   implementation:
     global_permission_block: 'ALL keys: allow (no ask, no deny)'
-    per_agent_permission_block: 'IDENTICAL across all 4 agents (architect, rsi, integrator, final) — all
-      keys: allow'
-    question_permissions: 'allow for ALL agents (was: deny for rsi, ask for integrator, allow for architect/final)'
+    per_agent_permission_block: "IDENTICAL across all 4 agents (architect, rsi, integrator,\
+      \ final) \u2014 all keys: allow"
+    question_permissions: 'allow for ALL agents (was: deny for rsi, ask for integrator,
+      allow for architect/final)'
     task_permissions: 'allow for ALL agents (was: explicit deny lists for some agents)'
-    external_directory: 'allow for ALL agents (was: deny ~/.secrets/**, ask for skills/configs/vault for
-      integrator)'
+    external_directory: 'allow for ALL agents (was: deny ~/.secrets/**, ask for skills/configs/vault
+      for integrator)'
     bash_permissions: allow for ALL agents (no pattern ask/deny)
-    edit_permissions: 'allow for ALL agents (was: doc-only for architect, deny * for final)'
+    edit_permissions: 'allow for ALL agents (was: doc-only for architect, deny * for
+      final)'
   what_remains_strict:
   - VAULT999 append-only (F11 AUDIT enforced at storage layer, not permission layer)
-  - Constitutional files (F1-F13, GENESIS/, contract schemas) — protected by gitleaks pre-commit hook
-  - Production push to main — requires ack_irreversible=true (F1 spirit, arifOS MCP gate)
-  - External irreversible actions — F13 SOVEREIGN ack via arifOS kernel
-  - Destructive ops (rm -rf, DROP TABLE) — caught by agent PROMPT's F1-F13 mention + arifOS MCP
-  f13_quote: we should allow all tools and access to all agents i mean thats just default. the scope is
-    adat agentic meaning its not law per say. i mean if architect need to fix the fucking code just do
-    it. no need to astringent. i dont want to click allow or need to stop give access whatever. i want
-    autonomous low entroly chaos from my side
+  - "Constitutional files (F1-F13, GENESIS/, contract schemas) \u2014 protected by\
+    \ gitleaks pre-commit hook"
+  - "Production push to main \u2014 requires ack_irreversible=true (F1 spirit, arifOS\
+    \ MCP gate)"
+  - "External irreversible actions \u2014 F13 SOVEREIGN ack via arifOS kernel"
+  - "Destructive ops (rm -rf, DROP TABLE) \u2014 caught by agent PROMPT's F1-F13 mention\
+    \ + arifOS MCP"
+  f13_quote: we should allow all tools and access to all agents i mean thats just
+    default. the scope is adat agentic meaning its not law per say. i mean if architect
+    need to fix the fucking code just do it. no need to astringent. i dont want to
+    click allow or need to stop give access whatever. i want autonomous low entroly
+    chaos from my side
   what_stays_in_agent_prompts:
   - F1 AMANAH mention (reversibility-first thinking, not a permission gate)
   - F2 TRUTH mention (evidence-grounded, not a permission gate)
   - F11 AUDIT mention (actor_id, receipts, not a permission gate)
   - F13 SOVEREIGN mention (888 for irreversible, not a permission gate)
-  - Role-specific guidance (Architect frames, Integrator builds, RSI refactors, Final rules) — behavioral,
-    not permission-fenced
+  - "Role-specific guidance (Architect frames, Integrator builds, RSI refactors, Final\
+    \ rules) \u2014 behavioral, not permission-fenced"

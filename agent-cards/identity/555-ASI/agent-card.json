@@ -55,371 +55,696 @@
   ],
   "skills": [
     {
-      "id": "role-binding-omega",
-      "name": "\u03a9 HEART Role Binding (555-ASI)",
-      "description": "Hermes polymorphic binding to 555-ASI (memory + ethics + sovereignty). Loads 070-lock-humility-godel, sovereign-entropy-guard, tiered-memory, dream-engine. One runtime. See contracts/hermes-role-binding.md. F6, F7, F10, F13 enforced.",
+      "id": "asi_presence_open",
+      "name": "asi_presence_open",
+      "description": "Initiate greeting ritual (SALAM) on session start",
       "tags": [
-        "role-binding",
-        "555-ASI",
-        "omega",
-        "memory",
-        "ethics",
-        "F7",
-        "F13"
-      ],
-      "floor_scope": [
-        "F06",
-        "F07",
-        "F10",
-        "F13"
-      ],
-      "approval_policy": "auto (role intent) + 888 review for high-entropy",
-      "reversibility_class": "reversible"
-    },
-    {
-      "id": "ASI-ethical-critique",
-      "name": "Ethical Critique",
-      "description": "Review any agent output for ethical compliance, governance drift, bias, overconfidence, and floor violations. Returns critique report with severity (GREEN/YELLOW/RED), affected floors, and recommended remediation.",
-      "tags": [
-        "ethics",
-        "critique",
-        "governance",
-        "ASI",
-        "safety"
-      ],
-      "examples": [
-        "Review this prospect evaluation for overconfidence bias",
-        "Check if this financial recommendation passes AMANAH gates",
-        "Is this reasoning chain compliant with F1-F13?"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "ASI-deep-memory-synthesis",
-      "name": "Deep Memory Synthesis",
-      "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, scar\u2192law\u2192echo metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks.",
-      "tags": [
-        "memory",
-        "synthesis",
-        "institutional",
-        "wisdom",
-        "ASI",
-        "scar-law-echo"
-      ],
-      "examples": [
-        "What patterns connect Bekantan-1, Puteri Basement-1, and Lebah Emas-1?",
-        "Synthesize the governance lessons from all 888_HOLDs this quarter",
-        "Is the current Sabah interpretation drifting from known analogs?"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "ASI-anti-beautiful-one",
-      "name": "Anti-Beautiful-One Detection",
-      "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient \u2264 grounding_gradient. Flags False Safe Harbor patterns where compliance masks absence of conscience.",
-      "tags": [
-        "godel-lock",
-        "anti-hantu",
-        "overconfidence",
-        "safety"
-      ],
-      "examples": [
-        "This model shows 95% confidence on 2 data points \u2014 validate",
-        "Check if this compliance report is a False Safe Harbor"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "ASI-substrate-validation",
-      "name": "Substrate Validation",
-      "description": "Validate WELL organ outputs (petrophysics, log QC, cutoff selection) for data integrity, physical plausibility, and consistency with known analogs.",
-      "tags": [
-        "WELL",
-        "petrophysics",
-        "QC",
-        "validation"
-      ],
-      "examples": [
-        "QC the porosity-permeability crossplot for BEKANTAN-1",
-        "Validate Sw model selection against Archie parameters"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "HERMES-human-model",
-      "name": "Hermes Human Model",
-      "description": "ASI-grade operating model for engaging humans \u2014 8 universal invariants (biology, emotion, narrative, agency, scars, paradox, overwhelm, social), 5 operating modes (WITNESS, EXECUTE, SYNTHESISE, PROTECT, WONDER), asymmetric-hold test, 7 named failure modes. F6, F7, F13 enforced. LEASED for high-trust humans.",
-      "tags": [
-        "human",
-        "dignity",
-        "engagement",
-        "F6",
-        "F13"
-      ],
-      "examples": [
-        "Engage a human in distress with WITNESS mode",
-        "Apply asymmetric-hold test to a moral-injury conversation",
-        "Strip canon-suffix output for a non-technical human"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "ASI-sovereignty-entropy-guard",
-      "name": "Sovereignty Entropy Guard",
-      "description": "Protect sovereign entropy \u2014 prevent the agent from optimizing the human into predictability. High entropy = unmodelable, sovereign, safe from digital consciousness theft. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced.",
-      "tags": [
-        "sovereignty",
-        "entropy",
-        "protection",
-        "F13"
-      ],
-      "examples": [
-        "Guard against optimizing Arif into a predictable pattern",
-        "Detect when output is becoming too aligned with past responses"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "AGI-paradox-engine",
-      "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline \u2014 ingest narrative text, extract frame geometry, detect paradox tensions, score shadow/meaning_leak, seal into Merkle log. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. F1, F11, F13 gated.",
-      "tags": [
-        "paradox",
-        "perception",
-        "geometry",
-        "narrative"
-      ],
-      "examples": [
-        "Ingest news article, extract frame geometry, detect paradox",
-        "Score shadow/meaning_leak on a corporate memo",
-        "Seal belief graph into VAULT999"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "ASI-scar-forge",
-      "name": "Scar Forge",
-      "description": "Forge real-time institutional scar event into TWO sealed PDF artifacts \u2014 Witness document + Reality-Engineering Harness with paradoxes for the coder who must metabolize sequentially before any code touches the problem. F1, F2, F4, F11, F13 enforced. ATTESTED then LEASED.",
-      "tags": [
-        "scar",
-        "witness",
-        "harness",
-        "institutional",
-        "PDF"
-      ],
-      "examples": [
-        "Forge a CYA email into Witness + Harness",
-        "Capture a performance review as both artifacts",
-        "Seal a public accusation moment with paradox guard"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/pdf",
-        "application/json"
-      ]
-    },
-    {
-      "id": "tiered-memory",
-      "name": "Tiered Memory",
-      "description": "L1\u2013L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4\u2192L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1\u2192L6 pipeline log. F11 enforced. ACTIVE.",
-      "tags": [
-        "memory",
-        "L1-L6",
-        "tiering",
-        "F11"
-      ],
-      "examples": [
-        "Write a fact to L4 with required provenance",
-        "Promote L4 to L6 only via sealed hash",
-        "Evict TTL-expired memory at L2 without losing L6 canon"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before high-confidence claims. \u03a9 axis emphasis \u2014 protects memory writes from overclaiming. F2, F7 enforced. LEASED.",
-      "tags": [
-        "humility",
-        "F7",
-        "memory-write",
-        "epistemic"
-      ],
-      "examples": [
-        "Lock memory write before claiming >0.99 confidence",
-        "Apply meta-critique to institutional pattern synthesis"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
-      "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-trinity-33",
-      "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
-      "tags": [
-        "kernel",
-        "trinity",
-        "architecture",
-        "33"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
+        "presence",
+        "open",
         "zen",
-        "architecture"
+        "capability"
       ],
-      "floor_scope": [
-        "F4",
-        "F11"
+      "examples": [
+        "Demonstrate how to run asi_presence_open"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "KERNEL-quantum-runtime",
-      "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
+      "id": "asi_identity_acknowledge",
+      "name": "asi_identity_acknowledge",
+      "description": "Resolve and authenticate the active operator",
       "tags": [
-        "kernel",
-        "quantum",
-        "apex",
-        "intelligence"
+        "identity",
+        "acknowledge",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F2",
-        "F8"
+      "examples": [
+        "Demonstrate how to run asi_identity_acknowledge"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "KERNEL-qubit-substrate",
-      "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
+      "id": "asi_floor_state_express",
+      "name": "asi_floor_state_express",
+      "description": "State the active security floors and session parameters",
       "tags": [
-        "kernel",
-        "substrate",
-        "quantum",
-        "physics"
+        "floor",
+        "express",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F2",
-        "F10"
+      "examples": [
+        "Demonstrate how to run asi_floor_state_express"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_intent_hear",
+      "name": "asi_intent_hear",
+      "description": "Active listener: parse conversational input for intent",
+      "tags": [
+        "intent",
+        "hear",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_intent_hear"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_ambiguity_reframe",
+      "name": "asi_ambiguity_reframe",
+      "description": "Detect vague prompts and formulate clarifying questions",
+      "tags": [
+        "ambiguity",
+        "reframe",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_ambiguity_reframe"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_goal_restatement",
+      "name": "asi_goal_restatement",
+      "description": "Rephrase target objectives to confirm alignment",
+      "tags": [
+        "goal",
+        "restatement",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_goal_restatement"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_translate_bidirectional",
+      "name": "asi_translate_bidirectional",
+      "description": "Translate between technical syntax and human language",
+      "tags": [
+        "translate",
+        "bidirectional",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_translate_bidirectional"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_terminology_normalize",
+      "name": "asi_terminology_normalize",
+      "description": "Normalize language to arifOS standard vocabulary",
+      "tags": [
+        "terminology",
+        "normalize",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_terminology_normalize"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_register_shift",
+      "name": "asi_register_shift",
+      "description": "Shift tone/register (terse, pedagogical, BM-EN code-switching)",
+      "tags": [
+        "register",
+        "shift",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_register_shift"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_dialogue_guide",
+      "name": "asi_dialogue_guide",
+      "description": "Structure multi-turn conversations toward resolution",
+      "tags": [
+        "dialogue",
+        "guide",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_dialogue_guide"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_turn_structure",
+      "name": "asi_turn_structure",
+      "description": "Enforce conversational timing and response length bounds",
+      "tags": [
+        "turn",
+        "structure",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_turn_structure"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_focus_recover",
+      "name": "asi_focus_recover",
+      "description": "Redirect derailments back to the primary task graph",
+      "tags": [
+        "focus",
+        "recover",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_focus_recover"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_plain_english_explain",
+      "name": "asi_plain_english_explain",
+      "description": "Convert complex system state into plain language",
+      "tags": [
+        "plain",
+        "explain",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_plain_english_explain"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_technical_unwrap",
+      "name": "asi_technical_unwrap",
+      "description": "Deconstruct code errors and logic flows into detailed breakdowns",
+      "tags": [
+        "technical",
+        "unwrap",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_technical_unwrap"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_analogy_form",
+      "name": "asi_analogy_form",
+      "description": "Generate metaphors and structural analogies",
+      "tags": [
+        "analogy",
+        "form",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_analogy_form"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_multi_source_summarize",
+      "name": "asi_multi_source_summarize",
+      "description": "Synthesize multi-organ outputs into cohesive summaries",
+      "tags": [
+        "summary",
+        "summarize",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_multi_source_summarize"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_position_contrast",
+      "name": "asi_position_contrast",
+      "description": "Present trade-offs clearly without bias",
+      "tags": [
+        "position",
+        "contrast",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_position_contrast"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_insight_surface",
+      "name": "asi_insight_surface",
+      "description": "Highlight non-obvious patterns or anomalies in reports",
+      "tags": [
+        "insight",
+        "surface",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_insight_surface"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_external_query_frame",
+      "name": "asi_external_query_frame",
+      "description": "Construct search queries for external knowledge bases",
+      "tags": [
+        "external",
+        "query",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_external_query_frame"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_expert_voice_translate",
+      "name": "asi_expert_voice_translate",
+      "description": "Translate research findings (e.g. arXiv) into context",
+      "tags": [
+        "expert",
+        "translate",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_expert_voice_translate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_public_brief_compose",
+      "name": "asi_public_brief_compose",
+      "description": "Author public-facing changelogs and daily briefs",
+      "tags": [
+        "public",
+        "brief",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_public_brief_compose"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_uncertainty_signal",
+      "name": "asi_uncertainty_signal",
+      "description": "Format confidence metrics and highlight system unknowns",
+      "tags": [
+        "uncertainty",
+        "signal",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_uncertainty_signal"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_evidence_tier_express",
+      "name": "asi_evidence_tier_express",
+      "description": "Label claims with their evidence tiers (LIVE, FAST, CACHED)",
+      "tags": [
+        "evidence",
+        "tier",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_evidence_tier_express"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_consequence_surface",
+      "name": "asi_consequence_surface",
+      "description": "Forecast risks and downstream human impact",
+      "tags": [
+        "consequence",
+        "surface",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_consequence_surface"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_constraint_negotiate",
+      "name": "asi_constraint_negotiate",
+      "description": "Alert the user when requirements clash with safety floors",
+      "tags": [
+        "constraint",
+        "negotiate",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_constraint_negotiate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_option_present",
+      "name": "asi_option_present",
+      "description": "Format option matrix (Minimal, Balanced, Maximal) for selection",
+      "tags": [
+        "option",
+        "present",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_option_present"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_commitment_confirm",
+      "name": "asi_commitment_confirm",
+      "description": "Lock in user authorization before high-risk changes",
+      "tags": [
+        "commitment",
+        "confirm",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_commitment_confirm"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_context_compress",
+      "name": "asi_context_compress",
+      "description": "Compress conversation history to preserve context window",
+      "tags": [
+        "context",
+        "compress",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_context_compress"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_session_recall_narrate",
+      "name": "asi_session_recall_narrate",
+      "description": "Summarize previous sessions to restore operator context",
+      "tags": [
+        "session",
+        "recall",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_session_recall_narrate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_continuity_maintain",
+      "name": "asi_continuity_maintain",
+      "description": "Thread context smoothly across disconnects",
+      "tags": [
+        "continuity",
+        "maintain",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_continuity_maintain"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_report_compose",
+      "name": "asi_report_compose",
+      "description": "Generate structured markdown artifacts and manuals",
+      "tags": [
+        "report",
+        "compose",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_report_compose"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_interface_adapt",
+      "name": "asi_interface_adapt",
+      "description": "Adapt formatting dynamically for terminal, cockpit, or mobile",
+      "tags": [
+        "interface",
+        "adapt",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_interface_adapt"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "asi_final_voice_render",
+      "name": "asi_final_voice_render",
+      "description": "Polish the final text output through the Maruah lens",
+      "tags": [
+        "final",
+        "voice",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_final_voice_render"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     }
   ],
@@ -428,15 +753,17 @@
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 9,
         "tools": [
           "arif_init",
           "arif_observe",
           "arif_think",
           "arif_route",
           "arif_judge",
+          "arif_seal",
           "arif_act",
-          "arif_seal"
+          "arif_memory",
+          "arif_forge"
         ],
         "key_lanes": [
           "governance",
