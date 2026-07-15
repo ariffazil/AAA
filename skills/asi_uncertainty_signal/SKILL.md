@@ -1,6 +1,9 @@
 ---
-id: drift-response
-name: ASI-drift-response
+id: asi_uncertainty_signal
+name: asi_uncertainty_signal
+agent: 555-ASI
+namespace: asi_*
+cluster: TRUST
 version: 0.1.0
 description: Legacy 5-step drift response protocol. Superseded by service-health-triage.
 owner: AAA

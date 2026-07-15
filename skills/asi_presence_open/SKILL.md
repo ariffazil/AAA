@@ -1,5 +1,9 @@
 ---
-name: ASI-agent-bootstrap
+name: asi_presence_open
+agent: 555-ASI
+namespace: asi_*
+cluster: IGNITE
+skill_id: asi_presence_open
 description: >
   Single entry point for ANY agent spawning in the arifOS federation.
   Chains existing constitutional skills into an auto-loading sequence.
