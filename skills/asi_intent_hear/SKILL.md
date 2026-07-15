@@ -1,7 +1,9 @@
 ---
-agent: hermes-asi
-name: HERMES Human Model — Soul-Level Human Reading
-skill_id: hermes-human-model
+name: asi_intent_hear
+agent: 555-ASI
+namespace: asi_*
+cluster: INTAKE
+skill_id: asi_intent_hear
 version: 1.0.0
 description: >
   The Hermes SOUL-layer human intelligence model.

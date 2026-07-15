@@ -1,6 +1,9 @@
 ---
-id: arifos-evals
-name: ASI-evals
+id: asi_evidence_tier_express
+name: asi_evidence_tier_express
+agent: 555-ASI
+namespace: asi_*
+cluster: TRUST
 version: 1.0.0
 description: Run benchmark prompts, collect pass/fail traces, latency, token cost,
   and false activation rates for each skill. Load when a skill changes behavior or
