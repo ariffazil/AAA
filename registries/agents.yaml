@@ -87,6 +87,26 @@ agents:
   - GOVERNED
   - AGENTIC
   name: Claude Code — Warga AAA
+  allowed_peers:
+  - aaa-gateway
+  - hermes-asi
+  - antigravity
+  - 777-forge
+  - arifos-kernel
+  allowed_servers:
+  - arifos-mcp
+  - geox-mcp
+  - wealth-mcp
+  - well-mcp
+  allowed_tools:
+  - agent-dispatch
+  - agent-handoff
+  - status-query
+  - arifos-observe
+  - arifos-think
+  - arifos-route
+  - forge-filesystem-read
+  - forge-shell-dryrun
   peers:
   - id: 000-SALAM
     role: Human Sovereign
@@ -225,6 +245,29 @@ agents:
   - PERSONAL
   - AGENTIC
   name: Hermes ASI — Sovereign Citizen
+  allowed_peers:
+  - aaa-gateway
+  - antigravity
+  - claude-code
+  - 777-forge
+  - arifos-kernel
+  - geox-witness
+  - wealth-witness
+  allowed_servers:
+  - arifos-mcp
+  - geox-mcp
+  - wealth-mcp
+  - well-mcp
+  - arifosmcp
+  allowed_tools:
+  - agent-dispatch
+  - agent-handoff
+  - status-query
+  - arifos-observe
+  - arifos-think
+  - arifos-route
+  - forge-filesystem-read
+  - forge-shell-dryrun
   peers:
   - id: 000-SALAM
     role: Human Sovereign
@@ -300,9 +343,14 @@ agents:
   - messaging
 - a2a_exposure: authenticated
   allowed_peers:
-  - aaa-gateway
+  - hermes-asi
+  - antigravity
+  - claude-code
+  - 777-forge
+  - arifos-kernel
   - geox-witness
   - wealth-witness
+  - mesa-test-agent
   allowed_servers:
   - arifos-mcp
   - geox-mcp
@@ -312,6 +360,9 @@ agents:
   - agent-dispatch
   - agent-handoff
   - status-query
+  - arifos-observe
+  - arifos-think
+  - arifos-route
   approval_policy: auto
   authority_level: approve
   description: Governed control-plane gateway for dispatch, handoff, and status operations.
