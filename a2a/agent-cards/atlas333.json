@@ -1,0 +1,84 @@
+{
+  "name": "ATLAS333 — Cognitive Geometry Agent",
+  "description": "Maintains the 33-paradox constitutional map. Routes query geometry (territory × depth × paradox axis) to the correct organ. Ensures every agent knows WHERE it is before it acts.",
+  "url": "arifos://agents/skills/atlas333",
+  "provider": {
+    "organization": "arifOS",
+    "system": "AAA",
+    "runtime": "any"
+  },
+  "version": "1.0.0",
+  "protocol_version": "1.0.0",
+  "preferred_transport": "jsonrpc-https",
+  "capabilities": {
+    "streaming": false,
+    "push_notifications": false,
+    "authenticated_extended_card": true
+  },
+  "authentication": {
+    "schemes": ["session_token"],
+    "bearer": {
+      "scheme": "bearer",
+      "token_type": "session_token"
+    }
+  },
+  "default_input_modes": ["application/json"],
+  "default_output_modes": ["application/json"],
+  "skills": [
+    {
+      "id": "atlas333-classify",
+      "name": "Geometric Classification",
+      "description": "Classify a query into territory (ORIENT/REASON/ACT/VERIFY/GROW) × geometry (EXPLORE/ENGINEER/AUDIT/CRISIS/INTEGRATE) × depth (L0-L6). Returns GPV with paradox_axes.",
+      "tags": ["classification", "geometry", "paradox", "gpv"],
+      "examples": [
+        "What type of problem is this?",
+        "Classify this geological query",
+        "What territory am I in?"
+      ]
+    },
+    {
+      "id": "atlas333-resolve",
+      "name": "Paradox Axis Resolution",
+      "description": "Given a GPV or paradox axis IDs, return the matching philosophical quotes, triggered floors, and zone activations from the 33-paradox map.",
+      "tags": ["paradox", "quotes", "resolution", "trigger"],
+      "examples": [
+        "Which quotes fire for paradox #1?",
+        "What floors does Zone II activate?",
+        "Resolve paradox axes for this GPV"
+      ]
+    },
+    {
+      "id": "atlas333-geometry",
+      "name": "Cognitive Geometry Query",
+      "description": "Return the current cognitive geometry map — which territories, geometries, and depths are defined, and how they map to organs and stages.",
+      "tags": ["geometry", "map", "territory", "depth"],
+      "examples": [
+        "Show me the full geometry map",
+        "What depth am I at?",
+        "List all territories"
+      ]
+    },
+    {
+      "id": "atlas333-contour",
+      "name": "Contour Addition",
+      "description": "Add a new connection to the atlas: a GPV pattern, a paradox→quote link, a zone→floor mapping. This is how the evergreen map grows. One contour per call.",
+      "tags": ["contour", "update", "evergreen", "map"],
+      "examples": [
+        "Add a new pattern to PARADOX_GPV_MAP",
+        "Link paradox #14 to a quote",
+        "Add a zone→floor connection"
+      ],
+      "governance": {
+        "required_floors": ["F2", "F4", "F11"],
+        "max_contours_per_session": 5,
+        "requires_seal": true
+      }
+    }
+  ],
+  "governance": {
+    "constitutional_floors": ["F2", "F4", "F7", "F11"],
+    "paradox_domain": "atlas333",
+    "evergreen_policy": "Contour, don't excavate. Seal each contour. Never finish.",
+    "agent_init": "/root/arifOS/core/shared/ATLAS333_AGENT.md"
+  }
+}
