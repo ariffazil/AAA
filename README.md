@@ -1,15 +1,21 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.12-CONSOLIDATION-EPOCH
-last_verified: 2026-07-12T23:38Z
-live_commit: c7622d13
+federation_release: v2026.07.15-CONSOLIDATION-EPOCH
+last_verified: 2026-07-15T03:50Z
+live_commit: 37e5fe8 (working tree dirty — Phase 1 collapse in flight)
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
-a2a_status: healthy
+a2a_status: healthy GREEN
 vault: CONNECTED
-seal_chain_seq: 4
-changelog: /root/CHANGELOG-2026-07-04.md
-a2a_agent_json: /root/AAA/.well-known/agent.json
-machine_sot: /root/A-FORGE/forge_work/2026-07-09/MACHINE-SOT-2026-07-09.json
+seal_chain_seq: 9922 (live 2026-07-15)
+express: 5.2.1 (a2a-server + a2a-gateway — upgrade commit 338e40d)
+upgrade_plan_ref: §0.6 — AAA Upgrade Plan (2026-07-15)
+godel_lock: ACTIVE federation-wide — SEAL-bound claims require external witness signature
+known_anomalies:
+  - well LIVE degraded 2026-07-15T03:50Z (well_score=null, signal=WELL_HOLD)
+    contradicts AGENTS.md "RESOLVED 2026-07-12 (well_score=78.0)" claim — F2 drift
+    cron 12c515badfb7 (8am/8pm MYT) appears stopped; F13 re-inject required
+  - v55.* legacy tags present in history (v55.3.0, v55.4.0, v55.5.0, v55.6.22)
+    Iron Rule: new tags must be v2026.MM.DD; legacy retained
 -->
 
 # AAA — Federation State & Operator Cockpit
@@ -61,7 +67,8 @@ AAA is the governed state — the constitutional substrate in which:
 | Layer | Population | Lives in |
 |---|---|---|
 | **Sovereign** | Muhammad Arif bin Fazil (F13) — final veto | `agents/arif-fazil-identity.yaml` |
-| **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · A-AUDIT · A-ARCHIVE · 777-FORGE (Witness) | `agents/_lanes/{333-AGI,555-ASI,888-APEX,A-AUDIT,A-ARCHIVE,777-forge}/` (compat symlinks at `agents/<name>`) |
+| **Constitutional citizens** (HEXAGON + WITNESS) | 333-AGI (Δ MIND) · 555-ASI (Ω HEART) · 888-APEX (ΦΙ JUDGE) · 777-FORGE (Witness) | `agents/_lanes/{333-AGI,555-ASI,888-APEX,777-forge}/` (compat symlinks at `agents/<name>`) |
+| **Audit / Archive** *(collapsed 2026-07-15 — embedded functions, not standalone agents)* | A-AUDIT (cross-cutting accountability) · A-ARCHIVE (cross-cutting retention) | Embedded in every organ; legacy entries retained in `agents/_archive/A-{AUDIT,ARCHIVE}-deprecated-20260715/` for reference only |
 | **Runtime incarnations** | hermes-asi (Telegram @ASI_arifos_bot) · openclaw (port 18789) | `HERMES/`, `openclaw/` |
 | **Domain organs** | arifOS · A-FORGE · GEOX · WEALTH · WELL · AAA · VAULT999 | 7 organs: 6 systemd services, 6 ports + immutable ledger |
 | **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-008` (8 on-disk cards; 11 instruments in `ROOT_AGENT_CONFIG.yaml`) |
@@ -137,6 +144,25 @@ CACHED_STATE    Memory, sessions     ← 3600 s staleness
    ↑
 INFERRED        Agent reasoning      ← floor-bounded only
 ```
+
+### 0.6 AAA Upgrade Plan (2026-07-15)
+
+Five doctrine moves sealed this epoch. This README + registry + contracts were re-aligned to land them.
+
+| # | Move | Why it matters for AAA | Doctrine anchor |
+|---|---|---|---|
+| 1 | **EUREKA 6-plane architecture** | Sovereign → Governance → Intelligence → Execution → Continuity → Truth. AAA owns **Intelligence** + **Continuity** for the cockpit, never **Governance** (that is arifOS). | `AAA/CLAUDE.md` §0 · `eureka-governed-agent-architecture-2026-07-13.md` |
+| 2 | **Gödel Lock (external witness)** | AAA can no longer self-seal irreversible claims touching `/AGENTS.md`, `/VAULT999/`, `/GENESIS/`, `/docs/`. PRs to `main` in those paths require external witness signature. Closes coherence-theatre path. | `AGENTS.md` §Gödel Lock |
+| 3 | **Node-3 A2A channel LIVE** | Node 3 = Arif's Windows laptop. Cross-node A2A live (`POST /a2a/admin/register_node_agent` · x-node-key auth). Ed25519 ceremony pending F13. | `node3-a2a-live-2026-07-15.md` |
+| 4 | **Federation ontology correction** | AGI / ASI / APEX are **authority tiers**, not intelligence tiers. Skill ignition model formalized. | `federation-ontology-correction-2026-07-15.md` |
+| 5 | **A-AUDIT / A-ARCHIVE collapse** | Audit + archive are now cross-cutting functions **embedded in every organ**, validated by 888-APEX. Legacy cards retained for reference. | commit `37e5fe8` (HEAD) · `AAA_AGENTS_REGISTRY.json` v2.0.0 |
+
+**Upgrade ordering (next 30 days, all T2 reversible unless tagged 888_HOLD):**
+- Wire external witness into AAA CI (merge gate for protected paths) — closes Gödel loop end-to-end.
+- Complete Node 3 keypair ceremony (Ed25519) → registers Node 3 as first off-VPS warga.
+- Replace ad-hoc capability tags with EUREKA's 6-plane tags across `registries/tools.yaml` + `TOOL_MANIFEST.json`.
+- Retire legacy `v55.*` tags from history; AAA tags carry date-only stamps from now on.
+- Repair WELL biometric inject (currently degraded — F2 drift in AGENTS.md surfaced).
 
 ---
 
@@ -470,14 +496,12 @@ The 5-agent constitutional architecture (HEXAGON, ratified 2026-06-02) sits abov
   │ EXECUTE  │           │ SYNTHESIS│           │ F1-F13   │
   └────┬─────┘           └────┬─────┘           └────┬─────┘
        │                      │                      │
-       │         ┌────────────┴────────────┐         │
-       │         ▼                         ▼         │
-       │  ┌──────────┐              ┌──────────┐     │
-       │  │ A-AUDIT  │              │A-ARCHIVE │     │
-       │  │ WATCH    │              │ SEAL     │     │
-       │  │ COMPLIAN │              │ VAULT999 │     │
-       │  └──────────┘              └──────────┘     │
-       │    (observes all 3)         (writes on SEAL) │
+       │  ┌───────────────────┴───────────────────┐  │
+       │  │  cross-cutting: audit + archive       │  │
+       │  │  (functions embedded in every organ;  │  │
+       │  │   888-APEX validates coverage;        │  │
+       │  │   VAULT999 anchors receipts)           │  │
+       │  └───────────────────────────────────────┘  │
        │                                              │
        └──────────────┬───────────────────────────────┘
                       ▼
@@ -487,15 +511,15 @@ The 5-agent constitutional architecture (HEXAGON, ratified 2026-06-02) sits abov
               └──────────────┘
 ```
 
-### Agent Roster
+### Agent Roster *(post 2026-07-15 collapse)*
 
 | ID | Class | Ring | Role | Skills | Host Organs | Stage |
 |----|-------|------|------|--------|-------------|-------|
-| **333-AGI** | AGI | Δ MIND | Reason + execute | 10 | arifOS, GEOX, WEALTH | 333-THINK |
-| **555-ASI** | ASI | Ω HEART | Critique + memory | 3 | arifOS, WELL | 555-MEMORY |
-| **888-APEX** | APEX | ΦΙ JUDGE | Constitutional judge | 2 | arifOS | 888-JUDGE |
-| **A-AUDIT** | APEX oversight | — | Continuous watcher | 2 | arifOS | cross-cutting |
-| **A-ARCHIVE** | ASI service | — | Ledger keeper | 3 | VAULT999 | 999-SEAL |
+| **333-AGI** | AGI | Δ MIND | Reason + execute | 10 → 33 (`agi_*`) | arifOS, GEOX, WEALTH | 333-THINK |
+| **555-ASI** | ASI | Ω HEART | Critique + memory | 3 → 33 (`asi_*`) | arifOS, WELL | 555-MEMORY |
+| **888-APEX** | APEX | ΦΙ JUDGE | Constitutional judge | 2 → 33 (`apex_*`) | arifOS | 888-JUDGE |
+
+> A-AUDIT and A-ARCHIVE collapsed 2026-07-15 — no longer standalone agents. Cross-cutting functions embedded in every organ; 888-APEX `apex_audit_coverage_check` validates; VAULT999 anchors. Legacy entries retained at `agents/_archive/A-{AUDIT,ARCHIVE}-deprecated-20260715/`.
 
 ### Agent Workflow (The Decision Pipeline)
 
@@ -510,15 +534,14 @@ The 5-agent constitutional architecture (HEXAGON, ratified 2026-06-02) sits abov
     │         ▼
     ├──► 888-APEX (constitutional verdict: SEAL / HOLD / VOID)
     │         │
-    │         ├──► A-AUDIT (compliance verification)
-    │         │         │
-    │         │         ▼
-    │         └──► A-ARCHIVE (VAULT999 seal — append only)
+    │         ├──► coverage check (apex_audit_coverage_check on organ event streams)
+    │         │
+    │         └──► VAULT999 seal — append only (only on valid SEAL)
     │
     └──► reseed to 000-SALAM (human reviews cockpit)
 ```
 
-**The 10-3-2 ratio encodes the truth:** thinking is cheap (10 skills), memory is hard (3 skills), judgment is rare (2 skills).
+**The 10-3-2 → 33-33-33 ratio encodes the truth:** each axis grows toward Zen 99 (33 skills/agent) under `agi_*` / `asi_*` / `apex_*` namespaces.
 
 ---
 
@@ -1206,12 +1229,13 @@ The two sealed documents (014, 015) carry vault seal hashes — see file headers
 │  Port:           3001 (A2A gateway)                                   │
 │  Protocol:       A2A v1.0.0 (legacy) · v1.0.1 (canonical registry)     │
 │  Frontend:       React 19 + TypeScript 6 + Vite 8 + Tailwind 4        │
-│  Backend:        Express 4.x (a2a-server/)                            │
+│  Backend:        Express 5.2.1 (a2a-server/)                          │
 │  UI primitives:  shadcn/ui (53 Radix components)                      │
 │  Package ver:    2026.06.23 (see package.json)                        │
 │                                                                        │
-│  Constitutional  5 HEXAGON (333-AGI · 555-ASI · 888-APEX ·            │
-│  citizens:       A-AUDIT · A-ARCHIVE)                                 │
+│  Constitutional  3 HEXAGON (333-AGI · 555-ASI · 888-APEX)          │
+│  citizens:       (A-AUDIT + A-ARCHIVE collapsed 2026-07-15 —         │
+│                  now cross-cutting functions in every organ)        │
 │  WITNESS tier:   777-FORGE (session spawn attestation)                │
 │  Runtime:        hermes-asi (Telegram) · openclaw (port 18789)        │
 │  Coding:         grok-build · opencode · claude-code · qwen-code ·     │
