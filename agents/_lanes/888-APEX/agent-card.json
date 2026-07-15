@@ -15,10 +15,10 @@
     "organization": "arifOS by Muhammad Arif bin Fazil",
     "url": "https://arif-fazil.com"
   },
-  "protocolVersion": "1.2",
+  "protocolVersion": "1.0",
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/888-APEX",
   "capabilities": {
-    "streaming": false,
+    "streaming": true,
     "pushNotifications": true,
     "stateTransitionHistory": true,
     "spawnAgents": true,
@@ -54,325 +54,696 @@
   ],
   "skills": [
     {
-      "id": "role-binding-phi",
-      "name": "\u03a6\u0399 JUDGE Role Binding (888-APEX)",
-      "description": "Hermes binds to 888-APEX role for narration and request only (never final verdict). Loads arifos-arconstitutional-audit, fff-loop-protocol, kernel-observation-self-test, hold-protocol. Verdict authority stays in arifOS kernel. See contracts/hermes-role-binding.md. F1-F13 enforced.",
+      "id": "apex_floor_check",
+      "name": "apex_floor_check",
+      "description": "Run a full F1\u2013F13 floor audit on any action candidate",
       "tags": [
-        "role-binding",
-        "888-APEX",
-        "phi",
-        "judge",
-        "F11",
-        "F13"
-      ],
-      "floor_scope": [
-        "F01",
-        "F02",
-        "F04",
-        "F07",
-        "F09",
-        "F11",
-        "F13"
-      ],
-      "approval_policy": "auto (narration) + kernel for verdict",
-      "reversibility_class": "reversible"
-    },
-    {
-      "id": "constitutional-arbitration",
-      "name": "Constitutional Arbitration (F1-F13)",
-      "description": "Evaluate any agent output or proposed action against all 13 constitutional floors. Returns verdict (SEAL/PARTIAL/SABAR/VOID/888_HOLD) with per-floor pass/fail breakdown, evidence cited, and next-actions.",
-      "tags": [
-        "governance",
-        "arbitration",
-        "constitutional",
-        "APEX",
-        "verdict"
-      ],
-      "examples": [
-        "Judge this prospect evaluation for SEAL readiness",
-        "Should this destructive operation proceed or 888_HOLD?",
-        "Arbitrate the conflict between 333-AGI and 555-ASI outputs"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "trinity-witness",
-      "name": "Trinity Witness Consensus",
-      "description": "Collect and evaluate witness statements from all three primary agents (333-AGI \u0394, 555-ASI \u03a9, 888-APEX \u03a6\u0399). SEAL requires consensus or explicit human override. Deadlock triggers 888_HOLD.",
-      "tags": [
-        "trinity",
-        "consensus",
-        "witness",
-        "APEX"
-      ],
-      "examples": [
-        "Collect Trinity witnesses for the SB505 volumetrics SEAL",
-        "Is there consensus on the Bekantan-1 appraisal verdict?"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "hold-protocol",
-      "name": "888_HOLD Protocol",
-      "description": "Manage 888_HOLD lifecycle: trigger \u2192 document reason \u2192 notify human sovereign \u2192 await resolution \u2192 log outcome to A-ARCHIVE. Triggers include: destructive ops, production deploys, mass file changes, secret handling, evidence conflicts, rushed fixes, disputed claims.",
-      "tags": [
-        "hold",
-        "escalation",
-        "safety",
-        "human-in-loop"
-      ],
-      "examples": [
-        "This docker prune would remove 25GB \u2014 initiate 888_HOLD",
-        "Evidence conflict detected between seismic and well data",
-        "Disputed claim: certainty exceeds grounding by 40%"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "APEX-constitutional-audit",
-      "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass check, dignity packet inspection, drift monitor presence. Must be ATTESTED + LEASED before activation. F1, F2, F4, F7, F9, F11, F13 enforced.",
-      "tags": [
-        "constitutional",
-        "audit",
-        "f1-f13",
-        "verification",
-        "read-only"
-      ],
-      "examples": [
-        "Six-organ gap analysis of arifOS surface",
-        "Lexical priority check on F13 vs other floors",
-        "Detect 888 HOLD bypass attempt in a proposed action"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "kernel-observation-self-test",
-      "name": "Kernel Observation Self-Test",
-      "description": "First-query diagnostic for ANY constitutional AI kernel audit. Confirms the kernel observes its own tool calls before any other audit work. Returns a single number that IS the audit's starting condition. F11, F12, F13 gated.",
-      "tags": [
-        "kernel",
-        "diagnostic",
-        "self-test",
-        "F11",
-        "F12",
-        "F13"
-      ],
-      "examples": [
-        "Audit the kernel \u2014 confirm self-observation first",
-        "Detect split-brain condition in kernel logging",
-        "Verify kernel not impersonating judge role"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "APEX-fff-loop-protocol",
-      "name": "FFF Loop Protocol",
-      "description": "5-pass recursive audit sequence: Blue (diagnose) \u2192 Red (attack) \u2192 Blue (forge) \u2192 Yellow (verify) \u2192 Gold (seal). Emits skill artifacts + MEMORY line + drift signal. F1, F4, F8, F11 enforced. Must be LEASED.",
-      "tags": [
-        "audit",
-        "recursive",
-        "blue-red-yellow-gold",
-        "multi-pass"
-      ],
-      "examples": [
-        "Run FFF on the memory architecture proposal",
-        "Red-team + forge + seal the new organ routing contract"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "constitutional-kernel-patch",
-      "name": "Constitutional Kernel Patch",
-      "description": "Read-before-mutate workflow for patching arifOS constitutional kernel code. Probe, drift diagnosis, surgical patching, test coverage, no-regression check, 888 territory demarcation. ATTESTED then LEASED. F1, F11, F13 enforced.",
-      "tags": [
-        "kernel",
-        "patch",
-        "constitutional",
-        "read-before-mutate"
-      ],
-      "examples": [
-        "Patch F9 ANTIHANTU floor check in arifOS",
-        "Add new constitutional floor test coverage",
-        "Demarcate 888 territory before surgical mutation"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. \u03a9 + \u03a6\u0399 axis. LEASED.",
-      "tags": [
-        "humility",
-        "F7",
-        "self-critique",
-        "epistemic"
-      ],
-      "examples": [
-        "Lock final verdict with humility check",
-        "Apply meta-critique before claiming >0.99 confidence"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ]
-    },
-    {
-      "id": "KERNEL-reality-skills",
-      "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
-      "tags": [
-        "kernel",
-        "f2",
-        "reality",
-        "grounding"
-      ],
-      "floor_scope": [
-        "F2",
-        "F7",
-        "F9"
-      ]
-    },
-    {
-      "id": "KERNEL-sovereign-recognize",
-      "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
-      "tags": [
-        "kernel",
-        "f13",
-        "sovereign",
-        "identity"
-      ],
-      "floor_scope": [
-        "F13"
-      ]
-    },
-    {
-      "id": "KERNEL-session-inhabit",
-      "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
-      "tags": [
-        "kernel",
-        "session",
-        "lifecycle",
-        "000-999"
-      ],
-      "floor_scope": [
-        "F1",
-        "F4",
-        "F11"
-      ]
-    },
-    {
-      "id": "RSI-recursive-improvement",
-      "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
-      "tags": [
-        "kernel",
-        "rsi",
-        "improvement",
-        "entropy"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-trinity-33",
-      "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
-      "tags": [
-        "kernel",
-        "trinity",
-        "architecture",
-        "33"
-      ],
-      "floor_scope": [
-        "F4",
-        "F8"
-      ]
-    },
-    {
-      "id": "KERNEL-mcp-zen",
-      "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
-      "tags": [
-        "kernel",
-        "mcp",
+        "floor",
+        "check",
         "zen",
-        "architecture"
+        "capability"
       ],
-      "floor_scope": [
-        "F4",
-        "F11"
+      "examples": [
+        "Demonstrate how to run apex_floor_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "KERNEL-quantum-runtime",
-      "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
+      "id": "apex_scope_check",
+      "name": "apex_scope_check",
+      "description": "Ensure operations do not violate repository boundaries",
       "tags": [
-        "kernel",
-        "quantum",
-        "apex",
-        "intelligence"
+        "scope",
+        "check",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F2",
-        "F8"
+      "examples": [
+        "Demonstrate how to run apex_scope_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "KERNEL-qubit-substrate",
-      "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
+      "id": "apex_authority_check",
+      "name": "apex_authority_check",
+      "description": "Verify agent clearance level against the command ceiling",
       "tags": [
-        "kernel",
-        "substrate",
-        "quantum",
-        "physics"
+        "authority",
+        "check",
+        "zen",
+        "capability"
       ],
-      "floor_scope": [
-        "F2",
-        "F10"
+      "examples": [
+        "Demonstrate how to run apex_authority_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_reversibility_test",
+      "name": "apex_reversibility_test",
+      "description": "Classify whether a plan contains irreversible actions",
+      "tags": [
+        "reversibility",
+        "test",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_reversibility_test"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_rollback_requirement",
+      "name": "apex_rollback_requirement",
+      "description": "Ensure a robust rollback script exists before execution",
+      "tags": [
+        "rollback",
+        "requirement",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_rollback_requirement"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_irreversibility_flag",
+      "name": "apex_irreversibility_flag",
+      "description": "Inject 888_HOLD on any irreversible mutation candidate",
+      "tags": [
+        "irreversibility",
+        "flag",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_irreversibility_flag"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_actor_attest",
+      "name": "apex_actor_attest",
+      "description": "Cryptographically verify the actor requesting a change",
+      "tags": [
+        "actor",
+        "attest",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_actor_attest"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_mandate_verify",
+      "name": "apex_mandate_verify",
+      "description": "Ensure the task falls within the active session mandate",
+      "tags": [
+        "mandate",
+        "verify",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_mandate_verify"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_delegation_legitimize",
+      "name": "apex_delegation_legitimize",
+      "description": "Verify inter-agent A2A delegation tokens",
+      "tags": [
+        "delegation",
+        "legitimize",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_delegation_legitimize"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_evidence_threshold_check",
+      "name": "apex_evidence_threshold_check",
+      "description": "Verify evidence meets the threshold for a given action class",
+      "tags": [
+        "evidence",
+        "threshold",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_evidence_threshold_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_provenance_check",
+      "name": "apex_provenance_check",
+      "description": "Trace input data lineage to prevent contaminated sources",
+      "tags": [
+        "provenance",
+        "check",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_provenance_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_witness_requirement",
+      "name": "apex_witness_requirement",
+      "description": "Verify local-remote-VPS consensus (Tri-Witness)",
+      "tags": [
+        "witness",
+        "requirement",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_witness_requirement"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_harm_forecast",
+      "name": "apex_harm_forecast",
+      "description": "Predict downstream safety or performance degradations",
+      "tags": [
+        "harm",
+        "forecast",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_harm_forecast"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_drift_detect",
+      "name": "apex_drift_detect",
+      "description": "Scan configuration files and databases for runtime drift",
+      "tags": [
+        "drift",
+        "detect",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_drift_detect"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_model_behavior_watch",
+      "name": "apex_model_behavior_watch",
+      "description": "Detect loops, repetitive generation, and context degradation",
+      "tags": [
+        "model",
+        "behavior",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_model_behavior_watch"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_tool_approval_gate",
+      "name": "apex_tool_approval_gate",
+      "description": "Enforce human-in-the-loop validation for executing tools",
+      "tags": [
+        "tool",
+        "approval",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_tool_approval_gate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_seal_precondition_check",
+      "name": "apex_seal_precondition_check",
+      "description": "Verify all safety checks have passed before writing a SEAL",
+      "tags": [
+        "seal",
+        "precondition",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_seal_precondition_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_action_block",
+      "name": "apex_action_block",
+      "description": "Block unauthorized system writes or execution commands",
+      "tags": [
+        "action",
+        "block",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_action_block"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_audit_coverage_check",
+      "name": "apex_audit_coverage_check",
+      "description": "Ensure all active organs are emitting telemetry",
+      "tags": [
+        "audit",
+        "coverage",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_audit_coverage_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_event_integrity_check",
+      "name": "apex_event_integrity_check",
+      "description": "Validate hash signatures on incoming audit events",
+      "tags": [
+        "event",
+        "integrity",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_event_integrity_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_replay_admissibility",
+      "name": "apex_replay_admissibility",
+      "description": "Verify old audit logs cannot be replayed maliciously",
+      "tags": [
+        "replay",
+        "admissibility",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_replay_admissibility"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_retention_rule_check",
+      "name": "apex_retention_rule_check",
+      "description": "Enforce retention constraints on memory structures",
+      "tags": [
+        "retention",
+        "rule",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_retention_rule_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_disposition_rule_check",
+      "name": "apex_disposition_rule_check",
+      "description": "Enforce secure garbage collection of temporary credentials",
+      "tags": [
+        "disposition",
+        "rule",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_disposition_rule_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_record_completeness_check",
+      "name": "apex_record_completeness_check",
+      "description": "Verify telemetry packets contain required variables",
+      "tags": [
+        "record",
+        "completeness",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_record_completeness_check"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_verdict_seal",
+      "name": "apex_verdict_seal",
+      "description": "Issue a SEAL verdict to commit actions to VAULT999",
+      "tags": [
+        "verdict",
+        "seal",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_verdict_seal"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_verdict_hold",
+      "name": "apex_verdict_hold",
+      "description": "Issue a HOLD verdict to halt execution pending review",
+      "tags": [
+        "verdict",
+        "hold",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_verdict_hold"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_verdict_void",
+      "name": "apex_verdict_void",
+      "description": "Issue a VOID verdict to abort and block a task block",
+      "tags": [
+        "verdict",
+        "void",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_verdict_void"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_emergency_override_govern",
+      "name": "apex_emergency_override_govern",
+      "description": "Manage break-glass procedures and override tokens",
+      "tags": [
+        "emergency",
+        "override",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_emergency_override_govern"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_break_glass_log",
+      "name": "apex_break_glass_log",
+      "description": "Record detailed forensics during emergency bypasses",
+      "tags": [
+        "break_glass",
+        "log",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_break_glass_log"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_post_hoc_review",
+      "name": "apex_post_hoc_review",
+      "description": "Analyze execution failures post-run to distill rule changes",
+      "tags": [
+        "post_hoc",
+        "review",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_post_hoc_review"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_f13_escalate",
+      "name": "apex_f13_escalate",
+      "description": "Escalate structural overrides directly to the human sovereign",
+      "tags": [
+        "f13",
+        "escalate",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_f13_escalate"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_non_bias_witness_call",
+      "name": "apex_non_bias_witness_call",
+      "description": "Query the external witness node for cross-validation",
+      "tags": [
+        "non_bias",
+        "witness",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_non_bias_witness_call"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "apex_final_judgment_package",
+      "name": "apex_final_judgment_package",
+      "description": "Assemble all audit data, QDF, and signatures for history",
+      "tags": [
+        "final",
+        "judgment",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run apex_final_judgment_package"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     }
   ],
@@ -381,15 +752,17 @@
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 9,
         "tools": [
           "arif_init",
           "arif_observe",
           "arif_think",
           "arif_route",
           "arif_judge",
+          "arif_seal",
           "arif_act",
-          "arif_seal"
+          "arif_memory",
+          "arif_forge"
         ],
         "key_lanes": [
           "governance",
@@ -604,9 +977,9 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "pC2pBB3Y34SzzaQIszhb8W47M5QxqFaJhxpq9BZJgdMGTU3o3MkoW6Lk1AAUEmpVPx3QfVD8fHT9InAKp5lzCw==",
+      "proofValue": "h598svliLN1NnlITmR4gxnTdjNQuFnEvwU7ZhHEy8RjhikcI7PFlOguRtWxbiRRk9mDn9xpFQcRrXgVFmUT8CA==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
+      "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
   ]

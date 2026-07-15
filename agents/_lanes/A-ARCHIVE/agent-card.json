@@ -8,7 +8,7 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
+  "description": "[COLLAPSED] Collapsed into cross-cutting embedded function audited by 888-APEX per Zen 99 specifications. Legacy: The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE",
   "provider": {
