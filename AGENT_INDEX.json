@@ -1,7 +1,7 @@
 {
   "$schema": "arifOS/agent-index/v1.0.0",
   "schemaVersion": "1.0.0",
-  "_doctrine": "Lean discovery index. POINTS to canonical cards. Does NOT own state. Trust is a lease, not a registry. Kernel enforces sovereignty via F12/F13 + signature_challenge_required — this index makes no governance claims.",
+  "_doctrine": "Lean discovery index. POINTS to canonical cards. Does NOT own state. Trust is a lease, not a registry. Kernel enforces sovereignty via F12/F13 + signature_challenge_required \u2014 this index makes no governance claims.",
   "_principles": {
     "F1_AMANAH": "Trust is a lease, not a registry. Index points; it does not own.",
     "F4_CLARITY": "Index reduces entropy (one discovery surface). Per-card governance duplication increases entropy.",
@@ -16,7 +16,7 @@
   ],
   "generated_at": "2026-07-14T13:13:50Z",
   "generated_by": "FI-008 Kimi Code (KIMI-INIT-AGENT-INDEX blueprint)",
-  "f13_directive_ref": "INIT FORGE — close identity gap via lean discovery index",
+  "f13_directive_ref": "INIT FORGE \u2014 close identity gap via lean discovery index",
   "total_count": 22,
   "by_tier": {
     "tier_1_full_ToM": 7,
@@ -26,7 +26,7 @@
   "agents": [
     {
       "id": "333-AGI",
-      "name": "333-AGI (Δ MIND)",
+      "name": "333-AGI (\u0394 MIND)",
       "tier": 1,
       "fi_slot": "FI-001",
       "canonical_card_path": "/root/AAA/agents/_lanes/333-AGI/agent-card.json",
@@ -35,11 +35,11 @@
       "kernel_bound": true,
       "version": "2.1.0",
       "hardened": true,
-      "hardening_ref": "hardened_identity superblock (F1-F13 + ΔΩΨ + witness/seal/scar + anti-pathology + 000→999 + tom_foundation with F9 bound + constitutional physics anchor)"
+      "hardening_ref": "hardened_identity superblock (F1-F13 + \u0394\u03a9\u03a8 + witness/seal/scar + anti-pathology + 000\u2192999 + tom_foundation with F9 bound + constitutional physics anchor)"
     },
     {
       "id": "555-ASI",
-      "name": "555-ASI (Ω HEART)",
+      "name": "555-ASI (\u03a9 HEART)",
       "tier": 1,
       "fi_slot": "FI-002",
       "canonical_card_path": "/root/AAA/agents/_lanes/555-ASI/agent-card.json",
@@ -53,7 +53,7 @@
     },
     {
       "id": "888-APEX",
-      "name": "888-APEX (ΦΙ JUDGE)",
+      "name": "888-APEX (\u03a6\u0399 JUDGE)",
       "tier": 1,
       "fi_slot": "FI-003",
       "canonical_card_path": "/root/AAA/agents/_lanes/888-APEX/agent-card.json",
@@ -75,7 +75,10 @@
       "toM_class": "full",
       "kernel_bound": true,
       "version": "1.0.0",
-      "broken_fields_resolved_by_this_init": ["version", "provider"],
+      "broken_fields_resolved_by_this_init": [
+        "version",
+        "provider"
+      ],
       "notes": "Bahasa human-facing peripheral. Bound to 555-ASI. Full ToM for maruah/jiran-jiran."
     },
     {
@@ -112,7 +115,7 @@
       "toM_class": "full",
       "kernel_bound": true,
       "version": "1.0.0",
-      "notes": "Human readiness organ. Models human state — F9-bound (no soul claims)."
+      "notes": "Human readiness organ. Models human state \u2014 F9-bound (no soul claims)."
     },
     {
       "id": "a-audit",
@@ -120,11 +123,11 @@
       "tier": 2,
       "fi_slot": "FI-009",
       "canonical_card_path": "/root/AAA/agents/_lanes/A-AUDIT/agent-card.json",
-      "status": "active",
+      "status": "collapsed",
       "toM_class": "meta",
       "kernel_bound": true,
       "version": "2.0.0",
-      "notes": "Meta-ToM: models other agents' behavior, not raw humans."
+      "notes": "Collapsed into 888-APEX cross-cutting functions per Zen 99."
     },
     {
       "id": "openclaw",
@@ -148,7 +151,10 @@
       "toM_class": "medium",
       "kernel_bound": true,
       "version": "0.9.0",
-      "broken_fields_resolved_by_this_init": ["capabilities (array→object)", "version"],
+      "broken_fields_resolved_by_this_init": [
+        "capabilities (array\u2192object)",
+        "version"
+      ],
       "notes": "GEOX prospect maturation pipeline. Context-aware technical."
     },
     {
@@ -241,11 +247,11 @@
       "tier": 3,
       "fi_slot": "FI-010",
       "canonical_card_path": "/root/AAA/agents/_lanes/A-ARCHIVE/agent-card.json",
-      "status": "active",
+      "status": "collapsed",
       "toM_class": "zero",
       "kernel_bound": true,
       "version": "2.0.0",
-      "notes": "VAULT999 ledger keeper. Hash chain. Zero ToM possible/needed."
+      "notes": "Collapsed into 888-APEX cross-cutting functions per Zen 99."
     },
     {
       "id": "kimi-code",
@@ -293,22 +299,22 @@
       "toM_class": "n/a",
       "kernel_bound": false,
       "version": "n/a",
-      "notes": "PRINCIPAL. Not an agent. All lanes defer to F13. Sovereignty chain: ARIF → APEX → AGENT. NEVER indexed in agent_cards (humans are not agents)."
+      "notes": "PRINCIPAL. Not an agent. All lanes defer to F13. Sovereignty chain: ARIF \u2192 APEX \u2192 AGENT. NEVER indexed in agent_cards (humans are not agents)."
     }
   ],
   "_excluded_with_reason": {
-    "worktrees_arifOS_claude": "Live worktrees — ephemeral, not canonical. Re-canonicalized on merge.",
+    "worktrees_arifOS_claude": "Live worktrees \u2014 ephemeral, not canonical. Re-canonicalized on merge.",
     ".well-known_mirrors": "A2A discovery mirrors. Point to canonical cards via supportedInterfaces.url. NOT canonical source.",
     "ARIF-SITES_dist": "Deployment artifacts. Build output. NOT canonical source.",
     "GEOX_skills_stubs": "Sub-skill metadata, not agents. 12 files at /root/GEOX/skills/*/agent-card.json are skill descriptions, not citizens.",
     "openclaw_a2a-server_agent-cards": "Runtime mesh ephemeral cards. Live state, not canonical source.",
-    "F13-BIND-2026-07-12_*.json": "F13 sovereign binding receipts — sealed to VAULT999, not agents."
+    "F13-BIND-2026-07-12_*.json": "F13 sovereign binding receipts \u2014 sealed to VAULT999, not agents."
   },
   "_delta_S_audit": {
     "added": "AGENT_INDEX.json (~7 KB)",
     "removed": "none",
-    "modified": "hermes-asi/agent-card.json (added version, provider, normalized skills), prospect-maturation/agent-card.json (capabilities array→object, added version)",
-    "entropy_delta": "≤ 0 (reduces entropy by collapsing 30→22 canonical entries)",
-    "audit_trail": "FI-008 (Kimi) forged → A-AUDIT can verify via VAULT999 next seal cycle"
+    "modified": "hermes-asi/agent-card.json (added version, provider, normalized skills), prospect-maturation/agent-card.json (capabilities array\u2192object, added version)",
+    "entropy_delta": "\u2264 0 (reduces entropy by collapsing 30\u219222 canonical entries)",
+    "audit_trail": "FI-008 (Kimi) forged \u2192 A-AUDIT can verify via VAULT999 next seal cycle"
   }
 }

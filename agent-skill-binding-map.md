@@ -7,7 +7,7 @@
 | Category | Count | Agents |
 |----------|-------|--------|
 | Warga (in `agents/`) | 6 | arifOS_bot, opencode, openclaw, hermes-asi, prospect-maturation, makcikgpt |
-| Lanes: HEXAGON (in `_lanes/`) | 5 active + 1 archived | 333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE, (777-forge RETIRED) |
+| Lanes: HEXAGON (in `_lanes/`) | 3 active + 2 collapsed + 1 archived | 333-AGI, 555-ASI, 888-APEX, (A-AUDIT collapsed), (A-ARCHIVE collapsed), (777-forge RETIRED) |
 | External: Forge Instruments (in `_external/`) | 9 | claude-code, codex, continue-cli, gemini-cli, grok-build, kimi-code, qwen-code, copilot, aider |
 | .well-known | 1 | arifOS_bot (duplicate of `agents/main/`) |
 | **Total unique** | **21** | |
@@ -34,8 +34,8 @@
 | 333-AGI | agents/_lanes/333-AGI/ | active | architect | Δ MIND | No |
 | 555-ASI | agents/_lanes/555-ASI/ | active | architect | Ω HEART | No |
 | 888-APEX | agents/_lanes/888-APEX/ | active | architect | ΦΙ JUDGE | **Yes** |
-| A-AUDIT | agents/_lanes/A-AUDIT/ | active | watchdog | observer | **Yes** |
-| A-ARCHIVE | agents/_lanes/A-ARCHIVE/ | active | archivist | vault | No |
+| A-AUDIT | agents/_lanes/A-AUDIT/ | collapsed | watchdog | observer | **Yes** |
+| A-ARCHIVE | agents/_lanes/A-ARCHIVE/ | collapsed | archivist | vault | No |
 | 777-forge | agents/_lanes/777-forge/ | **RETIRED/ARCHIVED** | AGI | Δ MIND (spawn instrument) | No |
 
 ### EXTERNAL: Forge instruments

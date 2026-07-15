@@ -70,11 +70,11 @@ agents/<id>/agent-card.json
 
 | ID | Class | Ring | Stage | Skills | Source Card |
 |----|-------|------|-------|--------|-------------|
-| 333-AGI | AGI | Δ MIND | 333 | 10 | `agents/_lanes/333-AGI/` |
-| 555-ASI | ASI | Ω HEART | 555 | 3 | `agents/_lanes/555-ASI/` |
-| 888-APEX | APEX | ΦΙ JUDGE | 888 | 2 | `agents/_lanes/888-APEX/` |
-| A-AUDIT | Oversight | (observer) | audit | 2 | `agents/_lanes/A-AUDIT/` |
-| A-ARCHIVE | Service | (vault) | 999 | 3 | `agents/_lanes/A-ARCHIVE/` |
+| 333-AGI | AGI | Δ MIND | 333 | 33 | `agents/_lanes/333-AGI/` |
+| 555-ASI | ASI | Ω HEART | 555 | 33 | `agents/_lanes/555-ASI/` |
+| 888-APEX | APEX | ΦΙ JUDGE | 888 | 33 | `agents/_lanes/888-APEX/` |
+| A-AUDIT | Collapsed | (observer) | N/A | Collapsed | `agents/_lanes/A-AUDIT/` (embedded in 888-APEX) |
+| A-ARCHIVE | Collapsed | (vault) | N/A | Collapsed | `agents/_lanes/A-ARCHIVE/` (embedded in 888-APEX) |
 
 ### 4.2 Runtime Agents (Operational)
 
