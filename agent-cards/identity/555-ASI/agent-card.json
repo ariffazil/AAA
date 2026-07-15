@@ -139,6 +139,27 @@
       ]
     },
     {
+      "id": "asi_tone_read",
+      "name": "asi_tone_read",
+      "description": "Read conversational tone, register, and emotional valence",
+      "tags": [
+        "tone",
+        "read",
+        "zen",
+        "capability"
+      ],
+      "examples": [
+        "Demonstrate how to run asi_tone_read"
+      ],
+      "inputModes": [
+        "text/plain",
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
       "id": "asi_ambiguity_reframe",
       "name": "asi_ambiguity_reframe",
       "description": "Detect vague prompts and formulate clarifying questions",

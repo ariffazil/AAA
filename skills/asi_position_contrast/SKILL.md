@@ -1,6 +1,9 @@
 ---
-id: multi-discipline-critique
-name: ASI-multi-discipline-critique
+id: asi_position_contrast
+name: asi_position_contrast
+agent: 555-ASI
+namespace: asi_*
+cluster: SYNTHESIS
 version: 1.0.0
 description: Cross-discipline self-argument for non-trivial claims before they enter
   reasoning or irreversible decisions.

@@ -9,7 +9,7 @@
   "skill_count": 18,
   "skills": [
     {
-      "id": "ASI-agent-bootstrap",
+      "id": "asi_presence_open",
       "source": ".agents/skills/ASI-agent-bootstrap",
       "why": "Spawn protocol for any new agent"
     },
@@ -29,7 +29,7 @@
       "why": "F1-F13 floor logic"
     },
     {
-      "id": "ASI-cooling-ledger-rsi",
+      "id": "asi_context_compress",
       "source": ".agents/skills/ASI-cooling-ledger-rsi",
       "why": "Session-end entropy accounting"
     },
@@ -39,12 +39,12 @@
       "why": "Source vs runtime drift"
     },
     {
-      "id": "ASI-drift-response",
+      "id": "asi_uncertainty_signal",
       "source": ".agents/skills/ASI-drift-response",
       "why": "5-step legacy drift response"
     },
     {
-      "id": "ASI-evals",
+      "id": "asi_evidence_tier_express",
       "source": ".agents/skills/ASI-evals",
       "why": "Skill-level benchmarks"
     },
@@ -69,7 +69,7 @@
       "why": "Session logs → L4/L5/L6"
     },
     {
-      "id": "ASI-multi-discipline-critique",
+      "id": "asi_position_contrast",
       "source": ".agents/skills/ASI-multi-discipline-critique",
       "why": "Cross-discipline self-argument"
     },
