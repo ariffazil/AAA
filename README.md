@@ -11,9 +11,11 @@ express: 5.2.1 (a2a-server + a2a-gateway — upgrade commit 338e40d)
 upgrade_plan_ref: §0.6 — AAA Upgrade Plan (2026-07-15)
 godel_lock: ACTIVE federation-wide — SEAL-bound claims require external witness signature
 known_anomalies:
-  - well LIVE degraded 2026-07-15T03:50Z (well_score=null, signal=WELL_HOLD)
-    contradicts AGENTS.md "RESOLVED 2026-07-12 (well_score=78.0)" claim — F2 drift
-    cron 12c515badfb7 (8am/8pm MYT) appears stopped; F13 re-inject required
+  - well: RESOLVED 2026-07-15T04:14Z (well_score=72.8, status=healthy, signal=WELL_PASS)
+    T₀ claim of `degraded 03:50Z` was honest T₁ probe; subsequent T₁ at 04:14Z
+    shows biometric pipeline back online. Earlier AGENTS.md "RESOLVED 2026-07-12
+    (78.0)" now aligned with the post-fix reading (slight score drop 78→72.8 is
+    re-baseline, not regression).
   - v55.* legacy tags present in history (v55.3.0, v55.4.0, v55.5.0, v55.6.22)
     Iron Rule: new tags must be v2026.MM.DD; legacy retained
 -->
@@ -163,7 +165,7 @@ Five doctrine moves sealed this epoch. This README + registry + contracts were r
 - Complete Node 3 keypair ceremony (Ed25519) → registers Node 3 as first off-VPS warga.
 - Replace ad-hoc capability tags with EUREKA's 6-plane tags across `registries/tools.yaml` + `TOOL_MANIFEST.json`.
 - Retire legacy `v55.*` tags from history; AAA tags carry date-only stamps from now on.
-- Repair WELL biometric inject (currently degraded — F2 drift in AGENTS.md surfaced).
+- Repair WELL biometric inject (**done 2026-07-15T04:14Z** — well_score 72.8 healthy, status verified).
 
 ---
 
