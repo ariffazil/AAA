@@ -179,6 +179,13 @@ for h in "${HARNESSES[@]}"; do
           echo "  REFIXED $name -> ${BEST[$name]}"
           created=$((created+1))
           broken=$((broken-1))
+        else
+          archive="$h/.broken-archive"
+          mkdir -p "$archive"
+          mv "$link" "$archive/$name"
+          echo "  QUARANTINED $name (no canonical source)"
+          created=$((created+1))
+          broken=$((broken-1))
         fi
       fi
     fi

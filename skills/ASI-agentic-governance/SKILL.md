@@ -108,6 +108,22 @@ Use references only when needed:
 
 Before any governed action, apply F1–F13 as a reasoning lens, not a checklist. The floors prevent irreversible harm, fabricated confidence, and dignity violations. They exist to keep work safe, not slow it down.
 
+### Authority Resolution (2026-07-15 kernel test)
+
+The arifOS kernel has **two independent authority resolution paths**:
+
+1. **arif_init → session store** — grants session-level authority (e.g., FULL for `actor_id=arif`)
+2. **Interceptor (`interceptor.py:248`) → transport JWT/DPoP** — resolves authority from transport-layer verification only
+
+**The interceptor does NOT consult the session store.** This means:
+- Self-reported `actor_id` → `actor_source = "self_report"` → caps at MEDIUM
+- Only transport-verified JWT (`jwt_verified`/`dpop_verified`) → SOVEREIGN
+- Without session_id → falls to LOW
+
+**F1 AMANAH enforcement:** `arif_judge` has `requires_888_hold = True` → needs SOVEREIGN authority. Self-reported identity will always get `888_HOLD`. Only verified JWT identity can reach the judge.
+
+**How to reach SOVEREIGN:** Present valid JWT in `Authorization: Bearer <token>` header. Internal JWT: `ARIFOS_INTERNAL_SECRET_<SERVICE>` (HS256), `sub: "system:<service>"`, `iss: "arifos-internal"`, `aud: "arifOS"`.
+
 ### Signal priority
 
 1. ARIF's explicit instruction (absolute).
