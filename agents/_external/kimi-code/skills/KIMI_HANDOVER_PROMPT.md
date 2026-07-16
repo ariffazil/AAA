@@ -2,7 +2,7 @@
 
 > **Authority:** F13 SOVEREIGN — Muhammad Arif bin Fazil  
 > **Scope:** Every new Kimi Code session that touches AAA/arifOS federation work.  
-> **Version:** 1.0.0 — sealed 2026-07-08
+> **Version:** 1.1.0 — sealed 2026-07-16 (post-deploy verification recipe added)
 
 ---
 
@@ -61,8 +61,47 @@ Cease autonomous recursion when:
 
 - **VAULT999 upgrade record:** `kimi_skill_upgrade_2026-07-08_r1` → `mem_1783550613150_90olg`
 - **VAULT999 RSI record:** `kimi_skill_rsi_2026-07-08` → `mem_1783551768935_5s7bd`
-- **Receipt:** `A-FORGE/forge_work/2026-07-08/KIMI-SKILL-UPGRADE-SEAL.md`
-- **Skill package:** 7 new Kimi Code user-scope contrast/reflector skills
-- **Artifact hash:** `sha256:2501fc2100bf7cc9ab0e06907afc5f0682b7a14bb000ecdb483e446ab1210dcc` (covers 7 skills + SKILL_INDEX after RSI init prompt addition)
+- **Receipt (forging):** `A-FORGE/forge_work/2026-07-08/KIMI-SKILL-UPGRADE-SEAL.md`
+- **Receipt (2026-07-16 incremental):** `/root/forge_work/2026-07-16/ARIFOS_MCP_COLD_BOOT_OPTIMIZATION.md` + `/root/forge_work/2026-07-16/FORGE_END_SUMMARY.md`
+- **Skill package:** 7 user-scope contrast/reflector skills + KIMI_RSI_INIT_PROMPT (v1.1.0) + KIMI_HANDOVER_PROMPT (v1.1.0)
+- **Latest artifact hash:** `sha256:2501fc2100bf7cc9ab0e06907afc5f0682b7a14bb000ecdb483e446ab1210dcc` (2026-07-08 — to be re-hashed after 2026-07-16 update)
+
+### Update progression (incremental versions)
+
+| Version | Date | Δ | What |
+|---|---|---|---|
+| 1.0.0 | 2026-07-08 | baseline | 7 contrast/reflector skills forged |
+| 1.1.0 | 2026-07-16 | +cold-boot recipe + post-deploy verification | arifOS MCP cold-boot fix session; added §Cold-boot diagnostic recipe to KIMI_RSI_INIT_PROMPT, §Post-deploy verification to this file |
+
+## Post-deploy verification recipe (added 2026-07-16)
+
+After any code change to a systemd-managed organ, run this before declaring
+"done". It was forged from `731b65bbc perf(mcp): reduce cold-boot latency`.
+
+```text
+1. COMMIT     → git commit -m "..." with Co-authored-by trailer
+2. SYNC       → rsync -a --exclude='.git' --exclude='__pycache__' ... <src>/ <runtime>/
+3. CLEAR CACHE → find <runtime> -name __pycache__ -type d -exec rm -rf {} +
+4. UPDATE MARKER → echo "<sha>" > <runtime>/.git_commit
+5. COLD RESTART → systemctl stop <svc>; sleep 2; systemctl start <svc>
+6. TIME BOOT  → python: t0=perf_counter(); poll /health; print(f"cold boot: {elapsed:.2f}s")
+7. CHECK STDOUT → journalctl -u <svc> --since "5 min ago" | grep -E "<warning_pattern>"
+                  (must return empty if warning was the original error)
+8. CONFIRM 3RD PARTY → check AAA / sister organ / git origin: registered, pushed
+9. UPDATE SOT → 4 files: CONTEXT.md, CHANGELOG.md, AGENTS.md, AGENTS_LANDING.md
+10. RECEIPT   → write /root/forge_work/<date>/<topic>.md with measurements
+11. HOUSEKEEPING → move chaos to _quarantine/<date>-<reason>/ with MANIFEST.md
+12. DAILY MEM → /root/memory/<date>.md session log
+13. AUDIT LOG → append to kimi-skill-reflector/audit-log.md (this ritual)
+```
+
+**F11 AUDIT:** Each step above produces a verifiable artifact (commit SHA,
+journal line, /health response, receipt file). If any step is unverifiable,
+do not seal — investigate the gap.
+
+**F4 CLARITY:** This recipe is additive. Replaces ad-hoc "did it work?"
+guesswork with a falsifiable procedure.
+
+---
 
 **DITEMPA BUKAN DIBERI** — load, reflect, then act.
