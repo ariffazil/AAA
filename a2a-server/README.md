@@ -4,6 +4,9 @@ Standalone Express server implementing the A2A (Agent-to-Agent) protocol for
 the arifOS federation. This is the production runtime that powers the
 `https://aaa.arif-fazil.com` agent card endpoint and task routing.
 
+It is **not** the static cockpit site. The React cockpit is built from the repo
+root and published separately via GitHub Pages at `https://arif-fazil.com`.
+
 ## Quick Start
 
 ```bash

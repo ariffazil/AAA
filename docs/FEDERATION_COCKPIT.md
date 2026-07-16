@@ -18,6 +18,14 @@ or hold live runtime state. It is the **cockpit**, not the **engine**.
 
 ---
 
+## Deployment Surfaces
+
+- **Static cockpit:** `arif-fazil.com` — built from this repo by `npm run build`, published by `.github/workflows/pages.yml`, and stamped with `dist/CNAME`
+- **Live AAA gateway:** `aaa.arif-fazil.com` — public discovery/A2A/MCP surface reverse-proxied to local `127.0.0.1:3001`
+- **Local origin:** `a2a-server/server.js` binds `127.0.0.1:3001`; `/` returns gateway JSON, while `/.well-known/*` and `/a2a/*` expose the live control-plane API
+
+---
+
 ## Authority Boundary
 
 ### AAA Owns
@@ -106,7 +114,8 @@ responsibility.
 | WEALTH | `ariffazil/wealth` | 18082 | Capital intelligence |
 | WELL | `ariffazil/well` | 18083 | Vitality intelligence |
 | A-FORGE | `ariffazil/A-FORGE` | 7071 | Execution engine |
-| AAA A2A | `ariffazil/AAA` | 3001 | A2A gateway (held) |
+| AAA Pages | `ariffazil/AAA` | GitHub Pages | Static cockpit build at `arif-fazil.com` |
+| AAA Gateway | `ariffazil/AAA` | 3001 | Live A2A / discovery / MCP origin (publicly fronted at `aaa.arif-fazil.com`) |
 | APEX | `ariffazil/APEX` | 3002 | Legacy health probe — deliberation moved to AAA a2a-server |
 
 ---
