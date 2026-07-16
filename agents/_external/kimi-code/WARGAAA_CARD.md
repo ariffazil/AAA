@@ -20,6 +20,8 @@
 | `config_home` | `$KIMI_CODE_HOME` → `/root/.arifos/agents/kimi` |
 | `model` | `kimi-for-coding` (K2.7 Code) |
 | `status` | active citizen |
+| `agent_card_version` | **v2.1.0** (2026-07-16 — zen pass: 7 contrast skills v1.1.0, KIMI_RSI_INIT_PROMPT v1.1.0 with cold-boot recipe, KIMI_HANDOVER_PROMPT v1.1.0 with post-deploy recipe) |
+| `last_verified` | 2026-07-16 (kimi-skill-reflector audit — ΔS ≤ 0) |
 
 ---
 
