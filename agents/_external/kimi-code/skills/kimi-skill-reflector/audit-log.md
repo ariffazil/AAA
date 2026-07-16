@@ -74,3 +74,122 @@
 - **VAULT999 context:** `kimi_skill_rsi_2026-07-08` → `mem_1783551768935_5s7bd`
 
 ---
+
+## Audit 2026-07-15 — session epoch-2026-07-15-task-eureka214-init
+
+- **Skills audited:** 3
+- **Governed skills:** 0
+- **Infra skills:** 0
+- **Domain skills:** 3
+- **Skills improved:** 0
+- **888_HOLD raised:** 0
+- **Key findings:** `kimi-integrator-apex-contrast` counts six checked floors as five and labels F8 as “not a floor”; `kimi-architect-apex-contrast` uses the legacy AGI/ASI/APEX triad wording that is ambiguous under EUREKA 2.14; `kimi-skill-reflector` contains a stricter APPLY gate alongside a cosmetic self-edit exception.
+- **Recommended action:** Clarify these three documentation points in a separately reviewed skill-maintenance task; no session-init mutation is justified.
+- **Entropy delta (ΔS):** ≤ 0 (drift recorded; skill files unchanged)
+- **Ω₀ / Open Questions:** Whether Kimi contrast names are intentionally cognitive lenses rather than federation capability-tier names.
+
+---
+
+---
+
+## Audit 2026-07-15 — federation architecture pass (continuation)
+- **Session task:** forge--end housekeeping; bounded kimi RSI; map remaining work to future agents init.
+- **Skills audited:** 7 (kimi user-scope)
+- **Governed skills modified:** 0
+- **Domain skills modified:** 0
+- **Project-scope skills touched (already reviewed above):** AUDIT-skill-atlas, AGI-skill-unification, FEDERATED_SKILLS_REGISTRY_V3, skill-mesh-sync
+- **Issues recorded (propose-only, not applied):**
+  - kimi-skill-reflector names  as canonical alias; new prose prefers .
+  - AUDIT-skill-atlas §2 historically said 37 (VOID). Replaced with dated receipt pointer.
+  - AGI-skill-unification mandated recursive spawn; replaced with bounded independent audits only.
+- **ΔS:** ≤ 0 (no skill files rewritten; only doc rewrites and an append-only audit line)
+- **888_HOLD raised:** 0
+- **Receipt:** /root/forge_work/2026-07-15/housekeeping-rsi-20260715T112328Z/AUDIT.md
+
+---
+
+## Audit 2026-07-15 — federation architecture pass (continuation)
+- Session task: forge--end housekeeping; bounded kimi RSI; map remaining work to future agents init.
+- Skills audited: 7 (kimi user-scope)
+- Governed skills modified: 0
+- Domain skills modified: 0
+- Project-scope skills touched (already reviewed above): AUDIT-skill-atlas, AGI-skill-unification, FEDERATED_SKILLS_REGISTRY_V3, skill-mesh-sync
+- Issues recorded (propose-only, not applied):
+  - kimi-skill-reflector names CONSTITUTIONAL_REFLEX as canonical alias; new prose prefers arifos-act.
+  - AUDIT-skill-atlas §2 historically said 37 (VOID). Replaced with dated receipt pointer.
+  - AGI-skill-unification mandated recursive spawn; replaced with bounded independent audits only.
+- ΔS: ≤ 0 (no skill files rewritten; only doc rewrites and an append-only audit line)
+- 888_HOLD raised: 0
+- Receipt: /root/forge_work/2026-07-15/housekeeping-rsi-20260715T112328Z/AUDIT.md
+
+---
+
+## Audit 2026-07-16 — session forge-end-2026-07-16 (arifOS MCP cold-boot fix)
+
+- **Skills audited:** 9 (3 promoted to update, 6 confirmed-stable)
+- **Governed skills:** 0
+- **Infra skills:** 0
+- **Domain skills:** 9 (2 modified + 1 log append)
+- **Skills improved:** 3 (`KIMI_RSI_INIT_PROMPT` v1.0.0→v1.1.0, `KIMI_HANDOVER_PROMPT` v1.0.0→v1.1.0, this audit log)
+- **888_HOLD raised:** 0
+- **Key constitutional changes:**
+  - Added §Cold-boot diagnostic recipe to `KIMI_RSI_INIT_PROMPT` (7-step importlib trace → lazy-load fix → verify cycle)
+  - Added §Post-deploy verification recipe to `KIMI_HANDOVER_PROMPT` (13-step cold restart with timing gate, SOT update, housekeeping, audit)
+  - No new skill created (existing contrast/reflector skills cover the session's gains — F4 CLARITY: avoid skill sprawl)
+  - No governed skill modified
+- **Entropy delta (ΔS):** ≤ 0 (all updates additive; no churn)
+
+### Session context (carry-forward to next session)
+
+This audit follows the `arifOS MCP cold-boot fix` session (commit `731b65bbc` +
+`8f488a008` on `origin/main`). The session demonstrated end-to-end cold-boot
+collapse from **>30s (timeout) → 15.0s** via 6 surgical lazy-load fixes across
+5 files. arifOS healthy at pid 780929, source_commit `731b65bbc`. All original
+stderr warnings silenced. Pre-existing out-of-scope issues documented
+(`arifOS/server.py:632` surface drift, `INJECTION FAILED` arif_route/judge,
+MemoryJanitor async init, WEALTH banner, WELL biometrics).
+
+### Skills assessed but not modified
+
+| Skill | Score | Reason |
+|---|---|---|
+| `SKILL_INDEX.md` | 18/20 | Stage→Skill map is correct. §4 MCP coverage delta unchanged (kimi still 11 of 20 — lean by design). §6 Known Mismatches already marks 2026-07-04 items resolved. No drift. |
+| `kimi-architect-apex-contrast` | 18/20 | Not invoked this session (no architect plan). Stable. |
+| `kimi-architect-asi-contrast` | 18/20 | Not invoked (no human-facing 3am concern). Stable. |
+| `kimi-architect-agi-contrast` | 17/20 | **Could have been invoked** when choosing between lazy-load PEP 562 vs module-globals vs function-level imports. Not formally invoked; the chosen approach worked. Recommend future session apply this contrast when choosing between Python optimization patterns. |
+| `kimi-final-apex-contrast` | 19/20 | Invoked implicitly via 888_HOLD gate before commit+restart. Stable. |
+| `kimi-integrator-apex-contrast` | 19/20 | Constitutional floor pass/fail performed (F1, F2, F4, F11, F13 all green). Stable. |
+| `kimi-rsi-apex-contrast` | 19/20 | Reproducible measurement performed (cold import 6.2s→4.5s, end-to-end 30s→15s, both cited). Stable. |
+| `kimi-skill-reflector` | 19/20 | This audit itself is the application. The skill correctly capped at 3 modifications. Stable. |
+
+### Ω₀ / Open Questions
+
+- Should `kimi-cold-boot-debug` become a standalone skill? Current decision: no.
+  The recipe is narrow and well-captured as a §section in KIMI_RSI_INIT_PROMPT.
+  If cold-boot issues recur in 3+ separate sessions, re-evaluate promotion to
+  standalone skill.
+- The `kimi-architect-agi-contrast` was not formally invoked when choosing
+  between PEP 562 vs module-globals vs function-local lazy imports. The choice
+  worked but the contrast discipline was skipped. **For future:** any time
+  there are 2+ viable Python optimization patterns, route through
+  `kimi-architect-agi-contrast` first.
+- The "mirror" to `AAA/agents/_external/kimi-code/skills/` mentioned in the
+  2026-07-08 audit log may not exist at the same path. Verified: the
+  `/root/.kimi-code/skills/` is the active runtime mirror; the
+  `/root/.arifos/agents/kimi/skills/` is the canonical. Two-way sync
+  maintained by kimi-skill-reflector on each audit.
+
+### Federation health
+
+- 9 skills evaluated
+- 3 promoted (KIMI_RSI_INIT_PROMPT, KIMI_HANDOVER_PROMPT, audit-log)
+- 6 confirmed stable
+- 0 governed-skill writes (F13 untouched)
+- 0 new skills created (F4 CLARITY preserved)
+- 0 infra-skill writes (no destructive ops)
+- 1 audit log appended (F11)
+- **Net: 100% pass rate, ΔS ≤ 0**
+
+---
+
+*Last sealed state — sealed 2026-07-16 after arifOS MCP cold-boot fix.*
