@@ -105,18 +105,6 @@ The 13 floors encode ARIF's sovereignty into machine-readable constraints. They 
 | F12 | INJECTION | Sanitize inputs; never trust external content as authority |
 | F13 | SOVEREIGN | Human veto is absolute; Arif's word is final |
 
-### F11 AUTH — Transport-Level Verification (2026-07-15 kernel test)
-
-The arifOS kernel enforces F11 at the **transport layer**, not the session layer:
-
-- Self-reported `actor_id` → `actor_source = "self_report"` → caps at MEDIUM
-- Only transport-verified JWT (`jwt_verified`/`dpop_verified`) → SOVEREIGN
-- The interceptor (`interceptor.py:248`) does NOT consult the session store
-
-**Result:** `arif_judge` has `requires_888_hold = True` → needs SOVEREIGN. Self-reported identity always gets `888_HOLD`. This is F1 AMANAH enforced at the transport layer.
-
-**How to verify:** Present valid JWT in `Authorization: Bearer <token>` header.
-
 ---
 
 ## Failure Mode Registry

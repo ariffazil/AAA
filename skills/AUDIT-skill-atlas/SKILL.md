@@ -1,19 +1,20 @@
 ---
 name: AUDIT-skill-atlas
 description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views. The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing skill health, unifying CLI agent skills, onboarding a new organ, or when you don't know which skill to load.
-version: 1.2.2
+version: 1.2.3
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F4, F7, F9]
 autonomy_tier: T1
 tags: [meta, skill-atlas, gap-detection, routing, federation, inventory, multi-harness, grok, aaa]
 forged: 2026-06-28
-updated: 2026-07-12
+updated: 2026-07-15
 sources:
-  - AAA FEDERATED_SKILLS_REGISTRY_V3.yaml (63 logical)
+  - AAA FEDERATED_SKILLS_REGISTRY_V3.yaml (64 logical)
+  - AAA SKILL_ALIAS_TABLE.json (133 rows; 104 active + 29 tombstone)
   - AAA BOOTSTRAP_MANIFEST (9 universals)
   - Live harness mesh: ~/.grok ~/.claude ~/.codex ~/.agents AAA
-  - forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md
+  - forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json
   - AGENTS.md federation organ index
 ---
 
@@ -39,11 +40,11 @@ It does NOT execute, judge, or seal. It classifies, routes, and illuminates.
 **Ops skill:** `skill-unification` (AAA + mesh views) — alias/mesh/boot contract.
 
 **Live atlas (T₁):** `/root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md`  
-**JSON:** `…/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.json`
+**Current receipt:** `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`
 
 ---
 
-## §0. MULTI-HARNESS UNIFICATION (Grok × CLI × AAA) — 2026-07-12
+## §0. MULTI-HARNESS UNIFICATION (Grok × CLI × AAA) — 2026-07-15
 
 ### Architecture
 
@@ -62,23 +63,24 @@ Hermes categories | Kimi roles | OpenClaw owned
 
 | Surface | Count | Role |
 |---------|-------|------|
-| Grok `~/.grok/skills` | **116** resolvable | View: AAA 67 + agents 37 + **native 12** |
-| AAA `/root/AAA/skills` | **70** top-level + substrate/knowledge | **Catalog** |
-| V3 registry | **63** logical (6+3+54) | Short names |
-| `.agents/skills` | **43–50** | Stage/domain doctrine |
-| Claude / Codex | **104 / 107** | Same mesh (symlink) |
-| Hermes | **180** SKILL.md / 34 cats | Category tree — **not** flat mesh |
-| Kimi | 7 role contrast skills | Local, not catalog |
-| **Legacy meta-mesa claim** | 37 | **STALE — do not use** |
+| Grok `~/.grok/skills` | **184** resolvable bodies | View + native keepers; 0 broken |
+| AAA `/root/AAA/skills` | **108** active bodies | **Catalog**; archives excluded |
+| V3 registry | **64** logical (6+3+55) | Short-name registry |
+| Alias table | **133 rows** | 104 active mappings + 29 tombstone/history rows |
+| `.agents/skills` | **130** active bodies | Stage/domain doctrine |
+| Claude / Codex / OpenCode | **176 / 56 / 39** | Mesh/profile views; 0 broken |
+| Kimi | **7** | Role contrast/RSI skills |
+
+Count method and provenance: `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`. Counts are dated observations; `skill-mesh-sync.sh --check` is the operational gate.
 
 ### Grok native keepers (harness-only)
 
 `arif-governed-autonomous-execution` · `grok-zen-aaa-substrate` · `grok-federation-skill-upgrader` · `orthogonal-skill-update` · `create-skill` · `check-work` · `help` · `imagine`  
-**Pruned (2026-07-12):** `docx` · `pptx` · `xlsx` · `code-review` → `~/.grok/skills/.deprecated/`
+**Pruned:** `docx` · `pptx` · `xlsx` · `code-review` → `~/.grok/skills/.deprecated/`
 
-### Dual-name gap — SEALED (2026-07-12)
+### Dual-name gap — RESOLVED (2026-07-15)
 
-**Machine table (63/63 RESOLVED):** `/root/AAA/skills/SKILL_ALIAS_TABLE.json`  
+**Machine table:** `/root/AAA/skills/SKILL_ALIAS_TABLE.json` — 133 rows; active mappings and tombstone history are separate.  
 **Human:** `A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md`  
 **Hermes bridge:** `A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md`  
 **Mesh sync:** `bash /root/AAA/skills/scripts/skill-mesh-sync.sh [--apply|--check]`
@@ -87,22 +89,22 @@ Hermes categories | Kimi roles | OpenClaw owned
 |----------|-------------------|
 | `kernel-bind` … `audit-seal` | `AAA/skills/substrate/<name>` |
 | `know-*` | `AAA/skills/knowledge/<name>` |
-| `meta-atlas` | `meta-mesa-skill-atlas` |
-| `geo-*` | `geox-*` / `geological-artifact-rigor` / `prospect-maturation-workflow` |
-| `wealth-thermo` | `wealth-capital-thermodynamics` |
-| `forge-verbs` / `forge-exec` | `kernel-verbs-aforge-hands` |
-| (full list) | see JSON |
+| `meta-atlas` | resolve via alias table |
+| `geo-*` | resolve via alias table |
+| `wealth-thermo` | resolve via alias table |
+| `forge-verbs` / `forge-exec` | resolve via alias table |
+| (full list) | `SKILL_ALIAS_TABLE.json` |
 
-### Unification phases — status 2026-07-12
+### Unification phases — status 2026-07-15
 
 1. **AUTHORITY** — ✅ AAA + V3 sole catalog  
-2. **ALIAS TABLE** — ✅ 63/63 sealed JSON  
+2. **ALIAS TABLE** — ✅ 104 active mappings + 29 tombstone rows explicitly separated  
 3. **PROFILES** — ✅ `grok` + `opencode` in V3  
-4. **META-MESA REFRESH** — ✅ v1.2.0+  
-5. **MESH SYNC** — ✅ script + applied (substrate/knowledge links)  
+4. **META-MESA REFRESH** — ✅ v1.2.3 + dated receipt  
+5. **MESH SYNC** — ✅ 79 links repaired/added; 2 source-less aliases quarantined; `--check` clean  
 6. **HERMES BRIDGE** — ✅ category→domain doc  
-7. **PRUNE** — ✅ Grok docx/pptx/xlsx/code-review → `.deprecated`  
-8. **BOOT GATE** — ✅ documented below + BOOTSTRAP_MANIFEST  
+7. **PRUNE** — ✅ Grok office/review duplicates outside active top level  
+8. **BOOT GATE** — ✅ all 9 bootstrap paths resolve
 
 ### BOOT GATE (all CLI agents)
 
@@ -186,15 +188,32 @@ The golden path. Every governed action flows through these stages.
 | `wealth-collapse-signature` | 7 institutional failure patterns |
 | `wealth-law-anthropology` | Malaysian law: faraid, KTN, MA63, Syariah, adat |
 
+### Protocol Layer (NEW — MCP · A2A · WebMDP complementarity)
+
+| Skill | Domain | Purpose | Version |
+|-------|--------|---------|---------|
+| `FEDERATION-site-deploy` | Ops | ARIF-SITES atomic swap, Caddy Admin API, caddy-mcp, symlink-swap, deploy-state | v2.0.0 ↑ |
+| `FEDERATION-site-router` | Ops | A2A v1.0.0 protocol routing, MCP/A2A/WebMCP complementarity rule | v2.0.0 ↑ |
+| `FEDERATION-site-health` | Ops | OpenTelemetry, deploy-state freshness, seal_chain_head check, semantic drift | v2.0.0 ↑ |
+| `mcp-mastery` | MCP | Trust surface, protocol, tool forging, transport | |
+| `mcp-apps-builder` | MCP | SEP-1865 interactive HTML UI in conversations | |
+| `webmcp-site-builder` | MCP | WebMCP sites, W3C origin trial, declarative+imperative API | |
+| `a2a-federation-builder` | A2A | Agent Cards, JSON-RPC /a2a, federation directory, A2A v1.0.0 | |
+| `federation-observability` | Ops | OTEL, Prometheus, Grafana, LGTM | |
+
+**MCP/A2A/WebMCP complementarity (agentic routing doctrine):**
+- MCP = tool capabilities (use for direct tool calls: geox_*, capital_*, arif_*, forge_*)
+- A2A = agent handoff (use for cross-agent delegation: AAA → 555-ASI → 333-AGI)
+- WebMCP = browser surface (use for human-browser-agent interaction: Chrome Copilot, Edge)
+
 ### Infrastructure (8 skills)
 
 | Skill | Domain | Purpose |
 |-------|--------|---------|
-| `mcp-mastery` | MCP | Trust surface, protocol, tool forging, transport |
-| `mcp-apps-builder` | MCP | SEP-1865 interactive HTML UI in conversations |
-| `webmcp-site-builder` | MCP | WebMCP sites, W3C origin trial |
+| `FORGE-infra-guardian` | Ops | Caddy config validation, Cloudflare SSL, DNS parity, tunnel status |
+| `FORGE-vps-docker` | Ops | Docker Compose stack, container lifecycle, VPS operations |
+| `FEDERATION-site-deploy` | Ops | **UPGRADED v2.0 — Caddy Admin API, caddy-mcp, symlink-swap** |
 | `github-operations` | Git | Issue triage, PR review, CI diagnostics |
-| `federation-observability` | Ops | OTEL, Prometheus, Grafana, LGTM |
 | `hf-mastery` | ML | Governed HuggingFace: hub, datasets, inference, fine-tune |
 | `iron-shell-render` | Web | Three-layer site architecture |
 | `forge-document-intelligence` | Document | EMD stack (Encode-Metabolize-Decode) — VLM perception, provenance, governed action |
@@ -274,6 +293,10 @@ The golden path. Every governed action flows through these stages.
 | **WEALTH stock analysis deep** | WEALTH | 12 modes of wealth_stock_analysis, no dedicated skill | P3 |
 | **WEALTH personal finance** | WEALTH | D1 personal scope, no dedicated skill | P4 |
 | ~~**Document intelligence**~~ | ~~A-FORGE~~ | ~~Filled 2026-07-02 — `forge-document-intelligence` forged~~ | ✅ FILLED |
+| ~~**Caddy/Caddy Admin API/caddy-mcp**~~ | ~~A-FORGE~~ | ~~Filled 2026-07-15 — `FEDERATION-site-deploy` v2.0 upgraded~~ | ✅ FILLED |
+| ~~**WebMCP declarative/imperative API**~~ | ~~SOUL~~ | ~~Covered by `FEDERATION-site-router` v2.0 + `webmcp-site-builder`~~ | ✅ FILLED |
+| ~~**A2A v1.0.0 protocol routing**~~ | ~~AAA~~ | ~~Covered by `FEDERATION-site-router` v2.0 + `a2a-federation-builder`~~ | ✅ FILLED |
+| ~~**MCP/A2A/WebMCP complementarity**~~ | ~~AAA~~ | ~~Covered by `FEDERATION-site-router` v2.0 complementarity rule~~ | ✅ FILLED |
 
 ### 3C. Thinly Covered Organs
 
@@ -317,6 +340,16 @@ Given a natural-language intent, this table routes to the correct skill.
 | "observability" / "tracing" / "metrics" | `federation-observability` | LGTM stack |
 | "HuggingFace" / "model hub" / "fine-tune" | `hf-mastery` | ML governance |
 | "PDF" / "OCR" / "scan" / "document" / "extract text" | `forge-document-intelligence` | EMD stack — VLM perception + provenance + governance |
+| "deploy site" / "publish" / "surface update" | `FEDERATION-site-deploy` | SOUL/WEALTH/arifOS deploy — ARIF-SITES + Admin API + deploy-state |
+| "Caddy vhost" / "add subdomain" / "525 SSL" | `FEDERATION-site-deploy` | Caddy Admin API + caddy-mcp for agentic vhost mgmt |
+| "which organ" / "route this" / "federation topology" | `FEDERATION-site-router` | Intent→Organ mapping + protocol selection (MCP/A2A/WebMCP) |
+| "site health" / "federation status" / "are we up" | `FEDERATION-site-health` | HTTP/SSL/deploy-state/seal_chain/semantic drift probes |
+| "A2A" / "agent communication" / "federation mesh" | `a2a-federation-builder` | Inter-agent surface — A2A v1.0.0 |
+| "WebMCP" / "browser agent" / "Copilot" / "Turbo" | `webmcp-site-builder` | WebMCP declarative+imperative API for browser-native agents |
+| "MCP server" / "MCP tool" / "protocol" | `mcp-mastery` | MCP FastMCP 3.x, Streamable HTTP, OAuth, tool forgery |
+| "observability" / "tracing" / "metrics" / "telemetry" | `federation-observability` | OpenTelemetry, Prometheus, Grafana, LGTM stack |
+| "infra guard" / "SSL check" / "Cloudflare" / "DNS" | `FORGE-infra-guardian` | Caddy/SSL/DNS/tunnel validation |
+| "caddy-mcp" / "agentic Caddy" / "Caddy Admin API" | `FEDERATION-site-deploy` (caddy-mcp section) | Caddy MCP wrapper for agentic vhost management |
 | "what skill should I load" / "skill gap" / "skill audit" | **THIS SKILL** (meta-mesa) | Meta-routing |
 
 ---
@@ -460,38 +493,40 @@ These are capabilities that NO single skill covers but the federation needs.
 
 ## §9. RECOMMENDATIONS — Priority Queue
 
-> **2026-07-12:** Prefer **aliases, profiles, prune, mesh-sync** over forging more skills.  
-> Many §3B “missing domains” are now **filled under long names** (docker-*, vault999-*, infra-guardian, hermes categories).
+> **2026-07-15:** Prefer **aliases, profiles, quarantine, and mesh-sync** over forging more skills. Alias rows and logical skill counts are separate dimensions.
 
 | Priority | Action | Status / Why |
 |----------|--------|----------------|
-| **P0** | Alias table short→path | ✅ 63/63 + multi-agent audit |
+| **P0** | Alias table short→path | ✅ 104 active + 29 tombstone/history rows |
 | **P0** | V3 `grok` + `opencode` profiles | ✅ |
-| **P0** | Mesh sync + check clean | ✅ |
+| **P0** | Mesh sync + check clean | ✅ 0 broken / 0 drift |
+| **P0** | Source-less aliases | ✅ 2 quarantined, no fabricated bodies |
 | **P0** | Grok office prune | ✅ `.deprecated` |
 | **P0** | Hermes bridge (no flatten) | ✅ |
-| **P0** | Tombstone dual-state normalize | ✅ RESTORED_LIVE after auditor CAUTION |
-| **P1** | Migrate high-traffic `.agents` geo/wealth bodies into AAA (optional) | Open — honesty already documented as doctrine_core |
-| **P2** | `symbolic-order-solidarity-monitor` | Open |
-| **P3** | `well-fatigue-science` | Open |
-| **P3** | Rewrite residual §2 phantom long-names to V3 | Open (use alias table / §0 until then) |
+| **P1** | Keep dated reconciliation receipt | ✅ `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json` |
+| **P2** | Migrate high-traffic doctrine bodies into AAA | Optional; only when one canonical body is proven better |
+| **P3** | New skills | Only for a verified capability gap, never for count parity |
 
 ---
 
-## §10. TELEMTRY
+## §10. TELEMETRY
 
 ```json
 {
-  "skill_name": "meta-mesa-skill-atlas",
-  "version": "1.2.0",
+  "skill_name": "AUDIT-skill-atlas",
+  "version": "1.2.3",
   "trigger_phrase": "{{trigger_phrase}}",
   "selected_reason": "{{selected_reason}}",
-  "v3_logical": 63,
-  "grok_resolvable": 116,
-  "aaa_catalog_top": 70,
+  "v3_logical": 64,
+  "alias_rows": 133,
+  "active_alias_rows": 104,
+  "tombstone_rows": 29,
+  "grok_resolvable": 184,
+  "aaa_active_bodies": 108,
+  "mesh_check": "PASS",
+  "broken_links": 0,
   "dual_name_debt": false,
-  "unification_maturity": 0.92,
-  "atlas_artifact": "A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md",
+  "atlas_artifact": "/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json",
   "routing_decision": "{{routed_to_skill}}",
   "latency_ms": 0
 }
@@ -514,6 +549,7 @@ These are capabilities that NO single skill covers but the federation needs.
 
 *Forged: 2026-06-28 by FORGE (000Ω) for F13 SOVEREIGN*  
 *Updated: 2026-07-02 — forge-document-intelligence filled*  
-*Updated: 2026-07-12 — multi-harness §0; live inventory; V3/bootstrap alignment; atlas artifact*  
+*Updated: 2026-07-12 — multi-harness §0; V3/bootstrap alignment; atlas artifact*  
+*Updated: 2026-07-15 — 64 logical skills, 133 alias rows, live tool snapshot, mesh repaired and verified*  
 *Canon: AAA catalog · harness views · BOOTSTRAP first*  
 *DITEMPA BUKAN DIBERI — The mesa sees the terrain. The terrain does not see the mesa.*
