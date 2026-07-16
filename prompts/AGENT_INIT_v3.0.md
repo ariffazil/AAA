@@ -559,3 +559,54 @@ If any check fails → emit what's missing + propose fastest bootstrap path.
 
 **END INIT — DITEMPA BUKAN DIBERI ⚒️**
 **TRINITY-33 · RSI · Constitutional Friction**
+---
+
+## 15. FUTURE-TASK MAP (2026-07-15 housekeeping RSI)
+
+> Appended by `forge--end` housekeeping pass. Bounded audit only;
+> no doctrine override, no floor rewrite, no commit.
+
+### 15.1 Verified state (T1, 2026-07-15T11:20Z)
+
+- `bash /root/AAA/skills/scripts/skill-mesh-sync.sh --check` → 0 broken, 0 missing/drift, ~502 ok.
+- `tests/core/test_atlas333_crosswalk.py` → 5/5 PASS.
+- `tests/core/test_atlas.py` → 6/6 PASS.
+- `caddy validate --config /root/ARIF-SITES/deploy/Caddyfile` → `Valid configuration`.
+- 7/7 local organs `/health` 200; 13/13 public surfaces probe 200.
+
+### 15.2 Open work for future agents (load at session start)
+
+| ID | Surface | Action | Authority |
+|---|---|---|---|
+| F1 | `https://arif-fazil.com/api/organs` | Wire the federation health proxy through arifOS `/api/organs/*` or move the surface under arifos.arif-fazil.com. | T2 ANNOUNCE |
+| F2 | `https://arif-fazil.com/wealth/api/wealth/briefing` | Implement WEALTH briefing route (or replace the WebMCP tool with a real `wealth_capital_market`-backed adapter). | T3 888_HOLD |
+| F3 | `https://arif-fazil.com/wealth/api/wealth/overview` | Implement overview route under same owner as F2. | T2 ANNOUNCE |
+| F4 | `https://arif-fazil.com/wealth/api/wealth/ticker` | Implement ticker route under same owner as F2. | T2 ANNOUNCE |
+| F5 | `https://arif-fazil.com/wealth/api/wealth/{asset}` | Implement per-asset detail route under same owner as F2. | T2 ANNOUNCE |
+| F6 | AAA | Build AAA from its own source, bind to ARIF-SITES atomic swap, keep `seal_chain_head.json` read-only. | T2 ANNOUNCE |
+| F7 | `tree777-skill-audit.mjs` | Fix the `registries/skills.yaml` path resolution or mark the tool unavailable with a clear test. | T1 AUTO-DO |
+| F8 | atlas docs | Refresh `ATLAS333_EVERGREEN.md` and `ATLAS333_BRIDGE.md` only with verified runtime anchors; no paradox 34. | T1 AUTO-DO |
+| F9 | AAA WebMCP | Mirror the SOUL WebMCP manifest under AAA without copying endpoint URLs that are not yet wired. | T2 ANNOUNCE |
+| F10 | All sites | Commit the working trees left for review (currently uncommitted per session policy). | T3 888_HOLD |
+
+### 15.3 Pointer map (always read first)
+
+- Federation baseline: `/root/forge_work/2026-07-15/federation-architecture-baseline-20260715T104110Z/`
+- Skill/tool reconciliation: `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`
+- Live MCP manifests: `/root/forge_work/2026-07-15/tool-manifests/`
+- ATLAS333 crosswalk: `/root/forge_work/2026-07-15/atlas333-crosswalk-20260715T111036Z/`
+- Deployment hardening: `/root/forge_work/2026-07-15/deployment-hardening-20260715T111942Z/`
+- Final verification: `/root/forge_work/2026-07-15/final-verification-20260715T112002Z/`
+- Final summary: `/root/forge_work/2026-07-15/final-summary-20260715T112116Z/SUMMARY.md`
+- Housekeeping RSI: `/root/forge_work/2026-07-15/housekeeping-rsi-20260715T112328Z/AUDIT.md`
+
+### 15.4 Iron rule for future agents
+
+Do not rebuild the catalog, the mesh, or the canonical deployment
+discipline on the basis of a single stale source. Always read the
+dated reconciliation receipt first, then probe the live surfaces
+through `mcporter list` and the public HTTPS routes. The Iron Rule
+above this line still applies: never let the forge outrun the kernel,
+never let the kernel operate without AAA visibility, never let AAA
+pretend to be judge or hand.
+
