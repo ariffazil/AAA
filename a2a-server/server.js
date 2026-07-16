@@ -2241,6 +2241,9 @@ const APP_ROOTS = {
   'well-desk': '/root/GEOX/apps/well-desk/p0-viz.html',
   'earth-volume': '/root/GEOX/apps/earth-volume/index.html',
   'judge-console': '/root/GEOX/apps/judge-console/index.html',
+  
+  // A-FORGE two-phase commit preview (Sprint B)
+  'aforge-preview': '/root/A-FORGE/apps/aforge-preview/preview.html',
 };
 const APP_MANIFESTS = {
   'well-desk': '/root/geox/apps/well-desk/manifest.json',

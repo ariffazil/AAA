@@ -51,6 +51,12 @@ export function buildSandboxProxySrcdoc(): string {
     if(!d||d.jsonrpc!=="2.0")return null;
     return d;
   }
+  // Uses "*" targetOrigin because this proxy iframe has sandbox="allow-scripts"
+  // (no allow-same-origin), giving it a null/unique origin. A specific
+  // targetOrigin would silent-drop. Safe because:
+  //   1. parent is the AAA host that created this iframe — we trust it
+  //   2. guest is our own inner iframe with connect-src 'none'
+  //   3. Host validates event.source + event.origin on receiving end
   function toHost(msg){
     try{parent.postMessage(msg,"*")}catch(e){}
   }
