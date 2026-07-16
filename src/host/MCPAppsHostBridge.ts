@@ -89,6 +89,7 @@ const UI_RESOURCE_ROOTS: Record<string, string> = {
   "geox/well-desk": "/mcp-apps/well-desk",
   "geox/earth-volume": "/mcp-apps/earth-volume",
   "geox/judge-console": "/mcp-apps/judge-console",
+  "aforge/preview": "/mcp-apps/aforge-preview",
 };
 
 /** Resolve a ui:// URI to the AAA fetch path */
@@ -193,13 +194,14 @@ export class MCPAppsHostBridge {
         ? "position:fixed;inset:0;z-index:9999;background:#000;"
         : "width:100%;height:100%;min-height:400px;position:relative;";
 
-    // Outer Sandbox Proxy — needs same-origin only to own its srcdoc document.
-    // Guest (inner) never gets allow-same-origin.
+    // Outer Sandbox Proxy — allow-scripts only. No allow-same-origin.
+    // Host fetches guest HTML; proxy only relays postMessage + creates inner iframe.
+    // Guest (inner) also gets allow-scripts only — see buildSandboxProxySrcdoc().
     const iframe = document.createElement("iframe");
     iframe.dataset.appId = appId;
     iframe.dataset.role = "sandbox-proxy";
     iframe.style.cssText = "width:100%;height:100%;border:none;";
-    iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+    iframe.setAttribute("sandbox", "allow-scripts");
     iframe.setAttribute("referrerpolicy", "no-referrer");
     iframe.srcdoc = buildSandboxProxySrcdoc();
     container.appendChild(iframe);
@@ -309,9 +311,22 @@ export class MCPAppsHostBridge {
   // ── Private ────────────────────────────────────────────────────────────
 
   private wireMessageListener(instance: MCPAppInstance, options?: MountOptions): void {
+    // EXPECTED_HOST_ORIGIN: secondary check after event.source.
+    // Proxy iframe now has sandbox="allow-scripts" (no allow-same-origin),
+    // so event.origin will be "null". Accept either host origin or "null".
+    const expectedHostOrigin: string = window.location.origin;
+
     const handler = (event: MessageEvent) => {
-      // Only accept messages from our proxy iframe (never raw guest)
+      // PRIMARY check: window identity (strong — cannot be spoofed)
       if (event.source !== instance.iframe.contentWindow) return;
+
+      // SECONDARY check: origin validation (defense-in-depth)
+      // Proxy has null origin (sandboxed, no allow-same-origin).
+      // Accept "null" or the actual host origin.
+      if (event.origin !== "null" && event.origin !== expectedHostOrigin) {
+        console.warn(`[MCP App:${instance.appId}] dropped message from unexpected origin:`, event.origin);
+        return;
+      }
 
       const data = parseJsonRpcMessage(event.data);
       if (!data) return;
@@ -463,7 +478,20 @@ export class MCPAppsHostBridge {
     }
   }
 
-  /** Post to Sandbox Proxy (forwards to guest except sandbox-* control). */
+  /**
+   * Post to Sandbox Proxy (forwards to guest except sandbox-* control).
+   *
+   * Uses "*" targetOrigin because the proxy iframe has sandbox="allow-scripts"
+   * (no allow-same-origin), giving it a null/unique origin. A specific
+   * targetOrigin would silent-drop the message.
+   *
+   * Safe because:
+   *   1. instance.iframe.contentWindow is a reference WE created — we know
+   *      exactly which window receives the message
+   *   2. The proxy validates ev.source === parent before acting (identity check)
+   *   3. The guest has connect-src 'none' — cannot exfiltrate even if it
+   *      receives data through other channels
+   */
   private postToProxy(instance: MCPAppInstance, payload: Record<string, unknown>): void {
     if (instance.iframe?.contentWindow) {
       instance.iframe.contentWindow.postMessage(payload, "*");
