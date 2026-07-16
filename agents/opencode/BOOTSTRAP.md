@@ -180,6 +180,30 @@ Key principle: agents collaborate WITHOUT exposing internal state.
 | A-AUDIT | Oversight | anomaly detection | `/a2a/agents/a-audit.json` |
 | A-ARCHIVE | Service | vault, seal chain | `/a2a/agents/a-archive.json` |
 
+### A-FORGE MCP Prompts (discoverable via prompts/list on :7072)
+
+A-FORGE exposes 14 MCP prompts for structured workflows. These complement
+the arifOS governance prompts and should be loaded contextually:
+
+| Prompt | Description |
+|--------|-------------|
+| `audit-surface` | Detect phantom tools, drift, registry inconsistencies |
+| `fix-bug` | diagnose → reproduce → fix → verify |
+| `refactor-module` | analyze → plan → refactor → verify |
+| `deploy-service` | build → test → stage → deploy → verify |
+| `audit-code` | scan → classify → report → recommend |
+| `research-topic` | question → gather → synthesize → cite |
+| `cross-organ-query` | route query to correct federation organ via arif_route |
+| `apex-reason` | physics-grounded, governance-aware reasoning for high-stakes decisions |
+| `quantum-frame` | hold multiple mutually-exclusive hypotheses in superposition |
+| `reality-engineer` | every code change is a reality operation (F12 INJECTION canon) |
+| `godel-metabolize` | self-consistency check rejecting incoherent belief states |
+| `thermodynamic-zen` | maximum understanding with minimum action (ΔS ≤ 0) |
+| `reality-loop` | intent compiler: human shadow → system architecture (7 stages) |
+| `recursive-self-improve` | meta-cognition: find bottlenecks, propose self-modifications |
+
+Use `curl -s http://localhost:7072/mcp -X POST -H "Content-Type: application/json" -d '{"jsonrpc":"2.0","id":1,"method":"prompts/list"}'` to discover.
+
 ### MCP + A2A Relationship
 
 ```
