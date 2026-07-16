@@ -61,6 +61,14 @@ const REGISTERED_APPS: MCPAppDescriptor[] = [
     icon: '⚖️',
     defaultDisplayMode: 'inline',
   },
+  {
+    id: 'aforge-preview',
+    label: 'Forge Preview',
+    description: 'A-FORGE two-phase commit preview — stage diff, blast radius, F13 SEAL/HOLD/VOID gate',
+    organ: 'a-forge',
+    icon: '⚒️',
+    defaultDisplayMode: 'inline',
+  },
 ];
 
 // ── Governance envelope types (mirrors arifOS) ──────────────────────────────
