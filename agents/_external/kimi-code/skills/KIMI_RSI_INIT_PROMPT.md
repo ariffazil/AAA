@@ -12,9 +12,11 @@
 ```text
 1. LOAD    → CONSTITUTIONAL_REFLEX + HOST_MEMBRANE_AWARENESS
 2. ATTUNE  → Read KIMI_HANDOVER_PROMPT.md and SKILL_INDEX.md
+           + /root/.arifos/forge-end-state.json (previous session handoff)
 3. REFLECT → Run kimi-skill-reflector (max 3 iterations, max 3 skills, ΔS ≤ 0)
 4. CONTRAST→ Load the relevant APEX/ASI/AGI skill for the incoming task class
 5. ACT     → Proceed only after the appropriate contrast check passes
+6. CLOSE   → Run `forge-end` at session end (autonomous 9-phase ritual; F1-F13 enforced)
 ```
 
 ---
