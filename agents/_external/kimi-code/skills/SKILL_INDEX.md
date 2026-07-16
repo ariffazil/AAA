@@ -47,6 +47,9 @@ file now sends them to a real one.
 
 User-scope skills added to align Kimi Code with the OpenCode AAA citizen contrast pattern and to enable bounded autonomous skill improvement.
 
+> **All skills v1.1.0 as of 2026-07-16** (zen pass after arifOS MCP cold-boot fix).
+> Each has a `## Federation anchors` section cross-referencing companions + audit log.
+
 | Skill | Role | Purpose |
 |---|---|---|
 | `kimi-architect-apex-contrast` | Architect | Final overclaim / falsifiability / Gödel lock check before emitting plans. |
@@ -56,7 +59,8 @@ User-scope skills added to align Kimi Code with the OpenCode AAA citizen contras
 | `kimi-integrator-apex-contrast` | Integrator | Constitutional floor pass/fail before declaring a phase done. |
 | `kimi-rsi-apex-contrast` | RSI | Measurement reproducibility / omega_0 honesty for entropy reports. |
 | `kimi-skill-reflector` | Cross-cutting | Bounded autonomous skill audit & upgrade ritual (max 3 iterations, ΔS ≤ 0, 888_HOLD for governed skills). |
-| `KIMI_RSI_INIT_PROMPT` | Session entry | Wake ritual: load core skills, run reflector, route task-class → contrast skill. |
+| `KIMI_RSI_INIT_PROMPT` | Session entry | Wake ritual: load core skills, run reflector, route task-class → contrast skill. **v1.1.0** adds §Cold-boot diagnostic recipe. |
+| `KIMI_HANDOVER_PROMPT` | Session exit | End-of-session handover. **v1.1.0** adds §Post-deploy verification recipe. |
 
 ---
 
