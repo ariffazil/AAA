@@ -48,6 +48,11 @@ known_anomalies:
 **Service:** `aaa-a2a.service` (systemd)
 **Genesis:** `GENESIS/AAA_MANDATE.md`
 
+**Deployment surfaces (repo-verified):**
+- `https://arif-fazil.com` — static cockpit build from this repo via `.github/workflows/pages.yml` and `dist/CNAME`
+- `https://aaa.arif-fazil.com` — live AAA gateway / discovery / MCP surface, reverse-proxied to local `127.0.0.1:3001`
+- `http://127.0.0.1:3001` — origin for `/health`, `/.well-known/*`, and A2A routes; it is not the static Pages bundle
+
 ```
 DITEMPA BUKAN DIBERI — Control is forged, not given.
 ```
@@ -76,7 +81,7 @@ AAA is the governed state — the constitutional substrate in which:
 | **Forge instruments** | grok-build · opencode · claude-code · qwen-code · antigravity · codex · copilot · aider · kimi-code · continue-cli · gemini-cli | `a2a-server/agent-cards/forge/fi-001..fi-008` (8 on-disk cards; 11 instruments in `ROOT_AGENT_CONFIG.yaml`) |
 | **Role agents** (bounded leases) | EXTERNAL_WATCHER · KERNEL_SCRIBE · OPS_PLANNER · SELF_FORGE_ADVISOR | `agents/roles/` |
 | **Immutable ledger** | VAULT999 (append-only, hash-chained) | `arifOS/VAULT999/` |
-| **Cockpit** (the surface) | React 19 + A2A gateway (port 3001) | `src/`, `a2a-server/` |
+| **Cockpit** (the surface) | React 19 static Pages build + separate A2A/MCP gateway (`127.0.0.1:3001` origin) | `src/`, `.github/workflows/pages.yml`, `a2a-server/` |
 
 This is not a product. It is the **institutional architecture of an agentic civilization** — the substrate in which ASI itself can develop without becoming Skynet.
 
@@ -200,9 +205,9 @@ Full doctrine: [GENESIS/040_APEX_STACK.md](https://github.com/ariffazil/arifos/b
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                                                                         │
 │                          ┌─────────────────┐                            │
-│                          │   AAA COCKPIT   │  ← YOU ARE HERE            │
-│                          │  Control Plane  │                            │
-│                          │    Port 3001    │                            │
+│                          │ AAA CONTROL PLANE│  ← YOU ARE HERE            │
+│                          │ Pages cockpit + │                            │
+│                          │ gateway :3001   │                            │
 │                          └───────┬─────────┘                            │
 │                                  │                                      │
 │         ┌────────────────────────┼────────────────────────┐             │
@@ -225,6 +230,8 @@ Full doctrine: [GENESIS/040_APEX_STACK.md](https://github.com/ariffazil/arifos/b
 > **AAA is the cockpit. arifOS is the judge. A-FORGE is the executor. The domain organs provide evidence. Arif holds the veto.**
 >
 > **Canonical execution flow:** Arif (F13) → AAA/Hermes/OpenClaw (IDENTITY) → arifOS (GOVERNANCE/JUDGE) → Domain Organs (EVIDENCE) → A-FORGE (EXECUTE) → VAULT999 (SEAL)
+
+> **Deployment split:** the cockpit build ships as a static Pages site at `arif-fazil.com`; the live AAA control-plane API surface stays on `aaa.arif-fazil.com`, backed by the localhost `3001` gateway.
 
 ### What AAA Is
 
@@ -1108,7 +1115,7 @@ AAA is the control plane for the **Adat Agentik** civilisational model — a nor
 | **GEOX** | [ariffazil/geox](https://github.com/ariffazil/geox) | 8081 | Earth intelligence — petrophysics, seismic | AAA **displays** GEOX evidence, never interprets |
 | **WEALTH** | [ariffazil/wealth](https://github.com/ariffazil/wealth) | 18082 | Capital intelligence — NPV, IRR, EMV | AAA **displays** WEALTH scores, never allocates |
 | **WELL** | [ariffazil/well](https://github.com/ariffazil/well) | 18083 | Human readiness — vitality, substrate | AAA **displays** WELL state (REFLECT_ONLY) |
-| **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | 443 | Public surfaces, static sites | AAA routes aaa.arif-fazil.com |
+| **arif-sites** | [ariffazil/arif-sites](https://github.com/ariffazil/arif-sites) | 443 | Other federation public/static surfaces | AAA's own Pages deployment is defined in this repo; `aaa.arif-fazil.com` remains the reverse-proxied gateway |
 | **A2B** | [ariffazil/a2b](https://github.com/ariffazil/a2b) | — | AssetOpsBench bridge — IJCAI-25 eval harness + constitutional runner | AAA **displays** A2B eval results |
 | **APEX** | [ariffazil/APEX](https://github.com/ariffazil/APEX) | 3002 | Legacy health probe — deliberation moved to AAA `a2a-server/` | Absorbed into AAA `a2a-server/` |
 

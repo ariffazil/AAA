@@ -17,7 +17,7 @@
      ┌────────▼────────┐  ┌───────▼───────┐  ┌────────▼────────┐
      │   Hermes (py)   │  │ OpenClaw (ts) │  │   AAA (ts)      │
      │   MIND organ    │  │  HANDS organ  │  │  IDENTITY organ  │
-     │   :8644 (Tg)    │  │  :18789 (GW)  │  │  :3001 (Cockpit) │
+     │   :8644 (Tg)    │  │  :18789 (GW)  │  │  :3001 (A2A/MCP) │
      └────────┬────────┘  └───────┬───────┘  └────────┬────────┘
               │                   │                   │
               └───────────────────┼───────────────────┘
@@ -67,6 +67,8 @@ EDGE AGENTS (MCP clients — connect THROUGH kernel, NOT above it):
   OpenClaw GW  — gateway operator (TS, port 18789)
 ```
 
+> **Public surface split (repo-attested):** this repo's cockpit build is published as a static Pages site at `arif-fazil.com` via `.github/workflows/pages.yml`. The live AAA gateway surface is `aaa.arif-fazil.com`, reverse-proxied to localhost `:3001`.
+
 ---
 
 ## LAYER SEPARATION
@@ -81,7 +83,7 @@ EDGE AGENTS (MCP clients — connect THROUGH kernel, NOT above it):
 |-------|------|-----------|------|
 | **Hermes** | :8644 | Python | MIND — ASI cognitive relay, Telegram interface, memory orchestration |
 | **OpenClaw** | :18789 | TypeScript | HANDS — AGI transport router, envelope broker, tool gateway |
-| **AAA** | :3001 | TypeScript | IDENTITY — cockpit, A2A discovery, agent registry, operator UX |
+| **AAA** | :3001 | TypeScript | IDENTITY — A2A/MCP gateway origin, agent registry, operator UX; cockpit build is published separately as Pages |
 
 ### Governance Layer
 | Organ | Port | Substrate | Role |
