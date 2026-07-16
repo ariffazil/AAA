@@ -1239,8 +1239,8 @@
           "home": "agents"
         },
         {
-          "name": "🜂-qubit-substrate",
-          "path": "/root/.agents/skills/🜂-qubit-substrate",
+          "name": "\ud83d\udf02-qubit-substrate",
+          "path": "/root/.agents/skills/\ud83d\udf02-qubit-substrate",
           "home": "agents"
         }
       ],
@@ -1877,7 +1877,7 @@
       "status": "RESOLVED",
       "tombstone": false,
       "restored_live": false,
-      "renamed_from": "🜂-qubit-substrate"
+      "renamed_from": "\ud83d\udf02-qubit-substrate"
     },
     {
       "v3_name": "code-wiki",
@@ -2245,8 +2245,8 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2+3 start",
-      "ratified_by": "F13 SOVEREIGN — '2 start'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'"
     },
     {
       "v3_name": "AGI-hermes-system-prompt-voice",
@@ -2266,8 +2266,8 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2+3 start",
-      "ratified_by": "F13 SOVEREIGN — '2 start'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'"
     },
     {
       "v3_name": "AGI-codex-chain-of-thought",
@@ -2287,8 +2287,8 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2+3 start",
-      "ratified_by": "F13 SOVEREIGN — '2 start'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'"
     },
     {
       "v3_name": "AGI-emd-decode",
@@ -2308,8 +2308,8 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2+3 start",
-      "ratified_by": "F13 SOVEREIGN — '2 start'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'"
     },
     {
       "v3_name": "AGI-emd-metabolize",
@@ -2329,8 +2329,8 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2+3 start",
-      "ratified_by": "F13 SOVEREIGN — '2 start'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'"
     },
     {
       "v3_name": "FORGE-grok-profile",
@@ -2350,8 +2350,8 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2+3 start",
-      "ratified_by": "F13 SOVEREIGN — '2 start'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2+3 start",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'"
     },
     {
       "v3_name": "tri-witness",
@@ -2364,15 +2364,15 @@
         {
           "name": "trinity-witness",
           "path": "<alias>",
-          "home": "—",
-          "note": "spelling variant — see reverse_disk_to_v3.trinity-witness"
+          "home": "\u2014",
+          "note": "spelling variant \u2014 see reverse_disk_to_v3.trinity-witness"
         }
       ],
       "status": "ALIAS_RESOLVED",
       "tombstone": false,
       "restored_live": true,
       "forged_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN audit fix (naming drift)"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN audit fix (naming drift)"
     },
     {
       "v3_name": "AGI-entropy-lock-prime",
@@ -2392,8 +2392,18 @@
       "tombstone": false,
       "restored_live": false,
       "forged_at": "2026-07-12T18:31:00Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2 entropy lock",
-      "ratified_by": "F13 SOVEREIGN — 'buat semua'"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2 entropy lock",
+      "ratified_by": "F13 SOVEREIGN \u2014 'buat semua'"
+    },
+    {
+      "v3_name": "trinity-design-seam",
+      "v2_name": "AGI-trinity-design-seam",
+      "disk_path": "/root/.agents/skills/AGI-trinity-design-seam",
+      "status": "active",
+      "domain": "aaa",
+      "owner": "AAA",
+      "risk_tier": "medium",
+      "description": "Trinity Design Seam v1.0 \u2014 two-plane design system for all ARIF sites."
     }
   ],
   "reverse_disk_to_v3": {
@@ -2472,7 +2482,7 @@
     "multi-discipline-critique": "ASI-multi-discipline-critique",
     "quantum-eureka-doctrine": "APEX-quantum-eureka",
     "quantum-kernel-runtime": "kernel-superposition",
-    "🜂-qubit-substrate": "kernel-superposition",
+    "\ud83d\udf02-qubit-substrate": "kernel-superposition",
     "skill-unification": "AGI-skill-unification",
     "agentic-dream-engine": "AGI-dream-engine",
     "agentic-web-optimization": "AGI-web-optimization",
@@ -2577,216 +2587,216 @@
     "aaa-zen": "ASI-aaa-zen",
     "fff-loop-protocol": "APEX-fff-loop-protocol",
     "arifos-paradox-engine": "AGI-paradox-engine",
-    ".agents/skills/FORGE-mcp-lifeguard/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-lifeguard/SKILL.md → FORGE-mcp-lifeguard/SKILL.md",
-    ".agents/skills/AGI-plan-dag/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-plan-dag/SKILL.md → AGI-plan-dag/SKILL.md",
-    ".agents/skills/FORGE-mcporter/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcporter/SKILL.md → FORGE-mcporter/SKILL.md",
-    ".agents/skills/APEX-f1-gate/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-f1-gate/SKILL.md → APEX-f1-gate/SKILL.md",
-    ".agents/skills/FORGE-mcp-smoke-test/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-smoke-test/SKILL.md → FORGE-mcp-smoke-test/SKILL.md",
-    ".agents/skills/FORGE-issue-triage/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-issue-triage/SKILL.md → FORGE-issue-triage/SKILL.md",
-    "AAA/skills/geox-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/geox-grounding/claude/SKILL.md → geox-grounding/SKILL.md",
-    ".agents/skills/FORGE-telegram-audit/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-telegram-audit/SKILL.md → FORGE-telegram-audit/SKILL.md",
-    ".agents/skills/ASI-drift-watch/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-drift-watch/SKILL.md → ASI-drift-watch/SKILL.md",
-    ".agents/skills/ASI-agentic-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agentic-governance/SKILL.md → ASI-agentic-governance/SKILL.md",
-    "AAA/skills/FORGE-incident-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-incident-triage/claude/SKILL.md → ARCHIVE-incident-triage/SKILL.md",
-    "AAA/skills/ARCHIVE-incident-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-incident-triage/claude/SKILL.md → ARCHIVE-incident-triage/SKILL.md",
-    ".agents/skills/FORGE-incident-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-triage/claude/SKILL.md → ARCHIVE-incident-triage/SKILL.md",
-    ".agents/skills/FORGE-incident-escalation/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-escalation/SKILL.md → FORGE-incident-escalation/SKILL.md",
-    "AAA/skills/FORGE-docker-entropy/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-docker-entropy/claude/SKILL.md → ARCHIVE-docker-entropy-ops/SKILL.md",
-    "AAA/skills/ARCHIVE-docker-entropy-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-docker-entropy-ops/claude/SKILL.md → ARCHIVE-docker-entropy-ops/SKILL.md",
-    ".agents/skills/FORGE-docker-entropy/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker-entropy/claude/SKILL.md → ARCHIVE-docker-entropy-ops/SKILL.md",
-    ".agents/skills/FORGE-fastmcp/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-fastmcp/SKILL.md → FORGE-fastmcp/SKILL.md",
-    ".agents/skills/FORGE-skill-creator/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-skill-creator/SKILL.md → FORGE-skill-creator/SKILL.md",
-    ".agents/skills/FORGE-vps-docker/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-vps-docker/SKILL.md → FORGE-vps-docker/SKILL.md",
-    "AAA/skills/ARCHIVE-constitutional-reasoning/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-constitutional-reasoning/SKILL.md → ASI-constitutional-reasoning/SKILL.md",
-    ".agents/skills/ASI-constitutional-reasoning/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-constitutional-reasoning/SKILL.md → ASI-constitutional-reasoning/SKILL.md",
-    ".agents/skills/ASI-memory-bridge/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-memory-bridge/SKILL.md → ASI-memory-bridge/SKILL.md",
-    "AAA/skills/FORGE-mcp-federation-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-mcp-federation-ops/claude/SKILL.md → ARCHIVE-mcp-federation-ops/SKILL.md",
-    "AAA/skills/ARCHIVE-mcp-federation-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-mcp-federation-ops/claude/SKILL.md → ARCHIVE-mcp-federation-ops/SKILL.md",
-    ".agents/skills/FORGE-mcp-federation-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-federation-ops/claude/SKILL.md → ARCHIVE-mcp-federation-ops/SKILL.md",
-    ".agents/skills/FORGE-github-ops/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github-ops/SKILL.md → FORGE-github-ops/SKILL.md",
-    ".agents/skills/AUDIT-recursive-audit/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AUDIT-recursive-audit/SKILL.md → AUDIT-recursive-audit/SKILL.md",
-    ".agents/skills/FORGE-spatial-grounding/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-spatial-grounding/SKILL.md → FORGE-spatial-grounding/SKILL.md",
-    ".agents/skills/APEX-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-governance/SKILL.md → APEX-governance/SKILL.md",
-    ".agents/skills/FORGE-mcp-ops/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-ops/SKILL.md → FORGE-mcp-ops/SKILL.md",
-    ".agents/skills/FORGE-subagent-spawn/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-subagent-spawn/SKILL.md → FORGE-subagent-spawn/SKILL.md",
-    "AAA/skills/ASI-drift-response/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-drift-response/claude/SKILL.md → ARCHIVE-drift-response/SKILL.md",
-    "AAA/skills/ARCHIVE-drift-response/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-drift-response/claude/SKILL.md → ARCHIVE-drift-response/SKILL.md",
-    ".agents/skills/ASI-drift-response/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-drift-response/claude/SKILL.md → ARCHIVE-drift-response/SKILL.md",
-    ".agents/skills/AGI-explorer-intelligence/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-explorer-intelligence/SKILL.md → AGI-explorer-intelligence/SKILL.md",
-    ".agents/skills/APEX-authority-detection/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-authority-detection/SKILL.md → APEX-authority-detection/SKILL.md",
-    ".agents/skills/FORGE-readme-truth-check/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-readme-truth-check/SKILL.md → FORGE-readme-truth-check/SKILL.md",
-    ".agents/skills/ASI-mcp-governor/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-mcp-governor/SKILL.md → ASI-mcp-governor/SKILL.md",
-    "AAA/skills/ARCHIVE-mcp-smoke-test/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-mcp-smoke-test/claude/SKILL.md → ARCHIVE-mcp-smoke-test/SKILL.md",
-    "AAA/skills/FORGE-mcp-smoke-test/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-mcp-smoke-test/claude/SKILL.md → ARCHIVE-mcp-smoke-test/SKILL.md",
-    ".agents/skills/FORGE-mcp-smoke-test/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-smoke-test/claude/SKILL.md → ARCHIVE-mcp-smoke-test/SKILL.md",
-    ".agents/skills/ASI-observability/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-observability/SKILL.md → ASI-observability/SKILL.md",
-    ".agents/skills/FORGE-secret-hygiene/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-secret-hygiene/SKILL.md → FORGE-secret-hygiene/SKILL.md",
-    ".agents/skills/AUDIT-skill-atlas/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AUDIT-skill-atlas/SKILL.md → AUDIT-skill-atlas/SKILL.md",
-    ".agents/skills/ASI-agent-bootstrap/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agent-bootstrap/SKILL.md → ASI-agent-bootstrap/SKILL.md",
-    ".agents/skills/FORGE-precommit-gate/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-precommit-gate/SKILL.md → FORGE-precommit-gate/SKILL.md",
-    ".agents/skills/FORGE-infra-guardian/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-infra-guardian/SKILL.md → FORGE-infra-guardian/SKILL.md",
-    "AAA/skills/ARCHIVE-spatial-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-spatial-grounding/claude/SKILL.md → ARCHIVE-spatial-grounding/SKILL.md",
-    "AAA/skills/FORGE-spatial-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-spatial-grounding/claude/SKILL.md → ARCHIVE-spatial-grounding/SKILL.md",
-    ".agents/skills/FORGE-spatial-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-spatial-grounding/claude/SKILL.md → ARCHIVE-spatial-grounding/SKILL.md",
-    ".agents/skills/FORGE-vps-runbook/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-vps-runbook/SKILL.md → FORGE-vps-runbook/SKILL.md",
-    "AAA/skills/FORGE-github-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-github-runbook/claude/SKILL.md → ARCHIVE-github-runbook/SKILL.md",
-    "AAA/skills/ARCHIVE-github-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github-runbook/claude/SKILL.md → ARCHIVE-github-runbook/SKILL.md",
-    ".agents/skills/FORGE-github-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github-runbook/claude/SKILL.md → ARCHIVE-github-runbook/SKILL.md",
-    ".agents/skills/ASI-evals/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-evals/SKILL.md → ASI-evals/SKILL.md",
-    ".agents/skills/APEX-mcp-federation/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-mcp-federation/SKILL.md → APEX-mcp-federation/SKILL.md",
-    ".agents/skills/FORGE-secret-safety-scan/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-secret-safety-scan/SKILL.md → FORGE-secret-safety-scan/SKILL.md",
-    ".agents/skills/FORGE-incident-triage/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-triage/SKILL.md → FORGE-incident-triage/SKILL.md",
-    ".agents/skills/AGI-skill-unification/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-skill-unification/SKILL.md → AGI-skill-unification/SKILL.md",
-    ".agents/skills/FORGE-code-wiki/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-code-wiki/SKILL.md → FORGE-code-wiki/SKILL.md",
-    ".agents/skills/FORGE-google-workspace/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-google-workspace/SKILL.md → FORGE-google-workspace/SKILL.md",
-    ".agents/skills/AGI-nusantara-substrate/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-nusantara-substrate/SKILL.md → AGI-nusantara-substrate/SKILL.md",
-    ".agents/skills/ASI-agent-invariants/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agent-invariants/SKILL.md → ASI-agent-invariants/SKILL.md",
-    ".agents/skills/ASI-summarize/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-summarize/SKILL.md → ASI-summarize/SKILL.md",
-    ".agents/skills/FORGE-docker-entropy/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker-entropy/SKILL.md → FORGE-docker-entropy/SKILL.md",
-    ".agents/skills/ASI-drift-response/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-drift-response/SKILL.md → ASI-drift-response/SKILL.md",
-    ".agents/skills/FORGE-verify-runtime/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-verify-runtime/SKILL.md → FORGE-verify-runtime/SKILL.md",
-    ".agents/skills/AGI-dream-engine/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-dream-engine/SKILL.md → AGI-dream-engine/SKILL.md",
-    ".agents/skills/FORGE-pr-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-governance/SKILL.md → FORGE-pr-governance/SKILL.md",
-    ".agents/skills/ASI-skill-binding/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-skill-binding/SKILL.md → ASI-skill-binding/SKILL.md",
-    ".agents/skills/FORGE-github/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/SKILL.md → FORGE-github/SKILL.md",
-    "AAA/skills/ARCHIVE-readme-truth-check/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-readme-truth-check/claude/SKILL.md → ARCHIVE-readme-truth-check/SKILL.md",
-    "AAA/skills/FORGE-readme-truth-check/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-readme-truth-check/claude/SKILL.md → ARCHIVE-readme-truth-check/SKILL.md",
-    ".agents/skills/FORGE-readme-truth-check/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-readme-truth-check/claude/SKILL.md → ARCHIVE-readme-truth-check/SKILL.md",
-    "AAA/skills/ARCHIVE-precommit-gate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-precommit-gate/claude/SKILL.md → ARCHIVE-precommit-gate/SKILL.md",
-    "AAA/skills/FORGE-precommit-gate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-precommit-gate/claude/SKILL.md → ARCHIVE-precommit-gate/SKILL.md",
-    ".agents/skills/FORGE-precommit-gate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-precommit-gate/claude/SKILL.md → ARCHIVE-precommit-gate/SKILL.md",
-    ".agents/skills/FORGE-precommit-review/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-precommit-review/SKILL.md → FORGE-precommit-review/SKILL.md",
-    ".agents/skills/FORGE-github-runbook/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github-runbook/SKILL.md → FORGE-github-runbook/SKILL.md",
-    ".agents/skills/FORGE-model-monitor/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-model-monitor/SKILL.md → FORGE-model-monitor/SKILL.md",
-    ".agents/skills/FORGE-mcp-federation-ops/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-federation-ops/SKILL.md → FORGE-mcp-federation-ops/SKILL.md",
-    ".agents/skills/FORGE-docker-thermo/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker-thermo/SKILL.md → FORGE-docker-thermo/SKILL.md",
-    ".agents/skills/FORGE-onboarding/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-onboarding/SKILL.md → FORGE-onboarding/SKILL.md",
-    ".agents/skills/FORGE-federation-orchestrator/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-federation-orchestrator/SKILL.md → FORGE-federation-orchestrator/SKILL.md",
-    "AAA/skills/ARCHIVE-code-wiki/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-code-wiki/claude/SKILL.md → ARCHIVE-code-wiki/SKILL.md",
-    "AAA/skills/FORGE-code-wiki/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-code-wiki/claude/SKILL.md → ARCHIVE-code-wiki/SKILL.md",
-    ".agents/skills/FORGE-code-wiki/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-code-wiki/claude/SKILL.md → ARCHIVE-code-wiki/SKILL.md",
-    ".agents/skills/APEX-act/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-act/SKILL.md → APEX-act/SKILL.md",
-    "AAA/skills/ARCHIVE-incident-escalation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-incident-escalation/claude/SKILL.md → ARCHIVE-incident-escalation/SKILL.md",
-    "AAA/skills/FORGE-incident-escalation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-incident-escalation/claude/SKILL.md → ARCHIVE-incident-escalation/SKILL.md",
-    ".agents/skills/FORGE-incident-escalation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-escalation/claude/SKILL.md → ARCHIVE-incident-escalation/SKILL.md",
-    ".agents/skills/AGI-web-optimization/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-web-optimization/SKILL.md → AGI-web-optimization/SKILL.md",
-    "AAA/skills/ASI-multi-discipline-critique/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-multi-discipline-critique/claude/SKILL.md → ARCHIVE-multi-discipline-critique/SKILL.md",
-    "AAA/skills/ARCHIVE-multi-discipline-critique/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-multi-discipline-critique/claude/SKILL.md → ARCHIVE-multi-discipline-critique/SKILL.md",
-    ".agents/skills/ASI-multi-discipline-critique/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-multi-discipline-critique/claude/SKILL.md → ARCHIVE-multi-discipline-critique/SKILL.md",
-    ".agents/skills/FORGE-docker/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker/SKILL.md → FORGE-docker/SKILL.md",
-    ".agents/skills/FORGE-ci-diagnose/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-ci-diagnose/SKILL.md → FORGE-ci-diagnose/SKILL.md",
-    ".agents/skills/FORGE-code-analysis/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-code-analysis/SKILL.md → FORGE-code-analysis/SKILL.md",
-    "AAA/skills/ARCHIVE-secret-safety-scan/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-secret-safety-scan/claude/SKILL.md → ARCHIVE-secret-safety-scan/SKILL.md",
-    "AAA/skills/FORGE-secret-safety-scan/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-secret-safety-scan/claude/SKILL.md → ARCHIVE-secret-safety-scan/SKILL.md",
-    ".agents/skills/FORGE-secret-safety-scan/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-secret-safety-scan/claude/SKILL.md → ARCHIVE-secret-safety-scan/SKILL.md",
-    ".agents/skills/FORGE-pr-review/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-review/SKILL.md → FORGE-pr-review/SKILL.md",
-    ".agents/skills/FORGE-kimi-code/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-kimi-code/SKILL.md → FORGE-kimi-code/SKILL.md",
-    ".agents/skills/FORGE-skill-linter/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-skill-linter/SKILL.md → FORGE-skill-linter/SKILL.md",
-    ".agents/skills/ASI-multi-discipline-critique/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-multi-discipline-critique/SKILL.md → ASI-multi-discipline-critique/SKILL.md",
-    "AAA/skills/FORGE-skill-linter/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-skill-linter/claude/SKILL.md → ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/skill-trigger-linter/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/skill-trigger-linter/claude/SKILL.md → ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
-    ".agents/skills/FORGE-skill-linter/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-skill-linter/claude/SKILL.md → ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
-    "AAA/skills/FORGE-kimi-code/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-kimi-code/claude/SKILL.md → ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/kimi-code-aaa/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/kimi-code-aaa/claude/SKILL.md → ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
-    ".agents/skills/FORGE-kimi-code/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-kimi-code/claude/SKILL.md → ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
-    "AAA/skills/FORGE-pr-review/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-pr-review/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/github-pr-review/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/github-pr-review/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
-    ".agents/skills/FORGE-pr-review/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-review/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
-    "AAA/skills/FORGE-ci-diagnose/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-ci-diagnose/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/github-ci-diagnose/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/github-ci-diagnose/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
-    ".agents/skills/FORGE-ci-diagnose/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-ci-diagnose/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/hermes/SKILL.md → APEX-act/hermes/SKILL.md",
-    ".agents/skills/APEX-act/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-act/hermes/SKILL.md → APEX-act/hermes/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/claude/SKILL.md → APEX-act/claude/SKILL.md",
-    ".agents/skills/APEX-act/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-act/claude/SKILL.md → APEX-act/claude/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/pr-review-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/pr-review-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
-    "AAA/skills/FORGE-pr-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-pr-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
-    ".agents/skills/FORGE-pr-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-evals/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-evals/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
-    "AAA/skills/ASI-evals/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-evals/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
-    ".agents/skills/ASI-evals/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-evals/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/agentic-dream-engine/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/agentic-dream-engine/claude/SKILL.md → ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
-    "AAA/skills/AGI-dream-engine/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AGI-dream-engine/claude/SKILL.md → ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
-    ".agents/skills/AGI-dream-engine/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-dream-engine/claude/SKILL.md → ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-mcp-federation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-mcp-federation/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
-    "AAA/skills/APEX-mcp-federation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/APEX-mcp-federation/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
-    ".agents/skills/APEX-mcp-federation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-mcp-federation/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
-    "AAA/skills/APEX-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/APEX-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
-    ".agents/skills/APEX-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/claude/SKILL.md → ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
-    "AAA/skills/AGI-nusantara-substrate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AGI-nusantara-substrate/claude/SKILL.md → ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
-    ".agents/skills/AGI-nusantara-substrate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-nusantara-substrate/claude/SKILL.md → ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/vault999-integrity/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/vault999-integrity/claude/SKILL.md → ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
-    "AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/claude/SKILL.md → ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
-    ".agents/skills/ARCHIVE-vault999-integrity/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ARCHIVE-vault999-integrity/claude/SKILL.md → ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
-    "AAA/skills/ASI-agentic-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-agentic-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
-    ".agents/skills/ASI-agentic-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agentic-governance/claude/SKILL.md → ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/github-issue-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/github-issue-triage/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
-    "AAA/skills/FORGE-issue-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-issue-triage/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
-    ".agents/skills/FORGE-issue-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-issue-triage/claude/SKILL.md → ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-plan-dag/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-plan-dag/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
-    "AAA/skills/AGI-plan-dag/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AGI-plan-dag/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
-    ".agents/skills/AGI-plan-dag/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-plan-dag/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/unified-skill-binding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/unified-skill-binding/claude/SKILL.md → ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
-    "AAA/skills/ASI-skill-binding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-skill-binding/claude/SKILL.md → ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
-    ".agents/skills/ASI-skill-binding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-skill-binding/claude/SKILL.md → ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-recursive-audit/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-recursive-audit/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
-    "AAA/skills/AUDIT-recursive-audit/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AUDIT-recursive-audit/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
-    ".agents/skills/AUDIT-recursive-audit/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AUDIT-recursive-audit/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/vps-docker-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/vps-docker-runbook/claude/SKILL.md → ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
-    "AAA/skills/FORGE-vps-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-vps-runbook/claude/SKILL.md → ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
-    ".agents/skills/FORGE-vps-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-vps-runbook/claude/SKILL.md → ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agent-invariants/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/aaa-agent-invariants/claude/SKILL.md → ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
-    "AAA/skills/ASI-agent-invariants/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-agent-invariants/claude/SKILL.md → ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
-    ".agents/skills/ASI-agent-invariants/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agent-invariants/claude/SKILL.md → ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/parallel-authority-detection/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/parallel-authority-detection/claude/SKILL.md → ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
-    "AAA/skills/APEX-authority-detection/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/APEX-authority-detection/claude/SKILL.md → ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
-    ".agents/skills/APEX-authority-detection/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-authority-detection/claude/SKILL.md → ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-observability/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-observability/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
-    "AAA/skills/ASI-observability/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-observability/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
-    ".agents/skills/ASI-observability/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-observability/claude/SKILL.md → ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/agent-onboarding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/agent-onboarding/claude/SKILL.md → FORGE-onboarding/claude/SKILL.md",
-    ".agents/skills/FORGE-onboarding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-onboarding/claude/SKILL.md → FORGE-onboarding/claude/SKILL.md",
-    "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/hermes/SKILL.md → ASI-agentic-governance/hermes/SKILL.md",
-    ".agents/skills/ASI-agentic-governance/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agentic-governance/hermes/SKILL.md → ASI-agentic-governance/hermes/SKILL.md",
-    "AAA/skills/ARCHIVE-github/10-worktree-mastery/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/10-worktree-mastery/SKILL.md → FORGE-github/10-worktree-mastery/SKILL.md",
-    ".agents/skills/FORGE-github/10-worktree-mastery/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/10-worktree-mastery/SKILL.md → FORGE-github/10-worktree-mastery/SKILL.md",
-    "AAA/skills/ARCHIVE-github/12-forensics-blame/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/12-forensics-blame/SKILL.md → FORGE-github/12-forensics-blame/SKILL.md",
-    ".agents/skills/FORGE-github/12-forensics-blame/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/12-forensics-blame/SKILL.md → FORGE-github/12-forensics-blame/SKILL.md",
-    "AAA/skills/ARCHIVE-github/11-tagging-releases/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/11-tagging-releases/SKILL.md → FORGE-github/11-tagging-releases/SKILL.md",
-    ".agents/skills/FORGE-github/11-tagging-releases/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/11-tagging-releases/SKILL.md → FORGE-github/11-tagging-releases/SKILL.md",
-    "AAA/skills/ARCHIVE-github/03-commit-craftsmanship/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/03-commit-craftsmanship/SKILL.md → FORGE-github/03-commit-craftsmanship/SKILL.md",
-    ".agents/skills/FORGE-github/03-commit-craftsmanship/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/03-commit-craftsmanship/SKILL.md → FORGE-github/03-commit-craftsmanship/SKILL.md",
-    "AAA/skills/ARCHIVE-github/08-pull-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/08-pull-discipline/SKILL.md → FORGE-github/08-pull-discipline/SKILL.md",
-    ".agents/skills/FORGE-github/08-pull-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/08-pull-discipline/SKILL.md → FORGE-github/08-pull-discipline/SKILL.md",
-    "AAA/skills/ARCHIVE-github/05-pr-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/05-pr-governance/SKILL.md → FORGE-github/05-pr-governance/SKILL.md",
-    ".agents/skills/FORGE-github/05-pr-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/05-pr-governance/SKILL.md → FORGE-github/05-pr-governance/SKILL.md",
-    "AAA/skills/ARCHIVE-github/04-staging-awareness/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/04-staging-awareness/SKILL.md → FORGE-github/04-staging-awareness/SKILL.md",
-    ".agents/skills/FORGE-github/04-staging-awareness/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/04-staging-awareness/SKILL.md → FORGE-github/04-staging-awareness/SKILL.md",
-    "AAA/skills/ARCHIVE-github/06-ci-obedience/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/06-ci-obedience/SKILL.md → FORGE-github/06-ci-obedience/SKILL.md",
-    ".agents/skills/FORGE-github/06-ci-obedience/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/06-ci-obedience/SKILL.md → FORGE-github/06-ci-obedience/SKILL.md",
-    "AAA/skills/ARCHIVE-github/09-push-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/09-push-protocol/SKILL.md → FORGE-github/09-push-protocol/SKILL.md",
-    ".agents/skills/FORGE-github/09-push-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/09-push-protocol/SKILL.md → FORGE-github/09-push-protocol/SKILL.md",
-    "AAA/skills/ARCHIVE-github/02-branch-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/02-branch-discipline/SKILL.md → FORGE-github/02-branch-discipline/SKILL.md",
-    ".agents/skills/FORGE-github/02-branch-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/02-branch-discipline/SKILL.md → FORGE-github/02-branch-discipline/SKILL.md",
-    "AAA/skills/ARCHIVE-github/01-issue-literacy/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/01-issue-literacy/SKILL.md → FORGE-github/01-issue-literacy/SKILL.md",
-    ".agents/skills/FORGE-github/01-issue-literacy/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/01-issue-literacy/SKILL.md → FORGE-github/01-issue-literacy/SKILL.md",
-    "AAA/skills/ARCHIVE-github/07-merge-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/07-merge-protocol/SKILL.md → FORGE-github/07-merge-protocol/SKILL.md",
-    ".agents/skills/FORGE-github/07-merge-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/07-merge-protocol/SKILL.md → FORGE-github/07-merge-protocol/SKILL.md",
-    "AAA/skills/.archive-openclaw-legacy/openclaw-a2a-bridge/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-openclaw-legacy/openclaw-a2a-bridge/claude/SKILL.md → .archive-openclaw-legacy/openclaw-a2a-bridge/SKILL.md",
-    "AAA/skills/.archive-vault999/ARCHIVE-vault-integrity/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault-integrity/SKILL.md → ARCHIVE-vault-integrity/SKILL.md",
-    "AAA/skills/.archive-vault999/ARCHIVE-vault999-reader/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault999-reader/SKILL.md → ARCHIVE-vault999-reader/SKILL.md",
-    "AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/SKILL.md → ARCHIVE-vault999-integrity/SKILL.md",
-    ".agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics/SKILL.md → wealth-capital-thermodynamics/SKILL.md",
+    ".agents/skills/FORGE-mcp-lifeguard/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-lifeguard/SKILL.md \u2192 FORGE-mcp-lifeguard/SKILL.md",
+    ".agents/skills/AGI-plan-dag/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-plan-dag/SKILL.md \u2192 AGI-plan-dag/SKILL.md",
+    ".agents/skills/FORGE-mcporter/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcporter/SKILL.md \u2192 FORGE-mcporter/SKILL.md",
+    ".agents/skills/APEX-f1-gate/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-f1-gate/SKILL.md \u2192 APEX-f1-gate/SKILL.md",
+    ".agents/skills/FORGE-mcp-smoke-test/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-smoke-test/SKILL.md \u2192 FORGE-mcp-smoke-test/SKILL.md",
+    ".agents/skills/FORGE-issue-triage/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-issue-triage/SKILL.md \u2192 FORGE-issue-triage/SKILL.md",
+    "AAA/skills/geox-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/geox-grounding/claude/SKILL.md \u2192 geox-grounding/SKILL.md",
+    ".agents/skills/FORGE-telegram-audit/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-telegram-audit/SKILL.md \u2192 FORGE-telegram-audit/SKILL.md",
+    ".agents/skills/ASI-drift-watch/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-drift-watch/SKILL.md \u2192 ASI-drift-watch/SKILL.md",
+    ".agents/skills/ASI-agentic-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agentic-governance/SKILL.md \u2192 ASI-agentic-governance/SKILL.md",
+    "AAA/skills/FORGE-incident-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-incident-triage/claude/SKILL.md \u2192 ARCHIVE-incident-triage/SKILL.md",
+    "AAA/skills/ARCHIVE-incident-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-incident-triage/claude/SKILL.md \u2192 ARCHIVE-incident-triage/SKILL.md",
+    ".agents/skills/FORGE-incident-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-triage/claude/SKILL.md \u2192 ARCHIVE-incident-triage/SKILL.md",
+    ".agents/skills/FORGE-incident-escalation/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-escalation/SKILL.md \u2192 FORGE-incident-escalation/SKILL.md",
+    "AAA/skills/FORGE-docker-entropy/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-docker-entropy/claude/SKILL.md \u2192 ARCHIVE-docker-entropy-ops/SKILL.md",
+    "AAA/skills/ARCHIVE-docker-entropy-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-docker-entropy-ops/claude/SKILL.md \u2192 ARCHIVE-docker-entropy-ops/SKILL.md",
+    ".agents/skills/FORGE-docker-entropy/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker-entropy/claude/SKILL.md \u2192 ARCHIVE-docker-entropy-ops/SKILL.md",
+    ".agents/skills/FORGE-fastmcp/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-fastmcp/SKILL.md \u2192 FORGE-fastmcp/SKILL.md",
+    ".agents/skills/FORGE-skill-creator/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-skill-creator/SKILL.md \u2192 FORGE-skill-creator/SKILL.md",
+    ".agents/skills/FORGE-vps-docker/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-vps-docker/SKILL.md \u2192 FORGE-vps-docker/SKILL.md",
+    "AAA/skills/ARCHIVE-constitutional-reasoning/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-constitutional-reasoning/SKILL.md \u2192 ASI-constitutional-reasoning/SKILL.md",
+    ".agents/skills/ASI-constitutional-reasoning/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-constitutional-reasoning/SKILL.md \u2192 ASI-constitutional-reasoning/SKILL.md",
+    ".agents/skills/ASI-memory-bridge/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-memory-bridge/SKILL.md \u2192 ASI-memory-bridge/SKILL.md",
+    "AAA/skills/FORGE-mcp-federation-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-mcp-federation-ops/claude/SKILL.md \u2192 ARCHIVE-mcp-federation-ops/SKILL.md",
+    "AAA/skills/ARCHIVE-mcp-federation-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-mcp-federation-ops/claude/SKILL.md \u2192 ARCHIVE-mcp-federation-ops/SKILL.md",
+    ".agents/skills/FORGE-mcp-federation-ops/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-federation-ops/claude/SKILL.md \u2192 ARCHIVE-mcp-federation-ops/SKILL.md",
+    ".agents/skills/FORGE-github-ops/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github-ops/SKILL.md \u2192 FORGE-github-ops/SKILL.md",
+    ".agents/skills/AUDIT-recursive-audit/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AUDIT-recursive-audit/SKILL.md \u2192 AUDIT-recursive-audit/SKILL.md",
+    ".agents/skills/FORGE-spatial-grounding/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-spatial-grounding/SKILL.md \u2192 FORGE-spatial-grounding/SKILL.md",
+    ".agents/skills/APEX-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-governance/SKILL.md \u2192 APEX-governance/SKILL.md",
+    ".agents/skills/FORGE-mcp-ops/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-ops/SKILL.md \u2192 FORGE-mcp-ops/SKILL.md",
+    ".agents/skills/FORGE-subagent-spawn/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-subagent-spawn/SKILL.md \u2192 FORGE-subagent-spawn/SKILL.md",
+    "AAA/skills/ASI-drift-response/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-drift-response/claude/SKILL.md \u2192 ARCHIVE-drift-response/SKILL.md",
+    "AAA/skills/ARCHIVE-drift-response/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-drift-response/claude/SKILL.md \u2192 ARCHIVE-drift-response/SKILL.md",
+    ".agents/skills/ASI-drift-response/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-drift-response/claude/SKILL.md \u2192 ARCHIVE-drift-response/SKILL.md",
+    ".agents/skills/AGI-explorer-intelligence/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-explorer-intelligence/SKILL.md \u2192 AGI-explorer-intelligence/SKILL.md",
+    ".agents/skills/APEX-authority-detection/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-authority-detection/SKILL.md \u2192 APEX-authority-detection/SKILL.md",
+    ".agents/skills/FORGE-readme-truth-check/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-readme-truth-check/SKILL.md \u2192 FORGE-readme-truth-check/SKILL.md",
+    ".agents/skills/ASI-mcp-governor/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-mcp-governor/SKILL.md \u2192 ASI-mcp-governor/SKILL.md",
+    "AAA/skills/ARCHIVE-mcp-smoke-test/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-mcp-smoke-test/claude/SKILL.md \u2192 ARCHIVE-mcp-smoke-test/SKILL.md",
+    "AAA/skills/FORGE-mcp-smoke-test/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-mcp-smoke-test/claude/SKILL.md \u2192 ARCHIVE-mcp-smoke-test/SKILL.md",
+    ".agents/skills/FORGE-mcp-smoke-test/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-smoke-test/claude/SKILL.md \u2192 ARCHIVE-mcp-smoke-test/SKILL.md",
+    ".agents/skills/ASI-observability/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-observability/SKILL.md \u2192 ASI-observability/SKILL.md",
+    ".agents/skills/FORGE-secret-hygiene/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-secret-hygiene/SKILL.md \u2192 FORGE-secret-hygiene/SKILL.md",
+    ".agents/skills/AUDIT-skill-atlas/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AUDIT-skill-atlas/SKILL.md \u2192 AUDIT-skill-atlas/SKILL.md",
+    ".agents/skills/ASI-agent-bootstrap/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agent-bootstrap/SKILL.md \u2192 ASI-agent-bootstrap/SKILL.md",
+    ".agents/skills/FORGE-precommit-gate/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-precommit-gate/SKILL.md \u2192 FORGE-precommit-gate/SKILL.md",
+    ".agents/skills/FORGE-infra-guardian/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-infra-guardian/SKILL.md \u2192 FORGE-infra-guardian/SKILL.md",
+    "AAA/skills/ARCHIVE-spatial-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-spatial-grounding/claude/SKILL.md \u2192 ARCHIVE-spatial-grounding/SKILL.md",
+    "AAA/skills/FORGE-spatial-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-spatial-grounding/claude/SKILL.md \u2192 ARCHIVE-spatial-grounding/SKILL.md",
+    ".agents/skills/FORGE-spatial-grounding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-spatial-grounding/claude/SKILL.md \u2192 ARCHIVE-spatial-grounding/SKILL.md",
+    ".agents/skills/FORGE-vps-runbook/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-vps-runbook/SKILL.md \u2192 FORGE-vps-runbook/SKILL.md",
+    "AAA/skills/FORGE-github-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-github-runbook/claude/SKILL.md \u2192 ARCHIVE-github-runbook/SKILL.md",
+    "AAA/skills/ARCHIVE-github-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github-runbook/claude/SKILL.md \u2192 ARCHIVE-github-runbook/SKILL.md",
+    ".agents/skills/FORGE-github-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github-runbook/claude/SKILL.md \u2192 ARCHIVE-github-runbook/SKILL.md",
+    ".agents/skills/ASI-evals/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-evals/SKILL.md \u2192 ASI-evals/SKILL.md",
+    ".agents/skills/APEX-mcp-federation/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-mcp-federation/SKILL.md \u2192 APEX-mcp-federation/SKILL.md",
+    ".agents/skills/FORGE-secret-safety-scan/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-secret-safety-scan/SKILL.md \u2192 FORGE-secret-safety-scan/SKILL.md",
+    ".agents/skills/FORGE-incident-triage/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-triage/SKILL.md \u2192 FORGE-incident-triage/SKILL.md",
+    ".agents/skills/AGI-skill-unification/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-skill-unification/SKILL.md \u2192 AGI-skill-unification/SKILL.md",
+    ".agents/skills/FORGE-code-wiki/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-code-wiki/SKILL.md \u2192 FORGE-code-wiki/SKILL.md",
+    ".agents/skills/FORGE-google-workspace/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-google-workspace/SKILL.md \u2192 FORGE-google-workspace/SKILL.md",
+    ".agents/skills/AGI-nusantara-substrate/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-nusantara-substrate/SKILL.md \u2192 AGI-nusantara-substrate/SKILL.md",
+    ".agents/skills/ASI-agent-invariants/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agent-invariants/SKILL.md \u2192 ASI-agent-invariants/SKILL.md",
+    ".agents/skills/ASI-summarize/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-summarize/SKILL.md \u2192 ASI-summarize/SKILL.md",
+    ".agents/skills/FORGE-docker-entropy/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker-entropy/SKILL.md \u2192 FORGE-docker-entropy/SKILL.md",
+    ".agents/skills/ASI-drift-response/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-drift-response/SKILL.md \u2192 ASI-drift-response/SKILL.md",
+    ".agents/skills/FORGE-verify-runtime/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-verify-runtime/SKILL.md \u2192 FORGE-verify-runtime/SKILL.md",
+    ".agents/skills/AGI-dream-engine/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-dream-engine/SKILL.md \u2192 AGI-dream-engine/SKILL.md",
+    ".agents/skills/FORGE-pr-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-governance/SKILL.md \u2192 FORGE-pr-governance/SKILL.md",
+    ".agents/skills/ASI-skill-binding/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-skill-binding/SKILL.md \u2192 ASI-skill-binding/SKILL.md",
+    ".agents/skills/FORGE-github/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/SKILL.md \u2192 FORGE-github/SKILL.md",
+    "AAA/skills/ARCHIVE-readme-truth-check/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-readme-truth-check/claude/SKILL.md \u2192 ARCHIVE-readme-truth-check/SKILL.md",
+    "AAA/skills/FORGE-readme-truth-check/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-readme-truth-check/claude/SKILL.md \u2192 ARCHIVE-readme-truth-check/SKILL.md",
+    ".agents/skills/FORGE-readme-truth-check/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-readme-truth-check/claude/SKILL.md \u2192 ARCHIVE-readme-truth-check/SKILL.md",
+    "AAA/skills/ARCHIVE-precommit-gate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-precommit-gate/claude/SKILL.md \u2192 ARCHIVE-precommit-gate/SKILL.md",
+    "AAA/skills/FORGE-precommit-gate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-precommit-gate/claude/SKILL.md \u2192 ARCHIVE-precommit-gate/SKILL.md",
+    ".agents/skills/FORGE-precommit-gate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-precommit-gate/claude/SKILL.md \u2192 ARCHIVE-precommit-gate/SKILL.md",
+    ".agents/skills/FORGE-precommit-review/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-precommit-review/SKILL.md \u2192 FORGE-precommit-review/SKILL.md",
+    ".agents/skills/FORGE-github-runbook/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github-runbook/SKILL.md \u2192 FORGE-github-runbook/SKILL.md",
+    ".agents/skills/FORGE-model-monitor/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-model-monitor/SKILL.md \u2192 FORGE-model-monitor/SKILL.md",
+    ".agents/skills/FORGE-mcp-federation-ops/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-mcp-federation-ops/SKILL.md \u2192 FORGE-mcp-federation-ops/SKILL.md",
+    ".agents/skills/FORGE-docker-thermo/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker-thermo/SKILL.md \u2192 FORGE-docker-thermo/SKILL.md",
+    ".agents/skills/FORGE-onboarding/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-onboarding/SKILL.md \u2192 FORGE-onboarding/SKILL.md",
+    ".agents/skills/FORGE-federation-orchestrator/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-federation-orchestrator/SKILL.md \u2192 FORGE-federation-orchestrator/SKILL.md",
+    "AAA/skills/ARCHIVE-code-wiki/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-code-wiki/claude/SKILL.md \u2192 ARCHIVE-code-wiki/SKILL.md",
+    "AAA/skills/FORGE-code-wiki/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-code-wiki/claude/SKILL.md \u2192 ARCHIVE-code-wiki/SKILL.md",
+    ".agents/skills/FORGE-code-wiki/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-code-wiki/claude/SKILL.md \u2192 ARCHIVE-code-wiki/SKILL.md",
+    ".agents/skills/APEX-act/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-act/SKILL.md \u2192 APEX-act/SKILL.md",
+    "AAA/skills/ARCHIVE-incident-escalation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-incident-escalation/claude/SKILL.md \u2192 ARCHIVE-incident-escalation/SKILL.md",
+    "AAA/skills/FORGE-incident-escalation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-incident-escalation/claude/SKILL.md \u2192 ARCHIVE-incident-escalation/SKILL.md",
+    ".agents/skills/FORGE-incident-escalation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-incident-escalation/claude/SKILL.md \u2192 ARCHIVE-incident-escalation/SKILL.md",
+    ".agents/skills/AGI-web-optimization/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-web-optimization/SKILL.md \u2192 AGI-web-optimization/SKILL.md",
+    "AAA/skills/ASI-multi-discipline-critique/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-multi-discipline-critique/claude/SKILL.md \u2192 ARCHIVE-multi-discipline-critique/SKILL.md",
+    "AAA/skills/ARCHIVE-multi-discipline-critique/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-multi-discipline-critique/claude/SKILL.md \u2192 ARCHIVE-multi-discipline-critique/SKILL.md",
+    ".agents/skills/ASI-multi-discipline-critique/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-multi-discipline-critique/claude/SKILL.md \u2192 ARCHIVE-multi-discipline-critique/SKILL.md",
+    ".agents/skills/FORGE-docker/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-docker/SKILL.md \u2192 FORGE-docker/SKILL.md",
+    ".agents/skills/FORGE-ci-diagnose/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-ci-diagnose/SKILL.md \u2192 FORGE-ci-diagnose/SKILL.md",
+    ".agents/skills/FORGE-code-analysis/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-code-analysis/SKILL.md \u2192 FORGE-code-analysis/SKILL.md",
+    "AAA/skills/ARCHIVE-secret-safety-scan/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-secret-safety-scan/claude/SKILL.md \u2192 ARCHIVE-secret-safety-scan/SKILL.md",
+    "AAA/skills/FORGE-secret-safety-scan/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-secret-safety-scan/claude/SKILL.md \u2192 ARCHIVE-secret-safety-scan/SKILL.md",
+    ".agents/skills/FORGE-secret-safety-scan/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-secret-safety-scan/claude/SKILL.md \u2192 ARCHIVE-secret-safety-scan/SKILL.md",
+    ".agents/skills/FORGE-pr-review/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-review/SKILL.md \u2192 FORGE-pr-review/SKILL.md",
+    ".agents/skills/FORGE-kimi-code/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-kimi-code/SKILL.md \u2192 FORGE-kimi-code/SKILL.md",
+    ".agents/skills/FORGE-skill-linter/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-skill-linter/SKILL.md \u2192 FORGE-skill-linter/SKILL.md",
+    ".agents/skills/ASI-multi-discipline-critique/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-multi-discipline-critique/SKILL.md \u2192 ASI-multi-discipline-critique/SKILL.md",
+    "AAA/skills/FORGE-skill-linter/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-skill-linter/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/skill-trigger-linter/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/skill-trigger-linter/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
+    ".agents/skills/FORGE-skill-linter/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-skill-linter/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
+    "AAA/skills/FORGE-kimi-code/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-kimi-code/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/kimi-code-aaa/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/kimi-code-aaa/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
+    ".agents/skills/FORGE-kimi-code/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-kimi-code/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
+    "AAA/skills/FORGE-pr-review/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-pr-review/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/github-pr-review/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/github-pr-review/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
+    ".agents/skills/FORGE-pr-review/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-review/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
+    "AAA/skills/FORGE-ci-diagnose/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-ci-diagnose/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/github-ci-diagnose/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/github-ci-diagnose/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
+    ".agents/skills/FORGE-ci-diagnose/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-ci-diagnose/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/hermes/SKILL.md \u2192 APEX-act/hermes/SKILL.md",
+    ".agents/skills/APEX-act/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-act/hermes/SKILL.md \u2192 APEX-act/hermes/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/claude/SKILL.md \u2192 APEX-act/claude/SKILL.md",
+    ".agents/skills/APEX-act/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-act/claude/SKILL.md \u2192 APEX-act/claude/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/pr-review-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/pr-review-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
+    "AAA/skills/FORGE-pr-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-pr-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
+    ".agents/skills/FORGE-pr-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-pr-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-evals/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-evals/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
+    "AAA/skills/ASI-evals/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-evals/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
+    ".agents/skills/ASI-evals/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-evals/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/agentic-dream-engine/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/agentic-dream-engine/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
+    "AAA/skills/AGI-dream-engine/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AGI-dream-engine/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
+    ".agents/skills/AGI-dream-engine/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-dream-engine/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-mcp-federation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-mcp-federation/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
+    "AAA/skills/APEX-mcp-federation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/APEX-mcp-federation/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
+    ".agents/skills/APEX-mcp-federation/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-mcp-federation/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
+    "AAA/skills/APEX-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/APEX-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
+    ".agents/skills/APEX-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
+    "AAA/skills/AGI-nusantara-substrate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AGI-nusantara-substrate/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
+    ".agents/skills/AGI-nusantara-substrate/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-nusantara-substrate/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/vault999-integrity/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/vault999-integrity/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
+    "AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
+    ".agents/skills/ARCHIVE-vault999-integrity/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ARCHIVE-vault999-integrity/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
+    "AAA/skills/ASI-agentic-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-agentic-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
+    ".agents/skills/ASI-agentic-governance/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agentic-governance/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/github-issue-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/github-issue-triage/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
+    "AAA/skills/FORGE-issue-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-issue-triage/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
+    ".agents/skills/FORGE-issue-triage/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-issue-triage/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-plan-dag/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-plan-dag/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
+    "AAA/skills/AGI-plan-dag/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AGI-plan-dag/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
+    ".agents/skills/AGI-plan-dag/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AGI-plan-dag/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/unified-skill-binding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/unified-skill-binding/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
+    "AAA/skills/ASI-skill-binding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-skill-binding/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
+    ".agents/skills/ASI-skill-binding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-skill-binding/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-recursive-audit/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-recursive-audit/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
+    "AAA/skills/AUDIT-recursive-audit/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/AUDIT-recursive-audit/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
+    ".agents/skills/AUDIT-recursive-audit/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/AUDIT-recursive-audit/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/vps-docker-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/vps-docker-runbook/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
+    "AAA/skills/FORGE-vps-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/FORGE-vps-runbook/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
+    ".agents/skills/FORGE-vps-runbook/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-vps-runbook/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agent-invariants/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/aaa-agent-invariants/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
+    "AAA/skills/ASI-agent-invariants/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-agent-invariants/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
+    ".agents/skills/ASI-agent-invariants/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agent-invariants/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/parallel-authority-detection/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/parallel-authority-detection/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
+    "AAA/skills/APEX-authority-detection/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/APEX-authority-detection/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
+    ".agents/skills/APEX-authority-detection/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/APEX-authority-detection/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/arifos-observability/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/arifos-observability/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
+    "AAA/skills/ASI-observability/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ASI-observability/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
+    ".agents/skills/ASI-observability/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-observability/claude/SKILL.md \u2192 ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/agent-onboarding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/agent-onboarding/claude/SKILL.md \u2192 FORGE-onboarding/claude/SKILL.md",
+    ".agents/skills/FORGE-onboarding/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-onboarding/claude/SKILL.md \u2192 FORGE-onboarding/claude/SKILL.md",
+    "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/hermes/SKILL.md \u2192 ASI-agentic-governance/hermes/SKILL.md",
+    ".agents/skills/ASI-agentic-governance/hermes/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/ASI-agentic-governance/hermes/SKILL.md \u2192 ASI-agentic-governance/hermes/SKILL.md",
+    "AAA/skills/ARCHIVE-github/10-worktree-mastery/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/10-worktree-mastery/SKILL.md \u2192 FORGE-github/10-worktree-mastery/SKILL.md",
+    ".agents/skills/FORGE-github/10-worktree-mastery/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/10-worktree-mastery/SKILL.md \u2192 FORGE-github/10-worktree-mastery/SKILL.md",
+    "AAA/skills/ARCHIVE-github/12-forensics-blame/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/12-forensics-blame/SKILL.md \u2192 FORGE-github/12-forensics-blame/SKILL.md",
+    ".agents/skills/FORGE-github/12-forensics-blame/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/12-forensics-blame/SKILL.md \u2192 FORGE-github/12-forensics-blame/SKILL.md",
+    "AAA/skills/ARCHIVE-github/11-tagging-releases/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/11-tagging-releases/SKILL.md \u2192 FORGE-github/11-tagging-releases/SKILL.md",
+    ".agents/skills/FORGE-github/11-tagging-releases/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/11-tagging-releases/SKILL.md \u2192 FORGE-github/11-tagging-releases/SKILL.md",
+    "AAA/skills/ARCHIVE-github/03-commit-craftsmanship/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/03-commit-craftsmanship/SKILL.md \u2192 FORGE-github/03-commit-craftsmanship/SKILL.md",
+    ".agents/skills/FORGE-github/03-commit-craftsmanship/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/03-commit-craftsmanship/SKILL.md \u2192 FORGE-github/03-commit-craftsmanship/SKILL.md",
+    "AAA/skills/ARCHIVE-github/08-pull-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/08-pull-discipline/SKILL.md \u2192 FORGE-github/08-pull-discipline/SKILL.md",
+    ".agents/skills/FORGE-github/08-pull-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/08-pull-discipline/SKILL.md \u2192 FORGE-github/08-pull-discipline/SKILL.md",
+    "AAA/skills/ARCHIVE-github/05-pr-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/05-pr-governance/SKILL.md \u2192 FORGE-github/05-pr-governance/SKILL.md",
+    ".agents/skills/FORGE-github/05-pr-governance/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/05-pr-governance/SKILL.md \u2192 FORGE-github/05-pr-governance/SKILL.md",
+    "AAA/skills/ARCHIVE-github/04-staging-awareness/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/04-staging-awareness/SKILL.md \u2192 FORGE-github/04-staging-awareness/SKILL.md",
+    ".agents/skills/FORGE-github/04-staging-awareness/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/04-staging-awareness/SKILL.md \u2192 FORGE-github/04-staging-awareness/SKILL.md",
+    "AAA/skills/ARCHIVE-github/06-ci-obedience/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/06-ci-obedience/SKILL.md \u2192 FORGE-github/06-ci-obedience/SKILL.md",
+    ".agents/skills/FORGE-github/06-ci-obedience/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/06-ci-obedience/SKILL.md \u2192 FORGE-github/06-ci-obedience/SKILL.md",
+    "AAA/skills/ARCHIVE-github/09-push-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/09-push-protocol/SKILL.md \u2192 FORGE-github/09-push-protocol/SKILL.md",
+    ".agents/skills/FORGE-github/09-push-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/09-push-protocol/SKILL.md \u2192 FORGE-github/09-push-protocol/SKILL.md",
+    "AAA/skills/ARCHIVE-github/02-branch-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/02-branch-discipline/SKILL.md \u2192 FORGE-github/02-branch-discipline/SKILL.md",
+    ".agents/skills/FORGE-github/02-branch-discipline/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/02-branch-discipline/SKILL.md \u2192 FORGE-github/02-branch-discipline/SKILL.md",
+    "AAA/skills/ARCHIVE-github/01-issue-literacy/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/01-issue-literacy/SKILL.md \u2192 FORGE-github/01-issue-literacy/SKILL.md",
+    ".agents/skills/FORGE-github/01-issue-literacy/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/01-issue-literacy/SKILL.md \u2192 FORGE-github/01-issue-literacy/SKILL.md",
+    "AAA/skills/ARCHIVE-github/07-merge-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/ARCHIVE-github/07-merge-protocol/SKILL.md \u2192 FORGE-github/07-merge-protocol/SKILL.md",
+    ".agents/skills/FORGE-github/07-merge-protocol/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/FORGE-github/07-merge-protocol/SKILL.md \u2192 FORGE-github/07-merge-protocol/SKILL.md",
+    "AAA/skills/.archive-openclaw-legacy/openclaw-a2a-bridge/claude/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-openclaw-legacy/openclaw-a2a-bridge/claude/SKILL.md \u2192 .archive-openclaw-legacy/openclaw-a2a-bridge/SKILL.md",
+    "AAA/skills/.archive-vault999/ARCHIVE-vault-integrity/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault-integrity/SKILL.md \u2192 ARCHIVE-vault-integrity/SKILL.md",
+    "AAA/skills/.archive-vault999/ARCHIVE-vault999-reader/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault999-reader/SKILL.md \u2192 ARCHIVE-vault999-reader/SKILL.md",
+    "AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/SKILL.md": "ARCHIVE-dupe-2026-07-12/AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/SKILL.md \u2192 ARCHIVE-vault999-integrity/SKILL.md",
+    ".agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics/SKILL.md": "ARCHIVE-dupe-2026-07-12/.agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics/SKILL.md \u2192 wealth-capital-thermodynamics/SKILL.md",
     "AGI-claude-xml-structured-reasoning": "AGI-claude-xml-structured-reasoning",
     "AGI-hermes-system-prompt-voice": "AGI-hermes-system-prompt-voice",
     "AGI-codex-chain-of-thought": "AGI-codex-chain-of-thought",
     "AGI-emd-decode": "AGI-emd-decode",
     "AGI-emd-metabolize": "AGI-emd-metabolize",
     "FORGE-grok-profile": "FORGE-grok-profile",
-    "trinity-witness": "tri-witness → AGI-explorer-intelligence",
+    "trinity-witness": "tri-witness \u2192 AGI-explorer-intelligence",
     "AGI-entropy-lock-prime": "AGI-entropy-lock-prime"
   },
   "harness_native": {
@@ -2824,7 +2834,7 @@
       "moves": 203,
       "executed_at": "2026-07-12T18:24:00Z",
       "executed_by": "Kimi Code (FI-008)",
-      "ratified_by": "F13 SOVEREIGN — 'Jalankan purge semua 53'",
+      "ratified_by": "F13 SOVEREIGN \u2014 'Jalankan purge semua 53'",
       "scope": "active SKILL.md SHA-256 duplicates (cross-root)"
     },
     "eureka_zen_forge_2026_07_12": {
@@ -2833,7 +2843,7 @@
       "trinity_witness_alias": true,
       "executed_at": "2026-07-12T18:28:30Z",
       "executed_by": "Kimi Code (FI-008)",
-      "ratified_by": "F13 SOVEREIGN — '2 start'",
+      "ratified_by": "F13 SOVEREIGN \u2014 '2 start'",
       "reversible": true,
       "snapshot": "/root/A-FORGE/forge_work/2026-07-12/eureka-zen-forge/skills.pre-forge.tar.gz"
     },
@@ -2842,7 +2852,7 @@
       "binding": "333-AGI + 888-APEX + all agents",
       "executed_at": "2026-07-12T18:31:00Z",
       "executed_by": "Kimi Code (FI-008)",
-      "ratified_by": "F13 SOVEREIGN — 'buat semua'"
+      "ratified_by": "F13 SOVEREIGN \u2014 'buat semua'"
     },
     "phase_1_substrate_bind": {
       "cards_bound": 38,
@@ -2850,18 +2860,20 @@
       "rsi_doctrine": "RSI-recursive-improvement",
       "executed_at": "2026-07-12T18:31:00Z",
       "executed_by": "Kimi Code (FI-008)",
-      "ratified_by": "F13 SOVEREIGN — 'buat semua'",
+      "ratified_by": "F13 SOVEREIGN \u2014 'buat semua'",
       "issue_ref": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
-    }
+    },
+    "total": 134,
+    "active": 1
   },
   "audit": {
     "at": "2026-07-12T06:00:27.978488+00:00",
     "mesh_auditor": "019f54e8-0a36-79c0-b76f-a07007774c3f",
     "vault_auditor": "019f54e8-0a37-7002-83ac-78e44b82ba44",
     "governance_auditor": "019f54e8-0a37-7002-83ac-78f4f99df381",
-    "mesh_verdict": "CAUTION→fixed tombstones",
+    "mesh_verdict": "CAUTION\u2192fixed tombstones",
     "vault_verdict": "SEAL_OK seq54",
-    "gov_verdict": "CAUTION→fixed tombstones + dual-home honesty",
+    "gov_verdict": "CAUTION\u2192fixed tombstones + dual-home honesty",
     "architecture_honest": "AAA catalog + .agents doctrine_core (not sole body home)"
   },
   "rename_epoch": "2026-07-12-opencode-agent-prefix",
@@ -3848,7 +3860,7 @@
       "hash": "c59fac87e033",
       "canonical": "FORGE-mcp-lifeguard/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-plan-dag/SKILL.md",
@@ -3857,7 +3869,7 @@
       "hash": "ebdf35dd883a",
       "canonical": "AGI-plan-dag/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-mcporter/SKILL.md",
@@ -3866,7 +3878,7 @@
       "hash": "20bcb76dabf1",
       "canonical": "FORGE-mcporter/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-f1-gate/SKILL.md",
@@ -3875,7 +3887,7 @@
       "hash": "25afc0766c4d",
       "canonical": "APEX-f1-gate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-mcp-smoke-test/SKILL.md",
@@ -3884,7 +3896,7 @@
       "hash": "98dd798c6af0",
       "canonical": "FORGE-mcp-smoke-test/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-issue-triage/SKILL.md",
@@ -3893,7 +3905,7 @@
       "hash": "3dea88f271e0",
       "canonical": "FORGE-issue-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/geox-grounding/claude/SKILL.md",
@@ -3902,7 +3914,7 @@
       "hash": "ff45b7c5525f",
       "canonical": "geox-grounding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-telegram-audit/SKILL.md",
@@ -3911,7 +3923,7 @@
       "hash": "fb5b92bfc39c",
       "canonical": "FORGE-telegram-audit/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-drift-watch/SKILL.md",
@@ -3920,7 +3932,7 @@
       "hash": "0b3a9a012aa9",
       "canonical": "ASI-drift-watch/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-agentic-governance/SKILL.md",
@@ -3929,7 +3941,7 @@
       "hash": "49c572d503d8",
       "canonical": "ASI-agentic-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-incident-triage/claude/SKILL.md",
@@ -3938,7 +3950,7 @@
       "hash": "811106490e32",
       "canonical": "ARCHIVE-incident-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-incident-triage/claude/SKILL.md",
@@ -3947,7 +3959,7 @@
       "hash": "811106490e32",
       "canonical": "ARCHIVE-incident-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-incident-triage/claude/SKILL.md",
@@ -3956,7 +3968,7 @@
       "hash": "811106490e32",
       "canonical": "ARCHIVE-incident-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-incident-escalation/SKILL.md",
@@ -3965,7 +3977,7 @@
       "hash": "0aaddfc2500d",
       "canonical": "FORGE-incident-escalation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-docker-entropy/claude/SKILL.md",
@@ -3974,7 +3986,7 @@
       "hash": "15e285414f67",
       "canonical": "ARCHIVE-docker-entropy-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-docker-entropy-ops/claude/SKILL.md",
@@ -3983,7 +3995,7 @@
       "hash": "15e285414f67",
       "canonical": "ARCHIVE-docker-entropy-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-docker-entropy/claude/SKILL.md",
@@ -3992,7 +4004,7 @@
       "hash": "15e285414f67",
       "canonical": "ARCHIVE-docker-entropy-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-fastmcp/SKILL.md",
@@ -4001,7 +4013,7 @@
       "hash": "ea8d3b95a03a",
       "canonical": "FORGE-fastmcp/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-skill-creator/SKILL.md",
@@ -4010,7 +4022,7 @@
       "hash": "6cb016aca013",
       "canonical": "FORGE-skill-creator/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-vps-docker/SKILL.md",
@@ -4019,7 +4031,7 @@
       "hash": "1be1e8eb0aec",
       "canonical": "FORGE-vps-docker/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-constitutional-reasoning/SKILL.md",
@@ -4028,7 +4040,7 @@
       "hash": "2f0125aa6a82",
       "canonical": "ASI-constitutional-reasoning/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-constitutional-reasoning/SKILL.md",
@@ -4037,7 +4049,7 @@
       "hash": "2f0125aa6a82",
       "canonical": "ASI-constitutional-reasoning/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-memory-bridge/SKILL.md",
@@ -4046,7 +4058,7 @@
       "hash": "87c88046579a",
       "canonical": "ASI-memory-bridge/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-mcp-federation-ops/claude/SKILL.md",
@@ -4055,7 +4067,7 @@
       "hash": "744b3d8b6abb",
       "canonical": "ARCHIVE-mcp-federation-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-mcp-federation-ops/claude/SKILL.md",
@@ -4064,7 +4076,7 @@
       "hash": "744b3d8b6abb",
       "canonical": "ARCHIVE-mcp-federation-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-mcp-federation-ops/claude/SKILL.md",
@@ -4073,7 +4085,7 @@
       "hash": "744b3d8b6abb",
       "canonical": "ARCHIVE-mcp-federation-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github-ops/SKILL.md",
@@ -4082,7 +4094,7 @@
       "hash": "1cb5f8a75056",
       "canonical": "FORGE-github-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AUDIT-recursive-audit/SKILL.md",
@@ -4091,7 +4103,7 @@
       "hash": "f2e41348d894",
       "canonical": "AUDIT-recursive-audit/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-spatial-grounding/SKILL.md",
@@ -4100,7 +4112,7 @@
       "hash": "8d9462967689",
       "canonical": "FORGE-spatial-grounding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-governance/SKILL.md",
@@ -4109,7 +4121,7 @@
       "hash": "b8479657d8c4",
       "canonical": "APEX-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-mcp-ops/SKILL.md",
@@ -4118,7 +4130,7 @@
       "hash": "d98000a023a3",
       "canonical": "FORGE-mcp-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-subagent-spawn/SKILL.md",
@@ -4127,7 +4139,7 @@
       "hash": "1b6000431bc2",
       "canonical": "FORGE-subagent-spawn/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-drift-response/claude/SKILL.md",
@@ -4136,7 +4148,7 @@
       "hash": "e7033111ed51",
       "canonical": "ARCHIVE-drift-response/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-drift-response/claude/SKILL.md",
@@ -4145,7 +4157,7 @@
       "hash": "e7033111ed51",
       "canonical": "ARCHIVE-drift-response/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-drift-response/claude/SKILL.md",
@@ -4154,7 +4166,7 @@
       "hash": "e7033111ed51",
       "canonical": "ARCHIVE-drift-response/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-explorer-intelligence/SKILL.md",
@@ -4163,7 +4175,7 @@
       "hash": "186d098034f1",
       "canonical": "AGI-explorer-intelligence/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-authority-detection/SKILL.md",
@@ -4172,7 +4184,7 @@
       "hash": "b01d1748ddc5",
       "canonical": "APEX-authority-detection/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-readme-truth-check/SKILL.md",
@@ -4181,7 +4193,7 @@
       "hash": "f7b8a0b2c336",
       "canonical": "FORGE-readme-truth-check/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-mcp-governor/SKILL.md",
@@ -4190,7 +4202,7 @@
       "hash": "0555f0407fe5",
       "canonical": "ASI-mcp-governor/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-mcp-smoke-test/claude/SKILL.md",
@@ -4199,7 +4211,7 @@
       "hash": "7411c964845a",
       "canonical": "ARCHIVE-mcp-smoke-test/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-mcp-smoke-test/claude/SKILL.md",
@@ -4208,7 +4220,7 @@
       "hash": "7411c964845a",
       "canonical": "ARCHIVE-mcp-smoke-test/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-mcp-smoke-test/claude/SKILL.md",
@@ -4217,7 +4229,7 @@
       "hash": "7411c964845a",
       "canonical": "ARCHIVE-mcp-smoke-test/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-observability/SKILL.md",
@@ -4226,7 +4238,7 @@
       "hash": "abf8d6094fd7",
       "canonical": "ASI-observability/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-secret-hygiene/SKILL.md",
@@ -4235,7 +4247,7 @@
       "hash": "3a0b06d346e8",
       "canonical": "FORGE-secret-hygiene/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AUDIT-skill-atlas/SKILL.md",
@@ -4244,7 +4256,7 @@
       "hash": "e93788369baf",
       "canonical": "AUDIT-skill-atlas/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-agent-bootstrap/SKILL.md",
@@ -4253,7 +4265,7 @@
       "hash": "660c94add502",
       "canonical": "ASI-agent-bootstrap/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-precommit-gate/SKILL.md",
@@ -4262,7 +4274,7 @@
       "hash": "201950454642",
       "canonical": "FORGE-precommit-gate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-infra-guardian/SKILL.md",
@@ -4271,7 +4283,7 @@
       "hash": "8eda4810a4d6",
       "canonical": "FORGE-infra-guardian/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-spatial-grounding/claude/SKILL.md",
@@ -4280,7 +4292,7 @@
       "hash": "0d390084cc74",
       "canonical": "ARCHIVE-spatial-grounding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-spatial-grounding/claude/SKILL.md",
@@ -4289,7 +4301,7 @@
       "hash": "0d390084cc74",
       "canonical": "ARCHIVE-spatial-grounding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-spatial-grounding/claude/SKILL.md",
@@ -4298,7 +4310,7 @@
       "hash": "0d390084cc74",
       "canonical": "ARCHIVE-spatial-grounding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-vps-runbook/SKILL.md",
@@ -4307,7 +4319,7 @@
       "hash": "4368e4343631",
       "canonical": "FORGE-vps-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-github-runbook/claude/SKILL.md",
@@ -4316,7 +4328,7 @@
       "hash": "9eaa53d6292a",
       "canonical": "ARCHIVE-github-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github-runbook/claude/SKILL.md",
@@ -4325,7 +4337,7 @@
       "hash": "9eaa53d6292a",
       "canonical": "ARCHIVE-github-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github-runbook/claude/SKILL.md",
@@ -4334,7 +4346,7 @@
       "hash": "9eaa53d6292a",
       "canonical": "ARCHIVE-github-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-evals/SKILL.md",
@@ -4343,7 +4355,7 @@
       "hash": "b9ccdeccc47d",
       "canonical": "ASI-evals/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-mcp-federation/SKILL.md",
@@ -4352,7 +4364,7 @@
       "hash": "f25fe6e4024b",
       "canonical": "APEX-mcp-federation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-secret-safety-scan/SKILL.md",
@@ -4361,7 +4373,7 @@
       "hash": "ada4542a09e7",
       "canonical": "FORGE-secret-safety-scan/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-incident-triage/SKILL.md",
@@ -4370,7 +4382,7 @@
       "hash": "0ff99aaeb0fd",
       "canonical": "FORGE-incident-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-skill-unification/SKILL.md",
@@ -4379,7 +4391,7 @@
       "hash": "c0e897d274c1",
       "canonical": "AGI-skill-unification/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-code-wiki/SKILL.md",
@@ -4388,7 +4400,7 @@
       "hash": "21b889829e51",
       "canonical": "FORGE-code-wiki/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-google-workspace/SKILL.md",
@@ -4397,7 +4409,7 @@
       "hash": "b6f2ff644962",
       "canonical": "FORGE-google-workspace/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-nusantara-substrate/SKILL.md",
@@ -4406,7 +4418,7 @@
       "hash": "aa4ee10f20a4",
       "canonical": "AGI-nusantara-substrate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-agent-invariants/SKILL.md",
@@ -4415,7 +4427,7 @@
       "hash": "dde4900c64a7",
       "canonical": "ASI-agent-invariants/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-summarize/SKILL.md",
@@ -4424,7 +4436,7 @@
       "hash": "d63c67d715ac",
       "canonical": "ASI-summarize/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-docker-entropy/SKILL.md",
@@ -4433,7 +4445,7 @@
       "hash": "51d721816e25",
       "canonical": "FORGE-docker-entropy/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-drift-response/SKILL.md",
@@ -4442,7 +4454,7 @@
       "hash": "9abe636e63d7",
       "canonical": "ASI-drift-response/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-verify-runtime/SKILL.md",
@@ -4451,7 +4463,7 @@
       "hash": "bd72a70f747c",
       "canonical": "FORGE-verify-runtime/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-dream-engine/SKILL.md",
@@ -4460,7 +4472,7 @@
       "hash": "b15642d9989f",
       "canonical": "AGI-dream-engine/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-pr-governance/SKILL.md",
@@ -4469,7 +4481,7 @@
       "hash": "e3a3fa0bf811",
       "canonical": "FORGE-pr-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-skill-binding/SKILL.md",
@@ -4478,7 +4490,7 @@
       "hash": "2d32a25589d3",
       "canonical": "ASI-skill-binding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/SKILL.md",
@@ -4487,7 +4499,7 @@
       "hash": "6a03fb0c1493",
       "canonical": "FORGE-github/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-readme-truth-check/claude/SKILL.md",
@@ -4496,7 +4508,7 @@
       "hash": "00d597e96ef8",
       "canonical": "ARCHIVE-readme-truth-check/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-readme-truth-check/claude/SKILL.md",
@@ -4505,7 +4517,7 @@
       "hash": "00d597e96ef8",
       "canonical": "ARCHIVE-readme-truth-check/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-readme-truth-check/claude/SKILL.md",
@@ -4514,7 +4526,7 @@
       "hash": "00d597e96ef8",
       "canonical": "ARCHIVE-readme-truth-check/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-precommit-gate/claude/SKILL.md",
@@ -4523,7 +4535,7 @@
       "hash": "e20559ce57fd",
       "canonical": "ARCHIVE-precommit-gate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-precommit-gate/claude/SKILL.md",
@@ -4532,7 +4544,7 @@
       "hash": "e20559ce57fd",
       "canonical": "ARCHIVE-precommit-gate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-precommit-gate/claude/SKILL.md",
@@ -4541,7 +4553,7 @@
       "hash": "e20559ce57fd",
       "canonical": "ARCHIVE-precommit-gate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-precommit-review/SKILL.md",
@@ -4550,7 +4562,7 @@
       "hash": "c4ddfdeef927",
       "canonical": "FORGE-precommit-review/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github-runbook/SKILL.md",
@@ -4559,7 +4571,7 @@
       "hash": "0bf6a70b42b3",
       "canonical": "FORGE-github-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-model-monitor/SKILL.md",
@@ -4568,7 +4580,7 @@
       "hash": "808ff075a112",
       "canonical": "FORGE-model-monitor/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-mcp-federation-ops/SKILL.md",
@@ -4577,7 +4589,7 @@
       "hash": "e0830a16a5e8",
       "canonical": "FORGE-mcp-federation-ops/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-docker-thermo/SKILL.md",
@@ -4586,7 +4598,7 @@
       "hash": "3334d908a2fc",
       "canonical": "FORGE-docker-thermo/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-onboarding/SKILL.md",
@@ -4595,7 +4607,7 @@
       "hash": "03d33d381763",
       "canonical": "FORGE-onboarding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-federation-orchestrator/SKILL.md",
@@ -4604,7 +4616,7 @@
       "hash": "64839254516c",
       "canonical": "FORGE-federation-orchestrator/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-code-wiki/claude/SKILL.md",
@@ -4613,7 +4625,7 @@
       "hash": "1a4b9f1f5a6f",
       "canonical": "ARCHIVE-code-wiki/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-code-wiki/claude/SKILL.md",
@@ -4622,7 +4634,7 @@
       "hash": "1a4b9f1f5a6f",
       "canonical": "ARCHIVE-code-wiki/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-code-wiki/claude/SKILL.md",
@@ -4631,7 +4643,7 @@
       "hash": "1a4b9f1f5a6f",
       "canonical": "ARCHIVE-code-wiki/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-act/SKILL.md",
@@ -4640,7 +4652,7 @@
       "hash": "a9c65c921853",
       "canonical": "APEX-act/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-incident-escalation/claude/SKILL.md",
@@ -4649,7 +4661,7 @@
       "hash": "970504346b30",
       "canonical": "ARCHIVE-incident-escalation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-incident-escalation/claude/SKILL.md",
@@ -4658,7 +4670,7 @@
       "hash": "970504346b30",
       "canonical": "ARCHIVE-incident-escalation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-incident-escalation/claude/SKILL.md",
@@ -4667,7 +4679,7 @@
       "hash": "970504346b30",
       "canonical": "ARCHIVE-incident-escalation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-web-optimization/SKILL.md",
@@ -4676,7 +4688,7 @@
       "hash": "2a91038bf315",
       "canonical": "AGI-web-optimization/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-multi-discipline-critique/claude/SKILL.md",
@@ -4685,7 +4697,7 @@
       "hash": "27b38635563e",
       "canonical": "ARCHIVE-multi-discipline-critique/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-multi-discipline-critique/claude/SKILL.md",
@@ -4694,7 +4706,7 @@
       "hash": "27b38635563e",
       "canonical": "ARCHIVE-multi-discipline-critique/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-multi-discipline-critique/claude/SKILL.md",
@@ -4703,7 +4715,7 @@
       "hash": "27b38635563e",
       "canonical": "ARCHIVE-multi-discipline-critique/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-docker/SKILL.md",
@@ -4712,7 +4724,7 @@
       "hash": "42b49cb67381",
       "canonical": "FORGE-docker/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-ci-diagnose/SKILL.md",
@@ -4721,7 +4733,7 @@
       "hash": "ff68f8900728",
       "canonical": "FORGE-ci-diagnose/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-code-analysis/SKILL.md",
@@ -4730,7 +4742,7 @@
       "hash": "14697907d519",
       "canonical": "FORGE-code-analysis/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-secret-safety-scan/claude/SKILL.md",
@@ -4739,7 +4751,7 @@
       "hash": "7e383f9d098a",
       "canonical": "ARCHIVE-secret-safety-scan/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-secret-safety-scan/claude/SKILL.md",
@@ -4748,7 +4760,7 @@
       "hash": "7e383f9d098a",
       "canonical": "ARCHIVE-secret-safety-scan/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-secret-safety-scan/claude/SKILL.md",
@@ -4757,7 +4769,7 @@
       "hash": "7e383f9d098a",
       "canonical": "ARCHIVE-secret-safety-scan/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-pr-review/SKILL.md",
@@ -4766,7 +4778,7 @@
       "hash": "43482af6bbe6",
       "canonical": "FORGE-pr-review/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-kimi-code/SKILL.md",
@@ -4775,7 +4787,7 @@
       "hash": "3e06f6db424a",
       "canonical": "FORGE-kimi-code/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-skill-linter/SKILL.md",
@@ -4784,7 +4796,7 @@
       "hash": "a76aee5030e3",
       "canonical": "FORGE-skill-linter/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-multi-discipline-critique/SKILL.md",
@@ -4793,7 +4805,7 @@
       "hash": "e7f7c5e25cdd",
       "canonical": "ASI-multi-discipline-critique/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-skill-linter/claude/SKILL.md",
@@ -4802,7 +4814,7 @@
       "hash": "8fb5db40f1b4",
       "canonical": "ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/skill-trigger-linter/claude/SKILL.md",
@@ -4811,7 +4823,7 @@
       "hash": "8fb5db40f1b4",
       "canonical": "ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-skill-linter/claude/SKILL.md",
@@ -4820,7 +4832,7 @@
       "hash": "8fb5db40f1b4",
       "canonical": "ARCHIVE-chaos-quarantine/skill-trigger-linter/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-kimi-code/claude/SKILL.md",
@@ -4829,7 +4841,7 @@
       "hash": "586f11f2da55",
       "canonical": "ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/kimi-code-aaa/claude/SKILL.md",
@@ -4838,7 +4850,7 @@
       "hash": "586f11f2da55",
       "canonical": "ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-kimi-code/claude/SKILL.md",
@@ -4847,7 +4859,7 @@
       "hash": "586f11f2da55",
       "canonical": "ARCHIVE-chaos-quarantine/kimi-code-aaa/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-pr-review/claude/SKILL.md",
@@ -4856,7 +4868,7 @@
       "hash": "802d770f4e5e",
       "canonical": "ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/github-pr-review/claude/SKILL.md",
@@ -4865,7 +4877,7 @@
       "hash": "802d770f4e5e",
       "canonical": "ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-pr-review/claude/SKILL.md",
@@ -4874,7 +4886,7 @@
       "hash": "802d770f4e5e",
       "canonical": "ARCHIVE-chaos-quarantine/github-pr-review/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-ci-diagnose/claude/SKILL.md",
@@ -4883,7 +4895,7 @@
       "hash": "823be40a9254",
       "canonical": "ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/github-ci-diagnose/claude/SKILL.md",
@@ -4892,7 +4904,7 @@
       "hash": "823be40a9254",
       "canonical": "ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-ci-diagnose/claude/SKILL.md",
@@ -4901,7 +4913,7 @@
       "hash": "823be40a9254",
       "canonical": "ARCHIVE-chaos-quarantine/github-ci-diagnose/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/hermes/SKILL.md",
@@ -4910,7 +4922,7 @@
       "hash": "d32a206c1a5a",
       "canonical": "APEX-act/hermes/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-act/hermes/SKILL.md",
@@ -4919,7 +4931,7 @@
       "hash": "d32a206c1a5a",
       "canonical": "APEX-act/hermes/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-act/claude/SKILL.md",
@@ -4928,7 +4940,7 @@
       "hash": "451db8dd742e",
       "canonical": "APEX-act/claude/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-act/claude/SKILL.md",
@@ -4937,7 +4949,7 @@
       "hash": "451db8dd742e",
       "canonical": "APEX-act/claude/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/pr-review-governance/claude/SKILL.md",
@@ -4946,7 +4958,7 @@
       "hash": "d70dd7343dcd",
       "canonical": "ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-pr-governance/claude/SKILL.md",
@@ -4955,7 +4967,7 @@
       "hash": "d70dd7343dcd",
       "canonical": "ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-pr-governance/claude/SKILL.md",
@@ -4964,7 +4976,7 @@
       "hash": "d70dd7343dcd",
       "canonical": "ARCHIVE-chaos-quarantine/pr-review-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-evals/claude/SKILL.md",
@@ -4973,7 +4985,7 @@
       "hash": "63044c5641d3",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-evals/claude/SKILL.md",
@@ -4982,7 +4994,7 @@
       "hash": "63044c5641d3",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-evals/claude/SKILL.md",
@@ -4991,7 +5003,7 @@
       "hash": "63044c5641d3",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-evals/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/agentic-dream-engine/claude/SKILL.md",
@@ -5000,7 +5012,7 @@
       "hash": "c790bb6a5a24",
       "canonical": "ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/AGI-dream-engine/claude/SKILL.md",
@@ -5009,7 +5021,7 @@
       "hash": "c790bb6a5a24",
       "canonical": "ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-dream-engine/claude/SKILL.md",
@@ -5018,7 +5030,7 @@
       "hash": "c790bb6a5a24",
       "canonical": "ARCHIVE-chaos-quarantine/agentic-dream-engine/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-mcp-federation/claude/SKILL.md",
@@ -5027,7 +5039,7 @@
       "hash": "7559ce577089",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/APEX-mcp-federation/claude/SKILL.md",
@@ -5036,7 +5048,7 @@
       "hash": "7559ce577089",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-mcp-federation/claude/SKILL.md",
@@ -5045,7 +5057,7 @@
       "hash": "7559ce577089",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-mcp-federation/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-governance/claude/SKILL.md",
@@ -5054,7 +5066,7 @@
       "hash": "470de418bff7",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/APEX-governance/claude/SKILL.md",
@@ -5063,7 +5075,7 @@
       "hash": "470de418bff7",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-governance/claude/SKILL.md",
@@ -5072,7 +5084,7 @@
       "hash": "470de418bff7",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/claude/SKILL.md",
@@ -5081,7 +5093,7 @@
       "hash": "82a4e9b6e856",
       "canonical": "ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/AGI-nusantara-substrate/claude/SKILL.md",
@@ -5090,7 +5102,7 @@
       "hash": "82a4e9b6e856",
       "canonical": "ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-nusantara-substrate/claude/SKILL.md",
@@ -5099,7 +5111,7 @@
       "hash": "82a4e9b6e856",
       "canonical": "ARCHIVE-chaos-quarantine/nusantara-intelligence-substrate/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/vault999-integrity/claude/SKILL.md",
@@ -5108,7 +5120,7 @@
       "hash": "732dfe3b19bd",
       "canonical": "ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/claude/SKILL.md",
@@ -5117,7 +5129,7 @@
       "hash": "732dfe3b19bd",
       "canonical": "ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ARCHIVE-vault999-integrity/claude/SKILL.md",
@@ -5126,7 +5138,7 @@
       "hash": "732dfe3b19bd",
       "canonical": "ARCHIVE-chaos-quarantine/vault999-integrity/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/claude/SKILL.md",
@@ -5135,7 +5147,7 @@
       "hash": "e235e4207357",
       "canonical": "ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-agentic-governance/claude/SKILL.md",
@@ -5144,7 +5156,7 @@
       "hash": "e235e4207357",
       "canonical": "ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-agentic-governance/claude/SKILL.md",
@@ -5153,7 +5165,7 @@
       "hash": "e235e4207357",
       "canonical": "ARCHIVE-chaos-quarantine/aaa-agentic-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/github-issue-triage/claude/SKILL.md",
@@ -5162,7 +5174,7 @@
       "hash": "e774449cbdbc",
       "canonical": "ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-issue-triage/claude/SKILL.md",
@@ -5171,7 +5183,7 @@
       "hash": "e774449cbdbc",
       "canonical": "ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-issue-triage/claude/SKILL.md",
@@ -5180,7 +5192,7 @@
       "hash": "e774449cbdbc",
       "canonical": "ARCHIVE-chaos-quarantine/github-issue-triage/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-plan-dag/claude/SKILL.md",
@@ -5189,7 +5201,7 @@
       "hash": "f59625198540",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/AGI-plan-dag/claude/SKILL.md",
@@ -5198,7 +5210,7 @@
       "hash": "f59625198540",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AGI-plan-dag/claude/SKILL.md",
@@ -5207,7 +5219,7 @@
       "hash": "f59625198540",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-plan-dag/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/unified-skill-binding/claude/SKILL.md",
@@ -5216,7 +5228,7 @@
       "hash": "06b9b7632a15",
       "canonical": "ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-skill-binding/claude/SKILL.md",
@@ -5225,7 +5237,7 @@
       "hash": "06b9b7632a15",
       "canonical": "ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-skill-binding/claude/SKILL.md",
@@ -5234,7 +5246,7 @@
       "hash": "06b9b7632a15",
       "canonical": "ARCHIVE-chaos-quarantine/unified-skill-binding/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-recursive-audit/claude/SKILL.md",
@@ -5243,7 +5255,7 @@
       "hash": "2c4990ac9ebb",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/AUDIT-recursive-audit/claude/SKILL.md",
@@ -5252,7 +5264,7 @@
       "hash": "2c4990ac9ebb",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/AUDIT-recursive-audit/claude/SKILL.md",
@@ -5261,7 +5273,7 @@
       "hash": "2c4990ac9ebb",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-recursive-audit/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/vps-docker-runbook/claude/SKILL.md",
@@ -5270,7 +5282,7 @@
       "hash": "4ba3d1617eca",
       "canonical": "ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/FORGE-vps-runbook/claude/SKILL.md",
@@ -5279,7 +5291,7 @@
       "hash": "4ba3d1617eca",
       "canonical": "ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-vps-runbook/claude/SKILL.md",
@@ -5288,7 +5300,7 @@
       "hash": "4ba3d1617eca",
       "canonical": "ARCHIVE-chaos-quarantine/vps-docker-runbook/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agent-invariants/claude/SKILL.md",
@@ -5297,7 +5309,7 @@
       "hash": "7553eb687b91",
       "canonical": "ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-agent-invariants/claude/SKILL.md",
@@ -5306,7 +5318,7 @@
       "hash": "7553eb687b91",
       "canonical": "ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-agent-invariants/claude/SKILL.md",
@@ -5315,7 +5327,7 @@
       "hash": "7553eb687b91",
       "canonical": "ARCHIVE-chaos-quarantine/aaa-agent-invariants/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/parallel-authority-detection/claude/SKILL.md",
@@ -5324,7 +5336,7 @@
       "hash": "c5f1e5a52527",
       "canonical": "ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/APEX-authority-detection/claude/SKILL.md",
@@ -5333,7 +5345,7 @@
       "hash": "c5f1e5a52527",
       "canonical": "ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/APEX-authority-detection/claude/SKILL.md",
@@ -5342,7 +5354,7 @@
       "hash": "c5f1e5a52527",
       "canonical": "ARCHIVE-chaos-quarantine/parallel-authority-detection/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/arifos-observability/claude/SKILL.md",
@@ -5351,7 +5363,7 @@
       "hash": "9b66afbf7d33",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ASI-observability/claude/SKILL.md",
@@ -5360,7 +5372,7 @@
       "hash": "9b66afbf7d33",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-observability/claude/SKILL.md",
@@ -5369,7 +5381,7 @@
       "hash": "9b66afbf7d33",
       "canonical": "ARCHIVE-chaos-quarantine/arifos-observability/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/agent-onboarding/claude/SKILL.md",
@@ -5378,7 +5390,7 @@
       "hash": "7ca9ef311c5f",
       "canonical": "FORGE-onboarding/claude/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-onboarding/claude/SKILL.md",
@@ -5387,7 +5399,7 @@
       "hash": "7ca9ef311c5f",
       "canonical": "FORGE-onboarding/claude/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-chaos-quarantine/aaa-agentic-governance/hermes/SKILL.md",
@@ -5396,7 +5408,7 @@
       "hash": "27d534432d35",
       "canonical": "ASI-agentic-governance/hermes/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/ASI-agentic-governance/hermes/SKILL.md",
@@ -5405,7 +5417,7 @@
       "hash": "27d534432d35",
       "canonical": "ASI-agentic-governance/hermes/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/10-worktree-mastery/SKILL.md",
@@ -5414,7 +5426,7 @@
       "hash": "0b712ac04d48",
       "canonical": "FORGE-github/10-worktree-mastery/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/10-worktree-mastery/SKILL.md",
@@ -5423,7 +5435,7 @@
       "hash": "0b712ac04d48",
       "canonical": "FORGE-github/10-worktree-mastery/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/12-forensics-blame/SKILL.md",
@@ -5432,7 +5444,7 @@
       "hash": "8626189f1709",
       "canonical": "FORGE-github/12-forensics-blame/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/12-forensics-blame/SKILL.md",
@@ -5441,7 +5453,7 @@
       "hash": "8626189f1709",
       "canonical": "FORGE-github/12-forensics-blame/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/11-tagging-releases/SKILL.md",
@@ -5450,7 +5462,7 @@
       "hash": "10264e361798",
       "canonical": "FORGE-github/11-tagging-releases/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/11-tagging-releases/SKILL.md",
@@ -5459,7 +5471,7 @@
       "hash": "10264e361798",
       "canonical": "FORGE-github/11-tagging-releases/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/03-commit-craftsmanship/SKILL.md",
@@ -5468,7 +5480,7 @@
       "hash": "d8f60b25d2e7",
       "canonical": "FORGE-github/03-commit-craftsmanship/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/03-commit-craftsmanship/SKILL.md",
@@ -5477,7 +5489,7 @@
       "hash": "d8f60b25d2e7",
       "canonical": "FORGE-github/03-commit-craftsmanship/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/08-pull-discipline/SKILL.md",
@@ -5486,7 +5498,7 @@
       "hash": "0107142af751",
       "canonical": "FORGE-github/08-pull-discipline/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/08-pull-discipline/SKILL.md",
@@ -5495,7 +5507,7 @@
       "hash": "0107142af751",
       "canonical": "FORGE-github/08-pull-discipline/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/05-pr-governance/SKILL.md",
@@ -5504,7 +5516,7 @@
       "hash": "ccb458ef7e1b",
       "canonical": "FORGE-github/05-pr-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/05-pr-governance/SKILL.md",
@@ -5513,7 +5525,7 @@
       "hash": "ccb458ef7e1b",
       "canonical": "FORGE-github/05-pr-governance/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/04-staging-awareness/SKILL.md",
@@ -5522,7 +5534,7 @@
       "hash": "0a49944ef1d0",
       "canonical": "FORGE-github/04-staging-awareness/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/04-staging-awareness/SKILL.md",
@@ -5531,7 +5543,7 @@
       "hash": "0a49944ef1d0",
       "canonical": "FORGE-github/04-staging-awareness/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/06-ci-obedience/SKILL.md",
@@ -5540,7 +5552,7 @@
       "hash": "ded2637c4880",
       "canonical": "FORGE-github/06-ci-obedience/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/06-ci-obedience/SKILL.md",
@@ -5549,7 +5561,7 @@
       "hash": "ded2637c4880",
       "canonical": "FORGE-github/06-ci-obedience/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/09-push-protocol/SKILL.md",
@@ -5558,7 +5570,7 @@
       "hash": "e135d28ae7b9",
       "canonical": "FORGE-github/09-push-protocol/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/09-push-protocol/SKILL.md",
@@ -5567,7 +5579,7 @@
       "hash": "e135d28ae7b9",
       "canonical": "FORGE-github/09-push-protocol/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/02-branch-discipline/SKILL.md",
@@ -5576,7 +5588,7 @@
       "hash": "d38efc5e458d",
       "canonical": "FORGE-github/02-branch-discipline/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/02-branch-discipline/SKILL.md",
@@ -5585,7 +5597,7 @@
       "hash": "d38efc5e458d",
       "canonical": "FORGE-github/02-branch-discipline/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/01-issue-literacy/SKILL.md",
@@ -5594,7 +5606,7 @@
       "hash": "f5ba45cd6d68",
       "canonical": "FORGE-github/01-issue-literacy/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/01-issue-literacy/SKILL.md",
@@ -5603,7 +5615,7 @@
       "hash": "f5ba45cd6d68",
       "canonical": "FORGE-github/01-issue-literacy/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/ARCHIVE-github/07-merge-protocol/SKILL.md",
@@ -5612,7 +5624,7 @@
       "hash": "eccd12b0c62d",
       "canonical": "FORGE-github/07-merge-protocol/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/FORGE-github/07-merge-protocol/SKILL.md",
@@ -5621,7 +5633,7 @@
       "hash": "eccd12b0c62d",
       "canonical": "FORGE-github/07-merge-protocol/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/.archive-openclaw-legacy/openclaw-a2a-bridge/claude/SKILL.md",
@@ -5630,7 +5642,7 @@
       "hash": "777ebb7319a9",
       "canonical": ".archive-openclaw-legacy/openclaw-a2a-bridge/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/.archive-vault999/ARCHIVE-vault-integrity/SKILL.md",
@@ -5639,7 +5651,7 @@
       "hash": "3ba9cfc76061",
       "canonical": "ARCHIVE-vault-integrity/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/.archive-vault999/ARCHIVE-vault999-reader/SKILL.md",
@@ -5648,7 +5660,7 @@
       "hash": "97295b24d999",
       "canonical": "ARCHIVE-vault999-reader/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": "AAA/skills/.archive-vault999/ARCHIVE-vault999-integrity/SKILL.md",
@@ -5657,7 +5669,7 @@
       "hash": "e52b45bfb873",
       "canonical": "ARCHIVE-vault999-integrity/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
       "old": ".agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics/SKILL.md",
@@ -5666,63 +5678,63 @@
       "hash": "63a7b48b8fbb",
       "canonical": "wealth-capital-thermodynamics/SKILL.md",
       "renamed_at": "2026-07-12T18:24:00Z",
-      "rationale": "SHA-256 duplicate purge · Kimi (FI-008) EUREKA ZEN T1"
+      "rationale": "SHA-256 duplicate purge \u00b7 Kimi (FI-008) EUREKA ZEN T1"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "AGI-claude-xml-structured-reasoning",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN",
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN",
       "rationale": "Phase 2 wrapper / Phase 3 gap fill per post-purge audit 2026-07-12"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "AGI-hermes-system-prompt-voice",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN",
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN",
       "rationale": "Phase 2 wrapper / Phase 3 gap fill per post-purge audit 2026-07-12"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "AGI-codex-chain-of-thought",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN",
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN",
       "rationale": "Phase 2 wrapper / Phase 3 gap fill per post-purge audit 2026-07-12"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "AGI-emd-decode",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN",
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN",
       "rationale": "Phase 2 wrapper / Phase 3 gap fill per post-purge audit 2026-07-12"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "AGI-emd-metabolize",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN",
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN",
       "rationale": "Phase 2 wrapper / Phase 3 gap fill per post-purge audit 2026-07-12"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "FORGE-grok-profile",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:28:30Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN",
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN",
       "rationale": "Phase 2 wrapper / Phase 3 gap fill per post-purge audit 2026-07-12"
     },
     {
-      "old": "(none — newly forged)",
+      "old": "(none \u2014 newly forged)",
       "new": "AGI-entropy-lock-prime",
       "status": "FORGED",
       "renamed_at": "2026-07-12T18:31:00Z",
-      "forged_by": "Kimi Code (FI-008) — EUREKA ZEN Phase 2 entropy lock",
-      "rationale": "Phase 2 entropy-lock primer — substrate execution mandate"
+      "forged_by": "Kimi Code (FI-008) \u2014 EUREKA ZEN Phase 2 entropy lock",
+      "rationale": "Phase 2 entropy-lock primer \u2014 substrate execution mandate"
     }
   ],
   "last_updated": "2026-07-12T18:31:00Z",
@@ -6160,5 +6172,17 @@
       "archived_at": "2026-07-12T18:22:52.340203+00:00"
     }
   ],
-  "tombstone_count": 29
+  "tombstone_count": 29,
+  "cicd-docker-deploy": "FORGE-cicd-docker-deploy",
+  "did-web-identity": "FORGE-did-web-identity",
+  "fastapi-api-builder": "FORGE-fastapi-api-builder",
+  "federation-manifest": "FORGE-federation-manifest",
+  "governance-jsonld": "FORGE-governance-jsonld",
+  "mcp-a2a-agentic": "FORGE-mcp-a2a-agentic",
+  "nextjs-mastery": "FORGE-nextjs-mastery",
+  "postgres-schema-design": "FORGE-postgres-schema-design",
+  "react-spa-discipline": "FORGE-react-spa-discipline",
+  "redis-qdrant-integration": "FORGE-redis-qdrant-integration",
+  "tailwind-tokens": "FORGE-tailwind-tokens",
+  "vault999-witness": "FORGE-vault999-witness"
 }
