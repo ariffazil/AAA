@@ -127,7 +127,7 @@ fi
 
 # Write to local seal chain (always — fallback + audit)
 # Format: {"seq":"<id>","actor":"<actor>","verdict":"SEAL","category":"session.seal","timestamp":"<iso>","content":"<summary>"}
-if [ -f "$(dirname "$SEAL_CHAIN")" ]; then
+if [ -d "$(dirname "$SEAL_CHAIN")" ]; then
     if ! grep -q "^}$" "$SEAL_CHAIN" 2>/dev/null && [ -s "$SEAL_CHAIN" ]; then
         # last line doesn't end with }, add comma
         sed -i '$ s/}$/,/' "$SEAL_CHAIN" 2>/dev/null || true
@@ -137,7 +137,7 @@ if [ -f "$(dirname "$SEAL_CHAIN")" ]; then
 SEALJSON
     ok "STEP 3: seal written to $SEAL_CHAIN"
 else
-    fail "STEP 3: cannot write seal chain"
+    fail "STEP 3: cannot write seal chain (directory missing: $(dirname "$SEAL_CHAIN"))"
 fi
 
 # ════════════════════════════════════════════════════════════════════════════
