@@ -32,6 +32,7 @@ const APP_ORGAN = {
   'well-desk': 'geox',
   'earth-volume': 'geox',
   'judge-console': 'geox',
+  'aforge-preview': 'aforge',
 };
 
 /**
