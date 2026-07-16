@@ -10,71 +10,73 @@ autonomy_tier: T1
 tags: [mcp, cli, mcporter, ops, debugging]
 ---
 
-# mcporter — Universal MCP CLI (available at `/usr/bin/mcporter`, v0.9.0)
+# mcporter — Universal MCP CLI (avAILABLE at /usr/bin/mcporter v0.9.0)
 
-`mcporter` inspects and calls configured MCP servers. It is a transport client, not an authority layer: arifOS still owns judgment and A-FORGE still owns execution.
+`mcporter` is the fastest way to inspect and call any MCP tool directly from terminal. It auto-discovers all federation servers.
 
 ## Discovery
 ```bash
-mcporter list
-mcporter list arifos --schema
-mcporter list geox --schema
-mcporter list wealth --schema
-mcporter list well --schema
-mcporter list aforge --schema
+mcporter list                                    # list all known servers
+mcporter list arifOS --schema                   # list tools + schemas for one server
+mcporter list --http-url http://localhost:8081/mcp --name geox  # ad-hoc HTTP
 ```
 
 ## Call Tools
 ```bash
-mcporter call arifos.arif_init mode=light actor_id=arif --output json
-mcporter call geox.geox_basin basin_name="Malay Basin" --output json
-mcporter call well.well_health_check include_federation=false --output json
+mcporter call arifOS.arif_measure mode=health  # call with key=value
+mcporter call geox.geox_well_analyze_log well_id=MAHA-1 depth_top=1500 --output json
+mcporter call well.well_validate_vitality --output json
 ```
 
 ## Federation MCP Servers
-
-The following is a dated observation from `mcporter list` at 2026-07-15T10:45Z. Refresh before making a current claim:
-
-| Server | Internal endpoint | Live tools | Role |
-|---|---|---:|---|
-| `arifos` | `127.0.0.1:8088/mcp` | 8 | Constitutional governance kernel |
-| `aforge` | `127.0.0.1:7072/mcp` | 109 | Governed execution shell |
-| `geox` | `127.0.0.1:8081/mcp` | 15 | Earth intelligence |
-| `wealth` | `127.0.0.1:18082/mcp` | 12 | Capital intelligence |
-| `well` | `127.0.0.1:18083/mcp` | 27 | Reflect-only human readiness |
-| `aaa` | `127.0.0.1:3001` | A2A | Control-plane cockpit |
-
-Configured discovery also showed 23 servers: 19 healthy and 4 offline. Offline servers remain UNKNOWN until probed again; their last-known schemas are not operational evidence.
-
-## Authority Note (2026-07-15 kernel test)
-
-arifOS `arif_judge` requires SOVEREIGN authority. The kernel interceptor resolves authority from **transport-level JWT/DPoP** — self-reported `actor_id` caps at MEDIUM. Without JWT, judge calls return `888_HOLD`.
-
-To test the sovereign path, present valid JWT in `Authorization: Bearer <token>` header.
+```
+arifOS MCP    → arifOS        (7 canonical tools, F1-F13)
+GEOX          → geox          (28+ tools, earth intelligence) ✅ LIVE
+WEALTH        → WEALTH        (20+ tools, capital intelligence)
+WELL          → WELL          (17+ tools, human readiness)
+A-FORGE       → a-forge-mcp   (29 tools, execution engine)
+AAA           → aaa-a2a       (A2A gateway + cockpit)
+OpenClaw GW   → openclaw      (A2A mesh)
+```
 
 ## Daemon
 ```bash
-mcporter daemon start
+mcporter daemon start   # persistent connections
 mcporter daemon status
 mcporter daemon stop
 ```
 
 ---
 
-## MCP Server Operations — arifOS Federation
+# MCP Server Operations — arifOS Federation
 
-> FastMCP is available system-wide; check the installed version with `fastmcp --version`.
-> Skill hierarchy: MCP builder → FastMCP deploy → MCP ops.
-> Tool counts above are a live snapshot, not a contract. Schemas and ownership are authoritative.
+# MCP Server Operations — arifOS Federation
+
+> FastMCP is available system-wide: `fastmcp --version` (v3.2.4)
+> Skill hierarchy: mcp-builder (build) → fastmcp-deploy (deploy) → mcp-ops (operate)
+> GEOX MCP bridge fixed 2026-05-27: /mcp endpoint now returns 11 canonical tools
+
+---
+
+## Federation MCP Servers
+
+```
+arifOS MCP    → http://localhost:8088/mcp   (13 tools, streamable-http, F1-F13)
+GEOX          → http://localhost:8081/mcp      (20 tools, earth intelligence) ✅ LIVE
+WEALTH       → http://localhost:18082/mcp    (33 tools, capital intelligence)
+WELL          → http://localhost:18083/mcp    (13 tools, human readiness)
+A-FORGE       → http://localhost:7071/mcp     (build + deploy engine)
+arifosd       → http://localhost:18081/health (constitutional daemon)
+OpenClaw GW   → http://localhost:18789/        (A2A mesh gateway)
+```
 
 ## Check MCP Health
 ```bash
-curl -sf http://127.0.0.1:8088/health | python3 -m json.tool
-curl -sf http://127.0.0.1:8081/health
-curl -sf http://127.0.0.1:18082/health
-curl -sf http://127.0.0.1:18083/health
-curl -sf http://127.0.0.1:7071/health
-curl -sf http://127.0.0.1:7072/health
+curl -sf http://localhost:8088/health | python3 -m json.tool
+curl -sf http://localhost:8081/health
+curl -sf http://localhost:18082/health
+curl -sf http://localhost:18083/health
+curl -sf http://localhost:7071/health
 ```
 
 ## FastMCP Build Workflow
