@@ -157,3 +157,60 @@ Results are anchored to `VAULT999` for audit continuity.
 
 - **`skill-unification`** — alias table, mesh-sync, BOOT gate (also linked in `~/.grok/skills/skill-unification`)
 - **`meta-mesa-skill-atlas`** — inventory / routing / gaps
+
+---
+
+## Skill Mirror Topology (2026-07-16, QQQ-envelope P7)
+
+The federation's skill canon lives at **`/root/.agents/skills/`** (user-scope canonical,
+ATLAS333-aligned). AAA's `skills/` is a **mixed bundle**: most entries are mirror-canonical
+symlinks into that location; a minority are project-scope real files that live only in this
+repo. The split is intentional and explicitly declared here so future agents (and future Arif)
+don't have to archeology.
+
+### Layout
+
+| Class | Count | Form | Source of truth | When to edit here |
+|-------|-------|------|-----------------|-------------------|
+| **Mirror-canonical** | 71 | Symlinks → `/root/.agents/skills/<name>/` | `/root/.agents/skills/` | NEVER — edit the canonical instead |
+| **Project-scope real** | 144 | Real directories tracked in git | This repo (`AAA/skills/`) | When the skill is AAA-specific |
+| **`ARCHIVE-*`** markers | 30 | Real directories (intentional) | This repo | Move to `_archive/` if retiring |
+| **Root-file leakage** | 3 | `AAA_SKILL.md`, `AAA_ZEN.md`, `APPROVE_HANDLER.md` at `skills/` root | This repo (legacy) | Move to repo root in follow-up commit |
+
+Total entries: 248 (symlinks + real dirs + leakage).
+
+### Verification (post-zen, all green)
+
+- All 71 mirror-canonical symlinks resolve to existing targets (broken = 0).
+- All 138 originally-shared skills byte-identical between AAA and `/root/.agents/skills/`.
+- All 2 AAA-only-then-added-from-`.agents/` skills (apex-formal-constitution, causal555-pywhy)
+  present as real dirs.
+- Working tree clean after `a3fc813 feat(skills): zen AAA skill catalog, align with A2A + ATLAS333 canonical`
+  on branch `feat/aaa-skill-catalog-zen`.
+
+### Why mirror-canonical symlinks (QQQ verdict: P7)
+
+Q1 enumerated 7 paths. Q2 metrics: P7 (mirror + docs) dominated P1 on Conf (0.90 vs 0.85) at
++10min cost; P2 (real files) wins on portability but loses on federation alignment; P5
+(INVERSE — never align) failed on PA-NONE; P6 (submodule) dominated on Time/Conf.
+Q3 quantum: choosing P7 canonizes "federation is canonical-first; project repos mirror
+user-scope; explicit doctrine over implicit archaeology."
+
+### Operational notes
+
+- **Adding a new skill:** if it's general federation doctrine, add it to `/root/.agents/skills/<name>/`
+  and create a symlink here. If it's AAA-specific, add it as a real dir in this repo.
+- **Editing a mirror-canonical skill:** do NOT edit through the symlink. Edit
+  `/root/.agents/skills/<name>/SKILL.md` directly. The change is immediately visible
+  via the symlink.
+- **Audit / drift detection:** future agents can `diff -r skills/<mirror-name>/ /root/.agents/skills/<mirror-name>/`
+  to confirm mirrors haven't been locally overridden. Any divergence indicates either
+  a manual `cp` over a symlink (drift) or a deliberate `_archive/` snapshot (intentional).
+
+### Receipts
+
+- `/root/forge_work/2026-07-16/AAA_SKILL_CATALOG_ZEN.md` — full method, metrics, hazard
+- `_archive/skill-canonical-sync-2026-07-16/` — gitignored, local-only backups of
+  10 divergent AAA-side SKILL.md files that were overwritten by canonical
+
+DITEMPA BUKAN DIBERI.
