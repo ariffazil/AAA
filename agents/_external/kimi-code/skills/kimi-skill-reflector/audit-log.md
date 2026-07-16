@@ -192,4 +192,52 @@ MemoryJanitor async init, WEALTH banner, WELL biometrics).
 
 ---
 
-*Last sealed state — sealed 2026-07-16 after arifOS MCP cold-boot fix.*
+## Audit 2026-07-16 (continued) — zen pass + agent card upgrade
+
+Per Arif's "zen all kimi skills, lower the entropy, push to AAA repo, update agent cards, make it flow" directive. Follows the morning's cold-boot fix session + initial skill update.
+
+- **Skills audited:** 9 (all already audited above)
+- **Skills modified:** 7 (all 7 contrast/reflector skills v1.0.0 → v1.1.0)
+- **Skills new:** 0
+- **Governed skills touched:** 0
+- **Infra skills touched:** 0
+- **Agent card upgraded:** yes (v2.0.0 → v2.1.0)
+- **WARGAAA_CARD updated:** yes
+- **Pushed to AAA repo:** yes (commit `768c967`, 12 files, +400/-23)
+- **888_HOLD raised:** 0
+- **Key constitutional changes:**
+  - Added `## Federation anchors` section to all 7 contrast/reflector skills:
+    - canonical output path
+    - audit anchor (this file)
+    - companion skills in canonical order
+    - session entry/exit prompts
+    - last verified date + audit link
+  - Bumped all 7 skills v1.0.0 → v1.1.0 in YAML frontmatter (zen_added: 2026-07-16)
+  - SKILL_INDEX.md §2.5 updated to note v1.1.0 + new columns
+  - WARGAAA_CARD.md: agent_card_version + last_verified added
+  - agent-card.json: version 2.0.0 → 2.1.0, upgrade_history appended
+- **Entropy delta (ΔS):** ≤ 0 (all changes additive, all skills in 3-way sync: canonical + runtime + AAA)
+
+### Mirrors verified
+
+```
+/root/.arifos/agents/kimi/skills/        ← canonical (per SKILL_INDEX §0.4)
+/root/.kimi-code/skills/                ← runtime (kimi-code CLI reads this)
+/root/AAA/agents/_external/kimi-code/  ← AAA repo (pushed to origin/main)
+```
+
+All 7 contrast/reflector SKILL.md + KIMI_RSI_INIT_PROMPT.md + KIMI_HANDOVER_PROMPT.md
+diff = 0 across all 3 mirrors. agent-card.json at AAA only (canonical lives
+in AAA repo per federation doctrine).
+
+### Federation alignment verification
+
+- kimi-skill-reflector ← → AUDIT-recursive-audit (AAA project-scope)
+- KIMI_RSI_INIT_PROMPT ← → AGI-skill-unification (multi-harness catalog)
+- Federation anchors section ← → AGENTS_LANDING.md §0 (heptalogy structure)
+- Cold-boot diagnostic recipe ← → FORGE-entropy-sweep principle
+- Post-deploy verification recipe ← → FORGE-precommit-review ritual
+
+---
+
+*Last sealed state — sealed 2026-07-16 after Kimi zen pass + AAA push (commit 768c967).*
