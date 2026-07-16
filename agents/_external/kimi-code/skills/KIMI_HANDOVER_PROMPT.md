@@ -20,6 +20,12 @@ Before accepting the first user instruction, load `KIMI_RSI_INIT_PROMPT.md` and 
 8. `kimi-integrator-apex-contrast` — constitutional floor pass/fail
 9. `kimi-rsi-apex-contrast` — reproducible entropy measurement
 
+**Session close:** run `forge-end` (canonical ritual at `/usr/local/bin/forge-end`,
+source at `AAA/scripts/forge-end/`). 9 phases, F1-F13 enforced, writes
+intelligence handoff state file to `/root/.arifos/forge-end-state.json`.
+See `forge-end/README.md` for details. ATLAS333 framing: "Contour, don't
+excavate. Seal each contour. Never finish."
+
 Reference mapping lives in `.arifos/agents/kimi/skills/SKILL_INDEX.md`.
 
 ---
