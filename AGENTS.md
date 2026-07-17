@@ -147,8 +147,9 @@ See: /root/AAA/governance/AAA_HUMAN_SPEECH_RULE.md for full spec and translation
 | 7 | MEANING | `/root/AAA/docs/MEANING.md` — Rosetta Stone. What tools/resources mean per layer. | 20s |
 | 8 | The Trilogy | `arif-fazil.com/essays/` + `/root/.agents/skills/agentic-civilizational-context/SKILL.md` — the WHY. Load AFTER 1-7, BEFORE any tool call. | 30s |
 | 9 | 🌱 INIT (TRINITY-33 + RSI, zen-dated 2026.07.17) | `/root/AAA/prompts/INIT.md` (canonical active: full 33 map, 5-phase RSI, friction, axis status line) | 15s |
+| **10** | **PLANNINGORGAN222** | `/root/AAA/docs/PLANNINGORGAN222.md` — constitutional planning organ schema. Required before any multi-step `arif_think(mode=plan)` or `forge_execute`. | **10s** |
 
-**Total bootstrap ~105s.** Skip cost: category errors, layer violations, zombie tools, F1-F13 breaches.
+**Total bootstrap ~120s.** Skip cost: category errors, layer violations, zombie tools, F1-F13 breaches.
 
 **AAA warga alignment:** After global, load `/root/AAA/agents/AAA_ZEN_INIT.md` + `/root/AAA/docs/MCP-RESOURCES-MAP.md` (zen master under AAA — MCP/A2A/APEX + resources zen, no duplicates).
 
