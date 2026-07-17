@@ -1207,3 +1207,315 @@ tools:
   execution_kind: execute
   required_witnesses:
   - ARIFOS
+- id: arifos-seal
+  name: Arifos Seal
+  description: Seal to VAULT999 ledger
+  source_type: mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses: []
+- id: arifos-forge
+  name: Arifos Forge
+  description: Guarded execution via A-FORGE
+  source_type: mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses: []
+- id: arifos-memory
+  name: Arifos Memory
+  description: Memory recall across L1-L6
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-status
+  name: Well Status
+  description: WELL registry/health status
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-homeostasis
+  name: Well Homeostasis
+  description: Assess regulation and stability
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-vitality
+  name: Well Vitality
+  description: Validate vitality and readiness
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-substrate
+  name: Well Substrate
+  description: Substrate classification
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-lineage
+  name: Well Lineage
+  description: Memory trace and lineage
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-reliability
+  name: Well Reliability
+  description: Machine reliability assessment
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-repair
+  name: Well Repair
+  description: Repair and recovery check
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: well-dignity
+  name: Well Dignity
+  description: Dignity and consent guard
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-basin
+  name: Geox Basin
+  description: Basin intelligence and profiling
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-petrophysics
+  name: Geox Petrophysics
+  description: Petrophysical analysis
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-seismic
+  name: Geox Seismic
+  description: Seismic computation and interpretation
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-well
+  name: Geox Well
+  description: Well data ingestion and desk
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-prospect
+  name: Geox Prospect
+  description: Prospect evaluation and screening
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-claim
+  name: Geox Claim
+  description: Claim lifecycle management
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-evidence
+  name: Geox Evidence
+  description: Evidence synthesis and discovery
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-sequence
+  name: Geox Sequence
+  description: Sequence stratigraphy analysis
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-model
+  name: Geox Model
+  description: Subsurface model building
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-geomechanics
+  name: Geox Geomechanics
+  description: Geomechanical analysis
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: geox-gravmag
+  name: Geox Gravmag
+  description: Gravity/magnetic modeling
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-status
+  name: Wealth Status
+  description: WEALTH registry/health status
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-primitive
+  name: Wealth Primitive
+  description: Capital math primitives
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-health
+  name: Wealth Health
+  description: Financial health metrics
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-market
+  name: Wealth Market
+  description: Market data and stock analysis
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-wisdom
+  name: Wealth Wisdom
+  description: Capital wisdom synthesis
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-entropy
+  name: Wealth Entropy
+  description: Capital entropy analysis
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-ledger
+  name: Wealth Ledger
+  description: VAULT999 ledger access
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: wealth-registry
+  name: Wealth Registry
+  description: WEALTH registry introspection
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: aforge-status
+  name: Aforge Status
+  description: A-FORGE execution status
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: aforge-health
+  name: Aforge Health
+  description: A-FORGE health check
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: aforge-shell
+  name: Aforge Shell
+  description: Governed shell execution
+  source_type: mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses: []
+- id: aforge-filesystem
+  name: Aforge Filesystem
+  description: Governed filesystem operations
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: aforge-git
+  name: Aforge Git
+  description: Governed git operations
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: aforge-browser
+  name: Aforge Browser
+  description: Browser automation
+  source_type: mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: execute
+  required_witnesses: []
+- id: aforge-search
+  name: Aforge Search
+  description: Web search
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: aforge-fetch
+  name: Aforge Fetch
+  description: URL fetch and evidence intake
+  source_type: mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: aforge-execute
+  name: Aforge Execute
+  description: Governed execution pipeline
+  source_type: mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses: []
