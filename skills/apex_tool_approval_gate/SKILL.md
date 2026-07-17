@@ -1,5 +1,6 @@
 ---
 name: apex_tool_approval_gate
+description: Gate and route tool use across federation MCP servers according to authority, risk, and fallback policy. Use for multi-organ tool sequences, cross-server coordination, registry audits, or degraded-server fallback decisions.
 agent: 888-APEX
 namespace: apex_*
 cluster: GATE

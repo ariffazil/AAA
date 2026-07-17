@@ -1,3 +1,8 @@
+---
+name: verify-live-content
+description: Archived live-content verification law retained for audit provenance. Do not use as the active deployment verifier; use the current runtime verification skill for HTTP body, content-type, handler, redirect, and region checks.
+---
+
 # VERIFY_LIVE_CONTENT_LAW — Experience, Not Artifact
 
 > **DITEMPA BUKAN DIBERI** — Forged, not given.
@@ -82,4 +87,3 @@ done
 - `200 OK` proves the server responded. Not that user reached intended content.
 - `SHA on disk` proves artifact exists. Not that artifact is served.
 - **Verify the EXPERIENCE, not the ARTIFACT.**
-

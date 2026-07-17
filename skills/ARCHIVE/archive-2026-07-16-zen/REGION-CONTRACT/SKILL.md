@@ -1,3 +1,8 @@
+---
+name: region-contract
+description: Archived monolith-edit region contract retained for audit provenance. Do not use as the active editing workflow; use the current spatial or visual verification skill for region-preserving page changes.
+---
+
 # REGION-CONTRACT — Monolith Edit Guard
 
 > **DITEMPA BUKAN DIBERI** — Forged, not given.
@@ -62,4 +67,3 @@ done
 - CI gate: `grep -c 'data-region=' page.html` must equal expected count
 - Deploy gate: all expected regions present
 - Any missing region → VOID verdict, no deploy
-

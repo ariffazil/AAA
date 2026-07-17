@@ -1,5 +1,6 @@
 ---
 name: apex_authority_check
+description: Detect conflicting or parallel source-of-truth claims across federation repositories and resolve the canonical owner. Use after repository reorganization, when instructions conflict, or during federation authority audits.
 agent: 888-APEX
 namespace: apex_*
 cluster: IDENTITY
