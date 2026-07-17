@@ -1,8 +1,7 @@
 {
-  "$schema": "arifOS Deprecation Registry v1 — 2026-06-26",
+  "$schema": "arifOS Deprecation Registry v1 \u2014 2026-06-26",
   "$purpose": "Single source of truth for all deprecated tools, endpoints, services, skills, patterns, and conventions across the arifOS Federation. Agents MUST consult this before using any tool or endpoint. Updated whenever something is deprecated, migrated, or decommissioned.",
-  "$rule": "If a tool/endpoint/pattern IS in this registry → use the migration_path, not the deprecated item. If a tool/endpoint/pattern is NOT in this registry but seems stale → escalate as HOLD, do not use blindly.",
-
+  "$rule": "If a tool/endpoint/pattern IS in this registry \u2192 use the migration_path, not the deprecated item. If a tool/endpoint/pattern is NOT in this registry but seems stale \u2192 escalate as HOLD, do not use blindly.",
   "deprecated_tools": {
     "mcp__arifos__forge_*": {
       "status": "DEPRECATED_PROXY",
@@ -27,7 +26,7 @@
       "status": "DEPRECATED",
       "since": "2026-07-09",
       "migration": "Use arif_init(mode='preflight'|'triage'). Thin wire wrapper logs deprecation for one release.",
-      "reason": "Audit dual-existence kill — session preflight absorbed into arif_init (Spine P0 / MCP convergence)."
+      "reason": "Audit dual-existence kill \u2014 session preflight absorbed into arif_init (Spine P0 / MCP convergence)."
     },
     "mcp__arifos__arif_act": {
       "status": "INTERNAL_ONLY",
@@ -44,8 +43,8 @@
     "mcp__arifos__arif_measure": {
       "status": "DEGRADED",
       "since": "2026-06-22",
-      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use with caution. Fix pending.",
-      "reason": "Pre-existing FastMCP outputSchema incompatibility."
+      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use arif_ops_measure or arif_observe(mode='vitals') instead.",
+      "reason": "Pre-existing FastMCP incompatibility + zen naming overlap with arif_ops_measure."
     },
     "mcp__arifos__arif_route": {
       "status": "DEGRADED",
@@ -94,12 +93,6 @@
       "since": "2026-06-28",
       "migration": "Use arif_observe(mode='ingest') for URL fetching.",
       "reason": "Zen: same as arif_fetch. Both consolidated into arif_observe."
-    },
-    "mcp__arifos__arif_measure": {
-      "status": "DEGRADED",
-      "since": "2026-06-22",
-      "migration": "OutputSchema validation may fail with FastMCP 3.4.2. Use arif_ops_measure or arif_observe(mode='vitals') instead.",
-      "reason": "Pre-existing FastMCP incompatibility + zen naming overlap with arif_ops_measure."
     },
     "mcp__arifos__hermes_system_status": {
       "status": "DEPRECATED",
@@ -162,7 +155,7 @@
       "status": "DEPRECATED",
       "since": "2026-07-07",
       "migration": "Use bundled review + orthogonal-skill-update + grok-zen-aaa-substrate. For GitHub: github-operations.",
-      "reason": "Haram fitness 0.06 from equivalent compiler. Duplicate with bundled/federation review, contradicts Zen Witness (W³ collapse) + quant G/W³ in substrate. High entropy/chaos in review paths.",
+      "reason": "Haram fitness 0.06 from equivalent compiler. Duplicate with bundled/federation review, contradicts Zen Witness (W\u00b3 collapse) + quant G/W\u00b3 in substrate. High entropy/chaos in review paths.",
       "blast_radius": "Multiple review implementations cause contradictions and skill overload."
     },
     "create-skill": {
@@ -176,7 +169,7 @@
       "status": "DEPRECATED (general)",
       "since": "2026-07-07",
       "migration": "Use grok-zen-aaa-substrate for grounded/quant output or forge-document-intelligence.",
-      "reason": "Haram 0.007. High entropy schemas (XSD chaos), low fitness. Contradicts substrate physics/math/code/symbol + ΔS<=0. Overlap with federation doc intelligence.",
+      "reason": "Haram 0.007. High entropy schemas (XSD chaos), low fitness. Contradicts substrate physics/math/code/symbol + \u0394S<=0. Overlap with federation doc intelligence.",
       "blast_radius": "Bloat adds entropy without qual/quant/quantum value."
     },
     "pptx": {
@@ -216,7 +209,10 @@
     }
   },
   "grok_federation_overlap": {
-    "aforge_low_fitness": ["forge8_execute", "forge_vault (route/merge per compiler mean F 0.491)"],
+    "aforge_low_fitness": [
+      "forge8_execute",
+      "forge_vault (route/merge per compiler mean F 0.491)"
+    ],
     "grok_federation_dups": "create-skill<->skill-creator; code-review<->github-operations; office<->forge-document-intelligence; orthogonal<->meta-mesa; governed<->constitutional. Grok mean F 0.085 signals high chaos vs federation.",
     "action": "Prune legacy Grok; harden grok-zen-aaa-substrate + orthogonal-skill-update + upgrader + arif-governed."
   },
@@ -242,109 +238,108 @@
       "blast_radius": "Reflex chaos blocks Zen Zero."
     }
   },
-    "mcp__well__well_system_registry_status": {
-      "status": "LEGACY",
-      "since": "2026-06-28",
-      "migration": "Use mcp__well__well_registry_status (blueprint canonical format) instead.",
-      "reason": "Zen: WELL has TWO registry tools. well_registry_status is canonical."
-    },
-    "mcp__aforge__forge_browser": {
-      "status": "LEGACY",
-      "since": "2026-06-28",
-      "migration": "Use chrome-devtools MCP as canonical browser interface. 3 concurrent browser systems exist (forge_browser_*, chrome-devtools, playwright).",
-      "reason": "Zen: 3-way browser overlap. chrome-devtools is canonical."
-    },
-    "mcp__aforge__forge_search": {
-      "status": "DEPRECATED",
-      "since": "2026-07-01",
-      "migration": "Use mcp_brave_search or arif_observe(mode='search').",
-      "reason": "Zen: redundant wrapper around Brave. 17→7 search surface. Canonical: mcp_brave_search."
-    },
-    "mcp__aforge__forge_research": {
-      "status": "DEPRECATED",
-      "since": "2026-07-01",
-      "migration": "Use mcp_perplexity_ask, mcp_perplexity_reason, or mcp_perplexity_research.",
-      "reason": "Zen: redundant wrapper around Perplexity. 17→7 search surface. Canonical: hermes mcp_perplexity_*."
-    },
-    "mcp__hermes__web_extract": {
-      "status": "DEPRECATED",
-      "since": "2026-07-01",
-      "migration": "Use forge_web_extract (Playwright + Readability).",
-      "reason": "Zen: Tavily API is DEAD (402). forge_web_extract is the replacement."
-    },
-    "mcp__hermes__mcp_perplexity_search": {
-      "status": "DEPRECATED",
-      "since": "2026-07-01",
-      "migration": "Use mcp_brave_search for raw results. Use mcp_perplexity_ask for AI-synthesized answers.",
-      "reason": "Zen: redundant with mcp_brave_search. 17→7 search surface."
-    },
-    "mcp__geox__geox_surface_status": {
-      "status": "LEGACY",
-      "since": "2026-06-28",
-      "migration": "Consider renaming to geox_system_registry_status for naming consistency with WEALTH (wealth_system_registry_status) and WELL (well_registry_status).",
-      "reason": "Zen: naming inconsistency across organs."
-    },
-    "mcp__arifos__arif_ops_measure": {
-      "status": "LEGACY",
-      "since": "2026-06-28",
-      "migration": "Use arif_observe(mode='vitals') or forge_health_check for system metrics.",
-      "reason": "Zen: naming overlap with arif_measure. Ops metrics consolidate under arif_observe."
-    },
-    "mcp__arifos__arif_session_init": {
-      "status": "DEPRECATED",
-      "since": "2026-07-05",
-      "migration": "Use mcp__arifos__arif_init instead. arif_session_init is a legacy SDK alias — behavior is identical, only the name differs. New calls MUST use arif_init.",
-      "reason": "Fitness audit 2026-07-05: SDK alias creates naming confusion. arif_init is canonical per AGENTS.md heptalogy."
-    },
-    "mcp__aforge__forge_systemctl": {
-      "status": "DEPRECATED",
-      "since": "2026-07-05",
-      "migration": "Use mcp__aforge__forge_shell(mode='command', command='systemctl ...') instead. forge_systemctl is a deprecated thin wrapper.",
-      "reason": "Fitness audit 2026-07-05: forge_systemctl marked [DEPRECATED] in its own tool description. forge_shell is the canonical shell primitive."
-    },
-    "mcp__wealth__wealth_monte_carlo": {
-      "status": "DEPRECATED",
-      "since": "2026-07-05",
-      "migration": "Use mcp__wealth__wealth_monte_carlo_simulate instead. Identical behavior, canonical name.",
-      "reason": "Fitness audit 2026-07-05: legacy alias. wealth_monte_carlo_simulate is the canonical tool."
-    },
-    "mcp__wealth__wealth_emv_compute": {
-      "status": "DEPRECATED",
-      "since": "2026-07-05",
-      "migration": "Use mcp__wealth__wealth_compute_emv instead. Identical behavior, canonical name.",
-      "reason": "Fitness audit 2026-07-05: legacy alias. wealth_compute_emv is the canonical tool."
-    },
-    "mcp__wealth__wealth_evoi_compute": {
-      "status": "DEPRECATED",
-      "since": "2026-07-05",
-      "migration": "Use mcp__wealth__wealth_compute_evoi instead. Identical behavior, canonical name.",
-      "reason": "Fitness audit 2026-07-05: legacy alias. wealth_compute_evoi is the canonical tool."
-    },
-    "mcp__wealth__wealth_reason_agent": {
-      "status": "DEPRECATED",
-      "since": "2026-07-05",
-      "migration": "Use mcp__wealth__wealth_agent_path instead. Identical behavior, canonical name.",
-      "reason": "Fitness audit 2026-07-05: legacy alias. wealth_agent_path is the canonical tool."
-    },
-    "mcp__geox__geox_seismic_ingest": {
-      "status": "REMOVED",
-      "since": "2026-07-06",
-      "migration": "Use mcp__geox__geox_seismic_compute(mode='tengok') instead.",
-      "reason": "Seismic consolidation: merged into unified seismic_compute explorer."
-    },
-    "mcp__geox__geox_seismic_interpret": {
-      "status": "REMOVED",
-      "since": "2026-07-06",
-      "migration": "Use mcp__geox__geox_seismic_compute(mode='agak') instead.",
-      "reason": "Seismic consolidation: merged into unified seismic_compute explorer."
-    },
-    "mcp__well__well_guard_dignity": {
-      "status": "REMOVED",
-      "since": "2026-07-06",
-      "migration": "Use mcp__well__well_validate_vitality(mode='cabar') instead.",
-      "reason": "Dignity tools pruned per constitutional alignment (reflection only)."
-    },
-
+  "mcp__well__well_system_registry_status": {
+    "status": "LEGACY",
+    "since": "2026-06-28",
+    "migration": "Use mcp__well__well_registry_status (blueprint canonical format) instead.",
+    "reason": "Zen: WELL has TWO registry tools. well_registry_status is canonical."
+  },
+  "mcp__aforge__forge_browser": {
+    "status": "LEGACY",
+    "since": "2026-06-28",
+    "migration": "Use chrome-devtools MCP as canonical browser interface. 3 concurrent browser systems exist (forge_browser_*, chrome-devtools, playwright).",
+    "reason": "Zen: 3-way browser overlap. chrome-devtools is canonical."
+  },
+  "mcp__aforge__forge_search": {
+    "status": "DEPRECATED",
+    "since": "2026-07-01",
+    "migration": "Use mcp_brave_search or arif_observe(mode='search').",
+    "reason": "Zen: redundant wrapper around Brave. 17\u21927 search surface. Canonical: mcp_brave_search."
+  },
+  "mcp__aforge__forge_research": {
+    "status": "DEPRECATED",
+    "since": "2026-07-01",
+    "migration": "Use mcp_perplexity_ask, mcp_perplexity_reason, or mcp_perplexity_research.",
+    "reason": "Zen: redundant wrapper around Perplexity. 17\u21927 search surface. Canonical: hermes mcp_perplexity_*."
+  },
+  "mcp__hermes__web_extract": {
+    "status": "DEPRECATED",
+    "since": "2026-07-01",
+    "migration": "Use forge_web_extract (Playwright + Readability).",
+    "reason": "Zen: Tavily API is DEAD (402). forge_web_extract is the replacement."
+  },
+  "mcp__hermes__mcp_perplexity_search": {
+    "status": "DEPRECATED",
+    "since": "2026-07-01",
+    "migration": "Use mcp_brave_search for raw results. Use mcp_perplexity_ask for AI-synthesized answers.",
+    "reason": "Zen: redundant with mcp_brave_search. 17\u21927 search surface."
+  },
+  "mcp__geox__geox_surface_status": {
+    "status": "LEGACY",
+    "since": "2026-06-28",
+    "migration": "Consider renaming to geox_system_registry_status for naming consistency with WEALTH (wealth_system_registry_status) and WELL (well_registry_status).",
+    "reason": "Zen: naming inconsistency across organs."
+  },
+  "mcp__arifos__arif_ops_measure": {
+    "status": "LEGACY",
+    "since": "2026-06-28",
+    "migration": "Use arif_observe(mode='vitals') or forge_health_check for system metrics.",
+    "reason": "Zen: naming overlap with arif_measure. Ops metrics consolidate under arif_observe."
+  },
+  "mcp__arifos__arif_session_init": {
+    "status": "DEPRECATED",
+    "since": "2026-07-05",
+    "migration": "Use mcp__arifos__arif_init instead. arif_session_init is a legacy SDK alias \u2014 behavior is identical, only the name differs. New calls MUST use arif_init.",
+    "reason": "Fitness audit 2026-07-05: SDK alias creates naming confusion. arif_init is canonical per AGENTS.md heptalogy."
+  },
+  "mcp__aforge__forge_systemctl": {
+    "status": "DEPRECATED",
+    "since": "2026-07-05",
+    "migration": "Use mcp__aforge__forge_shell(mode='command', command='systemctl ...') instead. forge_systemctl is a deprecated thin wrapper.",
+    "reason": "Fitness audit 2026-07-05: forge_systemctl marked [DEPRECATED] in its own tool description. forge_shell is the canonical shell primitive."
+  },
+  "mcp__wealth__wealth_monte_carlo": {
+    "status": "DEPRECATED",
+    "since": "2026-07-05",
+    "migration": "Use mcp__wealth__wealth_monte_carlo_simulate instead. Identical behavior, canonical name.",
+    "reason": "Fitness audit 2026-07-05: legacy alias. wealth_monte_carlo_simulate is the canonical tool."
+  },
+  "mcp__wealth__wealth_emv_compute": {
+    "status": "DEPRECATED",
+    "since": "2026-07-05",
+    "migration": "Use mcp__wealth__wealth_compute_emv instead. Identical behavior, canonical name.",
+    "reason": "Fitness audit 2026-07-05: legacy alias. wealth_compute_emv is the canonical tool."
+  },
+  "mcp__wealth__wealth_evoi_compute": {
+    "status": "DEPRECATED",
+    "since": "2026-07-05",
+    "migration": "Use mcp__wealth__wealth_compute_evoi instead. Identical behavior, canonical name.",
+    "reason": "Fitness audit 2026-07-05: legacy alias. wealth_compute_evoi is the canonical tool."
+  },
+  "mcp__wealth__wealth_reason_agent": {
+    "status": "DEPRECATED",
+    "since": "2026-07-05",
+    "migration": "Use mcp__wealth__wealth_agent_path instead. Identical behavior, canonical name.",
+    "reason": "Fitness audit 2026-07-05: legacy alias. wealth_agent_path is the canonical tool."
+  },
+  "mcp__geox__geox_seismic_ingest": {
+    "status": "REMOVED",
+    "since": "2026-07-06",
+    "migration": "Use mcp__geox__geox_seismic_compute(mode='tengok') instead.",
+    "reason": "Seismic consolidation: merged into unified seismic_compute explorer."
+  },
+  "mcp__geox__geox_seismic_interpret": {
+    "status": "REMOVED",
+    "since": "2026-07-06",
+    "migration": "Use mcp__geox__geox_seismic_compute(mode='agak') instead.",
+    "reason": "Seismic consolidation: merged into unified seismic_compute explorer."
+  },
+  "mcp__well__well_guard_dignity": {
+    "status": "REMOVED",
+    "since": "2026-07-06",
+    "migration": "Use mcp__well__well_validate_vitality(mode='cabar') instead.",
+    "reason": "Dignity tools pruned per constitutional alignment (reflection only)."
+  },
   "deprecated_services": {
     "apex-prime.service": {
       "status": "STOPPED_DISABLED",
@@ -362,10 +357,9 @@
       "status": "REMOVED",
       "since": "2026-05-26",
       "migration": "OpenClaw GW (port 18789) covers A2A mesh.",
-      "reason": "Dead adapter — NameError. Service file deleted."
+      "reason": "Dead adapter \u2014 NameError. Service file deleted."
     }
   },
-
   "deprecated_endpoints": {
     "apex.arif-fazil.com": {
       "status": "REDIRECTED",
@@ -377,17 +371,19 @@
       "status": "DEPRECATED_PROXY",
       "since": "2026-06-02",
       "migration": "Use https://forge.arif-fazil.com/mcp for all forge_* tools.",
-      "reason": "Substrate split: governance (arifOS) ≠ engineering (A-FORGE)."
+      "reason": "Substrate split: governance (arifOS) \u2260 engineering (A-FORGE)."
     }
   },
-
   "deprecated_patterns": {
     "non_date_tags": {
       "status": "FORBIDDEN",
       "since": "2026-06-05",
       "migration": "Use vYYYY.MM.DD format only (e.g., v2026.06.26).",
-      "reason": "Date-stamp tags are iron rule. The forge date IS the version. Existing cikai tags (v55.*, v0.1.*) are legacy — do not replicate.",
-      "existing_legacy": ["v55.*", "v0.1.*"]
+      "reason": "Date-stamp tags are iron rule. The forge date IS the version. Existing cikai tags (v55.*, v0.1.*) are legacy \u2014 do not replicate.",
+      "existing_legacy": [
+        "v55.*",
+        "v0.1.*"
+      ]
     },
     "containerize_core_organs": {
       "status": "FORBIDDEN",
@@ -408,7 +404,6 @@
       "reason": "F1 AMANAH: secret exposure is irreversible."
     }
   },
-
   "deprecated_skills": {
     "openclaw-a2a-bridge (v0.1.0)": {
       "status": "LEGACY",
@@ -423,23 +418,59 @@
       "location": "/root/.agents/skills/.archive-2026-07-08/",
       "count": 31,
       "migration": "All 31 archived skills have canonical surfaced counterparts or are obsolete. Use surfaced skills via skills_list().",
-      "reason": "Fitness audit: 96→65 orphaned reduction. High-entropy legacy/duplicate/Apple skills archived. F4 (ΔS ≤ 0): entropy reduced from 209→178 active.",
+      "reason": "Fitness audit: 96\u219265 orphaned reduction. High-entropy legacy/duplicate/Apple skills archived. F4 (\u0394S \u2264 0): entropy reduced from 209\u2192178 active.",
       "categories": {
-        "legacy_agents (14)": ["FORGECODE-Autonomous-Init", "aforge-execution", "agentic-builder", "agentic-civilizational-context", "agentic-fitness-law", "agentic-web-optimization", "forge-document-intelligence", "forge-opencode-spawn", "mcp-apps-builder", "webmcp-site-builder", "arif-agent-bootstrap", "arif-fazil-site", "asi-knowledge-writeback", "hermes-explorer-dispatch"],
-        "duplicates (7)": ["mmx-cli→minimax-cli", "universal-reality-loop→reality-loop-operator", "skill-creator→hermes-agent-skill-authoring", "shadow-diagnostic→shadow-alignment-test", "auditor-shadow-diagnostic→shadow-alignment-test", "explorer-falsify-dispatch→explorer-dispatch-protocol", "explorer-intelligence-architecture→explorer-dispatch-protocol"],
-        "apple_ecosystem (3)": ["apple-notes", "apple-reminders", "findmy"],
-        "other_review (7)": ["caller-trace", "claude", "fix-sequencer", "hf-mastery", "iron-shell-render", "mcp-mastery", "serpapi-intelligence", "pre-action-prediction", "tools-embodiment-application"]
+        "legacy_agents (14)": [
+          "FORGECODE-Autonomous-Init",
+          "aforge-execution",
+          "agentic-builder",
+          "agentic-civilizational-context",
+          "agentic-fitness-law",
+          "agentic-web-optimization",
+          "forge-document-intelligence",
+          "forge-opencode-spawn",
+          "mcp-apps-builder",
+          "webmcp-site-builder",
+          "arif-agent-bootstrap",
+          "arif-fazil-site",
+          "asi-knowledge-writeback",
+          "hermes-explorer-dispatch"
+        ],
+        "duplicates (7)": [
+          "mmx-cli\u2192minimax-cli",
+          "universal-reality-loop\u2192reality-loop-operator",
+          "skill-creator\u2192hermes-agent-skill-authoring",
+          "shadow-diagnostic\u2192shadow-alignment-test",
+          "auditor-shadow-diagnostic\u2192shadow-alignment-test",
+          "explorer-falsify-dispatch\u2192explorer-dispatch-protocol",
+          "explorer-intelligence-architecture\u2192explorer-dispatch-protocol"
+        ],
+        "apple_ecosystem (3)": [
+          "apple-notes",
+          "apple-reminders",
+          "findmy"
+        ],
+        "other_review (7)": [
+          "caller-trace",
+          "claude",
+          "fix-sequencer",
+          "hf-mastery",
+          "iron-shell-render",
+          "mcp-mastery",
+          "serpapi-intelligence",
+          "pre-action-prediction",
+          "tools-embodiment-application"
+        ]
       },
       "blast_radius": "Low. All 31 have canonical surfaced counterparts or were already unused."
     }
   },
-
   "deprecated_conventions": {
     "gemini_workspace_tools": {
       "status": "REMOVED",
       "since": "2026-05-20",
       "migration": "Google Workspace moved to private peripheral adapter. No longer in arifOS core.",
-      "reason": "Kernel Purity Seal — arifOS core only contains constitutional tools."
+      "reason": "Kernel Purity Seal \u2014 arifOS core only contains constitutional tools."
     },
     "wealth_hidden_aliases": {
       "status": "LEGACY",
@@ -448,9 +479,8 @@
       "reason": "Tool surface canonicalization."
     }
   },
-
   "zen_issues": {
-    "$note": "These are NOT deprecations — they are tool-zen issues identified in the 2026-06-28 audit. They represent naming inconsistencies, organizational drift, and simplification opportunities. Listed here until resolved or formally deprecated.",
+    "$note": "These are NOT deprecations \u2014 they are tool-zen issues identified in the 2026-06-28 audit. They represent naming inconsistencies, organizational drift, and simplification opportunities. Listed here until resolved or formally deprecated.",
     "arifos_hermes_6_tools": {
       "severity": "MEDIUM",
       "description": "6 Hermes tools leak into arifOS MCP surface (hermes_system_status, hermes_epistemic_check, hermes_fact_check, hermes_cross_verify, hermes_plan_review, hermes_memory_steward). Should migrate to dedicated Hermes MCP server.",
@@ -488,7 +518,7 @@
     },
     "aforge_registry_empty": {
       "severity": "LOW",
-      "description": "forge_registry returns 0 registered tools. APEX Decision Field registry is empty — all forge_* tools come from static registration, not the dynamic APEX system.",
+      "description": "forge_registry returns 0 registered tools. APEX Decision Field registry is empty \u2014 all forge_* tools come from static registration, not the dynamic APEX system.",
       "status": "UNRESOLVED"
     },
     "minimax_accept_header": {
@@ -497,45 +527,218 @@
       "status": "UNRESOLVED"
     }
   },
-
   "deprecated_skills_2026-07-08": {
-    "skill_FORGECODE-Autonomous-Init": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use hermes-prime-reflex-v2 + forge_session_init.","reason":"Pre-reflex-v2. Superseded by 000→999 metabolic cycle."},
-    "skill_aforge-execution": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_execute directly.","reason":"Wrapper. A-FORGE directly callable."},
-    "skill_agentic-builder": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_synthesize + forge_execute.","reason":"Superseded by A-FORGE pipeline."},
-    "skill_agentic-civilizational-context": {"status":"ARCHIVED","since":"2026-07-08","migration":"In AGENTS.md Heptalogy §8.","reason":"Absorbed into AGENTS.md."},
-    "skill_agentic-fitness-law": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use apex-governance + forge_evaluate.","reason":"Superseded by APEX gates."},
-    "skill_agentic-web-optimization": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use web_search + web_extract.","reason":"Superseded."},
-    "skill_forge-document-intelligence": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_document_ingest.","reason":"Native A-FORGE tool now."},
-    "skill_forge-opencode-spawn": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use delegate_task or opencode skill.","reason":"Superseded."},
-    "skill_mcp-apps-builder": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use mcp-server-building skill.","reason":"Consolidated."},
-    "skill_webmcp-site-builder": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use claude-design or popular-web-designs.","reason":"Superseded."},
-    "skill_arif-agent-bootstrap": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use AGENTS.md Heptalogy bootstrap.","reason":"Absorbed."},
-    "skill_arif-fazil-site": {"status":"ARCHIVED","since":"2026-07-08","migration":"Via AAA cockpit + forge_git.","reason":"Consolidated under AAA."},
-    "skill_asi-knowledge-writeback": {"status":"REACTIVATED","since":"2026-07-08","migration":"Write path for 555-ASI knowledge graph. Pair with knowledge-graph-query (S15). Governed by unified-memory-federation.","reason":"Part of unified memory architecture; provides SEAL-gated knowledge graph writes."},
-    "skill_hermes-explorer-dispatch": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use explorer-dispatch-protocol.","reason":"Renamed."},
-    "skill_mmx-cli": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use minimax-cli.","reason":"Duplicate."},
-    "skill_serpapi-intelligence": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use web_search + forge_search.","reason":"Superseded by Brave."},
-    "skill_mcp-mastery": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use mcp-server-building.","reason":"Superseded."},
-    "skill_hf-mastery": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use huggingface-hub.","reason":"Superseded."},
-    "skill_tools-embodiment-application": {"status":"ARCHIVED","since":"2026-07-08","migration":"Unknown. Contact sovereign.","reason":"Orphaned."},
-    "skill_fix-sequencer": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use systematic-debugging.","reason":"Superseded."},
-    "skill_caller-trace": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_judge_proxy + arif_triage.","reason":"No longer needed."},
-    "skill_iron-shell-render": {"status":"ARCHIVED","since":"2026-07-08","migration":"Unknown. Contact sovereign.","reason":"Orphaned."},
-    "skill_skill-creator": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use hermes-agent-skill-authoring.","reason":"Duplicate."},
-    "skill_shadow-diagnostic": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use shadow-alignment-test.","reason":"Consolidated."},
-    "skill_auditor-shadow-diagnostic": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use shadow-alignment-test.","reason":"Duplicate variant."},
-    "skill_explorer-falsify-dispatch": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use explorer-dispatch-protocol.","reason":"Consolidated."},
-    "skill_explorer-intelligence-architecture": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use explorer-dispatch-protocol.","reason":"Consolidated."},
-    "skill_reality-loop-operator": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_reality_loop + reflex-v2.","reason":"Canonical is forge_reality_loop."},
-    "skill_universal-reality-loop": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_reality_loop + reflex-v2.","reason":"Duplicate variant."},
-    "skill_pre-action-prediction": {"status":"ARCHIVED","since":"2026-07-08","migration":"In reflex-v2 §0.","reason":"Absorbed."},
-    "skill_github-operations-claude": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use claude-code.","reason":"Duplicate."},
-    "apex-9-kernel-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use KERNEL-trinity-33 (final 33-repo Trinity) + /root/AAA/docs/TRINITY_33_REPOS.md. The 9 was absorbed into 11-per-axis orthogonal model.","reason":"Final 33-repo Trinity (K11+C11+F11) is canonical. APEX-9 lists are legacy framing."},
-    "aforge-apex-9-execution": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use KERNEL-trinity-33 (final 33-repo Trinity). A-FORGE axis is now F1–F11.","reason":"Final 33 supersedes prior 9-per-axis lists. Sharper separation of duties."},
-    "aforge-apex-9-execution-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use KERNEL-trinity-33.","reason":"Superseded by 33-repo canonical."},
-    "apex-trinity-orthogonal": {"status":"SUPERSEDED_FRAMING","since":"2026-07-08","migration":"Still useful for orthogonal thinking. Primary repo authority is KERNEL-trinity-33 + TRINITY_33_REPOS.md (33 wajib).","reason":"18-repo (two 9s) view absorbed; 33 is final."}
+    "skill_FORGECODE-Autonomous-Init": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use hermes-prime-reflex-v2 + forge_session_init.",
+      "reason": "Pre-reflex-v2. Superseded by 000\u2192999 metabolic cycle."
+    },
+    "skill_aforge-execution": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use forge_execute directly.",
+      "reason": "Wrapper. A-FORGE directly callable."
+    },
+    "skill_agentic-builder": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use forge_synthesize + forge_execute.",
+      "reason": "Superseded by A-FORGE pipeline."
+    },
+    "skill_agentic-civilizational-context": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "In AGENTS.md Heptalogy \u00a78.",
+      "reason": "Absorbed into AGENTS.md."
+    },
+    "skill_agentic-fitness-law": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use apex-governance + forge_evaluate.",
+      "reason": "Superseded by APEX gates."
+    },
+    "skill_agentic-web-optimization": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use web_search + web_extract.",
+      "reason": "Superseded."
+    },
+    "skill_forge-document-intelligence": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use forge_document_ingest.",
+      "reason": "Native A-FORGE tool now."
+    },
+    "skill_forge-opencode-spawn": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use delegate_task or opencode skill.",
+      "reason": "Superseded."
+    },
+    "skill_mcp-apps-builder": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use mcp-server-building skill.",
+      "reason": "Consolidated."
+    },
+    "skill_webmcp-site-builder": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use claude-design or popular-web-designs.",
+      "reason": "Superseded."
+    },
+    "skill_arif-agent-bootstrap": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use AGENTS.md Heptalogy bootstrap.",
+      "reason": "Absorbed."
+    },
+    "skill_arif-fazil-site": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Via AAA cockpit + forge_git.",
+      "reason": "Consolidated under AAA."
+    },
+    "skill_asi-knowledge-writeback": {
+      "status": "REACTIVATED",
+      "since": "2026-07-08",
+      "migration": "Write path for 555-ASI knowledge graph. Pair with knowledge-graph-query (S15). Governed by unified-memory-federation.",
+      "reason": "Part of unified memory architecture; provides SEAL-gated knowledge graph writes."
+    },
+    "skill_hermes-explorer-dispatch": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use explorer-dispatch-protocol.",
+      "reason": "Renamed."
+    },
+    "skill_mmx-cli": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use minimax-cli.",
+      "reason": "Duplicate."
+    },
+    "skill_serpapi-intelligence": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use web_search + forge_search.",
+      "reason": "Superseded by Brave."
+    },
+    "skill_mcp-mastery": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use mcp-server-building.",
+      "reason": "Superseded."
+    },
+    "skill_hf-mastery": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use huggingface-hub.",
+      "reason": "Superseded."
+    },
+    "skill_tools-embodiment-application": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Unknown. Contact sovereign.",
+      "reason": "Orphaned."
+    },
+    "skill_fix-sequencer": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use systematic-debugging.",
+      "reason": "Superseded."
+    },
+    "skill_caller-trace": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use forge_judge_proxy + arif_triage.",
+      "reason": "No longer needed."
+    },
+    "skill_iron-shell-render": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Unknown. Contact sovereign.",
+      "reason": "Orphaned."
+    },
+    "skill_skill-creator": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use hermes-agent-skill-authoring.",
+      "reason": "Duplicate."
+    },
+    "skill_shadow-diagnostic": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use shadow-alignment-test.",
+      "reason": "Consolidated."
+    },
+    "skill_auditor-shadow-diagnostic": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use shadow-alignment-test.",
+      "reason": "Duplicate variant."
+    },
+    "skill_explorer-falsify-dispatch": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use explorer-dispatch-protocol.",
+      "reason": "Consolidated."
+    },
+    "skill_explorer-intelligence-architecture": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use explorer-dispatch-protocol.",
+      "reason": "Consolidated."
+    },
+    "skill_reality-loop-operator": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use forge_reality_loop + reflex-v2.",
+      "reason": "Canonical is forge_reality_loop."
+    },
+    "skill_universal-reality-loop": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use forge_reality_loop + reflex-v2.",
+      "reason": "Duplicate variant."
+    },
+    "skill_pre-action-prediction": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "In reflex-v2 \u00a70.",
+      "reason": "Absorbed."
+    },
+    "skill_github-operations-claude": {
+      "status": "ARCHIVED",
+      "since": "2026-07-08",
+      "migration": "Use claude-code.",
+      "reason": "Duplicate."
+    },
+    "apex-9-kernel-reference": {
+      "status": "SUPERSEDED",
+      "since": "2026-07-08",
+      "migration": "Use KERNEL-trinity-33 (final 33-repo Trinity) + /root/AAA/docs/TRINITY_33_REPOS.md. The 9 was absorbed into 11-per-axis orthogonal model.",
+      "reason": "Final 33-repo Trinity (K11+C11+F11) is canonical. APEX-9 lists are legacy framing."
+    },
+    "aforge-apex-9-execution": {
+      "status": "SUPERSEDED",
+      "since": "2026-07-08",
+      "migration": "Use KERNEL-trinity-33 (final 33-repo Trinity). A-FORGE axis is now F1\u2013F11.",
+      "reason": "Final 33 supersedes prior 9-per-axis lists. Sharper separation of duties."
+    },
+    "aforge-apex-9-execution-reference": {
+      "status": "SUPERSEDED",
+      "since": "2026-07-08",
+      "migration": "Use KERNEL-trinity-33.",
+      "reason": "Superseded by 33-repo canonical."
+    },
+    "apex-trinity-orthogonal": {
+      "status": "SUPERSEDED_FRAMING",
+      "since": "2026-07-08",
+      "migration": "Still useful for orthogonal thinking. Primary repo authority is KERNEL-trinity-33 + TRINITY_33_REPOS.md (33 wajib).",
+      "reason": "18-repo (two 9s) view absorbed; 33 is final."
+    }
   },
-
   "deprecation_lifecycle": {
     "stages": {
       "ANNOUNCED": "Deprecation declared. Old item still works but emits warning.",
@@ -553,5 +756,19 @@
       "6. Wait one session before REMOVED status (F1 AMANAH: reversible window)",
       "7. After removal, grep codebase for residual references and clean up"
     ]
+  },
+  "deprecated_agents": {
+    "A-AUDIT": {
+      "status": "COLLAPSED",
+      "since": "2026-07-15",
+      "migration": "Absorbed into arifOS constitutional audit tools (arif_judge, arif_seal, arif_memory). A2A routing removed from server.js. Agent card marked deprecated.",
+      "card_path": "a2a-server/agent-cards/functions/A-AUDIT.json"
+    },
+    "A-ARCHIVE": {
+      "status": "COLLAPSED",
+      "since": "2026-07-15",
+      "migration": "Absorbed into VAULT999 seal chain (arif_seal \u2192 VAULT999 immutable append). No intermediate archivist agent needed. A2A routing removed from server.js. Agent card marked deprecated.",
+      "card_path": "a2a-server/agent-cards/functions/A-ARCHIVE.json"
+    }
   }
 }

@@ -550,7 +550,7 @@
       "principal_agent": "llm",
       "citizenship": "warga-aaa",
       "intelligence_tier": "AGI",
-      "host_binding": "github-copilot-cli",
+      "host_binding": "copilot-cli",
       "agent_doc": "/root/.arifos/agents/copilot/AGENTS.md",
       "forged": "2026-07-17"
     },

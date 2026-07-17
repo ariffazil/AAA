@@ -91,8 +91,7 @@ function getRingForAgent(agentId) {
     '555-ASI': 'generator',
     '777-forge': 'generator',
     '888-APEX': 'epistemic_floor',
-    'A-AUDIT': 'epistemic_floor',
-    'A-ARCHIVE': 'neutral',
+    // A-AUDIT, A-ARCHIVE — COLLAPSED 2026-07-15
     'hermes-asi': 'generator',
     'openclaw': 'generator',
     'opencode': 'generator',
