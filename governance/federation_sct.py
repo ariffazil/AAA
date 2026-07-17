@@ -493,10 +493,15 @@ def gate_tool_ingress(
     required_authority: str = "OBSERVE_ONLY",
     require_sct: bool = False,
     organ: str = "unknown",
+    use_registry: bool = True,
+    strict_unknown: bool = False,
 ) -> dict[str, Any] | None:
-    """Organ ingress SCT gate — collect-all + detect-conflicts + verify.
+    """Organ ingress SCT gate — registry-owned authority + SCT conflict check.
 
     Policy:
+      - PR2: action_class / require_sct come from TOOL_AUTHORITY_REGISTRY
+        (tools.yaml mapping). Caller-supplied action_class is ignored.
+        Caller flags may only *tighten* (never weaken) registry decisions.
       - AMBIGUOUS (multiple distinct tokens) → REJECT immediately
       - If SCT is present → must verify (fail closed).
       - If require_sct=True and SCT missing → SCT_REQUIRED reject.
@@ -504,7 +509,33 @@ def gate_tool_ingress(
 
     Returns None to proceed, or a rejection dict with extraction evidence.
     """
-    args = arguments if isinstance(arguments, dict) else {}
+    # PR2: strip caller authority self-declaration before any use
+    try:
+        from governance.tool_authority_registry import (
+            effective_gate_params,
+            strip_caller_action_class,
+        )
+    except ImportError:  # pragma: no cover — path variant when AAA not on sys.path
+        from tool_authority_registry import (  # type: ignore
+            effective_gate_params,
+            strip_caller_action_class,
+        )
+
+    raw_args = arguments if isinstance(arguments, dict) else {}
+    args = strip_caller_action_class(raw_args)
+
+    rec, eff_require_sct, eff_authority, reg_reject = effective_gate_params(
+        tool_name,
+        organ=organ,
+        caller_require_sct=require_sct,
+        caller_required_authority=required_authority,
+        use_registry=use_registry,
+        strict_unknown=strict_unknown,
+    )
+    if reg_reject is not None:
+        reg_reject["actor"] = None
+        return reg_reject
+
     actor = None
     for key in ("actor_id", "actor", "caller_actor_id"):
         if isinstance(args.get(key), str) and args[key].strip():
@@ -524,6 +555,7 @@ def gate_tool_ingress(
             "tool": tool_name,
             "organ": organ,
             "actor": actor,
+            "registry": rec.to_dict(),
             "extraction": extraction.to_dict(),
             "_epistemic": {
                 "output_class": "GOVERNANCE_TEMPLATE",
@@ -535,16 +567,18 @@ def gate_tool_ingress(
 
     # ABSENT — no token found
     if extraction.status == "ABSENT":
-        if require_sct:
+        if eff_require_sct:
             return {
                 "error": "SCT_REQUIRED",
                 "message": (
                     f"Tool '{tool_name}' requires a valid Session Capability Token "
-                    f"(session_token / _meta.sct / X-ArifOS-SCT). Mint via arif_init."
+                    f"(session_token / _meta.sct / X-ArifOS-SCT). Mint via arif_init. "
+                    f"Registry action_class={rec.action_class} source={rec.source}."
                 ),
                 "tool": tool_name,
                 "organ": organ,
                 "actor": actor,
+                "registry": rec.to_dict(),
                 "extraction": extraction.to_dict(),
                 "_epistemic": {
                     "output_class": "GOVERNANCE_TEMPLATE",
@@ -555,16 +589,17 @@ def gate_tool_ingress(
             }
         return None
 
-    # PRESENT — verify the single unique token
+    # PRESENT — verify the single unique token against registry floor
     rej = verify_or_reject(
         extraction.token,
         expected_actor=actor,
-        required_authority=required_authority,
+        required_authority=eff_authority,
         meta=meta,
     )
     if rej is None:
         return None
     rej["tool"] = tool_name
     rej["organ"] = organ
+    rej["registry"] = rec.to_dict()
     rej["extraction"] = extraction.to_dict()
     return rej

@@ -2,14 +2,12 @@ const FEDERATION_LINKS = [
   { label: 'arif-fazil.com', href: 'https://arif-fazil.com/', icon: '🏛️' },
   { label: 'AAA Cockpit', href: 'https://aaa.arif-fazil.com/', icon: 'Δ', active: true },
   { label: 'Observatory', href: 'https://arifos.arif-fazil.com/', icon: 'Ω' },
-  { label: 'Dashboard v2', href: 'https://arifos.arif-fazil.com/dashboard-v2.html', icon: '📊' },
   { label: 'GEOX', href: 'https://geox.arif-fazil.com/', icon: 'Φ' },
   { label: 'WEALTH', href: 'https://wealth.arif-fazil.com/', icon: 'Ξ' },
   { label: 'WELL', href: 'https://well.arif-fazil.com/', icon: 'Ω★' },
   { label: 'A-FORGE', href: 'https://forge.arif-fazil.com/', icon: '⚒️' },
   { label: 'MCP Gateway', href: 'https://mcp.arif-fazil.com/', icon: '🔌' },
-  { label: 'Ω-Wiki', href: 'https://wiki.arif-fazil.com/', icon: '📖' },
-  { label: 'APEX', href: 'https://apex.arif-fazil.com/', icon: '⚡' },
+  { label: 'Ω-Wiki', href: 'https://arifos.arif-fazil.com/wiki/', icon: '📖' },
 ];
 
 export default function TrinityNav() {

@@ -146,12 +146,12 @@ const DOMAIN_MCPS = [
 ];
 
 const FEDERATION_ORGANS_6 = [
-  { id: 'arifOS', label: 'arifOS', port: 8088, url: 'http://127.0.0.1:8088/health', key: 'arifos' as const },
+  { id: 'arifOS', label: 'arifOS', port: 8088, url: 'https://arifos.arif-fazil.com/health', key: 'arifos' as const },
   { id: 'GEOX', label: 'GEOX', port: 8081, url: 'https://geox.arif-fazil.com/health', key: 'geox' as const },
   { id: 'WEALTH', label: 'WEALTH', port: 18082, url: 'https://wealth.arif-fazil.com/health', key: 'wealth' as const },
   { id: 'WELL', label: 'WELL', port: 18083, url: 'https://well.arif-fazil.com/health', key: 'well' as const },
-  { id: 'A-FORGE', label: 'A-FORGE', port: 7071, url: 'http://127.0.0.1:7071/health', key: 'forge' as const },
-  { id: 'AAA', label: 'AAA', port: 3001, url: 'http://127.0.0.1:3001/health', key: 'aaa' as const },
+  { id: 'A-FORGE', label: 'A-FORGE', port: 7071, url: 'https://forge.arif-fazil.com/health', key: 'forge' as const },
+  { id: 'AAA', label: 'AAA', port: 3001, url: '/health', key: 'aaa' as const },
 ];
 
 // Map A2A task state → golden path step index (0–4)
@@ -776,7 +776,8 @@ export default function Cockpit() {
             <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Golden Path</h2>
             <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">sense → mind → heart → judge → vault</span>
           </div>
-          <div className="flex items-stretch gap-0">
+          <div className="max-w-full overflow-x-auto">
+           <div className="flex min-w-[560px] items-stretch gap-0">
             {GOLDEN_PATH.map((step, i) => {
               const isActive = pathStep === i;
               const isDone = pathStep > i;
@@ -816,6 +817,7 @@ export default function Cockpit() {
                 </div>
               );
             })}
+           </div>
           </div>
           {pathStep === -1 && (
             <p className="text-[10px] font-mono text-white/20 mt-4 text-center uppercase tracking-widest">Submit a mission above to activate the deliberation loop</p>
@@ -954,7 +956,7 @@ export default function Cockpit() {
                 <p className="text-sm text-white/40 font-light mb-4">{a.role}</p>
                 <div className="flex items-center gap-4 text-[9px] font-mono tracking-tighter uppercase">
                   <span className={`flex items-center gap-1.5 ${a.status === 'active' ? 'text-emerald-500' : a.status === 'reflect_only' ? 'text-amber-400' : 'text-white/40'}`}>
-                    <Activity className="w-3 h-3" /> Status: {a.status.replace('_', ' ')}
+                    <Activity className="w-3 h-3" /> Status: {(a.status || 'unknown').replaceAll('_', ' ')}
                   </span>
                   <span className="text-white/20">|</span>
                   <span className="text-white/40">{a.domain} · {a.ring}</span>
