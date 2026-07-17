@@ -1,15 +1,15 @@
 # ═══════════════════════════════════════════════════════════════════════════
-# AGENTIC CI — Dual-Lane Constitutional Gate
+# AGENTIC CI — Dual-Lane Constitutional Gate (AAA — TypeScript/React)
 # DITEMPA BUKAN DIBERI
 # ═══════════════════════════════════════════════════════════════════════════
 #
-# Lane 1 — STANDARD CI: lint, test, build (organ-specific)
-# Lane 2 — AGENTIC CI: BIJAKSANA metrics + constitutional report
+# Lane 1 — STANDARD CI: install → lint → build → test
+# Lane 2 — BIJAKSANA: entropy (ΔS), clarity (Φ), truth (Ψ), governance (Ω)
+#   Uses TypeScript-native tools (ESLint, tsc, YAML registry validation)
+#   NOT Python-only — this is a TypeScript organ
 #
-# On push to main → BOTH lanes run → Agentic CI Report posted as Check Run
-# Federation cron picks up Check Run → arif_judge → AAA register → VAULT999 seal
-#
-# Architecture: /root/AGENTS.md §CI + each organ AGENTS.md §CI
+# Verdict: SEAL_READY | SABAR | HOLD
+# On push to main → BOTH lanes → Agentic CI Report as Check Run
 
 name: "🧠 Agentic CI"
 
@@ -32,7 +32,7 @@ concurrency:
 jobs:
 
   # ─────────────────────────────────────────────────────────────
-  # LANE 1: STANDARD CI
+  # LANE 1: STANDARD CI — lint + build + test
   # ─────────────────────────────────────────────────────────────
   standard:
     name: "Lane 1 — Standard CI"
@@ -51,21 +51,18 @@ jobs:
         run: npm ci --legacy-peer-deps
 
       - name: Lint
-        run: npm run lint 2>/dev/null || npx eslint . --ext .ts,.tsx || true
-        continue-on-error: true
+        run: npm run lint
 
       - name: Build
         run: npm run build
 
       - name: Test
         id: test
-        run: |
-          npm test 2>&1 | tee test-output.txt
-          echo "passed=$(grep -c 'passing\|passed' test-output.txt || echo 0)" >> $GITHUB_OUTPUT
+        run: npm test
         continue-on-error: true
 
   # ─────────────────────────────────────────────────────────────
-  # LANE 2: AGENTIC CI — BIJAKSANA Physics Gate
+  # LANE 2: BIJAKSANA — TypeScript-native entropy metrics
   # ─────────────────────────────────────────────────────────────
   bijaksana:
     name: "Lane 2 — BIJAKSANA ΔS Φ Ψ Ω"
@@ -74,54 +71,70 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v6
+      - name: Set up Node
+        uses: actions/setup-node@v6
         with:
-          python-version: "3.12"
+          node-version: "22"
+          cache: npm
 
-      - run: pip install ruff -q
+      - name: Install
+        run: npm ci --legacy-peer-deps
 
-      - name: "ΔS — Entropy"
+      - name: "ΔS — Entropy (unused code + TODO count)"
         id: ds
         run: |
-          F401=$(ruff check --select F401 --output-format json . 2>/dev/null | python3 -c "import sys,json; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
-          F541=$(ruff check --select F541 --output-format json . 2>/dev/null | python3 -c "import sys,json; print(len(json.load(sys.stdin)))" 2>/dev/null || echo 0)
-          TODO=$(grep -r "TODO\|FIXME\|HACK" --include="*.py" . 2>/dev/null | wc -l)
-          DS=$((F401 + F541 + TODO))
+          # Dead code: ESLint no-unused-vars + no-unused-imports
+          DEAD=$(npx eslint . --ext .ts,.tsx --format json 2>/dev/null | python3 -c "
+import json, sys
+try:
+    data = json.load(sys.stdin)
+    count = sum(1 for f in data for m in f.get('messages',[])
+                if any(r in str(m.get('ruleId','')) for r in ['no-unused-vars','unused-import','no-unused']))
+    print(count)
+except: print(0)
+" 2>/dev/null || echo 0)
+          # TODO/FIXME/HACK patterns
+          TODO=$(grep -r "TODO\|FIXME\|HACK" --include="*.ts" --include="*.tsx" src/ a2a-server/ 2>/dev/null | wc -l)
+          DS=$((DEAD + TODO))
           echo "value=$DS" >> $GITHUB_OUTPUT
-          echo "f401=$F401" >> $GITHUB_OUTPUT
-          echo "f541=$F541" >> $GITHUB_OUTPUT
-          echo "todo=$TODO" >> $GITHUB_OUTPUT
-          echo "ΔS = F401($F401) + F541($F541) + TODO($TODO) = $DS"
+          echo "dead_imports=$DEAD todo=$TODO" >> $GITHUB_OUTPUT
+          echo "ΔS = dead_code($DEAD) + TODO($TODO) = $DS"
 
-      - name: "Φ — Clarity"
+      - name: "Φ — Clarity (build health)"
         id: phi
         run: |
-          TOTAL=$(ruff check --statistics . 2>/dev/null | grep -c . || echo 1)
-          ERRORS=$(ruff check . 2>/dev/null | grep -c . || echo 0)
-          if [ "$TOTAL" -eq 0 ]; then PHI=100; else PHI=$(( (TOTAL - ERRORS) * 100 / TOTAL )); fi
-          echo "value=$PHI" >> $GITHUB_OUTPUT
-          echo "Φ = $PHI%"
-
-      - name: "Ψ — Truth (Surface = Manifest)"
-        id: psi
-        run: |
-          if [ -f "contracts/mcp_surface.yaml" ]; then
-            TOOLS=$(grep -c "^  [a-z]" contracts/mcp_surface.yaml 2>/dev/null || echo 0)
-            echo "value=$TOOLS" >> $GITHUB_OUTPUT
-            echo "Ψ = $TOOLS tools declared"
+          if npx tsc --noEmit 2>/dev/null; then
+            echo "value=100" >> $GITHUB_OUTPUT
+            echo "Φ = 100% (clean build)"
           else
-            echo "value=NO_MANIFEST" >> $GITHUB_OUTPUT
-            echo "Ψ = NO_MANIFEST"
+            echo "value=0" >> $GITHUB_OUTPUT
+            echo "Φ = 0% (build errors)"
           fi
 
-      - name: "Ω — Governance"
+      - name: "Ψ — Truth (agent registry integrity)"
+        id: psi
+        run: |
+          if [ -f "registries/agents.yaml" ]; then
+            # Count registered agents
+            AGENTS=$(python3 -c "import yaml; d=yaml.safe_load(open('registries/agents.yaml')); print(len([a for a in d['agents'] if isinstance(a,dict)]))" 2>/dev/null || echo 0)
+            echo "value=$AGENTS" >> $GITHUB_OUTPUT
+            echo "Ψ = $AGENTS agents in canonical registry"
+          else
+            echo "value=NO_REGISTRY" >> $GITHUB_OUTPUT
+            echo "Ψ = NO_REGISTRY"
+          fi
+
+      - name: "Ω — Governance (no self-auth + constitutional sanity)"
         id: omega
         run: |
-          SELF_AUTH=$(grep -r "self.*authorize\|self.*grant\|self.*approve" --include="*.py" . 2>/dev/null | wc -l)
+          # Self-authorization patterns in source
+          SELF_AUTH=$(grep -r "self.*authorize\|self.*grant\|self.*approve\|bypass.*floor\|skip.*constitutional" --include="*.ts" --include="*.tsx" src/ a2a-server/ 2>/dev/null | grep -v "node_modules\|\.git\|FORGE\|DEPRECATED\|comment\|// " | wc -l)
+          # Deprecated agent references still active (A-AUDIT, A-ARCHIVE, apex-prime)
+          ZOMBIE=$(grep -rn "A-AUDIT\|A-ARCHIVE\|apex-prime" src/ a2a-server/ --include="*.ts" --include="*.tsx" 2>/dev/null | grep -v "DEPRECATED\|collapsed\|//\|README\|node_modules" | wc -l)
           echo "value=$SELF_AUTH" >> $GITHUB_OUTPUT
-          echo "self_auth_patterns=$SELF_AUTH" >> $GITHUB_OUTPUT
-          if [ "$SELF_AUTH" -gt 0 ]; then
-            echo "Ω = VIOLATION ($SELF_AUTH self-auth patterns)"
+          echo "zombie_agents=$ZOMBIE" >> $GITHUB_OUTPUT
+          if [ "$SELF_AUTH" -gt 0 ] || [ "$ZOMBIE" -gt 0 ]; then
+            echo "Ω = VIOLATION (self_auth=$SELF_AUTH, zombie_agents=$ZOMBIE)"
           else
             echo "Ω = CLEAN"
           fi
@@ -142,29 +155,26 @@ jobs:
         id: report
         run: |
           echo "=== AGENTIC CI REPORT ==="
-          echo "Organ: AAA"
+          echo "Organ: AAA (TypeScript/React — Cockpit + A2A Gateway)"
           echo "SHA: ${{ github.sha }}"
           echo "Ref: ${{ github.ref_name }}"
-          echo "Run: ${{ github.run_id }}"
           echo "Time: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
           echo ""
           
-          # Standard CI status
           STANDARD_OK="${{ needs.standard.result }}"
           echo "Lane 1 (Standard CI): $STANDARD_OK"
           
-          # BIJAKSANA metrics
           DS="${{ needs.bijaksana.outputs.ds-value }}"
           PHI="${{ needs.bijaksana.outputs.phi-value }}"
           PSI="${{ needs.bijaksana.outputs.psi-value }}"
           OMEGA="${{ needs.bijaksana.outputs.omega-value }}"
-          echo "ΔS = $DS"
-          echo "Φ  = $PHI"
-          echo "Ψ  = $PSI"
-          echo "Ω  = $OMEGA"
+          echo "ΔS = $DS  (dead_code + TODO)"
+          echo "Φ  = $PHI  (build health)"
+          echo "Ψ  = $PSI  (agent registry)"
+          echo "Ω  = $OMEGA  (governance)"
           
-          # Verdict
-          if [ "$STANDARD_OK" = "success" ] && [ "$DS" -lt 50 ] && [ "$PHI" -gt 80 ] && [ "$OMEGA" = "0" ]; then
+          # Verdict logic: all must pass for SEAL_READY
+          if [ "$STANDARD_OK" = "success" ] && [ "$PHI" = "100" ] && [ "$OMEGA" = "0" ] && [ "$DS" -lt 100 ]; then
             VERDICT="SEAL_READY"
           elif [ "$STANDARD_OK" = "success" ]; then
             VERDICT="SABAR"
@@ -173,10 +183,10 @@ jobs:
           fi
           echo "Verdict: $VERDICT"
           
-          # Write JSON report
-          cat > agentic_ci_report.json << EOF
+          cat > agentic_ci_report.json << 'REPORTEOF'
           {
             "organ": "AAA",
+            "stack": "TypeScript/React/Vite",
             "sha": "${{ github.sha }}",
             "ref": "${{ github.ref_name }}",
             "run_id": "${{ github.run_id }}",
@@ -188,10 +198,9 @@ jobs:
               "psi": "$PSI",
               "omega": $OMEGA
             },
-            "verdict": "$VERDICT",
-            "label": "Agentic CI"
+            "verdict": "$VERDICT"
           }
-          EOF
+          REPORTEOF
           cat agentic_ci_report.json
 
       - name: Post Agentic CI Check Run
@@ -211,16 +220,18 @@ jobs:
               status: 'completed',
               conclusion: conclusion,
               output: {
-                title: `Agentic CI — ${report.organ}: ${report.verdict}`,
+                title: `Agentic CI — AAA: ${report.verdict}`,
                 summary: [
-                  `| Lane | Status |`,
-                  `|------|--------|`,
-                  `| Standard CI | ${report.lane_1_standard} |`,
-                  `| BIJAKSANA | ΔS=${report.lane_2_bijaksana.ds} Φ=${report.lane_2_bijaksana.phi}% Ψ=${report.lane_2_bijaksana.psi} Ω=${report.lane_2_bijaksana.omega} |`,
-                  `| **Verdict** | **${report.verdict}** |`,
+                  `| Lane | Status | Detail |`,
+                  `|------|--------|--------|`,
+                  `| Standard CI | ${report.lane_1_standard} | lint → build → test |`,
+                  `| ΔS Entropy | ${report.lane_2_bijaksana.ds} | dead code + TODO count |`,
+                  `| Φ Clarity | ${report.lane_2_bijaksana.phi}% | tsc --noEmit |`,
+                  `| Ψ Truth | ${report.lane_2_bijaksana.psi} | agents registered |`,
+                  `| Ω Govern | ${report.lane_2_bijaksana.omega} | self-auth + zombies |`,
+                  `| **Verdict** | **${report.verdict}** | |`,
                   '',
                   `> DITEMPA BUKAN DIBERI — Agentic CI Report`,
-                  `> Register with AAA + Seal to VAULT999 pending federation cron pickup`
                 ].join('\n')
               }
             });
