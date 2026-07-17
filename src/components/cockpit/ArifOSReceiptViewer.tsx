@@ -148,7 +148,7 @@ const formatRelative = (iso: string | undefined, now: number): string => {
 
 const POLL_INTERVAL_MS = 5000;
 const DEFAULT_LIMIT = 8;
-const ARIFOS_BASE = 'http://127.0.0.1:8088';
+const ARIFOS_BASE = 'https://arifos.arif-fazil.com';
 
 export default function ArifOSReceiptViewer({
   limit = DEFAULT_LIMIT,

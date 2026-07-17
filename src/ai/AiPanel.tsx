@@ -437,7 +437,7 @@ export default function AiPanel() {
                 <div className="mt-3 flex flex-col gap-3 border-t border-white/10 pt-3 md:flex-row md:items-center md:justify-between">
                   <div className="text-xs text-white/45">
                     {provider === 'arifos'
-                      ? 'Governed mode resolves through local arifOS tools on 127.0.0.1:8080.'
+                      ? 'Governed mode resolves through the arifOS federation gateway.'
                       : 'Local mode streams tokens straight from Ollama through the AAA backend.'}
                   </div>
                   <button

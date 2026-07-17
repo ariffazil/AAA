@@ -118,16 +118,16 @@ if (typeof navigator !== 'undefined' && 'modelContext' in navigator) {
             ai_context: 'https://arif-fazil.com/llms.txt'
           },
           THEORY: {
-            url: 'https://apex.arif-fazil.com',
+            url: 'https://arifos.arif-fazil.com',
             symbol: 'Ψ',
             function: 'Authority - The Soul',
-            ai_context: 'https://apex.arif-fazil.com/llms.txt'
+            ai_context: 'https://arifos.arif-fazil.com/llms.txt'
           },
           APPS: {
-            url: 'https://arifos.arif-fazil.com',
+            url: 'https://aaa.arif-fazil.com',
             symbol: 'Ω',
-            function: 'Safety - The Mind',
-            ai_context: 'https://arifos.arif-fazil.com/llms.txt'
+            function: 'Control Plane - The Body',
+            ai_context: 'https://aaa.arif-fazil.com/llms.txt'
           },
           BACKEND: {
             url: 'https://mcp.arif-fazil.com',

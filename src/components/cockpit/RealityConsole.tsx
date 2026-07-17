@@ -102,20 +102,20 @@ export default function RealityConsole() {
   const probeReality = useCallback(async () => {
     setRealityFeed(prev => ({ ...prev, loading: true, error: null }));
     try {
-      const organPorts: Record<string, { port: number; name: string; critical: boolean }> = {
-        arifos:  { port: 8088,  name: 'arifOS Kernel',     critical: true },
-        geox:    { port: 8081,  name: 'GEOX Earth',        critical: false },
-        wealth:  { port: 18082, name: 'WEALTH Capital',    critical: false },
-        well:    { port: 18083, name: 'WELL Vitality',      critical: false },
-        aforge:  { port: 7071,  name: 'A-FORGE Execution', critical: true },
-        vault999:{ port: 5001,  name: 'VAULT999 Writer',   critical: true },
+      const organPorts: Record<string, { url: string; name: string; critical: boolean }> = {
+        arifos: { url: 'https://arifos.arif-fazil.com/health', name: 'arifOS Kernel', critical: true },
+        geox: { url: 'https://geox.arif-fazil.com/health', name: 'GEOX Earth', critical: false },
+        wealth: { url: 'https://wealth.arif-fazil.com/health', name: 'WEALTH Capital', critical: false },
+        well: { url: 'https://well.arif-fazil.com/health', name: 'WELL Vitality', critical: false },
+        aforge: { url: 'https://forge.arif-fazil.com/health', name: 'A-FORGE Execution', critical: true },
+        aaa: { url: '/health', name: 'AAA Control Plane', critical: true },
       };
 
       const probes: OrganHealthProbe[] = [];
       for (const [key, cfg] of Object.entries(organPorts)) {
         const start = Date.now();
         try {
-          const res = await fetch(`http://127.0.0.1:${cfg.port}/health`, {
+          const res = await fetch(cfg.url, {
             signal: AbortSignal.timeout(5000),
           });
           probes.push({
@@ -222,8 +222,8 @@ export default function RealityConsole() {
   return (
     <div className="space-y-4">
       {/* ── Header ─────────────────────────────────────────── */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-wrap items-center gap-3">
           <h2 className="text-lg font-semibold text-white font-mono tracking-tight">
             ⊜ REALITY CONSOLE
           </h2>
@@ -240,7 +240,8 @@ export default function RealityConsole() {
         </div>
 
         {/* Pane tabs */}
-        <div className="flex gap-1 bg-zinc-800 rounded-lg p-0.5">
+        <div className="max-w-full overflow-x-auto bg-zinc-800 rounded-lg p-0.5">
+          <div className="flex w-max gap-1">
           {(['intent', 'reality', 'verdict'] as const).map(pane => (
             <button
               key={pane}
@@ -254,6 +255,7 @@ export default function RealityConsole() {
               {pane === 'intent' ? 'INTENT BOARD' : pane === 'reality' ? 'REALITY FEED' : 'VERDICT QUEUE'}
             </button>
           ))}
+          </div>
         </div>
       </div>
 
