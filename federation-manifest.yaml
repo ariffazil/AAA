@@ -7,7 +7,7 @@ federation:
   epoch: "2026.07"
   schema_version: "2.0.0"
   sovereign: ARIF
-  contract_hash: null  # Computed after all organs attest
+  contract_hash: blake3:8ff8d80581e9ea211147e9e53febcd574334ad0b31d9bf9fa073d65344a20c49  # BLAKE3(arifOS/identity.toml + A-FORGE/identity.toml + AAA/agent-card.json) — ZEN-CONVERGENCE-2026-07-17
 
 organs:
 
