@@ -83,16 +83,12 @@ jobs:
       - name: "ΔS — Entropy (unused code + TODO count)"
         id: ds
         run: |
-          # Dead code: ESLint no-unused-vars + no-unused-imports
-          DEAD=$(npx eslint . --ext .ts,.tsx --format json 2>/dev/null | python3 -c "
-import json, sys
-try:
-    data = json.load(sys.stdin)
-    count = sum(1 for f in data for m in f.get('messages',[])
-                if any(r in str(m.get('ruleId','')) for r in ['no-unused-vars','unused-import','no-unused']))
-    print(count)
-except: print(0)
-" 2>/dev/null || echo 0)
+          DEAD=$(npx eslint . --ext .ts,.tsx --format compact 2>/dev/null | grep -cE 'no-unused-vars|unused-import|no-unused' || echo 0)
+          TODO=$(grep -r "TODO\|FIXME\|HACK" --include="*.ts" --include="*.tsx" src/ a2a-server/ 2>/dev/null | wc -l)
+          DS=$((DEAD + TODO))
+          echo "value=$DS" >> $GITHUB_OUTPUT
+          echo "dead_imports=$DEAD todo=$TODO" >> $GITHUB_OUTPUT
+          echo "ΔS = dead_code($DEAD) + TODO($TODO) = $DS"
           # TODO/FIXME/HACK patterns
           TODO=$(grep -r "TODO\|FIXME\|HACK" --include="*.ts" --include="*.tsx" src/ a2a-server/ 2>/dev/null | wc -l)
           DS=$((DEAD + TODO))

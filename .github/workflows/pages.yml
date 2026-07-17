@@ -17,11 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # T1 skip-gate: AAA repo currently has GitHub Pages NOT enabled at the
-    # repo level (T3 admin gate). continue-on-error prevents this
-    # structurally-blocked job from poisoning the agentic-ci aggregate
-    # status. When T3 admin enables Pages on this repo, remove this
-    # continue-on-error in the same commit.
+    # AAA repo does not have GitHub Pages enabled — this is a non-blocking
+    # placeholder. AAA cockpit is served from VPS aaa-a2a (:3001), not Pages.
+    # When Pages is needed, remove continue-on-error on both jobs.
     continue-on-error: true
     steps:
       - name: Checkout
@@ -52,6 +50,7 @@ jobs:
 
   deploy:
     needs: build
+    continue-on-error: true
     runs-on: ubuntu-latest
     environment:
       name: github-pages

@@ -133,7 +133,13 @@ async function checkSourceContracts() {
   const authSource = await loadText('src/gateway/auth.ts');
   const gatewaySource = await loadText('src/gateway/server.ts');
   const a2aServerSource = await loadText('a2a-server/server.js');
-  const dashboardSource = await loadText('../arifOS/static/dashboard/index.html');
+  // arifOS dashboard lives in separate repo — skip on CI if not present
+  let dashboardSource = '';
+  try {
+    dashboardSource = await loadText('../arifOS/static/dashboard/index.html');
+  } catch {
+    console.warn('SKIP: arifOS dashboard not found (separate repo, CI-expected)');
+  }
 
   for (const publicPath of [
     '/.well-known/a2a-discovery.json',
@@ -190,17 +196,21 @@ async function checkSourceContracts() {
     );
   }
 
-  expect(
-    !dashboardSource.includes('EventSource(`${MCP_BASE_URL}/webmcp`)') &&
-      !dashboardSource.includes("EventSource('/webmcp')"),
-    'dashboard SSE cleanup',
-    'arifos dashboard must not advertise WebMCP SSE-only connectivity'
-  );
-  expect(
-    dashboardSource.includes('/mcp'),
-    'dashboard streamable http guidance',
-    'arifos dashboard must point agents at the streamable HTTP MCP endpoint'
-  );
+  if (dashboardSource) {
+    expect(
+      !dashboardSource.includes('EventSource(`${MCP_BASE_URL}/webmcp`)') &&
+        !dashboardSource.includes("EventSource('/webmcp')"),
+      'dashboard SSE cleanup',
+      'arifos dashboard must not advertise WebMCP SSE-only connectivity'
+    );
+    expect(
+      dashboardSource.includes('/mcp'),
+      'dashboard streamable http guidance',
+      'arifos dashboard must point agents at the streamable HTTP MCP endpoint'
+    );
+  } else {
+    console.warn('SKIP: dashboard source checks — arifOS repo not present');
+  }
 }
 
 function toMarkdownReport(artifact) {
