@@ -234,7 +234,7 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 | **GEOX** | 8081 | Earth intelligence — wells, seismic, petrophysics | `https://geox.arif-fazil.com/mcp` | `ariffazil/geox` | `geox-mcp.service` |
 | **WEALTH** | 18082 | Capital intelligence — NPV, IRR, EMV, stock analysis | `https://wealth.arif-fazil.com/mcp` | `ariffazil/wealth` | `wealth-organ.service` |
 | **WELL** | 18083 | Vitality guard — human readiness, REFLECT_ONLY | `https://well.arif-fazil.com/mcp` | `ariffazil/well` | `well.service` |
-| **APEX** | 3002 | 888 JUDGE deliberation (legacy, absorbed into AAA a2a) | — | — | `apex-prime.service` |
+| ~~APEX~~ | ~~3002~~ | **DECOMMISSIONED 2026-06-27** — deliberation absorbed into AAA `a2a-server/deliberation.ts` | — | — | — |
 
 ### Organ Substrate Roles
 
