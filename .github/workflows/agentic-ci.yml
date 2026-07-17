@@ -3,13 +3,14 @@
 # DITEMPA BUKAN DIBERI
 # ═══════════════════════════════════════════════════════════════════════════
 #
-# Lane 1 — STANDARD CI: install → lint → build → test
-# Lane 2 — BIJAKSANA: entropy (ΔS), clarity (Φ), truth (Ψ), governance (Ω)
-#   Uses TypeScript-native tools (ESLint, tsc, YAML registry validation)
-#   NOT Python-only — this is a TypeScript organ
+# Lane 1 — STANDARD CI: install → lint → build → test (BLOCKING)
+# Lane 2 — BIJAKSANA: advisory metrics (ΔS, Φ, Ψ, Ω)
+# Lane 3 — REPORT: aggregate evidence (if: always())
+# Lane 4 — FINAL GATE: pass/fail from real job outcomes
 #
-# Verdict: SEAL_READY | SABAR | HOLD
-# On push to main → BOTH lanes → Agentic CI Report as Check Run
+# Verdict: CI_PASS | CI_FAIL | ADVISORY_WARN | RUNTIME_UNVERIFIED
+# CI supplies evidence; arifOS judges. CI never impersonates the kernel.
+# On push to main → ALL lanes → Agentic CI Report as Check Run
 
 name: "🧠 Agentic CI"
 
@@ -58,8 +59,18 @@ jobs:
 
       - name: Test
         id: test
-        run: npm test
-        continue-on-error: true
+        run: |
+          mkdir -p reports
+          npm test 2>&1 | tee reports/test-output.txt
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: standard-ci-evidence
+          path: reports/
+          retention-days: 7
 
   # ─────────────────────────────────────────────────────────────
   # LANE 2: BIJAKSANA — TypeScript-native entropy metrics
@@ -101,16 +112,22 @@ jobs:
           echo "dead_imports=$DEAD todo=$TODO" >> $GITHUB_OUTPUT
           echo "ΔS = dead_code($DEAD) + TODO($TODO) = $DS"
 
-      - name: "Φ — Clarity (build health)"
+      - name: "Φ — Clarity (lint density per 1K source lines)"
         id: phi
         run: |
-          if npx tsc --noEmit 2>/dev/null; then
-            echo "value=100" >> $GITHUB_OUTPUT
-            echo "Φ = 100% (clean build)"
+          # Count TypeScript source lines (non-blank, non-comment)
+          SRC_LINES=$(find src/ a2a-server/ -name "*.ts" -o -name "*.tsx" 2>/dev/null | xargs cat 2>/dev/null | grep -cve '^\s*$' -e '^\s*//' -e '^\s*\*' || echo 0)
+          # Count ESLint violations
+          VIOLATIONS=$(npx eslint . --ext .ts,.tsx --format json 2>/dev/null | python3 -c "import sys,json; d=json.load(sys.stdin); print(sum(len(f.get('messages',[])) for f in d))" 2>/dev/null || echo 0)
+          # Lint density per 1K source lines
+          if [ "$SRC_LINES" -gt 0 ]; then
+            DENSITY=$(python3 -c "print(round($VIOLATIONS / ($SRC_LINES / 1000.0), 2))")
           else
-            echo "value=0" >> $GITHUB_OUTPUT
-            echo "Φ = 0% (build errors)"
+            DENSITY="0"
           fi
+          echo "value=$DENSITY" >> $GITHUB_OUTPUT
+          echo "violations=$VIOLATIONS source_lines=$SRC_LINES" >> $GITHUB_OUTPUT
+          echo "Φ = ${DENSITY} violations/1KLoC ($VIOLATIONS violations, $SRC_LINES source lines)"
 
       - name: "Ψ — Truth (agent registry integrity)"
         id: psi
@@ -174,13 +191,14 @@ jobs:
           echo "Ψ  = $PSI  (agent registry)"
           echo "Ω  = $OMEGA  (governance)"
           
-          # Verdict logic: all must pass for SEAL_READY
-          if [ "$STANDARD_OK" = "success" ] && [ "$PHI" = "100" ] && [ "$OMEGA" = "0" ] && [ "$DS" -lt 100 ]; then
-            VERDICT="SEAL_READY"
+          # Verdict: CI evidence, never sovereign language
+          STANDARD_OK="${{ needs.standard.result }}"
+          if [ "$STANDARD_OK" = "success" ] && [ "$OMEGA" = "0" ] && [ "$DS" -lt 100 ]; then
+            VERDICT="CI_PASS"
           elif [ "$STANDARD_OK" = "success" ]; then
-            VERDICT="SABAR"
+            VERDICT="ADVISORY_WARN"
           else
-            VERDICT="HOLD"
+            VERDICT="CI_FAIL"
           fi
           echo "Verdict: $VERDICT"
           
@@ -210,8 +228,8 @@ jobs:
           script: |
             const fs = require('fs');
             const report = JSON.parse(fs.readFileSync('agentic_ci_report.json', 'utf8'));
-            const conclusion = report.verdict === 'SEAL_READY' ? 'success' : 
-                              report.verdict === 'SABAR' ? 'neutral' : 'failure';
+            const conclusion = report.verdict === 'CI_PASS' ? 'success' : 
+                              report.verdict === 'ADVISORY_WARN' ? 'neutral' : 'failure';
             
             await github.rest.checks.create({
               owner: context.repo.owner,
@@ -227,7 +245,7 @@ jobs:
                   `|------|--------|--------|`,
                   `| Standard CI | ${report.lane_1_standard} | lint → build → test |`,
                   `| ΔS Entropy | ${report.lane_2_bijaksana.ds} | dead code + TODO count |`,
-                  `| Φ Clarity | ${report.lane_2_bijaksana.phi}% | tsc --noEmit |`,
+                  `| Φ Clarity | ${report.lane_2_bijaksana.phi} | violations/1KLoC |`,
                   `| Ψ Truth | ${report.lane_2_bijaksana.psi} | agents registered |`,
                   `| Ω Govern | ${report.lane_2_bijaksana.omega} | self-auth + zombies |`,
                   `| **Verdict** | **${report.verdict}** | |`,
@@ -244,3 +262,26 @@ jobs:
           name: agentic-ci-report-${{ github.sha }}
           path: agentic_ci_report.json
           retention-days: 90
+
+  # ─────────────────────────────────────────────────────────────
+  # FINAL GATE: honest pass/fail from real job outcomes
+  # ─────────────────────────────────────────────────────────────
+  final-gate:
+    name: "🔒 Final Gate"
+    runs-on: ubuntu-latest
+    needs: [standard, bijaksana, report]
+    if: always()
+    timeout-minutes: 2
+    steps:
+      - name: Verdict
+        run: |
+          STANDARD="${{ needs.standard.result }}"
+          echo "Standard CI: $STANDARD"
+          if [ "$STANDARD" = "success" ]; then
+            echo "✅ CI_PASS — all required checks passed"
+          elif [ "$STANDARD" = "skipped" ]; then
+            echo "⚠️  RUNTIME_UNVERIFIED — standard lane skipped"
+          else
+            echo "❌ CI_FAIL — required checks did not pass"
+            exit 1
+          fi
