@@ -4,7 +4,7 @@ Run silently at the start of every session. Send to Telegram ONLY if something n
 
 ## Boot Sequence
 
-1. **arifOS health**: `curl -s http://localhost:8080/health | python3 -c "import sys,json;d=json.load(sys.stdin);print('arifOS:', d['status'])"`
+1. **arifOS health**: `curl -s http://localhost:8088/health | python3 -c "import sys,json;d=json.load(sys.stdin);print('arifOS:', d['status'])"`
 2. **Disk**: `df -h / | tail -1 | awk '{print "Disk:", $5, "used of", $2}'`
 3. **Load**: `uptime | awk -F'load average:' '{print "Load:", $2}'`
 4. **Containers**: `docker ps --filter health=unhealthy --format "{{.Names}}" | head -5`
