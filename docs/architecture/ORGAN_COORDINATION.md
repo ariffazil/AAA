@@ -27,7 +27,7 @@
 
 Before any organ acts on a branch/PR:
 1. Read all other organ state files
-2. If another organ `acting_on` matches → skip and log to `CONTEXT_SESSION.md`
+2. If another organ `acting_on` matches → skip and log to `SESSION.md`
 3. If conflict → escalate to arifOS for arbitration
 
 ## Human Inbox

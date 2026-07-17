@@ -103,7 +103,7 @@ def main() -> int:
             "audit_log": "/root/.arifos/agents/kimi/skills/kimi-skill-reflector/audit-log.md",
             "sot_files": [
                 "/root/CONTEXT.md",
-                "/root/AGENTS_LANDING.md",
+                "/root/LANDING.md",
                 "/root/arifOS/AGENTS.md",
                 "/root/arifOS/CHANGELOG.md",
             ],

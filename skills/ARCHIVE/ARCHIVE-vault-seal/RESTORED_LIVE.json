@@ -1,0 +1,32 @@
+{
+  "skill": "999-vault-seal-immutable",
+  "status": "LIVE",
+  "restored_at": "2026-07-12T06:00:27Z",
+  "prior_tombstone": {
+    "skill": "999-vault-seal-immutable",
+    "archived_at": "2026-07-12T06:15:00Z",
+    "approved_by": "Arif (F13 SOVEREIGN) \u2014 Group A",
+    "executed_by": "FORGE (000\u03a9)",
+    "original_path": "/root/.agents/skills/999-vault-seal-immutable",
+    "archive_path": "/root/.agents/skills/.archive-2026-07-12/999-vault-seal-immutable",
+    "reason": "Legacy/superseded. Canonical replacement exists where applicable.",
+    "reversible": true,
+    "rollback": "mv /root/.agents/skills/.archive-2026-07-12/999-vault-seal-immutable /root/.agents/skills/999-vault-seal-immutable",
+    "observation_period": "2 weeks"
+  },
+  "approved_by": "Arif F13 SOVEREIGN",
+  "sovereign_signals": [
+    "yes do all that",
+    "finish the task",
+    "call other agents to audit your work and seal"
+  ],
+  "audit_agents": [
+    "019f54e8-0a36-79c0-b76f-a07007774c3f",
+    "019f54e8-0a37-7002-83ac-78e44b82ba44",
+    "019f54e8-0a37-7002-83ac-78f4f99df381"
+  ],
+  "reason": "Required as V3 alias primary for skill unification mesh. Group A archive rolled back with F13 multi-agent seal trail. Archive copy retained at .archive-2026-07-12 for observation.",
+  "archive_retained": "/root/.agents/skills/.archive-2026-07-12/999-vault-seal-immutable",
+  "reversible": true,
+  "rollback": "mv /root/.agents/skills/.archive-2026-07-12/999-vault-seal-immutable /root/.agents/skills/999-vault-seal-immutable after removing live dir"
+}
