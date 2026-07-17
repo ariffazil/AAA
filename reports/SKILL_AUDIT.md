@@ -170,11 +170,11 @@
 | WARNING | health-probe | missing_use_when | No 'Use When' section found |
 | ERROR | memory-search | missing_skill_md | SKILL.md not found |
 | ERROR | wealth | missing_skill_md | SKILL.md not found |
-| ERROR | recursive-self-improvement | frontmatter_missing | No YAML frontmatter found |
-| ERROR | recursive-self-improvement | missing_name | Frontmatter missing 'name' field |
-| WARNING | recursive-self-improvement | missing_description | Frontmatter missing 'description' field |
-| WARNING | recursive-self-improvement | missing_version | Frontmatter missing 'version' field |
-| WARNING | recursive-self-improvement | missing_use_when | No 'Use When' section found |
+| ERROR | RSI-recursive-improvement | frontmatter_missing | No YAML frontmatter found |
+| ERROR | RSI-recursive-improvement | missing_name | Frontmatter missing 'name' field |
+| WARNING | RSI-recursive-improvement | missing_description | Frontmatter missing 'description' field |
+| WARNING | RSI-recursive-improvement | missing_version | Frontmatter missing 'version' field |
+| WARNING | RSI-recursive-improvement | missing_use_when | No 'Use When' section found |
 | ERROR | hermes-opencode-intelligence-protocol | missing_skill_md | SKILL.md not found |
 | WARNING | arif-a2a-call | missing_use_when | No 'Use When' section found |
 | INFO | openclaw-ops | description_length | Description is 592 chars (recommended ≤ 400) |

@@ -121,15 +121,15 @@ governance:
 engineering:
   - id: aforge-apex-9-execution
     path: /root/.agents/skills/aforge-apex-9-execution
-    desc: A-FORGE execution protocol.
+    desc: DEPRECATED — absorbed into KERNEL-trinity-33 (F1-F11 execution axis).
     available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
-    status: active
+    status: deprecated
 
   - id: aforge-apex-9-execution-reference
     path: /root/.agents/skills/aforge-apex-9-execution-reference
-    desc: A-FORGE execution reference.
+    desc: DEPRECATED — absorbed into KERNEL-trinity-33 (F1-F11 execution axis).
     available_to: [FI-001, FI-002, FI-005, FI-008, FI-010]
-    status: active
+    status: deprecated
 
   - id: kernel-verbs-aforge-hands
     path: /root/.agents/skills/kernel-verbs-aforge-hands
@@ -429,8 +429,8 @@ meta:
     floors: [F1, F2, F4, F7, F8, F11, F13]
     status: active
 
-  - id: recursive-self-improvement
-    path: /root/.agents/skills/recursive-self-improvement
+  - id: RSI-recursive-improvement
+    path: /root/.agents/skills/RSI-recursive-improvement
     desc: RSI protocol — trace, diagnose, remediate, ledger, seal.
     available_to: all
     status: active
@@ -634,8 +634,8 @@ memory:
 # TRINITY — 33-repo map, orthogonality, quantum kernel
 # ──────────────────────────────────────────────────────────────
 trinity:
-  - id: trinity-33-canonical
-    path: /root/.agents/skills/trinity-33-canonical
+  - id: KERNEL-trinity-33
+    path: /root/.agents/skills/KERNEL-trinity-33
     desc: The canonical 33-repo map — arifOS/AAA/A-FORGE axes.
     available_to: all
     status: active

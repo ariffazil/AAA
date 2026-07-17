@@ -320,7 +320,7 @@ forge_surface_audit organ="arifos" mode="scan"
 
 ```
 Action:  Determine which surface(s) to touch, blast radius, reversibility
-Tools:   arif_think(mode=plan), trinity-33-canonical skill, forge_worktree
+Tools:   arif_think(mode=plan), KERNEL-trinity-33 skill, forge_worktree
 Output:  Task DAG — one node per file/surface/API change
 Evidence: DER — "Planned changes affect SOUL index.html + design-tokens.json"
 Gate:    T2 ANNOUNCE if cross-surface or multi-file
@@ -663,7 +663,7 @@ Every deliverable file produced during web engineering work gets delivered, not 
 | **ARIFOS ops skill** | `/root/.agents/skills/ARIFOS-site-ops/SKILL.md` |
 | **WEALTH ops skill** | `/root/.agents/skills/WEALTH-site-ops/SKILL.md` |
 | **Design seam skill** | `/root/.agents/skills/AGI-trinity-design-seam/SKILL.md` |
-| **Agent INIT v3.0** | `/root/AAA/prompts/AGENT_INIT_v3.0.md` |
+| **🌱 INIT (2026.07.17)** | `/root/AAA/prompts/INIT.md` |
 | **Seal chain** | `/root/.local/share/arifos/vault999/seal_chain.jsonl` |
 | **Deploy-state** | `{static_root}/deploy-state.json` |
 | **Artifact outbox** | `/var/arifos/artifacts/outbox/` |

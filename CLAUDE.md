@@ -73,8 +73,8 @@ cat /root/CONTEXT.md | tail -100   # current focus, blockers, recent session log
 # 3.5 Rebuild continuity before acting:
 cat /root/.claude/projects/-root/memory/session-state.md
 
-# 3.6 Load active Agent INIT v3.0 (TRINITY-33 + RSI):
-cat /root/AAA/prompts/AGENT_INIT_v2.0.md | head -100  # v3.0 content embedded
+# 3.6 Load active INIT (TRINITY-33 + RSI, 2026.07.17):
+cat /root/AAA/prompts/INIT.md | head -100
 
 # 3.6 Check the live deprecation map before calling tools:
 cat /root/AAA/docs/deprecation-registry.json | python3 -m json.tool | head -80
@@ -404,7 +404,7 @@ Before acting on any request:
 
 - [ ] Sourced `/root/.secrets/vault.env`
 - [ ] Read this file (`/root/AAA/CLAUDE.md`)
-- [ ] Loaded active INIT: `/root/AAA/prompts/AGENT_INIT_v3.0.md` (TRINITY-33 + RSI + QQQ)
+- [ ] Loaded active INIT: `/root/AAA/prompts/INIT.md` (TRINITY-33 + RSI + QQQ)
 - [ ] Checked live state (`/root/CONTEXT.md` tail)
 - [ ] Probed federation health (`curl :8088/health`)
 
@@ -429,8 +429,8 @@ Before acting on any request:
 | AAA repo (this file lives here) | `github.com/ariffazil/AAA` |
 | **Kernel invariants — Gödel-lock, Strange Loop, Anti-sink** | `/root/AAA/docs/KERNEL_INVARIANTS.md` |
 | Canonical organ map | `/root/AAA/docs/FEDERATION_ORGAN.md` |
-| **Trinity 33 (final repo map — arifOS/AAA/A-FORGE axes)** | `/root/.agents/skills/trinity-33-canonical/SKILL.md` + `/root/AAA/docs/TRINITY_33_REPOS.md` |
-| **Agent INIT v3.0 (TRINITY-33 + RSI embedded)** | `/root/AAA/prompts/AGENT_INIT_v2.0.md` (active, v3.0 content; SHA f196bdab6fb9f211dd574118ac0cd27cc2f65bd0c9eced30b78477dd9f53024d) |
+| **Trinity 33 (final repo map — arifOS/AAA/A-FORGE axes)** | `/root/.agents/skills/KERNEL-trinity-33/SKILL.md` + `/root/AAA/docs/TRINITY_33_REPOS.md` |
+| **🌱 INIT (2026.07.17 — TRINITY-33 + RSI embedded)** | `/root/AAA/prompts/INIT.md` |
 | **Governed Theory of Mind** | `/root/A-FORGE/docs/GOVERNED_THEORY_OF_MIND.md` |
 | Reality Engineering — 8 Iron Laws | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | Reality Engineering — 7-Stage Protocol | `/root/arifOS/GENESIS/019_REALITY_ENGINEERING_PROTOCOL.md` |

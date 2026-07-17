@@ -52,7 +52,7 @@ class SkillsDirectoryProvider:
 
 | Meta-Skill | Fires When | Void Conditions |
 |------------|-----------|----------------|
-| `recursive-self-improvement` | AGI→ASI transition | Self-model divergence >5%, circular dependency |
+| `RSI-recursive-improvement` | AGI→ASI transition | Self-model divergence >5%, circular dependency |
 | `orthogonal-abstraction` | Cross-domain reasoning | Surface similarity without structural invariant |
 | `epistemic-integrity` | Consequential output | Hallucination, overconfidence, missing uncertainty band |
 | `constitutional-governance` | All tool invocations | Self-authorization, floor breach, irreversible without verdict |

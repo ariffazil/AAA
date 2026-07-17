@@ -830,7 +830,8 @@ AAA/
 │   ├── TOOL_MANIFEST.json · SUBSTRATE_GATE_POLICY.yaml · HOSTINGER_MCP_ACCESS.toml
 │   ├── models/                       # soul + shadow per provider
 │   ├── antigravity/ · audit/ · bundles/ · cooling_ledger/ · discovery/ · external/
-│   └── AGENT_DISCOVERY.md · AGENT_INIT.md · AGENT_INTELLIGENCE.md
+│   └── AGENT_DISCOVERY.md · AGENT_INTELLIGENCE.md
+│       (AGENT_INIT → canonical at /root/AAA/prompts/INIT.md)
 │
 ├── schemas/                          # JSON/YAML schemas + AREP contracts
 │   ├── arep-task.schema.json · arep-reality-layers.schema.json · arep-example-forge-integration.json
