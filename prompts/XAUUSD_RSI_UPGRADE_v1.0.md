@@ -2,7 +2,7 @@
 ## Recursive Self-Improvement Prompt for the Entire arifOS Federation
 
 > **Forged:** 2026-07-14 by AAA agent under F13 SOVEREIGN directive (Arif)
-> **Parent:** AGENT_INIT_v3.0::TRINITY33_RSI
+> **Parent:** INIT::TRINITY33_RSI::2026.07.17
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given
 > **Seal:** `XAUUSD_RSI_UPGRADE::FEDERATED_TRADING::2026-07-14`
 > **Scope:** ALL 7 ORGANS — arifOS, A-FORGE, AAA, GEOX, WEALTH, WELL, VAULT999
@@ -574,9 +574,9 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 |------|------|
 | **XAUUSD Research Brief** | `/root/XAUUSD_TRADING_RESEARCH.md` |
 | **This Prompt** | `/root/AAA/prompts/XAUUSD_RSI_UPGRADE_v1.0.md` |
-| **AGENT_INIT v3.0** | `/root/AAA/prompts/AGENT_INIT_v3.0.md` |
-| **TRINITY-33** | `/root/.agents/skills/trinity-33-canonical/SKILL.md` |
-| **RSI skill** | `/root/.agents/skills/recursive-self-improvement/SKILL.md` |
+| **🌱 INIT (2026.07.17)** | `/root/AAA/prompts/INIT.md` |
+| **TRINITY-33** | `/root/.agents/skills/KERNEL-trinity-33/SKILL.md` |
+| **RSI skill** | `/root/.agents/skills/RSI-recursive-improvement/SKILL.md` |
 | **RSI ledger** | `/root/.local/share/arifos/rsi-ledger.jsonl` |
 | **VAULT999** | `/root/VAULT999/` |
 | **Seal chain** | `/root/.local/share/arifos/vault999/seal_chain.jsonl` |

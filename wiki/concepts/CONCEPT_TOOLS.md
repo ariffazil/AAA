@@ -114,7 +114,7 @@ class SkillsDirectoryProvider:
 
 | Meta-Skill | Stage | Void Conditions |
 |------------|-------|----------------|
-| `recursive-self-improvement` | AGI→ASI | Self-model divergence >5%, circular dependency, identity test failure |
+| `RSI-recursive-improvement` | AGI→ASI | Self-model divergence >5%, circular dependency, identity test failure |
 | `orthogonal-abstraction` | AGI→ASI | Surface similarity without structural invariant, category error |
 | `epistemic-integrity` | 333→888 | Untagged claim, overconfidence, hallucination detected |
 | `constitutional-governance` | ALL | Self-authorization, floor breach, irreversible without verdict |
