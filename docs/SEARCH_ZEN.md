@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # SEARCH-ZEN — Web Search Tool Map
 
 > **One map. All search tools. Route by intent, not habit.**

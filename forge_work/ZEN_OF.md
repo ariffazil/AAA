@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # SEAL RECEIPT — ZEN OF AGENTIC PYTHON
 **Date:** 2026-06-25
 **Actor:** FORGE (A-FORGE, 000Ω)

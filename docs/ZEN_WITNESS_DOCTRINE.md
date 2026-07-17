@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # Zen Witness Doctrine — v1
 
 > A quote may illuminate a judgment. It may never manufacture the judgment.

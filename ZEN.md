@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # ZEN.md — arifOS AAA Single Entry Point
 
 > **Forged 2026-07-15 · Phase 2 of the entropy-reduction refactor (commit `1dd3a79`).**

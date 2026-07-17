@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # AAA_ZEN.md — Zen of Agentic Python
 
 > **Classification:** Sealed Doctrine | AAA Repository
