@@ -21,6 +21,7 @@
     "a2a:conformance": "tsx scripts/a2a-conformance.mjs"
   },
   "dependencies": {
+    "@a2a-js/sdk": "^0.3.14",
     "@hookform/resolvers": "^5.4.0",
     "@mcp-b/global": "^3.0.0",
     "@radix-ui/react-accordion": "^1.2.15",
