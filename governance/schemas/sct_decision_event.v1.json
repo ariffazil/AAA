@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arif-fazil.com/schema/sct_decision_event/v1",
+  "title": "SCT Decision Event",
+  "description": "PR3 observability — one ALLOW/REJECT at organ SCT ingress. Never stores raw SCT.",
+  "type": "object",
+  "required": [
+    "schema",
+    "event_id",
+    "trace_id",
+    "ts",
+    "organ",
+    "tool",
+    "decision",
+    "reason_code"
+  ],
+  "properties": {
+    "schema": { "const": "sct_decision_event.v1" },
+    "schema_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "trace_id": { "type": "string", "description": "Shared incident id across organs" },
+    "ts": { "type": "string" },
+    "organ": { "type": "string" },
+    "tool": { "type": "string" },
+    "action_class": { "type": "string" },
+    "required_authority": { "type": "string" },
+    "require_sct": { "type": "boolean" },
+    "decision": { "enum": ["ALLOW", "REJECT"] },
+    "reason_code": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "sct_fingerprint": {
+      "type": "string",
+      "description": "sha256:… only — never raw token"
+    },
+    "sct_source_count": { "type": "integer", "minimum": 0 },
+    "sct_unique_tokens": { "type": "integer", "minimum": 0 },
+    "registry_source": { "type": "string" },
+    "registry_known": { "type": "boolean" },
+    "extraction_locations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "meta": { "type": "object" }
+  },
+  "additionalProperties": false
+}
