@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # AAA ZEN INIT — Canonical Aligned Bootstrap for All Agents under AAA (2026-06-30)
 
 **Purpose:** One zen (low-entropy) INIT. All warga/agents (opencode, grok, hermes, openclaw, 333/555/777/888/A-AUDIT etc) and organ surfaces load this (or MCP equivalent) first. No redundant copies of doctrine/heptalogy/bootstrap text.

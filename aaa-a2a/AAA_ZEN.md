@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # AAA ZEN — Constitutional Overlay for the Next Horizons
 
 > **DITEMPA BUKAN DIBERI.** AAA is a constitution, not a server.

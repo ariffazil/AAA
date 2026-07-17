@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # Federated Domain Structure · ZEN · v2026.07.15
 
 > **Contrast three repo architectures · Zen one shared skeleton · Flow as federated intelligence**  

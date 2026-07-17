@@ -318,6 +318,70 @@ function computeRegistryHash(organs: OrganStatus[]): string {
   return sha256(canonical.join(','));
 }
 
+// ── Card Inventory Scanner ────────────────────────────────────────────────
+
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+
+const CARD_DIRS = [
+  '/root/AAA/agent-cards',
+  '/root/AAA/a2a-server/agent-cards',
+];
+
+/**
+ * Scan filesystem for agent card JSON files.
+ * Returns list of {agentId, source} for duplicate detection.
+ * Skips _retired/, ARCHIVE/, and non-JSON files.
+ */
+function scanCardInventory(): Array<{ agentId: string; source: string }> {
+  const cards: Array<{ agentId: string; source: string }> = [];
+
+  for (const dir of CARD_DIRS) {
+    if (!fs.existsSync(dir)) continue;
+    
+    const walkDir = (currentDir: string, depth: number) => {
+      if (depth > 4) return; // Max depth guard
+      let entries: fs.Dirent[];
+      try {
+        entries = fs.readdirSync(currentDir, { withFileTypes: true });
+      } catch {
+        return;
+      }
+
+      for (const entry of entries) {
+        const fullPath = path.join(currentDir, entry.name);
+        
+        // Skip retired/archived
+        if (entry.name.startsWith('_retired') || entry.name.startsWith('ARCHIVE') || entry.name.startsWith('.')) {
+          continue;
+        }
+
+        if (entry.isDirectory()) {
+          walkDir(fullPath, depth + 1);
+        } else if (entry.isFile() && entry.name === 'agent-card.json') {
+          try {
+            const raw = fs.readFileSync(fullPath, 'utf-8');
+            const card = JSON.parse(raw);
+            // Try multiple identity fields
+            const agentId = card.agentId || card.agent_id || card.id ||
+              (card.identity && card.identity.organId) || null;
+            if (agentId) {
+              cards.push({ agentId, source: fullPath });
+            }
+          } catch (err) {
+            console.warn(`[registry-validator] Could not parse ${fullPath}: ${err instanceof Error ? err.message : err}`);
+          }
+        }
+      }
+    };
+
+    walkDir(dir, 0);
+  }
+
+  console.log(`[registry-validator] Card inventory: ${cards.length} cards from filesystem`);
+  return cards;
+}
+
 // ── Main: Full Registry Validation ────────────────────────────────────────
 
 export interface RegistryValidationOptions {
@@ -349,12 +413,14 @@ export async function validateRegistry(
   const organs = await Promise.all(organPromises);
 
   // Phase 2: Detect duplicate agentIds (HARD FAILURE)
-  const cardSources = options.cardSources ?? [];
-  // Include organ identities as card sources
+  // Scan actual filesystem for agent cards, not just static CANONICAL_ORGANS
+  const fsCards = scanCardInventory();
+  const allCardSources = [...fsCards, ...(options.cardSources ?? [])];
+  // Include organ identities as additional card sources
   for (const organ of CANONICAL_ORGANS) {
-    cardSources.push({ agentId: organ.agentId, source: `CANONICAL_ORGANS.${organ.organId}` });
+    allCardSources.push({ agentId: organ.agentId, source: `CANONICAL_ORGANS.${organ.organId}` });
   }
-  const duplicates = detectDuplicates(cardSources);
+  const duplicates = detectDuplicates(allCardSources);
 
   if (duplicates.length > 0) {
     const dupIds = duplicates.map((d) => d.agentId).join(', ');
