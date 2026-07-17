@@ -64,7 +64,7 @@ VAULT999 witness: `witness/dual-citizenship-eureka-20260703-*.jsonl`
 2. /root/CONTEXT.md (T1 live state, probe dynamic)
 3. /root/AAA/CLAUDE.md + this AAA_ZEN_INIT
 4. Organ AGENTS.md (arifOS/A-FORGE/AAA/GEOX/WEALTH/WELL)
-5. /root/AAA/docs/INVARIANTS.md + AGENT_WISDOM.md (runtime sanity check — 7 checks mapped to 7 organs) + MEANING.md + TOOLREGISTRY.json (no dup tools) + deprecation
+5. /root/arifOS/GENESIS/INVARIANTS.md + AGENT_WISDOM.md (runtime sanity check — 7 checks mapped to 7 organs) + MEANING.md + TOOLREGISTRY.json (no dup tools) + deprecation
 6. Agent card + A2A peers
 7. MCP registry + organ_init prompt
 

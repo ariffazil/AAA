@@ -26,7 +26,7 @@ from datetime import datetime, timezone
 # ── Configuration ──
 ROOT = Path("/root")
 ARTIFACTS = {
-    "invariants": ROOT / "AAA/docs/INVARIANTS.md",
+    "invariants": ROOT / "arifOS/GENESIS/INVARIANTS.md",
     "session_state": ROOT / ".claude/projects/-root/memory/session-state.md",
     "context_focus": ROOT / "CONTEXT.md",
     "context_session": ROOT / "CONTEXT_SESSION.md",

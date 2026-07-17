@@ -291,7 +291,7 @@ repo='arifOS'  # override with current repo
 print(f'Layer: {d[\"organs\"].get(repo.lower(), {}).get(\"authority\", \"UNKNOWN\")}')"
 
 # 4. WHAT ARE THE INVARIANTS?
-cat /root/AAA/docs/INVARIANTS.md | head -30
+cat /root/arifOS/GENESIS/INVARIANTS.md | head -30
 
 # 5. WHAT IS DEPRECATED?
 cat /root/AAA/docs/deprecation-registry.json | python3 -c "

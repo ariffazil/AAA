@@ -339,7 +339,7 @@ If you want to test these claims:
 | Document | Path |
 |----------|------|
 | Federation Failure Modes | `/root/AAA/docs/FAILURE_MODES.md` |
-| Kernel Invariants | `/root/AAA/docs/INVARIANTS.md` |
+| Kernel Invariants | `/root/arifOS/GENESIS/INVARIANTS.md` |
 | APEX Falsification Protocol | `/root/arifOS/GENESIS/013_APEX_FALSIFICATION_PROTOCOL.md` |
 | Kernel Canon (13 Floors) | `/root/arifOS/GENESIS/000_KERNEL_CANON.md` |
 | Deprecation Registry | `/root/AAA/docs/deprecation-registry.json` |
