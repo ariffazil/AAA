@@ -268,7 +268,7 @@ This suite complements, not replaces:
 - `test_canonical.py::test_init_creates_session` — session creation
 - `test_surface_lock.py::test_all_tools_have_floors` — floor assignment
 
-Those test individual components. MCP-TEST-SUITE tests the integrated cognitive loop.
+Those test individual components. SUITE tests the integrated cognitive loop.
 
 ---
 
