@@ -484,6 +484,67 @@ def verify_or_reject(
 
 
 
+def _emit_gate_decision(
+    *,
+    tool_name: str,
+    organ: str,
+    decision: str,
+    reason_code: str,
+    arguments: dict[str, Any] | None,
+    headers: dict[str, str] | None,
+    meta: dict[str, Any] | None,
+    actor: str | None,
+    auth: Any,
+    extraction: TokenExtraction | None,
+    eff_require_sct: bool,
+    eff_authority: str,
+) -> str:
+    """PR3: emit decision event; return trace_id. Never raises into gate path."""
+    try:
+        from governance.sct_decision_event import emit_decision
+    except ImportError:  # pragma: no cover
+        try:
+            from sct_decision_event import emit_decision  # type: ignore
+        except ImportError:
+            return ""
+
+    fp = ""
+    source_count = 0
+    unique_tokens = 0
+    locations: list[str] = []
+    if extraction is not None:
+        source_count = extraction.source_count
+        unique_tokens = extraction.unique_fingerprints
+        locations = [s.location for s in extraction.sources]
+        if extraction.status == "PRESENT" and extraction.token:
+            fp = _fingerprint(extraction.token)
+        elif extraction.sources:
+            # AMBIGUOUS: log first fingerprint only (already hashed)
+            fp = extraction.sources[0].fingerprint
+
+    reg = auth.to_dict() if auth is not None and hasattr(auth, "to_dict") else {}
+    event = emit_decision(
+        tool=tool_name,
+        organ=organ,
+        decision=decision,
+        reason_code=reason_code,
+        arguments=arguments,
+        headers=headers,
+        meta=meta,
+        actor_id=actor or "",
+        action_class=str(reg.get("action_class") or ""),
+        required_authority=eff_authority,
+        require_sct=eff_require_sct,
+        sct_fingerprint=fp,
+        sct_source_count=source_count,
+        sct_unique_tokens=unique_tokens,
+        registry_source="tools.yaml" if reg.get("tool_id") else "unknown",
+        registry_known=bool(reg.get("tool_id")) and reg.get("action_class") != "UNKNOWN",
+        extraction_locations=locations,
+    )
+    return event.trace_id
+
+
 def gate_tool_ingress(
     tool_name: str,
     arguments: dict[str, Any] | None = None,
@@ -506,6 +567,9 @@ def gate_tool_ingress(
       - If require_sct=True and SCT missing → SCT_REQUIRED reject
       - If SCT absent and not required → allow (backward-compatible OBSERVE)
 
+    PR 3: every ALLOW/REJECT emits a decision event with trace_id +
+    token fingerprint (never raw SCT).
+
     Returns None to proceed, or a rejection dict with extraction + registry evidence.
     """
     import sys
@@ -519,10 +583,11 @@ def gate_tool_ingress(
     from tool_authority import resolve_tool_authority  # type: ignore
 
     auth = resolve_tool_authority(tool_name)
+    args = arguments if isinstance(arguments, dict) else {}
 
     # UNKNOWN tool → HOLD (no caller can override)
     if auth.action_class == "UNKNOWN":
-        return {
+        rej = {
             "error": "TOOL_UNREGISTERED",
             "message": (
                 f"Tool '{tool_name}' is not registered in tools.yaml. "
@@ -539,6 +604,23 @@ def gate_tool_ingress(
                 "schema_version": "2.0.0",
             },
         }
+        tid = _emit_gate_decision(
+            tool_name=tool_name,
+            organ=organ,
+            decision="REJECT",
+            reason_code="TOOL_UNREGISTERED",
+            arguments=args,
+            headers=headers,
+            meta=meta,
+            actor=None,
+            auth=auth,
+            extraction=None,
+            eff_require_sct=True,
+            eff_authority=auth.required_authority,
+        )
+        if tid:
+            rej["trace_id"] = tid
+        return rej
 
     # Registry is the floor. Caller may only tighten (never loosen).
     # If caller requires stricter auth than registry, use caller's value.
@@ -554,14 +636,16 @@ def gate_tool_ingress(
         "AUTHENTICATED_OBSERVE": 1,
         "MUTATE": 2,
         "MUTATE_PRIVILEGED": 3,
+        "LIMITED_MUTATE": 2,
+        "FULL": 3,
+        "SOVEREIGN": 4,
+        "OPERATOR": 1,
     }
     if required_authority is not None and required_authority in _AUTHORITY_RANK:
         reg_rank = _AUTHORITY_RANK.get(eff_authority, 0)
         cal_rank = _AUTHORITY_RANK[required_authority]
         if cal_rank > reg_rank:
             eff_authority = required_authority
-
-    args = arguments if isinstance(arguments, dict) else {}
 
     actor = None
     for key in ("actor_id", "actor", "caller_actor_id"):
@@ -570,15 +654,10 @@ def gate_tool_ingress(
             break
     extraction = extract_sct_from_call(args, headers=headers, meta=meta)
 
-    # AMBIGUOUS — conflicting tokens → REJECT immediately
-    if extraction.status == "AMBIGUOUS":
-        return {
-            "error": "SCT_AMBIGUOUS",
-            "message": (
-                f"Tool '{tool_name}' received {extraction.unique_fingerprints} distinct "
-                f"SCT tokens from {extraction.source_count} sources. "
-                f"All sources must carry the same token."
-            ),
+    def _reject(error: str, message: str, **extra: Any) -> dict[str, Any]:
+        body: dict[str, Any] = {
+            "error": error,
+            "message": message,
             "tool": tool_name,
             "organ": organ,
             "actor": actor,
@@ -591,30 +670,67 @@ def gate_tool_ingress(
                 "schema_version": "2.0.0",
             },
         }
+        body.update(extra)
+        tid = _emit_gate_decision(
+            tool_name=tool_name,
+            organ=organ,
+            decision="REJECT",
+            reason_code=error,
+            arguments=args,
+            headers=headers,
+            meta=meta,
+            actor=actor,
+            auth=auth,
+            extraction=extraction,
+            eff_require_sct=eff_require_sct,
+            eff_authority=eff_authority,
+        )
+        if tid:
+            body["trace_id"] = tid
+        return body
+
+    # AMBIGUOUS — conflicting tokens → REJECT immediately
+    if extraction.status == "AMBIGUOUS":
+        return _reject(
+            "SCT_AMBIGUOUS",
+            (
+                f"Tool '{tool_name}' received {extraction.unique_fingerprints} distinct "
+                f"SCT tokens from {extraction.source_count} sources. "
+                f"All sources must carry the same token."
+            ),
+        )
 
     # ABSENT — no token found
     if extraction.status == "ABSENT":
         if eff_require_sct:
-            return {
-                "error": "SCT_REQUIRED",
-                "message": (
+            return _reject(
+                "SCT_REQUIRED",
+                (
                     f"Tool '{tool_name}' requires a valid Session Capability Token "
                     f"(session_token / _meta.sct / X-ArifOS-SCT). Mint via arif_init. "
                     f"Registry: action_class={auth.action_class} "
                     f"required_authority={eff_authority}."
                 ),
-                "tool": tool_name,
-                "organ": organ,
-                "actor": actor,
-                "registry": auth.to_dict(),
-                "extraction": extraction.to_dict(),
-                "_epistemic": {
-                    "output_class": "GOVERNANCE_TEMPLATE",
-                    "authority_claim": "GATE_REJECTED",
-                    "tagged_by": "federation-sct-gate",
-                    "schema_version": "2.0.0",
-                },
-            }
+            )
+        # ALLOW observe path — still emit decision for black box
+        tid = _emit_gate_decision(
+            tool_name=tool_name,
+            organ=organ,
+            decision="ALLOW",
+            reason_code="OK_OBSERVE_NO_SCT",
+            arguments=args,
+            headers=headers,
+            meta=meta,
+            actor=actor,
+            auth=auth,
+            extraction=extraction,
+            eff_require_sct=eff_require_sct,
+            eff_authority=eff_authority,
+        )
+        # Non-reject path cannot attach trace_id to None — organs may read logs.
+        # Stash on args for optional organ use (non-secret).
+        if tid and isinstance(arguments, dict) and "trace_id" not in arguments:
+            arguments["_sct_trace_id"] = tid
         return None
 
     # PRESENT — verify the single unique token against registry floor
@@ -625,9 +741,42 @@ def gate_tool_ingress(
         meta=meta,
     )
     if rej is None:
+        tid = _emit_gate_decision(
+            tool_name=tool_name,
+            organ=organ,
+            decision="ALLOW",
+            reason_code="OK_SCT_VALID",
+            arguments=args,
+            headers=headers,
+            meta=meta,
+            actor=actor,
+            auth=auth,
+            extraction=extraction,
+            eff_require_sct=eff_require_sct,
+            eff_authority=eff_authority,
+        )
+        if tid and isinstance(arguments, dict) and "trace_id" not in arguments:
+            arguments["_sct_trace_id"] = tid
         return None
+
     rej["tool"] = tool_name
     rej["organ"] = organ
     rej["registry"] = auth.to_dict()
     rej["extraction"] = extraction.to_dict()
+    tid = _emit_gate_decision(
+        tool_name=tool_name,
+        organ=organ,
+        decision="REJECT",
+        reason_code=str(rej.get("error") or "SCT_INVALID"),
+        arguments=args,
+        headers=headers,
+        meta=meta,
+        actor=actor,
+        auth=auth,
+        extraction=extraction,
+        eff_require_sct=eff_require_sct,
+        eff_authority=eff_authority,
+    )
+    if tid:
+        rej["trace_id"] = tid
     return rej
