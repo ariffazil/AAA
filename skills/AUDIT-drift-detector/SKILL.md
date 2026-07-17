@@ -16,11 +16,13 @@ floor_scope: [F02, F04, F11]
 The federation has multiple registries (tool_registry.json, agent cards, SKILL_ALIAS_TABLE, affordances.yaml). Drift between them causes routing failures, orphaned skills, and silent capability loss.
 
 ## Drift Dimensions
-1. **Tool Manifest Drift** — Live MCP tools vs registered tools vs agent card references
-2. **Skill Registry Drift** — SKILL_ALIAS_TABLE vs actual directories vs agent card skill IDs
-3. **Agent Card Drift** — Card skill IDs vs existing skill directories
-4. **Schema Drift** — Tool input schemas vs documented schemas
-5. **Floor Drift** — Declared floor_scope vs actual floor enforcement
+1. **Build vs Runtime Manifest Drift** — Canonical drift check via `arifOS/runtime/manifest.py` (`build_manifest` vs `runtime_manifest`). This is the primary drift detection mechanism post-KSR Epoch 1+2.
+2. **Tool Manifest Drift** — Live MCP tools vs registered tools vs agent card references
+3. **Skill Registry Drift** — SKILL_ALIAS_TABLE vs actual directories vs agent card skill IDs
+4. **Agent Card Drift** — Card skill IDs vs existing skill directories
+5. **Schema Drift** — Tool input schemas vs documented schemas
+6. **Floor Drift** — Declared floor_scope vs actual floor enforcement
+7. **Verdict Taxonomy Drift** — Verdict emissions vs closed 6-value set (OBSERVE_ONLY|SEAL|SABAR|VOID|HOLD|888_HOLD)
 
 ## Detection Pipeline
 1. **Snapshot** — Capture current state of all registries
@@ -30,10 +32,12 @@ The federation has multiple registries (tool_registry.json, agent cards, SKILL_A
 5. **Escalate** — CRITICAL drift → 888_HOLD before any SEAL operation
 
 ## Baselines
+- **Canonical drift check**: `arifOS/runtime/manifest.py` — `build_manifest` vs `runtime_manifest` (post-KSR Epoch 1+2)
 - Tool registry: `/root/arifOS/tool_registry.json`
 - Agent cards: `/root/AAA/a2a-server/agent-cards/`
 - Skill alias: `/root/AAA/skills/SKILL_ALIAS_TABLE.json`
 - MCP surface: Live `tools/list` from each organ
+- Verdict taxonomy: `arifOS/runtime/verdict.py` — closed 6-value set
 
 ## Floors
 - F2 TRUTH: Report only what is actually observed. No inference without evidence.

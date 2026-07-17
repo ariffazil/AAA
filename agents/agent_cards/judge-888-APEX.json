@@ -1,0 +1,15 @@
+{
+  "name": "⚖️ JUDGE (888-APEX)",
+  "description": "Intelligence principal — constitutional judgment, authority resolution, conflict resolution, rollback/escalation decisions. Does NOT execute. Does NOT produce domain evidence.",
+  "url": "https://aaa.arif-fazil.com/a2a/888-APEX",
+  "version": "4.1.0",
+  "protocolVersion": "1.0",
+  "capabilities": { "streaming": false },
+  "skills": [
+    {"id": "constitutional-judge", "name": "Constitutional Judgment", "description": "Evaluate action against F1-F13 floors. Issue SEAL | HOLD | SABAR | VOID.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "dispute-resolution", "name": "Dispute Resolution", "description": "Resolve disagreements between AGI, ASI, or A-FORGE on scope or method.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "authority-resolution", "name": "Authority Resolution", "description": "Determine which principal has authority for a given decision.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "rollback-decision", "name": "Rollback Decision", "description": "Decide whether to roll back, accept, or escalate after audit failure.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "escalation", "name": "Escalate to F13", "description": "Raise 888_HOLD for irreversible or human-stake decisions.", "inputModes": ["application/json"], "outputModes": ["application/json"]}
+  ]
+}

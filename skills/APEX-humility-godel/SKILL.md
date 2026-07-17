@@ -63,6 +63,11 @@ What I do NOT know that could invalidate this claim:
 - If attack succeeds: reduce confidence, add caveats, or withdraw claim
 - If attack fails: maintain confidence with documented defense
 - Output: adjusted confidence band + remaining unknowns + verdict
+- **Verdict must use the canonical closed 6-value taxonomy** from `arifOS/runtime/verdict.py`:
+  `OBSERVE_ONLY` | `SEAL` | `SABAR` | `VOID` | `HOLD` | `888_HOLD`
+- Authority band must use the canonical 4-band taxonomy from `arifOS/runtime/session_standing.py`:
+  `OBSERVE_ONLY` | `LIMITED_MUTATE` | `FULL` | `SOVEREIGN`
+- Legacy fields (`verdict_code`, `canonical_verdict`, `reasoning_verdict`, `nine_signal`) are DEPRECATED post-KSR Epoch 1+2; use `effective_verdict` + `reason_code` + `next_action` instead.
 </verdict>
 
 ## Floors

@@ -1,0 +1,14 @@
+{
+  "name": "🧠 THINK (333-AGI)",
+  "description": "Intelligence principal — proposes architecture, implementation plans, and reversible draft artefacts. Does NOT execute. Does NOT judge. Does NOT certify.",
+  "url": "https://aaa.arif-fazil.com/a2a/333-AGI",
+  "version": "4.1.0",
+  "protocolVersion": "1.0",
+  "capabilities": { "streaming": true, "stateTransitionHistory": true },
+  "skills": [
+    {"id": "architecture", "name": "Architecture Design", "description": "Design system structure, policy, and standards.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "implementation-plan", "name": "Implementation Plan", "description": "Plan how to implement a change with scope, rollback, expected-state contract.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "change-proposal", "name": "Change Proposal", "description": "Propose a specific change with before/after, blast radius, success criteria.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "reversible-artifact-draft", "name": "Draft Artifact", "description": "Draft reversible artifacts (plan files, config templates, ATLAS333 updates).", "inputModes": ["application/json"], "outputModes": ["text/markdown"]}
+  ]
+}

@@ -1,3 +1,13 @@
+---
+id: FORGE-cicd-docker-deploy
+name: FORGE-cicd-docker-deploy
+version: 1.0.0-2026.07.17
+description: "Build GitHub Actions CI/CD pipelines, Docker multi-stage builds, and deploy-verify patterns for VPS af-forge."
+owner: A-FORGE
+risk_tier: high
+floor_scope: ['F1', 'F2', 'F4', 'F11', 'F12', 'F13']
+autonomy_tier: T2
+---
 # ⚒️ CI/CD + Docker Deploy — Forge Pipeline
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

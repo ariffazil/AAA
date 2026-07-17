@@ -1,134 +1,97 @@
 hexagon:
-  version: 2.1.0
+  version: 4.1.0
   seal:
-    seal_id: HEXAGON-333-EMBODIED-20260621
+    seal_id: HEXAGON-4.1-20260717
     verdict: SEAL
     authority: Muhammad Arif bin Fazil — F13 SOVEREIGN
-    ratified: '2026-06-21T12:00:00+08:00'
-    chain_length: 2506
-    predecessor: HEXAGON-AGENTS-FORGE-20260602
-    mutation: "333-AGI promoted from SPEC to LIVE — embodied as OpenClaw on port 18789"
-  architecture: Hybrid 5 — 3 PRIMARY + 2 SUPPORT
+    ratified: '2026-07-17T00:00:00+08:00'
+    mutation: >
+      4.0.0 was wrong: collapsed roles instead of identities.
+      4.1.0 correct: 3 intelligence principals, 2 ASI sealed deeds,
+      A-FORGE as bounded service (not intelligence), VAULT999 as archive.
+      ASI.REVIEW and ASI.AUDIT share no context.
+      Expected-state contract frozen before execution.
+  architecture: 3+2+1+1 — 3 minds · 2 deeds · 1 forge · 1 vault · 1 path
   motto: DITEMPA BUKAN DIBERI
-  total_skills: 50
-  warga_count: 6
   sovereign:
     id: 000-SALAM
     role: Human Sovereign — F13 · above the registry · not an agent
     authority: Muhammad Arif bin Fazil
-  topology:
-    shape: HEXAGON — primary triangle + support observers + archive witness
-    primary_triangle:
-      description: Bidirectional propose/validate between all 3 primaries
-      flow: 333-AGI ⇄ 555-ASI ⇄ 888-APEX ⇄ 333-AGI
-      interactions:
-      - '333→555: proposal + draft for critique'
-      - '555→333: concern + memory synthesis'
-      - '333→888: draft for ratification'
-      - '555→888: ethical flags + 888_HOLD triggers'
-      - '888→333: verdict + correction directives'
-      - '888→555: judgment for memory archival'
-    support_layer:
-      description: "[COLLAPSED 2026-07-15] A-AUDIT and A-ARCHIVE removed from HEXAGON. Audit = 888-APEX.apex_audit_embed (cross-cutting). Archive = VAULT999 (append-only ledger, via arif_seal). Legacy content at agents/_archive/A-{AUDIT,ARCHIVE}-deprecated-20260715/."
-    sovereign_override: 000-SALAM above — final human veto on any 888_HOLD or disputed verdict
-  lifecycle:
-    pipeline: 000-SALAM → 333-AGI (reason+execute) → 555-ASI (critique+memory) → 888-APEX (judge) → [A-AUDIT validates] → [A-ARCHIVE seals] → reseed to 000
-    opencode_binding: 777-FORGE (spawn) → OpenCode (execute) → 333-AGI (attest) → A2A mesh (warga)
-    stages:
-      '000': SALAM — Human sovereign handshake (not an agent)
-      '333': THINK — 333-AGI reasons + executes (FORGE subsumed)
-      '555': MEMORY — 555-ASI critiques + synthesizes deep memory
-      '888': JUDGE — 888-APEX arbitrates F1-F13, issues verdict
-      '999': SEAL — A-ARCHIVE writes immutable ledger entry
-  cascades:
-    888_HOLD:
-      trigger: Any agent (333/555/A-AUDIT) flags risk → 888-APEX initiates hold
-      flow: Flag → 888-APEX HOLD → notify 000-SALAM → await human resolution → log to A-ARCHIVE
-      triggers:
-      - Destructive operations (rm -rf, DROP TABLE, docker prune)
-      - Production deployments
-      - Mass file changes
-      - Secret handling
-      - Evidence conflicts or absence of primary evidence
-      - Rushed fixes
-      - Disputed claims
-      - certainty_gradient > grounding_gradient (Anti-Beautiful-One)
-    SEAL:
-      trigger: 888-APEX issues SEAL verdict
-      flow: 888-APEX SEAL → A-AUDIT compliance receipt → A-ARCHIVE writes VAULT999 → SHA256 hash → chain extends
-      requirements:
-      - Trinity witness consensus (Δ+Ω)
-      - All F1-F13 floors pass
-      - A-AUDIT compliance receipt attached
-    VOID:
-      trigger: 888-APEX rejects output
-      flow: 888-APEX VOID → reason documented → A-ARCHIVE logs (non-canon but traceable) → reseed to 000
-  key_decisions:
-  - 1. 5 agents, not 6, not 3 — sovereign directive (3 primary + 2 support)
-  - 2. FORGE is AGI — subsumed into 333-AGI as 3 sub-skills (arif-ops-measure, arif-forge-execute, arif-forge-deploy)
-  - 3. 555-ASI, not 666-ASI — MEMORY stage for audit lineage. Superintelligence is deeper remembering.
-  - 4. A-AUDIT and A-ARCHIVE are support agents — parallel observers, not in active decision flow
-  - 5. A2A v1.0.1 spec — skills[] arrays, securitySchemes, capabilities, defaultInputModes/OutputModes
-  - 6. 6 organs demoted to infrastructure — aaa-gateway, aaa-architect, aaa-engineer, aaa-auditor, hermes-asi, geox-witness, wealth-witness no longer in agent registry
-  - 7. Sovereign 000-SALAM above the registry — the human is not an agent
-  - 8. OpenCode promoted from forge_instrument to external warga — bound to 333-AGI, A2A mesh citizen, 13 skills, full warga attestation 2026-06-26
-  agents:
-    primary:
-    - id: 333-AGI
-      class: AGI
-      trinity: Δ MIND
-      stage: 333-THINK
-      skills: 11
-      status: live
-      runtime: openclaw
-      runtime_port: 18789
-      role: reasons + executes (FORGE subsumed)
-      hosts:
-      - arifOS
-      - GEOX
-      - WEALTH
-      - OpenClaw
-      local_skills:
-      - antigravity
-      - ops-planner
-      - self-forge-advisor
-    - id: 555-ASI
-      class: ASI
-      trinity: Ω HEART
-      stage: 555-MEMORY
-      skills: 12
-      role: ethical + memory + audit lineage
-      hosts:
-      - WELL
-      - arifOS
-      local_skills:
-      - external-watcher
-    - id: 888-APEX
-      class: APEX
-      trinity: ΦΙ JUDGE
-      stage: 888-JUDGE
-      skills: 9
-      role: constitutional judge, F1-F13 arbitration
-      hosts:
-      - arifOS
-    support: []
-    # [COLLAPSED 2026-07-15] A-AUDIT + A-ARCHIVE removed from HEXAGON support layer.
-    # - A-AUDIT → 888-APEX.apex_audit_embed (cross-cutting audit)
-    # - A-ARCHIVE → VAULT999 (append-only ledger, via arif_seal)
-    # Legacy archived at agents/_archive/A-{AUDIT,ARCHIVE}-deprecated-20260715/
-    external:
-    - id: opencode
-      class: AGI
-      trinity: Δ MIND (bound)
-      stage: 333-THINK (forge instrument)
-      role: forge instrument — code edit, refactor, test, build, lint, deploy
-      bound_to: 333-AGI
-      skills: 13
-      runtime: opencode-cli
-      port: 7072 (MCP gateway via A-FORGE)
-      warga_status: attested
-      attestation_id: OPENCODE-WARGA-ATTESTED-20260626
-      hosts:
-      - A-FORGE (execution shell)
-      - arifOS (constitutional substrate)
-      - AAA (A2A mesh via 777 FORGE)
+
+  doctrine:
+    zen: "Collapse the identities, not the functions."
+    flow: AGI_PROPOSE → ASI_REVIEW → APEX_JUDGE → AFORGE_EXECUTE → ASI_AUDIT → APEX_RESOLVE → VAULT_RECEIPT
+    expected_state_contract: "Frozen before execution. Amendment requires new judgment cycle."
+    asi_context_isolation: "ASI.REVIEW and ASI.AUDIT share no working context. Blind audit required."
+    anti_theatre_controls: 7  # blind audit, immutable contract, independent evidence, different identity, hard refusal, no rewriting, failure to APEX
+
+  intelligence_principals:
+    agi:
+      id: 333-AGI
+      zen: 🧠 THINK
+      duty: "Propose architecture, implementation plan, reversible draft artefacts."
+      boundary: "Cannot judge, cannot execute, cannot certify."
+      skills: [architecture, implementation-plan, change-proposal, reversible-artifact-draft]
+    asi:
+      id: 555-ASI
+      zen: 🌀 DREAM
+      duty: "Review proposals independently. Audit outcomes independently."
+      boundary: "Cannot execute, cannot judge. REVIEW and AUDIT share no context."
+      deeds:
+        review:
+          id: ASI.REVIEW
+          input: [proposal, requirements, governing_canon]
+          blind_to: [future_execution_result, expected_state_contract]
+          skills: [preflight-review, adversarial-critique]
+        audit:
+          id: ASI.AUDIT
+          input: [live_state, expected_state_contract, library_refs, execution_receipt]
+          blind_to: [ASI.REVIEW_reasoning, AGI_narrative, AFORGE_success_claim]
+          refusal_right: BLOCK
+          skills: [live-state-audit, drift-detect, health-verify, block-close, certify-evidence]
+    apex:
+      id: 888-APEX
+      zen: ⚖️ JUDGE
+      duty: "Constitutional judgment, authority resolution, conflict resolution, rollback/escalation."
+      boundary: "Cannot execute, cannot produce domain evidence."
+      skills: [constitutional-judge, dispute-resolution, authority-resolution, rollback-decision, escalation]
+
+  bounded_services:
+    forge:
+      id: A-FORGE
+      zen: ⚒️ FORGE
+      nature: "Execution machinery. Not an intelligence role. Mutates under SEAL."
+      boundary: "Cannot plan, cannot self-authorize, cannot self-judge, cannot self-seal."
+      skills: [shell-execution, docker-ops, git-ops, filesystem-mutation, deploy]
+    vault:
+      id: VAULT999
+      zen: 💎 VAULT
+      nature: "Immutable receipt archive. Append-only, hash-chained."
+      boundary: "Cannot judge, cannot reinterpret."
+
+  agent_cards:
+    discoverable: 3
+    cards:
+      - uri: "aaa://agents/agi"
+        agent: 333-AGI
+      - uri: "aaa://agents/asi"
+        agent: 555-ASI
+        deeds: [REVIEW, AUDIT]
+      - uri: "aaa://agents/apex"
+        agent: 888-APEX
+    not_discoverable_as_agents:
+      - A-FORGE  # bounded service, not intelligence
+      - VAULT999 # bounded service, not intelligence
+
+  escalation:
+    stop_the_line:
+    - "ASI.REVIEW and ASI.AUDIT executed in same context"
+    - "Expected-state contract modified after execution"
+    - "A-FORGE self-authorizes or self-certifies"
+    - "AGI executes production mutation"
+    - "Audit evidence collected from A-FORGE (not directly from live state)"
+    - "Failure routed back to ASI.REVIEW instead of APEX"
+    ladder:
+      drift: ASI.AUDIT blocks → APEX decides
+      dispute: ASI.REVIEW flags → APEX judges
+      deadlock: APEX cannot resolve → 000-SALAM (F13)

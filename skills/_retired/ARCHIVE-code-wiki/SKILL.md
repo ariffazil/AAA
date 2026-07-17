@@ -1,6 +1,6 @@
 ---
 id: code-wiki
-name: Code Wiki — Codebase Documentation Generator
+name: Code Wiki - Codebase Documentation Generator
 version: 1.0.0
 description: Generate structured wiki docs, module maps, and Mermaid diagrams for
   unfamiliar codebases.

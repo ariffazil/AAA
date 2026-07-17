@@ -1,3 +1,13 @@
+---
+id: FORGE-governance-jsonld
+name: FORGE-governance-jsonld
+version: 1.0.0-2026.07.17
+description: "Governance JSON-LD — constitutional ontology and semantic governance context definitions."
+owner: A-FORGE
+risk_tier: medium
+floor_scope: ['F1', 'F2', 'F4', 'F11']
+autonomy_tier: T1
+---
 # ⚒️ Governance JSON-LD — Constitutional Ontology
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.
