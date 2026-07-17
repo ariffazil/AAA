@@ -3,11 +3,11 @@
  * ════════════════════════════════════════════
  * 
  * Validates the MCP lifecycle fixes with real A2A protocol interactions:
- * 1. Agent card discovery (A2A-spec /.well-known/agent.json)
+ * 1. Agent card discovery (A2A 1.0 spec: /.well-known/agent-card.json)
  * 2. MCP handshake (initialize → version negotiation)
  * 3. A2A message send → task creation → state transitions
  * 4. Task retrieval and artifact verification
- * 5. Graceful degradation when AAA unreachable
+ * 5. Old discovery path (/.well-known/agent.json) is deprecated and rejected
  * 
  * Tests against the live federation at localhost ports.
  * 
@@ -63,8 +63,8 @@ async function post(path: string, payload: unknown, base = BASE): Promise<{ stat
 // ═══════════════════════════════════════════════════════════════════════════
 
 describe('A2A Agent Card Discovery', () => {
-  it('GET /.well-known/agent.json returns 200 with valid card', async () => {
-    const { status, body } = await get('/.well-known/agent.json');
+  it('GET /.well-known/agent-card.json returns 200 with valid card', async () => {
+    const { status, body } = await get('/.well-known/agent-card.json');
     assert.equal(status, 200, `Expected 200, got ${status}`);
     const card = body as Record<string, unknown>;
     assert.ok(card.name, 'Card must have name');
@@ -73,8 +73,14 @@ describe('A2A Agent Card Discovery', () => {
     console.log(`  name: ${card.name}, version: ${card.version}`);
   });
 
+  it('GET /.well-known/agent.json returns 404 (old path deprecated)', async () => {
+    const { status } = await get('/.well-known/agent.json');
+    assert.notEqual(status, 200, `Old path /.well-known/agent.json should NOT return 200 (got ${status}). Use /.well-known/agent-card.json per A2A 1.0 spec.`);
+    console.log(`  old path status: ${status} (expected non-200)`);
+  });
+
   it('Agent card has capabilities', async () => {
-    const { body } = await get('/.well-known/agent.json');
+    const { body } = await get('/.well-known/agent-card.json');
     const card = body as Record<string, unknown>;
     const caps = (card.capabilities || {}) as Record<string, unknown>;
     // A2A 1.0 requires at minimum: streaming and/or pushNotifications
@@ -181,29 +187,22 @@ describe('A2A Task Lifecycle', () => {
     };
 
     const { status, body } = await post('/message/send', payload);
-    assert.equal(status, 200, `message/send failed: HTTP ${status}, body: ${JSON.stringify(body).slice(0, 100)}`);
+    assert.equal(status, 200, `message/send failed: HTTP ${status}, body: ${JSON.stringify(body).slice(0, 200)}`);
+    assert.ok(!body.error, `message/send returned error: ${JSON.stringify(body.error)}`);
 
     const result = body.result as Record<string, unknown> | undefined;
-    if (result) {
-      taskId = result.id as string;
-      assert.ok(taskId, 'Task must have id');
-      console.log(`  taskId: ${taskId?.slice(0, 16)}...`);
+    assert.ok(result, 'message/send must return a result object');
+    taskId = result.id as string;
+    assert.ok(taskId, 'Task must have id');
+    console.log(`  taskId: ${taskId?.slice(0, 16)}...`);
 
-      const status_ = (result.status || result.state) as Record<string, unknown> | string | undefined;
-      const state = typeof status_ === 'string' ? status_ : status_?.state;
-      console.log(`  state: ${state}`);
-    } else if (body.error) {
-      console.log(`  A2A error: ${JSON.stringify(body.error)}`);
-    } else {
-      console.log(`  response keys: ${Object.keys(body).join(', ')}`);
-    }
+    const status_ = (result.status || result.state) as Record<string, unknown> | string | undefined;
+    const state = typeof status_ === 'string' ? status_ : status_?.state;
+    console.log(`  state: ${state}`);
   });
 
   it('GET /operator/tasks/:taskId retrieves task', async function () {
-    if (!taskId) {
-      this.skip!('No taskId from previous test');
-      return;
-    }
+    assert.ok(taskId, 'Task must have been created in previous test — message/send did not produce a taskId');
     const { status, body } = await get(`/operator/tasks/${taskId}`);
     assert.equal(status, 200, `Task retrieval failed: HTTP ${status}`);
     const task = body as Record<string, unknown>;
@@ -219,13 +218,7 @@ describe('A2A Task Lifecycle', () => {
 describe('Registry Conformance', () => {
   it('GET /registry/conformance returns ConformanceArtifact', async function () {
     const { status, body } = await get('/registry/conformance');
-    // May be 500 if registry probe fails, which is acceptable (NOT_EVALUATED)
-    if (status === 500) {
-      console.log(`  DEGRADED (expected when MCP lifecycle fails): ${(body as Record<string,unknown>).message}`);
-      this.skip!();
-      return;
-    }
-    assert.equal(status, 200, `Expected 200 or 500, got ${status}`);
+    assert.equal(status, 200, `Expected 200, got ${status} — /registry/conformance must succeed. Body: ${JSON.stringify(body).slice(0, 200)}`);
     const artifact = body as Record<string, unknown>;
     assert.equal(artifact.schemaVersion, 'session-d.v1', 'Must have session-d.v1 schema');
     assert.ok(artifact.summary, 'Must have summary');

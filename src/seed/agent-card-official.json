@@ -35,7 +35,7 @@
           "seal_verification": "https://arif-fazil.com/999/seal.json",
           "authentication_protocol": "Ed25519-challenge-response",
           "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify(signature) \u2192 FULL authority",
-          "sovereign_key_fingerprint": "sha256:bf881c46b5c936ec2cbe71493159e1c606a00acbb30dc534a7a66060a0527e30"
+          "sovereign_key_fingerprint": "sha256:c843960f8c85d625bd0e8dc563beba331b4cfe6d0c08f71c2e6da80eb58b8c6a"
         }
       },
       {
