@@ -1,0 +1,50 @@
+{
+  "$schema": "arifOS/a2a/taskstate-verdict-map/v1",
+  "spec_version": "1.0.0",
+  "upstream": "https://github.com/a2aproject/A2A",
+  "description": "Bidirectional mapping between A2A TaskState enum and arifOS 888-APEX verdict system",
+  "a2a_to_arifos": {
+    "TASK_STATE_UNSPECIFIED": null,
+    "TASK_STATE_SUBMITTED": null,
+    "TASK_STATE_WORKING": null,
+    "TASK_STATE_COMPLETED": "SEAL",
+    "TASK_STATE_FAILED": "VOID",
+    "TASK_STATE_CANCELED": "VOID",
+    "TASK_STATE_INPUT_REQUIRED": "SABAR",
+    "TASK_STATE_REJECTED": "VOID",
+    "TASK_STATE_AUTH_REQUIRED": "HOLD"
+  },
+  "arifos_to_a2a": {
+    "SEAL": "TASK_STATE_COMPLETED",
+    "HOLD": "TASK_STATE_AUTH_REQUIRED",
+    "SABAR": "TASK_STATE_INPUT_REQUIRED",
+    "VOID": "TASK_STATE_REJECTED"
+  },
+  "state_classification": {
+    "terminal": ["SEAL", "VOID"],
+    "interrupt": ["HOLD", "SABAR"],
+    "transient": ["TASK_STATE_SUBMITTED", "TASK_STATE_WORKING"]
+  },
+  "lifecycle_flow": {
+    "description": "A2A task lifecycle mapped through 888 verdict gate",
+    "stages": [
+      {"a2a": "SUBMITTED", "action": "Task arrives at AAA gateway"},
+      {"a2a": "WORKING", "action": "333-AGI or 555-ASI executing within lease"},
+      {"a2a": "COMPLETED", "verdict": "SEAL", "action": "888 approves, receipt sealed to VAULT999"},
+      {"a2a": "FAILED", "verdict": "VOID", "action": "Execution error, scar metabolized"},
+      {"a2a": "CANCELED", "verdict": "VOID", "action": "Sovereign or timeout cancel"},
+      {"a2a": "REJECTED", "verdict": "VOID", "action": "888 judged and rejected at gate"},
+      {"a2a": "INPUT_REQUIRED", "verdict": "SABAR", "action": "Waiting for human/external evidence"},
+      {"a2a": "AUTH_REQUIRED", "verdict": "HOLD", "action": "888_HOLD — requires F13 sovereign ack"}
+    ]
+  },
+  "governance": {
+    "constitutional_floors": ["F1", "F2", "F3", "F11", "F13"],
+    "judge_organ": "arifOS",
+    "verdict_authority": "888-APEX",
+    "seal_endpoint": "arif_seal",
+    "audit_endpoint": "VAULT999"
+  },
+  "forged": "2026-07-17",
+  "forged_by": "AAA Control Plane · A2A Zen Alignment"
+}

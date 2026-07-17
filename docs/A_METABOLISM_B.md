@@ -199,7 +199,7 @@ The arifOS position:
 | Document | Location |
 |----------|----------|
 | 13 Constitutional Floors | `/root/AAA/CLAUDE.md#3` |
-| Federation Organ Map | `/root/AAA/docs/FEDERATION_ORGAN.md` |
+| Federation Organ Map | `/root/AAA/docs/ORGAN.md` |
 | MCP Invariants (7 Physics + 7 Zen) | `/root/.claude/projects/-root/memory/mcp-invariants.md` |
 | Reality Engineering (8 Iron Laws) | `/root/arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` |
 | EHT Governance Pack | `/root/AAA/contracts/eht-governance/` |

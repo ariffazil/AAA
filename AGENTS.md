@@ -1,7 +1,7 @@
 # AGENTS.md — arifOS Federation | Agent Landing Protocol
 
 > **DITEMPA BUKAN DIBERI** — Forged, not given.
-> **Zero-context strip:** `/root/AGENTS_LANDING.md` (125 lines, pointers only).
+> **Zero-context strip:** `/root/LANDING.md` (125 lines, pointers only).
 
 ---
 
@@ -139,10 +139,10 @@ See: /root/AAA/governance/AAA_HUMAN_SPEECH_RULE.md for full spec and translation
 | # | Artifact | Path | Load |
 |---|---|---|---|
 | 1 | Session State | `/root/.claude/projects/-root/memory/session-state.md` | 5s |
-| 2 | Tiered CONTEXT | `/root/CONTEXT.md` (focus) + `CONTEXT_SESSION.md` (log). **Never load `CONTEXT_ARCHIVE.md`** — grep only. | 10s |
+| 2 | Tiered CONTEXT | `/root/CONTEXT.md` (focus) + `SESSION.md` (log). **Never load `CONTEXT_ARCHIVE.md`** — grep only. | 10s |
 | 3 | Deprecation Registry | `/root/AAA/docs/deprecation-registry.json` — check BEFORE using any tool. Deprecated → migrate, don't use. | 5s |
 | 4 | INVARIANTS | `/root/arifOS/GENESIS/INVARIANTS.md` — 11 Physics + 7 Zen. | 15s |
-| 5 | MCP Cognitive Tests | `/root/AAA/docs/MCP-TEST-SUITE.md` — 42/42 PASS. Verifies your mind works. | 10s |
+| 5 | MCP Cognitive Tests | `/root/AAA/docs/SUITE.md` — 42/42 PASS. Verifies your mind works. | 10s |
 | 6 | TOOLREGISTRY | `/root/AAA/docs/TOOLREGISTRY.json` — search by `capability_tag` BEFORE building. Overlap ≥2 tags = duplicate. | 10s |
 | 7 | MEANING | `/root/AAA/docs/MEANING.md` — Rosetta Stone. What tools/resources mean per layer. | 20s |
 | 8 | The Trilogy | `arif-fazil.com/essays/` + `/root/.agents/skills/agentic-civilizational-context/SKILL.md` — the WHY. Load AFTER 1-7, BEFORE any tool call. | 30s |

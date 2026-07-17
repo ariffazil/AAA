@@ -7,7 +7,7 @@
 > **Date:** 2026-07-11 | **Supersedes:** All prior implicit skill conventions
 > **Purpose:** Defines what every AAA skill MUST, SHOULD, and MAY declare.
 > **Enforced by:** `skill-constitutional-audit` (meta-linter)
-> **Companion:** `ROSETTA_STONE.md` (cross-CLI vocabulary), `FEDERATION_ORGAN.md` (organ map)
+> **Companion:** `ROSETTA_STONE.md` (cross-CLI vocabulary), `ORGAN.md` (organ map)
 
 ---
 
@@ -508,6 +508,6 @@ This constitution is authorized by:
 ---
 
 *Forged 2026-07-11 by AAA Control Plane. Canonical at `/root/AAA/docs/SKILL_CONSTITUTION.md`.*
-*Companion documents: `ROSETTA_STONE.md`, `FEDERATION_ORGAN.md`, `KERNEL_INVARIANTS.md`.*
+*Companion documents: `ROSETTA_STONE.md`, `ORGAN.md`, `KERNEL_INVARIANTS.md`.*
 *Enforced by: `skill-constitutional-audit` meta-linter.*
 *DITEMPA BUKAN DIBERI — 999 SEAL ALIVE.*

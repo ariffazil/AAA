@@ -25,7 +25,7 @@ This is the **orthogonal contrast** for the three domain-intelligence MCP organs
 | **Execution** | A-FORGE `:7071/:7072` | Mutate only after SEAL + lease |
 | **Memory** | VAULT999 | Append-only sealed consequence |
 
-**Repos:** `/root/AAA/docs/FEDERATION_ORGAN.md` · `/root/AAA/docs/architecture/UNIVERSAL_DOMAIN.md`
+**Repos:** `/root/AAA/docs/ORGAN.md` · `/root/AAA/docs/architecture/UNIVERSAL_DOMAIN.md`
 
 ---
 

@@ -15,7 +15,7 @@ Execute the arifOS Federation Entropy Reduction Plan. Deep research is done. Bou
 
 ```bash
 set -a && source /root/.secrets/vault.env && set +a
-cat /root/AAA/docs/FEDERATION_ORGAN.md
+cat /root/AAA/docs/ORGAN.md
 cat /root/AAA/docs/KERNEL_INVARIANTS.md
 cat /root/AAA/docs/ENTROPY_REDUCTION_PROMPT.md
 cat /root/AAA/docs/deprecation-registry.json | python3 -m json.tool | head -80

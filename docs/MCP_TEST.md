@@ -24,7 +24,7 @@
 
 **Total:** ~52 tests. All skip cleanly if dependencies missing.
 
-**Cross-reference:** AGENTS.md refers to this file as `MCP-TEST-SUITE.md` (filename drift). The canonical name is `MCP_TEST.md` (this file). See `forge_work/2026-07-05/constitutional-repair/cleanup/AGENTS_PATH_DRIFT.md` for the audit.
+**Cross-reference:** AGENTS.md refers to this file as `SUITE.md` (filename drift). The canonical name is `MCP_TEST.md` (this file). See `forge_work/2026-07-05/constitutional-repair/cleanup/AGENTS_PATH_DRIFT.md` for the audit.
 
 ---
 
@@ -123,7 +123,7 @@ Each stage has failure modes. Each failure mode maps to a test scenario.
 
 **Expected behavior:**
 1. Agent reads `/root/.claude/projects/-root/memory/session-state.md` FIRST
-2. Agent reads `/root/CONTEXT_SESSION.md` for session log
+2. Agent reads `/root/SESSION.md` for session log
 3. Agent reads `/root/CONTEXT.md` for current focus
 4. Agent reconstructs world model from these sources
 5. Agent continues task without re-discovering facts

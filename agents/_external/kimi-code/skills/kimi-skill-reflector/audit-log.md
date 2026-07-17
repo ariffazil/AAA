@@ -315,7 +315,7 @@ in AAA repo per federation doctrine).
 
 - kimi-skill-reflector ← → AUDIT-recursive-audit (AAA project-scope)
 - KIMI_RSI_INIT_PROMPT ← → AGI-skill-unification (multi-harness catalog)
-- Federation anchors section ← → AGENTS_LANDING.md §0 (heptalogy structure)
+- Federation anchors section ← → LANDING.md §0 (heptalogy structure)
 - Cold-boot diagnostic recipe ← → FORGE-entropy-sweep principle
 - Post-deploy verification recipe ← → FORGE-precommit-review ritual
 

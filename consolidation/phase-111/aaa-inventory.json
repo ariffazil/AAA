@@ -10443,7 +10443,7 @@
       "deletion_risk": "MEDIUM"
     },
     {
-      "path": "docs/FEDERATION_ORGAN.md",
+      "path": "docs/ORGAN.md",
       "type": "file",
       "classification": "ACTIVE",
       "purpose": "Documentation",
@@ -10596,7 +10596,7 @@
       "deletion_risk": "MEDIUM"
     },
     {
-      "path": "docs/MCP-TEST-SUITE.md",
+      "path": "docs/SUITE.md",
       "type": "file",
       "classification": "ACTIVE",
       "purpose": "Documentation",
