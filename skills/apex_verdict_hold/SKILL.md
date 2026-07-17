@@ -1,5 +1,6 @@
 ---
 name: apex_verdict_hold
+description: Apply the constitutional HOLD path when authority, evidence, system health, reversibility, or blast radius is insufficient. Use before irreversible actions, external communications, deployments, deletions, seals, or any tool call that must stop pending sovereign review.
 agent: 888-APEX
 namespace: apex_*
 cluster: VERDICT

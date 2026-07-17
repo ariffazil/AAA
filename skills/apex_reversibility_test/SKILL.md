@@ -1,5 +1,6 @@
 ---
 name: apex_reversibility_test
+description: Test whether a proposed change touching vault, seal, identity, constitutional, or other F1 surfaces has a valid rollback and sovereign witness path. Use before committing or deploying changes whose reversibility is uncertain.
 agent: 888-APEX
 namespace: apex_*
 cluster: REVERSIBILITY
