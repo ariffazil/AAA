@@ -487,13 +487,26 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
   mainRouter.get('/health', (req, res) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
     res.setHeader('Pragma', 'no-cache');
+    const degraded = cachedConformance?.summary?.overallVerdict === 'DUPLICATE_DETECTED' ||
+                     (cachedConformance?.summary?.organsAligned ?? 0) < (cachedConformance?.summary?.totalOrgans ?? 5);
     res.json({
-      status: 'healthy',
+      status: degraded ? 'degraded' : 'healthy',
       protocol: 'A2A',
       version: '1.0.0',
       federation_schema_version: '2.0.0',
       gateway: 'AAA',
       auth: (req as AuthenticatedRequest).authContext?.authenticated ? 'enabled' : 'development',
+      registry: cachedConformance?.summary?.overallVerdict ?? 'UNKNOWN',
+    });
+  });
+
+  // Honest readiness: false when registry is degraded
+  mainRouter.get('/ready', (_req, res) => {
+    const degraded = cachedConformance?.summary?.overallVerdict === 'DUPLICATE_DETECTED';
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({
+      ready: !degraded,
+      reason: degraded ? 'registry duplicate detected — resolve and restart' : 'ok',
     });
   });
 
@@ -549,9 +562,25 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       if (message.includes('DUPLICATE') || message.includes('HARD_FAIL')) {
-        console.error('[AAA] BOOT BLOCKED — duplicate agentId detected:', message);
-        console.error('[AAA] Resolve duplicate agent cards before starting AAA.');
-        // Don't exit process — let the server run with DEGRADED registry
+        // Honest boot posture: keep process alive for diagnostics,
+        // but mark registry as DEGRADED and disable mutation routes.
+        console.error('[AAA] REGISTRY DEGRADED — duplicate agentId detected:', message);
+        console.error('[AAA] /health = DEGRADED, /ready = false, A2A intake = 503');
+        console.error('[AAA] Resolve duplicate agent cards and restart AAA.');
+        cachedConformance = {
+          schemaVersion: 'session-d.v1',
+          generatedAt: new Date().toISOString(),
+          runtimeCommit: 'unknown',
+          registryHash: 'DEGRADED',
+          freshnessMs: 0,
+          organs: [],
+          duplicates: [{ agentId: 'DUPLICATE_DETECTED', sources: [], message }],
+          summary: {
+            totalOrgans: 0, organsUp: 0, organsReady: 0, organsAligned: 0,
+            totalTools: 0, phantomTools: 0, missingTools: 0,
+            duplicateAgents: 1, overallVerdict: 'DUPLICATE_DETECTED',
+          },
+        };
       } else {
         console.warn('[AAA] Registry validation deferred:', message);
       }

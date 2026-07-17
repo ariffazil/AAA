@@ -24,8 +24,8 @@ export type RegistryAlignment = 'ALIGNED' | 'DRIFT' | 'UNKNOWN' | 'MISSING_CANON
 /** Organ readiness: is the organ ready to serve requests? */
 export type OrganReadiness = 'READY' | 'DEGRADED' | 'HOLD' | 'UNKNOWN';
 
-/** Mutation authority: is the organ authorized to mutate? */
-export type MutationAuthority = 'AUTHORIZED' | 'HOLD' | 'DENIED' | 'UNKNOWN';
+/** Mutation authority: can the organ mutate? Only arifOS/judge can grant. Registry never authorizes. */
+export type MutationAuthority = 'NOT_EVALUATED' | 'HOLD' | 'AUTHORIZED' | 'DENIED' | 'UNKNOWN';
 
 // ── Organ Identity ────────────────────────────────────────────────────────
 
