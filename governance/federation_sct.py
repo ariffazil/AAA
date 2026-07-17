@@ -297,3 +297,100 @@ def verify_or_reject(
             "schema_version": "2.0.0",
         },
     }
+
+
+def extract_sct_from_call(
+    arguments: dict[str, Any] | None = None,
+    *,
+    headers: dict[str, str] | None = None,
+    meta: dict[str, Any] | None = None,
+) -> str | None:
+    """Pull SCT from tool args, _meta, or HTTP headers.
+
+    Search order:
+      1. arguments.session_token / arguments.sct / arguments.arifos_sct
+      2. arguments._meta.{sct,session_token,arifos_sct}
+      3. explicit meta dict
+      4. headers X-ArifOS-SCT / X-Session-Token / Authorization: Bearer sct_v1...
+    """
+    args = arguments if isinstance(arguments, dict) else {}
+    for key in ("session_token", "sct", "arifos_sct"):
+        val = args.get(key)
+        if isinstance(val, str) and val.strip():
+            return val.strip()
+    nested_meta = args.get("_meta") if isinstance(args.get("_meta"), dict) else None
+    for m in (nested_meta, meta):
+        sct = _extract_sct_from_meta(m)
+        if sct:
+            return sct
+    if headers:
+        # header keys may be lower-cased by ASGI
+        lower = {str(k).lower(): v for k, v in headers.items()}
+        for key in ("x-arifos-sct", "x-session-token", "x-arifos-session-token"):
+            val = lower.get(key)
+            if isinstance(val, str) and val.strip():
+                return val.strip()
+        auth = lower.get("authorization") or ""
+        if isinstance(auth, str) and auth.lower().startswith("bearer "):
+            token = auth[7:].strip()
+            if token.startswith("sct_v1.") or token.startswith("arifos.v1."):
+                return token
+    return None
+
+
+def gate_tool_ingress(
+    tool_name: str,
+    arguments: dict[str, Any] | None = None,
+    *,
+    headers: dict[str, str] | None = None,
+    meta: dict[str, Any] | None = None,
+    required_authority: str = "OBSERVE_ONLY",
+    require_sct: bool = False,
+    organ: str = "unknown",
+) -> dict[str, Any] | None:
+    """Organ ingress SCT gate.
+
+    Policy:
+      - If SCT is present → must verify (fail closed).
+      - If require_sct=True and SCT missing → SCT_REQUIRED reject.
+      - If SCT absent and not required → allow (backward-compatible OBSERVE).
+
+    Returns None to proceed, or a rejection dict.
+    """
+    args = arguments if isinstance(arguments, dict) else {}
+    actor = None
+    for key in ("actor_id", "actor", "caller_actor_id"):
+        if isinstance(args.get(key), str) and args[key].strip():
+            actor = args[key].strip()
+            break
+    sct = extract_sct_from_call(args, headers=headers, meta=meta)
+    if not sct:
+        if require_sct:
+            return {
+                "error": "SCT_REQUIRED",
+                "message": (
+                    f"Tool '{tool_name}' requires a valid Session Capability Token "
+                    f"(session_token / _meta.sct / X-ArifOS-SCT). Mint via arif_init."
+                ),
+                "tool": tool_name,
+                "organ": organ,
+                "actor": actor,
+                "_epistemic": {
+                    "output_class": "GOVERNANCE_TEMPLATE",
+                    "authority_claim": "GATE_REJECTED",
+                    "tagged_by": "federation-sct-gate",
+                    "schema_version": "2.0.0",
+                },
+            }
+        return None
+    rej = verify_or_reject(
+        sct,
+        expected_actor=actor,
+        required_authority=required_authority,
+        meta=meta,
+    )
+    if rej is None:
+        return None
+    rej["tool"] = tool_name
+    rej["organ"] = organ
+    return rej
