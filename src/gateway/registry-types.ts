@@ -85,15 +85,15 @@ export interface DuplicateEntry {
 
 // ── Conformance Artifact (deterministic, schema-versioned) ────────────────
 
-export interface ConformanceArtifact {
+/** Session D v1 — backward compatibility */
+export interface ConformanceArtifactV1 {
   schemaVersion: 'session-d.v1';
-  generatedAt: string;       // ISO-8601
-  runtimeCommit: string;     // AAA runtime commit
-  registryHash: string;      // SHA-256 of canonical tool list
-  freshnessMs: number;       // Age of this artifact
+  generatedAt: string;
+  runtimeCommit: string;
+  registryHash: string;
+  freshnessMs: number;
   organs: OrganStatus[];
   duplicates: DuplicateEntry[];
-  /** Summary counts */
   summary: {
     totalOrgans: number;
     organsUp: number;
@@ -106,6 +106,70 @@ export interface ConformanceArtifact {
     overallVerdict: RegistryAlignment;
   };
 }
+
+/** v2 — Federation Conformance Artifact with MCP/A2A protocol dimensions */
+export interface ConformanceArtifact {
+  schemaVersion: 'federation-conformance.v2';
+  generatedAt: string;
+  runtimeCommit: string;
+  registryHash: string;
+  freshnessMs: number;
+
+  /** Organ-level status (5 dimensions per organ) */
+  organs: OrganStatus[];
+  duplicates: DuplicateEntry[];
+
+  /** Identity: who we verified */
+  identity: {
+    internalRegistryId: string;
+    agentCardHash?: string;
+    signatureVerified: boolean;
+  };
+
+  /** A2A protocol conformance */
+  a2a: {
+    cardSchemaValid: boolean;
+    selectedInterface?: { url: string; protocolBinding: string; protocolVersion: string };
+    taskLifecycleTest?: 'PASS' | 'FAIL' | 'NOT_RUN';
+    streamingTest?: 'PASS' | 'FAIL' | 'NOT_ADVERTISED';
+    pushTest?: 'PASS' | 'FAIL' | 'NOT_ADVERTISED';
+  };
+
+  /** MCP protocol conformance */
+  mcp: {
+    initialized: boolean;
+    negotiatedProtocolVersion?: string;
+    sessionBound: boolean;
+    serverCapabilities?: Record<string, unknown>;
+    toolNameAlignment: number;   // count of tools where name matches declared
+    toolSchemaAlignment: number; // count of tools where schema hash matches
+    toolsPerOrgan: Record<string, { declared: number; callable: number; schemaMatched: number }>;
+  };
+
+  /** Governance dimensions — authority is NEVER derived from registry */
+  governance: {
+    actorBound: boolean;
+    traceBound: boolean;
+    judgeReceiptVerified: boolean;
+    vaultReceiptVerified: boolean;
+    mutationAuthority: 'NOT_EVALUATED' | 'HOLD' | 'AUTHORIZED' | 'DENIED';
+  };
+
+  /** Summary */
+  summary: {
+    totalOrgans: number;
+    organsUp: number;
+    organsReady: number;
+    organsAligned: number;
+    totalTools: number;
+    phantomTools: number;
+    missingTools: number;
+    duplicateAgents: number;
+    overallVerdict: RegistryAlignment;
+  };
+}
+
+export type { ConformanceArtifactV1 };
 
 // ── Canonical Organ Declarations ──────────────────────────────────────────
 
