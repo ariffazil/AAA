@@ -1,0 +1,60 @@
+{
+  "note": "No option was executed. All require explicit human approval per Lane B mandate (mutation forbidden until authorized).",
+  "options": [
+    {
+      "action": "Identify and pause whatever is issuing the repeated root SSH sessions from 202.185.89.85 / restarting arifos, before any other remediation",
+      "evidence": "9 SIGKILLs in ~63min, cadence matching 7 short-lived root SSH sessions from the same source IP in the same window",
+      "expected_effect": "Stops the crash-loop from being actively re-triggered, giving a stable window to diagnose the underlying degraded-boot state without interference",
+      "reversible": true,
+      "blast_radius": "none (pure observation / coordination check)",
+      "downtime": "none",
+      "rollback": "n/a",
+      "validation": "Ask Arif directly: 'is 202.185.89.85 you / an agent you're running right now against af-forge?'",
+      "authority_required": "Arif confirmation only — no system change"
+    },
+    {
+      "action": "Fix DID registry + skills directory permissions (chown/chmod /root/secrets/did/registry.json and /root/AAA/skills/atlas333-cognitive-geometry to match the arifos service user)",
+      "evidence": "Permission denied on both paths on every single boot, blocking challenge issuance and skills wiring",
+      "expected_effect": "Removes two of the four recurring boot-time errors; may reduce (not guaranteed to eliminate) watchdog-perceived unhealthiness",
+      "reversible": true,
+      "blast_radius": "low — chown/chmod only, no code or config logic change",
+      "downtime": "none (files, not the running process)",
+      "rollback": "revert ownership/mode to prior values (capture with `stat` before changing)",
+      "validation": "re-check journalctl for absence of the two PermissionError lines after next boot",
+      "authority_required": "R2 (change code/config) per AAA/CLAUDE.md — announce + proceed is normally sufficient, but given this is mid-incident, get explicit go-ahead first"
+    },
+    {
+      "action": "Investigate why register_with_aaa.py gets 503 UNREACHABLE against aaa-a2a even though aaa-a2a answers 200 healthy when curled directly",
+      "evidence": "Every ExecStartPost registration attempt fails with 'fetch failed', independent of AAA's own health",
+      "expected_effect": "Understand whether it's a URL/port mismatch, a startup race (arifos calls before its own network stack is ready), or a timeout too short — informs whether this is cosmetic or a real dependency break",
+      "reversible": true,
+      "blast_radius": "none if done by reading register_with_aaa.py and its target URL config only",
+      "downtime": "none",
+      "rollback": "n/a",
+      "validation": "n/a — this is a read step",
+      "authority_required": "none (read-only investigation)"
+    },
+    {
+      "action": "Do NOT resolve the uncommitted identity_consistency.py / session_auth.py / tools.py changes in /root/arifOS by reverting or committing without Arif's explicit direction",
+      "evidence": "18 uncommitted changes to exactly the actor/session subsystem implicated in ACTOR_BINDING_DRIFT — could be an in-progress intentional fix",
+      "expected_effect": "Avoids destroying in-progress work or committing a half-finished refactor",
+      "reversible": true,
+      "blast_radius": "n/a (this is a constraint, not an action)",
+      "downtime": "n/a",
+      "rollback": "n/a",
+      "validation": "Ask Arif what state that work is in before anyone touches it",
+      "authority_required": "Arif — F1 Amanah / reversible-first applies directly here"
+    },
+    {
+      "action": "Register arif_ops_measure (and any other DENY-by-missing-capability tools) in /contracts/tools.yaml and regenerate the capability graph",
+      "evidence": "KERNEL INTERCEPTOR: DENY ... Capability not registered in graph (v0.2.3), with the fix already suggested in-line by the kernel's own error output",
+      "expected_effect": "Removes one class of DENY responses seen by external callers; does not address the SIGKILL loop itself",
+      "reversible": true,
+      "blast_radius": "low — additive registry entry",
+      "downtime": "requires a kernel restart to pick up regenerated graph — do not restart until the loop itself is stopped",
+      "rollback": "revert the tools.yaml entry",
+      "validation": "arif_kernel_status shows capability present; DENY no longer logged for that tool",
+      "authority_required": "R2, announce + proceed once the crash-loop is stable"
+    }
+  ]
+}
