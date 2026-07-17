@@ -3,7 +3,7 @@
   "schemaVersion": "2.2.0",
   "id": "aaa-gateway",
   "name": "AAA A2A Gateway",
-  "description": "Federation A2A Gateway — central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
+  "description": "Federation A2A Gateway \u2014 central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
   "version": "2026.07.02",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com",
@@ -30,19 +30,127 @@
       "webhook_broker": true,
       "auth_enforcement": true,
       "injection_defense": true
-    }
+    },
+    "extendedAgentCard": true
   },
   "extensions": [
     {
       "uri": "arif-fazil.com/ext/sovereign",
-      "data": {
+      "required": false,
+      "params": {
         "sovereign_anchor": "https://arif-fazil.com/000/",
         "sovereign_did": "https://arif-fazil.com/.well-known/did.json",
         "seal_anchor": "https://arif-fazil.com/999/",
         "seal_verification": "https://arif-fazil.com/999/seal.json",
         "authentication_protocol": "Ed25519-challenge-response",
-        "nonce_flow": "arif_init(nonce) → sign(nonce) → verify(signature) → FULL authority",
+        "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify(signature) \u2192 FULL authority",
         "sovereign_key_fingerprint": "sha256:bf881c46b5c936ec2cbe71493159e1c606a00acbb30dc534a7a66060a0527e30"
+      }
+    },
+    {
+      "uri": "https://arif-fazil.com/a2a/extensions/governed-identity/v1",
+      "description": "Internal arifOS registry identity (not a core A2A field)",
+      "required": false,
+      "params": {
+        "registryId": "aaa-gateway",
+        "organId": "aaa",
+        "identityHash": null
+      }
+    },
+    {
+      "uri": "https://arif-fazil.com/a2a/extensions/federation-gateway/v1",
+      "description": "Federation organ map and gateway flags (arifOS extension)",
+      "required": false,
+      "params": {
+        "federation_organs": [
+          {
+            "id": "arifos-mcp",
+            "name": "arifOS Constitutional Kernel",
+            "url": "https://arifos.arif-fazil.com",
+            "role": "judge",
+            "authority": "verdict",
+            "skills": [
+              "render_verdict",
+              "gather_evidence",
+              "reason",
+              "route_intent",
+              "seal_receipt"
+            ],
+            "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
+          },
+          {
+            "id": "a-forge-mcp",
+            "name": "A-FORGE Execution Shell",
+            "url": "https://a-forge.arif-fazil.com",
+            "role": "executor",
+            "authority": "execution",
+            "skills": [
+              "forge_execute",
+              "forge_orchestrate",
+              "forge_document_intelligence",
+              "forge_browser",
+              "forge_git",
+              "forge_lease_acquire",
+              "forge_vault_seal"
+            ],
+            "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json"
+          },
+          {
+            "id": "geox-mcp",
+            "name": "GEOX Earth Intelligence",
+            "url": "https://geox.arif-fazil.com",
+            "role": "evidence",
+            "authority": "EVIDENCE_ONLY",
+            "skills": [
+              "evaluate_basin",
+              "analyze_well",
+              "rank_prospects",
+              "falsify_hypothesis",
+              "earth_evidence"
+            ],
+            "card_url": "https://geox.arif-fazil.com/.well-known/agent-card.json"
+          },
+          {
+            "id": "wealth-mcp",
+            "name": "WEALTH Capital Intelligence",
+            "url": "https://wealth.arif-fazil.com",
+            "role": "evidence",
+            "authority": "ADVISORY_ONLY",
+            "skills": [
+              "compute_npv",
+              "compute_emv",
+              "evaluate_wisdom",
+              "audit_power",
+              "scan_collapse",
+              "stock_analysis"
+            ],
+            "card_url": "https://wealth.arif-fazil.com/.well-known/agent-card.json"
+          },
+          {
+            "id": "well-mcp",
+            "name": "WELL Substrate Vitality",
+            "url": "https://well.arif-fazil.com",
+            "role": "evidence",
+            "authority": "REFLECT_ONLY",
+            "skills": [
+              "assess_homeostasis",
+              "assess_livelihood",
+              "guard_dignity",
+              "validate_vitality",
+              "classify_substrate"
+            ],
+            "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json"
+          }
+        ],
+        "gateway": {
+          "task_routing": true,
+          "skill_aggregation": true,
+          "webhook_broker": true,
+          "auth_enforcement": true,
+          "injection_defense": true
+        },
+        "mcp_native": true,
+        "tool_calling": true
       }
     }
   ],
@@ -161,7 +269,7 @@
     {
       "id": "FORGE-route-task",
       "name": "Task Routing",
-      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task → matches skill → routes to organ → streams result.",
+      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task \u2192 matches skill \u2192 routes to organ \u2192 streams result.",
       "tags": [
         "routing",
         "gateway",
@@ -280,10 +388,10 @@
     "vault": "VAULT999"
   },
   "metadata": {
-    "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
+    "doctrine": "DITEMPA BUKAN DIBERI \u2014 Control is forged, not given.",
     "created": "2026-07-02T04:50:00Z",
-    "created_by": "FORGE (000Ω) — A2A Gateway pattern",
-    "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+    "created_by": "FORGE (000\u03a9) \u2014 A2A Gateway pattern",
+    "rationale": "Copilot A2A analysis \u2014 blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
     "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
     "kernel_deps": [
       "KERNEL-trinity-33",
@@ -298,7 +406,10 @@
     ],
     "rsi_doctrine": "RSI-recursive-improvement",
     "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+    "a2a_card_migration": "2026-07-17-supportedInterfaces",
+    "a2a_protocol_binding": "JSONRPC",
+    "a2a_interface_version": "1.0"
   },
   "power_band": "routing",
   "kernel_skills": [
@@ -324,7 +435,19 @@
       "canonical_form": "JCS-sorted-keys-no-whitespace",
       "canonical_sha256": "75d0839918cb74b0ba780e25f72b5d080086308d644d8ce40602b076c2536f87",
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
-      "nonce_flow": "arif_init(nonce) → sign(nonce) → verify → FULL"
+      "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify \u2192 FULL"
+    }
+  ],
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "securityRequirements": [
+    {
+      "bearer_auth": []
     }
   ]
 }
