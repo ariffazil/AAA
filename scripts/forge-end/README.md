@@ -61,7 +61,7 @@ PHASE 2 — Commit dirty repos
   → Records all commit SHAs in state file
 
 PHASE 3 — SOT update (4-file pattern)
-  → Touches mtime on arifOS/CONTEXT.md, arifOS/AGENTS.md, arifOS/CHANGELOG.md, /root/AGENTS_LANDING.md
+  → Touches mtime on arifOS/CONTEXT.md, arifOS/AGENTS.md, arifOS/CHANGELOG.md, /root/LANDING.md
   → F1 AMANAH: backs up each file to .bak-YYYY-MM-DD before touching
   → Skipped if no repos committed (F4: avoid empty edits)
 
@@ -161,7 +161,7 @@ the state gets richer with every run.
 - `KIMI_RSI_INIT_PROMPT.md` v1.1.0 — references forge-end at session end
 - `KIMI_HANDOVER_PROMPT.md` v1.1.0 — same
 - `kimi-skill-reflector/audit-log.md` — each kimi session appends before forge-end
-- `AGENTS_LANDING.md` — references forge-end in the federation landing
+- `LANDING.md` — references forge-end in the federation landing
 - `ATLAS333_AGENT.md` — framing for "Contour, don't excavate" applies here
 
 ## Evolution

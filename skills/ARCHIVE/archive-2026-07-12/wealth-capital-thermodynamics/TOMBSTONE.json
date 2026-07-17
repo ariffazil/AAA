@@ -1,0 +1,12 @@
+{
+  "skill": "wealth-capital-thermodynamics",
+  "archived_at": "2026-07-12T06:15:00Z",
+  "approved_by": "Arif (F13 SOVEREIGN) — Group A",
+  "executed_by": "FORGE (000Ω)",
+  "original_path": "/root/.agents/skills/wealth-capital-thermodynamics",
+  "archive_path": "/root/.agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics",
+  "reason": "Legacy/superseded. Canonical replacement exists where applicable.",
+  "reversible": true,
+  "rollback": "mv /root/.agents/skills/.archive-2026-07-12/wealth-capital-thermodynamics /root/.agents/skills/wealth-capital-thermodynamics",
+  "observation_period": "2 weeks"
+}

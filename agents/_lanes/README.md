@@ -15,4 +15,4 @@ They are **not** separate systemd services and **not** live federation organs.
 
 **Compat:** `agents/333-AGI` → symlink → `agents/_lanes/333-AGI` (same pattern for all).
 
-See: `docs/repo/REPO_LAYOUT.md`, `docs/FEDERATION_ORGAN.md`.
+See: `docs/repo/REPO_LAYOUT.md`, `docs/ORGAN.md`.

@@ -11,7 +11,7 @@
 | Priority | Source | Authority |
 |----------|--------|-----------|
 | **1** | Live runtime (health endpoints, tools/list, systemd) | IRREFUTABLE |
-| **2** | `/root/AAA/docs/FEDERATION_ORGAN.md` | CANONICAL — F13 sealed |
+| **2** | `/root/AAA/docs/ORGAN.md` | CANONICAL — F13 sealed |
 | **3** | `/root/AAA/CLAUDE.md` | MASTER agent instruction |
 | **4** | `/root/arifOS/CLAUDE.md` | arifOS internal SOT |
 | **5** | `package.json` / `pyproject.toml` | Source truth for versions |

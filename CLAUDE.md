@@ -215,7 +215,7 @@ cat /root/.secrets/tokens/<name>         # single-purpose tokens
 
 ## 6. FEDERATION ARCHITECTURE
 
-> **Canonical organ map:** `/root/AAA/docs/FEDERATION_ORGAN.md` — the single source of truth for organ topology, substrate roles, and constitutional boundaries. If any other document disagrees, the organ map wins.
+> **Canonical organ map:** `/root/AAA/docs/ORGAN.md` — the single source of truth for organ topology, substrate roles, and constitutional boundaries. If any other document disagrees, the organ map wins.
 
 ### The Trinity (ΔΩΨ)
 - **Δ (SOUL)** — Human values, purpose, telos (Arif)
@@ -419,7 +419,7 @@ Before acting on any request:
 | What | Where |
 |------|-------|
 | Agent instruction (this file) | `/root/AAA/CLAUDE.md` |
-| **Canonical organ map** | `/root/AAA/docs/FEDERATION_ORGAN.md` |
+| **Canonical organ map** | `/root/AAA/docs/ORGAN.md` |
 | Federation landing + full detail | `/root/AGENTS.md` |
 | Live machine state | `/root/CONTEXT.md` |
 | Operations runbook | `/root/RUNBOOK.md` |
@@ -428,7 +428,7 @@ Before acting on any request:
 | arifOS source | `/root/arifOS/` |
 | AAA repo (this file lives here) | `github.com/ariffazil/AAA` |
 | **Kernel invariants — Gödel-lock, Strange Loop, Anti-sink** | `/root/AAA/docs/KERNEL_INVARIANTS.md` |
-| Canonical organ map | `/root/AAA/docs/FEDERATION_ORGAN.md` |
+| Canonical organ map | `/root/AAA/docs/ORGAN.md` |
 | **Trinity 33 (final repo map — arifOS/AAA/A-FORGE axes)** | `/root/.agents/skills/KERNEL-trinity-33/SKILL.md` + `/root/AAA/docs/TRINITY_33_REPOS.md` |
 | **🌱 INIT (2026.07.17 — TRINITY-33 + RSI embedded)** | `/root/AAA/prompts/INIT.md` |
 | **Governed Theory of Mind** | `/root/A-FORGE/docs/GOVERNED_THEORY_OF_MIND.md` |
