@@ -18,11 +18,12 @@ DITEMPA BUKAN DIBERI — Tokens are forged, not assumed.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
 import os
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 import httpx
@@ -36,6 +37,47 @@ ARIFOS_TIMEOUT_S = float(os.getenv("ARIFOS_SCT_TIMEOUT_S", "2.0"))
 SCT_RE = re.compile(r"^sct_v1\.[A-Za-z0-9_\-]+(?:\.[A-Za-z0-9_\-]+)?$")
 
 
+def _fingerprint(token: str) -> str:
+    """Cryptographic fingerprint of a token — NEVER log the raw token."""
+    return "sha256:" + hashlib.sha256(token.encode()).hexdigest()[:12]
+
+
+@dataclass
+class TokenSource:
+    """One location where a token was found."""
+    location: str       # e.g. "arguments.sct", "header.x-arifos-sct"
+    fingerprint: str    # sha256 prefix
+    length: int
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "location": self.location,
+            "fingerprint": self.fingerprint,
+            "length": self.length,
+        }
+
+
+@dataclass
+class TokenExtraction:
+    """Result of collecting all SCT sources and detecting conflicts."""
+    status: str                     # "PRESENT" | "ABSENT" | "AMBIGUOUS"
+    token: str | None = None        # Set only when PRESENT (one unique token)
+    sources: list[TokenSource] = field(default_factory=list)
+    source_count: int = 0
+    unique_fingerprints: int = 0
+    conflict_detected: bool = False
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "status": self.status,
+            "token_present": self.status == "PRESENT",
+            "source_count": self.source_count,
+            "unique_fingerprints": self.unique_fingerprints,
+            "conflict_detected": self.conflict_detected,
+            "sources": [s.to_dict() for s in self.sources],
+        }
+
+
 @dataclass
 class SCTVerification:
     ok: bool
@@ -44,32 +86,170 @@ class SCTVerification:
     claims: dict[str, Any] | None = None
     actor: str | None = None
     authority: str | None = None
+    extraction: TokenExtraction | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        return {
+        d: dict[str, Any] = {
             "ok": self.ok,
             "error_code": self.error_code,
             "error_message": self.error_message,
             "actor": self.actor,
             "authority": self.authority,
         }
+        if self.extraction:
+            d["extraction"] = self.extraction.to_dict()
+        return d
 
 
-def _extract_sct_from_meta(meta: dict[str, Any] | None) -> str | None:
-    """Pull sct out of an MCP _meta envelope."""
+def _collect_sct_from_meta(
+    meta: dict[str, Any] | None, location: str
+) -> list[tuple[str, str]]:
+    """Collect SCT candidates from an _meta envelope. Returns [(token, location), ...]."""
     if not meta or not isinstance(meta, dict):
-        return None
-    sct = meta.get("sct") or meta.get("session_token") or meta.get("arifos_sct")
-    if not sct or not isinstance(sct, str):
-        return None
-    return sct
+        return []
+    results: list[tuple[str, str]] = []
+    for key in ("sct", "session_token", "arifos_sct"):
+        val = meta.get(key)
+        if isinstance(val, str) and val.strip():
+            results.append((val.strip(), f"{location}.{key}"))
+    return results
 
 
-def _validate_format(sct: str) -> bool:
-    """Format check before calling arifOS (saves a round-trip on obvious garbage)."""
-    if not sct or len(sct) < 16:
-        return False
-    return bool(SCT_RE.match(sct))
+def extract_sct_from_call(
+    arguments: dict[str, Any] | None = None,
+    *,
+    headers: dict[str, str] | None = None,
+    meta: dict[str, Any] | None = None,
+) -> TokenExtraction:
+    """Collect ALL SCT candidate tokens from every source and detect conflicts.
+
+    Sources (all checked, none skipped):
+      1. arguments.session_token / arguments.sct / arguments.arifos_sct
+      2. arguments._meta.{sct, session_token, arifos_sct}
+      3. explicit meta dict
+      4. headers X-ArifOS-SCT / X-Session-Token / X-ArifOS-Session-Token
+      5. headers Authorization: Bearer <sct_v1.*|arifos.v1.*>
+
+    Returns TokenExtraction with:
+      - ABSENT: zero tokens found
+      - PRESENT: exactly one unique token (may appear in multiple sources)
+      - AMBIGUOUS: multiple DISTINCT tokens — REJECT
+    """
+    sources: list[TokenSource] = []
+    seen_fingerprints: set[str] = set()
+    unique_tokens: list[str] = []
+
+    args = arguments if isinstance(arguments, dict) else {}
+
+    # 1. Direct argument keys
+    for key in ("session_token", "sct", "arifos_sct"):
+        val = args.get(key)
+        if isinstance(val, str) and val.strip():
+            token = val.strip()
+            fp = _fingerprint(token)
+            sources.append(TokenSource(
+                location=f"arguments.{key}",
+                fingerprint=fp,
+                length=len(token),
+            ))
+            if fp not in seen_fingerprints:
+                seen_fingerprints.add(fp)
+                unique_tokens.append(token)
+
+    # 2. Nested _meta in arguments
+    nested_meta = args.get("_meta") if isinstance(args.get("_meta"), dict) else None
+    if nested_meta:
+        for token_val, loc in _collect_sct_from_meta(nested_meta, "arguments._meta"):
+            fp = _fingerprint(token_val)
+            sources.append(TokenSource(
+                location=loc,
+                fingerprint=fp,
+                length=len(token_val),
+            ))
+            if fp not in seen_fingerprints:
+                seen_fingerprints.add(fp)
+                unique_tokens.append(token_val)
+
+    # 3. Explicit meta dict
+    if meta:
+        for token_val, loc in _collect_sct_from_meta(meta, "_meta"):
+            fp = _fingerprint(token_val)
+            sources.append(TokenSource(
+                location=loc,
+                fingerprint=fp,
+                length=len(token_val),
+            ))
+            if fp not in seen_fingerprints:
+                seen_fingerprints.add(fp)
+                unique_tokens.append(token_val)
+
+    # 4. HTTP headers
+    if headers:
+        lower = {str(k).lower(): v for k, v in headers.items()}
+        for key in ("x-arifos-sct", "x-session-token", "x-arifos-session-token"):
+            val = lower.get(key)
+            if isinstance(val, str) and val.strip():
+                token = val.strip()
+                fp = _fingerprint(token)
+                sources.append(TokenSource(
+                    location=f"header.{key}",
+                    fingerprint=fp,
+                    length=len(token),
+                ))
+                if fp not in seen_fingerprints:
+                    seen_fingerprints.add(fp)
+                    unique_tokens.append(token)
+
+        # 5. Authorization: Bearer
+        auth = lower.get("authorization") or ""
+        if isinstance(auth, str) and auth.lower().startswith("bearer "):
+            token = auth[7:].strip()
+            if token.startswith("sct_v1.") or token.startswith("arifos.v1."):
+                fp = _fingerprint(token)
+                sources.append(TokenSource(
+                    location="header.authorization",
+                    fingerprint=fp,
+                    length=len(token),
+                ))
+                if fp not in seen_fingerprints:
+                    seen_fingerprints.add(fp)
+                    unique_tokens.append(token)
+
+    # Determine status
+    source_count = len(sources)
+    unique_count = len(unique_tokens)
+
+    if unique_count == 0:
+        return TokenExtraction(
+            status="ABSENT",
+            sources=sources,
+            source_count=source_count,
+            unique_fingerprints=0,
+        )
+
+    if unique_count == 1:
+        return TokenExtraction(
+            status="PRESENT",
+            token=unique_tokens[0],
+            sources=sources,
+            source_count=source_count,
+            unique_fingerprints=1,
+        )
+
+    # Multiple distinct tokens → AMBIGUOUS
+    logger.warning(
+        "SCT_AMBIGUOUS: %d distinct tokens from %d sources. "
+        "Fingerprints: %s. This call MUST be rejected.",
+        unique_count, source_count,
+        ", ".join(s.fingerprint for s in sources),
+    )
+    return TokenExtraction(
+        status="AMBIGUOUS",
+        sources=sources,
+        source_count=source_count,
+        unique_fingerprints=unique_count,
+        conflict_detected=True,
+    )
 
 
 def verify_federation_sct(
@@ -90,8 +270,11 @@ def verify_federation_sct(
     Returns:
         SCTVerification with .ok=True if valid; .error_code set otherwise.
     """
-    if sct is None:
-        sct = _extract_sct_from_meta(meta)
+    if sct is None and meta:
+        # Collect from meta envelope using new collect-all approach
+        candidates = _collect_sct_from_meta(meta, "_meta")
+        if candidates:
+            sct = candidates[0][0]  # token from first candidate
 
     if not sct:
         return SCTVerification(
@@ -99,7 +282,8 @@ def verify_federation_sct(
             error_code="SCT_MISSING",
             error_message="No SCT provided in call or _meta envelope",
         )
-    if not _validate_format(sct):
+    # Format validation — sct_v1.<base64url>.<hmac> or arifos.v1.*
+    if not (sct.startswith("sct_v1.") or sct.startswith("arifos.v1.")):
         return SCTVerification(
             ok=False,
             error_code="SCT_MALFORMED",
@@ -299,44 +483,6 @@ def verify_or_reject(
     }
 
 
-def extract_sct_from_call(
-    arguments: dict[str, Any] | None = None,
-    *,
-    headers: dict[str, str] | None = None,
-    meta: dict[str, Any] | None = None,
-) -> str | None:
-    """Pull SCT from tool args, _meta, or HTTP headers.
-
-    Search order:
-      1. arguments.session_token / arguments.sct / arguments.arifos_sct
-      2. arguments._meta.{sct,session_token,arifos_sct}
-      3. explicit meta dict
-      4. headers X-ArifOS-SCT / X-Session-Token / Authorization: Bearer sct_v1...
-    """
-    args = arguments if isinstance(arguments, dict) else {}
-    for key in ("session_token", "sct", "arifos_sct"):
-        val = args.get(key)
-        if isinstance(val, str) and val.strip():
-            return val.strip()
-    nested_meta = args.get("_meta") if isinstance(args.get("_meta"), dict) else None
-    for m in (nested_meta, meta):
-        sct = _extract_sct_from_meta(m)
-        if sct:
-            return sct
-    if headers:
-        # header keys may be lower-cased by ASGI
-        lower = {str(k).lower(): v for k, v in headers.items()}
-        for key in ("x-arifos-sct", "x-session-token", "x-arifos-session-token"):
-            val = lower.get(key)
-            if isinstance(val, str) and val.strip():
-                return val.strip()
-        auth = lower.get("authorization") or ""
-        if isinstance(auth, str) and auth.lower().startswith("bearer "):
-            token = auth[7:].strip()
-            if token.startswith("sct_v1.") or token.startswith("arifos.v1."):
-                return token
-    return None
-
 
 def gate_tool_ingress(
     tool_name: str,
@@ -348,14 +494,15 @@ def gate_tool_ingress(
     require_sct: bool = False,
     organ: str = "unknown",
 ) -> dict[str, Any] | None:
-    """Organ ingress SCT gate.
+    """Organ ingress SCT gate — collect-all + detect-conflicts + verify.
 
     Policy:
+      - AMBIGUOUS (multiple distinct tokens) → REJECT immediately
       - If SCT is present → must verify (fail closed).
       - If require_sct=True and SCT missing → SCT_REQUIRED reject.
       - If SCT absent and not required → allow (backward-compatible OBSERVE).
 
-    Returns None to proceed, or a rejection dict.
+    Returns None to proceed, or a rejection dict with extraction evidence.
     """
     args = arguments if isinstance(arguments, dict) else {}
     actor = None
@@ -363,8 +510,31 @@ def gate_tool_ingress(
         if isinstance(args.get(key), str) and args[key].strip():
             actor = args[key].strip()
             break
-    sct = extract_sct_from_call(args, headers=headers, meta=meta)
-    if not sct:
+    extraction = extract_sct_from_call(args, headers=headers, meta=meta)
+
+    # AMBIGUOUS — conflicting tokens → REJECT immediately
+    if extraction.status == "AMBIGUOUS":
+        return {
+            "error": "SCT_AMBIGUOUS",
+            "message": (
+                f"Tool '{tool_name}' received {extraction.unique_fingerprints} distinct "
+                f"SCT tokens from {extraction.source_count} sources. "
+                f"All sources must carry the same token."
+            ),
+            "tool": tool_name,
+            "organ": organ,
+            "actor": actor,
+            "extraction": extraction.to_dict(),
+            "_epistemic": {
+                "output_class": "GOVERNANCE_TEMPLATE",
+                "authority_claim": "GATE_REJECTED",
+                "tagged_by": "federation-sct-gate",
+                "schema_version": "2.0.0",
+            },
+        }
+
+    # ABSENT — no token found
+    if extraction.status == "ABSENT":
         if require_sct:
             return {
                 "error": "SCT_REQUIRED",
@@ -375,6 +545,7 @@ def gate_tool_ingress(
                 "tool": tool_name,
                 "organ": organ,
                 "actor": actor,
+                "extraction": extraction.to_dict(),
                 "_epistemic": {
                     "output_class": "GOVERNANCE_TEMPLATE",
                     "authority_claim": "GATE_REJECTED",
@@ -383,8 +554,10 @@ def gate_tool_ingress(
                 },
             }
         return None
+
+    # PRESENT — verify the single unique token
     rej = verify_or_reject(
-        sct,
+        extraction.token,
         expected_actor=actor,
         required_authority=required_authority,
         meta=meta,
@@ -393,4 +566,5 @@ def gate_tool_ingress(
         return None
     rej["tool"] = tool_name
     rej["organ"] = organ
+    rej["extraction"] = extraction.to_dict()
     return rej
