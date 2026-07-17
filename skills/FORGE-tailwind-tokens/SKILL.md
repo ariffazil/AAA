@@ -1,3 +1,13 @@
+---
+id: FORGE-tailwind-tokens
+name: FORGE-tailwind-tokens
+version: 1.0.0-2026.07.17
+description: "Tailwind design tokens — Trinity Design System for federation cockpit and web surfaces."
+owner: A-FORGE
+risk_tier: low
+floor_scope: ['F1', 'F4']
+autonomy_tier: T1
+---
 # ⚒️ Tailwind Tokens — Trinity Design System
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

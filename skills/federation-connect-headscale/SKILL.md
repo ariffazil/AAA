@@ -1,3 +1,13 @@
+---
+id: federation-connect-headscale
+name: federation-connect-headscale
+version: 1.0.0-2026.07.17
+description: "Provision nodes into the arifOS sovereign Headscale mesh and federate MCP clients to remote organs."
+owner: AAA
+risk_tier: high
+floor_scope: ['F1', 'F12', 'F13']
+autonomy_tier: T2
+---
 # 🌐 Federation Connect — Headscale Sovereign Mesh
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given

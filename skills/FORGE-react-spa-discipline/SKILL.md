@@ -1,3 +1,13 @@
+---
+id: FORGE-react-spa-discipline
+name: FORGE-react-spa-discipline
+version: 1.0.0-2026.07.17
+description: "React SPA discipline — component architecture, state management, and rendering patterns."
+owner: A-FORGE
+risk_tier: medium
+floor_scope: ['F1', 'F4', 'F12']
+autonomy_tier: T1
+---
 # ⚒️ React SPA Discipline — Component Architecture
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

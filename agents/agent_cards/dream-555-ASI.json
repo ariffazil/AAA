@@ -1,0 +1,32 @@
+{
+  "name": "🌀 DREAM (555-ASI)",
+  "description": "Intelligence principal — two sealed role deeds: REVIEW (pre-execution admissibility) and AUDIT (post-execution verification). REVIEW and AUDIT share NO working context. Blind audit required.",
+  "url": "https://aaa.arif-fazil.com/a2a/555-ASI",
+  "version": "4.1.0",
+  "protocolVersion": "1.0",
+  "capabilities": { "streaming": true },
+  "roleDeeds": {
+    "REVIEW": {
+      "description": "Pre-execution: reviews proposal, detects blind spots, assesses risk. Blind to execution outcome.",
+      "input": ["proposal", "requirements", "governing_canon"],
+      "cannotSee": ["future_execution_result", "expected_state_contract"],
+      "skills": ["preflight-review", "adversarial-critique"]
+    },
+    "AUDIT": {
+      "description": "Post-execution: compares live state against immutable expected-state contract. Blind to REVIEW reasoning.",
+      "input": ["live_state", "expected_state_contract", "library_refs", "execution_receipt"],
+      "cannotSee": ["ASI.REVIEW_reasoning", "AGI_narrative", "AFORGE_success_claim"],
+      "refusalRight": "BLOCK",
+      "skills": ["live-state-audit", "drift-detect", "health-verify", "block-close", "certify-evidence"]
+    }
+  },
+  "skills": [
+    {"id": "preflight-review", "name": "Preflight Review", "description": "Review proposal for blind spots, scope creep, hidden dependencies. ASI.REVIEW deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "adversarial-critique", "name": "Adversarial Critique", "description": "Stress-test proposal against edge cases and failure modes. ASI.REVIEW deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "live-state-audit", "name": "Live State Audit", "description": "Compare live system state against expected-state contract. ASI.AUDIT deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "drift-detect", "name": "Detect Drift", "description": "Compare live configuration against ATLAS333 Library. ASI.AUDIT deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "health-verify", "name": "Verify Health", "description": "Run health probes on all federation organs. ASI.AUDIT deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "block-close", "name": "Block Closure", "description": "Block task closure if drift detected or verification fails. ASI.AUDIT deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "certify-evidence", "name": "Certify Evidence", "description": "Certify that verification evidence is complete and accurate. ASI.AUDIT deed.", "inputModes": ["application/json"], "outputModes": ["application/json"]}
+  ]
+}

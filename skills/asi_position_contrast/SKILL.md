@@ -137,9 +137,14 @@ Use `mcp__arifos__arif_think` for structured reasoning and `mcp__arifos__arif_cr
 
 Tally the discipline verdicts:
 
-- **All concur** → promote the claim; log the witness mix.
-- **1 rejects** → revise the claim or downgrade its epistemic tag.
-- **≥2 reject** → **888 HOLD**; do not use the claim as a premise.
+- **All concur** → promote the claim (`SEAL`); log the witness mix.
+- **1 rejects** → revise the claim or downgrade its epistemic tag (`SABAR`).
+- **≥2 reject** → **888_HOLD**; do not use the claim as a premise.
+
+**All verdict values must use the canonical closed 6-value taxonomy** from `arifOS/runtime/verdict.py` (post-KSR Epoch 1+2):
+`OBSERVE_ONLY` | `SEAL` | `SABAR` | `VOID` | `HOLD` | `888_HOLD`
+
+Legacy fields (`verdict_code`, `canonical_verdict`, `reasoning_verdict`, `nine_signal`) are DEPRECATED. Use `effective_verdict` + `reason_code` + `next_action`.
 
 ### Step 5: Output Verdict and Witness Log
 
@@ -197,12 +202,12 @@ One-sentence synthesis of whether the claim survives and under what epistemic ta
 
 ## Escalation Path
 
-| Condition | Escalate To | Method |
-|-----------|-------------|--------|
-| ≥2 disciplines reject the claim | arifOS 888_JUDGE | A2A / MCP verdict_request |
-| Claim feeds an irreversible decision | arifOS 888_JUDGE + human | hold with reason |
-| Discipline selection is too narrow | Re-run with broader lens mix | internal loop |
-| Source evidence appears fabricated or misattributed | security.agent + arifOS judge | A2A message |
+| Condition | Escalate To | Verdict | Method |
+|-----------|-------------|---------|--------|
+| ≥2 disciplines reject the claim | arifOS APEX | 888_HOLD | A2A / MCP verdict_request |
+| Claim feeds an irreversible decision | arifOS APEX + human | 888_HOLD | hold with reason |
+| Discipline selection is too narrow | Re-run with broader lens mix | SABAR | internal loop |
+| Source evidence appears fabricated or misattributed | security.agent + arifOS judge | HOLD | A2A message |
 
 ---
 

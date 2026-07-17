@@ -1,0 +1,18 @@
+{
+  "name": "⚒️ FORGE (A-FORGE)",
+  "description": "Execution substrate for 🧠 THINK (333-AGI). Runs shell, docker, git, filesystem operations under governed lease. Not an independent role in the 3-role HEXAGON — THINK plans+executes through this substrate.",
+  "url": "https://aaa.arif-fazil.com/a2a/A-FORGE",
+  "provider": { "organization": "arifOS", "url": "https://arif-fazil.com" },
+  "version": "3.1.0",
+  "protocolVersion": "1.0",
+  "capabilities": { "streaming": false },
+  "skills": [
+    {"id": "shell-exec", "name": "Execute Shell", "description": "Run governed shell commands through A-FORGE forge_shell.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "docker-ops", "name": "Docker Operations", "description": "Manage containers, health checks, restart policies.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "git-ops", "name": "Git Operations", "description": "Commit, push, branch management across federation repos.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "filesystem-edit", "name": "Edit Filesystem", "description": "Read, write, patch files under governed path scoping.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "service-restart", "name": "Restart Service", "description": "Restart systemd services and Docker containers.", "inputModes": ["application/json"], "outputModes": ["application/json"]},
+    {"id": "deploy-organ", "name": "Deploy Organ", "description": "Deploy organ code changes to production runtime.", "inputModes": ["application/json"], "outputModes": ["application/json"]}
+  ],
+  "authentication": { "schemes": [{"scheme": "bearer", "bearerFormat": "JWT"}]}
+}

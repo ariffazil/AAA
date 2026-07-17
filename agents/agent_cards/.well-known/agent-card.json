@@ -1,0 +1,16 @@
+{
+  "name": "arifOS Federation — AAA A2A Gateway",
+  "description": "3 intelligence principals (AGI/ASI/APEX). 2 ASI sealed deeds (REVIEW/AUDIT). 1 bounded forge (A-FORGE). 1 immutable vault (VAULT999). Flow: AGI_PROPOSE → ASI_REVIEW → APEX_JUDGE → AFORGE_EXECUTE → ASI_AUDIT → APEX_RESOLVE → VAULT_RECEIPT.",
+  "url": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
+  "version": "4.1.0",
+  "protocolVersion": "1.0",
+  "capabilities": { "streaming": true, "stateTransitionHistory": true },
+  "intelligencePrincipals": 3,
+  "asiDeeds": 2,
+  "boundedServices": ["A-FORGE", "VAULT999"],
+  "agentCards": [
+    {"id": "think", "name": "🧠 THINK", "agent": "333-AGI", "role": "Propose", "uri": "aaa://agents/agi", "card": "/agent-cards/think-333-AGI.json"},
+    {"id": "dream", "name": "🌀 DREAM", "agent": "555-ASI", "role": "Review + Audit", "uri": "aaa://agents/asi", "card": "/agent-cards/dream-555-ASI.json", "deeds": ["REVIEW", "AUDIT"]},
+    {"id": "judge", "name": "⚖️ JUDGE", "agent": "888-APEX", "role": "Judge + Resolve", "uri": "aaa://agents/apex", "card": "/agent-cards/judge-888-APEX.json"}
+  ]
+}
