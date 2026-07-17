@@ -5,7 +5,7 @@ description: >
   write forge_work receipt, update session-state and daily memory, hand off
   next-agent INIT prompt. Use when: seal session, end of turn, session seal,
   handoff, close session, DITEMPA seal.
-version: 2026.07.17
+version: 2026.07.17b
 floors: [F2, F4, F7, F11]
 ---
 
@@ -22,13 +22,15 @@ User says seal session / end turn / handoff / close this arc.
 3. **Write** `forge_work/YYYY-MM-DD/SESSION-SEAL-*.md`  
 4. **Update** `/root/.claude/projects/-root/memory/session-state.md`  
 5. **Append** `/root/memory/YYYY-MM-DD.md` one block  
-6. **Point** next agent at `AAA/prompts/GROK_AAA_NEXT_INIT.md` (or refresh it)  
-7. **Do not** claim Seal-A or civilization seal unless R1–R4 closed  
+6. **Refresh** `AAA/prompts/GROK_AAA_NEXT_INIT.md` + handoff md  
+7. **Upgrade** skills that next agent must load (mirror AAA → .agents/.grok if not symlinked)  
+8. **ATLAS333 checkpoint** — append survival index AXIS or eureka JSON under `~/.local/share/arifos/atlas333/`  
+9. **Do not** claim Seal-A / T3a CLOSED unless matrix 13/13 + R4 green  
 
 ## Output to sovereign (≤10 lines)
 
 ```
-SESSION SEALED | Seal-A: OPEN|CLOSED
+SESSION SEALED | Seal-A: OPEN|CLOSED | T3a: …
 Done: …
 Open next: …
 Receipt: path
@@ -39,4 +41,6 @@ Next prompt: path
 
 - Terminal dumps  
 - Fake GREEN from fast spine  
-- "All remaining tasks done" when SE/SOT/stage still open  
+- "All remaining tasks done" when SE/T3a/stage still open  
+- SE stage hand-bump  
+

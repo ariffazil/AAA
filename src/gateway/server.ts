@@ -497,6 +497,67 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     });
   });
 
+  // ── Session D: Registry Conformance (fail-closed) ───────────────────────
+  // Runtime-derived registry — live tools/list, not static declarations.
+  // Separates 5 dimensions: liveness, transport, registry, readiness, mutation.
+  let cachedConformance: import('./registry-validator.js').ConformanceArtifact | null = null;
+  let conformanceCachedAt = 0;
+  const CONFORMANCE_CACHE_TTL_MS = 30_000; // 30s
+
+  mainRouter.get('/registry/conformance', async (_req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    const now = Date.now();
+    if (cachedConformance && (now - conformanceCachedAt) < CONFORMANCE_CACHE_TTL_MS) {
+      return res.json({ ...cachedConformance, freshnessMs: now - conformanceCachedAt });
+    }
+    try {
+      const { validateRegistry } = await import('./registry-validator.js');
+      cachedConformance = await validateRegistry();
+      conformanceCachedAt = now;
+      res.json(cachedConformance);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      console.error('[AAA] registry/conformance FAILED:', message);
+      res.status(500).json({
+        error: 'REGISTRY_VALIDATION_FAILED',
+        message,
+        schemaVersion: 'session-d.v1',
+      });
+    }
+  });
+
+  // Startup validation — log warnings, hard-fail on duplicate agentId
+  (async () => {
+    try {
+      const { validateRegistry } = await import('./registry-validator.js');
+      const artifact = await validateRegistry();
+      cachedConformance = artifact;
+      conformanceCachedAt = Date.now();
+
+      if (artifact.summary.overallVerdict !== 'ALIGNED') {
+        console.warn(
+          `[AAA] REGISTRY ${artifact.summary.overallVerdict}: ` +
+          `${artifact.summary.phantomTools} phantom, ${artifact.summary.missingTools} missing, ` +
+          `${artifact.summary.organsReady}/${artifact.summary.totalOrgans} ready`
+        );
+      } else {
+        console.log(
+          `[AAA] REGISTRY ALIGNED: ${artifact.summary.organsUp}/${artifact.summary.totalOrgans} up, ` +
+          `${artifact.summary.organsReady} ready, ${artifact.summary.totalTools} tools`
+        );
+      }
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      if (message.includes('DUPLICATE') || message.includes('HARD_FAIL')) {
+        console.error('[AAA] BOOT BLOCKED — duplicate agentId detected:', message);
+        console.error('[AAA] Resolve duplicate agent cards before starting AAA.');
+        // Don't exit process — let the server run with DEGRADED registry
+      } else {
+        console.warn('[AAA] Registry validation deferred:', message);
+      }
+    }
+  })();
+
   // ── Operator Interface ───────────────────────────────────────────────────
   mainRouter.get('/operator/tasks', async (req, res) => {
     const state = req.query.state;
