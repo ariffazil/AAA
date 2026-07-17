@@ -1,3 +1,5 @@
+> ⚠️ SUPERSEDED by docs/ZEN99.md (2026-07-17). Read ZEN99.md first.
+
 # 🧘‍♂️🧬 ZEN — AGI & ASI (Operating Spec)
 
 > Sovereign: ARIF (F13)
