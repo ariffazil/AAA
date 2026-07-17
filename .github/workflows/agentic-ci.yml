@@ -68,6 +68,11 @@ jobs:
     name: "Lane 2 — BIJAKSANA ΔS Φ Ψ Ω"
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    outputs:
+      ds-value: ${{ steps.ds.outputs.value }}
+      phi-value: ${{ steps.phi.outputs.value }}
+      psi-value: ${{ steps.psi.outputs.value }}
+      omega-value: ${{ steps.omega.outputs.value }}
     steps:
       - uses: actions/checkout@v7
 
@@ -83,7 +88,7 @@ jobs:
       - name: "ΔS — Entropy (unused code + TODO count)"
         id: ds
         run: |
-          DEAD=$(npx eslint . --ext .ts,.tsx --format compact 2>/dev/null | grep -cE 'no-unused-vars|unused-import|no-unused' || echo 0)
+          DEAD=$(npx eslint . --ext .ts,.tsx --format stylish 2>/dev/null | grep -cE 'no-unused-vars|unused-import|no-unused' || true)
           TODO=$(grep -r "TODO\|FIXME\|HACK" --include="*.ts" --include="*.tsx" src/ a2a-server/ 2>/dev/null | wc -l)
           DS=$((DEAD + TODO))
           echo "value=$DS" >> $GITHUB_OUTPUT
