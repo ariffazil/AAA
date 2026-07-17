@@ -1,0 +1,7 @@
+[identity]
+canonical_name = "AAA Control Plane"
+short_name = "AAA"
+service_id = "aaa-a2a"
+version = "1.0.0"
+authority = "F13_SOVEREIGN"
+role = "Cockpit, Identity, A2A Gateway, State, Routing"
