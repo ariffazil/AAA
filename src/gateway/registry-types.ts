@@ -25,7 +25,8 @@ export type RegistryAlignment = 'ALIGNED' | 'DRIFT' | 'UNKNOWN' | 'MISSING_CANON
 export type OrganReadiness = 'READY' | 'DEGRADED' | 'HOLD' | 'UNKNOWN';
 
 /** Mutation authority: can the organ mutate? Only arifOS/judge can grant. Registry never authorizes. */
-export type MutationAuthority = 'NOT_EVALUATED' | 'HOLD' | 'AUTHORIZED' | 'DENIED' | 'UNKNOWN';
+export type MutationAuthority = 'NOT_EVALUATED' | 'HOLD' | 'DENIED';
+// NOTE: AUTHORIZED removed. Only arifOS kernel/judge/SCT can grant authority.
 
 // ── Organ Identity ────────────────────────────────────────────────────────
 
@@ -46,6 +47,9 @@ export interface ToolEntry {
   callable: boolean;       // Present in live tools/list?
   tested: boolean;         // Invocation test passed?
   lastTested?: string;     // ISO-8601
+  inputSchemaHash?: string;   // SHA-256 of inputSchema (MCP schema alignment)
+  outputSchemaHash?: string;  // SHA-256 of outputSchema
+  descriptionHash?: string;   // SHA-256 of description text
 }
 
 // ── Organ Status (per-organ, all 5 dimensions) ────────────────────────────
@@ -62,6 +66,10 @@ export interface OrganStatus {
   phantomTools: string[];
   /** Tools callable but not declared (missing from registry) */
   missingTools: string[];
+  /** MCP protocol state */
+  mcpInitialized: boolean;
+  mcpNegotiatedVersion?: string;
+  mcpSessionId?: string;
   /** Timestamps */
   probedAt: string;       // ISO-8601
   freshnessMs: number;     // ms since probe
