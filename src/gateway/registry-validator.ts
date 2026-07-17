@@ -116,8 +116,8 @@ async function probeOrgan(organ: OrganIdentity): Promise<OrganStatus> {
   const startMs = Date.now();
 
   // Phase 1: Transport probe (health check)
-  let transportReachability: OrganStatus['transportReachability'] = 'UNKNOWN';
-  let processLiveness: OrganStatus['processLiveness'] = 'UNKNOWN';
+  let transportReachability: OrganStatus['transportReachability'];
+  let processLiveness: OrganStatus['processLiveness'];
 
   try {
     const controller = new AbortController();
