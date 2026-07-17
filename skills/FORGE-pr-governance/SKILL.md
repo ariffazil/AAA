@@ -21,7 +21,7 @@ host_compatibility:
 dependencies:
   skills:
   - github-pr-review
-  - github-runbook
+  - FORGE-repo-intelligence
   servers:
   - a-forge
   tools:
