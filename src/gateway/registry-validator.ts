@@ -39,8 +39,21 @@ interface JsonRpcRequest {
 interface JsonRpcResponse {
   jsonrpc: '2.0';
   id: string;
-  result?: { tools: Array<{ name: string; description?: string }> };
+  result?: {
+    tools?: Array<{ name: string; description?: string; inputSchema?: unknown }>;
+    protocolVersion?: string;
+    capabilities?: Record<string, unknown>;
+    serverInfo?: { name: string; version: string };
+  };
   error?: { code: number; message: string };
+}
+
+interface McpSession {
+  protocolVersion: string;
+  sessionId?: string;
+  serverCapabilities: Record<string, unknown>;
+  serverInfo: { name: string; version: string };
+  tools: Array<{ name: string; description?: string; inputSchema?: unknown }>;
 }
 
 // ── Configuration ─────────────────────────────────────────────────────────
@@ -58,56 +71,90 @@ function isoNow(): string {
   return new Date().toISOString();
 }
 
-// ── MCP Probe ─────────────────────────────────────────────────────────────
+// ── MCP Lifecycle Probe ───────────────────────────────────────────────────
 
 /**
- * Fetch tools/list from an organ's MCP endpoint.
- * Returns tool names on success, null on failure.
+ * Full MCP lifecycle probe: initialize → version negotiation → tools/list.
+ * Returns complete session data or null on any failure.
+ * 
+ * Per MCP spec (2025-11-25):
+ *   1. POST /mcp initialize → protocolVersion, capabilities, serverInfo
+ *   2. POST /mcp notifications/initialized (with negotiated headers)
+ *   3. POST /mcp tools/list → tool schemas
  */
-async function fetchToolsList(port: number, organId: string): Promise<string[] | null> {
+async function mcpProbe(port: number, organId: string): Promise<McpSession | null> {
   const url = `http://${LOCALHOST}:${port}/mcp`;
-  const request: JsonRpcRequest = {
-    jsonrpc: '2.0',
-    id: `aaa-registry-${organId}-${Date.now()}`,
-    method: 'tools/list',
-    params: {},
+  const baseHeaders: Record<string, string> = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json, text/event-stream',
+  };
+  let sessionId: string | undefined;
+  let protocolVersion = '2025-11-25'; // default
+
+  const doRpc = async (method: string, params: Record<string, unknown> = {}, extraHeaders: Record<string, string> = {}): Promise<JsonRpcResponse | null> => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), MCP_TIMEOUT_MS);
+    try {
+      const resp = await fetch(url, {
+        method: 'POST',
+        headers: { ...baseHeaders, ...extraHeaders },
+        body: JSON.stringify({ jsonrpc: '2.0', id: `aaa-${organId}-${method}-${Date.now()}`, method, params }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeout);
+      if (!resp.ok) return null;
+      // Capture session ID from response headers
+      const sid = resp.headers.get('mcp-session-id') || resp.headers.get('MCP-Session-Id');
+      if (sid) sessionId = sid;
+      return (await resp.json()) as JsonRpcResponse;
+    } catch {
+      clearTimeout(timeout);
+      return null;
+    }
   };
 
   try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), MCP_TIMEOUT_MS);
+    // Step 1: initialize
+    const initResp = await doRpc('initialize', {
+      protocolVersion: '2025-11-25',
+      capabilities: { tools: {} },
+      clientInfo: { name: 'aaa-registry-validator', version: 'session-d.v1' },
+    });
+    if (!initResp?.result) {
+      console.error(`[registry-validator] ${organId}:${port} initialize failed`);
+      return null;
+    }
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify(request),
-      signal: controller.signal,
+    protocolVersion = (initResp.result.protocolVersion as string) || protocolVersion;
+    const serverCapabilities = (initResp.result.capabilities as Record<string, unknown>) || {};
+    const serverInfo = (initResp.result.serverInfo as { name: string; version: string }) || { name: organId, version: 'unknown' };
+
+    // Step 2: notifications/initialized
+    await doRpc('notifications/initialized', {}, {
+      'MCP-Protocol-Version': protocolVersion,
+      ...(sessionId ? { 'MCP-Session-Id': sessionId } : {}),
     });
 
-    clearTimeout(timeout);
-
-    if (!response.ok) {
-      console.error(`[registry-validator] ${organId}:${port} HTTP ${response.status}`);
+    // Step 3: tools/list
+    const toolsResp = await doRpc('tools/list', {}, {
+      'MCP-Protocol-Version': protocolVersion,
+      ...(sessionId ? { 'MCP-Session-Id': sessionId } : {}),
+    });
+    if (!toolsResp?.result) {
+      console.error(`[registry-validator] ${organId}:${port} tools/list failed`);
       return null;
     }
 
-    const body = (await response.json()) as JsonRpcResponse;
-    if (body.error) {
-      console.error(`[registry-validator] ${organId}:${port} JSON-RPC error: ${body.error.message}`);
-      return null;
-    }
-
-    const tools = body.result?.tools ?? [];
-    return tools.map((t) => t.name);
+    const tools = (toolsResp.result.tools || []) as Array<{ name: string; description?: string; inputSchema?: unknown }>;
+    return { protocolVersion, sessionId, serverCapabilities, serverInfo, tools };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error(`[registry-validator] ${organId}:${port} probe failed: ${message}`);
+    console.error(`[registry-validator] ${organId}:${port} MCP lifecycle failed: ${message}`);
     return null;
   }
 }
+
+// ── Legacy: removed fetchToolsList (out-of-lifecycle, replaced by mcpProbe) ─
 
 // ── Probe Single Organ ────────────────────────────────────────────────────
 
@@ -133,8 +180,9 @@ async function probeOrgan(organ: OrganIdentity): Promise<OrganStatus> {
     transportReachability = 'DOWN';
   }
 
-  // Phase 2: tools/list probe
-  const liveTools = await fetchToolsList(organ.port, organ.organId);
+  // Phase 2: Full MCP lifecycle probe (initialize → tools/list)
+  const mcpSession = await mcpProbe(organ.port, organ.organId);
+  const liveTools = mcpSession?.tools.map(t => t.name) ?? null;
 
   // Phase 3: Compare declared vs live
   const declaredTools = CANONICAL_TOOLS_PER_ORGAN[organ.organId] ?? [];
@@ -189,11 +237,9 @@ async function probeOrgan(organ: OrganIdentity): Promise<OrganStatus> {
     organReadiness = 'UNKNOWN';
   }
 
-  // Phase 6: Mutation authority — NEVER derived from liveness alone
-  const mutationAuthority: OrganStatus['mutationAuthority'] =
-    registryAlignment === 'ALIGNED' && organReadiness === 'READY'
-      ? 'AUTHORIZED'
-      : 'HOLD';
+  // Phase 6: Mutation authority — NEVER derived from registry alignment
+  // Registry validates what exists. Only arifOS/judge/lease can grant authority.
+  const mutationAuthority: OrganStatus['mutationAuthority'] = 'NOT_EVALUATED';
 
   const freshnessMs = Date.now() - startMs;
 
