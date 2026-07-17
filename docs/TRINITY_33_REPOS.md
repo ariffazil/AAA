@@ -421,7 +421,7 @@ A kernel without AAA visibility becomes ceremonially correct but operationally b
 - Skill: `/root/.agents/skills/KERNEL-trinity-33/SKILL.md`
 - Orthogonal map: `/root/.agents/skills/trinity-orthogonal-map/SKILL.md`
 - This doc: `/root/AAA/docs/TRINITY_33_REPOS.md`
-- Organ map: `/root/AAA/docs/FEDERATION_ORGAN.md`
+- Organ map: `/root/AAA/docs/ORGAN.md`
 
 **See also in CLAUDE.md / AGENTS.md for loading order and pointers.**
 

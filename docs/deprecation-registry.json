@@ -748,7 +748,7 @@
       "FORBIDDEN": "Never do this. Constitutional violation."
     },
     "cleanup_checklist": [
-      "1. Announce deprecation in CONTEXT_SESSION.md",
+      "1. Announce deprecation in SESSION.md",
       "2. Add entry to this registry",
       "3. Update CLAUDE.md if the deprecated item was referenced there",
       "4. Update hooks if the deprecated item was in hook config",

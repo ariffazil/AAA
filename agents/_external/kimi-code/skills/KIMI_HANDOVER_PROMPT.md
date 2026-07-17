@@ -94,7 +94,7 @@ After any code change to a systemd-managed organ, run this before declaring
 7. CHECK STDOUT → journalctl -u <svc> --since "5 min ago" | grep -E "<warning_pattern>"
                   (must return empty if warning was the original error)
 8. CONFIRM 3RD PARTY → check AAA / sister organ / git origin: registered, pushed
-9. UPDATE SOT → 4 files: CONTEXT.md, CHANGELOG.md, AGENTS.md, AGENTS_LANDING.md
+9. UPDATE SOT → 4 files: CONTEXT.md, CHANGELOG.md, AGENTS.md, LANDING.md
 10. RECEIPT   → write /root/forge_work/<date>/<topic>.md with measurements
 11. HOUSEKEEPING → move chaos to _quarantine/<date>-<reason>/ with MANIFEST.md
 12. DAILY MEM → /root/memory/<date>.md session log

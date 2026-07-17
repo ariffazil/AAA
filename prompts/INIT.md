@@ -418,7 +418,7 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
 | **Context** | `/root/CONTEXT.md` |
-| **Landing** | `/root/AGENTS_LANDING.md` |
+| **Landing** | `/root/LANDING.md` |
 
 ---
 

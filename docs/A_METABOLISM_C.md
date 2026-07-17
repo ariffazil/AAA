@@ -217,7 +217,7 @@ arifOS is trying to govern MCP?        YES
 |----------|----------|
 | A-METABOLISM Doctrine | `/root/AAA/docs/A_METABOLISM_2.md` |
 | 13 Constitutional Floors | `/root/AAA/CLAUDE.md#3` |
-| Federation Organ Map | `/root/AAA/docs/FEDERATION_ORGAN.md` |
+| Federation Organ Map | `/root/AAA/docs/ORGAN.md` |
 | Federation Thesis (capability ≠ permission) | `/root/.claude/projects/-root/memory/federation-thesis-capability-not-permission.md` |
 | MCP Invariants | `/root/.claude/projects/-root/memory/mcp-invariants.md` |
 | EHT Governance Pack | `/root/AAA/contracts/eht-governance/` |

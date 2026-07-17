@@ -29,7 +29,7 @@ ARTIFACTS = {
     "invariants": ROOT / "arifOS/GENESIS/INVARIANTS.md",
     "session_state": ROOT / ".claude/projects/-root/memory/session-state.md",
     "context_focus": ROOT / "CONTEXT.md",
-    "context_session": ROOT / "CONTEXT_SESSION.md",
+    "context_session": ROOT / "SESSION.md",
     "context_archive": ROOT / "CONTEXT_ARCHIVE.md",
     "deprecation_registry": ROOT / "AAA/docs/deprecation-registry.json",
     "claude_md": ROOT / "AAA/CLAUDE.md",
@@ -428,11 +428,11 @@ def test_context_tier_health():
     if session.exists():
         session_size = session.stat().st_size
         if session_size < 50_000:
-            ok(f"CONTEXT_SESSION.md is {session_size} bytes")
+            ok(f"SESSION.md is {session_size} bytes")
         else:
-            warn(f"CONTEXT_SESSION.md is {session_size} bytes — consider archiving older entries")
+            warn(f"SESSION.md is {session_size} bytes — consider archiving older entries")
     else:
-        warn("CONTEXT_SESSION.md missing — will be created on first write")
+        warn("SESSION.md missing — will be created on first write")
 
     # Archive must be larger than focus
     if archive.exists():

@@ -531,7 +531,7 @@ cat /root/AAA/docs/DITEMPA_CANON.md | sed -n '/^## PART 6/,/^## PART 7/p'
 | `AAA/docs/deprecation-registry.json` | What is dead and what replaced it |
 | `AAA/docs/MCP_TEST.md` | Cognitive physics testing — 6 scenarios, 42/42 PASS |
 | `AAA/docs/KERNEL_INVARIANTS.md` | Kernel invariants — preventing self-deception |
-| `AAA/docs/FEDERATION_ORGAN.md` | Organ topology — ports, roles, boundaries |
+| `AAA/docs/ORGAN.md` | Organ topology — ports, roles, boundaries |
 | `AAA/docs/FEDERATION_CODE.md` | Complete entropy map — all repos, 50+ services, 40+ ports |
 | `arifOS/GENESIS/000_KERNEL_CANON.md` | Constitutional kernel canon — F1-F13 source |
 | `arifOS/GENESIS/018_REALITY_ENGINEERING_DOCTRINE.md` | 8 Iron Laws — the operational definition of forging |

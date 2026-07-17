@@ -65,7 +65,7 @@ VAULT999
 | Decision theory | APEX / arifOS APEX_CANON + `apex.schema.json` | Single math/contract |
 | Constitutional law | arifOS GENESIS + F1–F13 | Organs link, don’t fork floors |
 | Measurement boundary | AAA `MEASUREMENT_BOUNDARY_CONTRACT.md` | Kernel vs WELL |
-| Organ map | AAA `FEDERATION_ORGAN.md` | Topology SoT |
+| Organ map | AAA `ORGAN.md` | Topology SoT |
 | Trinity 33 axes | AAA `TRINITY_33_REPOS.md` | Repo axes |
 | Domain contract | GEOX / WEALTH / WELL only | Domain physics only |
 | Execution contract | A-FORGE | Hands only |

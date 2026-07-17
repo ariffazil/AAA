@@ -244,7 +244,7 @@ Each organ README must carry the same constitutional skeleton, domain language o
 |------|------|
 | AAA (this file) | `docs/ARIFOS_MCP_ARCHITECTURE_v2026.07.15.md` |
 | AAA contrast | `docs/DOMAIN_ORGAN_CONTRAST.md` |
-| AAA organ map | `docs/FEDERATION_ORGAN.md` |
+| AAA organ map | `docs/ORGAN.md` |
 | GEOX | `README.md` — domain contrast section |
 | WEALTH | `README.md` — domain contrast section |
 | WELL | `README.md` — domain contrast section |
