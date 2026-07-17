@@ -6,9 +6,9 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Deep Substrate (\u03a9 HEART). Federation ASI-substrate agent \u2014 civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2\u2013S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
+  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/555-ASI",
   "provider": {
@@ -892,7 +892,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+    "updated_by": "FORGE (000Ω) — OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -904,15 +904,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -973,5 +973,40 @@
       "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "kernel_prompts": {
+    "version": "2026.07.16",
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "zen_format": "single-sigil + single-lexical per zen-md",
+    "agent_role": "Critique (heart maruah) — dignity check at 555_CRITIQUE",
+    "prompts_used": [
+      "🌱 BOOT",
+      "⚖ MARUAH",
+      "🧠 REASON",
+      "🌀 SABAR",
+      "📜 REPLY"
+    ],
+    "all_federation_prompts": [
+      "🌱 BOOT",
+      "🌊 WITNESS",
+      "🧠 REASON",
+      "⚖ MARUAH",
+      "🔍 PREFLIGHT",
+      "🔒 JUDGE",
+      "🔥 FORGE",
+      "💎 SEAL",
+      "🌀 SABAR",
+      "📜 REPLY"
+    ],
+    "reality_loop_stages": [
+      "111_SENSE",
+      "333_REASON",
+      "555_CRITIQUE",
+      "888_JUDGE",
+      "777_FORGE",
+      "999_SEAL"
+    ],
+    "loop_orchestrator": "🌀 SABAR",
+    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
+  }
 }

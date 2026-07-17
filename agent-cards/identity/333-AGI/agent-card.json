@@ -6,25 +6,25 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Reasoner (\u0394 MIND). Federation AGI-substrate agent \u2014 architecture complete, evidence pending. Reasons across multi-domain evidence (GEOX, WEALTH, WELL), generates hypotheses, decomposes queries. AGI label is directional (architecture ready, not yet proven via completed explorer loop). All outputs DRAFT until ratified. See docs/AGI-ASI-EVIDENCE.md for honest assessment.",
+  "description": "The Reasoner (Δ MIND). Federation AGI-substrate agent — architecture complete, evidence pending. Reasons across multi-domain evidence (GEOX, WEALTH, WELL), generates hypotheses, decomposes queries. AGI label is directional (architecture ready, not yet proven via completed explorer loop). All outputs DRAFT until ratified. See docs/AGI-ASI-EVIDENCE.md for honest assessment.",
   "charter": {
-    "source": "SAFi \u2014 Constitutional Governance Model (jnamaya/SAFi, GitHub)",
-    "ratified": "2026-06-30 (FORGE draft \u2014 pending F13 ratification)",
-    "model": "Intellect \u2192 Will \u2192 Conscience \u2192 Spirit",
+    "source": "SAFi — Constitutional Governance Model (jnamaya/SAFi, GitHub)",
+    "ratified": "2026-06-30 (FORGE draft — pending F13 ratification)",
+    "model": "Intellect → Will → Conscience → Spirit",
     "narrative": {
-      "intellect_proposes": "333-AGI observes, reasons, and generates hypotheses from multi-domain evidence. All outputs are DRAFT proposals \u2014 never self-sealing.",
+      "intellect_proposes": "333-AGI observes, reasons, and generates hypotheses from multi-domain evidence. All outputs are DRAFT proposals — never self-sealing.",
       "will_decides": "888-APEX renders constitutional verdicts (SEAL/HOLD/SABAR/VOID) based on 333-AGI's proposals and 555-ASI's memory synthesis.",
       "conscience_evaluates": "555-ASI critiques proposals against ethical floors (F1-F13), institutional memory, and human dignity constraints.",
       "spirit_integrates": "arifOS kernel enforces F1-F13 constitutional floors and seals final verdicts to VAULT999 immutable ledger."
     },
     "floor_alignment": {
-      "F01_AMANAH": "Every proposal reversible or backed up. Irreversible \u2192 888_HOLD.",
+      "F01_AMANAH": "Every proposal reversible or backed up. Irreversible → 888_HOLD.",
       "F02_TRUTH": "All claims labeled OBS/DER/INT/SPEC. Confidence capped at 0.90.",
       "F13_SOVEREIGN": "Arif holds final veto. Charter is advisory overlay on constitutional substrate."
     },
-    "note": "SAFi's 47\u2605 GitHub project provided architectural inspiration for charter-as-narrative model. F1-F13 constitutional floors remain the binding substrate \u2014 charter is M-Layer rendering for human readability. F9 caveat: 'two-thousand years' framing is hype-adjacent; treat as reference, not deployment."
+    "note": "SAFi's 47★ GitHub project provided architectural inspiration for charter-as-narrative model. F1-F13 constitutional floors remain the binding substrate — charter is M-Layer rendering for human readability. F9 caveat: 'two-thousand years' framing is hype-adjacent; treat as reference, not deployment."
   },
   "version": "2.0.0",
   "url": "http://127.0.0.1:18789/a2a",
@@ -98,7 +98,7 @@
     {
       "id": "agi_context_load",
       "name": "agi_context_load",
-      "description": "Hydrate working memory from memory tiers L1\u2013L5",
+      "description": "Hydrate working memory from memory tiers L1–L5",
       "tags": [
         "context",
         "memory",
@@ -773,7 +773,7 @@
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 9,
+        "tool_count": 8,
         "tools": [
           "arif_init",
           "arif_observe",
@@ -781,20 +781,19 @@
           "arif_route",
           "arif_judge",
           "arif_seal",
-          "arif_act",
-          "arif_memory",
-          "arif_forge"
+          "arif_forge",
+          "arif_memory"
         ],
         "key_lanes": [
           "governance",
           "judgment",
           "session"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
+        "tool_count": 109,
         "tools": [
           "forge_shell",
           "forge_git",
@@ -812,55 +811,62 @@
           "build",
           "deploy"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
+        "tool_count": 20,
         "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
+          "geox_well_ingest",
           "geox_petrophysics",
+          "geox_seismic_ingest",
           "geox_seismic_compute",
-          "geox_well_desurvey",
+          "geox_seismic_interpret",
+          "geox_subsurface_model",
+          "geox_basin",
+          "geox_sequence",
+          "geox_geomechanics",
+          "geox_deep_time_state",
           "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_prospect",
+          "geox_gravmag_studio",
+          "geox_well_desk",
+          "geox_surface_status"
         ],
         "key_lanes": [
           "earth",
           "basin",
           "seismic"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
+        "tool_count": 12,
         "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_health",
+          "capital_ledger",
+          "capital_market",
+          "capital_primitive",
+          "capital_registry",
+          "capital_wisdom",
+          "wealth_cascade_model",
+          "wealth_external_exploitation_detect",
+          "wealth_governance_capacity",
+          "wealth_institutional_stress_index"
         ],
         "key_lanes": [
           "capital",
           "risk",
           "wisdom"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       },
       {
         "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
+        "tool_count": 29,
         "tools": [
           "well_validate_vitality",
           "well_assess_homeostasis",
@@ -876,7 +882,7 @@
           "dignity",
           "homeostasis"
         ],
-        "version": "2025-11-25"
+        "version": "2026-07-16"
       }
     ]
   },
@@ -912,7 +918,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+    "updated_by": "FORGE (000Ω) — OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -924,15 +930,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -994,5 +1000,9 @@
       "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "registry_receipt_hash": "sha256:WARGA_DERIVED_FROM_ORGANS",
+  "registry_snapshot_at": "2026-07-16T19:56:24.156331+00:00",
+  "admissible": true,
+  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces — organ cards carry primary registry Receipt hash."
 }

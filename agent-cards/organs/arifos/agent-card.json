@@ -1,285 +1,63 @@
 {
-  "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
-  "agentId": "arifos",
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "id": "arifos",
   "name": "arifOS",
-  "description": "Constitutional AI kernel \u2014 13 floors, 6-axis orthogonal routing, VAULT999 sealing. 8 canonical MCP tools (the Canonical 9 minus compose). JUDGES, NEVER MUTES.",
-  "version": "kanon-2026.07.12-aligned",
+  "description": "Constitutional kernel — F1-F13, session, judge, vault, seal",
+  "version": "1.0.0",
+  "protocolVersion": "1.0",
+  "url": "http://127.0.0.1:8088/mcp",
   "provider": {
-    "organization": "arifOS",
-    "system": "AAA"
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
   },
   "capabilities": {
-    "streaming": true,
-    "pushNotifications": true,
-    "stateTransitionHistory": true,
-    "extendedAgentCard": true,
-    "supportsToolDiscovery": true,
-    "sealVerification": true,
-    "orthogonalRouting": true,
-    "humanVeto": true
+    "streaming": true
   },
-  "supportedInterfaces": [
-    {
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
-      "url": "https://aaa.arif-fazil.com/a2a/arifos"
-    }
-  ],
   "defaultInputModes": [
-    "text/plain",
     "application/json"
   ],
   "defaultOutputModes": [
-    "text/plain",
     "application/json"
   ],
-  "securitySchemes": {
-    "bearer": {
-      "scheme": "bearer",
-      "description": "AAA-issued JWT bearer token"
-    },
-    "apikey": {
-      "scheme": "apikey",
-      "in": "header",
-      "name": "x-a2a-key"
-    }
-  },
-  "endpoints": {
-    "baseUrl": "http://127.0.0.1:8088",
-    "mcp": "http://127.0.0.1:8088/mcp",
-    "health": "http://127.0.0.1:8088/health",
-    "card": "http://127.0.0.1:8088/.well-known/agent-card.json"
-  },
-  "skills": [
-    {
-      "id": "session-lifecycle",
-      "name": "Session Lifecycle",
-      "description": "Kernel ignition binds actor, floors and audit envelope; memory governor routes L1\u2013L6 under F1/F2/F4/F11.",
-      "tags": [
-        "session",
-        "identity",
-        "memory",
-        "kernel"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "arif_init",
-          "description": "KERNEL 000 \u00b7 Session ignition. Binds actor, floors, and audit before any other arif_* verb can govern. Without session_id the kernel treats the caller as anonym"
-        },
-        {
-          "name": "arif_memory",
-          "description": "KERNEL memory governor \u00b7 L1\u2013L6 under F1/F2/F4/F11 (not a free notepad). Modes: recall | inspect | attest | remember | promote | revise | forget. Writes are J-sp"
-        }
-      ],
-      "examples": [
-        "init session for actor_id=arif",
-        "memory write to L4"
-      ],
-      "riskClass": "low",
-      "executionAllowed": false
-    },
-    {
-      "id": "evidence-sensing",
-      "name": "Evidence Sensing",
-      "description": "Sense reality into evidence (not reasoning, not verdict). Search corpus, fetch, vitals, repo map.",
-      "tags": [
-        "evidence",
-        "observe",
-        "search",
-        "fetch"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "arif_observe",
-          "description": "KERNEL 111 \u00b7 Sense reality into evidence (not reasoning, not judgment). Modes: search | fetch | ingest | vitals | compass | atlas | entropy_dS | repo_map | hybr"
-        }
-      ],
-      "examples": [
-        "observe topic: malay basin thermal maturity",
-        "observe repo: AAA agent-cards/"
-      ],
-      "riskClass": "low",
-      "executionAllowed": false
-    },
-    {
-      "id": "structured-reasoning",
-      "name": "Structured Reasoning",
-      "description": "KERNEL 333 \u2014 Mind. Plan, critique, analyze, verify under F2/F7. Not chain-of-thought narration.",
-      "tags": [
-        "reasoning",
-        "think",
-        "plan",
-        "critique"
-      ],
-      "inputModes": [
-        "application/json",
-        "text/plain"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "arif_think",
-          "description": "KERNEL 333 \u00b7 Mind \u2014 structured reasoning under F2/F7 (not chat, not verdict). Modes: reason | reflect | verify | plan | plan_review | plan_approve | refactor_pl"
-        }
-      ],
-      "examples": [
-        "think: critique governor capacity at stress 0.6"
-      ],
-      "riskClass": "low",
-      "executionAllowed": false
-    },
-    {
-      "id": "intent-routing-execution",
-      "name": "Intent \u2192 Organ \u2192 Execution",
-      "description": "KERNEL 444 routes intent to GEOX/WEALTH/WELL/etc; KERNEL 777 governs execution through A-FORGE (hands, not law).",
-      "tags": [
-        "route",
-        "intent",
-        "forge",
-        "execution"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "arif_route",
-          "description": "KERNEL 444 \u00b7 Intent\u2192organ router (default path to GEOX/WEALTH/WELL/A-FORGE). Select when goal is known but organ/verb is not. Optional organ_tool = governed bri"
-        },
-        {
-          "name": "arif_forge",
-          "description": "KERNEL 777 \u00b7 Execution gate via A-FORGE (hands, not law). Mutates only after arif_judge SEAL + lease/chain IDs \u2014 no self-authorize. Modes: dry_run | engineer | "
-        }
-      ],
-      "examples": [
-        "route 'value this prospect' to GEOX",
-        "forge execute via A-FORGE with seal"
-      ],
-      "riskClass": "medium",
-      "executionAllowed": false
-    },
-    {
-      "id": "constitutional-verdict",
-      "name": "Constitutional Verdict",
-      "description": "KERNEL 888 \u2014 only organ that emits SEAL/HOLD/SABAR/VOID. Required for any irreversible action.",
-      "tags": [
-        "judge",
-        "verdict",
-        "constitutional",
-        "seal",
-        "hold"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "arif_judge",
-          "description": "KERNEL 888 \u00b7 Constitutional verdict \u2014 only organ that SEAL/HOLD/SABAR/VOIDs. Not advice; binding floor + authority arbitration. Requires actor, intent, domain, "
-        }
-      ],
-      "examples": [
-        "judge: drill this prospect \u2014 SEAL/HOLD/VOID?"
-      ],
-      "riskClass": "high",
-      "executionAllowed": false
-    },
-    {
-      "id": "vault-seal",
-      "name": "VAULT999 Seal",
-      "description": "KERNEL 999 \u2014 VAULT999 immutable append. Once sealed, the record IS the fossil layer of the institution learning itself.",
-      "tags": [
-        "vault",
-        "seal",
-        "immutable",
-        "999"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "arif_seal",
-          "description": "KERNEL 999 \u00b7 VAULT999 immutable append \u2014 irreversible civilizational memory. Modes: seal | verify | chain | list | dry_run. seal requires ack_irreversible. Kern"
-        }
-      ],
-      "examples": [
-        "seal receipt for verdict SEAL"
-      ],
-      "riskClass": "high",
-      "executionAllowed": false
-    }
+  "skills": [],
+  "registry_receipt_hash": "sha256:81033de59217a746",
+  "registry_snapshot_at": "2026-07-16T19:52:09.518774+00:00",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list"
   ],
-  "skill_count": 6,
-  "governance": {
-    "trustGrade": "AAA",
-    "sourceClass": "constitutional",
-    "holdCapable": true,
-    "authorityClass": "verdict",
-    "allowedActionClasses": [
-      "OBSERVE",
-      "JUDGE",
-      "SEAL"
-    ],
-    "maxRiskTier": "T4",
-    "floorProfile": [
-      "F1",
-      "F2",
-      "F3",
-      "F4",
-      "F5",
-      "F6",
-      "F7",
-      "F8",
-      "F9",
-      "F10",
-      "F11",
-      "F12",
-      "F13"
-    ],
-    "constitutional": true
+  "registry_tool_count": {
+    "source": 8,
+    "registry": 8
   },
-  "validation": {
-    "heartbeatTtlSec": 30,
-    "compatibility": "backward",
-    "inventory_audit": "alignment-audit-2026-07-12"
+  "registry_drift": {
+    "source_to_registry": [],
+    "source_to_registry_drift_pct": 100.0
   },
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "xZJ8a63M2GLA711z4A4HB0l012EuuQs2V58tnxogsF8/CN8glct6Iyp8j+O8dbhf0MrYy/eC5sgN/8av75jBCA==",
-      "proofPurpose": "assertionMethod",
-      "verificationMethod": "did:arif:aaa#z4eac9a785c9db1ca5cd93d186c53725dd9d9cd8813b5",
-      "canonicalization": "sorted-keys-compact-no-signatures",
-      "created": "2026-07-12T23:27:00Z",
-      "type": "Ed25519Signature2020",
-      "publicKeyB64": "8KwBmU8H1J65YLvtYPLqQnmUCIMuqkM6rCM22L5EtD8="
-    }
-  ]
+  "admissible": true,
+  "mcp_surface": {
+    "type": "exposed",
+    "endpoints": [
+      {
+        "url": "http://127.0.0.1:8088/mcp",
+        "tool_count": 8,
+        "tools": [
+          "arif_init",
+          "arif_observe",
+          "arif_think",
+          "arif_route",
+          "arif_judge",
+          "arif_seal",
+          "arif_forge",
+          "arif_memory"
+        ],
+        "key_lanes": [],
+        "version": "2026-07-16",
+        "registry_receipt_hash": "sha256:81033de59217a746"
+      }
+    ]
+  },
+  "status": "live",
+  "registry_truth": "VERIFIED"
 }

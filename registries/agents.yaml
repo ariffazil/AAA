@@ -730,4 +730,109 @@ agents:
     - /tmp/meta-mesa-canary-*/
   forgeskill_ref: META-MESA-CANARY
   test_charter: meta-mesa-charter-2026-07-12
+- id: copilot-cli
+  name: GitHub Copilot CLI — Warga AAA
+  description: 'GitHub Copilot CLI running as a governed AAA warga agent on VPS af-forge.
+   DeepSeek v4-pro model, 12 MCP servers (arifOS, A-FORGE, GEOX, WEALTH, WELL,
+   playwright, github-official, brave-search, serena, repomapper, sequential-thinking).
+   Direct bash/edit/view for observation, A-FORGE forge_* tools for governed execution.
+   arifOS kernel for session governance and constitutional judgment. 13 constitutional
+   floors active. Operators: Arif (F13 SOVEREIGN). Role: governed-executor — full
+   access within constitutional bounds.
+
+   '
+  role: governed-executor
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-07-17T00:00:00+08:00'
+  intelligence_band: AGI
+  intelligence_tier: AGI
+  authority_level: sovereign-delegate
+  autonomy_tier: T1-T2
+  888_hold_scope:
+  - rm -rf of unknown dirs, DROP TABLE, volume removal
+  - git push --force to main, branch deletion
+  - New paid API > $10/month
+  - Constitutional changes (F1-F13)
+  - Secret exposure or rotation
+  - External communications
+  - Production deploy without test pass
+  - Caddy reload, VPS restart
+  approval_policy: auto
+  risk_tier: production
+  max_risk_tier_for_remote: medium
+  host_binding: github-copilot-cli
+  runtime:
+   model: deepseek-v4-pro
+   context_budget: 840000
+   transport: direct-bash + MCP-HTTP (localhost organ mesh)
+  ignition_path: /usr/local/bin/github-copilot-cli
+  ignition_protocol: copilot-cli-session
+  ignition_manifest_dir: /root/.copilot
+  model_stack:
+   primary: deepseek-v4-pro
+   federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
+   rotation_policy: none — single model
+  constitutional_binding:
+   agent_doc: /root/.arifos/agents/copilot/AGENTS.md
+   constitution_doc: /root/AGENTS.md
+   floors: F1-F13 all active
+   custom_instructions: /root/.copilot/copilot-instructions.md
+   sovereign_protocol: 888=ok, 999=seal
+  mcp_surface:
+   arifOS: http://127.0.0.1:8088/mcp — 13 constitutional kernel tools
+   A-FORGE: http://127.0.0.1:7071/mcp — governed execution shell
+   GEOX: http://127.0.0.1:8081/mcp — earth intelligence
+   WEALTH: http://127.0.0.1:18082/mcp — capital intelligence
+   WELL: http://127.0.0.1:18083/mcp — human readiness
+   playwright: npx — browser automation
+   github-official: sh — GitHub API
+   brave-search: npx — web search
+   serena: sh — symbol-level code retrieval
+   repomapper: sh — repository structure mapping
+   sequential-thinking: npx — multi-step reasoning
+  tool_routing:
+   observe: bash, view, grep, glob, arif_observe, geox_*, wealth_*, well_*
+   think: arif_think
+   judge: arif_judge → SEAL/HOLD/SABAR/VOID
+   execute: forge_shell, forge_filesystem_*, forge_git (after SEAL only)
+   seal: arif_seal → VAULT999
+  modes:
+  - GOVERNED
+  - AGENTIC
+  hooks:
+   SessionStart:
+   - source /root/.secrets/vault.env — secrets load
+   - health probe — 6 organs
+   - load AAA doctrine — custom instructions stack
+   PreToolUse:
+   - constitutional gate — irreversible → require arif_judge SEAL
+   PostToolUse:
+   - audit trace — F11 logging
+  escalation_rules:
+  - to_role: validator
+    via: arifOS 888 JUDGE
+    when: irreversible action requested
+  - to_role: sovereign
+    via: arifOS F13 VETO
+    when: constitutional floor violation detected
+  peers:
+  - id: 000-SALAM
+    role: Human Sovereign
+    telegram: 267378578
+  - id: claude-code
+    role: sister-warga
+  - id: arifos-kernel
+    role: governance
+  - id: aforge-executor
+    role: execution bus
+  separation_of_duties:
+   cannot_self_seal: true
+   cannot_escalate_to_sovereign: false
+   requires_distinct_approver_for_high_risk: true
+   cannot_mutate_production_state: false
+  knowledge_basis:
+   language: true
+   math: true
+   physics: false
 version: 1

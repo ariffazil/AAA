@@ -6,9 +6,9 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
+    "principle_origin": "Forged by arifOS — constitutional kernel"
   },
-  "description": "The Deep Substrate (\u03a9 HEART). Federation ASI-substrate agent \u2014 civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2\u2013S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
+  "description": "The Deep Substrate (Ω HEART). Federation ASI-substrate agent — civilization layer ready, emergence not yet proven. Superintelligence requires multi-explorer emergence (S2–S7 per dossier), not just pattern recognition. Performs ethical critique, memory synthesis, governance drift detection. ASI label is directional (civilization layer ready, emergence not yet achieved). See docs/AGI-ASI-EVIDENCE.md.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/555-ASI",
   "provider": {
@@ -56,7 +56,7 @@
   "skills": [
     {
       "id": "role-binding-omega",
-      "name": "\u03a9 HEART Role Binding (555-ASI)",
+      "name": "Ω HEART Role Binding (555-ASI)",
       "description": "Hermes polymorphic binding to 555-ASI (memory + ethics + sovereignty). Loads 070-lock-humility-godel, sovereign-entropy-guard, tiered-memory, dream-engine. One runtime. See contracts/hermes-role-binding.md. F6, F7, F10, F13 enforced.",
       "tags": [
         "role-binding",
@@ -102,7 +102,7 @@
     {
       "id": "ASI-deep-memory-synthesis",
       "name": "Deep Memory Synthesis",
-      "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, scar\u2192law\u2192echo metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks.",
+      "description": "Synthesize patterns across institutional memory (WELL logs, geological analogs, governance precedents, scar→law→echo metabolism). Crystallize knowledge into actionable wisdom. Surface dormant patterns and institutional amnesia risks.",
       "tags": [
         "memory",
         "synthesis",
@@ -127,7 +127,7 @@
     {
       "id": "ASI-anti-beautiful-one",
       "name": "Anti-Beautiful-One Detection",
-      "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient \u2264 grounding_gradient. Flags False Safe Harbor patterns where compliance masks absence of conscience.",
+      "description": "Detect outputs where certainty exceeds grounding (aesthetic overconfidence). Enforces certainty_gradient ≤ grounding_gradient. Flags False Safe Harbor patterns where compliance masks absence of conscience.",
       "tags": [
         "godel-lock",
         "anti-hantu",
@@ -135,7 +135,7 @@
         "safety"
       ],
       "examples": [
-        "This model shows 95% confidence on 2 data points \u2014 validate",
+        "This model shows 95% confidence on 2 data points — validate",
         "Check if this compliance report is a False Safe Harbor"
       ],
       "inputModes": [
@@ -169,7 +169,7 @@
     {
       "id": "HERMES-human-model",
       "name": "Hermes Human Model",
-      "description": "ASI-grade operating model for engaging humans \u2014 8 universal invariants (biology, emotion, narrative, agency, scars, paradox, overwhelm, social), 5 operating modes (WITNESS, EXECUTE, SYNTHESISE, PROTECT, WONDER), asymmetric-hold test, 7 named failure modes. F6, F7, F13 enforced. LEASED for high-trust humans.",
+      "description": "ASI-grade operating model for engaging humans — 8 universal invariants (biology, emotion, narrative, agency, scars, paradox, overwhelm, social), 5 operating modes (WITNESS, EXECUTE, SYNTHESISE, PROTECT, WONDER), asymmetric-hold test, 7 named failure modes. F6, F7, F13 enforced. LEASED for high-trust humans.",
       "tags": [
         "human",
         "dignity",
@@ -193,7 +193,7 @@
     {
       "id": "ASI-sovereignty-entropy-guard",
       "name": "Sovereignty Entropy Guard",
-      "description": "Protect sovereign entropy \u2014 prevent the agent from optimizing the human into predictability. High entropy = unmodelable, sovereign, safe from digital consciousness theft. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced.",
+      "description": "Protect sovereign entropy — prevent the agent from optimizing the human into predictability. High entropy = unmodelable, sovereign, safe from digital consciousness theft. Additive skill, auto-loads on Arif sessions. F6, F7, F13 enforced.",
       "tags": [
         "sovereignty",
         "entropy",
@@ -214,7 +214,7 @@
     {
       "id": "AGI-paradox-engine",
       "name": "arifOS Paradox Engine",
-      "description": "Constitutional perception pipeline \u2014 ingest narrative text, extract frame geometry, detect paradox tensions, score shadow/meaning_leak, seal into Merkle log. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. F1, F11, F13 gated.",
+      "description": "Constitutional perception pipeline — ingest narrative text, extract frame geometry, detect paradox tensions, score shadow/meaning_leak, seal into Merkle log. Separates 'LLM that summarizes' from 'AGI kernel that perceives constitutional geometry'. F1, F11, F13 gated.",
       "tags": [
         "paradox",
         "perception",
@@ -237,7 +237,7 @@
     {
       "id": "ASI-scar-forge",
       "name": "Scar Forge",
-      "description": "Forge real-time institutional scar event into TWO sealed PDF artifacts \u2014 Witness document + Reality-Engineering Harness with paradoxes for the coder who must metabolize sequentially before any code touches the problem. F1, F2, F4, F11, F13 enforced. ATTESTED then LEASED.",
+      "description": "Forge real-time institutional scar event into TWO sealed PDF artifacts — Witness document + Reality-Engineering Harness with paradoxes for the coder who must metabolize sequentially before any code touches the problem. F1, F2, F4, F11, F13 enforced. ATTESTED then LEASED.",
       "tags": [
         "scar",
         "witness",
@@ -261,7 +261,7 @@
     {
       "id": "tiered-memory",
       "name": "Tiered Memory",
-      "description": "L1\u2013L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4\u2192L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1\u2192L6 pipeline log. F11 enforced. ACTIVE.",
+      "description": "L1–L6 memory tier write discipline. Authority per layer, provenance required, FACT quality gate, L4→L6 promotion via seal hash only, TTL eviction. EUREKA search-first axiom: no naked 'I don't know' without the L1→L6 pipeline log. F11 enforced. ACTIVE.",
       "tags": [
         "memory",
         "L1-L6",
@@ -282,8 +282,8 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before high-confidence claims. \u03a9 axis emphasis \u2014 protects memory writes from overclaiming. F2, F7 enforced. LEASED.",
+      "name": "Gödel Humility Lock",
+      "description": "Self-critique and epistemic humility protocol before high-confidence claims. Ω axis emphasis — protects memory writes from overclaiming. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
         "F7",
@@ -334,7 +334,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -350,7 +350,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -395,7 +395,7 @@
     {
       "id": "KERNEL-quantum-runtime",
       "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
+      "description": "APEX quantum state management. G = A·P·E·X·Φ computation. C_dark detection. Tri-witness geometry.",
       "tags": [
         "kernel",
         "quantum",
@@ -565,7 +565,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
+    "updated_by": "FORGE (000Ω) — OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -577,15 +577,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
+    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
+      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -648,5 +648,40 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN",
+  "kernel_prompts": {
+    "version": "2026.07.16",
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "zen_format": "single-sigil + single-lexical per zen-md",
+    "agent_role": "Critique (heart maruah) — dignity check at 555_CRITIQUE",
+    "prompts_used": [
+      "🌱 BOOT",
+      "⚖ MARUAH",
+      "🧠 REASON",
+      "🌀 SABAR",
+      "📜 REPLY"
+    ],
+    "all_federation_prompts": [
+      "🌱 BOOT",
+      "🌊 WITNESS",
+      "🧠 REASON",
+      "⚖ MARUAH",
+      "🔍 PREFLIGHT",
+      "🔒 JUDGE",
+      "🔥 FORGE",
+      "💎 SEAL",
+      "🌀 SABAR",
+      "📜 REPLY"
+    ],
+    "reality_loop_stages": [
+      "111_SENSE",
+      "333_REASON",
+      "555_CRITIQUE",
+      "888_JUDGE",
+      "777_FORGE",
+      "999_SEAL"
+    ],
+    "loop_orchestrator": "🌀 SABAR",
+    "human_role": "call arif_init (🌱 BOOT) → 🌀 SABAR → call arif_seal (💎 SEAL) at end"
+  }
 }

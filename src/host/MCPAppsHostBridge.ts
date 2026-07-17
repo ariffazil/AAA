@@ -90,6 +90,7 @@ const UI_RESOURCE_ROOTS: Record<string, string> = {
   "geox/earth-volume": "/mcp-apps/earth-volume",
   "geox/judge-console": "/mcp-apps/judge-console",
   "aforge/preview": "/mcp-apps/aforge-preview",
+  "wealth/portfolio": "/mcp-apps/wealth-portfolio",
 };
 
 /** Resolve a ui:// URI to the AAA fetch path */
