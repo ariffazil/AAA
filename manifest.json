@@ -24,11 +24,6 @@
   ],
   "related_applications": [
     {
-      "platform": "web",
-      "url": "https://apex.arif-fazil.com",
-      "id": "apex-constitutional-canon"
-    },
-    {
       "platform": "web", 
       "url": "https://arifos.arif-fazil.com",
       "id": "arifos-documentation"
