@@ -53,6 +53,10 @@ interface SecurityScheme {
   [key: string]: unknown;
 }
 
+interface SecurityRequirement {
+  [scheme: string]: string[];
+}
+
 interface AgentCard {
   name: string;
   description: string;
@@ -63,8 +67,8 @@ interface AgentCard {
   skills: AgentSkill[];
   defaultInputModes: string[];
   defaultOutputModes: string[];
-  securitySchemes?: SecurityScheme[];
-  securityRequirements?: Record<string, unknown>;
+  securitySchemes?: Record<string, SecurityScheme>;
+  securityRequirements?: SecurityRequirement[];
   signature?: {
     algorithm: string;
     value: string;
@@ -176,13 +180,17 @@ export function migrateCard(legacy: LegacyCard): AgentCard {
   const defaultOutputModes = ['text', 'text/plain'];
 
   // ── security ─────────────────────────────────────────────────────────
-  const securitySchemes: SecurityScheme[] = [];
+  // A2A v1: securitySchemes = object map, securityRequirements = array
+  const securitySchemes: Record<string, SecurityScheme> = {};
+  const securityRequirements: SecurityRequirement[] = [];
   if (legacy.security) {
-    // Preserve existing security config
-    securitySchemes.push({
+    securitySchemes['federation'] = {
       type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'token',
       description: 'Federation security scheme (inherited from legacy card)',
-    });
+    };
+    securityRequirements.push({ federation: [] });
   }
 
   return {
@@ -195,8 +203,8 @@ export function migrateCard(legacy: LegacyCard): AgentCard {
     skills,
     defaultInputModes,
     defaultOutputModes,
-    securitySchemes: securitySchemes.length > 0 ? securitySchemes : undefined,
-    securityRequirements: legacy.security ? { scheme: 'federation' } : undefined,
+    securitySchemes: Object.keys(securitySchemes).length > 0 ? securitySchemes : undefined,
+    securityRequirements: securityRequirements.length > 0 ? securityRequirements : undefined,
     signature: {
       algorithm: 'sha256',
       value: 'UNMEASURED',
