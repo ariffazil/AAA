@@ -1,11 +1,20 @@
 # Recursive Improvement Loop (RIL) — DSG-Bounded
 
 > **Authority:** 888 (Muhammad Arif bin Fazil, F13 SOVEREIGN)
-> **Status:** CANONICAL
-> **Version:** v2026.06.07
+> **Status:** CANONICAL · **RSI claim: HOLD** (2026-07-17 eureka)
+> **Version:** v2026.06.07 · **amendment:** v2026.07.17-HOLD-RSI
 > **Bound by:** DSG canon (`/root/arifOS/docs/DSG.md`) + AAA protocol (`/root/AAA/docs/AAA_TRINITY.md`)
+>
+> **2026-07-17 amendment (binding):** This document describes a *human-governed*
+> recursive improvement **substrate**, not live recursive self-improvement.
+> Until `RSI-GATE-1` completes with independent witnesses, reversible deploy,
+> VAULT seal, and measurable cycle-to-cycle improvement, the honest label is:
+> **Governed self-improvement substrate under construction — not RSI.**
+> See: `/root/forge_work/2026-07-17/seed/EUREKA-HOLD-RSI-CLAIM-2026-07-17T1929Z.md`
+> Telemetry: `verdict: HOLD_RSI_CLAIM` · `autonomy_band: YELLOW` · `next_gate: one complete witnessed reversible cycle`
 
 ---
+
 
 ## What this is — and what it is not
 
