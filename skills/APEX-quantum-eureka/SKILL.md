@@ -339,10 +339,15 @@ The compact insight object defined above.
 
 A sentence saying whether the result is:
 
-- not ready
-- ready for memory only
-- ready for explorer routing
-- ready for judgment/seal
+- not ready (`VOID` — contradiction unresolved)
+- ready for memory only (`OBSERVE_ONLY` — record, don't act)
+- ready for explorer routing (`SABAR` — proceed cautiously)
+- ready for judgment/seal (`HOLD` → `SEAL` after APEX review)
+
+**Verdict values must use the canonical closed 6-value taxonomy** from `arifOS/runtime/verdict.py`:
+`OBSERVE_ONLY` | `SEAL` | `SABAR` | `VOID` | `HOLD` | `888_HOLD`
+
+Legacy verdict fields (`verdict_code`, `canonical_verdict`, `reasoning_verdict`) are DEPRECATED post-KSR Epoch 1+2. Use `effective_verdict` + `reason_code` + `next_action`.
 
 Remember: **this skill does not seal**. arifOS path seals.
 

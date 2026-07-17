@@ -1,3 +1,13 @@
+---
+id: FORGE-visual-qa-w3
+name: FORGE-visual-qa-w3
+version: 1.0.0-2026.07.17
+description: "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal."
+owner: A-FORGE
+risk_tier: high
+floor_scope: ['F1', 'F2', 'F3', 'F4', 'F7', 'F11']
+autonomy_tier: T2
+---
 # FORGE-visual-qa-w3
 
 > **Purpose:** Closed-loop visual governance with W³ tri-witness consensus.

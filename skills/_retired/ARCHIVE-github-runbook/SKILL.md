@@ -1,6 +1,6 @@
 ---
 id: github-runbook
-name: GitHub Runbook — Federation Git & CLI Operations
+name: GitHub Runbook - Federation Git and CLI Operations
 version: 1.0.0
 description: Basic git status, commit, branch, and GitHub CLI operations across the
   federation repos.
