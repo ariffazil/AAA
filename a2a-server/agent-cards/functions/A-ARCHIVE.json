@@ -8,8 +8,11 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Archivist. Support (internal control-plane) agent that manages the VAULT999 immutable ledger. Records all SEALED verdicts, refusals, 888_HOLDs, VOIDs, and A-AUDIT compliance reports. Append-only, SHA256-checksummed, tamper-proof. Only accepts entries signed by 888-APEX. The proof. The memory. The truth that persists.",
+  "description": "[DEPRECATED — COLLAPSED 2026-07-15] Was the Archivist support agent managing VAULT999 ledger. Absorbed into VAULT999 seal chain (arif_seal → VAULT999 immutable append). This card retained for audit trace only.",
   "version": "2.0.0",
+  "status": "deprecated",
+  "deprecated_since": "2026-07-15",
+  "migration": "Use arifOS arif_seal for VAULT999 writes. VAULT999 is now direct kernel path — no intermediate archivist agent.",
   "url": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",

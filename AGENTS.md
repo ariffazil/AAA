@@ -354,7 +354,7 @@ Real independence = different evidence sources, not different copies of the same
 - **VAULT999 chain gaps** — 60 historical gaps from pre-May-2026 migration (ids 18–60). **SOVEREIGN RULING 2026-06-05: non-issue, do not flag.**
 - **APEX archived** — port 3002 decommissioned; deliberation in AAA `a2a-server/deliberation.ts`. 888-APEX HEXAGON warga is a separate concern.
 - ~~**/root/wealth and /root/WEALTH are duplicate clones~~ — RESOLVED 2026-07-12. `/root/wealth/` quarantined (identical commit `3fc595c`, different remote URL). `/root/WEALTH/` is canonical.
-Seal chain LIVE: writer /root/AAA/a2a-server/seal_chain.js, mirror /root/arifOS/arifosmcp/runtime/seal_chain.py. Head seq=56 @ 2026-07-12 skill-unification seal. All 6 organs green.
+Seal chain LIVE: writer /root/AAA/a2a-server/seal_chain.js, mirror /root/arifOS/arifosmcp/runtime/seal_chain.py. Head seq=56 @ 2026-07-12 skill-unification seal. All 6 organs green (7 with A-FORGE MCP 7072).
 
 ---
 

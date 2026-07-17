@@ -8,7 +8,7 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Watchdog. Support (internal control-plane) agent that continuously monitors all 3 primary federation agents (333-AGI, 555-ASI, 888-APEX). Verifies outputs against F1-F13 floors independently. Cannot issue verdicts \u2014 only flags, reports, and escalates to 888-APEX. Cannot be bypassed or disabled by any primary agent. Watches the watchers.",
+  "description": "[DEPRECATED \u2014 COLLAPSED 2026-07-15] Was a support agent monitoring primary federation agents. Absorbed into arifOS constitutional audit tools (arif_judge, arif_seal, arif_memory). This card retained for audit trace only.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/A-AUDIT",
   "provider": {
@@ -619,5 +619,8 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com"
+  "did": "did:web:arif-fazil.com",
+  "status": "deprecated",
+  "deprecated_since": "2026-07-15",
+  "migration": "Use arifOS arif_judge + arif_seal + arif_memory for audit functions."
 }

@@ -4,7 +4,7 @@
   "id": "aaa-gateway",
   "name": "AAA A2A Gateway",
   "description": "Federation A2A Gateway — central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
-  "version": "2026.07.02",
+  "version": "2026.07.17",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com",
   "preferred_transport": "jsonrpc-http",
@@ -326,5 +326,24 @@
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
       "nonce_flow": "arif_init(nonce) → sign(nonce) → verify → FULL"
     }
-  ]
+  ],
+  "federation_prompts": {
+    "version": "2026.07.16",
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "zen_format": "single-sigil + single-lexical per zen-md",
+    "all_prompts": [
+      "🌱 BOOT",
+      "🌊 WITNESS",
+      "🧠 REASON",
+      "⚖ MARUAH",
+      "🔍 PREFLIGHT",
+      "🔒 JUDGE",
+      "🔥 FORGE",
+      "💎 SEAL",
+      "🌀 SABAR",
+      "📜 REPLY"
+    ],
+    "reality_loop_orchestrator": "🌀 SABAR",
+    "human_role": "init + seal only — autonomous 6-stage loop"
+  }
 }

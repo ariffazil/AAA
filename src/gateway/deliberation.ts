@@ -3,7 +3,8 @@
  * =============================================================
  * APEX Master Seal 2026-07-01 integration.
  *
- * Ported from APEX Prime (apex-prime.service / port 3002).
+ * Ported from APEX Prime (DECOMMISSIONED 2026-06-27, formerly apex-prime.service on port 3002).
+ * Now lives in AAA a2a-server/deliberation.ts.
  * Upgraded with: SABAR verdict, ToAC awareness, paradox anchors,
  * EpistemicFloor confidence cap, cognitive hierarchy reference.
  *

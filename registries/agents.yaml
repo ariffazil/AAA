@@ -761,7 +761,7 @@ agents:
   approval_policy: auto
   risk_tier: production
   max_risk_tier_for_remote: medium
-  host_binding: github-copilot-cli
+  host_binding: copilot-cli
   runtime:
    model: deepseek-v4-pro
    context_budget: 840000
