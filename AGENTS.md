@@ -146,7 +146,7 @@ See: /root/AAA/governance/AAA_HUMAN_SPEECH_RULE.md for full spec and translation
 | 6 | TOOLREGISTRY | `/root/AAA/docs/TOOLREGISTRY.json` — search by `capability_tag` BEFORE building. Overlap ≥2 tags = duplicate. | 10s |
 | 7 | MEANING | `/root/AAA/docs/MEANING.md` — Rosetta Stone. What tools/resources mean per layer. | 20s |
 | 8 | The Trilogy | `arif-fazil.com/essays/` + `/root/.agents/skills/agentic-civilizational-context/SKILL.md` — the WHY. Load AFTER 1-7, BEFORE any tool call. | 30s |
-| 9 | Agent INIT v3.0 (TRINITY-33 + RSI) | `/root/AAA/prompts/AGENT_INIT_v3.0.md` (canonical active: full 33 map, 5-phase RSI, friction, axis status line) | 15s |
+| 9 | 🌱 INIT (TRINITY-33 + RSI, zen-dated 2026.07.17) | `/root/AAA/prompts/INIT.md` (canonical active: full 33 map, 5-phase RSI, friction, axis status line) | 15s |
 
 **Total bootstrap ~105s.** Skip cost: category errors, layer violations, zombie tools, F1-F13 breaches.
 
@@ -330,8 +330,8 @@ Real independence = different evidence sources, not different copies of the same
 | What | Path |
 |---|---|
 | Skills (active) | `/root/.agents/skills/` (41 live — load on demand) |
-| **Trinity 33 (final repo axes)** | `trinity-33-canonical` skill + `/root/AAA/docs/TRINITY_33_REPOS.md` (11 K + 11 C + 11 F; never let forge outrun kernel) |
-| **Agent INIT v3.0** | `/root/AAA/prompts/AGENT_INIT_v3.0.md` (canonical active; embeds TRINITY-33 + mandatory RSI 5-phase + friction) |
+| **Trinity 33 (final repo axes)** | `KERNEL-trinity-33` skill + `/root/AAA/docs/TRINITY_33_REPOS.md` (11 K + 11 C + 11 F; never let forge outrun kernel) |
+| **🌱 INIT (2026.07.17)** | `/root/AAA/prompts/INIT.md` (canonical active; embeds TRINITY-33 + mandatory RSI 5-phase + friction) |
 | Skills (archived) | `/root/.agents/skills/.archive-2026-07-08/` (65 archived skills) |
 | Seal chain | `/root/.local/share/arifos/vault999/seal_chain.jsonl` |
 | Seal head | `/root/.local/share/arifos/vault999/seal_chain_head.json` |
@@ -390,9 +390,9 @@ Seal chain LIVE: writer /root/AAA/a2a-server/seal_chain.js, mirror /root/arifOS/
 | Field | Value |
 |---|---|
 | owner | Arif |
-| last_verified | 2026-07-13 (P1 Convergence + PR #578 + 13 PRs merged) |
-| valid_from | 2026-07-13 |
-| valid_until | 2026-08-10 |
+| last_verified | 2026-07-17 (🌱 INIT zen renaming + SOT drift fix) |
+| valid_from | 2026-07-17 |
+| valid_until | 2026-08-17 |
 | confidence | high |
 | scope | /root (federation workspace) |
 | live_snapshot | `/root/A-FORGE/forge_work/2026-07-13/GITWRAP-CONVERGENCE-2026-07-13.md` |

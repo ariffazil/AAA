@@ -418,7 +418,7 @@ A kernel without AAA visibility becomes ceremonially correct but operationally b
 
 ## Canonical references (live)
 
-- Skill: `/root/.agents/skills/trinity-33-canonical/SKILL.md`
+- Skill: `/root/.agents/skills/KERNEL-trinity-33/SKILL.md`
 - Orthogonal map: `/root/.agents/skills/trinity-orthogonal-map/SKILL.md`
 - This doc: `/root/AAA/docs/TRINITY_33_REPOS.md`
 - Organ map: `/root/AAA/docs/FEDERATION_ORGAN.md`

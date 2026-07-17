@@ -563,7 +563,7 @@ To upgrade enforcement:
 | `qqq_validator.py` (kernel gate) | QUEUED | `arifosmcp/runtime/qqq_validator.py` |
 | Gate 5b integration | QUEUED | `arifosmcp/runtime/governance_pipeline.py` |
 | VAULT999 QQQ receipt schema | QUEUED | `arifosmcp/schemas/verdict.py` |
-| Agent system-prompt patch | QUEUED | `AAA/prompts/AGENT_INIT_v3.0.md` |
+| Agent system-prompt patch | QUEUED | `AAA/prompts/INIT.md` |
 | Tests | QUEUED | `arifOS/tests/test_qqq_validator.py` |
 | `recommendation_only` cleanup | QUEUED | Absorbed into QQQ envelope (Phase 4) |
 
