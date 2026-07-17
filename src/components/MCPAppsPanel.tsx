@@ -69,6 +69,14 @@ const REGISTERED_APPS: MCPAppDescriptor[] = [
     icon: '⚒️',
     defaultDisplayMode: 'inline',
   },
+  {
+    id: 'wealth-portfolio',
+    label: 'Wealth Portfolio',
+    description: 'WEALTH portfolio dashboard — assets, liabilities, net worth, cashflow, runway (read-only)',
+    organ: 'wealth',
+    icon: '💰',
+    defaultDisplayMode: 'inline',
+  },
 ];
 
 // ── Governance envelope types (mirrors arifOS) ──────────────────────────────
