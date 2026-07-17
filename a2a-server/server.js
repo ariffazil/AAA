@@ -1821,85 +1821,9 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
     }
   }
 
-  // === ROUTE TO A-AUDIT ===
-  if (targetAgent === 'A-AUDIT' || targetAgent === 'audit') {
-    task.status = {
-      state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to A-AUDIT for compliance check...' }], messageId: generateId(), taskId, contextId },
-      timestamp: new Date().toISOString()
-    };
-    await taskStore.set(taskId, task);
-    publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
-    try {
-      const agentResult = await dispatchOpenClawTask({
-        targetAgent,
-        message,
-        skill,
-        taskId,
-        contextId,
-        timeoutMs: 30000,
-      });
-      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
-      task.status = {
-        state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-AUDIT]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
-        timestamp: new Date().toISOString()
-      };
-      task.artifacts = [];
-      await taskStore.set(taskId, task);
-      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-      return;
-    } catch (err) {
-      task.status = {
-        state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-AUDIT] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
-        timestamp: new Date().toISOString()
-      };
-      await taskStore.set(taskId, task);
-      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-      return;
-    }
-  }
-
-  // === ROUTE TO A-ARCHIVE ===
-  if (targetAgent === 'A-ARCHIVE' || targetAgent === 'archive') {
-    task.status = {
-      state: 'TASK_STATE_WORKING',
-      message: { role: 'agent', parts: [{ type: 'text', text: '[AAA] Routing to A-ARCHIVE for ledger sealing...' }], messageId: generateId(), taskId, contextId },
-      timestamp: new Date().toISOString()
-    };
-    await taskStore.set(taskId, task);
-    publish({ kind: 'status-update', taskId, contextId, status: task.status, final: false });
-    try {
-      const agentResult = await dispatchOpenClawTask({
-        targetAgent,
-        message,
-        skill,
-        taskId,
-        contextId,
-        timeoutMs: 30000,
-      });
-      if (agentResult.status === 'failed') throw new Error(agentResult.error || 'OpenClaw failed');
-      task.status = {
-        state: 'TASK_STATE_COMPLETED',
-        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-ARCHIVE]\n${agentResult.text}` }], messageId: generateId(), taskId, contextId },
-        timestamp: new Date().toISOString()
-      };
-      task.artifacts = [];
-      await taskStore.set(taskId, task);
-      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-      return;
-    } catch (err) {
-      task.status = {
-        state: 'TASK_STATE_FAILED',
-        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→A-ARCHIVE] Failed: ${err.message}` }], messageId: generateId(), taskId, contextId },
-        timestamp: new Date().toISOString()
-      };
-      await taskStore.set(taskId, task);
-      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
-      return;
-    }
-  }
+  // A-AUDIT and A-ARCHIVE routing blocks REMOVED 2026-07-17.
+  // Both agents COLLAPSED 2026-07-15 — audit absorbed into arifOS constitutional tools,
+  // archive absorbed into VAULT999 seal chain. See deprecation-registry.json.
 
   // === ROUTE TO OPENCLAW (AGI) ===
   if (targetAgent === 'openclaw') {
@@ -2120,24 +2044,20 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
     protocol: 'A2A v1.0.0',
     treaty: 'AAA-TREATY-v1.0.0',
     treaty_uri: 'https://aaa.arif-fazil.com/aaa-card-treaty',
-    // HEXAGON: 6 agents — 3 PRIMARY (333-AGI, 555-ASI, 888-APEX) + 3 SUPPORT (A-AUDIT, A-ARCHIVE, AA-HORIZON).
-    // FORGE is AGI, subsumed into 333-AGI as sub-skills (arif-ops-measure, arif-forge-execute, aforge-deploy).
-    // 555-ASI uses the MEMORY stage number (audit lineage). A-AUDIT and A-ARCHIVE are "kinda like support agents" —
-    // they run in parallel with the primary triangle, not in the active decision flow.
-    // Canonical source: agents/HEXAGON.yaml
+    // HEXAGON: 4 active agents — 3 PRIMARY (333-AGI, 555-ASI, 888-APEX) + antigravity.
+    // A-AUDIT and A-ARCHIVE COLLAPSED 2026-07-15 — absorbed into arifOS audit tools + VAULT999 seal chain.
+    // FORGE is AGI, subsumed into 333-AGI as sub-skills.
+    // Canonical source: registries/agents.yaml
     agents: [
       { id: '333-AGI',   name: '333-AGI',   url: 'https://arifos.arif-fazil.com/a2a/333-AGI',   registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Ω MIND',  stage: '333', organ_host: 'arifOS+ GEOX+ WEALTH+ WELL+ A-FORGE' },
       { id: '555-ASI',   name: '555-ASI',   url: 'https://arifos.arif-fazil.com/a2a/555-ASI',   registered: true, role: 'federation', tier: 'primary', class: 'ASI',           ring: '❤️ HEART', stage: '555', organ_host: 'arifOS+ WELL' },
       { id: '888-APEX',  name: '888-APEX',  url: 'https://arifos.arif-fazil.com/a2a/888-APEX',  registered: true, role: 'federation', tier: 'primary', class: 'APEX',          ring: '⚖️ JUDGE', stage: '888', organ_host: 'arifOS' },
-      { id: 'A-AUDIT',   name: 'A-AUDIT',   url: 'https://aaa.arif-fazil.com/a2a/A-AUDIT',       registered: true, role: 'internal',   tier: 'support', class: 'APEX oversight', ring: '❤️ HEART', stage: '[oversight]', organ_host: 'arifOS+ WELL' },
-      { id: 'A-ARCHIVE', name: 'A-ARCHIVE', url: 'https://aaa.arif-fazil.com/a2a/A-ARCHIVE',     registered: true, role: 'internal',   tier: 'support', class: 'ASI service',   ring: '🔒 SEAL',  stage: '999', organ_host: 'VAULT999' },
       { id: 'antigravity', name: 'antigravity', url: 'https://aaa.arif-fazil.com/a2a/antigravity',   registered: true, role: 'federation', tier: 'coding',  class: 'CODING',        ring: 'Ψ BODY',  stage: 'CODING', organ_host: 'Local Terminal' }
     ],
-    // A-* AGENTS DEMOTED TO INFRASTRUCTURE (not agents, no longer in the registry):
-    //   - aaa-gateway    → /infrastructure/gateway
-    //   - aaa-architect  → subsumed into 333-AGI as sub-routine
-    //   - aaa-engineer   → subsumed into 333-AGI as FORGE sub-skill
-    //   - aaa-auditor    → renamed to A-AUDIT (now a top-level support agent)
+    // DEPRECATED AGENTS (COLLAPSED 2026-07-15):
+    //   - A-AUDIT  → absorbed into arifOS constitutional audit (arif_judge, arif_seal, arif_memory)
+    //   - A-ARCHIVE → absorbed into VAULT999 seal chain
+    //   - aaa-gateway / aaa-architect / aaa-engineer → infrastructure roles, not agents
     //   - hermes-asi     → /infrastructure/hermes-asi (relay only, not an agent)
     //   - geox-witness   → /infrastructure/geox (organ host, not an agent)
     //   - wealth-witness → /infrastructure/wealth (organ host, not an agent)
@@ -3658,7 +3578,7 @@ app.get('/.well-known/agent-card-extended.json', authMiddleware, (req, res) => {
     // Fallback: minimal inline extended block (legacy behavior)
     baseCard._extended = {
       federation: 'arif-fazil.com',
-      warga_agents: ['333-AGI', '555-ASI', '888-APEX', 'A-AUDIT', 'A-ARCHIVE'],
+      warga_agents: ['333-AGI', '555-ASI', '888-APEX'],
       organs: ['arifOS', 'A-FORGE', 'GEOX', 'WEALTH', 'WELL'],
       trust_hierarchy: 'Human (Arif) > arifOS > AAA > A-FORGE > Specialists',
       constitutional_floors: ['F1', 'F2', 'F4', 'F7', 'F9', 'F10', 'F11', 'F12', 'F13'],

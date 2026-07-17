@@ -25,8 +25,7 @@ const AAA_WARGA = Object.freeze([
   '333-AGI',
   '555-ASI',
   '888-APEX',
-  'A-AUDIT',
-  'A-ARCHIVE',
+  // A-AUDIT, A-ARCHIVE — COLLAPSED 2026-07-15 (absorbed into arifOS + VAULT999)
   'aaa-gateway',             // AAA A2A gateway itself
   'Claude-AAA-Governed',     // Claude Code via AAA warga identity
 ]);
