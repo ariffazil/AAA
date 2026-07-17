@@ -1,51 +1,276 @@
 {
-  "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "id": "aaa-gateway",
+  "$schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "name": "AAA A2A Gateway",
-  "description": "Federation A2A Gateway — central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
+  "description": "Federation A2A Gateway \u2014 central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
   "version": "2026.07.17",
-  "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com",
-  "preferred_transport": "jsonrpc-http",
   "provider": {
     "organization": "arifOS Federation",
     "url": "https://arif-fazil.com",
     "system": "AAA",
     "runtime": "node-v22"
   },
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
   "capabilities": {
     "streaming": true,
     "pushNotifications": true,
     "authenticated_extended_card": true,
     "tool_calling": true,
     "mcp_native": true,
+    "extendedAgentCard": true,
     "extensions": [
-      "arifos.verdict-grammar.v1",
-      "arif-fazil.com/ext/sovereign"
-    ],
-    "gateway": {
-      "task_routing": true,
-      "skill_aggregation": true,
-      "webhook_broker": true,
-      "auth_enforcement": true,
-      "injection_defense": true
-    }
-  },
-  "extensions": [
-    {
-      "uri": "arif-fazil.com/ext/sovereign",
-      "data": {
-        "sovereign_anchor": "https://arif-fazil.com/000/",
-        "sovereign_did": "https://arif-fazil.com/.well-known/did.json",
-        "seal_anchor": "https://arif-fazil.com/999/",
-        "seal_verification": "https://arif-fazil.com/999/seal.json",
-        "authentication_protocol": "Ed25519-challenge-response",
-        "nonce_flow": "arif_init(nonce) → sign(nonce) → verify(signature) → FULL authority",
-        "sovereign_key_fingerprint": "sha256:bf881c46b5c936ec2cbe71493159e1c606a00acbb30dc534a7a66060a0527e30"
+      {
+        "uri": "https://arif-fazil.com/ext/sovereign",
+        "required": false,
+        "params": {
+          "sovereign_anchor": "https://arif-fazil.com/000/",
+          "sovereign_did": "https://arif-fazil.com/.well-known/did.json",
+          "seal_anchor": "https://arif-fazil.com/999/",
+          "seal_verification": "https://arif-fazil.com/999/seal.json",
+          "authentication_protocol": "Ed25519-challenge-response",
+          "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify(signature) \u2192 FULL authority",
+          "sovereign_key_fingerprint": "sha256:bf881c46b5c936ec2cbe71493159e1c606a00acbb30dc534a7a66060a0527e30"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/verdict-grammar/v1",
+        "description": "arifOS 888 JUDGE verdict grammar: SEAL | HOLD | SABAR | VOID",
+        "required": false,
+        "params": {
+          "verdicts": [
+            "SEAL",
+            "HOLD",
+            "SABAR",
+            "VOID"
+          ],
+          "judge_endpoint": "https://arifos.arif-fazil.com/mcp",
+          "judge_tool": "arif_judge"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/governed-identity/v1",
+        "description": "Internal arifOS registry identity (not a core A2A field)",
+        "required": false,
+        "params": {
+          "registryId": "aaa-gateway",
+          "organId": "aaa",
+          "identityHash": "blake3:0205e6c882265b39e28999eade9db67b71bd265530db0211f899abc49b042497"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/federation-gateway/v1",
+        "description": "Federation organ map and gateway flags (arifOS extension)",
+        "required": false,
+        "params": {
+          "federation_organs": [
+            {
+              "id": "arifos-mcp",
+              "name": "arifOS Constitutional Kernel",
+              "url": "https://arifos.arif-fazil.com",
+              "role": "judge",
+              "authority": "verdict",
+              "skills": [
+                "render_verdict",
+                "gather_evidence",
+                "reason",
+                "route_intent",
+                "seal_receipt"
+              ],
+              "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "a-forge-mcp",
+              "name": "A-FORGE Execution Shell",
+              "url": "https://a-forge.arif-fazil.com",
+              "role": "executor",
+              "authority": "execution",
+              "skills": [
+                "forge_execute",
+                "forge_orchestrate",
+                "forge_document_intelligence",
+                "forge_browser",
+                "forge_git",
+                "forge_lease_acquire",
+                "forge_vault_seal"
+              ],
+              "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "geox-mcp",
+              "name": "GEOX Earth Intelligence",
+              "url": "https://geox.arif-fazil.com",
+              "role": "evidence",
+              "authority": "EVIDENCE_ONLY",
+              "skills": [
+                "evaluate_basin",
+                "analyze_well",
+                "rank_prospects",
+                "falsify_hypothesis",
+                "earth_evidence"
+              ],
+              "card_url": "https://geox.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "wealth-mcp",
+              "name": "WEALTH Capital Intelligence",
+              "url": "https://wealth.arif-fazil.com",
+              "role": "evidence",
+              "authority": "ADVISORY_ONLY",
+              "skills": [
+                "compute_npv",
+                "compute_emv",
+                "evaluate_wisdom",
+                "audit_power",
+                "scan_collapse",
+                "stock_analysis"
+              ],
+              "card_url": "https://wealth.arif-fazil.com/.well-known/agent-card.json"
+            },
+            {
+              "id": "well-mcp",
+              "name": "WELL Substrate Vitality",
+              "url": "https://well.arif-fazil.com",
+              "role": "evidence",
+              "authority": "REFLECT_ONLY",
+              "skills": [
+                "assess_homeostasis",
+                "assess_livelihood",
+                "guard_dignity",
+                "validate_vitality",
+                "classify_substrate"
+              ],
+              "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json"
+            }
+          ],
+          "gateway": {
+            "task_routing": true,
+            "skill_aggregation": true,
+            "webhook_broker": true,
+            "auth_enforcement": true,
+            "injection_defense": true
+          },
+          "mcp_native": true,
+          "tool_calling": true
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/governance/v1",
+        "description": "arifOS constitutional governance \u2014 F1-F13 floors, verdict authority, injection defense",
+        "required": false,
+        "params": {
+          "governance": {
+            "floors": [
+              "F1",
+              "F2",
+              "F4",
+              "F8",
+              "F11",
+              "F12",
+              "F13"
+            ],
+            "verdict_authority": "arifOS (port 8088)",
+            "self_approval_forbidden": true,
+            "authority_class": "gateway",
+            "injection_defense": "active",
+            "sovereign_veto": "push-notification"
+          },
+          "constitution": {
+            "floors_active": [
+              "F1",
+              "F2",
+              "F4",
+              "F8",
+              "F11",
+              "F12",
+              "F13"
+            ],
+            "governance_kernel": "arifOS (port 8088)",
+            "execution_shell": "A-FORGE (port 7071)",
+            "vault": "VAULT999"
+          }
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/metadata/v1",
+        "description": "Card provenance and federation metadata",
+        "required": false,
+        "params": {
+          "doctrine": "DITEMPA BUKAN DIBERI \u2014 Control is forged, not given.",
+          "created": "2026-07-02T04:50:00Z",
+          "created_by": "FORGE (000\u03a9) \u2014 A2A Gateway pattern",
+          "rationale": "Copilot A2A analysis \u2014 blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
+          "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
+          "kernel_deps": [
+            "KERNEL-trinity-33",
+            "KERNEL-session-inhabit",
+            "KERNEL-sovereign-recognize",
+            "KERNEL-verbs-forge-hands",
+            "KERNEL-quantum-runtime",
+            "KERNEL-qubit-substrate",
+            "KERNEL-reality-skills",
+            "KERNEL-mcp-zen",
+            "KERNEL-mcp-builder"
+          ],
+          "rsi_doctrine": "RSI-recursive-improvement",
+          "substrate_bind": "2026-07-12T18:30:00Z",
+          "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+          "a2a_card_migration": "2026-07-17-supportedInterfaces",
+          "a2a_protocol_binding": "JSONRPC",
+          "a2a_interface_version": "1.0"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/federation-prompts/v1",
+        "description": "arifOS federation prompt catalog \u2014 zen-md single-sigil format",
+        "required": false,
+        "params": {
+          "version": "2026.07.16",
+          "doctrine": "DITEMPA BUKAN DIBERI",
+          "zen_format": "single-sigil + single-lexical per zen-md",
+          "all_prompts": [
+            "\ud83c\udf31 BOOT",
+            "\ud83c\udf0a WITNESS",
+            "\ud83e\udde0 REASON",
+            "\u2696 MARUAH",
+            "\ud83d\udd0d PREFLIGHT",
+            "\ud83d\udd12 JUDGE",
+            "\ud83d\udd25 FORGE",
+            "\ud83d\udc8e SEAL",
+            "\ud83c\udf00 SABAR",
+            "\ud83d\udcdc REPLY"
+          ],
+          "reality_loop_orchestrator": "\ud83c\udf00 SABAR",
+          "human_role": "init + seal only \u2014 autonomous 6-stage loop"
+        }
+      },
+      {
+        "uri": "https://arif-fazil.com/a2a/extensions/kernel-skills/v1",
+        "description": "arifOS kernel skill dependencies and RSI doctrine",
+        "required": false,
+        "params": {
+          "kernel_skills": [
+            "KERNEL-trinity-33",
+            "KERNEL-session-inhabit",
+            "KERNEL-sovereign-recognize",
+            "KERNEL-verbs-forge-hands",
+            "KERNEL-quantum-runtime",
+            "KERNEL-qubit-substrate",
+            "KERNEL-reality-skills",
+            "KERNEL-mcp-zen",
+            "KERNEL-mcp-builder"
+          ],
+          "rsi_doctrine": "RSI-recursive-improvement",
+          "power_band": "routing"
+        }
       }
-    }
-  ],
+    ]
+  },
   "defaultInputModes": [
     "text/plain",
     "application/json"
@@ -72,96 +297,16 @@
       "description": "arifOS session token"
     }
   },
-  "security": [
+  "securityRequirements": [
     {
       "bearer_auth": []
-    }
-  ],
-  "federation_organs": [
-    {
-      "id": "arifos-mcp",
-      "name": "arifOS Constitutional Kernel",
-      "url": "https://arifos.arif-fazil.com",
-      "role": "judge",
-      "authority": "verdict",
-      "skills": [
-        "render_verdict",
-        "gather_evidence",
-        "reason",
-        "route_intent",
-        "seal_receipt"
-      ],
-      "card_url": "https://arifos.arif-fazil.com/.well-known/agent-card.json"
-    },
-    {
-      "id": "a-forge-mcp",
-      "name": "A-FORGE Execution Shell",
-      "url": "https://a-forge.arif-fazil.com",
-      "role": "executor",
-      "authority": "execution",
-      "skills": [
-        "forge_execute",
-        "forge_orchestrate",
-        "forge_document_intelligence",
-        "forge_browser",
-        "forge_git",
-        "forge_lease_acquire",
-        "forge_vault_seal"
-      ],
-      "card_url": "https://a-forge.arif-fazil.com/.well-known/agent-card.json"
-    },
-    {
-      "id": "geox-mcp",
-      "name": "GEOX Earth Intelligence",
-      "url": "https://geox.arif-fazil.com",
-      "role": "evidence",
-      "authority": "EVIDENCE_ONLY",
-      "skills": [
-        "evaluate_basin",
-        "analyze_well",
-        "rank_prospects",
-        "falsify_hypothesis",
-        "earth_evidence"
-      ],
-      "card_url": "https://geox.arif-fazil.com/.well-known/agent-card.json"
-    },
-    {
-      "id": "wealth-mcp",
-      "name": "WEALTH Capital Intelligence",
-      "url": "https://wealth.arif-fazil.com",
-      "role": "evidence",
-      "authority": "ADVISORY_ONLY",
-      "skills": [
-        "compute_npv",
-        "compute_emv",
-        "evaluate_wisdom",
-        "audit_power",
-        "scan_collapse",
-        "stock_analysis"
-      ],
-      "card_url": "https://wealth.arif-fazil.com/.well-known/agent-card.json"
-    },
-    {
-      "id": "well-mcp",
-      "name": "WELL Substrate Vitality",
-      "url": "https://well.arif-fazil.com",
-      "role": "evidence",
-      "authority": "REFLECT_ONLY",
-      "skills": [
-        "assess_homeostasis",
-        "assess_livelihood",
-        "guard_dignity",
-        "validate_vitality",
-        "classify_substrate"
-      ],
-      "card_url": "https://well.arif-fazil.com/.well-known/agent-card.json"
     }
   ],
   "skills": [
     {
       "id": "FORGE-route-task",
       "name": "Task Routing",
-      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task → matches skill → routes to organ → streams result.",
+      "description": "Route A2A tasks to the correct federation organ based on skill matching. Implements the A2A Gateway pattern: receives task \u2192 matches skill \u2192 routes to organ \u2192 streams result.",
       "tags": [
         "routing",
         "gateway",
@@ -249,70 +394,6 @@
       ]
     }
   ],
-  "governance": {
-    "floors": [
-      "F1",
-      "F2",
-      "F4",
-      "F8",
-      "F11",
-      "F12",
-      "F13"
-    ],
-    "verdict_authority": "arifOS (port 8088)",
-    "self_approval_forbidden": true,
-    "authority_class": "gateway",
-    "injection_defense": "active",
-    "sovereign_veto": "push-notification"
-  },
-  "constitution": {
-    "floors_active": [
-      "F1",
-      "F2",
-      "F4",
-      "F8",
-      "F11",
-      "F12",
-      "F13"
-    ],
-    "governance_kernel": "arifOS (port 8088)",
-    "execution_shell": "A-FORGE (port 7071)",
-    "vault": "VAULT999"
-  },
-  "metadata": {
-    "doctrine": "DITEMPA BUKAN DIBERI — Control is forged, not given.",
-    "created": "2026-07-02T04:50:00Z",
-    "created_by": "FORGE (000Ω) — A2A Gateway pattern",
-    "rationale": "Copilot A2A analysis — blindspot #9: AAA should be A2A Gateway. One edge, N organs discoverable. Verdict grammar extension for sovereignty.",
-    "gateway_pattern": "https://www.glukhov.org/ai-systems/architecture/a2a-protocol-explained/",
-    "kernel_deps": [
-      "KERNEL-trinity-33",
-      "KERNEL-session-inhabit",
-      "KERNEL-sovereign-recognize",
-      "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
-      "KERNEL-reality-skills",
-      "KERNEL-mcp-zen",
-      "KERNEL-mcp-builder"
-    ],
-    "rsi_doctrine": "RSI-recursive-improvement",
-    "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
-  },
-  "power_band": "routing",
-  "kernel_skills": [
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "KERNEL-sovereign-recognize",
-    "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
-    "KERNEL-reality-skills",
-    "KERNEL-mcp-zen",
-    "KERNEL-mcp-builder"
-  ],
-  "rsi_doctrine": "RSI-recursive-improvement",
   "signatures": [
     {
       "did": "did:web:arif-fazil.com",
@@ -324,26 +405,7 @@
       "canonical_form": "JCS-sorted-keys-no-whitespace",
       "canonical_sha256": "75d0839918cb74b0ba780e25f72b5d080086308d644d8ce40602b076c2536f87",
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
-      "nonce_flow": "arif_init(nonce) → sign(nonce) → verify → FULL"
+      "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify \u2192 FULL"
     }
-  ],
-  "federation_prompts": {
-    "version": "2026.07.16",
-    "doctrine": "DITEMPA BUKAN DIBERI",
-    "zen_format": "single-sigil + single-lexical per zen-md",
-    "all_prompts": [
-      "🌱 BOOT",
-      "🌊 WITNESS",
-      "🧠 REASON",
-      "⚖ MARUAH",
-      "🔍 PREFLIGHT",
-      "🔒 JUDGE",
-      "🔥 FORGE",
-      "💎 SEAL",
-      "🌀 SABAR",
-      "📜 REPLY"
-    ],
-    "reality_loop_orchestrator": "🌀 SABAR",
-    "human_role": "init + seal only — autonomous 6-stage loop"
-  }
+  ]
 }
