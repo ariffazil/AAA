@@ -179,7 +179,7 @@ This is the DITEMPA BUKAN DIBERI bet. It cannot be verified in hours. It can onl
 - `/root/AAA/docs/ARCHITECTURE_TRUTH.md` — constitutional baseline v42.1
 - `/root/AAA/a2a/peer-contracts/` — 9 peer contracts with authority classes
 - `/root/AAA/a2a-server/server.js` — DelegationGuard implementation (23 rules)
-- `/root/AAA/docs/INVARIANTS.md` — 7 Physics + 7 Zen Principles
+- `/root/arifOS/GENESIS/INVARIANTS.md` — 7 Physics + 7 Zen Principles
 
 ---
 
