@@ -179,7 +179,7 @@ jobs:
           fi
           echo "Verdict: $VERDICT"
           
-          cat > agentic_ci_report.json << 'REPORTEOF'
+          cat > agentic_ci_report.json << REPORTEOF
           {
             "organ": "AAA",
             "stack": "TypeScript/React/Vite",
