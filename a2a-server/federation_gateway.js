@@ -40,53 +40,209 @@ const SCHEME_MAP = {
   'forge':   'aforge',
 };
 
-// ── MCP Call Helper ───────────────────────────────────────────────────
-async function mcpCall(organKey, method, params = {}, timeoutMs = 10000, identity = {}) {
-  const organ = ORGANS[organKey];
-  if (!organ) return { ok: false, error: `Unknown organ: ${organKey}` };
+// ── MCP Session Cache (init-first lifecycle) ──────────────────────────
+// Spec: initialize → notifications/initialized → operations
+// https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle
+const MCP_PROTOCOL_VERSION = '2025-11-25';
+const SESSION_TTL_MS = 5 * 60 * 1000;
+/** @type {Map<string, { id: string|null, protocolVersion: string, expires: number }>} */
+const mcpSessions = new Map();
 
-  const payload = JSON.stringify({
-    jsonrpc: '2.0',
-    method,
-    params,
-    id: `fgw-${Date.now()}-${Math.random().toString(36).slice(2,6)}`,
-  });
+/**
+ * Low-level JSON-RPC POST to organ /mcp.
+ * Always sends Accept for streamable HTTP + negotiated protocol version.
+ */
+function mcpHttp(organKey, { method, params, id, sessionId, protocolVersion, timeoutMs, identity }) {
+  const organ = ORGANS[organKey];
+  if (!organ) return Promise.resolve({ ok: false, error: `Unknown organ: ${organKey}` });
+
+  const isNotification = typeof method === 'string' && method.startsWith('notifications/');
+  const bodyObj = { jsonrpc: '2.0', method };
+  if (!isNotification) {
+    bodyObj.id = id || `fgw-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+  }
+  if (params !== undefined) bodyObj.params = params;
+  const payload = JSON.stringify(bodyObj);
 
   const headers = {
     'Content-Type': 'application/json',
-    'Accept': 'application/json',
+    'Accept': 'application/json, text/event-stream',
     'Content-Length': Buffer.byteLength(payload),
+    'MCP-Protocol-Version': protocolVersion || MCP_PROTOCOL_VERSION,
   };
-  if (identity.actor_id) headers['X-Actor-Id'] = identity.actor_id;
-  if (identity.session_id) headers['X-Session-Id'] = identity.session_id;
+  if (sessionId) {
+    headers['Mcp-Session-Id'] = sessionId;
+    headers['MCP-Session-Id'] = sessionId;
+  }
+  if (identity && identity.actor_id) headers['X-Actor-Id'] = identity.actor_id;
+  if (identity && identity.session_id) headers['X-Session-Id'] = identity.session_id;
 
   return new Promise((resolve) => {
     const req = HTTP.request({
-      hostname: organ.host, port: organ.port, path: '/mcp',
+      hostname: organ.host,
+      port: organ.port,
+      path: '/mcp',
       method: 'POST',
       headers,
-      timeout: timeoutMs,
+      timeout: timeoutMs || 10000,
     }, (res) => {
       let data = '';
-      res.on('data', chunk => data += chunk);
+      res.on('data', (chunk) => { data += chunk; });
       res.on('end', () => {
+        const sid =
+          res.headers['mcp-session-id'] ||
+          res.headers['Mcp-Session-Id'] ||
+          res.headers['MCP-Session-Id'] ||
+          null;
         try {
-          const json = JSON.parse(data);
-          if (json.error) {
-            resolve({ ok: false, error: json.error.message || JSON.stringify(json.error) });
+          // Streamable HTTP may return SSE; try JSON first
+          const trimmed = data.trim();
+          let json;
+          if (trimmed.startsWith('event:') || trimmed.startsWith('data:')) {
+            // extract last data: line
+            const lines = trimmed.split('\n').filter((l) => l.startsWith('data:'));
+            const last = lines[lines.length - 1];
+            json = last ? JSON.parse(last.slice(5).trim()) : {};
+          } else if (!trimmed) {
+            json = {};
           } else {
-            resolve({ ok: true, result: json.result });
+            json = JSON.parse(trimmed);
+          }
+          if (json.error) {
+            resolve({
+              ok: false,
+              error: json.error.message || JSON.stringify(json.error),
+              sessionId: sid,
+              http: res.statusCode,
+            });
+          } else {
+            resolve({
+              ok: true,
+              result: json.result,
+              sessionId: sid,
+              http: res.statusCode,
+              raw: json,
+            });
           }
         } catch (e) {
-          resolve({ ok: false, error: `Parse error: ${e.message}`, raw: data.slice(0, 500) });
+          resolve({
+            ok: false,
+            error: `Parse error: ${e.message}`,
+            raw: data.slice(0, 500),
+            sessionId: sid,
+            http: res.statusCode,
+          });
         }
       });
     });
     req.on('error', (e) => resolve({ ok: false, error: `Connection error: ${e.message}` }));
-    req.on('timeout', () => { req.destroy(); resolve({ ok: false, error: 'Timeout' }); });
+    req.on('timeout', () => {
+      req.destroy();
+      resolve({ ok: false, error: 'Timeout' });
+    });
     req.write(payload);
     req.end();
   });
+}
+
+/**
+ * Ensure MCP session for organ: initialize + notifications/initialized.
+ * Stateless servers (no session header) still complete lifecycle once per TTL.
+ */
+async function ensureMcpSession(organKey, timeoutMs = 10000, identity = {}) {
+  const cached = mcpSessions.get(organKey);
+  if (cached && cached.expires > Date.now()) {
+    return cached;
+  }
+
+  const init = await mcpHttp(organKey, {
+    method: 'initialize',
+    params: {
+      protocolVersion: MCP_PROTOCOL_VERSION,
+      capabilities: {},
+      clientInfo: { name: 'aaa-federation-gateway', version: '1.1.0' },
+    },
+    timeoutMs,
+    identity,
+  });
+
+  if (!init.ok) {
+    return { id: null, protocolVersion: MCP_PROTOCOL_VERSION, expires: 0, error: init.error };
+  }
+
+  const negotiated =
+    (init.result && init.result.protocolVersion) || MCP_PROTOCOL_VERSION;
+  const sessionId = init.sessionId || null;
+
+  // initialized notification (best-effort)
+  await mcpHttp(organKey, {
+    method: 'notifications/initialized',
+    params: {},
+    sessionId,
+    protocolVersion: negotiated,
+    timeoutMs: Math.min(timeoutMs, 5000),
+    identity,
+  });
+
+  const entry = {
+    id: sessionId,
+    protocolVersion: negotiated,
+    expires: Date.now() + SESSION_TTL_MS,
+  };
+  mcpSessions.set(organKey, entry);
+  return entry;
+}
+
+function invalidateMcpSession(organKey) {
+  mcpSessions.delete(organKey);
+}
+
+/**
+ * MCP call with mandatory lifecycle for operational methods.
+ * initialize is passed through without re-init.
+ */
+async function mcpCall(organKey, method, params = {}, timeoutMs = 10000, identity = {}) {
+  const organ = ORGANS[organKey];
+  if (!organ) return { ok: false, error: `Unknown organ: ${organKey}` };
+
+  let session = null;
+  if (method !== 'initialize' && method !== 'notifications/initialized') {
+    session = await ensureMcpSession(organKey, timeoutMs, identity);
+    if (session.error && !session.id) {
+      // Retry once after invalidate
+      invalidateMcpSession(organKey);
+      session = await ensureMcpSession(organKey, timeoutMs, identity);
+      if (session.error && method !== 'tools/list') {
+        // Still proceed for permissive organs if init failed hard — but prefer fail-closed for tools/list
+        // GEOX requires init; if init failed, list will fail honestly
+      }
+    }
+  }
+
+  const res = await mcpHttp(organKey, {
+    method,
+    params,
+    sessionId: session && session.id,
+    protocolVersion: (session && session.protocolVersion) || MCP_PROTOCOL_VERSION,
+    timeoutMs,
+    identity,
+  });
+
+  // Session expired / unknown → re-init once
+  if (!res.ok && res.error && /session|initialize|not initialized/i.test(String(res.error))) {
+    invalidateMcpSession(organKey);
+    session = await ensureMcpSession(organKey, timeoutMs, identity);
+    return mcpHttp(organKey, {
+      method,
+      params,
+      sessionId: session && session.id,
+      protocolVersion: (session && session.protocolVersion) || MCP_PROTOCOL_VERSION,
+      timeoutMs,
+      identity,
+    });
+  }
+
+  return res;
 }
 
 // ── 1. RESOURCE PROXY ─────────────────────────────────────────────────
@@ -355,4 +511,7 @@ module.exports = {
   federationStatus,
   mountFederationRoutes,
   mcpCall,
+  ensureMcpSession,
+  invalidateMcpSession,
+  MCP_PROTOCOL_VERSION,
 };
