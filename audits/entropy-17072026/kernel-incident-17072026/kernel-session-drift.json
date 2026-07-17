@@ -1,0 +1,16 @@
+{
+  "symptom": "session actor: FORGE / caller actor: arif / identity+authority fields contradictory / clean arif_init unavailable",
+  "confirmed_in_logs": true,
+  "evidence": [
+    "Airlock SHADOW error, code=-32001 ARIF_SESSION_NOT_FOUND, on every observed remote call (arif_ops_measure, arif_triage, arif_judge_deliberate, arif_think) — caller never completed arif_init(mode='init', actor_id=...) before calling",
+    "wrap_legacy_call: null actor_id coerced to 'openclaw-anon' (tool=arif_ops_measure, organ=arifOS, action_class=OBSERVE) — server-side silently substitutes an anonymous identity instead of rejecting outright",
+    "KERNEL_AUTHORITY: actor=None actor_source=None -> LOW — authority resolves to a floor default because no real actor was bound",
+    "Failed to issue challenge for FORGE: Permission denied: /root/secrets/did/registry.json — the DID/challenge registry that would let 'FORGE' actors authenticate is unreadable by the service user, so FORGE-identity sessions cannot cleanly establish"
+  ],
+  "root_cause_candidate": {
+    "confidence": "PLAUSIBLE",
+    "statement": "The arifOS source repo at /root/arifOS has 18 uncommitted changes including a DELETED identity_consistency.py and a MODIFIED session_auth.py + tools.py — the exact subsystem responsible for actor/session binding. Combined with the DID registry permission error, this points to identity/session code being mid-refactor (possibly in-flight, uncommitted) at the same time the deployed kernel is failing to bind sessions.",
+    "needs": "Confirm with Arif whether this is an in-progress fix (his own or another agent's) before touching it — do not resolve by deleting/reverting files."
+  },
+  "phase_000_plan_registered": "absent from kernel plan registry, per incident brief — not independently re-verified this session (would require an authenticated arif_init call, which is a mutation-adjacent action and was out of scope for observe-only)"
+}

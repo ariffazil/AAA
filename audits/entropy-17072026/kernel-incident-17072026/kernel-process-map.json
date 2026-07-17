@@ -1,0 +1,39 @@
+{
+  "unit": "arifos.service",
+  "exec_start": "/bin/sh -c export ARIFOS_VAULT_DIR=/var/lib/arifos/vault; exec /opt/arifos/venv/bin/python -c \"from arifosmcp.runtime.__main__ import main; main()\"",
+  "working_directory": "/opt/arifos/app",
+  "exec_start_pre": "chmod 640 /opt/arifos/app/.env && chown ariffazil:arifos /opt/arifos/app/.env",
+  "exec_start_post": "/usr/bin/python3 /root/AAA/governance/register_with_aaa.py --organ-id arifos --port 8088 --name 'arifOS Governance Kernel' --skills governance judgment routing audit vault",
+  "restart_policy": "always",
+  "restart_usec": "3s",
+  "start_limit_burst": 5,
+  "start_limit_interval_usec": "1min",
+  "watchdog_usec": 0,
+  "note_watchdog": "no systemd sd_notify watchdog configured (WatchdogUSec=0), so systemd is not killing it via watchdog timeout",
+  "env_flags_of_interest": {
+    "ARIFOS_DRY_RUN": "1",
+    "ARIFOS_PUBLIC_SURFACE_MODE": "forge_next_8",
+    "ARIFOS_MCP_EXPOSE_DEV_TOOLS": "false",
+    "ARIFOS_EXPOSE_ORGAN_BRIDGE": "false",
+    "ARIFOS_DPOP_MODE": "enforce",
+    "SUPABASE_WRITE_MODE": "production"
+  },
+  "related_processes_confirmed_running": [
+    {"pid": 1195, "cmd": "/usr/bin/python3 /root/compose/vault999/server.py", "user": "arifos"},
+    {"pid": 1478, "cmd": "organ_heartbeat_daemon.py a-forge", "user": "arifos"},
+    {"pid": 1483, "cmd": "organ_heartbeat_daemon.py geox", "user": "arifos"},
+    {"pid": 1493, "cmd": "organ_heartbeat_daemon.py wealth", "user": "arifos"},
+    {"pid": 1494, "cmd": "organ_heartbeat_daemon.py well", "user": "arifos"},
+    {"pid": 2765, "cmd": "/root/arifOS/arifosd.py", "user": "arifos"},
+    {"pid": 39195, "cmd": "/root/arifOS/deploy/vault999-writer/main.py", "user": "root"}
+  ],
+  "companion_organ_status": {
+    "aaa-a2a.service": {"active": true, "since": "2026-07-17T13:08:51Z", "health_probe": "200 healthy, chain.seq=6"}
+  },
+  "git_arifos_repo": {
+    "path": "/root/arifOS",
+    "head": "85f165d53730468fef834b0339a9f2b5295802fb",
+    "uncommitted_changes": "yes — 18 files (adds: conformance_live.py, evidence_store.py, manifest.py, receipt_store.py, run_envelope.py, session_standing.py, verdict.py + 8 new tests; deletes: identity_consistency.py; modifies: session_auth.py, tools.py, ATLAS333_EVERGREEN.md)",
+    "note": "runtime code that owns session/identity handling (session_auth.py, tools.py, deleted identity_consistency.py) is mid-edit uncommitted on the same box the crashing kernel is running from — this is the '18 uncommitted files' the merge gate references"
+  }
+}

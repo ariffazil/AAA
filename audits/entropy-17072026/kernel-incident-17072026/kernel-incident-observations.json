@@ -1,0 +1,36 @@
+{
+  "incident_id": "INCIDENT-KERNEL-17072026-001",
+  "observed_at_utc": "2026-07-17T14:29:30Z",
+  "host": "af-forge (72.62.71.199)",
+  "unit": "arifos.service",
+  "diagnosis_layers": [
+    "PROCESS_FAILURE",
+    "ACTOR_BINDING_DRIFT",
+    "DEPENDENCY_FAILURE",
+    "SCHEMA_DRIFT"
+  ],
+  "confidence": "CLAIM for diagnosis_layers (directly observed in logs); PLAUSIBLE for proximate-cause hypothesis (correlated, not proven)",
+  "observations": [
+    {"evidence": "systemctl show arifos", "field": "ActiveState/SubState", "value": "active/running", "note": "true only at instant of check; process churns"},
+    {"evidence": "systemctl show arifos", "field": "Result", "value": "signal"},
+    {"evidence": "systemctl show arifos", "field": "ExecMainStatus", "value": "9"},
+    {"evidence": "systemctl show arifos", "field": "RestartUSec", "value": "3s"},
+    {"evidence": "systemctl show arifos", "field": "StartLimitBurst/IntervalUSec", "value": "5 / 1min", "note": "hit at least once: 'Failed to start arifos.service' at 14:25:50Z"},
+    {"evidence": "journalctl -u arifos", "field": "restart_count_today", "value": 18, "since": "2026-07-17T00:00:00Z"},
+    {"evidence": "journalctl -u arifos", "field": "sigkill_events_observed_window", "value": 9, "window": "2026-07-17T13:23:00Z..14:26:21Z"},
+    {"evidence": "journalctl -u arifos", "field": "recurring_boot_errors", "value": [
+      "PermissionError: [Errno 13] Permission denied: '/root/AAA/skills/atlas333-cognitive-geometry'",
+      "Permission denied: '/root/secrets/did/registry.json' (challenge issuance for FORGE fails)",
+      "[register] arifos: AAA rejected (503): UNREACHABLE / fetch failed",
+      "INJECTION FAILED: arif_route (mode=['route','bridge'], extra props incl. _envelope)",
+      "INJECTION FAILED: arif_judge (mode=['intercept','judge','validate','hold','escalate'], extra props incl. _envelope)",
+      "KERNEL INTERCEPTOR: DENY for arif_ops_measure: Capability not registered in graph (graph_version v0.2.3)"
+    ]},
+    {"evidence": "curl 127.0.0.1:8088/health (2 probes, ~1s apart)", "field": "result", "value": ["Connection reset by peer", "Could not connect to server"], "note": "process died between the two probes"},
+    {"evidence": "curl 127.0.0.1:3001/health (aaa-a2a)", "field": "result", "value": "200 healthy", "note": "AAA itself is up; arifos's own self-registration to it still fails at boot"},
+    {"evidence": "free -h / systemctl show MemoryPeak", "field": "resource_pressure", "value": "none", "note": "20Gi available of 31Gi; process peak 175-408M vs 2G limit; disk 42% used; earlyoom explicitly excludes arifos"},
+    {"evidence": "journalctl -u ssh", "field": "root_session_cadence", "value": "new short-lived root session from 202.185.89.85 roughly every 30-90s during the SIGKILL window (14:22:40, 14:23:12, 14:25:00-14:25:01, 14:25:51, 14:26:39, 14:28:45, 14:29:30)", "note": "PLAUSIBLE correlation with SIGKILL cadence; no on-box cron/watchdog script found that issues systemctl restart/kill against arifos"},
+    {"evidence": "/var/log/arifos-watchdog.log", "field": "chronic_pattern", "value": "ZOMBIE (port unbound while active) and later UNHEALTHY (port bound, health=000) recurring intermittently since 2026-07-16T21:25:01Z", "note": "predates today's escalation by ~17h; not a fresh regression"},
+    {"evidence": "crontab -l", "field": "stale_cron_entries", "value": ["/root/A-FORGE/forge_work/self-heal-watchdog.sh (file does not exist)", "/root/A-FORGE/forge_work/identity-drift-watchdog.sh (file does not exist)"], "note": "separate minor finding, unrelated to root-cause chain but worth cleaning up"}
+  ]
+}
