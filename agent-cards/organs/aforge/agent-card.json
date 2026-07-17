@@ -1,699 +1,75 @@
 {
-  "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
-  "agentId": "aforge",
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "id": "aforge",
   "name": "A-FORGE",
-  "description": "Constitutional execution shell \u2014 102 forge tools, observe+mutate boundary under arifOS kernel supervision. ACTUATES, NEVER JUDGES.",
-  "version": "0.1.0-aligned",
+  "description": "Execution shell — build, deploy, orchestrate",
+  "version": "1.0.0",
+  "protocolVersion": "1.0",
+  "url": "http://127.0.0.1:7072/mcp",
   "provider": {
-    "organization": "arifOS",
-    "system": "AAA"
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
   },
   "capabilities": {
-    "streaming": true,
-    "pushNotifications": true,
-    "stateTransitionHistory": true,
-    "extendedAgentCard": true,
-    "supportsToolDiscovery": true,
-    "sealVerification": true,
-    "orthogonalRouting": true,
-    "humanVeto": true
+    "streaming": true
   },
-  "supportedInterfaces": [
-    {
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
-      "url": "https://aaa.arif-fazil.com/a2a/aforge"
-    }
-  ],
   "defaultInputModes": [
-    "text/plain",
     "application/json"
   ],
   "defaultOutputModes": [
-    "text/plain",
     "application/json"
   ],
-  "securitySchemes": {
-    "bearer": {
-      "scheme": "bearer",
-      "description": "AAA-issued JWT bearer token"
-    },
-    "apikey": {
-      "scheme": "apikey",
-      "in": "header",
-      "name": "x-a2a-key"
-    }
-  },
-  "endpoints": {
-    "baseUrl": "http://127.0.0.1:7071",
-    "mcp": "http://127.0.0.1:7071/mcp",
-    "health": "http://127.0.0.1:7071/health",
-    "card": "http://127.0.0.1:7071/.well-known/agent-card.json"
-  },
-  "skills": [
-    {
-      "id": "governance-session",
-      "name": "Governance & Session",
-      "description": "Session ignition, leases, locks, organ registry; arifOS kernel-supervised governance, heart critique, judge proxy, docket prep.",
-      "tags": [
-        "governance",
-        "session",
-        "lease",
-        "lock",
-        "registry",
-        "witness"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "forge_session_init",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 000_INIT (arif_init). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate="
-        },
-        {
-          "name": "forge_health_check",
-          "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_heart_critique",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 555_CRITIQUE (arif_critique). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease"
-        },
-        {
-          "name": "forge_check_governance",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 555_CRITIQUE (arif_critique). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease"
-        },
-        {
-          "name": "forge_judge_proxy",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 888_JUDGE (arif_judge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_witness",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 888_JUDGE (arif_judge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_evaluate",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 333_THINK (arif_think). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_agent",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_lease",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_registry_status",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_lock",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_policy",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_tier_bind",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_register",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_registry",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_fingerprint_check",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_docket_prep",
-          "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE \u00b7 kernel-supervised by 888_JUDGE (arif_judge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y se"
-        },
-        {
-          "name": "forge_scar",
-          "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE \u00b7 kernel-supervised by 999_SEAL (arif_seal). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_scar_scan",
-          "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE \u00b7 kernel-supervised by 999_SEAL (arif_seal). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_verify_timeline",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        }
-      ],
-      "examples": [
-        "request lease for oss-file-write",
-        "witness consensus for tool X"
-      ],
-      "riskClass": "high",
-      "executionAllowed": false
-    },
-    {
-      "id": "execution-forge",
-      "name": "Execution & Forge",
-      "description": "Stage 777_FORGE \u2014 execute, abort, pipeline run, executesealed, job/submission/parallel orchestration, predict.",
-      "tags": [
-        "execute",
-        "forge",
-        "pipeline",
-        "parallel",
-        "sandbox"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json",
-        "image/svg+xml"
-      ],
-      "tools": [
-        {
-          "name": "forge_execute",
-          "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_approve",
-          "description": "ACTUATOR \u00b7 governance \u00b7 MUTATE \u00b7 kernel-supervised by 888_JUDGE (arif_judge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate"
-        },
-        {
-          "name": "forge_abort",
-          "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_job",
-          "description": "ACTUATOR \u00b7 job \u00b7 OBSERVE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_status",
-          "description": "ACTUATOR \u00b7 registry \u00b7 OBSERVE \u00b7 kernel-supervised by 000_TRIAGE (arif_triage). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_pipeline_run",
-          "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE \u00b7 kernel-supervised by 444_ROUTE (arif_route). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_execute_sealed",
-          "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_reality_loop",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 333_THINK (arif_think). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_predict",
-          "description": "ACTUATOR \u00b7 governance \u00b7 OBSERVE \u00b7 kernel-supervised by 333_THINK (arif_think). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_parallel",
-          "description": "ACTUATOR \u00b7 A-FORGE hands \u00b7 supervised by kernel 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. Spawn N concurrent A2A tasks and collect results. Thin "
-        },
-        {
-          "name": "forge_parallel_status",
-          "description": "ACTUATOR \u00b7 A-FORGE hands \u00b7 supervised by kernel 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. Query the status of a parallel task group by group_id. "
-        },
-        {
-          "name": "forge_parallel_cancel",
-          "description": "ACTUATOR \u00b7 A-FORGE hands \u00b7 supervised by kernel 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. Cancel all running agents in a parallel task group. Pro"
-        },
-        {
-          "name": "forge_parallel_list",
-          "description": "ACTUATOR \u00b7 A-FORGE hands \u00b7 supervised by kernel 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. List all task groups with their status. For monitoring "
-        },
-        {
-          "name": "forge_sandbox_run",
-          "description": "ACTUATOR \u00b7 execute \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_synthesize",
-          "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y se"
-        },
-        {
-          "name": "forge_stage",
-          "description": "ACTUATOR \u00b7 vault \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y se"
-        }
-      ],
-      "examples": [
-        "execute task X with seal verdict",
-        "predict outcome before judge"
-      ],
-      "riskClass": "high",
-      "executionAllowed": true
-    },
-    {
-      "id": "filesystem-storage",
-      "name": "Filesystem & Storage",
-      "description": "Governed FS primitive (read/write/patch/tree/grep/stat/move/delete), Postgres, VAULT999, skill-store, document ingest.",
-      "tags": [
-        "fs",
-        "postgres",
-        "vault",
-        "skillstore",
-        "documents"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "forge_filesystem",
-          "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y seal"
-        },
-        {
-          "name": "forge_filesystem_read",
-          "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y "
-        },
-        {
-          "name": "forge_filesystem_write",
-          "description": "ACTUATOR \u00b7 fs \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal="
-        },
-        {
-          "name": "forge_filesystem_patch",
-          "description": "ACTUATOR \u00b7 fs \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal="
-        },
-        {
-          "name": "forge_filesystem_tree",
-          "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y "
-        },
-        {
-          "name": "forge_filesystem_search",
-          "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y "
-        },
-        {
-          "name": "forge_filesystem_stat",
-          "description": "ACTUATOR \u00b7 fs \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y "
-        },
-        {
-          "name": "forge_filesystem_move",
-          "description": "ACTUATOR \u00b7 fs \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal="
-        },
-        {
-          "name": "forge_filesystem_delete",
-          "description": "ACTUATOR \u00b7 fs \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal="
-        },
-        {
-          "name": "forge_postgres",
-          "description": "ACTUATOR \u00b7 db \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal="
-        },
-        {
-          "name": "forge_vault",
-          "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE \u00b7 kernel-supervised by 999_SEAL (arif_seal). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_seal",
-          "description": "ACTUATOR \u00b7 vault \u00b7 MUTATE \u00b7 kernel-supervised by 999_SEAL (arif_seal). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal"
-        },
-        {
-          "name": "forge_skillstore_read",
-          "description": "ACTUATOR \u00b7 skill \u00b7 OBSERVE \u00b7 kernel-supervised by 999_SEAL (arif_seal). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_skillstore_write",
-          "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y se"
-        },
-        {
-          "name": "forge_document_ingest",
-          "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y se"
-        },
-        {
-          "name": "forge_receipt_draft",
-          "description": "ACTUATOR \u00b7 vault \u00b7 OBSERVE \u00b7 kernel-supervised by 999_SEAL (arif_seal). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_chart",
-          "description": "ACTUATOR \u00b7 meta \u00b7 OBSERVE \u00b7 kernel-supervised by 333_THINK (arif_think). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y se"
-        },
-        {
-          "name": "forge_memory",
-          "description": "ACTUATOR \u00b7 memory \u00b7 OBSERVE \u00b7 kernel-supervised by MEMORY (arif_memory). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y se"
-        }
-      ],
-      "examples": [
-        "patch /root/AAA/agents.md",
-        "VAULT999 seal receipt"
-      ],
-      "riskClass": "high",
-      "executionAllowed": true
-    },
-    {
-      "id": "shell-infra",
-      "name": "Shell & Infra",
-      "description": "Constitutional shell (ArifJudge + ArifSeal), Docker, VPS port/service/cron registries, security drift scan, surface audit/guard.",
-      "tags": [
-        "shell",
-        "docker",
-        "vps",
-        "infra",
-        "security",
-        "audit"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "forge_shell",
-          "description": "ACTUATOR \u00b7 shell \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y se"
-        },
-        {
-          "name": "forge_shell_dryrun",
-          "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_shell_status",
-          "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_shell_ledger",
-          "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_shell_alert_history",
-          "description": "ACTUATOR \u00b7 shell \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_docker",
-          "description": "ACTUATOR \u00b7 docker \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y s"
-        },
-        {
-          "name": "forge_vps_ports",
-          "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_vps_services",
-          "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_vps_cron",
-          "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_security_drift_scan",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_journalctl",
-          "description": "ACTUATOR \u00b7 vps \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_isomorphism_check",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_scan",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_surface_guard",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_surface_audit",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_probe",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_probe_site",
-          "description": "ACTUATOR \u00b7 probe \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate"
-        },
-        {
-          "name": "forge_netdata_alarms",
-          "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_netdata_metrics",
-          "description": "ACTUATOR \u00b7 health \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        }
-      ],
-      "examples": [
-        "dry-run shell command",
-        "vps ports: assert public/internal"
-      ],
-      "riskClass": "high",
-      "executionAllowed": true
-    },
-    {
-      "id": "git-github",
-      "name": "Git & GitHub",
-      "description": "Git physics + GitHub API (search, get_file, create_or_update_file, create_issue, create_pull_request), worktree state.",
-      "tags": [
-        "git",
-        "github",
-        "worktree",
-        "pr",
-        "issue"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "forge_git",
-          "description": "ACTUATOR \u00b7 git \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal"
-        },
-        {
-          "name": "forge_github",
-          "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y sea"
-        },
-        {
-          "name": "forge_github_search_code",
-          "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_github_search_repos",
-          "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_github_get_file",
-          "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_github_create_or_update_file",
-          "description": "ACTUATOR \u00b7 git \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal"
-        },
-        {
-          "name": "forge_github_create_issue",
-          "description": "ACTUATOR \u00b7 git \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal"
-        },
-        {
-          "name": "forge_github_create_pull_request",
-          "description": "ACTUATOR \u00b7 git \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y seal"
-        },
-        {
-          "name": "forge_worktree",
-          "description": "ACTUATOR \u00b7 git \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        }
-      ],
-      "examples": [
-        "commit AAA/agents on feature branch",
-        "open PR upstream"
-      ],
-      "riskClass": "high",
-      "executionAllowed": true
-    },
-    {
-      "id": "research-fetch",
-      "name": "Research & Fetch",
-      "description": "Brave/SearxNG/Context7 search, web fetch with Readability+SSRF+injection scan, document/comment stack-trace research.",
-      "tags": [
-        "search",
-        "fetch",
-        "research",
-        "docs",
-        "ssrf-protected"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json",
-        "text/html",
-        "text/markdown"
-      ],
-      "tools": [
-        {
-          "name": "forge_fetch",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_fetch_url",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_fetch_json",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_fetch_metadata",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_fetch_links",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_research",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_search",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_minimax_search",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        },
-        {
-          "name": "forge_docs_lookup",
-          "description": "ACTUATOR \u00b7 research \u00b7 OBSERVE \u00b7 kernel-supervised by 111_OBSERVE (arif_observe). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N g"
-        }
-      ],
-      "examples": [
-        "fetch and readability-extract AAA article",
-        "search SearxNG for X"
-      ],
-      "riskClass": "low",
-      "executionAllowed": false
-    },
-    {
-      "id": "federation-bridge",
-      "name": "Federation Bridge",
-      "description": "WEALTH/WELL organ-bridge executors, browser (Playwright-style), skill forge/synthesize, parallel orchestrator, netdata health, transfer/send confirmation.",
-      "tags": [
-        "federation",
-        "organ-bridge",
-        "browser",
-        "wealth",
-        "well",
-        "confirmation"
-      ],
-      "inputModes": [
-        "application/json"
-      ],
-      "outputModes": [
-        "application/json",
-        "image/png"
-      ],
-      "tools": [
-        {
-          "name": "forge_wealth",
-          "description": "ACTUATOR \u00b7 org_bridge \u00b7 OBSERVE \u00b7 kernel-supervised by 444_ROUTE (arif_route). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_well",
-          "description": "ACTUATOR \u00b7 org_bridge \u00b7 OBSERVE \u00b7 kernel-supervised by 444_ROUTE (arif_route). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gat"
-        },
-        {
-          "name": "forge_browser_navigate",
-          "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_browser_click",
-          "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_browser_type",
-          "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_browser_screenshot",
-          "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_browser_extract_text",
-          "description": "ACTUATOR \u00b7 browser \u00b7 OBSERVE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=N gate=Y"
-        },
-        {
-          "name": "forge_browser_evaluate_js",
-          "description": "ACTUATOR \u00b7 browser \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_skill",
-          "description": "ACTUATOR \u00b7 skill \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y se"
-        },
-        {
-          "name": "forge_transfer_confirm",
-          "description": "ACTUATOR \u00b7 confirm \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        },
-        {
-          "name": "forge_send_confirm",
-          "description": "ACTUATOR \u00b7 confirm \u00b7 MUTATE \u00b7 kernel-supervised by 777_FORGE (arif_forge). Not a plugin. Not a kernel verb. A-FORGE hands only. Gates: session=Y lease=Y gate=Y "
-        }
-      ],
-      "examples": [
-        "bridge WEALTH.runway for operator",
-        "send confirmation for irreversible transfer"
-      ],
-      "riskClass": "high",
-      "executionAllowed": true
-    }
+  "skills": [],
+  "registry_receipt_hash": "sha256:b67b71b481a2c068",
+  "registry_snapshot_at": "2026-07-16T19:52:09.518774+00:00",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list"
   ],
-  "skill_count": 7,
-  "governance": {
-    "trustGrade": "A",
-    "sourceClass": "actuator",
-    "holdCapable": true,
-    "authorityClass": "execution",
-    "allowedActionClasses": [
-      "OBSERVE",
-      "SUGGEST",
-      "SIMULATE",
-      "DRAFT",
-      "QUEUE",
-      "EXECUTE_REVERSIBLE",
-      "EXECUTE_HIGH_IMPACT",
-      "IRREVERSIBLE"
-    ],
-    "maxRiskTier": "T4",
-    "floorProfile": [
-      "F1",
-      "F2",
-      "F4",
-      "F8",
-      "F11",
-      "F13"
-    ],
-    "kernelSupervised": true,
-    "note": "A-FORGE NEVER adjudicates constitutional floors \u2014 delegates to arifOS."
+  "registry_tool_count": {
+    "source": 109,
+    "registry": 109
   },
-  "validation": {
-    "heartbeatTtlSec": 30,
-    "compatibility": "backward",
-    "inventory_audit": "alignment-audit-2026-07-12"
+  "registry_drift": {
+    "source_to_registry": [],
+    "source_to_registry_drift_pct": 100.0
   },
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "Uj0L69JnkcC+99/pxZvOq4Bpm4t7z2lY9DgH2xHIS0L/xito4aMlxY5aZnqSc0OiJB/4LoChrWuZtHZiqNETBg==",
-      "proofPurpose": "assertionMethod",
-      "verificationMethod": "did:arif:aaa#z4eac9a785c9db1ca5cd93d186c53725dd9d9cd8813b5",
-      "canonicalization": "sorted-keys-compact-no-signatures",
-      "created": "2026-07-12T23:27:00Z",
-      "type": "Ed25519Signature2020",
-      "publicKeyB64": "8KwBmU8H1J65YLvtYPLqQnmUCIMuqkM6rCM22L5EtD8="
-    }
-  ]
+  "admissible": true,
+  "mcp_surface": {
+    "type": "exposed",
+    "endpoints": [
+      {
+        "url": "http://127.0.0.1:7072/mcp",
+        "tool_count": 109,
+        "tools": [
+          "forge_abort",
+          "forge_agent",
+          "forge_approve",
+          "forge_browser_click",
+          "forge_browser_evaluate_js",
+          "forge_browser_extract_text",
+          "forge_browser_navigate",
+          "forge_browser_screenshot",
+          "forge_browser_type",
+          "forge_canonize",
+          "forge_chart",
+          "forge_check_governance",
+          "forge_cool_drift",
+          "forge_cool_pattern",
+          "forge_docker",
+          "forge_docket_prep",
+          "forge_docs_lookup",
+          "forge_document_ingest",
+          "forge_entropy_sweep",
+          "forge_evaluate"
+        ],
+        "key_lanes": [],
+        "version": "2026-07-16",
+        "registry_receipt_hash": "sha256:b67b71b481a2c068"
+      }
+    ]
+  },
+  "status": "live",
+  "registry_truth": "VERIFIED"
 }

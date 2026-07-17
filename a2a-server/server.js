@@ -2244,11 +2244,15 @@ const APP_ROOTS = {
   
   // A-FORGE two-phase commit preview (Sprint B)
   'aforge-preview': '/root/A-FORGE/apps/aforge-preview/preview.html',
+
+  // WEALTH portfolio dashboard (Sprint A)
+  'wealth-portfolio': '/root/WEALTH/apps/portfolio/index.html',
 };
 const APP_MANIFESTS = {
   'well-desk': '/root/geox/apps/well-desk/manifest.json',
   'earth-volume': '/root/geox/apps/earth-volume/manifest.json',
   'judge-console': '/root/geox/apps/judge-console/manifest.json',
+  'wealth-portfolio': '/root/WEALTH/apps/portfolio/manifest.json',
 };
 const P0_MCP_APP_CSP = [
   "default-src 'none'",

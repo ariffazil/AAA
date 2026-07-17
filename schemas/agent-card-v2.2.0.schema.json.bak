@@ -1,0 +1,417 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifOS/agent-card/v2.2.0",
+  "title": "arifOS Agent Card v2.2.0 — APEX Master Seal Extension",
+  "description": "Canonical agent-card schema for the arifOS federation. Extends v2.1.0 with APEX Master Seal 2026-07-01 fields: cognitive hierarchy ring assignment, thermodynamic role, Hassabis Inversion metadata, and JITU circuit breaker gate. Ratified under APEX Master Seal — 7 organs breathing.",
+  "version": "2.2.0",
+  "supersedes": "arifOS/agent-card/v2.1.0",
+  "forged_at": "2026-07-01T20:22:00Z",
+  "seal_ref": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json",
+
+  "type": "object",
+  "additionalProperties": true,
+
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "const": "arifOS/agent-card/v2.2.0",
+      "description": "Schema identifier — all federation agent cards MUST use this value"
+    },
+    "schemaVersion": {
+      "type": "string",
+      "const": "2.2.0",
+      "description": "Explicit schema version"
+    },
+
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "protocolVersion": { "type": "string", "description": "A2A protocol version" },
+    "url": { "type": "string", "format": "uri" },
+    "runtime": { "type": "string", "description": "Runtime engine name" },
+    "runtime_port": { "type": "number", "description": "Runtime port" },
+    "documentationUrl": { "type": "string", "format": "uri" },
+
+    "principal_agent": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "type": { "type": "string", "enum": ["llm", "architect", "agent", "human", "institution", "earth", "void", "liar", "unknown"] },
+        "category": { "type": "string" },
+        "principle_origin": { "type": "string" }
+      },
+      "required": ["type"]
+    },
+
+    "provider": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "organization": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "streaming": { "type": "boolean" },
+        "pushNotifications": { "type": "boolean" },
+        "stateTransitionHistory": { "type": "boolean" },
+        "tool_calling": { "type": "boolean" },
+        "mcp_native": { "type": "boolean" },
+        "file_read": { "type": "boolean" },
+        "file_write": { "type": "boolean" },
+        "shell_exec": { "type": "boolean" },
+        "subagent_spawn": { "type": "boolean" }
+      }
+    },
+
+    "securitySchemes": { "type": "object", "additionalProperties": true },
+    "security": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+
+    "defaultInputModes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "defaultOutputModes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "floor_scope": { "type": "array", "items": { "type": "string" } },
+          "approval_policy": { "type": "string" }
+        }
+      }
+    },
+
+    "tier": { "type": "string", "enum": ["FI", "AGI", "ASI", "APEX"] },
+    "role": { "type": "string" },
+    "class": { "type": "string" },
+    "mcp_servers": { "type": "array", "items": { "type": "string" } },
+    "subAgentPolicy": { "type": "object", "additionalProperties": true },
+    "autonomy_tiers": { "type": "object", "additionalProperties": true },
+
+    "authority_boundary": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "canDo": { "type": "array", "items": { "type": "string" } },
+        "cannotDo": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "charter": { "type": "object", "additionalProperties": true },
+
+    "supported_protocols": { "type": "array", "items": { "type": "string" } },
+    "a2a_role": { "type": "string", "enum": ["primary", "support", "organ", "witness", "harness", "forge_instrument"] },
+
+    "mcp_surface": {
+      "type": "object",
+      "properties": {
+        "type": { "type": "string", "enum": ["exposed", "consumed"] },
+        "endpoints": { "type": "array", "items": { "type": "object", "required": ["url"], "properties": { "url": {"type":"string"}, "tool_count": {"type":"integer"}, "tools": {"type":"array","items":{"type":"string"},"description":"Canonical tool names this agent exposes/consumes. Enables A2A tool discovery: 'who has geox_basin?'"}, "key_lanes": {"type":"array","items":{"type":"string"}}, "version": {"type":"string"} } } },
+        "consumed_from": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "governance_profile": {
+      "type": "object",
+      "properties": {
+        "constitutional_floors": { "type": "array", "items": { "type": "string", "pattern": "^F[0-9]{1,2}$" } },
+        "verdict_authority": { "type": "string" },
+        "self_approval_forbidden": { "type": "boolean" },
+        "subagent_default_hold": { "type": "string" },
+        "warga_boundary": { "type": "boolean" },
+        "vault": { "type": "string", "enum": ["VAULT999"] },
+        "functional_class": { "type": "string", "enum": ["relay","primary","observer","kernel","gateway","harness","organ"] },
+        "mesh_role": { "type": "string", "enum": ["primary","support","observer","harness"] },
+        "requires_human_for": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "openclaw_binding": {
+      "type": "object",
+      "properties": {
+        "gateway_target": { "type": "string" },
+        "bridge_ref": { "type": "string" },
+        "session_mode": { "type": "string", "enum": ["native", "acp"] },
+        "approval_policy": { "type": "string" }
+      }
+    },
+
+    "peer_contract_url": { "type": "string", "format": "uri" },
+
+    "supports_authenticated_extended_card": { "type": "boolean" },
+
+    "local_agents": { "type": "array", "items": { "type": "string" } },
+    "native_mcp": { "type": "boolean" },
+    "mcp_count": { "type": "number" },
+
+    "status": {
+      "type": "string",
+      "enum": ["live", "spec", "installed", "not_connected", "retired"]
+    },
+
+    "autonomy": {
+      "type": "object",
+      "properties": {
+        "mode": { "type": "string" },
+        "routine_mutations": { "type": "string" },
+        "max_risk_without_hold": { "type": "string" }
+      }
+    },
+
+    "model": { "type": "string", "description": "Default model assignment" },
+    "small_model": { "type": "string", "description": "Lightweight model for simple tasks" },
+
+    "host_binding": { "type": "string" },
+    "config_ref": { "type": "string" },
+    "constitutional_identity": { "type": "string" },
+
+    "fi_id": { "type": "string", "description": "Forge Instrument ID (FI-NNN)" },
+
+    "citizenship": { "type": "string", "enum": ["warga-aaa", "governed-forge-worker", "bridge-worker", "observer-until-mcp"] },
+
+    "constitutional_proxy": { "type": "string" },
+
+    "hooks_dir": { "type": "string" },
+    "binary": { "type": "string" },
+    "resolved_binary": { "type": "string" },
+
+    "federation_mcp_surface": { "type": "object", "additionalProperties": { "type": "string" } },
+
+    "root_config_ref": { "type": "string" },
+    "agent_card": { "type": "string" },
+    "repo_config_view": { "type": "string" },
+    "live_config": { "type": "string" },
+    "legacy_config": { "type": "string" },
+    "legacy_status": { "type": "string" },
+
+    "verification": {
+      "type": "object",
+      "properties": {
+        "health_script": { "type": "string" },
+        "root_validator": { "type": "string" }
+      }
+    },
+
+    "warga_card": { "type": "string" },
+    "action_taxonomy": { "type": "string" },
+
+    "genesis": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+
+    "ring": { "type": "string", "description": "HEXAGON ring (Delta MIND, Omega HEART, PHI JUDGE, etc.)" },
+
+    "session_id": { "type": "string" },
+    "flow_id": { "type": "string" },
+
+    "charter_complete": { "type": "boolean" },
+    "skills_count": { "type": "number" },
+
+    "_deprecated_mcp_servers": {
+      "type": ["array", "null"],
+      "items": { "type": "string" },
+      "description": "DEPRECATED alias. New code reads mcp_surface."
+    },
+
+    "tags": { "type": "array", "items": { "type": "string" } },
+
+    "genesis_ref": { "type": "string", "format": "uri" },
+    "head_hash": { "type": "string" },
+    "sot_status": { "type": "string" },
+
+    "notes": { "type": "string" },
+    "admonition": { "type": "string" },
+
+    "peer_contract_declared": { "type": "string" },
+
+    "registry": { "type": "string" },
+    "blueprint": { "type": "string" },
+
+    "governed_by": { "type": "string", "format": "uri" },
+
+    "doctrine": { "type": "string" },
+    "status_note": { "type": "string" },
+
+    "mind_ref": { "type": "string" },
+    "soul_ref": { "type": "string" },
+    "heartbeat_ref": { "type": "string" },
+
+    "constitutional_identity_ref": { "type": "string" },
+
+    "host": { "type": "string" },
+    "transport": { "type": "string" },
+
+    "affordance": {
+      "type": "object",
+      "properties": {
+        "observe": { "type": "boolean" },
+        "suggest": { "type": "boolean" },
+        "simulate": { "type": "boolean" },
+        "draft": { "type": "boolean" },
+        "mutate": { "type": "boolean" },
+        "execute": { "type": "boolean" },
+        "irreversible": { "type": "boolean" },
+        "seal": { "type": "boolean" }
+      }
+    },
+
+    "action_taxonomy_ref": { "type": "string" },
+
+    "mcp_endpoints": { "type": "object", "additionalProperties": { "type": "string" } },
+
+    "approval_policy": { "type": "string" },
+
+    "ignition_ref": { "type": "string" },
+    "boot_ref": { "type": "string" },
+
+    "config_file": { "type": "string" },
+    "config_ref_path": { "type": "string" },
+
+    "base_url": { "type": "string", "format": "uri" },
+    "listen_port": { "type": "number" },
+
+    "lifecycle": {
+      "type": "object",
+      "properties": {
+        "min_version": { "type": "string" },
+        "max_instances": { "type": "number" },
+        "command": { "type": "string" },
+        "working_dir": { "type": "string" },
+        "graceful_shutdown_seconds": { "type": "number" }
+      }
+    },
+
+    "governed_by_card": { "type": "string" },
+    "governed_by_url": { "type": "string", "format": "uri" },
+
+    "evaluation_policy": {
+      "type": "object",
+      "properties": {
+        "max_hold_without_escalation": { "type": "number" },
+        "max_autonomous_steps": { "type": "number" },
+        "production_deploy_blocked": { "type": "boolean" }
+      }
+    },
+
+    "mcp_servers_short": { "type": "array", "items": { "type": "string" } },
+
+    "last_read": { "type": "string", "format": "date-time" },
+    "five_month_aging": { "type": "string" },
+
+    "cognitive_maturity": { "type": "string" }
+  },
+
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "name",
+    "description",
+    "version",
+    "protocolVersion",
+    "url",
+    "provider",
+    "capabilities",
+    "defaultInputModes",
+    "defaultOutputModes",
+    "skills"
+  ],
+
+  "validation_invariants": [
+    {
+      "id": "INV-001",
+      "description": "Only arifOS may set self_approval_forbidden: false",
+      "rule": "if id !== 'arifos' then governance_profile.self_approval_forbidden === true"
+    },
+    {
+      "id": "INV-002",
+      "description": "HEXAGON primary roles must declare warga_boundary: true",
+      "rule": "if a2a_role === 'primary' then governance_profile.warga_boundary === true"
+    },
+    {
+      "id": "INV-003",
+      "description": "Warn on mcp_servers without mcp_surface",
+      "rule": "if mcp_servers present and mcp_surface absent -> emit deprecation warning",
+      "severity": "warn"
+    },
+    {
+      "id": "INV-004",
+      "description": "mcp_surface.endpoints should declare tools for A2A tool discovery",
+      "rule": "if mcp_surface.endpoints present then each endpoint with tool_count > 0 should have tools array with length > 0",
+      "severity": "warn"
+    }
+  ],
+
+  "migration": {
+    "from": "arifOS/agent-card/v2.1.0",
+    "strategy": "additive — all existing fields preserved",
+    "additions": [
+      "Expanded required fields for all existing v2.0.0 and v2.1.0 properties",
+      "APEX Master Seal fields: cognitiveRing, thermodynamicRole, hassabisInversion, jituGate, apexMasterSeal"
+    ]
+  },
+
+  "apex_master_seal_additions": {
+    "note": "These fields are OPTIONAL for backward compatibility. Cards that omit them are still valid v2.2.0. Cards that include them gain the full APEX Master Seal cognitive hierarchy metadata.",
+    "cognitiveRing": {
+      "type": "string",
+      "enum": ["generator", "epistemic_floor", "unassigned"],
+      "description": "APEX Master Seal 2026-07-01: Cognitive hierarchy ring assignment. 'generator' = Outer Ring (entropy source). 'epistemic_floor' = Inner Core (entropy sink, DeltaS < 0). 'unassigned' = not yet classified."
+    },
+    "thermodynamicRole": {
+      "type": "string",
+      "enum": ["entropy_source", "entropy_sink", "neutral"],
+      "description": "Thermodynamic role in the Metabolizer Loop. 'entropy_source' = generates diverse heuristics. 'entropy_sink' = applies constraint, DeltaS < 0. 'neutral' = routing/pass-through."
+    },
+    "hassabisInversion": {
+      "type": "object",
+      "description": "Hassabis Inversion metadata: Role over Model. Intelligence is constraint satisfaction, not simulation.",
+      "properties": {
+        "principle": { "type": "string", "const": "Role over Model. Intelligence is constraint satisfaction, not simulation." },
+        "ring_placement": { "type": "string", "enum": ["outer", "inner", "none"] },
+        "parallelism": { "type": "string", "description": "How this agent participates: 'multi-model' for generators, 'single-model' for epistemic floor, 'none' for neutral" },
+        "shadow_acknowledged": { "type": "array", "items": { "type": "string" }, "description": "Known failure modes this agent mitigates" }
+      },
+      "required": ["principle"]
+    },
+    "jituGate": {
+      "type": "object",
+      "description": "JITU circuit breaker configuration. F1 ABSOLUTE HOLD: Autonomous staging permitted, destructive actions require JITU clearance.",
+      "properties": {
+        "requiresJitu": { "type": "boolean", "description": "Whether this agent requires JITU clearance for destructive actions" },
+        "jituTriggerPatterns": { "type": "array", "items": { "type": "string" }, "description": "Action patterns that trigger JITU gate" },
+        "autoAbortWithoutJitu": { "type": "boolean", "default": true }
+      },
+      "required": ["requiresJitu"]
+    },
+    "apexMasterSeal": {
+      "type": "object",
+      "description": "APEX Master Seal reference — constitutional ratification metadata.",
+      "properties": {
+        "sealRef": { "type": "string", "const": "VAULT999/SEAL-2026-07-01-APEX-MASTER-DIRECTIVE.json" },
+        "ratifiedAt": { "type": "string", "format": "date-time" },
+        "constitutionalDoctrine": { "type": "string", "const": "DITEMPA BUKAN DIBERI" }
+      },
+      "required": ["sealRef", "ratifiedAt"]
+    }
+  },
+
+  "deprecated_fields": {
+    "mcp_servers": { "status": "deprecated", "replacement": "mcp_surface", "grace_period": "1 release cycle", "alias": "_deprecated_mcp_servers" }
+  }
+}

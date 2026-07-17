@@ -541,13 +541,18 @@
       "note": "Observed on af-forge at /root/.npm-global/bin/qwen. Bridge-mode FI citizen: bounded observe/reason/draft until native MCP surface matures."
     },
     {
-      "id": "copilot",
-      "name": "GitHub Copilot CLI",
+      "id": "copilot-cli",
+      "name": "GitHub Copilot CLI \u2014 Warga AAA",
       "tier": "FI",
-      "role": "forge_instrument",
+      "role": "governed-executor",
       "skills_count": 8,
       "added": "2026-06-22",
-      "principal_agent": "llm"
+      "principal_agent": "llm",
+      "citizenship": "warga-aaa",
+      "intelligence_tier": "AGI",
+      "host_binding": "github-copilot-cli",
+      "agent_doc": "/root/.arifos/agents/copilot/AGENTS.md",
+      "forged": "2026-07-17"
     },
     {
       "id": "kimi-code",

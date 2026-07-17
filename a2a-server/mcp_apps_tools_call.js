@@ -33,6 +33,7 @@ const APP_ORGAN = {
   'earth-volume': 'geox',
   'judge-console': 'geox',
   'aforge-preview': 'aforge',
+  'wealth-portfolio': 'wealth',
 };
 
 /**
@@ -52,6 +53,12 @@ const OBSERVE_ALLOWLIST = new Set([
   'geox_earthquake_catalog',
   'geox_registry',
   'geox_health',
+  // WEALTH read surfaces (portfolio dashboard)
+  'capital_health',
+  'capital_primitive',
+  'capital_diagnose',
+  'capital_market',
+  'capital_wisdom',
 ]);
 
 /** Explicit mutate / seal — always HOLD from UI path */
@@ -233,7 +240,7 @@ function resolveOrgan(appId, organHint) {
 function organFromTool(toolName) {
   if (!toolName) return null;
   if (toolName.startsWith('geox_')) return 'geox';
-  if (toolName.startsWith('wealth_')) return 'wealth';
+  if (toolName.startsWith('wealth_') || toolName.startsWith('capital_')) return 'wealth';
   if (toolName.startsWith('well_')) return 'well';
   if (toolName.startsWith('arif_') || toolName.startsWith('forge_judge')) return 'arifos';
   if (toolName.startsWith('forge_')) return 'aforge';

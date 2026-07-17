@@ -1,255 +1,68 @@
 {
-  "$schema": "arifOS/agent-card/v2.2.0",
-  "schemaVersion": "2.2.0",
-  "protocolVersion": "1.2",
-  "agentId": "wealth",
+  "$schema": "arifOS/agent-card/v2.3.0",
+  "schemaVersion": "2.3.0",
+  "id": "wealth",
   "name": "WEALTH",
-  "description": "Capital intelligence \u2014 computation, market, institutional diagnosis, entropy, health, ledger, wisdom. 12 MCP tools. ADVISORY_ONLY (compute, never execute).",
-  "version": "2026.07.12-aligned",
+  "description": "Capital intelligence — NPV, risk, collapse",
+  "version": "1.0.0",
+  "protocolVersion": "1.0",
+  "url": "http://127.0.0.1:18082/mcp",
   "provider": {
-    "organization": "arifOS",
-    "system": "AAA"
+    "organization": "arifOS by Muhammad Arif bin Fazil",
+    "url": "https://arif-fazil.com"
   },
   "capabilities": {
-    "streaming": true,
-    "pushNotifications": false,
-    "stateTransitionHistory": true,
-    "extendedAgentCard": true,
-    "supportsToolDiscovery": true
+    "streaming": true
   },
-  "supportedInterfaces": [
-    {
-      "protocolBinding": "JSONRPC",
-      "protocolVersion": "1.2",
-      "url": "https://aaa.arif-fazil.com/a2a/wealth"
-    }
-  ],
   "defaultInputModes": [
-    "text/plain",
     "application/json"
   ],
   "defaultOutputModes": [
-    "text/plain",
     "application/json"
   ],
-  "securitySchemes": {
-    "bearer": {
-      "scheme": "bearer",
-      "description": "AAA-issued JWT bearer token"
-    },
-    "apikey": {
-      "scheme": "apikey",
-      "in": "header",
-      "name": "x-a2a-key"
-    }
-  },
-  "endpoints": {
-    "baseUrl": "http://127.0.0.1:18082",
-    "mcp": "http://127.0.0.1:18082/mcp",
-    "health": "http://127.0.0.1:18082/health",
-    "card": "http://127.0.0.1:18082/.well-known/agent-card.json"
-  },
-  "skills": [
-    {
-      "id": "capital-computation",
-      "name": "Capital Computation",
-      "description": "Deductive capital math: NPV, IRR, EMV, EVOI, Monte Carlo, Markowitz, robust optimization.",
-      "tags": [
-        "wealth",
-        "capital"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "capital_primitive",
-          "description": "Deductive capital math primitives. Pure computation \u2014 no inference, no governance verdict. Every mode is golden-tested against hand-checked cases. Standard cash"
-        }
-      ],
-      "examples": []
-    },
-    {
-      "id": "market-analysis",
-      "name": "Market Analysis",
-      "description": "FX, commodity, indicator, stock snapshot/screen/evidence.",
-      "tags": [
-        "wealth",
-        "market"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "capital_market",
-          "description": "Market data and stock analysis. Observational only.\n\nTop-level: mode, base, targets, commodity, indicator, country. Stock fields in stock_payload dict.\n\nModes: "
-        }
-      ],
-      "examples": []
-    },
-    {
-      "id": "institutional-diagnosis",
-      "name": "Institutional Diagnosis",
-      "description": "Composite stress index, cascade feedback, governance capacity, external exploitation detection.",
-      "tags": [
-        "wealth",
-        "institutional"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "wealth_institutional_stress_index",
-          "description": "Composite institutional stress index (0-1).\n\nConnects financial, governance, workforce, legal, and external\nexploitation signals into a single stress score. Det"
-        },
-        {
-          "name": "wealth_cascade_model",
-          "description": "Model feedback loops between institutional stress dimensions.\n\nDetects spiral vs linear decline vs recovery. Projects trajectory\nand optionally simulates interv"
-        },
-        {
-          "name": "wealth_governance_capacity",
-          "description": "Monitor board governance capacity relative to stress level.\n\nAnalyzes board composition, committee structure, and identifies\ngovernance gaps that could enable i"
-        },
-        {
-          "name": "wealth_external_exploitation_detect",
-          "description": "Detect \"simulative neutral\" counterparty behavior.\n\nIdentifies rational exploitation of institutional weakness \u2014\nwhere each action is individually defensible bu"
-        },
-        {
-          "name": "capital_diagnose",
-          "description": "Abductive institutional diagnostics \u2014 inference from partial evidence. Surface: mode, domain_scope, payload (dict). Mode-specific fields go in payload. REQUIRED"
-        }
-      ],
-      "examples": []
-    },
-    {
-      "id": "capital-entropy",
-      "name": "Capital Entropy",
-      "description": "Power consequence map, metric purpose audit, coercive-order cost, entropy externality.",
-      "tags": [
-        "wealth",
-        "entropy"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "capital_entropy",
-          "description": "Capital and institutional entropy analysis. Modes: power_consequence_map, metric_purpose_audit, responsibility_ledger, trust_capital_decay, coercive_order_cost,"
-        }
-      ],
-      "examples": []
-    },
-    {
-      "id": "capital-health",
-      "name": "Capital Health",
-      "description": "Conservation, cash flow, runway, fiscal breakeven \u2014 personal to institutional.",
-      "tags": [
-        "wealth",
-        "health"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "capital_health",
-          "description": "Financial health metrics. Deductive computation from structured inputs. No inference, no governance verdict.\n\nModes: conservation | flow | runway | survival | f"
-        }
-      ],
-      "examples": []
-    },
-    {
-      "id": "ledger-management",
-      "name": "Ledger Management",
-      "description": "VAULT999 ledger query (read-only, no ack); registry status introspection.",
-      "tags": [
-        "wealth",
-        "vault"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "capital_ledger",
-          "description": "VAULT999 immutable ledger access. Query is read-only (no ack required). Write requires explicit human acknowledgment (ack_irreversible=true). WEALTH computes. a"
-        },
-        {
-          "name": "capital_registry",
-          "description": "WEALTH meta/introspection. Registry status, tool schema, domain index, health check. Observational only.\n\nModes: status | schema | domains | health\n\nUse when: t"
-        }
-      ],
-      "examples": []
-    },
-    {
-      "id": "wisdom-synthesis",
-      "name": "Wisdom Synthesis",
-      "description": "Advisory capital wisdom across dignity, sovereignty, resilience, inequality, ecological cost, optionality. WEALTH advises. arifOS judges.",
-      "tags": [
-        "wealth",
-        "wisdom"
-      ],
-      "inputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "outputModes": [
-        "text/plain",
-        "application/json"
-      ],
-      "tools": [
-        {
-          "name": "capital_wisdom",
-          "description": "Capital wisdom synthesis \u2014 evaluates proposals across dignity, sovereignty, resilience, inequality, ecological cost, and optionality. Advisory only. Does NOT em"
-        }
-      ],
-      "examples": []
-    }
+  "skills": [],
+  "registry_receipt_hash": "sha256:5de73df91b0b276f",
+  "registry_snapshot_at": "2026-07-16T19:53:08.125144+00:00",
+  "registry_source": [
+    "source_enumeration",
+    "mcp_tools_list"
   ],
-  "skill_count": 7,
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "IR06zYLzsLUjKw1TG8r0QEfZPdpvz0ASXieZDxXwjH9iDpH/DZdo9b8D2DTv6q9LJaswn9q2nAdpf5RyZLQGCA==",
-      "proofPurpose": "assertionMethod",
-      "verificationMethod": "did:arif:aaa#z4eac9a785c9db1ca5cd93d186c53725dd9d9cd8813b5",
-      "canonicalization": "sorted-keys-compact-no-signatures",
-      "created": "2026-07-12T23:26:30Z",
-      "type": "Ed25519Signature2020",
-      "publicKeyB64": "8KwBmU8H1J65YLvtYPLqQnmUCIMuqkM6rCM22L5EtD8="
-    }
-  ]
+  "registry_tool_count": {
+    "source": 12,
+    "registry": 0
+  },
+  "registry_drift": {
+    "source_to_registry": [],
+    "source_to_registry_drift_pct": 0.0,
+    "note": "MCP tools/list unavailable; source enumeration used"
+  },
+  "admissible": true,
+  "mcp_surface": {
+    "type": "exposed",
+    "endpoints": [
+      {
+        "url": "http://127.0.0.1:18082/mcp",
+        "tool_count": 12,
+        "tools": [
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_health",
+          "capital_ledger",
+          "capital_market",
+          "capital_primitive",
+          "capital_registry",
+          "capital_wisdom",
+          "wealth_cascade_model",
+          "wealth_external_exploitation_detect",
+          "wealth_governance_capacity",
+          "wealth_institutional_stress_index"
+        ],
+        "key_lanes": [],
+        "version": "2026-07-16",
+        "registry_receipt_hash": "sha256:5de73df91b0b276f"
+      }
+    ]
+  },
+  "status": "spec",
+  "registry_truth": "DRIFT"
 }
