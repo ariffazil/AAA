@@ -197,6 +197,8 @@ Edges: T1→T3, T2→T3, T3→T4, T4→T5, T5→T6
 | PlanValidator (pre-execution gate) | `/root/A-FORGE/src/domain/planner/PlanValidator.ts` |
 | Plan DAG skill (agent-facing) | `/root/AAA/registries/antigravity/skills/arifos-plan-dag/SKILL.md` |
 | This canon file | `/root/AAA/docs/PLAN.md` |
+| Epoch Architecture (333) | `/root/AAA/docs/EPOCH.md` |
+| Memory Routing (444) | `/root/AAA/docs/MEMORY.md` |
 
 ---
 
