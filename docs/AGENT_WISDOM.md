@@ -100,7 +100,7 @@ Use whichever fits the moment. Both say the same thing: intelligence without con
 Load after INVARIANTS.md in the heptalogy sequence:
 
 ```
-/root/AAA/docs/INVARIANTS.md     → The invariants (11)
+/root/arifOS/GENESIS/INVARIANTS.md     → The invariants (11)
 /root/AAA/docs/AGENT_WISDOM.md   → The sanity check (7)
 /root/AAA/docs/MEANING.md        → The meaning
 ```

@@ -228,7 +228,7 @@ One audit trail
 
 **Related:**
 - `/root/AAA/docs/MCP_RESOURCES.md` — canonical helper baseline
-- `/root/AAA/docs/INVARIANTS.md` — constitutional physics
+- `/root/arifOS/GENESIS/INVARIANTS.md` — constitutional physics
 - `/root/AAA/docs/MEANING.md` — tool/layer semantics
 - `/root/forge_work/KIMI-MCP-AUDIT-2026-07-01.md` — per-CLI audit
 

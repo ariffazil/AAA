@@ -141,7 +141,7 @@ See: /root/AAA/governance/AAA_HUMAN_SPEECH_RULE.md for full spec and translation
 | 1 | Session State | `/root/.claude/projects/-root/memory/session-state.md` | 5s |
 | 2 | Tiered CONTEXT | `/root/CONTEXT.md` (focus) + `CONTEXT_SESSION.md` (log). **Never load `CONTEXT_ARCHIVE.md`** — grep only. | 10s |
 | 3 | Deprecation Registry | `/root/AAA/docs/deprecation-registry.json` — check BEFORE using any tool. Deprecated → migrate, don't use. | 5s |
-| 4 | INVARIANTS | `/root/AAA/docs/INVARIANTS.md` — 11 Physics + 7 Zen. | 15s |
+| 4 | INVARIANTS | `/root/arifOS/GENESIS/INVARIANTS.md` — 11 Physics + 7 Zen. | 15s |
 | 5 | MCP Cognitive Tests | `/root/AAA/docs/MCP-TEST-SUITE.md` — 42/42 PASS. Verifies your mind works. | 10s |
 | 6 | TOOLREGISTRY | `/root/AAA/docs/TOOLREGISTRY.json` — search by `capability_tag` BEFORE building. Overlap ≥2 tags = duplicate. | 10s |
 | 7 | MEANING | `/root/AAA/docs/MEANING.md` — Rosetta Stone. What tools/resources mean per layer. | 20s |
