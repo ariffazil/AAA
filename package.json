@@ -18,7 +18,8 @@
     "a2a:dev": "tsx watch src/lib/a2a/server.ts",
     "a2a:test": "tsx src/lib/a2a/test.ts",
     "a2a:demo": "tsx src/lib/a2a/demo.ts",
-    "a2a:conformance": "tsx scripts/a2a-conformance.mjs"
+    "a2a:conformance": "tsx scripts/a2a-conformance.mjs",
+    "validate:a2a-cards": "node schemas/validate-a2a-cards.mjs"
   },
   "dependencies": {
     "@a2a-js/sdk": "^0.3.14",
@@ -80,6 +81,7 @@
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
+    "ajv": "^8.20.0",
     "autoprefixer": "^10.5.2",
     "eslint": "^10.6.0",
     "eslint-plugin-react-hooks": "^7.1.1",
