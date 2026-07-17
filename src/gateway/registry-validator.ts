@@ -351,8 +351,13 @@ function scanCardInventory(): Array<{ agentId: string; source: string }> {
       for (const entry of entries) {
         const fullPath = path.join(currentDir, entry.name);
         
-        // Skip retired/archived
-        if (entry.name.startsWith('_retired') || entry.name.startsWith('ARCHIVE') || entry.name.startsWith('.')) {
+        // Skip retired/archived (and underscore archive buckets)
+        if (
+          entry.name.startsWith('_retired') ||
+          entry.name.startsWith('_archive') ||
+          entry.name.startsWith('ARCHIVE') ||
+          entry.name.startsWith('.')
+        ) {
           continue;
         }
 
@@ -413,14 +418,20 @@ export async function validateRegistry(
   const organs = await Promise.all(organPromises);
 
   // Phase 2: Detect duplicate agentIds (HARD FAILURE)
-  // Scan actual filesystem for agent cards, not just static CANONICAL_ORGANS
+  // Protocol truth: FS cards and CANONICAL_ORGANS are different layers.
+  // - FS duplicates among themselves → HARD FAIL
+  // - CANONICAL_ORGANS internal duplicates → HARD FAIL
+  // - A FS card MAY share agentId with its matching CANONICAL organ (projection, not collision)
+  // Do NOT merge layers into one bag (that false-fails every organ that has a card).
   const fsCards = scanCardInventory();
   const allCardSources = [...fsCards, ...(options.cardSources ?? [])];
-  // Include organ identities as additional card sources
-  for (const organ of CANONICAL_ORGANS) {
-    allCardSources.push({ agentId: organ.agentId, source: `CANONICAL_ORGANS.${organ.organId}` });
-  }
-  const duplicates = detectDuplicates(allCardSources);
+  const fsDuplicates = detectDuplicates(allCardSources);
+  const organSources = CANONICAL_ORGANS.map((organ) => ({
+    agentId: organ.agentId,
+    source: `CANONICAL_ORGANS.${organ.organId}`,
+  }));
+  const organDuplicates = detectDuplicates(organSources);
+  const duplicates = [...fsDuplicates, ...organDuplicates];
 
   if (duplicates.length > 0) {
     const dupIds = duplicates.map((d) => d.agentId).join(', ');

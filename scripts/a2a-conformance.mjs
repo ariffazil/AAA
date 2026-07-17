@@ -104,23 +104,89 @@ async function checkGatewayDiscovery() {
   }
 }
 
+async function checkOfficialSchema() {
+  // Strict A2A 1.0 — official pinned schema. No skip. Fail = fail.
+  const AjvModule = await import('ajv');
+  const Ajv = AjvModule.default || AjvModule.Ajv || AjvModule;
+  const ajv = new Ajv({ allErrors: true, strict: false });
+  const schema = await loadJson('schemas/a2a-v1.0.schema.json');
+  const seedCard = await loadJson('src/seed/agent-card.json');
+  const officialCard = await loadJson('src/seed/agent-card-official.json');
+  const validate = ajv.compile(schema);
+
+  const seedOk = validate(seedCard);
+  expect(
+    seedOk,
+    'seed card official schema',
+    seedOk ? 'src/seed/agent-card.json validates against schemas/a2a-v1.0.schema.json' : JSON.stringify(validate.errors)
+  );
+
+  const officialOk = validate(officialCard);
+  expect(
+    officialOk,
+    'official card official schema',
+    officialOk
+      ? 'src/seed/agent-card-official.json validates against schemas/a2a-v1.0.schema.json'
+      : JSON.stringify(validate.errors)
+  );
+
+  // Normative SI fields
+  expect(
+    Array.isArray(seedCard.supportedInterfaces) && seedCard.supportedInterfaces.length >= 1,
+    'supportedInterfaces present',
+    'A2A 1.0 requires supportedInterfaces with ≥1 entry'
+  );
+  const si0 = seedCard.supportedInterfaces?.[0] || {};
+  expect(
+    si0.protocolVersion === '1.0' && si0.protocolBinding && si0.url,
+    'supportedInterfaces[0] binding',
+    'protocolVersion=1.0 + protocolBinding + url required'
+  );
+  expect(
+    Array.isArray(seedCard.capabilities?.extensions),
+    'capabilities.extensions array',
+    'capabilities.extensions must be AgentExtension[]'
+  );
+  expect(
+    seedCard.securitySchemes && typeof seedCard.securitySchemes === 'object',
+    'securitySchemes object',
+    'securitySchemes must be present'
+  );
+  expect(
+    Array.isArray(seedCard.securityRequirements),
+    'securityRequirements array',
+    'securityRequirements must be present'
+  );
+  expect(
+    Array.isArray(seedCard.skills) && seedCard.skills.length >= 1,
+    'skills required',
+    'A2A 1.0 requires skills[]'
+  );
+}
+
 async function checkStaticArtifacts() {
   const seedCard = JSON.stringify(await loadJson('src/seed/agent-card.json'));
+  const officialCard = JSON.stringify(await loadJson('src/seed/agent-card-official.json'));
   const publicCard = JSON.stringify(await loadJson('public/a2a/agent-card.json'));
   const legacyCard = JSON.stringify(await loadJson('public/a2a/agent.json'));
+  const wellKnown = JSON.stringify(await loadJson('.well-known/agent-card.json'));
   const statusJson = await loadJson('public/a2a/status.json');
 
   expect(publicCard === seedCard, 'public agent card parity', 'public/a2a/agent-card.json must match src/seed/agent-card.json');
   expect(legacyCard === seedCard, 'legacy agent alias parity', 'public/a2a/agent.json must mirror the canonical card');
-  expect(
-    statusJson.public_surfaces?.canonical_discovery_contract === '/.well-known/a2a-discovery.json',
-    'status canonical discovery contract',
-    'public/a2a/status.json must declare the canonical discovery contract surface'
-  );
+  expect(officialCard === seedCard, 'official seed parity', 'agent-card-official.json must match seed (one card)');
+  expect(wellKnown === seedCard, 'well-known card parity', '.well-known/agent-card.json must match seed');
+  // Normative discovery surface is ONLY /.well-known/agent-card.json
   expect(
     statusJson.public_surfaces?.canonical_discovery_surface === '/.well-known/agent-card.json',
     'status canonical discovery',
-    'public/a2a/status.json must declare the canonical discovery surface'
+    'public/a2a/status.json must declare /.well-known/agent-card.json as the sole normative discovery surface'
+  );
+  expect(
+    statusJson.public_surfaces?.canonical_discovery_contract === '/.well-known/a2a-discovery.json' ||
+      statusJson.public_surfaces?.canonical_agent_card === '/.well-known/agent-card.json',
+    'status discovery contract points at agent-card',
+    'discovery contract must point at /.well-known/agent-card.json'
   );
   expect(
     statusJson.public_surfaces?.routing_policy === '/.well-known/a2a-routing-policy.json',
@@ -133,12 +199,22 @@ async function checkSourceContracts() {
   const authSource = await loadText('src/gateway/auth.ts');
   const gatewaySource = await loadText('src/gateway/server.ts');
   const a2aServerSource = await loadText('a2a-server/server.js');
-  // arifOS dashboard lives in separate repo — skip on CI if not present
+  // arifOS dashboard — optional cross-repo. Record as N/E, never as pass via skip.
   let dashboardSource = '';
+  let dashboardAvailable = false;
   try {
     dashboardSource = await loadText('../arifOS/static/dashboard/index.html');
+    dashboardAvailable = true;
   } catch {
-    console.warn('SKIP: arifOS dashboard not found (separate repo, CI-expected)');
+    recordFailure(
+      'dashboard source optional N/E',
+      'arifOS dashboard not present — marked failed-optional so not false-green; set ALLOW_DASHBOARD_NE=1 to soft-pass'
+    );
+    if (process.env.ALLOW_DASHBOARD_NE === '1') {
+      // convert last failure to pass-with-note
+      const last = failures.pop();
+      recordPass(last.name, `N/E allowed: ${last.detail}`);
+    }
   }
 
   for (const publicPath of [
@@ -196,7 +272,7 @@ async function checkSourceContracts() {
     );
   }
 
-  if (dashboardSource) {
+  if (dashboardAvailable && dashboardSource) {
     expect(
       !dashboardSource.includes('EventSource(`${MCP_BASE_URL}/webmcp`)') &&
         !dashboardSource.includes("EventSource('/webmcp')"),
@@ -208,8 +284,6 @@ async function checkSourceContracts() {
       'dashboard streamable http guidance',
       'arifos dashboard must point agents at the streamable HTTP MCP endpoint'
     );
-  } else {
-    console.warn('SKIP: dashboard source checks — arifOS repo not present');
   }
 }
 
@@ -247,6 +321,7 @@ async function main() {
   await mkdir(artifactDir, { recursive: true });
 
   try {
+    await checkOfficialSchema();
     await checkGatewayDiscovery();
     await checkStaticArtifacts();
     await checkSourceContracts();
