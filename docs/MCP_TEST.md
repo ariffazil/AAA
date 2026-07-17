@@ -209,7 +209,7 @@ Before running any MCP cognitive test, verify the substrate is intact:
 
 ```bash
 # 1. All 4 substrate artifacts exist and are readable
-[ -r /root/AAA/docs/INVARIANTS.md ] && echo "✓ INVARIANTS" || echo "✗ INVARIANTS MISSING"
+[ -r /root/arifOS/GENESIS/INVARIANTS.md ] && echo "✓ INVARIANTS" || echo "✗ INVARIANTS MISSING"
 [ -r /root/.claude/projects/-root/memory/session-state.md ] && echo "✓ session-state" || echo "✗ session-state MISSING"
 [ -r /root/CONTEXT.md ] && wc -c < /root/CONTEXT.md | awk '{if ($1 < 10000) print "✓ CONTEXT.md ("$1" bytes)"; else print "✗ CONTEXT.md TOO LARGE ("$1" bytes)"}'
 [ -r /root/AAA/docs/deprecation-registry.json ] && echo "✓ deprecation-registry" || echo "✗ deprecation-registry MISSING"

@@ -525,7 +525,7 @@ cat /root/AAA/docs/DITEMPA_CANON.md | sed -n '/^## PART 6/,/^## PART 7/p'
 
 | Document | What It Adds |
 |----------|-------------|
-| `AAA/docs/INVARIANTS.md` | 7 Physics + 7 Zen — the constitutional physics every agent must obey |
+| `arifOS/GENESIS/INVARIANTS.md` | 7 Physics + 7 Zen — the constitutional physics every agent must obey |
 | `AAA/docs/MEANING.md` | Canonical Layer Map — what tools/resources/prompts mean in each layer |
 | `AAA/docs/TOOLREGISTRY.json` | Capability registry — what tools exist and what they can do |
 | `AAA/docs/deprecation-registry.json` | What is dead and what replaced it |
