@@ -530,10 +530,10 @@
     "skill_universal-reality-loop": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use forge_reality_loop + reflex-v2.","reason":"Duplicate variant."},
     "skill_pre-action-prediction": {"status":"ARCHIVED","since":"2026-07-08","migration":"In reflex-v2 §0.","reason":"Absorbed."},
     "skill_github-operations-claude": {"status":"ARCHIVED","since":"2026-07-08","migration":"Use claude-code.","reason":"Duplicate."},
-    "apex-9-kernel-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use trinity-33-canonical (final 33-repo Trinity) + /root/AAA/docs/TRINITY_33_REPOS.md. The 9 was absorbed into 11-per-axis orthogonal model.","reason":"Final 33-repo Trinity (K11+C11+F11) is canonical. APEX-9 lists are legacy framing."},
-    "aforge-apex-9-execution": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use trinity-33-canonical (final 33-repo Trinity). A-FORGE axis is now F1–F11.","reason":"Final 33 supersedes prior 9-per-axis lists. Sharper separation of duties."},
-    "aforge-apex-9-execution-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use trinity-33-canonical.","reason":"Superseded by 33-repo canonical."},
-    "apex-trinity-orthogonal": {"status":"SUPERSEDED_FRAMING","since":"2026-07-08","migration":"Still useful for orthogonal thinking. Primary repo authority is trinity-33-canonical + TRINITY_33_REPOS.md (33 wajib).","reason":"18-repo (two 9s) view absorbed; 33 is final."}
+    "apex-9-kernel-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use KERNEL-trinity-33 (final 33-repo Trinity) + /root/AAA/docs/TRINITY_33_REPOS.md. The 9 was absorbed into 11-per-axis orthogonal model.","reason":"Final 33-repo Trinity (K11+C11+F11) is canonical. APEX-9 lists are legacy framing."},
+    "aforge-apex-9-execution": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use KERNEL-trinity-33 (final 33-repo Trinity). A-FORGE axis is now F1–F11.","reason":"Final 33 supersedes prior 9-per-axis lists. Sharper separation of duties."},
+    "aforge-apex-9-execution-reference": {"status":"SUPERSEDED","since":"2026-07-08","migration":"Use KERNEL-trinity-33.","reason":"Superseded by 33-repo canonical."},
+    "apex-trinity-orthogonal": {"status":"SUPERSEDED_FRAMING","since":"2026-07-08","migration":"Still useful for orthogonal thinking. Primary repo authority is KERNEL-trinity-33 + TRINITY_33_REPOS.md (33 wajib).","reason":"18-repo (two 9s) view absorbed; 33 is final."}
   },
 
   "deprecation_lifecycle": {

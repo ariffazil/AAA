@@ -5,7 +5,7 @@
     "total": 33,
     "axes": { "arifOS": 11, "AAA": 11, "A-FORGE": 11 },
     "source": "/root/AAA/docs/TRINITY_33_REPOS.md",
-    "skill": "trinity-33-canonical",
+    "skill": "KERNEL-trinity-33",
     "governing_rule": "NEVER let the forge outrun the kernel. Law, cockpit, execution mature together but not in same order.",
     "protocol_specs": ["modelcontextprotocol/modelcontextprotocol", "a2aproject/A2A", "cloudevents/spec"],
     "deltas_from_prior_3_skills": {
