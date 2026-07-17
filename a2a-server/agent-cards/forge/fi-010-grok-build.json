@@ -99,5 +99,25 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "url": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
+  "capabilities": {
+    "streaming": true,
+    "push_notifications": false,
+    "authenticated_extended_card": false,
+    "tool_calling": "native + MCP (search_tool then use_tool)",
+    "subagent_spawn": true,
+    "plan_mode": true,
+    "headless": true,
+    "acp_ide": true,
+    "worktree_isolation": true,
+    "workflow_dag": true,
+    "media_generation": true,
+    "scheduler": true,
+    "evidence_receipts": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "_a2a_harness_ref": "harnesses/grok-build.json"
 }

@@ -762,6 +762,7 @@ agents:
   risk_tier: production
   max_risk_tier_for_remote: medium
   host_binding: copilot-cli
+  a2a_exposure: authenticated
   runtime:
    model: deepseek-v4-pro
    context_budget: 840000
