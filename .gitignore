@@ -182,3 +182,4 @@ auth/keys/
 
 # GitHub Copilot workspace — not VPS-aware, do not commit
 Copilot/
+skills/.system/
