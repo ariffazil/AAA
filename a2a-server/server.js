@@ -2432,8 +2432,32 @@ app.get('/health', async (req, res) => {
   } catch (_) { /* seal chain not available */ }
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.setHeader('Pragma', 'no-cache');
+  // T5 2026-07-17 — canonical 5-field federation header + organ payload
+  let identityHash = 'UNAVAILABLE';
+  try {
+    const crypto = require('crypto');
+    const idPath = '/root/AAA/identity.toml';
+    if (fs.existsSync(idPath)) {
+      identityHash = crypto.createHash('sha256').update(fs.readFileSync(idPath)).digest('hex');
+    }
+  } catch (_) { /* identity optional for health */ }
   res.json({
     status: 'healthy',
+    identity_hash: identityHash,
+    apex_scalars: {
+      G: { value: null, status: 'UNMEASURED' },
+      C_dark: { value: null, status: 'UNMEASURED' },
+      W3: { value: null, status: 'UNMEASURED' },
+      h: { value: null, status: 'UNMEASURED' },
+      QDF: { value: null, status: 'UNMEASURED' },
+    },
+    federation_geometry: {
+      status: 'enabled',
+      subjects: 0,
+      ledger_events: chain.seq || 0,
+      witness_oracle: 'active',
+    },
+    final_authority: 'ARIF',
     protocol: 'A2A',
     version: '1.0.0',
     federation_schema_version: '2.0.0',

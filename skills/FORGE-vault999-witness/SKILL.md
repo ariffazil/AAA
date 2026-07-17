@@ -1,3 +1,13 @@
+---
+id: FORGE-vault999-witness
+name: FORGE-vault999-witness
+version: 1.0.0-2026.07.17
+description: "VAULT999 witness — immutable ledger integration, seal chain verification, and audit trace."
+owner: A-FORGE
+risk_tier: high
+floor_scope: ['F1', 'F2', 'F11', 'F13']
+autonomy_tier: T2
+---
 # ⚒️ VAULT999 Witness — Immutable Ledger Integration
 
 > **DITEMPA BUKAN DIBERI** — Forged, Not Given.

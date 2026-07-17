@@ -1,9 +1,10 @@
 ---
 id: incident-triage
 name: FORGE-incident-triage
-version: 1.0.0
-description: Six-step incident response playbook for federation organs and constitutional
-  floor breaches.
+version: 2.0.0
+description: >
+  Six-step incident response playbook with structured logging, backoff/circuit-breaker
+  for restart loops, and verification-as-terminal-state. Lower machine entropy.
 owner: AAA
 risk_tier: critical
 knowledge_basis:
@@ -34,10 +35,12 @@ dependencies:
   - mcp__arifos__arif_seal
 examples:
 - A federation organ returns unhealthy; run the six-step playbook before patching.
+- A service restart-loops 100+ times with "auto-restart" masking the root cause.
 - A constitutional floor trips and requires witness logging to VAULT999.
 tests:
 - Triage classifies scope as organ-only, federation-wide, or constitutional.
 - Reversible containment precedes any patch.
+- Restart loop detection fires before the loop exceeds 5 attempts.
 version_lock:
   schema_version: '1'
   artifact_hash: pending
@@ -60,13 +63,20 @@ floor_scope:
 - F13
 ---
 
-# Incident Triage
+# Incident Triage — Lower Entropy Response
 
-The "don't panic, don't guess" playbook for federation incidents.
+The "don't panic, don't guess, lower machine entropy" playbook for federation incidents.
 
 ## Overview
 
 This skill provides a disciplined six-step response for incidents affecting federation organs, constitutional floors, or sovereign-reported faults. It forces sensing and scoping before action, containment before diagnosis, and verification before closure. Every step leaves evidence suitable for VAULT999 witness.
+
+### Core Principles
+1. **Structured logs**: every action emits `{who, what, why, result}` — readable by humans and machines
+2. **Backoff + circuit breaker**: stop noisy retries before they become noise (headscale style)
+3. **Verification is terminal**: never stop at "I changed it" — only at "it's fixed and confirmed"
+4. **One owner per incident**: one agent handles the entire triage; no parallel patches
+5. **One change at a time**: record every mutation, verify before the next
 
 ## arifOS-ACT Embedding
 
@@ -103,6 +113,22 @@ Before using this skill on any mutating, irreversible, or high-blast-radius task
 
 ## Procedure
 
+### Step 0: Detect Restart Loop (Circuit Breaker)
+
+Before doing anything else, check if the service is in a restart loop.
+
+```bash
+# Check restart count
+systemctl show <service> -p NRestarts 2>/dev/null
+# If >5 in 5 minutes: STOP. Circuit breaker open.
+```
+
+**Circuit breaker rules:**
+- If `NRestarts > 5` in 5 minutes → **STOP THE LOOP** immediately: `systemctl stop <service>`
+- If `NRestarts > 20` in 1 hour → escalate to 888_HOLD — the service is masking a serious failure
+- Log the circuit breaker event: `{who, what: "circuit breaker opened", why: "restart loop detected: NRestarts=<N>", result: "service stopped"}`
+- Do NOT restart until root cause is found
+
 ### Step 1: Sense
 
 Establish observable facts before interpreting.
@@ -111,6 +137,7 @@ Establish observable facts before interpreting.
 - Use `mcp__arifos__arif_observe` mode=vitals or mode=search for federation-wide signals.
 - Use `mcp__arifos__arif_measure` mode=health for thermodynamic and resource state.
 - Capture timestamps, error lines, and affected service names verbatim.
+- **Log every probe**: `{who: <agent>, what: "sense", why: <incident>, result: <findings>}`
 
 ### Step 2: Scope
 
@@ -141,19 +168,27 @@ Read, recall, and correlate. Stop hypothesizing when evidence explains the sympt
 - Read recent logs and config diffs with `Read` and `Grep`.
 - Recall prior incidents and deployments with `mcp__arifos__arif_memory` mode=recall.
 - Check recent git commits, deploys, and dependency changes.
+- **Check for patterns**: same symptom in last 7 days? If yes → partial-fix, not new incident.
 - Name the root cause with confidence level and supporting evidence.
+- **Log diagnosis**: `{who: <agent>, what: "diagnose", why: <incident>, result: <root cause>}`
 
-### Step 5: Patch
+### Step 5: Patch — One Change at a Time
 
 Minimum reversible change, committed and verified.
 
 - Draft the smallest fix that addresses the root cause.
+- **One mutation per step.** Never batch 3 fixes and restart — you won't know which one worked.
 - Prefer commits over manual edits. Include a clear commit message.
 - Deploy through the organ's standard path (systemd restart, service reload, etc.).
-- Verify with health probes and, where available, `verify-runtime` or organ smoke tests.
+- **Verify after EVERY change** — if the fix didn't work, revert and try the next hypothesis.
+- **Backoff strategy**: if a fix triggers a restart loop, apply exponential backoff before retrying:
+  - 1st retry: wait 5s
+  - 2nd retry: wait 30s  
+  - 3rd retry: wait 120s (escalate)
 - If the patch is irreversible, apply 888 HOLD before continuing.
+- Log the change: `{who: <agent>, what: "patch", why: <root cause>, result: <outcome>}`
 
-### Step 6: Postmortem
+### Step 6: Postmortem + Structure Log
 
 Close the loop with institutional memory.
 
@@ -162,9 +197,21 @@ Close the loop with institutional memory.
   - Trigger
   - Scope classification
   - Root cause and evidence
-  - Fix applied
+  - Fix applied (one change only)
+  - Verification result
   - Prevention measures
 - If the same symptom recurs within 7 days, treat it as a partial-fix pattern, not a new incident.
+- **Final structured log**:
+  ```
+  {who: <agent>, what: "postmortem", why: <incident>, result: {
+    trigger: <symptom>,
+    root_cause: <finding>,
+    fix: <change applied>,
+    verified: <true/false>,
+    prevention: <measure>,
+    escrow_location: "/root/INCIDENTS/<file>.md"
+  }}
+  ```
 
 ## Allowed Tools
 
