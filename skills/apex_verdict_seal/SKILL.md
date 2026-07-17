@@ -1,5 +1,6 @@
 ---
 name: apex_verdict_seal
+description: Verify the complete ART-to-kernel-to-ACT evidence path before a SEAL-grade conclusion, without granting seal authority. Use when a proposed verdict claims readiness after all constitutional, witness, reversibility, and system-health gates have passed.
 agent: 888-APEX
 namespace: apex_*
 cluster: VERDICT
