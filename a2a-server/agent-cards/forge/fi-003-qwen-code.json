@@ -158,5 +158,20 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "url": "https://aaa.arif-fazil.com/a2a/qwen-code",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": false,
+    "file_read": true,
+    "file_write": false,
+    "shell_exec": true,
+    "subagent_spawn": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
+  },
+  "_a2a_harness_ref": "harnesses/qwen-code.json"
 }
