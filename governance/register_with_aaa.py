@@ -20,8 +20,9 @@ import urllib.request
 import urllib.error
 
 AAA_REGISTER_URL = "http://localhost:3001/federation/register"
-MAX_RETRIES = 6
-RETRY_DELAY_SEC = 5  # Total timeout: 30 seconds
+MAX_RETRIES = 3            # Reduced from 6 — don't block boot for >18s
+RETRY_DELAY_SEC = 3        # Reduced from 5
+CONNECT_TIMEOUT_SEC = 3    # Reduced from 10 — AAA is localhost, not internet
 
 
 def register(organ_id: str, port: int, name: str, skills: list[str]) -> bool:
@@ -47,7 +48,7 @@ def register(organ_id: str, port: int, name: str, skills: list[str]) -> bool:
     )
 
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=CONNECT_TIMEOUT_SEC) as resp:
             body = json.loads(resp.read().decode("utf-8"))
             stage = body.get("handshake", {}).get("stage", "UNKNOWN")
             if stage in ("REGISTERED", "COMPLETE"):
