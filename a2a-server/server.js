@@ -1070,15 +1070,15 @@ async function searchRag(query, limit = 5) {
 }
 
 // === A2A Agent Card v1.0.0 ===
-// Official A2A v1.0.0 aligned card (2026-07-02)
-// Falls back to legacy card if official not found
+// Single source of truth: src/seed/agent-card.json (official is a parity mirror).
+// Protocol truth: one card, one hash, /.well-known/agent-card.json is normative discovery.
 let AAA_AGENT_CARD;
 try {
-  AAA_AGENT_CARD = require('../src/seed/agent-card-official.json');
-  console.log('[AAA A2A] Loaded official A2A v1.0.0 agent card');
-} catch {
   AAA_AGENT_CARD = require('../src/seed/agent-card.json');
-  console.log('[AAA A2A] Loaded legacy agent card (official not found)');
+  console.log('[AAA A2A] Loaded canonical seed agent-card.json');
+} catch {
+  AAA_AGENT_CARD = require('../src/seed/agent-card-official.json');
+  console.log('[AAA A2A] Fallback to agent-card-official.json');
 }
 const DISCOVERY_ROUTING_POLICY = require('../src/seed/discovery-routing-policy.json');
 
@@ -1964,14 +1964,21 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 const { createSDKAgentCardRouter, createSDKRequestHandler, createSDKJsonRPCRouter } = require('./a2a-sdk-bridge');
 
 // A2A v1.0.0 spec: canonical agent card — served via SDK's agentCardHandler
+// Normative discovery surface: ONLY /.well-known/agent-card.json
 app.use('/.well-known/agent-card.json', createSDKAgentCardRouter(AAA_AGENT_CARD));
-// Also keep the agent.json alias
-app.get('/.well-known/agent.json', (req, res) => {
+// Aliases serve identical body (compat) but discovery contract points only at canonical.
+function serveCanonicalAgentCard(_req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.setHeader('A2A-Version', '1.0');
+  res.setHeader('X-A2A-Canonical-Discovery', '/.well-known/agent-card.json');
   res.json(AAA_AGENT_CARD);
-});
+}
+app.get('/.well-known/agent.json', serveCanonicalAgentCard);
+// Alias surfaces — same card bytes; not alternate authority
+for (const alias of ['/a2a/agent-card.json', '/a2a/agent.json', '/agent-card.json', '/agent.json']) {
+  app.get(alias, serveCanonicalAgentCard);
+}
 
 // A2A discovery contract
 app.get('/.well-known/a2a-discovery.json', (req, res) => {

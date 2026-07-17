@@ -29,6 +29,22 @@ function createA2AVersionMiddleware(options = {}) {
   );
 
   return (req, res, next) => {
+    // Public discovery GETs must not require A2A-Version (normative card is unauthenticated).
+    const path = (req.path || req.url || '').split('?')[0];
+    const isPublicDiscovery =
+      req.method === 'GET' &&
+      (/agent-card\.json$/.test(path) ||
+        /\/agent\.json$/.test(path) ||
+        /discovery-contract\.json$/.test(path) ||
+        /routing-policy\.json$/.test(path) ||
+        /a2a-discovery\.json$/.test(path) ||
+        /peer-federation-contract\.json$/.test(path));
+    if (isPublicDiscovery) {
+      req.a2aVersion = DEFAULT_A2A_VERSION;
+      res.setHeader('A2A-Version', DEFAULT_A2A_VERSION);
+      return next();
+    }
+
     const version = req.headers['a2a-version'] || req.headers['A2A-Version'];
     
     if (!version) {
