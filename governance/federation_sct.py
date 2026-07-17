@@ -18,6 +18,7 @@ DITEMPA BUKAN DIBERI — Tokens are forged, not assumed.
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
@@ -106,8 +107,10 @@ def verify_federation_sct(
         )
 
     # Ask arifOS kernel to verify via arif_init(mode=validate).
-    # arif_session_validate does not exist on the live arifOS MCP surface;
-    # arif_init with mode="validate" is the canonical validation verb.
+    # Wire contract (sealed 2026-07-17 live receipt):
+    #   arguments.session_id = full SCT string (intentional overload for validate mode)
+    #   response = {valid: bool, claims: {...}, error: str|None}
+    # MCP transport may wrap that as result.content[0].text JSON (SSE/streamable).
     try:
         r = httpx.post(
             f"{ARIFOS_BASE}/mcp",
@@ -120,10 +123,14 @@ def verify_federation_sct(
                     "arguments": {
                         "mode": "validate",
                         "session_id": sct,
+                        "session_token": sct,  # dual-key for hosts that prefer explicit token field
                     },
                 },
             },
-            headers={"Content-Type": "application/json", "Accept": "application/json"},
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json, text/event-stream",
+            },
             timeout=ARIFOS_TIMEOUT_S,
         )
     except httpx.RequestError as exc:
@@ -144,18 +151,77 @@ def verify_federation_sct(
             error_message=f"arifOS returned HTTP {r.status_code}",
         )
 
-    data = r.json()
+    # Parse JSON or SSE (data: {...})
+    try:
+        text = r.text or ""
+        if "data:" in text:
+            # last data: line wins
+            for line in text.splitlines():
+                if line.startswith("data:"):
+                    text = line[5:].strip()
+            data = json.loads(text) if text else {}
+        else:
+            data = r.json()
+    except Exception as exc:
+        return SCTVerification(
+            ok=False,
+            error_code="ARIFOS_PARSE_ERROR",
+            error_message=f"Could not parse arifOS validate response: {exc!r}",
+        )
+
     result = data.get("result", {}) or {}
+    # Unwrap MCP tool content envelope
+    if isinstance(result, dict) and isinstance(result.get("content"), list) and result["content"]:
+        try:
+            inner_text = result["content"][0].get("text") or ""
+            parsed = json.loads(inner_text) if inner_text else {}
+            # Nested wrappers: {result: {valid...}} or flat {valid...}
+            if isinstance(parsed, dict):
+                if "valid" in parsed or "claims" in parsed:
+                    result = parsed
+                elif isinstance(parsed.get("result"), dict):
+                    result = parsed["result"]
+                else:
+                    result = parsed
+        except Exception:
+            pass
+    # Some hosts put structuredContent
+    if isinstance(result, dict) and not result.get("valid") and isinstance(
+        result.get("structuredContent"), dict
+    ):
+        sc = result["structuredContent"]
+        if "valid" in sc or "claims" in sc:
+            result = sc
+
     if not result.get("valid"):
         return SCTVerification(
             ok=False,
             error_code="SCT_INVALID",
-            error_message=result.get("error", "arifOS rejected SCT"),
+            error_message=result.get("error")
+            or result.get("message")
+            or "arifOS rejected SCT",
         )
 
     claims = result.get("claims", {}) or {}
-    actor = claims.get("actor") or claims.get("actor_id")
-    authority = claims.get("auth") or claims.get("authority", "OBSERVE_ONLY")
+    # Live interop law: token validation MUST return claims. session_store
+    # path can set valid=true without claims — that is not SCT proof.
+    if not isinstance(claims, dict) or not claims:
+        return SCTVerification(
+            ok=False,
+            error_code="SCT_CLAIMS_MISSING",
+            error_message=(
+                "arifOS returned valid=true without claims "
+                f"(validation_path={result.get('validation_path')!r}); "
+                "not an SCT verification receipt"
+            ),
+        )
+    actor = claims.get("actor") or claims.get("actor_id") or result.get("actor")
+    authority = (
+        claims.get("auth")
+        or claims.get("authority")
+        or result.get("authority")
+        or "OBSERVE_ONLY"
+    )
 
     # Actor binding check
     if expected_actor and actor and actor != expected_actor:

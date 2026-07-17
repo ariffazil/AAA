@@ -1,0 +1,76 @@
+name: SCT integration receipt
+on:
+  push:
+    paths:
+      - "governance/federation_sct.py"
+      - "tests/constitutional/test_federation_sct.py"
+      - ".github/workflows/sct-integration.yml"
+  pull_request:
+    paths:
+      - "governance/federation_sct.py"
+      - "tests/constitutional/test_federation_sct.py"
+  workflow_dispatch:
+    inputs:
+      live_kernel:
+        description: "Also hit live arifOS (requires self-hosted runner on af-forge)"
+        type: boolean
+        default: false
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test deps
+        run: pip install httpx pytest
+      - name: SCT unit suite (mocked kernel)
+        run: |
+          # Unit tests mock httpx — no live kernel required
+          pytest tests/constitutional/test_federation_sct.py -q --tb=short
+
+  live-optional:
+    if: ${{ github.event_name == 'workflow_dispatch' && inputs.live_kernel }}
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install httpx
+      - name: Live SCT interop against localhost:8088
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, sys, time, uuid
+          sys.path.insert(0, ".")
+          from governance.federation_sct import verify_federation_sct
+
+          def post(method, params):
+              h = {"Content-Type": "application/json", "Accept": "application/json, text/event-stream"}
+              req = urllib.request.Request(
+                  "http://127.0.0.1:8088/mcp",
+                  data=json.dumps({"jsonrpc": "2.0", "id": 1, "method": method, "params": params}).encode(),
+                  headers=h, method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  raw = r.read().decode()
+                  return json.loads(raw.split("data:")[-1].strip()) if "data:" in raw else json.loads(raw)
+
+          post("initialize", {"protocolVersion": "2025-11-25", "capabilities": {}, "clientInfo": {"name": "gha-sct", "version": "1"}})
+          out = post("tools/call", {"name": "arif_init", "arguments": {"mode": "init", "actor_id": "gha-sct", "intent": "ci"}})
+          res = out.get("result", out)
+          if isinstance(res, dict) and res.get("content"):
+              res = json.loads(res["content"][0]["text"])
+          inner = res.get("result") if isinstance(res.get("result"), dict) else res
+          token = (inner or {}).get("session_token") or res.get("session_token")
+          assert token and token.startswith("sct_v1."), token
+          v = verify_federation_sct(token, expected_actor="gha-sct", required_authority="OBSERVE_ONLY")
+          assert v.ok and v.claims, v.to_dict()
+          assert not verify_federation_sct(None).ok
+          assert not verify_federation_sct("bad").ok
+          assert not verify_federation_sct(token, expected_actor="other").ok
+          print("LIVE_SCT_RECEIPT_PASS", v.actor, v.authority)
+          PY
