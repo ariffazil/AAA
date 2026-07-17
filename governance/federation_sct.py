@@ -559,10 +559,12 @@ def gate_tool_ingress(
 
     Policy (PR 2):
       - action_class / require_sct / required_authority are resolved from
-        registries/tool_authority.py (tools.yaml mapping). Caller-supplied
-        values are IGNORED unless they are STRICTER than registry.
+        governance/tool_authority_registry.py (tools.yaml + organ defaults).
+        Caller-supplied action_class is STRIPPED. Caller may only tighten
+        require_sct / authority, never loosen.
       - AMBIGUOUS (multiple distinct tokens) → REJECT immediately
-      - UNKNOWN tool → HOLD
+      - UNKNOWN tool (strict) → CAPABILITY_UNKNOWN HOLD
+      - Domain organs (geox/wealth/well): unlisted tools default OBSERVE
       - If SCT is present → must verify (fail closed)
       - If require_sct=True and SCT missing → SCT_REQUIRED reject
       - If SCT absent and not required → allow (backward-compatible OBSERVE)
@@ -572,27 +574,26 @@ def gate_tool_ingress(
 
     Returns None to proceed, or a rejection dict with extraction + registry evidence.
     """
-    import sys
-    from pathlib import Path
+    # Canonical PR2 resolver: tools.yaml + dash/underscore aliases + organ defaults.
+    # DO NOT use registries/tool_authority.py (exact-id only → total lockdown).
+    from governance.tool_authority_registry import (  # type: ignore
+        ACTION_UNKNOWN,
+        resolve_tool_authority,
+        strip_caller_action_class,
+    )
 
-    # Resolve registry path regardless of caller's working directory
-    _registry_dir = Path(__file__).resolve().parent.parent / "registries"
-    if str(_registry_dir) not in sys.path:
-        sys.path.insert(0, str(_registry_dir))
+    auth = resolve_tool_authority(tool_name, organ=organ, strict_unknown=False)
+    args = strip_caller_action_class(arguments if isinstance(arguments, dict) else {})
 
-    from tool_authority import resolve_tool_authority  # type: ignore
-
-    auth = resolve_tool_authority(tool_name)
-    args = arguments if isinstance(arguments, dict) else {}
-
-    # UNKNOWN tool → HOLD (no caller can override)
-    if auth.action_class == "UNKNOWN":
+    # Strict UNKNOWN only (no organ default) → HOLD. Domain organ defaults
+    # return OBSERVE with known=False and never hit this path.
+    if auth.action_class == ACTION_UNKNOWN:
         rej = {
-            "error": "TOOL_UNREGISTERED",
+            "error": "CAPABILITY_UNKNOWN",
             "message": (
-                f"Tool '{tool_name}' is not registered in tools.yaml. "
-                f"All tools must have a canonical registry entry with "
-                f"execution_kind and risk_tier before ingress gating."
+                f"Tool '{tool_name}' has no registry entry and no safe organ "
+                f"default for organ='{organ}'. HOLD until registered in tools.yaml "
+                f"with execution_kind + risk_tier."
             ),
             "tool": tool_name,
             "organ": organ,
@@ -608,7 +609,7 @@ def gate_tool_ingress(
             tool_name=tool_name,
             organ=organ,
             decision="REJECT",
-            reason_code="TOOL_UNREGISTERED",
+            reason_code="CAPABILITY_UNKNOWN",
             arguments=args,
             headers=headers,
             meta=meta,
@@ -713,7 +714,7 @@ def gate_tool_ingress(
                 ),
             )
         # ALLOW observe path — still emit decision for black box
-        tid = _emit_gate_decision(
+        _emit_gate_decision(
             tool_name=tool_name,
             organ=organ,
             decision="ALLOW",
@@ -727,10 +728,8 @@ def gate_tool_ingress(
             eff_require_sct=eff_require_sct,
             eff_authority=eff_authority,
         )
-        # Non-reject path cannot attach trace_id to None — organs may read logs.
-        # Stash on args for optional organ use (non-secret).
-        if tid and isinstance(arguments, dict) and "trace_id" not in arguments:
-            arguments["_sct_trace_id"] = tid
+        # Do NOT inject _sct_trace_id into arguments — breaks Pydantic tool schemas.
+        # Trace lives in decision-event log only (PR3).
         return None
 
     # PRESENT — verify the single unique token against registry floor
@@ -741,7 +740,7 @@ def gate_tool_ingress(
         meta=meta,
     )
     if rej is None:
-        tid = _emit_gate_decision(
+        _emit_gate_decision(
             tool_name=tool_name,
             organ=organ,
             decision="ALLOW",
@@ -755,8 +754,7 @@ def gate_tool_ingress(
             eff_require_sct=eff_require_sct,
             eff_authority=eff_authority,
         )
-        if tid and isinstance(arguments, dict) and "trace_id" not in arguments:
-            arguments["_sct_trace_id"] = tid
+        # Do NOT inject _sct_trace_id into arguments (schema-safe).
         return None
 
     rej["tool"] = tool_name

@@ -31,8 +31,7 @@ tools:
   - HUMAN
 - id: agent-dispatch
   name: Agent Dispatch
-  description: Dispatch a bounded task to an approved internal or authenticated peer
-    agent.
+  description: Dispatch a bounded task to an approved internal or authenticated peer agent.
   source_type: builtin
   risk_tier: medium
   approval_policy: hold
@@ -501,8 +500,8 @@ tools:
   required_witnesses: []
 - id: forge_execute
   name: forge_execute
-  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an
-    action plan. Requires cc_id for mutations.
+  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires
+    cc_id for mutations.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -512,8 +511,7 @@ tools:
   - ARIFOS
 - id: forge_abort
   name: forge_abort
-  description: Safe stop + rollback for running execution. Requires lease or session
-    auth.
+  description: Safe stop + rollback for running execution. Requires lease or session auth.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -571,8 +569,7 @@ tools:
   - ARIFOS
 - id: forge_heart_critique
   name: forge_heart_critique
-  description: Risk assessment and ethical review — delegates to arifOS 666 HEART
-    pipeline.
+  description: Risk assessment and ethical review — delegates to arifOS 666 HEART pipeline.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -610,8 +607,7 @@ tools:
   required_witnesses: []
 - id: forge_registry_status
   name: forge_registry_status
-  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift
-    status.'
+  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift status.'
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -620,8 +616,7 @@ tools:
   required_witnesses: []
 - id: forge_register
   name: forge_register
-  description: APEX v36Ω gated registration gate. Registers a tool after all gates
-    pass.
+  description: APEX v36Ω gated registration gate. Registers a tool after all gates pass.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -631,8 +626,7 @@ tools:
   - ARIFOS
 - id: forge_skill
   name: forge_skill
-  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM
-    scan.
+  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM scan.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -651,8 +645,7 @@ tools:
   required_witnesses: []
 - id: forge_witness
   name: forge_witness
-  description: APEX v36Ω tri-witness consensus gate. Computes W3 = ∛(Human × AI ×
-    External).
+  description: APEX v36Ω tri-witness consensus gate. Computes W3 = ∛(Human × AI × External).
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: medium
@@ -661,8 +654,7 @@ tools:
   required_witnesses: []
 - id: forge_scar
   name: forge_scar
-  description: APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional
-    constraints.
+  description: APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional constraints.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -700,8 +692,7 @@ tools:
   required_witnesses: []
 - id: forge_reality_loop
   name: forge_reality_loop
-  description: THE 13TH TOOL — Chains all 12 MCP prompts into a perpetual autonomous
-    reality loop.
+  description: THE 13TH TOOL — Chains all 12 MCP prompts into a perpetual autonomous reality loop.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -711,8 +702,8 @@ tools:
   - ARIFOS
 - id: forge_shell
   name: forge_shell
-  description: Canonical governed shell execution. Executes commands through constitutional
-    gate + hash-chain audit.
+  description: Canonical governed shell execution. Executes commands through constitutional gate + hash-chain
+    audit.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -731,8 +722,7 @@ tools:
   required_witnesses: []
 - id: forge_shell_status
   name: forge_shell_status
-  description: 'Check forge_shell subsystem health: ledger state, judge pattern count,
-    defaults.'
+  description: 'Check forge_shell subsystem health: ledger state, judge pattern count, defaults.'
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -1127,11 +1117,10 @@ tools:
   required_witnesses: []
 - id: document_ingest
   name: document_ingest
-  description: Layout-first document intelligence engine. Modes - analyze (structure
-    tree), extract (full pipeline with bbox provenance), chunk (semantic/section/page
-    for RAG), compare (structural diff). Uses pymupdf + tesseract eng+msa. Read-only,
-    blast_radius LOW. SHA-256 provenance on every extraction. VAULT999-compatible
-    bounding-box coordinates.
+  description: Layout-first document intelligence engine. Modes - analyze (structure tree), extract (full
+    pipeline with bbox provenance), chunk (semantic/section/page for RAG), compare (structural diff).
+    Uses pymupdf + tesseract eng+msa. Read-only, blast_radius LOW. SHA-256 provenance on every extraction.
+    VAULT999-compatible bounding-box coordinates.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -1179,8 +1168,7 @@ tools:
   required_witnesses: []
 - id: forge-filesystem-write
   name: Forge Filesystem Write
-  description: Bounded sandbox-only filesystem write through A-FORGE. Sandbox paths
-    only.
+  description: Bounded sandbox-only filesystem write through A-FORGE. Sandbox paths only.
   source_type: mcp
   server_ref: aforge-executor
   risk_tier: medium
@@ -1519,3 +1507,859 @@ tools:
   approval_policy: hold
   execution_kind: execute
   required_witnesses: []
+- id: arif_init
+  name: arif_init
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arif_observe
+  name: arif_observe
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arif_think
+  name: arif_think
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arif_route
+  name: arif_route
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arif_memory
+  name: arif_memory
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - ARIFOS
+- id: arif_judge
+  name: arif_judge
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: arif_forge
+  name: arif_forge
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: arif_seal
+  name: arif_seal
+  description: Live MCP tool from arifos (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: arifos-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - ARIFOS
+- id: geox_deep_time_state
+  name: geox_deep_time_state
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_well_ingest
+  name: geox_well_ingest
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - GEOX
+- id: geox_surface_status
+  name: geox_surface_status
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_seismic_ingest
+  name: geox_seismic_ingest
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - GEOX
+- id: geox_seismic_interpret
+  name: geox_seismic_interpret
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_subsurface_model
+  name: geox_subsurface_model
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_basin_backstrip
+  name: geox_basin_backstrip
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_sediment_mass_balance
+  name: geox_sediment_mass_balance
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_thermal_maturity_history
+  name: geox_thermal_maturity_history
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_claim_graph_evaluate
+  name: geox_claim_graph_evaluate
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_falsify
+  name: geox_falsify
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - GEOX
+- id: geox_contradiction_scan
+  name: geox_contradiction_scan
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_lem_predict
+  name: geox_lem_predict
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_to_wealth_bridge
+  name: geox_to_wealth_bridge
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_gravmag_studio
+  name: geox_gravmag_studio
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_well_desk
+  name: geox_well_desk
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: geox_seismic_compute
+  name: geox_seismic_compute
+  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - GEOX
+- id: wealth_institutional_stress_index
+  name: wealth_institutional_stress_index
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: wealth_cascade_model
+  name: wealth_cascade_model
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: wealth_governance_capacity
+  name: wealth_governance_capacity
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: wealth_external_exploitation_detect
+  name: wealth_external_exploitation_detect
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_primitive
+  name: capital_primitive
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_health
+  name: capital_health
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_diagnose
+  name: capital_diagnose
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_wisdom
+  name: capital_wisdom
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_market
+  name: capital_market
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_ledger
+  name: capital_ledger
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_registry
+  name: capital_registry
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: capital_entropy
+  name: capital_entropy
+  description: Live MCP tool from wealth (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: wealth-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WEALTH
+- id: well_classify_substrate
+  name: well_classify_substrate
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_trace_lineage
+  name: well_trace_lineage
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_assess_homeostasis
+  name: well_assess_homeostasis
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_check_repair
+  name: well_check_repair
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_validate_vitality
+  name: well_validate_vitality
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_assess_reliability
+  name: well_assess_reliability
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_guard_dignity
+  name: well_guard_dignity
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: well_registry_status
+  name: well_registry_status
+  description: Live MCP tool from well (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: well-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses:
+  - WELL
+- id: forge_transfer_confirm
+  name: forge_transfer_confirm
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_send_confirm
+  name: forge_send_confirm
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_kernel
+  name: forge_kernel
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_chart
+  name: forge_chart
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_scan
+  name: forge_scan
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_filesystem_patch
+  name: forge_filesystem_patch
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - A-FORGE
+- id: forge_filesystem_tree
+  name: forge_filesystem_tree
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_filesystem_search
+  name: forge_filesystem_search
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_filesystem_stat
+  name: forge_filesystem_stat
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_filesystem_move
+  name: forge_filesystem_move
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_filesystem_delete
+  name: forge_filesystem_delete
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - A-FORGE
+- id: forge_fetch
+  name: forge_fetch
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_fetch_url
+  name: forge_fetch_url
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_fetch_json
+  name: forge_fetch_json
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_fetch_metadata
+  name: forge_fetch_metadata
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_fetch_links
+  name: forge_fetch_links
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_fingerprint_check
+  name: forge_fingerprint_check
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_vps_ports
+  name: forge_vps_ports
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_vps_services
+  name: forge_vps_services
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_vps_cron
+  name: forge_vps_cron
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_security_drift_scan
+  name: forge_security_drift_scan
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_verify_timeline
+  name: forge_verify_timeline
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_parallel
+  name: forge_parallel
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_parallel_status
+  name: forge_parallel_status
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_parallel_cancel
+  name: forge_parallel_cancel
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_parallel_list
+  name: forge_parallel_list
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_probe_site
+  name: forge_probe_site
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_receipt_draft
+  name: forge_receipt_draft
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_worktree
+  name: forge_worktree
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_execute_sealed
+  name: forge_execute_sealed
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - A-FORGE
+- id: forge_git_commit
+  name: forge_git_commit
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - A-FORGE
+- id: forge_entropy_sweep
+  name: forge_entropy_sweep
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_canonize
+  name: forge_canonize
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_document_ingest
+  name: forge_document_ingest
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - A-FORGE
+- id: forge_policy
+  name: forge_policy
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_surface_guard
+  name: forge_surface_guard
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: low
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_surface_audit
+  name: forge_surface_audit
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_predict
+  name: forge_predict
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_isomorphism_check
+  name: forge_isomorphism_check
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_cool_drift
+  name: forge_cool_drift
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_cool_pattern
+  name: forge_cool_pattern
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_runtime_verify
+  name: forge_runtime_verify
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_visual_qa
+  name: forge_visual_qa
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: medium
+  approval_policy: on-demand
+  execution_kind: read
+  required_witnesses: []
+- id: forge_visual_seal
+  name: forge_visual_seal
+  description: Live MCP tool from aforge (auto-registered 2026-07-17 SCT papers).
+  source_type: mcp
+  server_ref: a-forge-mcp
+  risk_tier: high
+  approval_policy: hold
+  execution_kind: execute
+  required_witnesses:
+  - A-FORGE
+meta:
+  sct_papers_issued: '2026-07-17T17:01:23.124978+00:00'
+  sct_papers_count_added: 89
+  sct_papers_note: Live MCP surface registered so SCT gate fail-closed has a guest list.
