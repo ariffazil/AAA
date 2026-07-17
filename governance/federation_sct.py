@@ -490,51 +490,78 @@ def gate_tool_ingress(
     *,
     headers: dict[str, str] | None = None,
     meta: dict[str, Any] | None = None,
-    required_authority: str = "OBSERVE_ONLY",
-    require_sct: bool = False,
+    required_authority: str | None = None,
+    require_sct: bool | None = None,
     organ: str = "unknown",
-    use_registry: bool = True,
-    strict_unknown: bool = False,
 ) -> dict[str, Any] | None:
     """Organ ingress SCT gate — registry-owned authority + SCT conflict check.
 
-    Policy:
-      - PR2: action_class / require_sct come from TOOL_AUTHORITY_REGISTRY
-        (tools.yaml mapping). Caller-supplied action_class is ignored.
-        Caller flags may only *tighten* (never weaken) registry decisions.
+    Policy (PR 2):
+      - action_class / require_sct / required_authority are resolved from
+        registries/tool_authority.py (tools.yaml mapping). Caller-supplied
+        values are IGNORED unless they are STRICTER than registry.
       - AMBIGUOUS (multiple distinct tokens) → REJECT immediately
-      - If SCT is present → must verify (fail closed).
-      - If require_sct=True and SCT missing → SCT_REQUIRED reject.
-      - If SCT absent and not required → allow (backward-compatible OBSERVE).
+      - UNKNOWN tool → HOLD
+      - If SCT is present → must verify (fail closed)
+      - If require_sct=True and SCT missing → SCT_REQUIRED reject
+      - If SCT absent and not required → allow (backward-compatible OBSERVE)
 
-    Returns None to proceed, or a rejection dict with extraction evidence.
+    Returns None to proceed, or a rejection dict with extraction + registry evidence.
     """
-    # PR2: strip caller authority self-declaration before any use
-    try:
-        from governance.tool_authority_registry import (
-            effective_gate_params,
-            strip_caller_action_class,
-        )
-    except ImportError:  # pragma: no cover — path variant when AAA not on sys.path
-        from tool_authority_registry import (  # type: ignore
-            effective_gate_params,
-            strip_caller_action_class,
-        )
+    import sys
+    from pathlib import Path
 
-    raw_args = arguments if isinstance(arguments, dict) else {}
-    args = strip_caller_action_class(raw_args)
+    # Resolve registry path regardless of caller's working directory
+    _registry_dir = Path(__file__).resolve().parent.parent / "registries"
+    if str(_registry_dir) not in sys.path:
+        sys.path.insert(0, str(_registry_dir))
 
-    rec, eff_require_sct, eff_authority, reg_reject = effective_gate_params(
-        tool_name,
-        organ=organ,
-        caller_require_sct=require_sct,
-        caller_required_authority=required_authority,
-        use_registry=use_registry,
-        strict_unknown=strict_unknown,
-    )
-    if reg_reject is not None:
-        reg_reject["actor"] = None
-        return reg_reject
+    from tool_authority import resolve_tool_authority  # type: ignore
+
+    auth = resolve_tool_authority(tool_name)
+
+    # UNKNOWN tool → HOLD (no caller can override)
+    if auth.action_class == "UNKNOWN":
+        return {
+            "error": "TOOL_UNREGISTERED",
+            "message": (
+                f"Tool '{tool_name}' is not registered in tools.yaml. "
+                f"All tools must have a canonical registry entry with "
+                f"execution_kind and risk_tier before ingress gating."
+            ),
+            "tool": tool_name,
+            "organ": organ,
+            "registry": auth.to_dict(),
+            "_epistemic": {
+                "output_class": "GOVERNANCE_TEMPLATE",
+                "authority_claim": "GATE_REJECTED",
+                "tagged_by": "federation-sct-gate",
+                "schema_version": "2.0.0",
+            },
+        }
+
+    # Registry is the floor. Caller may only tighten (never loosen).
+    # If caller requires stricter auth than registry, use caller's value.
+    eff_require_sct = auth.require_sct
+    if require_sct is not None:
+        eff_require_sct = auth.require_sct or require_sct
+
+    eff_authority = auth.required_authority
+    # caller_required_authority tightening: if caller demands MUTATE but
+    # registry says OBSERVE_ONLY, the stricter (MUTATE) wins.
+    _AUTHORITY_RANK = {
+        "OBSERVE_ONLY": 0,
+        "AUTHENTICATED_OBSERVE": 1,
+        "MUTATE": 2,
+        "MUTATE_PRIVILEGED": 3,
+    }
+    if required_authority is not None and required_authority in _AUTHORITY_RANK:
+        reg_rank = _AUTHORITY_RANK.get(eff_authority, 0)
+        cal_rank = _AUTHORITY_RANK[required_authority]
+        if cal_rank > reg_rank:
+            eff_authority = required_authority
+
+    args = arguments if isinstance(arguments, dict) else {}
 
     actor = None
     for key in ("actor_id", "actor", "caller_actor_id"):
@@ -555,7 +582,7 @@ def gate_tool_ingress(
             "tool": tool_name,
             "organ": organ,
             "actor": actor,
-            "registry": rec.to_dict(),
+            "registry": auth.to_dict(),
             "extraction": extraction.to_dict(),
             "_epistemic": {
                 "output_class": "GOVERNANCE_TEMPLATE",
@@ -573,12 +600,13 @@ def gate_tool_ingress(
                 "message": (
                     f"Tool '{tool_name}' requires a valid Session Capability Token "
                     f"(session_token / _meta.sct / X-ArifOS-SCT). Mint via arif_init. "
-                    f"Registry action_class={rec.action_class} source={rec.source}."
+                    f"Registry: action_class={auth.action_class} "
+                    f"required_authority={eff_authority}."
                 ),
                 "tool": tool_name,
                 "organ": organ,
                 "actor": actor,
-                "registry": rec.to_dict(),
+                "registry": auth.to_dict(),
                 "extraction": extraction.to_dict(),
                 "_epistemic": {
                     "output_class": "GOVERNANCE_TEMPLATE",
@@ -600,6 +628,6 @@ def gate_tool_ingress(
         return None
     rej["tool"] = tool_name
     rej["organ"] = organ
-    rej["registry"] = rec.to_dict()
+    rej["registry"] = auth.to_dict()
     rej["extraction"] = extraction.to_dict()
     return rej
