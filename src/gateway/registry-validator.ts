@@ -193,10 +193,18 @@ async function probeOrgan(organ: OrganIdentity): Promise<OrganStatus> {
   const phantomTools: string[] = [];
   const missingTools: string[] = [];
 
-  // Check declared tools — are they callable?
+  // Check declared tools — are they callable? Hash schemas from live probe.
+  const liveToolMap = new Map(
+    (mcpSession?.tools ?? []).map(t => [t.name, t])
+  );
   for (const name of declaredTools) {
+    const liveDef = liveToolMap.get(name);
     const callable = liveSet.has(name);
-    tools.push({ name, declared: true, callable, tested: false });
+    tools.push({
+      name, declared: true, callable, tested: false,
+      inputSchemaHash: liveDef?.inputSchema ? sha256(JSON.stringify(liveDef.inputSchema)) : undefined,
+      descriptionHash: liveDef?.description ? sha256(liveDef.description) : undefined,
+    });
     if (!callable) phantomTools.push(name);
   }
 
@@ -204,8 +212,13 @@ async function probeOrgan(organ: OrganIdentity): Promise<OrganStatus> {
   if (liveTools) {
     for (const name of liveTools) {
       if (!declaredSet.has(name)) {
+        const liveDef = liveToolMap.get(name);
         missingTools.push(name);
-        tools.push({ name, declared: false, callable: true, tested: false });
+        tools.push({
+          name, declared: false, callable: true, tested: false,
+          inputSchemaHash: liveDef?.inputSchema ? sha256(JSON.stringify(liveDef.inputSchema)) : undefined,
+          descriptionHash: liveDef?.description ? sha256(liveDef.description) : undefined,
+        });
       }
     }
   }
@@ -253,6 +266,9 @@ async function probeOrgan(organ: OrganIdentity): Promise<OrganStatus> {
     tools,
     phantomTools,
     missingTools,
+    mcpInitialized: mcpSession !== null,
+    mcpNegotiatedVersion: mcpSession?.protocolVersion,
+    mcpSessionId: mcpSession?.sessionId,
     probedAt,
     freshnessMs,
   };
