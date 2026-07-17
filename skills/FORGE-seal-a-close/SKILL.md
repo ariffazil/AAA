@@ -1,83 +1,74 @@
 ---
 name: FORGE-seal-a-close
 description: >
-  Close remaining Seal-A gates after P0 proof/identity/SCT work.
-  Use when: Seal-A, stage 000, SE stage engine, SOT v2, BOOT enforcement,
-  session_binding_pass, constitutional_grade, remaining seal tasks, advance stage.
-version: 2026.07.17
+  Close remaining Seal-A gates after P0 proof/identity/SCT/T3a work.
+  Use when: Seal-A, stage 000, SE stage engine, SOT v2, BOOT, T3a binding,
+  free_nonce, constitutional_grade, remaining seal tasks.
+version: 2026.07.17b
 floors: [F1, F2, F3, F7, F11, F13]
 ---
 
 # FORGE — Seal-A Close Path
 
-> **Do not claim Seal-A closed until R1–R4 all live-green.**  
-> **Never manual-bump stage to leave 000.**
+> **Do not claim Seal-A closed until T3a matrix 13/13 + R1–R4 live-green.**  
+> **Never manual-bump stage to leave 000.**  
+> **SE advance blocked until T3a CLOSED (sovereign ruling 2026-07-17).**
 
 ## Already CLOSED (do not re-do)
 
-- T6: SKIPPED ≠ PASS; fast mode ≠ GREEN  
-- Identity dual narrative (standing sole surface)  
-- vault_replay via API + outcomes.jsonl  
-- Live SCT mint/validate + organ ingress wiring  
-- AAA ZEN branch convergence  
+| Item | Evidence |
+|------|----------|
+| T6 SKIPPED≠PASS | spine honesty |
+| Identity dual-kill + vault_replay | standing sole |
+| R1 SE stage engine | proof-only advance |
+| R2 SOT v2 operational | hash active + supersession |
+| R3 BOOT >OBSERVE refuse | live demotion |
+| SCT PR1 + PR2 | AAA sealed CI GREEN |
+| A-FORGE SCT AMBIGUOUS + prod lockout | health bypass_profile:none |
+| T3a POSITIVE Ed25519→SOVEREIGN | matrix 4/4 |
 
-Receipts under `/root/A-FORGE/forge_work/2026-07-17/`.
+Receipts: `/root/A-FORGE/forge_work/2026-07-17/`.
 
 ## Remaining order (strict)
 
-### R1 — SE stage engine
-**Owner:** arifOS  
-**Goal:** Stage advances only when receipts prove:
+### Block 0 — T3a — **CLOSED 2026-07-17**
 
-```
-identity coherent (standing == birth == SCT claims)
-full spine GREEN (fast=False, skipped=0)
-vault_replay PASS
-SOT active (or HOLD until R2)
-```
+Skill: `FORGE-t3a-binding-matrix` (regression only)
 
-Code entry points: `arifosmcp/runtime/orchestrator.py` Stage.INIT_000, session stage fields in `session.py` / `session_auth.py`.  
-**Forbidden:** editing stage to `"111"` by hand.
+- Matrix **13/13** · receipt `T3A-CLOSE-RECEIPT.md` · commit `196cb5ef2`
 
-### R2 — SOT v2 operational
-**Artifact:** `APEX-CONCORDANCE-17072026/apex-sot-v2.json`  
-**Still needed:** kernel reports SOT hash as active source of truth + VAULT999 seal of supersession.  
-Local file ≠ operational law.
+### Block 1 — R4 canary — **GREEN 2026-07-17**
 
-### R3 — BOOT live soak
-**Status:** merged (`ddbcc4856`, `6161baa93`).  
-**Task:** live prove `arif_init` refuses >OBSERVE_ONLY without server-side boot receipts.  
-Not agent self-attestation theater.
-
-### R4 — Canary constitutional_grade
 ```bash
-# Full spine only
 cd /root/arifOS && PYTHONPATH=/opt/arifos/app python3 -c \
-  "from arifosmcp.transport.conformance_spine import run_spine; import json; print(json.dumps(run_spine(fast=False),indent=2)[:2000])"
+  "from arifosmcp.transport.conformance_spine import run_spine; import json; r=run_spine(fast=False); print(r['score'], r['all_green'], r['skipped'], r['substrate_gate'])"
 ```
-Require: `all_green=true`, `skipped=0`, `constitutional_grade=true` (or equivalent), vault + session binding honest.
 
-### R5 — A-FORGE SCT mutate policy
-Document stdio vs HTTP; soak `FORGE_SCT_REQUIRE_MUTATE=1` (default).  
-Receipt required before relaxing.
+Last: **9/9** · all_green · skipped=0 · constitutional_grade true · `R4-SPINE-FULL-T3A-CLOSE.json`  
+Stabilize :8088 first if Recv-Q backlog / timeouts.
 
-### R6 — T7 → T8 → T10
-Only after R1–R4. Isolated PRs, regression tests, post-restart live probe, separate receipts.  
-Kickoffs already in `APEX-CONCORDANCE-17072026/t7-*.md` etc.
+### Block 2 — SE stage advance — **NEXT**
+
+Use `se_stage_engine.try_advance(proof_bundle)` — never hand-edit.
+
+### Block 3 — SCT PR4–7 (parked until SE or parallel if SE blocked)
+
+trace_id × 5 organs → 65 matrix → VAULT rollup. Skill: `FORGE-sct-federation-ingress`.
 
 ## Verification contract
 
-Every R* closes only when:
-
-1. Code committed + deployed (if runtime)  
-2. Live probe transcript in `forge_work/YYYY-MM-DD/`  
-3. No dual authority fields disagree  
-4. Fast-mode never used for GREEN claims  
+1. Code committed + deployed  
+2. Live probe in forge_work  
+3. No dual authority fields  
+4. Fast-mode never GREEN  
+5. Matrix 13/13 for T3a — **met**
 
 ## Epistemic
 
-```
-K_apex_runtime: UNMEASURED until R4
-K_apex_engineering_estimate: may exist — do not collapse into runtime
-Seal-A: OPEN until R1–R4 sealed with receipts
+```yaml
+seal_a: OPEN until SE proof path exercised
+t3a: CLOSED   # 13/13 2026-07-17
+r4: GREEN     # 9/9 full spine
+se_stage: "000" ADMISSIBLE via try_advance only
+K_apex_runtime: measure after verified SOVEREIGN session
 ```
