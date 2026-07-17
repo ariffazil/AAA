@@ -40,6 +40,7 @@ organs:
     repo: ariffazil/A-FORGE
     branch: main
     local_port: 7071
+    mcp_port: 7072
     external_endpoint: https://forge.arif-fazil.com
     mcp_endpoint: /mcp
     transport: streamable-http
