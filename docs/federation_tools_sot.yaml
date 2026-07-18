@@ -1,0 +1,1092 @@
+federation_version: '2026-07-18'
+generated_at: '2026-07-18T15:45:56.227932+00:00'
+tier_doctrine: "arifOS canon = 8 capabilities in 2 public tiers: 7 open (observe,\
+  \ think, route, memory, judge, forge, seal) \xB7 1 acknowledgment-gated (session.bind\
+  \ \u2014 F1 Amanah, binding creates durable state). Constitutional_map.py adds 16\
+  \ organ-authenticated entries (incl. kernel_intercept, entropy_*, j_gate, etc.)\
+  \ for a total of 24."
+tier_doctrine_explanation_en: "Anonymous external probing must reproduce the public\
+  \ claim exactly: tools/list returns 7 unconditionally + 1 with ack_irreversible\
+  \ = 8 total. Exposure \u2260 execution: anonymous forge calls fail-closed to HOLD\
+  \ without a session. Organ-authenticated entries are reachable only via kernel internal\
+  \ endpoints."
+arifOS:
+  sot_file: /root/arifOS/tools_sot.yaml
+  count: 24
+  tools:
+  - name: arif_kernel_intercept
+    stage: '666'
+    access: internal_only
+    description: "Minimum Constitutional Kernel \u2014 brutalist interceptor for all\
+      \ agent actions. Takes action details and returns ALLOW, DENY, ESCALATE, or\
+      \ SIMULATE verdict. Use for any mutating or external action tha..."
+    floors:
+    - L13
+    modes:
+    - intercept
+    cognitive_axis: judge
+    risk_tier: critical
+  - name: arif_init
+    stage: '000'
+    access: public
+    description: "KERNEL 000 \xB7 Session ignition. Binds actor, floors, and audit\
+      \ before any other arif_* verb can govern. Without session_id the kernel treats\
+      \ the caller as anonymous (OBSERVE_ONLY). Modes: ping | lig..."
+    floors:
+    - L01
+    - L11
+    - L12
+    modes:
+    - init
+    - light
+    - resume
+    - validate
+    - canary
+    - preflight
+    - triage
+    - epoch_open
+    - epoch_seal
+    - opt_out
+    - opt_out_profiling
+    cognitive_axis: identity
+    risk_tier: medium
+  - name: arif_observe
+    stage: '111'
+    access: public
+    description: "KERNEL 111 \xB7 Sense reality into evidence (not reasoning, not\
+      \ judgment). Modes: search | fetch | ingest | vitals | compass | atlas | entropy_dS\
+      \ | repo_map | hybrid_discovery. Returns evidence with s..."
+    floors:
+    - L02
+    - L03
+    - L07
+    - L12
+    modes:
+    - search
+    - fetch
+    - hybrid_discovery
+    - ingest
+    - compass
+    - atlas
+    - entropy_dS
+    - vitals
+    cognitive_axis: observe
+    risk_tier: low
+  - name: arif_fetch
+    stage: '111'
+    access: internal_only
+    description: 'Fetch and preserve external evidence with source citations and provenance
+      tags. Use for targeted URL/source retrieval. Modes: fetch (default), search,
+      eureka. For broad sensing use arif_observe; fo...'
+    floors:
+    - L02
+    - L03
+    - L05
+    - L12
+    modes:
+    - fetch
+    - search
+    - eureka
+    cognitive_axis: verify
+    risk_tier: medium
+  - name: arif_think
+    stage: '333'
+    access: public
+    description: "KERNEL 333 \xB7 Mind \u2014 structured reasoning under F2/F7 (not\
+      \ chat, not verdict). Modes: reason | reflect | verify | plan | plan_review\
+      \ | plan_approve | refactor_plan | metabolize | axioms. Returns OBS..."
+    floors:
+    - L02
+    - L05
+    - L06
+    - L07
+    - L08
+    - L09
+    - L10
+    modes:
+    - reason
+    - reflect
+    - verify
+    - axioms
+    - plan
+    - plan_review
+    - plan_approve
+    - refactor_plan
+    - metabolize
+    - simulate
+    - wonder
+    cognitive_axis: reason
+    risk_tier: medium
+  - name: arif_critique
+    stage: '555'
+    access: internal_only
+    description: "KERNEL 555 \xB7 Heart \u2014 ethical/dignity/risk stress before\
+      \ judgment (not SEAL). Requires non-empty target. Modes: critique | redteam\
+      \ | maruah | deescalate | empathize | simulate | shadow. Returns risk..."
+    floors:
+    - L05
+    - L06
+    - L09
+    modes:
+    - critique
+    - redteam
+    - maruah
+    - shadow
+    - deescalate
+    - empathy
+    cognitive_axis: critique
+    risk_tier: medium
+  - name: arif_route
+    stage: '444'
+    access: public
+    description: "KERNEL 444 \xB7 Intent\u2192organ router (default path to GEOX/WEALTH/WELL/A-FORGE).\
+      \ Select when goal is known but organ/verb is not. Optional organ_tool = governed\
+      \ bridge (prefer over arif_bridge_connect)..."
+    floors:
+    - L01
+    - L04
+    - L10
+    - L11
+    modes:
+    - route
+    - bridge
+    cognitive_axis: boundary
+    risk_tier: low
+  - name: arif_triage
+    stage: '000'
+    access: internal_only
+    description: "DEPRECATED \u2014 use arif_init(mode='preflight'|'triage'|'status').\
+      \ Internal session preflight handler only; not on public tools/list."
+    floors:
+    - L04
+    - L10
+    modes:
+    - status
+    - preflight
+    - triage
+    cognitive_axis: boundary
+    risk_tier: low
+  - name: arif_bridge_connect
+    stage: '444'
+    access: internal_only
+    description: "KERNEL 444-direct \xB7 Low-level organ call (organ + tool_name required).\
+      \ Authority HIGH/lease. Agents prefer arif_route. Not a free MCP proxy."
+    floors:
+    - L01
+    - L11
+    - L10
+    modes:
+    - connect
+    cognitive_axis: boundary
+    risk_tier: medium
+  - name: arif_compose
+    stage: '888'
+    access: internal_only
+    description: "KERNEL reply \xB7 Final human-facing composition (citations, tone,\
+      \ \u0394S\u22640). Call LAST after observe/think/judge. Modes: compose | summarize\
+      \ | cite | tone_shift | style | format. Not a substitute for jud..."
+    floors:
+    - L02
+    - L04
+    - L06
+    - L09
+    modes:
+    - compose
+    - summarize
+    - cite
+    - tone_shift
+    cognitive_axis: reflect
+    risk_tier: low
+  - name: arif_memory
+    stage: '000'
+    access: authenticated
+    description: "KERNEL memory governor \xB7 L1\u2013L6 under F1/F2/F4/F11 (not a\
+      \ free notepad). Modes: recall | inspect | attest | remember | promote | revise\
+      \ | forget. Writes are J-space mutations; arifOS judges, storage..."
+    floors:
+    - L01
+    - L02
+    - L04
+    - L08
+    - L11
+    - L12
+    - L13
+    modes:
+    - recall
+    - inspect
+    - attest
+    - remember
+    - promote
+    - revise
+    - forget
+    - audit
+    cognitive_axis: trace
+    risk_tier: medium
+  - name: arif_judge
+    stage: '666'
+    access: authenticated
+    description: "KERNEL 666 \xB7 Constitutional verdict \u2014 only organ that SEAL/HOLD/SABAR/VOIDs.\
+      \ Not advice; binding floor + authority arbitration. Requires actor, intent,\
+      \ domain, reversibility_level, blast_radius. Au..."
+    floors:
+    - L01
+    - L02
+    - L11
+    - L13
+    modes:
+    - intercept
+    - judge
+    - validate
+    - hold
+    - escalate
+    cognitive_axis: judge
+    risk_tier: critical
+  - name: arif_judge_deliberate
+    stage: '666'
+    access: internal_only
+    description: Internal AAA a2a-server deliberation tool. Render a nuanced constitutional
+      verdict with multi-floor reasoning. Not part of the public 7-tool facade; use
+      arif_judge for public constitutional arbitra...
+    floors:
+    - L01
+    - L11
+    - L13
+    modes:
+    - judge
+    - validate
+    - hold
+    - rules
+    - armor
+    - probe
+    - notify
+    cognitive_axis: judge
+    risk_tier: critical
+  - name: arif_seal
+    stage: '999'
+    access: authenticated
+    description: "KERNEL 999 \xB7 VAULT999 immutable append \u2014 irreversible civilizational\
+      \ memory. Modes: seal | verify | chain | list | dry_run. seal requires ack_irreversible.\
+      \ Kernel judges; vault seals; Arif owns F13..."
+    floors:
+    - L01
+    - L11
+    - L13
+    modes:
+    - seal
+    - verify
+    - ledger
+    - changelog
+    - audit
+    cognitive_axis: seal
+    risk_tier: critical
+  - name: arif_challenge
+    stage: '000'
+    access: internal_only
+    description: "KERNEL \xB7 Issue an Ed25519 identity challenge nonce (live MCP,\
+      \ AAA Wave 2 / Phase 5). Generates a cryptographically random 32-byte nonce,\
+      \ base64-encoded, with a TTL (default 300s). The nonce is sing..."
+    floors:
+    - L01
+    - L02
+    - L11
+    - L12
+    modes:
+    - challenge
+    cognitive_axis: identity
+    risk_tier: low
+  - name: arif_act
+    stage: '777'
+    access: internal_only
+    description: INTERNAL alias for arif_forge. Retained for backward compatibility
+      with intercept routing tables. Not on public surface; call arif_forge instead.
+    floors:
+    - L01
+    - L11
+    - L13
+    modes:
+    - engineer
+    - query
+    - write
+    - generate
+    - commit
+    - recall
+    - dry_run
+    cognitive_axis: execute
+    risk_tier: critical
+  - name: arif_forge
+    stage: '777'
+    access: authenticated
+    description: "KERNEL 777 \xB7 Execution gate via A-FORGE (hands, not law). Mutates\
+      \ only after arif_judge SEAL + lease/chain IDs \u2014 no self-authorize. Modes:\
+      \ dry_run | engineer | query | write | generate | commit | r..."
+    floors:
+    - L01
+    - L11
+    - L13
+    modes:
+    - engineer
+    - query
+    - write
+    - generate
+    - commit
+    - recall
+    - dry_run
+    cognitive_axis: execute
+    risk_tier: critical
+  - name: arif_measure
+    stage: '111'
+    access: internal_only
+    description: "INTERNAL: Kernel *runtime* health only (process, transport, topology,\
+      \ resource metrics). NOT human readiness or coupled vitality \u2014 those are\
+      \ WELL (well_validate_vitality). Alias intent: arif_runtim..."
+    floors:
+    - L02
+    - L04
+    modes:
+    - health
+    - vitals
+    - cost
+    - genius
+    - topology
+    - drift
+    cognitive_axis: vitality
+    risk_tier: low
+  - name: arif_entropy_observe
+    stage: '111'
+    access: internal_only
+    description: Register a structured entropy observation from an authorised organ.
+      Collects observations WITHOUT producing a verdict. Validates against prohibited-inference
+      policy. Enters J-state pipeline after v...
+    floors:
+    - L09
+    - L02
+    - L11
+    modes:
+    - observe
+    cognitive_axis: observe
+    risk_tier: low
+  - name: arif_j_state_assess
+    stage: '666'
+    access: internal_only
+    description: Fuse organ observations into a judgment-integrity map. Computes 5
+      J-planes using MINIMUM-FLOOR aggregation. Never outputs a diagnosis or moral
+      identity.
+    floors:
+    - L09
+    - L02
+    - L04
+    modes:
+    - assess
+    cognitive_axis: judge
+    risk_tier: medium
+  - name: arif_correction_probe
+    stage: '666'
+    access: internal_only
+    description: 'Generate a neutral challenge and record the response. Modes: draft_probe,
+      record_response, classify_response, close_probe.'
+    floors:
+    - L01
+    - L02
+    - L11
+    modes:
+    - draft_probe
+    - record_response
+    - classify_response
+    - close_probe
+    cognitive_axis: judge
+    risk_tier: low
+  - name: arif_consequence_trace
+    stage: '111'
+    access: internal_only
+    description: Trace who makes the decision, who receives benefits, who bears harm,
+      and who can reverse it.
+    floors:
+    - L01
+    - L06
+    - L11
+    modes:
+    - trace
+    cognitive_axis: observe
+    risk_tier: low
+  - name: arif_entropy_route
+    stage: '444'
+    access: internal_only
+    description: Route domain questions to the correct organ. Human stress -> WELL;
+      capital -> WEALTH; physical -> GEOX; runtime -> A-FORGE.
+    floors:
+    - L04
+    modes:
+    - route
+    cognitive_axis: route
+    risk_tier: low
+  - name: arif_j_gate
+    stage: '666'
+    access: internal_only
+    description: Convert J-state evidence into action posture. J0->VOID, J1->HOLD,
+      J2->reversible only, J3->bounded, J4->witnessed. Never issues VAULT999 SEAL
+      autonomously.
+    floors:
+    - L01
+    - L13
+    - L09
+    modes:
+    - gate
+    cognitive_axis: judge
+    risk_tier: high
+A-FORGE:
+  sot_file: /root/A-FORGE/tools_sot.yaml
+  count: 51
+  tools:
+  - name: forge_session_init
+    access: public
+    description: A-FORGE tool
+    source: gatewayTools.ts
+  - name: forge_health_check
+    access: public
+    description: A-FORGE tool
+    source: gatewayTools.ts
+  - name: forge_judge_proxy
+    access: public
+    description: A-FORGE tool
+    source: gatewayTools.ts
+  - name: forge_vault
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_journalctl
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_chart
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_probe
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_scan
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_filesystem
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_filesystem_read
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_filesystem_tree
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_filesystem_search
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_filesystem_stat
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_memory
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_github
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_fetch
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_fetch_url
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_fetch_json
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_fetch_metadata
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_fetch_links
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_agent
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_lease
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_registry_status
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_shell
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_shell_dryrun
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_shell_status
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_shell_ledger
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_shell_alert_history
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_status
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_vps_ports
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_vps_services
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_vps_cron
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_security_drift_scan
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_seal
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_registry
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_scar
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_reality_loop
+    access: public
+    description: A-FORGE tool
+    source: gatewayTools.ts
+  - name: forge_parallel_status
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_parallel_list
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_research
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_search
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_docs_lookup
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_github_search_code
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_github_search_repos
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_github_get_file
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_minimax_search
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_document_ingest
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_policy
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+  - name: forge_surface_guard
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_surface_audit
+    access: public
+    description: A-FORGE tool
+    source: core.ts
+  - name: forge_lock
+    access: public
+    description: A-FORGE tool
+    source: forgeTools.ts
+GEOX:
+  sot_file: /root/GEOX/tools_sot.yaml
+  count: 24
+  tools:
+  - name: geox_well_ingest
+    domain: earth.well
+    axis: observe
+    lane: evidence
+    access: public
+    description: Load well log data from LAS, SEG-Y, DST, deviation, or tops files.
+      Auto-detects format.
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_petrophysics
+    domain: earth.petrophysics
+    axis: reason
+    lane: reasoning
+    access: public
+    description: 'Unified petrophysics: Vsh, porosity, Sw, permeability, net pay,
+      LEM inference, QC. Modes: generate, verify, lem_inference, stoip_feed, qc.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_seismic_ingest
+    domain: earth.seismic
+    axis: observe
+    lane: evidence
+    access: public
+    description: SEG-Y I/O, header inspection, export.
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_seismic_compute
+    domain: earth.seismic
+    axis: compute
+    lane: reasoning
+    access: public
+    description: 'Seismic computation: forward model, well tie, attributes, wavelet
+      extraction, inversion.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_seismic_interpret
+    domain: earth.seismic
+    axis: reason
+    lane: reasoning
+    access: public
+    description: 'Unified seismic interpretation: horizon/fault picking, RSI pipeline,
+      vision, contrast detection. Modes: horizon_contrast, fault_sticks, volume_frame,
+      blend, rsi_pipeline, contrast, vision.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_subsurface_model
+    domain: earth.model
+    axis: compute
+    lane: reasoning
+    access: public
+    description: 'Subsurface model building: joint inversion, gravity/magnetic forward,
+      MT forward.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_basin
+    domain: earth.basin
+    axis: reason
+    lane: reasoning
+    access: public
+    description: 'Unified basin intelligence: profile, resolve, macrostrat, backstrip,
+      mass balance, thermal maturity, map context, deep time, tectonic reconstruction.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_sequence
+    domain: earth.stratigraphy
+    axis: reason
+    lane: reasoning
+    access: public
+    description: 'Unified stratigraphy: sequence analysis, biostratigraphic parsing
+      and falsification. Modes: correlation, biostrat_parse, biostrat_falsify.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_geomechanics
+    domain: earth.structure
+    axis: compute
+    lane: reasoning
+    access: public
+    description: 'Geomechanical analysis: bulk/shear/young modulus, poisson ratio,
+      acoustic impedance, stress polygon.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_deep_time_state
+    domain: earth.time
+    axis: observe
+    lane: evidence
+    access: public
+    description: 'Earth State Vector through deep time: GPTS, CO2, sea level, temperature,
+      paleogeography.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_claim
+    domain: governance
+    axis: reason
+    lane: judgment
+    access: public
+    description: 'Unified claim lifecycle: create, validate, challenge, seal, evidence,
+      consequence, optionality, cascade, feedback integrity, truth challenge.'
+    annotations:
+      read_only: false
+      destructive: false
+      idempotent: false
+  - name: geox_prospect
+    domain: earth.prospect
+    axis: reason
+    lane: judgment
+    access: public
+    description: 'Prospect evaluation: volumetrics, POS, EVOI, risk assessment. Modes:
+      screen, evaluate.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_gravmag_studio
+    domain: earth.geophysics
+    axis: compute
+    lane: reasoning
+    access: public
+    description: 'Gravity/magnetic studio: forward modeling and screening. Modes:
+      open, screen.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_well_desk
+    domain: earth.well
+    axis: observe
+    lane: evidence
+    access: public
+    description: 'Well desk: interactive view, publish rendered panel, render well
+      panel. Modes: open, publish, render.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_surface_status
+    domain: earth.meta
+    axis: observe
+    lane: evidence
+    access: public
+    description: 'Federation-standard registry probe: tool discovery and health status.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_evidence
+    domain: governance.evidence
+    axis: reason
+    lane: evidence
+    access: public
+    description: 'Unified evidence synthesis: discover, synthesize, abduct, contradict,
+      spatial_block, ingest_literature.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: false
+  - name: geox_basin_backstrip
+    domain: earth.basin
+    axis: compute
+    lane: reasoning
+    access: public
+    description: '1D basin backstripping: Steckler & Watts 1978 + Sclater & Christie
+      1980. Reconstruct tectonic and total subsidence through time.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_sediment_mass_balance
+    domain: earth.basin
+    axis: compute
+    lane: reasoning
+    access: public
+    description: Source-to-sink sediment volume and mass accounting. Peters 2012 framework.
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_thermal_maturity_history
+    domain: earth.basin
+    axis: compute
+    lane: reasoning
+    access: public
+    description: Burial + heat flow + maturity modeling through time. EasyRo + TTI.
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_claim_graph_evaluate
+    domain: governance
+    axis: reason
+    lane: judgment
+    access: public
+    description: Evaluate parent claim validity when child claims fail. DAG evaluation
+      with AND/OR/WEIGHTED dependencies.
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_falsify
+    domain: governance
+    axis: reason
+    lane: judgment
+    access: public
+    description: "Popperian falsification engine \u2014 Kill Matrix K001-K007 + contradiction\
+      \ scan. GENESIS/015 architecture: physics must prove the claim is right. ANY\
+      \ KILL \u2192 rejected. All PASS \u2192 PROCEED to 888_JUDGE."
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_contradiction_scan
+    domain: governance
+    axis: reason
+    lane: judgment
+    access: public
+    description: "Scan claims for contradictions using 13-type ontology. Classifies\
+      \ severity (FATAL/HIGH/MEDIUM/LOW) and resolution path (VOID/HOLD/DEMOTE/ESCALATE).\
+      \ FATAL \u2192 888_HOLD."
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_lem_predict
+    domain: earth.inference
+    axis: reason
+    lane: reasoning
+    access: public
+    description: "LEM inference \u2014 predict rock properties (porosity, Sw, lithology)\
+      \ from well log curves. Physics-prior mode (Archie, Gardner, Wyllie) until federated\
+      \ weights deploy."
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+  - name: geox_to_wealth_bridge
+    domain: governance.bridge
+    axis: reason
+    lane: evidence
+    access: public
+    description: 'Cross-organ bridge: converts GEOX prospect economics to WEALTH score_kernel
+      input. F2: epistemic_source preserved. F13: blocked nodes rejected.'
+    annotations:
+      read_only: true
+      destructive: false
+      idempotent: true
+WEALTH:
+  sot_file: /root/WEALTH/tools_sot.yaml
+  count: 8
+  tools:
+  - name: capital_primitive
+    access: public
+    description: "Deductive capital math primitives. Pure computation \u2014 no inference,\
+      \ no governance verdict. Every mode is golden-tested against hand-checked cases.\
+      \ Standard cash flow convention: CF[0] at t=0 (initial investment, typically\
+      \ negative), CF[1:] at t=1, t=2, ...\nModes: npv | irr | emv | evoi | mc | kelly\
+      \ | markowitz | robust | chance_constrained | two_stage\nUse when: the user\
+      \ asks about NPV, IRR, expected monetary value, Kelly criterion sizing, Markowitz\
+      \ portfolio optimization, Monte Carlo simulation, or any deductive capital math\
+      \ computation.\n"
+    tags:
+      domain: capital
+      kind: deductive
+      canonical: v1
+  - name: capital_health
+    access: public
+    description: 'Financial health metrics. Deductive computation from structured
+      inputs. No inference, no governance verdict.
+
+      Modes: conservation | flow | runway | survival | fiscal_breakeven | confluence
+      | asymmetry
+
+      Use when: the user asks about net worth, cash flow, financial runway, burn rate,
+      fiscal breakeven oil price, or false-confluence detection in financial indicators.
+
+      '
+    tags:
+      domain: capital
+      kind: deductive
+      canonical: v1
+  - name: capital_diagnose
+    access: public
+    description: "Abductive institutional diagnostics \u2014 inference from partial\
+      \ evidence. Surface: mode, domain_scope, payload (dict). Mode-specific fields\
+      \ go in payload. REQUIRED: domain_scope declares calibration domain. Unknown\
+      \ fields are REJECTED (not silently dropped to 0.0).\nModes: stress_index |\
+      \ governance_capacity | cascade_model | exploitation_detect | collapse_signature\
+      \ | beautiful_mouse | capture_scan | power_audit | bid_surface | optimize_mwc\
+      \ | cadence_monitor | crisis_reflex\nUse when: institutional stress, governance,\
+      \ collapse, power, MWC, cadence monitoring, or crisis reflex analysis.\n"
+    tags:
+      domain: institutional
+      kind: abductive
+      canonical: v1
+  - name: capital_wisdom
+    access: public
+    description: "Capital wisdom synthesis \u2014 evaluates proposals across dignity,\
+      \ sovereignty, resilience, inequality, ecological cost, and optionality. Advisory\
+      \ only. Does NOT emit GO/HOLD/SEAL verdicts \u2014 those are arifOS's domain.\n\
+      Modes: wisdom | omni | epistemic\nUse when: the user wants a wisdom-weighted\
+      \ evaluation of a capital proposal, deal framing, hysteresis-aware path analysis,\
+      \ or counterfactual reasoning across 13 capital primitives.\n"
+    tags:
+      domain: wisdom
+      kind: abductive
+      canonical: v1
+  - name: capital_market
+    access: public
+    description: "Market data and commodity intelligence. Observational with derived\
+      \ and interpreted fields.\nTop-level: mode, base, targets, commodity, operation,\
+      \ country. Stock fields in stock_payload dict.\nModes: fx | commodity | indicator\
+      \ | stock | gold | oil | gas\nFor gold/oil/gas: mode='gold'|'oil'|'gas' with\
+      \ operation='snapshot'|'ticker'|'signal'|'macro'|'history'|'levels'. Legacy:\
+      \ use commodity param for operation (deprecated).\nEpistemic classes per output\
+      \ field:\n  OBSERVED \u2014 price, volume, timestamp\n  DERIVED \u2014 EMA,\
+      \ RSI, support/resistance\n  INTERPRETED \u2014 LONG/SHORT/NEUTRAL signal\n\n\
+      Use when: FX, commodities, macro indicators, stock analysis, or gold/oil/gas\
+      \ market intelligence.\n"
+    tags:
+      domain: market
+      kind: observational
+      canonical: v1
+  - name: capital_ledger
+    access: public
+    description: 'VAULT999 immutable ledger access. Query is read-only (no ack required).
+      Write requires explicit human acknowledgment (ack_irreversible=true). WEALTH
+      computes. arifOS judges. Arif decides. WEALTH does not self-seal.
+
+      Modes: query | write
+
+      Use when: the user wants to query past capital transactions from VAULT999, or
+      write a new transaction (requires human ack for writes).
+
+      '
+    tags:
+      domain: vault
+      kind: mutating
+      canonical: v1
+  - name: capital_registry
+    access: public
+    description: 'WEALTH meta/introspection. Registry status, tool schema, domain
+      index, health check. Observational only.
+
+      Modes: status | schema | domains | health
+
+      Use when: the user wants to inspect the WEALTH tool registry, check available
+      domains, view tool schemas, or run a health check.
+
+      '
+    tags:
+      domain: meta
+      kind: observational
+      canonical: v1
+  - name: capital_entropy
+    access: public
+    description: 'Capital and institutional entropy analysis. Modes: power_consequence_map,
+      metric_purpose_audit, responsibility_ledger, trust_capital_decay, coercive_order_cost,
+      entropy_externality. Measures information loss, consequence displacement, metric
+      drift. Computes, never allocates.
+
+      '
+    tags:
+      domain: institutional
+      kind: abductive
+      canonical: v1
+      entropy: mesh
+WELL:
+  sot_file: /root/WELL/tools_sot.yaml
+  count: 8
+  tools:
+  - name: well_classify_substrate
+    access: public
+    description: WELL canonical tool
+  - name: well_trace_lineage
+    access: public
+    description: WELL canonical tool
+  - name: well_assess_homeostasis
+    access: public
+    description: WELL canonical tool
+  - name: well_check_repair
+    access: public
+    description: WELL canonical tool
+  - name: well_validate_vitality
+    access: public
+    description: WELL canonical tool
+  - name: well_assess_reliability
+    access: public
+    description: WELL canonical tool
+  - name: well_guard_dignity
+    access: public
+    description: WELL canonical tool
+  - name: well_registry_status
+    access: public
+    description: WELL canonical tool
+summary:
+  total_tools: 115
+  tier_breakdown_arifOS: 7 open + 1 gated = 8 (live 7 without ack, 8 with ack)
+  hermes_status: persona-system, non-federation (F9 Anti-Hantu)
+HERMES:
+  class: persona-system
+  federation_status: non-federation
+  rationale: "HERMES is a persona/agent framework, not an MCP-served organ. F9 Anti-Hantu\
+    \ doctrine: persona/simulacrum systems are hantu territory \u2014 fine to exist,\
+    \ fatal to confuse. Holds zero federation authority."
+  topology: client-only
+  outbound_mcp_calls:
+    GEOX: 127.0.0.1:8081 (ESTABLISHED)
+    WEALTH: 127.0.0.1:18082 (intermittent)
+    WELL: 127.0.0.1:18083 (intermittent)
+    Telegram API: 149.154.167.220:443 (HTTPS, outbound)
+  no_listening_port: true
+  mcp_tools_count: 0
+  policy:
+    f9_anti_hantu: true
+    sovereign_identity_claim: forbidden
+    sovereign_zkpc_forbidden: ed25519:sha256:a8fbb5ae8...
+    authority_under_sovereign: forbidden
+    outputs_in_federation_context: must_carry_persona_label
+    label_template: '[HERMES/persona]:'
+  services_running:
+  - hermes-asi-gateway.service (Telegram gateway)
+  systemd_unit: /etc/systemd/system/hermes-asi-gateway.service
+  executable: /usr/local/bin/hermes-gateway-secure.sh
+  sovereign_zkpc: ed25519:sha256:a8fbb5ae8... (DO NOT share)
+  included_in_mcp_aggregate: false
+  reason: Persona/agent framework. No MCP server. No federation authority. Must not
+    be confused with arifOS sovereign.

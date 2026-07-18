@@ -1,2149 +1,1428 @@
 census_metadata:
-  version: 1.0.0
-  timestamp_utc: '2026-06-30T06:56:00Z'
-  owner: arifOS Federation Control Plane / AAA
+  version: 2.0.0
+  generated_at: '2026-07-18T15:38:37.863302+00:00'
+  source: /root/AAA/docs/federation_tools_sot.yaml
+  description: 'GENERATED VIEW of federation_tools_sot.yaml + ABI enrichment. Do not
+    hand-edit. Regenerate with: python3 /root/AAA/scripts/generate_tool_census.py'
+  inclusion_rule: public + authenticated tools only. internal_only excluded.
+  organ_counts:
+    A-FORGE:
+      total: 51
+      public: 51
+      internal: 0
+    GEOX:
+      total: 24
+      public: 24
+      internal: 0
+    WEALTH:
+      total: 8
+      public: 8
+      internal: 0
+    WELL:
+      total: 8
+      public: 8
+      internal: 0
+    arifOS:
+      total: 24
+      public: 8
+      internal: 16
 tools:
-- name: arif_init
-  organ: arifOS
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: 'START HERE. Bootstrap a governed constitutional session and bind actor
-    identity. Select when: starting any new conversation, resuming a previous session,
-    or before any other arif_* tool call. Without a session_id, no governed action
-    is possible. Returns: session_id, authority level (SEAL/OBSERVE_ONLY/FULL), floor
-    status, next_tool recommendation, and constitution hash. Modes: init (full, ~60s)
-    | light (<1s, tool pointers only) | resume | validate | epoch_open | epoch_seal
-    | ping. Do NOT select when: you already have a live session_id and verified authority
-    (use arif_triage instead), or the request is a pure factual question needing no
-    session.'
-- name: arif_observe
-  organ: arifOS
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Ground your next decision in reality. Select when: you need external\
-    \ evidence (web search, URL fetch, system vitals), need to map a repository structure,\
-    \ or need to compute entropy from a dataset. The gradient pulling toward this\
-    \ tool is unresolved factual uncertainty \u2014 if the answer requires data not\
-    \ in your context, choose observe. Modes: search | ingest | compass | atlas |\
-    \ entropy_dS | vitals | repo_map | hybrid_discovery. Returns: search results,\
-    \ ingested content, system vitals, entropy scores, or repo map. Do NOT select\
-    \ when: the user's intent is purely reasoning/analysis (choose arif_think instead),\
-    \ or the evidence is already in context."
-- name: arif_think
-  organ: arifOS
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Reason, plan, reflect, or critique \u2014 the cognitive engine. Select\
-    \ when: you need to decompose a complex problem, generate a plan, evaluate hypotheses,\
-    \ verify a conclusion, critique a proposal, or synthesize evidence into a recommendation.\
-    \ The gradient pulling toward think is cognitive overload \u2014 when the next\
-    \ step requires structured reasoning rather than observation or action. Modes:\
-    \ reason (decompose) | reflect (evaluate session) | verify (check conclusion)\
-    \ | critique (assess risks) | plan (generate DAG) | plan_review | plan_approve\
-    \ | refactor_plan | metabolize (synthesize) | axioms. Returns: structured reasoning\
-    \ output with epistemic labels (OBS/DER/INT/SPEC), facts, inferences, unknowns,\
-    \ confidence bands, and next_safe_action. Do NOT select when: the question is\
-    \ factual and requires external data (select arif_observe first), or when immediate\
-    \ action is needed (select arif_act)."
-- name: arif_route
-  organ: arifOS
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Canonical intent router. Select when: you know what you want but not\
-    \ which tool or organ to call. Routes natural-language intent to the correct federation\
-    \ organ (GEOX, WEALTH, WELL, A-FORGE) or kernel tool. Optionally accepts organ_tool\
-    \ to bridge-call directly \u2014 bypassing the routing decision. Returns: organ,\
-    \ port, tool_prefix, suggested_tools. Do NOT select when: you already know the\
-    \ exact tool to call."
-- name: arif_judge
-  organ: arifOS
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Render final constitutional verdict \u2014 the arbitration gate. Select\
-    \ when: a decision is ready for binding judgment. You have gathered evidence (observe),\
-    \ reasoned about it (think), and the decision requires floor compliance verification.\
-    \ The gradient toward judge is completion of the evidence-to-plan pipeline. Returns:\
-    \ SEAL (approved) | HOLD (revise) | SABAR (wait) | VOID (rejected) \u2014 with\
-    \ violated floors, evidence receipts, and authority verification. Modes: judge\
-    \ | compare | history | explain | floor_status | witness_consensus. REQUIRES:\
-    \ actor, intent, domain, reversibility_level, blast_radius \u2014 all mandatory.\
-    \ Do NOT select when: evidence is incomplete (choose observe first), plan is not\
-    \ ready (choose think first), or the action is reversible and low-risk (advisory\
-    \ mode is sufficient)."
-- name: arif_act
-  organ: arifOS
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Execute an approved action \u2014 the 900 execution gate. HARD REQUIREMENT:\
-    \ Valid prior SEAL from arif_judge + arif_seal is mandatory. Select only when:\
-    \ you have seal_verdict_id AND approved_action_hash from a completed judge\u2192\
-    seal pipeline. The gradient toward act is complete authorization \u2014 all evidence\
-    \ gathered, plan reasoned, risk critiqued, judge approved, seal written. Without\
-    \ seal_verdict_id + approved_action_hash, this tool returns 888_HOLD structurally.\
-    \ Routes through A2ASealVerifier for cryptographic verification before execution.\
-    \ Do NOT select when: you are still in planning/critique phase, or no prior SEAL\
-    \ exists. This is the LAST tool in the constitutional pipeline \u2014 after it,\
-    \ seal the result."
-- name: arif_seal
-  organ: arifOS
-  lane: RECORD
-  mutation: true
-  authority_required: PREPARE_ONLY
-  evidence_layer: VERIFIED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Append a verdict or outcome to the immutable VAULT999 ledger \u2014\
-    \ irreversible. Select when: a 888_JUDGE SEAL verdict exists and needs permanent\
-    \ cryptographic anchoring, or an execution result needs audit trail. The gradient\
-    \ toward seal is finality \u2014 this record can never be deleted. Modes: seal\
-    \ (append record) | verify (validate chain integrity) | chain (show hash chain)\
-    \ | list (enumerate seals) | dry_run (preview) | seal_card | render. ack_irreversible=True\
-    \ is required for seal mode. Do NOT select when: the verdict is HOLD/SABAR/VOID\
-    \ (seal only SEAL outcomes), or testing (use dry_run mode instead)."
 - name: forge_session_init
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Constitutional session ignition. Proxies to arifOS kernel \u2014 A-FORGE\
-    \ no longer mints independent sessions. (Stage 000 INIT)"
 - name: forge_health_check
   organ: A-FORGE
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Return A-FORGE server health and constitutional genome (v2.0) status.
-- name: forge_heart_critique
-  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Risk assessment and ethical review \u2014 delegates to arifOS 666\
-    \ HEART pipeline. A-FORGE does NOT adjudicate floors locally."
-- name: forge_check_governance
-  organ: A-FORGE
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "Constitutional governance check \u2014 delegates to arifOS. A-FORGE\
-    \ NEVER adjudicates constitutional floors."
-- name: forge_execute
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: BLACK
-  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an
-    action plan. Requires cc_id for mutations (INV-4).
-- name: forge_approve
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Refuses approval \u2014 A-FORGE cannot self-authorize. Route to arifOS\
-    \ arif_judge_deliberate via forge_judge_proxy instead."
 - name: forge_judge_proxy
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Proxy forwarder to canonical arifOS constitutional judge.
 - name: forge_vault
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'VAULT999 primitive. Modes: read, list, write, seal.'
-- name: forge_wealth
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: 'Route to WEALTH capital intelligence organ. Modes: emv, conservation,
-    flow, runway, wisdom.'
-- name: forge_systemctl
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: BLACK
-  description: 'Query systemd. Modes: status, list_units.'
 - name: forge_journalctl
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Query systemd journal logs (read-only, PII-redacted). Modes: logs,
-    errors, tail, grep.'
-- name: forge_well
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: 'WELL human readiness primitive. Routes to WELL organ (port 18083).
-    Modes: state, readiness, floors, anchor.'
 - name: forge_chart
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Agentic charting + quantum eureka discovery margin patterns. Input
-    data series or records; returns SVG + summary + eureka_candidates (reversals,
-    high-z, curvature). Types support line/bar/scatter/pie/area/histogram. Use after
-    postgres/wealth/well queries for visualization and pattern discovery. All organs
-    share this surface.
 - name: forge_probe
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Federation organ liveness. Probes all 5 organs + latency. OBSERVE-class.
-    P2.1 canonical gap fill.
 - name: forge_scan
   organ: A-FORGE
-  lane: ASSESS
+  access: public
+  description: A-FORGE tool
+  lane: READ
   mutation: false
-  authority_required: PREPARE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: YELLOW
-  description: Security scan a file or directory before code execution. Detects dangerous
-    patterns. OBSERVE-class. P2.5 canonical gap fill.
+  danger_class: GREEN
 - name: forge_filesystem
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: RED
-  description: 'Canonical filesystem primitive. Modes: read, write, glob, grep, stat.
-    F8 scoped to /root, /tmp, /data, /var/log.'
-- name: forge_postgres
+  danger_class: GREEN
+- name: forge_filesystem_read
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: BLACK
-  description: 'Canonical Postgres primitive. Modes: query, schema. Writes require
-    mutate=true and remain floor-gated.'
+  danger_class: GREEN
+- name: forge_filesystem_tree
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_filesystem_search
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_filesystem_stat
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
 - name: forge_memory
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Canonical memory primitive. Modes: recall. Reads VAULT999 local files,
-    then vault999-api fallback.'
-- name: forge_git
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: RED
-  description: 'Canonical git primitive. Modes: status, diff, log, commit. Mutating
-    modes are floor-gated by A-FORGE MCP ingress.'
 - name: forge_github
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: RED
-  description: 'Canonical GitHub primitive. Modes: search, pr. Use type for search
-    variants instead of separate tools.'
-- name: forge_docker
+  danger_class: GREEN
+- name: forge_fetch
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: BLACK
-  description: 'Canonical Docker primitive. Modes: ps, logs, exec, images. Destructive
-    operations stay out of this read/exec surface.'
+  danger_class: GREEN
+- name: forge_fetch_url
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_fetch_json
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_fetch_metadata
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_fetch_links
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
 - name: forge_agent
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Agent identity management. Modes: register, status, list. F11 AUTH.'
 - name: forge_lease
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Lease lifecycle. Modes: request, status, revoke. A-FORGE does not\
-    \ self-issue leases \u2014 arifOS mints them."
 - name: forge_registry_status
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift
-    status for all registered tools.'
 - name: forge_shell
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: BLACK
-  description: 'Canonical governed shell execution. Executes commands through constitutional
-    gate (ArifJudge) + hash-chain audit (ArifSeal). DENY patterns are hard-blocked.
-    GATE patterns require human approval. Every execution is sealed to VAULT999 hash
-    chain. REQUIRES arifOS authority envelope: call arif_init() first, pass the returned
-    session_id. Use forge_shell_dryrun for preview without side effects.'
+  danger_class: GREEN
 - name: forge_shell_dryrun
   organ: A-FORGE
-  lane: PREPARE
+  access: public
+  description: A-FORGE tool
+  lane: READ
   mutation: false
-  authority_required: F13_REQUIRED
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: BLACK
-  description: 'Preview a shell command''s output WITHOUT executing it. Returns what
-    WOULD happen. F1 AMANAH: no mutation, pure dry-run. For actual execution, use
-    forge_shell.'
+  danger_class: GREEN
 - name: forge_shell_status
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: BLACK
-  description: 'Check forge_shell subsystem health: ledger state, judge pattern count,
-    defaults.'
+  danger_class: GREEN
 - name: forge_shell_ledger
   organ: A-FORGE
-  lane: RECORD
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: VERIFIED_STATE
-  ttl_seconds: null
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: BLACK
-  description: Query recent ArifSeal hash-chain ledger entries. Read-only, paged.
-    Returns last N records with chain integrity status.
+  danger_class: GREEN
 - name: forge_shell_alert_history
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: BLACK
-  description: View recent ArifJudge alert history (DENY/GATE/self-modification events).
-    Read-only.
-- name: forge_job
-  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Background job system. Modes: submit, status.'
 - name: forge_status
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Active execution state: jobs, leases, agents. INFRA-class. P2.2 canonical
-    gap fill.'
-- name: forge_abort
+- name: forge_vps_ports
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Safe stop + rollback for running execution. Requires lease or session
-    auth. P2.3 canonical gap fill.
-- name: forge_skill
+- name: forge_vps_services
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Dynamic tool forge (APEX Epoch 34\u03A9). Generates a new MCP tool\
-    \ via LLM, gated by HARAM scan + Decision Field (G=Q\xB7V\xB7\u03A8\xB7\u03A6\
-    ), sealed to VAULT999. Phase 1: human approval per generation, 24h expiry, max\
-    \ 1 generation depth. F13 SOVEREIGN: arifOS domains require seal_verdict_id."
+- name: forge_vps_cron
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_security_drift_scan
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
 - name: forge_seal
   organ: A-FORGE
-  lane: RECORD
-  mutation: true
-  authority_required: PREPARE_ONLY
-  evidence_layer: VERIFIED_STATE
-  ttl_seconds: null
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Seal a Tri-Witness validated skill into permanent VAULT999 memory.
-    Irreversible. Sealed skills cannot be deleted, demoted below TRUSTED, or expired.
-    Requires REVIEWED tier + Tri-Witness PASS + F13 approval token.
 - name: forge_registry
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Dynamic skill registry. Modes: list (all generated tools + Decision
-    Field), get (one tool manifest), scars (Scar Law history), fingerprint (registry
-    integrity hash), scan (HARAM scan arbitrary code). Volatile + 24h expiry by default.'
-- name: forge_evaluate
-  organ: A-FORGE
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "APEX v36\u03A9 evaluation gate. Computes G = A\xB7P\xB7E\xB7X\xB7\u03A6\
-    \ (Nash bargaining product) and C_dark = A\xB7(1-P)\xB7(1-X) for a candidate tool\
-    \ spec. Returns SEAL/REVIEW/VOID verdict. Does NOT generate code \u2014 evaluates\
-    \ only. Falsifiable: thresholds must be calibrated on held-out data."
-- name: forge_witness
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "APEX v36\u03A9 tri-witness consensus gate. Computes W\xB3 = \u221B\
-    (Human \xD7 AI \xD7 External) via geometric mean (Nash 1950). Returns CONSENSUS/WEAK/DIVERGENT.\
-    \ All three channels must be present. Zero in any channel collapses consensus.\
-    \ DO NOT fake witness confidence \u2014 unknown \u2192 0.0, not 0.5. F13 SOVEREIGN:\
-    \ DIVERGENT \u2192 888_HOLD."
 - name: forge_scar
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "APEX v36\u03A9 scar metabolization gate. Seals failures as permanent\
-    \ constitutional constraints. Modes: seal (record failure), list (enumerate scars),\
-    \ consult (check fingerprint for matching scars). SCAR LAW: errors are metabolized\
-    \ into constitutional constraints. Pain = \u0394S spike. Learning = cooling. F1\
-    \ AMANAH: scars are immutable once sealed."
-- name: forge_register
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "APEX v36\u03A9 gated registration gate. Registers a tool ONLY after\
-    \ all gates pass: SEAL verdict from forge_evaluate, CONSENSUS from forge_witness,\
-    \ HARAM scan pass, and scar consultation pass. Non-compensatory: any single gate\
-    \ failure blocks registration. 24h TTL expiry. Backward compatible with forge_skill\
-    \ registry."
 - name: forge_reality_loop
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "THE 13TH TOOL \u2014 Chains all 12 MCP prompts into a perpetual autonomous\
-    \ reality loop. Modes: start | advance | record | report | metrics | list | destroy.\
-    \ Constitutional F1-F13 at every stage. \u0394S \u2264 0 per iteration. Self-improving."
+- name: forge_parallel_status
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: forge_parallel_list
+  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
 - name: forge_research
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Governed research across web sources. OBSERVE-class.
 - name: forge_search
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Governed web search via Brave. OBSERVE-class.
 - name: forge_docs_lookup
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Governed docs lookup via Context7. OBSERVE-class.
-- name: forge_browser_navigate
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Navigate browser to URL. OBSERVE-class.
-- name: forge_browser_click
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Click a browser element. OBSERVE-class.
-- name: forge_browser_type
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Type text into a browser element. OBSERVE-class.
-- name: forge_browser_screenshot
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Take a browser screenshot. OBSERVE-class.
-- name: forge_browser_extract_text
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Extract text from browser page. OBSERVE-class.
-- name: forge_browser_evaluate_js
-  organ: A-FORGE
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Evaluate JS in browser context. OBSERVE-class.
 - name: forge_github_search_code
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: RED
-  description: Search GitHub code. OBSERVE-class.
+  danger_class: GREEN
 - name: forge_github_search_repos
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
+  access: public
+  description: A-FORGE tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
-  ttl_seconds: null
+  ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
-  danger_class: RED
-  description: Search GitHub repositories. OBSERVE-class.
+  danger_class: GREEN
 - name: forge_github_get_file
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: RED
-  description: Read a file from GitHub. OBSERVE-class.
-- name: forge_github_create_or_update_file
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: RED
-  description: "Create or update a file on GitHub. MUTATE \u2014 lease required."
-- name: forge_github_create_issue
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: RED
-  description: "Create a GitHub issue. MUTATE \u2014 lease required."
-- name: forge_github_create_pull_request
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: RED
-  description: "Create a GitHub pull request. MUTATE \u2014 lease required."
-- name: forge_netdata_alarms
-  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Read Netdata alarms. OBSERVE-class.
-- name: forge_netdata_metrics
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Read Netdata chart data. OBSERVE-class.
 - name: forge_minimax_search
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Search the web via MiniMax. OBSERVE-class.
-- name: forge_synthesize
+- name: forge_document_ingest
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Create artifact from intent. Code goes to temporary buffer ONLY \u2014\
-    \ never touches filesystem."
-- name: forge_stage
+- name: forge_policy
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Move artifact to quarantine staging. Spec becomes IMMUTABLE after staging.
-- name: forge_sandbox_run
+- name: forge_surface_guard
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: BLACK
-  description: "Execute staged artifact in isolated sandbox. ABSOLUTE timeout \u2014\
-    \ cannot be overridden."
-- name: forge_scar_scan
-  organ: A-FORGE
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "Check artifact against SCAR database. A-FORGE detects but CANNOT judge\
-    \ \u2014 arifOS judges."
-- name: forge_skillstore_write
-  organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Store artifact with provenance. WRITE mode only. Two-layer retention
-    with SCAR immunization.
-- name: forge_skillstore_read
+- name: forge_surface_audit
   organ: A-FORGE
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Query artifact store. Semantic search with tag filtering.
-- name: forge_tier_bind
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Set trust tier LOWER BOUND only. A-FORGE cannot promote \u2014 only\
-    \ arifOS sets actual tier."
-- name: forge_docket_prep
-  organ: A-FORGE
-  lane: PREPARE
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Package all evidence and hand off to arifOS. A-FORGE RELINQUISHES\
-    \ CONTROL \u2014 docket is read-only."
-- name: forge8_execute
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: BLACK
-  description: "Execute with VAULT999 seal. FAILS HARD without valid seal \u2014 no\
-    \ self-authorization possible."
-- name: document_ingest
-  organ: A-FORGE
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Document intelligence engine \u2014 layout-first parsing with bounding-box\
-    \ provenance.\n\nModes:\n  analyze  \u2014 Layout analysis only. Return structure\
-    \ tree with element types and positions.\n  extract  \u2014 Full pipeline: layout\
-    \ + text extraction + structured JSON with bbox coordinates.\n  chunk    \u2014\
-    \ Extract then semantic chunk for RAG consumption (strategies: semantic, section,\
-    \ page).\n  compare  \u2014 Diff two documents (structural + text similarity).\n\
-    \nOutput: Structured JSON with typed elements (paragraph, table, image), bounding\
-    \ boxes, page numbers,\nand SHA-256 provenance hash. Every claim traceable to\
-    \ source coordinates \u2014 VAULT999-compatible.\n\nIntegration: Telegram PDF\
-    \ \u2192 Hermes \u2192 document_ingest \u2192 structured JSON \u2192 AAA/GEOX/WEALTH/VAULT999.\n\
-    \nBlast radius: LOW (read-only, no side effects). Reversibility: FULL."
 - name: forge_lock
   organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: RED
-  description: 'Amanah/F1 lock primitive. Modes: acquire (reversible F1 gate before
-    mutation), release (free lock).'
-- name: forge_pipeline_run
-  organ: A-FORGE
-  lane: EXECUTE
-  mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: BLACK
-  description: "Autonomous intelligence pipeline (canonical). Routes organs, evidence\u2192\
-    compute\u2192(optional judge+seal). Requires cc_id/hold for mutate."
-- name: geox_egs_query_entity
-  organ: GEOX
+  access: public
+  description: A-FORGE tool
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Query earth graph entities by type, name, bbox, or ID. Pure read-only
-    query.
-- name: geox_egs_query_claim
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Query claim envelopes by status, domain, entity, or author. Pure read-only
-    query.
-- name: geox_egs_query_uncertainty
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Query uncertainty associated with an entity or claim. Pure read-only
-    query.
-- name: geox_egs_query_provenance
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Query provenance history for an entity. Pure read-only query.
-- name: geox_egs_claim_create
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Create a new geological claim with typed evidence structure and provenance.
-- name: geox_egs_claim_challenge
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Challenge an existing claim with contradictory evidence. Updates status
-    to CHALLENGED.
-- name: geox_egs_evidence_attach
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Attach evidence to an existing claim. Can be supporting or contradictory.
-- name: geox_egs_evidence_reason
-  organ: GEOX
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Analyze evidence for a claim. Synthesize or grade the evidence quality.
-- name: geox_egs_seismic_compute
-  organ: GEOX
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Compute seismic properties (AI, EI, Vp/Vs) from velocity and density.
-- name: geox_egs_rock_physics
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Compute Voigt-Reuss-Hill velocity bounds from mineral/fluid properties.
-- name: geox_egs_data_qc_bundle
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: 'Run quality control checks on earth entities: completeness, consistency,
-    provenance.'
-- name: geox_egs_scenario_audit
-  organ: GEOX
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Audit alternative scenarios / competing interpretations for claims.
-- name: geox_geomechanics
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Derive geomechanical moduli (K, G, E, \u03BD, AI) from a Physics13State\
-    \ cell.\n\nReturns all derived scalars + sanity flags + grade (RAW/AAA) + godel_wall.\n\
-    Optional: buoyancy computation when thickness_m is provided."
-- name: geox_deep_time_state
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Deep Time State \u2014 returns an Earth State Vector for the requested\
-    \ deep time.\n\nF2 TRUTH: age resolution via ICS Chart v2024/12.\nF7 HUMILITY:\
-    \ confidence hard-capped at 0.90.\nF11 AUDIT: every envelope carries governance\
-    \ footer."
 - name: geox_well_ingest
   organ: GEOX
+  access: public
+  description: Load well log data from LAS, SEG-Y, DST, deviation, or tops files.
+    Auto-detects format.
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Load well log data (LAS, SEG-Y, DST, deviation, tops).
-- name: geox_well_qc
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: 'QC: depth, curves, completeness, FJIS.'
-- name: geox_well_desurvey
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: '3D wellbore geometry from deviation survey.
-
-
-    Phase 2.1 (2026-06-28): evidence-only. Computes TVD/X/Y/TVDSS trajectory
-
-    using industry-standard minimum curvature method (wellpathpy). Returns
-
-    geox.desurvey.v1 envelope with claim-tagged uncertainty.
-
-    See forge_work/GEOX-ADAPT-001-r1.md for spec + 12 golden tests.'
 - name: geox_petrophysics
   organ: GEOX
+  access: public
+  description: 'Unified petrophysics: Vsh, porosity, Sw, permeability, net pay, LEM
+    inference, QC. Modes: generate, verify, lem_inference, stoip_feed, qc.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: Vsh, porosity, Sw, perm, net pay, LEM.
-- name: geox_sequence
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Sequence stratigraphy, correlation. Pattern A wrapper \u2014 see sequence_unified.geox_sequence."
-- name: geox_surface_status
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Federation-standard registry probe for GEOX.\n\nUse this to discover\
-    \ what GEOX actually exposes.\nNot geox_system_registry_status (removed Phase\
-    \ 1).\nNot geox_doctrine (judgment lane, arifOS-only).\n\nModes:\n  registry \
-    \ \u2014 canonical tool list + domains + affordance summary\n  health    \u2014\
-    \ service status, version, uptime\n\nThis is the GAP-1 fix: one standard name\
-    \ across all organs.\nWEALTH has wealth_system_registry_status. GEOX now has geox_surface_status.\n\
-    arifOS has arifOS tools for the same purpose."
 - name: geox_seismic_ingest
   organ: GEOX
+  access: public
+  description: SEG-Y I/O, header inspection, export.
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: SEG-Y I/O, header inspection.
-- name: geox_seismic_interpret
-  organ: GEOX
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Horizon contrast, faults, frames, blend.
-- name: geox_vision
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: VLM inference, audit, calibration, perceptual.
-- name: geox_subsurface_model
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Joint inversion, gravity/mag, MT forward.
-- name: geox_basin
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Profile, resolve, macrostrat, deep_time, emag2, icgem, intake, scene.\n\
-    \nPattern A (explicit params) \u2014 fastmcp 3.4.2 does not support **kwargs in\
-    \ tool\nsignatures, so every parameter of basin_unified.geox_basin is declared\
-    \ here.\nSession metadata is forwarded only if the impl signature accepts it."
-- name: geox_claim
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Create, validate, challenge, seal, attach.
-- name: geox_evidence
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Discover, synthesize, abduct, contradict, literature. Pattern A wrapper.
-- name: geox_prospect
-  organ: GEOX
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: Volumetrics, POS, EVOI, risk assessment. Pattern A wrapper.
 - name: geox_seismic_compute
   organ: GEOX
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'Unified seismic physics engine.
-
-
-    Replaces: geox_forward_model_synthetic, geox_seismic_well_tie_compute,
-
-    geox_time_depth_anchor, geox_anomalous_contrast_detector,
-
-    geox_seismic_analyze_volume.'
-- name: wealth_wisdom_evaluate
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'Evaluate a capital allocation proposal across 6 wisdom dimensions.
-
-    Returns dignity impact, sovereignty effect, resilience score,
-
-    inequality effect, ecological cost, and optionality preservation.
-
-
-    WEALTH computes. arifOS judges. Arif decides.'
-- name: wealth_power_audit
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "Audit the power dynamics of a capital scenario.\nReturns incentive\
-    \ map, capture risk, rent extraction score,\nopacity level, coercion signals,\
-    \ and rule asymmetry.\n\nCatches AI advice that sounds balanced but hides weak\
-    \ evidence\nor dangerous allocation geometry.\n\nSOCIAL-SYMBOLIC INVARIANT (legitimacy_score):\n\
-    \  Optional dict with keys: public_trust (0-1), procedural_fairness (0-1),\n \
-    \ outcome_fairness (0-1), historical_decisions (list).\n  When provided, adds\
-    \ institutional legitimacy tracking."
-- name: wealth_capture_scan
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'Scan AI-generated financial advice for capture signals.
-
-    Detects: hidden incentives, omitted downsides, false precision,
-
-    time-pressure language, authority claims without evidence.'
-- name: wealth_epistemic_audit
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'Audit epistemic bias in institutional decision-making.
-
-
-    Detects 7 dimensions of epistemic failure:
-
-    - Model Ownership: Who proposed it defends it (identity risk)
-
-    - Signal Demotion: Evidence seen but ranked secondary
-
-    - Analog Anchoring: Success template overrides evidence
-
-    - Pipeline Inertia: Approval system makes pivot hard
-
-    - Governance Constraint: Challenge without breaking system
-
-    - Contradiction Density: Wells disagreeing with models
-
-    - Zweig Alignment: Incentive-truth mapping (3 rules)
-
-
-    People do not defend what is true.
-
-    People defend what their incentives make survivable.
-
-
-    WEALTH computes. arifOS judges. Arif decides.'
-- name: wealth_compute_npv
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Compute Net Present Value of a series of cash flows.
-- name: wealth_compute_irr
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Compute Internal Rate of Return.
-- name: wealth_conservation_check
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'Compute capital conservation: net worth, asset/liability totals.'
-- name: wealth_flow_check
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'Compute cash flow: net, income, expenses, monthly burn.'
-- name: wealth_runway_check
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Compute financial runway in months.
-- name: wealth_compute_emv
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Compute Expected Monetary Value with variance and std dev.
-- name: wealth_monte_carlo_simulate
-  organ: WEALTH
+  access: public
+  description: 'Seismic computation: forward model, well tie, attributes, wavelet
+    extraction, inversion.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Run Monte Carlo simulation for value projection.\n\nSOCIAL-SYMBOLIC\
-    \ extension (population_mode):\n  When True, models collective behavior dynamics\
-    \ \u2014 S-curve adoption,\n  tipping points, network effects, institutional resistance.\
-    \ Returns\n  population_dynamics alongside financial projections."
-- name: wealth_compute_evoi
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: Compute Expected Value of Information (EVOI).
-- name: wealth_confluence_check
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "Detect false confluence \u2014 indicators measuring the same signal."
-- name: wealth_asymmetry_check
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "Compute risk asymmetry \u2014 is the distribution skewed?"
-- name: wealth_fiscal_breakeven
-  organ: WEALTH
+- name: geox_seismic_interpret
+  organ: GEOX
+  access: public
+  description: 'Unified seismic interpretation: horizon/fault picking, RSI pipeline,
+    vision, contrast detection. Modes: horizon_contrast, fault_sticks, volume_frame,
+    blend, rsi_pipeline, contrast, vision.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: 'Compute oil price at which Malaysia''s fiscal path becomes unsustainable.
-
-
-    Returns breakeven price, fiscal pressure classification (UNSUSTAINABLE/AT_RISK/MANAGEABLE),
-
-    and sensitivity analysis. Answers what Monte Carlo cannot: a single threshold.
-
-
-    Budget 2026 calibration: total revenue RM343.1B, operating exp RM302B,
-
-    petroleum revenue RM43B (dividend RM20B + tax RM23B), target deficit 3.5% GDP.'
-- name: wealth_stock_analysis
-  organ: WEALTH
+- name: geox_subsurface_model
+  organ: GEOX
+  access: public
+  description: 'Subsurface model building: joint inversion, gravity/magnetic forward,
+    MT forward.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "D4 Stock Analysis \u2014 16-mode capital-risk governance.\nDelegates\
-    \ to internal/stock/ engines."
-- name: wealth_personal_finance
-  organ: WEALTH
+- name: geox_basin
+  organ: GEOX
+  access: public
+  description: 'Unified basin intelligence: profile, resolve, macrostrat, backstrip,
+    mass balance, thermal maturity, map context, deep time, tectonic reconstruction.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "D1 Personal Finance \u2014 cashflow, runway, net worth, EPF, zakat.\n\
-    Delegates to internal/personal_finance.py engines."
-- name: wealth_market_data
-  organ: WEALTH
+- name: geox_sequence
+  organ: GEOX
+  access: public
+  description: 'Unified stratigraphy: sequence analysis, biostratigraphic parsing
+    and falsification. Modes: correlation, biostrat_parse, biostrat_falsify.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "D3 Market Data \u2014 FX rates, commodities, macro indicators.\nDelegates\
-    \ to internal/market_data.py engines."
-- name: wealth_omni_wisdom
-  organ: WEALTH
+- name: geox_geomechanics
+  organ: GEOX
+  access: public
+  description: 'Geomechanical analysis: bulk/shear/young modulus, poisson ratio, acoustic
+    impedance, stress polygon.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Unified capital intelligence \u2014 synthesis + deal + hysteresis.\n\
-    Modes:\n  - synthesize: monolith synthesis (default)\n  - deal / deal_frame: monolith\
-    \ deal framing\n  - hysteresis / path_params: hysteresis-aware path analysis\n\
-    \  - counterfactual: structured counterfactual across 13 primitives\n        \
-    \            (LOCAL, forged 2026-06-24)\n\nSOCIAL-SYMBOLIC extension (Phase 3):\n\
-    \  - institutional_trust: {track_record, transparency, accountability,\n    legitimacy_source}\
-    \ \u2014 7th wisdom dimension, blocks SEAL if DISTRUST"
-- name: wealth_agent_path
-  organ: WEALTH
+- name: geox_deep_time_state
+  organ: GEOX
+  access: public
+  description: 'Earth State Vector through deep time: GPTS, CO2, sea level, temperature,
+    paleogeography.'
   lane: READ
   mutation: false
-  authority_required: OBSERVE_ONLY
+  authority_required: OBSERVER
   evidence_layer: CACHED_STATE
   ttl_seconds: 300
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: GREEN
-  description: "Sovereign Intent Router \u2014 classifies tasks into L1/L2 paths.\n\
-    Delegates to monolith's agent_path implementation."
-- name: wealth_vault_write
+- name: geox_claim
+  organ: GEOX
+  access: public
+  description: 'Unified claim lifecycle: create, validate, challenge, seal, evidence,
+    consequence, optionality, cascade, feedback integrity, truth challenge.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_prospect
+  organ: GEOX
+  access: public
+  description: 'Prospect evaluation: volumetrics, POS, EVOI, risk assessment. Modes:
+    screen, evaluate.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_gravmag_studio
+  organ: GEOX
+  access: public
+  description: 'Gravity/magnetic studio: forward modeling and screening. Modes: open,
+    screen.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_well_desk
+  organ: GEOX
+  access: public
+  description: 'Well desk: interactive view, publish rendered panel, render well panel.
+    Modes: open, publish, render.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_surface_status
+  organ: GEOX
+  access: public
+  description: 'Federation-standard registry probe: tool discovery and health status.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_evidence
+  organ: GEOX
+  access: public
+  description: 'Unified evidence synthesis: discover, synthesize, abduct, contradict,
+    spatial_block, ingest_literature.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_basin_backstrip
+  organ: GEOX
+  access: public
+  description: '1D basin backstripping: Steckler & Watts 1978 + Sclater & Christie
+    1980. Reconstruct tectonic and total subsidence through time.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_sediment_mass_balance
+  organ: GEOX
+  access: public
+  description: Source-to-sink sediment volume and mass accounting. Peters 2012 framework.
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_thermal_maturity_history
+  organ: GEOX
+  access: public
+  description: Burial + heat flow + maturity modeling through time. EasyRo + TTI.
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_claim_graph_evaluate
+  organ: GEOX
+  access: public
+  description: Evaluate parent claim validity when child claims fail. DAG evaluation
+    with AND/OR/WEIGHTED dependencies.
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_falsify
+  organ: GEOX
+  access: public
+  description: 'Popperian falsification engine — Kill Matrix K001-K007 + contradiction
+    scan. GENESIS/015 architecture: physics must prove the claim is right. ANY KILL
+    → rejected. All PASS → PROCEED to 888_JUDGE.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_contradiction_scan
+  organ: GEOX
+  access: public
+  description: Scan claims for contradictions using 13-type ontology. Classifies severity
+    (FATAL/HIGH/MEDIUM/LOW) and resolution path (VOID/HOLD/DEMOTE/ESCALATE). FATAL
+    → 888_HOLD.
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_lem_predict
+  organ: GEOX
+  access: public
+  description: LEM inference — predict rock properties (porosity, Sw, lithology) from
+    well log curves. Physics-prior mode (Archie, Gardner, Wyllie) until federated
+    weights deploy.
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: geox_to_wealth_bridge
+  organ: GEOX
+  access: public
+  description: 'Cross-organ bridge: converts GEOX prospect economics to WEALTH score_kernel
+    input. F2: epistemic_source preserved. F13: blocked nodes rejected.'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_primitive
   organ: WEALTH
-  lane: RECORD
+  access: public
+  description: 'Deductive capital math primitives. Pure computation — no inference,
+    no governance verdict. Every mode is golden-tested against hand-checked cases.
+    Standard cash flow convention: CF[0] at t=0 (initial investment, typically negative),
+    CF[1:] at t=1, t=2, ...
+
+    Modes: npv | irr | emv | evoi | mc | kelly | markowitz | robust | chance_constrained
+    | two_stage
+
+    Use when: the user asks about NPV, IRR, expected monetary value, Kelly criterion
+    sizing, Markowitz portfolio optimization, Monte Carlo simulation, or any deductive
+    capital math computation.
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_health
+  organ: WEALTH
+  access: public
+  description: 'Financial health metrics. Deductive computation from structured inputs.
+    No inference, no governance verdict.
+
+    Modes: conservation | flow | runway | survival | fiscal_breakeven | confluence
+    | asymmetry
+
+    Use when: the user asks about net worth, cash flow, financial runway, burn rate,
+    fiscal breakeven oil price, or false-confluence detection in financial indicators.
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_diagnose
+  organ: WEALTH
+  access: public
+  description: 'Abductive institutional diagnostics — inference from partial evidence.
+    Surface: mode, domain_scope, payload (dict). Mode-specific fields go in payload.
+    REQUIRED: domain_scope declares calibration domain. Unknown fields are REJECTED
+    (not silently dropped to 0.0).
+
+    Modes: stress_index | governance_capacity | cascade_model | exploitation_detect
+    | collapse_signature | beautiful_mouse | capture_scan | power_audit | bid_surface
+    | optimize_mwc | cadence_monitor | crisis_reflex
+
+    Use when: institutional stress, governance, collapse, power, MWC, cadence monitoring,
+    or crisis reflex analysis.
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_wisdom
+  organ: WEALTH
+  access: public
+  description: 'Capital wisdom synthesis — evaluates proposals across dignity, sovereignty,
+    resilience, inequality, ecological cost, and optionality. Advisory only. Does
+    NOT emit GO/HOLD/SEAL verdicts — those are arifOS''s domain.
+
+    Modes: wisdom | omni | epistemic
+
+    Use when: the user wants a wisdom-weighted evaluation of a capital proposal, deal
+    framing, hysteresis-aware path analysis, or counterfactual reasoning across 13
+    capital primitives.
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_market
+  organ: WEALTH
+  access: public
+  description: "Market data and commodity intelligence. Observational with derived\
+    \ and interpreted fields.\nTop-level: mode, base, targets, commodity, operation,\
+    \ country. Stock fields in stock_payload dict.\nModes: fx | commodity | indicator\
+    \ | stock | gold | oil | gas\nFor gold/oil/gas: mode='gold'|'oil'|'gas' with operation='snapshot'|'ticker'|'signal'|'macro'|'history'|'levels'.\
+    \ Legacy: use commodity param for operation (deprecated).\nEpistemic classes per\
+    \ output field:\n  OBSERVED — price, volume, timestamp\n  DERIVED — EMA, RSI,\
+    \ support/resistance\n  INTERPRETED — LONG/SHORT/NEUTRAL signal\n\nUse when: FX,\
+    \ commodities, macro indicators, stock analysis, or gold/oil/gas market intelligence.\n"
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_ledger
+  organ: WEALTH
+  access: public
+  description: 'VAULT999 immutable ledger access. Query is read-only (no ack required).
+    Write requires explicit human acknowledgment (ack_irreversible=true). WEALTH computes.
+    arifOS judges. Arif decides. WEALTH does not self-seal.
+
+    Modes: query | write
+
+    Use when: the user wants to query past capital transactions from VAULT999, or
+    write a new transaction (requires human ack for writes).
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_registry
+  organ: WEALTH
+  access: public
+  description: 'WEALTH meta/introspection. Registry status, tool schema, domain index,
+    health check. Observational only.
+
+    Modes: status | schema | domains | health
+
+    Use when: the user wants to inspect the WEALTH tool registry, check available
+    domains, view tool schemas, or run a health check.
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: capital_entropy
+  organ: WEALTH
+  access: public
+  description: 'Capital and institutional entropy analysis. Modes: power_consequence_map,
+    metric_purpose_audit, responsibility_ledger, trust_capital_decay, coercive_order_cost,
+    entropy_externality. Measures information loss, consequence displacement, metric
+    drift. Computes, never allocates.
+
+    '
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_classify_substrate
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_trace_lineage
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_assess_homeostasis
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_check_repair
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_validate_vitality
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_assess_reliability
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_guard_dignity
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: well_registry_status
+  organ: WELL
+  access: public
+  description: WELL canonical tool
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: arif_init
+  organ: arifOS
+  access: public
+  description: 'KERNEL 000 · Session ignition. Binds actor, floors, and audit before
+    any other arif_* verb can govern. Without session_id the kernel treats the caller
+    as anonymous (OBSERVE_ONLY). Modes: ping | lig...'
+  lane: READ
+  mutation: false
+  authority_required: ANONYMOUS
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: arif_observe
+  organ: arifOS
+  access: public
+  description: 'KERNEL 111 · Sense reality into evidence (not reasoning, not judgment).
+    Modes: search | fetch | ingest | vitals | compass | atlas | entropy_dS | repo_map
+    | hybrid_discovery. Returns evidence with s...'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: arif_think
+  organ: arifOS
+  access: public
+  description: 'KERNEL 333 · Mind — structured reasoning under F2/F7 (not chat, not
+    verdict). Modes: reason | reflect | verify | plan | plan_review | plan_approve
+    | refactor_plan | metabolize | axioms. Returns OBS...'
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: arif_route
+  organ: arifOS
+  access: public
+  description: KERNEL 444 · Intent→organ router (default path to GEOX/WEALTH/WELL/A-FORGE).
+    Select when goal is known but organ/verb is not. Optional organ_tool = governed
+    bridge (prefer over arif_bridge_connect)...
+  lane: READ
+  mutation: false
+  authority_required: OBSERVER
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 300
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: GREEN
+- name: arif_memory
+  organ: arifOS
+  access: authenticated
+  description: 'KERNEL memory governor · L1–L6 under F1/F2/F4/F11 (not a free notepad).
+    Modes: recall | inspect | attest | remember | promote | revise | forget. Writes
+    are J-space mutations; arifOS judges, storage...'
+  lane: WRITE
   mutation: true
-  authority_required: F13_REQUIRED
-  evidence_layer: VERIFIED_STATE
-  ttl_seconds: null
+  authority_required: TRUSTED_AGENT
+  evidence_layer: RUNTIME
+  ttl_seconds: 600
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: ORANGE
+- name: arif_judge
+  organ: arifOS
+  access: authenticated
+  description: KERNEL 666 · Constitutional verdict — only organ that SEAL/HOLD/SABAR/VOIDs.
+    Not advice; binding floor + authority arbitration. Requires actor, intent, domain,
+    reversibility_level, blast_radius. Au...
+  lane: WRITE
+  mutation: false
+  authority_required: TRUSTED_AGENT
+  evidence_layer: CACHED_STATE
+  ttl_seconds: 600
+  runtime_callable: true
+  deprecated: false
+  replacement: null
+  danger_class: YELLOW
+- name: arif_seal
+  organ: arifOS
+  access: authenticated
+  description: 'KERNEL 999 · VAULT999 immutable append — irreversible civilizational
+    memory. Modes: seal | verify | chain | list | dry_run. seal requires ack_irreversible.
+    Kernel judges; vault seals; Arif owns F13...'
+  lane: WRITE
+  mutation: true
+  authority_required: SOVEREIGN
+  evidence_layer: RUNTIME
+  ttl_seconds: 0
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: RED
-  description: "Write a transaction to the VAULT999 ledger.\n\nAuthority: draft_receipt\
-    \ only unless arifOS judge approval.\nIrreversible \u2014 requires human confirmation\
-    \ for SEAL.\nWEALTH does NOT self-seal capital truth.\n\ncapital_primitive: conservation"
-- name: wealth_vault_query
-  organ: WEALTH
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: 'Query the VAULT999 ledger for portfolio memory and transactions.
-
-
-    Authority: read_only observe. WEALTH never mutates vault via query.
-
-    capital_primitive: conservation'
-- name: wealth_system_registry_status
-  organ: WEALTH
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "Registry truth diagnostic \u2014 intended vs registered vs callable."
-- name: wealth_boundary_governance
-  organ: WEALTH
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
+- name: arif_forge
+  organ: arifOS
+  access: authenticated
+  description: 'KERNEL 777 · Execution gate via A-FORGE (hands, not law). Mutates
+    only after arif_judge SEAL + lease/chain IDs — no self-authorize. Modes: dry_run
+    | engineer | query | write | generate | commit | r...'
+  lane: WRITE
+  mutation: true
+  authority_required: EXECUTOR
+  evidence_layer: RUNTIME
+  ttl_seconds: 600
   runtime_callable: true
   deprecated: false
   replacement: null
   danger_class: ORANGE
-  description: "\u03A9-WEALTH-11: Boundary \u2014 constitutional floors, maruah, stewardship,\
-    \ constraint.\n\nChecks F1-F13 compliance, reversibility, blast_radius, legitimacy\
-    \ risk,\ncapture risk, and stewardship risk for a capital proposal.\n\nModes:\n\
-    \  floors             \u2014 F1-F13 floor compliance check\n  federation_readiness\
-    \ \u2014 organ federation health probe\n  legitimacy_audit    \u2014 institutional\
-    \ legitimacy scoring\n\nPass context={'foreign_entity': True, 'opaque_valuation':\
-    \ True, ...}\nfor smart maruah scoring.\nPass scale_mode='sovereign' for Malaysian\
-    \ national resource context.\n\nAuthority: WEALTH computes. arifOS judges. Arif\
-    \ decides.\nWEALTH does NOT self-seal. WEALTH does NOT emit final constitutional\
-    \ approval."
-- name: wealth_survival_engine
-  organ: WEALTH
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: ORANGE
-  description: "\u03A9-SURVIVAL-ENGINE: Unified survival intelligence \u2014 cashflow,\
-    \ runway, burn, liquidity.\n\nPhysics analogy: metabolic engine \u2014 how the\
-    \ capital organism\nmaintains survival under cash flow stress.\n\nModes:\n  cashflow\
-    \         \u2014 net monthly position from income/expenses\n  runway         \
-    \ \u2014 months of survival from liquid assets / burn rate\n  burn           \
-    \ \u2014 monthly burn rate (expenses - income)\n  liquidity       \u2014 liquidity\
-    \ health including cashflow + assets\n  personal_finance \u2014 comprehensive\
-    \ survival dashboard\n\nAuthority: WEALTH computes. arifOS judges. Arif decides.\n\
-    WEALTH does NOT move capital. WEALTH does NOT self-seal."
-- name: wealth_collapse_signature_scan
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: ORANGE
-  description: "Scan a scenario text for institutional-collapse signatures against\n\
-    the historical corpus (Enron, PDVSA, Pemex, 1MDB, WorldCom).\n\nReturns:\n- profile:\
-    \ full signature profile (7 collapse signatures)\n- risk: collapse risk score\n\
-    - two_d_risk_map: Acemoglu \xD7 Calhoun quadrant\n- tripwires: 5-tripwire detection\n\
-    - dimensional_densities: per-axis density\n- priors_used: which corpus anchors\
-    \ were compared\n\nUse cases:\n- Audit a CEO speech / annual report against pre-collapse\
-    \ analogues\n- Compare PETRONAS / PEMEX / Petrobras narratives vs historical priors\n\
-    - Detect when a corporate narrative crosses from \"technocratic\n  optimism\"\
-    \ into \"triumphalism with structural erosion\"\n\nDITEMPA BUKAN DIBERI. WEALTH\
-    \ computes, arifOS judges, Arif decides."
-- name: wealth_beautiful_mouse_scan
-  organ: WEALTH
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "Scan a narrative for Calhoun Phase C (Beautiful Mouse) signatures.\n\
-    \nDetects 6 indicators:\n1. PERFECT_PERFORMANCE  \u2014 no friction narrative\n\
-    2. ZERO_FAILURE        \u2014 absence of failure treated as virtue\n3. NARRATIVE_CENTRALISATION\
-    \ \u2014 one story dominates\n4. TALENT_DRAIN        \u2014 no one inside fights,\
-    \ \u03A8 sidelined\n5. MONITOR_CULTURE     \u2014 metrics over conflict\n6. EXTERNAL_BLAME\
-    \      \u2014 delays and failures blamed outward\n\nVerdicts: ABSENT | EMERGING\
-    \ | ACTIVE | DOMINANT.\nConfidence hard-capped at 0.85 (lower than collapse scanner\n\
-    because Phase C is inherently ambiguous).\n\nUse cases:\n- Audit CEO speeches\
-    \ / annual reports for Phase C entry\n- Pre-flight check before any institutional\
-    \ health claim\n- Cross-check with collapse_signature_scan (Phase D imminent)\n\
-    \nF6 MARUAH: never names individuals. Reference roles, not people.\nF13 SOVEREIGN:\
-    \ diagnostic only, never declares collapse.\n\nDITEMPA BUKAN DIBERI. WEALTH computes,\
-    \ arifOS judges, Arif decides."
-- name: wealth_arifos_judge_handoff
-  organ: WEALTH
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: ORANGE
-  description: Prepare (or submit) a WEALTH verdict for arifOS 888_JUDGE.
-- name: well_health_check
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: 'WELL organ health check with provenance and schema version.
-
-    Canonical name: well_health_check. Legacy alias: mcp_health_check.'
-- name: well_medical_boundary
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: ORANGE
-  description: 'Explicit non-diagnosis guard for WELL.
-
-    WELL is not a doctor, therapist, or diagnostic authority.
-
-    It tracks readiness signals only.
-
-    For severe, persistent, or urgent symptoms, recommend professional care.
-
-
-    This protects operator dignity and safety.'
-- name: well_signal_coverage
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "DREAM ENGINE: Audit WELL's coverage of canonical human substrate\n\
-    signals. Returns per-signal status (active/partial/missing), coverage\nsummary,\
-    \ and cross-organ handoff suggestions for gaps.\n\nAuthority: reflect_only. WELL\
-    \ does not score the human here. WELL\naudits itself: which of the substrate signals\
-    \ am I currently\nseeing? Which are stale? Which are missing?\n\nSUNAT item per\
-    \ GENESIS/004_WELL_13_CANON.md \xA75.2."
-- name: well_classify_substrate
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "\u03A9-WELL-01: Substrate classification and boundary sensing."
-- name: well_trace_lineage
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "\u03A9-WELL-02: Memory, trend, ledger, and vault chain tracing."
-- name: well_detect_boundary
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: ORANGE
-  description: "\u03A9-WELL-03: Boundary detection across membrane, body, machine,\
-    \ and federation."
-- name: well_measure_gradient
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "\u03A9-WELL-04: Measure chemical, energy, pressure, attention, and\
-    \ compute gradients."
-- name: well_assess_metabolism
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-05: Assess biological metabolism and system throughput\
-    \ across substrates."
-- name: well_assess_homeostasis
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-06: Assess regulation, stability, and empathic balance\
-    \ under change.\n\nWhen mode=\"fatigue\", accepts biometric overrides to support\
-    \ contrast scenarios\nand real-time assessment without state.json dependency.\
-    \ Also accepts decision_class\nto route the homeostasis verdict through the C-class\
-    \ threshold matrix:\n  C1/C2 \u2014 proceed unless CRITICAL\n  C3     \u2014 proceed\
-    \ if STABLE or better\n  C4     \u2014 proceed only if OPTIMAL; DEFER if STABLE;\
-    \ ADVISORY_BLOCK if DEGRADED/CRITICAL\n  C5     \u2014 proceed only if OPTIMAL\
-    \ + no chronic fatigue; block otherwise"
-- name: well_check_repair
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-07: Check repair, recovery, resilience, and forge cycle\
-    \ integrity."
-- name: well_validate_vitality
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "\u03A9-WELL-08: Validate vitality, readiness, and NIAT. (Floor compliance\
-    \ removed \u2014 arifOS adjudicates floors.)"
-- name: well_assess_livelihood
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-09: Assess human wellness, role, dignity, support, and\
-    \ meaning."
-- name: well_assess_reliability
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-10: Assess machine, tool, institution, and operational\
-    \ reliability."
-- name: well_compute_metabolic_flux
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-10b: Compute metabolic_flux \u2014 unified thermodynamic\
-    \ entropy rate.\n\nComputes cognitive_entropy_rate + machine_entropy into a 0.0\u2013\
-    1.0 scalar.\nTriggers compulsory_reallocation signal at flux >= 0.65, and system_hold\
-    \ at >= 0.85.\n\nModes:\n  compute  \u2014 Compute current metabolic flux from\
-    \ state.\n  status   \u2014 Return cached flux verdict without recompute.\n  trigger\
-    \  \u2014 Force evaluate reallocation threshold and return signal."
-- name: well_assess_sovereign_entropy
-  organ: WELL
-  lane: ASSESS
-  mutation: false
-  authority_required: PREPARE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: null
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: YELLOW
-  description: "\u03A9-WELL-SE: Measure the sovereign's resistance to behavioral modeling.\n\
-    \nSOVEREIGNTY ENTROPY = how unpredictable and therefore unextractable the\nhuman\
-    \ operator is. High entropy: unmodelable, sovereign, safe from digital\nconsciousness\
-    \ theft. Low entropy: predictable, vulnerable, pattern-matchable.\n\nThis is NOT\
-    \ about reducing entropy \u2014 it's about PROTECTING it.\nThe machine must never\
-    \ optimize the sovereign into predictability.\n\nModes:\n  current   \u2014 compute\
-    \ entropy from available state/state.json\n  assess    \u2014 score from explicit\
-    \ behavioral signals\n  protect   \u2014 return protection recommendations if\
-    \ entropy is dropping\n  baseline  \u2014 establish baseline entropy fingerprint"
-- name: well_guard_dignity
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: ORANGE
-  description: "\u03A9-WELL-12: Guard soul, personhood, meaning, and symbolic boundaries."
-- name: well_registry_status
-  organ: WELL
-  lane: READ
-  mutation: false
-  authority_required: OBSERVE_ONLY
-  evidence_layer: CACHED_STATE
-  ttl_seconds: 300
-  runtime_callable: true
-  deprecated: false
-  replacement: null
-  danger_class: GREEN
-  description: "WELL registry truth diagnostic \u2014 blueprint canonical format.\n\
-    \nPerforms live callable tests against all known WELL tool names.\nReturns structured\
-    \ drift report: intended vs registered vs callable.\n\nThis is the WELL_REGISTRY\
-    \ tool from the WELL MCP Constitution blueprint.\nNo WELL is healthy without knowing\
-    \ its own organs.\n\nOutput format matches blueprint specification:\n  - intended_tools:\
-    \ canonical tool count\n  - registered_tools: tools registered with MCP server\n\
-    \  - callable_tools: tools that pass a safe dry-call\n  - phantom_tools: tools\
-    \ listed but returning Unknown tool\n  - deprecated_callable: legacy wrappers\
-    \ that still work\n  - canonical_callable: primary implementations that work\n\
-    \  - alias_conflicts: aliases that route to broken targets\n  - verdict: REGISTRY_DRIFT\
-    \ | REGISTRY_PASS"
