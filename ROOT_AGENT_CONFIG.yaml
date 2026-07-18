@@ -283,8 +283,8 @@ forge_instruments:
   kimi_code_home: /root/.arifos/agents/kimi
   binary: /usr/local/bin/kimi
   kimi_code_binary: /root/.kimi-code/bin/kimi
-  version: 0.18.0
-  model: kimi-for-coding
+  version: 0.26.0
+  model: minimax-coding-plan/MiniMax-M3
   native_mcp: true
   mcp_count: 9
   mcp_surface:
@@ -326,12 +326,15 @@ forge_instruments:
   host_binding: qwen-code
   agent_card: null
 - id: grok-build
-  fi_id: FI-010
+  fi_id: FI-007
   status: live
   class: forge-instrument
   citizenship: warga-aaa
-  host_binding: grok-build
+  host_binding: grok
   agent_card: agents/grok-build/agent-card.json
+  model: grok-build (xAI)
+  binary: /root/.grok/bin/grok
+  config_path: /root/.grok/config.toml
 - id: gemini-cli
   fi_id: FI-011
   status: live

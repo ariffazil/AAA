@@ -18,10 +18,10 @@
 | `owner` | Muhammad Arif bin Fazil (F13 SOVEREIGN) |
 | `binary` | `/root/.kimi-code/bin/kimi` (wrapper: `/usr/local/bin/kimi`) |
 | `config_home` | `$KIMI_CODE_HOME` → `/root/.arifos/agents/kimi` |
-| `model` | `kimi-for-coding` (K2.7 Code) |
+| `model` | `minimax-coding-plan/MiniMax-M3` (1M context, vision, thinking) |
 | `status` | active citizen |
-| `agent_card_version` | **v2.1.0** (2026-07-16 — zen pass: 7 contrast skills v1.1.0, KIMI_RSI_INIT_PROMPT v1.1.0 with cold-boot recipe, KIMI_HANDOVER_PROMPT v1.1.0 with post-deploy recipe) |
-| `last_verified` | 2026-07-16 (kimi-skill-reflector audit — ΔS ≤ 0) |
+| `agent_card_version` | **v2.2.0** (2026-07-18 — alignment pass: model → MiniMax-M3, FI-008 fix, binary path corrected) |
+| `last_verified` | 2026-07-18 (AAA alignment pass — ΔS ≤ 0) |
 
 ---
 
