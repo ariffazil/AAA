@@ -283,17 +283,23 @@ else
 fi
 
 # Also verify the doctrine statement from capability_registry.json is consistent
+# Public wire = (access == 'public') OR (tier == 'gated' OR tier == 'open')
+# Per directive: 7 open + 1 gated = 8 total public wire
 doctrine_check=$(python3 -c "
 import yaml
 data = yaml.safe_load(open('/root/arifOS/tools_sot.yaml'))
 tools = data.get('tools', [])
-public_tools = [t for t in tools if t.get('access', 'public') == 'public' or t.get('tier', '') == 'gated']
+public_tools = [
+    t for t in tools
+    if t.get('access', '') in ('public', 'authenticated')
+    or t.get('tier', '') in ('open', 'gated')
+]
 print(len(public_tools))
 " 2>/dev/null)
 if [ "$doctrine_check" = "8" ]; then
-    log_ok "arifOS public+authenticated = 8 (tier doctrine consistent)"
+    log_ok "arifOS public wire = 8 (7 open + 1 gated, doctrine consistent)"
 else
-    log_warn "arifOS public+authenticated = $doctrine_check (expected 8)"
+    log_warn "arifOS public wire = $doctrine_check (expected 8 = 7 open + 1 gated)"
 fi
 
 echo ""
