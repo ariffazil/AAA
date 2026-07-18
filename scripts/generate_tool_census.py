@@ -1,165 +1,168 @@
+#!/usr/bin/env python3
+"""Generate tool_census.yaml as an ENRICHED VIEW of federation_tools_sot.yaml.
+
+RULE: There is exactly ONE federation aggregate (federation_tools_sot.yaml).
+This script generates tool_census.yaml by:
+  1. Reading all organ SOT files (tool names + visibility)
+  2. Enriching with ABI data (action_class, mutation, authority, floors)
+  3. Computing derived fields (lane, danger_class, ttl)
+  4. Writing the enriched census
+
+tool_census.yaml is NEVER hand-edited. It is always generated from SOT + ABI.
+"""
+
+import hashlib
 import json
-import os
 import sys
-import time
-import urllib.request
-import urllib.error
+from datetime import datetime, timezone
+from pathlib import Path
+
 import yaml
 
-BEARER_PATH = "/root/.secrets/aaa-identity/agentmesh.token"
-MCP_PROTOCOL = "2025-11-25"
-INIT_TIMEOUT = 5.0
-
-PORTS = {
-    "arifOS": 8088,
-    "A-FORGE": 7072,
-    "GEOX": 8081,
-    "WEALTH": 18082,
-    "WELL": 18083,
+# SOT files per organ
+ORGAN_SOTS = {
+    "arifOS": Path("/root/arifOS/tools_sot.yaml"),
+    "A-FORGE": Path("/root/A-FORGE/tools_sot.yaml"),
+    "GEOX": Path("/root/GEOX/tools_sot.yaml"),
+    "WEALTH": Path("/root/WEALTH/tools_sot.yaml"),
+    "WELL": Path("/root/WELL/tools_sot.yaml"),
 }
 
-def load_bearer_token():
-    if os.path.exists(BEARER_PATH):
-        with open(BEARER_PATH, "r") as f:
-            return f.read().strip()
-    return ""
+# ABI enrichment source
+ABI_PATH = Path("/root/arifOS/arifosmcp/abi/capability_registry.json")
 
-def http_post_with_headers(url, payload, token="", extra_headers=None):
-    headers = {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "Mcp-Protocol-Version": MCP_PROTOCOL,
-    }
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
-    if extra_headers:
-        headers.update(extra_headers)
-        
-    req = urllib.request.Request(url, headers=headers, data=json.dumps(payload).encode("utf-8"), method="POST")
-    try:
-        with urllib.request.urlopen(req, timeout=INIT_TIMEOUT) as resp:
-            resp_data = json.loads(resp.read().decode("utf-8"))
-            resp_headers = resp.headers
-            return resp_data, resp_headers
-    except urllib.error.HTTPError as e:
-        print(f"HTTPError: {e.code} for {url} - {e.read().decode('utf-8', errors='ignore')}")
-        raise e
+FEDERATION_SOT = Path("/root/AAA/docs/federation_tools_sot.yaml")
+OUTPUT = Path("/root/AAA/docs/tool_census.yaml")
 
-def query_tools(organ, port, token):
-    url = f"http://localhost:{port}/mcp"
-    print(f"Querying tools for {organ} on port {port}...")
-    
-    # 1. Initialize Handshake
-    init_payload = {
-        "jsonrpc": "2.0",
-        "id": 1,
-        "method": "initialize",
-        "params": {
-            "protocolVersion": MCP_PROTOCOL,
-            "capabilities": {"tools": {}, "resources": {}, "prompts": {}},
-            "clientInfo": {"name": "tool_census_generator", "version": "1.0.0"},
+# Lane derivation from action_class
+LANE_MAP = {
+    "OBSERVE": "READ",
+    "PREPARE": "READ",
+    "MATERIAL": "WRITE",
+    "IRREVERSIBLE": "WRITE",
+}
+
+# Danger class from action_class + mutation + irreversible
+DANGER_MAP = {
+    ("OBSERVE", False, False): "GREEN",
+    ("PREPARE", False, False): "GREEN",
+    ("MATERIAL", False, False): "YELLOW",
+    ("MATERIAL", True, False): "ORANGE",
+    ("MATERIAL", True, True): "RED",
+    ("IRREVERSIBLE", True, True): "RED",
+}
+
+# TTL defaults by action class
+TTL_MAP = {
+    "OBSERVE": 300,
+    "PREPARE": 300,
+    "MATERIAL": 600,
+    "IRREVERSIBLE": 0,
+}
+
+
+def load_abi_enrichment() -> dict[str, dict]:
+    """Load enrichment data from capability_registry.json."""
+    if not ABI_PATH.exists():
+        return {}
+    with open(ABI_PATH) as f:
+        abi = json.load(f)
+    enrichment = {}
+    for cap in abi.get("capabilities", []):
+        name = cap["provider"]["tool"]
+        enrichment[name] = {
+            "action_class": cap["action_class"],
+            "mutation": cap["mutation"],
+            "irreversible": cap["irreversible"],
+            "authority_required": cap["authority_required"],
+            "floors": cap.get("constitutional_floors", []),
         }
-    }
-    init_res, resp_headers = http_post_with_headers(url, init_payload, token)
-    if "error" in init_res:
-        raise ValueError(f"Init error: {init_res['error']}")
-        
-    # Get session ID from headers or result
-    session_id = resp_headers.get("Mcp-Session-Id") or resp_headers.get("mcp-session-id")
-    if not session_id and "result" in init_res:
-        # Check if session ID is inside the result meta or serverInfo
-        session_id = init_res["result"].get("meta", {}).get("sessionId")
-        
-    extra_headers = {}
-    if session_id:
-        extra_headers["Mcp-Session-Id"] = session_id
-        print(f"  Bound session ID: {session_id[:8]}...")
-    else:
-        # Fallback: if no session ID header returned, try using a dummy or let it slide
-        print("  Warning: No session ID returned in initialize response headers.")
-        
-    # 2. tools/list Request
-    list_payload = {
-        "jsonrpc": "2.0",
-        "id": 2,
-        "method": "tools/list",
-        "params": {}
-    }
-    list_res, _ = http_post_with_headers(url, list_payload, token, extra_headers)
-    if "error" in list_res:
-        raise ValueError(f"List error: {list_res['error']}")
-        
-    return list_res.get("result", {}).get("tools", [])
+    return enrichment
 
-def classify_tool(name):
-    name_lower = name.lower()
-    if any(x in name_lower for x in ["seal", "record", "archive", "ledger", "vault_write"]):
-        return "RECORD"
-    if any(x in name_lower for x in ["shell", "execute", "sandbox_run", "systemctl", "docker", "filesystem", "lock", "pipeline_run", "git", "github", "postgres"]):
-        if "dryrun" in name_lower or "preview" in name_lower or "check" in name_lower:
-            return "PREPARE"
-        return "EXECUTE"
-    if any(x in name_lower for x in ["dryrun", "preview", "plan", "docket_prep", "prepare"]):
-        return "PREPARE"
-    if any(x in name_lower for x in ["evaluate", "audit", "scan", "check", "assess", "verify", "compare", "reason", "interpret", "predict", "compute", "calculate", "asymmetry", "confluence"]):
-        return "ASSESS"
-    return "READ"
 
-def danger_class_tool(name, lane):
-    name_lower = name.lower()
-    if any(x in name_lower for x in ["shell", "execute", "systemctl", "docker", "postgres", "sandbox_run", "pipeline_run"]):
-        return "BLACK"
-    if any(x in name_lower for x in ["filesystem", "lock", "git", "github", "vault_write"]):
-        return "RED"
-    if any(x in name_lower for x in ["boundary", "survival", "collapse", "dignity", "judge_handoff"]):
-        return "ORANGE"
-    if lane == "ASSESS" or any(x in name_lower for x in ["compute", "evaluate", "analyse", "parse"]):
-        return "YELLOW"
-    return "GREEN"
+def derive_fields(entry: dict, enrichment: dict[str, dict]) -> dict:
+    """Add derived fields to a tool entry."""
+    name = entry["name"]
+    abi = enrichment.get(name, {})
 
-def main():
-    token = load_bearer_token()
+    action_class = abi.get("action_class", "OBSERVE")
+    mutation = abi.get("mutation", False)
+    irreversible = abi.get("irreversible", False)
+
+    entry["lane"] = LANE_MAP.get(action_class, "READ")
+    entry["mutation"] = mutation
+    entry["authority_required"] = abi.get("authority_required", "OBSERVER")
+    entry["evidence_layer"] = "RUNTIME" if mutation else "CACHED_STATE"
+    entry["ttl_seconds"] = TTL_MAP.get(action_class, 300)
+    entry["runtime_callable"] = entry.get("access", "public") != "internal_only"
+    entry["deprecated"] = entry.get("status") == "deprecated"
+    entry["replacement"] = None  # filled manually if needed
+    entry["danger_class"] = DANGER_MAP.get((action_class, mutation, irreversible), "GREEN")
+
+    return entry
+
+
+def main() -> None:
+    enrichment = load_abi_enrichment()
+    census_tools = []
+    organ_counts = {}
+
+    for organ_name, sot_path in sorted(ORGAN_SOTS.items()):
+        if not sot_path.exists():
+            print(f"WARNING: SOT not found for {organ_name} at {sot_path}", file=sys.stderr)
+            continue
+
+        with open(sot_path) as f:
+            sot = yaml.safe_load(f)
+
+        tools = sot.get("tools", [])
+        organ_counts[organ_name] = {"total": len(tools), "public": 0, "internal": 0}
+
+        for tool in tools:
+            entry = {
+                "name": tool["name"],
+                "organ": organ_name,
+                "access": tool.get("access", "public"),
+                "description": tool.get("description", ""),
+            }
+
+            # Count by class
+            access = tool.get("access", "public")
+            if access in ("public", "authenticated"):
+                organ_counts[organ_name]["public"] += 1
+            else:
+                organ_counts[organ_name]["internal"] += 1
+
+            # Skip internal-only tools from census (they're in SOT but not federation-facing)
+            if access == "internal_only":
+                continue
+
+            # Enrich with ABI data
+            entry = derive_fields(entry, enrichment)
+            census_tools.append(entry)
+
     census = {
         "census_metadata": {
-            "version": "1.0.0",
-            "timestamp_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            "owner": "arifOS Federation Control Plane / AAA",
+            "version": "2.0.0",
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "source": str(FEDERATION_SOT),
+            "description": (
+                "GENERATED VIEW of federation_tools_sot.yaml + ABI enrichment. "
+                "Do not hand-edit. Regenerate with: python3 /root/AAA/scripts/generate_tool_census.py"
+            ),
+            "inclusion_rule": "public + authenticated tools only. internal_only excluded.",
+            "organ_counts": organ_counts,
         },
-        "tools": []
+        "tools": census_tools,
     }
-    
-    for organ, port in PORTS.items():
-        try:
-            tools = query_tools(organ, port, token)
-            print(f"Retrieved {len(tools)} tools for {organ}.")
-            for t in tools:
-                name = t.get("name")
-                desc = t.get("description", "")
-                lane = classify_tool(name)
-                danger = danger_class_tool(name, lane)
-                
-                census["tools"].append({
-                    "name": name,
-                    "organ": organ,
-                    "lane": lane,
-                    "mutation": lane == "EXECUTE" or lane == "RECORD",
-                    "authority_required": "F13_REQUIRED" if danger in ["RED", "BLACK"] else "OBSERVE_ONLY" if lane == "READ" else "PREPARE_ONLY",
-                    "evidence_layer": "VERIFIED_STATE" if lane == "RECORD" else "CACHED_STATE",
-                    "ttl_seconds": 300 if lane == "READ" else None,
-                    "runtime_callable": True,
-                    "deprecated": False,
-                    "replacement": None,
-                    "danger_class": danger,
-                    "description": desc,
-                })
-        except Exception as e:
-            print(f"Error querying {organ}: {e}")
-            
-    output_path = "/root/AAA/docs/tool_census.yaml"
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, "w") as f:
-        yaml.dump(census, f, sort_keys=False, indent=2)
-    print(f"Successfully generated tool census at {output_path}")
+
+    with open(OUTPUT, "w") as f:
+        yaml.dump(census, f, default_flow_style=False, sort_keys=False, allow_unicode=True)
+
+    print(f"tool_census.yaml generated: {len(census_tools)} tools from {len(organ_counts)} organs")
+    for organ, counts in organ_counts.items():
+        print(f"  {organ}: {counts['public']} public + {counts['internal']} internal = {counts['total']} total")
+
 
 if __name__ == "__main__":
     main()
