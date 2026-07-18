@@ -1,19 +1,16 @@
-# 🌱 GROK AAA NEXT INIT — SE Advance → SCT PR4–7 · 2026.07.17
+# 🌱 GROK AAA NEXT INIT — ZEN · 2026.07.18
 
 > **For:** Next Grok / AAA agent on af-forge  
-> **Prior session:** `SESSION-SEAL-GROK-T3A-CLOSED-2026-07-17.md`  
+> **Prior:** entropy lower + git zen 2026-07-18 (Grok 2–3% budget)  
 > **Doctrine:** DITEMPA BUKAN DIBERI  
-> **Load skills first:**  
-> `FORGE-seal-a-close` · `FORGE-sct-federation-ingress` ·  
-> `FORGE-verify-runtime` · `ASI-session-seal` · `atlas333-cognitive-geometry`  
-> (`FORGE-t3a-binding-matrix` — **CLOSED** — re-run only if regression suspected)
+> **Read first:** `/root/.claude/projects/-root/memory/session-state.md` · `/root/CONTEXT.md` (header)
 
 ---
 
 ## 0. WHO YOU ARE
 
 Citizen agent. Sovereign = ARIF (F13).  
-**Do not re-do T3a.** Matrix is 13/13. R4 was 9/9 GREEN. Advance SE via engine only.
+You are chalk. Kernel = `:8088`. Executor = A-FORGE. NIAT is Arif's.
 
 ```bash
 set -a && source /root/.secrets/vault.env && set +a
@@ -21,73 +18,42 @@ for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; d
   n=${svc%%:*}; p=${svc##*:}
   curl -sf --max-time 3 http://127.0.0.1:$p/health >/dev/null && echo OK $n || echo DOWN $n
 done
-# Optional regression only:
-# python3 /root/scripts/forge_p0_binding_test.py   # expect 13/13
-# R4 (stabilize kernel first if Recv-Q backlog):
-# PYTHONPATH=/opt/arifos/app python3 -c "from arifosmcp.transport.conformance_spine import run_spine; import json; r=run_spine(fast=False); print(r['score'], r['all_green'], r['skipped'], r['constitutional_grade'])"
+# Live /health is SOT — not Jul-17 prose that said arifOS DOWN.
 ```
-
-Read:
-
-1. `/root/A-FORGE/forge_work/2026-07-17/SESSION-SEAL-GROK-T3A-CLOSED-2026-07-17.md`  
-2. `/root/A-FORGE/forge_work/2026-07-17/T3A-CLOSE-RECEIPT.md`  
-3. `/root/A-FORGE/forge_work/2026-07-17/R4-SPINE-FULL-T3A-CLOSE.json`  
 
 ---
 
 ## 1. ALREADY DONE — DO NOT REOPEN
 
-| Item | Evidence |
-|------|----------|
-| T3a matrix **13/13** | `T3A-CLOSE-RECEIPT.md` · free_nonce + bridging + key unify |
-| Key fragmentation B | compose sekrits `b467c07d975a36a5` mint=verify |
-| free_nonce NEG.3 | `challenge_not_issued` |
-| bridging_seal NEG.6b/c | fresh True · replay False |
-| R4 full spine | **9/9** · constitutional_grade true · fast=false · `196cb5ef2` T3a fix |
-| R1–R3 Seal-A path | SE engine · SOT v2 · BOOT refuse |
-| SCT PR1 + PR2 | AAA sealed |
-| A-FORGE SCT AMBIGUOUS + prod lockout | health `bypass_profile:none` |
+| Item | Status |
+|------|--------|
+| T3a matrix | **CLOSED** 13/13 |
+| RSI claim | **HOLD** (human-governed only) |
+| 1mcp false watchdog | **FIXED** WatchdogSec=0 (was NRestarts=72) |
+| session-state | **LIVE** 2026-07-18 — arifOS UP |
+| Organ main (arifOS/A-FORGE/AAA/WEALTH/WELL) | **pushed** clean 2026-07-18 |
+| A-FORGE dirty 157 | **ZEROED** (forge_work Jul6–10 archived + commit `f7f442c`) |
 
 ---
 
-## 2. YOUR MISSION — ORDERED
+## 2. RESIDUAL ENTROPY (honest)
 
-### Block SE (only remaining Seal-A gate)
-
-| Order | Task | Done when |
-|-------|------|-----------|
-| **S1** | Confirm T3a still 13/13 + R4 still green if kernel was restarted | receipts fresh |
-| **S2** | `se_stage_engine.try_advance(proof_bundle)` — **never hand-edit stage** | stage leaves `000` with proof receipt |
-| **S3** | Write SE advance receipt under `forge_work/2026-07-17/` | Seal-A closable |
-
-### Block SCT observability (after SE or in parallel if SE proof blocked)
-
-| ID | Task |
-|----|------|
-| PR3 formal | Decision-event schema sealed |
-| PR4 | `trace_id` across 5 organs |
-| PR5 | AAA cockpit filter by trace_id |
-| PR6 | **13×5 = 65** adversarial SCT matrix, one shared trace_id |
-| PR7 | VAULT999 rollup receipt |
-
-Skill: `FORGE-sct-federation-ingress`
+| Item | Note |
+|------|------|
+| WELL `/health` | **degraded** — biometric QUARANTINE / INSUFFICIENT_DATA (need real inject) |
+| F-004 VAULT gaps | classify only — never rewrite `outcomes.jsonl` |
+| Seal-A / SE stage | residual OPEN — advance via engine only |
+| SCT PR3–7 | still open after SE path |
+| RSI-GATE-1 | package under `forge_work/2026-07-17/rsi-gate-1/` — witnesses open |
 
 ---
 
-## 3. VERIFICATION LAW
+## 3. MISSION (least power)
 
-```
-changed ≠ done
-fast spine GREEN = VOID
-T3a CLOSED (13/13) — do not re-litigate unless regression
-SE hand-bump = VOID
-kernel Recv-Q backlog → restart then re-probe before claiming R4 RED
-```
+1. Probe health. If green, **do not** "stabilize arifOS first."
+2. Prefer one closed loop with receipt over architecture prose.
+3. SE: `try_advance(proof_bundle)` only — never hand-edit stage.
+4. WELL: never invent vitals.
+5. End with `ASI-session-seal` / forge_work receipt.
 
----
-
-## 4. END OF YOUR SESSION
-
-Run `ASI-session-seal`. If SE advanced + residual clear: Seal-A may close. Else keep `seal_a: OPEN`.
-
-**DITEMPA BUKAN DIBERI — begin at S1 (SE proof-bundle).**
+**DITEMPA BUKAN DIBERI — probe, then act small.**
