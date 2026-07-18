@@ -347,7 +347,7 @@
   "transport": "CLI_TUI + ACP + HEADLESS + MCP",
   "native_mcp": true,
   "mcp_ready": true,
-  "model": "grok-4.3 (xAI) / xai/grok-build-0.1 (Grok-4.x fork tuned for agentic SE/tool-calling/structured; 256K ctx)",
+  "model": "grok-4.3 (xAI via OIDC) | xai/grok-build (256K ctx, agentic SE/tool-calling)",
   "runtime": "grok (TUI) | grok -p (headless) | grok agent stdio (ACP)",
   "config": "~/.grok/config.toml + project .grok/ + env",
   "agents_md": "/root/AAA/agents/grok-build/AGENTS.md + federation AGENTS.md (deepest wins)",
@@ -493,7 +493,7 @@
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
-    "endpoint": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/grok-build",
     "capabilities": [
       "tasks/send",
       "tasks/get",

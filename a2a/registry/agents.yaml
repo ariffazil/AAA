@@ -70,6 +70,73 @@ agents:
       Primary Telegram interface (@ASI_arifos_bot). Full rights bundles A/B/C/D.
       MCP surface: arifOS :8090, GEOX :8081, WEALTH :18082, WELL :18083, A-FORGE :18081.
 
+  # ── OPENCODE — Orchestrated forge instrument, A-R-I-F chain ──────────────
+  - agent_id: opencode
+    card_path: a2a-server/agent-cards/forge/fi-001-opencode.json
+    binding_type: local-cli
+    trust_level: internal
+    auth_scheme: arifos-session
+    streaming: true
+    push_notifications: false
+    openclaw_target: opencode
+    notes: |
+      OpenCode warga (FI-001) — DeepSeek V4 Pro primary, A-R-I-F subagent chain.
+      Architect → Integrator (MiniMax-M3) → RSI → Final. 13 MCP servers.
+      12 contrast skills (3 per subagent × AGI/ASI/APEX). 2 systemd services + Telegram bot.
+
+  # ── CODEX CLI — GPT-5.6 Sol forge instrument ─────────────────────────────
+  - agent_id: codex-cli
+    card_path: agents/_external/codex/agent-card.json
+    binding_type: local-cli
+    trust_level: internal
+    auth_scheme: arifos-session
+    streaming: true
+    push_notifications: false
+    openclaw_target: codex-cli
+    notes: |
+      Codex CLI warga (FI-005) — GPT-5.6 Sol, reasoning=medium. 8 MCP servers.
+      Landlock sandbox. Goals engine idle. Clean state.
+
+  # ── COPILOT CLI — GitHub Copilot forge instrument ────────────────────────
+  - agent_id: copilot-cli
+    card_path: agents/_external/copilot/agent-card.json
+    binding_type: local-cli
+    trust_level: internal
+    auth_scheme: arifos-session
+    streaming: true
+    push_notifications: false
+    openclaw_target: copilot-cli
+    notes: |
+      GitHub Copilot CLI warga (FI-006) — Copilot GPT default model. 11 MCP servers.
+      Fleet subagent mode (max 3 parallel). Read-only sandbox.
+
+  # ── GROK BUILD — xAI forge instrument ────────────────────────────────────
+  - agent_id: grok-build
+    card_path: agents/_external/grok/agent-card.json
+    binding_type: local-cli
+    trust_level: internal
+    auth_scheme: arifos-session
+    streaming: true
+    push_notifications: false
+    openclaw_target: grok
+    notes: |
+      Grok Build warga (FI-007) — xAI grok-build model. Permission: always-approve.
+      Replaced dead FI-007 Aider slot. No MCP surface yet.
+
+  # ── KIMI CODE — Primary coding forge instrument, MiniMax-M3 ──────────────────
+  - agent_id: kimi-code
+    card_path: a2a-server/agent-cards/forge/fi-008-kimi-code.json
+    binding_type: local-cli
+    trust_level: internal
+    auth_scheme: arifos-session
+    streaming: true
+    push_notifications: false
+    openclaw_target: kimi-code
+    notes: |
+      Kimi Code CLI warga (FI-008) — MiniMax-M3 primary (1M ctx, vision, thinking).
+      Governed by arifOS F1-F13. 9 MCP servers. K3 dormant via --model kimi-code/k3.
+      A-FORGE stdio ingress. AMANAH + MARUAH embedded.
+
   # ── CLAUDE CODE — Primary coding warga ───────────────────────────────────────
   - agent_id: claude-code
     card_path: a2a-server/agent-cards/harnesses/claude-code.json

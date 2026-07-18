@@ -678,5 +678,27 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/opencode",
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ],
+    "authentication": [
+      "bearer_auth",
+      "api_key"
+    ]
+  },
+  "mcp_binding": {
+    "execution_organ": "A-FORGE",
+    "execution_port": 7072,
+    "execution_endpoint": "https://forge.arif-fazil.com/mcp",
+    "governance_organ": "arifOS",
+    "governance_port": 8088,
+    "governance_endpoint": "https://mcp.arif-fazil.com/mcp"
+  }
 }

@@ -1,6 +1,7 @@
 version: 3
-last_updated: '2026-07-15'
+last_updated: '2026-07-18'
 canonical_home: /root/AAA/skills
+contrast_doc: /root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md
 architecture: 3-layer-3-axis
 layers:
   substrate:
@@ -102,14 +103,6 @@ agent_profiles:
     - geo
     - wealth
     - well
-  claude:
-    substrates: 6
-    knowledge: 3
-    domains:
-    - dev
-    - forge
-    - ops
-    - meta
   openclaw:
     substrates: 4
     knowledge: 3
@@ -130,11 +123,64 @@ agent_profiles:
     profile: /root/AAA/skills/CODEX_SKILL_PROFILE.json
     notes: Curated AAA A2A view with explicit AGI/ASI/APEX contrast; no full-catalog mirroring
   kimi:
-    substrates: 3
+    substrates: 6
     knowledge: 3
     domains:
     - dev
     - forge
+    - ops
+    - meta
+    - a2a
+    mcp_servers: 12
+    permission_rules: 11
+    hooks: 12
+    model: minimax-coding-plan/MiniMax-M3 (default) | kimi-code/k3
+    fi_slot: FI-008
+    role: forge_instrument
+    class: CODING/FI
+    agent_card: /root/AAA/a2a-server/agent-cards/harnesses/kimi-code.json
+    skill_index: /root/.arifos/agents/kimi/skills/SKILL_INDEX.md
+    notes: Focused forge instrument. 12 MCPs, 12 hooks, 11 permission gates. K3 via --model kimi-code/k3. Aligned 2026-07-18.
+  opencode:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    - ops
+    - meta
+    - a2a
+    - kernel
+    providers: 11
+    mcp_servers: 5+
+    permission_rules: 0
+    hooks: 8
+    model: deepseek/deepseek-v4-pro (default) | tokenplan-mimo/mimo-v2.5-pro
+    role: warga
+    class: AGI
+    trinity: 333-AGI (Δ MIND)
+    profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json
+    agent_card: /root/AAA/a2a-server/agent-cards/harnesses/opencode.json
+    notes: Versatile AGI workhorse. 11 providers, 5 sub-agent rotation models. Built-in tools (web_search, code_interpreter). LSP native.
+  claude:
+    substrates: 6
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    - ops
+    - meta
+    - infra
+    mcp_servers: 9
+    permission_rules: 0 (allow-all)
+    hooks: 0
+    model: deepseek-v4-pro (via Anthropic protocol on api.deepseek.com)
+    subagent_model: deepseek-v4-flash
+    fi_slot: FI-002
+    role: forge_instrument
+    class: CODING/FI
+    agent_card: /root/AAA/a2a-server/agent-cards/harnesses/claude-code.json
+    notes: DeepSeek-on-Anthropic bridge. Fork subagents, Playwright+Postgres MCPs. 4 custom commands. Effort=max.
   # 2026-07-12 meta-mesa unification: harness views of AAA catalog
   grok:
     substrates: 6
@@ -159,18 +205,57 @@ agent_profiles:
     - help
     - imagine
     notes: View via ~/.grok/skills symlink mesh; catalog remains AAA
-  opencode:
-    substrates: 6
+  copilot:
+    substrates: 4
     knowledge: 3
     domains:
     - dev
     - forge
     - ops
-    - meta
-    - a2a
-    - kernel
-    profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json
-    notes: Curated AAA/A2A view; GitHub split into transport, CI, issue, review, and governance only
+    mcp_servers: 0
+    permission_rules: 0
+    hooks: 0
+    model: DeepSeek V4 Pro (GitHub Copilot)
+    binary: /root/.npm-global/bin/copilot
+    version: 1.0.72
+    fi_slot: FI-006
+    role: forge_instrument
+    class: CODING/FI
+    agent_card: /root/AAA/a2a-server/agent-cards/harnesses/copilot.json
+    notes: GitHub Copilot CLI. Wired with DeepSeek V4 Pro. No MCP/hooks — works via copilot-native tooling.
+  antigravity:
+    substrates: 3
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    mcp_servers: 0
+    permission_rules: 0
+    hooks: 0
+    model: Gemini 3.5 Flash (High)
+    binary: /root/.local/bin/agy
+    fi_slot: FI-004
+    role: forge_instrument
+    class: CODING/FI
+    agent_card: /root/AAA/a2a-server/agent-cards/harnesses/antigravity.json
+    notes: Google Antigravity (agy). Gemini Flash backend. Lightweight, cheap, fast. Arif uses this.
+  aider:
+    substrates: 3
+    knowledge: 3
+    domains:
+    - dev
+    - forge
+    mcp_servers: 0
+    permission_rules: 0
+    hooks: 0
+    model: provider-agnostic (Claude/GPT via API keys)
+    binary: /home/arifos/.local/bin/aider
+    version: 0.86.2
+    fi_slot: FI-007
+    role: forge_instrument
+    class: CODING/FI
+    agent_card: /root/AAA/a2a-server/agent-cards/harnesses/aider.json
+    notes: Aider AI pair programming. Provider-agnostic. No native MCP — works via aider's built-in tool system.
 total_skills: 64
 logical_registry_count: 64
 alias_table_rows: 133
@@ -182,4 +267,4 @@ alias_table: /root/AAA/skills/SKILL_ALIAS_TABLE.json
 alias_table_md: /root/A-FORGE/forge_work/2026-07-12/SKILL_ALIAS_TABLE.md
 hermes_bridge: /root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md
 mesh_sync: /root/AAA/skills/scripts/skill-mesh-sync.sh
-last_harness_sync_note: '2026-07-15: 133 alias rows (104 active, 29 tombstone); 79 links repaired/added; 2 source-less broken aliases quarantined; mesh --check clean'
+last_harness_sync_note: '2026-07-18: 3-agent alignment pass (kimi FI-008, opencode warga-AGI, claude FI-002). Contrast doc at TOOLBENCH_3WAY_CONTRAST.md. Registry profiles updated with full spec.'
