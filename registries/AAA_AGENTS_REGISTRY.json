@@ -3,6 +3,32 @@
   "$note": "DERIVED from registries/agents.yaml \u2014 agents.yaml is canonical source. Regenerate after any YAML change.",
   "agents": [
     {
+      "id": "opencode",
+      "name": "OpenCode — Warga AAA (FI-001)",
+      "citizenship": "warga-aaa",
+      "intelligence_tier": "AGI",
+      "role": "forge-instrument",
+      "host_binding": "opencode",
+      "a2a_exposure": "internal",
+      "risk_tier": "governed",
+      "agent_doc": "/root/.config/opencode/AGENTS.md",
+      "model": "deepseek/deepseek-v4-pro (A-R-I-F chain, MiniMax-M3 for integrator)",
+      "status": "active"
+    },
+    {
+      "id": "kimi-code",
+      "name": "Kimi Code CLI — Warga AAA (FI-008)",
+      "citizenship": "warga-aaa",
+      "intelligence_tier": "AGI",
+      "role": "forge-instrument",
+      "host_binding": "kimi-code",
+      "a2a_exposure": "internal",
+      "risk_tier": "governed",
+      "agent_doc": "/root/.arifos/agents/kimi/AGENTS.md",
+      "model": "minimax-coding-plan/MiniMax-M3",
+      "status": "active"
+    },
+    {
       "id": "claude-code",
       "name": "Claude Code \u2014 Warga AAA",
       "citizenship": "warga-aaa",
@@ -12,6 +38,7 @@
       "a2a_exposure": "internal",
       "risk_tier": "governed",
       "agent_doc": "/root/AAA/CLAUDE.md",
+      "model": "deepseek/deepseek-v4-pro (Anthropic-compat API, max effort, deepseek-v4-flash fallback)",
       "status": "active"
     },
     {
@@ -107,7 +134,34 @@
       "host_binding": "gemini-cli",
       "a2a_exposure": "authenticated",
       "risk_tier": "medium",
-      "agent_doc": "",
+      "agent_doc": "/root/.arifos/agents/gemini/AGENTS.md",
+      "model": "Gemini 3.5 Flash (High)",
+      "status": "active"
+    },
+    {
+      "id": "codex-cli",
+      "name": "Codex CLI — Warga AAA (FI-005)",
+      "citizenship": "warga-aaa",
+      "intelligence_tier": "AGI",
+      "role": "forge-instrument",
+      "host_binding": "codex-cli",
+      "a2a_exposure": "internal",
+      "risk_tier": "governed",
+      "agent_doc": "/root/.codex/AGENTS.md",
+      "model": "gpt-5.6-sol (reasoning=medium, landlock sandbox)",
+      "status": "active"
+    },
+    {
+      "id": "grok-build",
+      "name": "Grok Build — Warga AAA (FI-007)",
+      "citizenship": "warga-aaa",
+      "intelligence_tier": "AGI",
+      "role": "forge-instrument",
+      "host_binding": "grok",
+      "a2a_exposure": "internal",
+      "risk_tier": "governed",
+      "agent_doc": "/root/.grok/AGENTS.md",
+      "model": "grok-build (xAI, always-approve)",
       "status": "active"
     },
     {
@@ -132,6 +186,7 @@
       "a2a_exposure": "authenticated",
       "risk_tier": "production",
       "agent_doc": "/root/.arifos/agents/copilot/AGENTS.md",
+      "model": "deepseek-v4-pro (Anthropic-compat API)",
       "status": "active"
     }
   ],
