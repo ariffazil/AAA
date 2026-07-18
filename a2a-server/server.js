@@ -1198,7 +1198,7 @@ function checkDelegation(sourceAgent, targetSkill, message, peerContracts) {
 function buildDiscoveryContract() {
   return {
     contract_id: 'aaa-a2a-discovery-contract-v1',
-    version: '1.0.0',
+    version: 'v2026.07.17',
     canonical_discovery_surface: '/.well-known/a2a-discovery.json',
     canonical_agent_card: '/.well-known/agent-card.json',
     canonical_routing_policy: '/.well-known/a2a-routing-policy.json',
@@ -2047,7 +2047,7 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.json({
     federation: 'arifOS AAA',
-    version: '1.0.0',
+    version: 'v2026.07.17',
     protocol: 'A2A v1.0.0',
     treaty: 'AAA-TREATY-v1.0.0',
     treaty_uri: 'https://aaa.arif-fazil.com/aaa-card-treaty',
@@ -2466,7 +2466,7 @@ app.get('/health', async (req, res) => {
     },
     final_authority: 'ARIF',
     protocol: 'A2A',
-    version: '1.0.0',
+    version: 'v2026.07.17',
     federation_schema_version: '2.0.0',
     gateway: 'AAA',
     motto: 'Ditempa Bukan Diberi',
