@@ -4,7 +4,7 @@
   "class": "FORGE_INSTRUMENT",
   "description": "OpenAI Codex CLI \u2014 GPT-5.5 powered. Goal-based agentic coding with Landlock sandbox. 0 active goals.",
   "version": "0.136.0",
-  "model": "GPT-5.5 (OpenAI API)",
+  "model": "MiniMax-M3 (primary) | GPT-5.5 (OpenAI side)",
   "izin": "GRANTED",
   "izin_date": "2026-05-20",
   "sandbox": "landlock",

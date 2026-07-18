@@ -10,7 +10,7 @@
   },
   "description": "Kimi Code CLI forge instrument — Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced. v2.1.0 (2026-07-16): zen pass — 7 contrast/reflector skills v1.1.0, KIMI_RSI_INIT_PROMPT cold-boot recipe, KIMI_HANDOVER_PROMPT post-deploy recipe, all mirrored to runtime + AAA.",
   "version": "2.1.0",
-  "model": "kimi-k2 / kimi-for-coding",
+  "model": "minimax-coding-plan/MiniMax-M3",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.arifos/agents/kimi",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",

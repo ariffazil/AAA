@@ -4,11 +4,11 @@
   "class": "FORGE_INSTRUMENT",
   "description": "GitHub Copilot CLI \u2014 agentic coding assistant. Connected to 10 MCP servers. Fleet parallel agent capability (max 3).",
   "version": "1.0.61",
-  "model": "UNKNOWN (GitHub Copilot models)",
+  "model": "DeepSeek V4 Pro (GitHub Copilot)",
   "izin": "GRANTED",
   "izin_date": "2026-05-24",
   "sandbox": "process",
-  "binary": "/usr/bin/copilot",
+  "binary": "/root/.npm-global/bin/copilot",
   "config": "/root/.copilot/mcp-config.json",
   "services": [],
   "mcpServers": [
