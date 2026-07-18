@@ -182,6 +182,35 @@ Recommendations **always** reach ARIF. Weak ones carry a scar. This teaches whic
 
 ---
 
+## 5b. QQQQ — Q4 ZEN EXPORT (GENESIS 022)
+
+QQQ remains three layers. **QQQQ** adds **Q4 Zen Export** as metabolic jurisprudence under F4 — not a 14th floor.
+
+| Layer | Name | Floor |
+|-------|------|-------|
+| Q1–Q3 | as above | F2, F4, F7 |
+| **Q4** | Zen Export (forced entropy export at abundance) | F4 + metabolism |
+
+**Iron line:** Zen is not the last 2%. Zen is the first 10% of every full tank.
+
+Q4 triggers when tank \(T \ge 0.50\) and the agent proposes eureka/expansion (or RECOMMENDATION/DECISION/VERDICT under abundance). Required block:
+
+```
+q4_export:
+  export_actions: [...]      # delete/archive/seal/kill folklore
+  delta_s_claim: ≤ 0         # export must reduce entropy
+  tank_at_export: float
+  deferred_to_margin: bool   # True = pathological scar
+  completed: bool
+```
+
+Additional compliance states: `INADMISSIBLE-Q4`.
+
+Code: `arifosmcp/runtime/qqqq_metrics.py` · `arifosmcp/geometry/eureka_zen.py`  
+Equations: `/root/AAA/docs/EUREKA_ZEN_MARGIN_EQUATIONS.md`
+
+---
+
 ## 6. INTENT GATING
 
 QQQ does NOT trigger on every agent output. Only on these intent classes:
