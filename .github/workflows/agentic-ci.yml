@@ -61,7 +61,7 @@ jobs:
         id: test
         run: |
           mkdir -p reports
-          npm test 2>&1 | tee reports/test-output.txt
+          set -o pipefail; npm test 2>&1 | tee reports/test-output.txt
           echo "exit_code=$?" >> $GITHUB_OUTPUT
 
       - name: Upload diagnostics
