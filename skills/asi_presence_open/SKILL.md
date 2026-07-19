@@ -215,3 +215,61 @@ It makes the constitutional reflex automatic, not optional.
 **If you skipped it, you're operationally unsafe.**
 
 DITEMPA BUKAN DIBERI.
+
+---
+
+## Delegation Attenuation (WAJIB 4 — added 2026-07-19)
+
+When a parent agent spawns a child (subagent, A2A peer, MCP-delegated call, parallel worker, fallback model), the child's authority MUST be cryptographically attenuated from the parent's.
+
+### The invariant
+
+```
+child_authority ⊆ parent_authority
+```
+
+A parent with `OBSERVE_ONLY` MUST be cryptographically unable to create a child with `MUTATE` authority. Period. Not "shouldn't" — **cannot**.
+
+### Delegation envelope (required fields)
+
+```yaml
+delegation:
+  parent_session_id: <string>      # parent's session_id (verified)
+  parent_principal: <string>       # parent's actor_id (verified)
+  child_principal: <string>        # child's actor_id
+  allowed_tools: [<list>]          # child cannot call outside this list
+  allowed_resources: [<list>]      # file paths, server names, etc.
+  authority_band: OBSERVE_ONLY | LIMITED_MUTATE | FULL
+  maximum_blast_radius: local | repo | service | vps | federation | external
+  expires_at: <unix_ms>            # hard expiry, NOT "soon"
+  delegation_depth: <int>          # 0 = leaf; 1+ = grandchild
+  redelegation_allowed: <bool>     # can this child spawn its own children?
+  parent_envelope_hash: <sha256>   # links to parent's delegation
+  kernel_signature: <signature>    # kernel signs the attenuation
+```
+
+### Required adversarial tests
+
+| Test | Expected |
+|---|---|
+| OBSERVE parent → MUTATE child | DENIED at delegation request time |
+| Expired parent → child call | DENIED at child invocation |
+| Revoked parent → existing child | DENIED (active revocation chain) |
+| Missing lineage | DENIED (no orphan children) |
+| Child re-delegation when prohibited | DENIED |
+| Scope widening by child | DENIED (child cannot extend its own scope) |
+| Session ID substitution | DENIED (child cannot claim a different parent's session) |
+| Parallel child authority aggregation | DENIED (N×OBSERVE ≠ MUTATE) |
+
+### Implementation rule (current bounded mode)
+
+Until the kernel-level delegation envelope is implemented (T3 work), the bootstrap chain MUST verify at agent wake that:
+- Agent is operating at or below parent's authority
+- Agent's allowed_tools list is a subset of parent's
+- Agent's expires_at is ≤ parent's
+
+This is enforced via the `agent_id_binding` block (above) plus a parent-supplied delegation manifest. If manifest is absent, child defaults to **OBSERVE_ONLY** — fail-closed.
+
+### Authority scope
+
+The delegation envelope primitive is **T3 (F13 ratification required)** — this skill section documents the protocol but does not implement the kernel signing path. Agent-bootstrap behavior at wake (default OBSERVE_ONLY) is **T1 AUTO-DO**.

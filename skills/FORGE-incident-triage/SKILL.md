@@ -272,4 +272,154 @@ One-paragraph summary of the incident, scope, root cause, and current status.
 
 ---
 
+## Fire-Time Reauthorization (WAJIB 5 — added 2026-07-19)
+
+A decision made at *write-time* (job creation, cron entry, queue submission) is NOT automatically valid at *fire-time* (when the job runs). The world changes between scheduling and execution. Authorization must be re-judged.
+
+### Affected surfaces
+
+- Cron jobs
+- Queued workers
+- Renovate / dependency-update PRs
+- Scheduled deployments
+- Delayed shell jobs
+- Retry queues
+- Event-triggered automation (watchers firing on condition)
+- Long-running MCP tasks
+- PR-bot comments → actions
+
+### The required invariant
+
+Every deferred mutation must be judged TWICE:
+
+```
+write-time authorization
+        +
+fire-time authorization (re-judged at execution)
+```
+
+At fire time, the system MUST re-check:
+
+| Check | Why |
+|---|---|
+| Identity and session validity | Session may have expired or been revoked |
+| Lease expiry | Lease may have lapsed |
+| Current branch / commit | Source of truth may have changed |
+| Current target state | The world the action was queued against may have moved |
+| Changed blast radius | Conditions may have widened the impact |
+| New evidence | A new finding may invalidate the original decision |
+| Human approval validity | Aprover may have rescinded |
+| Dependency health | A package update may have failed |
+| Rollback availability | The rollback path may now be broken |
+| Whether the request has been revoked | Revocation must propagate to all queued instances |
+
+### Failure behavior
+
+A scheduled action with **expired authority MUST become HOLD, not "continue because it was approved yesterday."**
+
+This is a **HARD kernel rule**:
+- `write_time_authorization.expiry < now()` → return 888_HOLD at fire time
+- Reason: `"DEFERRED_FIRE_TIME_AUTH_EXPIRED — wrote <timestamp>, expires <timestamp>, now <timestamp>"`
+
+### Required implementation pattern
+
+```ts
+async function fireDeferredAction(deferred: DeferredEnvelope): Promise<FireResult> {
+  const authCheck = await reauthorizeAtFireTime(deferred);
+  if (!authCheck.valid) {
+    return {
+      state: "HOLD",
+      reason: authCheck.reason,
+      receipt: await vault.append({ type: "deferred_fire_hold", ... })
+    };
+  }
+  return forgeExecute(authCheck.scope);
+}
+```
+
+### Tests required
+
+- Cron job queued today with `expires_at = today + 1h` → tomorrow HOLD
+- Scheduled deployment after upstream service became unavailable → HOLD with explicit reason
+- Revoked session → all queued actions in that session become HOLD
+- Branch changed between queue and fire → re-judge blast radius, may HOLD
+- Retry queue after original action's rollback path broken → HOLD
+
+### Authority scope
+
+WAJIB 5 is **T3 (F13 ratification required)**. This skill section documents the protocol. Implementation requires scheduler integration with the kernel judgment pipeline.
+
+---
+
+## Organ Disagreement Doctrine (WAJIB 7 — added 2026-07-19)
+
+When GEOX, WEALTH, and WELL recommend incompatible actions — all internally valid — the federation needs a binding resolution order. Majority vote does not apply; three organs are not interchangeable voters.
+
+### Resolution order (mandatory)
+
+1. **Hard veto conditions** (any organ may trigger HOLD with evidence)
+2. **Blast-radius precedence** (organ owning dominant irreversible consequence receives higher weight)
+3. **Pareto search** (seek alternative satisfying all hard constraints before escalation)
+4. **F13 escalation** (if no acceptable option → escalate to Arif, never silently fall back to execution order)
+
+### Hard veto table
+
+| Organ | May veto when | Release condition |
+|---|---|---|
+| GEOX | Physical infeasibility OR unacceptable earth uncertainty | New data or revised interpretation that resolves the issue |
+| WELL | Unsafe human or operational readiness | Confirmed safe capacity + witness |
+| WEALTH | Insolvency, unaffordable exposure, prohibited capital risk | Restructured deal OR capital limit raised |
+| arifOS | Authority, law, or constitutional violation | Ratified exception OR constitutional amendment |
+
+A veto MUST include evidence + defined release condition. Rhetorical veto is not permitted.
+
+### Blast-radius precedence
+
+| Dominant irreversible consequence | Owner |
+|---|---|
+| Subsurface irreversibility | GEOX |
+| Capital survival / sovereign financial exposure | WEALTH |
+| Human safety, dignity, organizational collapse | WELL |
+| Constitutional / authority conflict | arifOS |
+
+### Pareto search before escalation
+
+Before escalating to F13, attempt:
+- Smaller scope
+- Delayed decision
+- More evidence
+- Pilot programme
+- Reduced capital
+- Different staffing
+- Reversible experiment
+
+### F13 escalation payload
+
+If no acceptable Pareto option exists:
+
+```yaml
+unresolved_conflict:
+  intent: <original request>
+  vetoes: [{organ, reason, evidence, release_condition}, ...]
+  competing_actions:
+    - path: <GEOX recommendation>
+      evidence: <refs>
+      consequences: <list>
+      reversibility: <class>
+    - path: <WEALTH recommendation>
+      ...
+    - path: <WELL recommendation>
+      ...
+  recommended_least_regret: <one path with justification>
+  explicit_unknowns: <list>
+```
+
+The kernel does NOT manufacture consensus. It escalates with full disagreement visible.
+
+### Authority scope
+
+WAJIB 7 is **T3 (F13 ratification required)**. Doctrine documentation is T1.
+
+---
+
 *Skill version 1.0.0 — AAA Skill Library*
