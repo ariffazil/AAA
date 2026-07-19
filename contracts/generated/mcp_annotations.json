@@ -1,0 +1,97 @@
+{
+  "generated_from": "TOOL_MANIFEST.yaml",
+  "generated_at": "2026-07-19T22:42:34.854320+00:00",
+  "tools": {
+    "arif_init": {
+      "organ": "arifos",
+      "classification": "OBSERVE",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    "arif_observe": {
+      "organ": "arifos",
+      "classification": "OBSERVE",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    "arif_think": {
+      "organ": "arifos",
+      "classification": "THINK",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false
+      }
+    },
+    "arif_route": {
+      "organ": "arifos",
+      "classification": "OBSERVE",
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    "arif_memory": {
+      "organ": "arifos",
+      "classification": "OBSERVE",
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    "arif_judge": {
+      "organ": "arifos",
+      "classification": "IRREVERSIBLE",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false
+      }
+    },
+    "arif_forge": {
+      "organ": "arifos",
+      "classification": "MUTATE",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true
+      }
+    },
+    "arif_seal": {
+      "organ": "arifos",
+      "classification": "IRREVERSIBLE",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false
+      }
+    },
+    "forge_execute": {
+      "organ": "aforge",
+      "classification": "MUTATE",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true
+      }
+    },
+    "forge_shell": {
+      "organ": "aforge",
+      "classification": "MUTATE",
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true
+      }
+    },
+    "forge_verify": {
+      "organ": "aforge",
+      "classification": "OBSERVE",
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    }
+  }
+}
