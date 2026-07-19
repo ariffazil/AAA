@@ -140,4 +140,50 @@ Provenance rules (P0-1):
 ---
 
 **FORGED 2026-07-19 · DITEMPA BUKAN DIBERI · SEALED**
+
+---
+
+## 7. WAJIB ROADMAP (ARIFOS-READINESS-2026-07-20 → 58/100)
+
+The 11 WAJIB actions from the L2/L3 readiness audit. Skill upgrades T1-done in session 2026-07-19; implementation still pending.
+
+### Tier & Status
+
+| # | WAJIB | Tier | Status |
+|---|---|---|---|
+| 0 | Freeze expansion | T1 | POSTURE ADOPTED |
+| 1 | Negative conformance suite | T1 | PARTIAL — 4 of 18 tests (PolicyGate) |
+| 2 | Independent verification lane | T3 | NOT STARTED |
+| 3 | Normalize kernel state | T3 | NOT STARTED |
+| 4 | Delegation attenuation | T3 | PROTOCOL DOCUMENTED (asi_presence_open) |
+| 5 | Fire-time reauth | T3 | PROTOCOL DOCUMENTED (FORGE-incident-triage) |
+| 6 | WELL session bridge | T2 | NOT STARTED |
+| 7 | Organ disagreement doctrine | T3 | PROTOCOL DOCUMENTED (FORGE-incident-triage) |
+| 8 | Context-capture governance | T2 | PROTOCOL DOCUMENTED (FORGE-cross-agent-handoff) |
+| 9 | RSI calibration | T1 (slow) | NOT STARTED — needs ≥30 reviewed records |
+| 10 | End-to-end signed canary | T3 | NOT STARTED — gated by all prior |
+
+### Skills upgraded this session (2026-07-19)
+
+- `FORGE-precommit-review` ← WAJIB 1 (negative conformance + xfail discipline)
+- `asi_presence_open` ← WAJIB 4 (delegation envelope + child_authority ⊆ parent_authority)
+- `AUDIT-recursive-audit` ← WAJIB 2 (independent verification lane protocol)
+- `FORGE-incident-triage` ← WAJIB 5 (fire-time reauth) + WAJIB 7 (organ disagreement)
+- `FORGE-cross-agent-handoff` ← WAJIB 8 (context_manifest + class taxonomy)
+
+### Key artifacts for next session
+
+- Session seal: `/root/forge_work/2026-07-19/SESSION-SEAL-kimi-code-FI-008-20260719.md`
+- Memory: `/root/memory/2026-07-19.md` (188 lines, full session trace)
+- Registry v1.1: `/root/A-FORGE/forge_work/2026-07-19/registry-receipt-v1.1.json`
+- 5 test suites, 71 tests passing: `dist/test/{PolicyGateIdentity,ChatGPTChannelPolicy,AAESignatureRequired,SCTCryptoVerify,VerifiedSessionsOnly}.test.js`
+
+### Recommended next-move priority
+
+1. **T1**: Add 14 missing must-never-happen tests as `xfail(strict=true)` (conformance/discipline)
+2. **T1**: F-004 R1 — reverse-engineer VAULT999 JSON canonicalizer from `/opt/arifOS/app/core/seal_chain.py`
+3. **T1**: F-005 sovereign deploy — patch `/opt/geox/app/identity.toml` to mirror source `[did_web]`
+4. **T2**: WAJIB 6 WELL session-aware bridge (degraded organ, session-incomplete per audit)
+5. **T3**: Single ratification packet covering WAJIBs 2, 3, 4, 5, 7, 10 (kernel contract + cryptographic primitives)
+
 **Next agent: pick up WAJIB-1 (if Arif present) or WAJIB-4 (delegation envelope)**
