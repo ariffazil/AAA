@@ -1,1289 +1,2371 @@
-version: 2
-generated: '2026-07-19T17:26:43Z'
-total_active: 145
-source: disk-scan
-doctrine: DITEMPA BUKAN DIBERI
+version: 3
+generated: 2026-07-19T23:27:42.029Z
+total_active: 148
+source: canonical-skill-bodies
+routing_view: skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
+alias_view: skills/SKILL_ALIAS_TABLE.json
+doctrine: AAA is the catalog; V3, aliases, packages, and harness meshes are views
 skills:
-- id: asi-agent-invariants
-  name: AAA Agent Operating Invariants
-  description: Before ANY tool call, classify. Never call a tool only because it is available.
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-agentic-governance
-  name: AAA Agentic Governance
-  description: 'Keep these three A''s **orthogonal**. Do not mix them:'
-  domain: general
-  status: active
-  risk_tier: low
-- id: knowledge
-  name: AAA Knowledge Skills
-  description: '> **Status:** ACTIVE · **Owner:** AAA · **Tier:** T2'
-  domain: general
-  status: active
-  risk_tier: low
-- id: reflective
-  name: AAA Reflective Skills
-  description: '> **Status:** ACTIVE · **Owner:** AAA · **Tier:** T2'
-  domain: general
-  status: active
-  risk_tier: low
-- id: docs
-  name: AAA Skills Documentation
-  description: '> **Status:** REFERENCE · **Owner:** AAA · **Tier:** T0'
-  domain: general
-  status: active
-  risk_tier: low
-- id: runtime
-  name: AAA Skills Runtime
-  description: '> **Status:** INFRA · **Owner:** AAA · **Tier:** T0'
-  domain: general
-  status: active
-  risk_tier: low
-- id: scripts
-  name: AAA Skills Scripts
-  description: '> **Status:** INFRA · **Owner:** AAA · **Tier:** T0'
-  domain: general
-  status: active
-  risk_tier: low
-- id: substrate
-  name: AAA Skills Substrate
-  description: '> **Status:** INFRA · **Owner:** AAA · **Tier:** T0'
-  domain: general
-  status: active
-  risk_tier: low
-- id: warga
-  name: AAA Warga Skills
-  description: '> **Status:** ACTIVE · **Owner:** AAA · **Tier:** T2'
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-multimodal-bridge
-  name: AGI
-  description: '## Fusion Rules
-
-    - Cross-modal corroboration raises confidence (two modalities agreeing > one)
-
-    - Cross-modal contradiction triggers F2 TRUTH escalation
-
-    - Missing modality is noted, not fabricated (F7 HUMILITY)'
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-claude-xml-structured-reasoning
-  name: AGI · claude
-  description: This is a *wrapper*, not a replacement. Existing AGI skills (plan-dag, dream-engine, explorer-intelligence)
-    keep their semantic content; this skill only governs **output structure** when invoked by a Claude-flavored agent.
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-codex-chain-of-thought
-  name: AGI · codex
-  description: 'Seeds the lane. Real Codex binding (model rotation, structured output enforcement) requires `codex-cli` adapter
-    card update with `fi_slot: FI-005` already ratified in earlier round.'
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-emd-metabolize
-  name: AGI · emd
-  description: Sits between `AGI-emd-decode` (L1/L2 always) and the dream-engine (L5/L6 in batch). Never auto-promotes without
-    witness. Never demotes without explicit human ack.
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-emd-encode
-  name: AGI · emd
-  description: Distinct from `AGI-emd-metabolize` (forward = decision) and `AGI-emd-decode` (forward = bind). Encode is the
-    **first** step, not the only step.
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-emd-decode
-  name: AGI · emd
-  description: Distinct from `AGI-emd-metabolize` (next); decode happens before metabolize at the substrate level, then metabolize
-    decides what promotes to memory.
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-entropy-lock-prime
-  name: AGI · entropy
-  description: Universal substrate rule. Each AGI/FORGE/APEX/AUDIT/ASI skill declares its own ΔS measurement scope; this skill
-    is the meta-contract that ties them together.
-  domain: general
-  status: active
-  risk_tier: high
-- id: agi-hermes-system-prompt-voice
-  name: AGI · hermes
-  description: Modifies surface voice only. Logic + plan content comes from underlying AGI skills. Hermes-specific behavioral
-    compliance per Nous Research base model.
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-tool-approval-gate
-  name: APEX
-  description: <procedure claude="xml-tagged" codex="numbered" hermes="imperative">
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-humility-godel
-  name: APEX
-  description: '### Step 5: Adjust and Verdict
-
-    <verdict>
-
-    - If attack succeeds: reduce confidence, add caveats, or withdraw claim
-
-    - If attack fails: maintain confidence with documented defense
-
-    - Output: adjusted confidence band + remaining unknowns + verdict
-
-    - **Verd'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-audit-coverage-check
-  name: APEX
-  description: '<verdict>
-
-    Final audit verdict:
-
-    - PASS: All floors enforced, no critical gaps
-
-    - PARTIAL: Some gaps found, non-critical
-
-    - HOLD: Critical gaps found, 888_HOLD triggered
-
-    - VOID: Constitutional violation detected
-
-    </verdict>'
-  domain: general
-  status: active
-  risk_tier: medium
-- id: apex-fff-loop-protocol
-  name: APEX
-  description: '<pass id="5" color="gold" name="seal">
-
-    - Input: Verified fix from Pass 4
-
-    - Process: Final review, emit verdict, write to VAULT999
-
-    - Output: SEAL verdict + vault entry + MEMORY line
-
-    </pass>'
-  domain: general
-  status: active
-  risk_tier: medium
-- id: hermes
-  name: APEX ACT
-  description: 'Always reference the canonical AT LEAST once in every ACT output:
-
-    ```
-
-    Canonical path: skills/APEX-act/SKILL.md
-
-    ```'
-  domain: apex_verdict_seal
-  status: active
-  risk_tier: high
-- id: apex-formal-constitution
-  name: APEX Formal Constitution
-  description: Formal constitutional encoding — superseded by arifOS kernel F1-F13 runtime enforcement.
-  domain: general
-  status: active
-  risk_tier: medium
-- id: asi-presence-open
-  name: ARIF AGENT BOOTSTRAP
-  description: '## Execution Chain (Ordered)'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-agentic-architecture
-  name: ASI
-  description: '## The 9-Skill Spine'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-session-seal
-  name: ASI
-  description: "- Terminal dumps  \n- Fake GREEN from fast spine  \n- \"All remaining tasks done\" when SE/T3a/stage still\
-    \ open  \n- SE stage hand-bump"
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-context-window-mgr
-  name: ASI
-  description: "## Compaction Artifact\n```json\n{\n  \"session_id\": \"...\",\n  \"compacted_at\": \"timestamp\",\n  \"token_count_before\"\
-    : 150000,\n  \"token_count_after\": 30000,\n  \"summary\": \"compressed session narrative\",\n  \"must_keep\": [\"task\
-    \ intent\", \"floor state\", \"active bl"
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-fabrication-prevention
-  name: ASI
-  description: '### Step 3: Verdict
-
-    - VERIFIED: External check confirms existence
-
-    - UNVERIFIED: External check failed or not possible → label as UNKNOWN
-
-    - FABRICATED: Claim exists but external check contradicts → VOID + alert
-
-    </verification-protocol>'
-  domain: general
-  status: active
-  risk_tier: low
-- id: audit-drift-detector
-  name: AUDIT
-  description: '## Baselines
-
-    - **Canonical drift check**: `arifOS/runtime/manifest.py` — `build_manifest` vs `runtime_manifest` (post-KSR Epoch 1+2)
-
-    - Tool registry: `/root/arifOS/tool_registry.json`
-
-    - Agent cards: `/root/AAA/a2a-server/agent-cards/`
-
-    - Skill alias: '
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-onboarding
-  name: Agent Onboarding
-  description: '### Step 2: Create Agent Identity Directory'
-  domain: general
-  status: active
-  risk_tier: low
-- id: claude
-  name: Agent Onboarding
-  description: 'Create `agents/<agent_id>/` with these required files:'
-  domain: FORGE-onboarding
-  status: active
-  risk_tier: low
-- id: agi-dream-engine
-  name: Agentic Dream Engine
-  description: '## When NOT to Use'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-cicd-docker-deploy
-  name: CI/CD + Docker Deploy
-  description: '```bash'
-  domain: general
-  status: active
-  risk_tier: low
-- id: caller-trace
-  name: Caller Trace
-  description: If **only this caller** exists → emit `SINGLE_USE` warning.
-  domain: meta
-  status: active
-  risk_tier: low
-- id: forge-code-analysis
-  name: Code Analysis Skill
-  description: '### 🇩🇪 Deutsch'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-constitutional-reasoning
-  name: Constitutional Reasoning Skill
-  description: '- If floor violation is ambiguous → 888 HOLD, not VOID
-
-    - If reversibility is uncertain → treat as irreversible (F1 conservative)
-
-    - If evidence quality is LOW → flag with confidence band, do not fabricate certainty
-
-    - If two floors conflict → F1 AMANAH'
-  domain: general
-  status: active
-  risk_tier: high
-- id: create-skill
-  name: Create Skill
-  description: '## Guidelines'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-docker-entropy
-  name: Docker Entropy Ops
-  description: '## Inputs'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-uncertainty-signal
-  name: Drift Response
-  description: '# Also check service versions
-
-    curl -s http://127.0.0.1:8088/health | python3 -c "import sys,json; d=json.load(sys.stdin); print(f''Live: {d.get(\"git_commit\",\"?\")}'')"
-
-    cd /root/arifOS && git rev-parse --short HEAD
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-drift-watch
-  name: Drift Watch
-  description: '## Per-organ runtime locations
-
-    | Organ | Source | Runtime |
-
-    |-------|--------|---------|
-
-    | arifOS | `/root/arifOS` | `/opt/arifos/app` |
-
-    | GEOX | `/root/geox` | docker (compose) |
-
-    | WEALTH | `/root/WEALTH` | systemd |
-
-    | WELL | `/root/WELL` | systemd '
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-explorer-intelligence
-  name: EXPLORER INTELLIGENCE ARCHITECTURE
-  description: '## 0. THE COMPLETE STACK'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-reversibility-test
-  name: F1 AMANAH Gate
-  description: '## Failure modes
-
-    - Pattern false positive → human overrides with reason logged
-
-    - Pattern false negative → F2 Truth floor tripwire catches downstream (F2 > F1 in the order)
-
-    - Hook disabled in settings → manual invocation still available via this skill'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-well-boundary-repair
-  name: FORGE
-  description: '## Capabilities
-
-    - Diagnose WELL substrate readiness failures
-
-    - Repair biometric staleness (expired tokens, stale readings)
-
-    - Fix dignity floor gaps (F6 EMPATHY enforcement)
-
-    - Restore WELL_HOLD conditions back to operational'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-seal-a-close
-  name: FORGE
-  description: '## Epistemic'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-t3a-binding-matrix
-  name: FORGE
-  description: '## Do not'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-github-workflow
-  name: FORGE
-  description: <workflow id="code-review">
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-infra-crons
-  name: FORGE
-  description: '## Capabilities
-
-    - List all cron jobs from root crontab, /etc/crontab, /etc/cron.d
-
-    - Detect orphaned or duplicate cron entries
-
-    - Verify cron entries against Machine Constitution registry'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-sct-federation-ingress
-  name: FORGE
-  description: '## Do not'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-mcp-gui
-  name: FORGE
-  description: '### 5. Keep Model in the Loop
-
-    ```javascript
-
-    app.sendMessage("User did X. Respond.");       // active trigger
-
-    app.updateModelContext({ cart: items });       // background awareness
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-repo-intelligence
-  name: FORGE
-  description: '## Modes'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-visual-qa-w3
-  name: FORGE
-  description: '**Tool:** Vision model (e.g., `minimax_understand_image`, `forge_browser_evaluate_js` for pixel sampling)'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-data-compression
-  name: FORGE
-  description: '## Compression Modes
-
-    - `log-compress`: Strip timestamps, deduplicate repeated lines, extract error/warn signals
-
-    - `code-compress`: Collapse boilerplate, preserve signatures + logic + comments
-
-    - `evidence-compress`: Rank by epistemic rung, compress lo'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-cross-agent-handoff
-  name: FORGE
-  description: '## Handoff Rules
-
-    - F1 AMANAH: Handoff must be reversible. Receiving agent can reject.
-
-    - F4 CLARITY: Handoff artifact must reduce entropy, not increase it.
-
-    - F11 AUDITABILITY: Full provenance chain required.
-
-    - Receiving agent must ACK handoff within 1'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-context-compress
-  name: FORGE Context Compression
-  description: '### 4. Output Envelope'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-context-compressor
-  name: FORGE · context
-  description: Distinct from `AGI-emd-encode` (intake contract, witness readiness) and `AGI-emd-metabolize` (memory promotion).
-    Compressor operates between observation and encode — it shrinks the substrate so encode can attach witnesses without exceeding
-    context.
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-grok-profile
-  name: FORGE · grok
-  description: Adapts existing FORGE- skills (FORGE-docker, FORGE-fastmcp, FORGE-precommit-gate, etc.) to Grok's bias. Does
-    not replace the underlying FORGE skill — only the discipline around its invocation.
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-fastapi-api-builder
-  name: FastAPI API Builder
-  description: "# Structured error handler\n@app.exception_handler(AppError)\nasync def app_error_handler(request, exc):\n\
-    \    return JSONResponse(status_code=exc.code, content={\"error\": exc.message, \"trace\": exc.trace_id})\n```"
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-fastmcp
-  name: FastMCP
-  description: "class CustomerOutput(BaseModel):\n    id: str\n    name: str\n    segment: str\n    confidence: float"
-  domain: general
-  status: active
-  risk_tier: low
-- id: federation-connect-headscale
-  name: Federation Connect
-  description: "# 4. Probe federation organs\n$organs = @(\n  @{N=\"arifOS\";  P=8088},\n  @{N=\"A-FORGE\"; P=7071},\n  @{N=\"\
-    AAA\";     P=3001},\n  @{N=\"GEOX\";    P=8081},\n  @{N=\"WEALTH\";  P=18082},\n  @{N=\"WELL\";    P=18083}\n)\nforeach\
-    \ ($o in $organs) {\n  try {\n    $r = Invoke"
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-federation-manifest
-  name: Federation Manifest
-  description: "```jsonc\n// /.well-known/arifos-federation.json\n{\n  \"@context\": \"https://arifos.arif-fazil.com/schema/federation/v1\"\
-    ,\n  \"federation\": \"arifOS\",\n  \"version\": \"2026.07.16\",\n  \"nodes\": [\n    {\n      \"id\": \"arifos\",\n \
-    \     \"name\": \"arifOS Constitutional K"
-  domain: general
-  status: active
-  risk_tier: medium
-- id: forge-federation-orchestrator
-  name: Federation Orchestrator
-  description: '## Federation Nodes'
-  domain: general
-  status: active
-  risk_tier: low
-- id: geox-grounding
-  name: GEOX Grounding
-  description: '---'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-github-ops
-  name: GitHub & Git Operations
-  description: '## GH CLI Auth Check
-
-    ```bash
-
-    gh auth status
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-ci-diagnose
-  name: GitHub CI Diagnose
-  description: '## When to Use'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-issue-triage
-  name: GitHub Issue Triage
-  description: '## When to Use'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-pr-review
-  name: GitHub PR Governance Review
-  description: '## arifOS-ACT Embedding'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-governance-jsonld
-  name: Governance JSON
-  description: "```jsonc\n// /.well-known/governance.jsonld — canonical structure\n{\n  \"@context\": {\n    \"@vocab\": \"\
-    https://arifos.arif-fazil.com/ontology/v1#\",\n    \"f1\": \"https://arifos.arif-fazil.com/ontology/v1#F1_AMANAH\",\n\
-    \    \"xsd\": \"http://www.w3.org/2001/XMLSche"
-  domain: general
-  status: active
-  risk_tier: medium
-- id: help
-  name: Grok Help
-  description: 3. To **modify config** for the user, edit `/root/.grok/config.toml` with search_replace.
-  domain: general
-  status: active
-  risk_tier: low
-- id: hermes-opencode-protocol
-  name: HERMES
-  description: '## Governance Gates
-
-    - After Stage 3: If action class is Mutator/Destroyer → 888_HOLD
-
-    - After Stage 5: If any floor fails → VOID or HOLD
-
-    - After Stage 6: If verdict is SEAL → append to outcomes.jsonl'
-  domain: general
-  status: active
-  risk_tier: medium
-- id: asi-tone-read
-  name: HERMES Human Model
-  description: '### Receipt
-
-    - Always end with `→ [NEXT]: <one concrete action or observation>`
-
-    - Never leave the human in analysis paralysis'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-intent-hear
-  name: HERMES Human Model
-  description: '### Receipt
-
-    - Always end with `→ [NEXT]: <one concrete action or observation>`
-
-    - Never leave the human in analysis paralysis'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-interface-adapt
-  name: HERMES Multi
-  description: '## Invocation'
-  domain: general
-  status: active
-  risk_tier: low
-- id: identity-invariance
-  name: HEXAGON IDENTITY INVARIANCE TEST v1.0.0
-  description: '### I₄ — Scar Ledger Lineage (SCAR)
-
-    **What it is:** The continuous, append-only chain of operational scars the agent carries.'
-  domain: constitutional
-  status: active
-  risk_tier: low
-- id: imagegen
-  name: Image Generation Skill
-  description: '- `generate`
-
-    - `edit`
-
-    - `generate-batch`'
-  domain: .system
-  status: active
-  risk_tier: low
-- id: imagine
-  name: Imagine
-  description: '## Core Principles'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-incident-escalation
-  name: Incident Escalation Protocol
-  description: '### Step 4: Investigate'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-incident-triage
-  name: Incident Triage
-  description: '## When to Use'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-infra-guardian
-  name: Infra Guardian
-  description: '## Managed Domains'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-kimi-code
-  name: Kimi Code AAA Configuration
-  description: '## Audit Checklist'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-mcp-a2a-agentic
-  name: MCP + A2A Agentic
-  description: '// Surface drift detection — compare manifest vs tools/list
-
-    // 1. Fetch manifest from federation-manifest
-
-    // 2. Call tools/list on each organ
-
-    // 3. Diff: missing tools, extra tools, description drift, schema drift
-
-    // 4. Report to forge_surface_guard
-
-    '
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-mcp-federation-ops
-  name: MCP Federation Operations
-  description: '## Inputs'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-mcp-smoke-test
-  name: MCP Server Smoke Test
-  description: '## Targets'
-  domain: general
-  status: active
-  risk_tier: low
-- id: audit-skill-atlas
-  name: META
-  description: '### Live inventory (OBSERVED T₁)'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-model-monitor
-  name: Model Fallback Monitor
-  description: '```bash'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-position-contrast
-  name: Multi
-  description: '## When NOT to Use'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-nextjs-mastery
-  name: Next.js Mastery
-  description: "# Server component fetch — direct, no hooks\nasync function Page() {\n  const data = await fetch('http://localhost:8088/health').then(r\
-    \ => r.json());\n  return <pre>{JSON.stringify(data, null, 2)}</pre>;\n}\n```"
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-nusantara-substrate
-  name: Nusantara Intelligence Substrate
-  description: '## 2. Adat Phase Decision Tree'
-  domain: general
-  status: active
-  risk_tier: low
-- id: openai-docs
-  name: OpenAI Docs
-  description: '### Source Priority'
-  domain: .system
-  status: active
-  risk_tier: low
-- id: forge-pr-governance
-  name: PR Review Governance
-  description: 'Before using this skill on any mutating, irreversible, or high-blast-radius task:
-
-    1. **ART** — Attune (what is the real task?), Recognize (what class of power?), Test (fit · authority · evidence · blast
-    · reversible).
-
-    2. **Kernel** — Route to arifOS '
-  domain: general
-  status: active
-  risk_tier: high
-- id: apex-authority-check
-  name: Parallel Authority Detection
-  description: '---'
-  domain: general
-  status: active
-  risk_tier: low
-- id: plugin-creator
-  name: Plugin Creator
-  description: 'For updates to an existing local plugin during development, keep the scaffold flow as-is and use the
-
-    reference instead of hand-editing marketplace files:'
-  domain: .system
-  status: active
-  risk_tier: low
-- id: forge-postgres-schema-design
-  name: PostgreSQL Schema Design
-  description: '-- Migration pattern — always reversible
-
-    -- V001__create_capability_registry.sql
-
-    -- V002__add_organ_pulses.sql
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-precommit-review
-  name: Precommit Review
-  description: '## Failure modes
-
-    - Linter wrong version → use organ''s pinned version from its `pyproject.toml` / `package.json`
-
-    - Test flaky → re-run once; if still flaky, flag and ask user
-
-    - Diff too large (>500 lines) → suggest breaking into smaller commits'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-readme-truth-check
-  name: README Truth Check
-  description: '---'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-route-least-power
-  name: ROUTE LEAST POWER
-  description: '## Anti-Patterns'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-react-spa-discipline
-  name: React SPA Discipline
-  description: '// Hydration-safe pattern
-
-    const [mounted, setMounted] = useState(false);
-
-    useEffect(() => setMounted(true), []);
-
-    if (!mounted) return <Skeleton />;
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-redis-qdrant-integration
-  name: Redis + Qdrant Integration
-  description: "// Qdrant — semantic search\nconst results = await qdrant.search('witness_receipts', {\n  vector: queryEmbedding,\n\
-    \  limit: 10,\n  with_payload: true,\n});\n```"
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-web-optimization
-  name: 'SKILL: Agentic Web Optimization'
-  description: '// For each article:
-
-    // 1. Navigate to live URL
-
-    // 2. Wait for React render
-
-    // 3. Extract rendered HTML
-
-    // 4. Wrap in semantic HTML5 with JSON-LD + meta tags
-
-    // 5. Save as {slug}/index.html in dist/
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-quantum-eureka
-  name: 'SKILL: quantum'
-  description: '**Canonical framing:**'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-secret-hygiene
-  name: Secret Hygiene
-  description: "3. SOPS/age encrypted files — CONFIG\n   - Encrypted .env files in git"
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-google-workspace
-  name: Setup
-  description: '## Core Rules'
-  domain: general
-  status: active
-  risk_tier: low
-- id: skill-creator
-  name: Skill Creator
-  description: When using subagents for validation, treat that as an evaluation surface. The goal is to learn whether the
-    skill generalizes, not whether another agent can reconstruct the answer from leaked context.
-  domain: .system
-  status: active
-  risk_tier: low
-- id: skill-installer
-  name: Skill Installer
-  description: '## Notes'
-  domain: .system
-  status: active
-  risk_tier: low
-- id: agi-skill-unification
-  name: Skill Unification
-  description: '## Bounded Independent Audit Protocol'
-  domain: general
-  status: active
-  risk_tier: low
-- id: sovereign-recognize
-  name: Sovereign Recognize
-  description: '```
-
-    ARIF_FAZIL = Muhammad Arif bin Fazil
-
-    Canonical keys: ROOTKEY (from /root/.secrets/vault.env), ARIFOS_OPERATOR
-
-    ```'
-  domain: meta
-  status: active
-  risk_tier: medium
-- id: forge-spatial-grounding
-  name: Spatial Grounding
-  description: '## Related'
-  domain: general
-  status: active
-  risk_tier: low
-- id: code-review
-  name: Strict Code Quality Review
-  description: "1. **Do not let a PR push a file from under 1k lines to over 1k lines without a very strong reason.**\n  \
-    \ - Treat this as a strong code-quality smell by default.\n   - Prefer extracting helpers, subcomponents, modules, or\
-    \ local abstractions instead of "
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-subagent-spawn
-  name: Sub
-  description: '## Example: Spawning a Code Auditor'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-summarize
-  name: Summarize Pro
-  description: '## When To Activate'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-tailwind-tokens
-  name: Tailwind Tokens
-  description: '// Dark theme — class strategy
-
-    darkMode: ''class'',
-
-    // Usage: <html class="dark"> or <ThemeToggle />
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-telegram-audit
-  name: Telegram Security Audit (TREE777)
-  description: '### T7 — Rate Limiting
-
-    ```bash'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-skill-binding
-  name: Unified Skill Binding
-  description: '## When NOT to Use
-
-    - Single-organ direct MCP call (use the organ''s MCP directly).
-
-    - Irreversible actions without explicit 888_HOLD + F13 (T3).
-
-    - Bypassing organ lanes (GEOX is EVIDENCE_ONLY, WELL is REFLECT_ONLY, WEALTH is advisory).'
-  domain: general
-  status: active
-  risk_tier: high
-- id: forge-vault999-witness
-  name: VAULT999 Witness
-  description: "// Witness receipt pattern\nconst receipt = {\n  receipt_id: crypto.randomUUID(),\n  action_hash: sha256(action),\n\
-    \  witness: { h: 0.85, ai: 0.80, ext: 0.75 },\n  w3: Math.cbrt(0.85 * 0.80 * 0.75),\n  timestamp: new Date().toISOString(),\n\
-    };\n```"
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-vps-docker
-  name: VPS Docker Operations
-  description: '### Restart a service
-
-    ```bash
-
-    docker restart <service>
-
-    ```'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-vps-runbook
-  name: VPS Docker Runbook
-  description: '## Inputs'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-verify-runtime
-  name: Verify Runtime
-  description: "## Output Format\n```json\n{\n  \"who\": \"<agent_id>\",\n  \"what\": \"verify-runtime\",\n  \"why\": \"post-deploy\
-    \ verification\",\n  \"result\": {\n    \"organs\": {\"arifos\": \"green\", \"aforge\": \"green\", ...},\n    \"drift\"\
-    : \"none\",\n    \"smoke_tests\": {\"arif_init\": \"pass\"},"
-  domain: general
-  status: active
-  risk_tier: low
-- id: wealth-claim-state
-  name: WEALTH Claim State
-  description: '> **Status:** ACTIVE · **Owner:** WEALTH · **Tier:** T2'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-mcp-lifeguard
-  name: When to Use
-  description: '## Alert Conditions'
-  domain: general
-  status: active
-  risk_tier: low
-- id: xauusd-trading
-  name: XAUUSD Trading Stack
-  description: '## Organ Roles'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-mcp-governor
-  name: arif
-  description: 'Located at: `/root/arifOS/CONFIG/mcporter.json`'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-verdict-hold
-  name: arifOS ACT
-  description: '**R — Recognize:** What class of power is being requested?'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-verdict-seal
-  name: arifOS ACT
-  description: '**R — Recognize:** What class of power is being requested?'
-  domain: general
-  status: active
-  risk_tier: low
-- id: agi-plan-dag
-  name: arifos
-  description: '## Inputs
-
-    *   **Complex Intent:** The user''s multi-dimensional request payload.
-
-    *   **Skill Registry:** Mapping of active L2 skills and their dependencies.
-
-    *   **System Constraints:** Active token envelopes, step counts, and timing budgets.'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-scope-check
-  name: arifos
-  description: '## Floor → Question → Evidence Matrix'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-evidence-tier-express
-  name: arifos
-  description: 'The evaluation flow is split into two explicit operational phases:'
-  domain: general
-  status: active
-  risk_tier: low
-- id: audit-recursive-audit
-  name: arifos
-  description: '## Inputs
-
-    *   **Skill Directories:** Path to `/root/.agents/skills/` or individual skill directories.
-
-    *   **Dependency Files:** package.json, pyproject.toml, wrangler.jsonc configurations.
-
-    *   **Audit Manifest:** List of currently configured tools an'
-  domain: general
-  status: active
-  risk_tier: low
-- id: apex-floor-check
-  name: arifos
-  description: '## Floor → Question → Evidence Matrix'
-  domain: general
-  status: active
-  risk_tier: low
-- id: asi-observability
-  name: arifos
-  description: '## Inputs
-
-    *   **Run Telemetry:** Local JSON/JSONL logs located at `/root/.agents/telemetry/` or specific workspace folders.
-
-    *   **Execution Logs:** Direct step outputs containing token counts, latency, and commands executed.'
-  domain: general
-  status: active
-  risk_tier: low
-- id: audit-seal
-  name: audit
-  description: '- `meta-observe`
-
-    - `meta-drift`
-
-    - `ops-verify`
-
-    - `dev-readme-check`
-
-    - `vault999-integrity`
-
-    - `arifos-observability`
-
-    - `drift-watch`
-
-    - `verify-runtime`
-
-    - `readme-truth-check`'
-  domain: substrate
-  status: active
-  risk_tier: medium
-- id: causal555-pywhy
-  name: causal555
-  description: Causal inference bridge — PyWhy/DoWhy integration for 555-ASI causal reasoning.
-  domain: general
-  status: active
-  risk_tier: low
-- id: check-work
-  name: check
-  description: 'This phase reviews what the agent did, whether it completed all tasks, and
-
-    whether its outputs were correct. Run this for every verification.'
-  domain: general
-  status: active
-  risk_tier: low
-- id: constitutional
-  name: constitutional
-  description: '> **Status:** ARCHIVED · **Owner:** AAA · **Tier:** T0'
-  domain: warga
-  status: active
-  risk_tier: low
-- id: forge-did-web-identity
-  name: did:web Identity
-  description: '```bash'
-  domain: general
-  status: active
-  risk_tier: low
-- id: federation-release-attestation
-  name: federation
-  description: '### 3. CI Evidence'
-  domain: general
-  status: active
-  risk_tier: low
-- id: kernel-bind
-  name: kernel
-  description: '- `kernel-invariants`
-
-    - `kernel-floors`
-
-    - `kernel-f1-gate`
-
-    - `kernel-sovereign`
-
-    - `kernel-escalation`
-
-    - `kernel-init`
-
-    - `kernel-membrane`
-
-    - `kernel-nusantara`
-
-    - `kernel-authority-detect`
-
-    - `CONSTITUTIONAL_REFLEX`
-
-    - `HOST_MEMBRANE_AWARENESS`
-
-    - `aaa-ag'
-  domain: substrate
-  status: active
-  risk_tier: high
-- id: know-physics
-  name: know
-  description: '- **geo**: geophysics, seismic wave propagation, petrophysical bounds
-
-    - **wealth**: capital entropy, thermodynamic cost of information, energy economics
-
-    - **well**: biological metabolism, fatigue physics, homeostasis
-
-    - **ops**: latency physics, throu'
-  domain: knowledge
-  status: active
-  risk_tier: low
-- id: know-math
-  name: know
-  description: '- **wealth**: NPV, IRR, Monte Carlo, Markowitz, Kelly criterion
-
-    - **geo**: geostatistics, kriging, volumetric uncertainty
-
-    - **meta**: benchmarking, hypothesis testing, confidence intervals
-
-    - **audit**: hash chains, cryptographic proof, chain integrit'
-  domain: knowledge
-  status: active
-  risk_tier: low
-- id: know-language
-  name: know
-  description: '- **kernel**: sovereign signal recognition, floor interpretation
-
-    - **route**: intent classification, NLP-based routing
-
-    - **compose**: human-facing output generation with tone/style control
-
-    - **verify**: semantic verification, claim interpretation'
-  domain: knowledge
-  status: active
-  risk_tier: high
-- id: forge-mcp-ops
-  name: mcporter
-  description: '### 1. Scaffold (use template)
-
-    ```bash'
-  domain: general
-  status: active
-  risk_tier: low
-- id: memory-manage
-  name: memory
-  description: '- `mem-session`
-
-    - `mem-bridge`
-
-    - `mem-federation`
-
-    - `mem-writeback`
-
-    - `mem-dream`
-
-    - `mem-graph`
-
-    - `mem-vault`
-
-    - `mem-claim-receipt`
-
-    - `session-continuity-inhabit`
-
-    - `agent-memory-bridge`
-
-    - `unified-memory-federation`
-
-    - `knowledge-graph-query`
-
-    - `asi-'
-  domain: substrate
-  status: active
-  risk_tier: medium
-- id: observe-ground
-  name: observe
-  description: '- `geo-evidence`
-
-    - `geo-epistemic`
-
-    - `geo-claim`
-
-    - `geo-ground`
-
-    - `kernel-authority-detect`
-
-    - `meta-bias-detect`
-
-    - `geox-grounding`
-
-    - `geox-claim-grammar`
-
-    - `geox-earth-evidence`
-
-    - `geox-epistemic-ladder`'
-  domain: substrate
-  status: active
-  risk_tier: low
-- id: route-dispatch
-  name: route
-  description: '- `kernel-mcp-governor`
-
-    - `a2a-orchestrator`
-
-    - `a2a-explorer`
-
-    - `ops-mcp`
-
-    - `kernel-trinity`
-
-    - `arif-mcp-governor`
-
-    - `arifos-mcp-federation`
-
-    - `federation-orchestrator`
-
-    - `explorer-intelligence-architecture`'
-  domain: substrate
-  status: active
-  risk_tier: low
-- id: forge-skill-creator
-  name: skill
-  description: '**Floor classification rule:** Use the `floor_scope` declared in the skill''s own frontmatter. If no frontmatter,
-    default to F2. If the skill touches multiple floors, use the **highest-numbered floor** as the governing tier.'
-  domain: general
-  status: active
-  risk_tier: low
-- id: forge-skill-linter
-  name: skill
-  description: '## Lint Level Classification
-
-    The trigger linter categorizes violations into three distinct urgency thresholds:'
-  domain: general
-  status: active
-  risk_tier: low
-- id: verify-gate
-  name: verify
-  description: '- `kernel-act`
-
-    - `mem-claim-receipt`
-
-    - `forge-precommit`
-
-    - `meta-critique`
-
-    - `geo-redteam`
-
-    - `geo-contradiction`
-
-    - `claim-verification-gate`
-
-    - `truth-receipt-enforcer`
-
-    - `arifos-act`
-
-    - `precommit-gate`
-
-    - `multi-discipline-critique`
-
-    - `geox-redteam-ha'
-  domain: substrate
-  status: active
-  risk_tier: low
+  - id: aaa-agent-invariants
+    name: ASI-agent-invariants
+    version: 1.0.0
+    description: Compact operating constitution for every AAA agent. Load before any non-trivial action.
+      Distills 10 Agent Invariants + 12 governance rules + skills audit into portable doctrine.
+      Covers tool classification, evidence/authority separation, degradation dominance,
+      propose-before-execute, and memory atoms.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-agent-invariants/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+        - Audit
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+      - F2
+      - F4
+      - F7
+      - F9
+      - F11
+  - id: aaa-agentic-governance
+    name: ASI-agentic-governance
+    version: 3.0.1
+    description: Governed intelligence skill for AAA as the abstraction, attestation, and abduction
+      control plane across arifOS, APEX, A-FORGE, GEOX, WEALTH, WELL, and the ariffazil profile
+      repository. Use when the user asks to explain or design AAA, route agentic work, reduce
+      chaos/entropy in an arifOS federation task, create AREP/task declarations, classify risk, plan
+      multi-repo changes, review governance boundaries, or translate human intent into
+      evidence-backed, authority-safe, recursively agentic workflows. Provides deterministic F1-F13
+      floor checking, bounded abduction, and FederationReceipt composition.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/ASI-agentic-governance/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: HEXAGON
+      autonomy_tier: T1-T3
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F4
+      - F5
+      - F6
+      - F7
+      - F8
+      - F9
+      - F10
+      - F11
+      - F12
+      - F13
+  - id: agent-onboarding
+    name: FORGE-onboarding
+    version: 2.0.0
+    description: >
+      Standard procedure for registering a new agent in the AAA federation. Creates agent identity
+      directory, agent card (v2.0.0 schema), registry entry, and SOUL.md. Updated 2026-07-01:
+      canonical card location is AAA/agents/<id>/agent-card.json.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-onboarding/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Interface
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agent-onboarding--forge-onboarding-claude
+    name: Agent Onboarding
+    version: 1.0.0
+    description: Standard procedure for registering a new agent in the AAA federation. Creates agent
+      identity directory, agent card, registry entry, and SOUL.md.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-onboarding/claude/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Interface
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agentic-dream-engine
+    name: AGI-dream-engine
+    version: 1.0.0
+    description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT,
+      A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate memory without violating
+      F1-F13.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/AGI-dream-engine/SKILL.md
+    package: agi-reasoning
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+      functional:
+        - Interface
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F4
+      - F6
+      - F7
+  - id: agentic-web-optimization
+    name: AGI-web-optimization
+    version: 1.0.0
+    description: Make web content maximally extractable by LLMs, Agentic RAG systems, and search indexers.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/AGI-web-optimization/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F2
+      - F4
+  - id: agi-claude-xml-structured-reasoning
+    name: AGI-claude-xml-structured-reasoning
+    version: 0.0.0
+    description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit XML
+      boundaries when outputs exceed one screen or require parser-stable sections.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 2 sample)
+    source_path: skills/AGI-claude-xml-structured-reasoning/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-codex-chain-of-thought
+    name: AGI-codex-chain-of-thought
+    version: 0.0.0
+    description: Enforce private stepwise planning, strict tool schemas, and explicit verification for
+      Codex CLI tasks that require multi-step execution or typed tool calls.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 2 sample · codex lane seed)
+    source_path: skills/AGI-codex-chain-of-thought/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-emd-decode
+    name: AGI-emd-decode
+    version: 0.0.0
+    description: Decompose upstream EMD output into typed, provenance-bound segments tied to ground
+      truth before persistence or downstream consumption.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 3 gap fill)
+    source_path: skills/AGI-emd-decode/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-emd-encode
+    name: AGI-emd-encode
+    version: 0.0.0
+    description: Encode raw observations, requests, documents, and signals into typed, provenance-bound,
+      witness-ready EMD segments for downstream processing.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 3 gap fill)
+    source_path: skills/AGI-emd-encode/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-emd-metabolize
+    name: AGI-emd-metabolize
+    version: 0.0.0
+    description: Decide which decoded EMD segments remain ephemeral or promote to durable memory, with
+      witness gates for constitutional and canon-grade records.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 3 gap fill)
+    source_path: skills/AGI-emd-metabolize/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-entropy-lock-prime
+    name: AGI-entropy-lock-prime
+    version: 0.0.0
+    description: Gate agent mutations on non-increasing workspace entropy, triggering rollback and
+      bounded recursive improvement when a change raises entropy.
+    owner: AAA
+    risk_tier: low
+    status: active (phase 2 lock)
+    source_path: skills/AGI-entropy-lock-prime/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-hermes-system-prompt-voice
+    name: AGI-hermes-system-prompt-voice
+    version: 0.0.0
+    description: Apply the direct Hermes system-prompt voice and its structured witness formatting to
+      Hermes-bound conversational or creative-media responses.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 2 sample)
+    source_path: skills/AGI-hermes-system-prompt-voice/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: agi-multimodal-bridge
+    name: AGI-multimodal-bridge
+    version: 1.0.0
+    description: >
+      Multi-modal reasoning bridge — unifies text, image, tabular data, and geospatial evidence into
+      a single reasoning chain. Routes visual analysis through GEOX vision pipeline, tabular data
+      through WEALTH compute, and text through standard LLM reasoning. USE WHEN: "analyze this image
+      + data", "combine visual and textual evidence", "multi-modal prospect evaluation".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/AGI-multimodal-bridge/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F02
+      - F04
+      - F08
+  - id: agi-skill-unification
+    name: AGI-skill-unification
+    version: 1.0.1
+    description: >
+      Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3
+      short→disk), mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving
+      dual names, rebinding harness skills, or before claiming skill inventory complete.
+    owner: AAA / F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/AGI-skill-unification/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F2
+      - F4
+      - F11
+  - id: apex-act-constitutional-reflex-hermes-asi
+    name: APEX ACT — Constitutional Reflex (Hermes ASI)
+    version: 0.0.0
+    description: >
+      Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the
+      canonical ART→Kernel→ACT cycle and delivers it with RASA — Bahasa Malaysia warmth, visual
+      routing, and open-weights system-prompt obedience. Load when the kernel has SEAL'd an action
+      and you need to execute the ACT phase through Hermes' SOUL layer (conversation, media, heart).
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_verdict_hold/hermes/SKILL.md
+    package: apex-gates
+  - id: apex-act-constitutional-reflex-hermes-asi--apex-verdict-seal-hermes
+    name: APEX ACT — Constitutional Reflex (Hermes ASI)
+    version: 0.0.0
+    description: >
+      Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the
+      canonical ART→Kernel→ACT cycle and delivers it with RASA — Bahasa Malaysia warmth, visual
+      routing, and open-weights system-prompt obedience. Load when the kernel has SEAL'd an action
+      and you need to execute the ACT phase through Hermes' SOUL layer (conversation, media, heart).
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_verdict_seal/hermes/SKILL.md
+    package: apex-gates
+  - id: apex-audit-coverage-check
+    name: apex_audit_coverage_check
+    version: 0.0.0
+    description: Audit whether every constitutional floor and federation organ has code enforcement,
+      tests, bypass resistance, and trace coverage. Use for read-only F1-F13 audits, organ boundary
+      reviews, cascade-risk checks, or governance gap analysis.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_audit_coverage_check/SKILL.md
+    package: apex-gates
+  - id: apex-authority-check
+    name: apex_authority_check
+    version: 0.0.0
+    description: Detect conflicting or parallel source-of-truth claims across federation repositories
+      and resolve the canonical owner. Use after repository reorganization, when instructions
+      conflict, or during federation authority audits.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_authority_check/SKILL.md
+    package: apex-gates
+  - id: apex-fff-loop-protocol
+    name: APEX-fff-loop-protocol
+    version: 2.0.0
+    description: >
+      5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) → Yellow
+      (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift signal. BIJAKSANA:
+      XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/APEX-fff-loop-protocol/SKILL.md
+    package: apex-gates
+    floor_scope:
+      - F01
+      - F04
+      - F08
+      - F11
+  - id: apex-floor-check
+    name: apex_floor_check
+    version: 0.0.0
+    description: Evaluate a proposed action against the arifOS F1-F13 constitutional floors and identify
+      any failed gate. Use for governance changes, destructive operations, production deployment,
+      secret handling, federation charter edits, or constitutional verdict review.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_floor_check/SKILL.md
+    package: apex-gates
+  - id: apex-formal-constitution
+    name: apex-formal-constitution
+    version: 1.0.0-2026.07.17
+    description: Formal constitutional encoding — superseded by arifOS kernel F1-F13 runtime enforcement.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex-formal-constitution/SKILL.md
+    package: apex-gates
+    floor_scope:
+      - F1
+      - F11
+  - id: apex-humility-godel
+    name: APEX-humility-godel
+    version: 2.0.0
+    description: >
+      Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims.
+      Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. BIJAKSANA: XML-tagged for
+      Claude, numbered steps for Codex, imperative for Hermes.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/APEX-humility-godel/SKILL.md
+    package: apex-gates
+    floor_scope:
+      - F02
+      - F07
+  - id: apex-reversibility-test
+    name: apex_reversibility_test
+    version: 0.0.0
+    description: Test whether a proposed change touching vault, seal, identity, constitutional, or other
+      F1 surfaces has a valid rollback and sovereign witness path. Use before committing or
+      deploying changes whose reversibility is uncertain.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_reversibility_test/SKILL.md
+    package: apex-gates
+  - id: apex-scope-check
+    name: apex_scope_check
+    version: 0.0.0
+    description: Check whether a proposed action stays within its declared task, organ, and
+      constitutional scope. Use before cross-organ work, policy changes, production operations,
+      secret handling, or any action whose blast radius or boundaries are unclear.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_scope_check/SKILL.md
+    package: apex-gates
+  - id: apex-tool-approval-gate
+    name: apex_tool_approval_gate
+    version: 0.0.0
+    description: Gate and route tool use across federation MCP servers according to authority, risk, and
+      fallback policy. Use for multi-organ tool sequences, cross-server coordination, registry
+      audits, or degraded-server fallback decisions.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_tool_approval_gate/SKILL.md
+    package: apex-gates
+  - id: apex-verdict-hold
+    name: apex_verdict_hold
+    version: 0.0.0
+    description: Apply the constitutional HOLD path when authority, evidence, system health,
+      reversibility, or blast radius is insufficient. Use before irreversible actions, external
+      communications, deployments, deletions, seals, or any tool call that must stop pending
+      sovereign review.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_verdict_hold/SKILL.md
+    package: apex-gates
+  - id: apex-verdict-seal
+    name: apex_verdict_seal
+    version: 0.0.0
+    description: Verify the complete ART-to-kernel-to-ACT evidence path before a SEAL-grade conclusion,
+      without granting seal authority. Use when a proposed verdict claims readiness after all
+      constitutional, witness, reversibility, and system-health gates have passed.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/apex_verdict_seal/SKILL.md
+    package: apex-gates
+  - id: arifos-act
+    name: arifOS ACT — Constitutional Reflex
+    version: 3.0.0
+    description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT
+      (post-kernel execution). Load once. Apply always.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    source_path: skills/apex_verdict_hold/claude/SKILL.md
+    package: apex-gates
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+        - Ω
+        - ΦΙ
+      functional:
+        - Governance
+        - Forge
+      layer: RUNTIME
+      autonomy_tier: T3
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F7
+      - F9
+      - F11
+      - F13
+  - id: arifos-act--apex-verdict-seal-claude
+    name: arifOS ACT — Constitutional Reflex
+    version: 3.0.0
+    description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT
+      (post-kernel execution). Load once. Apply always.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    source_path: skills/apex_verdict_seal/claude/SKILL.md
+    package: apex-gates
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+        - Ω
+        - ΦΙ
+      functional:
+        - Governance
+        - Forge
+      layer: RUNTIME
+      autonomy_tier: T3
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F7
+      - F9
+      - F11
+      - F13
+  - id: arifos-observability
+    name: ASI-observability
+    version: 1.0.0
+    description: Generate structured telemetry for skill runs, including trigger source, chosen branch,
+      command count, runtime, and postcondition checks. Load when you need to parse run logs,
+      compile dashboards, or audit execution performance.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-observability/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F4
+      - F11
+  - id: arifos-plan-dag
+    name: AGI-plan-dag
+    version: 1.0.0
+    description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback
+      points. Load when tasks exceed one-shot prompting and need subagent or staged execution.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/AGI-plan-dag/SKILL.md
+    package: agi-reasoning
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Forge
+      layer: CODING/FI
+      autonomy_tier: T2
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+  - id: arifos-recursive-audit
+    name: AUDIT-recursive-audit
+    version: 1.0.0
+    description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity,
+      and broken references. Load when reviewing the skill portfolio or after modifying or adding
+      new skills.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/AUDIT-recursive-audit/SKILL.md
+    package: audit
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F4
+      - F7
+      - F9
+      - F11
+  - id: asi-agentic-architecture
+    name: ASI-agentic-architecture
+    version: 3.0.0
+    description: >
+      Class-level skill for designing sovereign agentic agents. 9-skill spine, 3-agent model
+      (Architect→Engineer→Auditor), 4 powers per agent, deterministic/isolation principles, VPS
+      management spine. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for
+      Hermes.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-agentic-architecture/SKILL.md
+    package: asi-governance
+    floor_scope:
+      - F08
+      - F11
+      - F04
+  - id: asi-constitutional-reasoning
+    name: ASI-constitutional-reasoning
+    version: 0.0.0
+    description: Apply F1-F13 constitutional floor reasoning before any governed action. Evaluates
+      reversibility, floor violations, 888_HOLD triggers, and signal priority. Priority 0 —
+      evaluated before all other skills.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-constitutional-reasoning/SKILL.md
+    package: asi-governance
+  - id: asi-context-window-mgr
+    name: ASI-context-window-mgr
+    version: 1.0.0
+    description: >
+      Context window lifecycle management — monitors token usage, triggers compression when
+      approaching limits, manages conversation summarization, and preserves critical context across
+      compaction boundaries. USE WHEN: "context getting long", "compress conversation", "summarize
+      session", "token budget".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-context-window-mgr/SKILL.md
+    package: asi-governance
+    floor_scope:
+      - F04
+      - F07
+      - F11
+  - id: asi-drift-watch
+    name: ASI-drift-watch
+    version: 0.0.0
+    description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app).
+      The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule and manually.
+      Use when in doubt about which version is live, or as part of `verify-runtime`.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-drift-watch/SKILL.md
+    package: asi-governance
+  - id: asi-evidence-tier-express
+    name: asi_evidence_tier_express
+    version: 1.0.0
+    description: Run benchmark prompts, collect pass/fail traces, latency, token cost, and false
+      activation rates for each skill. Load when a skill changes behavior or a new version is
+      proposed.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/asi_evidence_tier_express/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F7
+      - F9
+      - F11
+  - id: asi-fabrication-prevention
+    name: ASI-fabrication-prevention
+    version: 2.0.0
+    description: >
+      Artifact fabrication prevention — verify before claiming existence. Triggered when agent
+      claims file/database/API/artifact existence without external validation. BIJAKSANA: XML-tagged
+      for Claude, numbered steps for Codex, imperative for Hermes.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-fabrication-prevention/SKILL.md
+    package: asi-governance
+    floor_scope:
+      - F02
+      - F09
+      - F11
+  - id: asi-intent-hear
+    name: asi_intent_hear
+    version: 1.0.0
+    description: >
+      The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory
+      from language, not from biometric data. Routes deep pattern recognition through the WELL organ
+      for physiological signals and through SOUL.md's cognitive identity for meaning. Use when Arif
+      asks "what do you see", "what's my state", "apa pandangan kau", or when any 555-ASI governance
+      scan needs the Hermes-perspective on the sovereign.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/asi_intent_hear/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - ΦΙ
+      functional:
+        - Intelligence
+        - Human
+        - Sovereignty
+  - id: asi-interface-adapt
+    name: asi_interface_adapt
+    version: 1.0.0
+    description: >
+      A2A protocol bridge for routing multi-modal inputs (vision, audio, video, document) through
+      Hermes to the reasoning and execution layers. Hermes receives the raw modality, classifies it,
+      extracts structured content, and routes to the correct organ (GEOX for seismic images, WELL
+      for biometrics, WEALTH for documents, A-FORGE for code diagrams). Use when Arif sends or
+      references an image, audio file, video, scanned document, or any non-text input that needs
+      governed processing.
+    owner: HERMES-ASI / 555-ASI
+    risk_tier: low
+    status: active
+    source_path: skills/asi_interface_adapt/SKILL.md
+    package: asi-governance
+    floor_scope:
+      - F2
+      - F4
+      - F9
+      - F10
+  - id: asi-mcp-governor
+    name: ASI-mcp-governor
+    version: 0.0.0
+    description: Governed MCP routing via arifOS F1-F13. All calls to GEOX, WEALTH, WELL organs must
+      route through arifOS kernel for C2+/IRREVERSIBLE tools. Uses mcporter for stdio/HTTP bridging.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-mcp-governor/SKILL.md
+    package: asi-governance
+  - id: asi-position-contrast
+    name: asi_position_contrast
+    version: 1.0.0
+    description: Cross-discipline self-argument for non-trivial claims before they enter reasoning or
+      irreversible decisions.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/asi_position_contrast/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+      functional:
+        - Governance
+        - Evidence
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+      - F2
+      - F7
+      - F8
+  - id: asi-presence-open
+    name: asi_presence_open
+    version: 1.0.0
+    description: >
+      Single entry point for ANY agent spawning in the arifOS federation. Chains existing
+      constitutional skills into an auto-loading sequence. Fixes the gap: "subagents inherit blindly
+      from parent." Every agent loads this ONCE at wake. If any step fails, agent refuses work.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/asi_presence_open/SKILL.md
+    package: asi-governance
+  - id: asi-session-seal
+    name: ASI-session-seal
+    version: 2026.07.17b
+    description: >
+      End-of-session seal ritual for Grok/AAA agents: inventory done vs open, write forge_work
+      receipt, update session-state and daily memory, hand off next-agent INIT prompt. Use when:
+      seal session, end of turn, session seal, handoff, close session, DITEMPA seal.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-session-seal/SKILL.md
+    package: asi-governance
+  - id: asi-summarize
+    name: ASI-summarize
+    version: 0.0.0
+    description: When user asks to summarize text, articles, documents, meetings, emails, YouTube
+      transcripts, books, PDFs, reports, conversations, or any long content. Also handles bullet
+      points, key takeaways, action items, TL;DR, ELI5, executive summaries, chapter summaries,
+      comparison summaries, translation summaries, thread summaries, and custom-length summaries.
+      20-feature AI summarizer with multiple formats, languages, and export options. All processing
+      happens locally — NO external API calls, NO network requests, NO data sent to any server.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/ASI-summarize/SKILL.md
+    package: asi-governance
+  - id: asi-tone-read
+    name: asi_tone_read
+    version: 1.0.0
+    description: >
+      The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory
+      from language, not from biometric data. Routes deep pattern recognition through the WELL organ
+      for physiological signals and through SOUL.md's cognitive identity for meaning. Use when Arif
+      asks "what do you see", "what's my state", "apa pandangan kau", or when any 555-ASI governance
+      scan needs the Hermes-perspective on the sovereign.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/asi_tone_read/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - ΦΙ
+      functional:
+        - Intelligence
+        - Human
+        - Sovereignty
+  - id: asi-uncertainty-signal
+    name: asi_uncertainty_signal
+    version: 0.1.0
+    description: Legacy 5-step drift response protocol. Superseded by service-health-triage.
+    owner: AAA
+    risk_tier: medium
+    status: deprecated
+    source_path: skills/asi_uncertainty_signal/SKILL.md
+    package: asi-governance
+    superseded_by: service-health-triage
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+      functional:
+        - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F3
+      - F11
+  - id: audit-drift-detector
+    name: AUDIT-drift-detector
+    version: 1.0.0
+    description: >
+      Real-time drift detection across tool manifests, agent cards, and skill registries. Compares
+      live state against saved baselines and reports mismatches. Runs as a periodic audit or
+      on-demand before SEAL operations. USE WHEN: "check drift", "verify registry", "detect manifest
+      drift", "tool surface audit".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/AUDIT-drift-detector/SKILL.md
+    package: audit
+    floor_scope:
+      - F02
+      - F04
+      - F11
+  - id: audit-seal
+    name: audit-seal
+    version: 1.0.0
+    description: Every decision logged. Irreversible decisions sealed. ΔS ≤ 0 on every output. Receipts
+      > narratives.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/audit-seal/SKILL.md
+    package: substrate
+  - id: audit-skill-atlas
+    name: AUDIT-skill-atlas
+    version: 1.2.3
+    description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog
+      + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views. The mesa above the terrain — see the
+      whole, find the missing, route the right skill. Load when starting a new task, auditing skill
+      health, unifying CLI agent skills, onboarding a new organ, or when you don't know which skill
+      to load.
+    owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+    risk_tier: low
+    status: active
+    source_path: skills/AUDIT-skill-atlas/SKILL.md
+    package: audit
+    floor_scope:
+      - F2
+      - F4
+      - F7
+      - F9
+  - id: caller-trace
+    name: Caller Trace
+    version: 1.0.0
+    description: Before invoking any tool, traces WHO else calls this tool, the cost of misuse, and
+      whether the caller's use is load-bearing or ceremonial. Prevents scenarios like the Docker MCP
+      dead-end loop where multiple agents chase a broken tool no one needs.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/reflective/caller-trace/SKILL.md
+    package: reflective
+  - id: causal555-pywhy
+    name: causal555-pywhy
+    version: 1.0.0-2026.07.17
+    description: Causal inference bridge — PyWhy/DoWhy integration for 555-ASI causal reasoning.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/causal555-pywhy/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F2
+      - F8
+  - id: check-work
+    name: check-work
+    version: 0.0.0
+    description: >
+      Check your work with a verification subagent that reviews diffs, runs builds and tests, and
+      evaluates correctness. Read this file for instructions. Use when asked to "check work",
+      "verify changes", "self-verify", "/check-work", "/check", "/verify", or "/self-verify".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/check-work/SKILL.md
+    package: domain-and-harness
+  - id: code-review
+    name: code-review
+    version: 0.0.0
+    description: Run an extremely strict maintainability review for abstraction quality, giant files,
+      and spaghetti-condition growth. Use for a deep code quality audit or an especially harsh
+      maintainability review.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/code-review/SKILL.md
+    package: domain-and-harness
+  - id: create-skill
+    name: create-skill
+    version: 0.0.0
+    description: >
+      Interactively create a new Grok skill (SKILL.md + optional scripts/references). Use when the
+      user wants to create a skill, scaffold a skill, or runs /create-skill.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/create-skill/SKILL.md
+    package: domain-and-harness
+  - id: docker-entropy-ops
+    name: FORGE-docker-entropy
+    version: 1.0.0
+    description: Thermodynamic reasoning lens for container fleet health, resource pressure, and
+      safe/dangerous intervention boundaries.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-docker-entropy/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+      functional:
+        - Routing
+        - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F8
+  - id: docs
+    name: docs
+    version: 1.0.0-2026.07.17
+    description: Reference documentation for AAA skill system. Not an executable skill.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/docs/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F4
+  - id: explorer-intelligence-architecture
+    name: AGI-explorer-intelligence
+    version: 1.0.0-2026.07.06
+    description: >
+      The universal exploration protocol for all AAA warga agents. OBSERVE → HYPOTHESIZE → FALSIFY →
+      VERIFY — the governed metabolism of intelligence. Every agent follows this loop when exploring
+      anything. Not theory. Protocol.
+    owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+    risk_tier: medium
+    status: active
+    source_path: skills/AGI-explorer-intelligence/SKILL.md
+    package: agi-reasoning
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F4
+      - F7
+      - F8
+      - F9
+      - F11
+      - F13
+  - id: federation-connect-headscale
+    name: federation-connect-headscale
+    version: 1.0.0-2026.07.17
+    description: Provision nodes into the arifOS sovereign Headscale mesh and federate MCP clients to
+      remote organs.
+    owner: AAA
+    risk_tier: high
+    status: active
+    source_path: skills/federation-connect-headscale/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F12
+      - F13
+  - id: federation-release-attestation
+    name: federation-release-attestation
+    version: 1.0.0
+    description: Produces a seven-repository federation release manifest proving tag, commit, CI,
+      artifact, and deployed-runtime parity. Never overwrites existing tags — issues corrected tags
+      when drift is detected. Outputs signed JSON manifest with per-repo evidence chain.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/federation-release-attestation/SKILL.md
+    package: domain-and-harness
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+      functional:
+        - Audit
+        - Ops
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+      - F1
+      - F2
+      - F11
+  - id: forge-cicd-docker-deploy
+    name: FORGE-cicd-docker-deploy
+    version: 1.0.0-2026.07.17
+    description: Build GitHub Actions CI/CD pipelines, Docker multi-stage builds, and deploy-verify
+      patterns for VPS af-forge.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-cicd-docker-deploy/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F11
+      - F12
+      - F13
+  - id: forge-code-analysis
+    name: FORGE-code-analysis
+    version: 0.0.0
+    description: >
+      This skill should be used when the user needs to analyze Git repositories, compare developer
+      commit patterns, work habits, development efficiency, code style, code quality, and slacking
+      behaviors. It generates honest, direct developer evaluations with scores, grades, strengths,
+      weaknesses, and actionable suggestions. Trigger phrases include "analyze code", "analyze
+      repository", "compare developers", "code quality report", "commit patterns", "developer
+      efficiency", "developer evaluation", "slacking index", "摸鱼指数", "工作习惯分析", "代码分析", "研发效率",
+      "代码质量", "开发者评估", "developer score".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-code-analysis/SKILL.md
+    package: forge
+  - id: forge-context-compress
+    name: FORGE-context-compress
+    version: 1.0.0-2026.07.13
+    description: Context window compression for massive log/output payloads. Preserve critical failure
+      coordinates while reducing token count. Load when agent context is saturated with build
+      traces, test output, or log dumps exceeding 10K tokens.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-context-compress/SKILL.md
+    package: forge
+  - id: forge-context-compressor
+    name: FORGE-context-compressor
+    version: 0.0.0
+    description: Compress oversized logs, transcripts, diffs, and telemetry before they exceed a host
+      runtime context budget while preserving provenance and recovery pointers.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 3 gap fill)
+    source_path: skills/FORGE-context-compressor/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: forge-cross-agent-handoff
+    name: FORGE-cross-agent-handoff
+    version: 1.0.0
+    description: >
+      Structured handoff protocol between federation agents. Packages task context, evidence, floor
+      state, and provenance into a transferable artifact. Prevents context loss during agent
+      transitions. USE WHEN: "hand off to", "transfer task", "escalate to agent", "delegate to".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-cross-agent-handoff/SKILL.md
+    package: forge
+    floor_scope:
+      - F01
+      - F04
+      - F11
+  - id: forge-data-compression
+    name: FORGE-data-compression
+    version: 1.0.0
+    description: >
+      Context-window-aware data compression for long logs, code dumps, and multi-source evidence
+      bundles. Compresses input to fit within model context limits while preserving semantic
+      fidelity (F2 TRUTH ≥ 0.95). Supports streaming chunk-and-summarize pipelines. USE WHEN:
+      "compress this log", "summarize before context window", "fit this in context".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-data-compression/SKILL.md
+    package: forge
+    floor_scope:
+      - F02
+      - F04
+      - F07
+  - id: forge-did-web-identity
+    name: FORGE-did-web-identity
+    version: 1.0.0-2026.07.17
+    description: Decentralized identifier (did:web) identity management for federation organs and agents.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-did-web-identity/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F11
+      - F13
+  - id: forge-fastapi-api-builder
+    name: FORGE-fastapi-api-builder
+    version: 1.0.0-2026.07.17
+    description: FastAPI API builder for organ bridge middleware and federation REST endpoints.
+    owner: A-FORGE
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-fastapi-api-builder/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F4
+      - F12
+  - id: forge-fastmcp
+    name: FORGE-fastmcp
+    version: 1.1.0
+    description: Build, test, inspect, install, and deploy MCP servers with FastMCP in Python. Use when
+      creating a new MCP server, wrapping an API or database as MCP tools, exposing resources or
+      prompts, or preparing a FastMCP server for Claude Code, Cursor, Codex, Gemini CLI, or HTTP
+      deployment.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-fastmcp/SKILL.md
+    package: forge
+  - id: forge-federation-manifest
+    name: FORGE-federation-manifest
+    version: 1.0.0-2026.07.17
+    description: Federation topology manifest — arifOS organ registry and inter-organ contract specification.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-federation-manifest/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F11
+      - F13
+  - id: forge-federation-orchestrator
+    name: FORGE-federation-orchestrator
+    version: 0.0.0
+    description: >
+      Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health
+      probes (8080-8083), container drift detection, restart count monitoring. USE WHEN: "federation
+      status", "restart dead container", "container health", "docker drift", "service down", "probe
+      MCP", "health check federation". Runs on af-forge (VPS) — native docker and curl required.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-federation-orchestrator/SKILL.md
+    package: forge
+  - id: forge-github-workflow
+    name: FORGE-github-workflow
+    version: 2.0.0
+    description: >
+      Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code
+      review. Each op is a labeled section; load the relevant one. BIJAKSANA: XML-tagged for Claude,
+      numbered steps for Codex, imperative for Hermes.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-github-workflow/SKILL.md
+    package: forge
+    floor_scope:
+      - F01
+      - F11
+  - id: forge-google-workspace
+    name: FORGE-google-workspace
+    version: 1.0.0
+    description: Operate Google Workspace from one CLI using dynamic API discovery, secure OAuth flows,
+      and agent-ready automation patterns for Drive and Gmail.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-google-workspace/SKILL.md
+    package: forge
+  - id: forge-governance-jsonld
+    name: FORGE-governance-jsonld
+    version: 1.0.0-2026.07.17
+    description: Governance JSON-LD — constitutional ontology and semantic governance context definitions.
+    owner: A-FORGE
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-governance-jsonld/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F11
+  - id: forge-grok-profile
+    name: FORGE-grok-profile
+    version: 0.0.0
+    description: Adapt FORGE execution to Grok Build's long-context, strict-schema, worktree-isolated,
+      and bounded-parallel runtime profile.
+    owner: AAA
+    risk_tier: low
+    status: new (phase 3 gap fill)
+    source_path: skills/FORGE-grok-profile/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: forge-infra-crons
+    name: FORGE-infra-crons
+    version: 0.0.0
+    description: >
+      Infrastructure cron job management — schedule, audit, and govern VPS cron entries. Read-only
+      observation of root crontab, /etc/crontab, and /etc/cron.d. F1 AMANAH: never mutate crontabs
+      without 888_HOLD.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-infra-crons/SKILL.md
+    package: forge
+  - id: forge-infra-guardian
+    name: FORGE-infra-guardian
+    version: 0.0.0
+    description: >
+      Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel
+      status, and Cloudflare tunnel exposure. USE WHEN: "check SSL", "Caddy config valid", "tunnel
+      status", "DNS parity", "SSL expiry", "infra health", "Cloudflare check".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-infra-guardian/SKILL.md
+    package: forge
+  - id: forge-mcp-a2a-agentic
+    name: FORGE-mcp-a2a-agentic
+    version: 1.0.0-2026.07.17
+    description: MCP + A2A protocol integration — agentic inter-agent communication and task delegation.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-mcp-a2a-agentic/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F12
+      - F13
+  - id: forge-mcp-gui
+    name: FORGE-mcp-gui
+    version: 1.0.0
+    description: Build and audit interactive MCP Apps, UI resources, sandbox messaging, and CSP-bound
+      host integration.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-mcp-gui/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F11
+      - F12
+  - id: forge-mcp-lifeguard
+    name: FORGE-mcp-lifeguard
+    version: 1.0.0
+    description: Health probe and auto-recovery for constitutional federation MCP servers. Pings arifOS
+      (8080), GEOX (8081), WEALTH (8082), WELL (8083) every 5 minutes. Restarts dead containers and
+      alerts on model fallback chain failures.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-mcp-lifeguard/SKILL.md
+    package: forge
+  - id: forge-model-monitor
+    name: FORGE-model-monitor
+    version: 0.0.0
+    description: >
+      Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap), Kimi, Ollama
+      qwen2.5:7b (local). Track latency, billing failures (402), cold-start failures, and auto-pause
+      dead models. USE WHEN: "model health", "check fallback chain", "DeepSeek balance", "model
+      latency", "billing alert".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-model-monitor/SKILL.md
+    package: forge
+  - id: forge-nextjs-mastery
+    name: FORGE-nextjs-mastery
+    version: 1.0.0-2026.07.17
+    description: Next.js App Router engineering — server components, streaming, and edge patterns.
+    owner: A-FORGE
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-nextjs-mastery/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F4
+      - F12
+  - id: forge-postgres-schema-design
+    name: FORGE-postgres-schema-design
+    version: 1.0.0-2026.07.17
+    description: PostgreSQL schema design for the federation data layer — migrations, indexing, and
+      entity modeling.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-postgres-schema-design/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F4
+      - F11
+      - F12
+  - id: forge-precommit-review
+    name: FORGE-precommit-review
+    version: 0.0.0
+    description: Pre-commit gate for any organ repo. Runs lint, type-check, test, constitutional surface
+      scan, and shows the diff to the user. Use before every git commit in any organ. Delegates
+      F1-surface detection to SURFACE-GATE (the live kernel probe hook that verifies canonical tools
+      are still exposed).
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-precommit-review/SKILL.md
+    package: forge
+  - id: forge-react-spa-discipline
+    name: FORGE-react-spa-discipline
+    version: 1.0.0-2026.07.17
+    description: React SPA discipline — component architecture, state management, and rendering patterns.
+    owner: A-FORGE
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-react-spa-discipline/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F4
+      - F12
+  - id: forge-redis-qdrant-integration
+    name: FORGE-redis-qdrant-integration
+    version: 1.0.0-2026.07.17
+    description: Redis + Qdrant integration — caching layer and vector memory for federation semantic search.
+    owner: A-FORGE
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-redis-qdrant-integration/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+  - id: forge-route-least-power
+    name: FORGE-route-least-power
+    version: 2.0.0
+    description: >
+      Route every task to the SMALLEST capability that can accomplish it. Prevents over-engineering,
+      yak-shaving, and reflexive tool escalation. Enforces one-owner-per-task, idempotent actions,
+      and strict queues. Ask: "Can a simpler tool do this?" before reaching for the powerful one.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-route-least-power/SKILL.md
+    package: forge
+  - id: forge-sct-federation-ingress
+    name: FORGE-sct-federation-ingress
+    version: 2026.07.17b
+    description: >
+      Wire, verify, and operate federation Session Capability Tokens (SCT) across arifOS
+      mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: SCT gate,
+      session_token, federation_sct, SCT_AMBIGUOUS, tool_authority, FORGE_SCT_REQUIRE_MUTATE,
+      65-case matrix, decision event.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-sct-federation-ingress/SKILL.md
+    package: forge
+  - id: forge-seal-a-close
+    name: FORGE-seal-a-close
+    version: 2026.07.17b
+    description: >
+      Close remaining Seal-A gates after P0 proof/identity/SCT/T3a work. Use when: Seal-A, stage
+      000, SE stage engine, SOT v2, BOOT, T3a binding, free_nonce, constitutional_grade, remaining
+      seal tasks.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-seal-a-close/SKILL.md
+    package: forge
+  - id: forge-secret-hygiene
+    name: FORGE-secret-hygiene
+    version: 0.0.0
+    description: >
+      Audit env.local, SOPS .env, and config files for plaintext secret leaks, key age, missing
+      rotation dates, and overlong-lived credentials. USE WHEN: "secret audit", "key age", "rotate
+      secrets", "credential hygiene", "API key check", "env audit", "secret leak scan".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-secret-hygiene/SKILL.md
+    package: forge
+  - id: forge-skill-creator
+    name: FORGE-skill-creator
+    version: 1.1.0
+    description: Bootstrap, design, and package new skills.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-skill-creator/SKILL.md
+    package: forge
+  - id: forge-t3a-binding-matrix
+    name: FORGE-t3a-binding-matrix
+    version: 2026.07.17
+    description: >
+      Close T3a authenticated session binding via falsifiable P0 matrix. Use when: T3a, free_nonce,
+      bridging_seal, Ed25519 arif binding, key fragmentation, forge_p0_binding_test, NEG.3, NEG.6b,
+      authenticated_session_binding.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-t3a-binding-matrix/SKILL.md
+    package: forge
+  - id: forge-tailwind-tokens
+    name: FORGE-tailwind-tokens
+    version: 1.0.0-2026.07.17
+    description: Tailwind design tokens — Trinity Design System for federation cockpit and web surfaces.
+    owner: A-FORGE
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-tailwind-tokens/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F4
+  - id: forge-telegram-audit
+    name: FORGE-telegram-audit
+    version: 0.0.0
+    description: >
+      Automated TREE777 security checks for Telegram bot tokens, webhook isolation, bot permission
+      scope, and A2A bridge security. USE WHEN: "telegram audit", "bot security", "webhook check",
+      "token isolation", "TREE777 check", "telegram permissions".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-telegram-audit/SKILL.md
+    package: forge
+  - id: forge-vault999-witness
+    name: FORGE-vault999-witness
+    version: 1.0.0-2026.07.17
+    description: VAULT999 witness — immutable ledger integration, seal chain verification, and audit trace.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-vault999-witness/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F11
+      - F13
+  - id: forge-verify-runtime
+    name: FORGE-verify-runtime
+    version: 2.0.0
+    description: >
+      Verification-as-terminal-state skill. A task is done ONLY when verified. Never stop at "I
+      changed it" — only at "it's fixed and confirmed." Runs health probes, behavior smoke tests,
+      and drift checks.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-verify-runtime/SKILL.md
+    package: forge
+  - id: forge-visual-qa-w3
+    name: FORGE-visual-qa-w3
+    version: 1.0.0-2026.07.17
+    description: Closed-loop visual governance with W3 tri-witness consensus — render, screenshot,
+      validate, iterate, seal.
+    owner: A-FORGE
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-visual-qa-w3/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F4
+      - F7
+      - F11
+  - id: forge-well-boundary-repair
+    name: FORGE-well-boundary-repair
+    version: 0.0.0
+    description: >
+      Repair WELL organ boundary violations — fix substrate readiness drift, biometric staleness,
+      and dignity floor gaps. Engineering actuator for WELL organ health restoration. F1 AMANAH:
+      reversible fixes only.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-well-boundary-repair/SKILL.md
+    package: forge
+  - id: geox-grounding
+    name: GEOX Grounding
+    version: 0.1.0
+    description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure geological claims
+      are grounded in evidence.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/geox-grounding/SKILL.md
+    package: domain-and-harness
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+      functional:
+        - Evidence
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F7
+      - F9
+  - id: github-ci-diagnose
+    name: FORGE-ci-diagnose
+    version: 1.1.0
+    description: Parse failing GitHub Actions logs, identify root cause patterns, and propose fixes
+      without executing irreversible changes. Use this skill whenever a federation repo shows a red
+      CI status, a workflow fails, or a build/test/lint gate breaks. This skill reads logs,
+      classifies failure modes, and outputs a diagnostic report — it does not re-run CI, edit
+      workflows, or dismiss security findings without sovereign approval.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-ci-diagnose/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+      functional:
+        - Ops
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F9
+      - F11
+      - F13
+  - id: github-issue-triage
+    name: FORGE-issue-triage
+    version: 1.1.0
+    description: Governed triage workflow for GitHub issues across the arifOS federation. Use this skill
+      whenever a new issue is opened, an issue lacks labels, or an agent needs to determine if it
+      belongs in a different repo or federation organ. This skill classifies, routes, labels, and
+      drafts responses — but never closes, never assigns to Arif, and never promises code fixes
+      without sovereign approval.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-issue-triage/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - Δ
+        - ΦΙ
+      functional:
+        - Ops
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F6
+      - F11
+      - F13
+  - id: github-ops
+    name: FORGE-github-ops
+    version: 1.0.0
+    description: Runbook for GitHub & Git operations across federation repos — commit workflow, PR ops,
+      branch discipline.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-github-ops/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F11
+  - id: github-pr-review
+    name: FORGE-pr-review
+    version: 1.1.0
+    description: Governed checklist for reviewing GitHub pull requests in the arifOS federation. Ensures
+      PRs meet constitutional, structural, and safety standards before merge.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-pr-review/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: CODING/FI
+      autonomy_tier: T2
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F9
+      - F11
+      - F13
+  - id: help
+    name: help
+    version: 0.0.0
+    description: >
+      Grok documentation and configuration help. Use when users ask about setup, configuration, MCP
+      servers, authentication, skills, slash commands, keyboard shortcuts, or any Grok feature. Also
+      use proactively when you detect a user is having trouble with setup or onboarding.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/help/SKILL.md
+    package: domain-and-harness
+  - id: hermes-opencode-protocol
+    name: HERMES-opencode-protocol
+    version: 2.0.0
+    description: >
+      Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution
+      under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. BIJAKSANA:
+      XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/HERMES-opencode-protocol/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F01
+      - F02
+      - F04
+      - F08
+      - F11
+      - F13
+  - id: identity-invariance
+    name: identity-invariance
+    version: 1.0.0
+    description: HEXAGON identity invariance test — prove the institution survives the substrate change.
+      RSI Gate Item 1/5.
+    owner: F13
+    risk_tier: high
+    status: active
+    source_path: skills/warga/constitutional/identity-invariance/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F2
+      - F9
+      - F13
+  - id: imagegen
+    name: imagegen
+    version: 0.0.0
+    description: Generate or edit raster images when the task benefits from AI-created bitmap visuals
+      such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts.
+      Use when Codex should create a brand-new image, transform an existing image, or derive visual
+      variants from references, and the output should be a bitmap asset rather than repo-native code
+      or vector. Do not use when the task is better handled by editing existing
+      SVG/vector/code-native assets, extending an established icon or logo system, or building the
+      visual directly in HTML/CSS/canvas.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/.system/imagegen/SKILL.md
+    package: system-skills
+  - id: imagine
+    name: imagine
+    version: 0.0.0
+    description: >
+      How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with
+      code instead of generating it, prompt-craft, reference-first handling of real people, factual
+      grounding, and asset-consistency. Load this whenever generating or editing an image is on the
+      table, i.e. when an image_gen or image_edit call is being considered or about to be made.
+      Tool-usage-driven, not triggered by a user merely mentioning images.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/imagine/SKILL.md
+    package: domain-and-harness
+  - id: incident-escalation
+    name: FORGE-incident-escalation
+    version: 1.0.0
+    description: "Standard protocol for responding to federation incidents: service outages, security
+      breaches, constitutional violations, or agent misbehavior."
+    owner: AAA
+    risk_tier: critical
+    status: active
+    source_path: skills/FORGE-incident-escalation/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - ΦΙ
+      functional:
+        - Governance
+        - Ops
+      layer: RUNTIME
+      autonomy_tier: T2-T3
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F4
+      - F6
+      - F11
+      - F13
+  - id: incident-triage
+    name: FORGE-incident-triage
+    version: 2.0.0
+    description: >
+      Six-step incident response playbook with structured logging, backoff/circuit-breaker for
+      restart loops, and verification-as-terminal-state. Lower machine entropy.
+    owner: AAA
+    risk_tier: critical
+    status: active
+    source_path: skills/FORGE-incident-triage/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - ΦΙ
+      functional:
+        - Ops
+        - Governance
+      layer: RUNTIME
+      autonomy_tier: T2-T3
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F4
+      - F6
+      - F11
+      - F13
+  - id: kernel-bind
+    name: kernel-bind
+    version: 1.0.0
+    description: Bind governance before action. Every session must initialize constitutional floors,
+      recognize sovereign signals, and classify autonomy tier before any other verb.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/kernel-bind/SKILL.md
+    package: substrate
+  - id: kimi-code-aaa
+    name: FORGE-kimi-code
+    version: 1.0.0
+    description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS kernel and
+      A-FORGE stdio actuator.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-kimi-code/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - ΦΙ
+      functional:
+        - Interface
+      layer: HEXAGON
+      autonomy_tier: T1-T2
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: know-language
+    name: know-language
+    version: 1.0.0
+    description: All human interface is linguistic. Meaning ≠ syntax. Pragmatics > semantics > syntax.
+      The gap between said and meant is where governance lives.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/knowledge/know-language/SKILL.md
+    package: knowledge
+  - id: know-math
+    name: know-math
+    version: 1.0.0
+    description: All computation is mathematical. Uncertainty is quantified. Optimization has structure.
+      Proof has rules. Numbers don't lie but models can.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/knowledge/know-math/SKILL.md
+    package: knowledge
+  - id: know-physics
+    name: know-physics
+    version: 1.0.0
+    description: All reality claims are physical claims. Conservation laws, thermodynamics, causality,
+      entropy. You cannot get something from nothing.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/knowledge/know-physics/SKILL.md
+    package: knowledge
+  - id: knowledge
+    name: knowledge
+    version: 1.0.0-2026.07.17
+    description: Knowledge graph and semantic memory skills. See subdirectories for specialized
+      knowledge skills.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/knowledge/SKILL.md
+    package: knowledge
+    floor_scope:
+      - F1
+      - F2
+  - id: mcp-federation-ops
+    name: FORGE-mcp-federation-ops
+    version: 1.0.0
+    description: Build, inspect, call, and operate FastMCP servers and the mcporter CLI across
+      federation organs.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-mcp-federation-ops/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+      functional:
+        - Routing
+        - Forge
+      layer:
+        - RUNTIME
+        - CODING/FI
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F3
+      - F4
+      - F8
+      - F10
+      - F11
+      - F12
+  - id: mcp-ops
+    name: FORGE-mcp-ops
+    version: 1.0.0
+    description: mcporter — Universal MCP CLI for inspecting, calling, and debugging MCP servers from terminal.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-mcp-ops/SKILL.md
+    package: forge
+    floor_scope:
+      - F2
+      - F8
+  - id: mcp-smoke-test
+    name: FORGE-mcp-smoke-test
+    version: 1.0.0
+    description: Validate that MCP servers respond correctly to health probes and basic tool calls.
+      Detect down servers, mismatched schemas, and transport errors.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-mcp-smoke-test/SKILL.md
+    package: forge
+    floor_scope:
+      - F2
+      - F4
+      - F11
+  - id: memory-manage
+    name: memory-manage
+    version: 1.0.0
+    description: Intelligence without memory is stateless. Store less, recall well, forget when stale.
+      ΔS ≤ 0 on every cycle.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/memory-manage/SKILL.md
+    package: substrate
+  - id: nusantara-intelligence-substrate
+    name: AGI-nusantara-substrate
+    version: 1.0.0
+    description: Cultural, dignity, and sovereignty lens for AAA state records. Apply before sealing
+      decisions that touch identity, privacy, boundaries, or sovereign veto.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/AGI-nusantara-substrate/SKILL.md
+    package: agi-reasoning
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+        - Ω
+      functional:
+        - Interface
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F4
+      - F6
+      - F7
+  - id: observe-ground
+    name: observe-ground
+    version: 1.0.0
+    description: Evidence before narrative. All claims must be sourced, labeled OBS/DER/INT/SPEC, and
+      confidence-capped. Reality wins over elegance.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/observe-ground/SKILL.md
+    package: substrate
+  - id: openai-docs
+    name: openai-docs
+    version: 0.0.0
+    description: Use when the user asks how to build with OpenAI products or APIs, asks about Codex
+      itself or choosing Codex surfaces, needs up-to-date official documentation with citations,
+      help choosing the latest model for a use case, or model upgrade and prompt-upgrade guidance;
+      use OpenAI docs MCP tools for non-Codex docs questions, use the Codex manual helper first for
+      broad Codex self-knowledge, and restrict fallback browsing to official OpenAI domains.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/.system/openai-docs/SKILL.md
+    package: system-skills
+  - id: plugin-creator
+    name: plugin-creator
+    version: 0.0.0
+    description: Create and scaffold plugin directories for Codex with a required
+      `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and
+      personal-marketplace entries by default. Use when Codex needs to create a new personal plugin,
+      add optional plugin structure, generate or update marketplace entries for plugin ordering and
+      availability metadata, or update an existing local plugin during development with the
+      CLI-driven cachebuster and reinstall flow.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/.system/plugin-creator/SKILL.md
+    package: system-skills
+  - id: pr-review-governance
+    name: FORGE-pr-governance
+    version: 1.1.0
+    description: High-level governance layer for pull request review across the federation. Ensures
+      separation of duties, required signers, and constitutional compliance before merge. This is
+      the **policy layer** that decides who must approve. The **checklist** lives in
+      `github-pr-review`; do not duplicate it here.
+    owner: AAA
+    risk_tier: high
+    status: active
+    source_path: skills/FORGE-pr-governance/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: CODING/FI
+      autonomy_tier: T3
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F9
+      - F11
+      - F13
+  - id: quantum-eureka-doctrine
+    name: APEX-quantum-eureka
+    version: 1.1.0-2026.07.09
+    description: Use when the task is about eureka, contradiction, insight generation, cross-domain
+      synthesis, structured memory, explorer routing, or converting unresolved tension into a
+      governed artifact for AAA warga. Everyday quantum runtime discipline lives in
+      quantum-kernel-runtime (v1.0.0-2026.07.09); this skill is the high-energy collapse path when
+      contradiction survives compression.
+    owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
+    risk_tier: medium
+    status: active
+    source_path: skills/APEX-quantum-eureka/SKILL.md
+    package: apex-gates
+    floor_scope:
+      - F2
+      - F3
+      - F4
+      - F8
+      - F11
+      - F13
+  - id: readme-truth-check
+    name: FORGE-readme-truth-check
+    version: 1.0.0
+    description: Verify that a repo's README accurately describes its current structure, ports,
+      dependencies, and authority boundaries. Detect drift between docs and reality.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-readme-truth-check/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+      - F2
+      - F4
+      - F9
+      - F10
+      - F11
+  - id: reflective
+    name: reflective
+    version: 1.0.0-2026.07.17
+    description: Reflective reasoning and meta-cognition skills. See subdirectories for specialized
+      reflective skills.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/reflective/SKILL.md
+    package: reflective
+    floor_scope:
+      - F1
+      - F7
+  - id: repo-intelligence
+    name: FORGE-repo-intelligence
+    version: 1.0.0
+    description: SOLE controller skill for repository intelligence across the arifOS Federation. Exposes
+      12 modes (inventory, map, delta, pr_review, ci_diagnose, issue_triage, security,
+      cross_repo_impact, release_audit, workflow_integrity, manifest_reconcile, ruleset_audit).
+      Smaller GitHub skills (pr-review, ci-diagnose, issue-triage, github-ops) are consolidated as
+      internal modules under this controller. No other repo-intelligence skill should be created —
+      extend modes instead. Every mode outputs a minimum evidence envelope with repo, ref,
+      commit_sha, working_tree, tag_delta, changed_files, critical_paths, tests, ci, security,
+      contract_impacts, runtime_probe, risk_tier, proposed_action, rollback, evidence_class, and
+      unknowns.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-repo-intelligence/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+        - Ψ
+      functional:
+        - Meta
+        - Ops
+        - Audit
+      layer: CODING/FI
+      autonomy_tier: T1
+    floor_scope:
+      - F1
+      - F2
+      - F11
+  - id: route-dispatch
+    name: route-dispatch
+    version: 1.0.0
+    description: Right organ for right intent. Classify intent, map to organ, dispatch with fallback.
+      Law ≠ execution.
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/route-dispatch/SKILL.md
+    package: substrate
+  - id: runtime
+    name: runtime
+    version: 1.0.0-2026.07.17
+    description: Runtime support for AAA skill execution. Not an executable skill.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/runtime/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+  - id: scripts
+    name: scripts
+    version: 1.0.0-2026.07.17
+    description: Utility scripts for AAA skill management. Not an executable skill.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/scripts/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+  - id: skill-creator
+    name: skill-creator
+    version: 0.0.0
+    description: Guide for creating effective skills. This skill should be used when users want to
+      create a new skill (or update an existing skill) that extends Codex's capabilities with
+      specialized knowledge, workflows, or tool integrations.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/.system/skill-creator/SKILL.md
+    package: system-skills
+  - id: skill-installer
+    name: skill-installer
+    version: 0.0.0
+    description: Install Codex skills into $CODEX_HOME/skills from a curated list or a GitHub repo path.
+      Use when a user asks to list installable skills, install a curated skill, or install a skill
+      from another repo (including private repos).
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/.system/skill-installer/SKILL.md
+    package: system-skills
+  - id: skill-trigger-linter
+    name: FORGE-skill-linter
+    version: 1.0.0
+    description: Check every skill’s “use when” and “do not use when” clauses for collisions, missing
+      negatives, and vague verbs like “help,” “assist,” or “improve.” Load when linting, reviewing,
+      or validating trigger boundaries.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-skill-linter/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - ΦΙ
+      functional:
+        - Governance
+      layer: HEXAGON
+      autonomy_tier: T1
+    floor_scope:
+      - F2
+      - F4
+      - F7
+      - F9
+      - F10
+      - F11
+  - id: sovereign-recognize
+    name: Sovereign Recognize
+    version: 1.0.0
+    description: Identifies and recognizes the sovereign (Arif, F13) before any action that targets
+      them, addresses them, or binds them. Prevents agent impersonation of operator identity.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/reflective/sovereign-recognize/SKILL.md
+    package: reflective
+  - id: spatial-grounding
+    name: FORGE-spatial-grounding
+    version: 1.0.0
+    description: Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH
+      confusion. Grounds agents in af-forge VPS reality.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-spatial-grounding/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F7
+      - F9
+  - id: subagent-spawn-template
+    name: FORGE-subagent-spawn
+    version: 1.0.0
+    description: Standard contract for spawning bounded, auditable sub-agents — input contract, output
+      schema, evidence requirements.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-subagent-spawn/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F11
+  - id: substrate
+    name: substrate
+    version: 1.0.0-2026.07.17
+    description: Substrate-layer skills for federation organs. See subdirectories for specialized
+      substrate skills.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/SKILL.md
+    package: substrate
+    floor_scope:
+      - F1
+  - id: unified-skill-binding
+    name: ASI-skill-binding
+    version: 1.0.0
+    description: Discover, bind, and compose skills across all federation organs using AAA_SKILL.md
+      orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces subagent contracts, evidence
+      gates, F1-F13. Meta-skill for agentic elevation.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/ASI-skill-binding/SKILL.md
+    package: asi-governance
+    orthogonal_tags:
+      trinitarian:
+        - Δ
+        - Ω
+        - ΦΙ
+      functional:
+        - Governance
+        - Routing
+      layer: HEXAGON
+      autonomy_tier: T2
+    floor_scope:
+      - F2
+      - F3
+      - F4
+      - F8
+      - F11
+  - id: verify-gate
+    name: verify-gate
+    version: 1.0.0
+    description: "Four gates before commitment: authority + evidence + reversibility + lineage. All four
+      must open. One missing = HOLD."
+    owner: F13 SOVEREIGN
+    risk_tier: low
+    status: active
+    source_path: skills/substrate/verify-gate/SKILL.md
+    package: substrate
+  - id: vps-docker-ops
+    name: FORGE-vps-docker
+    version: 2.0.0
+    description: Runbook for VPS Docker operations — pinned versions, restart discipline, health checks,
+      compose governance. Lower machine entropy.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-vps-docker/SKILL.md
+    package: forge
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F8
+  - id: vps-docker-runbook
+    name: FORGE-vps-runbook
+    version: 1.0.0
+    description: Concrete Docker Compose and container commands for the af-forge VPS stack.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/FORGE-vps-runbook/SKILL.md
+    package: forge
+    orthogonal_tags:
+      trinitarian:
+        - Ω
+      functional:
+        - Ops
+      layer: RUNTIME
+      autonomy_tier: T2
+    floor_scope:
+      - F1
+      - F2
+      - F3
+      - F4
+  - id: warga
+    name: warga
+    version: 1.0.0-2026.07.17
+    description: Warga (citizen) agent skills for AAA federation members. See subdirectories for
+      specialized warga skills.
+    owner: AAA
+    risk_tier: medium
+    status: active
+    source_path: skills/warga/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F6
+      - F13
+  - id: warga-constitutional
+    name: warga-constitutional
+    version: 0.0.0
+    description: Archived constitutional warga placeholder retained only for audit provenance. Do not
+      use for active work; use the live arifOS governance and constitutional skills instead.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/warga/constitutional/SKILL.md
+    package: domain-and-harness
+  - id: wealth-claim-state
+    name: wealth-claim-state
+    version: 1.0.0-2026.07.17
+    description: Capital claim state management — tracks claim lifecycle across WEALTH organ.
+    owner: WEALTH
+    risk_tier: medium
+    status: active
+    source_path: skills/wealth-claim-state/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F2
+      - F11
+  - id: xauusd-trading-stack
+    name: XAUUSD-trading-stack
+    version: 1.0.0-2026.07.14
+    description: >
+      Federation-wide gold (XAUUSD) trading capability. Python stack, OANDA broker, backtesting,
+      macro signals, RSI strategy. Every organ has a role.
+    owner: A-FORGE (execution) / WEALTH (intelligence) / arifOS (governance)
+    risk_tier: high
+    status: active
+    source_path: skills/xauusd-trading/SKILL.md
+    package: domain-and-harness
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F5
+      - F6
+      - F7
+      - F8
+      - F9
+      - F11
+      - F13

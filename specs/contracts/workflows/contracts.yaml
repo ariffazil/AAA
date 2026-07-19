@@ -25,7 +25,7 @@ workflow_contracts:
         stage: "000"
         role: operator
         required_skills:
-          - openclaw-a2a-bridge
+          - forge-cross-agent-handoff
         required_tools:
           - status-query
         required_servers:
@@ -45,7 +45,7 @@ workflow_contracts:
         stage: "777"
         role: architect
         required_skills:
-          - openclaw-a2a-bridge
+          - forge-cross-agent-handoff
         required_tools:
           - agent-handoff
         required_servers:
@@ -103,7 +103,7 @@ workflow_contracts:
         stage: "000"
         role: operator
         required_skills:
-          - openclaw-a2a-bridge
+          - forge-cross-agent-handoff
         required_tools:
           - status-query
         required_servers:
