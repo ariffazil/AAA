@@ -46,6 +46,7 @@
 | qwen-code | agents/_external/qwen-code/ | CODING/FI | qwen / MiniMax-M3 bridge | FI-003 |
 | codex | agents/_external/codex/ | CODING/FI | gpt-5-codex / o3 | FI-005 |
 | copilot | agents/_external/copilot/ | CODING/FI | gpt-5 / claude-sonnet-4 | FI-006 |
+| copilot-cli | agents/_external/copilot-cli/ | CODING/FI | deepseek-v4-pro (BYOK Anthropic endpoint) | FI-009 |
 | aider | agents/_external/aider/ | CODING/FI | claude-sonnet-4 / gpt-5 | FI-007 |
 | kimi-code | agents/_external/kimi-code/ | CODING/FI | kimi-k2 / kimi-for-coding | FI-008 |
 | gemini-cli | agents/_external/gemini-cli/ | CODING/FI | gemini-3.5-pro / gemini-3.5-flash | FI-009 |
@@ -60,7 +61,7 @@
 
 | Skill ID | Agents Binding This Skill |
 |----------|--------------------------|
-| **070-lock-humility-godel** | opencode, 555-ASI, 888-APEX, A-ARCHIVE, claude-code, codex, continue-cli, gemini-cli, copilot, aider, kimi-code, qwen-code |
+| **070-lock-humility-godel** | opencode, 555-ASI, 888-APEX, A-ARCHIVE, claude-code, codex, continue-cli, gemini-cli, copilot, copilot-cli, aider, kimi-code, qwen-code |
 | **APEX-constitutional-boot** / **constitutional-boot** | arifOS_bot (both variants) |
 | **APEX-kernel-bridge** / **arifos-kernel-bridge** | arifOS_bot (both variants) |
 | **APEX-sovereign-veto** / **sovereign-veto-respect** | arifOS_bot (both variants) |
