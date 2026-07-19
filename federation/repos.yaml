@@ -1,0 +1,91 @@
+# ═══════════════════════════════════════════════════════════════════
+# AAA Federation — Canonical Repository Manifest
+# ═══════════════════════════════════════════════════════════════════
+# SINGLE SOURCE OF TRUTH for tool surface counts and org boundaries.
+# Every README, FEDERATION.md, and AGENTS.md MUST be consistent with this.
+# Generated: 2026-07-19 from live runtime probes.
+# ═══════════════════════════════════════════════════════════════════
+
+schema_version: 1
+probed_at: "2026-07-19T18:07:00Z"
+probe_method: "curl :port/health + tools/list"
+rule: "runtime beats README beats FEDERATION.md"
+
+repositories:
+  arifos:
+    repo: ariffazil/arifos
+    role: governance_kernel
+    authority_ceiling: JUDGE_ONLY
+    tool_surface:
+      public_canonical: 7
+      public_declared: 8
+      total_registry: 60
+      diagnostic_internal: 40
+      note: "7 canonical arif_* verbs on public wire. 8th (arif_memory) visible but gated. 48 declared operational + 40 diagnostic = 60 registry."
+    health_endpoint: ":8088/health"
+
+  a-forge:
+    repo: ariffazil/A-FORGE
+    role: execution_actuator
+    authority_ceiling: EXECUTE_AFTER_SEAL
+    tool_surface:
+      stateless_public: 52
+      session_bound_public: 33
+      total_public: 85
+      note: "52 stateless HTTP tools + 33 session-owned = 85 total forge_* surface. AGENTS.md says 79 (close). README says 52 (stateless only). FEDERATION.md at 80+ is closest to runtime."
+    health_endpoint: ":7072/health"
+
+  aaa:
+    repo: ariffazil/AAA
+    role: control_plane
+    authority_ceiling: DISPLAY_ONLY
+    tool_surface:
+      a2a_routes: 11
+      note: "AAA's surface is A2A routes + federation registry, not MCP tools. 11 total routes."
+    health_endpoint: ":3001/health"
+
+  geox:
+    repo: ariffazil/geox
+    role: domain_evidence
+    authority_ceiling: COMPUTE_ONLY
+    tool_surface:
+      public_tools: 24
+      total_registry: 52
+      note: "24 canonical geox_* tools on public wire. 52 total including internal."
+    health_endpoint: ":8081/health"
+
+  wealth:
+    repo: ariffazil/wealth
+    role: domain_evidence
+    authority_ceiling: COMPUTE_ONLY
+    tool_surface:
+      public_tools: 20
+      hidden_aliases: 34
+      total_registry: 65
+      note: "20 capital_* tools on public wire. 34 hidden aliases. 65 @mcp.tool decorators in monolith.py. README says 12 (stale)."
+    health_endpoint: ":18082/health"
+
+  well:
+    repo: ariffazil/well
+    role: domain_evidence
+    authority_ceiling: REFLECT_ONLY
+    tool_surface:
+      public_tools: 27
+      note: "27 well_* tools on public wire. README agrees."
+    health_endpoint: ":18083/health"
+
+  arif-sites:
+    repo: ariffazil/arif-sites
+    role: public_projection
+    authority_ceiling: DISPLAY_ONLY
+    tool_surface:
+      note: "Static sites — no MCP surface. Built from signed federation manifest."
+    health_endpoint: null
+
+  hermes:
+    repo: ariffazil/HERMES
+    role: multi_modal_bridge
+    authority_ceiling: OBSERVE_ONLY
+    tool_surface:
+      note: "Multi-modal bridge — creative/media surface, not MCP tools."
+    health_endpoint: null
