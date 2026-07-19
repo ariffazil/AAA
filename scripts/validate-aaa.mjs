@@ -392,7 +392,9 @@ for (const pkg of skillPackages) {
       continue;
     }
     const skill = skills.find((item) => item.id === pkgSkill.id);
-    const fields = ["name", "version", "description", "owner", "risk_tier", "status", "superseded_by", "orthogonal_tags", "floor_scope"];
+    // Package contracts are identity views. Metadata lives once in registries/skills.yaml.
+    const fields = ["name", "version", "description", "owner", "risk_tier", "status", "superseded_by", "orthogonal_tags", "floor_scope"]
+      .filter((field) => Object.hasOwn(pkgSkill, field));
     for (const field of fields) {
       if (JSON.stringify(skill[field]) !== JSON.stringify(pkgSkill[field])) {
         errors.push(`${pkg.id}/${pkgSkill.id}: package skill ${field} does not match skills registry`);

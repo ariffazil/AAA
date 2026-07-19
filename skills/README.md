@@ -107,7 +107,10 @@ version_lock:
 
 ## Registry
 
-All skills must be registered in `registries/skills.yaml` and packaged in `contracts/skills/packages.yaml`.
+All active `SKILL.md` bodies are registered in `registries/skills.yaml` and assigned by identity
+in `contracts/skills/packages.yaml`. Metadata lives once in the registry; V3, aliases, packages,
+and harness meshes are derived routing views. Run `node scripts/tree777-skill-audit.mjs --sync`
+after adding, retiring, or renaming a canonical skill body.
 
 ---
 
