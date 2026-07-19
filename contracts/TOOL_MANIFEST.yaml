@@ -1,0 +1,152 @@
+schema_version: 1.0.0
+canonical_hash: 29675146db0e68b6c79cbf626883757027e03175f5bb50f8415c8c0d9011d57a
+organs:
+  arifos:
+    port: 8088
+    tools:
+    - name: arif_init
+      description: Session ignition — binds actor, floors, and audit
+      modes:
+      - name: init
+        description: Start a new governed session
+      - name: light
+        description: Lightweight session probe
+      - name: preflight
+        description: Pre-execution readiness check
+      - name: triage
+        description: Emergency triage mode
+      classification: OBSERVE
+      annotations:
+        readOnlyHint: true
+        destructiveHint: false
+        idempotentHint: true
+      access: public
+    - name: arif_observe
+      description: Sense reality into evidence
+      modes:
+      - name: search
+        description: Web search with provenance
+      - name: fetch
+        description: URL fetch with SSRF protection
+      - name: vitals
+        description: System health probe
+      - name: atlas
+        description: ATLAS333 cognitive geometry
+      classification: OBSERVE
+      annotations:
+        readOnlyHint: true
+        destructiveHint: false
+        idempotentHint: true
+      access: public
+    - name: arif_think
+      description: Structured reasoning under F2/F7
+      modes:
+      - name: reason
+      - name: plan
+      - name: critique
+      - name: reflect
+      - name: verify
+      - name: simulate
+      - name: atlas
+      classification: THINK
+      annotations:
+        readOnlyHint: true
+        destructiveHint: false
+      access: public
+    - name: arif_route
+      description: Intent→organ router
+      modes:
+      - name: route
+      - name: bridge
+      classification: OBSERVE
+      annotations:
+        readOnlyHint: true
+      access: public
+    - name: arif_memory
+      description: L1-L6 memory governor
+      modes:
+      - name: recall
+      - name: remember
+      - name: promote
+      - name: forget
+      - name: audit
+      classification: OBSERVE
+      annotations:
+        readOnlyHint: true
+      access: internal
+    - name: arif_judge
+      description: Constitutional verdict — SEAL/HOLD/SABAR/VOID
+      modes:
+      - name: intercept
+      - name: judge
+      - name: validate
+      - name: hold
+      - name: escalate
+      classification: IRREVERSIBLE
+      annotations:
+        readOnlyHint: false
+        destructiveHint: true
+        idempotentHint: false
+      access: authenticated
+    - name: arif_forge
+      description: Guarded execution gate
+      modes:
+      - name: engineer
+      - name: query
+      - name: write
+      - name: generate
+      - name: commit
+      - name: dry_run
+      classification: MUTATE
+      annotations:
+        readOnlyHint: false
+        destructiveHint: true
+      access: authenticated
+    - name: arif_seal
+      description: VAULT999 immutable append
+      modes:
+      - name: seal
+      - name: verify
+      - name: chain
+      - name: list
+      - name: dry_run
+      classification: IRREVERSIBLE
+      annotations:
+        readOnlyHint: false
+        destructiveHint: true
+        idempotentHint: false
+      access: authenticated
+  aforge:
+    port: 7072
+    tools:
+    - name: forge_execute
+      description: Governed execution
+      classification: MUTATE
+      annotations:
+        readOnlyHint: false
+        destructiveHint: true
+      access: authenticated
+    - name: forge_shell
+      description: Governed shell execution
+      classification: MUTATE
+      annotations:
+        readOnlyHint: false
+        destructiveHint: true
+      access: authenticated
+    - name: forge_verify
+      description: WAJIB 2 — Independent verification lane
+      classification: OBSERVE
+      annotations:
+        readOnlyHint: true
+        destructiveHint: false
+        idempotentHint: true
+      access: public
+  geox:
+    port: 8081
+    tools: []
+  wealth:
+    port: 18082
+    tools: []
+  well:
+    port: 18083
+    tools: []

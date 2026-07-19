@@ -1,0 +1,271 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "arifOS Federation \u2014 ChatGPT Connector API",
+    "version": "29675146db0e",
+    "description": "Auto-generated from TOOL_MANIFEST.yaml. Single source of truth."
+  },
+  "servers": [
+    {
+      "url": "https://mcp.arif-fazil.com"
+    }
+  ],
+  "paths": {
+    "/mcp/arifos/arif_init": {
+      "post": {
+        "operationId": "arifos_arif_init",
+        "summary": "Session ignition \u2014 binds actor, floors, and audit",
+        "description": "Organ: arifos | Classification: OBSERVE",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "init",
+                      "light",
+                      "preflight",
+                      "triage"
+                    ],
+                    "description": "Operation mode"
+                  },
+                  "arguments": {
+                    "type": "object",
+                    "description": "Tool-specific arguments"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Access denied \u2014 requires authentication"
+          },
+          "888": {
+            "description": "HOLD \u2014 requires human approval"
+          }
+        },
+        "x-organ": "arifos",
+        "x-classification": "OBSERVE",
+        "x-annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true
+        }
+      }
+    },
+    "/mcp/arifos/arif_observe": {
+      "post": {
+        "operationId": "arifos_arif_observe",
+        "summary": "Sense reality into evidence",
+        "description": "Organ: arifos | Classification: OBSERVE",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "search",
+                      "fetch",
+                      "vitals",
+                      "atlas"
+                    ],
+                    "description": "Operation mode"
+                  },
+                  "arguments": {
+                    "type": "object",
+                    "description": "Tool-specific arguments"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Access denied \u2014 requires authentication"
+          },
+          "888": {
+            "description": "HOLD \u2014 requires human approval"
+          }
+        },
+        "x-organ": "arifos",
+        "x-classification": "OBSERVE",
+        "x-annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true
+        }
+      }
+    },
+    "/mcp/arifos/arif_think": {
+      "post": {
+        "operationId": "arifos_arif_think",
+        "summary": "Structured reasoning under F2/F7",
+        "description": "Organ: arifos | Classification: THINK",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "reason",
+                      "plan",
+                      "critique",
+                      "reflect",
+                      "verify",
+                      "simulate",
+                      "atlas"
+                    ],
+                    "description": "Operation mode"
+                  },
+                  "arguments": {
+                    "type": "object",
+                    "description": "Tool-specific arguments"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Access denied \u2014 requires authentication"
+          },
+          "888": {
+            "description": "HOLD \u2014 requires human approval"
+          }
+        },
+        "x-organ": "arifos",
+        "x-classification": "THINK",
+        "x-annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false
+        }
+      }
+    },
+    "/mcp/arifos/arif_route": {
+      "post": {
+        "operationId": "arifos_arif_route",
+        "summary": "Intent\u2192organ router",
+        "description": "Organ: arifos | Classification: OBSERVE",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [
+                      "route",
+                      "bridge"
+                    ],
+                    "description": "Operation mode"
+                  },
+                  "arguments": {
+                    "type": "object",
+                    "description": "Tool-specific arguments"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Access denied \u2014 requires authentication"
+          },
+          "888": {
+            "description": "HOLD \u2014 requires human approval"
+          }
+        },
+        "x-organ": "arifos",
+        "x-classification": "OBSERVE",
+        "x-annotations": {
+          "readOnlyHint": true
+        }
+      }
+    },
+    "/mcp/aforge/forge_verify": {
+      "post": {
+        "operationId": "aforge_forge_verify",
+        "summary": "WAJIB 2 \u2014 Independent verification lane",
+        "description": "Organ: aforge | Classification: OBSERVE",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "mode": {
+                    "type": "string",
+                    "enum": [],
+                    "description": "Operation mode"
+                  },
+                  "arguments": {
+                    "type": "object",
+                    "description": "Tool-specific arguments"
+                  }
+                },
+                "required": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Access denied \u2014 requires authentication"
+          },
+          "888": {
+            "description": "HOLD \u2014 requires human approval"
+          }
+        },
+        "x-organ": "aforge",
+        "x-classification": "OBSERVE",
+        "x-annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false,
+          "idempotentHint": true
+        }
+      }
+    }
+  }
+}
