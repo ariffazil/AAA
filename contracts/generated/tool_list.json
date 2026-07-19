@@ -1,0 +1,200 @@
+{
+  "generated_from": "TOOL_MANIFEST.yaml",
+  "generated_at": "2026-07-19T22:42:34.854008+00:00",
+  "manifest_hash": "29675146db0e68b6c79cbf626883757027e03175f5bb50f8415c8c0d9011d57a",
+  "tool_count": 11,
+  "tools": [
+    {
+      "name": "arif_init",
+      "description": "Session ignition \u2014 binds actor, floors, and audit",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "OBSERVE",
+      "access": "public",
+      "modes": [
+        "init",
+        "light",
+        "preflight",
+        "triage"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "arif_observe",
+      "description": "Sense reality into evidence",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "OBSERVE",
+      "access": "public",
+      "modes": [
+        "search",
+        "fetch",
+        "vitals",
+        "atlas"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    },
+    {
+      "name": "arif_think",
+      "description": "Structured reasoning under F2/F7",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "THINK",
+      "access": "public",
+      "modes": [
+        "reason",
+        "plan",
+        "critique",
+        "reflect",
+        "verify",
+        "simulate",
+        "atlas"
+      ],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false
+      }
+    },
+    {
+      "name": "arif_route",
+      "description": "Intent\u2192organ router",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "OBSERVE",
+      "access": "public",
+      "modes": [
+        "route",
+        "bridge"
+      ],
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "arif_memory",
+      "description": "L1-L6 memory governor",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "OBSERVE",
+      "access": "internal",
+      "modes": [
+        "recall",
+        "remember",
+        "promote",
+        "forget",
+        "audit"
+      ],
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "arif_judge",
+      "description": "Constitutional verdict \u2014 SEAL/HOLD/SABAR/VOID",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "IRREVERSIBLE",
+      "access": "authenticated",
+      "modes": [
+        "intercept",
+        "judge",
+        "validate",
+        "hold",
+        "escalate"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false
+      }
+    },
+    {
+      "name": "arif_forge",
+      "description": "Guarded execution gate",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "MUTATE",
+      "access": "authenticated",
+      "modes": [
+        "engineer",
+        "query",
+        "write",
+        "generate",
+        "commit",
+        "dry_run"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true
+      }
+    },
+    {
+      "name": "arif_seal",
+      "description": "VAULT999 immutable append",
+      "organ": "arifos",
+      "port": 8088,
+      "classification": "IRREVERSIBLE",
+      "access": "authenticated",
+      "modes": [
+        "seal",
+        "verify",
+        "chain",
+        "list",
+        "dry_run"
+      ],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false
+      }
+    },
+    {
+      "name": "forge_execute",
+      "description": "Governed execution",
+      "organ": "aforge",
+      "port": 7072,
+      "classification": "MUTATE",
+      "access": "authenticated",
+      "modes": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true
+      }
+    },
+    {
+      "name": "forge_shell",
+      "description": "Governed shell execution",
+      "organ": "aforge",
+      "port": 7072,
+      "classification": "MUTATE",
+      "access": "authenticated",
+      "modes": [],
+      "annotations": {
+        "readOnlyHint": false,
+        "destructiveHint": true
+      }
+    },
+    {
+      "name": "forge_verify",
+      "description": "WAJIB 2 \u2014 Independent verification lane",
+      "organ": "aforge",
+      "port": 7072,
+      "classification": "OBSERVE",
+      "access": "public",
+      "modes": [],
+      "annotations": {
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true
+      }
+    }
+  ]
+}
