@@ -2,7 +2,7 @@
 id: repo-intelligence
 name: FORGE-repo-intelligence
 version: 1.0.0
-description: 'Controller skill for repository intelligence across the arifOS Federation. Exposes 9 modes (inventory, map, delta, pr_review, ci_diagnose, issue_triage, security, cross_repo_impact, release_audit) and orchestrates existing GitHub micro-skills rather than duplicating their logic. Every mode outputs a minimum evidence envelope with repo, ref, commit_sha, working_tree, tag_delta, changed_files, critical_paths, tests, ci, security, contract_impacts, runtime_probe, risk_tier, proposed_action, rollback, evidence_class, and unknowns.'
+description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12 modes (inventory, map, delta, pr_review, ci_diagnose, issue_triage, security, cross_repo_impact, release_audit, workflow_integrity, manifest_reconcile, ruleset_audit). Smaller GitHub skills (pr-review, ci-diagnose, issue-triage, github-ops) are consolidated as internal modules under this controller. No other repo-intelligence skill should be created — extend modes instead. Every mode outputs a minimum evidence envelope with repo, ref, commit_sha, working_tree, tag_delta, changed_files, critical_paths, tests, ci, security, contract_impacts, runtime_probe, risk_tier, proposed_action, rollback, evidence_class, and unknowns.'
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -71,8 +71,8 @@ floor_scope:
 
 # FORGE-repo-intelligence — Controller Skill
 
-> **One controller. Nine modes. No duplicate logic.**
-> This skill orchestrates existing GitHub micro-skills; it does not re-implement them.
+> **One controller. Twelve modes. No duplicate logic.**
+> This skill is the SOLE repository intelligence controller. Smaller GitHub skills are consolidated as internal modules.
 > Every mode produces the minimum evidence envelope defined below.
 
 ## Operating Loop
@@ -263,6 +263,69 @@ federation manifest:
 ```
 
 **Tag discipline:** Never silently move a published federation tag. Treat tags as immutable receipts. If a tag is behind main, issue a new corrected tag rather than overwriting.
+
+### `workflow_integrity` — YAML validation and structural audit
+
+Orchestrates: internal (no sub-skill — pure structural validation)
+
+```yaml
+input: repo path or PR number
+checks:
+  - Parse all YAML workflows (Python yaml.safe_load_all)
+  - Reject duplicate job IDs
+  - Reject malformed expressions (${{ }})
+  - Reject reusable workflows referenced by moving branch names (@main, @v1)
+  - Reject overly broad permissions (write-all)
+  - Reject pull_request_target without explicit isolation
+  - Actionlint validation
+  - Unsafe pattern detection (shell injection, unpinned SHAs)
+output:
+  - Pass/fail per workflow file
+  - Specific error locations (file:line)
+  - Blocking vs advisory classification
+```
+
+**Truth gate:** A workflow that survives parsing with duplicate keys is silently corrupt. GitHub may keep only one. This mode catches that BEFORE merge.
+
+### `manifest_reconcile` — Tool surface truth reconciliation
+
+Orchestrates: internal + runtime probes
+
+```yaml
+input: organ name
+output:
+  - README declared count vs live tools/list count
+  - FEDERATION.md declared count vs live
+  - AGENTS.md declared count vs live
+  - organ.yaml declared interfaces vs actual
+  - Staleness score (days since last verification)
+  - Recommendations: which source to update
+  - Canonical manifest update (AAA/federation/repos.yaml)
+rule: runtime beats README beats FEDERATION.md
+```
+
+**Truth gate:** If README says 8 tools and runtime says 12, the README is wrong. Update it. Do not "reconcile" by averaging.
+
+### `ruleset_audit` — Branch protection and deployment policy
+
+Orchestrates: GitHub API
+
+```yaml
+input: repo name or 'all'
+output per repo:
+  - Branch protection status (PR required, force push, linear history, deletions)
+  - Required status checks configured
+  - CODEOWNERS coverage for critical paths (contracts, schemas, registries, deploy)
+  - Merge queue status
+  - Tag protection status
+  - Deployment environment protections
+  - Gaps identified with specific remediation steps
+```
+
+**Remediation:** Can auto-apply ruleset via `gh api` (requires repo admin). Default policy:
+- PRs required on main, force push blocked, deletions blocked
+- Linear history, conversation resolution
+- Signed commits for constitutional paths
 
 ---
 
