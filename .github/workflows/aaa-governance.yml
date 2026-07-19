@@ -17,19 +17,83 @@ concurrency:
 
 jobs:
   federation-check:
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
     name: 🗺️ Federation Check
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
       - uses: actions/checkout@v7
       - name: Validate FEDERATION.md
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
         run: |
           test -f FEDERATION.md || (echo "❌ Missing FEDERATION.md" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           grep -q "role: ROOT" FEDERATION.md || (echo "❌ FEDERATION.md must declare role: ROOT" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           grep -q "layer: L1" FEDERATION.md || (echo "❌ FEDERATION.md must declare layer: L1" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           grep -q "judge:" FEDERATION.md || (echo "❌ FEDERATION.md must declare governance judge" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           grep -q "seal:" FEDERATION.md || (echo "❌ FEDERATION.md must declare governance seal" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           echo "✅ AAA FEDERATION.md valid — L1 ROOT"
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
 
   validate:
     name: 🔍 AAA Validate
@@ -92,5 +156,29 @@ jobs:
       - name: Federation map exists
         run: |
           test -f docs/FEDERATION_MAP.md || (echo "❌ Missing docs/FEDERATION_MAP.md" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           grep -q "FEDERATION MAP" docs/FEDERATION_MAP.md || (echo "❌ Invalid FEDERATION_MAP.md" && exit 1)
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
           echo "✅ FEDERATION_MAP.md valid"
+
+  protocol-alignment:
+    runs-on: ubuntu-latest
+    needs: [federation-check]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Protocol alignment gate
+        run: bash AAA/scripts/check_protocol_alignment.sh
