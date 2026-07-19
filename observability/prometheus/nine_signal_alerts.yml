@@ -22,11 +22,10 @@
 #   arifos_requests_total          (counter, total incoming requests)
 #   arifos_merkle_integrity_checks_total (counter, vault chain checks)
 #
-# The following series are deliberately NOT used here because they are
-# not currently emitted by the runtime:
-#   arifos_tearframe, arifos_rasa_events_total, arifos_scar_candidates_total.
-# Referencing them would produce permanently-absent series and alerts that
-# never fire (or false-positive fallbacks), violating F2 TRUTH.
+# Three additional series names the operator listed are deliberately NOT used
+# here because they are not currently emitted by the runtime. Referencing them
+# would produce permanently-absent series and alerts that never fire (or
+# false-positive fallbacks), violating F2 TRUTH.
 
 groups:
   - name: nine_signal_floors
