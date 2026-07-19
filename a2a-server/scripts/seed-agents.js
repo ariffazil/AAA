@@ -20,22 +20,60 @@
 
 'use strict';
 
+const fs = require('fs');
 const http = require('http');
+const path = require('path');
 const { URL } = require('url');
+const YAML = require('yaml');
 
 const DEFAULT_PORT = 3001;
 const DEFAULT_TIMEOUT_MS = 5000;
+const REGISTRY_PATH = path.resolve(__dirname, '../../registries/forge_instruments.yaml');
 
-const AGENTS = Object.freeze([
-  Object.freeze({ id: 'opencode',    fi: 'FI-001', model: 'deepseek/deepseek-v4-pro',             mcp: 13, role: 'orchestrator' }),
-  Object.freeze({ id: 'claude-code', fi: 'FI-002', model: 'deepseek/deepseek-v4-pro (Anthropic)',  mcp: 20, role: 'architect'    }),
-  Object.freeze({ id: 'qwen-code',   fi: 'FI-003', model: 'MiniMax-M3',                            mcp: 0,  role: 'dormant'      }),
-  Object.freeze({ id: 'antigravity', fi: 'FI-004', model: 'Gemini 3.5 Flash',                      mcp: 6,  role: 'executor'     }),
-  Object.freeze({ id: 'codex-cli',   fi: 'FI-005', model: 'gpt-5.6-sol',                           mcp: 8,  role: 'forge'        }),
-  Object.freeze({ id: 'copilot-cli', fi: 'FI-006', model: 'deepseek-v4-pro (Anthropic compat)',    mcp: 11, role: 'forge'        }),
-  Object.freeze({ id: 'grok-build',  fi: 'FI-007', model: 'grok-build (xAI)',                       mcp: 0,  role: 'forge'        }),
-  Object.freeze({ id: 'kimi-code',   fi: 'FI-008', model: 'minimax-coding-plan/MiniMax-M3',         mcp: 9,  role: 'forge'        }),
-]);
+const AGENT_ID_BY_FI = Object.freeze({
+  'FI-001': 'opencode',
+  'FI-002': 'claude-code',
+  'FI-003': 'qwen-code',
+  'FI-004': 'antigravity',
+  'FI-005': 'codex-cli',
+  'FI-006': 'copilot-cli',
+  'FI-007': 'grok-build',
+  'FI-008': 'kimi-code',
+});
+const ROLE_BY_FI = Object.freeze({
+  'FI-001': 'orchestrator',
+  'FI-002': 'architect',
+  'FI-003': 'dormant',
+  'FI-004': 'executor',
+  'FI-005': 'forge',
+  'FI-006': 'forge',
+  'FI-007': 'forge',
+  'FI-008': 'forge',
+});
+
+function loadAgents(registryPath = REGISTRY_PATH) {
+  const document = YAML.parse(fs.readFileSync(registryPath, 'utf8'));
+  const instruments = Array.isArray(document && document.instruments)
+    ? document.instruments
+    : [];
+  const agents = instruments
+    .filter((instrument) => AGENT_ID_BY_FI[instrument.id])
+    .map((instrument) => Object.freeze({
+      id: AGENT_ID_BY_FI[instrument.id],
+      fi: instrument.id,
+      model: instrument.model || 'unknown',
+      mcp: Array.isArray(instrument.mcp_surface) ? instrument.mcp_surface.length : 0,
+      role: ROLE_BY_FI[instrument.id],
+    }));
+  if (agents.length !== Object.keys(AGENT_ID_BY_FI).length) {
+    throw new Error(
+      `forge instrument registry mismatch: expected 8 active slots, found ${agents.length}`,
+    );
+  }
+  return Object.freeze(agents);
+}
+
+const AGENTS = loadAgents();
 
 /**
  * Build the registration payload for one agent. Mirrors the AAA /api/agents/register
@@ -64,7 +102,11 @@ function resolveBaseUrl(opts) {
   if (opts && typeof opts.baseUrl === 'string' && opts.baseUrl.length > 0) {
     return opts.baseUrl.replace(/\/+$/, '');
   }
-  const port = (opts && Number.isInteger(opts.port)) ? opts.port : DEFAULT_PORT;
+  const rawPort = (opts && opts.port != null)
+    ? opts.port
+    : (process.env.A2A_PORT || process.env.AAA_A2A_PORT || DEFAULT_PORT);
+  const parsedPort = Number.parseInt(String(rawPort), 10);
+  const port = Number.isInteger(parsedPort) && parsedPort > 0 ? parsedPort : DEFAULT_PORT;
   return `http://127.0.0.1:${port}`;
 }
 
@@ -194,4 +236,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { AGENTS, seed, buildPayload, resolveBaseUrl };
+module.exports = { AGENTS, seed, buildPayload, loadAgents, resolveBaseUrl };

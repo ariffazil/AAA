@@ -29,6 +29,7 @@ const {
   AGENTS,
   seed,
   buildPayload,
+  loadAgents,
   resolveBaseUrl,
 } = require(path.join('..', 'scripts', 'seed-agents'));
 
@@ -68,6 +69,7 @@ const EXPECTED_FIS = [
 ];
 
 function expectEightAgents() {
+  const loaded = loadAgents();
   record(Array.isArray(AGENTS), 'AGENTS is exported as an array');
   record(AGENTS.length === 8, 'AGENTS.length === 8', `got ${AGENTS.length}`);
   record(
@@ -79,6 +81,10 @@ function expectEightAgents() {
     AGENTS.every((a, i) => a.fi === EXPECTED_FIS[i]),
     'AGENTS fi slots match canonical order',
     JSON.stringify(AGENTS.map((a) => a.fi)),
+  );
+  record(
+    JSON.stringify(loaded) === JSON.stringify(AGENTS),
+    'AGENTS is derived reproducibly from registries/forge_instruments.yaml',
   );
 }
 
@@ -121,6 +127,10 @@ function expectConfigurablePort() {
   record(
     resolveBaseUrl({ port: 4242 }) === 'http://127.0.0.1:4242',
     'resolveBaseUrl({ port }) honors explicit port',
+  );
+  record(
+    resolveBaseUrl({ port: '4243' }) === 'http://127.0.0.1:4243',
+    'resolveBaseUrl normalizes string-valued environment ports',
   );
   record(
     resolveBaseUrl({ baseUrl: 'http://example.test:9000/' }) === 'http://example.test:9000',
@@ -184,13 +194,23 @@ function startIdempotentServer(state) {
       try {
         const payload = JSON.parse(body);
         state.parsedPayloads.push(payload);
-        if (state.seenIds.has(payload.agent_id)) {
+        const isOrgan = req.url === '/federation/register';
+        const key = isOrgan ? payload.identity?.organId : payload.agent_id;
+        const seen = isOrgan
+          ? (state.seenOrgans ||= new Set())
+          : state.seenIds;
+        if (!key) {
+          res.statusCode = 400;
+          res.end(JSON.stringify({ ok: false, error: 'missing identity' }));
+          return;
+        }
+        if (seen.has(key)) {
           res.statusCode = 409;
           res.setHeader('Content-Type', 'application/json');
           res.end(JSON.stringify({ ok: false, status: 'EXISTING', error: 'already registered' }));
           return;
         }
-        state.seenIds.add(payload.agent_id);
+        seen.add(key);
         res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ ok: true, status: 'REGISTERED' }));
@@ -274,59 +294,54 @@ async function expectTimeoutAccounting() {
 }
 
 async function expectAutoRegisterAwaitsSeed() {
-  // Auto-register calls seed() internally; verify it actually awaits by
-  // checking the summary returns BOTH organs and agents counts with the
-  // agents section populated by the in-process seed-agents test server.
-  const idemState = { requests: 0, lastPayloads: [], parsedPayloads: [], seenIds: new Set() };
-  const idemServer = await startIdempotentServer(idemState);
-
-  // Stand up a tiny "federation/register" handler as well.
-  const fedServer = await startServer((req, res) => {
-    let body = '';
-    req.on('data', (c) => { body += c; });
-    req.on('end', () => {
-      try {
-        const payload = JSON.parse(body);
-        if (fedServer.seen.has(payload.identity.organId)) {
-          res.statusCode = 409;
-          res.end(JSON.stringify({ ok: false, status: 'EXISTING' }));
-          return;
-        }
-        fedServer.seen.add(payload.identity.organId);
-        res.statusCode = 200;
-        res.end(JSON.stringify({ ok: true }));
-      } catch (err) {
-        res.statusCode = 400;
-        res.end(`bad: ${err.message}`);
-      }
-    });
-  });
-  fedServer.seen = new Set();
+  // One listener serves the exact startup topology: both federation organs and
+  // lifecycle agents register against the same AAA port.
+  const state = {
+    requests: 0,
+    lastPayloads: [],
+    parsedPayloads: [],
+    seenIds: new Set(),
+    seenOrgans: new Set(),
+  };
+  const server = await startIdempotentServer(state);
 
   try {
-    const summary = await autoRegisterOrgans(idemServer.port, { timeoutMs: 2000, log: () => {} });
+    const first = await autoRegisterOrgans(String(server.port), {
+      timeoutMs: 2000,
+      log: () => {},
+    });
     record(
-      typeof summary === 'object' && summary !== null,
+      typeof first === 'object' && first !== null,
       'autoRegisterOrgans returns a structured summary',
     );
     record(
-      summary && summary.organs && summary.agents,
+      first && first.organs && first.agents,
       'summary includes both organs and agents sections',
-      JSON.stringify(summary && Object.keys(summary)),
+      JSON.stringify(first && Object.keys(first)),
     );
     record(
-      summary && summary.agents && summary.agents.total === 8,
-      'agents section was awaited and reports total === 8',
-      JSON.stringify(summary && summary.agents),
+      first.organs.registered === 6 && first.organs.failed === 0,
+      'all six organs register through the supplied string port',
+      JSON.stringify(first.organs),
     );
     record(
-      summary && summary.agents && summary.agents.registered === 8,
-      'agents section reports 8 newly registered on first run',
-      JSON.stringify(summary && summary.agents),
+      first.agents.registered === 8 && first.agents.failed === 0,
+      'all eight agents register after organ registration completes',
+      JSON.stringify(first.agents),
+    );
+    record(first.ok === true && first.seedError === null, 'first bootstrap reports ok=true');
+
+    const second = await autoRegisterOrgans(String(server.port), {
+      timeoutMs: 2000,
+      log: () => {},
+    });
+    record(
+      second.organs.existing === 6 && second.agents.existing === 8 && second.ok,
+      'repeated bootstrap is idempotent for organs and agents',
+      JSON.stringify(second),
     );
   } finally {
-    await fedServer.close();
-    await idemServer.close();
+    await server.close();
   }
 }
 
