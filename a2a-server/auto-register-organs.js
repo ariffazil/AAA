@@ -15,7 +15,7 @@
 
 'use strict';
 
-const { seed } = require('./scripts/seed-agents');
+const { AGENTS, seed } = require('./scripts/seed-agents');
 
 const ORGANS = Object.freeze([
   Object.freeze({
@@ -118,7 +118,9 @@ async function registerOneOrgan(baseUrl, organ, timeoutMs) {
  * Always returns a structured counts object — never throws to the caller.
  */
 async function autoRegisterOrgans(port = 3001, opts) {
-  const baseUrl = `http://127.0.0.1:${port}`;
+  const parsedPort = Number.parseInt(String(port), 10);
+  const normalizedPort = Number.isInteger(parsedPort) && parsedPort > 0 ? parsedPort : 3001;
+  const baseUrl = `http://127.0.0.1:${normalizedPort}`;
   const timeoutMs = (opts && Number.isInteger(opts.timeoutMs)) ? opts.timeoutMs : 5000;
   const startedAt = new Date().toISOString();
   const log = (opts && typeof opts.log === 'function') ? opts.log : () => {};
@@ -148,10 +150,15 @@ async function autoRegisterOrgans(port = 3001, opts) {
 
   // Seed 8 forge instruments into agent lifecycle manager.
   // Explicitly await seed({ port }) so caller observes completion.
-  let agentCounts = { registered: 0, existing: 0, failed: 0, total: 0 };
+  let agentCounts = {
+    registered: 0,
+    existing: 0,
+    failed: AGENTS.length,
+    total: AGENTS.length,
+  };
   let seedError = null;
   try {
-    agentCounts = await seed({ port, timeoutMs, log });
+    agentCounts = await seed({ port: normalizedPort, timeoutMs, log });
   } catch (err) {
     seedError = err.message;
     log(`[auto-register] forge agent seeding failed: ${seedError}`);
@@ -161,7 +168,7 @@ async function autoRegisterOrgans(port = 3001, opts) {
   return {
     organs: organCounts,
     agents: agentCounts,
-    ok: organCounts.failed === 0 && agentCounts.failed === 0,
+    ok: seedError === null && organCounts.failed === 0 && agentCounts.failed === 0,
     startedAt,
     finishedAt,
     seedError,
