@@ -1,3 +1,15 @@
+---
+id: FORGE-mcp-gui
+name: FORGE-mcp-gui
+version: 1.0.0
+description: Build and audit interactive MCP Apps, UI resources, sandbox messaging, and CSP-bound host integration.
+owner: AAA
+risk_tier: medium
+autonomy_tier: T2
+floor_scope: [F1, F2, F4, F11, F12]
+tags: [forge, mcp, apps, ui, sep-1865, csp]
+---
+
 # ⚒️ FORGE-mcp-gui — MCP GUI/Apps Development Skill
 
 > **Forged:** 2026-07-19 by FORGE (000Ω) for AAA Control Plane
