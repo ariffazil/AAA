@@ -38,32 +38,57 @@ const DATASOURCE_YML = path.join(OBS, "grafana", "provisioning", "datasources", 
 const DASHBOARD_PROV_YML = path.join(OBS, "grafana", "provisioning", "dashboards", "nine_signal_dashboard.yml");
 const DASHBOARD_JSON = path.join(OBS, "grafana", "dashboards", "nine_signal_overview.json");
 
-// ── Verified-live series ────────────────────────────────────────────────────
-// Emitted by arifOS at 127.0.0.1:8088/metrics as of 2026-07-19.
+// ── Verified-source series ──────────────────────────────────────────────────
+// Two categories, both reconciled against /root/arifOS/arifosmcp/runtime/metrics.py
+// on 2026-07-19:
+//
+//   1. EMITTED-NOW — series exposed by /metrics on 127.0.0.1:8088 right now.
+//      Verified by `curl -s http://127.0.0.1:8088/metrics` against the running
+//      kernel (pre-deployment). These will be visible to Prometheus today.
+//
+//   2. SOURCE-DEFINED — series registered by prometheus_client.Gauge/Counter
+//      in metrics.py, but which only become visible in /metrics once arifOS is
+//      deployed AND the corresponding completion event fires:
+//        - arifos_tearframe         (Gauge, set only at ATLAS333 stage 7 boundaries)
+//        - arifos_rasa_events_total (Counter, incremented only when log_shadow()
+//                                    actually writes the JSONL entry)
+//        - arifos_scar_candidates_total (Counter, incremented only after the
+//                                    candidate JSON is durably written to
+//                                    vault999/scars/)
+//      Per metrics.py docstrings: "Status defaults / zero-fill MUST NOT
+//      increment" these counters; the tearframe helper has the same contract.
+//      Until the completion event fires, the series is absent — Prometheus
+//      will see no data, and rate() expressions will return no series. This is
+//      the truthful no-data-until-event semantics; we do NOT fake defaults.
 const LIVE_BASE_SERIES = new Set([
-  "arifos_genius_score",
-  "arifos_entropy_delta",
-  "arifos_humility_band",
-  "arifos_peace_squared",
-  "arifos_empathy_quotient",
-  "arifos_metabolic_loop_seconds",
-  "arifos_verdicts_total",
-  "arifos_m3_tokens_total",
-  "arifos_m3_calls_total",
-  "arifos_m3_latency_seconds",
-  "arifos_m3_fallback_total",
-  "arifos_multimodal_calls_total",
-  "arifos_requests_total",
-  "arifos_w3_score",
-  "arifos_hold_queue_depth",
-  "arifos_vault_records_total",
-  "arifos_floor_violations_total",
-  "arifos_sabar_events_total",
-  "arifos_sessions_active",
-  "arifos_vault_entries_total",
-  "arifos_machine_faults_total",
-  "arifos_void_events_total",
-  "arifos_merkle_integrity_checks_total",
+  // EMITTED-NOW (live, type from metrics.py)
+  "arifos_genius_score",            // gauge
+  "arifos_entropy_delta",           // gauge
+  "arifos_humility_band",           // gauge
+  "arifos_peace_squared",           // gauge
+  "arifos_empathy_quotient",        // gauge
+  "arifos_metabolic_loop_seconds",  // histogram
+  "arifos_verdicts_total",          // counter
+  "arifos_m3_tokens_total",         // counter
+  "arifos_m3_calls_total",          // counter
+  "arifos_m3_latency_seconds",      // histogram
+  "arifos_m3_fallback_total",       // counter
+  "arifos_multimodal_calls_total",  // counter
+  "arifos_requests_total",          // counter
+  "arifos_w3_score",                // histogram
+  "arifos_hold_queue_depth",        // gauge
+  "arifos_vault_records_total",     // gauge
+  "arifos_floor_violations_total",  // counter
+  "arifos_sabar_events_total",      // counter
+  "arifos_sessions_active",         // gauge
+  "arifos_vault_entries_total",     // gauge
+  "arifos_machine_faults_total",    // counter
+  "arifos_void_events_total",       // counter
+  "arifos_merkle_integrity_checks_total", // counter
+  // SOURCE-DEFINED (registered in metrics.py; absent from /metrics until event)
+  "arifos_tearframe",               // gauge,  labels=[component, provenance]
+  "arifos_rasa_events_total",       // counter, labels=[risk_band, enforcement_mode, enforced]
+  "arifos_scar_candidates_total",   // counter, labels=[stage, severity]
 ]);
 
 const HISTOGRAM_SUFFIXES = ["_bucket", "_count", "_sum", "_created"];
@@ -77,12 +102,18 @@ function isKnownSeries(name: string): boolean {
   return false;
 }
 
-// Forbidden: listed by the user but not actually emitted by the kernel.
-const FORBIDDEN_SERIES = new Set([
-  "arifos_tearframe",
-  "arifos_rasa_events_total",
-  "arifos_scar_candidates_total",
-]);
+// Type information for source-defined series that drive label-aware PromQL.
+// Alerts and dashboard panels that reference these MUST honour the labels
+// declared in metrics.py — otherwise we silently drop events or invent data.
+const SOURCE_DEFINED_LABELS: Record<string, readonly string[]> = {
+  arifos_tearframe: ["component", "provenance"],
+  arifos_rasa_events_total: ["risk_band", "enforcement_mode", "enforced"],
+  arifos_scar_candidates_total: ["stage", "severity"],
+};
+
+// The forbidden-set is now empty: every series the operator listed has been
+// reconciled to a real source definition.
+const FORBIDDEN_SERIES: ReadonlySet<string> = new Set();
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -186,6 +217,26 @@ describe("observability/prometheus/nine_signal_alerts.yml", () => {
     assert.ok(/NineSignalPeaceSquaredFloorBreach/.test(text));
     assert.ok(/NineSignalW3BelowSeal/.test(text));
     assert.ok(/NineSignalHoldQueueGrowing/.test(text));
+  });
+
+  it("source-defined series alerts use rate() over counters so they stay silent pre-event", () => {
+    const text = readText(ALERTS_YML);
+    // arifos_rasa_events_total and arifos_scar_candidates_total are counters.
+    // The truthful no-data-until-event pattern is rate() over a counter, which
+    // yields no series when no samples exist (no false alerts).
+    assert.ok(/rate\(arifos_rasa_events_total/.test(text),
+      "RASA alert must use rate() to stay quiet until first event");
+    assert.ok(/rate\(arifos_scar_candidates_total/.test(text),
+      "scar_candidates alert must use rate() to stay quiet until first persistence");
+  });
+
+  it("arifos_tearframe alert targets the placeholder provenance (anti-hantu)", () => {
+    const text = readText(ALERTS_YML);
+    // tearframe is a gauge. The truthful pattern: alert on provenance="placeholder"
+    // (which would mean someone bypassed the real-completion discipline). The
+    // measured provenance is silent until first completion.
+    assert.ok(/arifos_tearframe\{[^}]*provenance\s*=\s*"placeholder"/.test(text),
+      "tearframe alert must specifically target the placeholder provenance label");
   });
 });
 
@@ -293,6 +344,44 @@ describe("observability/grafana/dashboards/nine_signal_overview.json", () => {
         }
       }
     }
+  });
+
+  it("source-defined series appear in the dashboard with label-correct PromQL", () => {
+    const refs = new Set<string>();
+    for (const p of doc.panels) {
+      for (const t of p.targets ?? []) {
+        const expr = t.expr ?? "";
+        for (const m of expr.match(/[a-zA-Z_][a-zA-Z0-9_]*/g) ?? []) {
+          if (m.startsWith("arifos_")) refs.add(m);
+        }
+      }
+    }
+    assert.ok(refs.has("arifos_tearframe"),
+      "dashboard must reference arifos_tearframe (source-defined gauge)");
+    assert.ok(refs.has("arifos_rasa_events_total"),
+      "dashboard must reference arifos_rasa_events_total (source-defined counter)");
+    assert.ok(refs.has("arifos_scar_candidates_total"),
+      "dashboard must reference arifos_scar_candidates_total (source-defined counter)");
+  });
+
+  it("counter source-defined series use rate() for no-data-until-event semantics", () => {
+    const text = readText(DASHBOARD_JSON);
+    // rate() returns no series until a counter has at least two samples. This is
+    // the truthful quiet-until-event behaviour — we never invent a zero default.
+    assert.ok(/rate\(\s*arifos_rasa_events_total\b/.test(text),
+      "RASA panel must use rate() to stay silent before first event");
+    assert.ok(/rate\(\s*arifos_scar_candidates_total\b/.test(text),
+      "scar_candidates panel must use rate() to stay silent before first persistence");
+  });
+
+  it("tearframe panel targets the measured provenance (truthful default)", () => {
+    const text = readText(DASHBOARD_JSON);
+    // We surface the measured provenance — the one that proves a real GPV
+    // computation happened. The placeholder provenance, if it appears, must
+    // be highlighted as anti-hantu, not silently mixed in.
+    // Accept both bare " and JSON-escaped \" since we read the file as text.
+    assert.ok(/arifos_tearframe\{[^}]*provenance\s*=\s*\\?"measured\\?"/.test(text),
+      "tearframe panel must filter to provenance=measured");
   });
 });
 
