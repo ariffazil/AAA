@@ -43,13 +43,16 @@ print(len(tools))
     CURRENT_COUNTS="$CURRENT_COUNTS $organ=$count"
 done
 
-# Get aggregate counts
+# Get aggregate counts. The current aggregate stores organs as top-level keys
+# with a `count` field. Keep compatibility with the retired nested `organs` /
+# `sot_total` shape so older release branches can still run this gate.
 AGGREGATE_COUNTS=$(python3 -c "
 import yaml
 d = yaml.safe_load(open('$AGGREGATE'))
-organs = d.get('organs', {})
+known_organs = ('arifOS', 'A-FORGE', 'GEOX', 'WEALTH', 'WELL')
+organs = d.get('organs') or {name: d[name] for name in known_organs if name in d}
 for organ, info in sorted(organs.items()):
-    print(f'{organ}={info.get(\"sot_total\", 0)}')
+    print(f'{organ}={info.get(\"sot_total\", info.get(\"count\", 0))}')
 " 2>/dev/null)
 
 echo "SOT file counts:$CURRENT_COUNTS"
@@ -71,10 +74,10 @@ print(len(d.get('tools', [])))
     
     if [ -z "$agg_count" ]; then
         echo -e "${RED}❌ $organ: not in aggregate${NC}"
-        ((ERRORS++))
+        ((ERRORS+=1))
     elif [ "$sot_count" != "$agg_count" ]; then
         echo -e "${RED}❌ $organ: SOT=$sot_count ≠ Aggregate=$agg_count — count drift without aggregate update${NC}"
-        ((ERRORS++))
+        ((ERRORS+=1))
     else
         echo -e "${GREEN}✅ $organ: SOT=$sot_count = Aggregate=$agg_count${NC}"
     fi
