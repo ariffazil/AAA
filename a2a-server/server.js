@@ -2441,16 +2441,23 @@ app.get('/health', async (req, res) => {
   res.setHeader('Pragma', 'no-cache');
   // T5 2026-07-17 — canonical 5-field federation header + organ payload
   let identityHash = 'UNAVAILABLE';
+  let gitCommit = 'UNAVAILABLE';
   try {
     const crypto = require('crypto');
     const idPath = '/root/AAA/identity.toml';
     if (fs.existsSync(idPath)) {
       identityHash = crypto.createHash('sha256').update(fs.readFileSync(idPath)).digest('hex');
     }
+    gitCommit = require('child_process').execSync('git -C /root/AAA rev-parse --short=7 HEAD', { timeout: 3000 }).toString().trim();
   } catch (_) { /* identity optional for health */ }
+  if (gitCommit === 'UNAVAILABLE') {
+    try { gitCommit = fs.readFileSync('/root/AAA/.git_commit', 'utf8').trim(); } catch (_) {}
+  }
   res.json({
     status: 'healthy',
+    identity: identityHash,
     identity_hash: identityHash,
+    git_commit: gitCommit,
     apex_scalars: {
       G: { value: null, status: 'UNMEASURED' },
       C_dark: { value: null, status: 'UNMEASURED' },
