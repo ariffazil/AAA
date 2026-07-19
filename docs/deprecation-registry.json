@@ -23,12 +23,24 @@
     "status": "AAA library skills (406) are the full governed catalog — not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
   },
   "copilot_cli_audit": {
+    "phase": "COMPLETE — AAA TOOLBENCH ALIGNMENT 2026-07-19",
     "mcp_servers": 15,
     "custom_agents": 2,
     "permissions": "FULL (no deny list)",
-    "autopilot": "ON",
+    "autopilot": "ON — all 7 CLI agents now AUTOPILOT",
     "hitl": "OFF for digital MUBAH",
     "organs_healthy": true,
-    "configs_aligned": ["settings.json", "mcp-config.json", "permissions-config.json", "copilot-instructions.md", "lsp-config.json"]
+    "configs_aligned": ["settings.json", "mcp-config.json", "permissions-config.json", "copilot-instructions.md", "lsp-config.json"],
+    "agents_fixed": {
+      "copilot-cli": "AUTOPILOT ON, SOT stamped, permissions full",
+      "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, vault.env path fixed",
+      "opencode": "AGENTS.md created with full federation spec",
+      "grok-build": "AGENTS.md created with full federation spec",
+      "openclaw-gateway": "system.md updated: legacy HITL removed, SOT added, boot paths fixed, MUBAH baseline",
+      "hermes-asi": "config.yaml SOT stamped with AUTOPILOT declaration"
+    },
+    "agents_total": 15,
+    "agents_with_agents_md": 7,
+    "agents_autopilot": "ALL 7 CLI agents now declare AUTOPILOT ON"
   }
 }
