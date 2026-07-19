@@ -1,6 +1,6 @@
 version: 1
 status: active
-last_forged: '2026-06-16T16:30:00Z'
+last_forged: '2026-07-19T23:16:43Z'
 owner: Muhammad Arif bin Fazil
 authority: F13 SOVEREIGN
 purpose: 'Root map for AAA warga, runtime peers, and forge instruments. Per-agent
@@ -175,6 +175,7 @@ forge_instruments:
   - brave-search
   - chrome-devtools
   - cloudflare
+  - composio
   - context7
   - exa
   - fetch

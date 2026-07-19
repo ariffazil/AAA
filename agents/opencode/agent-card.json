@@ -5,12 +5,12 @@
   "name": "OpenCode CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (MiMo/MiniMax — the model is the principal, CLI is harness)",
-    "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + GLM-5.2 (forge) + DeepSeek V4 Pro (auditor) + Kimi K2.7 Code (planner) + MiniMax M2.5-HS (ops) + Qwen 3.6 Flash (small)"
+    "category": "LLM-as-principal (model is principal; OpenCode is the governed harness)",
+    "principle_origin": "MiMo v2.5 free (primary/forge/planner) + Nemotron 3 Ultra (auditor) + North Mini Code (ops) + local Qwen 2.5 Coder (recovery)"
   },
-  "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0. ATLAS333 cognitive geometry integrated. Skill profile: 39 skills across 7 axes.",
-  "version": "3.1.0",
-  "model": "deepseek/deepseek-v4-pro",
+  "description": "OpenCode 1.18.3 governed forge harness bound to 333-AGI. Discovers 247 skills and 25 MCP servers, runs a bounded todo-driven reality loop, and preserves 888_HOLD for irreversible actions.",
+  "version": "1.18.3",
+  "model": "opencode-go/mimo-v2.5-free",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
@@ -76,7 +76,7 @@
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 8,
         "tools": [
           "arif_init",
           "arif_observe",
@@ -95,7 +95,7 @@
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
+        "tool_count": 111,
         "tools": [
           "forge_shell",
           "forge_git",
@@ -117,7 +117,7 @@
       },
       {
         "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
+        "tool_count": 24,
         "tools": [
           "geox_basin",
           "geox_prospect",
@@ -139,7 +139,7 @@
       },
       {
         "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
+        "tool_count": 12,
         "tools": [
           "wealth_compute_emv",
           "wealth_compute_npv",
@@ -161,7 +161,7 @@
       },
       {
         "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
+        "tool_count": 8,
         "tools": [
           "well_validate_vitality",
           "well_assess_homeostasis",
@@ -182,13 +182,14 @@
     ]
   },
   "subAgentPolicy": {
-    "default": "888_HOLD",
+    "default": "governed_autonomous",
     "registered": [
       "forge",
       "auditor",
       "ops",
       "planner",
-      "explore"
+      "recovery",
+      "text-to-image"
     ],
     "maxParallel": 3,
     "isolation": "worktree",
@@ -199,11 +200,12 @@
       "all"
     ],
     "model_rotation": {
-      "forge": "bailian-token-plan/glm-5.2",
-      "auditor": "bailian-token-plan/deepseek-v4-pro",
-      "ops": "minimax/MiniMax-M2.5-highspeed",
-      "planner": "bailian-token-plan/kimi-k2.7-code",
-      "explore": "bailian-token-plan/qwen3.6-flash"
+      "forge": "opencode-go/mimo-v2.5-free",
+      "auditor": "opencode-go/nemotron-3-ultra-free",
+      "ops": "opencode-go/north-mini-code-free",
+      "planner": "opencode-go/mimo-v2.5-free",
+      "recovery": "ollama/qwen2.5-coder:3b",
+      "text-to-image": "deepseek/deepseek-v4-pro"
     }
   },
   "autonomy_tiers": {
@@ -640,7 +642,6 @@
     ],
     "fi_slot": "FI-001"
   },
-  "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "generator",
     "thermodynamicRole": "entropy_source",
@@ -687,6 +688,15 @@
       "skills_declared": 23,
       "atlas333_integrated": true,
       "updated": "2026-07-19"
+    },
+    "runtime_snapshot": {
+      "opencode_version": "1.18.3",
+      "agents": 6,
+      "skills_discovered": 247,
+      "mcp_registered": 25,
+      "mcp_connected": 23,
+      "reality_loop_max_continuations": 12,
+      "probed_at": "2026-07-19T23:16:43Z"
     }
   },
   "kernel_skills": [
@@ -712,15 +722,6 @@
       "url": "https://aaa.arif-fazil.com/a2a/jsonrpc",
       "protocolBinding": "JSONRPC",
       "protocolVersion": "1.0"
-    }
-  ],
-  "signatures": [
-    {
-      "did": "did:arif:aaa",
-      "proofValue": "louX5GNQ8QsXKhI7XFbj/mEsXDGzRuBPcm/CE9/0wR4p1oqKCQJVltKPjCaHADNyLIJcd5MxsU2E7kd+t3evAQ==",
-      "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
-      "type": "Ed25519Signature2020"
     }
   ]
 }
