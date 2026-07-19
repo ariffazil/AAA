@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.17-ZEN-CONVERGENCE
-last_verified: 2026-07-17T15:52Z
-live_commit: 15f939e (clean working tree)
+federation_release: v2026.07.19-ZEN-CONVERGENCE
+last_verified: 2026-07-19T17:00Z
+live_commit: d1571d8
 live_short: 15f939e
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
