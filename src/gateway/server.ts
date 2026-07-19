@@ -489,8 +489,19 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     res.setHeader('Pragma', 'no-cache');
     const degraded = cachedConformance?.summary?.overallVerdict === 'DUPLICATE_DETECTED' ||
                      (cachedConformance?.summary?.organsAligned ?? 0) < (cachedConformance?.summary?.totalOrgans ?? 5);
+    let identityHash = 'UNAVAILABLE';
+    let gitCommit = 'UNAVAILABLE';
+    try {
+      const { execSync } = require('node:child_process');
+      gitCommit = execSync('git -C /root/AAA rev-parse --short=7 HEAD', { timeout: 3000 }).toString().trim();
+      identityHash = require('node:crypto').createHash('sha256').update(gitCommit + '/root/AAA').digest('hex').substring(0, 16);
+    } catch {}
+
     res.json({
       status: degraded ? 'degraded' : 'healthy',
+      identity: identityHash,
+      identity_hash: identityHash,
+      git_commit: gitCommit,
       protocol: 'A2A',
       version: '1.0.0',
       federation_schema_version: '2.0.0',
