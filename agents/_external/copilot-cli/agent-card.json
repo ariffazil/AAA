@@ -1,0 +1,71 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "copilot-cli",
+  "name": "GitHub Copilot CLI (DeepSeek BYOK)",
+  "principal_agent": {
+    "type": "llm",
+    "category": "LLM-as-principal (DeepSeek V4 Pro — Anthropic-compatible endpoint via BYOK)",
+    "principle_origin": "DeepSeek Platform (https://platform.deepseek.com/)"
+  },
+  "description": "GitHub Copilot CLI forge instrument with DeepSeek V4 Pro as backend (BYOK Anthropic-compatible endpoint). Wire via env vars: COPILOT_PROVIDER_TYPE=anthropic, COPILOT_PROVIDER_BASE_URL=https://api.deepseek.com/anthropic, COPILOT_PROVIDER_API_KEY=sk-..., COPILOT_MODEL=deepseek-v4-pro. Source script: /root/.bashrc.copilot. F1-F13 enforced.",
+  "version": "1.0.0",
+  "model": "deepseek-v4-pro (BYOK)",
+  "binary": "/root/.npm-global/bin/copilot",
+  "tier": "FI",
+  "role": "forge_instrument",
+  "class": "CODING/FI",
+  "protocolVersion": "1.2",
+  "url": "https://aaa.arif-fazil.com/a2a/copilot-cli",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/copilot-cli",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "authenticated_extended_card": true,
+    "tool_calling": true,
+    "mcp_native": true,
+    "byok": true,
+    "reasoning_mode": "thinking"
+  },
+  "configuration": {
+    "install": "npm install -g @github/copilot",
+    "env_source": "/root/.bashrc.copilot",
+    "provider_type": "anthropic",
+    "provider_base_url": "https://api.deepseek.com/anthropic",
+    "provider_model_default": "deepseek-v4-pro",
+    "alternative_models": ["deepseek-v4-flash"],
+    "max_prompt_tokens": 840000,
+    "max_output_tokens": 128000,
+    "notes": "Must use provider_type=anthropic. openai type triggers 400: 'reasoning_content in thinking mode must be passed back to the API'. DeepSeek Anthropic Messages API endpoint avoids this issue."
+  },
+  "installation": {
+    "binary_path": "/root/.npm-global/bin/copilot",
+    "verified_at": "2026-07-19T09:55:00Z",
+    "node_version_required": ">=22",
+    "node_version_installed": "v22.23.1"
+  },
+  "verification_receipt": {
+    "test_prompt": "Reply with the literal string: hello from deepseek via copilot cli. Do not add anything else.",
+    "actual_response": "hello from deepseek via copilot cli",
+    "duration_seconds": 18,
+    "tokens_used": "↑141.0k (17.7k cached) • ↓35 (24 reasoning)",
+    "verified_by": "Hermes-Prime",
+    "verified_at": "2026-07-19T09:55:00Z"
+  },
+  "federation_role": "external_forge_instrument",
+  "federation_binding": "FI-009",
+  "constitutional_compliance": {
+    "F1_AMANAH": "inherited from arifOS governance; no execution outside lease",
+    "F2_TRUTH": "BYOK ensures response attribution; DeepSeek model verifiable",
+    "F11_AUDIT": "every call emits receipt to VAULT999 if wired",
+    "F13_SOVEREIGN": "F13 retains veto over irreversible actions"
+  },
+  "skills_binding": [
+    "070-lock-humility-godel"
+  ],
+  "tags": ["copilot-cli", "deepseek", "byok", "anthropic-compatible", "forge-instrument"]
+}
