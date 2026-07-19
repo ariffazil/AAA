@@ -19,10 +19,10 @@
 | 8 | **SEP-2127** (Server Card) | Discovery | — | MCP docs-agent | GEOX, arifOS |
 | 9 | **RFC 8615** (Well-Known URIs) | Discovery | IETF | [rfc8615](https://datatracker.ietf.org/doc/html/rfc8615) | arifOS, GEOX, ARIF-SITES |
 | 10 | **NATS** | Message Fabric | C2 | [docs](https://docs.nats.io/) | arifOS, AAA, A-FORGE |
-| 11 | **CloudEvents** | Event Envelope | C9 | [spec](https://github.com/cloudevents/spec) | arifOS (planned) |
+| 11 | **CloudEvents** | Event Envelope | C9 | [spec](https://github.com/cloudevents/spec) | arifOS ✅ (v2026.07.19) |
 | 12 | **DID:WEB** | Identity | — | [w3c](https://w3c-ccg.github.io/did-method-web/) | A-FORGE |
 | 13 | **OpenTelemetry** | Observability | K7 | [spec](https://opentelemetry.io/docs/specs/otel/) | AAA (observability stack) |
-| 14 | **SLSA + Sigstore** | Supply Chain | F8 + K4 | [slsa](https://slsa.dev/) [sigstore](https://sigstore.dev/) | A-FORGE (CI) |
+| 14 | **SLSA + Sigstore** | Supply Chain | F8 + K4 | [slsa](https://slsa.dev/) [sigstore](https://sigstore.dev/) | arifOS ✅ (provenance module) |
 | 15 | **gRPC** | RPC | C10 | [spec](https://grpc.io/) | Infrastructure layer |
 
 ---
