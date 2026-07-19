@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
+import { spawnSync } from "node:child_process";
 import { parse as parseYaml } from "yaml";
 
 const root = process.cwd();
@@ -145,13 +146,44 @@ if (!opencodeRoot) {
   }
 
   if (externalExists(opencodeRoot.live_config)) {
-    const live = JSON.parse(fs.readFileSync(opencodeRoot.live_config, "utf8"));
+    const liveRaw = fs.readFileSync(opencodeRoot.live_config, "utf8");
+    const live = JSON.parse(liveRaw);
+    if (/"mcpServers"\s*:/.test(liveRaw)) {
+      errors.push("live opencode config contains forbidden legacy mcpServers key; use mcp");
+    }
+    const topLevelMcpKeys = (liveRaw.match(/^  "mcp"\s*:/gm) ?? []).length;
+    assertEqual(topLevelMcpKeys, 1, "live opencode top-level mcp key count");
     assertEqual(live.model, opencodeRoot.model, "live opencode model");
     assertEqual(live.small_model, opencodeRoot.small_model, "live opencode small_model");
     const liveMcp = Object.keys(live.mcp ?? {}).sort();
     const rootMcp = [...(opencodeRoot.mcp_servers ?? [])].sort();
     if (JSON.stringify(liveMcp) !== JSON.stringify(rootMcp)) {
       errors.push(`live opencode mcp roster mismatch: expected ${rootMcp.join(",")}, got ${liveMcp.join(",")}`);
+    }
+
+    assertEqual(
+      opencodeToolbench.live_snapshot?.mcp_registered,
+      liveMcp.length,
+      "opencode toolbench live MCP count",
+    );
+    assertEqual(
+      opencodeToolbench.live_snapshot?.agents,
+      Object.keys(live.agent ?? {}).length,
+      "opencode toolbench live agent count",
+    );
+
+    if (externalExists(opencodeRoot.binary)) {
+      const versionProbe = spawnSync(opencodeRoot.binary, ["--version"], {
+        encoding: "utf8",
+        timeout: 10_000,
+      });
+      if (versionProbe.status !== 0) {
+        errors.push(`live opencode version probe failed: ${versionProbe.stderr.trim()}`);
+      } else {
+        assertEqual(versionProbe.stdout.trim(), opencodeRoot.version, "live opencode binary version");
+      }
+    } else {
+      errors.push(`live opencode binary missing: ${opencodeRoot.binary}`);
     }
   } else {
     warnings.push(`opencode live config not present at ${opencodeRoot.live_config}; skipped local runtime check`);
