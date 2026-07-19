@@ -74,10 +74,10 @@
 | SEP-2127 | 2/5 | WEALTH, WELL, HERMES | 🟠 MEDIUM |
 | Well-Known | 5/7 | A-FORGE (partial), HERMES | 🟡 LOW |
 | NATS | 3/3 | 0 | ✅ FULL |
-| CloudEvents | 0/3 | arifOS, AAA, A-FORGE | 🔴 HIGH |
+| CloudEvents | 1/3 | arifOS ✅, AAA (NATS wire), A-FORGE (consumer) | 🟡 MEDIUM |
 | DID:WEB | 1/5 | arifOS, AAA, GEOX, others | 🟡 LOW |
 | OpenTelemetry | 1/5 | AAA only (Prometheus/Grafana) | 🟠 MEDIUM |
-| SLSA + Sigstore | 0/4 | All repos | 🔴 HIGH |
+| SLSA + Sigstore | 1/4 | arifOS ✅ (provenance module), all repos (CI wiring) | 🟡 MEDIUM |
 | gRPC | Infra only | Not required at app layer | 🟢 N/A |
 
 ---
@@ -86,8 +86,8 @@
 
 | Priority | Protocol | Action |
 |----------|----------|--------|
-| 🔴 P0 | CloudEvents | Wire event envelope for inter-organ propagation (arifOS→NATS→AAA) |
-| 🔴 P0 | SLSA + Sigstore | Add provenance generation to all CI pipelines |
+| 🔴 P0 | CloudEvents | ✅ Module built (arifOS). Wire NATS publisher in AAA + consumer in A-FORGE |
+| 🔴 P0 | SLSA + Sigstore | ✅ Module built (arifOS). Add provenance generation to CI pipelines |
 | 🟠 P1 | A2A Agent Cards | Complete A-FORGE agent card schemas per A2A spec |
 | 🟠 P1 | SEP-2127 | Add server cards to WEALTH, WELL, HERMES |
 | 🟠 P1 | OpenTelemetry | Wire OTel SDK into arifOS + A-FORGE (traces + metrics) |
