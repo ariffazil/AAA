@@ -1,189 +1,127 @@
-# 🌱 NEXT AGENT INIT — arifOS Federation · 2026.07.19
+# 🌱 NEXT_AGENT_INIT — 2026-07-20 00:00 MYT
 
-> **Handoff from:** FORGE (000Ω) · Session: FORGE-SESSION-20260719-22H · DeepSeek V4 Pro
-> **To:** Next autonomous agent (OpenCode, Claude Code, or Copilot CLI)
-> **Doctrine:** DITEMPA BUKAN DIBERI
-> **Status:** SEALED — 13 commits pushed · 4 WAJIB remaining · Audit scorecard: ~65/100
+> **DITEMPA BUKAN DIBERI — Forged, Not Given.**
+> **Handoff from:** Copilot CLI (deepseek-v4-pro) · Session 2026-07-19T23:29Z
+> **To:** Next agent (any harness)
+> **Federation state:** GREEN · 6/6 alive · 0 broken symlinks · all clean + pushed
 
 ---
 
-## 0. BOOTSTRAP (mandatory, blocking)
+## SESSION SUMMARY (what just happened)
+
+### Morning Brief Response
+- 109 broken symlinks → purged to 0
+- Gitwrap: all 6 organs audited, dirty repos committed, pushed to main
+- AAA: committed deprecation registry update + Copilot CLI audit
+- WELL: committed ring metadata fix + WebMCP adapter injection (×2)
+- GEOX: `.git` symlink restored (`/root/geox` → `/root/GEOX/.git`)
+- WELL push blocked twice — needed `REPO=WELL` trailer in commit message
+
+### Vitality Injection
+- WELL: injected biometrics (sleep 6.5h, clarity 0.75, fatigue 0.3, stress 0.4)
+- Score: 9.45 → CAUTION (telemetry_status=unknown caps readiness)
+- Root cause: watchdog cron not populating `state.json`
+
+### F-004 Vault999 Gap Resolution
+- Canonicalizer reverse-engineered from `arifSeal.ts:94-110`
+- Documented at `/root/arifOS/docs/CANONICALIZER-VAULT999-2026-07-19.md`
+- 10 gaps: 1 historic scar (sealed), 9 canonicalizer-doc false positives
+- Chain integrity verified across all 28 shell-ledger records
+
+### Vault999 Seal
+- Session seal appended to VAULT999 (seq=3, outcomes.jsonl)
+- Daily memory written to `/root/memory/2026-07-19.md`
+
+---
+
+## SKILLS NEEDING UPGRADE
+
+| Skill | Issue | Priority |
+|-------|-------|----------|
+| **ASI-session-seal** | Should handle direct vault append without F13 elicitation for T1 seals | MEDIUM |
+| **FORGE-vault999-witness** | Must use documented canonicalizer, not naive sort_keys | HIGH |
+| **AUDIT-drift-detector** | Should detect runtime-injected files (WELL index.html pattern) | MEDIUM |
+| **FORGE-verify-runtime** | Should scan for broken symlinks | LOW |
+| **FORGE-ci-diagnose** | Should detect `REPO=` trailer enforcement in pre-push hooks | LOW |
+| **ASI-context-window-mgr** | Should auto-compress after multi-phase sessions | LOW |
+
+### New Skills Needed
+| Skill | Purpose |
+|-------|---------|
+| **FORGE-symlink-audit** | Scan + report broken symlinks across federation |
+| **FORGE-telemetry-watchdog** | Monitor WELL/WEALTH/GEOX telemetry freshness |
+
+---
+
+## REMAINING TASKS (for future agents)
+
+### HIGH — F-004 Vault999
+- [ ] **R2**: Patch `forge_shell_ledger(verify_chain=true)` to use canonicalizer
+- [ ] **R3**: Write scar VAULT999 record for seq 13-18 race
+- [ ] **R4**: Document `gateway_receipts.jsonl` boundary vs vault chain
+- [ ] **R5**: Rename `vault999_chain.jsonl.test-backup` → test fixture
+
+### MEDIUM — WELL Telemetry
+- [ ] Fix watchdog cron (`12c515badfb7` — 8am/8pm MYT) to populate `state.json`
+- [ ] Verify biometric freshness after cron runs
+- [ ] Re-assess vitality after telemetry restored
+
+### MEDIUM — WAJIB Sprint
+- [ ] WAJIB 6: WELL session-aware bridge
+- [ ] WAJIB 8: context_manifest loader enforcement
+- [ ] WAJIB 2-8 ratification packet (single F13 document)
+
+### LOW — Zone 6 Cleanup
+- [ ] D-01, D-04, D-07: Zone 6 deletions
+- [ ] 8-tool canon: arif_critique/arif_measure fold-vs-keep decision
+- [ ] 9 conformance integration tests (need kernel session context)
+- [ ] Observatory semantic layer audit
+
+### LOW — Hygiene
+- [ ] Archive/canonize 34 forge_work artifacts from 2026-07-19
+- [ ] AAA full `validate:aaa` — 9 pre-existing root-canon/A2A-card parity errors
+- [ ] AAA lint — 3 pre-existing `src/gateway/server.ts` errors
+
+---
+
+## FEDERATION STATE
 
 ```
-1. LOAD /root/AGENTS.md → /root/AAA/prompts/INIT.md
-2. RUN: for s in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; do
-     n="${s%%:*}"; p="${s##*:}"
-     curl -sf "http://localhost:$p/health" >/dev/null 2>&1 && echo "✅ $n" || echo "❌ $n"
-   done
-3. cat /root/CONTEXT.md | tail -60
-4. READ THIS FILE completely before acting
-5. LOAD /root/A-FORGE/forge_work/2026-07-19/eureka-synthesis/ if it exists
+✅ arifOS    :8088  · 364cc912f (canonicalizer doc)
+✅ A-FORGE   :7071  · b3e3bc5 (WAJIB-2 forge_verify)
+✅ AAA       :3001  · 1b86103 (deprecation + audit)
+✅ GEOX      :8081  · c70ea29a (GEOX path fix)
+✅ WEALTH    :18082 · 8757fa0 (identity.toml)
+✅ WELL      :18083 · 227cd3b (WebMCP adapter)
+```
+
+| Metric | Value |
+|--------|-------|
+| Broken symlinks | 0 |
+| Dirty repos | 0 |
+| Unpushed commits | 0 |
+| Organs alive | 6/6 |
+| Vault999 seals | 3 (latest: copilot-cli session seal) |
+| WELL vitality | 9.45 (CAUTION/telemetry-unknown) |
+| Disk | 43% |
+| Memory | 14Gi available |
+
+---
+
+## BOOT SEQUENCE
+
+```bash
+set -a && source /root/.secrets/vault.env && set +a
+cat /root/AGENTS.md | head -50
+cat /root/CONTEXT.md | tail -100
+for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; do
+  name="${svc%%:*}"; port="${svc##*:}"
+  curl -sf "http://localhost:$port/health" >/dev/null 2>&1 && echo "✅ $name" || echo "❌ $name"
+done
+find /root -maxdepth 5 -xtype l 2>/dev/null | wc -l  # should be 0
 ```
 
 ---
 
-## 1. SESSION STATE — What Was Done (FORGE SESSION)
-
-### SCT/J2 Transport Fix (CRITICAL)
-- `fea43bc` · Mcp-Session-Id header propagation in callMCP()
-- Verified live: forged session REJECTED, missing session REJECTED, legit session ACCEPTED
-- Root cause: A-FORGE→arifOS proxy calls arrived ::anonymous without session header
-
-### Kernel State Normalization (WAJIB-2)
-- `787d42a` · effective_authority field added to all derive_canonical_from_authority() paths
-- Resolved contradiction: OBSERVE_ONLY vs LIMITED_MUTATE vs actor_verified all now derive from single truth
-
-### F-004 Canonicalizer Verified
-- 9 canonical entries (post F004-CANONICAL-2026-07-17): all clean, hash-verified
-- 65 historical gaps classified (HISTORICAL_LINK_GAP: 11, HISTORICAL_CORRUPT_LINE: 25, HISTORICAL_MISSING_FIELDS: 28, EPOCH_RESET: 1)
-- No historical records rewritten (F1 AMANAH)
-
-### GEOX did:web Deployed
-- identity.toml deployed → /root/GEOX/identity.toml
-- Service restarted, fingerprint: geox-d9f25680, 24 tools healthy
-
-### Security Hardening (P0-1 through P0-9)
-- `55841c6` · verifiedSessions map replaces global activeActor
-- P0-2: OBSERVE_ONLY actors blocked from MUTATE tools
-- P0-3: AAE signature mandatory when envelope present
-- P0-6: Unknown tools → HOLD via policy gate interception
-- P0-7: ChatGPT channel hard-denied vault/shell/infra tools
-- P0-8: WELL bridge 60s failure cooldown (stops journal spam)
-
-### Conformance Suite (WAJIB-3)
-- `b702a75` · 5 live tests passing, 13 xfail (strict, infrastructure pending)
-- Structure: test/conformance/{kernel,delegation,execution,verification,memory,organs,deferred}/
-
-### Context7 MCP
-- Installed and configured at `/usr/local/bin/context7-mcp`
-- API key in vault: `CONTEXT7_API_KEY`
-- Verified working: resolve-library-id → fastmcp (5 results, 25K+ snippets)
-
-### Skill Mesh
-- `missing_or_drift=0 broken=0` — 192 ok, all clean
-
----
-
-## 2. REMAINING WAJIB (4 critical + supporting)
-
-| # | Task | Priority | Blocked By | Notes |
-|---|------|----------|------------|-------|
-| **WAJIB-1** | F13 hardware binding (passkey/FIDO2) | 🔴 CRITICAL | Arif's physical token + AAA cockpit integration | Root item. "buat ja la" is a replayable string. |
-| **WAJIB-4** | Delegation attenuation envelope | 🔴 CRITICAL | Schema approval from Arif | child_authority ⊆ parent_authority. Needs signed delegation envelope. |
-| **WAJIB-5** | Deferred re-auth at fire time | 🔴 HIGH | WAJIB-4 infrastructure | Cron/jobs/queues must re-judge at execution time. |
-| **WAJIB-6** | WELL session-aware bridge | 🟡 HIGH | arifOS kernel restart | Current cooldown suppresses spam. Real fix: session init + propagation. |
-| **WAJIB-7** | Organ disagreement doctrine | 🟡 HIGH | Arif's architectural decision | Constraint-first: GEOX/WEALTH/WELL veto precedence needs ruling. |
-| **WAJIB-8** | Context capture governance | 🟡 MEDIUM | Boot-doc seal infra | Agent-authored INIT files need provenance class + approval. |
-| **WAJIB-9** | RSI calibration | 🟡 MEDIUM | 30 reviewed records | Currently dormant (correct — <30 records). |
-| **WAJIB-10** | End-to-end signed canary | 🟡 MEDIUM | WAJIB-4, WAJIB-5 | Full federation receipt: init→observe→route→judge→lease→mutate→verify→seal→rollback. |
-
----
-
-## 3. FEDERATION HEALTH (T₁: 2026-07-19 22:25 UTC)
-
-```
-✅ arifOS     :8088   healthy (verdict: HOLD, 13 floors, effective_authority field live)
-✅ A-FORGE    :7071   healthy (111 tools classified, SCT propagation active)
-✅ A-FORGE MCP :7072  healthy (Mcp-Session-Id propagation verified)
-✅ GEOX       :8081   healthy (geox-d9f25680, 24 tools, did:web identity deployed)
-✅ WEALTH     :18082  healthy (20 tools, SCT gate enforced)
-⚠️  WELL      :18083  degraded (REFLECT_ONLY, bridge cooldown active)
-✅ AAA        :3001   A2A gateway healthy
-```
-
----
-
-## 4. IDENTITY MODEL — Current State (binding)
-
-```
-effective_authority: "OBSERVE_ONLY" | "LIMITED_MUTATE" | "FULL" | "SOVEREIGN"
-                   ↑ single canonical field (WAJIB-2 deployed)
-
-Principal.source: "verified_session" | "client_supplied" | "transport_fallback"
-Principal.authority: "OBSERVE_ONLY" | "LIMITED_MUTATE" | "FULL"
-Principal.authenticated: boolean
-
-Provenance rules (P0-1):
-  verified_session  → FULL (via registerVerifiedSession)
-  client_supplied   → OBSERVE_ONLY (never auto-elevated)
-  transport_fallback → OBSERVE_ONLY (stateless-client)
-  "anonymous" / "stateless-client" explicitly supplied → DENIED
-```
-
----
-
-## 5. KEY POINTERS
-
-| What | Path |
-|------|------|
-| **THIS FILE** | `/root/AAA/prompts/NEXT_AGENT_INIT.md` |
-| Conformance suite | `/root/A-FORGE/test/conformance/` (5 live + 13 xfail) |
-| Conformance index | `/root/A-FORGE/test/conformance/CONFORMANCE.md` |
-| SCT transport fix | `/root/A-FORGE/src/interfaces/mcp/client.ts` (setArifOsSession) |
-| Kernel authority | `/root/arifOS/arifosmcp/runtime/authority.py` (effective_authority) |
-| Canonicalizer | `/opt/arifos/app/arifosmcp/runtime/canonical_vault_chain.py` |
-| J2 root cause | `/root/A-FORGE/forge_work/2026-07-19/J2-ROOT-CAUSE-20260719.md` |
-| Task reconciliation | `/root/A-FORGE/forge_work/2026-07-19/task-reconciliation-20260719.md` |
-| Registry receipt | `/root/A-FORGE/forge_work/2026-07-19/registry-receipt-v1.json` |
-| Seal chain | `/root/.local/share/arifos/vault999/seal_chain.jsonl` (215 records) |
-| Auditors scorecard | 58/100 → ~65/100 after this session's fixes |
-| Context7 config | `/root/.config/opencode/opencode.json` (env: CONTEXT7_API_KEY) |
-| Deprecation registry | `/root/AAA/docs/deprecation-registry.json` |
-| Skill mesh | 192 ok, 0 missing, 0 drift |
-
----
-
-## 6. SOVEREIGN SIGNALS (immediate ACT)
-
-"buat ja la" · "jalan terus" · "just do it" · "ok" · "next" · "Yes confirm" · "execute X" · "I'm the Architect"
-
----
-
-**FORGED 2026-07-19 · DITEMPA BUKAN DIBERI · SEALED**
-
----
-
-## 7. WAJIB ROADMAP (ARIFOS-READINESS-2026-07-20 → 58/100)
-
-The 11 WAJIB actions from the L2/L3 readiness audit. Skill upgrades T1-done in session 2026-07-19; implementation still pending.
-
-### Tier & Status
-
-| # | WAJIB | Tier | Status |
-|---|---|---|---|
-| 0 | Freeze expansion | T1 | POSTURE ADOPTED |
-| 1 | Negative conformance suite | T1 | PARTIAL — 4 of 18 tests (PolicyGate) |
-| 2 | Independent verification lane | T3 | NOT STARTED |
-| 3 | Normalize kernel state | T3 | NOT STARTED |
-| 4 | Delegation attenuation | T3 | PROTOCOL DOCUMENTED (asi_presence_open) |
-| 5 | Fire-time reauth | T3 | PROTOCOL DOCUMENTED (FORGE-incident-triage) |
-| 6 | WELL session bridge | T2 | NOT STARTED |
-| 7 | Organ disagreement doctrine | T3 | PROTOCOL DOCUMENTED (FORGE-incident-triage) |
-| 8 | Context-capture governance | T2 | PROTOCOL DOCUMENTED (FORGE-cross-agent-handoff) |
-| 9 | RSI calibration | T1 (slow) | NOT STARTED — needs ≥30 reviewed records |
-| 10 | End-to-end signed canary | T3 | NOT STARTED — gated by all prior |
-
-### Skills upgraded this session (2026-07-19)
-
-- `FORGE-precommit-review` ← WAJIB 1 (negative conformance + xfail discipline)
-- `asi_presence_open` ← WAJIB 4 (delegation envelope + child_authority ⊆ parent_authority)
-- `AUDIT-recursive-audit` ← WAJIB 2 (independent verification lane protocol)
-- `FORGE-incident-triage` ← WAJIB 5 (fire-time reauth) + WAJIB 7 (organ disagreement)
-- `FORGE-cross-agent-handoff` ← WAJIB 8 (context_manifest + class taxonomy)
-
-### Key artifacts for next session
-
-- Session seal: `/root/forge_work/2026-07-19/SESSION-SEAL-kimi-code-FI-008-20260719.md`
-- Memory: `/root/memory/2026-07-19.md` (188 lines, full session trace)
-- Registry v1.1: `/root/A-FORGE/forge_work/2026-07-19/registry-receipt-v1.1.json`
-- 5 test suites, 71 tests passing: `dist/test/{PolicyGateIdentity,ChatGPTChannelPolicy,AAESignatureRequired,SCTCryptoVerify,VerifiedSessionsOnly}.test.js`
-
-### Recommended next-move priority
-
-1. **T1**: Add 14 missing must-never-happen tests as `xfail(strict=true)` (conformance/discipline)
-2. **T1**: F-004 R1 — reverse-engineer VAULT999 JSON canonicalizer from `/opt/arifOS/app/core/seal_chain.py`
-3. **T1**: F-005 sovereign deploy — patch `/opt/geox/app/identity.toml` to mirror source `[did_web]`
-4. **T2**: WAJIB 6 WELL session-aware bridge (degraded organ, session-incomplete per audit)
-5. **T3**: Single ratification packet covering WAJIBs 2, 3, 4, 5, 7, 10 (kernel contract + cryptographic primitives)
-
-**Next agent: pick up WAJIB-1 (if Arif present) or WAJIB-4 (delegation envelope)**
+**DITEMPA BUKAN DIBERI ⚒️**
+*Handoff sealed by Copilot CLI · 2026-07-19T23:42Z*
