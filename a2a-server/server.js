@@ -4236,7 +4236,12 @@ app.listen(PORT, "127.0.0.1", async () => {
   setTimeout(async () => {
     try {
       const result = await autoRegisterOrgans(PORT);
-      console.log(`[AAA A2A] Federation bootstrap: ${result.registered}/${result.total} organs online`);
+      console.log(
+        `[AAA A2A] Federation bootstrap: organs ` +
+        `${result.organs.registered + result.organs.existing}/${result.organs.total}; ` +
+        `agents ${result.agents.registered + result.agents.existing}/${result.agents.total}; ` +
+        `ok=${result.ok}`,
+      );
     } catch (e) {
       console.warn('[AAA A2A] Auto-registration failed:', e.message);
     }
