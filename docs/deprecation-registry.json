@@ -1,7 +1,7 @@
 {
   "version": "2026.07.19",
-  "last_audit": "2026-07-19T21:50:00Z",
-  "auditor": "Copilot CLI (deepseek-v4-pro)",
+  "last_audit": "2026-07-19T23:30:00Z",
+  "auditor": "Copilot CLI (deepseek-v4-pro) — AAA Alignment Audit",
   "deprecated": [],
   "quarantined": [],
   "replaced": {
@@ -9,7 +9,8 @@
     "activeActor (process-global)": "verifiedSessions Map (per-request) — P0.1 fix pending",
     "default:sovereign (for unverified)": "default:observe-deny — P0.2 fix pending",
     "LCL-* lease fallback": "HOLD when kernel unreachable — P0.6 fix pending",
-    "SEAL-* (format-only trust)": "cryptographic SCT verification — P0.5 fix pending"
+    "SEAL-* (format-only trust)": "cryptographic SCT verification — P0.5 fix pending",
+    "AGENT_KICKSTART.md": "Deprecated 2026-07-19 — absorbed into copilot-instructions.md AUTOPILOT baseline"
   },
   "known_issues": {
     "a-forge-mcp-transport-timeout": "Copilot CLI tools/call times out on :7071/mcp. :7072 stateless works.",
@@ -17,8 +18,17 @@
     "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol"
   },
   "active_skills": {
-    "project": 0,
-    "aaa": 406,
-    "missing_yaml_frontmatter": 0
+    "aaa_library": 406,
+    "zen99_target": 99,
+    "status": "AAA library skills (406) are the full governed catalog — not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
+  },
+  "copilot_cli_audit": {
+    "mcp_servers": 15,
+    "custom_agents": 2,
+    "permissions": "FULL (no deny list)",
+    "autopilot": "ON",
+    "hitl": "OFF for digital MUBAH",
+    "organs_healthy": true,
+    "configs_aligned": ["settings.json", "mcp-config.json", "permissions-config.json", "copilot-instructions.md", "lsp-config.json"]
   }
 }
