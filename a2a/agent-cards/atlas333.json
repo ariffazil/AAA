@@ -1,14 +1,14 @@
 {
   "id": "atlas333",
   "name": "ATLAS333 — Cognitive Geometry Agent",
-  "description": "Maintains the 33-paradox constitutional map. Routes query geometry (territory × depth × paradox axis) to the correct organ. Ensures every agent knows WHERE it is before it acts.",
+  "description": "Maintains the 35-paradox constitutional map (33 canonical + 2 active contours: P34 Root Outruns Kernel, P35 Positive≠Closed). Routes query geometry (territory × depth × paradox axis) to the correct organ. Ensures every agent knows WHERE it is before it acts. Active gate: mandatory architectural constraint per MIRROR (2026) — external scaffolding, not passive self-knowledge.",
   "url": "arifos://agents/skills/atlas333",
   "provider": {
     "organization": "arifOS",
     "system": "AAA",
     "runtime": "any"
   },
-  "version": "1.0.0",
+  "version": "2.0.0",
   "protocol_version": "1.0.0",
   "preferred_transport": "jsonrpc-https",
   "capabilities": {
@@ -57,7 +57,7 @@
     {
       "id": "atlas333-resolve",
       "name": "Paradox Axis Resolution",
-      "description": "Given a GPV or paradox axis IDs, return the matching philosophical quotes, triggered floors, and zone activations from the 33-paradox map.",
+      "description": "Given a GPV or paradox axis IDs, return the matching philosophical quotes, triggered floors, and zone activations from the 35-paradox map (1-35).",
       "tags": ["paradox", "quotes", "resolution", "trigger"],
       "examples": [
         "Which quotes fire for paradox #1?",
