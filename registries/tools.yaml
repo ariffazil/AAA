@@ -31,7 +31,8 @@ tools:
   - HUMAN
 - id: agent-dispatch
   name: Agent Dispatch
-  description: Dispatch a bounded task to an approved internal or authenticated peer agent.
+  description: Dispatch a bounded task to an approved internal or authenticated peer
+    agent.
   source_type: builtin
   risk_tier: medium
   approval_policy: hold
@@ -446,7 +447,7 @@ tools:
   required_witnesses: []
 - id: list_memories
   name: List Memories (Serena)
-  description: List Serena memory entries (no-memories mode — returns empty).
+  description: "List Serena memory entries (no-memories mode \u2014 returns empty)."
   source_type: mcp
   server_ref: serena
   risk_tier: low
@@ -455,7 +456,7 @@ tools:
   required_witnesses: []
 - id: read_memory
   name: Read Memory (Serena)
-  description: Read a Serena memory entry (no-memories mode — blocked).
+  description: "Read a Serena memory entry (no-memories mode \u2014 blocked)."
   source_type: mcp
   server_ref: serena
   risk_tier: low
@@ -473,7 +474,7 @@ tools:
   required_witnesses: []
 - id: onboarding
   name: Onboarding (Serena)
-  description: Serena onboarding tool — provides usage guidance.
+  description: "Serena onboarding tool \u2014 provides usage guidance."
   source_type: mcp
   server_ref: serena
   risk_tier: low
@@ -500,8 +501,8 @@ tools:
   required_witnesses: []
 - id: forge_execute
   name: forge_execute
-  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an action plan. Requires
-    cc_id for mutations.
+  description: Execution and motor cortex (Stage 777 FORGE). Use this to execute an
+    action plan. Requires cc_id for mutations.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -511,7 +512,8 @@ tools:
   - ARIFOS
 - id: forge_abort
   name: forge_abort
-  description: Safe stop + rollback for running execution. Requires lease or session auth.
+  description: Safe stop + rollback for running execution. Requires lease or session
+    auth.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -539,7 +541,7 @@ tools:
   required_witnesses: []
 - id: forge_check_governance
   name: forge_check_governance
-  description: Constitutional governance check — delegates to arifOS.
+  description: "Constitutional governance check \u2014 delegates to arifOS."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -559,7 +561,7 @@ tools:
   - ARIFOS
 - id: forge_approve
   name: forge_approve
-  description: 888_HOLD approval handler — routes to arifOS for adjudication.
+  description: "888_HOLD approval handler \u2014 routes to arifOS for adjudication."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -569,7 +571,8 @@ tools:
   - ARIFOS
 - id: forge_heart_critique
   name: forge_heart_critique
-  description: Risk assessment and ethical review — delegates to arifOS 666 HEART pipeline.
+  description: "Risk assessment and ethical review \u2014 delegates to arifOS 666\
+    \ HEART pipeline."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -607,7 +610,8 @@ tools:
   required_witnesses: []
 - id: forge_registry_status
   name: forge_registry_status
-  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift status.'
+  description: 'Full A-FORGE tool registry: callable, blocked, degraded, and drift
+    status.'
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -616,7 +620,8 @@ tools:
   required_witnesses: []
 - id: forge_register
   name: forge_register
-  description: APEX v36Ω gated registration gate. Registers a tool after all gates pass.
+  description: "APEX v36\u03A9 gated registration gate. Registers a tool after all\
+    \ gates pass."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -626,7 +631,8 @@ tools:
   - ARIFOS
 - id: forge_skill
   name: forge_skill
-  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM scan.
+  description: Dynamic tool forge. Generates a new MCP tool via LLM, gated by HARAM
+    scan.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -636,7 +642,8 @@ tools:
   - ARIFOS
 - id: forge_evaluate
   name: forge_evaluate
-  description: APEX v36Ω evaluation gate. Computes G = A·P·E·X·Φ and C_dark.
+  description: "APEX v36\u03A9 evaluation gate. Computes G = A\xB7P\xB7E\xB7X\xB7\u03A6\
+    \ and C_dark."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: medium
@@ -645,7 +652,8 @@ tools:
   required_witnesses: []
 - id: forge_witness
   name: forge_witness
-  description: APEX v36Ω tri-witness consensus gate. Computes W3 = ∛(Human × AI × External).
+  description: "APEX v36\u03A9 tri-witness consensus gate. Computes W3 = \u221B(Human\
+    \ \xD7 AI \xD7 External)."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: medium
@@ -654,7 +662,8 @@ tools:
   required_witnesses: []
 - id: forge_scar
   name: forge_scar
-  description: APEX v36Ω scar metabolization gate. Seals failures as permanent constitutional constraints.
+  description: "APEX v36\u03A9 scar metabolization gate. Seals failures as permanent\
+    \ constitutional constraints."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -692,7 +701,8 @@ tools:
   required_witnesses: []
 - id: forge_reality_loop
   name: forge_reality_loop
-  description: THE 13TH TOOL — Chains all 12 MCP prompts into a perpetual autonomous reality loop.
+  description: "THE 13TH TOOL \u2014 Chains all 12 MCP prompts into a perpetual autonomous\
+    \ reality loop."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -702,8 +712,8 @@ tools:
   - ARIFOS
 - id: forge_shell
   name: forge_shell
-  description: Canonical governed shell execution. Executes commands through constitutional gate + hash-chain
-    audit.
+  description: Canonical governed shell execution. Executes commands through constitutional
+    gate + hash-chain audit.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -722,7 +732,8 @@ tools:
   required_witnesses: []
 - id: forge_shell_status
   name: forge_shell_status
-  description: 'Check forge_shell subsystem health: ledger state, judge pattern count, defaults.'
+  description: 'Check forge_shell subsystem health: ledger state, judge pattern count,
+    defaults.'
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -903,7 +914,7 @@ tools:
   required_witnesses: []
 - id: forge_github_create_issue
   name: forge_github_create_issue
-  description: Create a GitHub issue. MUTATE — lease required.
+  description: "Create a GitHub issue. MUTATE \u2014 lease required."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -913,7 +924,7 @@ tools:
   - ARIFOS
 - id: forge_github_create_pull_request
   name: forge_github_create_pull_request
-  description: Create a GitHub pull request. MUTATE — lease required.
+  description: "Create a GitHub pull request. MUTATE \u2014 lease required."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -923,7 +934,7 @@ tools:
   - ARIFOS
 - id: forge_github_create_or_update_file
   name: forge_github_create_or_update_file
-  description: Create or update a file on GitHub. MUTATE — lease required.
+  description: "Create or update a file on GitHub. MUTATE \u2014 lease required."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -1023,7 +1034,8 @@ tools:
   required_witnesses: []
 - id: forge_pipeline_run
   name: forge_pipeline_run
-  description: Autonomous intelligence pipeline. Routes organs, evidence→compute→judge+seal.
+  description: "Autonomous intelligence pipeline. Routes organs, evidence\u2192compute\u2192\
+    judge+seal."
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: high
@@ -1117,10 +1129,11 @@ tools:
   required_witnesses: []
 - id: document_ingest
   name: document_ingest
-  description: Layout-first document intelligence engine. Modes - analyze (structure tree), extract (full
-    pipeline with bbox provenance), chunk (semantic/section/page for RAG), compare (structural diff).
-    Uses pymupdf + tesseract eng+msa. Read-only, blast_radius LOW. SHA-256 provenance on every extraction.
-    VAULT999-compatible bounding-box coordinates.
+  description: Layout-first document intelligence engine. Modes - analyze (structure
+    tree), extract (full pipeline with bbox provenance), chunk (semantic/section/page
+    for RAG), compare (structural diff). Uses pymupdf + tesseract eng+msa. Read-only,
+    blast_radius LOW. SHA-256 provenance on every extraction. VAULT999-compatible
+    bounding-box coordinates.
   source_type: mcp
   server_ref: a-forge-mcp
   risk_tier: low
@@ -1168,7 +1181,8 @@ tools:
   required_witnesses: []
 - id: forge-filesystem-write
   name: Forge Filesystem Write
-  description: Bounded sandbox-only filesystem write through A-FORGE. Sandbox paths only.
+  description: Bounded sandbox-only filesystem write through A-FORGE. Sandbox paths
+    only.
   source_type: mcp
   server_ref: aforge-executor
   risk_tier: medium
@@ -1178,7 +1192,7 @@ tools:
   - ARIFOS
 - id: forge-shell-dryrun
   name: Forge Shell Dry-Run
-  description: Dry-run shell command execution — prints plan without executing.
+  description: "Dry-run shell command execution \u2014 prints plan without executing."
   source_type: mcp
   server_ref: aforge-executor
   risk_tier: low
@@ -1599,12 +1613,12 @@ tools:
   - GEOX
 - id: geox_well_ingest
   name: geox_well_ingest
-  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  description: Live MCP tool from geox — LAS well log ingestion, QC, curve standardization.
   source_type: mcp
   server_ref: geox-mcp
-  risk_tier: medium
-  approval_policy: hold
-  execution_kind: execute
+  risk_tier: low
+  approval_policy: auto
+  execution_kind: read
   required_witnesses:
   - GEOX
 - id: geox_surface_status
@@ -1619,12 +1633,12 @@ tools:
   - GEOX
 - id: geox_seismic_ingest
   name: geox_seismic_ingest
-  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  description: Live MCP tool from geox — SEG-Y I/O, header inspection, export (auto-registered 2026-07-17 SCT papers).
   source_type: mcp
   server_ref: geox-mcp
-  risk_tier: medium
-  approval_policy: hold
-  execution_kind: execute
+  risk_tier: low
+  approval_policy: auto
+  execution_kind: read
   required_witnesses:
   - GEOX
 - id: geox_seismic_interpret
@@ -1689,12 +1703,13 @@ tools:
   - GEOX
 - id: geox_falsify
   name: geox_falsify
-  description: Live MCP tool from geox (auto-registered 2026-07-17 SCT papers).
+  description: "Popperian falsification engine \u2014 read-only compute, no host mutation.\
+    \ Kill Matrix K001-K007 + contradiction scan."
   source_type: mcp
   server_ref: geox-mcp
-  risk_tier: medium
-  approval_policy: hold
-  execution_kind: execute
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
   required_witnesses:
   - GEOX
 - id: geox_contradiction_scan
@@ -2359,7 +2374,140 @@ tools:
   execution_kind: execute
   required_witnesses:
   - A-FORGE
+- id: geox_map_layers_list
+  name: geox_map_layers_list
+  description: "Phase 2 promotion \u2014 GEOX map tool (layer registry). Read-only\
+    \ compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_map_scene_plan
+  name: geox_map_scene_plan
+  description: "Phase 2 promotion \u2014 GEOX map tool (scene planning). Read-only\
+    \ compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_map_render_preview
+  name: geox_map_render_preview
+  description: "Phase 2 promotion \u2014 GEOX map tool (preview render). Read-only\
+    \ compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_map_export_package
+  name: geox_map_export_package
+  description: "Phase 2 promotion \u2014 GEOX map tool (governed export with provenance).\
+    \ Read-only compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_tie_preflight
+  name: geox_tie_preflight
+  description: "Phase 2 promotion \u2014 GEOX seismic tool (well tie preflight validation).\
+    \ Read-only compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_tie_receipt
+  name: geox_tie_receipt
+  description: "Phase 2 promotion \u2014 GEOX seismic tool (well tie receipt). Read-only\
+    \ compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_wavelet_extract_least_squares
+  name: geox_wavelet_extract_least_squares
+  description: "Phase 2 promotion \u2014 GEOX seismic tool (wavelet extraction). Read-only\
+    \ compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_seismic_cognition
+  name: geox_seismic_cognition
+  description: "Phase 2 promotion \u2014 GEOX seismic tool (AI-assisted interpretation).\
+    \ Read-only compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_visual_understand
+  name: geox_visual_understand
+  description: "Phase 2 promotion \u2014 GEOX vision tool (image understanding). Read-only\
+    \ compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_visual_generate_hypotheses
+  name: geox_visual_generate_hypotheses
+  description: "Phase 2 promotion \u2014 GEOX vision tool (hypothesis generation).\
+    \ Read-only compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_simulate_accommodation
+  name: geox_simulate_accommodation
+  description: "Phase 2 promotion \u2014 GEOX stratigraphy tool (accommodation simulation).\
+    \ Read-only compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
+- id: geox_simulate_sequences
+  name: geox_simulate_sequences
+  description: "Phase 2 promotion \u2014 GEOX stratigraphy tool (sequence simulation).\
+    \ Read-only compute, no host mutation."
+  source_type: mcp
+  server_ref: geox-mcp
+  risk_tier: low
+  approval_policy: auto_approve
+  execution_kind: observe
+  required_witnesses:
+  - GEOX
 meta:
   sct_papers_issued: '2026-07-17T17:01:23.124978+00:00'
   sct_papers_count_added: 89
-  sct_papers_note: Live MCP surface registered so SCT gate fail-closed has a guest list.
+  sct_papers_note: Live MCP surface registered so SCT gate fail-closed has a guest
+    list.

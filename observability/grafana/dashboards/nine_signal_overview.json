@@ -572,6 +572,207 @@
         "legend": { "displayMode": "table", "placement": "right", "showLegend": true },
         "tooltip": { "mode": "multi", "sort": "desc" }
       }
+    },
+    {
+      "id": 16,
+      "type": "row",
+      "collapsed": false,
+      "title": "Source-defined events (no data until event fires)",
+      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 44 },
+      "panels": []
+    },
+    {
+      "id": 17,
+      "type": "stat",
+      "title": "ATLAS333 tearframe (provenance=measured, silent until first completion)",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 45 },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "arifos_tearframe{provenance=\"measured\"}",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 4,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "dark-red",   "value": null },
+              { "color": "dark-orange", "value": 0.2 },
+              { "color": "green",       "value": 0.5 }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": { "match": "NaN", "result": { "text": "unavailable" } }
+            }
+          ],
+          "noValue": "unavailable"
+        }
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto"
+      }
+    },
+    {
+      "id": 18,
+      "type": "stat",
+      "title": "Tearframe placeholder violations (must remain 0)",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 6, "w": 8, "x": 8, "y": 45 },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "count(arifos_tearframe{provenance=\"placeholder\"})",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "green", "value": null },
+              { "color": "red",   "value": 1 }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": { "match": "NaN", "result": { "text": "unavailable" } }
+            }
+          ],
+          "noValue": "unavailable"
+        }
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto"
+      }
+    },
+    {
+      "id": 19,
+      "type": "stat",
+      "title": "Scar candidates (silent until vault999/scars/ write)",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 6, "w": 8, "x": 16, "y": 45 },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum(arifos_scar_candidates_total)",
+          "instant": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              { "color": "blue", "value": null }
+            ]
+          },
+          "mappings": [
+            {
+              "type": "special",
+              "options": { "match": "NaN", "result": { "text": "unavailable" } }
+            }
+          ],
+          "noValue": "unavailable"
+        }
+      },
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false },
+        "textMode": "value_and_name",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto"
+      }
+    },
+    {
+      "id": 20,
+      "type": "timeseries",
+      "title": "RASA shadow-telemetry events / sec (rate over 5m, silent pre-event)",
+      "description": "rate() returns no series until arifos_rasa_events_total has at least two samples. Until the first log_shadow() actually writes a JSONL entry, this panel is empty. That is the truthful no-data-until-event behaviour.",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 51 },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum by (enforcement_mode, enforced) (rate(arifos_rasa_events_total[5m]))",
+          "legendFormat": "{{enforcement_mode}} enforced={{enforced}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "fillOpacity": 10,
+            "spanNulls": false,
+            "showPoints": "auto"
+          }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      }
+    },
+    {
+      "id": 21,
+      "type": "timeseries",
+      "title": "Scar candidate rate (rate over 5m, silent pre-persistence)",
+      "description": "rate() returns no series until arifos_scar_candidates_total has at least two samples. Until paradox_gate fires a high-tension event AND the candidate JSON is durably written to vault999/scars/, this panel is empty.",
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 51 },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": { "type": "prometheus", "uid": "prometheus" },
+          "expr": "sum by (stage, severity) (rate(arifos_scar_candidates_total[5m]))",
+          "legendFormat": "{{stage}}/{{severity}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "custom": {
+            "drawStyle": "line",
+            "lineInterpolation": "linear",
+            "fillOpacity": 10,
+            "spanNulls": false,
+            "showPoints": "auto"
+          }
+        }
+      },
+      "options": {
+        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true },
+        "tooltip": { "mode": "multi", "sort": "desc" }
+      }
     }
   ]
 }
