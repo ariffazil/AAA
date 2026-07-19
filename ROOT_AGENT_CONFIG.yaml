@@ -151,7 +151,7 @@ forge_instruments:
   action_taxonomy: /root/.openclaw/workspace/bots/opencode-bot/action_taxonomy.py
   federation_mcp_surface:
     arifos: http://127.0.0.1:8088/mcp
-    aforge: http://127.0.0.1:7071/mcp
+    aforge: http://127.0.0.1:7072/mcp
     geox: http://127.0.0.1:8081/mcp
     wealth: http://127.0.0.1:18082/mcp
     well: http://127.0.0.1:18083/mcp
@@ -162,11 +162,11 @@ forge_instruments:
   live_config: /root/.config/opencode/opencode.json
   legacy_config: /root/.opencode/opencode.json
   legacy_status: retired_absent
-  binary: /usr/local/bin/opencode
+  binary: /root/.npm-global/bin/opencode
   resolved_binary: /root/.npm-global/bin/opencode
-  version: 3.1.0
-  model: deepseek/deepseek-v4-pro
-  small_model: opencode-go/deepseek-v4-flash-free
+  version: 1.18.3
+  model: opencode-go/mimo-v2.5-free
+  small_model: opencode-go/mimo-v2.5-free
   native_mcp: true
   mcp_count: 25
   mcp_servers:
@@ -176,7 +176,6 @@ forge_instruments:
   - chrome-devtools
   - cloudflare
   - context7
-  - docker
   - exa
   - fetch
   - geox
@@ -223,12 +222,17 @@ forge_instruments:
   - forge
   - auditor
   - ops
+  - planner
+  - recovery
+  - text-to-image
   autonomy:
     mode: governed_autonomous
     routine_mutations: allowed
     max_risk_without_hold: medium
     no_block_tools: true
     gate: arifOS F1-F13 + A-FORGE lease for consequential mutation
+    continuation_hook: /root/.config/opencode/plugins/aaa-autonomy.ts
+    loop_policy: todo-driven, max 12 continuations, /seal terminates
   verification:
     health_script: scripts/audit-opencode-state.sh
     root_validator: scripts/validate-root-agent-config.mjs
