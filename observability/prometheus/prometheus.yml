@@ -46,8 +46,10 @@ scrape_configs:
   #   arifos_m3_tokens_total, arifos_m3_calls_total,
   #   arifos_m3_fallback_total, arifos_multimodal_calls_total,
   #   arifos_merkle_integrity_checks_total.
-  # (Three additional names were listed by the operator but are not currently
-  # emitted by the runtime, so they are intentionally absent here.)
+  # Source-defined but absent until first event (arifOS not deployed yet):
+  #   arifos_tearframe         (gauge,  set at ATLAS333 stage 7 completion)
+  #   arifos_rasa_events_total (counter, inc when log_shadow() writes JSONL)
+  #   arifos_scar_candidates_total (counter, inc after vault999/scars/ write)
   - job_name: "arifos-local"
     metrics_path: "/metrics"
     scheme: "http"

@@ -220,6 +220,73 @@ groups:
             Temporary thermodynamic instability. Cooling chain is doing its job,
             but the upstream drift dimension should be reviewed.
 
+      # --- ATLAS333 tearframe (ATLAS333 stage 7) ---
+      # arifos_tearframe is a Gauge that is ONLY .set() inside record_tearframe()
+      # at an actual completion boundary (see metrics.py). It carries a
+      # `provenance` label distinguishing "measured" (real GPV computation)
+      # from "placeholder" (do-not-emit default per source contract).
+      # Until the first completion happens, no series exists and this alert is
+      # silent — that is the truthful no-data-until-event semantics.
+      - alert: NineSignalTearframePlaceholderViolation
+        expr: count(arifos_tearframe{provenance="placeholder"}) > 0
+        for: 1m
+        labels:
+          severity: warning
+          floor: F9
+          signal: tearframe
+          observability_layer: prometheus-observability-only
+        annotations:
+          summary: "arifOS tearframe recorded with placeholder provenance (F9 ANTI-HANTU)"
+          description: |
+            arifos_tearframe has been set with provenance="placeholder".
+            Per /root/arifOS/arifosmcp/runtime/metrics.py the only legitimate
+            producers are ATLAS333 stage-7 actual-completion boundaries with a
+            real GPV computation. Placeholder provenance must not be emitted.
+            Component: {{ $labels.component }}
+
+      # --- RASA shadow-telemetry (post decision) ---
+      # arifos_rasa_events_total is a Counter incremented ONLY by
+      # record_rasa_event_completed() — i.e. ONLY when log_shadow() actually
+      # wrote the JSONL entry. Pre-deployment / pre-event this counter does
+      # not exist in /metrics, so rate() returns no series and the alert is
+      # silent. Once the first RASA event completes, this becomes a heartbeat.
+      - alert: NineSignalRasaEventCompleted
+        expr: rate(arifos_rasa_events_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: info
+          floor: F11
+          signal: rasa_events_total
+          observability_layer: prometheus-observability-only
+        annotations:
+          summary: "arifOS RASA shadow-telemetry event completed"
+          description: |
+            rate(arifos_rasa_events_total[5m]) = {{ $value }} events/sec.
+            RASA pipeline wrote a shadow-telemetry JSONL entry.
+            risk_band={{ $labels.risk_band }} enforcement_mode={{ $labels.enforcement_mode }}
+            enforced={{ $labels.enforced }}
+
+      # --- scar candidates (paradox_gate high-tension, durably persisted) ---
+      # arifos_scar_candidates_total is a Counter incremented ONLY by
+      # record_scar_candidate() AFTER the candidate JSON is durably written to
+      # vault999/scars/. Pre-deployment / pre-event this counter does not
+      # exist in /metrics; rate() returns no series; the alert is silent.
+      - alert: NineSignalScarCandidateGenerated
+        expr: rate(arifos_scar_candidates_total[5m]) > 0
+        for: 0m
+        labels:
+          severity: info
+          floor: F1
+          signal: scar_candidates_total
+          observability_layer: prometheus-observability-only
+        annotations:
+          summary: "arifOS scar candidate persisted to vault999/scars/"
+          description: |
+            rate(arifos_scar_candidates_total[5m]) = {{ $value }} events/sec.
+            paradox_gate fired a high-tension event AND the candidate JSON was
+            durably persisted. stage={{ $labels.stage }} severity={{ $labels.severity }}
+            F1 AMANAH requires this trail for every scar.
+
   - name: nine_signal_infrastructure
     interval: 30s
     rules:
