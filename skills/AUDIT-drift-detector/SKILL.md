@@ -1,11 +1,11 @@
 ---
 name: AUDIT-drift-detector
 description: >
-  Real-time drift detection across tool manifests, agent cards, and skill registries.
-  Compares live state against saved baselines and reports mismatches. Runs as a
-  periodic audit or on-demand before SEAL operations. USE WHEN: "check drift",
-  "verify registry", "detect manifest drift", "tool surface audit".
-version: 1.0.0
+  Real-time drift detection across tool manifests, agent cards, skill registries,
+  and runtime-injected files. Compares live state against saved baselines and reports
+  mismatches. USE WHEN: "check drift", "verify registry", "detect manifest drift",
+  "tool surface audit", "runtime injection detection".
+version: 2026.07.19
 tags: [drift, audit, registry, manifest, F2, F11]
 floor_scope: [F02, F04, F11]
 ---
@@ -30,6 +30,14 @@ The federation has multiple registries (tool_registry.json, agent cards, SKILL_A
 3. **Classify** — Each mismatch: CRITICAL (breaks routing), WARNING (orphan), INFO (cosmetic)
 4. **Report** — Structured drift report with fix recommendations
 5. **Escalate** — CRITICAL drift → 888_HOLD before any SEAL operation
+
+## ⚠️ Runtime-Injected Files (2026-07-19)
+
+Some organ services modify files at runtime. Known patterns:
+- **WELL `index.html`**: WebMCP adapter injected on service start → dirty after commit
+- **arifOS session-state**: Runtime state files that change during operation
+
+When dirty after clean commit: check if injected content was already committed → if yes, re-commit; if no, actual drift.
 
 ## Baselines
 - **Canonical drift check**: `arifOS/runtime/manifest.py` — `build_manifest` vs `runtime_manifest` (post-KSR Epoch 1+2)
