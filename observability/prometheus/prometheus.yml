@@ -1,20 +1,21 @@
-# prometheus.yml
-# arifOS Observability — Prometheus scrape configuration
-# Pipeline: 000-INIT → 888-JUDGE → 999-VAULT
-# Purpose: Scrape arifOS MCP endpoints; expose Nine-Signal fields (DELTA/PSI/OMEGA) to operators
+# observability/prometheus/prometheus.yml
+# arifOS Prometheus scrape configuration — bare-metal, source-controlled.
 #
-# Usage:
-#   docker compose -f docker-compose.yml up -d prometheus
-#   or
-#   prometheus --config.file=observability/prometheus/prometheus.yml
+# Reconfirmed against the live arifOS runtime at 127.0.0.1:8088 which exposes
+# Prometheus exposition format on /metrics (NOT /metrics/json and NOT over
+# HTTPS — those assumptions have been removed).
 #
 # Targets:
-#   mcp.arif-fazil.com   — arifOS MCP runtime (primary)
-#   geox.arif-fazil.com  — GEOX subsystem
-#   af-forge (localhost) — local OpenClaw gateway metrics
+#   arifos-local      — 127.0.0.1:8088/metrics  (arifOS kernel, primary)
+#   a-forge-local     — 127.0.0.1:7071/metrics  (A-FORGE actuator, if exposed)
+#   geox-local        — 127.0.0.1:8081/metrics  (GEOX organ, if exposed)
+#   wealth-local      — 127.0.0.1:18082/metrics (WEALTH organ, if exposed)
+#   well-local        — 127.0.0.1:18083/metrics (WELL organ, if exposed)
+#   aaa-local         — 127.0.0.1:3001/metrics  (AAA gateway, if exposed)
+#   prometheus-self   — 127.0.0.1:9090/metrics  (self-monitoring)
 #
-# IMPORTANT: This is observability ONLY. Prometheus has no write access to the system.
-# It is read-only scraping. Governance lives in arifOS, not in Prometheus.
+# IMPORTANT: Prometheus is observability-only and read-only. No write access
+# to the system. Governance lives in arifOS, not in Prometheus.
 
 global:
   scrape_interval: 30s
@@ -22,159 +23,123 @@ global:
   external_labels:
     system: "arifOS"
     environment: "production"
-    stack: "observability-only"   # Label: this container monitors, does not control
+    stack: "observability-only"
 
 alerting:
   alertmanagers:
     - static_configs:
         - targets: []
-          # No alertmanager configured yet — add url when available
 
 rule_files:
-  - "nine_signal_alerts.yml"   # Nine-Signal floor/plane drift alerts
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Scrape Targets
-# ─────────────────────────────────────────────────────────────────────────────
+  - "nine_signal_alerts.yml"
 
 scrape_configs:
-
-  # ── arifOS MCP runtime ────────────────────────────────────────────────────
-  # Primary governance metrics surface. Endpoint: /metrics/json
-  # Nine-Signal fields emitted here: delta, psi, omega, reason, metrics{}
-  - job_name: "arifOS-MCP"
-    metrics_path: "/metrics/json"
-    scrape_interval: 15s
-    scrape_timeout:  10s
-    honor_labels: true
-    honor_timestamps: true
-
-    static_configs:
-      - targets:
-          - "mcp.arif-fazil.com"
-        labels:
-          service:   "arifOS-MCP"
-          domain:    "governance"
-          read_only: "true"           # Observability only — no write
-          observability_layer: "prometheus-observability-only"
-
-    # TLS config — these are public HTTPS endpoints
-    scheme: https
-    tls_config:
-      insecure_skip_verify: false
-
-    # Retry logic for transient failures
-    scrape_retry_interval: 5s
-    max_samples: 5000
-
-  # ── arifOS API status ─────────────────────────────────────────────────────
-  # Health + readiness probes + API surface metrics
-  - job_name: "arifOS-API-Status"
-    metrics_path: "/api/status"
-    scrape_interval: 30s
-    scrape_timeout:  10s
-    honor_labels: true
-
-    static_configs:
-      - targets:
-          - "mcp.arif-fazil.com"
-        labels:
-          service:   "arifOS-API"
-          domain:    "governance"
-          endpoint:  "status"
-          observability_layer: "prometheus-observability-only"
-
-    scheme: https
-    tls_config:
-      insecure_skip_verify: false
-
-  # ── GEOX subsystem ─────────────────────────────────────────────────────────
-  # Subsurface/earth reasoning layer — separate domain
-  - job_name: "GEOX"
-    metrics_path: "/metrics/json"
-    scrape_interval: 30s
-    scrape_timeout:  10s
-    honor_labels: true
-
-    static_configs:
-      - targets:
-          - "geox.arif-fazil.com"
-        labels:
-          service:   "GEOX"
-          domain:    "subsurface"
-          observability_layer: "prometheus-observability-only"
-
-    scheme: https
-    tls_config:
-      insecure_skip_verify: false
-
-  # ── OpenClaw gateway (local host) ──────────────────────────────────────────
-  # Local OpenClaw /metrics endpoint — when gateway is exposed on port 18789
-  - job_name: "OpenClaw-Local"
+  # ── arifOS kernel (primary) ──────────────────────────────────────────────
+  # /metrics endpoint on the constitutional kernel. Emits the verified series:
+  #   arifos_genius_score, arifos_entropy_delta, arifos_humility_band,
+  #   arifos_peace_squared, arifos_empathy_quotient, arifos_w3_score,
+  #   arifos_verdicts_total, arifos_hold_queue_depth,
+  #   arifos_floor_violations_total, arifos_void_events_total,
+  #   arifos_sabar_events_total, arifos_sessions_active,
+  #   arifos_vault_entries_total, arifos_machine_faults_total,
+  #   arifos_requests_total, arifos_metabolic_loop_seconds,
+  #   arifos_m3_tokens_total, arifos_m3_calls_total,
+  #   arifos_m3_fallback_total, arifos_multimodal_calls_total,
+  #   arifos_merkle_integrity_checks_total.
+  # The following series are intentionally NOT referenced because they are
+  # not currently emitted by the runtime: arifos_tearframe,
+  # arifos_rasa_events_total, arifos_scar_candidates_total.
+  - job_name: "arifos-local"
     metrics_path: "/metrics"
+    scheme: "http"
     scrape_interval: 15s
-    scrape_timeout:  10s
-    honor_labels: true
-
+    scrape_timeout: 10s
+    honor_labels: false
+    honor_timestamps: true
     static_configs:
       - targets:
-          - "host.docker.internal:18789"
+          - "127.0.0.1:8088"
         labels:
-          service:   "openclaw-gateway"
-          domain:    "agent-runtime"
-          location:  "local"
+          service: "arifos-kernel"
+          domain: "governance"
           observability_layer: "prometheus-observability-only"
 
-    # Docker host bridge — works on Linux Docker
-    scheme: http
+  # ── A-FORGE actuator ─────────────────────────────────────────────────────
+  - job_name: "aforge-local"
+    metrics_path: "/metrics"
+    scheme: "http"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - "127.0.0.1:7071"
+        labels:
+          service: "aforge-actuator"
+          domain: "execution"
+          observability_layer: "prometheus-observability-only"
 
-  # ── Prometheus self-monitoring ─────────────────────────────────────────────
-  # Monitor the monitor — basic Prometheus health
+  # ── GEOX organ ───────────────────────────────────────────────────────────
+  - job_name: "geox-local"
+    metrics_path: "/metrics"
+    scheme: "http"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - "127.0.0.1:8081"
+        labels:
+          service: "geox-organ"
+          domain: "subsurface"
+          observability_layer: "prometheus-observability-only"
+
+  # ── WEALTH organ ─────────────────────────────────────────────────────────
+  - job_name: "wealth-local"
+    metrics_path: "/metrics"
+    scheme: "http"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - "127.0.0.1:18082"
+        labels:
+          service: "wealth-organ"
+          domain: "capital"
+          observability_layer: "prometheus-observability-only"
+
+  # ── WELL organ ───────────────────────────────────────────────────────────
+  - job_name: "well-local"
+    metrics_path: "/metrics"
+    scheme: "http"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - "127.0.0.1:18083"
+        labels:
+          service: "well-organ"
+          domain: "human-readiness"
+          observability_layer: "prometheus-observability-only"
+
+  # ── AAA gateway ──────────────────────────────────────────────────────────
+  - job_name: "aaa-local"
+    metrics_path: "/metrics"
+    scheme: "http"
+    scrape_interval: 30s
+    scrape_timeout: 10s
+    static_configs:
+      - targets:
+          - "127.0.0.1:3001"
+        labels:
+          service: "aaa-gateway"
+          domain: "control-plane"
+          observability_layer: "prometheus-observability-only"
+
+  # ── Prometheus self-monitoring ───────────────────────────────────────────
   - job_name: "prometheus"
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets:
+          - "127.0.0.1:9090"
         labels:
-          service:   "prometheus"
+          service: "prometheus"
           self_monitoring: "true"
           observability_layer: "prometheus-observability-only"
-
-# ─────────────────────────────────────────────────────────────────────────────
-# Metadata & Relabeling
-# ─────────────────────────────────────────────────────────────────────────────
-#
-# Relabel rules add structure to metrics at scrape time.
-# These do NOT modify the actual metric name — they add labels for filtering.
-#
-# Key Nine-Signal labels to use in Grafana queries:
-#   Nine-Signal fields from /metrics/json are parsed as labels:
-#     - delta       — entropy change (dS)
-#     - psi         — vitality/liveliness
-#     - omega       — humility/uncertainty
-#     - reason      — verdict reason string
-#     - floor       — which Floor was evaluated
-#     - plane       — which domain plane (GEOX/WEALTH/WELL/AAA)
-#     - verdict     — SEAL/HOLD/CAUTION/VOID
-#
-# Example Grafana queries:
-#   Nine-Signal drift:  delta{domain="governance"} - delta{domain="governance"} offset 1h
-#   Floor failure rate: count by (floor) (delta{verdict="HOLD"} or vector(0))
-#   Plane health:       avg by (plane) (psi)
-
-relabel_configs:
-  # Add pipeline stage label from the endpoint path
-  - source_labels: [__address__]
-    regex: "mcp\\.arif-fazil\\.com"
-    replacement: "arifOS-MCP"
-    target_label: "scrape_group"
-
-  # Label runtime environment
-  - source_labels: [__address__]
-    regex: "geox\\.arif-fazil\\.com"
-    replacement: "production"
-    target_label: "env"
-
-  # Mark all targets as read-only observability
-  - source_labels: [__address__]
-    regex: ".+"
-    replacement: "observability-read-only"
-    target_label: "access_mode"
