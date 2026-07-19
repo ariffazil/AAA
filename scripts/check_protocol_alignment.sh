@@ -77,7 +77,7 @@ for repo in arifOS AAA A-FORGE GEOX WEALTH WELL HERMES arif-sites ariffazil; do
     required="${REQUIRED_PROTOCOLS[$repo]:-}"
     missing_protos=""
     for proto in $required; do
-        if ! grep -qi "$proto" "$proto_md" 2>/dev/null; then
+        if ! grep -qi "${proto//-/ }" "$proto_md" 2>/dev/null && ! grep -qi "${proto}" "$proto_md" 2>/dev/null && ! grep -qi "${proto//-/}" "$proto_md" 2>/dev/null; then
             missing_protos="$missing_protos $proto"
         fi
     done
