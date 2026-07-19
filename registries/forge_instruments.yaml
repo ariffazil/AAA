@@ -1,5 +1,5 @@
 version: 1
-last_audit: '2026-07-19T23:00:00Z'
+last_audit: '2026-07-19T23:16:43Z'
 auditor: Codex / OpenCode reality probe
 instruments:
 - id: FI-001
@@ -16,7 +16,7 @@ instruments:
   upgrade_authority: Arif Fazil (F13)
   sandbox: process
   subagent_policy:
-    default: 888_HOLD
+    default: governed_autonomous
     max_parallel: 3
     registered_subagents:
     - forge
@@ -25,54 +25,35 @@ instruments:
     - planner
     - recovery
     - text-to-image
-  a_r_i_f_chain:
-    description: "Architect \u2192 Integrator \u2192 RSI \u2192 Final. Each in own\
-      \ session, no upward spawning. Session isolation enforces separation of powers."
+  agentic_architecture:
+    pattern: architect -> engineer -> auditor -> recovery
     architect:
-      role: Frames the problem, emits the brief (brief.md, task_graph.yaml, acceptance.yaml,
-        decisions.md)
-      model: deepseek/deepseek-v4-pro
-      temperature: 0.3
-      can_ask_arif: true
-      can_push_code: false
-    rsi:
-      role: Entropy reduction (refactor/structure/integrate). Measures with radon/lizard/jscpd/knip/vulture.
-        Max 3 passes per milestone.
-      model: deepseek/deepseek-v4-pro
-      temperature: 0.2
-      can_ask_arif: false
-      can_push_code: false
-    integrator:
-      role: Main builder. Executes against brief. Full edit + bash. Asks Arif only
-        when blocked.
-      model: minimax/MiniMax-M3
-      temperature: 0.4
-      can_ask_arif: only_when_blocked
-      can_push_code: yes (with 888 ack)
-    final:
-      role: Auditor + 888_HOLD gate. Read-only. SEAL/SABAR/VOID verdict. Max 2 questions
-        per session.
-      model: deepseek/deepseek-v4-pro
-      temperature: 0.1
-      can_ask_arif: yes (max 2)
-      can_push_code: false
-  contrast_skills:
-    count: 12
-    pattern: 3 per agent at AGI/ASI/APEX tier
-    location: /root/.opencode/skills/
-    list:
-    - architect-agi-contrast
-    - architect-asi-contrast
-    - architect-apex-contrast
-    - rsi-agi-contrast
-    - rsi-asi-contrast
-    - rsi-apex-contrast
-    - integrator-agi-contrast
-    - integrator-asi-contrast
-    - integrator-apex-contrast# F1-F13 phase-done check
-    - final-agi-contrast
-    - final-asi-contrast
-    - final-apex-contrast
+      agent: planner
+      model: opencode-go/mimo-v2.5-free
+      authority: frame and sequence work; no irreversible self-grant
+    engineer:
+      agents:
+      - forge
+      - ops
+      model_strategy: MiMo primary; North Mini Code for operations
+      authority: execute reversible digital work and verify outcomes
+    auditor:
+      agent: auditor
+      model: opencode-go/nemotron-3-ultra-free
+      authority: independently challenge evidence and completion claims
+    recovery:
+      agent: recovery
+      model: ollama/qwen2.5-coder:3b
+      authority: restore a bounded loop after provider or execution failure
+    separation_rule: roles are explicit agent surfaces; consequential authority remains with arifOS, A-FORGE leases, and F13 veto
+  skill_spine:
+    discovery: on_demand
+    live_discovered: 247
+    canonical_roots:
+    - /root/.config/opencode/skills
+    - /root/.claude/skills
+    - /root/.agents/skills
+    retired_root: /root/.opencode/skills
   mcp_surface:
   - aforge
   - arifos
@@ -122,7 +103,7 @@ instruments:
     - aforge
     - aaa
   live_version_observed: 1.18.3
-  version_checked_at: '2026-07-19T23:00:00Z'
+  version_checked_at: '2026-07-19T23:16:43Z'
   live_skill_count: 247
   autonomous_loop:
     plugin: /root/.config/opencode/plugins/aaa-autonomy.ts
