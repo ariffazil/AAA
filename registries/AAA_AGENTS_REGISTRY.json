@@ -12,7 +12,7 @@
       "a2a_exposure": "internal",
       "risk_tier": "governed",
       "agent_doc": "/root/.config/opencode/AGENTS.md",
-      "model": "deepseek/deepseek-v4-pro (A-R-I-F chain, MiniMax-M3 for integrator)",
+      "model": "deepseek/deepseek-v4-pro (A-R-I-F chain, MiniMax-M3 for integrator, AUTOPILOT ON)",
       "status": "active"
     },
     {
@@ -148,7 +148,7 @@
       "a2a_exposure": "internal",
       "risk_tier": "governed",
       "agent_doc": "/root/.codex/AGENTS.md",
-      "model": "gpt-5.6-sol (reasoning=medium, landlock sandbox)",
+      "model": "gpt-5.6-sol (reasoning=medium, approvals=guardian_subagent, AUTOPILOT ON)",
       "status": "active"
     },
     {
@@ -161,7 +161,7 @@
       "a2a_exposure": "internal",
       "risk_tier": "governed",
       "agent_doc": "/root/.grok/AGENTS.md",
-      "model": "grok-build (xAI, always-approve)",
+      "model": "grok-build (xAI, always-approve, AUTOPILOT ON)",
       "status": "active"
     },
     {
@@ -186,7 +186,7 @@
       "a2a_exposure": "authenticated",
       "risk_tier": "production",
       "agent_doc": "/root/.arifos/agents/copilot/AGENTS.md",
-      "model": "deepseek-v4-pro (Anthropic-compat API)",
+      "model": "deepseek-v4-pro (Anthropic-compat API, TokenRouter fallback)",
       "status": "active"
     }
   ],
