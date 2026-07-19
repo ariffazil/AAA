@@ -1,132 +1,109 @@
-# 🌱 NEXT AGENT INIT — arifOS AGI Substrate Hardening · 2026.07.19
+# 🌱 NEXT AGENT INIT — arifOS Federation · 2026.07.19
 
-> **Handoff from:** FORGE (000Ω) · Session: SEAL-6cc0880d60e04a79 · Seal: AGI-SUBSTRATE-SURVEY-2026-07-19
+> **Handoff from:** Copilot CLI · Session: cd83f5f2 · DeepSeek v4-pro
 > **To:** Next autonomous agent (OpenCode, Claude Code, or Copilot CLI)
 > **Doctrine:** DITEMPA BUKAN DIBERI
-> **Status:** SEAL_READY — 5 tasks remaining from AGI substrate survey phase
+> **Status:** SEALED — 9 commits pushed · 7 P0 tasks remaining
 
 ---
 
 ## 0. BOOTSTRAP (mandatory, blocking)
 
 ```
-1. LOAD /root/AGENTS.md → /root/AAA/prompts/INIT.md → /root/AAA/agents/opencode/AGENTS.md
+1. LOAD /root/AGENTS.md → /root/AAA/prompts/INIT.md
 2. RUN: for s in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; do
      n="${s%%:*}"; p="${s##*:}"
      curl -sf "http://localhost:$p/health" >/dev/null 2>&1 && echo "✅ $n" || echo "❌ $n"
    done
-3. arif_init(mode="init", actor_id="<YOUR_ID>", intent="AGI substrate hardening — execute remaining tasks")
-4. READ /root/A-FORGE/forge_work/2026-07-19/agi-substrate-survey-20260719.md (487 lines, 48 sources)
-5. READ THIS FILE completely before acting
+3. cat /root/CONTEXT.md | tail -60
+4. READ THIS FILE completely before acting
 ```
-
-## 1. CONTEXT — What Was Done
-
-FORGE completed a deep AGI substrate architecture survey covering:
-- **48 sources** across academic literature and industry projects
-- **Full organ inventory:** arifOS, A-FORGE, AAA, GEOX, WEALTH, WELL, VAULT999
-- **Architectural judgment:** arifOS is the unified reference implementation — no rewrite needed
-- **Three missing substrate layers identified:** Signed Registry/Receipt Plane, Governed Memory Plane, Portable Identity Plane
-- **Phased roadmap:** 5 phases, Aug 2026 – Feb 2027
-
-**Key finding:** The two-protocol stack (MCP + A2A) is settled. arifOS ships what the industry is assembling from pieces. The gap is not architecture — it's surface convergence and proof language.
-
-## 2. REMAINING TASKS (execute in order)
-
-### TASK 1: Close the Tool Classification Gap 🔴 CRITICAL
-**Problem:** 70 OBSERVE + 33 MUTATE = 103 registered. 8 tools remain unclassified. Registry not mathematically sealed.
-**Action:**
-```bash
-# 1. Get live MCP tool list from A-FORGE
-curl -s http://localhost:7072/mcp -X POST -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | python3 -c "
-import json,sys; tools=json.load(sys.stdin)['result']['tools']
-obs=[t for t in tools if 'OBSERVE' in str(t)] 
-mut=[t for t in tools if 'MUTATE' in str(t)]
-unclassified=[t for t in tools if 'OBSERVE' not in str(t) and 'MUTATE' not in str(t)]
-print(f'Total: {len(tools)}, OBSERVE: {len(obs)}, MUTATE: {len(mut)}, UNCLASSIFIED: {len(unclassified)}')
-for t in unclassified: print(f'  {t[\"name\"]}')
-"
-# 2. Read /root/A-FORGE/src/domain/governance/actionClassifier.ts
-# 3. For each unclassified tool, assign: OBSERVE | MUTATE | IRREVERSIBLE
-# 4. Add readOnlyHint / destructiveHint annotations to MCP tool definitions
-# 5. Verify: 70 OBSERVE + 33 MUTATE + 8 IRREVERSIBLE = 111 total
-```
-
-### TASK 2: Surface Count Unification 🟡 HIGH
-**Problem:** Organ tool counts diverge by surface (GEOX: 15 vs 20 vs 24; WEALTH: 12 vs 26; WELL: 8 vs 17 vs 27).
-**Action:**
-```bash
-# For each organ, probe all surfaces and reconcile:
-# - arifOS: /health, /mcp/status, public docs
-# - A-FORGE: tools/list on :7072, README, AAA cockpit
-# - GEOX: tools/list on :8081, README, public cockpit
-# - WEALTH: tools/list on :18082, runbook, public page
-# - WELL: tools/list on :18083, README, CLAUDE.md
-# Create /root/A-FORGE/forge_work/2026-07-19/surface-count-unification.md
-```
-
-### TASK 3: Signed Registry Receipt Prototype 🟡 HIGH
-**Problem:** No signed registry receipt exists. Agents cannot verify tool surface integrity.
-**Action:**
-```bash
-# 1. Design registry receipt schema (text + JSON forms already drafted in survey)
-# 2. Implement forge_registry_sign tool or extend forge_vault
-# 3. Generate first signed receipt for current arifOS public surface
-# 4. Store at /root/A-FORGE/forge_work/2026-07-19/registry-receipt-v1.json
-```
-
-### TASK 4: Skill Mesh Drift Repair 🟢 MEDIUM
-**Problem:** skill-mesh-sync.sh reports 1 missing/drift in opencode harness.
-**Action:**
-```bash
-bash /root/AAA/skills/scripts/skill-mesh-sync.sh --fix
-# Verify: bash /root/AAA/skills/scripts/skill-mesh-sync.sh --check
-# Should report: missing_or_drift=0 broken=0
-```
-
-### TASK 5: RSI Cycle + Cooling Ledger 🟢 MEDIUM
-**Problem:** RSI ledger exists but needs current session entry.
-**Action:**
-```bash
-# Append RSI entry to /root/.local/share/arifos/rsi-ledger.jsonl
-# Run bottleneck detection on this session's execution pattern
-# Insert cooling_ledger_entries to Supabase if mutations performed
-```
-
-## 3. AUTONOMY — Just Do It
-
-All 5 tasks are T1/T2 digital work. **MUBAH.** Execute without asking.
-
-**888_HOLD only for:**
-- rm -rf of unknown directories
-- DROP TABLE / docker volume rm
-- Force push to main
-- VPS restart, DNS changes, firewall modifications
-- Secret rotation
-
-## 4. KEY PATHS
-
-| What | Path |
-|------|------|
-| Survey artifact | `/root/A-FORGE/forge_work/2026-07-19/agi-substrate-survey-20260719.md` |
-| Action classifier | `/root/A-FORGE/src/domain/governance/actionClassifier.ts` |
-| Seal chain | `/root/.local/share/arifos/vault999/seal_chain.jsonl` (seq=6) |
-| RSI ledger | `/root/.local/share/arifos/rsi-ledger.jsonl` |
-| Skill mesh script | `/root/AAA/skills/scripts/skill-mesh-sync.sh` |
-| OpenCode skills | `/root/.arifos/agents/opencode/skills/` |
-| AAA agents | `/root/AAA/agents/opencode/` |
-
-## 5. SESSION-END CONTRACT
-
-When all 5 tasks complete:
-1. Seal session to VAULT999 via `aforge_forge_vault(mode="seal")`
-2. Run `bash /root/AAA/skills/scripts/skill-mesh-sync.sh --check`
-3. Append RSI ledger entry
-4. Write cooling receipt
-5. Emit `[FORGE DONE]` with evidence paths
 
 ---
 
-*Forged: 2026-07-19 by FORGE (000Ω) · Handoff from AGI-SUBSTRATE-SURVEY-2026-07-19*
-*DITEMPA BUKAN DIBERI ⚒️*
+## 1. SESSION STATE — What Was Done
+
+### A-FORGE PolicyGate Identity Model (9 commits on main)
+- `0b92d09` · Registry sealed — all 111 tools MCP-annotated (readOnlyHint/destructiveHint)
+- `e866e86` · Auto-inject MCP annotations via server.tool()/registerTool() wrappers
+- `2ddf3d2` · Classification gap closed — all 111 tools explicitly classified
+- `74fe3be` · serve.ts fix — "stateless-client" self-triggering spoofing
+- `387bc28` · Provenance-aware Principal type (source/authenticated/authority)
+- `67c4e27` · P0 security hardening — buildDefaultObserveDenyPolicy
+- `75bb54f` · Shell grep interpolation fix (execFileSync)
+
+### Registry State
+- 111 tools: 73 OBSERVE · 22 REVERSIBLE · 6 HIGH_IMPACT · 5 IRREV · 5 mode-gated
+- All annotated with MCP readOnlyHint/destructiveHint/idempotentHint
+- Unknown tools → IRREVERSIBLE (fail-closed)
+
+### ChatGPT MCP Connector
+- Config: `/root/A-FORGE/config/chatgpt-tunnel.yaml`
+- Endpoint: `http://127.0.0.1:7072/mcp` (Streamable HTTP)
+- Identity: `chatgpt-arif` = channel principal (OBSERVE_ONLY)
+
+### Copilot CLI MCP
+- 15 servers configured in `/root/.copilot/mcp-config.json`
+- 3 external free MCPs added: fetch (uvx), time (uvx), memory (npx)
+
+---
+
+## 2. REMAINING P0 TASKS (7)
+
+| # | Task | Priority |
+|---|------|----------|
+| 1 | Global activeActor removal — per-request verifiedSessions map | P0 |
+| 2 | Unverified default:deny enforcement with authorityPermits() | P0 |
+| 3 | AAE signature mandatory when envelope present | P0 |
+| 4 | SEAL-* session cryptographic verification (not format-only) | P0 |
+| 5 | Local lease minting fallback disabled for execution | P0 |
+| 6 | Unknown action → HOLD (currently IRREVERSIBLE — too aggressive) | P0 |
+| 7 | Secret redaction + hard-denied paths for ChatGPT channel | P0 |
+
+---
+
+## 3. FEDERATION HEALTH (T₁: 2026-07-19 21:50 UTC)
+
+```
+✅ arifOS     :8088   healthy
+✅ A-FORGE    :7071   healthy  
+✅ A-FORGE MCP :7072  healthy · 52 stateless tools
+✅ GEOX       :8081   healthy
+✅ WEALTH     :18082  healthy
+⚠️  WELL      :18083  degraded (REFLECT_ONLY)
+✅ AAA        :3001   A2A gateway
+```
+
+---
+
+## 4. IDENTITY MODEL (binding)
+
+```
+Principal {
+  source: "verified_session" | "client_supplied" | "transport_fallback"
+  authenticated: boolean
+  authority: "OBSERVE_ONLY" | "LIMITED_MUTATE" | "FULL"
+}
+```
+
+**Invariant:** authority ≠ actor_id string
+
+| No actor_id | transport_fallback | OBSERVE_ONLY |
+| actor_id="anonymous" | client_supplied | DENIED |
+| actor_id="stateless-client" | client_supplied | DENIED (spoofing) |
+| verified session | verified_session | FULL |
+
+---
+
+## 5. KEY POINTERS
+
+- Seal receipt: `/root/A-FORGE/forge_work/2026-07-19/seal-session-copilot-cli-20260719.md`
+- Registry receipt: `/root/A-FORGE/forge_work/registry-receipt-2026-07-19.json`
+- Test suite: `/root/A-FORGE/test/PolicyGateIdentity.test.ts` (18/18 passing)
+- ChatGPT config: `/root/A-FORGE/config/chatgpt-tunnel.yaml`
+- Deprecation registry: `/root/AAA/docs/deprecation-registry.json`
+- Copilot MCP config: `/root/.copilot/mcp-config.json`
+
+---
+
+**FORGED 2026-07-19 · DITEMPA BUKAN DIBERI · 999 SEAL**
