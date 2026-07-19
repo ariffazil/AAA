@@ -860,10 +860,11 @@
           "color": { "mode": "thresholds" },
           "mappings": [
             {
-              "options": { "0": { "color": "red",   "index": 1, "text": "DOWN" }},
+              "type": "value",
+              "options": {
+                "0": { "color": "red",   "index": 1, "text": "DOWN" },
                 "1": { "color": "green", "index": 0, "text": "UP"   }
-              },
-              "type": "value"
+              }
             }
           ],
           "thresholds": {

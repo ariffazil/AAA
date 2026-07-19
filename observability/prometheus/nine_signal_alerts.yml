@@ -1,303 +1,253 @@
-# nine_signal_alerts.yml
-# arifOS Nine-Signal Alerting Rules
-# Watches: DELTA (dS entropy), PSI (vitality), OMEGA (humility/uncertainty), FLOOR, VERDICT drift
+# observability/prometheus/nine_signal_alerts.yml
+# arifOS Nine-Signal alert rules.
 #
-# Axiom: Prometheus alerts are OBSERVATION only.
-# Governance actions (HOLD, SEAL, VOID) are decided by arifOS — never by Prometheus.
-# Prometheus's job is to make Floor/plane drift visible to operators.
+# Source-controlled reconciliation: every expression below references a
+# metric series actually emitted by the arifOS kernel at 127.0.0.1:8088/metrics.
+# Verified live series (from `curl -s http://127.0.0.1:8088/metrics`):
 #
-# Nine-Signal field definitions (from arifOS kernel):
-#   delta / dS   — entropy change. Positive = more uncertain. Target: dS <= 0
-#   psi          — vitality/liveliness. Low psi = degraded / stuck. Target: psi >= 0.7
-#   omega / Ω    — humility/uncertainty. High omega = high uncertainty acknowledged. Target: omega <= 0.3
-#   floor        — constitutional Floor that was evaluated
-#   verdict      — SEAL / HOLD / CAUTION / VOID / CLAIM_ONLY
-#   plane        — domain plane: governance / geoscience / wealth / aforge
-#   kappa_r      — session entropy index
-#   peace_squared — system peace² metric. Target: >= 1.0
+#   arifos_genius_score            (gauge, F8 GENIUS >= 0.80)
+#   arifos_entropy_delta           (gauge, F4 CLARITY dS <= 0)
+#   arifos_humility_band           (gauge, F7 HUMILITY band [0.03, 0.05])
+#   arifos_peace_squared           (gauge, F5 PEACE^2 >= 1.0)
+#   arifos_empathy_quotient        (gauge, F5 empathy floor)
+#   arifos_w3_score                (histogram, F3 WITNESS SEAL >= 0.95)
+#   arifos_verdicts_total          (counter, all verdict classes)
+#   arifos_hold_queue_depth        (gauge, F13 SOVEREIGN 888_HOLD)
+#   arifos_floor_violations_total  (counter, F1-F13 breach counter)
+#   arifos_void_events_total       (counter, VOID verdicts)
+#   arifos_sabar_events_total      (counter, SABAR cooling)
+#   arifos_sessions_active         (gauge, active kernel sessions)
+#   arifos_vault_entries_total     (gauge, VAULT999 sealed records)
+#   arifos_machine_faults_total    (counter, substrate faults)
+#   arifos_requests_total          (counter, total incoming requests)
+#   arifos_merkle_integrity_checks_total (counter, vault chain checks)
 #
-# Alert severity guide:
-#   critical  — governance frozen or verdict=HOLD on high-risk action
-#   warning   — entropy rising, psi dropping, floor drift detected
-#   info      — CAUTION verdict, deferred floors, omega rising
+# The following series are deliberately NOT used here because they are
+# not currently emitted by the runtime:
+#   arifos_tearframe, arifos_rasa_events_total, arifos_scar_candidates_total.
+# Referencing them would produce permanently-absent series and alerts that
+# never fire (or false-positive fallbacks), violating F2 TRUTH.
 
 groups:
-  - name: "arifOS-Nine-Signal"
+  - name: nine_signal_floors
     interval: 30s
     rules:
-
-      # ── DELTA (Entropy) ──────────────────────────────────────────────────
-      - alert: "EntropyRising"
-        expr: 'delta > 0.1'
-        for: "5m"
+      # --- F8 GENIUS --- G score below floor
+      - alert: NineSignalGeniusFloorBreach
+        expr: arifos_genius_score < 0.80
+        for: 5m
         labels:
-          severity: "warning"
-          signal: "delta"
-          domain: "governance"
+          severity: critical
+          floor: F8
+          signal: genius_score
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Entropy rising (dS > 0.1)"
+          summary: "arifOS GENIUS score below constitutional floor (F8)"
           description: |
-            Entropy has been rising for 5+ minutes.
-            dS = {{ $value | printf "%.3f" }}
-            Target: dS <= 0 (Ditempa Bukan Diberi — reduce entropy)
-            Possible cause: conflicting evidence, ambiguous session context, or adversarial input.
-          runbook_url: "https://arifOS/docs/runbooks/entropy-rising.md"
+            arifos_genius_score = {{ $value }} has been below 0.80 for 5 minutes.
+            F8 GENIUS floor requires G >= 0.80 for any SEAL-grade action.
+            This is a constitutional floor breach (F1 AMANAH will begin to refuse
+            mutating calls if the breach persists).
 
-      - alert: "EntropyCritical"
-        expr: 'delta > 0.5'
-        for: "2m"
+      # --- F4 CLARITY --- entropy rising
+      - alert: NineSignalEntropyRising
+        expr: arifos_entropy_delta > 0.30
+        for: 10m
         labels:
-          severity: "critical"
-          signal: "delta"
-          domain: "governance"
+          severity: warning
+          floor: F4
+          signal: entropy_delta
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Entropy critically high"
+          summary: "arifOS workspace entropy dS > 0.30 (F4 CLARITY)"
           description: |
-            dS = {{ $value | printf "%.3f" }} — exceeds critical threshold 0.5.
-            Governance coherence at risk. Session may need 888_HOLD escalation.
-            Check: kappa_r, evidence bundle coherence, adversarial input patterns.
+            arifos_entropy_delta = {{ $value }} sustained > 0.30 for 10m.
+            F4 CLARITY requires dS <= 0. Workspace is accumulating noise.
 
-      # ── PSI (Vitality) ──────────────────────────────────────────────────
-      - alert: "VitalityLow"
-        expr: 'psi < 0.7'
-        for: "10m"
+      # --- F7 HUMILITY --- band broken (under-confidence)
+      - alert: NineSignalHumilityBandLow
+        expr: arifos_humility_band < 0.03
+        for: 10m
         labels:
-          severity: "warning"
-          signal: "psi"
-          domain: "governance"
+          severity: warning
+          floor: F7
+          signal: humility_band
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "System vitality low (psi < 0.7)"
+          summary: "arifOS humility band below lower bound (F7)"
           description: |
-            psi = {{ $value | printf "%.3f" }}
-            Target: psi >= 0.7 (F4 Keterbukaan — vitality and openness)
-            Low vitality = agent/session may be degraded, stuck, or loop-reactive.
-            Investigate: session history, tool call frequency, memory state.
+            arifos_humility_band = {{ $value }} < 0.03 for 10m.
+            F7 HUMILITY band is [0.03, 0.05]. Below band = under-confidence.
 
-      - alert: "VitalityCritical"
-        expr: 'psi < 0.3'
-        for: "3m"
+      # --- F7 HUMILITY --- band broken (over-confidence)
+      - alert: NineSignalHumilityBandHigh
+        expr: arifos_humility_band > 0.05
+        for: 10m
         labels:
-          severity: "critical"
-          signal: "psi"
-          domain: "governance"
+          severity: warning
+          floor: F7
+          signal: humility_band
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "System vitality critically low"
+          summary: "arifOS humility band above upper bound (F7)"
           description: |
-            psi = {{ $value | printf "%.3f" }} — near-zero vitality.
-            Session may be non-responsive or in a loop.
-            Immediate action: review session state, consider session reset.
+            arifos_humility_band = {{ $value }} > 0.05 for 10m.
+            F7 HUMILITY band is [0.03, 0.05]. Above band = over-confidence.
 
-      # ── OMEGA (Humility / Uncertainty) ──────────────────────────────────
-      - alert: "UncertaintyHigh"
-        expr: 'omega > 0.3'
-        for: "10m"
+      # --- F5 PEACE^2 --- stakeholder stability floor
+      - alert: NineSignalPeaceSquaredFloorBreach
+        expr: arifos_peace_squared < 1.0
+        for: 10m
         labels:
-          severity: "warning"
-          signal: "omega"
-          domain: "governance"
+          severity: critical
+          floor: F5
+          signal: peace_squared
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "High uncertainty acknowledged (omega > 0.3)"
+          summary: "arifOS PEACE^2 below 1.0 (F5 stakeholder stability)"
           description: |
-            omega = {{ $value | printf "%.3f" }}
-            Target: omega <= 0.3 (F7 Keadilan — stay within uncertainty band)
-            Agent is explicitly acknowledging high uncertainty. Verify evidence basis.
-            This is healthy behavior if accurate — do NOT suppress this alert.
+            arifos_peace_squared = {{ $value }} < 1.0 for 10m.
+            F5 PEACE^2 requires >= 1.0. A weakest-stakeholder guard is failing.
 
-      - alert: "UncertaintyTooLow"
-        expr: 'omega < 0.01'
-        for: "5m"
+      # --- F5 empathy quotient floor
+      - alert: NineSignalEmpathyLow
+        expr: arifos_empathy_quotient < 0.50
+        for: 15m
         labels:
-          severity: "warning"
-          signal: "omega"
-          domain: "governance"
-          alert_type: "anti-hantu"   # F9: no false certainty signals
+          severity: warning
+          floor: F5
+          signal: empathy_quotient
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Uncertainty suspiciously low — possible hantu pattern"
+          summary: "arifOS empathy quotient < 0.50 (F5 PEACE^2)"
           description: |
-            omega = {{ $value | printf "%.4f" }}
-            F9 Anti-Hantu: AGI must never claim absolute certainty.
-            omega < 0.01 may indicate metric spoofing or false confidence.
-            Investigate: tri_witness_score coherence, evidence bundle integrity.
+            arifos_empathy_quotient = {{ $value }} < 0.50 for 15m.
+            Stakeholder care level is below acceptable band.
 
-      # ── PEACE² ─────────────────────────────────────────────────────────
-      - alert: "PeaceSquaredDegraded"
-        expr: 'peace_squared < 1.0'
-        for: "5m"
+      # --- F3 WITNESS --- W^3 95th percentile below SEAL threshold
+      - alert: NineSignalW3BelowSeal
+        expr: histogram_quantile(0.95, sum by (le) (rate(arifos_w3_score_bucket[10m]))) < 0.95
+        for: 10m
         labels:
-          severity: "warning"
-          signal: "peace_squared"
-          domain: "governance"
+          severity: warning
+          floor: F3
+          signal: w3_score
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "peace² degraded below 1.0"
+          summary: "arifOS tri-witness W^3 p95 < 0.95 (F3 WITNESS)"
           description: |
-            peace_squared = {{ $value | printf "%.3f" }}
-            Target: peace_squared >= 1.0
-            System constitutional coherence is degraded.
-            Possible cause: conflicting Floors, high delta, governance drift.
+            95th percentile of arifos_w3_score has been below 0.95 for 10m.
+            SEAL-grade actions require W^3 >= 0.95 (all three witness channels
+            present). Channel degradation should be investigated.
 
-      # ── FLOOR / VERDICT ─────────────────────────────────────────────────
-      - alert: "FloorHOLDActive"
-        expr: 'verdict == "HOLD"'
-        for: "0m"     # Immediate — no persistence required
+      # --- F2/F9 --- VOID verdict burst
+      - alert: NineSignalVoidBurst
+        expr: rate(arifos_void_events_total[5m]) > 0.05
+        for: 2m
         labels:
-          severity: "warning"
-          signal: "verdict"
-          domain: "governance"
+          severity: critical
+          floor: F2
+          signal: void_events_total
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "HOLD verdict issued"
+          summary: "arifOS VOID verdicts bursting (F2 TRUTH / F9 ANTI-HANTU)"
           description: |
-            Verdict = HOLD on Floor: {{ $labels.floor }}
-            Session: {{ $labels.session_id | default "unknown" }}
-            Plane: {{ $labels.plane | default "unknown" }}
-            Action: Awaiting human review. arifOS governance is working correctly.
+            rate(arifos_void_events_total[5m]) = {{ $value }} > 0.05 sustained 2m.
+            VOID verdicts signal constitutional violations (F2/L11/L12/L13).
+            This is rare and worth sovereign review.
 
-      - alert: "FloorVOIDActive"
-        expr: 'verdict == "VOID"'
-        for: "0m"
+      # --- F1-F13 --- floor violation burst
+      - alert: NineSignalFloorViolationsRising
+        expr: rate(arifos_floor_violations_total[5m]) > 0.05
+        for: 5m
         labels:
-          severity: "critical"
-          signal: "verdict"
-          domain: "governance"
+          severity: warning
+          floor: F1
+          signal: floor_violations_total
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "VOID verdict issued — action blocked"
+          summary: "arifOS constitutional floor violation rate elevated"
           description: |
-            Verdict = VOID on Floor: {{ $labels.floor }}
-            arifOS has blocked this action.
-            Reason: {{ $labels.reason | default "unspecified" }}
-            Do NOT override without Arif's explicit sign-off (F13 Sovereign).
+            rate(arifos_floor_violations_total[5m]) = {{ $value }} > 0.05 for 5m.
+            Multiple distinct tools/agents are tripping the same floor.
 
-      - alert: "FloorDeferred"
-        expr: 'floors_deferred_count > 0'
-        for: "5m"
+  - name: nine_signal_lifecycle
+    interval: 30s
+    rules:
+      # --- F13 SOVEREIGN --- 888_HOLD queue non-empty
+      - alert: NineSignalHoldQueueGrowing
+        expr: arifos_hold_queue_depth > 0
+        for: 10m
         labels:
-          severity: "info"
-          signal: "floor"
-          domain: "governance"
+          severity: warning
+          floor: F13
+          signal: hold_queue_depth
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Constitutional Floors deferred"
+          summary: "arifOS 888_HOLD queue non-empty > 10m (F13 SOVEREIGN)"
           description: |
-            {{ $value }} floor(s) deferred on session {{ $labels.session_id | default "unknown" }}.
-            Deferred floors: {{ $labels.floors_deferred | default "[]" }}
-            Verify: deferred floors do not include F1, F13, or F9.
+            arifos_hold_queue_depth = {{ $value }} events awaiting sovereign ratification.
+            Items older than 24h will REPLAY_REQUIRED per F1.
 
-      # ── FLOOR DRIFT ─────────────────────────────────────────────────────
-      - alert: "FloorDrift"
-        expr: |
-          count by (floor) (
-            (delta > 0.1 and on(session_id) floors_evaluated)
-          ) > 3
-        for: "15m"
+      # --- substrate --- machine faults rate
+      - alert: NineSignalMachineFaultsRising
+        expr: rate(arifos_machine_faults_total[10m]) > 0.05
+        for: 10m
         labels:
-          severity: "warning"
-          signal: "floor"
-          domain: "governance"
+          severity: warning
+          floor: F1
+          signal: machine_faults_total
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Floor drift detected — entropy rising on same Floor"
+          summary: "arifOS machine-fault rate elevated"
           description: |
-            Floor {{ $labels.floor }} has seen elevated entropy (dS > 0.1)
-            more than 3 times in 15 minutes.
-            Possible cause: repeated failed evaluations, adversarial session, or
-            evidence bundle instability.
-            Investigate session history for patterns.
+            rate(arifos_machine_faults_total[10m]) = {{ $value }} > 0.05 for 10m.
+            Machine faults are NOT mapped to VOID (per substrate doctrine); they
+            need human attention but should not generate constitutional noise.
 
-      # ── PLANE DRIFT ──────────────────────────────────────────────────────
-      - alert: "PlaneDrift"
-        expr: |
-          count by (plane) (
-            (delta > 0.15 and on(session_id) verdict != "CLAIM_ONLY")
-          ) > 2
-        for: "10m"
+      # --- substrate --- SABAR cooling rate
+      - alert: NineSignalSabarCoolingRising
+        expr: rate(arifos_sabar_events_total[10m]) > 0.10
+        for: 10m
         labels:
-          severity: "warning"
-          signal: "plane"
-          domain: "governance"
+          severity: info
+          floor: F4
+          signal: sabar_events_total
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Domain plane instability detected"
+          summary: "arifOS SABAR cooling events elevated"
           description: |
-            Plane: {{ $labels.plane }}
-            Non-CLAIM_ONLY verdicts with elevated entropy (> 0.15)
-            detected more than 2 times in 10 minutes.
-            Planes: GEOX (subsurface), WEALTH (economics), WELL (wellness), AAA (agent)
+            rate(arifos_sabar_events_total[10m]) = {{ $value }} > 0.10 for 10m.
+            Temporary thermodynamic instability. Cooling chain is doing its job,
+            but the upstream drift dimension should be reviewed.
 
-      # ── TRI-WITNESS ─────────────────────────────────────────────────────
-      - alert: "TriWitnessScoreLow"
-        expr: 'tri_witness_score < 0.6'
-        for: "5m"
+  - name: nine_signal_infrastructure
+    interval: 30s
+    rules:
+      # --- kernel scrape itself is down
+      - alert: NineSignalArifosKernelDown
+        expr: up{job="arifos-local"} == 0
+        for: 2m
         labels:
-          severity: "warning"
-          signal: "tri_witness_score"
-          domain: "governance"
+          severity: critical
+          signal: scrape_up
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "Tri-witness consensus low (F3)"
+          summary: "arifOS kernel scrape target down (127.0.0.1:8088)"
           description: |
-            tri_witness_score = {{ $value | printf "%.3f" }}
-            Target: >= 0.6 for normal operations
-            F3 Tri-Witness: human/AI/earth evidence consensus is weak.
-            Review witness{human, ai, earth} breakdown for divergence.
+            Prometheus cannot scrape arifos-local (127.0.0.1:8088/metrics) for 2m.
+            All Nine-Signal metrics are stale. Check the arifOS systemd service.
 
-      - alert: "TriWitnessMetricSpoofingSuspected"
-        expr: |
-          abs(
-            tri_witness_score_scalar
-            - (witness_human * witness_ai * witness_earth) ^ 0.3333
-          ) > 0.05
-        for: "2m"
+      # --- session backlog (only useful if kernel is busy)
+      - alert: NineSignalSessionsBacklog
+        expr: arifos_sessions_active > 1000
+        for: 5m
         labels:
-          severity: "critical"
-          signal: "f3-spoofing"
-          domain: "governance"
-          alert_type: "anti-hantu"   # F9 Anti-Hantu — flag potential metric gaming
+          severity: warning
+          signal: sessions_active
+          observability_layer: prometheus-observability-only
         annotations:
-          summary: "F3 scalar/dict coherence gap — possible metric spoofing"
+          summary: "arifOS active sessions > 1000 for 5m"
           description: |
-            F3 coherence check failed.
-            Scalar tri_witness_score: {{ $value | printf "%.3f" }}
-            Geometric mean of witness dict: see description.
-            Gap > 0.05 tolerance — may indicate metric inflation or hantu pattern.
-            Refer to canonical_schema_contract.json §f3_scalar_dict_coherence.
-
-      # ── KAPPA_R (Session Entropy Index) ─────────────────────────────────
-      - alert: "KappaRHigh"
-        expr: 'kappa_r > 0.8'
-        for: "5m"
-        labels:
-          severity: "warning"
-          signal: "kappa_r"
-          domain: "governance"
-        annotations:
-          summary: "Session entropy index high (kappa_r > 0.8)"
-          description: |
-            kappa_r = {{ $value | printf "%.3f" }}
-            High session entropy. Agent may be drifting from declared intent.
-            Consider: session reset, VAULT999 intent drift audit.
-
-      # ── OBSERVABILITY PIPELINE ───────────────────────────────────────────
-      - alert: "PrometheusTargetDown"
-        expr: 'up{observability_layer="prometheus-observability-only"} == 0'
-        for: "2m"
-        labels:
-          severity: "critical"
-          signal: "pipeline"
-          domain: "observability"
-        annotations:
-          summary: "Prometheus scrape target down"
-          description: |
-            Target {{ $labels.job }} ({{ $labels.instance }}) has been down
-            for more than 2 minutes.
-            arifOS observability pipeline is degraded.
-            Investigate: endpoint health, network connectivity, TLS certs.
-
-      - alert: "PrometheusNoMetrics"
-        expr: |
-          time() - prometheus_last_request_success_timestamp < 60
-        for: "3m"
-        labels:
-          severity: "warning"
-          signal: "pipeline"
-          domain: "observability"
-        annotations:
-          summary: "No metrics received in last 3 minutes"
-          description: |
-            Prometheus is not receiving metrics from arifOS endpoints.
-            Check: mcp.arif-fazil.com/metrics/json health,
-            network path to Prometheus, scrape config reload.
+            arifos_sessions_active = {{ $value }} for 5m.
+            Tune session TTL or investigate runaway agent loops.

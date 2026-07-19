@@ -2,62 +2,196 @@
 /**
  * A2A Agent Seed — registers all 8 forge instruments at AAA boot.
  * Called after agent-card-registry auto-loads CIV-33 cards.
+ *
+ * Lifecycle contract:
+ *   - CommonJS export: { AGENTS, seed }
+ *   - No import side-effect: importing this file MUST NOT trigger HTTP I/O.
+ *     Side-effects only run when invoked as a CLI (require.main === module).
+ *   - Configurable port / base URL via seed({ port, baseUrl, timeoutMs, log }).
+ *   - Awaits every request; applies an explicit timeout per request.
+ *   - Returns accurate { registered, existing, failed, total } counts.
+ *   - Idempotent: treats HTTP 409 Conflict (already registered) as "existing".
+ *   - Payload contract: { agent_id, agent_role, actor_id: null, policy: { fi_slot, ... } }
+ *     FI is stored as policy.fi_slot; actor_id is intentionally null until the
+ *     actor binds a session key in arifOS.
+ *   - No hardcoded bearer token. If AAA_AUTH_TOKEN env is set, attach it; otherwise
+ *     rely on the local-network trust boundary (localhost-only).
  */
 
+'use strict';
+
 const http = require('http');
+const { URL } = require('url');
 
-const AGENTS = [
-  { id: 'opencode',     fi: 'FI-001', model: 'deepseek/deepseek-v4-pro',          mcp: 13, role: 'orchestrator' },
-  { id: 'claude-code',  fi: 'FI-002', model: 'deepseek/deepseek-v4-pro (Anthropic)', mcp: 20, role: 'architect' },
-  { id: 'qwen-code',    fi: 'FI-003', model: 'MiniMax-M3',                        mcp: 0,  role: 'dormant' },
-  { id: 'antigravity',  fi: 'FI-004', model: 'Gemini 3.5 Flash',                  mcp: 6,  role: 'executor' },
-  { id: 'codex-cli',    fi: 'FI-005', model: 'gpt-5.6-sol',                       mcp: 8,  role: 'forge' },
-  { id: 'copilot-cli',  fi: 'FI-006', model: 'deepseek-v4-pro (Anthropic compat)', mcp: 11, role: 'forge' },
-  { id: 'grok-build',   fi: 'FI-007', model: 'grok-build (xAI)',                   mcp: 0,  role: 'forge' },
-  { id: 'kimi-code',    fi: 'FI-008', model: 'minimax-coding-plan/MiniMax-M3',     mcp: 9,  role: 'forge' },
-];
+const DEFAULT_PORT = 3001;
+const DEFAULT_TIMEOUT_MS = 5000;
 
-async function seed() {
-  const base = 'http://127.0.0.1:3001';
-  
-  for (const agent of AGENTS) {
-    const body = JSON.stringify({
-      jsonrpc: '2.0',
-      method: 'agent/register',
-      params: {
-        agent_id: agent.id,
-        name: `${agent.id} (${agent.fi})`,
-        model: agent.model,
-        mcp_count: agent.mcp,
-        role: agent.role,
-        citizenship: 'warga-aaa',
-        status: 'active',
-      },
-      id: agent.fi,
-    });
+const AGENTS = Object.freeze([
+  Object.freeze({ id: 'opencode',    fi: 'FI-001', model: 'deepseek/deepseek-v4-pro',             mcp: 13, role: 'orchestrator' }),
+  Object.freeze({ id: 'claude-code', fi: 'FI-002', model: 'deepseek/deepseek-v4-pro (Anthropic)',  mcp: 20, role: 'architect'    }),
+  Object.freeze({ id: 'qwen-code',   fi: 'FI-003', model: 'MiniMax-M3',                            mcp: 0,  role: 'dormant'      }),
+  Object.freeze({ id: 'antigravity', fi: 'FI-004', model: 'Gemini 3.5 Flash',                      mcp: 6,  role: 'executor'     }),
+  Object.freeze({ id: 'codex-cli',   fi: 'FI-005', model: 'gpt-5.6-sol',                           mcp: 8,  role: 'forge'        }),
+  Object.freeze({ id: 'copilot-cli', fi: 'FI-006', model: 'deepseek-v4-pro (Anthropic compat)',    mcp: 11, role: 'forge'        }),
+  Object.freeze({ id: 'grok-build',  fi: 'FI-007', model: 'grok-build (xAI)',                       mcp: 0,  role: 'forge'        }),
+  Object.freeze({ id: 'kimi-code',   fi: 'FI-008', model: 'minimax-coding-plan/MiniMax-M3',         mcp: 9,  role: 'forge'        }),
+]);
 
-    const req = http.request(`${base}/a2a/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'A2A-Version': '1.0',
-        'x-a2a-key': process.env.A2A_API_KEY || 'd62a567e9ae7f383f070f3fc78aadac4c8212855285fb984bbaa4e5376bacea1',
-      },
-    }, (res) => {
-      let data = '';
-      res.on('data', (c) => data += c);
-      res.on('end', () => {
-        const ok = res.statusCode < 400;
-        console.log(`${ok ? '✅' : '❌'} ${agent.id} (${agent.fi}) — ${res.statusCode}`);
-        if (!ok) console.log(`   ${data.substring(0, 120)}`);
-      });
-    });
-    req.on('error', (e) => console.log(`❌ ${agent.id} — ${e.message}`));
-    req.write(body);
-    req.end();
-    await new Promise(r => setTimeout(r, 200));
-  }
-  console.log('\nSeed complete. 8 agents registered.');
+/**
+ * Build the registration payload for one agent. Mirrors the AAA /api/agents/register
+ * contract: actor_id is null until the actor binds a session; FI is stored on
+ * policy.fi_slot so the lifecycle manager can locate the slot later.
+ */
+function buildPayload(agent) {
+  return {
+    agent_id: agent.id,
+    agent_role: agent.role,
+    actor_id: null,
+    policy: {
+      fi_slot: agent.fi,
+      model: agent.model,
+      mcp_count: agent.mcp,
+      citizenship: 'warga-aaa',
+    },
+  };
 }
 
-seed();
+/**
+ * Resolve the base URL we POST to. Honors explicit baseUrl, then port, then env,
+ * then the well-known default of 127.0.0.1:3001.
+ */
+function resolveBaseUrl(opts) {
+  if (opts && typeof opts.baseUrl === 'string' && opts.baseUrl.length > 0) {
+    return opts.baseUrl.replace(/\/+$/, '');
+  }
+  const port = (opts && Number.isInteger(opts.port)) ? opts.port : DEFAULT_PORT;
+  return `http://127.0.0.1:${port}`;
+}
+
+function postJson(targetUrl, body, timeoutMs) {
+  return new Promise((resolve) => {
+    let parsed;
+    try {
+      parsed = new URL(targetUrl);
+    } catch (err) {
+      resolve({ ok: false, status: 0, error: `invalid url: ${err.message}`, body: '' });
+      return;
+    }
+
+    const payload = Buffer.from(JSON.stringify(body), 'utf8');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Content-Length': payload.length,
+    };
+
+    // Optional bearer token from env. Never hardcoded.
+    if (process.env.AAA_AUTH_TOKEN) {
+      headers['Authorization'] = `Bearer ${process.env.AAA_AUTH_TOKEN}`;
+    }
+
+    const req = http.request({
+      method: 'POST',
+      hostname: parsed.hostname,
+      port: parsed.port,
+      path: `${parsed.pathname.replace(/\/+$/, '')}/api/agents/register`,
+      headers,
+      timeout: timeoutMs,
+    }, (res) => {
+      let chunks = '';
+      res.setEncoding('utf8');
+      res.on('data', (c) => { chunks += c; });
+      res.on('end', () => {
+        resolve({
+          ok: res.statusCode >= 200 && res.statusCode < 300,
+          status: res.statusCode,
+          body: chunks,
+          error: null,
+        });
+      });
+    });
+
+    req.on('timeout', () => {
+      req.destroy(new Error(`timeout after ${timeoutMs}ms`));
+    });
+    req.on('error', (err) => {
+      resolve({ ok: false, status: 0, error: err.message, body: '' });
+    });
+    req.write(payload);
+    req.end();
+  });
+}
+
+/**
+ * Seed all 8 agents. Returns a structured counts object that ALWAYS
+ * sums to AGENTS.length (registered + existing + failed === total).
+ *
+ *   registered — new agent was created on this run (HTTP 2xx, not 409)
+ *   existing   — agent was already present (HTTP 409 Conflict)
+ *   failed     — network error, timeout, or non-2xx/409 response
+ */
+async function seed(opts) {
+  const baseUrl = resolveBaseUrl(opts || {});
+  const timeoutMs = (opts && Number.isInteger(opts.timeoutMs)) ? opts.timeoutMs : DEFAULT_TIMEOUT_MS;
+  const log = (opts && typeof opts.log === 'function') ? opts.log : () => {};
+
+  const counts = { registered: 0, existing: 0, failed: 0, total: AGENTS.length, baseUrl };
+
+  for (const agent of AGENTS) {
+    const payload = buildPayload(agent);
+    const result = await postJson(baseUrl, payload, timeoutMs);
+
+    if (result.ok) {
+      counts.registered += 1;
+      log(`✅ ${agent.id} (${agent.fi}) — ${result.status}`);
+    } else if (result.status === 409) {
+      counts.existing += 1;
+      log(`↻ ${agent.id} (${agent.fi}) — 409 already registered`);
+    } else {
+      counts.failed += 1;
+      const detail = result.error
+        ? result.error
+        : `HTTP ${result.status} ${result.body ? '· ' + result.body.substring(0, 120) : ''}`;
+      log(`❌ ${agent.id} (${agent.fi}) — ${detail}`);
+    }
+  }
+
+  log(
+    `Seed complete. ${counts.registered} registered · ${counts.existing} existing · ` +
+    `${counts.failed} failed · ${counts.total} total`,
+  );
+  return counts;
+}
+
+// Side-effect guard: only run when invoked as a CLI, never on require.
+if (require.main === module) {
+  const argv = process.argv.slice(2);
+  let cliPort = DEFAULT_PORT;
+  let cliBaseUrl = null;
+  let cliTimeoutMs = DEFAULT_TIMEOUT_MS;
+  for (let i = 0; i < argv.length; i += 1) {
+    const flag = argv[i];
+    if (flag === '--port' && i + 1 < argv.length) {
+      const parsed = Number.parseInt(argv[i + 1], 10);
+      if (Number.isInteger(parsed)) cliPort = parsed;
+      i += 1;
+    } else if (flag === '--base-url' && i + 1 < argv.length) {
+      cliBaseUrl = argv[i + 1];
+      i += 1;
+    } else if (flag === '--timeout-ms' && i + 1 < argv.length) {
+      const parsed = Number.parseInt(argv[i + 1], 10);
+      if (Number.isInteger(parsed)) cliTimeoutMs = parsed;
+      i += 1;
+    }
+  }
+
+  seed({ port: cliPort, baseUrl: cliBaseUrl, timeoutMs: cliTimeoutMs, log: console.log })
+    .then((counts) => {
+      process.exitCode = counts.failed > 0 ? 1 : 0;
+    })
+    .catch((err) => {
+      console.error('[seed-agents] unexpected failure:', err);
+      process.exit(2);
+    });
+}
+
+module.exports = { AGENTS, seed, buildPayload, resolveBaseUrl };
