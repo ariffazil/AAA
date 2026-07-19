@@ -1,34 +1,30 @@
 version: 1
-last_audit: '2026-06-29T16:13:58Z'
-auditor: Claude Code AAA (2026-06-29)
+last_audit: '2026-07-19T23:00:00Z'
+auditor: Codex / OpenCode reality probe
 instruments:
 - id: FI-001
   name: OpenCode
-  binary: /usr/local/bin/opencode
-  version: 1.17.18
-  version_pinned_from: 2026-07-18 (live observed)
-  model: deepseek/deepseek-v4-pro
-  fallback_model: kimi-for-coding/kimi-k2-thinking
-  model_strategy: DeepSeek V4 Pro primary per F13 2026-07-17 unification (AAA-AGENT-INTELLIGENCE-MANIFEST); Kimi for complex
-    reasoning; Claude only for architecture review.
+  binary: /root/.npm-global/bin/opencode
+  version: 1.18.3
+  version_pinned_from: 2026-07-19 (live observed)
+  model: opencode-go/mimo-v2.5-free
+  fallback_model: ollama/qwen2.5-coder:3b
+  model_strategy: MiMo v2.5 free is the verified live primary; local Qwen is the offline recovery route. Paid MiMo was rejected by live balance check.
   izin: GRANTED
   izin_date: '2026-05-17'
-  last_upgrade: '2026-06-12'
+  last_upgrade: '2026-07-19'
   upgrade_authority: Arif Fazil (F13)
   sandbox: process
   subagent_policy:
     default: 888_HOLD
-    max_parallel: 1
+    max_parallel: 3
     registered_subagents:
-    - architect
-    - rsi
-    - integrator
-    - final
-    - build
-    - plan
-    - general
-    - explore
-    - scout
+    - forge
+    - auditor
+    - ops
+    - planner
+    - recovery
+    - text-to-image
   a_r_i_f_chain:
     description: "Architect \u2192 Integrator \u2192 RSI \u2192 Final. Each in own\
       \ session, no upward spawning. Session isolation enforces separation of powers."
@@ -78,34 +74,42 @@ instruments:
     - final-asi-contrast
     - final-apex-contrast
   mcp_surface:
-  - arifOS
-  - WEALTH
-  - WELL
-  - GEOX
-  - filesystem
-  - git
-  - memory
-  - sequential-thinking
-  - time
-  - repomapper
-  - serena
-  - meyhem
-  - playwright
-  - supabase
-  mcp_quarantine:
+  - aforge
+  - arifos
   - brave-search
-  mcp_removed:
-  - exa
+  - chrome-devtools
+  - cloudflare
   - composio
-  - github-local
-  mcp_strategy: "13-slot MISKIN roster \u2014 only zero-cost + actually-used. All\
-    \ $0/month. See opencode.mcp_audit.json for full audit trail."
+  - context7
+  - exa
+  - fetch
+  - geox
+  - github
+  - graph-memory
+  - hermes
+  - hostinger-vps
+  - megamemory
+  - meyhem
+  - minimax
+  - perplexity
+  - playwright
+  - postgres
+  - qdrant
+  - sequential-thinking
+  - supabase
+  - wealth
+  - well
+  mcp_degraded:
+  - meyhem
+  mcp_disabled:
+  - graph-memory
+  mcp_strategy: 25 registered; live discovery decides truth. At 2026-07-19 T1, 23 connected, Meyhem upstream TLS degraded, Graph Memory intentionally disabled.
   root_config_ref: /root/AAA/ROOT_AGENT_CONFIG.yaml
   config_path: /root/.config/opencode/opencode.json
   toolbench_registry: /root/AAA/registries/opencode_toolbench.yaml
   mcp_audit: /root/.config/opencode/opencode.mcp_audit.json
-  agents_dir: /root/.config/opencode/agents
-  rules_file: /root/.config/opencode/AGENTS.md
+  agents_dir: /root/.config/opencode (inline agent definitions)
+  rules_file: /root/AAA/agents/opencode/AGENTS.md
   systemd_service: opencode.service
   telegram_bot: opencode-bot.service
   references:
@@ -117,8 +121,14 @@ instruments:
     - geox
     - aforge
     - aaa
-  live_version_observed: 1.17.11
-  version_checked_at: '2026-06-29T16:13:57Z'
+  live_version_observed: 1.18.3
+  version_checked_at: '2026-07-19T23:00:00Z'
+  live_skill_count: 247
+  autonomous_loop:
+    plugin: /root/.config/opencode/plugins/aaa-autonomy.ts
+    trigger: session.idle with pending or in-progress todos
+    max_continuations: 12
+    terminal_signal: /seal
 - id: FI-002
   name: Claude Code
   binary: /root/.local/bin/claude
