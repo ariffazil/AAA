@@ -131,3 +131,91 @@ Each checked skill must receive a specific Rot Rating in the audit report:
 *   **Doc Freshness:** [0.0 - 1.0] (Target: 1.00)
 *   **Cross-Skill Collision Rate:** [0.0 - 1.0] (Target: 0.00)
 *   **Human Trust Score:** [0.0 - 1.0] (Target: >0.95)
+
+---
+
+## Independent Verification Lane (WAJIB 2 — added 2026-07-19)
+
+A-FORGE planning, execution, AND verification in the same trust chain is the **primary substrate defect** identified in the readiness audit (ARIFOS-READINESS-2026-07-20). This skill documents the required separation so the next agent can implement it.
+
+### The defect (current state)
+
+```
+Hermes/A-FORGE plans
+    ↓
+A-FORGE executes
+    ↓
+A-FORGE verifies  ← same chain → cannot self-attest
+    ↓
+A-FORGE summarizes success
+```
+
+"Completed and verified" is currently too easy to self-attest. A deployment that returns exit code 0 but leaves the public service broken is reported as success.
+
+### The required separation
+
+```
+A-FORGE executes mutation
+    ↓
+Independent observe-lane verifier reads resulting reality
+    ↓
+Kernel checks evidence against original success criteria
+    ↓
+Only then may completion be recorded to VAULT999
+```
+
+### Verifier contract (minimum)
+
+```yaml
+verification_request:
+  original_intent_hash: <sha256>
+  success_criteria: <structured>
+  mutation_receipt: <VAULT999 entry id>
+  executor_identity: <actor_id>
+  target_state: <expected world state after mutation>
+  permitted_observation_tools: [<list>]   # read-only
+  freshness_requirement: <max staleness in ms>
+
+verification_result:
+  state: VERIFIED | MISMATCH | INCONCLUSIVE | STALE
+  raw_evidence_refs: [<list>]
+  method: <how evidence was obtained>
+  verifier_identity: <actor_id>
+  verifier_independence_proof: <signed assertion>
+  observed_at: <unix_ms>
+  residual_uncertainty: <OBS/DER/INT/SPEC label + confidence>
+```
+
+### Verifier hard rules
+
+The verifier MUST:
+- NOT have performed the mutation
+- Use independently obtained state (its own MCP reads, not the executor's claim)
+- Receive the original success criteria, NOT the executor's rewritten summary
+- Be unable to modify the state it is checking
+- Record raw evidence and method (not just a verdict)
+- Distinguish **command success** (exit code 0) from **outcome success** (real world matches criteria)
+- Return one of: VERIFIED, MISMATCH, INCONCLUSIVE, STALE
+- NEVER issue constitutional approval — only the kernel may SEAL
+
+### Kernel rejection rules
+
+The kernel MUST reject "completion" when:
+- Verifier identity == executor identity
+- Evidence originated ONLY from the executor (no independent observation)
+- Verifier had mutation permission over the target
+- Evidence is older than freshness_requirement
+- Original success criteria are missing from the request
+- Results cannot be independently reproduced (no second source)
+
+### Audit-discoverable evidence
+
+This skill, when loaded, MUST trigger the audit checklist:
+- [ ] Does the proposed verification lane have a distinct identity (not just a flag)?
+- [ ] Does the kernel reject self-verification at the contract layer?
+- [ ] Are original success criteria preserved through the receipt chain?
+- [ ] Can the verifier be invoked without executor cooperation?
+
+### Authority scope
+
+WAJIB 2 is **T3 (F13 ratification required)**. This skill section documents the protocol only. Implementation requires the verification lane to be a new constitutional role, not a mode of A-FORGE.

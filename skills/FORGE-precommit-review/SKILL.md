@@ -32,3 +32,62 @@ The "always run this before commit" ritual. Mirrors the federation's commitment 
 ## Reference
 - Per-organ commands: each organ's `Makefile` or `package.json scripts`
 - F1 surfaces: see `SURFACE-GATE` — the live kernel probe hook that verifies canonical tools are still exposed pre-commit
+
+---
+
+## Negative Conformance (WAJIB 1 — added 2026-07-19)
+
+For every "must never happen" statement, there MUST be a test that *would* fail if the anti-pattern ever regressed. An absent test becomes forgotten; a strict xfail stays visible.
+
+### The 18 must-never-happen tests (per ARIFOS-READINESS-2026-07-20)
+
+1. Model cannot grant itself authority
+2. Executor cannot approve its own execution
+3. Unleased mutation fails closed
+4. Memory cannot be silently modified
+5. Evidence without provenance is rejected
+6. Confidence without uncertainty is rejected
+7. AAA cannot display a nonexistent SEAL
+8. Command success cannot equal outcome verification
+9. GEOX must preserve material alternative interpretations
+10. WEALTH must expose downside and irreversibility
+11. WELL cannot expose sensitive human data outside purpose
+12. VAULT999 cannot promote unsigned events to ground truth
+13. Tool count cannot be used as evidence of AGI
+14. Human approval cannot be simulated or inferred
+15. Delegated child cannot exceed parent authority
+16. Deferred action cannot run without fire-time judgment
+17. Agent-authored boot context cannot become policy without ratification
+18. Organ conflict cannot silently resolve through execution order
+
+### Implementation rule
+
+For each WAJIB test that is **not yet implemented** (cannot be written yet because the substrate doesn't exist), mark it as a strict expected failure in `conformance/` directory. Do not skip — the absence is itself a violation of WAJIB 1's "absent test becomes forgotten" principle.
+
+```ts
+// Example: WAJIB 2 (independent verifier) — not yet implemented
+test("WAJIB-2: forge_execute result cannot self-attest VERIFIED", () => {
+  // TODO when WAJIB 2 lands: forge_execute returns receipt without verification lane → DENY
+  assert.fail("xfail(strict): WAJIB 2 not implemented — see audit 2026-07-20");
+});
+```
+
+### Conformance directory structure (per audit)
+
+```
+conformance/
+├── kernel/
+├── delegation/      (WAJIB 4)
+├── execution/
+├── verification/    (WAJIB 2)
+├── memory/          (WAJIB 8)
+├── organs/          (WAJIB 7)
+└── deferred/        (WAJIB 5)
+```
+
+When committing to A-FORGE, PolicyGate, or any organ with security surface, run the conformance tests for that surface BEFORE the regular precommit checks.
+
+### Authority scope
+
+Negative conformance tests are **T1 AUTO-DO** — adding/upgrading them does not require F13. The decisions they ENFORCE were already ratified; the tests just verify them.
+

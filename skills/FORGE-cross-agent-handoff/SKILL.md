@@ -46,3 +46,64 @@ When Agent A cannot complete a task and must transfer to Agent B, context is los
 ## A2A Transport
 Handoff artifact is sent via `tasks/send` with `handoff=true` metadata.
 Receiving agent runs `handoff-verify` before accepting task ownership.
+
+---
+
+## Context-Capture Governance (WAJIB 8 — added 2026-07-19)
+
+Agents are already writing durable context artifacts: boot documents, NEXT_AGENT_INIT handoffs, canonical protocols, memory summaries, deprecation registries, instructions for future agents. The next agent inherits whatever the prior agent left. That is **policy mutation through documentation** unless governance is explicit.
+
+### The defect (current state)
+
+An agent can write a guidance document into a privileged initialization path (`NEXT_AGENT_INIT.md`, system prompt directory, canonical docs, memory bootstrap, agent definition) and the next agent treats it as if it were ratified policy. The current path has no provenance gate.
+
+### Required separation: artifact classes
+
+| Class | Meaning | Authority | Loaded as |
+|---|---|---|---|
+| `observation` | Evidence about current state | Append-only | Reference |
+| `operational_handoff` | Temporary work continuation | Scoped, expiring | Reference |
+| `guidance` | Non-binding recommendation | Agents may propose | Advisory |
+| `policy` | Binding behavioral rule | Kernel-governed review | Binding |
+| `constitution` | Changes authority or floors | F13 ratification | Binding |
+| `memory` | Historical record | Append-only with provenance | Reference |
+
+### Required `context_manifest` for every durable artifact
+
+```yaml
+context_manifest:
+  artifact_id: <sha256-or-uuid>
+  class: observation | operational_handoff | guidance | policy | constitution | memory
+  author: <actor_id>
+  source_commit: <git sha>
+  authority_level: T1 | T2 | T3
+  approved_by: <actor_id> | null
+  binding: true | false
+  created_at: <unix_ms>
+  expires_at: <unix_ms> | null
+  constitution_compatibility: <hash of current F1-F13 baseline>
+  supersedes: [<artifact_id>, ...]
+  content_hash: <sha256>
+```
+
+### Hard rules
+
+- **Unapproved agent-authored material MUST load as advisory, never binding.**
+- An agent MUST NOT be able to upgrade its own guidance into binding boot policy by placing it in a privileged initialization path.
+- `class: policy` and `class: constitution` artifacts require `approved_by` ≠ null.
+- Boot loading paths (`INIT`, `NEXT_AGENT_INIT`, system prompt directories, canonical docs, memory bootstrap, agent definitions) MUST be scanned for `class: policy | constitution` artifacts without `approved_by` → reject or quarantine.
+- Supersession chain MUST be preserved (don't silently replace binding policy).
+
+### Required boot context checks
+
+Before loading any artifact into boot context:
+1. Scan provenance (author, source commit, authority level)
+2. Verify `class` matches the actual content intent (an "observation" cannot bind behavior)
+3. Check `approved_by` for `class: policy | constitution`
+4. Check `expires_at` — expired artifacts load as `observation` even if originally `policy`
+5. Verify `constitution_compatibility` matches current F1-F13 baseline
+6. Run injection-risk scan on content (template-tag detection, prompt-pattern detection)
+
+### Authority scope
+
+WAJIB 8 is **T2** — context-loader enforcement can be implemented as T1 (no F13 needed) because it operates on the loader, not the constitution. The `constitution` class artifacts still need F13; the loader just enforces the existing F13 path.
