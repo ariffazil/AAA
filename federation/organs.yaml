@@ -1,0 +1,192 @@
+# ═══════════════════════════════════════════════════════════════════
+# AAA Federation — Canonical Organ Registry
+# ═══════════════════════════════════════════════════════════════════
+# Single source of truth for organ topology, roles, and boundaries.
+# Every organ.yaml in individual repos MUST be consistent with this.
+# ═══════════════════════════════════════════════════════════════════
+
+schema_version: 1
+generated: "2026-07-19"
+maintainer: "AAA Control Plane"
+
+organs:
+  - organ: arifos
+    repo: ariffazil/arifos
+    role: governance_kernel
+    authority_ceiling: JUDGE_ONLY
+    port: 8088
+    default_branch: main
+    runtime: python-3.12
+    interfaces:
+      mcp_manifest: arifosmcp/tool_registry.json
+      health: /health
+    owned_domains:
+      - constitutional_judgment
+      - session_identity
+      - floor_enforcement
+      - vault999_seal
+    forbidden_domains:
+      - engineering_execution
+      - earth_evidence
+      - capital_allocation
+      - human_diagnosis
+    build:
+      command: uv sync --frozen && pytest tests/ -q --tb=short
+      test: pytest tests/ -q --tb=short
+      lint: ruff check . && ruff format --check .
+      artifact: wheel
+
+  - organ: a-forge
+    repo: ariffazil/A-FORGE
+    role: execution_actuator
+    authority_ceiling: EXECUTE_AFTER_SEAL
+    port: 7071
+    mcp_port: 7072
+    default_branch: main
+    runtime: node-22
+    interfaces:
+      mcp_manifest: contracts/mcp-surface.json
+      health: /health
+    owned_domains:
+      - engineering_execution
+      - build_deploy
+      - shell_orchestration
+      - reusable_workflows
+    forbidden_domains:
+      - constitutional_judgment
+      - self_authorization
+      - earth_evidence
+      - capital_allocation
+    build:
+      command: npm ci && npm run build
+      test: npm test
+      artifact: dist/
+
+  - organ: aaa
+    repo: ariffazil/AAA
+    role: control_plane
+    authority_ceiling: DISPLAY_ONLY
+    port: 3001
+    default_branch: main
+    runtime: node-22
+    interfaces:
+      registry: federation/organs.yaml
+      schemas: federation/*.schema.json
+    owned_domains:
+      - federation_registry
+      - a2a_routing
+      - cockpit_display
+      - schema_validation
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - earth_evidence
+      - capital_allocation
+    build:
+      command: npm ci && npm run build
+      test: npm run lint && npm run build
+      artifact: dist/
+
+  - organ: geox
+    repo: ariffazil/geox
+    role: domain_evidence
+    authority_ceiling: COMPUTE_ONLY
+    port: 8081
+    default_branch: main
+    runtime: python-3.12
+    interfaces:
+      mcp_manifest: contracts/mcp-surface.json
+      health: /health
+    owned_domains:
+      - earth
+      - subsurface
+      - petrophysics
+      - seismic
+      - basin
+    forbidden_domains:
+      - constitutional_judgment
+      - capital_allocation
+      - deployment_authorization
+    build:
+      command: pip install -e ".[dev]" && PYTHONPATH=src pytest tests/ -q
+      test: PYTHONPATH=src pytest tests/ -q
+      lint: ruff check . && ruff format --check .
+      artifact: wheel
+
+  - organ: wealth
+    repo: ariffazil/wealth
+    role: domain_evidence
+    authority_ceiling: COMPUTE_ONLY
+    port: 18082
+    default_branch: main
+    runtime: python-3.12
+    interfaces:
+      mcp_manifest: contracts/mcp-surface.json
+      health: /health
+    owned_domains:
+      - capital_computation
+      - financial_modeling
+      - market_data
+    forbidden_domains:
+      - constitutional_judgment
+      - capital_allocation
+      - investment_authority
+      - deployment_authorization
+    build:
+      command: pip install -e ".[dev]" && pytest tests/ -q --tb=short
+      test: pytest tests/ -q --tb=short
+      lint: ruff check . && ruff format --check .
+      artifact: wheel
+
+  - organ: well
+    repo: ariffazil/well
+    role: domain_evidence
+    authority_ceiling: REFLECT_ONLY
+    port: 18083
+    default_branch: main
+    runtime: python-3.12
+    interfaces:
+      mcp_manifest: contracts/mcp-surface.json
+      health: /health
+    owned_domains:
+      - human_readiness
+      - vitality_reflection
+    forbidden_domains:
+      - medical_diagnosis
+      - medical_prescription
+      - constitutional_judgment
+      - capital_allocation
+    build:
+      command: pip install -e . && pytest tests/ -q --tb=short
+      test: pytest tests/ -q --tb=short
+      artifact: wheel
+
+  - organ: arif-sites
+    repo: ariffazil/arif-sites
+    role: public_projection
+    authority_ceiling: DISPLAY_ONLY
+    default_branch: main
+    runtime: static
+    owned_domains:
+      - public_websites
+      - federation_projection
+    forbidden_domains:
+      - constitutional_truth
+      - engineering_execution
+    build:
+      command: npm ci && npm run build
+      test: npm run build
+      artifact: dist/
+
+  - organ: hermes
+    repo: ariffazil/HERMES
+    role: multi_modal_bridge
+    authority_ceiling: OBSERVE_ONLY
+    default_branch: main
+    runtime: node-22
+    owned_domains:
+      - multi_modal_routing
+      - creative_surface
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
