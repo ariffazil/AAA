@@ -27,6 +27,21 @@ Read from, write to, and verify the VAULT999 append-only hash-chained ledger. Ge
 - Caching or temporary state (use Redis)
 - Relational queries on seal data (use Postgres index)
 
+## ⚠️ Canonicalizer Rule (F-004 · 2026-07-19)
+
+When verifying chain integrity, use the DOCUMENTED canonicalizer from `arifSeal.ts:94-110`:
+
+```typescript
+function canonicalSerialize(record: Omit<SealRecord, "hash">): string {
+  // 9 mandatory + 2 optional fields, alphabetically sorted keys
+  // EXCLUDES the hash field itself
+}
+```
+
+**NEVER use naive `JSON.stringify(record, Object.keys(record).sort())`** — this includes the hash field and produces false verification failures. The canonical payload EXCLUDES `hash` and includes only: seq, ts, tool, args, judge_decision, exit_code, stdout_sha256, stderr_sha256, prev_hash (+ optional: approver, notes).
+
+Reference: `/root/arifOS/docs/CANONICALIZER-VAULT999-2026-07-19.md`
+
 ## Constitutional Floor Alignment
 
 | Floor | Application |
