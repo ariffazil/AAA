@@ -7,7 +7,7 @@ bundles:
     risk_tier: medium
     approval_policy: hold
     skills:
-      - openclaw-a2a-bridge
+      - forge-cross-agent-handoff
     workflows:
       - local-a2a-handoff
     hosts:
