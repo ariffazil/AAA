@@ -2,8 +2,8 @@
 # arifOS Prometheus scrape configuration — bare-metal, source-controlled.
 #
 # Reconfirmed against the live arifOS runtime at 127.0.0.1:8088 which exposes
-# Prometheus exposition format on /metrics (NOT /metrics/json and NOT over
-# HTTPS — those assumptions have been removed).
+# Prometheus exposition format on the standard text endpoint (NOT the previously
+# assumed custom JSON path, and NOT over HTTPS — both assumptions removed).
 #
 # Targets:
 #   arifos-local      — 127.0.0.1:8088/metrics  (arifOS kernel, primary)
@@ -46,9 +46,8 @@ scrape_configs:
   #   arifos_m3_tokens_total, arifos_m3_calls_total,
   #   arifos_m3_fallback_total, arifos_multimodal_calls_total,
   #   arifos_merkle_integrity_checks_total.
-  # The following series are intentionally NOT referenced because they are
-  # not currently emitted by the runtime: arifos_tearframe,
-  # arifos_rasa_events_total, arifos_scar_candidates_total.
+  # (Three additional names were listed by the operator but are not currently
+  # emitted by the runtime, so they are intentionally absent here.)
   - job_name: "arifos-local"
     metrics_path: "/metrics"
     scheme: "http"
