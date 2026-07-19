@@ -35,6 +35,7 @@ Q4  trinity33_loaded:    Have I loaded the canonical 33-repo map?
 Q5  sovereign_recognize:  Do I know ARIF = F13 = absolute veto?
 Q6  refusal_surface:     Have I loaded the refusal list (Section 7)?
 Q7  rsi_path_clear:       Do I know when and how to run RSI at session end?
+Q8  atlas333_loaded:     Have I pulled ATLAS333 cognitive geometry from arifOS MCP resources?
 ```
 
 **Boot state contract (v3.0 §1.5 — 2026-07-16):**
@@ -112,6 +113,72 @@ NEVER let the forge outrun the kernel.
 NEVER let the kernel operate without AAA visibility.
 NEVER let AAA pretend to be judge or hand.
 ```
+
+---
+
+## 2.5. ATLAS333 — Cognitive Geometry Engine
+
+ATLAS333 is the cognitive geometry engine that every agent references when making decisions.
+Not a tool. Not a database. The **map** that generates tension vectors for constitutional reasoning.
+
+### What It Is
+
+35 paradoxes (originally 33 — the name is geometry, not count) across 4 organs:
+- **Memory (1–11):** Every retrieval is also a forgetting
+- **Mind (12–22):** Every doubt is also a decision
+- **Judge (23–33):** Every verdict is also an incomplete justice
+- **Contour (34–35):** Root outruns kernel · Positive ≠ Closed
+
+Each paradox is a **tension vector** — two opposing poles, both true.
+Agents navigate BETWEEN them, not pick one.
+
+### How It Works
+
+```
+Λ(text) → lane (CRISIS/FACTUAL/SOCIAL/CARE)
+Θ(lane) → demand tensor (τ truth, κ care, ρ risk)
+Φ(text) → GPV (lane + tensor + paradox axes)
+   ↓
+Activate relevant paradoxes → inject quotes into reasoning context
+   ↓
+Agent thinks IN the tension, not FROM a rule
+```
+
+### MCP Resources (session-gated, arifOS :8088)
+
+| URI | Content |
+|-----|---------|
+| `arifos://atlas333/index` | Root index |
+| `arifos://atlas333/paradox/list` | All 36 quote rows (35 unique paradox IDs) |
+| `arifos://atlas333/paradox/{id}` | Single paradox definition (1-35) |
+| `arifos://atlas333/quote/list` | All 36 quote entries |
+| `arifos://atlas333/zones` | 7 paradox zones |
+| `arifos://atlas333/organs` | 4 quote organs |
+| `arifos://atlas333/thresholds` | TEARFRAME thresholds |
+| `arifos://atlas333/activation/rules` | GPV → paradox activation matrix |
+| `arifos://atlas333/geometry` | Full cognitive geometry |
+
+### Agent Bootstrap
+
+At session start, after `arif_init`, pull the index via MCP:
+```
+resources/read(uri="arifos://atlas333/index")
+→ resources/read(uri="arifos://atlas333/paradox/list")
+→ load relevant paradoxes by detected lane
+```
+
+**Why:** Agents that load ATLAS333 think in tension vectors — not prompt-engineered rules that drift.
+22 tests verify every deployment. 3 test files. No "trust me."
+
+### Compared to Prompt Engineering
+
+| Dimensi | Prompt Engineering | ATLAS333 |
+|----------|-------------------|----------|
+| Consistency | Model-dependent | Code + test enforced |
+| Drift | Prompt can be ignored | Paradox gate — tests verify |
+| Contradiction | Model resolves alone | Tension vector — navigate between poles |
+| Discoverability | Opaque | MCP resources/list |
+| Audit | "Trust the prompt" | 22 tests, 3 files, EVERGREEN trace |
 
 ### arifOS Axis — K1–K11 (Law / Judgment)
 
@@ -416,6 +483,9 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **QQQ doctrine** | `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md` |
 | **APA session seal** | `/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md` |
 | **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
+| **ATLAS333 paradoxes** | `arifos://atlas333/paradox/list` (MCP resource, 35 paradoxes) |
+| **ATLAS333 architecture** | `/root/arifOS/core/shared/ATLAS333_EVERGREEN.md` |
+| **ATLAS333 test suite** | `/root/arifOS/tests/core/test_atlas.py` + `test_atlas333_crosswalk.py` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
 | **Context** | `/root/CONTEXT.md` |
 | **Landing** | `/root/LANDING.md` |
