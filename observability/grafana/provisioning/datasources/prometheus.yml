@@ -1,21 +1,20 @@
-# Grafana Prometheus Datasource Provisioning
-# Grafana looks for files in /etc/grafana/provisioning/datasources/
+# observability/grafana/provisioning/datasources/prometheus.yml
+# Grafana datasource provisioning for arifOS.
+#
+# Prometheus is exposed on the bare-metal loopback at http://127.0.0.1:9090
+# (not behind a Cloudflare tunnel, not via mTLS). The datasource is provisioned
+# from this file at Grafana startup; no aliases, no fake defaults.
 apiVersion: 1
 
 datasources:
-  - name: "arifOS Prometheus"
+  - name: Prometheus
+    uid: prometheus
     type: prometheus
-    access: proxy      # proxy = via server (not browser). Use 'browser' for CORS.
-    url: http://prometheus:9090
+    access: proxy
+    url: http://127.0.0.1:9090
     isDefault: true
-    editable: false     # Prevent UI edits — manage via git + reprovisioning
+    editable: false
     jsonData:
+      timeInterval: 30s
       httpMethod: POST
-      timeInterval: "15s"
-      queryTimeout: "60s"
-      httpHeaders:
-        # Add auth headers here if Prometheus requires them
-        # Authorization: "Bearer your-token"
-    version: 1
-    # Prevent accidental deletion from UI
-    uid: "arifOS-prometheus"
+      manageAlerts: true

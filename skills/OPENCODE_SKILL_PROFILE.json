@@ -17,44 +17,165 @@
     "FORGE-pr-governance": "merge authority, policy, and release gate"
   },
   "skills": [
-    {"name":"kernel-bind","axis":"substrate"},
-    {"name":"observe-ground","axis":"substrate"},
-    {"name":"route-dispatch","axis":"substrate"},
-    {"name":"memory-manage","axis":"substrate"},
-    {"name":"verify-gate","axis":"substrate"},
-    {"name":"audit-seal","axis":"substrate"},
-    {"name":"know-physics","axis":"knowledge"},
-    {"name":"know-math","axis":"knowledge"},
-    {"name":"know-language","axis":"knowledge"},
-    {"name":"FORGE-github","axis":"github"},
-    {"name":"FORGE-ci-diagnose","axis":"github"},
-    {"name":"FORGE-issue-triage","axis":"github"},
-    {"name":"FORGE-pr-review","axis":"github"},
-    {"name":"FORGE-pr-governance","axis":"github"},
-    {"name":"KERNEL-verbs-forge-hands","axis":"forge"},
-    {"name":"FORGE-docker","axis":"ops"},
-    {"name":"FORGE-vps-docker","axis":"ops"},
-    {"name":"KERNEL-mcp-builder","axis":"ops"},
-    {"name":"FORGE-mcp-smoke-test","axis":"ops"},
-    {"name":"FORGE-infra-guardian","axis":"ops"},
-    {"name":"FORGE-incident-triage","axis":"ops"},
-    {"name":"FORGE-verify-runtime","axis":"ops"},
-    {"name":"MCP-transport-physics","axis":"ops"},
-    {"name":"AGI-plan-dag","axis":"agi"},
-    {"name":"ASI-multi-discipline-critique","axis":"asi"},
-    {"name":"ASI-agentic-architecture","axis":"asi"},
-    {"name":"apex_verdict_seal","axis":"apex"},
-    {"name":"apex_verdict_hold","axis":"apex"},
-    {"name":"AUDIT-post-seal-sweep","axis":"apex"},
-    {"name":"FORGE-phase-escalation","axis":"meta"},
-    {"name":"SHADOW-diagnostic","axis":"meta"},
-    {"name":"FORGE-route-least-power","axis":"meta"},
-    {"name":"KERNEL-trinity-33","axis":"meta"},
-    {"name":"RSI-recursive-improvement","axis":"meta"},
-    {"name":"KERNEL-sovereign-recognize","axis":"a2a"},
-    {"name":"AGI-cross-agent-handoff","axis":"a2a"},
-    {"name":"AGI-skill-unification","axis":"a2a"},
-    {"name":"AUDIT-skill-atlas","axis":"a2a"},
-    {"name":"FORGE-skill-linter","axis":"meta"}
+    {
+      "name": "kernel-bind",
+      "axis": "substrate"
+    },
+    {
+      "name": "observe-ground",
+      "axis": "substrate"
+    },
+    {
+      "name": "route-dispatch",
+      "axis": "substrate"
+    },
+    {
+      "name": "memory-manage",
+      "axis": "substrate"
+    },
+    {
+      "name": "verify-gate",
+      "axis": "substrate"
+    },
+    {
+      "name": "audit-seal",
+      "axis": "substrate"
+    },
+    {
+      "name": "know-physics",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-math",
+      "axis": "knowledge"
+    },
+    {
+      "name": "know-language",
+      "axis": "knowledge"
+    },
+    {
+      "name": "FORGE-github",
+      "axis": "github"
+    },
+    {
+      "name": "FORGE-ci-diagnose",
+      "axis": "github"
+    },
+    {
+      "name": "FORGE-issue-triage",
+      "axis": "github"
+    },
+    {
+      "name": "FORGE-pr-review",
+      "axis": "github"
+    },
+    {
+      "name": "FORGE-pr-governance",
+      "axis": "github"
+    },
+    {
+      "name": "KERNEL-verbs-forge-hands",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-docker",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-vps-docker",
+      "axis": "ops"
+    },
+    {
+      "name": "KERNEL-mcp-builder",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-mcp-smoke-test",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-infra-guardian",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-incident-triage",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-verify-runtime",
+      "axis": "ops"
+    },
+    {
+      "name": "MCP-transport-physics",
+      "axis": "ops"
+    },
+    {
+      "name": "AGI-plan-dag",
+      "axis": "agi"
+    },
+    {
+      "name": "ASI-multi-discipline-critique",
+      "axis": "asi"
+    },
+    {
+      "name": "ASI-agentic-architecture",
+      "axis": "asi"
+    },
+    {
+      "name": "apex_verdict_seal",
+      "axis": "apex"
+    },
+    {
+      "name": "apex_verdict_hold",
+      "axis": "apex"
+    },
+    {
+      "name": "AUDIT-post-seal-sweep",
+      "axis": "apex"
+    },
+    {
+      "name": "FORGE-phase-escalation",
+      "axis": "meta"
+    },
+    {
+      "name": "SHADOW-diagnostic",
+      "axis": "meta"
+    },
+    {
+      "name": "FORGE-route-least-power",
+      "axis": "meta"
+    },
+    {
+      "name": "KERNEL-trinity-33",
+      "axis": "meta"
+    },
+    {
+      "name": "RSI-recursive-improvement",
+      "axis": "meta"
+    },
+    {
+      "name": "KERNEL-sovereign-recognize",
+      "axis": "a2a"
+    },
+    {
+      "name": "AGI-cross-agent-handoff",
+      "axis": "a2a"
+    },
+    {
+      "name": "AGI-skill-unification",
+      "axis": "a2a"
+    },
+    {
+      "name": "AUDIT-skill-atlas",
+      "axis": "a2a"
+    },
+    {
+      "name": "FORGE-skill-linter",
+      "axis": "meta"
+    },
+    {
+      "name": "atlas333-cognitive-geometry",
+      "axis": "meta"
+    }
   ]
 }

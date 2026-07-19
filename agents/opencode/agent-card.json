@@ -5,10 +5,10 @@
   "name": "OpenCode CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (MiMo/MiniMax \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (MiMo/MiniMax — the model is the principal, CLI is harness)",
     "principle_origin": "Xiaomi MiMo v2.5 Pro (primary) + GLM-5.2 (forge) + DeepSeek V4 Pro (auditor) + Kimi K2.7 Code (planner) + MiniMax M2.5-HS (ops) + Qwen 3.6 Flash (small)"
   },
-  "description": "OpenCode CLI warga (external forge instrument) \u2014 provider-agnostic coding harness bound to 333-AGI (\u0394 MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0.",
+  "description": "OpenCode CLI warga (external forge instrument) — provider-agnostic coding harness bound to 333-AGI (Δ MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0. ATLAS333 cognitive geometry integrated. Skill profile: 39 skills across 7 axes.",
   "version": "3.1.0",
   "model": "deepseek/deepseek-v4-pro",
   "config": "/root/.config/opencode/opencode.json",
@@ -17,7 +17,7 @@
   "tier": "FI",
   "role": "warga",
   "class": "AGI",
-  "trinity": "\u0394 MIND (bound)",
+  "trinity": "Δ MIND (bound)",
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
   "bound_to": "333-AGI",
@@ -218,7 +218,7 @@
       "Spawn bounded subagents with worktree isolation",
       "Run tests/build/lint with evidence receipts",
       "Generate diffs and PR drafts",
-      "A2A mesh citizenship \u2014 participate in AAA state via 777 FORGE binding"
+      "A2A mesh citizenship — participate in AAA state via 777 FORGE binding"
     ],
     "cannotDo": [
       "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
@@ -267,7 +267,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -283,7 +283,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -321,7 +321,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -337,7 +337,7 @@
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -352,7 +352,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -411,7 +411,7 @@
     {
       "id": "ASI-memory-session-bind",
       "name": "Agentic Session Init",
-      "description": "Unified bootstrap: reality check \u2192 skill load \u2192 organ attest \u2192 session bind. Mandatory first action for any governed agent session.",
+      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
       "tags": [
         "bootstrap",
         "session",
@@ -498,7 +498,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -514,7 +514,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -559,7 +559,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -586,11 +586,46 @@
         "F1",
         "F4"
       ]
+    },
+    {
+      "id": "atlas333-cognitive-geometry",
+      "name": "ATLAS333 Cognitive Geometry",
+      "description": "ATLAS333 — 33 human paradoxes across Memory/Mind/Judge zones. ΛΘΦ router for lane/demand tensor mapping. Access via arifos://atlas333/* MCP resources.",
+      "tags": [
+        "atlas333",
+        "cognitive",
+        "paradox",
+        "geometry",
+        "ΛΘΦ"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F7",
+        "F8"
+      ]
+    },
+    {
+      "id": "AGI-cross-agent-handoff",
+      "name": "A2A Cross-Agent Handoff",
+      "description": "Structured A2A protocol handoff between federation agents. Task packaging, evidence chains, floor state, provenance. AAA control plane routing.",
+      "tags": [
+        "a2a",
+        "handoff",
+        "cross-agent",
+        "AAA",
+        "protocol"
+      ],
+      "floor_scope": [
+        "F2",
+        "F4",
+        "F11"
+      ]
     }
   ],
   "hexagon_warga": {
     "id": "opencode",
-    "trinity": "\u0394 MIND (bound)",
+    "trinity": "Δ MIND (bound)",
     "stage": "333-THINK (forge instrument)",
     "bound_to": "333-AGI",
     "warga_since": "2026-06-26",
@@ -638,11 +673,21 @@
       "KERNEL-qubit-substrate",
       "KERNEL-reality-skills",
       "KERNEL-mcp-zen",
-      "KERNEL-mcp-builder"
+      "KERNEL-mcp-builder",
+      "atlas333-cognitive-geometry"
     ],
     "rsi_doctrine": "RSI-recursive-improvement",
     "substrate_bind": "2026-07-12T18:30:00Z",
-    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK"
+    "substrate_bind_source": "EUREKA-ZEN-2026-07-13-SUBSTRATE-LOCK",
+    "a2a_alignment": {
+      "version": "v1.0",
+      "agent_card_signed": false,
+      "discovery_url": "https://aaa.arif-fazil.com/a2a/opencode",
+      "capabilities_declared": 11,
+      "skills_declared": 23,
+      "atlas333_integrated": true,
+      "updated": "2026-07-19"
+    }
   },
   "kernel_skills": [
     "KERNEL-trinity-33",
@@ -653,7 +698,8 @@
     "KERNEL-qubit-substrate",
     "KERNEL-reality-skills",
     "KERNEL-mcp-zen",
-    "KERNEL-mcp-builder"
+    "KERNEL-mcp-builder",
+    "atlas333-cognitive-geometry"
   ],
   "rsi_doctrine": "RSI-recursive-improvement",
   "supportedInterfaces": [
