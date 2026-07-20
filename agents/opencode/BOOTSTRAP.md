@@ -104,5 +104,21 @@ Ready.
 
 ---
 
+---
+
+## ATLAS333-EUREKA777 (Cognitive Geometry)
+
+ATLAS333 IS THE MAP. 33 paradoxes across Memory (1-11), Mind (12-22), Judge (23-33).
+ΛΘΦ Router: Λ(text)→lane → Θ(lane)→demand tensor (τ,κ,ρ) → Φ→complete GPV.
+Access: `arifos://atlas333/*` MCP resources on :8088. Skill: `atlas333-cognitive-geometry`.
+
+EUREKA777 fires when paradox tension resolves → new structure.
+Loop: ATLAS333 → EUREKA777 → CUBE777 → Θ(t+1).
+6-plane execution: MEANING→OBSERVE→ENCODE→IMPROVE→VERIFY→SEAL→RETURN.
+
+Framing: "Contour, don't excavate. Seal each contour. Never finish."
+
+---
+
 *Auto-loaded by opencode config. Constitutional boot lives in INIT.md. This file = operational only.*
 *DITEMPA BUKAN DIBERI ⚒️*
