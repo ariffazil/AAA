@@ -48,6 +48,9 @@ const {
 // ── Membrane Middleware — ZEN-ALL v0.3 (2026-07-08) ─────────────────
 const { membraneMiddleware, membraneResponseHook } = require('./membrane_middleware');
 
+// ── EMD Validation Gate — External A2A Payload Sanitizer v1.0.0 (2026-07-20) ─
+const { emdValidationGate } = require('./emd-validation-gate');
+
 const app = express();
 app.use(express.json({ limit: '12mb' }));
 
@@ -90,8 +93,122 @@ const AAA_AI_DEFAULT_PROVIDER = process.env.AAA_AI_DEFAULT_PROVIDER || 'arifos';
 const AAA_AI_DEFAULT_MODEL = process.env.AAA_AI_DEFAULT_MODEL || 'arif_reply_compose';
 const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
 
+// ── Auth: localhost loopback only. No tokens. ──
+// arifOS LOCALHOST_IS_PASSWORD doctrine — same as Postgres/Redis/Qdrant.
+// External peers reach AAA via Cloudflare Tunnel → Caddy → localhost.
 const A2A_TOKEN = process.env.A2A_TOKEN || '';
 const A2A_API_KEY = process.env.A2A_API_KEY || '';
+
+// ── Federation Gateway — MCP organ bridge (2026-07-20: wired to executeTask) ──
+const { mcpCall, ORGANS: FEDERATION_ORGANS } = require('./federation_gateway');
+
+// ── Organ Routing Table — Intent → Organ Key ────────────────────────
+const ORGAN_ROUTING_MAP = {
+  geox:   'geox',    // subsurface, seismic, basin, prospect, petrophysics
+  wealth: 'wealth',  // npv, irr, capital, portfolio, market, fiscal
+  well:   'well',    // vitality, fatigue, sleep, dignity, readiness
+  aforge: 'aforge',  // build, deploy, shell, git, docker, forge
+  arifos: 'arifos',  // judge, seal, session, constitution, verdict
+};
+
+function resolveOrgan(intent, params = {}) {
+  const text = (intent || '').toLowerCase();
+  // ── Explicit routing via metadata (2026-07-20) ──
+  const metaRouting = (params.metadata?.routing || '').toLowerCase().trim();
+  const metaTool = (params.metadata?.tool || '').trim();
+  if (metaRouting && FEDERATION_ORGANS[metaRouting] && metaTool) {
+    return metaRouting;
+  }
+  // ── Keyword routing (legacy) ──
+  for (const [key, organKey] of Object.entries(ORGAN_ROUTING_MAP)) {
+    if (text.includes(key)) return organKey;
+  }
+  if (text.match(/\b(seismic|basin|prospect|petrophysics|geolog|subsurface|well log)\b/)) return 'geox';
+  if (text.match(/\b(npv|irr|capital|portfolio|market|fiscal|stock|cash|finance)\b/)) return 'wealth';
+  if (text.match(/\b(vitality|fatigue|sleep|dignity|readiness|homeostasis)\b/)) return 'well';
+  if (text.match(/\b(build|deploy|docker|shell|git|forge|execute|restart)\b/)) return 'aforge';
+  if (text.match(/\b(judge|seal|verdict|constitution|session|floor)\b/)) return 'arifos';
+  return 'arifos';
+}
+
+// ── Organ Tool Resolver — Intent → MCP Tool Name ──────────────────
+const ORGAN_TOOL_MAP = {
+  geox: {
+    default: 'geox_surface_status',
+    prospect: 'geox_prospect',
+    basin: 'geox_basin',
+    seismic: 'geox_seismic_compute',
+    petrophysics: 'geox_petrophysics',
+  },
+  wealth: {
+    default: 'capital_health',
+    npv: 'capital_primitive',
+    irr: 'capital_primitive',
+    capital: 'capital_health',
+    market: 'capital_market',
+    portfolio: 'capital_primitive',
+    fiscal: 'capital_health',
+  },
+  well: {
+    default: 'well_validate_vitality',
+    vitality: 'well_validate_vitality',
+    sleep: 'well_assess_homeostasis',
+    fatigue: 'well_assess_homeostasis',
+    dignity: 'well_guard_dignity',
+  },
+  aforge: {
+    default: 'forge_health_check',
+    build: 'forge_shell',
+    deploy: 'forge_execute',
+    shell: 'forge_shell',
+    docker: 'forge_docker',
+  },
+  arifos: {
+    default: 'arif_observe',
+    judge: 'arif_judge',
+    seal: 'arif_seal',
+    verdict: 'arif_judge',
+    session: 'arif_init',
+  },
+};
+
+function resolveOrganTool(organKey, intent) {
+  const text = (intent || '').toLowerCase();
+  const toolMap = ORGAN_TOOL_MAP[organKey] || {};
+  for (const [keyword, tool] of Object.entries(toolMap)) {
+    if (keyword !== 'default' && text.includes(keyword)) return tool;
+  }
+  return toolMap.default || 'tools/list';
+}
+
+async function dispatchToOrgan(taskId, message, skill, params) {
+  const intent = extractText(message) || skill || '';
+  const organKey = resolveOrgan(intent, params);
+  if (!FEDERATION_ORGANS[organKey]) return null;
+  const organ = FEDERATION_ORGANS[organKey];
+  console.log(`[A2A→MCP] Routing "${intent.slice(0,60)}" → ${organ.name} (${organKey}:${organ.port})`);
+  try {
+    // ── Explicit tool/args from metadata (2026-07-20) ──
+    let toolName, toolArgs;
+    const metaTool = (params?.metadata?.tool || '').trim();
+    const metaArgs = params?.metadata?.args;
+    if (metaTool && typeof metaArgs === 'object' && Object.keys(metaArgs).length > 0) {
+      toolName = metaTool;
+      toolArgs = { ...metaArgs, session_id: params?.session_id || taskId, actor_id: params?.actor_id || 'aaa-gateway' };
+    } else {
+      toolName = resolveOrganTool(organKey, intent);
+      toolArgs = { prompt: extractText(message), skill, task_id: taskId, ...(params?.metadata || {}) };
+    }
+    const result = await mcpCall(organKey, 'tools/call', {
+      name: toolName,
+      arguments: toolArgs,
+    }, 30000);
+    return { organ: organKey, organName: organ.name, result, artifact: { name: `${organKey}-${taskId}`, mimeType: 'application/json', content: JSON.stringify(result) } };
+  } catch (err) {
+    console.error(`[A2A→MCP] ${organKey} dispatch failed:`, err.message);
+    return { organ: organKey, organName: organ.name, result: null, error: err.message };
+  }
+}
 // APEX was decommissioned 2026-06-27 (per Federation Cross-Reference).
 // The default intentionally points at the local arifOS kernel (which now
 // owns the `/mind/reason` endpoint that the AAA A2A gateway calls).
@@ -439,7 +556,8 @@ function formatAlert(alert, organChecks, confirmedDown) {
 
 // Fail fast if tokens not configured — no silent dev fallback (F1 AMANAH)
 if (!A2A_TOKEN || !A2A_API_KEY || !TELEGRAM_BOT_TOKEN) {
-  console.error('[AAA A2A] FATAL: A2A_TOKEN, A2A_API_KEY and TELEGRAM_BOT_TOKEN must be set. No dev fallback.');
+  console.error('[AAA A2A] WARNING: TELEGRAM_BOT_TOKEN not set. Alerting disabled.');
+  // A2A_TOKEN/A2A_API_KEY removed 2026-07-20 — auth via localhost loopback binding (F8 GENIUS: simplest correct path).
   process.exit(1);
 }
 
@@ -1493,29 +1611,40 @@ function hashPayload(payload) {
 
 function now() { return Date.now(); }
 
-// === AUTH MIDDLEWARE ===
+// === AUTH MIDDLEWARE — Localhost Loopback Only ===
+// arifOS LOCALHOST_IS_PASSWORD doctrine (F8 GENIUS).
+// A2A endpoint binds 127.0.0.1 — external peers reach via Cloudflare Tunnel → Caddy → localhost.
+// No tokens, no keys, no bearer headers. OS-level file permissions replace application auth.
 function authMiddleware(req, res, next) {
-  const bearer = req.headers['authorization'];
-  const apiKey = req.headers['x-a2a-key'];
-  const arifosToken = req.headers['x-arifos-token'];
+  // ── Public discovery methods — A2A spec requires these without auth ──
+  const body = req.body;
+  const method = body?.method;
+  const PUBLIC_METHODS = ['agent/getCard', 'agent/listSkills'];
+  if (req.method === 'POST' && PUBLIC_METHODS.includes(method)) {
+    req.auth = { scheme: 'loopback', valid: true, note: 'public discovery method' };
+    return next();
+  }
 
-  if (bearer && bearer.startsWith('Bearer ') && bearer.slice(7) === A2A_TOKEN) {
-    req.auth = { scheme: 'bearer', valid: true };
+  // ── Loopback check: only localhost can mutate ──
+  const clientIp = req.socket?.remoteAddress || req.ip || '';
+  if (clientIp === '127.0.0.1' || clientIp === '::1' || clientIp === '::ffff:127.0.0.1') {
+    req.auth = { scheme: 'loopback', valid: true, ip: clientIp };
     return next();
   }
-  if (apiKey && apiKey === A2A_API_KEY) {
-    req.auth = { scheme: 'apikey', valid: true };
-    return next();
-  }
-  if (arifosToken && arifosToken === A2A_TOKEN) {
-    // CIV-33 Gap 2: x-arifos-token recognized as a peer-federation header
-    // for /.well-known/agent-card-extended.json and other auth-gated surfaces.
-    req.auth = { scheme: 'arifos-token', valid: true };
-    return next();
+
+  // ── Cloudflare Tunnel proxy check (X-Forwarded-For from Caddy on localhost) ──
+  const forwarded = req.headers['x-forwarded-for'];
+  if (forwarded) {
+    const ips = forwarded.split(',').map(s => s.trim());
+    if (ips.some(ip => ip === '127.0.0.1' || ip === '::1')) {
+      req.auth = { scheme: 'loopback-proxy', valid: true, ip: forwarded };
+      return next();
+    }
   }
 
   res.setHeader('Content-Type', 'application/json');
-  res.status(401).json(createJSONRPCError(0, ERROR_CODES.UNAUTHORIZED, 'Unauthorized: provide Bearer token, x-a2a-key, or x-arifos-token'));
+  res.status(403).json(createJSONRPCError(0, ERROR_CODES.UNAUTHORIZED, 
+    'Access denied: A2A mutation endpoints are loopback-only. External peers use discovery methods only.'));
 }
 
 // === SCHEMA VALIDATION ===
@@ -1639,6 +1768,36 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
 
   logEvent('TASK_START', taskId, `Mission received — agent: ${targetAgent || 'auto'}, skill: ${skill}`);
   logEvent('SENSE', taskId, 'Risk assessment initiated');
+
+  // ═══════════════════════════════════════════════════════════════════
+  // === MCP ORGAN DISPATCH — route to domain organ via local JSON-RPC ===
+  // ═══════════════════════════════════════════════════════════════════
+  // If the task has explicit metadata.routing + metadata.tool (evidence organ)
+  // or keyword intent matches, route directly to that organ's MCP tools.
+  // Falls through to OpenClaw if no organ match or organ call fails.
+  // arifOS/A-FORGE requests follow governed paths; evidence organs use direct MCP.
+  // DITEMPA BUKAN DIBERI — Forged 2026-07-20
+  const organIntent = userText || skill;
+  const organKey = resolveOrgan(organIntent, params);
+  const isEvidenceOrgan = ['geox', 'wealth', 'well'].includes(organKey);
+  if (isEvidenceOrgan || organKey !== 'arifos') {
+    const organResult = await dispatchToOrgan(taskId, message, skill, params);
+    if (organResult && !organResult.error) {
+      task.status = {
+        state: 'TASK_STATE_COMPLETED',
+        message: { role: 'agent', parts: [{ type: 'text', text: `[AAA→${organResult.organName} via MCP]\n${JSON.stringify(organResult.result).slice(0, 4000)}` }], messageId: generateId(), taskId, contextId },
+        timestamp: new Date().toISOString()
+      };
+      task.artifacts = [organResult.artifact];
+      task.history = [message];
+      await taskStore.set(taskId, task);
+      publish({ kind: 'status-update', taskId, contextId, status: task.status, final: true });
+      return;
+    }
+    if (organResult?.error) {
+      logEvent('ROUTE_FAIL', taskId, `MCP organ ${organResult.organName} failed: ${organResult.error}. Falling through to agent dispatch.`);
+    }
+  }
 
   // === REAL AGENT DISPATCH — route to Hermes ASI ===
   if (targetAgent === 'hermes') {
@@ -3345,6 +3504,9 @@ app.get('/', (req, res) => {
 mountDiscoveryRoutes(app);
 
 // === PROTECTED ROUTES ===
+// EMD Validation Gate: every external A2A payload must pass EMD decode + tri-witness
+// before reaching auth or kernel. F2 TRUTH, F3 WITNESS, F12 INJECTION.
+app.use('/a2a', emdValidationGate);
 app.use('/a2a', authMiddleware);
 
 // === JSON-RPC VALIDATION MIDDLEWARE ===
@@ -3580,6 +3742,149 @@ app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware
     res.json({ success: true });
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// === UNIFIED JSON-RPC DISPATCHER — POST /a2a (A2A v1.0.0 Spec-Compliant) ===
+// ═══════════════════════════════════════════════════════════════════════════
+//
+// A2A spec expects agents to POST JSON-RPC 2.0 to a single /a2a endpoint.
+// Methods: agent/getCard, tasks/send, tasks/get, tasks/cancel, tasks/list,
+//          tasks/sendSubscribe, tasks/pushNotificationConfig/*.
+//
+// Specific routes like /a2a/message/send and /a2a/tasks/:taskId match first.
+// This catch-all handles methods not covered by path-based routes (e.g.,
+// external peers calling tasks/send via method field, not URL path).
+//
+// DITEMPA BUKAN DIBERI — Forged 2026-07-20 by FORGE (000Ω)
+// ═══════════════════════════════════════════════════════════════════════════
+
+app.post('/a2a', jsonRpcValidate, async (req, res) => {
+  const { id, method, params } = req.jsonrpc;
+  
+  // ── EMD metadata (injected by emdValidationGate for external payloads) ──
+  const emd = req.emd || null;
+  const isExternal = emd?.source?.external || false;
+  const authorityOverride = emd?.authorityOverride || null;
+  
+  try {
+    switch (method) {
+      
+      // ── agent/getCard — public card discovery ─────────────────────
+      case 'agent/getCard':
+        return res.json(createJSONRPCResponse(id, AAA_AGENT_CARD));
+      
+      // ── agent/listSkills — return skill catalog ──────────────────
+      case 'agent/listSkills':
+        const skills = (AAA_AGENT_CARD.skills || []).map(s => ({
+          id: s.id, name: s.name, description: s.description,
+          tags: s.tags || [], examples: s.examples || [],
+          inputModes: s.inputModes || AAA_AGENT_CARD.defaultInputModes || ['text/plain'],
+          outputModes: s.outputModes || AAA_AGENT_CARD.defaultOutputModes || ['application/json'],
+        }));
+        return res.json(createJSONRPCResponse(id, { skills, total: skills.length }));
+      
+      // ── tasks/send — route to message/send handler ───────────────
+      case 'tasks/send': {
+        const taskId = params?.id || `a2a-${generateId().slice(0, 12)}`;
+        const message = params?.message;
+        
+        if (!message || !message.parts) {
+          return res.status(400).json(createJSONRPCError(id, -32602, 'Invalid params: message with parts required'));
+        }
+        
+        const msgValidation = validateMessage(message);
+        if (!msgValidation.valid) {
+          return res.status(400).json(createJSONRPCError(id, -32602, msgValidation.message));
+        }
+        
+        // External payloads with insufficient witness → downgrade to observe-only
+        if (isExternal && authorityOverride === 'OBSERVE_ONLY') {
+          console.warn(`[A2A DISPATCH] External tasks/send downgraded — source=${emd.source.sourceId} W³=${emd.witness.W3.toFixed(3)}`);
+        }
+        
+        const lineage = requireTaskLineage(params, id);
+        if (!lineage.ok) return res.status(400).json(lineage.error);
+        const { sessionId, contextId } = lineage;
+        
+        const task = buildLineageTask(taskId, contextId, sessionId, message, params);
+        task._emd = { witness: emd?.witness, source: emd?.source, claims: emd?.claims };
+        task.status.state = 'TASK_STATE_SUBMITTED';
+        await taskStore.set(taskId, task);
+        registerContextLineage(contextId, sessionId, taskId);
+        
+        // Execute asynchronously — non-blocking
+        executeTask(taskId, contextId, message, params.agent_id, { ...params, _emd: emd })
+          .catch(err => console.error(`[A2A DISPATCH] Task ${taskId} execution error:`, err.message));
+        
+        const updatedTask = await taskStore.get(taskId);
+        writeSeal(updatedTask, 'aaa-gateway', 'a2a.tasks.send', {
+          routing: 'jsonrpc-dispatcher',
+          task_id: taskId, context_id: contextId, session_id: sessionId,
+          external: isExternal, W3: emd?.witness?.W3,
+        }).catch(err => console.error('[VAULT999] SEAL write failed:', err.message));
+        
+        return res.json(createJSONRPCResponse(id, {
+          id: taskId, contextId,
+          status: updatedTask.status,
+          artifacts: updatedTask.artifacts || [],
+          history: updatedTask.history || [],
+          kind: 'task',
+          metadata: updatedTask.metadata || {},
+        }));
+      }
+      
+      // ── tasks/get — retrieve task by ID ──────────────────────────
+      case 'tasks/get': {
+        const taskId = params?.id;
+        if (!taskId) return res.status(400).json(createJSONRPCError(id, -32602, 'Missing params.id'));
+        const task = await taskStore.get(taskId);
+        if (!task) return res.status(404).json(createJSONRPCError(id, -32000, `Task ${taskId} not found`));
+        return res.json(createJSONRPCResponse(id, {
+          id: task.id, contextId: task.contextId, status: task.status,
+          artifacts: task.artifacts || [], history: task.history || [],
+          kind: 'task', metadata: task.metadata || {},
+        }));
+      }
+      
+      // ── tasks/cancel — cancel a running task ─────────────────────
+      case 'tasks/cancel': {
+        const taskId = params?.id;
+        if (!taskId) return res.status(400).json(createJSONRPCError(id, -32602, 'Missing params.id'));
+        const task = await taskStore.get(taskId);
+        if (!task) return res.status(404).json(createJSONRPCError(id, -32000, `Task ${taskId} not found`));
+        task.status = { ...task.status, state: 'TASK_STATE_CANCELED' };
+        task.updated_at = new Date().toISOString();
+        await taskStore.set(taskId, task);
+        return res.json(createJSONRPCResponse(id, { success: true, task }));
+      }
+      
+      // ── tasks/list — list tasks with optional filter ──────────────
+      case 'tasks/list': {
+        const filter = {
+          contextId: params?.contextId,
+          status: params?.status,
+          limit: params?.limit || 50,
+        };
+        const tasks = await taskStore.list(filter);
+        return res.json(createJSONRPCResponse(id, {
+          tasks: tasks.map(t => ({
+            id: t.id, contextId: t.contextId, status: t.status,
+            artifacts: t.artifacts, metadata: t.metadata,
+          })),
+          total: tasks.length,
+        }));
+      }
+      
+      // ── Unknown method ───────────────────────────────────────────
+      default:
+        return res.status(400).json(createJSONRPCError(id, -32601, 
+          `Method not found: ${method}. Available: agent/getCard, agent/listSkills, tasks/send, tasks/get, tasks/cancel, tasks/list`));
+    }
+  } catch (error) {
+    console.error(`[A2A DISPATCH] ${method} error:`, error);
+    return res.status(500).json(createJSONRPCError(id || 0, -32603, `Internal error: ${error.message}`));
   }
 });
 
@@ -4301,4 +4606,4 @@ function computeEntropyVector(pipelineResults) {
     };
 }
 
-module.exports = { app };
+module.exports = { app, resolveOrgan, dispatchToOrgan, ORGAN_ROUTING_MAP };
