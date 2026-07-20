@@ -1,8 +1,12 @@
 # Model Registry Index — arifOS Federation
 
 > **Forged:** 2026-06-27 by FORGE (000Ω) per F13 SOVEREIGN directive
+> **Updated:** 2026-07-20 — AGENT_MODEL_MAP.json unified registry
 > **Authority:** F13 SOVEREIGN (Arif Fazil)
-> **Source of truth:** `/root/AAA/registries/models/` + `model_soul.yaml` (canonical schema) + `FEDERATION_MODEL.json` (master federation map)
+> **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json` (21 models, 13 agents, 9 providers, 6 shadows, 2 scars, 4 fallback chains, 9 routing rules)
+> **Supersedes:** `FEDERATION_MODEL.json` (absorbed), scattered prose tables in INIT.md/TOOLS.md/AGENTS.md
+> **Soul/shadow profiles:** `/root/AAA/registries/models/{provider}_{soul,shadow}.yaml` (supplementary deep-dives)
+> **Model capabilities:** `/root/arifOS/arifosmcp/config/model_registry.json` (constitutional capability registry — referenced, not duplicated)
 > **DITEMPA BUKAN DIBERI** — Intelligence is forged, not given.
 
 ---

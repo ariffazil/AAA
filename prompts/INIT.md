@@ -388,16 +388,26 @@ HOLD on ambiguity. Ask Arif.
 
 ---
 
-## 8. MODEL ROTATION (corrected 2026-07-02)
+## 8. MODEL ROTATION (canonical reference — 2026-07-20)
 
-| Agent | Model | Provider | Context |
-|-------|-------|---------|---------|
-| Main (OpenCode) | MiMo V2.5 Pro | Xiaomi token-plan-sgp | 1M |
-| FORGE | GLM-5.2 | Bailian token-plan | 200K |
-| AUDITOR | DeepSeek V4 Pro | Bailian token-plan | 1M |
-| OPS | MiniMax M2.7 HS | MiniMax direct | 200K |
-| PLAN | Kimi K2.7 Code | Bailian token-plan | 256K |
-| Small | Qwen 3.6 Flash | Bailian token-plan | 128K |
+> **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json`
+> 
+> All model-to-agent assignments, fallback chains, capability profiles, shadows, scars, and routing rules are in ONE file. This table is a cached summary only — the JSON registry is authoritative.
+>
+> Quick reference (from registry `agents[]`):
+> 
+> | Agent | Primary Model | Fallback Chain |
+> |-------|--------------|----------------|
+> | OpenCode | `deepseek/deepseek-v4-pro` | MiniMax M3 → GLM-5.2 → Ollama |
+> | FORGE (000Ω) | `deepseek/deepseek-v4-pro` | GLM-5.2 → MiniMax M3 |
+> | AUDITOR (Ψ) | `deepseek/deepseek-v4-pro` | MiMo V2.5 Pro → MiniMax M3 |
+> | OPS (🌐) | `deepseek/deepseek-v4-flash` | MiniMax M2.5 → MiniMax M3 |
+> | PLAN (Ω) | `kimi/kimi-k2.7-code` | DeepSeek V4 Pro → MiMo V2.5 Pro |
+> | Hermes | `mimo/mimo-v2.5-pro-ultraspeed` | MiMo Pro → DeepSeek → Groq → MiniMax → GLM → Ollama |
+>
+> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. 16 models forbidden from judgment.
+>
+> To load live: `python3 -c "import json; d=json.load(open('/root/AAA/registries/models/AGENT_MODEL_MAP.json')); [print(f'{a[\"agent_id\"]}: {a[\"primary_model\"]}') for a in d['agents']]"`
 
 ---
 

@@ -96,16 +96,13 @@ curl -sf http://localhost:7071/health && echo "aforge OK" || echo "aforge DOWN"
 
 If a server is DOWN, proceed read-only on live servers. Do NOT assume dead server config is valid.
 
-## Model Rotation (2026-07-02 — corrected)
+## Model Rotation (canonical reference — 2026-07-20)
 
-| Agent | Model | Provider | Why |
-|-------|-------|----------|-----|
-| Main (OpenCode) | DeepSeek V4 Pro | Xiaomi token-plan-sgp | Flagship reasoning, 1M ctx, tool_call |
-| FORGE | DeepSeek V4 Pro | DeepSeek token-plan | 200K ctx, tool_call + reasoning |
-| AUDITOR | DeepSeek V4 Pro | DeepSeek token-plan | 1M ctx, deep reasoning |
-| OPS | DeepSeek V4 Flash | DeepSeek direct | Fast + reasoning, 200K, monitoring |
-| PLAN | DeepSeek V4 Pro | DeepSeek token-plan | 256K ctx, agentic planning |
-| Small | DeepSeek V4 Flash | DeepSeek token-plan | 128K ctx, fast, vision |
+> **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json` (21 models, 13 agents, 11 providers)
+> 
+> This section is a cached summary. The JSON registry is authoritative for all model-to-agent assignments, fallback chains, capabilities, shadows, scars, and routing rules.
+>
+> Quick lookup: `python3 -c "import json; d=json.load(open('/root/AAA/registries/models/AGENT_MODEL_MAP.json')); [print(f'{a[\"agent_id\"]}: {a[\"primary_model\"]} → fallback: {[f[\"model_key\"] for f in a.get(\"fallback_chain\",[])]}') for a in d['agents']]"`
 
 ### Model Tier Map (zen'd 2026-07-20)
 
