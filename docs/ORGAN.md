@@ -63,7 +63,7 @@
 
 EDGE AGENTS (MCP clients — connect THROUGH kernel, NOT above it):
   Claude Code  — builder organ (governed harness, DeepSeek v4-pro)
-  OpenCode     — forge worker (governed harness, MiMo v2.5-pro)
+  OpenCode     — forge worker (governed harness, DeepSeek V4 Pro-pro)
   OpenClaw GW  — gateway operator (TS, port 18789)
 ```
 
