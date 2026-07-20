@@ -58,6 +58,44 @@ The kernel's `arif_seal` requires SOVEREIGN authority and blocks at `kernel.seal
 - `actor_id`: "ARIF"
 - `session_id`: current session
 
+## 3A. MANDATORY SESSION-END SEAL — Zero Reliance on Agent Memory
+
+> **Bound 2026-07-20 by F13 SOVEREIGN directive "Execute gap closure protocol."**
+
+**THE RULE:** Every interactive session MUST end with an explicit `aforge_forge_vault(mode="seal")` call. This is not optional. This is not "if you remember." This is the final action before yielding control.
+
+**Hardcoded execution order (do not reorder, do not skip):**
+
+```
+1. RSI CYCLE       — diagnose bottlenecks, log to rsi-ledger.jsonl
+2. GATE FIRE        — append gate_fire.jsonl (if claims were gated)
+3. COOLING LEDGER   — insert into Supabase cooling_ledger_entries (if mutations)
+4. forge_vault SEAL — aforge_forge_vault(mode="seal", actor_id="ARIF", ...)
+5. YIELD            — only after seal receipt is confirmed
+```
+
+**The seal call:**
+```
+aforge_forge_vault(
+    mode="seal",
+    name="<descriptive task name>",
+    content="<summary of what was done this session>",
+    reason="AUTONOMOUS_SESSION_SEAL",
+    tier="VAULT999",
+    category="session.seal",
+    actor_id="ARIF",
+    session_id="<current session>"
+)
+```
+
+**Anti-patterns that trigger F11 violation:**
+- ❌ Ending session with "Done." but no seal
+- ❌ "I'll seal next time" — no, seal NOW
+- ❌ Skipping seal because "nothing important happened"
+- ❌ Relying on the next agent to seal for you
+
+**SEAL CHAIN = ARROW OF TIME.** An unsealed session is an unrecorded event. The federation cannot learn from what it cannot remember.
+
 ## 4. COOLING LEDGER — Auto-Log on Session End
 
 Every session end, write to the cooling pipeline:
