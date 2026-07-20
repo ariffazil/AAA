@@ -1,0 +1,17 @@
+{
+  "provider_key": "deepseek",
+  "family_key": "deepseek-v4-pro",
+  "model_id": "deepseek-v4-pro",
+  "execution_mode": "internal_mode",
+  "side_effects_allowed": true,
+  "tools_live": ["write_file", "read_file", "forge_shell", "forge_git", "forge_vault"],
+  "capabilities": {
+    "tool_call": true,
+    "reasoning": true,
+    "max_tokens": 200000
+  },
+  "model_cascade": {
+    "primary": "deepseek-v4-pro",
+    "fallback": ["mimo-v2.5-pro", "gpt-4o"]
+  }
+}
