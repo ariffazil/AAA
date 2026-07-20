@@ -253,8 +253,8 @@ instruments:
 - id: FI-008
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
-  version: 0.26.0
-  model: deepseek/deepseek-v4-pro
+  version: 0.27.0
+  model: kimi-code/k3
   izin: GRANTED
   izin_date: '2026-06-10'
   sandbox: process
@@ -282,6 +282,6 @@ instruments:
   config_path: /root/.kimi/config.toml
   mcp_config_path: /root/.kimi/mcp.json
   agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
-  note: 'Aligned 2026-07-18. Model: DeepSeek V4 Pro (1M ctx, vision, thinking) via minimax-coding-plan.
-    K3 dormant pending OAuth login. A-FORGE ingress is stdio. AMANAH + MARUAH embedded.
+  note: 'Aligned 2026-07-20. Model: Kimi K3 (2.8T MoE, 1M ctx, vision, thinking) via managed:kimi-code (OAuth, Allegretto).
+    A-FORGE ingress is stdio. AMANAH + MARUAH embedded.
     Legacy direct MCPs disabled. Trust tier: proposed 2 pending A-AUDIT + F13 ratification.'

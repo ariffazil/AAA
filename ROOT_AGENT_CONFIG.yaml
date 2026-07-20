@@ -287,8 +287,8 @@ forge_instruments:
   kimi_code_home: /root/.arifos/agents/kimi
   binary: /usr/local/bin/kimi
   kimi_code_binary: /root/.kimi-code/bin/kimi
-  version: 0.26.0
-  model: deepseek/deepseek-v4-pro
+  version: 0.27.0
+  model: kimi-code/k3
   native_mcp: true
   mcp_count: 9
   mcp_surface:
