@@ -6,7 +6,7 @@ export default function WellPage() {
   const [readiness, setReadiness] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-// eslint-disable-next-line no-use-before-define
+ 
 const loadReadiness = async () => {
     setLoading(true);
     try {
