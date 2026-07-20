@@ -20,7 +20,7 @@ Any divergence = immediate fix.
 | Internal | `http://arifosmcp:8080/mcp` |
 | Container port | 8080 |
 | Caddy route | `arifos.arif-fazil.com/mcp*` → `arifosmcp:8080` |
-| Tools | 13 canonical (arif_session_init → arif_ops_measure) |
+| Tools | 13 canonical (arif_init → arif_ops_measure) |
 | Auth | None (public) |
 | Status | ✅ HEALTHY |
 

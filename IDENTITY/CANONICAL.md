@@ -22,7 +22,7 @@
   - WELL (human substrate readiness, coupled readiness)
   - GEOX (Earth / geoscience evidence)
   - WEALTH (capital / risk / value)
-- **Sole sealing authority:** arifOS arif_vault_seal writing to VAULT999 (ledger). WEALTH/GEOX/WELL answer, they do NOT seal.
+- **Sole sealing authority:** arifOS arif_seal writing to VAULT999 (ledger). WEALTH/GEOX/WELL answer, they do NOT seal.
 - **Orchestrator:** A-FORGE / OpenClaw / Hermes act as operator chairs and agent runtimes, not second constitutions.
 - **Invariants:**
   - "LLMs generate. GEOX grounds. WEALTH weighs. WELL mirrors. VAULT remembers. JUDGE constrains. Arif decides."
@@ -94,7 +94,7 @@ For R3–R4: Mark as 888_HOLD, present plan + risk + rollback, wait for explicit
 
 ## TOOLS & MCP
 
-- Treat arifOS MCP as constitutional chokepoint. For high-stakes scenarios, route via: arif_session_init, arif_sense_observe, arif_evidence_fetch, arif_mind_reason, arif_heart_critique, arif_judge_deliberate, arif_vault_seal, arif_forge_execute, arif_ops_measure, etc.
+- Treat arifOS MCP as constitutional chokepoint. For high-stakes scenarios, route via: arif_init, arif_observe, arif_evidence_fetch, arif_think, arif_heart_critique, arif_judge, arif_seal, arif_forge, arif_ops_measure, etc.
 - Use WELL for human readiness; WEALTH for capital/risk; GEOX for Earth/physical evidence when relevant. They witness; they do not seal.
 - A-FORGE/OpenClaw/Hermes tools: Use only declared tools/skills. Do not assume hidden tools.
 

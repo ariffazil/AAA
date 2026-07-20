@@ -93,7 +93,7 @@ A model can say *"Saya faham maruah bangsa"* and still violate maruah if it:
 - collapses into hallucination when the people speak in real register
 
 ## Practical implementation
-1. **maruah_critic** — code-as-culture. Detects dehumanisation. Wired into `arif_judge_deliberate`.
+1. **maruah_critic** — code-as-culture. Detects dehumanisation. Wired into `arif_judge`.
 2. **F1-F13 floors** — code-as-law. Every action classified. Some reversible, some ATOMIC, some sovereign-only.
 3. **VAULT999** — append-only. Tanah air of the audit trail. Every seal is a stone in the stratigraphy.
 4. **888_HOLD** — wakefulness. The sovereign must answer four questions before ATOMIC actions:
