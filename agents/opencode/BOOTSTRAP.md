@@ -40,6 +40,16 @@ for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; d
 done
 ```
 
+### Step 2.5: FLAME FREE-LOOP
+
+```bash
+# FLAME health probe — RM0 tool lane alive?
+curl -sf http://localhost:18901/health 2>/dev/null | python3 -c "
+import json,sys; d=json.load(sys.stdin)
+print(f'flame={d[\"status\"]} mode={d[\"mode\"]}')
+" || echo "❌ FLAME :18901 DOWN"
+```
+
 ### Step 3: SEAL CHAIN
 
 ```bash
