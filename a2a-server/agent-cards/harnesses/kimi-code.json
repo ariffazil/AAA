@@ -10,7 +10,7 @@
   },
   "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced.",
   "version": "2.0.0",
-  "model": "minimax-coding-plan/MiniMax-M3 (1M ctx, vision, thinking)",
+  "model": "kimi-code/k3 (Kimi K3, 2.8T MoE, 1M ctx, vision, thinking)",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.arifos/agents/kimi",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",

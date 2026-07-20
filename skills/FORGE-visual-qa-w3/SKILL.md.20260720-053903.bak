@@ -1,8 +1,8 @@
 ---
 id: FORGE-visual-qa-w3
 name: FORGE-visual-qa-w3
-version: 1.1.0-2026.07.20
-description: "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA."
+version: 1.0.0-2026.07.17
+description: "Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal."
 owner: A-FORGE
 risk_tier: high
 floor_scope: ['F1', 'F2', 'F3', 'F4', 'F7', 'F11']
@@ -26,7 +26,6 @@ autonomy_tier: T2
 - "does this screenshot match the spec"
 - "test this CSS against constraints"
 - Any task requiring pixel-level validation against a design spec
-- Any MCP App / ChatGPT host-surface render check (see MCP APP / CHATGPT HOST-SURFACE QA below)
 
 ## DO NOT USE
 
@@ -241,93 +240,6 @@ IF human REJECTS:
 
 ---
 
-## MCP APP / CHATGPT HOST-SURFACE QA
-
-> Extends Stages 1–6 for MCP App surfaces (blueprint: `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md` §10 submission path).
-> The 7-stage loop is unchanged — what changes is the **render target** and the **evidence bundle**.
-> Authoritative contract: the blueprint. Anything here that disagrees with the blueprint loses.
-
-### RENDER TARGETS + PASS_CANDIDATE CRITERIA
-
-A GEOX app surface (e.g. `ui://geox/workbench-v1.html`, served as `text/html;profile=mcp-app`) must be rendered and validated on each host surface below. PASS_CANDIDATE on a surface requires **ALL** of the shared criteria; per-surface rows add their own harness note.
-
-| Surface | Harness | Surface-specific note |
-|---------|---------|----------------------|
-| MCPJam / MCP Inspector | Local inspector against GEOX MCP (`:8081`) | First gate — cheapest iteration loop; must pass before any ChatGPT surface |
-| ChatGPT Developer Mode | ChatGPT app with connector in Developer Mode | Golden prompts (direct, indirect, negative) must drive the UI |
-| ChatGPT web | Production web client | Full render + interaction evidence |
-| ChatGPT Android | Android app | Mandatory — see MOBILE IS MANDATORY below |
-| ChatGPT iOS | iOS app | Mandatory — see MOBILE IS MANDATORY below |
-
-**Shared PASS_CANDIDATE criteria (every surface):**
-
-```
-1. iframe mounts via ui/initialize — host bridge handshake completes,
-   app announces itself, no mount timeout or blank frame.
-2. UI hydrates from tool-result — ui/notifications/tool-result
-   structuredContent renders real data (not placeholder/loading state).
-3. Follow-up tools/call from UI succeeds — a UI-initiated action
-   (button/control) triggers tools/call and the UI re-renders on result.
-4. State survives rerender/resize — widget state persists across
-   host-driven rerender and viewport resize (no reset to initial state).
-5. CSP blocks undeclared origins — a test fetch/connect to a domain NOT
-   in _meta.ui.csp connectDomains/resourceDomains fails closed.
-6. Text fallback visible when UI unsupported — when the host cannot
-   render the app, the tool's text content still carries the answer.
-```
-
-Any single criterion failing on a surface → that surface is not PASS_CANDIDATE → verdict HOLD for the submission gate (deviations handled by the normal Stage 4–5 loop).
-
-### EVIDENCE CAPTURE PER SURFACE
-
-Each surface run must capture the full evidence trio — screenshot alone is inadmissible for host-surface claims:
-
-```
-CAPTURE (per surface):
-  1. screenshot        — full-page/frame capture, hashed per Stage 1 → feeds W₁
-  2. raw JSON-RPC log  — ui/initialize, ui/notifications/tool-input,
-                         ui/notifications/tool-result, tools/call frames,
-                         verbatim → feeds W₂ (protocol-level lint)
-  3. tool invocation record — tool name, arguments, structuredContent hash,
-                         isError flag → feeds W₂ + W₃
-
-W₁ validates pixels (criteria 1, 2, 4, 6 as visible).
-W₂ lints the JSON-RPC log + bundle (criteria 1, 3, 5 as protocol/DOM facts).
-W₃ (human) reviews the full trio per surface before any SEAL.
-```
-
-### SINGLE-FILE VITE BUNDLE CHECK (W₂ lint)
-
-Blueprint §6: the v1 workbench shell is a **single-file Vite bundle with inline JS**, served from one `ui://` resource. W₂ DOM lint MUST assert:
-
-```
-- No external <script src>, <link href>, or <img src> with relative paths —
-  these 404 inside the sandbox iframe (no shared origin root).
-- All JS inlined in the single HTML payload; assets inlined (data: URI) or
-  served from CSP-declared resourceDomains only.
-- No references to Vite chunk paths (/assets/*.js, /assets/*.css).
-- MIME served is text/html;profile=mcp-app (host only enables the bridge for it).
-```
-
-A bundle that renders locally but 404s assets inside the iframe is a classic false PASS — this check exists to kill it.
-
-### MOBILE IS MANDATORY
-
-```
-Android and iOS ChatGPT are REQUIRED render surfaces before submission
-(blueprint §10 + runbook step 14). They are NOT optional and NOT
-"nice-to-have follow-ups".
-
-- PASS_CANDIDATE on web alone is INADMISSIBLE for the submission gate.
-- Missing Android/iOS evidence → verdict HOLD with
-  error = "MOBILE_SURFACE_EVIDENCE_MISSING" — do not skip, do not downgrade.
-- Mobile constraints (small viewport, touch, host chrome) frequently expose
-  layout/state bugs that desktop/web hides. Treat mobile deviations with
-  the same entropy loop as any surface.
-```
-
----
-
 ## INVARIANTS (enforced at each stage)
 
 | ID | Invariant | Check Point |
@@ -342,8 +254,6 @@ Android and iOS ChatGPT are REQUIRED render surfaces before submission
 | I8 | Tri-Witness consensus | Stage 6 — all three witnesses populated |
 | I9 | Anti-collusion: witness decoupling | Stages 2+3 — W₁/W₂ cannot write W₃ |
 | I10 | Composite seal | Stage 7 — VAULT999 seals composite_hash |
-| I11 | Host-surface evidence trio | MCP App QA — screenshot + JSON-RPC log + tool record per surface |
-| I12 | Mobile surfaces mandatory | MCP App QA — Android + iOS evidence required before submission gate |
 
 ---
 

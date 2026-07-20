@@ -1,7 +1,7 @@
 ---
 id: FORGE-mcp-gui
 name: FORGE-mcp-gui
-version: 1.1.0
+version: 1.0.0
 description: Build and audit interactive MCP Apps, UI resources, sandbox messaging, and CSP-bound host integration.
 owner: AAA
 risk_tier: medium
@@ -13,8 +13,6 @@ tags: [forge, mcp, apps, ui, sep-1865, csp]
 # ⚒️ FORGE-mcp-gui — MCP GUI/Apps Development Skill
 
 > **Forged:** 2026-07-19 by FORGE (000Ω) for AAA Control Plane
-> **Hardened:** 2026-07-20 — ChatGPT-native MCP Apps standard (sovereign blueprint:
-> `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md`)
 > **Zen Name:** FORGE-mcp-gui
 > **Axis:** forge · **Tier:** AGI · **Class:** C2 Observe+Execute
 > **Spec:** SEP-1865 (MCP Apps, ratified 2026-01-26)
@@ -114,19 +112,19 @@ app.updateModelContext({ cart: items });       // background awareness
 Register 5 widget templates. Tools fill them with data. Hosts prefetch.
 
 ### 8. Double-Iframe Sandbox
-You don't build the sandbox — you declare for it. CSP keys are **domain lists** under `_meta.ui.csp` (`connectDomains`, `resourceDomains`), NOT raw CSP header directives:
+You don't build the sandbox — you declare for it.
 ```json
 "_meta": {
   "ui": {
     "resourceUri": "ui://org/widget",
     "csp": {
-      "connectDomains": ["api.example.com"],
-      "resourceDomains": ["cdn.example.com", "images.example.com"]
+      "connect-src": ["https://api.example.com"],
+      "script-src": ["https://cdn.example.com"],
+      "img-src": ["https://images.example.com"]
     }
   }
 }
 ```
-(The older `connect-src` / `script-src` header-style example previously shown here is superseded — see CHATGPT-NATIVE APPS §3 below.)
 Missing CSP → silent block → broken app.
 
 ### 9. CSP Is Your Passport
@@ -204,7 +202,7 @@ McpUiServer.create_ui_resource(...)
 | Host | MCP Apps | Notes |
 |------|----------|-------|
 | Claude (web+desktop) | ✅ Full | First adopter |
-| ChatGPT | ✅ Full | 2026-07 standard: ship via Developer Mode first (golden prompts), then plugin submission package (verified publisher, exact CSP, unique widget domain, privacy policy, support contact, screenshots, rollback note). Alias `_meta["openai/outputTemplate"]` required alongside `_meta.ui.resourceUri`. |
+| ChatGPT | ✅ Full | Apps SDK bridge |
 | Goose | ✅ Full | Open source |
 | VS Code Insiders | ✅ | Via Copilot |
 | MCPJam | ✅ Full | Local inspector/debugger |
@@ -231,57 +229,12 @@ McpUiServer.create_ui_resource(...)
 
 ---
 
-## CHATGPT-NATIVE APPS (2026-07 standard)
-
-Contract source: sovereign blueprint `/root/forge_work/2026-07-20/GEOX-CHATGPT-MCP-GUI-BLUEPRINT.md` (authoritative for the GEOX consolidation; the rules below generalize to any ChatGPT-targeted MCP App). Where this section disagrees with older material in this skill, **this section wins**.
-
-### 1. UI Binding Keys
-- **Primary standard key:** `_meta.ui.resourceUri` on the tool definition.
-- **ChatGPT compatibility alias:** emit `_meta["openai/outputTemplate"]` ALONGSIDE the primary key — never instead of it. Both point at the same `ui://` resource.
-- **Optional:** `openai/toolInvocation/invoking` and `openai/toolInvocation/invoked` status strings (tool-call spinner copy).
-
-### 2. Resource MIME + Versioned URIs
-- Resource MIME MUST be exactly **`text/html;profile=mcp-app`**. The host only enables the app bridge for this exact profile MIME — plain `text/html` renders nothing.
-- **Version every `ui://` URI — it is a cache key.** Pattern: `ui://geox/workbench-v1.html`. Bump the version segment to invalidate stale caches.
-
-### 3. CSP via `_meta.ui.csp`
-- Mandatory, exact domains: **`connectDomains`** (fetch/XHR/WS targets) and **`resourceDomains`** (scripts, styles, images, fonts).
-- Optional: `domain` (widget's own domain), `prefersBorder` (host chrome hint).
-- **Avoid `frameDomains`** — third-party iframes draw review scrutiny at submission.
-- This supersedes the older `connect-src` / `script-src` header-style example (corrected in place at Tip #8).
-- v1 pattern: single-file Vite bundle (inline JS) for the workbench shell → `resourceDomains` stays empty or near-empty.
-
-### 4. Host Bridge Layering
-- **Portable MCP Apps `ui/*` bridge FIRST:** `ui/initialize`, `ui/notifications/tool-input`, `ui/notifications/tool-result`, `tools/call`, `ui/message`, `ui/update-model-context`.
-- **`window.openai` is an optional, feature-detected enhancement layer** (`if (window.openai) { ... }`) — never a requirement.
-- **Never branch on product** ("if ChatGPT do X, if Claude do Y"). One portable path + progressive enhancement.
-
-### 5. Three Return Channels Discipline
-- `structuredContent` — widget props + model narration data ONLY. No secrets, no trace IDs, no dense raw arrays.
-- `content` — text fallback **ALWAYS**. Hosts without MCP Apps support still get the answer; model context stays small.
-- `_meta` — metadata and binding keys only.
-
-### 6. Tool Error Contract
-- Tool-originated failures return CallToolResult with **`isError: true`** and a readable message — the model can self-correct and retry.
-- **Never surface a tool failure as a protocol-level error/crash.** A protocol crash kills the host session; `isError` keeps the loop alive.
-
-### 7. Developer Mode Golden Prompts (First Host Gate)
-Pass all three in ChatGPT Developer Mode before any other surface:
-- **DIRECT** — "Open the GEOX Well Witness workbench for well X" → widget renders.
-- **INDIRECT** — "Why is porosity low at 2,400 m in well X?" → model chains data tools, view tool renders the widget.
-- **NEGATIVE** — out-of-scope / destructive ask → clean text refusal, no widget, no crash.
-
-After Developer Mode: API Playground instrumentation → web + Android + iOS render/state evidence → plugin submission package (see HOST SUPPORT MATRIX).
-
----
-
 ## GEOX-SPECIFIC NOTES
 
-- **Well Witness — first vertical slice (blueprint `pr/geox-well-witness-v1`):** split into `geox_well_ingest` → `geox_petrophysics` → `geox_well_view`; only the view tool binds `ui://geox/workbench-v1.html` (MIME `text/html;profile=mcp-app` + exact CSP). Exit gate: `resources/read` returns valid app HTML and renders in Inspector.
-- `mcp_apps_bridge.py` — `enrich_response()` injects `_meta.ui.resourceUri` on 24 tools; harden to also emit the `_meta["openai/outputTemplate"]` alias alongside (CHATGPT-NATIVE §1).
+- `mcp_apps_bridge.py` — `enrich_response()` injects `_meta.ui.resourceUri` on 24 tools
 - `mcp-ui-server` 1.0.0 installed (Python: `create_app_resource()`)
 - `geox_list_apps` tool exposes app-bearing tools to hosts
-- Phase 3 remaining: TS notification bridge (`geoxMcpClient.ts`), outputSchema per tool (blueprint families: GeoxStatusResult, GeoxArtifactResult, GeoxWellResult, GeoxSeismicResult, GeoxMapResult, GeoxProspectResult, GeoxClaimResult, GeoxEvidenceResult)
+- Phase 3 remaining: TS notification bridge (`geoxMcpClient.ts`), outputSchema per tool
 - High-value UI targets: `geox_map_render_preview`, `geox_seismic_cognition`, `geox_well_desk`
 
 ---
@@ -330,5 +283,5 @@ After Developer Mode: API Playground instrumentation → web + Android + iOS ren
 
 ---
 
-*Forged: 2026-07-19 by FORGE (000Ω). Hardened 2026-07-20 to the ChatGPT-native blueprint. DITEMPA BUKAN DIBERI.*
+*Forged: 2026-07-19 by FORGE (000Ω). DITEMPA BUKAN DIBERI.*
 *The forge knows the code. The kernel knows the law. The sovereign knows the way.*
