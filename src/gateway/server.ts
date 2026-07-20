@@ -14,6 +14,8 @@ import { getAgentCard, getDiscoveryRoutingPolicy } from '../seed/bootstrap';
 import fs from 'node:fs/promises';
 import https from 'node:https';
 import http from 'node:http';
+import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 
 function getA2ADiscoveryContract() {
   const card = getAgentCard();
@@ -492,10 +494,11 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     let identityHash = 'UNAVAILABLE';
     let gitCommit = 'UNAVAILABLE';
     try {
-      const { execSync } = require('node:child_process');
-      gitCommit = execSync('git -C /root/AAA rev-parse --short=7 HEAD', { timeout: 3000 }).toString().trim();
-      identityHash = require('node:crypto').createHash('sha256').update(gitCommit + '/root/AAA').digest('hex').substring(0, 16);
-    } catch {}
+      gitCommit = execFileSync('git', ['-C', '/root/AAA', 'rev-parse', '--short=7', 'HEAD'], { timeout: 3000 }).toString().trim();
+      identityHash = createHash('sha256').update(gitCommit + '/root/AAA').digest('hex').substring(0, 16);
+    } catch {
+      // Keep explicit UNAVAILABLE defaults when git metadata cannot be read.
+    }
 
     res.json({
       status: degraded ? 'degraded' : 'healthy',

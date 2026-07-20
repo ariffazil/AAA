@@ -86,7 +86,8 @@ const OPENWEBUI_URL = process.env.OPENWEBUI_URL || '';
 const ARIFOS_LOCAL_URL = process.env.ARIFOS_LOCAL_URL || 'http://127.0.0.1:8088';
 const QDRANT_URL = process.env.QDRANT_URL || 'http://127.0.0.1:6333';
 const AAA_AI_COLLECTION = process.env.AAA_AI_COLLECTION || 'aaa_ai_docs';
-const AAA_AI_DEFAULT_MODEL = process.env.AAA_AI_DEFAULT_MODEL || 'qwen2.5:7b';
+const AAA_AI_DEFAULT_PROVIDER = process.env.AAA_AI_DEFAULT_PROVIDER || 'arifos';
+const AAA_AI_DEFAULT_MODEL = process.env.AAA_AI_DEFAULT_MODEL || 'arif_reply_compose';
 const AAA_AI_EMBED_MODEL = process.env.AAA_AI_EMBED_MODEL || 'bge-m3:latest';
 
 const A2A_TOKEN = process.env.A2A_TOKEN || '';
@@ -2833,8 +2834,9 @@ app.get('/api/ai/health', async (req, res) => {
         qdrant: 'configured',
       },
       defaults: {
-        provider: 'ollama',
+        chat_provider: AAA_AI_DEFAULT_PROVIDER,
         chat_model: AAA_AI_DEFAULT_MODEL,
+        embedding_provider: 'ollama',
         embed_model: AAA_AI_EMBED_MODEL,
         rag_collection: AAA_AI_COLLECTION,
       },
@@ -2891,8 +2893,10 @@ app.get('/api/ai/models', async (req, res) => {
         digest: model.digest || null,
       })),
       defaults: {
-        provider: 'ollama',
+        provider: AAA_AI_DEFAULT_PROVIDER,
         model: AAA_AI_DEFAULT_MODEL,
+        embedding_provider: 'ollama',
+        embedding_model: AAA_AI_EMBED_MODEL,
       },
       providers: [
         { id: 'ollama', label: 'Local Ollama' },
@@ -3001,8 +3005,9 @@ app.post('/api/ai/rag/query', async (req, res) => {
 });
 
 app.post('/api/ai/chat', async (req, res) => {
-  const provider = req.body?.provider === 'arifos' ? 'arifos'
-    : req.body?.provider === 'openrouter' ? 'openrouter'
+  const requestedProvider = req.body?.provider || AAA_AI_DEFAULT_PROVIDER;
+  const provider = requestedProvider === 'arifos' ? 'arifos'
+    : requestedProvider === 'openrouter' ? 'openrouter'
     : 'ollama';
   const model = typeof req.body?.model === 'string' && req.body.model.trim()
     ? req.body.model.trim()
