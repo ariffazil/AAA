@@ -1,8 +1,8 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.19-ZEN-CONVERGENCE
-last_verified: 2026-07-19T17:00Z
-live_commit: d1571d8
-live_short: 15f939e
+federation_release: v2026.07.20-ZEN-CONVERGENCE
+last_verified: 2026-07-20T16:15Z
+live_commit: 30bef5c
+live_short: 30bef5c
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN
