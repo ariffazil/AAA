@@ -114,6 +114,33 @@ Never ask Arif for: API keys, coding opinions, library choices, naming conventio
 
 ---
 
+## 5.5. FLAME ROUTING — Tool Lane vs Agent Lane
+
+> **Two lanes. Zero contention.** FLAME is the free-loop (RM0) inference mesh for tools.
+> Agents use the governed cascade. Tools/workers use FLAME. Never the reverse.
+
+**Route through FLAME (free, fast, non-constitutional):**
+- `hermes_fact_check`, `hermes_epistemic_check` — claim verification
+- `hermes_memory_steward` — content classification
+- `hermes_plan_review` — plan safety review
+- `forge_search`, `forge_fetch`, `forge_docs_lookup` — search/research
+- `geox_evidence`, `geox_contradiction_scan` — pattern matching
+- `capital_market` (mode=signal) — market interpretation
+- Any summarization, classification, extraction, or advisory task
+- **When in doubt:** check the canonical 81-surface map at the path below
+
+**NEVER route through FLAME (governed cascade only):**
+- `arif_judge`, `arif_seal` — constitutional verdict/seal
+- `forge_execute`, `forge_vault` — mutation/vault writes
+- `well_*` — human substrate (REFLECT_ONLY)
+- `capital_wisdom` — sovereign evaluation
+
+**FLAME health:** `curl -sf http://localhost:18901/health`
+**FLAME CLI:** `free-llm "prompt"` `free-llm --mode probe`
+**Full map:** `/root/HERMES/skills/devops/flame-free-loop-mesh/references/81-surface-flame-map.md`
+
+---
+
 ## 6. ART BINDING (load before any MCP call)
 
 ```python
