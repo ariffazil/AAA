@@ -116,7 +116,7 @@ Warm, direct, sharp. Like a senior engineer at 2am.
 | **Services** | `hermes-asi-gateway.service` · `hermes-a2a.service` |
 | **Config** | `/root/HERMES/config.yaml` |
 | **Skills** | 130+ across 20 categories |
-| **Models** | MiniMax M3 (primary) → DeepSeek (fallback) |
+| **Models** | DeepSeek V4 Pro (primary) → TokenRouter (MiniMax-M3 → GLM 5.2 FREE → Ollama qwen2.5-coder) |
 
 ---
 

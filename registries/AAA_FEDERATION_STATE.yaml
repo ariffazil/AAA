@@ -146,17 +146,17 @@ model_drift:
       
     openclaw:
       source: /root/.openclaw/openclaw.json
-      primary: xiaomi-coding/mimo-v2.5-pro
+      primary: xiaomi-coding/deepseek-v4-pro
       authority: "agents.defaults.model.primary"
       
     opencode:
       source: /root/.config/opencode/opencode.json
-      primary: tokenplan-mimo/mimo-v2.5-pro
+      primary: deepseek/deepseek-v4-pro
       authority: "model field"
       
     hermes:
       source: /root/HERMES/config.yaml
-      primary: mimo-v2.5-pro
+      primary: deepseek-v4-pro
       authority: "model.default"
       
     arifos:
@@ -166,7 +166,7 @@ model_drift:
       
   analysis: |
     The federation registry says DeepSeek is primary. OpenClaw routes to
-    MiMo. OpenCode routes to MiMo Pro. Hermes routes to MiMo Pro.
+    DeepSeek V4 Pro. OpenCode routes to DeepSeek. Hermes routes via TokenRouter.
     arifOS doesn't report its model. Five different defaults, five
     different configs, zero alignment. F2 TRUTH violation.
     
@@ -210,7 +210,7 @@ agent_alignment:
       status: live
       root_config_ref: true
       version: "1.17.7"
-      model: tokenplan-mimo/mimo-v2.5-pro
+      model: deepseek/deepseek-v4-pro
     - id: claude-code
       status: live
       root_config_ref: false
@@ -298,8 +298,8 @@ forward_actions:
     authority: F13
     priority: MEDIUM
     
-  - id: OPENCLAW-MIMO-DUPLICATE
-    what: "Remove duplicate mimo-v2.5-pro from fallback chain"
+  - id: OPENCLAW-LEGACY
+    what: "Remove duplicate deepseek-v4-pro from fallback chain"
     blocker: "Requires OpenClaw config edit"
     authority: F13
     priority: MEDIUM
@@ -334,6 +334,6 @@ forge_work_index:
       
     - date: "2026-06-16"
       receipts: 3
-      focus: "Kimi K2.7 shadow, cross-model audit, OpenClaw RSI verification"
+      focus: "DeepSeek V4 Pro shadow, cross-model audit, OpenClaw RSI verification"
 
 ditempa_bukan_diberi: true

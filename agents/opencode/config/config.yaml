@@ -4,8 +4,8 @@ id: opencode-agent
 agent_id: opencode
 
 runtime:
-  model: tokenplan-mimo/mimo-v2.5-pro
-  small_model: bailian-token-plan/qwen3.6-flash
+  model: deepseek/deepseek-v4-pro
+  small_model: deepseek/deepseek-v4-flash
   autoupdate: true
 
 approval:

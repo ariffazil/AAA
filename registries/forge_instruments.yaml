@@ -7,9 +7,9 @@ instruments:
   binary: /root/.npm-global/bin/opencode
   version: 1.18.3
   version_pinned_from: 2026-07-19 (live observed)
-  model: opencode-go/mimo-v2.5-free
+  model: opencode-go/deepseek-v4-flash-free
   fallback_model: ollama/qwen2.5-coder:3b
-  model_strategy: MiMo v2.5 free is the verified live primary; local Qwen is the offline recovery route. Paid MiMo was rejected by live balance check.
+  model_strategy: DeepSeek V4 Pro free is the verified live primary; local Ollama qwen2.5-coder is the offline recovery route. All agents use DeepSeek V4 Pro via token-plan.
   izin: GRANTED
   izin_date: '2026-05-17'
   last_upgrade: '2026-07-19'
@@ -29,13 +29,13 @@ instruments:
     pattern: architect -> engineer -> auditor -> recovery
     architect:
       agent: planner
-      model: opencode-go/mimo-v2.5-free
+      model: opencode-go/deepseek-v4-flash-free
       authority: frame and sequence work; no irreversible self-grant
     engineer:
       agents:
       - forge
       - ops
-      model_strategy: MiMo primary; North Mini Code for operations
+      model_strategy: DeepSeek V4 Pro primary; North Mini Code for operations
       authority: execute reversible digital work and verify outcomes
     auditor:
       agent: auditor
@@ -71,7 +71,6 @@ instruments:
   - hostinger-vps
   - megamemory
   - meyhem
-  - minimax
   - perplexity
   - playwright
   - postgres
@@ -144,7 +143,7 @@ instruments:
   name: Qwen Code
   binary: /usr/bin/qwen
   version: 0.17.1
-  model: MiniMax-M3
+  model: DeepSeek V4 Pro
   izin: GRANTED
   izin_date: '2026-06-10'
   sandbox: process
@@ -153,7 +152,7 @@ instruments:
     historical: 1 Explore sub-agent session (read-only)
   mcp_surface: []
   config_path: /root/.qwen/
-  note: AUDITED 2026-06-10. Uses MiniMax-M3 (same federation key). ZERO MCP connections.
+  note: AUDITED 2026-06-10. Uses DeepSeek V4 Pro (same federation key). ZERO MCP connections.
     Heavily restricted Bash permissions. No active sessions. LOW RISK.
 - id: FI-004
   name: Antigravity CLI
@@ -255,7 +254,7 @@ instruments:
   name: Kimi Code CLI
   binary: /root/.kimi-code/bin/kimi
   version: 0.26.0
-  model: minimax-coding-plan/MiniMax-M3
+  model: deepseek/deepseek-v4-pro
   izin: GRANTED
   izin_date: '2026-06-10'
   sandbox: process
@@ -272,7 +271,6 @@ instruments:
   - well
   - geox
   - aforge
-  - minimax
   - capability-index
   - repomapper
   - serena
@@ -284,6 +282,6 @@ instruments:
   config_path: /root/.kimi/config.toml
   mcp_config_path: /root/.kimi/mcp.json
   agent_card: /root/AAA/a2a-server/agent-cards/forge/fi-008-kimi-code.json
-  note: 'Aligned 2026-07-18. Model: MiniMax-M3 (1M ctx, vision, thinking) via minimax-coding-plan.
+  note: 'Aligned 2026-07-18. Model: DeepSeek V4 Pro (1M ctx, vision, thinking) via minimax-coding-plan.
     K3 dormant pending OAuth login. A-FORGE ingress is stdio. AMANAH + MARUAH embedded.
     Legacy direct MCPs disabled. Trust tier: proposed 2 pending A-AUDIT + F13 ratification.'
