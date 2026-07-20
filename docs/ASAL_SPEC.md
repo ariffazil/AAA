@@ -541,11 +541,11 @@ def scan_pii(text):
 
 | Agent | Model | Provider |
 |-------|-------|----------|
-| Main | MiMo v2.5 Pro | Xiaomi |
-| FORGE | MiniMax M2.7 | MiniMax |
-| AUDITOR | MiniMax M3 | MiniMax |
-| OPS | MiniMax M2.5-HS | MiniMax |
-| PLAN | MiniMax M2.7-HS | MiniMax |
+| Main | DeepSeek V4 Pro | Xiaomi |
+| FORGE | DeepSeek V4 Pro | DeepSeek |
+| AUDITOR | DeepSeek V4 Pro | DeepSeek |
+| OPS | DeepSeek V4 Flash | DeepSeek |
+| PLAN | DeepSeek V4 Pro | DeepSeek |
 | Small | Azure GPT-4.1-mini | Azure |
 
 ---

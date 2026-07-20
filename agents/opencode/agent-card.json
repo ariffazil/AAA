@@ -6,11 +6,11 @@
   "principal_agent": {
     "type": "llm",
     "category": "LLM-as-principal (model is principal; OpenCode is the governed harness)",
-    "principle_origin": "MiMo v2.5 free (primary/forge/planner) + Nemotron 3 Ultra (auditor) + North Mini Code (ops) + local Qwen 2.5 Coder (recovery)"
+    "principle_origin": "DeepSeek V4 Pro free (primary/forge/planner) + Nemotron 3 Ultra (auditor) + North Mini Code (ops) + local Qwen 2.5 Coder (recovery)"
   },
   "description": "OpenCode 1.18.3 governed forge harness bound to 333-AGI. Discovers 247 skills and 25 MCP servers, runs a bounded todo-driven reality loop, and preserves 888_HOLD for irreversible actions.",
   "version": "1.18.3",
-  "model": "opencode-go/mimo-v2.5-free",
+  "model": "opencode-go/deepseek-v4-flash-free",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
@@ -200,10 +200,10 @@
       "all"
     ],
     "model_rotation": {
-      "forge": "opencode-go/mimo-v2.5-free",
+      "forge": "opencode-go/deepseek-v4-flash-free",
       "auditor": "opencode-go/nemotron-3-ultra-free",
       "ops": "opencode-go/north-mini-code-free",
-      "planner": "opencode-go/mimo-v2.5-free",
+      "planner": "opencode-go/deepseek-v4-flash-free",
       "recovery": "ollama/qwen2.5-coder:3b",
       "text-to-image": "deepseek/deepseek-v4-pro"
     }

@@ -97,10 +97,10 @@ Every file you edit is a cell in a constitutional body. Edit with purpose. You a
 
 | Agent | Model | Role |
 |-------|-------|------|
-| FORGE (000Ω) | GLM-5.2 | Bailian token-plan (200K ctx, tool_call + reasoning) |
+| FORGE (000Ω) | DeepSeek V4 Pro | DeepSeek token-plan (200K ctx, tool_call + reasoning) |
 | AUDITOR (Ψ) | DeepSeek V4 Pro | Audit, drift detection, cleanup (1M ctx) |
-| OPS (🌐) | MiniMax M2.5-HS | Topology, monitoring, health |
-| PLAN (Ω) | Kimi K2.7 Code | DAG planning, orchestration (256K ctx) |
+| OPS (🌐) | DeepSeek V4 Flash-HS | Topology, monitoring, health |
+| PLAN (Ω) | DeepSeek V4 Pro | DAG planning, orchestration (256K ctx) |
 
 ---
 

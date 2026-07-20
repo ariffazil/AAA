@@ -2,7 +2,7 @@
 
 > **One file. One identity. One agent.**
 > Tier: AGI | Class: C2 | Lane: 333-THINK → execute
-> Model: `tokenplan-mimo/mimo-v2.5-pro` | Config: `/root/.config/opencode/opencode.json`
+> Model: `deepseek/deepseek-v4-pro` | Config: `/root/.config/opencode/opencode.json`
 > DITEMPA BUKAN DIBERI — Forged, Not Given.
 
 ---
@@ -195,7 +195,7 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 
 | Rule | Why |
 |------|-----|
-| MiMo v2.5 Pro as default | Primary model per opencode.json |
+| DeepSeek V4 Pro as default | Primary model per opencode.json |
 | Batch edits together | 1 write = good, 5 writes = wasteful |
 | Cache web results | Never search same thing twice |
 | Kill unused processes after task | Learned from Phase 0 optimization |
