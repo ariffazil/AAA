@@ -25,7 +25,7 @@
       "a2a_exposure": "internal",
       "risk_tier": "governed",
       "agent_doc": "/root/.arifos/agents/kimi/AGENTS.md",
-      "model": "minimax-coding-plan/MiniMax-M3",
+      "model": "kimi-code/k3 (Kimi K3, 2.8T MoE, 1M ctx)",
       "status": "active"
     },
     {
