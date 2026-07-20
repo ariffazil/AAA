@@ -39,8 +39,8 @@ def emit_sse(payload: dict) -> None:
 
 
 async def run_chat(params: dict) -> None:
-    provider = params.get("provider", "ollama")
-    model_name = params.get("model", "qwen2.5:7b")
+    provider = params.get("provider", "arifos")
+    model_name = params.get("model", "arif_reply_compose")
     messages = params.get("messages", [])
     session_id = params.get("session_id", "session-unknown")
     citations = params.get("citations", [])
