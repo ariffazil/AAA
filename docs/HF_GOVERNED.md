@@ -68,7 +68,7 @@ verdict_on_missing_module: 888_HOLD
 
 **What agents must know:** The Hub is not a file server. It is the **canonical registry of doctrine, artifacts, and evidence**. Every push, pull, and version tag is a constitutional act traceable to a floor.
 
-**Floor binding:** F1 (Amanah — reversibility), F3 (Shahada — witness), F12 (Hifz — protection)
+**Floor binding:** F1 (AMANAH — reversibility), F3 (WITNESS — testimony), F12 (SECURITY — protection)
 
 ### Auth & Identity
 ```python
@@ -292,7 +292,7 @@ model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb_c
 
 **What agents must know:** Fine-tuning is a **F1 Amanah operation** — potentially irreversible. Requires evidence, approval, and a rollback plan.
 
-**Floor binding:** F1 (Amanah — reversibility), F3 (Shahada — witness), F8 (Sabr — minimum cycle), F13 (Khalifah — Arif's veto on production)
+**Floor binding:** F1 (AMANAH — reversibility), F3 (WITNESS — testimony), F8 (Sabr — minimum cycle), F13 (Khalifah — Arif's veto on production)
 
 ### Rules
 1. PEFT/LoRA/QLoRA as **default** — full fine-tune requires F13 sovereign authorization

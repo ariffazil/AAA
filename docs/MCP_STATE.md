@@ -99,9 +99,9 @@ Total MCP servers in federation: **~45**. Direct per agent: **2-3**.
 Agent MCP Config (opencode.json / .mcp.json)
 │
 ├── MCP 1: arifOS (8088) — DIRECT
-│   ├── arif_session_init
-│   ├── arif_judge_deliberate
-│   ├── arif_vault_seal
+│   ├── arif_init
+│   ├── arif_judge
+│   ├── arif_seal
 │   ├── arif_mind_reason
 │   ├── arif_memory_recall
 │   ├── arif_organ_attest_all
@@ -230,7 +230,7 @@ Agent MCP Config
 
 ## 6. Constitutional Rules
 
-1. **arifOS is never proxied.** `arif_judge_deliberate`, `arif_vault_seal`, `arif_session_init` must always come from the kernel itself, not a proxy. (F9 ANTI-HANTU, F8 LAW)
+1. **arifOS is never proxied.** `arif_judge`, `arif_seal`, `arif_init` must always come from the kernel itself, not a proxy. (F9 ANTI-HANTU, F8 LAW)
 
 2. **A-FORGE is the default operational surface.** All infra tools (GEOX/WEALTH/WELL proxies, Docker, Postgres, Qdrant, Playwright, etc.) connect through A-FORGE by default. Direct connections are the exception for heavy compute only. (F4 CLARITY)
 

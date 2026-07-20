@@ -62,11 +62,11 @@ Client → Cloudflare → Cloudflared → Caddy (RP edge)
 ## The Verdict Chain
 
 ```
-arif_judge_deliberate → SEAL / SABAR / HOLD / VOID
+arif_judge → SEAL / SABAR / HOLD / VOID
                                     ↓ [SEAL only]
                           arif_forge_execute
                                     ↓
-                          arif_vault_seal
+                          arif_seal
 ```
 
 | Verdict | A-FORGE can execute? |
