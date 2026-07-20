@@ -40,6 +40,89 @@ const SCHEME_MAP = {
   'forge':   'aforge',
 };
 
+// Automatic A2A dispatch is restricted to evidence organs. arifOS and
+// A-FORGE remain governed explicit routes; they must never be inferred from
+// free text or bypass their own authority paths.
+const AUTO_DISPATCH_ORGANS = new Set(['geox', 'wealth', 'well']);
+const INTENT_ROUTE_TABLE = [
+  { organ: 'geox', pattern: /\b(prospect|basin|seismic|petrophysics|well[- ]log|subsurface)\b/i },
+  { organ: 'wealth', pattern: /\b(npv|irr|emv|cashflow|capital|portfolio|runway|fiscal|risk)\b/i },
+  { organ: 'well', pattern: /\b(readiness|fatigue|sleep|vitality|homeostasis|dignity)\b/i },
+];
+
+/**
+ * Resolve an A2A task to an evidence organ without inventing tool arguments.
+ * Explicit metadata wins. Intent-only resolution returns a proposal requiring
+ * a concrete tool before dispatch.
+ */
+function resolveOrgan(intent = '', params = {}) {
+  const metadata = params.metadata || {};
+  const requestedOrgan = String(metadata.routing || metadata.organ || '').trim().toLowerCase();
+  const requestedTool = typeof metadata.tool === 'string' ? metadata.tool.trim() : '';
+  const args = metadata.args && typeof metadata.args === 'object' ? { ...metadata.args } : {};
+
+  if (requestedOrgan) {
+    if (!AUTO_DISPATCH_ORGANS.has(requestedOrgan)) {
+      return {
+        organ: requestedOrgan,
+        tool: requestedTool || null,
+        args,
+        source: 'explicit',
+        dispatchable: false,
+        reason: 'Automatic dispatch is limited to evidence organs: GEOX, WEALTH, WELL',
+      };
+    }
+    if (!requestedTool) {
+      return {
+        organ: requestedOrgan,
+        tool: null,
+        args,
+        source: 'explicit',
+        dispatchable: false,
+        reason: 'metadata.tool is required for direct organ dispatch',
+      };
+    }
+    return { organ: requestedOrgan, tool: requestedTool, args, source: 'explicit', dispatchable: true };
+  }
+
+  const route = INTENT_ROUTE_TABLE.find(({ pattern }) => pattern.test(String(intent)));
+  if (!route) return null;
+  return {
+    organ: route.organ,
+    tool: null,
+    args,
+    source: 'intent',
+    dispatchable: false,
+    reason: 'Intent matched an organ; provide metadata.tool and metadata.args before dispatch',
+  };
+}
+
+/**
+ * Dispatch one explicit A2A evidence request through the lifecycle-aware MCP
+ * client. Returns routed=false when no safe direct dispatch is available.
+ */
+async function dispatchTaskToOrgan({ intent = '', params = {}, identity = {}, timeoutMs = 15000 } = {}) {
+  const route = resolveOrgan(intent, params);
+  if (!route || !route.dispatchable) {
+    return { routed: false, route: route || null };
+  }
+
+  const result = await mcpCall(route.organ, 'tools/call', {
+    name: route.tool,
+    arguments: route.args,
+  }, timeoutMs, identity);
+
+  return {
+    routed: true,
+    ok: result.ok,
+    organ: route.organ,
+    tool: route.tool,
+    source: route.source,
+    result: result.ok ? result.result : undefined,
+    error: result.ok ? undefined : result.error,
+  };
+}
+
 // ── MCP Session Cache (init-first lifecycle) ──────────────────────────
 // Spec: initialize → notifications/initialized → operations
 // https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle
@@ -506,6 +589,8 @@ function mountFederationRoutes(app) {
 module.exports = {
   ORGANS,
   SCHEME_MAP,
+  resolveOrgan,
+  dispatchTaskToOrgan,
   resolveResource,
   orchestratePipeline,
   federationStatus,
