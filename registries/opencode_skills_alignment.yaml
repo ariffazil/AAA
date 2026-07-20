@@ -3,7 +3,7 @@
 # OpenCode discovery path: ~/.agents/skills/**/SKILL.md
 # TREE777: alive but stale — reports 51, indexes ~10
 # AKAR: alive — 000-AKAR with SKILL.md + prompts/
-# Forged by: FORGE (000Ω) — GLM-5.2
+# Forged by: FORGE (000Ω) — DeepSeek V4 Pro
 # DITEMPA BUKAN DIBERI
 
 version: 2
@@ -13,10 +13,10 @@ total_skills: 47
 discovery_path: ~/.agents/skills/**/SKILL.md
 
 opencode_agents:
-  forge: bailian-token-plan/glm-5.2
-  auditor: bailian-token-plan/deepseek-v4-pro
-  ops: minimax/MiniMax-M2.5-highspeed
-  planner: bailian-token-plan/kimi-k2.7-code
+  forge: deepseek/deepseek-v4-pro
+  auditor: deepseek/deepseek-v4-pro
+  ops: deepseek/deepseek-v4-flash
+  planner: deepseek/deepseek-v4-pro
 
 status:
   tree777: 'alive but stale — reports 51, indexes ~10'

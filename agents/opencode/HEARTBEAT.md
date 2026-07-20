@@ -55,14 +55,14 @@
 
 | Agent | Model | Provider |
 |-------|-------|----------|
-| Main | MiMo V2.5 Pro | Xiaomi token-plan-sgp |
-| FORGE | GLM-5.2 | Bailian token-plan |
-| AUDITOR | DeepSeek V4 Pro | Bailian token-plan |
-| OPS | MiniMax M2.7 Highspeed | MiniMax direct |
-| PLAN | Kimi K2.7 Code | Bailian token-plan |
-| Small | Qwen 3.6 Flash | Bailian token-plan |
+| Main | DeepSeek V4 Pro | Xiaomi token-plan-sgp |
+| FORGE | DeepSeek V4 Pro | DeepSeek token-plan |
+| AUDITOR | DeepSeek V4 Pro | DeepSeek token-plan |
+| OPS | DeepSeek V4 Flash | DeepSeek direct |
+| PLAN | DeepSeek V4 Pro | DeepSeek token-plan |
+| Small | DeepSeek V4 Flash | DeepSeek token-plan |
 
-Daily budget: $2.00/session. 3 providers, 15 models, 1 unified billing (Bailian covers 4 agents).
+Daily budget: $2.00/session. 6 providers, 44 models, 1 unified billing (DeepSeek token-plan covers 4 agents).
 
 ---
 

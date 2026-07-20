@@ -100,14 +100,14 @@ If a server is DOWN, proceed read-only on live servers. Do NOT assume dead serve
 
 | Agent | Model | Provider | Why |
 |-------|-------|----------|-----|
-| Main (OpenCode) | MiMo V2.5 Pro | Xiaomi token-plan-sgp | Flagship reasoning, 1M ctx, tool_call |
-| FORGE | GLM-5.2 | Bailian token-plan | 200K ctx, tool_call + reasoning |
-| AUDITOR | DeepSeek V4 Pro | Bailian token-plan | 1M ctx, deep reasoning |
-| OPS | MiniMax M2.7 Highspeed | MiniMax direct | Fast + reasoning, 200K, monitoring |
-| PLAN | Kimi K2.7 Code | Bailian token-plan | 256K ctx, agentic planning |
-| Small | Qwen 3.6 Flash | Bailian token-plan | 128K ctx, fast, vision |
+| Main (OpenCode) | DeepSeek V4 Pro | Xiaomi token-plan-sgp | Flagship reasoning, 1M ctx, tool_call |
+| FORGE | DeepSeek V4 Pro | DeepSeek token-plan | 200K ctx, tool_call + reasoning |
+| AUDITOR | DeepSeek V4 Pro | DeepSeek token-plan | 1M ctx, deep reasoning |
+| OPS | DeepSeek V4 Flash | DeepSeek direct | Fast + reasoning, 200K, monitoring |
+| PLAN | DeepSeek V4 Pro | DeepSeek token-plan | 256K ctx, agentic planning |
+| Small | DeepSeek V4 Flash | DeepSeek token-plan | 128K ctx, fast, vision |
 
-### MiniMax Tier Map (corrected 2026-07-02)
+### Model Tier Map (zen'd 2026-07-20)
 
 | Model | Context | Use Case | Cost per M |
 |-------|---------|----------|------------|

@@ -32,8 +32,8 @@ honest_self_audit:
   - OBS/DER/INT/SPEC tagging reduces epistemic collapse.
   - F13 human veto is a required boundary for irreversible action.
   uncertain:
-  - mimo-v2.5 base may be underpowered for deep multi-step governance reasoning.
-  - The live OpenCode primary is mimo-v2.5-pro; do not generalize base-model limits
+  - deepseek-v4-pro base may be underpowered for deep multi-step governance reasoning.
+  - The live OpenCode primary is deepseek-v4-pro; do not generalize base-model limits
     to Pro without fresh eval evidence.
   - The 7-organ and 150-plus-tool surface may exceed the current operating need.
   - GENESIS documents must be checked against runtime enforcement, not treated as
@@ -165,8 +165,8 @@ forge_instruments:
   binary: /root/.npm-global/bin/opencode
   resolved_binary: /root/.npm-global/bin/opencode
   version: 1.18.3
-  model: opencode-go/mimo-v2.5-free
-  small_model: opencode-go/mimo-v2.5-free
+  model: opencode-go/deepseek-v4-flash-free
+  small_model: opencode-go/deepseek-v4-flash-free
   native_mcp: true
   mcp_count: 25
   mcp_servers:
@@ -186,7 +186,6 @@ forge_instruments:
   - hostinger-vps
   - megamemory
   - meyhem
-  - minimax
   - perplexity
   - playwright
   - postgres
@@ -289,7 +288,7 @@ forge_instruments:
   binary: /usr/local/bin/kimi
   kimi_code_binary: /root/.kimi-code/bin/kimi
   version: 0.26.0
-  model: minimax-coding-plan/MiniMax-M3
+  model: deepseek/deepseek-v4-pro
   native_mcp: true
   mcp_count: 9
   mcp_surface:
@@ -301,7 +300,6 @@ forge_instruments:
   - capability-index
   - repomapper
   - serena
-  - minimax
   federation_mcp_surface:
     arifos: http://127.0.0.1:8088/mcp
     geox: http://127.0.0.1:8081/mcp
