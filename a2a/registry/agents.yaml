@@ -123,7 +123,7 @@ agents:
       Grok Build warga (FI-007) — xAI grok-build model. Permission: always-approve.
       Replaced dead FI-007 Aider slot. No MCP surface yet.
 
-  # ── KIMI CODE — Primary coding forge instrument, MiniMax-M3 ──────────────────
+  # ── KIMI CODE — Primary coding forge instrument, Kimi K3 (2.8T) ──────────────
   - agent_id: kimi-code
     card_path: a2a-server/agent-cards/forge/fi-008-kimi-code.json
     binding_type: local-cli
@@ -133,8 +133,8 @@ agents:
     push_notifications: false
     openclaw_target: kimi-code
     notes: |
-      Kimi Code CLI warga (FI-008) — MiniMax-M3 primary (1M ctx, vision, thinking).
-      Governed by arifOS F1-F13. 9 MCP servers. K3 dormant via --model kimi-code/k3.
+      Kimi Code CLI warga (FI-008) — Kimi K3 primary (2.8T MoE, 1M ctx, vision, thinking).
+      Governed by arifOS F1-F13. 9 MCP servers. Allegretto plan.
       A-FORGE stdio ingress. AMANAH + MARUAH embedded.
 
   # ── CLAUDE CODE — Primary coding warga ───────────────────────────────────────
