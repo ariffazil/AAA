@@ -68,7 +68,7 @@ verdict_on_missing_module: 888_HOLD
 
 **What agents must know:** The Hub is not a file server. It is the **canonical registry of doctrine, artifacts, and evidence**. Every push, pull, and version tag is a constitutional act traceable to a floor.
 
-**Floor binding:** F1 (Amanah — reversibility), F3 (Shahada — witness), F12 (Hifz — protection)
+**Floor binding:** F1 (AMANAH — reversibility), F3 (WITNESS — testimony), F12 (SECURITY — protection)
 
 ### Auth & Identity
 ```python
@@ -143,7 +143,7 @@ path = hf_hub_download(
 
 **What agents must know:** The six datasets (AAA→FFF) are not data files. They are **organs with jurisdiction**. An agent that loads them must know what role each organ plays and must not cross-contaminate them.
 
-**Floor binding:** F2 (Haqq — truth), F4 (Nur — clarity), F6 (Adl — fairness/ASEAN)
+**Floor binding:** F2 (TRUTH — veracity), F4 (CLARITY — transparency), F6 (MARUAH — dignity)/ASEAN)
 
 ### The Organ Map
 
@@ -158,7 +158,7 @@ path = hf_hub_download(
 | **a2b-eval-results** | Eval harness | 102+3 | `load_dataset("ariffazil/a2b-eval-results", "per_scenario")` | AssetOpsBench benchmark results |
 
 ### Critical Rule
-Never load AAA as pretraining text. It is constitutional doctrine, not language statistics. Feeding AAA canons into a general fine-tune violates F2 (Haqq) — misrepresenting the nature of the data.
+Never load AAA as pretraining text. It is constitutional doctrine, not language statistics. Feeding AAA canons into a general fine-tune violates F2 (TRUTH) — misrepresenting the nature of the data.
 
 ### Dataset Loading
 ```python
@@ -237,7 +237,7 @@ def chunk_document(text, tokenizer, max_tokens=512, overlap=50):
 
 **What agents must know:** Every model execution is a **governed pipeline stage** (333→888). An agent does not "just run inference" — it executes a stage with floor obligations.
 
-**Floor binding:** F2 (Haqq — confidence ≥ 0.85), F5 (Hikmah — Gödel band Ω₀ ∈ [0.03, 0.05]), F11 (Aman — safety gate)
+**Floor binding:** F2 (Haqq — confidence ≥ 0.85), F5 (WISDOM — humility) band Ω₀ ∈ [0.03, 0.05]), F11 (AUDIT — traceability) gate)
 
 ### Rules
 1. `pipeline()` for rapid prototyping; `AutoModel` + `AutoTokenizer` for governed production
@@ -292,7 +292,7 @@ model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb_c
 
 **What agents must know:** Fine-tuning is a **F1 Amanah operation** — potentially irreversible. Requires evidence, approval, and a rollback plan.
 
-**Floor binding:** F1 (Amanah — reversibility), F3 (Shahada — witness), F8 (Sabr — minimum cycle), F13 (Khalifah — Arif's veto on production)
+**Floor binding:** F1 (AMANAH — reversibility), F3 (WITNESS — testimony), F8 (PATIENCE — deliberation) cycle), F13 (SOVEREIGN — Arif's veto on production)
 
 ### Rules
 1. PEFT/LoRA/QLoRA as **default** — full fine-tune requires F13 sovereign authorization
@@ -406,7 +406,7 @@ def fff_gate_check(model_id: str, gold_results: dict) -> dict:
 
 **What agents must know:** Evaluation is not measurement — it is **constitutional testimony**. Every eval run produces evidence that must be receipted, not just logged.
 
-**Floor binding:** F3 (Shahada — W4 witness score), F10 (Ihsan — quality ≥ 0.90), F3 + F12 + F13 for VAULT999 sealing
+**Floor binding:** F3 (Shahada — W4 witness score), F10 (EXCELLENCE — mastery) ≥ 0.90), F3 + F12 + F13 for VAULT999 sealing
 
 ### The Five AAA Scoring Axes
 

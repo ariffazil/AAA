@@ -93,7 +93,7 @@
 
 | Stage | Code | Tool | Trinity | Risk |
 |-------|------|------|---------|------|
-| INIT | 000 | `arif_session_init` | AGI | medium |
+| INIT | 000 | `arif_init` | AGI | medium |
 | OBSERVE | 111 | `arif_sense_observe`, `arif_explore` | AGI | low |
 | EVIDENCE | 222 | `arif_evidence_fetch` | AGI | medium |
 | REASON | 333 | `arif_mind_reason` | AGI | medium |
@@ -103,9 +103,9 @@
 | HEART | 666 | `arif_heart_critique` | ASI | medium |
 | GATEWAY | 666g | `arif_gateway_connect` | ASI | medium |
 | MEASURE | 777 | `arif_ops_measure` | ASI | low |
-| JUDGE | 888 | `arif_judge_deliberate` | APEX | high |
+| JUDGE | 888 | `arif_judge` | APEX | high |
 | FORGE | 010 | `arif_forge_execute` | APEX | high |
-| SEAL | 999 | `arif_vault_seal` | APEX | high |
+| SEAL | 999 | `arif_seal` | APEX | high |
 
 ### 1.3 Floor Enforcement (F1-F13)
 
@@ -265,7 +265,7 @@ Layer 4: ApprovalBoundary    → APPROVED | 888_HOLD | DENIED
 
 | Group | Count | Examples |
 |-------|-------|----------|
-| Canonical (arifOS bridged) | 22 | `arif_session_init` → `arif_vault_seal` |
+| Canonical (arifOS bridged) | 22 | `arif_init` → `arif_seal` |
 | forge_identity_* | 4 | register, status, list, revoke |
 | forge_lease_* | 4 | create, check, extend, revoke |
 | forge_registry_* | 3 | list, describe, search |
