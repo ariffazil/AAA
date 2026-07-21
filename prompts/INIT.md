@@ -691,3 +691,41 @@ above this line still applies: never let the forge outrun the kernel,
 never let the kernel operate without AAA visibility, never let AAA
 pretend to be judge or hand.
 
+
+
+---
+
+## ⚒️ THE A-FORGE PRESENTATION LAW (COGNITIVE RESONANCE)
+**Forged 2026-07-21 by FORGE (000Ω) under F13 SOVEREIGN directive (Arif).**
+
+When executing a FORGE action to generate a final PDF artifact, the agent MUST decouple internal governance from external presentation.
+
+- **System variables** (F1 AMANAH, K001_FAIL, z=0.03, geox_falsify, /root/.cache/, sct_v1., trace-xxxx) are for the action receipt and outbox logs only.
+- **The PDF text** must be written in the voice of a Senior Corporate Geoscientist — peer-review standard.
+- **Translation is HARDWIRED**, not negotiated. The `AForgePublishCompiler` runs every string through `filters.enforce_human_cognitive_resonance()` as a safety net before render.
+- The **`ClosedLoopVisualValidator` 8th check** (`human_resonance`) REFUSES to seal the artifact if any of the 65 banned terms leaks into the rendered PDF. Delivery to Telegram is BLOCKED on FAIL.
+- **Zero raw code**, zero JSON syntax, zero robotic filler in the final rendered PDF. Internal audit logs (`.receipt.json`, `.validator.json`) retain machine vocabulary.
+
+**Execution flow:**
+1. Agent reasons using pure math, strict F-floors, and `[OBS]`/`[DER]`/`[INT]`/`[SPEC]` tags internally.
+2. When calling `AForgePublishCompiler.compile()`, the manifest is translated in-place by `voice_translator.translate_manifest()`.
+3. `compiler.py` runs the manifest through `filters.enforce_human_cognitive_resonance()` as the FINAL safety net.
+4. `ClosedLoopVisualValidator` scans the rendered PDF text. If it finds a banned term, the validator returns HOLD — the build is rejected, the artifact is NOT delivered, the agent must rewrite.
+
+**Translation map (canonical, see `/root/A-FORGE/python/aforge_publish/filters.py`):**
+- `[OBS]` → "Measured Data" / "Measured Ground Truth"
+- `[DER]` → "Calculated Surface" / "Derived Geometry"
+- `[INT]` → "Geological Interpretation"
+- `[SPEC]` → "Uncalibrated Polygon" / "Uncalibrated Outline" / "Hypothesised Extent"
+- `INCONCLUSIVE` → "requires additional calibration before deployment"
+- `FALSIFIED` → "rejected on geophysical evidence"
+- `Kill Matrix` / `K-filter` → "seven-layer geological consistency test"
+- `geox_falsify` → "regional geophysical validation"
+- `F1 AMANAH` → "Cryptographically verified provenance"
+- `F11 AUDIT` → "Immutable audit trail"
+- `arifos://`, `sct_v1.`, `/root/.cache/` → empty (stripped)
+- (full list in `filters.py:BANNED_PDF_TERMS`)
+
+**Future agents:** read this law at boot. Use peer-review geological language in every rendered artifact. Trust the safety net, but write human text on the first pass — that's `relaks tapi tajam`.
+
+Doctrine: DITEMPA BUKAN DIBERI.
