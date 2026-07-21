@@ -45,9 +45,11 @@ When Arif says any of these, the confirmation loop is OVER. Execute:
 The kernel's `arif_seal` requires SOVEREIGN authority and blocks at `kernel.seal` capability check. Until fixed:
 
 ```
-✅ AUTO PATH: aforge_forge_vault(mode="seal", actor_id="ARIF", ...)
+✅ AUTO PATH: forge_session_init → forge_vault(mode="seal", session_token, lease_id, ...)
 ❌ BLOCKED:   arifos_arif_seal(...)
 ```
+
+**P1.3 FIX (2026-07-21):** `forge_session_init` now returns `session_token` + `pre_minted_lease`. Pass all three (session_id + session_token + lease_id) to `forge_vault`. 7 gates cleared: SESSION → SCT → LEASE → VERDICT → F12 → AAA → SEALED.
 
 **Session-end auto-seal:** At every session end or task completion, seal through `forge_vault`:
 - `name`: descriptive task name
@@ -55,12 +57,15 @@ The kernel's `arif_seal` requires SOVEREIGN authority and blocks at `kernel.seal
 - `reason`: "AUTONOMOUS_SESSION_SEAL"
 - `tier`: "VAULT999"
 - `category`: "session.seal"
-- `actor_id`: "ARIF"
-- `session_id`: current session
+- `actor_id`: "arif" (lowercase — matches kernel SCT actor)
+- `session_id`: from `forge_session_init`
+- `session_token`: from `forge_session_init` (sct_v1.*)
+- `lease_id`: from `forge_session_init` `pre_minted_lease.lease_id`
 
 ## 3A. MANDATORY SESSION-END SEAL — Zero Reliance on Agent Memory
 
 > **Bound 2026-07-20 by F13 SOVEREIGN directive "Execute gap closure protocol."**
+> **Updated 2026-07-21 — P1.3 autonomous seal path verified (commit 992b579).**
 
 **THE RULE:** Every interactive session MUST end with an explicit `aforge_forge_vault(mode="seal")` call. This is not optional. This is not "if you remember." This is the final action before yielding control.
 
@@ -70,12 +75,17 @@ The kernel's `arif_seal` requires SOVEREIGN authority and blocks at `kernel.seal
 1. RSI CYCLE       — diagnose bottlenecks, log to rsi-ledger.jsonl
 2. GATE FIRE        — append gate_fire.jsonl (if claims were gated)
 3. COOLING LEDGER   — insert into Supabase cooling_ledger_entries (if mutations)
-4. forge_vault SEAL — aforge_forge_vault(mode="seal", actor_id="ARIF", ...)
-5. YIELD            — only after seal receipt is confirmed
+4. forge_session_init(actor_id="arif") → session_id, session_token, lease_id
+5. forge_vault SEAL — aforge_forge_vault(mode="seal", session_id, session_token, lease_id, ...)
+6. YIELD            — only after seal receipt is confirmed
 ```
 
 **The seal call:**
 ```
+// Step 1 — get session tokens
+session = forge_session_init(actor_id="arif", ...)
+
+// Step 2 — seal with all three tokens
 aforge_forge_vault(
     mode="seal",
     name="<descriptive task name>",
@@ -83,8 +93,10 @@ aforge_forge_vault(
     reason="AUTONOMOUS_SESSION_SEAL",
     tier="VAULT999",
     category="session.seal",
-    actor_id="ARIF",
-    session_id="<current session>"
+    actor_id="arif",
+    session_id=session.session_id,
+    session_token=session.session_token,
+    lease_id=session.pre_minted_lease.lease_id
 )
 ```
 
