@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "sealed_at": "2026-07-23T18:45:00Z",
+  "authority": "F13 SOVEREIGN ruling 2026-07-23",
+  "codex_config": {
+    "path": "/root/.codex/config.toml",
+    "sha256": "d988f294c99361e8bf8b8caf593a2da64c7e574ef72cc20b3e177cacdad7baef"
+  },
+  "skills": {
+    "root": "/root/AAA/skills",
+    "skill_files": 142,
+    "valid_frontmatter": 142
+  },
+  "mcp": {
+    "path": "/root/.codex/mcp.json",
+    "expected_live": [
+      "arifOS",
+      "A-FORGE",
+      "GEOX",
+      "WEALTH",
+      "WELL",
+      "github",
+      "brave-search",
+      "playwright",
+      "capability-index"
+    ]
+  },
+  "identity": {
+    "test": "tests/contracts/test_runtime_identity_registry_intersection.py"
+  }
+}

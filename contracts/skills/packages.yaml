@@ -1,5 +1,5 @@
 version: 2
-generated: 2026-07-19T23:27:42.029Z
+generated: 2026-07-23T03:47:41.808Z
 source: registries/skills.yaml
 metadata_rule: Skill metadata lives once in the registry; packages contain identity references only
 packages:
@@ -144,9 +144,11 @@ packages:
       - id: forge-seal-a-close
       - id: forge-secret-hygiene
       - id: forge-skill-creator
+      - id: forge-symlink-audit
       - id: forge-t3a-binding-matrix
       - id: forge-tailwind-tokens
       - id: forge-telegram-audit
+      - id: forge-telemetry-watchdog
       - id: forge-vault999-witness
       - id: forge-verify-runtime
       - id: forge-visual-qa-w3

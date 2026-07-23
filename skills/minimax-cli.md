@@ -1,1 +1,0 @@
-/root/HERMES/skills/creative/minimax-cli/SKILL.md

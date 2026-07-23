@@ -1,15 +1,26 @@
 #!/usr/bin/env python3
 """
-Federation Organ Registration — Mandatory Boot Gate
+register_with_aaa.py — MANUAL DIAGNOSTIC ONLY (deprecated for boot)
 
-Sends organ identity to AAA's /federation/register endpoint.
-Blocks startup until AAA confirms registration or timeout expires.
+Historical role: this script used to be called by organ boot scripts as a
+mandatory boot gate.  As of the 2026-07-22 PRL/recovery refactor it is
+NO LONGER wired into systemd.  Production auto-registration is performed
+by ``AAA/a2a-server/auto-register-organs.js`` on the AAA side, with
+bounded readiness probes (timeout + retry + backoff).
 
-Usage: python3 register_with_aaa.py --organ-id arifos --port 8088
-Exit 0 = registered (or AAA unreachable after timeout — start anyway with warning)
-Exit 1 = registration rejected by AAA (organ identity invalid)
+This script remains as a manual diagnostic for ops:
 
-DITEMPA BUKAN DIBERI — 2026-07-14
+    python3 register_with_aaa.py --organ-id arifos --port 8088
+
+It will print what AAA thinks of the organ's identity and exit non-zero
+on rejection.  Do NOT add it back to ExecStartPre without explicit
+approval — the auto-registration path is the canonical mechanism.
+
+Exit codes (preserved from original):
+  0 = registered (or AAA unreachable after timeout — start anyway with warning)
+  1 = registration rejected by AAA (organ identity invalid)
+
+DITEMPA BUKAN DIBERI — 2026-07-22 (manual-diagnostic reclassification)
 """
 
 import argparse
@@ -19,10 +30,11 @@ import time
 import urllib.request
 import urllib.error
 
+# Manual diagnostic endpoint — production auto-registration is on the AAA side.
 AAA_REGISTER_URL = "http://localhost:3001/federation/register"
-MAX_RETRIES = 3            # Reduced from 6 — don't block boot for >18s
-RETRY_DELAY_SEC = 3        # Reduced from 5
-CONNECT_TIMEOUT_SEC = 3    # Reduced from 10 — AAA is localhost, not internet
+MAX_RETRIES = 3            # Bounded — don't block manual ops for >18s
+RETRY_DELAY_SEC = 3        # Bounded retry delay
+CONNECT_TIMEOUT_SEC = 3    # Bounded — AAA is localhost, not internet
 
 
 def register(organ_id: str, port: int, name: str, skills: list[str]) -> bool:

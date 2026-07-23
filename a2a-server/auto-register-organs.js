@@ -114,20 +114,104 @@ async function registerOneOrgan(baseUrl, organ, timeoutMs) {
 }
 
 /**
+ * Bounded readiness probe — GETs an organ's /health with timeout.
+ * Returns `{ reachable, latencyMs, status, error }`.  Never throws.
+ *
+ * Used before registerOneOrgan so a half-up organ doesn't waste a
+ * registration attempt.  Bounded with AbortController + bounded
+ * timeoutMs; no request-path retry here (handled at caller layer).
+ */
+async function probeReadiness(healthUrl, timeoutMs) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
+  const started = Date.now();
+  try {
+    const resp = await fetch(healthUrl, { signal: ctrl.signal });
+    return {
+      reachable: resp.ok,
+      latencyMs: Date.now() - started,
+      status: resp.status,
+      error: null,
+    };
+  } catch (err) {
+    const aborted = err && err.name === 'AbortError';
+    return {
+      reachable: false,
+      latencyMs: Date.now() - started,
+      status: 0,
+      error: aborted ? `timeout after ${timeoutMs}ms` : err.message,
+    };
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/**
+ * Bounded retry loop for the readiness probe.  Uses linear backoff so a
+ * slow-boot organ still gets a fair chance without stretching the boot
+ * budget.  Caps total attempts; returns the LAST probe result.
+ */
+async function probeReadinessWithRetry(healthUrl, timeoutMs, opts) {
+  const maxAttempts = (opts && Number.isInteger(opts.maxAttempts)) ? opts.maxAttempts : 3;
+  const backoffMs = (opts && Number.isInteger(opts.backoffMs)) ? opts.backoffMs : 500;
+  let last = { reachable: false, status: 0, latencyMs: 0, error: 'no-attempt' };
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    last = await probeReadiness(healthUrl, timeoutMs);
+    if (last.reachable) {
+      last.attempts = attempt;
+      return last;
+    }
+    if (attempt < maxAttempts) {
+      await new Promise((resolve) => setTimeout(resolve, backoffMs * attempt));
+    }
+  }
+  last.attempts = maxAttempts;
+  return last;
+}
+
+/**
  * Probe each organ, register it, then seed the 8 forge instruments.
  * Always returns a structured counts object — never throws to the caller.
+ *
+ * Readiness is bounded: each /health probe uses an AbortController with
+ * `timeoutMs`, and the probe retries at most `readinessMaxAttempts`
+ * times with linear backoff before registering.  Registration itself
+ * uses the same per-call timeout.  All timeouts are explicit; no
+ * unbounded waits.
  */
 async function autoRegisterOrgans(port = 3001, opts) {
   const parsedPort = Number.parseInt(String(port), 10);
   const normalizedPort = Number.isInteger(parsedPort) && parsedPort > 0 ? parsedPort : 3001;
   const baseUrl = `http://127.0.0.1:${normalizedPort}`;
   const timeoutMs = (opts && Number.isInteger(opts.timeoutMs)) ? opts.timeoutMs : 5000;
+  const readinessMaxAttempts = (opts && Number.isInteger(opts.readinessMaxAttempts))
+    ? opts.readinessMaxAttempts
+    : 3;
+  const readinessBackoffMs = (opts && Number.isInteger(opts.readinessBackoffMs))
+    ? opts.readinessBackoffMs
+    : 500;
+  // Allow tests / power-users to inject a custom ORGANS list.
+  const organsToRegister = (opts && Array.isArray(opts.organs)) ? opts.organs : ORGANS;
   const startedAt = new Date().toISOString();
   const log = (opts && typeof opts.log === 'function') ? opts.log : () => {};
 
-  const organCounts = { registered: 0, existing: 0, failed: 0, total: ORGANS.length };
+  const organCounts = { registered: 0, existing: 0, failed: 0, total: organsToRegister.length };
 
-  for (const organ of ORGANS) {
+  for (const organ of organsToRegister) {
+    // Bounded readiness probe (timeout + bounded retry + backoff).
+    const readiness = await probeReadinessWithRetry(
+      organ.endpoints.healthUrl,
+      timeoutMs,
+      { maxAttempts: readinessMaxAttempts, backoffMs: readinessBackoffMs },
+    );
+    if (!readiness.reachable) {
+      organCounts.failed += 1;
+      log(
+        `[auto-register] ❌ ${organ.identity.organId}: readiness probe failed ` +
+        `(attempts=${readiness.attempts}, ${readiness.error || `HTTP ${readiness.status}`})`,
+      );
+      continue;
+    }
     const result = await registerOneOrgan(baseUrl, organ, timeoutMs);
     if (result.ok && result.existing) {
       organCounts.existing += 1;
@@ -180,6 +264,8 @@ if (require.main === module) {
   const argv = process.argv.slice(2);
   let cliPort = 3001;
   let cliTimeoutMs = 5000;
+  let cliReadinessMaxAttempts = 3;
+  let cliReadinessBackoffMs = 500;
   for (let i = 0; i < argv.length; i += 1) {
     const flag = argv[i];
     if (flag === '--port' && i + 1 < argv.length) {
@@ -190,10 +276,23 @@ if (require.main === module) {
       const parsed = Number.parseInt(argv[i + 1], 10);
       if (Number.isInteger(parsed)) cliTimeoutMs = parsed;
       i += 1;
+    } else if (flag === '--readiness-max-attempts' && i + 1 < argv.length) {
+      const parsed = Number.parseInt(argv[i + 1], 10);
+      if (Number.isInteger(parsed)) cliReadinessMaxAttempts = parsed;
+      i += 1;
+    } else if (flag === '--readiness-backoff-ms' && i + 1 < argv.length) {
+      const parsed = Number.parseInt(argv[i + 1], 10);
+      if (Number.isInteger(parsed)) cliReadinessBackoffMs = parsed;
+      i += 1;
     }
   }
 
-  autoRegisterOrgans(cliPort, { timeoutMs: cliTimeoutMs, log: console.log })
+  autoRegisterOrgans(cliPort, {
+    timeoutMs: cliTimeoutMs,
+    readinessMaxAttempts: cliReadinessMaxAttempts,
+    readinessBackoffMs: cliReadinessBackoffMs,
+    log: console.log,
+  })
     .then((summary) => {
       process.exitCode = summary.ok ? 0 : 1;
     })
@@ -203,4 +302,9 @@ if (require.main === module) {
     });
 }
 
-module.exports = { autoRegisterOrgans, ORGANS };
+module.exports = {
+  autoRegisterOrgans,
+  ORGANS,
+  probeReadiness,
+  probeReadinessWithRetry,
+};

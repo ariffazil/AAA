@@ -1,3 +1,19 @@
+---
+id: FLAME-operator
+name: FLAME-operator
+version: "2026.07.23"
+description: >
+  Probe FLAME health, inspect hit rates, diagnose model failures, and maintain
+  free-tier routing state within the RM0 and constitutional boundaries.
+owner: AAA
+risk_tier: medium
+autonomy_tier: T2
+floor_scope:
+  - F1
+  - F2
+  - F11
+  - F13
+---
 # 🔥 FLAME-operator — Operate & Maintain FLAME
 
 > **Skill ID:** FLAME-operator · **Version:** 1.0.0 · **Axis:** ops
