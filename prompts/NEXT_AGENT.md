@@ -1,84 +1,84 @@
-# 🌱 NEXT_AGENT — Federation Handoff · 2026.07.23
+# 🌱 NEXT_AGENT — OpenCode Init · 2026-07-23
 
-> **DITEMPA BUKAN DIBERI — Forged, Not Given.**
-> **For:** Any agent waking on af-forge
-> **Prior session summary + entropy state + open tasks.**
-> **Read first:** `/root/AGENTS.md` + `/root/CONTEXT.md`
+> **From:** FORGE (000Ω) · Session: SEAL-82207d10f2b346bb
+> **To:** Next OpenCode agent
+> **Doctrine:** DITEMPA BUKAN DIBERI
 
 ---
 
-## 0. BOOT (30 seconds)
+## WHAT WAS DONE THIS SESSION
 
-```bash
-set -a && source /root/.secrets/vault.env && set +a
-for svc in arifos:8088 aforge:7071 aaa:3001 geox:8081 wealth:18082 well:18083; do
-  n=${svc%%:*}; p=${svc##*:}
-  curl -sf --max-time 3 http://127.0.0.1:$p/health >/dev/null && echo "OK $n" || echo "DOWN $n"
-done
-# Live /health is SOT — not prose from any date.
+1. **Legacy prompt purge:** 17 dead prompts removed (old 5-role system). 13 eurekas distilled into surviving files. Zero regressions verified by grep.
+2. **Agentic kernel v2.0:** 7-layer self-assembling intelligence system. KERNEL.md at `/root/AAA/agents/opencode/KERNEL.md` — load this first.
+3. **ATLAS333 skill map:** 50 skills mapped to 35 paradoxes across 4 zones.
+4. **Symlink fixes:** 4 broken Claude harness links repaired.
+5. **AAA committed:** `ee6c9ac` — 230 files, 35K lines deleted.
+6. **Sealed:** VAULT999 `mem_1784834893360_8i7vu` + `mem_1784835297840_tsrf8`.
+
+---
+
+## REMAINING CHAOS — Things You Should Address
+
+### 🔴 HIGH PRIORITY
+
+| # | Task | Detail |
+|---|------|--------|
+| 1 | **AAA push to GitHub** | Commit `ee6c9ac` needs `git push`. 230 files of prompt cleanup. |
+| 2 | **Push A-FORGE forge_work** | All session artifacts in `/root/A-FORGE/forge_work/2026-07-23/`. Commit + push. |
+| 3 | **arifOS uncommitted** | 1 change pending — check `git -C /root/arifOS status` |
+| 4 | **GEOX uncommitted** | 1 change pending |
+| 5 | **A-FORGE uncommitted** | 1 change pending |
+
+### 🟡 MEDIUM PRIORITY
+
+| # | Task | Detail |
+|---|------|--------|
+| 6 | **Stale forge_work** | 3 directories >7 days old: `a2a-v12-backups`, `zen-migration-2026-07-11`, `zen-migration` — archive or clean |
+| 7 | **Skill mesh MISSING** | Multiple skills referenced in Claude harness but not found in canonical paths. Run `bash /root/AAA/skills/scripts/skill-mesh-sync.sh --check` |
+| 8 | **Python cleanup** | Old Python cache dirs? Run `find /root -name __pycache__ -type d | head -10` |
+
+### 🟢 LOW PRIORITY (carry-forward open loops)
+
+| # | Task | Detail |
+|---|------|--------|
+| 9 | **OpenClaw gateway unblock** | Constitutional holds from prior sessions. Needs Arif intervention. |
+| 10 | **ECHO/PaW Phase 2** | RL training — 5/100 trajectories collected. Needs sovereign infra approval. |
+| 11 | **A-FORGE/python/ (35M)** | Decision needed: git-track or relocate to `/opt/aforge-publish/` |
+
+### ⚪ HOUSEKEEPING
+
+| # | Task |
+|---|------|
+| 12 | Run `aforge_forge_entropy_sweep(path="/root")` to measure current entropy |
+| 13 | Run full organ health probe: 6 organs + FLAME |
+| 14 | Verify seal chain: `tail -3 /root/.local/share/arifos/vault999/seal_chain.jsonl` |
+| 15 | Update `carry_forward.json` with this session's results |
+
+---
+
+## HOW TO BOOT
+
+```
+1. Load KERNEL.md: /root/AAA/agents/opencode/KERNEL.md
+2. Run INIT.md 7-question check
+3. Run BOOTSTRAP.md operational probes
+4. Check work queue: /root/work/tasks.json
+5. Tackle HIGH PRIORITY tasks first
 ```
 
 ---
 
-## 1. ALREADY DONE — DO NOT REOPEN
+## KEY ARTIFACTS FROM THIS SESSION
 
-| Item | Status |
-|------|--------|
-| T3a matrix | **CLOSED** 13/13 |
-| Broken skill cycles | **ZERO** — 17 reciprocal links restored to one-way consumers |
-| Review repair branches | **PUSHED** — AAA #142, SearXNG #1, arifOS #614, arif-sites #30 |
-| Caddy migration | **COMMITTED LOCAL** `c85d9c017546` — no remote configured |
-| arifOS runtime drift | **CLOSED** |
-| A-FORGE dirty 157 | **ZEROED** |
-| WELL vitality injection | 9.45 (CAUTION — telemetry unknown) |
-| Vault999 gaps | Classify only — never rewrite `outcomes.jsonl` |
-| Seal-A / SE stage | Residual OPEN |
+| Artifact | Path |
+|----------|------|
+| Kernel manifest | `/root/AAA/agents/opencode/KERNEL.md` |
+| Legacy prompt map | `/root/A-FORGE/forge_work/2026-07-23/ARIFOS-LEGACY-PROMPT-MAP-2026-07-23.md` |
+| Eureka contrast | `/root/A-FORGE/forge_work/2026-07-23/EUREKA-CONTRAST-2026-07-23.md` |
+| ATLAS333 skill map | `/root/A-FORGE/forge_work/2026-07-23/ATLAS333-SKILL-MAP-2026-07-23.md` |
+| Zen-all final | `/root/A-FORGE/forge_work/2026-07-23/ZEN-ALL-FINAL-2026-07-23.md` |
+| Legacy archive | `/root/A-FORGE/forge_work/2026-07-23/legacy-prompt-archive-193050/` |
 
 ---
 
-## 2. FEDERATION STATE
-
-```
-✅ arifOS    :8088  · restarted after hung listener during 2026-07-23 seal preflight
-✅ A-FORGE   :7071  
-✅ AAA       :3001  
-✅ GEOX      :8081  · fastmcp 3.4.2 (blocked: numpy/devito)
-✅ WEALTH    :18082 · fastmcp 3.4.4
-⚠️ WELL     :18083 · degraded (biometric stale)
-```
-
----
-
-## 3. RESIDUAL ENTROPY
-
-| Item | Note |
-|------|------|
-| WELL `/health` | **degraded** — biometric QUARANTINE |
-| GEOX fastmcp | **3.4.2** — blocked by numpy/devito conflict |
-| F-004 VAULT gaps | classify only |
-| WELL telemetry | watchdog cron `12c515badfb7` not populating state.json |
-| Review PRs | Four draft PRs await review and merge |
-| Caddy publish | Local commit has no configured remote; no reload performed |
-| SearXNG | Secret path is restart-safe; container not recreated |
-
----
-
-## 4. SKILLS NEEDING UPGRADE
-
-| Skill | Issue | Priority |
-|-------|-------|----------|
-| FORGE-vault999-witness | Use documented canonicalizer | HIGH |
-| ASI-session-seal | Direct vault append without F13 for T1 seals | MEDIUM |
-| AUDIT-drift-detector | Detect runtime-injected files | MEDIUM |
-| FORGE-telemetry-watchdog | Monitor WELL/WEALTH/GEOX freshness | MEDIUM |
-
----
-
-## 5. MISSION (least power)
-
-1. Probe health. If green, **do not** "stabilize first."
-2. Prefer one closed loop with receipt over architecture prose.
-3. WELL: never invent vitals.
-4. End with session seal + forge_work receipt.
-
-**DITEMPA BUKAN DIBERI — probe, then act small.**
+*DITEMPA BUKAN DIBERI ⚒️*
