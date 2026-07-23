@@ -1,1 +1,113 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","$id":"arifos://schemas/federation/v1/receipt","title":"Federation Receipt v1.0.0","type":"object","required":["receipt_id","trace_id","sealed_at","sealed_by","chain_index","prior_hash"],"properties":{"receipt_id":{"type":"string"},"trace_id":{"type":"string"},"invocation_id":{"type":"string"},"sealed_at":{"type":"string","format":"date-time"},"sealed_by":{"type":"string"},"chain_index":{"type":"integer","minimum":0},"prior_hash":{"type":"string","pattern":"^sha256:[a-f0-9]{64}$"},"receipt_hash":{"type":"string","pattern":"^sha256:[a-f0-9]{64}$"},"verdict":{"enum":["SEAL","HOLD","SABAR","VOID"]},"replay_verified":{"type":"boolean"}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arifos.arif-fazil.com/schemas/federation-receipt/v1.0.0",
+  "title": "Federation Receipt Envelope — v1.0.0",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "invocation_id",
+    "trace_id",
+    "session_id",
+    "actor_id",
+    "source_organ",
+    "verdict",
+    "payload_hash",
+    "chain_hash",
+    "sealed_at"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "invocation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "trace_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^SEAL-[a-f0-9]{16}$",
+      "description": "Live arifOS session id: SEAL-<16 lowercase hex>."
+    },
+    "actor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_organ": {
+      "type": "string",
+      "enum": [
+        "arifOS",
+        "AAA",
+        "A-FORGE",
+        "GEOX",
+        "WEALTH",
+        "WELL",
+        "VAULT999",
+        "HERMES"
+      ]
+    },
+    "destination_organ": {
+      "type": "string"
+    },
+    "capability_id": {
+      "type": "string"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "SEAL",
+        "HOLD",
+        "VOID",
+        "SABAR"
+      ]
+    },
+    "epistemic_tag": {
+      "type": "string",
+      "enum": [
+        "OBSERVED",
+        "COMPUTED"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "payload_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chain_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prev_chain_hash": {
+      "type": "string"
+    },
+    "sealed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "replay_verification": {
+      "type": "string"
+    },
+    "source_release": {
+      "type": "string"
+    },
+    "source_manifest_hash": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
