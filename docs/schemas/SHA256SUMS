@@ -1,4 +1,3 @@
-cc74d13efca71ca8f7ef6b12c48ec9a34a01465d3faf7fa0a002a3f1ba07ca23  /root/AAA/docs/schemas/federation-error.v1.schema.json
-a5f62ce9f57a8d71452382480f51064ab6258144ff293eb937bc4895e8eadc6a  /root/AAA/docs/schemas/federation-receipt.v1.schema.json
-67fe6a4b7985408423bc49cca9e5d251bdac3ea22da29fa283df70a56677d3b0  /root/AAA/docs/schemas/federation-request.v1.schema.json
-5ab24993d1f07a0c9aaf8e7d9c2f08651e51933d8a7c7b2da8a685f98d5e15cb  /root/AAA/docs/schemas/federation-response.v1.schema.json
+# DEPRECATED dual-tree path.
+# Canonical AAA mirror: schemas/federation/ (byte-identical to arifOS contracts/schemas).
+# Verify: sha256sum --check schemas/federation/SHA256SUMS

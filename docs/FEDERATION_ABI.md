@@ -1,149 +1,97 @@
 # Federation ABI v1.0 — Cross-Organ Envelope
 
-> **Status:** HARDENED DRAFT · **Authority:** 888_HOLD pending ratification
-> **Owner:** arifOS (canonical schema); AAA (display mirror, hash-pinned)
-> **Schema root:** `aaa/schemas/federation/`
+> **Status:** HARDENED DRAFT · **Authority:** 888_HOLD (not ratified)  
+> **Owner:** arifOS (`contracts/schemas/`) — canonical  
+> **AAA role:** byte-identical mirror at `schemas/federation/` + `SHA256SUMS`  
+> **session_id:** `SEAL-<16hex>` (live kernel) · **session_token:** `sct_v1.*` (optional)  
+> **payload_hash:** FCJ-v1 (see `schemas/federation/CANONICAL_JSON.md`) — not full RFC 8785  
 > **DITEMPA BUKAN DIBERI**
 
 ## 1. Purpose
 
 The Federation ABI defines a transport-neutral contract for cross-organ invocation. Every organ-to-organ call carries this envelope. The contract is independent of MCP, REST, A2A, or any future transport — each transport profile implements the same semantic contract.
 
-```
-Federation capability invocation
-    ├── MCP implementation (streamable-http, current)
-    ├── REST implementation
-    ├── A2A implementation
-    └── future transport
-```
+**This document does not claim F13 ratification, VAULT999 seal, or live end-to-end conformance.**
 
 ## 2. Schema Inventory
 
-| Schema | File | Purpose |
-|--------|------|---------|
-| Request | `schemas/federation/federation-request.v1.schema.json` | Cross-organ invocation |
-| Response | `schemas/federation/federation-response.v1.schema.json` | Organ response |
-| Error | `schemas/federation/federation-error.v1.schema.json` | Fail-closed error |
-| Receipt | `schemas/federation/federation-receipt.v1.schema.json` | VAULT999 recording |
+| Schema | Canonical (arifOS) | AAA mirror |
+|--------|--------------------|------------|
+| Request | `contracts/schemas/federation-request.v1.schema.json` | `schemas/federation/federation-request.v1.schema.json` |
+| Response | `contracts/schemas/federation-response.v1.schema.json` | `schemas/federation/federation-response.v1.schema.json` |
+| Error | `contracts/schemas/federation-error.v1.schema.json` | `schemas/federation/federation-error.v1.schema.json` |
+| Receipt | `contracts/schemas/federation-receipt.v1.schema.json` | `schemas/federation/federation-receipt.v1.schema.json` |
 
-## 3. Key Design Decisions
+Mirrors MUST be byte-identical. Verify: `sha256sum --check schemas/federation/SHA256SUMS`.
 
-### 3.1 Transport Neutrality
-The ABI defines semantic fields (`source_organ`, `capability_id`, `action_class`), not transport headers. Each transport profile maps these fields to its native mechanism:
-- **MCP**: `Mcp-Session-Id` header for session; JSON-RPC params for envelope fields
-- **A2A**: Agent card metadata for organ identity; task context for trace
-- **Direct**: HTTP headers for session; JSON body for envelope
+There is **no second schema tree** under `docs/schemas/` for federation request/response.
 
-### 3.2 Trace Continuity
-Every invocation carries three identifiers:
-- `trace_id`: constant across all hops in a workflow
-- `invocation_id`: unique per hop
-- `parent_invocation_id`: links to prior hop (null for origin)
+## 3. Session fields
 
-Plus `hop_index` for ordinal position and `issued_at`/`deadline_at` for timing.
+| Field | Format | Meaning |
+|-------|--------|---------|
+| `session_id` | `SEAL-[a-f0-9]{16}` | Live arifOS session identifier |
+| `session_token` | `sct_v1.*` (optional) | Session Capability Token — **not** interchangeable with `session_id` |
 
-### 3.3 Integrity Verification
-`payload_hash`, `schema_hash`, `source_manifest_hash`, and `evidence_hashes` enable cryptographic verification that the payload, schema, and evidence chain are unaltered across transport boundaries.
+## 4. Authority conditionals
 
-### 3.4 Authority Classification
-`action_class` (OBSERVE | COMPUTE | JUDGE | EXECUTE) combined with `mutation`, `reversible`, and `authority_band` enable destination organs to fail closed when required authority fields (`judge_receipt_ref`, `human_ack_ref`) are absent.
+- `action_class=EXECUTE` → requires `authority.judge_receipt_ref`
+- `mutation=true` AND `reversible=false` → requires `authority.human_ack_ref`
 
-### 3.5 Idempotency
-`idempotency_key` + `attempt` + `max_attempts` prevent duplicate execution. Same key = same effect. Destination organ must detect and reject attempts beyond `max_attempts`.
+## 5. Semantic honesty (validator)
 
-## 4. Consumers
+| Check | What it actually does |
+|-------|------------------------|
+| `session_identifier_present` | Non-empty `session_id` only — **not** liveness |
+| `check_deadline` | `deadline_at` not in the past |
+| `check_payload_hash` | FCJ-v1 hash match |
+| `check_retry_bound` | `attempt <= max_attempts` — **not** idempotency |
+| `check_idempotency_stateful` | Store lookup: unseen / same-hash replay / different-hash conflict |
 
-| Organ | Accepts | Emits | Action Class |
-|-------|---------|-------|-------------|
-| **arifOS** | Ingress from all organs | Session binding, routing, verdicts | JUDGE |
-| **A-FORGE** | SEAL verdicts, leases | Execution receipts, evidence_sha | EXECUTE |
-| **GEOX** | Routing from arifOS | Geological evidence | OBSERVE |
-| **WEALTH** | Routing from arifOS, GEOX bridge | Capital computation | COMPUTE |
-| **WELL** | Session validation requests | Readiness scores | OBSERVE |
-| **HERMES** | Telegram intake | Routed intents | OBSERVE |
-| **VAULT999** | Sealed consequence + evidence | Immutable receipt, chain ref, replay | — |
-| **AAA** | Display-only mirror | Hash-pinned schema copies | — |
+Live session attestation (existence, expiry, actor binding, SCT verify, revocation) is **out of scope** for this structural ABI pack and remains a kernel concern.
 
-## 5. Error Classes
+## 6. Fixtures
 
-| Code | Meaning | Retry |
-|------|---------|-------|
-| `SESSION_MISSING` | No session provided | No |
-| `SESSION_INVALID` | Session expired or unknown | No |
-| `AUTHORITY_INSUFFICIENT` | `authority_band` too low for `action_class` | No |
-| `JUDGE_RECEIPT_MISSING` | `action_class=EXECUTE` without `judge_receipt_ref` | No |
-| `HUMAN_ACK_REQUIRED` | IRREVERSIBLE without `human_ack_ref` | No |
-| `SCHEMA_INCOMPATIBLE` | Schema version mismatch | No |
-| `ORGAN_UNREACHABLE` | Destination organ not responding | Yes |
-| `DEADLINE_EXCEEDED` | `deadline_at` passed | No |
-| `PAYLOAD_INTEGRITY_FAILED` | `payload_hash` mismatch | No |
+Under `fixtures/federation/`:
 
-## 6. Compatibility Rules
+| File | Expectation |
+|------|-------------|
+| `valid-request.json` | PASS — `SEAL-bee1b3fd3ebd4ae4` |
+| `valid-response.json` | PASS |
+| `missing-session-invalid.json` | FAIL |
+| `sess-format-invalid.json` | FAIL — rejects `sess-xyz` |
+| `expired-deadline-invalid.json` | FAIL |
+| `execute-without-judge-invalid.json` | FAIL |
+| `irreversible-without-ack-invalid.json` | FAIL |
+| `retry-bound-invalid.json` | FAIL |
+| `idempotency-conflict-invalid.json` | FAIL against seeded store |
 
-| Change | Version | Rule |
-|--------|---------|------|
-| Add optional field | Patch | Accept unknown, ignore |
-| Add required field | Minor | New field defaults to null for old callers |
-| Remove field | Major | Reject unknown fields in strict mode |
-| Change field type | Major | Reject, return SCHEMA_INCOMPATIBLE |
-| Deprecation | Minor | 90-day window, warn on use |
-| Minimum supported version | — | N-1 (current and previous minor) |
-
-## 7. Acceptance Tests
-
-### T1 — Valid request passes schema validation
-```
-$ python3 -c "import json; from jsonschema import validate; ..."
-→ PASS: valid-request.json validates against federation-request.v1.schema.json
-```
-
-### T2 — Missing session fails closed
-```
-→ FAIL: missing-session-invalid.json rejected — SESSION_MISSING
-```
-
-### T3 — WEALTH authenticated invocation
-```
-1. arif_init() → session_id
-2. WEALTH tool with federation envelope → OK
-3. Response carries: session_id, actor_id, trace_id, epistemic_tag
-4. Missing session → SESSION_MISSING error
-```
-
-### T4 — End-to-end conformance
-```
-Telegram fixture → HERMES → arifOS → organ → judge → A-FORGE → VAULT999
-→ replay verified: trace continuity, hash integrity, hop_index sequential
-```
-
-## 8. Fixtures
-
-| File | Purpose |
-|------|---------|
-| `fixtures/federation/valid-request.json` | Nominal cross-organ request |
-| `fixtures/federation/missing-session-invalid.json` | Session absent — must fail |
-
-## 9. Change Control
+## 7. Change Control
 
 ```yaml
 owner: arifOS (canonical schema)
-mirror: AAA (hash-pinned display copy)
-branch: forge/abi-v1-hardening
+mirror: AAA (byte-identical, hash-pinned)
+branch_arifos: fix/abi-hardening-0a
+branch_aaa: forge/abi-v1-hardening
 status: HARDENED DRAFT
-authority_required: 888_JUDGE ratification
-execution_mode: pull_request_review
-direct_default_branch_push: not yet ratified
-rollback: revert branch
+authority_required: 888_JUDGE + F13 for ratification
+direct_default_branch_push: forbidden until ratified
 ```
 
-## 10. Forge Order
+## 8. Forge Order
 
 | # | Phase | Status |
 |---|-------|--------|
-| **0A** | Harden ABI (this branch) | 🔨 IN PROGRESS |
-| **0B** | Ratify + pin schema hash | HOLD |
-| **1** | Repair WEALTH ingress | HOLD |
-| **2** | Replace GEOX adapter | HOLD |
-| **3** | Unify registry generation | HOLD |
-| **4** | Repair WELL aliases | HOLD |
-| **5** | End-to-end conformance test | HOLD |
+| **0A.2** | Unify schema root, live session format, honest semantics | 🔨 DRAFT PR |
+| **0B** | Ratify + pin + independent review | HOLD |
+| **1** | WEALTH ingress | HOLD |
+| **2** | GEOX bridge | HOLD |
+| **3–4** | Empty / not implemented | HOLD |
+
+## 9. Explicit non-claims
+
+- Not merged
+- Not sealed in VAULT999
+- Not system-done
+- Dedicated ABI CI green ≠ repository-wide gate green
+- Connector/runtime drift (judge modes, 502s) is separate from schema drafting

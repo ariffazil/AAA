@@ -1,38 +1,61 @@
-# ════════════════════════════════════════════════════════
-# Federation ABI Conformance — Structural + Semantic
-# ════════════════════════════════════════════════════════
-
-name: "🔗 Federation ABI Conformance"
+name: Federation ABI Conformance
 
 on:
   pull_request:
     paths:
       - 'schemas/federation/**'
       - 'fixtures/federation/**'
+      - 'docs/schemas/**'
+      - 'docs/fixtures/**'
       - 'scripts/validate_federation_abi.py'
-      - '.github/workflows/federation-abi-conformance.yml'
   push:
     branches: [main]
     paths:
       - 'schemas/federation/**'
       - 'fixtures/federation/**'
+      - 'docs/schemas/**'
+      - 'docs/fixtures/**'
       - 'scripts/validate_federation_abi.py'
-  workflow_dispatch:
-
-permissions:
-  contents: read
 
 jobs:
-  validate:
-    name: "ABI Schema + Fixture Validation"
+  abi-conformance:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-      - name: Install jsonschema
+          python-version: '3.12'
+
+      - name: Install dependencies
         run: pip install jsonschema
-      - name: Validate all fixture files
-        run: python scripts/validate_federation_abi.py --all
+
+      - name: Schema syntax check
+        run: python scripts/validate_federation_abi.py --schema-only
+
+      - name: SHA256SUMS integrity (AAA mirror)
+        run: |
+          # only check content lines (ignore comments)
+          grep -v '^#' schemas/federation/SHA256SUMS | grep -v '^$' | while read -r sum path; do
+            echo "$sum  $path" | sha256sum --check -
+          done
+          python scripts/validate_federation_abi.py --check-sums
+
+      - name: Full conformance suite
+        run: python scripts/validate_federation_abi.py
+
+      - name: No competing dual tree under docs/schemas
+        run: |
+          dual=$(find docs/schemas -name 'federation-*.v1.schema.json' 2>/dev/null | wc -l)
+          if [ "$dual" -gt 0 ]; then
+            echo "❌ Dual schema tree under docs/schemas — AAA mirror root is schemas/federation only"
+            find docs/schemas -name 'federation-*.v1.schema.json'
+            exit 1
+          fi
+          v2=$(find schemas/federation -name '*v2*' 2>/dev/null | wc -l)
+          if [ "$v2" -gt 0 ]; then
+            echo "❌ v2 schemas present"
+            exit 1
+          fi
+          echo "✅ Single AAA mirror root: schemas/federation (v1.0.0 only)"
