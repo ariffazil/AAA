@@ -1,0 +1,1 @@
+{"invocation_id":"inv-005","trace_id":"trace-mno","hop_index":0,"session_id":"sess-xyz","source_organ":"GEOX","destination_organ":"WEALTH","capability_id":"capital_primitive","epistemic_tag":"OBSERVED","idempotency_key":"expired-001","attempt":1,"max_attempts":3,"issued_at":"2026-07-23T22:00:00Z","deadline_at":"2020-01-01T00:00:00Z","payload":{}}

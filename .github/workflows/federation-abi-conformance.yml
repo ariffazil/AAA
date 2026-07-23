@@ -1,0 +1,38 @@
+# ════════════════════════════════════════════════════════
+# Federation ABI Conformance — Structural + Semantic
+# ════════════════════════════════════════════════════════
+
+name: "🔗 Federation ABI Conformance"
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/federation/**'
+      - 'fixtures/federation/**'
+      - 'scripts/validate_federation_abi.py'
+      - '.github/workflows/federation-abi-conformance.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'schemas/federation/**'
+      - 'fixtures/federation/**'
+      - 'scripts/validate_federation_abi.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: "ABI Schema + Fixture Validation"
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Install jsonschema
+        run: pip install jsonschema
+      - name: Validate all fixture files
+        run: python scripts/validate_federation_abi.py --all
