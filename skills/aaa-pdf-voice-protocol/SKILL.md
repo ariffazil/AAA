@@ -1,3 +1,19 @@
+---
+id: aaa-pdf-voice-protocol
+name: aaa-pdf-voice-protocol
+version: "2026.07.23"
+description: >
+  Translate internal federation and epistemic vocabulary into publication-grade
+  geological prose before rendering human-facing PDF artifacts.
+owner: AAA
+risk_tier: low
+autonomy_tier: T1
+floor_scope:
+  - F2
+  - F4
+  - F6
+  - F11
+---
 # ⚒️ AAA PDF Voice Protocol — arifOS Federation
 
 > **STATUS:** BINDING for all AForgePublishCompiler output · 2026-07-21
