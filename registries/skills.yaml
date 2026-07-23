@@ -1,6 +1,6 @@
 version: 3
-generated: 2026-07-19T23:27:42.029Z
-total_active: 148
+generated: 2026-07-23T03:47:41.808Z
+total_active: 150
 source: canonical-skill-bodies
 routing_view: skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
 alias_view: skills/SKILL_ALIAS_TABLE.json
@@ -772,7 +772,7 @@ skills:
     package: asi-governance
   - id: asi-session-seal
     name: ASI-session-seal
-    version: 2026.07.17b
+    version: 2026.07.19
     description: >
       End-of-session seal ritual for Grok/AAA agents: inventory done vs open, write forge_work
       receipt, update session-state and daily memory, hand off next-agent INIT prompt. Use when:
@@ -841,12 +841,12 @@ skills:
       - F11
   - id: audit-drift-detector
     name: AUDIT-drift-detector
-    version: 1.0.0
+    version: 2026.07.19
     description: >
-      Real-time drift detection across tool manifests, agent cards, and skill registries. Compares
-      live state against saved baselines and reports mismatches. Runs as a periodic audit or
-      on-demand before SEAL operations. USE WHEN: "check drift", "verify registry", "detect manifest
-      drift", "tool surface audit".
+      Real-time drift detection across tool manifests, agent cards, skill registries, and
+      runtime-injected files. Compares live state against saved baselines and reports mismatches.
+      USE WHEN: "check drift", "verify registry", "detect manifest drift", "tool surface audit",
+      "runtime injection detection".
     owner: AAA
     risk_tier: low
     status: active
@@ -1159,7 +1159,7 @@ skills:
       - F12
   - id: forge-fastmcp
     name: FORGE-fastmcp
-    version: 1.1.0
+    version: 1.2.0
     description: Build, test, inspect, install, and deploy MCP servers with FastMCP in Python. Use when
       creating a new MCP server, wrapping an API or database as MCP tools, exposing resources or
       prompts, or preparing a FastMCP server for Claude Code, Cursor, Codex, Gemini CLI, or HTTP
@@ -1295,7 +1295,7 @@ skills:
       - F13
   - id: forge-mcp-gui
     name: FORGE-mcp-gui
-    version: 1.0.0
+    version: 1.1.0
     description: Build and audit interactive MCP Apps, UI resources, sandbox messaging, and CSP-bound
       host integration.
     owner: AAA
@@ -1413,12 +1413,14 @@ skills:
     package: forge
   - id: forge-sct-federation-ingress
     name: FORGE-sct-federation-ingress
-    version: 2026.07.17b
+    version: 2026.07.20
     description: >
       Wire, verify, and operate federation Session Capability Tokens (SCT) across arifOS
       mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: SCT gate,
       session_token, federation_sct, SCT_AMBIGUOUS, tool_authority, FORGE_SCT_REQUIRE_MUTATE,
-      65-case matrix, decision event.
+      65-case matrix, decision event. Now also covers ChatGPT App OAuth 2.1 resource-server
+      alignment (RFC 9728 PRM, canonical resource identity, per-tool securitySchemes) as the
+      EXTERNAL host ingress path alongside the INTERNAL SCT path.
     owner: AAA
     risk_tier: low
     status: active
@@ -1457,6 +1459,18 @@ skills:
     status: active
     source_path: skills/FORGE-skill-creator/SKILL.md
     package: forge
+  - id: forge-symlink-audit
+    name: FORGE-symlink-audit
+    version: 2026.07.19
+    description: >
+      Federation-wide broken symlink scanner. Scans /root for broken symlinks, categorizes by
+      location, and reports with safe-delete recommendations. USE WHEN: "check symlinks", "broken
+      links", "symlink debt", "find broken symlinks", or during entropy sweeps.
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-symlink-audit/SKILL.md
+    package: forge
   - id: forge-t3a-binding-matrix
     name: FORGE-t3a-binding-matrix
     version: 2026.07.17
@@ -1493,6 +1507,18 @@ skills:
     status: active
     source_path: skills/FORGE-telegram-audit/SKILL.md
     package: forge
+  - id: forge-telemetry-watchdog
+    name: FORGE-telemetry-watchdog
+    version: 2026.07.19
+    description: >
+      Monitor organ telemetry freshness across the federation. Checks state.json age, biometric data
+      staleness, and watchdog cron health. USE WHEN: "check telemetry", "WELL state stale",
+      "vitality unknown", "watchdog status", "biometric freshness".
+    owner: AAA
+    risk_tier: low
+    status: active
+    source_path: skills/FORGE-telemetry-watchdog/SKILL.md
+    package: forge
   - id: forge-vault999-witness
     name: FORGE-vault999-witness
     version: 1.0.0-2026.07.17
@@ -1521,9 +1547,9 @@ skills:
     package: forge
   - id: forge-visual-qa-w3
     name: FORGE-visual-qa-w3
-    version: 1.0.0-2026.07.17
+    version: 1.1.0-2026.07.20
     description: Closed-loop visual governance with W3 tri-witness consensus — render, screenshot,
-      validate, iterate, seal.
+      validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA.
     owner: A-FORGE
     risk_tier: high
     status: active
@@ -1913,7 +1939,7 @@ skills:
       - F8
   - id: mcp-smoke-test
     name: FORGE-mcp-smoke-test
-    version: 1.0.0
+    version: 1.1.0
     description: Validate that MCP servers respond correctly to health probes and basic tool calls.
       Detect down servers, mismatched schemas, and transport errors.
     owner: AAA
