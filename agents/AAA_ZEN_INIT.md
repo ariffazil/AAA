@@ -1,1 +1,1 @@
-_docs/AAA_ZEN.md
+../skills/AAA_ZEN.md
