@@ -1,3 +1,19 @@
+---
+id: FLAME-router
+name: FLAME-router
+version: "2026.07.23"
+description: >
+  Classify inference work into the stateless FLAME tool lane or the governed
+  constitutional agent lane without granting either lane new authority.
+owner: AAA
+risk_tier: low
+autonomy_tier: T1
+floor_scope:
+  - F2
+  - F4
+  - F9
+  - F13
+---
 # 🔥 FLAME-router — Tool Lane vs Agent Lane Routing
 
 > **Skill ID:** FLAME-router · **Version:** 1.0.0 · **Axis:** routing
