@@ -1,21 +1,19 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.21-QQQ-V1.1.1-SEALED
-last_verified: 2026-07-21T07:30Z
-live_commit: 4194ea7
-live_short: 4194ea7
+federation_release: v2026.07.23
+last_verified: 2026-07-23T22:00Z
+live_commit: 523f240
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN
 vault: CONNECTED
 seal_chain: append-only (chattr +a) + Merkle anchor every 100 receipts
-qqq_version: v1.1.1 sealed at A-FORGE/fe8a81d (10/10 tests pass)
+qqq_version: v1.1.1 (10/10 tests pass)
 protocol: A2A v1.0.0
 gateway: Express 5.2.1 (a2a-server + a2a-gateway)
-godel_lock: ACTIVE federation-wide — SEAL-bound claims require external witness signature
+godel_lock: ACTIVE federation-wide
 agent_lanes: 4 (333-AGI, 555-ASI, 888-APEX, 777-forge)
 forge_instruments: 11 (grok-build, opencode, claude-code, qwen-code, antigravity, codex, copilot, aider, kimi-code, continue-cli, gemini-cli)
 domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083, AAA:3001)
-atlas333: /root/HERMES/skills/governance/atlas333-cognitive-geometry/SKILL.md
 -->
 
 # AAA — Federation State & Operator Cockpit
