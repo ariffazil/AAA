@@ -1,3 +1,19 @@
+---
+id: FORGE-cross-repo-doc-zen
+name: FORGE-cross-repo-doc-zen
+version: "2026.07.23"
+description: >
+  Audit and reconcile documentation across federation repositories, preserving
+  canonical signals while removing stale references and graph fragmentation.
+owner: AAA
+risk_tier: medium
+autonomy_tier: T2
+floor_scope:
+  - F1
+  - F2
+  - F4
+  - F11
+---
 # ⚒️ FORGE-cross-repo-doc-zen — Federation Documentation Graph-Connect
 
 > **Skill Class:** Meta · **Axis:** Cross-Repo · **ATLAS333:** P9 Layer/Collapse, P22 Unity/Diversity
