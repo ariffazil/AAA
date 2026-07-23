@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://schemas/federation/v1/request",
+  "title": "Federation Request Envelope v1.0",
+  "description": "Transport-neutral cross-organ invocation contract. arifOS is canonical owner.",
+  "type": "object",
+  "required": [
+    "schema_ref", "schema_hash", "invocation_id", "trace_id",
+    "session_id", "source_organ", "destination_organ",
+    "capability_id", "action_class", "epistemic_tag",
+    "authority_band", "issued_at", "hop_index"
+  ],
+  "properties": {
+    "schema_ref": {
+      "type": "string",
+      "const": "arifos://schemas/federation/v1/request",
+      "description": "Canonical schema identifier"
+    },
+    "schema_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 of the schema document for integrity verification"
+    },
+    "invocation_id": {
+      "type": "string",
+      "description": "Unique identifier for this invocation hop"
+    },
+    "parent_invocation_id": {
+      "type": ["string", "null"],
+      "description": "Parent invocation in the trace chain (null for origin)"
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "Trace identifier — constant across all hops in a single workflow"
+    },
+    "hop_index": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Ordinal position in the trace chain"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "arifOS session identifier"
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "Authenticated actor identity"
+    },
+    "source_organ": {
+      "type": "string",
+      "enum": ["arifOS", "A-FORGE", "AAA", "GEOX", "WEALTH", "WELL", "HERMES"],
+      "description": "Originating organ"
+    },
+    "destination_organ": {
+      "type": "string",
+      "enum": ["arifOS", "A-FORGE", "AAA", "GEOX", "WEALTH", "WELL", "HERMES", "VAULT999"],
+      "description": "Target organ"
+    },
+    "capability_id": {
+      "type": "string",
+      "description": "Which capability is being invoked"
+    },
+    "action_class": {
+      "type": "string",
+      "enum": ["OBSERVE", "COMPUTE", "JUDGE", "EXECUTE"],
+      "description": "Action classification"
+    },
+    "mutation": {
+      "type": "boolean",
+      "description": "Whether this invocation mutates state"
+    },
+    "reversible": {
+      "type": "boolean",
+      "description": "Whether the action can be rolled back"
+    },
+    "epistemic_tag": {
+      "type": "string",
+      "enum": ["OBSERVED", "COMPUTED", "ESTIMATE", "INFERRED"],
+      "description": "Epistemic classification of evidence"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Prior receipt hashes this invocation depends on"
+    },
+    "authority_band": {
+      "type": "string",
+      "description": "Bounded authority tier (e.g. OBSERVE_ONLY, COMPUTE, MUTATE_BOUNDED)"
+    },
+    "judge_receipt_ref": {
+      "type": ["string", "null"],
+      "description": "arifOS judge receipt hash (required for JUDGE/EXECUTE)"
+    },
+    "human_ack_ref": {
+      "type": ["string", "null"],
+      "description": "Human acknowledgment reference (required for IRREVERSIBLE)"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "description": "Deduplication key — same key = same effect"
+    },
+    "attempt": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Retry attempt number"
+    },
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 3,
+      "description": "Maximum allowed retry attempts"
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 timestamp of invocation issuance"
+    },
+    "deadline_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 deadline after which invocation is invalid"
+    },
+    "source_release": {
+      "type": "string",
+      "description": "Source organ release/version identifier"
+    },
+    "source_manifest_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 of source organ's manifest"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Organ-specific data"
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 of the payload for integrity verification"
+    }
+  }
+}
