@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "arifos://schemas/federation/v1/receipt",
+  "title": "Federation Receipt Envelope v1.0",
+  "description": "Immutable audit receipt for VAULT999 recording.",
+  "type": "object",
+  "required": [
+    "schema_ref", "receipt_id", "trace_id", "invocation_id",
+    "sealed_at", "sealed_by", "chain_index", "prior_hash"
+  ],
+  "properties": {
+    "schema_ref": {
+      "type": "string",
+      "const": "arifos://schemas/federation/v1/receipt"
+    },
+    "receipt_id": {
+      "type": "string",
+      "description": "Unique receipt identifier"
+    },
+    "trace_id": {
+      "type": "string"
+    },
+    "invocation_id": {
+      "type": "string"
+    },
+    "sealed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sealed_by": {
+      "type": "string",
+      "description": "Actor who sealed this receipt"
+    },
+    "chain_index": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "prior_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "receipt_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["SEAL", "HOLD", "SABAR", "VOID"]
+    },
+    "request_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 of the original request"
+    },
+    "response_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA-256 of the response"
+    },
+    "evidence_hashes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "replay_verified": {
+      "type": "boolean",
+      "description": "Whether hash-chain replay verification passed"
+    }
+  }
+}

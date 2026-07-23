@@ -1,0 +1,15 @@
+{
+  "schema_ref": "arifos://schemas/federation/v1/request",
+  "schema_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "invocation_id": "inv-002",
+  "trace_id": "trace-def456",
+  "hop_index": 0,
+  "source_organ": "GEOX",
+  "destination_organ": "WEALTH",
+  "capability_id": "capital_primitive",
+  "action_class": "COMPUTE",
+  "epistemic_tag": "OBSERVED",
+  "authority_band": "OBSERVE_ONLY",
+  "issued_at": "2026-07-23T22:00:00Z",
+  "payload": { "mode": "npv" }
+}
