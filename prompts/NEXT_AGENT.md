@@ -1,4 +1,4 @@
-# 🌱 NEXT_AGENT — Federation Handoff · 2026.07.20
+# 🌱 NEXT_AGENT — Federation Handoff · 2026.07.23
 
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 > **For:** Any agent waking on af-forge
@@ -25,8 +25,9 @@ done
 | Item | Status |
 |------|--------|
 | T3a matrix | **CLOSED** 13/13 |
-| Broken symlinks | **ZERO** |
-| Gitwrap all 6 organs | **PUSHED** |
+| Broken skill cycles | **ZERO** — 17 reciprocal links restored to one-way consumers |
+| Review repair branches | **PUSHED** — AAA #142, SearXNG #1, arifOS #614, arif-sites #30 |
+| Caddy migration | **COMMITTED LOCAL** `c85d9c017546` — no remote configured |
 | arifOS runtime drift | **CLOSED** |
 | A-FORGE dirty 157 | **ZEROED** |
 | WELL vitality injection | 9.45 (CAUTION — telemetry unknown) |
@@ -38,7 +39,7 @@ done
 ## 2. FEDERATION STATE
 
 ```
-✅ arifOS    :8088  · fastmcp 3.4.4
+✅ arifOS    :8088  · restarted after hung listener during 2026-07-23 seal preflight
 ✅ A-FORGE   :7071  
 ✅ AAA       :3001  
 ✅ GEOX      :8081  · fastmcp 3.4.2 (blocked: numpy/devito)
@@ -56,6 +57,9 @@ done
 | GEOX fastmcp | **3.4.2** — blocked by numpy/devito conflict |
 | F-004 VAULT gaps | classify only |
 | WELL telemetry | watchdog cron `12c515badfb7` not populating state.json |
+| Review PRs | Four draft PRs await review and merge |
+| Caddy publish | Local commit has no configured remote; no reload performed |
+| SearXNG | Secret path is restart-safe; container not recreated |
 
 ---
 
