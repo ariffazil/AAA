@@ -45,8 +45,8 @@ GitHub/Docker/etc  →  infrastructure: governed access through A-FORGE gates
 |--------|------|-------|----------|
 | **arifos** | :8088 | `arif_init`, `arif_observe`, `arif_think`, `arif_route`, `arif_memory`, `arif_judge`, `arif_forge`, `arif_seal` | Governance, judgment, session binding, constitutional verdict |
 | **aforge** | :7072 | `forge_*` (114 tools — shell, filesystem, git, docker, browser, vault, postgres, github, chart, document, parallel, predict, scan, policy) | Building, deploying, executing, browser automation, file ops |
-| **geox** | :8081 | `geox_basin`, `geox_seismic_*`, `geox_prospect`, `geox_petrophysics`, `geox_falsify`, `geox_claim_*`, `geox_well_*`, `geox_map_*`, `geox_evidence`, `geox_contradiction_scan` (31 tools) | Geoscience, seismic, basin, petrophysics, prospect evaluation |
-| **wealth** | :18082 | `capital_primitive` (npv/irr/emv/mc/kelly/markowitz), `capital_market` (fx/commodity/gold/oil/gas), `capital_health`, `capital_diagnose`, `capital_entropy`, `capital_wisdom`, `capital_ledger` (20 tools) | Capital math, market data, risk, portfolio, institutional stress |
+| **geox** | :8081 | `geox_basin`, `geox_seismic_*`, `geox_prospect`, `geox_petrophysics`, `geox_falsify`, `geox_claim_*`, `geox_well_*`, `geox_map_*`, `geox_evidence`, `geox_contradiction_scan` (32 tools) | Geoscience, seismic, basin, petrophysics, prospect evaluation |
+| **wealth** | :18082 | `capital_primitive` (npv/irr/emv/mc/kelly/markowitz), `capital_market` (fx/commodity/gold/oil/gas), `capital_health`, `capital_diagnose`, `capital_entropy`, `capital_wisdom`, `capital_ledger`, `capital_registry`, `wealth_institutional_stress_index`, `wealth_governance_capacity`, `wealth_cascade_model`, `wealth_external_exploitation_detect` (12 tools) | Capital math, market data, risk, portfolio, institutional stress |
 | **well** | :18083 | `well_assess_homeostasis`, `well_validate_vitality`, `well_guard_dignity`, `well_classify_substrate`, `well_trace_lineage`, `well_check_repair`, `well_assess_reliability` | Human readiness, vitality, fatigue, dignity (REFLECT_ONLY) |
 
 ---
@@ -213,6 +213,6 @@ arifos_arif_route(intent="describe what you need")
 
 ---
 
-*Aligned: 2026-07-23 by FORGE (000Ω). Live probe: 114 A-FORGE, 31 GEOX, 20 WEALTH, 8 arifOS, 7 hermes.*
+*Aligned: 2026-07-24 by FORGE (000Ω). Live probe: 114 A-FORGE, 32 GEOX, 12 WEALTH, 8 arifOS, 7 hermes.*
 *Agentic kernel layer: CAPABILITY (layer 3/7). Next: BOOTSTRAP.md (layer 2 — boot probes).*
 *DITEMPA BUKAN DIBERI*

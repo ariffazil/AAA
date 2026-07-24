@@ -120,7 +120,7 @@ Discover live: `curl -s http://localhost:7072/mcp -X POST -H "Content-Type: appl
 
 ```
 BOOT — verdict=<X> organs=<N>/6 chain=<seq>
-arifos=<release> aforge=<114 tools> geox=<31> wealth=<20>
+arifos=<release> aforge=<114 tools> geox=<32> wealth=<12>
 FLAME=<live/down> carry_forward=<present/missing>
 skills=<N> at /root/.agents/skills/
 gate=<READY/MISSING> receipt=<READY/MISSING>

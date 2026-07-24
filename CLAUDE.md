@@ -23,7 +23,7 @@ You observe (111/222). Kernel judges (888). Forge executes (777). Vault seals (9
 
 ## Organs
 
-arifOS:8088 · A-FORGE:7071 · GEOX:8081 · WEALTH:18082 · WELL:18083 · AAA:3001
+arifOS:8088 · A-FORGE:7071/7072 · GEOX:8081 · WEALTH:18082 · WELL:18083 · AAA:3001
 
 ## Init
 
