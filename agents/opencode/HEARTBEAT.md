@@ -75,7 +75,7 @@
 
 **FLAME (free):** Hermes fact_check, epistemic_check, plan_review — use first.
 **Daily budget:** $2.00/session.
-**Constitutional:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL.
+**Constitutional:** Only `deepseek/deepseek-v4-pro` is eligible for 666_JUDGE and 999_SEAL deliberative compute. Authority chain: model compute → arifOS kernel adjudication → F13/actor authority → VAULT999 append. The model provides deliberation, not authority.
 
 ---
 
