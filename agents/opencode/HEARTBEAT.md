@@ -69,7 +69,7 @@
 | **FORGE (000Ω)** | `deepseek/deepseek-v4-pro` | Heavy |
 | **AUDITOR (Ψ)** | `deepseek/deepseek-v4-pro` | Heavy |
 | **OPS (🌐)** | `deepseek/deepseek-v4-flash` | Cheap |
-| **PLAN (Ω)** | `kimi/kimi-k2.7-code` | Heavy |
+| **PLAN (Ω)** | `kimi/kimi-for-coding` | Heavy |
 | **Hermes** | `mimo/mimo-v2.5-pro-ultraspeed` | Heavy |
 | **OpenClaw** | `minimax/MiniMax-M3` | Cheap |
 

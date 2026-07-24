@@ -175,7 +175,7 @@ If a server is DOWN, proceed read-only on live servers. Do NOT assume dead serve
 | **FORGE (000Ω)** | `deepseek/deepseek-v4-pro` | GLM-5.2 → MiniMax-M3 |
 | **AUDITOR (Ψ)** | `deepseek/deepseek-v4-pro` | MiMo V2.5 Pro → MiniMax-M3 |
 | **OPS (🌐)** | `deepseek/deepseek-v4-flash` | MiniMax M2.5 → MiniMax M3 |
-| **PLAN (Ω)** | `kimi/kimi-k2.7-code` | DeepSeek V4 Pro → MiMo V2.5 Pro |
+| **PLAN (Ω)** | `kimi/kimi-for-coding` | DeepSeek V4 Pro → MiMo V2.5 Pro |
 | **Hermes** | `mimo/mimo-v2.5-pro-ultraspeed` | MiMo Pro → DeepSeek V4 Pro → Groq |
 | **OpenClaw** | `minimax/MiniMax-M3` | Groq Llama → Groq 70B → Gemini Flash |
 | **Claude Code** | `deepseek/deepseek-v4-pro` | — |
