@@ -184,7 +184,7 @@ If a server is DOWN, proceed read-only on live servers. Do NOT assume dead serve
 | **Codex** | `openai/gpt-5.6-sol` | DeepSeek V4 Pro |
 | **Recovery** | `ollama/qwen2.5-coder:3b` | — |
 
-**Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. 16 models forbidden from judgment.
+**Constitutional rule:** `deepseek/deepseek-v4-pro` is the only model eligible to provide deliberative compute for 666_JUDGE and 999_SEAL roles. It does NOT possess independent authority to judge or seal — arifOS kernel adjudicates admissibility and verdict, F13/authorised actor supplies required authority or acknowledgement, VAULT999 performs the immutable append. 16 models are ineligible for constitutional deliberation.
 
 ### Cost Discipline
 
