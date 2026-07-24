@@ -318,6 +318,21 @@
       "status": "ACTIVE",
       "note": "$5 free credit. Expires Aug 20 2026. 30 hari je \u2014 pakai dulu sebelum habis. Ultra-fast inference via wafer-scale hardware. 3 models. Hermes fallback #6. 1.5K requests/day.",
       "last_verified": "2026-07-20"
+    },
+    {
+      "provider_id": "xai",
+      "provider_name": "xAI (Grok)",
+      "jurisdiction": "US",
+      "endpoint_url": "https://api.x.ai/v1",
+      "api_key_ref": "secrets::XAI_API_KEY",
+      "billing_model": "pay_per_token",
+      "billing_cycle": "monthly",
+      "balance_usd": null,
+      "data_retention_days": "unknown",
+      "cloud_act_exposed": true,
+      "status": "ACTIVE",
+      "note": "Grok Build primary. US jurisdiction \u2014 not for sovereign data.",
+      "last_verified": "2026-07-20"
     }
   ],
   "models": [
