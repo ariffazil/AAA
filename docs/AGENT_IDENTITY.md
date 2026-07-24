@@ -85,14 +85,14 @@ agents/<id>/agent-card.json
 | opencode | CLI forge instrument | VPS | `agents/opencode/` |
 | main | Operator assistant | OpenClaw | `agents/main/` |
 
-### 4.3 A-Role Cards (Infrastructure)
+### 4.3 A-Role Cards (Infrastructure — ABSORBED per HEXAGON 4.1)
 
-| ID | Role | Source Card |
-|----|------|-------------|
-| aaa-gateway | AAA gateway card | `a2a-server/agent-cards/aaa-gateway.json` |
-| aaa-architect | AAA architect persona | `a2a-server/agent-cards/aaa-architect.json` |
-| aaa-engineer | AAA engineer persona | `a2a-server/agent-cards/aaa-engineer.json` |
-| aaa-auditor | AAA auditor persona | `a2a-server/agent-cards/aaa-auditor.json` |
+| ID | Role | Status |
+|----|------|--------|
+| aaa-gateway | AAA gateway card | Active |
+| aaa-architect | AAA architect persona | **ABSORBED → AGI** (D-01, 2026-07-24) |
+| aaa-engineer | AAA engineer persona | **ABSORBED → FORGE** (D-02, 2026-07-24) |
+| aaa-auditor | AAA auditor persona | **ABSORBED → ASI/APEX** (D-03, 2026-07-24) |
 
 ### 4.4 External CLI Tools (Connected)
 

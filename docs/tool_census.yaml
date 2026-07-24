@@ -1,6 +1,6 @@
 census_metadata:
   version: 2.0.0
-  generated_at: '2026-07-18T15:38:37.863302+00:00'
+  generated_at: '2026-07-24T15:34:43.866546+00:00'
   source: /root/AAA/docs/federation_tools_sot.yaml
   description: 'GENERATED VIEW of federation_tools_sot.yaml + ABI enrichment. Do not
     hand-edit. Regenerate with: python3 /root/AAA/scripts/generate_tool_census.py'
@@ -1205,7 +1205,7 @@ tools:
 - name: well_classify_substrate
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Classify human/machine/coupled substrate type and boundary sensing
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1218,7 +1218,7 @@ tools:
 - name: well_trace_lineage
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Memory, trend, ledger, and vault chain tracing
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1231,7 +1231,7 @@ tools:
 - name: well_assess_homeostasis
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Assess regulation, stability, sleep, fatigue, and empathic balance
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1244,7 +1244,7 @@ tools:
 - name: well_check_repair
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Check repair, recovery, resilience, and forge cycle integrity
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1257,7 +1257,7 @@ tools:
 - name: well_validate_vitality
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Validate vitality, readiness, and NIAT before irreversible action
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1270,7 +1270,7 @@ tools:
 - name: well_assess_reliability
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Assess machine, tool, institution, and operational reliability
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1283,7 +1283,7 @@ tools:
 - name: well_guard_dignity
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: Guard soul, personhood, meaning, and symbolic boundaries
   lane: READ
   mutation: false
   authority_required: OBSERVER
@@ -1296,7 +1296,7 @@ tools:
 - name: well_registry_status
   organ: WELL
   access: public
-  description: WELL canonical tool
+  description: WELL registry truth diagnostic — blueprint canonical format
   lane: READ
   mutation: false
   authority_required: OBSERVER
