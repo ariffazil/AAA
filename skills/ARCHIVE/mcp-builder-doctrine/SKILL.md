@@ -2,7 +2,7 @@
 id: mcp-builder-doctrine
 name: mcp-builder-doctrine
 version: 1.1.0-2026.07.10
-description: Canonical MCP server-builder doctrine — naming laws, capability declaration discipline, _meta envelope contract, lifecycle notification rules, error envelope contract, and the 28 bindings every MCP server in arifOS federation must honour. Load before designing, scaffolding, or auditing ANY MCP server surface.
+description: Canonical MCP server-builder doctrine — naming laws, capability declaration discipline, _meta envelope contract, lifecycle notification rules, error envelope contract, and
 risk_tier: medium
 floor_scope: [F1, F2, F3, F4, F7, F9, F11, F13]
 autonomy_tier: T1

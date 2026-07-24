@@ -2,7 +2,7 @@
 id: 999-vault-seal-immutable
 name: ARCHIVE-vault-seal
 version: 1.0.0-2026.06.25
-description: Seal action to civilizational memory with mandatory end-of-session recursive MCP stack hardening and future INIT scaffold. VAULT999 record. Stage 7.
+description: Seal action to civilizational memory with mandatory end-of-session recursive MCP stack hardening and future INIT scaffold. VAULT999 record. Stage 7
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: high
 floor_scope: [F1, F2, F11, F13]

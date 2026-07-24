@@ -19,6 +19,20 @@ def main() -> None:
     epoch = int(__import__("time").time())
 
     h.ensure_dirs()
+
+    # ── Kernel handshake: mint governed session envelope (best-effort) ──
+    envelope = Path("/root/.arifos/federation-session.json")
+    if not envelope.exists():
+        try:
+            subprocess.run(
+                ["python3", "/root/scripts/federation_ritual.py", "init",
+                 "--actor", "opencode", "--intent", "substrate session start",
+                 "--write-envelope", str(envelope), "--quiet"],
+                check=False, timeout=15,
+            )
+        except Exception:
+            pass  # best-effort — don't block OpenCode startup
+
     h.audit_log(
         {
             "type": "opencode-session-start",

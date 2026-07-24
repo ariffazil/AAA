@@ -1,7 +1,7 @@
 ---
 name: HERMES-multi-modal-bridge
 version: "1.0.0-2026.07.13"
-description: "IO boundary protocol for Hermes ↔ 333-AGI multi-modal signal routing. Ingests vision/audio signals from Hermes' creative/media surface and routes them as structured evidence payloads into the reasoning layer. USE WHEN: Hermes encounters an image, audio, or video that requires reasoning beyond creative routing."
+description: "IO boundary protocol for Hermes ↔ 333-AGI multi-modal signal routing"
 domain: hermes
 cognitive_engine_notes:
   hermes: "Hermes owns the ingestion gate. Produce structured A2A JSON. Do not attempt reasoning on raw media — route it."
