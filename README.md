@@ -402,6 +402,7 @@ curl -s http://localhost:3001/health | python3 -m json.tool
 | **GEOX** | Earth intelligence | 8081 | [ariffazil/geox](https://github.com/ariffazil/geox) |
 | **WEALTH** | Capital intelligence | 18082 | [ariffazil/wealth](https://github.com/ariffazil/wealth) |
 | **WELL** | Vitality guard | 18083 | [ariffazil/well](https://github.com/ariffazil/well) |
+| **HERMES** | Multi-modal bridge + Telegram relay | 8644 | [ariffazil/HERMES](https://github.com/ariffazil/HERMES) |
 | **AAA** | State + cockpit | 3001 | ← you are here |
 
 ---
