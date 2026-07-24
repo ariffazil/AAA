@@ -10,7 +10,7 @@
   },
   "description": "Claude Code CLI forge instrument \u2014 Anthropic's terminal coding harness. Wired to federation MCPs (arifOS, geox, wealth, well, aforge). F1-F13 enforced at every tool boundary.",
   "version": "2.0.0",
-  "model": "deepseek-v4-pro (via Anthropic protocol on api.deepseek.com/anthropic)",
+  "model": "deepseek/deepseek-v4-pro",
   "binary": "/root/.local/bin/claude",
   "tier": "FI",
   "role": "forge_instrument",
@@ -540,5 +540,6 @@
     }
   ],
   "did": "did:web:arif-fazil.com",
-  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+  "sovereign": "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN",
+  "_model_sot": "/root/.config/federation-models.json"
 }

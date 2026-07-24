@@ -10,7 +10,7 @@
   },
   "description": "GitHub Copilot CLI forge instrument \u2014 Microsoft/OpenAI coding harness. Wired to federation MCPs. F1-F13 enforced.",
   "version": "2.0.0",
-  "model": "gpt-5 / claude-sonnet-4",
+  "model": "deepseek/deepseek-v4-pro",
   "binary": "/usr/bin/copilot",
   "tier": "FI",
   "role": "forge_instrument",
@@ -515,5 +515,6 @@
       "created": "2026-07-12T22:30:29Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }

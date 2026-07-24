@@ -10,7 +10,7 @@
   },
   "description": "OpenAI Codex CLI forge instrument \u2014 GPT-5/o3 coding harness. Wired to federation MCPs. F1-F13 enforced.",
   "version": "2.0.0",
-  "model": "gpt-5-codex / o3",
+  "model": "openai/gpt-5.6-sol",
   "binary": "/root/.npm-global/bin/codex",
   "tier": "FI",
   "role": "forge_instrument",
@@ -515,5 +515,6 @@
       "created": "2026-07-12T22:30:29Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }
