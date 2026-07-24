@@ -607,5 +607,7 @@
       "created": "2026-07-12T23:10:11Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "model": "minimax/MiniMax-M3",
+  "_model_sot": "/root/.config/federation-models.json"
 }

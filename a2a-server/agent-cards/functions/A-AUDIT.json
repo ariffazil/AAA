@@ -622,5 +622,6 @@
   "did": "did:web:arif-fazil.com",
   "status": "deprecated",
   "deprecated_since": "2026-07-15",
-  "migration": "Use arifOS arif_judge + arif_seal + arif_memory for audit functions."
+  "migration": "Use arifOS arif_judge + arif_seal + arif_memory for audit functions.",
+  "_model_sot": "/root/.config/federation-models.json"
 }

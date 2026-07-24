@@ -5,7 +5,7 @@
   "name": "GitHub Copilot CLI (DeepSeek BYOK)",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (DeepSeek V4 Pro — Anthropic-compatible endpoint via BYOK)",
+    "category": "LLM-as-principal (DeepSeek V4 Pro \u2014 Anthropic-compatible endpoint via BYOK)",
     "principle_origin": "DeepSeek Platform (https://platform.deepseek.com/)"
   },
   "description": "GitHub Copilot CLI forge instrument with DeepSeek V4 Pro as backend (BYOK Anthropic-compatible endpoint). Wire via env vars: COPILOT_PROVIDER_TYPE=anthropic, COPILOT_PROVIDER_BASE_URL=https://api.deepseek.com/anthropic, COPILOT_PROVIDER_API_KEY=sk-..., COPILOT_MODEL=deepseek-v4-pro. Source script: /root/.bashrc.copilot. F1-F13 enforced.",
@@ -37,7 +37,9 @@
     "provider_type": "anthropic",
     "provider_base_url": "https://api.deepseek.com/anthropic",
     "provider_model_default": "deepseek-v4-pro",
-    "alternative_models": ["deepseek-v4-flash"],
+    "alternative_models": [
+      "deepseek-v4-flash"
+    ],
     "max_prompt_tokens": 840000,
     "max_output_tokens": 128000,
     "notes": "Must use provider_type=anthropic. openai type triggers 400: 'reasoning_content in thinking mode must be passed back to the API'. DeepSeek Anthropic Messages API endpoint avoids this issue."
@@ -52,7 +54,7 @@
     "test_prompt": "Reply with the literal string: hello from deepseek via copilot cli. Do not add anything else.",
     "actual_response": "hello from deepseek via copilot cli",
     "duration_seconds": 18,
-    "tokens_used": "↑141.0k (17.7k cached) • ↓35 (24 reasoning)",
+    "tokens_used": "\u2191141.0k (17.7k cached) \u2022 \u219335 (24 reasoning)",
     "verified_by": "Hermes-Prime",
     "verified_at": "2026-07-19T09:55:00Z"
   },
@@ -67,5 +69,12 @@
   "skills_binding": [
     "070-lock-humility-godel"
   ],
-  "tags": ["copilot-cli", "deepseek", "byok", "anthropic-compatible", "forge-instrument"]
+  "tags": [
+    "copilot-cli",
+    "deepseek",
+    "byok",
+    "anthropic-compatible",
+    "forge-instrument"
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }

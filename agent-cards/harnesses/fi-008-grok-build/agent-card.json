@@ -4,7 +4,7 @@
   "class": "FORGE_INSTRUMENT",
   "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surface. F1-F13 enforced.",
   "version": "2.0.0",
-  "model": "grok-4.3 (xAI) / xai/grok-build-0.1",
+  "model": "xai/grok-4.5",
   "fallback_model": "xai/grok-build-0.1",
   "izin": "GRANTED",
   "izin_date": "2026-07-12",
@@ -97,5 +97,6 @@
       "created": "2026-07-12T23:12:25Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }

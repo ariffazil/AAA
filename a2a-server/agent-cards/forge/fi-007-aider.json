@@ -100,5 +100,6 @@
     "stateTransitionHistory": true,
     "extendedAgentCard": true
   },
-  "_a2a_harness_ref": "harnesses/aider.json"
+  "_a2a_harness_ref": "harnesses/aider.json",
+  "_model_sot": "/root/.config/federation-models.json"
 }
