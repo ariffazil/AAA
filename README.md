@@ -28,7 +28,7 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 
    Alignment · Authority · Accountability
    ─────────────────────────────────────
-   The Governed State of the arifOS Federation
+   Federation Cockpit, Registry & Router
 ```
 
 [![Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
@@ -55,18 +55,19 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 
 ## 0. What AAA Is (and Is Not)
 
-> **AAA is the governed state of the arifOS agentic civilization — not a control plane, not a dashboard, not a SaaS product. It is the constitutional substrate in which agents live, route, register, and display — never judge, never execute, never seal.**
+AAA is the live state surface of the arifOS Federation. It registers agents, displays organ health, routes tasks, queues HOLDs, and shows verdicts.
 
-### IS: The cockpit, the parliament, the air traffic control tower
+> **AAA does not judge. AAA does not execute. AAA does not compute. AAA does not seal.**
+
+### IS: The cockpit, registry, and router
 
 | AAA IS | What this means |
 |---------|-----------------|
-| **The control tower** | Sees all agents, their status, their routes, their verdicts |
 | **The operator cockpit** | The surface Arif reads to understand the federation |
-| **The A2A mesh hub** | Routes agent-to-agent tasks across all organs |
-| **The approval queue** | Queues HOLDs for human review, displays SEAL/VOID verdicts |
 | **The agent registry** | Canonical registry of every agent, its card, its capabilities |
-| **The truth dashboard** | Displays the four-layer evidence stack |
+| **The A2A mesh hub** | Routes agent-to-agent tasks across all organs |
+| **The truth dashboard** | Displays organ health, verdicts, and the four-layer evidence stack |
+| **The approval queue** | Queues HOLDs for human review, displays SEAL/VOID verdicts |
 
 ### IS NOT: The judge, the executor, the constitution
 
@@ -78,7 +79,18 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 | **A domain calculator** | Earth → GEOX · Capital → WEALTH · Vitality → WELL |
 | **The sealed ledger** | VAULT999 → owned by arifOS; AAA displays, never writes |
 
-> **arifOS is the judge. AAA is the cockpit. A-FORGE is the hand. The domain organs provide evidence. Arif holds the veto.**
+> **arifOS judges. AAA routes and displays. A-FORGE executes. Domain organs witness. VAULT999 records. ARIF decides.**
+
+### Federation Separation of Powers
+
+| Layer | Role | Can | Cannot |
+|-------|------|-----|--------|
+| **ARIF** | Sovereign | Veto, approve, decide | Be overridden |
+| **AAA** | State / Cockpit | Display, route, queue, register | Judge, execute, seal |
+| **arifOS** | Judge | Issue SEAL/HOLD/VOID/SABAR | Execute mutations |
+| **Domain Organs** | Witnesses | Compute and reflect evidence | Decide alone |
+| **A-FORGE** | Executor | Build, deploy, mutate | Self-authorize |
+| **VAULT999** | Ledger | Record immutable seals | Edit or delete history |
 
 ---
 
