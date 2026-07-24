@@ -1,0 +1,37 @@
+# AAA — Gitleaks F11 Secrets Gate (standalone, blocking)
+# Parity with core organs: every push scans for leaked tokens.
+# DITEMPA BUKAN DIBERI — 2026-07-24
+
+name: "🔐 Gitleaks Secrets Gate"
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  security-events: write
+
+concurrency:
+  group: gitleaks-aaa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gitleaks:
+    name: F11 — Gitleaks Full History Scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Gitleaks scan
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
