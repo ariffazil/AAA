@@ -1,0 +1,124 @@
+#!/usr/bin/env python3
+"""
+federation-model — CLI gatekeeper for model registry.
+THE single entry point for all runtime model resolution.
+Shell, Python, TypeScript, YAML consumers all call this.
+
+Usage:
+  federation-model resolve --agent opencode
+  federation-model resolve --agent hermes --json
+  federation-model validate
+  federation-model list
+  federation-model providers
+
+Forged: 2026-07-24 by FORGE (000Ω). DITEMPA BUKAN DIBERI.
+"""
+
+import sys, json, os
+
+# Ensure we can import from AAA src
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'src'))
+
+from resolvers.model_resolver import resolve, validate, list_agents, list_providers
+
+
+def main():
+    args = sys.argv[1:]
+    if not args:
+        print(__doc__)
+        sys.exit(0)
+
+    cmd = args[0]
+
+    if cmd == "resolve":
+        agent = None
+        json_out = False
+        for i, a in enumerate(args[1:]):
+            if a == "--agent" and i + 2 < len(args):
+                agent = args[i + 2]
+            elif a == "--json":
+                json_out = True
+        
+        if not agent:
+            print("Usage: federation-model resolve --agent <id> [--json]", file=sys.stderr)
+            sys.exit(1)
+
+        try:
+            cfg = resolve(agent)
+            if json_out:
+                print(json.dumps(cfg, indent=2, default=str))
+            else:
+                print(f"{cfg['agent_id']}: {cfg['model']} via {cfg['provider']} ({cfg['provider_name']})")
+                if cfg['fallbacks']:
+                    print(f"  fallbacks: {' → '.join(cfg['fallbacks'])}")
+        except KeyError as e:
+            print(f"ERROR: {e}", file=sys.stderr)
+            sys.exit(1)
+
+    elif cmd == "validate":
+        v = validate()
+        print(f"valid={v['valid']} providers={v['providers']} agents={v['agents']}")
+        for e in v["errors"]:
+            print(f"  ❌ {e}")
+        for w in v["warnings"]:
+            print(f"  ⚠️  {w}")
+        sys.exit(0 if v["valid"] else 1)
+
+    elif cmd == "list":
+        for a in list_agents():
+            print(f"{a['agent_id']:15s} → {a['model']:40s} ({a['status']})")
+
+    elif cmd == "providers":
+        for p in list_providers():
+            bal = f"${p['balance_usd']}" if p['balance_usd'] is not None else "N/A"
+            print(f"{p['provider_id']:20s} {p['status']:12s} {bal:>8s}  {p['jurisdiction']}")
+
+
+    elif cmd == "drift-check":
+        import subprocess
+        print("=== LAYER 1: Integrity Drift (registry internal) ===")
+        v = validate()
+        print(f"  valid={v['valid']} providers={v['providers']} agents={v['agents']}")
+        for e in v["errors"]:
+            print(f"  ❌ {e}")
+        for w in v["warnings"]:
+            print(f"  ⚠️  {w}")
+        
+        print()
+        print("=== LAYER 2: Projection Drift (config files vs registry) ===")
+        import subprocess
+        result = subprocess.run(
+            ["/usr/local/bin/federation-model-sync", "--json"],
+            capture_output=True, text=True, timeout=15
+        )
+        if result.returncode == 0:
+            data = json.loads(result.stdout)
+            drifts = [a for a in data.get("agents", []) if a.get("drift")]
+            if drifts:
+                print(f"  ❌ {len(drifts)} projection drifts found:")
+                for d in drifts:
+                    print(f"     {d['agent']}: canonical={d['canonical']} active={d['active']}")
+            else:
+                print(f"  ✅ {data.get('drift_count', 0)} projection drifts — all configs match registry")
+        else:
+            print(f"  ⚠️  projection check returned code {result.returncode}")
+            if result.stderr:
+                print(f"  {result.stderr[:200]}")
+        
+        print()
+        print("=== LAYER 3: Live Drift (runtime process state) ===")
+        print("  ℹ️  Not yet implemented — requires process inspection.")
+        print("  Roadmap: probe effective model via /health endpoints,")
+        print("  systemctl show-environment, or runtime introspection APIs.")
+        
+        has_errors = len(v["errors"]) > 0
+        sys.exit(1 if has_errors else 0)
+
+    else:
+        print(f"Unknown command: {cmd}", file=sys.stderr)
+        print("Commands: resolve, validate, list, providers, drift-check", file=sys.stderr)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

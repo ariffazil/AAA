@@ -1,206 +1,227 @@
 /**
  * model_resolver.ts — Canonical model resolver for AAA federation (TypeScript).
- * Reads strictly from /root/.config/federation-models.json.
- * Zero hardcoded model strings. Drift impossible by construction.
+ * Reads from AGENT_MODEL_MAP.json via symlink at /root/.config/federation-models.json.
+ * Schema: providers[] + agents[] + models[] + fallback_chains[].
  *
  * Usage:
- *   import { resolveAgentModel, resolveTierModel, listAgents } from './model_resolver';
- *
- *   const cfg = resolveAgentModel('opencode');
- *   // → { agentId: 'opencode', provider: 'deepseek', model: 'deepseek/deepseek-v4-pro', ... }
- *
- *   const model = resolveTierModel('heavy');
- *   // → 'deepseek/deepseek-v4-pro'
+ *   import { resolve, validate, listAgents } from './model_resolver';
+ *   const cfg = resolve('opencode');
+ *   // → { agentId: 'opencode', model: 'deepseek/deepseek-v4-pro', ... }
  *
  * Forged: 2026-07-24 by FORGE (000Ω). DITEMPA BUKAN DIBERI.
  */
 
 import * as fs from 'fs';
-import * as path from 'path';
 
-const CANONICAL_PATH = '/root/.config/federation-models.json';
+const CANONICAL = '/root/.config/federation-models.json';
 
-interface AgentConfig {
-  name: string;
-  class: string;
-  organ: string;
+// ── Types ──
+
+interface ProviderRecord {
+  provider_id: string;
+  provider_name?: string;
+  endpoint_url?: string;
+  api_key_ref?: string;
+  status?: string;
+  balance_usd?: number | null;
+  jurisdiction?: string;
+  billing_model?: string;
+  cloud_act_exposed?: boolean;
+  note?: string;
+}
+
+interface FallbackEntry {
+  model_key: string;
+  priority: number;
+  condition: string;
+}
+
+interface AgentRecord {
+  agent_id: string;
+  agent_name?: string;
   primary_model: string;
   primary_provider: string;
-  fallback_chain: string[];
-  timeout_ms: number;
-  cost_budget_daily_usd: number;
-  config_file: string;
-  status: string;
+  fallback_chain: FallbackEntry[];
+  timeout_ms?: number;
+  cost_budget_daily_usd?: number;
+  status?: string;
 }
 
-interface ProviderConfig {
-  name: string;
-  jurisdiction: string;
-  endpoint: string;
-  api_key_ref: string;
-  billing: string;
-  balance_usd: number | null;
-  status: string;
-}
-
-interface TierConfig {
-  use: string;
-  model: string;
-  cost: string;
+interface ModelRecord {
+  model_key: string;
+  provider_ref: string;
+  status?: string;
 }
 
 interface FederationRegistry {
-  _meta: Record<string, unknown>;
-  providers: Record<string, ProviderConfig>;
-  agents: Record<string, AgentConfig>;
-  routing: Record<string, unknown>;
-  tiers: Record<string, TierConfig>;
+  providers: ProviderRecord[];
+  agents: AgentRecord[];
+  models: ModelRecord[];
+  fallback_chains?: unknown[];
+  routing_rules?: unknown[];
 }
 
-interface ResolvedAgentModel {
+interface ResolvedAgent {
   agentId: string;
   agentName: string;
+  model: string;
   provider: string;
   providerName: string;
-  model: string;
-  fallbackChain: string[];
-  timeoutMs: number;
-  costBudgetDailyUsd: number;
-  apiKeyRef: string;
+  fallbacks: string[];
   endpoint: string;
+  apiKeyRef: string;
   status: string;
+  timeoutMs: number;
+  costDailyUsd: number;
 }
 
-interface AgentSummary {
-  agentId: string;
-  name: string;
-  model: string;
-  provider: string;
-  status: string;
+interface ValidationResult {
+  valid: boolean;
+  errors: string[];
+  warnings: string[];
+  providers: number;
+  agents: number;
 }
 
-interface ProviderSummary {
-  providerId: string;
-  name: string;
-  status: string;
-  balanceUsd: number | null;
-  jurisdiction: string;
-  billing: string;
-}
+// ── Cache ──
 
-let _registryCache: FederationRegistry | null = null;
-let _registryLoadTime = 0;
-const CACHE_TTL_MS = 60_000; // 1 minute
+let _cache: FederationRegistry | null = null;
+let _cacheTime = 0;
+const CACHE_TTL = 60_000;
 
-function loadRegistry(): FederationRegistry {
+function load(): FederationRegistry {
   const now = Date.now();
-  if (_registryCache && now - _registryLoadTime < CACHE_TTL_MS) {
-    return _registryCache;
+  if (_cache && now - _cacheTime < CACHE_TTL) return _cache;
+  if (!fs.existsSync(CANONICAL)) {
+    throw new Error(`Registry missing: ${CANONICAL}`);
   }
-
-  if (!fs.existsSync(CANONICAL_PATH)) {
-    throw new Error(
-      `Canonical model registry not found at ${CANONICAL_PATH}. Run: forge --option-a to create it.`
-    );
-  }
-
-  const raw = fs.readFileSync(CANONICAL_PATH, 'utf-8');
-  _registryCache = JSON.parse(raw) as FederationRegistry;
-  _registryLoadTime = now;
-  return _registryCache;
+  _cache = JSON.parse(fs.readFileSync(CANONICAL, 'utf-8')) as FederationRegistry;
+  _cacheTime = now;
+  return _cache;
 }
 
-/** Force reload of registry cache. */
-export function reloadRegistry(): void {
-  _registryCache = null;
+export function reload(): void {
+  _cache = null;
 }
 
-export function resolveAgentModel(agentId: string): ResolvedAgentModel {
-  const registry = loadRegistry();
-  const agents = registry.agents;
+// ── Index helpers ──
 
-  if (!(agentId in agents)) {
-    throw new Error(
-      `Agent '${agentId}' not found in canonical registry. Available: ${Object.keys(agents).join(', ')}`
-    );
-  }
+function providerMap(reg: FederationRegistry): Map<string, ProviderRecord> {
+  const m = new Map<string, ProviderRecord>();
+  for (const p of reg.providers) m.set(p.provider_id, p);
+  return m;
+}
 
-  const cfg = agents[agentId];
-  const providerId = cfg.primary_provider || 'unknown';
-  const providers = registry.providers;
-  const providerCfg = providers[providerId] || ({} as ProviderConfig);
+function agentMap(reg: FederationRegistry): Map<string, AgentRecord> {
+  const m = new Map<string, AgentRecord>();
+  for (const a of reg.agents) m.set(a.agent_id, a);
+  return m;
+}
+
+// ── Public API ──
+
+export function resolve(agentId: string): ResolvedAgent {
+  const reg = load();
+  const agents = agentMap(reg);
+  const providers = providerMap(reg);
+
+  const a = agents.get(agentId);
+  if (!a) throw new Error(`Agent '${agentId}' not found. Available: ${[...agents.keys()].join(', ')}`);
+
+  const pid = a.primary_provider || 'unknown';
+  const p = providers.get(pid);
+
+  const fallbacks: string[] = (a.fallback_chain || [])
+    .filter((f): f is FallbackEntry => typeof f === 'object' && 'model_key' in f)
+    .map(f => f.model_key);
 
   return {
     agentId,
-    agentName: cfg.name || agentId,
-    provider: providerId,
-    providerName: providerCfg.name || providerId,
-    model: cfg.primary_model,
-    fallbackChain: cfg.fallback_chain || [],
-    timeoutMs: cfg.timeout_ms || 30000,
-    costBudgetDailyUsd: cfg.cost_budget_daily_usd || 0,
-    apiKeyRef: providerCfg.api_key_ref || '',
-    endpoint: providerCfg.endpoint || '',
-    status: cfg.status || 'UNKNOWN',
+    agentName: a.agent_name || agentId,
+    model: a.primary_model,
+    provider: pid,
+    providerName: p?.provider_name || pid,
+    fallbacks,
+    endpoint: p?.endpoint_url || '',
+    apiKeyRef: p?.api_key_ref || '',
+    status: a.status || p?.status || 'UNKNOWN',
+    timeoutMs: a.timeout_ms || 30000,
+    costDailyUsd: a.cost_budget_daily_usd || 0,
   };
 }
 
-export function resolveTierModel(tier: string): string {
-  const registry = loadRegistry();
-  const tiers = registry.tiers;
-
-  if (!(tier in tiers)) {
-    throw new Error(`Tier '${tier}' not found. Available: ${Object.keys(tiers).join(', ')}`);
-  }
-
-  return tiers[tier].model;
-}
-
-export function resolveFallback(agentId: string, failedModel: string): string | null {
-  const cfg = resolveAgentModel(agentId);
-  const chain = cfg.fallbackChain;
-
+export function resolveFallback(agentId: string, afterModel: string): string | null {
+  const cfg = resolve(agentId);
+  const chain = cfg.fallbacks;
   for (let i = 0; i < chain.length; i++) {
-    if (chain[i] === failedModel || chain[i].includes(failedModel)) {
+    if (chain[i].includes(afterModel) || afterModel.includes(chain[i])) {
       return i + 1 < chain.length ? chain[i + 1] : null;
     }
   }
-
   return chain.length > 0 ? chain[0] : null;
 }
 
-export function listAgents(statusFilter?: string): AgentSummary[] {
-  const registry = loadRegistry();
-  const result: AgentSummary[] = [];
+export function validate(): ValidationResult {
+  const reg = load();
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  const providers = providerMap(reg);
+  const agents = agentMap(reg);
 
-  for (const [aid, cfg] of Object.entries(registry.agents)) {
-    if (statusFilter && cfg.status !== statusFilter) continue;
-    result.push({
-      agentId: aid,
-      name: cfg.name || aid,
-      model: cfg.primary_model,
-      provider: cfg.primary_provider || 'unknown',
-      status: cfg.status || 'UNKNOWN',
-    });
+  // Build known models set
+  const knownModels = new Set<string>();
+  for (const m of reg.models || []) {
+    if (m.model_key) knownModels.add(m.model_key);
   }
 
-  return result.sort((a, b) => a.agentId.localeCompare(b.agentId));
+  for (const [aid, a] of agents) {
+    if (!a.primary_model) errors.push(`${aid}: missing primary_model`);
+    if (!providers.has(a.primary_provider)) {
+      errors.push(`${aid}: provider '${a.primary_provider}' not in registry`);
+    }
+    for (const fb of a.fallback_chain || []) {
+      const mk = fb.model_key || '';
+      if (mk && !knownModels.has(mk)) {
+        const found = [...knownModels].some(km => mk.includes(km) || km.includes(mk));
+        if (!found) warnings.push(`${aid}: fallback model '${mk}' not in registry models catalog`);
+      }
+    }
+  }
+
+  for (const [pid, p] of providers) {
+    if (p.status === 'DEPRECATING' || p.status === 'RATE_LIMITED') {
+      warnings.push(`${pid}: ${p.status} — agents using this may fail`);
+    }
+    if (p.cloud_act_exposed) {
+      warnings.push(`${pid}: US jurisdiction — not for sovereign data`);
+    }
+  }
+
+  return { valid: errors.length === 0, errors, warnings, providers: providers.size, agents: agents.size };
 }
 
-export function listProviders(): ProviderSummary[] {
-  const registry = loadRegistry();
-  const result: ProviderSummary[] = [];
+export function listAgents(): { agentId: string; name: string; model: string; provider: string; status: string }[] {
+  const reg = load();
+  return reg.agents
+    .map(a => ({
+      agentId: a.agent_id,
+      name: a.agent_name || a.agent_id,
+      model: a.primary_model,
+      provider: a.primary_provider || 'unknown',
+      status: a.status || '?',
+    }))
+    .sort((a, b) => a.agentId.localeCompare(b.agentId));
+}
 
-  for (const [pid, cfg] of Object.entries(registry.providers)) {
-    result.push({
-      providerId: pid,
-      name: cfg.name || pid,
-      status: cfg.status || 'UNKNOWN',
-      balanceUsd: cfg.balance_usd ?? null,
-      jurisdiction: cfg.jurisdiction || 'unknown',
-      billing: cfg.billing || 'unknown',
-    });
-  }
-
-  return result.sort((a, b) => a.providerId.localeCompare(b.providerId));
+export function listProviders(): { providerId: string; name: string; status: string; balanceUsd: number | null; jurisdiction: string }[] {
+  const reg = load();
+  return reg.providers
+    .map(p => ({
+      providerId: p.provider_id,
+      name: p.provider_name || p.provider_id,
+      status: p.status || '?',
+      balanceUsd: p.balance_usd ?? null,
+      jurisdiction: p.jurisdiction || '?',
+    }))
+    .sort((a, b) => a.providerId.localeCompare(b.providerId));
 }

@@ -3,7 +3,7 @@
 > **Forged:** 2026-06-27 by FORGE (000Ω) per F13 SOVEREIGN directive
 > **Updated:** 2026-07-20 — AGENT_MODEL_MAP.json unified registry
 > **Authority:** F13 SOVEREIGN (Arif Fazil)
-> **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json` (21 models, 13 agents, 9 providers, 6 shadows, 2 scars, 4 fallback chains, 9 routing rules)
+> **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json` (28 probed models, 13 agents, 13 providers, 6 shadows, 2 scars, 4 fallback chains, 9 routing rules) · **Symlink:** `/root/.config/federation-models.json`
 > **Supersedes:** `FEDERATION_MODEL.json` (absorbed), scattered prose tables in INIT.md/TOOLS.md/AGENTS.md
 > **Soul/shadow profiles:** `/root/AAA/registries/models/{provider}_{soul,shadow}.yaml` (supplementary deep-dives)
 > **Model capabilities:** `/root/arifOS/arifosmcp/config/model_registry.json` (constitutional capability registry — referenced, not duplicated)
@@ -44,7 +44,7 @@ Status legend:
 
 ### Master files
 - `model_soul.yaml` — canonical schema definition (30 KB, v4). Lists `shadow_incidents` + `models[]` with the **gold-standard** shape that the soul/shadow files should match.
-- `FEDERATION_MODEL.json` — master JSON registry with provider routing + rate-limit metadata. Already references `groq` and `ollama` with API key paths.
+- `LEGACY_FEDERATION_MODEL_provider_routing.json` — historical JSON registry with provider routing + rate-limit metadata (was `FEDERATION_MODEL.json`, renamed 2026-07-24). Already references `groq` and `ollama` with API key paths. Superseded by `AGENT_MODEL_MAP.json`; kept for audit trace.
 
 ---
 
@@ -73,8 +73,8 @@ Status legend:
 
 3 provider pairs (6 files) removed permanently — info was canonical elsewhere:
 - ✅ `openai_{soul,shadow}.yaml` — canonical at `gpt/GPT_FAMILY.md`
-- ✅ `groq_{soul,shadow}.yaml` — canonical at `FEDERATION_MODEL.json`
-- ✅ `ollama_{soul,shadow}.yaml` — canonical at `FEDERATION_MODEL.json`
+- ✅ `groq_{soul,shadow}.yaml` — canonical at `LEGACY_FEDERATION_MODEL_provider_routing.json` (superseded)
+- ✅ `ollama_{soul,shadow}.yaml` — canonical at `LEGACY_FEDERATION_MODEL_provider_routing.json` (superseded)
 
 See `.archive/2026-06-27-stub-batch/README.md` for restoration note (not applicable — files deleted).
 
@@ -158,15 +158,17 @@ cooling_ledger_path: /root/path/to/cooling/file.json
 
 ---
 
-## Routing posture (from `FEDERATION_MODEL.json`)
+## Routing posture (historical, from `LEGACY_FEDERATION_MODEL_provider_routing.json`)
 
-For reference, `FEDERATION_MODEL.json` already encodes the following routing decisions:
+> Historical reference only. The canonical routing posture lives in `AGENT_MODEL_MAP.json`.
+
+For reference, `LEGACY_FEDERATION_MODEL_provider_routing.json` (formerly `FEDERATION_MODEL.json`, superseded 2026-07-24) encoded the following routing decisions:
 
 - `general_queries`: DeepSeek primary, Groq secondary (free tier), Ollama last-resort
 - `code_infra_tools`: DeepSeek primary, Groq (llama-4-maverick fast code), Ollama fallback
 - `high_throughput`: Groq
 - `openai` access: via `tokenrouter` (Anthropic-style proxy)
-- **Many providers in FEDERATION_MODEL.json have NO soul/shadow pair** (these are the gap providers)
+- **Many providers in the legacy file have NO soul/shadow pair** (these are the gap providers)
 
 ---
 
