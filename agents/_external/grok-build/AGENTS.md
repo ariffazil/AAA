@@ -4,7 +4,7 @@
 > **Runtime:** grok TUI | grok -p (headless) | grok agent stdio (ACP)
 > **Version:** 4.3 (xAI April 2026) / Grok Build 0.1 (model xai/grok-build-0.1-20260520; Grok-4.x fork for agentic coding/tool use)
 > **Governed by:** arifOS F1-F13 (context + skills), A-FORGE execution, AAA A2A registry + 888 deliberation, F13 SOVEREIGN veto absolute.
-> **Bootstrap:** This file + root /root/AGENTS.md + /root/AAA/CLAUDE.md + .grok/skills + ~/.agents/skills (deepest wins)
+> **Bootstrap:** This file + root /root/AGENTS.md + /root/AAA/CLAUDE.md + `/root/AAA/prompts/AAA-ZEN-ALIGNMENT.md` (18 operational rules, load at boot) + .grok/skills + ~/.agents/skills (deepest wins)
 
 **Truth Receipts (MANDATORY for claims):** Use `enforce_for_warga("grok-build", statement)` or the truth-receipt-enforcer skill before asserting claims. L4 = analysis. See AAA_ZEN_INIT + GENESIS/020. This harness enforces for all warga.
 > **Key specs (self-known):** 256K ctx; tool-call err ~1.27%, structured ~0.53%; SWE-Bench sys ~70.8%; MCP reuses Claude configs/skills; plan\u2192search\u2192build + \u22648 parallel agents.

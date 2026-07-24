@@ -2,7 +2,7 @@
 id: caller-trace
 name: Caller Trace
 version: "1.0.0"
-description: Before invoking any tool, traces WHO else calls this tool, the cost of misuse, and whether the caller's use is load-bearing or ceremonial. Prevents scenarios like the Docker MCP dead-end loop where multiple agents chase a broken tool no one needs.
+description: Before invoking any tool, traces WHO else calls this tool, the cost of misuse, and whether the caller's use is
 owner: AAA
 risk_tier: low
 knowledge_basis:

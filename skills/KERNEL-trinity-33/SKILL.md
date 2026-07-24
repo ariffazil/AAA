@@ -2,7 +2,7 @@
 id: trinity-33-canonical
 name: trinity-33-canonical
 version: 1.1.0-2026.07.08
-description: The canonical 33-repo Trinity (final). arifOS = LAW/JUDGMENT (K1-K11), AAA = STATE/ROUTING/VISIBILITY (C1-C11, new explicit axis), A-FORGE = EXECUTION/MUTATION (F1-F11). Adds 4 arifOS repos, 2 A-FORGE repos, PROTOCOL SPEC class, 5-phase integration order, and the iron rule. Supersedes prior 3 skills (see delta table).
+description: The canonical 33-repo Trinity (final)
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F7, F8, F11]

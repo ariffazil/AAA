@@ -195,10 +195,30 @@ class ConstitutionalExecutor(AgentExecutor):
         # 5. Organ dispatch — route to MCP server
         # Extract tool name from text (simple heuristic)
         tool_name = _detect_tool(text, target_organ)
+
+        # Init/seal are kernel-only verbs that need richer arguments than
+        # the standard {"query", "session_id"} envelope. For these, the
+        # canonical wrapper at /root/scripts/federation_ritual.py is the
+        # authoritative path — here we just proxy the call with the
+        # arguments the kernel actually expects.
+        if tool_name in ("arif_init", "arif_seal"):
+            arguments = {
+                "actor_id": identity.agent_id,
+                "intent": text[:200],
+                "session_id": task_id,
+            }
+            if tool_name == "arif_init":
+                arguments["mode"] = "light"
+            else:
+                arguments["mode"] = "seal"
+                arguments["content"] = text[:500]
+        else:
+            arguments = {"query": text, "session_id": task_id}
+
         result = await call_mcp_tool(
             organ_id=target_organ,
             tool_name=tool_name,
-            arguments={"query": text, "session_id": task_id},
+            arguments=arguments,
         )
 
         # 6. Build response
@@ -266,6 +286,12 @@ class ConstitutionalExecutor(AgentExecutor):
 def _detect_tool(text: str, organ: str) -> str:
     """Simple heuristic to detect MCP tool from text."""
     lower = text.lower()
+    # Init/seal intent detection — routes to arifOS kernel via /mcp proxy.
+    # These bypass the per-organ routing because they are kernel-only verbs.
+    if lower.startswith("init ") or lower.startswith("agent-init"):
+        return "arif_init"
+    if lower.startswith("seal ") or lower.startswith("agent-seal"):
+        return "arif_seal"
     if organ == "geox":
         if "seismic" in lower:
             return "geox_seismic_compute"

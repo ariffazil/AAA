@@ -1,12 +1,18 @@
 ---
 name: FORGE-secret-hygiene
-description: >
-  Audit env.local, SOPS .env, and config files for plaintext secret leaks,
-  key age, missing rotation dates, and overlong-lived credentials.
-  USE WHEN: "secret audit", "key age", "rotate secrets", "credential hygiene",
-  "API key check", "env audit", "secret leak scan".
+description: 'Audit env.local, SOPS .env, and config files for plaintext secret leaks,
+  key age, missing rotation dates, and overlong-lived credentials. USE WHEN: "secret
+  audit", "key age", "rotate secrets", "credential hygiene", "API key check", "env
+  audit", "secret leak scan".'
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F12
+- F13
 ---
-
 # Secret Hygiene
 
 **Scans Arif's VPS for plaintext secrets, aged credentials, and rotation gaps.**

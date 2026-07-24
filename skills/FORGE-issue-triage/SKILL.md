@@ -2,7 +2,7 @@
 id: github-issue-triage
 name: FORGE-issue-triage
 version: 1.1.0
-description: 'Governed triage workflow for GitHub issues across the arifOS federation.
+description: 'Governed triage workflow for GitHub issues across the arifOS federation
   Use this skill whenever a new issue is opened, an issue lacks labels, or an agent
   needs to determine if it belongs in a different repo or federation organ.
   This skill classifies, routes, labels, and drafts responses — but never closes,

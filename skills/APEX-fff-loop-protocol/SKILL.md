@@ -2,17 +2,25 @@
 id: APEX-fff-loop-protocol
 name: APEX-fff-loop-protocol
 version: 2.0.0
-description: >
-  5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) →
-  Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift signal.
-  BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
-floor_scope: [F01, F04, F08, F11]
-cognitive_hints:
-  claude: "Use <pass-blue>, <pass-red>, <pass-gold> tags. Extended recall for cross-pass state."
-  codex: "5 sequential passes. Each pass: input from prior → process → output to next. Strict chaining."
-  hermes: "5 passes. Diagnose. Attack. Forge. Verify. Seal. Run them."
----
+description: '5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue
+  (forge) → Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift
+  signal. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for
+  Hermes.
 
+  '
+floor_scope:
+- F01
+- F04
+- F08
+- F11
+cognitive_hints:
+  claude: Use <pass-blue>, <pass-red>, <pass-gold> tags. Extended recall for cross-pass
+    state.
+  codex: '5 sequential passes. Each pass: input from prior → process → output to next.
+    Strict chaining.'
+  hermes: 5 passes. Diagnose. Attack. Forge. Verify. Seal. Run them.
+owner: AAA
+---
 # APEX-fff-loop-protocol
 
 <cognitive-note model="claude">XML-tagged audit passes. Maintain cross-pass state in extended context.</cognitive-note>

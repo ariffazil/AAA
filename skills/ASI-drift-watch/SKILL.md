@@ -1,11 +1,21 @@
 ---
 name: ASI-drift-watch
-description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app). The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule and manually. Use when in doubt about which version is live, or as part of `verify-runtime`.
-when_to_use: After deploy, when organ behavior surprises you, weekly health audit, before any "is it running what I think?" question.
+description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app).
+  The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule
+when_to_use: After deploy, when organ behavior surprises you, weekly health audit,
+  before any "is it running what I think?" question.
 disable-model-invocation: false
-allowed_tools: [Bash, Read, Grep]
+allowed_tools:
+- Bash
+- Read
+- Grep
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+- F11
 ---
-
 # Drift Watch
 
 A service running is not the same as a service running what you think. This skill surfaces that gap.

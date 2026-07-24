@@ -2,7 +2,7 @@
 id: federation-release-attestation
 name: federation-release-attestation
 version: 1.0.0
-description: 'Produces a seven-repository federation release manifest proving tag, commit, CI, artifact, and deployed-runtime parity. Never overwrites existing tags — issues corrected tags when drift is detected. Outputs signed JSON manifest with per-repo evidence chain.'
+description: 'Produces a seven-repository federation release manifest proving tag, commit, CI, artifact, and deployed-runtime parity'
 owner: AAA
 risk_tier: medium
 knowledge_basis:

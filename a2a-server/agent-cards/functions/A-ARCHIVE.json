@@ -32,13 +32,13 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+      "description": "arifOS session token (JWT)"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-ArifOS-Key",
-      "description": "Static API key for organ-to-organ federation calls"
+      "description": "Static API key for federation calls"
     }
   },
   "security": [
@@ -217,7 +217,7 @@
     {
       "id": "APEX-humility-godel",
       "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before any SEAL-grade archive claim. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
+      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
         "F7",
@@ -238,7 +238,7 @@
     {
       "id": "KERNEL-reality-skills",
       "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
       "tags": [
         "kernel",
         "f2",
@@ -254,7 +254,7 @@
     {
       "id": "KERNEL-sovereign-recognize",
       "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "description": "Route to sovereign. No action without sovereign chain.",
       "tags": [
         "kernel",
         "f13",
@@ -268,7 +268,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -284,7 +284,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Every output reduces entropy. \u0394S < 0.",
       "tags": [
         "kernel",
         "rsi",
@@ -299,7 +299,7 @@
     {
       "id": "KERNEL-trinity-33",
       "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "description": "33 repos: KERNEL(11)+CODE(11)+FOUNDRY(11).",
       "tags": [
         "kernel",
         "trinity",
@@ -314,7 +314,7 @@
     {
       "id": "KERNEL-mcp-zen",
       "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "description": "Naming contracts, transport physics, capability vs authority.",
       "tags": [
         "kernel",
         "mcp",
@@ -329,7 +329,7 @@
     {
       "id": "KERNEL-quantum-runtime",
       "name": "Quantum Runtime (APEX)",
-      "description": "APEX quantum state management. G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6 computation. C_dark detection. Tri-witness geometry.",
+      "description": "G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6. C_dark detection. Tri-witness geometry.",
       "tags": [
         "kernel",
         "quantum",
@@ -344,7 +344,7 @@
     {
       "id": "KERNEL-qubit-substrate",
       "name": "Qubit Substrate (Physics)",
-      "description": "Substrate physics for non-binary intelligence states. Superposition, collapse, entanglement principles.",
+      "description": "Non-binary intelligence states: superposition, collapse, entanglement.",
       "tags": [
         "kernel",
         "substrate",

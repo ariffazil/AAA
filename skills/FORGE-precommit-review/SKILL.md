@@ -1,11 +1,15 @@
 ---
 name: FORGE-precommit-review
-description: "Pre-commit gate for any organ repo. Runs lint, type-check, test, constitutional surface scan, and shows the diff to the user. Use before every git commit in any organ. Delegates F1-surface detection to SURFACE-GATE (the live kernel probe hook that verifies canonical tools are still exposed)."
-when_to_use: "Before every git commit in any organ. Also: before opening a PR, after a non-trivial feature lands."
+description: Pre-commit gate for any organ repo
+when_to_use: 'Before every git commit in any organ. Also: before opening a PR, after
+  a non-trivial feature lands.'
 disable-model-invocation: false
-allowed_tools: [Bash, Read, Grep]
+allowed_tools:
+- Bash
+- Read
+- Grep
+owner: A-FORGE
 ---
-
 # Precommit Review
 
 The "always run this before commit" ritual. Mirrors the federation's commitment to reversibility and verifiability.
