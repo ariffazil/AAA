@@ -2,7 +2,7 @@
 id: mcp-zen-authoring
 name: mcp-zen-authoring
 version: 1.0.0-2026.07.03
-description: Keep MCP servers minimal, schema-first, and governance-free.
+description: Keep MCP servers minimal, schema-first, and governance-free
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: medium
 floor_scope: [F2, F4, F8, F11, F13]
