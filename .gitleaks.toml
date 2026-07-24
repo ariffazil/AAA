@@ -1,0 +1,12 @@
+# AAA gitleaks configuration
+# DITEMPA BUKAN DIBERI — 2026-07-24 (F11 parity)
+
+[allowlist]
+  description = "Benign paths — never store real secrets here"
+  paths = [
+    '''\.secrets\.baseline$''',
+    '''docs/.*''',
+    '''memory/.*''',
+    '''_archive/.*''',
+    '''archive/.*''',
+  ]
