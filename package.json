@@ -2,7 +2,7 @@
   "name": "aaa-control-plane",
   "private": true,
   "license": "AGPL-3.0",
-  "version": "2026.06.23",
+  "version": "2026.07.24",
   "type": "module",
   "scripts": {
     "dev": "vite",
