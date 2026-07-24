@@ -17,17 +17,18 @@ agents:
     config: /root/AAA/agents/kernel-scribe
     bootstrap: "python3 -c 'from core.skills.bootstrap import bootstrap_agent_context; print(bootstrap_agent_context(\"kernel-scribe\")[\"bootstrap_command\"])'"
     tools:
-      - arifos-kernel_memory_recall
-      - arifos-kernel_sense_observe
-      - arifos-kernel_threat_score
-      - arifos-kernel_autonomy_calibrate
-      - arifos-kernel_scenario_policy_eval
-      - arifos-kernel_judge_deliberate
-      - arifos-kernel_reply_compose
-      - arifos-kernel_organ_attest_all
+      - arifos_arif_memory
+      - arifos_arif_observe
+      - arifos_arif_judge
+      - arifos_arif_think
+      - arifos_arif_route
+      - arifos_arif_init
+      - aforge_forge_probe
+      - aforge_forge_security_drift_scan
     forbidden:
-      - forge_execute
-      - arif_vault_seal
+      - aforge_forge_execute
+      - aforge_forge_shell
+      - arifos_arif_seal
       - systemctl restart
     schedule: "On governance event spike OR daily digest"
     model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
@@ -44,16 +45,16 @@ agents:
     mode: propose-only
     config: /root/AAA/agents/ops-planner
     tools:
-      - well_mcp_assess_homeostasis
-      - well_mcp_validate_vitality
-      - wealth_mcp_conservation_capital
-      - wealth_mcp_flow_liquidity
-      - arifos-kernel_mind_reason
-      - arifos-kernel_organ_attest_all
-      - aforge_forge_plan
+      - well_well_assess_homeostasis
+      - well_well_validate_vitality
+      - wealth_capital_health
+      - wealth_capital_market
+      - arifos_arif_think
+      - aforge_forge_probe
+      - aforge_forge_predict
     forbidden:
-      - forge_execute
-      - arif_vault_seal
+      - aforge_forge_execute
+      - arifos_arif_seal
     schedule: "On strategic intent from Arif"
     model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
     context_files:
@@ -62,22 +63,14 @@ agents:
       - /root/AAA/agents/roles/OPS_PLANNER.md
 
   self-forge-advisor:
-    name: "Self-Forge Advisor"
-    description: "Self-improvement architect — finds entropy, proposes refactors through governed pipeline"
+    name: "Self-Forge Advisor (ABSORBED → ASI drift-analysis skill)"
+    description: "Formerly entropy/refactor advisor. Functions absorbed into ASI toolbench drift scan. No longer an independent agent."
     class: C3
-    mode: propose-only
+    mode: retired
     config: /root/AAA/agents/self-forge-advisor
-    tools:
-      - arifos-kernel_sense_observe
-      - arifos-kernel_memory_recall
-      - arifos-kernel_threat_score
-      - aforge_forge_plan
-      - aforge_forge_dry_run
-      - aforge_forge_approve
-      - aforge_forge_execute
-      - arifos-kernel_vault_seal
-      - arifos-kernel_organ_attest_all
+    tools: []
     forbidden:
+      - ALL
       - direct git commit
       - direct git push
       - constitutional floor modification
@@ -96,29 +89,26 @@ agents:
     config: /root/AAA/agents/prospect-maturation
     bootstrap: "python3 -c 'from core.skills.bootstrap import bootstrap_agent_context; print(bootstrap_agent_context(\"prospect-maturation\")[\"bootstrap_command\"])'"
     tools:
-      - geox_basin
-      - geox_atlas
-      - geox_deep_time_state
-      - geox_simulate_routing
-      - geox_simulate_sequences
-      - geox_simulate_accommodation
-      - geox_simulate_surfaces
-      - geox_contrast_detect
-      - geox_prospect
-      - geox_claim
-      - geox_evidence
+      - geox_geox_basin
+      - geox_geox_deep_time_state
+      - geox_geox_prospect
+      - geox_geox_claim
+      - geox_geox_evidence
+      - geox_geox_seismic_compute
+      - geox_geox_petrophysics
+      - geox_geox_well_desk
       - wealth_capital_primitive
-      - wealth_emv_compute
       - aforge_forge_chart
       - arifos_arif_init
       - arifos_arif_observe
     forbidden:
-      - arif_vault_seal
-      - forge_execute_sealed
+      - arifos_arif_seal
+      - aforge_forge_execute_sealed
+      - aforge_forge_execute
       - production deploy
       - real-money decisions
     schedule: "On Arif command — 'prospect maturation', 'well proposal', 'volumetrics'"
-    model: mimo/mimo-v2.5-pro  # canonical: /root/.config/federation-models.json
+    model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
     context_files:
       - /root/AAA/agents/prospect-maturation/IDENTITY.md
       - /root/AAA/agents/prospect-maturation/AGENTS.md
@@ -139,12 +129,12 @@ agents:
     mode: observe-only
     config: /root/AAA/agents/external-watcher
     tools:
-      - arifos-kernel_sense_observe
-      - arifos-kernel_evidence_fetch
-      - arifos-kernel_memory_recall
-      - arifos-kernel_reply_compose
+      - arifos_arif_observe
+      - arifos_arif_memory
+      - aforge_forge_search
+      - aforge_forge_fetch
     forbidden:
-      - any forge tool
+      - any forge mutation tool
       - any organ write
       - PROPOSE
       - MUTATE
