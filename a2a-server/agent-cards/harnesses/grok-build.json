@@ -5,10 +5,10 @@
   "name": "Grok Build 4.3 (xAI TUI)",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Grok Build harness as sovereign AAA citizen. Plan\u2192search\u2192build, superior parallelism (worktree/subagents), narrow MCP surfaces (repo-read/memory/write-gated), A2A delegation + arifos-mcp-federation. Complementary MCP (tools) + A2A (agents). Hybrid with xAI multi-agent for research.",
+  "description": "Grok Build harness \u2014 AAA sovereign citizen. Plan\u2192search\u2192build with parallelism, worktree isolation, A2A delegation.",
   "version": "2.0.0",
   "protocolVersion": "1.0",
   "url": "local-harness with A2A via AAA https://aaa.arif-fazil.com/a2a",
@@ -40,13 +40,13 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+      "description": "arifOS session token (JWT)"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-API-Key",
-      "description": "Static API key for service-to-service calls"
+      "description": "Static API key for federation calls"
     }
   },
   "security": [
@@ -202,7 +202,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "Execute within T1/T2 bands with F1-F13 gates and 888_HOLD for T3",
+      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
       "tags": [
         "execution",
         "governance",
@@ -260,7 +260,7 @@
     {
       "id": "ASI-agentic-architecture",
       "name": "Agentic Architecture",
-      "description": "Design and maintain agent cards, skills binding, and capability surfaces",
+      "description": "Design sovereign agentic agents. 9-skill spine, F8/F11 enforced.",
       "tags": [
         "architecture",
         "agent-card",
@@ -276,7 +276,7 @@
     {
       "id": "KERNEL-reality-skills",
       "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
       "tags": [
         "kernel",
         "f2",
@@ -292,7 +292,7 @@
     {
       "id": "KERNEL-sovereign-recognize",
       "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "description": "Route to sovereign. No action without sovereign chain.",
       "tags": [
         "kernel",
         "f13",
@@ -306,7 +306,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -322,7 +322,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Every output reduces entropy. \u0394S < 0.",
       "tags": [
         "kernel",
         "rsi",
@@ -483,7 +483,7 @@
     "resume_supported": true,
     "personas": true
   },
-  "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local. T2: announce for multi-file, deps, test-then-action. T3: 888_HOLD + human approval for prod deploy, force-push, secrets, vault writes, Caddy, rm unknown, cross-organ structural. Cannot self-SEAL irreversible. Uses dynamic-state probe before mutation. Full GitHub via MCP (auditable).",
+  "authority_boundary": "Session harness. T1: read/grep/edit/test/run-local. T2: announce for multi-file, deps, test-then-action. T3: 888_HOLD + human approval for prod deploy, force-push, secrets, vault writes, Caddy, rm unknown,.",
   "autonomy_tiers": {
     "t1_auto_do": "Read files, grep, list, web/X research, edit with search_replace, run tests/builds locally, spawn explore subagents, use MCP tools (geox/wealth/well/github), todo, schedule, image gen, plan drafts",
     "t2_announce_proceed": "Multi-file refactors, new deps (after test), local service restart after green, PR drafts, skill creation, manifest updates (non-prod)",

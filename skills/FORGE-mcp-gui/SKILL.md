@@ -2,7 +2,7 @@
 id: FORGE-mcp-gui
 name: FORGE-mcp-gui
 version: 1.1.0
-description: Build and audit interactive MCP Apps, UI resources, sandbox messaging, and CSP-bound host integration.
+description: Build and audit interactive MCP Apps, UI resources, sandbox messaging, and CSP-bound host integration
 owner: AAA
 risk_tier: medium
 autonomy_tier: T2

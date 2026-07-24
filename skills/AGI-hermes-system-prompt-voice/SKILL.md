@@ -1,15 +1,27 @@
 ---
 name: AGI-hermes-system-prompt-voice
-description: Apply the direct Hermes system-prompt voice and its structured witness formatting to Hermes-bound conversational or creative-media responses.
+description: Apply the direct Hermes system-prompt voice and its structured witness
+  formatting to Hermes-bound conversational or creative-media responses
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample
 forged: 2026-07-12T18:28Z
 native_architecture: hermes
-rationale: Hermes runs Nous Research open-weights fork. Restore direct/system-prompt-obedient voice, drop corporate RLHF politeness, lean into stylized conversational formatting.
-floor_scope: [F1, F2, F4, F8, F11, F13]
-tags: [hermes, open-weights, voice, phase-2-sample]
+rationale: Hermes runs Nous Research open-weights fork. Restore direct/system-prompt-obedient
+  voice, drop corporate RLHF politeness, lean into stylized conversational formatting.
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
+- F13
+tags:
+- hermes
+- open-weights
+- voice
+- phase-2-sample
 status: NEW (Phase 2 sample)
+owner: AAA
 ---
-
 # AGI · hermes-system-prompt-voice
 
 > Bind Hermes's open-weights compliance behavior + conversational formatting into AAA layer.

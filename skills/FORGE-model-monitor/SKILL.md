@@ -1,12 +1,17 @@
 ---
 name: FORGE-model-monitor
-description: >
-  Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap),
-  Kimi, Ollama qwen2.5:7b (local). Track latency, billing failures (402),
-  cold-start failures, and auto-pause dead models. USE WHEN: "model health",
-  "check fallback chain", "DeepSeek balance", "model latency", "billing alert".
+description: 'Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap),
+  Kimi, Ollama qwen2.5:7b (local). Track latency, billing failures (402), cold-start
+  failures, and auto-pause dead models. USE WHEN: "model health", "check fallback
+  chain", "DeepSeek balance", "model latency", "billing alert".'
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F13
 ---
-
 # Model Fallback Monitor
 
 **Tracks Arif's model federation health. Prevents the DeepSeek 402 scenario from going unnoticed.**

@@ -1,16 +1,27 @@
 ---
 name: AGI-multimodal-bridge
-description: >
-  Multi-modal reasoning bridge — unifies text, image, tabular data, and geospatial
-  evidence into a single reasoning chain. Routes visual analysis through GEOX vision
-  pipeline, tabular data through WEALTH compute, and text through standard LLM reasoning.
-  USE WHEN: "analyze this image + data", "combine visual and textual evidence",
-  "multi-modal prospect evaluation".
-version: 1.0.0
-tags: [multimodal, reasoning, bridge, vision, data, F4, F8]
-floor_scope: [F02, F04, F08]
----
+description: 'Multi-modal reasoning bridge — unifies text, image, tabular data, and
+  geospatial evidence into a single reasoning chain. Routes visual analysis through
+  GEOX vision pipeline, tabular data through WEALTH compute, and text through standard
+  LLM reasoning. USE WHEN: "analyze this image + data", "combine visual and textual
+  evidence", "multi-modal prospect evaluation".
 
+  '
+version: 1.0.0
+tags:
+- multimodal
+- reasoning
+- bridge
+- vision
+- data
+- F4
+- F8
+floor_scope:
+- F02
+- F04
+- F08
+owner: AAA
+---
 # AGI-multimodal-bridge
 
 ## Purpose

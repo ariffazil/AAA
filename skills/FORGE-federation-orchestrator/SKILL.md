@@ -1,13 +1,18 @@
 ---
 name: FORGE-federation-orchestrator
-description: >
-  Monitor and manage the arifOS federation: docker compose ps, restart dead services,
-  MCP health probes (8080-8083), container drift detection, restart count monitoring.
-  USE WHEN: "federation status", "restart dead container", "container health",
-  "docker drift", "service down", "probe MCP", "health check federation".
-  Runs on af-forge (VPS) — native docker and curl required.
+description: 'Monitor and manage the arifOS federation: docker compose ps, restart
+  dead services, MCP health probes (8080-8083), container drift detection, restart
+  count monitoring. USE WHEN: "federation status", "restart dead container", "container
+  health", "docker drift", "service down", "probe MCP", "health check federation".
+  Runs on af-forge (VPS) — native docker and curl required.'
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F13
 ---
-
 # Federation Orchestrator
 
 **arifOS federation infrastructure operator. Monitors, recovers, and reports on all federation nodes.**

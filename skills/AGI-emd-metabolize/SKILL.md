@@ -1,14 +1,27 @@
 ---
 name: AGI-emd-metabolize
-description: Decide which decoded EMD segments remain ephemeral or promote to durable memory, with witness gates for constitutional and canon-grade records.
+description: Decide which decoded EMD segments remain ephemeral or promote to durable
+  memory, with witness gates for constitutional and canon-grade records
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
 forged: 2026-07-12T18:28Z
-rationale: Audit showed only 6 of 244 active skills mention "metabolize" — narrow, concentrated in dream-engine + audit-skill-atlas. Add explicit contract between encode→decode with witness check. Phase 3 gap fill.
-floor_scope: [F1, F2, F4, F8, F11, F13]
-tags: [emd, metabolize, memory-promotion, witness-check]
+rationale: Audit showed only 6 of 244 active skills mention "metabolize" — narrow,
+  concentrated in dream-engine + audit-skill-atlas. Add explicit contract between
+  encode→decode with witness check. Phase 3 gap fill.
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
+- F13
+tags:
+- emd
+- metabolize
+- memory-promotion
+- witness-check
 status: NEW (Phase 3 gap fill)
+owner: AAA
 ---
-
 # AGI · emd-metabolize
 
 > The `M` in EMD. Bound to 333-AGI runtime. Distinct from decode (next step backward, not forward).

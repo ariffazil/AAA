@@ -1,6 +1,6 @@
 ---
 name: FORGE-skill-creator
-description: Bootstrap, design, and package new skills.
+description: Bootstrap, design, and package new skills
 version: 1.1.0
 ---
 # skill-creator (O_Ψ Verification Layer)

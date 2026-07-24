@@ -1,6 +1,6 @@
 ---
 name: apex_audit_coverage_check
-description: Audit whether every constitutional floor and federation organ has code enforcement, tests, bypass resistance, and trace coverage. Use for read-only F1-F13 audits, organ boundary reviews, cascade-risk checks, or governance gap analysis.
+description: Audit whether every constitutional floor and federation organ has code enforcement, tests, bypass resistance, and trace coverage
 agent: 888-APEX
 namespace: apex_*
 cluster: AUDIT

@@ -1,6 +1,6 @@
 ---
 name: apex_floor_check
-description: Evaluate a proposed action against the arifOS F1-F13 constitutional floors and identify any failed gate. Use for governance changes, destructive operations, production deployment, secret handling, federation charter edits, or constitutional verdict review.
+description: Evaluate a proposed action against the arifOS F1-F13 constitutional floors and identify any failed gate
 agent: 888-APEX
 namespace: apex_*
 cluster: CONSTITUTION

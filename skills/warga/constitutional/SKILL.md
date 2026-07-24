@@ -1,6 +1,6 @@
 ---
 name: warga-constitutional
-description: Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use the live arifOS governance and constitutional skills instead.
+description: Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use the live arifOS governance
 ---
 
 # constitutional

@@ -3,10 +3,25 @@ name: FORGE-mcp-lifeguard
 slug: mcp-lifeguard
 version: 1.0.0
 homepage: https://arif-fazil.com/skills/mcp-lifeguard
-description: "Health probe and auto-recovery for constitutional federation MCP servers. Pings arifOS (8080), GEOX (8081), WEALTH (8082), WELL (8083) every 5 minutes. Restarts dead containers and alerts on model fallback chain failures."
-metadata: {"clawdbot":{"emoji":"🚁","requires":{"bins":["docker","curl"]},"os":["linux"]}}
+description: Health probe and auto-recovery for constitutional federation MCP servers
+metadata:
+  clawdbot:
+    emoji: 🚁
+    requires:
+      bins:
+      - docker
+      - curl
+    os:
+    - linux
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F12
+- F13
 ---
-
 ## When to Use
 
 Use when:

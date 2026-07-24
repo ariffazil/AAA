@@ -1,15 +1,32 @@
 ---
 name: FORGE-context-compressor
-description: Compress oversized logs, transcripts, diffs, and telemetry before they exceed a host runtime context budget while preserving provenance and recovery pointers.
-forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · long-log compression for 256K-bound runtimes)
-forged: 2026-07-12T18:33:00Z
-rationale: Directive OPERATION EUREKA ZEN explicitly named "missing context-compression for long logs" as a Phase 3 forge candidate. Long-context runtimes (Grok 4.3 256K, Claude 1M variants) need a compression gate so they don't trip context-window boundaries mid-session. Phase 3 gap fill.
-binding: FORGE-* skills (cross-CLI), particularly for Grok (FI-010) and long-context adapters
-floor_scope: [F1, F2, F4, F8, F11, F13]
-tags: [forge, context-compression, long-log, 256k, rsi-breaker]
+description: Compress oversized logs, transcripts, diffs, and telemetry before they
+  exceed a host runtime context budget while preserving provenance and recovery
+forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · long-log compression
+  for 256K-bound runtimes)
+forged: 2026-07-12 18:33:00+00:00
+rationale: Directive OPERATION EUREKA ZEN explicitly named "missing context-compression
+  for long logs" as a Phase 3 forge candidate. Long-context runtimes (Grok 4.3 256K,
+  Claude 1M variants) need a compression gate so they don't trip context-window boundaries
+  mid-session. Phase 3 gap fill.
+binding: FORGE-* skills (cross-CLI), particularly for Grok (FI-010) and long-context
+  adapters
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
+- F13
+tags:
+- forge
+- context-compression
+- long-log
+- 256k
+- rsi-breaker
 status: NEW (Phase 3 gap fill)
+owner: A-FORGE
 ---
-
 # FORGE · context-compressor
 
 > Cross-runtime compression gate for FORGE-* tools and AGI-* long-log producers.

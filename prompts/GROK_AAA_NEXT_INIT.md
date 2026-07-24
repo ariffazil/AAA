@@ -1,32 +1,32 @@
-# GROK / AAA NEXT INIT — 2026-07-23T22:53Z
+# NEXT INIT — Grok/AAA Agent Wake Prompt
 
-**Prior:** Grok GEOX transport + F1 session sealed.  
-**Mission:** **FORGE TILL SEAL** — close constitutional transport (P0), then scientific forge under law.
+> **Last sealed:** 2026-07-24T10:10Z · Copilot CLI session
+> **Session ID:** 521d4114-e62c-4483-b1a0-377a30778f36
 
-## Load first
+## Context at Handoff
 
-1. `/root/forge_work/2026-07-23/FORGE-DECISION-CONSTITUTIONAL-TRANSPORT.md`  
-2. `/root/forge_work/2026-07-23/NEXT_AGENT_INIT_FORGE_TILL_SEAL.md`  
-3. `/root/forge_work/2026-07-23/SESSION-SEAL-GROK-GEOX-TRANSPORT-2026-07-23T2253Z.md`  
+Federation Zen pass completed (25/29 tasks). All 7 organs cross-linked, llms.txt deployed, CI standardized, agent cards unified. Init/Seal pipeline unified — all 5 layers now call federation_ritual.py → arif_init.
 
-## One sentence
+## Immediate Next
 
-GEOX can kill impossible structure and propose classical candidates; production is blocked until **one governed receipt** proves arifOS→proxy→GEOX with shared identity and no anonymous compute.
+1. `make health` — verify all 8 services
+2. Read `/root/.claude/projects/-root/memory/session-state.md` 
+3. Read `/root/forge_work/2026-07-24/SESSION-SEAL-20260724-100934.md`
 
-## First task
+## Open Tasks (carried forward)
 
-**0D:** Single-door E2E F_IMPOSSIBLE → K-DIP+THROW+DL KILL · FALSIFIED · same session/actor/trace.
+| Task | Priority | Blocker |
+|------|----------|---------|
+| Health endpoint standardization | MEDIUM | Per-organ code change |
+| Secrets deep audit completion | LOW | 3,517 files to triage |
+| CI cross-trigger | LOW | T3 PAT scope |
+| forge_vault seal removal | LOW | A-FORGE code change |
+| AAA cockpit A2A executor wiring | MEDIUM | Dependency on AAA A2A server |
 
-## Hard rules
+## Quick Verify
 
-- 31 public tools only · no local GEOX SEAL · preferred_hypothesis null  
-- No CNN until benchmark floors + second field  
-- HOLD_PRODUCTION until 0D green  
-
-## Done already (skip)
-
-- K-DL aliases `9a6eea93` · F1 zen `6368c83b` · FORGE0E direct KILL · kernel 0A invent-True fix `46f445afa`  
-
-DITEMPA BUKAN DIBERI
-EOF
-
+```bash
+for port in 8088 7071 3001 8081 18082 18083; do
+  curl -sf -o /dev/null -w ":$port %{http_code}\n" http://localhost:$port/health
+done
+```

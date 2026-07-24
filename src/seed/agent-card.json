@@ -392,6 +392,42 @@
         "F4",
         "F11"
       ]
+    },
+    {
+      "id": "arifos.session.init",
+      "name": "Federation Session Init",
+      "description": "Mint a governed session via arifOS kernel (port 8088). Returns session_id + session_token (sct_v1.*). Canonical entry point for any agent that needs authoritative identity. Same effect as calling arif_init directly — exposed here so cockpit-driven agents don't need to know kernel ports. Path C of 2026-07-24 federation unification. See /root/scripts/federation_ritual.py init.",
+      "tags": [
+        "init",
+        "session",
+        "governance",
+        "kernel",
+        "arifos"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11",
+        "F13"
+      ]
+    },
+    {
+      "id": "arifos.session.seal",
+      "name": "Federation Session Seal",
+      "description": "Seal the active session via arifOS kernel (port 8088). Writes immutable entry to VAULT999 and returns entry_id + chain_hash. Canonical exit point. Same effect as arif_seal — exposed here for cockpit-driven agents. Path C of 2026-07-24 federation unification. See /root/scripts/federation_ritual.py seal.",
+      "tags": [
+        "seal",
+        "session",
+        "vault999",
+        "kernel",
+        "arifos"
+      ],
+      "floor_scope": [
+        "F1",
+        "F2",
+        "F11",
+        "F13"
+      ]
     }
   ],
   "signatures": [

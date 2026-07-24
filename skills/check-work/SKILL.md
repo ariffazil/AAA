@@ -1,14 +1,21 @@
 ---
 name: check-work
-description: >
-  Check your work with a verification subagent that reviews diffs, runs builds
-  and tests, and evaluates correctness. Read this file for instructions. Use when
-  asked to "check work", "verify changes", "self-verify", "/check-work", "/check",
+description: 'Check your work with a verification subagent that reviews diffs, runs
+  builds and tests, and evaluates correctness. Read this file for instructions. Use
+  when asked to "check work", "verify changes", "self-verify", "/check-work", "/check",
   "/verify", or "/self-verify".
-metadata:
-  short-description: "Verify changes with a subagent"
----
 
+  '
+metadata:
+  short-description: Verify changes with a subagent
+owner: AAA
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+- F11
+---
 # /check-work -- Self-Verification
 
 Verify work by spawning a verifier subagent, checking its verdict, and

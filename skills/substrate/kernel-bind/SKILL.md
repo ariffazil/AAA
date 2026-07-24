@@ -35,6 +35,7 @@ axis_version: 1.0.0
 - **protocol**: synchronous_rpc
 - **inputs**: {'actor_id': 'string', 'intent': 'string', 'context': 'object'}
 - **outputs**: {'session_id': 'string', 'authority_band': 'enum[T1,T2,T3]', 'allowed_verbs': 'list[string]'}
+- **implementation** (Path C 2026-07-24): The canonical shell wrapper at `/root/scripts/federation_ritual.py init` invokes arif_init and persists the result to `/root/.arifos/federation-session.json`. **Do not call arif_init directly from arbitrary code** — always go through the wrapper so the envelope gets written and the PS1 reflects real state. For A2A callers, the AAA cockpit exposes `arifos.session.init` and `arifos.session.seal` skills (see `/root/AAA/aaa-a2a/src/aaa_a2a/server.py` + `/root/AAA/.well-known/agent-card.json`). For plain HTTP, AAA exposes `/mcp/session/init` and `/mcp/session/seal`.
 
 ## Axis 3: Contrast
 

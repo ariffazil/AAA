@@ -211,7 +211,7 @@
     {
       "id": "KERNEL-reality-skills",
       "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
       "tags": [
         "kernel",
         "f2",
@@ -227,7 +227,7 @@
     {
       "id": "KERNEL-sovereign-recognize",
       "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "description": "Route to sovereign. No action without sovereign chain.",
       "tags": [
         "kernel",
         "f13",
@@ -241,7 +241,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -257,7 +257,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Every output reduces entropy. \u0394S < 0.",
       "tags": [
         "kernel",
         "rsi",
@@ -272,7 +272,7 @@
     {
       "id": "KERNEL-trinity-33",
       "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "description": "33 repos: KERNEL(11)+CODE(11)+FOUNDRY(11).",
       "tags": [
         "kernel",
         "trinity",
@@ -287,7 +287,7 @@
     {
       "id": "KERNEL-mcp-zen",
       "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "description": "Naming contracts, transport physics, capability vs authority.",
       "tags": [
         "kernel",
         "mcp",
@@ -302,7 +302,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
+      "description": "dry_run\u2192engineer\u2192write\u2192commit\u2192deploy. Reversibility class per verb.",
       "tags": [
         "kernel",
         "forge",
@@ -318,7 +318,7 @@
     {
       "id": "KERNEL-mcp-builder",
       "name": "MCP Builder",
-      "description": "FastMCP server construction, tool registration, MCP handshake, verify script, venv pattern.",
+      "description": "FastMCP server construction, tool registration, handshake, venv.",
       "tags": [
         "kernel",
         "mcp",

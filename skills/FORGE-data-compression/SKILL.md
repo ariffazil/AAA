@@ -1,15 +1,25 @@
 ---
 name: FORGE-data-compression
-description: >
-  Context-window-aware data compression for long logs, code dumps, and multi-source
-  evidence bundles. Compresses input to fit within model context limits while preserving
-  semantic fidelity (F2 TRUTH ≥ 0.95). Supports streaming chunk-and-summarize pipelines.
-  USE WHEN: "compress this log", "summarize before context window", "fit this in context".
-version: 1.0.0
-tags: [compression, context-window, summarization, F2, F4]
-floor_scope: [F02, F04, F07]
----
+description: 'Context-window-aware data compression for long logs, code dumps, and
+  multi-source evidence bundles. Compresses input to fit within model context limits
+  while preserving semantic fidelity (F2 TRUTH ≥ 0.95). Supports streaming chunk-and-summarize
+  pipelines. USE WHEN: "compress this log", "summarize before context window", "fit
+  this in context".
 
+  '
+version: 1.0.0
+tags:
+- compression
+- context-window
+- summarization
+- F2
+- F4
+floor_scope:
+- F02
+- F04
+- F07
+owner: A-FORGE
+---
 # FORGE-data-compression
 
 ## Purpose

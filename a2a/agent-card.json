@@ -1,7 +1,7 @@
 {
   "$schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
   "name": "AAA A2A Gateway",
-  "description": "Federation A2A Gateway \u2014 central edge for all arifOS federation organs. Implements A2A Gateway pattern: task routing, authN/Z (OAuth 2.1), webhook broker, skill catalog aggregator, sovereign injection. One edge, six organs discoverable. Any A2A-native peer discovers the entire federation through this card.",
+  "description": "Federation A2A Gateway — central edge for all arifOS federation organs. One edge, six organs discoverable.",
   "version": "2026.07.17",
   "url": "https://aaa.arif-fazil.com",
   "provider": {

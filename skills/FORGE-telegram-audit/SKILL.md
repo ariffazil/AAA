@@ -1,12 +1,17 @@
 ---
 name: FORGE-telegram-audit
-description: >
-  Automated TREE777 security checks for Telegram bot tokens, webhook isolation,
-  bot permission scope, and A2A bridge security. USE WHEN: "telegram audit",
-  "bot security", "webhook check", "token isolation", "TREE777 check",
-  "telegram permissions".
+description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation,
+  bot permission scope, and A2A bridge security. USE WHEN: "telegram audit", "bot
+  security", "webhook check", "token isolation", "TREE777 check", "telegram permissions".'
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F12
+- F13
 ---
-
 # Telegram Security Audit (TREE777)
 
 **Automated Telegram bot security checks — token isolation, webhook exposure, permission scope.**

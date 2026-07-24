@@ -1,6 +1,6 @@
 ---
 name: verify-runtime
-description: Verify federation service health and runtime behavior. Runs apex-health.sh, per-organ health probes (arifOS, GEOX, WEALTH, WELL, APEX, A-FORGE), and one behavior smoke per touched organ. Use after every deploy, restart, or after any task that claims "done". Confirms behavior, not just tests.
+description: Verify federation service health and runtime behavior
 when_to_use: Post-deploy, post-restart, post-skill-claim of "done", weekly audit, pre-commit on runtime-touching code.
 disable-model-invocation: false
 allowed_tools: [Bash, Read]

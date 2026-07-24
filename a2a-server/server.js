@@ -2655,7 +2655,7 @@ app.get('/ready', async (req, res) => {
     const response = await fetch('http://localhost:8088/health', { signal: AbortSignal.timeout(2000) });
     arifosHealthy = response.ok;
   } catch (_) {}
-  
+
   let forgeHealthy = false;
   try {
     const response = await fetch('http://localhost:7072/health', { signal: AbortSignal.timeout(2000) });
@@ -2675,6 +2675,51 @@ app.get('/ready', async (req, res) => {
       aforge: forgeHealthy ? 'OK' : 'DOWN'
     }
   });
+});
+
+// ─────────────────────────────────────────────────────────────────────
+// Federation Session — Path C (2026-07-24)
+// REST passthroughs to arifOS kernel for init/seal. Same effect as
+// /root/scripts/federation_ritual.py — exposed here for non-A2A callers.
+// See: arifOS kernel at :8088/mcp, arifos.session.{init,seal} A2A skills.
+// ─────────────────────────────────────────────────────────────────────
+async function _callArifOsMcp(toolName, args) {
+  const resp = await fetch('http://localhost:8088/mcp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      jsonrpc: '2.0', id: 1, method: 'tools/call',
+      params: { name: toolName, arguments: args },
+    }),
+    signal: AbortSignal.timeout(15000),
+  });
+  const body = await resp.json();
+  if (body.error) return { ok: false, error: body.error };
+  const content = body.result && body.result.content && body.result.content[0];
+  let parsed = content && content.text;
+  try { parsed = JSON.parse(parsed); } catch (_) { /* leave as text */ }
+  return { ok: true, result: parsed, is_error: !!(body.result && body.result.isError) };
+}
+
+app.post('/mcp/session/init', async (req, res) => {
+  const { actor_id = 'arif', intent = 'cockpit init' } = req.body || {};
+  const r = await _callArifOsMcp('arif_init', {
+    actor_id, intent, mode: 'light',
+  });
+  res.setHeader('Cache-Control', 'no-store');
+  res.status(r.ok ? 200 : 502).json(r);
+});
+
+app.post('/mcp/session/seal', async (req, res) => {
+  const { session_id, content = 'shell session close' } = req.body || {};
+  if (!session_id) {
+    return res.status(400).json({ ok: false, error: 'session_id required' });
+  }
+  const r = await _callArifOsMcp('arif_seal', {
+    session_id, content, mode: 'seal',
+  });
+  res.setHeader('Cache-Control', 'no-store');
+  res.status(r.ok ? 200 : 502).json(r);
 });
 
 app.get('/receipts/latest.json', (req, res) => {

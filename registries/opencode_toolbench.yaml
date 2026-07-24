@@ -63,8 +63,9 @@ axes:
     - question
     - doom_loop
     - external_directory
-    plugin_tools:
-    - aaa_measure
+    # aaa_measure removed — no MCP endpoint at :3001/mcp, ghost tool
+    # See /root/forge_work/2026-07-24/agent5-audit/ALIAS_DEPRECATION_PLAN.md
+    plugin_tools: []
   L2_mcp_servers:
     count: 25
     discovery_command: opencode mcp list

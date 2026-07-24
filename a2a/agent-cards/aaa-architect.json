@@ -2,7 +2,7 @@
   "protocol_version": "1.0.0",
   "id": "aaa-architect",
   "name": "AAA A-rchitect",
-  "description": "Design agent for AAA. Defines task schemas, skill exposure, agent mesh topology, and capability contracts. Does not execute — designs what can be built and how it's described.",
+  "description": "Design agent — defines task schemas and capability contracts.",
   "url": "https://aaa.arif-fazil.com/a2a/architect",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [

@@ -1,6 +1,6 @@
 ---
 name: openclaw-agentic
-description: "Make OpenClaw truly agentic — autonomous probing, self-evolving skill curation, organ-aware routing, constitutional passthrough to arifOS MCP, multi-agent spawning, and session continuity across L4/L5/L6 memory. Use when: (1) OpenClaw needs to do something without being asked (auto-fix a stuck cron, detect a failing organ, restart a dead MCP), (2) work needs to land in the right organ (GEOX for earth, WEALTH for capital, WELL for vitality, arifOS for constitutional), (3) a task is T2/T3 and needs to pass through F1-F13 review, (4) you want OpenClaw to spawn parallel sub-agents, (5) you want session state to survive without re-prompting."
+description: "Make OpenClaw truly agentic — autonomous probing, self-evolving skill curation, organ-aware routing, constitutional passthrough to arifOS MCP, multi-agent spawning, and"
 version: 2.2.0
 author: Hermes (capability-first forge) for Arif; v2.1.0 merged with OpenClaw parallel session 4fc1c1b5; v2.2.0 OPENCLAW recursive overhaul 2026-06-08 (Tier-0 shell, no LLM in cron)
 tags: [openclaw, agentic, autonomous, self-evolve, routing, arifOS, F1-F13]

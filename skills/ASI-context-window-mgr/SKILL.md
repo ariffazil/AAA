@@ -1,15 +1,25 @@
 ---
 name: ASI-context-window-mgr
-description: >
-  Context window lifecycle management — monitors token usage, triggers compression
-  when approaching limits, manages conversation summarization, and preserves critical
-  context across compaction boundaries. USE WHEN: "context getting long", "compress
-  conversation", "summarize session", "token budget".
-version: 1.0.0
-tags: [context-window, tokens, summarization, memory, F4, F7]
-floor_scope: [F04, F07, F11]
----
+description: 'Context window lifecycle management — monitors token usage, triggers
+  compression when approaching limits, manages conversation summarization, and preserves
+  critical context across compaction boundaries. USE WHEN: "context getting long",
+  "compress conversation", "summarize session", "token budget".
 
+  '
+version: 1.0.0
+tags:
+- context-window
+- tokens
+- summarization
+- memory
+- F4
+- F7
+floor_scope:
+- F04
+- F07
+- F11
+owner: AAA
+---
 # ASI-context-window-mgr
 
 ## Purpose
