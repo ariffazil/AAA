@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.23
-last_verified: 2026-07-23T22:00Z
-live_commit: 523f240
+federation_release: v2026.07.24
+last_verified: 2026-07-24T16:00Z
+live_commit: 43f52bb
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN
@@ -15,6 +15,8 @@ agent_lanes: 4 (333-AGI, 555-ASI, 888-APEX, 777-forge)
 forge_instruments: 11 (grok-build, opencode, claude-code, qwen-code, antigravity, codex, copilot, aider, kimi-code, continue-cli, gemini-cli)
 domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083, AAA:3001)
 -->
+
+**SOT:** 2026-07-24 | **seal_seq:** `43f52bb`
 
 # AAA — Federation State & Operator Cockpit
 
