@@ -10,7 +10,7 @@
   },
   "description": "OpenCode CLI warga (external forge instrument) \u2014 provider-agnostic coding harness bound to 333-AGI (\u0394 MIND). Auto-discovers MCP tools at session init. A2A mesh citizen via 777 FORGE. Reversible-first, evidence-gated, T3 actions require 888_HOLD + F13. Model rotation: MiMo V2.5 Pro (main), GLM-5.2 (forge), DeepSeek V4 Pro (auditor), Kimi K2.7 Code (planner), MiniMax M2.5-HS (ops), Qwen 3.6 Flash (small). 3 providers: MiMo/Bailian/MiniMax. HEXAGON external warga v3.1.0.",
   "version": "3.1.0",
-  "model": "tokenplan-mimo/mimo-v2.5-pro",
+  "model": "deepseek/deepseek-v4-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
@@ -700,5 +700,6 @@
     "governance_organ": "arifOS",
     "governance_port": 8088,
     "governance_endpoint": "https://mcp.arif-fazil.com/mcp"
-  }
+  },
+  "_model_sot": "/root/.config/federation-models.json"
 }

@@ -1,3 +1,5 @@
+# MODEL SOT: /root/.config/federation-models.json — canonical model registry. DO NOT HARDCODE MODELS.
+
 agents:
 - 888_hold_scope:
   - rm -rf of unknown dirs, DROP TABLE, volume removal
@@ -80,8 +82,8 @@ agents:
   model_stack:
     fallback_chain:
     - deepseek-v4-flash
-    federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
-    primary: deepseek-v4-pro
+    federation_registry: /root/.config/federation-models.json
+    primary: deepseek/deepseek-v4-pro
     rotation_policy: none — single model
   modes:
   - GOVERNED
@@ -237,7 +239,7 @@ agents:
     fallback_chain:
     - minimax/MiniMax-M3
     - ilmu/ilmu-nemo-nano
-    federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
+    federation_registry: /root/.config/federation-models.json
     primary: deepseek/deepseek-v4-pro
     rotation_policy: auto-loop-3 — each new request starts at primary, fails through
       chain
@@ -771,8 +773,8 @@ agents:
   ignition_protocol: copilot-cli-session
   ignition_manifest_dir: /root/.copilot
   model_stack:
-   primary: deepseek-v4-pro
-   federation_registry: /root/AAA/registries/FEDERATION_MODEL.json
+   primary: deepseek/deepseek-v4-pro
+   federation_registry: /root/.config/federation-models.json
    rotation_policy: none — single model
   constitutional_binding:
    agent_doc: /root/.arifos/agents/copilot/AGENTS.md

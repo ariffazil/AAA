@@ -4,7 +4,7 @@
   "class": "FORGE_INSTRUMENT",
   "description": "Anthropic Claude Code CLI \u2014 native agentic coding assistant. DeepSeek-V4-Pro via Anthropic-compatible endpoint. Has Agent Teams, workflows, and bughunter capabilities (all DISABLED by default).",
   "version": "2.1.160",
-  "model": "deepseek-v4-pro (via Anthropic compat endpoint)",
+  "model": "deepseek/deepseek-v4-pro",
   "izin": "GRANTED",
   "izin_date": "2026-04-15",
   "sandbox": "seatbelt (bubblewrap + seccomp + Landlock)",
@@ -118,5 +118,6 @@
     "stateTransitionHistory": true,
     "extendedAgentCard": true
   },
-  "_a2a_harness_ref": "harnesses/claude-code.json"
+  "_a2a_harness_ref": "harnesses/claude-code.json",
+  "_model_sot": "/root/.config/federation-models.json"
 }
