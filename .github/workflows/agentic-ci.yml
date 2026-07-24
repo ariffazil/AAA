@@ -33,12 +33,28 @@ concurrency:
 jobs:
 
   # ─────────────────────────────────────────────────────────────
+  # F11 — Gitleaks (parity with GEOX/WEALTH/WELL/A-FORGE/HERMES)
+  # ─────────────────────────────────────────────────────────────
+  secrets:
+    name: 🔐 Secrets Scan (gitleaks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ─────────────────────────────────────────────────────────────
   # LANE 1: STANDARD CI — lint + build + test
   # ─────────────────────────────────────────────────────────────
   standard:
     name: "Lane 1 — Standard CI"
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    needs: [secrets]
     steps:
       - uses: actions/checkout@v7
 
