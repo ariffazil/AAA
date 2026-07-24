@@ -5,12 +5,12 @@
   "name": "Kimi Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Kimi Code CLI forge instrument — Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced. v2.1.0 (2026-07-16): zen pass — 7 contrast/reflector skills v1.1.0, KIMI_RSI_INIT_PROMPT cold-boot recipe, KIMI_HANDOVER_PROMPT post-deploy recipe, all mirrored to runtime + AAA.",
+  "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced. v2.1.0 (2026-07-16): zen pass \u2014 7 contrast/reflector skills v1.1.0, KIMI_RSI_INIT_PROMPT cold-boot recipe, KIMI_HANDOVER_PROMPT post-deploy recipe, all mirrored to runtime + AAA.",
   "version": "2.1.0",
-  "model": "kimi-code/k3",
+  "model": "kimi/k3",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.arifos/agents/kimi",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
@@ -254,7 +254,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -270,7 +270,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -308,7 +308,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -324,7 +324,7 @@
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -339,7 +339,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -426,7 +426,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -442,7 +442,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -484,7 +484,7 @@
       "from_version": "1.1.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -495,12 +495,12 @@
       "from_version": "2.0.0",
       "to_version": "2.1.0",
       "upgraded_at": "2026-07-16T01:00:00Z",
-      "upgraded_by": "Kimi Code (FI-008) — zen pass post arifOS MCP cold-boot fix",
+      "upgraded_by": "Kimi Code (FI-008) \u2014 zen pass post arifOS MCP cold-boot fix",
       "changes": [
-        "7 user-scope skills v1.0.0 → v1.1.0 (Federation anchors section added)",
-        "KIMI_RSI_INIT_PROMPT.md v1.0.0 → v1.1.0 (cold-boot diagnostic recipe)",
-        "KIMI_HANDOVER_PROMPT.md v1.0.0 → v1.1.0 (post-deploy verification recipe)",
-        "agent-card v2.0.0 → v2.1.0 (this upgrade)",
+        "7 user-scope skills v1.0.0 \u2192 v1.1.0 (Federation anchors section added)",
+        "KIMI_RSI_INIT_PROMPT.md v1.0.0 \u2192 v1.1.0 (cold-boot diagnostic recipe)",
+        "KIMI_HANDOVER_PROMPT.md v1.0.0 \u2192 v1.1.0 (post-deploy verification recipe)",
+        "agent-card v2.0.0 \u2192 v2.1.0 (this upgrade)",
         "WARGAAA_CARD.md updated 2026-07-16",
         "kimi-skill-reflector audit-log.md appended (Audit 2026-07-16 entry)"
       ]
@@ -575,5 +575,6 @@
       "created": "2026-07-12T22:30:29Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }

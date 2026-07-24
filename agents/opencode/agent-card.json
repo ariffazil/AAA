@@ -10,14 +10,14 @@
   },
   "description": "OpenCode 1.18.3 governed forge harness bound to 333-AGI. Discovers 247 skills and 25 MCP servers, runs a bounded todo-driven reality loop, and preserves 888_HOLD for irreversible actions.",
   "version": "1.18.3",
-  "model": "opencode-go/deepseek-v4-pro",
+  "model": "deepseek/deepseek-v4-pro",
   "config": "/root/.config/opencode/opencode.json",
   "root_config": "ROOT_AGENT_CONFIG.yaml",
   "binary": "/root/.npm-global/bin/opencode",
   "tier": "FI",
   "role": "warga",
   "class": "AGI",
-  "trinity": "Δ MIND (bound)",
+  "trinity": "\u0394 MIND (bound)",
   "warga_status": "attested",
   "attestation_id": "OPENCODE-WARGA-ATTESTED-20260626",
   "bound_to": "333-AGI",
@@ -220,7 +220,7 @@
       "Spawn bounded subagents with worktree isolation",
       "Run tests/build/lint with evidence receipts",
       "Generate diffs and PR drafts",
-      "A2A mesh citizenship — participate in AAA state via 777 FORGE binding"
+      "A2A mesh citizenship \u2014 participate in AAA state via 777 FORGE binding"
     ],
     "cannotDo": [
       "Issue SEAL/HOLD/VOID verdicts (888-APEX only)",
@@ -269,7 +269,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -285,7 +285,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -323,7 +323,7 @@
     },
     {
       "id": "APEX-humility-godel",
-      "name": "Gödel Humility Lock",
+      "name": "G\u00f6del Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -339,7 +339,7 @@
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -354,7 +354,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -413,7 +413,7 @@
     {
       "id": "ASI-memory-session-bind",
       "name": "Agentic Session Init",
-      "description": "Unified bootstrap: reality check → skill load → organ attest → session bind. Mandatory first action for any governed agent session.",
+      "description": "Unified bootstrap: reality check \u2192 skill load \u2192 organ attest \u2192 session bind. Mandatory first action for any governed agent session.",
       "tags": [
         "bootstrap",
         "session",
@@ -500,7 +500,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -516,7 +516,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -561,7 +561,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -592,13 +592,13 @@
     {
       "id": "atlas333-cognitive-geometry",
       "name": "ATLAS333 Cognitive Geometry",
-      "description": "ATLAS333 — 33 human paradoxes across Memory/Mind/Judge zones. ΛΘΦ router for lane/demand tensor mapping. Access via arifos://atlas333/* MCP resources.",
+      "description": "ATLAS333 \u2014 33 human paradoxes across Memory/Mind/Judge zones. \u039b\u0398\u03a6 router for lane/demand tensor mapping. Access via arifos://atlas333/* MCP resources.",
       "tags": [
         "atlas333",
         "cognitive",
         "paradox",
         "geometry",
-        "ΛΘΦ"
+        "\u039b\u0398\u03a6"
       ],
       "floor_scope": [
         "F2",
@@ -627,7 +627,7 @@
   ],
   "hexagon_warga": {
     "id": "opencode",
-    "trinity": "Δ MIND (bound)",
+    "trinity": "\u0394 MIND (bound)",
     "stage": "333-THINK (forge instrument)",
     "bound_to": "333-AGI",
     "warga_since": "2026-06-26",
@@ -723,5 +723,6 @@
       "protocolBinding": "JSONRPC",
       "protocolVersion": "1.0"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }
