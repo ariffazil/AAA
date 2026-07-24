@@ -3288,6 +3288,55 @@
       "censorship_profile": null,
       "fff_gate": null,
       "note": "ADDED 2026-07-24. Live-verified :free variant. Strong RM0 fallback (replaces retired llama-3.3-70b:free)."
+    },
+    {
+      "model_key": "openrouter/free-aggregator",
+      "model_family": "free-aggregator",
+      "model_variant": "multi",
+      "provider_ref": "openrouter",
+      "context_window": 262144,
+      "max_output_tokens": 32768,
+      "capabilities": [
+        "classification",
+        "summarization",
+        "code",
+        "reasoning"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "open_weights": false,
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "billing_model": "free_tier",
+      "rate_limits": {
+        "rpm": 20,
+        "rpd": 50,
+        "note": "1000 rpd after $10 lifetime credit purchase"
+      },
+      "hyperparameters": {
+        "temperature": 0.7,
+        "top_p": 1.0
+      },
+      "status": "ACTIVE",
+      "trust_tier": 3,
+      "RM0": true,
+      "constitutional_roles": [],
+      "constitutional_roles_forbidden": [
+        "666_JUDGE",
+        "999_SEAL",
+        "000_INIT"
+      ],
+      "fff_gate": "C3",
+      "tags": [
+        "aggregator",
+        "gap-fill",
+        "free",
+        "experimental",
+        "rate-limited",
+        "US-jurisdiction"
+      ],
+      "description": "OpenRouter :free aggregator — bridges FLAME to free models the federation can't access directly (Cohere, InclusionAI, Poolside). RATE-LIMITED: 20rpm/50rpd (1000rpd after $10 lifetime). Last-resort gap-filler only."
     }
   ],
   "shadows": [
@@ -4705,6 +4754,29 @@
       "fallback_model": "groq/llama-3.1-8b-instant",
       "reason": "FLAME FALLBACK: Non-constitutional only.",
       "priority": 40
+    },
+    {
+      "rule_id": "sovereign_data_routing",
+      "domain": "any",
+      "priority": 100,
+      "data_sensitivity": "SOVEREIGN",
+      "model": "deepseek/deepseek-v4-pro",
+      "fallback_model": "ollama/qwen2.5-coder:3b",
+      "reason": "Sovereign data (PII, secrets, myKad, PETRONAS internal) NEVER leaves CN/MY jurisdiction. Only DeepSeek + Ollama. F2 TRUTH + F6 MARUAH + data sovereignty.",
+      "forged": "2026-07-24"
+    },
+    {
+      "rule_id": "confidential_data_routing",
+      "domain": "any",
+      "priority": 90,
+      "data_sensitivity": [
+        "INTERNAL",
+        "CONFIDENTIAL"
+      ],
+      "model": "deepseek/deepseek-v4-pro",
+      "fallback_model": "sea-lion/Llama-SEA-LION-v3-70B-IT",
+      "reason": "Internal/confidential data: CN first (DeepSeek), SG fallback (SEA-LION). NEVER US providers (CLOUD Act exposure). ZDR required for CONFIDENTIAL.",
+      "forged": "2026-07-24"
     }
   ],
   "free_loop_chains": {
@@ -4796,5 +4868,47 @@
   "_deprecated": true,
   "_deprecated_date": "2026-07-24",
   "_replaced_by": "/root/.config/federation-models.json",
-  "_note": "DO NOT USE. This file is retained for audit provenance only."
+  "_note": "DO NOT USE. This file is retained for audit provenance only.",
+  "data_sensitivity": {
+    "_doctrine": "TASK_DATA_SENSITIVITY — constitutional classification for routing. arifOS classifies BEFORE A-FORGE routes.",
+    "_forged": "2026-07-24",
+    "classes": {
+      "PUBLIC": {
+        "max_jurisdiction": "US",
+        "zdr_required": false,
+        "description": "Non-sensitive. Any provider. FLAME eligible."
+      },
+      "INTERNAL": {
+        "max_jurisdiction": "SG",
+        "zdr_required": false,
+        "description": "Internal but non-sovereign. CN/SG providers only. No US providers."
+      },
+      "CONFIDENTIAL": {
+        "max_jurisdiction": "CN",
+        "zdr_required": true,
+        "description": "Business-confidential. CN only. ZDR required. Governed cascade only."
+      },
+      "SOVEREIGN": {
+        "max_jurisdiction": "CN",
+        "zdr_required": true,
+        "description": "PII, secrets, sovereign data. DeepSeek + Ollama only. NEVER FLAME. NEVER OpenRouter."
+      }
+    },
+    "provider_map": {
+      "deepseek": "INTERNAL",
+      "minimax": "INTERNAL",
+      "bailian-token-plan": "INTERNAL",
+      "mimo-platform": "INTERNAL",
+      "kimi-moonshot": "INTERNAL",
+      "sea-lion": "INTERNAL",
+      "opencode-go": "INTERNAL",
+      "groq": "PUBLIC",
+      "gemini": "PUBLIC",
+      "cerebras": "PUBLIC",
+      "xai": "PUBLIC",
+      "openrouter": "PUBLIC",
+      "azure-openai": "PUBLIC",
+      "ollama": "SOVEREIGN"
+    }
+  }
 }

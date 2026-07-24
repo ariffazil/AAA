@@ -21,13 +21,12 @@ from resolvers.model_resolver import _load, _agents_map, _providers_map
 CANONICAL = Path("/root/.config/federation-models.json")
 OP_ENCODE_CONFIG = Path("/root/.config/opencode/opencode.json")
 
-# ── Agent → OpenCode subagent mapping ──
+# ── Agent → OpenCode subagent mapping (HEXAGON 4.1 aligned) ──
 AGENT_MAP = {
-    "forge":    {"id": "forge",    "desc": "FORGE (000Ω) — execution, build, deploy"},
-    "auditor":  {"id": "auditor",  "desc": "AUDITOR (Ψ) — constitutional audit, drift detection"},
-    "ops":      {"id": "ops",      "desc": "OPS (🌐) — topology, monitoring, health"},
-    "planner":  {"id": "planner",  "desc": "PLAN (Ω) — DAG planning, orchestration"},
-    "recovery": {"id": "recovery", "desc": "RECOVERY — local offline repair, last resort"},
+    "forge": {"id": "forge", "desc": "000Ω-FORGE — Gated execution: apply approved change only. Requires kernel judgment artifacts. Cannot self-authorize, plan, or judge."},
+    "agi":   {"id": "agi",   "desc": "333-AGI — Delta MIND: understand, contradict, plan, synthesize. Absorbs planner. Advisory only."},
+    "asi":   {"id": "asi",   "desc": "555-ASI — Memory Steward: recall, classify, detect drift. Absorbs ops. Blind audit context."},
+    "apex":  {"id": "apex",  "desc": "888-APEX — Constitutional interface: inspect floors, RECOMMEND only. Binding verdicts from arifOS kernel."},
 }
 
 # ── Provider status check (lightweight) ──
@@ -133,11 +132,7 @@ def generate_config(dry_run=True):
         "agent": agent_configs,
     }
 
-    # Add recovery agent (always ollama)
-    config["agent"]["recovery"] = {
-        "description": "RECOVERY — local offline repair, last resort",
-        "model": "ollama/qwen2.5-coder:3b",
-    }
+    # Recovery function absorbed into FORGE rollback manifests (HEXAGON 4.1)
 
     # Read current config for provider/model details to preserve
     if OP_ENCODE_CONFIG.exists():
