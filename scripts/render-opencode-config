@@ -1,0 +1,243 @@
+#!/usr/bin/env python3
+"""
+render-opencode-config — Project OpenCode config from AGENT_MODEL_MAP.json SOT.
+ONE source of truth. Generated, never hand-edited.
+
+Usage:
+  render-opencode-config              # Dry-run: print what would change
+  render-opencode-config --apply      # Write /root/.config/opencode/opencode.json
+  render-opencode-config --diff       # Show diff between current and generated
+
+Forged: 2026-07-24 by FORGE (000Ω). DITEMPA BUKAN DIBERI.
+"""
+
+import json, sys, os, subprocess
+from pathlib import Path
+from datetime import datetime
+
+sys.path.insert(0, '/root/AAA/src')
+from resolvers.model_resolver import _load, _agents_map, _providers_map
+
+CANONICAL = Path("/root/.config/federation-models.json")
+OP_ENCODE_CONFIG = Path("/root/.config/opencode/opencode.json")
+
+# ── Agent → OpenCode subagent mapping ──
+AGENT_MAP = {
+    "forge":    {"id": "forge",    "desc": "FORGE (000Ω) — execution, build, deploy"},
+    "auditor":  {"id": "auditor",  "desc": "AUDITOR (Ψ) — constitutional audit, drift detection"},
+    "ops":      {"id": "ops",      "desc": "OPS (🌐) — topology, monitoring, health"},
+    "planner":  {"id": "planner",  "desc": "PLAN (Ω) — DAG planning, orchestration"},
+    "recovery": {"id": "recovery", "desc": "RECOVERY — local offline repair, last resort"},
+}
+
+# ── Provider status check (lightweight) ──
+def is_provider_alive(pid: str, provider: dict) -> bool:
+    """Check if a provider is likely alive based on registry status."""
+    # Ollama is always alive (local, zero cost)
+    if pid == "ollama":
+        return True
+    # DeepSeek is primary — skip balance check (prepaid may show 0)
+    if pid == "deepseek":
+        status = provider.get("status", "").upper()
+        return status not in {"DEPRECATING", "INACTIVE", "BLOCKED"}
+    status = provider.get("status", "").upper()
+    dead_statuses = {"DEPRECATING", "RATE_LIMITED", "INACTIVE", "BLOCKED"}
+    if status in dead_statuses:
+        return False
+    # Kimi token confirmed dead 2026-07-24
+    if pid in ("kimi-moonshot", "kimi"):
+        return False
+    # Check balance for paid providers
+    bal = provider.get("balance_usd")
+    if bal is not None and bal <= 0 and provider.get("billing_model") not in ("free_tier", "prepaid"):
+        return False
+    return True
+
+
+def generate_config(dry_run=True):
+    """Generate opencode.json from AGENT_MODEL_MAP.json."""
+    reg = _load()
+    agents_map = _agents_map(reg)
+    providers_map = _providers_map(reg)
+
+    # Determine alive providers
+    alive = {pid for pid, p in providers_map.items() if is_provider_alive(pid, p)}
+    dead = set(providers_map.keys()) - alive
+
+    # Build agent configs (all resolved from SOT, including image-prompt-architect)
+    agent_configs = {}
+    _all_agent_ids = list(AGENT_MAP.keys()) + ["image-prompt-architect"]
+    for agent_id in _all_agent_ids:
+        agent_data = agents_map.get(agent_id)
+        if not agent_data:
+            # Not in SOT — skip (e.g., custom agents not registered)
+            continue
+        
+        mapping = AGENT_MAP.get(agent_id)
+        if not mapping:
+            # Custom agent not in standard mapping — resolve from SOT directly
+            agent_id_clean = agent_id.replace("-", "_")
+            desc = f"{agent_id} — custom agent"
+        else:
+            agent_id_clean = mapping["id"]
+            desc = mapping["desc"]
+
+        model = agent_data["primary_model"]
+        provider_id = agent_data.get("primary_provider", "unknown")
+
+        # If provider is dead, find fallback
+        if provider_id not in alive:
+            fb_chain = agent_data.get("fallback_chain", [])
+            for fb in fb_chain:
+                fb_model = fb.get("model_key", "") if isinstance(fb, dict) else fb
+                # Extract provider from model_key (format: provider/model)
+                if "/" in fb_model:
+                    fb_prov = fb_model.split("/")[0]
+                    if fb_prov in alive:
+                        model = fb_model
+                        provider_id = fb_prov
+                        break
+            else:
+                # Ultimate fallback: ollama
+                model = "ollama/qwen2.5-coder:3b"
+                provider_id = "ollama"
+
+        agent_configs[agent_id_clean] = {
+            "description": desc,
+            "model": model,
+        }
+
+    # Build enabled providers list
+    # Include alive providers + ollama (always) + FLAME (hidden fallback)
+    enabled = sorted([p for p in alive if p in OP_ENCODE_PROVIDER_MAP or p == "ollama"])
+    if "ollama" not in enabled:
+        enabled.append("ollama")
+    # FLAME is always last — hidden fallback, never in picker
+    enabled.append("flame")
+
+    # Build config
+    config = {
+        "$schema": "https://opencode.ai/config.json",
+        "_generated": {
+            "from": str(CANONICAL),
+            "at": datetime.utcnow().isoformat() + "Z",
+            "by": "render-opencode-config",
+            "note": "DO NOT EDIT. Generated from AGENT_MODEL_MAP.json. Run render-opencode-config --apply to update.",
+        },
+        "model": "deepseek/deepseek-v4-pro",
+        "small_model": "deepseek/deepseek-v4-flash",
+        "enabled_providers": enabled,
+        "instructions": [
+            ".opencode/rules/arifos-governance.md"
+        ],
+        "agent": agent_configs,
+    }
+
+    # Add recovery agent (always ollama)
+    config["agent"]["recovery"] = {
+        "description": "RECOVERY — local offline repair, last resort",
+        "model": "ollama/qwen2.5-coder:3b",
+    }
+
+    # Read current config for provider/model details to preserve
+    if OP_ENCODE_CONFIG.exists():
+        with open(OP_ENCODE_CONFIG) as f:
+            current = json.load(f)
+        # Preserve provider definitions (deepseek endpoint etc.)
+        if "provider" in current:
+            config["provider"] = current["provider"]
+        
+        # FLAME — hidden last-resort fallback (RM0, never in model picker)
+        config["provider"]["flame"] = {
+            "npm": "@ai-sdk/openai-compatible",
+            "name": "FLAME — Free Loop AI Model Engine (fallback only, RM0)",
+            "options": {
+                "baseURL": "http://localhost:18900/v1",
+                "timeout": 30000
+            },
+            "models": {
+                "groq/llama-3.1-8b-instant": {"name": "FLAME: Groq Llama 8B (fast)"},
+                "groq/llama-3.3-70b-versatile": {"name": "FLAME: Groq Llama 70B"},
+                "sea-lion/Qwen-SEA-LION-v4-32B-IT": {"name": "FLAME: SEA-LION Qwen 32B"},
+                "gemini/gemini-2.5-flash": {"name": "FLAME: Gemini Flash"},
+                "cerebras/gemma-4-31b": {"name": "FLAME: Cerebras Gemma 31B"},
+                "ollama/qwen2.5-coder:3b": {"name": "FLAME: Ollama Qwen 3B (local)"}
+            },
+            "blacklist": [
+                "groq/llama-3.1-8b-instant",
+                "groq/llama-3.3-70b-versatile",
+                "sea-lion/Qwen-SEA-LION-v4-32B-IT",
+                "gemini/gemini-2.5-flash",
+                "cerebras/gemma-4-31b",
+                "ollama/qwen2.5-coder:3b"
+            ]
+        }
+        # Preserve MCP config
+        for key in ["mcp", "references", "permission", "compaction", "default_agent", "lsp", "formatter", "autoupdate"]:
+            if key in current:
+                config[key] = current[key]
+        
+        # Preserve custom agents not in SOT (e.g. image-prompt-architect)
+        # but fix their model to use live provider if current model is dead
+        CUSTOM_AGENTS = ["image-prompt-architect"]
+        for ca_id in CUSTOM_AGENTS:
+            if ca_id in current.get("agent", {}) and ca_id not in config.get("agent", {}):
+                ca = current["agent"][ca_id]
+                old_model = ca.get("model", "")
+                # If model uses dead provider, fallback to deepseek
+                dead_providers_list = {"kimi", "azure-openai", "minimax"}
+                prov = old_model.split("/")[0] if "/" in old_model else ""
+                if prov in dead_providers_list or "kimi" in old_model.lower():
+                    ca["model"] = "deepseek/deepseek-v4-pro"
+                config["agent"][ca_id] = ca
+        # image-prompt-architect resolved from SOT like all other agents
+        # (no longer preserved from current config — Kimi is dead)
+
+    return config, dead
+
+
+def main():
+    args = sys.argv[1:]
+    apply_mode = "--apply" in args
+    diff_mode = "--diff" in args
+
+    config, dead = generate_config()
+
+    if diff_mode and OP_ENCODE_CONFIG.exists():
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as tmp:
+            json.dump(config, tmp, indent=2)
+            tmp_path = tmp.name
+        subprocess.run(["diff", "-u", str(OP_ENCODE_CONFIG), tmp_path])
+        os.unlink(tmp_path)
+        return
+
+    if apply_mode:
+        # Backup
+        if OP_ENCODE_CONFIG.exists():
+            bak = Path(f"/root/.config/backups/opencode-{datetime.utcnow().strftime('%Y%m%dT%H%M%S')}.json")
+            bak.write_text(OP_ENCODE_CONFIG.read_text())
+        # Write
+        with open(OP_ENCODE_CONFIG, 'w') as f:
+            json.dump(config, f, indent=2)
+        print(f"✅ Config rendered to {OP_ENCODE_CONFIG}")
+    else:
+        print(json.dumps(config, indent=2))
+
+    if dead:
+        import sys as _sys
+        _sys.stderr.write(f"\n⚠️  Dead providers (excluded): {', '.join(sorted(dead))}\n")
+        _sys.stderr.write("   Agents using dead providers have been re-routed to live fallbacks.\n")
+
+
+# ── Known OpenCode provider IDs ──
+OP_ENCODE_PROVIDER_MAP = {
+    "deepseek", "opencode-go", "opencode-zen", "openrouter",
+    "tokenrouter-arifos", "groq", "gemini", "ollama",
+    "minimax", "cerebras", "sea-lion", "kimi", "azure-openai",
+    "bailian-token-plan", "mimo-platform", "kimi-moonshot", "xai",
+}
+
+
+if __name__ == "__main__":
+    main()
