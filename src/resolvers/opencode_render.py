@@ -76,6 +76,15 @@ MODEL_KEY_TRANSLATION = {
     "cerebras/gemma-4-31b": "cerebras/gemma-4-31b",
     "openai/gpt-5.6-sol": "openrouter/kimi-k3",
     "xai/grok-4.5": "openrouter/kimi-k3",
+    # OpenRouter routing models (2026-07-24: zen integration)
+    "openrouter/auto-beta": "openrouter/auto-beta",
+    "openrouter/auto": "openrouter/auto",
+    "openrouter/free": "openrouter/free",
+    # Explicit OR models — Path A auto-beta SPOF distribution (2026-07-24, live-verified vs OR catalog)
+    "deepseek/deepseek-r1": "openrouter/deepseek-r1",
+    "google/gemini-2.5-flash": "openrouter/gemini-flash-latest",
+    "moonshotai/kimi-k3": "openrouter/kimi-k3",
+    "google/gemma-4-31b-it:free": "openrouter/gemma-4-31b-it-free",
 }
 
 # ── SOT OpenCode Agent Mappings ──
@@ -182,12 +191,144 @@ def validate_instruction_paths(instructions: list) -> list[str]:
         errors.append(f"canonical governance missing from instructions[]: {CANONICAL_GOVERNANCE}")
     for g in gov_hooks:
         if g != CANONICAL_GOVERNANCE and not g.endswith("/AUTONOMOUS_GOVERNANCE.md"):
-            # AUTONOMOUS_GOVERNANCE.md is agent doctrine, not the rules kernel
             if Path(g).name == "arifos-governance.md" and g != CANONICAL_GOVERNANCE:
                 errors.append(f"governance kernel must be single path: got {g}")
             elif Path(g).name not in {"AUTONOMOUS_GOVERNANCE.md", "arifos-governance.md"}:
                 errors.append(f"unexpected governance-named hook: {g}")
     return errors
+
+
+def validate_model_ids(sot: dict) -> list[str]:
+    """Validate all model_keys in SOT chains resolve through MODEL_KEY_TRANSLATION.
+    Catches typos like 'openrouter/auto-betax' before they go live.
+    """
+    errors: list[str] = []
+    checked: set[str] = set()
+    known_untranslated = {"deepseek/deepseek-v4-pro", "deepseek/deepseek-v4-flash"}
+    registered_keys = {m.get("model_key", "") for m in sot.get("models", [])}
+    for agent in sot.get("agents", []):
+        aid = agent.get("agent_id", "?")
+        fb = agent.get("fallback_chain", [])
+        for f in fb:
+            mk = f.get("model_key", "")
+            if mk in checked:
+                continue
+            checked.add(mk)
+            if mk and mk not in MODEL_KEY_TRANSLATION and "/" in mk:
+                if mk not in known_untranslated:
+                    errors.append(f"SOT model_key '{mk}' (agent={aid}) not in MODEL_KEY_TRANSLATION")
+            if mk and mk not in registered_keys:
+                errors.append(f"SOT model_key '{mk}' (agent={aid}) not registered in models[] registry")
+    return errors
+
+
+# Canonical federation agent roster — every entry must exist in SOT agents[].
+# Chaos test 6 (2026-07-24): hermes deletion passed ALL validation. This is the fix (Path B).
+REQUIRED_SOT_AGENTS = [
+    "opencode", "forge", "auditor", "ops", "planner", "hermes", "openclaw",
+    "claude-code", "copilot", "kimi-code", "codex", "grok", "recovery",
+    "image-prompt-architect",
+]
+
+
+def validate_sot_completeness(sot: dict) -> list[str]:
+    """SOT agent completeness check — no required agent may silently disappear."""
+    errors: list[str] = []
+    agents = {a.get("agent_id", ""): a for a in sot.get("agents", [])}
+    for req in REQUIRED_SOT_AGENTS:
+        if req not in agents:
+            errors.append(f"SOT COMPLETENESS FAIL: required agent '{req}' missing from agents[]")
+            continue
+        a = agents[req]
+        if not a.get("primary_model"):
+            errors.append(f"SOT COMPLETENESS FAIL: agent '{req}' has empty primary_model")
+        if not a.get("status"):
+            errors.append(f"SOT COMPLETENESS FAIL: agent '{req}' has empty status")
+    return errors
+
+
+# model_id format: provider/slug, optional ~ alias prefix, optional :variant suffix
+import re as _re
+
+_MODEL_ID_RE = _re.compile(r"^~?[A-Za-z0-9._-]+/[A-Za-z0-9._:-]+$")
+
+
+def validate_provider_model_ids(config: dict, live_or_ids: set | None = None, registered_or_ids: set | None = None) -> tuple[list[str], list[str]]:
+    """Validate model_ids inside live config provider blocks.
+
+    Catches the chaos test 4 gap: typos in provider block model_ids survived
+    --verify because only instructions + agent assignments were checked.
+
+    ERRORS (fail the gate):
+    - openrouter provider: model_id must be full OR catalog ID (provider/slug or ~alias)
+    - openrouter provider: model_id must be registered in SOT models[] (offline)
+      or exist in live OR catalog (--live)
+    - any provider: explicit model_id field present but empty
+
+    WARNINGS (surfaced, non-fatal):
+    - missing model_id field (key sent raw to API — by design for most providers,
+      but invisible typos live here; add model_id for mutability-critical entries)
+
+    Returns (errors, warnings).
+    """
+    errors: list[str] = []
+    warnings: list[str] = []
+    for prov_key, prov in config.get("provider", {}).items():
+        if not isinstance(prov, dict):
+            continue
+        for mkey, mentry in prov.get("models", {}).items():
+            if not isinstance(mentry, dict):
+                continue
+            mid = mentry.get("model_id")
+            ref = f"provider.{prov_key}.models.{mkey}"
+            if mid is None:
+                warnings.append(f"{ref}: no model_id field — key '{mkey}' sent raw to API")
+                continue
+            if not str(mid).strip():
+                errors.append(f"{ref}: model_id empty")
+                continue
+            if prov_key == "openrouter":
+                # OR model_ids are full catalog IDs: provider/slug[:variant] or ~alias
+                if not _MODEL_ID_RE.match(str(mid)):
+                    errors.append(f"{ref}: model_id '{mid}' fails OR catalog format (provider/slug)")
+                    continue
+                if registered_or_ids is not None and str(mid) not in registered_or_ids:
+                    errors.append(f"{ref}: model_id '{mid}' not registered in SOT models[] (unvetted OR model)")
+                if live_or_ids is not None and str(mid) not in live_or_ids:
+                    errors.append(f"{ref}: model_id '{mid}' NOT in live OpenRouter catalog")
+    return errors, warnings
+
+
+_OR_CACHE = Path("/tmp/openrouter_models_cache.json")
+
+
+def fetch_live_or_model_ids(max_age_sec: int = 300) -> set | None:
+    """Fetch live OpenRouter catalog (cached). Returns None if unreachable."""
+    import os
+    import time
+    import urllib.request
+
+    if _OR_CACHE.exists() and (time.time() - _OR_CACHE.stat().st_mtime) < max_age_sec:
+        try:
+            return set(json.loads(_OR_CACHE.read_text()))
+        except Exception:
+            pass
+    key = os.environ.get("OPENROUTER_API_KEY", "")
+    if not key:
+        return None
+    try:
+        req = urllib.request.Request(
+            "https://openrouter.ai/api/v1/models",
+            headers={"Authorization": f"Bearer {key}"},
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.load(resp)
+        ids = sorted(m["id"] for m in data.get("data", []))
+        _OR_CACHE.write_text(json.dumps(ids))
+        return set(ids)
+    except Exception:
+        return None
+
 
 
 def build_providers(sot: dict) -> list:
@@ -337,12 +478,25 @@ def main():
         changes = diff_json(generated, current)
         intent_errors = validate_instruction_paths(generated.get("instructions", []))
         # Also intent-check live config (catch ghost hooks still served to runtime)
-        intent_errors.extend(
-            f"LIVE: {e}" for e in validate_instruction_paths(current.get("instructions", []))
-        )
+        intent_errors.extend(f"LIVE: {e}" for e in validate_instruction_paths(current.get("instructions", [])))
         # de-dupe while preserving order
         seen: set[str] = set()
         intent_errors = [e for e in intent_errors if not (e in seen or seen.add(e))]
+
+        # Path B: SOT agent completeness (chaos test 6 gap — hermes deletion was invisible)
+        sot = load_sot()
+        completeness_errors = validate_sot_completeness(sot)
+
+        # Path C: model_id validation (chaos test 4 gap — provider block typos were invisible)
+        model_errors = validate_model_ids(sot)
+        live_or_ids = fetch_live_or_model_ids() if "--live" in args else None
+        if "--live" in args and live_or_ids is None:
+            model_errors.append("--live requested but OpenRouter catalog unreachable (no key or network)")
+        prov_errors, prov_warnings = validate_provider_model_ids(
+            current, live_or_ids,
+            registered_or_ids={m.get("model_key", "") for m in sot.get("models", [])},
+        )
+        model_errors.extend(prov_errors)
 
         failed = False
         if changes:
@@ -355,10 +509,26 @@ def main():
             print(f"⚠️  INTENT GATE FAIL: {len(intent_errors)} instruction path error(s):")
             for e in intent_errors:
                 print(f"  {e}")
+        if completeness_errors:
+            failed = True
+            print(f"⚠️  SOT COMPLETENESS FAIL: {len(completeness_errors)} error(s):")
+            for e in completeness_errors:
+                print(f"  {e}")
+        if model_errors:
+            failed = True
+            print(f"⚠️  MODEL_ID GATE FAIL: {len(model_errors)} error(s):")
+            for e in model_errors:
+                print(f"  {e}")
+        if prov_warnings:
+            print(f"ℹ️  model_id warnings ({len(prov_warnings)}, non-fatal):")
+            for w in prov_warnings:
+                print(f"  {w}")
         if failed:
             sys.exit(1)
-        print("✅ VERIFIED: OpenCode config aligned with SOT (structural + instruction intent)")
+        print("✅ VERIFIED: OpenCode config aligned with SOT (structural + instruction intent + completeness + model_ids)")
         print(f"   instructions={len(generated.get('instructions', []))} files, all exist")
+        print(f"   agents={len(sot.get('agents', []))}/{len(REQUIRED_SOT_AGENTS)} required present")
+        print(f"   models={len(sot.get('models', []))} in SOT, all translated")
         print(f"   governance_kernel={CANONICAL_GOVERNANCE}")
         sys.exit(0)
         return
