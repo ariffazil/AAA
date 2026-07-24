@@ -4,7 +4,7 @@
   "class": "FORGE_INSTRUMENT",
   "description": "Continue CLI forge instrument \u2014 open-source coding harness. Wired to federation MCPs. F1-F13 enforced.",
   "version": "2.0.0",
-  "model": "provider-agnostic",
+  "model": "deepseek/deepseek-v4-pro",
   "fallback_model": "qwen3.6-flash",
   "izin": "GRANTED",
   "izin_date": "2026-07-12",
@@ -95,5 +95,6 @@
       "created": "2026-07-12T23:12:25Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }

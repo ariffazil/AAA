@@ -352,5 +352,6 @@
     "governance_organ": "arifOS",
     "governance_port": 8088,
     "governance_endpoint": "https://mcp.arif-fazil.com/mcp"
-  }
+  },
+  "_model_sot": "/root/.config/federation-models.json"
 }

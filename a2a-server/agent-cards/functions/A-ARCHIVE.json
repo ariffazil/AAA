@@ -8,11 +8,11 @@
     "category": "Constitutional architecture (the constitution itself is the principal)",
     "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "[DEPRECATED — COLLAPSED 2026-07-15] Was the Archivist support agent managing VAULT999 ledger. Absorbed into VAULT999 seal chain (arif_seal → VAULT999 immutable append). This card retained for audit trace only.",
+  "description": "[DEPRECATED \u2014 COLLAPSED 2026-07-15] Was the Archivist support agent managing VAULT999 ledger. Absorbed into VAULT999 seal chain (arif_seal \u2192 VAULT999 immutable append). This card retained for audit trace only.",
   "version": "2.0.0",
   "status": "deprecated",
   "deprecated_since": "2026-07-15",
-  "migration": "Use arifOS arif_seal for VAULT999 writes. VAULT999 is now direct kernel path — no intermediate archivist agent.",
+  "migration": "Use arifOS arif_seal for VAULT999 writes. VAULT999 is now direct kernel path \u2014 no intermediate archivist agent.",
   "url": "https://mcp.arif-fazil.com/a2a/A-ARCHIVE",
   "provider": {
     "organization": "arifOS by Muhammad Arif bin Fazil",
@@ -585,5 +585,6 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com"
+  "did": "did:web:arif-fazil.com",
+  "_model_sot": "/root/.config/federation-models.json"
 }
