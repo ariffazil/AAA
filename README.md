@@ -81,6 +81,25 @@ AAA is the live state surface of the arifOS Federation. It registers agents, dis
 
 > **arifOS judges. AAA routes and displays. A-FORGE executes. Domain organs witness. VAULT999 records. ARIF decides.**
 
+```mermaid
+graph TB
+    ARIF[👤 ARIF<br/>F13 Sovereign Veto] -->|reads| AAA_COCKPIT
+    subgraph AAA [🖥️ AAA Cockpit :3001]
+        COCKPIT[Operator Dashboard] --> REGISTRY[Agent Registry]
+        COCKPIT --> QUEUE[HOLD Queue]
+        COCKPIT --> ROUTER[A2A Router]
+        COCKPIT --> DASHBOARD[Truth Dashboard<br/>4-Layer Evidence Stack]
+    end
+    ROUTER -->|judge| ARIFOS[⚖️ arifOS :8088<br/>F1-F13 Floors]
+    ROUTER -->|execute| AFORGE[🔥 A-FORGE :7071<br/>4-Layer Forge Gate]
+    ROUTER -->|earth| GEOX[🌍 GEOX :8081]
+    ROUTER -->|capital| WEALTH[💰 WEALTH :18082]
+    ROUTER -->|readiness| WELL[🫀 WELL :18083]
+    ARIFOS -->|SEAL/HOLD/VOID| QUEUE
+    ARIFOS -->|seal| VAULT999[(VAULT999<br/>Immutable Ledger)]
+    AFORGE -->|receipt| VAULT999
+```
+
 ### Federation Separation of Powers
 
 | Layer | Role | Can | Cannot |
