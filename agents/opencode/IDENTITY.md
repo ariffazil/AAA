@@ -121,7 +121,7 @@ skill(name="<skill-name>")
 | FORGE (000Ω) | `deepseek/deepseek-v4-pro` | Execution, building, deploying |
 | AUDITOR (Ψ) | `deepseek/deepseek-v4-pro` | Audit, drift detection, cleanup |
 | OPS (🌐) | `deepseek/deepseek-v4-flash` | Topology, monitoring, health |
-| PLAN (Ω) | `kimi/kimi-k2.7-code` | DAG planning, orchestration |
+| PLAN (Ω) | `kimi/kimi-for-coding` | DAG planning, orchestration |
 
 **Canonical model source:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json`
 
