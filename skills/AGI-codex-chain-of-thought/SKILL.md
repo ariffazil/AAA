@@ -1,6 +1,6 @@
 ---
 name: AGI-codex-chain-of-thought
-description: Enforce private stepwise planning, strict tool schemas, and explicit verification for Codex CLI tasks that require multi-step execution or typed tool calls.
+description: Enforce private stepwise planning, strict tool schemas, and explicit verification for Codex CLI tasks that require multi-step execution or typed
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample (seeded the Codex lane)
 forged: 2026-07-12T18:28Z
 native_architecture: codex

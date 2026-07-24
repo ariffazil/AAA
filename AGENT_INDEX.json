@@ -1,9 +1,9 @@
 {
   "$schema": "arifOS/agent-index/v1.0.0",
   "schemaVersion": "1.0.0",
-  "_doctrine": "Lean discovery index. POINTS to canonical cards. Does NOT own state. Trust is a lease, not a registry. Kernel enforces sovereignty via F12/F13 + signature_challenge_required \u2014 this index makes no governance claims.",
+  "_doctrine": "Lean discovery index. Points to canonical cards; owns no state. Trust is a lease.",
   "_principles": {
-    "F1_AMANAH": "Trust is a lease, not a registry. Index points; it does not own.",
+    "F1_AMANAH": "Trust is a lease, not a registry. Index points; it.",
     "F4_CLARITY": "Index reduces entropy (one discovery surface). Per-card governance duplication increases entropy.",
     "F8_GENIUS": "Kernel enforces sovereignty globally. Cards declare capability, not authority.",
     "F9_ANTI_HANTU": "No claims of consciousness, sentience, or self-direction beyond constitutional role."
@@ -35,7 +35,7 @@
       "kernel_bound": true,
       "version": "2.1.0",
       "hardened": true,
-      "hardening_ref": "hardened_identity superblock (F1-F13 + \u0394\u03a9\u03a8 + witness/seal/scar + anti-pathology + 000\u2192999 + tom_foundation with F9 bound + constitutional physics anchor)"
+      "hardening_ref": "hardened_identity superblock (F1-F13 + \u0394\u03a9\u03a8 + witness/seal/scar +."
     },
     {
       "id": "555-ASI",
@@ -227,7 +227,7 @@
       "toM_class": "zero",
       "kernel_bound": true,
       "version": "1.0.0",
-      "notes": "Floor adjudication kernel. Zero ToM. Sovereign = arifOS is itself governance, not agency."
+      "notes": "Floor adjudication kernel. Zero ToM. Sovereign = arifOS is itself."
     },
     {
       "id": "aaa-organ",
@@ -287,7 +287,7 @@
       "toM_class": "n/a",
       "kernel_bound": false,
       "version": "n/a",
-      "notes": "Superseded by _lanes/ canonical cards. Contains apex-000tri, forge-000omega, hermes-000libra, weaver-000sigma, witness-000sun. Kept for historical reference only."
+      "notes": "Superseded by _lanes/ canonical cards. Contains apex-000tri, forge-000omega, hermes-000libra, weaver-000sigma,."
     },
     {
       "id": "sovereign",
@@ -299,14 +299,14 @@
       "toM_class": "n/a",
       "kernel_bound": false,
       "version": "n/a",
-      "notes": "PRINCIPAL. Not an agent. All lanes defer to F13. Sovereignty chain: ARIF \u2192 APEX \u2192 AGENT. NEVER indexed in agent_cards (humans are not agents)."
+      "notes": "PRINCIPAL. Not an agent. All lanes defer to F13. Sovereignty."
     }
   ],
   "_excluded_with_reason": {
     "worktrees_arifOS_claude": "Live worktrees \u2014 ephemeral, not canonical. Re-canonicalized on merge.",
-    ".well-known_mirrors": "A2A discovery mirrors. Point to canonical cards via supportedInterfaces.url. NOT canonical source.",
+    ".well-known_mirrors": "A2A discovery mirrors. Point to canonical cards via.",
     "ARIF-SITES_dist": "Deployment artifacts. Build output. NOT canonical source.",
-    "GEOX_skills_stubs": "Sub-skill metadata, not agents. 12 files at /root/GEOX/skills/*/agent-card.json are skill descriptions, not citizens.",
+    "GEOX_skills_stubs": "Sub-skill metadata, not agents. 12 files at /root/GEOX/skills/*/agent-card.json.",
     "openclaw_a2a-server_agent-cards": "Runtime mesh ephemeral cards. Live state, not canonical source.",
     "F13-BIND-2026-07-12_*.json": "F13 sovereign binding receipts \u2014 sealed to VAULT999, not agents."
   },

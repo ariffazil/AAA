@@ -2,17 +2,23 @@
 id: FORGE-github-workflow
 name: FORGE-github-workflow
 version: 2.0.0
-description: >
-  Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle,
-  issues, code review. Each op is a labeled section; load the relevant one.
-  BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
-floor_scope: [F01, F11]
-cognitive_hints:
-  claude: "Use <workflow>, <pr-lifecycle>, <issue-lifecycle> tags. Extended context for PR review chains."
-  codex: "GitHub API schema adherence required. Each operation: authenticate → execute → verify → log."
-  hermes: "GitHub op? Auth. Execute. Verify. Log. Next."
----
+description: 'Class-level umbrella for GitHub operations — auth, repo management,
+  PR lifecycle, issues, code review. Each op is a labeled section; load the relevant
+  one. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for
+  Hermes.
 
+  '
+floor_scope:
+- F01
+- F11
+cognitive_hints:
+  claude: Use <workflow>, <pr-lifecycle>, <issue-lifecycle> tags. Extended context
+    for PR review chains.
+  codex: 'GitHub API schema adherence required. Each operation: authenticate → execute
+    → verify → log.'
+  hermes: GitHub op? Auth. Execute. Verify. Log. Next.
+owner: A-FORGE
+---
 # FORGE-github-workflow
 
 <cognitive-note model="claude">XML-tagged workflow sections. Use extended context for multi-PR review state tracking.</cognitive-note>

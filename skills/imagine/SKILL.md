@@ -1,17 +1,22 @@
 ---
 name: imagine
-description: >
-  How to use the image_gen and image_edit tool calls in Grok Build: when to
-  build a visual with code instead of generating it, prompt-craft,
-  reference-first handling of real people, factual grounding, and
-  asset-consistency. Load this whenever generating or editing an image is on the
-  table, i.e. when an image_gen or image_edit call is being considered or about
-  to be made. Tool-usage-driven, not triggered by a user merely mentioning
-  images.
-metadata:
-  short-description: "Prompting and workflow guidance for Imagine image tools"
----
+description: 'How to use the image_gen and image_edit tool calls in Grok Build: when
+  to build a visual with code instead of generating it, prompt-craft, reference-first
+  handling of real people, factual grounding, and asset-consistency. Load this whenever
+  generating or editing an image is on the table, i.e. when an image_gen or image_edit
+  call is being considered or about to be made. Tool-usage-driven, not triggered by
+  a user merely mentioning images.
 
+  '
+metadata:
+  short-description: Prompting and workflow guidance for Imagine image tools
+owner: AAA
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+---
 # Imagine
 
 Guidance for the two image tool calls in Grok Build:

@@ -3,11 +3,38 @@ name: FORGE-google-workspace
 slug: google-workspace-cli
 version: 1.0.0
 homepage: https://clawic.com/skills/google-workspace-cli
-description: Operate Google Workspace from one CLI using dynamic API discovery, secure OAuth flows, and agent-ready automation patterns for Drive and Gmail.
-changelog: Initial release with gws command patterns, auth playbooks, MCP integration, and safety-first change control for production tenants.
-metadata: {"clawdbot":{"emoji":"GWS","requires":{"bins":["gws","jq"],"config":["~/google-workspace-cli/","~/.config/gws/"]},"install":[{"id":"npm","kind":"npm","package":"@googleworkspace/cli","bins":["gws"],"label":"Install gws CLI (npm)"}],"os":["darwin","linux","win32"]}}
+description: Operate Google Workspace from one CLI using dynamic API discovery, secure
+  OAuth flows, and agent-ready automation patterns for Drive and
+changelog: Initial release with gws command patterns, auth playbooks, MCP integration,
+  and safety-first change control for production tenants.
+metadata:
+  clawdbot:
+    emoji: GWS
+    requires:
+      bins:
+      - gws
+      - jq
+      config:
+      - ~/google-workspace-cli/
+      - ~/.config/gws/
+    install:
+    - id: npm
+      kind: npm
+      package: '@googleworkspace/cli'
+      bins:
+      - gws
+      label: Install gws CLI (npm)
+    os:
+    - darwin
+    - linux
+    - win32
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F13
 ---
-
 ## Setup
 
 On first activation, read `SETUP_MD.md` and lock integration boundaries before running any write command.

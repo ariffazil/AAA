@@ -2,7 +2,7 @@
   "protocol_version": "1.0.0",
   "id": "aaa-auditor",
   "name": "AAA A-auditor",
-  "description": "Constitutional auditor for AAA. Evaluates delegation proposals, verifies AgentCards and identity, enforces floor constraints, emits VAULT999 receipts, and issues HOLD/SEAL/VOID verdicts. Cannot execute tasks or design schemas.",
+  "description": "Constitutional auditor — evaluates delegations and issues verdicts.",
   "url": "https://aaa.arif-fazil.com/a2a/auditor",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [

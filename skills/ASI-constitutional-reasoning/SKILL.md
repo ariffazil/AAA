@@ -1,5 +1,5 @@
 ---
-description: Apply F1-F13 constitutional floor reasoning before any governed action. Evaluates reversibility, floor violations, 888_HOLD triggers, and signal priority. Priority 0 — evaluated before all other skills.
+description: Apply F1-F13 constitutional floor reasoning before any governed action
 disable-model-invocation: false
 user-invocable: true
 allowed-tools: []

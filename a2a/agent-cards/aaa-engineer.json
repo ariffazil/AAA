@@ -2,7 +2,7 @@
   "protocol_version": "1.0.0",
   "id": "aaa-engineer",
   "name": "AAA A-engineer",
-  "description": "Execution agent for AAA. Handles task lifecycle, A2A dispatch to downstream agents, tool execution via MCP, and SSE streaming. Operates within schemas designed by A-rchitect and gated by A-auditor.",
+  "description": "Execution agent — dispatches tasks and executes via MCP tools.",
   "url": "https://aaa.arif-fazil.com/a2a/engineer",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [

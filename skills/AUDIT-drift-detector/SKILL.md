@@ -1,15 +1,25 @@
 ---
 name: AUDIT-drift-detector
-description: >
-  Real-time drift detection across tool manifests, agent cards, skill registries,
-  and runtime-injected files. Compares live state against saved baselines and reports
-  mismatches. USE WHEN: "check drift", "verify registry", "detect manifest drift",
-  "tool surface audit", "runtime injection detection".
-version: 2026.07.19
-tags: [drift, audit, registry, manifest, F2, F11]
-floor_scope: [F02, F04, F11]
----
+description: 'Real-time drift detection across tool manifests, agent cards, skill
+  registries, and runtime-injected files. Compares live state against saved baselines
+  and reports mismatches. USE WHEN: "check drift", "verify registry", "detect manifest
+  drift", "tool surface audit", "runtime injection detection".
 
+  '
+version: 2026.07.19
+tags:
+- drift
+- audit
+- registry
+- manifest
+- F2
+- F11
+floor_scope:
+- F02
+- F04
+- F11
+owner: A-FORGE
+---
 # AUDIT-drift-detector
 
 ## Purpose

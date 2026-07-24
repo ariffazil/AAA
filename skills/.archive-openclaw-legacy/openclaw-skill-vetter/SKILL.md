@@ -1,7 +1,7 @@
 ---
 name: skill-vetter
 version: 1.0.0
-description: Security vetting protocol before installing any AI agent skill. Red flag detection for credential theft, obfuscated code, exfiltration. Risk classification LOW/MEDIUM/HIGH/EXTREME. Produces structured vetting reports. Never install untrusted skills without running this first.
+description: Security vetting protocol before installing any AI agent skill
 homepage: https://clawhub.com
 changelog: Initial release - Source checking, code review checklist, red flag detection, permission analysis, risk classification, vetting report template
 metadata:

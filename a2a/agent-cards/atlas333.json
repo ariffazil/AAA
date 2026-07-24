@@ -1,7 +1,7 @@
 {
   "id": "atlas333",
   "name": "ATLAS333 — Cognitive Geometry Agent",
-  "description": "Maintains the 35-paradox constitutional map (33 canonical + 2 active contours: P34 Root Outruns Kernel, P35 Positive≠Closed). Routes query geometry (territory × depth × paradox axis) to the correct organ. Ensures every agent knows WHERE it is before it acts. Active gate: mandatory architectural constraint per MIRROR (2026) — external scaffolding, not passive self-knowledge.",
+  "description": "Cognitive geometry agent — maps paradoxes and routes by territory and depth.",
   "url": "arifos://agents/skills/atlas333",
   "provider": {
     "organization": "arifOS",

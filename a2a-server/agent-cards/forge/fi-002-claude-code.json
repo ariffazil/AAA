@@ -76,13 +76,13 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+      "description": "arifOS session token (JWT)"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-API-Key",
-      "description": "Static API key for service-to-service calls"
+      "description": "Static API key for federation calls"
     }
   },
   "security": [

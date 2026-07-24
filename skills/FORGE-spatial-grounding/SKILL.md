@@ -2,7 +2,7 @@
 id: spatial-grounding
 name: FORGE-spatial-grounding
 version: 1.0.0
-description: Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality.
+description: Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality
 owner: AAA
 risk_tier: medium
 host_compatibility:

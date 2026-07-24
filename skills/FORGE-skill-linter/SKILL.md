@@ -2,9 +2,7 @@
 id: skill-trigger-linter
 name: FORGE-skill-linter
 version: 1.0.0
-description: Check every skill’s “use when” and “do not use when” clauses for collisions,
-  missing negatives, and vague verbs like “help,” “assist,” or “improve.” Load when
-  linting, reviewing, or validating trigger boundaries.
+description: Check every skill’s trigger clauses for collisions, missing negatives, and vague verbs
 owner: AAA
 risk_tier: low
 knowledge_basis:

@@ -1,12 +1,18 @@
 ---
 name: create-skill
-description: >
-  Interactively create a new Grok skill (SKILL.md + optional scripts/references).
+description: 'Interactively create a new Grok skill (SKILL.md + optional scripts/references).
   Use when the user wants to create a skill, scaffold a skill, or runs /create-skill.
-metadata:
-  short-description: "Create a new Grok skill"
----
 
+  '
+metadata:
+  short-description: Create a new Grok skill
+owner: AAA
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+---
 # Create Skill
 
 Interactively gather requirements from the user and create a fully working Grok skill on disk.

@@ -1,6 +1,6 @@
 ---
 name: AGI-emd-decode
-description: Decompose upstream EMD output into typed, provenance-bound segments tied to ground truth before persistence or downstream consumption.
+description: Decompose upstream EMD output into typed, provenance-bound segments tied to ground truth before persistence or downstream consumption
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
 forged: 2026-07-12T18:28Z
 rationale: Audit showed only 2 of 244 active skills mention "decode". OpenClaw/333-AGI has no dedicated decode doctrine for output decomposition + ground-truth binding. Phase 3 gap fill.

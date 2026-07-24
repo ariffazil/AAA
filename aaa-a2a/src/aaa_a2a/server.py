@@ -18,6 +18,7 @@ from a2a.server.tasks.inmemory_task_store import InMemoryTaskStore
 from a2a.types import AgentCard, AgentCapabilities, AgentSkill, AgentProvider
 
 from aaa_a2a.executor import ConstitutionalExecutor
+from aaa_a2a.routing.organ_router import call_mcp_tool
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("aaa.server")
@@ -71,6 +72,29 @@ def create_agent_card() -> AgentCard:
                 description="Capability-based service discovery across the federation.",
                 tags=["discovery", "routing", "capability"],
             ),
+            AgentSkill(
+                id="arifos.session.init",
+                name="Federation Session Init",
+                description=(
+                    "Mint a governed session via arifOS (port 8088). "
+                    "Returns session_id + session_token (sct_v1.*). "
+                    "The canonical entry point for any agent that needs an authoritative identity. "
+                    "Same effect as calling arif_init directly — exposed here so cockpit-driven "
+                    "agents don't have to know kernel ports. See /root/scripts/federation_ritual.py."
+                ),
+                tags=["init", "session", "governance", "kernel", "arifos"],
+            ),
+            AgentSkill(
+                id="arifos.session.seal",
+                name="Federation Session Seal",
+                description=(
+                    "Seal the active session via arifOS (port 8088). "
+                    "Writes an immutable entry to VAULT999 and returns entry_id + chain_hash. "
+                    "The canonical exit point. Same effect as arif_seal — exposed here for "
+                    "cockpit-driven agents. See /root/scripts/federation_ritual.py seal."
+                ),
+                tags=["seal", "session", "vault999", "kernel", "arifos"],
+            ),
         ],
     )
 
@@ -108,6 +132,27 @@ def create_app() -> FastAPI:
             "overlay": "constitutional",
             "express_lines_replaced": 3862,
         }
+
+    # REST passthroughs — non-A2A convenience aliases so plain HTTP callers
+    # (curl, scripts) can hit AAA directly without speaking JSONRPC. These
+    # are 1:1 proxies to arifOS at port 8088; no logic added.
+    @app.post("/mcp/session/init")
+    async def session_init(actor_id: str, intent: str = "cockpit init"):
+        """Canonical session init — same effect as arif_init. Returns the
+        envelope as the kernel mints it (session_id, session_token, etc.)."""
+        return await call_mcp_tool(
+            "arifos", "arif_init",
+            {"actor_id": actor_id, "intent": intent, "mode": "light"},
+        )
+
+    @app.post("/mcp/session/seal")
+    async def session_seal(session_id: str, content: str):
+        """Canonical session seal — same effect as arif_seal. Returns
+        entry_id + chain_hash on success."""
+        return await call_mcp_tool(
+            "arifos", "arif_seal",
+            {"session_id": session_id, "content": content, "mode": "seal"},
+        )
 
     return app
 

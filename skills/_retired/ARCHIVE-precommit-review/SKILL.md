@@ -1,6 +1,6 @@
 ---
 name: precommit-review
-description: "Pre-commit gate for any organ repo. Runs lint, type-check, test, constitutional surface scan, and shows the diff to the user. Use before every git commit in any organ. Delegates F1-surface detection to f1-gate."
+description: "Pre-commit gate for any organ repo"
 when_to_use: "Before every git commit in any organ. Also: before opening a PR, after a non-trivial feature lands."
 disable-model-invocation: false
 allowed_tools: [Bash, Read, Grep]

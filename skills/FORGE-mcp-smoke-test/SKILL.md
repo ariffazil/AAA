@@ -2,7 +2,7 @@
 id: mcp-smoke-test
 name: FORGE-mcp-smoke-test
 version: 1.1.0
-description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport errors.
+description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport
 owner: AAA
 risk_tier: low
 host_compatibility:

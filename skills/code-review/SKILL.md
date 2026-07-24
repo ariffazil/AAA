@@ -1,9 +1,15 @@
 ---
 name: code-review
-description: Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth. Use for a deep code quality audit or an especially harsh maintainability review.
+description: Run an extremely strict maintainability review for abstraction quality,
+  giant files, and spaghetti-condition growth
 disable-model-invocation: true
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+- F11
 ---
-
 # Strict Code Quality Review
 
 Use this skill for an unusually strict review focused on implementation quality, maintainability, abstraction quality, and codebase health.

@@ -2,7 +2,7 @@
 id: secret-safety-scan
 name: Secret Safety Scan
 version: 1.0.1
-description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials.
+description: Scan a repo or workspace for exposed secrets, tokens, keys, and credentials
   Produce a findings report with remediation steps.
 owner: AAA
 risk_tier: critical

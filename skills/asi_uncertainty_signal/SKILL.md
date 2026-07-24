@@ -5,7 +5,7 @@ agent: 555-ASI
 namespace: asi_*
 cluster: TRUST
 version: 0.1.0
-description: Legacy 5-step drift response protocol. Superseded by service-health-triage.
+description: Legacy 5-step drift response protocol. Superseded by service-health-triage
 owner: AAA
 risk_tier: medium
 maturity: deprecated

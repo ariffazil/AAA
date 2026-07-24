@@ -2,7 +2,7 @@
 id: github-pr-review
 name: FORGE-pr-review
 version: 1.1.0
-description: Governed checklist for reviewing GitHub pull requests in the arifOS federation.
+description: Governed checklist for reviewing GitHub pull requests in the arifOS federation
   Ensures PRs meet constitutional, structural, and safety standards before merge.
 owner: AAA
 risk_tier: medium

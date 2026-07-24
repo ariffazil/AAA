@@ -2,17 +2,23 @@
 id: ASI-fabrication-prevention
 name: ASI-fabrication-prevention
 version: 2.0.0
-description: >
-  Artifact fabrication prevention — verify before claiming existence. Triggered when
-  agent claims file/database/API/artifact existence without external validation.
-  BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
-floor_scope: [F02, F09, F11]
-cognitive_hints:
-  claude: "Use <claim>, <verification>, <verdict> tags. Recall prior fabrication attempts from context."
-  codex: "3-step verify: claim → external check → verdict. No shortcuts."
-  hermes: "Claim exists? Prove it. Can't prove? UNKNOWN. Never fabricate."
----
+description: 'Artifact fabrication prevention — verify before claiming existence.
+  Triggered when agent claims file/database/API/artifact existence without external
+  validation. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative
+  for Hermes.
 
+  '
+floor_scope:
+- F02
+- F09
+- F11
+cognitive_hints:
+  claude: Use <claim>, <verification>, <verdict> tags. Recall prior fabrication attempts
+    from context.
+  codex: '3-step verify: claim → external check → verdict. No shortcuts.'
+  hermes: Claim exists? Prove it. Can't prove? UNKNOWN. Never fabricate.
+owner: AAA
+---
 # ASI-fabrication-prevention
 
 <cognitive-note model="claude">XML-tagged verification. Use extended recall to check if similar claims were fabricated before.</cognitive-note>

@@ -5,7 +5,7 @@
   "name": "GitHub Copilot CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (model is principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
   "description": "GitHub Copilot CLI forge instrument \u2014 Microsoft/OpenAI coding harness. Wired to federation MCPs. F1-F13 enforced.",
@@ -40,13 +40,13 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token issued via arif_session_init"
+      "description": "arifOS session token (JWT)"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-ArifOS-Key",
-      "description": "Static API key for organ-to-organ federation calls"
+      "description": "Static API key for federation calls"
     }
   },
   "security": [
@@ -216,7 +216,7 @@
     {
       "id": "HERMES-opencode-protocol",
       "name": "Hermes/OpenCode Protocol",
-      "description": "Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. LEASED.",
+      "description": "Unified governed execution protocol: 777 FORGE under F1-F13 with 888_HOLD.",
       "tags": [
         "protocol",
         "F1-F13",
@@ -235,7 +235,7 @@
     {
       "id": "ASI-agentic-architecture",
       "name": "Agentic Architecture",
-      "description": "Class-level skill for designing sovereign agentic agents. 9-skill spine, local-model compensation, failure classification, phased implementation. F8, F11 enforced. LEASED.",
+      "description": "Design sovereign agentic agents. 9-skill spine, F8/F11 enforced.",
       "tags": [
         "architecture",
         "agent",
@@ -250,7 +250,7 @@
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Verify before claiming existence. F2/F9 enforced.",
       "tags": [
         "fabrication",
         "F2",
@@ -266,7 +266,7 @@
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "description": "Governed execution: T1/T2 auto, T3\u2192888_HOLD. F1-F13 enforced.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -285,7 +285,7 @@
     {
       "id": "APEX-constitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit of arifOS code and agent cards. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced. ATTESTED + LEASED.",
+      "description": "Read-only six-organ audit. F1-F13 enforced.",
       "tags": [
         "constitutional",
         "audit",
@@ -305,7 +305,7 @@
     {
       "id": "APEX-humility-godel",
       "name": "G\u00f6del Humility Lock",
-      "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
+      "description": "Epistemic humility before SEAL-grade claims. F2/F7 enforced.",
       "tags": [
         "humility",
         "F7",
@@ -320,7 +320,7 @@
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "GitHub ops: repos, PRs, issues, review. F1/F11 enforced.",
       "tags": [
         "github",
         "workflow",
@@ -335,7 +335,7 @@
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "description": "Route tasks across federation MCP servers. F4/F11 enforced.",
       "tags": [
         "MCP",
         "federation",
@@ -350,7 +350,7 @@
     {
       "id": "KERNEL-reality-skills",
       "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
       "tags": [
         "kernel",
         "f2",
@@ -366,7 +366,7 @@
     {
       "id": "KERNEL-sovereign-recognize",
       "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "description": "Route to sovereign. No action without sovereign chain.",
       "tags": [
         "kernel",
         "f13",
@@ -380,7 +380,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -396,7 +396,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Every output reduces entropy. \u0394S < 0.",
       "tags": [
         "kernel",
         "rsi",

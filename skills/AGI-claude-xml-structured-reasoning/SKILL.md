@@ -1,15 +1,28 @@
 ---
 name: AGI-claude-xml-structured-reasoning
-description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit XML boundaries when outputs exceed one screen or require parser-stable sections.
+description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit
+  XML boundaries when outputs exceed one screen or require parser-stable
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample
 forged: 2026-07-12T18:28Z
 native_architecture: claude
-rationale: OpenClaw / 333-AGI runs on Claude (Anthropic). Add an explicit XML-tag structuring wrapper for long-form reasoning, extended-context recall, and structured decomposition.
-floor_scope: [F1, F2, F4, F8, F11, F13]
-tags: [claude, xml-structured, reasoning, phase-2-sample]
+rationale: OpenClaw / 333-AGI runs on Claude (Anthropic). Add an explicit XML-tag
+  structuring wrapper for long-form reasoning, extended-context recall, and structured
+  decomposition.
+floor_scope:
+- F1
+- F2
+- F4
+- F8
+- F11
+- F13
+tags:
+- claude
+- xml-structured
+- reasoning
+- phase-2-sample
 status: NEW (Phase 2 sample)
+owner: AAA
 ---
-
 # AGI · claude-xml-structured-reasoning
 
 > Bind Claude's native XML-tag structuring into 333-AGI's reasoning chain.
