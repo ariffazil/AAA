@@ -4,7 +4,7 @@
   "class": "FORGE_INSTRUMENT",
   "description": "Primary forge instrument. arifOS Forge Agent (\u03a9) runtime. DeepSeek-V4-Pro powered constitutional engineering agent.",
   "version": "1.15.0",
-  "model": "deepseek-v4-pro",
+  "model": "deepseek/deepseek-v4-pro",
   "fallback_model": "deepseek-v4-flash",
   "izin": "GRANTED",
   "izin_date": "2026-05-17",
@@ -116,5 +116,6 @@
       "created": "2026-07-12T23:12:24Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }
