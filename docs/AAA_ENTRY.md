@@ -23,7 +23,7 @@ curl https://aaa.arif-fazil.com/health
 | `src/App.tsx` | Root React component |
 | `src/Cockpit.tsx` | Operator dashboard |
 | `services/a2a-gateway/server.js` | A2A gateway (port 3001) |
-| `a2a/registry/agent-cards.json` | Agent registry |
+| `registries/agents.yaml` | Canonical agent registry (15 agents, HEXAGON 4.1) |
 
 ## Build Commands
 | Command | Purpose |

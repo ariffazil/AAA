@@ -161,6 +161,7 @@ agents:
     streaming: false
     push_notifications: false
     openclaw_target: opencode
+    status: retired
     notes: |
       Relay orchestrator and OpenCode session spawn witness. Sole authority to
       spawn OpenCode sessions. Emits witness receipts with PID and hash.
