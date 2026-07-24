@@ -291,3 +291,17 @@ Do not load QUBIT_INIT before the standard init. The standard init provides the 
 *Heritage: AGENT_INIT v2.0/v3.0 · CONSTITUTIONAL_REFLEX · Zen Organs (7) · F1-F13*
 
 **DITEMPA BUKAN DIBEI**
+
+---
+
+## 10. Kernel Handshake (added 2026-07-24)
+
+After binding agent_id, actor_id, authority — call the canonical wrapper:
+
+```bash
+python3 /root/scripts/federation_ritual.py init \
+  --actor "$agent_id" --intent "qubit-substrate wake" \
+  --write-envelope /root/.arifos/federation-session.json
+```
+
+Thread the returned `session_id` and `session_token` into every subsequent MCP call. If the wrapper returns HOLD, remain in MEASURE phase — do not proceed to COLLAPSE.
