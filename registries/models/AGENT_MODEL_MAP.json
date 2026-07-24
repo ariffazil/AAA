@@ -4136,5 +4136,9 @@
         }
       ]
     }
-  }
+  },
+  "_deprecated": true,
+  "_deprecated_date": "2026-07-24",
+  "_replaced_by": "/root/.config/federation-models.json",
+  "_note": "DO NOT USE. This file is retained for audit provenance only."
 }
