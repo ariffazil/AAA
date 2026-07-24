@@ -1,6 +1,6 @@
 ---
 name: mcporter
-description: Use mcporter CLI to list, configure, authenticate, and call MCP servers and tools directly from the terminal. Ad-hoc HTTP/stdio servers, daemon mode, code generation, and config management. Available at /usr/bin/mcporter v0.9.0 on af-forge.
+description: Use mcporter CLI to list, configure, authenticate, and call MCP servers and tools directly from the terminal
 version: 1.0.0
 author: arifOS (based on Hermes official/mcp/mcporter)
 tags: MCP, Tools, CLI, Discovery, Interop

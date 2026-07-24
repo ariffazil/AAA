@@ -2,7 +2,7 @@
 id: sovereign-recognize
 name: Sovereign Recognize
 version: "1.0.0"
-description: Identifies and recognizes the sovereign (Arif, F13) before any action that targets them, addresses them, or binds them. Prevents agent impersonation of operator identity.
+description: Identifies and recognizes the sovereign (Arif, F13) before any action that targets them, addresses them, or binds them. Prevents agent
 owner: AAA
 risk_tier: low
 knowledge_basis:

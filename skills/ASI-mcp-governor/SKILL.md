@@ -1,20 +1,22 @@
 ---
 name: ASI-mcp-governor
-description: Governed MCP routing via arifOS F1-F13. All calls to GEOX, WEALTH, WELL organs must route through arifOS kernel for C2+/IRREVERSIBLE tools. Uses mcporter for stdio/HTTP bridging.
+description: Governed MCP routing via arifOS F1-F13
 homepage: https://arif-fazil.com
 metadata:
   openclaw:
-    emoji: "🫀"
+    emoji: 🫀
     requires:
-      bins: ["mcporter"]
+      bins:
+      - mcporter
     install:
-      - id: node
-        kind: node
-        package: mcporter
-        bins: ["mcporter"]
-        label: "Install mcporter"
+    - id: node
+      kind: node
+      package: mcporter
+      bins:
+      - mcporter
+      label: Install mcporter
+owner: AAA
 ---
-
 # arif-mcp-governor
 
 Governed MCP routing via arifOS F1-F13. Routes organ calls through arifOS kernel for C2+/IRREVERSIBLE tools.

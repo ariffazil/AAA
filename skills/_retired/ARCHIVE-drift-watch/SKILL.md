@@ -1,6 +1,6 @@
 ---
 name: drift-watch
-description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app). The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule and manually. Use when in doubt about which version is live, or as part of `verify-runtime`.
+description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app). The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule
 when_to_use: After deploy, when organ behavior surprises you, weekly health audit, before any "is it running what I think?" question.
 disable-model-invocation: false
 allowed_tools: [Bash, Read, Grep]

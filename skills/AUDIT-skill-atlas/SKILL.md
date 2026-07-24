@@ -1,6 +1,6 @@
 ---
 name: AUDIT-skill-atlas
-description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views. The mesa above the terrain — see the whole, find the missing, route the right skill. Load when starting a new task, auditing skill health, unifying CLI agent skills, onboarding a new organ, or when you don't know which skill to load.
+description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views
 version: 1.2.3
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low

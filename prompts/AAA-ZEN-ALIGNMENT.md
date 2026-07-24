@@ -1,1 +1,1 @@
-/root/AAA/docs/doctrine/AAA-ZEN-ALIGNMENT.md
+/root/AAA-ZEN-ALIGNMENT.md

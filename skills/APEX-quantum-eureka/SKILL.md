@@ -2,7 +2,7 @@
 id: quantum-eureka-doctrine
 name: APEX-quantum-eureka
 version: 1.1.0-2026.07.09
-description: Use when the task is about eureka, contradiction, insight generation, cross-domain synthesis, structured memory, explorer routing, or converting unresolved tension into a governed artifact for AAA warga. Everyday quantum runtime discipline lives in quantum-kernel-runtime (v1.0.0-2026.07.09); this skill is the high-energy collapse path when contradiction survives compression.
+description: Eureka, contradiction, insight generation, and cross-domain synthesis for AAA warga
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: medium
 floor_scope: [F2, F3, F4, F8, F11, F13]

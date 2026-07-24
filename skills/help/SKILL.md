@@ -1,14 +1,20 @@
 ---
 name: help
-description: >
-  Grok documentation and configuration help. Use when users ask about
-  setup, configuration, MCP servers, authentication, skills, slash commands,
-  keyboard shortcuts, or any Grok feature. Also use proactively when you
-  detect a user is having trouble with setup or onboarding.
-metadata:
-  short-description: "Grok docs — config, MCP, auth, skills, commands"
----
+description: 'Grok documentation and configuration help. Use when users ask about
+  setup, configuration, MCP servers, authentication, skills, slash commands, keyboard
+  shortcuts, or any Grok feature. Also use proactively when you detect a user is having
+  trouble with setup or onboarding.
 
+  '
+metadata:
+  short-description: Grok docs — config, MCP, auth, skills, commands
+owner: AAA
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+---
 # Grok Help
 
 Answer the user's question about Grok setup, configuration, or features.

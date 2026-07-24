@@ -1,6 +1,6 @@
 ---
 name: apex_scope_check
-description: Check whether a proposed action stays within its declared task, organ, and constitutional scope. Use before cross-organ work, policy changes, production operations, secret handling, or any action whose blast radius or boundaries are unclear.
+description: Check whether a proposed action stays within its declared task, organ, and constitutional scope
 agent: 888-APEX
 namespace: apex_*
 cluster: CONSTITUTION

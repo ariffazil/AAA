@@ -1,14 +1,18 @@
 ---
 name: FORGE-symlink-audit
-description: >
-  Federation-wide broken symlink scanner. Scans /root for broken symlinks,
-  categorizes by location, and reports with safe-delete recommendations.
-  USE WHEN: "check symlinks", "broken links", "symlink debt", "find broken symlinks",
-  or during entropy sweeps.
+description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks,
+  categorizes by location, and reports with safe-delete recommendations. USE WHEN:
+  "check symlinks", "broken links", "symlink debt", "find broken symlinks", or during
+  entropy sweeps.
+
+  '
 version: 2026.07.19
-floors: [F1, F4]
+floors:
+- F1
+- F4
 risk_tier: low
 autonomy_tier: T1
+owner: A-FORGE
 ---
 # 🔗 FORGE — Symlink Audit
 

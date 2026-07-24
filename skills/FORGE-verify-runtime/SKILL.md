@@ -1,14 +1,26 @@
 ---
 name: FORGE-verify-runtime
-description: >
-  Verification-as-terminal-state skill. A task is done ONLY when verified.
-  Never stop at "I changed it" — only at "it's fixed and confirmed."
-  Runs health probes, behavior smoke tests, and drift checks.
-when_to_use: Post-deploy, post-restart, post-skill-claim of "done", weekly audit, pre-commit on runtime-touching code.
-version: 2.0.0
-tags: [verification, terminal-state, lower-entropy, confirm-not-assume]
----
+description: 'Verification-as-terminal-state skill. A task is done ONLY when verified.
+  Never stop at "I changed it" — only at "it''s fixed and confirmed." Runs health
+  probes, behavior smoke tests, and drift checks.
 
+  '
+when_to_use: Post-deploy, post-restart, post-skill-claim of "done", weekly audit,
+  pre-commit on runtime-touching code.
+version: 2.0.0
+tags:
+- verification
+- terminal-state
+- lower-entropy
+- confirm-not-assume
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F7
+- F11
+---
 # Verify Runtime — Verification Is the Terminal State
 
 > **"I changed it" is not done. "It's fixed and confirmed" is done.**

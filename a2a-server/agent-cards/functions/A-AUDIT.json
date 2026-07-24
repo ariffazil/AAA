@@ -29,13 +29,13 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+      "description": "arifOS session token (JWT)"
     },
     "api_key": {
       "type": "apiKey",
       "in": "header",
       "name": "X-ArifOS-Key",
-      "description": "Static API key for organ-to-organ federation calls"
+      "description": "Static API key for federation calls"
     }
   },
   "security": [
@@ -142,7 +142,7 @@
     {
       "id": "APEX-constitutional-audit",
       "name": "arifOS Constitutional Audit (Light)",
-      "description": "Read-only constitutional audit. Independent from 888-APEX \u2014 provides second-opinion floor verification. Six-organ gap analysis, lexical priority check, blast-radius 888 HOLD bypass detection. F1, F2, F4, F7, F9, F11, F13 enforced.",
+      "description": "Read-only six-organ audit. F1-F13 enforced.",
       "tags": [
         "constitutional",
         "audit",
@@ -296,7 +296,7 @@
     {
       "id": "KERNEL-reality-skills",
       "name": "Reality Skills (F2 Grounding)",
-      "description": "Physical law veto layer. All claims must pass OBS/DER/INT/SPEC. No inference without anchor.",
+      "description": "Physical law veto. Claims need OBS/DER/INT/SPEC.",
       "tags": [
         "kernel",
         "f2",
@@ -312,7 +312,7 @@
     {
       "id": "KERNEL-sovereign-recognize",
       "name": "Sovereign Recognition (F13)",
-      "description": "Recognise and route to the sovereign identity. No agent acts without sovereign chain.",
+      "description": "Route to sovereign. No action without sovereign chain.",
       "tags": [
         "kernel",
         "f13",
@@ -326,7 +326,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -342,7 +342,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Every output reduces entropy. \u0394S < 0.",
       "tags": [
         "kernel",
         "rsi",
@@ -357,7 +357,7 @@
     {
       "id": "KERNEL-trinity-33",
       "name": "Trinity-33 Architecture",
-      "description": "33 canonical repositories across KERNEL (11), CODE (11), FOUNDRY (11). Never let forge outrun kernel.",
+      "description": "33 repos: KERNEL(11)+CODE(11)+FOUNDRY(11).",
       "tags": [
         "kernel",
         "trinity",
@@ -372,7 +372,7 @@
     {
       "id": "KERNEL-mcp-zen",
       "name": "MCP Zen Architecture",
-      "description": "MCP surface design doctrine. Naming contracts, transport physics, capability vs authority separation.",
+      "description": "Naming contracts, transport physics, capability vs authority.",
       "tags": [
         "kernel",
         "mcp",

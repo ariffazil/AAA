@@ -2,7 +2,7 @@
 id: repo-intelligence
 name: FORGE-repo-intelligence
 version: 1.0.0
-description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12 modes (inventory, map, delta, pr_review, ci_diagnose, issue_triage, security, cross_repo_impact, release_audit, workflow_integrity, manifest_reconcile, ruleset_audit). Smaller GitHub skills (pr-review, ci-diagnose, issue-triage, github-ops) are consolidated as internal modules under this controller. No other repo-intelligence skill should be created — extend modes instead. Every mode outputs a minimum evidence envelope with repo, ref, commit_sha, working_tree, tag_delta, changed_files, critical_paths, tests, ci, security, contract_impacts, runtime_probe, risk_tier, proposed_action, rollback, evidence_class, and unknowns.'
+description: 'SOLE controller skill for repository intelligence across the arifOS Federation. Exposes 12'
 owner: AAA
 risk_tier: medium
 knowledge_basis:

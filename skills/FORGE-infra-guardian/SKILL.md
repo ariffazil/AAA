@@ -1,12 +1,18 @@
 ---
 name: FORGE-infra-guardian
-description: >
-  Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry,
-  DNS parity, tunnel status, and Cloudflare tunnel exposure.
-  USE WHEN: "check SSL", "Caddy config valid", "tunnel status",
-  "DNS parity", "SSL expiry", "infra health", "Cloudflare check".
+description: 'Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry,
+  DNS parity, tunnel status, and Cloudflare tunnel exposure. USE WHEN: "check SSL",
+  "Caddy config valid", "tunnel status", "DNS parity", "SSL expiry", "infra health",
+  "Cloudflare check".'
+owner: A-FORGE
+floor_scope:
+- F1
+- F2
+- F4
+- F11
+- F12
+- F13
 ---
-
 # Infra Guardian
 
 **Validates the infrastructure layer — SSL, DNS, reverse proxy, tunnels.**

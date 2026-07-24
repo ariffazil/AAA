@@ -2,7 +2,7 @@
 id: vps-docker-runbook
 name: FORGE-vps-runbook
 version: 1.0.0
-description: Concrete Docker Compose and container commands for the af-forge VPS stack.
+description: Concrete Docker Compose and container commands for the af-forge VPS stack
 owner: AAA
 risk_tier: medium
 knowledge_basis:

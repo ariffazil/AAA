@@ -1,7 +1,7 @@
 ---
 name: FORGE-context-compress
 version: "1.0.0-2026.07.13"
-description: "Context window compression for massive log/output payloads. Preserve critical failure coordinates while reducing token count. Load when agent context is saturated with build traces, test output, or log dumps exceeding 10K tokens."
+description: "Context window compression for massive log/output payloads"
 domain: forge
 cognitive_engine_notes:
   claude: "Use <critical_sections> XML tags to mark preserved coordinates. Claude's extended context handles the structural wrapping natively."
