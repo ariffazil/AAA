@@ -1,0 +1,47 @@
+# AAA — Cockpit + A2A Identity Layer
+
+> arifOS Federation control plane. React 19 + Vite + TypeScript.
+> Port: 3001 | Domain: aaa.arif-fazil.com | Systemd: aaa-a2a.service
+
+## Role
+
+AAA is the cockpit, identity, and A2A (Agent-to-Agent) authority layer of the arifOS Federation. It routes, displays, and coordinates — never adjudicates.
+
+## Key Endpoints
+
+- Health: `https://aaa.arif-fazil.com/health` → `localhost:3001/health`
+- A2A Gateway: `https://aaa.arif-fazil.com/a2a`
+- Agent Cards: `https://aaa.arif-fazil.com/agents`
+
+## Federation Organs
+
+| Organ | Port | Role |
+|-------|------|------|
+| arifOS | 8088 | Constitutional kernel — judge, seal, F1-F13 |
+| A-FORGE | 7071 | Execution shell — build, deploy, forge |
+| AAA | 3001 | Cockpit + A2A identity (← you are here) |
+| GEOX | 8081 | Earth intelligence |
+| WEALTH | 18082 | Capital intelligence |
+| WELL | 18083 | Vitality guard (REFLECT_ONLY) |
+| HERMES | 8644 | Multi-modal bridge + Telegram relay |
+
+## Tech Stack
+
+- React 19.2, Vite 8, TypeScript ESM
+- Tailwind 4, Radix UI, shadcn/ui
+- @a2a-js/sdk 0.3 for agent-to-agent protocol
+- ESLint 10
+
+## Key Paths
+
+- Source: `/root/AAA/src/`
+- Agent cards: `/root/AAA/agents/`
+- Registries: `/root/AAA/registries/`
+- Docs: `/root/AAA/docs/`
+- Prompts: `/root/AAA/prompts/`
+
+## Git
+
+- Remote: `https://github.com/ariffazil/AAA`
+- Branch: main
+- License: MIT
