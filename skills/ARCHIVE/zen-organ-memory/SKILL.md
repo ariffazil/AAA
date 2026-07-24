@@ -1,6 +1,6 @@
 ---
 name: zen-organ-memory
-description: Preserve irreversible state; never overwrite sealed information. Zen Organ 5 of 7 — sealed state IS the fossil record of a civilization learning to govern itself.
+description: Preserve irreversible state; never overwrite sealed information
 license: Proprietary
 tags: [zen, seven-organs, governance, federation, vault999, seal-chain, amnesia]
 owner: Arif bin Fazil (F13 SOVEREIGN)
