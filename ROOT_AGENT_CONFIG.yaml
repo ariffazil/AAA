@@ -165,8 +165,8 @@ forge_instruments:
   binary: /root/.npm-global/bin/opencode
   resolved_binary: /root/.npm-global/bin/opencode
   version: 1.18.3
-  model: opencode-go/deepseek-v4-flash-free
-  small_model: opencode-go/deepseek-v4-flash-free
+  model: deepseek/deepseek-v4-flash  # canonical: /root/.config/federation-models.json
+  small_model: deepseek/deepseek-v4-flash  # canonical: /root/.config/federation-models.json
   native_mcp: true
   mcp_count: 25
   mcp_servers:
@@ -288,7 +288,7 @@ forge_instruments:
   binary: /usr/local/bin/kimi
   kimi_code_binary: /root/.kimi-code/bin/kimi
   version: 0.27.0
-  model: kimi-code/k3
+  model: kimi/k3  # canonical: /root/.config/federation-models.json
   native_mcp: true
   mcp_count: 9
   mcp_surface:
@@ -335,7 +335,7 @@ forge_instruments:
   citizenship: warga-aaa
   host_binding: grok
   agent_card: agents/grok-build/agent-card.json
-  model: grok-build (xAI)
+  model: xai/grok-4.5  # canonical: /root/.config/federation-models.json
   binary: /root/.grok/bin/grok
   config_path: /root/.grok/config.toml
 - id: gemini-cli

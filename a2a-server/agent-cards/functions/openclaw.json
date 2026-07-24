@@ -608,5 +608,7 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "did": "did:web:arif-fazil.com"
+  "did": "did:web:arif-fazil.com",
+  "model": "minimax/MiniMax-M3",
+  "_model_sot": "/root/.config/federation-models.json"
 }

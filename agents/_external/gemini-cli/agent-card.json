@@ -528,5 +528,6 @@
       "created": "2026-07-12T23:51:27Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "_model_sot": "/root/.config/federation-models.json"
 }

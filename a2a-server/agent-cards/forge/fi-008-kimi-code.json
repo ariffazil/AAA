@@ -2,9 +2,9 @@
   "id": "FI-008",
   "name": "Kimi Code CLI",
   "class": "FORGE_INSTRUMENT",
-  "description": "Kimi Code CLI forge instrument — Kimi K3 coding harness (2.8T MoE, 1M ctx, vision, thinking). Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio. AMANAH + MARUAH explicit in system identity.",
+  "description": "Kimi Code CLI forge instrument \u2014 Kimi K3 coding harness (2.8T MoE, 1M ctx, vision, thinking). Governed forge worker under arifOS F1-F13. A-FORGE is the sole engineering actuator via stdio. AMANAH + MARUAH explicit in system identity.",
   "version": "1.47.0",
-  "model": "kimi-code/k3 (Kimi K3, 2.8T MoE, 1M ctx, vision, thinking)",
+  "model": "kimi/k3",
   "izin": "GRANTED",
   "izin_date": "2026-06-10",
   "sandbox": "process",
@@ -125,5 +125,6 @@
     "stateTransitionHistory": true,
     "extendedAgentCard": true
   },
-  "_a2a_harness_ref": "harnesses/kimi-code.json"
+  "_a2a_harness_ref": "harnesses/kimi-code.json",
+  "_model_sot": "/root/.config/federation-models.json"
 }

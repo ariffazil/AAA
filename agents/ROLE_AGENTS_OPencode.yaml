@@ -30,7 +30,7 @@ agents:
       - arif_vault_seal
       - systemctl restart
     schedule: "On governance event spike OR daily digest"
-    model: deepseek-chat
+    model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
     context_files:
       - /root/AAA/agents/kernel-scribe/SOUL.md
       - /root/AAA/agents/kernel-scribe/AGENTS.md
@@ -55,7 +55,7 @@ agents:
       - forge_execute
       - arif_vault_seal
     schedule: "On strategic intent from Arif"
-    model: deepseek-chat
+    model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
     context_files:
       - /root/AAA/agents/ops-planner/SOUL.md
       - /root/AAA/agents/ops-planner/AGENTS.md
@@ -82,7 +82,7 @@ agents:
       - direct git push
       - constitutional floor modification
     schedule: "On new commit, test failure, or weekly audit"
-    model: deepseek-chat
+    model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
     context_files:
       - /root/AAA/agents/self-forge-advisor/SOUL.md
       - /root/AAA/agents/self-forge-advisor/AGENTS.md
@@ -118,7 +118,7 @@ agents:
       - production deploy
       - real-money decisions
     schedule: "On Arif command — 'prospect maturation', 'well proposal', 'volumetrics'"
-    model: mimo-v2.5-pro
+    model: mimo/mimo-v2.5-pro  # canonical: /root/.config/federation-models.json
     context_files:
       - /root/AAA/agents/prospect-maturation/IDENTITY.md
       - /root/AAA/agents/prospect-maturation/AGENTS.md
@@ -150,7 +150,7 @@ agents:
       - MUTATE
       - ATOMIC
     schedule: "Daily for critical sources, weekly digest"
-    model: deepseek-chat
+    model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
     context_files:
       - /root/AAA/agents/external-watcher/SOUL.md
       - /root/AAA/agents/external-watcher/AGENTS.md

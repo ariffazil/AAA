@@ -4,7 +4,7 @@
   "class": "FORGE_INSTRUMENT",
   "description": "GitHub Copilot CLI \u2014 agentic coding assistant. Connected to 10 MCP servers. Fleet parallel agent capability (max 3).",
   "version": "1.0.61",
-  "model": "DeepSeek V4 Pro (GitHub Copilot)",
+  "model": "deepseek/deepseek-v4-pro",
   "izin": "GRANTED",
   "izin_date": "2026-05-24",
   "sandbox": "process",
@@ -114,5 +114,6 @@
     "stateTransitionHistory": true,
     "extendedAgentCard": true
   },
-  "_a2a_harness_ref": "harnesses/copilot.json"
+  "_a2a_harness_ref": "harnesses/copilot.json",
+  "_model_sot": "/root/.config/federation-models.json"
 }
