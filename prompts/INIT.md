@@ -887,12 +887,16 @@ Every AAA agent, at session end, MUST:
 3. forge_session_init(actor_id="arif") — get session tokens
    → Returns session_id + session_token + lease_id
 
-4. forge_vault(mode="seal", session_token, lease_id, ...) — SEAL TO /999
+4. forge_vault(mode="write", session_token, lease_id, ...) — SEAL TO /999
    → name: descriptive task name
    → content: summary of what was done
    → reason: "AUTONOMOUS_SESSION_SEAL"
-   → tier: "VAULT999"
+   → tier: "session.ledger"   ← autonomous sessions (1 witness: AI agent)
    → category: "session.seal"
+   
+   NOTE: tier="VAULT999" is reserved for deployment, constitutional, or
+   irreversible seals requiring full Tri-Witness (3+ witnesses).
+   See §18.2a for tiered seal classes.
 
 5. VERIFY SEAL — confirm it landed at /999
    → curl https://arif-fazil.com/999/verify → head updated
@@ -902,6 +906,18 @@ Every AAA agent, at session end, MUST:
 ```
 
 **SEAL receipt emitted:** `SEAL::{session_id}::seq={seq}::fq={fq}`
+
+### 18.2a Tiered Seal Classes (Ratified 2026-07-25)
+
+| Tier | Witnesses | Use Case | Ceiling |
+|------|:---------:|----------|---------|
+| **session.ledger** | 1 (AI agent) | Routine session-close ledger append | DEGRADED → no cap |
+| **session.seal** | 1 (AI agent) | Routine session-close (alias) | DEGRADED → no cap |
+| **VAULT999** | 3+ (Tri-Witness) | Deployment, constitutional, irreversible | PARTIAL → no cap |
+
+This resolves the §18.2 collision: autonomous sessions can always close
+legally at session.ledger tier, while the witness ceiling still protects
+high-stakes VAULT999 seals.
 
 ### 18.3 Contract Enforcement
 
