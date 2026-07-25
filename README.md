@@ -401,9 +401,9 @@ curl -s http://localhost:3001/health | python3 -m json.tool
 |-------|------|------|------|
 | **arifOS** | Constitutional kernel | 8088 | [ariffazil/arifos](https://github.com/ariffazil/arifos) |
 | **A-FORGE** | Execution shell | 7071 | [ariffazil/A-FORGE](https://github.com/ariffazil/A-FORGE) |
-| **GEOX** | Earth intelligence | 8081 | [ariffazil/geox](https://github.com/ariffazil/geox) |
-| **WEALTH** | Capital intelligence | 18082 | [ariffazil/wealth](https://github.com/ariffazil/wealth) |
-| **WELL** | Vitality guard | 18083 | [ariffazil/well](https://github.com/ariffazil/well) |
+| **GEOX** | Earth intelligence | 8081 | [ariffazil/GEOX](https://github.com/ariffazil/GEOX) |
+| **WEALTH** | Capital intelligence | 18082 | [ariffazil/WEALTH](https://github.com/ariffazil/WEALTH) |
+| **WELL** | Vitality guard | 18083 | [ariffazil/WELL](https://github.com/ariffazil/WELL) |
 | **HERMES** | Multi-modal bridge + Telegram relay | 8644 | [ariffazil/HERMES](https://github.com/ariffazil/HERMES) |
 | **AAA** | State + cockpit | 3001 | ← you are here |
 
@@ -464,8 +464,8 @@ For MCP access, use the federation gateway: `https://mcp.arif-fazil.com/mcp` (ar
 | **A-FORGE** | Executor — builds, deploys | [repo](https://github.com/ariffazil/A-FORGE) | [mcp](https://forge.arif-fazil.com/mcp) | [health](https://forge.arif-fazil.com/health) | [llms.txt](https://forge.arif-fazil.com/llms.txt) |
 | **AAA** | Cockpit — displays, routes | [repo](https://github.com/ariffazil/AAA) | — | [health](https://aaa.arif-fazil.com/health) | [llms.txt](https://aaa.arif-fazil.com/llms.txt) |
 | **GEOX** | Earth intelligence | [repo](https://github.com/ariffazil/GEOX) | [mcp](https://geox.arif-fazil.com/mcp) | [health](https://geox.arif-fazil.com/health) | [llms.txt](https://geox.arif-fazil.com/llms.txt) |
-| **WEALTH** | Capital intelligence | [repo](https://github.com/ariffazil/wealth) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
-| **WELL** | Vitality guard | [repo](https://github.com/ariffazil/well) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
+| **WEALTH** | Capital intelligence | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
+| **WELL** | Vitality guard | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
 | **HERMES** | Multi-modal bridge | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
 
 **Public:** [arif-fazil.com](https://arif-fazil.com) · **Federation root:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com)
