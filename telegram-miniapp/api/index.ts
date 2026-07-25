@@ -451,6 +451,7 @@ app.get("/api/seal/verify", async (c) => {
 
 // ─── Start ─────────────────────────────────────────────────
 const port = parseInt(process.env.API_PORT || "3100");
-console.log(`⚡ arifOS Mini App API on :${port}`);
+const hostname = process.env.API_HOST || "127.0.0.1";
+console.log(`⚡ arifOS Mini App API on ${hostname}:${port}`);
 console.log(`   MCP servers: ${Object.entries(MCP_SERVERS).map(([k, v]) => `${k}=${v}`).join(", ")}`);
-serve({ fetch: app.fetch, port, hostname: "0.0.0.0" });
+serve({ fetch: app.fetch, port, hostname });
