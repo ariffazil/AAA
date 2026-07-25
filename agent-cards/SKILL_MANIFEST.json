@@ -14,14 +14,14 @@
     "F3": "OpenCode receives ALL forge harness skills (primary executor)",
     "F4": "Seal (manifest complete + META-MESA verified)"
   },
-  "generated_at": "2026-07-12T23:50:59.524514+00:00",
-  "agent_count": 25,
+  "generated_at": "2026-07-25T00:00:00Z",
+  "agent_count": 26,
   "agents": {
     "\u0394-001": {
       "agent": "333-AGI",
       "fi": "\u0394-001",
       "layer": "identity",
-      "card_path": "agent-cards/identity/333-AGI/skills.json",
+      "card_path": "agents/_lanes/333-AGI/agent-card.json",
       "skill_count": 20,
       "skills": [
         "AGI-cross-agent-handoff",
@@ -50,7 +50,7 @@
       "agent": "555-ASI",
       "fi": "\u03a9-005",
       "layer": "identity",
-      "card_path": "agent-cards/identity/555-ASI/skills.json",
+      "card_path": "agents/_lanes/555-ASI/agent-card.json",
       "skill_count": 18,
       "skills": [
         "ASI-agent-bootstrap",
@@ -77,7 +77,7 @@
       "agent": "888-APEX",
       "fi": "\u03a6\u0399-008",
       "layer": "identity",
-      "card_path": "agent-cards/identity/888-APEX/skills.json",
+      "card_path": "agents/_lanes/888-APEX/agent-card.json",
       "skill_count": 22,
       "skills": [
         "APEX-act",
@@ -178,12 +178,23 @@
       ]
     },
     "F1-HE": {
-      "agent": "hermes",
+      "agent": "hermes-asi",
       "fi": "F1-HE",
       "layer": "extensions",
-      "card_path": "agent-cards/extensions/hermes/skills.json",
-      "skill_count": 37,
+      "card_path": "agents/hermes-asi/agent-card.json",
+      "skill_count": 54,
       "skills": [
+        "KERNEL-reality-skills",
+        "KERNEL-sovereign-recognize",
+        "KERNEL-session-inhabit",
+        "RSI-recursive-improvement",
+        "KERNEL-trinity-33",
+        "KERNEL-mcp-zen",
+        "KERNEL-quantum-runtime",
+        "KERNEL-qubit-substrate",
+        "KERNEL-mcp-builder",
+        "SHADOW-diagnostic",
+        "CLAIM-verification-gate",
         "cognitive-commands",
         "consult-external-llm",
         "deep-research",
@@ -220,7 +231,13 @@
         "person-intelligence-dossier",
         "news-research-briefing",
         "research-paper-writing",
-        "text-forensics"
+        "text-forensics",
+        "agent-role-mode-flagging",
+        "federation-checkup",
+        "agentic-integrity-observability",
+        "explore-before-collapse",
+        "negative-space-geometry",
+        "temporal-consequence-engine"
       ]
     },
     "F3-FG": {
@@ -307,7 +324,7 @@
       "agent": "opencode",
       "fi": "FI-001",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-001-opencode/skills.json",
+      "card_path": "agents/opencode/agent-card.json",
       "skill_count": 68,
       "skills": [
         "agentic-builder",
@@ -384,7 +401,7 @@
       "agent": "claude-code",
       "fi": "FI-002",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-002-claude-code/skills.json",
+      "card_path": "agents/_external/claude-code/agent-card.json",
       "skill_count": 18,
       "skills": [
         "FORGE-github",
@@ -411,8 +428,8 @@
       "agent": "kimi-code",
       "fi": "FI-003",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-003-kimi-code/skills.json",
-      "skill_count": 24,
+      "card_path": "agents/_external/kimi-code/agent-card.json",
+      "skill_count": 23,
       "skills": [
         "FORGE-github",
         "FORGE-github-ops",
@@ -436,16 +453,15 @@
         "kimi-rsi-apex-contrast",
         "kimi-skill-reflector",
         "KIMI_RSI_INIT_PROMPT",
-        "KIMI_HANDOVER_PROMPT",
-        "FORGE-init-intent-classify"
+        "KIMI_HANDOVER_PROMPT"
       ]
     },
     "FI-004": {
       "agent": "codex",
       "fi": "FI-004",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-004-codex/skills.json",
-      "skill_count": 19,
+      "card_path": "agents/_external/codex/agent-card.json",
+      "skill_count": 18,
       "skills": [
         "FORGE-github",
         "FORGE-github-ops",
@@ -462,7 +478,6 @@
         "APEX-f1-gate",
         "AGI-codex-chain-of-thought",
         "AGI-claude-xml-structured-reasoning",
-        "APEX-act",
         "ASI-agent-invariants",
         "FORGE-fastmcp",
         "FORGE-mcp-smoke-test"
@@ -472,7 +487,7 @@
       "agent": "copilot",
       "fi": "FI-005",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-005-copilot/skills.json",
+      "card_path": "agents/_external/copilot-cli/agent-card.json",
       "skill_count": 6,
       "skills": [
         "FORGE-github",
@@ -487,8 +502,8 @@
       "agent": "aider",
       "fi": "FI-006",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-006-aider/skills.json",
-      "skill_count": 16,
+      "card_path": "agents/_external/aider/agent-card.json",
+      "skill_count": 14,
       "skills": [
         "FORGE-github",
         "FORGE-github-ops",
@@ -503,17 +518,15 @@
         "FORGE-init-intent-classify",
         "APEX-act",
         "APEX-f1-gate",
-        "FORGE-readme-truth-check",
-        "FORGE-issue-triage",
-        "APEX-act"
+        "FORGE-issue-triage"
       ]
     },
     "FI-007": {
       "agent": "gemini-cli",
       "fi": "FI-007",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-007-gemini-cli/skills.json",
-      "skill_count": 16,
+      "card_path": "agents/_external/gemini-cli/agent-card.json",
+      "skill_count": 15,
       "skills": [
         "FORGE-github",
         "FORGE-github-ops",
@@ -529,16 +542,15 @@
         "APEX-act",
         "APEX-f1-gate",
         "FORGE-google-workspace",
-        "AGI-multimodal-bridge",
-        "FORGE-context-compress"
+        "AGI-multimodal-bridge"
       ]
     },
     "FI-008": {
       "agent": "grok-build",
       "fi": "FI-008",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-008-grok-build/skills.json",
-      "skill_count": 17,
+      "card_path": "agents/_external/grok-build/agent-card.json",
+      "skill_count": 16,
       "skills": [
         "FORGE-github",
         "FORGE-github-ops",
@@ -555,15 +567,14 @@
         "APEX-f1-gate",
         "FORGE-search",
         "FORGE-seek",
-        "deep-research",
-        "FORGE-context-compress"
+        "deep-research"
       ]
     },
     "FI-010": {
       "agent": "continue-cli",
       "fi": "FI-010",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-010-continue-cli/skills.json",
+      "card_path": "agents/_external/continue-cli/agent-card.json",
       "skill_count": 5,
       "skills": [
         "FORGE-github",
@@ -577,7 +588,7 @@
       "agent": "qwen-code",
       "fi": "FI-011",
       "layer": "harnesses",
-      "card_path": "agent-cards/harnesses/fi-011-qwen-code/skills.json",
+      "card_path": "agents/_external/qwen-code/agent-card.json",
       "skill_count": 19,
       "skills": [
         "FORGE-github",
@@ -778,10 +789,36 @@
         "human-envelope-architecture",
         "somatic-intelligence"
       ]
+    },
+    "FI-009": {
+      "agent": "agy",
+      "fi": "FI-009",
+      "layer": "harnesses",
+      "card_path": "agents/_external/agy/agent-card.json",
+      "skill_count": 17,
+      "skills": [
+        "FORGE-github",
+        "FORGE-github-ops",
+        "FORGE-github-runbook",
+        "FORGE-precommit-gate",
+        "FORGE-precommit-review",
+        "FORGE-pr-review",
+        "FORGE-pr-governance",
+        "FORGE-readme-truth-check",
+        "FORGE-route-least-power",
+        "FORGE-context-compress",
+        "FORGE-init-intent-classify",
+        "APEX-act",
+        "APEX-f1-gate",
+        "FORGE-mcp-smoke-test",
+        "FORGE-fastmcp",
+        "AGI-codex-chain-of-thought",
+        "AGI-skill-unification"
+      ]
     }
   },
   "totals": {
-    "skill_entries": 537,
+    "skill_entries": 565,
     "unique_skills": [
       "AGI-claude-xml-structured-reasoning",
       "AGI-codex-chain-of-thought",
@@ -808,6 +845,7 @@
       "APEX-governance",
       "APEX-humility-godel",
       "APEX-mcp-federation",
+      "APEX-post-seal-runtime-verdict",
       "APEX-quantum-eureka",
       "ARCHIVE-GEOX-artifact-rigor",
       "ARCHIVE-vault-integrity",
@@ -892,12 +930,21 @@
       "HERMES-human-model",
       "KERNEL-mcp-builder",
       "KERNEL-mcp-zen",
+      "KERNEL-quantum-runtime",
+      "KERNEL-qubit-substrate",
+      "KERNEL-reality-skills",
+      "KERNEL-session-inhabit",
+      "KERNEL-sovereign-recognize",
+      "KERNEL-trinity-33",
       "KIMI_HANDOVER_PROMPT",
       "KIMI_RSI_INIT_PROMPT",
+      "RSI-recursive-improvement",
+      "SHADOW-diagnostic",
       "WELL-boundary-sense",
       "WELL-somatic-kernel",
       "agent-role-mode-flagging",
       "agentic-builder",
+      "agentic-integrity-observability",
       "akal-cognitive-invariants",
       "asi-readiness-audit-contract",
       "cognitive-commands",
@@ -909,8 +956,10 @@
       "dream-engine",
       "evidence-before-elegance",
       "executive-intelligence-briefing",
+      "explore-before-collapse",
       "external-wisdom-integration",
       "federated-skill-architecture",
+      "federation-checkup",
       "federation-sot-inventory",
       "forge-before-build",
       "geological-artifact-rigor",
@@ -947,6 +996,7 @@
       "measure-before-acting",
       "meta-cognitive-blindspot-audit",
       "meta-mesa-substrate-test",
+      "negative-space-geometry",
       "news-research-briefing",
       "node-inspect-debugger",
       "non-mutating-review-harness",
@@ -968,6 +1018,7 @@
       "telegram-forum-management",
       "telegram-group-relay",
       "telegram-security-audit",
+      "temporal-consequence-engine",
       "test-driven-development",
       "text-forensics",
       "uncertainty-routing-protocol",
@@ -977,10 +1028,9 @@
       "wealth-law-anthropology",
       "weekly-federation-deep-brief",
       "well-substrate-readiness",
-      "wisdom-scar-session-audit",
-      "APEX-post-seal-runtime-verdict"
+      "wisdom-scar-session-audit"
     ],
-    "unique_skill_count": 196
+    "unique_skill_count": 209
   },
   "meta_mesa_events": [
     {
@@ -1544,5 +1594,6 @@
       "contradictions_resolved": 3,
       "pending_server_side": 1
     }
-  }
+  },
+  "generated_by": "Hermes ASI \u2014 AAA federation skill zen alignment 2026-07-25"
 }

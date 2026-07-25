@@ -29,6 +29,13 @@
     "stateTransitionHistory": true,
     "extendedAgentCard": true
   },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "researcher",
+    "citizenship_forged": "2026-05-17"
+  },
   "defaultInputModes": [
     "text/plain",
     "application/json"

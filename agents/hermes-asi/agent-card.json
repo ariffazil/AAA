@@ -4,6 +4,18 @@
   "id": "hermes-asi",
   "name": "Hermes ASI",
   "class": "AAA-Core",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga — binds to 555-ASI cognitive ring",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "555-ASI",
+    "intelligence_tier": "ASI",
+    "authority_level": "sovereign-delegate",
+    "citizenship_forged": "2026-06-14T12:03:00+08:00"
+  },
   "bound_to": "AAA",
   "power_band": "semantic_routing_human_interface_federation_voice",
   "skills_prefix": [
