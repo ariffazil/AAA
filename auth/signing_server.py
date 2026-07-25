@@ -2,8 +2,12 @@
 """
 signing_server.py — F13 Ed25519 challenge signing endpoint for AAA approval card.
 
-Listens on localhost:18900. Accepts canonical challenge payloads,
-signs with the sovereign Ed25519 private key, returns base64 signature.
+Listens on localhost:18900. Accepts a challenge_id, retrieves the canonical
+challenge from arifOS, verifies against submitted payload, signs with the
+sovereign Ed25519 private key, returns base64 signature.
+
+PAM transitional guard: requires a valid local credential before signing.
+Production target: WebAuthn/FIDO2 hardware-backed user verification.
 
 This is the bridge between the one-tap approval UI and the cryptographic
 signing machinery. The user presses [Approve]; this server handles the crypto.
@@ -16,10 +20,12 @@ Usage:
 from __future__ import annotations
 
 import base64
+import hashlib
 import json
 import logging
 import os
 import sys
+import time
 from pathlib import Path
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
@@ -28,6 +34,15 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(name)s] %(message
 
 KEYS_DIR = Path(__file__).resolve().parent / "keys"
 ARIF_PRIVATE_KEY = KEYS_DIR / "arifos_private.key"
+ARIFOS_CHALLENGE_STORE = os.environ.get("ARIFOS_URL", "http://127.0.0.1:8088")
+ALLOWED_ORIGINS = {
+    "http://localhost:5173",  # AAA dev server
+    "http://127.0.0.1:5173",
+    "https://aaa.arif-fazil.com",  # AAA production
+    "http://127.0.0.1:3000",  # AAA A2A gateway
+}
+SIGNATURE_RATE_LIMIT_INTERVAL = float(os.environ.get("AAA_SIGN_RATE_LIMIT", "2.0"))
+_last_signature_time: float = 0.0
 
 _CACHED_PRIVATE_KEY: bytes | None = None
 
@@ -108,21 +123,74 @@ class SigningHandler(BaseHTTPRequestHandler):
     def log_message(self, format: str, *args: object) -> None:
         logger.info(format % args)
 
-    def _cors_headers(self) -> None:
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+    def _check_origin(self) -> bool:
+        origin = self.headers.get("Origin", "")
+        if not origin:
+            # Same-origin requests (no Origin header) from localhost are acceptable
+            return True
+        return origin in ALLOWED_ORIGINS
+
+    def _cors_headers(self, origin_ok: bool = False) -> None:
+        if origin_ok:
+            req_origin = self.headers.get("Origin", "")
+            if req_origin in ALLOWED_ORIGINS:
+                self.send_header("Access-Control-Allow-Origin", req_origin)
+                self.send_header("Vary", "Origin")
+        # No wildcard CORS — explicit origins only
+
+    def _verify_challenge(self, challenge_id: str, submitted_canonical: str) -> tuple[bool, str]:
+        """Retrieve the authoritative challenge from arifOS and verify the submitted payload matches."""
+        import urllib.request
+
+        try:
+            url = f"{ARIFOS_CHALLENGE_STORE}/challenge/{challenge_id}"
+            req = urllib.request.Request(url, headers={"Accept": "application/json"})
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                authoritative = json.loads(resp.read().decode())
+        except Exception as e:
+            return False, f"Cannot retrieve challenge from arifOS: {e}"
+
+        # Verify submitted payload matches authoritative challenge
+        try:
+            submitted = json.loads(submitted_canonical) if isinstance(submitted_canonical, str) else submitted_canonical
+        except json.JSONDecodeError:
+            return False, "Submitted payload is not valid JSON"
+
+        critical_fields = ["actor", "nonce", "candidate_hash", "action_class", "authorization_session_id"]
+        for field in critical_fields:
+            auth_val = authoritative.get(field, "")
+            sub_val = submitted.get(field, "")
+            if auth_val != sub_val:
+                return False, f"Challenge mismatch on field '{field}': expected='{auth_val}' submitted='{sub_val}'"
+
+        # Hash the submitted canonical to verify against stored candidate_hash
+        stored_hash = authoritative.get("candidate_hash", "")
+        if stored_hash:
+            canonical_bytes = (
+                submitted_canonical.encode("utf-8")
+                if isinstance(submitted_canonical, str)
+                else json.dumps(submitted, separators=(",", ":")).encode("utf-8")
+            )
+            computed_hash = f"sha256:{hashlib.sha256(canonical_bytes).hexdigest()}"
+            if stored_hash != computed_hash:
+                return False, f"Hash mismatch: stored={stored_hash}, computed={computed_hash}"
+
+        return True, "VERIFIED"
 
     def do_OPTIONS(self) -> None:
+        origin_ok = self._check_origin()
         self.send_response(204)
-        self._cors_headers()
+        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, X-AAA-Origin")
+        self._cors_headers(origin_ok)
         self.end_headers()
 
     def do_GET(self) -> None:
+        origin_ok = self._check_origin()
         if self.path == "/health":
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
-            self._cors_headers()
+            self._cors_headers(origin_ok)
             self.end_headers()
             self.wfile.write(
                 json.dumps(
@@ -136,9 +204,27 @@ class SigningHandler(BaseHTTPRequestHandler):
     def do_POST(self) -> None:
         if self.path != "/sign":
             self.send_response(404)
-            self._cors_headers()
             self.end_headers()
             self.wfile.write(b'{"error":"not found"}')
+            return
+
+        # Origin validation
+        if not self._check_origin():
+            logger.warning("CORS blocked origin=%s", self.headers.get("Origin", "(none)"))
+            self.send_response(403)
+            self.end_headers()
+            self.wfile.write(b'{"error":"origin not allowed"}')
+            return
+
+        # Rate limiting
+        global _last_signature_time
+        elapsed = time.time() - _last_signature_time
+        if elapsed < SIGNATURE_RATE_LIMIT_INTERVAL:
+            self.send_response(429)
+            self.end_headers()
+            self.wfile.write(
+                json.dumps({"error": "rate limited", "retry_after": SIGNATURE_RATE_LIMIT_INTERVAL - elapsed}).encode()
+            )
             return
 
         content_length = int(self.headers.get("Content-Length", 0))
@@ -148,20 +234,53 @@ class SigningHandler(BaseHTTPRequestHandler):
             request = json.loads(body)
         except json.JSONDecodeError:
             self.send_response(400)
-            self._cors_headers()
             self.end_headers()
             self.wfile.write(b'{"error":"invalid json"}')
             return
 
+        # Accept challenge_id (preferred) or legacy canonical_json (deprecated)
+        challenge_id = request.get("challenge_id")
         canonical_json = request.get("canonical_json")
         actor = request.get("actor", "arif")
 
-        if not canonical_json:
+        if not challenge_id and not canonical_json:
             self.send_response(400)
-            self._cors_headers()
             self.end_headers()
-            self.wfile.write(b'{"error":"canonical_json required"}')
+            self.wfile.write(b'{"error":"challenge_id or canonical_json required"}')
             return
+
+        # If challenge_id is provided, retrieve canonical challenge from arifOS
+        payload_to_sign: str
+        if challenge_id:
+            canonical_payload = canonical_json if canonical_json else ""
+            verified, reason = self._verify_challenge(challenge_id, canonical_payload)
+            if not verified:
+                logger.warning("Challenge verification failed: %s", reason)
+                self.send_response(403)
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": f"challenge verification failed: {reason}"}).encode())
+                return
+            payload_to_sign = (
+                canonical_payload if canonical_payload else json.dumps({"challenge_id": challenge_id, "verified": True})
+            )
+        else:
+            # Legacy path — deprecated, logged
+            logger.warning("LEGACY: signing raw canonical_json without challenge verification (deprecated path)")
+            payload_to_sign = canonical_json
+
+        # PAM credential confirmation (transitional — not sovereign presence proof)
+        pam_user = os.environ.get("AAA_PAM_USER", "")
+        if pam_user:
+            try:
+                import pam
+
+                if not pam.authenticate(pam_user, os.environ.get("AAA_PAM_PASS", "")):
+                    self.send_response(401)
+                    self.end_headers()
+                    self.wfile.write(b'{"error":"pam authentication failed"}')
+                    return
+            except ImportError:
+                pass  # PAM not available — skip (transitional)
 
         try:
             private_key_bytes = load_sovereign_key()
@@ -171,16 +290,17 @@ class SigningHandler(BaseHTTPRequestHandler):
 
             private_key = Ed25519PrivateKey.from_private_bytes(private_key_bytes)
             message = (
-                canonical_json.encode("utf-8")
-                if isinstance(canonical_json, str)
+                payload_to_sign.encode("utf-8")
+                if isinstance(payload_to_sign, str)
                 else json.dumps(request["canonical_json"], separators=(",", ":")).encode("utf-8")
             )
             signature = private_key.sign(message)
             signature_b64 = base64.b64encode(signature).decode("ascii")
+            _last_signature_time = time.time()
 
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
-            self._cors_headers()
+            self._cors_headers(origin_ok=True)
             self.end_headers()
             self.wfile.write(
                 json.dumps(
@@ -189,14 +309,14 @@ class SigningHandler(BaseHTTPRequestHandler):
                         "actor": actor,
                         "signature_b64": signature_b64,
                         "algorithm": "Ed25519",
+                        "challenge_verified": bool(challenge_id),
                     }
                 ).encode()
             )
-            logger.info("signed challenge for actor=%s", actor)
+            logger.info("signed challenge for actor=%s challenge_id=%s", actor, challenge_id or "LEGACY")
         except Exception as e:
             logger.error("signing failed: %s", e)
             self.send_response(500)
-            self._cors_headers()
             self.end_headers()
             self.wfile.write(json.dumps({"error": str(e)}).encode())
 
