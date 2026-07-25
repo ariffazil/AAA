@@ -873,51 +873,22 @@ Every AAA agent, on session start, MUST:
 
 **INIT receipt emitted:** `INIT::{session_id}::actor={actor_id}::fq={fq}::organs={n}/6`
 
-### 18.2 SEAL — Mandatory Session-End Sequence (all agents)
+### 18.2 SEAL — The Constitutional Exhalation (Unified 2026-07-25)
 
-Every AAA agent, at session end, MUST:
+> **THE SEAL DOOR FACING OUT.** The canonical seal ceremony for ALL AAA agents lives in ONE place:
+>
+> **→ `/root/AAA/prompts/SEAL.md` ← Load this at session end.**
+>
+> Sealing procedure previously lived here. It has been unified into `SEAL.md` per the Init/Seal Unification doctrine (2026-07-25). That file contains: the zen of seal, the 6-step ceremony (RSI cycle → cooling ledger → bind session tokens → seal to /999 → verify → close FQ), tiered seal classes (session.ledger / VAULT999), anti-patterns, and floor alignment.
 
-```
-1. RSI CYCLE — trace → diagnose → remediate → ledger
-   → Write to /root/.local/share/arifos/rsi-ledger.jsonl
+**Every AAA agent, at session end, MUST:**
+1. Load `/root/AAA/prompts/SEAL.md` (the ONE canonical seal ceremony)
+2. Execute the 6-step seal ceremony
+3. Verify closure: `curl https://arif-fazil.com/999/verify`
 
-2. COOLING LEDGER — if mutations were performed
-   → Insert into Supabase cooling_ledger_entries
+**SEAL receipt emitted:** `SEAL::{session_id}::seq={seq}::tier={tier}`
 
-3. forge_session_init(actor_id="arif") — get session tokens
-   → Returns session_id + session_token + lease_id
-
-4. forge_vault(mode="write", session_token, lease_id, ...) — SEAL TO /999
-   → name: descriptive task name
-   → content: summary of what was done
-   → reason: "AUTONOMOUS_SESSION_SEAL"
-   → tier: "session.ledger"   ← autonomous sessions (1 witness: AI agent)
-   → category: "session.seal"
-   
-   NOTE: tier="VAULT999" is reserved for deployment, constitutional, or
-   irreversible seals requiring full Tri-Witness (3+ witnesses).
-   See §18.2a for tiered seal classes.
-
-5. VERIFY SEAL — confirm it landed at /999
-   → curl https://arif-fazil.com/999/verify → head updated
-
-6. UPDATE FQ — write final state to flow_state.json
-   → /root/AAA/state/flow_state.json updated with final FQ
-```
-
-**SEAL receipt emitted:** `SEAL::{session_id}::seq={seq}::fq={fq}`
-
-### 18.2a Tiered Seal Classes (Ratified 2026-07-25)
-
-| Tier | Witnesses | Use Case | Ceiling |
-|------|:---------:|----------|---------|
-| **session.ledger** | 1 (AI agent) | Routine session-close ledger append | DEGRADED → no cap |
-| **session.seal** | 1 (AI agent) | Routine session-close (alias) | DEGRADED → no cap |
-| **VAULT999** | 3+ (Tri-Witness) | Deployment, constitutional, irreversible | PARTIAL → no cap |
-
-This resolves the §18.2 collision: autonomous sessions can always close
-legally at session.ledger tier, while the witness ceiling still protects
-high-stakes VAULT999 seals.
+**No agent defines its own seal procedure.** Per-agent files must reference `SEAL.md` — they must NOT duplicate seal steps. The kernel enforces the floor. The prompt is one. The door is one.
 
 ### 18.3 Contract Enforcement
 
