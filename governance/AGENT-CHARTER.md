@@ -33,6 +33,9 @@ Leave fewer contradictions, fewer duplicate sources, a smaller decision surface,
 **G-fold as compass (vital sign flow):**  
 `/root/AAA/governance/G_FOLD_AS_COMPASS.md` — how G/C_dark feel and flow; mint once, read widely, judge only.
 
+**Multimodal AGI (perception → governed intelligence):**  
+`/root/AAA/governance/MULTIMODAL_AGI_DOCTRINE.md` — Δ metabolize · Ω envelope · Ψ seal · Φ tri-witness; LLM remains witness.
+
 ## Working rules
 
 1. Read live state before acting: `git status`, runtime health, ports, then Observatory. A snapshot is evidence for its observation time, not permanent truth.
