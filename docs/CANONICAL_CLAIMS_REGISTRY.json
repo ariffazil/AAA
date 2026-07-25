@@ -1,0 +1,107 @@
+{
+  "$schema": "arifos://schema/canonical-claims/v1",
+  "SOT": "2026-07-25",
+  "seal_seq": "fed-phase-7-zen",
+  "description": "Single source of truth for all public-facing claims across the arifOS Federation. Every README, docs page, and badge must match this registry. Drift = alert.",
+
+  "organs": {
+    "arifOS": {
+      "identity": "Constitutional governance kernel — judges, seals, routes. NEVER executes.",
+      "role": "ROOT",
+      "layer": "L1",
+      "port": 8088,
+      "public_mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+      "public_tool_count": 8,
+      "public_tool_prefix": "arif_",
+      "total_tools_declared": 48,
+      "stack": "Python 3.12, FastMCP, Pydantic",
+      "license": "AGPL-3.0",
+      "systemd_unit": "arifos.service",
+      "repo": "ariffazil/arifos"
+    },
+    "A-FORGE": {
+      "identity": "Governed execution shell — executes after SEAL. NEVER adjudicates.",
+      "role": "EXECUTIVE",
+      "layer": "L2",
+      "ports": [7071, 7072],
+      "public_mcp_endpoint": "https://mcp.arif-fazil.com/mcp",
+      "public_tool_prefix": "forge_",
+      "stack": "TypeScript, Node 22, Express, Zod",
+      "license": "MIT",
+      "systemd_unit": "a-forge-mcp.service",
+      "repo": "ariffazil/A-FORGE"
+    },
+    "AAA": {
+      "identity": "Cockpit, registry, A2A coordination — displays and routes. NEVER judges or executes.",
+      "role": "COCKPIT",
+      "layer": "L3",
+      "port": 3001,
+      "public_endpoint": "https://aaa.arif-fazil.com",
+      "stack": "React 19, Vite, TypeScript ESM",
+      "license": "MIT",
+      "systemd_unit": "aaa-a2a.service",
+      "repo": "ariffazil/AAA"
+    },
+    "GEOX": {
+      "identity": "Earth intelligence — computes evidence. NEVER decides.",
+      "role": "EARTH",
+      "layer": "L4",
+      "port": 8081,
+      "public_mcp_endpoint": "https://geox.arif-fazil.com/mcp",
+      "public_tool_prefix": "geox_",
+      "stack": "Python 3.12",
+      "license": "BSL-1.1",
+      "systemd_unit": "geox-mcp.service",
+      "repo": "ariffazil/geox"
+    },
+    "WEALTH": {
+      "identity": "Capital intelligence — computes math. NEVER allocates.",
+      "role": "CAPITAL",
+      "layer": "L5",
+      "port": 18082,
+      "public_mcp_endpoint": "https://wealth.arif-fazil.com/mcp",
+      "public_tool_prefix": "capital_",
+      "stack": "Python + Node hybrid",
+      "license": "AGPL-3.0",
+      "systemd_unit": "wealth-organ.service",
+      "repo": "ariffazil/wealth"
+    },
+    "WELL": {
+      "identity": "Vitality guard — reflects readiness. NEVER diagnoses.",
+      "role": "VITALITY",
+      "layer": "L6",
+      "port": 18083,
+      "public_mcp_endpoint": "https://well.arif-fazil.com/mcp",
+      "public_tool_prefix": "well_",
+      "stack": "Python",
+      "license": "BSL",
+      "systemd_unit": "well.service",
+      "repo": "ariffazil/well"
+    }
+  },
+
+  "cross_cutting": {
+    "vault999": {
+      "identity": "Append-only, hash-chained immutable ledger",
+      "owner": "arifOS",
+      "write_path": "arif_seal (999) only",
+      "canonical_path": "/root/arifOS/VAULT999/outcomes.jsonl"
+    },
+    "floors": {
+      "count": 13,
+      "names": ["AMANAH", "TRUTH", "TRI-WITNESS", "CLARITY", "PEACE²", "EMPATHY", "HUMILITY", "GENIUS", "ANTI-HANTU", "ONTOLOGY", "AUDITABILITY", "INJECTION", "SOVEREIGN"],
+      "hard_floors": ["F1", "F2", "F4", "F7", "F9", "F10", "F11", "F12", "F13"],
+      "soft_floors": ["F5", "F6"],
+      "derived_floors": ["F3", "F8"]
+    },
+    "authority_chain": "AAA routes → arifOS judges → A-FORGE executes → VAULT999 records → Arif (F13) vetoes",
+    "sovereign": "Muhammad Arif bin Fazil — F13 SOVEREIGN — final veto, no bypass",
+    "governing_principle": "No organ may seal without arifOS. No organ may self-authorize mutation."
+  },
+
+  "drift_rules": {
+    "VOID_class": ["constitutional authority drift", "wrong judge/executor ownership", "incorrect F13 semantics", "VAULT999 write claim outside arifOS"],
+    "HOLD_class": ["tool count mismatch", "port mismatch", "endpoint URL mismatch", "license mismatch"],
+    "CAUTION_class": ["stale SOT date", "wording inconsistencies", "missing docs backlinks"]
+  }
+}
