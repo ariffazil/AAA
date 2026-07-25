@@ -49,7 +49,9 @@ It becomes empirical only when:
 2. measured **before and after** changes,  
 3. and the claim \(\Delta H_{code} < 0\) is **capable of being falsified**.
 
-Δ–Ω–Ψ remains a **conceptual coordinate system**, not physical law.
+Δ–Ω–Ψ are **architectural responsibilities**, not languages and not physical law.  
+Python / TypeScript / Rust are **preferred materials** (see also `ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md` v1.1).  
+Surrounding an LLM with three languages does **not** make those languages components of intelligence or AGI.
 
 ---
 

@@ -13,7 +13,7 @@ Leave fewer contradictions, fewer duplicate sources, a smaller decision surface,
 `/root/AAA/governance/CODEX_AGENT_BEHAVIORAL_CONTRACT.md` — default territories (not absolute bans); G-fold via `arif_think(mode='apex')`; entropy only when \(\Delta H_{code}\) measured. F13 seal pending.
 
 **Vertical membrane (LLM → governed action):**  
-`/root/AAA/governance/ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md` — LLM is witness; arifOS is intercept; SEAL path only mutates; DRAFT.
+`/root/AAA/governance/ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md` v1.1 — model/harness/governance distinct; ΔΩΨ = responsibilities not languages; no AGI claim; DRAFT.
 
 ## Working rules
 

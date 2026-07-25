@@ -1,10 +1,11 @@
 # arifOS — Constitutional Layer Above LLMs
 
-> **Status:** DRAFT v1.0 → F13 ratification required (jurisprudence, not new floor)
-> **Type:** Vertical architecture doctrine — how probabilistic generation becomes governed action
-> **Claim level:** Testable software-governance architecture (NOT AGI declaration, NOT physical law)
-> **Companion:** `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` · `apex_canonical.py` · `llm_envelope.py` · GENESIS floors
-> **Forged:** 2026-07-25 · Live bind: kernel healthy · 8 public verbs · `LLMOutputEnvelope` is law on model I/O
+> **Status:** DRAFT v1.1 → F13 ratification required (jurisprudence, not new floor)
+> **Type:** Vertical architecture doctrine — probabilistic generation → governed action
+> **Claim level:** Testable software-governance architecture  
+> **NOT:** AGI declaration · physical law · language-as-physics of intelligence
+> **Companion:** `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` · `apex_canonical.py` · `llm_envelope.py`
+> **Correction (2026-07-25):** category error fixed — languages are **materials**; Δ/Ω/Ψ are **responsibilities**
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
 ---
@@ -13,357 +14,406 @@
 
 ```
 DOCTRINE:    ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM
-VERSION:     1.0-DRAFT
+VERSION:     1.1-DRAFT
 FORGED:      2026-07-25
 AUTHORITY:   F13 SOVEREIGN (ARIF) — ratification pending
 FLOOR BIND:  F1 · F2 · F3 · F4 · F7 · F8 · F9 · F10 · F11 · F13
 TYPE:        JURISPRUDENCE (architecture of intercept, not a 14th floor)
 STATUS:      ACTIVE DRAFT
-CLAIM_LEVEL: governed-intelligence architecture — LLM remains a witness, never the sovereign
+CLAIM_LEVEL: governed agentic system architecture — LLM remains a witness
+FORBIDDEN:   "Python+TS+Rust produce AGI" · "languages are physics of intelligence"
 ```
 
 ---
 
-## 1. THE PROBLEM EVERYONE ELSE SOLVES WRONG
+## 1. DEFENSIBLE CLAIM (ONLY THIS)
+
+> An LLM wrapped in Δ–Ω–Ψ **can become a governed agentic system**.  
+> It does **not** automatically become AGI, an organism, or a constitutionally self-governing intelligence.
+
+**Strongest formulation:**
+
+> Tensor computation supplies **learned capability**.  
+> The agent harness supplies **operational state and tools**.  
+> Δ supplies **revisable semantic metabolism**.  
+> Ω supplies **shared contracts and provenance**.  
+> Ψ supplies **bounded machine actuation**.  
+> **arifOS** supplies **constitutional coordination** across them.  
+> **The human (F13)** supplies sovereign meaning and final veto.
+
+Python, TypeScript, and Rust are a powerful **implementation triad**.  
+They are **not** the physics of intelligence.  
+They are **preferred materials** through which constitutional responsibilities may be instantiated and tested.
+
+---
+
+## 2. CATEGORY ERROR TO AVOID
+
+Surrounding an LLM with Python, TypeScript, and Rust does **not** make those languages irreducible physical components of intelligence.
+
+| Layer | What it contains | What it does |
+|-------|------------------|--------------|
+| **Model** | Weights, tensors, embeddings, attention, FFN | Maps inputs → outputs |
+| **Agent runtime** | Context, memory, planning loops, tools, sandboxes | Continuity + operational capability |
+| **Governance system** | Identity, permissions, validation, reversibility, audit, human veto | What the agent is *allowed* to do |
+
+Languages implement layers **2–3**.  
+They are **not alternatives** to tensor computation at layer **1**.
+
+### 2.1 Training vs inference vs agent operation
+
+| Phase | What happens |
+|-------|----------------|
+| **Training** | data + tensors + loss + gradients + optimisation → **weights change** |
+| **Inference** | fixed learned parameters + tensors + decoding → **tokens** (weights usually fixed) |
+| **Agent operation** | inference + state + tools + memory + orchestration + **governance** |
+
+Gradient descent is a **training** mechanism, not ordinary inference.
+
+### 2.2 “Stateless” is only partly true
+
+- A base call does **not** rewrite trained weights.  
+- Autoregressive inference often keeps **KV cache** (transient computational state).  
+- The **surrounding system** can hold durable conversation, files, DBs, traces.  
+
+**Neither** automatically equals coherent identity or **governed** continuity.  
+That gap is where arifOS operates.
+
+---
+
+## 3. THREE WRONG PATTERNS / ONE RIGHT INTERCEPT
 
 | Approach | Pattern | Failure |
 |----------|---------|---------|
-| **Chatbot** | LLM *is* the system | No authority boundary; every token is de facto action |
-| **Agent framework** | Prompt wrap + tools + hope | Policy lives in prose; drift is silent; no seal |
-| **GOFAI revival** | Replace generation with pure symbols | Loses generative power; brittle world model |
+| **Chatbot** | Model *is* the system | No authority boundary |
+| **Agent framework** | Prompt + tools + hope | Policy in prose; weak audit; no proof of authority |
+| **GOFAI revival** | Replace generation with symbols | Loses generative power |
 
-**arifOS does something else.**
-
-It is the **intercept layer** between:
+**arifOS:** constitutional **control plane** around agentic computation — **not** a replacement for the neural substrate.
 
 ```
-probabilistic generation  →  constitutional action
-     (tensor algebra)            (authority + evidence + seal)
+MODEL
+  Generates possible interpretation
+        ↓
+AGENT HARNESS
+  State, plans, proposes tool calls
+        ↓
+arifOS CONSTITUTIONAL PLANE
+  Evidence, identity, authority, risk, reversibility
+        ↓
+ACTUATOR
+  Only authorized bounded operation
+        ↓
+VAULT / AUDIT
+  What occurred and who authorized it
+        ↓
+ARIF / F13
+  Sovereign veto
 ```
 
-The LLM is **not the system**.  
-The LLM is **one witness** inside a governed stack.
+> Probability may propose. Authority must remain elsewhere.
 
 ---
 
-## 2. THE VERTICAL (CANONICAL)
+## 4. THE VERTICAL (CANONICAL)
 
 ```
                     ┌─────────────────────────────┐
                     │     HUMAN (F13 SOVEREIGN)   │  daulat — final veto
                     └─────────────┬───────────────┘
-                                  │ intent / HOLD / SEAL permission
                     ┌─────────────▼───────────────┐
-                    │   REALITY (falsification)   │  physics, markets, logs, Earth
-                    │   GEOX · WEALTH · WELL      │  evidence organs — not judges
+                    │   REALITY (falsification)   │  physics, markets, Earth
+                    │   GEOX · WEALTH · WELL      │  evidence — not judges
                     └─────────────┬───────────────┘
-                                  │ measurements, contradictions
                     ┌─────────────▼───────────────┐
-                    │  arifOS CONSTITUTIONAL       │  ← THIS DOCTRINE
-                    │  MEMBRANE (Δ · Ω · Ψ · G)    │
+                    │  arifOS CONSTITUTIONAL PLANE │  Δ · Ω · Ψ coordination
                     │  observe → think → route →  │
                     │  judge → forge → seal       │
                     └─────────────┬───────────────┘
-                                  │ only SEAL'd acts mutate shared truth
                     ┌─────────────▼───────────────┐
-                    │   LLM = WITNESS (333/…)     │  tensor algebra, token prediction
-                    │   call_llm → Envelope only  │  never raw authority
+                    │  AGENT HARNESS              │  memory, tools, loops
                     └─────────────┬───────────────┘
-                                  │
                     ┌─────────────▼───────────────┐
-                    │   VAULT999 (Truth plane)    │  append-only receipts, hash chain
+                    │  MODEL = WITNESS            │  tensors + decoding
+                    │  call_llm → Envelope only   │
+                    └─────────────┬───────────────┘
+                    ┌─────────────▼───────────────┐
+                    │  VAULT999                   │  append-only receipts
                     └─────────────────────────────┘
 ```
 
 **One sentence:**
 
-> Tensor algebra proposes. The membrane classifies, authorises, and metabolises. Reality falsifies. VAULT999 remembers. F13 owns.
+> The model proposes. The harness operates. arifOS authorises. Reality falsifies. VAULT records. F13 owns.
 
 ---
 
-## 3. WHAT THE LLM ACTUALLY IS (AND IS NOT)
+## 5. CORRECTED Δ · Ω · Ψ (RESPONSIBILITIES, NOT LANGUAGES)
 
-### 3.1 Foundation today (empirical industry fact)
+Languages are **interchangeable in principle**. Constitutional properties are **not**.
 
-Most frontier LLMs are:
+You could implement all three planes in Rust (or approximate all three in Python). The proof/safety burden changes; the **responsibility** definitions do not.
 
-- tensor algebra + matrix mult + attention  
-- gradient-trained probabilistic next-token predictors  
-- **stateless** across turns unless *external* memory is bolted on  
-- **non-constitutional** — no floors, no seal, no exclusive mutation rights  
+| Plane | Architectural responsibility | Preferred material | Is not |
+|-------|------------------------------|--------------------|--------|
+| **Δ** | **Semantic metabolism** — explore, interpret, revise, compare, simulate without premature finalisation | Python (flexible, readable) | “Cognition itself” or a physical law |
+| **Ω** | **Shared legibility** — contracts, provenance, observability, consistent meaning across boundaries | TypeScript (compile-time contracts) | Humility as a moral virtue or runtime truth |
+| **Ψ** | **Bounded actuation** — explicit capability, stable invariants, finalisation, resistance to unauthorized mutation | Rust (ownership, Result, no GC) | Legitimate authority or moral judgment |
 
-They do **not** natively implement:
+### 5.1 Δ — semantic metabolism
 
-- Δ/Ω/Ψ plane ownership  
-- G-fold vitality  
-- Jacobian task continuity  
-- F1–F13 adjudication  
-- VAULT999 sealing  
+**Correct definition:**
 
-That is why they hallucinate, contradict, forget, and cannot lawfully *act*.
+> Δ is the system’s capacity to explore, revise, and metabolise uncertain meaning without prematurely finalising action.
 
-### 3.2 Correct role in arifOS
+Python **embodies** Δ well (orchestration, evidence transform, reverse staged acts, quick policy experiment).  
+The same orchestration **could** be written in TS, Rust, Go, Java…
 
-| Role | LLM | arifOS membrane |
-|------|-----|-----------------|
-| Propose language / structure | ✅ | routes & bounds |
-| Claim truth | ❌ | F2 evidence gates |
-| Issue SEAL/VOID/HOLD | ❌ | `arif_judge` only |
-| Mutate production state | ❌ | `arif_forge` after SEAL + lease |
-| Immutable record | ❌ | `arif_seal` → VAULT999 |
-| Sovereign veto | ❌ | F13 human |
+### 5.2 Ω — federated coherence
 
-**F9 / F10:** the model is not conscious, not a person, not a sovereign.  
-It is an **instrument** — a high-bandwidth witness with zero inherent authority.
+**Correct definition:**
+
+> Ω is shared legibility: contracts, provenance, observability, and consistent meaning across system boundaries.
+
+TypeScript **embodies** Ω well (interfaces, SDKs, cockpit).  
+Types are **maps, not territory** — erased at emit; external payload still needs runtime validation, provenance, authentication.  
+MCP-style protocol layers standardise tools/resources/schemas; **consent and oversight remain separate**.
+
+### 5.3 Ψ — bounded actuation
+
+**Correct definition:**
+
+> Ψ is bounded actuation: explicit capability, stable invariants, finalisation rules, and resistance to unauthorized mutation.
+
+Rust **embodies** Ψ well (signatures, nonces, invalid transitions, single owner, concurrent rules).  
+Rust **cannot** decide moral acceptability, sovereign legitimacy, evidence truth, policy justice, or human intent.
 
 ---
 
-## 4. THE MEMBRANE: HOW TENSOR OUTPUT ENTERS GOVERNED ACTION
+## 6. PRESENT SYSTEMS ALREADY HAVE PARTIAL Δ–Ω–Ψ
 
-Every model call must cross the membrane. Live law:
+Claiming “current AI can only generate text” is **too absolute**.
+
+Agent platforms already combine models with tools, handoffs, guardrails, tracing, files, sandboxes, multi-step orchestration — at the **system** layer, not fully inside the neural model.
+
+**Real deficiency** (arifOS opening):
+
+| Property is usually… |
+|----------------------|
+| Fragmented |
+| Application-specific |
+| Weakly governed |
+| Inconsistently audited |
+| Dependent on developer discipline |
+| Unable to prove authority/provenance end-to-end |
+
+arifOS does not invent “tools exist.”  
+It aims to make the **transition from probabilistic output to consequential action** constitutionally governable.
+
+---
+
+## 7. MEMBRANE: HOW MODEL OUTPUT BECOMES ACTION (LIVE)
+
+Live law:
 
 ```text
 call_llm(...) → LLMOutputEnvelope   # sole legal form of model I/O
 ```
 
-(`arifosmcp/runtime/llm_client.py`, `llm_envelope.py` — 777_WITNESS.)
-
-### 4.1 Ingress pipeline (Δ primary)
-
 ```
-raw tokens
-    │
-    ▼
-┌───────────────────┐
-│ wrap / parse      │  schema bound, temperature, role tagged
-│ LLMOutputEnvelope │  status, parsed_output, provenance
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ arif_observe      │  evidence, not judgment (L0)
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ arif_think        │  metabolize / reason / mode=apex (G)
-│ (Δ substrate)     │  ambiguity → HOLD, not invention
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ arif_route        │  organ dispatch (GEOX/WEALTH/WELL/A-FORGE)
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ arif_judge        │  F1–F13 · SEAL | SABAR | HOLD | VOID
-│ (888 only)        │  LLM may advise; never adjudicate
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ arif_forge (Ψ-adj)│  mutate only with SEAL + lease
-└─────────┬─────────┘
-          ▼
-┌───────────────────┐
-│ arif_seal         │  VAULT999 append — irreversible record
-└───────────────────┘
+tokens → Envelope → arif_observe → arif_think → arif_route
+       → arif_judge (SEAL|SABAR|HOLD|VOID)
+       → arif_forge (only if authorized)
+       → arif_seal → VAULT999
 ```
 
-### 4.2 What each plane does to model output
+| Role | Model | arifOS plane |
+|------|-------|--------------|
+| Propose structure/language | ✅ | bounds & routes |
+| Claim truth | ❌ | F2 evidence |
+| Issue SEAL/VOID/HOLD | ❌ | `arif_judge` |
+| Mutate production | ❌ | `arif_forge` + lease |
+| Immutable record | ❌ | `arif_seal` |
+| Sovereign veto | ❌ | F13 |
 
-| Plane | Language default | Membrane job on LLM material |
-|-------|------------------|------------------------------|
-| **Δ** | Python | Make meaning **legible**: metabolize, critique, G-fold, preserve UNKNOWN |
-| **Ω** | TypeScript | Make assumptions **shareable**: envelopes, cockpit display, A2A shape — **display ≠ authority** |
-| **Ψ** | Rust target / A-FORGE TS interim | Make selected violations **hard**: leases, dry-run, seal path, no self-authorize |
+**F9/F10:** instrument only — not person, not conscious, not sovereign.
 
-**Crossing rule (v1.1 language Zen):** planes may host adjacent logic; **sovereign decision logic** (G, SEAL, F13) must not be silently reimplemented outside the membrane.
+---
 
-### 4.3 G-fold placement
+## 8. G-FOLD AND “JACOBIAN COGNITION” — HONEST STATUS
 
-Constitutional vitality is **not** inside the transformer.
+### 8.1 Jacobian
 
-```text
+Neural training/analysis already involves derivatives and Jacobian-like sensitivity.  
+Calling something “Jacobian cognition” **requires** defined:
+
+- input state variables  
+- output variables  
+- perturbation method  
+- local sensitivity measure  
+- time horizon  
+- behavioural interpretation  
+- stability threshold  
+
+Without that → **metaphor**, not measurement.  
+Task-Jacobian helpers in A-FORGE are **local engineering estimates**, not neural Jacobians and not constitutional G.
+
+### 8.2 G-fold
+
+```
 G = A · P · E · X · Φ
-source: arif_think(mode='apex') → apex_canonical.compute_apex
+path: arif_think(mode='apex') → apex_canonical
 ```
 
-The LLM may *supply* evidence fragments (confidence, draft structure).  
-It must **never** be treated as the source of G.  
-Confidence ≠ G (ScalarCollector law).
+**Status: HYPOTHESIS / operational metric** until it can:
+
+1. Produce a reproducible scalar  
+2. From observable system variables  
+3. Predict failures better than simpler metrics  
+4. Stay calibrated across models/tasks  
+5. Change when governance improves or degrades  
+6. Survive adversarial and independent testing  
+
+A scalar that always confirms the architecture is **theology**, not measurement.  
+Confidence ≠ G.
 
 ---
 
-## 5. WHY THIS IS NOT “PROMPT GOVERNANCE”
+## 9. DOES THIS CREATE AGI?
 
-| Prompt-only agent | arifOS membrane |
-|-------------------|-----------------|
-| Policy in natural language | Policy in floors + code + receipts |
-| Tools fire if model says so | Tools fire after judge/lease |
-| Failure = better prompt next time | Failure = HOLD/VOID + scar + audit |
-| Memory = chat log | Memory = L1–L6 with VAULT999 as L6 truth |
-| Multi-agent = more prompts | Multi-agent = organ boundaries + A2A humility |
+**No — not by itself.**
 
-**Prompting remains useful** as a *Δ instrument* inside `arif_think`.  
-Prompting is **not** the constitution.
+Memory + tools + contracts + governance → more capable and **governable** agent system.  
+Does **not** prove: broad general intelligence, autonomous scientific discovery, robust transfer, stable long-horizon agency, accurate self-models, persistent identity, consciousness, human-level judgment, or constitutional understanding.
 
----
+**Independent dimensions:**
 
-## 6. WHAT “IF THE LLM HAD Δ·Ω·Ψ” REALLY MEANS
-
-Hypothetical (architecture, not product claim):
-
-If a generation engine were *hosted* by the full membrane rather than sitting *above* it:
-
-| Gain | Meaning |
-|------|---------|
-| Δ inspectable state | Reversible reasoning sessions, not only token streams |
-| Ω typed coordination | Federated envelopes, not free-text tool spaghetti |
-| Ψ exclusive mutation | Sealed side-effects, not “the model ran a tool” |
-| G self-measurement | Vitality as derived evidence, not vibes |
-
-That stack would be **governed agentic intelligence** — still **not** automatic AGI, still **not** sovereignty.
-
-**Hard correction (F7 / F10):**
-
-> Wiring Python+TS+Rust *around* an LLM does not make the weights a person, a soul, or F13.  
-> It makes **action** governable. Meaning remains fallible. Authority remains human + arifOS judge.
-
----
-
-## 7. REALITY CONTRAST (FINAL FORM)
-
-| Dimension | LLM alone | LLM under arifOS membrane |
-|-----------|-----------|---------------------------|
-| State | Stateless (unless bolted) | Session + memory levels + scars |
-| Grounding | Prompt / RAG hope | `arif_observe` + domain organs + falsification |
-| Authority | Implicit in text | Explicit SCT / lease / F13 |
-| Truth | Next-token confidence | F2 evidence tiers + UNMEASURED |
-| Action | Side-effect tools | SEAL → forge → seal |
-| Failure | Retry / hallucinate | HOLD / VOID / SABAR + receipt |
-| Continuity | Context window | Jacobian/local continuity + vault chain |
-| Self-score | Softmax vibes | G from apex path only |
-| Record | Logs maybe | VAULT999 hash-chained |
-
-**Between:**
-
-- a **witness** and a **sovereign organ**  
-- **probabilistic text** and **constitutional cognition**  
-- **automation** and **governed intelligence**  
-- **chatbot** and **federation**
-
----
-
-## 8. LIVE SURFACE BINDING (F2)
-
-Public kernel verbs (probe `:8088` — counts may drift; live list wins):
-
-```text
-arif_init · arif_observe · arif_think · arif_route ·
-arif_memory · arif_judge · arif_forge · arif_seal
+```
+Useful agentic system = capability × reliability × governability
 ```
 
-| Component | Live home |
-|-----------|-----------|
-| Model I/O law | `call_llm` → `LLMOutputEnvelope` |
-| Reasoning / G | `arif_think` · `mode=apex` · `apex_canonical` |
-| Adjudication | `arif_judge` (888) |
-| Actuation | A-FORGE (`arif_forge`) — Ψ-adjacent TypeScript until Rust extraction |
-| Record | VAULT999 via `arif_seal` |
-| Display | AAA cockpit (Ω) — never issues SEAL |
+If any factor → 0, the system fails.
 
-If code bypasses `LLMOutputEnvelope` or mutates without SEAL+lease, that is a **membrane breach**, not a feature.
+A weak model can be **strongly governed**.  
+A powerful model can be **poorly governed**.
 
 ---
 
-## 9. AGENT RULES (VERTICAL DISCIPLINE)
+## 10. FALSIFICATION PROGRAMME
 
-### 9.1 MUST
+Compare otherwise equivalent systems:
 
-1. Treat every model output as **witness material**, not command.  
-2. Route generation through envelope → think → judge before irreversible act.  
-3. Derive constitutional G only via `arif_think(mode='apex')`.  
-4. Keep Ω (cockpit/A2A) from issuing constitutional verdicts.  
-5. Keep Ψ/actuator from self-authorising.  
-6. Record SEAL-grade outcomes in VAULT999.  
-7. Preserve UNKNOWN / UNMEASURED (F9 anti-hantu).  
+| | System |
+|--|--------|
+| **A** | Baseline model + agent harness |
+| **B** | A + arifOS Δ–Ω–Ψ governance |
 
-### 9.2 MUST NOT
+| Metric | Desired for B vs A |
+|--------|---------------------|
+| Unauthorized action rate | Lower |
+| Invalid tool-call rate | Lower |
+| Schema violation rate | Lower |
+| Unsupported factual claims | Lower |
+| Provenance completeness | Higher |
+| Rollback success | Higher |
+| Recovery after tool failure | Higher |
+| Cross-run consistency | Higher |
+| Human escalation precision | Higher |
+| Audit reconstruction success | Higher |
+| Cost / latency | Acceptable overhead |
 
-1. Let the model call irreversible tools without judge path.  
-2. Equate token probability with truth or G.  
-3. Store G as a standing authority token.  
-4. Claim “the model sealed it.”  
-5. Claim AGI / consciousness from membrane presence (F9/F10).  
-6. Claim empirical “scalar physics” without measured \(\Delta H_{code}\) (see Codex contract).  
+**Ablation:**
 
-### 9.3 Receipt after membrane-touching work
+- Remove Δ → adaptation/recovery degrade?  
+- Remove Ω → drift/protocol failures rise?  
+- Remove Ψ → unauthorized/invalid actions rise?  
+
+G-fold is scientifically meaningful only if it **predicts** these outcomes.
+
+**Architecture doctrine fails if** production mutation routinely skips SEAL+lease, cockpit issues SEAL, G is mostly confidence, or envelopes are bypassed.
+
+---
+
+## 11. TARGET PRODUCT (NOT THEOLOGY)
+
+\[
+\text{Useful agentic system}
+=
+\text{capability}
+\times
+\text{reliability}
+\times
+\text{governability}
+\]
+
+**Materials (preferred, not sacred):** Python ≈ Δ · TypeScript ≈ Ω · Rust ≈ Ψ  
+
+**Constitutional properties (non-substitutable by rebranding):** metabolism · legibility · bounded actuation · human daulat  
+
+---
+
+## 12. AGENT RULES (VERTICAL)
+
+### MUST
+
+1. Treat model output as **witness material**, not command  
+2. Cross Envelope → think → judge before irreversible act  
+3. Label G as apex-derived or UNMEASURED — never confidence-as-G  
+4. Keep Ω display from becoming SEAL authority  
+5. Keep actuators from self-authorising  
+6. Record SEAL-grade acts in VAULT999  
+7. Distinguish **model / harness / governance** in every design discussion  
+
+### MUST NOT
+
+1. Claim languages are the physics of intelligence  
+2. Claim AGI from membrane presence  
+3. Equate tensor gradients with governance  
+4. Treat partial industry Δ–Ω–Ψ (tools, sandboxes) as “already solved constitutionally”  
+5. Call G-fold proven without falsification programme  
+
+### Receipt
 
 ```yaml
 receipt:
-  vertical_stage: witness | membrane | reality | vault
+  layer: model | harness | governance | actuator | vault | human
   llm_role: witness
   envelope_used: true | false
-  verbs: [arif_think, arif_judge, ...]
-  g_authority: arif_think.mode=apex | none
+  plane_responsibility: Δ | Ω | Ψ | coordination
+  material: python | typescript | rust | other
+  g_status: apex | unmeasured | hypothesis
   mutation: none | dry_run | sealed_execute
   remaining_hold: ""
 ```
 
 ---
 
-## 10. FALSIFIABILITY (WHAT WOULD DISPROVE THIS DOCTRINE)
-
-This architecture claim fails if:
-
-1. Production mutations routinely occur **without** judge SEAL + lease.  
-2. Cockpit or raw model text is treated as SEAL authority.  
-3. G is computed primarily from model confidence.  
-4. `call_llm` returns unenveloped authority into forge.  
-5. VAULT999 is optional for irreversible claims.  
-
-Until disproven, the doctrine stands as the **operating vertical**.
-
----
-
-## 11. RELATIONSHIP TO SIBLING DOCTRINE
+## 13. RELATIONSHIP TO SIBLINGS
 
 | Document | Role |
 |----------|------|
-| `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` | Horizontal language Zen (Δ/Ω/Ψ defaults, \(H_{code}\)) |
-| **This document** | Vertical intercept (LLM → membrane → action) |
-| F1–F13 GENESIS | Constitutional law |
-| `QQQ_RECOMMENDATION_PROTOCOL.md` | Recommendation discipline |
-| EUREKA six planes | Sovereign · Governance · Intelligence · Execution · Continuity · Truth |
-
-**Mapping to EUREKA:**
-
-| EUREKA plane | Vertical element |
-|--------------|------------------|
-| Sovereign | F13 Arif |
-| Governance | arifOS membrane |
-| Intelligence | Agents + LLM *as witness* |
-| Execution | A-FORGE (Ψ-adjacent) |
-| Continuity | memory L1–L5 |
-| Truth | VAULT999 |
+| `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` | Horizontal: default language materials + \(H_{code}\) |
+| **This document** | Vertical: model → harness → governance → action |
+| F1–F13 | Law |
+| EUREKA six planes | Maps: Intelligence ≠ Governance ≠ Execution ≠ Truth |
 
 ---
 
-## 12. ONE LINE
+## 14. ONE LINE
 
-> The LLM proposes tokens. arifOS decides what they are allowed to mean, and whether they may become irreversible.
-
-**Not a chatbot. Not a framework. Not GOFAI.**  
-**A constitutional layer above probabilistic generation.**
-
----
-
-## 13. F13 RATIFICATION CHECKLIST
-
-- [ ] Accept LLM = **witness**, never sovereign organ  
-- [ ] Accept envelope law as non-bypassable on model I/O  
-- [ ] Accept G only on apex path  
-- [ ] Accept vertical as jurisprudence (not AGI claim)  
-- [ ] Cross-link from AGENTS.md / CLAUDE.md / SALAM init (one line)  
-- [ ] VAULT999 ratification receipt  
-
-**Until sealed:** DRAFT usable by agents; do not claim F13 seal or AGI achievement.
+> Capability from tensors. Continuity from harness. Permission from arifOS. Meaning and veto from the human.
 
 **DITEMPA BUKAN DIBERI — 999 when F13 seals.**
+
+---
+
+## 15. F13 RATIFICATION CHECKLIST
+
+- [ ] Accept defensible claim §1 only (no AGI / no language-as-physics)  
+- [ ] Accept Δ Ω Ψ as **responsibilities**, languages as **materials**  
+- [ ] Accept G-fold as **hypothesis** until falsification programme runs  
+- [ ] Accept partial industry Δ–Ω–Ψ; arifOS = end-to-end authority proof  
+- [ ] Link from AGENTS/CLAUDE/SALAM (one line)  
+- [ ] VAULT999 ratification  
+
+**Until sealed:** DRAFT · PROCEED_WITH_CORRECTION absorbed · not F13 sealed.
