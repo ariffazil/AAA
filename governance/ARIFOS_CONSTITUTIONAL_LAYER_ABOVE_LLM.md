@@ -4,7 +4,7 @@
 > **Type:** Vertical architecture doctrine — probabilistic generation → governed action
 > **Claim level:** Testable software-governance architecture  
 > **NOT:** AGI declaration · physical law · language-as-physics of intelligence
-> **Companion:** `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` · `apex_canonical.py` · `llm_envelope.py`
+> **Companion:** `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` · `AAA_KNOWLEDGE_MATERIALS_HUMAN.md` (plain language) · `apex_canonical.py` · `llm_envelope.py`
 > **Correction (2026-07-25):** category error fixed — languages are **materials**; Δ/Ω/Ψ are **responsibilities**
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
