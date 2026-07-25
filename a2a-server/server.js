@@ -2601,23 +2601,35 @@ app.get('/health', async (req, res) => {
   res.setHeader('Pragma', 'no-cache');
   // T5 2026-07-17 — canonical 5-field federation header + organ payload
   let identityHash = 'UNAVAILABLE';
-  let gitCommit = 'UNAVAILABLE';
+  let deployedCommit = 'UNAVAILABLE';
+  let sourceCommit = 'UNAVAILABLE';
   try {
     const crypto = require('crypto');
     const idPath = '/root/AAA/identity.toml';
     if (fs.existsSync(idPath)) {
       identityHash = crypto.createHash('sha256').update(fs.readFileSync(idPath)).digest('hex');
     }
-    gitCommit = require('child_process').execSync('git -C /root/AAA rev-parse --short=7 HEAD', { timeout: 3000 }).toString().trim();
+    // Read deployed commit from deployment marker (single source of truth)
+    const markerPath = '/opt/aaa/app/.git_commit';
+    if (fs.existsSync(markerPath)) {
+      deployedCommit = fs.readFileSync(markerPath, 'utf8').trim().substring(0, 7);
+    }
   } catch (_) { /* identity optional for health */ }
-  if (gitCommit === 'UNAVAILABLE') {
-    try { gitCommit = fs.readFileSync('/root/AAA/.git_commit', 'utf8').trim(); } catch (_) {}
+  try {
+    sourceCommit = require('child_process').execSync('git -C /root/AAA rev-parse --short=7 HEAD', { timeout: 3000 }).toString().trim();
+  } catch (_) {}
+  if (sourceCommit === 'UNAVAILABLE') {
+    try { sourceCommit = fs.readFileSync('/root/AAA/.git_commit', 'utf8').trim().substring(0, 7); } catch (_) {}
   }
+  const deploymentDrift = deployedCommit !== 'UNAVAILABLE' && sourceCommit !== 'UNAVAILABLE' && deployedCommit !== sourceCommit;
+  const healthStatus = (deployedCommit === 'UNAVAILABLE' || deploymentDrift) ? 'degraded' : 'healthy';
   res.json({
-    status: 'healthy',
+    status: healthStatus,
     identity: identityHash,
     identity_hash: identityHash,
-    git_commit: gitCommit,
+    deployed_commit: deployedCommit,
+    source_commit: sourceCommit,
+    deployment_drift: deploymentDrift,
     apex_scalars: {
       G: { value: null, status: 'UNMEASURED' },
       C_dark: { value: null, status: 'UNMEASURED' },
