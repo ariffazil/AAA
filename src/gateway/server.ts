@@ -16,6 +16,7 @@ import https from 'node:https';
 import http from 'node:http';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 
 function getA2ADiscoveryContract() {
   const card = getAgentCard();
@@ -491,20 +492,31 @@ app.get("/mcp-apps/:app_id", async (req: Request, res: Response) => {
     res.setHeader('Pragma', 'no-cache');
     const degraded = cachedConformance?.summary?.overallVerdict === 'DUPLICATE_DETECTED' ||
                      (cachedConformance?.summary?.organsAligned ?? 0) < (cachedConformance?.summary?.totalOrgans ?? 5);
+    const DEPLOY_ROOT = '/opt/aaa/app';
     let identityHash = 'UNAVAILABLE';
-    let gitCommit = 'UNAVAILABLE';
+    let deployedCommit = 'UNAVAILABLE';
+    let sourceCommit = 'UNAVAILABLE';
     try {
-      gitCommit = execFileSync('git', ['-C', '/root/AAA', 'rev-parse', '--short=7', 'HEAD'], { timeout: 3000 }).toString().trim();
-      identityHash = createHash('sha256').update(gitCommit + '/root/AAA').digest('hex').substring(0, 16);
+      deployedCommit = readFileSync(`${DEPLOY_ROOT}/.git_commit`, 'utf8').trim().substring(0, 7);
+      identityHash = createHash('sha256').update(deployedCommit + '/root/AAA').digest('hex').substring(0, 16);
     } catch {
-      // Keep explicit UNAVAILABLE defaults when git metadata cannot be read.
+      // Fall back to source repo if deployed marker missing
+      try {
+        sourceCommit = execFileSync('git', ['-C', '/root/AAA', 'rev-parse', '--short=7', 'HEAD'], { timeout: 3000 }).toString().trim();
+        identityHash = createHash('sha256').update(sourceCommit + '/root/AAA').digest('hex').substring(0, 16);
+      } catch {
+        // Keep explicit UNAVAILABLE defaults when nothing can be read.
+      }
     }
+    const deploymentDrift = deployedCommit !== 'UNAVAILABLE' && sourceCommit !== 'UNAVAILABLE' && deployedCommit !== sourceCommit;
 
     res.json({
-      status: degraded ? 'degraded' : 'healthy',
+      status: degraded || deploymentDrift ? 'degraded' : 'healthy',
       identity: identityHash,
       identity_hash: identityHash,
-      git_commit: gitCommit,
+      deployed_commit: deployedCommit,
+      source_commit: sourceCommit,
+      deployment_drift: deploymentDrift,
       protocol: 'A2A',
       version: '1.0.0',
       federation_schema_version: '2.0.0',
