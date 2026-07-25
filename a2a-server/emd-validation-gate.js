@@ -2,22 +2,26 @@
 /**
  * EMD Validation Gate — A2A External Payload Sanitizer
  * ═══════════════════════════════════════════════════════════════
- * 
+ *
+ * Ω-PLANE ONLY (H3 2026-07-25): transport hygiene, not constitutional judgment.
+ * Sanitizes external payloads before they reach arifOS. Does NOT mint G.
+ * Does NOT SEAL. Kernel still adjudicates via arif_judge.
+ *
  * Arif: "External A2A agents are opaque. Their outputs are unverified raw signals.
- *        Every external payload must pass through EMD decode + tri-witness before 
+ *        Every external payload must pass through EMD decode + tri-witness before
  *        it reaches the arifOS kernel."
- * 
+ *
  * This middleware intercepts incoming A2A messages from external peers and:
  *   1. Classifies the source (internal vs external)
  *   2. Strips claims from the message, labeling them OBS/DER/INT/SPEC
- *   3. Computes tri-witness score W³ = ∛(Human × AI × External)
- *   4. Blocks or downgrades payloads below constitutional thresholds
- *   5. Appends validation metadata to the request for downstream handlers
- * 
+ *   3. Computes wire-level W³ proxy = ∛(Human × AI × External) — local estimate
+ *   4. Blocks or downgrades payloads below transport thresholds
+ *   5. Appends validation metadata for downstream handlers
+ *
  * F2 TRUTH: Every claim labeled.
- * F3 WITNESS: Tri-witness required for SEAL-grade payloads.
+ * F3 WITNESS: Tri-witness shape required for SEAL-grade *claims* (kernel decides).
  * F12 INJECTION: External ≠ authority.
- * 
+ *
  * DITEMPA BUKAN DIBERI — Forged, Not Given.
  */
 

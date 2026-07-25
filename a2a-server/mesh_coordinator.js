@@ -2,9 +2,13 @@
  * AAA Mesh Coordinator — Loop Detector & Gradient Computer
  * ═══════════════════════════════════════════════════════════
  *
+ * Ω-PLANE ONLY (H3 2026-07-25): observability / cockpit feed.
  * Subscribes to governance events and organ heartbeats on NATS.
- * Detects compound patterns, computes gradient signals, and
- * publishes feedback into the mesh for AAA cockpit display.
+ * Detects compound patterns, computes gradient *signals for display*,
+ * and publishes feedback into the mesh for AAA cockpit.
+ *
+ * Does NOT compute constitutional G. Does NOT issue SEAL/VOID.
+ * Gradients are application_local telemetry, not kernel vitality.
  *
  * Forged: 2026-06-14 — P3 dynamic flow wiring
  * DITEMPA BUKAN DIBERI
