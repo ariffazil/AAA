@@ -3923,7 +3923,6 @@ app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware
 
 const { encodeGoalToTasks, buildJacobian } = require('./goal_decomposition');
 const { decodeTasksToEnvelopes } = require('./task_routing');
-const { initMetabolism, getMetabolismState } = require('./metabolizer_loop');
 
 app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
   try {
@@ -3937,7 +3936,6 @@ app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
       });
     }
 
-    // ── 1. Build Goal object ───────────────────────────────────────
     const G = {
       id: params?.goal_id || `g-${crypto.randomUUID().slice(0, 8)}`,
       actor: params?.actor || 'human',
@@ -3949,47 +3947,37 @@ app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
       source: params?.source || 'human',
     };
 
-    // ── 2. Encoder: G → T + J ─────────────────────────────────────
     const encoded = encodeGoalToTasks(G);
-    const J = buildJacobian(G, encoded.tasks);
+    const tasks = encoded.tasks || [];
+    const J = buildJacobian(G, tasks);
+    const routed = decodeTasksToEnvelopes(tasks, J, G);
 
-    // ── 3. Decoder: T + J → A2A envelopes ─────────────────────────
-    const routed = decodeTasksToEnvelopes(encoded.tasks, J, G);
-
-    // ── 4. Metabolizer: init session ───────────────────────────────
-    initMetabolism({ goal_id: G.id }, encoded.tasks, J);
-
-    // Log
-    console.log(`[Δ→Ω→Ψ] ${routed.envelopes.length} tasks from "${rawGoal.slice(0, 60)}"`);
+    console.log(`[Δ→Ω→Ψ] ${tasks.length} tasks from "${rawGoal.slice(0, 60)}"`);
 
     res.json({
       jsonrpc: '2.0', id: id || 1,
       result: {
-        pipeline: 'encoder→jacobian→decoder→metabolizer',
+        pipeline: 'encoder→jacobian→decoder',
         goal_id: G.id,
-        goal: rawGoal,
-        task_count: encoded.task_count,
-        tasks: encoded.tasks.map(t => ({
-          id: t.id, intent: t.intent, agent: t.agent,
-          ring: t.ring, skill: t.skill, priority: t.priority,
+        task_count: tasks.length,
+        tasks: tasks.map(t => ({
+          id: t.id, intent: t.name || t.intent, agent: t.agent,
+          ring: t.ring, skill: t.skill, priority: t.priority || 1,
           depends_on: t.depends_on,
         })),
         jacobian: {
-          fields: J.fields,
-          matrix: J.matrix.map((row, i) => ({
-            task: encoded.tasks[i]?.id,
-            sensitivities: row,
+          fields: J.fields || [],
+          matrix: (J.matrix || []).map((row, i) => ({
+            task: tasks[i]?.id, sensitivities: row,
           })),
         },
-        envelopes: routed.envelopes.map(e => ({
+        envelopes: (routed.envelopes || []).map(e => ({
           task_id: e.task_id, target: e.target,
           ring: e.ring, receipt_hash: e.receipt_hash,
         })),
-        dispatch_order: routed.dependency_order,
-        summary: routed.summary,
-        encoded_receipt: encoded.receipt,
+        dispatch_order: routed.dependency_order || [],
+        summary: routed.summary || { total: tasks.length },
         dispatch_receipt: routed.receipt,
-        metabolic_session: G.id,
       }
     });
   } catch (error) {
@@ -3999,18 +3987,6 @@ app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
       error: { code: -32603, message: error.message }
     });
   }
-});
-
-// ── GET /a2a/goal/:goalId/status — metabolizer status ──────────────────
-app.get('/a2a/goal/:goalId/status', (req, res) => {
-  const state = getMetabolismState(req.params.goalId);
-  if (!state) {
-    return res.status(404).json({
-      jsonrpc: '2.0', id: 1,
-      error: { code: -32001, message: `Goal ${req.params.goalId} not found or already sealed` }
-    });
-  }
-  res.json({ jsonrpc: '2.0', id: 1, result: state });
 });
 
 // ═══════════════════════════════════════════════════════════════════════════
