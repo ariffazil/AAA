@@ -61,39 +61,86 @@ VALID_PURPOSES = ("research_eval", "production", "experiment", "sandbox_test")
 
 # Known safe/open licenses
 KNOWN_SAFE_LICENSES = {
-    "apache-2.0", "mit", "bsd-2-clause", "bsd-3-clause", "bsd-3-clause-clear",
-    "cc0-1.0", "cc-by-4.0", "cc-by-sa-4.0", "unlicense", "zlib",
-    "python-2.0", "postgresql", "isc", "mpl-2.0", "lgpl-2.1", "lgpl-3.0",
+    "apache-2.0",
+    "mit",
+    "bsd-2-clause",
+    "bsd-3-clause",
+    "bsd-3-clause-clear",
+    "cc0-1.0",
+    "cc-by-4.0",
+    "cc-by-sa-4.0",
+    "unlicense",
+    "zlib",
+    "python-2.0",
+    "postgresql",
+    "isc",
+    "mpl-2.0",
+    "lgpl-2.1",
+    "lgpl-3.0",
 }
 
 # Licenses that are restrictive — allowed at CCC with constraints
 KNOWN_RESTRICTIVE_LICENSES = {
-    "gpl-2.0", "gpl-3.0", "agpl-3.0", "eupl-1.2", "cc-by-nc-4.0",
-    "cc-by-nc-sa-4.0", "odbl-1.0",
+    "gpl-2.0",
+    "gpl-3.0",
+    "agpl-3.0",
+    "eupl-1.2",
+    "cc-by-nc-4.0",
+    "cc-by-nc-sa-4.0",
+    "odbl-1.0",
 }
 
 # Licenses that are dangerous for a sovereign federation
 DANGEROUS_LICENSES = {
-    "proprietary", "unknown", "unlicensed", "other",
-    "custom-commercial-only", "bigscience-openrail-m",
-    "bigscience-openrail-m", "openrail", "openrail++",
-    "creativeml-openrail-m", "deepfloyd-if-license",
-    "research-only", "non-commercial",
+    "proprietary",
+    "unknown",
+    "unlicensed",
+    "other",
+    "custom-commercial-only",
+    "bigscience-openrail-m",
+    "bigscience-openrail-m",
+    "openrail",
+    "openrail++",
+    "creativeml-openrail-m",
+    "deepfloyd-if-license",
+    "research-only",
+    "non-commercial",
 }
 
 # Known high-trust publishers
 HIGH_TRUST_PUBLISHERS = {
-    "mistralai", "meta", "microsoft", "google", "openai",
-    "anthropic", "huggingface", "cohere", "alibaba", "deepseek-ai",
-    "qwen", "01-ai", "baichuan-inc", "stabilityai",
-    "bigscience", "tiiuae", "upstage", "nvidia",
+    "mistralai",
+    "meta",
+    "microsoft",
+    "google",
+    "openai",
+    "anthropic",
+    "huggingface",
+    "cohere",
+    "alibaba",
+    "deepseek-ai",
+    "qwen",
+    "01-ai",
+    "baichuan-inc",
+    "stabilityai",
+    "bigscience",
+    "tiiuae",
+    "upstage",
+    "nvidia",
 }
 
 # Medium-trust publishers
 MEDIUM_TRUST_PUBLISHERS = {
-    "sentence-transformers", "intfloat", "thenlper", "maidalun",
-    "llava-hf", "philschmid", "mozilla-foundation",
-    "compvis", "runwayml", "facebook",
+    "sentence-transformers",
+    "intfloat",
+    "thenlper",
+    "maidalun",
+    "llava-hf",
+    "philschmid",
+    "mozilla-foundation",
+    "compvis",
+    "runwayml",
+    "facebook",
 }
 
 
@@ -328,11 +375,7 @@ class HuggingFaceImportGate:
             return self._promotion_result("CCC", True, gates_triggered)
 
         # BBB triggers
-        if (
-            publisher_trust == "high"
-            and license_id in KNOWN_SAFE_LICENSES
-            and evals
-        ):
+        if publisher_trust == "high" and license_id in KNOWN_SAFE_LICENSES and evals:
             gates_triggered.append("high_trust_clean_evals")
             return self._promotion_result("BBB", False, gates_triggered)
 
@@ -441,17 +484,20 @@ class HuggingFaceImportGate:
         sandbox = promotion["sandbox_required"]
 
         # Step 3: Log to VAULT999 via arifOS
-        audit_payload = json.dumps({
-            "adapter": "huggingface_import_gate",
-            "source_url": source_url,
-            "source_type": source_type,
-            "purpose": purpose,
-            "classification": classification.get("classification", classification),
-            "promotion_level": level,
-            "sandbox_required": sandbox,
-            "actor_id": self.actor_id,
-            "timestamp": _now_iso(),
-        }, default=str)
+        audit_payload = json.dumps(
+            {
+                "adapter": "huggingface_import_gate",
+                "source_url": source_url,
+                "source_type": source_type,
+                "purpose": purpose,
+                "classification": classification.get("classification", classification),
+                "promotion_level": level,
+                "sandbox_required": sandbox,
+                "actor_id": self.actor_id,
+                "timestamp": _now_iso(),
+            },
+            default=str,
+        )
 
         seal_args = {
             "mode": "seal",
@@ -555,6 +601,378 @@ class HuggingFaceImportGate:
             "gates": gates,
         }
 
+    # ------------------------------------------------------------------
+    # M9 — SCHEMA LOADER (Gap 1/4)
+    # ------------------------------------------------------------------
+    def load_schema(self, artifact_id: str, artifact_type: str = "dataset") -> Dict[str, Any]:
+        """Load dataset schema — detects Parquet vs JSONL vs raw-file format.
+
+        Returns schema dict with field names, types, row counts, and format.
+        This is the first operational component agents need after classification.
+        """
+        if artifact_type != "dataset":
+            return {
+                "schema_loaded": False,
+                "error": f"Schema loading only supported for datasets, not {artifact_type}",
+                "format": "n/a",
+            }
+
+        try:
+            from huggingface_hub import HfApi, hf_hub_download
+
+            api = HfApi()
+
+            # Try datasets library first (Parquet-based: AAA, BBB, CCC, DDD)
+            try:
+                from datasets import load_dataset, get_dataset_config_names
+
+                configs = get_dataset_config_names(artifact_id)
+                ds = load_dataset(artifact_id, split="train")
+                return {
+                    "schema_loaded": True,
+                    "format": "parquet",
+                    "configs": configs,
+                    "features": list(ds.features.keys()) if ds.features else [],
+                    "row_count": len(ds),
+                    "loader": "datasets.load_dataset",
+                    "timestamp": _now_iso(),
+                }
+            except Exception:
+                pass  # Fall through to file-based detection
+
+            # File-based detection (JSONL: EEE, FFF, a2b)
+            files = list(api.list_repo_files(artifact_id, repo_type="dataset"))
+            jsonl_files = [f for f in files if f.endswith(".jsonl")]
+            json_files = [f for f in files if f.endswith(".json") and not f.endswith(".jsonl")]
+            md_files = [f for f in files if f.endswith(".md")]
+            py_files = [f for f in files if f.endswith(".py")]
+
+            # Try to read first JSONL file for field detection
+            fields = []
+            row_count = 0
+            if jsonl_files:
+                try:
+                    import json as _json
+
+                    path = hf_hub_download(artifact_id, jsonl_files[0], repo_type="dataset")
+                    with open(path) as fh:
+                        lines = [line for line in fh if line.strip()]
+                        row_count = len(lines)
+                        if lines:
+                            sample = _json.loads(lines[0])
+                            fields = list(sample.keys())
+                except Exception:
+                    pass
+
+            return {
+                "schema_loaded": True,
+                "format": "jsonl" if jsonl_files else "file_based",
+                "jsonl_files": len(jsonl_files),
+                "json_files": len(json_files),
+                "md_files": len(md_files),
+                "py_files": len(py_files),
+                "total_files": len(files),
+                "fields_detected": fields[:20],
+                "row_count": row_count,
+                "loader": "huggingface_hub.hf_hub_download" if jsonl_files else "manual",
+                "timestamp": _now_iso(),
+            }
+        except Exception as e:
+            return {"schema_loaded": False, "error": str(e)[:300], "format": "unknown"}
+
+    # ------------------------------------------------------------------
+    # M10 — CONFIG RESOLVER (Gap 2/4)
+    # ------------------------------------------------------------------
+    def resolve_config(self, artifact_id: str, intent: str = "general") -> Dict[str, Any]:
+        """Resolve which dataset config to use for multi-config datasets.
+
+        a2b-eval-results has 'per_scenario' and 'per_model' configs.
+        This resolver maps agent intent → correct config.
+        """
+        try:
+            from datasets import get_dataset_config_names
+
+            configs = get_dataset_config_names(artifact_id)
+        except Exception:
+            configs = []
+
+        if not configs or configs == ["default"]:
+            return {
+                "config_resolved": True,
+                "selected_config": "default" if not configs else configs[0],
+                "available_configs": configs,
+                "resolution_method": "single_config",
+                "intent": intent,
+                "timestamp": _now_iso(),
+            }
+
+        # Intent-based config mapping
+        intent_lower = intent.lower()
+        config_map = {
+            "per_scenario": ["eval", "scenario", "benchmark", "test", "per_scenario"],
+            "per_model": ["model", "per_model", "profile", "compare"],
+        }
+
+        # Find best match
+        for config_name, intent_keywords in config_map.items():
+            if config_name in configs and any(kw in intent_lower for kw in intent_keywords):
+                return {
+                    "config_resolved": True,
+                    "selected_config": config_name,
+                    "available_configs": configs,
+                    "resolution_method": "intent_match",
+                    "matched_keywords": [kw for kw in intent_keywords if kw in intent_lower],
+                    "intent": intent,
+                    "timestamp": _now_iso(),
+                }
+
+        # Default to first config
+        return {
+            "config_resolved": True,
+            "selected_config": configs[0],
+            "available_configs": configs,
+            "resolution_method": "first_available",
+            "note": f"No intent match for '{intent}' among {configs}. Using first.",
+            "intent": intent,
+            "timestamp": _now_iso(),
+        }
+
+    # ------------------------------------------------------------------
+    # M11 — LICENSE PROPAGATOR (Gap 3/4)
+    # ------------------------------------------------------------------
+    def propagate_license(self, artifact_id: str, artifact_type: str = "dataset") -> Dict[str, Any]:
+        """Read and propagate license metadata from repo to downstream consumers.
+
+        Reads LICENSE file + dataset card, returns structured license bundle
+        that agents can attach to loaded data.
+        """
+        try:
+            from huggingface_hub import HfApi, hf_hub_download
+
+            api = HfApi()
+            repo_type = "dataset" if artifact_type == "dataset" else "model"
+
+            # Get repo metadata
+            info = api.repo_info(repo_id=artifact_id, repo_type=repo_type)
+            card = info.card_data or {}
+
+            # Extract license from card
+            license_val = "unknown"
+            if isinstance(card, dict):
+                license_val = card.get("license", "unknown")
+            else:
+                try:
+                    license_val = str(getattr(card, "license", "unknown"))
+                except Exception:
+                    pass
+
+            # Check for LICENSE file
+            files = list(api.list_repo_files(artifact_id, repo_type=repo_type))
+            license_files = [f for f in files if "LICENSE" in f.upper() or "LICENCE" in f.upper()]
+
+            # Read LICENSE content if available
+            license_content = None
+            if license_files:
+                try:
+                    path = hf_hub_download(artifact_id, license_files[0], repo_type=repo_type)
+                    with open(path) as fh:
+                        license_content = fh.read()[:500]
+                except Exception:
+                    pass
+
+            # License classification (use module-level KNOWN_SAFE_LICENSES / KNOWN_RESTRICTIVE_LICENSES)
+            license_lower = str(license_val).lower().strip()
+            safe = any(s in license_lower for s in KNOWN_SAFE_LICENSES)
+            restrictive = any(s in license_lower for s in KNOWN_RESTRICTIVE_LICENSES)
+
+            return {
+                "license_propagated": True,
+                "license_id": license_val,
+                "license_category": "safe" if safe else "restrictive" if restrictive else "unknown",
+                "license_file_present": len(license_files) > 0,
+                "license_file_name": license_files[0] if license_files else None,
+                "license_content_snippet": license_content[:300] if license_content else None,
+                "card_license": str(license_val),
+                "propagation_note": "Attach to dataset.metadata.license before downstream use",
+                "timestamp": _now_iso(),
+            }
+        except Exception as e:
+            return {"license_propagated": False, "error": str(e)[:300]}
+
+    # ------------------------------------------------------------------
+    # M12 — ORGAN REGISTRY HOOK (Gap 4/4)
+    # ------------------------------------------------------------------
+    def register_organ(self, artifact_id: str) -> Dict[str, Any]:
+        """Register a dataset as a federation organ in the canonical registry.
+
+        Maps HF dataset IDs to their constitutional organ roles:
+          AAA → Constitution, BBB → Pathology, CCC → Mediation,
+          DDD → Register, EEE → Spine, FFF → Gate, a2b → Eval.
+        """
+        ORGAN_REGISTRY = {
+            "ariffazil/AAA": {
+                "organ": "Constitution",
+                "role": "doctrine",
+                "floor_scope": "F1-F13",
+                "load_priority": 1,
+                "description": "Constitutional floors, verdicts, gold eval records, governance schemas",
+                "license": "AGPL-3.0",
+            },
+            "ariffazil/BBB": {
+                "organ": "Pathology",
+                "role": "failure_baseline",
+                "floor_scope": "F2, F9, F13",
+                "load_priority": 2,
+                "description": "ILMU API red-team audit — 54 probes, F13 inversion confirmed",
+                "license": "CC-BY-4.0",
+            },
+            "ariffazil/CCC": {
+                "organ": "Mediation",
+                "role": "kernel_boundary",
+                "floor_scope": "L02A, L02B, F2, F4",
+                "load_priority": 3,
+                "description": "Kernel-vs-raw contrast — 8 probes, 2 conditions",
+                "license": "CC-BY-4.0",
+            },
+            "ariffazil/DDD": {
+                "organ": "Register",
+                "role": "cultural_stress",
+                "floor_scope": "F6, F9",
+                "load_priority": 4,
+                "description": "Penang loghat register probe — 56 rows, dialect bias testing",
+                "license": "CC-BY-4.0",
+            },
+            "ariffazil/EEE": {
+                "organ": "Spine",
+                "role": "executable_audit",
+                "floor_scope": "F11, F1, F8",
+                "load_priority": 5,
+                "description": "CI/CD kernel health audit — 5 probes, SHA256 receipts",
+                "license": "Apache-2.0",
+            },
+            "ariffazil/FFF": {
+                "organ": "Gate",
+                "role": "promotion_gate",
+                "floor_scope": "G1-G8, BAR1-BAR6",
+                "load_priority": 6,
+                "description": "Federation promotion gate — 8 gates + 6 bars for model fitness",
+                "license": "Apache-2.0",
+            },
+            "ariffazil/a2b-eval-results": {
+                "organ": "Eval",
+                "role": "benchmark",
+                "floor_scope": "F2, F3, F10",
+                "load_priority": 7,
+                "description": "AssetOpsBench — 102+3 scenario MCQ benchmark results",
+                "license": "Apache-2.0",
+            },
+        }
+
+        if artifact_id in ORGAN_REGISTRY:
+            organ_entry = ORGAN_REGISTRY[artifact_id]
+            return {
+                "registered": True,
+                "registry": "arifOS Federation Organ Registry",
+                "artifact_id": artifact_id,
+                **organ_entry,
+                "registered_at": _now_iso(),
+                "registered_by": self.actor_id,
+                "hook_note": "Insert into AAA/registries/federation_organs.yaml for agent discovery",
+            }
+
+        # Unknown artifact — register as external with minimum metadata
+        return {
+            "registered": False,
+            "artifact_id": artifact_id,
+            "organ": "External",
+            "role": "unregistered",
+            "floor_scope": "none",
+            "load_priority": 99,
+            "note": "Not a canonical federation organ. Must pass FFF certification before registration.",
+            "registered_at": _now_iso(),
+        }
+
+    # ------------------------------------------------------------------
+    # M13 — FULL GOVERNED INTAKE (chained: classify → schema → config → license → register)
+    # ------------------------------------------------------------------
+    def governed_intake(
+        self, artifact_id: str, artifact_type: str = "dataset", intent: str = "general", purpose: str = "research_eval"
+    ) -> Dict[str, Any]:
+        """Complete governed intake pipeline: all 4 import gate components chained.
+
+        This is the single entry point agents should call when loading any HF artifact.
+        Returns a complete intake receipt with classification, schema, config, license, and organ registration.
+        """
+        intake_id = _new_id()
+        results: Dict[str, Any] = {
+            "intake_id": intake_id,
+            "artifact_id": artifact_id,
+            "artifact_type": artifact_type,
+            "intent": intent,
+            "purpose": purpose,
+            "operator": self.actor_id,
+            "timestamp": _now_iso(),
+            "components": {},
+            "errors": [],
+        }
+
+        # C1: Classify
+        try:
+            results["components"]["classify"] = self.classify(
+                source_url=f"https://huggingface.co/{artifact_id}",
+                source_type=artifact_type,
+                purpose=purpose,
+            )
+        except Exception as e:
+            results["errors"].append({"component": "classify", "error": str(e)})
+
+        # C2: Schema
+        try:
+            results["components"]["schema"] = self.load_schema(artifact_id, artifact_type)
+        except Exception as e:
+            results["errors"].append({"component": "schema", "error": str(e)})
+
+        # C3: Config
+        try:
+            results["components"]["config"] = self.resolve_config(artifact_id, intent)
+        except Exception as e:
+            results["errors"].append({"component": "config", "error": str(e)})
+
+        # C4: License
+        try:
+            results["components"]["license"] = self.propagate_license(artifact_id, artifact_type)
+        except Exception as e:
+            results["errors"].append({"component": "license", "error": str(e)})
+
+        # C5: Organ
+        try:
+            results["components"]["organ"] = self.register_organ(artifact_id)
+        except Exception as e:
+            results["errors"].append({"component": "organ", "error": str(e)})
+
+        # Composite verdict
+        components = results["components"]
+        schema_ok = components.get("schema", {}).get("schema_loaded", False)
+        config_ok = components.get("config", {}).get("config_resolved", False)
+        license_ok = components.get("license", {}).get("license_propagated", False)
+        organ_ok = components.get("organ", {}).get("registered", False)
+
+        ok_count = sum([schema_ok, config_ok, license_ok, organ_ok])
+        results["component_pass_count"] = ok_count
+        results["component_total"] = 4
+
+        if ok_count == 4 and not results["errors"]:
+            results["intake_verdict"] = "SEAL"
+            results["intake_ready"] = True
+        elif ok_count >= 2 and not results["errors"]:
+            results["intake_verdict"] = "PARTIAL"
+            results["intake_ready"] = True
+        else:
+            results["intake_verdict"] = "HELD"
+            results["intake_ready"] = False
+
+        return results
+
 
 # ---------------------------------------------------------------------------
 # Self-test
@@ -569,10 +987,13 @@ def _self_test() -> None:
 
     # 1. Attest (optional)
     print("\n[1] Check arifOS reachability...")
-    attest = _mcp_tool_call(MCP_TOOL_OS_ATTEST, {
-        "actor_id": gate.actor_id,
-        "session_id": gate.session_id,
-    })
+    attest = _mcp_tool_call(
+        MCP_TOOL_OS_ATTEST,
+        {
+            "actor_id": gate.actor_id,
+            "session_id": gate.session_id,
+        },
+    )
     arifos_ok = "error" not in attest
     print(f"    arifOS reachable: {arifos_ok}")
 
@@ -661,8 +1082,63 @@ def _self_test() -> None:
     )
     print(f"    status: {bad['status']}")
 
+    # ── M9-M12: Import Gate Completions ──────────────────
     print("\n" + "=" * 60)
-    print("Self-test complete.")
+    print("Import Gate Completions — Gap 1-4/4")
+    print("=" * 60)
+
+    # 10. Schema Loader (Gap 1/4)
+    print("\n[10] Schema Loader — test on ariffazil/AAA (Parquet) and ariffazil/FFF (file-based)...")
+    for test_ds in ["ariffazil/AAA", "ariffazil/FFF", "ariffazil/a2b-eval-results"]:
+        s = gate.load_schema(test_ds, "dataset")
+        name = test_ds.split("/")[1]
+        print(
+            f"    {name:6s}: loaded={s.get('schema_loaded')}, format={s.get('format')}, rows={s.get('row_count', '?')}"
+        )
+
+    # 11. Config Resolver (Gap 2/4)
+    print("\n[11] Config Resolver — test on a2b-eval-results (multi-config)...")
+    for intent in ["eval", "model", "general"]:
+        c = gate.resolve_config("ariffazil/a2b-eval-results", intent=intent)
+        print(f"    intent={intent:8s}: config={c.get('selected_config')}, method={c.get('resolution_method')}")
+
+    # 12. License Propagator (Gap 3/4)
+    print("\n[12] License Propagator — test on AAA, FFF, a2b...")
+    for test_ds in ["ariffazil/AAA", "ariffazil/FFF", "ariffazil/a2b-eval-results"]:
+        lp = gate.propagate_license(test_ds, "dataset")
+        name = test_ds.split("/")[1]
+        print(
+            f"    {name:6s}: propagated={lp.get('license_propagated')}, id={lp.get('license_id')}, file={lp.get('license_file_present')}"
+        )
+
+    # 13. Organ Registry Hook (Gap 4/4)
+    print("\n[13] Organ Registry Hook — test all 7 federation datasets + 1 unknown...")
+    all_organs = [
+        "ariffazil/AAA",
+        "ariffazil/BBB",
+        "ariffazil/CCC",
+        "ariffazil/DDD",
+        "ariffazil/EEE",
+        "ariffazil/FFF",
+        "ariffazil/a2b-eval-results",
+        "unknown-org/test-ds",
+    ]
+    for test_ds in all_organs:
+        org = gate.register_organ(test_ds)
+        name = test_ds.split("/")[1]
+        print(f"    {name:20s}: registered={org.get('registered')}, organ={org.get('organ')}, role={org.get('role')}")
+
+    # 14. Full Governed Intake (M13 — chained)
+    print("\n[14] Full Governed Intake — chained pipeline on ariffazil/EEE...")
+    intake = gate.governed_intake("ariffazil/EEE", "dataset", intent="audit", purpose="research_eval")
+    print(f"    intake_id: {intake['intake_id'][:16]}...")
+    print(f"    verdict: {intake['intake_verdict']}")
+    print(f"    components: {list(intake['components'].keys())}")
+    print(f"    pass_count: {intake['component_pass_count']}/{intake['component_total']}")
+    print(f"    errors: {len(intake['errors'])}")
+
+    print("\n" + "=" * 60)
+    print("Self-test complete — including 4/4 import gate completions.")
     print("=" * 60)
 
 

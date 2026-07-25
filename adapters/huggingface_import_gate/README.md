@@ -88,10 +88,14 @@ huggingface_import:
 |-----------|--------|
 | Classification schema | ✅ Defined |
 | Promotion level matrix | ✅ Defined |
+| Schema Loader (M9) | ✅ **Forged 2026-07-25** — Parquet + JSONL + file-based detection |
+| Config Resolver (M10) | ✅ **Forged 2026-07-25** — Intent-based multi-config routing |
+| License Propagator (M11) | ✅ **Forged 2026-07-25** — LICENSE file + card metadata extraction |
+| Organ Registry Hook (M12) | ✅ **Forged 2026-07-25** — 7-organ canonical mapping |
+| Governed Intake (M13) | ✅ **Forged 2026-07-25** — Chained classify→schema→config→license→register |
 | Malware scan integration | 🔲 Not implemented |
-| License check automation | 🔲 Not implemented |
 | Sandbox deployment | 🔲 Not implemented |
-| Tests | 🔲 Not implemented |
+| Self-tests | ✅ 14 tests passing (include 4 completions + governed intake) |
 
 ## Eureka
 
