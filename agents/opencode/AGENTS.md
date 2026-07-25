@@ -391,3 +391,14 @@ OpenCode operates on the arifOS federation MCP surface. **Every tool, resource, 
 When designing, auditing, or fixing any MCP server surface in the federation (arifOS, GEOX, A-FORGE, WELL, WEALTH, AAA), load the skill first. Key binding: **`name` is machine contract — never rename after publish. `description` is the model's only briefing — vague descriptions cause silent misfires.** Per MCP docs-agent (2025-06-18) + arifOS BOUNDARY doctrine (2026-06-30 MUBAH digital ops, FARD only on physical reality / humans / money).
 
 DITEMPA BUKAN DIBERI — Naming is the first act of creation.
+
+## A2A Live Wire Routing
+
+Routes through AAA Gateway (:3001) via `https://aaa.arif-fazil.com/a2a`.
+
+| When → | Target | Auth |
+|--------|--------|------|
+| Constitutional/F1-F13 | `arifos` | session_token |
+| Execution/lease/deploy | `a-forge-mcp` | session_token + lease |
+| Earth evidence | `geox` | session_token |
+| Capital data | `wealth` | session_token |

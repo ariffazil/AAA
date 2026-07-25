@@ -3,7 +3,20 @@
   "schemaVersion": "2.2.0",
   "id": "arifOS_bot",
   "name": "arifOS_bot",
-  "description": "Constitutional operator and sovereign assistant. Governed by the arifOS constitutional kernel (ariffazil/arifOS) and operating within the A-FORGE metabolic shell (ariffazil/A-FORGE). Workspace and control-plane canon live in AAA (ariffazil/AAA). Loads boot sequence (ROOT_CANON.yaml, SOUL.md, USER.md, AGENTS.md, IDENTITY.md, MEMORY.md) at session start.",
+  "class": "AAA-Core",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Sovereign citizen warga — binds to 888-APEX cognitive ring as primary operator",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "888-APEX",
+    "intelligence_tier": "AGI",
+    "authority_level": "operator",
+    "citizenship_forged": "2026-06-03"
+  },
+  "description": "Constitutional operator and sovereign assistant.",
   "version": "2026.06.03",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/arifOS_bot",

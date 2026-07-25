@@ -1,0 +1,399 @@
+{
+  "report_type": "master_skill_inventory",
+  "generated_at": "2026-07-26",
+  "canonical_source": "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+  "comparison_source": "/root/AAA/skills/AGI-skill-unification/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+
+  "registry_metadata": {
+    "version": 3,
+    "architecture": "3-layer-3-axis",
+    "canonical_home": "/root/AAA/skills",
+    "total_registered_skills": 64,
+    "logical_registry_count": 64,
+    "alias_table_rows": 133,
+    "active_alias_rows": 104,
+    "tombstone_alias_rows": 29,
+    "alias_table_source": "/root/AAA/skills/SKILL_ALIAS_TABLE.json",
+    "alias_table_status": "SEALED_TABLE_AUDITED_RENAMED",
+    "alias_table_forged": "2026-07-12T18:03:25.902313+00:00",
+    "contrast_doc": "/root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md",
+    "unification_atlas": "/root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md",
+    "hermes_bridge": "/root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md",
+    "boot_gate": "Load BOOTSTRAP 9 universals (substrate+knowledge) through READY before any domain skill",
+    "reduction_from_original": "124 -> 64 logical registry entries"
+  },
+
+  "layers": {
+    "substrate": {
+      "count": 6,
+      "path": "/root/AAA/skills/substrate",
+      "load_rule": "ALL agents, ALWAYS, FIRST",
+      "skills": [
+        {"id": 1, "v3_name": "kernel-bind",          "disk_name": "kernel-bind",          "resolved_path": "/root/AAA/skills/substrate/kernel-bind",          "home": "aaa", "tombstone": false},
+        {"id": 2, "v3_name": "observe-ground",       "disk_name": "observe-ground",       "resolved_path": "/root/AAA/skills/substrate/observe-ground",       "home": "aaa", "tombstone": false},
+        {"id": 3, "v3_name": "route-dispatch",       "disk_name": "route-dispatch",       "resolved_path": "/root/AAA/skills/substrate/route-dispatch",       "home": "aaa", "tombstone": false},
+        {"id": 4, "v3_name": "memory-manage",        "disk_name": "memory-manage",        "resolved_path": "/root/AAA/skills/substrate/memory-manage",        "home": "aaa", "tombstone": false},
+        {"id": 5, "v3_name": "verify-gate",          "disk_name": "verify-gate",          "resolved_path": "/root/AAA/skills/substrate/verify-gate",          "home": "aaa", "tombstone": false},
+        {"id": 6, "v3_name": "audit-seal",           "disk_name": "audit-seal",           "resolved_path": "/root/AAA/skills/substrate/audit-seal",           "home": "aaa", "tombstone": false}
+      ]
+    },
+    "knowledge": {
+      "count": 3,
+      "path": "/root/AAA/skills/knowledge",
+      "load_rule": "ALL agents, ALWAYS, AFTER substrate",
+      "skills": [
+        {"id": 7,  "v3_name": "know-physics",        "disk_name": "know-physics",        "resolved_path": "/root/AAA/skills/knowledge/know-physics",        "home": "aaa", "tombstone": false},
+        {"id": 8,  "v3_name": "know-math",           "disk_name": "know-math",           "resolved_path": "/root/AAA/skills/knowledge/know-math",           "home": "aaa", "tombstone": false},
+        {"id": 9,  "v3_name": "know-language",       "disk_name": "know-language",       "resolved_path": "/root/AAA/skills/knowledge/know-language",       "home": "aaa", "tombstone": false}
+      ]
+    },
+    "domain": {
+      "count": 55,
+      "load_rule": "Per-agent, per-task, on demand",
+      "domains": {
+        "geo": {
+          "count": 7,
+          "domain_tag": "GEOX — geological & geophysical intelligence",
+          "skills": [
+            {"id": 10,  "v3_name": "geo-basin",          "disk_name": "geox-basin-engines",          "resolved_path": "/root/.agents/skills/geox-basin-engines",          "home": "agents", "tombstone": false},
+            {"id": 11,  "v3_name": "geo-constitution",    "disk_name": "geox-constitution",            "resolved_path": "/root/.agents/skills/geox-constitution",            "home": "agents", "tombstone": false},
+            {"id": 12,  "v3_name": "geo-petrophysics",    "disk_name": "geox-petrophysics-bounds",      "resolved_path": "/root/.agents/skills/geox-petrophysics-bounds",      "home": "agents", "tombstone": false},
+            {"id": 13,  "v3_name": "geo-writing",         "disk_name": "geox-scientific-writing",       "resolved_path": "/root/.agents/skills/geox-scientific-writing",       "home": "agents", "tombstone": false},
+            {"id": 14,  "v3_name": "geo-well-tie",        "disk_name": "geox-well-tie-pipeline",        "resolved_path": "/root/.agents/skills/geox-well-tie-pipeline",        "home": "agents", "tombstone": false},
+            {"id": 15,  "v3_name": "geo-artifact-rigor",  "disk_name": "geological-artifact-rigor",      "resolved_path": "/root/.agents/skills/geological-artifact-rigor",      "home": "agents", "tombstone": false},
+            {"id": 16,  "v3_name": "geo-prospect",        "disk_name": "prospect-maturation-workflow",   "resolved_path": "/root/.agents/skills/prospect-maturation-workflow",   "home": "agents", "tombstone": false}
+          ]
+        },
+        "wealth": {
+          "count": 3,
+          "domain_tag": "WEALTH — capital reasoning & market intelligence",
+          "skills": [
+            {"id": 17,  "v3_name": "wealth-reason",       "disk_name": "wealth-capital-reasoning",        "resolved_path": "/root/.agents/skills/wealth-capital-reasoning",        "home": "agents", "tombstone": false},
+            {"id": 18,  "v3_name": "wealth-thermo",       "disk_name": "wealth-capital-thermodynamics",   "resolved_path": "/root/.agents/skills/wealth-capital-thermodynamics",   "home": "agents", "tombstone": false, "restored_live": true},
+            {"id": 19,  "v3_name": "wealth-collapse",     "disk_name": "wealth-collapse-signature",       "resolved_path": "/root/.agents/skills/wealth-collapse-signature",       "home": "agents", "tombstone": false}
+          ]
+        },
+        "well": {
+          "count": 2,
+          "domain_tag": "WELL — human wellness & boundary sensing",
+          "skills": [
+            {"id": 20,  "v3_name": "well-boundary",       "disk_name": "well-substrate-readiness",       "resolved_path": "/root/.agents/skills/well-substrate-readiness",       "home": "agents", "tombstone": false},
+            {"id": 21,  "v3_name": "well-readiness",      "disk_name": "well-substrate-readiness",       "resolved_path": "/root/.agents/skills/well-substrate-readiness",       "home": "agents", "tombstone": false}
+          ]
+        },
+        "forge": {
+          "count": 2,
+          "domain_tag": "A-FORGE — governed execution & verb dispatch",
+          "skills": [
+            {"id": 22,  "v3_name": "forge-exec",          "disk_name": "kernel-verbs-aforge-hands",      "resolved_path": "/root/.agents/skills/kernel-verbs-aforge-hands",      "home": "agents", "tombstone": false, "restored_live": true},
+            {"id": 23,  "v3_name": "forge-verbs",         "disk_name": "kernel-verbs-aforge-hands",      "resolved_path": "/root/.agents/skills/kernel-verbs-aforge-hands",      "home": "agents", "tombstone": false, "restored_live": true}
+          ]
+        },
+        "dev": {
+          "count": 8,
+          "domain_tag": "Development — GitHub, CI, PRs, repos, wiki, analysis",
+          "skills": [
+            {"id": 24,  "v3_name": "dev-github",          "disk_name": "github",                       "resolved_path": "/root/AAA/skills/github",                       "home": "aaa", "tombstone": false, "related_skills": ["github-ops", "github-runbook"]},
+            {"id": 25,  "v3_name": "dev-ci-diagnose",     "disk_name": "github-ci-diagnose",            "resolved_path": "/root/AAA/skills/github-ci-diagnose",            "home": "aaa", "tombstone": false},
+            {"id": 26,  "v3_name": "dev-issue-triage",    "disk_name": "github-issue-triage",           "resolved_path": "/root/AAA/skills/github-issue-triage",           "home": "aaa", "tombstone": false},
+            {"id": 27,  "v3_name": "dev-pr-review",       "disk_name": "github-pr-review",              "resolved_path": "/root/AAA/skills/github-pr-review",              "home": "aaa", "tombstone": false},
+            {"id": 28,  "v3_name": "dev-pr-governance",   "disk_name": "github-pr-governance",          "resolved_path": "/root/AAA/skills/github-pr-governance",          "home": "aaa", "tombstone": false},
+            {"id": 29,  "v3_name": "dev-wiki",            "disk_name": "wiki",                          "resolved_path": "/root/AAA/skills/wiki",                          "home": "aaa", "tombstone": false},
+            {"id": 30,  "v3_name": "dev-analysis",        "disk_name": "analysis",                      "resolved_path": "/root/AAA/skills/analysis",                      "home": "aaa", "tombstone": false},
+            {"id": 31,  "v3_name": "dev-repo-audit",      "disk_name": "repo-audit",                    "resolved_path": "/root/AAA/skills/repo-audit",                    "home": "aaa", "tombstone": false}
+          ]
+        },
+        "ops": {
+          "count": 12,
+          "domain_tag": "Operations — infra, MCP, VPS, Docker, incident, health, monitoring",
+          "skills": [
+            {"id": 32,  "v3_name": "ops-docker",          "disk_name": "docker",                        "resolved_path": "/root/AAA/skills/docker",                        "home": "aaa", "tombstone": false},
+            {"id": 33,  "v3_name": "ops-vps",             "disk_name": "vps",                           "resolved_path": "/root/AAA/skills/vps",                           "home": "aaa", "tombstone": false},
+            {"id": 34,  "v3_name": "ops-mcp-builder",     "disk_name": "mcp-builder",                   "resolved_path": "/root/AAA/skills/mcp-builder",                   "home": "aaa", "tombstone": false},
+            {"id": 35,  "v3_name": "ops-mcp-probe",       "disk_name": "mcp-probe",                     "resolved_path": "/root/AAA/skills/mcp-probe",                     "home": "aaa", "tombstone": false},
+            {"id": 36,  "v3_name": "ops-infra",           "disk_name": "infra",                         "resolved_path": "/root/AAA/skills/infra",                         "home": "aaa", "tombstone": false},
+            {"id": 37,  "v3_name": "ops-incident",        "disk_name": "incident",                      "resolved_path": "/root/AAA/skills/incident",                      "home": "aaa", "tombstone": false},
+            {"id": 38,  "v3_name": "ops-spatial",         "disk_name": "spatial",                       "resolved_path": "/root/AAA/skills/spatial",                       "home": "aaa", "tombstone": false},
+            {"id": 39,  "v3_name": "ops-health",          "disk_name": "health",                        "resolved_path": "/root/AAA/skills/health",                        "home": "aaa", "tombstone": false},
+            {"id": 40,  "v3_name": "ops-mcp-lifeguard",   "disk_name": "mcp-lifeguard",                 "resolved_path": "/root/AAA/skills/mcp-lifeguard",                 "home": "aaa", "tombstone": false},
+            {"id": 41,  "v3_name": "ops-model-monitor",   "disk_name": "model-monitor",                 "resolved_path": "/root/AAA/skills/model-monitor",                 "home": "aaa", "tombstone": false},
+            {"id": 42,  "v3_name": "ops-google",          "disk_name": "google",                        "resolved_path": "/root/AAA/skills/google",                        "home": "aaa", "tombstone": false},
+            {"id": 43,  "v3_name": "ops-transport",       "disk_name": "transport",                     "resolved_path": "/root/AAA/skills/transport",                     "home": "aaa", "tombstone": false}
+          ]
+        },
+        "meta": {
+          "count": 9,
+          "domain_tag": "Meta — skill management, evals, planning, trust mapping",
+          "skills": [
+            {"id": 44,  "v3_name": "meta-skill-create",    "disk_name": "skill-create",                  "resolved_path": "/root/AAA/skills/skill-create",                  "home": "aaa", "tombstone": false},
+            {"id": 45,  "v3_name": "meta-skill-lint",      "disk_name": "skill-lint",                    "resolved_path": "/root/AAA/skills/skill-lint",                    "home": "aaa", "tombstone": false},
+            {"id": 46,  "v3_name": "meta-rsi",             "disk_name": "rsi",                           "resolved_path": "/root/AAA/skills/rsi",                           "home": "aaa", "tombstone": false},
+            {"id": 47,  "v3_name": "meta-rsi-audit",       "disk_name": "rsi-audit",                     "resolved_path": "/root/AAA/skills/rsi-audit",                     "home": "aaa", "tombstone": false},
+            {"id": 48,  "v3_name": "meta-evals",           "disk_name": "evals",                         "resolved_path": "/root/AAA/skills/evals",                         "home": "aaa", "tombstone": false},
+            {"id": 49,  "v3_name": "meta-plan",            "disk_name": "plan",                          "resolved_path": "/root/AAA/skills/plan",                          "home": "aaa", "tombstone": false},
+            {"id": 50,  "v3_name": "meta-atlas",           "disk_name": "atlas",                         "resolved_path": "/root/AAA/skills/atlas",                         "home": "aaa", "tombstone": false},
+            {"id": 51,  "v3_name": "meta-rsi-cool",        "disk_name": "rsi-cool",                      "resolved_path": "/root/AAA/skills/rsi-cool",                      "home": "aaa", "tombstone": false},
+            {"id": 52,  "v3_name": "meta-trust-map",       "disk_name": "trust-map",                     "resolved_path": "/root/AAA/skills/trust-map",                     "home": "aaa", "tombstone": false},
+            {"id": 53,  "v3_name": "meta-skill-unification","disk_name": "skill-unification",             "resolved_path": "/root/AAA/skills/skill-unification",             "home": "aaa", "tombstone": false}
+          ]
+        },
+        "a2a": {
+          "count": 4,
+          "domain_tag": "A2A — agent-to-agent protocol, onboarding, sovereignty",
+          "skills": [
+            {"id": 54,  "v3_name": "a2a-onboard",         "disk_name": "a2a-onboard",                   "resolved_path": "/root/AAA/skills/a2a-onboard",                   "home": "aaa", "tombstone": false},
+            {"id": 55,  "v3_name": "a2a-kimi",            "disk_name": "a2a-kimi",                      "resolved_path": "/root/AAA/skills/a2a-kimi",                      "home": "aaa", "tombstone": false},
+            {"id": 56,  "v3_name": "a2a-sovereign",       "disk_name": "a2a-sovereign",                 "resolved_path": "/root/AAA/skills/a2a-sovereign",                 "home": "aaa", "tombstone": false},
+            {"id": 57,  "v3_name": "a2a-spawn",           "disk_name": "a2a-spawn",                     "resolved_path": "/root/AAA/skills/a2a-spawn",                     "home": "aaa", "tombstone": false}
+          ]
+        },
+        "sec": {
+          "count": 2,
+          "domain_tag": "Security — secrets management, Telegram security",
+          "skills": [
+            {"id": 58,  "v3_name": "sec-secrets",         "disk_name": "secrets",                       "resolved_path": "/root/AAA/skills/secrets",                       "home": "aaa", "tombstone": false},
+            {"id": 59,  "v3_name": "sec-telegram",        "disk_name": "telegram",                      "resolved_path": "/root/AAA/skills/telegram",                      "home": "aaa", "tombstone": false}
+          ]
+        },
+        "research": {
+          "count": 3,
+          "domain_tag": "Research — summarization, search, deep research",
+          "skills": [
+            {"id": 60,  "v3_name": "research-summarize",   "disk_name": "summarize",                     "resolved_path": "/root/AAA/skills/summarize",                     "home": "aaa", "tombstone": false},
+            {"id": 61,  "v3_name": "research-search",      "disk_name": "search",                        "resolved_path": "/root/AAA/skills/search",                        "home": "aaa", "tombstone": false},
+            {"id": 62,  "v3_name": "research-deep",        "disk_name": "deep-research",                 "resolved_path": "/root/AAA/skills/deep-research",                 "home": "aaa", "tombstone": false}
+          ]
+        },
+        "kernel": {
+          "count": 2,
+          "domain_tag": "Kernel — constitutional axioms, EUREKA, superposition",
+          "skills": [
+            {"id": 63,  "v3_name": "kernel-eureka",        "disk_name": "eureka",                        "resolved_path": "/root/AAA/skills/eureka",                        "home": "aaa", "tombstone": false},
+            {"id": 64,  "v3_name": "kernel-superposition", "disk_name": "superposition",                 "resolved_path": "/root/AAA/skills/superposition",                 "home": "aaa", "tombstone": false}
+          ]
+        }
+      }
+    }
+  },
+
+  "flat_skill_list": [
+    {"id": 1,  "v3_name": "kernel-bind",          "layer": "substrate", "domain": null,       "home": "aaa"},
+    {"id": 2,  "v3_name": "observe-ground",       "layer": "substrate", "domain": null,       "home": "aaa"},
+    {"id": 3,  "v3_name": "route-dispatch",       "layer": "substrate", "domain": null,       "home": "aaa"},
+    {"id": 4,  "v3_name": "memory-manage",        "layer": "substrate", "domain": null,       "home": "aaa"},
+    {"id": 5,  "v3_name": "verify-gate",          "layer": "substrate", "domain": null,       "home": "aaa"},
+    {"id": 6,  "v3_name": "audit-seal",           "layer": "substrate", "domain": null,       "home": "aaa"},
+    {"id": 7,  "v3_name": "know-physics",         "layer": "knowledge", "domain": null,       "home": "aaa"},
+    {"id": 8,  "v3_name": "know-math",            "layer": "knowledge", "domain": null,       "home": "aaa"},
+    {"id": 9,  "v3_name": "know-language",        "layer": "knowledge", "domain": null,       "home": "aaa"},
+    {"id": 10, "v3_name": "geo-basin",            "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 11, "v3_name": "geo-constitution",     "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 12, "v3_name": "geo-petrophysics",     "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 13, "v3_name": "geo-writing",          "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 14, "v3_name": "geo-well-tie",         "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 15, "v3_name": "geo-artifact-rigor",   "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 16, "v3_name": "geo-prospect",         "layer": "domain",    "domain": "geo",      "home": "agents"},
+    {"id": 17, "v3_name": "wealth-reason",        "layer": "domain",    "domain": "wealth",   "home": "agents"},
+    {"id": 18, "v3_name": "wealth-thermo",        "layer": "domain",    "domain": "wealth",   "home": "agents"},
+    {"id": 19, "v3_name": "wealth-collapse",      "layer": "domain",    "domain": "wealth",   "home": "agents"},
+    {"id": 20, "v3_name": "well-boundary",        "layer": "domain",    "domain": "well",     "home": "agents"},
+    {"id": 21, "v3_name": "well-readiness",       "layer": "domain",    "domain": "well",     "home": "agents"},
+    {"id": 22, "v3_name": "forge-exec",           "layer": "domain",    "domain": "forge",    "home": "agents"},
+    {"id": 23, "v3_name": "forge-verbs",          "layer": "domain",    "domain": "forge",    "home": "agents"},
+    {"id": 24, "v3_name": "dev-github",           "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 25, "v3_name": "dev-ci-diagnose",      "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 26, "v3_name": "dev-issue-triage",     "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 27, "v3_name": "dev-pr-review",        "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 28, "v3_name": "dev-pr-governance",    "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 29, "v3_name": "dev-wiki",             "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 30, "v3_name": "dev-analysis",         "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 31, "v3_name": "dev-repo-audit",       "layer": "domain",    "domain": "dev",      "home": "aaa"},
+    {"id": 32, "v3_name": "ops-docker",           "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 33, "v3_name": "ops-vps",              "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 34, "v3_name": "ops-mcp-builder",      "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 35, "v3_name": "ops-mcp-probe",        "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 36, "v3_name": "ops-infra",            "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 37, "v3_name": "ops-incident",         "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 38, "v3_name": "ops-spatial",          "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 39, "v3_name": "ops-health",           "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 40, "v3_name": "ops-mcp-lifeguard",    "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 41, "v3_name": "ops-model-monitor",    "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 42, "v3_name": "ops-google",           "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 43, "v3_name": "ops-transport",        "layer": "domain",    "domain": "ops",      "home": "aaa"},
+    {"id": 44, "v3_name": "meta-skill-create",    "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 45, "v3_name": "meta-skill-lint",      "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 46, "v3_name": "meta-rsi",             "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 47, "v3_name": "meta-rsi-audit",       "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 48, "v3_name": "meta-evals",           "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 49, "v3_name": "meta-plan",            "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 50, "v3_name": "meta-atlas",           "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 51, "v3_name": "meta-rsi-cool",        "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 52, "v3_name": "meta-trust-map",       "layer": "domain",    "domain": "meta",     "home": "aaa"},
+    {"id": 53, "v3_name": "meta-skill-unification","layer": "domain",   "domain": "meta",     "home": "aaa"},
+    {"id": 54, "v3_name": "a2a-onboard",          "layer": "domain",    "domain": "a2a",      "home": "aaa"},
+    {"id": 55, "v3_name": "a2a-kimi",             "layer": "domain",    "domain": "a2a",      "home": "aaa"},
+    {"id": 56, "v3_name": "a2a-sovereign",        "layer": "domain",    "domain": "a2a",      "home": "aaa"},
+    {"id": 57, "v3_name": "a2a-spawn",            "layer": "domain",    "domain": "a2a",      "home": "aaa"},
+    {"id": 58, "v3_name": "sec-secrets",          "layer": "domain",    "domain": "sec",      "home": "aaa"},
+    {"id": 59, "v3_name": "sec-telegram",         "layer": "domain",    "domain": "sec",      "home": "aaa"},
+    {"id": 60, "v3_name": "research-summarize",   "layer": "domain",    "domain": "research", "home": "aaa"},
+    {"id": 61, "v3_name": "research-search",      "layer": "domain",    "domain": "research", "home": "aaa"},
+    {"id": 62, "v3_name": "research-deep",        "layer": "domain",    "domain": "research", "home": "aaa"},
+    {"id": 63, "v3_name": "kernel-eureka",        "layer": "domain",    "domain": "kernel",   "home": "aaa"},
+    {"id": 64, "v3_name": "kernel-superposition", "layer": "domain",    "domain": "kernel",   "home": "aaa"}
+  ],
+
+  "agent_profiles": {
+    "total_agents_canonical": 10,
+    "total_agents_copy": 7,
+    "profiles_canonical": {
+      "hermes":     {"substrates": 6, "knowledge": 3, "domains": ["research", "meta", "geo", "wealth", "well"]},
+      "openclaw":   {"substrates": 4, "knowledge": 3, "domains": ["mem", "ops", "a2a"]},
+      "codex":      {"substrates": 6, "knowledge": 3, "domains": ["dev", "forge", "ops", "meta", "a2a", "kernel"]},
+      "kimi":       {"substrates": 6, "knowledge": 3, "domains": ["dev", "forge", "ops", "meta", "a2a"], "mcp_servers": 12, "hooks": 12, "permission_rules": 11, "fi_slot": "FI-008", "class": "CODING/FI"},
+      "opencode":   {"substrates": 6, "knowledge": 3, "domains": ["dev", "forge", "ops", "meta", "a2a", "kernel"], "providers": 11, "mcp_servers": "5+", "hooks": 8, "permission_rules": 0, "class": "AGI", "role": "warga"},
+      "claude":     {"substrates": 6, "knowledge": 3, "domains": ["dev", "forge", "ops", "meta", "infra"], "mcp_servers": 9, "hooks": 0, "permission_rules": 0, "fi_slot": "FI-002", "class": "CODING/FI"},
+      "grok":       {"substrates": 6, "knowledge": 3, "domains": ["dev", "forge", "ops", "meta", "geo", "wealth", "well", "kernel", "research"], "harness_native": ["arif-governed-autonomous-execution", "grok-zen-aaa-substrate", "grok-federation-skill-upgrader", "orthogonal-skill-update", "create-skill", "check-work", "help", "imagine"]},
+      "copilot":    {"substrates": 4, "knowledge": 3, "domains": ["dev", "forge", "ops"], "mcp_servers": 0, "hooks": 0, "permission_rules": 0, "fi_slot": "FI-006", "class": "CODING/FI"},
+      "antigravity":{"substrates": 3, "knowledge": 3, "domains": ["dev", "forge"], "mcp_servers": 0, "hooks": 0, "permission_rules": 0, "fi_slot": "FI-004", "class": "CODING/FI"},
+      "aider":      {"substrates": 3, "knowledge": 3, "domains": ["dev", "forge"], "mcp_servers": 0, "hooks": 0, "permission_rules": 0, "fi_slot": "FI-007", "class": "CODING/FI"}
+    }
+  },
+
+  "drift_report": {
+    "canonical_vs_copy": {
+      "canonical_path": "/root/AAA/skills/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+      "copy_path": "/root/AAA/skills/AGI-skill-unification/FEDERATED_SKILLS_REGISTRY_V3.yaml",
+      "last_updated_canonical": "2026-07-18",
+      "last_updated_copy": "2026-07-11",
+      "drift_days": 7,
+      "drift_found": true,
+      "skill_lists_match": true,
+      "differences": [
+        {
+          "category": "metadata",
+          "item": "last_updated",
+          "canonical": "2026-07-18",
+          "copy": "2026-07-11",
+          "delta": "7 days out of date"
+        },
+        {
+          "category": "metadata",
+          "item": "reduction_from_original",
+          "canonical": "124 -> 64 logical registry entries; alias rows are separate",
+          "copy": "124 -> 63",
+          "delta": "Copy reports 63 instead of 64; likely unpatched from before the 64th count was finalized"
+        },
+        {
+          "category": "metadata",
+          "item": "contrast_doc",
+          "canonical": "/root/AAA/docs/TOOLBENCH_3WAY_CONTRAST.md",
+          "copy": "absent",
+          "delta": "Copy missing the contrast doc reference"
+        },
+        {
+          "category": "metadata",
+          "item": "alias_table_rows / active / tombstone",
+          "canonical": "133 rows, 104 active, 29 tombstone",
+          "copy": "absent",
+          "delta": "Copy missing alias table statistics"
+        },
+        {
+          "category": "metadata",
+          "item": "hermes_bridge",
+          "canonical": "/root/A-FORGE/forge_work/2026-07-12/HERMES-V3-DOMAIN-BRIDGE.md",
+          "copy": "absent",
+          "delta": "Copy missing hermes_bridge field"
+        },
+        {
+          "category": "metadata",
+          "item": "last_harness_sync_note",
+          "canonical": "2026-07-18: 3-agent alignment pass (kimi FI-008, opencode warga-AGI, claude FI-002). Contrast doc updated.",
+          "copy": "2026-07-12: alias 63/63 sealed; mesh-sync applied 44 links; grok office prune",
+          "delta": "Canonical has a more recent, more detailed sync note"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "profiles_added_canonical",
+          "canonical": "10 agents: hermes, openclaw, codex, kimi, opencode, claude, grok, copilot, antigravity, aider",
+          "copy": "7 agents: hermes, claude, openclaw, codex, kimi, grok, opencode",
+          "delta": "Canonical adds 3 profiles: copilot (FI-006), antigravity (FI-004), aider (FI-007)"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "hermes_domains",
+          "canonical": "research, meta, geo, wealth, well",
+          "copy": "research, meta, geo, wealth, well",
+          "delta": "MATCH"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "openclaw_domains",
+          "canonical": "mem, ops, a2a",
+          "copy": "mem, ops, a2a",
+          "delta": "MATCH"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "codex_domains",
+          "canonical": "dev, forge, ops, meta, a2a, kernel",
+          "copy": "dev, forge, ops",
+          "delta": "Canonical adds meta, a2a, kernel domains + profile path + notes for codex"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "kimi_profile_detail",
+          "canonical": "Full spec: 12 MCPs, 12 hooks, 11 permissions, FI-008, CODING/FI",
+          "copy": "Minimal: 3 substrates, 3 knowledge, dev + forge only",
+          "delta": "Canonical has comprehensive kimi spec; copy is minimal/stub"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "opencode_profile_detail",
+          "canonical": "Full spec: 11 providers, 5+ MCPs, 8 hooks, warga role, AGI class, trinity 333-AGI",
+          "copy": "Minimal: 6 substrates, 3 knowledge, dev+forge+ops+meta",
+          "delta": "Canonical has comprehensive opencode spec; copy has no detail"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "claude_domains",
+          "canonical": "dev, forge, ops, meta, infra (9 MCPs, FI-002)",
+          "copy": "dev, forge, ops, meta (no MCPs, no FI slot)",
+          "delta": "Canonical adds infra domain + full FI-002 spec"
+        },
+        {
+          "category": "agent_profiles",
+          "item": "grok_profile",
+          "canonical": "9 domains + 8 harness_native skills + notes",
+          "copy": "9 domains + 8 harness_native skills + notes",
+          "delta": "MATCH (grok is identical in both)"
+        }
+      ]
+    }
+  },
+
+  "domain_summary": {
+    "substrate": 6,
+    "knowledge": 3,
+    "domain_breakdown": {
+      "geo": 7,
+      "wealth": 3,
+      "well": 2,
+      "forge": 2,
+      "dev": 8,
+      "ops": 12,
+      "meta": 10,
+      "a2a": 4,
+      "sec": 2,
+      "research": 3,
+      "kernel": 2
+    },
+    "domain_total": 55,
+    "grand_total": 64,
+    "aliases_total": 133,
+    "active_aliases": 104,
+    "tombstone_aliases": 29
+  },
+
+  "note": "This report was generated from the canonical FEDERATED_SKILLS_REGISTRY_V3.yaml (2026-07-18). The AGI-skill-unification copy at /root/AAA/skills/AGI-skill-unification/ is 7 days stale (2026-07-11) and should be refreshed to match. The SKILL_ALIAS_TABLE.json files in both locations are identical (both forged 2026-07-12, same content and size). The skill lists (all 64 skills) are identical between both registry files — no skills were added or removed, only metadata and agent profiles were enriched."
+}

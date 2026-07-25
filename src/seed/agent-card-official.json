@@ -407,5 +407,7 @@
       "did_resolves_to": "https://arif-fazil.com/.well-known/did.json",
       "nonce_flow": "arif_init(nonce) \u2192 sign(nonce) \u2192 verify \u2192 FULL"
     }
-  ]
+  ],
+  "protocolVersion": "1.2",
+  "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0"
 }

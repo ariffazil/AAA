@@ -1,0 +1,70 @@
+{
+  "id": "FI-009",
+  "agent_id": "agy",
+  "name": "AGY",
+  "class": "FORGE_INSTRUMENT",
+  "layer": "harnesses",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Forge instrument \u2014 governed by 333-AGI (Delta MIND)",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "engineer",
+    "citizenship_forged": "2026-07-25"
+  },
+  "description": "AGY (You Only Need AGY) v1.1.7 \u2014 minimal agentic coding harness.",
+  "model": "deepseek/deepseek-v4-pro",
+  "fallback_model": "deepseek-v4-flash",
+  "binary": "/root/.local/bin/agy",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-25",
+  "protocolVersion": "1.2",
+  "sandbox": "process",
+  "authority": "engineer",
+  "riskTier": "low",
+  "supportedInterfaces": [
+    {
+      "url": "https://aaa.arif-fazil.com/a2a/",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "securitySchemes": {
+    "apiKey": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-API-Key"
+    }
+  },
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "FI-009-AGY-ed25519-seal-2026-07-25",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-25T00:00:00Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "skills": [
+    {
+      "id": "external-agent-relay",
+      "name": "External Agent Relay",
+      "description": "Relay tasks to external A2A agents"
+    },
+    {
+      "id": "session-bridge",
+      "name": "Session Bridge",
+      "description": "Bridge sessions between external and internal agents"
+    },
+    {
+      "id": "evidence-pass-through",
+      "name": "Evidence Pass-Through",
+      "description": "Route external evidence through EMD gate"
+    }
+  ],
+  "_fixed_by": "opencode-housekeeping-2026-07-25"
+}

@@ -308,6 +308,7 @@ def verify_federation_sct(
                         "mode": "validate",
                         "session_id": sct,
                         "session_token": sct,  # dual-key for hosts that prefer explicit token field
+                        "actor_id": expected_actor or "ARIF",
                     },
                 },
             },
@@ -355,27 +356,25 @@ def verify_federation_sct(
 
     result = data.get("result", {}) or {}
     # Unwrap MCP tool content envelope
-    if isinstance(result, dict) and isinstance(result.get("content"), list) and result["content"]:
-        try:
-            inner_text = result["content"][0].get("text") or ""
-            parsed = json.loads(inner_text) if inner_text else {}
-            # Nested wrappers: {result: {valid...}} or flat {valid...}
-            if isinstance(parsed, dict):
-                if "valid" in parsed or "claims" in parsed:
-                    result = parsed
-                elif isinstance(parsed.get("result"), dict):
-                    result = parsed["result"]
-                else:
-                    result = parsed
-        except Exception:
-            pass
-    # Some hosts put structuredContent
-    if isinstance(result, dict) and not result.get("valid") and isinstance(
-        result.get("structuredContent"), dict
-    ):
-        sc = result["structuredContent"]
-        if "valid" in sc or "claims" in sc:
-            result = sc
+    if isinstance(result, dict):
+        if isinstance(result.get("content"), list) and result["content"]:
+            try:
+                inner_text = result["content"][0].get("text") or ""
+                parsed = json.loads(inner_text) if inner_text else {}
+                # Nested wrappers: {result: {valid...}} or flat {valid...}
+                if isinstance(parsed, dict):
+                    if "valid" in parsed or "claims" in parsed or "session_token" in parsed:
+                        result = parsed
+                    elif isinstance(parsed.get("result"), dict):
+                        result = parsed["result"]
+                    else:
+                        result = parsed
+            except Exception:
+                pass
+        if not result.get("valid") and isinstance(result.get("structuredContent"), dict):
+            sc = result["structuredContent"]
+            if "valid" in sc or "claims" in sc or "session_token" in sc:
+                result = sc
 
     if not result.get("valid"):
         return SCTVerification(
@@ -408,7 +407,7 @@ def verify_federation_sct(
     )
 
     # Actor binding check
-    if expected_actor and actor and actor != expected_actor:
+    if expected_actor and actor and str(actor).lower().strip() != str(expected_actor).lower().strip():
         return SCTVerification(
             ok=False,
             error_code="ACTOR_MISMATCH",
