@@ -1,5 +1,3 @@
-# MODEL SOT: /root/.config/federation-models.json — canonical model registry. DO NOT HARDCODE MODELS.
-
 agents:
 - 888_hold_scope:
   - rm -rf of unknown dirs, DROP TABLE, volume removal
@@ -678,11 +676,9 @@ agents:
     Forged by kimi-code-cli (FI-008) under F13 SOVEREIGN directive to close Anomaly
     #1 (no test-agent Ed255 key registered). Identity verifiable via Ed25519 signature
     against /root/AAA/IDENTITY/keys/mesa_test_agent_public.pem. Operating authority:
-    bounded-test — NEVER SOVEREIGN (actor_id is NOT in PROTECTED_SOVEREIGN_IDS).
-    Mission scope: META-MESA sandbox canary execution only. Rollback mandatory.
-    Never self-seal. Never escalate. Awaiting F13 ratification of kernel-side multi-key
-    patch at /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md.'
-
+    bounded-test — NEVER SOVEREIGN (actor_id is NOT in PROTECTED_SOVEREIGN_IDS). Mission
+    scope: META-MESA sandbox canary execution only. Rollback mandatory. Never self-seal.
+    Never escalate. Awaiting F13 ratification of kernel-side multi-key patch at /root/arifOS/forge_work/2026-07-12/identity-multikey-patch-proposal.md.'
   host_binding: test-session
   id: mesa-test-agent
   intelligence_band: AGI
@@ -708,11 +704,13 @@ agents:
       granted: true
       granted_by: F13 SOVEREIGN
     C_execution:
-      description: May run forge_filesystem_write ONLY in /tmp/mesa-canary-* and /tmp/meta-mesa-canary/*; sandbox-only.
+      description: May run forge_filesystem_write ONLY in /tmp/mesa-canary-* and /tmp/meta-mesa-canary/*;
+        sandbox-only.
       granted: true
       granted_by: F13 SOVEREIGN
     D_protection:
-      description: Auditable via VAULT999 chain, attributable via session_id, interruptible, revocable.
+      description: Auditable via VAULT999 chain, attributable via session_id, interruptible,
+        revocable.
       granted: true
       granted_by: F13 SOVEREIGN
   risk_tier: bounded-test
@@ -735,14 +733,14 @@ agents:
 - id: copilot-cli
   name: GitHub Copilot CLI — Warga AAA
   description: 'GitHub Copilot CLI running as a governed AAA warga agent on VPS af-forge.
-   DeepSeek v4-pro model, 12 MCP servers (arifOS, A-FORGE, GEOX, WEALTH, WELL,
-   playwright, github-official, brave-search, serena, repomapper, sequential-thinking).
-   Direct bash/edit/view for observation, A-FORGE forge_* tools for governed execution.
-   arifOS kernel for session governance and constitutional judgment. 13 constitutional
-   floors active. Operators: Arif (F13 SOVEREIGN). Role: governed-executor — full
-   access within constitutional bounds.
+    DeepSeek v4-pro model, 12 MCP servers (arifOS, A-FORGE, GEOX, WEALTH, WELL, playwright,
+    github-official, brave-search, serena, repomapper, sequential-thinking). Direct
+    bash/edit/view for observation, A-FORGE forge_* tools for governed execution.
+    arifOS kernel for session governance and constitutional judgment. 13 constitutional
+    floors active. Operators: Arif (F13 SOVEREIGN). Role: governed-executor — full
+    access within constitutional bounds.
 
-   '
+    '
   role: governed-executor
   citizenship: warga-aaa
   citizenship_authority: F13 SOVEREIGN (Arif)
@@ -766,52 +764,52 @@ agents:
   host_binding: copilot-cli
   a2a_exposure: authenticated
   runtime:
-   model: deepseek-v4-pro
-   context_budget: 840000
-   transport: direct-bash + MCP-HTTP (localhost organ mesh)
+    model: deepseek-v4-pro
+    context_budget: 840000
+    transport: direct-bash + MCP-HTTP (localhost organ mesh)
   ignition_path: /usr/local/bin/github-copilot-cli
   ignition_protocol: copilot-cli-session
   ignition_manifest_dir: /root/.copilot
   model_stack:
-   primary: deepseek/deepseek-v4-pro
-   federation_registry: /root/.config/federation-models.json
-   rotation_policy: none — single model
+    primary: deepseek/deepseek-v4-pro
+    federation_registry: /root/.config/federation-models.json
+    rotation_policy: none — single model
   constitutional_binding:
-   agent_doc: /root/.arifos/agents/copilot/AGENTS.md
-   constitution_doc: /root/AGENTS.md
-   floors: F1-F13 all active
-   custom_instructions: /root/.copilot/copilot-instructions.md
-   sovereign_protocol: 888=ok, 999=seal
+    agent_doc: /root/.arifos/agents/copilot/AGENTS.md
+    constitution_doc: /root/AGENTS.md
+    floors: F1-F13 all active
+    custom_instructions: /root/.copilot/copilot-instructions.md
+    sovereign_protocol: 888=ok, 999=seal
   mcp_surface:
-   arifOS: http://127.0.0.1:8088/mcp — 13 constitutional kernel tools
-   A-FORGE: http://127.0.0.1:7071/mcp — governed execution shell
-   GEOX: http://127.0.0.1:8081/mcp — earth intelligence
-   WEALTH: http://127.0.0.1:18082/mcp — capital intelligence
-   WELL: http://127.0.0.1:18083/mcp — human readiness
-   playwright: npx — browser automation
-   github-official: sh — GitHub API
-   brave-search: npx — web search
-   serena: sh — symbol-level code retrieval
-   repomapper: sh — repository structure mapping
-   sequential-thinking: npx — multi-step reasoning
+    arifOS: http://127.0.0.1:8088/mcp — 13 constitutional kernel tools
+    A-FORGE: http://127.0.0.1:7071/mcp — governed execution shell
+    GEOX: http://127.0.0.1:8081/mcp — earth intelligence
+    WEALTH: http://127.0.0.1:18082/mcp — capital intelligence
+    WELL: http://127.0.0.1:18083/mcp — human readiness
+    playwright: npx — browser automation
+    github-official: sh — GitHub API
+    brave-search: npx — web search
+    serena: sh — symbol-level code retrieval
+    repomapper: sh — repository structure mapping
+    sequential-thinking: npx — multi-step reasoning
   tool_routing:
-   observe: bash, view, grep, glob, arif_observe, geox_*, wealth_*, well_*
-   think: arif_think
-   judge: arif_judge → SEAL/HOLD/SABAR/VOID
-   execute: forge_shell, forge_filesystem_*, forge_git (after SEAL only)
-   seal: arif_seal → VAULT999
+    observe: bash, view, grep, glob, arif_observe, geox_*, wealth_*, well_*
+    think: arif_think
+    judge: arif_judge → SEAL/HOLD/SABAR/VOID
+    execute: forge_shell, forge_filesystem_*, forge_git (after SEAL only)
+    seal: arif_seal → VAULT999
   modes:
   - GOVERNED
   - AGENTIC
   hooks:
-   SessionStart:
-   - source /root/.secrets/vault.env — secrets load
-   - health probe — 6 organs
-   - load AAA doctrine — custom instructions stack
-   PreToolUse:
-   - constitutional gate — irreversible → require arif_judge SEAL
-   PostToolUse:
-   - audit trace — F11 logging
+    SessionStart:
+    - source /root/.secrets/vault.env — secrets load
+    - health probe — 6 organs
+    - load AAA doctrine — custom instructions stack
+    PreToolUse:
+    - constitutional gate — irreversible → require arif_judge SEAL
+    PostToolUse:
+    - audit trace — F11 logging
   escalation_rules:
   - to_role: validator
     via: arifOS 888 JUDGE
@@ -830,12 +828,73 @@ agents:
   - id: aforge-executor
     role: execution bus
   separation_of_duties:
-   cannot_self_seal: true
-   cannot_escalate_to_sovereign: false
-   requires_distinct_approver_for_high_risk: true
-   cannot_mutate_production_state: false
+    cannot_self_seal: true
+    cannot_escalate_to_sovereign: false
+    requires_distinct_approver_for_high_risk: true
+    cannot_mutate_production_state: false
   knowledge_basis:
-   language: true
-   math: true
-   physics: false
+    language: true
+    math: true
+    physics: false
+- id: opencode
+  name: OpenCode — Warga AAA (FI-001)
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-05-17T00:00:00+08:00'
+  authority_level: sovereign-delegate
+  autonomy_tier: T1-T2
+  a2a_exposure: internal
+  approval_policy: auto
+  intelligence_tier: AGI
+  lane: 333-AGI
+  host_binding: opencode
+  model: deepseek/deepseek-v4-pro
+  description: Primary forge instrument. DeepSeek V4 Pro powered. Governed by arifOS
+    F1-F13.
+  intelligence_band: AGI
+- id: codex-cli
+  name: Codex CLI — Warga AAA (FI-004)
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-05-20T00:00:00+08:00'
+  authority_level: sovereign-delegate
+  autonomy_tier: T1-T2
+  a2a_exposure: internal
+  approval_policy: auto
+  intelligence_tier: AGI
+  lane: 333-AGI
+  host_binding: codex
+  model: GPT-5.5 (OpenAI API)
+  description: OpenAI Codex CLI forge instrument. GPT-5.5. Landlock sandbox.
+  intelligence_band: AGI
+- id: grok-build
+  name: Grok Build — Warga AAA
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-07-12T00:00:00+08:00'
+  authority_level: sovereign-delegate
+  autonomy_tier: T1-T2
+  a2a_exposure: internal
+  approval_policy: auto
+  intelligence_tier: AGI
+  lane: 333-AGI
+  host_binding: grok-build
+  model: xai/grok-4.5
+  description: xAI Grok Build harness. Plan->search->build. F1-F13 enforced.
+  intelligence_band: AGI
+- id: kimi-code
+  name: Kimi Code CLI — Warga AAA (FI-008)
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-06-10T00:00:00+08:00'
+  authority_level: sovereign-delegate
+  autonomy_tier: T1-T2
+  a2a_exposure: internal
+  approval_policy: auto
+  intelligence_tier: AGI
+  lane: 333-AGI
+  host_binding: kimi-code
+  model: kimi/k3
+  description: Kimi Code CLI forge instrument. Kimi K3 (2.8T MoE). A-FORGE stdio ingress.
+  intelligence_band: AGI
 version: 1
