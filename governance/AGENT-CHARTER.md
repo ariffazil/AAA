@@ -9,8 +9,8 @@
 
 Leave fewer contradictions, fewer duplicate sources, a smaller decision surface, and one verified next step. If an artefact does not make the next agent's work simpler, more truthful, or more reversible, do not add it.
 
-**Plane physics (AAA scalar governor):**  
-`/root/AAA/governance/CODEX_AGENT_BEHAVIORAL_CONTRACT.md` — Δ Python · Ω TypeScript · Ψ Rust; G-fold only via `arif_think(mode='apex')`. Draft pending F13 seal.
+**Language Zen governor (v1.1-DRAFT):**  
+`/root/AAA/governance/CODEX_AGENT_BEHAVIORAL_CONTRACT.md` — default territories (not absolute bans); G-fold via `arif_think(mode='apex')`; entropy only when \(\Delta H_{code}\) measured. F13 seal pending.
 
 ## Working rules
 
