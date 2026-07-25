@@ -464,3 +464,55 @@ host_contracts:
     requires_arifos_judgment_for:
     - any-execution
     deny_if_unsealed: true
+- id: grok-build
+  name: Grok Build
+  host_class: cli
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .grok
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: medium
+    remote_execution_enabled: false
+  governance:
+    requires_arifos_judgment_for:
+    - remote-write
+    - execution-request
+    requires_vault_seal_for:
+    - deploy
+    deny_if_unsealed: true
+- id: kimi-code
+  name: Kimi Code CLI
+  host_class: cli
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .kimi
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: medium
+    remote_execution_enabled: false
+  governance:
+    requires_arifos_judgment_for:
+    - remote-write
+    - execution-request
+    requires_vault_seal_for:
+    - deploy
+    deny_if_unsealed: true

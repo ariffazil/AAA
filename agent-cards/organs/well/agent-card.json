@@ -1,75 +1,266 @@
 {
-  "$schema": "arifOS/agent-card/v2.3.0",
-  "schemaVersion": "2.3.0",
-  "id": "well",
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "well-mcp",
+  "protocolVersion": "1.2",
+  "agentId": "well",
   "name": "WELL",
-  "description": "Human readiness — vitality, fatigue, dignity",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Human readiness — REFLECT_ONLY, never diagnose nor adjudicate",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "REFLECT-666",
+    "intelligence_tier": "ASI",
+    "authority_level": "REFLECT_ONLY",
+    "citizenship_forged": "2026-05-17"
+  },
+  "description": "Human readiness and vitality \u2014 substrate classification, dignity guard, homeostasis, dark geometry mirror.",
   "version": "1.0.0",
-  "protocolVersion": "1.0",
-  "url": "http://127.0.0.1:18083/mcp",
   "provider": {
-    "organization": "arifOS by Muhammad Arif bin Fazil",
-    "url": "https://arif-fazil.com"
+    "organization": "arifOS",
+    "system": "AAA"
   },
   "capabilities": {
-    "streaming": true
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
   },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
   "defaultInputModes": [
+    "text/plain",
     "application/json"
   ],
   "defaultOutputModes": [
+    "text/plain",
     "application/json"
   ],
-  "skills": [],
-  "registry_receipt_hash": "sha256:4a6b2df527eef04e",
-  "registry_snapshot_at": "2026-07-16T19:52:09.518774+00:00",
-  "registry_source": [
-    "source_enumeration",
-    "mcp_tools_list"
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "well_classify_substrate",
+      "name": "Classify Substrate",
+      "description": "Substrate classification and boundary sensing.",
+      "tags": [
+        "classification"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_detect_boundary",
+      "name": "Detect Boundary",
+      "description": "Membrane, body, machine, federation.",
+      "tags": [
+        "boundary"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_measure_gradient",
+      "name": "Measure Gradient",
+      "description": "Chemical, energy, pressure, attention.",
+      "tags": [
+        "gradient"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_metabolism",
+      "name": "Assess Metabolism",
+      "description": "Biological metabolism and throughput.",
+      "tags": [
+        "metabolism"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_homeostasis",
+      "name": "Assess Homeostasis",
+      "description": "Regulation, stability, fatigue.",
+      "tags": [
+        "homeostasis"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_check_repair",
+      "name": "Check Repair",
+      "description": "Recovery, resilience, forge integrity.",
+      "tags": [
+        "repair"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_validate_vitality",
+      "name": "Validate Vitality",
+      "description": "Vitality, readiness, NIAT.",
+      "tags": [
+        "vitality"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_livelihood",
+      "name": "Assess Livelihood",
+      "description": "Human wellness, role, dignity.",
+      "tags": [
+        "livelihood"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_assess_reliability",
+      "name": "Assess Reliability",
+      "description": "Machine, tool, institution reliability.",
+      "tags": [
+        "reliability"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_guard_dignity",
+      "name": "Guard Dignity",
+      "description": "Soul, personhood, symbolic boundaries.",
+      "tags": [
+        "dignity"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_trace_lineage",
+      "name": "Trace Lineage",
+      "description": "Memory, trend, ledger, vault chain.",
+      "tags": [
+        "lineage"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_signal_coverage",
+      "name": "Signal Coverage",
+      "description": "Audit canonical human substrate signals.",
+      "tags": [
+        "audit"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_classify_state",
+      "name": "Classify State",
+      "description": "Polyvagal + SDT psychological state.",
+      "tags": [
+        "psychology"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "well_dark_geometry_mirror",
+      "name": "Dark Geometry Mirror",
+      "description": "Mirror language for dark patterns.",
+      "tags": [
+        "dark-geometry"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
   ],
-  "registry_tool_count": {
-    "source": 29,
-    "registry": 29
-  },
-  "registry_drift": {
-    "source_to_registry": [],
-    "source_to_registry_drift_pct": 100.0
-  },
-  "admissible": true,
-  "mcp_surface": {
-    "type": "exposed",
-    "endpoints": [
-      {
-        "url": "http://127.0.0.1:18083/mcp",
-        "tool_count": 29,
-        "tools": [
-          "well_13_signal_coverage",
-          "well_assess_homeostasis",
-          "well_assess_livelihood",
-          "well_assess_metabolism",
-          "well_assess_reliability",
-          "well_assess_sovereign_entropy",
-          "well_attest_to_kernel",
-          "well_check_repair",
-          "well_classify_state",
-          "well_classify_substrate",
-          "well_compute_metabolic_flux",
-          "well_correction_capacity",
-          "well_dark_geometry_mirror",
-          "well_detect_boundary",
-          "well_guard_dignity",
-          "well_handoff_dignity_to_arifos",
-          "well_handoff_livelihood_to_wealth",
-          "well_health_check",
-          "well_measure_gradient",
-          "well_medical_boundary"
-        ],
-        "key_lanes": [],
-        "version": "2026-07-16",
-        "registry_receipt_hash": "sha256:4a6b2df527eef04e"
-      }
-    ]
-  },
-  "status": "live",
-  "registry_truth": "VERIFIED"
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "Ktb7ZXXlt5aqjiiphSGEFDW9g3mMzzzcREUDrF+E7veSoTFROrSjvG2irUa8j1mBcwvr3bQgGuTn+ZwVb484AA==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
 }

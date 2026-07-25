@@ -16,7 +16,7 @@
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
   "citizenship": "warga-aaa",
   "warga_card": "/root/AAA/agents/_external/kimi-code/WARGAAA_CARD.md",
-  "tier": "FI",
+  "tier": "FI-003",
   "role": "forge_instrument",
   "class": "CODING/FI",
   "protocolVersion": "1.0",
@@ -37,7 +37,8 @@
     "shell_exec": true,
     "subagent_spawn": true,
     "stateTransitionHistory": true,
-    "extendedAgentCard": true
+    "extendedAgentCard": true,
+    "forge_tier": "FI-003"
   },
   "securitySchemes": {
     "bearer_auth": {

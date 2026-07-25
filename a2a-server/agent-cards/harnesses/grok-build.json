@@ -33,7 +33,8 @@
     "evidence_receipts": true,
     "pushNotifications": false,
     "stateTransitionHistory": true,
-    "extendedAgentCard": true
+    "extendedAgentCard": true,
+    "forge_tier": "FI-008"
   },
   "securitySchemes": {
     "bearer_auth": {
@@ -341,7 +342,7 @@
     "SHADOW-diagnostic",
     "CLAIM-verification-gate"
   ],
-  "tier": "AGI",
+  "tier": "FI-008",
   "role": "build-harness / forge-citizen / agentic-cli",
   "class": "HARNESS",
   "transport": "CLI_TUI + ACP + HEADLESS + MCP",

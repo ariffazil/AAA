@@ -1,75 +1,238 @@
 {
-  "$schema": "arifOS/agent-card/v2.3.0",
-  "schemaVersion": "2.3.0",
-  "id": "aforge",
-  "name": "A-FORGE",
-  "description": "Execution shell — build, deploy, orchestrate",
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "a-forge-mcp",
+  "protocolVersion": "1.2",
+  "agentId": "a-forge-mcp",
+  "name": "A-FORGE Execution Shell",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Execution shell — governed by FORGE (777) lane",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "FORGE-777",
+    "intelligence_tier": "FORGE",
+    "authority_level": "executor",
+    "citizenship_forged": "2026-05-17"
+  },
+  "description": "Governed execution actuator. Hands, not law. Build, deploy, orchestrate, document, git.",
   "version": "1.0.0",
-  "protocolVersion": "1.0",
-  "url": "http://127.0.0.1:7072/mcp",
   "provider": {
-    "organization": "arifOS by Muhammad Arif bin Fazil",
-    "url": "https://arif-fazil.com"
+    "organization": "arifOS",
+    "system": "AAA"
   },
   "capabilities": {
-    "streaming": true
+    "streaming": true,
+    "pushNotifications": false,
+    "stateTransitionHistory": true,
+    "extendedAgentCard": true
   },
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.2",
+      "url": "https://aaa.arif-fazil.com/a2a"
+    }
+  ],
   "defaultInputModes": [
+    "text/plain",
     "application/json"
   ],
   "defaultOutputModes": [
+    "text/plain",
     "application/json"
   ],
-  "skills": [],
-  "registry_receipt_hash": "sha256:b67b71b481a2c068",
-  "registry_snapshot_at": "2026-07-16T19:52:09.518774+00:00",
-  "registry_source": [
-    "source_enumeration",
-    "mcp_tools_list"
+  "securitySchemes": {
+    "bearer": {
+      "scheme": "bearer",
+      "description": "AAA-issued JWT bearer token"
+    },
+    "apikey": {
+      "scheme": "apikey",
+      "in": "header",
+      "name": "x-a2a-key"
+    }
+  },
+  "skills": [
+    {
+      "id": "forge_shell",
+      "name": "Governed Shell",
+      "description": "Constitutional shell with Judge+Seal gate.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_filesystem",
+      "name": "Governed FS",
+      "description": "Read, write, patch, glob, grep, tree.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_git",
+      "name": "Governed Git",
+      "description": "Status, diff, log, commit, push.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_docker",
+      "name": "Governed Docker",
+      "description": "PS, logs, exec. Destructive ops blocked.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_browser",
+      "name": "Playwright Browser",
+      "description": "Navigate, click, screenshot, JS eval.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_fetch",
+      "name": "Governed Fetch",
+      "description": "URL fetch + SearxNG search. SSRF-protected.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_execute",
+      "name": "Execution Engine",
+      "description": "Execute post-SEAL with cc_id.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_parallel",
+      "name": "Parallel Fan-Out",
+      "description": "Spawn N concurrent A2A tasks.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_vps",
+      "name": "VPS Management",
+      "description": "Ports, services, cron, security telemetry.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_evaluate",
+      "name": "APEX Gate",
+      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_seal",
+      "name": "Skill Seal",
+      "description": "VAULT999 permanent skill seal.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_reality_loop",
+      "name": "Reality Loop",
+      "description": "7-stage intent compiler.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    }
   ],
-  "registry_tool_count": {
-    "source": 109,
-    "registry": 109
-  },
-  "registry_drift": {
-    "source_to_registry": [],
-    "source_to_registry_drift_pct": 100.0
-  },
-  "admissible": true,
-  "mcp_surface": {
-    "type": "exposed",
-    "endpoints": [
-      {
-        "url": "http://127.0.0.1:7072/mcp",
-        "tool_count": 109,
-        "tools": [
-          "forge_abort",
-          "forge_agent",
-          "forge_approve",
-          "forge_browser_click",
-          "forge_browser_evaluate_js",
-          "forge_browser_extract_text",
-          "forge_browser_navigate",
-          "forge_browser_screenshot",
-          "forge_browser_type",
-          "forge_canonize",
-          "forge_chart",
-          "forge_check_governance",
-          "forge_cool_drift",
-          "forge_cool_pattern",
-          "forge_docker",
-          "forge_docket_prep",
-          "forge_docs_lookup",
-          "forge_document_ingest",
-          "forge_entropy_sweep",
-          "forge_evaluate"
-        ],
-        "key_lanes": [],
-        "version": "2026-07-16",
-        "registry_receipt_hash": "sha256:b67b71b481a2c068"
-      }
-    ]
-  },
-  "status": "live",
-  "registry_truth": "VERIFIED"
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "ULnF77oWnwEusJIky1VwuE+ooiSAAB+R8cSbaD7GR+dYqulJdyElT7UV6vDjO07f+LmGTd3cRtapX+ruoK8iBg==",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-12T23:25:58Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "did": "did:web:arif-fazil.com"
 }

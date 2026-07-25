@@ -206,3 +206,43 @@ hosts:
   - id: bounded-test
     default: true
     approval_policy: announce
+- id: grok-build
+  name: Grok Build
+  host_type: local-cli
+  status: active
+  added: '2026-07-25'
+  added_by: opencode-federation-audit
+  version: 2.0.0
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .grok
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+- id: kimi-code
+  name: Kimi Code CLI
+  host_type: local-cli
+  status: active
+  added: '2026-07-25'
+  added_by: opencode-federation-audit
+  version: 1.47.0
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .kimi
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto

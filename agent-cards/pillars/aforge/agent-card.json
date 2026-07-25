@@ -44,63 +44,182 @@
   },
   "skills": [
     {
-      "id": "governed-execution",
-      "name": "Governed Execution",
-      "description": "Engineer/dry_run/query modes. Requires prior SEAL.",
+      "id": "forge_shell",
+      "name": "Governed Shell",
+      "description": "Constitutional shell with Judge+Seal gate.",
       "tags": [
-        "forge",
-        "execute",
-        "f1"
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "cross-organ-orchestration",
-      "name": "Cross-Organ Orchestration",
-      "description": "Multi-step workflows across organs via A2A.",
+      "id": "forge_filesystem",
+      "name": "Governed FS",
+      "description": "Read, write, patch, glob, grep, tree.",
       "tags": [
-        "forge",
-        "orchestrate",
-        "f4"
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "document-intelligence",
-      "name": "Document Intelligence",
-      "description": "PDF/image extraction, OCR, structured parsing.",
+      "id": "forge_git",
+      "name": "Governed Git",
+      "description": "Status, diff, log, commit, push.",
       "tags": [
-        "forge",
-        "documents",
-        "f2"
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "git-operations",
-      "name": "Git Operations",
-      "description": "Commit, push, PR lifecycle. SEAL-verified.",
+      "id": "forge_docker",
+      "name": "Governed Docker",
+      "description": "PS, logs, exec. Destructive ops blocked.",
       "tags": [
-        "forge",
-        "git",
-        "f1"
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     },
     {
-      "id": "lease-acquisition",
-      "name": "Lease Acquisition",
-      "description": "Resource lease lifecycle with blast radius caps.",
+      "id": "forge_browser",
+      "name": "Playwright Browser",
+      "description": "Navigate, click, screenshot, JS eval.",
       "tags": [
-        "forge",
-        "lease",
-        "f1"
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_fetch",
+      "name": "Governed Fetch",
+      "description": "URL fetch + SearxNG search. SSRF-protected.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_execute",
+      "name": "Execution Engine",
+      "description": "Execute post-SEAL with cc_id.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_parallel",
+      "name": "Parallel Fan-Out",
+      "description": "Spawn N concurrent A2A tasks.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_vps",
+      "name": "VPS Management",
+      "description": "Ports, services, cron, security telemetry.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_evaluate",
+      "name": "APEX Gate",
+      "description": "Compute G = A\u00b7P\u00b7E\u00b7X\u00b7\u03a6.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_seal",
+      "name": "Skill Seal",
+      "description": "VAULT999 permanent skill seal.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
+      ]
+    },
+    {
+      "id": "forge_reality_loop",
+      "name": "Reality Loop",
+      "description": "7-stage intent compiler.",
+      "tags": [
+        "actuator"
+      ],
+      "inputModes": [
+        "application/json"
+      ],
+      "outputModes": [
+        "application/json"
       ]
     }
   ],
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "vv8LkwN/jQ6plAyMvhZn3M225uWziC0he0HSgI+IqGD8aZ5cQuAjGASPlqsHpMLxBC2zCBbM6aZybxGSFTDUCA==",
+      "proofValue": "ULnF77oWnwEusJIky1VwuE+ooiSAAB+R8cSbaD7GR+dYqulJdyElT7UV6vDjO07f+LmGTd3cRtapX+ruoK8iBg==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T23:36:09Z",
+      "created": "2026-07-12T23:25:58Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "did": "did:web:arif-fazil.com"
 }
