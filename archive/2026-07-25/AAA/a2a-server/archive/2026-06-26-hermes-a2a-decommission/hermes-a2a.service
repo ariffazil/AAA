@@ -1,0 +1,26 @@
+[Unit]
+Description=Hermes A2A Bridge — AAA federation agent mesh
+Documentation=https://arif-fazil.com/AAA
+After=network.target openclaw-gateway.service
+Wants=openclaw-gateway.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/lib/hermes-agent/venv/bin/python3 /opt/arifOS/a2a-adapters/hermes-a2a.py
+Restart=always
+RestartSec=5
+TimeoutStopSec=30
+User=root
+Group=root
+StandardOutput=journal
+StandardError=journal
+# Harden: no new privileges, no ambient capabilities
+NoNewPrivileges=false
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/tmp /var/log
+# Load AAA env for TELEGRAM_TOKEN and OPENCLAW_TOKEN
+EnvironmentFile=/root/.secrets/vault.flat.env
+
+[Install]
+WantedBy=multi-user.target
