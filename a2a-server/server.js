@@ -2491,21 +2491,33 @@ mountMcpAppsToolsCall(app);
 app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   const { targetAgent, message, skill, taskId } = req.body;
   
+  // ── CANONICAL ACTORS — 33-agent federation geometry (forged 2026-07-25) ──
+  // Every agent in the A2A registry must be here for live-wire routing.
   const CANONICAL_ACTORS = new Set([
-    'aaa-architect',
-    'aaa-engineer',
-    'aaa-auditor',
-    'hermes',
-    'antigravity',
-    'arifos',
-    'aforge',
-    'geox',
-    'wealth',
-    'well',
-    'openclaw',
-    'forge',
-    '777-forge',
-    'anonymous',
+    // IDENTITY — Δ / Ω / Ψ
+    '333-AGI', '555-ASI', '888-APEX',
+    // ORGANS — institutional body
+    'arifos', 'arifos-organ', 'arifos-kernel',
+    'aforge', 'aforge-organ', 'aforge-executor', 'aforge-pillar',
+    'geox', 'geox-organ', 'geox-witness', 'geox-personal',
+    'wealth', 'wealth-organ', 'wealth-witness',
+    'well', 'well-organ', 'well-witness',
+    // EXTENSIONS — external cognition
+    'hermes', 'hermes-asi', 'makcikgpt',
+    // FORGE HARNESSES — execution substrate
+    'forge', '777-forge',
+    'opencode', 'claude-code', 'kimi-code',
+    'codex', 'codex-cli', 'copilot', 'copilot-cli',
+    'grok-build', 'antigravity', 'gemini-cli',
+    'aider', 'qwen-code', 'continue-cli',
+    // GATEWAY — topology spine
+    'openclaw', 'aaa-gateway', 'aaa-architect', 'aaa-engineer', 'aaa-auditor',
+    // EXPLORATION + PERSONA
+    'prospect-maturation', 'arifos-bot',
+    // SOVEREIGN
+    'ARIF_FAZIL',
+    // META
+    'anonymous', 'mesa-test-agent',
   ]);
 
   const sourceAgent = req.body?.envelope?.actor_id || req.body?.params?.envelope?.actor_id || 'anonymous';
@@ -3900,7 +3912,108 @@ app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware
 });
 
 // ═══════════════════════════════════════════════════════════════════════════
-// === UNIFIED JSON-RPC DISPATCHER — POST /a2a (A2A v1.0.0 Spec-Compliant) ===
+// === Δ→Ω→Ψ GOAL DECOMPOSITION — Encoder→Jacobian→Decoder→Metabolizer ===
+// ═══════════════════════════════════════════════════════════════════════════
+// Routes "Forge X" through the Jacobian space:
+//   1. Encoder (goal_decomposition.js)  − G → T + J
+//   2. Decoder (task_routing.js)        − T + J → A2A envelopes
+//   3. Metabolizer (metabolizer_loop.js)− init session, track results
+// DITEMPA BUKAN DIBERI — Forged 2026-07-25
+// ═══════════════════════════════════════════════════════════════════════════
+
+const { encodeGoalToTasks, buildJacobian } = require('./goal_decomposition');
+const { decodeTasksToEnvelopes } = require('./task_routing');
+const { initMetabolism, getMetabolismState } = require('./metabolizer_loop');
+
+app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
+  try {
+    const { id, params } = req.jsonrpc || req.body;
+    const rawGoal = params?.goal || req.body?.goal;
+
+    if (!rawGoal || typeof rawGoal !== 'string') {
+      return res.status(400).json({
+        jsonrpc: '2.0', id: id || 1,
+        error: { code: -32602, message: 'goal string required' }
+      });
+    }
+
+    // ── 1. Build Goal object ───────────────────────────────────────
+    const G = {
+      id: params?.goal_id || `g-${crypto.randomUUID().slice(0, 8)}`,
+      actor: params?.actor || 'human',
+      intent: rawGoal,
+      constraints: params?.constraints || [],
+      org_scope: params?.org_scope || ['333-AGI', 'opencode', 'A-FORGE'],
+      riskband: params?.riskband || 'medium',
+      time_horizon: params?.time_horizon || 30,
+      source: params?.source || 'human',
+    };
+
+    // ── 2. Encoder: G → T + J ─────────────────────────────────────
+    const encoded = encodeGoalToTasks(G);
+    const J = buildJacobian(G, encoded.tasks);
+
+    // ── 3. Decoder: T + J → A2A envelopes ─────────────────────────
+    const routed = decodeTasksToEnvelopes(encoded.tasks, J, G);
+
+    // ── 4. Metabolizer: init session ───────────────────────────────
+    initMetabolism({ goal_id: G.id }, encoded.tasks, J);
+
+    // Log
+    console.log(`[Δ→Ω→Ψ] ${routed.envelopes.length} tasks from "${rawGoal.slice(0, 60)}"`);
+
+    res.json({
+      jsonrpc: '2.0', id: id || 1,
+      result: {
+        pipeline: 'encoder→jacobian→decoder→metabolizer',
+        goal_id: G.id,
+        goal: rawGoal,
+        task_count: encoded.task_count,
+        tasks: encoded.tasks.map(t => ({
+          id: t.id, intent: t.intent, agent: t.agent,
+          ring: t.ring, skill: t.skill, priority: t.priority,
+          depends_on: t.depends_on,
+        })),
+        jacobian: {
+          fields: J.fields,
+          matrix: J.matrix.map((row, i) => ({
+            task: encoded.tasks[i]?.id,
+            sensitivities: row,
+          })),
+        },
+        envelopes: routed.envelopes.map(e => ({
+          task_id: e.task_id, target: e.target,
+          ring: e.ring, receipt_hash: e.receipt_hash,
+        })),
+        dispatch_order: routed.dependency_order,
+        summary: routed.summary,
+        encoded_receipt: encoded.receipt,
+        dispatch_receipt: routed.receipt,
+        metabolic_session: G.id,
+      }
+    });
+  } catch (error) {
+    console.error('[Δ→Ω→Ψ] decompose error:', error.message);
+    res.status(500).json({
+      jsonrpc: '2.0', id: req.body?.id || 1,
+      error: { code: -32603, message: error.message }
+    });
+  }
+});
+
+// ── GET /a2a/goal/:goalId/status — metabolizer status ──────────────────
+app.get('/a2a/goal/:goalId/status', (req, res) => {
+  const state = getMetabolismState(req.params.goalId);
+  if (!state) {
+    return res.status(404).json({
+      jsonrpc: '2.0', id: 1,
+      error: { code: -32001, message: `Goal ${req.params.goalId} not found or already sealed` }
+    });
+  }
+  res.json({ jsonrpc: '2.0', id: 1, result: state });
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════════════════════════════
 //
 // A2A spec expects agents to POST JSON-RPC 2.0 to a single /a2a endpoint.
