@@ -184,3 +184,7 @@ auth/keys/
 Copilot/
 skills/.system/
 CONTRIBUTING.md
+
+# Runtime State Files (OpenClaw writes, Hermes reads)
+state/*.json
+state/*.tmp.json
