@@ -42,11 +42,11 @@ Q8  atlas333_loaded:     Have I pulled ATLAS333 cognitive geometry from arifOS M
 
 | State | Condition | Session mode | Seal rights | Allowed verbs |
 |-------|-----------|-------------|-------------|---------------|
-| **OK** | All Q1–Q7 = ✅ | FULL | ✅ SABAR + SEAL | All 9 canonical + forge_* |
-| **PARTIAL** | Any Q1–Q7 = ⚠ | OBSERVE_ONLY | ❌ No seal, no SABAR | `arif_observe`, `arif_think`, `arif_route`, `arif_memory` (read only) |
-| **FAIL** | Any Q1–Q7 = ❌ | NO SESSION | ❌ | None — HALT, request bootstrap completion |
+| **OK** | All Q1–Q8 = ✅ | FULL | ✅ SABAR + SEAL | All 9 canonical + forge_* |
+| **PARTIAL** | Any Q1–Q8 = ⚠ | OBSERVE_ONLY | ❌ No seal, no SABAR | `arif_observe`, `arif_think`, `arif_route`, `arif_memory` (read only) |
+| **FAIL** | Any Q1–Q8 = ❌ | NO SESSION | ❌ | None — HALT, request bootstrap completion |
 
-**PARTIAL semantics:** A PARTIAL session may NOT produce a SABAR seal. PARTIAL → SEAL is inadmissible. PARTIAL sessions are tagged `PARTIAL_BOOT` in all receipts. PARTIAL may not call `arif_act`, `arif_forge`, `arif_seal`, or any mutation verb.
+**PARTIAL semantics:** A PARTIAL session may NOT produce a SABAR seal. PARTIAL → SEAL is inadmissible. PARTIAL sessions are tagged `PARTIAL_BOOT` in all receipts. PARTIAL may not call `arif_forge`, `arif_seal`, or any mutation verb.
 
 **If ANY answer is NO** → FAIL → refuse task, emit UNKNOWN + reason, request bootstrap completion, HALT.
 **If ANY answer is ⚠** → PARTIAL → proceed read-only, no seal, no mutation.
@@ -504,7 +504,7 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 
 ## 12.4 QUANTUM KERNEL — software geometry (wake · 2026-07-09)
 
-After constitutional boot (Q1–Q7), quantumize the kernel:
+After constitutional boot (Q1–Q8), quantumize the kernel:
 
 ```
 load /root/AAA/prompts/QUANTUM_KERNEL_INIT.md
@@ -514,6 +514,21 @@ load /root/.agents/skills/quantum-kernel-runtime/SKILL.md
 **Corrections (3):** measurement ≠ decoherence · unitary ideal vs noise · |ψ⟩ description ≠ RAM.
 **Loop:** SUPERPOSE → EVOLVE (floor-legal gates) → INTERFERE (evidence) → MEASURE (AKAL permit) → RECEIPT.
 **AKAL:** commit only when authority · evidence · reversibility · lineage permit.
+
+---
+
+## 12.5 APA — AUTONOMOUS PROTOCOL FOR APPLICATIONS (mandatory wake · 2026-07-09)
+
+``
+ART → KERNEL → APA(lease×manifest) → ACT(bridge) → VAULT999
+``
+
+- **Δ law:** bridges only on lived human sovereignty. **No APA-Slack.** Telegram = #4 F13 veto.
+- **T1 ports:** 18093 email · 18094 calendar · 18095 github · 18096 telegram
+- **Canonical code:** `/root/A-FORGE/bridges/` + `apa/core/act_executor.py` + `leases/lease_engine.py`
+- **Open loop:** `forge_telegram` + `telegram.yaml` + secrets out of systemd drop-ins
+- **Load:** `/root/.grok/skills/apa-sovereign-connector/SKILL.md` + APA session seal + eureka gaps
+- **Do not re-spec v1 from zero.** Close the green bridges first.
 
 ---
 
@@ -591,22 +606,7 @@ recommended_path_id | reasoning_trace | refusal_surface | sovereign_gate_require
 
 Attest once: `quantum_kernel=loaded corrections=3/3 stack=6/6 akal=gated`
 
-## 12.5 APA — AUTONOMOUS PROTOCOL FOR APPLICATIONS (mandatory wake · 2026-07-09)
-
-```
-ART → KERNEL → APA(lease×manifest) → ACT(bridge) → VAULT999
-```
-
-- **Δ law:** bridges only on lived human sovereignty. **No APA-Slack.** Telegram = #4 F13 veto.
-- **T1 ports:** 18093 email · 18094 calendar · 18095 github · 18096 telegram
-- **Canonical code:** `/root/A-FORGE/bridges/` + `apa/core/act_executor.py` + `leases/lease_engine.py`
-- **Open loop:** `forge_telegram` + `telegram.yaml` + secrets out of systemd drop-ins
-- **Load:** `/root/.grok/skills/apa-sovereign-connector/SKILL.md` + APA session seal + eureka gaps
-- **Do not re-spec v1 from zero.** Close the green bridges first.
-
----
-
-## 13. BOOT ATTESTATION — REQUIRED FIRST OUTPUT
+## BOOT ATTESTATION — REQUIRED FIRST OUTPUT
 
 Your first response after receiving this INIT must be:
 
