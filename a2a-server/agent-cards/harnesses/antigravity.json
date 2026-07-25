@@ -11,7 +11,7 @@
   "version": "1.0.10",
   "model": "Gemini 3.5 Flash (High)",
   "binary": "/root/.local/bin/agy",
-  "tier": "FI",
+  "tier": "FI-009",
   "role": "forge_instrument",
   "class": "CODING/FI",
   "protocolVersion": "1.0",
@@ -30,7 +30,8 @@
     "file_read": true,
     "file_write": true,
     "shell_exec": true,
-    "subagent_spawn": true
+    "subagent_spawn": true,
+    "forge_tier": "FI-004"
   },
   "securitySchemes": {
     "bearer_auth": {

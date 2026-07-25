@@ -1,0 +1,80 @@
+{
+  "id": "grok-build",
+  "agent_id": "grok-build",
+  "name": "Grok Build",
+  "class": "FORGE_INSTRUMENT",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Forge instrument — governed by 333-AGI (Delta MIND)",
+    "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "engineer",
+    "citizenship_forged": "2026-07-12"
+  },
+  "description": "Grok Build harness (xAI) — governed forge instrument. Plan→search→build, superior parallelism (worktree/subagents). F1-F13 enforced.",
+  "version": "2.0.0",
+  "model": "xai/grok-4.5",
+  "fallback_model": "xai/grok-build-0.1",
+  "izin": "GRANTED",
+  "izin_date": "2026-07-12",
+  "sandbox": "process",
+  "binary": "/root/.kimi-code/bin/grok",
+  "mcpServers": ["arifOS", "geox", "wealth", "well", "aforge"],
+  "authority": "engineer",
+  "riskTier": "medium",
+  "protocolVersion": "1.0",
+  "securitySchemes": {
+    "bearer_auth": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "JWT",
+      "description": "arifOS session token (JWT) issued after 000-SALAM sovereign handshake"
+    },
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "x-a2a-key",
+      "description": "Static federation API key for organ-to-organ calls"
+    }
+  },
+  "security": [
+    { "bearer_auth": [] },
+    { "api_key": [] }
+  ],
+  "supportedInterfaces": [
+    {
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0",
+      "url": "https://aaa.arif-fazil.com/a2a/"
+    }
+  ],
+  "signatures": [
+    {
+      "did": "did:arif:aaa",
+      "proofValue": "grok-build-ed25519-seal-2026-07-25",
+      "proofPurpose": "assertionMethod",
+      "created": "2026-07-25T00:00:00Z",
+      "type": "Ed25519Signature2020"
+    }
+  ],
+  "metadata": {
+    "kernel_deps": [
+      "KERNEL-trinity-33", "KERNEL-session-inhabit", "KERNEL-sovereign-recognize",
+      "KERNEL-verbs-forge-hands", "KERNEL-quantum-runtime"
+    ],
+    "rsi_doctrine": "RSI-recursive-improvement",
+    "substrate_bind": "2026-07-12T18:30:00Z"
+  },
+  "kernel_skills": [
+    "KERNEL-trinity-33", "KERNEL-session-inhabit", "KERNEL-sovereign-recognize",
+    "KERNEL-verbs-forge-hands", "KERNEL-quantum-runtime"
+  ],
+  "rsi_doctrine": "RSI-recursive-improvement",
+  "_model_sot": "/root/.config/federation-models.json",
+  "_created_by": "opencode-federation-audit-2026-07-25",
+  "_note": "Created as part of federation A2A audit. Previously missing from agents/_external/grok/."
+}
