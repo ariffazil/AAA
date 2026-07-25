@@ -3,7 +3,7 @@
 > **Status:** DRAFT v1.1 → F13 ratification required (jurisprudence, not new floor)
 > **Type:** Constitutional governor for coding agents (Codex / Claude / Grok / Hermes)
 > **Ontological correction (2026-07-25):** territories = **default sovereign ownership**, not absolute bans; “entropy” must be **measured and falsifiable** before claims of “empirical scalar physics”
-> **Companion:** `AGENT-CHARTER.md` · `QQQ_RECOMMENDATION_PROTOCOL.md` · `apex_canonical.py`
+> **Companion:** `AGENT-CHARTER.md` · `QQQ_RECOMMENDATION_PROTOCOL.md` · `apex_canonical.py` · `ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md` (vertical)
 > **Forged:** 2026-07-25 · **Rev:** 1.1-DRAFT (ChatGPT external witness + federation bind)
 > **DITEMPA BUKAN DIBERI — Forged, Not Given.**
 
