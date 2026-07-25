@@ -15,6 +15,9 @@ Leave fewer contradictions, fewer duplicate sources, a smaller decision surface,
 **Vertical membrane (LLM → governed action):**  
 `/root/AAA/governance/ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md` v1.1 — model/harness/governance distinct; ΔΩΨ = responsibilities not languages; no AGI claim; DRAFT.
 
+**Human-language map (claim levels):**  
+`/root/AAA/governance/AAA_KNOWLEDGE_MATERIALS_HUMAN.md` — think/share/act; materials ≠ physics of mind; DRAFT.
+
 ## Working rules
 
 1. Read live state before acting: `git status`, runtime health, ports, then Observatory. A snapshot is evidence for its observation time, not permanent truth.
