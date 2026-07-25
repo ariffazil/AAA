@@ -246,3 +246,131 @@ hosts:
   - id: default
     default: true
     approval_policy: auto
+- id: geox-witness
+  name: GEOX Witness
+  version: 1.0.0
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - geox/acp
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+- id: arifos-kernel
+  name: arifOS Kernel
+  version: 1.0.0
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - arifos/acp
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: strict
+    default: true
+    approval_policy: hold
+- id: wealth-witness
+  name: WEALTH Witness
+  version: 1.0.0
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - wealth/acp
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+- id: well-witness
+  name: WELL Witness
+  version: 1.0.0
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - well/acp
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+- id: aforge-executor
+  name: A-FORGE Executor
+  version: 1.0.0
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - aforge/acp
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: strict
+    default: true
+    approval_policy: hold
+- id: aider
+  name: Aider CLI
+  version: 1.0.0
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .aider
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: pip
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+- id: qwen-code
+  name: Qwen Code CLI
+  version: 0.17.1
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .qwen
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+- id: continue-cli
+  name: Continue CLI
+  version: 1.0.0
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .continue
+  contract_path: contracts/hosts/contracts.yaml
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
