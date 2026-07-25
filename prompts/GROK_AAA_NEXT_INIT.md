@@ -1,32 +1,33 @@
-# NEXT INIT — Grok/AAA Agent Wake Prompt
+# NEXT INIT — 2026-07-25T16:55Z
 
-> **Last sealed:** 2026-07-24T10:10Z · Copilot CLI session
-> **Session ID:** 521d4114-e62c-4483-b1a0-377a30778f36
+> **Previous seal:** copilot-ci-autofix-2026-07-25T16:55:00Z
+> **VAULT999 seq:** copilot-ci-autofix-2026-07-25T16:55:00Z
+> **Handoff from:** Copilot CLI (deepseek-v4-pro)
 
-## Context at Handoff
+## What was sealed
+Autonomous CI Autofix System deployed federation-wide:
+- 3 systemd timers (health 30min, drift 30min, autofix hourly)
+- 7 PRs across 6 organs (FEDERATION.md fixes + A-FORGE infra)
+- CANONICAL_CLAIMS_REGISTRY.json (AAA docs)
+- 2 drift monitors (arifOS canonical + A-FORGE federation)
+- VAULT999 chain updated
 
-Federation Zen pass completed (25/29 tasks). All 7 organs cross-linked, llms.txt deployed, CI standardized, agent cards unified. Init/Seal pipeline unified — all 5 layers now call federation_ritual.py → arif_init.
+## What's open (ordered)
+1. Merge 7 PRs (arifos#618, A-FORGE#58-60, AAA#146, GEOX#135, WEALTH#52)
+2. Verify arifOS CI goes GREEN after PR merge
+3. GEOX deployment drift (source ≠ deployed commit)
+4. WELL health=degraded (UNMEASURED scalars — design, not crash)
 
-## Immediate Next
+## Load first
+1. `/root/AAA/docs/SEAL_AUTHORITY_DOCTRINE.md` — seal authority bands
+2. `/root/AAA/docs/CANONICAL_CLAIMS_REGISTRY.json` — truth registry
+3. `/root/A-FORGE/scripts/ci-autofix-monitor.sh check all` — current CI health
+4. `/root/A-FORGE/scripts/drift-monitor.py` — current drift report
 
-1. `make health` — verify all 8 services
-2. Read `/root/.claude/projects/-root/memory/session-state.md` 
-3. Read `/root/forge_work/2026-07-24/SESSION-SEAL-20260724-100934.md`
+## Seal — ONE ceremony for ALL agents
+**Canonical:** `/root/AAA/prompts/SEAL.md`
+Per-agent seal skills are deprecated. All agents route through this one ceremony.
+- Path A (Kernel/VAULT999): `arif_judge` → `arif_seal`
+- Path B (Forge/session.ledger): `forge_session_init` → `forge_vault(mode="write")`
 
-## Open Tasks (carried forward)
-
-| Task | Priority | Blocker |
-|------|----------|---------|
-| Health endpoint standardization | MEDIUM | Per-organ code change |
-| Secrets deep audit completion | LOW | 3,517 files to triage |
-| CI cross-trigger | LOW | T3 PAT scope |
-| forge_vault seal removal | LOW | A-FORGE code change |
-| AAA cockpit A2A executor wiring | MEDIUM | Dependency on AAA A2A server |
-
-## Quick Verify
-
-```bash
-for port in 8088 7071 3001 8081 18082 18083; do
-  curl -sf -o /dev/null -w ":$port %{http_code}\n" http://localhost:$port/health
-done
-```
+DITEMPA BUKAN DIBERI
