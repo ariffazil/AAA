@@ -24,6 +24,9 @@ Leave fewer contradictions, fewer duplicate sources, a smaller decision surface,
 **Constraint physics (final grounded answer):**  
 `/root/AAA/governance/INTELLIGENCE_CONSTRAINT_PHYSICS.md` — revise/communicate/commit; code as multi-phase knowledge medium; not mysticism.
 
+**Entropy reduction (H-table ops):**  
+`/root/AAA/governance/ENTROPY_REDUCTION_PLAYBOOK.md` — fault-map protocol for H1–H8…; measure ΔS; F13 seal checklist.
+
 ## Working rules
 
 1. Read live state before acting: `git status`, runtime health, ports, then Observatory. A snapshot is evidence for its observation time, not permanent truth.
