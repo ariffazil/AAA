@@ -8,6 +8,7 @@
 > - `ARIFOS_CONSTITUTIONAL_LAYER_ABOVE_LLM.md` (vertical, model/harness/governance)  
 > - `CODEX_AGENT_BEHAVIORAL_CONTRACT.md` (languages as preferred materials)  
 > - `AGI_ASI_APEX_HUMAN.md` (modes not ranks; live 333/555/888)  
+> - `INTELLIGENCE_CONSTRAINT_PHYSICS.md` (**final grounded canon** — real constraints, not magic letters)  
 > **DITEMPA BUKAN DIBERI**
 
 ---
