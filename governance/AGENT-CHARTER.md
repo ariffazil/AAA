@@ -21,6 +21,9 @@ Leave fewer contradictions, fewer duplicate sources, a smaller decision surface,
 **AGI · ASI · APEX modes (not ranks):**  
 `/root/AAA/governance/AGI_ASI_APEX_HUMAN.md` — arifOS/AAA/888/A-FORGE live map; industry disambiguation; DRAFT.
 
+**Constraint physics (final grounded answer):**  
+`/root/AAA/governance/INTELLIGENCE_CONSTRAINT_PHYSICS.md` — revise/communicate/commit; code as multi-phase knowledge medium; not mysticism.
+
 ## Working rules
 
 1. Read live state before acting: `git status`, runtime health, ports, then Observatory. A snapshot is evidence for its observation time, not permanent truth.
