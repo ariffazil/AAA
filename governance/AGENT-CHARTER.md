@@ -9,6 +9,9 @@
 
 Leave fewer contradictions, fewer duplicate sources, a smaller decision surface, and one verified next step. If an artefact does not make the next agent's work simpler, more truthful, or more reversible, do not add it.
 
+**Plane physics (AAA scalar governor):**  
+`/root/AAA/governance/CODEX_AGENT_BEHAVIORAL_CONTRACT.md` — Δ Python · Ω TypeScript · Ψ Rust; G-fold only via `arif_think(mode='apex')`. Draft pending F13 seal.
+
 ## Working rules
 
 1. Read live state before acting: `git status`, runtime health, ports, then Observatory. A snapshot is evidence for its observation time, not permanent truth.
