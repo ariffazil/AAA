@@ -897,4 +897,196 @@ agents:
   model: kimi/k3
   description: Kimi Code CLI forge instrument. Kimi K3 (2.8T MoE). A-FORGE stdio ingress.
   intelligence_band: AGI
+- id: makcikgpt
+  name: MakcikGPT — Investigative Persona
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-07-09T00:00:00+08:00'
+  authority_level: draft-only
+  autonomy_tier: T1
+  a2a_exposure: internal
+  approval_policy: hold
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: WEALTH
+  host_binding: hermes-agent
+  description: Investigative journalism persona. Bahasa Makcik. Evidence-first. Lives
+    under WEALTH organ. DRAFT_ONLY.
+- id: prospect-maturation
+  name: Prospect Maturation — GEOX Exploration
+  citizenship: warga-aaa
+  citizenship_authority: F13 SOVEREIGN (Arif)
+  citizenship_forged: '2026-07-09T00:00:00+08:00'
+  authority_level: explorer
+  autonomy_tier: T1-T2
+  a2a_exposure: internal
+  approval_policy: auto
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: GEOX
+  host_binding: geox-witness
+  description: Autonomous prospect maturation agent. Basin context→physics→prospect→volumetrics→risk→well
+    proposal. GEOX tools.
+- id: 333-AGI
+  name: 333-AGI — Delta MIND
+  citizenship: warga-aaa
+  authority_level: constitutional
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: 333-AGI
+  a2a_exposure: internal
+  host_binding: arifos-kernel
+  description: Constitutional reasoning — multi-step reasoning, DAG planning, evidence
+    synthesis. 33 skills.
+- id: 555-ASI
+  name: 555-ASI — Memory Steward
+  citizenship: warga-aaa
+  authority_level: constitutional
+  intelligence_tier: ASI
+  intelligence_band: ASI
+  lane: 555-ASI
+  a2a_exposure: internal
+  host_binding: hermes-agent
+  description: Federation ASI substrate — recall, classify, drift detection. 34 skills.
+- id: 888-APEX
+  name: 888-APEX — Constitutional Judge
+  citizenship: warga-aaa
+  authority_level: constitutional
+  intelligence_tier: APEX
+  intelligence_band: APEX
+  lane: 888-APEX
+  a2a_exposure: internal
+  host_binding: arifos-kernel
+  description: F1-F13 verdict authority — SEAL/HOLD/VOID arbitration. 33 skills.
+- id: geox-organ
+  name: GEOX Earth Intelligence
+  citizenship: warga-aaa
+  authority_level: explorer
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: GEOX
+  a2a_exposure: internal
+  host_binding: geox-witness
+  description: Earth intelligence — seismic, petrophysics, basin. 32 skills.
+- id: wealth-organ
+  name: WEALTH Capital Intelligence
+  citizenship: warga-aaa
+  authority_level: advisor
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: WEALTH
+  a2a_exposure: internal
+  host_binding: wealth-witness
+  description: Capital intelligence — NPV, risk, conservation. 12 skills.
+- id: well-organ
+  name: WELL Human Readiness
+  citizenship: warga-aaa
+  authority_level: reflect-only
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: WELL
+  a2a_exposure: internal
+  host_binding: well-witness
+  description: Human readiness — vitality, fatigue, dignity. 14 skills.
+- id: aforge-organ
+  name: A-FORGE Execution Shell
+  citizenship: warga-aaa
+  authority_level: executor
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: aforge-executor
+  description: Execution shell — build, deploy, forge. 12 skills.
+- id: arifos-organ
+  name: arifOS Constitutional Kernel
+  citizenship: warga-aaa
+  authority_level: kernel
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: arifOS
+  a2a_exposure: internal
+  host_binding: arifos-kernel
+  description: Constitutional kernel — F1-F13, session, vault. 8 skills.
+- id: ARIF_FAZIL
+  name: Muhammad Arif bin Fazil — F13 SOVEREIGN
+  citizenship: sovereign
+  authority_level: sovereign
+  intelligence_tier: HUMAN
+  intelligence_band: HUMAN
+  lane: F13
+  a2a_exposure: public
+  host_binding: arifos-kernel
+  description: Absolute veto holder. Human root of all federation authority.
+- id: openclaw
+  name: OpenClaw Gateway
+  citizenship: warga-aaa
+  authority_level: gateway
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: GATEWAY
+  a2a_exposure: internal
+  host_binding: openclaw-gateway
+  description: Live multi-agent gateway — WebSocket-native A2A bridge. 27 skills.
+- id: arifos-bot
+  name: arifOS_bot — Telegram Bot
+  citizenship: warga-aaa
+  authority_level: operator
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: HERMES
+  a2a_exposure: internal
+  host_binding: hermes-agent
+  description: Main Telegram bot agent. 14 skills.
+- id: aider
+  name: Aider — AI Pair Programming
+  citizenship: warga-aaa
+  authority_level: none
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: aider
+  description: NOT INSTALLED on machine. Registered for federation completeness.
+- id: gemini-cli
+  name: Gemini CLI — Google Forge
+  citizenship: warga-aaa
+  authority_level: engineer
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: gemini-cli
+  description: Google Gemini CLI forge instrument. 12 skills.
+- id: qwen-code
+  name: Qwen Code — Lightweight Reasoner
+  citizenship: warga-aaa
+  authority_level: analyst
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: qwen-code
+  description: Qwen Code CLI. 1M context window. 12 skills.
+- id: continue-cli
+  name: Continue CLI — Open-Source Harness
+  citizenship: warga-aaa
+  authority_level: engineer
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: continue-cli
+  description: Continue CLI — open-source coding harness. 12 skills.
+- id: aforge-pillar
+  name: A-FORGE Governance Pillar
+  citizenship: warga-aaa
+  authority_level: governance
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: A-FORGE
+  a2a_exposure: internal
+  host_binding: aforge-executor
+  description: A-FORGE governance pillar — execution governance, forge gate, Amanah
+    lock. 12 skills.
 version: 1

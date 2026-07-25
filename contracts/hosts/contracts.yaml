@@ -516,3 +516,190 @@ host_contracts:
     requires_vault_seal_for:
     - deploy
     deny_if_unsealed: true
+- id: geox-witness
+  name: GEOX Witness
+  host_class: acp
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - geox/acp
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: high
+    remote_execution_enabled: false
+  governance:
+    requires_arifos_judgment_for:
+    - execution-request
+    deny_if_unsealed: true
+- id: arifos-kernel
+  name: arifOS Kernel
+  host_class: acp
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - arifos/acp
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: strict
+    default: true
+    approval_policy: hold
+    max_risk_tier: critical
+    remote_execution_enabled: true
+  governance:
+    requires_arifos_judgment_for:
+    - remote-write
+    - execution-request
+    - cross-lane-dispatch
+    requires_vault_seal_for:
+    - irreversible-execution
+    - deploy
+    deny_if_unsealed: true
+- id: wealth-witness
+  name: WEALTH Witness
+  host_class: acp
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - wealth/acp
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: high
+    remote_execution_enabled: false
+  governance:
+    requires_arifos_judgment_for:
+    - execution-request
+    deny_if_unsealed: true
+- id: well-witness
+  name: WELL Witness
+  host_class: acp
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - well/acp
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: high
+    remote_execution_enabled: false
+  governance:
+    requires_arifos_judgment_for:
+    - execution-request
+    deny_if_unsealed: true
+- id: aforge-executor
+  name: A-FORGE Executor
+  host_class: acp
+  runtime_type: acp
+  transport: http
+  config_paths:
+  - aforge/acp
+  install_method: acp-session-template
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: strict
+    default: true
+    approval_policy: hold
+    max_risk_tier: critical
+    remote_execution_enabled: true
+  governance:
+    requires_arifos_judgment_for:
+    - remote-write
+    - execution-request
+    requires_vault_seal_for:
+    - irreversible-execution
+    - deploy
+    deny_if_unsealed: true
+- id: aider
+  name: Aider CLI
+  host_class: cli
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .aider
+  install_method: pip
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: medium
+    remote_execution_enabled: false
+  governance:
+    deny_if_unsealed: true
+- id: qwen-code
+  name: Qwen Code CLI
+  host_class: cli
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .qwen
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: low
+    remote_execution_enabled: false
+  governance:
+    deny_if_unsealed: true
+- id: continue-cli
+  name: Continue CLI
+  host_class: cli
+  runtime_type: cli
+  transport: stdio
+  config_paths:
+  - .continue
+  install_method: npm
+  supported_protocols:
+  - mcp
+  - a2a
+  platform_support:
+  - linux
+  permission_profiles:
+  - id: default
+    default: true
+    approval_policy: auto
+    max_risk_tier: low
+    remote_execution_enabled: false
+  governance:
+    deny_if_unsealed: true
