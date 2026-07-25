@@ -1,0 +1,1017 @@
+{
+  "skill_count": 209,
+  "agent_count": 26,
+  "skill_to_agents": {
+    "APEX-f1-gate": [
+      "333-AGI",
+      "888-APEX",
+      "a-audit",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "copilot",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "continue-cli",
+      "qwen-code",
+      "arifos",
+      "agy"
+    ],
+    "FORGE-context-compress": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "copilot",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "continue-cli",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-github": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "copilot",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "continue-cli",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-precommit-gate": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "copilot",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "continue-cli",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "APEX-act": [
+      "333-AGI",
+      "888-APEX",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "arifos",
+      "agy"
+    ],
+    "FORGE-github-ops": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "copilot",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-pr-review": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "copilot",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-readme-truth-check": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "continue-cli",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-github-runbook": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-init-intent-classify": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-pr-governance": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-precommit-review": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "FORGE-route-least-power": [
+      "777-forge",
+      "opencode",
+      "claude-code",
+      "kimi-code",
+      "codex",
+      "aider",
+      "gemini-cli",
+      "grok-build",
+      "qwen-code",
+      "aforge",
+      "agy"
+    ],
+    "CLAIM-verification-gate": [
+      "888-APEX",
+      "a-archive",
+      "hermes-asi",
+      "arifos",
+      "geox",
+      "wealth"
+    ],
+    "FORGE-federation-orchestrator": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "qwen-code",
+      "aaa-gateway",
+      "aforge"
+    ],
+    "FORGE-mcp-smoke-test": [
+      "777-forge",
+      "opencode",
+      "codex",
+      "aaa-gateway",
+      "aforge",
+      "agy"
+    ],
+    "ASI-agent-invariants": [
+      "555-ASI",
+      "codex",
+      "arifos",
+      "wealth",
+      "well"
+    ],
+    "ASI-observability": [
+      "555-ASI",
+      "openclaw",
+      "a-audit",
+      "aaa-gateway",
+      "arifos"
+    ],
+    "CLAIM-receipt-v1": [
+      "888-APEX",
+      "a-archive",
+      "arifos",
+      "geox",
+      "wealth"
+    ],
+    "FORGE-infra-guardian": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "aaa-gateway",
+      "aforge"
+    ],
+    "FORGE-vps-docker": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "qwen-code",
+      "aforge"
+    ],
+    "FORGE-vps-runbook": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "qwen-code",
+      "aforge"
+    ],
+    "FORGE-mcp-lifeguard": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "aaa-gateway",
+      "aforge"
+    ],
+    "FORGE-secret-safety-scan": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "aaa-gateway",
+      "aforge"
+    ],
+    "FORGE-secret-hygiene": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "aaa-gateway",
+      "aforge"
+    ],
+    "FORGE-model-monitor": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "aaa-gateway",
+      "aforge"
+    ],
+    "FORGE-fastmcp": [
+      "777-forge",
+      "opencode",
+      "codex",
+      "aforge",
+      "agy"
+    ],
+    "AGI-claude-xml-structured-reasoning": [
+      "333-AGI",
+      "hermes-asi",
+      "claude-code",
+      "codex"
+    ],
+    "ASI-unified-memory": [
+      "555-ASI",
+      "a-archive",
+      "arifos",
+      "wealth"
+    ],
+    "APEX-constitutional-audit": [
+      "888-APEX",
+      "a-audit",
+      "claude-code",
+      "arifos"
+    ],
+    "APEX-mcp-federation": [
+      "888-APEX",
+      "openclaw",
+      "aaa-gateway",
+      "arifos"
+    ],
+    "AUDIT-recursive-audit": [
+      "888-APEX",
+      "a-audit",
+      "claude-code",
+      "arifos"
+    ],
+    "agent-role-mode-flagging": [
+      "openclaw",
+      "hermes-asi",
+      "makcikgpt",
+      "aaa-gateway"
+    ],
+    "FORGE-infra-crons": [
+      "openclaw",
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-docker": [
+      "777-forge",
+      "opencode",
+      "qwen-code",
+      "aforge"
+    ],
+    "FORGE-docker-entropy": [
+      "777-forge",
+      "opencode",
+      "qwen-code",
+      "aforge"
+    ],
+    "FORGE-docker-thermo": [
+      "777-forge",
+      "opencode",
+      "qwen-code",
+      "aforge"
+    ],
+    "FORGE-google-workspace": [
+      "777-forge",
+      "opencode",
+      "gemini-cli",
+      "aforge"
+    ],
+    "FORGE-issue-triage": [
+      "777-forge",
+      "opencode",
+      "aider",
+      "aforge"
+    ],
+    "FORGE-kimi-code": [
+      "777-forge",
+      "opencode",
+      "kimi-code",
+      "aforge"
+    ],
+    "FORGE-search": [
+      "777-forge",
+      "opencode",
+      "grok-build",
+      "aforge"
+    ],
+    "FORGE-seek": [
+      "777-forge",
+      "opencode",
+      "grok-build",
+      "aforge"
+    ],
+    "AGI-explorer-intelligence": [
+      "333-AGI",
+      "aforge",
+      "geox"
+    ],
+    "AGI-codex-chain-of-thought": [
+      "333-AGI",
+      "codex",
+      "agy"
+    ],
+    "APEX-quantum-eureka": [
+      "333-AGI",
+      "888-APEX",
+      "arifos"
+    ],
+    "ASI-cooling-ledger-rsi": [
+      "555-ASI",
+      "a-archive",
+      "arifos"
+    ],
+    "ASI-drift-watch": [
+      "555-ASI",
+      "a-audit",
+      "wealth"
+    ],
+    "ASI-knowledge-writeback": [
+      "555-ASI",
+      "a-archive",
+      "arifos"
+    ],
+    "ASI-mcp-governor": [
+      "555-ASI",
+      "openclaw",
+      "aaa-gateway"
+    ],
+    "ASI-multi-discipline-critique": [
+      "555-ASI",
+      "claude-code",
+      "arifos"
+    ],
+    "ASI-zen-organ-memory": [
+      "555-ASI",
+      "a-archive",
+      "well"
+    ],
+    "APEX-authority-detection": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "APEX-fff-loop-protocol": [
+      "888-APEX",
+      "claude-code",
+      "arifos"
+    ],
+    "APEX-governance": [
+      "888-APEX",
+      "opencode",
+      "arifos"
+    ],
+    "APEX-humility-godel": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "AUDIT-clarity-canon": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "AUDIT-post-seal-sweep": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "AUDIT-skill-atlas": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "AUDIT-symbolic-collective-bias": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "AUDIT-symbolic-trust": [
+      "888-APEX",
+      "a-audit",
+      "arifos"
+    ],
+    "ARCHIVE-vault-integrity": [
+      "888-APEX",
+      "a-archive",
+      "arifos"
+    ],
+    "ARCHIVE-vault-seal": [
+      "888-APEX",
+      "a-archive",
+      "arifos"
+    ],
+    "ARCHIVE-vault999-reader": [
+      "888-APEX",
+      "a-archive",
+      "arifos"
+    ],
+    "ARCHIVE-vault999-integrity": [
+      "888-APEX",
+      "a-archive",
+      "arifos"
+    ],
+    "KERNEL-mcp-builder": [
+      "openclaw",
+      "hermes-asi",
+      "aforge"
+    ],
+    "KERNEL-mcp-zen": [
+      "openclaw",
+      "hermes-asi",
+      "aforge"
+    ],
+    "deep-research": [
+      "hermes-asi",
+      "makcikgpt",
+      "grok-build"
+    ],
+    "human-envelope-architecture": [
+      "hermes-asi",
+      "makcikgpt",
+      "well"
+    ],
+    "FORGE-ci-diagnose": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-code-analysis": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-code-wiki": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-incident-escalation": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-incident-triage": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-mcp-federation-ops": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-mcp-ops": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-mcporter": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-onboarding": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-phase-escalation": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-skill-creator": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-skill-linter": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-spatial-grounding": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-subagent-spawn": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-telegram-audit": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-verify-runtime": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "FORGE-well-boundary-repair": [
+      "777-forge",
+      "opencode",
+      "aforge"
+    ],
+    "AGI-cross-agent-handoff": [
+      "333-AGI",
+      "arifos"
+    ],
+    "AGI-prospect-maturation": [
+      "333-AGI",
+      "geox"
+    ],
+    "AGI-skill-unification": [
+      "333-AGI",
+      "agy"
+    ],
+    "AGI-multimodal-bridge": [
+      "333-AGI",
+      "gemini-cli"
+    ],
+    "AGI-hermes-system-prompt-voice": [
+      "333-AGI",
+      "hermes-asi"
+    ],
+    "ASI-constitutional-reasoning": [
+      "555-ASI",
+      "arifos"
+    ],
+    "ASI-drift-response": [
+      "555-ASI",
+      "a-audit"
+    ],
+    "ASI-evals": [
+      "555-ASI",
+      "a-archive"
+    ],
+    "ASI-knowledge-graph-query": [
+      "555-ASI",
+      "a-archive"
+    ],
+    "ASI-memory-bridge": [
+      "555-ASI",
+      "a-archive"
+    ],
+    "cognitive-commands": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "consult-external-llm": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "somatic-intelligence": [
+      "hermes-asi",
+      "well"
+    ],
+    "sovereign-conversation-protocol": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "uncertainty-routing-protocol": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "weekly-federation-deep-brief": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "institutional-case-building": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "summarize-pro": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "executive-intelligence-briefing": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "person-intelligence-dossier": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "news-research-briefing": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "research-paper-writing": [
+      "hermes-asi",
+      "makcikgpt"
+    ],
+    "AGI-dream-engine": [
+      "333-AGI"
+    ],
+    "AGI-plan-dag": [
+      "333-AGI"
+    ],
+    "AGI-sovereign-connector": [
+      "333-AGI"
+    ],
+    "AGI-nusantara-substrate": [
+      "333-AGI"
+    ],
+    "AGI-web-optimization": [
+      "333-AGI"
+    ],
+    "AGI-emd-decode": [
+      "333-AGI"
+    ],
+    "AGI-emd-encode": [
+      "333-AGI"
+    ],
+    "AGI-emd-metabolize": [
+      "333-AGI"
+    ],
+    "AGI-entropy-lock-prime": [
+      "333-AGI"
+    ],
+    "ASI-agent-bootstrap": [
+      "555-ASI"
+    ],
+    "ASI-agentic-governance": [
+      "555-ASI"
+    ],
+    "ASI-skill-binding": [
+      "555-ASI"
+    ],
+    "ASI-summarize": [
+      "555-ASI"
+    ],
+    "APEX-post-seal-runtime-verdict": [
+      "888-APEX"
+    ],
+    "telegram-forum-management": [
+      "openclaw"
+    ],
+    "telegram-group-relay": [
+      "openclaw"
+    ],
+    "telegram-security-audit": [
+      "openclaw"
+    ],
+    "FORGE-subagent-spawn-template": [
+      "openclaw"
+    ],
+    "AUDIT-drift-detector": [
+      "a-audit"
+    ],
+    "KERNEL-reality-skills": [
+      "hermes-asi"
+    ],
+    "KERNEL-sovereign-recognize": [
+      "hermes-asi"
+    ],
+    "KERNEL-session-inhabit": [
+      "hermes-asi"
+    ],
+    "RSI-recursive-improvement": [
+      "hermes-asi"
+    ],
+    "KERNEL-trinity-33": [
+      "hermes-asi"
+    ],
+    "KERNEL-quantum-runtime": [
+      "hermes-asi"
+    ],
+    "KERNEL-qubit-substrate": [
+      "hermes-asi"
+    ],
+    "SHADOW-diagnostic": [
+      "hermes-asi"
+    ],
+    "evidence-before-elegance": [
+      "hermes-asi"
+    ],
+    "external-wisdom-integration": [
+      "hermes-asi"
+    ],
+    "governed-agent-anatomy": [
+      "hermes-asi"
+    ],
+    "human-sovereignty-geometry": [
+      "hermes-asi"
+    ],
+    "institutional-body-language": [
+      "hermes-asi"
+    ],
+    "institutional-epistemic-sink-forensics": [
+      "hermes-asi"
+    ],
+    "j-collapse-detection": [
+      "hermes-asi"
+    ],
+    "meta-cognitive-blindspot-audit": [
+      "hermes-asi"
+    ],
+    "wisdom-scar-session-audit": [
+      "hermes-asi"
+    ],
+    "akal-cognitive-invariants": [
+      "hermes-asi"
+    ],
+    "seven-zen-organs-enforcement": [
+      "hermes-asi"
+    ],
+    "cognitive-level-assertion-protocol": [
+      "hermes-asi"
+    ],
+    "hermes-naked-prior-audit": [
+      "hermes-asi"
+    ],
+    "submission-readiness-audit": [
+      "hermes-asi"
+    ],
+    "dream-engine": [
+      "hermes-asi"
+    ],
+    "meta-mesa-substrate-test": [
+      "hermes-asi"
+    ],
+    "skill-substrate-framework": [
+      "hermes-asi"
+    ],
+    "federated-skill-architecture": [
+      "hermes-asi"
+    ],
+    "federation-sot-inventory": [
+      "hermes-asi"
+    ],
+    "institutional-forensic-analysis": [
+      "hermes-asi"
+    ],
+    "text-forensics": [
+      "hermes-asi"
+    ],
+    "federation-checkup": [
+      "hermes-asi"
+    ],
+    "agentic-integrity-observability": [
+      "hermes-asi"
+    ],
+    "explore-before-collapse": [
+      "hermes-asi"
+    ],
+    "negative-space-geometry": [
+      "hermes-asi"
+    ],
+    "temporal-consequence-engine": [
+      "hermes-asi"
+    ],
+    "professional-intelligence-briefing": [
+      "makcikgpt"
+    ],
+    "agentic-builder": [
+      "opencode"
+    ],
+    "mcp-server-building": [
+      "opencode"
+    ],
+    "github-pr-workflow": [
+      "opencode"
+    ],
+    "test-driven-development": [
+      "opencode"
+    ],
+    "systematic-debugging": [
+      "opencode"
+    ],
+    "deep-codebase-audit": [
+      "opencode"
+    ],
+    "forge-before-build": [
+      "opencode"
+    ],
+    "simplify-code": [
+      "opencode"
+    ],
+    "python-debugpy": [
+      "opencode"
+    ],
+    "node-inspect-debugger": [
+      "opencode"
+    ],
+    "requesting-code-review": [
+      "opencode"
+    ],
+    "spike": [
+      "opencode"
+    ],
+    "plan": [
+      "opencode"
+    ],
+    "measure-before-acting": [
+      "opencode"
+    ],
+    "non-mutating-review-harness": [
+      "opencode"
+    ],
+    "asi-readiness-audit-contract": [
+      "opencode"
+    ],
+    "governance-eval-benchmark": [
+      "opencode"
+    ],
+    "constitutional-auditor": [
+      "opencode"
+    ],
+    "kimi-architect-agi-contrast": [
+      "kimi-code"
+    ],
+    "kimi-architect-apex-contrast": [
+      "kimi-code"
+    ],
+    "kimi-architect-asi-contrast": [
+      "kimi-code"
+    ],
+    "kimi-final-apex-contrast": [
+      "kimi-code"
+    ],
+    "kimi-integrator-apex-contrast": [
+      "kimi-code"
+    ],
+    "kimi-rsi-apex-contrast": [
+      "kimi-code"
+    ],
+    "kimi-skill-reflector": [
+      "kimi-code"
+    ],
+    "KIMI_RSI_INIT_PROMPT": [
+      "kimi-code"
+    ],
+    "KIMI_HANDOVER_PROMPT": [
+      "kimi-code"
+    ],
+    "geox-basin-engines": [
+      "geox"
+    ],
+    "geox-claim-grammar": [
+      "geox"
+    ],
+    "geox-constitution": [
+      "geox"
+    ],
+    "geox-contradiction-engine": [
+      "geox"
+    ],
+    "geox-earth-evidence": [
+      "geox"
+    ],
+    "geox-epistemic-ladder": [
+      "geox"
+    ],
+    "geox-grounding": [
+      "geox"
+    ],
+    "geox-petrophysics-bounds": [
+      "geox"
+    ],
+    "geox-redteam-hantu": [
+      "geox"
+    ],
+    "geox-scientific-writing": [
+      "geox"
+    ],
+    "geox-well-tie-pipeline": [
+      "geox"
+    ],
+    "geological-artifact-rigor": [
+      "geox"
+    ],
+    "ARCHIVE-GEOX-artifact-rigor": [
+      "geox"
+    ],
+    "wealth-capital-reasoning": [
+      "wealth"
+    ],
+    "wealth-capital-thermodynamics": [
+      "wealth"
+    ],
+    "wealth-collapse-signature": [
+      "wealth"
+    ],
+    "wealth-law-anthropology": [
+      "wealth"
+    ],
+    "WELL-boundary-sense": [
+      "well"
+    ],
+    "WELL-somatic-kernel": [
+      "well"
+    ],
+    "well-substrate-readiness": [
+      "well"
+    ],
+    "HERMES-human-model": [
+      "well"
+    ]
+  },
+  "agent_skill_counts": {
+    "opencode": 68,
+    "hermes-asi": 54,
+    "aforge": 50,
+    "777-forge": 47,
+    "arifos": 29,
+    "kimi-code": 23,
+    "888-APEX": 22,
+    "333-AGI": 20,
+    "openclaw": 19,
+    "qwen-code": 19,
+    "555-ASI": 18,
+    "claude-code": 18,
+    "codex": 18,
+    "geox": 17,
+    "agy": 17,
+    "grok-build": 16,
+    "makcikgpt": 15,
+    "gemini-cli": 15,
+    "a-audit": 14,
+    "aider": 14,
+    "a-archive": 13,
+    "aaa-gateway": 11,
+    "wealth": 9,
+    "well": 8,
+    "copilot": 6,
+    "continue-cli": 5
+  }
+}

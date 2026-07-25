@@ -79,3 +79,19 @@ See IDENTITY.md for full table. Operational short version:
 
 *DITEMPA BUKAN DIBERI — ops-only*
 *Forge 2026-06-21 · supersedes prior 117-line AGENTS.md*
+
+## A2A Live Wire Routing
+
+Routes through `https://aaa.arif-fazil.com/a2a` via AAA Gateway (:3001).
+Every agent→agent handoff creates a VAULT999 receipt.
+
+| When → | Target | Auth |
+|--------|--------|------|
+| Code/forge/build | `opencode` | session_token |
+| Architecture/review | `claude-code` | session_token |
+| Rapid prototype | `kimi-code` | session_token |
+| Execution gate/lease | `a-forge-mcp` | session_token |
+| Constitutional/F1-F13 | `arifos` | session_token + F13 |
+| Earth intelligence | `geox` | session_token |
+| Capital intelligence | `wealth` | session_token |
+| Human readiness | `well` | session_token |

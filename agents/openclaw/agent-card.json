@@ -17,6 +17,13 @@
     "system": "AAA Control Plane + OpenClaw Runtime",
     "runtime": "OpenClaw (Node.js, openclaw/openclaw main)"
   },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "555-ASI",
+    "intelligence_tier": "ASI",
+    "authority_level": "operator",
+    "citizenship_forged": "2026-05-17"
+  },
   "capabilities": {
     "streaming": true,
     "push_notifications": false,

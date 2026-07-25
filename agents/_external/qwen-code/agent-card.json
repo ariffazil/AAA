@@ -22,6 +22,13 @@
     "organization": "arifOS Federation",
     "url": "https://arif-fazil.com"
   },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
+    "authority_level": "analyst",
+    "citizenship_forged": "2026-06-10"
+  },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/qwen-code",
   "capabilities": {
     "streaming": true,
