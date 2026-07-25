@@ -30,6 +30,9 @@ Leave fewer contradictions, fewer duplicate sources, a smaller decision surface,
 **Agentic benefits of Δ·Ω·Ψ (mechanical):**  
 `/root/AAA/governance/AGENTIC_BENEFITS_DELTA_OMEGA_PSI.md` — why mapping raises agency; measurable proxies; no AGI hype.
 
+**G-fold as compass (vital sign flow):**  
+`/root/AAA/governance/G_FOLD_AS_COMPASS.md` — how G/C_dark feel and flow; mint once, read widely, judge only.
+
 ## Working rules
 
 1. Read live state before acting: `git status`, runtime health, ports, then Observatory. A snapshot is evidence for its observation time, not permanent truth.
