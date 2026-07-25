@@ -1,18 +1,24 @@
 /**
  * Membrane Middleware — ZEN-ALL v0.3
  * ═══════════════════════════════════════════════════════════════
- * 
+ *
+ * Ω-PLANE ONLY (H3 2026-07-25): shape / envelope / transport humility.
+ * This middleware VALIDATES message shape and constitutional *grammar*.
+ * It does NOT compute kernel G, does NOT replace arif_judge, does NOT
+ * issue sovereign SEAL authority. Display and wire checks only.
+ *
  * Express middleware for AAA :3001 A2A gateway.
  * Every cross-organ message MUST pass through this membrane.
- * 
- * Enforces:
+ *
+ * Enforces (shape, not ontology):
  *   - Perception tagging (OBS/DER/INT/SPEC)
- *   - Verdict grammar (SEAL/HOLD/SABAR/VOID/UNKNOWN)
+ *   - Verdict grammar (SEAL/HOLD/SABAR/VOID/UNKNOWN) as wire labels
  *   - Receipt lineage (hash chain reference)
- *   - C_dark threshold (F9 ANTI-HANTU)
- *   - Tri-witness check (F3 WITNESS)
- *   - Floor compliance (F1-F13)
- * 
+ *   - C_dark threshold check when field present (F9 filter, not G-fold)
+ *   - Tri-witness field presence (F3 shape)
+ *   - Floor id tokens present when claimed
+ *
+ * Constitutional G: arif_think(mode='apex') only.
  * DITEMPA BUKAN DIBERI — Forged, Not Given.
  */
 
