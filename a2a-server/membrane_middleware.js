@@ -63,6 +63,11 @@ function appendLog(entry) {
 
 function classifyPerception(text) {
   if (!text) return 'INT';
+  // A2A message object: extract text from parts array
+  if (typeof text === 'object' && text.parts && Array.isArray(text.parts)) {
+    text = text.parts.map(p => (typeof p === 'string' ? p : p.text || '')).join(' ');
+  }
+  if (typeof text !== 'string') return 'INT';
   const t = text.toLowerCase();
   if (t.match(/\b(measured|observed|recorded|detected|found|data shows|the log)\b/)) return 'OBS';
   if (t.match(/\b(calculated|computed|derived|extrapolated|estimated)\b/)) return 'DER';
@@ -73,6 +78,10 @@ function classifyPerception(text) {
 
 function classifyAction(text) {
   if (!text) return 'OBSERVE';
+  if (typeof text === 'object' && text.parts && Array.isArray(text.parts)) {
+    text = text.parts.map(p => (typeof p === 'string' ? p : p.text || '')).join(' ');
+  }
+  if (typeof text !== 'string') return 'OBSERVE';
   const t = text.toLowerCase();
   if (t.match(/\b(delete|remove|drop|destroy|purge|wipe)\b/)) return 'IRREVERSIBLE';
   if (t.match(/\b(deploy|push|publish|send|execute|run|apply)\b/)) return 'MUTATE';

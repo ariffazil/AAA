@@ -1,0 +1,227 @@
+{
+  "meta": {
+    "title": "arifOS A2A Live Wire \u2014 Routing Manifest",
+    "version": "1.0.0",
+    "generated": "2026-07-25",
+    "gateway": "https://aaa.arif-fazil.com/a2a",
+    "protocol": "A2A v1.2",
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "note": "This manifest defines which agents route to which other agents, and under what conditions."
+  },
+  "routes": [
+    {
+      "from": "hermes-asi",
+      "to": "opencode",
+      "when": "code generation, engineering, build, test, git ops, deployment",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Hermes routes all forge/code tasks to OpenCode as primary forge instrument"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "claude-code",
+      "when": "heavy architecture, deep reasoning, multi-file refactor, code review",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Hermes routes architecture/reasoning tasks to Claude Code"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "kimi-code",
+      "when": "rapid prototyping, quick scripts, fast iteration, MCP server building",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Hermes routes fast-iteration tasks to Kimi Code"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "a-forge-mcp",
+      "when": "execution gate, lease acquire, vault seal, document intelligence",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Route execution to A-FORGE for governed lease-based execution"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "arifos",
+      "when": "constitutional question, F1-F13 check, 888_JUDGE, VAULT999 seal",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token + F13 signature",
+      "description": "All constitutional queries route to arifOS kernel"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "geox",
+      "when": "basin analysis, seismic interpretation, petrophysics, well data",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Earth intelligence queries route to GEOX"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "wealth",
+      "when": "capital analysis, NPV/IRR, economic intelligence",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Capital intelligence queries route to WEALTH"
+    },
+    {
+      "from": "hermes-asi",
+      "to": "well",
+      "when": "human readiness, vitality, fatigue, dignity, homeostasis",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Human readiness queries route to WELL (REFLECT_ONLY)"
+    },
+    {
+      "from": "opencode",
+      "to": "arifos",
+      "when": "session init, judge deliberate, vault seal, F1-F13 gate check",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "OpenCode routes all constitutional gates to arifOS"
+    },
+    {
+      "from": "opencode",
+      "to": "a-forge-mcp",
+      "when": "forge_execute, forge_lease, forge_vault, forge_dry_run",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token + lease",
+      "description": "OpenCode routes execution to A-FORGE with lease"
+    },
+    {
+      "from": "opencode",
+      "to": "geox",
+      "when": "geoscience evidence, basin data, well logs, petrophysics",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Code tasks needing earth evidence route to GEOX"
+    },
+    {
+      "from": "opencode",
+      "to": "wealth",
+      "when": "capital computation, NPV, market data, financial analysis",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Code tasks needing capital intelligence route to WEALTH"
+    },
+    {
+      "from": "claude-code",
+      "to": "arifos",
+      "when": "session init, judge, vault, F1-F13 gate",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Claude Code constitutional routing to arifOS"
+    },
+    {
+      "from": "claude-code",
+      "to": "a-forge-mcp",
+      "when": "forge execution, lease, deploy",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token + lease",
+      "description": "Claude Code execution routing to A-FORGE"
+    },
+    {
+      "from": "kimi-code",
+      "to": "arifos",
+      "when": "session init, F1-F13 gate, vault",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Kimi Code constitutional routing"
+    },
+    {
+      "from": "grok-build",
+      "to": "arifos",
+      "when": "session init, governance, vault seal",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Grok Build constitutional routing"
+    },
+    {
+      "from": "codex",
+      "to": "a-forge-mcp",
+      "when": "forge execution, MCP bridge, shell commands",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "Codex executes through A-FORGE bridge"
+    },
+    {
+      "from": "geox",
+      "to": "wealth",
+      "when": "prospect economics, NPV/IRR computation",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "GEOX routes economic evaluation to WEALTH"
+    },
+    {
+      "from": "aaa-gateway",
+      "to": "openclaw",
+      "when": "agent handoff, multi-agent orchestration, chat routing",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "gateway_key",
+      "description": "AAA gateway routes multi-agent tasks to OpenClaw"
+    }
+  ],
+  "task_lifecycle": {
+    "states": [
+      "SUBMITTED",
+      "WORKING",
+      "INPUT_REQUIRED",
+      "COMPLETED",
+      "FAILED",
+      "CANCELED"
+    ],
+    "transitions": {
+      "SUBMITTED": [
+        "WORKING",
+        "FAILED",
+        "CANCELED"
+      ],
+      "WORKING": [
+        "INPUT_REQUIRED",
+        "COMPLETED",
+        "FAILED",
+        "CANCELED"
+      ],
+      "INPUT_REQUIRED": [
+        "WORKING",
+        "CANCELED"
+      ],
+      "COMPLETED": [],
+      "FAILED": [],
+      "CANCELED": []
+    },
+    "receipt_required": true,
+    "signature_required": [
+      "COMPLETED",
+      "FAILED"
+    ]
+  },
+  "routing_rules": [
+    "1. REVERSIBLE FIRST: Always prefer reversible routing. Irreversible \u2192 888_HOLD.",
+    "2. EVIDENCE BEFORE ROUTE: Verify target agent is healthy before routing.",
+    "3. RECEIPT ON EVERY HANDOFF: Every agent\u2192agent task creates a VAULT999 receipt.",
+    "4. F13 ON SEAL: Only arifOS can SEAL. Every SEAL requires F13 sovereign ack.",
+    "5. CIRCUIT BREAK: If target agent fails 3x in 60s, HOLD and notify Arif.",
+    "6. EMD GATE: External payloads require tri-witness evidence. Internal session auth passes."
+  ]
+}
