@@ -27,16 +27,12 @@
 - [ ] Skill loaded if task matches skill description
 - [ ] FLAME routed first for fact check / plan review when applicable
 
-## Every Session End (MANDATORY — per AUTONOMOUS_GOVERNANCE.md §3A)
+## Every Session End (MANDATORY — see `/root/AAA/prompts/SEAL.md`)
 
-- [ ] RSI cycle: trace → diagnose → remediate → ledger → seal
-- [ ] gate_fire.jsonl appended (if claims were gated)
-- [ ] cooling_ledger_entries inserted into Supabase (if mutations)
-- [ ] `forge_session_init(actor_id="arif")` → session_id + session_token + lease_id
-- [ ] `forge_vault(mode="seal", session_token, lease_id, ...)` — AUTONOMOUS_SESSION_SEAL
+- [ ] Load `/root/AAA/prompts/SEAL.md` — the ONE canonical seal ceremony
+- [ ] Execute 6-step seal ceremony (RSI → cooling → bind → seal → verify → FQ)
 - [ ] Federation health — all 6 organs attested
 - [ ] Entropy measured — ΔS ≤ 0 (workspace cleaner than found)
-- [ ] forge_work/ or memory/ — at least one entry written
 - [ ] Diff audit — `git diff --stat` reviewed for unexpected changes
 - [ ] Model cost — under daily budget ($2.00/session)
 
