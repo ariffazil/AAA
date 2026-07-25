@@ -882,6 +882,63 @@ const taskStore = {
 // Memory flows zen way: arifOS kernel (arif_memory) handles L1-L6 + bands.
 // AAA only observes + surfaces as federated state (Redis aaa:federation:memory:*).
 // Integrates into existing task/event/Redis patterns. Canonical via kernel.
+
+// ── A2A PERSPECTIVE SCOPING (FLW2) ──────────────────────────────
+// Enforces (requesting_agent, target_peer) tuples for memory access.
+// Agent A cannot see Agent B's memory unless explicitly granted.
+// Default: self-access only. Cross-agent requires registered tuple.
+const perspectiveScopes = new Map(); // key = "agentA::peerB" → { granted, reason }
+const SCOPE_TTL_SECONDS = 86400; // 24h expiry, refreshed on access
+
+function registerPerspectiveScope(reqAgent, targetPeer, reason = '') {
+  const key = `${reqAgent}::${targetPeer}`;
+  perspectiveScopes.set(key, { granted: true, reason, ts: Date.now() });
+  // Mirror to Redis for cross-instance persistence
+  if (redisClient && redisClient.isReady) {
+    redisClient.hSet('aaa:perspective:scopes', key, JSON.stringify({
+      reqAgent, targetPeer, reason, ts: Date.now()
+    })).catch(() => {});
+  }
+}
+
+function checkPerspectiveScope(reqAgent, targetPeer) {
+  // Self-access always allowed
+  if (reqAgent === targetPeer) return { allowed: true, reason: 'self' };
+  
+  const key = `${reqAgent}::${targetPeer}`;
+  const scope = perspectiveScopes.get(key);
+  if (!scope) return { allowed: false, reason: `no tuple grant for ${key}` };
+  
+  // Check TTL expiry
+  if (Date.now() - scope.ts > SCOPE_TTL_SECONDS * 1000) {
+    perspectiveScopes.delete(key);
+    return { allowed: false, reason: `tuple expired for ${key}` };
+  }
+  return { allowed: true, reason: scope.reason || 'granted' };
+}
+
+// Bootstrap: register Arif as universal sovereign peer (F13 override)
+registerPerspectiveScope('opencode', 'Arif', 'sovereign-bind');
+registerPerspectiveScope('hermes', 'Arif', 'sovereign-relay');
+registerPerspectiveScope('claude-code', 'Arif', 'sovereign-tool');
+registerPerspectiveScope('kimi-code', 'Arif', 'sovereign-tool');
+registerPerspectiveScope('codex', 'Arif', 'sovereign-tool');
+
+// ── Load persisted scopes from Redis on startup ──
+async function loadPersistedScopes() {
+  if (!redisClient || !redisClient.isReady) return;
+  try {
+    const scopes = await redisClient.hGetAll('aaa:perspective:scopes');
+    for (const [key, val] of Object.entries(scopes || {})) {
+      try {
+        const s = JSON.parse(val);
+        perspectiveScopes.set(key, { granted: true, reason: s.reason, ts: s.ts });
+      } catch (_) { /* stale entry */ }
+    }
+    console.log(`🔐 A2A perspective scopes loaded: ${perspectiveScopes.size} tuples`);
+  } catch (e) { /* Redis may be starting up */ }
+}
+
 const federatedMemory = {
   async updateLayer(layer, info) {
     const key = `aaa:federation:memory:${layer}`;
@@ -2100,8 +2157,17 @@ async function executeTask(taskId, contextId, message, targetAgent, params) {
       responseText = `[AAA Gateway] Status query processed.\nSkill: ${skill}\nQuery: ${userText}`;
       break;
     case 'federated-memory-query':
+      // FLW2: A2A perspective scope check — agent A cannot see peer B's memory
+      // without a registered tuple (self-access is always allowed)
+      const reqAgent = task?.metadata?.requestingAgent || 'unknown';
+      const tgtPeer = task?.metadata?.targetPeer || reqAgent;
+      const scopeCheck = checkPerspectiveScope(reqAgent, tgtPeer);
+      if (!scopeCheck.allowed) {
+        responseText = `[AAA Gateway] Memory access denied: no perspective scope for (${reqAgent}, ${tgtPeer}). Reason: ${scopeCheck.reason}`;
+        break;
+      }
       const memView = await federatedMemory.getFederatedView();
-      responseText = `Federated Memory State (zen view from kernel):\n${JSON.stringify(memView, null, 2)}`;
+      responseText = `Federated Memory State (zen view from kernel) [scope: ${reqAgent}→${tgtPeer}]:\n${JSON.stringify(memView, null, 2)}`;
       break;
     default:
       responseText = `[AAA Gateway] Received: "${userText}"\nSkills: agent-dispatch, agent-handoff, status-query, federated-memory-query.`;
@@ -2656,8 +2722,39 @@ app.get('/health', async (req, res) => {
 
 // zen federated memory state (AAA cockpit — simple view of kernel L1-L6)
 app.get('/federation/memory', async (req, res) => {
+  // FLW2: Perspective scope check for REST API access
+  const reqAgent = req.query.reqAgent || req.get('X-A2A-Requester') || 'unknown';
+  const tgtPeer = req.query.tgtPeer || req.get('X-A2A-Target-Peer') || reqAgent;
+  const scopeCheck = checkPerspectiveScope(reqAgent, tgtPeer);
+  if (!scopeCheck.allowed) {
+    return res.status(403).json({
+      error: 'perspective_scope_denied',
+      reqAgent, tgtPeer,
+      reason: scopeCheck.reason,
+      hint: 'Register tuple via POST /federation/memory/scopes'
+    });
+  }
   const view = await federatedMemory.getFederatedView();
+  view._scope = { reqAgent, tgtPeer, reason: scopeCheck.reason };
   res.json(view);
+});
+
+// FLW2: A2A perspective scope management
+app.post('/federation/memory/scopes', express.json(), (req, res) => {
+  const { reqAgent, tgtPeer, reason } = req.body || {};
+  if (!reqAgent || !tgtPeer) {
+    return res.status(400).json({ error: 'reqAgent and tgtPeer required' });
+  }
+  registerPerspectiveScope(reqAgent, tgtPeer, reason || 'api-registered');
+  res.json({ ok: true, tuple: `${reqAgent}::${tgtPeer}`, status: 'granted' });
+});
+
+app.get('/federation/memory/scopes', (req, res) => {
+  const scopes = [];
+  for (const [key, val] of perspectiveScopes) {
+    scopes.push({ tuple: key, ...val, age_s: Math.round((Date.now() - val.ts) / 1000) });
+  }
+  res.json({ count: scopes.length, scopes });
 });
 
 app.get('/ready', async (req, res) => {
@@ -4490,6 +4587,7 @@ async function initAsyncBackbone() {
     redisClient.on('error', err => console.error('[redis] error:', err.message));
     await redisClient.connect();
     console.log('[redis] connected');
+    await loadPersistedScopes(); // FLW2: A2A perspective scopes from Redis
   } catch (e) {
     console.error('[redis] failed to connect:', e.message);
   }
