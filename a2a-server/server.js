@@ -1457,7 +1457,9 @@ function extractCandidateText(candidate) {
 }
 
 function buildApexEnvelope(verdict, rationale, confidence, gates) {
-  // APEX 10-gate envelope for deliberation (APEX-MCP-001)
+  // Ω-plane transport envelope — shape only. NOT the canonical G-fold.
+  // Canonical G = A·P·E·X·Φ lives solely in arif_think(mode='apex') → apex_canonical.
+  // This local score is a wire-facing gate heuristic for A2A deliberation display.
   const equation = "g(t)=A(t)\u00b7P(t)\u00b7H(t)\u00b7\u221a(S(t)\u00b7U(t))\u00b7E(t)\u00b2";
   const gateScores = {};
   for (const [name, g] of Object.entries(gates)) {
@@ -1475,10 +1477,25 @@ function buildApexEnvelope(verdict, rationale, confidence, gates) {
   const S = gateScores.signal?.score || 0.7;
   const U = geoMean([gateScores.reversibility?.score || 1.0, gateScores.proof?.score || 1.0]);
   const E = gateScores.energy?.score || 0.8;
+  // G_wire — transport estimate only; kernel G is arif_think mode=apex
   const G = Math.round(A * P * H * Math.sqrt(S * U) * E * E * 10000) / 10000;
   let apexVerdict = verdict === VERDICT.VOID ? "VOID" : verdict === VERDICT.HOLD_888 ? "HOLD" : G >= 0.80 ? "SEAL" : G >= 0.50 ? "SABAR" : "HOLD";
   const weakest = Object.entries(gateScores).reduce((w, [n, g]) => g.score < (gateScores[w]?.score || 1) ? n : w, "amanah");
-  return { equation, gates: gateScores, dials: { A, P, H, S, U, E }, G, verdict: apexVerdict, weakest_gate: weakest, spec: "APEX-MCP-001", version: "v2026.06.20", timestamp: new Date().toISOString() };
+  return {
+    equation,
+    gates: gateScores,
+    dials: { A, P, H, S, U, E },
+    G,
+    g_authority: "wire_estimate_not_canonical",
+    g_canonical_source: "arif_think.mode=apex",
+    plane: "Omega",
+    invent_g: false,
+    verdict: apexVerdict,
+    weakest_gate: weakest,
+    spec: "APEX-MCP-001",
+    version: "v2026.06.20",
+    timestamp: new Date().toISOString(),
+  };
 }
 
 function deliberation(candidate) {
@@ -3916,13 +3933,11 @@ app.delete('/a2a/tasks/:taskId/pushNotificationConfig/:configId', authMiddleware
 // ═══════════════════════════════════════════════════════════════════════════
 // Routes "Forge X" through the Jacobian space:
 //   1. Encoder (goal_decomposition.js)  − G → T + J
-//   2. Decoder (task_routing.js)        − T + J → A2A envelopes
 //   3. Metabolizer (metabolizer_loop.js)− init session, track results
 // DITEMPA BUKAN DIBERI — Forged 2026-07-25
 // ═══════════════════════════════════════════════════════════════════════════
 
 const { encodeGoalToTasks, buildJacobian } = require('./goal_decomposition');
-const { decodeTasksToEnvelopes } = require('./task_routing');
 
 app.post('/a2a/goal/decompose', jsonRpcValidate, async (req, res) => {
   try {
