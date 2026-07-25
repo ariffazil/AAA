@@ -1,84 +1,93 @@
-# 🌱 NEXT_AGENT — OpenCode Init · 2026-07-23
+# 🌱 NEXT AGENT — arif-fazil.com /000 & /999 Human Pages
 
-> **From:** FORGE (000Ω) · Session: SEAL-82207d10f2b346bb
-> **To:** Next OpenCode agent
-> **Doctrine:** DITEMPA BUKAN DIBERI
-
----
-
-## WHAT WAS DONE THIS SESSION
-
-1. **Legacy prompt purge:** 17 dead prompts removed (old 5-role system). 13 eurekas distilled into surviving files. Zero regressions verified by grep.
-2. **Agentic kernel v2.0:** 7-layer self-assembling intelligence system. KERNEL.md at `/root/AAA/agents/opencode/KERNEL.md` — load this first.
-3. **ATLAS333 skill map:** 50 skills mapped to 35 paradoxes across 4 zones.
-4. **Symlink fixes:** 4 broken Claude harness links repaired.
-5. **AAA committed:** `ee6c9ac` — 230 files, 35K lines deleted.
-6. **Sealed:** VAULT999 `mem_1784834893360_8i7vu` + `mem_1784835297840_tsrf8`.
+> **Carry-forward from:** SEAL-fd68d6a2761846e5 (OpenCode, 2026-07-25)
+> **Context:** Init/Seal unification complete. SEAL.md canonical. Iron Rule restored. 530 stale files archived.
+> **Handoff:** The architecture is clean. Now make it VISIBLE to humans.
 
 ---
 
-## REMAINING CHAOS — Things You Should Address
+## Mission
 
-### 🔴 HIGH PRIORITY
+Build two human-facing pages on arif-fazil.com:
 
-| # | Task | Detail |
-|---|------|--------|
-| 1 | **AAA push to GitHub** | Commit `ee6c9ac` needs `git push`. 230 files of prompt cleanup. |
-| 2 | **Push A-FORGE forge_work** | All session artifacts in `/root/A-FORGE/forge_work/2026-07-23/`. Commit + push. |
-| 3 | **arifOS uncommitted** | 1 change pending — check `git -C /root/arifOS status` |
-| 4 | **GEOX uncommitted** | 1 change pending |
-| 5 | **A-FORGE uncommitted** | 1 change pending |
+### /000 — Proof of Human (The Sovereign Anchor)
 
-### 🟡 MEDIUM PRIORITY
+**Purpose:** Show the world that a real human (Muhammad Arif bin Fazil, F13) occupies position zero. This is the root of all trust in the federation.
 
-| # | Task | Detail |
-|---|------|--------|
-| 6 | **Stale forge_work** | 3 directories >7 days old: `a2a-v12-backups`, `zen-migration-2026-07-11`, `zen-migration` — archive or clean |
-| 7 | **Skill mesh MISSING** | Multiple skills referenced in Claude harness but not found in canonical paths. Run `bash /root/AAA/skills/scripts/skill-mesh-sync.sh --check` |
-| 8 | **Python cleanup** | Old Python cache dirs? Run `find /root -name __pycache__ -type d | head -10` |
+**Content to include:**
+1. **The Membrane Principle** — Consciousness cannot be extracted, only attested. Arif is here, he is real, he holds final veto.
+2. **Identity Hash** — BLAKE3 hash of `identity.toml`, live-verified from `arifos.arif-fazil.com/health`
+3. **ZKPC** — Zero-Knowledge Proof of Consciousness across 7 dimensions (explain in human language)
+4. **Gödel Lock** — System AND Human simultaneously. The system cannot complete itself without the human.
+5. **Personal AGI** — Intelligence anchored on ONE specific human reality, not a generic "user."
+6. **The Airlock Metaphor** — INIT is the airlock between raw AI and Arif's world. Outer door checks identity. Chamber equalizes (floors F1-F13). Inner door grants (SCT, work contract). Only one door opens at a time.
+7. **Live Verify block** — `curl https://arifos.arif-fazil.com/health` output with identity_hash + floors_active + drift status.
 
-### 🟢 LOW PRIORITY (carry-forward open loops)
+**Tone:** Sovereign but warm. Technical but human. "I am Arif. This is my proof. You can verify it."
 
-| # | Task | Detail |
-|---|------|--------|
-| 9 | **OpenClaw gateway unblock** | Constitutional holds from prior sessions. Needs Arif intervention. |
-| 10 | **ECHO/PaW Phase 2** | RL training — 5/100 trajectories collected. Needs sovereign infra approval. |
-| 11 | **A-FORGE/python/ (35M)** | Decision needed: git-track or relocate to `/opt/aforge-publish/` |
+### /999 — The Sealed Vault (The Immutable Exit)
 
-### ⚪ HOUSEKEEPING
+**Purpose:** Show that every decision in the federation leaves an unalterable trace. The arrow of time is real.
 
-| # | Task |
-|---|------|
-| 12 | Run `aforge_forge_entropy_sweep(path="/root")` to measure current entropy |
-| 13 | Run full organ health probe: 6 organs + FLAME |
-| 14 | Verify seal chain: `tail -3 /root/.local/share/arifos/vault999/seal_chain.jsonl` |
-| 15 | Update `carry_forward.json` with this session's results |
+**Content to include:**
+1. **What VAULT999 Is** — Append-only, hash-chained, Merkle-linked ledger. Once sealed, never modified. Never deleted.
+2. **The Hash Chain** — How each seal references the prior seal's hash. The chain IS causality. Break one link = break the whole chain.
+3. **/999/verify** — Public, unauthenticated, CORS-enabled endpoint. Anyone can check the HEAD hash.
+4. **The Seal Ceremony** — 6 steps from SEAL.md: RSI → cooling → bind → seal → verify → FQ. Human-readable version.
+5. **Tiered Seals** — session.ledger (1 witness: AI agent) vs VAULT999 (3+ witnesses: Tri-Witness). When each is used.
+6. **INIT → SEAL Loop** — /000 (human enters) → 000→333→888→777→999 (metabolic pipeline) → /999 (vault records) → /999/verify → return to /000. The loop MUST close.
+7. **Live Verify block** — `curl https://arif-fazil.com/999/verify` → `{"head":"sha256:...","verified":true}`.
+8. **The Paradox** — "AGI must be maximally open to think (INIT) and maximally closed to be trusted (SEAL), at the same moment in time." How arifOS resolves it: the metabolic pipeline converts raw openness into closed certainty.
+
+**Tone:** Architectural but accessible. "Every action leaves a trace. Nothing is hidden. You can verify the chain yourself."
 
 ---
 
-## HOW TO BOOT
+## Design Principles
+
+1. **Zen Pulse bar** on both pages — 3-second answer: Where am I? Why care? What next?
+2. **Verbs over nouns** — "Verify" not "Data." "Prove" not "Documentation."
+3. **Show less, reveal more** — 20% visible above fold, 80% in `<details>` blocks.
+4. **Human + Agent surfaces** — Beautiful HTML for humans, structured JSON at `/000.json` and `/999.json` for agents.
+5. **Live data, not static claims** — curl the health endpoints and display real values.
+
+---
+
+## Technical Notes
+
+- Site lives at `/root/ARIF-SITES/sites/arif-fazil.com/`
+- Deploy via `/root/ARIF-SITES/deploy-vps.sh`
+- Existing pages use Tailwind CSS + Zen Pulse pattern
+- Reference: GEOX home (`/root/GEOX/static/index.html`) for the canonical Zen Pulse implementation
+- `/000` and `/999` should be new pages: `arif-fazil.com/000/` and `arif-fazil.com/999/`
+- Existing `/000/` page may exist — audit first, enhance or replace
+
+---
+
+## Git Context
 
 ```
-1. Load KERNEL.md: /root/AAA/agents/opencode/KERNEL.md
-2. Run INIT.md 7-question check
-3. Run BOOTSTRAP.md operational probes
-4. Check work queue: /root/work/tasks.json
-5. Tackle HIGH PRIORITY tasks first
+AAA commit: a1cdc7e9 (main, pushed)
+  - SEAL.md created (canonical seal ceremony)
+  - INIT.md §18.2 → SEAL.md pointer
+  - AUTONOMOUS_GOVERNANCE.md, HEARTBEAT.md cleaned
+
+arifOS: Iron Rule compliant (0 legacy tags)
+A-FORGE: Iron Rule compliant (0 legacy tags)
+All repos: clean
 ```
 
 ---
 
-## KEY ARTIFACTS FROM THIS SESSION
+## Load Order
 
-| Artifact | Path |
-|----------|------|
-| Kernel manifest | `/root/AAA/agents/opencode/KERNEL.md` |
-| Legacy prompt map | `/root/A-FORGE/forge_work/2026-07-23/ARIFOS-LEGACY-PROMPT-MAP-2026-07-23.md` |
-| Eureka contrast | `/root/A-FORGE/forge_work/2026-07-23/EUREKA-CONTRAST-2026-07-23.md` |
-| ATLAS333 skill map | `/root/A-FORGE/forge_work/2026-07-23/ATLAS333-SKILL-MAP-2026-07-23.md` |
-| Zen-all final | `/root/A-FORGE/forge_work/2026-07-23/ZEN-ALL-FINAL-2026-07-23.md` |
-| Legacy archive | `/root/A-FORGE/forge_work/2026-07-23/legacy-prompt-archive-193050/` |
+1. `/root/AAA/prompts/INIT.md` — constitutional boot
+2. `/root/AAA/prompts/SEAL.md` — seal ceremony (load at session end)
+3. `/root/AAA/prompts/INIT_HUMAN.md` — human-readable INIT explanation (Perplexity)
+4. This file — mission briefing
+5. Probe live `/health` endpoints before writing any claims
 
 ---
 
-*DITEMPA BUKAN DIBERI ⚒️*
+**DITEMPA BUKAN DIBERI ⚒️**
+**The architecture is clean. Now make it visible.**
