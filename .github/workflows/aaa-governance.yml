@@ -26,11 +26,11 @@ jobs:
       - name: Validate FEDERATION.md
         run: |
           test -f FEDERATION.md || (echo "❌ Missing FEDERATION.md" && exit 1)
-          grep -q "role: ROOT" FEDERATION.md || (echo "❌ FEDERATION.md must declare role: ROOT" && exit 1)
-          grep -q "layer: L1" FEDERATION.md || (echo "❌ FEDERATION.md must declare layer: L1" && exit 1)
-          grep -q "judge:" FEDERATION.md || (echo "❌ FEDERATION.md must declare governance judge" && exit 1)
-          grep -q "seal:" FEDERATION.md || (echo "❌ FEDERATION.md must declare governance seal" && exit 1)
-          echo "✅ AAA FEDERATION.md valid — L1 ROOT"
+          grep -q "role: COCKPIT" FEDERATION.md || (echo "❌ FEDERATION.md must declare role: COCKPIT" && exit 1)
+          grep -q "layer: L3" FEDERATION.md || (echo "❌ FEDERATION.md must declare layer: L3" && exit 1)
+          grep -q "mcp:" FEDERATION.md || (echo "❌ FEDERATION.md must declare mcp:" && exit 1)
+          grep -q "SOT:" FEDERATION.md || (echo "❌ FEDERATION.md must declare SOT:" && exit 1)
+          echo "✅ AAA FEDERATION.md valid — L3 COCKPIT"
 
   protocol-alignment:
     name: 🧭 Protocol Alignment
@@ -44,11 +44,11 @@ jobs:
       - name: Validate FEDERATION.md contract
         run: |
           test -f FEDERATION.md || (echo "❌ Missing FEDERATION.md" && exit 1)
-          grep -q "role: ROOT" FEDERATION.md
-          grep -q "layer: L1" FEDERATION.md
-          grep -q "judge:" FEDERATION.md
-          grep -q "seal:" FEDERATION.md
-          echo "✅ AAA FEDERATION.md contract valid — L1 ROOT"
+          grep -q "role: COCKPIT" FEDERATION.md
+          grep -q "layer: L3" FEDERATION.md
+          grep -q "mcp:" FEDERATION.md
+          grep -q "SOT:" FEDERATION.md
+          echo "✅ AAA FEDERATION.md contract valid — L3 COCKPIT"
       - name: Validate FEDERATION_MAP.md
         run: |
           test -f docs/FEDERATION_MAP.md || (echo "❌ Missing docs/FEDERATION_MAP.md" && exit 1)
