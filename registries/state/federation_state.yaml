@@ -1,95 +1,83 @@
-# ═══════════════════════════════════════════════════════════════════════════
-# _state — Runtime-Preserved Overlay (DO NOT TREAT AS STATIC SOURCE)
-# ═══════════════════════════════════════════════════════════════════════════
-# Canonical path: /root/AAA/registries/state/federation_state.yaml
-# Supersedes:    /root/AAA/registries/AAA_FEDERATION_STATE.yaml (deprecated 2026-06-22)
-# Repair slice:  2026-07-25
-#
-# ───────────────────────────────────────────────────────────────────────────
-# WHAT `_state` MEANS
-# ───────────────────────────────────────────────────────────────────────────
-# Any block/file labeled `_state` is a RUNTIME-PRESERVED OVERLAY. That is:
-#
-#   1. NOT a static source of truth. The system writes here at runtime
-#      (organ health probes, federation heartbeat, model routing probes,
-#      cooling ledger pointers). Humans do NOT edit this to "set" state.
-#
-#   2. NOT a build input. The Vite build, validators, and AAA validation
-#      gates MUST NOT consume `_state` blocks to derive routing, defaults,
-#      or topology. Read FEDERATION_MODEL.json / agents.yaml / hosts.yaml
-#      for static SOT.
-#
-#   3. Preserved across restarts. The overlay is the last-known-good view
-#      of organ health, port bindings, PIDs, and federation sync timestamps.
-#      Loss of this overlay = loss of forensic visibility. Append-only,
-#      hash-chained where possible.
-#
-#   4. Tri-witnessed before any mutation. Runtime updates go through the
-#      arifOS kernel (port 8088) → F1 AMANAH reversible-first → F11 AUDIT.
-#      No direct file mutation by humans.
-#
-# ───────────────────────────────────────────────────────────────────────────
-# EDITING POLICY
-# ───────────────────────────────────────────────────────────────────────────
-# • To change RUNTIME STATE (organ health, port, last_sync): write via the
-#   arifOS kernel — e.g. arif_state_set("aaa.federation_state", value).
-# • To change STATIC CONFIG (routing, defaults, providers): edit the
-#   canonical static sources — FEDERATION_MODEL.json, agents.yaml,
-#   hosts.yaml, integrations.yaml. NEVER edit `_state` to change config.
-# • If you find a stale value here that contradicts the live organ: trust
-#   the live probe (curl :8088/health) and re-issue a kernel write. Do not
-#   hand-edit this file.
-#
-# ───────────────────────────────────────────────────────────────────────────
-# WHY THIS DISTINCTION MATTERS
-# ───────────────────────────────────────────────────────────────────────────
-# F2 TRUTH requires ≥ 0.99 fidelity between claimed state and observed
-# state. If `_state` is treated as a static source, drift between the
-# declared overlay and the live organ becomes invisible — we lose the
-# ability to detect when the federation has quietly degraded.
-#
-# F11 AUDITABILITY requires every decision to be inspectable. A runtime
-# overlay that humans can silently edit destroys the audit chain.
-#
-# ───────────────────────────────────────────────────────────────────────────
-# DITEMPA BUKAN DIBERI — The overlay is forged by the kernel, not given.
-# ═══════════════════════════════════════════════════════════════════════════
+# AAA FEDERATION STATE — Runtime Preserved Overlay
+# SOT: 2026-07-26 | seal_seq: Z2
+# Overlay captures what the kernel last observed; humans do NOT edit to "set" state.
 
 _state:
-  role: runtime-preserved-overlay
-  static_source: "/root/AAA/registries/FEDERATION_MODEL.json (canonical)"
-  static_source_alt: "/root/AAA/registries/agents.yaml (topology)"
-  written_by: "arifOS kernel (port 8088) via arif_state_set"
-  written_at: "2026-07-25T23:00:00Z (overlay initialized, no live data yet)"
-  overlay_keys_allowed:
-    - live_services
-    - federated_memory_state
-    - model_drift
-    - agent_alignment
-    - registry_consistency
-    - forward_actions
-    - forge_work_index
-  schema_intent: |
-    Mirrors the deprecated AAA_FEDERATION_STATE.yaml sections (Section 1-6)
-    but treats every key as a runtime probe result, not a hand-curated
-    declaration. The deprecated file will be retained as a one-shot import
-    artifact; future writes land here.
+  version: 2
+  last_seal: "2026-07-26T10:17:00Z"
+  auditor: Copilot CLI (warga-aaa)
+  phase: ZEN_ENTROPY_REDUCTION
+  zen_sequence:
+    Z0: SEALED  # entropy inventory
+    Z1: SEALED  # ownership declaration
+    Z1_5: SEALED  # git stabilization
+    Z2: SEALED  # pointerization (~670 files deduplicated)
+  mutation_verdict: SABAR_FOR_Z3_VERIFICATION
+  next_phase: Z3_entropy_verification
 
-# Initial overlay values are intentionally minimal — they are seeded by
-# arifOS kernel probes on first session_init. Empty here is honest, not
-# fabricated.
+federation:
+  organs:
+    arifOS:
+      git: synced
+      src_files: 4036
+      health: green
+      role: governance_kernel
+    A-FORGE:
+      git: synced
+      src_files: 1665
+      health: green
+      role: execution_engine
+    AAA:
+      git: synced
+      src_files: 6668
+      health: green
+      role: control_plane
+    GEOX:
+      git: synced
+      src_files: 3467
+      health: green
+      role: earth_intelligence
+    WEALTH:
+      git: synced
+      src_files: 716
+      health: green
+      role: capital_intelligence
+    WELL:
+      git: synced
+      src_files: 366
+      health: green
+      role: vitality_guard
+    HERMES:
+      git: synced
+      src_files: 11525
+      health: green
+      role: constitutional_governor
+    arif-sites:
+      git: synced
+      health: green
+      role: public_surface
+    arifFlow:
+      git: synced
+      health: green
+      role: telemetry_receipt_engine
 
-live_services: {}
-federated_memory_state:
-  last_kernel_probe: null
-model_drift: {}
-agent_alignment: {}
-registry_consistency: {}
-forward_actions: []
-forge_work_index: {}
+  services:
+    arifFLOW:
+      port: 7073
+      receipts: 17255
+      chain: VERIFIED
+      cooling: STABLE
 
-meta:
-  schema_version: 1
-  introduced: 2026-07-25
-  replaces: /root/AAA/registries/AAA_FEDERATION_STATE.yaml (deprecated)
-  status: SHELL — awaits first kernel probe
+z2_changes:
+  pointerized:
+    - FEDERATION_MAP.md: "7 copies → AAA/docs/FEDERATION_MAP.md"
+    - organ.yaml: "5 copies → AAA/organ.yaml"
+    - identity.toml: "5 copies → AAA/identity.toml"
+    - AGENTS.md: "7 organ copies → /root/AGENTS.md"
+    - HERMES_profiles: "651 duplicate SKILL.md → 3 symlinks"
+    - geox_symlink: "/root/geox → /root/GEOX"
+    - arifFLOW_orphan: "archived to _archive/"
+  files_eliminated: ~670
+  content_deleted: 0
+
+sovereign_note: "ZEN means fewer places for truth to hide. P1 wired the bloodstream. Z1-Z2 reduced the bones. Z3 verifies the shape holds."
