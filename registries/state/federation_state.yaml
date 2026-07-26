@@ -1,0 +1,95 @@
+# ═══════════════════════════════════════════════════════════════════════════
+# _state — Runtime-Preserved Overlay (DO NOT TREAT AS STATIC SOURCE)
+# ═══════════════════════════════════════════════════════════════════════════
+# Canonical path: /root/AAA/registries/state/federation_state.yaml
+# Supersedes:    /root/AAA/registries/AAA_FEDERATION_STATE.yaml (deprecated 2026-06-22)
+# Repair slice:  2026-07-25
+#
+# ───────────────────────────────────────────────────────────────────────────
+# WHAT `_state` MEANS
+# ───────────────────────────────────────────────────────────────────────────
+# Any block/file labeled `_state` is a RUNTIME-PRESERVED OVERLAY. That is:
+#
+#   1. NOT a static source of truth. The system writes here at runtime
+#      (organ health probes, federation heartbeat, model routing probes,
+#      cooling ledger pointers). Humans do NOT edit this to "set" state.
+#
+#   2. NOT a build input. The Vite build, validators, and AAA validation
+#      gates MUST NOT consume `_state` blocks to derive routing, defaults,
+#      or topology. Read FEDERATION_MODEL.json / agents.yaml / hosts.yaml
+#      for static SOT.
+#
+#   3. Preserved across restarts. The overlay is the last-known-good view
+#      of organ health, port bindings, PIDs, and federation sync timestamps.
+#      Loss of this overlay = loss of forensic visibility. Append-only,
+#      hash-chained where possible.
+#
+#   4. Tri-witnessed before any mutation. Runtime updates go through the
+#      arifOS kernel (port 8088) → F1 AMANAH reversible-first → F11 AUDIT.
+#      No direct file mutation by humans.
+#
+# ───────────────────────────────────────────────────────────────────────────
+# EDITING POLICY
+# ───────────────────────────────────────────────────────────────────────────
+# • To change RUNTIME STATE (organ health, port, last_sync): write via the
+#   arifOS kernel — e.g. arif_state_set("aaa.federation_state", value).
+# • To change STATIC CONFIG (routing, defaults, providers): edit the
+#   canonical static sources — FEDERATION_MODEL.json, agents.yaml,
+#   hosts.yaml, integrations.yaml. NEVER edit `_state` to change config.
+# • If you find a stale value here that contradicts the live organ: trust
+#   the live probe (curl :8088/health) and re-issue a kernel write. Do not
+#   hand-edit this file.
+#
+# ───────────────────────────────────────────────────────────────────────────
+# WHY THIS DISTINCTION MATTERS
+# ───────────────────────────────────────────────────────────────────────────
+# F2 TRUTH requires ≥ 0.99 fidelity between claimed state and observed
+# state. If `_state` is treated as a static source, drift between the
+# declared overlay and the live organ becomes invisible — we lose the
+# ability to detect when the federation has quietly degraded.
+#
+# F11 AUDITABILITY requires every decision to be inspectable. A runtime
+# overlay that humans can silently edit destroys the audit chain.
+#
+# ───────────────────────────────────────────────────────────────────────────
+# DITEMPA BUKAN DIBERI — The overlay is forged by the kernel, not given.
+# ═══════════════════════════════════════════════════════════════════════════
+
+_state:
+  role: runtime-preserved-overlay
+  static_source: "/root/AAA/registries/FEDERATION_MODEL.json (canonical)"
+  static_source_alt: "/root/AAA/registries/agents.yaml (topology)"
+  written_by: "arifOS kernel (port 8088) via arif_state_set"
+  written_at: "2026-07-25T23:00:00Z (overlay initialized, no live data yet)"
+  overlay_keys_allowed:
+    - live_services
+    - federated_memory_state
+    - model_drift
+    - agent_alignment
+    - registry_consistency
+    - forward_actions
+    - forge_work_index
+  schema_intent: |
+    Mirrors the deprecated AAA_FEDERATION_STATE.yaml sections (Section 1-6)
+    but treats every key as a runtime probe result, not a hand-curated
+    declaration. The deprecated file will be retained as a one-shot import
+    artifact; future writes land here.
+
+# Initial overlay values are intentionally minimal — they are seeded by
+# arifOS kernel probes on first session_init. Empty here is honest, not
+# fabricated.
+
+live_services: {}
+federated_memory_state:
+  last_kernel_probe: null
+model_drift: {}
+agent_alignment: {}
+registry_consistency: {}
+forward_actions: []
+forge_work_index: {}
+
+meta:
+  schema_version: 1
+  introduced: 2026-07-25
+  replaces: /root/AAA/registries/AAA_FEDERATION_STATE.yaml (deprecated)
+  status: SHELL — awaits first kernel probe

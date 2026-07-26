@@ -1,0 +1,50 @@
+{
+  "$schema": "arifOS/deployment-state/v1",
+  "_state": {
+    "role": "runtime-preserved-overlay",
+    "meaning": "This file is a runtime-preserved overlay, not a static source of truth. It records which agent cards are currently deployed under aaa.arif-fazil.com/.well-known/. The system (not humans) refreshes this on every card rotation. Do NOT edit to declare deployment — re-issue the card and update its signed canonical_sha256.",
+    "schema_intent": "Companion to /.well-known/agent-card.json. Identifies the deployed card, version, signature, and explicitly excludes internal-only card locations."
+  },
+  "deployed_root": "https://aaa.arif-fazil.com/.well-known/",
+  "public_agent_card": {
+    "path": "agent-card.json",
+    "schema": "https://a2a-protocol.org/schemas/agent-card/v1.0",
+    "role": "AAA A2A Gateway (canonical, signed)",
+    "name": "AAA A2A Gateway",
+    "version": "2026.07.24",
+    "signed": true,
+    "did": "did:web:arif-fazil.com",
+    "proof_type": "Ed25519Signature2020",
+    "canonical_sha256": "75d0839918cb74b0ba780e25f72b5d080086308d644d8ce40602b076c2536f87",
+    "proof_created": "2026-07-12T22:30:29Z",
+    "deploys_at": "https://aaa.arif-fazil.com/.well-known/agent-card.json",
+    "is_canonical_for_public": true,
+    "editing_invariant": "Any field edit invalidates the Ed25519 signature. To update, re-sign and bump canonical_sha256."
+  },
+  "legacy_or_internal_cards": [
+    {
+      "path": "/root/AAA/agents/agent_cards/.well-known/agent-card.json",
+      "schema": "arifOS/agent-card/v2.x (cockpit-pattern)",
+      "role": "AAA Cockpit internal warga-aggregation card (NOT a gateway card)",
+      "deploys_at": null,
+      "deploy_for_public": false,
+      "rationale": "Lives under agents/agent_cards/, outside vite publicDir. Never copied to dist/.well-known/. Distinct schema and purpose — cockpit surface exposes 3 intelligence principals (333-AGI / 555-ASI / 888-APEX), not federation organ routing. Do NOT promote to public/.well-known/."
+    },
+    {
+      "path": "/root/AAA/.well-known/agent.json",
+      "schema": "arifOS/agent-card/v2.2.0",
+      "role": "Pre-Gateway legacy agent descriptor",
+      "deploys_at": null,
+      "deploy_for_public": false,
+      "rationale": "Superseded by agent-card.json. Kept for internal discovery scans. Not deployed."
+    }
+  ],
+  "discovery_files_public": [
+    "agent-card.json",
+    "a2a-routing-policy.json",
+    "ai-plugin.json",
+    "arifos.json"
+  ],
+  "last_inspected": "2026-07-25",
+  "inspected_by": "AAA repair slice (manual)"
+}

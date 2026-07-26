@@ -1,0 +1,21 @@
+{
+  "archived": "2026-07-25",
+  "reason": "Phase 000-333 consolidation archive. Contains doctrinal originals (EMERGENCE_DOCTRINE, AAA_DOCTRINE, AAAA_PATTERN, LOOP.md), Constitutional Reflex skill, kernel verb definitions, 11 legacy workflows.",
+  "superseded_by": {
+    "doctrines": "Current AGENTS.md, CLAUDE.md, FEDERATION_MAP.md",
+    "skills": "Active skills in /root/.agents/skills/",
+    "workflows": "Systemd units + AGENTS.md discipline"
+  },
+  "retention_policy": "KEEP_INDEFINITELY (doctrinal lineage)",
+  "eureka_distilled": [
+    "AAA Triad: Abstraction · Attestation · Abduction (Ambil inti. Panggil saksi. Teka sebab terbaik.)",
+    "Constitutional Reflex: ART→Kernel→ACT arc",
+    "Tool is a Gradient insight (6 negations)",
+    "Execution without ceremony is violence",
+    "13 Forged Laws of Substrate Governance (EMERGENCE_DOCTRINE)",
+    "One Spine pattern",
+    "6 stop conditions for corruption prevention"
+  ],
+  "last_accessed": "2026-07-26",
+  "read_only": true
+}
