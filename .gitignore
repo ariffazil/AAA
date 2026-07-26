@@ -11,6 +11,11 @@ hermes-memory/
 hermes-skills/
 hermes-workspace/
 state/
+# But: registries/state/ is the canonical runtime-overlay path (referenced by
+# registries/AAA_FEDERATION_STATE.yaml's deprecation comment). It is source-
+# tracked and seeded by hand at file creation; runtime writes also land here
+# but the contract/seed file must remain in git.
+!/registries/state/
 
 # Sensitive investigation content — stored in VAULT999 only
 briefings/
