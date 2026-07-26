@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { ShieldAlert, CheckCircle2, XCircle, Eye, Loader2 } from "lucide-react";
 
 export interface ApprovalCardPayload {
@@ -95,10 +95,10 @@ export default function ApprovalCard({
   }, [req, signingEndpoint, onApprove]);
 
   const badge = blastBadge(req.blast_radius);
-  const expDate = req.expires_at ? new Date(req.expires_at) : null;
-  const expStr = expDate
-    ? `${expDate.toLocaleTimeString()} (${Math.max(0, Math.round((expDate.getTime() - Date.now()) / 1000))}s)`
-    : "unknown";
+  const expStr = useMemo(() => {
+    if (!req.expires_at) return "unknown";
+    return new Date(req.expires_at).toLocaleTimeString();
+  }, [req.expires_at]);
 
   return (
     <div
