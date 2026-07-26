@@ -1,9 +1,26 @@
 # AAA FEDERATION STATE — 2026-06-20T14:20:00+00:00
-# DEPRECATED 2026-06-22 — canonical path: registries/state/federation_state.yaml (Phase 2 symlink pending 888). This file remains for backward compatibility; new state writes should land in the new path.
+# DEPRECATED 2026-06-22 — canonical path: registries/state/federation_state.yaml.
+#   ▸ Phase 2 symlink pending 888.
+#   ▸ This file remains for backward compatibility only; new state writes MUST
+#     land in the canonical path.
 # Forged by FORGE (000Ω)
-# Purpose: Single source of truth for what's running, what's configured, and what drifts
+# Purpose: Snapshot of what's running, what's configured, and what drifts.
+#          Treated as a one-shot import artifact — NOT a live editable source.
+#
+# IMPORTANT — `_state` semantics (2026-07-25 repair slice):
+#   Any federation-state file (this one, federation_state.yaml, or anything
+#   in registries/state/) is a RUNTIME-PRESERVED OVERLAY, not a static
+#   source of truth. Static SOT lives in:
+#     • registries/FEDERATION_MODEL.json  (model routing / shadow)
+#     • registries/agents.yaml           (topology)
+#     • registries/hosts.yaml            (port bindings)
+#     • registries/integrations.yaml     (MCP / A2A wiring)
+#   The overlay captures what the kernel last observed; humans do NOT edit
+#   it to "set" state. See registries/state/federation_state.yaml for the
+#   full _state contract.
 
 meta:
+  _state: runtime-preserved-overlay
   version: 1
   last_audit: "2026-06-22"
   auditor: Grok Build (self + AAA registry update per Arif)
