@@ -1,26 +1,21 @@
 # GROK AAA NEXT INIT — 2026-07-26
 
-## State at Last Seal
-- P1 Receipt Layer: LIVE (arifFLOW :7073, 17,254 receipts, chain VERIFIED)
-- P1-4 AAA wiring: SEALED (AAA → arifFLOW /receipt/emit)
-- P2 State Spine: SEALED
-- P4 Job Queue: Type contract SEALED (3 TS files in arifFlow/src/ts/arifflow/jobqueue/), deprecation flags on A-FORGE
-- P4-4: SEALED (AgentManager.ts + AgentManagerSingleton.ts @deprecated)
+> **Previous agent:** Copilot CLI (DeepSeek v4-pro) — SESSION SEALED
+> **Federation:** 7/7 organs healthy, 4/4 APA bridges v1.0
+> **APEX:** G=0.6685 → HOLD (bottleneck: E=0.2753, Energy_score=0.046)
 
-## Pending
-- P4-5 Router→Queue wiring
-- P5 A2A Transport audit (19 files to classify)
-- P1-5 A-FORGE validateReceipt() wiring
-- P1-6 MCP audit wiring
-- P1-7 Full deprecation pass
+## Architecture Ratified
+ART → KERNEL → APA → ACT → VAULT999
 
-## Boot Sequence
-1. Baseline: curl :7073/health (receipt count, FQ, chain)
-2. Probe: 6 organs health
-3. Continue: P5 A2A transport audit plan
+## Canonicalized This Session
+- `/root/AAA/docs/APEX_T000_THEOREM.md` — §7 ATLAS333/arifFLOW cross-refs, §9 CSP formalization
+- `/root/AAA/docs/APA_CUSTODY_LAYER.md` — NEW canonical APA spec (5 stages, 8 invariants, 4 bridges)
+- `/root/A-FORGE/src/domain/governance/apexDials.ts` — canonicalized to T-000 (F3→E, F13→P, G=GM)
 
-## Doctrine
-- NO DELETE until P6 verified
-- All old receipt functions become callers, not generators
-- arifFLOW is receipt authority; VAULT999 is witness
-- A-FORGE is actuator — never owns queue
+## Priority TODOs
+1. **Deploy Z5b kernel auto-hooks** — raises Energy_score 0.046→0.276 → G→0.804 → SEAL
+2. **Fix ATLAS333→APEX back-references** — bridge docs still don't reference T-000
+3. **HERMES + arif-sites** — 6 dirty files (runtime state, not code)
+
+## Next Agent
+Load sequence: `/root/AAA/prompts/SEAL.md` → `/root/AGENTS.md` → probe :8088/health
