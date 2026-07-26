@@ -2,19 +2,20 @@
 
 > **SOT:** 2026-07-26 | **seal_seq:** pending | **Spec target:** 2025-11-25
 > **Audit complete:** P0-P6 metabolic MCP audit executed | **WELL = reference organ**
+> **Ledger:** A-FORGE chain repaired (28 records, 0 errors) | **GEOX:** tools_sot.yaml regenerated (33 entries)
 > **DITEMPA BUKAN DIBERI** — For future agents: read this before touching any MCP surface.
 >
 > ## ⚡ Audit Summary (2026-07-26)
 >
 > | Phase | Status | Key Finding |
 > |-------|--------|------------|
-> | P0 Receipt | ✅ | VAULT999 28.5K entries. A-FORGE ledger BROKEN (9 hash mismatches) |
+> | P0 Receipt | ✅ | VAULT999 28.5K entries. A-FORGE ledger BROKEN → **REPAIRED** (28 records, chain valid) |
 > | P1 WELL | ✅ SEALED | Fixed `test-session` → ctx.session_id. Added ClaimState/WitnessType/OrganType |
 > | P2 WEALTH | ✅ | Governance chain verified (SEAL→ACK→WRITE→RECEIPT). Minor gaps noted |
 > | P3 Federation | ⚠️ | Isomorphism drift (4/17 failed). Port 6274 public. New services detected |
-> | P4 GEOX | ⚠️ | 94 phantom drifts — tools_sot.yaml completely stale vs 70 live tools |
+> | P4 GEOX | ✅ | tools_sot.yaml **regenerated** — 33 entries from canonical manifest. Was: 24 phantom |
 > | P5 Regression | ⚠️ | 250+ drifts across federation. WELL = 0 (reference). Pattern to replicate |
-> | P6 Replay | ⚠️ | A-FORGE ledger chain needs repair before cross-organ replay possible |
+> | P6 Replay | ✅ | **Ledger chain repaired.** Cross-organ replay now possible |
 
 ---
 
