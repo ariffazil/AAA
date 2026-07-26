@@ -1,33 +1,26 @@
-# NEXT INIT — 2026-07-25T16:55Z
+# GROK AAA NEXT INIT — 2026-07-26
 
-> **Previous seal:** copilot-ci-autofix-2026-07-25T16:55:00Z
-> **VAULT999 seq:** copilot-ci-autofix-2026-07-25T16:55:00Z
-> **Handoff from:** Copilot CLI (deepseek-v4-pro)
+## State at Last Seal
+- P1 Receipt Layer: LIVE (arifFLOW :7073, 17,254 receipts, chain VERIFIED)
+- P1-4 AAA wiring: SEALED (AAA → arifFLOW /receipt/emit)
+- P2 State Spine: SEALED
+- P4 Job Queue: Type contract SEALED (3 TS files in arifFlow/src/ts/arifflow/jobqueue/), deprecation flags on A-FORGE
+- P4-4: SEALED (AgentManager.ts + AgentManagerSingleton.ts @deprecated)
 
-## What was sealed
-Autonomous CI Autofix System deployed federation-wide:
-- 3 systemd timers (health 30min, drift 30min, autofix hourly)
-- 7 PRs across 6 organs (FEDERATION.md fixes + A-FORGE infra)
-- CANONICAL_CLAIMS_REGISTRY.json (AAA docs)
-- 2 drift monitors (arifOS canonical + A-FORGE federation)
-- VAULT999 chain updated
+## Pending
+- P4-5 Router→Queue wiring
+- P5 A2A Transport audit (19 files to classify)
+- P1-5 A-FORGE validateReceipt() wiring
+- P1-6 MCP audit wiring
+- P1-7 Full deprecation pass
 
-## What's open (ordered)
-1. Merge 7 PRs (arifos#618, A-FORGE#58-60, AAA#146, GEOX#135, WEALTH#52)
-2. Verify arifOS CI goes GREEN after PR merge
-3. GEOX deployment drift (source ≠ deployed commit)
-4. WELL health=degraded (UNMEASURED scalars — design, not crash)
+## Boot Sequence
+1. Baseline: curl :7073/health (receipt count, FQ, chain)
+2. Probe: 6 organs health
+3. Continue: P5 A2A transport audit plan
 
-## Load first
-1. `/root/AAA/docs/SEAL_AUTHORITY_DOCTRINE.md` — seal authority bands
-2. `/root/AAA/docs/CANONICAL_CLAIMS_REGISTRY.json` — truth registry
-3. `/root/A-FORGE/scripts/ci-autofix-monitor.sh check all` — current CI health
-4. `/root/A-FORGE/scripts/drift-monitor.py` — current drift report
-
-## Seal — ONE ceremony for ALL agents
-**Canonical:** `/root/AAA/prompts/SEAL.md`
-Per-agent seal skills are deprecated. All agents route through this one ceremony.
-- Path A (Kernel/VAULT999): `arif_judge` → `arif_seal`
-- Path B (Forge/session.ledger): `forge_session_init` → `forge_vault(mode="write")`
-
-DITEMPA BUKAN DIBERI
+## Doctrine
+- NO DELETE until P6 verified
+- All old receipt functions become callers, not generators
+- arifFLOW is receipt authority; VAULT999 is witness
+- A-FORGE is actuator — never owns queue

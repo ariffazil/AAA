@@ -1,31 +1,34 @@
-# Federation Contract v2
+# Federation Contract v2.0.0
 
-> **SOT:** 2026-07-24 | **seal_seq:** fed-phase-7-zen
+> **SOT:** 2026-07-26 | **seal_seq:** web-unification-sealed
 > **Authority:** F13 SOVEREIGN — Muhammad Arif bin Fazil
-> **Canonical location:** `/root/FEDERATION_CONTRACT.md`
+> **Canonical location:** `/root/arif-sites/FEDERATION.md`
 > **Supersedes:** All prior organ-specific FEDERATION_CONTRACT.md copies
+> **Doctrine:** Satu domain. Satu web surface. Banyak organ, tetap bersempadan.
 
 ---
 
 ## 1. Federation Identity
 
-The **arifOS Federation** is a governed intelligence system comprising 7 core organs, 31 GitHub repositories, and a single sovereign (Arif, F13). It operates on a single VPS (72.62.71.199) with Cloudflare Tunnel + Caddy ingress.
+The **arifOS Federation** is a governed intelligence system comprising a **9-node constitutional spine** (5 runtime + 4 domain organs), 32 repositories, and a single sovereign (Arif, F13). It operates on a single VPS (72.62.71.199) with Cloudflare Tunnel + Caddy ingress.
 
 **Governing principle:** No organ may seal without arifOS. No organ may self-authorize mutation.
 
 ---
 
-## 2. Organs — Authority Boundaries
+## 2. Organs — Constitutional Spine
 
-| Organ | Role | Port | MCP Prefix | Permissions |
-|-------|------|------|-----------|-------------|
-| **arifOS** | Constitutional kernel | 8088 | `arif_*` | Judges, seals, routes. NEVER executes. |
-| **A-FORGE** | Execution shell | 7071/7072 | `forge_*` | Executes after SEAL. NEVER adjudicates. |
-| **AAA** | Cockpit + A2A | 3001 | — | Routes, displays. NEVER adjudicates. |
-| **GEOX** | Earth intelligence | 8081 | `geox_*` | Computes earth evidence. NEVER decides. |
-| **WEALTH** | Capital intelligence | 18082 | `capital_*` | Computes capital math. NEVER allocates. |
-| **WELL** | Vitality guard | 18083 | `well_*` | Reflects readiness. NEVER diagnoses. |
-| **HERMES** | Multi-modal bridge | Telegram | — | Routes signals. NEVER adjudicates. |
+| Layer | Organ | Function | Surface |
+|-------|-------|----------|---------|
+| **L0** | arifOS | Law | `arif-fazil.com/arifos/` |
+| **L1** | AAA | Surface | `arif-fazil.com/aaa/` |
+| **L1** | APEX | Judgment | (embedded — unbundling target) |
+| **L1** | arifFlow | Coordination | (internal) |
+| **L1** | A-FORGE | Execution | `arif-fazil.com/forge/` |
+| **L2** | GEOX | Earth | `arif-fazil.com/geox/` |
+| **L2** | WEALTH | Capital | `arif-fazil.com/wealth/` |
+| **L2** | WELL | Human | `arif-fazil.com/well/` |
+| **L2** | HERMES | Bridge | `t.me/arifos` |
 
 ---
 
@@ -42,69 +45,55 @@ No link may be skipped. No organ may self-authorize.
 
 ---
 
-## 4. Cross-Organ API Contracts
+## 4. Unified Web Surface
 
-### 4.1 MCP Transport
-- All organs expose MCP via `https://<organ>.arif-fazil.com/mcp`
-- Unified gateway: `https://mcp.arif-fazil.com/mcp`
+All public surfaces are paths under `https://arif-fazil.com/`. Legacy subdomains → 301 redirects.
+
+| Path | Organ | Legacy Subdomain |
+|------|-------|-----------------|
+| `/` | Cockpit (React SPA) | — |
+| `/000/` | Genesis | — |
+| `/999/` | Seal Verification | — |
+| `/arifos/` | Observatory | `arifos.arif-fazil.com` → 301 |
+| `/aaa/` | Control Plane | `aaa.arif-fazil.com` → 301 |
+| `/geox/` | Earth Lab | `geox.arif-fazil.com` → 301 |
+| `/wealth/` | Capital | `wealth.arif-fazil.com` → 301 |
+| `/well/` | Readiness | `well.arif-fazil.com` → 301 |
+| `/forge/` | Execution | `forge.arif-fazil.com` → 301 |
+| `/mcp/` | Gateway | `mcp.arif-fazil.com` → 301 |
+| `/wiki/` | Knowledge | `wiki.arif-fazil.com` → 301 |
+
+---
+
+## 5. Cross-Organ Standards
+
+### 5.1 MCP Transport
+- All organs expose MCP via localhost ports
+- Public ingress: Cloudflare Tunnel → Caddy → organ port
 - Tool naming: organ prefix enforced (`arif_*`, `forge_*`, `geox_*`, `capital_*`, `well_*`)
 
-### 4.2 A2A Protocol (AAA :3001)
-- Agent discovery: `/.well-known/agent-card.json` on every organ
-- Agent cards registered in `AAA/registries/AAA_AGENTS_REGISTRY.json`
-- Protocol version: 1.0
+### 5.2 Health Standard
+- Every organ MUST expose `GET /health`
+- Federation health sweep: `make health`
 
-### 4.3 Health Standard
-- Every organ MUST expose `GET /health` returning JSON with at minimum: `status`, `identity_hash`, `federation_geometry`
-- Federation health sweep: `/root/Makefile` health target
-
-### 4.4 Secrets
+### 5.3 Secrets
 - Single source: `/root/.secrets/vault.env` (143 env vars)
-- Never hardcode, never commit, never paste in chat
+- Never hardcode, never commit, never paste
 
-### 4.5 VAULT999
-- Append-only, hash-chained, at `/root/arifOS/VAULT999/outcomes.jsonl`
+### 5.4 VAULT999
+- Append-only, hash-chained: `/root/arifOS/VAULT999/outcomes.jsonl`
 - Write only via `arif_seal` (999)
 - Never edit, never rewrite
 
 ---
 
-## 5. CI/CD Standards
+## 6. Standards
 
-- Every organ runs `gitleaks` secret scanning
-- Every organ has a CI badge in README
-- Every organ uses date-stamp tags (`vYYYY.MM.DD`)
-- Conventional commits with organ prefix: `[FORGE]`, `[ZEN]`, `[REPAIR]`, `[AUDIT]`
-
----
-
-## 6. Incident Escalation
-
-| Severity | Response | Authority |
-|----------|----------|-----------|
-| Organ degraded | Auto-restart via systemd | T1 |
-| Multi-organ failure | `make prove` + investigate | T2 announce |
-| Data loss / vault corruption | Stop all mutations, alert Arif | T3 888_HOLD |
-| Security breach | Stop public ingress, rotate secrets | T3 888_HOLD |
+- Date-stamp tags: `vYYYY.MM.DD` (Iron Rule)
+- Conventional commits with organ prefix
+- Every active node has `FEDERATION_MAP.md`
+- CI badge in every README
 
 ---
 
-## 7. New Organ Admission
-
-See `/root/AAA/docs/ORGAN_ONBOARDING.md` for the 10-step checklist.
-
----
-
-## 8. Federation Verification
-
-```bash
-make health                     # 8-service liveness sweep
-make prove                      # Full proof pack
-for d in /root/{arifOS,A-FORGE,AAA,GEOX,WEALTH,WELL,HERMES}; do
-  git -C "$d" status -s         # Dirty check
-done
-```
-
----
-
-*DITEMPA BUKAN DIBERI — This contract is forged from live state, not written from memory.*
+*DITEMPA BUKAN DIBERI — Forged from live state, not written from memory.*

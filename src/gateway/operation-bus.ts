@@ -119,7 +119,15 @@ export class OperationBus {
 
   // ── Receipts ────────────────────────────────────────────────────────
 
-  /** Emit a receipt for a completed operation */
+  /**
+   * Emit a receipt for a completed operation.
+   *
+   * DEPRECATED P1-7: DO NOT DELETE. Now forwards to arifFLOW receipt authority
+   * while preserving local log for backward compatibility. After all callers
+   * verified on arifFLOW path, schedule deletion under separate SEAL.
+   *
+   * P1-4: Wired to arifFLOW :7073/ingest — fire-and-forget, graceful degrade.
+   */
   emitReceipt(params: {
     op_id: string;
     session_id: string;
@@ -140,8 +148,53 @@ export class OperationBus {
       timestamp: isoNow(),
       vault_candidate: params.vault_candidate ?? false,
     };
+
+    // P1-4: Always write local log (backward compat, not removing)
     appendLine(path.join(this.busDir, RECEIPTS_LOG), event as unknown as Record<string, unknown>);
+
+    // P1-4: Forward to arifFLOW receipt authority (fire-and-forget)
+    this._forwardToArifFlow(event).catch(() => {
+      // Graceful degrade — arifFLOW unreachable, local log already saved
+    });
+
     return event;
+  }
+
+  /**
+   * P1-4: Forward receipt to arifFLOW :7073/receipt/emit.
+   * Fire-and-forget — failures are silent, local log is authoritative fallback.
+   */
+  private async _forwardToArifFlow(event: ReceiptEvent): Promise<void> {
+    const ARIFLOW_URL = process.env['ARIFLOW_URL'] ?? 'http://127.0.0.1:7073';
+    try {
+      const body = JSON.stringify({
+        organ: event.organ,
+        producer: 'AAA-operation-bus',
+        action: 'emit_receipt',
+        scope: event.result_summary || 'aaa_operation',
+        risk: event.vault_candidate ? 'HIGH' : 'INTERNAL',
+        epistemic_label: 'OBS',
+        confidence: 0.90,
+        session_id: event.session_id,
+        actor_id: 'aaa',
+        verdict: event.vault_candidate ? 'SEAL' : 'SEAL',
+        evidence_sources: event.evidence_uri ? [event.evidence_uri] : [],
+        metadata: {
+          op_id: event.op_id,
+          trace_id: event.trace_id,
+          receipt_id: event.receipt_id,
+          source: 'AAA-operation-bus',
+        },
+      });
+      await fetch(`${ARIFLOW_URL}/receipt/emit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        signal: AbortSignal.timeout(3000),
+      });
+    } catch {
+      // arifFLOW unreachable — graceful degrade, local log is already saved
+    }
   }
 
   // ── Stats ───────────────────────────────────────────────────────────

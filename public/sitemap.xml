@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  sitemap.xml — AAA organ (aaa.arif-fazil.com)
+  Scope: organ-owned public discovery source only.
+  Federation rule: AAA is the cockpit/A2A gateway organ. Only its own URLs
+  appear here. Cross-organ URLs (arif-fazil.com human surface, arifos.arif-fazil.com,
+  geox.arif-fazil.com, wealth.arif-fazil.com, well.arif-fazil.com) live on
+  their own sitemaps, not here.
+  Excluded: PDF assets, .well-known/* descriptors (discoverable via convention,
+  not sitemap), human-site narrative pages owned by arif-fazil.com.
+  Last rebuild: 2026-07-25 (repair slice).
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aaa.arif-fazil.com/</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://aaa.arif-fazil.com/llms.txt</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aaa.arif-fazil.com/llms.json</loc>
-    <lastmod>2026-06-29</lastmod>
+    <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://aaa.arif-fazil.com/.well-known/arifos.json</loc>
-    <lastmod>2026-06-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
 </urlset>
