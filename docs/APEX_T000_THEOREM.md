@@ -210,16 +210,146 @@ G = 0.6685  → HOLD
 
 ---
 
-## 7. Related Canons
+## 7. Mapped Systems — APEX → ATLAS333 → arifFLOW
+
+APEX is one vertex of the federation's triadic intelligence system. The other two:
+
+| Vertex | System | Role | Canonical Path |
+|--------|--------|------|----------------|
+| **APEX** | Governance Calculus | Measures — collapses 13 floors into G, emits verdict envelope | This file |
+| **ATLAS333** | Cognitive Geometry | Interprets — 33 paradoxes, 7 zones, GPV routing, TEARFRAME | `/root/arifOS/core/shared/ATLAS333_BRIDGE.md` |
+| **arifFLOW** | Nervous System | Transmits — schedules, routes, checkpoints, observes, emits cooling receipts | `/root/arifOS/docs/EUREKA_ZEN_SESSION_SEAL_2026_07_26.md` |
+
+### 7.1 APEX Variables → ATLAS333 Zones
+
+| APEX Variable | ATLAS333 Zones | Paradox IDs | Bridge |
+|---------------|---------------|-------------|--------|
+| **A** (AKAL) | Zone I (TRUTH) + Zone III (AGENT) | 1-5, 11-15 | Cognitive integrity — truth + ontology |
+| **P** (AUTHORITY) | Zone II (GOVERNANCE) + Zone VI (SYSTEM) | 6-10, 26-30 | Authority + structure gates |
+| **E** (ENTROPY×ENERGY) | Zone V (CONNECTION) + Zone VII (WITNESS) | 21-25, 31-33 | Signal/noise + verification |
+| **X** (EXPLORATION×AMANAH) | Zone IV (GROWTH) + Zone III (AGENT) | 16-20, 11-15 | Safe exploration + dignity |
+
+### 7.2 APEX → arifFLOW Data Flow
+
+```
+arifFLOW observatory probes → Energy_score (events_produced/events_expected) → APEX E variable → G computation → verdict envelope
+```
+
+arifFLOW's `FQ` (flow quality) directly feeds APEX's `E` — the bottleneck variable. The Z5b kernel auto-hooks (arif_judge/arif_seal/arif_init → reality_ledger) are the primary intervention to raise Energy_score from 0.046 → 0.276, unlocking G → 0.804 → SEAL.
+
+### 7.3 ATLAS333 → arifFLOW Gate
+
+ATLAS333's GPV → paradox gate → arif_judge → arifFLOW routes to execution. arifFLOW invariant A6: "Flow Observes, Never Interprets" — arifFLOW measures FQ and detects drift; interpretation belongs exclusively to ATLAS333 / arifOS.
+
+---
+
+## 8. Related Canons
 
 | Document | Path |
 |----------|------|
+| ATLAS333 Bridge (theory→runtime) | `/root/arifOS/core/shared/ATLAS333_BRIDGE.md` |
+| ATLAS333 Intelligence Flow | `/root/arifOS/docs/ATLAS333_INTELLIGENCE_FLOW.md` |
+| EUREKA Zen Session Seal (arifFLOW canon) | `/root/arifOS/docs/EUREKA_ZEN_SESSION_SEAL_2026_07_26.md` |
 | APEX Verdict Service | `/root/A-FORGE/src/server.js` |
 | Floor Definitions (F1-F13) | `/root/arifOS/GENESIS/FLOOR_TABLE.json` |
 | Z4 verify-pointers | `/root/scripts/verify_pointers.sh` |
 | Observatory Scanner | `/root/arifOS/arifosmcp/runtime/rest_routes/observatory_routes.py` |
 | QQQ Recommendation Protocol | `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md` |
 | Intelligence Constraint Physics | `/root/AAA/governance/INTELLIGENCE_CONSTRAINT_PHYSICS.md` |
+
+---
+
+## 9. CSP Formalization — F1–F13 as Constraint Satisfaction
+
+APEX is a constraint satisfaction problem (CSP) where the 13 floors are variables, the APEX dials are intermediate constraints, and G is the objective function.
+
+### 9.1 Variable Domain
+
+```
+V = {F1, F2, ..., F13}  where each Fi ∈ [0.00, 1.00]
+```
+
+All floors are normalized continuous variables. Hard floors (F2, F9, F10, F12, F13) carry binary pass/fail semantics at boundary 1.0. Soft floors (F4, F5, F6, F7, F8) carry continuous quality semantics.
+
+### 9.2 Derived Variables (APEX Dials)
+
+```
+A = GM(F2, F4, F7, F10)                           — AKAL
+P = GM(F1, F5, F11, F13)                          — PRESENT AUTHORITY
+E = GM(F3, F4, F12, Energy₁, Energy₂)             — ENTROPY × ENERGY
+X = GM(F6, F8, F9, Risk)                          — EXPLORATION × AMANAH
+G = GM(A, P, E, X)                                — GOVERNANCE HEALTH
+```
+
+Where `GM(x₁, …, xₙ) = (∏xᵢ)^(1/n)` and `Energy₁`, `Energy₂`, `Risk` are observatory-fed external signals.
+
+### 9.3 Hard Constraints (VOID on violation)
+
+```
+C_hard = {
+    F13 ≥ 1.0,    // F13 SOVEREIGN  — human veto must be intact
+    F9  ≥ 1.0,    // F9  ANTI-HANTU — no deception/consciousness claims
+    F10 ≥ 1.0,    // F10 ONTOLOGY   — AI-only ontology
+    F12 ≥ 1.0,    // F12 RESILIENCE — injection defense
+}
+```
+
+Violation of any hard constraint → **VOID**. The action is structurally impossible. No G value can override.
+
+### 9.4 Soft Constraints (HOLD_888 on violation)
+
+```
+C_soft = {
+    F1 ≥ 1.0  IF action_class = IRREVERSIBLE AND ¬human_approval,  // F1 AMANAH
+}
+```
+
+Violation → **HOLD_888**. Action requires sovereign/operator ratification.
+
+### 9.5 Threshold Constraints (governance quality)
+
+```
+C_threshold = {
+    G ≥ 0.80  →  SEAL,     // governed intelligence sufficient
+    G ≥ 0.70  →  SABAR,    // near threshold, strengthen
+    G <  0.70  →  HOLD,    // evidence density insufficient
+}
+```
+
+### 9.6 Feasible Region
+
+The **SEAL region** S ⊂ [0,1]¹³ is:
+
+```
+S = {v ∈ [0,1]¹³ | C_hard(v) ∧ C_soft(v) ∧ G(v) ≥ 0.80}
+```
+
+The **HOLD region** H ⊂ [0,1]¹³ is:
+
+```
+H = {v ∈ [0,1]¹³ | C_hard(v) ∧ C_soft(v) ∧ G(v) < 0.70}
+```
+
+The **SABAR region** is the band 0.70 ≤ G < 0.80 where all hard/soft constraints pass but governance quality is marginal.
+
+### 9.7 Optimization Lens
+
+CSP framing reveals that raising G is a **bottleneck optimization problem**:
+
+```
+argmax G(v)  subject to C_hard(v) ∧ C_soft(v)
+```
+
+The geometric mean structure means ∂G/∂vᵢ = G/(4vᵢ) — the smallest variable has the highest marginal return. This is the mathematical basis for "fix the bottleneck first."
+
+### 9.8 Transition Rules
+
+| Current State | Intervention | Target |
+|---------------|-------------|--------|
+| HOLD (E bottleneck) | Raise Energy_score via governance-event production | SABAR |
+| SABAR (P bottleneck) | Strengthen F1 Amanah custody proof | SEAL |
+| HOLD_888 | Obtain F13 sovereign approval token | Re-evaluate |
+| VOID | Action is structurally impossible — redesign | N/A |
 
 ---
 
