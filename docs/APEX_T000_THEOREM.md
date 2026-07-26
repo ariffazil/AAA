@@ -247,6 +247,7 @@ ATLAS333's GPV → paradox gate → arif_judge → arifFLOW routes to execution.
 
 | Document | Path |
 |----------|------|
+| **APA Custody Layer** | `/root/AAA/docs/APA_CUSTODY_LAYER.md` |
 | ATLAS333 Bridge (theory→runtime) | `/root/arifOS/core/shared/ATLAS333_BRIDGE.md` |
 | ATLAS333 Intelligence Flow | `/root/arifOS/docs/ATLAS333_INTELLIGENCE_FLOW.md` |
 | EUREKA Zen Session Seal (arifFLOW canon) | `/root/arifOS/docs/EUREKA_ZEN_SESSION_SEAL_2026_07_26.md` |
