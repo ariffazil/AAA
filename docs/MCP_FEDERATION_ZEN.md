@@ -1,7 +1,20 @@
 # 🌐 MCP Federation ZEN — Single Source of Truth
 
 > **SOT:** 2026-07-26 | **seal_seq:** pending | **Spec target:** 2025-11-25
+> **Audit complete:** P0-P6 metabolic MCP audit executed | **WELL = reference organ**
 > **DITEMPA BUKAN DIBERI** — For future agents: read this before touching any MCP surface.
+>
+> ## ⚡ Audit Summary (2026-07-26)
+>
+> | Phase | Status | Key Finding |
+> |-------|--------|------------|
+> | P0 Receipt | ✅ | VAULT999 28.5K entries. A-FORGE ledger BROKEN (9 hash mismatches) |
+> | P1 WELL | ✅ SEALED | Fixed `test-session` → ctx.session_id. Added ClaimState/WitnessType/OrganType |
+> | P2 WEALTH | ✅ | Governance chain verified (SEAL→ACK→WRITE→RECEIPT). Minor gaps noted |
+> | P3 Federation | ⚠️ | Isomorphism drift (4/17 failed). Port 6274 public. New services detected |
+> | P4 GEOX | ⚠️ | 94 phantom drifts — tools_sot.yaml completely stale vs 70 live tools |
+> | P5 Regression | ⚠️ | 250+ drifts across federation. WELL = 0 (reference). Pattern to replicate |
+> | P6 Replay | ⚠️ | A-FORGE ledger chain needs repair before cross-organ replay possible |
 
 ---
 
