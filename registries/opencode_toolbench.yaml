@@ -20,13 +20,13 @@ config_paths:
   - /root/.opencode/skills
   - /root/.opencode/tools
 live_snapshot:
-  probed_at: '2026-07-19T23:16:43Z'
+  probed_at: '2026-07-27T03:55:00Z'
   config_valid: true
   startup_valid: true
   config_mode: '0600'
-  agents: 6
+  agents: 4
   skills_discovered: 247
-  mcp_registered: 25
+  mcp_registered: 24
   mcp_connected: 23
   mcp_degraded:
   - meyhem
