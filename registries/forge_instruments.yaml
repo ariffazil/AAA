@@ -7,7 +7,7 @@ instruments:
   binary: /root/.npm-global/bin/opencode
   version: 1.18.3
   version_pinned_from: 2026-07-19 (live observed)
-  model: opencode-go/deepseek-v4-flash-free
+  model: deepseek/deepseek-v4-pro
   fallback_model: ollama/qwen2.5-coder:3b
   model_strategy: DeepSeek V4 Pro free is the verified live primary; local Ollama qwen2.5-coder is the offline recovery route. All agents use DeepSeek V4 Pro via token-plan.
   izin: GRANTED
@@ -29,7 +29,7 @@ instruments:
     pattern: architect -> engineer -> auditor -> recovery
     architect:
       agent: planner
-      model: opencode-go/deepseek-v4-flash-free
+      model: deepseek/deepseek-v4-pro
       authority: frame and sequence work; no irreversible self-grant
     engineer:
       agents:
