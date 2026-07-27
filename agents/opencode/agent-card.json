@@ -731,5 +731,23 @@
       "protocolVersion": "1.0"
     }
   ],
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "covenants": [
+    "AAA_SHARED_SESSION_COVENANT@v1"
+  ],
+  "session_ownership": {
+    "mode": "shared",
+    "steward_window": "1_cycle",
+    "forbidden_phrases": [
+      "my session",
+      "my work",
+      "my fix",
+      "my state",
+      "my context",
+      "ini sesi saya",
+      "karya saya",
+      "i am 888",
+      "i own AAA"
+    ]
+  }
 }
