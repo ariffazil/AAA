@@ -165,32 +165,32 @@ forge_instruments:
   binary: /root/.npm-global/bin/opencode
   resolved_binary: /root/.npm-global/bin/opencode
   version: 1.18.3
-  model: deepseek/deepseek-v4-flash  # canonical: /root/.config/federation-models.json
-  small_model: deepseek/deepseek-v4-flash  # canonical: /root/.config/federation-models.json
+  model: deepseek/deepseek-v4-pro  # canonical: /root/.config/federation-models.json
+  small_model: ollama/qwen2.5-coder:3b  # canonical: /root/.config/federation-models.json
   native_mcp: true
   mcp_count: 25
   mcp_servers:
   - aforge
+  - arifflow
   - arifos
   - brave-search
-  - chrome-devtools
-  - cloudflare
-  - composio
   - context7
+  - docker
   - exa
   - fetch
   - geox
   - github
-  - graph-memory
   - hermes
   - hostinger-vps
   - megamemory
-  - meyhem
+  - minimax
+  - openrouter
   - perplexity
   - playwright
   - postgres
   - qdrant
   - sequential-thinking
+  - sqlite
   - supabase
   - wealth
   - well
