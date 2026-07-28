@@ -1,6 +1,6 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.25
-last_verified: 2026-07-25T06:30Z
+federation_release: v2026.07.28
+last_verified: 2026-07-28T18:00Z
 live_commit: 31cd7e8
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
@@ -16,7 +16,7 @@ forge_instruments: 11 (grok-build, opencode, claude-code, qwen-code, antigravity
 domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083, AAA:3001)
 -->
 
-**SOT:** 2026-07-24 | **seal_seq:** `43f52bb`
+**SOT:** 2026-07-28 | **seal_seq:** `43f52bb`
 
 # AAA — Federation State & Operator Cockpit
 
@@ -469,7 +469,7 @@ For MCP access, use the federation gateway: `https://mcp.arif-fazil.com/mcp` (ar
 | **HERMES** | Multi-modal bridge | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
 
 **Public:** [arif-fazil.com](https://arif-fazil.com) · **Federation root:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com)
-**SOT:** 2026-07-24
+**SOT:** 2026-07-28
 
 
     │                                                  │
