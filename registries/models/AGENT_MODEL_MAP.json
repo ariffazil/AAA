@@ -1382,9 +1382,10 @@
       "shadow_file_ref": null,
       "last_verified": "2026-07-28",
       "note": "Kimi K3 flagship. 2.8T model, 1M context. Newer than K2.7. Used via kimi-moonshot provider (OpenClaw + Kimi Code).",
-      "weights_license": "Apache 2.0",
+      "weights_license": "Kimi K3 License (Modified MIT family, custom)",
       "weights_repo": "moonshotai/Kimi-K3-MXFP4",
-      "weights_size_gb": 594
+      "weights_size_gb": 594,
+      "license_note": "NOT Apache 2.0. Custom license. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment."
     },
     {
       "model_key": "sea-lion/Qwen-SEA-LION-v4-32B-IT",
@@ -3091,10 +3092,11 @@
       "censorship_profile": null,
       "fff_gate": null,
       "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. 2.8T MoE. Explicit coding fallback for forge chain independent of auto-beta.",
-      "weights_license": "Apache 2.0",
+      "weights_license": "Kimi K3 License (Modified MIT family, custom)",
       "weights_repo": "moonshotai/Kimi-K3-MXFP4",
       "weights_size_gb": 594,
-      "last_verified": "2026-07-28"
+      "last_verified": "2026-07-28",
+      "license_note": "NOT Apache 2.0. Custom license. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment."
     },
     {
       "model_key": "google/gemma-4-31b-it:free",
