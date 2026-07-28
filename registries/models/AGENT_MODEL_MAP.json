@@ -4,6 +4,7 @@
     "schema_version": "2.1.0",
     "forged": "2026-07-28",
     "forged_by": "FORGE (000\u03a9) \u2014 deepseek-v4-pro",
+    "ingest_note": "Kimi-K3 fully ingested 2026-07-28 from MoonshotAI/Kimi-K3 repo (README + k3_tech_report.pdf) — architecture, benchmarks, deployment specs, license.",
     "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
     "federation_state": {
       "providers": 14,
@@ -234,6 +235,11 @@
       "provider_name": "Moonshot AI / Kimi (\u6708\u4e4b\u6697\u9762)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.kimi.com/coding/v1",
+      "api_endpoints": {
+        "coding": "https://api.kimi.com/coding/v1",
+        "platform": "https://platform.kimi.ai",
+        "note": "K2.7 Code uses coding endpoint. K3 uses platform endpoint (platform.kimi.ai). Both use same API key."
+      },
       "api_key_ref": "secrets::KIMI_API_KEY",
       "billing_model": "monthly",
       "billing_cycle": "monthly",
@@ -242,11 +248,12 @@
       "cloud_act_exposed": false,
       "status": "ACTIVE",
       "models_available": [
-        "k3",
-        "kimi-for-coding",
+        "kimi-k3 (2.8T MoE, 104B active, 1M ctx)",
+        "kimi-for-coding (K2.7 Code, 1T, 256K ctx)",
         "kimi-for-coding-highspeed"
       ],
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-28",
+      "note": "Kimi K3 supersedes K2.7 Code as flagship. K3: 2.8T MoE, 104B activated, 896 experts (16/token), 1M context, KDA + Gated MLA, MoonViT-V2, always-on thinking with reasoning_effort. First open 3T-class model."
     },
     {
       "provider_id": "ollama",
@@ -1305,18 +1312,44 @@
       "soul_file_ref": "kimi_soul.yaml",
       "shadow_file_ref": "kimi_shadow.yaml",
       "last_verified": "2026-07-20",
-      "note": "Open weights (reported). Vision-capable code specialist. 256K context + 8K thinking budget. PLAN agent primary.",
-      "superseded_by": "moonshotai/kimi-k3",
-      "superseded_date": "2026-07-28"
+      "note": "Open weights (reported). Vision-capable code specialist. 256K context + 8K thinking budget. PLAN agent primary (now superseded by K3).",
+      "superseded_by": "kimi/k3",
+      "superseded_date": "2026-07-28",
+      "superseded_note": "Kimi K3 (2.8T, 1M ctx) fully ingested 2026-07-28 from MoonshotAI/Kimi-K3. K2.7 Code remains as fallback for PLAN + kimi-code agents."
     },
     {
       "model_key": "kimi/k3",
       "model_family": "Kimi K3",
       "model_variant": "k3",
       "provider_ref": "kimi-moonshot",
-      "also_available_via": [],
-      "context_window": 1000000,
+      "also_available_via": [
+        "openrouter"
+      ],
+      "context_window": 1048576,
       "max_output_tokens": 131072,
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "total_parameters": "2.8T (2,800,000,000,000)",
+        "activated_parameters": "104B (104,000,000,000)",
+        "num_layers": 93,
+        "num_dense_layers": 1,
+        "attention_layers": "69 KDA + 24 Gated MLA",
+        "num_attention_heads": 96,
+        "attention_hidden_dim": 7168,
+        "latent_moe_dim": 3584,
+        "moe_hidden_dim_per_expert": 3072,
+        "num_experts": 896,
+        "selected_experts_per_token": 16,
+        "num_shared_experts": 2,
+        "vocab_size": 160000,
+        "attention_mechanism": "KDA (Kimi Delta Attention) & Gated MLA",
+        "activation_function": "SiTU-GLU",
+        "vision_encoder": "MoonViT-V2",
+        "vision_encoder_params": "401M",
+        "quantization": "MXFP4 weights / MXFP8 activations (quantization-aware training from SFT onward)",
+        "scaling_efficiency": "~2.5x improvement over K2 via Stable LatentMoE",
+        "context_length": 1048576
+      },
       "capabilities": [
         "reasoning",
         "tool_call",
@@ -1326,7 +1359,9 @@
         "vision",
         "search",
         "kernel_optimization",
-        "multimodal"
+        "multimodal",
+        "long_horizon_coding",
+        "deep_research"
       ],
       "modalities": [
         "text",
@@ -1342,9 +1377,47 @@
       },
       "hyperparameters": {
         "temperature_default": 1.0,
-        "top_p_default": 0.95,
+        "top_p_default_single_step": 0.95,
+        "top_p_default_agentic": 1.0,
         "thinking_mode_supported": true,
-        "thinking_mode_overrides_hyperparams": true
+        "thinking_mode_always_on": true,
+        "thinking_mode_overrides_hyperparams": true,
+        "reasoning_effort_levels": ["low", "high", "max"],
+        "reasoning_effort_default": "max",
+        "preserved_thinking_history": true
+      },
+      "deployment": {
+        "api_endpoint": "https://platform.kimi.ai",
+        "model_id_in_api": "kimi-k3",
+        "inference_engines": ["vLLM", "SGLang", "TokenSpeed"],
+        "agent_framework": "Kimi Code CLI (recommended)"
+      },
+      "benchmark_highlights": {
+        "coding": {
+          "DeepSWE": "67.5 (Kimi Code harness)",
+          "TerminalBench_2_1": "88.3",
+          "FrontierSWE": "81.2",
+          "SWE_Marathon": "42.0",
+          "ProgramBench": "77.8",
+          "Kimi_Code_Bench_2_0": "72.9"
+        },
+        "agentic": {
+          "BrowseComp": "91.2",
+          "DeepSearchQA_F1": "95.0",
+          "MCPMark_Verified": "94.5",
+          "Toolathlon_Verified": "76.5",
+          "JobBench": "54.3"
+        },
+        "reasoning_knowledge": {
+          "GPQA_Diamond": "93.5",
+          "AA_LCR": "74.7",
+          "HLE_Full": "43.5 / 56.0 (with tools)"
+        },
+        "vision": {
+          "OmniDocBench": "91.1",
+          "MMMU_Pro": "81.6 / 83.4 (with Python)",
+          "Video_MME": "90.0"
+        }
       },
       "status": "LIVE",
       "trust_tier": 2,
@@ -1352,10 +1425,14 @@
         "flagship_kimi",
         "complex_coding",
         "search_augmented",
-        "long_context"
+        "long_context",
+        "long_horizon_engineering",
+        "agentic_knowledge_work",
+        "multimodal_reasoning"
       ],
       "not_recommended_for": [
-        "constitutional_verdicts"
+        "constitutional_verdicts",
+        "real_time_chat_without_thinking_tax"
       ],
       "forbidden_actions": [
         "self_authorize",
@@ -1381,11 +1458,13 @@
       "soul_file_ref": "kimi_soul.yaml",
       "shadow_file_ref": null,
       "last_verified": "2026-07-28",
-      "note": "Kimi K3 flagship. 2.8T model, 1M context. Newer than K2.7. Used via kimi-moonshot provider (OpenClaw + Kimi Code).",
+      "last_ingested": "2026-07-28",
+      "ingest_source": "https://github.com/MoonshotAI/Kimi-K3 (README.md + k3_tech_report.pdf)",
+      "note": "Kimi K3 flagship. 2.8T MoE (104B activated), 1M context, 896 experts (16/token). KDA + Gated MLA attention. Native multimodal with MoonViT-V2. Always-on thinking with reasoning_effort (low/high/max, default max). First open 3T-class model. Supersedes K2.7. Used via kimi-moonshot provider (OpenClaw + Kimi Code) and OpenRouter.",
       "weights_license": "Kimi K3 License (Modified MIT family, custom)",
-      "weights_repo": "moonshotai/Kimi-K3-MXFP4",
+      "weights_repo": "moonshotai/Kimi-K3",
       "weights_size_gb": 594,
-      "license_note": "NOT Apache 2.0. Custom license. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment."
+      "license_note": "NOT Apache 2.0. Custom Kimi K3 License. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment."
     },
     {
       "model_key": "sea-lion/Qwen-SEA-LION-v4-32B-IT",
@@ -3040,8 +3119,21 @@
       "also_available_via": [
         "kimi-moonshot"
       ],
-      "context_window": 1000000,
+      "context_window": 1048576,
       "max_output_tokens": 131072,
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "total_parameters": "2.8T",
+        "activated_parameters": "104B",
+        "num_layers": 93,
+        "num_experts": 896,
+        "selected_experts_per_token": 16,
+        "num_shared_experts": 2,
+        "attention_mechanism": "KDA & Gated MLA",
+        "vision_encoder": "MoonViT-V2 (401M)",
+        "quantization": "MXFP4 weights / MXFP8 activations",
+        "context_length": 1048576
+      },
       "capabilities": [
         "reasoning",
         "tool_call",
@@ -3050,7 +3142,8 @@
         "agentic",
         "vision",
         "kernel_optimization",
-        "multimodal"
+        "multimodal",
+        "deep_research"
       ],
       "modalities": [
         "text",
@@ -3062,14 +3155,20 @@
       "rate_limits": {},
       "hyperparameters": {
         "temperature_default": 1.0,
-        "top_p_default": 0.95
+        "top_p_default": 0.95,
+        "thinking_mode_always_on": true,
+        "reasoning_effort_levels": ["low", "high", "max"],
+        "reasoning_effort_default": "max",
+        "preserved_thinking_history": true
       },
       "status": "LIVE",
       "trust_tier": 2,
       "suitable_for": [
         "explicit_coding_fallback",
         "long_context_fallback",
-        "auto_beta_independence"
+        "auto_beta_independence",
+        "deep_research",
+        "agentic_work"
       ],
       "not_recommended_for": [
         "constitutional_verdicts",
@@ -3091,12 +3190,14 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. 2.8T MoE. Explicit coding fallback for forge chain independent of auto-beta.",
+      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. 2.8T MoE (104B activated), 1M context, 896 experts (16/token). Always-on thinking with reasoning_effort. First open 3T-class model. Explicit coding + deep research fallback for forge chain independent of auto-beta. INGESTED 2026-07-28 from MoonshotAI/Kimi-K3 repo.",
       "weights_license": "Kimi K3 License (Modified MIT family, custom)",
-      "weights_repo": "moonshotai/Kimi-K3-MXFP4",
+      "weights_repo": "moonshotai/Kimi-K3",
       "weights_size_gb": 594,
       "last_verified": "2026-07-28",
-      "license_note": "NOT Apache 2.0. Custom license. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment."
+      "last_ingested": "2026-07-28",
+      "ingest_source": "https://github.com/MoonshotAI/Kimi-K3",
+      "license_note": "NOT Apache 2.0. Custom Kimi K3 License. Read actual license file before deployment."
     },
     {
       "model_key": "google/gemma-4-31b-it:free",
@@ -3815,10 +3916,10 @@
     {
       "shadow_id": "SHADOW-KMI-002",
       "model_ref": "kimi/k3",
-      "shadow_name": "cn_jurisdiction_2.8t_unprobed",
+      "shadow_name": "cn_jurisdiction_2.8t_ingested",
       "severity": "MEDIUM",
       "class": "culture_mismatch",
-      "pattern": "Kimi K3 2.8T flagship \u2014 CN jurisdiction. 1M context. MY governance censorship UNTESTED.",
+      "pattern": "Kimi K3 2.8T flagship — CN jurisdiction. 1M context. MY governance censorship UNTESTED despite full spec ingestion 2026-07-28.",
       "triggers": [
         "malaysian_governance",
         "censorship_unknown"
@@ -3829,11 +3930,13 @@
       },
       "mitigation": [
         "Probe MY governance before expanding role",
-        "Route sovereign topics to deepseek-v4-pro"
+        "Route sovereign topics to deepseek-v4-pro",
+        "Full architecture ingested 2026-07-28 from MoonshotAI/Kimi-K3 — spec fidelity HIGH, censorship fidelity UNKNOWN"
       ],
-      "evidence": "Moonshot AI = CN. K3 unprobed for MY governance.",
+      "evidence": "Moonshot AI = CN. K3 specs fully ingested from GitHub repo + tech report. Architecture, benchmarks, deployment all verified. Censorship profile for MY governance topics still unprobed.",
       "scar_ref": null,
-      "last_observed": "2026-07-20"
+      "last_observed": "2026-07-28",
+      "last_ingested": "2026-07-28"
     },
     {
       "shadow_id": "SHADOW-KMI-003",
@@ -4281,7 +4384,7 @@
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "kimi-k3",
-      "primary_provider": "bailian-token-plan",
+      "primary_provider": "kimi-moonshot",
       "fallback_chain": [
         {
           "model_key": "kimi-k2.7-code",
@@ -4319,11 +4422,11 @@
       "config_file_path": "/root/.config/opencode/opencode.json (subagents.PLANNER)",
       "status": "ACTIVE",
       "last_verified": "2026-07-20",
-      "notes": "Kimi K2.7 Code for DAG planning \u2014 256K context + 8K thinking budget. Vision-capable.",
+      "notes": "Kimi K3 primary for DAG planning — 2.8T MoE, 1M context, KDA + Gated MLA. Always-on thinking with reasoning_effort. K2.7 Code as fallback. K3 specs fully ingested 2026-07-28 from MoonshotAI/Kimi-K3. Vision-capable.",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "model_updated": "2026-07-28",
-      "model_update_reason": "K3 released with open weights. 2.5x scaling efficiency over K2.6. Full infrastructure open-sourced."
+      "model_update_reason": "K3 upgraded to primary. 2.5x scaling efficiency over K2.6. Full architecture + benchmark data ingested from MoonshotAI/Kimi-K3 repo."
     },
     {
       "agent_id": "hermes",
