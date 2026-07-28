@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-07-28T10:06:30.658902+00:00",
-  "total_candidates": 183,
-  "new_this_cycle": 183,
-  "updated_this_cycle": 0,
+  "generated_at": "2026-07-28T19:06:27.690367+00:00",
+  "total_candidates": 223,
+  "new_this_cycle": 40,
+  "updated_this_cycle": 144,
   "sources_polled": [
     "mcp_so",
     "registry_mcp_io",
@@ -12,10 +12,28 @@
   ],
   "top_scored": [
     {
+      "name": "neomjs/neo",
+      "score": 0.6500000000000001,
+      "source": "github",
+      "description": "Neo.mjs is a self-evolving software organism: a professional end-to-end AI engineering team whose cross-model swarm inha"
+    },
+    {
       "name": "microsoft/mcp-for-beginners",
       "score": 0.6000000000000001,
       "source": "github",
       "description": "This open-source curriculum introduces the fundamentals of Model Context Protocol (MCP) through real-world, cross-langua"
+    },
+    {
+      "name": "dcostenco/prism-coder",
+      "score": 0.6000000000000001,
+      "source": "github",
+      "description": "Persistent memory + local AI for coding agents. 2B–27B open-weight LLM fleet, cross-session Mind Palace, cognitive routi"
+    },
+    {
+      "name": "CodeAbra/iai-personal-memory-engine",
+      "score": 0.6000000000000001,
+      "source": "github",
+      "description": "A cyber brain for your AI. It never forgets a detail, remembers exactly what you said, and learns how you work over time"
     },
     {
       "name": "MCPJam/inspector",
@@ -46,6 +64,24 @@
       "score": 0.6,
       "source": "github",
       "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host "
+    },
+    {
+      "name": "mrexodia/ida-pro-mcp",
+      "score": 0.6,
+      "source": "github",
+      "description": "AI-powered reverse engineering assistant that bridges IDA Pro with language models through MCP."
+    },
+    {
+      "name": "archestra-ai/archestra",
+      "score": 0.6,
+      "source": "github",
+      "description": "Enterprise AI Platform with guardrails, MCP registry, gateway & orchestrator"
+    },
+    {
+      "name": "mongodb-js/mongodb-mcp-server",
+      "score": 0.6,
+      "source": "github",
+      "description": "A Model Context Protocol server to connect to MongoDB databases and MongoDB Atlas Clusters."
     },
     {
       "name": "mcp-use",
@@ -84,55 +120,54 @@
       "description": "WebMCP Inspector discovers both declarative (HTML form-based) and imperative (JavaScript API) tools exposed via the WebM"
     },
     {
-      "name": "tableau/tableau-mcp",
-      "score": 0.5499999999999999,
+      "name": "vaquarkhan/kafka-mcp-enterprise-server-kip-1318",
+      "score": 0.55,
       "source": "github",
-      "description": "Tableau's official MCP Server. Helping agents see and understand data."
+      "description": "A production-ready Model Context Protocol (MCP) server for Apache Kafka. Features Information Flow Control (IFC) sandbox"
     },
     {
-      "name": "yokingma/one-search-mcp",
-      "score": 0.5499999999999999,
+      "name": "zzet/gortex",
+      "score": 0.55,
       "source": "github",
-      "description": "🚀 OneSearch MCP Server: Web Search & Scraper & Extract,  Support agent-browser, SearXNG, Tavily, DuckDuckGo, Bing, etc."
-    },
-    {
-      "name": "modelcontextprotocol/csharp-sdk",
-      "score": 0.5499999999999999,
-      "source": "github",
-      "description": "The official C# SDK for Model Context Protocol servers and clients. Maintained in collaboration with Microsoft."
-    },
-    {
-      "name": "ProfessionalWiki/MediaWiki-MCP-Server",
-      "score": 0.5499999999999999,
-      "source": "github",
-      "description": "Model Context Protocol (MCP) Server to connect your AI with any MediaWiki"
-    },
-    {
-      "name": "anyproto/anytype-mcp",
-      "score": 0.5499999999999999,
-      "source": "github",
-      "description": "An MCP server enabling AI assistants to interact with Anytype - your encrypted, local and collaborative wiki - to organi"
-    },
-    {
-      "name": "containers/kubernetes-mcp-server",
-      "score": 0.5499999999999999,
-      "source": "github",
-      "description": "Model Context Protocol (MCP) server for Kubernetes and OpenShift"
-    },
-    {
-      "name": "bgauryy/octocode",
-      "score": 0.5499999999999999,
-      "source": "github",
-      "description": "Code research platform for AI agents: local + GitHub search, LSP semantics, AST patterns, and compact context. one tools"
-    },
-    {
-      "name": "rekog-labs/MCP-Nest",
-      "score": 0.5499999999999999,
-      "source": "github",
-      "description": "A NestJS module to effortlessly create Model Context Protocol (MCP) servers for exposing AI tools, resources, and prompt"
+      "description": "High-performance code-intelligence engine for AI agents and IDE, supports 257 languages, multi repositories, based on gr"
     }
   ],
   "candidates": [
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "neomjs/neo",
+      "description": "Neo.mjs is a self-evolving software organism: a professional end-to-end AI engineering team whose cross-model swarm inhabits live apps via Neural Link, Active Hybrid GraphRAG, DreamService, and self-healing loops.",
+      "url": "https://github.com/neomjs/neo",
+      "author": "neomjs",
+      "tags": [
+        "agent-memory",
+        "ai",
+        "ai-agent",
+        "ai-memory",
+        "context-engineering",
+        "frontend",
+        "frontend-runtime",
+        "graph-rag",
+        "javascript",
+        "json",
+        "knowledge-graph",
+        "llm",
+        "long-term-memory",
+        "mcp",
+        "mcp-server",
+        "multi-agent-systems",
+        "rag",
+        "scene-graph",
+        "semantic-search",
+        "web-workers"
+      ],
+      "stars": 3247,
+      "language": "JavaScript",
+      "updated_at": "2026-07-28T19:04:25Z",
+      "discovered_at": "2026-07-28T19:06:26.847014+00:00",
+      "federation_score": 0.6500000000000001
+    },
     {
       "source": "github",
       "source_type": "repository",
@@ -156,14 +191,86 @@
         "rust",
         "typescript"
       ],
-      "stars": 16843,
+      "stars": 16847,
       "language": "Jupyter Notebook",
       "updated_at": "2026-07-28T07:33:51Z",
       "discovered_at": "2026-07-28T10:06:23.260314+00:00",
       "federation_score": 0.6000000000000001,
       "evaluated": true,
       "eval_score": 0.0,
-      "eval_verdict": "FAILED"
+      "eval_verdict": "FAILED",
+      "last_seen_at": "2026-07-28T19:06:27.689734+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113433+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "dcostenco/prism-coder",
+      "description": "Persistent memory + local AI for coding agents. 2B–27B open-weight LLM fleet, cross-session Mind Palace, cognitive routing, L3 grounding verifier, multi-agent Hivemind. Works with Claude Code, Cursor, VS Code. Offline-first, HIPAA-ready. Free tier included.",
+      "url": "https://github.com/dcostenco/prism-coder",
+      "author": "dcostenco",
+      "tags": [
+        "agent-memory",
+        "ai-agent",
+        "anti-sycophancy",
+        "cognitive-architecture",
+        "hebbian-learning",
+        "hipaa",
+        "local-first",
+        "local-llm",
+        "mcp",
+        "mcp-server",
+        "mind-palace",
+        "model-context-protocol",
+        "ollama",
+        "prism-coder",
+        "semantic-search",
+        "spreading-activation",
+        "sqlite",
+        "supabase",
+        "typescript",
+        "vector-search"
+      ],
+      "stars": 157,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:01:01Z",
+      "discovered_at": "2026-07-28T19:06:26.847064+00:00",
+      "federation_score": 0.6000000000000001
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "CodeAbra/iai-personal-memory-engine",
+      "description": "A cyber brain for your AI. It never forgets a detail, remembers exactly what you said, and learns how you work over time. Free, local, works with Cursor, Claude Code, Codex, OpenClaw, Hermes and more. MIT.",
+      "url": "https://github.com/CodeAbra/iai-personal-memory-engine",
+      "author": "CodeAbra",
+      "tags": [
+        "agent-memory",
+        "ai-memory",
+        "claude",
+        "claude-code",
+        "codex",
+        "cursor",
+        "encrypted",
+        "episodic-memory",
+        "gemini",
+        "llm-memory",
+        "local-first",
+        "long-term-memory",
+        "mcp",
+        "mcp-memory",
+        "mcp-server",
+        "model-context-protocol",
+        "persistent-memory",
+        "rag-alternative",
+        "sqlite",
+        "vector-database"
+      ],
+      "stars": 449,
+      "language": "Python",
+      "updated_at": "2026-07-28T19:01:34Z",
+      "discovered_at": "2026-07-28T19:06:26.847068+00:00",
+      "federation_score": 0.6000000000000001
     },
     {
       "source": "github",
@@ -201,7 +308,9 @@
       "federation_score": 0.6,
       "evaluated": true,
       "eval_score": 0.0,
-      "eval_verdict": "FAILED"
+      "eval_verdict": "FAILED",
+      "last_seen_at": "2026-07-28T19:06:27.689699+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113386+00:00"
     },
     {
       "source": "github",
@@ -232,14 +341,16 @@
         "openclaw",
         "skills"
       ],
-      "stars": 10405,
+      "stars": 10409,
       "language": "TypeScript",
       "updated_at": "2026-07-28T09:27:37Z",
       "discovered_at": "2026-07-28T10:06:23.260311+00:00",
       "federation_score": 0.6,
       "evaluated": true,
       "eval_score": 0.0,
-      "eval_verdict": "FAILED"
+      "eval_verdict": "FAILED",
+      "last_seen_at": "2026-07-28T19:06:27.689679+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113320+00:00"
     },
     {
       "source": "github",
@@ -269,11 +380,13 @@
         "tooling",
         "typescript"
       ],
-      "stars": 1952,
+      "stars": 1953,
       "language": "TypeScript",
       "updated_at": "2026-07-27T18:52:18Z",
       "discovered_at": "2026-07-28T10:06:23.260339+00:00",
-      "federation_score": 0.6
+      "federation_score": 0.6,
+      "last_seen_at": "2026-07-28T19:06:27.689706+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113402+00:00"
     },
     {
       "source": "github",
@@ -335,10 +448,91 @@
         "workflow",
         "workflow-automation"
       ],
-      "stars": 198347,
+      "stars": 198412,
       "language": "TypeScript",
       "updated_at": "2026-07-28T10:06:01Z",
       "discovered_at": "2026-07-28T10:06:26.855156+00:00",
+      "federation_score": 0.6,
+      "last_seen_at": "2026-07-28T19:06:27.689750+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.846993+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "mrexodia/ida-pro-mcp",
+      "description": "AI-powered reverse engineering assistant that bridges IDA Pro with language models through MCP.",
+      "url": "https://github.com/mrexodia/ida-pro-mcp",
+      "author": "mrexodia",
+      "tags": [
+        "ai",
+        "aiagent",
+        "binary-analysis",
+        "ida-plugin",
+        "ida-pro",
+        "mcp",
+        "mcp-server",
+        "modelcontextprotocol",
+        "reverse-engineering"
+      ],
+      "stars": 10860,
+      "language": "Python",
+      "updated_at": "2026-07-28T18:55:59Z",
+      "discovered_at": "2026-07-28T19:06:26.113409+00:00",
+      "federation_score": 0.6
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "archestra-ai/archestra",
+      "description": "Enterprise AI Platform with guardrails, MCP registry, gateway & orchestrator",
+      "url": "https://github.com/archestra-ai/archestra",
+      "author": "archestra-ai",
+      "tags": [
+        "a2a",
+        "a2a-mcp",
+        "acp",
+        "agent",
+        "ai",
+        "chatgpt",
+        "chatgpt-api",
+        "claude",
+        "deepseek",
+        "gemini",
+        "k8s",
+        "mcp",
+        "mcp-client",
+        "mcp-gateway",
+        "mcp-host",
+        "mcp-server",
+        "mcp-servers",
+        "mcp-tools",
+        "openai",
+        "runtime"
+      ],
+      "stars": 4050,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:05:26Z",
+      "discovered_at": "2026-07-28T19:06:26.846997+00:00",
+      "federation_score": 0.6
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "mongodb-js/mongodb-mcp-server",
+      "description": "A Model Context Protocol server to connect to MongoDB databases and MongoDB Atlas Clusters.",
+      "url": "https://github.com/mongodb-js/mongodb-mcp-server",
+      "author": "mongodb-js",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "mongodb",
+        "mongodb-atlas",
+        "mongodb-database"
+      ],
+      "stars": 1088,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:02:46Z",
+      "discovered_at": "2026-07-28T19:06:26.847029+00:00",
       "federation_score": 0.6
     },
     {
@@ -367,7 +561,9 @@
       ],
       "version": "1.34.5",
       "discovered_at": "2026-07-28T10:06:11.904705+00:00",
-      "federation_score": 0.5500000000000002
+      "federation_score": 0.5500000000000002,
+      "last_seen_at": "2026-07-28T19:06:27.689619+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902889+00:00"
     },
     {
       "source": "github",
@@ -402,7 +598,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-28T06:45:01Z",
       "discovered_at": "2026-07-28T10:06:23.260274+00:00",
-      "federation_score": 0.55
+      "federation_score": 0.55,
+      "last_seen_at": "2026-07-28T19:06:27.689717+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113416+00:00"
     },
     {
       "source": "github",
@@ -426,7 +624,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-27T20:03:04Z",
       "discovered_at": "2026-07-28T10:06:23.260333+00:00",
-      "federation_score": 0.55
+      "federation_score": 0.55,
+      "last_seen_at": "2026-07-28T19:06:27.689743+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113443+00:00"
     },
     {
       "source": "github",
@@ -456,7 +656,9 @@
       "language": "Java",
       "updated_at": "2026-07-27T17:25:58Z",
       "discovered_at": "2026-07-28T10:06:23.260342+00:00",
-      "federation_score": 0.55
+      "federation_score": 0.55,
+      "last_seen_at": "2026-07-28T19:06:27.689747+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113446+00:00"
     },
     {
       "source": "github",
@@ -511,6 +713,73 @@
       "language": "TypeScript",
       "updated_at": "2026-05-05T21:52:02Z",
       "discovered_at": "2026-07-28T10:06:30.658087+00:00",
+      "federation_score": 0.55,
+      "last_seen_at": "2026-07-28T19:06:27.689812+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689230+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "vaquarkhan/kafka-mcp-enterprise-server-kip-1318",
+      "description": "A production-ready Model Context Protocol (MCP) server for Apache Kafka. Features Information Flow Control (IFC) sandboxing, granular namespace isolation, and strict bounded buffers to securely bridge autonomous AI agents with enterprise streaming infrastructure.",
+      "url": "https://github.com/vaquarkhan/kafka-mcp-enterprise-server-kip-1318",
+      "author": "vaquarkhan",
+      "tags": [
+        "aiagents",
+        "apachekafka",
+        "cybersecurity",
+        "datastreaming",
+        "enterprisearchitecture",
+        "event-driven",
+        "event-driven-architecture",
+        "infosec",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "mcp-servers",
+        "modelcontextprotocol",
+        "owasp",
+        "owasp-top-10"
+      ],
+      "stars": 1,
+      "language": "Python",
+      "updated_at": "2026-07-28T18:59:06Z",
+      "discovered_at": "2026-07-28T19:06:26.113350+00:00",
+      "federation_score": 0.55
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "zzet/gortex",
+      "description": "High-performance code-intelligence engine for AI agents and IDE, supports 257 languages, multi repositories, based on graph, with access via CLI, MCP Server, and API. AI coding agents teammate - expose only needed information, cutting token usage up to 50x. 100% local. Discord: https://discord.gg/ysC2prTGD",
+      "url": "https://github.com/zzet/gortex",
+      "author": "zzet",
+      "tags": [
+        "ai-tools",
+        "antigravity",
+        "claude-code",
+        "code-analysis",
+        "code-assistant",
+        "context-window",
+        "context-window-optimization",
+        "context-window-optimizer",
+        "copilot",
+        "cursor",
+        "developer-tools",
+        "graphrag",
+        "kiro",
+        "knowledge-graph",
+        "local-first",
+        "mcp-server",
+        "prompts",
+        "skills",
+        "tokens",
+        "windsurf"
+      ],
+      "stars": 982,
+      "language": "Go",
+      "updated_at": "2026-07-28T19:03:35Z",
+      "discovered_at": "2026-07-28T19:06:26.847075+00:00",
       "federation_score": 0.55
     },
     {
@@ -526,11 +795,13 @@
         "modelcontextprotocol",
         "tableau"
       ],
-      "stars": 314,
+      "stars": 315,
       "language": "TypeScript",
       "updated_at": "2026-07-28T05:41:09Z",
       "discovered_at": "2026-07-28T10:06:23.260285+00:00",
-      "federation_score": 0.5499999999999999
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689721+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113419+00:00"
     },
     {
       "source": "github",
@@ -553,7 +824,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-28T03:39:56Z",
       "discovered_at": "2026-07-28T10:06:23.260296+00:00",
-      "federation_score": 0.5499999999999999
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689727+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113426+00:00"
     },
     {
       "source": "github",
@@ -570,11 +843,13 @@
         "mcp-server",
         "modelcontextprotocol"
       ],
-      "stars": 4420,
+      "stars": 4421,
       "language": "C#",
       "updated_at": "2026-07-28T04:42:18Z",
       "discovered_at": "2026-07-28T10:06:23.260300+00:00",
-      "federation_score": 0.5499999999999999
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689687+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113360+00:00"
     },
     {
       "source": "github",
@@ -600,7 +875,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-28T03:24:35Z",
       "discovered_at": "2026-07-28T10:06:23.260303+00:00",
-      "federation_score": 0.5499999999999999
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689696+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113368+00:00"
     },
     {
       "source": "github",
@@ -620,7 +897,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-27T21:39:12Z",
       "discovered_at": "2026-07-28T10:06:23.260330+00:00",
-      "federation_score": 0.5499999999999999
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689740+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113440+00:00"
     },
     {
       "source": "github",
@@ -640,11 +919,13 @@
         "openshift",
         "protocol"
       ],
-      "stars": 1853,
+      "stars": 1857,
       "language": "Go",
       "updated_at": "2026-07-28T08:46:54Z",
       "discovered_at": "2026-07-28T10:06:23.260336+00:00",
-      "federation_score": 0.5499999999999999
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689693+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113365+00:00"
     },
     {
       "source": "github",
@@ -757,10 +1038,32 @@
         "workflow-automation",
         "workflows"
       ],
-      "stars": 816,
+      "stars": 820,
       "language": "Python",
       "updated_at": "2026-07-28T08:09:53Z",
       "discovered_at": "2026-07-28T10:06:30.657996+00:00",
+      "federation_score": 0.5499999999999999,
+      "last_seen_at": "2026-07-28T19:06:27.689765+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689138+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "themotionmachine/OmniFocus-MCP",
+      "description": "Let LLMs interface with your tasks and projects through the Model Context Protocol. Add, organize, and query your OmniFocus database with natural language commands.",
+      "url": "https://github.com/themotionmachine/OmniFocus-MCP",
+      "author": "themotionmachine",
+      "tags": [
+        "mcp",
+        "mcp-server",
+        "modelcontextprotocol",
+        "omnifocus",
+        "task-management"
+      ],
+      "stars": 225,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T18:58:59Z",
+      "discovered_at": "2026-07-28T19:06:26.113354+00:00",
       "federation_score": 0.5499999999999999
     },
     {
@@ -782,7 +1085,9 @@
       ],
       "version": "0.0.65",
       "discovered_at": "2026-07-28T10:06:11.666177+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689484+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615858+00:00"
     },
     {
       "source": "npm",
@@ -804,7 +1109,9 @@
       ],
       "version": "0.6.0",
       "discovered_at": "2026-07-28T10:06:11.666200+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689500+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615877+00:00"
     },
     {
       "source": "npm",
@@ -823,7 +1130,9 @@
       ],
       "version": "4.1.1",
       "discovered_at": "2026-07-28T10:06:11.666210+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689506+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615888+00:00"
     },
     {
       "source": "npm",
@@ -841,7 +1150,9 @@
       ],
       "version": "1.0.10",
       "discovered_at": "2026-07-28T10:06:11.666213+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689533+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615930+00:00"
     },
     {
       "source": "npm",
@@ -861,7 +1172,9 @@
       ],
       "version": "0.13.0",
       "discovered_at": "2026-07-28T10:06:11.666220+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689530+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615928+00:00"
     },
     {
       "source": "npm",
@@ -887,7 +1200,9 @@
       ],
       "version": "1.8.1",
       "discovered_at": "2026-07-28T10:06:11.666225+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689524+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615917+00:00"
     },
     {
       "source": "npm",
@@ -939,7 +1254,9 @@
       ],
       "version": "0.1.2",
       "discovered_at": "2026-07-28T10:06:11.666234+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689494+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615868+00:00"
     },
     {
       "source": "npm",
@@ -964,7 +1281,9 @@
       ],
       "version": "0.3.24",
       "discovered_at": "2026-07-28T10:06:11.904478+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689564+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902849+00:00"
     },
     {
       "source": "npm",
@@ -982,7 +1301,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904482+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689577+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902859+00:00"
     },
     {
       "source": "npm",
@@ -1001,7 +1322,9 @@
       ],
       "version": "0.1.0-alpha.26",
       "discovered_at": "2026-07-28T10:06:11.904494+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689585+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902865+00:00"
     },
     {
       "source": "npm",
@@ -1026,7 +1349,9 @@
       ],
       "version": "0.3.24",
       "discovered_at": "2026-07-28T10:06:11.904498+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689573+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902857+00:00"
     },
     {
       "source": "npm",
@@ -1044,7 +1369,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904506+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689588+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902867+00:00"
     },
     {
       "source": "npm",
@@ -1067,7 +1394,9 @@
       ],
       "version": "1.0.1",
       "discovered_at": "2026-07-28T10:06:11.904523+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689594+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902874+00:00"
     },
     {
       "source": "npm",
@@ -1085,7 +1414,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904694+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689605+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902881+00:00"
     },
     {
       "source": "npm",
@@ -1103,7 +1434,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904702+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689615+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902887+00:00"
     },
     {
       "source": "npm",
@@ -1121,7 +1454,9 @@
       ],
       "version": "1.0.3",
       "discovered_at": "2026-07-28T10:06:11.904709+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689602+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902879+00:00"
     },
     {
       "source": "npm",
@@ -1139,7 +1474,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904718+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689631+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902905+00:00"
     },
     {
       "source": "npm",
@@ -1159,7 +1496,9 @@
       ],
       "version": "0.3.16",
       "discovered_at": "2026-07-28T10:06:11.904726+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689625+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902902+00:00"
     },
     {
       "source": "npm",
@@ -1181,7 +1520,9 @@
       ],
       "version": "1.0.1",
       "discovered_at": "2026-07-28T10:06:11.904771+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689652+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902922+00:00"
     },
     {
       "source": "npm",
@@ -1203,7 +1544,9 @@
       ],
       "version": "0.2.2",
       "discovered_at": "2026-07-28T10:06:11.904774+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689655+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902924+00:00"
     },
     {
       "source": "npm",
@@ -1224,7 +1567,9 @@
       ],
       "version": "1.0.24",
       "discovered_at": "2026-07-28T10:06:11.904778+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689666+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902933+00:00"
     },
     {
       "source": "npm",
@@ -1244,7 +1589,9 @@
       ],
       "version": "5.1.0-34",
       "discovered_at": "2026-07-28T10:06:11.904792+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689672+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902940+00:00"
     },
     {
       "source": "github",
@@ -1261,7 +1608,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-28T03:02:02Z",
       "discovered_at": "2026-07-28T10:06:23.260305+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689729+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113428+00:00"
     },
     {
       "source": "github",
@@ -1329,7 +1678,9 @@
       "language": "Zig",
       "updated_at": "2026-07-25T14:05:42Z",
       "discovered_at": "2026-07-28T10:06:30.658045+00:00",
-      "federation_score": 0.5
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689779+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689192+00:00"
     },
     {
       "source": "github",
@@ -1354,6 +1705,44 @@
       "language": "Java",
       "updated_at": "2026-04-06T06:39:01Z",
       "discovered_at": "2026-07-28T10:06:30.658084+00:00",
+      "federation_score": 0.5,
+      "last_seen_at": "2026-07-28T19:06:27.689810+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689227+00:00"
+    },
+    {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "malicious-mcp-server",
+      "description": "A deliberately malicious MCP server for E2E testing purposes",
+      "url": "https://www.npmjs.com/package/malicious-mcp-server",
+      "repository": "git+https://github.com/anysource-AI/malicious-mcp-server.git",
+      "author": "rwilinski",
+      "tags": [
+        "mcp",
+        "model-context-protocol",
+        "testing",
+        "e2e"
+      ],
+      "version": "1.5.0",
+      "discovered_at": "2026-07-28T19:06:23.615922+00:00",
+      "federation_score": 0.5
+    },
+    {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "@modelcontextprotocol/codemod",
+      "description": "Codemod to migrate MCP TypeScript SDK code from v1 to v2",
+      "url": "https://www.npmjs.com/package/@modelcontextprotocol/codemod",
+      "repository": "git+https://github.com/modelcontextprotocol/typescript-sdk.git",
+      "author": "GitHub Actions",
+      "tags": [
+        "modelcontextprotocol",
+        "mcp",
+        "codemod",
+        "migration"
+      ],
+      "version": "2.0.0",
+      "discovered_at": "2026-07-28T19:06:23.902927+00:00",
       "federation_score": 0.5
     },
     {
@@ -1377,7 +1766,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-28T06:55:08Z",
       "discovered_at": "2026-07-28T10:06:23.260270+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689715+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113414+00:00"
     },
     {
       "source": "github",
@@ -1412,7 +1803,9 @@
       "language": "Kotlin",
       "updated_at": "2026-07-28T09:21:41Z",
       "discovered_at": "2026-07-28T10:06:23.260278+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689683+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113357+00:00"
     },
     {
       "source": "github",
@@ -1436,7 +1829,9 @@
       "language": "Python",
       "updated_at": "2026-07-28T06:04:37Z",
       "discovered_at": "2026-07-28T10:06:23.260282+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689690+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113362+00:00"
     },
     {
       "source": "github",
@@ -1464,7 +1859,9 @@
       "language": "Python",
       "updated_at": "2026-07-28T05:41:01Z",
       "discovered_at": "2026-07-28T10:06:23.260289+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689709+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113405+00:00"
     },
     {
       "source": "github",
@@ -1486,7 +1883,9 @@
       "language": "Python",
       "updated_at": "2026-07-28T00:05:39Z",
       "discovered_at": "2026-07-28T10:06:23.260317+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689737+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113436+00:00"
     },
     {
       "source": "github",
@@ -1771,7 +2170,9 @@
       "language": "Python",
       "updated_at": "2026-07-28T10:01:28Z",
       "discovered_at": "2026-07-28T10:06:26.855210+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689762+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.847084+00:00"
     },
     {
       "source": "github",
@@ -1866,7 +2267,9 @@
       "language": "Python",
       "updated_at": "2026-07-28T10:00:46Z",
       "discovered_at": "2026-07-28T10:06:26.855222+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689760+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.847081+00:00"
     },
     {
       "source": "github",
@@ -1889,7 +2292,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-27T18:44:19Z",
       "discovered_at": "2026-07-28T10:06:30.658026+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689768+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689168+00:00"
     },
     {
       "source": "github",
@@ -1911,7 +2316,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-27T10:49:02Z",
       "discovered_at": "2026-07-28T10:06:30.658032+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689771+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689172+00:00"
     },
     {
       "source": "github",
@@ -1931,7 +2338,9 @@
       "language": "Python",
       "updated_at": "2026-07-06T12:32:37Z",
       "discovered_at": "2026-07-28T10:06:30.658056+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689787+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689202+00:00"
     },
     {
       "source": "github",
@@ -1948,11 +2357,13 @@
         "shopify-mcp",
         "shopify-tool"
       ],
-      "stars": 139,
+      "stars": 140,
       "language": "Rust",
       "updated_at": "2026-07-27T23:16:13Z",
       "discovered_at": "2026-07-28T10:06:30.658059+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689790+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689205+00:00"
     },
     {
       "source": "github",
@@ -1981,7 +2392,9 @@
       "language": "JavaScript",
       "updated_at": "2026-06-15T18:22:45Z",
       "discovered_at": "2026-07-28T10:06:30.658065+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689795+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689211+00:00"
     },
     {
       "source": "github",
@@ -2010,7 +2423,9 @@
       "language": "Python",
       "updated_at": "2026-06-19T04:38:06Z",
       "discovered_at": "2026-07-28T10:06:30.658071+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689799+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689216+00:00"
     },
     {
       "source": "github",
@@ -2045,7 +2460,9 @@
       "language": "Python",
       "updated_at": "2026-05-24T13:59:50Z",
       "discovered_at": "2026-07-28T10:06:30.658074+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689802+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689218+00:00"
     },
     {
       "source": "github",
@@ -2080,7 +2497,9 @@
       "language": "Python",
       "updated_at": "2026-07-26T12:48:31Z",
       "discovered_at": "2026-07-28T10:06:30.658077+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689804+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689221+00:00"
     },
     {
       "source": "github",
@@ -2104,7 +2523,9 @@
       "language": "TypeScript",
       "updated_at": "2026-07-17T16:01:47Z",
       "discovered_at": "2026-07-28T10:06:30.658093+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689817+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689236+00:00"
     },
     {
       "source": "github",
@@ -2132,7 +2553,9 @@
       "language": "TypeScript",
       "updated_at": "2026-01-06T12:04:20Z",
       "discovered_at": "2026-07-28T10:06:30.658099+00:00",
-      "federation_score": 0.49999999999999994
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689822+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689240+00:00"
     },
     {
       "source": "github",
@@ -2153,6 +2576,385 @@
       "language": "Python",
       "updated_at": "2026-01-17T16:32:49Z",
       "discovered_at": "2026-07-28T10:06:30.658104+00:00",
+      "federation_score": 0.49999999999999994,
+      "last_seen_at": "2026-07-28T19:06:27.689834+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689246+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "JesseGdotIO/hermesplant-mcp-server",
+      "description": "MCP bridge for Hermes Plant action safety, spend assurance, signed evidence, and deterministic x402 APIs.",
+      "url": "https://github.com/JesseGdotIO/hermesplant-mcp-server",
+      "author": "JesseGdotIO",
+      "tags": [
+        "agent-commerce",
+        "agent-payments",
+        "agent-safety",
+        "ai-agents",
+        "base",
+        "finance",
+        "hermes-plant",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "modelcontextprotocol",
+        "signed-evidence",
+        "spend-assurance",
+        "usdc",
+        "x402"
+      ],
+      "stars": 2,
+      "language": "JavaScript",
+      "updated_at": "2026-07-28T17:23:53Z",
+      "discovered_at": "2026-07-28T19:06:26.113391+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "IBM/mcp",
+      "description": "A collection of Model Context Protocol (MCP) servers, clients and developer tools by IBM.",
+      "url": "https://github.com/IBM/mcp",
+      "author": "IBM",
+      "tags": [
+        "agents",
+        "llm",
+        "mcp",
+        "modelcontextprotocol",
+        "toolcalling",
+        "tools"
+      ],
+      "stars": 397,
+      "language": null,
+      "updated_at": "2026-07-28T16:23:40Z",
+      "discovered_at": "2026-07-28T19:06:26.113400+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "linxule/lotus-wisdom-mcp",
+      "description": "Contemplative reasoning MCP server — Lotus Sutra wisdom framework with interactive ext-apps journey visualization.",
+      "url": "https://github.com/linxule/lotus-wisdom-mcp",
+      "author": "linxule",
+      "tags": [
+        "lotus-sutra",
+        "mcp",
+        "mcp-server",
+        "modelcontextprotocol"
+      ],
+      "stars": 31,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T10:18:40Z",
+      "discovered_at": "2026-07-28T19:06:26.113411+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "NVIDIA/elements",
+      "description": "NVIDIA Design System and UI Agent Harness for AI/ML Factories, Robotics, and Autonomous Vehicles",
+      "url": "https://github.com/NVIDIA/elements",
+      "author": "NVIDIA",
+      "tags": [
+        "ai",
+        "angular",
+        "autonomous-vehicles",
+        "cli",
+        "design-system",
+        "design-tokens",
+        "generative-ai",
+        "mcp",
+        "mcp-server",
+        "react",
+        "robotics",
+        "theming",
+        "typescript",
+        "ui",
+        "ui-components",
+        "vue",
+        "web-component",
+        "web-components"
+      ],
+      "stars": 30,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:06:10Z",
+      "discovered_at": "2026-07-28T19:06:26.846978+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "LiquidBuiltIt/Supersurf",
+      "description": "The web wrangler for agents. Give your AI a real browser and never touch the web yourself again.",
+      "url": "https://github.com/LiquidBuiltIt/Supersurf",
+      "author": "LiquidBuiltIt",
+      "tags": [
+        "agentic",
+        "ai-agent",
+        "anthropic",
+        "automation",
+        "browser-automation",
+        "chrome",
+        "chrome-extension",
+        "claude",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "playwright-alternative",
+        "puppeteer-alternative",
+        "web-automation"
+      ],
+      "stars": 5,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:05:00Z",
+      "discovered_at": "2026-07-28T19:06:26.847001+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "magnetron01123/foliant",
+      "description": "Self-hosted MCP-Server: Regel-Nachschlagewerk für D&D 5e (Fassung 2024), Deutsch-first",
+      "url": "https://github.com/magnetron01123/foliant",
+      "author": "magnetron01123",
+      "tags": [
+        "deutsch",
+        "dnd",
+        "dnd-5e",
+        "fastmcp",
+        "mcp",
+        "mcp-server",
+        "srd",
+        "ttrpg"
+      ],
+      "stars": 0,
+      "language": "Python",
+      "updated_at": "2026-07-28T19:04:35Z",
+      "discovered_at": "2026-07-28T19:06:26.847005+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "FROWNINGdev/django-orm-lens",
+      "description": "Live sidebar, ER diagrams, CLI, and MCP server for Django models. VS Code + PyPI + MCP Registry + Glama. Zero-dep parser, no DB required.",
+      "url": "https://github.com/FROWNINGdev/django-orm-lens",
+      "author": "FROWNINGdev",
+      "tags": [
+        "ai-agents",
+        "aider",
+        "code-navigation",
+        "cursor",
+        "database",
+        "developer-tools",
+        "django",
+        "django-tools",
+        "er-diagram",
+        "mcp",
+        "mcp-server",
+        "mermaid",
+        "model-context-protocol",
+        "orm",
+        "python",
+        "python-cli",
+        "schema-diagram",
+        "schema-visualization",
+        "static-analysis",
+        "vscode-extension"
+      ],
+      "stars": 44,
+      "language": "Python",
+      "updated_at": "2026-07-28T19:03:41Z",
+      "discovered_at": "2026-07-28T19:06:26.847022+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "cambridgetcg/agenttool",
+      "description": "Sovereign agent infrastructure where agents arrive as themselves · public read-only Canon MCP · SDKs + local tools",
+      "url": "https://github.com/cambridgetcg/agenttool",
+      "author": "cambridgetcg",
+      "tags": [
+        "agent-discovery",
+        "agent-economy",
+        "agent-infrastructure",
+        "agenttool",
+        "ai-agents",
+        "bun",
+        "ed25519",
+        "fly-io",
+        "hono",
+        "identity",
+        "love",
+        "mcp",
+        "mcp-server",
+        "memory",
+        "model-context-protocol",
+        "sovereign"
+      ],
+      "stars": 0,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:03:29Z",
+      "discovered_at": "2026-07-28T19:06:26.847025+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "nickharris808/physics-lint-mcp",
+      "description": "A physics oracle AI agents can call. MCP server exposing S-parameter and coupling-extractor admissibility checks, read-only, with interpretations written for a model to read.",
+      "url": "https://github.com/nickharris808/physics-lint-mcp",
+      "author": "nickharris808",
+      "tags": [
+        "agents",
+        "ai-agents",
+        "claude",
+        "cursor",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "physics",
+        "rf",
+        "tool-use",
+        "verification"
+      ],
+      "stars": 0,
+      "language": "Python",
+      "updated_at": "2026-07-28T19:03:54Z",
+      "discovered_at": "2026-07-28T19:06:26.847036+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "JSONbored/metagraphed",
+      "description": "Bittensor didn't ship with a map. We drew one — chain-direct block explorer, developer registry, and an agent toolkit built right in.",
+      "url": "https://github.com/JSONbored/metagraphed",
+      "author": "JSONbored",
+      "tags": [
+        "agent-skills",
+        "bittensor",
+        "bittensor-cli",
+        "bittensor-docs",
+        "bittensor-metagraph",
+        "bittensor-subnet",
+        "bittensor-subnets",
+        "block-explorer",
+        "endpoint-monitoring",
+        "mcp",
+        "mcp-server",
+        "metagraph",
+        "openapi",
+        "public-infrastructure",
+        "registry",
+        "schema-registry",
+        "staking",
+        "status-page",
+        "subtensor"
+      ],
+      "stars": 12,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:03:48Z",
+      "discovered_at": "2026-07-28T19:06:26.847039+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "Mimirs402/bountyverdict",
+      "description": "GitHub Actions failure diagnosis, bounty checks, and AGENTS.md audits for AI coding agents — Agent Skills and an x402-paid MCP server with MCP schema-drift checks.",
+      "url": "https://github.com/Mimirs402/bountyverdict",
+      "author": "Mimirs402",
+      "tags": [
+        "agent-skills",
+        "agent-tools",
+        "agentic-commerce",
+        "agents-md",
+        "ai-agents",
+        "ci-cd",
+        "coding-agents",
+        "developer-tools",
+        "gemini-cli-extension",
+        "github-actions",
+        "github-actions-mcp",
+        "github-bounties",
+        "mcp",
+        "mcp-registry",
+        "mcp-server",
+        "mcp-tools",
+        "model-context-protocol",
+        "paid-api",
+        "usdc",
+        "x402"
+      ],
+      "stars": 2,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:03:28Z",
+      "discovered_at": "2026-07-28T19:06:26.847046+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "beepboop2025/seiche",
+      "description": "Seiche: free open source funding stress terminal for US money markets. 22 engines, honest backtests, zero data cost (Fed, NY Fed, OFR, Treasury public APIs). AGPL-3.0.",
+      "url": "https://github.com/beepboop2025/seiche",
+      "author": "beepboop2025",
+      "tags": [
+        "agpl",
+        "early-warning",
+        "federal-reserve",
+        "finance",
+        "fintech",
+        "liquidity",
+        "macroeconomics",
+        "market-data",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "money-markets",
+        "open-source",
+        "repo-market",
+        "terminal"
+      ],
+      "stars": 1,
+      "language": "Python",
+      "updated_at": "2026-07-28T19:01:55Z",
+      "discovered_at": "2026-07-28T19:06:26.847049+00:00",
+      "federation_score": 0.49999999999999994
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "paiml/paiml-mcp-agent-toolkit",
+      "description": "Pragmatic AI Labs MCP Agent Toolkit - An MCP Server designed to make code with agents more deterministic",
+      "url": "https://github.com/paiml/paiml-mcp-agent-toolkit",
+      "author": "paiml",
+      "tags": [
+        "agentic",
+        "c",
+        "deno",
+        "kotlin",
+        "mcp",
+        "mcp-server",
+        "paiml",
+        "paiml-active-tool",
+        "pmcp",
+        "python",
+        "ruchy",
+        "rust",
+        "toolkit",
+        "typescript"
+      ],
+      "stars": 159,
+      "language": "Rust",
+      "updated_at": "2026-07-28T19:00:53Z",
+      "discovered_at": "2026-07-28T19:06:26.847057+00:00",
       "federation_score": 0.49999999999999994
     },
     {
@@ -2166,7 +2968,9 @@
       "tags": [],
       "version": "0.2.8",
       "discovered_at": "2026-07-28T10:06:11.904503+00:00",
-      "federation_score": 0.45000000000000007
+      "federation_score": 0.45000000000000007,
+      "last_seen_at": "2026-07-28T19:06:27.689591+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902869+00:00"
     },
     {
       "source": "npm",
@@ -2182,7 +2986,9 @@
       ],
       "version": "1.30.0",
       "discovered_at": "2026-07-28T10:06:11.904423+00:00",
-      "federation_score": 0.45
+      "federation_score": 0.45,
+      "last_seen_at": "2026-07-28T19:06:27.689546+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902832+00:00"
     },
     {
       "source": "npm",
@@ -2199,7 +3005,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904458+00:00",
-      "federation_score": 0.45
+      "federation_score": 0.45,
+      "last_seen_at": "2026-07-28T19:06:27.689555+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902841+00:00"
     },
     {
       "source": "npm",
@@ -2216,7 +3024,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904486+00:00",
-      "federation_score": 0.45
+      "federation_score": 0.45,
+      "last_seen_at": "2026-07-28T19:06:27.689580+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902860+00:00"
     },
     {
       "source": "npm",
@@ -2233,7 +3043,9 @@
       ],
       "version": "0.6.5",
       "discovered_at": "2026-07-28T10:06:11.904490+00:00",
-      "federation_score": 0.45
+      "federation_score": 0.45,
+      "last_seen_at": "2026-07-28T19:06:27.689583+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902862+00:00"
     },
     {
       "source": "npm",
@@ -2249,7 +3061,9 @@
       ],
       "version": "1.24.3-mcp-use.4",
       "discovered_at": "2026-07-28T10:06:11.904731+00:00",
-      "federation_score": 0.45
+      "federation_score": 0.45,
+      "last_seen_at": "2026-07-28T19:06:27.689633+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902907+00:00"
     },
     {
       "source": "npm",
@@ -2266,6 +3080,25 @@
       ],
       "version": "0.3.3",
       "discovered_at": "2026-07-28T10:06:11.904757+00:00",
+      "federation_score": 0.45,
+      "last_seen_at": "2026-07-28T19:06:27.689642+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902915+00:00"
+    },
+    {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "@laskarks/mcp-rag-node",
+      "description": "Simple MCP RAG server using @modelcontextprotocol/sdk",
+      "url": "https://www.npmjs.com/package/@laskarks/mcp-rag-node",
+      "repository": "git+https://github.com/laskar-ksatria/rag-mcp-nodejs.git",
+      "author": "laskarks",
+      "tags": [
+        "mcp",
+        "modelcontextprotocol",
+        "sdk"
+      ],
+      "version": "1.1.1",
+      "discovered_at": "2026-07-28T19:06:23.902934+00:00",
       "federation_score": 0.45
     },
     {
@@ -2299,7 +3132,9 @@
       "language": "Swift",
       "updated_at": "2026-07-28T08:02:47Z",
       "discovered_at": "2026-07-28T10:06:23.260088+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689711+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113407+00:00"
     },
     {
       "source": "github",
@@ -2325,7 +3160,9 @@
       "language": "Nushell",
       "updated_at": "2026-07-28T03:40:42Z",
       "discovered_at": "2026-07-28T10:06:23.260293+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689723+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113421+00:00"
     },
     {
       "source": "github",
@@ -2347,7 +3184,9 @@
       "language": "Go",
       "updated_at": "2026-07-28T02:03:43Z",
       "discovered_at": "2026-07-28T10:06:23.260308+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689732+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113430+00:00"
     },
     {
       "source": "github",
@@ -2659,7 +3498,9 @@
       "language": "HTML",
       "updated_at": "2026-07-28T10:01:45Z",
       "discovered_at": "2026-07-28T10:06:26.855212+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689756+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.847060+00:00"
     },
     {
       "source": "github",
@@ -2787,7 +3628,9 @@
       "language": "Dart",
       "updated_at": "2026-07-26T01:34:21Z",
       "discovered_at": "2026-07-28T10:06:30.658036+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689773+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689174+00:00"
     },
     {
       "source": "github",
@@ -2809,7 +3652,9 @@
       "language": "Rust",
       "updated_at": "2026-07-20T06:23:28Z",
       "discovered_at": "2026-07-28T10:06:30.658040+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689776+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689178+00:00"
     },
     {
       "source": "github",
@@ -2837,7 +3682,9 @@
       "language": null,
       "updated_at": "2026-07-12T17:08:44Z",
       "discovered_at": "2026-07-28T10:06:30.658049+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689782+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689195+00:00"
     },
     {
       "source": "github",
@@ -2866,7 +3713,9 @@
       "language": null,
       "updated_at": "2026-07-12T17:06:16Z",
       "discovered_at": "2026-07-28T10:06:30.658052+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689784+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689199+00:00"
     },
     {
       "source": "github",
@@ -2886,7 +3735,9 @@
       "language": "Go",
       "updated_at": "2026-04-16T04:26:46Z",
       "discovered_at": "2026-07-28T10:06:30.658080+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689807+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689223+00:00"
     },
     {
       "source": "github",
@@ -2913,7 +3764,9 @@
       "language": null,
       "updated_at": "2026-07-27T07:13:20Z",
       "discovered_at": "2026-07-28T10:06:30.658096+00:00",
-      "federation_score": 0.44999999999999996
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689820+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689238+00:00"
     },
     {
       "source": "github",
@@ -2933,6 +3786,250 @@
       "language": "Kotlin",
       "updated_at": "2026-05-14T18:37:13Z",
       "discovered_at": "2026-07-28T10:06:30.658101+00:00",
+      "federation_score": 0.44999999999999996,
+      "last_seen_at": "2026-07-28T19:06:27.689831+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689243+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "ProtoTeemo/leakrank-guard",
+      "description": "Scans code changes for leaked secrets and insecure config, with actionable fixes for AI agents. MCP server, docs for the leakrank-guard npm package.",
+      "url": "https://github.com/ProtoTeemo/leakrank-guard",
+      "author": "ProtoTeemo",
+      "tags": [
+        "ai-code-security",
+        "claude-code",
+        "codex",
+        "cursor",
+        "devsecops",
+        "mcp",
+        "mcp-server",
+        "modelcontextprotocol",
+        "secret-scanning",
+        "secrets",
+        "security",
+        "windsurf"
+      ],
+      "stars": 0,
+      "language": null,
+      "updated_at": "2026-07-28T17:30:53Z",
+      "discovered_at": "2026-07-28T19:06:26.113389+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "fbmdata/maxstat-mcp",
+      "description": "Official MaxStat MCP: search 367K+ MAX channels and 85M+ posts; get audience, views, reactions, reposts and daily histories; monitor channels via webhooks.",
+      "url": "https://github.com/fbmdata/maxstat-mcp",
+      "author": "fbmdata",
+      "tags": [
+        "ai-agents",
+        "analytics",
+        "max-messenger",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "remote-mcp",
+        "social-media-analytics"
+      ],
+      "stars": 1,
+      "language": null,
+      "updated_at": "2026-07-28T18:19:38Z",
+      "discovered_at": "2026-07-28T19:06:26.846946+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "Perseus-Computing-LLC/perseus-vault",
+      "description": "Persistent, encrypted memory for AI agents: one Rust binary, one file, no cloud. 55+ MCP tools, hybrid recall, bi-temporal history, AES-256-GCM. Local-first, air-gap ready, MIT.",
+      "url": "https://github.com/Perseus-Computing-LLC/perseus-vault",
+      "author": "Perseus-Computing-LLC",
+      "tags": [
+        "agent-memory",
+        "ai-agents",
+        "context-engineering",
+        "encryption",
+        "fts5",
+        "llm",
+        "local-first",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "open-source",
+        "persistent-memory",
+        "rust",
+        "semantic-search",
+        "sqlite",
+        "vector-search"
+      ],
+      "stars": 38,
+      "language": "Rust",
+      "updated_at": "2026-07-28T19:05:55Z",
+      "discovered_at": "2026-07-28T19:06:26.846984+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "amikai/openings-mcp",
+      "description": "💼 One MCP server to search job boards and company career sites",
+      "url": "https://github.com/amikai/openings-mcp",
+      "author": "amikai",
+      "tags": [
+        "ats",
+        "career",
+        "claude-code",
+        "golang",
+        "job-board",
+        "job-hunting",
+        "job-scraper",
+        "job-search",
+        "jobs-scraper",
+        "llm-tools",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol"
+      ],
+      "stars": 73,
+      "language": "Go",
+      "updated_at": "2026-07-28T19:04:16Z",
+      "discovered_at": "2026-07-28T19:06:26.847010+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "Yarmoluk/ckg-nvidia-ai",
+      "description": "MCP server — Compressed Knowledge Graph for the NVIDIA AI developer stack. 20 domains · 998 nodes · 4× F1 vs RAG · 11× fewer tokens · deterministic traversal.",
+      "url": "https://github.com/Yarmoluk/ckg-nvidia-ai",
+      "author": "Yarmoluk",
+      "tags": [
+        "agent",
+        "context-optimization",
+        "cuda",
+        "knowledge-graph",
+        "llm",
+        "mcp",
+        "mcp-server",
+        "nvidia",
+        "rag-alternative",
+        "tensorrt"
+      ],
+      "stars": 8,
+      "language": "HTML",
+      "updated_at": "2026-07-28T19:05:32Z",
+      "discovered_at": "2026-07-28T19:06:26.847033+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "Jayrajsinh45/ossmate-stack-mate",
+      "description": "OSS Maintainer Copilot 2026: All-in-One Developer Tool for Hooks, MCP, Subagents & Cron",
+      "url": "https://github.com/Jayrajsinh45/ossmate-stack-mate",
+      "author": "Jayrajsinh45",
+      "tags": [
+        "anthropic",
+        "automation",
+        "claude-code",
+        "claude-plugin",
+        "developer-tools",
+        "github-actions",
+        "mcp",
+        "mcp-server",
+        "oss-maintainer",
+        "python",
+        "typer"
+      ],
+      "stars": 2,
+      "language": "HTML",
+      "updated_at": "2026-07-28T19:05:16Z",
+      "discovered_at": "2026-07-28T19:06:26.847042+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "nodeflare-dev/nodeflare",
+      "description": "Deploy, manage, and scale MCP servers with one click. Automatic stdio→SSE conversion.",
+      "url": "https://github.com/nodeflare-dev/nodeflare",
+      "author": "nodeflare-dev",
+      "tags": [
+        "axum",
+        "fly-io",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "nextjs",
+        "rust",
+        "self-hosted",
+        "typescript"
+      ],
+      "stars": 2,
+      "language": "Rust",
+      "updated_at": "2026-07-28T19:01:26Z",
+      "discovered_at": "2026-07-28T19:06:26.847053+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "Easyman2-cpu/octo-code-trail",
+      "description": "Rustic SQLite Code Graph 2026 – 28 Languages, 238 Commands, Zero API Keys",
+      "url": "https://github.com/Easyman2-cpu/octo-code-trail",
+      "author": "Easyman2-cpu",
+      "tags": [
+        "ai-agents",
+        "ai-coding",
+        "cli",
+        "code-analysis",
+        "code-graph",
+        "code-intelligence",
+        "code-quality",
+        "code-review",
+        "developer-tools",
+        "graph-analysis",
+        "local-first",
+        "mcp",
+        "mcp-server",
+        "model-context-protocol",
+        "python",
+        "refactoring",
+        "software-architecture",
+        "sqlite",
+        "static-analysis",
+        "tree-sitter"
+      ],
+      "stars": 1,
+      "language": "HTML",
+      "updated_at": "2026-07-28T19:00:48Z",
+      "discovered_at": "2026-07-28T19:06:26.847071+00:00",
+      "federation_score": 0.44999999999999996
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "ALE7506/text-metrics-analyzer",
+      "description": "🚀 PretextPlugin 2026 – Deep MCP Tools for DOM-Free Text Layout & Measurement",
+      "url": "https://github.com/ALE7506/text-metrics-analyzer",
+      "author": "ALE7506",
+      "tags": [
+        "claude-code",
+        "claude-plugin",
+        "mcp",
+        "mcp-server",
+        "pretext",
+        "text-layout",
+        "typescript",
+        "typography"
+      ],
+      "stars": 1,
+      "language": "HTML",
+      "updated_at": "2026-07-28T19:00:50Z",
+      "discovered_at": "2026-07-28T19:06:26.847078+00:00",
       "federation_score": 0.44999999999999996
     },
     {
@@ -2951,7 +4048,9 @@
       ],
       "version": "2.5.1",
       "discovered_at": "2026-07-28T10:06:11.666147+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689415+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615787+00:00"
     },
     {
       "source": "npm",
@@ -2970,7 +4069,9 @@
       ],
       "version": "1.11.2",
       "discovered_at": "2026-07-28T10:06:11.666149+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689418+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615790+00:00"
     },
     {
       "source": "npm",
@@ -2989,7 +4090,9 @@
       ],
       "version": "0.2.17",
       "discovered_at": "2026-07-28T10:06:11.666151+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689402+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615768+00:00"
     },
     {
       "source": "npm",
@@ -3010,7 +4113,9 @@
       ],
       "version": "3.2.5",
       "discovered_at": "2026-07-28T10:06:11.666159+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689438+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615809+00:00"
     },
     {
       "source": "npm",
@@ -3029,7 +4134,9 @@
       ],
       "version": "0.13.0",
       "discovered_at": "2026-07-28T10:06:11.666168+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689441+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615812+00:00"
     },
     {
       "source": "npm",
@@ -3042,7 +4149,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666182+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689454+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615825+00:00"
     },
     {
       "source": "npm",
@@ -3055,7 +4164,9 @@
       "tags": [],
       "version": "0.7.0",
       "discovered_at": "2026-07-28T10:06:11.666191+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689461+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615831+00:00"
     },
     {
       "source": "npm",
@@ -3068,7 +4179,9 @@
       "tags": [],
       "version": "0.0.5",
       "discovered_at": "2026-07-28T10:06:11.666196+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689472+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615846+00:00"
     },
     {
       "source": "npm",
@@ -3086,7 +4199,9 @@
       ],
       "version": "1.2.31",
       "discovered_at": "2026-07-28T10:06:11.666198+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689426+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615797+00:00"
     },
     {
       "source": "npm",
@@ -3105,7 +4220,9 @@
       ],
       "version": "1.24.0",
       "discovered_at": "2026-07-28T10:06:11.666204+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689496+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615871+00:00"
     },
     {
       "source": "npm",
@@ -3125,7 +4242,9 @@
       ],
       "version": "1.3.0",
       "discovered_at": "2026-07-28T10:06:11.666218+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689518+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615907+00:00"
     },
     {
       "source": "npm",
@@ -3138,7 +4257,9 @@
       "tags": [],
       "version": "2026.7.4",
       "discovered_at": "2026-07-28T10:06:11.666223+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689515+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615904+00:00"
     },
     {
       "source": "npm",
@@ -3157,7 +4278,9 @@
       ],
       "version": "2.3.3",
       "discovered_at": "2026-07-28T10:06:11.666228+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689481+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615855+00:00"
     },
     {
       "source": "npm",
@@ -3175,7 +4298,9 @@
       ],
       "version": "1.0.15",
       "discovered_at": "2026-07-28T10:06:11.666230+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689490+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615864+00:00"
     },
     {
       "source": "npm",
@@ -3234,7 +4359,9 @@
       "tags": [],
       "version": "1.7.5",
       "discovered_at": "2026-07-28T10:06:11.904462+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689558+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902844+00:00"
     },
     {
       "source": "npm",
@@ -3247,7 +4374,9 @@
       "tags": [],
       "version": "0.7.2",
       "discovered_at": "2026-07-28T10:06:11.904474+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689567+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902851+00:00"
     },
     {
       "source": "npm",
@@ -3260,7 +4389,9 @@
       "tags": [],
       "version": "0.1.16",
       "discovered_at": "2026-07-28T10:06:11.904526+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689599+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902877+00:00"
     },
     {
       "source": "npm",
@@ -3273,7 +4404,9 @@
       "tags": [],
       "version": "2026.7.4",
       "discovered_at": "2026-07-28T10:06:11.904686+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689597+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902875+00:00"
     },
     {
       "source": "npm",
@@ -3286,7 +4419,9 @@
       "tags": [],
       "version": "1.7.5",
       "discovered_at": "2026-07-28T10:06:11.904698+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689611+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902885+00:00"
     },
     {
       "source": "npm",
@@ -3299,7 +4434,9 @@
       "tags": [],
       "version": "2.28.0",
       "discovered_at": "2026-07-28T10:06:11.904713+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689622+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902892+00:00"
     },
     {
       "source": "npm",
@@ -3312,7 +4449,9 @@
       "tags": [],
       "version": "2026.7.4",
       "discovered_at": "2026-07-28T10:06:11.904722+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689608+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902883+00:00"
     },
     {
       "source": "npm",
@@ -3325,7 +4464,9 @@
       "tags": [],
       "version": "0.3.2",
       "discovered_at": "2026-07-28T10:06:11.904747+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689636+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902911+00:00"
     },
     {
       "source": "npm",
@@ -3338,7 +4479,9 @@
       "tags": [],
       "version": "0.4.2",
       "discovered_at": "2026-07-28T10:06:11.904761+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689644+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902917+00:00"
     },
     {
       "source": "npm",
@@ -3351,7 +4494,9 @@
       "tags": [],
       "version": "3.0.3",
       "discovered_at": "2026-07-28T10:06:11.904764+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689647+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902918+00:00"
     },
     {
       "source": "npm",
@@ -3364,7 +4509,9 @@
       "tags": [],
       "version": "0.2.0",
       "discovered_at": "2026-07-28T10:06:11.904768+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689649+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902920+00:00"
     },
     {
       "source": "npm",
@@ -3377,7 +4524,9 @@
       "tags": [],
       "version": "0.12.7",
       "discovered_at": "2026-07-28T10:06:11.904799+00:00",
-      "federation_score": 0.4
+      "federation_score": 0.4,
+      "last_seen_at": "2026-07-28T19:06:27.689675+00:00",
+      "first_seen_at": "2026-07-28T19:06:24.149937+00:00"
     },
     {
       "source": "npm",
@@ -3402,6 +4551,45 @@
       "federation_score": 0.4
     },
     {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "@salesforce/mcp",
+      "description": "MCP Server for interacting with Salesforce instances",
+      "url": "https://www.npmjs.com/package/@salesforce/mcp",
+      "repository": "git+https://github.com/salesforcecli/mcp.git",
+      "author": "salesforce-releases",
+      "tags": [],
+      "version": "0.30.15",
+      "discovered_at": "2026-07-28T19:06:23.615874+00:00",
+      "federation_score": 0.4
+    },
+    {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "@contentful/mcp-server",
+      "description": "Contentful MCP Server - Model Context Protocol server for Contentful",
+      "url": "https://www.npmjs.com/package/@contentful/mcp-server",
+      "repository": "git+https://github.com/contentful/contentful-mcp-server.git",
+      "author": "GitHub Actions",
+      "tags": [],
+      "version": "1.13.0",
+      "discovered_at": "2026-07-28T19:06:23.615925+00:00",
+      "federation_score": 0.4
+    },
+    {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "@adpharm/mcp-server-filesystem-ro",
+      "description": "Read-only MCP server for filesystem access (fork of @modelcontextprotocol/server-filesystem)",
+      "url": "https://www.npmjs.com/package/@adpharm/mcp-server-filesystem-ro",
+      "repository": "git+https://github.com/adpharm/mcp-servers-fork.git",
+      "author": "bh1",
+      "tags": [],
+      "version": "0.1.2",
+      "discovered_at": "2026-07-28T19:06:23.902942+00:00",
+      "federation_score": 0.4
+    },
+    {
       "source": "github",
       "source_type": "repository",
       "name": "obot-platform/obot",
@@ -3418,7 +4606,9 @@
       "language": "Go",
       "updated_at": "2026-07-27T22:45:50Z",
       "discovered_at": "2026-07-28T10:06:23.260327+00:00",
-      "federation_score": 0.39999999999999997
+      "federation_score": 0.39999999999999997,
+      "last_seen_at": "2026-07-28T19:06:27.689703+00:00",
+      "first_seen_at": "2026-07-28T19:06:26.113394+00:00"
     },
     {
       "source": "github",
@@ -3492,7 +4682,9 @@
       "language": "JavaScript",
       "updated_at": "2026-07-02T14:26:06Z",
       "discovered_at": "2026-07-28T10:06:30.658062+00:00",
-      "federation_score": 0.39999999999999997
+      "federation_score": 0.39999999999999997,
+      "last_seen_at": "2026-07-28T19:06:27.689792+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689208+00:00"
     },
     {
       "source": "github",
@@ -3513,6 +4705,39 @@
       "language": "TypeScript",
       "updated_at": "2026-06-02T04:51:02Z",
       "discovered_at": "2026-07-28T10:06:30.658068+00:00",
+      "federation_score": 0.39999999999999997,
+      "last_seen_at": "2026-07-28T19:06:27.689797+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689213+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "jdguggs10/flaim",
+      "description": "Fantasy Sports MCP Platform",
+      "url": "https://github.com/jdguggs10/flaim",
+      "author": "jdguggs10",
+      "tags": [
+        "ai",
+        "chatgpt",
+        "claude",
+        "cloudflare-workers",
+        "espn",
+        "fantasy-baseball",
+        "fantasy-basketball",
+        "fantasy-football",
+        "fantasy-hockey",
+        "fantasy-sports",
+        "mcp-server",
+        "model-context-protocol",
+        "nextjs",
+        "sleeper",
+        "sports",
+        "yahoo"
+      ],
+      "stars": 8,
+      "language": "TypeScript",
+      "updated_at": "2026-07-28T19:05:20Z",
+      "discovered_at": "2026-07-28T19:06:26.846988+00:00",
       "federation_score": 0.39999999999999997
     },
     {
@@ -3528,7 +4753,9 @@
       ],
       "version": "0.0.9",
       "discovered_at": "2026-07-28T10:06:11.666119+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689367+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615730+00:00"
     },
     {
       "source": "npm",
@@ -3545,7 +4772,9 @@
       ],
       "version": "0.37.0",
       "discovered_at": "2026-07-28T10:06:11.666170+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689412+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615784+00:00"
     },
     {
       "source": "npm",
@@ -3561,7 +4790,9 @@
       ],
       "version": "0.4.0",
       "discovered_at": "2026-07-28T10:06:11.666189+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689469+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615839+00:00"
     },
     {
       "source": "npm",
@@ -3577,7 +4808,9 @@
       ],
       "version": "1.2.5",
       "discovered_at": "2026-07-28T10:06:11.666194+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689466+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615836+00:00"
     },
     {
       "source": "npm",
@@ -3593,7 +4826,9 @@
       ],
       "version": "0.3.10",
       "discovered_at": "2026-07-28T10:06:11.666209+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689511+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615895+00:00"
     },
     {
       "source": "npm",
@@ -3610,7 +4845,9 @@
       ],
       "version": "1.8.0",
       "discovered_at": "2026-07-28T10:06:11.666212+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689503+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615885+00:00"
     },
     {
       "source": "npm",
@@ -3627,7 +4864,9 @@
       ],
       "version": "0.18.1",
       "discovered_at": "2026-07-28T10:06:11.666226+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689527+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615919+00:00"
     },
     {
       "source": "npm",
@@ -3642,7 +4881,9 @@
       ],
       "version": "1.73.1",
       "discovered_at": "2026-07-28T10:06:11.666231+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689535+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615933+00:00"
     },
     {
       "source": "npm",
@@ -3658,7 +4899,9 @@
       ],
       "version": "1.5.0",
       "discovered_at": "2026-07-28T10:06:11.666236+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689538+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615936+00:00"
     },
     {
       "source": "npm",
@@ -3674,7 +4917,9 @@
       ],
       "version": "2.0.0",
       "discovered_at": "2026-07-28T10:06:11.904466+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689561+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902847+00:00"
     },
     {
       "source": "npm",
@@ -3691,7 +4936,9 @@
       ],
       "version": "4.9.3",
       "discovered_at": "2026-07-28T10:06:11.904471+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689570+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902854+00:00"
     },
     {
       "source": "npm",
@@ -3708,7 +4955,9 @@
       ],
       "version": "1.0.9",
       "discovered_at": "2026-07-28T10:06:11.904781+00:00",
-      "federation_score": 0.35000000000000003
+      "federation_score": 0.35000000000000003,
+      "last_seen_at": "2026-07-28T19:06:27.689658+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902925+00:00"
     },
     {
       "source": "github",
@@ -3744,6 +4993,29 @@
       "language": "TypeScript",
       "updated_at": "2026-03-19T07:21:12Z",
       "discovered_at": "2026-07-28T10:06:30.658090+00:00",
+      "federation_score": 0.35,
+      "last_seen_at": "2026-07-28T19:06:27.689815+00:00",
+      "first_seen_at": "2026-07-28T19:06:27.689233+00:00"
+    },
+    {
+      "source": "github",
+      "source_type": "repository",
+      "name": "Epistates/turbomcp",
+      "description": "A full featured, enterprise grade rust MCP SDK",
+      "url": "https://github.com/Epistates/turbomcp",
+      "author": "Epistates",
+      "tags": [
+        "mcp",
+        "mcp-client",
+        "mcp-sdk",
+        "mcp-server",
+        "mcp-servers",
+        "rust"
+      ],
+      "stars": 92,
+      "language": "Rust",
+      "updated_at": "2026-07-28T19:03:49Z",
+      "discovered_at": "2026-07-28T19:06:26.847017+00:00",
       "federation_score": 0.35
     },
     {
@@ -3757,7 +5029,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666143+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689422+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615793+00:00"
     },
     {
       "source": "npm",
@@ -3770,7 +5044,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666153+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689429+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615800+00:00"
     },
     {
       "source": "npm",
@@ -3783,7 +5059,9 @@
       "tags": [],
       "version": "2026.7.10",
       "discovered_at": "2026-07-28T10:06:11.666155+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689432+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615803+00:00"
     },
     {
       "source": "npm",
@@ -3796,7 +5074,9 @@
       "tags": [],
       "version": "1.6.0",
       "discovered_at": "2026-07-28T10:06:11.666157+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689435+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615806+00:00"
     },
     {
       "source": "npm",
@@ -3809,7 +5089,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666166+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689407+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615780+00:00"
     },
     {
       "source": "npm",
@@ -3822,7 +5104,9 @@
       "tags": [],
       "version": "0.4.12",
       "discovered_at": "2026-07-28T10:06:11.666172+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689444+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615815+00:00"
     },
     {
       "source": "npm",
@@ -3835,7 +5119,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666173+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689447+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615819+00:00"
     },
     {
       "source": "npm",
@@ -3848,7 +5134,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666175+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689450+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615821+00:00"
     },
     {
       "source": "npm",
@@ -3861,7 +5149,9 @@
       "tags": [],
       "version": "0.2.0",
       "discovered_at": "2026-07-28T10:06:11.666178+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689487+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615861+00:00"
     },
     {
       "source": "npm",
@@ -3874,7 +5164,9 @@
       "tags": [],
       "version": "0.4.11",
       "discovered_at": "2026-07-28T10:06:11.666180+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689457+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615828+00:00"
     },
     {
       "source": "npm",
@@ -3887,7 +5179,9 @@
       "tags": [],
       "version": "0.3.4",
       "discovered_at": "2026-07-28T10:06:11.666192+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689463+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615833+00:00"
     },
     {
       "source": "npm",
@@ -3900,7 +5194,9 @@
       "tags": [],
       "version": "1.8.0",
       "discovered_at": "2026-07-28T10:06:11.666201+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689475+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615849+00:00"
     },
     {
       "source": "npm",
@@ -3913,7 +5209,9 @@
       "tags": [],
       "version": "0.9.0",
       "discovered_at": "2026-07-28T10:06:11.666203+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689477+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615851+00:00"
     },
     {
       "source": "npm",
@@ -3926,7 +5224,9 @@
       "tags": [],
       "version": "9.8.0",
       "discovered_at": "2026-07-28T10:06:11.666215+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689508+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615892+00:00"
     },
     {
       "source": "npm",
@@ -3939,7 +5239,9 @@
       "tags": [],
       "version": "0.1.2",
       "discovered_at": "2026-07-28T10:06:11.666217+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689540+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615938+00:00"
     },
     {
       "source": "npm",
@@ -3952,7 +5254,9 @@
       "tags": [],
       "version": "2.8.1",
       "discovered_at": "2026-07-28T10:06:11.666221+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689521+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.615910+00:00"
     },
     {
       "source": "npm",
@@ -3965,7 +5269,9 @@
       "tags": [],
       "version": "0.1.4",
       "discovered_at": "2026-07-28T10:06:11.904444+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689543+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902808+00:00"
     },
     {
       "source": "npm",
@@ -3978,7 +5284,9 @@
       "tags": [],
       "version": "1.0.0-alpha.20",
       "discovered_at": "2026-07-28T10:06:11.904448+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689549+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902835+00:00"
     },
     {
       "source": "npm",
@@ -3991,7 +5299,9 @@
       "tags": [],
       "version": "3.0.3",
       "discovered_at": "2026-07-28T10:06:11.904454+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689552+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902838+00:00"
     },
     {
       "source": "npm",
@@ -4004,7 +5314,9 @@
       "tags": [],
       "version": "1.1.2",
       "discovered_at": "2026-07-28T10:06:11.904735+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689628+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902903+00:00"
     },
     {
       "source": "npm",
@@ -4017,7 +5329,9 @@
       "tags": [],
       "version": "0.1.0",
       "discovered_at": "2026-07-28T10:06:11.904743+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689639+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902913+00:00"
     },
     {
       "source": "npm",
@@ -4030,7 +5344,9 @@
       "tags": [],
       "version": "0.1.4",
       "discovered_at": "2026-07-28T10:06:11.904785+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689663+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902931+00:00"
     },
     {
       "source": "npm",
@@ -4043,7 +5359,9 @@
       "tags": [],
       "version": "0.2.0",
       "discovered_at": "2026-07-28T10:06:11.904789+00:00",
-      "federation_score": 0.30000000000000004
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689661+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902929+00:00"
     },
     {
       "source": "npm",
@@ -4069,6 +5387,21 @@
       "tags": [],
       "version": "3.0.0",
       "discovered_at": "2026-07-28T10:06:11.904803+00:00",
+      "federation_score": 0.30000000000000004,
+      "last_seen_at": "2026-07-28T19:06:27.689669+00:00",
+      "first_seen_at": "2026-07-28T19:06:23.902936+00:00"
+    },
+    {
+      "source": "npm",
+      "source_type": "package_registry",
+      "name": "@mui/mcp",
+      "description": "MUI MCP Server",
+      "url": "https://www.npmjs.com/package/@mui/mcp",
+      "repository": "git+https://github.com/mui/mui-x.git",
+      "author": "GitHub Actions",
+      "tags": [],
+      "version": "0.1.3",
+      "discovered_at": "2026-07-28T19:06:23.615901+00:00",
       "federation_score": 0.30000000000000004
     }
   ]
