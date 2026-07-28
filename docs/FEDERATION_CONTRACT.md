@@ -1,9 +1,10 @@
-# Federation Contract v2.0.0
+# Federation Contract v2.1.0
 
-> **SOT:** 2026-07-26 | **seal_seq:** web-unification-sealed
+> **SOT:** 2026-07-28 | **seal_seq:** SEAL-8a8e064d1fe34443
 > **Authority:** F13 SOVEREIGN — Muhammad Arif bin Fazil
-> **Canonical location:** `/root/arif-sites/FEDERATION.md`
-> **Supersedes:** All prior organ-specific FEDERATION_CONTRACT.md copies
+> **Canonical location:** `/root/AAA/docs/FEDERATION_CONTRACT.md` (symlinked from `/root/FEDERATION_CONTRACT.md`)
+> **Supersedes:** All prior organ-specific FEDERATION_CONTRACT.md copies, `/root/FEDERATION.md`
+> **Pointer:** For constitutional floors (F1-F13), autonomy tiers, memory architecture, and code conventions → `/root/AGENTS.md`
 > **Doctrine:** Satu domain. Satu web surface. Banyak organ, tetap bersempadan.
 
 ---
