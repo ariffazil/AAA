@@ -1,0 +1,9 @@
+{
+  "epoch": "2026-07-28T16:23:54.907403+00:00",
+  "repo": "/root",
+  "test_exit_code": 4,
+  "test_output": "\nno tests ran in 0.12s\n",
+  "physics_violations_found": true,
+  "physics_violation_details": "./.grok/sessions/%2Froot/019f7181-ddf8-7bb2-88d2-94854e8375d7/terminal/call-aceb9906-3087-477d-8377-ec7812c753c4-42.log:/root/ARIF-SITES/sites/geox.arif-fazil.com/cockpit/assets/index-CL-syAr-.js.map:1:{\"version\":3,\"file\":\"index-CL-syAr-.js\",\"sources\":[\"../../node_modules/react/cjs/react-jsx-runtime.production.js\",\"../../node_modules/react/jsx-runtime.js\",\"../../node_modules/react/cjs/react.production.js\",\"../../node_modules/react/index.js\",\"../../node_modules/scheduler/cjs/scheduler.production.",
+  "verdict": "VOID"
+}
