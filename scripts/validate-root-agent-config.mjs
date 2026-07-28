@@ -83,8 +83,8 @@ assertArrayIds(rootConfig.aaa_warga, "aaa_warga", [
   "333-AGI",
   "555-ASI",
   "888-APEX",
-  "A-AUDIT",
-  "A-ARCHIVE",
+  // A-AUDIT + A-ARCHIVE removed 2026-07-27 — agents COLLAPSED 2026-07-15,
+  // cards retired to /root/_quarantine/2026-07-27-entropy/. Do not re-add.
 ]);
 assertArrayIds(rootConfig.runtime_peers, "runtime_peers", ["hermes-asi", "openclaw", "777-forge"]);
 assertArrayIds(rootConfig.organ_peers, "organ_peers", [
