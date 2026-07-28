@@ -4674,6 +4674,18 @@ try {
   console.warn('[AAA] Agent lifecycle routes not loaded:', e.message);
 }
 
+// ── TOOLBENCH ROUTER — Skill-to-A2A Bridge (2026-07-28) ──────────────
+try {
+  const { mountToolbenchRoutes } = require('./toolbench');
+  // Local routes (direct access via :3001)
+  mountToolbenchRoutes(app);
+  // API-proxied routes (via Caddy /api/* → :3001, accessible at https://aaa.arif-fazil.com/api/toolbench/*)
+  mountToolbenchRoutes(app, { prefix: '/api' });
+  console.log('[AAA] Toolbench router ACTIVE (local + /api proxy)');
+} catch (e) {
+  console.warn('[AAA] Toolbench router not loaded:', e.message);
+}
+
 // === 404 FALLBACK HANDLER ===
 // Placed AFTER all valid routes so only truly unknown paths hit this
 // === 404 HANDLER ===
