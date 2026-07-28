@@ -1,8 +1,10 @@
 # Kimi Soul — Capability Profile
 # arifOS Model Registry | F13 SOVEREIGN | Forged 2026-06-16 by kimi@af-forge
+# Updated 2026-07-28 by FORGE (000Ω) — ingested Kimi-K3 from MoonshotAI/Kimi-K3 repo
 # Substrate: /root/.arifos/agents/kimi/config.toml, /root/.arifos/agents/kimi/mcp.json
-model_id: kimi_k2.7_code
-model_family: Moonshot AI Kimi K2.7 Code
+# FAMILY: Kimi K2.7 Code (coding specialist) + Kimi K3 (flagship 2.8T)
+model_id: kimi_family
+model_family: Moonshot AI Kimi (K2.7 Code + K3 flagship)
 provider: Moonshot AI
 endpoint: https://api.kimi.com/coding/v1  # Kimi Code CLI managed endpoint
 api_docs: https://platform.kimi.ai/docs/guide/kimi-k2-7-code-quickstart
@@ -189,3 +191,136 @@ ttl:
   auto_extend_if_no_new_incidents: true
 
 ditempa_bukan_diberi: true
+
+# ───────────────────────────────────────────────────────────────────
+# Kimi K3 — 2.8T Flagship (ingested 2026-07-28)
+# Source: https://github.com/MoonshotAI/Kimi-K3
+# ───────────────────────────────────────────────────────────────────
+k3:
+  model_id: kimi_k3
+  model_family: Moonshot AI Kimi K3
+  canonical_string: kimi-k3
+  launch: 2026-07-23 (GitHub release)
+  type: text-generation, coding, agentic, multimodal (text + image in; text/tool out)
+  license: Kimi K3 License (custom, NOT Apache 2.0)
+  open_weights: https://huggingface.co/moonshotai/Kimi-K3
+  api_endpoint: https://platform.kimi.ai
+  model_id_in_api: kimi-k3
+  inference_engines: [vLLM, SGLang, TokenSpeed]
+  agent_framework: Kimi Code CLI (recommended)
+  origin: "First open 3T-class model. 2.8T total, 104B activated. KDA + Gated MLA attention. 1M context. Native multimodal."
+  architecture:
+    type: Mixture-of-Experts (MoE)
+    total_parameters: 2_800_000_000_000  # 2.8T
+    activated_parameters: 104_000_000_000  # 104B
+    layers: 93
+    dense_layers: 1
+    attention_layers: "69 KDA + 24 Gated MLA"
+    attention_heads: 96
+    attention_hidden_dim: 7168
+    latent_moe_dim: 3584
+    moe_hidden_dim_per_expert: 3072
+    experts: 896
+    selected_experts_per_token: 16
+    shared_experts: 2
+    vocab_size: 160000
+    activation: SiTU-GLU
+    attention_mechanism: "KDA (Kimi Delta Attention) & Gated MLA"
+    vision_encoder: MoonViT-V2
+    vision_encoder_parameters: 401_000_000  # 401M
+    quantization: "MXFP4 weights / MXFP8 activations (QAT from SFT onward)"
+    scaling_efficiency: "~2.5x improvement over K2 via Stable LatentMoE"
+  thinking:
+    mode: always_on
+    reasoning_effort: ["low", "high", "max"]
+    default_effort: max
+    preserved_history: true
+    note: "Requires complete assistant messages (including reasoning_content + tool_calls) passed back to messages in multi-turn."
+  capabilities:
+    coding:
+      strength: VERY_HIGH
+      evidence:
+        - "DeepSWE 67.5 (Kimi Code harness)"
+        - "Terminal-Bench 2.1: 88.3"
+        - "FrontierSWE: 81.2"
+        - "SWE-Marathon: 42.0"
+        - "ProgramBench: 77.8"
+      note: "Long-horizon coding — GPU kernel optimization, compiler dev, CAD, chip design"
+    agentic_execution:
+      strength: VERY_HIGH
+      evidence:
+        - "BrowseComp: 91.2"
+        - "DeepSearchQA F1: 95.0"
+        - "MCPMark-Verified: 94.5"
+        - "JobBench: 54.3"
+        - "OSWorld-Verified: 84.8"
+      note: "End-to-end knowledge work, interactive visualizations, video editing"
+    reasoning:
+      strength: VERY_HIGH
+      evidence:
+        - "GPQA Diamond: 93.5"
+        - "AA-LCR: 74.7"
+        - "HLE-Full: 43.5 / 56.0 (with tools)"
+    vision:
+      strength: VERY_HIGH
+      evidence:
+        - "OmniDocBench: 91.1"
+        - "MMMU-Pro: 81.6 / 83.4 (with Python)"
+        - "Video-MME: 90.0"
+        - "PerceptionBench: 58.5"
+    long_context:
+      size: 1048576
+      verified: YES (repo spec)
+      note: "1M token context window. Context compaction triggered at 300K for BrowseComp-style tasks."
+    multimodal:
+      text: yes
+      image: yes
+      video: yes (via MoonViT-V2)
+      tool_use: yes
+      note: "Native multimodal — text, image, video within same model. MoonViT-V2 401M vision encoder."
+  constitutional_binding:
+    F1_AMANAH: "High compute (2.8T MoE) means every call is budget-significant. Cache aggressively. Reversible code edits via git — filesystem mutations require 888 gate."
+    F2_TRUTH: "Benchmark claims are Moonshot-reported. Cite as 'Moonshot-reported' until independent replication. Vendor benchmarks — not third-party audited."
+    F7_HUMILITY: "Very strong coding does not imply cultural grounding. For BM/Malay context, cross-check with DeepSeek or human. CN jurisdiction — censorship profile UNTESTED for Malaysian governance."
+    F9_ANTIHANTU: "Agentic ambition ≠ consciousness. 2.8T parameters is a function, not a soul."
+    F11_AUDITABILITY: "Open weights exist (MXFP4). API path via platform.kimi.ai is proprietary. Keep local reproducible test pack."
+    F13_SOVEREIGN: "Human veto FINAL. Never override. Kimi Code CLI hooks must remain active."
+  suitable_for:
+    - long_horizon_software_engineering
+    - gpu_kernel_optimization
+    - compiler_and_systems_development
+    - deep_research_with_interactive_visualizations
+    - agentic_knowledge_work
+    - multimodal_code_recovery
+    - high_context_codebase_qa
+  not_recommended_for:
+    - constitutional_verdicts_without_888_judge
+    - malaysian_governance_political_analysis_untested
+    - real_time_chat_where_thinking_tax_is_wasteful
+    - production_deploy_without_dry_run_and_human_seal
+  vendor_disclosure_gaps:
+    - item: full_training_data_composition
+      status: undisclosed
+    - item: alignment_training_details
+      status: undisclosed
+    - item: safety_eval_independent_third_party
+      status: not published
+    - item: data_retention_policy_for_api
+      status: partially documented
+  supersedes: kimi_k2.7_code
+  provenance:
+    source: "GitHub repo MoonshotAI/Kimi-K3 + tech report"
+    evidence_refs:
+      - URL: https://github.com/MoonshotAI/Kimi-K3
+        observed_at: '2026-07-28'
+      - URL: https://www.kimi.com/blog/kimi-k3
+      - URL: https://platform.kimi.ai/docs/guide/kimi-k3-quickstart
+      - path: /root/AAA/registries/models/AGENT_MODEL_MAP.json
+    observed_at: '2026-07-28'
+    observed_by: "FORGE (000Ω) — deepseek-v4-pro"
+    confidence: high
+  agents_using:
+    - kimi-code (FI-008) — primary model
+    - plan (Ω) — DAG planning agent
+    - image-prompt-architect — vision-aware generation
+  last_verified: '2026-07-28'
