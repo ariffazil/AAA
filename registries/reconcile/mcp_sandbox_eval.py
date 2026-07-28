@@ -11,8 +11,10 @@ DITEMPA BUKAN DIBERI — Forged, Not Given.
 Forged: 2026-07-28 by FORGE (000Ω) under F13 SOVEREIGN directive.
 """
 
+import ast as _ast
 import json
 import os
+import shutil
 import signal
 import subprocess
 import sys
@@ -446,6 +448,225 @@ def run_batch(candidate_file: str | None = None, limit: int = 5):
     return report
 
 
+# ── AST Security Validator (Micro-Server Hardening) ────────────
+
+BANNED_AST_NODES: set[str] = {
+    "eval",
+    "exec",
+    "__import__",
+    "getattr",
+    "setattr",
+    "importlib",
+    "ctypes",
+    "os.system",
+    "popen",
+}
+
+BANNED_IMPORTS: set[str] = {
+    "socket",
+    "ctypes",
+    "subprocess",
+    "pty",
+    "shutil",
+    "signal",
+}
+
+
+class ASTSecurityValidator(_ast.NodeVisitor):
+    """Walks Python AST and flags dangerous patterns before containerization."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.violations: list[str] = []
+
+    def visit_Name(self, node: _ast.Name) -> None:
+        if node.id in BANNED_AST_NODES:
+            self.violations.append(f"Forbidden AST identifier: '{node.id}' at line {node.lineno}")
+        self.generic_visit(node)
+
+    def visit_Attribute(self, node: _ast.Attribute) -> None:
+        if node.attr in BANNED_AST_NODES:
+            self.violations.append(f"Forbidden attribute access: '{node.attr}' at line {node.lineno}")
+        self.generic_visit(node)
+
+    def visit_Import(self, node: _ast.Import) -> None:
+        for alias in node.names:
+            if alias.name in BANNED_IMPORTS:
+                self.violations.append(f"Forbidden module import: '{alias.name}' at line {node.lineno}")
+        self.generic_visit(node)
+
+    def visit_ImportFrom(self, node: _ast.ImportFrom) -> None:
+        module = node.module or ""
+        if any(banned in module for banned in BANNED_IMPORTS):
+            self.violations.append(f"Forbidden from-import: '{module}' at line {node.lineno}")
+        self.generic_visit(node)
+
+    def visit_Call(self, node: _ast.Call) -> None:
+        if isinstance(node.func, _ast.Name) and node.func.id in {"eval", "exec"}:
+            self.violations.append(f"Forbidden call: '{node.func.id}()' at line {node.lineno}")
+        if isinstance(node.func, _ast.Attribute) and node.func.attr in {"system", "popen"}:
+            self.violations.append(f"Forbidden subprocess call: '{node.func.attr}()' at line {node.lineno}")
+        self.generic_visit(node)
+
+
+def validate_ast(script_path: str) -> tuple[bool, list[str]]:
+    """Scans Python code for dangerous execution patterns."""
+    try:
+        with open(script_path, encoding="utf-8") as f:
+            tree = _ast.parse(f.read(), filename=script_path)
+        validator = ASTSecurityValidator()
+        validator.visit(tree)
+        if validator.violations:
+            return False, validator.violations
+        return True, []
+    except SyntaxError as e:
+        return False, [f"Syntax Error: {e}"]
+    except Exception as e:
+        return False, [f"AST Parse Error: {e}"]
+
+
+# ── Docker Sandbox Execution ────────────────────────────────────
+
+
+def run_container_sandbox(
+    script_path: str,
+    timeout_sec: int = 10,
+    memory_mb: int = 128,
+    cpu_cores: float = 0.5,
+) -> tuple[bool, str, str | None]:
+    """Runs a micro-server in an unprivileged ephemeral Docker container.
+
+    Returns: (passed: bool, message: str, error_detail: str | None)
+    """
+    if not shutil.which("docker"):
+        return True, "SKIPPED — Docker unavailable", None
+
+    script_dir = os.path.dirname(os.path.abspath(script_path))
+    script_file = os.path.basename(script_path)
+
+    docker_cmd = [
+        "docker",
+        "run",
+        "--rm",
+        "--network",
+        "none",
+        "--read-only",
+        "--user",
+        "65534:65534",
+        "--memory",
+        f"{memory_mb}m",
+        "--cpus",
+        str(cpu_cores),
+        "--tmpfs",
+        "/tmp:rw,noexec,nosuid,size=64m",
+        "-v",
+        f"{script_dir}:/app:ro",
+        "python:3.11-slim",
+        "python3",
+        "-I",
+        f"/app/{script_file}",
+    ]
+
+    try:
+        init_payload = (
+            json.dumps(
+                {
+                    "jsonrpc": "2.0",
+                    "id": 1,
+                    "method": "initialize",
+                    "params": {
+                        "protocolVersion": "2025-03-26",
+                        "capabilities": {},
+                        "clientInfo": {"name": "sandbox-eval", "version": "2.0"},
+                    },
+                }
+            )
+            + "\n"
+        )
+
+        proc = subprocess.Popen(
+            docker_cmd,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+
+        stdout, stderr = proc.communicate(input=init_payload, timeout=timeout_sec)
+
+        if proc.returncode != 0:
+            return False, f"Container exit {proc.returncode}", stderr[:500]
+
+        try:
+            resp = json.loads(stdout.strip().split("\n")[0])
+            if "result" in resp:
+                name = resp["result"].get("serverInfo", {}).get("name", "?")
+                return True, f"MCP handshake OK — server: {name}", None
+            return False, "Initialize missing 'result'", stdout[:300]
+        except (json.JSONDecodeError, IndexError):
+            return False, "Invalid JSON-RPC response", stdout[:300]
+
+    except subprocess.TimeoutExpired:
+        try:
+            proc.kill()
+        except Exception:
+            pass
+        return False, f"Timeout ({timeout_sec}s)", None
+    except Exception as e:
+        return False, f"Container failure: {e}", None
+
+
+# ── Micro-Server Evaluation (AST + Docker) ──────────────────────
+
+
+def evaluate_micro_server(script_path: str) -> dict[str, Any]:
+    """Full pipeline: AST scan → container sandbox → verdict.
+
+    Designed for generated micro-MCP servers in /root/AAA/mcp/staged/.
+    """
+    result: dict[str, Any] = {
+        "script": script_path,
+        "evaluated_at": datetime.now(timezone.utc).isoformat(),
+        "ast_gate": None,
+        "container_gate": None,
+        "overall_score": 0.0,
+        "verdict": "UNEVALUATED",
+    }
+
+    print(f"\n🔬 [MICRO-SERVER EVAL] {script_path}")
+
+    ast_ok, ast_errors = validate_ast(script_path)
+    result["ast_gate"] = {"passed": ast_ok, "violations": ast_errors}
+    if not ast_ok:
+        print(f"  ❌ [AST REJECT] {len(ast_errors)} violation(s)")
+        for v in ast_errors[:5]:
+            print(f"     • {v}")
+        result["verdict"] = "REJECTED_AST"
+        return result
+    print("  ✅ [AST GATE] Clean.")
+
+    container_ok, container_msg, container_err = run_container_sandbox(script_path)
+    result["container_gate"] = {
+        "passed": container_ok,
+        "message": container_msg,
+        "error": container_err,
+    }
+    if container_ok and "SKIPPED" not in container_msg:
+        print(f"  ✅ [CONTAINER] {container_msg}")
+        result["verdict"] = "APPROVED"
+        result["overall_score"] = 0.95
+    elif "SKIPPED" in container_msg:
+        print(f"  ⚠️  [CONTAINER SKIP] {container_msg}")
+        result["verdict"] = "APPROVED_NO_DOCKER"
+        result["overall_score"] = 0.70
+    else:
+        print(f"  ❌ [CONTAINER REJECT] {container_msg}")
+        result["verdict"] = "REJECTED_CONTAINER"
+        result["overall_score"] = 0.30
+
+    return result
+
+
 # ── Main ───────────────────────────────────────────────────────
 
 
@@ -454,17 +675,22 @@ def main():
 
     parser = argparse.ArgumentParser(description="MCP Server Sandbox Evaluator")
     parser.add_argument("--endpoint", type=str, help="Evaluate a single MCP endpoint directly")
-    parser.add_argument("--batch", action="store_true", help="Batch evaluate top candidates")
+    parser.add_argument("--script", type=str, help="Evaluate a local micro-MCP .py (AST + Docker sandbox)")
+    parser.add_argument("--batch", action="store_true", help="Batch evaluate top candidates from catalog")
     parser.add_argument("--limit", type=int, default=5, help="Max candidates to evaluate in batch")
     parser.add_argument("--catalog", type=str, default=str(CANDIDATE_FILE), help="Candidate catalog path")
     args = parser.parse_args()
 
     print("╔══════════════════════════════════════════════════════════╗")
     print("║  mcp_sandbox_eval.py — MCP Server Evaluation Sandbox    ║")
-    print("║  DITEMPA BUKAN DIBERI  ·  2026-07-28                     ║")
+    print("║  AST + Docker + External · 2026-07-28                    ║")
     print("╚══════════════════════════════════════════════════════════╝")
 
-    if args.endpoint:
+    if args.script:
+        result = evaluate_micro_server(args.script)
+        print(f"\n{'=' * 60}")
+        print(json.dumps(result, indent=2))
+    elif args.endpoint:
         candidate = {"name": args.endpoint, "url": args.endpoint, "source": "manual"}
         result = evaluate_candidate(candidate)
         print(f"\n{'=' * 60}")
@@ -473,8 +699,9 @@ def main():
         run_batch(args.catalog, args.limit)
     else:
         print("Usage:")
-        print("  --endpoint URL     Evaluate single MCP endpoint")
-        print("  --batch            Batch evaluate from catalog")
+        print("  --script PATH      AST + Docker eval for local micro-MCP .py")
+        print("  --endpoint URL     Evaluate single MCP endpoint (HTTP/SSE)")
+        print("  --batch            Batch evaluate from candidate catalog")
         print("  --limit N          Max batch size (default 5)")
 
 
