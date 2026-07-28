@@ -1,0 +1,561 @@
+{
+  "version": "1.0.0",
+  "forged": "2026-07-28",
+  "authority": "F13 SOVEREIGN \u2014 Arif",
+  "doctrine": "MODEL > PROVIDER > BILLING",
+  "principle": "Hunt same model across providers first. Fall back to next capability tier only when model exhausted globally.",
+  "tiers": {
+    "T1_frontier_reasoning": {
+      "label": "Frontier Reasoning",
+      "use_when": "heavy coding, SEAL-grade, constitutional deliberation, multi-step planning, 1M context",
+      "fallback_rule": "same-model hunt \u2192 next T1 model \u2192 escalate to arif_judge",
+      "models": {
+        "deepseek-v4-pro": {
+          "name": "DeepSeek V4 Pro",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "1M_ctx"
+          ],
+          "strengths": "deep chain-of-thought, structured output, 1M context, constitutional-grade",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            },
+            {
+              "provider": "deepseek",
+              "cost_type": "prepaid",
+              "cost": "$7.06 remaining",
+              "key_env": "DEEPSEEK_API_KEY",
+              "base_url": "https://api.deepseek.com"
+            },
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            },
+            {
+              "provider": "openrouter",
+              "cost_type": "prepaid",
+              "cost": "~$28 remaining",
+              "key_env": "OPENROUTER_API_KEY",
+              "base_url": "https://openrouter.ai/api/v1"
+            }
+          ]
+        },
+        "kimi-k3": {
+          "name": "Kimi K3",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "vision",
+            "1M_ctx",
+            "2.8T_MoE"
+          ],
+          "strengths": "2.8T MoE parameters, multimodal vision, strong coding benchmarks, Chinese+English bilingual",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            },
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            },
+            {
+              "provider": "kimi-moonshot",
+              "cost_type": "api_key",
+              "cost": "per-token",
+              "key_env": "KIMI_API_KEY",
+              "base_url": "https://api.kimi.com/coding/v1"
+            },
+            {
+              "provider": "openrouter",
+              "cost_type": "prepaid",
+              "cost": "~$28 remaining",
+              "key_env": "OPENROUTER_API_KEY",
+              "base_url": "https://openrouter.ai/api/v1"
+            }
+          ]
+        },
+        "minimax-m3": {
+          "name": "MiniMax M3",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "multimodal",
+            "1M_ctx"
+          ],
+          "strengths": "multimodal (vision+text), 1M context, strong agentic worker, OpenClaw primary",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            },
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            },
+            {
+              "provider": "minimax",
+              "cost_type": "token_plan",
+              "cost": "token plan",
+              "key_env": "MINIMAX_API_KEY",
+              "base_url": "https://api.minimax.io/v1"
+            }
+          ]
+        },
+        "claude-sonnet-5": {
+          "name": "Claude Sonnet 5",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "vision",
+            "200K_ctx"
+          ],
+          "strengths": "elite code generation, vision, nuanced reasoning \u2014 premium tier",
+          "providers": [
+            {
+              "provider": "opencode-zen",
+              "cost_type": "payg",
+              "cost": "per-token PAYG",
+              "key_env": "OPENCODE_ZEN_API_KEY",
+              "base_url": "https://opencode.ai/zen/v1/chat/completions"
+            },
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            }
+          ]
+        }
+      }
+    },
+    "T2_fast_coding": {
+      "label": "Fast Coding / Execution",
+      "use_when": "daily coding tasks, code review, debugging, file operations, agentic execution",
+      "fallback_rule": "same-model hunt \u2192 next T2 model \u2192 escalate to T1",
+      "models": {
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "1M_ctx",
+            "fast"
+          ],
+          "strengths": "fast inference, 1M ctx, good enough for 80% of tasks, same architecture as V4 Pro",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            },
+            {
+              "provider": "deepseek",
+              "cost_type": "prepaid",
+              "cost": "$7.06 remaining",
+              "key_env": "DEEPSEEK_API_KEY",
+              "base_url": "https://api.deepseek.com"
+            },
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            }
+          ]
+        },
+        "glm-5.2": {
+          "name": "GLM-5.2",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "200K_ctx"
+          ],
+          "strengths": "strong agentic coding, FREE tier on TokenRouter until Jul 25, 200K context",
+          "providers": [
+            {
+              "provider": "tokenrouter",
+              "cost_type": "free",
+              "cost": "FREE tier (z-ai/glm-5.2-free)",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            },
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            }
+          ]
+        },
+        "kimi-k2.7-code": {
+          "name": "Kimi K2.7 Code",
+          "capability": [
+            "tool_call",
+            "256K_ctx",
+            "coding_specialist"
+          ],
+          "strengths": "specialized coding model, strong on Python/TypeScript, 256K context",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            },
+            {
+              "provider": "kimi-moonshot",
+              "cost_type": "api_key",
+              "cost": "per-token",
+              "key_env": "KIMI_API_KEY",
+              "base_url": "https://api.kimi.com/coding/v1"
+            }
+          ]
+        },
+        "qwen3.7-max": {
+          "name": "Qwen 3.7 Max",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "coding",
+            "agentic"
+          ],
+          "strengths": "strong open-source alternative, available via Go subscription",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            }
+          ]
+        },
+        "mimo-v2.5-pro": {
+          "name": "MiMo V2.5 Pro",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "1M_ctx",
+            "multimodal"
+          ],
+          "strengths": "1M ctx, deep thinking, multimodal. Hermes MOA aggregator. Pay-per-usage.",
+          "providers": [
+            {
+              "provider": "opencode-go",
+              "cost_type": "flat_rate",
+              "cost": "$10/mo unlimited",
+              "key_env": "OPENCODE_GO_API_KEY",
+              "base_url": "https://opencode.ai/zen/go/v1/chat/completions"
+            },
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            },
+            {
+              "provider": "mimo-platform",
+              "cost_type": "payg",
+              "cost": "per-token PAYG",
+              "key_env": "MIMO_PLATFORM_API_KEY",
+              "base_url": "https://api.xiaomimimo.com/v1"
+            }
+          ]
+        }
+      }
+    },
+    "T3_recovery": {
+      "label": "Recovery / Lightweight",
+      "use_when": "all T1/T2 providers exhausted, simple tasks, summarization, classification",
+      "fallback_rule": "any available FREE model \u2192 escalate to arif_judge",
+      "models": {
+        "llama-3.3-70b": {
+          "name": "Llama 3.3 70B (Groq)",
+          "capability": [
+            "tool_call",
+            "131K_ctx",
+            "fast"
+          ],
+          "strengths": "280 tok/s, 1K req/day FREE, Groq LPU ultra-fast",
+          "providers": [
+            {
+              "provider": "groq",
+              "cost_type": "free",
+              "cost": "FREE \u2014 1K req/day, 7K TPM",
+              "key_env": "GROQ_API_KEY",
+              "base_url": "https://api.groq.com/openai/v1"
+            }
+          ]
+        },
+        "gemini-3.5-flash": {
+          "name": "Gemini 3.5 Flash",
+          "capability": [
+            "tool_call",
+            "1M_ctx",
+            "multimodal",
+            "fast"
+          ],
+          "strengths": "1M ctx, multimodal, free tier, Google ecosystem. Good for large document analysis.",
+          "providers": [
+            {
+              "provider": "tokenrouter",
+              "cost_type": "prepaid",
+              "cost": "$85.57 total",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com/v1"
+            },
+            {
+              "provider": "gemini",
+              "cost_type": "free",
+              "cost": "FREE \u2014 1.5K req/day",
+              "key_env": "GEMINI_API_KEY",
+              "base_url": "https://generativelanguage.googleapis.com/v1beta/openai"
+            }
+          ]
+        },
+        "gpt-oss-120b": {
+          "name": "GPT-OSS 120B (Groq)",
+          "capability": [
+            "tool_call",
+            "131K_ctx",
+            "fast",
+            "coding"
+          ],
+          "strengths": "500 tok/s, 1K req/day FREE, OpenAI-trained open model, strong coding",
+          "providers": [
+            {
+              "provider": "groq",
+              "cost_type": "free",
+              "cost": "FREE \u2014 1K req/day, 7K TPM",
+              "key_env": "GROQ_API_KEY",
+              "base_url": "https://api.groq.com/openai/v1"
+            }
+          ]
+        },
+        "openrouter-free": {
+          "name": "OpenRouter Free Router",
+          "capability": [
+            "tool_call",
+            "routing",
+            "RM0"
+          ],
+          "strengths": "Auto-routes to best available free model. ~50 RM0 models, 20 req/min.",
+          "providers": [
+            {
+              "provider": "openrouter",
+              "cost_type": "free",
+              "cost": "FREE \u2014 20 req/min",
+              "key_env": "OPENROUTER_API_KEY",
+              "base_url": "https://openrouter.ai/api/v1"
+            }
+          ]
+        }
+      }
+    },
+    "T4_local": {
+      "label": "Local / Always Available",
+      "use_when": "total network outage, all remote providers down, emergency recovery",
+      "fallback_rule": "last resort \u2014 never fails",
+      "models": {
+        "qwen2.5-coder-3b": {
+          "name": "Qwen 2.5 Coder 3B (Ollama)",
+          "capability": [
+            "tool_call",
+            "32K_ctx",
+            "local"
+          ],
+          "strengths": "Always available, zero cost, zero latency. Minimal but functional.",
+          "providers": [
+            {
+              "provider": "ollama",
+              "cost_type": "free",
+              "cost": "FREE \u2014 local CPU",
+              "key_env": null,
+              "base_url": "http://127.0.0.1:11434/v1"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "agent_routing": {
+    "opencode": {
+      "role": "primary coding forge \u2014 333-AGI",
+      "primary_model": "deepseek-v4-pro",
+      "tier_preference": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "fallback_chain": {
+        "deepseek-v4-pro": [
+          "go \u2192 deepseek-direct \u2192 tokenrouter \u2192 openrouter"
+        ],
+        "deepseek-v4-flash": [
+          "go \u2192 deepseek-direct \u2192 tokenrouter"
+        ],
+        "kimi-k3": [
+          "go \u2192 tokenrouter \u2192 kimi-moonshot \u2192 openrouter"
+        ],
+        "glm-5.2": [
+          "tokenrouter-free \u2192 go"
+        ],
+        "llama-3.3-70b": [
+          "groq"
+        ],
+        "qwen2.5-coder-3b": [
+          "ollama"
+        ]
+      },
+      "subagent_models": {
+        "agi": {
+          "model": "deepseek-v4-pro",
+          "tier": "T1"
+        },
+        "apex": {
+          "model": "deepseek-v4-pro",
+          "tier": "T1"
+        },
+        "forge": {
+          "model": "deepseek-v4-pro",
+          "tier": "T1"
+        },
+        "asi": {
+          "model": "deepseek-v4-flash",
+          "tier": "T2"
+        },
+        "explore": {
+          "model": "deepseek-v4-flash",
+          "tier": "T2"
+        },
+        "general": {
+          "model": "deepseek-v4-flash",
+          "tier": "T2"
+        }
+      }
+    },
+    "hermes": {
+      "role": "telegram persona + multimodal bridge \u2014 555-ASI",
+      "primary_model": "minimax-m3",
+      "note": "Hermes needs multimodal (text+image). MiniMax M3 or Kimi K3.",
+      "tier_preference": [
+        "T1",
+        "T2",
+        "T3",
+        "T4"
+      ],
+      "fallback_chain": {
+        "minimax-m3": [
+          "go \u2192 tokenrouter \u2192 minimax-direct"
+        ],
+        "kimi-k3": [
+          "go \u2192 tokenrouter \u2192 kimi-moonshot \u2192 openrouter"
+        ],
+        "mimo-v2.5-pro": [
+          "go \u2192 tokenrouter \u2192 mimo-platform"
+        ],
+        "deepseek-v4-pro": [
+          "go \u2192 deepseek-direct \u2192 tokenrouter \u2192 openrouter"
+        ],
+        "gemini-3.5-flash": [
+          "tokenrouter \u2192 gemini-free"
+        ]
+      }
+    },
+    "openclaw": {
+      "role": "semi-retired agentic worker",
+      "status": "B \u2014 preserve, don't expand",
+      "primary_model": "minimax-m3",
+      "fallback_chain": {
+        "minimax-m3": [
+          "go \u2192 tokenrouter \u2192 minimax-direct"
+        ],
+        "deepseek-v4-pro": [
+          "go \u2192 deepseek-direct \u2192 tokenrouter \u2192 openrouter"
+        ],
+        "llama-3.3-70b": [
+          "groq"
+        ]
+      }
+    }
+  },
+  "cost_optimization": {
+    "burn_order": "FREE \u2192 FLAT_RATE \u2192 PREPAID \u2192 PAYG",
+    "strategy": "Use Go subscription ($10/mo flat) for ALL models available there first. Never use PAYG (Zen, MiMo Platform) when Go or TokenRouter has the same model.",
+    "monthly_budget": {
+      "go_subscription": "$10.00/mo \u2014 unlimited calls to 23 models",
+      "deepseek_prepaid": "$7.06 \u2014 reserve for emergencies",
+      "tokenrouter_total": "$85.57 \u2014 primary paid gateway",
+      "openrouter": "~$28 \u2014 backup routing layer",
+      "free_tier_total": "Groq(1K+14K/day) + Gemini(1.5K/day) + GLM-5.2(TokenRouter FREE) \u2014 exhaust first"
+    }
+  },
+  "multimodal_routing": {
+    "rule": "When a multimodal task fails, switch to another MULTIMODAL model, not a text-only one.",
+    "multimodal_models": [
+      "kimi-k3",
+      "minimax-m3",
+      "mimo-v2.5-pro",
+      "claude-sonnet-5",
+      "gemini-3.5-flash"
+    ],
+    "text_only_models": [
+      "deepseek-v4-pro",
+      "deepseek-v4-flash",
+      "glm-5.2",
+      "kimi-k2.7-code",
+      "qwen3.7-max",
+      "llama-3.3-70b",
+      "gpt-oss-120b",
+      "qwen2.5-coder-3b"
+    ]
+  },
+  "key_aliases": {
+    "deepseek/deepseek-v4-pro": "deepseek-v4-pro",
+    "deepseek/deepseek-v4-flash": "deepseek-v4-flash",
+    "minimax/MiniMax-M3": "minimax-m3",
+    "minimax/MiniMax-M2.7": "minimax-m2.7",
+    "minimax/MiniMax-M2.5": "minimax-m2.5",
+    "glm/glm-5.2": "glm-5.2",
+    "glm/glm-5.1": "glm-5.1",
+    "kimi/kimi-for-coding": "kimi-k2.7-code",
+    "kimi/k3": "kimi-k3",
+    "mimo/mimo-v2.5-pro": "mimo-v2.5-pro",
+    "mimo/mimo-v2.5-pro-ultraspeed": "mimo-v2.5-pro-ultraspeed",
+    "openai/gpt-5.6-sol": "claude-sonnet-5",
+    "qwen/qwen3.7-max": "qwen3.7-max",
+    "qwen/qwen3.6-plus": "qwen3.6-plus",
+    "groq/llama-3.3-70b-versatile": "llama-3.3-70b",
+    "ollama/qwen2.5-coder:3b": "qwen2.5-coder-3b"
+  }
+}

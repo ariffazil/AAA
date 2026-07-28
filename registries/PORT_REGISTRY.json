@@ -1,0 +1,205 @@
+{
+  "_canon": "PORT_REGISTRY.json — Single source of truth for all network ports in the arifOS Federation.",
+  "_doctrine": "Probed live 2026-07-28T00:00Z by OpenCode (333-AGI). Every entry verified via ss -tlnp. If docs disagree with live machine, live machine wins.",
+  "_rules": {
+    "F-PORT-1": "Only 80, 443, 22888, 8083 face public internet. Everything else = 127.0.0.1 or Tailscale.",
+    "F-PORT-2": "Every port has an owner organ. No orphan services.",
+    "F-PORT-3": "0.0.0.0 bind is suspicious by default — only Caddy, SSH, Headscale permitted.",
+    "F-PORT-4": "Agent boot: read this file FIRST before any network claim.",
+    "F-PORT-5": "Changing a port / bind / route = MUTATION. Requires PLAN → SEAL.",
+    "F-PORT-6": "Agent speaks canonical names, not port numbers.",
+    "F-PORT-7": "Container localhost ≠ VPS localhost. Docker bridge ports mapped explicitly."
+  },
+  "public_firewall": {
+    "ufw_active": true,
+    "allowed_in": [
+      {"port": 22888, "proto": "tcp", "purpose": "SSH", "exception": "non-standard for bot reduction"},
+      {"port": 80, "proto": "tcp", "purpose": "HTTP → Caddy (redirects to HTTPS)"},
+      {"port": 443, "proto": "tcp", "purpose": "HTTPS → Caddy (reverse proxy)"},
+      {"port": 8083, "proto": "tcp", "from_ip": "72.61.126.65", "purpose": "Headscale mesh (single peer)"}
+    ]
+  },
+  "organs": {
+    "arifos": {
+      "port": 8088, "bind": "127.0.0.1", "proto": "http",
+      "process": "python (arifos kernel)", "systemd": "arifos.service",
+      "public_urls": ["https://arifos.arif-fazil.com", "https://arif-fazil.com/api/*", "https://mcp.arif-fazil.com/mcp"],
+      "health": "/health", "tools": "/tools/list",
+      "role": "Constitutional kernel — judge, seal, vault, session",
+      "tailscale": {"port": 8088, "bind": "100.64.0.2"}
+    },
+    "aforge-api": {
+      "port": 7071, "bind": "127.0.0.1", "proto": "http",
+      "process": "node (A-FORGE API)", "systemd": "a-forge.service",
+      "public_urls": ["https://forge.arif-fazil.com"],
+      "health": "/health",
+      "role": "Execution shell — build, deploy, forge",
+      "tailscale": {"port": 7071, "bind": "100.64.0.2"}
+    },
+    "aforge-mcp": {
+      "port": 7072, "bind": "127.0.0.1", "proto": "http",
+      "process": "node (A-FORGE MCP)", "systemd": "a-forge-mcp.service",
+      "public_urls": ["https://forge.arif-fazil.com/mcp"],
+      "health": "/health",
+      "role": "MCP tool surface — 114 forge_* tools",
+      "tailscale": {"port": 7072, "bind": "100.64.0.2"}
+    },
+    "aaa": {
+      "port": 3001, "bind": "127.0.0.1", "proto": "http",
+      "process": "node (AAA cockpit + A2A)", "systemd": "aaa-a2a.service",
+      "public_urls": ["https://aaa.arif-fazil.com"],
+      "health": "/health",
+      "role": "Control plane — A2A gateway, agent registry, cockpit",
+      "tailscale": {"port": 3001, "bind": "100.64.0.2"}
+    },
+    "geox": {
+      "port": 8081, "bind": "127.0.0.1", "proto": "http",
+      "process": "python3 (GEOX MCP)", "systemd": "geox-mcp.service",
+      "public_urls": ["https://geox.arif-fazil.com"],
+      "health": "/health",
+      "role": "Earth intelligence — seismic, basin, petrophysics",
+      "tailscale": {"port": 8081, "bind": "100.64.0.2"}
+    },
+    "wealth": {
+      "port": 18082, "bind": "127.0.0.1", "proto": "http",
+      "process": "python3 (WEALTH MCP)", "systemd": "wealth-organ.service",
+      "public_urls": ["https://wealth.arif-fazil.com"],
+      "health": "/health",
+      "role": "Capital intelligence — NPV, risk, market data",
+      "tailscale": {"port": 18082, "bind": "100.64.0.2"}
+    },
+    "well": {
+      "port": 18083, "bind": "127.0.0.1", "proto": "http",
+      "process": "python3 (WELL MCP)", "systemd": "well.service",
+      "public_urls": ["https://well.arif-fazil.com"],
+      "health": "/health",
+      "role": "Human readiness — REFLECT_ONLY, never diagnose",
+      "tailscale": {"port": 18083, "bind": "100.64.0.2"}
+    },
+    "arifflow": {
+      "port": 7073, "bind": "127.0.0.1", "proto": "http",
+      "process": "ariflow (Rust daemon)", "systemd": "arifflow.service",
+      "public_urls": ["https://flow.arif-fazil.com (if routed)"],
+      "health": "/health",
+      "role": "Metabolism — Flow Quotient, receipt ledger, checkpoints"
+    }
+  },
+  "gateways": {
+    "caddy": {
+      "ports": [80, 443], "bind": "*", "proto": "http/https",
+      "process": "caddy", "systemd": "caddy.service",
+      "role": "Reverse proxy + TLS termination — THE single public doorman",
+      "config": "/etc/caddy/Caddyfile"
+    },
+    "cloudflared": {
+      "port": 20241, "bind": "127.0.0.1", "proto": "http",
+      "process": "cloudflared", "systemd": "cloudflared.service",
+      "role": "Cloudflare Tunnel client — metrics on :20241",
+      "tunnel_name": "arifos-mcp",
+      "tunnel_id": "ea84faf9-8dd3-4185-8444-c9033c1b2473",
+      "config": "/etc/cloudflared/config.yml"
+    },
+    "ssh": {
+      "port": 22888, "bind": "0.0.0.0", "proto": "tcp",
+      "process": "sshd", "systemd": "ssh.service",
+      "role": "Secure Shell — KEY-ONLY auth (PasswordAuthentication: no)",
+      "note": "Port 22888 NOT 22 — bot reduction. Real security = key-only + prohibit-password."
+    },
+    "headscale": {
+      "port": 8083, "bind": "*", "proto": "http",
+      "admin_port": 50443, "admin_bind": "127.0.0.1",
+      "process": "headscale", "systemd": "headscale.service",
+      "role": "Tailscale control plane — self-hosted mesh VPN",
+      "public_urls": ["https://headscale.arif-fazil.com"],
+      "ufw_note": "UFW restricts :8083 to 72.61.126.65 only. Bind should ideally be 127.0.0.1."
+    }
+  },
+  "agent_runtimes": {
+    "opencode-web-ide": {
+      "port": 4096, "bind": "127.0.0.1", "proto": "http",
+      "process": "opencode", "role": "OpenCode Web IDE",
+      "public_urls": ["https://forge.arif-fazil.com/opencode"]
+    },
+    "hermes-openclaw": {
+      "ports": [18789, 8787], "bind": "127.0.0.1", "proto": "http",
+      "process": "node (Hermes gateway)", "role": "Telegram bridge + Hermes ASI gateway",
+      "public_urls": ["https://claw.arif-fazil.com", "https://openclaw.arif-fazil.com"]
+    },
+    "flame-free-loop": {
+      "ports": [18901, 18900], "bind": "127.0.0.1", "proto": "http",
+      "process": "python3 (FLAME)", "role": "Free inference mesh (RM0) — fact_check, epistemic, plan_review"
+    },
+    "playwright": {
+      "port": 8931, "bind": "127.0.0.1", "proto": "http",
+      "process": "node (Playwright MCP)", "role": "Browser automation"
+    }
+  },
+  "data_stores": {
+    "postgres":   {"port": 5432, "bind": "127.0.0.1", "proto": "tcp", "type": "docker", "role": "Primary relational DB"},
+    "redis":      {"port": 6379, "bind": "127.0.0.1", "proto": "tcp", "type": "docker", "role": "L1/L2 cache + session"},
+    "qdrant-http": {"port": 6333, "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "Vector DB — HTTP API"},
+    "qdrant-grpc": {"port": 6334, "bind": "127.0.0.1", "proto": "grpc", "type": "docker", "role": "Vector DB — gRPC"},
+    "falkordb":   {"port": 6380, "bind": "127.0.0.1", "proto": "tcp", "type": "docker", "role": "Graph DB (Redis-compatible)"},
+    "nats":       {"port": 4222, "bind": "127.0.0.1", "proto": "tcp", "role": "Message fabric — client"},
+    "nats-http":  {"port": 8222, "bind": "127.0.0.1", "proto": "http", "role": "Message fabric — monitoring"},
+    "minio-api":  {"port": 9000, "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "Object storage — S3 API"},
+    "minio-console": {"port": 9001, "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "Object storage — web console"},
+    "searxng":    {"port": 8080, "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "Self-hosted web search"},
+    "ollama":     {"port": 11434, "bind": "127.0.0.1", "proto": "http", "role": "Local LLM inference"},
+    "deep-research": {"port": 3333, "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "Deep research agent"},
+    "graphiti-mcp":  {"port": 8000, "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "Graphiti MCP server"},
+    "mcpjam":  {"ports": [6274, 6277], "bind": "127.0.0.1", "proto": "http", "type": "docker", "role": "MCP Federation jam"}
+  },
+  "observability": {
+    "prometheus": {"port": 9090, "bind": "127.0.0.1", "proto": "http", "role": "Metrics DB", "public_urls": ["https://prometheus.arif-fazil.com"]},
+    "grafana": {"port": 3000, "bind": "127.0.0.1", "proto": "http", "role": "Dashboards", "public_urls": ["https://grafana.arif-fazil.com", "https://monitor.arif-fazil.com"]},
+    "netdata": {"port": 19999, "bind": "127.0.0.1", "proto": "http", "role": "Real-time system monitoring"},
+    "netdata-statsd": {"port": 8125, "bind": "127.0.0.1", "proto": "udp", "role": "StatsD collector"},
+    "node-exporter": {"port": 9100, "bind": "127.0.0.1", "proto": "http", "role": "Prometheus node metrics"},
+    "otel-collector": {"port": 4317, "bind": "127.0.0.1", "proto": "grpc", "role": "OpenTelemetry collector"}
+  },
+  "bridges": {
+    "hermes-telegram": {"port": 8787, "bind": "127.0.0.1", "proto": "http", "role": "Telegram webhook → Hermes"},
+    "deploy-webhook":  {"port": 18000, "bind": "127.0.0.1", "proto": "http", "role": "Deploy webhook receiver", "public_urls": ["https://deploy.arif-fazil.com"]},
+    "email-bridge":    {"port": 18093, "bind": "127.0.0.1", "proto": "http", "role": "APA email bridge (T1)"},
+    "calendar-bridge": {"port": 18094, "bind": "127.0.0.1", "proto": "http", "role": "APA calendar bridge (T1)"},
+    "github-bridge":   {"port": 18095, "bind": "127.0.0.1", "proto": "http", "role": "APA GitHub bridge (T1)"},
+    "telegram-bridge": {"port": 18096, "bind": "127.0.0.1", "proto": "http", "role": "APA Telegram bridge (T1)"},
+    "vault999-api":    {"port": 8100, "bind": "127.0.0.1", "proto": "http", "role": "VAULT999 internal API — NEVER public"},
+    "tier1-watchdog":  {"port": 8094, "bind": "127.0.0.1", "proto": "http", "role": "Tier-1 autonomous watchdog"},
+    "hermes-gateway-8090": {"port": 8090, "bind": "127.0.0.1", "proto": "http", "role": "Hermes ASI gateway (Cloudflare tunnel target)"},
+    "sovereign-relay": {"port": 9222, "bind": "127.0.0.1", "proto": "http", "role": "Sovereign relay socket"}
+  },
+  "commodity_dashboards": {
+    "gold-api": {"port": 3456, "bind": "127.0.0.1", "proto": "http", "role": "XAUUSD gold tracker API", "public_urls": ["https://wealth.arif-fazil.com/gold"]},
+    "oil-api":  {"port": 3457, "bind": "127.0.0.1", "proto": "http", "role": "Brent crude oil tracker API", "public_urls": ["https://wealth.arif-fazil.com/oil"]},
+    "gas-api":  {"port": 3458, "bind": "127.0.0.1", "proto": "http", "role": "Natural gas tracker API", "public_urls": ["https://wealth.arif-fazil.com/gas"]}
+  },
+  "mcp_tools": {
+    "1mcp-serve": {"port": 3050, "bind": "127.0.0.1", "proto": "http", "role": "1mcp transport server (npm global)"}
+  },
+  "aaa_subsystems": {
+    "telegram-miniapp": {"port": 3100, "bind": "127.0.0.1", "proto": "http", "role": "AAA Telegram miniapp dev server (tsx)"},
+    "pre-forge-service": {"port": 18990, "bind": "127.0.0.1", "proto": "http", "role": "AAA pre-forge service"}
+  },
+  "kernel_daemons": {
+    "vault999-writer": {"port": 5001, "bind": "127.0.0.1", "proto": "http", "role": "VAULT999 writer service"},
+    "arifosd": {"port": 18081, "bind": "127.0.0.1", "proto": "http", "role": "arifOS daemon"},
+    "well-witness": {"port": 18084, "bind": "127.0.0.1", "proto": "http", "role": "WELL witness HTTP"}
+  },
+  "ephemeral": {
+    "uv-cache-session": {"port": 24283, "bind": "127.0.0.1", "proto": "http", "role": "uv cache agent session (ephemeral)"}
+  },
+  "zombies_cleaned": {
+    "camofox-browser": "KILLED 2026-07-28. Was running on :9377 from /root/_archive/. Archived project zombie."
+  },
+  "_provenance": {
+    "probed_at": "2026-07-28T09:50Z",
+    "probed_by": "OpenCode (333-AGI)",
+    "probe_command": "ss -tlnp + /proc/pid/cmdline",
+    "systemd_status": "All 10 organ units active",
+    "caddy_valid": true,
+    "zombies_found": 1,
+    "files_deleted": ["NETWORK_ZEN.md (duplicate)", "mcp/llms.txt (ghost, kernel overrides)"]
+  }
+}
