@@ -124,7 +124,7 @@ def verify_phrase(phrase: str, signature_hex: str, public_key_hex: str) -> dict:
         from nacl.signing import VerifyKey
         from nacl.encoding import HexEncoder
 
-        verify_key = VerifyKey(public_key_hex, encoder=HexEncoder)
+        verify_key = VerifyKey(bytes.fromhex(public_key_hex))
         signature = bytes.fromhex(signature_hex)
         verify_key.verify(phrase.encode("utf-8"), signature)
 
