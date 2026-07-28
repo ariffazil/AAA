@@ -1,9 +1,9 @@
 {
   "name": "External MCP Server Candidates",
   "purpose": "Discovered external MCP servers evaluated for federation compatibility",
-  "total_candidates": 183,
-  "high_confidence": 22,
-  "medium_confidence": 161,
+  "total_candidates": 223,
+  "high_confidence": 31,
+  "medium_confidence": 192,
   "low_confidence": 0,
   "sources": [
     "mcp_so",
@@ -12,10 +12,25 @@
     "npm_mcp",
     "github_topics"
   ],
-  "last_updated": "2026-07-28T10:06:30.671152+00:00",
+  "last_updated": "2026-07-28T19:06:27.696710+00:00",
   "top_picks": [
     {
+      "name": "neomjs/neo",
+      "score": 0.6500000000000001,
+      "source": "github"
+    },
+    {
       "name": "microsoft/mcp-for-beginners",
+      "score": 0.6000000000000001,
+      "source": "github"
+    },
+    {
+      "name": "dcostenco/prism-coder",
+      "score": 0.6000000000000001,
+      "source": "github"
+    },
+    {
+      "name": "CodeAbra/iai-personal-memory-engine",
       "score": 0.6000000000000001,
       "source": "github"
     },
@@ -45,23 +60,8 @@
       "source": "github"
     },
     {
-      "name": "mcp-use",
-      "score": 0.5500000000000002,
-      "source": "npm"
-    },
-    {
-      "name": "finmap-org/mcp-server",
-      "score": 0.55,
-      "source": "github"
-    },
-    {
-      "name": "dsebastien/obsidian-cli-rest",
-      "score": 0.55,
-      "source": "github"
-    },
-    {
-      "name": "opensolon/solon-ai",
-      "score": 0.55,
+      "name": "mrexodia/ida-pro-mcp",
+      "score": 0.6,
       "source": "github"
     }
   ]
