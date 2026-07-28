@@ -31,7 +31,8 @@
 
 - [ ] Load `/root/AAA/prompts/SEAL.md` — the ONE canonical seal ceremony
 - [ ] Execute 6-step seal ceremony (RSI → cooling → bind → seal → verify → FQ)
-- [ ] Federation health — all 6 organs attested
+- [ ] **Ingest session work into arifFlow** — `arifflow_flow_ingest` for each completed task (Execute/Verify/Cool/Seal). arifFlow is the metabolic nerve — no receipts = no pulse = FQ STUCK.
+- [ ] Federation health — all 6 organs attested + arifFlow (:7073) probed
 - [ ] Entropy measured — ΔS ≤ 0 (workspace cleaner than found)
 - [ ] Diff audit — `git diff --stat` reviewed for unexpected changes
 - [ ] Model cost — under daily budget ($2.00/session)
