@@ -1263,7 +1263,7 @@
         "thinking_mode_overrides_hyperparams": true,
         "thinking_budget": 8192
       },
-      "status": "LIVE",
+      "status": "SUPERSEDED",
       "trust_tier": 2,
       "suitable_for": [
         "dag_planning",
@@ -1305,7 +1305,9 @@
       "soul_file_ref": "kimi_soul.yaml",
       "shadow_file_ref": "kimi_shadow.yaml",
       "last_verified": "2026-07-20",
-      "note": "Open weights (reported). Vision-capable code specialist. 256K context + 8K thinking budget. PLAN agent primary."
+      "note": "Open weights (reported). Vision-capable code specialist. 256K context + 8K thinking budget. PLAN agent primary.",
+      "superseded_by": "moonshotai/kimi-k3",
+      "superseded_date": "2026-07-28"
     },
     {
       "model_key": "kimi/k3",
@@ -1322,13 +1324,15 @@
         "plan",
         "agentic",
         "vision",
-        "search"
+        "search",
+        "kernel_optimization",
+        "multimodal"
       ],
       "modalities": [
         "text",
         "image"
       ],
-      "open_weights": false,
+      "open_weights": true,
       "cost_per_1m_input": 0.5,
       "cost_per_1m_output": 2.0,
       "rate_limits": {
@@ -1376,8 +1380,11 @@
       "live_evidence": null,
       "soul_file_ref": "kimi_soul.yaml",
       "shadow_file_ref": null,
-      "last_verified": "2026-07-20",
-      "note": "Kimi K3 flagship. 2.8T model, 1M context. Newer than K2.7. Used via kimi-moonshot provider (OpenClaw + Kimi Code)."
+      "last_verified": "2026-07-28",
+      "note": "Kimi K3 flagship. 2.8T model, 1M context. Newer than K2.7. Used via kimi-moonshot provider (OpenClaw + Kimi Code).",
+      "weights_license": "Apache 2.0",
+      "weights_repo": "moonshotai/Kimi-K3-MXFP4",
+      "weights_size_gb": 594
     },
     {
       "model_key": "sea-lion/Qwen-SEA-LION-v4-32B-IT",
@@ -1770,7 +1777,7 @@
         "thinking_mode_supported": true,
         "thinking_mode_overrides_hyperparams": true
       },
-      "status": "LIVE",
+      "status": "SUPERSEDED",
       "trust_tier": 2,
       "suitable_for": [
         "code_generation",
@@ -1804,7 +1811,9 @@
       "soul_file_ref": "kimi_soul.yaml",
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Kimi K2.7 Code via native Moonshot API (not Bailian). Used by OpenClaw as coding fallback. Same model as kimi/kimi-k2.7-code but different endpoint."
+      "note": "Kimi K2.7 Code via native Moonshot API (not Bailian). Used by OpenClaw as coding fallback. Same model as kimi/kimi-k2.7-code but different endpoint.",
+      "superseded_by": "moonshotai/kimi-k3",
+      "superseded_date": "2026-07-28"
     },
     {
       "model_key": "openai/gpt-5.6-sol",
@@ -3038,13 +3047,15 @@
         "code",
         "plan",
         "agentic",
-        "vision"
+        "vision",
+        "kernel_optimization",
+        "multimodal"
       ],
       "modalities": [
         "text",
         "image"
       ],
-      "open_weights": false,
+      "open_weights": true,
       "cost_per_1m_input": "variable",
       "cost_per_1m_output": "variable",
       "rate_limits": {},
@@ -3079,7 +3090,11 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. 2.8T MoE. Explicit coding fallback for forge chain independent of auto-beta."
+      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. 2.8T MoE. Explicit coding fallback for forge chain independent of auto-beta.",
+      "weights_license": "Apache 2.0",
+      "weights_repo": "moonshotai/Kimi-K3-MXFP4",
+      "weights_size_gb": 594,
+      "last_verified": "2026-07-28"
     },
     {
       "model_key": "google/gemma-4-31b-it:free",
@@ -4263,7 +4278,7 @@
       "agent_name": "PLAN (\u03a9)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "kimi-k2.7-code",
+      "primary_model": "kimi-k3",
       "primary_provider": "bailian-token-plan",
       "fallback_chain": [
         {
@@ -4304,7 +4319,9 @@
       "last_verified": "2026-07-20",
       "notes": "Kimi K2.7 Code for DAG planning \u2014 256K context + 8K thinking budget. Vision-capable.",
       "tier": "T2",
-      "philosophy": "MODEL > PROVIDER > BILLING"
+      "philosophy": "MODEL > PROVIDER > BILLING",
+      "model_updated": "2026-07-28",
+      "model_update_reason": "K3 released with open weights. 2.5x scaling efficiency over K2.6. Full infrastructure open-sourced."
     },
     {
       "agent_id": "hermes",
