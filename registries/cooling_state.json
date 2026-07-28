@@ -666,9 +666,67 @@
       "sealed_at": null,
       "voided_at": null,
       "void_reason": null
+    },
+    {
+      "entry_id": "1255e1e7-196",
+      "artifact_ref": "48e18cca-8a7e-449c-96a1-8f3ee874b08a",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-28T16:50:58.156Z",
+      "cooldown_expiry": "2026-08-04T16:50:58.156Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
+    },
+    {
+      "entry_id": "84a84a3f-660",
+      "artifact_ref": "ede19852-97ba-4d07-91d6-a1a8e7cd8103",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-28T16:53:10.864Z",
+      "cooldown_expiry": "2026-08-04T16:53:10.864Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": null,
+      "voided_at": null,
+      "void_reason": null
     }
   ],
   "sealedCount": 0,
   "voidedCount": 0,
-  "persistedAt": "2026-07-28T10:57:45.349Z"
+  "persistedAt": "2026-07-28T16:53:10.867Z"
 }
