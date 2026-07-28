@@ -1,0 +1,16 @@
+{
+    "agent_id": "aaa-cockpit",
+    "principal_agent": "agent",
+    "role": "cockpit_display",
+    "authority_ceiling": "OBSERVE_ONLY",
+    "no_self_seal": true,
+    "no_self_judge": true,
+    "description": "AAA Cockpit \u2014 displays federation state, routes A2A. Never adjudicates, never seals. All proposals must carry requires_judge=true.",
+    "constitutional_bounds": {
+        "can_seal": false,
+        "can_judge": false,
+        "can_mutate": false,
+        "can_route": true,
+        "can_display": true
+    }
+}
