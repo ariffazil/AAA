@@ -8,6 +8,7 @@ DITEMPA BUKAN DIBERI — Forged, Not Given.
 Forged: 2026-07-28 by FORGE (000Ω) under F13 SOVEREIGN directive.
 """
 
+import argparse
 import json
 import os
 import sys
@@ -411,6 +412,29 @@ def write_well_known() -> dict:
 
 
 def main():
+    parser = argparse.ArgumentParser(description="MCP Registry Reconciler + Ephemeral Registration")
+    parser.add_argument(
+        "--reconcile", action="store_true", default=True, help="Run full federation surface reconciliation (default)"
+    )
+    parser.add_argument(
+        "--register-ephemeral",
+        type=str,
+        metavar="SCRIPT",
+        help="Register a micro-MCP script to ephemeral_sandbox scope",
+    )
+    parser.add_argument(
+        "--no-reconcile",
+        dest="reconcile",
+        action="store_false",
+        help="Skip reconciliation, only run --register-ephemeral",
+    )
+    args = parser.parse_args()
+
+    if args.register_ephemeral:
+        register_ephemeral_tool(args.register_ephemeral)
+        if not args.reconcile:
+            return
+
     print("╔══════════════════════════════════════════════════════════╗")
     print("║  forge_surface_reconcile.py — MCP Registry Reconciler   ║")
     print("║  DITEMPA BUKAN DIBERI  ·  2026-07-28                     ║")
@@ -464,6 +488,30 @@ def main():
     print(f"   Discovery: /var/www/arif-fazil.com/.well-known/")
 
     return summary
+
+
+def register_ephemeral_tool(script_path: str) -> dict:
+    """Register temporary tool to 'ephemeral_sandbox' scope."""
+    if not os.path.exists(script_path):
+        print(f"❌ [EPHEMERAL REGISTRATION ERROR] File not found: {script_path}")
+        sys.exit(1)
+
+    ephemeral_dir = Path("/tmp/micro_servers")
+    ephemeral_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+
+    name = Path(script_path).stem
+    reg_record = {
+        "tool_id": f"ephemeral_{name}",
+        "script_path": os.path.abspath(script_path),
+        "scope": "ephemeral_sandbox",
+        "registered_at": datetime.now(timezone.utc).isoformat(),
+        "status": "ACTIVE",
+    }
+
+    record_path = ephemeral_dir / f"{name}_reg.json"
+    record_path.write_text(json.dumps(reg_record, indent=2))
+    print(f"✅ [EPHEMERAL REGISTERED] Tool '{name}' registered to 'ephemeral_sandbox' scope -> {record_path}")
+    return reg_record
 
 
 if __name__ == "__main__":
