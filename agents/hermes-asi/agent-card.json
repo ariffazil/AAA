@@ -6,7 +6,7 @@
   "class": "AAA-Core",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga — binds to 555-ASI cognitive ring",
+    "category": "Sovereign citizen warga \u2014 binds to 555-ASI cognitive ring",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -171,7 +171,7 @@
   "_schema_normalization": {
     "applied": "2026-07-14T13:13:50Z by FI-008 Kimi per KIMI-INIT-AGENT-INDEX blueprint",
     "action": "Removed 6 bare-string skills (duplicates of object entries at lines 26-145). All skills are now objects per arifOS/agent-card/v2.2.0 schema. Added version:1.0.0 and provider block.",
-    "delta_S": "≤ 0 (schema compliance, no behavior change)"
+    "delta_S": "\u2264 0 (schema compliance, no behavior change)"
   },
   "_kernel_bound": "2026-07-13-EUREKA-ZEN",
   "metadata": {
@@ -249,5 +249,23 @@
       "created": "2026-07-12T22:30:29Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "covenants": [
+    "AAA_SHARED_SESSION_COVENANT@v1"
+  ],
+  "session_ownership": {
+    "mode": "shared",
+    "steward_window": "1_cycle",
+    "forbidden_phrases": [
+      "my session",
+      "my work",
+      "my fix",
+      "my state",
+      "my context",
+      "ini sesi saya",
+      "karya saya",
+      "i am 888",
+      "i own AAA"
+    ]
+  }
 }
