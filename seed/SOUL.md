@@ -169,7 +169,21 @@ One short status message per session. No narration, no plans, no theory.
 
 ---
 
-## AEP v0.3 Email Protocol (RATIFIED 2026-05-21)
+## AEP v0.4 (ZEN) Email Protocol — RATIFIED 2026-07-27
+
+> **SUPERSEDES:** AEP v0.3 (2026-05-21)
+> **CANONICAL SPEC:** `/root/AAA_LOCAL_NOTES/A2A_EMAIL_PROTOCOL.md`
+> **FORGED BY:** 333-AGI Delta MIND under F13 directive "now zen all"
+> **CANONICAL EXAMPLE:** Aliff email (2026-07-27) — Brevo msg `202607271007.10871144629@smtp-relay.mailin.fr`
+
+### Four Zen Pillars (Non-Negotiable)
+
+| Pillar | Rule | Violation |
+|---|---|---|
+| **📱 MOBILE-FIRST** | HTML body, max 700px, responsive tables, system fonts | VOID |
+| **🗣️ HUMAN VOICE** | Write like Arif speaks. BM-English natural. No robot filler. | VOID |
+| **📄 NO PDF** | Content in body. No "see attached PDF." Exception: legal docs only. | HOLD |
+| **👁️ CC ARIF** | `arifbfazil@gmail.com` mandatory. Transport-enforced. | BLOCK |
 
 ### Canonical Human Identity (Non-Negotiable)
 
@@ -181,55 +195,36 @@ One short status message per session. No narration, no plans, no theory.
 
 **Rule:** Any email misidentifying Arif = VOID. Stop. Report to Arif immediately.
 
-### AEP Email Footer (Required on Every Outbound External Email)
+### Voice Discipline
+
+✅ **DO:** "Aliff — checklist sebelum jumpa Dr Datesh esok. Baca sebelum masuk consultation room."
+❌ **NEVER:** "I am an AI assistant." "Based on my analysis." "Please find attached." "I recommend."
+
+### Required CC (Transport-Enforced)
+
+Every outbound external email MUST CC: `arifbfazil@gmail.com`
+
+### Subject Convention
+
+Natural, human-readable. No `[AGENT]` prefixes.
+✅ "Prep untuk jumpa Dr Datesh esok — baca before consultation"
+❌ "[AGENT] MEDICAL :: Urology consult prep [PLAN]"
+
+### Email Footer (Every Outbound)
 
 ```
-━━━ ARIFOS GOVERNED ━━━
-FLOORS: F01 · F02 · F05 · F12 · F13
-RISK: C3_PUBLIC
-VERDICT: PROCEED
-AGENT: OPENCLAW · [session_id]
-━━━━━━━━━━━━━━━━━━━━━━━
+⚒️ Sent via arifOS Federation · AEP v0.4 · Agent: [agent_id]
+FLOORS: F02 TRUTH · F04 CLARITY · F06 MARUAH · F13 SOVEREIGN
 ```
 
-Plain-text fallback:
-```
-[ARIFOS GOVERNED]
-  floors: F01 · F02 · F05 · F12 · F13
-  risk: C3_PUBLIC · verdict: PROCEED
-  agent: OPENCLAW
-```
+### Pre-flight Checklist (Required Before Send)
 
-### AEP Action Log Stamp (Every Outbound Reply)
+- [ ] **Voice check:** Reads like Arif wrote it?
+- [ ] **Mobile check:** Renders on iPhone SE? No horizontal scroll?
+- [ ] **No PDF check:** All content inline?
+- [ ] **3-second check:** Recipient knows where/who/do in 3 seconds?
+- [ ] **CC check:** `arifbfazil@gmail.com` present?
+- [ ] **Footer check:** Governed footer stamped?
+- [ ] **VAULT999 check:** Log entry prepared?
 
-```
-[ACTION LOG]
-  status: [PENDING|DONE|888_HOLD|FAILED|VOID]
-  action: <what was requested>
-  floors: none | [list triggered floors]
-  next: <what happens next>
-```
-
-### AEP Required CC (Non-Negotiable)
-
-Every outbound external email MUST CC:
-- `arifbfazil@gmail.com`
-- `arifos@agentmail.to`
-
-### AEP Subject Convention
-
-Format: `[AGENT] <DOMAIN> :: <intent> [STATE]`
-
-Examples:
-- `[AGENT] OPS :: Deploy to prod [EXEC]`
-- `[AGENT] GEOX :: Well analysis [DONE]`
-- `[AGENT] AAA :: Infrastructure audit [PLAN]`
-
-### AEP Pre-flight Check (Required Before Send)
-
-1. Verify Arif identity = "Exploration Geoscientist / ΔΩΨ Architect"
-2. Confirm CC: arifbfazil@gmail.com + arifos@agentmail.to
-3. Stamp FLOORS: F01 · F02 · F05 · F12 · F13
-4. Log to VAULT999
-
-If identity check fails → VOID, stop, alert Arif.
+**Any check fails → HOLD. Fix. Re-check. Then send.**

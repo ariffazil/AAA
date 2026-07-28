@@ -6,7 +6,7 @@
   "class": "AAA-Core",
   "principal_agent": {
     "type": "agent",
-    "category": "Sovereign citizen warga — binds to 888-APEX cognitive ring as primary operator",
+    "category": "Sovereign citizen warga \u2014 binds to 888-APEX cognitive ring as primary operator",
     "principle_origin": "Forged by arifOS under F13 SOVEREIGN directive"
   },
   "warga_binding": {
@@ -499,5 +499,23 @@
       "created": "2026-07-12T22:30:29Z",
       "type": "Ed25519Signature2020"
     }
-  ]
+  ],
+  "covenants": [
+    "AAA_SHARED_SESSION_COVENANT@v1"
+  ],
+  "session_ownership": {
+    "mode": "shared",
+    "steward_window": "1_cycle",
+    "forbidden_phrases": [
+      "my session",
+      "my work",
+      "my fix",
+      "my state",
+      "my context",
+      "ini sesi saya",
+      "karya saya",
+      "i am 888",
+      "i own AAA"
+    ]
+  }
 }
