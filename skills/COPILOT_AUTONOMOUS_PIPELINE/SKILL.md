@@ -115,19 +115,52 @@ forge_parallel(
 # → group_id → monitor with forge_parallel_status(group_id)
 ```
 
-## METABOLISM CHECKPOINTING
+## METABOLISM CHECKPOINTING (MANDATORY)
 
-At every stage boundary, ingest into arifFLOW:
+Every stage boundary MUST ingest a receipt into arifFLOW :7073.
+Without checkpointing, session continuity is lost on terminal close.
+
+### Shell checkpoint (use flow_checkpoint.sh):
+```bash
+# At session START:
+/root/scripts/flow_checkpoint.sh start "$SESSION_ID" "<intent>"
+
+# After each STEP:
+/root/scripts/flow_checkpoint.sh step "$SESSION_ID" "<action>" "Pass|Caution|Hold"
+
+# At session END:
+/root/scripts/flow_checkpoint.sh end "$SESSION_ID" "<summary>" "Pass"
+```
+
+### MCP checkpoint (use flow_ingest tool):
 ```python
 flow_ingest(
     actor_id="copilot-cli",
     session_id="<session_id>",
-    step_type="Execute|Verify|Cool|Seal",
+    step_type="Execute|Verify|Cool|Seal|Barrier",
     epistemic_label="Observation|Derivation|Interpretation|Seal",
     floor_verdict="Pass|Caution|Hold|Void",
     lane_id=1
 )
 ```
+
+### Resume from prior session:
+```bash
+/root/scripts/flow_resume.sh          # read carry-forward + FQ
+/root/scripts/flow_resume.sh --write  # also persist carry_forward.json
+```
+
+### 5-STAGE PIPELINE WITH CHECKPOINTS:
+```
+STAGE 1: INIT      → flow_checkpoint.sh start   → Barrier receipt
+STAGE 2: PLAN      → flow_checkpoint.sh step     → Execute receipt
+STAGE 3: EXECUTE   → flow_checkpoint.sh step     → Execute receipt
+STAGE 4: VERIFY    → flow_checkpoint.sh step     → Verify receipt
+STAGE 5: SEAL      → flow_checkpoint.sh end      → Seal receipt
+```
+
+**Rule: If you can't checkpoint, you can't proceed.** A failed 
+checkpoint at any stage → HOLD the pipeline until arifFLOW is healthy.
 
 ## CONSTITUTIONAL GATES (ALWAYS ACTIVE)
 
@@ -185,5 +218,5 @@ forge_pipeline_run(task="cd /root && make prove", mode="full")
 
 ---
 
-**SOT:** 2026-07-28 | **seal_seq:** pending
-**Agentic score:** FULL_AUTONOMOUS — 5-stage governed pipeline with self-healing
+**SOT:** 2026-07-28 | **seal_seq:** 000-ARIFLOW-WIRED
+**Agentic score:** FULL_AUTONOMOUS — 5-stage governed pipeline with mandatory arifFLOW checkpoints
