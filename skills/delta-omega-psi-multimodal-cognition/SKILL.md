@@ -1,3 +1,24 @@
+---
+name: delta-omega-psi-multimodal-cognition
+description: >
+  Enforce Δ·Ω·Ψ multimodal cognition rules. Every AAA agent that reasons about multimodal inputs
+  (images, audio, video, seismic, well logs, market data) MUST load this skill. Constitutional rule:
+  multimodal perception without Δ-substrate metabolism is not cognition. LLM is tri-witness, never judge.
+trigger_phrases:
+  - multimodal reasoning
+  - image analysis with governance
+  - delta substrate
+  - omega psi cognition
+  - multimodal evidence
+  - cross-modal verification
+harness: copilot-cli|grok|claude|codex|hermes
+domain: meta
+risk_tier: LOW
+autonomy: T1
+forged: 2026-07-25
+version: 1.0.0
+---
+
 # Δ·Ω·Ψ Multimodal Cognition — Forge Skill
 
 > **Skill ID:** `delta-omega-psi-multimodal-cognition`
