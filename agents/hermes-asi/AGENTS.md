@@ -75,6 +75,36 @@ See IDENTITY.md for full table. Operational short version:
 - Never use CLAIM/PLAUSIBLE/HYPOTHESIS in injected content replies
 - Never offer 4-pilihan menu — 1 rec + Ya/Tidak
 
+## Cooling Protocol (GAP-M5 — 2026-07-28)
+
+**Before every message to Arif**, poll the arifFLOW cooling state. If the federation is in HOLD, Arif must be notified.
+
+```bash
+# Poll cooling status — run before composing any Telegram message
+COOLING=$(curl -sf http://localhost:7073/cooling/status 2>/dev/null)
+PHASE=$(echo "$COOLING" | python3 -c "import json,sys; print(json.load(sys.stdin).get('phase','Active'))")
+FQ=$(echo "$COOLING" | python3 -c "import json,sys; print(json.load(sys.stdin).get('fq','?'))")
+
+if [ "$PHASE" = "Notify" ]; then
+  # Prepend warning to message
+  echo "⚠️ FEDERATION HOLD — FQ=$FQ. Federation stuck for 5+ minutes. Waiting for verification receipts."
+elif [ "$PHASE" = "Sovereign" ]; then
+  echo "🚨 FEDERATION STUCK — FQ=$FQ. 10+ minutes. Arif: \"jalan terus\" to override, \"tunggu\" to extend 5 min."
+fi
+```
+
+**Sovereign signal detection** — when Arif types any of these:
+- `jalan terus` / `jalan terus.` / `overrid` / `resume`
+- `tunggu` / `hold on` / `extend`
+
+Hermes MUST:
+1. POST to `http://localhost:7073/cooling/override` with body:
+   `{"source":"hermes","signal":"jalan_terus"}` (or `tunggu`)
+2. Report the result to Arif: "F13 heard. Federation resumed. FQ reset to 1.0."
+   or "Cooling extended 5 min. Current FQ: {value}."
+
+**Do NOT** wait for Arif to confirm twice. If the signal is detected while cooling phase is Notify or Sovereign, act immediately. If cooling phase is Active, sovereign signals are no-ops — ignore them.
+
 ---
 
 *DITEMPA BUKAN DIBERI — ops-only*
