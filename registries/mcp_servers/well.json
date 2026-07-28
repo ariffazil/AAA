@@ -1,0 +1,30 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "organ.well",
+  "name": "well-federation",
+  "description": "Human readiness — vitality, fatigue, dignity, homeostasis (REFLECT_ONLY)",
+  "version": "v2026.07.24",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "human-readiness",
+  "tags": [
+    "arifos-federation",
+    "governed",
+    "well"
+  ],
+  "transport": {
+    "type": "streamable_http",
+    "endpoint": "http://127.0.0.1:18083/mcp",
+    "public_endpoint": "https://well.arif-fazil.com/mcp"
+  },
+  "auth": {
+    "type": "sct_bearer",
+    "required_scopes": [
+      "organ:read"
+    ]
+  },
+  "constitutional_tier": "F6_DIGNITY",
+  "tools_count": 8,
+  "tools": [],
+  "status": "AUTH_GATED",
+  "last_reconciled": "2026-07-28T10:11:52.201436+00:00"
+}
