@@ -1,0 +1,54 @@
+{
+  "generated_at": "2026-07-28T10:11:52.031073+00:00",
+  "federation": "arifOS",
+  "sovereign": "Muhammad Arif bin Fazil (F13)",
+  "total_servers": 5,
+  "total_tools": 181,
+  "servers": {
+    "arifos": {
+      "id": "organ.arifos",
+      "name": "Constitutional AI orchestration kernel — session, judge, vault, seal",
+      "category": "kernel",
+      "tool_count": 8,
+      "status": "ONLINE",
+      "endpoint": "https://arifos.arif-fazil.com/mcp",
+      "metadata_file": "arifos.json"
+    },
+    "aforge": {
+      "id": "organ.aforge",
+      "name": "Governed execution shell — build, deploy, mutate under constitutional lease",
+      "category": "execution",
+      "tool_count": 120,
+      "status": "ONLINE",
+      "endpoint": "https://forge.arif-fazil.com/mcp",
+      "metadata_file": "aforge.json"
+    },
+    "geox": {
+      "id": "organ.geox",
+      "name": "Earth intelligence — seismic, petrophysics, basin, prospect evaluation",
+      "category": "earth-intelligence",
+      "tool_count": 33,
+      "status": "AUTH_GATED",
+      "endpoint": "https://geox.arif-fazil.com/mcp",
+      "metadata_file": "geox.json"
+    },
+    "wealth": {
+      "id": "organ.wealth",
+      "name": "Capital intelligence — NPV, risk, conservation, flow, entropy",
+      "category": "capital-intelligence",
+      "tool_count": 12,
+      "status": "AUTH_GATED",
+      "endpoint": "https://wealth.arif-fazil.com/mcp",
+      "metadata_file": "wealth.json"
+    },
+    "well": {
+      "id": "organ.well",
+      "name": "Human readiness — vitality, fatigue, dignity, homeostasis (REFLECT_ONLY)",
+      "category": "human-readiness",
+      "tool_count": 8,
+      "status": "AUTH_GATED",
+      "endpoint": "https://well.arif-fazil.com/mcp",
+      "metadata_file": "well.json"
+    }
+  }
+}

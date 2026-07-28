@@ -1,0 +1,31 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "organ.wealth",
+  "name": "wealth-federation",
+  "description": "Capital intelligence — NPV, risk, conservation, flow, entropy",
+  "version": "UNAVAILABLE",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "capital-intelligence",
+  "tags": [
+    "arifos-federation",
+    "governed",
+    "wealth"
+  ],
+  "transport": {
+    "type": "streamable_http",
+    "endpoint": "http://127.0.0.1:18082/mcp",
+    "public_endpoint": "https://wealth.arif-fazil.com/mcp"
+  },
+  "auth": {
+    "type": "sct_bearer",
+    "required_scopes": [
+      "forge:execute",
+      "organ:read"
+    ]
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 12,
+  "tools": [],
+  "status": "AUTH_GATED",
+  "last_reconciled": "2026-07-28T10:11:52.201177+00:00"
+}

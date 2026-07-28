@@ -1,0 +1,80 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/2026/server.json",
+  "id": "organ.arifos",
+  "name": "arifos-federation",
+  "description": "Constitutional AI orchestration kernel — session, judge, vault, seal",
+  "version": "v2026.07.24-ZEN-SURVIVAL",
+  "author": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+  "category": "kernel",
+  "tags": [
+    "arifos-federation",
+    "governed",
+    "arifos"
+  ],
+  "transport": {
+    "type": "streamable_http",
+    "endpoint": "http://127.0.0.1:8088/mcp",
+    "public_endpoint": "https://arifos.arif-fazil.com/mcp"
+  },
+  "auth": {
+    "type": "sct_bearer",
+    "required_scopes": [
+      "forge:execute",
+      "organ:read"
+    ]
+  },
+  "constitutional_tier": "F2_TRUTH",
+  "tools_count": 8,
+  "tools": [
+    {
+      "name": "arif_init",
+      "description": "KERNEL 000 · Session ignition — binds actor, floors, and audit before any other arif_* verb.",
+      "risk_tier": "MEDIUM",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_observe",
+      "description": "KERNEL 111 · Sense reality into evidence with epistemic tags and uncertainty bounds.",
+      "risk_tier": "MEDIUM",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_think",
+      "description": "KERNEL 333 · Mind — structured reasoning under F2/F7 with OBS/DER/INT/SPEC labels.",
+      "risk_tier": "MEDIUM",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_route",
+      "description": "KERNEL 444 · Intent→organ router — dispatches to GEOX/WEALTH/WELL/A-FORGE.",
+      "risk_tier": "MEDIUM",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_memory",
+      "description": "KERNEL memory governor — L1–L6 governed semantic recall, storage, and persistence.",
+      "risk_tier": "MEDIUM",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_judge",
+      "description": "KERNEL 888 · Constitutional verdict — binding SEAL/HOLD/SABAR/VOID arbitration.",
+      "risk_tier": "CRITICAL",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_forge",
+      "description": "KERNEL 777 · Execution gate via A-FORGE — mutates only after SEAL verdict.",
+      "risk_tier": "CRITICAL",
+      "transport": "streamable_http"
+    },
+    {
+      "name": "arif_seal",
+      "description": "KERNEL 999 · VAULT999 immutable append — irreversible civilizational memory sealing.",
+      "risk_tier": "CRITICAL",
+      "transport": "streamable_http"
+    }
+  ],
+  "status": "ONLINE",
+  "last_reconciled": "2026-07-28T10:11:52.199157+00:00"
+}
