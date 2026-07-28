@@ -36,6 +36,7 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 [![Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml)
 [![Governance Plane](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml)
 [![🖥️ COCKPIT](https://img.shields.io/badge/%F0%9F%96%A5%EF%B8%8F%20COCKPIT-A2A%20gateway-0a7b83)](https://aaa.arif-fazil.com)
+[![Federation](https://img.shields.io/badge/Federation-v2026.07.28-0a7b83)](https://arifos.arif-fazil.com)
 [![License](https://img.shields.io/github/license/ariffazil/AAA?label=License)](LICENSE)
 [![F13 SOVEREIGN](https://img.shields.io/badge/F13%20SOVEREIGN-Arif%20bin%20Fazil-gold)](https://github.com/ariffazil)
 
