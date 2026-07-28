@@ -1,0 +1,134 @@
+{
+  "_canon": "ROUTE_REGISTRY.json — Domain/path → internal service routing table.",
+  "_source": "Extracted from /etc/caddy/Caddyfile, validated 2026-07-28T00:00Z.",
+  "_doctrine": "Caddy is the single doorman. Every public URL passes through exactly one reverse_proxy directive.",
+
+  "main_site": {
+    "domain": "arif-fazil.com",
+    "routes": {
+      "/": "Static HTML — /var/www/html/arif",
+      "/api/*": "arifOS kernel (:8088)",
+      "/health": "arifOS kernel (:8088)",
+      "/mcp*": "arifOS kernel (:8088)",
+      "/000/*": "Static /000 proof surface",
+      "/999/verify": "arifOS kernel (:8088) — live vault proof",
+      "/999/*": "Static /999 vault pages",
+      "/federation/*": "Static federation docs",
+      "/earth*": "Static GEOX globe page",
+      "/well/*": "WELL SPA — /var/www/html/well-app",
+      "/geox/*": "GEOX SPA — /var/www/html/geox-app",
+      "/wealth/*": "Static wealth pages + dashboards",
+      "/wealth/gold/api/*": "Gold API (:3456)",
+      "/wealth/oil/api/*": "Oil API (:3457)",
+      "/wealth/gas/api/*": "Gas API (:3458)",
+      "/gold/*": "Gold dashboard SPA",
+      "/oil/*": "Oil dashboard SPA",
+      "/gas/*": "Gas dashboard SPA",
+      "/connect/*": "Static connect page",
+      "/verify/*": "Static verify page",
+      "/sado/*": "SyedOS dashboard",
+      "/api/organs/*/health": "Organ health — routed to respective organ"
+    }
+  },
+
+  "subdomains": {
+    "arifos.arif-fazil.com": {
+      "target": "arifOS kernel (:8088)",
+      "key_paths": {
+        "/mcp*": "MCP JSON-RPC endpoint",
+        "/health": "Health check",
+        "/api/*": "API proxy",
+        "/llms.txt": "Agent discovery",
+        "/manifest.txt": "Tool manifest",
+        "/tools": "→ mcp.arif-fazil.com (redirect)",
+        "/wiki/*": "Static wiki docs"
+      }
+    },
+    "mcp.arif-fazil.com": {
+      "target": "arifOS kernel (:8088)",
+      "role": "Canonical public MCP door — ONE entry for all agents",
+      "key_paths": {
+        "/mcp*": "MCP JSON-RPC (with Accept header injection)",
+        "/health": "Health check",
+        "/tools": "Tool list",
+        "/llms.txt": "Agent discovery",
+        "/api/organs/*/health": "Cross-organ health proxy",
+        "/api/organs/*/tools": "Cross-organ tool count proxy",
+        "/briefing*": "Static wealth briefing data"
+      }
+    },
+    "forge.arif-fazil.com": {
+      "target": "A-FORGE (:7071 API, :7072 MCP)",
+      "key_paths": {
+        "/mcp*": "A-FORGE MCP (:7072) — gated via forward_auth :8088/gate/check",
+        "/health": "A-FORGE API (:7071)",
+        "/opencode*": "OpenCode Web IDE (:4096)"
+      }
+    },
+    "aaa.arif-fazil.com": {
+      "target": "AAA cockpit + A2A (:3001)",
+      "key_paths": {
+        "/a2a/*": "A2A gateway",
+        "/api/*": "AAA API",
+        "/health": "Health check",
+        "/api/seal-chain/head": "Live seal chain heartbeat (static JSON)"
+      }
+    },
+    "geox.arif-fazil.com": {
+      "target": "GEOX MCP (:8081)",
+      "key_paths": {
+        "/mcp*": "GEOX MCP — gated via forward_auth :8088/gate/check",
+        "/health": "Health check",
+        "/tools": "Tool list",
+        "/gui/*": "GEOX GUI (React SPA)"
+      }
+    },
+    "wealth.arif-fazil.com": {
+      "target": "WEALTH MCP (:18082)",
+      "key_paths": {
+        "/mcp*": "WEALTH MCP — gated via forward_auth :8088/gate/check",
+        "/health": "Health check",
+        "/briefing*": "Daily briefing",
+        "/api/wealth/*": "WEALTH API",
+        "/gold/api/*": "Gold API (:3456)",
+        "/oil/api/*": "Oil API (:3457)",
+        "/gas/api/*": "Gas API (:3458)"
+      }
+    },
+    "well.arif-fazil.com": {
+      "target": "WELL MCP (:18083)",
+      "key_paths": {
+        "/mcp*": "WELL MCP — gated via forward_auth :8088/gate/check",
+        "/health": "Health check"
+      }
+    },
+    "ollama.arif-fazil.com": {
+      "target": "Ollama (:11434)",
+      "role": "Local LLM inference"
+    },
+    "deploy.arif-fazil.com": {
+      "target": "Deploy webhook (:18000)",
+      "role": "Webhook deploy endpoint"
+    },
+    "prometheus.arif-fazil.com": {"target": "Prometheus (:9090)"},
+    "grafana.arif-fazil.com": {"target": "Grafana (:3000)"},
+    "monitor.arif-fazil.com": {"target": "Grafana (:3000) — alias"},
+    "temporal.arif-fazil.com": {"target": "Temporal (:8233)"},
+    "nats.arif-fazil.com": {"target": "NATS monitoring (:8222)"},
+    "headscale.arif-fazil.com": {"target": "Headscale (:8083)"},
+    "claw.arif-fazil.com": {"target": "Hermes/OpenClaw (:18789)"},
+    "openclaw.arif-fazil.com": {"target": "Hermes/OpenClaw (:18789)"},
+    "syedos.arif-fazil.com": {"target": "SyedOS static site"},
+    "wiki.arif-fazil.com": {"redirect": "arifos.arif-fazil.com/wiki", "note": "Legacy — canonical wiki path is on arifos subdomain"},
+    "a-forge.arif-fazil.com": {"redirect": "forge.arif-fazil.com", "note": "Legacy alias"},
+    "vault999.arif-fazil.com": {"response": "403 — VAULT999 is internal only. Use /999 for public verification."},
+    "arifosmcp.arif-fazil.com": {"redirect": "mcp.arif-fazil.com", "note": "Legacy MCP domain"},
+    "apex.arif-fazil.com": {"redirect": "arif-fazil.com", "note": "APEX decommissioned — absorbed into AAA"}
+  },
+
+  "_provenance": {
+    "extracted_at": "2026-07-28T00:00Z",
+    "source_file": "/etc/caddy/Caddyfile",
+    "caddy_validated": true
+  }
+}
