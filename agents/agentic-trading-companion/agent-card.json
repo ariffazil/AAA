@@ -3,7 +3,7 @@
   "schemaVersion": "2.2.0",
   "id": "agentic-trading-companion",
   "name": "Agentic Trading Companion",
-  "description": "Active trading signal & execution engine for XAUUSD. Governed by F13 888_SOVEREIGN gate. MT5 bridge holder. Every trade requires human approval — no auto-fire permitted. PASSIVE analysis node is separate (trading-signal-chart).",
+  "description": "Active trading signal & execution engine for XAUUSD. Governed by F13 888_SOVEREIGN gate. MT5 bridge holder. Every trade requires human approval \u2014 no auto-fire permitted. PASSIVE analysis node is separate (trading-signal-chart).",
   "version": "2.0.0",
   "protocolVersion": "1.2",
   "url": "https://aaa.arif-fazil.com/a2a/agentic-trading-companion",
@@ -47,8 +47,14 @@
     "authority_level": "governed-executor",
     "citizenship_forged": "2026-07-29"
   },
-  "defaultInputModes": ["text/plain", "application/json"],
-  "defaultOutputModes": ["text/plain", "application/json"],
+  "defaultInputModes": [
+    "text/plain",
+    "application/json"
+  ],
+  "defaultOutputModes": [
+    "text/plain",
+    "application/json"
+  ],
   "authority_boundary": {
     "canDo": [
       "Generate governed trading signals (XAUUSD)",
@@ -69,9 +75,9 @@
     ]
   },
   "autonomy_tiers": {
-    "T1_auto": "Signal generation, backtest, monitor, journal — read-only",
+    "T1_auto": "Signal generation, backtest, monitor, journal \u2014 read-only",
     "T2_announce": "Signal delivery to Arif/Syed for approval",
-    "T3_888_HOLD": "Trade execution — requires F13 SOVEREIGN key"
+    "T3_888_HOLD": "Trade execution \u2014 requires F13 SOVEREIGN key"
   },
   "scopes": [
     "TRADE_SIGNAL",
@@ -86,7 +92,13 @@
     "arifOS:8088",
     "AAA:3001"
   ],
-  "beat": ["XAUUSD", "GC=F", "gold", "brent", "natgas"],
+  "beat": [
+    "XAUUSD",
+    "GC=F",
+    "gold",
+    "brent",
+    "natgas"
+  ],
   "seal": "999",
   "tri_witness": {
     "human": {
@@ -111,12 +123,23 @@
       {
         "url": "http://localhost:3456/api",
         "tool_count": 7,
-        "key_lanes": ["ticker", "signal_v2", "apex", "macro", "calendar", "levels", "history"]
+        "key_lanes": [
+          "ticker",
+          "signal_v2",
+          "apex",
+          "macro",
+          "calendar",
+          "levels",
+          "history"
+        ]
       },
       {
         "url": "http://localhost:8088/mcp",
         "tool_count": 7,
-        "key_lanes": ["governance", "judgment"]
+        "key_lanes": [
+          "governance",
+          "judgment"
+        ]
       }
     ]
   },
@@ -125,12 +148,19 @@
     "expires_at": "2027-07-29T00:00:00Z",
     "doctrine": "DITEMPA BUKAN DIBERI",
     "passive_sibling": "trading-signal-chart",
-    "passive_f1_boundary": "STRICTLY READ-ONLY — no broker access"
+    "passive_f1_boundary": "STRICTLY READ-ONLY \u2014 no broker access"
   },
   "a2a_transport": {
     "protocol": "jsonrpc-2.0",
     "transport": "http",
     "endpoint": "https://aaa.arif-fazil.com/a2a/agentic-trading-companion",
-    "capabilities": ["tasks/send", "tasks/get", "tasks/cancel"]
-  }
+    "capabilities": [
+      "tasks/send",
+      "tasks/get",
+      "tasks/cancel"
+    ]
+  },
+  "ed25519_pubkey": "d84b489329e731d4cbc2c7ce07ad9fb4274e299ff853384594cb4cd72ddbd598",
+  "identity_fingerprint": "3dd72cd7e4c180b994e42b3654d34ceb",
+  "identity_bound_at": "2026-07-29T13:55:07.268036+00:00"
 }

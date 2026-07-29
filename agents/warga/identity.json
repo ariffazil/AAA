@@ -1,0 +1,13 @@
+{
+  "agent_id": "warga",
+  "actor_id": "warga/FI-???",
+  "ed25519_pubkey_hex": "29ce5cbaccaa0f1c2da59bbe7ed4fd41d2ac780355cfa70f240daea9ff2e00e1",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON"
+  ],
+  "max_blast_radius": "T1",
+  "created_at": "2026-07-29T13:55:07.278615+00:00",
+  "fingerprint": "08b334c8eb81ba18b4f0514c1a3c2f0c"
+}
