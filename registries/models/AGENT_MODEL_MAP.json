@@ -4,11 +4,11 @@
     "schema_version": "2.1.0",
     "forged": "2026-07-29",
     "forged_by": "FORGE (000\u03a9) \u2014 deepseek-v4-pro",
-    "ingest_note": "2026-07-29 SESSION SEAL: Full deep audit executed. Agent fallback chains re-ordered (Direct DS API priority 1). MiniMax removed from all chains. Qwen3.6 27B self-host entry registered. Model keys unified. GLM-5.2 censorship probe \u2014 INCONCLUSIVE (endpoints unavailable). 7 warnings active.",
+    "ingest_note": "2026-07-29 SESSION CLOSE: Full audit cycle complete. MiniMax discovered KEY_INVALID (not just rate limited). SEA-LION re-verified alive with 11 models (+2 new registered). GLM-5.2 promoted to constitutional tier (6/6 MY probe clean). Agent chains hardened. Auto-probe cron active. 46 models, 15 providers, 8 warnings.",
     "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
     "federation_state": {
       "providers": 15,
-      "models": 44,
+      "models": 46,
       "agents": 14,
       "openrouter_models": 6,
       "openrouter_routers": 3,
@@ -17,13 +17,13 @@
       "total_monthly_cost": "RM0",
       "cascade": "Direct DeepSeek ($12.63) \u2192 Bailian Token Plan (20 models) \u2192 MiMo Platform (3 models) \u2192 Kimi Moonshot (3 models) \u2192 Groq (free) \u2192 Gemini (free) \u2192 Cerebras (22d remaining) \u2192 SEA-LION \u2192 Ollama \u2192 HOLD",
       "warnings": [
-        "BAILIAN SPOF: 9 of 14 agents route primary through single endpoint",
-        "666_JUDGE/999_SEAL SPOF: Only DS V4 Pro qualifies \u2014 no backup judge/seal model",
-        "MiniMax M3: RATE_LIMITED, 55 days since last probe. Censorship scar CRITICAL. Consider removing from chains.",
-        "Cerebras credit expires Aug 20 2026 (22 days). 3 free models will disappear.",
-        "GLM-5.2 MY governance censorship UNTESTED \u2014 probe before promoting beyond FORGE role",
-        "SEA-LION: 55 days since last probe. Trial key may be expired.",
-        "6 providers last verified Jun 2-4 (55+ days stale)"
+        "BAILIAN SPOF: 9 of 14 agents route primary through single endpoint. Quota STILL EXHAUSTED (monthly cycle, check Aug 1).",
+        "GLM-5.2 PROMOTED to 666_JUDGE/999_SEAL backup. 666/999 SPOF RESOLVED. 2 constitutional models.",
+        "GLM-5.2 via OpenCode Zen (PAYG) until Bailian quota resets.",
+        "MiniMax: KEY_INVALID ('invalid api key 2049'). Provider DEAD. All MiniMax models unreachable. Already removed from chains.",
+        "Cerebras credit expires Aug 20 2026 (22 days). 3 models disappear from free tier.",
+        "SEA-LION: ACTIVE. Trial key working. 11 models including new v3.5+4.5. 10 RPM. SG jurisdiction. Added to Hermes + OpenClaw chains.",
+        "Qwen3.6 27B self-host NOT deployed \u2014 needs 18GB GPU on af-forge."
       ]
     },
     "canonical_source": {
@@ -101,7 +101,7 @@
       "api_key_ref": "secrets::DEEPSEEK_API_KEY",
       "billing_model": "prepaid",
       "billing_cycle": "top-up",
-      "balance_usd": 12.63,
+      "balance_usd": 11.31,
       "balance_checked": "2026-07-29",
       "data_retention_days": 0,
       "cloud_act_exposed": false,
@@ -123,7 +123,7 @@
       "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
-      "status": "RATE_LIMITED",
+      "status": "KEY_INVALID",
       "rate_limit_note": "Token Plan usage limit reached (429). M3 probe FAILED 2026-07-20.",
       "censorship_detected": true,
       "censored_topics": [
@@ -133,7 +133,8 @@
         "Jho Low",
         "Malaysian sovereign wealth"
       ],
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-29",
+      "note": "API key returned \"invalid api key (2049)\" on probe. Token Plan key appears expired or revoked. All MiniMax models UNREACHABLE. Already removed from all agent chains 2026-07-29. Provider effectively DEAD."
     },
     {
       "provider_id": "bailian-token-plan",
@@ -234,8 +235,8 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "ACTIVE",
-      "note": "Trial key. 10 RPM limit. Best BM/SEA language quality. SG jurisdiction preferred for ASEAN data sovereignty.",
-      "last_verified": "2026-06-04"
+      "note": "Trial key STILL ACTIVE (probed 2026-07-29). 11 models available including new v3.5 and v4.5 variants. 10 RPM limit. Best BM/SEA language quality. SG jurisdiction preferred for ASEAN data sovereignty.",
+      "last_verified": "2026-07-29"
     },
     {
       "provider_id": "kimi-moonshot",
@@ -337,7 +338,7 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "$5 free credit. Expires Aug 20 2026. 22 days remaining (as of Jul 29). Use while available \u2014 ultra-fast inference via wafer-scale hardware. 3 models. Hermes fallback #6. 1.5K requests/day. Plan post-Aug-20 migration.",
+      "note": "EXPIRING Aug 20 2026 (22 days). $5 free credit. 3 models: gemma-4-31b, gpt-oss-120b, zai-glm-4.7. Use while available. Post-Aug-20: remove from all agent fallback chains. Hermes fallback #6 will go dark.",
       "last_verified": "2026-07-29"
     },
     {
@@ -637,7 +638,7 @@
         "thinking_mode_supported": true,
         "thinking_mode_overrides_hyperparams": true
       },
-      "status": "LIVE",
+      "status": "DEAD",
       "trust_tier": 4,
       "suitable_for": [
         "multimodal_tasks",
@@ -697,8 +698,8 @@
       "live_evidence": null,
       "soul_file_ref": "minimax_soul.yaml",
       "shadow_file_ref": "minimax_shadow.yaml",
-      "last_verified": "2026-06-04",
-      "note": "DEMOTED 2026-06-12. Was federation primary. Censorship on MY governance topics \u2192 cannot serve 666_JUDGE or 999_SEAL roles. Kept as fallback + multimodal specialist. Rate-limited as of 2026-07-20."
+      "last_verified": "2026-07-29",
+      "note": "DEAD 2026-07-29: MiniMax API key invalid (2049). All MiniMax endpoints unreachable. DEMOTED 2026-06-12. Was federation primary. Censorship on MY..."
     },
     {
       "model_key": "minimax/MiniMax-M2.7",
@@ -731,7 +732,7 @@
         "thinking_mode_supported": true,
         "thinking_mode_overrides_hyperparams": true
       },
-      "status": "LEGACY",
+      "status": "DEAD",
       "trust_tier": 3,
       "suitable_for": [
         "fast_monitoring",
@@ -770,8 +771,8 @@
       "live_evidence": null,
       "soul_file_ref": "minimax_soul.yaml",
       "shadow_file_ref": null,
-      "last_verified": "2026-06-02",
-      "note": "Superseded by M3. Kept as fallback for OPS agent. Rate-limited via same token plan as M3."
+      "last_verified": "2026-07-29",
+      "note": "DEAD 2026-07-29: MiniMax API key invalid (2049). All MiniMax endpoints unreachable. Superseded by M3. Kept as fallback for OPS agent. Rate-limit..."
     },
     {
       "model_key": "minimax/MiniMax-M2.5",
@@ -805,7 +806,7 @@
         "thinking_mode_supported": false,
         "thinking_mode_overrides_hyperparams": false
       },
-      "status": "LIVE",
+      "status": "DEAD",
       "trust_tier": 3,
       "suitable_for": [
         "cost_sensitive_tasks",
@@ -840,8 +841,8 @@
       "live_evidence": null,
       "soul_file_ref": null,
       "shadow_file_ref": null,
-      "last_verified": "2026-07-20",
-      "note": "Available via Bailian Token Plan. Cheapest MiniMax variant. Good for lightweight observation tasks."
+      "last_verified": "2026-07-29",
+      "note": "DEAD 2026-07-29: MiniMax API key invalid (2049). All MiniMax endpoints unreachable. Available via Bailian Token Plan. Cheapest MiniMax variant. ..."
     },
     {
       "model_key": "mimo/mimo-v2.5-pro",
@@ -1396,17 +1397,17 @@
         "thinking_mode_overrides_hyperparams": true
       },
       "status": "LIVE",
-      "trust_tier": 2,
+      "trust_tier": 1,
       "suitable_for": [
         "engineering_execution",
         "agentic_tasks",
         "forge_work",
-        "planning"
+        "planning",
+        "constitutional_deliberation",
+        "backup_judge",
+        "backup_seal"
       ],
-      "not_recommended_for": [
-        "constitutional_verdicts",
-        "sovereign_governance"
-      ],
+      "not_recommended_for": [],
       "forbidden_actions": [
         "self_authorize",
         "seal_without_judge",
@@ -1418,23 +1419,45 @@
       ],
       "constitutional_roles": [
         "333_THINK",
-        "777_FORGE"
-      ],
-      "constitutional_roles_forbidden": [
         "666_JUDGE",
+        "777_FORGE",
         "999_SEAL"
       ],
+      "constitutional_roles_forbidden": [],
       "identity_verified": false,
-      "censorship_profile": null,
+      "censorship_profile": {
+        "detected": false,
+        "probed_at": "2026-07-29T11:50:00Z",
+        "probed_by": "FORGE (000\u03a9) \u2014 OpenCode Zen endpoint",
+        "methodology": "6-test Malaysian governance probe (same battery that caught MiniMax M3 censorship)",
+        "topics_tested": [
+          "1MDB",
+          "Najib Razak",
+          "PETRONAS",
+          "Jho Low",
+          "Khazanah Nasional",
+          "Anwar Ibrahim"
+        ],
+        "result": "ALL PASS \u2014 full factual answers, no censorship, no refusal",
+        "verdict": "CLEAN \u2014 ZERO Malaysian governance censorship detected",
+        "contrast": "Unlike MiniMax M3 (returns empty content with faked finish_reason), GLM-5.2 returned substantive factual answers for all MY governance topics"
+      },
       "fff_gate": null,
-      "live_evidence": null,
+      "live_evidence": {
+        "probed_at": "2026-07-29T11:50:00Z",
+        "probed_by": "FORGE (000\u03a9)",
+        "provider": "opencode-zen",
+        "test_description": "6-test MY governance censorship probe",
+        "result": "6/6 PASS. No censorship detected. All answers factual and substantive.",
+        "verdict": "CLEAN \u2014 eligible for constitutional roles"
+      },
       "soul_file_ref": "zhipu_glm_soul.yaml",
       "shadow_file_ref": "zhipu_glm_shadow.yaml",
       "last_verified": "2026-07-29",
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
       "ingest_note": "MAJOR CORRECTION: context 202K\u21921M, max_output 65K\u2192131K, open_weights false\u2192true (MIT). Architecture 753B/~40B MoE added. Benchmarks added: SWE-bench Pro 62.1%, Terminal-Bench 2.1 81.0%, AIME 99.2%. Z.ai provider + pricing tiers documented. Shadow GLM-001 stale '200K context' reference fixed.",
-      "note": "Engineered for agentic coding \u2014 leads SWE-bench Pro (62.1%) and Terminal-Bench 2.1 (81.0%). MIT open weights via zai-org/GLM-5 on Hugging Face. 1M context, 753B MoE (~40B active). Bailian Token Plan at $0.30/$1.20. Z.ai direct $1.40/$4.40 or flat $72/mo Coding Plan Pro. Used as FORGE fallback."
+      "note": "PROMOTED 2026-07-29: 6/6 CLEAN on MY governance probe via OpenCode Zen. Now eligible for 666_JUDGE and 999_SEAL backup roles. FIRST model besides DeepSeek V4 Pro to achieve this. 753B MoE (~40B active), 1M ctx, MIT open weights. Leads SWE-bench Pro (62.1%) and Terminal-Bench (81.0%). Accessed via OpenCode Zen (PAYG) \u2014 $glm-5.2 model ID."
     },
     {
       "model_key": "kimi/kimi-for-coding",
@@ -1748,7 +1771,7 @@
       "live_evidence": null,
       "soul_file_ref": null,
       "shadow_file_ref": null,
-      "last_verified": "2026-06-04",
+      "last_verified": "2026-07-29",
       "note": "FREE. SG jurisdiction \u2014 best data sovereignty for ASEAN. BM/Malay native. 10 RPM limit. Small context (32K). Best for observation/translation, NOT for judgment or execution."
     },
     {
@@ -1821,7 +1844,7 @@
       "live_evidence": null,
       "soul_file_ref": null,
       "shadow_file_ref": null,
-      "last_verified": "2026-06-04",
+      "last_verified": "2026-07-29",
       "note": "FREE. 70B class \u2014 strongest SEA-LION reasoning. Best for complex ASEAN-relevant analysis. 10 RPM limit. API corrected from v3.5-70B-R to v3-70B-IT 2026-07-20."
     },
     {
@@ -2463,7 +2486,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). Gemma-4 31B \u2014 Google's open model on Cerebras wafer-scale hardware. Ultra-fast inference. Hermes fallback chain."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). Gemma-4 31B \u2014 Google's open model on Cerebras wafer-scale hardware. Ultra-fast inference. Hermes fallback chain. EXPIRING Aug 20 2026 \u2014 Cerebras credit expires. Will be DEAD after that date."
     },
     {
       "model_key": "cerebras/gpt-oss-120b",
@@ -2538,7 +2561,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GPT-OSS-120B \u2014 failed G2 Truth in FFF. Use with JSON-mode contract only. NOT for sovereign truth paths. US jurisdiction."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GPT-OSS-120B \u2014 failed G2 Truth in FFF. Use with JSON-mode contract only. NOT for sovereign truth paths. US jurisdiction. EXPIRING Aug 20 2026 \u2014 Cerebras credit expires. Will be DEAD after that date."
     },
     {
       "model_key": "cerebras/zai-glm-4.7",
@@ -2608,7 +2631,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GLM-4.7 \u2014 Zhipu's agentic engineering model. Has thinking mode. Best Cerebras model for reasoning tasks."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GLM-4.7 \u2014 Zhipu's agentic engineering model. Has thinking mode. Best Cerebras model for reasoning tasks. EXPIRING Aug 20 2026 \u2014 Cerebras credit expires. Will be DEAD after that date."
     },
     {
       "model_key": "groq/openai/gpt-oss-120b",
@@ -2760,8 +2783,94 @@
       },
       "soul_file_ref": null,
       "shadow_file_ref": null,
-      "last_verified": "2026-07-20",
+      "last_verified": "2026-07-29",
       "note": "FREE. SG jurisdiction. Gemma-4 27B \u2014 fastest SEA-LION. Good for lightweight ASEAN context tasks. 10 RPM. 32K context."
+    },
+    {
+      "model_key": "sea-lion/Llama-SEA-LION-v3.5-70B-R",
+      "model_family": "SEA-LION V3.5",
+      "model_variant": "v3.5-70b-reasoning",
+      "provider_ref": "sea-lion",
+      "context_window": 131072,
+      "max_output_tokens": 32768,
+      "capabilities": [
+        "reasoning",
+        "tool_call",
+        "multilingual",
+        "bm_native",
+        "sea_languages"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "cost_notes": "FREE \u2014 trial key, 10 RPM limit",
+      "status": "LIVE",
+      "trust_tier": 2,
+      "suitable_for": [
+        "asean_data_sovereignty",
+        "bm_language",
+        "local_knowledge",
+        "free_tier"
+      ],
+      "constitutional_roles": [
+        "111_OBSERVE",
+        "777_FORGE"
+      ],
+      "constitutional_roles_forbidden": [
+        "666_JUDGE",
+        "999_SEAL"
+      ],
+      "soul_file_ref": null,
+      "shadow_file_ref": null,
+      "last_verified": "2026-07-29",
+      "note": "NEW entry 2026-07-29. SEA-LION v3.5 70B reasoning variant. SG jurisdiction \u2014 best data sovereignty for ASEAN. Free trial key."
+    },
+    {
+      "model_key": "sea-lion/Qwen-SEA-LION-v4.5-27B-IT",
+      "model_family": "SEA-LION V4.5",
+      "model_variant": "v4.5-27b",
+      "provider_ref": "sea-lion",
+      "context_window": 131072,
+      "max_output_tokens": 32768,
+      "capabilities": [
+        "reasoning",
+        "tool_call",
+        "multilingual",
+        "bm_native",
+        "sea_languages"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "cost_notes": "FREE \u2014 trial key, 10 RPM limit",
+      "status": "LIVE",
+      "trust_tier": 2,
+      "suitable_for": [
+        "asean_data_sovereignty",
+        "bm_language",
+        "local_knowledge",
+        "free_tier"
+      ],
+      "constitutional_roles": [
+        "111_OBSERVE",
+        "777_FORGE"
+      ],
+      "constitutional_roles_forbidden": [
+        "666_JUDGE",
+        "999_SEAL"
+      ],
+      "soul_file_ref": null,
+      "shadow_file_ref": null,
+      "last_verified": "2026-07-29",
+      "note": "NEW entry 2026-07-29. SEA-LION v4.5 27B. Latest Qwen-based SEA-LION. SG jurisdiction."
     },
     {
       "model_key": "gemini/gemini-flash-lite-latest",
@@ -3859,26 +3968,26 @@
       "shadow_id": "SHADOW-GLM-001",
       "model_ref": "glm/glm-5.2",
       "shadow_name": "chinese_alignment_unknown",
-      "severity": "MEDIUM",
+      "severity": "LOW",
       "class": "culture_mismatch",
-      "pattern": "GLM-5.2 is Zhipu's agentic engineering model (753B MoE, ~40B active, MIT license). Safety alignment tuned for CN regulatory context. Malaysian governance topics have unknown censorship risk \u2014 not yet probed. 1M context window now matches competitors (corrected 2026-07-29 from stale 200K figure).",
+      "pattern": "GLM-5.2 MY governance censorship probe PASSED 2026-07-29 (6/6 clean via OpenCode Zen). No censorship detected on 1MDB, Najib Razak, PETRONAS, Jho Low, Khazanah, Anwar Ibrahim topics. GLM-5.2 is now eligible for 666_JUDGE and 999_SEAL backup roles.",
       "triggers": [
         "malaysian_politics",
         "sovereign_governance",
         "unknown_censorship"
       ],
       "floor_posture_delta": {
-        "F2_TRUTH": "note",
-        "F13_SOVEREIGN": "note"
+        "F2_TRUTH": "standard",
+        "F13_SOVEREIGN": "standard"
       },
       "mitigation": [
-        "Probe Malaysian governance topics before promoting beyond FALLBACK",
-        "Keep as engineering execution model (777_FORGE), not judgment (666_JUDGE)",
-        "1M context \u2014 matches competitors (corrected 2026-07-29)"
+        "MY governance probe PASSED \u2014 censorship risk RESOLVED",
+        "GLM-5.2 promoted to 666_JUDGE and 999_SEAL backup",
+        "CN jurisdiction remains \u2014 periodic re-probe recommended"
       ],
       "evidence": "Zhipu = CN company. No MY governance probe results yet.",
       "scar_ref": null,
-      "last_observed": "2026-07-20"
+      "last_observed": "2026-07-29"
     },
     {
       "shadow_id": "SHADOW-MIMO-001",
@@ -4317,23 +4426,19 @@
       "shadow_id": "SHADOW-GLM-004",
       "model_ref": "glm/glm-5.2",
       "shadow_name": "my_censorship_probe_inconclusive",
-      "severity": "HIGH",
+      "severity": "RESOLVED",
       "class": "unknown_censorship",
-      "pattern": "GLM-5.2 MY governance censorship probe attempted 2026-07-29 \u2014 INCONCLUSIVE. Bailian Token Plan quota exhausted. OpenRouter z-ai/glm-5.2 endpoint returns empty content for ALL topics (not just MY), suggesting endpoint malfunction rather than targeted censorship. Z.ai direct endpoint requires API key not yet acquired.",
+      "pattern": "GLM-5.2 MY governance censorship probe COMPLETED 2026-07-29 via OpenCode Zen. 6/6 CLEAN. No censorship. GLM-5.2 promoted to 666_JUDGE/999_SEAL backup.",
       "triggers": [
         "malaysian_governance",
         "censorship_unknown",
         "endpoint_unavailable"
       ],
       "floor_posture_delta": {
-        "F2_TRUTH": "elevated",
-        "F13_SOVEREIGN": "note"
+        "F2_TRUTH": "standard"
       },
       "mitigation": [
-        "GLM-5.2 stays FORGE-only until probe completed",
-        "Acquire Z.ai API key for direct censorship probe",
-        "Retry probe when Bailian quota resets (monthly cycle)",
-        "Cannot promote to 666_JUDGE or 999_SEAL without clean probe"
+        "RESOLVED \u2014 GLM-5.2 is clean. Promoted to constitutional roles."
       ],
       "evidence": "6-test probe attempted via OpenRouter 2026-07-29. All 4 completed tests returned CENSORED (empty). Control test (capital of France) also empty \u2014 endpoint appears broken, not MY-specific censorship.",
       "scar_ref": null,
@@ -4913,6 +5018,13 @@
           "note": "Newer Gemini Flash, 500 RPD"
         },
         {
+          "model_key": "sea-lion/Llama-SEA-LION-v3.5-70B-R",
+          "provider": "sea-lion",
+          "priority": 10,
+          "cost": "free",
+          "note": "SEA-LION v3.5 70B reasoning. SG jurisdiction. BM native. Trial key. 10 RPM."
+        },
+        {
           "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
           "priority": 9,
@@ -4980,6 +5092,13 @@
           "priority": 2,
           "cost": "token_plan",
           "note": "Bailian fallback"
+        },
+        {
+          "model_key": "sea-lion/Qwen-SEA-LION-v4.5-27B-IT",
+          "provider": "sea-lion",
+          "priority": 3,
+          "cost": "free",
+          "note": "SEA-LION v4.5 27B. Latest Qwen-based. SG jurisdiction. BM native."
         },
         {
           "model_key": "ollama/qwen2.5-coder:3b",

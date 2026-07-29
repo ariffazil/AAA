@@ -47,7 +47,7 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token issued via arif_session_init"
+      "description": "arifOS session token issued via arif_init"
     },
     "api_key": {
       "type": "apiKey",
@@ -503,8 +503,6 @@
       "KERNEL-session-inhabit",
       "KERNEL-sovereign-recognize",
       "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
       "KERNEL-reality-skills",
       "KERNEL-mcp-zen",
       "KERNEL-mcp-builder"
@@ -518,8 +516,6 @@
     "KERNEL-session-inhabit",
     "KERNEL-sovereign-recognize",
     "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
     "KERNEL-reality-skills",
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"

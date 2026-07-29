@@ -19,8 +19,8 @@
   },
   "warga_binding": {
     "citizenship": "warga-aaa",
-    "lane": "555-ASI",
-    "intelligence_tier": "ASI",
+    "lane": "333-AGI",
+    "intelligence_tier": "AGI",
     "authority_level": "operator",
     "citizenship_forged": "2026-05-17"
   },
@@ -176,7 +176,7 @@
     {
       "id": "FORGE-federation-ops",
       "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing \u2014 10 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "description": "arifOS federation topology and routing — 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
       "tags": [
         "federation",
         "topology",
@@ -336,142 +336,105 @@
         "F1",
         "F4"
       ]
-    },
-    "KERNEL-sovereign-recognize",
-    "KERNEL-trinity-33",
-    "KERNEL-session-inhabit",
-    "RSI-recursive-improvement",
-    "SHADOW-diagnostic",
-    "CLAIM-verification-gate"
+    }
   ],
   "mcp_surface": {
     "type": "consumed",
     "endpoints": [
       {
         "url": "http://localhost:8088/mcp",
-        "tool_count": 7,
+        "tool_count": 8,
         "tools": [
           "arif_init",
           "arif_observe",
           "arif_think",
           "arif_route",
           "arif_judge",
-          "arif_act",
-          "arif_seal"
+          "arif_forge",
+          "arif_seal",
+          "arif_memory"
         ],
-        "key_lanes": [
-          "governance",
-          "judgment",
-          "session"
-        ],
-        "version": "2025-11-25"
+        "key_lanes": ["governance", "judgment", "session"],
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 72,
+        "tool_count": 52,
         "tools": [
-          "forge_shell",
-          "forge_git",
-          "forge_filesystem",
-          "forge_docker",
-          "forge_execute",
-          "forge_lease",
-          "forge_probe",
-          "forge_registry",
-          "forge_vault",
+          "forge_shell", "forge_git", "forge_filesystem",
+          "forge_docker", "forge_execute", "forge_lease",
+          "forge_probe", "forge_registry", "forge_vault",
           "forge_document_ingest"
         ],
-        "key_lanes": [
-          "execution",
-          "build",
-          "deploy"
-        ],
-        "version": "2025-11-25"
+        "key_lanes": ["execution", "build", "deploy"],
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:8081/mcp",
-        "tool_count": 35,
+        "tool_count": 33,
         "tools": [
-          "geox_basin",
-          "geox_prospect",
-          "geox_evidence",
-          "geox_petrophysics",
-          "geox_seismic_compute",
-          "geox_well_desurvey",
-          "geox_claim",
-          "geox_map_layers_list",
-          "geox_vision",
-          "geox_atlas"
+          "geox_basin", "geox_prospect", "geox_evidence",
+          "geox_petrophysics", "geox_seismic_compute",
+          "geox_seismic_interpret", "geox_seismic_ingest",
+          "geox_claim", "geox_contradiction_scan", "geox_falsify",
+          "geox_map_layers_list", "geox_map_scene_plan",
+          "geox_map_render_preview", "geox_map_export_package",
+          "geox_workspace", "geox_well_ingest", "geox_well_desk",
+          "geox_well_qc", "geox_well_view", "geox_surface_status",
+          "geox_sequence", "geox_deep_time_state",
+          "geox_subsurface_model", "geox_gravmag_studio",
+          "geox_geomechanics", "geox_visual_understand",
+          "geox_visual_generate_hypotheses",
+          "geox_thermal_maturity_history",
+          "geox_sediment_mass_balance", "geox_basin_backstrip",
+          "geox_lem_predict", "geox_claim_graph_evaluate",
+          "geox_to_wealth_bridge"
         ],
-        "key_lanes": [
-          "earth",
-          "basin",
-          "seismic"
-        ],
-        "version": "2025-11-25"
+        "key_lanes": ["earth", "basin", "seismic"],
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:18082/mcp",
-        "tool_count": 26,
+        "tool_count": 14,
         "tools": [
-          "wealth_compute_emv",
-          "wealth_compute_npv",
-          "wealth_compute_irr",
-          "wealth_collapse_signature_scan",
-          "wealth_boundary_governance",
-          "wealth_wisdom_evaluate",
-          "wealth_power_audit",
-          "wealth_survival_engine",
-          "wealth_stock_analysis",
-          "wealth_monte_carlo_simulate"
+          "capital_market", "capital_health", "capital_ledger",
+          "capital_primitive", "capital_wisdom", "capital_diagnose",
+          "capital_entropy", "capital_registry",
+          "wealth_institutional_stress_index", "wealth_cascade_model",
+          "wealth_governance_capacity",
+          "wealth_external_exploitation_detect",
+          "wealth_judge_handoff", "wealth_bid_surface"
         ],
-        "key_lanes": [
-          "capital",
-          "risk",
-          "wisdom"
-        ],
-        "version": "2025-11-25"
+        "key_lanes": ["capital", "risk", "wisdom"],
+        "version": "2026-07-29"
       },
       {
         "url": "http://localhost:18083/mcp",
-        "tool_count": 22,
+        "tool_count": 8,
         "tools": [
-          "well_validate_vitality",
-          "well_assess_homeostasis",
-          "well_guard_dignity",
-          "well_assess_metabolism",
-          "well_readiness",
-          "well_classify_substrate",
-          "well_health_check",
-          "well_signal_coverage"
+          "well_classify_substrate", "well_trace_lineage",
+          "well_assess_homeostasis", "well_check_repair",
+          "well_validate_vitality", "well_guard_dignity",
+          "well_assess_reliability", "well_registry_status"
         ],
-        "key_lanes": [
-          "vitality",
-          "dignity",
-          "homeostasis"
-        ],
-        "version": "2025-11-25"
+        "key_lanes": ["vitality", "dignity", "homeostasis"],
+        "version": "2026-07-29"
+      },
+      {
+        "url": "http://localhost:7073/health",
+        "tool_count": 0,
+        "tools": [],
+        "key_lanes": ["metabolism", "fq", "cooling"],
+        "version": "2026-07-29",
+        "note": "arifFLOW — FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
       }
     ]
   },
-  "protocol_version": "1.2",
   "preferred_transport": "jsonrpc-https",
   "additional_interfaces": [
     {
       "transport": "websocket",
       "url": "ws://127.0.0.1:18789"
-    }
-  ],
-  "security_schemes": [
-    {
-      "id": "openclaw-gateway-password",
-      "type": "apiKey",
-      "description": "Gateway operator password loaded from openclaw.json gateway.auth.password"
-    },
-    {
-      "id": "aaa-a2a-bearer",
-      "type": "bearer",
-      "description": "AAA federation bearer token for A2A bridge traffic"
     }
   ],
   "default_input_modes": [
@@ -543,7 +506,6 @@
       ]
     }
   ],
-  "": "arifOS/agent-card/v2.2.0",
   "apexMasterSeal": {
     "cognitiveRing": "generator",
     "thermodynamicRole": "entropy_source",
@@ -572,8 +534,6 @@
       "KERNEL-session-inhabit",
       "KERNEL-sovereign-recognize",
       "KERNEL-verbs-forge-hands",
-      "KERNEL-quantum-runtime",
-      "KERNEL-qubit-substrate",
       "KERNEL-reality-skills",
       "KERNEL-mcp-zen",
       "KERNEL-mcp-builder"
@@ -587,8 +547,6 @@
     "KERNEL-session-inhabit",
     "KERNEL-sovereign-recognize",
     "KERNEL-verbs-forge-hands",
-    "KERNEL-quantum-runtime",
-    "KERNEL-qubit-substrate",
     "KERNEL-reality-skills",
     "KERNEL-mcp-zen",
     "KERNEL-mcp-builder"
