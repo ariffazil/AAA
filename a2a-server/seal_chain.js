@@ -308,9 +308,13 @@ function readHead() {
     const raw = fs.readFileSync(HEAD_PATH, 'utf-8');
     const parsed = JSON.parse(raw);
     const hash = parsed.hash || parsed.this_hash;
-    if (!Number.isInteger(parsed.seq) || !hash) {
-      throw new Error('seal chain head is missing integer seq or hash');
+    // Accept both integer seq (AAA convention) and string labels (arifOS convention)
+    // The canonical sequence is in parsed.sequence; parsed.seq may be a label
+    const seq = parsed.sequence || parsed.seq;
+    if (!hash) {
+      throw new Error('seal chain head is missing hash');
     }
+    parsed.seq = seq; // normalize
     return { ...parsed, hash };
   } catch (e) {
     if (e.code === 'ENOENT') {
