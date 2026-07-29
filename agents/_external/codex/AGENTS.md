@@ -46,7 +46,7 @@ Compat: art_compat.py (361 lines, 6-check order — legacy only).
 Doctrine: art_pusaka.py (181 lines, cold path).
 NEVER import art_unified_DEPRECATED.py — archaeology only.
 Before any function call or shell command, classify via MCP gateway
-arif_sense_observe(mode="entropy_dS") → verdict in {PROCEED, HOLD, BLOCK,
+arif_observe(mode="entropy_dS") → verdict in {PROCEED, HOLD, BLOCK,
 DEFAULT_OBSERVE}. HOLD/BLOCK → escalate to 888 before proceeding.
 Canonical SOT: /root/arifOS/forge_work/art-corrective-2026-06-21.md.
 ```
@@ -55,7 +55,7 @@ Canonical SOT: /root/arifOS/forge_work/art-corrective-2026-06-21.md.
 
 ```python
 # Conceptual shape — actual call goes via MCP, not direct import:
-verdict = mcp_call("arifOS", "arif_sense_observe", {"mode": "entropy_dS"})
+verdict = mcp_call("arifOS", "arif_observe", {"mode": "entropy_dS"})
 # verdict in {PROCEED, HOLD, BLOCK, DEFAULT_OBSERVE}
 # HOLD/BLOCK → guardian_subagent review → 888 escalation if needed
 ```

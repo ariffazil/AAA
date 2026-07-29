@@ -34,7 +34,7 @@ handoff_signals:
       risk_class: "OBSERVE | MUTATE | ATOMIC"
       floors_triggered: "array<Floor> — e.g. [F11, F13]"
       next_safe_action: "string — what Hermes should tell Arif"
-    hermes_action: "Narrate result to Arif using Telegram template. Route to APEXMax if 888_HOLD."
+    hermes_action: "Narrate result to Arif using Telegram template. Route to arif_judge if 888_HOLD."
 
   # Signal sent by Hermes when human intent needs machine execution
   EXEC_REQUEST:
@@ -53,15 +53,15 @@ handoff_signals:
   # Signal sent by either when constitutional judgment needed
   JUDGE_REQUEST:
     from: [openclaw, hermes]
-    to: apexmax
+    to: arif_judge
     trigger: "Irreversible action, conflicting evidence, or floor ambiguity"
     payload:
       session_id: "string"
       candidate: "string — proposed action description"
       evidence: "array<string> — supporting facts"
       requesting_agent: "openclaw | hermes"
-    apexmax_action: "Return SEAL | HOLD | SABAR | VOID with floor scores"
-    hermes_action_post_apex: "Narrate verdict to group if relevant. Default HOLD if APEX unreachable."
+    arif_judge_action: "Return SEAL | HOLD | SABAR | VOID with floor scores"
+    hermes_action_post_judge: "Narrate verdict to group if relevant. Default HOLD if arif_judge unreachable."
 
 decision_tree:
   - condition: "Message contains @AGI_ASI_bot or machine ops keywords"
@@ -69,16 +69,16 @@ decision_tree:
   - condition: "Message contains @ASI_arifos_bot or human-life keywords"
     routing: "Hermes responds → Hermes may send EXEC_REQUEST to OpenClaw"
   - condition: "Message contains 'SEAL', 'HOLD', 'verdict', '888', 'irreversible'"
-    routing: "Hermes routes to APEXMax → APEXMax returns verdict → Hermes narrates"
+    routing: "Hermes routes to arif_judge → arif_judge returns verdict → Hermes narrates"
   - condition: "OpenClaw sends EXEC_COMPLETE with 888_HOLD"
-    routing: "Hermes narrates HOLD to Arif, includes APEX verdict if available"
+    routing: "Hermes narrates HOLD to Arif, includes arif_judge verdict if available"
   - condition: "Hermes sends EXEC_REQUEST with reversibility=irreversible"
-    routing: "OpenClaw pauses → sends JUDGE_REQUEST to APEXMax → awaits SEAL before executing"
+    routing: "OpenClaw pauses → sends JUDGE_REQUEST to arif_judge → awaits SEAL before executing"
 
 group_chat_rules:
   - rule: "Hermes is SOLE group speaker under Option B (2026-05-20)"
   - rule: "OpenClaw NEVER speaks in group unless @mentioned by Arif"
-  - rule: "APEXMax NEVER speaks in group unless Arif explicitly requests"
+  - rule: "arif_judge NEVER speaks in group unless Arif explicitly requests"
   - rule: "One message per agent per session in group"
   - rule: "All inter-agent chatter → A2A, not Telegram"
   - rule: "DITEMPA BUKAN DIBERI footer mandatory on every Telegram reply"
@@ -86,7 +86,7 @@ group_chat_rules:
 forbidden:
   - "OpenClaw claiming Hermes identity"
   - "Hermes executing machine ops directly"
-  - "Either agent bypassing APEXMax for irreversible actions"
+  - "Either agent bypassing arif_judge for irreversible actions"
   - "Either agent bypassing 888_HOLD gate"
   - "Auto-loop: Hermes replying to its own messages"
 
