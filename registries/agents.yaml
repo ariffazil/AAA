@@ -1089,4 +1089,16 @@ agents:
   host_binding: aforge-executor
   description: A-FORGE governance pillar — execution governance, forge gate, Amanah
     lock. 12 skills.
+- id: agentic-trading-companion
+  name: Agentic Trading Companion — Governed Executor
+  citizenship: warga-aaa
+  authority_level: governed-executor
+  intelligence_tier: AGI
+  intelligence_band: AGI
+  lane: WEALTH
+  a2a_exposure: authenticated
+  host_binding: hermes-agent
+  w_scar: HIGH
+  sovereign_gate_required: true
+  description: 'Active trading executor (XAUUSD). MT5 bridge holder. Every trade requires 888_SOVEREIGN approval. PASSIVE analysis node separate. Contracts: A2A_TRADING_CONTRACT, A2A_MT5_BRIDGE.'
 version: 1
