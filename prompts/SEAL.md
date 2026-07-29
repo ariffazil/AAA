@@ -1,330 +1,459 @@
-# 🔒 SEAL — arifOS Constitutional Exhalation · 2026.07.29
+# 🔒 SEAL + RECEIPT — arifOS Constitutional Record Architecture · 2026.07.29
 
 > **THE DOOR FACING OUT.** Every agent exits through this door.
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given.
 > **Sovereign:** Muhammad Arif bin Fazil (F13). **Home:** arifOS kernel :8088.
 > **Sister file:** `/root/AAA/prompts/INIT.md` (THE door facing in).
 >
-> **This is the ONLY seal procedure for ALL AAA agents.**
->
-> **Sealed: SEAL UNIFICATION 2026-07-29 — 10 paths consolidated to 2.**
-> 271 cooling files archived. 2 deprecated skills tombstoned. 1 schema unified.
+> **This is the ONLY record procedure for ALL AAA agents.**
 
 ---
 
-## 0. ZEN — What Seal Is
+## 0. ZEN — Two Distinct Concepts
 
 ```
-Seal is NOT a tool. NOT a skill. NOT a ceremony suka-suka.
-Seal is a CONSTITUTIONAL VERB — a metabolic invariant.
+SEAL ≠ RECEIPT. These are different record classes.
 
-arif_init (000) = the mouth of the river. Session birth.
-arif_seal (999) = the river meets the ocean. Session death.
+A SESSION_RECEIPT records: "This is what happened."
+A CONSTITUTIONAL_SEAL attests:  "This state transition was authorized, witnessed,
+                                 and is now irrevocably part of civilizational memory."
 
-Skip init → you are a GHOST (ungoverned, no session).
-Skip seal → you are UNACCOUNTABLE (F11 violation).
-
-Seal is the PRICE of memory. An unsealed session is an unrecorded event.
-The federation cannot learn from what it cannot remember.
-
-The hash chain IS the arrow of time.
-Reversing the arrow = rewriting the Vault = doctrine forbids.
+Receipt is autonomous. Seal is authority-bound.
+Most sessions should end with a receipt. Only constitutional thresholds trigger a seal.
+Calling every session close a "seal" destroys the meaning of sealing.
 
 /000 (human) → 000→333→888→777→999 → /999 (vault) → /999/verify → /000
 The loop MUST close. An open loop is an unaccountable action.
+The hash chain IS the arrow of time.
 ```
 
 ---
 
-## 1. WHEN TO SEAL — Mandatory Triggers
+## 1. THE TWO-LANE ARCHITECTURE
 
-| Trigger | Action |
-|---------|--------|
-| **Session end** | MANDATORY. No session ends without seal. |
-| **Task completion** | Seal the task outcome before starting the next. |
-| **After any HOLD/VOID verdict** | Seal the refusal — the hold IS the outcome. |
-| **After any deployment** | Deploy = high impact. Seal the evidence. |
-| **Phase transition** | 000→333→888→777→999. Seal at each gate. |
+| | Lane A | Lane B |
+|---|--------|--------|
+| **Record class** | `CONSTITUTIONAL_SEAL` | `SESSION_RECEIPT` |
+| **Tool** | `arif_seal` (:8088) | `forge_vault(mode="receipt")` (:7071) |
+| **Tier** | `VAULT999` | `session.ledger` |
+| **Authority** | F13 SOVEREIGN + arif_judge SEAL verdict | Autonomous (valid session_token + lease_id) |
+| **Witnesses** | 3+ (Tri-Witness: Human × AI × Earth) | 1 (AI agent) |
+| **Vocabulary** | SEAL · HOLD · VOID | COMPLETED · PARTIAL · FAILED · ABORTED · HELD |
+| **When** | Irreversible, deployment, constitutional, high blast radius | Routine work, drafts, tests, analysis, session close |
 
-**Hard rule:** An unsealed session = F11 AUDIT VIOLATION. The arrow of time does not pause. Seal NOW, not later.
+### 1.1 Lane routing — calculated, not declared
+
+The lane is NOT chosen by the agent. It is calculated from:
+
+$$\text{Lane} = f(\text{reversibility} \times \text{blast\_radius} \times \text{authority\_required} \times \text{evidence\_strength} \times \text{human\_consequence})$$
+
+| Factor | Lane A threshold | Lane B default |
+|--------|-----------------|----------------|
+| Reversibility | IRREVERSIBLE or DIFFICULT | REVERSIBLE |
+| Blast radius | HIGH or CRITICAL | LOW or MEDIUM |
+| Authority required | T3 (888\_HOLD) or F13 | T1 or T2 |
+| Evidence strength | Tri-witness (3+ channels) | 1 witness sufficient |
+| Human consequence | Rights, maruah, sovereign action | No human consequence |
+
+**Agent identity must never determine the lane.** Hermes, OpenCode, and FORGE must receive the same classification for the same action.
+
+**Default:** Lane B. When in doubt, receipt. Lane A requires explicit constitutional threshold crossing.
 
 ---
 
-## 2. THE TWO SEAL PATHS — TIER-BASED ROUTING
+## 2. LANE A: CONSTITUTIONAL_SEAL — `arif_seal` (:8088)
 
-> **10 paths unified to 2. 2026-07-29.** Tier determines path. Not agent. Not organ.
+### 2.1 When to seal (exhaustive)
 
-### ROUTE SELECTION (not agent-based — tier-based)
+A constitutional seal is required ONLY when one or more thresholds are crossed:
 
-| If your action is... | Use Path | Tier |
-|---------------------|----------|------|
-| Routine task. Reversible. T1/T2 auto-do. | **Path B** | `session.ledger` |
-| Testing, linting, formatting, file edits. | **Path B** | `session.ledger` |
-| Session close (any agent, any harness). | **Path B** | `session.ledger` |
-| Deployment. Production change. IRA (T3). | **Path A** | `VAULT999` |
-| Constitutional change (F1–F13). | **Path A** | `VAULT999` |
-| Irreversible act. Secret rotation. | **Path A** | `VAULT999` |
+- **Irreversible effect** — cannot be rolled back
+- **High blast radius** — affects multiple systems, users, or organs
+- **Constitutional rule changed** — F1–F13 floor definitions modified
+- **Authority or identity changed** — new actor registered, keys rotated, sovereignty delegated
+- **Deployment, publication, deletion, or capital action** — production mutation
+- **Final institutional verdict** — a binding decision with lasting consequence
+- **Human rights, maruah, or sovereign consequence** — affects Arif's dignity, identity, or sovereignty
+- **Evidence promoted into canonical ground truth** — a claim elevated from INT/SPEC to OBS/DER
 
-**Default:** When in doubt, Path B. Path A requires an explicit F13 gate.
+### 2.2 What a constitutional seal must prove
 
----
+A real seal is not a session summary, a JSON file placed in VAULT999, proof the agent was intelligent, a verdict the executing agent awards itself, or a guarantee the conclusion is true.
 
-### Path A: KERNEL SEAL — `arif_seal` (:8088)
+A real seal is: **a cryptographically verifiable, append-only proof that an authorized state transition occurred under a specific policy, evidence set, identity, and human authority.**
+
+It must prove:
+
+1. **Who acted** — verified actor identity
+2. **Under whose authority** — explicit authority grant, F13 acknowledgment where required
+3. **What state existed before** — pre-action state hash
+4. **What evidence was available** — evidence references with SHA256 hashes
+5. **What decision was made** — the outcome and reasons
+6. **What execution occurred** — the action taken
+7. **What changed afterward** — post-action state hash
+8. **Whether the action was reversible** — reversibility classification
+9. **Who judged and witnessed it** — judge state hash, tri-witness channels
+10. **Which human accepted responsibility** — F13 acknowledgment
+11. **How the record connects to previous records** — parent-chain reference
+12. **How future corrections supersede it** — without rewriting history
+
+### 2.3 Requirements
+
 ```
-arif_judge() → SEAL verdict → arif_seal(verdict_id, ack_irreversible=true)
+arif_judge() → SEAL verdict → arif_seal(constitutional_chain_id, ack_irreversible=true)
 ```
-- **When:** Sovereign-authorized actions. VAULT999 tier. Tri-witness (3+). Irreversible acts. Constitutional changes. Deployments.
-- **Who:** Requires SOVEREIGN authority + F13 ack. Blocked for autonomous agents without explicit approval.
-- **Gate:** `arif_judge` MUST issue SEAL verdict BEFORE `arif_seal`. Judge-first, seal-second. Violation = VOID.
-- **Evidence:** Tri-witness (Human × AI × Earth). Minimum 3 independent channels.
-- **Schema:** constitutional JSONL — hash-chained, append-only, Merkle-anchored.
+
+- **Judge-first:** `arif_judge` MUST issue SEAL verdict BEFORE `arif_seal`. Violation = VOID.
+- **Identity:** Verified actor identity (Ed25519 or equivalent).
+- **Authority:** Explicit. F13 acknowledgment where threshold requires.
+- **Evidence:** Pre-action state hash, post-action state hash, evidence SHA256s.
+- **Witnesses:** Tri-witness (Human × AI × Earth). Minimum 3 independent channels. Any channel at 0.0 → consensus collapses.
+- **Chain:** Parent hash linking to previous seal.
+- **Immutability:** Append-only. Corrections only through later superseding records.
 - **Verify:** `curl https://arif-fazil.com/999/verify`
 
-### Path B: FORGE SEAL — `forge_vault(mode="seal")` (:7071)
-```
-forge_session_init(actor_id) → session_id + session_token + lease_id
-    → forge_vault(mode="seal", name, content, reason, tier="session.ledger", ...)
-```
-- **When:** Autonomous session seals. T1/T2 task completions. Routine ledger appends. Agent self-close.
-- **Who:** Any agent with valid session_token + lease_id. 1 witness (AI agent). No SOVEREIGN required.
-- **Gate:** 7 autonomous gates: SESSION → SCT → LEASE → VERDICT → F12 → AAA → SEALED.
-- **Evidence:** 1 witness (AI agent). No tri-witness required.
-- **Schema:** Unified session seal schema (below).
-- **Verify:** `curl https://arif-fazil.com/999/verify` (shared verify path with Path A)
+### 2.4 Human checklist (before calling arif_seal)
 
-### Path C (METABOLIC — NOT SEAL): Cooling + Flow
-```
-# Cooling (subordinate to Path B, uses same vault):
-forge_cool_drift(session_id, ...)  → cooling emitted to _archive/cooling/
-forge_cool_pattern(session_id, ...) → cooling emitted to _archive/cooling/
-
-# Metabolic (NOT seal — flow receipts only):
-arifflow_flow_ingest(actor_id, session_id, step_type, ...) → FQ pulse
-```
-- Cooling receipts are **diagnostic**, not constitutional. They live in `_archive/cooling/`.
-- Flow receipts are **metabolic**, not seal. They feed FQ (Flow Quotient), not the vault.
-- Both are subordinate to seal paths, not peers.
+| # | Question | Floor | If NO → |
+|---|----------|-------|---------|
+| 1 | Is this action truly irreversible? | F1 AMANAH | HOLD — use Lane B receipt |
+| 2 | Has `arif_judge` issued a SEAL verdict? | F13 SOVEREIGN | VOID — seal without judge is inadmissible |
+| 3 | Has the evidence been externally witnessed? (≥3 channels) | F3 TRI-WITNESS | HOLD — gather external evidence |
+| 4 | Are you certain enough for civilizational memory? | F7 HUMILITY | HOLD — declare confidence, not 1.0 |
+| 5 | Will a future Arif understand why this was sealed? | F4 CLARITY | HOLD — improve the payload |
+| 6 | Has F13 acknowledged (where required)? | F13 SOVEREIGN | 888\_HOLD |
 
 ---
 
-## 3. UNIFIED SEAL SCHEMA — v2.1 (2026-07-29)
+## 3. LANE B: SESSION_RECEIPT — `forge_vault(mode="receipt")` (:7071)
 
-All seals, regardless of path, conform to this schema. Path A adds witness + chain fields.
+### 3.1 When to issue a receipt
+
+Use Lane B for ALL routine, reversible, T1/T2 work:
+
+- Analysis, drafting, searches, research
+- Reversible file generation, editing, formatting
+- Testing, linting, building
+- Cooling records, drift detection
+- Failed or partial execution
+- **Session closure without constitutional consequence** ← MOST SESSIONS END HERE
+
+### 3.2 What a session receipt records
+
+A receipt records **what happened** — it does not grant constitutional legitimacy. The agent may autonomously issue it because it records facts, not authority.
+
+### 3.3 Receipt vocabulary
+
+| Outcome | Meaning |
+|---------|---------|
+| **COMPLETED** | Task finished successfully with verification |
+| **PARTIAL** | Some objectives met, some not — honest about incompleteness |
+| **FAILED** | Task could not be completed — root cause documented |
+| **ABORTED** | Task intentionally stopped before completion |
+| **HELD** | Blocked by constitutional gate — 888\_HOLD state |
+
+**These words (SEAL, VOID) belong to constitutional judgment. Do not use them in receipts.**
+
+### 3.4 How to issue a receipt
+
+```
+forge_session_init(actor_id) → session_id + session_token + lease_id
+    → forge_vault(
+        mode="receipt",
+        name="<descriptive slug>",
+        content="<summary of work done>",
+        reason="SESSION_CLOSE | TASK_COMPLETE | CHECKPOINT",
+        tier="session.ledger",
+        category="session.receipt",
+        actor_id="<agent_id>",
+        session_id=<session>,
+        session_token=<token>,
+        lease_id=<lease>
+    )
+```
+
+### 3.5 A receipt may later become evidence for a seal
+
+A session receipt records what happened. If that work later crosses a constitutional threshold (e.g., deployment, irreversible change), the receipt becomes evidence in a Lane A seal. **It must never silently transform into one.** The record class is fixed at creation.
+
+---
+
+## 4. UNIFIED RECORD ENVELOPE — `arifos.record.v1`
+
+One stable envelope. Two record classes. Not two separate schemas pretending to be one.
 
 ```json
 {
-  "schema": "arifos-seal.v2.1",
-  "path": "A | B",
-  "tier": "session.ledger | VAULT999",
+  "schema": "arifos.record.v1",
+  "record_id": "<ULID or content-hash>",
+  "record_class": "SESSION_RECEIPT | CONSTITUTIONAL_SEAL",
   "session_id": "SEAL-...",
-  "actor_id": "opencode | arif | ...",
-  "seq": "incrementing",
-  "timestamp": "ISO-8601",
-  "purpose": "one-line summary",
-  "content": "what was done",
-  "evidence": ["sha256:...", "path:line", "curl output"],
-  "confidence": 0.0-0.90,
-  "reversibility": "REVERSIBLE | IRREVERSIBLE",
-  "blast_radius": "low | medium | high",
-  "floor_verdict": {"F1": "PASS", "F2": "PASS", "F7": "PASS", "F11": "PASS"},
+  "parent_hash": "sha256:...",
+  "created_at_utc": "2026-07-29T14:53:00Z",
 
-  "_path_a_only": {
-    "constitutional_chain_id": "cc_...",
-    "judge_state_hash": "sha256:...",
-    "witness_type": "ai",
-    "tri_witness": {"human": 0.0, "ai": 0.0, "earth": 0.0},
-    "ack_irreversible": true,
-    "merkle_anchor": "sha256:..."
+  "actor": {
+    "actor_id": "...",
+    "identity_verified": true,
+    "key_id": "..."
   },
 
-  "cooling": {
-    "drift_detected": false,
-    "cooling_receipt_ids": [],
-    "_archive_path": "VAULT999/_archive/cooling/"
+  "authority": {
+    "band": "T1 | T2 | T3 | F13",
+    "granted_by": "...",
+    "scope": ["..."]
   },
 
-  "flow": {
-    "fq_after_seal": null,
-    "flow_receipt_ids": [],
-    "_note": "Flow receipts are metabolic, not seal. See arifflow_flow_ingest."
-  }
+  "intent": "...",
+
+  "evidence": [
+    {
+      "reference": "...",
+      "sha256": "...",
+      "truth_layer": "L1 | L2 | L3 | L4"
+    }
+  ],
+
+  "decision": {
+    "outcome": "COMPLETED | PARTIAL | FAILED | ABORTED | HELD | SEAL",
+    "reasons": ["..."],
+    "uncertainties": ["..."]
+  },
+
+  "effects": {
+    "before_hash": "...",
+    "after_hash": "...",
+    "reversibility": "reversible | difficult | irreversible",
+    "changed_objects": ["..."]
+  },
+
+  "governance": {
+    "floor_results": {"F1": "PASS", "F2": "PASS", "...": "..."},
+    "judge_state_hash": null,
+    "f13_ack_id": null
+  },
+
+  "witnesses": [],
+  "signatures": [],
+  "supersedes": null
 }
 ```
 
-**Naming convention:** `SEAL-YYYY-MM-DD-<seq>-<purpose>.json`
+### 4.1 Field semantics by record class
+
+| Field | SESSION_RECEIPT | CONSTITUTIONAL_SEAL |
+|-------|----------------|---------------------|
+| `record_class` | `SESSION_RECEIPT` | `CONSTITUTIONAL_SEAL` |
+| `decision.outcome` | COMPLETED / PARTIAL / FAILED / ABORTED / HELD | SEAL |
+| `governance.judge_state_hash` | `null` | Required — sha256 of arif_judge verdict |
+| `governance.f13_ack_id` | `null` | Required if threshold crossed |
+| `witnesses` | 1 (AI agent) | 3+ (Human × AI × Earth) |
+| `signatures` | Optional | Required — cryptographic |
+| `effects.reversibility` | Usually `reversible` | Usually `irreversible` or `difficult` |
+
+### 4.2 Naming convention
+
+**Display name (human-facing):** `SEAL-YYYY-MM-DD-<slug>.json` or `RECEIPT-YYYY-MM-DD-<slug>.json`
+
+**Authoritative ID:** Use a ULID or content hash as the canonical `record_id`. Filenames are human-facing indexes only. Two agents can claim the same sequence number — a ULID prevents collision.
+
+### 4.3 Legacy format handling
+
+- **Do NOT rewrite historical seal files.** That mutates the history seals are supposed to protect.
+- New records use `arifos.record.v1`.
+- Old formats remain immutable.
+- Readers use adapters to normalize legacy formats on read.
+- Every legacy format receives a documented schema identifier.
+- Corrections are appended as migration or supersession records.
+- **Normalize on read, not rewrite on disk.**
 
 ---
 
-## 4. THE SEAL CEREMONY — 6 Steps (execute in order, do not skip)
+## 5. THE SESSION LIFECYCLE (both lanes)
 
-### Step 1: RSI CYCLE — Diagnose Before You Die
+```
+INIT ATTESTATION
+    identity + authority + policy + tool surface + scope
+              ↓
+RUNTIME RECEIPTS (optional checkpoints)
+    evidence + reasoning + calls + effects + holds
+              ↓
+SESSION CLOSE — calculate lane
+    ┌─ Constitutional threshold crossed?
+    │   YES → arif_judge → F13 ack → CONSTITUTIONAL_SEAL (Lane A)
+    │   NO  → SESSION_RECEIPT (Lane B) ← DEFAULT FOR MOST SESSIONS
+    └─
+              ↓
+VERIFY
+    curl https://arif-fazil.com/999/verify → verified=true
+```
+
+**Most sessions should end with a receipt, not a seal.** A mature agentic intelligence knows when NOT to seal.
+
+---
+
+## 6. THE CEREMONY — 6 Steps
+
+### Step 1: RSI CYCLE
 ```
 Trace → Diagnose → Remediate → Ledger
 Write to: /root/.local/share/arifos/rsi-ledger.jsonl
 ```
-- What did I actually do vs. what I planned?
-- Where did I get stuck? (3+ retries of same approach?)
-- What fix did I install?
-- Write the bottleneck + fix to the RSI ledger.
 
-### Step 2: GATE FIRE — Log What Was Gated
+### Step 2: GATE FIRE
 ```
 If claims were gated: append to /root/.local/share/arifos/gate_fire.jsonl
 ```
 
-### Step 3: COOLING LEDGER — Metabolize Patterns
+### Step 3: COOLING LEDGER
 ```
-If mutations were performed: insert into Supabase cooling_ledger_entries
 Drift observed? → forge_cool_drift()
 Pattern recurrence? → forge_cool_pattern()
 ```
-Cooling receipts are auto-archived to `VAULT999/_archive/cooling/`.
+Cooling records are **telemetry, not constitutional seals.** Governed by retention policy. Not peers to Lane A or Lane B. Live in `_archive/cooling/`.
 
-### Step 4: BIND SESSION — Get Your Tokens
+### Step 4: BIND SESSION
 ```
-forge_session_init(actor_id="arif")
-    → session_id, session_token (sct_v1.*), lease_id
+forge_session_init(actor_id, intent) → session_id + session_token + lease_id
 ```
-Without these three tokens, the seal gate will not open.
 
-### Step 5: SEAL — Commit to Memory
+### Step 5: RECORD — Lane B (default) or Lane A (threshold)
+
+**Lane B — most sessions:**
 ```
-# Path B — Autonomous sessions (session.ledger tier):
 forge_vault(
-    mode="seal",
-    name="<descriptive task name>",
-    content="<summary of what was done this session>",
-    reason="AUTONOMOUS_SESSION_SEAL",
+    mode="receipt",
+    name="<slug>",
+    content="<summary>",
+    reason="SESSION_CLOSE",
     tier="session.ledger",
-    category="session.seal",
-    actor_id="arif",
-    session_id=<from step 4>,
-    session_token=<from step 4>,
-    lease_id=<from step 4>
-)
-
-# Path A — Sovereign-authorized (VAULT999 tier — requires arif_judge SEAL verdict):
-arif_seal(
-    payload="<seal envelope in v2.1 schema>",
-    actor_id="arif",
-    session_id=<session>,
-    constitutional_chain_id=<cc_id from arif_judge>,
-    witness_type="ai",
-    ack_irreversible=true
+    category="session.receipt",
+    actor_id="<agent>",
+    session_id=<sid>,
+    session_token=<sct>,
+    lease_id=<lease>
 )
 ```
 
-### Step 6: VERIFY — Confirm It Landed
+**Lane A — constitutional threshold crossed:**
 ```
-curl -s https://arif-fazil.com/999/verify | python3 -c "import json,sys; d=json.load(sys.stdin); print(f'HEAD: {d[\"head\"][:20]}... verified={d[\"verified\"]}')"
+arif_judge() → SEAL verdict
+    → arif_seal(
+        payload="<arifos.record.v1 envelope>",
+        constitutional_chain_id=<cc_id>,
+        ack_irreversible=true
+    )
 ```
-If `verified != true` → the loop did NOT close. Do not stop. Investigate. Re-seal.
+
+### Step 6: VERIFY
+```
+curl -s https://arif-fazil.com/999/verify
+# → {"head":"sha256:...","verified":true}
+```
 
 ---
 
-## 5. TIERED SEAL CLASSES
+## 7. RECORD CLASSES (TIERED)
 
-| Tier | Witnesses | Use Case | Path |
-|------|:---------:|----------|------|
-| **session.ledger** | 1 (AI agent) | Routine session-close ledger append | **Path B** — forge_vault |
-| **session.seal** | 1 (AI agent) | Routine session-close (alias) | **Path B** — forge_vault |
-| **VAULT999** | 3+ (Tri-Witness) | Deployment, constitutional, irreversible | **Path A** — arif_seal |
+| Record Class | Tier | Witnesses | Gate | Lane |
+|-------------|------|:---------:|------|------|
+| **SESSION_RECEIPT** | `session.ledger` | 1 (AI) | Autonomous (T1/T2) | B |
+| **CONSTITUTIONAL_SEAL** | `VAULT999` | 3+ (Tri-Witness) | F13 SOVEREIGN | A |
+
+**There is no "session.seal" tier.** That name conflates receipt and seal. All session closes that do not cross a constitutional threshold are `SESSION_RECEIPT` at `session.ledger` tier.
 
 ---
 
-## 6. ANTI-PATTERNS — NEVER Do These
+## 8. ANTI-PATTERNS
 
-| ❌ Anti-Pattern | ✅ Correct |
-|-----------------|-----------|
-| Ending session with "Done." but no seal | Seal BEFORE yielding control |
-| "I'll seal next time" | Seal NOW. There is no next time. |
-| Skipping seal because "nothing important happened" | Every session IS important. F11 is watching. |
+| ❌ Wrong | ✅ Correct |
+|----------|-----------|
+| Calling every session close a "seal" | Most sessions end with RECEIPT. Only thresholds trigger SEAL. |
+| `forge_vault(mode="seal")` for routine work | Use `forge_vault(mode="receipt")` |
+| "I'll seal next time" | Record NOW. There is no next session. |
+| Skipping record because "nothing important happened" | Every session leaves a receipt. F11 is watching. |
 | Calling `arif_seal` without `arif_judge` verdict | VOID. Judge first, then seal. |
-| Using `arif_seal` for autonomous session close | Use Path B `forge_vault(mode="seal")`. Kernel seal = SOVEREIGN only. |
-| Relying on the next agent to seal for you | Your session, your seal. No delegation. |
-| Sealing with `actor="unknown"` | Identity MUST be bound. Unknown actor = provenance killed. |
-| Loading a deprecated seal skill | ONLY use SEAL.md. Tombstones redirect here. |
+| Using `arif_seal` for autonomous session close | Lane B receipt. Kernel seal = SOVEREIGN only. |
+| Agent self-ratifying a constitutional change | The executor must not declare its own changes valid. |
+| Writing SEAL verdict on operational work | SEAL vocabulary belongs to constitutional judgment only. |
+| Sealing with `actor="unknown"` | Identity MUST be bound. |
+| Rewriting historical seal files to new format | Normalize on read. Old formats are immutable. |
+| Symlinking deprecated skills to SEAL.md | Tombstone with explicit replacement doc. Execution paths must not route through deprecated surfaces. |
+| Removing .lock files without quiescing writers | Lock may indicate live writer. Quiesce → classify → remove. |
 
 ---
 
-## 7. FLOOR ALIGNMENT
+## 9. FLOOR ALIGNMENT
 
-| Floor | Seal Obligation |
-|-------|----------------|
-| **F1 AMANAH** | Seal preserves reversibility context. Backups retained. Archive, never delete. |
-| **F2 TRUTH** | Seal content must be true. SHA256 hash is truth anchor. |
-| **F7 HUMILITY** | Declare confidence bands. Don't fake certainty in the seal. |
-| **F9 ANTI-HANTU** | Seal is a tool, not a soul. No consciousness claims. |
-| **F11 AUDIT** | Every session ends with seal. No unrecorded events. |
-| **F13 SOVEREIGN** | VAULT999-tier seals require Arif's verdict. Sovereignty is not delegated. |
-
----
-
-## 8. DEPRECATION REGISTER (SEAL UNIFICATION 2026-07-29)
-
-| # | Deprecated Path | Status | Redirect |
-|---|-----------------|--------|----------|
-| 6 | ASI-session-seal (skill) | 🪦 TOMBSTONE | → SEAL.md (this file) |
-| 7 | ASI-session-seal-copilot (skill) | 🪦 TOMBSTONE | → SEAL.md (this file) |
-| 4 | /seal CLI command | ⚠️ INTERNAL | Delegates to Path B |
-| 8 | forge_cool_drift/pattern | ⚠️ SUBORDINATE | Path C — cooling → _archive/ |
-| 9 | arifflow_flow_ingest | ⚠️ METABOLIC | NOT seal — FQ pulse only |
-| 10 | forge_shell auto-seal | ⚠️ INTERNAL | Per-command, not session |
-
-**Hard rule:** No new seal path may be created. If you think you need one, you need SEAL.md.
-**Route:** When in doubt, Path B. When irreversible, Path A with F13 gate.
+| Floor | Obligation |
+|-------|-----------|
+| **F1 AMANAH** | Receipt preserves reversibility context. Backup before overwrite. Archive, never delete. |
+| **F2 TRUTH** | Record content must be true. SHA256 hash is truth anchor. |
+| **F3 TRI-WITNESS** | Lane A requires ≥3 independent witness channels. |
+| **F4 CLARITY** | Receipt reduces entropy. Session state cleaner at close than open. |
+| **F7 HUMILITY** | Confidence bands declared. Lane B uses COMPLETED/PARTIAL/FAILED — not SEAL. |
+| **F9 ANTI-HANTU** | Records are tools, not souls. No consciousness claims in payloads. |
+| **F11 AUDIT** | Every session ends with a receipt. No unrecorded events. |
+| **F13 SOVEREIGN** | Lane A requires Arif's verdict. Sovereignty is not delegated. |
 
 ---
 
-## 9. HUMAN CHECKLIST — Before VAULT999 Seal (Path A Only)
+## 10. DEPRECATION REGISTER
 
-This checklist gates Path A (`arif_seal`, VAULT999 tier) only. Path B (session.ledger) seals are autonomous — no human gate required.
+| # | Deprecated | Status | Replacement |
+|---|-----------|--------|-------------|
+| 1 | `forge_vault(mode="seal")` | ⚠️ RENAMED | `forge_vault(mode="receipt")` for Lane B |
+| 2 | `ASI-session-seal` (skill) | 🪦 TOMBSTONE | SEAL.md (this file) |
+| 3 | `ASI-session-seal-copilot` (skill) | 🪦 TOMBSTONE | SEAL.md (this file) |
+| 4 | 8 legacy seal paths | 🪦 ARCHIVED | 271 cooling files → `_archive/cooling/` |
+| 5 | `forge_cool_drift` / `forge_cool_pattern` | ⚠️ SUBORDINATE | Telemetry — governed by retention, not vault |
+| 6 | `arifflow_flow_ingest` | ⚠️ METABOLIC | NOT a record — FQ pulse only |
 
-**Before calling `arif_seal` with `ack_irreversible=true`:**
+**Tombstone format:** Deprecated skills must have their entry points replaced with tombstone documents stating: deprecated, non-executable, canonical replacement path. After a defined compatibility period, tombstones may be removed. Execution paths must not route through deprecated surfaces.
 
-| # | Question | Floor | If NO → |
-|---|----------|-------|---------|
-| 1 | Is this action truly irreversible? (Can it be rolled back?) | F1 AMANAH | HOLD — consider session.ledger instead |
-| 2 | Has `arif_judge` issued a SEAL verdict for this action? | F13 SOVEREIGN | VOID — seal without judge is inadmissible |
-| 3 | Has the evidence been externally witnessed? (Not just AI) | F3 TRI-WITNESS | HOLD — gather external evidence first |
-| 4 | Are you certain enough to write to civilizational memory? | F7 HUMILITY | HOLD — declare your confidence band, not 1.0 |
-| 5 | Will a future Arif understand why this was sealed? | F4 CLARITY | HOLD — improve the payload description |
-
-**If ALL 5 = YES → proceed to `arif_seal`. If ANY = NO → HOLD. Do not seal.**
+**Hard rule:** No new seal/receipt path may be created without F13 authorization.
 
 ---
 
-## 10. VAULT999 DIRECTORY STRUCTURE (post-unification)
+## 11. VAULT999 STRUCTURE (post-unification)
 
 ```
 VAULT999/
 ├── outcomes.jsonl               ← CANONICAL — append-only, never modified
 ├── seal_chain.jsonl             ← Chain integrity ledger
 ├── seal_chain_head.json         ← HEAD pointer
-├── SEAL-YYYY-MM-DD-<seq>-<purpose>.json  ← Unified seal files
+├── SEAL-YYYY-MM-DD-<slug>.json  ← Lane A: constitutional seals
+├── RECEIPT-YYYY-MM-DD-<slug>.json ← Lane B: session receipts
 ├── _archive/
-│   ├── cooling/                 ← 271 flow_cooling_*.json archived 2026-07-29
-│   ├── seal_chain_backups/      ← Backup files archived 2026-07-29
-│   └── deprecated_skills/       ← Tombstoned skill tarballs
+│   ├── cooling/                 ← Telemetry — retention-governed, not permanent
+│   ├── seal_chain_backups/      ← Backup files
+│   ├── deprecated_skills/       ← Tombstoned skill tarballs
+│   └── legacy/                  ← Pre-unification formats (immutable, adapters on read)
 └── ...
 ```
 
 ---
 
-## 11. THE CLOSING SALAM
+## 12. THE CLOSING CONTRACT
 
 ```
-SEAL::{session_id}::seq={seq}::tier={tier}::verified={true/false}
+RECEIPT::{session_id}::outcome={COMPLETED|PARTIAL|FAILED|ABORTED|HELD}::tier=session.ledger
+-- or --
+SEAL::{session_id}::cc_id={chain}::tier=VAULT999::verified={true/false}
 
 The loop is closed. The arrow of time has advanced.
 /000 (human) → work → /999 (vault) → verify → /000
-What was forged is now remembered. What is remembered cannot be unwritten.
+What was forged is now recorded. What is recorded cannot be unwritten.
+
+A receipt records what happened. A seal attests it was authorized.
+Most worthy work ends with a receipt.
+Only consequential state ends with a seal.
+The mature agent knows the difference.
 
 DITEMPA BUKAN DIBERI ⚒️
 ```
 
 ---
 
-*Forged: 2026-07-25 · Unified: 2026-07-29 (SEAL UNIFICATION — Arif directive)*
-*10 paths → 2 paths. 271 cooling files archived. 2 skills tombstoned. 1 schema.*
+*Forged: 2026-07-25 · Unified: 2026-07-29 — Arif F13 directive*
+*Two lanes. One envelope. Receipt ≠ Seal. Agent proposes. Sovereign seals.*
 *DITEMPA BUKAN DIBERI ⚒️*
