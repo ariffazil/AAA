@@ -1,0 +1,14 @@
+{
+  "agent_id": "prospect-maturation",
+  "actor_id": "prospect-maturation/FI-???",
+  "ed25519_pubkey_hex": "b3fcde76bab5256fe91f4d8b407ce4e99fe8e62a265e18c715b6fa25656410ea",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "EXECUTE_REVERSIBLE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-07-29T13:55:07.277252+00:00",
+  "fingerprint": "ec0b3a3f902037e227ce302749ef5d62"
+}

@@ -517,5 +517,8 @@
       "i am 888",
       "i own AAA"
     ]
-  }
+  },
+  "ed25519_pubkey": "89f7c7732a98d9a5d0d384cb4540099794c1a73cff0381e7f49712c2c0be2495",
+  "identity_fingerprint": "db49ebf41ca41fdd95c4efc85b382b65",
+  "identity_bound_at": "2026-07-29T13:55:07.270104+00:00"
 }
