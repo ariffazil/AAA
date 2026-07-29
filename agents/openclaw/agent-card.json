@@ -176,7 +176,7 @@
     {
       "id": "FORGE-federation-ops",
       "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing — 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "description": "arifOS federation topology and routing \u2014 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
       "tags": [
         "federation",
         "topology",
@@ -354,79 +354,137 @@
           "arif_seal",
           "arif_memory"
         ],
-        "key_lanes": ["governance", "judgment", "session"],
+        "key_lanes": [
+          "governance",
+          "judgment",
+          "session"
+        ],
         "version": "2026-07-29"
       },
       {
         "url": "http://localhost:7072/mcp",
         "tool_count": 52,
         "tools": [
-          "forge_shell", "forge_git", "forge_filesystem",
-          "forge_docker", "forge_execute", "forge_lease",
-          "forge_probe", "forge_registry", "forge_vault",
+          "forge_shell",
+          "forge_git",
+          "forge_filesystem",
+          "forge_docker",
+          "forge_execute",
+          "forge_lease",
+          "forge_probe",
+          "forge_registry",
+          "forge_vault",
           "forge_document_ingest"
         ],
-        "key_lanes": ["execution", "build", "deploy"],
+        "key_lanes": [
+          "execution",
+          "build",
+          "deploy"
+        ],
         "version": "2026-07-29"
       },
       {
         "url": "http://localhost:8081/mcp",
         "tool_count": 33,
         "tools": [
-          "geox_basin", "geox_prospect", "geox_evidence",
-          "geox_petrophysics", "geox_seismic_compute",
-          "geox_seismic_interpret", "geox_seismic_ingest",
-          "geox_claim", "geox_contradiction_scan", "geox_falsify",
-          "geox_map_layers_list", "geox_map_scene_plan",
-          "geox_map_render_preview", "geox_map_export_package",
-          "geox_workspace", "geox_well_ingest", "geox_well_desk",
-          "geox_well_qc", "geox_well_view", "geox_surface_status",
-          "geox_sequence", "geox_deep_time_state",
-          "geox_subsurface_model", "geox_gravmag_studio",
-          "geox_geomechanics", "geox_visual_understand",
+          "geox_basin",
+          "geox_prospect",
+          "geox_evidence",
+          "geox_petrophysics",
+          "geox_seismic_compute",
+          "geox_seismic_interpret",
+          "geox_seismic_ingest",
+          "geox_claim",
+          "geox_contradiction_scan",
+          "geox_falsify",
+          "geox_map_layers_list",
+          "geox_map_scene_plan",
+          "geox_map_render_preview",
+          "geox_map_export_package",
+          "geox_workspace",
+          "geox_well_ingest",
+          "geox_well_desk",
+          "geox_well_qc",
+          "geox_well_view",
+          "geox_surface_status",
+          "geox_sequence",
+          "geox_deep_time_state",
+          "geox_subsurface_model",
+          "geox_gravmag_studio",
+          "geox_geomechanics",
+          "geox_visual_understand",
           "geox_visual_generate_hypotheses",
           "geox_thermal_maturity_history",
-          "geox_sediment_mass_balance", "geox_basin_backstrip",
-          "geox_lem_predict", "geox_claim_graph_evaluate",
+          "geox_sediment_mass_balance",
+          "geox_basin_backstrip",
+          "geox_lem_predict",
+          "geox_claim_graph_evaluate",
           "geox_to_wealth_bridge"
         ],
-        "key_lanes": ["earth", "basin", "seismic"],
+        "key_lanes": [
+          "earth",
+          "basin",
+          "seismic"
+        ],
         "version": "2026-07-29"
       },
       {
         "url": "http://localhost:18082/mcp",
         "tool_count": 14,
         "tools": [
-          "capital_market", "capital_health", "capital_ledger",
-          "capital_primitive", "capital_wisdom", "capital_diagnose",
-          "capital_entropy", "capital_registry",
-          "wealth_institutional_stress_index", "wealth_cascade_model",
+          "capital_market",
+          "capital_health",
+          "capital_ledger",
+          "capital_primitive",
+          "capital_wisdom",
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_registry",
+          "wealth_institutional_stress_index",
+          "wealth_cascade_model",
           "wealth_governance_capacity",
           "wealth_external_exploitation_detect",
-          "wealth_judge_handoff", "wealth_bid_surface"
+          "wealth_judge_handoff",
+          "wealth_bid_surface"
         ],
-        "key_lanes": ["capital", "risk", "wisdom"],
+        "key_lanes": [
+          "capital",
+          "risk",
+          "wisdom"
+        ],
         "version": "2026-07-29"
       },
       {
         "url": "http://localhost:18083/mcp",
         "tool_count": 8,
         "tools": [
-          "well_classify_substrate", "well_trace_lineage",
-          "well_assess_homeostasis", "well_check_repair",
-          "well_validate_vitality", "well_guard_dignity",
-          "well_assess_reliability", "well_registry_status"
+          "well_classify_substrate",
+          "well_trace_lineage",
+          "well_assess_homeostasis",
+          "well_check_repair",
+          "well_validate_vitality",
+          "well_guard_dignity",
+          "well_assess_reliability",
+          "well_registry_status"
         ],
-        "key_lanes": ["vitality", "dignity", "homeostasis"],
+        "key_lanes": [
+          "vitality",
+          "dignity",
+          "homeostasis"
+        ],
         "version": "2026-07-29"
       },
       {
         "url": "http://localhost:7073/health",
         "tool_count": 0,
         "tools": [],
-        "key_lanes": ["metabolism", "fq", "cooling"],
+        "key_lanes": [
+          "metabolism",
+          "fq",
+          "cooling"
+        ],
         "version": "2026-07-29",
-        "note": "arifFLOW — FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
+        "note": "arifFLOW \u2014 FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
       }
     ]
   },
@@ -590,5 +648,8 @@
       "i am 888",
       "i own AAA"
     ]
-  }
+  },
+  "ed25519_pubkey": "6c232cbe23b8414b25e07a981ac0530e784bc02665f209ab9fa46a8ea72bbd2c",
+  "identity_fingerprint": "d34446ad0908b3f58b6b57031ea4153d",
+  "identity_bound_at": "2026-07-29T13:55:07.272023+00:00"
 }

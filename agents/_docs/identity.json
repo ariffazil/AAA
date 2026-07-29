@@ -1,0 +1,13 @@
+{
+  "agent_id": "_docs",
+  "actor_id": "_docs/FI-???",
+  "ed25519_pubkey_hex": "fdf9f40b943397ff1de2715189b95f543fc587fff738c691fb7bb9509c24d478",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON"
+  ],
+  "max_blast_radius": "T1",
+  "created_at": "2026-07-29T13:55:07.266671+00:00",
+  "fingerprint": "8f3db36b51eeb8fcdfeaad6cbe5cc692"
+}

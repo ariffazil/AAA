@@ -1,0 +1,15 @@
+{
+  "agent_id": "hermes-asi",
+  "actor_id": "hermes-asi/FI-???",
+  "ed25519_pubkey_hex": "a1b7808227d5610fcec9c902eae9e82ff140850eea4cc5a3c4e09d76d1db2add",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "ROUTE",
+    "REFLECT"
+  ],
+  "max_blast_radius": "T1",
+  "created_at": "2026-07-29T13:55:07.269277+00:00",
+  "fingerprint": "f26fea82633eaa1d6eb8676c76b8bc85"
+}
