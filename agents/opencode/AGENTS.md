@@ -109,8 +109,7 @@ Never ask Arif for: API keys, coding opinions, library choices, naming conventio
 | docker | local | Container lifecycle, file ops |
 | github | local | Repos, PRs, issues, code search |
 | context7 | local | Up-to-date library docs |
-| minimax-media | :18090 | TTS, video, image, voice, music |
-| minimax-code | :18091 | web_search, understand_image |
+
 
 ---
 
