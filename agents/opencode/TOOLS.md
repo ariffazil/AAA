@@ -98,14 +98,6 @@ GitHub/Docker/etc  →  infrastructure: governed access through A-FORGE gates
 
 ---
 
-## MCP Servers — Media
-
-| Server | Key Tools | Use When |
-|--------|-----------|----------|
-| **minimax** | `minimax_web_search`, `minimax_understand_image` | Image analysis, MiniMax web search |
-
----
-
 ## MCP Servers — Meta
 
 | Server | Key Tools | Use When |
@@ -135,7 +127,6 @@ Need browser automation?          → playwright or aforge (forge_browser_*)
 Need to manage containers?        → docker or aforge (forge_docker)
 Need to manage GitHub?            → github (governed)
 Need VPS ops?                     → hostinger-vps (governed)
-Need image analysis?              → minimax_understand_image
 Need multi-step reasoning?        → sequential-thinking
 ```
 
