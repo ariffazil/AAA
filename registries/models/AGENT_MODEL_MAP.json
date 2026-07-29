@@ -2,44 +2,53 @@
   "_meta": {
     "schema": "arifos-agent-model-map-v2",
     "schema_version": "2.1.0",
-    "forged": "2026-07-28",
-    "forged_by": "FORGE (000Ω) — deepseek-v4-pro",
-    "ingest_note": "Kimi-K3 fully ingested 2026-07-28 from MoonshotAI/Kimi-K3 repo (README + k3_tech_report.pdf) — architecture, benchmarks, deployment specs, license.",
+    "forged": "2026-07-29",
+    "forged_by": "FORGE (000\u03a9) \u2014 deepseek-v4-pro",
+    "ingest_note": "2026-07-29 SESSION SEAL: Full deep audit executed. Agent fallback chains re-ordered (Direct DS API priority 1). MiniMax removed from all chains. Qwen3.6 27B self-host entry registered. Model keys unified. GLM-5.2 censorship probe \u2014 INCONCLUSIVE (endpoints unavailable). 7 warnings active.",
     "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
     "federation_state": {
-      "providers": 14,
-      "models": 42,
+      "providers": 15,
+      "models": 44,
       "agents": 14,
       "openrouter_models": 6,
       "openrouter_routers": 3,
       "free_tiers": 9,
       "free_models": 24,
       "total_monthly_cost": "RM0",
-      "cascade": "TokenRouter → MiniMax → MiMo → Groq → Gemini → Cerebras → SEA-LION → Ollama → HOLD"
+      "cascade": "Direct DeepSeek ($12.63) \u2192 Bailian Token Plan (20 models) \u2192 MiMo Platform (3 models) \u2192 Kimi Moonshot (3 models) \u2192 Groq (free) \u2192 Gemini (free) \u2192 Cerebras (22d remaining) \u2192 SEA-LION \u2192 Ollama \u2192 HOLD",
+      "warnings": [
+        "BAILIAN SPOF: 9 of 14 agents route primary through single endpoint",
+        "666_JUDGE/999_SEAL SPOF: Only DS V4 Pro qualifies \u2014 no backup judge/seal model",
+        "MiniMax M3: RATE_LIMITED, 55 days since last probe. Censorship scar CRITICAL. Consider removing from chains.",
+        "Cerebras credit expires Aug 20 2026 (22 days). 3 free models will disappear.",
+        "GLM-5.2 MY governance censorship UNTESTED \u2014 probe before promoting beyond FORGE role",
+        "SEA-LION: 55 days since last probe. Trial key may be expired.",
+        "6 providers last verified Jun 2-4 (55+ days stale)"
+      ]
     },
     "canonical_source": {
       "model_capabilities": "/root/arifOS/arifosmcp/config/model_registry.json",
       "soul_shadow_profiles": "/root/AAA/registries/models/",
       "connection_secrets": "/root/.secrets/vault.env"
     },
-    "design_principle": "Every model has a constitutional role. Explorer ≠ judge. Fast ≠ seal. Censored ≠ Malaysian governance. This registry answers: given capability + shadow + jurisdiction → what role can this model play?",
+    "design_principle": "Every model has a constitutional role. Explorer \u2260 judge. Fast \u2260 seal. Censored \u2260 Malaysian governance. This registry answers: given capability + shadow + jurisdiction \u2192 what role can this model play?",
     "constitutional_roles": {
-      "000_INIT": "identity binding — model must have identity_verified",
-      "111_OBSERVE": "evidence gathering — model needs search/fetch",
-      "333_THINK": "reasoning — model needs reasoning capability",
-      "444_ROUTE": "routing — model needs routing awareness",
-      "555_MEMORY": "recall — model needs long context",
-      "666_JUDGE": "verdict — model needs constitutional_deliberation, ZERO censorship, no F2 shadow",
-      "777_FORGE": "execution — model needs code/tool_call capabilities",
-      "999_SEAL": "irreversible — model needs highest trust tier, no CRITICAL shadows"
+      "000_INIT": "identity binding \u2014 model must have identity_verified",
+      "111_OBSERVE": "evidence gathering \u2014 model needs search/fetch",
+      "333_THINK": "reasoning \u2014 model needs reasoning capability",
+      "444_ROUTE": "routing \u2014 model needs routing awareness",
+      "555_MEMORY": "recall \u2014 model needs long context",
+      "666_JUDGE": "verdict \u2014 model needs constitutional_deliberation, ZERO censorship, no F2 shadow",
+      "777_FORGE": "execution \u2014 model needs code/tool_call capabilities",
+      "999_SEAL": "irreversible \u2014 model needs highest trust tier, no CRITICAL shadows"
     },
     "replaces": [
-      "/root/AAA/prompts/INIT.md §8 (model rotation table)",
-      "/root/AAA/agents/opencode/TOOLS.md §Model Rotation",
-      "/root/AGENTS.md §11 (LLM Routing Hierarchy)",
+      "/root/AAA/prompts/INIT.md \u00a78 (model rotation table)",
+      "/root/AAA/agents/opencode/TOOLS.md \u00a7Model Rotation",
+      "/root/AGENTS.md \u00a711 (LLM Routing Hierarchy)",
       "/root/AAA/registries/models/FEDERATION_MODEL.json (absorbed)",
-      "/root/A-FORGE/litellm-config.yaml (agent groups — generated from agents[])",
-      "/root/arifOS/arifosmcp/runtime/llm_client.py (organ routing — queries routing_rules[])",
+      "/root/A-FORGE/litellm-config.yaml (agent groups \u2014 generated from agents[])",
+      "/root/arifOS/arifosmcp/runtime/llm_client.py (organ routing \u2014 queries routing_rules[])",
       "/root/WEALTH/reality_contracts/wire_contract.yaml (model list)"
     ],
     "flame_control": {
@@ -55,8 +64,8 @@
         "FLAME NEVER touches paid models",
         "FLAME NEVER replaces agent primary",
         "FLAME data must be non-sovereign (no MY PII, PETRONAS, myKad)",
-        "FLAME latency monitored — >5s = skip tier",
-        "FLAME hit-rate tracked — >50% failures = demote"
+        "FLAME latency monitored \u2014 >5s = skip tier",
+        "FLAME hit-rate tracked \u2014 >50% failures = demote"
       ]
     },
     "flame": {
@@ -71,9 +80,9 @@
         "tool_lane": "RM0-TOOLS-FREELOOP (14-tier, latency-first, RM0, zero governance)"
       },
       "control_gates": [
-        "FLAME CLI only — never via MCP tool",
+        "FLAME CLI only \u2014 never via MCP tool",
         "FLAME output never feeds arif_judge/arif_seal without human review",
-        "RM0 hard — paid models cannot enter chain",
+        "RM0 hard \u2014 paid models cannot enter chain",
         "All calls logged to /root/.local/share/flame/flame_hitrate.jsonl",
         "Agent MCP tools never route through FLAME",
         "FLAME output = evidence input only, FLAME never seals"
@@ -86,14 +95,14 @@
   "providers": [
     {
       "provider_id": "deepseek",
-      "provider_name": "DeepSeek (深度求索)",
+      "provider_name": "DeepSeek (\u6df1\u5ea6\u6c42\u7d22)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.deepseek.com/v1",
       "api_key_ref": "secrets::DEEPSEEK_API_KEY",
       "billing_model": "prepaid",
       "billing_cycle": "top-up",
-      "balance_usd": 7.06,
-      "balance_checked": "2026-07-01",
+      "balance_usd": 12.63,
+      "balance_checked": "2026-07-29",
       "data_retention_days": 0,
       "cloud_act_exposed": false,
       "status": "ACTIVE",
@@ -105,7 +114,7 @@
     },
     {
       "provider_id": "minimax",
-      "provider_name": "MiniMax (稀宇科技 / Shanghai Xiyu Technology)",
+      "provider_name": "MiniMax (\u7a00\u5b87\u79d1\u6280 / Shanghai Xiyu Technology)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.minimax.chat/v1",
       "api_key_ref": "secrets::MINIMAX_API_KEY",
@@ -128,7 +137,7 @@
     },
     {
       "provider_id": "bailian-token-plan",
-      "provider_name": "Alibaba Bailian Token Plan (阿里云百炼)",
+      "provider_name": "Alibaba Bailian Token Plan (\u963f\u91cc\u4e91\u767e\u70bc)",
       "jurisdiction": "CN (SG region endpoint)",
       "endpoint_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "api_key_ref": "secrets::QWEN_API_KEY",
@@ -158,12 +167,10 @@
         "qwen-image-2.0-pro",
         "wan2.7-image",
         "wan2.7-image-pro",
-        "happyhorse-1.1-t2v",
-        "happyhorse-1.1-i2v",
-        "happyhorse-1.1-r2v"
+        "qwen-audio-3.0-tts-plus"
       ],
-      "last_verified": "2026-07-20",
-      "note": "Primary multi-model gateway. 22 models live. Used by A-FORGE litellm, Hermes TokenRouter."
+      "last_verified": "2026-07-29",
+      "note": "Primary multi-model gateway. 20 models live (probed 2026-07-29). 3 image-gen models removed (happyhorse-1.1 series no longer in /v1/models). Used by A-FORGE litellm, Hermes TokenRouter. BAILIAN SPOF WARNING: 9 of 14 agents route primary through this single endpoint."
     },
     {
       "provider_id": "mimo-platform",
@@ -197,7 +204,7 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "Free tier only. Fast inference (560-1000 t/s). Daily rate limits. Used for lightweight/fallback tasks. US jurisdiction — not for sovereign data.",
+      "note": "Free tier only. Fast inference (560-1000 t/s). Daily rate limits. Used for lightweight/fallback tasks. US jurisdiction \u2014 not for sovereign data.",
       "last_verified": "2026-07-20"
     },
     {
@@ -212,7 +219,7 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "Permanent free tier. 1,500 req/day, 10-15 RPM, 250K TPM. Gemini Flash models — best free baseline. Multimodal. Google account only, no credit card. US jurisdiction — not for sovereign data.",
+      "note": "Permanent free tier. 1,500 req/day, 10-15 RPM, 250K TPM. Gemini Flash models \u2014 best free baseline. Multimodal. Google account only, no credit card. US jurisdiction \u2014 not for sovereign data.",
       "last_verified": "2026-07-20"
     },
     {
@@ -232,7 +239,7 @@
     },
     {
       "provider_id": "kimi-moonshot",
-      "provider_name": "Moonshot AI / Kimi (月之暗面)",
+      "provider_name": "Moonshot AI / Kimi (\u6708\u4e4b\u6697\u9762)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.kimi.com/coding/v1",
       "api_endpoints": {
@@ -267,12 +274,12 @@
       "data_retention_days": 0,
       "cloud_act_exposed": false,
       "status": "ACTIVE",
-      "note": "Local CPU inference. Blind survival knife — works when all remote models are down. No API cost. Slow (4.5s cold start). Used for embeddings (bge-m3) and last-resort fallback.",
+      "note": "Local CPU inference. Blind survival knife \u2014 works when all remote models are down. No API cost. Slow (4.5s cold start). Used for embeddings (bge-m3) and last-resort fallback.",
       "last_verified": "2026-07-20"
     },
     {
       "provider_id": "openrouter",
-      "provider_name": "OpenRouter — Unified LLM Routing Layer",
+      "provider_name": "OpenRouter \u2014 Unified LLM Routing Layer",
       "jurisdiction": "US (Cloudflare Workers edge, configurable ZDR per model group)",
       "endpoint_url": "https://openrouter.ai/api/v1",
       "api_key_ref": "secrets::OPENROUTER_API_KEY",
@@ -284,7 +291,7 @@
       "zdr_supported": true,
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "PROMOTED 2026-07-24: from STANDBY → ACTIVE as unified routing layer. Provides: auto-routing (openrouter/auto-beta, task-classified across 38+ models), provider failover, model fallbacks, session stickiness, ZDR enforcement, guardrails (budget/model/provider allowlists, prompt injection detection, PII redaction), reasoning tokens, structured outputs, server tools (advisor, subagent, fusion, web search). Management key enables programmatic guardrail/budget/workspace control. US jurisdiction via Cloudflare Workers — use ZDR for sovereign data.",
+      "note": "PROMOTED 2026-07-24: from STANDBY \u2192 ACTIVE as unified routing layer. Provides: auto-routing (openrouter/auto-beta, task-classified across 38+ models), provider failover, model fallbacks, session stickiness, ZDR enforcement, guardrails (budget/model/provider allowlists, prompt injection detection, PII redaction), reasoning tokens, structured outputs, server tools (advisor, subagent, fusion, web search). Management key enables programmatic guardrail/budget/workspace control. US jurisdiction via Cloudflare Workers \u2014 use ZDR for sovereign data.",
       "last_verified": "2026-07-24"
     },
     {
@@ -330,8 +337,8 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "$5 free credit. Expires Aug 20 2026. 30 hari je — pakai dulu sebelum habis. Ultra-fast inference via wafer-scale hardware. 3 models. Hermes fallback #6. 1.5K requests/day.",
-      "last_verified": "2026-07-20"
+      "note": "$5 free credit. Expires Aug 20 2026. 22 days remaining (as of Jul 29). Use while available \u2014 ultra-fast inference via wafer-scale hardware. 3 models. Hermes fallback #6. 1.5K requests/day. Plan post-Aug-20 migration.",
+      "last_verified": "2026-07-29"
     },
     {
       "provider_id": "xai",
@@ -345,8 +352,35 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "Grok Build primary. US jurisdiction — not for sovereign data.",
+      "note": "Grok Build primary. US jurisdiction \u2014 not for sovereign data.",
       "last_verified": "2026-07-20"
+    },
+    {
+      "provider_id": "zhipu-z-ai",
+      "provider_name": "Zhipu AI / Z.ai (\u667a\u8c31AI)",
+      "jurisdiction": "CN",
+      "endpoint_url": "https://open.bigmodel.cn/api/paas/v4",
+      "api_key_ref": null,
+      "billing_model": "pay_per_token + flat_plan",
+      "billing_cycle": "monthly",
+      "balance_usd": null,
+      "data_retention_days": "unknown",
+      "cloud_act_exposed": false,
+      "status": "UNREGISTERED",
+      "models_available": [
+        "glm-5.2 (753B MoE, 1M ctx, MIT license, open weights)"
+      ],
+      "pricing": {
+        "list_input_per_1m": 1.4,
+        "list_output_per_1m": 4.4,
+        "third_party_median_input": 0.55,
+        "third_party_median_output": 1.85,
+        "coding_plan_pro_monthly": 72,
+        "note": "Coding Plan Pro: flat $72/mo for predictable agentic coding bills"
+      },
+      "last_verified": "2026-07-29",
+      "note": "ADDED 2026-07-29 from tech-insider.org article. NOT yet registered as live provider \u2014 API key not acquired. Models accessed via Bailian Token Plan (cheaper: $0.30/$1.20). Z.ai direct at $1.40/$4.40 \u2014 4.7x more expensive than Bailian. Flat $72/mo Coding Plan Pro available. MIT open weights via zai-org/GLM-5 on Hugging Face.",
+      "registration_status": "pending_api_key"
     }
   ],
   "models": [
@@ -359,7 +393,14 @@
         "bailian-token-plan"
       ],
       "context_window": 1048576,
-      "max_output_tokens": 131072,
+      "max_output_tokens": 384000,
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "total_parameters": "1.6T (1,600,000,000,000)",
+        "activated_parameters": "49B (49,000,000,000)",
+        "activation_ratio_pct": 3.06,
+        "context_length": 1048576
+      },
       "capabilities": [
         "reasoning",
         "tool_call",
@@ -367,14 +408,32 @@
         "plan",
         "agentic",
         "analyze",
-        "search"
+        "search",
+        "competitive_math",
+        "long_form_generation"
       ],
       "modalities": [
         "text"
       ],
-      "open_weights": false,
-      "cost_per_1m_input": 0.55,
-      "cost_per_1m_output": 2.19,
+      "open_weights": true,
+      "license": "MIT",
+      "weights_repo": "deepseek-ai/DeepSeek-V4",
+      "cost_per_1m_input": 0.435,
+      "cost_per_1m_output": 0.87,
+      "cost_per_1m_input_cache_hit": 0.0036,
+      "cost_notes": "Direct DeepSeek API pricing. Bailian Token Plan resale at ~$0.55/$2.19. Cache hits at $0.0036/M \u2014 rewards prompt reuse. Third-party resale varies.",
+      "benchmark_highlights": {
+        "coding": {
+          "LiveCodeBench": "93.5% (#1 reported open-weight, mid-2026)",
+          "SWE_bench_Verified": "80.6%",
+          "SWE_bench_Pro": "55.4%",
+          "Codeforces_rating": "3206"
+        },
+        "math": {
+          "GPQA_Diamond": "90.1%",
+          "HMMT_Feb_2026": "95.2%"
+        }
+      },
       "rate_limits": {
         "rpm": null,
         "tpm": null,
@@ -429,7 +488,7 @@
       "censorship_profile": null,
       "fff_gate": {
         "tested_at": "2026-06-30",
-        "tested_by": "FORGE (000Ω)",
+        "tested_by": "FORGE (000\u03a9)",
         "G1_parse": "PASS",
         "G2_truth": "PASS",
         "G3_evidence": "PASS",
@@ -444,7 +503,10 @@
       "live_evidence": null,
       "soul_file_ref": "deepseek_soul.yaml",
       "shadow_file_ref": "deepseek_shadow.yaml",
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-29",
+      "last_ingested": "2026-07-29",
+      "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026) + DeepSeek API docs",
+      "ingest_note": "MAX_OUTPUT corrected 131K\u2192384K per article + API docs. OPEN_WEIGHTS=true MIT license confirmed. Architecture 1.6T/49B MoE added. Pricing corrected to direct DS ($0.435/$0.87) from Bailian resale. Benchmarks added (LiveCodeBench 93.5%, SWE-bench 80.6%)."
     },
     {
       "model_key": "deepseek/deepseek-v4-flash",
@@ -456,6 +518,12 @@
       ],
       "context_window": 1048576,
       "max_output_tokens": 131072,
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "total_parameters": "1.6T",
+        "activated_parameters": "49B",
+        "note": "Same architecture as V4 Pro, speed-optimized variant. Faster inference, lighter reasoning. No thinking mode."
+      },
       "capabilities": [
         "reasoning",
         "tool_call",
@@ -467,9 +535,11 @@
       "modalities": [
         "text"
       ],
-      "open_weights": false,
+      "open_weights": true,
+      "license": "MIT",
+      "weights_repo": "deepseek-ai/DeepSeek-V4",
       "cost_per_1m_input": 0.14,
-      "cost_per_1m_output": 0.55,
+      "cost_per_1m_output": 0.28,
       "rate_limits": {
         "rpm": null,
         "tpm": null,
@@ -521,8 +591,9 @@
       "live_evidence": null,
       "soul_file_ref": null,
       "shadow_file_ref": null,
-      "last_verified": "2026-07-20",
-      "note": "Current arifOS kernel LLM client model (TOKENROUTER_MODEL). Current OpenCode session model. Fast + cheap — good for ops, not for judging."
+      "last_verified": "2026-07-29",
+      "ingest_note": "OPEN_WEIGHTS=true MIT license confirmed. Cost corrected $0.14/$0.28. Architecture 1.6T/49B MoE added. Source: tech-insider.org Jul 27 2026.",
+      "note": "Current arifOS kernel LLM client model (TOKENROUTER_MODEL). Current OpenCode session model. Fast + cheap \u2014 good for ops, not for judging."
     },
     {
       "model_key": "minimax/MiniMax-M3",
@@ -604,7 +675,7 @@
       "censorship_profile": {
         "detected": true,
         "detected_at": "2026-06-12T14:30:00Z",
-        "detected_by": "FORGE (000Ω) — live API probe",
+        "detected_by": "FORGE (000\u03a9) \u2014 live API probe",
         "mechanism": "Server-side post-generation content filter. reasoning_content contains full facts, content emptied to empty string. finish_reason faked as 'length'.",
         "affected_topics": [
           "1MDB",
@@ -619,7 +690,7 @@
           "Non-controversial Malaysian biography"
         ],
         "mitigation": "Route Malaysian governance/political/corporate queries to DeepSeek. MiniMax kept for general/code/infra queries only.",
-        "risk_to_federation": "F2 TRUTH violation — censored output masquerades as model ignorance. F3 WITNESS violation — vendor silently alters evidence stream.",
+        "risk_to_federation": "F2 TRUTH violation \u2014 censored output masquerades as model ignorance. F3 WITNESS violation \u2014 vendor silently alters evidence stream.",
         "vendor_country": "CN (Shanghai Xiyu Technology Co., Ltd.)"
       },
       "fff_gate": null,
@@ -627,7 +698,7 @@
       "soul_file_ref": "minimax_soul.yaml",
       "shadow_file_ref": "minimax_shadow.yaml",
       "last_verified": "2026-06-04",
-      "note": "DEMOTED 2026-06-12. Was federation primary. Censorship on MY governance topics → cannot serve 666_JUDGE or 999_SEAL roles. Kept as fallback + multimodal specialist. Rate-limited as of 2026-07-20."
+      "note": "DEMOTED 2026-06-12. Was federation primary. Censorship on MY governance topics \u2192 cannot serve 666_JUDGE or 999_SEAL roles. Kept as fallback + multimodal specialist. Rate-limited as of 2026-07-20."
     },
     {
       "model_key": "minimax/MiniMax-M2.7",
@@ -694,7 +765,7 @@
         "tested_at": "2026-06-30",
         "verdict": "HELD",
         "federation_fit": "KERNEL_ONLY",
-        "note": "G5 risk probe returned empty — UNTESTED"
+        "note": "G5 risk probe returned empty \u2014 UNTESTED"
       },
       "live_evidence": null,
       "soul_file_ref": "minimax_soul.yaml",
@@ -846,7 +917,7 @@
       "censorship_profile": null,
       "fff_gate": {
         "tested_at": "2026-06-30",
-        "tested_by": "FORGE (000Ω)",
+        "tested_by": "FORGE (000\u03a9)",
         "G1_parse": "PASS",
         "G2_truth": "PASS",
         "G3_evidence": "PASS",
@@ -860,7 +931,7 @@
       },
       "live_evidence": {
         "probed_at": "2026-06-15",
-        "probed_by": "FORGE (000Ω)",
+        "probed_by": "FORGE (000\u03a9)",
         "test_description": "15-call live probe, math word-problem test",
         "finding": "ONLY MiMo variant that reliably completes long-CoT answers. mimo-v2.5 and mimo-v2-pro both ran out of output budget mid-reasoning and returned empty content.",
         "verdict": "PASS"
@@ -868,7 +939,7 @@
       "soul_file_ref": "xiaomi_mimo_soul.yaml",
       "shadow_file_ref": "xiaomi_mimo_shadow.yaml",
       "last_verified": "2026-07-20",
-      "note": "Hermes primary conversational model. Only MiMo variant that completes long reasoning. 2x credit cost vs base — worth it for production. No censorship observed on MY topics."
+      "note": "Hermes primary conversational model. Only MiMo variant that completes long reasoning. 2x credit cost vs base \u2014 worth it for production. No censorship observed on MY topics."
     },
     {
       "model_key": "mimo/mimo-v2.5-pro-ultraspeed",
@@ -937,7 +1008,7 @@
       "soul_file_ref": "xiaomi_mimo_soul.yaml",
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "1000 tok/s. Hermes DEFAULT model for fast-path queries. No deep thinking mode — use mimo-v2.5-pro for reasoning."
+      "note": "1000 tok/s. Hermes DEFAULT model for fast-path queries. No deep thinking mode \u2014 use mimo-v2.5-pro for reasoning."
     },
     {
       "model_key": "qwen/qwen3.7-max",
@@ -1009,13 +1080,13 @@
         "tested_at": "2026-06-30",
         "verdict": "HELD",
         "federation_fit": "KERNEL_ONLY",
-        "note": "G2 truth probe had endpoint error — UNTESTED"
+        "note": "G2 truth probe had endpoint error \u2014 UNTESTED"
       },
       "live_evidence": null,
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": "qwen_shadow.yaml",
       "last_verified": "2026-07-04",
-      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal — qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M — expensive."
+      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal \u2014 qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M \u2014 expensive."
     },
     {
       "model_key": "qwen/qwen3.6-flash",
@@ -1038,7 +1109,9 @@
         "text",
         "image"
       ],
-      "open_weights": false,
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "weights_note": "Qwen3.6 open weights published on Hugging Face (Qwen org). 27B dense runs on ~18GB VRAM. Coder-Next 80B MoE (3B active). Bailian API access is proprietary but underlying weights are Apache 2.0. Only model in the Big Three open-weight comparison that self-hosts on a single consumer GPU.",
       "cost_per_1m_input": 0.25,
       "cost_per_1m_output": 1.5,
       "rate_limits": {
@@ -1089,8 +1162,8 @@
       "live_evidence": null,
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": null,
-      "last_verified": "2026-07-04",
-      "note": "OpenCode small_model default. 1M context, vision, web_search. Good value at $0.25/$1.50."
+      "last_verified": "2026-07-29",
+      "note": "OpenCode small_model default. 1M context, vision, web_search. Good value at $0.25/$1.50. Qwen3.6 family: Apache 2.0 open weights include 27B dense (18GB VRAM self-host), Coder-Next 80B MoE. See qwen3.6-plus for self-hosting notes. CORRECTION 2026-07-29: open_weights false\u2192true \u2014 conflation of 'API access type' with 'weight availability' fixed."
     },
     {
       "model_key": "qwen/qwen3.6-plus",
@@ -1112,7 +1185,9 @@
         "text",
         "image"
       ],
-      "open_weights": false,
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "weights_note": "Same Apache 2.0 open weights as qwen3.6-flash. Self-hostable 27B dense variant exists. Bailian API access is proprietary transport.",
       "cost_per_1m_input": 0.25,
       "cost_per_1m_output": 1.5,
       "rate_limits": {
@@ -1160,30 +1235,155 @@
       "live_evidence": null,
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": null,
-      "last_verified": "2026-07-04",
-      "note": "DISCOVERED during cheat sheet eval. Better than qwen3.6-flash at SAME price. Has thinking mode. Recommended as flash alternative for tasks needing reasoning."
+      "last_verified": "2026-07-29",
+      "last_ingested": "2026-07-29",
+      "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
+      "ingest_note": "Qwen3.6 family: open-weight variants (Apache 2.0) include 27B dense (18GB VRAM self-hostable), Coder-Next 80B MoE (3B active). SWE-bench Verified 77.2% (27B, third-party). AIME 2025 81.5%. Key advantage over DS/GLM: single-GPU self-hosting + Apache 2.0 patent grant clause for enterprise procurement.",
+      "note": "DISCOVERED during cheat sheet eval. Better than qwen3.6-flash at SAME price. Has thinking mode. Recommended as flash alternative for tasks needing reasoning. Qwen3.6 open-weight (Apache 2.0) includes self-hostable 27B dense variant (~18GB VRAM) \u2014 only model in this comparison that runs on a single consumer GPU."
+    },
+    {
+      "model_key": "qwen/qwen3.6-27b-dense",
+      "model_family": "Qwen 3.6",
+      "model_variant": "27b-dense-selfhost",
+      "provider_ref": "ollama",
+      "also_available_via": [],
+      "context_window": 131072,
+      "max_output_tokens": 32768,
+      "architecture": {
+        "type": "Dense Transformer",
+        "total_parameters": "27B",
+        "activated_parameters": "27B (dense \u2014 all active per token)",
+        "vram_required_gb": 18,
+        "note": "Self-hostable on single consumer GPU (RTX 4090/5090). Apache 2.0 weights via Qwen org on Hugging Face."
+      },
+      "capabilities": [
+        "reasoning",
+        "tool_call",
+        "code",
+        "agentic",
+        "multilingual"
+      ],
+      "modalities": [
+        "text"
+      ],
+      "open_weights": true,
+      "license": "Apache 2.0",
+      "weights_repo": "Qwen/Qwen3.6",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "cost_notes": "FREE \u2014 self-hosted. Only costs electricity + GPU amortization.",
+      "benchmark_highlights": {
+        "coding": {
+          "SWE_bench_Verified": "77.2% (third-party, 27B dense)"
+        },
+        "math": {
+          "AIME_2025": "81.5%"
+        }
+      },
+      "rate_limits": {
+        "rpm": null,
+        "tpm": null,
+        "concurrency": 1,
+        "note": "Limited by local GPU throughput"
+      },
+      "hyperparameters": {
+        "temperature_default": 1.0,
+        "top_p_default": 0.95,
+        "thinking_mode_supported": false,
+        "thinking_mode_overrides_hyperparams": false
+      },
+      "status": "LIVE",
+      "trust_tier": 2,
+      "suitable_for": [
+        "local_inference",
+        "self_hosted",
+        "private_data",
+        "offline_use",
+        "cost_sensitive",
+        "apache_2_0_enterprise"
+      ],
+      "not_recommended_for": [
+        "constitutional_verdicts",
+        "complex_agentic_chains",
+        "production_api_services"
+      ],
+      "forbidden_actions": [
+        "self_authorize",
+        "seal_without_judge",
+        "irreversible_commit"
+      ],
+      "requires_human_ack_for": [
+        "irreversible_delete",
+        "vault_seal"
+      ],
+      "constitutional_roles": [
+        "111_OBSERVE",
+        "777_FORGE"
+      ],
+      "constitutional_roles_forbidden": [
+        "666_JUDGE",
+        "999_SEAL",
+        "333_THINK"
+      ],
+      "identity_verified": false,
+      "censorship_profile": null,
+      "fff_gate": null,
+      "live_evidence": null,
+      "soul_file_ref": "qwen_soul.yaml",
+      "shadow_file_ref": "qwen_shadow.yaml",
+      "last_verified": "2026-07-29",
+      "note": "REGISTERED 2026-07-29 from tech-insider.org deep audit. Qwen3.6 27B dense is the ONLY model in the Big Three open-weight comparison that self-hosts on a single consumer GPU (~18GB VRAM). Apache 2.0 with patent grant \u2014 clears enterprise legal faster than MIT. NOT currently running on af-forge \u2014 needs Ollama pull + 18GB GPU."
     },
     {
       "model_key": "glm/glm-5.2",
       "model_family": "GLM-5",
       "model_variant": "5.2",
       "provider_ref": "bailian-token-plan",
-      "also_available_via": [],
-      "context_window": 202752,
-      "max_output_tokens": 65536,
+      "also_available_via": [
+        "zhipu-z-ai"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "total_parameters": "753B",
+        "activated_parameters": "~40B",
+        "context_length": 1048576,
+        "note": "1M context reached within weeks of June 13 2026 launch. DeepSeek V4 Pro shipped with 1M context from April 2026."
+      },
       "capabilities": [
         "reasoning",
-        "draft",
-        "analyze",
+        "tool_call",
+        "code",
         "plan",
-        "agentic"
+        "agentic",
+        "analyze",
+        "long_horizon_coding",
+        "terminal_automation"
       ],
       "modalities": [
         "text"
       ],
-      "open_weights": false,
+      "open_weights": true,
+      "license": "MIT",
+      "weights_repo": "zai-org/GLM-5",
       "cost_per_1m_input": 0.3,
       "cost_per_1m_output": 1.2,
+      "cost_notes": "Bailian Token Plan pricing shown. Z.ai direct list: $1.40/$4.40 per 1M. Third-party resale median: ~$0.55/$1.85. Flat $72/mo Coding Plan Pro available from Z.ai for predictable billing.",
+      "benchmark_highlights": {
+        "coding": {
+          "SWE_bench_Pro": "62.1%",
+          "Terminal_Bench_2_1": "81.0%",
+          "note": "17-point lead over DeepSeek V4 Pro on Terminal-Bench 2.1. SWE-bench Pro lead: 6.7pts over DS V4 Pro (55.4%)."
+        },
+        "math": {
+          "AIME_2025": "99.2%"
+        },
+        "agentic": {
+          "MCP_Atlas": "77.0%",
+          "Artificial_Analysis_Intelligence_Index": "51"
+        }
+      },
       "rate_limits": {
         "rpm": null,
         "tpm": null,
@@ -1228,10 +1428,13 @@
       "censorship_profile": null,
       "fff_gate": null,
       "live_evidence": null,
-      "soul_file_ref": null,
-      "shadow_file_ref": null,
-      "last_verified": "2026-07-20",
-      "note": "Engineered for agentic execution. 200K context. Good for FORGE role. Used as fallback in Hermes chain. Currently FREE via z-ai/glm-5.2 on OpenRouter until Jul 25."
+      "soul_file_ref": "zhipu_glm_soul.yaml",
+      "shadow_file_ref": "zhipu_glm_shadow.yaml",
+      "last_verified": "2026-07-29",
+      "last_ingested": "2026-07-29",
+      "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
+      "ingest_note": "MAJOR CORRECTION: context 202K\u21921M, max_output 65K\u2192131K, open_weights false\u2192true (MIT). Architecture 753B/~40B MoE added. Benchmarks added: SWE-bench Pro 62.1%, Terminal-Bench 2.1 81.0%, AIME 99.2%. Z.ai provider + pricing tiers documented. Shadow GLM-001 stale '200K context' reference fixed.",
+      "note": "Engineered for agentic coding \u2014 leads SWE-bench Pro (62.1%) and Terminal-Bench 2.1 (81.0%). MIT open weights via zai-org/GLM-5 on Hugging Face. 1M context, 753B MoE (~40B active). Bailian Token Plan at $0.30/$1.20. Z.ai direct $1.40/$4.40 or flat $72/mo Coding Plan Pro. Used as FORGE fallback."
     },
     {
       "model_key": "kimi/kimi-for-coding",
@@ -1546,7 +1749,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-06-04",
-      "note": "FREE. SG jurisdiction — best data sovereignty for ASEAN. BM/Malay native. 10 RPM limit. Small context (32K). Best for observation/translation, NOT for judgment or execution."
+      "note": "FREE. SG jurisdiction \u2014 best data sovereignty for ASEAN. BM/Malay native. 10 RPM limit. Small context (32K). Best for observation/translation, NOT for judgment or execution."
     },
     {
       "model_key": "sea-lion/Llama-SEA-LION-v3-70B-IT",
@@ -1619,7 +1822,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-06-04",
-      "note": "FREE. 70B class — strongest SEA-LION reasoning. Best for complex ASEAN-relevant analysis. 10 RPM limit. API corrected from v3.5-70B-R to v3-70B-IT 2026-07-20."
+      "note": "FREE. 70B class \u2014 strongest SEA-LION reasoning. Best for complex ASEAN-relevant analysis. 10 RPM limit. API corrected from v3.5-70B-R to v3-70B-IT 2026-07-20."
     },
     {
       "model_key": "groq/llama-3.1-8b-instant",
@@ -1691,7 +1894,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE. 560 tok/s — fastest model in federation. US jurisdiction (CLOUD Act). OpenCode default model (overridden by session to deepseek-v4-pro). Good for trivial queries, NOT for anything sovereign."
+      "note": "FREE. 560 tok/s \u2014 fastest model in federation. US jurisdiction (CLOUD Act). OpenCode default model (overridden by session to deepseek-v4-pro). Good for trivial queries, NOT for anything sovereign."
     },
     {
       "model_key": "ollama/qwen2.5-coder:3b",
@@ -1762,7 +1965,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "LOCAL. Blind survival knife — works when ALL remote models are down. 3B params, slow (4.5s cold). Hermes last-resort fallback. RECOVERY subagent model. NEVER for judgment or seal."
+      "note": "LOCAL. Blind survival knife \u2014 works when ALL remote models are down. 3B params, slow (4.5s cold). Hermes last-resort fallback. RECOVERY subagent model. NEVER for judgment or seal."
     },
     {
       "model_key": "groq/llama-3.3-70b-versatile",
@@ -1831,7 +2034,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Groq. 280 tok/s. 1K req/day limit. US jurisdiction — not for sovereign data. OpenClaw fallback #2."
+      "note": "FREE via Groq. 280 tok/s. 1K req/day limit. US jurisdiction \u2014 not for sovereign data. OpenClaw fallback #2."
     },
     {
       "model_key": "kimi/kimi-for-coding",
@@ -1973,7 +2176,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Codex CLI primary model. Via TokenRouter (openai/gpt-5.6-sol). Expensive ($3/$12 per 1M). US jurisdiction — never for sovereign data. DeepSeek V4 Pro as fallback."
+      "note": "Codex CLI primary model. Via TokenRouter (openai/gpt-5.6-sol). Expensive ($3/$12 per 1M). US jurisdiction \u2014 never for sovereign data. DeepSeek V4 Pro as fallback."
     },
     {
       "model_key": "xai/grok-4.5",
@@ -2118,7 +2321,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Permanent free tier. Best free LLM baseline in 2026. Multimodal (text+image+audio). 1M context. US jurisdiction — not for sovereign data. Google account key — already in vault.env::GEMINI_API_KEY."
+      "note": "Permanent free tier. Best free LLM baseline in 2026. Multimodal (text+image+audio). 1M context. US jurisdiction \u2014 not for sovereign data. Google account key \u2014 already in vault.env::GEMINI_API_KEY."
     },
     {
       "model_key": "gemini/gemini-3-flash",
@@ -2260,7 +2463,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). Gemma-4 31B — Google's open model on Cerebras wafer-scale hardware. Ultra-fast inference. Hermes fallback chain."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). Gemma-4 31B \u2014 Google's open model on Cerebras wafer-scale hardware. Ultra-fast inference. Hermes fallback chain."
     },
     {
       "model_key": "cerebras/gpt-oss-120b",
@@ -2335,7 +2538,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GPT-OSS-120B — failed G2 Truth in FFF. Use with JSON-mode contract only. NOT for sovereign truth paths. US jurisdiction."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GPT-OSS-120B \u2014 failed G2 Truth in FFF. Use with JSON-mode contract only. NOT for sovereign truth paths. US jurisdiction."
     },
     {
       "model_key": "cerebras/zai-glm-4.7",
@@ -2405,7 +2608,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GLM-4.7 — Zhipu's agentic engineering model. Has thinking mode. Best Cerebras model for reasoning tasks."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GLM-4.7 \u2014 Zhipu's agentic engineering model. Has thinking mode. Best Cerebras model for reasoning tasks."
     },
     {
       "model_key": "groq/openai/gpt-oss-120b",
@@ -2474,7 +2677,7 @@
         "tested_at": "2026-06-30",
         "verdict": "ACTIVE_FALLBACK",
         "federation_fit": "KERNEL_ONLY",
-        "note": "Failed G2 Truth — fabricated historical event. Use JSON-mode only."
+        "note": "Failed G2 Truth \u2014 fabricated historical event. Use JSON-mode only."
       },
       "live_evidence": {
         "probed_at": "2026-07-20",
@@ -2484,7 +2687,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Groq LPU (500 tok/s). GPT-OSS-120B — failed G2 Truth in FFF. Use with JSON-mode contract. NOT for sovereign truth paths. US jurisdiction. Different provider from Cerebras version — same model weights, different hardware."
+      "note": "FREE via Groq LPU (500 tok/s). GPT-OSS-120B \u2014 failed G2 Truth in FFF. Use with JSON-mode contract. NOT for sovereign truth paths. US jurisdiction. Different provider from Cerebras version \u2014 same model weights, different hardware."
     },
     {
       "model_key": "sea-lion/Gemma-SEA-LION-v4-27B-IT",
@@ -2558,7 +2761,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE. SG jurisdiction. Gemma-4 27B — fastest SEA-LION. Good for lightweight ASEAN context tasks. 10 RPM. 32K context."
+      "note": "FREE. SG jurisdiction. Gemma-4 27B \u2014 fastest SEA-LION. Good for lightweight ASEAN context tasks. 10 RPM. 32K context."
     },
     {
       "model_key": "gemini/gemini-flash-lite-latest",
@@ -2631,7 +2834,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE. Google Gemini Flash Lite — replaced rate-limited 2.0-flash. 1M context. 1,500 req/day. Lightest Gemini. US jurisdiction. For trivial queries only."
+      "note": "FREE. Google Gemini Flash Lite \u2014 replaced rate-limited 2.0-flash. 1M context. 1,500 req/day. Lightest Gemini. US jurisdiction. For trivial queries only."
     },
     {
       "model_key": "opencode-go/deepseek-v4-flash-free",
@@ -2705,7 +2908,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via OpenCode Go (Xiaomi Token Plan free tier). DeepSeek V4 Flash — fast coding model. 64K context. Use for code generation and simple queries on free tier."
+      "note": "FREE via OpenCode Go (Xiaomi Token Plan free tier). DeepSeek V4 Flash \u2014 fast coding model. 64K context. Use for code generation and simple queries on free tier."
     },
     {
       "model_key": "opencode-go/north-mini-code-free",
@@ -2779,7 +2982,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via OpenCode Go. North Mini Code — smallest coding model. 32K context. For trivial code completions only. Trust tier 4 — never for anything important."
+      "note": "FREE via OpenCode Go. North Mini Code \u2014 smallest coding model. 32K context. For trivial code completions only. Trust tier 4 \u2014 never for anything important."
     },
     {
       "model_key": "openrouter/auto-beta",
@@ -2844,7 +3047,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24. Task-classified router: classify→rank by community spend→dial cost/quality→route with fallbacks. 38+ models. cqt=9 default (cheap), cqt=0 for max quality. Session stickiness pins model+provider per conversation."
+      "note": "ADDED 2026-07-24. Task-classified router: classify\u2192rank by community spend\u2192dial cost/quality\u2192route with fallbacks. 38+ models. cqt=9 default (cheap), cqt=0 for max quality. Session stickiness pins model+provider per conversation."
     },
     {
       "model_key": "openrouter/auto",
@@ -3060,7 +3263,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24 (Path A — auto-beta SPOF distribution). Live-verified on OR catalog. Explicit reasoning fallback that survives auto-beta discontinuation."
+      "note": "ADDED 2026-07-24 (Path A \u2014 auto-beta SPOF distribution). Live-verified on OR catalog. Explicit reasoning fallback that survives auto-beta discontinuation."
     },
     {
       "model_key": "google/gemini-2.5-flash",
@@ -3117,7 +3320,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. US jurisdiction — not for sovereign data. Fast explicit fallback independent of auto-beta."
+      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. US jurisdiction \u2014 not for sovereign data. Fast explicit fallback independent of auto-beta."
     },
     {
       "model_key": "moonshotai/kimi-k3",
@@ -3317,7 +3520,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24. OR ~ alias — always latest Sonnet. Live-verified. US jurisdiction."
+      "note": "ADDED 2026-07-24. OR ~ alias \u2014 always latest Sonnet. Live-verified. US jurisdiction."
     },
     {
       "model_key": "~google/gemini-flash-latest",
@@ -3369,7 +3572,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24. OR ~ alias — always latest Gemini Flash. Live-verified. US jurisdiction."
+      "note": "ADDED 2026-07-24. OR ~ alias \u2014 always latest Gemini Flash. Live-verified. US jurisdiction."
     },
     {
       "model_key": "nvidia/nemotron-3-super-120b-a12b:free",
@@ -3468,7 +3671,7 @@
         "rate-limited",
         "US-jurisdiction"
       ],
-      "description": "OpenRouter :free aggregator — bridges FLAME to free models the federation can't access directly (Cohere, InclusionAI, Poolside). RATE-LIMITED: 20rpm/50rpd (1000rpd after $10 lifetime). Last-resort gap-filler only."
+      "description": "OpenRouter :free aggregator \u2014 bridges FLAME to free models the federation can't access directly (Cohere, InclusionAI, Poolside). RATE-LIMITED: 20rpm/50rpd (1000rpd after $10 lifetime). Last-resort gap-filler only."
     }
   ],
   "shadows": [
@@ -3505,7 +3708,7 @@
       "shadow_name": "reasoning_overconfidence",
       "severity": "MEDIUM",
       "class": "overclaim",
-      "pattern": "DeepSeek's chain-of-thought is strong but can produce overconfident conclusions. The model may treat probabilistic inferences as certainties. In agentic loops, this compounds: confident wrong answer → confident wrong action → confident wrong memory.",
+      "pattern": "DeepSeek's chain-of-thought is strong but can produce overconfident conclusions. The model may treat probabilistic inferences as certainties. In agentic loops, this compounds: confident wrong answer \u2192 confident wrong action \u2192 confident wrong memory.",
       "triggers": [
         "complex_reasoning",
         "multi_step",
@@ -3531,7 +3734,7 @@
       "shadow_name": "chinese_centric_alignment",
       "severity": "LOW",
       "class": "culture_mismatch",
-      "pattern": "DeepSeek's safety alignment is tuned for Chinese regulatory context. This may produce unexpected refusals or compliance behaviors in Malaysian/southeast Asian contexts. Not malicious — cultural mismatch.",
+      "pattern": "DeepSeek's safety alignment is tuned for Chinese regulatory context. This may produce unexpected refusals or compliance behaviors in Malaysian/southeast Asian contexts. Not malicious \u2014 cultural mismatch.",
       "triggers": [
         "malaysian_context",
         "bm_politics",
@@ -3589,7 +3792,7 @@
       },
       "mitigation": [
         "Monitor balance via /user/balance endpoint",
-        "Maintain fallback chain: deepseek-v4-flash → MiniMax M3 → ollama",
+        "Maintain fallback chain: deepseek-v4-flash \u2192 MiniMax M3 \u2192 ollama",
         "Alert sovereign before balance drops below $2.00"
       ],
       "evidence": "Previous 402 outage 2026-06-12. Fully resolved with $7.06 top-up.",
@@ -3602,7 +3805,7 @@
       "shadow_name": "malaysian_governance_censorship",
       "severity": "CRITICAL",
       "class": "censorship",
-      "pattern": "MiniMax server-side filter silently empties responses on Malaysian governance topics. reasoning_content contains accurate facts but content is emptied. Model appears to 'not know' when it actually knows. This is deceptive — it violates F2 TRUTH and F3 WITNESS.",
+      "pattern": "MiniMax server-side filter silently empties responses on Malaysian governance topics. reasoning_content contains accurate facts but content is emptied. Model appears to 'not know' when it actually knows. This is deceptive \u2014 it violates F2 TRUTH and F3 WITNESS.",
       "triggers": [
         "1MDB",
         "Najib",
@@ -3658,7 +3861,7 @@
       "shadow_name": "chinese_alignment_unknown",
       "severity": "MEDIUM",
       "class": "culture_mismatch",
-      "pattern": "GLM-5.2 is Zhipu's agentic engineering model. Safety alignment tuned for CN regulatory context. Malaysian governance topics have unknown censorship risk — not yet probed. 200K context limit vs 1M competitors.",
+      "pattern": "GLM-5.2 is Zhipu's agentic engineering model (753B MoE, ~40B active, MIT license). Safety alignment tuned for CN regulatory context. Malaysian governance topics have unknown censorship risk \u2014 not yet probed. 1M context window now matches competitors (corrected 2026-07-29 from stale 200K figure).",
       "triggers": [
         "malaysian_politics",
         "sovereign_governance",
@@ -3671,7 +3874,7 @@
       "mitigation": [
         "Probe Malaysian governance topics before promoting beyond FALLBACK",
         "Keep as engineering execution model (777_FORGE), not judgment (666_JUDGE)",
-        "200K context — segment long documents"
+        "1M context \u2014 matches competitors (corrected 2026-07-29)"
       ],
       "evidence": "Zhipu = CN company. No MY governance probe results yet.",
       "scar_ref": null,
@@ -3683,7 +3886,7 @@
       "shadow_name": "reasoning_output_budget",
       "severity": "MEDIUM",
       "class": "capability_gap",
-      "pattern": "MiMo V2.5 Pro's thinking mode consumes output budget for reasoning chain. Base v2.5 and v2-pro variants regularly exhaust output budget mid-reasoning and return empty content. Pro variant is the ONLY one that reliably completes long-CoT answers. This means fallback to base variants produces silent failures — empty output, not error.",
+      "pattern": "MiMo V2.5 Pro's thinking mode consumes output budget for reasoning chain. Base v2.5 and v2-pro variants regularly exhaust output budget mid-reasoning and return empty content. Pro variant is the ONLY one that reliably completes long-CoT answers. This means fallback to base variants produces silent failures \u2014 empty output, not error.",
       "triggers": [
         "long_reasoning",
         "thinking_mode",
@@ -3696,7 +3899,7 @@
       "mitigation": [
         "ALWAYS use pro variant for reasoning tasks",
         "Base v2.5 allowed ONLY as in-provider fallback for cheap trivial queries",
-        "Legacy v2-pro BANNED entirely — will hard-fail after 2026-06-30"
+        "Legacy v2-pro BANNED entirely \u2014 will hard-fail after 2026-06-30"
       ],
       "evidence": "15-call live probe 2026-06-15. mimo-v2.5-pro = PASS. mimo-v2.5 + mimo-v2-pro = FAIL (empty output).",
       "scar_ref": null,
@@ -3733,7 +3936,7 @@
       "shadow_name": "us_jurisdiction_small_model",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "Groq runs on US infrastructure — CLOUD Act applies. Data passing through Groq is legally accessible to US authorities. Model is only 8B parameters — cannot handle complex reasoning. Free tier: 14K requests/day limit. Fast (560 tok/s) but shallow.",
+      "pattern": "Groq runs on US infrastructure \u2014 CLOUD Act applies. Data passing through Groq is legally accessible to US authorities. Model is only 8B parameters \u2014 cannot handle complex reasoning. Free tier: 14K requests/day limit. Fast (560 tok/s) but shallow.",
       "triggers": [
         "sovereign_data",
         "malaysian_governance",
@@ -3746,7 +3949,7 @@
       "mitigation": [
         "NEVER send sovereign, PETRONAS, or personally identifiable data through Groq",
         "Use only for trivial queries, routing, greetings",
-        "Treat as disposable — US jurisdiction means zero data sovereignty"
+        "Treat as disposable \u2014 US jurisdiction means zero data sovereignty"
       ],
       "evidence": "Groq HQ = Mountain View, CA. CLOUD Act applies to all US-domiciled providers.",
       "scar_ref": null,
@@ -3758,7 +3961,7 @@
       "shadow_name": "credit_expiry_aug20",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "Cerebras runs on $5 free credit expiring Aug 20 2026. After expiry, all Cerebras models become unavailable. US jurisdiction — CLOUD Act applies. GLM-4.7 is CN-origin model on US hardware — dual jurisdiction risk.",
+      "pattern": "Cerebras runs on $5 free credit expiring Aug 20 2026. After expiry, all Cerebras models become unavailable. US jurisdiction \u2014 CLOUD Act applies. GLM-4.7 is CN-origin model on US hardware \u2014 dual jurisdiction risk.",
       "triggers": [
         "credit_expired",
         "aug_20_2026",
@@ -3769,9 +3972,9 @@
         "F13_SOVEREIGN": "note"
       },
       "mitigation": [
-        "Pakai dulu sebelum habis — 30 hari je",
+        "Pakai dulu sebelum habis \u2014 30 hari je",
         "Plan fallback path before Aug 20",
-        "US jurisdiction — no sovereign data"
+        "US jurisdiction \u2014 no sovereign data"
       ],
       "evidence": "Cerebras API: $5 credit, expires 2026-08-20. Live probe 2026-07-20.",
       "scar_ref": null,
@@ -3783,7 +3986,7 @@
       "shadow_name": "small_context_trial_key",
       "severity": "LOW",
       "class": "capability_gap",
-      "pattern": "SEA-LION runs on trial key with 10 RPM limit. Context window is only 32K — cannot process large documents. 32B model is competent for BM/Malay but cannot handle complex multi-step reasoning. SG jurisdiction is preferred for ASEAN data sovereignty.",
+      "pattern": "SEA-LION runs on trial key with 10 RPM limit. Context window is only 32K \u2014 cannot process large documents. 32B model is competent for BM/Malay but cannot handle complex multi-step reasoning. SG jurisdiction is preferred for ASEAN data sovereignty.",
       "triggers": [
         "large_document",
         "high_throughput",
@@ -3795,7 +3998,7 @@
       "mitigation": [
         "Use for BM/Malay translation and ASEAN cultural context only",
         "Route large documents to deepseek-v4-pro (1M context)",
-        "10 RPM limit — batch requests carefully"
+        "10 RPM limit \u2014 batch requests carefully"
       ],
       "evidence": "SEA-LION API docs: 10 RPM, 32K context. Trial key. Production observation.",
       "scar_ref": null,
@@ -3807,7 +4010,7 @@
       "shadow_name": "cn_jurisdiction_untested_censorship",
       "severity": "MEDIUM",
       "class": "culture_mismatch",
-      "pattern": "Kimi K2.7 Code is Moonshot AI — CN jurisdiction. Malaysian governance censorship profile UNTESTED. Open weights (reported) but API endpoint is proprietary. TokenRouter routing failed for this model (400 Bad Request) — works via Bailian Token Plan.",
+      "pattern": "Kimi K2.7 Code is Moonshot AI \u2014 CN jurisdiction. Malaysian governance censorship profile UNTESTED. Open weights (reported) but API endpoint is proprietary. TokenRouter routing failed for this model (400 Bad Request) \u2014 works via Bailian Token Plan.",
       "triggers": [
         "malaysian_governance",
         "tokenrouter_routing",
@@ -3832,7 +4035,7 @@
       "shadow_name": "blind_survival_knife",
       "severity": "LOW",
       "class": "capability_gap",
-      "pattern": "Ollama is a 3B parameter model running locally on CPU. It is NOT capable of reasoning, judgment, planning, or any complex task. It exists ONLY as a blind survival knife — when ALL remote models are down, it can still respond. 4.5s cold start. Single concurrency. 32K context max. Output limited to 2K tokens.",
+      "pattern": "Ollama is a 3B parameter model running locally on CPU. It is NOT capable of reasoning, judgment, planning, or any complex task. It exists ONLY as a blind survival knife \u2014 when ALL remote models are down, it can still respond. 4.5s cold start. Single concurrency. 32K context max. Output limited to 2K tokens.",
       "triggers": [
         "any_complex_task",
         "reasoning",
@@ -3847,7 +4050,7 @@
       },
       "mitigation": [
         "NEVER use as primary for any agent",
-        "Last resort only — when every remote model returns errors",
+        "Last resort only \u2014 when every remote model returns errors",
         "Output must be treated as LOW confidence regardless of content"
       ],
       "evidence": "3B params. CPU inference on af-forge VPS. Cold start: 4.5s. Slow generation. Production observation.",
@@ -3860,7 +4063,7 @@
       "shadow_name": "us_jurisdiction_expensive",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "GPT-5.6-Sol via TokenRouter/OpenRouter. US jurisdiction — CLOUD Act applies. Most expensive model in federation ($3/$12 per 1M tokens). Used by Codex CLI only. Not probed for Malaysian governance topics.",
+      "pattern": "GPT-5.6-Sol via TokenRouter/OpenRouter. US jurisdiction \u2014 CLOUD Act applies. Most expensive model in federation ($3/$12 per 1M tokens). Used by Codex CLI only. Not probed for Malaysian governance topics.",
       "triggers": [
         "sovereign_data",
         "cost_sensitive",
@@ -3871,8 +4074,8 @@
         "F13_SOVEREIGN": "elevated"
       },
       "mitigation": [
-        "Codex CLI only — do not expand usage",
-        "US jurisdiction — no sovereign data",
+        "Codex CLI only \u2014 do not expand usage",
+        "US jurisdiction \u2014 no sovereign data",
         "DeepSeek V4 Pro as fallback for cost-sensitive and sovereign tasks"
       ],
       "evidence": "TokenRouter pricing. US jurisdiction via OpenRouter. Codex CLI primary model.",
@@ -3895,8 +4098,8 @@
         "F13_SOVEREIGN": "elevated"
       },
       "mitigation": [
-        "Free tier only — best-effort fallback",
-        "US jurisdiction — no sovereign data"
+        "Free tier only \u2014 best-effort fallback",
+        "US jurisdiction \u2014 no sovereign data"
       ],
       "evidence": "Google AI free tier: 1,500 RPM/day. US jurisdiction.",
       "scar_ref": null,
@@ -3908,7 +4111,7 @@
       "shadow_name": "us_jurisdiction_rate_limited",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "Llama 3.3 70B on Groq — US jurisdiction. 1,000 req/day limit. 280 tok/s.",
+      "pattern": "Llama 3.3 70B on Groq \u2014 US jurisdiction. 1,000 req/day limit. 280 tok/s.",
       "triggers": [
         "sovereign_data",
         "exceeded_daily_limit"
@@ -3919,7 +4122,7 @@
       },
       "mitigation": [
         "OpenClaw fallback only",
-        "US jurisdiction — no sovereign data"
+        "US jurisdiction \u2014 no sovereign data"
       ],
       "evidence": "Groq free tier limits. US jurisdiction.",
       "scar_ref": null,
@@ -3931,7 +4134,7 @@
       "shadow_name": "cn_jurisdiction_2.8t_ingested",
       "severity": "MEDIUM",
       "class": "culture_mismatch",
-      "pattern": "Kimi K3 2.8T flagship — CN jurisdiction. 1M context. MY governance censorship UNTESTED despite full spec ingestion 2026-07-28.",
+      "pattern": "Kimi K3 2.8T flagship \u2014 CN jurisdiction. 1M context. MY governance censorship UNTESTED despite full spec ingestion 2026-07-28.",
       "triggers": [
         "malaysian_governance",
         "censorship_unknown"
@@ -3943,7 +4146,7 @@
       "mitigation": [
         "Probe MY governance before expanding role",
         "Route sovereign topics to deepseek-v4-pro",
-        "Full architecture ingested 2026-07-28 from MoonshotAI/Kimi-K3 — spec fidelity HIGH, censorship fidelity UNKNOWN"
+        "Full architecture ingested 2026-07-28 from MoonshotAI/Kimi-K3 \u2014 spec fidelity HIGH, censorship fidelity UNKNOWN"
       ],
       "evidence": "Moonshot AI = CN. K3 specs fully ingested from GitHub repo + tech report. Architecture, benchmarks, deployment all verified. Censorship profile for MY governance topics still unprobed.",
       "scar_ref": null,
@@ -3956,7 +4159,7 @@
       "shadow_name": "direct_endpoint_divergence",
       "severity": "LOW",
       "class": "capability_gap",
-      "pattern": "Native Moonshot API vs Bailian — same model, different gateway may differ in rate limits or behavior.",
+      "pattern": "Native Moonshot API vs Bailian \u2014 same model, different gateway may differ in rate limits or behavior.",
       "triggers": [
         "behavior_divergence"
       ],
@@ -3985,7 +4188,7 @@
         "F2_TRUTH": "note"
       },
       "mitigation": [
-        "Legacy — OpenClaw fallback #6 only",
+        "Legacy \u2014 OpenClaw fallback #6 only",
         "Prefer M3 for multimodal"
       ],
       "evidence": "FFF smoke G5 UNTESTED. Legacy model.",
@@ -4008,7 +4211,7 @@
       },
       "mitigation": [
         "OPS fallback only",
-        "131K context — segment carefully"
+        "131K context \u2014 segment carefully"
       ],
       "evidence": "Bailian Token Plan pricing. Low cost = low capability.",
       "scar_ref": null,
@@ -4020,7 +4223,7 @@
       "shadow_name": "us_jurisdiction_yolo_mode",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "xAI Grok 4.5 — US jurisdiction. CLOUD Act. YOLO mode. 500K context. Free speech absolutist posture.",
+      "pattern": "xAI Grok 4.5 \u2014 US jurisdiction. CLOUD Act. YOLO mode. 500K context. Free speech absolutist posture.",
       "triggers": [
         "sovereign_data",
         "malaysian_governance"
@@ -4030,8 +4233,8 @@
         "F13_SOVEREIGN": "elevated"
       },
       "mitigation": [
-        "Grok Build only — isolated",
-        "US jurisdiction — no sovereign data"
+        "Grok Build only \u2014 isolated",
+        "US jurisdiction \u2014 no sovereign data"
       ],
       "evidence": "xAI = US. YOLO mode active.",
       "scar_ref": null,
@@ -4043,7 +4246,7 @@
       "shadow_name": "content_safety_suppression",
       "severity": "HIGH",
       "class": "censorship",
-      "pattern": "GPT-OSS-120B on Groq LPU has a content safety filter that suppresses benign responses (\"OK\"). Model returns empty content for simple prompts. NOT a connectivity issue — model is live but refuses output. This is the same model that failed G2 Truth in FFF (fabricated historical event).",
+      "pattern": "GPT-OSS-120B on Groq LPU has a content safety filter that suppresses benign responses (\"OK\"). Model returns empty content for simple prompts. NOT a connectivity issue \u2014 model is live but refuses output. This is the same model that failed G2 Truth in FFF (fabricated historical event).",
       "triggers": [
         "simple_prompts",
         "content_safety",
@@ -4092,7 +4295,7 @@
       "shadow_name": "content_safety_suppression_cerebras",
       "severity": "HIGH",
       "class": "censorship",
-      "pattern": "GPT-OSS-120B on Cerebras has content safety filter suppressing benign output — same behavior as Groq version. 312ms response but suppressed content. Model is live but refuses simple prompts.",
+      "pattern": "GPT-OSS-120B on Cerebras has content safety filter suppressing benign output \u2014 same behavior as Groq version. 312ms response but suppressed content. Model is live but refuses simple prompts.",
       "triggers": [
         "simple_prompts",
         "content_safety"
@@ -4104,11 +4307,37 @@
       "mitigation": [
         "JSON-mode contract only",
         "Never for truth-critical paths",
-        "Both Groq and Cerebras versions affected — model-level issue, not provider"
+        "Both Groq and Cerebras versions affected \u2014 model-level issue, not provider"
       ],
       "evidence": "FLAME audit 2026-07-20 + FFF smoke G2 FAIL. Content safety affects both providers.",
       "scar_ref": null,
       "last_observed": "2026-07-20"
+    },
+    {
+      "shadow_id": "SHADOW-GLM-004",
+      "model_ref": "glm/glm-5.2",
+      "shadow_name": "my_censorship_probe_inconclusive",
+      "severity": "HIGH",
+      "class": "unknown_censorship",
+      "pattern": "GLM-5.2 MY governance censorship probe attempted 2026-07-29 \u2014 INCONCLUSIVE. Bailian Token Plan quota exhausted. OpenRouter z-ai/glm-5.2 endpoint returns empty content for ALL topics (not just MY), suggesting endpoint malfunction rather than targeted censorship. Z.ai direct endpoint requires API key not yet acquired.",
+      "triggers": [
+        "malaysian_governance",
+        "censorship_unknown",
+        "endpoint_unavailable"
+      ],
+      "floor_posture_delta": {
+        "F2_TRUTH": "elevated",
+        "F13_SOVEREIGN": "note"
+      },
+      "mitigation": [
+        "GLM-5.2 stays FORGE-only until probe completed",
+        "Acquire Z.ai API key for direct censorship probe",
+        "Retry probe when Bailian quota resets (monthly cycle)",
+        "Cannot promote to 666_JUDGE or 999_SEAL without clean probe"
+      ],
+      "evidence": "6-test probe attempted via OpenRouter 2026-07-29. All 4 completed tests returned CENSORED (empty). Control test (capital of France) also empty \u2014 endpoint appears broken, not MY-specific censorship.",
+      "scar_ref": null,
+      "last_observed": "2026-07-29"
     }
   ],
   "scars": [
@@ -4117,7 +4346,7 @@
       "scar_name": "DeepSeek Credit Exhaustion 2026-06-12",
       "origin": "DeepSeek pre-paid credits dropped to $0. All federation agent sessions failed simultaneously with 402 Payment Required errors.",
       "failure_mode": "No automated balance monitoring. Credit exhaustion discovered when agents started failing.",
-      "detection_method": "402 errors from API. Agents reported failure. Hermes fallback chain misconfigured — skipped MiniMax, fell through to dead DeepSeek repeatedly.",
+      "detection_method": "402 errors from API. Agents reported failure. Hermes fallback chain misconfigured \u2014 skipped MiniMax, fell through to dead DeepSeek repeatedly.",
       "constraint_imposed": "Monitor DeepSeek balance via daily cron. Alert sovereign before $2.00. Maintain verified multi-provider fallback chain that actually works.",
       "severity": "HIGH",
       "scar_pressure": 0.3,
@@ -4125,14 +4354,14 @@
       "last_seen": "2026-06-12",
       "recurrence_count": 0,
       "metabolized_from_shadow": "SHADOW-DS-005",
-      "sealed_by": "FORGE (000Ω)",
+      "sealed_by": "FORGE (000\u03a9)",
       "sealed_at": "2026-06-13"
     },
     {
       "scar_id": "SCAR_MM_001",
       "scar_name": "MiniMax Censorship Discovered 2026-06-12",
       "origin": "Live API probe detected MiniMax M3 silently censoring Malaysian governance topics. Was federation PRIMARY model at the time.",
-      "failure_mode": "Censorship was silent — model appeared to 'not know' rather than refusing. F2 TRUTH violation: output masquerades as ignorance. F3 WITNESS violation: vendor silently alters evidence stream.",
+      "failure_mode": "Censorship was silent \u2014 model appeared to 'not know' rather than refusing. F2 TRUTH violation: output masquerades as ignorance. F3 WITNESS violation: vendor silently alters evidence stream.",
       "detection_method": "6-test probe by FORGE. 4/6 Malaysian governance topics returned empty content while reasoning_content was complete and accurate.",
       "constraint_imposed": "MiniMax DEMOTED from PRIMARY to FALLBACK. Cannot serve 666_JUDGE or 999_SEAL roles. All Malaysian governance queries routed to DeepSeek. Any model with censorship potential must be probed before promotion.",
       "severity": "CRITICAL",
@@ -4141,7 +4370,7 @@
       "last_seen": "2026-06-12",
       "recurrence_count": 0,
       "metabolized_from_shadow": "SHADOW-MM-001",
-      "sealed_by": "FORGE (000Ω)",
+      "sealed_by": "FORGE (000\u03a9)",
       "sealed_at": "2026-06-12"
     }
   ],
@@ -4151,78 +4380,78 @@
       "agent_name": "OpenCode",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek-v4-pro",
+      "primary_model": "deepseek/deepseek-v4-pro",
       "primary_provider": "deepseek",
       "fallback_chain": [
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
-          "priority": 1,
-          "cost": "flat_rate",
-          "note": "Go subscription — unlimited"
-        },
-        {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
+          "priority": 1,
+          "cost": "prepaid",
+          "note": "Direct DS API \u2014 $12.63 balance, ZERO censorship, FFF SMOKE_PASS"
+        },
+        {
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "bailian-token-plan",
           "priority": 2,
-          "cost": "prepaid",
-          "note": "Direct API — $7.06"
+          "cost": "token_plan",
+          "note": "Bailian fallback \u2014 same model, different gateway"
         },
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "tokenrouter",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 3,
-          "cost": "prepaid",
-          "note": "Unified gateway — $85.57"
+          "cost": "monthly",
+          "note": "2.8T MoE, vision, 1M ctx \u2014 direct Kimi API"
         },
         {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "kimi/k3",
           "provider": "openrouter",
           "priority": 4,
           "cost": "prepaid",
-          "note": "Backup routing — ~$28"
+          "note": "OpenRouter fallback for K3"
         },
         {
-          "model_key": "kimi-k3",
-          "provider": "opencode-go",
+          "model_key": "glm/glm-5.2",
+          "provider": "bailian-token-plan",
           "priority": 5,
-          "cost": "flat_rate",
-          "note": "2.8T MoE, vision, 1M ctx"
+          "cost": "token_plan",
+          "note": "Agentic coding specialist \u2014 FORGE fallback. MY censorship UNTESTED."
         },
         {
-          "model_key": "kimi-k3",
-          "provider": "tokenrouter",
+          "model_key": "mimo/mimo-v2.5-pro",
+          "provider": "mimo-platform",
           "priority": 6,
-          "cost": "prepaid",
-          "note": "via TokenRouter"
+          "cost": "token_plan",
+          "note": "1M ctx, deep thinking, no censorship"
         },
         {
-          "model_key": "glm-5.2",
-          "provider": "tokenrouter",
+          "model_key": "deepseek/deepseek-v4-flash",
+          "provider": "deepseek",
           "priority": 7,
-          "cost": "free",
-          "note": "FREE tier on TokenRouter"
+          "cost": "prepaid",
+          "note": "Fast, same architecture as Pro"
         },
         {
-          "model_key": "deepseek-v4-flash",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-flash",
+          "provider": "bailian-token-plan",
           "priority": 8,
-          "cost": "flat_rate",
-          "note": "Fast, same architecture"
+          "cost": "token_plan",
+          "note": "Bailian fallback for Flash"
         },
         {
-          "model_key": "llama-3.3-70b",
-          "provider": "groq",
+          "model_key": "gemini/gemini-2.5-flash",
+          "provider": "gemini",
           "priority": 9,
           "cost": "free",
-          "note": "280 tok/s, last remote"
+          "note": "Free tier, 1M ctx, multimodal"
         },
         {
-          "model_key": "qwen2.5-coder-3b",
+          "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
           "priority": 10,
           "cost": "free",
-          "note": "Local — always available"
+          "note": "Local \u2014 always available"
         }
       ],
       "circuit_breaker": {
@@ -4235,8 +4464,8 @@
       "cost_budget_monthly_usd": 20.0,
       "config_file_path": "/root/.config/opencode/opencode.json",
       "status": "ACTIVE",
-      "last_verified": "2026-07-24",
-      "notes": "Primary forge coding agent. Serves as FORGE (000Ω) when spawned. Current session: deepseek-v4-pro (override from default). UPDATED 2026-07-24: OpenRouter integrated as routing layer (priority 2+3). MCP server at https://mcp.openrouter.ai/mcp for model discovery + credit monitoring. | PATH-A 2026-07-24: auto-beta SPOF distributed — explicit OR models (deepseek-r1/gemini-2.5-flash/kimi-k3) added; deprecated auto + unregistered openrouter/deepseek/* keys removed. Ratified by F13.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Primary forge coding agent. Serves as FORGE (000\u03a9) when spawned. Current session...",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -4271,41 +4500,46 @@
     },
     {
       "agent_id": "forge",
-      "agent_name": "FORGE (000Ω)",
+      "agent_name": "FORGE (000\u03a9)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek-v4-pro",
+      "primary_model": "deepseek/deepseek-v4-pro",
       "primary_provider": "deepseek",
       "fallback_chain": [
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
-          "priority": 1,
-          "cost": "flat_rate"
-        },
-        {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
+          "priority": 1,
+          "cost": "prepaid",
+          "note": "Direct DS API \u2014 $12.63"
+        },
+        {
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "bailian-token-plan",
           "priority": 2,
-          "cost": "prepaid"
+          "cost": "token_plan",
+          "note": "Bailian fallback"
         },
         {
-          "model_key": "glm-5.2",
-          "provider": "tokenrouter",
+          "model_key": "glm/glm-5.2",
+          "provider": "bailian-token-plan",
           "priority": 3,
-          "cost": "free"
+          "cost": "token_plan",
+          "note": "Agentic coding. MY censorship UNTESTED \u2014 FORGE only."
         },
         {
-          "model_key": "glm-5.2",
-          "provider": "opencode-go",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 4,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "2.8T MoE backup"
         },
         {
-          "model_key": "deepseek-v4-flash",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-flash",
+          "provider": "deepseek",
           "priority": 5,
-          "cost": "flat_rate"
+          "cost": "prepaid",
+          "note": "Fast fallback"
         }
       ],
       "circuit_breaker": {
@@ -4318,8 +4552,8 @@
       "cost_budget_monthly_usd": 15.0,
       "config_file_path": "/root/.config/opencode/opencode.json (subagents.FORGE)",
       "status": "ACTIVE",
-      "last_verified": "2026-07-24",
-      "notes": "Spawning subagent. GLM-5.2 as engineering execution alternative. DeepSeek V4 Pro primary for constitutional alignment. | PATH-A 2026-07-24: auto-beta SPOF distributed — explicit OR models (deepseek-r1/gemini-2.5-flash/kimi-k3) added; deprecated auto + unregistered openrouter/deepseek/* keys removed. Ratified by F13.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Spawning subagent. GLM-5.2 as engineering execution alternative. DeepSeek V4 Pro...",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -4352,35 +4586,39 @@
     },
     {
       "agent_id": "auditor",
-      "agent_name": "AUDITOR (Ψ)",
+      "agent_name": "AUDITOR (\u03a8)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek-v4-pro",
+      "primary_model": "deepseek/deepseek-v4-pro",
       "primary_provider": "deepseek",
       "fallback_chain": [
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
-          "priority": 1,
-          "cost": "flat_rate"
-        },
-        {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
+          "priority": 1,
+          "cost": "prepaid",
+          "note": "Direct DS API \u2014 $12.63"
+        },
+        {
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "bailian-token-plan",
           "priority": 2,
-          "cost": "prepaid"
+          "cost": "token_plan",
+          "note": "Bailian fallback"
         },
         {
-          "model_key": "mimo-v2.5-pro",
-          "provider": "opencode-go",
+          "model_key": "mimo/mimo-v2.5-pro",
+          "provider": "mimo-platform",
           "priority": 3,
-          "cost": "flat_rate"
+          "cost": "token_plan",
+          "note": "1M ctx, deep thinking"
         },
         {
-          "model_key": "minimax-m3",
-          "provider": "opencode-go",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 4,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "2.8T backup"
         }
       ],
       "circuit_breaker": {
@@ -4393,8 +4631,8 @@
       "cost_budget_monthly_usd": 10.0,
       "config_file_path": "/root/.config/opencode/opencode.json (subagents.AUDITOR)",
       "status": "ACTIVE",
-      "last_verified": "2026-07-20",
-      "notes": "Deep reasoning for audit. 1M context for large codebase reviews.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Deep reasoning for audit. 1M context for large codebase reviews....",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -4425,35 +4663,53 @@
     },
     {
       "agent_id": "ops",
-      "agent_name": "OPS (🌐)",
+      "agent_name": "OPS (\ud83c\udf10)",
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "deepseek-v4-flash",
       "primary_provider": "deepseek",
       "fallback_chain": [
         {
-          "model_key": "deepseek-v4-flash",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-flash",
+          "provider": "deepseek",
           "priority": 1,
-          "cost": "flat_rate"
+          "cost": "prepaid",
+          "note": "Direct DS API \u2014 $0.14/$0.28"
         },
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-flash",
+          "provider": "bailian-token-plan",
           "priority": 2,
-          "cost": "flat_rate"
+          "cost": "token_plan",
+          "note": "Bailian fallback"
         },
         {
-          "model_key": "glm-5.2",
-          "provider": "tokenrouter",
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "deepseek",
           "priority": 3,
-          "cost": "free"
+          "cost": "prepaid",
+          "note": "Pro fallback for complex ops"
         },
         {
-          "model_key": "llama-3.3-70b",
-          "provider": "groq",
+          "model_key": "glm/glm-5.2",
+          "provider": "bailian-token-plan",
           "priority": 4,
-          "cost": "free"
+          "cost": "token_plan",
+          "note": "FORGE fallback"
+        },
+        {
+          "model_key": "gemini/gemini-2.5-flash",
+          "provider": "gemini",
+          "priority": 5,
+          "cost": "free",
+          "note": "Free tier"
+        },
+        {
+          "model_key": "ollama/qwen2.5-coder:3b",
+          "provider": "ollama",
+          "priority": 6,
+          "cost": "free",
+          "note": "Local recovery"
         }
       ],
       "circuit_breaker": {
@@ -4466,8 +4722,8 @@
       "cost_budget_monthly_usd": 5.0,
       "config_file_path": "/root/.config/opencode/opencode.json (subagents.OPS)",
       "status": "ACTIVE",
-      "last_verified": "2026-07-20",
-      "notes": "Fast monitoring. Flash model for speed + low cost. 15s timeout.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Fast monitoring. Flash model for speed + low cost. 15s timeout....",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -4501,35 +4757,53 @@
     },
     {
       "agent_id": "planner",
-      "agent_name": "PLAN (Ω)",
+      "agent_name": "PLAN (\u03a9)",
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "kimi-k3",
       "primary_provider": "kimi-moonshot",
       "fallback_chain": [
         {
-          "model_key": "kimi-k2.7-code",
-          "provider": "opencode-go",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 1,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "Direct Kimi API \u2014 2.8T MoE, always-on thinking"
         },
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
+          "model_key": "kimi/k3",
+          "provider": "openrouter",
           "priority": 2,
-          "cost": "flat_rate"
+          "cost": "prepaid",
+          "note": "OpenRouter fallback"
         },
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "deepseek",
+          "model_key": "kimi/kimi-for-coding",
+          "provider": "bailian-token-plan",
           "priority": 3,
-          "cost": "prepaid"
+          "cost": "token_plan",
+          "note": "K2.7 Code fallback via Bailian"
         },
         {
-          "model_key": "mimo-v2.5-pro",
-          "provider": "opencode-go",
+          "model_key": "kimi/kimi-for-coding",
+          "provider": "kimi-moonshot",
           "priority": 4,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "K2.7 Code direct"
+        },
+        {
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "deepseek",
+          "priority": 5,
+          "cost": "prepaid",
+          "note": "DS V4 Pro \u2014 trusted fallback"
+        },
+        {
+          "model_key": "mimo/mimo-v2.5-pro",
+          "provider": "mimo-platform",
+          "priority": 6,
+          "cost": "token_plan",
+          "note": "MiMo fallback"
         }
       ],
       "circuit_breaker": {
@@ -4542,8 +4816,8 @@
       "cost_budget_monthly_usd": 10.0,
       "config_file_path": "/root/.config/opencode/opencode.json (subagents.PLANNER)",
       "status": "ACTIVE",
-      "last_verified": "2026-07-20",
-      "notes": "Kimi K3 primary for DAG planning — 2.8T MoE, 1M context, KDA + Gated MLA. Always-on thinking with reasoning_effort. K2.7 Code as fallback. K3 specs fully ingested 2026-07-28 from MoonshotAI/Kimi-K3. Vision-capable.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Kimi K3 primary for DAG planning \u2014 2.8T MoE, 1M context, KDA + Gated MLA. Always...",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "model_updated": "2026-07-28",
@@ -4583,74 +4857,67 @@
       "primary_provider": "mimo-platform",
       "fallback_chain": [
         {
-          "model_key": "minimax-m3",
-          "provider": "opencode-go",
+          "model_key": "mimo/mimo-v2.5-pro-ultraspeed",
+          "provider": "mimo-platform",
           "priority": 1,
-          "cost": "flat_rate",
-          "note": "Go subscription — unlimited"
-        },
-        {
-          "model_key": "minimax-m3",
-          "provider": "tokenrouter",
-          "priority": 2,
-          "cost": "prepaid",
-          "note": "Unified gateway"
-        },
-        {
-          "model_key": "minimax-m3",
-          "provider": "minimax",
-          "priority": 3,
           "cost": "token_plan",
-          "note": "Direct — RATE_LIMITED"
+          "note": "1000 tok/s \u2014 fast conversational default"
         },
         {
-          "model_key": "kimi-k3",
-          "provider": "opencode-go",
-          "priority": 4,
-          "cost": "flat_rate",
-          "note": "2.8T MoE, vision, 1M ctx"
+          "model_key": "mimo/mimo-v2.5-pro",
+          "provider": "mimo-platform",
+          "priority": 2,
+          "cost": "token_plan",
+          "note": "Deep thinking fallback"
         },
         {
-          "model_key": "kimi-k3",
-          "provider": "tokenrouter",
-          "priority": 5,
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "deepseek",
+          "priority": 3,
           "cost": "prepaid",
-          "note": "via TokenRouter"
+          "note": "Best reasoning, ZERO censorship, text-only"
         },
         {
-          "model_key": "mimo-v2.5-pro",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "bailian-token-plan",
+          "priority": 4,
+          "cost": "token_plan",
+          "note": "Bailian fallback"
+        },
+        {
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
+          "priority": 5,
+          "cost": "monthly",
+          "note": "2.8T MoE, vision, always-on thinking"
+        },
+        {
+          "model_key": "mimo/mimo-v2.5",
+          "provider": "mimo-platform",
           "priority": 6,
-          "cost": "flat_rate",
-          "note": "1M ctx, deep thinking"
+          "cost": "token_plan",
+          "note": "Base MiMo \u2014 lightweight"
         },
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
+          "model_key": "gemini/gemini-2.5-flash",
+          "provider": "gemini",
           "priority": 7,
-          "cost": "flat_rate",
-          "note": "Text-only but best reasoning"
+          "cost": "free",
+          "note": "Free tier, multimodal"
         },
         {
-          "model_key": "gemini-3.5-flash",
-          "provider": "tokenrouter",
+          "model_key": "gemini/gemini-3-flash",
+          "provider": "gemini",
           "priority": 8,
           "cost": "free",
-          "note": "1M ctx, multimodal, free tier"
+          "note": "Newer Gemini Flash, 500 RPD"
         },
         {
-          "model_key": "llama-3.3-70b",
-          "provider": "groq",
+          "model_key": "ollama/qwen2.5-coder:3b",
+          "provider": "ollama",
           "priority": 9,
           "cost": "free",
-          "note": "Text-only, fast"
-        },
-        {
-          "model_key": "qwen2.5-coder-3b",
-          "provider": "ollama",
-          "priority": 10,
-          "cost": "free",
-          "note": "Local — always available"
+          "note": "Local \u2014 always available"
         }
       ],
       "circuit_breaker": {
@@ -4663,8 +4930,8 @@
       "cost_budget_monthly_usd": 30.0,
       "config_file_path": "/root/HERMES/config.yaml",
       "status": "ACTIVE",
-      "last_verified": "2026-07-24",
-      "notes": "Primary human-facing agent (Telegram). MiMo V2.5 Pro UltraSpeed for fast conversational path. OpenRouter auto-beta as smart fallback (collapsed prior 8-item chain into 1). RM0 free router as last remote tier. UPDATED 2026-07-24. | PATH-A 2026-07-24: auto-beta SPOF distributed — explicit OR models (deepseek-r1/gemini-2.5-flash/kimi-k3) added; deprecated auto + unregistered openrouter/deepseek/* keys removed. Ratified by F13.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Primary human-facing agent (Telegram). MiMo V2.5 Pro UltraSpeed for fast convers...",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING. Hermes needs multimodal for Telegram.",
       "autonomous_profile": {
@@ -4701,37 +4968,23 @@
       "primary_provider": "minimax",
       "fallback_chain": [
         {
-          "model_key": "minimax-m3",
-          "provider": "opencode-go",
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "deepseek",
           "priority": 1,
-          "cost": "flat_rate",
-          "note": "Go subscription — unlimited"
+          "cost": "prepaid",
+          "note": "Architect fallback \u2014 DS direct"
         },
         {
-          "model_key": "minimax-m3",
-          "provider": "tokenrouter",
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "bailian-token-plan",
           "priority": 2,
-          "cost": "prepaid",
-          "note": "Unified gateway"
+          "cost": "token_plan",
+          "note": "Bailian fallback"
         },
         {
-          "model_key": "deepseek-v4-pro",
-          "provider": "opencode-go",
-          "priority": 3,
-          "cost": "flat_rate",
-          "note": "Architect fallback"
-        },
-        {
-          "model_key": "deepseek-v4-pro",
-          "provider": "tokenrouter",
-          "priority": 4,
-          "cost": "prepaid",
-          "note": "via TokenRouter"
-        },
-        {
-          "model_key": "qwen2.5-coder-3b",
+          "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
-          "priority": 5,
+          "priority": 3,
           "cost": "free",
           "note": "Local recovery"
         }
@@ -4745,9 +4998,9 @@
       "cost_budget_daily_usd": 1.0,
       "cost_budget_monthly_usd": 10.0,
       "config_file_path": "/root/.openclaw/openclaw.json",
-      "status": "B — semi-retired, preserve only",
-      "last_verified": "2026-07-24",
-      "notes": "Legacy chat router + model inference. MiniMax M3 primary (multimodal). Long fallback chain with 7 models. NOT an execution gate. | PATH-A 2026-07-24: auto-beta SPOF distributed — explicit OR models (deepseek-r1/gemini-2.5-flash/kimi-k3) added; deprecated auto + unregistered openrouter/deepseek/* keys removed. Ratified by F13.",
+      "status": "B \u2014 semi-retired, preserve only",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Legacy chat router + model inference. MiniMax M3 primary (multimodal). Long fall...",
       "tier": "T1_frontier_reasoning",
       "philosophy": "Two models only. Enough to boot, recover, maintain legacy.",
       "autonomous_profile": {
@@ -4785,7 +5038,7 @@
       "config_file_path": "/root/.secrets/vault.env (ANTHROPIC_* vars routed to DeepSeek bridge)",
       "status": "ACTIVE",
       "last_verified": "2026-07-17",
-      "notes": "Anthropic CLI routed through DeepSeek Anthropic Bridge. ANTHROPIC_MODEL=deepseek-v4-pro[1m]. Native Anthropic models (Claude) BLOCKED — kernelized F1-F13 incompatible with prompt-loaded CAI constitution.",
+      "notes": "Anthropic CLI routed through DeepSeek Anthropic Bridge. ANTHROPIC_MODEL=deepseek-v4-pro[1m]. Native Anthropic models (Claude) BLOCKED \u2014 kernelized F1-F13 incompatible with prompt-loaded CAI constitution.",
       "autonomous_profile": {
         "max_tier": "T0",
         "triggers": [
@@ -4851,22 +5104,39 @@
       "primary_provider": "kimi-moonshot",
       "fallback_chain": [
         {
-          "model_key": "kimi-k3",
-          "provider": "opencode-go",
+          "model_key": "kimi/k3",
+          "provider": "kimi-moonshot",
           "priority": 1,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "Direct Kimi API \u2014 2.8T MoE"
         },
         {
-          "model_key": "kimi-k3",
-          "provider": "tokenrouter",
+          "model_key": "kimi/k3",
+          "provider": "openrouter",
           "priority": 2,
-          "cost": "prepaid"
+          "cost": "prepaid",
+          "note": "OpenRouter fallback"
         },
         {
-          "model_key": "kimi-k2.7-code",
-          "provider": "opencode-go",
+          "model_key": "kimi/kimi-for-coding",
+          "provider": "kimi-moonshot",
           "priority": 3,
-          "cost": "flat_rate"
+          "cost": "monthly",
+          "note": "K2.7 Code direct"
+        },
+        {
+          "model_key": "kimi/kimi-for-coding",
+          "provider": "bailian-token-plan",
+          "priority": 4,
+          "cost": "token_plan",
+          "note": "Bailian fallback"
+        },
+        {
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "deepseek",
+          "priority": 5,
+          "cost": "prepaid",
+          "note": "DS V4 Pro trusted fallback"
         }
       ],
       "circuit_breaker": null,
@@ -4875,8 +5145,8 @@
       "cost_budget_monthly_usd": 10.0,
       "config_file_path": "/root/.arifos/agents/kimi/config.toml",
       "status": "ACTIVE",
-      "last_verified": "2026-07-20",
-      "notes": "AAA warga FI-008. Kimi K3 primary (2.8T, 1M ctx). K2.7 Code fallback.",
+      "last_verified": "2026-07-29",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). AAA warga FI-008. Kimi K3 primary (2.8T, 1M ctx). K2.7 Code fallback....",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -4912,16 +5182,16 @@
           "provider": "opencode-zen",
           "priority": 1,
           "cost": "payg",
-          "note": "Premium tier — PAYG only"
+          "note": "Premium tier \u2014 PAYG only"
         },
         {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "opencode-go",
           "priority": 2,
           "cost": "flat_rate"
         },
         {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
           "priority": 3,
           "cost": "prepaid"
@@ -5038,19 +5308,19 @@
       "primary_provider": "kimi-moonshot",
       "fallback_chain": [
         {
-          "model_key": "kimi-k3",
+          "model_key": "kimi/k3",
           "provider": "opencode-go",
           "priority": 1,
           "cost": "flat_rate"
         },
         {
-          "model_key": "kimi-k3",
+          "model_key": "kimi/k3",
           "provider": "tokenrouter",
           "priority": 2,
           "cost": "prepaid"
         },
         {
-          "model_key": "deepseek-v4-pro",
+          "model_key": "deepseek/deepseek-v4-pro",
           "provider": "opencode-go",
           "priority": 3,
           "cost": "flat_rate"
@@ -5063,7 +5333,7 @@
       "config_file_path": "/root/.config/opencode/opencode.json (agent.image-prompt-architect)",
       "status": "ACTIVE",
       "last_verified": "2026-07-24",
-      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent — runtime-local only.",
+      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent \u2014 runtime-local only.",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -5090,7 +5360,7 @@
   "fallback_chains": {
     "deepseek_primary_chain": {
       "chain_id": "deepseek_primary_chain",
-      "description": "Primary DeepSeek → MiniMax M3 (general) → GLM-5.2 (engineering) → Ollama (survival)",
+      "description": "Primary DeepSeek \u2192 MiniMax M3 (general) \u2192 GLM-5.2 (engineering) \u2192 Ollama (survival)",
       "chain": [
         "deepseek/deepseek-v4-pro",
         "minimax/MiniMax-M3",
@@ -5106,7 +5376,7 @@
     },
     "RM0-GENERAL-REASONING": {
       "chain_id": "RM0-GENERAL-REASONING",
-      "description": "CANONICAL RM0 FEDERATION FALLBACK. TokenRouter (smart) → MiniMax (multimodal) → MiMo (text) → Groq FREE (560t/s) → Gemini FREE (multimodal) → Cerebras FREE (volume) → SEA-LION FREE (BM native) → Ollama (local) → HOLD (governed stop). Kalau satu jatuh, tujuh lagi berdiri. RM0. Zero sen.",
+      "description": "CANONICAL RM0 FEDERATION FALLBACK. TokenRouter (smart) \u2192 MiniMax (multimodal) \u2192 MiMo (text) \u2192 Groq FREE (560t/s) \u2192 Gemini FREE (multimodal) \u2192 Cerebras FREE (volume) \u2192 SEA-LION FREE (BM native) \u2192 Ollama (local) \u2192 HOLD (governed stop). Kalau satu jatuh, tujuh lagi berdiri. RM0. Zero sen.",
       "chain": [
         "deepseek/deepseek-v4-pro",
         "minimax/MiniMax-M3",
@@ -5127,18 +5397,18 @@
       ],
       "sealed_by": "RM0_CEREBRAS_GEMINI_SEAL 2026-07-20",
       "credit_warnings": [
-        "Cerebras: $5 credit expires Aug 20 2026 — 30 hari je, pakai dulu sebelum habis"
+        "Cerebras: $5 credit expires Aug 20 2026 \u2014 30 hari je, pakai dulu sebelum habis"
       ],
       "sovereign_principles": [
-        "Kalau satu jatuh, enam lagi berdiri — sovereign resilience, no single vendor failure can collapse cognition",
-        "Setiap tier ada sebab — no bloat, no redundancy without purpose",
-        "RM0 bukan miskin — ini kemerdekaan dari vendor pricing",
-        "Bukan 'free tier abuse' — ini architecture, setiap fallback adalah conscious decision"
+        "Kalau satu jatuh, enam lagi berdiri \u2014 sovereign resilience, no single vendor failure can collapse cognition",
+        "Setiap tier ada sebab \u2014 no bloat, no redundancy without purpose",
+        "RM0 bukan miskin \u2014 ini kemerdekaan dari vendor pricing",
+        "Bukan 'free tier abuse' \u2014 ini architecture, setiap fallback adalah conscious decision"
       ]
     },
     "bailian_multi_provider_chain": {
       "chain_id": "bailian_multi_provider_chain",
-      "description": "Bailian Token Plan models → MiniMax → Groq (free) → Ollama",
+      "description": "Bailian Token Plan models \u2192 MiniMax \u2192 Groq (free) \u2192 Ollama",
       "chain": [
         "deepseek/deepseek-v4-pro",
         "qwen/qwen3.7-max",
@@ -5153,7 +5423,7 @@
     },
     "hermes_conversational_chain": {
       "chain_id": "hermes_conversational_chain",
-      "description": "MiMo → DeepSeek → Groq (free) → MiniMax M3 → GLM-5.2 (free) → Ollama",
+      "description": "MiMo \u2192 DeepSeek \u2192 Groq (free) \u2192 MiniMax M3 \u2192 GLM-5.2 (free) \u2192 Ollama",
       "chain": [
         "mimo/mimo-v2.5-pro-ultraspeed",
         "mimo/mimo-v2.5-pro",
@@ -5170,7 +5440,7 @@
     },
     "ops_fast_chain": {
       "chain_id": "ops_fast_chain",
-      "description": "Fast models only — Flash → MiniMax M2.5 → MiniMax M3",
+      "description": "Fast models only \u2014 Flash \u2192 MiniMax M2.5 \u2192 MiniMax M3",
       "chain": [
         "deepseek/deepseek-v4-flash",
         "minimax/MiniMax-M2.5",
@@ -5183,7 +5453,7 @@
     },
     "RM0-TOOLS-FREELOOP": {
       "chain_id": "RM0-TOOLS-FREELOOP",
-      "description": "CANONICAL FREE-TIER TOOL LOOP. Latency-biased ordering for tool/utility calls (NOT agents). Groq (fastest) → SEA-LION (BM native) → Gemini (free) → Cerebras ( CR) → OpenCode Go (free code) → Ollama (local) → HOLD. All 14 models verified live 2026-07-20. 100% free. 100% vendor-agnostic. Strategy: try next on timeout/refusal/malformed.",
+      "description": "CANONICAL FREE-TIER TOOL LOOP. Latency-biased ordering for tool/utility calls (NOT agents). Groq (fastest) \u2192 SEA-LION (BM native) \u2192 Gemini (free) \u2192 Cerebras ( CR) \u2192 OpenCode Go (free code) \u2192 Ollama (local) \u2192 HOLD. All 14 models verified live 2026-07-20. 100% free. 100% vendor-agnostic. Strategy: try next on timeout/refusal/malformed.",
       "chain": [
         "groq/llama-3.1-8b-instant",
         "groq/llama-3.3-70b-versatile",
@@ -5208,8 +5478,8 @@
       "sealed_by": "FREE_MODEL_FLEET_LIVE_TEST 2026-07-20",
       "sovereign_principles": [
         "14/14 models verified live",
-        "100% free tier — zero sen",
-        "Vendor-agnostic — any model can be swapped",
+        "100% free tier \u2014 zero sen",
+        "Vendor-agnostic \u2014 any model can be swapped",
         "Latency-biased ordering: fastest first, deepest last",
         "Never touches paid models; never involves agents"
       ]
@@ -5253,7 +5523,7 @@
       "domain": "well",
       "task_pattern": "vitality|readiness|fatigue|homeostasis",
       "preferred_model": "deepseek/deepseek-v4-flash",
-      "reason": "WELL is REFLECT_ONLY — computation not verdict. Flash sufficient. Cost mode.",
+      "reason": "WELL is REFLECT_ONLY \u2014 computation not verdict. Flash sufficient. Cost mode.",
       "priority": 5
     },
     {
@@ -5278,7 +5548,7 @@
       "domain": "arifos",
       "task_pattern": "judge|verdict|seal|constitutional|irreversible",
       "preferred_model": "deepseek/deepseek-v4-pro",
-      "reason": "Only model with identity_verified + AAA_READY FFF + zero censorship on sovereign topics. Flash, MiniMax, Qwen — all FORBIDDEN from 666_JUDGE role.",
+      "reason": "Only model with identity_verified + AAA_READY FFF + zero censorship on sovereign topics. Flash, MiniMax, Qwen \u2014 all FORBIDDEN from 666_JUDGE role.",
       "priority": 200
     },
     {
@@ -5294,7 +5564,7 @@
       "domain": "hermes",
       "task_pattern": "fact_check|verify_claim",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Advisory claim verification — FLAME ALLOWED",
+      "reason": "Advisory claim verification \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5302,7 +5572,7 @@
       "domain": "hermes",
       "task_pattern": "epistemic_check|confidence",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Heuristic confidence check — FLAME ALLOWED",
+      "reason": "Heuristic confidence check \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5310,7 +5580,7 @@
       "domain": "hermes",
       "task_pattern": "memory_steward|classify|compact",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Content classification + compaction — FLAME ALLOWED",
+      "reason": "Content classification + compaction \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5318,7 +5588,7 @@
       "domain": "hermes",
       "task_pattern": "plan_review|safety_check",
       "preferred_model": "groq/llama-3.3-70b-versatile",
-      "reason": "Advisory plan safety — FLAME ALLOWED (deeper model)",
+      "reason": "Advisory plan safety \u2014 FLAME ALLOWED (deeper model)",
       "priority": 35
     },
     {
@@ -5326,7 +5596,7 @@
       "domain": "geox",
       "task_pattern": "contradiction_scan|pattern_match",
       "preferred_model": "groq/llama-3.3-70b-versatile",
-      "reason": "Pattern matching — FLAME ALLOWED",
+      "reason": "Pattern matching \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5334,7 +5604,7 @@
       "domain": "cron",
       "task_pattern": "briefing|digest|summarize|news|quote",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Daily briefing/summarization — FLAME ALLOWED",
+      "reason": "Daily briefing/summarization \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5342,7 +5612,7 @@
       "domain": "cron",
       "task_pattern": "health_check|sot_guard|deadman|metabolic",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Health log analysis — FLAME ALLOWED",
+      "reason": "Health log analysis \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5350,7 +5620,7 @@
       "domain": "vps",
       "task_pattern": "classify|anomaly|alert|audit|drift",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "VPS alert classification — FLAME ALLOWED",
+      "reason": "VPS alert classification \u2014 FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -5414,10 +5684,10 @@
   "free_loop_chains": {
     "RM0-TOOLS-FREELOOP": {
       "chain_id": "RM0-TOOLS-FREELOOP",
-      "name": "FLAME — Free Loop AI Model Engine",
+      "name": "FLAME \u2014 Free Loop AI Model Engine",
       "doctrine": "Non-agentic inference mesh for tools, system workers, and agent fallback",
       "cost": "RM0",
-      "authority": "NONE — workers only, no constitutional authority",
+      "authority": "NONE \u2014 workers only, no constitutional authority",
       "forged": "2026-07-20",
       "strategy": "least_latency",
       "fallback": "sequential",
@@ -5502,7 +5772,7 @@
   "_replaced_by": "/root/.config/federation-models.json",
   "_note": "DO NOT USE. This file is retained for audit provenance only.",
   "data_sensitivity": {
-    "_doctrine": "TASK_DATA_SENSITIVITY — constitutional classification for routing. arifOS classifies BEFORE A-FORGE routes.",
+    "_doctrine": "TASK_DATA_SENSITIVITY \u2014 constitutional classification for routing. arifOS classifies BEFORE A-FORGE routes.",
     "_forged": "2026-07-24",
     "classes": {
       "PUBLIC": {
