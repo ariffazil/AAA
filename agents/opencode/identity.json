@@ -1,0 +1,18 @@
+{
+  "agent_id": "opencode",
+  "actor_id": "opencode/FI-???",
+  "ed25519_pubkey_hex": "88c0ee8f68fe10a1a82232187621a0a1a15787f9969d5cdabd2e880a95ba597f",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "EXECUTE_REVERSIBLE",
+    "EDIT",
+    "BUILD",
+    "TEST",
+    "DEPLOY"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-07-29T13:55:07.275889+00:00",
+  "fingerprint": "2783c2bdce1688c8daefed41362fe85d"
+}

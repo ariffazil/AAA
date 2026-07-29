@@ -1,0 +1,14 @@
+{
+  "agent_id": "agentic-trading-companion",
+  "actor_id": "agentic-trading-companion/FI-???",
+  "ed25519_pubkey_hex": "d84b489329e731d4cbc2c7ce07ad9fb4274e299ff853384594cb4cd72ddbd598",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "EXECUTE_REVERSIBLE"
+  ],
+  "max_blast_radius": "T2",
+  "created_at": "2026-07-29T13:55:07.268036+00:00",
+  "fingerprint": "3dd72cd7e4c180b994e42b3654d34ceb"
+}
