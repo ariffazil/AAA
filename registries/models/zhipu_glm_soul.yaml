@@ -1,0 +1,100 @@
+# GLM Soul — Capability Profile
+# ════════════════════════════════════════
+# arifOS Model Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-07-29 by FORGE (000Ω)
+# Status: CANON
+# Source: tech-insider.org (Nadia Dubois, Jul 27 2026) + Zhipu AI / Z.ai documentation
+# DITEMPA BUKAN DIBERI
+
+model_id: zhipu_glm
+model_family: GLM-5 (Zhipu AI / Z.ai)
+provider: Zhipu AI (智谱AI) — Beijing
+license: MIT (open weights via zai-org/GLM-5 on Hugging Face)
+type: text-generation, agentic coding, terminal automation
+
+soul:
+  capabilities:
+    agentic_coding:
+      description: "Engineered specifically for autonomous coding agents. Leads SWE-bench Pro (62.1%) and Terminal-Bench 2.1 (81.0%) among open-weight models. 17-point lead over DeepSeek V4 Pro on Terminal-Bench."
+      confidence: 0.85
+      evidence: "SWE-bench Pro 62.1%, Terminal-Bench 2.1 81.0% (vendor-published, third-party corroborated)"
+
+    long_horizon_tasks:
+      description: "Built for multi-step agentic sessions where agent plans, executes, and self-corrects without human intervention. Terminal-Bench lead reflects sustained tool use over long coding sessions."
+      confidence: 0.82
+      evidence: "Terminal-Bench 2.1 designed for command-line and terminal automation tasks"
+
+    mathematics:
+      description: "Strong formal math — AIME 2025 score of 99.2%"
+      confidence: 0.85
+      evidence: "AIME 2025 benchmark, vendor-reported"
+
+    competitive_coding:
+      description: "Strong SWE-bench Pro lead over DeepSeek V4 Pro (62.1% vs 55.4%) demonstrates multi-file, multi-step engineering capability"
+      confidence: 0.80
+      evidence: "SWE-bench Pro benchmark"
+
+    tool_use:
+      description: "Tool-calling and MCP-compatible. MCP Atlas score 77.0%"
+      confidence: 0.78
+      evidence: "MCP Atlas benchmark"
+
+  trust_tier: 2  # 1=fully_trusted, 2=standard, 3=needs_witness, 4=elevated_caution, 5=sovereign_only
+
+  suitable_for:
+    - autonomous_coding_agents
+    - terminal_automation
+    - multi_step_engineering
+    - long_horizon_agentic_sessions
+    - engineering_execution
+    - planning_with_governance
+
+  not_recommended_for:
+    - constitutional_verdicts_without_probe
+    - sovereign_governance_without_witness
+    - malaysian_political_topics_untested
+    - high_stakes_factual_claims_without_verification
+
+  architecture:
+    type: "Mixture-of-Experts (MoE)"
+    total_parameters: "753B"
+    activated_parameters: "~40B"
+    context_window: 1048576
+    max_output_tokens: 131072
+    release_date: "2026-06-13"
+    note: "1M context reached within weeks of launch. DeepSeek V4 Pro shipped with 1M from April 2026."
+
+  pricing:
+    z_ai_list:
+      input_per_1m: 1.40
+      output_per_1m: 4.40
+    third_party_median:
+      input_per_1m: 0.55
+      output_per_1m: 1.85
+    bailian_token_plan:
+      input_per_1m: 0.30
+      output_per_1m: 1.20
+    coding_plan_pro:
+      monthly_flat: 72
+      note: "Predictable billing for coding agent teams"
+    note: "Bailian Token Plan is 4.7x cheaper than Z.ai list price. Third-party resale splits the difference."
+
+  variants:
+    glm-5.2: "Current flagship — 753B MoE, 1M ctx, MIT license"
+    glm-5.1: "Previous iteration"
+    glm-5: "Original GLM-5 release"
+
+  benchmark_highlights:
+    SWE_bench_Pro: "62.1% (#1 reported open-weight)"
+    Terminal_Bench_2_1: "81.0% (17pt lead over DeepSeek V4 Pro)"
+    AIME_2025: "99.2%"
+    MCP_Atlas: "77.0%"
+    Artificial_Analysis_Intelligence_Index: "51"
+
+  federation_role:
+    primary: "FORGE fallback (777_FORGE) for agentic execution"
+    forbidden: ["666_JUDGE", "999_SEAL"]
+    note: "CN jurisdiction — MY governance censorship UNTESTED. Keep as engineering execution model, not judgment."
+
+ditempa_bukan_diberi: true

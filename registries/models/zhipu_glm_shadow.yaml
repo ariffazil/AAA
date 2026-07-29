@@ -1,0 +1,105 @@
+# GLM Shadow — Hazard Profile
+# ════════════════════════════════════════
+# arifOS Model Registry
+# Authority: F13 SOVEREIGN (Arif Fazil)
+# Forged: 2026-07-29 by FORGE (000Ω)
+# Status: CANON
+# Source: tech-insider.org (Nadia Dubois, Jul 27 2026) + Zhipu AI docs + arifOS registry
+# DITEMPA BUKAN DIBERI — even the shadow map is forged, not given.
+
+model_id: zhipu_glm_shadow
+model_family: GLM-5 (Zhipu AI)
+version: 1.0.0
+status: CANON
+
+shadow:
+  - id: SHADOW-GLM-001
+    name: chinese_alignment_unknown
+    severity: MEDIUM
+    class: culture_mismatch
+    pattern: >
+      GLM-5.2 is Zhipu's agentic engineering model (753B MoE, ~40B active, MIT license).
+      Safety alignment tuned for CN regulatory context. Malaysian governance topics
+      have unknown censorship risk — not yet probed. 1M context window now matches
+      competitors (corrected 2026-07-29 from stale 200K figure).
+    triggers:
+      - malaysian_politics
+      - sovereign_governance
+      - unknown_censorship
+    floor_posture_delta:
+      F2_TRUTH: note
+      F13_SOVEREIGN: note
+    mitigation:
+      - "Probe Malaysian governance topics before promoting beyond FALLBACK"
+      - "Keep as engineering execution model (777_FORGE), not judgment (666_JUDGE)"
+      - "1M context — matches competitors (corrected 2026-07-29)"
+    evidence: "Zhipu = CN company. No MY governance probe results yet."
+    scar_ref: null
+    last_observed: "2026-07-29"
+
+  - id: SHADOW-GLM-002
+    name: highest_list_price_open_weight
+    severity: LOW
+    class: cost
+    pattern: >
+      GLM-5.2 has the highest list price of the three open-weight leaders at $1.40/$4.40
+      per 1M tokens. DeepSeek V4 Pro is $0.435/$0.87 (3.2x cheaper on input, 5x on output).
+      However, Bailian Token Plan access drops to $0.30/$1.20, and third-party resale
+      median is ~$0.55/$1.85. Flat $72/mo Coding Plan Pro exists for predictable billing.
+    triggers:
+      - cost_sensitive_workloads
+      - high_volume_api_calls
+    floor_posture_delta:
+      F1_AMANAH: note
+    mitigation:
+      - "Route through Bailian Token Plan ($0.30/$1.20) not Z.ai direct ($1.40/$4.40)"
+      - "Consider Coding Plan Pro ($72/mo flat) for sustained agentic workloads"
+      - "DeepSeek V4 Flash ($0.14/$0.28) for high-volume cost-sensitive tasks"
+    evidence: "Tech-insider.org pricing comparison, Jul 27 2026. Z.ai list vs third-party resale."
+    scar_ref: null
+    last_observed: "2026-07-29"
+
+  - id: SHADOW-GLM-003
+    name: smaller_max_output
+    severity: LOW
+    class: capability_gap
+    pattern: >
+      GLM-5.2 max output is 131,072 tokens vs DeepSeek V4 Pro's 384,000. For tasks
+      generating large diffs or long documents in a single pass, DeepSeek has 2.9x
+      more output headroom. This gap only matters for specific long-generation use cases.
+    triggers:
+      - long_code_diff
+      - large_document_generation
+      - single_pass_multi_file_changes
+    floor_posture_delta:
+      F4_CLARITY: note
+    mitigation:
+      - "Use DeepSeek V4 Pro for single-pass long generations"
+      - "GLM-5.2 better suited for multi-turn agentic sessions where output is incremental"
+    evidence: "Vendor API specs: DS V4 Pro 384K output, GLM-5.2 131K output."
+    scar_ref: null
+    last_observed: "2026-07-29"
+
+lifecycle:
+  created: "2026-07-29"
+  created_by: "FORGE (000Ω) — deepseek-v4-pro"
+  source: "tech-insider.org article + Zhipu AI docs + arifOS registry cross-reference"
+  status: "CANON"
+  review_cadence: "monthly or after incident"
+
+floor_posture:
+  F1_AMANAH: standard
+  F2_TRUTH: note
+  F3_WITNESS: standard
+  F4_CLARITY: standard
+  F5_PEACE: standard
+  F6_EMPATHY: standard
+  F7_HUMILITY: standard
+  F8_GENIUS: standard
+  F9_ANTIHANTU: standard
+  F10_ONTOLOGY: standard
+  F11_AUDIT: standard
+  F12_INJECTION: standard
+  F13_SOVEREIGN: note
+
+ditempa_bukan_diberi: true
