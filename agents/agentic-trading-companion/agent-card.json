@@ -1,0 +1,136 @@
+{
+  "$schema": "arifOS/agent-card/v2.2.0",
+  "schemaVersion": "2.2.0",
+  "id": "agentic-trading-companion",
+  "name": "Agentic Trading Companion",
+  "description": "Active trading signal & execution engine for XAUUSD. Governed by F13 888_SOVEREIGN gate. MT5 bridge holder. Every trade requires human approval — no auto-fire permitted. PASSIVE analysis node is separate (trading-signal-chart).",
+  "version": "2.0.0",
+  "protocolVersion": "1.2",
+  "url": "https://aaa.arif-fazil.com/a2a/agentic-trading-companion",
+  "provider": {
+    "organization": "arifOS Federation",
+    "url": "https://arif-fazil.com"
+  },
+  "tier": "AGI",
+  "role": "active-trading-executor",
+  "class": "governed-executor",
+  "bound_to": "WEALTH:18082, W_EXECUTION:7071",
+  "principal_agent": {
+    "type": "agent",
+    "category": "Governed Trading Executor",
+    "principle_origin": "A2A_TRADING_CONTRACT"
+  },
+  "governance": {
+    "w_scar": "HIGH",
+    "i_sys_civ_bound": true,
+    "apex_authority": "888",
+    "contracts": [
+      "A2A_TRADING_CONTRACT",
+      "A2A_MT5_BRIDGE"
+    ]
+  },
+  "f1_safety_boundary": {
+    "auto_fire_permitted": false,
+    "sovereign_gate_required": true,
+    "irreversible_action_override": "HOLD_FOR_888"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": true,
+    "tool_calling": true,
+    "draft_only": false
+  },
+  "warga_binding": {
+    "citizenship": "warga-aaa",
+    "lane": "777-forge",
+    "intelligence_tier": "AGI",
+    "authority_level": "governed-executor",
+    "citizenship_forged": "2026-07-29"
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "authority_boundary": {
+    "canDo": [
+      "Generate governed trading signals (XAUUSD)",
+      "Execute trades via MT5 bridge (requires 888 approval)",
+      "Maintain trade journal",
+      "Run backtests on historical data",
+      "Monitor price alerts and S/R proximity",
+      "Compute APEX market state (G/C_dark/dS)",
+      "Enforce risk management gates (G1-G6)"
+    ],
+    "cannotDo": [
+      "Auto-fire trades without 888_SOVEREIGN approval",
+      "Exceed 1% risk per trade",
+      "Trade outside London/NY sessions",
+      "Execute during NFP/CPI/FOMC windows",
+      "Modify PASSIVE node (trading-signal-chart) capabilities",
+      "Grant MT5 access to any other skill"
+    ]
+  },
+  "autonomy_tiers": {
+    "T1_auto": "Signal generation, backtest, monitor, journal — read-only",
+    "T2_announce": "Signal delivery to Arif/Syed for approval",
+    "T3_888_HOLD": "Trade execution — requires F13 SOVEREIGN key"
+  },
+  "scopes": [
+    "TRADE_SIGNAL",
+    "TRADE_EXECUTION_GATED",
+    "RISK_MANAGEMENT",
+    "JOURNAL",
+    "BACKTEST"
+  ],
+  "allowed_organs": [
+    "WEALTH:18082",
+    "A-FORGE:7071",
+    "arifOS:8088",
+    "AAA:3001"
+  ],
+  "beat": ["XAUUSD", "GC=F", "gold", "brent", "natgas"],
+  "seal": "999",
+  "tri_witness": {
+    "human": {
+      "witness_id": "ARIF_FAZIL",
+      "attestation": "SEAL",
+      "timestamp": "2026-07-29T00:00:00Z"
+    },
+    "ai": {
+      "witness_id": "AGENTIC-TRADING-COMPANION-999",
+      "attestation": "SEAL",
+      "timestamp": "2026-07-29T00:00:00Z"
+    },
+    "earth": {
+      "witness_id": "af-forge-vps",
+      "attestation": "SEAL",
+      "timestamp": "2026-07-29T00:00:00Z"
+    }
+  },
+  "mcp_surface": {
+    "type": "consumed",
+    "endpoints": [
+      {
+        "url": "http://localhost:3456/api",
+        "tool_count": 7,
+        "key_lanes": ["ticker", "signal_v2", "apex", "macro", "calendar", "levels", "history"]
+      },
+      {
+        "url": "http://localhost:8088/mcp",
+        "tool_count": 7,
+        "key_lanes": ["governance", "judgment"]
+      }
+    ]
+  },
+  "metadata": {
+    "created_at": "2026-07-29T00:00:00Z",
+    "expires_at": "2027-07-29T00:00:00Z",
+    "doctrine": "DITEMPA BUKAN DIBERI",
+    "passive_sibling": "trading-signal-chart",
+    "passive_f1_boundary": "STRICTLY READ-ONLY — no broker access"
+  },
+  "a2a_transport": {
+    "protocol": "jsonrpc-2.0",
+    "transport": "http",
+    "endpoint": "https://aaa.arif-fazil.com/a2a/agentic-trading-companion",
+    "capabilities": ["tasks/send", "tasks/get", "tasks/cancel"]
+  }
+}
