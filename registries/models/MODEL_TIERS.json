@@ -39,8 +39,8 @@
         },
         "glm/glm-5.2": {
           "name": "GLM-5.2",
-          "capability": ["reasoning", "tool_call", "agentic", "1M_ctx", "MIT_open_weights"],
-          "strengths": "SWE-bench Pro 62.1% (#1 open-weight). Terminal-Bench 81.0% (17pt lead over DS). 753B MoE (~40B active). MY censorship UNTESTED — FORGE only.",
+          "capability": ["reasoning", "tool_call", "agentic", "1M_ctx", "MIT_open_weights", "666_JUDGE", "999_SEAL"],
+          "strengths": "SWE-bench Pro 62.1% (#1 open-weight). Terminal-Bench 81.0%. MY governance probe 6/6 CLEAN (2026-07-29 via OpenCode Zen). NOW eligible for 666_JUDGE and 999_SEAL backup — second constitutional model in federation.",
           "providers": [
             {"provider": "bailian-token-plan", "cost_type": "token_plan", "cost": "$0.30/$1.20 per 1M", "key_env": "QWEN_API_KEY", "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1", "priority": 1},
             {"provider": "zhipu-z-ai", "cost_type": "pay_per_token", "cost": "$1.40/$4.40 per 1M", "key_env": null, "base_url": "https://open.bigmodel.cn/api/paas/v4", "priority": 2, "status": "UNREGISTERED"}
@@ -151,9 +151,9 @@
   },
   "warnings": [
     "BAILIAN SPOF: 9 of 14 agents fall back to Bailian. Direct DS + direct Kimi should be primary.",
-    "666_JUDGE/999_SEAL SPOF: Only DeepSeek V4 Pro qualifies. GLM-5.2 probe INCONCLUSIVE — cannot promote.",
-    "MiniMax M3: REMOVED from all chains 2026-07-29 (RATE_LIMITED + CRITICAL censorship scar + 55d stale).",
-    "GLM-5.2 MY governance censorship UNTESTED. Both Bailian (quota exhausted) and OpenRouter (empty responses) non-functional.",
+    "GLM-5.2 PROMOTED to 666_JUDGE/999_SEAL backup (2026-07-29) — 666/999 SPOF RESOLVED. Second constitutional model alongside DeepSeek V4 Pro.",
+    "GLM-5.2 accessed via OpenCode Zen (PAYG) — not via Bailian (quota exhausted). Zen credits required for judge/seal backup path.",
+    "MiniMax M3: REMOVED from all chains (RATE_LIMITED + CRITICAL censorship scar + 55d stale).",
     "Cerebras credit expires Aug 20 2026 (22 days). 3 free models will disappear.",
     "SEA-LION: 55 days unverified. Trial key may be expired.",
     "Qwen3.6 27B self-host NOT deployed — needs 18GB GPU on af-forge."

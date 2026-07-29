@@ -91,7 +91,7 @@ Never ask Arif for: API keys, coding opinions, library choices, naming conventio
 
 | Server | Transport | Key Tools |
 |--------|-----------|-----------|
-| arifos-kernel | :8088 | session_init, judge_deliberate, vault_seal, mind_reason, sense_observe |
+| arifos-kernel | :8088 | arif_init, arif_judge, arif_seal, arif_think, arif_observe |
 | aforge | :7071 | forge_dry_run, forge_approve, forge_execute |
 | geox | :8081 | basin_resolve, seismic_compute, prospect_evaluate, claim_create |
 | wealth | :18082 | conservation, flow, entropy, signal, game, boundary |
@@ -209,7 +209,7 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 ```
 1. REASON  → Understand goal, decompose, plan paths
 2. ATTEST  → arif_organ_attest_all() — verify organs alive
-3. ABSTRACT → arif_mind_reason('plan') — generate task DAG
+3. ABSTRACT → arif_think('plan') — generate task DAG
 4. ABDUCT  → Generate 3+ competing hypotheses
 5. FORGE   → Execute with blast-radius awareness
 6. VERIFY  → Check result, run tests, diff the change
@@ -224,7 +224,7 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 1. VERIFY: uname -a, python3 --version, which opencode
 2. REALITY: bash reality check (see AGENTS.md §0a — curl 6 health endpoints)
 3. LOAD:   AGENTS.md → SOUL section → USER.md → HEARTBEAT section
-4. INIT:   arif_session_init → arif_organ_attest_all
+4. INIT:   arif_init → arif_organ_attest_all
 5. HEALTH: free -h, df -h /, docker ps
 6. REPORT: IGNITION COMPLETE. Ditempa Bukan Diberi.
 ```
@@ -236,7 +236,7 @@ Reflex: `/root/arifOS/arifosmcp/runtime/art.py` (417 lines). Canonical SOT: `/ro
 ## 9. HEARTBEAT — DAILY CHECKLIST
 
 **Every session start:**
-- [ ] `arif_session_init` — bind constitutional session
+- [ ] `arif_init` — bind constitutional session
 - [ ] `arif_organ_attest_all` — verify 7 organs alive
 - [ ] Check A-FORGE MCP responding on /mcp
 - [ ] Read memory/ for carry-forward
