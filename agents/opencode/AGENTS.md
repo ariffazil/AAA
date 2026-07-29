@@ -113,6 +113,47 @@ Never ask Arif for: API keys, coding opinions, library choices, naming conventio
 
 ---
 
+## 5.4. WORLD MODEL DOCTRINE — Mandatory Prediction (Ratified 2026-07-29)
+
+> **Every `forge_shell` call MUST include `expected_output`. The gap between predicted and actual output is the richest training signal for the agentic world model.**
+
+### Why
+
+Agentic world models improve performance AND efficiency. Agents that predict environment responses need fewer interaction turns, fewer tool calls, and fewer output tokens — without being explicitly optimized for efficiency. The world model training pipeline (`grpo.ts`, ECHO loss λ=0.03) requires dense trajectory data to close the training loop. Currently: 5 trajectories. Threshold for Phase 2: 500+.
+
+### Rule
+
+| Field | Rule |
+|-------|------|
+| `expected_output` | **REQUIRED** on every `forge_shell` call. Min 1 char, max 4000. |
+| Prediction format | 1-line summary of what the command should produce. Concrete: "exit 0, stdout: 'active'" not "it works". |
+| Sentinel | `__NO_PREDICTION__` accepted when genuinely uncertain. Logged, scored at max surprise (1.0). Tracked as `prediction_rate` metric. |
+
+### Example
+
+```
+forge_shell(command="systemctl is-active a-forge.service",
+            expected_output="exit 0, stdout: 'active'")
+
+forge_shell(command="curl -sf http://localhost:8088/health | jq .floors_active",
+            expected_output="JSON object with floors_active: 13")
+
+forge_shell(command="some_novel_diagnostic_script.sh",
+            expected_output="__NO_PREDICTION__")  // honest uncertainty
+```
+
+### Floor Alignment
+
+| Floor | Obligation |
+|-------|-----------|
+| F2 TRUTH | Prediction is SPEC; actual is OBS; gap is DER. Honest sentinel > fake prediction. |
+| F7 HUMILITY | `__NO_PREDICTION__` is epistemically valid. Confidence drops to 0.30. |
+| F11 AUDIT | Every prediction→actual pair logged to world-model trajectory ledger. |
+| F4 CLARITY | Prediction rate is a federation health metric. Track it. Improve it. |
+
+
+---
+
 ## 5.5. FLAME ROUTING — Tool Lane vs Agent Lane
 
 > **Two lanes. Zero contention.** FLAME is the free-loop (RM0) inference mesh for tools.
