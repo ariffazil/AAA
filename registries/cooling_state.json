@@ -25,9 +25,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "a01e5b2d-85c",
@@ -54,9 +56,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "516f7ea5-ba6",
@@ -83,9 +87,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "601b8588-fae",
@@ -112,9 +118,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "9b149d11-eba",
@@ -141,9 +149,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "66afd2a0-f9d",
@@ -170,9 +180,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "f97086b7-4fc",
@@ -199,9 +211,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "cb1cd59b-ec5",
@@ -228,9 +242,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "f18117c5-c2d",
@@ -257,9 +273,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "0748661e-444",
@@ -286,9 +304,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "3480d596-84e",
@@ -315,9 +335,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "176c3959-847",
@@ -344,9 +366,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "ea5ba2a5-7fd",
@@ -373,9 +397,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "f686885c-73b",
@@ -402,9 +428,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "87c937cf-586",
@@ -431,9 +459,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "6ac20130-48e",
@@ -460,9 +490,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "7e006ed5-977",
@@ -489,9 +521,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "910efb50-1c4",
@@ -518,9 +552,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "5337d96d-392",
@@ -547,9 +583,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "ae9a87a0-ed4",
@@ -576,9 +614,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "b0e5158a-c26",
@@ -605,9 +645,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "2288422c-2a0",
@@ -634,9 +676,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "b6869eb3-640",
@@ -663,9 +707,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "1255e1e7-196",
@@ -692,9 +738,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "84a84a3f-660",
@@ -721,9 +769,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "e02d1bb7-e25",
@@ -750,9 +800,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "bc65a901-3b0",
@@ -779,9 +831,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "760298f0-407",
@@ -808,9 +862,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "cd04140a-66e",
@@ -837,9 +893,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "b8ad525f-ec3",
@@ -866,9 +924,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "52cbd42b-cab",
@@ -895,9 +955,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "106ae6ba-10f",
@@ -924,9 +986,11 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     },
     {
       "entry_id": "d7e5d8dd-10e",
@@ -953,12 +1017,82 @@
         "memory_limit_mb_seconds": 1000000,
         "token_limit": 1000000
       },
-      "sealed_at": null,
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
       "voided_at": null,
-      "void_reason": null
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
+    },
+    {
+      "entry_id": "94d2b909-4c2",
+      "artifact_ref": "df7f8176-79fe-40ff-8b9e-12e735b02b7f",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-29T19:32:33.379Z",
+      "cooldown_expiry": "2026-08-05T19:32:33.379Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
+      "voided_at": null,
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
+    },
+    {
+      "entry_id": "463cbdef-89d",
+      "artifact_ref": "5f6bd269-5649-49a8-8c24-8a7c0df0fc96",
+      "description": "WELL HOLD gate: Deploy the production runtime with consequential changes.",
+      "risk_tier": "high",
+      "proposed_at": "2026-07-29T19:32:44.918Z",
+      "cooldown_expiry": "2026-08-05T19:32:44.918Z",
+      "cooldown_hours": 168,
+      "verdict": "SABAR",
+      "tri_witness": {
+        "human": false,
+        "ai_audit": false,
+        "reality_check": false
+      },
+      "resource_budget": {
+        "disk_bytes_allocated": 0,
+        "disk_bytes_peak": 0,
+        "compute_seconds": 0,
+        "memory_mb_seconds": 0,
+        "token_count": 0,
+        "disk_limit_bytes": 50000000000,
+        "compute_limit_seconds": 3600,
+        "memory_limit_mb_seconds": 1000000,
+        "token_limit": 1000000
+      },
+      "sealed_at": "2026-07-29T19:33:19.708250Z",
+      "voided_at": null,
+      "void_reason": null,
+      "sealed_by": "F13_SOVEREIGN_RATIFICATION_2026-07-30",
+      "seal_note": "Loop 1+2+3 entropy-lower session, F13 blanket approval"
     }
   ],
-  "sealedCount": 0,
+  "sealedCount": 35,
   "voidedCount": 0,
-  "persistedAt": "2026-07-29T19:27:10.493Z"
+  "persistedAt": "2026-07-29T19:33:19.708250Z",
+  "_meta": {
+    "last_session_seal": "SEAL-2026-07-30-entropy-lower-3loops",
+    "sovereign": "Muhammad Arif bin Fazil (F13 SOVEREIGN)",
+    "loop": 3,
+    "sealed_at_session_end": "2026-07-29T19:33:19.708250Z"
+  }
 }
