@@ -1,8 +1,8 @@
 version: 2
-last_forged: '2026-07-19T23:16:43Z'
-forged_by: Codex / OpenCode reality probe
+last_forged: '2026-07-29T02:37:29Z'
+forged_by: Grok Build / OpenCode zen fix 2026-07-29
 truth_rule: live opencode debug config and opencode mcp list beat registry prose
-opencode_version: 1.18.3
+opencode_version: 1.18.9
 opencode_binary: /root/.npm-global/bin/opencode
 config_paths:
   root_config: /root/AAA/ROOT_AGENT_CONFIG.yaml
@@ -20,16 +20,15 @@ config_paths:
   - /root/.opencode/skills
   - /root/.opencode/tools
 live_snapshot:
-  probed_at: '2026-07-27T03:55:00Z'
+  probed_at: '2026-07-29T02:37:29Z'
   config_valid: true
   startup_valid: true
   config_mode: '0600'
-  agents: 4
+  agents: 7
   skills_discovered: 247
   mcp_registered: 24
-  mcp_connected: 23
-  mcp_degraded:
-  - meyhem
+  mcp_connected: 24
+  mcp_degraded: []
   mcp_disabled:
   - graph-memory
   plaintext_secret_fields: 0
@@ -43,7 +42,8 @@ live_snapshot:
   - well:18083
 axes:
   L1_native_tools:
-    policy: all native OpenCode tools allowed; irreversible tripwires remain governed by aaa-autonomy
+    policy: all native OpenCode tools allowed; irreversible tripwires remain governed
+      by aaa-autonomy
     permission_default: allow
     explicitly_allowed:
     - read
@@ -63,33 +63,32 @@ axes:
     - question
     - doom_loop
     - external_directory
-    # aaa_measure removed — no MCP endpoint at :3001/mcp, ghost tool
-    # See /root/forge_work/2026-07-24/agent5-audit/ALIAS_DEPRECATION_PLAN.md
     plugin_tools: []
   L2_mcp_servers:
-    count: 25
+    count: 24
     discovery_command: opencode mcp list
     connected:
     - aforge
+    - arifflow
     - arifos
     - brave-search
-    - chrome-devtools
-    - cloudflare
-    - composio
     - context7
+    - docker
     - exa
     - fetch
     - geox
     - github
+    - graphiti
     - hermes
     - hostinger-vps
     - megamemory
-    - minimax
+    - openrouter
     - perplexity
     - playwright
     - postgres
     - qdrant
     - sequential-thinking
+    - sqlite
     - supabase
     - wealth
     - well
@@ -113,35 +112,37 @@ axes:
     discovery_truth: opencode debug skill
     curated_profile_count: 30
   L4_plugins:
-    count: 1
+    count: 2
     plugins:
     - id: aaa-autonomy
       path: /root/.config/opencode/plugins/aaa-autonomy.ts
-      sdk_version: 1.18.3
-      typecheck: pass
-      tool: aaa_measure
-      receipts: /root/.local/share/arifos/opencode_receipts.jsonl
+      sdk_version: 1.18.9
+    - id: '@honcho-ai/opencode-honcho'
+      type: npm
   L5_agents:
-    default_agent: forge
+    default_agent: agi
     agents:
-    - name: forge
+    - name: agi
       mode: primary
-      model: opencode-go/mimo-v2.5-free
-    - name: auditor
+      model: deepseek/deepseek-v4-pro
+    - name: apex
+      mode: primary
+      model: deepseek/deepseek-v4-pro
+    - name: build
+      mode: primary
+      model: deepseek/deepseek-v4-pro
+    - name: asi
       mode: subagent
-      model: opencode-go/nemotron-3-ultra-free
-    - name: ops
-      mode: subagent
-      model: opencode-go/north-mini-code-free
-    - name: planner
-      mode: subagent
-      model: opencode-go/mimo-v2.5-free
-    - name: recovery
-      mode: subagent
-      model: ollama/qwen2.5-coder:3b
-    - name: text-to-image
+      model: deepseek/deepseek-v4-flash
+    - name: forge
       mode: subagent
       model: deepseek/deepseek-v4-pro
+    - name: explore
+      mode: subagent
+      model: deepseek/deepseek-v4-flash
+    - name: general
+      mode: subagent
+      model: deepseek/deepseek-v4-flash
   L6_commands:
     count: 2
     commands:
@@ -178,14 +179,14 @@ agentic_loop:
   - explicit /seal
   - genuine 888_HOLD
   mutation_receipt: every mutating native or MCP tool emits local append-only receipt
-  authority_boundary: agent executes; arifOS judges; A-FORGE governs consequential execution; Arif vetoes irreversible
+  authority_boundary: agent executes; arifOS judges; A-FORGE governs consequential
+    execution; Arif vetoes irreversible
 model_strategy:
-  primary: opencode-go/mimo-v2.5-free
-  small: opencode-go/mimo-v2.5-free
+  primary: deepseek/deepseek-v4-pro
+  small: ollama/qwen2.5-coder:3b
   recovery: ollama/qwen2.5-coder:3b
-  observed_limitations:
-  - paid MiMo route returned insufficient account balance at T1
-  - free routes may have variable latency
+  note: Live config primary = deepseek/deepseek-v4-pro (333-AGI). Free routes available
+    via openrouter + opencode-go.
 verification:
   commands:
   - opencode --version
