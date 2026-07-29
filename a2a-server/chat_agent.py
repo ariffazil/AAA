@@ -5,6 +5,7 @@ chat_agent.py — AAA Governed Chat Agent powered by pydantic-ai and SQLModel.
 This agent replaces direct unstructured completions with structured envelope execution
 and casts telemetry data directly to the HarnessTelemetry SQLModel table.
 """
+
 from __future__ import annotations
 
 import asyncio
@@ -25,13 +26,20 @@ try:
     from sqlmodel import Session, create_engine
 except ImportError as e:
     # Fail closed by outputting import failure as an SSE error frame
-    print(f"data: {json.dumps({'type': 'error', 'error': f'ImportError: {e}. Ensure virtualenv is active.'})}\n\n", flush=True)
+    print(
+        f"data: {json.dumps({'type': 'error', 'error': f'ImportError: {e}. Ensure virtualenv is active.'})}\n\n",
+        flush=True,
+    )
     sys.exit(1)
 
 
 def get_postgres_url() -> str:
-    # Force local PostgreSQL container URL for telemetry isolation (zero cloud blast radius)
-    return "postgresql://arifos_admin:ArifPostgres2026!@127.0.0.1:5432/vault999"
+    # P2 FIX (2026-07-29): Removed hardcoded credential.
+    # Must be provided via DATABASE_URL or POSTGRES_URL environment variable.
+    url = os.getenv("DATABASE_URL") or os.getenv("POSTGRES_URL")
+    if not url:
+        raise RuntimeError("DATABASE_URL or POSTGRES_URL environment variable is REQUIRED but not set")
+    return url
 
 
 def emit_sse(payload: dict) -> None:
@@ -72,32 +80,20 @@ async def run_chat(params: dict) -> None:
     # 2. Configure Model
     model_instance = None
     if provider == "ollama":
-        model_instance = OpenAIModel(
-            model_name=model_name,
-            base_url="http://127.0.0.1:11434/v1",
-            api_key="ollama"
-        )
+        model_instance = OpenAIModel(model_name=model_name, base_url="http://127.0.0.1:11434/v1", api_key="ollama")
     elif provider == "openrouter":
         api_key = (
-            os.environ.get("OPENWEBUI_API_KEY") or
-            os.environ.get("DEEPSEEK_API_KEY") or
-            os.environ.get("NOUS_API_KEY") or
-            ""
+            os.environ.get("OPENWEBUI_API_KEY")
+            or os.environ.get("DEEPSEEK_API_KEY")
+            or os.environ.get("NOUS_API_KEY")
+            or ""
         )
-        model_instance = OpenAIModel(
-            model_name=model_name,
-            base_url="https://openrouter.ai/api/v1",
-            api_key=api_key
-        )
+        model_instance = OpenAIModel(model_name=model_name, base_url="https://openrouter.ai/api/v1", api_key=api_key)
     elif provider == "arifos":
         # Governed arifOS path (direct HTTP call to arif_reply_compose tool)
         # We model this as a direct call, format the output, and seal telemetry
         await run_arifos_completion(
-            model_name=model_name,
-            messages=messages,
-            session_id=session_id,
-            citations=citations,
-            start_time=start_time
+            model_name=model_name, messages=messages, session_id=session_id, citations=citations, start_time=start_time
         )
         return
     else:
@@ -111,12 +107,7 @@ async def run_chat(params: dict) -> None:
     )
 
     # Emit initial meta frame
-    emit_sse({
-        "type": "meta",
-        "provider": provider,
-        "model": model_name,
-        "citations": citations
-    })
+    emit_sse({"type": "meta", "provider": provider, "model": model_name, "citations": citations})
 
     full_text = ""
     usage_total = 0
@@ -159,7 +150,7 @@ async def run_chat(params: dict) -> None:
             token_usage_total=usage_total,
             execution_latency_ms=latency_ms,
             epsilon_variance=1e-6,
-            timestamp=datetime.now(timezone.utc)
+            timestamp=datetime.now(timezone.utc),
         )
 
         # Explicit validation check to raise ValidationError if fields are out-of-bounds
@@ -183,21 +174,11 @@ async def run_chat(params: dict) -> None:
         emit_sse({"type": "chunk", "content": f"\n\n[WARNING: Telemetry DB write failed: {str(db_err)}]"})
 
     # Emit final done frame
-    emit_sse({
-        "type": "done",
-        "provider": provider,
-        "model": model_name,
-        "content": full_text,
-        "citations": citations
-    })
+    emit_sse({"type": "done", "provider": provider, "model": model_name, "content": full_text, "citations": citations})
 
 
 async def run_arifos_completion(
-    model_name: str,
-    messages: list[dict],
-    session_id: str,
-    citations: list[dict],
-    start_time: float
+    model_name: str, messages: list[dict], session_id: str, citations: list[dict], start_time: float
 ) -> None:
     import httpx
 
@@ -208,24 +189,15 @@ async def run_arifos_completion(
 
     arifos_url = os.environ.get("ARIFOS_LOCAL_URL", "http://127.0.0.1:8088")
 
-    emit_sse({
-        "type": "meta",
-        "provider": "arifos",
-        "model": "arif_reply_compose",
-        "citations": citations
-    })
+    emit_sse({"type": "meta", "provider": "arifos", "model": "arif_reply_compose", "citations": citations})
 
     full_text = ""
     try:
         async with httpx.AsyncClient() as client:
             resp = await client.post(
                 f"{arifos_url}/tools/arif_reply_compose",
-                json={
-                    "message": governed_prompt,
-                    "style": "plain",
-                    "session_id": session_id
-                },
-                timeout=30.0
+                json={"message": governed_prompt, "style": "plain", "session_id": session_id},
+                timeout=30.0,
             )
 
             if resp.status_code != 200:
@@ -233,7 +205,11 @@ async def run_arifos_completion(
                 sys.exit(1)
 
             payload = resp.json()
-            full_text = payload.get("result", {}).get("composed") or payload.get("result", {}).get("result", {}).get("composed") or ""
+            full_text = (
+                payload.get("result", {}).get("composed")
+                or payload.get("result", {}).get("result", {}).get("composed")
+                or ""
+            )
 
     except Exception as e:
         emit_sse({"type": "error", "error": f"arifOS Connection Failure: {str(e)}"})
@@ -255,7 +231,7 @@ async def run_arifos_completion(
             token_usage_total=0,  # arifOS tool encapsulates token usage
             execution_latency_ms=latency_ms,
             epsilon_variance=1e-6,
-            timestamp=datetime.now(timezone.utc)
+            timestamp=datetime.now(timezone.utc),
         )
         telemetry.model_validate(telemetry.model_dump())
     except ValidationError as val_err:
@@ -270,15 +246,17 @@ async def run_arifos_completion(
             db_session.add(telemetry)
             db_session.commit()
     except Exception as db_err:
-         emit_sse({"type": "chunk", "content": f"\n\n[WARNING: Telemetry DB write failed: {str(db_err)}]"})
+        emit_sse({"type": "chunk", "content": f"\n\n[WARNING: Telemetry DB write failed: {str(db_err)}]"})
 
-    emit_sse({
-        "type": "done",
-        "provider": "arifos",
-        "model": "arif_reply_compose",
-        "content": full_text,
-        "citations": citations
-    })
+    emit_sse(
+        {
+            "type": "done",
+            "provider": "arifos",
+            "model": "arif_reply_compose",
+            "content": full_text,
+            "citations": citations,
+        }
+    )
 
 
 if __name__ == "__main__":
