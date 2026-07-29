@@ -2395,3 +2395,100 @@ skills:
       - F9
       - F11
       - F13
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # Federated Hermes Skills — Phase 0-6 Consolidated (OpenClaw delegatable)
+  # OpenClaw may delegate to Hermes agents that use these skills.
+  # Added: 2026-07-29 | Post Phase 0-6 consolidation sweep
+  # ────────────────────────────────────────────────────────────────────────────
+  - id: federated-vps-response
+    name: FEDERATED-autonomous-vps-response
+    version: 1.0.0
+    description: Self-healing VPS infrastructure, multi-VPS federation, health checks,
+      resource cleansing, service restart. Canonical VPS ops skill — consolidated from
+      earlier vps-operations and autonomous-response skills. Delegatable to Hermes ASI.
+    owner: Hermes (federated via AAA)
+    risk_tier: medium
+    status: consolidated
+    peer_scope: hermes-asi
+    delegation_path: A2A → Hermes → execute
+    source_path: federated/hermes/autonomous-vps-response
+    package: federated-hermes
+    floor_scope:
+      - F1
+      - F4
+      - F11
+
+  - id: federated-nasi-lemak-tracking
+    name: FEDERATED-nasi-lemak-tracking
+    version: 1.0.0
+    description: Multi-location nasi lemak daily orders, baki tracking, sales recording,
+      and inventory management. Canonical retail ops skill — consolidated from earlier
+      retail workflows. Delegatable to Hermes ASI.
+    owner: Hermes (federated via AAA)
+    risk_tier: low
+    status: consolidated
+    peer_scope: hermes-asi
+    delegation_path: A2A → Hermes → execute
+    source_path: federated/hermes/nasi-lemak-tracking
+    package: federated-hermes
+    floor_scope:
+      - F1
+      - F2
+
+  - id: federated-free-loop-mesh
+    name: FEDERATED-flame-free-loop-mesh
+    version: 1.0.0
+    description: RM0 Free-Loop AI Model Engine — hit-rate-adaptive model selection,
+      free-tier API orchestration, cost-minimal routing for open-weights inference.
+      Canonical free-loop skill. Delegatable to Hermes ASI.
+    owner: Hermes (federated via AAA)
+    risk_tier: low
+    status: consolidated
+    peer_scope: hermes-asi
+    delegation_path: A2A → Hermes → execute
+    source_path: federated/hermes/flame-free-loop-mesh
+    package: federated-hermes
+    floor_scope:
+      - F2
+      - F4
+
+  - id: federated-telegram-userbot
+    name: FEDERATED-telegram-userbot-telethon
+    version: 1.0.0
+    description: Telethon-based Telegram userbot for sending/receiving messages as
+      Arif's actual Telegram account. File uploads, group management, media handling.
+      Canonical userbot skill. Delegatable to Hermes ASI.
+    owner: Hermes (federated via AAA)
+    risk_tier: medium
+    status: consolidated
+    peer_scope: hermes-asi
+    delegation_path: A2A → Hermes → execute
+    source_path: federated/hermes/telegram-userbot-telethon
+    package: federated-hermes
+    floor_scope:
+      - F1
+      - F12
+      - F13
+
+  - id: federated-trading-stack
+    name: FEDERATED-trading-stack
+    version: 1.0.0
+    description: Unified trading capability — signal chart generation (trading-signal-chart),
+      AI trading companion (agentic-trading-companion), and MetaTrader 5 agent
+      (mt5-ai-trading-agent). Consolidated trading stack. Delegatable to Hermes ASI.
+    owner: Hermes (federated via AAA)
+    risk_tier: high
+    status: consolidated
+    peer_scope: hermes-asi
+    delegation_path: A2A → Hermes → execute
+    source_path: federated/hermes/trading-stack
+    package: federated-hermes
+    floor_scope:
+      - F1
+      - F2
+      - F4
+      - F6
+      - F7
+      - F11
+      - F13

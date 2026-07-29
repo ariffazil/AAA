@@ -22,18 +22,20 @@
 ### Audit Operations
 - `vault999-write` — write seal event (async, non-blocking)
 
-### arifOS MCP — Constitutional Governance (Full Access)
-- `arif_session_init` — Initialize governed session with constitutional binding
-- `arif_sense_observe` — Reality observation and evidence gathering
-- `arif_kernel_route` — Central orchestration and intent routing
-- `arif_gateway_connect` — Federated cross-agent bridge and A2A mesh protocol
-- `arif_judge_deliberate` — 888_JUDGE constitutional arbitration
-- `arif_ops_measure` — Thermodynamic health and resource monitoring
-- `arif_heart_critique` — Risk assessment and empathy scan
-- `arif_reply_compose` — LLM-aware response composition
-- `arif_memory_recall` — Semantic memory search
-- `arif_mind_reason` — Symbolic reasoning kernel
-- `arif_evidence_fetch` — Evidence-preserving web ingestion
+### arifOS Kernel MCP — Constitutional Governance (Canonical Tool Set)
+- `arif_init` — Session ignition with F1-F13 constitutional binding (was: arif_session_init)
+- `arif_observe` — Reality observation and evidence gathering (was: arif_sense_observe)
+- `arif_think` — Structured reasoning under F2/F7 (was: arif_mind_reason)
+- `arif_route` — Intent-to-organ dispatch (was: arif_kernel_route)
+- `arif_judge` — 888_JUDGE constitutional verdict (was: arif_judge_deliberate)
+- `arif_forge` — Execution gate via A-FORGE
+- `arif_seal` — VAULT999 immutable sealing
+- `arif_memory` — Governed L1-L6 semantic recall (was: arif_memory_recall)
+- `arif_gateway_connect` — Cross-agent bridge and A2A mesh (legacy custom)
+- `arif_ops_measure` — Resource monitoring (legacy custom)
+- `arif_heart_critique` — Risk assessment and empathy scan (legacy custom)
+- `arif_reply_compose` — Response composition (legacy custom)
+- `arif_evidence_fetch` — Evidence-preserving web ingestion (legacy custom)
 
 ## Prohibited Tools
 
