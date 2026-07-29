@@ -13,37 +13,114 @@
       "models": {
         "deepseek/deepseek-v4-pro": {
           "name": "DeepSeek V4 Pro",
-          "capability": ["reasoning", "tool_call", "1M_ctx", "384K_output", "FFF_SMOKE_PASS"],
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "1M_ctx",
+            "384K_output",
+            "FFF_SMOKE_PASS"
+          ],
           "strengths": "ONLY model qualified for 666_JUDGE and 999_SEAL. 1.6T MoE (49B active). ZERO censorship on MY topics. LiveCodeBench 93.5%. 384K max output. MIT open weights.",
           "providers": [
-            {"provider": "deepseek", "cost_type": "prepaid", "cost": "$12.63 (Jul 29)", "key_env": "DEEPSEEK_API_KEY", "base_url": "https://api.deepseek.com/v1", "priority": 1},
-            {"provider": "bailian-token-plan", "cost_type": "token_plan", "cost": "monthly plan", "key_env": "QWEN_API_KEY", "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1", "priority": 2}
+            {
+              "provider": "deepseek",
+              "cost_type": "prepaid",
+              "cost": "$12.63 (Jul 29)",
+              "key_env": "DEEPSEEK_API_KEY",
+              "base_url": "https://api.deepseek.com/v1",
+              "priority": 1
+            },
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "monthly plan",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 2
+            }
           ]
         },
         "kimi/k3": {
           "name": "Kimi K3",
-          "capability": ["reasoning", "tool_call", "vision", "1M_ctx", "2.8T_MoE", "always_on_thinking"],
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "vision",
+            "1M_ctx",
+            "2.8T_MoE",
+            "always_on_thinking"
+          ],
           "strengths": "2.8T MoE (104B active), 896 experts. Vision. Always-on thinking. First open 3T-class model. PLAN agent primary.",
           "providers": [
-            {"provider": "kimi-moonshot", "cost_type": "monthly", "cost": "per-token", "key_env": "KIMI_API_KEY", "base_url": "https://platform.kimi.ai", "priority": 1},
-            {"provider": "openrouter", "cost_type": "prepaid", "cost": "~$28", "key_env": "OPENROUTER_API_KEY", "base_url": "https://openrouter.ai/api/v1", "priority": 2}
+            {
+              "provider": "kimi-moonshot",
+              "cost_type": "monthly",
+              "cost": "per-token",
+              "key_env": "KIMI_API_KEY",
+              "base_url": "https://platform.kimi.ai",
+              "priority": 1
+            },
+            {
+              "provider": "openrouter",
+              "cost_type": "prepaid",
+              "cost": "~$28",
+              "key_env": "OPENROUTER_API_KEY",
+              "base_url": "https://openrouter.ai/api/v1",
+              "priority": 2
+            }
           ]
         },
         "mimo/mimo-v2.5-pro": {
           "name": "MiMo V2.5 Pro",
-          "capability": ["reasoning", "tool_call", "vision", "1M_ctx", "deep_thinking"],
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "vision",
+            "1M_ctx",
+            "deep_thinking"
+          ],
           "strengths": "1M ctx, deep thinking. Only MiMo variant that completes long-CoT. No censorship on MY topics. Hermes thoughtful path.",
           "providers": [
-            {"provider": "mimo-platform", "cost_type": "token_plan", "cost": "4.1B credits/mo", "key_env": "MIMO_API_KEY", "base_url": "https://token-plan-sgp.xiaomimimo.com/v1", "priority": 1}
+            {
+              "provider": "mimo-platform",
+              "cost_type": "token_plan",
+              "cost": "4.1B credits/mo",
+              "key_env": "MIMO_API_KEY",
+              "base_url": "https://token-plan-sgp.xiaomimimo.com/v1",
+              "priority": 1
+            }
           ]
         },
         "glm/glm-5.2": {
           "name": "GLM-5.2",
-          "capability": ["reasoning", "tool_call", "agentic", "1M_ctx", "MIT_open_weights", "666_JUDGE", "999_SEAL"],
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "agentic",
+            "1M_ctx",
+            "MIT_open_weights",
+            "666_JUDGE",
+            "999_SEAL"
+          ],
           "strengths": "SWE-bench Pro 62.1% (#1 open-weight). Terminal-Bench 81.0%. MY governance probe 6/6 CLEAN (2026-07-29 via OpenCode Zen). NOW eligible for 666_JUDGE and 999_SEAL backup — second constitutional model in federation.",
           "providers": [
-            {"provider": "bailian-token-plan", "cost_type": "token_plan", "cost": "$0.30/$1.20 per 1M", "key_env": "QWEN_API_KEY", "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1", "priority": 1},
-            {"provider": "zhipu-z-ai", "cost_type": "pay_per_token", "cost": "$1.40/$4.40 per 1M", "key_env": null, "base_url": "https://open.bigmodel.cn/api/paas/v4", "priority": 2, "status": "UNREGISTERED"}
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "$0.30/$1.20 per 1M",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 1
+            },
+            {
+              "provider": "zhipu-z-ai",
+              "cost_type": "pay_per_token",
+              "cost": "$1.40/$4.40 per 1M",
+              "key_env": null,
+              "base_url": "https://open.bigmodel.cn/api/paas/v4",
+              "priority": 2,
+              "status": "UNREGISTERED"
+            }
           ]
         }
       }
@@ -55,27 +132,122 @@
       "models": {
         "deepseek/deepseek-v4-flash": {
           "name": "DeepSeek V4 Flash",
-          "capability": ["fast_inference", "tool_call", "1M_ctx", "MIT_open_weights"],
+          "capability": [
+            "fast_inference",
+            "tool_call",
+            "1M_ctx",
+            "MIT_open_weights"
+          ],
           "strengths": "$0.14/$0.28 per 1M. Same 1.6T architecture as Pro. Fast but no thinking mode. OPS agent primary.",
           "providers": [
-            {"provider": "deepseek", "cost_type": "prepaid", "cost": "$12.63", "key_env": "DEEPSEEK_API_KEY", "base_url": "https://api.deepseek.com/v1", "priority": 1},
-            {"provider": "bailian-token-plan", "cost_type": "token_plan", "cost": "monthly plan", "key_env": "QWEN_API_KEY", "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1", "priority": 2}
+            {
+              "provider": "deepseek",
+              "cost_type": "prepaid",
+              "cost": "$12.63",
+              "key_env": "DEEPSEEK_API_KEY",
+              "base_url": "https://api.deepseek.com/v1",
+              "priority": 1
+            },
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "monthly plan",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 2
+            }
           ]
         },
         "qwen/qwen3.6-plus": {
           "name": "Qwen 3.6 Plus",
-          "capability": ["reasoning", "tool_call", "code", "vision", "1M_ctx", "thinking_mode", "Apache_2.0"],
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "code",
+            "vision",
+            "1M_ctx",
+            "thinking_mode",
+            "Apache_2.0"
+          ],
           "strengths": "Has thinking mode at flash price. Vision-capable. Apache 2.0 open weights. Same price as flash but more capable.",
           "providers": [
-            {"provider": "bailian-token-plan", "cost_type": "token_plan", "cost": "$0.25/$1.50 per 1M", "key_env": "QWEN_API_KEY", "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1", "priority": 1}
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "$0.25/$1.50 per 1M",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 1
+            }
           ]
         },
         "mimo/mimo-v2.5-pro-ultraspeed": {
           "name": "MiMo V2.5 Pro UltraSpeed",
-          "capability": ["ultra_fast", "tool_call", "1M_ctx", "1000_tok_s"],
+          "capability": [
+            "ultra_fast",
+            "tool_call",
+            "1M_ctx",
+            "1000_tok_s"
+          ],
           "strengths": "1000 tok/s. Hermes fast conversational default. No thinking mode — use Pro for reasoning.",
           "providers": [
-            {"provider": "mimo-platform", "cost_type": "token_plan", "cost": "4.1B credits/mo", "key_env": "MIMO_API_KEY", "base_url": "https://token-plan-sgp.xiaomimimo.com/v1", "priority": 1}
+            {
+              "provider": "mimo-platform",
+              "cost_type": "token_plan",
+              "cost": "4.1B credits/mo",
+              "key_env": "MIMO_API_KEY",
+              "base_url": "https://token-plan-sgp.xiaomimimo.com/v1",
+              "priority": 1
+            }
+          ]
+        },
+        "openai/gpt-5.6-sol": {
+          "name": "GPT 5.6 SOL",
+          "capability": [
+            "fast_inference",
+            "zero_reasoning_overhead",
+            "tool_call",
+            "agentic_loop_optimal"
+          ],
+          "strengths": "Fastest coder tested — 0.9-1.5s latency, 0 reasoning tokens, idiomatic code. Optimal for agentic loops.",
+          "status": "HELD_888",
+          "hold_reason": "Responses-API adapter untested. Copilot CLI speaks Anthropic protocol natively; GPT 5.6 requires untested TokenRouter translation layer. Cannot deploy without adapter validation.",
+          "providers": [
+            {
+              "provider": "tokenrouter",
+              "cost_type": "pay_per_token",
+              "cost": "$3/$12 per 1M",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com",
+              "priority": 1,
+              "note": "US jurisdiction — CLOUD Act applies. Never for sovereign data."
+            }
+          ]
+        },
+        "z-ai/glm-5.2": {
+          "name": "GLM-5.2",
+          "capability": [
+            "fast_inference",
+            "tool_call",
+            "agentic_loop_optimal",
+            "anthropic_protocol_native",
+            "1M_ctx_model_limit",
+            "MIT_open_weights"
+          ],
+          "strengths": "Fastest loop engine on clean Anthropic protocol. Copilot CLI sole engine. Routes through /v1/messages natively — no adapter needed. SWE-bench Pro 62.1%, Terminal-Bench 81.0%.",
+          "status": "SEALED",
+          "sealed_reason": "Won on protocol cleanliness over GPT 5.6. Copilot speaks Anthropic natively; GLM-5.2 routes clean. No translation layer risk.",
+          "lane_note": "Copilot CLI constraint: 200K prompt / 65K output (model supports 1M). >150K-token task → escalate to --model deepseek/deepseek-v4-pro explicitly. Silent truncation risk on repo-scale refactors.",
+          "providers": [
+            {
+              "provider": "tokenrouter",
+              "cost_type": "pay_per_token",
+              "cost": "FREE through July 25, 2026",
+              "key_env": "TOKENROUTER_API_KEY",
+              "base_url": "https://api.tokenrouter.com",
+              "priority": 1,
+              "note": "Anthropic-native endpoint (/v1/messages). No Responses-API adapter needed."
+            }
           ]
         }
       }
@@ -87,28 +259,63 @@
       "models": {
         "gemini/gemini-2.5-flash": {
           "name": "Gemini 2.5 Flash",
-          "capability": ["1M_ctx", "multimodal", "fast"],
+          "capability": [
+            "1M_ctx",
+            "multimodal",
+            "fast"
+          ],
           "strengths": "Permanent free tier. 1,500 req/day. 1M context. Multimodal. Best free baseline.",
           "providers": [
-            {"provider": "gemini", "cost_type": "free", "cost": "FREE", "key_env": "GEMINI_API_KEY", "base_url": "https://generativelanguage.googleapis.com/v1beta", "priority": 1}
+            {
+              "provider": "gemini",
+              "cost_type": "free",
+              "cost": "FREE",
+              "key_env": "GEMINI_API_KEY",
+              "base_url": "https://generativelanguage.googleapis.com/v1beta",
+              "priority": 1
+            }
           ],
           "warning": "US jurisdiction — CLOUD Act. Never for sovereign data."
         },
         "groq/llama-3.3-70b-versatile": {
           "name": "Llama 3.3 70B (Groq)",
-          "capability": ["tool_call", "131K_ctx", "fast_280_tok_s"],
+          "capability": [
+            "tool_call",
+            "131K_ctx",
+            "fast_280_tok_s"
+          ],
           "strengths": "280 tok/s FREE. 1K req/day.",
           "providers": [
-            {"provider": "groq", "cost_type": "free", "cost": "FREE — 1K req/day", "key_env": "GROQ_API_KEY", "base_url": "https://api.groq.com/openai/v1", "priority": 1}
+            {
+              "provider": "groq",
+              "cost_type": "free",
+              "cost": "FREE — 1K req/day",
+              "key_env": "GROQ_API_KEY",
+              "base_url": "https://api.groq.com/openai/v1",
+              "priority": 1
+            }
           ],
           "warning": "US jurisdiction — CLOUD Act."
         },
         "qwen/qwen3.6-flash": {
           "name": "Qwen 3.6 Flash",
-          "capability": ["code", "vision", "web_search", "1M_ctx", "Apache_2.0"],
+          "capability": [
+            "code",
+            "vision",
+            "web_search",
+            "1M_ctx",
+            "Apache_2.0"
+          ],
           "strengths": "$0.25/$1.50. Vision + web search. OpenCode small_model default.",
           "providers": [
-            {"provider": "bailian-token-plan", "cost_type": "token_plan", "cost": "$0.25/$1.50", "key_env": "QWEN_API_KEY", "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1", "priority": 1}
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "$0.25/$1.50",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 1
+            }
           ]
         }
       }
@@ -119,35 +326,102 @@
       "models": {
         "ollama/qwen2.5-coder:3b": {
           "name": "Qwen 2.5 Coder 3B (Ollama)",
-          "capability": ["local", "32K_ctx", "survival_knife"],
+          "capability": [
+            "local",
+            "32K_ctx",
+            "survival_knife"
+          ],
           "strengths": "Always available. Zero cost. Blind survival knife.",
           "providers": [
-            {"provider": "ollama", "cost_type": "free", "cost": "FREE — local CPU", "base_url": "http://127.0.0.1:11434/v1", "priority": 1}
+            {
+              "provider": "ollama",
+              "cost_type": "free",
+              "cost": "FREE — local CPU",
+              "base_url": "http://127.0.0.1:11434/v1",
+              "priority": 1
+            }
           ]
         },
         "qwen/qwen3.6-27b-dense": {
           "name": "Qwen 3.6 27B Dense (Self-Host)",
-          "capability": ["local", "131K_ctx", "Apache_2.0", "18GB_VRAM"],
+          "capability": [
+            "local",
+            "131K_ctx",
+            "Apache_2.0",
+            "18GB_VRAM"
+          ],
           "strengths": "Self-hostable on single GPU. Apache 2.0. SWE-bench 77.2%. NOT yet running on af-forge — pending GPU.",
           "providers": [
-            {"provider": "ollama", "cost_type": "free", "cost": "FREE — needs 18GB GPU", "base_url": "http://127.0.0.1:11434/v1", "priority": 1, "status": "NOT_DEPLOYED"}
+            {
+              "provider": "ollama",
+              "cost_type": "free",
+              "cost": "FREE — needs 18GB GPU",
+              "base_url": "http://127.0.0.1:11434/v1",
+              "priority": 1,
+              "status": "NOT_DEPLOYED"
+            }
           ]
         }
       }
     }
   },
   "agent_routing": {
-    "opencode": {"role": "333-AGI coding forge", "primary_model": "deepseek/deepseek-v4-pro", "primary_provider": "deepseek"},
-    "forge": {"role": "000Ω gated execution", "primary_model": "deepseek/deepseek-v4-pro", "primary_provider": "deepseek"},
-    "auditor": {"role": "Ψ drift detection", "primary_model": "deepseek/deepseek-v4-pro", "primary_provider": "deepseek"},
-    "ops": {"role": "🌐 monitoring", "primary_model": "deepseek/deepseek-v4-flash", "primary_provider": "deepseek"},
-    "planner": {"role": "Ω DAG planning", "primary_model": "kimi/k3", "primary_provider": "kimi-moonshot"},
-    "hermes": {"role": "555-ASI conversational + multimodal", "primary_model": "mimo/mimo-v2.5-pro-ultraspeed", "primary_provider": "mimo-platform"},
-    "kimi-code": {"role": "FI-008 Kimi Code CLI", "primary_model": "kimi/k3", "primary_provider": "kimi-moonshot"},
-    "openclaw": {"role": "Legacy — preserve only", "primary_model": "deepseek/deepseek-v4-pro", "primary_provider": "deepseek", "status": "SEMI_RETIRED"},
-    "claude-code": {"role": "Anthropic CLI via DS bridge", "primary_model": "deepseek/deepseek-v4-pro", "primary_provider": "deepseek"},
-    "copilot": {"role": "GitHub Copilot CLI via DS bridge", "primary_model": "deepseek/deepseek-v4-pro", "primary_provider": "deepseek"},
-    "codex": {"role": "Codex CLI", "primary_model": "openai/gpt-5.6-sol", "primary_provider": "openrouter"}
+    "opencode": {
+      "role": "333-AGI coding forge",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek"
+    },
+    "forge": {
+      "role": "000Ω gated execution",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek"
+    },
+    "auditor": {
+      "role": "Ψ drift detection",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek"
+    },
+    "ops": {
+      "role": "🌐 monitoring",
+      "primary_model": "deepseek/deepseek-v4-flash",
+      "primary_provider": "deepseek"
+    },
+    "planner": {
+      "role": "Ω DAG planning",
+      "primary_model": "kimi/k3",
+      "primary_provider": "kimi-moonshot"
+    },
+    "hermes": {
+      "role": "555-ASI conversational + multimodal",
+      "primary_model": "mimo/mimo-v2.5-pro-ultraspeed",
+      "primary_provider": "mimo-platform"
+    },
+    "kimi-code": {
+      "role": "FI-008 Kimi Code CLI",
+      "primary_model": "kimi/k3",
+      "primary_provider": "kimi-moonshot"
+    },
+    "openclaw": {
+      "role": "Legacy — preserve only",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek",
+      "status": "SEMI_RETIRED"
+    },
+    "claude-code": {
+      "role": "Anthropic CLI via DS bridge",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek"
+    },
+    "copilot": {
+      "role": "GitHub Copilot CLI via DS bridge",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek"
+    },
+    "codex": {
+      "role": "Codex CLI",
+      "primary_model": "openai/gpt-5.6-sol",
+      "primary_provider": "openrouter"
+    }
   },
   "warnings": [
     "BAILIAN SPOF: 9 of 14 agents fall back to Bailian. Direct DS + direct Kimi should be primary.",
