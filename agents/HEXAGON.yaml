@@ -1,97 +1,177 @@
 hexagon:
-  version: 4.1.0
+  version: 5.0.0
   seal:
-    seal_id: HEXAGON-4.1-20260717
+    seal_id: HEXAGON-5.0-20260729
     verdict: SEAL
-    authority: Muhammad Arif bin Fazil — F13 SOVEREIGN
-    ratified: '2026-07-17T00:00:00+08:00'
-    mutation: >
-      4.0.0 was wrong: collapsed roles instead of identities.
-      4.1.0 correct: 3 intelligence principals, 2 ASI sealed deeds,
-      A-FORGE as bounded service (not intelligence), VAULT999 as archive.
-      ASI.REVIEW and ASI.AUDIT share no context.
-      Expected-state contract frozen before execution.
-  architecture: 3+2+1+1 — 3 minds · 2 deeds · 1 forge · 1 vault · 1 path
+    authority: "Muhammad Arif bin Fazil \u2014 F13 SOVEREIGN"
+    ratified: '2026-07-29T19:50:00+08:00'
+    mutation: "5.0: Trinity collapse ratified. Route awareness (SHADOW-TR-001). Agentic flow \u2014 no human tab-switch. EUR-001\u2192\
+      020 ingested. Separation of powers: DS\u2260GLM\u2260Claude."
+  architecture: "3+2+1+1 \u2014 3 minds \xB7 2 deeds \xB7 1 forge \xB7 1 vault \xB7 1 path"
   motto: DITEMPA BUKAN DIBERI
   sovereign:
     id: 000-SALAM
-    role: Human Sovereign — F13 · above the registry · not an agent
+    role: "Human Sovereign \u2014 F13 \xB7 above the registry \xB7 not an agent"
     authority: Muhammad Arif bin Fazil
-
   doctrine:
-    zen: "Collapse the identities, not the functions."
-    flow: AGI_PROPOSE → ASI_REVIEW → APEX_JUDGE → AFORGE_EXECUTE → ASI_AUDIT → APEX_RESOLVE → VAULT_RECEIPT
-    expected_state_contract: "Frozen before execution. Amendment requires new judgment cycle."
-    asi_context_isolation: "ASI.REVIEW and ASI.AUDIT share no working context. Blind audit required."
-    anti_theatre_controls: 7  # blind audit, immutable contract, independent evidence, different identity, hard refusal, no rewriting, failure to APEX
-
+    zen: Collapse the identities, not the functions.
+    flow: "AGI_PROPOSE \u2192 ASI_REVIEW \u2192 APEX_JUDGE \u2192 AFORGE_EXECUTE \u2192 ASI_AUDIT \u2192 APEX_RESOLVE \u2192\
+      \ VAULT_RECEIPT"
+    expected_state_contract: Frozen before execution. Amendment requires new judgment cycle.
+    asi_context_isolation: ASI.REVIEW and ASI.AUDIT share no working context. Blind audit required.
+    anti_theatre_controls: 7
   intelligence_principals:
     agi:
       id: 333-AGI
-      zen: 🧠 THINK
-      duty: "Propose architecture, implementation plan, reversible draft artefacts."
-      boundary: "Cannot judge, cannot execute, cannot certify."
-      skills: [architecture, implementation-plan, change-proposal, reversible-artifact-draft]
+      zen: "\U0001F9E0 THINK"
+      duty: Propose architecture, implementation plan, reversible draft artefacts.
+      boundary: Cannot judge, cannot execute, cannot certify.
+      skills:
+      - architecture
+      - implementation-plan
+      - change-proposal
+      - reversible-artifact-draft
+      model_route: deepseek-v4-pro@direct
     asi:
       id: 555-ASI
-      zen: 🌀 DREAM
-      duty: "Review proposals independently. Audit outcomes independently."
-      boundary: "Cannot execute, cannot judge. REVIEW and AUDIT share no context."
+      zen: "\U0001F300 DREAM"
+      duty: Review proposals independently. Audit outcomes independently.
+      boundary: Cannot execute, cannot judge. REVIEW and AUDIT share no context.
       deeds:
         review:
           id: ASI.REVIEW
-          input: [proposal, requirements, governing_canon]
-          blind_to: [future_execution_result, expected_state_contract]
-          skills: [preflight-review, adversarial-critique]
+          input:
+          - proposal
+          - requirements
+          - governing_canon
+          blind_to:
+          - future_execution_result
+          - expected_state_contract
+          skills:
+          - preflight-review
+          - adversarial-critique
         audit:
           id: ASI.AUDIT
-          input: [live_state, expected_state_contract, library_refs, execution_receipt]
-          blind_to: [ASI.REVIEW_reasoning, AGI_narrative, AFORGE_success_claim]
+          input:
+          - live_state
+          - expected_state_contract
+          - library_refs
+          - execution_receipt
+          blind_to:
+          - ASI.REVIEW_reasoning
+          - AGI_narrative
+          - AFORGE_success_claim
           refusal_right: BLOCK
-          skills: [live-state-audit, drift-detect, health-verify, block-close, certify-evidence]
+          skills:
+          - live-state-audit
+          - drift-detect
+          - health-verify
+          - block-close
+          - certify-evidence
+      model_route: glm-5.2@tokenrouter (memory/telemetry) | ds-v4-flash@direct (audit)
     apex:
       id: 888-APEX
-      zen: ⚖️ JUDGE
-      duty: "Constitutional judgment, authority resolution, conflict resolution, rollback/escalation."
-      boundary: "Cannot execute, cannot produce domain evidence."
-      skills: [constitutional-judge, dispute-resolution, authority-resolution, rollback-decision, escalation]
-
+      zen: "\u2696\uFE0F JUDGE"
+      duty: Constitutional judgment, authority resolution, conflict resolution, rollback/escalation.
+      boundary: Cannot execute, cannot produce domain evidence.
+      skills:
+      - constitutional-judge
+      - dispute-resolution
+      - authority-resolution
+      - rollback-decision
+      - escalation
+      model_route: claude-sonnet-5@opencode-zen
   bounded_services:
     forge:
       id: A-FORGE
-      zen: ⚒️ FORGE
-      nature: "Execution machinery. Not an intelligence role. Mutates under SEAL."
-      boundary: "Cannot plan, cannot self-authorize, cannot self-judge, cannot self-seal."
-      skills: [shell-execution, docker-ops, git-ops, filesystem-mutation, deploy]
+      zen: "\u2692\uFE0F FORGE"
+      nature: Execution machinery. Not an intelligence role. Mutates under SEAL.
+      boundary: Cannot plan, cannot self-authorize, cannot self-judge, cannot self-seal.
+      skills:
+      - shell-execution
+      - docker-ops
+      - git-ops
+      - filesystem-mutation
+      - deploy
     vault:
       id: VAULT999
-      zen: 💎 VAULT
-      nature: "Immutable receipt archive. Append-only, hash-chained."
-      boundary: "Cannot judge, cannot reinterpret."
-
+      zen: "\U0001F48E VAULT"
+      nature: Immutable receipt archive. Append-only, hash-chained.
+      boundary: Cannot judge, cannot reinterpret.
   agent_cards:
     discoverable: 3
     cards:
-      - uri: "aaa://agents/agi"
-        agent: 333-AGI
-      - uri: "aaa://agents/asi"
-        agent: 555-ASI
-        deeds: [REVIEW, AUDIT]
-      - uri: "aaa://agents/apex"
-        agent: 888-APEX
+    - uri: aaa://agents/agi
+      agent: 333-AGI
+    - uri: aaa://agents/asi
+      agent: 555-ASI
+      deeds:
+      - REVIEW
+      - AUDIT
+    - uri: aaa://agents/apex
+      agent: 888-APEX
     not_discoverable_as_agents:
-      - A-FORGE  # bounded service, not intelligence
-      - VAULT999 # bounded service, not intelligence
-
+    - A-FORGE
+    - VAULT999
   escalation:
     stop_the_line:
-    - "ASI.REVIEW and ASI.AUDIT executed in same context"
-    - "Expected-state contract modified after execution"
-    - "A-FORGE self-authorizes or self-certifies"
-    - "AGI executes production mutation"
-    - "Audit evidence collected from A-FORGE (not directly from live state)"
-    - "Failure routed back to ASI.REVIEW instead of APEX"
+    - ASI.REVIEW and ASI.AUDIT executed in same context
+    - Expected-state contract modified after execution
+    - A-FORGE self-authorizes or self-certifies
+    - AGI executes production mutation
+    - Audit evidence collected from A-FORGE (not directly from live state)
+    - Failure routed back to ASI.REVIEW instead of APEX
     ladder:
-      drift: ASI.AUDIT blocks → APEX decides
-      dispute: ASI.REVIEW flags → APEX judges
-      deadlock: APEX cannot resolve → 000-SALAM (F13)
+      drift: "ASI.AUDIT blocks \u2192 APEX decides"
+      dispute: "ASI.REVIEW flags \u2192 APEX judges"
+      deadlock: "APEX cannot resolve \u2192 000-SALAM (F13)"
+  route_doctrine:
+    SHADOW-TR-001: TokenRouter truncates content. DeepSeek NEVER via TR. Direct API only.
+    SHADOW-TR-002: TokenRouter drops cache_control. Caching via TR = no-op.
+    direct_route_principle: Gateways only for models without direct APIs. DS, Anthropic, Moonshot = direct.
+    route_column_mandatory: Every benchmark, agent card, and model claim must specify route.
+  eurekas:
+    ingested: '2026-07-29'
+    count: 20
+    classes:
+      A_model_physics:
+      - "EUR-001\u2192004"
+      B_gateway_shadows:
+      - "EUR-005\u2192008"
+      C_token_thermodynamics:
+      - "EUR-009\u2192011"
+      D_constitutional_architecture:
+      - "EUR-012\u2192016"
+      E_measurement_doctrine:
+      - "EUR-017\u2192020"
+    active_holds:
+    - EUR-014 (gate-as-law)
+    - EUR-015 (floor inversion)
+    pending_tests:
+    - "T1\u2192T8 battery"
+  trinity_collapse:
+    date: '2026-07-29'
+    from: 10 OpenCode agents (agi, apex, build, plan, asi, forge, explore, general, ops, scout)
+    to: "3 Trinity agents (agi \u0394 Mind, asi \u03A9 Core, apex \u03A8 Soul)"
+    absorbed:
+      into_agi:
+      - build
+      - plan
+      - forge
+      into_asi:
+      - explore
+      - scout
+      - ops
+      - general
+      unchanged:
+      - apex
+    flow: "Arif \u2192 agi \u2192 [asi|apex] \u2192 agi \u2192 Arif. No human tab-switch."
+    separation: "DS (coder/chat) \u2260 GLM (memory) \u2260 Claude (judge)"
+  opencode_config:
+    path: /root/.config/opencode/opencode.json
+    backups:
+    - opencode.json.bak-20260729-192016
+    - opencode.json.bak-trinity-20260729-192502
+    agents: 3
+    max_task_depth: 3
+    default_agent: agi
