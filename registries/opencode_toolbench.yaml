@@ -1,6 +1,6 @@
 version: 2
-last_forged: '2026-07-29T02:37:29Z'
-forged_by: Grok Build / OpenCode zen fix 2026-07-29
+last_forged: '2026-07-29T19:45:00Z'
+forged_by: "OpenCode 333-AGI \u2014 Trinity Zen Collapse"
 truth_rule: live opencode debug config and opencode mcp list beat registry prose
 opencode_version: 1.18.9
 opencode_binary: /root/.npm-global/bin/opencode
@@ -20,11 +20,11 @@ config_paths:
   - /root/.opencode/skills
   - /root/.opencode/tools
 live_snapshot:
-  probed_at: '2026-07-29T02:37:29Z'
+  probed_at: '2026-07-29T19:45:00Z'
   config_valid: true
   startup_valid: true
   config_mode: '0600'
-  agents: 7
+  agents: 3
   skills_discovered: 247
   mcp_registered: 24
   mcp_connected: 24
@@ -40,10 +40,11 @@ live_snapshot:
   - geox:8081
   - wealth:18082
   - well:18083
+  trinity_collapse: "10\u21923: agi (\u0394 Mind), asi (\u03A9 Core), apex (\u03A8 Soul)"
+  route_aware: true
 axes:
   L1_native_tools:
-    policy: all native OpenCode tools allowed; irreversible tripwires remain governed
-      by aaa-autonomy
+    policy: all native OpenCode tools allowed; irreversible tripwires remain governed by aaa-autonomy
     permission_default: allow
     explicitly_allowed:
     - read
@@ -160,6 +161,21 @@ axes:
     - /root/WELL
     - /root/VAULT999
     - /root/memory
+  L0_trinity_lanes:
+    agi_delta_mind:
+      model: deepseek-v4-pro@direct
+      tools: FULL
+      invokes:
+      - asi
+      - apex
+    asi_omega_core:
+      model: glm-5.2@tokenrouter
+      tools: GATED
+      role: memory, telemetry, research
+    apex_psi_soul:
+      model: claude-sonnet-5@opencode-zen
+      tools: READ-ONLY
+      role: constitutional verdict
 agentic_loop:
   name: governed reality engineering
   spine:
@@ -179,14 +195,12 @@ agentic_loop:
   - explicit /seal
   - genuine 888_HOLD
   mutation_receipt: every mutating native or MCP tool emits local append-only receipt
-  authority_boundary: agent executes; arifOS judges; A-FORGE governs consequential
-    execution; Arif vetoes irreversible
+  authority_boundary: agent executes; arifOS judges; A-FORGE governs consequential execution; Arif vetoes irreversible
 model_strategy:
   primary: deepseek/deepseek-v4-pro
   small: ollama/qwen2.5-coder:3b
   recovery: ollama/qwen2.5-coder:3b
-  note: Live config primary = deepseek/deepseek-v4-pro (333-AGI). Free routes available
-    via openrouter + opencode-go.
+  note: Live config primary = deepseek/deepseek-v4-pro (333-AGI). Free routes available via openrouter + opencode-go.
 verification:
   commands:
   - opencode --version
