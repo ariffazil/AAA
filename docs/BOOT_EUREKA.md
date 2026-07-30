@@ -275,3 +275,20 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 4. seal smoke 386f9a74
 
 ---
+
+## SESSION EUREKA — SE-20260730-bf06201b
+
+> **Sealed:** 2026-07-30T05:59:37Z | **Session:** sess-seal-receipt-e24fce | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. EUREKA #1 L11: claude/deepseek/kimi Ed25519-exempt system actors
+2. EUREKA #2 No Nak aku forge — T1/T2/T3 autonomy map
+3. EUREKA #3 Mechanical vs Constitutional HOLD
+4. EUREKA #4 Propose don't interrogate
+5. EUREKA #5 Extend don't rebuild — organ_health mode
+6. Seal macro arif_seal(mode=session_close) stages 0-5 wired and live
+7. Init-to-Seal protocol + EUREKA 8 in BOOT_EUREKA
+
+---
