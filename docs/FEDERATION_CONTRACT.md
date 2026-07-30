@@ -4,14 +4,15 @@
 > **Authority:** F13 SOVEREIGN — Muhammad Arif bin Fazil
 > **Canonical location:** `/root/AAA/docs/FEDERATION_CONTRACT.md` (symlinked from `/root/FEDERATION_CONTRACT.md`)
 > **Supersedes:** All prior organ-specific FEDERATION_CONTRACT.md copies, `/root/FEDERATION.md`
-> **Pointer:** For constitutional floors (F1-F13), autonomy tiers, memory architecture, and code conventions → `/root/AGENTS.md`
+> **Pointer:** Floors / autonomy / memory / conventions → `/root/AGENTS.md`  
+> **Topology SOT:** `/root/AAA/docs/ORGAN.md` · machine `/root/AAA/federation/organs.yaml`  
 > **Doctrine:** Satu domain. Satu web surface. Banyak organ, tetap bersempadan.
 
 ---
 
 ## 1. Federation Identity
 
-The **arifOS Federation** is a governed intelligence system comprising a **9-node constitutional spine** (5 runtime + 4 domain organs), 32 repositories, and a single sovereign (Arif, F13). It operates on a single VPS (72.62.71.199) with Cloudflare Tunnel + Caddy ingress.
+The **arifOS Federation** is a governed intelligence system: one sovereign (Arif, F13), one kernel (arifOS), core organs + linked planes (see ORGAN.md), and a single VPS (72.62.71.199) with Cloudflare Tunnel + Caddy ingress.
 
 **Governing principle:** No organ may seal without arifOS. No organ may self-authorize mutation.
 
@@ -19,17 +20,22 @@ The **arifOS Federation** is a governed intelligence system comprising a **9-nod
 
 ## 2. Organs — Constitutional Spine
 
-| Layer | Organ | Function | Surface |
-|-------|-------|----------|---------|
-| **L0** | arifOS | Law | `arif-fazil.com/arifos/` |
-| **L1** | AAA | Surface | `arif-fazil.com/aaa/` |
-| **L1** | APEX | Judgment | (embedded — unbundling target) |
-| **L1** | arifFlow | Coordination | (internal) |
-| **L1** | A-FORGE | Execution | `arif-fazil.com/forge/` |
-| **L2** | GEOX | Earth | `arif-fazil.com/geox/` |
-| **L2** | WEALTH | Capital | `arif-fazil.com/wealth/` |
-| **L2** | WELL | Human | `arif-fazil.com/well/` |
-| **L2** | HERMES | Bridge | `t.me/arifos` |
+> **Full topology SOT:** [`/root/AAA/docs/ORGAN.md`](/root/AAA/docs/ORGAN.md) · machine [`/root/AAA/federation/organs.yaml`](/root/AAA/federation/organs.yaml)  
+> This section is a **thin contract summary** only — do not maintain a second full map here.
+
+| Layer | Organ | Function | Port / surface |
+|-------|-------|----------|----------------|
+| **L0** | arifOS | Law / judge / seal gate | `:8088` · `/arifos/` |
+| **L1** | AAA | Cockpit / A2A | `:3001` · `/aaa/` |
+| **L1** | arifFLOW | Metabolism (never judge/exec) | `:7073` |
+| **L1** | A-FORGE | Execution after SEAL | `:7071/:7072` · `/forge/` |
+| **L2** | GEOX | Earth evidence | `:8081` · `/geox/` |
+| **L2** | WEALTH | Capital compute | `:18082` · `/wealth/` |
+| **L2** | WELL | Vitality (REFLECT_ONLY) | `:18083` · `/well/` |
+| **EDGE** | HERMES | Telegram bridge | gateway · not an organ |
+| **MEMORY** | VAULT999 | Immutable receipts | path · not a port |
+
+APEX is **not** a separate organ (judgment lives in arifOS). FED/FLAME are advisory planes — see ORGAN.md §3.
 
 ---
 

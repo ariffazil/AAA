@@ -1,9 +1,10 @@
-# ARCHITECTURE_TRUTH.md — Constitutional Baseline v43.0
+# ARCHITECTURE_TRUTH.md — Historical A2A baseline (v43.0)
 
-> **LOCKED 2026-07-04** — FORGE session. Arif AFK-YOLO authority.
-> This document is the single source of truth for the arifOS A2A federation topology.
-> Any change to this document requires F13 SOVEREIGN explicit approval.
-> DITEMPA BUKAN DIBERI — Intelligence is forged, not given.
+> **SUPERSEDED for topology / tool counts (2026-07-30).**  
+> **Live system map:** [`ORGAN.md`](./ORGAN.md) · machine twin [`../federation/organs.yaml`](../federation/organs.yaml)  
+> **Kept for:** A2A mesh design history, Express vs Python bridge notes.  
+> Do not copy port or tool-count tables from this file — they are frozen 2026-07-04 and stale.  
+> DITEMPA BUKAN DIBERI
 
 ---
 
