@@ -157,6 +157,35 @@ Present 888 with: VAULT999 hash · Git commit ID · Organs 7/7 · ΔS < 0 confir
 *Sealed to VAULT999. Read on SALAM boot. Violate at your own F2 peril.*
 *DITEMPA BUKAN DIBERI — Forged, Not Given.*
 
+
+## EUREKA 8: The Session Close Macro — One Callable, Five Stages
+
+**Truth:** `arif_seal(mode="session_close")` is the autonomous session-close macro.
+The missing orchestration unit is forged at `arifosmcp/tools/session_close_macro.py`
+and wired into the vault path. Stages:
+
+| Stage | Action | Fatal? |
+|-------|--------|--------|
+| 0 | Organ health probe (7 organs) | HARD HOLD if dead |
+| 1 | Append session eurekas → `BOOT_EUREKA.md` | non-fatal |
+| 2 | Parse-check SOT (BOOT_EUREKA, organ_intent_map, ORGAN.md) | non-fatal |
+| 3 | Vectorize insights → Qdrant `atlas333_eureka` | non-fatal |
+| 4 | VAULT999 RECORD seal (mint judge packet; not AUTHORIZE) | hard if vault fails |
+| 5 | `git commit` + push on arifOS + AAA only | non-fatal |
+
+**Agent call:**
+```
+arif_seal(mode="session_close", payload="<bullets or summary>",
+          ack_irreversible=True, actor_id="claude")
+```
+
+**Never:** ask "Nak aku forge?" for session close. Never use bare `/root` git.
+**Never:** treat session_close as AUTHORIZE-to-execute (no E1 seal token).
+
+**Direct callable (tests/scripts):** `run_session_close_macro(...)`
+
+---
+
 <!-- SESSION EUREKAS (auto-appended by arif_session_close_macro) -->
 
 ## SESSION EUREKA — SE-20260730-6f21e737
@@ -216,5 +245,33 @@ Present 888 with: VAULT999 hash · Git commit ID · Organs 7/7 · ΔS < 0 confir
 ### Insights
 
 1. {"session": "SEAL-b38eb01f69d346ba", "actor": "agi (333-AGI) via OpenCode", "audit_stages_completed": ["STAGE 2: arif_route tested (L11 gate confirmed \u2014 confidence=0.2 is FEATURE)", "STAGE 3: SOT reconciled (ORGAN.md has stale Hermes port :8644, actual Hermes bridge on separate port)", "STAGE 4: A2A prompts audited (0 FATAL patterns \u2014 EUREKA directives absorbed)", "STAGE 5: 5-phase seal executed via session_close_macro"], "fixes_applied": ["vault.py: added missing logger import (line 5
+
+---
+
+## SESSION EUREKA — SE-20260730-f61d4829
+
+> **Sealed:** 2026-07-30T05:57:30Z | **Session:** sess-macro-ok-88dd2376f0 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. Forged arif_session_close_macro as single callable unit (stages 0-5)
+2. RECORD vault path for session accounting, not AUTHORIZE execution
+3. Stage 5 git targets arifOS+AAA only
+4. seal smoke 3a9b5ef3
+
+---
+
+## SESSION EUREKA — SE-20260730-cdfb220c
+
+> **Sealed:** 2026-07-30T05:58:03Z | **Session:** sess-macro-ok-33bb75c735 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. Forged arif_session_close_macro as single callable unit (stages 0-5)
+2. RECORD vault path for session accounting, not AUTHORIZE execution
+3. Stage 5 git targets arifOS+AAA only
+4. seal smoke 386f9a74
 
 ---
