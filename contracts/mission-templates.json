@@ -1,0 +1,146 @@
+{
+  "mission_layer_version": "1.0.0",
+  "forged": "2026-07-30",
+  "principle": "ARIF speaks missions. The federation silently orchestrates tools. One verdict returns.",
+  "anti_principle": "Never show ARIF a tool list. Never ask ARIF which organ to use.",
+
+  "missions": {
+    "investigate": {
+      "label": "Investigate — Gather and test reality",
+      "human_trigger_examples": [
+        "What's happening with X?",
+        "Check the status of Y",
+        "Gather all evidence about Z",
+        "Is this data valid?",
+        "Show me the current state"
+      ],
+      "description": "Read-only evidence collection across organs. No mutation. Returns structured observations with uncertainty bounds.",
+      "organ_pipeline": ["arifOS:observe", "GEOX:query", "WEALTH:query", "WELL:sense", "A-FORGE:status"],
+      "output": "Structured evidence bundle with epistemic tags and confidence",
+      "autonomy": "AUTO_DO"
+    },
+    "interpret": {
+      "label": "Interpret — Build competing explanations",
+      "human_trigger_examples": [
+        "Why did X happen?",
+        "What does this evidence mean?",
+        "Give me competing explanations for Y",
+        "What are the possible interpretations?",
+        "Analyze this prospect"
+      ],
+      "description": "Multi-hypothesis reasoning. GEOX interprets earth evidence. WEALTH interprets capital signals. WELL interprets human state. arifOS synthesizes with uncertainty.",
+      "organ_pipeline": ["arifOS:think", "GEOX:interpret", "WEALTH:diagnose", "WELL:reflect", "arifOS:synthesize"],
+      "output": "Ranked hypotheses with evidence support, contradictions surfaced, uncertainty explicit",
+      "autonomy": "AUTO_DO"
+    },
+    "decide": {
+      "label": "Decide — Compare consequences and uncertainty",
+      "human_trigger_examples": [
+        "Should we do X?",
+        "What happens if we choose Y?",
+        "Compare option A and option B",
+        "What's the safest path?",
+        "Is this decision reversible?"
+      ],
+      "description": "Constitutional decision support. Every path through consequence modeling, reversibility test, and floor check. Returns recommendation with kill criteria.",
+      "organ_pipeline": ["arifOS:think", "GEOX:consequence", "WEALTH:consequence", "arifOS:judge", "arifOS:seal_prepare"],
+      "output": "Single recommendation with: kill criteria, confidence, reversibility, what would change the decision",
+      "autonomy": "ASK — irreversible decisions always require sovereign approval"
+    },
+    "build": {
+      "label": "Build — Prepare and execute approved changes",
+      "human_trigger_examples": [
+        "Deploy the fix for X",
+        "Build the thing we decided",
+        "Execute the approved plan",
+        "Make the change we agreed on"
+      ],
+      "description": "Governed execution. arifOS validates authority → A-FORGE plans + simulates → arifOS seals → A-FORGE executes → VAULT999 records. Never self-authorizing.",
+      "organ_pipeline": ["arifOS:validate_authority", "A-FORGE:plan", "A-FORGE:dry_run", "arifOS:seal", "A-FORGE:execute", "VAULT999:record"],
+      "output": "Execution receipt with rollback path, before/after hashes, and immutable seal",
+      "autonomy": "ASK — mutation always requires sovereign seal"
+    },
+    "monitor": {
+      "label": "Monitor — Detect change, degradation, or danger",
+      "human_trigger_examples": [
+        "Watch X and tell me if it changes",
+        "Is everything healthy?",
+        "Alert me if Y exceeds threshold",
+        "What degraded since yesterday?",
+        "Any anomalies?"
+      ],
+      "description": "Continuous observation loop. Compares current state against baseline. Surfaces deltas, degradation, and anomalies. Silent when healthy.",
+      "organ_pipeline": ["arifOS:observe_continuous", "WELL:machine_health", "WEALTH:market_health", "GEOX:data_freshness", "arifOS:delta_report"],
+      "output": "Delta report: what changed, what degraded, what needs attention. Silent when all healthy.",
+      "autonomy": "AUTO_DO — alert only on degradation"
+    },
+    "remember": {
+      "label": "Remember — Retrieve and preserve governed knowledge",
+      "human_trigger_examples": [
+        "What did we decide about X?",
+        "Show me the evidence for Y",
+        "What happened during Z?",
+        "Find everything about W",
+        "Preserve this finding"
+      ],
+      "description": "L1-L6 memory traversal. Semantic recall across Redis, Qdrant, Supabase, Graphiti, and VAULT999. Sealed records are immutable proof.",
+      "organ_pipeline": ["arifOS:memory_recall", "VAULT999:verify_chain", "arifOS:memory_store"],
+      "output": "Retrieved knowledge with provenance chain and seal verification",
+      "autonomy": "AUTO_DO for recall; ASK for seal"
+    }
+  },
+
+  "router_rules": {
+    "intent_classification": "arifOS classifies the human statement into the closest mission. If ambiguous, asks ONE clarifying question — never presents organ names or tool lists.",
+    "tool_selection": "Each organ selects its own tools based on the mission stage. ARIF never sees tool names.",
+    "evidence_gates": "Each stage produces evidence before the next begins. If a gate fails, the pipeline stops and reports why.",
+    "constitutional_gates": "Every pipeline stage passes through F1-F13 floor check. HOLD on any violation.",
+    "uncertainty_preservation": "Uncertainty is never collapsed. Every output carries epistemic tags and confidence bounds.",
+    "silent_healthy": "Monitor missions produce zero output when all systems are healthy. Only degradation surfaces."
+  },
+
+  "what_arif_never_sees": [
+    "Tool names (geox_basin, wealth_npv, etc.)",
+    "Organ names unless relevant to the decision",
+    "MCP endpoint details",
+    "Tool counts (never '128 tools', never '6 organs')",
+    "Registry classifications",
+    "Internal routing decisions"
+  ],
+
+  "what_arif_always_sees": [
+    "The recommendation (one clear statement)",
+    "The confidence level",
+    "What would change the recommendation",
+    "Whether any irreversible action was taken",
+    "The evidence trail (available on request, not in default output)"
+  ],
+
+  "maturity": {
+    "investigate": "PARTIAL — arif_observe + organ queries exist, but not chained into silent pipeline",
+    "interpret": "PARTIAL — arif_think + organ interpret tools exist, but synthesis is manual",
+    "decide": "PARTIAL — arif_judge + consequence modeling exist, but not auto-chained",
+    "build": "OPERATIONAL — arif_seal → A-FORGE execute chain is live with SCT enforcement",
+    "monitor": "PARTIAL — health probes exist per organ, but no unified silent monitoring",
+    "remember": "OPERATIONAL — L1-L6 memory with VAULT999 seal chain is live"
+  },
+
+  "forging_remaining": {
+    "mission_router": "Classify human intent → nearest mission. If ambiguous, ONE clarifying question.",
+    "pipeline_executor": "Chain organ calls silently. Pass evidence between stages. Stop on gate failure.",
+    "output_formatter": "Render mission results as ARIF-facing verdict. Never expose tools, organs, or internal state.",
+    "silent_monitor": "Cron-driven observation loop. Zero output when healthy. Delta-only when degraded."
+  },
+
+  "tool_survival_audit": {
+    "rule": "Every tool must answer: which real human mission uses me?",
+    "verdicts": {
+      "KEEP": "Used in a tested end-to-end mission workflow",
+      "MERGE_AS_MODE": "Useful but overlaps with another tool — make it a mode parameter",
+      "HIDE": "Internal computational function — remove from public surface",
+      "SDK_ONLY": "Compatibility alias — available via SDK, not agent discovery",
+      "REMOVE": "No real workflow, no evidence of use, no mission that needs it"
+    },
+    "applied_to": "Pending — next audit cycle applies this to all 253 registry entries"
+  }
+}

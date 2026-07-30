@@ -1,0 +1,131 @@
+{
+  "doctrine": "EPHEMERAL TOOL GENESIS — Agentic Capability Without Authority Creep",
+  "version": "1.0.0",
+  "forged": "2026-07-30",
+  "iron_rule": "Agent boleh mencipta CAPABILITY. Agent TIDAK BOLEH mencipta AUTHORITY.",
+
+  "seven_primitives": {
+    "1_sense_read":    { "kernel": "arif_observe", "desc": "Read web, files, databases, APIs, sensors, time, system state" },
+    "2_compute":       { "kernel": "arif_think",   "desc": "Calculate, run Python/shell, process data, simulate options" },
+    "3_memory":        { "kernel": "arif_memory",  "desc": "Remember, retrieve, correct, forget — with provenance" },
+    "4_resolve_route": { "kernel": "arif_route",   "desc": "Determine which organ or tool the mission needs" },
+    "5_communicate":   { "kernel": "arif_route (mode=communicate)", "desc": "Interact with humans, agents, external systems" },
+    "6_act_forge":     { "kernel": "arif_forge",   "desc": "Write files, call APIs, build code, change systems" },
+    "7_verify_govern": { "kernel": "arif_judge + arif_seal", "desc": "Test results, control permissions, rollback, audit, stop harm" }
+  },
+
+  "ephemeral_genesis_loop": {
+    "description": "Agent tidak perlu 128 permanent tools. Ia perlu kemampuan membina alat SEMENTARA apabila misi memerlukannya.",
+    "modes_under_arif_forge": {
+      "inspect_gap": {
+        "step": 1,
+        "desc": "Detect what capability is missing. Search existing tools first.",
+        "input": "Mission description + failed capability",
+        "output": "Gap report: what's needed, why existing tools can't serve, minimum viable capability spec",
+        "autonomy": "GREEN — always allowed"
+      },
+      "generate_ephemeral": {
+        "step": 2,
+        "desc": "Generate temporary tool code in sandbox. Parser, calculator, transformer, scraper, adapter.",
+        "input": "Capability spec from inspect_gap",
+        "output": "Ephemeral tool artifact (script, function, or adapter) with sandbox policy",
+        "constraints": "READONLY_BUILD sandbox. No secrets. No network unless NETWORKED_READ preset. Must be <500 lines. Single purpose.",
+        "autonomy": "GREEN — sandboxed generation always allowed"
+      },
+      "sandbox_test": {
+        "step": 3,
+        "desc": "Test the ephemeral tool against sample input. Verify output correctness.",
+        "input": "Ephemeral tool + test input",
+        "output": "Test report: pass/fail, edge cases, resource usage",
+        "constraints": "READONLY_BUILD sandbox. Must pass before invocation.",
+        "autonomy": "GREEN — always allowed"
+      },
+      "invoke_ephemeral": {
+        "step": 4,
+        "desc": "Execute the ephemeral tool against real mission data. Minimum necessary permission.",
+        "input": "Tested ephemeral tool + mission data + permission scope",
+        "output": "Tool result + execution receipt",
+        "constraints": "Minimum sandbox preset needed. Never FULL_TRUSTED for ephemeral. Network only if NETWORKED_READ + allowed domains.",
+        "autonomy": "YELLOW — scoped execution, logged, killable"
+      },
+      "verify_output": {
+        "step": 5,
+        "desc": "Independent verification that ephemeral tool output is correct and safe.",
+        "input": "Tool result + expected properties",
+        "output": "Verification report: correct, incorrect, uncertain",
+        "constraints": "Must use different method than tool itself. Cross-check when possible.",
+        "autonomy": "GREEN — always allowed"
+      },
+      "propose_promotion": {
+        "step": 6,
+        "desc": "If tool was used ≥3 times successfully, propose promotion to permanent. HUMAN MUST APPROVE.",
+        "input": "Ephemeral tool + usage history + success rate",
+        "output": "Promotion proposal for Arif's review",
+        "constraints": "NEVER auto-promote. Arif's approval is gate. No promotion without evidence of repeated value.",
+        "autonomy": "RED — human approval REQUIRED"
+      },
+      "retire": {
+        "step": 7,
+        "desc": "Destroy ephemeral tool. Clean sandbox. Remove all artifacts. Log retirement.",
+        "input": "Ephemeral tool ID",
+        "output": "Retirement receipt",
+        "constraints": "ALWAYS retire after mission unless propose_promotion approved. Auto-retire after 24h.",
+        "autonomy": "GREEN — always allowed, always required"
+      }
+    },
+    "auto_retire_after_hours": 24,
+    "max_ephemeral_tools_concurrent": 10
+  },
+
+  "authority_firewall": {
+    "agent_can_create": [
+      "Temporary parser",
+      "Calculator / transformer",
+      "Chart generator",
+      "Format converter",
+      "Data scraper (read-only, allowed domains)",
+      "Simulation script",
+      "API adapter (no secrets)",
+      "Local search/index",
+      "Disposable analytical workflow"
+    ],
+    "agent_cannot_create": [
+      "API keys or credentials",
+      "Privilege escalation paths",
+      "Persistent MCP server registration",
+      "Email or official message sending",
+      "Payment or trading capability",
+      "Data deletion without rollback",
+      "Public publishing",
+      "Production deployment",
+      "Constitutional kernel changes",
+      "Permanent authority of any kind"
+    ],
+    "principle": "Digital action mudah dibina. Akibat digital masih boleh irreversible. Authority firewall adalah mutlak."
+  },
+
+  "sandbox_substrate": {
+    "status": "EXISTS",
+    "location": "/root/A-FORGE/src/domain/containment/",
+    "presets": {
+      "READONLY_BUILD": "Read project files, write /tmp only, no network. Lint/test/typecheck.",
+      "NETWORKED_READ": "Read project, network for APIs, write /tmp only. API calls, web research.",
+      "FULL_TRUSTED": "Full access after SEAL verdict. Deploy, push, forge. NEVER for ephemeral tools."
+    },
+    "backends": ["bwrap (primary)", "firejail", "docker (fallback)"],
+    "isolation": "User namespace, network namespace, PID namespace, IPC namespace, UTS namespace"
+  },
+
+  "integration": {
+    "arif_route": "Searches existing tools first. Only routes to arif_forge if gap detected.",
+    "arif_forge": "Runs the 7-mode genesis loop. Sandboxed. Governed.",
+    "arif_judge": "Determines permission scope for each ephemeral invocation. Gates promotion proposals.",
+    "arif_memory": "Stores successful ephemeral recipes for reuse. Remembers what worked.",
+    "arif_seal": "Records only persistent changes. Ephemeral tools that are retired leave only a receipt."
+  },
+
+  "success_metric": {
+    "not": "Number of permanent tools",
+    "is": "Missions completed using ephemeral tools that were created, used, verified, and retired without Arif ever seeing a tool name"
+  }
+}

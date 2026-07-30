@@ -1,22 +1,21 @@
 ---
 id: FORGE-agentic-web-builder
 name: FORGE-agentic-web-builder
-version: 1.0.0-2026.07.23
+version: 1.1.0-2026.07.30
 description: >
   Build, deploy, audit, and repair arif-fazil.com constellation sites
-  autonomously. Class-level umbrella: DEPLOY (canonical script + orphan
-  detection), AUDIT (full-crawl methodology), REPAIR (source/live
-  convergence doctrine), SEAL (evidence + VAULT999). Load the op you need.
+  autonomously. Class-level umbrella: DOCTOR (web_zen CLI), DEPLOY, AUDIT,
+  REPAIR, SEAL, EPHEMERAL. Humans use six missions — not tool menus.
   USE WHEN: "deploy site", "site down", "audit all pages", "404 on
-  arif-fazil.com", "deploy-vps.sh", "makcikgpt broken", "static file
-  missing", "rsync --delete", "site audit". DO NOT USE FOR: Caddy SSL/DNS/
-  tunnel checks (FORGE-infra-guardian), LLM-content optimization of pages
-  (AGI-web-optimization), generic CI/CD pipelines (FORGE-cicd-docker-deploy).
+  arif-fazil.com", "deploy-vps.sh", "makcikgpt broken", "web zen",
+  "missions 404", "vitals proxies", "rsync --delete", "ephemeral tool".
+  DO NOT USE FOR: Caddy SSL/DNS/tunnel (FORGE-infra-guardian), LLM SEO
+  (AGI-web-optimization), generic CI/CD (FORGE-cicd-docker-deploy).
 owner: FORGE (000Ω)
 risk_tier: T2
 floor_scope: [F1, F2, F4, F11]
 autonomy_tier: ANNOUNCE
-forged_from: INCIDENT-2026-07-23 (www/html wipe + restore + 74-URL audit)
+forged_from: INCIDENT-2026-07-23 + MISSIONS-ZEN-2026-07-30
 ---
 
 # 🌐 FORGE — Agentic Web Builder
@@ -25,6 +24,9 @@ forged_from: INCIDENT-2026-07-23 (www/html wipe + restore + 74-URL audit)
 > (doctrine), `static/wealth.html` (renderer output) — all lived ONLY in the
 > deployed tree, all destroyed or nearly destroyed by deploys. This skill is
 > the metabolized scar. **Nothing generated lives only in the deployed tree.**
+>
+> **2026-07-30:** Stop inventory cosplay. Humans → `/missions`. Agents →
+> `web_zen.py doctor` before inventing a new deploy path.
 
 ## The One Law
 
@@ -32,7 +34,39 @@ forged_from: INCIDENT-2026-07-23 (www/html wipe + restore + 74-URL audit)
 VERSION CONTROL FIRST. LIVE TREE SECOND.
 If a file must exist on a public site, it must exist in git first.
 rsync --delete is an executioner — anything not in source is sentenced.
+Capability ≠ authority. Ephemeral tools die. Permission stays with arifOS/Arif.
 ```
+
+---
+
+## OP 0 — DOCTOR (always first · anti-chaos)
+
+```bash
+python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py doctor
+```
+
+| Mode | Band | Purpose |
+|------|------|---------|
+| `sense` | GREEN | source/live, Caddy missions routes, commodity :3456–3458 |
+| `verify` | GREEN | content-truth crawl (SPA checks JS bundle, not shell HTML only) |
+| `orphan` | YELLOW | dry-run `rsync --delete` — fail closed if deletes listed |
+| `ephemeral` | GREEN | generate → test → destroy disposable script (no secrets) |
+| `caddy-reload-hint` | ORANGE | systemd reload often fails NAMESPACE — use in-process `caddy reload` |
+
+README: `/root/arif-fazil.com/scripts/web-zen/README.md`  
+Human cockpit: `https://arif-fazil.com/missions` · Machine: `/missions.json`  
+MCP: `forge_web_zen(mode=doctor)` · Kernel: `arif_route(mission_id=…)`  
+Caddy reload: `systemctl reload caddy` (PrivateTmp=false fixed 2026-07-30)
+
+### Known failure → fix (do not re-diagnose from zero)
+
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| `/missions` 404 | not in Caddy `@spa_routes` | add `/missions*`; `caddy validate`; `/usr/bin/caddy reload --config /etc/caddy/Caddyfile --force` |
+| `/missions.json` 404 | not in `@root_static` | add path; reload as above |
+| VITALS proxies UNAVAILABLE | gold/oil/gas API down | `systemctl start gold-api oil-api gas-api` (not API keys) |
+| `systemctl reload caddy` fail NAMESPACE | host /tmp mount bug | in-process caddy reload (above) |
+| Doctor fails SPA markers | checking HTML shell only | web_zen reads live `/assets/index-*.js` |
 
 ---
 
@@ -101,18 +135,33 @@ diff -rq <snapshot-or-source>/ <live>/ | grep "^Only in"
 
 ## OP 4 — SEAL (evidence discipline)
 
-1. Crawl data (`results.tsv`), URL list, truth-check output → `forge_work/<date>/site-audit/AUDIT-REPORT.md`.
-2. Source commits BEFORE seal (seal references commit hashes, not intentions).
-3. `forge_vault(mode="seal")` with: scope, pass count, content-truth table, gaps closed, commits, queue. Cross-reference related seals (incident → audit → skill).
-4. Session-end: one seal, not two. F4.
+1. Prefer `web_zen.py doctor --json` receipt under `forge_work/<date>/web-zen/`.
+2. Crawl data (`results.tsv`), URL list, truth-check output → `forge_work/<date>/site-audit/AUDIT-REPORT.md`.
+3. Source commits BEFORE seal (seal references commit hashes, not intentions).
+4. `forge_vault(mode="seal")` with: scope, pass count, content-truth table, gaps closed, commits, skill.
+5. Session-end: one seal, not two. F4.
+
+## OP 5 — EPHEMERAL TOOL GENESIS (capability ≠ authority)
+
+```bash
+python3 /root/arif-fazil.com/scripts/web-zen/web_zen.py ephemeral \
+  --task "mission gap: why needed" \
+  --code-file /path/to/temp_tool.py
+```
+
+Loop: gap → search existing → reuse → generate → sandbox test → invoke → verify → **destroy** → promote only if repeated + human-approved.
+
+GREEN: parsers, converters, disposable analysis. RED never self-grant: secrets, production deploy, persistent MCP, force-push, Caddy authority, payments. No `arif_create_random_tool` — modes under forge only.
 
 ## Anti-patterns (each cost real breakage)
 
 - ❌ `rsync --delete` without orphan preview — destroyed 36 files 2026-07-23
 - ❌ "Deployed" claimed without crawl verification — 7 landing pages were 404
-- ❌ Generated content living only in live tree — organ_proxy/999/wealth.html, all one deploy from death
-- ❌ Hand-editing live tree to "fix" — creates the next divergence; fix source, redeploy
+- ❌ Generated content living only in live tree — organ_proxy/999/wealth.html
+- ❌ Hand-editing live tree to "fix" — fix source, redeploy
 - ❌ Status-200 audit without content grep — SPA soft-404 lies
-- ❌ `rm -rf` for cleanup — tripwire blocks; quarantine instead
+- ❌ `rm -rf` for cleanup — quarantine instead
+- ❌ Advertising 128 tools as intelligence — six missions + Canonical 8
+- ❌ Skipping `web_zen.py doctor` and reinventing the deploy path every session
 
 DITEMPA BUKAN DIBERI.
