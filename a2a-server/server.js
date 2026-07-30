@@ -1434,6 +1434,7 @@ const ENGINEER_CARD = require('./agent-cards/roles/aaa-engineer.json');
 const AUDITOR_CARD = require('./agent-cards/roles/aaa-auditor.json');
 const HERMES_CARD = require('./agent-cards/extensions/hermes-asi.json');
 const ANTIGRAVITY_CARD = require('./agent-cards/harnesses/antigravity.json');
+const OPENCLAW_CARD = require('./agent-cards/harnesses/openclaw.json');
 
 // === ERROR CODES ===
 const ERROR_CODES = {
@@ -2302,7 +2303,8 @@ app.get('/.well-known/arifos-federation.json', (req, res) => {
       { id: '333-AGI',   name: '333-AGI',   url: 'https://arifos.arif-fazil.com/a2a/333-AGI',   registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Ω MIND',  stage: '333', organ_host: 'arifOS+ GEOX+ WEALTH+ WELL+ A-FORGE' },
       { id: '555-ASI',   name: '555-ASI',   url: 'https://arifos.arif-fazil.com/a2a/555-ASI',   registered: true, role: 'federation', tier: 'primary', class: 'ASI',           ring: '❤️ HEART', stage: '555', organ_host: 'arifOS+ WELL' },
       { id: '888-APEX',  name: '888-APEX',  url: 'https://arifos.arif-fazil.com/a2a/888-APEX',  registered: true, role: 'federation', tier: 'primary', class: 'APEX',          ring: '⚖️ JUDGE', stage: '888', organ_host: 'arifOS' },
-      { id: 'antigravity', name: 'antigravity', url: 'https://aaa.arif-fazil.com/a2a/antigravity',   registered: true, role: 'federation', tier: 'coding',  class: 'CODING',        ring: 'Ψ BODY',  stage: 'CODING', organ_host: 'Local Terminal' }
+      { id: 'antigravity', name: 'antigravity', url: 'https://aaa.arif-fazil.com/a2a/antigravity',   registered: true, role: 'federation', tier: 'coding',  class: 'CODING',        ring: 'Ψ BODY',  stage: 'CODING', organ_host: 'Local Terminal' },
+      { id: 'openclaw',    name: 'OpenClaw',  url: 'https://aaa.arif-fazil.com/a2a/openclaw',         registered: true, role: 'federation', tier: 'primary', class: 'AGI',           ring: 'Δ MIND',  stage: '333', organ_host: 'A-FORGE+ AAA' }
     ],
     // DEPRECATED AGENTS (COLLAPSED 2026-07-15):
     //   - A-AUDIT  → absorbed into arifOS constitutional audit (arif_judge, arif_seal, arif_memory)
@@ -2345,6 +2347,12 @@ app.get('/a2a/antigravity/agent-card.json', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   res.json(ANTIGRAVITY_CARD);
+});
+
+app.get('/a2a/openclaw/agent-card.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  res.json(OPENCLAW_CARD);
 });
 
 // Treaty route — links to the full treaty law
