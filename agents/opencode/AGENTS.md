@@ -442,3 +442,5 @@ Routes through AAA Gateway (:3001) via `https://aaa.arif-fazil.com/a2a`.
 | Execution/lease/deploy | `a-forge-mcp` | session_token + lease |
 | Earth evidence | `geox` | session_token |
 | Capital data | `wealth` | session_token |
+
+> **Architectural meta:** [/root/.config/opencode/NOTES-trinity.md](NOTES-trinity.md) — Trinity collapse rationale, soft-spot mitigations, separation of powers.
