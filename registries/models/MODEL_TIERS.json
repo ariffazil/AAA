@@ -393,8 +393,10 @@
     },
     "hermes": {
       "role": "555-ASI conversational + multimodal",
-      "primary_model": "mimo/mimo-v2.5-pro-ultraspeed",
-      "primary_provider": "mimo-platform"
+      "primary_model": "deepseek/deepseek-v4-flash",
+      "primary_provider": "mulerouter",
+      "vision_model": "qwen-vl-max",
+      "vision_provider": "mulerouter"
     },
     "kimi-code": {
       "role": "FI-008 Kimi Code CLI",
@@ -446,6 +448,13 @@
     "ollama/qwen2.5-coder:3b": "qwen2.5-coder-3b",
     "groq/llama-3.3-70b-versatile": "llama-3.3-70b",
     "gemini/gemini-2.5-flash": "gemini-2.5-flash",
-    "openai/gpt-5.6-sol": "gpt-5.6-sol"
+    "openai/gpt-5.6-sol": "gpt-5.6-sol",
+    "mulerouter/qwen3-omni-flash": "qwen3-omni-flash",
+    "mulerouter/qwen-vl-max": "qwen-vl-max",
+    "mulerouter/qwen3-vl-plus": "qwen3-vl-plus",
+    "mulerouter/qwen3-max": "qwen3-max",
+    "mulerouter/qwen3.7-max": "qwen3.7-max",
+    "mulerouter/deepseek-v4-flash": "mulerouter-ds-flash",
+    "mulerouter/deepseek-v4-pro": "mulerouter-ds-pro"
   }
 }

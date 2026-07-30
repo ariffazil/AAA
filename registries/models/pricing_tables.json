@@ -1,0 +1,224 @@
+{
+  "deepseek": {
+    "deepseek/deepseek-v4-pro": {
+      "input_per_1M": 0.435,
+      "output_per_1M": 0.87
+    },
+    "deepseek/deepseek-v4-flash": {
+      "input_per_1M": 0.14,
+      "output_per_1M": 0.28
+    }
+  },
+  "minimax": {
+    "minimax/MiniMax-M3": {
+      "input_per_1M": 0.3,
+      "output_per_1M": 1.2
+    },
+    "minimax/MiniMax-M2.7": {
+      "input_per_1M": 0.3,
+      "output_per_1M": 1.2
+    },
+    "minimax/MiniMax-M2.5": {
+      "input_per_1M": 0.075,
+      "output_per_1M": 0.3
+    }
+  },
+  "mimo-platform": {
+    "mimo/mimo-v2.5-pro": {
+      "input_per_1M": 0.14,
+      "output_per_1M": 0.28
+    },
+    "mimo/mimo-v2.5-pro-ultraspeed": {
+      "input_per_1M": 0.14,
+      "output_per_1M": 0.28
+    }
+  },
+  "bailian-token-plan": {
+    "qwen/qwen3.7-max": {
+      "input_per_1M": 2.5,
+      "output_per_1M": 7.5
+    },
+    "qwen/qwen3.6-flash": {
+      "input_per_1M": 0.25,
+      "output_per_1M": 1.5
+    },
+    "qwen/qwen3.6-plus": {
+      "input_per_1M": 0.25,
+      "output_per_1M": 1.5
+    },
+    "glm/glm-5.2": {
+      "input_per_1M": 0.3,
+      "output_per_1M": 1.2
+    },
+    "kimi/kimi-for-coding": {
+      "input_per_1M": 0.5,
+      "output_per_1M": 2.0
+    }
+  },
+  "ollama": {
+    "qwen/qwen3.6-27b-dense": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "ollama/qwen2.5-coder:3b": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "kimi-moonshot": {
+    "kimi/k3": {
+      "input_per_1M": 0.5,
+      "output_per_1M": 2.0
+    },
+    "kimi/kimi-for-coding": {
+      "input_per_1M": 0.5,
+      "output_per_1M": 2.0
+    }
+  },
+  "sea-lion": {
+    "sea-lion/Qwen-SEA-LION-v4-32B-IT": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "sea-lion/Llama-SEA-LION-v3-70B-IT": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "sea-lion/Gemma-SEA-LION-v4-27B-IT": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "sea-lion/Llama-SEA-LION-v3.5-70B-R": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "sea-lion/Qwen-SEA-LION-v4.5-27B-IT": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "groq": {
+    "groq/llama-3.1-8b-instant": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "groq/llama-3.3-70b-versatile": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "groq/openai/gpt-oss-120b": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "openrouter": {
+    "openai/gpt-5.6-sol": {
+      "input_per_1M": 3.0,
+      "output_per_1M": 12.0
+    },
+    "xai/grok-4.5": {
+      "input_per_1M": 2.0,
+      "output_per_1M": 8.0
+    },
+    "openrouter/auto-beta": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "openrouter/auto": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "openrouter/free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "meta-llama/llama-3.2-3b-instruct:free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "deepseek/deepseek-r1": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "google/gemini-2.5-flash": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "moonshotai/kimi-k3": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "google/gemma-4-31b-it:free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "~anthropic/claude-sonnet-latest": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "~google/gemini-flash-latest": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "nvidia/nemotron-3-super-120b-a12b:free": {
+      "input_per_1M": "variable",
+      "output_per_1M": "variable"
+    },
+    "openrouter/free-aggregator": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "gemini": {
+    "gemini/gemini-2.5-flash": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "gemini/gemini-3-flash": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "gemini/gemini-flash-lite-latest": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "cerebras": {
+    "cerebras/gemma-4-31b": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "cerebras/gpt-oss-120b": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "cerebras/zai-glm-4.7": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "opencode-go": {
+    "opencode-go/deepseek-v4-flash-free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    },
+    "opencode-go/north-mini-code-free": {
+      "input_per_1M": 0,
+      "output_per_1M": 0
+    }
+  },
+  "mulerouter": {
+    "_note": "MuleRouter pricing (blind \u2014 estimated from common resale rates)",
+    "default": {
+      "input_per_1M": 0.5,
+      "output_per_1M": 1.5
+    }
+  },
+  "tokenrouter": {
+    "_note": "TokenRouter pricing (partially blind \u2014 estimated from known models)",
+    "default": {
+      "input_per_1M": 0.6,
+      "output_per_1M": 1.8
+    }
+  }
+}
