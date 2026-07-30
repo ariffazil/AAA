@@ -1,9 +1,9 @@
-# 🌐 MCP Federation ZEN — Single Source of Truth
+# 🌐 MCP Federation ZEN — MCP affordance / drift ops
 
-> **SOT:** 2026-07-26 | **seal_seq:** pending | **Spec target:** 2025-11-25
-> **Audit complete:** P0-P6 metabolic MCP audit executed | **WELL = reference organ**
-> **Ledger:** A-FORGE chain repaired (28 records, 0 errors) | **GEOX:** tools_sot.yaml regenerated (33 entries)
-> **DITEMPA BUKAN DIBERI** — For future agents: read this before touching any MCP surface.
+> **Topology SOT:** [`ORGAN.md`](./ORGAN.md) · machine [`../federation/organs.yaml`](../federation/organs.yaml)  
+> **This file:** MCP tool naming, SEP compliance, drift patterns — **not** a second organ map.  
+> **SOT (MCP ops):** 2026-07-26 | **Spec target:** 2025-11-25 | **Map stabilized:** 2026-07-30  
+> **DITEMPA BUKAN DIBERI** — For future agents: topology → ORGAN.md; MCP surface work → this file.
 >
 > ## ⚡ Audit Summary (2026-07-26)
 >
@@ -31,14 +31,17 @@
 
 ## 🔥 Organ Map — Who Serves What
 
-| Organ | Port | MCP Endpoint | Tools | Drift | Status |
-|-------|------|-------------|-------|-------|--------|
-| **arifOS** | 8088 | `arifos.arif-fazil.com/mcp` | 8 kernel verbs | — | ✅ GOVERNANCE |
-| **A-FORGE** | 7071/7072 | `mcp.arif-fazil.com/mcp` | 120 | 8 phantom | ✅ EXECUTION |
-| **AAA** | 3001 | `aaa.arif-fazil.com` | A2A only | — | ✅ COCKPIT |
-| **GEOX** | 8081 | `geox.arif-fazil.com/mcp` | 70 | **94 PHANTOM** | ⚠️ DISCOVERY |
-| **WEALTH** | 18082 | `wealth.arif-fazil.com/mcp` | 12 | 78 | ⚠️ LEDGER |
-| **WELL** | 18083 | `well.arif-fazil.com/mcp` | 8 canonical | 0 clean | ✅ REFERENCE |
+> **Live tool counts:** re-probe `/health` or read ORGAN.md §2. Numbers below are **ops snapshot**, not SOT.
+
+| Organ | Port | MCP Endpoint | Live tools (2026-07-30) | Status |
+|-------|------|-------------|-------------------------|--------|
+| **arifOS** | 8088 | `arifos.arif-fazil.com/mcp` | 8 public | GOVERNANCE |
+| **A-FORGE** | 7071/7072 | `mcp.arif-fazil.com/mcp` | 124 API / 52 MCP | EXECUTION |
+| **AAA** | 3001 | `aaa.arif-fazil.com` | A2A | COCKPIT |
+| **GEOX** | 8081 | `geox.arif-fazil.com/mcp` | 33 | EARTH |
+| **WEALTH** | 18082 | `wealth.arif-fazil.com/mcp` | 14 public | CAPITAL |
+| **WELL** | 18083 | `well.arif-fazil.com/mcp` | 10 (health degraded) | VITALITY |
+| **arifFLOW** | 7073 | (internal) | metabolism | never MCP-judge |
 
 ### Organ Roles (NEVER violate)
 

@@ -1,77 +1,116 @@
 # ═══════════════════════════════════════════════════════════════════
-# AAA Federation — Canonical Organ Registry
+# AAA Federation — Machine System Map (organs + linked planes)
 # ═══════════════════════════════════════════════════════════════════
-# Single source of truth for organ topology, roles, and boundaries.
-# Every organ.yaml in individual repos MUST be consistent with this.
+# HUMAN TWIN: /root/AAA/docs/ORGAN.md  (topology SOT — this file is machine SOT)
+# Truth rule: live :port/health beats these numbers. Re-probe before SEAL claims.
+# Stabilized: 2026-07-30
 # ═══════════════════════════════════════════════════════════════════
 
-schema_version: 1
-generated: "2026-07-19"
+schema_version: 2
+generated: "2026-07-30"
 maintainer: "AAA Control Plane"
+human_map: /root/AAA/docs/ORGAN.md
+truth_rule: live_health_beats_file
 
-organs:
-  - organ: arifos
+# Classification legend:
+#   CORE        — constitutional organ (authority boundary)
+#   METABOLISM  — federation pulse / receipts (never judge/execute)
+#   MEMORY      — immutable or durable truth store
+#   EDGE        — agent / UI / bridge (connect through kernel)
+#   SUPPORT     — helper daemon (crypto, guard, signing)
+#   DATA        — data-plane service (Docker/local)
+#   ADVISORY    — recommendation only (models, routes)
+
+components:
+
+  # ── CORE ORGANS ──────────────────────────────────────────────────
+  - id: arifos
+    class: CORE
+    display_name: arifOS
     repo: ariffazil/arifos
+    source_path: /root/arifOS
+    runtime_path: /opt/arifos/app
     role: governance_kernel
     authority_ceiling: JUDGE_ONLY
     port: 8088
+    mcp_port: 8088
+    unit: arifos.service
+    public_mcp: https://arifos.arif-fazil.com/mcp
     default_branch: main
     runtime: python-3.12
+    live_probe_2026_07_30:
+      status: healthy
+      tools_public: 8
     interfaces:
-      mcp_manifest: arifosmcp/tool_registry.json
       health: /health
+      mcp: /mcp
     owned_domains:
       - constitutional_judgment
       - session_identity
       - floor_enforcement
-      - vault999_seal
+      - vault999_seal_gate
+      - capability_routing
     forbidden_domains:
       - engineering_execution
       - earth_evidence
       - capital_allocation
       - human_diagnosis
-    build:
-      command: uv sync --frozen && pytest tests/ -q --tb=short
-      test: pytest tests/ -q --tb=short
-      lint: ruff check . && ruff format --check .
-      artifact: wheel
+    public_tools:
+      - arif_init
+      - arif_observe
+      - arif_think
+      - arif_route
+      - arif_memory
+      - arif_judge
+      - arif_forge
+      - arif_seal
 
-  - organ: a-forge
+  - id: a-forge
+    class: CORE
+    display_name: A-FORGE
     repo: ariffazil/A-FORGE
+    source_path: /root/A-FORGE
+    runtime_path: /opt/a-forge/app
     role: execution_actuator
     authority_ceiling: EXECUTE_AFTER_SEAL
     port: 7071
     mcp_port: 7072
+    units:
+      - a-forge.service
+      - a-forge-mcp.service
+    public_mcp: https://mcp.arif-fazil.com/mcp
     default_branch: main
     runtime: node-22
-    interfaces:
-      mcp_manifest: contracts/mcp-surface.json
-      health: /health
+    live_probe_2026_07_30:
+      api_status: healthy
+      api_tools: 124
+      mcp_status: healthy
+      mcp_stateless_tools: 52
     owned_domains:
       - engineering_execution
       - build_deploy
       - shell_orchestration
-      - reusable_workflows
+      - rollback
     forbidden_domains:
       - constitutional_judgment
       - self_authorization
       - earth_evidence
       - capital_allocation
-    build:
-      command: npm ci && npm run build
-      test: npm test
-      artifact: dist/
 
-  - organ: aaa
+  - id: aaa
+    class: CORE
+    display_name: AAA
     repo: ariffazil/AAA
+    source_path: /root/AAA
     role: control_plane
     authority_ceiling: DISPLAY_ONLY
     port: 3001
+    unit: aaa-a2a.service
+    public: https://aaa.arif-fazil.com
     default_branch: main
     runtime: node-22
-    interfaces:
-      registry: federation/organs.yaml
-      schemas: federation/*.schema.json
+    live_probe_2026_07_30:
+      status: healthy
     owned_domains:
       - federation_registry
       - a2a_routing
@@ -82,111 +121,353 @@ organs:
       - engineering_execution
       - earth_evidence
       - capital_allocation
-    build:
-      command: npm ci && npm run build
-      test: npm run lint && npm run build
-      artifact: dist/
+    notes:
+      - hosts machine SOT at federation/organs.yaml
+      - companion units: aaa-signing, aaa-preforge (SUPPORT)
 
-  - organ: geox
+  - id: geox
+    class: CORE
+    display_name: GEOX
     repo: ariffazil/geox
+    source_path: /root/GEOX
     role: domain_evidence
+    domain_law: NATURAL_LAW
     authority_ceiling: COMPUTE_ONLY
     port: 8081
+    unit: geox-mcp.service
+    public_mcp: https://geox.arif-fazil.com/mcp
     default_branch: main
     runtime: python-3.12
-    interfaces:
-      mcp_manifest: contracts/mcp-surface.json
-      health: /health
+    live_probe_2026_07_30:
+      status: healthy
+      tools: 33
+      surface_drift_ok: true
     owned_domains:
       - earth
       - subsurface
       - petrophysics
       - seismic
       - basin
+      - mcp_apps_ui
     forbidden_domains:
       - constitutional_judgment
       - capital_allocation
       - deployment_authorization
-    build:
-      command: pip install -e ".[dev]" && PYTHONPATH=src pytest tests/ -q
-      test: PYTHONPATH=src pytest tests/ -q
-      lint: ruff check . && ruff format --check .
-      artifact: wheel
 
-  - organ: wealth
+  - id: wealth
+    class: CORE
+    display_name: WEALTH
     repo: ariffazil/wealth
+    source_path: /root/WEALTH
     role: domain_evidence
+    domain_law: CAPITAL_LAW
     authority_ceiling: COMPUTE_ONLY
     port: 18082
+    unit: wealth-organ.service
+    public_mcp: https://wealth.arif-fazil.com/mcp
     default_branch: main
     runtime: python-3.12
-    interfaces:
-      mcp_manifest: contracts/mcp-surface.json
-      health: /health
+    live_probe_2026_07_30:
+      status: healthy
+      tools_public: 14
+      tools_canonical: 9
     owned_domains:
       - capital_computation
       - financial_modeling
       - market_data
+      - risk_scenarios
     forbidden_domains:
       - constitutional_judgment
       - capital_allocation
       - investment_authority
       - deployment_authorization
-    build:
-      command: pip install -e ".[dev]" && pytest tests/ -q --tb=short
-      test: pytest tests/ -q --tb=short
-      lint: ruff check . && ruff format --check .
-      artifact: wheel
 
-  - organ: well
+  - id: well
+    class: CORE
+    display_name: WELL
     repo: ariffazil/well
+    source_path: /root/WELL
     role: domain_evidence
+    domain_law: SUBSTRATE_LAW
     authority_ceiling: REFLECT_ONLY
     port: 18083
+    unit: well.service
+    public_mcp: https://well.arif-fazil.com/mcp
     default_branch: main
     runtime: python-3.12
-    interfaces:
-      mcp_manifest: contracts/mcp-surface.json
-      health: /health
+    live_probe_2026_07_30:
+      status: degraded
+      tools: 10
     owned_domains:
       - human_readiness
       - vitality_reflection
+      - dignity_guard
+      - machine_reliability_signal
     forbidden_domains:
       - medical_diagnosis
       - medical_prescription
       - constitutional_judgment
       - capital_allocation
-    build:
-      command: pip install -e . && pytest tests/ -q --tb=short
-      test: pytest tests/ -q --tb=short
-      artifact: wheel
+    companions:
+      - well-witness  # SUPPORT observer :18084
 
-  - organ: arif-sites
+  # ── METABOLISM / MEMORY ──────────────────────────────────────────
+  - id: arifflow
+    class: METABOLISM
+    display_name: arifFLOW
+    role: federation_metabolism
+    authority_ceiling: METABOLIZE_ONLY
+    port: 7073
+    unit: arifflow.service
+    runtime: rust
+    live_probe_2026_07_30:
+      status: ok
+    owned_domains:
+      - flow_quotient
+      - receipt_metabolism
+      - attention_checkpointing
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+    notes:
+      - routes/checkpoints/witnesses; never judges; never executes
+
+  - id: vault999
+    class: MEMORY
+    display_name: VAULT999
+    role: immutable_audit_memory
+    authority_ceiling: APPEND_ONLY
+    path_canonical: /root/arifOS/VAULT999/outcomes.jsonl
+    path_symlink: /root/VAULT999
+    owned_domains:
+      - sealed_receipts
+      - hash_chain
+      - replay
+    forbidden_domains:
+      - reinterpretation
+      - silent_rewrite
+
+  # ── ADVISORY PLANES (not organs) ─────────────────────────────────
+  - id: fed
+    class: ADVISORY
+    display_name: FED
+    role: model_route_advisor
+    authority_ceiling: ADVISORY_ONLY
+    port: 7074
+    unit: fed-router.service
+    source_path: /root/AAA/scripts/fed_router.py
+    owned_domains:
+      - model_route_ranking
+      - provider_balance_awareness
+    forbidden_domains:
+      - constitutional_judgment
+      - inference_execution
+    notes:
+      - answers WHERE to call; does not call; not an organ
+
+  - id: flame
+    class: ADVISORY
+    display_name: FLAME
+    role: rm0_free_inference_mesh
+    authority_ceiling: ADVISORY_WORKER
+    port: 18901
+    unit: flame-api.service
+    live_probe_2026_07_30:
+      status: live
+    owned_domains:
+      - free_tier_tool_inference
+    forbidden_domains:
+      - constitutional_judgment
+      - paid_routing_policy
+    notes:
+      - answers cheap tool meaning; never seals
+
+  # ── EDGE ─────────────────────────────────────────────────────────
+  - id: hermes
+    class: EDGE
+    display_name: HERMES
+    repo: ariffazil/HERMES
+    source_path: /root/HERMES
+    role: multimodal_telegram_bridge
+    authority_ceiling: RELAY_ONLY
+    units:
+      - hermes-asi-gateway.service
+    mcp_port: 18086
+    owned_domains:
+      - telegram_relay
+      - multimodal_bridge
+    forbidden_domains:
+      - constitutional_judgment
+      - engineering_execution
+      - sealing
+
+  - id: openclaw
+    class: EDGE
+    display_name: OpenClaw
+    role: edge_agent_telegram
+    unit: openclaw-bot.service
+    authority_ceiling: EDGE_AGENT
+    forbidden_domains:
+      - constitutional_judgment
+      - self_authorization
+
+  - id: opencode
+    class: EDGE
+    display_name: OpenCode
+    role: edge_agent_forge_hands
+    unit: opencode-bot.service
+    authority_ceiling: EDGE_AGENT
+    forbidden_domains:
+      - constitutional_judgment
+      - self_authorization
+
+  - id: arif-sites
+    class: EDGE
+    display_name: arif-sites
     repo: ariffazil/arif-sites
     role: public_projection
     authority_ceiling: DISPLAY_ONLY
-    default_branch: main
-    runtime: static
     owned_domains:
       - public_websites
       - federation_projection
     forbidden_domains:
       - constitutional_truth
       - engineering_execution
-    build:
-      command: npm ci && npm run build
-      test: npm run build
-      artifact: dist/
 
-  - organ: hermes
-    repo: ariffazil/HERMES
-    role: multi_modal_bridge
+  # ── SUPPORT ──────────────────────────────────────────────────────
+  - id: well-witness
+    class: SUPPORT
+    display_name: WELL Witness
+    port: 18084
+    unit: well-witness.service
     authority_ceiling: OBSERVE_ONLY
-    default_branch: main
-    runtime: node-22
-    owned_domains:
-      - multi_modal_routing
-      - creative_surface
-    forbidden_domains:
-      - constitutional_judgment
-      - engineering_execution
+    notes: independent substrate observer for WELL; never adjudicates
+
+  - id: aaa-signing
+    class: SUPPORT
+    display_name: AAA Signing
+    port: 18900
+    unit: aaa-signing.service
+    authority_ceiling: CRYPTO_HELPER
+
+  - id: aaa-preforge
+    class: SUPPORT
+    display_name: AAA Pre-Forge
+    unit: aaa-preforge.service
+    authority_ceiling: GATE_HELPER
+
+  - id: surface-guard
+    class: SUPPORT
+    display_name: Surface Guard
+    unit: surface-guard.service
+    authority_ceiling: OBSERVE_ALERT
+
+  - id: apa-email-bridge
+    class: SUPPORT
+    unit: apa-email-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: apa-calendar-bridge
+    class: SUPPORT
+    unit: apa-calendar-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: apa-github-bridge
+    class: SUPPORT
+    unit: apa-github-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: apa-telegram-bridge
+    class: SUPPORT
+    unit: apa-telegram-bridge.service
+    authority_ceiling: ACTUATE_AFTER_LEASE
+    parent: a-forge
+
+  - id: miniapp-api
+    class: SUPPORT
+    unit: miniapp-api.service
+    authority_ceiling: UI_EDGE
+
+  - id: arifosd
+    class: SUPPORT
+    unit: arifosd.service
+    authority_ceiling: KERNEL_COMPANION
+    parent: arifos
+
+  # ── DATA PLANE ───────────────────────────────────────────────────
+  - id: postgres
+    class: DATA
+    port: 5432
+    role: durable_state
+  - id: redis
+    class: DATA
+    port: 6379
+    role: ephemeral_locks_session
+  - id: qdrant
+    class: DATA
+    port: 6333
+    role: vector_similarity_not_truth
+  - id: falkordb
+    class: DATA
+    port: 6380
+    role: graph
+  - id: graphiti-mcp
+    class: DATA
+    port: 8000
+    role: knowledge_graph_mcp
+  - id: minio
+    class: DATA
+    port: 9000
+    role: object_storage
+  - id: nats
+    class: DATA
+    port: 4222
+    unit: nats-server.service
+    role: message_bus
+  - id: searxng
+    class: DATA
+    port: 8080
+    role: search
+  - id: mcpjam
+    class: DATA
+    port: 6274
+    role: mcp_inspector
+  - id: headscale
+    class: DATA
+    port: 8083
+    unit: headscale.service
+    role: mesh_coordination
+  - id: caddy
+    class: DATA
+    unit: caddy.service
+    role: ingress_membrane
+
+# Explicit non-components (naming traps — do not register as organs)
+non_components:
+  - id: i-arif
+    reason: product_brand_and_optional_sft_corpus_not_runtime
+  - id: apex-as-organ
+    reason: judgment_absorbed_into_arifos_aaa_path
+  - id: eureka-zen-draft
+    reason: future_abi_ledger_design_not_live_topology
+
+authority_chain:
+  - arif_init
+  - arif_observe
+  - arif_think
+  - arif_route
+  - domain_evidence
+  - arif_judge
+  - arif_forge
+  - a_forge_execute
+  - arif_seal
+
+links:
+  human_map: /root/AAA/docs/ORGAN.md
+  contract: /root/FEDERATION_CONTRACT.md
+  agents_doctrine: /root/AGENTS.md
+  mcp_ops: /root/AAA/docs/MCP_FEDERATION_ZEN.md
+  runbook: /root/RUNBOOK.md
