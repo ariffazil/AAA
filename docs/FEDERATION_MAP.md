@@ -1,8 +1,8 @@
-# 🗺️ FEDERATION MAP — arifOS Civilization Stack
+# 🗺️ FEDERATION MAP — Repo layer stack (not live topology)
 
-> **DITEMPA BUKAN DIBERI — Forged, Not Given.**
-> **Canonical reference for all 8 repos. If any README disagrees, this file wins.**
-> **Last ratified: 2026-07-19 | F13 SOVEREIGN**
+> **Topology SOT (ports, organs, ceilings):** [`ORGAN.md`](./ORGAN.md) + [`../federation/organs.yaml`](../federation/organs.yaml)  
+> **This file:** repo-layer civilization stack only. **Does not win** over live health or ORGAN.md.  
+> **Stabilized:** 2026-07-30 · DITEMPA BUKAN DIBERI
 
 ---
 

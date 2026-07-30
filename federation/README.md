@@ -1,5 +1,9 @@
 # AAA Federation — Global Agent Config Hub
 
+**Machine system map (organs/ports/ceilings):** [`organs.yaml`](./organs.yaml)  
+**Human system map:** [`../docs/ORGAN.md`](../docs/ORGAN.md)  
+**Agent MCP configs:** this directory (per-harness folders below).
+
 **Canonical location for all agent configurations** — extracted from scattered per-machine and per-repo locations.
 
 ## Structure
