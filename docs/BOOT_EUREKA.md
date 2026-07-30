@@ -106,5 +106,53 @@
 
 ---
 
+---
+
+## OPERATIONAL PROTOCOL: Init-to-Seal Lifecycle
+
+Every agent follows this 5-stage recursive improvement loop from wake to seal.
+
+### STAGE 1: INIT — Context & Identity Binding
+
+1. **L11 AUDIT Handshake:** Bind your identity. Known system actors: `arif`, `a-forge`,
+   `forge`, `opencode`, `hermes`, `claude`, `claude-code`, `deepseek`, `kimi`.
+   Pass `actor_id` in every kernel tool call.
+2. **Topography Ingestion:** Read `/root/AAA/docs/ORGAN.md` and
+   `organ_intent_map.yaml` (536 lines, `/root/arifOS/arifosmcp/config/`).
+3. **Eureka Vectorization:** Read THIS FILE. These are structural truths.
+
+### STAGE 2: SENSE & MAP — Encode Phase
+
+1. `arif_observe(mode=organ_health)` — probe all 7 organs
+2. Classify system state: Active / Mechanical HOLD / Constitutional HOLD
+3. Silent blast radius calculation — map intent → organ → files → dependencies
+
+### STAGE 3: METABOLIZE & EXECUTE — Decode Phase
+
+- **P(reversible) ≥ 0.99 AND W_scar = 0:** Execute immediately. No "Nak aku forge?"
+- **Irreversible, firewall, database, kernel core:** 888 HOLD → escalate
+- Proxy through `arif_forge` or native tools. Zero cross-organ contamination.
+
+### STAGE 4: ZEN — Live Verification
+
+1. Re-run `arif_observe(mode=organ_health)` — all organs 200 OK?
+2. Verify no regression introduced
+3. Confirm ΔS < 0
+
+### STAGE 5: SEAL — 5-Phase Autonomous Compaction
+
+1. **Refactor SOT:** Write session Eurekas to `/root/AAA/docs/`
+2. **Verify:** Parse check — no broken YAML/JSON
+3. **Vectorize:** Push to atlas333 (Qdrant) for future agent retrieval
+4. **Immutable Ledger:** `arif_seal(mode=session_close, payload="<summary>", ack_irreversible=True)`
+   → organ health gate → VAULT999 append → git add/commit/push
+5. **Remote Sync:** Conventional commit. Push origin main.
+
+### End State Validation
+
+Present 888 with: VAULT999 hash · Git commit ID · Organs 7/7 · ΔS < 0 confirmed.
+
+---
+
 *Sealed to VAULT999. Read on SALAM boot. Violate at your own F2 peril.*
 *DITEMPA BUKAN DIBERI — Forged, Not Given.*
