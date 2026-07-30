@@ -1,0 +1,389 @@
+{
+  "mission_interface_version": "1.0.0",
+  "ratified": "2026-07-30",
+  "doctrine": "You should not use the tools. The agents should.",
+  "missions": {
+    "INVESTIGATE": {
+      "goal": "Gather and test reality",
+      "trigger_words": [
+        "find",
+        "scan",
+        "search",
+        "fetch",
+        "probe",
+        "observe",
+        "discover",
+        "what is",
+        "measure",
+        "check",
+        "ingest",
+        "load"
+      ],
+      "organs_used": [
+        "GEOX",
+        "WEALTH",
+        "WELL",
+        "arifOS"
+      ],
+      "tool_count_estimate": 35,
+      "tools_by_organ": {
+        "arifOS": [
+          "arif_observe",
+          "arif_memory(recall)"
+        ],
+        "GEOX": [
+          "geox_basin",
+          "geox_well_ingest",
+          "geox_well_view",
+          "geox_well_qc",
+          "geox_seismic_compute(synthetic,well_tie)",
+          "geox_seismic_ingest",
+          "geox_stac_discover",
+          "geox_map_*",
+          "geox_deep_time_state",
+          "geox_h3_spatial_index",
+          "geox_surface_status",
+          "geox_lancedb_embed_store"
+        ],
+        "WEALTH": [
+          "capital_market",
+          "capital_health",
+          "capital_registry"
+        ],
+        "WELL": [
+          "well_classify_substrate",
+          "well_machine_diagnose",
+          "well_trace_lineage",
+          "well_registry_status"
+        ],
+        "A-FORGE": [
+          "forge_search",
+          "forge_fetch",
+          "forge_fetch_url",
+          "forge_fetch_json",
+          "forge_probe",
+          "forge_filesystem_read",
+          "forge_filesystem_stat",
+          "forge_filesystem_search",
+          "forge_journalctl",
+          "forge_netdata_metrics",
+          "forge_browser_navigate",
+          "forge_browser_screenshot",
+          "forge_browser_extract_text",
+          "forge_document_ingest"
+        ]
+      }
+    },
+    "INTERPRET": {
+      "goal": "Build competing explanations",
+      "trigger_words": [
+        "why",
+        "explain",
+        "interpret",
+        "model",
+        "simulate",
+        "hypothesize",
+        "what caused",
+        "analyze",
+        "reason",
+        "correlate",
+        "synthesize"
+      ],
+      "organs_used": [
+        "GEOX",
+        "WEALTH",
+        "arifOS"
+      ],
+      "tool_count_estimate": 22,
+      "tools_by_organ": {
+        "arifOS": [
+          "arif_think(reason,critique,redteam,simulate)"
+        ],
+        "GEOX": [
+          "geox_contradiction_scan",
+          "geox_falsify",
+          "geox_petrophysics",
+          "geox_geological_model_generate",
+          "geox_sequence",
+          "geox_dde_reason",
+          "geox_thermal_maturity_history",
+          "geox_basin(backstrip,thermal)",
+          "geox_geomechanics",
+          "geox_subsurface_model",
+          "geox_seismic_interpret",
+          "geox_gempy_implicit_3d",
+          "geox_visual_understand",
+          "geox_lem_predict",
+          "geox_seismic_compute(inversion,attribute,anomalous_contrast)"
+        ],
+        "WEALTH": [
+          "capital_diagnose",
+          "capital_entropy",
+          "capital_primitive(mc,kelly)",
+          "wealth_cascade_model",
+          "wealth_external_exploitation_detect"
+        ],
+        "WELL": [
+          "well_assess_homeostasis"
+        ]
+      }
+    },
+    "DECIDE": {
+      "goal": "Compare consequences and uncertainty",
+      "trigger_words": [
+        "should we",
+        "decide",
+        "evaluate",
+        "assess risk",
+        "worth",
+        "viable",
+        "drill",
+        "invest",
+        "allocate",
+        "approve",
+        "reject",
+        "recommend"
+      ],
+      "organs_used": [
+        "GEOX",
+        "WEALTH",
+        "WELL",
+        "arifOS"
+      ],
+      "tool_count_estimate": 14,
+      "tools_by_organ": {
+        "arifOS": [
+          "arif_judge",
+          "arif_think(plan,plan_review,axioms)"
+        ],
+        "GEOX": [
+          "geox_prospect(evaluate)",
+          "geox_petrophysics(stoip_feed)",
+          "geox_falsify"
+        ],
+        "WEALTH": [
+          "capital_primitive(emv,npv,markowitz,kelly)",
+          "capital_wisdom",
+          "capital_entropy",
+          "wealth_institutional_stress_index",
+          "wealth_governance_capacity",
+          "wealth_bid_surface",
+          "wealth_judge_handoff"
+        ],
+        "WELL": [
+          "well_validate_vitality",
+          "well_assess_homeostasis(fatigue,decision_class)"
+        ]
+      }
+    },
+    "BUILD": {
+      "goal": "Prepare and execute approved changes",
+      "trigger_words": [
+        "build",
+        "deploy",
+        "execute",
+        "run",
+        "commit",
+        "push",
+        "install",
+        "create",
+        "write",
+        "mutate",
+        "forge"
+      ],
+      "organs_used": [
+        "A-FORGE",
+        "arifOS"
+      ],
+      "tool_count_estimate": 21,
+      "tools_by_organ": {
+        "arifOS": [
+          "arif_forge",
+          "arif_seal"
+        ],
+        "A-FORGE": [
+          "forge_execute",
+          "forge_execute_sealed",
+          "forge_shell",
+          "forge_stage",
+          "forge_synthesize",
+          "forge_git_commit",
+          "forge_filesystem_write",
+          "forge_filesystem_patch",
+          "forge_filesystem_move",
+          "forge_filesystem_delete",
+          "forge_docker",
+          "forge_sandbox_run",
+          "forge_sandbox_pause",
+          "forge_sandbox_resume",
+          "forge_canonize",
+          "forge_register",
+          "forge_skill",
+          "forge_deploy(pipeline)",
+          "forge_vault(write,receipt)"
+        ]
+      }
+    },
+    "MONITOR": {
+      "goal": "Detect change, degradation or danger",
+      "trigger_words": [
+        "monitor",
+        "watch",
+        "alert",
+        "status",
+        "health",
+        "drift",
+        "changed",
+        "degraded",
+        "down",
+        "warning",
+        "scan security"
+      ],
+      "organs_used": [
+        "arifOS",
+        "A-FORGE",
+        "WELL",
+        "WEALTH"
+      ],
+      "tool_count_estimate": 24,
+      "tools_by_organ": {
+        "arifOS": [
+          "arif_observe(vitals,entropy_dS)"
+        ],
+        "A-FORGE": [
+          "forge_probe",
+          "forge_health_check",
+          "forge_surface_audit",
+          "forge_security_drift_scan",
+          "forge_surface_guard",
+          "forge_entropy_sweep",
+          "forge_registry_status",
+          "forge_fingerprint_check",
+          "forge_isomorphism_check",
+          "forge_shell_status",
+          "forge_shell_alert_history",
+          "forge_wm_gaps",
+          "forge_scan",
+          "forge_vps_ports",
+          "forge_vps_services",
+          "forge_vps_cron"
+        ],
+        "WELL": [
+          "well_machine_diagnose",
+          "well_machine_recommend",
+          "well_assess_reliability",
+          "well_check_repair",
+          "well_registry_status"
+        ],
+        "WEALTH": [
+          "capital_health",
+          "capital_entropy"
+        ]
+      }
+    },
+    "REMEMBER": {
+      "goal": "Retrieve and preserve governed knowledge",
+      "trigger_words": [
+        "remember",
+        "recall",
+        "what do we know",
+        "history",
+        "memory",
+        "preserve",
+        "seal history",
+        "ledger",
+        "archive"
+      ],
+      "organs_used": [
+        "arifOS",
+        "A-FORGE"
+      ],
+      "tool_count_estimate": 9,
+      "tools_by_organ": {
+        "arifOS": [
+          "arif_memory(recall,inspect,attest,remember,promote,revise,forget,audit)",
+          "arif_seal(verify,ledger,changelog,audit,session_close)"
+        ],
+        "A-FORGE": [
+          "forge_memory",
+          "forge_vault(read,list)",
+          "forge_skillstore_read",
+          "forge_shell_ledger",
+          "forge_scar(list)",
+          "forge_cool_drift",
+          "forge_cool_pattern"
+        ]
+      }
+    }
+  },
+  "tool_survival_audit": {
+    "rules": {
+      "KEEP": "Used in tested mission workflow",
+      "MERGE_AS_MODE": "Useful but overlaps with sibling \u2014 absorb into parent",
+      "HIDE": "Internal computational function \u2014 reclassify INTERNAL",
+      "SDK_ONLY": "Compatibility alias \u2014 never count publicly",
+      "REMOVE": "No real workflow, no evidence of use"
+    },
+    "total_tools_audited": 189,
+    "recommendations": {
+      "geox_basin_backstrip": "MERGE_AS_MODE \u2192 geox_basin(mode=backstrip)",
+      "geox_thermal_maturity_history": "MERGE_AS_MODE \u2192 geox_basin(mode=thermal)",
+      "geox_lem_predict": "MERGE_AS_MODE \u2192 geox_petrophysics(mode=lem)",
+      "geox_map_layers_list": "MERGE_AS_MODE \u2192 geox_map(mode=layers)",
+      "geox_map_render_preview": "MERGE_AS_MODE \u2192 geox_map(mode=render)",
+      "geox_map_scene_plan": "MERGE_AS_MODE \u2192 geox_map(mode=plan)",
+      "geox_seismic_ingest": "MERGE_AS_MODE \u2192 geox_seismic_compute(mode=ingest)",
+      "geox_seismic_interpret": "MERGE_AS_MODE \u2192 geox_seismic_compute(mode=interpret)",
+      "geox_visual_understand": "MERGE_AS_MODE \u2192 geox_seismic_compute(mode=visual)",
+      "geox_h3_spatial_index": "MERGE_AS_MODE \u2192 geox_basin(mode=spatial)",
+      "geox_lancedb_embed_store": "MERGE_AS_MODE \u2192 geox_basin(mode=vector_search)",
+      "geox_gempy_implicit_3d": "MERGE_AS_MODE \u2192 geox_geological_model_generate(mode=3d)",
+      "geox_well_view": "MERGE_AS_MODE \u2192 geox_well_desk(mode=view)",
+      "geox_well_qc": "MERGE_AS_MODE \u2192 geox_well_ingest(mode=qc)",
+      "geox_claim": "HIDE \u2014 claim lifecycle is internal to contradiction/falsification engine",
+      "geox_evidence": "HIDE \u2014 evidence management is internal to INVESTIGATE chain",
+      "geox_workspace": "HIDE \u2014 internal session state",
+      "geox_surface_status": "KEEP \u2014 needed for MONITOR",
+      "wealth_institutional_stress_index": "KEEP",
+      "wealth_cascade_model": "KEEP",
+      "wealth_governance_capacity": "KEEP",
+      "wealth_external_exploitation_detect": "KEEP",
+      "wealth_bid_surface": "KEEP",
+      "wealth_judge_handoff": "KEEP \u2014 but MUST explicitly say 'prepares evidence envelope for arifOS, WEALTH does not judge'",
+      "capital_primitive": "KEEP",
+      "capital_health": "KEEP",
+      "capital_diagnose": "KEEP",
+      "capital_entropy": "KEEP",
+      "capital_market": "KEEP",
+      "capital_wisdom": "KEEP",
+      "capital_registry": "KEEP",
+      "capital_ledger": "KEEP",
+      "forge_approve": "REMOVE \u2014 refuses self-authorization, never callable",
+      "arif_canary": "SDK_ONLY \u2192 arif_init",
+      "arif_triage": "DEPRECATED \u2192 arif_init",
+      "arif_conformance_report": "HIDE \u2014 DEV_ONLY diagnostic",
+      "arif_compose": "MERGE_AS_MODE \u2192 arif_forge(mode=compose)",
+      "arif_critique": "MERGE_AS_MODE \u2192 arif_think(mode=critique)",
+      "arif_bridge_connect": "MERGE_AS_MODE \u2192 arif_route(mode=bridge) \u2014 IMPLEMENT ME",
+      "arif_fetch": "MERGE_AS_MODE \u2192 arif_observe(mode=fetch)"
+    },
+    "projected_tool_counts": {
+      "KEEP": 120,
+      "MERGE_AS_MODE": 42,
+      "HIDE": 15,
+      "SDK_ONLY": 8,
+      "REMOVE": 4
+    },
+    "projected_public_surface_after_audit": 120
+  },
+  "metrics_contract": {
+    "target_zero": "Times Arif needed to know which tool was used",
+    "primary_metrics": [
+      "missions_completed_without_manual_routing",
+      "hours_of_human_work_removed",
+      "contradictions_caught",
+      "uncertainty_reduced_per_mission",
+      "actions_correctly_held"
+    ]
+  }
+}

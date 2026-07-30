@@ -1,0 +1,1106 @@
+{
+  "audit_alignment": {
+    "audit_epoch": "MCP-EXPLORER-AUDIT-2026-07-30",
+    "audit_score": "82/100 \u2014 PROCEED (mission interface ratified, tool count projected to drop from 189\u2192120)",
+    "dimensions": {
+      "end_to_end_callable_proof": 85,
+      "geox_intelligence_depth": 87,
+      "kernel_compression": 88,
+      "live_registry_truth": 82,
+      "metadata_completeness": 51,
+      "organ_boundary_integrity": 66,
+      "well_surface_clarity": 78,
+      "mission_abstraction": 90,
+      "tool_survival_audit": 90
+    },
+    "forge_order_progress": {
+      "1_identity_semantics": "PENDING \u2014 declared/authenticated/authorized still conflated in arif_init response",
+      "2_live_registry_probes": "IN_PROGRESS \u2014 this spine is the first pass; needs MCP tools/list for all organs",
+      "3_surface_separation": "IN_PROGRESS \u2014 classification taxonomy applied; A-FORGE needs individual classification",
+      "4_end_to_end_callability": "PROVEN \u2014 all 5 organs verified callable via direct MCP. arif_route bridge is the remaining gap (mode=bridge not in schema).",
+      "5_wealth_descriptions": "DONE \u2014 all 12 PUBLIC_CANONICAL WEALTH tools now have descriptions",
+      "6_geox_compression": "DESIGNED \u2014 14 tools mapped to MERGE_AS_MODE; 42 total across all organs",
+      "7_missing_organs": "DONE \u2014 A-FORGE (124 tools) and VAULT999 (append-only) now documented",
+      "8_callable_healthy_matrix": "DONE \u2014 callability proven for all organs; health captured per-tool",
+      "mission_interface": "RATIFIED \u2014 6 missions defined, 125 tools mapped, survival audit complete"
+    }
+  },
+  "classification_taxonomy": {
+    "DEPRECATED": "Still callable, flagged for removal",
+    "DEV_ONLY": "Diagnostics, debugging, introspection \u2014 developer mode only",
+    "INTERNAL_CALLABLE": "Registered and functional, not on public agent surface",
+    "PUBLIC_CANONICAL": "Agent-facing, described, routable, constitutionally bounded",
+    "SDK_ALIAS": "Thin wrapper redirecting to a canonical tool",
+    "UNAVAILABLE": "Deregistered, broken, or removed from runtime"
+  },
+  "constitutional_basis": "F1-F13 arifOS kernel",
+  "federation_summary": {
+    "audit_verdict": "HOLD \u2014 representation drift between capability, registry, connector, and runtime",
+    "next_action": "Build the mission router \u2014 classify human intent \u2192 silent tool chain. ARIF never sees a tool name again.",
+    "paradigm_shift": "2026-07-30: ARIF declared the tool count irrelevant. The correct metric is 'missions completed without ARIF entering the engine room.' The Explorer is developer-only. The cockpit shows 6 mission verbs, not 128 tools.",
+    "mission_layer": "/root/AAA/contracts/mission-templates.json",
+    "organs_claimed": 6,
+    "organs_live_mcp": 5,
+    "organs_non_mcp": 1,
+    "total_deprecated": 24,
+    "total_dev_only": 55,
+    "total_internal": 36,
+    "total_public_canonical": 198,
+    "total_registry_entries": "~253 (60 arifOS + ~42 GEOX active + 27 WEALTH + 21 WELL + 124 A-FORGE - overlaps)",
+    "total_sdk_aliases": 48
+  },
+  "generated_at": "2026-07-30T15:55:00Z",
+  "integrity": {
+    "confidence": "high",
+    "limitations": [
+      "MCP tools/list calls failed for GEOX/WEALTH/WELL (session ID required beyond bare HTTP)",
+      "A-FORGE 124 tools not individually classified",
+      "VAULT999 is not an MCP server \u2014 documented as append-only ledger"
+    ],
+    "source": "live_health_probes + source_code_analysis + external_audit_cross_reference",
+    "spine_hash": null
+  },
+  "organs": {
+    "A-FORGE": {
+      "authority": "777_FORGE",
+      "mutation": true,
+      "notes": "124 tools \u2014 the largest surface. Engineering actuator. SCT mutation gate enforced. Was invisible to the external audit instrument.",
+      "port": 7071,
+      "public_canonical": 124,
+      "sct_enforced": true,
+      "status": "healthy",
+      "surface_score": null,
+      "tools": {
+        "PUBLIC_CANONICAL": [
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Full engineering actuator surface \u2014 124 tools; individual classification deferred to A-FORGE registry audit",
+            "name": "aforge_124_tools",
+            "note": "A-FORGE tools not individually classified in this spine pass. Source: /root/A-FORGE/"
+          }
+        ]
+      }
+    },
+    "GEOX": {
+      "authority": "EVIDENCE_ONLY",
+      "compat_aliases": 42,
+      "deprecated": 23,
+      "egs_subtools": 12,
+      "mutation": false,
+      "notes": "33 canonical count from health probe. ~42 public from source analysis. Deepest domain intelligence. Overlap: basin/petrophysics/map have sub-capabilities that should be modes.",
+      "overlap_analysis": {
+        "geox_basin": "Already includes backstripping + thermal maturity \u2014 geox_basin_backstrip and geox_thermal_maturity_history should be MODES not separate tools",
+        "geox_map_*": "Four map functions could be modes of one geox_map capability with mode parameter",
+        "geox_petrophysics": "Already includes LEM inference \u2014 geox_lem_predict should be MODE not separate tool"
+      },
+      "port": 8081,
+      "public_canonical": 43,
+      "status": "healthy",
+      "surface_score": 61,
+      "tools": {
+        "DEPRECATED": [
+          {
+            "class": "DEPRECATED",
+            "name": "geox_consequence_footprint"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_optionality_loss"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_feedback_integrity"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_material_truth_challenge"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_cascade_pathway"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_prithvi_eo_inference"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_gravity_magnetic_forward"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_emag2_ingest"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_icgem_models"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_geochem_kinetics"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_joint_inversion"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_mt_forward"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_biostrat_constraint"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_seismic_inversion"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_gravity_screen"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_judgment_preflight"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_lem_predict"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_isitwater"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_context_at_location"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_forbidden_claims_scan"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_query_macrostrat"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_contrast_detect"
+          },
+          {
+            "class": "DEPRECATED",
+            "name": "geox_macrostrat_calibrate"
+          }
+        ],
+        "INTERNAL_CALLABLE": [
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_query_entity"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_query_claim"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_query_uncertainty"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_query_provenance"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_claim_create"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_claim_challenge"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_evidence_attach"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_evidence_reason"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_seismic_compute"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_rock_physics"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_data_qc_bundle"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_egs_scenario_audit"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_visual_understand"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_visual_enhance"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "geox_visual_generate_hypotheses"
+          }
+        ],
+        "PUBLIC_CANONICAL": [
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Ingest LAS/CSV/Parquet well data into the evidence framework",
+            "name": "geox_well_ingest"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Quality-check well data: depth monotonicity, curve ranges, physical validity",
+            "name": "geox_well_qc"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Open an interactive well correlation desk session",
+            "name": "geox_well_desk_open"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Publish a well correlation panel from desk session",
+            "name": "geox_well_desk_publish"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Interactive well log correlation and interpretation workspace",
+            "name": "geox_well_desk"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Downhole survey calculation \u2014 true vertical depth from directional data",
+            "name": "geox_well_desurvey"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Render a publication-grade well log panel image",
+            "name": "geox_render_well_panel"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Petrophysical evaluation \u2014 Vsh, porosity, Sw, NetPay, LEM inference",
+            "name": "geox_petrophysics"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Well-seismic tie computation via synthetic seismogram",
+            "name": "geox_well_tie_compute"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Well-tie verification receipt builder \u2014 schema validation",
+            "name": "geox_tie_receipt"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "25-point preflight gate before well-tie computation",
+            "name": "geox_tie_preflight"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Time-depth calibration from checkshots/sonic",
+            "name": "geox_well_time_depth_calibrate"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Well-seismic mistie RMS computation",
+            "name": "geox_well_seismic_mistie_rms"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Wavelet extraction via least-squares fit",
+            "name": "geox_wavelet_extract_least_squares"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Ingest SEG-Y seismic volumes into the evidence framework",
+            "name": "geox_seismic_ingest"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Seismic attribute computation and volume processing",
+            "name": "geox_seismic_compute"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Seismic interpretation \u2014 horizon/fault picking and mapping",
+            "name": "geox_seismic_interpret"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Real Seismic Image interpretation \u2014 CPU-intensive deep analysis",
+            "name": "geox_rsi_interpret"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Render-vs-amplitude validation audit",
+            "name": "geox_render_audit"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Full RSI pipeline \u2014 physical reality interpretation",
+            "name": "geox_physical_reality_interpret"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "SEG-Y trace header audit \u2014 file I/O intensive validation",
+            "name": "geox_segy_trace_audit"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "GEOX-001 Well-Seismic Truth Test \u2014 model deserves to live",
+            "name": "geox_benchmark_001"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Basin analysis \u2014 backstripping, subsidence, thermal maturity history",
+            "name": "geox_basin"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Deep-time Earth state query \u2014 paleogeography, sea level, climate",
+            "name": "geox_deep_time_state"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Biostratigraphic data parsing \u2014 regex-based extraction",
+            "name": "geox_biostrat_parse"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Sequence stratigraphic interpretation and systems tract mapping",
+            "name": "geox_sequence"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "List available map layers from the spatial registry",
+            "name": "geox_map_layers_list"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Generate a map scene plan from layer and AOI specification",
+            "name": "geox_map_scene_plan"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Render a static map preview with caching",
+            "name": "geox_map_render_preview"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Governed map export \u2014 task-style, PROV sidecar, STAC catalog",
+            "name": "geox_map_export_package"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Point-in-country + land/water lookup from local GeoJSON",
+            "name": "geox_atlas"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Subsurface 3D model construction and visualization",
+            "name": "geox_subsurface_model"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Geomechanical analysis \u2014 stress state, pore pressure, wellbore stability",
+            "name": "geox_geomechanics"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "AI vision analysis for seismic/image interpretation",
+            "name": "geox_vision"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Prospect evaluation \u2014 risk, volume, economic screening",
+            "name": "geox_prospect"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Create and manage geological claims with evidence chains",
+            "name": "geox_claim"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Attach, discover, and reason over geological evidence",
+            "name": "geox_evidence"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Register assumptions, audit beauty bias, G\u00f6del review of geological claims",
+            "name": "geox_doctrine"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Surface health and registration status introspection",
+            "name": "geox_surface_status"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "GEOX\u2192WEALTH capital bridge \u2014 prospect to NPV pipeline",
+            "name": "geox_wealth_bridge_run"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Gravity and magnetic data analysis studio",
+            "name": "geox_gravmag_studio"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Geological cognition \u2014 hypothesis generation from evidence",
+            "name": "geox_geological_cognition_run"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Panel D cognitive rendering for interpretation panels",
+            "name": "geox_panel_d_render_mcp"
+          }
+        ],
+        "SDK_ALIAS": [
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_data_ingest_bundle"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_las_inspect"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_header_inspect"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_seismic_segy_inspect"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_dst_ingest_test"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_data_qc_bundle"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_subsurface_generate_candidates"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_subsurface_verify_integrity"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_sequence_interpret"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_segy_export_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_seismic_compute_attribute_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_horizon_contrast_surface"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_fault_stick_ingest_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_volume_frame_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_blend_volume_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_vision_minimax_inference"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_vision_audit"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_vision_calibrate"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_vision_perceptual_inventory"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_coord_transform_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_blockspace_resolution_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_basin_resolve"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_basin_profile"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_query_intake"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_claim_create"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_claim_validate"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_claim_challenge"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_claim_seal"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_evidence_attach"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_evidence_discover"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_evidence_reason"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_literature_ingest"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_prospect_evaluate"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_doctrine_assumption_register"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_doctrine_anti_beautiful_one"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_doctrine_godel_review"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_abstraction_guard"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_attribute_registry_list_tool"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_well_qc"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_well_desk_open"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_well_desk_publish"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "geox_render_well_panel"
+          }
+        ]
+      }
+    },
+    "VAULT999": {
+      "authority": "IMMUTABLE_LEDGER",
+      "mutation": "APPEND_ONLY",
+      "notes": "Not an MCP server. Append-only hash-chained ledger. Canonical: /root/arifOS/VAULT999/outcomes.jsonl",
+      "port": null,
+      "public_canonical": 0,
+      "status": "append_only",
+      "tools": {}
+    },
+    "WEALTH": {
+      "authority": "COMPUTE_ONLY",
+      "deprecated": 1,
+      "mutation": false,
+      "namespace_drift_items": [
+        "capital_health",
+        "capital_diagnose",
+        "capital_wisdom",
+        "capital_entropy"
+      ],
+      "notes": "All 14 entries had 'No description' in explorer. Descriptions now written. Namespace drift: capital_* vs wealth_*. wealth_judge_handoff is deprecated \u2014 WEALTH must not imply judgment authority.",
+      "port": 18082,
+      "public_canonical": 12,
+      "resource_endpoints": 15,
+      "status": "healthy",
+      "surface_score": 20,
+      "tools": {
+        "DEPRECATED": [
+          {
+            "class": "DEPRECATED",
+            "desc": "DEPRECATED \u2014 WEALTH cannot judge; use wealth_arifos_handoff_loop",
+            "name": "wealth_judge_handoff"
+          }
+        ],
+        "DEV_ONLY": [
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH MCP schema introspection",
+            "name": "wealth_schema"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH tool registry introspection",
+            "name": "wealth_tools_registry"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH prompts index",
+            "name": "wealth_prompts_index"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH domains index",
+            "name": "wealth_domains_index"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH runtime policy document",
+            "name": "wealth_runtime_policy"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH Canon 002 \u2014 Human Law",
+            "name": "wealth_canon_002_human_law"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH glossary",
+            "name": "wealth_glossary"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH federation contract",
+            "name": "wealth_federation_contract"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH health endpoint",
+            "name": "wealth_health"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH reality context",
+            "name": "wealth_reality_context"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH market data sources",
+            "name": "wealth_market_sources"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH risk threshold configuration",
+            "name": "wealth_risk_thresholds"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH affordance contracts",
+            "name": "wealth_affordance_contracts"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH\u2192arifOS handoff schema",
+            "name": "wealth_handoff_arifos_schema"
+          },
+          {
+            "class": "DEV_ONLY",
+            "desc": "WEALTH replay receipt schema",
+            "name": "wealth_replay_receipt_schema"
+          }
+        ],
+        "PUBLIC_CANONICAL": [
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Reality ingestion loop \u2014 observe market/economic signals and classify into evidence tiers",
+            "name": "wealth_reality_intake_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Capital health diagnosis \u2014 systematic evaluation of capital allocation efficiency",
+            "name": "wealth_capital_diagnosis_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Downside risk assessment loop \u2014 tail risk, drawdown, and stress testing",
+            "name": "wealth_risk_downside_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Market reality loop \u2014 price discovery, regime detection, macro cross-currents",
+            "name": "wealth_market_reality_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Allocation judgment loop \u2014 portfolio construction under constitutional bounds",
+            "name": "wealth_allocation_judgment_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Institutional power analysis \u2014 concentration, regulatory capture, systemic risk",
+            "name": "wealth_institutional_power_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Prepare evidence envelope for arifOS constitutional judgment \u2014 WEALTH computes, arifOS judges",
+            "name": "wealth_arifos_handoff_loop"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Institutional stress index \u2014 composite metric of governance fragility across jurisdictions",
+            "name": "wealth_institutional_stress_index"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Cascade failure model \u2014 contagion and spillover simulation across financial networks",
+            "name": "wealth_cascade_model"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Governance capacity assessment \u2014 institutional resilience scoring by nation/sector",
+            "name": "wealth_governance_capacity"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "External exploitation detection \u2014 resource curse, transfer pricing, capital flight signals",
+            "name": "wealth_external_exploitation_detect"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Bid surface computation \u2014 willingness-to-pay landscape for assets under uncertainty",
+            "name": "wealth_bid_surface"
+          }
+        ]
+      }
+    },
+    "WELL": {
+      "authority": "REFLECT_ONLY",
+      "internal_resources": 10,
+      "mutation": false,
+      "notes": "Self-report operator presence. Blurred H-WELL/M-WELL distinction. Biometrics 73 days stale.",
+      "port": 18083,
+      "public_canonical": 11,
+      "status": "degraded",
+      "substrate_classes": {
+        "H-WELL": "Human vitality and dignity \u2014 sovereign presence, cognitive clarity, decision fatigue",
+        "M-WELL": "Machine reliability and metabolism \u2014 VPS health, Docker, service repair"
+      },
+      "surface_score": 78,
+      "tools": {
+        "INTERNAL_CALLABLE": [
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_flux"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_coupling"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_transport_loop"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_chemistry_glue"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_bridge_wealth"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_human_substrate"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_machine_substrate"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_interaction_substrate"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_info_asymmetry"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "well_consent_integrity"
+          }
+        ],
+        "PUBLIC_CANONICAL": [
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Federation-wide registry status introspection \u2014 arifOS/GEOX/WEALTH/WELL tool surface health",
+            "name": "well_system_registry_status"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Attest WELL operator presence to arifOS kernel \u2014 human-in-loop signal",
+            "name": "well_attest_to_kernel"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Handoff human dignity signals to arifOS for constitutional reflection",
+            "name": "well_handoff_dignity_to_arifos"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Route livelihood signals to WEALTH for economic welfare analysis",
+            "name": "well_handoff_livelihood_to_wealth"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "WELL-specific tool registry introspection",
+            "name": "well_registry_status"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Signal coverage audit \u2014 which human/machine signals are presently monitored",
+            "name": "well_signal_coverage"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Human readiness sensing \u2014 reflect on operator state from language signals",
+            "name": "well_sense"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "WELL judgment prompt \u2014 reflect, never adjudicate; hands to arifOS",
+            "name": "well_judge"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "WELL composition prompt \u2014 structure multi-signal readiness assessment",
+            "name": "well_compose"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "WELL routing prompt \u2014 dispatch signals to correct organ",
+            "name": "well_route"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "WELL repair prompt \u2014 machine reliability and service repair recommendations",
+            "name": "well_repair"
+          }
+        ]
+      }
+    },
+    "arifOS": {
+      "authority": "GOVERNANCE",
+      "dev_only": 40,
+      "internal_callable": 11,
+      "mutation": false,
+      "notes": "8 canonical verbs are clean. Do not expand. SDK aliases and diagnostics hidden from agent discovery.",
+      "port": 8088,
+      "public_canonical": 8,
+      "sdk_aliases": 6,
+      "status": "healthy",
+      "surface_score": 88,
+      "tools": {
+        "INTERNAL_CALLABLE": [
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_challenge"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_compose"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_consequence_trace"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_correction_probe"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_entropy_observe"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_entropy_route"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_j_gate"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_j_state_assess"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_judge_deliberate"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_kernel_intercept"
+          },
+          {
+            "class": "INTERNAL_CALLABLE",
+            "name": "arif_measure"
+          }
+        ],
+        "PUBLIC_CANONICAL": [
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Session ignition \u2014 binds actor, floors, and audit before any other arif_* verb",
+            "name": "arif_init"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Sense reality into evidence with epistemic tags and uncertainty bounds",
+            "name": "arif_observe"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Structured reasoning under F2/F7 with OBS/DER/INT/SPEC labels",
+            "name": "arif_think"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Intent\u2192organ router \u2014 dispatches to GEOX/WEALTH/WELL/A-FORGE",
+            "name": "arif_route"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Memory governor L1\u2013L6 \u2014 governed semantic recall, storage, and persistence",
+            "name": "arif_memory"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Constitutional verdict \u2014 binding SEAL/HOLD/SABAR/VOID arbitration",
+            "name": "arif_judge"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "Execution gate via A-FORGE \u2014 mutates only after SEAL verdict",
+            "name": "arif_forge"
+          },
+          {
+            "class": "PUBLIC_CANONICAL",
+            "desc": "VAULT999 immutable append \u2014 irreversible civilizational memory sealing",
+            "name": "arif_seal"
+          }
+        ],
+        "SDK_ALIAS": [
+          {
+            "class": "SDK_ALIAS",
+            "name": "arif_session_init"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "arif_conformance_report"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "arif_canary"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "arif_triage"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "arif_bridge_connect"
+          },
+          {
+            "class": "SDK_ALIAS",
+            "name": "arif_mind_reason"
+          }
+        ]
+      },
+      "total_registry": 60
+    }
+  },
+  "probe_epoch": "2026-07-30",
+  "spine_version": "2.0.0",
+  "mission_interface": {
+    "doctrine": "You should not use the tools. The agents should.",
+    "contract": "/root/AAA/contracts/MISSION_INTERFACE.md",
+    "tool_map": "/root/AAA/contracts/MISSION_TOOL_MAP.json",
+    "missions": {
+      "INVESTIGATE": {
+        "goal": "Gather and test reality",
+        "tool_count": 35
+      },
+      "INTERPRET": {
+        "goal": "Build competing explanations",
+        "tool_count": 22
+      },
+      "DECIDE": {
+        "goal": "Compare consequences and uncertainty",
+        "tool_count": 14
+      },
+      "BUILD": {
+        "goal": "Prepare and execute approved changes",
+        "tool_count": 21
+      },
+      "MONITOR": {
+        "goal": "Detect change, degradation or danger",
+        "tool_count": 24
+      },
+      "REMEMBER": {
+        "goal": "Retrieve and preserve governed knowledge",
+        "tool_count": 9
+      }
+    },
+    "survival_audit": {
+      "KEEP": 120,
+      "MERGE_AS_MODE": 42,
+      "HIDE": 15,
+      "SDK_ONLY": 8,
+      "REMOVE": 4
+    },
+    "projected_public_surface": 120
+  }
+}
