@@ -371,3 +371,39 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 3. id f218bf6a
 
 ---
+
+## SESSION EUREKA — SE-20260730-780584da
+
+> **Sealed:** 2026-07-30T06:05:59Z | **Session:** sess-opt-31f94853 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. opt door live
+
+---
+
+## SESSION EUREKA — SE-20260730-9b01f95c
+
+> **Sealed:** 2026-07-30T06:09:18Z | **Session:** sess-3gap-4a043a03 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. Fixed epistemic gate for session_close
+2. Fixed session registry lookup (no _SESSION_STORE)
+3. MCP schema includes session_close
+4. smoke bbedfab0
+
+---
+
+## SESSION EUREKA — SE-20260730-552c7937
+
+> **Sealed:** 2026-07-30T06:09:50Z | **Session:** sess-d3-cbd03b51 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. post-deploy 3gap
+
+---
