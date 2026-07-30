@@ -292,3 +292,82 @@ arif_seal(mode="session_close", payload="<bullets or summary>",
 7. Init-to-Seal protocol + EUREKA 8 in BOOT_EUREKA
 
 ---
+
+## SESSION EUREKA — SE-20260730-805f672d
+
+> **Sealed:** 2026-07-30T06:01:26Z | **Session:** SEAL-dc2d315635c040eb | **Actor:** `opencode`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. {"session": "agi-audit-final", "actor": "agi (333-AGI) via OpenCode", "summary": "All 3 macro gaps closed: (1) vault.py session_registry import fixed \u2014 get_registry() replaces _SESSION_STORE, (2) session_close_macro.py injects _epistemic tag into payload for F2 vault eligibility, (3) arif_seal MCP docstring updated with session_close mode. Macro stages 0-5 ready for full autonomous execution.", "fixes": ["vault.py:514 \u2014 _SESSION_STORE \u2192 get_registry()", "session_close_macro.py:631
+
+---
+
+## SESSION EUREKA — SE-20260730-f718ad12
+
+> **Sealed:** 2026-07-30T06:02:44Z | **Session:** sess-rest-3a506db9 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. restore smoke direct
+
+---
+
+## SESSION EUREKA — SE-20260730-5000ff50
+
+> **Sealed:** 2026-07-30T06:02:45Z | **Session:** sess-mcp-18c8077c | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. restore smoke MCP door
+
+---
+
+## SESSION EUREKA — SE-20260730-7df61859
+
+> **Sealed:** 2026-07-30T06:03:01Z | **Session:** sess-ser-b6dab703 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. mcp serialize check
+
+---
+
+## SESSION EUREKA — SE-20260730-c2a9fded
+
+> **Sealed:** 2026-07-30T06:03:08Z | **Session:** SEAL-4985282fd11e4f41 | **Actor:** `opencode`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. {"session": "agi-final-seal", "summary": "All 3 macro gaps closed. _SESSION_STORE\u2192get_registry, _epistemic tag injected, arif_judge\u2192arif_seal chain wired. \u0394S < 0.", "fixes": ["vault.py import fix", "epistemic tag injection", "judge\u2192seal chain"], "organs": "7/7 alive"}
+
+---
+
+## SESSION EUREKA — SE-20260730-f34af160
+
+> **Sealed:** 2026-07-30T06:03:42Z | **Session:** SEAL-cb1df4092ab54471 | **Actor:** `opencode`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. {"summary": "All 3 gaps closed. Macro stages 0-5 ready.", "fixes": ["session_registry import", "epistemic tag", "judge-seal chain"], "organs": "7/7 alive"}
+
+---
+
+## SESSION EUREKA — SE-20260730-d475e713
+
+> **Sealed:** 2026-07-30T06:03:59Z | **Session:** sess-door-2ba13c33 | **Actor:** `claude`
+> **Organs:** 7/7 alive | **Source:** arif_session_close_macro
+
+### Insights
+
+1. MCP door unlocked: session_close routes to vault macro
+2. effective_verdict preserves SEAL on seal_complete
+3. id f218bf6a
+
+---
