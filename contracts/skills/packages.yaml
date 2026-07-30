@@ -1,5 +1,5 @@
 version: 2
-generated: 2026-07-23T03:47:41.808Z
+generated: 2026-07-30T10:56:19.276Z
 source: registries/skills.yaml
 metadata_rule: Skill metadata lives once in the registry; packages contain identity references only
 packages:
@@ -10,6 +10,7 @@ packages:
       - id: imagegen
       - id: openai-docs
       - id: plugin-creator
+      - id: review-agent
       - id: skill-creator
       - id: skill-installer
   - id: substrate
@@ -73,8 +74,8 @@ packages:
       - id: asi-interface-adapt
       - id: asi-mcp-governor
       - id: asi-position-contrast
-      - id: asi-presence-open
       - id: asi-session-seal
+      - id: asi-session-seal-copilot
       - id: asi-summarize
       - id: asi-tone-read
       - id: asi-uncertainty-signal
@@ -113,13 +114,16 @@ packages:
       - id: agent-onboarding
       - id: agent-onboarding--forge-onboarding-claude
       - id: docker-entropy-ops
+      - id: forge-agentic-web-builder
       - id: forge-cicd-docker-deploy
       - id: forge-code-analysis
       - id: forge-context-compress
       - id: forge-context-compressor
       - id: forge-cross-agent-handoff
+      - id: forge-cross-repo-doc-zen
       - id: forge-data-compression
       - id: forge-did-web-identity
+      - id: forge-document-intelligence
       - id: forge-fastapi-api-builder
       - id: forge-fastmcp
       - id: forge-federation-manifest
@@ -175,20 +179,29 @@ packages:
     name: Domain And Harness
     description: Domain-specific and harness-native skills that remain inside the AAA catalog.
     skills:
+      - id: aaa-pdf-voice-protocol
+      - id: atlas333-cognitive-geometry
       - id: causal555-pywhy
       - id: check-work
       - id: code-review
+      - id: copilot-autonomous-pipeline
+      - id: copilot-zen-router
       - id: create-skill
+      - id: delta-omega-psi-multimodal-cognition
       - id: docs
       - id: federation-connect-headscale
       - id: federation-release-attestation
+      - id: flame-operator
+      - id: flame-router
       - id: geox-grounding
+      - id: geox-production-cockpit
       - id: help
       - id: hermes-opencode-protocol
       - id: identity-invariance
       - id: imagine
       - id: runtime
       - id: scripts
+      - id: trinity-33-canonical
       - id: warga
       - id: warga-constitutional
       - id: wealth-claim-state
