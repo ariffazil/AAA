@@ -1,204 +1,280 @@
-# arifOS Federation — Canonical Organ Map
+# arifOS Federation — Canonical System Map
 
-> **Sealed:** 2026-06-22 | **Authority:** F13 SOVEREIGN — Arif
-> **Status:** CANONICAL — supersedes all prior organ diagrams
-> **Repo substrate:** Final 33 (see KERNEL-trinity-33 + /root/AAA/docs/TRINITY_33_REPOS.md) — 11 arifOS (law), 11 AAA (cockpit), 11 A-FORGE (execution). Orthogonal. Never let forge outrun kernel.
-> **DITEMPA BUKAN DIBERI — Forged, Not Given.**
+> **Status:** CANONICAL SYSTEM MAP (stabilized 2026-07-30)  
+> **Authority:** F13 SOVEREIGN — Muhammad Arif bin Fazil  
+> **Machine twin:** `/root/AAA/federation/organs.yaml`  
+> **Truth rule:** live `:port/health` beats this file. This file beats every other diagram.  
+> **Doctrine:** DITEMPA BUKAN DIBERI  
+> **Supersedes (topology claims only):** `FEDERATION_MAP.md`, `ARCHITECTURE_TRUTH.md`,  
+> `docs/AGENTS-organs-v2026-07-28.md` organ tables, ad-hoc forge_work maps, I-ARIF merge diagrams.
 
 ---
 
-## THE MAP
+## 0. Three-second answer
+
+| Question | Answer |
+|----------|--------|
+| **Where am I?** | arifOS Federation on af-forge VPS — one sovereign, one kernel, many organs |
+| **Why care?** | One map. No parallel SOTs. Probe before act. |
+| **What next?** | Read §1 anatomy → §2 live spine → §6 authority chain → act only inside your organ’s ceiling |
+
+**Dual SOT (do not invent a third):**
+
+| Form | Path | Use |
+|------|------|-----|
+| Human | **this file** (`AAA/docs/ORGAN.md`) | Topology, boundaries, links |
+| Machine | `AAA/federation/organs.yaml` | Ports, roles, ceilings, automation |
+
+Everything else is a **pointer**, **contract**, **runbook**, or **draft** — not a competing map.
+
+---
+
+## 1. Anatomy (one organism)
 
 ```
-                         Arif (F13 SOVEREIGN)
+                         ARIF (F13 SOVEREIGN)
+                         purpose · irreversible consent
+                                  │
+                       ┌──────────▼──────────┐
+                       │   arifOS KERNEL     │  :8088
+                       │   admit · route ·   │
+                       │   judge · memory law│
+                       │   execution gate    │
+                       └──────────┬──────────┘
                                   │
               ┌───────────────────┼───────────────────┐
               │                   │                   │
-     ┌────────▼────────┐  ┌───────▼───────┐  ┌────────▼────────┐
-     │   Hermes (py)   │  │ OpenClaw (ts) │  │   AAA (ts)      │
-     │   MIND organ    │  │  HANDS organ  │  │  IDENTITY organ  │
-     │   :8644 (Tg)    │  │  :18789 (GW)  │  │  :3001 (A2A/MCP) │
-     └────────┬────────┘  └───────┬───────┘  └────────┬────────┘
+       ┌──────▼──────┐     ┌──────▼──────┐     ┌──────▼──────┐
+       │    GEOX     │     │   WEALTH    │     │    WELL     │
+       │  Earth law  │     │ Capital law │     │ Vitality    │
+       │    :8081    │     │   :18082    │     │   :18083    │
+       └──────┬──────┘     └──────┬──────┘     └──────┬──────┘
               │                   │                   │
               └───────────────────┼───────────────────┘
-                                  │ A2A
+                                  │ evidence only (never SEAL)
                        ┌──────────▼──────────┐
-                       │   arifOS KERNEL      │
-                       │   :8088 (Python)     │
-                       │                      │
-                       │  F1-F13 Floors       │
-                       │  Session / Identity  │
-                       │  Judge / Vault /     │
-                       │  Capability Graph    │
-                       └──────────┬───────────┘
-                                  │ MCP transport
-            ┌─────────────────────┼─────────────────────┐
-            │                     │                     │
-   ┌────────▼────────┐  ┌─────────▼─────────┐  ┌───────▼────────┐
-   │  GEOX (py)      │  │  WEALTH (py/node) │  │  WELL (py)     │
-   │  EARTH organ    │  │  CAPITAL organ    │  │  VITALITY organ │
-   │  :8081          │  │  :18082           │  │  :18083         │
-   └────────┬────────┘  └─────────┬─────────┘  └───────┬────────┘
-            │                     │                     │
-            └─────────────────────┼─────────────────────┘
+                       │  arifOS JUDGE 888   │
+                       │ SEAL|HOLD|VOID|SABAR│
+                       └──────────┬──────────┘
+                                  │ only authorised mutation
+                       ┌──────────▼──────────┐
+                       │     A-FORGE         │  :7071 API · :7072 MCP
+                       │ plan→dry-run→exec   │
+                       │ verify→rollback     │
+                       └──────────┬──────────┘
                                   │
                        ┌──────────▼──────────┐
-                       │    A-FORGE (ts)      │
-                       │    EXECUTE organ     │
-                       │    :7071 / :7072     │
-                       │                      │
-                       │  4-Layer Forge Gate  │
-                       │  plan → dry-run →    │
-                       │  approve → execute   │
-                       └──────────┬───────────┘
-                                  │
-                       ┌──────────▼──────────┐
-                       │     VAULT999        │
-                       │     IMMUTABLE        │
-                       │                      │
-                       │  outcomes.jsonl      │
-                       │  Hash-chained        │
-                       │  Append-only         │
-                       └──────────────────────┘
+                       │     VAULT999        │  append-only receipts
+                       └─────────────────────┘
 
-EDGE AGENTS (MCP clients — connect THROUGH kernel, NOT above it):
-  Claude Code  — builder organ (governed harness, DeepSeek v4-pro)
-  OpenCode     — forge worker (governed harness, DeepSeek V4 Pro-pro)
-  OpenClaw GW  — gateway operator (TS, port 18789)
+   COCKPIT          METABOLISM         EDGE (not organs)
+   AAA :3001        arifFLOW :7073     Hermes · OpenCode · OpenClaw
+   display/A2A      FQ · receipts      Claude · Grok · Kimi · Copilot
+                    never judge/exec   → connect THROUGH kernel
 ```
 
-> **Public surface split (repo-attested):** this repo's cockpit build is published as a static Pages site at `arif-fazil.com` via `.github/workflows/pages.yml`. The live AAA gateway surface is `aaa.arif-fazil.com`, reverse-proxied to localhost `:3001`.
+**One-line zen:** Kernel is law. Organs are domain truth. A-FORGE is the only actuator. Models are replaceable workers. Arif is purpose.
 
 ---
 
-## LAYER SEPARATION
+## 2. Live constitutional spine (T₁ 2026-07-30)
 
-### Sovereignty Layer
-| Entity | Substrate | Role |
-|--------|-----------|------|
-| **Arif** | Human | F13 SOVEREIGN — absolute veto, final judge |
+| Class | Component | Port(s) | Unit | Live | Tools* | Owns | Never owns |
+|-------|-----------|---------|------|------|--------|------|------------|
+| **SOVEREIGN** | ARIF | — | human | — | — | purpose, irreversible yes | routine execution |
+| **KERNEL** | arifOS | 8088 | `arifos.service` | healthy | 8 public | identity, admit, judge, memory law, seal gate | earth/capital compute, free execution |
+| **EXECUTE** | A-FORGE | 7071 / 7072 | `a-forge` + `a-forge-mcp` | healthy | 124 API / 52 MCP stateless | plan, dry-run, apply, rollback | self-authorise, seal |
+| **EARTH** | GEOX | 8081 | `geox-mcp.service` | healthy | 33 | earth evidence, physics claims | capital, judgment |
+| **CAPITAL** | WEALTH | 18082 | `wealth-organ.service` | healthy | 14 public (9 canonical) | capital state, risk scenarios | allocation authority, earth truth |
+| **VITALITY** | WELL | 18083 | `well.service` | **degraded** | 10 | readiness, dignity signal | medical diagnosis, final verdict |
+| **COCKPIT** | AAA | 3001 | `aaa-a2a.service` | healthy | A2A | display, A2A route, registry home | judgment, execution |
+| **METABOLISM** | arifFLOW | 7073 | `arifflow.service` | ok | — | FQ pulse, receipt metabolism | judge, execute |
+| **TRUTH** | VAULT999 | path | filesystem | append-only | — | immutable receipts | reinterpretation |
 
-### Identity & Interface Layer
-| Organ | Port | Substrate | Role |
-|-------|------|-----------|------|
-| **Hermes** | :8644 | Python | MIND — ASI cognitive relay, Telegram interface, memory orchestration |
-| **OpenClaw** | :18789 | TypeScript | HANDS — AGI transport router, envelope broker, tool gateway |
-| **AAA** | :3001 | TypeScript | IDENTITY — A2A/MCP gateway origin, agent registry, operator UX; cockpit build is published separately as Pages |
+\*Tool counts = live health probe. Re-probe before any SEAL-grade claim.
 
-### Governance Layer
-| Organ | Port | Substrate | Role |
-|-------|------|-----------|------|
-| **arifOS** | :8088 | Python | LAW — F1-F13 floors, session init, judge deliberation, vault seal, capability graph, interrupt routing |
+**Public MCP doors (edge protocol — not substrate truth):**
 
-### Domain Intelligence Layer
-| Organ | Port | Substrate | Role | `domain_law` |
-|-------|------|-----------|------|--------------|
-| **GEOX** | :8081 | Python | EARTH — seismic, petrophysics, basin, prospect (Physics9-bounded) | `NATURAL_LAW` |
-| **WEALTH** | :18082 | Python/Node | CAPITAL — NPV, IRR, EMV, conservation, flow, entropy | `CAPITAL_LAW` |
-| **WELL** | :18083 | Python | VITALITY — human readiness, fatigue, dignity, homeostasis (REFLECT_ONLY) | `SUBSTRATE_LAW` |
+| Organ | Public | Local |
+|-------|--------|-------|
+| arifOS | `https://arifos.arif-fazil.com/mcp` | `127.0.0.1:8088` |
+| A-FORGE | `https://mcp.arif-fazil.com/mcp` (canonical public door) · forge host may proxy | `127.0.0.1:7072` |
+| GEOX | `https://geox.arif-fazil.com/mcp` | `127.0.0.1:8081` |
+| WEALTH | `https://wealth.arif-fazil.com/mcp` | `127.0.0.1:18082` |
+| WELL | `https://well.arif-fazil.com/mcp` | `127.0.0.1:18083` |
+| AAA | `https://aaa.arif-fazil.com` | `127.0.0.1:3001` |
 
-> **Domain contrast (Math · Physics · Code · MCP flow):** [`DOMAIN_ORGAN_CONTRAST.md`](./DOMAIN_ORGAN_CONTRAST.md) — orthogonal axes, live tool contracts, agentic handoffs.  
-> **Architecture seal v2026.07.15:** [`ARIFOS_MCP_ARCHITECTURE_v2026.07.15.md`](./ARIFOS_MCP_ARCHITECTURE_v2026.07.15.md) — Foundations · Organs · Contrast · READMEs · Flow · 999 SEAL.
-
-### Execution Layer
-| Organ | Port | Substrate | Role |
-|-------|------|-----------|------|
-| **A-FORGE** | :7071/:7072 | TypeScript | EXECUTE — 4-layer forge gate, engineering actuator |
-
-### Immutable Memory Layer
-| Organ | Location | Substrate | Role |
-|-------|----------|-----------|------|
-| **VAULT999** | `/root/VAULT999/outcomes.jsonl` | JSONL on disk | MEMORY — append-only, hash-chained, sealed truth |
+**Kernel public verbs (Holy 8):**  
+`arif_init` → `arif_observe` → `arif_think` → `arif_route` → `arif_memory` → `arif_judge` → `arif_forge` → `arif_seal`
 
 ---
 
-## SUBSTRATE RATIONALE
+## 3. Linked non-organ planes (keep separate — do not promote to organ)
 
-### Why Python for MIND + LAW
-- Symbolic reasoning, numeric computation, REPL-grade execution
-- Multi-model orchestration, memory graph traversal
-- Hermes AIAgent embed pattern: "brain mode" inside Python apps
-- arifOS: FastMCP + FastAPI + Pydantic schema enforcement
+These run live and must appear on the map, but they are **not** constitutional organs. Promoting them creates authority chaos.
 
-### Why TypeScript for HANDS + EXECUTE
-- JSON-native, HTTP/WebSocket-native, schema-first
-- Envelope routing, tool brokering, multi-tenant gateway
-- OpenClaw: npm ecosystem, @openclaw/acpx protocol
-- A-FORGE: 4-layer forge gate in TypeScript, 77 MCP tools
+| Plane | Port | Unit | Role | Ceiling |
+|-------|------|------|------|---------|
+| **FED** | 7074 | `fed-router.service` | Model/route *advisor* (where to call) | ADVISORY — never judges |
+| **FLAME** | 18901 | `flame-api.service` | RM0 free-loop inference for tools | ADVISORY worker — never constitutional |
+| **WELL Witness** | 18084 | `well-witness.service` | Independent substrate observer for WELL | OBSERVE — never adjudicates |
+| **AAA Signing** | 18900 | `aaa-signing.service` | Ed25519 F13 challenge signing | crypto helper |
+| **AAA Pre-Forge** | — | `aaa-preforge.service` | pre-forge constitutional gate helper | gate helper |
+| **Surface Guard** | — | `surface-guard.service` | MCP surface drift watchdog | observe/alert |
+| **Hermes ASI GW** | (Tg) | `hermes-asi-gateway.service` | Telegram MIND relay | relay — never seals |
+| **OpenClaw bot** | — | `openclaw-bot.service` | Telegram HANDS (777) | edge agent |
+| **OpenCode bot** | — | `opencode-bot.service` | Telegram forge hands | edge agent |
+| **Hermes MCP** | 18086 | process | Hermes local MCP surface | bridge |
+| **APA bridges** | — | `apa-{email,calendar,github,telegram}-bridge` | External actuators under A-FORGE | execute only after lease |
+| **Mini App API** | — | `miniapp-api.service` | Telegram mini-app API | UI edge |
+| **arifosd** | — | `arifosd.service` | control-plane daemon (kernel companion) | kernel support |
+| **NATS heartbeat** | — | `arifOS-NATS-heartbeat.service` | pulse publisher | telemetry |
 
-### Why Python for Domain Intelligence
-- Scientific computing stack: numpy, scipy, segyio, lasio
-- Physics9 boundary enforcement, petrophysical computation
-- Capital/financial modeling, wellness metric computation
-
-### Why TypeScript + Python for IDENTITY
-- AAA: React 19 cockpit + Express 5 A2A gateway (TypeScript)
-- Agent card registry, federation envelope validation
-- Constitutional core in Python (pre_forge_gate, citation_provenance)
-
----
-
-## CONSTITUTIONAL BOUNDARIES
-
-### Authority Rule
-No organ may seal without arifOS. Only 888_JUDGE → 999_VAULT emits seals.
-No organ may self-authorize mutation. Engineering requires arifOS SEAL → A-FORGE execute.
-
-### Boundary Rule
-- arifOS judges — never mutates
-- A-FORGE executes — never legislates
-- GEOX/WEALTH/WELL compute — never decide
-- Hermes relays — never seals
-- OpenClaw routes — never adjudicates
-- AAA displays — never adjudicates
-- VAULT999 remembers — never rewrites
-
-### Substrate Rule
-Agents (Claude Code, OpenCode) are governed MCP clients at the edge.
-They connect THROUGH the kernel, not above it.
-They are NOT organs — they are governed instruments bound to organs.
-
-### F13 Absolute
-Arif's veto is final. No autonomous loop without his say.
-The kernel enforces. The sovereign decides.
+**FED vs FLAME (one sentence each):**  
+- **FLAME** answers cheap tool inference (RM0).  
+- **FED** ranks *where* an agent should route a model call.  
+Neither is an organ. Neither seals.
 
 ---
 
-## AGENT-ORGAN DISTINCTION
+## 4. Substrate services (data plane — Docker/local)
 
-A common category error confuses **agents** with **organs**.
+| Service | Port | Role | Auth doctrine |
+|---------|------|------|---------------|
+| PostgreSQL | 5432 | durable state / future task ledger | localhost = password |
+| Redis | 6379 | ephemeral / session / locks | localhost |
+| Qdrant | 6333 | vector similarity (not truth) | localhost |
+| FalkorDB | 6380 | graph | localhost |
+| Graphiti MCP | 8000 | knowledge graph MCP | localhost |
+| MinIO | 9000–9001 | object storage | localhost |
+| NATS | 4222 | bus / heartbeat | localhost |
+| SearXNG | 8080 | search | localhost |
+| MCPJam | 6274 / 6277 | inspector / smoke host | localhost + mesh |
+| Headscale | 8083 | mesh coordination | mesh |
+| Caddy | 80/443 | ingress membrane | public TLS |
+| Cloudflared | — | tunnel | public door |
 
-| Layer | Examples | Characteristics |
-|-------|----------|----------------|
-| **Organs** | arifOS, A-FORGE, GEOX, WEALTH, WELL, AAA, VAULT999 | Always-on systemd services, MCP servers, constitutional roles |
-| **Agents** | Claude Code, OpenCode, Hermes (runtime), OpenClaw (runtime) | Governed MCP clients, session-bound, connect through kernel |
-
-Agents sit at the **edge** of the federation, not above the kernel.
-The kernel is the hub — every agent connects through :8088.
-
----
-
-## COGNITIVE LOOP (000 → 999)
-
-| Stage | Code | Tool | Organ |
-|-------|------|------|-------|
-| INIT | 000 | `arif_session_init` | arifOS |
-| OBSERVE | 111 | `arif_sense_observe` | arifOS |
-| EVIDENCE | 222 | `arif_evidence_fetch` | arifOS |
-| REASON | 333 | `arif_mind_reason` | arifOS → Hermes |
-| COMPOSE | 444r | `arif_reply_compose` | arifOS → Hermes |
-| ROUTE | 555 | `arif_kernel_route` | arifOS |
-| MEMORY | 555m | `arif_memory_recall` | arifOS |
-| HEART | 666 | `arif_heart_critique` | arifOS |
-| MEASURE | 777 | `arif_ops_measure` | arifOS |
-| JUDGE | 888 | `arif_judge_deliberate` | arifOS |
-| FORGE | 010 | `arif_forge_execute` | arifOS → A-FORGE |
-| SEAL | 999 | `arif_vault_seal` | arifOS → VAULT999 |
+**Rule:** Do not containerize core organs. Data plane may stay Docker.
 
 ---
 
-*Sealed 2026-06-22 under F13 SOVEREIGN.*
-*Supersedes: all ad-hoc organ diagrams, Copilot drafts, and non-canonical agent maps.*
-*Canonical location: `/root/AAA/docs/ORGAN.md`*
+## 5. Source repos ↔ runtime
 
-**DITEMPA BUKAN DIBERI — 999 SEAL ALIVE**
+| Organ | Source | Runtime | Notes |
+|-------|--------|---------|-------|
+| arifOS | `/root/arifOS` | `/opt/arifos/app` | deploy must keep source=built=deployed |
+| A-FORGE | `/root/A-FORGE` | `/opt/a-forge/app` (when used) | API + MCP units |
+| AAA | `/root/AAA` | `/opt/aaa/app` (when used) | A2A + registry home |
+| GEOX | `/root/GEOX` (`/root/geox` alias) | process from source common | 33 tools |
+| WEALTH | `/root/WEALTH` | process from source | compute only |
+| WELL | `/root/WELL` | process from source | REFLECT_ONLY |
+| HERMES | `/root/HERMES` | gateway + MCP | edge bridge |
+| VAULT999 | `/root/arifOS/VAULT999` | `/root/VAULT999` → share path | never rewrite |
+
+---
+
+## 6. Authority chain (do not skip)
+
+```
+human intent
+  → arif_init     (000 session / identity)
+  → arif_observe  (111 sense)
+  → arif_think    (333 reason)
+  → arif_route    (444/555 domain)
+  → domain organ  (GEOX | WEALTH | WELL evidence)
+  → arif_judge    (888 SEAL|HOLD|VOID|SABAR)
+  → arif_forge    (777 lease to A-FORGE)     [only if SEAL]
+  → A-FORGE exec  (plan · dry-run · apply · verify · rollback)
+  → arif_seal     (999 VAULT999 receipt)
+```
+
+**Hard boundaries:**
+
+| Component | May | Must not |
+|-----------|-----|----------|
+| arifOS | judge, route, require receipts | mutate production state as engineer |
+| A-FORGE | mutate after valid SEAL + lease | self-authorise, legislate floors |
+| GEOX / WEALTH / WELL | emit evidence + uncertainty | seal, allocate capital, diagnose medically |
+| AAA | display, A2A route | judge or execute |
+| arifFLOW | metabolise FQ / receipts | judge or execute |
+| VAULT999 | append | edit history |
+| Agents / models | propose | grant self authority or seal |
+
+---
+
+## 7. Six planes (EUREKA — conceptual, not extra services)
+
+| Plane | Owner | Role |
+|-------|-------|------|
+| Sovereign | ARIF | purpose, veto |
+| Governance | arifOS | floors, admit, judge |
+| Intelligence | GEOX · WEALTH · WELL · agents | evidence / reasoning |
+| Execution | A-FORGE | controlled mutation |
+| Continuity | Postgres · Redis · Qdrant · organ stores | revisable state |
+| Truth | VAULT999 · OTel · metrics | immutable consequence |
+
+Detail: `AAA/docs/EUREKA_SIX_PLANE_EXECUTION_LOOP.md` (architecture essay — not a second topology SOT).
+
+---
+
+## 8. What is deliberately NOT an organ / not SOT
+
+| Name | What it is | Map status |
+|------|------------|------------|
+| **I-ARIF** | Product brand + optional SFT/DPO corpus (`forge_work/i-arif-prep/`) | **Not runtime.** Do not merge units into “I-ARIF Kernel.” |
+| **EUREKA ZEN AGI Substrate v1** | Draft architecture (`arifOS/docs/canon/…`, DRAFT_ONLY) | Future ABI/ledger design — **not** live topology |
+| **FED-ZEN blueprint** | Model router design notes | Describes FED plane only |
+| **OpenClaw / OpenCode / Claude / Grok / Kimi** | Edge agents (MCP clients) | Instruments — connect through kernel |
+| **APEX as separate organ** | Judgment absorbed into arifOS/AAA path | Do not re-split without F13 |
+| **CONTEXT.md** | deprecated live-state file | Prefer `carry_forward.json` + live health |
+
+---
+
+## 9. Document authority (anti-chaos)
+
+| Document | Authority | Allowed content |
+|----------|-----------|-----------------|
+| **`AAA/docs/ORGAN.md` (this)** | **Topology SOT** | Who, ports, ceilings, links |
+| **`AAA/federation/organs.yaml`** | **Machine SOT** | Same facts for automation |
+| `FEDERATION_CONTRACT.md` | Contract / web surface policy | Must **point** here for organ table |
+| `AGENTS.md` | Agent operating doctrine | Thin organ table + pointer here |
+| `MCP_FEDERATION_ZEN.md` | MCP affordance / drift ops | Tool naming, SEP notes — not organ invention |
+| `AAA/docs/FEDERATION_MAP.md` | Repo-layer stack only | **No** live port SOT |
+| `AAA/docs/ARCHITECTURE_TRUTH.md` | Historical A2A baseline | Superseded for topology counts |
+| `RUNBOOK.md` | Restart / recovery | Ops only |
+| forge_work/* maps | Receipts / drafts | Evidence, never SOT |
+
+**Rule:** If two docs disagree on ports/roles, **ORGAN.md + live health** win. Then fix the other doc to a pointer — do not write a third map.
+
+---
+
+## 10. Stabilization checklist (how to keep this clean)
+
+1. **New service?** Classify: CORE organ · METABOLISM · EDGE · SUPPORT · MEMORY. Update **yaml first**, then this file.  
+2. **New diagram?** Must link here or be labeled DRAFT.  
+3. **Tool count claims?** Always from live `/health` — never copy stale numbers across docs.  
+4. **Do not** merge supporting planes into organs to “simplify names.”  
+5. **Do not** call the system AGI; call it a **governed substrate**.  
+6. **Probe script:**  
+   `for p in 8088 7071 7072 7073 3001 8081 18082 18083; do curl -sf http://127.0.0.1:$p/health >/dev/null && echo OK $p || echo FAIL $p; done`
+
+---
+
+## 11. Known live debt (honest, not hidden)
+
+| Item | State | Owner path |
+|------|-------|------------|
+| WELL status | degraded | WELL + readiness |
+| arifOS deploy source≠built marker | drift fields still fire | arifOS deploy discipline |
+| Session/identity propagation | GEOX holds anonymous actors | session envelope / ABI |
+| WEALTH tool name/mode drift | intermittent smoke fails | WEALTH manifest |
+| MCP Apps content-valid (GEOX) | RETAK (3 violations) | GEOX MCP Apps |
+| FED :7074 | unit present; treat as advisory plane | FED only |
+| Shared Federation ABI | not yet implemented | EUREKA ZEN draft — future |
+
+---
+
+*Stabilized 2026-07-30 from live probes + SOT consolidation.  
+Canonical path: `/root/AAA/docs/ORGAN.md` · Machine twin: `/root/AAA/federation/organs.yaml`*
+
+**DITEMPA BUKAN DIBERI**
