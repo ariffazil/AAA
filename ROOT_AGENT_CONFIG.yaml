@@ -242,35 +242,28 @@ forge_instruments:
   class: forge-instrument
   citizenship: warga-aaa
   host_binding: claude-code
-  agent_card: agents/claude-code/agent-card.json
+  agent_card: agents/_external/claude-code/agent-card.json
 - id: continue-cli
   fi_id: FI-009
   status: live
   class: forge-instrument
   citizenship: governed-forge-worker
   host_binding: continue-cli
-  agent_card: agents/continue-cli/agent-card.json
+  agent_card: agents/_external/continue-cli/agent-card.json
 - id: codex
   fi_id: FI-005
   status: live
   class: forge-instrument
   citizenship: governed-forge-worker
   host_binding: codex
-  agent_card: agents/codex/agent-card.json
+  agent_card: agents/_external/codex/agent-card.json
 - id: copilot
   fi_id: FI-006
   status: live
   class: forge-instrument
   citizenship: governed-forge-worker
   host_binding: copilot-cli
-  agent_card: agents/copilot/agent-card.json
-- id: aider
-  fi_id: FI-007
-  status: installed
-  class: forge-instrument
-  citizenship: bridge-worker
-  host_binding: aider
-  agent_card: agents/aider/agent-card.json
+  agent_card: agents/_external/copilot/agent-card.json
 - id: kimi-code
   fi_id: FI-008
   status: live
@@ -280,7 +273,7 @@ forge_instruments:
   warga_card: agents/kimi-code/WARGAAA_CARD.md
   host_binding: kimi-code
   root_config_ref: ROOT_AGENT_CONFIG.yaml
-  agent_card: agents/kimi-code/agent-card.json
+  agent_card: agents/_external/kimi-code/agent-card.json
   repo_config_view: agents/kimi-code/agent-card.json
   live_config: /root/.arifos/agents/kimi/config.toml
   live_mcp: /root/.arifos/agents/kimi/mcp.json
@@ -320,7 +313,7 @@ forge_instruments:
   class: forge-instrument
   citizenship: governed-forge-worker
   host_binding: gemini-cli
-  agent_card: agents/antigravity/agent-card.json
+  agent_card: agents/_external/agy/agent-card.json
 - id: qwen-code
   fi_id: FI-003
   status: not_connected
@@ -334,7 +327,7 @@ forge_instruments:
   class: forge-instrument
   citizenship: warga-aaa
   host_binding: grok
-  agent_card: agents/grok-build/agent-card.json
+  agent_card: agents/_external/grok-build/agent-card.json
   model: xai/grok-4.5  # canonical: /root/.config/federation-models.json
   binary: /root/.grok/bin/grok
   config_path: /root/.grok/config.toml
@@ -344,4 +337,4 @@ forge_instruments:
   class: forge-instrument
   citizenship: governed-forge-worker
   host_binding: gemini-cli
-  agent_card: agents/gemini-cli/agent-card.json
+  agent_card: agents/_external/gemini-cli/agent-card.json
