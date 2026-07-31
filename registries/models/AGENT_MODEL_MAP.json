@@ -2,9 +2,9 @@
   "_meta": {
     "schema": "arifos-agent-model-map-v2",
     "schema_version": "2.1.0",
-    "forged": "2026-07-29",
-    "forged_by": "OpenCode (333-AGI) \u2014 cross-session integration",
-    "ingest_note": "2026-07-29 SESSION CLOSE: Full audit cycle complete. MiniMax discovered KEY_INVALID (not just rate limited). SEA-LION re-verified alive with 11 models (+2 new registered). GLM-5.2 promoted to constitutional tier (6/6 MY probe clean). Agent chains hardened. Auto-probe cron active. 46 models, 15 providers, 8 warnings.",
+    "forged": "2026-07-31",
+    "forged_by": "333-AGI — Qwen Token Plan Pro activation",
+    "ingest_note": "2026-07-31: Qwen Token Plan Individual Pro activated. Key rotated (sk-sp-H...). Plan: $68/mo, 40K Credits/7d, 12K Credits/5hr, 6-8 concurrent agents. 9 text models + image/audio/video. PRIMARY provider — route everything here first (RM0 marginal within plan). Agent models updated: 555-ASI→qwen3.6-flash, 888-APEX→glm-5.2. Hermes model-picker updated. opencode.json qwen-token-plan provider added.",
     "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
     "federation_state": {
       "providers": 16,
@@ -15,7 +15,7 @@
       "free_tiers": 9,
       "free_models": 25,
       "total_monthly_cost": "RM0",
-      "cascade": "Direct DeepSeek ($12.63) \u2192 Bailian Token Plan (20 models) \u2192 MiMo Platform (3 models) \u2192 Kimi Moonshot (3 models) \u2192 Groq (free) \u2192 Gemini (free) \u2192 Cerebras (22d remaining) \u2192 SEA-LION \u2192 Ollama \u2192 HOLD",
+      "cascade": "Qwen Token Plan Pro (9 models, RM0) → Direct DeepSeek ($12.63) → Bailian (fallback, 20 models) → MiMo Platform (3 models) → Kimi Moonshot (3 models) → Groq (free) → Gemini (free) → Cerebras (22d remaining) → SEA-LION → Ollama → HOLD",
       "warnings": [
         "SHADOW-TR-001 (CRITICAL): TokenRouter gateway contaminates benchmarks. DeepSeek returns EMPTY via TR, perfect via direct. K3 max_tokens 'cap' is TR's limit, not Moonshot's. ALL TR-routed benchmarks potentially measure the gateway, not the model. Retroactive audit required.",
         "NEW REGISTRY RULE: Every model entry now requires 'route' field. Benchmark without route = inadmissible (F2). Values: direct, tokenrouter, bailian, native, tokenrouter_only. Model ID convention: model@gateway.",
@@ -144,6 +144,72 @@
       "last_verified": "2026-07-20"
     },
     {
+      "provider_id": "qwen-token-plan",
+      "provider_name": "Qwen Cloud Token Plan Individual Pro",
+      "jurisdiction": "CN (SG region endpoint)",
+      "endpoint_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "anthropic_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic",
+      "api_key_ref": "secrets::QWEN_API_KEY",
+      "api_key_ref_note": "Rotated 2026-07-31. Old key preserved as secrets::QWEN_BAILIAN_KEY (20 models, fallback).",
+      "billing_model": "monthly_token_plan",
+      "billing_cycle": "monthly",
+      "plan": "Individual Pro",
+      "plan_price_monthly": 68,
+      "plan_credits_7d": 40000,
+      "plan_credits_5hr": 12000,
+      "plan_concurrent_agents": 8,
+      "plan_spend_jul": 208.54,
+      "credit_packs": "5 × $15/20K Credits",
+      "portal": "https://home.qwencloud.com/api-keys",
+      "docs": "https://docs.qwencloud.com/token-plan/personal/token-plan-personal",
+      "data_retention_days": "unknown",
+      "cloud_act_exposed": false,
+      "status": "ACTIVE",
+      "route": "direct",
+      "dialect": "openai_chat",
+      "dialect_note": "Standard OpenAI-compatible /v1/chat/completions. No model name translation needed — use exact model IDs as returned by /v1/models.",
+      "live_models_probed": [
+        "deepseek-v4-pro",
+        "qwen3.7-max",
+        "qwen3.7-plus",
+        "qwen3.6-flash",
+        "qwen3.8-max-preview",
+        "glm-5.2"
+      ],
+      "live_models_image": [
+        "wan2.7-image",
+        "wan2.7-image-pro"
+      ],
+      "live_models_audio": [
+        "qwen-audio-3.0-tts-plus"
+      ],
+      "live_models_video": [
+        "happyhorse-1.1-i2v",
+        "happyhorse-1.1-t2v",
+        "happyhorse-1.1-r2v"
+      ],
+      "harness_tools": [
+        "web_search",
+        "t2i_search",
+        "i2i_search",
+        "web_extractor",
+        "code_interpreter"
+      ],
+      "promos": [
+        "qwen3.8-max-preview: 10x usage (90% off credits)",
+        "qwen3.8-max-preview: night discount extra 80% off (22:00-08:00 UTC+8)"
+      ],
+      "restrictions": [
+        "No API automation — interactive agent use only",
+        "Singapore region, global deployment",
+        "One subscription per account",
+        "Credits via tiered deduction coefficients per model"
+      ],
+      "throttle_threshold_pct": 80,
+      "last_verified": "2026-07-31",
+      "note": "REGISTERED 2026-07-31. PRIMARY provider — route everything here first (RM0 marginal within plan). 9 text models + image/audio/video. Credit limits: 40K/7d + 12K/5hr. Promos: qwen3.8-max-preview 10x usage. Throttle at 80% of any window."
+    },
+    {
       "provider_id": "minimax",
       "provider_name": "MiniMax (\u7a00\u5b87\u79d1\u6280 / Shanghai Xiyu Technology)",
       "jurisdiction": "CN",
@@ -169,26 +235,37 @@
     },
     {
       "provider_id": "bailian-token-plan",
-      "provider_name": "Alibaba Bailian Token Plan (\u963f\u91cc\u4e91\u767e\u70bc)",
+      "provider_name": "Qwen Cloud Token Plan Pro (via Alibaba Bailian SG)",
       "jurisdiction": "CN (SG region endpoint)",
       "endpoint_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "anthropic_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic",
       "api_key_ref": "secrets::QWEN_API_KEY",
+      "api_key_fallback": "secrets::QWEN_BAILIAN_KEY",
       "billing_model": "monthly_token_plan",
-      "billing_cycle": "monthly",
-      "balance_usd": null,
+      "billing_cycle": "monthly (31 days remaining)",
+      "plan": "Individual Pro",
+      "portal": "https://home.qwencloud.com/api-keys",
+      "balance_usd": 208.54,
+      "balance_note": "Total spend July 2026",
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
       "status": "ACTIVE",
+      "key_rotated": "2026-07-31",
       "live_models_probed": [
         "deepseek-v4-pro",
-        "deepseek-v4-flash",
-        "deepseek-v3.2",
         "qwen3.7-max",
         "qwen3.7-plus",
-        "qwen3.6-plus",
         "qwen3.6-flash",
         "qwen3.8-max-preview",
         "glm-5.2",
+        "wan2.7-image",
+        "wan2.7-image-pro",
+        "qwen-audio-3.0-tts-plus"
+      ],
+      "models_bailian_only": [
+        "deepseek-v4-flash",
+        "deepseek-v3.2",
+        "qwen3.6-plus",
         "glm-5.1",
         "glm-5",
         "kimi-k2.7-code",
@@ -196,13 +273,10 @@
         "kimi-k2.5",
         "MiniMax-M2.5",
         "qwen-image-2.0",
-        "qwen-image-2.0-pro",
-        "wan2.7-image",
-        "wan2.7-image-pro",
-        "qwen-audio-3.0-tts-plus"
+        "qwen-image-2.0-pro"
       ],
-      "last_verified": "2026-07-29",
-      "note": "Primary multi-model gateway. 20 models live (probed 2026-07-29). 3 image-gen models removed (happyhorse-1.1 series no longer in /v1/models). Used by A-FORGE litellm, Hermes TokenRouter. BAILIAN SPOF WARNING: 9 of 14 agents route primary through this single endpoint."
+      "last_verified": "2026-07-31",
+      "note": "KEY ROTATED 2026-07-31: Arif activated Qwen Cloud Token Plan (Individual Pro, home.qwencloud.com). New primary key (sk-sp-H...) provides 9 core models. Old Bailian key (sk-sp-D...) retained as QWEN_BAILIAN_KEY fallback for flash/kimi/minimax models. Same endpoint for both keys. SPOF still applies — 9 of 14 agents route through this single endpoint."
     },
     {
       "provider_id": "tokenrouter",
