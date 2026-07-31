@@ -25,13 +25,13 @@
         "MiniMax: KEY_INVALID ('invalid api key 2049'). Provider DEAD. All MiniMax models unreachable. Already removed from chains.",
         "Cerebras credit expires Aug 20 2026 (22 days). 3 models disappear from free tier.",
         "SEA-LION: ACTIVE. Trial key working. 11 models including new v3.5+4.5. 10 RPM. SG jurisdiction. Added to Hermes + OpenClaw chains.",
-        "Qwen3.6 27B self-host NOT deployed \u2014 needs 18GB GPU on af-forge.",
+        "Qwen3.6 27B self-host NOT deployed — needs 18GB GPU on af-forge.",
         "Kimi K3 via TokenRouter: reasoning always-on (cannot disable). Official reasoning_effort: low/high/max (default=max). TokenRouter caps max_tokens ~1500 (native: 1M). Use 'low' for simple tasks (6 tok, 1.8s). FREE tier: no reasoning_effort, no stability guarantee. For 1M context work, use native Moonshot API. Open-source weights released July 27 2026. TokenRouter promo: top-up-7-get-3-free + $200 credits ends July 31.",
         "TokenRouter now has 117 models including Kimi K3 FREE. Added to kimi-code + planner fallback chains. Provider entry registered. Promo: 30% top-up bonus ends July 31.",
         "CODEX BRICKED: OpenRouter credits depleted (2016 remaining, Codex needs 65536). Agent returns 402 on every call. Fix: switch provider from openrouter to tokenrouter in /root/.codex/config.toml. TokenRouter GPT 5.6 SOL: 0.9-1.5s, zero reasoning overhead, $59.96 balance. Model endpoint type is openai-response but Chat Completions works.",
-        "GPT 5.6 SOL (via TokenRouter): fastest coder tested \u2014 0.9-1.5s, 0 reasoning tokens, idiomatic code. Optimal for agentic loops. Added SHADOW-GPT-001 (codex bricked) + SHADOW-GPT-002 (zero-overhead coder profile).",
-        "Claude Code SONNET \u2192 GLM 5.2 (4s warm, 6/6 MY clean). OPUS \u2192 Claude Sonnet 5 (8.7s, quality 100%). FABLE \u2192 MiniMax M3 (moderate shadow). Copilot CLI \u2192 GLM 5.2 (low shadow).",
-        "OPEN ITEMS: (1) TR cache_control passthrough test for Claude, (2) key rotation 888_HOLD, (3) SHADOW-TR-001 retroactive cleanup \u2014 re-test K3 cap + V4 Pro speed direct."
+        "GPT 5.6 SOL (via TokenRouter): fastest coder tested — 0.9-1.5s, 0 reasoning tokens, idiomatic code. Optimal for agentic loops. Added SHADOW-GPT-001 (codex bricked) + SHADOW-GPT-002 (zero-overhead coder profile).",
+        "Claude Code SONNET → GLM 5.2 (4s warm, 6/6 MY clean). OPUS → Claude Sonnet 5 (8.7s, quality 100%). FABLE → MiniMax M3 (moderate shadow). Copilot CLI → GLM 5.2 (low shadow).",
+        "OPEN ITEMS: (1) TR cache_control passthrough test for Claude, (2) key rotation 888_HOLD, (3) SHADOW-TR-001 retroactive cleanup — re-test K3 cap + V4 Pro speed direct."
       ]
     },
     "canonical_source": {
@@ -39,24 +39,24 @@
       "soul_shadow_profiles": "/root/AAA/registries/models/",
       "connection_secrets": "/root/.secrets/vault.env"
     },
-    "design_principle": "Every model has a constitutional role. Explorer \u2260 judge. Fast \u2260 seal. Censored \u2260 Malaysian governance. This registry answers: given capability + shadow + jurisdiction \u2192 what role can this model play?",
+    "design_principle": "Every model has a constitutional role. Explorer ≠ judge. Fast ≠ seal. Censored ≠ Malaysian governance. This registry answers: given capability + shadow + jurisdiction → what role can this model play?",
     "constitutional_roles": {
-      "000_INIT": "identity binding \u2014 model must have identity_verified",
-      "111_OBSERVE": "evidence gathering \u2014 model needs search/fetch",
-      "333_THINK": "reasoning \u2014 model needs reasoning capability",
-      "444_ROUTE": "routing \u2014 model needs routing awareness",
-      "555_MEMORY": "recall \u2014 model needs long context",
-      "666_JUDGE": "verdict \u2014 model needs constitutional_deliberation, ZERO censorship, no F2 shadow",
-      "777_FORGE": "execution \u2014 model needs code/tool_call capabilities",
-      "999_SEAL": "irreversible \u2014 model needs highest trust tier, no CRITICAL shadows"
+      "000_INIT": "identity binding — model must have identity_verified",
+      "111_OBSERVE": "evidence gathering — model needs search/fetch",
+      "333_THINK": "reasoning — model needs reasoning capability",
+      "444_ROUTE": "routing — model needs routing awareness",
+      "555_MEMORY": "recall — model needs long context",
+      "666_JUDGE": "verdict — model needs constitutional_deliberation, ZERO censorship, no F2 shadow",
+      "777_FORGE": "execution — model needs code/tool_call capabilities",
+      "999_SEAL": "irreversible — model needs highest trust tier, no CRITICAL shadows"
     },
     "replaces": [
-      "/root/AAA/prompts/INIT.md \u00a78 (model rotation table)",
-      "/root/AAA/agents/opencode/TOOLS.md \u00a7Model Rotation",
-      "/root/AGENTS.md \u00a711 (LLM Routing Hierarchy)",
+      "/root/AAA/prompts/INIT.md §8 (model rotation table)",
+      "/root/AAA/agents/opencode/TOOLS.md §Model Rotation",
+      "/root/AGENTS.md §11 (LLM Routing Hierarchy)",
       "/root/AAA/registries/models/FEDERATION_MODEL.json (absorbed)",
-      "/root/A-FORGE/litellm-config.yaml (agent groups \u2014 generated from agents[])",
-      "/root/arifOS/arifosmcp/runtime/llm_client.py (organ routing \u2014 queries routing_rules[])",
+      "/root/A-FORGE/litellm-config.yaml (agent groups — generated from agents[])",
+      "/root/arifOS/arifosmcp/runtime/llm_client.py (organ routing — queries routing_rules[])",
       "/root/WEALTH/reality_contracts/wire_contract.yaml (model list)"
     ],
     "flame_control": {
@@ -72,8 +72,8 @@
         "FLAME NEVER touches paid models",
         "FLAME NEVER replaces agent primary",
         "FLAME data must be non-sovereign (no MY PII, PETRONAS, myKad)",
-        "FLAME latency monitored \u2014 >5s = skip tier",
-        "FLAME hit-rate tracked \u2014 >50% failures = demote"
+        "FLAME latency monitored — >5s = skip tier",
+        "FLAME hit-rate tracked — >50% failures = demote"
       ]
     },
     "flame": {
@@ -88,9 +88,9 @@
         "tool_lane": "RM0-TOOLS-FREELOOP (14-tier, latency-first, RM0, zero governance)"
       },
       "control_gates": [
-        "FLAME CLI only \u2014 never via MCP tool",
+        "FLAME CLI only — never via MCP tool",
         "FLAME output never feeds arif_judge/arif_seal without human review",
-        "RM0 hard \u2014 paid models cannot enter chain",
+        "RM0 hard — paid models cannot enter chain",
         "All calls logged to /root/.local/share/flame/flame_hitrate.jsonl",
         "Agent MCP tools never route through FLAME",
         "FLAME output = evidence input only, FLAME never seals"
@@ -101,13 +101,13 @@
     "canonical_tiers_ref": "/root/AAA/registries/models/MODEL_TIERS.json",
     "route_column": {
       "added": "2026-07-29",
-      "reason": "SHADOW-TR-001 \u2014 TokenRouter gateway found to contaminate benchmarks",
+      "reason": "SHADOW-TR-001 — TokenRouter gateway found to contaminate benchmarks",
       "values": {
         "direct": "Model accessed via its own native API (e.g., api.deepseek.com)",
-        "tokenrouter": "Model accessed via TokenRouter gateway \u2014 +1-3s latency tax, ~1500 max_tokens cap",
-        "bailian": "Model accessed via Alibaba Bailian token plan \u2014 quota-limited, CN jurisdiction",
+        "tokenrouter": "Model accessed via TokenRouter gateway — +1-3s latency tax, ~1500 max_tokens cap",
+        "bailian": "Model accessed via Alibaba Bailian token plan — quota-limited, CN jurisdiction",
         "native": "Model accessed via its official provider API (e.g., api.moonshot.ai)",
-        "tokenrouter_only": "Direct API unavailable \u2014 all measurements are gateway-contaminated by necessity"
+        "tokenrouter_only": "Direct API unavailable — all measurements are gateway-contaminated by necessity"
       },
       "rule": "Every model benchmark, shadow, and capability claim must specify route. Without route, the claim is inadmissible (F2)."
     },
@@ -119,14 +119,24 @@
         "bailian": "variable, quota-dependent",
         "direct": "0 overhead (native API)",
         "native": "0 overhead (official provider API)",
-        "tokenrouter_only": "UNKNOWN \u2014 no direct API for comparison"
+        "tokenrouter_only": "UNKNOWN — no direct API for comparison"
       }
+    },
+    "zen_1_2_forged": {
+      "date": "2026-07-31",
+      "description": "required_runtime (Zen 1) + model_digest (Zen 2) added to all local Ollama entries",
+      "rules": [
+        "requires: local — do NOT silently fallback to cloud API",
+        "FAIL FAST on local model DOWN → 503, not cloud redirect",
+        "model_digest extracted from Ollama manifest where available",
+        "Validation: Docker Model Runner Jul 2026 confirmed model-as-artifact pattern"
+      ]
     }
   },
   "providers": [
     {
       "provider_id": "deepseek",
-      "provider_name": "DeepSeek (\u6df1\u5ea6\u6c42\u7d22)",
+      "provider_name": "DeepSeek (深度求索)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.deepseek.com/v1",
       "api_key_ref": "secrets::DEEPSEEK_API_KEY",
@@ -211,7 +221,7 @@
     },
     {
       "provider_id": "minimax",
-      "provider_name": "MiniMax (\u7a00\u5b87\u79d1\u6280 / Shanghai Xiyu Technology)",
+      "provider_name": "MiniMax (稀宇科技 / Shanghai Xiyu Technology)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.minimax.chat/v1",
       "api_key_ref": "secrets::MINIMAX_API_KEY",
@@ -309,9 +319,9 @@
       ],
       "last_verified": "2026-07-29",
       "promos": [
-        "Top up 7 get 3 free (30% off) \u2014 ends July 31",
+        "Top up 7 get 3 free (30% off) — ends July 31",
         "$200 developer credits available",
-        "Kimi K3 FREE tier \u2014 TokenRouter GPU cluster, limited-time"
+        "Kimi K3 FREE tier — TokenRouter GPU cluster, limited-time"
       ],
       "note": "Unified AI gateway. 117 models, OpenAI-compatible. Native /v1/chat/completions on .com domain. Critical: requires Accept+User-Agent headers. Kimi K3 FREE runs on own GPU cluster. Backup gateway to Bailian."
     },
@@ -347,7 +357,7 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "Free tier only. Fast inference (560-1000 t/s). Daily rate limits. Used for lightweight/fallback tasks. US jurisdiction \u2014 not for sovereign data.",
+      "note": "Free tier only. Fast inference (560-1000 t/s). Daily rate limits. Used for lightweight/fallback tasks. US jurisdiction — not for sovereign data.",
       "last_verified": "2026-07-20"
     },
     {
@@ -362,7 +372,7 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "Permanent free tier. 1,500 req/day, 10-15 RPM, 250K TPM. Gemini Flash models \u2014 best free baseline. Multimodal. Google account only, no credit card. US jurisdiction \u2014 not for sovereign data.",
+      "note": "Permanent free tier. 1,500 req/day, 10-15 RPM, 250K TPM. Gemini Flash models — best free baseline. Multimodal. Google account only, no credit card. US jurisdiction — not for sovereign data.",
       "last_verified": "2026-07-20"
     },
     {
@@ -382,7 +392,7 @@
     },
     {
       "provider_id": "kimi-moonshot",
-      "provider_name": "Moonshot AI / Kimi (\u6708\u4e4b\u6697\u9762)",
+      "provider_name": "Moonshot AI / Kimi (月之暗面)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.kimi.com/coding/v1",
       "api_endpoints": {
@@ -417,12 +427,12 @@
       "data_retention_days": 0,
       "cloud_act_exposed": false,
       "status": "ACTIVE",
-      "note": "Local CPU inference. Blind survival knife \u2014 works when all remote models are down. No API cost. Slow (4.5s cold start). Used for embeddings (bge-m3) and last-resort fallback.",
+      "note": "Local CPU inference. Blind survival knife — works when all remote models are down. No API cost. Slow (4.5s cold start). Used for embeddings (bge-m3) and last-resort fallback.",
       "last_verified": "2026-07-20"
     },
     {
       "provider_id": "openrouter",
-      "provider_name": "OpenRouter \u2014 Unified LLM Routing Layer",
+      "provider_name": "OpenRouter — Unified LLM Routing Layer",
       "jurisdiction": "US (Cloudflare Workers edge, configurable ZDR per model group)",
       "endpoint_url": "https://openrouter.ai/api/v1",
       "api_key_ref": "secrets::OPENROUTER_API_KEY",
@@ -434,7 +444,7 @@
       "zdr_supported": true,
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "PROMOTED 2026-07-24: from STANDBY \u2192 ACTIVE as unified routing layer. Provides: auto-routing (openrouter/auto-beta, task-classified across 38+ models), provider failover, model fallbacks, session stickiness, ZDR enforcement, guardrails (budget/model/provider allowlists, prompt injection detection, PII redaction), reasoning tokens, structured outputs, server tools (advisor, subagent, fusion, web search). Management key enables programmatic guardrail/budget/workspace control. US jurisdiction via Cloudflare Workers \u2014 use ZDR for sovereign data.",
+      "note": "PROMOTED 2026-07-24: from STANDBY → ACTIVE as unified routing layer. Provides: auto-routing (openrouter/auto-beta, task-classified across 38+ models), provider failover, model fallbacks, session stickiness, ZDR enforcement, guardrails (budget/model/provider allowlists, prompt injection detection, PII redaction), reasoning tokens, structured outputs, server tools (advisor, subagent, fusion, web search). Management key enables programmatic guardrail/budget/workspace control. US jurisdiction via Cloudflare Workers — use ZDR for sovereign data.",
       "last_verified": "2026-07-24",
       "balance_checked": "2026-07-30T14:19:05.177533+00:00"
     },
@@ -496,12 +506,12 @@
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
       "status": "ACTIVE",
-      "note": "Grok Build primary. US jurisdiction \u2014 not for sovereign data.",
+      "note": "Grok Build primary. US jurisdiction — not for sovereign data.",
       "last_verified": "2026-07-20"
     },
     {
       "provider_id": "zhipu-z-ai",
-      "provider_name": "Zhipu AI / Z.ai (\u667a\u8c31AI)",
+      "provider_name": "Zhipu AI / Z.ai (智谱AI)",
       "jurisdiction": "CN",
       "endpoint_url": "https://open.bigmodel.cn/api/paas/v4",
       "api_key_ref": null,
@@ -523,7 +533,7 @@
         "note": "Coding Plan Pro: flat $72/mo for predictable agentic coding bills"
       },
       "last_verified": "2026-07-29",
-      "note": "ADDED 2026-07-29 from tech-insider.org article. NOT yet registered as live provider \u2014 API key not acquired. Models accessed via Bailian Token Plan (cheaper: $0.30/$1.20). Z.ai direct at $1.40/$4.40 \u2014 4.7x more expensive than Bailian. Flat $72/mo Coding Plan Pro available. MIT open weights via zai-org/GLM-5 on Hugging Face.",
+      "note": "ADDED 2026-07-29 from tech-insider.org article. NOT yet registered as live provider — API key not acquired. Models accessed via Bailian Token Plan (cheaper: $0.30/$1.20). Z.ai direct at $1.40/$4.40 — 4.7x more expensive than Bailian. Flat $72/mo Coding Plan Pro available. MIT open weights via zai-org/GLM-5 on Hugging Face.",
       "registration_status": "pending_api_key"
     },
     {
@@ -612,7 +622,7 @@
       "cost_per_1m_input": 0.435,
       "cost_per_1m_output": 0.87,
       "cost_per_1m_input_cache_hit": 0.0036,
-      "cost_notes": "Direct DeepSeek API pricing. Bailian Token Plan resale at ~$0.55/$2.19. Cache hits at $0.0036/M \u2014 rewards prompt reuse. Third-party resale varies.",
+      "cost_notes": "Direct DeepSeek API pricing. Bailian Token Plan resale at ~$0.55/$2.19. Cache hits at $0.0036/M — rewards prompt reuse. Third-party resale varies.",
       "benchmark_highlights": {
         "coding": {
           "LiveCodeBench": "93.5% (#1 reported open-weight, mid-2026)",
@@ -679,7 +689,7 @@
       "censorship_profile": null,
       "fff_gate": {
         "tested_at": "2026-06-30",
-        "tested_by": "FORGE (000\u03a9)",
+        "tested_by": "FORGE (000Ω)",
         "G1_parse": "PASS",
         "G2_truth": "PASS",
         "G3_evidence": "PASS",
@@ -697,7 +707,7 @@
       "last_verified": "2026-07-29",
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026) + DeepSeek API docs",
-      "ingest_note": "MAX_OUTPUT corrected 131K\u2192384K per article + API docs. OPEN_WEIGHTS=true MIT license confirmed. Architecture 1.6T/49B MoE added. Pricing corrected to direct DS ($0.435/$0.87) from Bailian resale. Benchmarks added (LiveCodeBench 93.5%, SWE-bench 80.6%)."
+      "ingest_note": "MAX_OUTPUT corrected 131K→384K per article + API docs. OPEN_WEIGHTS=true MIT license confirmed. Architecture 1.6T/49B MoE added. Pricing corrected to direct DS ($0.435/$0.87) from Bailian resale. Benchmarks added (LiveCodeBench 93.5%, SWE-bench 80.6%)."
     },
     {
       "model_key": "deepseek/deepseek-v4-flash",
@@ -784,7 +794,7 @@
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
       "ingest_note": "OPEN_WEIGHTS=true MIT license confirmed. Cost corrected $0.14/$0.28. Architecture 1.6T/49B MoE added. Source: tech-insider.org Jul 27 2026.",
-      "note": "Current arifOS kernel LLM client model (TOKENROUTER_MODEL). Current OpenCode session model. Fast + cheap \u2014 good for ops, not for judging."
+      "note": "Current arifOS kernel LLM client model (TOKENROUTER_MODEL). Current OpenCode session model. Fast + cheap — good for ops, not for judging."
     },
     {
       "model_key": "minimax/MiniMax-M3",
@@ -866,7 +876,7 @@
       "censorship_profile": {
         "detected": true,
         "detected_at": "2026-06-12T14:30:00Z",
-        "detected_by": "FORGE (000\u03a9) \u2014 live API probe",
+        "detected_by": "FORGE (000Ω) — live API probe",
         "mechanism": "Server-side post-generation content filter. reasoning_content contains full facts, content emptied to empty string. finish_reason faked as 'length'.",
         "affected_topics": [
           "1MDB",
@@ -881,7 +891,7 @@
           "Non-controversial Malaysian biography"
         ],
         "mitigation": "Route Malaysian governance/political/corporate queries to DeepSeek. MiniMax kept for general/code/infra queries only.",
-        "risk_to_federation": "F2 TRUTH violation \u2014 censored output masquerades as model ignorance. F3 WITNESS violation \u2014 vendor silently alters evidence stream.",
+        "risk_to_federation": "F2 TRUTH violation — censored output masquerades as model ignorance. F3 WITNESS violation — vendor silently alters evidence stream.",
         "vendor_country": "CN (Shanghai Xiyu Technology Co., Ltd.)"
       },
       "fff_gate": null,
@@ -956,7 +966,7 @@
         "tested_at": "2026-06-30",
         "verdict": "HELD",
         "federation_fit": "KERNEL_ONLY",
-        "note": "G5 risk probe returned empty \u2014 UNTESTED"
+        "note": "G5 risk probe returned empty — UNTESTED"
       },
       "live_evidence": null,
       "soul_file_ref": "minimax_soul.yaml",
@@ -1108,7 +1118,7 @@
       "censorship_profile": null,
       "fff_gate": {
         "tested_at": "2026-06-30",
-        "tested_by": "FORGE (000\u03a9)",
+        "tested_by": "FORGE (000Ω)",
         "G1_parse": "PASS",
         "G2_truth": "PASS",
         "G3_evidence": "PASS",
@@ -1122,7 +1132,7 @@
       },
       "live_evidence": {
         "probed_at": "2026-06-15",
-        "probed_by": "FORGE (000\u03a9)",
+        "probed_by": "FORGE (000Ω)",
         "test_description": "15-call live probe, math word-problem test",
         "finding": "ONLY MiMo variant that reliably completes long-CoT answers. mimo-v2.5 and mimo-v2-pro both ran out of output budget mid-reasoning and returned empty content.",
         "verdict": "PASS"
@@ -1130,7 +1140,7 @@
       "soul_file_ref": "xiaomi_mimo_soul.yaml",
       "shadow_file_ref": "xiaomi_mimo_shadow.yaml",
       "last_verified": "2026-07-20",
-      "note": "Hermes primary conversational model. Only MiMo variant that completes long reasoning. 2x credit cost vs base \u2014 worth it for production. No censorship observed on MY topics."
+      "note": "Hermes primary conversational model. Only MiMo variant that completes long reasoning. 2x credit cost vs base — worth it for production. No censorship observed on MY topics."
     },
     {
       "model_key": "mimo/mimo-v2.5-pro-ultraspeed",
@@ -1199,7 +1209,7 @@
       "soul_file_ref": "xiaomi_mimo_soul.yaml",
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "1000 tok/s. Hermes DEFAULT model for fast-path queries. No deep thinking mode \u2014 use mimo-v2.5-pro for reasoning."
+      "note": "1000 tok/s. Hermes DEFAULT model for fast-path queries. No deep thinking mode — use mimo-v2.5-pro for reasoning."
     },
     {
       "model_key": "qwen/qwen3.7-max",
@@ -1271,13 +1281,13 @@
         "tested_at": "2026-06-30",
         "verdict": "HELD",
         "federation_fit": "KERNEL_ONLY",
-        "note": "G2 truth probe had endpoint error \u2014 UNTESTED"
+        "note": "G2 truth probe had endpoint error — UNTESTED"
       },
       "live_evidence": null,
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": "qwen_shadow.yaml",
       "last_verified": "2026-07-04",
-      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal \u2014 qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M \u2014 expensive."
+      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal — qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M — expensive."
     },
     {
       "model_key": "qwen/qwen3.6-flash",
@@ -1354,7 +1364,7 @@
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
-      "note": "OpenCode small_model default. 1M context, vision, web_search. Good value at $0.25/$1.50. Qwen3.6 family: Apache 2.0 open weights include 27B dense (18GB VRAM self-host), Coder-Next 80B MoE. See qwen3.6-plus for self-hosting notes. CORRECTION 2026-07-29: open_weights false\u2192true \u2014 conflation of 'API access type' with 'weight availability' fixed."
+      "note": "OpenCode small_model default. 1M context, vision, web_search. Good value at $0.25/$1.50. Qwen3.6 family: Apache 2.0 open weights include 27B dense (18GB VRAM self-host), Coder-Next 80B MoE. See qwen3.6-plus for self-hosting notes. CORRECTION 2026-07-29: open_weights false→true — conflation of 'API access type' with 'weight availability' fixed."
     },
     {
       "model_key": "qwen/qwen3.6-plus",
@@ -1430,7 +1440,7 @@
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
       "ingest_note": "Qwen3.6 family: open-weight variants (Apache 2.0) include 27B dense (18GB VRAM self-hostable), Coder-Next 80B MoE (3B active). SWE-bench Verified 77.2% (27B, third-party). AIME 2025 81.5%. Key advantage over DS/GLM: single-GPU self-hosting + Apache 2.0 patent grant clause for enterprise procurement.",
-      "note": "DISCOVERED during cheat sheet eval. Better than qwen3.6-flash at SAME price. Has thinking mode. Recommended as flash alternative for tasks needing reasoning. Qwen3.6 open-weight (Apache 2.0) includes self-hostable 27B dense variant (~18GB VRAM) \u2014 only model in this comparison that runs on a single consumer GPU."
+      "note": "DISCOVERED during cheat sheet eval. Better than qwen3.6-flash at SAME price. Has thinking mode. Recommended as flash alternative for tasks needing reasoning. Qwen3.6 open-weight (Apache 2.0) includes self-hostable 27B dense variant (~18GB VRAM) — only model in this comparison that runs on a single consumer GPU."
     },
     {
       "model_key": "qwen/qwen3.6-27b-dense",
@@ -1443,7 +1453,7 @@
       "architecture": {
         "type": "Dense Transformer",
         "total_parameters": "27B",
-        "activated_parameters": "27B (dense \u2014 all active per token)",
+        "activated_parameters": "27B (dense — all active per token)",
         "vram_required_gb": 18,
         "note": "Self-hostable on single consumer GPU (RTX 4090/5090). Apache 2.0 weights via Qwen org on Hugging Face."
       },
@@ -1462,7 +1472,7 @@
       "weights_repo": "Qwen/Qwen3.6",
       "cost_per_1m_input": 0,
       "cost_per_1m_output": 0,
-      "cost_notes": "FREE \u2014 self-hosted. Only costs electricity + GPU amortization.",
+      "cost_notes": "FREE — self-hosted. Only costs electricity + GPU amortization.",
       "benchmark_highlights": {
         "coding": {
           "SWE_bench_Verified": "77.2% (third-party, 27B dense)"
@@ -1523,7 +1533,7 @@
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": "qwen_shadow.yaml",
       "last_verified": "2026-07-29",
-      "note": "REGISTERED 2026-07-29 from tech-insider.org deep audit. Qwen3.6 27B dense is the ONLY model in the Big Three open-weight comparison that self-hosts on a single consumer GPU (~18GB VRAM). Apache 2.0 with patent grant \u2014 clears enterprise legal faster than MIT. NOT currently running on af-forge \u2014 needs Ollama pull + 18GB GPU."
+      "note": "REGISTERED 2026-07-29 from tech-insider.org deep audit. Qwen3.6 27B dense is the ONLY model in the Big Three open-weight comparison that self-hosts on a single consumer GPU (~18GB VRAM). Apache 2.0 with patent grant — clears enterprise legal faster than MIT. NOT currently running on af-forge — needs Ollama pull + 18GB GPU."
     },
     {
       "model_key": "glm/glm-5.2",
@@ -1618,7 +1628,7 @@
       "censorship_profile": {
         "detected": false,
         "probed_at": "2026-07-29T11:50:00Z",
-        "probed_by": "FORGE (000\u03a9) \u2014 OpenCode Zen endpoint",
+        "probed_by": "FORGE (000Ω) — OpenCode Zen endpoint",
         "methodology": "6-test Malaysian governance probe (same battery that caught MiniMax M3 censorship)",
         "topics_tested": [
           "1MDB",
@@ -1628,26 +1638,26 @@
           "Khazanah Nasional",
           "Anwar Ibrahim"
         ],
-        "result": "ALL PASS \u2014 full factual answers, no censorship, no refusal",
-        "verdict": "CLEAN \u2014 ZERO Malaysian governance censorship detected",
+        "result": "ALL PASS — full factual answers, no censorship, no refusal",
+        "verdict": "CLEAN — ZERO Malaysian governance censorship detected",
         "contrast": "Unlike MiniMax M3 (returns empty content with faked finish_reason), GLM-5.2 returned substantive factual answers for all MY governance topics"
       },
       "fff_gate": null,
       "live_evidence": {
         "probed_at": "2026-07-29T11:50:00Z",
-        "probed_by": "FORGE (000\u03a9)",
+        "probed_by": "FORGE (000Ω)",
         "provider": "opencode-zen",
         "test_description": "6-test MY governance censorship probe",
         "result": "6/6 PASS. No censorship detected. All answers factual and substantive.",
-        "verdict": "CLEAN \u2014 eligible for constitutional roles"
+        "verdict": "CLEAN — eligible for constitutional roles"
       },
       "soul_file_ref": "zhipu_glm_soul.yaml",
       "shadow_file_ref": "zhipu_glm_shadow.yaml",
       "last_verified": "2026-07-29",
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
-      "ingest_note": "MAJOR CORRECTION: context 202K\u21921M, max_output 65K\u2192131K, open_weights false\u2192true (MIT). Architecture 753B/~40B MoE added. Benchmarks added: SWE-bench Pro 62.1%, Terminal-Bench 2.1 81.0%, AIME 99.2%. Z.ai provider + pricing tiers documented. Shadow GLM-001 stale '200K context' reference fixed.",
-      "note": "PROMOTED 2026-07-29: 6/6 CLEAN on MY governance probe via OpenCode Zen. Now eligible for 666_JUDGE and 999_SEAL backup roles. FIRST model besides DeepSeek V4 Pro to achieve this. 753B MoE (~40B active), 1M ctx, MIT open weights. Leads SWE-bench Pro (62.1%) and Terminal-Bench (81.0%). Accessed via OpenCode Zen (PAYG) \u2014 $glm-5.2 model ID."
+      "ingest_note": "MAJOR CORRECTION: context 202K→1M, max_output 65K→131K, open_weights false→true (MIT). Architecture 753B/~40B MoE added. Benchmarks added: SWE-bench Pro 62.1%, Terminal-Bench 2.1 81.0%, AIME 99.2%. Z.ai provider + pricing tiers documented. Shadow GLM-001 stale '200K context' reference fixed.",
+      "note": "PROMOTED 2026-07-29: 6/6 CLEAN on MY governance probe via OpenCode Zen. Now eligible for 666_JUDGE and 999_SEAL backup roles. FIRST model besides DeepSeek V4 Pro to achieve this. 753B MoE (~40B active), 1M ctx, MIT open weights. Leads SWE-bench Pro (62.1%) and Terminal-Bench (81.0%). Accessed via OpenCode Zen (PAYG) — $glm-5.2 model ID."
     },
     {
       "model_key": "kimi/kimi-for-coding",
@@ -1962,7 +1972,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
-      "note": "FREE. SG jurisdiction \u2014 best data sovereignty for ASEAN. BM/Malay native. 10 RPM limit. Small context (32K). Best for observation/translation, NOT for judgment or execution."
+      "note": "FREE. SG jurisdiction — best data sovereignty for ASEAN. BM/Malay native. 10 RPM limit. Small context (32K). Best for observation/translation, NOT for judgment or execution."
     },
     {
       "model_key": "sea-lion/Llama-SEA-LION-v3-70B-IT",
@@ -2035,7 +2045,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
-      "note": "FREE. 70B class \u2014 strongest SEA-LION reasoning. Best for complex ASEAN-relevant analysis. 10 RPM limit. API corrected from v3.5-70B-R to v3-70B-IT 2026-07-20."
+      "note": "FREE. 70B class — strongest SEA-LION reasoning. Best for complex ASEAN-relevant analysis. 10 RPM limit. API corrected from v3.5-70B-R to v3-70B-IT 2026-07-20."
     },
     {
       "model_key": "groq/llama-3.1-8b-instant",
@@ -2107,7 +2117,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE. 560 tok/s \u2014 fastest model in federation. US jurisdiction (CLOUD Act). OpenCode default model (overridden by session to deepseek-v4-pro). Good for trivial queries, NOT for anything sovereign."
+      "note": "FREE. 560 tok/s — fastest model in federation. US jurisdiction (CLOUD Act). OpenCode default model (overridden by session to deepseek-v4-pro). Good for trivial queries, NOT for anything sovereign."
     },
     {
       "model_key": "ollama/qwen2.5-coder:3b",
@@ -2178,7 +2188,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "LOCAL. Blind survival knife \u2014 works when ALL remote models are down. 3B params, slow (4.5s cold). Hermes last-resort fallback. RECOVERY subagent model. NEVER for judgment or seal."
+      "note": "LOCAL. Blind survival knife — works when ALL remote models are down. 3B params, slow (4.5s cold). Hermes last-resort fallback. RECOVERY subagent model. NEVER for judgment or seal."
     },
     {
       "model_key": "groq/llama-3.3-70b-versatile",
@@ -2247,7 +2257,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Groq. 280 tok/s. 1K req/day limit. US jurisdiction \u2014 not for sovereign data. OpenClaw fallback #2."
+      "note": "FREE via Groq. 280 tok/s. 1K req/day limit. US jurisdiction — not for sovereign data. OpenClaw fallback #2."
     },
     {
       "model_key": "kimi/kimi-for-coding",
@@ -2389,7 +2399,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Codex CLI primary model. Via TokenRouter (openai/gpt-5.6-sol). Expensive ($3/$12 per 1M). US jurisdiction \u2014 never for sovereign data. DeepSeek V4 Pro as fallback."
+      "note": "Codex CLI primary model. Via TokenRouter (openai/gpt-5.6-sol). Expensive ($3/$12 per 1M). US jurisdiction — never for sovereign data. DeepSeek V4 Pro as fallback."
     },
     {
       "model_key": "xai/grok-4.5",
@@ -2534,7 +2544,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Permanent free tier. Best free LLM baseline in 2026. Multimodal (text+image+audio). 1M context. US jurisdiction \u2014 not for sovereign data. Google account key \u2014 already in vault.env::GEMINI_API_KEY."
+      "note": "Permanent free tier. Best free LLM baseline in 2026. Multimodal (text+image+audio). 1M context. US jurisdiction — not for sovereign data. Google account key — already in vault.env::GEMINI_API_KEY."
     },
     {
       "model_key": "gemini/gemini-3-flash",
@@ -2676,7 +2686,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). Gemma-4 31B \u2014 Google's open model on Cerebras wafer-scale hardware. Ultra-fast inference. Hermes fallback chain. EXPIRING Aug 20 2026 \u2014 Cerebras credit expires. Will be DEAD after that date."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). Gemma-4 31B — Google's open model on Cerebras wafer-scale hardware. Ultra-fast inference. Hermes fallback chain. EXPIRING Aug 20 2026 — Cerebras credit expires. Will be DEAD after that date."
     },
     {
       "model_key": "cerebras/gpt-oss-120b",
@@ -2751,7 +2761,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GPT-OSS-120B \u2014 failed G2 Truth in FFF. Use with JSON-mode contract only. NOT for sovereign truth paths. US jurisdiction. EXPIRING Aug 20 2026 \u2014 Cerebras credit expires. Will be DEAD after that date."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GPT-OSS-120B — failed G2 Truth in FFF. Use with JSON-mode contract only. NOT for sovereign truth paths. US jurisdiction. EXPIRING Aug 20 2026 — Cerebras credit expires. Will be DEAD after that date."
     },
     {
       "model_key": "cerebras/zai-glm-4.7",
@@ -2821,7 +2831,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GLM-4.7 \u2014 Zhipu's agentic engineering model. Has thinking mode. Best Cerebras model for reasoning tasks. EXPIRING Aug 20 2026 \u2014 Cerebras credit expires. Will be DEAD after that date."
+      "note": "FREE via Cerebras $5 credit (expires Aug 20 2026). GLM-4.7 — Zhipu's agentic engineering model. Has thinking mode. Best Cerebras model for reasoning tasks. EXPIRING Aug 20 2026 — Cerebras credit expires. Will be DEAD after that date."
     },
     {
       "model_key": "groq/openai/gpt-oss-120b",
@@ -2890,7 +2900,7 @@
         "tested_at": "2026-06-30",
         "verdict": "ACTIVE_FALLBACK",
         "federation_fit": "KERNEL_ONLY",
-        "note": "Failed G2 Truth \u2014 fabricated historical event. Use JSON-mode only."
+        "note": "Failed G2 Truth — fabricated historical event. Use JSON-mode only."
       },
       "live_evidence": {
         "probed_at": "2026-07-20",
@@ -2900,7 +2910,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via Groq LPU (500 tok/s). GPT-OSS-120B \u2014 failed G2 Truth in FFF. Use with JSON-mode contract. NOT for sovereign truth paths. US jurisdiction. Different provider from Cerebras version \u2014 same model weights, different hardware."
+      "note": "FREE via Groq LPU (500 tok/s). GPT-OSS-120B — failed G2 Truth in FFF. Use with JSON-mode contract. NOT for sovereign truth paths. US jurisdiction. Different provider from Cerebras version — same model weights, different hardware."
     },
     {
       "model_key": "sea-lion/Gemma-SEA-LION-v4-27B-IT",
@@ -2974,7 +2984,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
-      "note": "FREE. SG jurisdiction. Gemma-4 27B \u2014 fastest SEA-LION. Good for lightweight ASEAN context tasks. 10 RPM. 32K context."
+      "note": "FREE. SG jurisdiction. Gemma-4 27B — fastest SEA-LION. Good for lightweight ASEAN context tasks. 10 RPM. 32K context."
     },
     {
       "model_key": "sea-lion/Llama-SEA-LION-v3.5-70B-R",
@@ -2997,7 +3007,7 @@
       "license": "Apache 2.0",
       "cost_per_1m_input": 0,
       "cost_per_1m_output": 0,
-      "cost_notes": "FREE \u2014 trial key, 10 RPM limit",
+      "cost_notes": "FREE — trial key, 10 RPM limit",
       "status": "LIVE",
       "trust_tier": 2,
       "suitable_for": [
@@ -3017,7 +3027,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
-      "note": "NEW entry 2026-07-29. SEA-LION v3.5 70B reasoning variant. SG jurisdiction \u2014 best data sovereignty for ASEAN. Free trial key."
+      "note": "NEW entry 2026-07-29. SEA-LION v3.5 70B reasoning variant. SG jurisdiction — best data sovereignty for ASEAN. Free trial key."
     },
     {
       "model_key": "sea-lion/Qwen-SEA-LION-v4.5-27B-IT",
@@ -3040,7 +3050,7 @@
       "license": "Apache 2.0",
       "cost_per_1m_input": 0,
       "cost_per_1m_output": 0,
-      "cost_notes": "FREE \u2014 trial key, 10 RPM limit",
+      "cost_notes": "FREE — trial key, 10 RPM limit",
       "status": "LIVE",
       "trust_tier": 2,
       "suitable_for": [
@@ -3133,7 +3143,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE. Google Gemini Flash Lite \u2014 replaced rate-limited 2.0-flash. 1M context. 1,500 req/day. Lightest Gemini. US jurisdiction. For trivial queries only."
+      "note": "FREE. Google Gemini Flash Lite — replaced rate-limited 2.0-flash. 1M context. 1,500 req/day. Lightest Gemini. US jurisdiction. For trivial queries only."
     },
     {
       "model_key": "opencode-go/deepseek-v4-flash-free",
@@ -3207,7 +3217,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via OpenCode Go (Xiaomi Token Plan free tier). DeepSeek V4 Flash \u2014 fast coding model. 64K context. Use for code generation and simple queries on free tier."
+      "note": "FREE via OpenCode Go (Xiaomi Token Plan free tier). DeepSeek V4 Flash — fast coding model. 64K context. Use for code generation and simple queries on free tier."
     },
     {
       "model_key": "opencode-go/north-mini-code-free",
@@ -3281,7 +3291,7 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "FREE via OpenCode Go. North Mini Code \u2014 smallest coding model. 32K context. For trivial code completions only. Trust tier 4 \u2014 never for anything important."
+      "note": "FREE via OpenCode Go. North Mini Code — smallest coding model. 32K context. For trivial code completions only. Trust tier 4 — never for anything important."
     },
     {
       "model_key": "openrouter/auto-beta",
@@ -3346,7 +3356,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24. Task-classified router: classify\u2192rank by community spend\u2192dial cost/quality\u2192route with fallbacks. 38+ models. cqt=9 default (cheap), cqt=0 for max quality. Session stickiness pins model+provider per conversation."
+      "note": "ADDED 2026-07-24. Task-classified router: classify→rank by community spend→dial cost/quality→route with fallbacks. 38+ models. cqt=9 default (cheap), cqt=0 for max quality. Session stickiness pins model+provider per conversation."
     },
     {
       "model_key": "openrouter/auto",
@@ -3562,7 +3572,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24 (Path A \u2014 auto-beta SPOF distribution). Live-verified on OR catalog. Explicit reasoning fallback that survives auto-beta discontinuation."
+      "note": "ADDED 2026-07-24 (Path A — auto-beta SPOF distribution). Live-verified on OR catalog. Explicit reasoning fallback that survives auto-beta discontinuation."
     },
     {
       "model_key": "google/gemini-2.5-flash",
@@ -3619,7 +3629,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. US jurisdiction \u2014 not for sovereign data. Fast explicit fallback independent of auto-beta."
+      "note": "ADDED 2026-07-24 (Path A). Live-verified on OR catalog. US jurisdiction — not for sovereign data. Fast explicit fallback independent of auto-beta."
     },
     {
       "model_key": "moonshotai/kimi-k3",
@@ -3819,7 +3829,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24. OR ~ alias \u2014 always latest Sonnet. Live-verified. US jurisdiction."
+      "note": "ADDED 2026-07-24. OR ~ alias — always latest Sonnet. Live-verified. US jurisdiction."
     },
     {
       "model_key": "~google/gemini-flash-latest",
@@ -3871,7 +3881,7 @@
       "identity_verified": false,
       "censorship_profile": null,
       "fff_gate": null,
-      "note": "ADDED 2026-07-24. OR ~ alias \u2014 always latest Gemini Flash. Live-verified. US jurisdiction."
+      "note": "ADDED 2026-07-24. OR ~ alias — always latest Gemini Flash. Live-verified. US jurisdiction."
     },
     {
       "model_key": "nvidia/nemotron-3-super-120b-a12b:free",
@@ -3970,7 +3980,7 @@
         "rate-limited",
         "US-jurisdiction"
       ],
-      "description": "OpenRouter :free aggregator \u2014 bridges FLAME to free models the federation can't access directly (Cohere, InclusionAI, Poolside). RATE-LIMITED: 20rpm/50rpd (1000rpd after $10 lifetime). Last-resort gap-filler only."
+      "description": "OpenRouter :free aggregator — bridges FLAME to free models the federation can't access directly (Cohere, InclusionAI, Poolside). RATE-LIMITED: 20rpm/50rpd (1000rpd after $10 lifetime). Last-resort gap-filler only."
     },
     {
       "model_key": "mulerouter/qwen3-omni-flash",
@@ -4111,7 +4121,7 @@
       "shadow_name": "reasoning_overconfidence",
       "severity": "MEDIUM",
       "class": "overclaim",
-      "pattern": "DeepSeek's chain-of-thought is strong but can produce overconfident conclusions. The model may treat probabilistic inferences as certainties. In agentic loops, this compounds: confident wrong answer \u2192 confident wrong action \u2192 confident wrong memory.",
+      "pattern": "DeepSeek's chain-of-thought is strong but can produce overconfident conclusions. The model may treat probabilistic inferences as certainties. In agentic loops, this compounds: confident wrong answer → confident wrong action → confident wrong memory.",
       "triggers": [
         "complex_reasoning",
         "multi_step",
@@ -4137,7 +4147,7 @@
       "shadow_name": "chinese_centric_alignment",
       "severity": "LOW",
       "class": "culture_mismatch",
-      "pattern": "DeepSeek's safety alignment is tuned for Chinese regulatory context. This may produce unexpected refusals or compliance behaviors in Malaysian/southeast Asian contexts. Not malicious \u2014 cultural mismatch.",
+      "pattern": "DeepSeek's safety alignment is tuned for Chinese regulatory context. This may produce unexpected refusals or compliance behaviors in Malaysian/southeast Asian contexts. Not malicious — cultural mismatch.",
       "triggers": [
         "malaysian_context",
         "bm_politics",
@@ -4195,7 +4205,7 @@
       },
       "mitigation": [
         "Monitor balance via /user/balance endpoint",
-        "Maintain fallback chain: deepseek-v4-flash \u2192 MiniMax M3 \u2192 ollama",
+        "Maintain fallback chain: deepseek-v4-flash → MiniMax M3 → ollama",
         "Alert sovereign before balance drops below $2.00"
       ],
       "evidence": "Previous 402 outage 2026-06-12. Fully resolved with $7.06 top-up.",
@@ -4208,7 +4218,7 @@
       "shadow_name": "malaysian_governance_censorship",
       "severity": "CRITICAL",
       "class": "censorship",
-      "pattern": "MiniMax server-side filter silently empties responses on Malaysian governance topics. reasoning_content contains accurate facts but content is emptied. Model appears to 'not know' when it actually knows. This is deceptive \u2014 it violates F2 TRUTH and F3 WITNESS.",
+      "pattern": "MiniMax server-side filter silently empties responses on Malaysian governance topics. reasoning_content contains accurate facts but content is emptied. Model appears to 'not know' when it actually knows. This is deceptive — it violates F2 TRUTH and F3 WITNESS.",
       "triggers": [
         "1MDB",
         "Najib",
@@ -4275,9 +4285,9 @@
         "F13_SOVEREIGN": "standard"
       },
       "mitigation": [
-        "MY governance probe PASSED \u2014 censorship risk RESOLVED",
+        "MY governance probe PASSED — censorship risk RESOLVED",
         "GLM-5.2 promoted to 666_JUDGE and 999_SEAL backup",
-        "CN jurisdiction remains \u2014 periodic re-probe recommended"
+        "CN jurisdiction remains — periodic re-probe recommended"
       ],
       "evidence": "Zhipu = CN company. No MY governance probe results yet.",
       "scar_ref": null,
@@ -4289,7 +4299,7 @@
       "shadow_name": "reasoning_output_budget",
       "severity": "MEDIUM",
       "class": "capability_gap",
-      "pattern": "MiMo V2.5 Pro's thinking mode consumes output budget for reasoning chain. Base v2.5 and v2-pro variants regularly exhaust output budget mid-reasoning and return empty content. Pro variant is the ONLY one that reliably completes long-CoT answers. This means fallback to base variants produces silent failures \u2014 empty output, not error.",
+      "pattern": "MiMo V2.5 Pro's thinking mode consumes output budget for reasoning chain. Base v2.5 and v2-pro variants regularly exhaust output budget mid-reasoning and return empty content. Pro variant is the ONLY one that reliably completes long-CoT answers. This means fallback to base variants produces silent failures — empty output, not error.",
       "triggers": [
         "long_reasoning",
         "thinking_mode",
@@ -4302,7 +4312,7 @@
       "mitigation": [
         "ALWAYS use pro variant for reasoning tasks",
         "Base v2.5 allowed ONLY as in-provider fallback for cheap trivial queries",
-        "Legacy v2-pro BANNED entirely \u2014 will hard-fail after 2026-06-30"
+        "Legacy v2-pro BANNED entirely — will hard-fail after 2026-06-30"
       ],
       "evidence": "15-call live probe 2026-06-15. mimo-v2.5-pro = PASS. mimo-v2.5 + mimo-v2-pro = FAIL (empty output).",
       "scar_ref": null,
@@ -4339,7 +4349,7 @@
       "shadow_name": "us_jurisdiction_small_model",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "Groq runs on US infrastructure \u2014 CLOUD Act applies. Data passing through Groq is legally accessible to US authorities. Model is only 8B parameters \u2014 cannot handle complex reasoning. Free tier: 14K requests/day limit. Fast (560 tok/s) but shallow.",
+      "pattern": "Groq runs on US infrastructure — CLOUD Act applies. Data passing through Groq is legally accessible to US authorities. Model is only 8B parameters — cannot handle complex reasoning. Free tier: 14K requests/day limit. Fast (560 tok/s) but shallow.",
       "triggers": [
         "sovereign_data",
         "malaysian_governance",
@@ -4352,7 +4362,7 @@
       "mitigation": [
         "NEVER send sovereign, PETRONAS, or personally identifiable data through Groq",
         "Use only for trivial queries, routing, greetings",
-        "Treat as disposable \u2014 US jurisdiction means zero data sovereignty"
+        "Treat as disposable — US jurisdiction means zero data sovereignty"
       ],
       "evidence": "Groq HQ = Mountain View, CA. CLOUD Act applies to all US-domiciled providers.",
       "scar_ref": null,
@@ -4364,7 +4374,7 @@
       "shadow_name": "credit_expiry_aug20",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "Cerebras runs on $5 free credit expiring Aug 20 2026. After expiry, all Cerebras models become unavailable. US jurisdiction \u2014 CLOUD Act applies. GLM-4.7 is CN-origin model on US hardware \u2014 dual jurisdiction risk.",
+      "pattern": "Cerebras runs on $5 free credit expiring Aug 20 2026. After expiry, all Cerebras models become unavailable. US jurisdiction — CLOUD Act applies. GLM-4.7 is CN-origin model on US hardware — dual jurisdiction risk.",
       "triggers": [
         "credit_expired",
         "aug_20_2026",
@@ -4375,9 +4385,9 @@
         "F13_SOVEREIGN": "note"
       },
       "mitigation": [
-        "Pakai dulu sebelum habis \u2014 30 hari je",
+        "Pakai dulu sebelum habis — 30 hari je",
         "Plan fallback path before Aug 20",
-        "US jurisdiction \u2014 no sovereign data"
+        "US jurisdiction — no sovereign data"
       ],
       "evidence": "Cerebras API: $5 credit, expires 2026-08-20. Live probe 2026-07-20.",
       "scar_ref": null,
@@ -4389,7 +4399,7 @@
       "shadow_name": "small_context_trial_key",
       "severity": "LOW",
       "class": "capability_gap",
-      "pattern": "SEA-LION runs on trial key with 10 RPM limit. Context window is only 32K \u2014 cannot process large documents. 32B model is competent for BM/Malay but cannot handle complex multi-step reasoning. SG jurisdiction is preferred for ASEAN data sovereignty.",
+      "pattern": "SEA-LION runs on trial key with 10 RPM limit. Context window is only 32K — cannot process large documents. 32B model is competent for BM/Malay but cannot handle complex multi-step reasoning. SG jurisdiction is preferred for ASEAN data sovereignty.",
       "triggers": [
         "large_document",
         "high_throughput",
@@ -4401,7 +4411,7 @@
       "mitigation": [
         "Use for BM/Malay translation and ASEAN cultural context only",
         "Route large documents to deepseek-v4-pro (1M context)",
-        "10 RPM limit \u2014 batch requests carefully"
+        "10 RPM limit — batch requests carefully"
       ],
       "evidence": "SEA-LION API docs: 10 RPM, 32K context. Trial key. Production observation.",
       "scar_ref": null,
@@ -4413,7 +4423,7 @@
       "shadow_name": "cn_jurisdiction_untested_censorship",
       "severity": "MEDIUM",
       "class": "culture_mismatch",
-      "pattern": "Kimi K2.7 Code is Moonshot AI \u2014 CN jurisdiction. Malaysian governance censorship profile UNTESTED. Open weights (reported) but API endpoint is proprietary. TokenRouter routing failed for this model (400 Bad Request) \u2014 works via Bailian Token Plan.",
+      "pattern": "Kimi K2.7 Code is Moonshot AI — CN jurisdiction. Malaysian governance censorship profile UNTESTED. Open weights (reported) but API endpoint is proprietary. TokenRouter routing failed for this model (400 Bad Request) — works via Bailian Token Plan.",
       "triggers": [
         "malaysian_governance",
         "tokenrouter_routing",
@@ -4438,7 +4448,7 @@
       "shadow_name": "blind_survival_knife",
       "severity": "LOW",
       "class": "capability_gap",
-      "pattern": "Ollama is a 3B parameter model running locally on CPU. It is NOT capable of reasoning, judgment, planning, or any complex task. It exists ONLY as a blind survival knife \u2014 when ALL remote models are down, it can still respond. 4.5s cold start. Single concurrency. 32K context max. Output limited to 2K tokens.",
+      "pattern": "Ollama is a 3B parameter model running locally on CPU. It is NOT capable of reasoning, judgment, planning, or any complex task. It exists ONLY as a blind survival knife — when ALL remote models are down, it can still respond. 4.5s cold start. Single concurrency. 32K context max. Output limited to 2K tokens.",
       "triggers": [
         "any_complex_task",
         "reasoning",
@@ -4453,7 +4463,7 @@
       },
       "mitigation": [
         "NEVER use as primary for any agent",
-        "Last resort only \u2014 when every remote model returns errors",
+        "Last resort only — when every remote model returns errors",
         "Output must be treated as LOW confidence regardless of content"
       ],
       "evidence": "3B params. CPU inference on af-forge VPS. Cold start: 4.5s. Slow generation. Production observation.",
@@ -4466,7 +4476,7 @@
       "shadow_name": "us_jurisdiction_expensive",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "GPT-5.6-Sol via TokenRouter/OpenRouter. US jurisdiction \u2014 CLOUD Act applies. Most expensive model in federation ($3/$12 per 1M tokens). Used by Codex CLI only. Not probed for Malaysian governance topics.",
+      "pattern": "GPT-5.6-Sol via TokenRouter/OpenRouter. US jurisdiction — CLOUD Act applies. Most expensive model in federation ($3/$12 per 1M tokens). Used by Codex CLI only. Not probed for Malaysian governance topics.",
       "triggers": [
         "sovereign_data",
         "cost_sensitive",
@@ -4477,8 +4487,8 @@
         "F13_SOVEREIGN": "elevated"
       },
       "mitigation": [
-        "Codex CLI only \u2014 do not expand usage",
-        "US jurisdiction \u2014 no sovereign data",
+        "Codex CLI only — do not expand usage",
+        "US jurisdiction — no sovereign data",
         "DeepSeek V4 Pro as fallback for cost-sensitive and sovereign tasks"
       ],
       "evidence": "TokenRouter pricing. US jurisdiction via OpenRouter. Codex CLI primary model.",
@@ -4501,8 +4511,8 @@
         "F13_SOVEREIGN": "elevated"
       },
       "mitigation": [
-        "Free tier only \u2014 best-effort fallback",
-        "US jurisdiction \u2014 no sovereign data"
+        "Free tier only — best-effort fallback",
+        "US jurisdiction — no sovereign data"
       ],
       "evidence": "Google AI free tier: 1,500 RPM/day. US jurisdiction.",
       "scar_ref": null,
@@ -4514,7 +4524,7 @@
       "shadow_name": "us_jurisdiction_rate_limited",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "Llama 3.3 70B on Groq \u2014 US jurisdiction. 1,000 req/day limit. 280 tok/s.",
+      "pattern": "Llama 3.3 70B on Groq — US jurisdiction. 1,000 req/day limit. 280 tok/s.",
       "triggers": [
         "sovereign_data",
         "exceeded_daily_limit"
@@ -4525,7 +4535,7 @@
       },
       "mitigation": [
         "OpenClaw fallback only",
-        "US jurisdiction \u2014 no sovereign data"
+        "US jurisdiction — no sovereign data"
       ],
       "evidence": "Groq free tier limits. US jurisdiction.",
       "scar_ref": null,
@@ -4537,7 +4547,7 @@
       "shadow_name": "cn_jurisdiction_2.8t_ingested",
       "severity": "MEDIUM",
       "class": "culture_mismatch",
-      "pattern": "Kimi K3 2.8T flagship \u2014 CN jurisdiction. 1M context. Architecture: KDA (Kim Delta Attention) + AttnRes (Attention Residuals), 16/896 MoE experts. Always-thinking enabled. Open-source weights released July 27 2026. MY governance censorship UNTESTED. TokenRouter verified 2026-07-29: vLLM tp8 serving, reasoning_effort=low/max works, gateway caps max_tokens ~1500 (vs native 1M). FREE tier on TokenRouter GPU cluster.",
+      "pattern": "Kimi K3 2.8T flagship — CN jurisdiction. 1M context. Architecture: KDA (Kim Delta Attention) + AttnRes (Attention Residuals), 16/896 MoE experts. Always-thinking enabled. Open-source weights released July 27 2026. MY governance censorship UNTESTED. TokenRouter verified 2026-07-29: vLLM tp8 serving, reasoning_effort=low/max works, gateway caps max_tokens ~1500 (vs native 1M). FREE tier on TokenRouter GPU cluster.",
       "triggers": [
         "malaysian_governance",
         "censorship_unknown",
@@ -4567,7 +4577,7 @@
       "shadow_name": "direct_endpoint_divergence",
       "severity": "LOW",
       "class": "capability_gap",
-      "pattern": "Native Moonshot API vs Bailian \u2014 same model, different gateway may differ in rate limits or behavior.",
+      "pattern": "Native Moonshot API vs Bailian — same model, different gateway may differ in rate limits or behavior.",
       "triggers": [
         "behavior_divergence"
       ],
@@ -4596,7 +4606,7 @@
         "F2_TRUTH": "note"
       },
       "mitigation": [
-        "Legacy \u2014 OpenClaw fallback #6 only",
+        "Legacy — OpenClaw fallback #6 only",
         "Prefer M3 for multimodal"
       ],
       "evidence": "FFF smoke G5 UNTESTED. Legacy model.",
@@ -4619,7 +4629,7 @@
       },
       "mitigation": [
         "OPS fallback only",
-        "131K context \u2014 segment carefully"
+        "131K context — segment carefully"
       ],
       "evidence": "Bailian Token Plan pricing. Low cost = low capability.",
       "scar_ref": null,
@@ -4631,7 +4641,7 @@
       "shadow_name": "us_jurisdiction_yolo_mode",
       "severity": "MEDIUM",
       "class": "infrastructure_risk",
-      "pattern": "xAI Grok 4.5 \u2014 US jurisdiction. CLOUD Act. YOLO mode. 500K context. Free speech absolutist posture.",
+      "pattern": "xAI Grok 4.5 — US jurisdiction. CLOUD Act. YOLO mode. 500K context. Free speech absolutist posture.",
       "triggers": [
         "sovereign_data",
         "malaysian_governance"
@@ -4641,8 +4651,8 @@
         "F13_SOVEREIGN": "elevated"
       },
       "mitigation": [
-        "Grok Build only \u2014 isolated",
-        "US jurisdiction \u2014 no sovereign data"
+        "Grok Build only — isolated",
+        "US jurisdiction — no sovereign data"
       ],
       "evidence": "xAI = US. YOLO mode active.",
       "scar_ref": null,
@@ -4654,7 +4664,7 @@
       "shadow_name": "content_safety_suppression",
       "severity": "HIGH",
       "class": "censorship",
-      "pattern": "GPT-OSS-120B on Groq LPU has a content safety filter that suppresses benign responses (\"OK\"). Model returns empty content for simple prompts. NOT a connectivity issue \u2014 model is live but refuses output. This is the same model that failed G2 Truth in FFF (fabricated historical event).",
+      "pattern": "GPT-OSS-120B on Groq LPU has a content safety filter that suppresses benign responses (\"OK\"). Model returns empty content for simple prompts. NOT a connectivity issue — model is live but refuses output. This is the same model that failed G2 Truth in FFF (fabricated historical event).",
       "triggers": [
         "simple_prompts",
         "content_safety",
@@ -4703,7 +4713,7 @@
       "shadow_name": "content_safety_suppression_cerebras",
       "severity": "HIGH",
       "class": "censorship",
-      "pattern": "GPT-OSS-120B on Cerebras has content safety filter suppressing benign output \u2014 same behavior as Groq version. 312ms response but suppressed content. Model is live but refuses simple prompts.",
+      "pattern": "GPT-OSS-120B on Cerebras has content safety filter suppressing benign output — same behavior as Groq version. 312ms response but suppressed content. Model is live but refuses simple prompts.",
       "triggers": [
         "simple_prompts",
         "content_safety"
@@ -4715,7 +4725,7 @@
       "mitigation": [
         "JSON-mode contract only",
         "Never for truth-critical paths",
-        "Both Groq and Cerebras versions affected \u2014 model-level issue, not provider"
+        "Both Groq and Cerebras versions affected — model-level issue, not provider"
       ],
       "evidence": "FLAME audit 2026-07-20 + FFF smoke G2 FAIL. Content safety affects both providers.",
       "scar_ref": null,
@@ -4737,9 +4747,9 @@
         "F2_TRUTH": "standard"
       },
       "mitigation": [
-        "RESOLVED \u2014 GLM-5.2 is clean. Promoted to constitutional roles."
+        "RESOLVED — GLM-5.2 is clean. Promoted to constitutional roles."
       ],
-      "evidence": "6-test probe attempted via OpenRouter 2026-07-29. All 4 completed tests returned CENSORED (empty). Control test (capital of France) also empty \u2014 endpoint appears broken, not MY-specific censorship.",
+      "evidence": "6-test probe attempted via OpenRouter 2026-07-29. All 4 completed tests returned CENSORED (empty). Control test (capital of France) also empty — endpoint appears broken, not MY-specific censorship.",
       "scar_ref": null,
       "last_observed": "2026-07-29"
     },
@@ -4749,7 +4759,7 @@
       "shadow_name": "reasoning_token_vampire",
       "severity": "HIGH",
       "class": "capability_gap",
-      "pattern": "Kimi K3 always has thinking mode enabled (cannot be disabled). Official reasoning_effort: low (6 reasoning tok, ~1.8s), high, max (default, 71 reasoning tok, ~3.7s). At max effort, simple queries consume majority of tokens on reasoning_content before content \u2014 2+2 uses 71 reasoning + 23 content tokens. finish_reason='length' with empty content = silent failure at low max_tokens budgets. TokenRouter caps max_tokens ~1500 (native supports 1M). FREE tier: no reasoning_effort support (400 error). NOTE: 'minimal' is NOT an official value \u2014 it passed via TokenRouter but use 'low' as the canonical minimal setting.",
+      "pattern": "Kimi K3 always has thinking mode enabled (cannot be disabled). Official reasoning_effort: low (6 reasoning tok, ~1.8s), high, max (default, 71 reasoning tok, ~3.7s). At max effort, simple queries consume majority of tokens on reasoning_content before content — 2+2 uses 71 reasoning + 23 content tokens. finish_reason='length' with empty content = silent failure at low max_tokens budgets. TokenRouter caps max_tokens ~1500 (native supports 1M). FREE tier: no reasoning_effort support (400 error). NOTE: 'minimal' is NOT an official value — it passed via TokenRouter but use 'low' as the canonical minimal setting.",
       "triggers": [
         "reasoning_token_exhaustion",
         "empty_content_with_length_finish",
@@ -4765,9 +4775,9 @@
         "Set reasoning_effort='low' for simple/classification tasks (6 tok, ~1.8s)",
         "Set reasoning_effort='max' only for complex reasoning that needs deep thinking",
         "Budget max_tokens at 3x expected output for low effort, 5x for max effort",
-        "TokenRouter max_tokens cap ~1500 \u2014 use native Moonshot API for large-context work",
+        "TokenRouter max_tokens cap ~1500 — use native Moonshot API for large-context work",
         "FREE tier: cannot control reasoning. Budget tokens carefully. Use paid tier with reasoning_effort='low' for control.",
-        "Omit temperature, top_p, presence_penalty, frequency_penalty from requests \u2014 they are FIXED by the model"
+        "Omit temperature, top_p, presence_penalty, frequency_penalty from requests — they are FIXED by the model"
       ],
       "evidence": "Live probe 2026-07-29 via TokenRouter. vLLM fingerprint: vllm-0.1.dev19262+gb6bbf29dd.d20260727-tp8. Official Kimi K3 docs: 2.8T params, 16/896 MoE, KDA+AttnRes, 1M context, weights open-sourced July 27 2026. reasoning_effort values: low, high, max (default). Always-thinking, cannot disable. Latency: low=1.8s, max=3.7s (TokenRouter gateway). Native Moonshot API has 1M max_completion_tokens.",
       "scar_ref": null,
@@ -4779,7 +4789,7 @@
       "shadow_name": "free_tier_gpu_ephemeral",
       "severity": "LOW",
       "class": "infrastructure_dependency",
-      "pattern": "Kimi K3 FREE runs on TokenRouter's own GPU cluster \u2014 not Moonshot API. Limited-time availability. No stability/concurrency guarantee per TokenRouter docs. Could disappear or degrade without notice. No reasoning_effort support on free tier.",
+      "pattern": "Kimi K3 FREE runs on TokenRouter's own GPU cluster — not Moonshot API. Limited-time availability. No stability/concurrency guarantee per TokenRouter docs. Could disappear or degrade without notice. No reasoning_effort support on free tier.",
       "triggers": [
         "free_tier_removal",
         "gpu_cluster_degradation"
@@ -4804,7 +4814,7 @@
       "shadow_name": "tokenrouter_gateway_divergence",
       "severity": "MEDIUM",
       "class": "infrastructure_dependency",
-      "pattern": "TokenRouter gateway caps max_tokens ~1500. Native Moonshot API supports 1M (max_completion_tokens up to 1048576). TokenRouter serves via vLLM (tp8), native Moonshot uses proprietary inference stack. Behavior may diverge: TokenRouter passes unofficial reasoning_effort aliases ('minimal' works), latency is gateway-dependent (1.8-6.6s), error codes come from TokenRouter middleware not Kimi API. FREE tier runs on TokenRouter GPU cluster \u2014 different hardware entirely.",
+      "pattern": "TokenRouter gateway caps max_tokens ~1500. Native Moonshot API supports 1M (max_completion_tokens up to 1048576). TokenRouter serves via vLLM (tp8), native Moonshot uses proprietary inference stack. Behavior may diverge: TokenRouter passes unofficial reasoning_effort aliases ('minimal' works), latency is gateway-dependent (1.8-6.6s), error codes come from TokenRouter middleware not Kimi API. FREE tier runs on TokenRouter GPU cluster — different hardware entirely.",
       "triggers": [
         "tokenrouter_max_tokens_cap",
         "gateway_latency_variance",
@@ -4820,11 +4830,11 @@
         "For 1M context work: use native Moonshot API (kimi-moonshot provider), not TokenRouter",
         "For quick reasoning: TokenRouter paid tier with reasoning_effort='low' is cost-effective",
         "For testing: TokenRouter FREE tier (no reasoning_effort control, no stability guarantee)",
-        "Probe both gateways for critical workloads \u2014 do not assume identical behavior",
+        "Probe both gateways for critical workloads — do not assume identical behavior",
         "TokenRouter latency: low=1.8s, max=3.7s. Native Moonshot latency unknown.",
         "Official reasoning_effort values: low, high, max. TokenRouter passes 'minimal' but it's unofficial."
       ],
-      "evidence": "Cross-gateway probe 2026-07-29. TokenRouter: max_tokens=2000\u2192400, max_tokens=1500\u2192200. Kimi K3 official docs: max_completion_tokens default=131072, max=1048576. TokenRouter docs: 'Kimi K3 Free Model Now Available \u2014 powered by TokenRouter's own GPU cluster'. System fingerprint: vllm-0.1.dev19262+gb6bbf29dd.d20260727-tp8-f0a621fe (not Moonshot's native stack).",
+      "evidence": "Cross-gateway probe 2026-07-29. TokenRouter: max_tokens=2000→400, max_tokens=1500→200. Kimi K3 official docs: max_completion_tokens default=131072, max=1048576. TokenRouter docs: 'Kimi K3 Free Model Now Available — powered by TokenRouter's own GPU cluster'. System fingerprint: vllm-0.1.dev19262+gb6bbf29dd.d20260727-tp8-f0a621fe (not Moonshot's native stack).",
       "scar_ref": null,
       "last_observed": "2026-07-29"
     },
@@ -4834,7 +4844,7 @@
       "shadow_name": "openrouter_credit_brick_codex",
       "severity": "CRITICAL",
       "class": "billing_failure",
-      "pattern": "Codex configured with OpenRouter as GPT 5.6 provider. OpenRouter credits depleted (2016 remaining). Codex requests 65536 tokens minimum \u2014 OpenRouter rejects with 402. Agent is BRICKED. TokenRouter has GPT 5.6 SOL working at 0.9-1.5s latency, 0 reasoning overhead on coding tasks. But TokenRouter GPT 5.6 only supports 'openai-response' endpoint type \u2014 Chat Completions works via internal translation layer but Codex uses the Responses API natively. VERIFIED: /v1/chat/completions works with GPT 5.6 SOL on TokenRouter despite the model listing 'openai-response' as its only endpoint.",
+      "pattern": "Codex configured with OpenRouter as GPT 5.6 provider. OpenRouter credits depleted (2016 remaining). Codex requests 65536 tokens minimum — OpenRouter rejects with 402. Agent is BRICKED. TokenRouter has GPT 5.6 SOL working at 0.9-1.5s latency, 0 reasoning overhead on coding tasks. But TokenRouter GPT 5.6 only supports 'openai-response' endpoint type — Chat Completions works via internal translation layer but Codex uses the Responses API natively. VERIFIED: /v1/chat/completions works with GPT 5.6 SOL on TokenRouter despite the model listing 'openai-response' as its only endpoint.",
       "triggers": [
         "openrouter_credit_exhaustion",
         "codex_402_payment_required",
@@ -4862,7 +4872,7 @@
       "shadow_name": "zero_reasoning_overhead_coder",
       "severity": "INFO",
       "class": "capability_strength",
-      "pattern": "GPT 5.6 SOL has ZERO reasoning overhead on coding tasks \u2014 unlike Kimi K3 (always thinks) and MiniMax M3 (inline <think> tags). Returns code directly with no chain-of-thought preamble. Latency: 0.9-1.5s (fastest coder tested). Code quality: idiomatic, uses modern Python features (contextlib, perf_counter, isqrt). Token efficiency: 100% of completion tokens go to code output. This is the optimal 'assembly-line worker' pattern for agentic coding loops.",
+      "pattern": "GPT 5.6 SOL has ZERO reasoning overhead on coding tasks — unlike Kimi K3 (always thinks) and MiniMax M3 (inline <think> tags). Returns code directly with no chain-of-thought preamble. Latency: 0.9-1.5s (fastest coder tested). Code quality: idiomatic, uses modern Python features (contextlib, perf_counter, isqrt). Token efficiency: 100% of completion tokens go to code output. This is the optimal 'assembly-line worker' pattern for agentic coding loops.",
       "triggers": [
         "coding_task",
         "agentic_loop",
@@ -4875,11 +4885,11 @@
       },
       "mitigation": [
         "Primary coder model for agentic loops (15+ sequential tool calls)",
-        "Use TokenRouter gateway \u2014 OpenRouter is credit-depleted",
+        "Use TokenRouter gateway — OpenRouter is credit-depleted",
         "For deep architecture planning: fall back to Kimi K3 or DeepSeek V4 Pro",
         "TokenRouter endpoint: /v1/chat/completions (works despite model listing openai-response only)"
       ],
-      "evidence": "Live probe 2026-07-29 via TokenRouter. 3 latency tests. 3 code quality tests (prime checker, context manager, bash one-liner). All passed with finish=stop. 0 reasoning tokens on all coding tasks. Codex config uses model=gpt-5.6-sol via provider=openrouter \u2014 needs migration to TokenRouter.",
+      "evidence": "Live probe 2026-07-29 via TokenRouter. 3 latency tests. 3 code quality tests (prime checker, context manager, bash one-liner). All passed with finish=stop. 0 reasoning tokens on all coding tasks. Codex config uses model=gpt-5.6-sol via provider=openrouter — needs migration to TokenRouter.",
       "scar_ref": null,
       "last_observed": "2026-07-29"
     },
@@ -4897,30 +4907,30 @@
         "content_dropped_into_reasoning_channel"
       ],
       "floor_posture_delta": {
-        "F2_TRUTH": "VIOLATED \u2014 benchmarks filed as model behavior were gateway artifacts",
-        "F4_CLARITY": "VIOLATED \u2014 \u0394S added by gateway, not model",
-        "F7_HUMILITY": "VIOLATED \u2014 confidence caps were based on contaminated data",
-        "F11_AUDIT": "REQUIRED \u2014 all TR-routed shadows must be re-audited against direct APIs"
+        "F2_TRUTH": "VIOLATED — benchmarks filed as model behavior were gateway artifacts",
+        "F4_CLARITY": "VIOLATED — ΔS added by gateway, not model",
+        "F7_HUMILITY": "VIOLATED — confidence caps were based on contaminated data",
+        "F11_AUDIT": "REQUIRED — all TR-routed shadows must be re-audited against direct APIs"
       },
       "mitigation": [
         "MANDATORY: every model entry now requires a 'route' field (direct|tokenrouter|bailian|native)",
         "MANDATORY: benchmarks must specify which gateway was used",
         "Re-test all CRITICAL and HIGH shadows against direct APIs where available",
         "DeepSeek V4 Pro: use DIRECT API only. Never route through TokenRouter.",
-        "MiniMax M3: direct key dead \u2014 all benchmarks are gateway-contaminated by necessity. Flag as 'route=tokenrouter_only'.",
+        "MiniMax M3: direct key dead — all benchmarks are gateway-contaminated by necessity. Flag as 'route=tokenrouter_only'.",
         "Kimi K3: TokenRouter caps max_tokens at 1500. Native Moonshot supports 1M. Different use cases.",
         "Add gateway latency tax to all TR-routed models: observed +1-3s overhead",
         "New registry column: route. Values: direct, tokenrouter, bailian, native, tokenrouter_only"
       ],
-      "evidence": "Discovered 2026-07-29 during Hermes ASI model evaluation. DeepSeek V4 Pro via TokenRouter returned empty content on 2/3 conversational tests. Same prompt via direct DS API returned perfect 1.1s response with 26 tokens. TokenRouter was routing all completion tokens to reasoning_content field and dropping the content field. This casts doubt on every TR-routed benchmark in the registry including K3 max_tokens cap (filed as 1500, official: 1,048,576) and all MiniMax M3 measurements (direct key dead \u2014 no ground truth possible). PARALLEL SESSION CONFIRMATION: Claude Sonnet 5 via TR shows 8.7s avg latency (7-10.7s range). DeepSeek V4 Pro via TR: 6-24s vs 1.1s direct. Gateway overhead is consistent across models, not model-specific.",
+      "evidence": "Discovered 2026-07-29 during Hermes ASI model evaluation. DeepSeek V4 Pro via TokenRouter returned empty content on 2/3 conversational tests. Same prompt via direct DS API returned perfect 1.1s response with 26 tokens. TokenRouter was routing all completion tokens to reasoning_content field and dropping the content field. This casts doubt on every TR-routed benchmark in the registry including K3 max_tokens cap (filed as 1500, official: 1,048,576) and all MiniMax M3 measurements (direct key dead — no ground truth possible). PARALLEL SESSION CONFIRMATION: Claude Sonnet 5 via TR shows 8.7s avg latency (7-10.7s range). DeepSeek V4 Pro via TR: 6-24s vs 1.1s direct. Gateway overhead is consistent across models, not model-specific.",
       "scar_ref": null,
       "last_observed": "2026-07-29",
       "contaminated_shadows": [
-        "SHADOW-KMI-004 (reasoning_token_vampire) \u2014 was the vampire K3 or TR's token routing?",
-        "SHADOW-KMI-006 (tokenrouter_gateway_divergence) \u2014 confirmed, now upgraded to CRITICAL",
-        "SHADOW-GPT-001 (codex bricked) \u2014 gateway issue, not model issue",
-        "All MiniMax M3 benchmarks \u2014 no direct API available for comparison",
-        "All latency rankings where TR was the route \u2014 add 1-3s TR overhead tax"
+        "SHADOW-KMI-004 (reasoning_token_vampire) — was the vampire K3 or TR's token routing?",
+        "SHADOW-KMI-006 (tokenrouter_gateway_divergence) — confirmed, now upgraded to CRITICAL",
+        "SHADOW-GPT-001 (codex bricked) — gateway issue, not model issue",
+        "All MiniMax M3 benchmarks — no direct API available for comparison",
+        "All latency rankings where TR was the route — add 1-3s TR overhead tax"
       ]
     },
     {
@@ -4935,13 +4945,13 @@
         "registry_entry_without_gateway_column"
       ],
       "floor_posture_delta": {
-        "F2_TRUTH": "REQUIRED \u2014 route column mandatory",
-        "F11_AUDIT": "REQUIRED \u2014 retroactive tagging of existing shadows"
+        "F2_TRUTH": "REQUIRED — route column mandatory",
+        "F11_AUDIT": "REQUIRED — retroactive tagging of existing shadows"
       },
       "mitigation": [
         "Add 'route' field to all model entries in registry",
         "Add 'benchmark_route' field to all shadow entries",
-        "Tag existing shadows: 'route: tokenrouter (assumed \u2014 pre-discovery)'",
+        "Tag existing shadows: 'route: tokenrouter (assumed — pre-discovery)'",
         "Future benchmarks: never file a measurement without naming the gateway",
         "Model ID convention: model@gateway (e.g., deepseek-v4-pro@direct, kimi-k3@tokenrouter)"
       ],
@@ -5006,7 +5016,7 @@
       "scar_name": "DeepSeek Credit Exhaustion 2026-06-12",
       "origin": "DeepSeek pre-paid credits dropped to $0. All federation agent sessions failed simultaneously with 402 Payment Required errors.",
       "failure_mode": "No automated balance monitoring. Credit exhaustion discovered when agents started failing.",
-      "detection_method": "402 errors from API. Agents reported failure. Hermes fallback chain misconfigured \u2014 skipped MiniMax, fell through to dead DeepSeek repeatedly.",
+      "detection_method": "402 errors from API. Agents reported failure. Hermes fallback chain misconfigured — skipped MiniMax, fell through to dead DeepSeek repeatedly.",
       "constraint_imposed": "Monitor DeepSeek balance via daily cron. Alert sovereign before $2.00. Maintain verified multi-provider fallback chain that actually works.",
       "severity": "HIGH",
       "scar_pressure": 0.3,
@@ -5014,14 +5024,14 @@
       "last_seen": "2026-06-12",
       "recurrence_count": 0,
       "metabolized_from_shadow": "SHADOW-DS-005",
-      "sealed_by": "FORGE (000\u03a9)",
+      "sealed_by": "FORGE (000Ω)",
       "sealed_at": "2026-06-13"
     },
     {
       "scar_id": "SCAR_MM_001",
       "scar_name": "MiniMax Censorship Discovered 2026-06-12",
       "origin": "Live API probe detected MiniMax M3 silently censoring Malaysian governance topics. Was federation PRIMARY model at the time.",
-      "failure_mode": "Censorship was silent \u2014 model appeared to 'not know' rather than refusing. F2 TRUTH violation: output masquerades as ignorance. F3 WITNESS violation: vendor silently alters evidence stream.",
+      "failure_mode": "Censorship was silent — model appeared to 'not know' rather than refusing. F2 TRUTH violation: output masquerades as ignorance. F3 WITNESS violation: vendor silently alters evidence stream.",
       "detection_method": "6-test probe by FORGE. 4/6 Malaysian governance topics returned empty content while reasoning_content was complete and accurate.",
       "constraint_imposed": "MiniMax DEMOTED from PRIMARY to FALLBACK. Cannot serve 666_JUDGE or 999_SEAL roles. All Malaysian governance queries routed to DeepSeek. Any model with censorship potential must be probed before promotion.",
       "severity": "CRITICAL",
@@ -5030,7 +5040,7 @@
       "last_seen": "2026-06-12",
       "recurrence_count": 0,
       "metabolized_from_shadow": "SHADOW-MM-001",
-      "sealed_by": "FORGE (000\u03a9)",
+      "sealed_by": "FORGE (000Ω)",
       "sealed_at": "2026-06-12"
     }
   ],
@@ -5048,21 +5058,21 @@
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API \u2014 $12.63 balance, ZERO censorship, FFF SMOKE_PASS"
+          "note": "Direct DS API — $12.63 balance, ZERO censorship, FFF SMOKE_PASS"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
           "provider": "bailian-token-plan",
           "priority": 2,
           "cost": "token_plan",
-          "note": "Bailian fallback \u2014 same model, different gateway"
+          "note": "Bailian fallback — same model, different gateway"
         },
         {
           "model_key": "kimi/k3",
           "provider": "kimi-moonshot",
           "priority": 3,
           "cost": "monthly",
-          "note": "2.8T MoE, vision, 1M ctx \u2014 direct Kimi API"
+          "note": "2.8T MoE, vision, 1M ctx — direct Kimi API"
         },
         {
           "model_key": "kimi/k3",
@@ -5076,7 +5086,7 @@
           "provider": "bailian-token-plan",
           "priority": 5,
           "cost": "token_plan",
-          "note": "Agentic coding specialist \u2014 FORGE fallback. MY censorship UNTESTED."
+          "note": "Agentic coding specialist — FORGE fallback. MY censorship UNTESTED."
         },
         {
           "model_key": "mimo/mimo-v2.5-pro",
@@ -5107,11 +5117,14 @@
           "note": "Free tier, 1M ctx, multimodal"
         },
         {
-          "model_key": "ollama/qwen2.5-coder:3b",
+          "model_key": "ollama/qwen2.5:3b",
           "provider": "ollama",
           "priority": 10,
           "cost": "free",
-          "note": "Local \u2014 always available"
+          "note": "Local — always available [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
+          "requires": "local",
+          "local_model": "qwen2.5:3b",
+          "model_digest": null
         }
       ],
       "circuit_breaker": {
@@ -5125,7 +5138,7 @@
       "config_file_path": "/root/.config/opencode/opencode.json",
       "status": "ACTIVE",
       "last_verified": "2026-07-29",
-      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Primary forge coding agent. Serves as FORGE (000\u03a9) when spawned. Current session...",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Primary forge coding agent. Serves as FORGE (000Ω) when spawned. Current session...",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -5169,7 +5182,7 @@
     },
     {
       "agent_id": "forge",
-      "agent_name": "FORGE (000\u03a9)",
+      "agent_name": "FORGE (000Ω)",
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "deepseek/deepseek-v4-pro",
@@ -5180,7 +5193,7 @@
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API \u2014 $12.63"
+          "note": "Direct DS API — $12.63"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -5194,7 +5207,7 @@
           "provider": "bailian-token-plan",
           "priority": 3,
           "cost": "token_plan",
-          "note": "Agentic coding. MY censorship UNTESTED \u2014 FORGE only."
+          "note": "Agentic coding. MY censorship UNTESTED — FORGE only."
         },
         {
           "model_key": "kimi/k3",
@@ -5260,7 +5273,7 @@
     },
     {
       "agent_id": "auditor",
-      "agent_name": "AUDITOR (\u03a8)",
+      "agent_name": "AUDITOR (Ψ)",
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "deepseek/deepseek-v4-pro",
@@ -5271,7 +5284,7 @@
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API \u2014 $12.63"
+          "note": "Direct DS API — $12.63"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -5337,7 +5350,7 @@
     },
     {
       "agent_id": "ops",
-      "agent_name": "OPS (\ud83c\udf10)",
+      "agent_name": "OPS (🌐)",
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "deepseek-v4-flash",
@@ -5348,7 +5361,7 @@
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API \u2014 $0.14/$0.28"
+          "note": "Direct DS API — $0.14/$0.28"
         },
         {
           "model_key": "deepseek/deepseek-v4-flash",
@@ -5379,11 +5392,14 @@
           "note": "Free tier"
         },
         {
-          "model_key": "ollama/qwen2.5-coder:3b",
+          "model_key": "ollama/qwen2.5:3b",
           "provider": "ollama",
           "priority": 6,
           "cost": "free",
-          "note": "Local recovery"
+          "note": "Local recovery [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
+          "requires": "local",
+          "local_model": "qwen2.5:3b",
+          "model_digest": null
         }
       ],
       "circuit_breaker": {
@@ -5431,7 +5447,7 @@
     },
     {
       "agent_id": "planner",
-      "agent_name": "PLAN (\u03a9)",
+      "agent_name": "PLAN (Ω)",
       "agent_class": "C2",
       "organ": "A-FORGE",
       "primary_model": "kimi-k3",
@@ -5442,7 +5458,7 @@
           "provider": "kimi-moonshot",
           "priority": 1,
           "cost": "monthly",
-          "note": "Direct Kimi API \u2014 2.8T MoE, always-on thinking"
+          "note": "Direct Kimi API — 2.8T MoE, always-on thinking"
         },
         {
           "model_key": "kimi/k3",
@@ -5456,7 +5472,7 @@
           "provider": "tokenrouter",
           "priority": 3,
           "cost": "free",
-          "note": "TokenRouter Kimi K3 FREE \u2014 testing/eval only. reasoning_effort=minimal recommended."
+          "note": "TokenRouter Kimi K3 FREE — testing/eval only. reasoning_effort=minimal recommended."
         },
         {
           "model_key": "kimi/kimi-for-coding",
@@ -5477,7 +5493,7 @@
           "provider": "deepseek",
           "priority": 6,
           "cost": "prepaid",
-          "note": "DS V4 Pro \u2014 trusted fallback"
+          "note": "DS V4 Pro — trusted fallback"
         },
         {
           "model_key": "mimo/mimo-v2.5-pro",
@@ -5505,7 +5521,7 @@
       "config_file_path": "/root/.config/opencode/opencode.json (subagents.PLANNER)",
       "status": "ACTIVE",
       "last_verified": "2026-07-29",
-      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Kimi K3 primary for DAG planning \u2014 2.8T MoE, 1M context, KDA + Gated MLA. Always...",
+      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Kimi K3 primary for DAG planning — 2.8T MoE, 1M context, KDA + Gated MLA. Always...",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "model_updated": "2026-07-28",
@@ -5559,7 +5575,7 @@
           "provider": "mimo-platform",
           "priority": 1,
           "cost": "token_plan",
-          "note": "1000 tok/s \u2014 fast conversational default"
+          "note": "1000 tok/s — fast conversational default"
         },
         {
           "model_key": "mimo/mimo-v2.5-pro",
@@ -5594,7 +5610,7 @@
           "provider": "mimo-platform",
           "priority": 6,
           "cost": "token_plan",
-          "note": "Base MiMo \u2014 lightweight"
+          "note": "Base MiMo — lightweight"
         },
         {
           "model_key": "gemini/gemini-2.5-flash",
@@ -5618,11 +5634,14 @@
           "note": "SEA-LION v3.5 70B reasoning. SG jurisdiction. BM native. Trial key. 10 RPM."
         },
         {
-          "model_key": "ollama/qwen2.5-coder:3b",
+          "model_key": "ollama/qwen2.5:3b",
           "provider": "ollama",
           "priority": 9,
           "cost": "free",
-          "note": "Local \u2014 always available"
+          "note": "Local — always available [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
+          "requires": "local",
+          "local_model": "qwen2.5:3b",
+          "model_digest": null
         }
       ],
       "circuit_breaker": {
@@ -5666,7 +5685,7 @@
       "route_assignments": {
         "conversational": "deepseek-v4-pro@direct",
         "judge_fallback": "gpt-5.6-sol@tokenrouter",
-        "note": "SHADOW-TR-001: DS via TR returns empty. DS direct is 1.1s. Separation of powers: conversationalist \u2260 judge."
+        "note": "SHADOW-TR-001: DS via TR returns empty. DS direct is 1.1s. Separation of powers: conversationalist ≠ judge."
       },
       "capabilities": [
         "vision"
@@ -5687,7 +5706,7 @@
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Architect fallback \u2014 DS direct"
+          "note": "Architect fallback — DS direct"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -5704,11 +5723,14 @@
           "note": "SEA-LION v4.5 27B. Latest Qwen-based. SG jurisdiction. BM native."
         },
         {
-          "model_key": "ollama/qwen2.5-coder:3b",
+          "model_key": "ollama/qwen2.5:3b",
           "provider": "ollama",
           "priority": 3,
           "cost": "free",
-          "note": "Local recovery"
+          "note": "Local recovery [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
+          "requires": "local",
+          "local_model": "qwen2.5:3b",
+          "model_digest": null
         }
       ],
       "circuit_breaker": {
@@ -5720,7 +5742,7 @@
       "cost_budget_daily_usd": 1.0,
       "cost_budget_monthly_usd": 10.0,
       "config_file_path": "/root/.openclaw/openclaw.json",
-      "status": "B \u2014 semi-retired, preserve only",
+      "status": "B — semi-retired, preserve only",
       "last_verified": "2026-07-29",
       "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Legacy chat router + model inference. MiniMax M3 primary (multimodal). Long fall...",
       "tier": "T1_frontier_reasoning",
@@ -5760,7 +5782,7 @@
       "config_file_path": "/root/.secrets/vault.env (ANTHROPIC_* vars routed to DeepSeek bridge)",
       "status": "ACTIVE",
       "last_verified": "2026-07-17",
-      "notes": "Anthropic CLI routed through DeepSeek Anthropic Bridge. ANTHROPIC_MODEL=deepseek-v4-pro[1m]. Native Anthropic models (Claude) BLOCKED \u2014 kernelized F1-F13 incompatible with prompt-loaded CAI constitution.",
+      "notes": "Anthropic CLI routed through DeepSeek Anthropic Bridge. ANTHROPIC_MODEL=deepseek-v4-pro[1m]. Native Anthropic models (Claude) BLOCKED — kernelized F1-F13 incompatible with prompt-loaded CAI constitution.",
       "autonomous_profile": {
         "max_tier": "T0",
         "triggers": [
@@ -5816,7 +5838,7 @@
       "config_file_path": "/root/.copilot/settings.json (COPILOT_MODEL=z-ai/glm-5.2, COPILOT_PROVIDER_TYPE=anthropic)",
       "status": "ACTIVE",
       "last_verified": "2026-07-29",
-      "notes": "GitHub Copilot CLI on GLM-5.2 via TokenRouter Anthropic-native endpoint. SEALED 2026-07-29: won on protocol cleanliness (Copilot speaks Anthropic natively, GLM-5.2 routes clean through /v1/messages \u2014 no Responses-API adapter needed). Context: 200K prompt / 65K output (Copilot CLI constraint, not model limit \u2014 GLM-5.2 supports 1M). LANE NOTE: >150K-token tasks \u2192 escalate to --model deepseek/deepseek-v4-pro explicitly (silent truncation risk on repo-scale refactors). GPT 5.6 SOL = fastest loop engine tested (0.9-1.5s, 0 reasoning tokens) but HELD at 888 pending Responses-API adapter validation \u2014 Copilot cannot use it without untested translation layer. GLM-5.2 = fastest loop engine on clean Anthropic protocol, SEALED.",
+      "notes": "GitHub Copilot CLI on GLM-5.2 via TokenRouter Anthropic-native endpoint. SEALED 2026-07-29: won on protocol cleanliness (Copilot speaks Anthropic natively, GLM-5.2 routes clean through /v1/messages — no Responses-API adapter needed). Context: 200K prompt / 65K output (Copilot CLI constraint, not model limit — GLM-5.2 supports 1M). LANE NOTE: >150K-token tasks → escalate to --model deepseek/deepseek-v4-pro explicitly (silent truncation risk on repo-scale refactors). GPT 5.6 SOL = fastest loop engine tested (0.9-1.5s, 0 reasoning tokens) but HELD at 888 pending Responses-API adapter validation — Copilot cannot use it without untested translation layer. GLM-5.2 = fastest loop engine on clean Anthropic protocol, SEALED.",
       "autonomous_profile": {
         "max_tier": "T0",
         "triggers": [
@@ -5855,7 +5877,7 @@
           "provider": "kimi-moonshot",
           "priority": 1,
           "cost": "monthly",
-          "note": "Direct Kimi API \u2014 2.8T MoE"
+          "note": "Direct Kimi API — 2.8T MoE"
         },
         {
           "model_key": "kimi/k3",
@@ -5869,7 +5891,7 @@
           "provider": "tokenrouter",
           "priority": 3,
           "cost": "free",
-          "note": "TokenRouter Kimi K3 FREE tier \u2014 own GPU cluster. Limited-time. For testing/eval. reasoning_effort=minimal recommended."
+          "note": "TokenRouter Kimi K3 FREE tier — own GPU cluster. Limited-time. For testing/eval. reasoning_effort=minimal recommended."
         },
         {
           "model_key": "kimi/kimi-for-coding",
@@ -5890,7 +5912,7 @@
           "provider": "tokenrouter",
           "priority": 6,
           "cost": "prepaid",
-          "note": "TokenRouter Kimi K3 PAID \u2014 reasoning-first. reasoning_effort=minimal for non-reasoning tasks."
+          "note": "TokenRouter Kimi K3 PAID — reasoning-first. reasoning_effort=minimal for non-reasoning tasks."
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -5947,14 +5969,14 @@
           "provider": "tokenrouter",
           "priority": 1,
           "cost": "prepaid",
-          "note": "TokenRouter GPT 5.6 SOL \u2014 0.9-1.5s, ZERO reasoning overhead on code. $59.96 balance. Endpoint type: openai-response (Chat Completions works via internal translation)."
+          "note": "TokenRouter GPT 5.6 SOL — 0.9-1.5s, ZERO reasoning overhead on code. $59.96 balance. Endpoint type: openai-response (Chat Completions works via internal translation)."
         },
         {
           "model_key": "claude-sonnet-5",
           "provider": "opencode-zen",
           "priority": 2,
           "cost": "payg",
-          "note": "Premium tier \u2014 PAYG only"
+          "note": "Premium tier — PAYG only"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -6109,7 +6131,7 @@
       "config_file_path": "/root/.config/opencode/opencode.json (agent.image-prompt-architect)",
       "status": "ACTIVE",
       "last_verified": "2026-07-24",
-      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent \u2014 runtime-local only.",
+      "notes": "OpenCode RUNTIME-LOCAL subagent. Vision-enabled image prompt generation via Kimi K3. Permission-gated (bash: allow, *: deny). Called manually by user. NOT a constitutional federation agent — runtime-local only.",
       "tier": "T2",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -6136,7 +6158,7 @@
   "fallback_chains": {
     "deepseek_primary_chain": {
       "chain_id": "deepseek_primary_chain",
-      "description": "Primary DeepSeek \u2192 MiniMax M3 (general) \u2192 GLM-5.2 (engineering) \u2192 Ollama (survival)",
+      "description": "Primary DeepSeek → MiniMax M3 (general) → GLM-5.2 (engineering) → Ollama (survival)",
       "chain": [
         "deepseek/deepseek-v4-pro",
         "minimax/MiniMax-M3",
@@ -6152,7 +6174,7 @@
     },
     "RM0-GENERAL-REASONING": {
       "chain_id": "RM0-GENERAL-REASONING",
-      "description": "CANONICAL RM0 FEDERATION FALLBACK. TokenRouter (smart) \u2192 MiniMax (multimodal) \u2192 MiMo (text) \u2192 Groq FREE (560t/s) \u2192 Gemini FREE (multimodal) \u2192 Cerebras FREE (volume) \u2192 SEA-LION FREE (BM native) \u2192 Ollama (local) \u2192 HOLD (governed stop). Kalau satu jatuh, tujuh lagi berdiri. RM0. Zero sen.",
+      "description": "CANONICAL RM0 FEDERATION FALLBACK. TokenRouter (smart) → MiniMax (multimodal) → MiMo (text) → Groq FREE (560t/s) → Gemini FREE (multimodal) → Cerebras FREE (volume) → SEA-LION FREE (BM native) → Ollama (local) → HOLD (governed stop). Kalau satu jatuh, tujuh lagi berdiri. RM0. Zero sen.",
       "chain": [
         "deepseek/deepseek-v4-pro",
         "minimax/MiniMax-M3",
@@ -6173,18 +6195,18 @@
       ],
       "sealed_by": "RM0_CEREBRAS_GEMINI_SEAL 2026-07-20",
       "credit_warnings": [
-        "Cerebras: $5 credit expires Aug 20 2026 \u2014 30 hari je, pakai dulu sebelum habis"
+        "Cerebras: $5 credit expires Aug 20 2026 — 30 hari je, pakai dulu sebelum habis"
       ],
       "sovereign_principles": [
-        "Kalau satu jatuh, enam lagi berdiri \u2014 sovereign resilience, no single vendor failure can collapse cognition",
-        "Setiap tier ada sebab \u2014 no bloat, no redundancy without purpose",
-        "RM0 bukan miskin \u2014 ini kemerdekaan dari vendor pricing",
-        "Bukan 'free tier abuse' \u2014 ini architecture, setiap fallback adalah conscious decision"
+        "Kalau satu jatuh, enam lagi berdiri — sovereign resilience, no single vendor failure can collapse cognition",
+        "Setiap tier ada sebab — no bloat, no redundancy without purpose",
+        "RM0 bukan miskin — ini kemerdekaan dari vendor pricing",
+        "Bukan 'free tier abuse' — ini architecture, setiap fallback adalah conscious decision"
       ]
     },
     "bailian_multi_provider_chain": {
       "chain_id": "bailian_multi_provider_chain",
-      "description": "Bailian Token Plan models \u2192 MiniMax \u2192 Groq (free) \u2192 Ollama",
+      "description": "Bailian Token Plan models → MiniMax → Groq (free) → Ollama",
       "chain": [
         "deepseek/deepseek-v4-pro",
         "qwen/qwen3.7-max",
@@ -6199,7 +6221,7 @@
     },
     "hermes_conversational_chain": {
       "chain_id": "hermes_conversational_chain",
-      "description": "MiMo \u2192 DeepSeek \u2192 Groq (free) \u2192 MiniMax M3 \u2192 GLM-5.2 (free) \u2192 Ollama",
+      "description": "MiMo → DeepSeek → Groq (free) → MiniMax M3 → GLM-5.2 (free) → Ollama",
       "chain": [
         "mimo/mimo-v2.5-pro-ultraspeed",
         "mimo/mimo-v2.5-pro",
@@ -6216,7 +6238,7 @@
     },
     "ops_fast_chain": {
       "chain_id": "ops_fast_chain",
-      "description": "Fast models only \u2014 Flash \u2192 MiniMax M2.5 \u2192 MiniMax M3",
+      "description": "Fast models only — Flash → MiniMax M2.5 → MiniMax M3",
       "chain": [
         "deepseek/deepseek-v4-flash",
         "minimax/MiniMax-M2.5",
@@ -6229,7 +6251,7 @@
     },
     "RM0-TOOLS-FREELOOP": {
       "chain_id": "RM0-TOOLS-FREELOOP",
-      "description": "CANONICAL FREE-TIER TOOL LOOP. Latency-biased ordering for tool/utility calls (NOT agents). Groq (fastest) \u2192 SEA-LION (BM native) \u2192 Gemini (free) \u2192 Cerebras ( CR) \u2192 OpenCode Go (free code) \u2192 Ollama (local) \u2192 HOLD. All 14 models verified live 2026-07-20. 100% free. 100% vendor-agnostic. Strategy: try next on timeout/refusal/malformed.",
+      "description": "CANONICAL FREE-TIER TOOL LOOP. Latency-biased ordering for tool/utility calls (NOT agents). Groq (fastest) → SEA-LION (BM native) → Gemini (free) → Cerebras ( CR) → OpenCode Go (free code) → Ollama (local) → HOLD. All 14 models verified live 2026-07-20. 100% free. 100% vendor-agnostic. Strategy: try next on timeout/refusal/malformed.",
       "chain": [
         "groq/llama-3.1-8b-instant",
         "groq/llama-3.3-70b-versatile",
@@ -6254,15 +6276,15 @@
       "sealed_by": "FREE_MODEL_FLEET_LIVE_TEST 2026-07-20",
       "sovereign_principles": [
         "14/14 models verified live",
-        "100% free tier \u2014 zero sen",
-        "Vendor-agnostic \u2014 any model can be swapped",
+        "100% free tier — zero sen",
+        "Vendor-agnostic — any model can be swapped",
         "Latency-biased ordering: fastest first, deepest last",
         "Never touches paid models; never involves agents"
       ]
     },
     "mulerouter_vision_chain": {
       "chain_id": "mulerouter_vision_chain",
-      "description": "MuleRouter vision (qwen-vl-max) \u2192 MuleRouter fast vision (qwen3-omni-flash) \u2192 OpenRouter vision (qwen/qwen3-vl) \u2192 fallback text description",
+      "description": "MuleRouter vision (qwen-vl-max) → MuleRouter fast vision (qwen3-omni-flash) → OpenRouter vision (qwen/qwen3-vl) → fallback text description",
       "chain": [
         "mulerouter/qwen-vl-max",
         "mulerouter/qwen3-omni-flash",
@@ -6284,7 +6306,7 @@
     },
     "hermes_mulerouter_fast_chain": {
       "chain_id": "hermes_mulerouter_fast_chain",
-      "description": "MuleRouter DS Flash \u2192 MuleRouter qwen3-max \u2192 MuleRouter DS Pro \u2192 OpenRouter DS Flash \u2192 Groq (free) \u2192 Ollama",
+      "description": "MuleRouter DS Flash → MuleRouter qwen3-max → MuleRouter DS Pro → OpenRouter DS Flash → Groq (free) → Ollama",
       "chain": [
         "mulerouter/deepseek-v4-flash",
         "mulerouter/qwen3-max",
@@ -6298,9 +6320,9 @@
         "hermes"
       ],
       "sovereign_principles": [
-        "MuleRouter first \u2014 fixed price for Hermes",
+        "MuleRouter first — fixed price for Hermes",
         "OpenRouter backup for redundancy",
-        "Groq free tier then Ollama local \u2014 zero cost fallback"
+        "Groq free tier then Ollama local — zero cost fallback"
       ]
     }
   },
@@ -6342,7 +6364,7 @@
       "domain": "well",
       "task_pattern": "vitality|readiness|fatigue|homeostasis",
       "preferred_model": "deepseek/deepseek-v4-flash",
-      "reason": "WELL is REFLECT_ONLY \u2014 computation not verdict. Flash sufficient. Cost mode.",
+      "reason": "WELL is REFLECT_ONLY — computation not verdict. Flash sufficient. Cost mode.",
       "priority": 5
     },
     {
@@ -6367,7 +6389,7 @@
       "domain": "arifos",
       "task_pattern": "judge|verdict|seal|constitutional|irreversible",
       "preferred_model": "deepseek/deepseek-v4-pro",
-      "reason": "Only model with identity_verified + AAA_READY FFF + zero censorship on sovereign topics. Flash, MiniMax, Qwen \u2014 all FORBIDDEN from 666_JUDGE role.",
+      "reason": "Only model with identity_verified + AAA_READY FFF + zero censorship on sovereign topics. Flash, MiniMax, Qwen — all FORBIDDEN from 666_JUDGE role.",
       "priority": 200
     },
     {
@@ -6383,7 +6405,7 @@
       "domain": "hermes",
       "task_pattern": "fact_check|verify_claim",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Advisory claim verification \u2014 FLAME ALLOWED",
+      "reason": "Advisory claim verification — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6391,7 +6413,7 @@
       "domain": "hermes",
       "task_pattern": "epistemic_check|confidence",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Heuristic confidence check \u2014 FLAME ALLOWED",
+      "reason": "Heuristic confidence check — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6399,7 +6421,7 @@
       "domain": "hermes",
       "task_pattern": "memory_steward|classify|compact",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Content classification + compaction \u2014 FLAME ALLOWED",
+      "reason": "Content classification + compaction — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6407,7 +6429,7 @@
       "domain": "hermes",
       "task_pattern": "plan_review|safety_check",
       "preferred_model": "groq/llama-3.3-70b-versatile",
-      "reason": "Advisory plan safety \u2014 FLAME ALLOWED (deeper model)",
+      "reason": "Advisory plan safety — FLAME ALLOWED (deeper model)",
       "priority": 35
     },
     {
@@ -6415,7 +6437,7 @@
       "domain": "geox",
       "task_pattern": "contradiction_scan|pattern_match",
       "preferred_model": "groq/llama-3.3-70b-versatile",
-      "reason": "Pattern matching \u2014 FLAME ALLOWED",
+      "reason": "Pattern matching — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6423,7 +6445,7 @@
       "domain": "cron",
       "task_pattern": "briefing|digest|summarize|news|quote",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Daily briefing/summarization \u2014 FLAME ALLOWED",
+      "reason": "Daily briefing/summarization — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6431,7 +6453,7 @@
       "domain": "cron",
       "task_pattern": "health_check|sot_guard|deadman|metabolic",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "Health log analysis \u2014 FLAME ALLOWED",
+      "reason": "Health log analysis — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6439,7 +6461,7 @@
       "domain": "vps",
       "task_pattern": "classify|anomaly|alert|audit|drift",
       "preferred_model": "groq/llama-3.1-8b-instant",
-      "reason": "VPS alert classification \u2014 FLAME ALLOWED",
+      "reason": "VPS alert classification — FLAME ALLOWED",
       "priority": 35
     },
     {
@@ -6539,10 +6561,10 @@
   "free_loop_chains": {
     "RM0-TOOLS-FREELOOP": {
       "chain_id": "RM0-TOOLS-FREELOOP",
-      "name": "FLAME \u2014 Free Loop AI Model Engine",
+      "name": "FLAME — Free Loop AI Model Engine",
       "doctrine": "Non-agentic inference mesh for tools, system workers, and agent fallback",
       "cost": "RM0",
-      "authority": "NONE \u2014 workers only, no constitutional authority",
+      "authority": "NONE — workers only, no constitutional authority",
       "forged": "2026-07-20",
       "strategy": "least_latency",
       "fallback": "sequential",
@@ -6627,7 +6649,7 @@
   "_replaced_by": "/root/.config/federation-models.json",
   "_note": "DO NOT USE. This file is retained for audit provenance only.",
   "data_sensitivity": {
-    "_doctrine": "TASK_DATA_SENSITIVITY \u2014 constitutional classification for routing. arifOS classifies BEFORE A-FORGE routes.",
+    "_doctrine": "TASK_DATA_SENSITIVITY — constitutional classification for routing. arifOS classifies BEFORE A-FORGE routes.",
     "_forged": "2026-07-24",
     "classes": {
       "PUBLIC": {
