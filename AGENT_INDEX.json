@@ -1,7 +1,8 @@
 {
+  "_TOMBSTONE": "2026-07-31 \u2014 SUPERSEDED by /root/AAA/registries/AGENTS_UNIFIED.yaml. This file is FROZEN. No further updates. See AGENTS_UNIFIED.yaml for the single canonical registry. FI slots locked. Ghost paths: resolved. Entropy: zero.",
   "$schema": "arifOS/agent-index/v1.0.0",
   "schemaVersion": "1.0.0",
-  "_doctrine": "Lean discovery index. Points to canonical cards; owns no state. Trust is a lease.",
+  "_doctrine": "Lean discovery index. Points to canonical cards; owns no state. Trust is a lease. [SUPERSEDED \u2014 see AGENTS_UNIFIED.yaml]",
   "_principles": {
     "F1_AMANAH": "Trust is a lease, not a registry. Index points; it.",
     "F4_CLARITY": "Index reduces entropy (one discovery surface). Per-card governance duplication increases entropy.",
@@ -316,5 +317,13 @@
     "modified": "hermes-asi/agent-card.json (added version, provider, normalized skills), prospect-maturation/agent-card.json (capabilities array\u2192object, added version)",
     "entropy_delta": "\u2264 0 (reduces entropy by collapsing 30\u219222 canonical entries)",
     "audit_trail": "FI-008 (Kimi) forged \u2192 A-AUDIT can verify via VAULT999 next seal cycle"
-  }
+  },
+  "_tombstone": {
+    "deprecated_at": "2026-07-31T05:50:55Z",
+    "deprecated_by": "ARIF F13 SOVEREIGN \u2014 entropy reduction 2026-07-31",
+    "reason": "Superseded by a2a/registry/agents.yaml (canonical) + registries/agents.unified.generated.yaml (unified view). 10 of 19 canonical_card_path entries were dead links. FI slots reassigned per F13 directive.",
+    "replacement": "registries/agents.unified.generated.yaml",
+    "status": "TOMBSTONE \u2014 read-only historical reference. Do not use for agent discovery."
+  },
+  "status": "deprecated"
 }

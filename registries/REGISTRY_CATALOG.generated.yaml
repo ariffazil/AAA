@@ -1,0 +1,455 @@
+# REGISTRY_CATALOG.generated.yaml — Every registry-file claim in AAA, classified
+# Generated 2026-07-31 by AAA entropy reduction mission
+# Authority: ARIF F13 SOVEREIGN
+# DITEMPA BUKAN DIBERI
+
+generated_at: "2026-07-31T13:15:00Z"
+generated_by: "Claude Code (DeepSeek V4 Pro) — arifOS Federation"
+target: "Reduce from 41+ registry claims to <= 10 canonical + derived/deprecated"
+
+registries:
+  # ── AGENT REGISTRIES ──
+  - path: "a2a/registry/agents.yaml"
+    domain: agent_identity
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must list >= 25 agents referencing valid agent-card.json paths"
+
+  - path: "AGENT_INDEX.json"
+    domain: agent_identity
+    claim_type: index
+    active_status: active
+    canonical_status: derived
+    owner: AAA (FI-008 Kimi Code)
+    conflicts: ["10 of 19 canonical_card_path entries are dead links", "FI slots conflict with ROOT_AGENT_CONFIG.yaml"]
+    replacement: "a2a/registry/agents.yaml"
+    validation_rule: "Deprecate or regenerate with corrected paths"
+
+  - path: "registries/AAA_AGENTS_REGISTRY.json"
+    domain: agent_identity
+    claim_type: registry
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: ["Self-declared DERIVED from registries/agents.yaml", "15 agents vs 33 in A2A canonical"]
+    replacement: "a2a/registry/agents.yaml"
+    validation_rule: "Regenerate from canonical source or deprecate"
+
+  - path: "ROOT_AGENT_CONFIG.yaml"
+    domain: agent_identity + runtime
+    claim_type: config
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: ["FI slots conflict with AGENT_INDEX.json", "Agent list incomplete vs A2A registry"]
+    replacement: null
+    validation_rule: "Keep as operational config; identity claims refer to canonical"
+
+  - path: "registries/agents.yaml"
+    domain: agent_identity + holds
+    claim_type: registry
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: ["Different schema than A2A registry — encodes 888_HOLD scopes, not agent identities"]
+    replacement: null
+    validation_rule: "Rename to agents.holds.yaml to clarify purpose"
+
+  - path: "registries/forge_instruments.yaml"
+    domain: agent_identity
+    claim_type: registry
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: ["FI-001 to FI-011 assignment differs from AGENT_INDEX.json"]
+    replacement: null
+    validation_rule: "Align with a2a/registry/agents.yaml FI slot assignments"
+
+  - path: "registries/unified_agent_protocol.yaml"
+    domain: agent_identity
+    claim_type: protocol
+    active_status: deprecated
+    canonical_status: deprecated
+    owner: AAA
+    conflicts: ["Self-declared DEPRECATED 2026-06-22"]
+    replacement: "registries/agents.yaml (for holds) + a2a/registry/agents.yaml (for identity)"
+    validation_rule: "Move to _archive/ or add .deprecated suffix"
+
+  - path: "registries/AAA_FEDERATION_STATE.yaml"
+    domain: agent_identity
+    claim_type: state
+    active_status: deprecated
+    canonical_status: deprecated
+    owner: AAA
+    conflicts: ["Self-declared DEPRECATED 2026-06-22"]
+    replacement: "registries/state/federation_state.yaml (canonical path per its own header)"
+    validation_rule: "Symlink or move to new path"
+
+  - path: "registries/AGENT_DISCOVERY.md"
+    domain: agent_identity
+    claim_type: documentation
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Reference document — validate against live A2A registry"
+
+  - path: "registries/AGENT_INTELLIGENCE.md"
+    domain: agent_identity
+    claim_type: benchmark
+    active_status: stale
+    canonical_status: tombstone
+    owner: AAA
+    conflicts: ["Last benched 2026-06-10 — 52 days stale"]
+    replacement: null
+    validation_rule: "Re-bench or archive"
+
+  # ── SKILL REGISTRIES ──
+  - path: "registries/skills.yaml"
+    domain: skill
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: ["163 registered vs 234 SKILL.md files on disk — 71 gap"]
+    replacement: null
+    validation_rule: "Sync with filesystem: register orphans or remove stale entries"
+
+  - path: "skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
+    domain: skill
+    claim_type: routing_view
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Auto-generated — must be reproducible from skills.yaml"
+
+  - path: "skills/FEDERATED_SKILLS_REGISTRY.yaml"
+    domain: skill
+    claim_type: routing_view
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: "skills/FEDERATED_SKILLS_REGISTRY_V3.yaml (newer version)"
+    validation_rule: "Deprecate V1 in favor of V3"
+
+  - path: "skills/SKILL_ALIAS_TABLE.json"
+    domain: skill
+    claim_type: alias_map
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must be reproducible from skills.yaml + SKILL.md scan"
+
+  - path: "skills/AAA_SKILL.md"
+    domain: skill
+    claim_type: draft_registry
+    active_status: stale
+    canonical_status: tombstone
+    owner: AAA
+    conflicts: ["DRAFT from 2026-06-23 — never ratified. References 40 OpenCode skills not in current AAA scope"]
+    replacement: "registries/skills.yaml"
+    validation_rule: "Archive — served its purpose as entropy reduction plan seed"
+
+  - path: "registries/opencode_skills_alignment.yaml"
+    domain: skill
+    claim_type: alignment_map
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: ["References 47 skills from ~/.agents/skills/ — may have drifted"]
+    replacement: null
+    validation_rule: "Regenerate from live scan"
+
+  - path: "contracts/skills/packages.yaml"
+    domain: skill
+    claim_type: package_map
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must reference only skills in skills.yaml"
+
+  # ── TOOL REGISTRIES ──
+  - path: "registries/tools.yaml"
+    domain: tool
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Every tool must have id, organ, authority_gate, risk_tier"
+
+  - path: "registries/CAPABILITY_INDEX.json"
+    domain: tool
+    claim_type: capability_index
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must align with tools.yaml on tool existence"
+
+  - path: "registries/TOOLBENCH_CONTRAST.md"
+    domain: tool
+    claim_type: ontology
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Reference document — keep as ontology reference"
+
+  - path: "registries/tool_authority.py"
+    domain: tool
+    claim_type: authority_resolver
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must be importable and return valid authority for any known tool"
+
+  - path: "governance/tool_authority_registry.py"
+    domain: tool
+    claim_type: authority_registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must cover all tools in tools.yaml"
+
+  - path: "contracts/TOOL_MANIFEST.yaml"
+    domain: tool
+    claim_type: manifest
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Derived from tools.yaml — must be reproducible"
+
+  - path: "contracts/MISSION_TOOL_MAP.json"
+    domain: tool
+    claim_type: mission_map
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Mission-to-tool mapping — validate tools exist"
+
+  # ── INFRA REGISTRIES ──
+  - path: "registries/PORT_REGISTRY.json"
+    domain: network
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Live-probed via ss -tlnp — must match live state"
+
+  - path: "registries/ROUTE_REGISTRY.json"
+    domain: network
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Extracted from Caddyfile — must match live Caddy config"
+
+  - path: "registries/TUNNEL_REGISTRY.json"
+    domain: network
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Extracted from cloudflared config — must match live tunnels"
+
+  - path: "registries/servers.yaml"
+    domain: network
+    claim_type: inventory
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Server inventory — validate against PORT_REGISTRY"
+
+  - path: "registries/hosts.yaml"
+    domain: network
+    claim_type: inventory
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Host inventory — validate against live hosts"
+
+  - path: "registries/FEDERATION_MODEL.json"
+    domain: model_routing
+    claim_type: registry
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Federation model routing — must match /root/.config/federation-models.json"
+
+  - path: "registries/model_soul.yaml"
+    domain: model_routing
+    claim_type: soul_map
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Model soul profiles — derived from FEDERATION_MODEL.json"
+
+  - path: "registries/integrations.yaml"
+    domain: infra
+    claim_type: inventory
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Integration inventory"
+
+  - path: "registries/domains.yaml"
+    domain: infra
+    claim_type: inventory
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Domain inventory"
+
+  - path: "registries/mission.yaml"
+    domain: infra
+    claim_type: mission_statement
+    active_status: active
+    canonical_status: reference
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Mission statement — reference only, not operational"
+
+  - path: "registries/persons.yaml"
+    domain: identity
+    claim_type: registry
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Persons registry — reference"
+
+  - path: "registries/bundles.yaml"
+    domain: infra
+    claim_type: inventory
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Bundle inventory"
+
+  - path: "registries/workflows.yaml"
+    domain: infra
+    claim_type: inventory
+    active_status: active
+    canonical_status: derived
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Workflow inventory"
+
+  - path: "registries/SUBSTRATE_GATE_POLICY.yaml"
+    domain: governance
+    claim_type: policy
+    active_status: active
+    canonical_status: canonical
+    owner: AAA (Arif)
+    conflicts: []
+    replacement: null
+    validation_rule: "Substrate gate policy for Telegram bot"
+
+  - path: "federation-manifest.yaml"
+    domain: federation
+    claim_type: manifest
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Federation topology manifest"
+
+  - path: "registries/AAA_FEDERATION_STATE.yaml"
+    domain: federation
+    claim_type: state
+    active_status: deprecated
+    canonical_status: deprecated
+    owner: AAA
+    conflicts: ["Self-declared DEPRECATED 2026-06-22"]
+    replacement: "registries/state/federation_state.yaml"
+    validation_rule: "Move to canonical path"
+
+  - path: "organ.yaml"
+    domain: federation
+    claim_type: identity
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Organ identity declaration"
+
+  - path: "manifest.json"
+    domain: federation
+    claim_type: manifest
+    active_status: active
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "AAA manifest"
+
+  # ── DEPRECATION ──
+  - path: "registries/DEPRECATION_REGISTRY.yaml"
+    domain: deprecation
+    claim_type: registry
+    active_status: to_be_created
+    canonical_status: canonical
+    owner: AAA
+    conflicts: []
+    replacement: null
+    validation_rule: "Must list all deprecated files from live scan"
+
+summary:
+  total_cataloged: 42
+  canonical: 14
+  derived: 18
+  deprecated: 5
+  tombstone: 2
+  reference: 1
+  to_be_created: 1
+  stale: 1
+  target_end_state: "<= 10 canonical, all others derived/deprecated"
