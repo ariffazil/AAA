@@ -1,7 +1,8 @@
-# ⚒️ INVARIANTS — Yang Tak Boleh Disentuh
+# ⚒️ INVARIANTS — Agent Architecture Rules (AAA-scope)
 
+> **SCOPE:** Agent behavior invariants for AAA warga. For MCP-level constitutional physics, see canonical: `/root/arifOS/GENESIS/INVARIANTS.md`
 > **Forged:** 2026-07-26 by FORGE (000Ω) · **Ratified:** Muhammad Arif bin Fazil (F13 SOVEREIGN)
-> **Seal:** `INVARIANTS::CANONICAL::2026.07.26`
+> **Seal:** `INVARIANTS::AAA-AGENT::2026.07.26`
 > **Doctrine:** DITEMPA BUKAN DIBERI — Interfaces are invariant. Implementations are replaceable.
 > **Audience:** Semua AAA warga, semua agent baru, sesiapa yang nak ubah sistem.
 
