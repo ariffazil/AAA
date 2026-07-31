@@ -627,8 +627,8 @@ export default function Cockpit() {
   return (
     <div className="min-h-screen bg-[#050505] text-[#e2e2e5] font-sans selection:bg-red-500/30 selection:text-white pb-20">
 
-      {/* CANONICAL HEADER STRIP */}
-      <div className="fixed top-[33px] left-0 right-0 z-50 bg-[#050505]/90 backdrop-blur-md border-b border-white/5">
+      {/* CANONICAL HEADER STRIP — sole sticky header, no TrinityNav above it */}
+      <div className="sticky top-0 left-0 right-0 z-50 bg-[#050505]/95 backdrop-blur-md border-b border-white/5">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <div className="text-sm font-black tracking-widest text-white">Δ AAA COCKPIT</div>
@@ -720,7 +720,7 @@ export default function Cockpit() {
         </div>
       </div>
 
-      <main className="max-w-5xl mx-auto px-6 pt-6 pb-20">
+      <main className="max-w-5xl mx-auto px-6 pt-36 pb-20">
 
         {/* ═══════════════════════════════════════════════════════════════
             TAB 00: OVERVIEW — Mission Intake, Golden Path, Approval Queue,
@@ -783,7 +783,7 @@ export default function Cockpit() {
                 <HealthMetric label="Integrity" value={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? '100%' : '—'} sub={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? 'No drift' : 'Drift detected'} color="text-red-500" />
                 <HealthMetric label="Holds Open" value={String(holdsCount)} sub={holdsCount > 0 ? `${holdsBreakdown['input-required']} pending · ${holdsBreakdown['auth-required']} auth` : 'None'} color={holdsCount > 0 ? 'text-amber-500' : 'text-white'} />
                 <HealthMetric label="Seals" value={String(sealsCount)} sub={vaultConnected ? 'VAULT999' : 'In-memory'} color={vaultConnected ? 'text-emerald-500' : 'text-blue-400'} />
-                <HealthMetric label="Vault999" value={kernelData?.vault999_health?.toUpperCase() || '—'} sub={kernelData?.freshness ? `fresh · ${kernelData.freshness.age_seconds ?? '?'}s` : 'no probe'} color={kernelData?.vault999_health === 'healthy' ? 'text-blue-500' : 'text-white/40'} />
+                <HealthMetric label="Vault999" value={kernelData?.vault999_health?.toUpperCase() || '—'} sub={typeof kernelData?.freshness?.age_seconds === 'number' && !isNaN(kernelData.freshness.age_seconds) ? `fresh · ${kernelData.freshness.age_seconds}s` : kernelData?.freshness ? 'fresh · —' : 'no probe'} color={kernelData?.vault999_health === 'healthy' ? 'text-blue-500' : 'text-white/40'} />
               </div>
             </section>
 
