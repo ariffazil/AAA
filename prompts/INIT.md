@@ -57,12 +57,15 @@ Q8  atlas333_loaded:     Have I pulled ATLAS333 cognitive geometry from arifOS M
 # 1. Verify kernel alive + constitutional state
 curl -sf http://127.0.0.1:8088/health | python3 -c "
 import json,sys; d=json.load(sys.stdin)
-print(f'verdict:     {d[\"thermodynamic\"][\"verdict\"]}')
-print(f'floors:      {d[\"floors_active\"]}')
-print(f'drift:       contract={d[\"contract_drift\"]} runtime={d[\"runtime_drift\"]}')
-print(f'identity:    {d[\"identity_hash\"][\"b3_prefix\"]}')
-print(f'tools:       {d[\"tools_loaded\"]} canonical, {d[\"tools_exposed_via_mcp\"]} total')
-print(f'vault999:    {d[\"vault999_health\"]}')
+t=d.get('thermodynamic',{})
+id_hash = d.get('identity_hash','?')
+id_prefix = id_hash[:12] if isinstance(id_hash,str) else id_hash.get('b3_prefix','?')[:12] if isinstance(id_hash,dict) else '?'
+print(f'verdict:     {t.get(\"verdict\",\"?\")}')
+print(f'floors:      {d.get(\"floors_active\",\"?\")}')
+print(f'drift:       contract={d.get(\"contract_drift\",\"?\")} runtime={d.get(\"runtime_drift\",\"?\")}')
+print(f'identity:    {id_prefix}')
+print(f'tools:       {d.get(\"tools_loaded\",\"?\")} canonical, {d.get(\"tools_exposed_via_mcp\",\"?\")} total')
+print(f'vault999:    {d.get(\"vault999_health\",\"?\")}')
 "
 # Expected: verdict=SEAL, floors=13, contract_drift=False
 
@@ -754,9 +757,11 @@ The federation has two public proof surfaces that close the loop of governed int
 ```bash
 curl -s https://arifos.arif-fazil.com/health | python3 -c "
 import json,sys; d=json.load(sys.stdin)
-print(f'identity: {d[\"identity_hash\"]}')
-print(f'floors:   {d[\"floors_active\"]}')
-print(f'drift:    {d[\"runtime_drift\"]}')"
+id_hash = d.get('identity_hash','?')
+id_prefix = id_hash[:12] if isinstance(id_hash,str) else '?'
+print(f'identity: {id_prefix}')
+print(f'floors:   {d.get(\"floors_active\",\"?\")}')
+print(f'drift:    {d.get(\"runtime_drift\",\"?\")}')"
 ```
 
 ### 16.2 /999 — The Sealed Vault (arif-fazil.com/999/)
