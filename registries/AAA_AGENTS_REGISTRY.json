@@ -1,3 +1,4 @@
+{ "_TOMBSTONE": "2026-07-31 — SUPERSEDED by /root/AAA/registries/AGENTS_UNIFIED.yaml. This file is FROZEN. No further regeneration.",
 {
   "$schema": "arifOS/AAA-agents-registry/v2.0.0",
   "$note": "DERIVED from registries/agents.yaml \u2014 agents.yaml is canonical source. Regenerate after any YAML change.",
