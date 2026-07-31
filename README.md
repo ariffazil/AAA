@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
 federation_release: v2026.07.31
 last_verified: 2026-07-31T03:25:00Z
-live_commit: 55652d71
+live_commit: 6f9b2ef
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)
