@@ -227,6 +227,7 @@ export default function Cockpit() {
   const [toolRegistry, setToolRegistry] = useState<{ name: string; requires_888: boolean }[]>([]);
   const [sessionManifest, setSessionManifest] = useState<SessionManifest | null>(null);
   const [showConsentDialog, setShowConsentDialog] = useState(false);
+  const [activeTab, setActiveTab] = useState<'overview' | 'agents' | 'floors' | 'mcp' | 'memory' | 'logs'>('overview');
 
   // Mission Intake
   const [missionText, setMissionText] = useState('');
@@ -682,6 +683,30 @@ export default function Cockpit() {
             </div>
           </div>
         </div>
+        {/* NEW HORIZON AGENTIC COCKPIT TAB BAR */}
+        <div className="max-w-6xl mx-auto px-6 border-t border-white/5 flex gap-1 overflow-x-auto font-mono text-xs">
+          {[
+            { id: 'overview', label: '00. MISSION & OVERVIEW', icon: '🎯' },
+            { id: 'agents', label: '01. AGENTS & MESH', icon: '🤖' },
+            { id: 'floors', label: '02. CONSTITUTIONAL FLOORS', icon: '⚖️' },
+            { id: 'mcp', label: '03. MCP APPS & TOOLS', icon: '🔌' },
+            { id: 'memory', label: '04. L4 MEMORY & PATTERNS', icon: '🧠' },
+            { id: 'logs', label: '05. AUDIT & VAULT LOGS', icon: '📜' },
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as typeof activeTab)}
+              className={`px-4 py-2.5 border-b-2 transition-all flex items-center gap-2 whitespace-nowrap font-bold tracking-tight ${
+                activeTab === tab.id
+                  ? 'border-red-500 text-white bg-red-950/20'
+                  : 'border-transparent text-white/40 hover:text-white/80 hover:bg-white/[0.02]'
+              }`}
+            >
+              <span>{tab.icon}</span>
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* ── HERMES IS AGENT BANNER ── */}
@@ -695,543 +720,671 @@ export default function Cockpit() {
         </div>
       </div>
 
-      <main className="max-w-4xl mx-auto px-6 pt-44">
+      <main className="max-w-5xl mx-auto px-6 pt-6 pb-20">
 
-        {/* HERO / INTRO */}
-        <section className="mb-20">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="h-px w-8 bg-red-500" />
-            <h2 className="text-[10px] font-mono text-red-500 uppercase tracking-[0.4em]">Operator Surface · BODY Ring</h2>
-          </div>
-          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8">
-            The Cockpit<span className="text-red-500">.</span>
-          </h1>
-          <p className="text-xl text-white/60 font-light leading-relaxed max-w-2xl mb-10">
-            Submit missions. Watch the deliberation. Approve HOLDs. Seal to VAULT999. This is where you act — not where you read.
-          </p>
-          <button
-            onClick={() => setShowConsentDialog(true)}
-            className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black text-sm tracking-tighter hover:bg-red-500 hover:text-white transition-all group"
-          >
-            <Zap className="w-4 h-4 fill-current" />
-            000_INIT IGNITION
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </section>
-
-        {/* ── MISSION INTAKE ── */}
-        <section className="mb-16">
-          <div className="flex items-baseline gap-4 mb-8">
-            <span className="text-4xl font-black text-red-500/30 font-mono italic">→</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Mission Intake</h2>
-          </div>
-          <form onSubmit={handleSubmitMission}>
-            <div className="border border-white/10 bg-white/[0.02] rounded-lg overflow-hidden focus-within:border-red-500/40 transition-colors">
-              <textarea
-                value={missionText}
-                onChange={e => setMissionText(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) void handleSubmitMission(e); }}
-                placeholder="State the mission objective. System will sense, reason, critique, judge, and seal — or HOLD for your decision."
-                rows={3}
-                className="w-full bg-transparent px-6 pt-5 pb-3 text-sm text-white/80 placeholder:text-white/20 font-mono resize-none outline-none"
-              />
-              <div className="flex items-center justify-between px-6 pb-4">
-                <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">⌘↵ to submit</span>
-                <button
-                  type="submit"
-                  disabled={missionSubmitting || !missionText.trim()}
-                  className="flex items-center gap-2 px-5 py-2 bg-red-500 text-white text-[10px] font-black tracking-widest uppercase hover:bg-red-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
-                >
-                  {missionSubmitting ? 'DISPATCHING…' : 'DISPATCH MISSION'}
-                  <Send className="w-3 h-3" />
-                </button>
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 00: OVERVIEW — Mission Intake, Golden Path, Approval Queue,
+            Health Grid, Quick Links
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'overview' && (
+          <>
+            {/* HERO */}
+            <section className="mb-12 pt-4">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="h-px w-8 bg-red-500" />
+                <h2 className="text-[10px] font-mono text-red-500 uppercase tracking-[0.4em]">Operator Surface · BODY Ring · New Horizon v2</h2>
               </div>
-            </div>
-          </form>
-          {lastMission && (
-            <div className="mt-4 px-4 py-3 border border-white/5 bg-white/[0.02] rounded text-[10px] font-mono">
-              <span className="text-white/30">LAST: </span>
-              <span className="text-white/60">{lastMission.text.slice(0, 80)}{lastMission.text.length > 80 ? '…' : ''}</span>
-              <span className={`ml-3 ${lastMission.state === 'completed' ? 'text-emerald-400' : lastMission.state === 'input-required' || lastMission.state === 'auth-required' ? 'text-amber-400' : lastMission.state === 'failed' ? 'text-red-400' : 'text-white/40'}`}>
-                [{lastMission.state.toUpperCase()}]
-              </span>
-            </div>
-          )}
-          {ratificationFlag && (
-            <div className={`mt-2 px-4 py-2 border rounded text-[10px] font-mono font-bold tracking-wide ${
-              ratificationFlag.startsWith('⚠️') ? 'bg-amber-950/20 border-amber-500/40 text-amber-300' :
-              ratificationFlag.startsWith('✅') ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-400' :
-              ratificationFlag.startsWith('❌') ? 'bg-red-950/20 border-red-500/40 text-red-400' :
-              'bg-white/5 border-white/10 text-white/40'
-            }`}>
-              {ratificationFlag}
-            </div>
-          )}
-        </section>
-
-        {/* ── GOLDEN PATH ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-8">
-            <span className="text-4xl font-black text-white/10 font-mono italic">Δ</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Golden Path</h2>
-            <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">sense → mind → heart → judge → vault</span>
-          </div>
-          <div className="max-w-full overflow-x-auto">
-           <div className="flex min-w-[560px] items-stretch gap-0">
-            {GOLDEN_PATH.map((step, i) => {
-              const isActive = pathStep === i;
-              const isDone = pathStep > i;
-              const isHold = (step === 'JUDGE') && lastMission && (lastMission.state === 'input-required' || lastMission.state === 'auth-required');
-              return (
-                <div key={step} className="flex-1 flex flex-col">
-                  <div className={`flex-1 px-4 py-6 border-b-2 transition-all ${
-                    isHold ? 'border-amber-500 bg-amber-950/10' :
-                    isDone ? 'border-emerald-500 bg-emerald-950/5' :
-                    isActive ? 'border-red-500 bg-red-950/10' :
-                    'border-white/10 bg-transparent'
-                  }`}>
-                    <div className="text-[9px] font-mono uppercase tracking-widest mb-3 text-white/20">step {String(i + 1).padStart(2, '0')}</div>
-                    <div className="flex items-center gap-2 mb-1">
-                      {isDone ? <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" /> :
-                       isHold ? <AlertCircle className="w-4 h-4 text-amber-500 flex-shrink-0" /> :
-                       isActive ? <div className="w-4 h-4 rounded-full border-2 border-red-500 flex-shrink-0 animate-pulse" /> :
-                       <Circle className="w-4 h-4 text-white/10 flex-shrink-0" />}
-                      <div className={`text-sm font-black tracking-widest ${
-                        isHold ? 'text-amber-500' :
-                        isDone ? 'text-emerald-400' :
-                        isActive ? 'text-red-400' :
-                        'text-white/20'
-                      }`}>{step}</div>
-                    </div>
-                    <div className="text-[9px] font-mono text-white/20 mt-2">
-                      {step === 'SENSE' && 'Risk assessment'}
-                      {step === 'MIND' && 'Reason & plan'}
-                      {step === 'HEART' && 'Moral critique'}
-                      {step === 'JUDGE' && (isHold ? '⚠ HOLD — await you' : 'Verdict')}
-                      {step === 'VAULT' && (isDone ? '✓ SEALED' : 'Seal')}
-                    </div>
-                  </div>
-                  {i < GOLDEN_PATH.length - 1 && (
-                    <div className={`h-px ${isDone ? 'bg-emerald-500/30' : 'bg-white/5'}`} />
-                  )}
-                </div>
-              );
-            })}
-           </div>
-          </div>
-          {pathStep === -1 && (
-            <p className="text-[10px] font-mono text-white/20 mt-4 text-center uppercase tracking-widest">Submit a mission above to activate the deliberation loop</p>
-          )}
-        </section>
-
-        {/* ── APPROVAL QUEUE ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-red-500/20 font-mono italic">00.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Approval Queue</h2>
-            {tasks.length > 0 && (
-              <span className="px-2 py-0.5 bg-red-500/10 text-red-500 border border-red-500/20 rounded text-[9px] font-mono uppercase tracking-widest">
-                {tasks.length} PENDING
-              </span>
-            )}
-          </div>
-
-          {tasks.length === 0 ? (
-            <div className="p-12 border border-dashed border-white/10 rounded-lg text-center">
-              <ShieldAlert className="w-8 h-8 text-white/10 mx-auto mb-4" />
-              <p className="text-sm text-white/30 font-mono tracking-widest uppercase">No actions pending sovereign witness</p>
-            </div>
-          ) : (
-            <div className="space-y-6">
-              {tasks.map(task => (
-                <div key={task.id} className="bg-red-950/10 border border-red-500/20 rounded-lg overflow-hidden">
-                  <div className="p-6 border-b border-red-500/10 flex justify-between items-start">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="px-2 py-0.5 bg-red-500 text-black text-[9px] font-black uppercase tracking-widest rounded">CONSEQUENTIAL ACTION</span>
-                        <span className="text-[10px] font-mono text-white/40 tracking-tighter">ID: {task.id}</span>
-                      </div>
-                      <p className="text-lg font-bold text-white mb-1">
-                        {task.history[0]?.parts[0]?.text || 'Unknown Intent'}
-                      </p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-[10px] font-mono text-white/40 uppercase mb-1">Risk Tier</div>
-                      <div className="text-red-500 font-black">{task.metadata.riskLevel}</div>
-                    </div>
-                  </div>
-                  <div className="p-6 bg-black/40 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <div className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-3">Irreversibility Bond</div>
-                      <div className="p-3 bg-white/5 border border-white/10 rounded font-mono text-xs text-white/60">
-                        {task.metadata.irreversibilityBond}
-                      </div>
-                    </div>
-                    <div>
-                      <div className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-3">Authorization Proof</div>
-                      <div className="p-3 bg-white/5 border border-white/10 rounded font-mono text-[10px] text-emerald-500/80 break-all leading-tight">
-                        WITNESS_TYPE: AGENT<br />
-                        SIGNATURE: AF-FORGE-SIG-{task.id.slice(-8).toUpperCase()}<br />
-                        STATUS: PENDING_HUMAN_OVERRIDE
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-red-500/5 flex justify-end">
-                    <div className="rounded border border-red-500/20 bg-black/30 px-4 py-3 text-[10px] font-mono uppercase tracking-[0.2em] text-white/45">
-                      Public cockpit is read-only. Sovereign approvals require an authenticated operator channel.
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </section>
-
-        {/* ── CONSTITUTIONAL FLOORS ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-white/10 font-mono italic">02.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Constitutional Floors</h2>
-            <span className="text-[9px] font-mono text-white/30 uppercase tracking-widest">live · {kernelData ? kernelData.release_name || 'kernel' : 'no kernel'}</span>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-px bg-white/5 border border-white/5">
-            {FLOORS_META.map(f => {
-              const s = floorStates[f.id];
-              const tone = s === 'PASS' ? 'emerald' : s === 'FAIL' ? 'red' : 'white/30';
-              const label = s === 'PASS' ? 'VERIFIED' : s === 'FAIL' ? 'VIOLATED' : 'UNKNOWN · F2';
-              return (
-                <div key={f.id} className="bg-[#050505] p-6 hover:bg-white/[0.02] transition-colors group">
-                  <div className="text-[10px] font-mono text-red-500 mb-4 group-hover:translate-x-1 transition-transform">{f.id}</div>
-                  <div className="text-xs font-black text-white leading-tight mb-2">{f.name.toUpperCase()}</div>
-                  <div className="flex items-center gap-1.5">
-                    <div className={`w-1 h-1 bg-${tone}-500 rounded-full`} />
-                    <span className={`text-[8px] font-mono text-${tone}-500 tracking-widest`}>{label}</span>
-                  </div>
-                </div>
-              );
-            })}
-            <div className="bg-[#050505] p-6 flex items-center justify-center border-l border-white/5">
-              <ShieldAlert className="w-6 h-6 text-white/10" />
-            </div>
-          </div>
-        </section>
-
-        {/* ── SYSTEM HEALTH GRID ── */}
-        <section className="mb-24">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <HealthMetric label="Integrity" value={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? '100%' : '—'} sub={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? 'No drift' : 'Drift detected'} color="text-red-500" />
-            <HealthMetric label="Holds Open" value={String(holdsCount)} sub={holdsCount > 0 ? `${holdsBreakdown['input-required']} pending · ${holdsBreakdown['auth-required']} auth` : 'None'} color={holdsCount > 0 ? 'text-amber-500' : 'text-white'} />
-            <HealthMetric label="Seals" value={String(sealsCount)} sub={vaultConnected ? 'VAULT999' : 'In-memory'} color={vaultConnected ? 'text-emerald-500' : 'text-blue-400'} />
-            <HealthMetric label="Vault999" value={kernelData?.vault999_health?.toUpperCase() || '—'} sub={kernelData?.freshness ? `fresh · ${kernelData.freshness.age_seconds ?? '?'}s` : 'no probe'} color={kernelData?.vault999_health === 'healthy' ? 'text-blue-500' : 'text-white/40'} />
-          </div>
-        </section>
-
-        {/* ── LIVE AGENTS ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-white/10 font-mono italic">01.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Live Agents</h2>
-          </div>
-          <div className="space-y-4">
-            {agentsLoading && agents.length === 0 && (
-              <p className="text-white/30 font-mono text-xs">Discovering federation agents…</p>
-            )}
-            {agentsError && (
-              <p className="text-amber-500/60 font-mono text-xs">Agent discovery degraded — using cached registry. ({agentsError})</p>
-            )}
-            {agents.map(a => (
-              <div key={a.id} className="group border-b border-white/5 pb-6 hover:border-red-500/50 transition-colors">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-lg font-bold text-white font-mono">{a.id}</h3>
-                  <div className="flex flex-col items-end gap-1">
-                    <div className="text-[9px] font-mono px-2 py-0.5 border border-white/20 text-white/40 uppercase tracking-widest">{a.type}</div>
-                    {a.type === 'AGENT' && (
-                      <div className="text-[8px] font-mono px-1.5 py-0.5 bg-red-950/40 border border-red-500/30 text-red-400 uppercase tracking-widest flex items-center gap-1">
-                        <span className="w-1 h-1 rounded-full bg-red-500 animate-pulse" />
-                        F13 Required
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <p className="text-sm text-white/40 font-light mb-4">{a.role}</p>
-                <div className="flex items-center gap-4 text-[9px] font-mono tracking-tighter uppercase">
-                  <span className={`flex items-center gap-1.5 ${a.status === 'active' ? 'text-emerald-500' : a.status === 'reflect_only' ? 'text-amber-400' : 'text-white/40'}`}>
-                    <Activity className="w-3 h-3" /> Status: {(a.status || 'unknown').replaceAll('_', ' ')}
-                  </span>
-                  <span className="text-white/20">|</span>
-                  <span className="text-white/40">{a.domain} · {a.ring}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── DOMAIN MCP STATUS ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-white/10 font-mono italic">Φ</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Domain Specialists</h2>
-          </div>
-          {/* Permanent WELL honesty banner — STALE / MOCK / SELF-REPORT (F2) */}
-          {wellHonesty?.banner && (
-            <div className="mb-6 p-4 border border-amber-500/40 bg-amber-950/20 rounded-lg">
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-[10px] font-mono font-bold tracking-widest text-amber-400 uppercase">
-                  WELL · HONESTY · {wellHonesty.code || 'NOTICE'}
-                </span>
-                {wellHonesty.color && (
-                  <span className="text-[9px] font-mono text-amber-300/70">owner={wellHonesty.color}</span>
-                )}
-                {wellHonesty.truth && (
-                  <span className="text-[9px] font-mono text-white/40">truth={wellHonesty.truth}</span>
-                )}
-              </div>
-              <p className="text-sm text-amber-100/90 font-light leading-relaxed">{wellHonesty.banner}</p>
-              <p className="text-[10px] font-mono text-white/30 mt-2">
-                Mirror only — not diagnosis. Sensor feed or fresh sovereign inject required for GREEN body truth.
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6">
+                The Cockpit<span className="text-red-500">.</span>
+              </h1>
+              <p className="text-lg text-white/50 font-light leading-relaxed max-w-2xl mb-8">
+                Submit missions. Watch the deliberation. Approve HOLDs. Seal to VAULT999.
+                This is where you act — not where you read.
               </p>
-            </div>
-          )}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {DOMAIN_MCPS.map(({ id, label, symbol, desc }) => {
-              const status = domainHealth[id];
-              const wellBadge = id === 'well' && wellHonesty?.code ? wellHonesty.code : null;
-              return (
-                <div key={id} className={`p-6 border rounded-lg ${
-                  id === 'well' && wellHonesty?.cockpitRequired
-                    ? 'border-amber-500/30 bg-amber-950/10'
-                    : status === 'ok' ? 'border-emerald-500/20 bg-emerald-950/5' :
-                  status === 'err' ? 'border-red-500/20 bg-red-950/5' :
-                  'border-white/10 bg-white/[0.02]'
-                }`}>
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="text-2xl">{symbol}</div>
-                    <div className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
-                      id === 'well' && wellHonesty?.cockpitRequired
-                        ? 'text-amber-300 bg-amber-950/40'
-                        : status === 'ok' ? 'text-emerald-400 bg-emerald-950/30' :
-                      status === 'err' ? 'text-red-400 bg-red-950/30' :
-                      'text-white/30 bg-white/5'
-                    }`}>
-                      {wellBadge || (status === 'ok' ? 'ONLINE' : status === 'err' ? 'OFFLINE' : 'PROBING')}
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => setShowConsentDialog(true)}
+                  className="flex items-center gap-3 px-6 py-3 bg-white text-black font-black text-xs tracking-tighter hover:bg-red-500 hover:text-white transition-all group"
+                >
+                  <Zap className="w-4 h-4 fill-current" />
+                  000_INIT IGNITION
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+                <a
+                  href="https://aaa.arif-fazil.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 border border-white/20 text-white/60 text-xs font-mono tracking-widest uppercase hover:border-red-500/50 hover:text-white transition-all"
+                >
+                  Observatory <ArrowUpRight className="w-3 h-3" />
+                </a>
+                <a
+                  href="/a2a/agents.json"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 border border-white/10 text-white/40 text-xs font-mono tracking-widest uppercase hover:border-white/30 hover:text-white/70 transition-all"
+                >
+                  Agent JSON <ArrowUpRight className="w-3 h-3" />
+                </a>
+                <a
+                  href="https://arifos.arif-fazil.com/llms.txt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-6 py-3 border border-white/10 text-white/40 text-xs font-mono tracking-widest uppercase hover:border-white/30 hover:text-white/70 transition-all"
+                >
+                  llms.txt <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </div>
+            </section>
+
+            {/* SYSTEM HEALTH GRID */}
+            <section className="mb-12">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-white/10">
+                <HealthMetric label="Integrity" value={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? '100%' : '—'} sub={kernelData?.contract_drift === false && kernelData?.runtime_drift === false ? 'No drift' : 'Drift detected'} color="text-red-500" />
+                <HealthMetric label="Holds Open" value={String(holdsCount)} sub={holdsCount > 0 ? `${holdsBreakdown['input-required']} pending · ${holdsBreakdown['auth-required']} auth` : 'None'} color={holdsCount > 0 ? 'text-amber-500' : 'text-white'} />
+                <HealthMetric label="Seals" value={String(sealsCount)} sub={vaultConnected ? 'VAULT999' : 'In-memory'} color={vaultConnected ? 'text-emerald-500' : 'text-blue-400'} />
+                <HealthMetric label="Vault999" value={kernelData?.vault999_health?.toUpperCase() || '—'} sub={kernelData?.freshness ? `fresh · ${kernelData.freshness.age_seconds ?? '?'}s` : 'no probe'} color={kernelData?.vault999_health === 'healthy' ? 'text-blue-500' : 'text-white/40'} />
+              </div>
+            </section>
+
+            {/* MISSION INTAKE */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-red-500/30 font-mono italic">→</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Mission Intake</h2>
+                <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">JSON-RPC 2.0 · message/send</span>
+              </div>
+              <form onSubmit={handleSubmitMission}>
+                <div className="border border-white/10 bg-white/[0.02] rounded-lg overflow-hidden focus-within:border-red-500/40 transition-colors">
+                  <textarea
+                    value={missionText}
+                    onChange={e => setMissionText(e.target.value)}
+                    onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) void handleSubmitMission(e); }}
+                    placeholder="State the mission objective. System will sense → mind → heart → judge → vault — or HOLD for your decision. ⌘↵ to submit."
+                    rows={4}
+                    className="w-full bg-transparent px-6 pt-5 pb-3 text-sm text-white/80 placeholder:text-white/20 font-mono resize-none outline-none"
+                  />
+                  <div className="flex items-center justify-between px-6 pb-4 border-t border-white/5">
+                    <div className="flex items-center gap-4 text-[9px] font-mono text-white/20">
+                      <span>⌘↵ submit</span>
+                      <span>A2A: {kernelStatus}</span>
+                      {latency !== null && <span>{latency}ms</span>}
                     </div>
-                  </div>
-                  <div className="text-sm font-black text-white tracking-tight mb-1">{label}</div>
-                  <div className="text-[10px] font-mono text-white/30">{desc}</div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* ── LIVE ORGAN ATTESTATION ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-white/10 font-mono italic">Ω</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Live Organ Attestation</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {organAttestationLoading && !organAttestation && (
-              <div className="col-span-full p-6 border border-white/10 bg-white/[0.02]">
-                <p className="text-white/30 font-mono text-xs">Polling arifOS attestation stream…</p>
-              </div>
-            )}
-            {organAttestation?.organs?.map((organ: OrganAttestationInfo) => (
-              <div
-                key={organ.name}
-                className={`p-5 border rounded-lg ${
-                  organ.healthy
-                    ? 'border-emerald-500/20 bg-emerald-950/5'
-                    : 'border-red-500/20 bg-red-950/5'
-                }`}
-              >
-                <div className="flex items-start justify-between mb-2">
-                  <div className="text-sm font-black text-white tracking-tight">{organ.name}</div>
-                  <div
-                    className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${
-                      organ.healthy
-                        ? 'text-emerald-400 bg-emerald-950/30'
-                        : 'text-red-400 bg-red-950/30'
-                    }`}
-                  >
-                    {organ.healthy ? 'ALIVE' : 'DEGRADED'}
+                    <button
+                      type="submit"
+                      disabled={missionSubmitting || !missionText.trim()}
+                      className="flex items-center gap-2 px-5 py-2 bg-red-500 text-white text-[10px] font-black tracking-widest uppercase hover:bg-red-400 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                    >
+                      {missionSubmitting ? 'DISPATCHING…' : 'DISPATCH MISSION'}
+                      <Send className="w-3 h-3" />
+                    </button>
                   </div>
                 </div>
-                <div className="text-[10px] font-mono text-white/40 mb-1">port {organ.port}</div>
-                <div className="text-[10px] font-mono text-white/50">{organ.detail}</div>
-              </div>
-            ))}
-          </div>
-          {organAttestation?.arifos_attestation && (
-            <div className="mt-4 p-4 border border-white/5 bg-white/[0.02]">
-              <div className="text-[10px] font-mono text-white/40 mb-2">
-                arifOS canonical attestation · {new Date(organAttestation.timestamp).toLocaleTimeString()}
-              </div>
-              <pre className="text-[9px] font-mono text-white/30 overflow-x-auto">
-                {JSON.stringify(organAttestation.arifos_attestation, null, 2).slice(0, 600)}
-              </pre>
-            </div>
-          )}
-        </section>
-
-        {/* ── TOOL REGISTRY ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-white/10 font-mono italic">03.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Tool Registry</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {(toolRegistry.length > 0 ? toolRegistry : [
-               { name: 'geox.well_viewer', requires_888: false },
-               { name: 'geox.interpret_las', requires_888: true },
-               { name: 'forge.check_governance', requires_888: false },
-               { name: 'forge.run_agent', requires_888: true },
-               { name: 'forge.hold_action', requires_888: false },
-               { name: 'forge.recall_memory', requires_888: false }
-            ]).map(t => (
-              <div key={t.name} className="p-4 border border-white/5 hover:border-white/20 transition-all flex justify-between items-center group">
-                <div className="flex flex-col gap-1">
-                  <code className="text-xs font-mono text-white/60 group-hover:text-white transition-colors">{t.name}</code>
-                  {t.requires_888 && (
-                    <span className="text-[9px] text-amber-500 uppercase tracking-widest font-black flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" /> HOLD PENDING
-                    </span>
-                  )}
+              </form>
+              {lastMission && (
+                <div className="mt-3 px-4 py-3 border border-white/5 bg-white/[0.02] rounded text-[10px] font-mono flex items-center gap-3">
+                  <span className="text-white/30">LAST:</span>
+                  <span className="text-white/60 flex-1 truncate">{lastMission.text.slice(0, 100)}{lastMission.text.length > 100 ? '…' : ''}</span>
+                  <span className={`flex-shrink-0 font-bold ${lastMission.state === 'completed' ? 'text-emerald-400' : lastMission.state === 'input-required' || lastMission.state === 'auth-required' ? 'text-amber-400 animate-pulse' : lastMission.state === 'failed' ? 'text-red-400' : 'text-white/40'}`}>
+                    [{lastMission.state.toUpperCase()}]
+                  </span>
                 </div>
-                <div className="w-1 h-1 bg-white/20 rounded-full group-hover:bg-red-500" />
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* ── MCP APPS (SEP-1865 Interactive UIs) ── */}
-        <MCPAppsPanel />
-
-        {/* ── CONSTITUTIONAL OVERLAY (aaa-a2a governance) ── */}
-        <section className="mb-12">
-          <div className="flex items-baseline gap-4 mb-6">
-            <span className="text-4xl font-black text-white/10 font-mono italic">02.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Constitutional Overlay</h2>
-            <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-              aaa-a2a
-            </span>
-          </div>
-          <ConstitutionalOverlay />
-        </section>
-
-        {/* ── AGENT MODEL IDENTITY (Governance Spine) ── */}
-        <AgentModelPanel
-          governanceCard={governanceCard}
-          isLoading={governanceLoading}
-          error={governanceError}
-        />
-
-        {/* ── HERMES SOVEREIGN CITIZEN ── */}
-        <section className="mb-12">
-          <div className="flex items-baseline gap-4 mb-6">
-            <span className="text-4xl font-black text-white/10 font-mono italic">03.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Sovereign Citizen</h2>
-            <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
-              <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-              LIVE
-            </span>
-          </div>
-          <HermesCitizenCard />
-        </section>
-
-        {/* ── HERMES TELEMETRY (L1/L2 bridge) ── */}
-        <section className="mb-24">
-          <HermesTelemetryPanel />
-        </section>
-
-        {/* ── AUTONOMY BANDS ── */}
-        <AutonomyBands tools={toolRegistry} />
-
-        {/* ── ⊜ REALITY CONSOLE (AREP) ── */}
-        <section className="mb-24">
-          <RealityConsole />
-        </section>
-
-        {/* ── LIVE EVENT LOG ── */}
-        <section className="mb-24">
-          <div className="flex items-baseline gap-4 mb-10">
-            <span className="text-4xl font-black text-white/10 font-mono italic">04.</span>
-            <h2 className="text-2xl font-bold tracking-tighter text-white uppercase">Event Log</h2>
-            {events.length > 0 && (
-              <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
-                <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
-                LIVE
-              </span>
-            )}
-          </div>
-          <div className="bg-white/[0.02] border border-white/5 rounded-lg overflow-hidden">
-            <div className="font-mono text-[11px] leading-relaxed max-h-80 overflow-y-auto">
-              {events.length === 0 ? (
-                <div className="px-6 py-8 text-white/20 text-center">
-                  <div className="mb-2">No events yet. Submit a mission to activate the loop.</div>
-                  <div className="animate-pulse text-white/10">_</div>
+              )}
+              {ratificationFlag && (
+                <div className={`mt-2 px-4 py-2 border rounded text-[10px] font-mono font-bold tracking-wide ${
+                  ratificationFlag.startsWith('⚠️') ? 'bg-amber-950/20 border-amber-500/40 text-amber-300' :
+                  ratificationFlag.startsWith('✅') ? 'bg-emerald-950/20 border-emerald-500/40 text-emerald-400' :
+                  ratificationFlag.startsWith('❌') ? 'bg-red-950/20 border-red-500/40 text-red-400' :
+                  'bg-white/5 border-white/10 text-white/40'
+                }`}>
+                  {ratificationFlag}
                 </div>
-              ) : (() => {
-                const live = events.filter(ev => !TEST_ALERT_PATTERN.test(ev.msg) && !TEST_ALERT_PATTERN.test(ev.kind));
-                const hidden = events.length - live.length;
-                if (live.length === 0) {
+              )}
+            </section>
+
+            {/* GOLDEN PATH */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">Δ</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Golden Path</h2>
+                <span className="text-[9px] font-mono text-white/20 uppercase tracking-widest">sense → mind → heart → judge → vault</span>
+              </div>
+              <div className="flex items-stretch border border-white/10 rounded-lg overflow-hidden">
+                {GOLDEN_PATH.map((step, i) => {
+                  const isActive = pathStep === i;
+                  const isDone = pathStep > i;
+                  const isHold = (step === 'JUDGE') && lastMission && (lastMission.state === 'input-required' || lastMission.state === 'auth-required');
                   return (
-                    <div className="px-6 py-8 text-white/20 text-center">
-                      <div className="mb-2">{hidden} test event{hidden === 1 ? '' : 's'} filtered.</div>
-                      <div className="animate-pulse text-white/10">_</div>
+                    <div key={step} className="flex-1 flex flex-col">
+                      <div className={`flex-1 px-4 py-5 border-r border-white/5 last:border-0 transition-all ${
+                        isHold ? 'bg-amber-950/20 border-r-amber-500/20' :
+                        isDone ? 'bg-emerald-950/10' :
+                        isActive ? 'bg-red-950/20' :
+                        'bg-transparent'
+                      }`}>
+                        <div className="text-[8px] font-mono uppercase tracking-widest mb-2 text-white/20">{String(i + 1).padStart(2, '0')}</div>
+                        <div className="flex items-center gap-1.5 mb-1">
+                          {isDone ? <CheckCircle2 className="w-3 h-3 text-emerald-500 flex-shrink-0" /> :
+                           isHold ? <AlertCircle className="w-3 h-3 text-amber-500 flex-shrink-0 animate-pulse" /> :
+                           isActive ? <div className="w-3 h-3 rounded-full border-2 border-red-500 flex-shrink-0 animate-pulse" /> :
+                           <Circle className="w-3 h-3 text-white/10 flex-shrink-0" />}
+                          <div className={`text-[10px] font-black tracking-widest ${
+                            isHold ? 'text-amber-500' :
+                            isDone ? 'text-emerald-400' :
+                            isActive ? 'text-red-400' :
+                            'text-white/20'
+                          }`}>{step}</div>
+                        </div>
+                        <div className="text-[8px] font-mono text-white/20">
+                          {step === 'SENSE' && 'Risk assessment'}
+                          {step === 'MIND' && 'Reason & plan'}
+                          {step === 'HEART' && 'Moral critique'}
+                          {step === 'JUDGE' && (isHold ? '⚠ HOLD — await you' : 'Verdict')}
+                          {step === 'VAULT' && (isDone ? '✓ SEALED' : 'Seal')}
+                        </div>
+                      </div>
                     </div>
                   );
-                }
-                return (
-                  <>
-                    {hidden > 0 && (
-                      <div className="px-6 py-1 text-[9px] text-white/30 border-b border-white/5">· {hidden} test event{hidden === 1 ? '' : 's'} hidden (Phase1 / Dry-Run / Test Organ)</div>
-                    )}
-                    {live.map((ev, i) => (
-                      <div key={ev.id} className={`px-6 py-2 border-b border-white/5 flex items-start gap-4 hover:bg-white/[0.02] ${i === 0 ? 'bg-white/[0.03]' : ''}`}>
-                        <span className="text-white/20 flex-shrink-0 w-20">{new Date(ev.ts).toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
-                        <span className={`flex-shrink-0 w-24 font-bold ${EVENT_COLORS[ev.kind] || 'text-white/40'}`}>{ev.kind}</span>
-                        <span className="text-white/50">{redactLogMsg(ev.msg)}</span>
-                        <span className="text-white/20 flex-shrink-0 ml-auto text-[9px]">{ev.taskId.slice(-8)}</span>
+                })}
+              </div>
+              {pathStep === -1 && (
+                <p className="text-[10px] font-mono text-white/20 mt-3 text-center uppercase tracking-widest">Submit a mission above to activate the deliberation loop</p>
+              )}
+            </section>
+
+            {/* APPROVAL QUEUE */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-red-500/20 font-mono italic">00.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Approval Queue</h2>
+                {tasks.length > 0 && (
+                  <span className="px-2 py-0.5 bg-red-500/10 text-red-500 border border-red-500/20 rounded text-[9px] font-mono uppercase tracking-widest animate-pulse">
+                    {tasks.length} PENDING
+                  </span>
+                )}
+              </div>
+              {tasks.length === 0 ? (
+                <div className="p-10 border border-dashed border-white/10 rounded-lg text-center">
+                  <ShieldAlert className="w-8 h-8 text-white/10 mx-auto mb-3" />
+                  <p className="text-sm text-white/30 font-mono tracking-widest uppercase">No actions pending sovereign witness</p>
+                  <p className="text-[10px] font-mono text-white/15 mt-1">888_HOLD actions will appear here for F13 ratification</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {tasks.map(task => (
+                    <div key={task.id} className="bg-red-950/10 border border-red-500/20 rounded-lg overflow-hidden">
+                      <div className="p-5 border-b border-red-500/10 flex justify-between items-start">
+                        <div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <span className="px-2 py-0.5 bg-red-500 text-black text-[9px] font-black uppercase tracking-widest rounded">CONSEQUENTIAL ACTION</span>
+                            <span className="text-[10px] font-mono text-white/40">ID: {task.id}</span>
+                          </div>
+                          <p className="text-base font-bold text-white">{task.history[0]?.parts[0]?.text || 'Unknown Intent'}</p>
+                        </div>
+                        <div className="text-right">
+                          <div className="text-[10px] font-mono text-white/40 uppercase mb-1">Risk Tier</div>
+                          <div className="text-red-500 font-black text-sm">{task.metadata.riskLevel}</div>
+                        </div>
                       </div>
-                    ))}
-                  </>
-                );
-              })()}
-            </div>
-          </div>
-        </section>
+                      <div className="p-5 bg-black/40 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <div className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-2">Irreversibility Bond</div>
+                          <div className="p-3 bg-white/5 border border-white/10 rounded font-mono text-xs text-white/60">{task.metadata.irreversibilityBond}</div>
+                        </div>
+                        <div>
+                          <div className="text-[9px] font-mono text-white/30 uppercase tracking-widest mb-2">Authorization Proof</div>
+                          <div className="p-3 bg-white/5 border border-white/10 rounded font-mono text-[10px] text-emerald-500/80 break-all leading-tight">
+                            WITNESS_TYPE: AGENT<br />
+                            SIGNATURE: AF-FORGE-SIG-{task.id.slice(-8).toUpperCase()}<br />
+                            STATUS: PENDING_HUMAN_OVERRIDE
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-4 bg-red-500/5 flex justify-end">
+                        <div className="rounded border border-red-500/20 bg-black/30 px-4 py-2.5 text-[10px] font-mono uppercase tracking-[0.15em] text-white/40">
+                          Sovereign approvals require an authenticated operator channel — use HERMES or direct API
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
 
-        {/* ── SUPABASE FEDERATION MEMORY (Phase 3A Read-Only) ── */}
-        <ErrorBoundaryPanel label="Supabase Memory">
-          <SupabaseMemoryPanel />
-        </ErrorBoundaryPanel>
+            {/* LIVE ORGAN ATTESTATION — overview tab */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">Ω</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Live Organ Attestation</h2>
+                {organAttestationLoading && <span className="text-[9px] font-mono text-white/30 animate-pulse">polling…</span>}
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                {organAttestation?.organs?.map((organ: OrganAttestationInfo) => (
+                  <div
+                    key={organ.name}
+                    className={`p-4 border rounded-lg text-center ${
+                      organ.healthy ? 'border-emerald-500/20 bg-emerald-950/5' : 'border-red-500/20 bg-red-950/5'
+                    }`}
+                  >
+                    <div className={`text-[8px] font-mono px-1.5 py-0.5 rounded font-bold inline-block mb-2 ${
+                      organ.healthy ? 'text-emerald-400 bg-emerald-950/30' : 'text-red-400 bg-red-950/30'
+                    }`}>{organ.healthy ? 'ALIVE' : 'DEGRADED'}</div>
+                    <div className="text-xs font-black text-white tracking-tight">{organ.name}</div>
+                    <div className="text-[9px] font-mono text-white/30 mt-1">:{organ.port}</div>
+                  </div>
+                ))}
+                {!organAttestation && !organAttestationLoading && (
+                  <div className="col-span-full p-6 border border-white/10 rounded text-center text-white/30 font-mono text-xs">
+                    Attestation stream unavailable — check arifOS kernel health
+                  </div>
+                )}
+              </div>
+            </section>
+          </>
+        )}
 
-        {/* ── HUMAN PATTERN REPORT (Phase 3B Operator Rhythm) ── */}
-        <HumanPatternReport />
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 01: AGENTS & MESH — Live agents, Domain Specialists, Attestation
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'agents' && (
+          <>
+            {/* LIVE AGENTS */}
+            <section className="mb-12 pt-4">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">01.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Live Agents & Federation Mesh</h2>
+                <button
+                  onClick={() => { void fetchAgents(); }}
+                  className="ml-auto text-[9px] font-mono text-white/30 hover:text-white border border-white/10 px-3 py-1 hover:border-white/30 transition-colors"
+                >
+                  ↻ refresh
+                </button>
+              </div>
+              <div className="space-y-3">
+                {agentsLoading && agents.length === 0 && (
+                  <p className="text-white/30 font-mono text-xs py-4">Discovering federation agents via /a2a/agents.json…</p>
+                )}
+                {agentsError && (
+                  <div className="p-4 border border-amber-500/30 bg-amber-950/10 rounded text-[10px] font-mono text-amber-400">
+                    Agent discovery degraded — using cached registry. Error: {agentsError}
+                  </div>
+                )}
+                {agents.map(a => (
+                  <div key={a.id} className="group border border-white/5 hover:border-red-500/30 transition-colors rounded-lg p-5">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-base font-bold text-white font-mono">{a.id}</h3>
+                      <div className="flex items-center gap-2">
+                        <div className={`text-[8px] font-mono px-2 py-0.5 border rounded uppercase tracking-widest ${
+                          a.status === 'active' ? 'border-emerald-500/40 text-emerald-400' :
+                          a.status === 'reflect_only' ? 'border-amber-500/40 text-amber-400' :
+                          'border-white/20 text-white/40'
+                        }`}>{(a.status || 'unknown').toUpperCase().replace('_', ' ')}</div>
+                        <div className="text-[8px] font-mono px-2 py-0.5 border border-white/10 text-white/30 uppercase tracking-widest">{a.type}</div>
+                        {a.type === 'AGENT' && (
+                          <div className="text-[8px] font-mono px-1.5 py-0.5 bg-red-950/40 border border-red-500/30 text-red-400 uppercase tracking-widest flex items-center gap-1">
+                            <span className="w-1 h-1 rounded-full bg-red-500 animate-pulse" />
+                            F13
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-sm text-white/40 font-light mb-3">{a.role}</p>
+                    <div className="flex items-center gap-4 text-[9px] font-mono tracking-tighter uppercase text-white/30">
+                      <span><Activity className="w-3 h-3 inline mr-1" />{a.domain}</span>
+                      <span>Ring: {a.ring}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-        <CockpitSupabaseQueryProbe />
+            {/* DOMAIN SPECIALISTS */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">Φ</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Domain Specialists</h2>
+              </div>
+              {wellHonesty?.banner && (
+                <div className="mb-5 p-4 border border-amber-500/40 bg-amber-950/20 rounded-lg">
+                  <div className="flex items-center gap-3 mb-1">
+                    <span className="text-[10px] font-mono font-bold tracking-widest text-amber-400 uppercase">WELL · HONESTY · {wellHonesty.code || 'NOTICE'}</span>
+                    {wellHonesty.color && <span className="text-[9px] font-mono text-amber-300/70">owner={wellHonesty.color}</span>}
+                  </div>
+                  <p className="text-sm text-amber-100/90 font-light leading-relaxed">{wellHonesty.banner}</p>
+                  <p className="text-[10px] font-mono text-white/30 mt-2">Mirror only — not diagnosis. Sensor feed or fresh sovereign inject required for GREEN body truth.</p>
+                </div>
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                {DOMAIN_MCPS.map(({ id, label, symbol, desc }) => {
+                  const status = domainHealth[id];
+                  const wellBadge = id === 'well' && wellHonesty?.code ? wellHonesty.code : null;
+                  return (
+                    <a
+                      key={id}
+                      href={`https://${id === 'forge' ? 'forge' : id}.arif-fazil.com`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`p-5 border rounded-lg hover:scale-[1.01] transition-all group ${
+                        id === 'well' && wellHonesty?.cockpitRequired
+                          ? 'border-amber-500/30 bg-amber-950/10'
+                          : status === 'ok' ? 'border-emerald-500/20 bg-emerald-950/5 hover:border-emerald-500/40' :
+                        status === 'err' ? 'border-red-500/20 bg-red-950/5 hover:border-red-500/40' :
+                        'border-white/10 bg-white/[0.02] hover:border-white/20'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="text-2xl">{symbol}</div>
+                        <div className={`text-[8px] font-mono px-2 py-0.5 rounded font-bold ${
+                          id === 'well' && wellHonesty?.cockpitRequired
+                            ? 'text-amber-300 bg-amber-950/40'
+                            : status === 'ok' ? 'text-emerald-400 bg-emerald-950/30' :
+                          status === 'err' ? 'text-red-400 bg-red-950/30' :
+                          'text-white/30 bg-white/5'
+                        }`}>
+                          {wellBadge || (status === 'ok' ? 'ONLINE' : status === 'err' ? 'OFFLINE' : 'PROBING')}
+                        </div>
+                      </div>
+                      <div className="text-sm font-black text-white tracking-tight mb-1 group-hover:text-red-400 transition-colors">{label}</div>
+                      <div className="text-[10px] font-mono text-white/30">{desc}</div>
+                      <div className="mt-2 text-[9px] font-mono text-white/20 flex items-center gap-1">
+                        {id}.arif-fazil.com <ArrowUpRight className="w-2.5 h-2.5" />
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
 
-        {/* ── ARIFOS VAULT999 RECEIPT VIEWER ── recent sealed events */}
-        <section className="mb-8">
-          <ArifOSReceiptViewer />
-        </section>
+            {/* FULL ORGAN ATTESTATION */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">Ω</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Organ Attestation</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {organAttestationLoading && !organAttestation && (
+                  <div className="col-span-full p-6 border border-white/10 bg-white/[0.02] rounded">
+                    <p className="text-white/30 font-mono text-xs">Polling arifOS attestation stream…</p>
+                  </div>
+                )}
+                {organAttestation?.organs?.map((organ: OrganAttestationInfo) => (
+                  <div
+                    key={organ.name}
+                    className={`p-5 border rounded-lg ${organ.healthy ? 'border-emerald-500/20 bg-emerald-950/5' : 'border-red-500/20 bg-red-950/5'}`}
+                  >
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="text-sm font-black text-white tracking-tight">{organ.name}</div>
+                      <div className={`text-[9px] font-mono px-2 py-0.5 rounded font-bold ${organ.healthy ? 'text-emerald-400 bg-emerald-950/30' : 'text-red-400 bg-red-950/30'}`}>
+                        {organ.healthy ? 'ALIVE' : 'DEGRADED'}
+                      </div>
+                    </div>
+                    <div className="text-[10px] font-mono text-white/40 mb-1">port {organ.port}</div>
+                    <div className="text-[10px] font-mono text-white/50">{organ.detail}</div>
+                  </div>
+                ))}
+              </div>
+              {organAttestation?.arifos_attestation && (
+                <div className="mt-4 p-4 border border-white/5 bg-white/[0.02] rounded">
+                  <div className="text-[10px] font-mono text-white/40 mb-2">
+                    arifOS canonical attestation · {new Date(organAttestation.timestamp).toLocaleTimeString()}
+                  </div>
+                  <pre className="text-[9px] font-mono text-white/30 overflow-x-auto">
+                    {JSON.stringify(organAttestation.arifos_attestation, null, 2).slice(0, 600)}
+                  </pre>
+                </div>
+              )}
+            </section>
 
-        {/* SUMMARY */}
-        <section className="mb-24 pt-12 border-t border-white/10">
-          <h3 className="text-sm font-black uppercase tracking-widest text-white mb-6">Constitutional Summary</h3>
-          <p className="text-white/40 font-light leading-relaxed text-sm max-w-3xl">
-            The arifOS federation operates under 13 binding laws (L01–L13). Every action — from a well-log interpretation to an agent deployment — must pass all active laws before a 999_SEAL is issued. Any law failure triggers 888_HOLD, requiring human review.
-          </p>
-        </section>
+            {/* AGENT MODEL IDENTITY */}
+            <AgentModelPanel
+              governanceCard={governanceCard}
+              isLoading={governanceLoading}
+              error={governanceError}
+            />
 
-        {/* DEEP LINKS */}
-        <section className="flex flex-wrap gap-8 text-[10px] font-mono tracking-widest uppercase text-white/30 mb-20">
-          <a href="#" className="hover:text-white flex items-center gap-2 transition-colors">Agent JSON <ArrowUpRight className="w-3 h-3" /></a>
-          <a href="https://arifos.arif-fazil.com" className="hover:text-white flex items-center gap-2 transition-colors">Observatory <ArrowUpRight className="w-3 h-3" /></a>
-          <a href="#" className="hover:text-white flex items-center gap-2 transition-colors text-red-500">Read Canon <ArrowUpRight className="w-3 h-3" /></a>
-        </section>
+            {/* HERMES CITIZEN CARD */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">03.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Sovereign Citizen</h2>
+                <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
+                  <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />LIVE
+                </span>
+              </div>
+              <HermesCitizenCard />
+            </section>
+
+            {/* HERMES TELEMETRY */}
+            <section className="mb-12">
+              <HermesTelemetryPanel />
+            </section>
+          </>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 02: CONSTITUTIONAL FLOORS — F1–F13 live status, overlay
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'floors' && (
+          <>
+            <section className="mb-12 pt-4">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">02.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Constitutional Floors</h2>
+                <span className="text-[9px] font-mono text-white/30 uppercase tracking-widest">live · {kernelData ? kernelData.release_name || 'kernel' : 'no kernel'}</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-px bg-white/5 border border-white/5 mb-8">
+                {FLOORS_META.map(f => {
+                  const s = floorStates[f.id];
+                  const tone = s === 'PASS' ? 'emerald' : s === 'FAIL' ? 'red' : 'white/30';
+                  const label = s === 'PASS' ? 'VERIFIED' : s === 'FAIL' ? 'VIOLATED' : 'UNKNOWN · F2';
+                  return (
+                    <div key={f.id} className="bg-[#050505] p-6 hover:bg-white/[0.02] transition-colors group cursor-default">
+                      <div className="text-[10px] font-mono text-red-500 mb-3 group-hover:translate-x-0.5 transition-transform">{f.id}</div>
+                      <div className="text-xs font-black text-white leading-tight mb-3">{f.name.toUpperCase()}</div>
+                      <div className={`text-[8px] font-mono tracking-widest text-${tone}-500 flex items-center gap-1`}>
+                        <div className={`w-1 h-1 bg-${tone}-500 rounded-full`} />
+                        {label}
+                      </div>
+                    </div>
+                  );
+                })}
+                <div className="bg-[#050505] p-6 flex items-center justify-center border-l border-white/5">
+                  <ShieldAlert className="w-6 h-6 text-white/10" />
+                </div>
+              </div>
+              <div className="p-4 border border-white/5 bg-white/[0.02] rounded text-[10px] font-mono text-white/40 mb-8">
+                <span className="text-white/60 font-bold">F2 TRUTH:</span> Floor states derive from live <code className="text-emerald-400">arifos.arif-fazil.com/health</code> → <code>governance.laws_hard_active</code> + <code>floors_soft_doctrinal</code>. UNKNOWN = kernel offline or field absent. VIOLATED = floor not in active set.
+              </div>
+            </section>
+
+            {/* CONSTITUTIONAL OVERLAY */}
+            <section className="mb-12">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">02b.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Constitutional Overlay</h2>
+                <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
+                  <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />aaa-a2a
+                </span>
+              </div>
+              <ConstitutionalOverlay />
+            </section>
+
+            {/* AUTONOMY BANDS */}
+            <AutonomyBands tools={toolRegistry} />
+
+            {/* Build Info Summary */}
+            <section className="mt-8 p-6 border border-white/5 bg-white/[0.02] rounded">
+              <h3 className="text-sm font-black uppercase tracking-widest text-white/40 mb-4">Federation Build Info</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-[10px] font-mono">
+                {[
+                  { label: 'Kernel', val: kernelData?.release_name || '—', badge: '[LIVE]' },
+                  { label: 'Git Commit', val: kernelData?.git_commit || '—', badge: '[LIVE]' },
+                  { label: 'Tools Loaded', val: String(kernelData?.tools_loaded ?? '—'), badge: '[LIVE]' },
+                  { label: 'Floors Active', val: String(kernelData?.floors_active ?? '—'), badge: '[LIVE]' },
+                  { label: 'Transport', val: 'JSON-RPC 2.0', badge: '[LIVE]' },
+                  { label: 'ΔS', val: '≤ 0', badge: '[UNIFIED]' },
+                  { label: 'Contract Drift', val: kernelData?.contract_drift === undefined ? '—' : kernelData.contract_drift ? 'YES' : 'none', badge: '[LIVE]' },
+                  { label: 'Runtime Drift', val: kernelData?.runtime_drift === undefined ? '—' : kernelData.runtime_drift ? 'YES' : 'none', badge: '[LIVE]' },
+                ].map(({ label, val, badge }) => (
+                  <div key={label}>
+                    <div className="text-white/30 uppercase tracking-widest mb-1">{label}</div>
+                    <div className="text-white/80">{val} <span className="text-white/30">{badge}</span></div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 03: MCP APPS & TOOLS — Tool registry, MCP apps, reality console
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'mcp' && (
+          <>
+            {/* TOOL REGISTRY */}
+            <section className="mb-12 pt-4">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">03.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Tool Registry</h2>
+                <span className="text-[9px] font-mono text-white/30">{toolRegistry.length} tools · {toolRegistry.filter(t => t.requires_888).length} gated</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {(toolRegistry.length > 0 ? toolRegistry : [
+                  { name: 'geox.well_viewer', requires_888: false },
+                  { name: 'geox.interpret_las', requires_888: true },
+                  { name: 'forge.check_governance', requires_888: false },
+                  { name: 'forge.run_agent', requires_888: true },
+                  { name: 'forge.hold_action', requires_888: false },
+                  { name: 'forge.recall_memory', requires_888: false },
+                ]).map(t => (
+                  <div key={t.name} className="p-4 border border-white/5 hover:border-white/20 transition-all flex justify-between items-center group rounded">
+                    <div className="flex flex-col gap-0.5">
+                      <code className="text-xs font-mono text-white/60 group-hover:text-white transition-colors">{t.name}</code>
+                      {t.requires_888 && (
+                        <span className="text-[9px] text-amber-500 uppercase tracking-widest font-black flex items-center gap-1">
+                          <AlertCircle className="w-3 h-3" /> 888_HOLD GATED
+                        </span>
+                      )}
+                    </div>
+                    <div className={`w-1.5 h-1.5 rounded-full ${t.requires_888 ? 'bg-amber-500' : 'bg-emerald-500/40'}`} />
+                  </div>
+                ))}
+              </div>
+              {toolRegistry.length === 0 && (
+                <div className="mt-3 text-[10px] font-mono text-white/20 text-center">
+                  Showing cached defaults — live registry loads from <code className="text-emerald-400">arifos.arif-fazil.com/tools</code>
+                </div>
+              )}
+            </section>
+
+            {/* MCP APPS — SEP-1865 Interactive UIs */}
+            <MCPAppsPanel />
+
+            {/* REALITY CONSOLE */}
+            <section className="mt-12 mb-12">
+              <RealityConsole />
+            </section>
+          </>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 04: MEMORY — Supabase L4 memory, human patterns
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'memory' && (
+          <>
+            <section className="mb-8 pt-4">
+              <div className="flex items-baseline gap-4 mb-4">
+                <span className="text-3xl font-black text-white/10 font-mono italic">04.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">L4 Federation Memory</h2>
+                <span className="text-[9px] font-mono text-white/30">Supabase · read-only · Phase 3A</span>
+              </div>
+              <p className="text-sm text-white/40 font-light mb-6">
+                Structured memory records from the Supabase L4 layer. These are official domain-structured records (25 tables), distinct from the ephemeral L1/L2 Redis session and L3 Qdrant vector layers.
+              </p>
+            </section>
+            <ErrorBoundaryPanel label="Supabase Memory">
+              <SupabaseMemoryPanel />
+            </ErrorBoundaryPanel>
+            <HumanPatternReport />
+            <CockpitSupabaseQueryProbe />
+          </>
+        )}
+
+        {/* ═══════════════════════════════════════════════════════════════
+            TAB 05: AUDIT & VAULT LOGS — Event log, receipt viewer, summary
+            ═══════════════════════════════════════════════════════════════ */}
+        {activeTab === 'logs' && (
+          <>
+            {/* LIVE EVENT LOG */}
+            <section className="mb-12 pt-4">
+              <div className="flex items-baseline gap-4 mb-6">
+                <span className="text-3xl font-black text-white/10 font-mono italic">04.</span>
+                <h2 className="text-xl font-bold tracking-tighter text-white uppercase font-mono">Event Log</h2>
+                {events.length > 0 && (
+                  <span className="text-[9px] font-mono text-emerald-500/60 flex items-center gap-1">
+                    <span className="inline-block w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                    LIVE · {events.length} events
+                  </span>
+                )}
+              </div>
+              <div className="bg-white/[0.02] border border-white/5 rounded-lg overflow-hidden">
+                <div className="font-mono text-[11px] leading-relaxed max-h-[500px] overflow-y-auto">
+                  {events.length === 0 ? (
+                    <div className="px-6 py-8 text-white/20 text-center">
+                      <div className="mb-2">No events yet. Submit a mission to activate the loop.</div>
+                      <div className="animate-pulse text-white/10">_</div>
+                    </div>
+                  ) : (() => {
+                    const live = events.filter(ev => !TEST_ALERT_PATTERN.test(ev.msg) && !TEST_ALERT_PATTERN.test(ev.kind));
+                    const hidden = events.length - live.length;
+                    if (live.length === 0) {
+                      return (
+                        <div className="px-6 py-8 text-white/20 text-center">
+                          <div className="mb-2">{hidden} test event{hidden === 1 ? '' : 's'} filtered.</div>
+                          <div className="animate-pulse text-white/10">_</div>
+                        </div>
+                      );
+                    }
+                    return (
+                      <>
+                        {hidden > 0 && (
+                          <div className="px-6 py-1 text-[9px] text-white/30 border-b border-white/5">· {hidden} test event{hidden === 1 ? '' : 's'} hidden (Phase1 / Dry-Run / Test Organ)</div>
+                        )}
+                        {live.map((ev, i) => (
+                          <div key={ev.id} className={`px-6 py-2 border-b border-white/5 flex items-start gap-4 hover:bg-white/[0.02] ${i === 0 ? 'bg-white/[0.03]' : ''}`}>
+                            <span className="text-white/20 flex-shrink-0 w-20">{new Date(ev.ts).toLocaleTimeString('en-MY', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</span>
+                            <span className={`flex-shrink-0 w-24 font-bold ${EVENT_COLORS[ev.kind] || 'text-white/40'}`}>{ev.kind}</span>
+                            <span className="text-white/50">{redactLogMsg(ev.msg)}</span>
+                            <span className="text-white/20 flex-shrink-0 ml-auto text-[9px]">{ev.taskId.slice(-8)}</span>
+                          </div>
+                        ))}
+                      </>
+                    );
+                  })()}
+                </div>
+              </div>
+            </section>
+
+            {/* VAULT999 RECEIPT VIEWER */}
+            <section className="mb-12">
+              <ArifOSReceiptViewer />
+            </section>
+
+            {/* CONSTITUTIONAL SUMMARY */}
+            <section className="mb-12 pt-8 border-t border-white/10">
+              <h3 className="text-sm font-black uppercase tracking-widest text-white mb-4">Constitutional Summary</h3>
+              <p className="text-white/40 font-light leading-relaxed text-sm max-w-3xl mb-6">
+                The arifOS federation operates under 13 binding laws (L01–L13). Every action — from a well-log interpretation to an agent deployment — must pass all active laws before a 999_SEAL is issued. Any law failure triggers 888_HOLD, requiring human review.
+              </p>
+              <div className="flex flex-wrap gap-6 text-[10px] font-mono tracking-widest uppercase text-white/30">
+                <a href="/a2a/agents.json" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2 transition-colors">Agent JSON <ArrowUpRight className="w-3 h-3" /></a>
+                <a href="https://arifos.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2 transition-colors">Observatory <ArrowUpRight className="w-3 h-3" /></a>
+                <a href="https://arifos.arif-fazil.com/llms.txt" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2 transition-colors text-red-500/60 hover:text-red-400">llms.txt <ArrowUpRight className="w-3 h-3" /></a>
+                <a href="https://aaa.arif-fazil.com" target="_blank" rel="noopener noreferrer" className="hover:text-white flex items-center gap-2 transition-colors">AAA Public <ArrowUpRight className="w-3 h-3" /></a>
+              </div>
+            </section>
+          </>
+        )}
 
       </main>
 
@@ -1262,7 +1415,7 @@ export default function Cockpit() {
             </div>
             <div>
               <div className="text-white/30 uppercase tracking-widest mb-1">Cockpit Build</div>
-              <div className="text-white/80">v2026.06.18 <span className="text-white/30">[SOT]</span></div>
+              <div className="text-white/80">v2026.07.31 <span className="text-white/30">[NEW HORIZON]</span></div>
             </div>
             <div>
               <div className="text-white/30 uppercase tracking-widest mb-1">ΔS</div>
