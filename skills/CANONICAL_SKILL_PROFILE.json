@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "generated": "2026-07-31",
+  "doctrine": "DITEMPA BUKAN DIBERI",
+  "tiers": {
+    "substrate_always": [
+      "kernel-bind",
+      "observe-ground",
+      "route-dispatch",
+      "memory-manage",
+      "verify-gate",
+      "audit-seal"
+    ],
+    "constitutional": [
+      "KERNEL-trinity-33",
+      "RSI-recursive-improvement",
+      "atlas333-cognitive-geometry",
+      "apex_verdict_seal",
+      "apex_verdict_hold",
+      "ASI-agent-invariants",
+      "FLAME-router",
+      "AGI-explorer-intelligence"
+    ],
+    "forge_on_demand": [
+      "FORGE-verify-runtime",
+      "FORGE-incident-triage",
+      "FORGE-infra-guardian",
+      "FORGE-mcp-smoke-test",
+      "FORGE-vps-docker",
+      "FORGE-ci-diagnose"
+    ],
+    "github_on_demand": [
+      "FORGE-github-ops",
+      "FORGE-pr-review",
+      "FORGE-pr-governance",
+      "FORGE-issue-triage",
+      "FORGE-precommit-review"
+    ],
+    "knowledge_on_demand": [
+      "know-physics",
+      "know-math",
+      "know-language"
+    ]
+  },
+  "total_canonical": 28,
+  "total_active": 166,
+  "total_retired": 28
+}
