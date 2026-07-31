@@ -582,6 +582,15 @@
       "probed_at": "2026-07-30T13:39:50.899272Z",
       "probed_by": "opencode FI-001 333-AGI",
       "routing_note": "PRIMARY for vision + Hermes chat. BACKUP for constitutional DeepSeek V4 Pro."
+    },
+    {
+      "provider_id": "dashscope",
+      "name": "Alibaba Cloud DashScope (International)",
+      "base_url": "https://dashscope-intl.aliyuncs.com/api/v1",
+      "region": "global",
+      "api_key_env": "DASHSCOPE_API_KEY",
+      "pricing_model": "pay_as_you_go",
+      "note": "Embedding and reranking models. Separate billing from Token Plan."
     }
   ],
   "models": [
@@ -4085,6 +4094,102 @@
       "supports_vision": false,
       "supports_audio": false,
       "supports_reasoning": true
+    },
+    {
+      "model_key": "dashscope/text-embedding-v4",
+      "model_family": "Qwen3-Embedding",
+      "model_variant": "v4",
+      "provider_ref": "dashscope",
+      "model_class": "embedding",
+      "context_window": 8192,
+      "dimensions": [
+        64,
+        128,
+        256,
+        512,
+        1024,
+        1536,
+        2048
+      ],
+      "default_dimension": 1024,
+      "languages": "100+",
+      "endpoint": "dashscope-intl.aliyuncs.com/api/v1/services/embeddings/text-embedding/text-embedding",
+      "cost_per_1m_input": 0.07,
+      "cost_per_1m_output": 0.0,
+      "note": "Replaces OpenAI text-embedding-3-large, Voyage-3-large, Cohere embed-v4. Drop-in via OpenAI-compatible endpoint.",
+      "canonical": true
+    },
+    {
+      "model_key": "dashscope/qwen3-rerank",
+      "model_family": "Qwen3-Rerank",
+      "model_variant": "base",
+      "provider_ref": "dashscope",
+      "model_class": "reranker",
+      "context_window": 4000,
+      "max_documents": 500,
+      "max_tokens_per_request": 120000,
+      "languages": "100+",
+      "endpoint": "dashscope-intl.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank",
+      "cost_per_1m_input": 0.1,
+      "cost_per_1m_output": 0.0,
+      "note": "Replaces Cohere Rerank 3.5, Voyage rerank-2.5. Proper cross-encoder reranker.",
+      "canonical": true
+    },
+    {
+      "model_key": "ollama/bge-m3",
+      "model_family": "BGE",
+      "model_variant": "m3",
+      "provider_ref": "ollama",
+      "model_class": "embedding",
+      "context_window": 512,
+      "dimensions": [
+        1024
+      ],
+      "default_dimension": 1024,
+      "endpoint": "localhost:11434/api/embeddings",
+      "cost_per_1m_input": 0.0,
+      "cost_per_1m_output": 0.0,
+      "note": "Local fallback embedding. Free, zero network latency. 512-token limit.",
+      "canonical": true
+    },
+    {
+      "model_key": "dashscope/qwen3-vl-embedding",
+      "model_family": "Qwen3-VL-Embedding",
+      "model_variant": "base",
+      "provider_ref": "dashscope",
+      "model_class": "embedding",
+      "modality": "multimodal",
+      "context_window": 32000,
+      "dimensions": [
+        256,
+        512,
+        1024,
+        1536,
+        2048,
+        2560
+      ],
+      "default_dimension": 2560,
+      "endpoint": "dashscope-intl.aliyuncs.com/api/v1/services/embeddings/multimodal-embedding/multimodal-embedding",
+      "cost_per_1m_input": 0.09,
+      "cost_per_1m_output": 0.0,
+      "note": "Multimodal fused vectors (text+image+video). Best for mixed-modal retrieval.",
+      "canonical": false
+    },
+    {
+      "model_key": "dashscope/qwen3-vl-rerank",
+      "model_family": "Qwen3-VL-Rerank",
+      "model_variant": "base",
+      "provider_ref": "dashscope",
+      "model_class": "reranker",
+      "modality": "multimodal",
+      "context_window": 8000,
+      "max_documents": "100t/40i/4v",
+      "max_tokens_per_request": 120000,
+      "endpoint": "dashscope-intl.aliyuncs.com/api/v1/services/rerank/text-rerank/text-rerank",
+      "cost_per_1m_input": 0.1,
+      "cost_per_1m_output": 0.0,
+      "note": "Multimodal reranking (text+image+video). DashScope native only — no OpenAI-compatible.",
+      "canonical": false
     }
   ],
   "shadows": [

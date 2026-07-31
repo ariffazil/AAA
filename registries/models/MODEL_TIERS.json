@@ -97,12 +97,14 @@
             "reasoning",
             "tool_call",
             "agentic",
-            "1M_ctx",
+            "198K_ctx",
+            "128K_output",
             "MIT_open_weights",
-            "666_JUDGE",
-            "999_SEAL"
+            "thinking_mode",
+            "888_APEX_BACKUP"
           ],
-          "strengths": "SWE-bench Pro 62.1% (#1 open-weight). Terminal-Bench 81.0%. MY governance probe 6/6 CLEAN (2026-07-29 via OpenCode Zen). NOW eligible for 666_JUDGE and 999_SEAL backup — second constitutional model in federation.",
+          "strengths": "SWE-bench Pro 62.1% (#1 open-weight). 753B MoE. 198K ctx on Token Plan (1M native via Z.AI direct). 888-APEX constitutional tier backup. Text-only on Token Plan — no vision.",
+          "harness_tools": "NONE — text-only model, no built-in tools on Token Plan",
           "providers": [
             {
               "provider": "bailian-token-plan",
@@ -170,11 +172,95 @@
             "Apache_2.0"
           ],
           "strengths": "Has thinking mode at flash price. Vision-capable. Apache 2.0 open weights. Same price as flash but more capable.",
+          "harness_tools": "NONE — older model, no built-in Harness on Token Plan",
           "providers": [
             {
               "provider": "bailian-token-plan",
               "cost_type": "token_plan",
               "cost": "$0.25/$1.50 per 1M",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 1
+            }
+          ]
+        },
+        "qwen/qwen3.7-plus": {
+          "name": "Qwen 3.7 Plus",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "code",
+            "vision",
+            "1M_ctx",
+            "128K_output",
+            "thinking_mode",
+            "harness_web_search",
+            "harness_code_interpreter",
+            "harness_web_scraping",
+            "harness_reverse_image_search",
+            "harness_text_to_image_search"
+          ],
+          "strengths": "Vision + Harness tools. Web search, code interpreter, web scraping, reverse image search, text-to-image search BUILT INTO the model — no MCP needed. Token Plan Personal/Team Edition. Hermes default tier.",
+          "harness_tools": "web_search, code_interpreter, web_scraping, reverse_image_search, text_to_image_search",
+          "providers": [
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "monthly plan",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 1
+            }
+          ]
+        },
+        "qwen/qwen3.7-max": {
+          "name": "Qwen 3.7 Max",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "code",
+            "1M_ctx",
+            "128K_output",
+            "thinking_mode",
+            "harness_web_search",
+            "harness_code_interpreter",
+            "harness_web_scraping"
+          ],
+          "strengths": "Flagship Qwen via Token Plan. Web search, code interpreter, web scraping BUILT INTO the model. Frontier reasoning at RM0 marginal cost.",
+          "harness_tools": "web_search, code_interpreter, web_scraping",
+          "providers": [
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "monthly plan",
+              "key_env": "QWEN_API_KEY",
+              "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+              "priority": 1
+            }
+          ]
+        },
+        "qwen/qwen3.8-max-preview": {
+          "name": "Qwen 3.8 Max (Preview)",
+          "capability": [
+            "reasoning",
+            "tool_call",
+            "code",
+            "1M_ctx",
+            "128K_output",
+            "thinking_mode_always_on",
+            "harness_web_search",
+            "harness_code_interpreter",
+            "harness_web_scraping",
+            "harness_reverse_image_search",
+            "harness_text_to_image_search"
+          ],
+          "strengths": "Token Plan exclusive. Always-on thinking. Full Harness suite: web search, code interpreter, web scraping, reverse image search, text-to-image search. Preview — may change.",
+          "harness_tools": "web_search, code_interpreter, web_scraping, reverse_image_search, text_to_image_search",
+          "providers": [
+            {
+              "provider": "bailian-token-plan",
+              "cost_type": "token_plan",
+              "cost": "monthly plan",
               "key_env": "QWEN_API_KEY",
               "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
               "priority": 1
@@ -301,17 +387,18 @@
           "name": "Qwen 3.6 Flash",
           "capability": [
             "code",
-            "vision",
-            "web_search",
+            "fast_inference",
             "1M_ctx",
+            "64K_output",
             "Apache_2.0"
           ],
-          "strengths": "$0.25/$1.50. Vision + web search. OpenCode small_model default.",
+          "strengths": "Fastest Qwen model. 1M ctx, 64K output. Text-only on Token Plan (no vision, no Harness). OpenCode small_model default. 555-ASI text lane primary.",
+          "harness_tools": "NONE — text-only, no built-in Harness on Token Plan",
           "providers": [
             {
               "provider": "bailian-token-plan",
               "cost_type": "token_plan",
-              "cost": "$0.25/$1.50",
+              "cost": "monthly plan",
               "key_env": "QWEN_API_KEY",
               "base_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
               "priority": 1
