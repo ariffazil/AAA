@@ -50,9 +50,14 @@ class CockpitRouteErrorBoundary extends React.Component<
 function App() {
   const route = useHashRoute();
 
+  // TrinityNav is the arif-fazil.com landing nav — NOT for aaa.arif-fazil.com subdomain.
+  // Cockpit has its own canonical sticky header. Rendering both creates the 3-layer
+  // fixed header collision (ghost text + badge overlap) reported in F2/F4 audit.
+  const isCockpitRoute = route !== 'ai' && route !== 'supabase' && route !== 'mcp-apps';
+
   return (
     <>
-      <TrinityNav />
+      {!isCockpitRoute && <TrinityNav />}
       {route === 'ai' ? <AiPanel /> : route === 'supabase' ? <SupabaseCockpit /> : route === 'mcp-apps' ? <MCPAppsPanel /> : <CockpitRouteErrorBoundary><Cockpit /></CockpitRouteErrorBoundary>}
     </>
   );
