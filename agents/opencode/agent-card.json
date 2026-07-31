@@ -10,9 +10,9 @@
   },
   "description": "OpenCode Trinity harness — Δ Mind (agi) orchestrates Ω Core (asi: memory/telemetry) and Ψ Soul (apex: constitutional verdict). 3 agents, route-aware, SHADOW-TR-001 encoded. Agentic flow: no human tab-switch needed.",
   "version": "2.0.0-trinity",
-  "model": "deepseek/deepseek-v4-pro@direct",
+  "model": "qwen-token-plan/deepseek-v4-pro",
   "config": "/root/.config/opencode/opencode.json",
-  "root_config": "ROOT_AGENT_CONFIG.yaml",
+  "root_config": "ROOT_AGENT_CONFIG.yaml → canonical SOT: /root/.config/opencode/opencode.json (ROOT_AGENT_CONFIG.yaml is a conceptual pointer, not a live file)",
   "binary": "/root/.npm-global/bin/opencode",
   "tier": "FI",
   "role": "warga",
@@ -35,6 +35,17 @@
     "citizenship_forged": "2026-05-17"
   },
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/opencode",
+  "runtime_snapshot": {
+    "probed": "2026-07-31T16:31:00Z",
+    "opencode_version": "1.18.9",
+    "organ_health": {
+      "arifos": {"verdict": "HOLD", "floors": 13, "drift": "False"},
+      "aforge": {"status": "healthy", "tools_loaded": 110},
+      "aaa": {"status": "healthy"},
+      "arifflow": {"fq": 1.24, "status": "BALANCED"}
+    },
+    "model_routing": "qwen-token-plan/deepseek-v4-pro (primary, RM0 marginal, 1M ctx)"
+  },
   "capabilities": {
     "streaming": true,
     "pushNotifications": false,
@@ -106,7 +117,7 @@
       },
       {
         "url": "http://localhost:7072/mcp",
-        "tool_count": 52,
+        "tool_count": 110,
         "tools": [
           "forge_shell",
           "forge_git",
