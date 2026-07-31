@@ -1,15 +1,18 @@
 ---
 name: forge-document-intelligence
-description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill. OCR is basic rights for AAA citizens. Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline.
-version: 1.0.0
+description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill. OCR is sensory perception for AAA citizens — image → 555-ASI-VISION (gate) → 333-AGI (reason). Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline.
+version: 2.0.0
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: medium
-floor_scope: [F1, F2, F4, F11, F13]
+floor_scope: [F1, F2, F4, F9, F11, F12, F13]
 autonomy_tier: T1
-tags: [document-intelligence, ocr, vlm, provenance, emd, perception, ingestion, pdf, malaysian-documents]
+tags: [document-intelligence, ocr, vlm, provenance, emd, perception, ingestion, pdf, malaysian-documents, asi-vision-gate, deepseek-ocr, optical-compression]
 forged: 2026-07-02
+updated: 2026-07-31 — DeepSeek-OCR eureka: vision tokens as compressed context, 555-ASI-VISION gate
 sources:
-  - olmOCR analysis (SEAL-76129e84d1e6415c, FORGE GLM-5.2)
+  - DeepSeek-OCR (arxiv:2510.18234) — Contexts Optical Compression
+  - 555-ASI-VISION gate (asi_vision_gate.py)
+  - ocr_document unified tool (ocr_document.py)
   - forge_document_ingest MCP tool (A-FORGE)
   - Allen AI olmOCR (https://github.com/allenai/olmocr)
   - arifOS constitutional pipeline (000→111→333→666→888→999)
@@ -18,7 +21,49 @@ sources:
 # FORGE DOCUMENT INTELLIGENCE — EMD Stack Skill
 
 > **DITEMPA BUKAN DIBERI** — Intelligence is forged, not given.
-> **OCR tesseract is basic rights for AAA citizens.** Document reading is fundamental, not specialty.
+> **OCR is sensory perception, not reasoning.** Image → 555-ASI-VISION (gate) → structured text → 333-AGI (reason).
+
+## 0. ARCHITECTURE (v2.0 — 2026-07-31)
+
+The DeepSeek-OCR eureka fundamentally reorients our architecture:
+
+```
+BEFORE (v1.0):
+  PDF → PyMuPDF → Tesseract → Text → Agent (reasoning on untrusted text)
+  ❌ No injection scan on OCR output
+  ❌ No constitutional gate between pixels and reasoning
+  ❌ Text extraction = lossy compression with no provenance
+
+AFTER (v2.0):
+  PDF → Router → Engine (Qwen2.5-VL / Unlimited-OCR / Tesseract)
+       → 555-ASI-VISION GATE (F12 INJECTION + F9 ANTI-HANTU + F2 TRUTH)
+       → 555→333 Contract (OBS · DER · CONFIDENCE · F9 · F12)
+       → 333-AGI (reason on GATED text only)
+  ✅ Mandatory F12 injection scan on ALL OCR output
+  ✅ F2 epistemic labels on every element
+  ✅ SHA-256 provenance per element
+  ✅ 555→333 contract — structured, auditable, gated
+```
+
+**The gate is the architecture.** Adversarial text hidden in images IS a real vector.
+OCR output is untrusted text — it came from pixels, not from a human typing.
+
+### Engine Selection
+
+| Engine | Class | Compression | Bbox | Cost | Status |
+|--------|-------|-------------|------|------|--------|
+| DeepSeek-OCR | vision_native | 10-20× | ❌ | $0 | Future (GPU needed) |
+| Qwen2.5-VL | vision_native | ~5× | ✅ | $0.02/page | Ready (API keys exist) |
+| Unlimited-OCR | vision_native | ~8× | ❌ | FREE | Ready (HF Gradio) |
+| Tesseract | traditional | 1× | ✅ | $0 | Live (always available) |
+
+**Unified CLI:** `aaa_ocr` — single entry point for all AAA agents.
+```bash
+aaa_ocr doc.pdf                           # auto-route
+aaa_ocr doc.pdf --engine qwen25_vl        # force engine  
+aaa_ocr doc.pdf --financial               # bbox required
+aaa_ocr --status                           # engine matrix
+```
 
 ## 1. What This Skill Is
 
@@ -28,33 +73,45 @@ This skill wraps the **EMD (Encode-Metabolize-Decode)** document intelligence st
 
 ---
 
-## 2. The Three Layers
+## 2. The Three Layers (v2.0 — DeepSeek-OCR Eureka)
 
 | Layer | Paradigm | Entropy Reduced | Engine | Cost | Status |
 |-------|----------|----------------|--------|------|--------|
-| **Perception** | LLM OCR (VLM) | LAYOUT (tables, columns, reading order) | Qwen2.5-VL via Bailian API | ~$0.02/page | Available (remote API) |
-| **Provenance** | Document Intelligence | TRUST (where from? verify?) | `forge_document_ingest` | ~$0 (CPU local) | Deployed (A-FORGE MCP) |
-| **Purpose** | Agentic OCR | SEMANTIC (why reading? what means?) | Constitutional pipeline (000→111→333→666→888→999) | Governance compute | Deployed (arifOS) |
+| **Perception** | VLM OCR (Optical Compression) | LAYOUT + TOKEN (10-20× compression) | Qwen2.5-VL / Unlimited-OCR / Tesseract | $0–$0.02/page | ✅ Multi-engine live |
+| **Gate** | 555-ASI-VISION Constitutional Membrane | INJECTION (F12) + HALLUCINATION (F9) + EPISTEMIC (F2) | `asi_vision_gate.py` | $0 (CPU) | ✅ Deployed |
+| **Provenance** | Document Intelligence | TRUST (where from? verify?) | `forge_document_ingest` | $0 (CPU) | ✅ Deployed |
+| **Purpose** | Agentic OCR | SEMANTIC (why reading? what means?) | 555-ASI → 333-AGI pipeline | Governance compute | Deployed |
 
-**Key constraint:** af-forge has NO GPU. VLM perception uses remote API, not local inference.
+**Key constraint:** af-forge has NO GPU. DeepSeek-OCR (200K+ pages/day on A100) is future.
+Vision-native engines use remote APIs. The gate runs locally.
+
+**DeepSeek-OCR Eureka (arxiv:2510.18234):** Vision tokens are compressed context — 256 vision tokens carry 2500+ text tokens at 97% precision. OCR is sensory perception, not reasoning. This CONFIRMS the architecture: 555-ASI-VISION perceives, 333-AGI reasons.
 
 ### Configurable Perception Backend
 
 The perception layer is **swap-able via config**, not hardcoded. Declare in skill metadata:
 
 ```yaml
-perception_backend: bailian-qwen25-vl | olmocr | minimax-vlm
+perception_backend: qwen25_vl | unlimited_gradio | tesseract | deepseek_ocr
 ```
 
-| Backend | Status | When to Use |
-|---------|--------|-------------|
-| `bailian-qwen25-vl` | ✅ **DEFAULT** — already billed, already integrated | Production now. Zero new infra. |
-| `minimax-vlm` | ✅ Available as fallback | Bailian rate-limit or outage. `minimax-code understand_image` tool. |
-| `olmocr` | ⏳ Future — requires GPU procurement | When af-forge gets GPU. Swap is config change, not refactor. |
+| Backend | Status | Compression | Bbox | When to Use |
+|---------|--------|-------------|------|-------------|
+| `qwen25_vl` | ✅ **READY** — API keys exist | ~5× | ✅ | Financial docs, bbox required, rubber stamps |
+| `unlimited_gradio` | ✅ **READY** — FREE via HF Space | ~8× | ❌ | Long documents, clean documents, zero-cost path |
+| `tesseract` | ✅ **LIVE** — always available | 1× | ✅ | Simple clean documents, quick debug |
+| `deepseek_ocr` | ⏳ **FUTURE** — GPU needed | 10-20× | ❌ | When GPU provisioned: 200K+ pages/day, sovereign |
 
-**Swapping rule:** Change `perception_backend` in skill config → pipeline routes accordingly. EMD stack (Layer 2 Metabolism + Layer 3 Purpose) stays unchanged. Perception is the only layer that moves.
+**Unified CLI:** `aaa_ocr` — single entry point for all AAA agents.
+```bash
+aaa_ocr doc.pdf                    # auto-route based on doc characteristics
+aaa_ocr doc.pdf --financial        # force bbox-capable engine
+aaa_ocr --status                   # engine matrix
+```
 
-**Cost for federation volume (~100-1000 PDFs/month):** <RM1 via Bailian. Not worth tracking.
+**Swapping rule:** Change `perception_backend` in skill config → pipeline routes accordingly. 
+The **gate** layer (555-ASI-VISION) and **provenance** layer (forge_document_ingest) stay unchanged. 
+Vision-native engines share the same contract output.
 
 ---
 
