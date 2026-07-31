@@ -264,13 +264,47 @@ Detail: `AAA/docs/EUREKA_SIX_PLANE_EXECUTION_LOOP.md` (architecture essay — no
 
 | Item | State | Owner path |
 |------|-------|------------|
-| WELL status | degraded | WELL + readiness |
+| WELL status | degraded (92 days stale) | WELL + readiness |
 | arifOS deploy source≠built marker | drift fields still fire | arifOS deploy discipline |
-| Session/identity propagation | GEOX holds anonymous actors | session envelope / ABI |
 | WEALTH tool name/mode drift | intermittent smoke fails | WEALTH manifest |
 | MCP Apps content-valid (GEOX) | RETAK (3 violations) | GEOX MCP Apps |
 | FED :7074 | unit present; treat as advisory plane | FED only |
 | Shared Federation ABI | not yet implemented | EUREKA ZEN draft — future |
+
+### 11.1 Federation Edge Propagation (P0 resolved 2026-07-31)
+
+Session/identity propagation debt partially resolved. Three forward edges
+now carry SCT across organ boundaries:
+
+| Edge | State | Method |
+|------|-------|--------|
+| arifOS→GEOX | **SESSION_LINKED** | Bridge probe (arif_route → geox_surface_status) |
+| arifOS→WEALTH | **SESSION_LINKED** | Bridge probe (arif_route → capital_health) |
+| arifOS→WELL | **SESSION_LINKED** | Bridge probe (arif_route → well_registry_status) |
+| arifOS→A-FORGE | TRANSPORT_ONLY | Direct MCP tools/list (stateless transport — architectural constraint) |
+| arifOS→AAA | TRANSPORT_ONLY | Direct /health (A2A control plane — no MCP surface) |
+| All 6 return edges | TRANSPORT_ONLY | Not probed (F2 honesty — no cosmetic promotion) |
+
+#### Architectural Constraints (by design, not defect)
+
+**A-FORGE** — Stateless MCP transport. No session binding (explicit
+`forge_agent` registration, no MCP session ID in response headers).
+Direct probe verifies tool surface (131 tools) and server identity
+(`A-FORGE-MCP v0.1.0`). Cannot achieve SESSION_LINKED without
+adopting session-bound MCP or implementing SCT acceptance in the
+forge agent registration flow.
+
+**AAA** — A2A control plane on port 3001. No MCP endpoint. Direct
+probe verifies `/health` + identity hash. Cannot achieve
+SESSION_LINKED without exposing an MCP surface or implementing an
+A2A-bridge probe that carries session context.
+
+**Return edges** (organ→arifOS) — Transport verified (TCP + identity
+match). No bridge probe configured. The forward path proves the
+governance chain works; return edges are telemetry, not governance.
+Per F2 (Truth): these edges are TRANSPORT_ONLY and will NOT be
+cosmetically promoted. They stay honest until return-path probes
+are engineered.
 
 ---
 
