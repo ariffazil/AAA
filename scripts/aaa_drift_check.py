@@ -117,7 +117,8 @@ else:
 
 # ── 3. Skills.yaml registration coverage ──
 skills_yaml = read_yaml(AAA / "registries/skills.yaml")
-skill_files = list(AAA.rglob("skills/*/SKILL.md"))
+# Only AAA skills/ directory — not .hermes/skills/, agents/_external/*/skills/, etc.
+skill_files = list((AAA / "skills").glob("*/SKILL.md"))
 registered_ids = set()
 if skills_yaml:
     for s in skills_yaml.get("skills", []):
@@ -142,7 +143,7 @@ if orphan_count > 0:
 else:
     finding("OK", "Skill registration", "All SKILL.md files registered", "SEAL")
 
-# ── 4. Registered skills have files ──
+# ── 4. Registered skills have files (AAA scope only) ──
 missing_skill_count = 0
 if skills_yaml:
     for s in skills_yaml.get("skills", []):
