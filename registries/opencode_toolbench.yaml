@@ -209,8 +209,16 @@ verification:
   - opencode debug skill
   - opencode mcp list
   - npm run validate:root-agents
+  naming:
+    standard: /root/AAA/docs/MCP_NAMING_STANDARD.md
+    rule: All new tools MUST follow {organ}_{verb}_{domain}_{action} pattern per MCP_NAMING_STANDARD.md
+    wealth_canonical_prefix: capital_
+    wealth_legacy_prefix: wealth_
+    wealth_alias_map: /root/WEALTH/wealth_mcp/governance_metadata.py:WEALTH_ALIAS_MAP
+    note: WEALTH wealth_* tools are legacy — all new WEALTH tools MUST use capital_* prefix
   invariants:
   - exactly one top-level mcp key in live config
   - legacy mcpServers key forbidden
   - live model and MCP roster equal ROOT_AGENT_CONFIG.yaml
   - credentials referenced through environment, never embedded
+  - new MCP tools must pass naming lint per MCP_NAMING_STANDARD.md §3.1

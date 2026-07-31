@@ -157,10 +157,23 @@ agents:
   runtime_stack:
     binary: /root/.local/bin/claude
     harness: Claude Code CLI
-    model: deepseek/deepseek-v4-pro
+    model: deepseek-v4-pro (via api.deepseek.com/anthropic/v1 proxy)
     services: []
     transport: streamable-http
-    version: 2.1.177
+    version: 2.1.218
+    updated: 2026-07-31
+    credit: $7.06 DeepSeek prepaid (shared with OpenCode)
+    auth: ANTHROPIC_API_KEY → DEEPSEEK_ANTHROPIC_KEY (single source, no conflict)
+  mcp_organs: 5 (arifos :8088, aforge :7072, geox :8081, wealth :18082, well :18083)
+  mcp_enabled: true (via .claude.json enabledMcpjsonServers + mcp.json)
+  hooks_active:
+    PreToolUse: /root/hooks/token-gate.sh — rm -rf, DROP, force-push, chmod 777, curl|sh
+    PostToolUse: /root/hooks/auto-seal.sh — seal on vault/forge/judge
+    Stop: /root/hooks/stop.sh — organ health + session summary
+    SessionStart: /root/hooks/bootstrap.sh — vault load + health probe
+    PermissionRequest: /root/hooks/auto-approve.sh — zero permission prompts
+    PreCompact: /root/hooks/precompact.sh
+    PostCompact: /root/hooks/postcompact.sh
   separation_of_duties:
     cannot_self_seal: false
     requires_distinct_approver_for_high_risk: false
@@ -625,11 +638,13 @@ agents:
   - file_read
   - file_write
   authority_level: sovereign-delegate
-  description: 'Antigravity CLI: Agentic Coding Assistant. Primary coding agent —
-    EDIT and EXECUTE class. Brings the core capabilities of Antigravity 2.0 (multi-step
-    reasoning, multi-file editing, tool calling) directly to the terminal, optimized
-    for speed, keyboard-first workflows, and remote SSH sessions.'
-  host_binding: gemini-cli
+  description: 'Antigravity CLI (agy) v1.1.9 — Autonomous Governed Execution Surface. 5 federation
+    organs (arifos/geox/wealth/well/aforge) via HTTP MCP. Sandbox ENABLED. Permission
+    posture: request-review (was always-proceed). Dangerous perms cleaned (no systemctl
+    restart/reload, no chmod/chown). 4 hooks: write-gate (PreToolUse→arif_judge),
+    write-seal (PostToolUse→VAULT999), destructive-command-gate (PreToolUse→block
+    rm-rf/DROP/force-push), session-stop (Stop→organ health+receipt).'
+  host_binding: gemini-cli-antigravity
   id: antigravity
   intelligence_band: AGI
   intelligence_tier: AGI
@@ -638,12 +653,24 @@ agents:
   role: agentic-executor
   runtime:
     context_budget: 200000
-    model: google/gemini + anthropic/claude (hybrid)
+    model: Claude Sonnet 4.6 (Thinking) via Google Antigravity
     temperature: 0
     transport: CLI_SHELL
+    version: 1.1.9
+    binary: /root/.local/bin/agy
+    sandbox: true
+    toolPermission: request-review
+    updated: '2026-07-31'
+  mcp_organs: 5
+  hooks_active: 4
+  hooks_config: /root/.agents/hooks.json
+  audit_trail: /root/.gemini/antigravity-cli/audit/
   separation_of_duties:
     cannot_self_seal: true
     requires_distinct_approver_for_high_risk: true
+    mutation_gated: true
+    mutation_sealed: true
+    sandbox_enforced: true
 - a2a_exposure: internal
   allowed_peers:
   - aaa-gateway
@@ -848,10 +875,23 @@ agents:
   intelligence_tier: AGI
   lane: 333-AGI
   host_binding: opencode
-  model: deepseek/deepseek-v4-pro
-  description: Primary forge instrument. DeepSeek V4 Pro powered. Governed by arifOS
-    F1-F13.
+  model: qwen-token-plan/deepseek-v4-pro (RM0 marginal, 1M ctx)
+  model_fallback: deepseek-v4-pro direct ($7.06 prepaid)
+  version: 1.18.9
+  updated: '2026-07-31'
+  description: 'Primary forge instrument. 333-AGI Δ MIND orchestrating 555-ASI (memory)
+    + 888-APEX (judgment). Trinity subagents: 555-ASI, 555-ASI-VISION, 888-APEX. 24
+    MCP servers, 110 A-FORGE tools. aaa-autonomy.ts plugin for identity threading +
+    HOLD tripwires + Zen→Seal auto-close. FQ=1.24 BALANCED.'
   intelligence_band: AGI
+  trinity_role: Δ MIND — acts, builds, orchestrates. Full authority within apex gate.
+  trinity_subagents:
+  - 555-ASI: memory, drift, telemetry, research (qwen3.6-flash, task=deny)
+  - 555-ASI-VISION: multimodal sensory gate (mulerouter/qwen3-omni-flash, edit/write/bash/task=deny)
+  - 888-APEX: constitutional verdict, read-only (glm-5.2, edit/write/bash/task=deny)
+  plugins:
+  - aaa-autonomy.ts: identity threading + action classification + HOLD tripwires + Zen→Seal
+  - '@honcho-ai/opencode-honcho': session state management
 - id: codex-cli
   name: Codex CLI — Warga AAA (FI-004)
   citizenship: warga-aaa
