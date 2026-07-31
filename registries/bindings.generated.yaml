@@ -1,0 +1,2022 @@
+generated_at: '2026-07-31T05:50:55Z'
+generated_by: "Claude Code \u2014 live probe of agent cards + skills.yaml + tools.yaml"
+bindings:
+- agent_id: aaa-gateway
+  kind: function
+  canonical_card: a2a/agent-cards/aaa-gateway.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: FORGE-route-task
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-enforce-sovereign-veto
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: AGI-aggregate-capabilities
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-broker-webhooks
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: AUDIT-defend-injection
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-federated-memory-query
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: arifos.session.init
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: arifos.session.seal
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: geox-witness
+  kind: organ
+  canonical_card: external://geox.arif-fazil.com/a2a/.well-known/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills: []
+  tool_count: 0
+  verdict: PARTIAL
+  gap: Agent card exists but declares no skills
+- agent_id: wealth-witness
+  kind: organ
+  canonical_card: external://wealth.arif-fazil.com/a2a/.well-known/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills: []
+  tool_count: 0
+  verdict: PARTIAL
+  gap: Agent card exists but declares no skills
+- agent_id: mesa-test-agent
+  kind: unknown
+  canonical_card: agents/_external/mesa-test-agent/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: meta-mesa-charter-replay
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: antigravity
+  kind: forge_instrument
+  canonical_card: a2a/agent-cards/antigravity.json
+  identity_source: a2a/registry/agents.yaml
+  skills: []
+  tool_count: 0
+  verdict: PARTIAL
+  gap: Agent card exists but declares no skills
+- agent_id: hermes-asi
+  kind: role
+  canonical_card: a2a-server/agent-cards/extensions/hermes-asi.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-session-inhabit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: RSI-recursive-improvement
+    declared_by: agent-card
+    confidence: evidence
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+    skill_name: RSI-recursive-improvement
+    package: orphans
+    risk_tier: unknown
+  - skill_id: KERNEL-trinity-33
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-mcp-zen
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-quantum-runtime
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-qubit-substrate
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-trinity-33
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: opencode
+  kind: forge_instrument
+  canonical_card: a2a-server/agent-cards/forge/fi-001-opencode.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-federation-coding-agent
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: AUDIT-clean-audit-immune
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: codex-cli
+  kind: forge_instrument
+  canonical_card: agents/_external/codex/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: copilot-cli
+  kind: forge_instrument
+  canonical_card: agents/_external/copilot/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: grok-build
+  kind: forge_instrument
+  canonical_card: agents/_external/grok/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: AGI-plan-mode
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-subagent-spawn
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-implement-loop
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-ops
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: AGI-workflow-dag
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-godel-humility
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-image-video
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: kimi-code
+  kind: forge_instrument
+  canonical_card: a2a-server/agent-cards/forge/fi-008-kimi-code.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-agentic-builder
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-webmcp-site-builder
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: claude-code
+  kind: forge_instrument
+  canonical_card: a2a-server/agent-cards/harnesses/claude-code.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: role-binding-fi-consumer
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: 777-forge
+  kind: forge_instrument
+  canonical_card: external://aaa.arif-fazil.com/a2a/777-forge
+  identity_source: a2a/registry/agents.yaml
+  skills: []
+  tool_count: 0
+  verdict: PARTIAL
+  gap: Agent card exists but declares no skills
+- agent_id: arifos-kernel
+  kind: role
+  canonical_card: external://mcp.arif-fazil.com/a2a/arifos-kernel
+  identity_source: a2a/registry/agents.yaml
+  skills: []
+  tool_count: 0
+  verdict: PARTIAL
+  gap: Agent card exists but declares no skills
+- agent_id: geox-personal
+  kind: role
+  canonical_card: external://geo.arif-fazil.com/a2a/geox-personal
+  identity_source: a2a/registry/agents.yaml
+  skills: []
+  tool_count: 0
+  verdict: PARTIAL
+  gap: Agent card exists but declares no skills
+- agent_id: makcikgpt
+  kind: extension
+  canonical_card: agent-cards/extensions/makcikgpt/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-session-inhabit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: RSI-recursive-improvement
+    declared_by: agent-card
+    confidence: evidence
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+    skill_name: RSI-recursive-improvement
+    package: orphans
+    risk_tier: unknown
+  - skill_id: KERNEL-trinity-33
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-mcp-zen
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-trinity-33
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-session-inhabit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: RSI-recursive-improvement
+    declared_by: agent-card
+    confidence: evidence
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+    skill_name: RSI-recursive-improvement
+    package: orphans
+    risk_tier: unknown
+  tool_count: 10
+  verdict: SEAL
+- agent_id: prospect-maturation
+  kind: role
+  canonical_card: agents/prospect-maturation/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: geological-artifact-rigor
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox-epistemic-ladder
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox-contradiction-engine
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox-petrophysics-bounds
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: wealth-capital-reasoning
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-session-inhabit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: RSI-recursive-improvement
+    declared_by: agent-card
+    confidence: evidence
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+    skill_name: RSI-recursive-improvement
+    package: orphans
+    risk_tier: unknown
+  - skill_id: KERNEL-trinity-33
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: 333-AGI
+  kind: lane
+  canonical_card: agent-cards/identity/333-AGI/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: agi_session_bind
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_context_load
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_workspace_scan
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_evidence_capture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_source_fetch
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_state_snapshot
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_problem_decompose
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_task_graph_build
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_objective_clarify
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: agi_hypothesis_generate
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: 555-ASI
+  kind: lane
+  canonical_card: agent-cards/identity/555-ASI/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: asi_presence_open
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_identity_acknowledge
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_floor_state_express
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_intent_hear
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_tone_read
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_ambiguity_reframe
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_goal_restatement
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_translate_bidirectional
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_terminology_normalize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: asi_register_shift
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: 888-APEX
+  kind: lane
+  canonical_card: agent-cards/identity/888-APEX/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: apex_floor_check
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_scope_check
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_authority_check
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_reversibility_test
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_rollback_requirement
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_irreversibility_flag
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_actor_attest
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_mandate_verify
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_delegation_legitimize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: apex_evidence_threshold_check
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: geox-organ
+  kind: organ
+  canonical_card: agent-cards/organs/geox/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: geox_well_ingest
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_well_qc
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_well_desk_open
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_well_desk_publish
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_render_well_panel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_petrophysics
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_sequence
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_seismic_ingest
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_seismic_compute
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: geox_seismic_interpret
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: wealth-organ
+  kind: organ
+  canonical_card: agent-cards/organs/wealth/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: capital_primitive
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_health
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_market
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_wisdom
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_diagnose
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_entropy
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_ledger
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: capital_registry
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: wealth_institutional_stress
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: wealth_governance_capacity
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: well-organ
+  kind: organ
+  canonical_card: agent-cards/organs/well/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: well_classify_substrate
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_detect_boundary
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_measure_gradient
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_assess_metabolism
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_assess_homeostasis
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_check_repair
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_validate_vitality
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_assess_livelihood
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_assess_reliability
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: well_guard_dignity
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: aforge-organ
+  kind: organ
+  canonical_card: agent-cards/organs/aforge/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: forge_shell
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_filesystem
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_git
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_docker
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_browser
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_fetch
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_execute
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_parallel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_vps
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_evaluate
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: arifos-organ
+  kind: organ
+  canonical_card: agent-cards/pillars/arifos/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: session-governance
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: observation-intelligence
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: structured-reasoning
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: intent-routing
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: constitutional-judgment
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: governed-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: vault-sealing
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: memory-governance
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: ARIF_FAZIL
+  kind: sovereign
+  canonical_card: agent-cards/pillars/sovereign/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: sovereign-recognize
+    declared_by: agent-card
+    confidence: evidence
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+    skill_name: Sovereign Recognize
+    package: reflective
+    risk_tier: low
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-act
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: 888-judge-verdict-render
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: 999-vault-seal-immutable
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: aforge-pillar
+  kind: pillar
+  canonical_card: agent-cards/pillars/aforge/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: forge_shell
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_filesystem
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_git
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_docker
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_browser
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_fetch
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_execute
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_parallel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_vps
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: forge_evaluate
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 0
+  verdict: SEAL
+- agent_id: openclaw
+  kind: function
+  canonical_card: agent-cards/functions/openclaw/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: role-binding-gateway
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-gateway-routing
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-agent-dispatch
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-agent-handoff
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-web-research
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-browser-automation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-shell-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-memory-search
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-status-query
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-openclaw-doctor
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: arifos-bot
+  kind: forge_instrument
+  canonical_card: agents/main/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: APEX-constitutional-boot
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-kernel-bridge
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-federation-routing
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ARCHIVE-vault-seal
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-sovereign-veto
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-federated-memory-query
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-session-inhabit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: RSI-recursive-improvement
+    declared_by: agent-card
+    confidence: evidence
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+    skill_name: RSI-recursive-improvement
+    package: orphans
+    risk_tier: unknown
+  tool_count: 10
+  verdict: SEAL
+- agent_id: aider
+  kind: forge_instrument
+  canonical_card: agents/_external/aider/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: gemini-cli
+  kind: forge_instrument
+  canonical_card: agents/_external/gemini-cli/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: qwen-code
+  kind: forge_instrument
+  canonical_card: agents/_external/qwen-code/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
+- agent_id: continue-cli
+  kind: forge_instrument
+  canonical_card: agents/_external/continue-cli/agent-card.json
+  identity_source: a2a/registry/agents.yaml
+  skills:
+  - skill_id: HERMES-opencode-protocol
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-agentic-architecture
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-fabrication-prevention
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: ASI-autonomous-execution
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-constitutional-audit
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-humility-godel
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: FORGE-github-workflow
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: APEX-mcp-federation
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-reality-skills
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  - skill_id: KERNEL-sovereign-recognize
+    declared_by: agent-card
+    confidence: inferred
+    tools: []
+    authority_gate: UNKNOWN
+    organ: UNKNOWN
+    verdict: UNKNOWN
+  tool_count: 10
+  verdict: SEAL
