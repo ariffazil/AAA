@@ -5,7 +5,7 @@
 .PHONY: prove health sot-check security-audit audit-skills floor-benchmark \
         organ-boundary-benchmark external-harness-benchmark \
         vault999-verify reality-replay constitutional-benchmark \
-        scorecard proof-pack forge seal init
+        scorecard proof-pack forge seal init aaa-drift-check
 
 # ──────────────────────────────────────────────
 # DEFAULT: full proof cycle
@@ -136,3 +136,11 @@ help:
 	@echo "  make reality-replay           Reality Ledger replay"
 	@echo "  make scorecard                Generate maturity scores"
 	@echo "  make forge                    Full build cycle"
+	@echo "  make aaa-drift-check          AAA agent/skill/tool/infra drift"
+	@echo "  make forge                    Full build cycle"
+
+# ──────────────────────────────────────────────
+# AAA DRIFT CHECK — agent/skill/tool/infra integrity
+# ──────────────────────────────────────────────
+aaa-drift-check:
+	@python3 scripts/aaa_drift_check.py

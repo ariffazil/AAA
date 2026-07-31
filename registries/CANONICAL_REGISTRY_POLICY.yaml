@@ -1,0 +1,157 @@
+# CANONICAL_REGISTRY_POLICY.yaml — AAA Federation Registry Source-of-Truth Hierarchy
+# DITEMPA BUKAN DIBERI — Forged 2026-07-31 by AAA entropy reduction mission
+# Authority: ARIF F13 SOVEREIGN directive ARIFOS::AAA_ENTROPY_REDUCTION::2026-07-31
+# Status: ACTIVE — this file is the canonical tiebreaker for all AAA registry disputes
+
+version: 1
+generated_at: "2026-07-31T13:15:00Z"
+generated_by: "Claude Code (DeepSeek V4 Pro) — arifOS Federation entropy reduction"
+authority: "ARIF F13 SOVEREIGN"
+
+doctrine: |
+  When two registries disagree on the same fact, this policy determines which source wins.
+  No agent may decide a registry dispute by intuition. Load this file. Follow the precedence.
+  If this file cannot resolve a dispute, verdict = HOLD and escalate to F13.
+
+# ── CATEGORY PRECEDENCE ──
+# Within each category, earlier entries beat later entries.
+
+categories:
+
+  agent_identity:
+    description: "Who is an agent, what is its ID, kind, status, FI slot, lane, organ"
+    canonical:
+      - path: "registries/AGENTS_UNIFIED.yaml"
+        reason: "Forged 2026-07-31 by 333-AGI under F13 SOVEREIGN. Single canonical registry. 5 layers: identity lanes, forge instruments, extensions, organs, collapsed. 0 ghost paths, 0 FI conflicts. Supersedes AGENT_INDEX.json + AAA_AGENTS_REGISTRY.json."
+        coverage: "Identity lanes + forge instruments (FI-001 through FI-009) + extensions + 7 organs + collapsed"
+      - path: "agent-cards/identity/333-AGI/agent-card.json"
+        reason: "Authoritative card for 333-AGI with full skills, MCP surface, Ed25519 signatures"
+      - path: "agent-cards/identity/555-ASI/agent-card.json"
+        reason: "Authoritative card for 555-ASI with full skills, MCP surface, Ed25519 signatures"
+      - path: "agent-cards/identity/888-APEX/agent-card.json"
+        reason: "Authoritative card for 888-APEX with full skills, MCP surface, Ed25519 signatures"
+    derived:
+      - path: "a2a/registry/agents.yaml"
+        reason: "A2A-aligned agent registry — operational view, superseded by AGENTS_UNIFIED.yaml for identity"
+      - path: "ROOT_AGENT_CONFIG.yaml"
+        reason: "Runtime config with FI slots and MCP surface details. Operational, not identity-canonical."
+    deprecated:
+      - path: "AGENT_INDEX.json"
+        reason: "Self-tombstoned. Superseded by AGENTS_UNIFIED.yaml. 5 ghost paths, stale FI slots."
+      - path: "registries/AAA_AGENTS_REGISTRY.json"
+        reason: "Superseded by AGENTS_UNIFIED.yaml. 15-agent stale view."
+      - path: "registries/unified_agent_protocol.yaml"
+        reason: "Self-declared DEPRECATED 2026-06-22."
+      - path: "registries/AAA_FEDERATION_STATE.yaml"
+        reason: "Self-declared DEPRECATED 2026-06-22."
+
+  agent_card:
+    description: "The A2A agent-card.json that declares capabilities, skills, MCP surface"
+    canonical:
+      - path: "agent-cards/identity/*/agent-card.json"
+        reason: "A2A v2.2.0 schema, Ed25519 signatures, full skills + MCP surface. Most complete."
+      - path: "agent-cards/organs/*/agent-card.json"
+        reason: "Organ agent cards with skills and MCP surface"
+      - path: "agent-cards/functions/*/agent-card.json"
+        reason: "Function cards (openclaw gateway)"
+      - path: "agent-cards/pillars/*/agent-card.json"
+        reason: "Pillar cards (sovereign, arifos, aforge, aaa-gateway)"
+    derived:
+      - path: "a2a/agent-card.json"
+        reason: "Top-level A2A card — gateway entry point"
+      - path: "agents/*/agent-card.json"
+        reason: "Per-agent directory cards — mirrors or subsets of agent-cards/"
+
+  skill:
+    description: "What skills exist, their metadata, triggers, and packaging"
+    canonical:
+      - path: "registries/skills.yaml"
+        reason: "163 registered skills with full metadata, packages, and orthogonal tags. Most structured."
+      - path: "skills/*/SKILL.md"
+        reason: "234 actual SKILL.md files on disk — ground truth for skill content"
+    derived:
+      - path: "skills/FEDERATED_SKILLS_REGISTRY_V3.yaml"
+        reason: "279-line routing view derived from skills.yaml"
+      - path: "skills/SKILL_ALIAS_TABLE.json"
+        reason: "6187-line alias table — V3 short names to disk paths"
+      - path: "skills/AAA_SKILL.md"
+        reason: "DRAFT registry from 2026-06-23 — historical entropy reduction plan, not canonical"
+    deprecated: []
+
+  tool:
+    description: "What tools exist, their schemas, authority gates, and organ ownership"
+    canonical:
+      - path: "registries/tools.yaml"
+        reason: "Comprehensive tool registry — 2513 lines, 175+ tools with authority gates"
+      - path: "registries/CAPABILITY_INDEX.json"
+        reason: "2771-line capability index with MCP protocol binding"
+    derived:
+      - path: "registries/TOOLBENCH_CONTRAST.md"
+        reason: "Ontological contrast map — FI-001 through FI-008 vs upstream vanilla"
+      - path: "contracts/TOOL_MANIFEST.yaml"
+        reason: "Tool manifest contract"
+    deprecated: []
+
+  binding:
+    description: "Agent→skill→tool→organ flow mapping"
+    canonical:
+      - path: "registries/bindings.generated.yaml"
+        reason: "Generated 2026-07-31 from live probe of agent cards + skills.yaml + tools.yaml. First unified binding map."
+    derived: []
+    deprecated: []
+
+  network:
+    description: "Ports, routes, tunnels, servers — infrastructure truth"
+    canonical:
+      - path: "registries/PORT_REGISTRY.json"
+        reason: "Live-probed 2026-07-28 via ss -tlnp. Declared single source of truth."
+      - path: "registries/ROUTE_REGISTRY.json"
+        reason: "Extracted from /etc/caddy/Caddyfile, validated 2026-07-28."
+      - path: "registries/TUNNEL_REGISTRY.json"
+        reason: "Extracted from /etc/cloudflared/config.yml, validated 2026-07-28."
+    derived:
+      - path: "registries/servers.yaml"
+        reason: "Server inventory"
+      - path: "registries/hosts.yaml"
+        reason: "Host inventory"
+    deprecated: []
+
+  deprecation:
+    description: "What is deprecated, tombstoned, or superseded"
+    canonical:
+      - path: "registries/DEPRECATION_REGISTRY.yaml"
+        reason: "To be created — consolidates docs/deprecation-registry.json + live scan"
+    derived:
+      - path: "docs/deprecation-registry.json"
+        reason: "9-entry registry — too small for 62 deprecated files detected in scan"
+    deprecated: []
+
+# ── CONFLICT TIEBREAKER RULES ──
+tiebreakers:
+  - rule: "A2A-registered beats non-A2A"
+    apply: "a2a/registry/agents.yaml beats AGENT_INDEX.json on agent identity"
+  - rule: "Live-probed beats hand-maintained"
+    apply: "PORT_REGISTRY.json (ss -tlnp) beats servers.yaml on port numbers"
+  - rule: "Agent card beats registry entry"
+    apply: "agent-card.json skills[] beats skills.yaml if they disagree on what skills an agent has"
+  - rule: "Registry entry beats card omission"
+    apply: "If skills.yaml registers a skill but no agent card claims it, skill is orphaned, not deleted"
+  - rule: "Filesystem truth beats registry claim"
+    apply: "If skills.yaml says a SKILL.md exists at path X but path X doesn't exist, filesystem wins"
+  - rule: "Newer timestamp beats older on equivalent authority"
+    apply: "When two registries of same category disagree, compare generation timestamps"
+  - rule: "Explicit deprecation marker beats implicit absence"
+    apply: "A file with 'DEPRECATED' in header is deprecated even if not in deprecation registry"
+
+# ── OWNER ORGAN ──
+owner_organ: "AAA (Control Plane)"
+validation_script: "scripts/aaa_drift_check.py"
+allowed_mutation_path: "Edit → validate → commit → push — no deploy without test pass"
+
+# ── VALIDATION ──
+validation_rules:
+  - "Every canonical registry must exist and be parseable"
+  - "Every derived registry must declare its canonical source"
+  - "Every deprecated registry must be in DEPRECATION_REGISTRY.yaml"
+  - "No two canonical registries may claim the same fact with different values"
+  - "Drift checker must pass before any registry edit is committed"
