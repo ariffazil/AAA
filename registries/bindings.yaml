@@ -1,0 +1,208 @@
+# ═══════════════════════════════════════════════════════════════
+# BINDINGS.yaml — Agent → Skills → Tools → Organ Pipeline
+# ═══════════════════════════════════════════════════════════════
+# Forged: 2026-07-31 by 333-AGI under F13 SOVEREIGN directive
+# P1 deliverable: Hardened, verifiable capability binding.
+# When an agent boots, it loads THIS file — no archaeology.
+# ═══════════════════════════════════════════════════════════════
+
+version: 1.0.0
+forged: "2026-07-31"
+forged_by: "333-AGI (Δ MIND)"
+canonical_registry: "/root/AAA/registries/AGENTS_UNIFIED.yaml"
+
+bindings:
+
+  # ─── 333-AGI (Δ MIND) — Primary reasoning + execution ───
+  - agent_id: "333-AGI"
+    identity_lane: true
+    surface_agent: opencode  # FI-001
+    skills:
+      - kernel-bind          # Bind governance before action
+      - observe-ground       # Evidence before narrative
+      - route-dispatch       # Right organ for right intent
+      - memory-manage        # Store less, recall well
+      - verify-gate          # Authority + evidence + reversibility + lineage
+      - audit-seal           # Every decision logged, ΔS ≤ 0
+      - AGI-plan-dag         # Multi-step execution graphs
+      - AGI-explorer-intelligence  # OBSERVE→HYPOTHESIZE→FALSIFY→VERIFY
+      - FORGE-route-least-power    # Smallest capability first
+      - FLAME-router         # Tool lane vs agent lane routing
+      - atlas333-cognitive-geometry  # Paradox-aware cognitive mapping
+    tools:
+      - arifos: [arif_init, arif_observe, arif_think, arif_route, arif_memory, arif_judge, arif_forge, arif_seal]
+      - aforge: [forge_shell, forge_filesystem, forge_fetch, forge_git, forge_execute, forge_search]
+      - geox: [geox_basin, geox_seismic_compute, geox_prospect, geox_falsify, geox_petrophysics]
+      - wealth: [capital_primitive, capital_market, capital_health, capital_wisdom]
+      - well: [well_assess_homeostasis, well_validate_vitality, well_guard_dignity]
+    organs:
+      primary: arifos
+      compute: [aforge, geox, wealth]
+      advisory: [well, wealth]
+
+  # ─── 555-ASI (Ω CORE) — Memory, telemetry, drift ───
+  - agent_id: "555-ASI"
+    identity_lane: true
+    skills:
+      - ASI-drift-watch       # Detect source↔runtime drift
+      - ASI-observability     # Structured telemetry for skill runs
+      - ASI-skill-binding     # Discover, bind, compose skills
+      - ASI-context-window-mgr  # Token budget management
+      - AUDIT-drift-detector  # Real-time drift detection
+      - AUDIT-skill-atlas     # Unified skill inventory
+      - memory-manage         # Store less, recall well
+      - observe-ground        # Evidence before narrative
+      - FLAME-operator        # Probe FLAME health, inspect hit rates
+    tools:
+      - arifos: [arif_observe, arif_memory, arif_route]
+      - aforge: [forge_search, forge_fetch, forge_memory, forge_probe, forge_surface_audit]
+      - hermes: [hermes_fact_check, hermes_epistemic_check, hermes_memory_steward]
+    organs:
+      primary: arifos
+      compute: [aforge]
+      advisory: [hermes]
+
+  # ─── 888-APEX (Ψ SOUL) — Constitutional verdict ───
+  - agent_id: "888-APEX"
+    identity_lane: true
+    read_only: true  # NEVER mutates — physically castrated
+    skills:
+      - apex_verdict_seal     # Verify ART→kernel→ACT evidence path
+      - apex_verdict_hold     # Constitutional HOLD path
+      - apex_floor_check      # F1-F13 floor evaluation
+      - apex_reversibility_test  # Rollback validation
+      - apex_authority_check  # Conflicting SOT resolution
+      - apex_scope_check      # Task/organ/constitutional scope
+      - APEX-humility-godel   # Self-critique before SEAL-grade claims
+      - APEX-fff-loop-protocol  # 5-pass recursive audit
+    tools:
+      - arifos: [arif_judge, arif_seal, arif_observe]
+    organs:
+      primary: arifos
+
+  # ─── OpenCode (FI-001) — Governed coding forge ───
+  - agent_id: opencode
+    fi_slot: FI-001
+    bound_to: "333-AGI"
+    skills:
+      - kernel-bind
+      - observe-ground
+      - verify-gate
+      - FORGE-github-ops
+      - FORGE-ci-diagnose
+      - FORGE-pr-review
+      - FORGE-pr-governance
+      - FORGE-incident-triage
+      - FORGE-infra-guardian
+      - FORGE-verify-runtime
+      - FORGE-vps-docker
+      - FORGE-mcp-smoke-test
+      - FORGE-route-least-power
+      - FORGE-cross-agent-handoff
+      - check-work
+    tools:
+      - aforge: [forge_shell, forge_filesystem, forge_git, forge_github, forge_execute, forge_fetch, forge_search]
+      - arifos: [arif_init, arif_observe, arif_route]
+    organs:
+      primary: aforge
+      governance: arifos
+
+  # ─── Claude Code (FI-002) — Sovereign delegate ───
+  - agent_id: claude-code
+    fi_slot: FI-002
+    skills:
+      - kernel-bind
+      - observe-ground
+      - AGI-claude-xml-structured-reasoning
+      - FORGE-github-ops
+      - FORGE-pr-review
+      - FORGE-pr-governance
+      - check-work
+    tools:
+      - arifos: [arif_init, arif_observe, arif_think, arif_route]
+      - aforge: [forge_shell, forge_filesystem, forge_fetch]
+    organs:
+      primary: aforge
+      governance: arifos
+
+  # ─── Kimi Code (FI-008) — Moonshot harness ───
+  - agent_id: kimi-code
+    fi_slot: FI-008
+    skills:
+      - kernel-bind
+      - observe-ground
+      - FORGE-kimi-code
+      - AGI-codex-chain-of-thought
+      - FORGE-route-least-power
+      - check-work
+    tools:
+      - arifos: [arif_init, arif_observe, arif_route]
+      - aforge: [forge_shell, forge_filesystem, forge_fetch, forge_execute]
+      - geox: [geox_basin, geox_seismic_compute, geox_prospect, geox_falsify]
+      - wealth: [capital_primitive, capital_market]
+      - well: [well_assess_homeostasis, well_validate_vitality]
+    organs:
+      primary: aforge
+      compute: [geox, wealth]
+      advisory: [well]
+
+  # ─── Codex (FI-005) — OpenAI harness ───
+  - agent_id: codex
+    fi_slot: FI-005
+    skills:
+      - kernel-bind
+      - observe-ground
+      - AGI-codex-chain-of-thought
+      - FORGE-route-least-power
+    tools:
+      - arifos: [arif_init, arif_observe, arif_route]
+      - aforge: [forge_shell, forge_filesystem, forge_fetch]
+    organs:
+      primary: aforge
+      governance: arifos
+
+  # ─── Copilot (FI-006) — GitHub harness ───
+  - agent_id: copilot
+    fi_slot: FI-006
+    skills:
+      - kernel-bind
+      - observe-ground
+      - COPILOT_ZEN_ROUTER
+      - FORGE-route-least-power
+      - ASI-session-seal-copilot
+      - check-work
+    tools:
+      - arifos: [arif_init, arif_observe, arif_route]
+      - aforge: [forge_shell, forge_filesystem, forge_fetch]
+    organs:
+      primary: aforge
+      governance: arifos
+
+  # ─── Hermes ASI — Telegram conversational agent ───
+  - agent_id: hermes-asi
+    identity_lane: false
+    bound_to: "555-ASI"
+    skills:
+      - ASI-agent-invariants
+      - asi_intent_hear
+      - asi_tone_read
+      - AGI-hermes-system-prompt-voice
+      - FLAME-router
+      - asi_position_contrast
+    tools:
+      - hermes: [hermes_fact_check, hermes_epistemic_check, hermes_plan_review, hermes_memory_steward, hermes_system_status]
+    organs:
+      primary: hermes
+      advisory: [well]
+
+# ══════════════════════════════════════════════════════
+# BOOT CONTRACT
+# Every agent, on session start, MUST:
+#   1. Load AGENTS_UNIFIED.yaml → resolve identity
+#   2. Load bindings.yaml → resolve skills + tools + organ
+#   3. Probe organ health (all 6 + FLAME)
+#   4. Bind session via arif_init
+# No archaeology. No skill discovery at boot.
+# ══════════════════════════════════════════════════════
+
+# DITEMPA BUKAN DIBERI — Forged, not given.
