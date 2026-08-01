@@ -126,7 +126,15 @@ async function dispatchTaskToOrgan({ intent = '', params = {}, identity = {}, ti
 // ── MCP Session Cache (init-first lifecycle) ──────────────────────────
 // Spec: initialize → notifications/initialized → operations
 // https://modelcontextprotocol.io/specification/2025-11-25/basic/lifecycle
-const MCP_PROTOCOL_VERSION = '2025-11-25';
+/**
+ * MCP Protocol Version — env-configurable for phased stateless migration.
+ * Set MCP_VERSION=2026-07-28 to enable stateless mode across all organ bridges.
+ * Default: 2025-11-25 (legacy stateful — backward compatible).
+ *
+ * P1 STATELESS (2026-08-01): Stateless mode skips initialize handshake,
+ * sends Mcp-Method + Mcp-Name headers, and eliminates session state.
+ */
+const MCP_PROTOCOL_VERSION = process.env.MCP_VERSION || '2025-11-25';
 const SESSION_TTL_MS = 5 * 60 * 1000;
 /** @type {Map<string, { id: string|null, protocolVersion: string, expires: number }>} */
 const mcpSessions = new Map();
@@ -134,6 +142,10 @@ const mcpSessions = new Map();
 /**
  * Low-level JSON-RPC POST to organ /mcp.
  * Always sends Accept for streamable HTTP + negotiated protocol version.
+ *
+ * P1 STATELESS (2026-08-01): When protocolVersion is 2026-07-28, sends
+ * Mcp-Method + Mcp-Name headers for stateless gateway routing (SEP-2243).
+ * Skips Mcp-Session-Id for stateless calls. Backward compatible with 2025-11-25.
  */
 function mcpHttp(organKey, { method, params, id, sessionId, protocolVersion, timeoutMs, identity }) {
   const organ = ORGANS[organKey];
@@ -147,16 +159,31 @@ function mcpHttp(organKey, { method, params, id, sessionId, protocolVersion, tim
   if (params !== undefined) bodyObj.params = params;
   const payload = JSON.stringify(bodyObj);
 
+  const pv = protocolVersion || MCP_PROTOCOL_VERSION;
+  const isStateless = pv === '2026-07-28';
+  const toolName = (params && typeof params === 'object' && !Array.isArray(params))
+    ? (params.name || '')
+    : '';
+
   const headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/event-stream',
     'Content-Length': Buffer.byteLength(payload),
-    'MCP-Protocol-Version': protocolVersion || MCP_PROTOCOL_VERSION,
+    'MCP-Protocol-Version': pv,
   };
-  if (sessionId) {
-    headers['Mcp-Session-Id'] = sessionId;
-    headers['MCP-Session-Id'] = sessionId;
+
+  // Stateless MCP 2026-07-28: header-based routing (SEP-2243)
+  if (isStateless) {
+    headers['Mcp-Method'] = method;
+    if (toolName) headers['Mcp-Name'] = toolName;
+  } else {
+    // Legacy stateful: session-based routing
+    if (sessionId) {
+      headers['Mcp-Session-Id'] = sessionId;
+      headers['MCP-Session-Id'] = sessionId;
+    }
   }
+
   if (identity && identity.actor_id) headers['X-Actor-Id'] = identity.actor_id;
   if (identity && identity.session_id) headers['X-Session-Id'] = identity.session_id;
 
@@ -230,9 +257,26 @@ function mcpHttp(organKey, { method, params, id, sessionId, protocolVersion, tim
 
 /**
  * Ensure MCP session for organ: initialize + notifications/initialized.
- * Stateless servers (no session header) still complete lifecycle once per TTL.
+ * Stateless servers (2026-07-28) skip handshake entirely —
+ * every request is self-contained. Legacy (2025-11-25) does full lifecycle.
+ *
+ * P1 STATELESS (2026-08-01): No initialize handshake for stateless protocol.
+ * Returns a null-session entry — mcpHttp() sends Mcp-Method/Mcp-Name instead.
  */
 async function ensureMcpSession(organKey, timeoutMs = 10000, identity = {}) {
+  // Stateless MCP 2026-07-28: no session handshake needed
+  if (MCP_PROTOCOL_VERSION === '2026-07-28') {
+    // Return a stateless entry — no session ID, no handshake.
+    // mcpHttp() will send Mcp-Method + Mcp-Name headers instead of Mcp-Session-Id.
+    return {
+      id: null,
+      protocolVersion: '2026-07-28',
+      expires: Date.now() + SESSION_TTL_MS,
+      stateless: true,
+    };
+  }
+
+  // Legacy stateful: full initialize + initialized handshake
   const cached = mcpSessions.get(organKey);
   if (cached && cached.expires > Date.now()) {
     return cached;
