@@ -47,6 +47,7 @@ SOT_TO_OC_PROVIDER = {
     "azure-openai": "azure-openai",
     "mimo-platform": "mimo-platform",
     "bailian-token-plan": "bailian-token-plan",
+    "qwen-token-plan": "qwen-token-plan",
     "glm": "tokenrouter-arifos",
     "xai": "openrouter",
     "openai": "openrouter",
@@ -57,6 +58,14 @@ SOT_TO_OC_PROVIDER = {
 MODEL_KEY_TRANSLATION = {
     "deepseek/deepseek-v4-pro": "deepseek/deepseek-v4-pro",
     "deepseek/deepseek-v4-flash": "deepseek/deepseek-v4-flash",
+    # Qwen Token Plan (RM0 marginal) — same model IDs, different provider gateway
+    "qwen-token-plan/deepseek-v4-pro": "qwen-token-plan/deepseek-v4-pro",
+    "qwen-token-plan/deepseek-v4-flash": "qwen-token-plan/deepseek-v4-flash",
+    "qwen-token-plan/qwen3.7-max": "qwen-token-plan/qwen3.7-max",
+    "qwen-token-plan/qwen3.7-plus": "qwen-token-plan/qwen3.7-plus",
+    "qwen-token-plan/qwen3.6-flash": "qwen-token-plan/qwen3.6-flash",
+    "qwen-token-plan/glm-5.2": "qwen-token-plan/glm-5.2",
+    "qwen-token-plan/qwen3.8-max-preview": "qwen-token-plan/qwen3.8-max-preview",
     "kimi/k3": "kimi/k3",
     "kimi/kimi-k2.7-code": "kimi/kimi-for-coding",
     "kimi/kimi-for-coding": "kimi/kimi-for-coding",
