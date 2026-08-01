@@ -1,0 +1,176 @@
+# arifOS Token Plan Seat Registry
+# Source of truth: QwenCloud Team console (tokenplan-enterprise.qwencloud.ai/?orgId=org_b80562f943bd41a48bed03171ab685dd)
+# Last reconciled: 2026-08-01
+# Status: DRAFT — pending vault breath per FED-harness-tool-governance-v1.0.0.md §14 (Ratification Path)
+schema_version: 1
+org:
+  name: "默认组织-5e6b78"
+  org_id: "org_b80562f943bd41a48bed03171ab685dd"
+  login_url: "https://tokenplan-enterprise.qwencloud.ai/?orgId=org_b80562f943bd41a48bed03171ab685dd"
+  sso_configured: false
+  total_seats_assigned: 3
+  total_seats_unassigned: 0
+
+team_seats:
+  - seat_id: "seat_fbdaf17967c6426ab10f7f682c462db2"
+    masked_preview: "sk-sp-H.DIEXP.z****NNfDV3pOR5Pb9-4"
+    key_prefix: "sk-sp-H"
+    member: "arifOS_3b0e7f42bb3f4ebcbc00f35abb5c5fb3"
+    role: "Admin"
+    tier: "Pro"
+    monthly_credits: 100000
+    monthly_cost_usd: 75
+    days_remaining_at_snapshot: 30
+    purpose: "Primary agent runtime — OpenCode + Hermes + Codex (chat) + all 4 agents (FED/responses)"
+    env_var: "QWEN_OPENCODE_API_KEY"
+    backends:
+      - agent: OpenCode
+        provider_key: "qwen-token-plan"
+        wire_format: "openai-compat"
+        capability: "chat"
+      - agent: OpenCode
+        provider_key: "qwen-responses"
+        wire_format: "openai-compat"
+        capability: "FED-responses"
+      - agent: Hermes
+        provider_key: "qwen-token-plan"
+        wire_format: "openai_chat"
+        capability: "chat"
+      - agent: Hermes
+        provider_key: "qwen-responses"
+        wire_format: "openai_chat"
+        capability: "FED-responses"
+      - agent: OpenClaw
+        provider_key: "bailian-token-plan-responses"
+        wire_format: "openai-completions"
+        capability: "FED-responses"
+      - agent: Codex
+        provider_key: "qwen-token-plan"
+        wire_format: "chat (default)"
+        capability: "chat"
+      - agent: Codex
+        provider_key: "qwen-responses"
+        wire_format: "responses"
+        capability: "FED-responses"
+    chat_leak_exposure:
+      - "Round 4 (audit paste)"
+      - "Round 5 (per-seat directive)"
+      - "Round 8 (per-seat audit)"
+    rotation_status: "OVERDUE — must rotate before any live tool calls"
+    vault_status: "EMPTY — env var set but value not populated"
+
+  - seat_id: "seat_b797ca6bde0f4eb3b614a19ed8f9c55e"
+    masked_preview: "sk-sp-D.IEHM.El****d3BKNNLhP7SUQ=="
+    key_prefix: "sk-sp-D"
+    member: "aliyun-5607682778452102"
+    role: "Owner"
+    tier: "Standard"
+    monthly_credits: 25000
+    monthly_cost_usd: 20
+    days_remaining_at_snapshot: 30
+    purpose: "OpenClaw gateway + edge operations (chat only)"
+    env_var: "QWEN_OPENCLAW_API_KEY"
+    backends:
+      - agent: OpenClaw
+        provider_key: "bailian-token-plan"
+        wire_format: "openai-completions"
+        capability: "chat"
+    chat_leak_exposure:
+      - "Round 4 (audit paste)"
+      - "Round 5 (per-seat directive)"
+      - "Round 8 (per-seat audit)"
+    rotation_status: "OVERDUE"
+    vault_status: "EMPTY"
+
+  - seat_id: "seat_39bf2828dbc34f72b552ea0b617cb958"
+    masked_preview: "sk-sp-D.IPRH.s5****88EmbAF2nFlgMk="
+    key_prefix: "sk-sp-D"
+    member: "ariffazil_8629b70f822142798e248c8b15817865"
+    role: "Admin"
+    tier: "Standard"
+    monthly_credits: 25000
+    monthly_cost_usd: 20
+    days_remaining_at_snapshot: 30
+    purpose: "Hermes terminal coding assistant (chat only)"
+    env_var: "QWEN_HERMES_API_KEY"
+    backends:
+      - agent: Hermes
+        provider_key: "qwen-token-plan"
+        wire_format: "openai_chat"
+        capability: "chat"
+    chat_leak_exposure:
+      - "Round 4 (audit paste)"
+      - "Round 5 (per-seat directive)"
+      - "Round 8 (per-seat audit)"
+    rotation_status: "OVERDUE"
+    vault_status: "EMPTY"
+
+individual_seat:
+  masked_preview: "sk-sp-H.DIIYD.e****FaO4oIcIZUbnXlo"
+  key_prefix: "sk-sp-H"
+  tier: "Pro"
+  # Individual has 5h+7d rolling windows, NOT monthly
+  rolling_window_5h_credits: 12000
+  rolling_window_7d_credits: 40000
+  monthly_cost_usd: 68
+  purpose: "Multimodal — image (wan2.7-image/pro) + audio (qwen-audio-3.0-tts-plus) + video (happyhorse-1.1-*); image_search via Responses API"
+  env_var: "QWEN_INDIVIDUAL_API_KEY"
+  backends:
+    - agent: OpenCode
+      provider_key: "qwen-token-plan-individual"
+      wire_format: "openai-compat"
+      capability: "chat"
+    - agent: Hermes
+      provider_key: "qwen-token-plan-individual"
+      wire_format: "openai_chat"
+      capability: "chat"
+    - agent: OpenClaw
+      provider_key: "bailian-token-plan-personal"
+      wire_format: "openai-completions"
+      capability: "chat"
+  # ToS note: Personal Edition §1 prohibits "automated scripts, application backends, non-interactive batch processing" — multi-agent sharing may violate
+  # Cross-border: Singapore-region only, Global deployment, prompts+outputs transfer internationally
+  chat_leak_exposure:
+    - "Round 1 (audit paste — masked preview only, safe)"
+    - "Round 2 (full docs with ToS)"
+  rotation_status: "ADVISED — Pro seat across 3 agents is novel pattern"
+  vault_status: "EMPTY"
+
+totals:
+  team_seats: 3
+  monthly_team_credits_capacity: 150000    # 100K + 25K + 25K
+  monthly_team_min_cost_usd: 115           # 75 + 20 + 20
+  monthly_team_max_cost_usd: 815           # + 3 Credit Packs ($700/625K each)
+  individual_seats: 1
+  individual_max_credits_per_5h: 12000
+  individual_max_credits_per_7d: 40000
+  # Tool fees are SEPARATE (Ledger B per FED spec §4)
+  estimated_monthly_tool_fees_max: 500     # if all 3 seats maxed on web_search + image_search at $10/$8 per 1k
+
+federation_providers_inventory:
+  total_qwen_providers: 11
+  distribution:
+    OpenCode: 3      # qwen-token-plan, qwen-token-plan-individual, qwen-responses
+    Hermes: 3        # same trio
+    OpenClaw: 3      # bailian-token-plan, bailian-token-plan-personal, bailian-token-plan-responses
+    Codex: 2         # qwen-token-plan, qwen-responses
+  seat_sharing_pattern:
+    pro_seat_serves: [OpenCode, Hermes, Codex, OpenClaw]   # all 4 agents via qwen-responses + various chat providers
+    standard_seats_serve_independently: [OpenClaw (chat), Hermes (chat)]
+
+f11_notes:
+  chat_leak_incidents:
+    - date: 2026-08-01
+      severity: "CRITICAL — all 3 Team seats exposed via chat history"
+      affected_seats: ["seat_fbdaf17967c6426ab10f7f682c462db2", "seat_b797ca6bde0f4eb3b614a19ed8f9c55e", "seat_39bf2828dbc34f72b552ea0b617cb958"]
+      action_required: "Reset all 3 seats via QwenCloud console BEFORE vault breath (FED spec §14, B3)"
+      mitigation: "Add new keys via direct SSH vault edit (NOT chat paste, NOT AI tool call)"
+  agent_layer_governance:
+    spec: "/root/AAA/governance/FED-harness-tool-governance-v1.0.0.md"
+    status: "DRAFT — awaiting 999 SEAL"
+    ratification_keystroke: "999 SEAL FED-HARNESS-TOOL-GOVERNANCE"
+
+audit_chain:
+  vault_path: "/root/arifOS/VAULT999/outcomes.jsonl"
+  seat_registry_path: "/root/AAA/federation/seats.yaml"
+  spec_path: "/root/AAA/governance/FED-harness-tool-governance-v1.0.0.md"
