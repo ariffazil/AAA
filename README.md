@@ -1,7 +1,7 @@
 <!-- SOT-MANIFEST
-federation_release: v2026.07.31
-last_verified: 2026-07-31T03:25:00Z
-live_commit: 6f9b2ef
+federation_release: v2026.08.01
+last_verified: 2026-08-01T00:45:00Z
+live_commit: c14028e5
 truth_rule: /health + agent registry beat any static count in prose
 a2a_port: 3001
 a2a_status: healthy GREEN (deployment_drift: false)
@@ -21,7 +21,7 @@ domain_organs: 6 (arifOS:8088, A-FORGE:7071, GEOX:8081, WEALTH:18082, WELL:18083
 [![Agentic CI](https://github.com/ariffazil/AAA/actions/workflows/agentic-ci.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions)
 [![Governance Plane](https://github.com/ariffazil/AAA/actions/workflows/aaa-governance.yml/badge.svg?branch=main)](https://github.com/ariffazil/AAA/actions)
 [![🖥️ COCKPIT](https://img.shields.io/badge/%F0%9F%96%A5%EF%B8%8F%20INSTITUTION-A2A%20Mesh%20Gateway-0a7b83)](https://aaa.arif-fazil.com)
-[![Federation](https://img.shields.io/badge/Federation-v2026.07.31-0a7b83)](https://arifos.arif-fazil.com)
+[![Federation](https://img.shields.io/badge/Federation-v2026.08.01-0a7b83)](https://arifos.arif-fazil.com)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](./LICENSE)
 
 **AAA (Alignment, Authority, Accountability)** is the **Agentic Intelligence Institution** and A2A (Agent-to-Agent) Mesh Gateway of the arifOS Federation. AAA functions as the institutional state, agent registry, task router, and operator cockpit—connecting autonomous agents, forge tools, and human operators under a unified protocol.
@@ -178,38 +178,3 @@ AAA operates as the Agentic Intelligence Institution, Control Plane, and A2A Mes
 
 *DITEMPA BUKAN DIBERI — The state is forged, not given.*  
 *Maruah without SEAL is sentiment. SEAL without Maruah is enforcement. 999 SEAL ALIVE.*
-
-(https://aaa.arif-fazil.com/health) | [llms.txt](https://aaa.arif-fazil.com/llms.txt) |
-| **GEOX** | Earth intelligence | [repo](https://github.com/ariffazil/GEOX) | [mcp](https://geox.arif-fazil.com/mcp) | [health](https://geox.arif-fazil.com/health) | [llms.txt](https://geox.arif-fazil.com/llms.txt) |
-| **WEALTH** | Capital intelligence | [repo](https://github.com/ariffazil/WEALTH) | [mcp](https://wealth.arif-fazil.com/mcp) | [health](https://wealth.arif-fazil.com/health) | [llms.txt](https://wealth.arif-fazil.com/llms.txt) |
-| **WELL** | Vitality guard | [repo](https://github.com/ariffazil/WELL) | [mcp](https://well.arif-fazil.com/mcp) | [health](https://well.arif-fazil.com/health) | [llms.txt](https://well.arif-fazil.com/llms.txt) |
-| **HERMES** | Multi-modal bridge | [repo](https://github.com/ariffazil/HERMES) | — | — | — |
-
-**Public:** [arif-fazil.com](https://arif-fazil.com) · **Federation root:** [arifos.arif-fazil.com](https://arifos.arif-fazil.com)
-**SOT:** 2026-07-28
-
-
-    │                                                  │
-    │   AAA is the state.                             │
-    │   arifOS is the judge.                          │
-    │   A-FORGE is the executor.                      │
-    │   The organs are the witnesses.                 │
-    │   The cockpit is the window.                    │
-    │   Arif is the sovereign.                        │
-    │                                                  │
-    │   The window is not the wall.                   │
-    │   The state is not the constitution.            │
-    │   The display is not the verdict.               │
-    │   The route is not the action.                  │
-    │   The queue is not the seal.                    │
-    │   The registry is not the law.                  │
-    │                                                  │
-    │   Maruah without SEAL is sentiment.             │
-    │   SEAL without Maruah is enforcement.           │
-    │                                                  │
-    │   DITEMPA BUKAN DIBERI                         │
-    │   The state is forged, not given.               │
-    │   999 SEAL ALIVE.                               │
-    │                                                  │
-    └──────────────────────────────────────────────────┘
-```
