@@ -1,0 +1,21 @@
+{
+  "agent_id": "skill-auditor",
+  "actor_id": "skill-auditor/FI-009",
+  "ed25519_pubkey_hex": "b2e8f4a9c1d6f5e3a7b9c4d2e6f1a8b3c5d9e2f4a7b1c6d3e8f5a2b7c4d9e6f1",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "AUDIT",
+    "ZEN"
+  ],
+  "max_blast_radius": "T1",
+  "created_at": "2026-07-31T23:33:54+00:00",
+  "class": "SKILL_MESH_GUARDIAN",
+  "autonomy": "T1_AUTO",
+  "citizenship": "warga-aaa",
+  "sovereign": "Muhammad Arif bin Fazil",
+  "floor_scope": ["F1", "F2", "F4", "F7", "F11", "F13"],
+  "doctrine": "DITEMPA BUKAN DIBERI",
+  "fingerprint": "skill-auditor-zen-fill-2026-07-31"
+}
