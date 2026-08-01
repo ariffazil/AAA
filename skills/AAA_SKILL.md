@@ -20,7 +20,15 @@
 
 ## OpenCode Skills — Full Catalog
 
-| # | Skill ID | Purpose | Frontmatter | Has Examples/Tests/Bindings | Proposed Action |
+| **arifos-constitutional-judge** | CONSTITUTION · VERDICT · ACT | canonical, load-bearing (replaces 7 overlapping skills below) |
+| (retired) ASI-constitutional-reasoning | → see arifos-constitutional-judge |
+| (retired) apex_floor_check | → see arifos-constitutional-judge |
+| (retired) apex_authority_check | → see arifos-constitutional-judge |
+| (retired) apex_scope_check | → see arifos-constitutional-judge |
+| (retired) apex_verdict_hold | → see arifos-constitutional-judge |
+| (retired) apex_verdict_seal | → see arifos-constitutional-judge |
+| (retired) apex_audit_coverage_check | → see arifos-constitutional-judge |
+| 0 | 777-forge-agi-contrast |
 |---|---|---|---|---|---|
 | 1 | `777-forge-agi-contrast` | Spawn validation gate | ❌ none | ❌ | Merge into `contrast-engine` |
 | 2 | `777-forge-apex-contrast` | Sovereign verifiability gate | ❌ none | ❌ | Merge into `contrast-engine` |
