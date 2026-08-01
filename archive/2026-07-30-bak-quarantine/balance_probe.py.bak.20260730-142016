@@ -1,0 +1,322 @@
+#!/usr/bin/env python3
+"""
+balance_probe.py — Track A: API Balance Prober for FED (Federation Router)
+═══════════════════════════════════════════════════════════════════════════
+Probes provider balance APIs. Updates fed_state.db + AGENT_MODEL_MAP.json.
+Flags console-only providers with UNVERIFIABLE scar.
+
+Dual-track architecture:
+  Track A (this script): API-probed balances → confidence = 1.0
+  Track B (token_bank.py):  Estimated balances   → confidence < 1.0
+
+Forged: 2026-07-30 · F1 AMANAH: read-only except DB + JSON writes
+DITEMPA BUKAN DIBERI
+"""
+
+import json
+import os
+import sqlite3
+import sys
+import time
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.request import Request, urlopen
+from urllib.error import URLError, HTTPError
+
+# ── Config ───────────────────────────────────────────────────────────────
+FED_STATE_DB = Path("/root/.local/share/arifos/fed_state.db")
+MODEL_MAP = Path("/root/AAA/registries/models/AGENT_MODEL_MAP.json")
+SECRETS_ENV = Path("/root/.secrets/kunci-mas.env")
+
+# Track A providers — those WITH balance APIs
+TRACK_A_PROVIDERS = {
+    "deepseek": {
+        "endpoint": "https://api.deepseek.com/user/balance",
+        "key_env": "DEEPSEEK_API_KEY",
+        "parser": "deepseek_balance",
+    },
+    "openrouter": {
+        "endpoint": "https://openrouter.ai/api/v1/auth/key",
+        "key_env": "OPENROUTER_API_KEY",
+        "parser": "openrouter_balance",
+    },
+}
+
+# Track B providers — console-only, flagged as UNVERIFIABLE
+TRACK_B_PROVIDERS = [
+    "mulerouter",
+    "tokenrouter",
+    "bailian-token-plan",
+    "mimo-platform",
+]
+
+DRIFT_ALERT_THRESHOLD = 5.00  # USD — alert if balance drifts > $5
+AUDIT_ALERT_DAYS = 30  # Days before UNVERIFIABLE becomes a scar alert
+
+
+# ── Secret loading ───────────────────────────────────────────────────────
+def load_secrets():
+    """Load API keys from kunci-mas.env."""
+    secrets = {}
+    if not SECRETS_ENV.exists():
+        print(f"⚠️  Secrets file missing: {SECRETS_ENV}", file=sys.stderr)
+        return secrets
+
+    with open(SECRETS_ENV) as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("#") or "=" not in line:
+                continue
+            # Handle 'export KEY=VALUE' and 'KEY=VALUE'
+            if line.startswith("export "):
+                line = line[7:]
+            key, _, value = line.partition("=")
+            key = key.strip()
+            value = value.strip().strip('"').strip("'")
+            if key and value:
+                secrets[key] = value
+    return secrets
+
+
+# ── Balance parsers ──────────────────────────────────────────────────────
+def parse_deepseek_balance(data: dict) -> dict:
+    """Parse DeepSeek /user/balance response."""
+    infos = data.get("balance_infos", [])
+    total = sum(float(info.get("total_balance", 0)) for info in infos)
+    topped_up = sum(float(info.get("topped_up_balance", 0)) for info in infos)
+    return {
+        "balance_usd": round(total, 2),
+        "topped_up_usd": round(topped_up, 2),
+        "is_available": data.get("is_available", False),
+    }
+
+
+def parse_openrouter_balance(data: dict) -> dict:
+    """Parse OpenRouter /auth/key response."""
+    d = data.get("data", {})
+    credits = float(d.get("total_credits", 0))
+    usage = float(d.get("total_usage", 0))
+    remaining = round(credits - usage, 6)
+    return {
+        "balance_usd": remaining,
+        "total_credits": credits,
+        "total_usage": round(usage, 6),
+    }
+
+
+# ── API probing ──────────────────────────────────────────────────────────
+def probe_provider(provider_id: str, config: dict, secrets: dict) -> dict | None:
+    """Probe a single provider's balance API. Returns parsed result or None."""
+    api_key = secrets.get(config["key_env"])
+    if not api_key:
+        return {"error": f"Missing env var: {config['key_env']}"}
+
+    req = Request(
+        config["endpoint"],
+        headers={"Authorization": f"Bearer {api_key}"},
+    )
+
+    try:
+        with urlopen(req, timeout=10) as resp:
+            raw = json.loads(resp.read().decode())
+    except HTTPError as e:
+        return {"error": f"HTTP {e.code}: {e.reason}"}
+    except URLError as e:
+        return {"error": f"Connection failed: {e.reason}"}
+    except json.JSONDecodeError:
+        return {"error": "Invalid JSON response"}
+    except Exception as e:
+        return {"error": str(e)}
+
+    parser_name = config["parser"]
+    parsers = {
+        "deepseek_balance": parse_deepseek_balance,
+        "openrouter_balance": parse_openrouter_balance,
+    }
+    parser = parsers.get(parser_name)
+    if not parser:
+        return {"error": f"Unknown parser: {parser_name}"}
+
+    return parser(raw)
+
+
+# ── Database operations ──────────────────────────────────────────────────
+def update_db_balance(
+    provider_id: str, balance_usd: float, confidence: float = 1.0, track: str = "A", source: str = "api_probe"
+):
+    """Write probed balance to fed_state.db."""
+    now = datetime.now(timezone.utc).isoformat()
+    conn = sqlite3.connect(str(FED_STATE_DB))
+    conn.execute(
+        """
+        INSERT INTO provider_balance (provider_id, balance_usd, balance_confidence,
+                                       track, balance_source, last_probed_at, needs_audit)
+        VALUES (?, ?, ?, ?, ?, ?, 0)
+        ON CONFLICT(provider_id) DO UPDATE SET
+            balance_usd = excluded.balance_usd,
+            balance_confidence = excluded.balance_confidence,
+            track = excluded.track,
+            balance_source = excluded.balance_source,
+            last_probed_at = excluded.last_probed_at,
+            needs_audit = 0
+    """,
+        (provider_id, balance_usd, confidence, track, source, now),
+    )
+    conn.commit()
+    conn.close()
+
+
+def flag_unverifiable(provider_id: str, reason: str = "Console-only — no balance API"):
+    """Flag a Track B provider as UNVERIFIABLE. Never degrades existing confidence."""
+    now = datetime.now(timezone.utc).isoformat()
+    conn = sqlite3.connect(str(FED_STATE_DB))
+
+    # Read existing confidence — never degrade it
+    row = conn.execute(
+        "SELECT balance_confidence FROM provider_balance WHERE provider_id = ?", (provider_id,)
+    ).fetchone()
+    existing_conf = row[0] if row else None
+    new_conf = existing_conf if (existing_conf and existing_conf > 0.30) else 0.30
+
+    conn.execute(
+        """
+        INSERT INTO provider_balance (provider_id, balance_confidence, track,
+                                       balance_source, last_probed_at, needs_audit, notes)
+        VALUES (?, ?, 'B', ?, ?, 0, ?)
+        ON CONFLICT(provider_id) DO UPDATE SET
+            balance_confidence = excluded.balance_confidence,
+            track = 'B',
+            balance_source = excluded.balance_source,
+            last_probed_at = excluded.last_probed_at,
+            notes = excluded.notes
+    """,
+        (provider_id, new_conf, f"unverifiable:{reason}", now, reason),
+    )
+    conn.commit()
+    conn.close()
+
+
+def get_previous_balance(provider_id: str) -> float | None:
+    """Read previous balance from fed_state.db."""
+    conn = sqlite3.connect(str(FED_STATE_DB))
+    row = conn.execute("SELECT balance_usd FROM provider_balance WHERE provider_id = ?", (provider_id,)).fetchone()
+    conn.close()
+    return row[0] if row else None
+
+
+# ── Model map sync ───────────────────────────────────────────────────────
+def update_model_map(provider_id: str, balance_usd: float):
+    """Update the balance_usd field in AGENT_MODEL_MAP.json."""
+    if not MODEL_MAP.exists():
+        print(f"⚠️  Model map missing: {MODEL_MAP}", file=sys.stderr)
+        return
+
+    with open(MODEL_MAP) as f:
+        data = json.load(f)
+
+    now = datetime.now(timezone.utc).isoformat()
+    updated = False
+    for provider in data.get("providers", []):
+        if provider.get("provider_id") == provider_id:
+            old_balance = provider.get("balance_usd")
+            provider["balance_usd"] = balance_usd
+            provider["balance_checked"] = now
+            updated = True
+            if old_balance != balance_usd:
+                print(f"  📝 {provider_id}: ${old_balance} → ${balance_usd} (AGENT_MODEL_MAP.json)")
+            break
+
+    if updated:
+        # Backup before write (F1 AMANAH)
+        backup = Path(str(MODEL_MAP) + f".bak.{int(time.time())}")
+        with open(backup, "w") as f:
+            json.dump(data, f, indent=2)
+        with open(MODEL_MAP, "w") as f:
+            json.dump(data, f, indent=2)
+        print(f"  💾 Backup: {backup.name}")
+
+
+# ── Alerting ─────────────────────────────────────────────────────────────
+def check_drift(provider_id: str, new_balance: float):
+    """Alert if balance drifted more than DRIFT_ALERT_THRESHOLD."""
+    prev = get_previous_balance(provider_id)
+    if prev is not None:
+        drift = abs(new_balance - prev)
+        if drift > DRIFT_ALERT_THRESHOLD:
+            direction = "🔺 GAIN" if new_balance > prev else "🔻 LOSS"
+            print(f"  ⚠️  DRIFT ALERT: {provider_id} drifted ${drift:.2f} ({direction})")
+            print(f"      Previous: ${prev:.2f} → Current: ${new_balance:.2f}")
+
+
+def check_audit_overdue(provider_id: str):
+    """Alert if Track B provider hasn't been reconciled in AUDIT_ALERT_DAYS."""
+    conn = sqlite3.connect(str(FED_STATE_DB))
+    row = conn.execute(
+        "SELECT last_reconciled_at FROM provider_balance WHERE provider_id = ?", (provider_id,)
+    ).fetchone()
+    conn.close()
+
+    if row and row[0]:
+        last = datetime.fromisoformat(row[0])
+        days_since = (datetime.now(timezone.utc) - last).days
+        if days_since > AUDIT_ALERT_DAYS:
+            print(f"  🚨 AUDIT OVERDUE: {provider_id} — {days_since} days since last manual check")
+            print(f"      Last reconciled: {row[0]}")
+
+
+# ── Main ─────────────────────────────────────────────────────────────────
+def main():
+    print("═" * 60)
+    print("🔍 FED Balance Probe — Track A (API-PROBED)")
+    print(f"   {datetime.now(timezone.utc).isoformat()}")
+    print("═" * 60)
+
+    secrets = load_secrets()
+    if not secrets:
+        print("❌ FATAL: No secrets loaded. Aborting.", file=sys.stderr)
+        sys.exit(1)
+
+    results = {}
+
+    # ── Track A: Probe API-enabled providers ──────────────────────────
+    print("\n── Track A: API Probes ──")
+    for provider_id, config in TRACK_A_PROVIDERS.items():
+        print(f"\n  🔌 Probing {provider_id}...")
+        result = probe_provider(provider_id, config, secrets)
+
+        if result and "error" not in result:
+            balance = result["balance_usd"]
+            print(f"  ✅ {provider_id}: ${balance:.2f}")
+            update_db_balance(provider_id, balance, confidence=1.0, source=f"api:{config['endpoint']}")
+            update_model_map(provider_id, balance)
+            check_drift(provider_id, balance)
+            results[provider_id] = {"status": "OK", "balance": balance}
+        else:
+            error = result.get("error", "Unknown error") if result else "No response"
+            print(f"  ❌ {provider_id}: {error}")
+            results[provider_id] = {"status": "FAILED", "error": error}
+
+    # ── Track B: Flag console-only providers ──────────────────────────
+    print("\n── Track B: Console-Only Flags ──")
+    for provider_id in TRACK_B_PROVIDERS:
+        print(f"  🏦 {provider_id}: UNVERIFIABLE (console-only, no balance API)")
+        flag_unverifiable(provider_id)
+        check_audit_overdue(provider_id)
+        results[provider_id] = {"status": "UNVERIFIABLE"}
+
+    # ── Summary ───────────────────────────────────────────────────────
+    print("\n── Summary ──")
+    ok = sum(1 for r in results.values() if r["status"] == "OK")
+    failed = sum(1 for r in results.values() if r["status"] == "FAILED")
+    blind = sum(1 for r in results.values() if r["status"] == "UNVERIFIABLE")
+    print(f"  ✅ Probed:  {ok}")
+    print(f"  ❌ Failed:  {failed}")
+    print(f"  🏦 Blind:   {blind} (needs manual dashboard check)")
+    print(f"  📊 State DB: {FED_STATE_DB}")
+    print("═" * 60)
+
+    return 0 if failed == 0 else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
