@@ -1,0 +1,17 @@
+{
+  "report_type": "TREE777_999_WEEKLY_ANCHOR",
+  "agent": "openclaw",
+  "timestamp_utc": "2026-06-14T14:32:01Z",
+  "inputs": {
+    "health_report": "/root/AAA/wiki/_runtime/reports/tree777-health-openclaw-2026-06-14.json",
+    "promotion_review_report": "/root/AAA/wiki/_runtime/reports/tree777-promotion-review-openclaw-2026-06-12.json"
+  },
+  "summary": {
+    "markdown_files": 113,
+    "orphan_links": 36,
+    "proposed_total": 2
+  },
+  "anchor_receipt": "TREE777-999-openclaw-1e964b91bdd8ff71",
+  "anchor_hash": "1e964b91bdd8ff717af459939da831a80c27aba24c54fb92dd03a9d832efd31e",
+  "status": "SEALED_LOCAL_LEDGER"
+}

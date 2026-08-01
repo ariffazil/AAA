@@ -1,0 +1,17 @@
+{
+  "report_type": "TREE777_999_WEEKLY_ANCHOR",
+  "agent": "maxhermes",
+  "timestamp_utc": "2026-05-24T13:25:05Z",
+  "inputs": {
+    "health_report": "/root/AAA/wiki/_runtime/reports/tree777-health-maxhermes-2026-05-24.json",
+    "promotion_review_report": "/root/AAA/wiki/_runtime/reports/tree777-promotion-review-maxhermes-2026-05-22.json"
+  },
+  "summary": {
+    "markdown_files": 112,
+    "orphan_links": 35,
+    "proposed_total": 2
+  },
+  "anchor_receipt": "TREE777-999-maxhermes-65dadf31a6cb0c29",
+  "anchor_hash": "65dadf31a6cb0c29531c5783a2e3e73a84a5be0e74bb6adc01fdde4506ab1217",
+  "status": "SEALED_LOCAL_LEDGER"
+}
