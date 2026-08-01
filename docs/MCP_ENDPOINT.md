@@ -17,9 +17,9 @@ Any divergence = immediate fix.
 | Name | arifOS Constitutional |
 | Public URL | `https://arifos.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
-| Internal | `http://arifosmcp:8080/mcp` |
+| Internal | `http://arifosmcp:8088/mcp` |
 | Container port | 8080 |
-| Caddy route | `arifos.arif-fazil.com/mcp*` → `arifosmcp:8080` |
+| Caddy route | `arifos.arif-fazil.com/mcp*` → `arifosmcp:8088` |
 | Tools | 13 canonical (arif_init → arif_ops_measure) |
 | Auth | None (public) |
 | Status | ✅ HEALTHY |
@@ -70,7 +70,7 @@ Any divergence = immediate fix.
 
 | Service | openclaw.json url | Caddyfile route | server.py transport |
 |---------|------------------|-----------------|-------------------|
-| arifOS | `http://localhost:8080/mcp` | `arifos.arif-fazil.com/mcp*` | `streamable-http` |
+| arifOS | `http://localhost:8088/mcp` | `arifos.arif-fazil.com/mcp*` | `streamable-http` |
 | GEOX | `https://geox.arif-fazil.com/mcp` | `geox.arif-fazil.com/mcp/*` | `streamable-http` |
 | WEALTH | `http://localhost:8082/mcp` | `wealth.arif-fazil.com/mcp` | `streamable-http` |
 | WELL | `https://well.arif-fazil.com/mcp` | `well.arif-fazil.com/mcp` | `streamable-http` |
