@@ -36,7 +36,7 @@ ds_start=$(date +%s%N)
 ds_resp=$(curl -s -X POST https://api.deepseek.com/v1/chat/completions \
   -H "Authorization: Bearer ${DEEPSEEK_API_KEY:-}" \
   -H "Content-Type: application/json" \
-  -d '{"model":"deepseek-chat","messages":[{"role":"user","content":"ping"}],"max_tokens":5}' \
+  -d '{"model":"deepseek-v4-flash","messages":[{"role":"user","content":"ping"}],"max_tokens":5}' \
   --max-time 15 2>/dev/null || true)
 ds_ms=$(( ($(date +%s%N) - ds_start) / 1000000 ))
 if echo "$ds_resp" | grep -q '"Insufficient Balance"'; then
