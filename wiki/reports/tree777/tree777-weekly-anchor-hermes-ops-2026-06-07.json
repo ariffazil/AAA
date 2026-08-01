@@ -1,0 +1,17 @@
+{
+  "report_type": "TREE777_999_WEEKLY_ANCHOR",
+  "agent": "hermes-ops",
+  "timestamp_utc": "2026-06-07T15:18:01Z",
+  "inputs": {
+    "health_report": "/root/AAA/wiki/_runtime/reports/tree777-health-hermes-ops-2026-06-07.json",
+    "promotion_review_report": "/root/AAA/wiki/_runtime/reports/tree777-promotion-review-hermes-ops-2026-06-05.json"
+  },
+  "summary": {
+    "markdown_files": 112,
+    "orphan_links": 35,
+    "proposed_total": 2
+  },
+  "anchor_receipt": "TREE777-999-hermes-ops-149ce0350f47aec5",
+  "anchor_hash": "149ce0350f47aec5a8d770686018bb262c2e7d4ef9a8fd21773a3a75275130d2",
+  "status": "SEALED_LOCAL_LEDGER"
+}

@@ -1,0 +1,17 @@
+{
+  "report_type": "TREE777_999_WEEKLY_ANCHOR",
+  "agent": "phoenix72",
+  "timestamp_utc": "2026-06-14T13:46:01Z",
+  "inputs": {
+    "health_report": "/root/AAA/wiki/_runtime/reports/tree777-health-phoenix72-2026-06-14.json",
+    "promotion_review_report": "/root/AAA/wiki/_runtime/reports/tree777-promotion-review-phoenix72-2026-06-12.json"
+  },
+  "summary": {
+    "markdown_files": 113,
+    "orphan_links": 36,
+    "proposed_total": 2
+  },
+  "anchor_receipt": "TREE777-999-phoenix72-eb83e6d1a59cfdb3",
+  "anchor_hash": "eb83e6d1a59cfdb35c383c0ce1c4518b10c8b9fb160a7029e9962fc155d1f60c",
+  "status": "SEALED_LOCAL_LEDGER"
+}
