@@ -1,3 +1,14 @@
+---
+name: AAA-OCR-optical-compression
+license: MIT
+description: OCR as optical context compression. Converts documents/images to structured markdown using a VLM cascade (qwen3-omni-flash → Tesseract → RapidOCR). Use when processing scanned documents, tables, charts, or images containing text. Includes F2/F4/F9/F12 constitutional gates. Trigger phrases include "OCR", "extract text from image", "document to markdown", "parse table from image", "scan document".
+floor_scope:
+- F2
+- F4
+- F9
+- F12
+---
+
 # AAA-OCR — Optical Compression Pipeline
 
 > **EUREKA777::OCR_COMPRESSION · 2026-07-31**
