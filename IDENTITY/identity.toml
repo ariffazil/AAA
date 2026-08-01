@@ -5,3 +5,23 @@ service_id = "aaa-a2a"
 version = "1.0.0"
 authority = "F13_SOVEREIGN"
 role = "Cockpit, Identity, A2A Gateway, State, Routing"
+
+# F1 AMANAH · Tier-A identity registration (calibration session 2026-08-01)
+# Fingerprint is sha256[:16] of the raw 32-byte Ed25519 public key.
+# Public key file: /root/AAA/IDENTITY/keys/FI-008_public.pem
+# Private key file: /root/forge_work/calibration_keys/fi008_ed25519.pem (mode 600)
+# Registered by: 888 SOVEREIGN DIRECTIVE (Tier-A Identity Registration)
+# Scope:           STANDARD authority · read + plan + execute + judge
+# Reversible:      delete this [actor.FI-008] block + remove the PEM file
+[actor.FI-008]
+short_name       = "FI-008"
+canonical_name   = "Kimi Code wargas FI-008"
+authority        = "STANDARD"
+public_key_path  = "/root/AAA/IDENTITY/keys/FI-008_public.pem"
+public_key_sha16 = "a1d4971c986c1642"
+allowed_verbs    = ["arif_init", "arif_observe", "arif_think", "arif_route", "arif_judge", "arif_seal"]
+denied_verbs     = ["arif_forge", "arif_act"]
+session_model    = "ephemeral_eval"
+calibration      = true
+calibration_note = "Tier-A identity envelope for judge_eval_run3; expires on session close; reversible."
+
