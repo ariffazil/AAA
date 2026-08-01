@@ -193,3 +193,8 @@ CONTRIBUTING.md
 # Runtime State Files (OpenClaw writes, Hermes reads)
 state/*.json
 state/*.tmp.json
+
+# F13 SOVEREIGN 2026-08-01: identity.toml backup from Tier-A registration
+IDENTITY/identity.toml.*.bak
+
+### existing content preserved above ###
