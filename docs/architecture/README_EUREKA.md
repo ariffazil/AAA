@@ -86,7 +86,7 @@ that show actual directory structure and data flow:
 
 ```
 arifOS/ (root)        ← LEGACY CONSTITUTIONAL ENGINE
-arifOS/arifosmcp/     ← MCP SHELL (port 8080)
+arifOS/arifosmcp/     ← MCP SHELL (port 8088)
 ```
 
 Better: the directory tree IS the architecture diagram.
@@ -109,7 +109,7 @@ of which is legacy vs current.
 ```
 ┌────────────────────────────────────────────────────┐
 │  arifOS/arifosmcp/       MCP Shell (interface)     │
-│  (port 8080)                                     │
+│  (port 8088)                                     │
 ├────────────────────────────────────────────────────┤
 │  arifOS/ (root)          Legacy Constitutional     │
 │  core/ + contracts/        Engine (original)      │
