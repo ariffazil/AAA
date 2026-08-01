@@ -56,8 +56,8 @@ team_seats:
       - "Round 4 (audit paste)"
       - "Round 5 (per-seat directive)"
       - "Round 8 (per-seat audit)"
-    rotation_status: "OVERDUE — must rotate before any live tool calls"
-    vault_status: "EMPTY — env var set but value not populated"
+    rotation_status: "OVERDUE — keys were wired from vault (QWEN_API_KEY); rotation pending Arif decision"
+    vault_status: "POPULATED 2026-08-01 — wired from QWEN_API_KEY (sk-sp-H.DIEXP), verified live (21 models)"
 
   - seat_id: "seat_b797ca6bde0f4eb3b614a19ed8f9c55e"
     masked_preview: "sk-sp-D.IEHM.El****d3BKNNLhP7SUQ=="
@@ -79,8 +79,8 @@ team_seats:
       - "Round 4 (audit paste)"
       - "Round 5 (per-seat directive)"
       - "Round 8 (per-seat audit)"
-    rotation_status: "OVERDUE"
-    vault_status: "EMPTY"
+    rotation_status: "OVERDUE — keys were wired from vault (QWEN_BAILIAN_KEY); rotation pending Arif decision"
+    vault_status: "POPULATED 2026-08-01 — wired from QWEN_BAILIAN_KEY (sk-sp-D.IPRH), verified live (21 models)"
 
   - seat_id: "seat_39bf2828dbc34f72b552ea0b617cb958"
     masked_preview: "sk-sp-D.IPRH.s5****88EmbAF2nFlgMk="
@@ -134,7 +134,7 @@ individual_seat:
     - "Round 1 (audit paste — masked preview only, safe)"
     - "Round 2 (full docs with ToS)"
   rotation_status: "ADVISED — Pro seat across 3 agents is novel pattern"
-  vault_status: "EMPTY"
+  vault_status: "POPULATED 2026-08-01 — wired to Pro seat key (QWEN_API_KEY), verified live"
 
 totals:
   team_seats: 3
