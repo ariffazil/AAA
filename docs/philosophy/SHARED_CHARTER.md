@@ -26,7 +26,7 @@
 
 | Component | Endpoint |
 |-----------|----------|
-| arifOS MCP (tools) | `http://localhost:8080` |
+| arifOS MCP (tools) | `http://localhost:8088` |
 | AAA A2A Gateway | `http://localhost:3001` (Bearer + x-a2a-key) |
 | Hermes ASI | reachable via AAA A2A |
 | OpenClaw ACP | `localhost:8090` |

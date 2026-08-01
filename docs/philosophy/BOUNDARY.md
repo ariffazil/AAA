@@ -36,7 +36,7 @@ scope: /
 
 | Source | What | Interface |
 |--------|------|-----------|
-| **arifOS** | Tool registry, floor status, session tokens, governance verdicts | MCP streamable-http (port 8080), `/api/status`, `/api/federation-probe` |
+| **arifOS** | Tool registry, floor status, session tokens, governance verdicts | MCP streamable-http (port 8088), `/api/status`, `/api/federation-probe` |
 | **A-FORGE** | Build artifacts, deploy status, release metadata | HTTP bridge (port 7071), GitHub releases |
 | **GEOX** | Earth-truth artifacts, prospect cards, spatial evidence | MCP mesh via A2A gateway |
 | **WEALTH** | Capital scores, decision memos, viability ratings | MCP mesh via A2A gateway |
