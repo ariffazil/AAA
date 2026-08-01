@@ -155,21 +155,21 @@
     },
     {
       "provider_id": "qwen-token-plan",
-      "provider_name": "Qwen Cloud Token Plan Individual Pro",
+      "provider_name": "Qwen Cloud Token Plan Team Edition",
       "jurisdiction": "CN (SG region endpoint)",
       "endpoint_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "anthropic_url": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/apps/anthropic",
       "api_key_ref": "secrets::QWEN_API_KEY",
-      "api_key_ref_note": "Rotated 2026-07-31. Old key preserved as secrets::QWEN_BAILIAN_KEY (20 models, fallback).",
-      "billing_model": "monthly_token_plan",
+      "api_key_ref_note": "Rotated 2026-08-01 (Team QWEN key sk-sp-H.DIEXP...). Old key preserved as secrets::QWEN_BAILIAN_KEY.",
+      "billing_model": "monthly_token_plan_team",
       "billing_cycle": "monthly",
-      "plan": "Individual Pro",
-      "plan_price_monthly": 68,
-      "plan_credits_7d": 40000,
-      "plan_credits_5hr": 12000,
-      "plan_concurrent_agents": 8,
+      "plan": "Team Edition",
+      "plan_price_monthly": null,
+      "plan_credits_7d": null,
+      "plan_credits_5hr": null,
+      "plan_concurrent_agents": null,
       "plan_spend_jul": 208.54,
-      "credit_packs": "5 × $15/20K Credits",
+      "credit_packs": "$700/pack/month, 625,000 Credits/pack",
       "portal": "https://home.qwencloud.com/api-keys",
       "docs": "https://docs.qwencloud.com/token-plan/personal/token-plan-personal",
       "data_retention_days": "unknown",
@@ -180,11 +180,21 @@
       "dialect_note": "Standard OpenAI-compatible /v1/chat/completions. No model name translation needed — use exact model IDs as returned by /v1/models.",
       "live_models_probed": [
         "deepseek-v4-pro",
+        "deepseek-v4-flash",
+        "deepseek-v4-flash-0731",
+        "qwen3.8-max-preview",
         "qwen3.7-max",
         "qwen3.7-plus",
         "qwen3.6-flash",
-        "qwen3.8-max-preview",
-        "glm-5.2"
+        "qwen3.6-plus",
+        "glm-5.2",
+        "glm-5.1",
+        "glm-5",
+        "kimi-k2.7-code",
+        "kimi-k2.6",
+        "kimi-k2.5",
+        "MiniMax-M2.5",
+        "deepseek-v3.2"
       ],
       "live_models_image": [
         "wan2.7-image",
@@ -215,9 +225,11 @@
         "One subscription per account",
         "Credits via tiered deduction coefficients per model"
       ],
-      "throttle_threshold_pct": 80,
-      "last_verified": "2026-07-31",
-      "note": "REGISTERED 2026-07-31. PRIMARY provider — route everything here first (RM0 marginal within plan). 9 text models + image/audio/video. Credit limits: 40K/7d + 12K/5hr. Promos: qwen3.8-max-preview 10x usage. Throttle at 80% of any window."
+      "last_verified": "2026-08-01",
+      "note": "KEY ROTATED 2026-08-01: Team QWEN token plan key (sk-sp-H.DIEXP...). TEAM EDITION — no 5hr/7day window limits, monthly quota per seat. 21 text models + image/audio/video. PRIMARY provider for OpenCode+Codex (RM0 marginal). Credit Packs: $700/625K credits.",
+      "plan_price_note": "Team Edition: Standard $20/seat, Pro $75/seat, Max $200/seat (limited-time pricing)",
+      "plan_quota_note": "Team Edition: MONTHLY quota only, NO 5hr/7day window limits. Standard 25K/mo, Pro 100K/mo, Max 250K/mo per seat.",
+      "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)"
     },
     {
       "provider_id": "minimax",
@@ -5155,22 +5167,22 @@
       "agent_name": "OpenCode",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek/deepseek-v4-pro",
-      "primary_provider": "deepseek",
+      "primary_model": "qwen-token-plan/deepseek-v4-pro",
+      "primary_provider": "qwen-token-plan",
       "fallback_chain": [
         {
           "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API — $12.63 balance, ZERO censorship, FFF SMOKE_PASS"
+          "note": "Direct DS API fallback — was primary before Token Plan reroute 2026-08-01"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "bailian-token-plan",
+          "provider": "deepseek",
           "priority": 2,
-          "cost": "token_plan",
-          "note": "Bailian fallback — same model, different gateway"
+          "cost": "prepaid",
+          "note": "Direct DS API — $12.63 balance, ZERO censorship, FFF SMOKE_PASS"
         },
         {
           "model_key": "kimi/k3",
@@ -5187,44 +5199,30 @@
           "note": "OpenRouter fallback for K3"
         },
         {
-          "model_key": "glm/glm-5.2",
-          "provider": "bailian-token-plan",
-          "priority": 5,
-          "cost": "token_plan",
-          "note": "Agentic coding specialist — FORGE fallback. MY censorship UNTESTED."
-        },
-        {
           "model_key": "mimo/mimo-v2.5-pro",
           "provider": "mimo-platform",
-          "priority": 6,
+          "priority": 5,
           "cost": "token_plan",
           "note": "1M ctx, deep thinking, no censorship"
         },
         {
           "model_key": "deepseek/deepseek-v4-flash",
           "provider": "deepseek",
-          "priority": 7,
+          "priority": 6,
           "cost": "prepaid",
           "note": "Fast, same architecture as Pro"
         },
         {
-          "model_key": "deepseek/deepseek-v4-flash",
-          "provider": "bailian-token-plan",
-          "priority": 8,
-          "cost": "token_plan",
-          "note": "Bailian fallback for Flash"
-        },
-        {
           "model_key": "gemini/gemini-2.5-flash",
           "provider": "gemini",
-          "priority": 9,
+          "priority": 7,
           "cost": "free",
           "note": "Free tier, 1M ctx, multimodal"
         },
         {
           "model_key": "ollama/qwen2.5:3b",
           "provider": "ollama",
-          "priority": 10,
+          "priority": 8,
           "cost": "free",
           "note": "Local — always available [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
           "requires": "local",
@@ -5283,48 +5281,43 @@
         "vision"
       ],
       "vision_provider": "mulerouter",
-      "vision_model": "mulerouter/qwen-vl-max"
+      "vision_model": "mulerouter/qwen-vl-max",
+      "primary_cost": "token_plan",
+      "primary_note": "Qwen Token Plan RM0 marginal — deepseek-v4-pro via SG endpoint"
     },
     {
       "agent_id": "forge",
       "agent_name": "FORGE (000Ω)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek/deepseek-v4-pro",
-      "primary_provider": "deepseek",
+      "primary_model": "qwen-token-plan/deepseek-v4-pro",
+      "primary_provider": "qwen-token-plan",
       "fallback_chain": [
         {
           "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API — $12.63"
+          "note": "Direct DS API fallback — was primary before Token Plan reroute 2026-08-01"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "bailian-token-plan",
+          "provider": "deepseek",
           "priority": 2,
-          "cost": "token_plan",
-          "note": "Bailian fallback"
-        },
-        {
-          "model_key": "glm/glm-5.2",
-          "provider": "bailian-token-plan",
-          "priority": 3,
-          "cost": "token_plan",
-          "note": "Agentic coding. MY censorship UNTESTED — FORGE only."
+          "cost": "prepaid",
+          "note": "Direct DS API — $12.63"
         },
         {
           "model_key": "kimi/k3",
           "provider": "kimi-moonshot",
-          "priority": 4,
+          "priority": 3,
           "cost": "monthly",
           "note": "2.8T MoE backup"
         },
         {
           "model_key": "deepseek/deepseek-v4-flash",
           "provider": "deepseek",
-          "priority": 5,
+          "priority": 4,
           "cost": "prepaid",
           "note": "Fast fallback"
         }
@@ -5374,29 +5367,31 @@
         "vision"
       ],
       "vision_provider": "mulerouter",
-      "vision_model": "mulerouter/qwen-vl-max"
+      "vision_model": "mulerouter/qwen-vl-max",
+      "primary_cost": "token_plan",
+      "primary_note": "Qwen Token Plan RM0 marginal — deepseek-v4-pro via SG endpoint"
     },
     {
       "agent_id": "auditor",
       "agent_name": "AUDITOR (Ψ)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek/deepseek-v4-pro",
-      "primary_provider": "deepseek",
+      "primary_model": "qwen-token-plan/deepseek-v4-pro",
+      "primary_provider": "qwen-token-plan",
       "fallback_chain": [
         {
           "model_key": "deepseek/deepseek-v4-pro",
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API — $12.63"
+          "note": "Direct DS API fallback — was primary before Token Plan reroute 2026-08-01"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "bailian-token-plan",
+          "provider": "deepseek",
           "priority": 2,
-          "cost": "token_plan",
-          "note": "Bailian fallback"
+          "cost": "prepaid",
+          "note": "Direct DS API — $12.63"
         },
         {
           "model_key": "mimo/mimo-v2.5-pro",
@@ -5451,29 +5446,31 @@
         ],
         "session_continuity": false,
         "self_reflection": false
-      }
+      },
+      "primary_cost": "token_plan",
+      "primary_note": "Qwen Token Plan RM0 marginal — deepseek-v4-pro via SG endpoint"
     },
     {
       "agent_id": "ops",
       "agent_name": "OPS (🌐)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "deepseek-v4-flash",
-      "primary_provider": "deepseek",
+      "primary_model": "qwen-token-plan/deepseek-v4-flash",
+      "primary_provider": "qwen-token-plan",
       "fallback_chain": [
         {
           "model_key": "deepseek/deepseek-v4-flash",
           "provider": "deepseek",
           "priority": 1,
           "cost": "prepaid",
-          "note": "Direct DS API — $0.14/$0.28"
+          "note": "Direct DS API fallback — was primary before Token Plan reroute 2026-08-01"
         },
         {
           "model_key": "deepseek/deepseek-v4-flash",
-          "provider": "bailian-token-plan",
+          "provider": "deepseek",
           "priority": 2,
-          "cost": "token_plan",
-          "note": "Bailian fallback"
+          "cost": "prepaid",
+          "note": "Direct DS API — $0.14/$0.28"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -5483,23 +5480,16 @@
           "note": "Pro fallback for complex ops"
         },
         {
-          "model_key": "glm/glm-5.2",
-          "provider": "bailian-token-plan",
-          "priority": 4,
-          "cost": "token_plan",
-          "note": "FORGE fallback"
-        },
-        {
           "model_key": "gemini/gemini-2.5-flash",
           "provider": "gemini",
-          "priority": 5,
+          "priority": 4,
           "cost": "free",
           "note": "Free tier"
         },
         {
           "model_key": "ollama/qwen2.5:3b",
           "provider": "ollama",
-          "priority": 6,
+          "priority": 5,
           "cost": "free",
           "note": "Local recovery [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
           "requires": "local",
@@ -5548,7 +5538,9 @@
         ],
         "session_continuity": false,
         "self_reflection": false
-      }
+      },
+      "primary_cost": "token_plan",
+      "primary_note": "Qwen Token Plan RM0 marginal — deepseek-v4-flash via SG endpoint"
     },
     {
       "agent_id": "planner",
@@ -6066,8 +6058,8 @@
       "agent_name": "Codex CLI",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "openai/gpt-5.6-sol",
-      "primary_provider": "tokenrouter",
+      "primary_model": "qwen-token-plan/deepseek-v4-pro",
+      "primary_provider": "qwen-token-plan",
       "fallback_chain": [
         {
           "model_key": "openai/gpt-5.6-sol",
@@ -6128,7 +6120,9 @@
       "route_assignments": {
         "primary": "gpt-5.6-sol@tokenrouter",
         "warning": "SHADOW-GPT-001: was bricked on OpenRouter. Switched to TR. GPT 5.6 via TR has not been tested for content truncation."
-      }
+      },
+      "primary_cost": "token_plan",
+      "primary_note": "Qwen Token Plan RM0 marginal — deepseek-v4-pro via SG endpoint"
     },
     {
       "agent_id": "grok",
