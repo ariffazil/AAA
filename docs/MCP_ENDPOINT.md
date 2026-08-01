@@ -1,6 +1,7 @@
 # MCP Endpoint Registry — Source of Truth
-# Updated: 2026-05-04
-# Author: ASI
+# Updated: 2026-08-01 (WEB-10-14 reconciliation)
+# Author: 333-AGI
+# Previous: 2026-05-04 (ASI) — stale Docker container names, wrong WEALTH/WELL ports, WELL marked OFFLINE
 
 ## Purpose
 Single source of truth for all MCP endpoints in the arifOS Federation.
@@ -17,11 +18,24 @@ Any divergence = immediate fix.
 | Name | arifOS Constitutional |
 | Public URL | `https://arifos.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
-| Internal | `http://arifosmcp:8088/mcp` |
-| Container port | 8080 |
-| Caddy route | `arifos.arif-fazil.com/mcp*` → `arifosmcp:8088` |
-| Tools | 13 canonical (arif_init → arif_ops_measure) |
+| Internal | `http://127.0.0.1:8088/mcp` |
+| Port | 8088 (bare-metal systemd) |
+| Caddy route | `arifos.arif-fazil.com/mcp*` → `127.0.0.1:8088` |
+| Tools | 8 canonical (arif_init → arif_seal) |
 | Auth | None (public) |
+| Status | ✅ HEALTHY |
+
+### A-FORGE (Federated Actuator)
+| Property | Value |
+|----------|-------|
+| Name | A-FORGE Engineering Shell |
+| Public URL | `https://mcp.arif-fazil.com/mcp` |
+| Transport | `streamable-http` |
+| Internal | `http://127.0.0.1:7072/mcp` |
+| Port | 7072 (MCP) / 7071 (API) — bare-metal systemd |
+| Caddy route | `mcp.arif-fazil.com/mcp*` → `127.0.0.1:7072` |
+| Tools | 114 (forge_* shell, filesystem, git, docker, browser, vault, etc.) |
+| Auth | SCT (Session Capability Token) |
 | Status | ✅ HEALTHY |
 
 ### GEOX (Earth Intelligence)
@@ -30,13 +44,12 @@ Any divergence = immediate fix.
 | Name | GEOX Earth Coprocessor |
 | Public URL | `https://geox.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
-| Internal | `http://geox_eic:8081/mcp` AND `/mcp/stream` (both routes) |
-| Container port | 8081 |
-| Caddy route | `geox.arif-fazil.com/mcp/*` → `geox_eic:8081/mcp/stream` |
-| Tools | 13 canonical geoscience tools |
+| Internal | `http://127.0.0.1:8081/mcp` |
+| Port | 8081 (bare-metal systemd) |
+| Caddy route | `geox.arif-fazil.com/mcp/*` → `127.0.0.1:8081` |
+| Tools | 32 canonical geoscience tools |
 | Auth | None (public) |
 | Status | ✅ HEALTHY |
-| Note | `/mcp` and `/mcp/stream` both work (same handler) |
 
 ### WEALTH (Capital Intelligence)
 | Property | Value |
@@ -44,36 +57,51 @@ Any divergence = immediate fix.
 | Name | WEALTH Capital Coprocessor |
 | Public URL | `https://wealth.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
-| Internal | `http://wealth-organ:8082/mcp` |
-| Container port | 8082 |
-| Caddy route | `wealth.arif-fazil.com/mcp` → `wealth-organ:8082/mcp` |
-| Tools | 79 (13 sovereign + 66 legacy aliases) |
+| Internal | `http://127.0.0.1:18082/mcp` |
+| Port | 18082 (bare-metal systemd) |
+| Caddy route | `wealth.arif-fazil.com/mcp` → `127.0.0.1:18082` |
+| Tools | 12 capital tools (compute-only) |
 | Auth | None (public) |
 | Status | ✅ HEALTHY |
 
-### WELL (Biological Substrate)
+### WELL (Vitality Mirror)
 | Property | Value |
 |----------|-------|
-| Name | WELL Biological Monitor |
+| Name | WELL Substrate Monitor |
 | Public URL | `https://well.arif-fazil.com/mcp` |
 | Transport | `streamable-http` |
-| Internal | `http://well:8083/mcp` |
-| Container port | 8083 |
-| Caddy route | `well.arif-fazil.com/mcp` → `well:8083/mcp` |
-| Tools | ~30 wellness/hardening tools |
+| Internal | `http://127.0.0.1:18083/mcp` |
+| Port | 18083 (bare-metal systemd) |
+| Caddy route | `well.arif-fazil.com/mcp` → `127.0.0.1:18083` |
+| Tools | 7 vitality tools (REFLECT_ONLY) |
 | Auth | None (public) |
-| Status | ⚠️ OFFLINE (removed from compose stack) |
+| Status | ⚠️ DEGRADED (biometric staleness; organ healthy) |
+
+### AAA (Control Plane / Cockpit)
+| Property | Value |
+|----------|-------|
+| Name | AAA Control Plane |
+| Public URL | `https://aaa.arif-fazil.com` |
+| Transport | A2A (JSON-RPC 2.0) |
+| Internal | `http://127.0.0.1:3001` |
+| Port | 3001 (bare-metal systemd) |
+| Caddy route | `aaa.arif-fazil.com` → `127.0.0.1:3001` |
+| Tools | A2A gateway (agent dispatch, organ probe, task polling) |
+| Auth | None (DISPLAY_ONLY) |
+| Status | ✅ HEALTHY |
 
 ---
 
 ## Endpoint Configuration Map
 
-| Service | openclaw.json url | Caddyfile route | server.py transport |
-|---------|------------------|-----------------|-------------------|
-| arifOS | `http://localhost:8088/mcp` | `arifos.arif-fazil.com/mcp*` | `streamable-http` |
-| GEOX | `https://geox.arif-fazil.com/mcp` | `geox.arif-fazil.com/mcp/*` | `streamable-http` |
-| WEALTH | `http://localhost:8082/mcp` | `wealth.arif-fazil.com/mcp` | `streamable-http` |
-| WELL | `https://well.arif-fazil.com/mcp` | `well.arif-fazil.com/mcp` | `streamable-http` |
+| Service | Internal URL | Public URL | Transport |
+|---------|-------------|-----------|-----------|
+| arifOS | `http://127.0.0.1:8088/mcp` | `https://arifos.arif-fazil.com/mcp` | `streamable-http` |
+| A-FORGE | `http://127.0.0.1:7072/mcp` | `https://mcp.arif-fazil.com/mcp` | `streamable-http` |
+| GEOX | `http://127.0.0.1:8081/mcp` | `https://geox.arif-fazil.com/mcp` | `streamable-http` |
+| WEALTH | `http://127.0.0.1:18082/mcp` | `https://wealth.arif-fazil.com/mcp` | `streamable-http` |
+| WELL | `http://127.0.0.1:18083/mcp` | `https://well.arif-fazil.com/mcp` | `streamable-http` |
+| AAA | `http://127.0.0.1:3001` | `https://aaa.arif-fazil.com` | A2A JSON-RPC 2.0 |
 
 ---
 
@@ -82,10 +110,11 @@ Any divergence = immediate fix.
 | Transport | Use Case | Client Support |
 |-----------|----------|----------------|
 | `streamable-http` | Public API, external clients, ChatGPT MCP | All modern MCP clients ✅ |
+| A2A JSON-RPC 2.0 | Agent-to-agent dispatch | AAA gateway |
 | `sse` | Legacy streamable-http v1 | Deprecated, avoid |
 | `stdio` | Local CLI only | Local tools only ❌ |
 
-**Rule: All public endpoints use `streamable-http`.**
+**Rule: All public endpoints use `streamable-http`. AAA uses A2A JSON-RPC 2.0.**
 
 ---
 
@@ -94,9 +123,11 @@ Any divergence = immediate fix.
 ```bash
 # All public endpoints
 curl -s --max-time 5 https://arifos.arif-fazil.com/health
+curl -s --max-time 5 https://mcp.arif-fazil.com/health
 curl -s --max-time 5 https://geox.arif-fazil.com/health
 curl -s --max-time 5 https://wealth.arif-fazil.com/health
 curl -s --max-time 5 https://well.arif-fazil.com/health
+curl -s --max-time 5 https://aaa.arif-fazil.com/health
 
 # MCP tool discovery (after initialize)
 curl -s --max-time 5 -X POST https://arifos.arif-fazil.com/mcp \
@@ -109,31 +140,9 @@ curl -s --max-time 5 -X POST https://arifos.arif-fazil.com/mcp \
 ## Chaos Prevention Rules
 
 1. **Before changing any MCP endpoint**: Update this registry FIRST
-2. **After changing openclaw.json**: Verify the URL matches this registry
-3. **After changing Caddyfile routes**: Verify the proxy target matches this registry
-4. **After changing server.py transport**: Update the transport column
-5. **After deploying a new container**: Run the health check commands above
-6. **Gateway health check**: `curl -s http://localhost:18789/health` — alert if P99 > 1000ms
+2. **After changing Caddyfile routes**: Verify the proxy target matches this registry
+3. **After deploying a new organ**: Run the health check commands above
+4. **Orangans run bare-metal systemd**, not Docker containers (supporting services only use Docker)
+5. **All internal URLs use 127.0.0.1** (LOCALHOST_IS_PASSWORD doctrine)
 
----
-
-## Gateway Event Loop Thresholds
-
-| P99 Delay | Status | Action |
-|-----------|--------|--------|
-| < 100ms | ✅ Healthy | None |
-| 100-500ms | 🟡 Elevated | Monitor |
-| 500-2000ms | 🔴 Warning | Investigate within 1 hour |
-| > 2000ms | 🚨 Critical | Restart gateway immediately |
-| > 10000ms | 💀 Choking | SIGUSR1 or kill + restart |
-
----
-
-## Maintenance Cron
-
-- Every 15 minutes: health check all public endpoints
-- Every 1 hour: check gateway event loop P99
-- Daily: verify openclaw.json URLs match registry
-- After any deployment: run full health check suite
-
-DITEMPA BUKAN DIBERI — Forged, not given.
+DITEMPA BUKAN DIBERI — Forged, not given. Reconciled 2026-08-01.
