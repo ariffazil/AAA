@@ -79,8 +79,8 @@ team_seats:
       - "Round 4 (audit paste)"
       - "Round 5 (per-seat directive)"
       - "Round 8 (per-seat audit)"
-    rotation_status: "OVERDUE — keys were wired from vault (QWEN_BAILIAN_KEY); rotation pending Arif decision"
-    vault_status: "POPULATED 2026-08-01 — wired from QWEN_BAILIAN_KEY (sk-sp-D.IPRH), verified live (21 models)"
+    rotation_status: "OVERDUE — rotation pending Arif decision (chat-exposed key, F11 CRITICAL)"
+    vault_status: "EMPTY 2026-08-01 — QWEN_OPENCLAW_API_KEY still placeholder in vault; seat NOT wired (OpenClaw)"
 
   - seat_id: "seat_39bf2828dbc34f72b552ea0b617cb958"
     masked_preview: "sk-sp-D.IPRH.s5****88EmbAF2nFlgMk="
@@ -102,8 +102,8 @@ team_seats:
       - "Round 4 (audit paste)"
       - "Round 5 (per-seat directive)"
       - "Round 8 (per-seat audit)"
-    rotation_status: "OVERDUE"
-    vault_status: "EMPTY"
+    rotation_status: "OVERDUE — keys were wired from vault (QWEN_BAILIAN_KEY / sk-sp-D.IPRH); rotation pending Arif decision"
+    vault_status: "POPULATED 2026-08-01 — wired from QWEN_BAILIAN_KEY (sk-sp-D.IPRH), verified 21 models; chat completion 429 throttled"
 
 individual_seat:
   masked_preview: "sk-sp-H.DIIYD.e****FaO4oIcIZUbnXlo"
