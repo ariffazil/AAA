@@ -1,0 +1,17 @@
+{
+  "report_type": "TREE777_999_WEEKLY_ANCHOR",
+  "agent": "apex",
+  "timestamp_utc": "2026-06-14T13:04:01Z",
+  "inputs": {
+    "health_report": "/root/AAA/wiki/_runtime/reports/tree777-health-apex-2026-06-14.json",
+    "promotion_review_report": "/root/AAA/wiki/_runtime/reports/tree777-promotion-review-apex-2026-06-12.json"
+  },
+  "summary": {
+    "markdown_files": 113,
+    "orphan_links": 36,
+    "proposed_total": 2
+  },
+  "anchor_receipt": "TREE777-999-apex-083b43ddc1c1dad1",
+  "anchor_hash": "083b43ddc1c1dad1ec83d2dbbe0434ebbbe6d8c9b914efb08ad826bf11e6cc2e",
+  "status": "SEALED_LOCAL_LEDGER"
+}

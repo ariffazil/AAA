@@ -1,0 +1,17 @@
+{
+  "report_type": "TREE777_999_WEEKLY_ANCHOR",
+  "agent": "opencode",
+  "timestamp_utc": "2026-05-31T15:39:01Z",
+  "inputs": {
+    "health_report": "/root/AAA/wiki/_runtime/reports/tree777-health-opencode-2026-05-31.json",
+    "promotion_review_report": "/root/AAA/wiki/_runtime/reports/tree777-promotion-review-opencode-2026-05-29.json"
+  },
+  "summary": {
+    "markdown_files": 112,
+    "orphan_links": 35,
+    "proposed_total": 2
+  },
+  "anchor_receipt": "TREE777-999-opencode-0bca2865c68a56d5",
+  "anchor_hash": "0bca2865c68a56d537a13fe6f10232b4c362e6f38f7e552a8a2d79ddd24be767",
+  "status": "SEALED_LOCAL_LEDGER"
+}
