@@ -2404,6 +2404,20 @@
       "owner": "AAA",
       "risk_tier": "medium",
       "description": "Trinity Design Seam v1.0 \u2014 two-plane design system for all ARIF sites."
+    },
+    {
+      "v3_name": "FORGE-context-compressor",
+      "status": "tombstone",
+      "primary_path": "FORGE-context-compress",
+      "primary_resolved": "/root/AAA/skills/FORGE-context-compress/SKILL.md",
+      "note": "Merged into FORGE-context-compress 2026-08-01 \u2014 near-duplicate bodies consolidated"
+    },
+    {
+      "v3_name": "FORGE-mcp-federation-ops",
+      "status": "tombstone",
+      "primary_path": "FORGE-mcp-ops",
+      "primary_resolved": "/root/AAA/skills/FORGE-mcp-ops/SKILL.md",
+      "note": "Merged into FORGE-mcp-ops 2026-08-01 \u2014 overlapping mcporter wrappers consolidated"
     }
   ],
   "reverse_disk_to_v3": {
