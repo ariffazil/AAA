@@ -1,0 +1,21 @@
+# AAA Control Plane Identity
+# Canonical: /root/AAA/identity.toml
+# Hash anchor for AAA A2A Gateway health endpoint
+
+[organ]
+id = "aaa"
+name = "AAA Control Plane"
+role = "cockpit"
+class = "CORE"
+port = 3001
+authority_ceiling = "DISPLAY_ONLY"
+
+[federation]
+position = "control-plane"
+a2a_gateway = true
+registry_home = true
+
+[doctrine]
+owner = "Muhammad Arif bin Fazil"
+sovereign_floor = "F13"
+motto = "DITEMPA BUKAN DIBERI"
