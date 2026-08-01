@@ -10,7 +10,7 @@
     "execution": "A-FORGE"
   },
   "github_contrast": {
-    "FORGE-github": "repository and GitHub transport operations",
+    "FORGE-github-ops": "repository and GitHub transport operations",
     "FORGE-ci-diagnose": "failing workflow evidence and root cause",
     "FORGE-issue-triage": "issue classification and priority",
     "FORGE-pr-review": "code correctness and regression review",
@@ -54,7 +54,7 @@
       "axis": "knowledge"
     },
     {
-      "name": "FORGE-github",
+      "name": "FORGE-github-ops",
       "axis": "github"
     },
     {
@@ -72,10 +72,6 @@
     {
       "name": "FORGE-pr-governance",
       "axis": "github"
-    },
-    {
-      "name": "FORGE-docker",
-      "axis": "ops"
     },
     {
       "name": "FORGE-vps-docker",
@@ -118,7 +114,7 @@
       "axis": "meta"
     },
     {
-      "name": "AGI-cross-agent-handoff",
+      "name": "FORGE-cross-agent-handoff",
       "axis": "a2a"
     },
     {
@@ -156,7 +152,9 @@
       "apex_verdict_hold",
       "ASI-agent-invariants",
       "FLAME-router",
-      "AGI-explorer-intelligence"
+      "AGI-explorer-intelligence",
+      "EUREKA777-paradox-resolution",
+      "identity-invariance"
     ],
     "forge_on_demand": [
       "FORGE-verify-runtime",
@@ -179,5 +177,5 @@
       "know-language"
     ]
   },
-  "_zen_note": "2026-07-31: Aligned to CANONICAL_SKILL_PROFILE.json. 28 canonical skills, 3 tiers. AAA Zen."
+  "_zen_note": "2026-08-01T02:18Z: P0 closed. Fix 1/3: duplicate FORGE-vps-docker removed (now 29 skills). Fix 2/3: identity-invariance symlink created at /root/.agents/skills/identity-invariance → warga/constitutional/identity-invariance. Fix 3/3: EUREKA777 + identity-invariance verified in constitutional tier (10 skills). All refs resolved."
 }

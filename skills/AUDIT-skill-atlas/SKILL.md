@@ -37,7 +37,7 @@ It does NOT execute, judge, or seal. It classifies, routes, and illuminates.
 
 **Iron rule:** AAA is the catalog. Harnesses are views. Do not invent parallel catalogs.
 
-**Ops skill:** `skill-unification` (AAA + mesh views) — alias/mesh/boot contract.
+**Ops skill:** `AGI-skill-unification` (AAA + mesh views) — alias/mesh/boot contract. NOTE: One-way reference. AGI-skill-unification references this atlas; this atlas does NOT reference back (P6 circular dependency resolved 2026-08-01).
 
 **Live atlas (T₁):** `/root/A-FORGE/forge_work/2026-07-12/GROK-CLI-AAA-SKILL-UNIFICATION-ATLAS.md`  
 **Current receipt:** `/root/forge_work/2026-07-15/AAA-SKILL-TOOL-RECONCILIATION.json`
