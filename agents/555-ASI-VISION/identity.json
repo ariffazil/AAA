@@ -1,0 +1,19 @@
+{
+  "agent_id": "555-ASI-VISION",
+  "actor_id": "555-ASI-VISION/FI-???",
+  "ed25519_pubkey_hex": "f9d6a25f47e3b8127c0a5192f3c8b1d94a7e6f5c3b8a2e1d4f7c9b6a5e8d3f2c",
+  "bound_to": "arif-fazil/F13",
+  "capabilities": [
+    "OBSERVE",
+    "REASON",
+    "PERCEIVE",
+    "ROUTE"
+  ],
+  "max_blast_radius": "T1",
+  "created_at": "2026-07-31T06:44:57+00:00",
+  "parent_lane": "555-ASI (Ω Core)",
+  "class": "SENSORY_GATE",
+  "autonomy": "T1_AUTO (read-only perception)",
+  "floor_scope": ["F2", "F4", "F7", "F9", "F11", "F12"],
+  "fingerprint": "555-AS-VISION-ZEN-FILL-2026-07-31"
+}
