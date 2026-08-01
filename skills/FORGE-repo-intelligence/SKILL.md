@@ -359,7 +359,7 @@ No agent should author, approve, and merge the same consequential change.
 
 This skill replaces several overlapping GitHub micro-skills. The registry must:
 1. Generate from active skill directories only — never resolve a retired path as active.
-2. `github-runbook` (in `_retired/ARCHIVE-github-runbook/`) must be removed from active registry.
+2. `github-runbook` (formerly in `_retired/ARCHIVE-github-runbook/`, now canonically `FORGE-github-workflow`) must be removed from active registry.
 3. `FORGE-pr-governance` dependency on `github-runbook` must be updated to `FORGE-repo-intelligence`.
 4. Version drift (ci-diagnose 1.0.0→1.1.0, issue-triage 1.0.0→1.1.0, pr-review 1.0.0→1.1.0) must be resolved in registry.
 
