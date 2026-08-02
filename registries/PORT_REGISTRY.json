@@ -175,6 +175,9 @@
     "oil-api":  {"port": 3457, "bind": "127.0.0.1", "proto": "http", "role": "Brent crude oil tracker API", "public_urls": ["https://wealth.arif-fazil.com/oil"]},
     "gas-api":  {"port": 3458, "bind": "127.0.0.1", "proto": "http", "role": "Natural gas tracker API", "public_urls": ["https://wealth.arif-fazil.com/gas"]}
   },
+  "knowledge_graph": {
+    "l5-search-api": {"port": 8001, "bind": "127.0.0.1", "proto": "http", "role": "FalkorDB knowledge graph query (L5)", "health": "/health", "systemd": "l5-search-api.service"}
+  },
   "mcp_tools": {
     "1mcp-serve": {"port": 3050, "bind": "127.0.0.1", "proto": "http", "role": "1mcp transport server (npm global)"}
   },
