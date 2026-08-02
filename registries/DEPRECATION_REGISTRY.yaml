@@ -1,0 +1,169 @@
+# DEPRECATION_REGISTRY.yaml — AAA Federation Tombstone for retired/superseded artifacts
+# Owner: AAA (Control Plane) under CANONICAL_REGISTRY_POLICY.yaml::categories.deprecation
+# Validator: aaa_drift_check.py — fail-closed when canonical file declares a registry in this list as not-tombstoned
+# Authoritative cross-ref: https://docs/deprecation-registry.json (predecessor, 9-entry; this file is the consolidated replacement)
+#
+# Forged 2026-08-02 by kimi-code/FI-008 + F13 ratification (F13::AAA_ENTROPY_REDUCTION round 2).
+# Doctrine: DITEMPA BUKAN DIBERI.
+
+version: 1
+generated_at: "2026-08-02T13:35:00Z"
+generated_by: "kimi-code/FI-008 + F13 ratification"
+authority: "ARIF F13 SOVEREIGN"
+supersedes:
+  - "docs/deprecation-registry.json (9 entries, 2026-06-22)"
+
+doctrine: |
+  When a registry, file, or contract is deprecated, its tombstone SHOULD live here.
+  No agent may decide deprecation by intuition. Load this file. Follow the precedence.
+  If a deprecation dispute cannot be resolved here, verdict = HOLD and escalate to F13.
+
+# ── CATEGORY PRECEDENCE ──
+# Within each category, earlier = retire first.
+
+categories:
+
+  # All model_registry / federation_models artifacts already absorbed by /root/.config/federation-models.json
+  model_registry_files:
+    description: "Predecessor model-registry artifacts (file-level retirement)"
+    entries:
+      - path: "registries/models/FEDERATION_MODEL.json"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "F13 ratification (F13::AAA_ENTROPY_REDUCTION)"
+        replaced_by: ".config/federation-models.json (symlink to AGENT_MODEL_MAP.json)"
+        receipt: "forge-models.json meta._meta.replaces"
+        shadow_state: "still on disk for back-compat; tolerate but do not write to"
+        deprecation_class: "ABSORBED"
+      - path: "registries/models/LEGACY_FEDERATION_MODEL_provider_routing.json.deprecated-2026-07-29"
+        deprecated_at: "2026-07-29"
+        deprecated_by: "ARIF F13 SOVEREIGN"
+        replaced_by: ".config/federation-models.json providers[]"
+        deprecation_class: "ABSORBED — filename carries the marker"
+      - path: "registries/models/pricing_tables.json"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "F13 ratification (F13::AAA_ENTROPY_REDUCTION)"
+        replaced_by: ".config/federation-models.json _meta.cost_per_1m_* fields"
+        deprecation_class: "MERGED — kept for back-compat"
+      - path: "registries/models/MODEL_TIERS.json"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "F13 ratification (F13::AAA_ENTROPY_REDUCTION)"
+        replaced_by: ".config/federation-models.json models[].tier field"
+        deprecation_class: "MERGED — kept for back-compat"
+
+  # AAA AGENTS REGISTRY hierarchy consolidation
+  agent_registry_files:
+    description: "Predecessor agent-identity artifacts consolidated into AGENTS_UNIFIED.yaml 2026-07-31"
+    entries:
+      - path: "registries/AAA_AGENTS_REGISTRY.json"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "333-AGI under F13 SOVEREIGN directive"
+        replaced_by: "registries/AGENTS_UNIFIED.yaml"
+        deprecation_class: "SUPERSEDED"
+      - path: "registries/AAA_FEDERATION_STATE.yaml"
+        deprecated_at: "2026-06-22"
+        deprecated_by: "self-declared DEPRECATED in header"
+        replaced_by: "registries/organs.yaml (machine twin)"
+        deprecation_class: "SELF-DEPRECATED"
+      - path: "registries/unified_agent_protocol.yaml"
+        deprecated_at: "2026-06-22"
+        deprecated_by: "self-declared DEPRECATED in header"
+        replaced_by: "registries/AGENTS_UNIFIED.yaml"
+        deprecation_class: "SELF-DEPRECATED"
+      - path: "AGENT_INDEX.json"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "self-tombstoned"
+        replaced_by: "registries/AGENTS_UNIFIED.yaml"
+        deprecation_class: "SELF-TOMBSTONED"
+      - path: "a2a/registry/agents.yaml"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "AGENTS_UNIFIED.yaml canonical supersession"
+        replaced_by: "registries/AGENTS_UNIFIED.yaml"
+        deprecation_class: "DERIVED-ONLY"
+
+  # Provider artifacts (currently live but expect sunset)
+  provider_artifacts:
+    description: "Provider entries expected to retire per 2026-08-02 cascade analysis"
+    entries:
+      - path: ".config/providers.yml"
+        deprecated_at: "2026-07-24"
+        deprecated_by: "F13 ratification — replaced by federation-models.json providers[]"
+        replaced_by: ".config/federation-models.json (provider_ref field per model)"
+        deprecation_class: "ABSORBED"
+      - path: "registries/LEGACY_FEDERATION_MODEL_lanes.json"
+        deprecated_at: "2026-07-31"
+        deprecated_by: "F13 ratification"
+        replaced_by: ".config/federation-models.json _meta.federation_state.cascade"
+        deprecation_class: "ABSORBED — eligible for archive"
+      - path: "providers.yml (symlink to .config/providers.yml)"
+        deprecated_at: "2026-07-24"
+        deprecated_by: "header DEPRECATED 2026-07-24 marker"
+        replaced_by: ".config/federation-models.json"
+        deprecation_class: "ABSORBED"
+
+  # Skill registries consolidated under registry/skills.yaml (canonical)
+  skill_registry_files:
+    description: "Skill registry tier consolidation"
+    entries:
+      - path: "skills/AAA_SKILL.md"
+        deprecated_at: "2026-06-23"
+        deprecated_by: "self-declared DRAFT, historical entropy reduction plan"
+        replaced_by: "registries/skills.yaml + 234 SKILL.md files"
+        deprecation_class: "DRAFT-ONLY"
+
+  # Models with active sunset/deprecation
+  sunset_models_2026:
+    description: "Provider/model entries flagged DEAD / DEPRECATING / SUNSET — kept here for cross-reference"
+    entries:
+      - provider: "cerebras"
+        sunset_at: "2026-08-20"
+        reason: "$5 free credit expires; 3 models (gpt-oss-120b, gemma-4-31b, zai-glm-4.7) will vanish from free tier"
+      - provider: "azure-openai"
+        status: "DEPRECATING"
+        reason: "Different cost center (ProCopilot credits); federation-models registry marks as DEPRECATING"
+      - provider: "openrouter"
+        status: "DEGRADED"
+        reason: "FREE tier saturated daily; FLAME cascade demoted to T10 fallback-only. 2026-08-02."
+      - provider: "tokenrouter"
+        status: "PARKED"
+        reason: "Drain $59.94 balance, no top-ups. SHADOW-TR-001 contamination — replace with direct Qwen Plan + OpenCode Go/Zen."
+      - model: "minimax/MiniMax-M2.5 (Zen copy)"
+        deprecated_at: "2026-08-05"
+        reason: "OpenCode Zen deprecation. Direct MiniMax M3 stays primary."
+      - model: "kimi/k2.5 (Zen copy)"
+        deprecated_at: "2026-08-05"
+        reason: "OpenCode Zen deprecation. kimi-k2.6 / kimi-k2.7-code / direct kimi-k3 remain."
+      - model: "MiniMax M2.5 (Qwen Plan copy)"
+        deprecated_at: "2026-08-05"
+        reason: "MiniMax M3 supersedes; M2.5 still callable via Zen."
+
+  # Subscription/cost signals
+  subscription_sunrises:
+    description: "Subscription state changes tracked outside of model_registry; reflected here for federation SOT"
+    entries:
+      - provider: "opencode-go"
+        status_at_2026_08_02: "ACTIVE (NEW this round)"
+        cost: "$5 first month / $10/mo flat; $60/mo aggregate cap"
+        f13_ack: "2026-08-02 (this round)"
+      - provider: "opencode-zen"
+        status_at_2026_08_02: "ACTIVE (NEW this round)"
+        cost: "PAYG + monthly cap (DISABLE auto-reload for im-miskin); 7 transient FREE models"
+        f13_ack: "2026-08-02 (this round)"
+      - provider: "minimax"
+        status_at_2026_08_02: "ACTIVE (corrected from KEYS_INVALID in live SOT)"
+        cost: "$0.30/$1.20 per 1M, cached $0.06"
+        f13_ack: "2026-08-02 (this round) — kimi-code session live evidence"
+        key_alive: "MINIMAX_PLUGIN_API_KEY (env verified)"
+
+# ── CONFLICT TIEBREAKER RULES ──
+tiebreakers:
+  - rule: "Earlier deprecated_at = retire first"
+    apply: "If two registries deprecation_dates differ, the older wins"
+  - rule: "Explicit DEPRECATED header marker beats filename"
+    apply: "A file with 'DEPRECATED' in its header is tombstoned regardless of whether registry lists it"
+  - rule: "F13 ratification is final"
+    apply: "No override without explicit F13 ACK token"
+
+# ── OWNER ORGAN ──
+owner_organ: "AAA (Control Plane)"
+validation_script: "scripts/aaa_drift_check.py"
+canonical_source: "registries/CANONICAL_REGISTRY_POLICY.yaml"
