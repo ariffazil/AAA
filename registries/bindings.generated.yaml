@@ -990,21 +990,21 @@ bindings:
   canonical_card: agent-cards/identity/888-APEX/agent-card.json
   identity_source: a2a/registry/agents.yaml
   skills:
-  - skill_id: apex_floor_check
+  - skill_id: arifos-constitutional-judge
     declared_by: agent-card
     confidence: inferred
     tools: []
     authority_gate: UNKNOWN
     organ: UNKNOWN
     verdict: UNKNOWN
-  - skill_id: apex_scope_check
+  - skill_id: arifos-constitutional-judge
     declared_by: agent-card
     confidence: inferred
     tools: []
     authority_gate: UNKNOWN
     organ: UNKNOWN
     verdict: UNKNOWN
-  - skill_id: apex_authority_check
+  - skill_id: arifos-constitutional-judge
     declared_by: agent-card
     confidence: inferred
     tools: []

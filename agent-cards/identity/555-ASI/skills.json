@@ -24,8 +24,8 @@
       "why": "AAA abstraction/attestation plane"
     },
     {
-      "id": "ASI-constitutional-reasoning",
-      "source": ".agents/skills/ASI-constitutional-reasoning",
+      "id": "arifos-constitutional-judge",
+      "source": ".agents/skills/arifos-constitutional-judge",
       "why": "F1-F13 floor logic"
     },
     {

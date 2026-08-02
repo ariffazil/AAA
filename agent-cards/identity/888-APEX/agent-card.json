@@ -54,8 +54,8 @@
   ],
   "skills": [
     {
-      "id": "apex_floor_check",
-      "name": "apex_floor_check",
+      "id": "arifos-constitutional-judge",
+      "name": "arifos-constitutional-judge",
       "description": "Run a full F1\u2013F13 floor audit on any action candidate",
       "tags": [
         "floor",
@@ -64,7 +64,7 @@
         "capability"
       ],
       "examples": [
-        "Demonstrate how to run apex_floor_check"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
         "text/plain",
@@ -75,8 +75,8 @@
       ]
     },
     {
-      "id": "apex_scope_check",
-      "name": "apex_scope_check",
+      "id": "arifos-constitutional-judge",
+      "name": "arifos-constitutional-judge",
       "description": "Ensure operations do not violate repository boundaries",
       "tags": [
         "scope",
@@ -85,7 +85,7 @@
         "capability"
       ],
       "examples": [
-        "Demonstrate how to run apex_scope_check"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
         "text/plain",
@@ -96,8 +96,8 @@
       ]
     },
     {
-      "id": "apex_authority_check",
-      "name": "apex_authority_check",
+      "id": "arifos-constitutional-judge",
+      "name": "arifos-constitutional-judge",
       "description": "Verify agent clearance level against the command ceiling",
       "tags": [
         "authority",
@@ -106,7 +106,7 @@
         "capability"
       ],
       "examples": [
-        "Demonstrate how to run apex_authority_check"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
         "text/plain",
@@ -432,8 +432,8 @@
       ]
     },
     {
-      "id": "apex_audit_coverage_check",
-      "name": "apex_audit_coverage_check",
+      "id": "arifos-constitutional-judge",
+      "name": "arifos-constitutional-judge",
       "description": "Ensure all active organs are emitting telemetry",
       "tags": [
         "audit",
@@ -442,7 +442,7 @@
         "capability"
       ],
       "examples": [
-        "Demonstrate how to run apex_audit_coverage_check"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
         "text/plain",
@@ -558,8 +558,8 @@
       ]
     },
     {
-      "id": "apex_verdict_seal",
-      "name": "apex_verdict_seal",
+      "id": "arifos-constitutional-judge",
+      "name": "arifos-constitutional-judge",
       "description": "Issue a SEAL verdict to commit actions to VAULT999",
       "tags": [
         "verdict",
@@ -568,7 +568,7 @@
         "capability"
       ],
       "examples": [
-        "Demonstrate how to run apex_verdict_seal"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
         "text/plain",
@@ -579,8 +579,8 @@
       ]
     },
     {
-      "id": "apex_verdict_hold",
-      "name": "apex_verdict_hold",
+      "id": "arifos-constitutional-judge",
+      "name": "arifos-constitutional-judge",
       "description": "Issue a HOLD verdict to halt execution pending review",
       "tags": [
         "verdict",
@@ -589,7 +589,7 @@
         "capability"
       ],
       "examples": [
-        "Demonstrate how to run apex_verdict_hold"
+        "Demonstrate how to run arifos-constitutional-judge"
       ],
       "inputModes": [
         "text/plain",

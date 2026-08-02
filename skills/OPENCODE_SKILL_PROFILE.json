@@ -102,11 +102,11 @@
       "axis": "asi"
     },
     {
-      "name": "apex_verdict_seal",
+      "name": "arifos-constitutional-judge",
       "axis": "apex"
     },
     {
-      "name": "apex_verdict_hold",
+      "name": "arifos-constitutional-judge",
       "axis": "apex"
     },
     {
@@ -148,8 +148,8 @@
       "KERNEL-trinity-33",
       "RSI-recursive-improvement",
       "atlas333-cognitive-geometry",
-      "apex_verdict_seal",
-      "apex_verdict_hold",
+      "arifos-constitutional-judge",
+      "arifos-constitutional-judge",
       "ASI-agent-invariants",
       "FLAME-router",
       "AGI-explorer-intelligence",

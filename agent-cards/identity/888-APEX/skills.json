@@ -9,23 +9,23 @@
   "skill_count": 24,
   "skills": [
     {
-      "id": "apex_verdict_seal",
-      "source": ".aaa/skills/apex_verdict_seal",
+      "id": "arifos-constitutional-judge",
+      "source": ".aaa/skills/arifos-constitutional-judge",
       "why": "ART→Kernel→ACT reflex arc"
     },
     {
-      "id": "apex_verdict_hold",
-      "source": ".aaa/skills/apex_verdict_hold",
+      "id": "arifos-constitutional-judge",
+      "source": ".aaa/skills/arifos-constitutional-judge",
       "why": "ART→Kernel→ACT reflex arc"
     },
     {
-      "id": "apex_authority_check",
-      "source": ".aaa/skills/apex_authority_check",
+      "id": "arifos-constitutional-judge",
+      "source": ".aaa/skills/arifos-constitutional-judge",
       "why": "Parallel-authority resolver"
     },
     {
-      "id": "apex_audit_coverage_check",
-      "source": ".aaa/skills/apex_audit_coverage_check",
+      "id": "arifos-constitutional-judge",
+      "source": ".aaa/skills/arifos-constitutional-judge",
       "why": "Six-organ audit"
     },
     {
@@ -39,13 +39,13 @@
       "why": "5-pass recursive audit"
     },
     {
-      "id": "apex_floor_check",
-      "source": ".aaa/skills/apex_floor_check",
+      "id": "arifos-constitutional-judge",
+      "source": ".aaa/skills/arifos-constitutional-judge",
       "why": "F1-F13 + 888_HOLD logic"
     },
     {
-      "id": "apex_scope_check",
-      "source": ".aaa/skills/apex_scope_check",
+      "id": "arifos-constitutional-judge",
+      "source": ".aaa/skills/arifos-constitutional-judge",
       "why": "F1-F13 + 888_HOLD logic"
     },
     {

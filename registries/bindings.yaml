@@ -67,12 +67,12 @@ bindings:
     identity_lane: true
     read_only: true  # NEVER mutates — physically castrated
     skills:
-      - apex_verdict_seal     # Verify ART→kernel→ACT evidence path
-      - apex_verdict_hold     # Constitutional HOLD path
-      - apex_floor_check      # F1-F13 floor evaluation
+      - arifos-constitutional-judge     # Verify ART→kernel→ACT evidence path
+      - arifos-constitutional-judge     # Constitutional HOLD path
+      - arifos-constitutional-judge      # F1-F13 floor evaluation
       - apex_reversibility_test  # Rollback validation
-      - apex_authority_check  # Conflicting SOT resolution
-      - apex_scope_check      # Task/organ/constitutional scope
+      - arifos-constitutional-judge  # Conflicting SOT resolution
+      - arifos-constitutional-judge      # Task/organ/constitutional scope
       - APEX-humility-godel   # Self-critique before SEAL-grade claims
       - APEX-fff-loop-protocol  # 5-pass recursive audit
     tools:
@@ -169,7 +169,7 @@ bindings:
       - observe-ground
       - COPILOT_ZEN_ROUTER
       - FORGE-route-least-power
-      - ASI-session-seal-copilot
+      - forge_vault
       - check-work
     tools:
       - arifos: [arif_init, arif_observe, arif_route]
