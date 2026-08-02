@@ -266,3 +266,31 @@ fi_slot_summary:
     id: null
     name: '[VACANT]'
     identity: null
+
+prompt_loop:
+  enabled: false
+  mode: observe_only
+  max_turns_default: 3
+  max_turns_absolute: 7
+  mutation_allowed: false
+  require_f13_override: true
+  require_delegated_sct: true
+  require_zen_gate: true
+  require_receipts: true
+  allowed_pairs:
+    - from: hermes
+      to: opencode
+      via: openclaw
+    - from: opencode
+      to: hermes
+      via: openclaw
+  halt_conditions:
+    - missing_sct
+    - missing_receipt_sink
+    - delta_s_lte_zero
+    - novelty_below_epsilon
+    - max_turns_exceeded
+    - repeated_error
+    - f13_override
+    - mutation_requested_without_seal
+
