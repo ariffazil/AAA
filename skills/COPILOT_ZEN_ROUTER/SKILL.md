@@ -59,14 +59,14 @@ These fire at session start via `BOOTSTRAP_MANIFEST.json`. You already have them
 | Skill | Trigger | Use Case |
 |-------|---------|----------|
 | `ASI-agent-invariants` | "is this safe", "check floors", "constitutional" | 10 invariants + 12 governance rules |
-| `ASI-constitutional-reasoning` | "apply F1-F13", "floor check", "governed action" | F1-F13 reasoning before any governed action |
+| `arifos-constitutional-judge` | "apply F1-F13", "floor check", "governed action" | F1-F13 reasoning before any governed action |
 | `ASI-mcp-governor` | "MCP routing", "tool authority", "governed MCP" | F1-F13 gated MCP routing |
 | `APEX-humility-godel` | "am I overconfident", "confidence check", "Gödel" | Self-critique before SEAL-grade claims |
 | `APEX-fff-loop-protocol` | "audit loop", "FFF loop", "recursive audit" | 5-pass recursive audit sequence |
 | `APEX-quantum-eureka` | "insight", "contradiction", "eureka moment" | Cross-domain synthesis |
 | `delta-omega-psi-multimodal-cognition` | "multimodal", "image + data", "cross-modal" | Δ·Ω·Ψ multimodal cognition rules |
 
-**When in doubt between these:** Start with `ASI-agent-invariants`, escalate to `ASI-constitutional-reasoning`.
+**When in doubt between these:** Start with `ASI-agent-invariants`, escalate to `arifos-constitutional-judge`.
 
 ---
 
@@ -276,8 +276,8 @@ These fire at session start via `BOOTSTRAP_MANIFEST.json`. You already have them
 
 | Skill | Trigger |
 |-------|---------|
-| `ASI-session-seal-copilot` | "seal session", "end session", "handoff" (Copilot specific) |
-| `ASI-session-seal` | "seal session", "end session" (general) |
+| `forge_vault` | "seal session", "end session", "handoff" (Copilot specific) |
+| `forge_vault` | "seal session", "end session" (general) |
 | `audit-seal` | "audit seal", "vault seal", "seal receipt" |
 | `AUDIT-recursive-audit` | "audit skills", "skill overlap", "skill portfolio" |
 | `AUDIT-drift-detector` | "check drift", "manifest drift", "registry drift" |
@@ -359,14 +359,14 @@ These fire at session start via `BOOTSTRAP_MANIFEST.json`. You already have them
 | `ASI-agentic-governance` | "AAA governance design", "AREP declaration" |
 | `ASI-fabrication-prevention` | "no hallucination", "verify before claim" |
 | `apex-formal-constitution` | "formal constitution", "constitutional law" |
-| `apex_audit_coverage_check` | "audit coverage", "test coverage audit" |
-| `apex_authority_check` | "authority check", "who can do this" |
-| `apex_floor_check` | "floor check", "F1-F13 check" |
+| `arifos-constitutional-judge` | "audit coverage", "test coverage audit" |
+| `arifos-constitutional-judge` | "authority check", "who can do this" |
+| `arifos-constitutional-judge` | "floor check", "F1-F13 check" |
 | `apex_reversibility_test` | "reversibility", "can we undo" |
-| `apex_scope_check` | "scope check", "blast radius" |
+| `arifos-constitutional-judge` | "scope check", "blast radius" |
 | `apex_tool_approval_gate` | "tool approval", "register tool" |
-| `apex_verdict_hold` | "HOLD verdict", "pause action" |
-| `apex_verdict_seal` | "SEAL verdict", "approve action" |
+| `arifos-constitutional-judge` | "HOLD verdict", "pause action" |
+| `arifos-constitutional-judge` | "SEAL verdict", "approve action" |
 | `asi_evidence_tier_express` | "evidence tier", "evidence classification" |
 | `asi_intent_hear` | "intent hearing", "understand intent" |
 | `asi_interface_adapt` | "interface adaptation", "adapt output" |

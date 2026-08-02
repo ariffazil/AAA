@@ -146,7 +146,7 @@
           "name": "APEX ACT \u2014 Constitutional Reflex (Hermes ASI)",
           "version": "0.0.0",
           "description": "Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the canonical ART\u2192Kernel\u2192ACT cycle and delivers it with RASA \u2014 Bahasa Malaysia warmth, visual routing, and open-weight",
-          "source_path": "skills/apex_verdict_hold/hermes/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/hermes/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
@@ -157,7 +157,7 @@
           "name": "APEX ACT \u2014 Constitutional Reflex (Hermes ASI)",
           "version": "0.0.0",
           "description": "Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the canonical ART\u2192Kernel\u2192ACT cycle and delivers it with RASA \u2014 Bahasa Malaysia warmth, visual routing, and open-weight",
-          "source_path": "skills/apex_verdict_seal/hermes/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/hermes/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
@@ -176,14 +176,14 @@
         },
         {
           "id": "apex-floor-check",
-          "name": "apex_floor_check",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Evaluate a proposed action against the arifOS F1-F13 constitutional floors and identify any failed gate. Use for governance changes, destructive operations, production deployment, secret handling, fed",
-          "source_path": "skills/apex_floor_check/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/apex_floor_check/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "apex-humility-godel",
@@ -201,7 +201,7 @@
           "name": "arifOS ACT \u2014 Constitutional Reflex",
           "version": "3.0.0",
           "description": "The complete constitutional reflex arc \u2014 ART (pre-kernel) \u2192 Kernel (F1-F13) \u2192 ACT (post-kernel execution). Load once. Apply always.",
-          "source_path": "skills/apex_verdict_hold/claude/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/claude/SKILL.md",
           "risk_tier": "critical",
           "status": "active",
           "functional_tags": [
@@ -215,7 +215,7 @@
           "name": "arifOS ACT \u2014 Constitutional Reflex",
           "version": "3.0.0",
           "description": "The complete constitutional reflex arc \u2014 ART (pre-kernel) \u2192 Kernel (F1-F13) \u2192 ACT (post-kernel execution). Load once. Apply always.",
-          "source_path": "skills/apex_verdict_seal/claude/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/claude/SKILL.md",
           "risk_tier": "critical",
           "status": "active",
           "functional_tags": [
@@ -252,14 +252,14 @@
         },
         {
           "id": "asi-constitutional-reasoning",
-          "name": "ASI-constitutional-reasoning",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Apply F1-F13 constitutional floor reasoning before any governed action. Evaluates reversibility, floor violations, 888_HOLD triggers, and signal priority. Priority 0 \u2014 evaluated before all other skill",
-          "source_path": "skills/ASI-constitutional-reasoning/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/ASI-constitutional-reasoning/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "asi-evidence-tier-express",
@@ -2069,25 +2069,25 @@
       "skills": [
         {
           "id": "apex-verdict-seal",
-          "name": "apex_verdict_seal",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Verify the complete ART-to-kernel-to-ACT evidence path before a SEAL-grade conclusion, without granting seal authority. Use when a proposed verdict claims readiness after all constitutional, witness, ",
-          "source_path": "skills/apex_verdict_seal/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/apex_verdict_seal/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "asi-session-seal",
-          "name": "ASI-session-seal",
+          "name": "forge_vault",
           "version": "2026.07.19",
           "description": "End-of-session seal ritual for Grok/AAA agents: inventory done vs open, write forge_work receipt, update session-state and daily memory, hand off next-agent INIT prompt. Use when: seal session, end of",
-          "source_path": "skills/ASI-session-seal/SKILL.md",
+          "source_path": "skills/forge_vault/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/ASI-session-seal/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/forge_vault/SKILL.md"
         },
         {
           "id": "audit-drift-detector",
@@ -2405,25 +2405,25 @@
         },
         {
           "id": "apex-audit-coverage-check",
-          "name": "apex_audit_coverage_check",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Audit whether every constitutional floor and federation organ has code enforcement, tests, bypass resistance, and trace coverage. Use for read-only F1-F13 audits, organ boundary reviews, cascade-risk ",
-          "source_path": "skills/apex_audit_coverage_check/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/apex_audit_coverage_check/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "apex-authority-check",
-          "name": "apex_authority_check",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Detect conflicting or parallel source-of-truth claims across federation repositories and resolve the canonical owner. Use after repository reorganization, when instructions conflict, or during federat",
-          "source_path": "skills/apex_authority_check/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/apex_authority_check/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "apex-formal-constitution",
@@ -2449,14 +2449,14 @@
         },
         {
           "id": "apex-scope-check",
-          "name": "apex_scope_check",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Check whether a proposed action stays within its declared task, organ, and constitutional scope. Use before cross-organ work, policy changes, production operations, secret handling, or any action whos",
-          "source_path": "skills/apex_scope_check/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/apex_scope_check/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "apex-tool-approval-gate",
@@ -2471,14 +2471,14 @@
         },
         {
           "id": "apex-verdict-hold",
-          "name": "apex_verdict_hold",
+          "name": "arifos-constitutional-judge",
           "version": "0.0.0",
           "description": "Apply the constitutional HOLD path when authority, evidence, system health, reversibility, or blast radius is insufficient. Use before irreversible actions, external communications, deployments, delet",
-          "source_path": "skills/apex_verdict_hold/SKILL.md",
+          "source_path": "skills/arifos-constitutional-judge/SKILL.md",
           "risk_tier": "low",
           "status": "active",
           "functional_tags": [],
-          "skill_md_path": "/root/.agents/skills/apex_verdict_hold/SKILL.md"
+          "skill_md_path": "/root/.agents/skills/arifos-constitutional-judge/SKILL.md"
         },
         {
           "id": "asi-agentic-architecture",

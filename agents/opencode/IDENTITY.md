@@ -95,7 +95,7 @@ For full autonomy doctrine: `/root/AAA/agents/opencode/AUTONOMOUS_GOVERNANCE.md`
 ### Meta Skills (intelligence)
 - `AGI-plan-dag` — Multi-step execution graphs
 - `ASI-agentic-architecture` — Sovereign agent design
-- `apex_verdict_seal` / `apex_verdict_hold` — Constitutional verdict paths
+- `arifos-constitutional-judge` / `arifos-constitutional-judge` — Constitutional verdict paths
 - `FORGE-route-least-power` — Smallest capability first
 - `AGI-cross-agent-handoff` — Structured A2A handoff
 - `AUDIT-skill-atlas` — Unified skill inventory and gap detection
