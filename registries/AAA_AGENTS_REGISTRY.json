@@ -1,11 +1,10 @@
-{ "_TOMBSTONE": "2026-07-31 — SUPERSEDED by /root/AAA/registries/AGENTS_UNIFIED.yaml. This file is FROZEN. No further regeneration.",
 {
   "$schema": "arifOS/AAA-agents-registry/v2.0.0",
   "$note": "DERIVED from registries/agents.yaml \u2014 agents.yaml is canonical source. Regenerate after any YAML change.",
   "agents": [
     {
       "id": "opencode",
-      "name": "OpenCode — Warga AAA (FI-001)",
+      "name": "OpenCode \u2014 Warga AAA (FI-001)",
       "citizenship": "warga-aaa",
       "intelligence_tier": "AGI",
       "role": "forge-instrument",
@@ -18,7 +17,7 @@
     },
     {
       "id": "kimi-code",
-      "name": "Kimi Code CLI — Warga AAA (FI-008)",
+      "name": "Kimi Code CLI \u2014 Warga AAA (FI-008)",
       "citizenship": "warga-aaa",
       "intelligence_tier": "AGI",
       "role": "forge-instrument",
@@ -141,7 +140,7 @@
     },
     {
       "id": "codex-cli",
-      "name": "Codex CLI — Warga AAA (FI-005)",
+      "name": "Codex CLI \u2014 Warga AAA (FI-005)",
       "citizenship": "warga-aaa",
       "intelligence_tier": "AGI",
       "role": "forge-instrument",
@@ -154,7 +153,7 @@
     },
     {
       "id": "grok-build",
-      "name": "Grok Build — Warga AAA (FI-007)",
+      "name": "Grok Build \u2014 Warga AAA (FI-007)",
       "citizenship": "warga-aaa",
       "intelligence_tier": "AGI",
       "role": "forge-instrument",
@@ -191,5 +190,6 @@
       "status": "active"
     }
   ],
-  "_metadata": {}
+  "_metadata": {},
+  "_TOMBSTONE": "2026-07-31 \u2014 SUPERSEDED by /root/AAA/registries/AGENTS_UNIFIED.yaml. This file is FROZEN. No further regeneration."
 }

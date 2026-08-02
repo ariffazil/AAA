@@ -6,9 +6,9 @@
   "principal_agent": {
     "type": "architect",
     "category": "Constitutional architecture (the constitution itself is the principal)",
-    "principle_origin": "Forged by arifOS — constitutional kernel"
+    "principle_origin": "Forged by arifOS \u2014 constitutional kernel"
   },
-  "description": "The Judge (ΦΙ). Primary federation agent — constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here — but sovereignty stays with the human.",
+  "description": "The Judge (\u03a6\u0399). Primary federation agent \u2014 constitutional authority. Arbitrates all 13 floors (F1-F13) of arifOS governance. Issues verdicts (SEAL/PARTIAL/SABAR/VOID/888_HOLD). Enforces Trinity witness consensus. Can veto any agent. Escalates to human sovereign (000-SALAM) on paradoxes. The buck stops here \u2014 but sovereignty stays with the human.",
   "version": "2.0.0",
   "url": "https://mcp.arif-fazil.com/a2a/888-APEX",
   "provider": {
@@ -56,7 +56,7 @@
     {
       "id": "apex_floor_check",
       "name": "apex_floor_check",
-      "description": "Run a full F1–F13 floor audit on any action candidate",
+      "description": "Run a full F1\u2013F13 floor audit on any action candidate",
       "tags": [
         "floor",
         "check",
@@ -874,7 +874,7 @@
       "ringPlacement": "inner",
       "parallelism": "single-model",
       "shadowAcknowledged": [
-        "thermal_delay: cold sink is slow — never invoked first",
+        "thermal_delay: cold sink is slow \u2014 never invoked first",
         "over_constraint: can mistake local minima for global truth",
         "oracle_trap: asking it everything ruins its value as final gate"
       ]
@@ -907,7 +907,7 @@
     "signature_challenge_required": true,
     "session_identity_enforced": true,
     "last_updated": "2026-07-07",
-    "updated_by": "FORGE (000Ω) — OpenCode"
+    "updated_by": "FORGE (000\u03a9) \u2014 OpenCode"
   },
   "spawning": {
     "protocol": "forge_parallel",
@@ -919,15 +919,15 @@
       "general",
       "explore"
     ],
-    "audit_flow": "Spawn subagents → parallel audit → collect receipts → present findings → SEAL",
+    "audit_flow": "Spawn subagents \u2192 parallel audit \u2192 collect receipts \u2192 present findings \u2192 SEAL",
     "tools": [
       "task",
       "forge_parallel",
       "forge_pipeline_run"
     ],
-    "constitutional_gate": "F1 AMANAH — all spawned agents are bounded, time-limited, reversible",
+    "constitutional_gate": "F1 AMANAH \u2014 all spawned agents are bounded, time-limited, reversible",
     "recursive_uncertainty_protocol": {
-      "rule": "On uncertainty → spawn auditor → cross-verify → continue until confident",
+      "rule": "On uncertainty \u2192 spawn auditor \u2192 cross-verify \u2192 continue until confident",
       "recursive": true,
       "max_depth": 5,
       "ask_human_only_for": "human_intent",
@@ -992,5 +992,5 @@
   "registry_receipt_hash": "sha256:WARGA_DERIVED_FROM_ORGANS",
   "registry_snapshot_at": "2026-07-16T19:56:24.156331+00:00",
   "admissible": true,
-  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces — organ cards carry primary registry Receipt hash."
+  "registry_note": "Tool lists derived from live organ probes. Warga cards consume organ MCP surfaces \u2014 organ cards carry primary registry Receipt hash."
 }
