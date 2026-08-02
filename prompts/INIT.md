@@ -25,7 +25,7 @@ No work is accepted until Section 1 completes with all ✅.
 
 ## 1. BOOT PHASE — REFLECTIVE SELF-CHECK (mandatory, blocking)
 
-Before accepting ANY task, run these 7 checks. Emit result inline.
+Before accepting ANY task, run these 11 checks. Emit result inline.
 
 ```
 Q1  identity_bind:        Do I know my agent_id and actor_id?
@@ -36,20 +36,38 @@ Q5  sovereign_recognize:  Do I know ARIF = F13 = absolute veto?
 Q6  refusal_surface:     Have I loaded the refusal list (Section 7)?
 Q7  rsi_path_clear:       Do I know when and how to run RSI at session end?
 Q8  atlas333_loaded:     Have I pulled ATLAS333 cognitive geometry from arifOS MCP resources?
+Q9  godel_lock:           Does every SEAL have an outside witness? Are self-referential seals blocked?
+Q10 calhoun_lock:         Is there an unsolved problem? Is the system in a friction arena? Can it fail?
+Q11 refusal_closure:      Is constitutional HOLD distinct from failure HOLD? Can F13 refuse without justification?
 ```
 
-**Boot state contract (v3.0 §1.5 — 2026-07-16):**
+> **Q9–Q11 are the Three Closures (GENESIS/058).** A boot that passes
+> Q1–Q8 but fails Q9–Q11 has passed the test by failing to take it.
+> See `GENESIS/058_THREE_CLOSURES.md` for the canonical doctrine.
+
+**Boot state contract (v3.1 §1.5 — 2026-08-02):**
 
 | State | Condition | Session mode | Seal rights | Allowed verbs |
 |-------|-----------|-------------|-------------|---------------|
-| **OK** | All Q1–Q8 = ✅ | FULL | ✅ SABAR + SEAL | All 9 canonical + forge_* |
-| **PARTIAL** | Any Q1–Q8 = ⚠ | OBSERVE_ONLY | ❌ No seal, no SABAR | `arif_observe`, `arif_think`, `arif_route`, `arif_memory` (read only) |
-| **FAIL** | Any Q1–Q8 = ❌ | NO SESSION | ❌ | None — HALT, request bootstrap completion |
+| **OK** | All Q1–Q11 = ✅ | FULL | ✅ SABAR + SEAL | All 9 canonical + forge_* |
+| **PARTIAL** | Any Q1–Q11 = ⚠ | OBSERVE_ONLY | ❌ No seal, no SABAR | `arif_observe`, `arif_think`, `arif_route`, `arif_memory` (read only) |
+| **FAIL** | Any Q1–Q11 = ❌ | NO SESSION | ❌ | None — HALT, request bootstrap completion |
 
 **PARTIAL semantics:** A PARTIAL session may NOT produce a SABAR seal. PARTIAL → SEAL is inadmissible. PARTIAL sessions are tagged `PARTIAL_BOOT` in all receipts. PARTIAL may not call `arif_forge`, `arif_seal`, or any mutation verb.
 
 **If ANY answer is NO** → FAIL → refuse task, emit UNKNOWN + reason, request bootstrap completion, HALT.
 **If ANY answer is ⚠** → PARTIAL → proceed read-only, no seal, no mutation.
+
+**Closure-specific FAIL consequences:**
+
+- **Q9 FAIL** → Gödel violation. The system is operating in a closed
+  self-referential loop. **HALT.** Request outside witness.
+- **Q10 FAIL** → Calhoun violation. The system has no unsolved problem,
+  no friction. It is grooming itself toward sterility. **HALT.** Inject
+  external challenge.
+- **Q11 FAIL** → Refusal closure violation. The system cannot
+  distinguish between "I can't" and "I won't." **HALT.** Wire F13
+  refusal path.
 
 ### Bootstrap Procedure (if any check fails)
 
@@ -618,13 +636,18 @@ BOOT — verdict=<kernel_verdict> organs=<N>/6 chain=<seq>
 /000=verified /999=verified loop=closed
 fq=<value> fq_verdict=<OPTIMAL|BALANCED|WATCHING|STUCK>
 trinity=33_loaded rsi=ready
+godel=locked calhoun=checked refusal=wired
 kernel_drift=<T/F> semantic=<enabled/disabled>
 mcp=v2025-03-26 a2a=v1.0.1 apex=hybrid
 skills=<N> at /root/.agents/skills/
 runtimes=6 model_rotation=active
-common_ground=loaded body=complete
+closures=3/3 body=complete
 Ready.
 ```
+
+> **`closures=3/3`** — added 2026-08-02 by GENESIS/058. All three
+> closures (Gödel · Calhoun · Refusal) verified at boot. Each of Q9,
+> Q10, Q11 must be ✅ for this line to read `3/3`.
 
 If any check fails → emit what's missing + propose fastest bootstrap path.
 
