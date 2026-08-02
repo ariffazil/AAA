@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PromptLoopEnvelope",
+  "type": "object",
+  "required": [
+    "loop_id",
+    "turn_id",
+    "parent_turn_id",
+    "from_agent",
+    "to_agent",
+    "via_agent",
+    "prompt",
+    "context_ref",
+    "sct_ref",
+    "receipt_ref",
+    "entropy_receipt_ref",
+    "max_turns",
+    "mutation_allowed",
+    "f13_override_available",
+    "verdict",
+    "created_at"
+  ],
+  "properties": {
+    "loop_id": {
+      "type": "string",
+      "pattern": "^loop_[0-9]{8}_[a-f0-9]{8}$"
+    },
+    "turn_id": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 7
+    },
+    "parent_turn_id": {
+      "type": ["string", "null"]
+    },
+    "from_agent": {
+      "type": "string",
+      "enum": ["hermes", "openclaw", "opencode"]
+    },
+    "to_agent": {
+      "type": "string",
+      "enum": ["hermes", "openclaw", "opencode"]
+    },
+    "via_agent": {
+      "type": "string",
+      "enum": ["openclaw", "aaa-a2a"]
+    },
+    "prompt": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16000
+    },
+    "context_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sct_ref": {
+      "type": "string",
+      "pattern": "^sct_v1\\..*"
+    },
+    "receipt_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entropy_receipt_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "max_turns": {
+      "type": "integer",
+      "default": 3,
+      "minimum": 1,
+      "maximum": 7
+    },
+    "mutation_allowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "f13_override_available": {
+      "type": "boolean",
+      "const": true
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["UNKNOWN", "CONTINUE", "SABAR", "HOLD", "SEAL", "VOID"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
