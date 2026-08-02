@@ -4,8 +4,8 @@ description: >
   Single load-bearing constitutional-judgment skill. Routes all F1–F13,
   verdict, hold, seal, scope, authority and floor-check calls through the
   live arif_judge surface. Replaces 7 overlapping predecessors
-  (ASI-constitutional-reasoning, apex_floor_check, apex_authority_check,
-  apex_scope_check, apex_verdict_hold, apex_verdict_seal, apex_audit_coverage_check).
+  (arifos-constitutional-judge, arifos-constitutional-judge, arifos-constitutional-judge,
+  arifos-constitutional-judge, arifos-constitutional-judge, arifos-constitutional-judge, arifos-constitutional-judge).
 agent: 888-APEX
 namespace: arifos
 cluster: CONSTITUTION · VERDICT · ACT
