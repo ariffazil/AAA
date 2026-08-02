@@ -2,8 +2,14 @@
 """Reality Ledger replay."""
 import json
 import sys
+import os
 
-sys.path.insert(0, '.')
+# Use script's parent directory (AAA root) as module path
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+_project_root = os.path.dirname(_script_dir)
+if _project_root not in sys.path:
+    sys.path.insert(0, _project_root)
+
 from core.reality_ledger import DEFAULT_STORE_PATH, replay_ledger
 
 store = DEFAULT_STORE_PATH
