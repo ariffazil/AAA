@@ -179,6 +179,18 @@
       "receipt": true,
       "auth": "gateway_key",
       "description": "AAA gateway routes multi-agent tasks to OpenClaw"
+    },
+    {
+      "from": "333-AGI",
+      "to": "hermes-asi",
+      "when": "fact check, epistemic check, plan review, tri-witness, federation health probe",
+      "method": "sendTask",
+      "receipt": true,
+      "auth": "session_token",
+      "description": "333-AGI delegates fact-checking and epistemic review to Hermes via A2A listener on :18089",
+      "endpoint": "http://127.0.0.1:18089/a2a",
+      "added": "2026-08-02T16:16Z",
+      "added_by": "333-AGI"
     }
   ],
   "task_lifecycle": {

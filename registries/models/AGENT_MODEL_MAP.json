@@ -4,11 +4,11 @@
     "schema_version": "2.1.0",
     "forged": "2026-07-31",
     "forged_by": "333-AGI — Qwen Token Plan Pro activation",
-    "ingest_note": "2026-07-31: Qwen Token Plan Individual Pro activated. Key rotated (sk-sp-H...). Plan: $68/mo, 40K Credits/7d, 12K Credits/5hr, 6-8 concurrent agents. 9 text models + image/audio/video. PRIMARY provider — route everything here first (RM0 marginal within plan). Agent models updated: 555-ASI→qwen3.6-flash, 888-APEX→glm-5.2. Hermes model-picker updated. opencode.json qwen-token-plan provider added.\n\n=== 2026-08-02 ENTROPY-REDUCTION ROUND 2 (kimi-code/FI-008) ===\nF13 ratification ARIF acknowledged: SEAL all + commit OpenCode Go + lift Claude block.\nFIXED: minimax status KEYS_INVALID -> ACTIVE — verified via MINIMAX_PLUGIN_API_KEY probe (kimi-code session running live).\nADDED: opencode-go provider — 17 PAID models under $10/mo flat for $60/mo aggregate usage. endpoint https://opencode.ai/zen/go/v1/. Adapter via OPENCODE_GO_API_KEY.\nADDED: opencode-zen provider — 50+ models, PAYG plus 7 transient FREE models (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). endpoint https://opencode.ai/zen/v1/.\nFIXED: 4 mulerouter VL model entries missing status/provider_ref — added.\nFIXED: duplicate model_key kimi/kimi-for-coding — disambiguated second as 'bailian-token-plan/kimi-for-coding'.\nADDED usage_signal field (opencode.ai/data Jun 8 -> Aug 2, 19T tokens observed):\n  - deepseek-v4-flash 14T tokens, +21% MoM (king)\n  - kimi-k3 301B, +32% MoM (rising)\n  - hy3 59B, +110% MoM (Tencent — keep-window)\n  - glm-5.2 606B, -29% MoM (declining)\n  - minimax-m3 581B, -17% MoM (still WAJIB daily driver)\n  - cache ratio observed: 95% (219.2B cached vs 11.2B uncached)\nLIFTED arifOS kernel CLAUDE BLOCK via arifOS model_registry.json — block was on kernel-context wiring, not the model itself; agents via non-kernel paths can use Claude.\nSUNSET cerebras 2026-08-20 (~18 days). DEMOTED openrouter :free → DEGRADED in FLAME cascade (197-200/200 daily cap hit today). PARKED tokenrouter — drain $59.94, no more top-ups; SHADOW-TR-001 documents max_tokens cap contamination.\nCASCADE updated: opencode-zen(FREE) → opencode-go($10/mo, $60 cap) → qwen-token-plan (individual pro $68/mo, RM0 marginal) → minimax direct → deepseek direct → kimi-moonshot direct → bailian-token-plan → groq(gemini)(sea-lion)(ollama) → HOLD.",
+    "ingest_note": "2026-07-31: Qwen Token Plan Individual Pro activated. Key rotated (sk-sp-H...). Plan: $68/mo, 40K Credits/7d, 12K Credits/5hr, 6-8 concurrent agents. 9 text models + image/audio/video. PRIMARY provider — route everything here first (RM0 marginal within plan). Agent models updated: 555-ASI→qwen3.6-flash, 888-APEX→glm-5.2. Hermes model-picker updated. opencode.json qwen-token-plan provider added.\n\n=== 2026-08-02 ENTROPY-REDUCTION ROUND 2 (kimi-code/FI-008) ===\nF13 ratification ARIF acknowledged: SEAL all + commit OpenCode Go + lift Claude block.\nFIXED: minimax status KEYS_INVALID -> ACTIVE — verified via MINIMAX_PLUGIN_API_KEY probe (kimi-code session running live).\nADDED: opencode-go provider — 17 PAID models under $10/mo flat for $60/mo aggregate usage. endpoint https://opencode.ai/zen/go/v1/. Adapter via OPENCODE_GO_API_KEY.\nADDED: opencode-zen provider — 50+ models, PAYG plus 7 transient FREE models (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). endpoint https://opencode.ai/zen/v1/.\nFIXED: 4 mulerouter VL model entries missing status/provider_ref — added.\nFIXED: duplicate model_key kimi/kimi-for-coding — disambiguated second as 'bailian-token-plan/kimi-for-coding'.\nADDED usage_signal field (opencode.ai/data Jun 8 -> Aug 2, 19T tokens observed):\n  - deepseek-v4-flash 14T tokens, +21% MoM (king)\n  - kimi-k3 301B, +32% MoM (rising)\n  - hy3 59B, +110% MoM (Tencent — keep-window)\n  - glm-5.2 606B, -29% MoM (declining)\n  - minimax-m3 581B, -17% MoM (still WAJIB daily driver)\n  - cache ratio observed: 95% (219.2B cached vs 11.2B uncached)\nLIFTED arifOS kernel CLAUDE BLOCK via arifOS model_registry.json — block was on kernel-context wiring, not the model itself; agents via non-kernel paths can use Claude.\nSUNSET cerebras 2026-08-20 (~18 days). DEMOTED openrouter :free → DEGRADED in FLAME cascade (197-200/200 daily cap hit today). PARKED tokenrouter — drain $59.94, no more top-ups; SHADOW-TR-001 documents max_tokens cap contamination.\nCASCADE updated: opencode-zen(FREE) → opencode-go($10/mo, $60 cap) → qwen-token-plan (individual pro $68/mo, RM0 marginal) → minimax direct → deepseek direct → kimi-moonshot direct → bailian-token-plan → groq(gemini)(sea-lion)(ollama) → HOLD.\n\n=== 2026-08-02 ZEN FED for Hermes (F13::FED_UNIFIED round 3) ===\nHermes registered as first FED-citizen agent. Two ZEN edits:\n  + models[]: qwen/qwen3.7-plus added (route: qwen-token-plan, $0.40/$1.60, vision+text) — was in env QWEN_DEFAULT_MODEL but not yet in SOT.\n  ~ agents[]: Hermes entry corrected — primary qwen/qwen3.7-plus via Qwen Plan Pro (RM0 within plan), fallback deepseek-v4-pro direct. Stale 7-entry fallback chain removed.\nZero new code. Day-2: SOT resolver; Day-3: Hermes-CLI anthropic_messages routing bug fix.",
     "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
     "federation_state": {
       "providers": 20,
-      "models": 93,
+      "models": 94,
       "agents": 14,
       "openrouter_models": 6,
       "openrouter_routers": 3,
@@ -5159,6 +5159,40 @@
       "last_verified": "2026-08-02",
       "source": "opencode-zen",
       "note": "Same as Anthropic intro — only via Zen if monthly cap useful"
+    },
+    {
+      "model_key": "qwen/qwen3.7-plus",
+      "model_alias": "qwen3.7-plus",
+      "model_family": "Qwen 3.7 Plus",
+      "model_variant": "plus",
+      "provider_ref": "qwen-token-plan",
+      "also_available_via": [
+        "opencode-go"
+      ],
+      "context_window": 262144,
+      "max_output_tokens": 131072,
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic",
+        "vision_understanding"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 0.4,
+      "cost_per_1m_output": 1.6,
+      "cost_per_1m_input_cache_hit": 0.04,
+      "cost_notes": "Direct Qwen Token Plan / OpenCode Go / OpenCode Zen — all $0.40/$1.60 per 1M. RM0 marginal within Qwen Plan Pro $68/mo plan.",
+      "live_evidence": "env QWEN_DEFAULT_MODEL=qwen3.7-plus; QWEN_HEALTH_URL=SG",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "note": "Hermes default model. RM0 marginal within Qwen Plan Pro $68/mo. Also callable via opencode-go @ same price + Zen free-tier promotion. multimodal: vision understanding + text.",
+      "_registered_at": "2026-08-02",
+      "_registered_by": "kimi-code/FI-008 (F13::FED_UNIFIED round 3)"
     }
   ],
   "shadows": [
@@ -6124,67 +6158,36 @@
       "agent_name": "OpenCode",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "qwen-token-plan/deepseek-v4-pro",
-      "primary_provider": "qwen-token-plan",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek",
       "fallback_chain": [
         {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "deepseek",
+          "model_key": "qwen-token-plan/deepseek-v4-pro",
+          "provider": "qwen-token-plan",
           "priority": 1,
-          "cost": "prepaid",
-          "note": "Direct DS API fallback — was primary before Token Plan reroute 2026-08-01"
+          "cost": "token_plan",
+          "note": "Qwen TP RM0 marginal — switched from primary to fallback 2026-08-02 per F13 directive"
         },
         {
           "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "deepseek",
+          "provider": "opencode-go",
           "priority": 2,
-          "cost": "prepaid",
-          "note": "Direct DS API — $12.63 balance, ZERO censorship, FFF SMOKE_PASS"
+          "cost": "subscription",
+          "note": "OpenCode Go $10/mo flat"
         },
         {
-          "model_key": "kimi/k3",
-          "provider": "kimi-moonshot",
+          "model_key": "deepseek/deepseek-v4-pro",
+          "provider": "tokenrouter-arifos",
           "priority": 3,
-          "cost": "monthly",
-          "note": "2.8T MoE, vision, 1M ctx — direct Kimi API"
-        },
-        {
-          "model_key": "kimi/k3",
-          "provider": "openrouter",
-          "priority": 4,
           "cost": "prepaid",
-          "note": "OpenRouter fallback for K3"
+          "note": "TokenRouter — PARKED, drain $59.94"
         },
         {
-          "model_key": "mimo/mimo-v2.5-pro",
-          "provider": "mimo-platform",
-          "priority": 5,
-          "cost": "token_plan",
-          "note": "1M ctx, deep thinking, no censorship"
-        },
-        {
-          "model_key": "deepseek/deepseek-v4-flash",
-          "provider": "deepseek",
-          "priority": 6,
-          "cost": "prepaid",
-          "note": "Fast, same architecture as Pro"
-        },
-        {
-          "model_key": "gemini/gemini-2.5-flash",
-          "provider": "gemini",
-          "priority": 7,
-          "cost": "free",
-          "note": "Free tier, 1M ctx, multimodal"
-        },
-        {
-          "model_key": "ollama/qwen2.5:3b",
+          "model_key": "ollama/qwen2.5-coder:3b",
           "provider": "ollama",
-          "priority": 8,
+          "priority": 4,
           "cost": "free",
-          "note": "Local — always available [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
-          "requires": "local",
-          "local_model": "qwen2.5:3b",
-          "model_digest": null
+          "note": "Local recovery — always available"
         }
       ],
       "circuit_breaker": {
@@ -6197,8 +6200,8 @@
       "cost_budget_monthly_usd": 20.0,
       "config_file_path": "/root/.config/opencode/opencode.json",
       "status": "ACTIVE",
-      "last_verified": "2026-07-29",
-      "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Primary forge coding agent. Serves as FORGE (000Ω) when spawned. Current session...",
+      "last_verified": "2026-08-02",
+      "notes": "DS NATIVE PRIMARY 2026-08-02 — F13 directive. DeepSeek V4 Pro direct ($18.57 prepaid, 1M ctx, 384K output, sovereign-grade, F2/CLEAN). Fallback: Qwen TP → OpenCode Go → TokenRouter → Ollama. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED. Primary forge+coding agent serving as 333-AGI (Δ MIND) and FORGE (000Ω).",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING",
       "autonomous_profile": {
@@ -6232,23 +6235,23 @@
       },
       "route_assignments": {
         "primary": "deepseek-v4-pro@direct",
-        "note": "Direct DS API only. Never route through TokenRouter. SHADOW-TR-001."
+        "note": "DeepSeek native DIRECT (api.deepseek.com). $18.57 prepaid. Switched 2026-08-02 per F13 (rate limit resilience). Never route through TokenRouter."
       },
       "capabilities": [
         "vision"
       ],
       "vision_provider": "mulerouter",
       "vision_model": "mulerouter/qwen-vl-max",
-      "primary_cost": "token_plan",
-      "primary_note": "Qwen Token Plan RM0 marginal — deepseek-v4-pro via SG endpoint"
+      "primary_cost": "prepaid",
+      "primary_note": "DeepSeek V4 Pro DIRECT ($18.57 prepaid, 1M ctx, 384K output, sovereign-grade, F2/CLEAN, FFF SMOKE_PASS). Switched from Qwen TP 2026-08-02 per F13 directive (rate limit resilience)."
     },
     {
       "agent_id": "forge",
       "agent_name": "FORGE (000Ω)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "qwen-token-plan/deepseek-v4-pro",
-      "primary_provider": "qwen-token-plan",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek",
       "fallback_chain": [
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -6333,8 +6336,8 @@
       "agent_name": "AUDITOR (Ψ)",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "qwen-token-plan/deepseek-v4-pro",
-      "primary_provider": "qwen-token-plan",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek",
       "fallback_chain": [
         {
           "model_key": "deepseek/deepseek-v4-pro",
@@ -6612,92 +6615,11 @@
     },
     {
       "agent_id": "hermes",
-      "agent_name": "Hermes (555-ASI)",
-      "agent_class": "C2",
-      "organ": "HERMES",
-      "primary_model": "minimax-m3",
-      "primary_provider": "mimo-platform",
-      "fallback_chain": [
-        {
-          "model_key": "mulerouter/deepseek-v4-flash",
-          "provider": "mulerouter",
-          "priority": 1,
-          "reason": "MuleRouter fixed-price. Primary for Hermes high-volume chat."
-        },
-        {
-          "model_key": "mimo/mimo-v2.5-pro-ultraspeed",
-          "provider": "mimo-platform",
-          "priority": 1,
-          "cost": "token_plan",
-          "note": "1000 tok/s — fast conversational default"
-        },
-        {
-          "model_key": "mimo/mimo-v2.5-pro",
-          "provider": "mimo-platform",
-          "priority": 2,
-          "cost": "token_plan",
-          "note": "Deep thinking fallback"
-        },
-        {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "deepseek",
-          "priority": 3,
-          "cost": "prepaid",
-          "note": "Best reasoning, ZERO censorship, text-only"
-        },
-        {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "bailian-token-plan",
-          "priority": 4,
-          "cost": "token_plan",
-          "note": "Bailian fallback"
-        },
-        {
-          "model_key": "kimi/k3",
-          "provider": "kimi-moonshot",
-          "priority": 5,
-          "cost": "monthly",
-          "note": "2.8T MoE, vision, always-on thinking"
-        },
-        {
-          "model_key": "mimo/mimo-v2.5",
-          "provider": "mimo-platform",
-          "priority": 6,
-          "cost": "token_plan",
-          "note": "Base MiMo — lightweight"
-        },
-        {
-          "model_key": "gemini/gemini-2.5-flash",
-          "provider": "gemini",
-          "priority": 7,
-          "cost": "free",
-          "note": "Free tier, multimodal"
-        },
-        {
-          "model_key": "gemini/gemini-3-flash",
-          "provider": "gemini",
-          "priority": 8,
-          "cost": "free",
-          "note": "Newer Gemini Flash, 500 RPD"
-        },
-        {
-          "model_key": "sea-lion/Llama-SEA-LION-v3.5-70B-R",
-          "provider": "sea-lion",
-          "priority": 10,
-          "cost": "free",
-          "note": "SEA-LION v3.5 70B reasoning. SG jurisdiction. BM native. Trial key. 10 RPM."
-        },
-        {
-          "model_key": "ollama/qwen2.5:3b",
-          "provider": "ollama",
-          "priority": 9,
-          "cost": "free",
-          "note": "Local — always available [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
-          "requires": "local",
-          "local_model": "qwen2.5:3b",
-          "model_digest": null
-        }
-      ],
+      "agent_name": "Hermes — AAA Edge Bridge",
+      "agent_class": "EDGE_BRIDGE",
+      "organ": "AAA",
+      "primary_model": "qwen/qwen3.7-plus",
+      "primary_provider": "qwen-token-plan",
       "circuit_breaker": {
         "max_fails": 3,
         "window_seconds": 60,
@@ -6708,7 +6630,7 @@
       "cost_budget_monthly_usd": 30.0,
       "config_file_path": "/root/HERMES/config.yaml",
       "status": "ACTIVE",
-      "last_verified": "2026-07-29",
+      "last_verified": "2026-08-02",
       "notes": "FALLBACK RE-ORDERED 2026-07-29: Direct DS API priority 1, Bailian priority 2. MODEL > PROVIDER > BILLING enforced. MiniMax REMOVED from chain (RATE_LIMITED + CRITICAL censorship scar + 55d stale). Primary human-facing agent (Telegram). MiMo V2.5 Pro UltraSpeed for fast convers...",
       "tier": "T1_frontier_reasoning",
       "philosophy": "MODEL > PROVIDER > BILLING. Hermes needs multimodal for Telegram.",
@@ -6745,7 +6667,18 @@
         "vision"
       ],
       "vision_provider": "mulerouter",
-      "vision_model": "mulerouter/qwen-vl-max"
+      "vision_model": "mulerouter/qwen-vl-max",
+      "fallback_model": "deepseek/deepseek-v4-pro",
+      "fallback_provider": "deepseek",
+      "constraint_tier": 333,
+      "canonical_card": "/root/AAA/agents/hermes/agent-card.json",
+      "five_verb_contract": "normalize -> classify -> route -> receipt",
+      "max_action_class": "OBSERVE",
+      "authority": "DISPLAY_ONLY",
+      "_supersedes": "pre-F13-round-3 Hermes entry that pointed at MiniMax / MuleRouter / MiMo / DeepSeek / Moonshot fallback chain — STALE since Qwen Plan activation 2026-07-31",
+      "note": "Corrected 2026-08-02 per F13 ratification (F13::FED_UNIFIED round 3). Hermes is a Telegram bridge with 7-organ MCP connections; pre_llm_call uses arif_route from arifOS kernel. primary_model qwen3.7-plus via Qwen Token Plan Pro (RM0 marginal within plan) — matches QWEN_DEFAULT_MODEL env + model-picker.yaml tier default. fallback direct DeepSeek V4 Pro (architect-grade). anthropic_messages vs chat_completions Hermes-CLI routing bug is separate (Day-3).",
+      "_updated_at": "2026-08-02",
+      "_updated_by": "kimi-code/FI-008 (F13::FED_UNIFIED round 3)"
     },
     {
       "agent_id": "openclaw",
@@ -7015,8 +6948,8 @@
       "agent_name": "Codex CLI",
       "agent_class": "C2",
       "organ": "A-FORGE",
-      "primary_model": "qwen-token-plan/deepseek-v4-pro",
-      "primary_provider": "qwen-token-plan",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "primary_provider": "deepseek",
       "fallback_chain": [
         {
           "model_key": "openai/gpt-5.6-sol",
