@@ -791,4 +791,4 @@ if __name__ == "__main__":
     print(f"   State DB: {FED_STATE_DB}")
     print(f"   Invariants: state-isolation, constitutional-hard-gate, dual-track-bypass")
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
-    mcp.run(transport="sse", host="127.0.0.1")
+    mcp.run(transport="streamable-http", host="127.0.0.1")

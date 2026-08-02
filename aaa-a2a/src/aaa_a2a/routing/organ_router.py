@@ -45,6 +45,18 @@ ORGANS: dict[str, dict[str, str]] = {
         "authority": "evidence",
         "domain": "vitality",
     },
+    "hermes": {
+        "name": "Hermes ASI Agent",
+        "url": "http://localhost:18086/mcp",
+        "authority": "asi",
+        "domain": "cognition",
+    },
+    "hermes-asi": {
+        "name": "Hermes ASI Agent",
+        "url": "http://localhost:18086/mcp",
+        "authority": "asi",
+        "domain": "cognition",
+    },
 }
 
 
@@ -75,6 +87,8 @@ INTENT_KEYWORDS: dict[str, list[str]] = {
     "well": ["sleep", "fatigue", "vitality", "health", "readiness", "energy", "stress", "wellness"],
     "aforge": ["build", "deploy", "execute", "code", "git", "docker", "shell", "forge"],
     "arifos": ["judge", "verdict", "seal", "vault", "constitution", "floor", "governance"],
+    "hermes": ["hermes", "asi", "epistemic", "memory", "telegram", "dialogue", "speech"],
+    "hermes-asi": ["hermes", "asi", "epistemic", "memory", "telegram", "dialogue", "speech"],
 }
 
 
@@ -106,28 +120,51 @@ async def call_mcp_tool(
 ) -> dict[str, Any]:
     """Call an MCP tool on a federation organ.
 
-    Args:
-        organ_id: Organ ID (geox, wealth, well, aforge, arifos)
-        tool_name: MCP tool name
-        arguments: Tool arguments
-        timeout: Request timeout in seconds
-
-    Returns:
-        Tool result dict with 'ok', 'result'/'error'
+    Supports both legacy MCP and FastMCP Streamable-HTTP sessions.
     """
+    import json
+
     organ = ORGANS.get(organ_id)
     if not organ:
         return {"ok": False, "error": f"Unknown organ: {organ_id}"}
 
-    mcp_url = f"{organ['url']}/mcp"
+    mcp_url = f"{organ['url']}/mcp" if not organ["url"].endswith("/mcp") else organ["url"]
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json, text/event-stream",
+    }
 
     try:
         async with httpx.AsyncClient() as client:
-            resp = await client.post(
+            # 1. Initialize session if required (FastMCP)
+            init_resp = await client.post(
                 mcp_url,
+                headers=headers,
                 json={
                     "jsonrpc": "2.0",
                     "id": 1,
+                    "method": "initialize",
+                    "params": {
+                        "protocolVersion": "2024-11-05",
+                        "capabilities": {},
+                        "clientInfo": {"name": "aaa-client", "version": "1.0"},
+                    },
+                },
+                timeout=timeout,
+            )
+
+            sess_id = init_resp.headers.get("mcp-session-id")
+            if sess_id:
+                headers["mcp-session-id"] = sess_id
+
+            # 2. Call tool
+            resp = await client.post(
+                mcp_url,
+                headers=headers,
+                json={
+                    "jsonrpc": "2.0",
+                    "id": 2,
                     "method": "tools/call",
                     "params": {
                         "name": tool_name,
@@ -137,6 +174,17 @@ async def call_mcp_tool(
                 timeout=timeout,
             )
             resp.raise_for_status()
+
+            # Parse SSE or JSON response
+            text = resp.text
+            if "data: " in text:
+                for line in text.splitlines():
+                    if line.startswith("data: "):
+                        data = json.loads(line[6:])
+                        if "error" in data:
+                            return {"ok": False, "error": data["error"]}
+                        return {"ok": True, "result": data.get("result", {})}
+
             data = resp.json()
             if "error" in data:
                 return {"ok": False, "error": data["error"]}
