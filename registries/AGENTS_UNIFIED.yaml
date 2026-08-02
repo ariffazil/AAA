@@ -1,302 +1,268 @@
-# ═══════════════════════════════════════════════════════════════
-# AGENTS_UNIFIED.yaml — SINGLE CANONICAL REGISTRY
-# ═══════════════════════════════════════════════════════════════
-# Forged: 2026-07-31 by 333-AGI under F13 SOVEREIGN directive
-# Doctrine: DITEMPA BUKAN DIBERI
-# Supersedes: AGENT_INDEX.json, AAA_AGENTS_REGISTRY.json
-# Delta: 2 registries → 1 file. Ghost paths: 0. FI conflicts: 0.
-# ΔS = strong negative — entropy reduced to zero.
-#
-# LAYERS:
-#   IDENTITY LANES  — sovereign intelligence (333-AGI, 555-ASI, 888-APEX)
-#   FORGE INSTRUMENTS — CLI harnesses (FI-001 through FI-009)
-#   EXTENSIONS       — personas, bots, domain specialists
-#   ORGANS           — federation organs (arifOS, A-FORGE, GEOX, WEALTH, WELL)
-#   COLLAPSED         — tombstoned agents absorbed into identity lanes
-# ═══════════════════════════════════════════════════════════════
-
 version: 2.0.0
-forged: "2026-07-31"
-forged_by: "333-AGI (Δ MIND) — F13 SOVEREIGN directive"
+forged: '2026-07-31'
+forged_by: 333-AGI (Δ MIND) — F13 SOVEREIGN directive
 supersedes:
-  - /root/AAA/AGENT_INDEX.json         # 22 agents, 5 ghost paths, stale FI slots
-  - /root/AAA/registries/AAA_AGENTS_REGISTRY.json  # 15 agents, derived from stale agents.yaml
-authority: "888-APEX constitutional verdict + F13 Arif ratification"
-
-# ══════════════════════════════════════════════════════
-# LAYER 1: IDENTITY LANES (Sovereign Intelligence)
-# These are NOT forge instruments. They are the 3 minds
-# of the Trinity. They do not claim FI slots.
-# ══════════════════════════════════════════════════════
+- /root/AAA/AGENT_INDEX.json
+- /root/AAA/registries/AAA_AGENTS_REGISTRY.json
+authority: 888-APEX constitutional verdict + F13 Arif ratification
 identity_lanes:
-  - id: "333-AGI"
-    name: "333-AGI (Δ MIND)"
-    role: "Primary reasoning, planning, execution"
-    fi_slot: null  # NOT a forge instrument — identity lane
-    status: active
-    canonical_card: "/root/AAA/agent-cards/identity/333-AGI/agent-card.json"
-    kernel_bound: true
-    session_agent: "opencode"  # bound to OpenCode FI-001 as surface
-    subagents: [555-ASI, 888-APEX]
-    description: "Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes. Primary conversational surface. Orchestrates 555-ASI and 888-APEX."
-
-  - id: "555-ASI"
-    name: "555-ASI (Ω CORE)"
-    role: "Memory, telemetry, drift, research"
-    fi_slot: null  # NOT a forge instrument — identity lane
-    status: active
-    canonical_card: "/root/AAA/agent-cards/identity/555-ASI/agent-card.json"
-    kernel_bound: true
-    description: "Ω Core of the Trinity. Memory steward, vector mapping, probe execution, drift detection, research synthesis."
-
-  - id: "888-APEX"
-    name: "888-APEX (Ψ SOUL)"
-    role: "Constitutional verdict, SEAL/HOLD/VOID"
-    fi_slot: null  # NOT a forge instrument — identity lane
-    status: active
-    canonical_card: "/root/AAA/agent-cards/identity/888-APEX/agent-card.json"
-    kernel_bound: true
-    description: "Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible mutations. Read-only, never mutates."
-
-# ══════════════════════════════════════════════════════
-# LAYER 2: FORGE INSTRUMENTS (CLI Harnesses)
-# These are the concrete tools that execute code.
-# Each FI slot has EXACTLY ONE owner. No conflicts.
-# ══════════════════════════════════════════════════════
+- id: 333-AGI
+  name: 333-AGI (Δ MIND)
+  role: Primary reasoning, planning, execution
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agent-cards/identity/333-AGI/agent-card.json
+  kernel_bound: true
+  session_agent: opencode
+  subagents:
+  - 555-ASI
+  - 888-APEX
+  description: Δ Mind of the Trinity. Reasons, plans, builds, forges, synthesizes.
+    Primary conversational surface. Orchestrates 555-ASI and 888-APEX.
+- id: 555-ASI
+  name: 555-ASI (Ω CORE)
+  role: Memory, telemetry, drift, research
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agent-cards/identity/555-ASI/agent-card.json
+  kernel_bound: true
+  description: Ω Core of the Trinity. Memory steward, vector mapping, probe execution,
+    drift detection, research synthesis.
+- id: 888-APEX
+  name: 888-APEX (Ψ SOUL)
+  role: Constitutional verdict, SEAL/HOLD/VOID
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agent-cards/identity/888-APEX/agent-card.json
+  kernel_bound: true
+  description: Ψ Soul of the Trinity. Constitutional verdict engine. Gated irreversible
+    mutations. Read-only, never mutates.
 forge_instruments:
-  - fi_slot: FI-001
-    id: opencode
-    name: "OpenCode CLI"
-    binary: /root/.npm-global/bin/opencode
-    model: deepseek/deepseek-v4-pro
-    model_fallback: ollama/qwen2.5-coder:3b
-    status: active
-    canonical_card: "/root/AAA/agents/opencode/agent-card.json"
-    bound_to_identity: "333-AGI"  # OpenCode is the surface; 333-AGI is the mind
-    description: "Primary forge instrument. Governed coding forge bound to 333-AGI (Δ MIND). DeepSeek V4 Pro direct. 200+ MCP tools."
-
-  - fi_slot: FI-002
-    id: claude-code
-    name: "Claude Code CLI"
-    binary: /root/.local/bin/claude
-    model: deepseek/deepseek-v4-pro
-    status: active
-    canonical_card: "/root/AAA/agents/_external/claude-code/agent-card.json"
-    description: "Anthropic Claude Code harness. Sovereign-delegate authority. OAuth: arifbfazil@gmail.com. Sub-agents disabled."
-
-  - fi_slot: FI-003
-    id: qwen-code
-    name: "Qwen Code CLI"
-    binary: /usr/bin/qwen
-    model: deepseek/deepseek-v4-pro
-    status: active
-    canonical_card: "/root/AAA/agents/_external/qwen-code/agent-card.json"
-    description: "Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted Bash. Low risk."
-
-  - fi_slot: FI-004
-    id: antigravity
-    name: "Antigravity CLI"
-    binary: /root/.local/bin/agy
-    model: google/gemini-3.5-flash
-    status: active
-    canonical_card: "/root/AAA/agents/_external/agy/agent-card.json"
-    description: "Google Antigravity CLI. Gemini 3.5 Flash. 5 federation organs + context7."
-
-  - fi_slot: FI-005
-    id: codex
-    name: "Codex CLI"
-    binary: /usr/local/bin/codex
-    model: openai/gpt-5.6-sol
-    status: active
-    canonical_card: "/root/AAA/agents/_external/codex/agent-card.json"
-    description: "OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox. 8 MCP servers."
-
-  - fi_slot: FI-006
-    id: copilot
-    name: "Copilot CLI"
-    binary: /usr/bin/copilot
-    model: deepseek/deepseek-v4-pro
-    status: active
-    canonical_card: "/root/AAA/agents/_external/copilot/agent-card.json"
-    description: "GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP servers. Fleet subagent mode."
-
-  - fi_slot: FI-007
-    id: grok-build
-    name: "Grok Build"
-    binary: /root/.grok/bin/grok
-    model: xai/grok-build
-    status: active
-    canonical_card: "/root/AAA/agents/_external/grok-build/agent-card.json"
-    description: "xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve. No MCP surface yet."
-
-  - fi_slot: FI-008
-    id: kimi-code
-    name: "Kimi Code CLI"
-    binary: /root/.kimi-code/bin/kimi
-    model: kimi/k3
-    status: active
-    canonical_card: "/root/AAA/agents/_external/kimi-code/agent-card.json"
-    description: "Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking). 8 MCP servers. A-FORGE stdio ingress."
-
-  - fi_slot: FI-009
-    id: null  # VACANT — was A-AUDIT, collapsed into 888-APEX
-    name: "[VACANT]"
-    previous: "A-AUDIT (collapsed into 888-APEX per Zen 99 doctrine, 2026-07-15)"
-    status: vacant
-    canonical_card: null
-    description: "FI-009 is VACANT. A-AUDIT was absorbed into 888-APEX. Reserved for future forge instrument."
-
-# ══════════════════════════════════════════════════════
-# LAYER 3: EXTENSIONS (Personas, Bots, Specialists)
-# These are NOT forge instruments. They are conversational
-# surfaces, domain specialists, or investigative personas.
-# ══════════════════════════════════════════════════════
+- fi_slot: FI-001
+  id: opencode
+  name: OpenCode CLI
+  binary: /root/.npm-global/bin/opencode
+  model: deepseek/deepseek-v4-pro
+  model_fallback: ollama/qwen2.5-coder:3b
+  status: active
+  canonical_card: /root/AAA/agents/opencode/agent-card.json
+  bound_to_identity: 333-AGI
+  description: Primary forge instrument. Governed coding forge bound to 333-AGI (Δ
+    MIND). DeepSeek V4 Pro direct. 200+ MCP tools.
+- fi_slot: FI-002
+  id: claude-code
+  name: Claude Code CLI
+  binary: /root/.local/bin/claude
+  model: deepseek/deepseek-v4-pro
+  status: active
+  canonical_card: /root/AAA/agents/_external/claude-code/agent-card.json
+  description: 'Anthropic Claude Code harness. Sovereign-delegate authority. OAuth:
+    arifbfazil@gmail.com. Sub-agents disabled.'
+- fi_slot: FI-003
+  id: qwen-code
+  name: Qwen Code CLI
+  binary: /usr/bin/qwen
+  model: deepseek/deepseek-v4-pro
+  status: active
+  canonical_card: /root/AAA/agents/_external/qwen-code/agent-card.json
+  description: Alibaba Qwen Code harness. Zero MCP connections. Heavily restricted
+    Bash. Low risk.
+- fi_slot: FI-004
+  id: antigravity
+  name: Antigravity CLI
+  binary: /root/.local/bin/agy
+  model: google/gemini-3.5-flash
+  status: active
+  canonical_card: /root/AAA/agents/_external/agy/agent-card.json
+  description: Google Antigravity CLI. Gemini 3.5 Flash. 5 federation organs + context7.
+- fi_slot: FI-005
+  id: codex
+  name: Codex CLI
+  binary: /usr/local/bin/codex
+  model: openai/gpt-5.6-sol
+  status: active
+  canonical_card: /root/AAA/agents/_external/codex/agent-card.json
+  description: OpenAI Codex CLI. GPT-5.6 Sol (reasoning=medium). Landlock sandbox.
+    8 MCP servers.
+- fi_slot: FI-006
+  id: copilot
+  name: Copilot CLI
+  binary: /usr/bin/copilot
+  model: deepseek/deepseek-v4-pro
+  status: active
+  canonical_card: /root/AAA/agents/_external/copilot/agent-card.json
+  description: GitHub Copilot CLI. DeepSeek V4 Pro via Anthropic compat API. 11 MCP
+    servers. Fleet subagent mode.
+- fi_slot: FI-007
+  id: grok-build
+  name: Grok Build
+  binary: /root/.grok/bin/grok
+  model: xai/grok-build
+  status: active
+  canonical_card: /root/AAA/agents/_external/grok-build/agent-card.json
+  description: xAI Grok Build. REPLACED dead FI-007 Aider slot (2026-07-18). Always-approve.
+    No MCP surface yet.
+- fi_slot: FI-008
+  id: kimi-code
+  name: Kimi Code CLI
+  binary: /root/.kimi-code/bin/kimi
+  model: kimi/k3
+  status: active
+  canonical_card: /root/AAA/agents/_external/kimi-code/agent-card.json
+  description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking).
+    8 MCP servers. A-FORGE stdio ingress.
+- fi_slot: FI-009
+  id: null
+  name: '[VACANT]'
+  previous: A-AUDIT (collapsed into 888-APEX per Zen 99 doctrine, 2026-07-15)
+  status: vacant
+  canonical_card: null
+  description: FI-009 is VACANT. A-AUDIT was absorbed into 888-APEX. Reserved for
+    future forge instrument.
 extensions:
-  - id: hermes-asi
-    name: "Hermes ASI"
-    role: "Bahasa human-facing peripheral"
-    fi_slot: null  # NOT a forge instrument — conversational surface
-    status: active
-    canonical_card: "/root/AAA/agents/hermes-asi/agent-card.json"
-    bound_to_identity: "555-ASI"
-    description: "Telegram conversational agent. Bahasa Malaysia + English. Bound to 555-ASI (Ω CORE). Reads FQ, never executes."
-
-  - id: main
-    name: "arifOS Telegram Bot"
-    role: "Sovereign-facing Telegram interface"
-    fi_slot: null  # NOT a forge instrument — Telegram bot
-    status: active
-    canonical_card: "/root/AAA/agents/main/agent-card.json"
-    description: "Primary Telegram bot @ASI_arifos_bot. Direct Arif interface."
-
-  - id: makcikgpt
-    name: "MakcikGPT"
-    role: "Investigative persona"
-    fi_slot: null  # NOT a forge instrument — persona
-    status: active
-    canonical_card: "/root/AAA/agents/makcikgpt/agent-card.json"
-    description: "Investigative persona. Lives under WEALTH domain. NOT an FI slot holder."
-
-  - id: prospect-maturation
-    name: "Prospect Maturation Agent"
-    role: "GEOX domain specialist"
-    fi_slot: null
-    status: active
-    canonical_card: "/root/AAA/agents/prospect-maturation/agent-card.json"
-    description: "GEOX prospect evaluation and maturation specialist."
-
-  - id: agentic-trading-companion
-    name: "Agentic Trading Companion"
-    role: "WEALTH domain specialist"
-    fi_slot: null
-    status: active
-    canonical_card: "/root/AAA/agents/agentic-trading-companion/agent-card.json"
-    description: "WEALTH capital markets and trading companion."
-
-# ══════════════════════════════════════════════════════
-# LAYER 4: ORGANS (Federation Infrastructure)
-# These are NOT agents. They are federation services.
-# ══════════════════════════════════════════════════════
+- id: hermes-asi
+  name: Hermes ASI
+  role: Bahasa human-facing peripheral
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agents/hermes-asi/agent-card.json
+  bound_to_identity: 555-ASI
+  description: Telegram conversational agent. Bahasa Malaysia + English. Bound to
+    555-ASI (Ω CORE). Reads FQ, never executes.
+- id: main
+  name: arifOS Telegram Bot
+  role: Sovereign-facing Telegram interface
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agents/main/agent-card.json
+  description: Primary Telegram bot @ASI_arifos_bot. Direct Arif interface.
+- id: makcikgpt
+  name: MakcikGPT
+  role: Investigative persona
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agents/makcikgpt/agent-card.json
+  description: Investigative persona. Lives under WEALTH domain. NOT an FI slot holder.
+- id: prospect-maturation
+  name: Prospect Maturation Agent
+  role: GEOX domain specialist
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agents/prospect-maturation/agent-card.json
+  description: GEOX prospect evaluation and maturation specialist.
+- id: agentic-trading-companion
+  name: Agentic Trading Companion
+  role: WEALTH domain specialist
+  fi_slot: null
+  status: active
+  canonical_card: /root/AAA/agents/agentic-trading-companion/agent-card.json
+  description: WEALTH capital markets and trading companion.
 organs:
-  - id: arifos
-    name: "arifOS Kernel"
-    port: 8088
-    role: "Constitutional kernel — judge, seal, F1-F13"
-    canonical_card: "/root/AAA/agent-cards/pillars/arifos/agent-card.json"
-
-  - id: aforge
-    name: "A-FORGE"
-    port: 7071
-    role: "Execution — build, deploy, forge"
-    canonical_card: "/root/AAA/agent-cards/pillars/aforge/agent-card.json"
-
-  - id: aaa
-    name: "AAA Control Plane"
-    port: 3001
-    role: "Control plane — A2A gateway, cockpit"
-    canonical_card: "/root/AAA/agent-cards/pillars/aaa-gateway/agent-card.json"
-
-  - id: geox
-    name: "GEOX"
-    port: 8081
-    role: "Earth intelligence"
-    canonical_card: "/root/AAA/agent-cards/organs/geox/agent-card.json"
-
-  - id: wealth
-    name: "WEALTH"
-    port: 18082
-    role: "Capital intelligence"
-    canonical_card: "/root/AAA/agent-cards/organs/wealth/agent-card.json"
-
-  - id: well
-    name: "WELL"
-    port: 18083
-    role: "Human readiness"
-    canonical_card: "/root/AAA/agent-cards/organs/well/agent-card.json"
-
-  - id: sovereign
-    name: "SOVEREIGN (Arif)"
-    role: "F13 absolute veto"
-    canonical_card: "/root/AAA/agent-cards/pillars/sovereign/agent-card.json"
-
-# ══════════════════════════════════════════════════════
-# LAYER 5: COLLAPSED / TOMBSTONED
-# Absorbed into identity lanes. Retained for audit.
-# ══════════════════════════════════════════════════════
+- id: arifos
+  name: arifOS Kernel
+  port: 8088
+  role: Constitutional kernel — judge, seal, F1-F13
+  canonical_card: /root/AAA/agent-cards/pillars/arifos/agent-card.json
+- id: aforge
+  name: A-FORGE
+  port: 7071
+  role: Execution — build, deploy, forge
+  canonical_card: /root/AAA/agent-cards/pillars/aforge/agent-card.json
+- id: aaa
+  name: AAA Control Plane
+  port: 3001
+  role: Control plane — A2A gateway, cockpit
+  canonical_card: /root/AAA/agent-cards/pillars/aaa-gateway/agent-card.json
+- id: geox
+  name: GEOX
+  port: 8081
+  role: Earth intelligence
+  canonical_card: /root/AAA/agent-cards/organs/geox/agent-card.json
+- id: wealth
+  name: WEALTH
+  port: 18082
+  role: Capital intelligence
+  canonical_card: /root/AAA/agent-cards/organs/wealth/agent-card.json
+- id: well
+  name: WELL
+  port: 18083
+  role: Human readiness
+  canonical_card: /root/AAA/agent-cards/organs/well/agent-card.json
+- id: sovereign
+  name: SOVEREIGN (Arif)
+  role: F13 absolute veto
+  canonical_card: /root/AAA/agent-cards/pillars/sovereign/agent-card.json
 collapsed:
-  - id: A-AUDIT
-    status: collapsed
-    collapsed_into: "888-APEX"
-    collapse_date: "2026-07-15"
-    collapse_doctrine: "Zen 99 — oversight absorbed into arifOS arif_judge + arif_seal"
-    previous_fi_slot: FI-009
-    tombstone: "/root/AAA/agents/_lanes/_archive/A-AUDIT/"
-
-  - id: A-ARCHIVE
-    status: collapsed
-    collapsed_into: "888-APEX"
-    collapse_date: "2026-07-15"
-    collapse_doctrine: "Zen 99 — vault sealing absorbed into VAULT999 direct via arif_seal"
-    previous_fi_slot: FI-010
-    tombstone: "/root/AAA/agents/_lanes/_archive/A-ARCHIVE/"
-
-  - id: "777-forge"
-    status: collapsed
-    collapsed_into: "333-AGI"
-    collapse_date: "2026-07-25"
-    collapse_doctrine: "Trinity collapse — forge execution absorbed into 333-AGI"
-    tombstone: "/root/AAA/agents/_lanes/_archive/777-forge-archived-2026-07-16/"
-
-  - id: aider
-    status: replaced
-    replaced_by: "grok-build (FI-007)"
-    replacement_date: "2026-07-18"
-    tombstone: "/root/AAA/agents/_external/aider/"
-
-# ══════════════════════════════════════════════════════
-# INVARIANTS (machine-verifiable)
-# ══════════════════════════════════════════════════════
+- id: A-AUDIT
+  status: collapsed
+  collapsed_into: 888-APEX
+  collapse_date: '2026-07-15'
+  collapse_doctrine: Zen 99 — oversight absorbed into arifOS arif_judge + arif_seal
+  previous_fi_slot: FI-009
+  tombstone: /root/AAA/agents/_lanes/_archive/A-AUDIT/
+  absorbed_into: 555-ASI
+- id: A-ARCHIVE
+  status: collapsed
+  collapsed_into: 888-APEX
+  collapse_date: '2026-07-15'
+  collapse_doctrine: Zen 99 — vault sealing absorbed into VAULT999 direct via arif_seal
+  previous_fi_slot: FI-010
+  tombstone: /root/AAA/agents/_lanes/_archive/A-ARCHIVE/
+  absorbed_into: 555-ASI
+- id: 777-forge
+  status: collapsed
+  collapsed_into: 333-AGI
+  collapse_date: '2026-07-25'
+  collapse_doctrine: Trinity collapse — forge execution absorbed into 333-AGI
+  tombstone: /root/AAA/agents/_lanes/_archive/777-forge-archived-2026-07-16/
+  absorbed_into: 333-AGI
+- id: aider
+  status: replaced
+  replaced_by: grok-build (FI-007)
+  replacement_date: '2026-07-18'
+  tombstone: /root/AAA/agents/_external/aider/
+  absorbed_into: 333-AGI
 invariants:
-  - "Every FI slot has exactly ONE active owner"
-  - "Identity lanes (333-AGI, 555-ASI, 888-APEX) do NOT claim FI slots"
-  - "Every canonical_card path resolves to an existing agent-card.json"
-  - "No collapsed agent retains an active FI slot"
-  - "No agent claims FI-009 or FI-010 (vacant/collapsed)"
-  - "FI-001 through FI-008 are LOCKED — reassignment requires F13 ratification"
-
-# ══════════════════════════════════════════════════════
-# FI SLOT QUICK REFERENCE
-# ══════════════════════════════════════════════════════
+- Every FI slot has exactly ONE active owner
+- Identity lanes (333-AGI, 555-ASI, 888-APEX) do NOT claim FI slots
+- Every canonical_card path resolves to an existing agent-card.json
+- No collapsed agent retains an active FI slot
+- No agent claims FI-009 or FI-010 (vacant/collapsed)
+- FI-001 through FI-008 are LOCKED — reassignment requires F13 ratification
 fi_slot_summary:
-  FI-001: { id: opencode, name: "OpenCode CLI", identity: "333-AGI" }
-  FI-002: { id: claude-code, name: "Claude Code CLI", identity: null }
-  FI-003: { id: qwen-code, name: "Qwen Code CLI", identity: null }
-  FI-004: { id: antigravity, name: "Antigravity CLI", identity: null }
-  FI-005: { id: codex, name: "Codex CLI", identity: null }
-  FI-006: { id: copilot, name: "Copilot CLI", identity: null }
-  FI-007: { id: grok-build, name: "Grok Build", identity: null }
-  FI-008: { id: kimi-code, name: "Kimi Code CLI", identity: null }
-  FI-009: { id: null, name: "[VACANT]", identity: null }
-
-# DITEMPA BUKAN DIBERI — Forged, not given.
-# This is the ONE registry. There are no others.
+  FI-001:
+    id: opencode
+    name: OpenCode CLI
+    identity: 333-AGI
+  FI-002:
+    id: claude-code
+    name: Claude Code CLI
+    identity: null
+  FI-003:
+    id: qwen-code
+    name: Qwen Code CLI
+    identity: null
+  FI-004:
+    id: antigravity
+    name: Antigravity CLI
+    identity: null
+  FI-005:
+    id: codex
+    name: Codex CLI
+    identity: null
+  FI-006:
+    id: copilot
+    name: Copilot CLI
+    identity: null
+  FI-007:
+    id: grok-build
+    name: Grok Build
+    identity: null
+  FI-008:
+    id: kimi-code
+    name: Kimi Code CLI
+    identity: null
+  FI-009:
+    id: null
+    name: '[VACANT]'
+    identity: null
