@@ -77,6 +77,33 @@ Everything else is a **pointer**, **contract**, **runbook**, or **draft** — no
 
 ---
 
+## 1.1 Constitutional primitives (registered 2026-08-02)
+
+> Machine-importable Quranic runtime distillation — INT (interpretive mapping) · PLAUSIBLE.
+> Ratified by F13 SOVEREIGN directive. Reversible: `git revert <commit-sha>`.
+
+| Primitive | Path | Role | Floor mapping | Reverse handle |
+|-----------|------|------|---------------|----------------|
+| **quranic_runtime_map.json** | `/root/arifOS/arifosmcp/constitution/quranic_runtime_map.json` | Distils Al-Fatihah / Al-'Asr / Al-Kahf / Ayat al-Kursi into runtime enforcement contracts | F1, F2, F4, F11, F13 | `git revert <sha>` |
+| **ayat_bindings.py** | `/root/arifOS/arifosmcp/constitution/ayat_bindings.py` | Ayat al-Kursi runtime heart bindings (al-Hayy, al-Qayyum, no-sleep-claim, F13 gate) | F1, F4, F13 | `git revert <sha>` |
+| **fatihah_boot.py** | `/root/arifOS/arifosmcp/constitution/fatihah_boot.py` | Al-Fatihah 5 boot functions (Bismillah → MercyDials → MalikiYawmiddin → IyyakaNaBudu → IhdinaSiratalMustaqim) | F5, F6, F11, F13 | `git revert <sha>` |
+| **niat_guard.py** | `/root/arifOS/arifosmcp/core/niat_guard.py` | Al-Kahf privilege boundary — runtime refusal of intent claims | F7, F9, F12, F13 | `git revert <sha>` |
+| **deliberate.py** + **verify_chain.py** | `/root/arifOS/arifosmcp/tools/{deliberate,verify_chain}.py` | DELIBERATION_RECEIPT layer — mint + replay hash-chained deliberation | F2, F3, F11 | `git revert <sha>` |
+
+**Doctrine pointer chain:**
+- `quranic_runtime_map.json` → `/root/arifOS/GENESIS/000_KERNEL_CANON.md` (root canon)
+- `quranic_runtime_map.json` → `/root/arifOS/GENESIS/045_THREE_LAYER_SEPARATION.md` (ART/ACT/Kernel/AAA)
+
+**Out-of-scope (per quranic_runtime_map.json's own out_of_scope.not_touching):**
+- `/root/arifOS/GENESIS/FLOOR_TABLE.json` — F2 ratified, no scope creep
+- `arifOS constitutional canon (GENESIS files)` — immutable without 888_HOLD
+- A-FORGE / GEOX / WEALTH / WELL organs
+- New ports or services
+
+**Epistemic label across all primitives:** INT (interpretive mapping) · PLAUSIBLE — never CLAIM, always witness.
+
+---
+
 ## 2. Live constitutional spine (T₁ 2026-07-30)
 
 | Class | Component | Port(s) | Unit | Live | Tools* | Owns | Never owns |
