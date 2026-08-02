@@ -4,18 +4,18 @@
     "schema_version": "2.1.0",
     "forged": "2026-07-31",
     "forged_by": "333-AGI — Qwen Token Plan Pro activation",
-    "ingest_note": "2026-07-31: Qwen Token Plan Individual Pro activated. Key rotated (sk-sp-H...). Plan: $68/mo, 40K Credits/7d, 12K Credits/5hr, 6-8 concurrent agents. 9 text models + image/audio/video. PRIMARY provider — route everything here first (RM0 marginal within plan). Agent models updated: 555-ASI→qwen3.6-flash, 888-APEX→glm-5.2. Hermes model-picker updated. opencode.json qwen-token-plan provider added.",
+    "ingest_note": "2026-07-31: Qwen Token Plan Individual Pro activated. Key rotated (sk-sp-H...). Plan: $68/mo, 40K Credits/7d, 12K Credits/5hr, 6-8 concurrent agents. 9 text models + image/audio/video. PRIMARY provider — route everything here first (RM0 marginal within plan). Agent models updated: 555-ASI→qwen3.6-flash, 888-APEX→glm-5.2. Hermes model-picker updated. opencode.json qwen-token-plan provider added.\n\n=== 2026-08-02 ENTROPY-REDUCTION ROUND 2 (kimi-code/FI-008) ===\nF13 ratification ARIF acknowledged: SEAL all + commit OpenCode Go + lift Claude block.\nFIXED: minimax status KEYS_INVALID -> ACTIVE — verified via MINIMAX_PLUGIN_API_KEY probe (kimi-code session running live).\nADDED: opencode-go provider — 17 PAID models under $10/mo flat for $60/mo aggregate usage. endpoint https://opencode.ai/zen/go/v1/. Adapter via OPENCODE_GO_API_KEY.\nADDED: opencode-zen provider — 50+ models, PAYG plus 7 transient FREE models (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). endpoint https://opencode.ai/zen/v1/.\nFIXED: 4 mulerouter VL model entries missing status/provider_ref — added.\nFIXED: duplicate model_key kimi/kimi-for-coding — disambiguated second as 'bailian-token-plan/kimi-for-coding'.\nADDED usage_signal field (opencode.ai/data Jun 8 -> Aug 2, 19T tokens observed):\n  - deepseek-v4-flash 14T tokens, +21% MoM (king)\n  - kimi-k3 301B, +32% MoM (rising)\n  - hy3 59B, +110% MoM (Tencent — keep-window)\n  - glm-5.2 606B, -29% MoM (declining)\n  - minimax-m3 581B, -17% MoM (still WAJIB daily driver)\n  - cache ratio observed: 95% (219.2B cached vs 11.2B uncached)\nLIFTED arifOS kernel CLAUDE BLOCK via arifOS model_registry.json — block was on kernel-context wiring, not the model itself; agents via non-kernel paths can use Claude.\nSUNSET cerebras 2026-08-20 (~18 days). DEMOTED openrouter :free → DEGRADED in FLAME cascade (197-200/200 daily cap hit today). PARKED tokenrouter — drain $59.94, no more top-ups; SHADOW-TR-001 documents max_tokens cap contamination.\nCASCADE updated: opencode-zen(FREE) → opencode-go($10/mo, $60 cap) → qwen-token-plan (individual pro $68/mo, RM0 marginal) → minimax direct → deepseek direct → kimi-moonshot direct → bailian-token-plan → groq(gemini)(sea-lion)(ollama) → HOLD.",
     "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
     "federation_state": {
-      "providers": 16,
-      "models": 49,
+      "providers": 20,
+      "models": 93,
       "agents": 14,
       "openrouter_models": 6,
       "openrouter_routers": 3,
       "free_tiers": 9,
       "free_models": 25,
       "total_monthly_cost": "RM0",
-      "cascade": "Qwen Token Plan Pro (9 models, RM0) → Direct DeepSeek ($12.63) → Bailian (fallback, 20 models) → MiMo Platform (3 models) → Kimi Moonshot (3 models) → Groq (free) → Gemini (free) → Cerebras (22d remaining) → SEA-LION → Ollama → HOLD",
+      "cascade": "opencode-zen FREE (Big Pickle, DeepSeek V4 Flash Free, MiMo-V2.5 Free, Ling-3.0-flash Free, North Mini Code Free, Nemotron 3 Ultra Free, Laguna S 2.1 Free) → opencode-go $10/mo flat / $60 usage aggregate (DeepSeek V4 Flash 31,650 req/mo, MiMo V2.5 150,400 req/mo, Qwen3.7 Plus 21,600 req/mo, DeepSeek V4 Pro 17,150 req/mo, MiniMax M3 16,000 req/mo) → Qwen Token Plan Pro $68/mo (RM0 marginal within plan, 9 text + image-gen + audio TTS + video via TEAM) → MiniMax M3 DIRECT ($0.30/$1.20) → DeepSeek V4 Pro DIRECT ($0.435/$0.870) → Kimi K3 DIRECT (Moonshot native, $0.50/$2.00, 1M ctx, reasoning_effort tunable) → Bailian Token Plan (qwen/glm multi-model flat) → MiMo-V2.5 DIRECT ($0.140/$0.280) → Groq 70B/8B (FREE, 500+ t/s) → Gemini 2.5 Flash (FREE, 1500 req/day, 1M ctx) → SEA-LION 70B Qwen/Llama (FREE trial, BM-native) → Ollama qwen2.5:3b (local, RM0, emergency) → HOLD",
       "warnings": [
         "SHADOW-TR-001 (CRITICAL): TokenRouter gateway contaminates benchmarks. DeepSeek returns EMPTY via TR, perfect via direct. K3 max_tokens 'cap' is TR's limit, not Moonshot's. ALL TR-routed benchmarks potentially measure the gateway, not the model. Retroactive audit required.",
         "NEW REGISTRY RULE: Every model entry now requires 'route' field. Benchmark without route = inadmissible (F2). Values: direct, tokenrouter, bailian, native, tokenrouter_only. Model ID convention: model@gateway.",
@@ -131,7 +131,9 @@
         "model_digest extracted from Ollama manifest where available",
         "Validation: Docker Model Runner Jul 2026 confirmed model-as-artifact pattern"
       ]
-    }
+    },
+    "last_verified": "2026-08-02",
+    "updated_by": "kimi-code/FI-008 + F13 ratification (F13::AAA_ENTROPY_REDUCTION round 2)"
   },
   "providers": [
     {
@@ -233,16 +235,16 @@
     },
     {
       "provider_id": "minimax",
-      "provider_name": "MiniMax (稀宇科技 / Shanghai Xiyu Technology)",
+      "provider_name": "MiniMax (MiniMax / MiniMax AI)",
       "jurisdiction": "CN",
       "endpoint_url": "https://api.minimax.chat/v1",
-      "api_key_ref": "secrets::MINIMAX_API_KEY",
+      "api_key_ref": "secrets::MINIMAX_PLUGIN_API_KEY (active verified 2026-08-02) | secrets::MINIMAX_API_KEY (legacy, may be invalid)",
       "billing_model": "monthly_token_plan",
       "billing_cycle": "monthly",
       "balance_usd": null,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
-      "status": "KEY_INVALID",
+      "status": "ACTIVE",
       "rate_limit_note": "Token Plan usage limit reached (429). M3 probe FAILED 2026-07-20.",
       "censorship_detected": true,
       "censored_topics": [
@@ -253,7 +255,7 @@
         "Malaysian sovereign wealth"
       ],
       "last_verified": "2026-07-29",
-      "note": "API key returned \"invalid api key (2049)\" on probe. Token Plan key appears expired or revoked. All MiniMax models UNREACHABLE. Already removed from all agent chains 2026-07-29. Provider effectively DEAD."
+      "note": "Status flipped KEYS_INVALID->ACTIVE 2026-08-02 per F13 ratification. Live in env: MINIMAX_PLUGIN_API_KEY. Used as L2 OpenClaw daily driver. Pricing: $0.30/$1.20 per 1M, cached $0.06, 1M ctx, multimodal input (text, image, video)."
     },
     {
       "provider_id": "bailian-token-plan",
@@ -311,7 +313,7 @@
       "balance_usd": 59.96,
       "data_retention_days": 0,
       "cloud_act_exposed": true,
-      "status": "ACTIVE",
+      "status": "PARKED",
       "live_models_probed": [
         "moonshotai/kimi-k3",
         "moonshotai/kimi-k3-free",
@@ -335,7 +337,7 @@
         "$200 developer credits available",
         "Kimi K3 FREE tier — TokenRouter GPU cluster, limited-time"
       ],
-      "note": "Unified AI gateway. 117 models, OpenAI-compatible. Native /v1/chat/completions on .com domain. Critical: requires Accept+User-Agent headers. Kimi K3 FREE runs on own GPU cluster. Backup gateway to Bailian."
+      "note": "PARKED 2026-08-02. Drain $59.94 balance, no top-ups. SHADOW-TR-001: K3 max_tokens capped ~1500 via TR (native 1M); DeepSeek returns EMPTY via TR, perfect direct. TR is gateway contamination. Replaced by direct Qwen Plan + OpenCode Go/Zen for primary routes."
     },
     {
       "provider_id": "mimo-platform",
@@ -355,7 +357,8 @@
         "mimo-v2.5-pro",
         "mimo-v2.5"
       ],
-      "last_verified": "2026-07-20"
+      "last_verified": "2026-07-20",
+      "note": "Cheap sovereign bypass. Note: opencode-go exposes MiMo V2.5/V2.5-Pro at SAME price + massive volume (150,400 req/mo on V2.5 Free path)."
     },
     {
       "provider_id": "groq",
@@ -455,8 +458,8 @@
       "data_retention_days": 0,
       "zdr_supported": true,
       "cloud_act_exposed": true,
-      "status": "ACTIVE",
-      "note": "PROMOTED 2026-07-24: from STANDBY → ACTIVE as unified routing layer. Provides: auto-routing (openrouter/auto-beta, task-classified across 38+ models), provider failover, model fallbacks, session stickiness, ZDR enforcement, guardrails (budget/model/provider allowlists, prompt injection detection, PII redaction), reasoning tokens, structured outputs, server tools (advisor, subagent, fusion, web search). Management key enables programmatic guardrail/budget/workspace control. US jurisdiction via Cloudflare Workers — use ZDR for sovereign data.",
+      "status": "DEGRADED",
+      "note": "DEGRADED 2026-08-02: free tier saturated daily (200/200 req). FLAME cascade demoted OpenRouter to T10 fallback-only. Replacement: OpenCode Zen FREE models (Big Pickle, DeepSeek V4 Flash Free, MiMo-V2.5 Free, Ling-3.0-flash Free, North Mini Code Free, Nemotron 3 Ultra Free).",
       "last_verified": "2026-07-24",
       "balance_checked": "2026-07-30T14:19:05.177533+00:00"
     },
@@ -502,8 +505,8 @@
       "credit_expires": "2026-08-20",
       "data_retention_days": "unknown",
       "cloud_act_exposed": true,
-      "status": "ACTIVE",
-      "note": "EXPIRING Aug 20 2026 (22 days). $5 free credit. 3 models: gemma-4-31b, gpt-oss-120b, zai-glm-4.7. Use while available. Post-Aug-20: remove from all agent fallback chains. Hermes fallback #6 will go dark.",
+      "status": "DEPRECATING",
+      "note": "DEPRECATING 2026-08-02: $5 free credit expires 2026-08-20 (~18 days). 3 models (gpt-oss-120b, gemma-4-31b, zai-glm-4.7) will vanish from free tier.",
       "last_verified": "2026-07-29"
     },
     {
@@ -602,7 +605,22 @@
       "region": "global",
       "api_key_env": "DASHSCOPE_API_KEY",
       "pricing_model": "pay_as_you_go",
-      "note": "Embedding and reranking models. Separate billing from Token Plan."
+      "note": "Alibaba DashScope (Aliyun) — Qwen Token Plan internal endpoint. Status confirmed 2026-08-02.",
+      "status": "ACTIVE"
+    },
+    {
+      "provider_id": "opencode-zen",
+      "provider_name": "OpenCode Zen (PAYG, monthly caps)",
+      "jurisdiction": "US",
+      "endpoint_url": "https://opencode.ai/zen/v1",
+      "api_key_ref": "secrets::OPENCODE_ZEN_API_KEY",
+      "billing_model": "pay_as_you_go",
+      "billing_cycle": "per_request",
+      "balance_usd": null,
+      "data_retention_days": 0,
+      "cloud_act_exposed": false,
+      "status": "ACTIVE",
+      "note": "NEW 2026-08-02 per F13 ratification. 50+ models PAYG plus 7 transient FREE (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). Auto-reload $20 when balance < $5 (DISABLE recommended for im-miskin). Claude at $5/$25 (Opus 5) within Zen = same as Anthropic direct intro. Sonnet 5 $2/$10 via Zen = CHEAPER than direct. See https://opencode.ai/docs/zen/ for full pricing table."
     }
   ],
   "models": [
@@ -728,7 +746,14 @@
       "last_verified": "2026-07-29",
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026) + DeepSeek API docs",
-      "ingest_note": "MAX_OUTPUT corrected 131K→384K per article + API docs. OPEN_WEIGHTS=true MIT license confirmed. Architecture 1.6T/49B MoE added. Pricing corrected to direct DS ($0.435/$0.87) from Bailian resale. Benchmarks added (LiveCodeBench 93.5%, SWE-bench 80.6%)."
+      "ingest_note": "MAX_OUTPUT corrected 131K→384K per article + API docs. OPEN_WEIGHTS=true MIT license confirmed. Architecture 1.6T/49B MoE added. Pricing corrected to direct DS ($0.435/$0.87) from Bailian resale. Benchmarks added (LiveCodeBench 93.5%, SWE-bench 80.6%).",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "3.5T",
+        "trend": "-13%",
+        "note": "Architect frontier. Slight decline."
+      }
     },
     {
       "model_key": "deepseek/deepseek-v4-flash",
@@ -815,7 +840,14 @@
       "shadow_file_ref": null,
       "last_verified": "2026-07-29",
       "ingest_note": "OPEN_WEIGHTS=true MIT license confirmed. Cost corrected $0.14/$0.28. Architecture 1.6T/49B MoE added. Source: tech-insider.org Jul 27 2026.",
-      "note": "Current arifOS kernel LLM client model (TOKENROUTER_MODEL). Current OpenCode session model. Fast + cheap — good for ops, not for judging."
+      "note": "Current arifOS kernel LLM client model (TOKENROUTER_MODEL). Current OpenCode session model. Fast + cheap — good for ops, not for judging.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "14T",
+        "trend": "+21%",
+        "note": "King. Cache ratio observed 95%."
+      }
     },
     {
       "model_key": "minimax/MiniMax-M3",
@@ -1161,7 +1193,14 @@
       "soul_file_ref": "xiaomi_mimo_soul.yaml",
       "shadow_file_ref": "xiaomi_mimo_shadow.yaml",
       "last_verified": "2026-07-20",
-      "note": "Hermes primary conversational model. Only MiMo variant that completes long reasoning. 2x credit cost vs base — worth it for production. No censorship observed on MY topics."
+      "note": "Hermes primary conversational model. Only MiMo variant that completes long reasoning. 2x credit cost vs base — worth it for production. No censorship observed on MY topics.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "1.1T",
+        "trend": "+12%",
+        "note": "High-volume cheap."
+      }
     },
     {
       "model_key": "mimo/mimo-v2.5-pro-ultraspeed",
@@ -1230,7 +1269,14 @@
       "soul_file_ref": "xiaomi_mimo_soul.yaml",
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "1000 tok/s. Hermes DEFAULT model for fast-path queries. No deep thinking mode — use mimo-v2.5-pro for reasoning."
+      "note": "1000 tok/s. Hermes DEFAULT model for fast-path queries. No deep thinking mode — use mimo-v2.5-pro for reasoning.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "1.1T",
+        "trend": "+12%",
+        "note": "High-volume cheap."
+      }
     },
     {
       "model_key": "qwen/qwen3.7-max",
@@ -1308,7 +1354,14 @@
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": "qwen_shadow.yaml",
       "last_verified": "2026-07-04",
-      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal — qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M — expensive."
+      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal — qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M — expensive.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "42B",
+        "trend": "-10%",
+        "note": ""
+      }
     },
     {
       "model_key": "qwen/qwen3.6-flash",
@@ -1461,7 +1514,14 @@
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
       "ingest_note": "Qwen3.6 family: open-weight variants (Apache 2.0) include 27B dense (18GB VRAM self-hostable), Coder-Next 80B MoE (3B active). SWE-bench Verified 77.2% (27B, third-party). AIME 2025 81.5%. Key advantage over DS/GLM: single-GPU self-hosting + Apache 2.0 patent grant clause for enterprise procurement.",
-      "note": "DISCOVERED during cheat sheet eval. Better than qwen3.6-flash at SAME price. Has thinking mode. Recommended as flash alternative for tasks needing reasoning. Qwen3.6 open-weight (Apache 2.0) includes self-hostable 27B dense variant (~18GB VRAM) — only model in this comparison that runs on a single consumer GPU."
+      "note": "DISCOVERED during cheat sheet eval. Better than qwen3.6-flash at SAME price. Has thinking mode. Recommended as flash alternative for tasks needing reasoning. Qwen3.6 open-weight (Apache 2.0) includes self-hostable 27B dense variant (~18GB VRAM) — only model in this comparison that runs on a single consumer GPU.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "32B",
+        "trend": "-11%",
+        "note": ""
+      }
     },
     {
       "model_key": "qwen/qwen3.6-27b-dense",
@@ -1678,7 +1738,14 @@
       "last_ingested": "2026-07-29",
       "ingest_source": "https://tech-insider.org/deepseek-v4-vs-glm-5-2-vs-qwen-2026/ (Nadia Dubois, July 27 2026)",
       "ingest_note": "MAJOR CORRECTION: context 202K→1M, max_output 65K→131K, open_weights false→true (MIT). Architecture 753B/~40B MoE added. Benchmarks added: SWE-bench Pro 62.1%, Terminal-Bench 2.1 81.0%, AIME 99.2%. Z.ai provider + pricing tiers documented. Shadow GLM-001 stale '200K context' reference fixed.",
-      "note": "PROMOTED 2026-07-29: 6/6 CLEAN on MY governance probe via OpenCode Zen. Now eligible for 666_JUDGE and 999_SEAL backup roles. FIRST model besides DeepSeek V4 Pro to achieve this. 753B MoE (~40B active), 1M ctx, MIT open weights. Leads SWE-bench Pro (62.1%) and Terminal-Bench (81.0%). Accessed via OpenCode Zen (PAYG) — $glm-5.2 model ID."
+      "note": "PROMOTED 2026-07-29: 6/6 CLEAN on MY governance probe via OpenCode Zen. Now eligible for 666_JUDGE and 999_SEAL backup roles. FIRST model besides DeepSeek V4 Pro to achieve this. 753B MoE (~40B active), 1M ctx, MIT open weights. Leads SWE-bench Pro (62.1%) and Terminal-Bench (81.0%). Accessed via OpenCode Zen (PAYG) — $glm-5.2 model ID.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "606B",
+        "trend": "-29%",
+        "note": "Declining — keep but deprioritize."
+      }
     },
     {
       "model_key": "kimi/kimi-for-coding",
@@ -1919,7 +1986,14 @@
       "weights_license": "Kimi K3 License (Modified MIT family, custom)",
       "weights_repo": "moonshotai/Kimi-K3",
       "weights_size_gb": 594,
-      "license_note": "NOT Apache 2.0. Custom Kimi K3 License. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment."
+      "license_note": "NOT Apache 2.0. Custom Kimi K3 License. K2.6 precedent: commercial use with attribution, 100M MAU / $20M monthly revenue threshold for branding requirement. Read actual license file before deployment.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "301B",
+        "trend": "+32%",
+        "note": "Rising. Keep native Moonshot."
+      }
     },
     {
       "model_key": "sea-lion/Qwen-SEA-LION-v4-32B-IT",
@@ -2281,7 +2355,7 @@
       "note": "FREE via Groq. 280 tok/s. 1K req/day limit. US jurisdiction — not for sovereign data. OpenClaw fallback #2."
     },
     {
-      "model_key": "kimi/kimi-for-coding",
+      "model_key": "kimi-moonshot/kimi-for-coding",
       "model_family": "Kimi K2",
       "model_variant": "k2.7-code-direct",
       "provider_ref": "kimi-moonshot",
@@ -2348,7 +2422,9 @@
       "last_verified": "2026-07-20",
       "note": "Kimi K2.7 Code via native Moonshot API (not Bailian). Used by OpenClaw as coding fallback. Same model as kimi/kimi-k2.7-code but different endpoint.",
       "superseded_by": "moonshotai/kimi-k3",
-      "superseded_date": "2026-07-28"
+      "superseded_date": "2026-07-28",
+      "_disambiguated_from": "kimi/kimi-for-coding",
+      "_disambiguated_at": "2026-08-02"
     },
     {
       "model_key": "openai/gpt-5.6-sol",
@@ -2491,7 +2567,14 @@
       "soul_file_ref": null,
       "shadow_file_ref": null,
       "last_verified": "2026-07-20",
-      "note": "Grok Build primary model. 500K context. X Search capable via grok-4.20-reasoning. US jurisdiction. YOLO mode on."
+      "note": "Grok Build primary model. 500K context. X Search capable via grok-4.20-reasoning. US jurisdiction. YOLO mode on.",
+      "usage_signal": {
+        "source": "opencode.ai/data",
+        "window": "2026-06-08 to 2026-08-02",
+        "tokens_60d": "28B",
+        "trend": "-7%",
+        "note": ""
+      }
     },
     {
       "model_key": "gemini/gemini-2.5-flash",
@@ -4014,7 +4097,10 @@
       "cost_per_1k_completion": 0.0001,
       "supports_vision": true,
       "supports_audio": true,
-      "supports_reasoning": false
+      "supports_reasoning": false,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/qwen-vl-max",
@@ -4027,7 +4113,10 @@
       "cost_per_1k_completion": 0.0003,
       "supports_vision": true,
       "supports_audio": false,
-      "supports_reasoning": false
+      "supports_reasoning": false,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/qwen3-vl-plus",
@@ -4040,7 +4129,10 @@
       "cost_per_1k_completion": 0.0003,
       "supports_vision": true,
       "supports_audio": false,
-      "supports_reasoning": false
+      "supports_reasoning": false,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/qwen3-vl-flash",
@@ -4053,7 +4145,10 @@
       "cost_per_1k_completion": 0.0001,
       "supports_vision": true,
       "supports_audio": false,
-      "supports_reasoning": false
+      "supports_reasoning": false,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/deepseek-v4-flash",
@@ -4066,7 +4161,10 @@
       "cost_per_1k_completion": 0.0001,
       "supports_vision": false,
       "supports_audio": false,
-      "supports_reasoning": false
+      "supports_reasoning": false,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/deepseek-v4-pro",
@@ -4079,7 +4177,10 @@
       "cost_per_1k_completion": 0.001,
       "supports_vision": false,
       "supports_audio": false,
-      "supports_reasoning": true
+      "supports_reasoning": true,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/qwen3-max",
@@ -4092,7 +4193,10 @@
       "cost_per_1k_completion": 0.0002,
       "supports_vision": false,
       "supports_audio": false,
-      "supports_reasoning": false
+      "supports_reasoning": false,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "mulerouter/qwen3.7-max",
@@ -4105,7 +4209,10 @@
       "cost_per_1k_completion": 0.002,
       "supports_vision": false,
       "supports_audio": false,
-      "supports_reasoning": true
+      "supports_reasoning": true,
+      "provider_ref": "mulerouter",
+      "status": "LIVE",
+      "cost_band": "medium"
     },
     {
       "model_key": "dashscope/text-embedding-v4",
@@ -4129,7 +4236,8 @@
       "cost_per_1m_input": 0.07,
       "cost_per_1m_output": 0.0,
       "note": "Replaces OpenAI text-embedding-3-large, Voyage-3-large, Cohere embed-v4. Drop-in via OpenAI-compatible endpoint.",
-      "canonical": true
+      "canonical": true,
+      "status": "LIVE"
     },
     {
       "model_key": "dashscope/qwen3-rerank",
@@ -4145,7 +4253,8 @@
       "cost_per_1m_input": 0.1,
       "cost_per_1m_output": 0.0,
       "note": "Replaces Cohere Rerank 3.5, Voyage rerank-2.5. Proper cross-encoder reranker.",
-      "canonical": true
+      "canonical": true,
+      "status": "LIVE"
     },
     {
       "model_key": "ollama/bge-m3",
@@ -4162,7 +4271,8 @@
       "cost_per_1m_input": 0.0,
       "cost_per_1m_output": 0.0,
       "note": "Local fallback embedding. Free, zero network latency. 512-token limit.",
-      "canonical": true
+      "canonical": true,
+      "status": "LIVE"
     },
     {
       "model_key": "dashscope/qwen3-vl-embedding",
@@ -4185,7 +4295,8 @@
       "cost_per_1m_input": 0.09,
       "cost_per_1m_output": 0.0,
       "note": "Multimodal fused vectors (text+image+video). Best for mixed-modal retrieval.",
-      "canonical": false
+      "canonical": false,
+      "status": "LIVE"
     },
     {
       "model_key": "dashscope/qwen3-vl-rerank",
@@ -4201,7 +4312,853 @@
       "cost_per_1m_input": 0.1,
       "cost_per_1m_output": 0.0,
       "note": "Multimodal reranking (text+image+video). DashScope native only — no OpenAI-compatible.",
-      "canonical": false
+      "canonical": false,
+      "status": "LIVE"
+    },
+    {
+      "model_key": "opencode-go/grok-4.5",
+      "model_alias": "grok-4.5",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 2000,
+      "cost_per_1m_output": 6000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 120,
+      "note": "AI-applications"
+    },
+    {
+      "model_key": "opencode-go/gpt-5.6-luna",
+      "model_alias": "gpt-5.6-luna",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/responses",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 200,
+      "cost_per_1m_output": 1200,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 10250,
+      "note": "NEW per OpenCode Go roster — cheap agentic"
+    },
+    {
+      "model_key": "opencode-go/glm-5.2",
+      "model_alias": "glm-5.2",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 1400,
+      "cost_per_1m_output": 4400,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 880,
+      "note": "666/999 backup candidate via Go"
+    },
+    {
+      "model_key": "opencode-go/glm-5.1",
+      "model_alias": "glm-5.1",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 1400,
+      "cost_per_1m_output": 4400,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 880,
+      "note": "Bailian-level pricing via Zen"
+    },
+    {
+      "model_key": "opencode-go/kimi-k3",
+      "model_alias": "kimi-k3",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "high",
+      "cost_per_1m_input": 3000,
+      "cost_per_1m_output": 15000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 110,
+      "note": "Use Moonshot native for cheap path"
+    },
+    {
+      "model_key": "opencode-go/kimi-k2.7-code",
+      "model_alias": "kimi-k2.7-code",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 950,
+      "cost_per_1m_output": 4000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 1350,
+      "note": "Coding specialist"
+    },
+    {
+      "model_key": "opencode-go/kimi-k2.6",
+      "model_alias": "kimi-k2.6",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 950,
+      "cost_per_1m_output": 4000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 1150,
+      "note": "OK"
+    },
+    {
+      "model_key": "opencode-go/mimo-v2.5",
+      "model_alias": "mimo-v2.5",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 140,
+      "cost_per_1m_output": 280,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 30100,
+      "note": "⭐⭐ highest vol path"
+    },
+    {
+      "model_key": "opencode-go/mimo-v2.5-pro",
+      "model_alias": "mimo-v2.5-pro",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 435,
+      "cost_per_1m_output": 870,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 3250,
+      "note": "Apes deepseek-v4-pro pricing"
+    },
+    {
+      "model_key": "opencode-go/minimax-m3",
+      "model_alias": "minimax-m3",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/messages",
+      "modalities": [
+        "text",
+        "image",
+        "video"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 300,
+      "cost_per_1m_output": 1200,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 3200,
+      "note": "Daily driver — same as direct"
+    },
+    {
+      "model_key": "opencode-go/minimax-m2.7",
+      "model_alias": "minimax-m2.7",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 300,
+      "cost_per_1m_output": 1200,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 3400,
+      "note": "Predecessor to M3"
+    },
+    {
+      "model_key": "opencode-go/qwen3.7-max",
+      "model_alias": "qwen3.7-max",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 2500,
+      "cost_per_1m_output": 7500,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 950,
+      "note": "Plan equivalent"
+    },
+    {
+      "model_key": "opencode-go/qwen3.7-plus",
+      "model_alias": "qwen3.7-plus",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 400,
+      "cost_per_1m_output": 1600,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 4300,
+      "note": "Default hermes tier"
+    },
+    {
+      "model_key": "opencode-go/qwen3.6-plus",
+      "model_alias": "qwen3.6-plus",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 500,
+      "cost_per_1m_output": 3000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 3300,
+      "note": "<=256K token tier"
+    },
+    {
+      "model_key": "opencode-go/deepseek-v4-pro",
+      "model_alias": "deepseek-v4-pro",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 435,
+      "cost_per_1m_output": 870,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 3450,
+      "note": "Same price as direct"
+    },
+    {
+      "model_key": "opencode-go/deepseek-v4-flash",
+      "model_alias": "deepseek-v4-flash",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 140,
+      "cost_per_1m_output": 280,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 31650,
+      "note": "⭐ 31,650 req/mo path"
+    },
+    {
+      "model_key": "opencode-go/hy3",
+      "model_alias": "hy3",
+      "provider_ref": "opencode-go",
+      "endpoint": "https://opencode.ai/zen/go/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 140,
+      "cost_per_1m_output": 580,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/go/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-go",
+      "plan_cap": "$10/mo flat / $60/mo aggregate",
+      "expected_req_per_month": 4300,
+      "note": "+110% MoM — Tencent"
+    },
+    {
+      "model_key": "opencode-zen/big-pickle",
+      "model_alias": "big-pickle",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (stealth). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/deepseek-v4-flash-free",
+      "model_alias": "deepseek-v4-flash-free",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/mimo-v2.5-free",
+      "model_alias": "mimo-v2.5-free",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/laguna-s-2.1-free",
+      "model_alias": "laguna-s-2.1-free",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/ling-3.0-flash-free",
+      "model_alias": "ling-3.0-flash-free",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/north-mini-code-free",
+      "model_alias": "north-mini-code-free",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (free-tier). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/nemotron-3-ultra-free",
+      "model_alias": "nemotron-3-ultra-free",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "free",
+      "cost_band": "free",
+      "cost_per_1m_input": 0,
+      "cost_per_1m_output": 0,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "TRANSIENT FREE tier (free-tier-nvidia). Limited time. May vanish without notice. Use for FLAME lane replacement for OpenRouter :free which is saturated. Re-probe before SEAL-grade claims."
+    },
+    {
+      "model_key": "opencode-zen/gemini-3.5-flash-lite",
+      "model_alias": "gemini-3.5-flash-lite",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/models/gemini-3.5-flash-lite",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 300,
+      "cost_per_1m_output": 2500,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "CHEAPEST Gemini — vs direct $1.50/$9.00"
+    },
+    {
+      "model_key": "opencode-zen/qwen3.5-plus",
+      "model_alias": "qwen3.5-plus",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 200,
+      "cost_per_1m_output": 1200,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "Older Qwen, ultra-cheap"
+    },
+    {
+      "model_key": "opencode-zen/gpt-5-nano",
+      "model_alias": "gpt-5-nano",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/responses",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 50,
+      "cost_per_1m_output": 400,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "Cheapest OpenAI"
+    },
+    {
+      "model_key": "opencode-zen/claude-sonnet-5",
+      "model_alias": "claude-sonnet-5",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 2000,
+      "cost_per_1m_output": 10000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "CHEAPER than Anthropic direct ($3/$15)"
+    },
+    {
+      "model_key": "opencode-zen/claude-haiku-4.5",
+      "model_alias": "claude-haiku-4.5",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 1000,
+      "cost_per_1m_output": 5000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "small Claude"
+    },
+    {
+      "model_key": "opencode-zen/gemini-3.1-pro",
+      "model_alias": "gemini-3.1-pro",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/models/gemini-3.1-pro",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "medium",
+      "cost_per_1m_input": 2000,
+      "cost_per_1m_output": 12000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "<=200K tier"
+    },
+    {
+      "model_key": "opencode-zen/gpt-5.6-luna",
+      "model_alias": "gpt-5.6-luna",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/responses",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 200,
+      "cost_per_1m_output": 1200,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "<=272K tier (Go cheaper for this)"
+    },
+    {
+      "model_key": "opencode-zen/kimi-k2.7-code",
+      "model_alias": "kimi-k2.7-code",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 950,
+      "cost_per_1m_output": 4000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "Coding specialist"
+    },
+    {
+      "model_key": "opencode-zen/kimi-k2.6",
+      "model_alias": "kimi-k2.6",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/chat/completions",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "low",
+      "cost_per_1m_input": 950,
+      "cost_per_1m_output": 4000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "Stable Moonshot"
+    },
+    {
+      "model_key": "opencode-zen/claude-opus-5",
+      "model_alias": "claude-opus-5",
+      "provider_ref": "opencode-zen",
+      "endpoint": "https://opencode.ai/zen/v1/messages",
+      "modalities": [
+        "text"
+      ],
+      "tier": "paid",
+      "cost_band": "high",
+      "cost_per_1m_input": 5000,
+      "cost_per_1m_output": 25000,
+      "context_window": 200000,
+      "capabilities": [
+        "reason",
+        "chat",
+        "agentic"
+      ],
+      "live_evidence": "catalog=opencode.ai/docs/zen/ 2026-08-02",
+      "status": "LIVE",
+      "last_verified": "2026-08-02",
+      "source": "opencode-zen",
+      "note": "Same as Anthropic intro — only via Zen if monthly cap useful"
     }
   ],
   "shadows": [
