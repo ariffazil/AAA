@@ -13,6 +13,14 @@ doctrine: |
   No agent may decide a registry dispute by intuition. Load this file. Follow the precedence.
   If this file cannot resolve a dispute, verdict = HOLD and escalate to F13.
 
+# 2026-08-02 update — kimi-code/FI-008 + F13 ratification
+last_verified: "2026-08-02T13:35:00Z"
+last_forged_by: "kimi-code/FI-008 — F13::FED_UNIFIED round 2 (F13::AAA_ENTROPY_REDUCTION successor)"
+adopted_changes:
+  - "Added model_identity category with federation-models.json as canonical + validator-gated atomic replace via /root/HERMES/scripts/zen/validate_federation_models.py"
+  - "DEPRECATION_REGISTRY.yaml created (was 'to-be-created'); supersedes docs/deprecation-registry.json"
+  - "A6 payload above"
+
 # ── CATEGORY PRECEDENCE ──
 # Within each category, earlier entries beat later entries.
 
@@ -120,11 +128,31 @@ categories:
     description: "What is deprecated, tombstoned, or superseded"
     canonical:
       - path: "registries/DEPRECATION_REGISTRY.yaml"
-        reason: "To be created — consolidates docs/deprecation-registry.json + live scan"
+        reason: "Forged 2026-08-02 by kimi-code/FI-008 — consolidates 9 registry files marked DEPRECATED + 1 superseded + live scan"
     derived:
       - path: "docs/deprecation-registry.json"
-        reason: "9-entry registry — too small for 62 deprecated files detected in scan"
+        reason: "Predecessor — 9-entry registry, too small for actual deprecated file inventory"
     deprecated: []
+
+  model_identity:                              # ADDED 2026-08-02 — kimi-code/FI-008 + F13 ratification
+    description: "Model identity, capabilities, modalities, route, pricing — federation-wide SOT"
+    canonical:
+      - path: ".config/federation-models.json"
+        reason: "Symlinked from registries/models/AGENT_MODEL_MAP.json — 6792-line SOT, validator-gated (validate_federation_models.py). F13 ratified 2026-07-31 (F13::AAA_ENTROPY_REDUCTION); F13::FED_UNIFIED round 2 ratified 2026-08-02 (this round)."
+        validator: "HERMES/scripts/zen/validate_federation_models.py"
+        coverage: "59 -> 93 models, 19 -> 20 providers, all 14 agents, OpenCode Go + Zen + Qwen Token Plan absorbed"
+    derived:
+      - path: "arifOS/arifosmcp/config/model_registry.json"
+        reason: "arifOS kernel routing 2026.08.02-v1 — adds Claude BLOCK LIFT note, links to federation-models.json"
+      - path: "registries/models/pricing_tables.json"
+        reason: "Deprecated-as-source 2026-07-31; merged into federation-models.json _meta.cost_per_1m_*"
+      - path: "registries/models/MODEL_TIERS.json"
+        reason: "tier-color reference; merged into federation-models.json status field"
+    deprecated:
+      - path: "registries/models/FEDERATION_MODEL.json"
+        reason: "Claimed absorbed by federation-models.json per 2026-07-31 _meta.replaces; still on disk for back-compat. Tombstoned in DEPRECATION_REGISTRY.yaml."
+      - path: "registries/models/LEGACY_FEDERATION_MODEL_provider_routing.json.deprecated-2026-07-29"
+        reason: "Filename already carries .deprecated-2026-07-29; tombstoned in DEPRECATION_REGISTRY.yaml."
 
 # ── CONFLICT TIEBREAKER RULES ──
 tiebreakers:
