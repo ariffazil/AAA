@@ -112,8 +112,8 @@ const SKILL_CAPABILITY_MAP = {
   'FORGE-ci-diagnose': ['ci', 'diagnostic'],
   'FORGE-pr-review': ['review', 'code'],
   'AGI-plan-dag': ['planning', 'dag', 'decomposition'],
-  'apex_verdict_seal': ['verdict', 'seal'],
-  'apex_verdict_hold': ['verdict', 'hold'],
+  'arifos-constitutional-judge': ['verdict', 'seal'],
+  'arifos-constitutional-judge': ['verdict', 'hold'],
   'atlas333-cognitive-geometry': ['paradox', 'reasoning'],
 };
 

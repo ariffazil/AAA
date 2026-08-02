@@ -314,7 +314,7 @@ skills:
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_verdict_hold/hermes/SKILL.md
+  source_path: skills/arifos-constitutional-judge/hermes/SKILL.md
   package: apex-gates
 - id: apex-act-constitutional-reflex-hermes-asi--apex-verdict-seal-hermes
   name: APEX ACT — Constitutional Reflex (Hermes ASI)
@@ -326,25 +326,25 @@ skills:
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_verdict_seal/hermes/SKILL.md
+  source_path: skills/arifos-constitutional-judge/hermes/SKILL.md
   package: apex-gates
 - id: apex-audit-coverage-check
-  name: apex_audit_coverage_check
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Audit whether every constitutional floor and federation organ has code enforcement, tests, bypass resistance, and trace coverage
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_audit_coverage_check/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: apex-gates
 - id: apex-authority-check
-  name: apex_authority_check
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Detect conflicting or parallel source-of-truth claims across federation repositories and resolve the canonical owner
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_authority_check/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: apex-gates
 - id: apex-fff-loop-protocol
   name: APEX-fff-loop-protocol
@@ -364,13 +364,13 @@ skills:
   - F08
   - F11
 - id: apex-floor-check
-  name: apex_floor_check
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Evaluate a proposed action against the arifOS F1-F13 constitutional floors and identify any failed gate
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_floor_check/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: apex-gates
 - id: apex-formal-constitution
   name: apex-formal-constitution
@@ -409,13 +409,13 @@ skills:
   source_path: skills/apex_reversibility_test/SKILL.md
   package: apex-gates
 - id: apex-scope-check
-  name: apex_scope_check
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Check whether a proposed action stays within its declared task, organ, and constitutional scope
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_scope_check/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: apex-gates
 - id: apex-tool-approval-gate
   name: apex_tool_approval_gate
@@ -427,22 +427,22 @@ skills:
   source_path: skills/apex_tool_approval_gate/SKILL.md
   package: apex-gates
 - id: apex-verdict-hold
-  name: apex_verdict_hold
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Apply the constitutional HOLD path when authority, evidence, system health, reversibility, or blast radius is insufficient
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_verdict_hold/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: apex-gates
 - id: apex-verdict-seal
-  name: apex_verdict_seal
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Verify the complete ART-to-kernel-to-ACT evidence path before a SEAL-grade conclusion, without granting seal authority
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/apex_verdict_seal/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: apex-gates
 - id: arifos-act
   name: arifOS ACT — Constitutional Reflex
@@ -451,7 +451,7 @@ skills:
   owner: AAA
   risk_tier: critical
   status: active
-  source_path: skills/apex_verdict_hold/claude/SKILL.md
+  source_path: skills/arifos-constitutional-judge/claude/SKILL.md
   package: apex-gates
   orthogonal_tags:
     trinitarian:
@@ -478,7 +478,7 @@ skills:
   owner: AAA
   risk_tier: critical
   status: active
-  source_path: skills/apex_verdict_seal/claude/SKILL.md
+  source_path: skills/arifos-constitutional-judge/claude/SKILL.md
   package: apex-gates
   orthogonal_tags:
     trinitarian:
@@ -580,13 +580,13 @@ skills:
   - F11
   - F04
 - id: asi-constitutional-reasoning
-  name: ASI-constitutional-reasoning
+  name: arifos-constitutional-judge
   version: 0.0.0
   description: Apply F1-F13 constitutional floor reasoning before any governed action
   owner: AAA
   risk_tier: low
   status: active
-  source_path: skills/ASI-constitutional-reasoning/SKILL.md
+  source_path: skills/arifos-constitutional-judge/SKILL.md
   package: asi-governance
 - id: asi-context-window-mgr
   name: ASI-context-window-mgr
@@ -726,22 +726,22 @@ skills:
   - F7
   - F8
 - id: asi-session-seal
-  name: ASI-session-seal
+  name: forge_vault
   version: 0.0.0
   description: 'Canonical seal ceremony: `/root/AAA/prompts/SEAL.md` — the ONE seal for ALL agents.'
   owner: AAA
   risk_tier: low
   status: tombstone — sealed 2026-07-29
-  source_path: skills/ASI-session-seal/SKILL.md
+  source_path: skills/forge_vault/SKILL.md
   package: asi-governance
 - id: asi-session-seal-copilot
-  name: ASI-session-seal-copilot
+  name: forge_vault
   version: 0.0.0
   description: 'Canonical seal ceremony: `/root/AAA/prompts/SEAL.md` — the ONE seal for ALL agents.'
   owner: AAA
   risk_tier: low
   status: tombstone — sealed 2026-07-29
-  source_path: skills/ASI-session-seal-copilot/SKILL.md
+  source_path: skills/forge_vault/SKILL.md
   package: asi-governance
 - id: asi-summarize
   name: ASI-summarize

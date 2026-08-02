@@ -402,8 +402,8 @@ curl -s https://arif-fazil.com/999/verify
 | # | Deprecated | Status | Replacement |
 |---|-----------|--------|-------------|
 | 1 | `forge_vault(mode="seal")` | ⚠️ RENAMED | `forge_vault(mode="receipt")` for Lane B |
-| 2 | `ASI-session-seal` (skill) | 🪦 TOMBSTONE | SEAL.md (this file) |
-| 3 | `ASI-session-seal-copilot` (skill) | 🪦 TOMBSTONE | SEAL.md (this file) |
+| 2 | `forge_vault` (skill) | 🪦 TOMBSTONE | SEAL.md (this file) |
+| 3 | `forge_vault` (skill) | 🪦 TOMBSTONE | SEAL.md (this file) |
 | 4 | 8 legacy seal paths | 🪦 ARCHIVED | 271 cooling files → `_archive/cooling/` |
 | 5 | `forge_cool_drift` / `forge_cool_pattern` | ⚠️ SUBORDINATE | Telemetry — governed by retention, not vault |
 | 6 | `arifflow_flow_ingest` | ⚠️ METABOLIC | NOT a record — FQ pulse only |

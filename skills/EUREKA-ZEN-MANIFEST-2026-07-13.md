@@ -42,7 +42,7 @@ Skills with identical content to their FORGE-* canonical version were moved to `
 ### ASI-* Duplicates Archived (generic → ARCHIVE)
 | Archived | Canonical |
 |----------|-----------|
-| constitutional-reasoning | ASI-constitutional-reasoning |
+| constitutional-reasoning | arifos-constitutional-judge |
 | drift-response | ASI-drift-response |
 | drift-watch | ASI-drift-watch |
 | multi-discipline-critique | ASI-multi-discipline-critique |
