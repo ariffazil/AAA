@@ -2967,10 +2967,37 @@ app.get('/api/agents/federation-status', (req, res) => {
   res.json({ ok: true, ...lifecycleManager.federationStatus(), timestamp: new Date().toISOString() });
 });
 
-app.get('/api/agents', (req, res) => {
+// ── Governed Prompt Loop Endpoints (Phase 6) ──────────────────────────────────
+app.get('/api/a2a/loop', (req, res) => {
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
-  const active = lifecycleManager.getActive();
-  res.json({ ok: true, count: active.length, agents: active });
+  res.json({
+    ok: true,
+    protocol: "a2a.prompt_loop.v1",
+    enabled: false,
+    mode: "observe_only",
+    max_turns_default: 3,
+    governance: "arifOS F13 Sovereign (Arif)",
+    relay_script: "/root/AAA/a2a-server/loop_relay.py",
+    schema: "/root/AAA/schemas/prompt-loop-envelope.schema.json"
+  });
+});
+
+app.post('/api/a2a/duplex-stream', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+  const envelope = req.body;
+  if (!envelope || !envelope.loop_id) {
+    return res.status(400).json({ ok: false, error: "Invalid PromptLoopEnvelope payload" });
+  }
+
+  const { execSync } = require('child_process');
+  try {
+    const inputJson = JSON.stringify(envelope);
+    const output = execSync(`python3 -c "import json, sys; sys.path.insert(0, '/root/AAA/a2a-server'); from loop_relay import PromptLoopRelay; relay = PromptLoopRelay(observe_only=True); res = relay.process_envelope(json.loads(sys.stdin.read())); print(json.dumps(res))"`, { input: inputJson, encoding: 'utf-8' });
+    const result = JSON.parse(output);
+    res.json({ ok: true, observe_only: true, result });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
 });
 
 // MUST be last — catches single agent by ID
