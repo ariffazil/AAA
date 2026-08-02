@@ -58,6 +58,10 @@ app.use(express.json({ limit: '12mb' }));
 app.use(membraneMiddleware);
 app.use(membraneResponseHook);
 
+// ── MCP Receipt Middleware (F2·F4·F11) — auto-wrap every MCP call to VAULT999
+const { receiptWrap } = require('./middleware/receipt_wrap');
+app.use(receiptWrap());
+
 // ── A2A-Version Header Middleware (A2A Protocol v1.0.0 §9.2) ────────────
 const { createA2AVersionMiddleware, setA2AVersionResponseHeader } = require('./a2a-version-middleware');
 
@@ -2730,22 +2734,30 @@ app.post('/a2a/tasks/send', authMiddleware, async (req, res) => {
   }
   const resolvedTaskId = taskId || generateId();
 
-  // ── A2A DID Signature Verification (Gap 4 — Day 5) ──────────────
-  // If the request carries an A2A envelope with from_did + signature,
-  // verify that the sender's DID signed this message before routing.
+  // ── A2A DID Signature Verification (FORGED 2026-08-02 — ENFORCED) ──
+  // NOW ENFORCED: All A2A tasks/send MUST carry a valid DID envelope.
+  // Conditional verification was Gap 4 — closed per F13 sovereign directive.
   const envelope = req.body?.envelope || req.body?.params?.envelope;
-  if (envelope && envelope.from_did && envelope.signature) {
-    const { verifyA2ASignature } = require('./federation_envelope');
-    const didResult = verifyA2ASignature(envelope);
-    if (!didResult.ok) {
-      logEvent('A2A_DID_FAIL', resolvedTaskId,
-        `from=${envelope.from_did} reason=${didResult.reason}`);
-      return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001,
-        `DID_VERIFY_FAIL: ${didResult.reason}`));
-    }
-    logEvent('A2A_DID_VERIFIED', resolvedTaskId,
-      `from=${didResult.did} organ=${didResult.organId}`);
+  if (!envelope || !envelope.from_did) {
+    logEvent('A2A_DID_MISSING', resolvedTaskId, `No DID envelope in A2A task`);
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001,
+      `DID_REQUIRED: All A2A tasks must carry a DID envelope with from_did + signature`));
   }
+  if (!envelope.signature) {
+    logEvent('A2A_DID_NO_SIG', resolvedTaskId, `from_did=${envelope.from_did} has no signature`);
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001,
+      `DID_REQUIRED: Signature missing for DID ${envelope.from_did}`));
+  }
+  const { verifyA2ASignature } = require('./federation_envelope');
+  const didResult = verifyA2ASignature(envelope);
+  if (!didResult.ok) {
+    logEvent('A2A_DID_FAIL', resolvedTaskId,
+      `from=${envelope.from_did} reason=${didResult.reason}`);
+    return res.status(403).json(createJSONRPCError(req.body?.id || 0, -32001,
+      `DID_VERIFY_FAIL: ${didResult.reason}`));
+  }
+  logEvent('A2A_DID_VERIFIED', resolvedTaskId,
+    `from=${didResult.did} organ=${didResult.organId}`);
 
   logEvent('A2A_DISPATCH', resolvedTaskId, `From: ${req.auth?.scheme || 'unknown'}, Target: ${targetAgent || 'auto'}`);
 
@@ -3178,8 +3190,8 @@ app.get('/api/a2a/loop', (req, res) => {
   res.json({
     ok: true,
     protocol: "a2a.prompt_loop.v1",
-    enabled: false,
-    mode: "observe_only",
+    enabled: true,
+    mode: "active",
     max_turns_default: 3,
     governance: "arifOS F13 Sovereign (Arif)",
     relay_script: "/root/AAA/a2a-server/loop_relay.py",
@@ -3197,9 +3209,9 @@ app.post('/api/a2a/duplex-stream', (req, res) => {
   const { execSync } = require('child_process');
   try {
     const inputJson = JSON.stringify(envelope);
-    const output = execSync(`python3 -c "import json, sys; sys.path.insert(0, '/root/AAA/a2a-server'); from loop_relay import PromptLoopRelay; relay = PromptLoopRelay(observe_only=True); res = relay.process_envelope(json.loads(sys.stdin.read())); print(json.dumps(res))"`, { input: inputJson, encoding: 'utf-8' });
+    const output = execSync(`python3 -c "import json, sys; sys.path.insert(0, '/root/AAA/a2a-server'); from loop_relay import PromptLoopRelay; relay = PromptLoopRelay(observe_only=False); res = relay.process_envelope(json.loads(sys.stdin.read())); print(json.dumps(res))"`, { input: inputJson, encoding: 'utf-8' });
     const result = JSON.parse(output);
-    res.json({ ok: true, observe_only: true, result });
+    res.json({ ok: true, observe_only: false, result });
   } catch (err) {
     res.status(500).json({ ok: false, error: err.message });
   }
