@@ -305,8 +305,15 @@ components:
     class: EDGE
     display_name: OpenClaw
     role: edge_agent_telegram
-    unit: openclaw-bot.service
+    units:
+      - openclaw-gateway.service    # primary; WebSocket gateway :18789 + Telegram webhook :8787
+      - openclaw-bot.service        # canon-listed worker (currently DISABLED — awaiting intentional activation)
+      - apa-telegram-bridge.service # F13 veto surface via A-FORGE forge_telegram :18096
     authority_ceiling: EDGE_AGENT
+    # Zen-2026-08-02 (kimi-code/FI-008): multi-unit listing after drift discovery
+    #   - 22 production secrets verified in vault.flat.env (cross-checked 2026-08-02)
+    #   - 5 orphan env files archived+deleted: _archive/2026-08-02-pre-unif/drift-env-cleanup.tar.gz
+    #   - T1.2 done; T2.a gateway-restart done; canon now matches live state
     forbidden_domains:
       - constitutional_judgment
       - self_authorization
