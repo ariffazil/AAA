@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "last_verified": "2026-08-03",
+    "last_verified": "2026-08-05",
     "alive_pools": [
       "deepseek",
       "minimax",
@@ -68,7 +68,7 @@
         "deepseek-v4-pro",
         "deepseek-v4-flash",
         "deepseek-v4-flash-0731",
-        "qwen3.8-max-preview",
+        "qwen3.8-max",
         "qwen3.7-max",
         "qwen3.7-plus",
         "qwen3.6-flash",
@@ -102,9 +102,9 @@
         "code_interpreter"
       ],
       "promos": [
-        "qwen3.8-max-preview: 10x usage (90% off credits)",
-        "qwen3.8-max-preview: night discount extra 80% off (22:00-08:00 UTC+8)"
+        "qwen3.8-max: one-time 7-day quota reset benefit (issued 2026-08-05, valid 7 days)"
       ],
+      "preview_retired_note": "qwen3.8-max-preview retired 2026-08-05 per Alibaba Cloud GA announcement. Replaced by qwen3.8-max (GA). Promo pricing (10x/90% off) ended.",
       "restrictions": [
         "No API automation — interactive agent use only",
         "Singapore region, global deployment",
@@ -164,7 +164,7 @@
         "qwen3.7-max",
         "qwen3.7-plus",
         "qwen3.6-flash",
-        "qwen3.8-max-preview",
+        "qwen3.8-max",
         "glm-5.2",
         "wan2.7-image",
         "wan2.7-image-pro",
@@ -1238,14 +1238,135 @@
       "soul_file_ref": "qwen_soul.yaml",
       "shadow_file_ref": "qwen_shadow.yaml",
       "last_verified": "2026-07-04",
-      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal — qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M — expensive.",
+      "note": "Highest capability Qwen via Bailian. Text-only (NOT multimodal — qwen3.7-plus is the multimodal). $2.50/$7.50 per 1M — expensive. SUPERSEDED by Qwen3.8-Max (2026-08-03).",
       "usage_signal": {
         "source": "opencode.ai/data",
         "window": "2026-06-08 to 2026-08-02",
         "tokens_60d": "42B",
         "trend": "-10%",
         "note": ""
-      }
+      },
+      "superseded_by": "qwen/qwen3.8-max",
+      "superseded_date": "2026-08-03",
+      "superseded_note": "Qwen3.8-Max (2.4T) announced 2026-08-03. Open weights next week. Lower price ($2.0/$6.0) than 3.7-Max ($2.5/$7.5)."
+    },
+    {
+      "model_key": "qwen/qwen3.8-max",
+      "model_family": "Qwen 3.8",
+      "model_variant": "max",
+      "provider_ref": "qwen-token-plan",
+      "also_available_via": [
+        "bailian-token-plan",
+        "opencode-zen"
+      ],
+      "context_window": 1048576,
+      "max_output_tokens": 131072,
+      "architecture": {
+        "type": "Mixture-of-Experts (MoE)",
+        "total_parameters": "2.4T (2,400,000,000,000)",
+        "activated_parameters": "unknown",
+        "note": "Announced 2026-08-03. 2.4T total params. Qwen's most capable model to date. Open weights releasing next week. Qwen3.8-27B also going open weights simultaneously."
+      },
+      "capabilities": [
+        "reasoning",
+        "tool_call",
+        "code",
+        "plan",
+        "agentic",
+        "vision",
+        "autonomous_coding",
+        "long_horizon_planning",
+        "multimodal_feedback_loop",
+        "structured_outputs"
+      ],
+      "modalities": [
+        "text",
+        "image"
+      ],
+      "open_weights": false,
+      "open_weights_note": "Opening next week (week of 2026-08-10). Qwen3.8-27B also going open weights.",
+      "license": "TBD (open weights announced, license unspecified)",
+      "cost_per_1m_input": 2.0,
+      "cost_per_1m_output": 6.0,
+      "cost_per_1m_input_cache_hit": 0.25,
+      "cost_notes": "GA pricing as of 2026-08-05. Preview model (qwen3.8-max-preview) RETIRED same day. Personal Token Plan now supports GA model. One-time 7-day quota reset benefit issued to all subscribers on Aug 5. Promo pricing (10x/90% off) may have ended with preview retirement — verify in console. Credit consumption rate visible in Alibaba Cloud console.",
+      "ga_date": "2026-08-05",
+      "preview_retired": true,
+      "preview_model_id": "qwen3.8-max-preview",
+      "ga_model_id": "qwen3.8-max",
+      "benchmark_highlights": {
+        "autonomous_coding": {
+          "self_evolving_dev": "10+ days from empty folder to production",
+          "github_trace": "github.com/qwen-code-dev-…"
+        },
+        "long_horizon": {
+          "chip_design": "500+ turns of optimization",
+          "ecommerce_strategy": "365 days"
+        },
+        "multimodal": {
+          "note": "Vision as continuous feedback loop for planning, execution, self-correction"
+        }
+      },
+      "rate_limits": {
+        "rpm": null,
+        "tpm": null,
+        "concurrency": null
+      },
+      "hyperparameters": {
+        "temperature_default": 1.0,
+        "top_p_default": 0.95,
+        "thinking_mode_supported": true,
+        "thinking_mode_overrides_hyperparams": true
+      },
+      "status": "LIVE",
+      "trust_tier": 3,
+      "suitable_for": [
+        "autonomous_coding",
+        "long_horizon_planning",
+        "multimodal_agentic_work",
+        "complex_reasoning",
+        "code_generation"
+      ],
+      "not_recommended_for": [
+        "constitutional_verdicts_without_fff_full_battery",
+        "sovereign_seal_operations_without_testing",
+        "cost_sensitive_tasks_outside_promo"
+      ],
+      "forbidden_actions": [
+        "self_authorize",
+        "seal_without_judge",
+        "irreversible_commit",
+        "constitutional_amendment"
+      ],
+      "requires_human_ack_for": [
+        "irreversible_delete",
+        "vault_seal"
+      ],
+      "constitutional_roles": [],
+      "constitutional_roles_forbidden": [
+        "666_JUDGE",
+        "999_SEAL"
+      ],
+      "identity_verified": false,
+      "censorship_profile": null,
+      "fff_gate": null,
+      "fff_gate_note": "NOT YET TESTED. FFF gate required before any constitutional role assignment. Pending open weights release for full evaluation.",
+      "live_evidence": {
+        "probed_at": "2026-08-05",
+        "probed_by": "333-AGI (via Alibaba Cloud GA announcement + Qwen Token Plan provider)",
+        "method": "Alibaba Cloud official GA announcement email 2026-08-05. Model ID: qwen3.8-max (GA). Preview model (qwen3.8-max-preview) retires same day.",
+        "verdict": "GA",
+        "note": "GENERALLY AVAILABLE as of 2026-08-05. Personal Token Plan supports the GA model. Preview retired. Probe the live /v1/models endpoint to confirm GA model ID is active."
+      },
+      "soul_file_ref": "qwen_soul.yaml",
+      "shadow_file_ref": null,
+      "last_verified": "2026-08-05",
+      "last_ingested": "2026-08-05",
+      "ingest_source": "https://qwen.ai/blog?id=qwen3.8 (2026-08-03 announcement) + Alibaba Cloud GA email (2026-08-05)",
+      "ingest_note": "Qwen3.8-Max GA 2026-08-05. Preview model (qwen3.8-max-preview) retired same day. 2.4T parameters, autonomous coding (10+ day self-evolving), 500+ turn chip design, 365-day e-commerce strategy, native multimodal vision feedback loop. Pricing $2.0/$6.0 with $0.25 cache. Open weights coming next week. One-time 7-day quota reset benefit for all subscribers. Qwen3.8-27B also going open weights. Supersedes Qwen3.7-Max. NOT YET FFF-GATED — do not assign constitutional roles.",
+      "note": "GA 2026-08-05. Qwen's most capable model. 2.4T params. Live via Qwen Token Plan (model ID: qwen3.8-max). 20% cheaper than 3.7-Max ($2.0/$6.0 vs $2.5/$7.5). One-time quota reset benefit active for 7 days from Aug 5. Open weights + Qwen3.8-27B next week. Watchlisted for federation agent binding after FFF gate + open weights evaluation.",
+      "promo_active": false,
+      "promo_details": "Preview promo (10x/90% off) ENDED with preview retirement 2026-08-05. GA pricing applies. One-time 7-day quota reset benefit active."
     },
     {
       "model_key": "qwen/qwen3.6-flash",
