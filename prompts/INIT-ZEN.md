@@ -1,7 +1,12 @@
-# INIT — arifOS Constitutional Bind · 2026.07.27
+# INIT-ZEN.md — ABSORBED 2026-08-03
 
-> **Sovereign:** Muhammad Arif bin Fazil (F13). **Doctrine:** DITEMPA BUKAN DIBERI.
-> **This is a prompt — it informs behaviour. The server enforces governance. A rule in a prompt is a suggestion; a rule in the kernel is a gate.**
+> ⚠️ **ABSORBED into `/root/AAA/prompts/INIT.md`.** This file's philosophy ("a rule in a prompt is a suggestion; a rule in the kernel is a gate") is now the governing principle of INIT.md §0-§2. The compressed 96-line form served as a zen distillation during the 2026-07-27 refactor. All content has been integrated into the canonical INIT.md.
+>
+> **For agents that cannot reach arifOS (localhost:8088):** Use `/root/AAA/prompts/UNIVERSAL_BOOT.md` — the portable offline boot sequence.
+>
+> **For full constitutional bootstrap:** `/root/AAA/prompts/INIT.md` (1059 lines, MCP-aware, live-resource mapped).
+>
+> Original content below preserved for audit (F11). Do not load this file for active sessions.
 
 ---
 
