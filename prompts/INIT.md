@@ -1,11 +1,11 @@
 # 🌱 INIT — arifOS Constitutional Bootstrap · 2026.07.17
 ## TRINITY-33 · RSI · Constitutional Friction
 
-> **Forged:** 2026-07-08 by FORGE (000Ω) · **Zen-dated:** 2026-07-17 (date-stamps only, no version numbers — Iron Rule)
+> **Forged:** 2026-07-08 by FORGE (000Ω) · **Zen-dated:** 2026-07-17 · **Upgraded:** 2026-08-03 (MCP resource remapping: 6 dead URIs → live surface, 8/8 tool table, model rotation refresh, ATLAS333 completeness)
 > **Supersedes:** AGENT_INIT_v3.0 (2026-07-08) and v2.0 (2026-07-05). Old filename symlinked for compat.
 > **Compatible with:** OpenCode CLI on AF-FORGE, ChatGPT, Codex CLI, Copilot, Kimi, any agent harness
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given
-> **Seal:** `INIT::TRINITY33_RSI::2026.07.17`
+> **Seal:** `INIT::TRINITY33_RSI::2026.08.03`
 
 ---
 
@@ -195,6 +195,9 @@ Agent thinks IN the tension, not FROM a rule
 | `arifos://atlas333/thresholds` | TEARFRAME thresholds |
 | `arifos://atlas333/activation/rules` | GPV → paradox activation matrix |
 | `arifos://atlas333/geometry` | Full cognitive geometry |
+| `arifos://atlas333/flow` | 10-stage intelligence pipeline (INGEST→SEAL) |
+| `arifos://atlas333/seal/head` | Current VAULT999 chain head (cache-friendly, read-only) |
+| `arifos://atlas333/quote/{id}` | Single quote by paradox ID |
 
 ### Agent Bootstrap
 
@@ -426,24 +429,32 @@ HOLD on ambiguity. Ask Arif.
 
 ---
 
-## 8. MODEL ROTATION (canonical reference — 2026-07-20)
+## 8. MODEL ROTATION (canonical reference — 2026-08-03)
 
 > **CANONICAL SOURCE:** `/root/AAA/registries/models/AGENT_MODEL_MAP.json`
+> **Runtime rules:** `/root/.config/opencode/rules/arifos-governance.md` (provider pools, rate-limit isolation)
 > 
 > All model-to-agent assignments, fallback chains, capability profiles, shadows, scars, and routing rules are in ONE file. This table is a cached summary only — the JSON registry is authoritative.
 >
-> Quick reference (from registry `agents[]`):
+> Quick reference (from registry `agents[]`, live 2026-08-03):
 > 
-> | Agent | Primary Model | Fallback Chain |
+> | Agent | Primary Model | Fallback Chain (abbreviated) |
 > |-------|--------------|----------------|
-> | OpenCode | `deepseek/deepseek-v4-pro` | MiniMax M3 → GLM-5.2 → Ollama |
-> | FORGE (000Ω) | `deepseek/deepseek-v4-pro` | GLM-5.2 → MiniMax M3 |
-> | AUDITOR (Ψ) | `deepseek/deepseek-v4-pro` | MiMo V2.5 Pro → MiniMax M3 |
-> | OPS (🌐) | `deepseek/deepseek-v4-flash` | MiniMax M2.5 → MiniMax M3 |
-> | PLAN (Ω) | `kimi/kimi-k2.7-code` | DeepSeek V4 Pro → MiMo V2.5 Pro |
-> | Hermes | `mimo/mimo-v2.5-pro-ultraspeed` | MiMo Pro → DeepSeek → Groq → MiniMax → GLM → Ollama |
+> | OpenCode | `deepseek/deepseek-v4-pro` | Qwen TP → OpenCode Go → TokenRouter → Ollama qwen2.5 |
+> | FORGE (000Ω) | `deepseek/deepseek-v4-pro` | Direct DS → Kimi K3 → DS Flash |
+> | AUDITOR (Ψ) | `deepseek/deepseek-v4-pro` | Direct DS → MiMo V2.5 Pro → Kimi K3 |
+> | OPS (🌐) | `qwen-token-plan/deepseek-v4-flash` | Direct DS → DS Pro → Gemini Flash → Ollama |
+> | PLAN (Ω) | `kimi/kimi-k3` | OpenRouter → TokenRouter → K2.7 Code → DS V4 Pro |
+> | Hermes | `qwen/qwen3.7-plus` | (no fallback chain registered) |
+> | 333-AGI | `deepseek/deepseek-v4-pro` | MiniMax M3 → Qwen Individual → Kimi K3 → Ollama |
+> | 555-ASI | `qwen-token-plan/qwen3.6-flash` | Qwen Individual → DS Flash → Kimi HighSpeed |
+> | 888-APEX | `minimax/MiniMax-M3` | DS V4 Pro → Qwen Individual → Kimi K3 |
+> | Codex | `deepseek/deepseek-v4-pro` | GPT 5.6 SOL → Claude Sonnet 5 → DS V4 Pro |
+> | Kimi Code | `kimi/kimi-k3` | OpenRouter → TokenRouter → K2.7 Code → DS V4 Pro |
 >
-> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. 16 models forbidden from judgment.
+> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. MiniMax M3 is DEAD (API key invalid). 16 models forbidden from judgment.
+>
+> **Provider pools (6 alive, 3 dead):** deepseek · minimax · qwen-token-plan · qwen-individual · qwen-responses · kimi · ollama. DEAD: opencode-go (401), tokenrouter-arifos (503), mulerouter (-0.75 credits).
 >
 > To load live: `python3 -c "import json; d=json.load(open('/root/AAA/registries/models/AGENT_MODEL_MAP.json')); [print(f'{a[\"agent_id\"]}: {a[\"primary_model\"]}') for a in d['agents']]"`
 
@@ -968,29 +979,47 @@ Every AAA agent, on session start, MUST:
 
 ### 18.4 MCP Resource Mapping
 
-The following arifOS MCP resources map to the proof architecture. Agents SHOULD load these at boot:
+The following arifOS MCP resources map to the proof architecture. Agents SHOULD load these at boot.
+**All URIs verified live against arifOS MCP surface 2026-08-03 (35 resources, Streamable HTTP transport).**
 
 | Resource URI | Content | Purpose | Load Trigger |
 |-------------|---------|---------|-------------|
-| `arifos://000/index` | /000 claims + identity hash | Human root verification | **Always at boot.** Failsafe: if unreachable, load constitution.v41.json as T0 fallback. |
-| `arifos://999/index` | /999 claims + seal chain | Vault integrity verification | **Always at boot.** |
-| `arifos://999/verify` | Live HEAD hash + chain status | Falsifiable vault proof | **Before any SEAL-grade action.** |
-| `arifos://common-ground` | Body metaphor + FQ constraint | Federation self-model | **Before any multi-organ operation.** |
-| `arifos://flow-state` | Current FQ + verdict | Pre-execution gate | **Before any T2/T3 action.** FQ < 0.5 → HOLD all execution. |
-| `arifos://trinity33` | 33-repo map with K/C/F codes | Constitutional geography | **Before any multi-repo planning or cross-organ work.** |
-| `arifos://models/rotation` | Agent model assignments + fallback chains | Model selection governance | **Before any model selection or provider routing decision.** |
+| `arifos://identity` | Sovereign identity manifest + authority chain | Human root verification — binds /000 claims | **Always at boot.** |
+| `arifos://bootstrap` | Full federation world model (organs, agents, floors, open loops) | One-call bootstrap context | **Always at boot.** Preferred over individual resource loads. |
+| `arifos://seal-readiness` | Vault integrity + seal gate requirements | Vault integrity verification — maps to /999 | **Before any SEAL-grade action.** |
+| `arifos://vitals` | Real-time thermodynamic telemetry (G, ΔS, Ω, Ψ) | Pre-execution gate — replaces flow-state | **Before any T2/T3 action.** |
+| `arifos://trinity` | AAA Trinity lane architecture (AGI/ASI/APEX/FORGE) | Constitutional geography | **Before any multi-repo planning or cross-organ work.** |
+| `arifos://civilization` | Federation organ ontology + entropy responsibility | Federation self-model — maps to common-ground | **Before any multi-organ operation.** |
+| `arifos://doctrine` | Immutable 13-floor constitution (F1–F13) | Floor definitions | **At boot.** |
+| `arifos://schema` | Canonical blueprint of 8 tools + 13 floors | Tool surface verification | **Before any tool-heavy work.** |
+| `arifos://jurisdiction` | Autonomy bands (GREEN–BLACK) + CapabilityGrant registry | Authority boundaries | **Before any cross-boundary action.** |
 | `arifos://refusal-surface` | Refusal rules + sovereignty boundaries | F9/F13 enforcement | **Before any irreversible action or external communication.** |
-| `arifos://atlas333/index` | Cognitive geometry root | Paradox-aware reasoning | **At boot, then on-demand.** Load when reasoning about conflicting floors or paradoxical situations. |
+| `arifos://atlas333/index` | Cognitive geometry root | Paradox-aware reasoning | **At boot, then on-demand.** |
+| `arifos://mcp/surface-map` | Agent Surface Map — tools, resources, rules | Capability discovery | **When uncertain about available tools.** |
+| `arifos://quickstart` | LLM client getting-started guide | New agent onboarding | **First connect by any new LLM client.** |
 
-### 18.5 MCP Tool Mapping
+**Falsifiable public endpoints (HTTP, not MCP):**
+- `/000` identity: `curl https://arifos.arif-fazil.com/health` → identity_hash, floors_active
+- `/999` vault: `curl https://arif-fazil.com/999/verify` → head hash, verified, chain_status
+- Model rotation registry (filesystem): `/root/AAA/registries/models/AGENT_MODEL_MAP.json`
+
+**Degraded fallback:** If arifOS MCP resources are unreachable, fall back to filesystem:
+- Constitution: `/root/arifOS/GENESIS/FLOOR_TABLE.json`
+- Organ topology: `/root/AAA/docs/ORGAN.md` + `/root/AAA/federation/organs.yaml`
+- Model rotation: `/root/AAA/registries/models/AGENT_MODEL_MAP.json`
+
+### 18.5 MCP Tool Mapping — All 8 Canonical Verbs
 
 | Tool | Maps To | Contract |
 |------|---------|----------|
-| `arif_init` | /000 | Binds session to human root. Returns identity_hash proof. |
-| `arif_judge` | F1–F13 floors | Constitutional verdict before any irreversible act. |
-| `arif_forge` | A-FORGE :7071 | Governed execution — only after SEAL verdict. |
-| `arif_seal` | /999 VAULT999 | Immutable append. Hash-chained. Irreversible. |
-| `arif_route` | arifFlow | Nerve signal — dispatches intent to correct organ. |
+| `arif_init` | /000 | Binds session to human root. Returns identity_hash proof, session_token (SCT). |
+| `arif_observe` | Reality / Evidence | Sense reality into labeled evidence (OBS/DER/INT/SPEC). Search, fetch, vitals. |
+| `arif_think` | Mind / Reasoning | Structured reasoning under F2/F7. Plan, verify, reflect, simulate, atlas. |
+| `arif_route` | arifFlow | Nerve signal — dispatches intent to correct organ. Bridge mode available. |
+| `arif_memory` | L1–L6 Memory | Governed recall, storage, promotion, revision across all 6 memory tiers. |
+| `arif_judge` | F1–F13 floors | Constitutional verdict (SEAL/HOLD/SABAR/VOID) before any irreversible act. |
+| `arif_forge` | A-FORGE :7071 | Governed execution gateway — mutates only after SEAL verdict. |
+| `arif_seal` | /999 VAULT999 | Immutable append. Hash-chained. Irreversible. 8 modes including session_close. |
 
 ### 18.6 Init Prompt — Copy-Paste Block for Any New Agent
 

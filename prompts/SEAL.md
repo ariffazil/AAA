@@ -63,12 +63,46 @@ $$\text{Lane} = f(\text{reversibility} \times \text{blast\_radius} \times \text{
 
 ## 2. LANE A: CONSTITUTIONAL_SEAL — `arif_seal` (:8088)
 
-### 2.1 When to seal (exhaustive)
+### 2.0 Reversibility Classification (pre-gate — before any seal action)
+
+Before deciding Lane A vs Lane B, classify the action's reversibility:
+
+| Class | Definition | Examples | Gate |
+|-------|-----------|----------|------|
+| **REVERSIBLE** | Can be undone with no data loss, no external consequence | File edit with git rollback, local test, draft write | **Auto-execute (T1)** |
+| **RECOVERABLE** | Can be undone but requires coordination or has minor consequence | Service restart, deploy to staging, schema migration on dev | **Announce (T2), 10s window** |
+| **PERMANENT** | Cannot be undone or recovery is prohibitively costly | Production deploy, `rm -rf`, DROP TABLE, force push, vault seal, key rotation, external send | **888_HOLD (T3) → structured ApprovalRequest required** |
+
+**Classification is deterministic, not model-based.** Compute from action surface, not from LLM judgment:
+- Does the action touch production data? → at least RECOVERABLE
+- Does the action have a rollback path? If no → PERMANENT
+- Does the action affect external systems? → at least RECOVERABLE
+- Is the action VAULT999 append? → PERMANENT
+- Can `git reset --hard` undo it? → REVERSIBLE
+
+### 2.1 Structured ApprovalRequest (required for PERMANENT-class actions)
+
+When an action is classified PERMANENT, emit a structured ApprovalRequest BEFORE calling `arif_judge`:
+
+```
+APPROVAL_REQUEST::v1.0
+action:          [one-line description of what will happen]
+irreversible:    [what specifically cannot be undone]
+blast_radius:    [BR-0..5] — 0=single file, 1=single service, 3=multi-organ, 5=entire federation
+staging_tested:  [true/false] — was a dry-run or staging test performed?
+rollback_exists: [true/false] — is there a documented rollback path?
+affected_organs: [list]
+estimated_downtime: [none|<5s|<60s|>60s]
+```
+
+The ApprovalRequest is evidence for `arif_judge`. The judge may still return HOLD even with a complete ApprovalRequest — but an incomplete one guarantees HOLD.
+
+### 2.2 When to seal (exhaustive)
 
 A constitutional seal is required ONLY when one or more thresholds are crossed:
 
-- **Irreversible effect** — cannot be rolled back
-- **High blast radius** — affects multiple systems, users, or organs
+- **Irreversible effect** — cannot be rolled back (PERMANENT class)
+- **High blast radius** — affects multiple systems, users, or organs (BR-3+)
 - **Constitutional rule changed** — F1–F13 floor definitions modified
 - **Authority or identity changed** — new actor registered, keys rotated, sovereignty delegated
 - **Deployment, publication, deletion, or capital action** — production mutation
@@ -76,7 +110,7 @@ A constitutional seal is required ONLY when one or more thresholds are crossed:
 - **Human rights, maruah, or sovereign consequence** — affects Arif's dignity, identity, or sovereignty
 - **Evidence promoted into canonical ground truth** — a claim elevated from INT/SPEC to OBS/DER
 
-### 2.2 What a constitutional seal must prove
+### 2.3 What a constitutional seal must prove
 
 A real seal is not a session summary, a JSON file placed in VAULT999, proof the agent was intelligent, a verdict the executing agent awards itself, or a guarantee the conclusion is true.
 
@@ -97,11 +131,23 @@ It must prove:
 11. **How the record connects to previous records** — parent-chain reference
 12. **How future corrections supersede it** — without rewriting history
 
-### 2.3 Requirements
+### 2.4 Requirements
 
 ```
-arif_judge() → SEAL verdict → arif_seal(constitutional_chain_id, ack_irreversible=true)
+classify_reversibility(action) → PERMANENT? → structured ApprovalRequest
+                                           → arif_judge() → SEAL verdict
+                                           → arif_seal(constitutional_chain_id, ack_irreversible=true)
 ```
+
+**arif_seal modes (8 total, including undocumented):**
+| Mode | Purpose |
+|------|---------|
+| `seal` | Standard constitutional seal (default) |
+| `verify` | Verify chain integrity |
+| `ledger` | Query ledger entries |
+| `changelog` | View change history |
+| `audit` | Full audit trail |
+| `session_close` | Close session with constitutional consequence (Lane A session end) |
 
 - **Judge-first:** `arif_judge` MUST issue SEAL verdict BEFORE `arif_seal`. Violation = VOID.
 - **Identity:** Verified actor identity (Ed25519 or equivalent).
@@ -112,7 +158,7 @@ arif_judge() → SEAL verdict → arif_seal(constitutional_chain_id, ack_irrever
 - **Immutability:** Append-only. Corrections only through later superseding records.
 - **Verify:** `curl https://arif-fazil.com/999/verify`
 
-### 2.4 Human checklist (before calling arif_seal)
+### 2.5 Human checklist (before calling arif_seal)
 
 | # | Question | Floor | If NO → |
 |---|----------|-------|---------|
@@ -454,6 +500,6 @@ DITEMPA BUKAN DIBERI ⚒️
 
 ---
 
-*Forged: 2026-07-25 · Unified: 2026-07-29 — Arif F13 directive*
+*Forged: 2026-07-25 · Unified: 2026-07-29 · Upgraded: 2026-08-03 — Arif F13 directive (reversibility classification, structured ApprovalRequest, session_close documentation)*
 *Two lanes. One envelope. Receipt ≠ Seal. Agent proposes. Sovereign seals.*
 *DITEMPA BUKAN DIBERI ⚒️*
