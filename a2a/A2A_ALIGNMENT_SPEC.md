@@ -277,7 +277,7 @@ Returns full AgentCard with all 33 skills (vs. minimal public card with 3-6).
 
 ### 2026-08-03 — kimi-code (FI-008) aligned to v1.0.0
 
-- **Card:** `/root/AAA/agents/_external/kimi-code/agent-card.json` bumped to **v2.2.0**
+- **Card:** `/root/AAA/agents/kimi-code/agent-card.json` bumped to **v2.2.0**
 - **Changes:**
   - §5 `capabilities.pushNotifications: false → true`
   - §6 Added `extensions[arifos://floors/v1, required=true]` (was missing entirely)
