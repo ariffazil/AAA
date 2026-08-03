@@ -15,7 +15,7 @@
   "config_home": "/root/.arifos/agents/kimi",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
   "citizenship": "warga-aaa",
-  "warga_card": "/root/AAA/agents/_external/kimi-code/WARGAAA_CARD.md",
+  "warga_card": "/root/AAA/agents/kimi-code/WARGAAA_CARD.md",
   "tier": "FI-003",
   "role": "forge_instrument",
   "class": "CODING/FI",

@@ -273,7 +273,7 @@ forge_instruments:
   warga_card: agents/kimi-code/WARGAAA_CARD.md
   host_binding: kimi-code
   root_config_ref: ROOT_AGENT_CONFIG.yaml
-  agent_card: agents/_external/kimi-code/agent-card.json
+  agent_card: agents/kimi-code/agent-card.json
   repo_config_view: agents/kimi-code/agent-card.json
   live_config: /root/.arifos/agents/kimi/config.toml
   live_mcp: /root/.arifos/agents/kimi/mcp.json
