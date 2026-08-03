@@ -50,3 +50,5 @@ A2A Server (port 3001)
 - [AAA Cockpit](../README.md) — the React frontend and control plane
 - [arifOS Constitution](https://github.com/ariffazil/arifOS) — F1-F13 floors
 - [HEXAGON Agents](../agents/) — agent identity directories
+- [aaa-a2a](../aaa-a2a/README.md) — alpha Python port of this server (future canonical, post-migration)
+- [A2A Alignment Spec](../a2a/A2A_ALIGNMENT_SPEC.md) — A2A Protocol v1.0.0 doctrinal spec
