@@ -198,3 +198,4 @@ state/*.tmp.json
 IDENTITY/identity.toml.*.bak
 
 ### existing content preserved above ###
+ledger/
