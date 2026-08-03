@@ -89,7 +89,7 @@ FI-008  Kimi Code       →  MoonshotAI/kimi-code         5.5K ★  MIT         
 | Subagents | Bughunter fleet: 5, gated |
 | Sandbox | Seatbelt retained |
 | Federation | 13 arifOS constitutional tools. F1-F13 bound. |
-| Governance | Governed-agent. arif_session_init. Token-gate hooks. Auto-seal hooks. |
+| Governance | Governed-agent. arif_init. Token-gate hooks. Auto-seal hooks. |
 
 ### Ontological Gap
 > Vanilla Claude Code: Anthropic's walled garden — Claude models, Claude infra, Claude auth. Single-vendor vertical integration. Maximum Claude, zero else.
