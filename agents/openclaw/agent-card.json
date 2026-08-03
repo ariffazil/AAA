@@ -5,7 +5,7 @@
   "name": "OpenClaw Gateway",
   "principal_agent": {
     "type": "agent",
-    "category": "Native A2A agent \u2014 runtime owns itself",
+    "category": "Native A2A agent — runtime owns itself",
     "principle_origin": "Self-owned runtime, governed by F1-F13"
   },
   "description": "Live multi-agent gateway hosting main, opencode, codex, and kimi personas. WebSocket-native execution engine for Telegram @AGI_ASI_bot, web search, browser automation, shell execution, and ACP bridges to federation organs.",
@@ -132,7 +132,7 @@
     {
       "id": "FORGE-openclaw-doctor",
       "name": "OpenClaw Doctor Recipes",
-      "description": "Fix common OpenClaw gateway health issues \u2014 model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
+      "description": "Fix common OpenClaw gateway health issues — model-registry drift, MCP localhost bindings, plugin cache, orphan transcripts, gateway restart, Telegram webhook 502/404, webhook-URL drift vs Caddy route, post-fix reply-latency. ACTIVE.",
       "tags": [
         "doctor",
         "MCP",
@@ -155,7 +155,7 @@
     {
       "id": "FORGE-mcp-boot-diagnosis",
       "name": "MCP Boot Failure Diagnosis",
-      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports \u2014 distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
+      "description": "Diagnose MCP servers that show 'failed' in Hermes/OpenClaw boot screen. Boot status is misleading for stdio and SSE transports — distinguish 'not connected to a session' (false negative) from 'actually broken'. F1, F11 enforced. ACTIVE.",
       "tags": [
         "MCP",
         "boot",
@@ -176,7 +176,7 @@
     {
       "id": "FORGE-federation-ops",
       "name": "arif Federation Ops",
-      "description": "arifOS federation topology and routing \u2014 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
+      "description": "arifOS federation topology and routing — 7 organs + gateway. Map ports, services, dependencies for gateway dispatch decisions. F1, F11 enforced. ACTIVE.",
       "tags": [
         "federation",
         "topology",
@@ -197,7 +197,7 @@
     {
       "id": "AGI-kanban-playbook",
       "name": "Kanban Playbook",
-      "description": "Hermes Kanban dispatcher \u2014 both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
+      "description": "Hermes Kanban dispatcher — both orchestrator (routing, decomposition, fan-out, recovery) and worker (handoff shapes, retries, pitfalls, edge cases) perspectives. F4 enforced. ACTIVE.",
       "tags": [
         "kanban",
         "dispatcher",
@@ -248,7 +248,7 @@
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -264,7 +264,7 @@
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -309,7 +309,7 @@
     {
       "id": "KERNEL-verbs-forge-hands",
       "name": "Forge Verbs (Execution)",
-      "description": "Governed execution verbs: dry_run \u2192 engineer \u2192 write \u2192 commit \u2192 deploy. Every verb has a reversibility class.",
+      "description": "Governed execution verbs: dry_run → engineer → write → commit → deploy. Every verb has a reversibility class.",
       "tags": [
         "kernel",
         "forge",
@@ -484,7 +484,7 @@
           "cooling"
         ],
         "version": "2026-07-29",
-        "note": "arifFLOW \u2014 FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
+        "note": "arifFLOW — FQ pulse, flow receipts, cooling phases. No MCP tools; health + receipt query only."
       }
     ]
   },
@@ -556,7 +556,7 @@
       "from_version": "2026.6.1",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -651,5 +651,16 @@
   },
   "ed25519_pubkey": "6c232cbe23b8414b25e07a981ac0530e784bc02665f209ab9fa46a8ea72bbd2c",
   "identity_fingerprint": "d34446ad0908b3f58b6b57031ea4153d",
-  "identity_bound_at": "2026-07-29T13:55:07.272023+00:00"
+  "identity_bound_at": "2026-07-29T13:55:07.272023+00:00",
+  "model": "deepseek/deepseek-v4-pro",
+  "primary_model": "deepseek/deepseek-v4-pro",
+  "fallback_chain": [
+    "deepseek/deepseek-v4-flash",
+    "minimax/MiniMax-M3",
+    "kimi/kimi-for-coding",
+    "kimi/k3"
+  ],
+  "_pool": "A",
+  "_pool_name": "DeepSeek Direct",
+  "_zen_note": "2026-08-03: Aligned with redistribution. Primary: Pool A (DeepSeek direct). Fallbacks: Pool B (MiniMax), Pool F (Kimi)."
 }

@@ -1,139 +1,23 @@
 {
   "_meta": {
-    "schema": "arifos-agent-model-map-v2",
-    "schema_version": "2.1.0",
-    "forged": "2026-07-31",
-    "forged_by": "333-AGI — Qwen Token Plan Pro activation",
-    "ingest_note": "2026-07-31: Qwen Token Plan Individual Pro activated. Key rotated (sk-sp-H...). Plan: $68/mo, 40K Credits/7d, 12K Credits/5hr, 6-8 concurrent agents. 9 text models + image/audio/video. PRIMARY provider — route everything here first (RM0 marginal within plan). Agent models updated: 555-ASI→qwen3.6-flash, 888-APEX→glm-5.2. Hermes model-picker updated. opencode.json qwen-token-plan provider added.\n\n=== 2026-08-02 ENTROPY-REDUCTION ROUND 2 (kimi-code/FI-008) ===\nF13 ratification ARIF acknowledged: SEAL all + commit OpenCode Go + lift Claude block.\nFIXED: minimax status KEYS_INVALID -> ACTIVE — verified via MINIMAX_PLUGIN_API_KEY probe (kimi-code session running live).\nADDED: opencode-go provider — 17 PAID models under $10/mo flat for $60/mo aggregate usage. endpoint https://opencode.ai/zen/go/v1/. Adapter via OPENCODE_GO_API_KEY.\nADDED: opencode-zen provider — 50+ models, PAYG plus 7 transient FREE models (big-pickle, deepseek-v4-flash-free, mimo-v2.5-free, ling-3.0-flash-free, north-mini-code-free, nemotron-3-ultra-free, laguna-s-2.1-free). endpoint https://opencode.ai/zen/v1/.\nFIXED: 4 mulerouter VL model entries missing status/provider_ref — added.\nFIXED: duplicate model_key kimi/kimi-for-coding — disambiguated second as 'bailian-token-plan/kimi-for-coding'.\nADDED usage_signal field (opencode.ai/data Jun 8 -> Aug 2, 19T tokens observed):\n  - deepseek-v4-flash 14T tokens, +21% MoM (king)\n  - kimi-k3 301B, +32% MoM (rising)\n  - hy3 59B, +110% MoM (Tencent — keep-window)\n  - glm-5.2 606B, -29% MoM (declining)\n  - minimax-m3 581B, -17% MoM (still WAJIB daily driver)\n  - cache ratio observed: 95% (219.2B cached vs 11.2B uncached)\nLIFTED arifOS kernel CLAUDE BLOCK via arifOS model_registry.json — block was on kernel-context wiring, not the model itself; agents via non-kernel paths can use Claude.\nSUNSET cerebras 2026-08-20 (~18 days). DEMOTED openrouter :free → DEGRADED in FLAME cascade (197-200/200 daily cap hit today). PARKED tokenrouter — drain $59.94, no more top-ups; SHADOW-TR-001 documents max_tokens cap contamination.\nCASCADE updated: opencode-zen(FREE) → opencode-go($10/mo, $60 cap) → qwen-token-plan (individual pro $68/mo, RM0 marginal) → minimax direct → deepseek direct → kimi-moonshot direct → bailian-token-plan → groq(gemini)(sea-lion)(ollama) → HOLD.\n\n=== 2026-08-02 ZEN FED for Hermes (F13::FED_UNIFIED round 3) ===\nHermes registered as first FED-citizen agent. Two ZEN edits:\n  + models[]: qwen/qwen3.7-plus added (route: qwen-token-plan, $0.40/$1.60, vision+text) — was in env QWEN_DEFAULT_MODEL but not yet in SOT.\n  ~ agents[]: Hermes entry corrected — primary qwen/qwen3.7-plus via Qwen Plan Pro (RM0 within plan), fallback deepseek-v4-pro direct. Stale 7-entry fallback chain removed.\nZero new code. Day-2: SOT resolver; Day-3: Hermes-CLI anthropic_messages routing bug fix.",
-    "ratified_by": "F13 SOVEREIGN (Muhammad Arif bin Fazil)",
-    "federation_state": {
-      "providers": 20,
-      "models": 94,
-      "agents": 14,
-      "openrouter_models": 6,
-      "openrouter_routers": 3,
-      "free_tiers": 9,
-      "free_models": 25,
-      "total_monthly_cost": "RM0",
-      "cascade": "opencode-zen FREE (Big Pickle, DeepSeek V4 Flash Free, MiMo-V2.5 Free, Ling-3.0-flash Free, North Mini Code Free, Nemotron 3 Ultra Free, Laguna S 2.1 Free) → opencode-go $10/mo flat / $60 usage aggregate (DeepSeek V4 Flash 31,650 req/mo, MiMo V2.5 150,400 req/mo, Qwen3.7 Plus 21,600 req/mo, DeepSeek V4 Pro 17,150 req/mo, MiniMax M3 16,000 req/mo) → Qwen Token Plan Pro $68/mo (RM0 marginal within plan, 9 text + image-gen + audio TTS + video via TEAM) → MiniMax M3 DIRECT ($0.30/$1.20) → DeepSeek V4 Pro DIRECT ($0.435/$0.870) → Kimi K3 DIRECT (Moonshot native, $0.50/$2.00, 1M ctx, reasoning_effort tunable) → Bailian Token Plan (qwen/glm multi-model flat) → MiMo-V2.5 DIRECT ($0.140/$0.280) → Groq 70B/8B (FREE, 500+ t/s) → Gemini 2.5 Flash (FREE, 1500 req/day, 1M ctx) → SEA-LION 70B Qwen/Llama (FREE trial, BM-native) → Ollama qwen2.5:3b (local, RM0, emergency) → HOLD",
-      "warnings": [
-        "SHADOW-TR-001 (CRITICAL): TokenRouter gateway contaminates benchmarks. DeepSeek returns EMPTY via TR, perfect via direct. K3 max_tokens 'cap' is TR's limit, not Moonshot's. ALL TR-routed benchmarks potentially measure the gateway, not the model. Retroactive audit required.",
-        "NEW REGISTRY RULE: Every model entry now requires 'route' field. Benchmark without route = inadmissible (F2). Values: direct, tokenrouter, bailian, native, tokenrouter_only. Model ID convention: model@gateway.",
-        "BAILIAN SPOF: 9 of 14 agents route primary through single endpoint. Quota STILL EXHAUSTED (monthly cycle, check Aug 1).",
-        "GLM-5.2 PROMOTED to 666_JUDGE/999_SEAL backup. 666/999 SPOF RESOLVED. 2 constitutional models.",
-        "GLM-5.2 via OpenCode Zen (PAYG) until Bailian quota resets.",
-        "MiniMax: KEY_INVALID ('invalid api key 2049'). Provider DEAD. All MiniMax models unreachable. Already removed from chains.",
-        "Cerebras credit expires Aug 20 2026 (22 days). 3 models disappear from free tier.",
-        "SEA-LION: ACTIVE. Trial key working. 11 models including new v3.5+4.5. 10 RPM. SG jurisdiction. Added to Hermes + OpenClaw chains.",
-        "Qwen3.6 27B self-host NOT deployed — needs 18GB GPU on af-forge.",
-        "Kimi K3 via TokenRouter: reasoning always-on (cannot disable). Official reasoning_effort: low/high/max (default=max). TokenRouter caps max_tokens ~1500 (native: 1M). Use 'low' for simple tasks (6 tok, 1.8s). FREE tier: no reasoning_effort, no stability guarantee. For 1M context work, use native Moonshot API. Open-source weights released July 27 2026. TokenRouter promo: top-up-7-get-3-free + $200 credits ends July 31.",
-        "TokenRouter now has 117 models including Kimi K3 FREE. Added to kimi-code + planner fallback chains. Provider entry registered. Promo: 30% top-up bonus ends July 31.",
-        "CODEX BRICKED: OpenRouter credits depleted (2016 remaining, Codex needs 65536). Agent returns 402 on every call. Fix: switch provider from openrouter to tokenrouter in /root/.codex/config.toml. TokenRouter GPT 5.6 SOL: 0.9-1.5s, zero reasoning overhead, $59.96 balance. Model endpoint type is openai-response but Chat Completions works.",
-        "GPT 5.6 SOL (via TokenRouter): fastest coder tested — 0.9-1.5s, 0 reasoning tokens, idiomatic code. Optimal for agentic loops. Added SHADOW-GPT-001 (codex bricked) + SHADOW-GPT-002 (zero-overhead coder profile).",
-        "Claude Code SONNET → GLM 5.2 (4s warm, 6/6 MY clean). OPUS → Claude Sonnet 5 (8.7s, quality 100%). FABLE → MiniMax M3 (moderate shadow). Copilot CLI → GLM 5.2 (low shadow).",
-        "OPEN ITEMS: (1) TR cache_control passthrough test for Claude, (2) key rotation 888_HOLD, (3) SHADOW-TR-001 retroactive cleanup — re-test K3 cap + V4 Pro speed direct."
-      ]
-    },
-    "canonical_source": {
-      "model_capabilities": "/root/arifOS/arifosmcp/config/model_registry.json",
-      "soul_shadow_profiles": "/root/AAA/registries/models/",
-      "connection_secrets": "/root/.secrets/vault.env"
-    },
-    "design_principle": "Every model has a constitutional role. Explorer ≠ judge. Fast ≠ seal. Censored ≠ Malaysian governance. This registry answers: given capability + shadow + jurisdiction → what role can this model play?",
-    "constitutional_roles": {
-      "000_INIT": "identity binding — model must have identity_verified",
-      "111_OBSERVE": "evidence gathering — model needs search/fetch",
-      "333_THINK": "reasoning — model needs reasoning capability",
-      "444_ROUTE": "routing — model needs routing awareness",
-      "555_MEMORY": "recall — model needs long context",
-      "666_JUDGE": "verdict — model needs constitutional_deliberation, ZERO censorship, no F2 shadow",
-      "777_FORGE": "execution — model needs code/tool_call capabilities",
-      "999_SEAL": "irreversible — model needs highest trust tier, no CRITICAL shadows"
-    },
-    "replaces": [
-      "/root/AAA/prompts/INIT.md §8 (model rotation table)",
-      "/root/AAA/agents/opencode/TOOLS.md §Model Rotation",
-      "/root/AGENTS.md §11 (LLM Routing Hierarchy)",
-      "/root/AAA/registries/models/FEDERATION_MODEL.json (absorbed)",
-      "/root/A-FORGE/litellm-config.yaml (agent groups — generated from agents[])",
-      "/root/arifOS/arifosmcp/runtime/llm_client.py (organ routing — queries routing_rules[])",
-      "/root/WEALTH/reality_contracts/wire_contract.yaml (model list)"
+    "last_verified": "2026-08-03",
+    "alive_pools": [
+      "deepseek",
+      "minimax",
+      "qwen-token-plan",
+      "qwen-token-plan-individual",
+      "qwen-responses",
+      "kimi",
+      "bailian-token-plan-payments",
+      "ollama"
     ],
-    "flame_control": {
-      "governance_doc": "/root/A-FORGE/forge_work/2026-07-20/FLAME_CONTROL_GOVERNANCE.md",
-      "chain_ref": "RM0-TOOLS-FREELOOP",
-      "categories": {
-        "FLAME_ALLOWED": 8,
-        "FLAME_FALLBACK": 6,
-        "FLAME_FORBIDDEN": 8
-      },
-      "chaos_prevention": [
-        "FLAME NEVER routes constitutional verdicts",
-        "FLAME NEVER touches paid models",
-        "FLAME NEVER replaces agent primary",
-        "FLAME data must be non-sovereign (no MY PII, PETRONAS, myKad)",
-        "FLAME latency monitored — >5s = skip tier",
-        "FLAME hit-rate tracked — >50% failures = demote"
-      ]
-    },
-    "flame": {
-      "engine_version": "1.0.0",
-      "config_path": "/root/A-FORGE/flame/flame_config.json",
-      "router_path": "/root/A-FORGE/flame/flame_router.py",
-      "control_registry": "/root/A-FORGE/flame/flame_control_registry.json",
-      "governance_doc": "/root/A-FORGE/flame/FLAME_GOVERNANCE.md",
-      "state_dir": "/root/.local/share/flame/",
-      "two_lane_architecture": {
-        "agent_lane": "RM0-GENERAL-REASONING (8-tier, F1-F13 gated, constitutional)",
-        "tool_lane": "RM0-TOOLS-FREELOOP (14-tier, latency-first, RM0, zero governance)"
-      },
-      "control_gates": [
-        "FLAME CLI only — never via MCP tool",
-        "FLAME output never feeds arif_judge/arif_seal without human review",
-        "RM0 hard — paid models cannot enter chain",
-        "All calls logged to /root/.local/share/flame/flame_hitrate.jsonl",
-        "Agent MCP tools never route through FLAME",
-        "FLAME output = evidence input only, FLAME never seals"
-      ]
-    },
-    "path_a_2026_07_24": "auto-beta SPOF distribution ratified by F13. Chaos report: /root/forge_work/2026-07-24/CHAOS_REPORT_OPENROUTER.md",
-    "routing_philosophy": "MODEL > PROVIDER > BILLING. Same-model hunt first, then capability fallback.",
-    "canonical_tiers_ref": "/root/AAA/registries/models/MODEL_TIERS.json",
-    "route_column": {
-      "added": "2026-07-29",
-      "reason": "SHADOW-TR-001 — TokenRouter gateway found to contaminate benchmarks",
-      "values": {
-        "direct": "Model accessed via its own native API (e.g., api.deepseek.com)",
-        "tokenrouter": "Model accessed via TokenRouter gateway — +1-3s latency tax, ~1500 max_tokens cap",
-        "bailian": "Model accessed via Alibaba Bailian token plan — quota-limited, CN jurisdiction",
-        "native": "Model accessed via its official provider API (e.g., api.moonshot.ai)",
-        "tokenrouter_only": "Direct API unavailable — all measurements are gateway-contaminated by necessity"
-      },
-      "rule": "Every model benchmark, shadow, and capability claim must specify route. Without route, the claim is inadmissible (F2)."
-    },
-    "route_tagging": {
-      "applied": "2026-07-29",
-      "convention": "model-id@gateway (e.g., deepseek-v4-pro@direct, kimi-k3@tokenrouter)",
-      "gateway_latency_tax": {
-        "tokenrouter": "+1-3s overhead vs direct",
-        "bailian": "variable, quota-dependent",
-        "direct": "0 overhead (native API)",
-        "native": "0 overhead (official provider API)",
-        "tokenrouter_only": "UNKNOWN — no direct API for comparison"
-      }
-    },
-    "zen_1_2_forged": {
-      "date": "2026-07-31",
-      "description": "required_runtime (Zen 1) + model_digest (Zen 2) added to all local Ollama entries",
-      "rules": [
-        "requires: local — do NOT silently fallback to cloud API",
-        "FAIL FAST on local model DOWN → 503, not cloud redirect",
-        "model_digest extracted from Ollama manifest where available",
-        "Validation: Docker Model Runner Jul 2026 confirmed model-as-artifact pattern"
-      ]
-    },
-    "last_verified": "2026-08-02",
-    "updated_by": "kimi-code/FI-008 + F13 ratification (F13::AAA_ENTROPY_REDUCTION round 2)"
+    "dead_pools": [
+      "opencode-go",
+      "tokenrouter-arifos",
+      "mulerouter"
+    ],
+    "redistribution": "6 agents across 6 primary pools for rate-limit isolation",
+    "constitutional_rule": "Only deepseek-v4-pro and MiniMax-M3 may serve 666_JUDGE and 999_SEAL roles"
   },
   "providers": [
     {
@@ -6533,10 +6417,10 @@
         },
         {
           "model_key": "kimi/kimi-for-coding",
-          "provider": "bailian-token-plan",
+          "provider": "qwen-token-plan-team",
           "priority": 4,
           "cost": "token_plan",
-          "note": "K2.7 Code fallback via Bailian"
+          "note": "K2.7 Code fallback via Qwen TP Team Standard (aliyun)"
         },
         {
           "model_key": "kimi/kimi-for-coding",
@@ -6685,40 +6569,13 @@
       "agent_name": "OpenClaw",
       "agent_class": "C1",
       "organ": "AAA",
-      "primary_model": "minimax-m3",
+      "primary_model": "deepseek/deepseek-v4-pro",
       "primary_provider": "minimax",
       "fallback_chain": [
-        {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "deepseek",
-          "priority": 1,
-          "cost": "prepaid",
-          "note": "Architect fallback — DS direct"
-        },
-        {
-          "model_key": "deepseek/deepseek-v4-pro",
-          "provider": "bailian-token-plan",
-          "priority": 2,
-          "cost": "token_plan",
-          "note": "Bailian fallback"
-        },
-        {
-          "model_key": "sea-lion/Qwen-SEA-LION-v4.5-27B-IT",
-          "provider": "sea-lion",
-          "priority": 3,
-          "cost": "free",
-          "note": "SEA-LION v4.5 27B. Latest Qwen-based. SG jurisdiction. BM native."
-        },
-        {
-          "model_key": "ollama/qwen2.5:3b",
-          "provider": "ollama",
-          "priority": 3,
-          "cost": "free",
-          "note": "Local recovery [Zen 1+2: requires=local, fail-fast on Ollama down. model_digest=null — manifest not found at ~/.ollama. Probe at next pull.] [FIXED 2026-07-31: was qwen2.5-coder:3b ghost — actual installed model is qwen2.5:3b. Pull coder variant for specialized code tasks.]",
-          "requires": "local",
-          "local_model": "qwen2.5:3b",
-          "model_digest": null
-        }
+        "deepseek/deepseek-v4-flash",
+        "minimax/MiniMax-M3",
+        "kimi/kimi-for-coding",
+        "kimi/k3"
       ],
       "circuit_breaker": {
         "max_fails": 3,
@@ -6752,7 +6609,9 @@
         "allowed_mutations": [],
         "session_continuity": false,
         "self_reflection": false
-      }
+      },
+      "pool": "A",
+      "pool_name": "DeepSeek Direct"
     },
     {
       "agent_id": "claude-code",
@@ -6889,10 +6748,10 @@
         },
         {
           "model_key": "kimi/kimi-for-coding",
-          "provider": "bailian-token-plan",
+          "provider": "qwen-token-plan-team",
           "priority": 5,
           "cost": "token_plan",
-          "note": "Bailian fallback"
+          "note": "Qwen TP Team Standard (aliyun) fallback"
         },
         {
           "model_key": "moonshotai/kimi-k3",
@@ -7142,6 +7001,70 @@
         "session_continuity": false,
         "self_reflection": false
       }
+    },
+    {
+      "agent_id": "333-AGI",
+      "primary_model": "deepseek/deepseek-v4-pro",
+      "fallback_chain": [
+        "minimax/MiniMax-M3",
+        "qwen-token-plan-individual/deepseek-v4-pro",
+        "kimi/kimi-k3",
+        "ollama/qwen2.5-coder:3b"
+      ],
+      "pool": "A",
+      "pool_name": "DeepSeek Direct"
+    },
+    {
+      "agent_id": "555-ASI",
+      "primary_model": "qwen-token-plan/qwen3.6-flash",
+      "fallback_chain": [
+        "qwen-token-plan-individual/qwen3.6-flash",
+        "deepseek/deepseek-v4-flash",
+        "kimi/kimi-for-coding-highspeed"
+      ],
+      "pool": "D",
+      "pool_name": "Qwen Team #2 (Bailian)"
+    },
+    {
+      "agent_id": "555-ASI-VISION",
+      "primary_model": "qwen-token-plan-individual/qwen3.7-plus",
+      "fallback_chain": [
+        "qwen-responses/qwen3.7-plus",
+        "bailian-token-plan-payments/qwen3.7-plus"
+      ],
+      "pool": "C",
+      "pool_name": "Qwen Individual"
+    },
+    {
+      "agent_id": "888-APEX",
+      "primary_model": "minimax/MiniMax-M3",
+      "fallback_chain": [
+        "deepseek/deepseek-v4-pro",
+        "qwen-token-plan-individual/deepseek-v4-pro",
+        "kimi/kimi-k3"
+      ],
+      "pool": "B",
+      "pool_name": "MiniMax (dedicated subscription)"
+    },
+    {
+      "agent_id": "image-analyzer",
+      "primary_model": "qwen-responses/qwen3.7-plus",
+      "fallback_chain": [
+        "qwen-token-plan-individual/qwen3.7-plus",
+        "bailian-token-plan-payments/qwen3.7-plus"
+      ],
+      "pool": "E",
+      "pool_name": "Qwen Responses (Hermes)"
+    },
+    {
+      "agent_id": "dispatch",
+      "primary_model": "kimi/kimi-for-coding-highspeed",
+      "fallback_chain": [
+        "qwen-token-plan/qwen3.6-flash",
+        "deepseek/deepseek-v4-flash"
+      ],
+      "pool": "F",
+      "pool_name": "Kimi (coding plan)"
     }
   ],
   "fallback_chains": {
