@@ -48,7 +48,7 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token issued via arif_session_init"
+      "description": "arifOS session token issued via arif_init"
     },
     "api_key": {
       "type": "apiKey",

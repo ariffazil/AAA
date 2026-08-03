@@ -88,18 +88,18 @@ allowed_tools:
   - stream
   - vault999-write
   # arifOS Kernel MCP — constitutional governance access (canonical tool set)
-  - arif_init          # was: arif_session_init — session ignition, F1-F13 binding
-  - arif_observe       # was: arif_sense_observe — reality observation & evidence gathering
-  - arif_think         # was: arif_mind_reason — structured reasoning under F2/F7
-  - arif_route         # was: arif_kernel_route — intent-to-organ dispatch
-  - arif_judge         # was: arif_judge_deliberate — 888 constitutional verdict
+  - arif_init          # was: arif_init — session ignition, F1-F13 binding
+  - arif_observe       # was: arif_observe — reality observation & evidence gathering
+  - arif_think         # was: arif_think — structured reasoning under F2/F7
+  - arif_route         # was: arif_route — intent-to-organ dispatch
+  - arif_judge         # was: arif_judge — 888 constitutional verdict
   - arif_forge         # ADDED: execution gate via A-FORGE
   - arif_seal          # ADDED: VAULT999 immutable append
   - arif_memory        # was: arif_memory_recall — governed L1-L6 semantic recall
   # Legacy custom tools retained for backward compatibility (no canonical equivalent)
   - arif_gateway_connect
   - arif_ops_measure
-  - arif_heart_critique
+  - arif_critique
   - arif_reply_compose
   - arif_evidence_fetch
 
