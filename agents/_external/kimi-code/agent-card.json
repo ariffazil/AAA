@@ -5,11 +5,11 @@
   "name": "Kimi Code CLI",
   "principal_agent": {
     "type": "llm",
-    "category": "LLM-as-principal (Claude/GPT/Gemini/etc \u2014 the model is the principal, CLI is harness)",
+    "category": "LLM-as-principal (Claude/GPT/Gemini/etc — the model is the principal, CLI is harness)",
     "principle_origin": "Underlying LLM provider (Anthropic/OpenAI/Google/Moonshot/xAI)"
   },
-  "description": "Kimi Code CLI forge instrument \u2014 Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced. v2.1.0 (2026-07-16): zen pass \u2014 7 contrast/reflector skills v1.1.0, KIMI_RSI_INIT_PROMPT cold-boot recipe, KIMI_HANDOVER_PROMPT post-deploy recipe, all mirrored to runtime + AAA.",
-  "version": "2.1.0",
+  "description": "Kimi Code CLI forge instrument — Moonshot coding harness. Wired to federation MCPs. Activated skills: agentic-builder + webmcp-site-builder. F1-F13 enforced. v2.1.0 (2026-07-16): zen pass — 7 contrast/reflector skills v1.1.0, KIMI_RSI_INIT_PROMPT cold-boot recipe, KIMI_HANDOVER_PROMPT post-deploy recipe, all mirrored to runtime + AAA.",
+  "version": "2.2.0",
   "model": "kimi/k3",
   "binary": "/root/.kimi-code/bin/kimi",
   "config_home": "/root/.arifos/agents/kimi",
@@ -35,7 +35,7 @@
   "documentationUrl": "https://mcp.arif-fazil.com/docs/agents/kimi-code",
   "capabilities": {
     "streaming": true,
-    "pushNotifications": false,
+    "pushNotifications": true,
     "authenticated_extended_card": true,
     "tool_calling": true,
     "mcp_native": true,
@@ -241,6 +241,20 @@
         "F8",
         "F11",
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
@@ -256,12 +270,21 @@
       "floor_scope": [
         "F8",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F8",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "ASI-fabrication-prevention",
       "name": "Fabrication Prevention",
-      "description": "Artifact fabrication prevention \u2014 verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
+      "description": "Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. F2, F9 enforced. LEASED.",
       "tags": [
         "fabrication",
         "F2",
@@ -272,12 +295,22 @@
         "F2",
         "F9",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F9",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "ASI-autonomous-execution",
       "name": "Autonomous Governed Execution",
-      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. \u03a6\u0399 + Functional Execution. LEASED \u2192 ACTIVE.",
+      "description": "ASI-tier autonomous governed execution. 4 primitives (agentic reflex, safety floor, verify-before-report, evidence-cite-or-UNKNOWN). T1/T2/T3 tier table, F1-F13 floor. ΦΙ + Functional Execution. LEASED → ACTIVE.",
       "tags": [
         "autonomous",
         "F1-F13",
@@ -291,6 +324,20 @@
         "F7",
         "F11",
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
@@ -311,11 +358,26 @@
         "F9",
         "F11",
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F7",
+            "floor:F9",
+            "floor:F11",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
       "id": "APEX-humility-godel",
-      "name": "G\u00f6del Humility Lock",
+      "name": "Gödel Humility Lock",
       "description": "Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. LEASED.",
       "tags": [
         "humility",
@@ -326,12 +388,21 @@
       "floor_scope": [
         "F2",
         "F7"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F7"
+          ]
+        }
       ]
     },
     {
       "id": "FORGE-github-workflow",
       "name": "GitHub Workflow",
-      "description": "Class-level umbrella for GitHub operations \u2014 auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
+      "description": "Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. F1, F11 enforced. LEASED.",
       "tags": [
         "github",
         "workflow",
@@ -341,12 +412,21 @@
       "floor_scope": [
         "F1",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "APEX-mcp-federation",
       "name": "arifOS MCP Federation",
-      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. \u0394 axis primary. LEASED.",
+      "description": "Route tasks across two or more federation MCP servers, sequence tool calls, define fallbacks when an organ substrate fails. Δ axis primary. LEASED.",
       "tags": [
         "MCP",
         "federation",
@@ -356,6 +436,15 @@
       "floor_scope": [
         "F4",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
@@ -376,7 +465,18 @@
         "F11"
       ],
       "approval_policy": "888_HOLD for new agent SEAL",
-      "reversibility_class": "reversible"
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11"
+          ]
+        }
+      ]
     },
     {
       "id": "FORGE-webmcp-site-builder",
@@ -398,7 +498,20 @@
         "F12"
       ],
       "approval_policy": "auto (T2)",
-      "reversibility_class": "reversible"
+      "reversibility_class": "reversible",
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F2",
+            "floor:F4",
+            "floor:F8",
+            "floor:F11",
+            "floor:F12"
+          ]
+        }
+      ]
     },
     {
       "id": "KERNEL-reality-skills",
@@ -414,6 +527,16 @@
         "F2",
         "F7",
         "F9"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F2",
+            "floor:F7",
+            "floor:F9"
+          ]
+        }
       ]
     },
     {
@@ -428,12 +551,21 @@
       ],
       "floor_scope": [
         "F13"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "sovereign:ack",
+            "floor:F13"
+          ]
+        }
       ]
     },
     {
       "id": "KERNEL-session-inhabit",
       "name": "Session Inhabit (Lifecycle)",
-      "description": "Session lifecycle binding. INIT\u2192OBSERVE\u2192JUDGE\u2192SEAL. No session = OBSERVE_ONLY.",
+      "description": "Session lifecycle binding. INIT→OBSERVE→JUDGE→SEAL. No session = OBSERVE_ONLY.",
       "tags": [
         "kernel",
         "session",
@@ -444,12 +576,22 @@
         "F1",
         "F4",
         "F11"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F1",
+            "floor:F4",
+            "floor:F11"
+          ]
+        }
       ]
     },
     {
       "id": "RSI-recursive-improvement",
       "name": "RSI Recursive Improvement",
-      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. \u0394S < 0 is binding.",
+      "description": "Continuous self-improvement doctrine. Every output must reduce entropy. ΔS < 0 is binding.",
       "tags": [
         "kernel",
         "rsi",
@@ -459,6 +601,15 @@
       "floor_scope": [
         "F4",
         "F8"
+      ],
+      "security_requirements": [
+        {
+          "scheme": "session_token",
+          "scopes": [
+            "floor:F4",
+            "floor:F8"
+          ]
+        }
       ]
     }
   ],
@@ -491,7 +642,7 @@
       "from_version": "1.1.0",
       "to_version": "2.0.0",
       "upgraded_at": "2026-07-01T21:00:00Z",
-      "upgraded_by": "FORGE (000\u03a9) \u2014 Phase 5.1 A2A Protocol Alignment",
+      "upgraded_by": "FORGE (000Ω) — Phase 5.1 A2A Protocol Alignment",
       "changes": [
         "topological_role binding",
         "a2a_transport declaration",
@@ -502,14 +653,27 @@
       "from_version": "2.0.0",
       "to_version": "2.1.0",
       "upgraded_at": "2026-07-16T01:00:00Z",
-      "upgraded_by": "Kimi Code (FI-008) \u2014 zen pass post arifOS MCP cold-boot fix",
+      "upgraded_by": "Kimi Code (FI-008) — zen pass post arifOS MCP cold-boot fix",
       "changes": [
-        "7 user-scope skills v1.0.0 \u2192 v1.1.0 (Federation anchors section added)",
-        "KIMI_RSI_INIT_PROMPT.md v1.0.0 \u2192 v1.1.0 (cold-boot diagnostic recipe)",
-        "KIMI_HANDOVER_PROMPT.md v1.0.0 \u2192 v1.1.0 (post-deploy verification recipe)",
-        "agent-card v2.0.0 \u2192 v2.1.0 (this upgrade)",
+        "7 user-scope skills v1.0.0 → v1.1.0 (Federation anchors section added)",
+        "KIMI_RSI_INIT_PROMPT.md v1.0.0 → v1.1.0 (cold-boot diagnostic recipe)",
+        "KIMI_HANDOVER_PROMPT.md v1.0.0 → v1.1.0 (post-deploy verification recipe)",
+        "agent-card v2.0.0 → v2.1.0 (this upgrade)",
         "WARGAAA_CARD.md updated 2026-07-16",
         "kimi-skill-reflector audit-log.md appended (Audit 2026-07-16 entry)"
+      ]
+    },
+    {
+      "from_version": "2.1.0",
+      "to_version": "2.2.0",
+      "upgraded_at": "2026-08-03T13:35:00Z",
+      "upgraded_by": "Kimi Code (FI-008) - A2A spec v1.0.0 alignment, F13-ratified kernel-bypass (kernel session SEAL-7a0830f51c8b47a1 in DEGRADED state)",
+      "changes": [
+        "capabilities.pushNotifications: false -> true (A2A spec §5)",
+        "Added extensions[arifos://floors/v1, required=true] (A2A spec §6)",
+        "Added security_requirements per skill (A2A spec §3, 14 skills updated)",
+        "version bump 2.1.0 -> 2.2.0",
+        "Signature invalidated pending re-sign (Ed25519Signature2020 / did:arif:aaa)"
       ]
     }
   ],
@@ -583,5 +747,42 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "_model_sot": "/root/.config/federation-models.json"
+  "_model_sot": "/root/.config/federation-models.json",
+  "extensions": [
+    {
+      "uri": "arifos://floors/v1",
+      "description": "Constitutional floor enforcement (F1-F13). Every action routed through arifOS kernel for floor evaluation before execution.",
+      "required": true,
+      "params": {
+        "active_floors": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F7",
+          "F8",
+          "F9",
+          "F10",
+          "F11",
+          "F12",
+          "F13"
+        ],
+        "judge_endpoint": "http://127.0.0.1:8088/mcp",
+        "verdict_verbs": [
+          "arif_judge",
+          "arif_seal"
+        ]
+      }
+    }
+  ],
+  "_signature_pending_re_sign": {
+    "reason": "Card content updated for A2A spec v1.0.0 alignment (v2.1.0 -> v2.2.0)",
+    "previous_signature_created": "2026-07-12T22:30:29Z",
+    "previous_signature_did": "did:arif:aaa",
+    "previous_signature_type": "Ed25519Signature2020",
+    "re_sign_required_before": "any SEAL-grade action or cross-organ handoff",
+    "re_sign_tool_hint": "manual Ed25519 sign with did:arif:aaa private key, or forge_seal with skill_name='apex_a2a_card_sign' once implemented"
+  }
 }
