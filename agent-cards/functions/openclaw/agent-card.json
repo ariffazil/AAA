@@ -610,5 +610,5 @@
   ],
   "model": "deepseek/deepseek-v4-pro",
   "_model_sot": "/root/AAA/registries/models/AGENT_MODEL_MAP.json",
-  "_model_prior": "minimax/MiniMax-M3 (DEAD 2026-07-29 — API key 2049)"
+  "_model_prior": "minimax/MiniMax-M3 (direct API key invalid 2049 — routed via TokenRouter gateway; provider ACTIVE, model LIVE per registry 2026-08-03)"
 }
