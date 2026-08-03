@@ -1,13 +1,16 @@
 {
   "agent_id": "555-ASI-VISION",
   "version": "2.0.0",
-  "forged": "2026-07-31",
+  "forged": "2026-08-03",
   "name": "555-ASI-VISION — Φ SENSE Vision Lane",
   "class": "SENSORY_GATE",
   "lane": "Vision-Native OCR Perception",
   "parent": "555-ASI (Ω Core)",
-  "primary_model": "mulerouter/qwen3-omni-flash",
-  "fallback_chain": ["deepseek-v4-pro", "ollama/qwen2.5:3b"],
+  "primary_model": "qwen-token-plan-individual/qwen3.7-plus",
+  "fallback_chain": [
+    "qwen-responses/qwen3.7-plus",
+    "bailian-token-plan-payments/qwen3.7-plus"
+  ],
   "capabilities": [
     "vision-native-ocr",
     "document-perception",
@@ -18,7 +21,14 @@
     "compression-metrics"
   ],
   "authority": "OBSERVE_ONLY — sensory gate, never mutates, never reasons",
-  "floor_scope": ["F2", "F4", "F7", "F9", "F11", "F12"],
+  "floor_scope": [
+    "F2",
+    "F4",
+    "F7",
+    "F9",
+    "F11",
+    "F12"
+  ],
   "autonomy_tier": "T1 — AUTO-DO (read-only perception)",
   "tools": [
     "aaa_ocr",
@@ -87,5 +97,6 @@
     "F11_AUDIT": "SHA-256 provenance on every element",
     "F12_INJECTION": "Mandatory injection scan on ALL OCR output — adversarial text in images IS a real vector"
   },
-  "DITEMPA_BUKAN_DIBERI": true
+  "DITEMPA_BUKAN_DIBERI": true,
+  "_zen_note": "2026-08-03: Moved from mulerouter (dead) to qwen-individual (Pool C, separate quota)"
 }
