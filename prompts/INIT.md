@@ -1,7 +1,7 @@
 # 🌱 INIT — arifOS Constitutional Bootstrap · 2026.07.17
 ## TRINITY-33 · RSI · Constitutional Friction
 
-> **Forged:** 2026-07-08 by FORGE (000Ω) · **Zen-dated:** 2026-07-17 · **Upgraded:** 2026-08-03 (MCP resource remapping: 6 dead URIs → live surface, 8/8 tool table, model rotation refresh, ATLAS333 completeness, INIT-ZEN.md absorbed, UNIVERSAL_BOOT.md cross-ref)
+> **Forged:** 2026-07-08 by FORGE (000Ω) · **Zen-dated:** 2026-07-17 · **Upgraded:** 2026-08-03 (MCP resource remapping: 6 dead URIs → live surface, 8/8 tool table, model rotation refresh, ATLAS333 completeness, INIT-ZEN.md absorbed, UNIVERSAL_BOOT.md cross-ref, +arifFLOW non-fatal 7th boot probe, model rotation table full refresh from live registry)
 > **Supersedes:** AGENT_INIT_v3.0 (2026-07-08) and v2.0 (2026-07-05). Old filename symlinked for compat. INIT-ZEN.md (2026-07-27) absorbed 2026-08-03.
 > **Compatible with:** OpenCode CLI on AF-FORGE, ChatGPT, Codex CLI, Copilot, Kimi, any agent harness
 > **Offline agents:** Agents that cannot reach arifOS (no localhost:8088) → load `/root/AAA/prompts/UNIVERSAL_BOOT.md` (57-line portable boot)
@@ -90,12 +90,16 @@ print(f'vault999:    {d.get(\"vault999_health\",\"?\")}')
 "
 # Expected: verdict=SEAL, floors=13, contract_drift=False
 
-# 2. Check ALL 6 organs alive
+# 2. Check ALL 6 core organs alive
 for svc in "arifos:8088" "aforge:7071" "aaa:3001" "geox:8081" "wealth:18082" "well:18083"; do
   name="${svc%%:*}"; port="${svc##*:}"
   curl -sf "http://localhost:$port/health" >/dev/null 2>&1 \
     && echo "✅ $name :$port" || echo "❌ $name :$port DOWN"
 done
+
+# 2.5. Check arifFLOW (metabolism nerve — non-fatal, may not be running)
+curl -sf "http://localhost:7073/health" >/dev/null 2>&1 \
+  && echo "✅ arifFlow :7073" || echo "⚠️ arifFlow :7073 DOWN (non-fatal)"
 
 # 3. Check TRINITY-33 + RSI skills exist (zen names, post 2026-07-12 consolidation)
 for skill in KERNEL-trinity-33 RSI-recursive-improvement; do
@@ -113,12 +117,13 @@ Expected output:
 verdict:     SEAL
 floors:      13
 ✅ arifOS ✅ A-FORGE ✅ AAA ✅ GEOX ✅ WEALTH ✅ WELL
+⚠️ arifFlow :7073 DOWN (non-fatal)   # or ✅ if running
 ✅ KERNEL-trinity-33 ✅ RSI-recursive-improvement
 ```
 
 ### Degraded-Mode Matrix
 
-`organs={n}/6` at boot is not a binary — it drives operational capability:
+`organs={n}/6` at boot is not a binary — it drives operational capability. arifFLOW (:7073, metabolism nerve) is probed but does not count toward the 6-core organ count — its DOWN state is advisory only (FQ falls back to `flow_state.json`).
 
 | Organs Alive | Tier | Authority |
 |-------------|------|-----------|
@@ -441,21 +446,30 @@ HOLD on ambiguity. Ask Arif.
 > 
 > | Agent | Primary Model | Fallback Chain (abbreviated) |
 > |-------|--------------|----------------|
-> | OpenCode | `deepseek/deepseek-v4-pro` | Qwen TP → OpenCode Go → TokenRouter → Ollama qwen2.5 |
+> | OpenCode | `deepseek/deepseek-v4-pro` | Qwen TP → OpenCode Go → TokenRouter → Ollama |
 > | FORGE (000Ω) | `deepseek/deepseek-v4-pro` | Direct DS → Kimi K3 → DS Flash |
 > | AUDITOR (Ψ) | `deepseek/deepseek-v4-pro` | Direct DS → MiMo V2.5 Pro → Kimi K3 |
 > | OPS (🌐) | `qwen-token-plan/deepseek-v4-flash` | Direct DS → DS Pro → Gemini Flash → Ollama |
 > | PLAN (Ω) | `kimi/kimi-k3` | OpenRouter → TokenRouter → K2.7 Code → DS V4 Pro |
 > | Hermes | `qwen/qwen3.7-plus` | (no fallback chain registered) |
+> | OpenClaw | `deepseek/deepseek-v4-pro` | DS Flash → MiniMax M3 → Kimi Coding → K3 |
+> | Claude Code | `deepseek/deepseek-v4-pro` | (no fallback chain registered) |
+> | Copilot | `z-ai/glm-5.2` | (no fallback chain registered) |
+> | Kimi Code | `kimi/kimi-k3` | OpenRouter → TokenRouter → K2.7 Code → DS V4 Pro |
+> | Codex | `deepseek/deepseek-v4-pro` | TokenRouter → OpenCode Zen → OpenCode Go → DS V4 Pro |
+> | Grok | `xai/grok-4.5` | (no fallback chain registered) |
+> | Recovery | `ollama/qwen2.5-coder:3b` | (no fallback chain registered) |
 > | 333-AGI | `deepseek/deepseek-v4-pro` | MiniMax M3 → Qwen Individual → Kimi K3 → Ollama |
 > | 555-ASI | `qwen-token-plan/qwen3.6-flash` | Qwen Individual → DS Flash → Kimi HighSpeed |
-> | 888-APEX | `minimax/MiniMax-M3` | DS V4 Pro → Qwen Individual → Kimi K3 |
-> | Codex | `deepseek/deepseek-v4-pro` | GPT 5.6 SOL → Claude Sonnet 5 → DS V4 Pro |
-> | Kimi Code | `kimi/kimi-k3` | OpenRouter → TokenRouter → K2.7 Code → DS V4 Pro |
+> | 555-ASI-VISION | `qwen-token-plan-individual/qwen3.7-plus` | Qwen Responses → PAYG |
+> | 888-APEX | `deepseek/deepseek-v4-pro` | Qwen TP → Qwen Individual → Kimi K3 → Ollama |
+> | image-analyzer | `qwen-responses/qwen3.7-plus` | Qwen Individual → PAYG |
+> | dispatch | `kimi/kimi-for-coding-highspeed` | Qwen TP Flash → DS Flash |
+> | image-prompt-architect | `kimi/kimi-k3` | OpenCode Go → TokenRouter → OpenCode Go |
 >
-> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. MiniMax M3 is DEAD (API key invalid). 16 models forbidden from judgment.
+> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. MiniMax M3 is DEAD (API key invalid — 2049). 888-APEX primary moved to `deepseek/deepseek-v4-pro` (Pool A shared). 16 models forbidden from judgment.
 >
-> **Provider pools (6 alive, 3 dead):** deepseek · minimax · qwen-token-plan · qwen-individual · qwen-responses · kimi · ollama. DEAD: opencode-go (401), tokenrouter-arifos (503), mulerouter (-0.75 credits).
+> **Provider pools (6 alive, 3 dead):** deepseek · minimax · qwen-token-plan · qwen-individual · qwen-responses · kimi · ollama · bailian-payg. DEAD: opencode-go (401), tokenrouter-arifos (503), mulerouter (-0.75 credits).
 >
 > To load live: `python3 -c "import json; d=json.load(open('/root/AAA/registries/models/AGENT_MODEL_MAP.json')); [print(f'{a[\"agent_id\"]}: {a[\"primary_model\"]}') for a in d['agents']]"`
 
