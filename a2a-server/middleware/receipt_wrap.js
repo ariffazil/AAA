@@ -257,7 +257,12 @@ function receiptWrap(options = {}) {
       pendingReceipts.push(receipt);
 
       // Surface receipt id on response header (for agent tracking)
-      res.setHeader('X-Receipt-Id', receipt.receipt_id);
+      // Must addHeader BEFORE 'finish' event — headers cannot be set after response is sent
+      try {
+        res.setHeader('X-Receipt-Id', receipt.receipt_id);
+      } catch (_) {
+        // Headers already sent — receipt recorded but not surfaced on response
+      }
 
       // Force flush on high-value events
       if (kind === 'void' || kind === 'permanent_fail' || pendingReceipts.length >= cfg.max_batch) {
