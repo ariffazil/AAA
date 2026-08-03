@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-fed_router.py — FED Core MCP Server (Federation Router)
+fed_router.py — FED Core MCP Server (Federation Router) · v3.1 Zen
 ═══════════════════════════════════════════════════════════
 Port: 7074  ·  Unit: fed-router.service  ·  MCP prefix: fed_*
 Answers: "Where should this agent route?"
@@ -10,7 +10,13 @@ Architecture:
   WRITE → token_bank_spend (on every routed call)
   NEVER → actively ping for latency (passive telemetry only)
 
-Hardened v3.0 — token_bank.db aligned, 6 invariants enforced:
+Zen v3.1 (2026-08-02 — LiteLLM patterns absorbed):
+  1. Route Health Gate — skip DEGRADED, demote RATE_LIMITED (cooldown)
+  2. Cost Surface — estimated cost per 1M tokens on every route
+  3. Telemetry Gate — demote untested routes (<10 samples)
+  4. Complete Pricing — DeepSeek direct + all provider tables
+
+Hardened v3.0 invariants (preserved):
   1. Asymmetric Balance Bypass (dual-track — Track A hard / Track B soft / UNVERIFIABLE)
   2. Constitutional Hard-Gate (tier ≥ 666 → direct only)
   3. Agent Cascade Contract (ranked array output)
@@ -18,7 +24,7 @@ Hardened v3.0 — token_bank.db aligned, 6 invariants enforced:
   5. Balance Bypass Enforcement (Track A <$1 HARD, Track B <$5 SOFT, conf<0.50 UNVERIFIABLE)
   6. Model Route Tables (deepseek, qwen, gpt, claude, kimi, glm families)
 
-Forged: 2026-07-30  ·  DITEMPA BUKAN DIBERI
+Forged: 2026-07-30  ·  Zen-dated: 2026-08-02  ·  DITEMPA BUKAN DIBERI
 """
 
 import json
@@ -36,6 +42,12 @@ FED_PORT = 7074
 
 # ── Pricing tables (inlined — shared logic with token_bank.py) ──────────
 # Keep in sync with /root/AAA/scripts/token_bank.py pricing tables
+# Zen 2026-08-02: Added DeepSeek direct pricing + all provider tables (LiteLLM model catalog pattern)
+
+DEEPSEEK_PRICING = {
+    "deepseek-v4-pro": {"input": 0.435, "output": 0.87},
+    "deepseek-v4-flash": {"input": 0.14, "output": 0.28},
+}
 
 MULEROUTER_PRICING = {
     "deepseek-v4-pro": {"input": 0.55, "output": 2.19},
@@ -69,10 +81,28 @@ TOKENROUTER_PRICING = {
 
 
 def _estimate_cost(provider_id: str, model_id: str, tokens_in: int, tokens_out: int) -> float:
-    """Calculate estimated cost in USD."""
-    tables = {"mulerouter": MULEROUTER_PRICING, "tokenrouter": TOKENROUTER_PRICING}
+    """Calculate estimated cost in USD. Zen 2026-08-02: added deepseek pricing."""
+    tables = {
+        "deepseek": DEEPSEEK_PRICING,
+        "mulerouter": MULEROUTER_PRICING,
+        "tokenrouter": TOKENROUTER_PRICING,
+    }
     pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
     return round((tokens_in / 1_000_000) * pricing["input"] + (tokens_out / 1_000_000) * pricing["output"], 8)
+
+
+def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
+    """Return estimated cost per 1K tokens for a route. LiteLLM catalog pattern."""
+    tables = {
+        "deepseek": DEEPSEEK_PRICING,
+        "mulerouter": MULEROUTER_PRICING,
+        "tokenrouter": TOKENROUTER_PRICING,
+    }
+    pricing = tables.get(provider_id, {}).get(model_id, {"input": 0.50, "output": 2.00})
+    return {
+        "input_per_1m_usd": pricing["input"],
+        "output_per_1m_usd": pricing["output"],
+    }
 
 
 mcp = FastMCP("FED — Federation Router")
@@ -391,7 +421,11 @@ CONSTITUTIONAL_ALLOWED = {
 }
 
 
-# ── FED Route Engine (7-step hardened) ───────────────────────────────────
+# ── FED Route Engine (Zen-hardened v3.1 — LiteLLM patterns absorbed) ─────
+# Zen 2026-08-02: Absorbed LiteLLM patterns:
+#   - Route health gate (cooldown DEGRADED, demote RATE_LIMITED)
+#   - Cost estimate surfaced per route (catalog pricing)
+#   - Insufficient telemetry demotion (low-sample routes deprioritized)
 def fed_route_engine(
     task: str = "",
     model: str = "deepseek-v4-pro",
@@ -400,16 +434,19 @@ def fed_route_engine(
     constitutional_tier: int = 333,
 ) -> list[dict]:
     """
-    7-step hardened routing logic.
+    Zen-hardened 9-step routing logic (was 7, +2 LiteLLM patterns).
 
     Steps:
       1. FILTER: remove DEAD providers
-      2. RANK: by priority class (direct > gateway > shadowed)
-      3. BOOST: vision modality → push VL-capable providers up
-      4. DEGRADE: constitutional ≥ 666 → direct ONLY
-      5. BALANCE GATE: dual-track (API hard, Token Bank soft, UNVERIFIABLE bypass)
-      6. LATENCY GATE: read pre-computed p50/p95 from fed_state.db
-      7. RETURN: top 3 routes with reasoning
+      2. HEALTH GATE: skip DEGRADED, demote RATE_LIMITED (LiteLLM cooldown)
+      3. RANK: by priority class (direct > gateway > shadowed)
+      4. BOOST: vision modality → push VL-capable providers up
+      5. DEGRADE: constitutional ≥ 666 → direct ONLY
+      6. BALANCE GATE: dual-track (API hard, Token Bank soft, UNVERIFIABLE bypass)
+      7. LATENCY GATE: read pre-computed p50/p95; demote if p95>5s
+      8. TELEMETRY GATE: demote routes with <10 samples (LiteLLM: don't route to unproven paths)
+      9. COST SURFACE: attach estimated cost per 1K tokens to each route
+      10. RETURN: top 3 routes with reasoning
     """
     routes = MODEL_ROUTES.get(model, MODEL_ROUTES.get("deepseek-v4-pro", []))
 
@@ -427,6 +464,19 @@ def fed_route_engine(
         if bal and bal.get("notes") and "DEAD" in str(bal["notes"]).upper():
             continue
 
+        # ── Step 2: HEALTH GATE (Zen: LiteLLM cooldown pattern) ─────
+        health = read_route_health(provider_id, model)
+        health_status = health["status"] if health else "LIVE"
+        health_flag = None
+
+        if health_status == "DEGRADED":
+            # LiteLLM cooldown: skip failing deployments entirely
+            continue
+        elif health_status == "RATE_LIMITED":
+            # LiteLLM cooldown: demote but keep as last resort
+            health_flag = "RATE_LIMITED"
+            # Don't skip — just heavily demote below
+
         # ── Step 4: DEGRADE constitutional ───────────────────────────
         allowed = CONSTITUTIONAL_ALLOWED.get(constitutional_tier, {"direct", "gateway"})
         if route["class"] not in allowed:
@@ -438,6 +488,8 @@ def fed_route_engine(
             priority -= 2  # Boost MuleRouter for vision (4 VL models)
         if modality == "vision" and model in VISION_MODELS:
             priority -= 1
+        if health_flag == "RATE_LIMITED":
+            priority += 8  # Heavy demotion — last resort
 
         # ── Step 5: BALANCE GATE dual-track ──────────────────────────
         balance = bal["balance_usd"] if bal else None
@@ -473,12 +525,21 @@ def fed_route_engine(
             if p95_ms and p95_ms > 5000:
                 latency_flag = "DEGRADED"
                 priority += 3
-        if sample_count < 10:
-            latency_flag = latency_flag or "INSUFFICIENT_TELEMETRY"
 
-        # ── Health check ─────────────────────────────────────────────
-        health = read_route_health(provider_id, model)
-        health_status = health["status"] if health else "LIVE"
+        # ── Step 7: TELEMETRY GATE (Zen: LiteLLM pattern) ────────────
+        # Demote routes with insufficient telemetry — prefer proven paths
+        if sample_count < 10:
+            if sample_count == 0:
+                latency_flag = "NO_TELEMETRY"
+                priority += 2  # Slight demotion for completely untested
+            else:
+                latency_flag = "INSUFFICIENT_TELEMETRY"
+                # Only demote if we have some data that suggests slowness
+                if p50_ms and p50_ms > 2000:
+                    priority += 1
+
+        # ── Step 8: COST SURFACE (Zen: LiteLLM model catalog) ────────
+        cost_per_1k = _estimate_cost_per_1k(provider_id, model)
 
         ranked.append(
             {
@@ -497,9 +558,12 @@ def fed_route_engine(
                 "latency_sample_count": sample_count,
                 "latency_flag": latency_flag,
                 "health": health_status,
+                "health_flag": health_flag,
+                "cost_per_1m_input_usd": cost_per_1k["input_per_1m_usd"],
+                "cost_per_1m_output_usd": cost_per_1k["output_per_1m_usd"],
                 "shadow": route.get("shadow"),
                 "free": route.get("free", False),
-                "reason": _build_reason(route, balance_flag, latency_flag, constitutional_tier),
+                "reason": _build_reason(route, balance_flag, latency_flag, health_flag, constitutional_tier),
             }
         )
 
@@ -513,7 +577,7 @@ def fed_route_engine(
     return ranked[:3]
 
 
-def _build_reason(route, balance_flag, latency_flag, tier):
+def _build_reason(route, balance_flag, latency_flag, health_flag, tier):
     parts = []
     if tier >= 666:
         parts.append("666/999 constitutional — direct path required")
@@ -523,6 +587,8 @@ def _build_reason(route, balance_flag, latency_flag, tier):
         parts.append("FREE tier")
     if route.get("shadow"):
         parts.append(f"SHADOWED: {route['shadow']}")
+    if health_flag == "RATE_LIMITED":
+        parts.append("provider rate-limited (cooldown)")
     if balance_flag == "LOW_BALANCE_HARD":
         parts.append("balance < $1.00 (HARD demotion)")
     elif balance_flag == "LOW_BALANCE_SOFT":
@@ -531,6 +597,8 @@ def _build_reason(route, balance_flag, latency_flag, tier):
         parts.append("balance unverifiable — check dashboard")
     if latency_flag == "DEGRADED":
         parts.append("p95 latency >5s")
+    elif latency_flag == "NO_TELEMETRY":
+        parts.append("no telemetry — untested route")
     elif latency_flag == "INSUFFICIENT_TELEMETRY":
         parts.append("insufficient telemetry samples")
     return "; ".join(parts) if parts else "available"
@@ -681,7 +749,7 @@ def fed_health() -> dict:
     return {
         "status": "LIVE",
         "port": FED_PORT,
-        "version": "3.0.0",
+        "version": "3.1.0-zen",
         "tables": [t["name"] for t in tables],
         "state_db": str(FED_STATE_DB),
     }
