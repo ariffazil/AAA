@@ -97,6 +97,38 @@ shadow:
       - "Alert sovereign before balance drops below $2.00"
     evidence: "Previous 402 outage 2026-06-12. Fully resolved with $7.06 top-up."
 
+  - id: SHADOW-DS-006
+    name: reasoning_cascade_compound
+    severity: HIGH
+    class: cascade
+    pattern: >
+      Composite shadow: SHADOW-DS-002 (reasoning_overconfidence) ×
+      SHADOW-DS-004 (long_context_drift). In continuous agentic sessions
+      exceeding ~50K tokens, reasoning confidence remains high while
+      mid-context information is silently forgotten or de-prioritized.
+      The agent produces confident, internally-consistent reasoning on
+      hallucinated or forgotten premises — indistinguishable from correct
+      reasoning to the agent itself. This creates a self-reinforcing
+      strange loop: each confident but wrong output becomes the foundation
+      for the next. Individual sub-shadows are MEDIUM, but the interaction
+      product is functionally HIGH in continuous sessions.
+    triggers:
+      [continuous_agentic_session, gt_50k_tokens, reasoning_tasks,
+       compound_ds002_ds004, strange_loop_risk]
+    floor_posture_delta:
+      F2_TRUTH: strict_grounding
+      F4_CLARITY: require_external_validation
+      F7_HUMILITY: elevated
+    mitigation:
+      - "Pre-emptively chunk sessions with external validation points"
+      - "Route long-running 333 sessions through heterogeneous verification"
+      - "Track input fidelity across session chunks, not just final output"
+      - "Insert FED router verification gates at ~30K token intervals"
+    evidence: "Trigger overlap analysis of DS-002 + DS-004. Agentic loop compounding observed in federation sessions. Cross-shadow cascade not captured by individual severity scoring."
+    cascade_from: [SHADOW-DS-002, SHADOW-DS-004]
+    cascade_severity: HIGH
+    cascade_note: "Individual shadows rated MEDIUM, but interaction product is functionally HIGH in continuous sessions. FED router should treat any session exceeding 50K tokens with reasoning-heavy 333 tasks as an elevated threat surface."
+
 floor_posture:
   F1_AMANAH: standard
   F2_TRUTH: strict_grounding
@@ -115,9 +147,11 @@ floor_posture:
 lifecycle:
   created: "2026-06-12"
   created_by: "Omega (Ω)"
-  updated: "2026-06-13"
-  updated_by: "FORGE (000Ω) — provider stabilization pass"
+  updated: "2026-08-03"
+  updated_by: "333-AGI (Δ MIND) — SHADOW-DS-006 cascade composite: DS-002×DS-004 severity MEDIUM→HIGH"
   status: "ACTIVE"
   activation: "PRIMARY FEDERATION MODEL — all agents bound"
+  shadows: 6
+  highest_severity: "HIGH (DS-006 cascade, DS-001 fabrication)"
 
 ditempa_bukan_diberi: true
