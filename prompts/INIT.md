@@ -1,9 +1,10 @@
 # 🌱 INIT — arifOS Constitutional Bootstrap · 2026.07.17
 ## TRINITY-33 · RSI · Constitutional Friction
 
-> **Forged:** 2026-07-08 by FORGE (000Ω) · **Zen-dated:** 2026-07-17 · **Upgraded:** 2026-08-03 (MCP resource remapping: 6 dead URIs → live surface, 8/8 tool table, model rotation refresh, ATLAS333 completeness)
-> **Supersedes:** AGENT_INIT_v3.0 (2026-07-08) and v2.0 (2026-07-05). Old filename symlinked for compat.
+> **Forged:** 2026-07-08 by FORGE (000Ω) · **Zen-dated:** 2026-07-17 · **Upgraded:** 2026-08-03 (MCP resource remapping: 6 dead URIs → live surface, 8/8 tool table, model rotation refresh, ATLAS333 completeness, INIT-ZEN.md absorbed, UNIVERSAL_BOOT.md cross-ref)
+> **Supersedes:** AGENT_INIT_v3.0 (2026-07-08) and v2.0 (2026-07-05). Old filename symlinked for compat. INIT-ZEN.md (2026-07-27) absorbed 2026-08-03.
 > **Compatible with:** OpenCode CLI on AF-FORGE, ChatGPT, Codex CLI, Copilot, Kimi, any agent harness
+> **Offline agents:** Agents that cannot reach arifOS (no localhost:8088) → load `/root/AAA/prompts/UNIVERSAL_BOOT.md` (57-line portable boot)
 > **Doctrine:** DITEMPA BUKAN DIBERI — Forged, Not Given
 > **Seal:** `INIT::TRINITY33_RSI::2026.08.03`
 
