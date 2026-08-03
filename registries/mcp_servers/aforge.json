@@ -58,7 +58,7 @@
     },
     {
       "name": "forge_approve",
-      "description": "ACTUATOR · governance · MUTATE. Refuses approval — A-FORGE cannot self-authorize. Route to arifOS arif_judge_deliberate via forge_judge_proxy instead.",
+      "description": "ACTUATOR · governance · MUTATE. Refuses approval — A-FORGE cannot self-authorize. Route to arifOS arif_judge via forge_judge_proxy instead.",
       "risk_tier": "CRITICAL",
       "transport": "streamable_http"
     },
