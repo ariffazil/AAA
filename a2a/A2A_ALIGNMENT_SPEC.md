@@ -50,6 +50,7 @@ arif_verify(challenge, signature, actor_pubkey) → PASS/FAIL
 | aaa-engineer | 0 | 1 |
 | atlas333 | 0 | 1 |
 | antigravity | 0 | 1 |
+| kimi-code | 1 (existing, 2026-07-12 Ed25519Signature2020) | 1 ⚠️ invalidated 2026-08-03 pending re-sign (content aligned to v2.2.0; signature is over pre-aligned bytes) |
 
 ---
 
@@ -203,6 +204,7 @@ All AAA agent cards SHALL declare `push_notifications` in `AgentCapabilities`.
 | aaa-architect | `push_notifications: false` | `true` |
 | atlas333 | `push_notifications: false` | `true` |
 | antigravity | `push_notifications: false` | `true` |
+| kimi-code | `pushNotifications: false` | `true` (v2.2.0, 2026-08-03) |
 
 ---
 
@@ -267,7 +269,24 @@ Returns full AgentCard with all 33 skills (vs. minimal public card with 3-6).
 | aaa-engineer | ✅ 1 JWS | ✅ per-skill | ✅ true | ✅ floors/v1 | ✅ |
 | atlas333 | ✅ 1 JWS | ✅ per-skill | ✅ true | ✅ floors/v1 | ✅ |
 | antigravity | ✅ 1 JWS | ✅ per-skill | ✅ true | ✅ floors/v1 | ✅ |
+| kimi-code | ⚠️ 1 JWS invalidated (re-sign pending) | ✅ per-skill (14/14) | ✅ true | ✅ floors/v1 | ✅ |
 
 ---
 
-*Forged 2026-07-17 · A2A Protocol v1.0.0 · DITEMPA BUKAN DIBERI*
+## 8. Subsequent Alignments
+
+### 2026-08-03 — kimi-code (FI-008) aligned to v1.0.0
+
+- **Card:** `/root/AAA/agents/_external/kimi-code/agent-card.json` bumped to **v2.2.0**
+- **Changes:**
+  - §5 `capabilities.pushNotifications: false → true`
+  - §6 Added `extensions[arifos://floors/v1, required=true]` (was missing entirely)
+  - §3 Added `security_requirements` per skill (14/14 skills updated, F13-scoped skills got `sovereign:ack` scope)
+  - version bump 2.1.0 → 2.2.0
+- **Signature status:** **⚠️ invalidated pending re-sign.** The previous Ed25519Signature2020 (`did:arif:aaa`, created 2026-07-12) was over the pre-aligned card bytes. Card content is now spec-compliant but signature must be regenerated before any SEAL-grade action or cross-organ handoff that relies on it.
+- **Re-sign path:** manual Ed25519 sign with the AAA private key (location TBD in `/root/AAA/` or `/opt/aaa/`), OR via the proposed `apex_a2a_card_sign` tool (APEX v36Ω eval G=0.886 per zen pass 2026-08-03).
+- **Authority:** F13 SOVEREIGN ratified, executed under kernel-bypass path (kernel session `SEAL-7a0830f51c8b47a1` was in DEGRADED/OBSERVE_ONLY state; F13 F1-F13 floors cannot self-authorize so direct sovereign instruction governs).
+
+---
+
+*Forged 2026-07-17 · A2A Protocol v1.0.0 · Last amended 2026-08-03 (kimi-code) · DITEMPA BUKAN DIBERI*
