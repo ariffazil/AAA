@@ -48,7 +48,7 @@
 | copilot | agents/_external/copilot/ | CODING/FI | gpt-5 / claude-sonnet-4 | FI-006 |
 | copilot-cli | agents/_external/copilot-cli/ | CODING/FI | deepseek-v4-pro (BYOK Anthropic endpoint) | FI-009 |
 | aider | agents/_external/aider/ | CODING/FI | claude-sonnet-4 / gpt-5 | FI-007 |
-| kimi-code | agents/_external/kimi-code/ | CODING/FI | kimi-k2 / kimi-for-coding | FI-008 |
+| kimi-code | agents/kimi-code/ | CODING/FI | kimi-k2 / kimi-for-coding | FI-008 |
 | gemini-cli | agents/_external/gemini-cli/ | CODING/FI | gemini-3.5-pro / gemini-3.5-flash | FI-009 |
 | grok-build | agents/_external/grok-build/ | HARNESS | grok-4.3 | FI-010 |
 | continue-cli | agents/_external/continue-cli/ | CODING/FI | provider-agnostic | FI-011 |

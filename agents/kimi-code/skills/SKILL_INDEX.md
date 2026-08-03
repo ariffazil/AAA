@@ -120,11 +120,11 @@ CLI of record (v0.18+, last aligned 2026-06-23 per `AGENTS.md`).
 
 | Mismatch | Source | Resolution |
 |---|---|---|
-| `config.toml:20` cites `/root/AAA/agents/kimi-code/WARGAAA_CARD.md` | config | **Resolved** — runtime config already points to `/root/AAA/agents/_external/kimi-code/WARGAAA_CARD.md`; stale table entry corrected. |
+| `config.toml:20` cites `/root/AAA/agents/kimi-code/WARGAAA_CARD.md` | config | **Resolved** — runtime config already points to `/root/AAA/agents/kimi-code/WARGAAA_CARD.md`; stale table entry corrected. |
 | 7-skill designators in `KIMI_CODE_SKILL_ARCHITECTURE.md` | architecture doc | **Accepted** — kept as stage labels (this index pairs them with concrete skills). |
 | `/root/.arifos/agents/kimi/skills/` directory missing | docs claim disk | **Resolved** — directory created by this index. |
 | 12 MCP delta between kimi and opencode claims | config | **Accepted** — kimi is lean-by-design (midday forge lane only). |
-| User-scope Kimi skills not tracked in any git repo | runtime layout | **Resolved** — mirrored to `AAA/agents/_external/kimi-code/skills/` and pushed with this upgrade. |
+| User-scope Kimi skills not tracked in any git repo | runtime layout | **Resolved** — mirrored to `AAA/agents/kimi-code/skills/` and pushed with this upgrade. |
 
 ---
 

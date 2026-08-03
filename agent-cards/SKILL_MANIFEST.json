@@ -428,7 +428,7 @@
       "agent": "kimi-code",
       "fi": "FI-003",
       "layer": "harnesses",
-      "card_path": "agents/_external/kimi-code/agent-card.json",
+      "card_path": "agents/kimi-code/agent-card.json",
       "skill_count": 23,
       "skills": [
         "FORGE-github",
