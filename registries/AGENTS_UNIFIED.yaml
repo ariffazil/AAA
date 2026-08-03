@@ -108,7 +108,7 @@ forge_instruments:
   binary: /root/.kimi-code/bin/kimi
   model: kimi/k3
   status: active
-  canonical_card: /root/AAA/agents/_external/kimi-code/agent-card.json
+  canonical_card: /root/AAA/agents/kimi-code/agent-card.json
   description: Moonshot Kimi Code CLI. K3 model (2.8T MoE, 1M ctx, vision, thinking).
     8 MCP servers. A-FORGE stdio ingress.
 - fi_slot: FI-009

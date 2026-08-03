@@ -150,7 +150,7 @@ the state gets richer with every run.
 
 | Agent | Detection | Phase 7 card | Notes |
 |---|---|---|---|
-| `kimi-code` | `$KIMI_SESSION` or `$CODING_AGENT=kimi-code` | `/root/AAA/agents/_external/kimi-code/agent-card.json` | Primary forge instrument |
+| `kimi-code` | `$KIMI_SESSION` or `$CODING_AGENT=kimi-code` | `/root/AAA/agents/kimi-code/agent-card.json` | Primary forge instrument |
 | `opencode` | `$OPENCODE_SESSION` | `/root/AAA/agent-cards/harnesses/opencode/agent-card.json` | Parallel citizen |
 | `claude-code` | `$CLAUDE_SESSION` | (no canonical card — skipped) | |
 | `atlas333` | `$ATLAS333_SESSION` | (no canonical card — skipped) | Cognitive geometry steward |

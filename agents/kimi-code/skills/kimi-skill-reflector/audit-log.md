@@ -55,7 +55,7 @@
 
 1. `SKILL_INDEX.md` known-mismatches table corrected (`config.toml:20` marked resolved; mirror note added).
 2. `kimi-skill-reflector/SKILL.md` linked to `CONSTITUTIONAL_REFLEX` canonical skill.
-3. User-scope skill package mirrored to `AAA/agents/_external/kimi-code/skills/`.
+3. User-scope skill package mirrored to `AAA/agents/kimi-code/skills/`.
 
 ### Verification
 
@@ -173,7 +173,7 @@ MemoryJanitor async init, WEALTH banner, WELL biometrics).
   worked but the contrast discipline was skipped. **For future:** any time
   there are 2+ viable Python optimization patterns, route through
   `kimi-architect-agi-contrast` first.
-- The "mirror" to `AAA/agents/_external/kimi-code/skills/` mentioned in the
+- The "mirror" to `AAA/agents/kimi-code/skills/` mentioned in the
   2026-07-08 audit log may not exist at the same path. Verified: the
   `/root/.kimi-code/skills/` is the active runtime mirror; the
   `/root/.arifos/agents/kimi/skills/` is the canonical. Two-way sync
@@ -304,7 +304,7 @@ Per Arif's "zen all kimi skills, lower the entropy, push to AAA repo, update age
 ```
 /root/.arifos/agents/kimi/skills/        ← canonical (per SKILL_INDEX §0.4)
 /root/.kimi-code/skills/                ← runtime (kimi-code CLI reads this)
-/root/AAA/agents/_external/kimi-code/  ← AAA repo (pushed to origin/main)
+/root/AAA/agents/kimi-code/  ← AAA repo (pushed to origin/main)
 ```
 
 All 7 contrast/reflector SKILL.md + KIMI_RSI_INIT_PROMPT.md + KIMI_HANDOVER_PROMPT.md
