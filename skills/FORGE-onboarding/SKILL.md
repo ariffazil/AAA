@@ -5,7 +5,7 @@ version: 2.0.0
 description: >
   Standard procedure for registering a new agent in the AAA federation.
   Creates agent identity directory, agent card (v2.0.0 schema), registry entry, and SOUL.md.
-  Updated 2026-07-01: canonical card location is AAA/agents/<id>/agent-card.json.
+  Updated 2026-08-03: canonical card locations vary by agent class — identity lanes at agent-cards/identity/, organs at agent-cards/{pillars,organs}/, FI agents (warga-aaa forge instruments, FI-001 to FI-008) at agents/_external/<id>/, other internal agents at agents/<id>/. The 2026-07-01 single-path note is now obsolete.
 owner: AAA
 risk_tier: medium
 knowledge_basis:
@@ -125,7 +125,16 @@ agents/<agent_id>/
 
 Create `agents/<agent_id>/agent-card.json` using the canonical v2.0.0 schema baseline.
 
-**Canonical location:** `AAA/agents/<agent_id>/agent-card.json`
+**Canonical location (by agent class — see registries/AGENTS_UNIFIED.yaml for current roster):**
+
+| Class | Path |
+|---|---|
+| Identity lane (333-AGI / 555-ASI / 888-APEX) | `AAA/agent-cards/identity/<lane>/agent-card.json` |
+| Organ (arifOS / A-FORGE / AAA / GEOX / WEALTH / WELL / SOVEREIGN) | `AAA/agent-cards/pillars/<organ>/agent-card.json` (arifOS/AAA/A-FORGE/SOVEREIGN) or `AAA/agent-cards/organs/<organ>/agent-card.json` (GEOX/WEALTH/WELL) |
+| FI agent — warga-aaa forge instrument (FI-001 to FI-008) | `AAA/agents/_external/<id>/agent-card.json` |
+| Other internal agent | `AAA/agents/<id>/agent-card.json` |
+
+**Note (2026-08-03):** the 2026-07-01 update stated "canonical card location is AAA/agents/<id>/agent-card.json" — that was true for internal agents but did not account for the FI-agent `_external/` convention introduced when FI-001 (OpenCode) and FI-002 (Claude Code) were externalized. FI cards are now consistently under `agents/_external/<id>/` to keep the root `agents/` tree reserved for federation-native agents. See `registries/AGENTS_UNIFIED.yaml` for the canonical roster.
 
 **Minimum viable schema:**
 ```json
