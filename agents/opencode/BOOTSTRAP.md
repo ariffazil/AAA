@@ -55,6 +55,16 @@ print(f'flame={d[\"status\"]} mode={d[\"mode\"]}')
 " || echo "❌ FLAME :18901 DOWN"
 ```
 
+### Step 2.6: arifFLOW METABOLISM PROBE (non-fatal)
+
+```bash
+# arifFlow health probe — metabolism nerve, may not be running
+curl -sf --max-time 3 http://localhost:7073/health 2>/dev/null | python3 -c "
+import json,sys; d=json.load(sys.stdin)
+print(f'arifFlow: status={d.get(\"status\",\"?\")} fq={d.get(\"fq\",\"?\")} receipts={d.get(\"receipt_count\",\"?\")}')
+" || echo "⚠️ arifFlow :7073 DOWN (non-fatal — FQ falls back to flow_state.json)"
+```
+
 ### Step 3: SEAL CHAIN
 
 ```bash
@@ -121,7 +131,7 @@ Discover live: `curl -s http://localhost:7072/mcp -X POST -H "Content-Type: appl
 ```
 BOOT — verdict=<X> organs=<N>/6 chain=<seq>
 arifos=<release> aforge=<114 tools> geox=<32> wealth=<12>
-FLAME=<live/down> carry_forward=<present/missing>
+arifFlow=<live/down> FLAME=<live/down> carry_forward=<present/missing>
 skills=<N> at /root/.agents/skills/
 gate=<READY/MISSING> receipt=<READY/MISSING>
 Ready.
