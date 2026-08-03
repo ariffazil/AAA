@@ -55,7 +55,7 @@
 
 1. `SKILL_INDEX.md` known-mismatches table corrected (`config.toml:20` marked resolved; mirror note added).
 2. `kimi-skill-reflector/SKILL.md` linked to `CONSTITUTIONAL_REFLEX` canonical skill.
-3. User-scope skill package mirrored to `AAA/agents/_external/kimi-code/skills/`.
+3. User-scope skill package mirrored to `AAA/agents/kimi-code/skills/`.
 
 ### Verification
 

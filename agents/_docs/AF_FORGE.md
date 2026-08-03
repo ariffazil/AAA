@@ -24,7 +24,7 @@ Every coding harness on `af-forge` must answer four questions:
 | `opencode` | `/root/.npm-global/bin/opencode` | `/root/AAA/agents/opencode/agent-card.json` | `/root/AAA/a2a-server/agent-cards/opencode.json` | Native | Primary local forge worker |
 | `claude-code` | `/root/.local/bin/claude` | `/root/AAA/agents/_external/claude-code/agent-card.json` | `/root/AAA/a2a-server/agent-cards/claude-code.json` | Native | First-class FI citizen |
 | `codex` | `/root/.npm-global/bin/codex` | `/root/AAA/agents/_external/codex/agent-card.json` | `/root/AAA/a2a-server/agent-cards/codex.json` | Native/ready | OpenAI CLI bound to AAA |
-| `kimi-code` | `/root/.kimi-code/bin/kimi` | `/root/AAA/agents/_external/kimi-code/agent-card.json` | `/root/AAA/a2a-server/agent-cards/kimi-code.json` | Native | Moonshot FI citizen |
+| `kimi-code` | `/root/.kimi-code/bin/kimi` | `/root/AAA/agents/kimi-code/agent-card.json` | `/root/AAA/a2a-server/agent-cards/kimi-code.json` | Native | Moonshot FI citizen |
 | `qwen-code` | `/root/.npm-global/bin/qwen` | `/root/AAA/agents/_external/qwen-code/agent-card.json` | `/root/AAA/a2a-server/agent-cards/qwen-code.json` | Bridge | Bounded observe/reason/draft citizen |
 | `gemini-cli` | `/usr/bin/gemini` | `/root/AAA/agents/_external/gemini-cli/agent-card.json` | `/root/AAA/a2a-server/agent-cards/gemini-cli.json` | Native | Google FI citizen |
 | `copilot` | `/usr/bin/copilot` | `/root/AAA/agents/_external/copilot/agent-card.json` | `/root/AAA/a2a-server/agent-cards/copilot.json` | Native | IDE/CLI FI citizen |

@@ -105,7 +105,7 @@ agents/<id>/agent-card.json
 | copilot | GitHub/Microsoft | `agents/_external/copilot/` |
 | gemini-cli | Google | `agents/_external/gemini-cli/` |
 | grok-build | xAI | `agents/_external/grok-build/` |
-| kimi-code | Moonshot | `agents/_external/kimi-code/` |
+| kimi-code | Moonshot | `agents/kimi-code/` |
 | qwen-code | Alibaba | `agents/_external/qwen-code/` |
 
 ---

@@ -118,7 +118,7 @@ No call without identity. No exception.
 ## Canonical Paths
 
 - Runtime skills: `/root/.arifos/agents/kimi/skills/`
-- Git mirror: `/root/AAA/agents/_external/kimi-code/skills/`
+- Git mirror: `/root/AAA/agents/kimi-code/skills/`
 - Forge work: `/root/A-FORGE/forge_work/YYYY-MM-DD/`
 - Audit log: `/root/.arifos/agents/kimi/skills/kimi-skill-reflector/audit-log.md`
 

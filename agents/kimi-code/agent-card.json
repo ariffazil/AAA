@@ -15,7 +15,7 @@
   "config_home": "/root/.arifos/agents/kimi",
   "kimi_code_binary": "/root/.kimi-code/bin/kimi",
   "citizenship": "warga-aaa",
-  "warga_card": "/root/AAA/agents/_external/kimi-code/WARGAAA_CARD.md",
+  "warga_card": "/root/AAA/agents/kimi-code/WARGAAA_CARD.md",
   "tier": "FI",
   "role": "forge_instrument",
   "class": "CODING/FI",
@@ -675,6 +675,19 @@
         "version bump 2.1.0 -> 2.2.0",
         "Signature invalidated pending re-sign (Ed25519Signature2020 / did:arif:aaa)"
       ]
+    },
+    {
+      "from_version": "2.2.0",
+      "to_version": "2.2.0",
+      "upgraded_at": "2026-08-03T13:46:18Z",
+      "upgraded_by": "Kimi Code (FI-008) - P1 re-sign, F13-ratified",
+      "changes": [
+        "Signature regenerated: did:arif:aaa Ed25519Signature2020",
+        "Old proofValue: Wuyg+u9h3k5w9DhVxgSxcFBq0Lhw9+OY... (created 2026-07-12T22:30:29Z)",
+        "New proofValue: usK4BGJyLyYVtx1yCTFPayTf3aG6rQIn... (created 2026-08-03T13:46:18Z)",
+        "SHA-256 over canonical-JSON (sorted keys, no whitespace) signed with /opt/arifos/app/.signing_key",
+        "_signature_pending_re_sign flag cleared"
+      ]
     }
   ],
   "": "arifOS/agent-card/v2.2.0",
@@ -741,9 +754,9 @@
   "signatures": [
     {
       "did": "did:arif:aaa",
-      "proofValue": "Wuyg+u9h3k5w9DhVxgSxcFBq0Lhw9+OY7jQmo8FtCblOi5cXF21ABYI9Op0uN0GJsShdgNZX9yHeLDiQEUktCg==",
+      "proofValue": "usK4BGJyLyYVtx1yCTFPayTf3aG6rQInlNL3jeSrIPBF9bK/5SNI55wpD7l2KQvMKz5X3cX7U2ChqHx401C9Dw==",
       "proofPurpose": "assertionMethod",
-      "created": "2026-07-12T22:30:29Z",
+      "created": "2026-08-03T13:46:18Z",
       "type": "Ed25519Signature2020"
     }
   ],
@@ -776,13 +789,5 @@
         ]
       }
     }
-  ],
-  "_signature_pending_re_sign": {
-    "reason": "Card content updated for A2A spec v1.0.0 alignment (v2.1.0 -> v2.2.0)",
-    "previous_signature_created": "2026-07-12T22:30:29Z",
-    "previous_signature_did": "did:arif:aaa",
-    "previous_signature_type": "Ed25519Signature2020",
-    "re_sign_required_before": "any SEAL-grade action or cross-organ handoff",
-    "re_sign_tool_hint": "manual Ed25519 sign with did:arif:aaa private key, or forge_seal with skill_name='apex_a2a_card_sign' once implemented"
-  }
+  ]
 }
