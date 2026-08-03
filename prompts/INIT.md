@@ -553,19 +553,21 @@ arif_seal --payload "$(cat /tmp/rsi-last-entry.json)" \
 | **VAULT999** | `/root/VAULT999/` |
 | **Memory** | `/root/memory/` |
 | **Forge work** | `/root/A-FORGE/forge_work/` |
-| **APA skill (Grok)** | `/root/.grok/skills/apa-sovereign-connector/SKILL.md` |
-| **Quantum kernel skill** | `/root/.agents/skills/quantum-kernel-runtime/SKILL.md` |
-| **Quantum kernel init** | `/root/AAA/prompts/QUANTUM_KERNEL_INIT.md` |
+| **APA skill (Grok)** | ~~`/root/.grok/skills/apa-sovereign-connector/SKILL.md`~~ DEPRECATED — 2026-07-09 APA experiment |
+| **Quantum kernel skill** | ~~`/root/.agents/skills/quantum-kernel-runtime/SKILL.md`~~ DEPRECATED |
+| **Quantum kernel init** | ~~`/root/AAA/prompts/QUANTUM_KERNEL_INIT.md`~~ DEPRECATED |
 | **Quantum runtime canon** | `/root/AAA/docs/architecture/QUANTUM_RUNTIME_ARCHITECTURE.md` |
 | **QQQ doctrine** | `/root/AAA/governance/QQQ_RECOMMENDATION_PROTOCOL.md` |
-| **APA session seal** | `/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md` |
-| **APA eureka gaps** | `/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md` |
+| **APA session seal** | ~~`/root/A-FORGE/forge_work/2026-07-09/APA-SESSION-SEAL-2026-07-09.md`~~ DEPRECATED |
+| **APA eureka gaps** | ~~`/root/A-FORGE/forge_work/2026-07-09/EUREKA-GAPS-APA-2026-07-09.md`~~ DEPRECATED |
 | **ATLAS333 paradoxes** | `arifos://atlas333/paradox/list` (MCP resource, 35 paradoxes) |
 | **ATLAS333 architecture** | `/root/arifOS/core/shared/ATLAS333_EVERGREEN.md` |
 | **ATLAS333 test suite** | `/root/arifOS/tests/core/test_atlas.py` + `test_atlas333_crosswalk.py` |
 | **Secrets index** | `/root/.secrets/INDEX.md` |
-| **Context** | `/root/CONTEXT.md` |
-| **Landing** | `/root/LANDING.md` |
+| **Carry-forward (live)** | `/root/.local/share/arifos/carry_forward.json` |
+| **CONTEXT.md (DEPRECATED)** | `/root/CONTEXT.md` — tombstoned 2026-08-03, use carry_forward.json |
+| **LANDING.md (DEPRECATED)** | `/root/LANDING.md` — tombstoned 2026-08-03 |
+| **SOUL.md (DEPRECATED)** | `/root/SOUL.md` — tombstoned 2026-08-03, use arifos://identity |
 
 ---
 
