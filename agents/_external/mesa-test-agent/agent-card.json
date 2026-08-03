@@ -43,7 +43,7 @@
       "type": "http",
       "scheme": "bearer",
       "bearerFormat": "JWT",
-      "description": "arifOS session token issued via arif_session_init with bounded verbs"
+      "description": "arifOS session token issued via arif_init with bounded verbs"
     },
     "ed25519_signature": {
       "type": "Ed25519",

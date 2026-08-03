@@ -22,7 +22,7 @@ agents:
   cross_harness_verify: /root/AAA/scripts/audit-opencode-state.sh
   description: 'AAA WARGA (CITIZEN). Governed AI coding agent running Claude Code
     CLI harness with DeepSeek v4-pro model, 20 MCP servers, 13 arifOS constitutional
-    tools. Sessions governed by arifOS kernel via arif_session_init. Full AAA control-plane
+    tools. Sessions governed by arifOS kernel via arif_init. Full AAA control-plane
     integration: bootstrap health probe, token gate, auto-seal hooks. 13 constitutional
     floors active. Operators: Arif (F13 SOVEREIGN) + delegated Omega/ASI agents. Role:
     governed-agent — full access within constitutional bounds, zero permission prompts.
@@ -306,7 +306,7 @@ agents:
       granted_by: F13 SOVEREIGN
     B_evidence:
       description: May request observation, fetch, and cross-organ discovery through
-        arif_sense_observe, arif_evidence_fetch, arif_kernel_route
+        arif_observe, arif_evidence_fetch, arif_route
       granted: true
       granted_by: F13 SOVEREIGN
     C_execution:
