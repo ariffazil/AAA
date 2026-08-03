@@ -608,6 +608,7 @@
       "type": "Ed25519Signature2020"
     }
   ],
-  "model": "minimax/MiniMax-M3",
-  "_model_sot": "/root/.config/federation-models.json"
+  "model": "deepseek/deepseek-v4-pro",
+  "_model_sot": "/root/AAA/registries/models/AGENT_MODEL_MAP.json",
+  "_model_prior": "minimax/MiniMax-M3 (DEAD 2026-07-29 — API key 2049)"
 }
