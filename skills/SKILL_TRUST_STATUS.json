@@ -1,0 +1,1132 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-08-04T08:00:00Z",
+  "total_skills": 112,
+  "counts": {
+    "CANONICAL": 28,
+    "EXPERIMENTAL": 84,
+    "QUARANTINED": 0
+  },
+  "skills": [
+    {
+      "name": "AAA-OCR-optical-compression",
+      "id": "aaa-ocr-optical-compression",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AAA-setup-help",
+      "id": "aaa-setup-help",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "333-AGI",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-claude-xml-structured-reasoning",
+      "id": "agi-claude-xml-structured-reasoning",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-codex-chain-of-thought",
+      "id": "agi-codex-chain-of-thought",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "333-AGI",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-decisions-reflect",
+      "id": "agi-decisions-reflect",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "333-AGI",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-dream-engine",
+      "id": "agentic-dream-engine",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-explorer-intelligence",
+      "id": "explorer-intelligence-architecture",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.06"
+    },
+    {
+      "name": "AGI-hermes-system-prompt-voice",
+      "id": "agi-hermes-system-prompt-voice",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-multimodal-bridge",
+      "id": "agi-multimodal-bridge",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-nusantara-substrate",
+      "id": "nusantara-intelligence-substrate",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-plan-dag",
+      "id": "arifos-plan-dag",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AGI-skill-unification",
+      "id": "agi-skill-unification",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA / F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.1"
+    },
+    {
+      "name": "AGI-web-optimization",
+      "id": "agentic-web-optimization",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "APEX-fff-loop-protocol",
+      "id": "APEX-fff-loop-protocol",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "APEX-humility-godel",
+      "id": "APEX-humility-godel",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "888-APEX",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "APEX-reversibility-test",
+      "id": "apex_reversibility_test",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "APEX-tool-approval-gate",
+      "id": "apex_tool_approval_gate",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ASI-agent-invariants",
+      "id": "aaa-agent-invariants",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ASI-agentic-architecture",
+      "id": "ASI-agentic-architecture",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "555-ASI",
+      "purpose": "unknown",
+      "version": "3.0.0"
+    },
+    {
+      "name": "ASI-agentic-governance",
+      "id": "aaa-agentic-governance",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "3.0.1"
+    },
+    {
+      "name": "ASI-drift-watch",
+      "id": "asi-drift-watch",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "555-ASI",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ASI-fabrication-prevention",
+      "id": "ASI-fabrication-prevention",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "ASI-skill-binding",
+      "id": "unified-skill-binding",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AUDIT-drift-detector",
+      "id": "audit-drift-detector",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2026.07.19"
+    },
+    {
+      "name": "AUDIT-recursive-audit",
+      "id": "arifos-recursive-audit",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "AUDIT-skill-atlas",
+      "id": "audit-skill-atlas",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
+      "purpose": "unknown",
+      "version": "1.2.3"
+    },
+    {
+      "name": "COPILOT-zen-router",
+      "id": "copilot_zen_router",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "EUREKA777-paradox-resolution",
+      "id": "EUREKA777-paradox-resolution",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.31"
+    },
+    {
+      "name": "FLAME-operator",
+      "id": "FLAME-operator",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2026.07.23"
+    },
+    {
+      "name": "FLAME-router",
+      "id": "FLAME-router",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2026.07.25"
+    },
+    {
+      "name": "FORGE-agentic-web-builder",
+      "id": "FORGE-agentic-web-builder",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "FORGE (000\u03a9)",
+      "purpose": "unknown",
+      "version": "1.1.0-2026.07.30"
+    },
+    {
+      "name": "FORGE-ci-diagnose",
+      "id": "github-ci-diagnose",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-cicd-docker-deploy",
+      "id": "FORGE-cicd-docker-deploy",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "FORGE-code-analysis",
+      "id": "forge-code-analysis",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-cross-agent-handoff",
+      "id": "forge-cross-agent-handoff",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-cross-repo-doc-zen",
+      "id": "FORGE-cross-repo-doc-zen",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2026.07.23"
+    },
+    {
+      "name": "FORGE-docker-entropy",
+      "id": "docker-entropy-ops",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-document-intelligence",
+      "id": "forge-document-intelligence",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-ephemeral-genesis",
+      "id": "forge-ephemeral-genesis",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-fastmcp",
+      "id": "forge-fastmcp",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.2.0"
+    },
+    {
+      "name": "FORGE-federation-manifest",
+      "id": "FORGE-federation-manifest",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "FORGE-federation-orchestrator",
+      "id": "forge-federation-orchestrator",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-github-ops",
+      "id": "github-ops",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-github-workflow",
+      "id": "FORGE-github-workflow",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-google-workspace",
+      "id": "forge-google-workspace",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-grok-profile",
+      "id": "forge-grok-profile",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-incident-escalation",
+      "id": "incident-escalation",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-incident-triage",
+      "id": "incident-triage",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-infra-guardian",
+      "id": "forge-infra-guardian",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-issue-triage",
+      "id": "github-issue-triage",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-kimi-code",
+      "id": "kimi-code-aaa",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-mcp-a2a-agentic",
+      "id": "FORGE-mcp-a2a-agentic",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "FORGE-mcp-federation-ops",
+      "id": "mcp-federation-ops",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-mcp-gui",
+      "id": "FORGE-mcp-gui",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-mcp-lifeguard",
+      "id": "forge-mcp-lifeguard",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-mcp-ops",
+      "id": "mcp-ops",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-mcp-smoke-test",
+      "id": "mcp-smoke-test",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-model-monitor",
+      "id": "forge-model-monitor",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-onboarding",
+      "id": "agent-onboarding",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-pr-governance",
+      "id": "pr-review-governance",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-pr-review",
+      "id": "github-pr-review",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-precommit-review",
+      "id": "forge-precommit-review",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-readme-truth-check",
+      "id": "readme-truth-check",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-repo-intelligence",
+      "id": "repo-intelligence",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-route-least-power",
+      "id": "forge-route-least-power",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-sct-federation-ingress",
+      "id": "forge-sct-federation-ingress",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2026.07.20"
+    },
+    {
+      "name": "FORGE-seal-a-close",
+      "id": "forge-seal-a-close",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2026.07.17b"
+    },
+    {
+      "name": "FORGE-secret-hygiene",
+      "id": "forge-secret-hygiene",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-skill-creator",
+      "id": "forge-skill-creator",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.1.0"
+    },
+    {
+      "name": "FORGE-skill-linter",
+      "id": "skill-trigger-linter",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-subagent-spawn",
+      "id": "subagent-spawn-template",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-symlink-audit",
+      "id": "forge-symlink-audit",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2026.07.19"
+    },
+    {
+      "name": "FORGE-t3a-binding-matrix",
+      "id": "forge-t3a-binding-matrix",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2026.07.17"
+    },
+    {
+      "name": "FORGE-telegram-audit",
+      "id": "forge-telegram-audit",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "FORGE-telemetry-watchdog",
+      "id": "forge-telemetry-watchdog",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2026.07.19"
+    },
+    {
+      "name": "FORGE-vault999-witness",
+      "id": "FORGE-vault999-witness",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "FORGE-verify-runtime",
+      "id": "forge-verify-runtime",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-visual-qa-w3",
+      "id": "FORGE-visual-qa-w3",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE",
+      "purpose": "unknown",
+      "version": "1.1.0-2026.07.20"
+    },
+    {
+      "name": "FORGE-vps-docker",
+      "id": "vps-docker-ops",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "FORGE-vps-runbook",
+      "id": "vps-docker-runbook",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "HERMES-opencode-protocol",
+      "id": "HERMES-opencode-protocol",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "Hermes-Prime",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "KERNEL-trinity-33",
+      "id": "trinity-33-canonical",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN \u2014 Muhammad Arif bin Fazil (888)",
+      "purpose": "unknown",
+      "version": "1.1.0-2026.07.08"
+    },
+    {
+      "name": "RSI-recursive-improvement",
+      "id": "RSI-recursive-improvement",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "333-AGI",
+      "purpose": "unknown",
+      "version": "2.0.0"
+    },
+    {
+      "name": "aaa-pdf-voice-protocol",
+      "id": "aaa-pdf-voice-protocol",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "2026.07.23"
+    },
+    {
+      "name": "arifos-constitutional-judge",
+      "id": "arifos-constitutional-judge",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "atlas333-cognitive-geometry",
+      "id": "atlas333-cognitive-geometry",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "audit-seal",
+      "id": "audit-seal",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "check-work",
+      "id": "check-work",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "code-review",
+      "id": "code-review",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "create-skill",
+      "id": "create-skill",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "docs",
+      "id": "docs",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "geox-grounding",
+      "id": "geox-grounding",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "0.1.0"
+    },
+    {
+      "name": "geox-production-cockpit",
+      "id": "geox-production-cockpit",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "help",
+      "id": "help",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "imagine",
+      "id": "imagine",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "kernel-bind",
+      "id": "kernel-bind",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "know-language",
+      "id": "know-language",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "know-math",
+      "id": "know-math",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "know-physics",
+      "id": "know-physics",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "knowledge",
+      "id": "knowledge",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "memory-manage",
+      "id": "memory-manage",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "observe-ground",
+      "id": "observe-ground",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "reality-loop-operator",
+      "id": "reality-loop-operator",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "333-AGI",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "reflective",
+      "id": "reflective",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "route-dispatch",
+      "id": "route-dispatch",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "runtime",
+      "id": "runtime",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "scripts",
+      "id": "scripts",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "substrate",
+      "id": "substrate",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "token-plan-image",
+      "id": "token-plan-image",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "verify-gate",
+      "id": "verify-gate",
+      "trust_status": "CANONICAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "F13 SOVEREIGN",
+      "purpose": "unknown",
+      "version": "1.0.0"
+    },
+    {
+      "name": "warga",
+      "id": "warga",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "AAA",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.17"
+    },
+    {
+      "name": "xauusd-trading",
+      "id": "xauusd-trading-stack",
+      "trust_status": "EXPERIMENTAL",
+      "tier": "unknown",
+      "cost_class": "unknown",
+      "owner": "A-FORGE (execution) / WEALTH (intelligence) / arifOS (governance)",
+      "purpose": "unknown",
+      "version": "1.0.0-2026.07.14"
+    }
+  ]
+}
