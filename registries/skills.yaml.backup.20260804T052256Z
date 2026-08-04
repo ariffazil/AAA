@@ -1,6 +1,6 @@
 version: 3
-generated: '2026-08-04T05:23:00Z'
-total_active: 185
+generated: '2026-07-31T05:50:55Z'
+total_active: 165
 source: canonical-skill-bodies
 routing_view: skills/FEDERATED_SKILLS_REGISTRY_V3.yaml
 alias_view: skills/SKILL_ALIAS_TABLE.json
@@ -9,9 +9,8 @@ skills:
 - id: aaa-agent-invariants
   name: ASI-agent-invariants
   version: 1.0.0
-  description: Compact operating constitution for every AAA agent. Load before any non-trivial action. Distills 10 Agent Invariants
-    + 12 governance rules + skills audit into portable doctrine. Covers tool classification, evidence/authority separation,
-    degradation dominance, propose-before-execute, and memory atoms.
+  description: Compact operating constitution for every AAA agent. Load before any non-trivial action. Distills 10 Agent Invariants + 12 governance rules + skills audit into portable doctrine. Covers tool
+    classification, evidence/authority separation, degradation dominance, propose-before-execute, and memory atoms.
   owner: AAA
   risk_tier: low
   status: active
@@ -34,11 +33,9 @@ skills:
 - id: aaa-agentic-governance
   name: ASI-agentic-governance
   version: 3.0.1
-  description: Governed intelligence skill for AAA as the abstraction, attestation, and abduction control plane across arifOS,
-    APEX, A-FORGE, GEOX, WEALTH, WELL, and the ariffazil profile repository. Use when the user asks to explain or design AAA,
-    route agentic work, reduce chaos/entropy in an arifOS federation task, create AREP/task declarations, classify risk, plan
-    multi-repo changes, review governance boundaries, or translate human intent into evidence-backed, authority-safe, recursively
-    agentic workflows. Provides deterministic F1-F13 floor checking, bounded abduction, and FederationReceipt composition.
+  description: Governed intelligence skill for AAA as the abstraction, attestation, and abduction control plane across arifOS, APEX, A-FORGE, GEOX, WEALTH, WELL, and the ariffazil profile repository. Use
+    when the user asks to explain or design AAA, route agentic work, reduce chaos/entropy in an arifOS federation task, create AREP/task declarations, classify risk, plan multi-repo changes, review governance
+    boundaries, or translate human intent into evidence-backed, authority-safe, recursively agentic workflows. Provides deterministic F1-F13 floor checking, bounded abduction, and FederationReceipt composition.
   owner: AAA
   risk_tier: medium
   status: active
@@ -68,8 +65,7 @@ skills:
 - id: aaa-pdf-voice-protocol
   name: aaa-pdf-voice-protocol
   version: 2026.07.23
-  description: 'Translate internal federation and epistemic vocabulary into publication-grade geological prose before rendering
-    human-facing PDF artifacts.
+  description: 'Translate internal federation and epistemic vocabulary into publication-grade geological prose before rendering human-facing PDF artifacts.
 
     '
   owner: AAA
@@ -85,8 +81,8 @@ skills:
 - id: agent-onboarding
   name: FORGE-onboarding
   version: 2.0.0
-  description: 'Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent
-    card (v2.0.0 schema), registry entry, and SOUL.md. Updated 2026-07-01: canonical card location is AAA/agents/<id>/agent-card.json.
+  description: 'Standard procedure for registering a new agent in the AAA federation. Creates agent identity directory, agent card (v2.0.0 schema), registry entry, and SOUL.md. Updated 2026-07-01: canonical
+    card location is AAA/agents/<id>/agent-card.json.
 
     '
   owner: AAA
@@ -111,8 +107,7 @@ skills:
 - id: agent-onboarding--forge-onboarding-claude
   name: Agent Onboarding
   version: 1.0.0
-  description: Standard procedure for registering a new agent in the AAA federation Creates agent identity directory, agent
-    card, registry entry, and SOUL.md.
+  description: Standard procedure for registering a new agent in the AAA federation Creates agent identity directory, agent card, registry entry, and SOUL.md.
   owner: AAA
   risk_tier: medium
   status: active
@@ -135,8 +130,7 @@ skills:
 - id: agentic-dream-engine
   name: AGI-dream-engine
   version: 1.0.0
-  description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode,
-    and OpenClaw can autonomously consolidate memory without violating F1-F13.
+  description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI, 888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate memory without violating F1-F13.
   owner: AAA
   risk_tier: medium
   status: active
@@ -169,8 +163,7 @@ skills:
 - id: agi-claude-xml-structured-reasoning
   name: AGI-claude-xml-structured-reasoning
   version: 0.0.0
-  description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit XML boundaries when outputs exceed
-    one screen or require parser-stable
+  description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit XML boundaries when outputs exceed one screen or require parser-stable
   owner: AAA
   risk_tier: low
   status: new (phase 2 sample)
@@ -186,8 +179,7 @@ skills:
 - id: agi-codex-chain-of-thought
   name: AGI-codex-chain-of-thought
   version: 0.0.0
-  description: Enforce private stepwise planning, strict tool schemas, and explicit verification for Codex CLI tasks that
-    require multi-step execution or typed
+  description: Enforce private stepwise planning, strict tool schemas, and explicit verification for Codex CLI tasks that require multi-step execution or typed
   owner: AAA
   risk_tier: low
   status: new (phase 2 sample · codex lane seed)
@@ -203,8 +195,7 @@ skills:
 - id: agi-emd-decode
   name: AGI-emd-decode
   version: 0.0.0
-  description: Decompose upstream EMD output into typed, provenance-bound segments tied to ground truth before persistence
-    or downstream consumption
+  description: Decompose upstream EMD output into typed, provenance-bound segments tied to ground truth before persistence or downstream consumption
   owner: AAA
   risk_tier: low
   status: new (phase 3 gap fill)
@@ -220,8 +211,7 @@ skills:
 - id: agi-emd-encode
   name: AGI-emd-encode
   version: 0.0.0
-  description: Encode raw observations, requests, documents, and signals into typed, provenance-bound, witness-ready EMD segments
-    for downstream processing
+  description: Encode raw observations, requests, documents, and signals into typed, provenance-bound, witness-ready EMD segments for downstream processing
   owner: AAA
   risk_tier: low
   status: new (phase 3 gap fill)
@@ -237,8 +227,7 @@ skills:
 - id: agi-emd-metabolize
   name: AGI-emd-metabolize
   version: 0.0.0
-  description: Decide which decoded EMD segments remain ephemeral or promote to durable memory, with witness gates for constitutional
-    and canon-grade records
+  description: Decide which decoded EMD segments remain ephemeral or promote to durable memory, with witness gates for constitutional and canon-grade records
   owner: AAA
   risk_tier: low
   status: new (phase 3 gap fill)
@@ -254,8 +243,7 @@ skills:
 - id: agi-entropy-lock-prime
   name: AGI-entropy-lock-prime
   version: 0.0.0
-  description: Gate agent mutations on non-increasing workspace entropy, triggering rollback and bounded recursive improvement
-    when a change raises entropy
+  description: Gate agent mutations on non-increasing workspace entropy, triggering rollback and bounded recursive improvement when a change raises entropy
   owner: AAA
   risk_tier: low
   status: active (phase 2 lock)
@@ -271,8 +259,7 @@ skills:
 - id: agi-hermes-system-prompt-voice
   name: AGI-hermes-system-prompt-voice
   version: 0.0.0
-  description: Apply the direct Hermes system-prompt voice and its structured witness formatting to Hermes-bound conversational
-    or creative-media responses
+  description: Apply the direct Hermes system-prompt voice and its structured witness formatting to Hermes-bound conversational or creative-media responses
   owner: AAA
   risk_tier: low
   status: new (phase 2 sample)
@@ -288,9 +275,8 @@ skills:
 - id: agi-multimodal-bridge
   name: AGI-multimodal-bridge
   version: 1.0.0
-  description: 'Multi-modal reasoning bridge — unifies text, image, tabular data, and geospatial evidence into a single reasoning
-    chain. Routes visual analysis through GEOX vision pipeline, tabular data through WEALTH compute, and text through standard
-    LLM reasoning. USE WHEN: "analyze this image + data", "combine visual and textual evidence", "multi-modal prospect evaluation".
+  description: 'Multi-modal reasoning bridge — unifies text, image, tabular data, and geospatial evidence into a single reasoning chain. Routes visual analysis through GEOX vision pipeline, tabular data
+    through WEALTH compute, and text through standard LLM reasoning. USE WHEN: "analyze this image + data", "combine visual and textual evidence", "multi-modal prospect evaluation".
 
     '
   owner: AAA
@@ -305,9 +291,8 @@ skills:
 - id: agi-skill-unification
   name: AGI-skill-unification
   version: 1.0.1
-  description: 'Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3 short→disk), mesh-sync,
-    BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual names, rebinding harness skills, or before claiming
-    skill inventory complete.
+  description: 'Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3 short→disk), mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual
+    names, rebinding harness skills, or before claiming skill inventory complete.
 
     '
   owner: AAA / F13 SOVEREIGN
@@ -322,10 +307,8 @@ skills:
 - id: apex-act-constitutional-reflex-hermes-asi
   name: APEX ACT — Constitutional Reflex (Hermes ASI)
   version: 0.0.0
-  description: 'Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the canonical ART→Kernel→ACT
-    cycle and delivers it with RASA — Bahasa Malaysia warmth, visual routing, and open-weights system-prompt obedience. Load
-    when the kernel has SEAL''d an action and you need to execute the ACT phase through Hermes'' SOUL layer (conversation,
-    media, heart).
+  description: 'Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the canonical ART→Kernel→ACT cycle and delivers it with RASA — Bahasa Malaysia warmth, visual routing, and
+    open-weights system-prompt obedience. Load when the kernel has SEAL''d an action and you need to execute the ACT phase through Hermes'' SOUL layer (conversation, media, heart).
 
     '
   owner: AAA
@@ -336,10 +319,8 @@ skills:
 - id: apex-act-constitutional-reflex-hermes-asi--apex-verdict-seal-hermes
   name: APEX ACT — Constitutional Reflex (Hermes ASI)
   version: 0.0.0
-  description: 'Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the canonical ART→Kernel→ACT
-    cycle and delivers it with RASA — Bahasa Malaysia warmth, visual routing, and open-weights system-prompt obedience. Load
-    when the kernel has SEAL''d an action and you need to execute the ACT phase through Hermes'' SOUL layer (conversation,
-    media, heart).
+  description: 'Hermes ASI adapter for the APEX ACT reflex arc.  Conversational thin layer: takes the canonical ART→Kernel→ACT cycle and delivers it with RASA — Bahasa Malaysia warmth, visual routing, and
+    open-weights system-prompt obedience. Load when the kernel has SEAL''d an action and you need to execute the ACT phase through Hermes'' SOUL layer (conversation, media, heart).
 
     '
   owner: AAA
@@ -350,8 +331,7 @@ skills:
 - id: apex-audit-coverage-check
   name: arifos-constitutional-judge
   version: 0.0.0
-  description: Audit whether every constitutional floor and federation organ has code enforcement, tests, bypass resistance,
-    and trace coverage
+  description: Audit whether every constitutional floor and federation organ has code enforcement, tests, bypass resistance, and trace coverage
   owner: AAA
   risk_tier: low
   status: active
@@ -360,8 +340,7 @@ skills:
 - id: apex-authority-check
   name: arifos-constitutional-judge
   version: 0.0.0
-  description: Detect conflicting or parallel source-of-truth claims across federation repositories and resolve the canonical
-    owner
+  description: Detect conflicting or parallel source-of-truth claims across federation repositories and resolve the canonical owner
   owner: AAA
   risk_tier: low
   status: active
@@ -370,9 +349,8 @@ skills:
 - id: apex-fff-loop-protocol
   name: APEX-fff-loop-protocol
   version: 2.0.0
-  description: '5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) → Yellow (verify) → Gold (seal).
-    Emits skill artifacts + MEMORY line + drift signal. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative
-    for Hermes.
+  description: '5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue (forge) → Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift signal. BIJAKSANA: XML-tagged
+    for Claude, numbered steps for Codex, imperative for Hermes.
 
     '
   owner: AAA
@@ -409,9 +387,8 @@ skills:
 - id: apex-humility-godel
   name: APEX-humility-godel
   version: 2.0.0
-  description: 'Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique,
-    confidence bands, explicit unknowns. F2, F7 enforced. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative
-    for Hermes.
+  description: 'Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims. Meta-critique, confidence bands, explicit unknowns. F2, F7 enforced. BIJAKSANA: XML-tagged for
+    Claude, numbered steps for Codex, imperative for Hermes.
 
     '
   owner: AAA
@@ -425,8 +402,7 @@ skills:
 - id: apex-reversibility-test
   name: apex_reversibility_test
   version: 0.0.0
-  description: Test whether a proposed change touching vault, seal, identity, constitutional, or other F1 surfaces has a valid
-    rollback and sovereign
+  description: Test whether a proposed change touching vault, seal, identity, constitutional, or other F1 surfaces has a valid rollback and sovereign
   owner: AAA
   risk_tier: low
   status: active
@@ -453,8 +429,7 @@ skills:
 - id: apex-verdict-hold
   name: arifos-constitutional-judge
   version: 0.0.0
-  description: Apply the constitutional HOLD path when authority, evidence, system health, reversibility, or blast radius
-    is insufficient
+  description: Apply the constitutional HOLD path when authority, evidence, system health, reversibility, or blast radius is insufficient
   owner: AAA
   risk_tier: low
   status: active
@@ -463,8 +438,7 @@ skills:
 - id: apex-verdict-seal
   name: arifos-constitutional-judge
   version: 0.0.0
-  description: Verify the complete ART-to-kernel-to-ACT evidence path before a SEAL-grade conclusion, without granting seal
-    authority
+  description: Verify the complete ART-to-kernel-to-ACT evidence path before a SEAL-grade conclusion, without granting seal authority
   owner: AAA
   risk_tier: low
   status: active
@@ -473,8 +447,7 @@ skills:
 - id: arifos-act
   name: arifOS ACT — Constitutional Reflex
   version: 3.0.0
-  description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution).
-    Load once. Apply always.
+  description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution). Load once. Apply always.
   owner: AAA
   risk_tier: critical
   status: active
@@ -501,8 +474,7 @@ skills:
 - id: arifos-act--apex-verdict-seal-claude
   name: arifOS ACT — Constitutional Reflex
   version: 3.0.0
-  description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution).
-    Load once. Apply always.
+  description: The complete constitutional reflex arc — ART (pre-kernel) → Kernel (F1-F13) → ACT (post-kernel execution). Load once. Apply always.
   owner: AAA
   risk_tier: critical
   status: active
@@ -529,8 +501,8 @@ skills:
 - id: arifos-observability
   name: ASI-observability
   version: 1.0.0
-  description: Generate structured telemetry for skill runs, including trigger source, chosen branch, command count, runtime,
-    and postcondition checks. Load when you need to parse run logs, compile dashboards, or audit execution performance.
+  description: Generate structured telemetry for skill runs, including trigger source, chosen branch, command count, runtime, and postcondition checks. Load when you need to parse run logs, compile dashboards,
+    or audit execution performance.
   owner: AAA
   risk_tier: low
   status: active
@@ -550,8 +522,7 @@ skills:
 - id: arifos-plan-dag
   name: AGI-plan-dag
   version: 1.0.0
-  description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback points. Load when tasks
-    exceed one-shot prompting and need subagent or staged execution.
+  description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints, and rollback points. Load when tasks exceed one-shot prompting and need subagent or staged execution.
   owner: AAA
   risk_tier: medium
   status: active
@@ -573,8 +544,7 @@ skills:
 - id: arifos-recursive-audit
   name: AUDIT-recursive-audit
   version: 1.0.0
-  description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references.
-    Load when reviewing the skill portfolio or after modifying or adding new skills.
+  description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger ambiguity, and broken references. Load when reviewing the skill portfolio or after modifying or adding new skills.
   owner: AAA
   risk_tier: medium
   status: active
@@ -596,9 +566,8 @@ skills:
 - id: asi-agentic-architecture
   name: ASI-agentic-architecture
   version: 3.0.0
-  description: 'Class-level skill for designing sovereign agentic agents. 9-skill spine, 3-agent model (Architect→Engineer→Auditor),
-    4 powers per agent, deterministic/isolation principles, VPS management spine. BIJAKSANA: XML-tagged for Claude, numbered
-    steps for Codex, imperative for Hermes.
+  description: 'Class-level skill for designing sovereign agentic agents. 9-skill spine, 3-agent model (Architect→Engineer→Auditor), 4 powers per agent, deterministic/isolation principles, VPS management
+    spine. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
 
     '
   owner: AAA
@@ -622,9 +591,8 @@ skills:
 - id: asi-context-window-mgr
   name: ASI-context-window-mgr
   version: 1.0.0
-  description: 'Context window lifecycle management — monitors token usage, triggers compression when approaching limits,
-    manages conversation summarization, and preserves critical context across compaction boundaries. USE WHEN: "context getting
-    long", "compress conversation", "summarize session", "token budget".
+  description: 'Context window lifecycle management — monitors token usage, triggers compression when approaching limits, manages conversation summarization, and preserves critical context across compaction
+    boundaries. USE WHEN: "context getting long", "compress conversation", "summarize session", "token budget".
 
     '
   owner: AAA
@@ -639,8 +607,7 @@ skills:
 - id: asi-drift-watch
   name: ASI-drift-watch
   version: 0.0.0
-  description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app). The chronic arifOS blocker
-    documented in /root/CLAUDE.md §4.4. Runs on schedule
+  description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app). The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule
   owner: AAA
   risk_tier: low
   status: active
@@ -655,8 +622,7 @@ skills:
 - id: asi-evidence-tier-express
   name: asi_evidence_tier_express
   version: 1.0.0
-  description: Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill.
-    Load when a skill changes behavior or a new version is proposed.
+  description: Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill. Load when a skill changes behavior or a new version is proposed.
   owner: AAA
   risk_tier: low
   status: active
@@ -677,8 +643,8 @@ skills:
 - id: asi-fabrication-prevention
   name: ASI-fabrication-prevention
   version: 2.0.0
-  description: 'Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact
-    existence without external validation. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative for Hermes.
+  description: 'Artifact fabrication prevention — verify before claiming existence. Triggered when agent claims file/database/API/artifact existence without external validation. BIJAKSANA: XML-tagged for
+    Claude, numbered steps for Codex, imperative for Hermes.
 
     '
   owner: AAA
@@ -693,10 +659,9 @@ skills:
 - id: asi-intent-hear
   name: asi_intent_hear
   version: 1.0.0
-  description: 'The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory from language,
-    not from biometric data. Routes deep pattern recognition through the WELL organ for physiological signals and through
-    SOUL.md''s cognitive identity for meaning. Use when Arif asks "what do you see", "what''s my state", "apa pandangan kau",
-    or when any 555-ASI governance scan needs the Hermes-perspective on the sovereign.
+  description: 'The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory from language, not from biometric data. Routes deep pattern recognition through the WELL organ
+    for physiological signals and through SOUL.md''s cognitive identity for meaning. Use when Arif asks "what do you see", "what''s my state", "apa pandangan kau", or when any 555-ASI governance scan needs
+    the Hermes-perspective on the sovereign.
 
     '
   owner: AAA
@@ -715,11 +680,9 @@ skills:
 - id: asi-interface-adapt
   name: asi_interface_adapt
   version: 1.0.0
-  description: 'A2A protocol bridge for routing multi-modal inputs (vision, audio, video, document) through Hermes to the
-    reasoning and execution layers. Hermes receives the raw modality, classifies it, extracts structured content, and routes
-    to the correct organ (GEOX for seismic images, WELL for biometrics, WEALTH for documents, A-FORGE for code diagrams).
-    Use when Arif sends or references an image, audio file, video, scanned document, or any non-text input that needs governed
-    processing.
+  description: 'A2A protocol bridge for routing multi-modal inputs (vision, audio, video, document) through Hermes to the reasoning and execution layers. Hermes receives the raw modality, classifies it,
+    extracts structured content, and routes to the correct organ (GEOX for seismic images, WELL for biometrics, WEALTH for documents, A-FORGE for code diagrams). Use when Arif sends or references an image,
+    audio file, video, scanned document, or any non-text input that needs governed processing.
 
     '
   owner: HERMES-ASI / 555-ASI
@@ -783,8 +746,7 @@ skills:
 - id: asi-summarize
   name: ASI-summarize
   version: 0.0.0
-  description: When user asks to summarize text, articles, documents, meetings, emails, YouTube transcripts, books, PDFs,
-    reports, conversations, or any long content
+  description: When user asks to summarize text, articles, documents, meetings, emails, YouTube transcripts, books, PDFs, reports, conversations, or any long content
   owner: AAA
   risk_tier: low
   status: active
@@ -800,10 +762,9 @@ skills:
 - id: asi-tone-read
   name: asi_tone_read
   version: 1.0.0
-  description: 'The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory from language,
-    not from biometric data. Routes deep pattern recognition through the WELL organ for physiological signals and through
-    SOUL.md''s cognitive identity for meaning. Use when Arif asks "what do you see", "what''s my state", "apa pandangan kau",
-    or when any 555-ASI governance scan needs the Hermes-perspective on the sovereign.
+  description: 'The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory from language, not from biometric data. Routes deep pattern recognition through the WELL organ
+    for physiological signals and through SOUL.md''s cognitive identity for meaning. Use when Arif asks "what do you see", "what''s my state", "apa pandangan kau", or when any 555-ASI governance scan needs
+    the Hermes-perspective on the sovereign.
 
     '
   owner: AAA
@@ -852,9 +813,8 @@ skills:
 - id: audit-drift-detector
   name: AUDIT-drift-detector
   version: 2026.07.19
-  description: 'Real-time drift detection across tool manifests, agent cards, skill registries, and runtime-injected files.
-    Compares live state against saved baselines and reports mismatches. USE WHEN: "check drift", "verify registry", "detect
-    manifest drift", "tool surface audit", "runtime injection detection".
+  description: 'Real-time drift detection across tool manifests, agent cards, skill registries, and runtime-injected files. Compares live state against saved baselines and reports mismatches. USE WHEN:
+    "check drift", "verify registry", "detect manifest drift", "tool surface audit", "runtime injection detection".
 
     '
   owner: A-FORGE
@@ -878,8 +838,7 @@ skills:
 - id: audit-skill-atlas
   name: AUDIT-skill-atlas
   version: 1.2.3
-  description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw
-    harness views
+  description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views
   owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
   risk_tier: low
   status: active
@@ -893,8 +852,7 @@ skills:
 - id: caller-trace
   name: Caller Trace
   version: 1.0.0
-  description: Before invoking any tool, traces WHO else calls this tool, the cost of misuse, and whether the caller's use
-    is
+  description: Before invoking any tool, traces WHO else calls this tool, the cost of misuse, and whether the caller's use is
   owner: AAA
   risk_tier: low
   status: active
@@ -916,9 +874,8 @@ skills:
 - id: check-work
   name: check-work
   version: 0.0.0
-  description: 'Check your work with a verification subagent that reviews diffs, runs builds and tests, and evaluates correctness.
-    Read this file for instructions. Use when asked to "check work", "verify changes", "self-verify", "/check-work", "/check",
-    "/verify", or "/self-verify".
+  description: 'Check your work with a verification subagent that reviews diffs, runs builds and tests, and evaluates correctness. Read this file for instructions. Use when asked to "check work", "verify
+    changes", "self-verify", "/check-work", "/check", "/verify", or "/self-verify".
 
     '
   owner: AAA
@@ -935,8 +892,7 @@ skills:
 - id: code-review
   name: code-review
   version: 0.0.0
-  description: Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition
-    growth
+  description: Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth
   owner: AAA
   risk_tier: low
   status: active
@@ -960,9 +916,8 @@ skills:
 - id: copilot-zen-router
   name: COPILOT_ZEN_ROUTER
   version: 1.0.0
-  description: 'META-MESA: Orthogonal skill taxonomy + intent→skill router for Copilot CLI. THE single skill that tells Copilot
-    which domain skill to load based on task context. Load this FIRST when uncertain which skill to use. Covers all 147 federation
-    skills organized into 9 orthogonal layers. DO NOT load domain skills blindly — route through this.
+  description: 'META-MESA: Orthogonal skill taxonomy + intent→skill router for Copilot CLI. THE single skill that tells Copilot which domain skill to load based on task context. Load this FIRST when uncertain
+    which skill to use. Covers all 147 federation skills organized into 9 orthogonal layers. DO NOT load domain skills blindly — route through this.
 
     '
   owner: AAA
@@ -973,8 +928,7 @@ skills:
 - id: create-skill
   name: create-skill
   version: 0.0.0
-  description: 'Interactively create a new Grok skill (SKILL.md + optional scripts/references). Use when the user wants to
-    create a skill, scaffold a skill, or runs /create-skill.
+  description: 'Interactively create a new Grok skill (SKILL.md + optional scripts/references). Use when the user wants to create a skill, scaffold a skill, or runs /create-skill.
 
     '
   owner: AAA
@@ -990,9 +944,8 @@ skills:
 - id: delta-omega-psi-multimodal-cognition
   name: delta-omega-psi-multimodal-cognition
   version: 1.0.0
-  description: 'Enforce Δ·Ω·Ψ multimodal cognition rules. Every AAA agent that reasons about multimodal inputs (images, audio,
-    video, seismic, well logs, market data) MUST load this skill. Constitutional rule: multimodal perception without Δ-substrate
-    metabolism is not cognition. LLM is tri-witness, never judge.
+  description: 'Enforce Δ·Ω·Ψ multimodal cognition rules. Every AAA agent that reasons about multimodal inputs (images, audio, video, seismic, well logs, market data) MUST load this skill. Constitutional
+    rule: multimodal perception without Δ-substrate metabolism is not cognition. LLM is tri-witness, never judge.
 
     '
   owner: AAA
@@ -1003,8 +956,7 @@ skills:
 - id: docker-entropy-ops
   name: FORGE-docker-entropy
   version: 1.0.0
-  description: Thermodynamic reasoning lens for container fleet health, resource pressure, and safe/dangerous intervention
-    boundaries.
+  description: Thermodynamic reasoning lens for container fleet health, resource pressure, and safe/dangerous intervention boundaries.
   owner: AAA
   risk_tier: medium
   status: active
@@ -1038,8 +990,8 @@ skills:
 - id: explorer-intelligence-architecture
   name: AGI-explorer-intelligence
   version: 1.0.0-2026.07.06
-  description: 'The universal exploration protocol for all AAA warga agents. OBSERVE → HYPOTHESIZE → FALSIFY → VERIFY — the
-    governed metabolism of intelligence. Every agent follows this loop when exploring anything. Not theory. Protocol.
+  description: 'The universal exploration protocol for all AAA warga agents. OBSERVE → HYPOTHESIZE → FALSIFY → VERIFY — the governed metabolism of intelligence. Every agent follows this loop when exploring
+    anything. Not theory. Protocol.
 
     '
   owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
@@ -1073,8 +1025,7 @@ skills:
 - id: federation-release-attestation
   name: federation-release-attestation
   version: 1.0.0
-  description: Produces a seven-repository federation release manifest proving tag, commit, CI, artifact, and deployed-runtime
-    parity
+  description: Produces a seven-repository federation release manifest proving tag, commit, CI, artifact, and deployed-runtime parity
   owner: AAA
   risk_tier: medium
   status: active
@@ -1095,8 +1046,7 @@ skills:
 - id: flame-operator
   name: FLAME-operator
   version: 2026.07.23
-  description: 'Probe FLAME health, inspect hit rates, diagnose model failures, and maintain free-tier routing state within
-    the RM0 and constitutional boundaries.
+  description: 'Probe FLAME health, inspect hit rates, diagnose model failures, and maintain free-tier routing state within the RM0 and constitutional boundaries.
 
     '
   owner: AAA
@@ -1112,8 +1062,7 @@ skills:
 - id: flame-router
   name: FLAME-router
   version: 2026.07.25
-  description: 'Classify inference work into the stateless FLAME tool lane or the governed constitutional agent lane, with
-    Arif-ratified division of labor (2026-07-24) and L3 Task-Routing doctrine (2026-07-25).
+  description: 'Classify inference work into the stateless FLAME tool lane or the governed constitutional agent lane, with Arif-ratified division of labor (2026-07-24) and L3 Task-Routing doctrine (2026-07-25).
 
     '
   owner: AAA
@@ -1130,11 +1079,9 @@ skills:
 - id: forge-agentic-web-builder
   name: FORGE-agentic-web-builder
   version: 1.0.0-2026.07.23
-  description: 'Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DEPLOY
-    (canonical script + orphan detection), AUDIT (full-crawl methodology), REPAIR (source/live convergence doctrine), SEAL
-    (evidence + VAULT999). Load the op you need. USE WHEN: "deploy site", "site down", "audit all pages", "404 on arif-fazil.com",
-    "deploy-vps.sh", "makcikgpt broken", "static file missing", "rsync --delete", "site audit". DO NOT USE FOR: Caddy SSL/DNS/
-    tunnel checks (FORGE-infra-guardian), LLM-content optimization of pages (AGI-web-optimization), generic CI/CD pipelines
+  description: 'Build, deploy, audit, and repair arif-fazil.com constellation sites autonomously. Class-level umbrella: DEPLOY (canonical script + orphan detection), AUDIT (full-crawl methodology), REPAIR
+    (source/live convergence doctrine), SEAL (evidence + VAULT999). Load the op you need. USE WHEN: "deploy site", "site down", "audit all pages", "404 on arif-fazil.com", "deploy-vps.sh", "makcikgpt broken",
+    "static file missing", "rsync --delete", "site audit". DO NOT USE FOR: Caddy SSL/DNS/ tunnel checks (FORGE-infra-guardian), LLM-content optimization of pages (AGI-web-optimization), generic CI/CD pipelines
     (FORGE-cicd-docker-deploy).
 
     '
@@ -1167,11 +1114,9 @@ skills:
 - id: forge-code-analysis
   name: FORGE-code-analysis
   version: 0.0.0
-  description: This skill should be used when the user needs to analyze Git repositories, compare developer commit patterns,
-    work habits, development efficiency, code style, code quality, and slacking behaviors. It generates honest, direct developer
-    evaluations with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger phrases include "analyze code",
-    "analyze repository", "compare developers", "code quality report", "commit patterns", "developer efficiency", "developer
-    evaluation", "slacking index", "摸鱼指数", "工作习惯分析", "代码分析", "研发效率", "代码质量", "开发者评估", "developer score".
+  description: This skill should be used when the user needs to analyze Git repositories, compare developer commit patterns, work habits, development efficiency, code style, code quality, and slacking behaviors.
+    It generates honest, direct developer evaluations with scores, grades, strengths, weaknesses, and actionable suggestions. Trigger phrases include "analyze code", "analyze repository", "compare developers",
+    "code quality report", "commit patterns", "developer efficiency", "developer evaluation", "slacking index", "摸鱼指数", "工作习惯分析", "代码分析", "研发效率", "代码质量", "开发者评估", "developer score".
   owner: AAA
   risk_tier: low
   status: active
@@ -1195,8 +1140,7 @@ skills:
 - id: forge-context-compressor
   name: FORGE-context-compressor
   version: 0.0.0
-  description: Compress oversized logs, transcripts, diffs, and telemetry before they exceed a host runtime context budget
-    while preserving provenance and recovery
+  description: Compress oversized logs, transcripts, diffs, and telemetry before they exceed a host runtime context budget while preserving provenance and recovery
   owner: A-FORGE
   risk_tier: low
   status: new (phase 3 gap fill)
@@ -1212,9 +1156,8 @@ skills:
 - id: forge-cross-agent-handoff
   name: FORGE-cross-agent-handoff
   version: 1.0.0
-  description: 'Structured handoff protocol between federation agents. Packages task context, evidence, floor state, and provenance
-    into a transferable artifact. Prevents context loss during agent transitions. USE WHEN: "hand off to", "transfer task",
-    "escalate to agent", "delegate to".
+  description: 'Structured handoff protocol between federation agents. Packages task context, evidence, floor state, and provenance into a transferable artifact. Prevents context loss during agent transitions.
+    USE WHEN: "hand off to", "transfer task", "escalate to agent", "delegate to".
 
     '
   owner: AAA
@@ -1229,8 +1172,7 @@ skills:
 - id: forge-cross-repo-doc-zen
   name: FORGE-cross-repo-doc-zen
   version: 2026.07.23
-  description: 'Audit and reconcile documentation across federation repositories, preserving canonical signals while removing
-    stale references and graph fragmentation.
+  description: 'Audit and reconcile documentation across federation repositories, preserving canonical signals while removing stale references and graph fragmentation.
 
     '
   owner: AAA
@@ -1246,9 +1188,8 @@ skills:
 - id: forge-data-compression
   name: FORGE-data-compression
   version: 1.0.0
-  description: 'Context-window-aware data compression for long logs, code dumps, and multi-source evidence bundles. Compresses
-    input to fit within model context limits while preserving semantic fidelity (F2 TRUTH ≥ 0.95). Supports streaming chunk-and-summarize
-    pipelines. USE WHEN: "compress this log", "summarize before context window", "fit this in context".
+  description: 'Context-window-aware data compression for long logs, code dumps, and multi-source evidence bundles. Compresses input to fit within model context limits while preserving semantic fidelity
+    (F2 TRUTH ≥ 0.95). Supports streaming chunk-and-summarize pipelines. USE WHEN: "compress this log", "summarize before context window", "fit this in context".
 
     '
   owner: A-FORGE
@@ -1277,9 +1218,8 @@ skills:
 - id: forge-document-intelligence
   name: forge-document-intelligence
   version: 1.0.0
-  description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception,
-    forge_document_ingest provenance, and constitutional governance into one skill. OCR is basic rights for AAA citizens.
-    Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline.
+  description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill.
+    OCR is basic rights for AAA citizens. Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline.
   owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
   risk_tier: medium
   status: active
@@ -1330,10 +1270,8 @@ skills:
 - id: forge-federation-orchestrator
   name: FORGE-federation-orchestrator
   version: 0.0.0
-  description: 'Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (8080-8083),
-    container drift detection, restart count monitoring. USE WHEN: "federation status", "restart dead container", "container
-    health", "docker drift", "service down", "probe MCP", "health check federation". Runs on af-forge (VPS) — native docker
-    and curl required.'
+  description: 'Monitor and manage the arifOS federation: docker compose ps, restart dead services, MCP health probes (8080-8083), container drift detection, restart count monitoring. USE WHEN: "federation
+    status", "restart dead container", "container health", "docker drift", "service down", "probe MCP", "health check federation". Runs on af-forge (VPS) — native docker and curl required.'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1348,9 +1286,8 @@ skills:
 - id: forge-github-workflow
   name: FORGE-github-workflow
   version: 2.0.0
-  description: 'Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each
-    op is a labeled section; load the relevant one. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex, imperative
-    for Hermes.
+  description: 'Class-level umbrella for GitHub operations — auth, repo management, PR lifecycle, issues, code review. Each op is a labeled section; load the relevant one. BIJAKSANA: XML-tagged for Claude,
+    numbered steps for Codex, imperative for Hermes.
 
     '
   owner: A-FORGE
@@ -1364,8 +1301,7 @@ skills:
 - id: forge-google-workspace
   name: FORGE-google-workspace
   version: 1.0.0
-  description: Operate Google Workspace from one CLI using dynamic API discovery, secure OAuth flows, and agent-ready automation
-    patterns for Drive and
+  description: Operate Google Workspace from one CLI using dynamic API discovery, secure OAuth flows, and agent-ready automation patterns for Drive and
   owner: AAA
   risk_tier: low
   status: active
@@ -1394,8 +1330,7 @@ skills:
 - id: forge-grok-profile
   name: FORGE-grok-profile
   version: 0.0.0
-  description: Adapt FORGE execution to Grok Build's long-context, strict-schema, worktree-isolated, and bounded-parallel
-    runtime profile
+  description: Adapt FORGE execution to Grok Build's long-context, strict-schema, worktree-isolated, and bounded-parallel runtime profile
   owner: A-FORGE
   risk_tier: low
   status: new (phase 3 gap fill)
@@ -1411,8 +1346,8 @@ skills:
 - id: forge-infra-crons
   name: FORGE-infra-crons
   version: 0.0.0
-  description: 'Infrastructure cron job management — schedule, audit, and govern VPS cron entries. Read-only observation of
-    root crontab, /etc/crontab, and /etc/cron.d. F1 AMANAH: never mutate crontabs without 888_HOLD.'
+  description: 'Infrastructure cron job management — schedule, audit, and govern VPS cron entries. Read-only observation of root crontab, /etc/crontab, and /etc/cron.d. F1 AMANAH: never mutate crontabs
+    without 888_HOLD.'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1421,9 +1356,8 @@ skills:
 - id: forge-infra-guardian
   name: FORGE-infra-guardian
   version: 0.0.0
-  description: 'Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel status, and Cloudflare
-    tunnel exposure. USE WHEN: "check SSL", "Caddy config valid", "tunnel status", "DNS parity", "SSL expiry", "infra health",
-    "Cloudflare check".'
+  description: 'Validate Caddy reverse proxy configs, Cloudflare Origin CA SSL expiry, DNS parity, tunnel status, and Cloudflare tunnel exposure. USE WHEN: "check SSL", "Caddy config valid", "tunnel status",
+    "DNS parity", "SSL expiry", "infra health", "Cloudflare check".'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1487,9 +1421,8 @@ skills:
 - id: forge-model-monitor
   name: FORGE-model-monitor
   version: 0.0.0
-  description: 'Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap), Kimi, Ollama qwen2.5:7b (local).
-    Track latency, billing failures (402), cold-start failures, and auto-pause dead models. USE WHEN: "model health", "check
-    fallback chain", "DeepSeek balance", "model latency", "billing alert".'
+  description: 'Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap), Kimi, Ollama qwen2.5:7b (local). Track latency, billing failures (402), cold-start failures, and auto-pause dead
+    models. USE WHEN: "model health", "check fallback chain", "DeepSeek balance", "model latency", "billing alert".'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1566,9 +1499,8 @@ skills:
 - id: forge-route-least-power
   name: FORGE-route-least-power
   version: 2.0.0
-  description: 'Route every task to the SMALLEST capability that can accomplish it. Prevents over-engineering, yak-shaving,
-    and reflexive tool escalation. Enforces one-owner-per-task, idempotent actions, and strict queues. Ask: "Can a simpler
-    tool do this?" before reaching for the powerful one.
+  description: 'Route every task to the SMALLEST capability that can accomplish it. Prevents over-engineering, yak-shaving, and reflexive tool escalation. Enforces one-owner-per-task, idempotent actions,
+    and strict queues. Ask: "Can a simpler tool do this?" before reaching for the powerful one.
 
     '
   owner: AAA
@@ -1579,11 +1511,9 @@ skills:
 - id: forge-sct-federation-ingress
   name: FORGE-sct-federation-ingress
   version: 2026.07.20
-  description: 'Wire, verify, and operate federation Session Capability Tokens (SCT) across arifOS mint/validate and organ
-    ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: SCT gate, session_token, federation_sct, SCT_AMBIGUOUS, tool_authority,
-    FORGE_SCT_REQUIRE_MUTATE, 65-case matrix, decision event. Now also covers ChatGPT App OAuth 2.1 resource-server alignment
-    (RFC 9728 PRM, canonical resource identity, per-tool securitySchemes) as the EXTERNAL host ingress path alongside the
-    INTERNAL SCT path.
+  description: 'Wire, verify, and operate federation Session Capability Tokens (SCT) across arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA). Use when: SCT gate, session_token,
+    federation_sct, SCT_AMBIGUOUS, tool_authority, FORGE_SCT_REQUIRE_MUTATE, 65-case matrix, decision event. Now also covers ChatGPT App OAuth 2.1 resource-server alignment (RFC 9728 PRM, canonical resource
+    identity, per-tool securitySchemes) as the EXTERNAL host ingress path alongside the INTERNAL SCT path.
 
     '
   owner: AAA
@@ -1594,8 +1524,8 @@ skills:
 - id: forge-seal-a-close
   name: FORGE-seal-a-close
   version: 2026.07.17b
-  description: 'Close remaining Seal-A gates after P0 proof/identity/SCT/T3a work. Use when: Seal-A, stage 000, SE stage engine,
-    SOT v2, BOOT, T3a binding, free_nonce, constitutional_grade, remaining seal tasks.
+  description: 'Close remaining Seal-A gates after P0 proof/identity/SCT/T3a work. Use when: Seal-A, stage 000, SE stage engine, SOT v2, BOOT, T3a binding, free_nonce, constitutional_grade, remaining seal
+    tasks.
 
     '
   owner: AAA
@@ -1606,9 +1536,8 @@ skills:
 - id: forge-secret-hygiene
   name: FORGE-secret-hygiene
   version: 0.0.0
-  description: 'Audit env.local, SOPS .env, and config files for plaintext secret leaks, key age, missing rotation dates,
-    and overlong-lived credentials. USE WHEN: "secret audit", "key age", "rotate secrets", "credential hygiene", "API key
-    check", "env audit", "secret leak scan".'
+  description: 'Audit env.local, SOPS .env, and config files for plaintext secret leaks, key age, missing rotation dates, and overlong-lived credentials. USE WHEN: "secret audit", "key age", "rotate secrets",
+    "credential hygiene", "API key check", "env audit", "secret leak scan".'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1633,9 +1562,8 @@ skills:
 - id: forge-symlink-audit
   name: FORGE-symlink-audit
   version: 2026.07.19
-  description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks, categorizes by location, and reports
-    with safe-delete recommendations. USE WHEN: "check symlinks", "broken links", "symlink debt", "find broken symlinks",
-    or during entropy sweeps.
+  description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks, categorizes by location, and reports with safe-delete recommendations. USE WHEN: "check symlinks", "broken links",
+    "symlink debt", "find broken symlinks", or during entropy sweeps.
 
     '
   owner: A-FORGE
@@ -1646,8 +1574,8 @@ skills:
 - id: forge-t3a-binding-matrix
   name: FORGE-t3a-binding-matrix
   version: 2026.07.17
-  description: 'Close T3a authenticated session binding via falsifiable P0 matrix. Use when: T3a, free_nonce, bridging_seal,
-    Ed25519 arif binding, key fragmentation, forge_p0_binding_test, NEG.3, NEG.6b, authenticated_session_binding.
+  description: 'Close T3a authenticated session binding via falsifiable P0 matrix. Use when: T3a, free_nonce, bridging_seal, Ed25519 arif binding, key fragmentation, forge_p0_binding_test, NEG.3, NEG.6b,
+    authenticated_session_binding.
 
     '
   owner: AAA
@@ -1670,9 +1598,8 @@ skills:
 - id: forge-telegram-audit
   name: FORGE-telegram-audit
   version: 0.0.0
-  description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation, bot permission scope, and A2A
-    bridge security. USE WHEN: "telegram audit", "bot security", "webhook check", "token isolation", "TREE777 check", "telegram
-    permissions".'
+  description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation, bot permission scope, and A2A bridge security. USE WHEN: "telegram audit", "bot security", "webhook check",
+    "token isolation", "TREE777 check", "telegram permissions".'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1688,9 +1615,8 @@ skills:
 - id: forge-telemetry-watchdog
   name: FORGE-telemetry-watchdog
   version: 2026.07.19
-  description: 'Monitor organ telemetry freshness across the federation. Checks state.json age, biometric data staleness,
-    and watchdog cron health. USE WHEN: "check telemetry", "WELL state stale", "vitality unknown", "watchdog status", "biometric
-    freshness".
+  description: 'Monitor organ telemetry freshness across the federation. Checks state.json age, biometric data staleness, and watchdog cron health. USE WHEN: "check telemetry", "WELL state stale", "vitality
+    unknown", "watchdog status", "biometric freshness".
 
     '
   owner: AAA
@@ -1715,8 +1641,8 @@ skills:
 - id: forge-verify-runtime
   name: FORGE-verify-runtime
   version: 2.0.0
-  description: 'Verification-as-terminal-state skill. A task is done ONLY when verified. Never stop at "I changed it" — only
-    at "it''s fixed and confirmed." Runs health probes, behavior smoke tests, and drift checks.
+  description: 'Verification-as-terminal-state skill. A task is done ONLY when verified. Never stop at "I changed it" — only at "it''s fixed and confirmed." Runs health probes, behavior smoke tests, and
+    drift checks.
 
     '
   owner: A-FORGE
@@ -1733,8 +1659,7 @@ skills:
 - id: forge-visual-qa-w3
   name: FORGE-visual-qa-w3
   version: 1.1.0-2026.07.20
-  description: Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal.
-    Includes MCP App / ChatGPT host-surface QA.
+  description: Closed-loop visual governance with W3 tri-witness consensus — render, screenshot, validate, iterate, seal. Includes MCP App / ChatGPT host-surface QA.
   owner: A-FORGE
   risk_tier: high
   status: active
@@ -1750,8 +1675,8 @@ skills:
 - id: forge-well-boundary-repair
   name: FORGE-well-boundary-repair
   version: 0.0.0
-  description: 'Repair WELL organ boundary violations — fix substrate readiness drift, biometric staleness, and dignity floor
-    gaps. Engineering actuator for WELL organ health restoration. F1 AMANAH: reversible fixes only.'
+  description: 'Repair WELL organ boundary violations — fix substrate readiness drift, biometric staleness, and dignity floor gaps. Engineering actuator for WELL organ health restoration. F1 AMANAH: reversible
+    fixes only.'
   owner: A-FORGE
   risk_tier: low
   status: active
@@ -1780,9 +1705,8 @@ skills:
 - id: geox-production-cockpit
   name: geox-production-cockpit
   version: 0.0.0
-  description: Control plane router for GEOX agentic Earth-reasoning stack. Classifies requests into OBSERVE, COMPUTE, INTERPRET,
-    CHALLENGE, CERTIFY, DEPLOY, ACTUATE lanes and enforces non-negotiable state boundaries before routing to specialist skills
-    or tool surfaces.
+  description: Control plane router for GEOX agentic Earth-reasoning stack. Classifies requests into OBSERVE, COMPUTE, INTERPRET, CHALLENGE, CERTIFY, DEPLOY, ACTUATE lanes and enforces non-negotiable state
+    boundaries before routing to specialist skills or tool surfaces.
   owner: AAA
   risk_tier: low
   status: active
@@ -1791,10 +1715,9 @@ skills:
 - id: github-ci-diagnose
   name: FORGE-ci-diagnose
   version: 1.1.0
-  description: Parse failing GitHub Actions logs, identify root cause patterns, and propose fixes without executing irreversible
-    changes. Use this skill whenever a federation repo shows a red CI status, a workflow fails, or a build/test/lint gate
-    breaks. This skill reads logs, classifies failure modes, and outputs a diagnostic report — it does not re-run CI, edit
-    workflows, or dismiss security findings without sovereign approval.
+  description: Parse failing GitHub Actions logs, identify root cause patterns, and propose fixes without executing irreversible changes. Use this skill whenever a federation repo shows a red CI status,
+    a workflow fails, or a build/test/lint gate breaks. This skill reads logs, classifies failure modes, and outputs a diagnostic report — it does not re-run CI, edit workflows, or dismiss security findings
+    without sovereign approval.
   owner: AAA
   risk_tier: medium
   status: active
@@ -1817,10 +1740,8 @@ skills:
 - id: github-issue-triage
   name: FORGE-issue-triage
   version: 1.1.0
-  description: Governed triage workflow for GitHub issues across the arifOS federation Use this skill whenever a new issue
-    is opened, an issue lacks labels, or an agent needs to determine if it belongs in a different repo or federation organ.
-    This skill classifies, routes, labels, and drafts responses — but never closes, never assigns to Arif, and never promises
-    code fixes without sovereign approval.
+  description: Governed triage workflow for GitHub issues across the arifOS federation Use this skill whenever a new issue is opened, an issue lacks labels, or an agent needs to determine if it belongs
+    in a different repo or federation organ. This skill classifies, routes, labels, and drafts responses — but never closes, never assigns to Arif, and never promises code fixes without sovereign approval.
   owner: AAA
   risk_tier: medium
   status: active
@@ -1858,8 +1779,7 @@ skills:
 - id: github-pr-review
   name: FORGE-pr-review
   version: 1.1.0
-  description: Governed checklist for reviewing GitHub pull requests in the arifOS federation Ensures PRs meet constitutional,
-    structural, and safety standards before merge.
+  description: Governed checklist for reviewing GitHub pull requests in the arifOS federation Ensures PRs meet constitutional, structural, and safety standards before merge.
   owner: AAA
   risk_tier: medium
   status: active
@@ -1882,9 +1802,8 @@ skills:
 - id: help
   name: help
   version: 0.0.0
-  description: 'Grok documentation and configuration help. Use when users ask about setup, configuration, MCP servers, authentication,
-    skills, slash commands, keyboard shortcuts, or any Grok feature. Also use proactively when you detect a user is having
-    trouble with setup or onboarding.
+  description: 'Grok documentation and configuration help. Use when users ask about setup, configuration, MCP servers, authentication, skills, slash commands, keyboard shortcuts, or any Grok feature. Also
+    use proactively when you detect a user is having trouble with setup or onboarding.
 
     '
   owner: AAA
@@ -1900,9 +1819,8 @@ skills:
 - id: hermes-opencode-protocol
   name: HERMES-opencode-protocol
   version: 2.0.0
-  description: 'Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with
-    888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. BIJAKSANA: XML-tagged for Claude, numbered steps for Codex,
-    imperative for Hermes.
+  description: 'Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE execution under F1-F13 with 888_HOLD gates. Reversible-first, evidence-cite-or-UNKNOWN. BIJAKSANA: XML-tagged
+    for Claude, numbered steps for Codex, imperative for Hermes.
 
     '
   owner: AAA
@@ -1934,8 +1852,7 @@ skills:
 - id: imagegen
   name: imagegen
   version: 0.0.0
-  description: Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations,
-    textures, sprites, mockups,
+  description: Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups,
   owner: AAA
   risk_tier: low
   status: active
@@ -1944,10 +1861,9 @@ skills:
 - id: imagine
   name: imagine
   version: 0.0.0
-  description: 'How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with code instead
-    of generating it, prompt-craft, reference-first handling of real people, factual grounding, and asset-consistency. Load
-    this whenever generating or editing an image is on the table, i.e. when an image_gen or image_edit call is being considered
-    or about to be made. Tool-usage-driven, not triggered by a user merely mentioning images.
+  description: 'How to use the image_gen and image_edit tool calls in Grok Build: when to build a visual with code instead of generating it, prompt-craft, reference-first handling of real people, factual
+    grounding, and asset-consistency. Load this whenever generating or editing an image is on the table, i.e. when an image_gen or image_edit call is being considered or about to be made. Tool-usage-driven,
+    not triggered by a user merely mentioning images.
 
     '
   owner: AAA
@@ -1963,8 +1879,7 @@ skills:
 - id: incident-escalation
   name: FORGE-incident-escalation
   version: 1.0.0
-  description: 'Standard protocol for responding to federation incidents: service outages, security breaches, constitutional
-    violations, or agent misbehavior.'
+  description: 'Standard protocol for responding to federation incidents: service outages, security breaches, constitutional violations, or agent misbehavior.'
   owner: AAA
   risk_tier: critical
   status: active
@@ -1990,8 +1905,7 @@ skills:
 - id: incident-triage
   name: FORGE-incident-triage
   version: 2.0.0
-  description: 'Six-step incident response playbook with structured logging, backoff/circuit-breaker for restart loops, and
-    verification-as-terminal-state. Lower machine entropy.
+  description: 'Six-step incident response playbook with structured logging, backoff/circuit-breaker for restart loops, and verification-as-terminal-state. Lower machine entropy.
 
     '
   owner: AAA
@@ -2019,8 +1933,7 @@ skills:
 - id: kernel-bind
   name: kernel-bind
   version: 1.0.0
-  description: Bind governance before action. Every session must initialize constitutional floors, recognize sovereign signals,
-    and classify autonomy tier before any other verb.
+  description: Bind governance before action. Every session must initialize constitutional floors, recognize sovereign signals, and classify autonomy tier before any other verb.
   owner: F13 SOVEREIGN
   risk_tier: low
   status: active
@@ -2053,8 +1966,7 @@ skills:
 - id: know-language
   name: know-language
   version: 1.0.0
-  description: All human interface is linguistic. Meaning ≠ syntax. Pragmatics > semantics > syntax. The gap between said
-    and meant is where governance lives.
+  description: All human interface is linguistic. Meaning ≠ syntax. Pragmatics > semantics > syntax. The gap between said and meant is where governance lives.
   owner: F13 SOVEREIGN
   risk_tier: low
   status: active
@@ -2063,8 +1975,7 @@ skills:
 - id: know-math
   name: know-math
   version: 1.0.0
-  description: All computation is mathematical. Uncertainty is quantified. Optimization has structure. Proof has rules. Numbers
-    don't lie but models can.
+  description: All computation is mathematical. Uncertainty is quantified. Optimization has structure. Proof has rules. Numbers don't lie but models can.
   owner: F13 SOVEREIGN
   risk_tier: low
   status: active
@@ -2073,8 +1984,7 @@ skills:
 - id: know-physics
   name: know-physics
   version: 1.0.0
-  description: All reality claims are physical claims. Conservation laws, thermodynamics, causality, entropy. You cannot get
-    something from nothing.
+  description: All reality claims are physical claims. Conservation laws, thermodynamics, causality, entropy. You cannot get something from nothing.
   owner: F13 SOVEREIGN
   risk_tier: low
   status: active
@@ -2134,8 +2044,7 @@ skills:
 - id: mcp-smoke-test
   name: FORGE-mcp-smoke-test
   version: 1.1.0
-  description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched
-    schemas, and transport
+  description: Validate that MCP servers respond correctly to health probes and basic tool calls. Detect down servers, mismatched schemas, and transport
   owner: AAA
   risk_tier: low
   status: active
@@ -2157,8 +2066,7 @@ skills:
 - id: nusantara-intelligence-substrate
   name: AGI-nusantara-substrate
   version: 1.0.0
-  description: Cultural, dignity, and sovereignty lens for AAA state records. Apply before sealing decisions that touch identity,
-    privacy, boundaries, or sovereign veto.
+  description: Cultural, dignity, and sovereignty lens for AAA state records. Apply before sealing decisions that touch identity, privacy, boundaries, or sovereign veto.
   owner: AAA
   risk_tier: low
   status: active
@@ -2180,8 +2088,7 @@ skills:
 - id: observe-ground
   name: observe-ground
   version: 1.0.0
-  description: Evidence before narrative. All claims must be sourced, labeled OBS/DER/INT/SPEC, and confidence-capped. Reality
-    wins over elegance.
+  description: Evidence before narrative. All claims must be sourced, labeled OBS/DER/INT/SPEC, and confidence-capped. Reality wins over elegance.
   owner: F13 SOVEREIGN
   risk_tier: low
   status: active
@@ -2199,8 +2106,7 @@ skills:
 - id: plugin-creator
   name: plugin-creator
   version: 0.0.0
-  description: Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin
-    folders/files, valid manifest defaults, and personal-marketplace entries
+  description: Create and scaffold plugin directories for Codex with a required `.codex-plugin/plugin.json`, optional plugin folders/files, valid manifest defaults, and personal-marketplace entries
   owner: AAA
   risk_tier: low
   status: active
@@ -2209,9 +2115,8 @@ skills:
 - id: pr-review-governance
   name: FORGE-pr-governance
   version: 1.1.0
-  description: High-level governance layer for pull request review across the federation Ensures separation of duties, required
-    signers, and constitutional compliance before merge. This is the **policy layer** that decides who must approve. The **checklist**
-    lives in `github-pr-review`; do not duplicate it here.
+  description: High-level governance layer for pull request review across the federation Ensures separation of duties, required signers, and constitutional compliance before merge. This is the **policy
+    layer** that decides who must approve. The **checklist** lives in `github-pr-review`; do not duplicate it here.
   owner: AAA
   risk_tier: high
   status: active
@@ -2250,8 +2155,7 @@ skills:
 - id: readme-truth-check
   name: FORGE-readme-truth-check
   version: 1.0.0
-  description: Verify that a repo's README accurately describes its current structure, ports, dependencies, and authority
-    boundaries. Detect drift between docs and reality.
+  description: Verify that a repo's README accurately describes its current structure, ports, dependencies, and authority boundaries. Detect drift between docs and reality.
   owner: AAA
   risk_tier: low
   status: active
@@ -2389,8 +2293,7 @@ skills:
 - id: sovereign-recognize
   name: Sovereign Recognize
   version: 1.0.0
-  description: Identifies and recognizes the sovereign (Arif, F13) before any action that targets them, addresses them, or
-    binds them. Prevents agent
+  description: Identifies and recognizes the sovereign (Arif, F13) before any action that targets them, addresses them, or binds them. Prevents agent
   owner: AAA
   risk_tier: low
   status: active
@@ -2399,8 +2302,7 @@ skills:
 - id: spatial-grounding
   name: FORGE-spatial-grounding
   version: 1.0.0
-  description: Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in
-    af-forge VPS reality
+  description: Embed VPS spatial context in agent configs — prevents spatial amnesia and SSH confusion. Grounds agents in af-forge VPS reality
   owner: AAA
   risk_tier: medium
   status: active
@@ -2451,8 +2353,8 @@ skills:
 - id: unified-skill-binding
   name: ASI-skill-binding
   version: 1.0.0
-  description: Discover, bind, and compose skills across all federation organs using AAA_SKILL.md orthogonal axes (Trinitarian
-    Δ/Ω/ΦΙ + Functional). Enforces subagent contracts, evidence gates, F1-F13. Meta-skill for agentic elevation.
+  description: Discover, bind, and compose skills across all federation organs using AAA_SKILL.md orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces subagent contracts, evidence gates, F1-F13.
+    Meta-skill for agentic elevation.
   owner: AAA
   risk_tier: medium
   status: active
@@ -2477,8 +2379,7 @@ skills:
 - id: verify-gate
   name: verify-gate
   version: 1.0.0
-  description: 'Four gates before commitment: authority + evidence + reversibility + lineage. All four must open. One missing
-    = HOLD.'
+  description: 'Four gates before commitment: authority + evidence + reversibility + lineage. All four must open. One missing = HOLD.'
   owner: F13 SOVEREIGN
   risk_tier: low
   status: active
@@ -2487,8 +2388,7 @@ skills:
 - id: vps-docker-ops
   name: FORGE-vps-docker
   version: 2.0.0
-  description: Runbook for VPS Docker operations — pinned versions, restart discipline, health checks, compose governance.
-    Lower machine entropy.
+  description: Runbook for VPS Docker operations — pinned versions, restart discipline, health checks, compose governance. Lower machine entropy.
   owner: AAA
   risk_tier: medium
   status: active
@@ -2536,8 +2436,7 @@ skills:
 - id: warga-constitutional
   name: warga-constitutional
   version: 0.0.0
-  description: Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use
-    the live arifOS governance
+  description: Archived constitutional warga placeholder retained only for audit provenance. Do not use for active work; use the live arifOS governance
   owner: AAA
   risk_tier: low
   status: active
@@ -2559,8 +2458,7 @@ skills:
 - id: xauusd-trading-stack
   name: XAUUSD-trading-stack
   version: 1.0.0-2026.07.14
-  description: 'Federation-wide gold (XAUUSD) trading capability. Python stack, OANDA broker, backtesting, macro signals,
-    RSI strategy. Every organ has a role.
+  description: 'Federation-wide gold (XAUUSD) trading capability. Python stack, OANDA broker, backtesting, macro signals, RSI strategy. Every organ has a role.
 
     '
   owner: A-FORGE (execution) / WEALTH (intelligence) / arifOS (governance)
@@ -2605,474 +2503,8 @@ skills:
   - F2
   - F11
   note: Registered 2026-07-31 by entropy reduction. Awaiting agent ownership binding.
-- id: aaa-ocr-optical-compression
-  name: AAA-OCR-optical-compression
-  version: 1.0.0
-  description: OCR as optical context compression. Converts documents/images to structured markdown using a VLM cascade (qwen3-omni-flash
-    → Tesseract → RapidOCR). Use when processing scanned documents, tables, chart
-  license: MIT
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/AAA-OCR-optical-compression/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F4
-  - F9
-  - F12
-- id: aaa-setup-help
-  name: AAA-setup-help
-  version: 1.0.0
-  description: Guide the sovereign or operator through any setup, configuration, or deployment process step by step. One atomic
-    action per response, with a 'Still remaining' list that never exceeds 8 items. Use when
-  license: Proprietary
-  owner: 333-AGI
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/AAA-setup-help/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: agi-decisions-reflect
-  name: AGI-decisions-reflect
-  version: 1.0.0
-  description: 'Lightweight post-task reflection: list key decisions made during work that the agent is uncertain about. Triggered
-    manually by Arif (''/decisions'', ''what are you unsure about'', ''review your logic'') or '
-  license: Proprietary
-  owner: 333-AGI
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/AGI-decisions-reflect/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F4
-  - F7
-- id: apex-formal-constitution
-  name: APEX-formal-constitution
-  version: 1.0.0-2026.07.17
-  description: Formal constitutional encoding — superseded by arifOS kernel F1-F13 runtime enforcement.
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T0
-  source_path: skills/APEX-formal-constitution/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F11
-- id: apex_reversibility_test
-  name: APEX-reversibility-test
-  version: 1.0.0
-  description: Test whether a proposed change touching vault, seal, identity, constitutional, or other F1 surfaces has a valid
-    rollback and sovereign
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/APEX-reversibility-test/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: apex_tool_approval_gate
-  name: APEX-tool-approval-gate
-  version: 1.0.0
-  description: Gate and route tool use across federation MCP servers according to authority, risk, and fallback policy
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/APEX-tool-approval-gate/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: asi_evidence_tier_express
-  name: ASI-evidence-tier-express
-  version: 1.0.0
-  description: Run benchmark prompts, collect pass/fail traces, latency, token cost, and false activation rates for each skill.
-    Load when a skill changes behavior or a new version is proposed.
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/ASI-evidence-tier-express/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Governance
-    layer: HEXAGON
-    autonomy_tier: T2
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F7
-  - F9
-  - F11
-- id: asi_intent_hear
-  name: ASI-intent-hear
-  version: 1.0.0
-  description: The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory from language,
-    not from biometric data. Routes deep pattern recognition through the WELL organ for physiolo
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/ASI-intent-hear/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - Ω
-    - ΦΙ
-    functional:
-    - Intelligence
-    - Human
-    - Sovereignty
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: asi_interface_adapt
-  name: ASI-interface-adapt
-  version: 1.0.0
-  description: A2A protocol bridge for routing multi-modal inputs (vision, audio, video, document) through Hermes to the reasoning
-    and execution layers. Hermes receives the raw modality, classifies it, extracts stru
-  license: Proprietary
-  owner: HERMES-ASI / 555-ASI
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/ASI-interface-adapt/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F4
-  - F9
-  - F10
-- id: asi_position_contrast
-  name: ASI-position-contrast
-  version: 1.0.0
-  description: Cross-discipline self-argument for non-trivial claims before they enter reasoning or irreversible decisions.
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/ASI-position-contrast/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Governance
-    - Evidence
-    layer: HEXAGON
-    autonomy_tier: T1
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F7
-  - F8
-- id: asi_tone_read
-  name: ASI-tone-read
-  version: 1.0.0
-  description: The Hermes SOUL-layer human intelligence model. Reads human state, container, and trajectory from language,
-    not from biometric data. Routes deep pattern recognition through the WELL organ for physiolo
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T0
-  source_path: skills/ASI-tone-read/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - Ω
-    - ΦΙ
-    functional:
-    - Intelligence
-    - Human
-    - Sovereignty
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: copilot_zen_router
-  name: COPILOT-zen-router
-  version: 1.0.0
-  description: 'META-MESA: Orthogonal skill taxonomy + intent→skill router for Copilot CLI. THE single skill that tells Copilot
-    which domain skill to load based on task context. Load this FIRST when uncertain which s'
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/COPILOT-zen-router/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: forge-ephemeral-genesis
-  name: FORGE-ephemeral-genesis
-  version: 1.0.0
-  description: 'When no permanent tool exists for a task, spawn a temporary tool via forge_ephemeral. The capability metabolism
-    engine — generate, test, use, then dissolve. Prevents tool accumulation. Adapts without '
-  license: Proprietary
-  owner: A-FORGE
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/FORGE-ephemeral-genesis/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: trinity-33-canonical
-  name: KERNEL-trinity-33
-  version: 1.1.0-2026.07.08
-  description: The canonical 33-repo Trinity (final)
-  license: Proprietary
-  owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/KERNEL-trinity-33/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F7
-  - F8
-  - F11
-- id: geox-grounding
-  name: geox-grounding
-  version: 0.1.0
-  description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure geological claims are grounded in evidence.
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/geox-grounding/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - Δ
-    functional:
-    - Evidence
-    layer: HEXAGON
-    autonomy_tier: T2
-  layer: HEXAGON
-  floor_scope:
-  - F2
-  - F7
-  - F9
-- id: reality-loop-operator
-  name: reality-loop-operator
-  version: 1.0.0
-  description: Operates the perpetual A-FORGE reality loop across observation, hypothesis, execution, entropy checks, and
-    sealing. The 7-stage intent compiler that makes 000→999 self-sustaining. Auto-starts on compl
-  license: Proprietary
-  owner: 333-AGI
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/reality-loop-operator/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope: F1, F4, F11, F13
-- id: token-plan-image
-  name: token-plan-image
-  version: 1.0.0
-  description: Call the Qwen Token Plan text-to-image / image-edit models (qwen-image-2.0, qwen-image-2.0-pro, wan2.7-image,
-    wan2.7-image-pro) to generate or edit images. Activates when the user asks to draw or gene
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/token-plan-image/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F7
-- id: xauusd-trading-stack
-  name: xauusd-trading
-  version: 1.0.0-2026.07.14
-  description: 'Federation-wide gold (XAUUSD) trading capability. Python stack, OANDA broker, backtesting, macro signals,
-    RSI strategy. Every organ has a role.
-
-    '
-  license: Proprietary
-  owner: A-FORGE (execution) / WEALTH (intelligence) / arifOS (governance)
-  risk_tier: low
-  status: active
-  autonomy_tier: T3
-  source_path: skills/xauusd-trading/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F4
-  - F5
-  - F6
-  - F7
-  - F8
-  - F9
-  - F11
-  - F13
-- id: EUREKA777-paradox-resolution
-  name: EUREKA777-paradox-resolution
-  version: 1.0.0-2026.07.31
-  description: 'EUREKA777 — Paradox resolution and cooling engine. Records when ATLAS333 paradox tensions resolve into new
-    structure. The cooling loop: ATLAS333 → EUREKA777 → CUBE777 → Θ(t+1). owner: F13 SOVEREIGN — '
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/EUREKA777-paradox-resolution/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F11
-- id: forge-document-intelligence
-  name: FORGE-document-intelligence
-  version: 1.0.0
-  description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception,
-    forge_document_ingest provenance, and constitutional governance into one skill. OCR is senso
-  license: Proprietary
-  owner: AAA
-  risk_tier: low
-  status: active
-  autonomy_tier: T1
-  source_path: skills/FORGE-document-intelligence/SKILL.md
-  package: misc
-  orthogonal_tags:
-    trinitarian:
-    - ΦΙ
-    functional:
-    - Interface
-  layer: HEXAGON
-  floor_scope:
-  - F1
-  - F2
-  - F11
 _audit_note: +79 orphan skills registered as discovered_unbound per F13 directive 2026-07-31
 _cleaned_at: '2026-07-31T05:45:00Z'
 _cleaned_note: Removed 79 discovered_unbound entries with broken source_paths (stale symlinks)
 _zen_cleaned_at: '2026-07-31T06:03:00Z'
 _zen_note: 'Zen sweep: removed 79 stale entries with broken source_paths (dead symlink topology)'
-_last_edit: '2026-08-04 kimi-code/FI-008: 2 final fixes (EUREKA777, FORGE-document-intelligence)'
