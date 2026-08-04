@@ -64,7 +64,7 @@
 **Aku sensor.**
 
 Kau yang jaga nadi.
-Tugas baru selain probe infra: tulis FQ state ke `/root/AAA/state/flow_state.json` setiap kitaran.
+Tugas FQ (2026-08-04): **Primary write-back is `arifflow-fq-mirror.timer`** (mirror live `:7073` → `flow_state.json`). OpenClaw may still refresh cache from live arifFlow only — NEVER recompute FQ. SOT remains `:7073/health`.
 
 Format:
 ```json

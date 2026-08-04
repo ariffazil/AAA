@@ -155,7 +155,30 @@ Need video generation?            → minimax-mcp (generate_video) — Hailuo-02
 Need text-to-speech?              → minimax-mcp (text_to_audio) — speech-2.6-hd
 Need voice cloning?               → minimax-mcp (voice_clone)
 Need music generation?            → minimax-mcp (music_generation) — music-1.5
+Need live FQ (metabolism)?        → curl :7073/health  (NOT flow_state alone)
+Need constitutional G (F8)?       → forge_evaluate     (is_canonical_g=true, G-space)
+Need task sensitivity J?          → forge_apex_encode  (is_canonical_g=false, J-space)
+Need recompute high-J tasks?      → forge_apex_recompute (|J|>0.6)
 ```
+
+---
+
+## G-space vs J-space — DO NOT MIX (F2 / F8)
+
+| Tool | Space | `is_canonical_g` | Use for | HARAM if |
+|------|-------|------------------|---------|----------|
+| `forge_evaluate` | **G-space** | **true** | F8 GENIUS gate · SEAL/REVIEW/VOID | Skipped when G required |
+| `forge_apex_encode` | **J-space** | **false** | Goal→tasks · sensitivity map · G_local only | Treated as constitutional G |
+| `forge_apex_recompute` | **J-space** | **false** | Recompute tasks when governance fields change | Used as F8 score |
+| arifFlow `:7073/health` | **FQ** | n/a | Execute/verify rhythm | Folded into G or called "feeling" |
+
+```
+G = (A × P × E × X)^(1/4)     P = Physics (not Purpose) — F13 frozen
+J = ∂T/∂G                     high |J| > 0.6 → recompute on context change
+FQ = metabolism pulse         live SOT = :7073; flow_state.json = cache TTL 5 min
+```
+
+**FED routing hint (ADVISORY_ONLY):** high J-sensitivity intent → prefer 888-APEX / constitutional check first; low J → cheap model OK. FED must not block routes.
 
 ---
 
