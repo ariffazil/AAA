@@ -1,0 +1,8 @@
+{
+  "liveness_status": "ALIVE",
+  "last_invoked": "2026-08-04T07:59:55.579250+00:00",
+  "invocation_count": 1,
+  "outcome_delta_total": 0.5,
+  "sessions_since_invoked": 1,
+  "sessions_with_zero_outcome": 0
+}
