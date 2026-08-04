@@ -1,5 +1,8 @@
 ---
 name: FORGE-google-workspace
+id: forge-google-workspace
+owner: A-FORGE
+risk_tier: low
 slug: google-workspace-cli
 version: 1.0.0
 homepage: https://clawic.com/skills/google-workspace-cli
@@ -34,6 +37,7 @@ floor_scope:
 - F4
 - F11
 - F13
+autonomy_tier: T1
 ---
 ## Setup
 

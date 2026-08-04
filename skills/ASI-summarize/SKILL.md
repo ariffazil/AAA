@@ -1,5 +1,9 @@
 ---
 name: ASI-summarize
+id: asi-summarize
+version: 1.0.0
+owner: 555-ASI
+risk_tier: low
 description: When user asks to summarize text, articles, documents, meetings, emails,
   YouTube transcripts, books, PDFs, reports, conversations, or any long content
 metadata:
@@ -16,6 +20,7 @@ floor_scope:
 - F9
 - F10
 - F11
+autonomy_tier: T0
 ---
 # Summarize Pro — Your AI Summarization Engine
 

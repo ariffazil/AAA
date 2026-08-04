@@ -1,6 +1,7 @@
 ---
 id: readme-truth-check
 name: FORGE-readme-truth-check
+autonomy_tier: T1
 version: 1.0.0
 description: Verify that a repo's README accurately describes its current structure,
   ports, dependencies, and authority boundaries. Detect drift between docs and reality.

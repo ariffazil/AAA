@@ -1,5 +1,8 @@
 ---
 name: FORGE-federation-orchestrator
+id: forge-federation-orchestrator
+version: 1.0.0
+risk_tier: low
 description: 'Monitor and manage the arifOS federation: docker compose ps, restart
   dead services, MCP health probes (8080-8083), container drift detection, restart
   count monitoring. USE WHEN: "federation status", "restart dead container", "container
@@ -12,6 +15,7 @@ floor_scope:
 - F4
 - F11
 - F13
+autonomy_tier: T1
 ---
 # Federation Orchestrator
 

@@ -1,6 +1,7 @@
 ---
 id: incident-triage
 name: FORGE-incident-triage
+autonomy_tier: T1
 version: 2.0.0
 description: >
   Six-step incident response playbook with structured logging, backoff/circuit-breaker

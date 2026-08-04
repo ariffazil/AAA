@@ -1,5 +1,10 @@
 ---
 name: atlas333-cognitive-geometry
+id: atlas333-cognitive-geometry
+version: 1.0.0
+owner: AAA
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: "ATLAS333 — 33 human paradoxes, 7 zones, cognitive geometry. Access via arifos://atlas333/* MCP resources"
 triggers:
   - "when reasoning about a complex decision"
@@ -7,6 +12,7 @@ triggers:
   - "when classifying query type (lane, demand tensor)"
   - "when the agent needs to check which paradoxes are active"
   - "during arif_think (stage 333) — the ATLAS333 stage"
+autonomy_tier: T1
 ---
 
 # ⧉ ATLAS333 — Cognitive Geometry Consumer Skill

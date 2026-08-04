@@ -1,6 +1,7 @@
 ---
 id: incident-escalation
 name: FORGE-incident-escalation
+autonomy_tier: T1
 version: 1.0.0
 description: 'Standard protocol for responding to federation incidents: service outages,
   security breaches, constitutional violations, or agent misbehavior.'

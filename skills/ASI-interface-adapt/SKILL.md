@@ -1,5 +1,6 @@
 ---
 name: asi_interface_adapt
+id: asi_interface_adapt
 agent: 555-ASI
 namespace: asi_*
 cluster: DELIVERY

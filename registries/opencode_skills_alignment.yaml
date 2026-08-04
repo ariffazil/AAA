@@ -1,7 +1,13 @@
+# ⚰️ TOMBSTONE — 2026-08-04
+# SUPERSEDED BY: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json (canonical)
+#                 /root/forge_work/2026-08-04/ZEN-SKILL-MESH.md (topology)
+# FROZEN AS OF: 2026-07-02 (reported 47 skills — reality is 147)
+# DO NOT USE FOR ROUTING. DO NOT REGENERATE. DO NOT TRUST.
+# This file is preserved for audit provenance only.
 version: 2
 generated: '2026-07-02T03:18:23.196360'
 source: /root/.agents/skills/
-total_skills: 47
+total_skills: 47  # STALE — actual count is 147 as of 2026-08-04
 discovery_path: ~/.agents/skills/**/SKILL.md
 opencode_agents:
   forge: deepseek/deepseek-v4-pro

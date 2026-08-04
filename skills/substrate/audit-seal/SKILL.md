@@ -1,6 +1,8 @@
 ---
 id: audit-seal
 name: audit-seal
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: substrate
 description: Every decision logged. Irreversible decisions sealed. ΔS ≤ 0 on every
@@ -9,6 +11,7 @@ owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
+autonomy_tier: T0
 ---
 
 # audit-seal

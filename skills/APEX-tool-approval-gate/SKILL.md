@@ -1,9 +1,15 @@
 ---
 name: apex_tool_approval_gate
+id: apex_tool_approval_gate
+version: 1.0.0
+owner: AAA
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: Gate and route tool use across federation MCP servers according to authority, risk, and fallback policy
 agent: 888-APEX
 namespace: apex_*
 cluster: GATE
+autonomy_tier: T1
 ---
 
 # APEX-mcp-federation (O_Omega Orchestration Layer)

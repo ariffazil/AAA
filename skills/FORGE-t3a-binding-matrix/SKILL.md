@@ -1,11 +1,16 @@
 ---
 name: FORGE-t3a-binding-matrix
+id: forge-t3a-binding-matrix
+owner: A-FORGE
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: >
   Close T3a authenticated session binding via falsifiable P0 matrix.
   Use when: T3a, free_nonce, bridging_seal, Ed25519 arif binding, key fragmentation,
   forge_p0_binding_test, NEG.3, NEG.6b, authenticated_session_binding.
 version: 2026.07.17
 floors: [F1, F2, F7, F11, F13]
+autonomy_tier: T1
 ---
 
 # FORGE — T3a Binding Matrix

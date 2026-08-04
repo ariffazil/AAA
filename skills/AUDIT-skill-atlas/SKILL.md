@@ -1,5 +1,6 @@
 ---
 name: AUDIT-skill-atlas
+id: audit-skill-atlas
 description: Unified skill inventory, gap detection, and cross-cutting orchestration for AAA catalog + Grok/Claude/Codex/Hermes/Kimi/OpenClaw harness views
 version: 1.2.3
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)

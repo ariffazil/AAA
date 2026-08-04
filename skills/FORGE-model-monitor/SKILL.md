@@ -1,9 +1,11 @@
 ---
 name: FORGE-model-monitor
-description: 'Monitor the model fallback chain: MiniMax (primary), DeepSeek (hot-swap),
-  Kimi, Ollama qwen2.5:7b (local). Track latency, billing failures (402), cold-start
-  failures, and auto-pause dead models. USE WHEN: "model health", "check fallback
-  chain", "DeepSeek balance", "model latency", "billing alert".'
+id: forge-model-monitor
+version: 1.1.0
+risk_tier: low
+description: 'Monitor the model fallback chain. Track latency, billing failures (402),
+  cold-start failures, and auto-pause dead models. USE WHEN: "model health", "check
+  fallback chain", "model latency", "billing alert".'
 owner: A-FORGE
 floor_scope:
 - F1
@@ -11,79 +13,50 @@ floor_scope:
 - F4
 - F11
 - F13
+autonomy_tier: T0
 ---
 # Model Fallback Monitor
 
-**Tracks Arif's model federation health. Prevents the DeepSeek 402 scenario from going unnoticed.**
+**Tracks Arif's model federation health. Prevents silent provider failures.**
 
-## Current Fallback Chain
+## INVARIANT — The Method (does not rot)
 
-```
-Primary:    minimax/MiniMax-M2.7  (hot)
-Fallback 1: deepseek/deepseek-chat
-Fallback 2: kimi/kimi-for-coding
-Fallback 3: ollama/qwen2.5:7b     (cold/local)
-```
+### Principle
+1. **Probe, don't assume.** Every provider status claim must come from a live HTTP probe.
+2. **Canonical SOT.** Model-to-agent assignments live at `/root/AAA/registries/models/AGENT_MODEL_MAP.json`. Never hardcode a model name — read the registry.
+3. **Governance.** Provider pool assignments live at `/root/.config/opencode/rules/arifos-governance.md`. Read, don't embed.
+4. **History.** `/root/.openclaw/workspace/skills/model-fallback-monitor/check.sh` (if exists) contains the cron script.
 
-## Monitor Checks
-
-### 1. DeepSeek Balance
+### Probe Pattern (invariant)
 ```bash
-# Check DeepSeek balance (will 402 if empty)
+# Generic provider health check — substitute provider URL from live config
+curl -s -o /dev/null -w "%{http_code}" --max-time 10 \
+  <PROVIDER_API_URL> 2>/dev/null
+
+# DeepSeek balance check
 curl -s -X POST https://api.deepseek.com/v1/models \
   -H "Authorization: Bearer $DEEPSEEK_KEY" \
-  --max-time 10 | jq '.error.code' 2>/dev/null
+  --max-time 10
+
+# Ollama local check
+curl -s --max-time 5 localhost:11434/api/tags
+
+# Latency test (generic)
+start=$(date +%s%N); <probe>; echo "$(($(date +%s%N) - $start))ns"
 ```
 
-### 2. MiniMax Availability
-```bash
-# Quick MiniMax ping (adjust endpoint as needed)
-curl -s -o /dev/null -w "%{http_code}" --max-time 10 \
-  https://api.minimax.chat/v1/models 2>/dev/null
-```
+### Known Failure Modes (invariant taxonomy)
+| Signal | Meaning |
+|---|---|
+| HTTP 402 | Insufficient balance — provider needs top-up |
+| HTTP 429 | Rate limit — throttle or rotate |
+| HTTP 401/403 | Auth failure — key expired or invalid |
+| > 30s response | Cold start or overload — warm up or skip |
+| Config mismatch | Model ID in config doesn't match provider's available models |
 
-### 3. Ollama Cold Start
-```bash
-# Check Ollama is responsive
-curl -s --max-time 5 localhost:11434/api/tags | jq '.models[].name'
-```
-
-### 4. Fallback Chain Latency Test
-```bash
-# Time each model in chain
-for model in "mini-mini" "deepseek" "kimi" "ollama"; do
-  start=$(date +%s%N)
-  # lightweight ping for each
-  echo "$model: $(($(date +%s%N) - $start))ns"
-done
-```
-
-## Known Failure Modes
-
-| Model | Failure Mode | Detection |
-|---|---|---|
-| deepseek-v4-pro | 402 Insufficient Balance | HTTP 402 |
-| deepseek-chat | Rate limit | HTTP 429 |
-| kimi | Unknown model key | Config mismatch |
-| ollama/qwen2.5:7b | Cold start slow | > 30s response |
-
-## Log Output
-
-```
-MODEL FALLBACK MONITOR — $(date -u)
-────────────────────────────────────
-MiniMax:   ✅ OK (latency: Xms)
-DeepSeek:  ⚠️ LOW BALANCE (estimated $Y remaining)
-Kimi:      ✅ OK / ❌ UNCONFIGURED
-Ollama:    ✅ OK (qwen2.5:7b loaded)
-────────────────────────────────────
-Active model: minimax/MiniMax-M2.7
-Fallback chain: healthy / degraded / critical
-```
-
-## Cron
-
-```bash
-# Run every 30 min
-*/30 * * * * /root/.openclaw/workspace/skills/model-fallback-monitor/check.sh >> /var/log/model-monitor.log 2>&1
-```
+### Dynamic State — Read Live, Never Embed
+- **Which model is primary for which agent?** → Read `/root/AAA/registries/models/AGENT_MODEL_MAP.json`
+- **Which provider pool serves which agent?** → Read `/root/.config/opencode/rules/arifos-governance.md`
+- **Current DeepSeek balance?** → Probe `https://api.deepseek.com/v1/models` with live key
+- **Is MiniMax alive?** → Probe `https://api.minimax.chat/v1/models` with live key
+- **Which Ollama models are loaded?** → `curl localhost:11434/api/tags`

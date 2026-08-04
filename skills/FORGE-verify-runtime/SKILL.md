@@ -1,5 +1,7 @@
 ---
 name: FORGE-verify-runtime
+id: forge-verify-runtime
+risk_tier: low
 description: 'Verification-as-terminal-state skill. A task is done ONLY when verified.
   Never stop at "I changed it" — only at "it''s fixed and confirmed." Runs health
   probes, behavior smoke tests, and drift checks.
@@ -20,6 +22,7 @@ floor_scope:
 - F4
 - F7
 - F11
+autonomy_tier: T1
 ---
 # Verify Runtime — Verification Is the Terminal State
 

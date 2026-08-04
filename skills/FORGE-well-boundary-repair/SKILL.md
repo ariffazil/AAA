@@ -1,9 +1,14 @@
 ---
 name: FORGE-well-boundary-repair
+id: forge-well-boundary-repair
+version: 1.0.0
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: 'Repair WELL organ boundary violations — fix substrate readiness drift,
   biometric staleness, and dignity floor gaps. Engineering actuator for WELL organ
   health restoration. F1 AMANAH: reversible fixes only.'
 owner: A-FORGE
+autonomy_tier: T1
 ---
 # FORGE-well-boundary-repair
 

@@ -1,6 +1,7 @@
 ---
 id: federation-release-attestation
 name: federation-release-attestation
+autonomy_tier: T1
 version: 1.0.0
 description: 'Produces a seven-repository federation release manifest proving tag, commit, CI, artifact, and deployed-runtime parity'
 owner: AAA

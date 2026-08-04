@@ -1,6 +1,7 @@
 ---
 id: aaa-agentic-governance
 name: ASI-agentic-governance
+autonomy_tier: T1
 version: 3.0.1
 description: Governed intelligence skill for AAA as the abstraction, attestation,
   and abduction control plane across arifOS, APEX, A-FORGE, GEOX, WEALTH, WELL, and

@@ -1,5 +1,8 @@
 ---
 name: delta-omega-psi-multimodal-cognition
+id: delta-omega-psi-multimodal-cognition
+owner: AAA
+floor_scope: [F1, F2, F4, F7]
 description: >
   Enforce Δ·Ω·Ψ multimodal cognition rules. Every AAA agent that reasons about multimodal inputs
   (images, audio, video, seismic, well logs, market data) MUST load this skill. Constitutional rule:
@@ -17,6 +20,7 @@ risk_tier: LOW
 autonomy: T1
 forged: 2026-07-25
 version: 1.0.0
+autonomy_tier: T1
 ---
 
 # Δ·Ω·Ψ Multimodal Cognition — Forge Skill

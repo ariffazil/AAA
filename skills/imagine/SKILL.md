@@ -1,5 +1,8 @@
 ---
 name: imagine
+id: imagine
+version: 1.0.0
+risk_tier: low
 description: 'How to use the image_gen and image_edit tool calls in Grok Build: when
   to build a visual with code instead of generating it, prompt-craft, reference-first
   handling of real people, factual grounding, and asset-consistency. Load this whenever
@@ -16,6 +19,7 @@ floor_scope:
 - F2
 - F4
 - F7
+autonomy_tier: T1
 ---
 # Imagine
 

@@ -1,5 +1,7 @@
 ---
 name: AGI-multimodal-bridge
+id: agi-multimodal-bridge
+risk_tier: low
 description: 'Multi-modal reasoning bridge — unifies text, image, tabular data, and
   geospatial evidence into a single reasoning chain. Routes visual analysis through
   GEOX vision pipeline, tabular data through WEALTH compute, and text through standard
@@ -21,6 +23,7 @@ floor_scope:
 - F04
 - F08
 owner: AAA
+autonomy_tier: T1
 ---
 # AGI-multimodal-bridge
 

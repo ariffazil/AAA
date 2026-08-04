@@ -1,6 +1,7 @@
 ---
 id: aaa-agent-invariants
 name: ASI-agent-invariants
+autonomy_tier: T1
 version: 1.0.0
 description: Compact operating constitution for every AAA agent. Load before any non-trivial
   action. Distills 10 Agent Invariants + 12 governance rules + skills audit into portable

@@ -1,6 +1,8 @@
 ---
 id: HERMES-opencode-protocol
 name: HERMES-opencode-protocol
+owner: Hermes-Prime
+risk_tier: low
 version: 2.0.0
 description: >
   Unified Hermes/OpenCode/OpenClaw governed intelligence protocol. Stage 777 FORGE
@@ -11,6 +13,7 @@ cognitive_hints:
   claude: "Use <protocol-stages>, <governance-gates> tags. Extended context for multi-stage tracking."
   codex: "7-stage protocol. Each stage: input → process → output → gate. Strict sequencing."
   hermes: "7 stages. Govern. Execute. Verify. Seal. Fast."
+autonomy_tier: T1
 ---
 
 # HERMES-opencode-protocol

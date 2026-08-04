@@ -1,5 +1,8 @@
 ---
 name: help
+id: help
+version: 1.0.0
+risk_tier: low
 description: 'Grok documentation and configuration help. Use when users ask about
   setup, configuration, MCP servers, authentication, skills, slash commands, keyboard
   shortcuts, or any Grok feature. Also use proactively when you detect a user is having
@@ -14,6 +17,7 @@ floor_scope:
 - F2
 - F4
 - F7
+autonomy_tier: T0
 ---
 # Grok Help
 

@@ -1,5 +1,7 @@
 ---
 name: AUDIT-drift-detector
+id: audit-drift-detector
+risk_tier: low
 description: 'Real-time drift detection across tool manifests, agent cards, skill
   registries, and runtime-injected files. Compares live state against saved baselines
   and reports mismatches. USE WHEN: "check drift", "verify registry", "detect manifest
@@ -19,6 +21,7 @@ floor_scope:
 - F04
 - F11
 owner: A-FORGE
+autonomy_tier: T0
 ---
 # AUDIT-drift-detector
 

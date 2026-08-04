@@ -1,6 +1,7 @@
 ---
 id: arifos-plan-dag
 name: AGI-plan-dag
+autonomy_tier: T1
 version: 1.0.0
 description: Build multi-step execution graphs, dependency-aware subtasks, checkpoints,
   and rollback points. Load when tasks exceed one-shot prompting and need subagent

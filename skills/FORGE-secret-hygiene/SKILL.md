@@ -1,5 +1,8 @@
 ---
 name: FORGE-secret-hygiene
+id: forge-secret-hygiene
+version: 1.0.0
+risk_tier: low
 description: 'Audit env.local, SOPS .env, and config files for plaintext secret leaks,
   key age, missing rotation dates, and overlong-lived credentials. USE WHEN: "secret
   audit", "key age", "rotate secrets", "credential hygiene", "API key check", "env
@@ -12,6 +15,7 @@ floor_scope:
 - F11
 - F12
 - F13
+autonomy_tier: T1
 ---
 # Secret Hygiene
 

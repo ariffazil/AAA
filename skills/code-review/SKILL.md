@@ -1,5 +1,9 @@
 ---
 name: code-review
+id: code-review
+version: 1.0.0
+owner: AAA
+risk_tier: low
 description: Run an extremely strict maintainability review for abstraction quality,
   giant files, and spaghetti-condition growth
 disable-model-invocation: true
@@ -9,6 +13,7 @@ floor_scope:
 - F4
 - F7
 - F11
+autonomy_tier: T0
 ---
 # Strict Code Quality Review
 
