@@ -48,3 +48,7 @@ FQ = daemon cost-window pulse # NEVER recompute offline; mirror only
 - RASA: `/root/arifOS/arifosmcp/rasa/RASA_CONTRACT.md`
 - OpenCode ops: `agents/opencode/AUTONOMOUS_GOVERNANCE.md` §2A
 - Tools: `agents/opencode/TOOLS.md` (G↔J table)
+
+## FQ scale (standardized)
+
+See [`FQ_SCALE_STANDARD.md`](./FQ_SCALE_STANDARD.md) — ratio (0,+∞), no negatives, bands match arifFlow Rust.
