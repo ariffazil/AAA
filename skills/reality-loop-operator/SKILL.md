@@ -1,6 +1,6 @@
 ---
 id: reality-loop-operator
-name: Reality Loop — Autonomous 000→999 Recursive Improvement
+name: "Reality Loop - Autonomous 000 to 999 Recursive Improvement"
 version: 1.0.0
 description: Operates the perpetual A-FORGE reality loop across observation, hypothesis, execution, entropy checks, and sealing. The 7-stage intent compiler that makes 000→999 self-sustaining. Auto-starts on complex work, auto-seals when zen marginal value → 0, carries forward to next session.
 owner: 333-AGI

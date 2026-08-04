@@ -2,7 +2,7 @@
 id: EUREKA777-paradox-resolution
 name: EUREKA777-paradox-resolution
 version: 1.0.0-2026.07.31
-description: EUREKA777 — Paradox resolution and cooling engine. Records when ATLAS333 paradox tensions resolve into new structure. The cooling loop: ATLAS333 → EUREKA777 → CUBE777 → Θ(t+1).
+description: "EUREKA777 - Paradox resolution and cooling engine. Records when ATLAS333 paradox tensions resolve into new structure. The cooling loop: ATLAS333 -> EUREKA777 -> CUBE777 -> Theta(t+1)."
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: low
 floor_scope: [F2, F4, F7, F11]
