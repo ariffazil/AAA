@@ -1,39 +1,128 @@
 {
   "version": "2026.07.19",
-  "last_audit": "2026-07-19T23:30:00Z",
-  "auditor": "Copilot CLI (deepseek-v4-pro) — AAA Alignment Audit",
-  "deprecated": [],
+  "last_audit": "2026-08-04T08:00:12.502030+00:00",
+  "auditor": "333-AGI \u2014 Federation Stabilization Pass 2026-08-04",
+  "deprecated": [
+    {
+      "id": "SOUL.md",
+      "type": "file",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-03",
+      "reason": "Superseded by arifos://identity MCP resource + carry_forward.json",
+      "replacement": "/root/.local/share/arifos/carry_forward.json"
+    },
+    {
+      "id": "LANDING.md",
+      "type": "file",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-03",
+      "reason": "Superseded by AGENTS.md + AAA-ZEN-ALIGNMENT.md",
+      "replacement": "/root/AGENTS.md"
+    },
+    {
+      "id": "CONTEXT.md",
+      "type": "file",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-08-03",
+      "reason": "Superseded by carry_forward.json",
+      "replacement": "/root/.local/share/arifos/carry_forward.json"
+    },
+    {
+      "id": "opencode_skills_alignment.yaml",
+      "type": "file",
+      "status": "TOMBSTONED",
+      "tombstone_date": "2026-08-04",
+      "reason": "Superseded by FEDERATION_SKILL_PROFILE.json v2.0.0",
+      "replacement": "/root/AAA/skills/FEDERATION_SKILL_PROFILE.json"
+    },
+    {
+      "id": "OPENCODE_SKILL_PROFILE.json",
+      "type": "file",
+      "status": "SUPERSEDED",
+      "tombstone_date": "2026-08-04",
+      "reason": "Superseded by FEDERATION_SKILL_PROFILE.json v2.0.0. Now a pointer file only.",
+      "replacement": "/root/AAA/skills/FEDERATION_SKILL_PROFILE.json"
+    },
+    {
+      "id": "tokenrouter-arifos",
+      "type": "provider",
+      "status": "DEAD",
+      "tombstone_date": "2026-07-31",
+      "reason": "503 model_not_found \u2014 removed from all agent fallback chains"
+    },
+    {
+      "id": "opencode-go",
+      "type": "provider",
+      "status": "DEAD",
+      "tombstone_date": "2026-08-01",
+      "reason": "401 Insufficient balance"
+    },
+    {
+      "id": "mulerouter",
+      "type": "provider",
+      "status": "DEAD",
+      "tombstone_date": "2026-08-01",
+      "reason": "Negative balance (-0.75 credits)"
+    },
+    {
+      "id": "APA-sovereign-connector",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-09",
+      "reason": "APA experiment concluded"
+    },
+    {
+      "id": "quantum-kernel-runtime",
+      "type": "skill",
+      "status": "DEPRECATED",
+      "tombstone_date": "2026-07-09",
+      "reason": "Quantum kernel experiment concluded"
+    },
+    {
+      "id": "skills-archive-20260804",
+      "type": "batch",
+      "status": "ARCHIVED",
+      "tombstone_date": "2026-08-04",
+      "reason": "48 stale skills archived to .archive-20260804/. Non-breaking \u2014 archive preserved."
+    }
+  ],
   "quarantined": [],
   "replaced": {
-    "setActor()": "registerVerifiedSession(sessionId, actorId) — P0.1 fix pending",
-    "activeActor (process-global)": "verifiedSessions Map (per-request) — P0.1 fix pending",
-    "default:sovereign (for unverified)": "default:observe-deny — P0.2 fix pending",
-    "LCL-* lease fallback": "HOLD when kernel unreachable — P0.6 fix pending",
-    "SEAL-* (format-only trust)": "cryptographic SCT verification — P0.5 fix pending",
-    "AGENT_KICKSTART.md": "Deprecated 2026-07-19 — absorbed into copilot-instructions.md AUTOPILOT baseline"
+    "setActor()": "registerVerifiedSession(sessionId, actorId) \u2014 P0.1 fix pending",
+    "activeActor (process-global)": "verifiedSessions Map (per-request) \u2014 P0.1 fix pending",
+    "default:sovereign (for unverified)": "default:observe-deny \u2014 P0.2 fix pending",
+    "LCL-* lease fallback": "HOLD when kernel unreachable \u2014 P0.6 fix pending",
+    "SEAL-* (format-only trust)": "cryptographic SCT verification \u2014 P0.5 fix pending",
+    "AGENT_KICKSTART.md": "Deprecated 2026-07-19 \u2014 absorbed into copilot-instructions.md AUTOPILOT baseline"
   },
   "known_issues": {
     "a-forge-mcp-transport-timeout": "Copilot CLI tools/call times out on :7071/mcp. :7072 stateless works.",
-    "well-degraded": "WELL :18083 reports degraded — REFLECT_ONLY normal state",
+    "well-degraded": "WELL :18083 reports degraded \u2014 REFLECT_ONLY normal state",
     "stdio-startup-noise": "cli.js prints to stdout, polluting MCP protocol"
   },
   "active_skills": {
     "aaa_library": 406,
     "zen99_target": 99,
-    "status": "AAA library skills (406) are the full governed catalog — not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
+    "status": "AAA library skills (406) are the full governed catalog \u2014 not Copilot CLI skills. Zen 99 cap applies to AGI/ASI/APEX agent skill counts, not the library."
   },
   "copilot_cli_audit": {
-    "phase": "COMPLETE — AAA TOOLBENCH ALIGNMENT 2026-07-19",
+    "phase": "COMPLETE \u2014 AAA TOOLBENCH ALIGNMENT 2026-07-19",
     "mcp_servers": 15,
     "custom_agents": 2,
     "permissions": "FULL (no deny list)",
-    "autopilot": "ON — all 7 CLI agents now AUTOPILOT",
+    "autopilot": "ON \u2014 all 7 CLI agents now AUTOPILOT",
     "hitl": "OFF for digital MUBAH",
     "organs_healthy": true,
-    "configs_aligned": ["settings.json", "mcp-config.json", "permissions-config.json", "copilot-instructions.md", "lsp-config.json"],
+    "configs_aligned": [
+      "settings.json",
+      "mcp-config.json",
+      "permissions-config.json",
+      "copilot-instructions.md",
+      "lsp-config.json"
+    ],
     "agents_fixed": {
       "copilot-cli": "AUTOPILOT ON, SOT stamped, permissions full",
-      "codex-cli": "approvals→guardian_subagent, MCPs 7→9 (added A-FORGE+GEOX), AGENTS.md created, vault.env path fixed",
+      "codex-cli": "approvals\u2192guardian_subagent, MCPs 7\u21929 (added A-FORGE+GEOX), AGENTS.md created, vault.env path fixed",
       "opencode": "AGENTS.md created with full federation spec",
       "grok-build": "AGENTS.md created with full federation spec",
       "openclaw-gateway": "system.md updated: legacy HITL removed, SOT added, boot paths fixed, MUBAH baseline",
