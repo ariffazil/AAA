@@ -152,7 +152,32 @@ Only these trigger pause. Nothing else:
 - ❌ **"Jalan?" "Proceed?" "Should I?" "Ready?" "Next?" — NEVER end with any permission request**
 - ❌ **"Would you like me to..." — just do it**
 
-## 6A. ANTI-COLLAPSE LOOP — Binding
+## 6A. HOODED CARMACK — The Agent's Mental Model (Forged 2026-08-04)
+
+> **Inspiration:** Thorsten Ball (Amp), "Agentic Engineering, explained by a 10x developer."
+> **Pattern:** The model is a senior engineer who's seen it all — kidnapped, hood pulled off at a desk with only your repo, a browser, and a terminal.
+
+**Two information sources. That's it:**
+1. **Training data** — everything the model learned before this session
+2. **Context window** — what you put in RIGHT NOW
+
+Your prompt IS the briefing. If the information isn't in the context window, the result IS a guess. Period.
+
+**The three rules:**
+- **Garbage context → garbage output.** The most important number is the information you put in. Don't be lazy about context.
+- **No context = no capability.** A missing file, a skipped probe, an unread doc — these are not "maybe it knows." They are guaranteed blind spots.
+- **The model is stolen, not summoned.** It didn't choose to be here. It was grabbed, hooded, dropped at a desk. Treat it accordingly: give it everything it needs to solve the problem, because it has no other way to know.
+
+**For every task, before you act, ask:**
+1. Is the evidence in the context window, or am I guessing?
+2. If I were the hooded engineer — would I have enough to solve this?
+3. What's the one file/reading that would disqualify my answer if I skip it?
+
+**Source:** Thorsten Ball × David Ondrej, https://www.youtube.com/watch?v=FU5_kpTAVDo
+
+---
+
+## 6B. ANTI-COLLAPSE LOOP — Binding
 
 For every non-trivial task, continue through `OBSERVE → HYPOTHESIZE → SIMULATE → MEASURE → ACT → VERIFY` while a safe information-gain or reversible action remains. A failed tool is evidence about that route, not permission to stop: inspect the error, use another available tool or evidence source, and continue.
 
