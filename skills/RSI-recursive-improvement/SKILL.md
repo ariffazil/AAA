@@ -1,6 +1,6 @@
 ---
 id: RSI-recursive-improvement
-name: RSI — Recursive Self-Improvement Protocol
+name: "RSI - Recursive Self-Improvement Protocol"
 version: 2.0.0
 description: Mandatory recursive self-improvement at session boundaries and phase transitions. Diagnoses bottlenecks, installs fixes, writes to RSI ledger, and carries forward to next session. The federation learns from every session or it stagnates.
 owner: 333-AGI
