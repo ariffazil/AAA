@@ -1,6 +1,7 @@
 ---
 id: pr-review-governance
 name: FORGE-pr-governance
+autonomy_tier: T1
 version: 1.1.0
 description: High-level governance layer for pull request review across the federation
   Ensures separation of duties, required signers, and constitutional compliance before

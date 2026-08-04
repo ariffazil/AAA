@@ -1,5 +1,8 @@
 ---
 name: create-skill
+id: create-skill
+version: 1.0.0
+risk_tier: low
 description: 'Interactively create a new Grok skill (SKILL.md + optional scripts/references).
   Use when the user wants to create a skill, scaffold a skill, or runs /create-skill.
 
@@ -12,6 +15,7 @@ floor_scope:
 - F2
 - F4
 - F7
+autonomy_tier: T1
 ---
 # Create Skill
 

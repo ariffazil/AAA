@@ -1,11 +1,16 @@
 ---
 name: FORGE-seal-a-close
+id: forge-seal-a-close
+owner: A-FORGE
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: >
   Close remaining Seal-A gates after P0 proof/identity/SCT/T3a work.
   Use when: Seal-A, stage 000, SE stage engine, SOT v2, BOOT, T3a binding,
   free_nonce, constitutional_grade, remaining seal tasks.
 version: 2026.07.17b
 floors: [F1, F2, F3, F7, F11, F13]
+autonomy_tier: T3
 ---
 
 # FORGE — Seal-A Close Path

@@ -1,6 +1,8 @@
 ---
 id: kernel-bind
 name: kernel-bind
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: substrate
 description: Bind governance before action. Every session must initialize constitutional
@@ -10,6 +12,7 @@ owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
+autonomy_tier: T1
 ---
 
 # kernel-bind

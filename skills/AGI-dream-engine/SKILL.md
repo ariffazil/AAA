@@ -1,6 +1,7 @@
 ---
 id: agentic-dream-engine
 name: AGI-dream-engine
+autonomy_tier: T1
 version: 1.0.0
 description: Extend the arifOS dream-engine so every AAA warga (333-AGI, 555-ASI,
   888-APEX, A-AUDIT, A-ARCHIVE), OpenCode, and OpenClaw can autonomously consolidate
@@ -126,7 +127,7 @@ Two valid ways to talk about the 6-layer stack:
 
 ### Entropy Controller Clarification
 
-`scripts/entropy_controller.py` computes five entropy **proxies** (P1–P5) and **proposes** cadence/threshold changes. It does **not** enforce a hard `ΔS < -ε` bound. The controller is an advisory instrument; the actual entropy reduction happens when low-signal singletons are excluded and clusters are compressed into canon. Any claim that the controller enforces a numeric epsilon should be treated as a documentation/interpretation error unless a future F13-ratified patch adds it.
+`scripts# ARCHIVED: entropy_controller.py` computes five entropy **proxies** (P1–P5) and **proposes** cadence/threshold changes. It does **not** enforce a hard `ΔS < -ε` bound. The controller is an advisory instrument; the actual entropy reduction happens when low-signal singletons are excluded and clusters are compressed into canon. Any claim that the controller enforces a numeric epsilon should be treated as a documentation/interpretation error unless a future F13-ratified patch adds it.
 
 ### 1. Agent-local dream cycle
 
@@ -159,7 +160,7 @@ Weekly, the federation recombiner reads L5 (Graphiti/FalkorDB) for entities shar
 
 ## Mapping to OpenCode
 
-OpenCode already has `auto-dream.ts` (`/root/mimocode/packages/opencode/src/session/auto-dream.ts`) which consolidates project memory every 7 days and auto-distills every 30 days.
+OpenCode already has `auto-dream.ts` (`# ARCHIVED: auto-dream.ts (mimocode never built)`) which consolidates project memory every 7 days and auto-distills every 30 days.
 
 | OpenCode concept | Federation mapping | Gap |
 |------------------|-------------------|-----|
@@ -297,7 +298,7 @@ One-paragraph summary of the federation dream design.
 
 ### Evidence
 - Current dream-engine path: /root/HERMES/skills/dream-engine/
-- OpenCode auto-dream: /root/mimocode/packages/opencode/src/session/auto-dream.ts
+- OpenCode auto-dream: # ARCHIVED: auto-dream.ts (mimocode never built)
 - Memory schema: /root/arifOS/arifosmcp/migrations/001_memory_schema.sql
 
 ### Recommendations
@@ -310,7 +311,7 @@ One-paragraph summary of the federation dream design.
 
 ## References
 
-- `/root/HERMES/skills/dream-engine/SKILL.md` — existing nightly engine
+- `/root/.agents/skills/AGI-dream-engine/SKILL.md` — existing nightly engine
 - `/root/docs/DREAM_ENGINE_SPEC.md` — entropy proxy spec
 - `/root/arifOS/arifosmcp/migrations/001_memory_schema.sql` — canonical memory schema
 - `arXiv:2606.03979` — Behrouz et al., *Language Models Need Sleep*

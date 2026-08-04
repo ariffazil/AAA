@@ -1,6 +1,7 @@
 ---
 id: nusantara-intelligence-substrate
 name: AGI-nusantara-substrate
+autonomy_tier: T1
 version: 1.0.0
 description: Cultural, dignity, and sovereignty lens for AAA state records. Apply
   before sealing decisions that touch identity, privacy, boundaries, or sovereign

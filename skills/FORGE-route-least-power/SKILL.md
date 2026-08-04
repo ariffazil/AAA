@@ -1,5 +1,9 @@
 ---
 name: FORGE-route-least-power
+id: forge-route-least-power
+owner: A-FORGE
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: >
   Route every task to the SMALLEST capability that can accomplish it.
   Prevents over-engineering, yak-shaving, and reflexive tool escalation.
@@ -11,6 +15,7 @@ forged: 2026-07-17
 tags: [routing, least-power, discipline, anti-yak-shaving, efficiency, entropy]
 scope: all_agents
 priority: 80
+autonomy_tier: T1
 ---
 
 # ROUTE LEAST POWER — Lower Machine Entropy

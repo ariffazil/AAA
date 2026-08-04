@@ -1,5 +1,9 @@
 ---
 name: FORGE-precommit-review
+id: forge-precommit-review
+version: 1.0.0
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: Pre-commit gate for any organ repo
 when_to_use: 'Before every git commit in any organ. Also: before opening a PR, after
   a non-trivial feature lands.'
@@ -9,6 +13,7 @@ allowed_tools:
 - Read
 - Grep
 owner: A-FORGE
+autonomy_tier: T0
 ---
 # Precommit Review
 

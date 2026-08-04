@@ -1,5 +1,7 @@
 ---
 name: ASI-context-window-mgr
+id: asi-context-window-mgr
+risk_tier: low
 description: 'Context window lifecycle management — monitors token usage, triggers
   compression when approaching limits, manages conversation summarization, and preserves
   critical context across compaction boundaries. USE WHEN: "context getting long",
@@ -19,6 +21,7 @@ floor_scope:
 - F07
 - F11
 owner: AAA
+autonomy_tier: T1
 ---
 # ASI-context-window-mgr
 

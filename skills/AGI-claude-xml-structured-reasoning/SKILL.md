@@ -1,5 +1,8 @@
 ---
 name: AGI-claude-xml-structured-reasoning
+id: agi-claude-xml-structured-reasoning
+version: 1.0.0
+risk_tier: low
 description: Structure long Claude reasoning, evidence, plans, and verdicts with explicit
   XML boundaries when outputs exceed one screen or require parser-stable
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample
@@ -22,6 +25,7 @@ tags:
 - phase-2-sample
 status: NEW (Phase 2 sample)
 owner: AAA
+autonomy_tier: T1
 ---
 # AGI · claude-xml-structured-reasoning
 

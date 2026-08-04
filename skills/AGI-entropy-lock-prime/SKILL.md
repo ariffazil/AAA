@@ -1,5 +1,9 @@
 ---
 name: AGI-entropy-lock-prime
+id: agi-entropy-lock-prime
+version: 1.0.0
+owner: 333-AGI
+risk_tier: low
 description: Gate agent mutations on non-increasing workspace entropy, triggering rollback and bounded recursive improvement when a change raises entropy
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 (Entropy & Intelligence Lock)
 forged: 2026-07-12T18:30:00Z
@@ -7,6 +11,7 @@ binding: 333-AGI · 888-APEX · all AAA agents (via substrate_bind on agent-card
 floor_scope: [F1, F2, F4, F8, F11, F13]
 tags: [substrate, entropy-lock, delta-s, rsi, keman, prime]
 status: ACTIVE (Phase 2 lock)
+autonomy_tier: T1
 ---
 
 # AGI · entropy-lock-prime

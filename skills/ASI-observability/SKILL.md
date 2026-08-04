@@ -1,6 +1,7 @@
 ---
 id: arifos-observability
 name: ASI-observability
+autonomy_tier: T1
 version: 1.0.0
 description: Generate structured telemetry for skill runs, including trigger source,
   chosen branch, command count, runtime, and postcondition checks. Load when you need

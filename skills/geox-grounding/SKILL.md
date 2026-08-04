@@ -1,6 +1,7 @@
 ---
 id: geox-grounding
 name: GEOX Grounding
+autonomy_tier: T1
 version: 0.1.0
 description: Force Earth-sensitive reasoning through GEOX witness paths. Ensure geological
   claims are grounded in evidence.

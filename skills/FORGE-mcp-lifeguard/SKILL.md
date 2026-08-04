@@ -1,5 +1,7 @@
 ---
 name: FORGE-mcp-lifeguard
+id: forge-mcp-lifeguard
+risk_tier: low
 slug: mcp-lifeguard
 version: 1.0.0
 homepage: https://arif-fazil.com/skills/mcp-lifeguard
@@ -21,6 +23,7 @@ floor_scope:
 - F11
 - F12
 - F13
+autonomy_tier: T0
 ---
 ## When to Use
 
