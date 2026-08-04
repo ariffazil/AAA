@@ -106,6 +106,28 @@ GitHub/Docker/etc  →  infrastructure: governed access through A-FORGE gates
 
 ---
 
+## MCP Servers — Media Generation (MiniMax)
+
+| Server | Key Tools | Use When |
+|--------|-----------|----------|
+| **minimax-mcp** | `text_to_image`, `generate_video`, `text_to_audio`, `voice_clone`, `voice_design`, `music_generation`, `list_voices`, `play_audio`, `query_video_generation` | Image gen, video gen, TTS, voice clone, music creation |
+
+**MiniMax MCP Transport:** stdio via `uvx minimax-mcp -y`. Requires `MINIMAX_API_KEY` + `MINIMAX_API_HOST=https://api.minimax.io`.
+
+**Image generation:** `text_to_image` tool — model `image-01`, supports aspect ratios 1:1/16:9/4:3/3:2/2:3/3:4/9:16/21:9, prompt optimization, 1-9 images per call.
+
+**Video generation:** `generate_video` tool — models: `T2V-01`, `T2V-01-Director` (camera control), `I2V-01` (image-to-video), `MiniMax-Hailuo-02` (latest, 6s/10s, 768P/1080P). Supports async mode.
+
+**TTS:** `text_to_audio` — models: `speech-2.6-hd`, supports 30+ voices, speed/vol/pitch/emotion control, 8kHz-44.1kHz sample rates.
+
+**Music:** `music_generation` — model `music-1.5`, up to 1 minute, supports lyrics with structure tags [Intro][Verse][Chorus][Bridge][Outro].
+
+**Cost warning:** All MiniMax tools make API calls that incur costs. Use when explicitly requested by user.
+
+**NOTE:** MiniMax REST API (`/v1/models`) only exposes text models (M3, M2.7, etc.). Image/video/audio gen is MCP-server-only — not available via direct REST calls. The `image-01` model does not appear in model listings but is callable through the MCP tool.
+
+---
+
 ## Tool Selection Guide
 
 ```
@@ -128,6 +150,11 @@ Need to manage containers?        → docker or aforge (forge_docker)
 Need to manage GitHub?            → github (governed)
 Need VPS ops?                     → hostinger-vps (governed)
 Need multi-step reasoning?        → sequential-thinking
+Need image generation?            → minimax-mcp (text_to_image) — image-01 model
+Need video generation?            → minimax-mcp (generate_video) — Hailuo-02 model
+Need text-to-speech?              → minimax-mcp (text_to_audio) — speech-2.6-hd
+Need voice cloning?               → minimax-mcp (voice_clone)
+Need music generation?            → minimax-mcp (music_generation) — music-1.5
 ```
 
 ---
