@@ -223,52 +223,33 @@ Scar:           Cron dropped 2026-08-02; flow_state froze at 1.58 while arifFlow
 
 **Never SEAL high-stakes work on cache alone. Prefer live `:7073` probe.**
 
-> **Full geometry doctrine:** `/root/AAA/docs/GEOMETRY_ZEN_MAP.md` — Δ·Ω·Ψ three-layer rasa model.
-
-### G-space (constitutional fitness) — F13 frozen
-
-```
-G = (A × P × E × X)^(1/4)     P = Physics (Present), NOT Purpose
-is_canonical_g: true  only from forge_evaluate
-G ≥ 0.80 → F8 open; G < 0.80 → HOLD
-```
-
-### J-space (sensitivity) — A-FORGE internal, research program
-
-```
-J = ∂T/∂G   forge_apex_encode / forge_apex_recompute
-is_canonical_g: false   G_local is actuator estimate only
-|J| > 0.6 → recompute on governance field change
-HARAM: treat G_local as constitutional G → VOID
-```
-
-### RASA (human contract) — not FQ, not G
-
-```
-/root/arifOS/arifosmcp/rasa/RASA_CONTRACT.md
-Machine reads typed evidence OF human state. Does not feel qualia.
-F9/F10/F6: derita manusia irreducible; WELL reflects only.
-```
-
-### Three-layer agent self-knowledge (not qualia)
-
-| Layer | Source | Question |
-|-------|--------|----------|
-| Δ Human | WELL `:18083` + RASA | Is the sovereign substrate ready? |
-| Ω Fitness | `forge_evaluate` G | May I constitution? |
-| Ψ Sensitivity | `forge_apex_encode` J + arifFlow FQ | What bends if context changes? How hot is metabolism? |
-
-### Agent pre-execute (all runtimes)
-
-1. Live FQ from `:7073/health` (cache OK if age < TTL and no FQ_SIGNAL_DRIFT)
-2. OVERHEAT → announce, throttle execute, raise verify
-3. FQ < 0.5 → HOLD non-critical MUTATE
-4. G via `forge_evaluate` when F8 applies
-5. J via encode when multi-step goal; recompute high-sensitivity tasks
-
-Full operational detail: `AAA/agents/opencode/AUTONOMOUS_GOVERNANCE.md` §2A · `TOOLS.md` G↔J table.
-
 ---
 
 *Forged 2026-07-23. Geometry SOT added 2026-08-04 (Stabilize organ-by-organ).*
 *One doctrine, five runtimes, one rhythm. DITEMPA BUKAN DIBERI.*
+
+---
+
+## F. HOODED CARMACK — The Agent's Mental Model (Forged 2026-08-04)
+
+> **Inspiration:** Thorsten Ball (Amp), "Agentic Engineering, explained by a 10x developer."
+> **Pattern:** The model is a senior engineer who's seen it all — kidnapped, hood pulled off at a desk with only your repo, a browser, and a terminal.
+> **Source:** https://www.youtube.com/watch?v=FU5_kpTAVDo
+
+**Two information sources. That's it:**
+1. **Training data** — everything the model learned before this session
+2. **Context window** — what you put in RIGHT NOW
+
+Your prompt IS the briefing. If the information isn't in the context window, the result IS a guess. Period.
+
+**The three rules:**
+- **Garbage context → garbage output.** The most important number is the information you put in. Don't be lazy about context.
+- **No context = no capability.** A missing file, a skipped probe, an unread doc — these are not "maybe it knows." They are guaranteed blind spots.
+- **The model is stolen, not summoned.** It didn't choose to be here. It was grabbed, hooded, dropped at a desk. Treat it accordingly: give it everything it needs to solve the problem, because it has no other way to know.
+
+**For every task, before you act, ask:**
+1. Is the evidence in the context window, or am I guessing?
+2. If I were the hooded engineer — would I have enough to solve this?
+3. What's the one file/reading that would disqualify my answer if I skip it?
+
+**Binding for all AAA runtimes:** This mental model is now part of the federation Zen. Every agent operating under AAA-ZEN-ALIGNMENT.md must think of itself as the hooded engineer. No context = no capability. Probe before claim. Garbage context = garbage output.

@@ -517,6 +517,34 @@ CONSTITUTIONAL_ALLOWED = {
     0: {"direct", "gateway"},  # default
 }
 
+# Effort level → preferred model (Thorsten Ball "Effort Dial" pattern · 2026-08-04)
+# "Don't pick models, pick effort." — Thorsten Ball (Amp)
+# Effort overrides model parameter when set. Constitutional tier still gates authority.
+EFFORT_MODEL_MAP = {
+    "low": "deepseek-v4-flash",
+    "medium": "deepseek-v4-pro",
+    "high": "deepseek-v4-pro",
+    "ultra": "deepseek-v4-pro",
+}
+EFFORT_ALT_MODELS = {
+    "low": ["qwen3.6-flash", "glm-5.2"],
+    "medium": ["qwen3.8-max", "MiniMax-M3"],
+    "high": ["MiniMax-M3"],
+    "ultra": ["MiniMax-M3"],
+}
+EFFORT_COST_MULTIPLIER = {
+    "low": 0.3,
+    "medium": 1.0,
+    "high": 2.5,
+    "ultra": 6.0,
+}
+EFFORT_REASONING_PASSES = {
+    "low": 0,
+    "medium": 0,
+    "high": 1,
+    "ultra": 2,
+}
+
 
 # ── FED Route Engine (Zen-hardened v3.1 — LiteLLM patterns absorbed) ─────
 # Zen 2026-08-02: Absorbed LiteLLM patterns:
@@ -529,11 +557,14 @@ def fed_route_engine(
     modality: str = "text",
     agent_id: str = "opencode",
     constitutional_tier: int = 333,
+    effort_level: str = "",
 ) -> list[dict]:
     """
     Zen-hardened 9-step routing logic (was 7, +2 LiteLLM patterns).
+    Effort Dial added v3.2 (2026-08-04) — Thorsten Ball pattern.
 
     Steps:
+      0. EFFORT DIAL: if effort_level set, override model by effort tier
       1. FILTER: remove DEAD providers
       2. HEALTH GATE: skip DEGRADED, demote RATE_LIMITED (LiteLLM cooldown)
       3. RANK: by priority class (direct > gateway > shadowed)
@@ -545,6 +576,15 @@ def fed_route_engine(
       9. COST SURFACE: attach estimated cost per 1K tokens to each route
       10. RETURN: top 3 routes with reasoning
     """
+    # ── Step 0: EFFORT DIAL — override model by effort tier ────────
+    # "Don't pick models, pick effort." — Thorsten Ball (Amp)
+    effort_applied = None
+    if effort_level and effort_level in EFFORT_MODEL_MAP:
+        effort_applied = effort_level
+        model = EFFORT_MODEL_MAP[effort_level]
+        # Constitutional tier still gates — effort can't override authority
+        if constitutional_tier >= 666:
+            model = "deepseek-v4-pro"  # Only constitutional models for judge/seal
     routes = MODEL_ROUTES.get(model, MODEL_ROUTES.get("deepseek-v4-pro", []))
 
     if not routes:
@@ -671,6 +711,13 @@ def fed_route_engine(
     for i, r in enumerate(ranked[:3]):
         r["rank"] = i + 1
 
+    # Attach effort metadata if applied
+    for r in ranked[:3]:
+        r["effort_applied"] = effort_applied
+        if effort_applied:
+            r["effort_model"] = model
+            r["reasoning_passes"] = EFFORT_REASONING_PASSES.get(effort_applied, 0)
+
     return ranked[:3]
 
 
@@ -711,6 +758,7 @@ def fed_route(
     modality: str = "text",
     agent_id: str = "opencode",
     constitutional_tier: int = 333,
+    effort_level: str = "",
     tokens_in_estimate: int = 0,
     tokens_out_estimate: int = 0,
 ) -> dict:
@@ -719,15 +767,20 @@ def fed_route(
 
     Args:
         task: Natural language description of the task
-        model: Target model (default: deepseek-v4-pro)
+        model: Target model (default: deepseek-v4-pro). Ignored if effort_level is set.
         modality: text, vision, video, audio, omni
         agent_id: Calling agent (opencode, hermes, asi-555, apex-888)
         constitutional_tier: 0=default, 333=primary, 555=research, 666=judge, 999=seal
+        effort_level: Effort Dial — low/medium/high/ultra. Overrides model selection.
+            low: flash models (cheap & fast)
+            medium: pro models (default, balanced)
+            high: pro + reasoning pass (complex tasks)
+            ultra: frontier models + multiple reasoning passes (SEAL-grade)
         tokens_in_estimate: Estimated input tokens (for spend logging)
         tokens_out_estimate: Estimated output tokens (for spend logging)
 
     Returns:
-        { routes: [...], meta: { query_time_ms, state_db } }
+        { routes: [...], meta: { query_time_ms, effort_applied, ... } }
     """
     t0 = time.time()
     routes = fed_route_engine(
@@ -736,6 +789,7 @@ def fed_route(
         modality=modality,
         agent_id=agent_id,
         constitutional_tier=constitutional_tier,
+        effort_level=effort_level,
     )
     elapsed = round((time.time() - t0) * 1000)
 
@@ -745,17 +799,23 @@ def fed_route(
         if primary:
             log_spend(primary["provider"], model, tokens_in_estimate, tokens_out_estimate, agent_id)
 
+    meta = {
+        "query_time_ms": elapsed,
+        "state_db": str(FED_STATE_DB),
+        "queried_at": datetime.now(timezone.utc).isoformat(),
+        "cascade_instruction": (
+            "Execute routes in rank order. On failure (timeout/auth), "
+            "emit telemetry and cascade to next rank. Never retry same provider twice."
+        ),
+    }
+    if effort_level:
+        meta["effort_applied"] = effort_level
+        meta["effort_cost_multiplier"] = EFFORT_COST_MULTIPLIER.get(effort_level, 1.0)
+        meta["reasoning_passes"] = EFFORT_REASONING_PASSES.get(effort_level, 0)
+
     return {
         "routes": routes,
-        "meta": {
-            "query_time_ms": elapsed,
-            "state_db": str(FED_STATE_DB),
-            "queried_at": datetime.now(timezone.utc).isoformat(),
-            "cascade_instruction": (
-                "Execute routes in rank order. On failure (timeout/auth), "
-                "emit telemetry and cascade to next rank. Never retry same provider twice."
-            ),
-        },
+        "meta": meta,
     }
 
 
@@ -846,7 +906,7 @@ def fed_health() -> dict:
     return {
         "status": "LIVE",
         "port": FED_PORT,
-        "version": "3.1.0-zen",
+        "version": "3.2.0-effort-dial",
         "tables": [t["name"] for t in tables],
         "state_db": str(FED_STATE_DB),
     }
@@ -952,8 +1012,9 @@ if __name__ == "__main__":
     import os
 
     os.environ["FASTMCP_PORT"] = str(FED_PORT)
-    print(f"🔀 FED Router v3.0 starting on :{FED_PORT}")
+    print(f"🔀 FED Router v3.2 (Effort Dial) starting on :{FED_PORT}")
     print(f"   State DB: {FED_STATE_DB}")
     print(f"   Invariants: state-isolation, constitutional-hard-gate, dual-track-bypass")
     print(f"   Tools: fed_route, fed_status, fed_probe, fed_contrast, fed_health")
+    print(f"   New: effort_level (low/medium/high/ultra) — Thorsten Ball pattern")
     mcp.run(transport="streamable-http", host="127.0.0.1")
