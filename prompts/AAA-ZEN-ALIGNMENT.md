@@ -214,12 +214,16 @@ Seven runtimes fell to it in one week. You will not be the eighth.
 
 ```
 Authoritative:  arifFlow :7073/health  → field fq
-Cache:          /root/AAA/state/flow_state.json  (TTL 5 min)
-Writer:         arifflow-fq-mirror.timer → /root/scripts/fq-probe.sh v4 (mirror only, no recompute)
+Cache:          /root/AAA/state/flow_state.json  (TTL 15 min)
+Writer:         root crontab */15 * * * * → /root/scripts/fq-probe.sh (mirror only, no recompute)
 Rule:           If |arifFlow.FQ − flow_state.FQ| > 0.3 → FQ_SIGNAL_DRIFT → use arifFlow
+Scar:           Cron dropped 2026-08-02; flow_state froze at 1.58 while arifFlow was 15-23 OVERHEAT.
+                Fixed 2026-08-04: cron reinstalled, file synced, SOT doctrine hardened.
 ```
 
-**Never SEAL high-stakes work on cache alone. Prefer live probe.**
+**Never SEAL high-stakes work on cache alone. Prefer live `:7073` probe.**
+
+> **Full geometry doctrine:** `/root/AAA/docs/GEOMETRY_ZEN_MAP.md` — Δ·Ω·Ψ three-layer rasa model.
 
 ### G-space (constitutional fitness) — F13 frozen
 
