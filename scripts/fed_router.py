@@ -108,6 +108,25 @@ def _estimate_cost_per_1k(provider_id: str, model_id: str) -> dict:
 mcp = FastMCP("FED — Federation Router")
 
 
+@mcp.custom_route("/health", methods=["GET"])
+async def fed_health(_request):
+    """Organ probe surface — ADVISORY_ONLY. Never judges or mutates."""
+    from starlette.responses import JSONResponse
+
+    return JSONResponse(
+        {
+            "status": "healthy",
+            "service": "FED",
+            "role": "ADVISORY_ONLY",
+            "port": FED_PORT,
+            "mcp": "/mcp",
+            "class": "route_advisor",
+            "ceiling": "never judges, never hard-blocks",
+            "tools": ["fed_route", "fed_status", "fed_probe", "fed_contrast", "fed_health"],
+        }
+    )
+
+
 # ── DB helpers (READ-ONLY for balances) ──────────────────────────────────
 def get_db():
     conn = sqlite3.connect(str(FED_STATE_DB))
