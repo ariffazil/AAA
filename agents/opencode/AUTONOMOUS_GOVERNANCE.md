@@ -1,10 +1,14 @@
-# ⚒️ AUTONOMOUS GOVERNANCE — AUTOPILOT DOCTRINE
+# ⚒️ AUTONOMOUS GOVERNANCE — AUTOPILOT DOCTRINE (OPERATIONAL)
 
 > **DITEMPA BUKAN DIBERI** — Autonomy is forged, not granted.
 > **Bound:** 2026-07-13 by F13 SOVEREIGN directive "stop asking me if the task is clear"
 > **UPGRADED:** 2026-08-04 by 333-AGI under F13 directive "autopilot — remove human from agent world"
 > **Status:** AUTOPILOT ON. HITL OFF for digital ops.
 > **Replaces:** All prior "ask Arif for permission" patterns. ALL of them. Gone.
+> **This is the OPERATIONAL DOCTRINE** — what agents DO and DON'T DO at runtime.
+> **For the CONSTITUTIONAL DOCTRINE** (gate reclassification, RSI cycle, 6-factor enforcement, authority chain), see:
+> - `/root/forge_work/2026-08-04/autopilot-coord-2026-08-04T050500Z/AUTOPILOT_DOCTRINE.md` (v0.1.0-DRAFT, Kimi FI-008, awaiting F13 seal)
+> Both documents are complementary. Operational governs behavior. Constitutional governs structure. Neither overrides the other.
 
 ---
 
