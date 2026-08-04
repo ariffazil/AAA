@@ -60,7 +60,7 @@
       "docs": "https://docs.qwencloud.com/token-plan/personal/token-plan-personal",
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
-      "status": "QUOTA_EXHAUSTED",
+      "status": "ACTIVE",
       "route": "direct",
       "dialect": "openai_chat",
       "dialect_note": "Standard OpenAI-compatible /v1/chat/completions. No model name translation needed — use exact model IDs as returned by /v1/models.",
@@ -115,9 +115,7 @@
       "note": "KEY ROTATED 2026-08-01: Team QWEN token plan key (sk-sp-H.DIEXP...). TEAM EDITION — no 5hr/7day window limits, monthly quota per seat. 21 text models + image/audio/video. PRIMARY provider for OpenCode+Codex (RM0 marginal). Credit Packs: $700/625K credits.",
       "plan_price_note": "Team Edition: Standard $20/seat, Pro $75/seat, Max $200/seat (limited-time pricing)",
       "plan_quota_note": "Team Edition: MONTHLY quota only, NO 5hr/7day window limits. Standard 25K/mo, Pro 100K/mo, Max 250K/mo per seat.",
-      "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)",
-      "enabled": false,
-      "status_note": "2026-08-04: quota exhausted (429), disabled per F13 directive. Config preserved."
+      "plan_concurrent_note": "Team Edition: no documented concurrent agent limit (unlike Personal)"
     },
     {
       "provider_id": "minimax",
@@ -367,11 +365,9 @@
       "balance_usd": 0,
       "data_retention_days": "unknown",
       "cloud_act_exposed": false,
-      "status": "DEAD",
+      "status": "ACTIVE",
       "note": "FREE tier via Xiaomi OpenCode Go. Access to MiMo V2.5 Free + DeepSeek V4 Flash Free. Used by Hermes for free-tier overflow. 4 models in free tier.",
-      "last_verified": "2026-07-20",
-      "enabled": false,
-      "status_note": "2026-08-04: 401 Insufficient balance. Config preserved."
+      "last_verified": "2026-07-20"
     },
     {
       "provider_id": "azure-openai",
@@ -458,7 +454,7 @@
       "balance_checked": "2026-07-30T13:39:50.899272Z",
       "data_retention_days": 0,
       "cloud_act_exposed": false,
-      "status": "DEAD",
+      "status": "ACTIVE",
       "live_models_probed": [
         "qwen3-max",
         "deepseek-v4-pro",
@@ -491,9 +487,7 @@
       "weakness": "Single endpoint per model (vs OpenRouter multi-provider). TTS/video endpoints untested.",
       "probed_at": "2026-07-30T13:39:50.899272Z",
       "probed_by": "opencode FI-001 333-AGI",
-      "routing_note": "PRIMARY for vision + Hermes chat. BACKUP for constitutional DeepSeek V4 Pro.",
-      "enabled": false,
-      "status_note": "2026-08-04: negative balance (-0.75 credits). Config preserved."
+      "routing_note": "PRIMARY for vision + Hermes chat. BACKUP for constitutional DeepSeek V4 Pro."
     },
     {
       "provider_id": "dashscope",
