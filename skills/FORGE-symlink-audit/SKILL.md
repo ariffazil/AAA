@@ -1,5 +1,7 @@
 ---
 name: FORGE-symlink-audit
+id: forge-symlink-audit
+floor_scope: [F1, F2, F4, F7]
 description: 'Federation-wide broken symlink scanner. Scans /root for broken symlinks,
   categorizes by location, and reports with safe-delete recommendations. USE WHEN:
   "check symlinks", "broken links", "symlink debt", "find broken symlinks", or during

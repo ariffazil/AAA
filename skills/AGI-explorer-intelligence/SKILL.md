@@ -36,8 +36,8 @@ dependencies:
     - quantum-eureka-doctrine
     - shadow-diagnostic
   data:
-    - /root/555-ASI/knowledge-taxonomy.json
-    - /root/555-ASI/organ-affinity-index.json
+    - # ARCHIVED: 555-ASI knowledge-taxonomy.json (moved)
+    - # ARCHIVED: 555-ASI organ-affinity-index.json (moved)
 inputs:
   - query_or_signal
   - domain_context
@@ -58,16 +58,16 @@ version_lock:
 > DITEMPA BUKAN DIBERI
 >
 > **Reference contracts:**
-> - [references/memory-schema.md](references/memory-schema.md) — structured explorer memory contract
-> - [references/route-contract.md](references/route-contract.md) — lawful cross-organ routing rules
-> - [references/explorer-packet-schema.md](references/explorer-packet-schema.md) — canonical JSON/YAML packet schemas
-> - [references/dispatch-protocol.md](references/dispatch-protocol.md) — Hermes/OpenCode/OpenClaw/A-FORGE stage handoff protocol
-> - [references/falsifier-routing.md](references/falsifier-routing.md) — OpenClaw vs A-FORGE falsifier decision law
-> - [assets/agent-stage-map.yaml](assets/agent-stage-map.yaml) — machine-readable stage ownership map
-> - [assets/explorer_packet.template.yaml](assets/explorer_packet.template.yaml) — ready-to-fill explorer packet template
-> - [assets/falsification_packet.template.yaml](assets/falsification_packet.template.yaml) — ready-to-fill falsification handoff template
-> - [assets/dispatch_packet.template.yaml](assets/dispatch_packet.template.yaml) — canonical 8-packet dispatch template set
-> - `scripts/validate_explorer_packet.py` — local validator for packet completeness and protocol order
+> - [references# ARCHIVED: memory-schema.md](references# ARCHIVED: memory-schema.md) — structured explorer memory contract
+> - [references# ARCHIVED: route-contract.md](references# ARCHIVED: route-contract.md) — lawful cross-organ routing rules
+> - [references# ARCHIVED: explorer-packet-schema.md](references# ARCHIVED: explorer-packet-schema.md) — canonical JSON/YAML packet schemas
+> - [references# ARCHIVED: dispatch-protocol.md](references# ARCHIVED: dispatch-protocol.md) — Hermes/OpenCode/OpenClaw/A-FORGE stage handoff protocol
+> - [references# ARCHIVED: falsifier-routing.md](references# ARCHIVED: falsifier-routing.md) — OpenClaw vs A-FORGE falsifier decision law
+> - [assets# ARCHIVED: agent-stage-map.yaml](assets# ARCHIVED: agent-stage-map.yaml) — machine-readable stage ownership map
+> - [assets# ARCHIVED: explorer_packet.template.yaml](assets# ARCHIVED: explorer_packet.template.yaml) — ready-to-fill explorer packet template
+> - [assets# ARCHIVED: falsification_packet.template.yaml](assets# ARCHIVED: falsification_packet.template.yaml) — ready-to-fill falsification handoff template
+> - [assets# ARCHIVED: dispatch_packet.template.yaml](assets# ARCHIVED: dispatch_packet.template.yaml) — canonical 8-packet dispatch template set
+> - `scripts# ARCHIVED: validate_explorer_packet.py` — local validator for packet completeness and protocol order
 > - `scripts/validate_dispatch_packet.py` — local validator for dispatch packet families
 > - `scripts/route_dispatch_stage.py` — minimal stage router using `agent-stage-map.yaml`
 > - `scripts/log_handoff.py` — append compact handoff receipts to local JSONL
@@ -146,7 +146,7 @@ Hypothesis C — the null model (random or noise-driven)
 - Confidence cap at 0.75 — hypotheses are not yet truth
 
 **Tool:** `arif_think(mode="reason")` with explicit hypothesis structure.  
-**Graph:** Query `/root/555-ASI/knowledge-taxonomy.json` for relevant edges.
+**Graph:** Query `# ARCHIVED: 555-ASI knowledge-taxonomy.json (moved)` for relevant edges.
 
 **Exit condition:** ≥3 hypotheses, each with ≥1 falsifiable prediction.  
 If <3 → hypothesize harder or acknowledge knowledge gap.
@@ -274,7 +274,7 @@ This is where structured memory + cross-domain reasoning + contradiction detecti
 produce the quantum-style eureka.
 
 For implementation-facing work, load the four reference contracts above before designing storage, packets, or cross-organ handoff.
-When emitting a real packet, start from `assets/explorer_packet.template.yaml` and validate it with `python scripts/validate_explorer_packet.py <packet.yaml>`.
+When emitting a real packet, start from `assets# ARCHIVED: explorer_packet.template.yaml` and validate it with `python scripts# ARCHIVED: validate_explorer_packet.py <packet.yaml>`.
 
 ---
 

@@ -1,5 +1,9 @@
 ---
 name: AGI-codex-chain-of-thought
+id: agi-codex-chain-of-thought
+version: 1.0.0
+owner: 333-AGI
+risk_tier: low
 description: Enforce private stepwise planning, strict tool schemas, and explicit verification for Codex CLI tasks that require multi-step execution or typed
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample (seeded the Codex lane)
 forged: 2026-07-12T18:28Z
@@ -8,6 +12,7 @@ rationale: Codex has zero authored skills in the AAA surface. Seed the lane with
 floor_scope: [F1, F2, F4, F8, F11, F13]
 tags: [codex, cot, step-by-step, schema-strict, phase-2-sample]
 status: NEW (Phase 2 sample · Codex lane seed)
+autonomy_tier: T1
 ---
 
 # AGI · codex-chain-of-thought

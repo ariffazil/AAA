@@ -1,9 +1,13 @@
 ---
-name: asi_intent_hear
+name: asi_tone_read
+id: asi_tone_read
+owner: AAA
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 agent: 555-ASI
 namespace: asi_*
 cluster: INTAKE
-skill_id: asi_intent_hear
+skill_id: asi_tone_read
 version: 1.0.0
 description: >
   The Hermes SOUL-layer human intelligence model.
@@ -27,6 +31,7 @@ dependencies:
 orthogonal_tags:
   trinitarian: [Ω, ΦΙ]
   functional: [Intelligence, Human, Sovereignty]
+autonomy_tier: T0
 ---
 
 # HERMES Human Model — Soul-Level Human Reading

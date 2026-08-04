@@ -1,5 +1,6 @@
 ---
 name: forge-document-intelligence
+id: forge-document-intelligence
 description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill. OCR is sensory perception for AAA citizens — image → 555-ASI-VISION (gate) → 333-AGI (reason). Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline.
 version: 2.0.0
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)

@@ -1,6 +1,8 @@
 ---
 id: ASI-agentic-architecture
 name: ASI-agentic-architecture
+owner: 555-ASI
+risk_tier: low
 version: 3.0.0
 description: >
   Class-level skill for designing sovereign agentic agents. 9-skill spine,
@@ -12,6 +14,7 @@ cognitive_hints:
   claude: "Use <architecture>, <spine>, <three-agent>, <four-powers> tags."
   codex: "3-agent model: Architect→Engineer→Auditor. Each: define → implement → verify. Idempotent."
   hermes: "Design agent. 3-agent loop. 4 powers. Lower entropy. Build it."
+autonomy_tier: T1
 ---
 
 # ASI-agentic-architecture

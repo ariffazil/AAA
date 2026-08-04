@@ -1,5 +1,9 @@
 ---
 name: AGI-emd-encode
+id: agi-emd-encode
+version: 1.0.0
+owner: 333-AGI
+risk_tier: low
 description: Encode raw observations, requests, documents, and signals into typed, provenance-bound, witness-ready EMD segments for downstream processing
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (gap fill · completing EMD chain)
 forged: 2026-07-12T18:33:00Z
@@ -8,6 +12,7 @@ binding: 333-AGI (Reason/Plan/Execute runtime)
 floor_scope: [F1, F2, F4, F8, F11, F13]
 tags: [emd, encode, substrate, gap-fill]
 status: NEW (Phase 3 gap fill)
+autonomy_tier: T1
 ---
 
 # AGI · emd-encode

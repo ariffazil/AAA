@@ -1,5 +1,6 @@
 ---
 name: AGI-skill-unification
+id: agi-skill-unification
 description: >
   Multi-harness skill catalog unity — AAA catalog, Grok/Claude/Codex views, alias table (V3 short→disk),
   mesh-sync, BOOT gate, Hermes bridge. Load when auditing skill mesh, resolving dual names, rebinding

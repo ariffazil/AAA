@@ -1,5 +1,9 @@
 ---
 name: FORGE-ephemeral-genesis
+id: forge-ephemeral-genesis
+owner: A-FORGE
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: >
   When no permanent tool exists for a task, spawn a temporary tool via forge_ephemeral.
   The capability metabolism engine — generate, test, use, then dissolve.
@@ -11,6 +15,7 @@ forged: 2026-08-02
 tags: [ephemeral, genesis, capability-metabolism, tool-generation, anti-accumulation, entropy, wolf-cabinet]
 scope: all_agents
 priority: 75
+autonomy_tier: T1
 ---
 
 # FORGE EPHEMERAL GENESIS — Capability Metabolism Engine

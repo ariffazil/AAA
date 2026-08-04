@@ -1,5 +1,8 @@
 ---
 name: AGI-emd-metabolize
+id: agi-emd-metabolize
+version: 1.0.0
+risk_tier: low
 description: Decide which decoded EMD segments remain ephemeral or promote to durable
   memory, with witness gates for constitutional and canon-grade records
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
@@ -21,6 +24,7 @@ tags:
 - witness-check
 status: NEW (Phase 3 gap fill)
 owner: AAA
+autonomy_tier: T1
 ---
 # AGI · emd-metabolize
 

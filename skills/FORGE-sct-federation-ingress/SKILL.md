@@ -1,5 +1,9 @@
 ---
 name: FORGE-sct-federation-ingress
+id: forge-sct-federation-ingress
+owner: A-FORGE
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: >
   Wire, verify, and operate federation Session Capability Tokens (SCT) across
   arifOS mint/validate and organ ingress gates (A-FORGE, GEOX, WEALTH, WELL, AAA).
@@ -10,6 +14,7 @@ description: >
   path alongside the INTERNAL SCT path.
 version: 2026.07.20
 floors: [F1, F2, F11, F12, F13]
+autonomy_tier: T1
 ---
 
 # FORGE — SCT Federation Ingress

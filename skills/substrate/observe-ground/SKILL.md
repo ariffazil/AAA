@@ -1,6 +1,8 @@
 ---
 id: observe-ground
 name: observe-ground
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: substrate
 description: Evidence before narrative. All claims must be sourced, labeled OBS/DER/INT/SPEC,
@@ -9,6 +11,7 @@ owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
+autonomy_tier: T0
 ---
 
 # observe-ground

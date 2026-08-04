@@ -1,6 +1,7 @@
 ---
 id: ASI-fabrication-prevention
 name: ASI-fabrication-prevention
+risk_tier: low
 version: 2.0.0
 description: 'Artifact fabrication prevention — verify before claiming existence.
   Triggered when agent claims file/database/API/artifact existence without external
@@ -18,6 +19,7 @@ cognitive_hints:
   codex: '3-step verify: claim → external check → verdict. No shortcuts.'
   hermes: Claim exists? Prove it. Can't prove? UNKNOWN. Never fabricate.
 owner: AAA
+autonomy_tier: T0
 ---
 # ASI-fabrication-prevention
 
