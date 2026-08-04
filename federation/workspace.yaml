@@ -1,0 +1,59 @@
+# workspace.yaml — canonical workspace topology
+# SOT: This file. CLAUDE.md references this path.
+# Generated: 2026-08-04
+
+schema_version: "1.0"
+canonical_repos:
+  - name: arifOS
+    path: /root/arifOS
+    runtime: /opt/arifos/app
+    port: 8088
+    class: CORE_KERNEL
+  - name: A-FORGE
+    path: /root/A-FORGE
+    runtime: /opt/a-forge/app
+    port: 7071
+    class: CORE_EXECUTE
+  - name: AAA
+    path: /root/AAA
+    port: 3001
+    class: CORE_COCKPIT
+  - name: GEOX
+    path: /root/GEOX
+    port: 8081
+    class: CORE_EARTH
+  - name: WEALTH
+    path: /root/WEALTH
+    port: 18082
+    class: CORE_CAPITAL
+  - name: WELL
+    path: /root/WELL
+    port: 18083
+    class: CORE_VITALITY
+  - name: HERMES
+    path: /root/HERMES
+    port: 18087
+    class: EDGE
+  - name: arif-fazil.com
+    path: /root/arif-fazil.com
+    class: PUBLIC
+
+fragments:
+  canonical: /root/AAA/instructions/
+  rendered_agents_md: /root/AGENTS.md
+  rendered_claude_md: /root/CLAUDE.md
+  render_script: /root/scripts/render-agents.sh
+
+state_files:
+  carry_forward: /root/.local/share/arifos/carry_forward.json
+  flow_state: /root/AAA/state/flow_state.json
+  tool_registry: /root/arifOS/arifosmcp/tool_registry.json
+
+vault999:
+  canonical: /root/arifOS/VAULT999/outcomes.jsonl
+  symlink: /root/VAULT999
+  append_only: true
+
+sot_manifest:
+  version: v2026.08.04
+  last_rendered: "2026-08-04T20:45:00Z"
