@@ -1,6 +1,7 @@
 ---
 id: asi_evidence_tier_express
 name: asi_evidence_tier_express
+autonomy_tier: T1
 agent: 555-ASI
 namespace: asi_*
 cluster: TRUST

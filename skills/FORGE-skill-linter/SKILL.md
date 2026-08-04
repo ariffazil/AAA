@@ -1,6 +1,7 @@
 ---
 id: skill-trigger-linter
 name: FORGE-skill-linter
+autonomy_tier: T1
 version: 1.0.0
 description: Check every skill’s trigger clauses for collisions, missing negatives, and vague verbs
 owner: AAA

@@ -1,5 +1,8 @@
 ---
 name: arifos-constitutional-judge
+id: arifos-constitutional-judge
+version: 1.0.0
+owner: AAA
 description: >
   Single load-bearing constitutional-judgment skill. Routes all F1–F13,
   verdict, hold, seal, scope, authority and floor-check calls through the

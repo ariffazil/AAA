@@ -1,6 +1,7 @@
 ---
 id: mcp-federation-ops
 name: FORGE-mcp-federation-ops
+autonomy_tier: T1
 version: 1.0.0
 description: Build, inspect, call, and operate FastMCP servers and the mcporter CLI
   across federation organs.

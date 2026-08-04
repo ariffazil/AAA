@@ -1,9 +1,15 @@
 ---
 name: apex_reversibility_test
+id: apex_reversibility_test
+version: 1.0.0
+owner: AAA
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: Test whether a proposed change touching vault, seal, identity, constitutional, or other F1 surfaces has a valid rollback and sovereign
 agent: 888-APEX
 namespace: apex_*
 cluster: REVERSIBILITY
+autonomy_tier: T1
 ---
 
 # F1 AMANAH Gate

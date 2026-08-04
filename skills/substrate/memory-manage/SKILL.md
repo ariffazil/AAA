@@ -1,6 +1,8 @@
 ---
 id: memory-manage
 name: memory-manage
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: substrate
 description: Intelligence without memory is stateless. Store less, recall well, forget
@@ -9,6 +11,7 @@ owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
+autonomy_tier: T1
 ---
 
 # memory-manage

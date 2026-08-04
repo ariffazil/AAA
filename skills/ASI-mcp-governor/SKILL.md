@@ -1,5 +1,9 @@
 ---
 name: ASI-mcp-governor
+id: asi-mcp-governor
+version: 1.0.0
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: Governed MCP routing via arifOS F1-F13
 homepage: https://arif-fazil.com
 metadata:
@@ -16,6 +20,7 @@ metadata:
       - mcporter
       label: Install mcporter
 owner: AAA
+autonomy_tier: T0
 ---
 # arif-mcp-governor
 

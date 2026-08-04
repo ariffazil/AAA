@@ -1,6 +1,7 @@
 ---
 id: agent-onboarding
 name: FORGE-onboarding
+autonomy_tier: T1
 version: 2.0.0
 description: >
   Standard procedure for registering a new agent in the AAA federation.

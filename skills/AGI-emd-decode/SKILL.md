@@ -1,5 +1,9 @@
 ---
 name: AGI-emd-decode
+id: agi-emd-decode
+version: 1.0.0
+owner: 333-AGI
+risk_tier: low
 description: Decompose upstream EMD output into typed, provenance-bound segments tied to ground truth before persistence or downstream consumption
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
 forged: 2026-07-12T18:28Z
@@ -7,6 +11,7 @@ rationale: Audit showed only 2 of 244 active skills mention "decode". OpenClaw/3
 floor_scope: [F1, F2, F4, F8, F11, F13]
 tags: [emd, decode, output-decomposition, ground-truth]
 status: NEW (Phase 3 gap fill)
+autonomy_tier: T1
 ---
 
 # AGI · emd-decode

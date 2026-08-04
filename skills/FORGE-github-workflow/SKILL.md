@@ -1,6 +1,7 @@
 ---
 id: FORGE-github-workflow
 name: FORGE-github-workflow
+risk_tier: low
 version: 2.0.0
 description: 'Class-level umbrella for GitHub operations — auth, repo management,
   PR lifecycle, issues, code review. Each op is a labeled section; load the relevant
@@ -18,6 +19,7 @@ cognitive_hints:
     → verify → log.'
   hermes: GitHub op? Auth. Execute. Verify. Log. Next.
 owner: A-FORGE
+autonomy_tier: T1
 ---
 # FORGE-github-workflow
 

@@ -1,6 +1,7 @@
 ---
 id: asi_position_contrast
 name: asi_position_contrast
+autonomy_tier: T1
 agent: 555-ASI
 namespace: asi_*
 cluster: SYNTHESIS

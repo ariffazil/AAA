@@ -1,6 +1,7 @@
 ---
 id: github-pr-review
 name: FORGE-pr-review
+autonomy_tier: T1
 version: 1.1.0
 description: Governed checklist for reviewing GitHub pull requests in the arifOS federation
   Ensures PRs meet constitutional, structural, and safety standards before merge.

@@ -5416,7 +5416,7 @@
       "shadow_name": "reasoning_cascade_compound",
       "severity": "HIGH",
       "class": "cascade",
-      "pattern": "Composite shadow: SHADOW-DS-002 (reasoning_overconfidence) × SHADOW-DS-004 (long_context_drift). In continuous agentic sessions exceeding ~50K tokens, reasoning confidence remains high while mid-context information is silently forgotten or de-prioritized. The agent produces confident, internally-consistent reasoning on hallucinated or forgotten premises — indistinguishable from correct reasoning to the agent itself. Individual sub-shadows are MEDIUM, but the interaction product is functionally HIGH.",
+      "pattern": "Composite shadow: SHADOW-DS-002 (reasoning_overconfidence) \u00d7 SHADOW-DS-004 (long_context_drift). In continuous agentic sessions exceeding ~50K tokens, reasoning confidence remains high while mid-context information is silently forgotten or de-prioritized. The agent produces confident, internally-consistent reasoning on hallucinated or forgotten premises \u2014 indistinguishable from correct reasoning to the agent itself. Individual sub-shadows are MEDIUM, but the interaction product is functionally HIGH.",
       "triggers": [
         "continuous_agentic_session",
         "gt_50k_tokens",
@@ -5438,7 +5438,10 @@
       "evidence": "Trigger overlap analysis of DS-002 + DS-004. Agentic loop compounding observed in federation sessions. Cross-shadow cascade not captured by individual severity scoring.",
       "scar_ref": null,
       "last_observed": "2026-08-03",
-      "cascade_from": ["SHADOW-DS-002", "SHADOW-DS-004"],
+      "cascade_from": [
+        "SHADOW-DS-002",
+        "SHADOW-DS-004"
+      ],
       "cascade_severity": "HIGH",
       "cascade_note": "Individual shadows rated MEDIUM, but interaction product is functionally HIGH in continuous sessions. FED router should treat any session exceeding 50K tokens with reasoning-heavy 333 tasks as an elevated threat surface."
     },
@@ -7282,7 +7285,8 @@
         "kimi/kimi-k3"
       ],
       "pool": "B",
-      "pool_name": "MiniMax (dedicated subscription)"
+      "pool_name": "MiniMax (dedicated subscription)",
+      "status": "ACTIVE"
     },
     {
       "agent_id": "image-analyzer",

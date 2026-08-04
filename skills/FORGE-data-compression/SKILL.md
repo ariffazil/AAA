@@ -1,5 +1,7 @@
 ---
 name: FORGE-data-compression
+id: forge-data-compression
+risk_tier: low
 description: 'Context-window-aware data compression for long logs, code dumps, and
   multi-source evidence bundles. Compresses input to fit within model context limits
   while preserving semantic fidelity (F2 TRUTH ≥ 0.95). Supports streaming chunk-and-summarize
@@ -19,6 +21,7 @@ floor_scope:
 - F04
 - F07
 owner: A-FORGE
+autonomy_tier: T1
 ---
 # FORGE-data-compression
 

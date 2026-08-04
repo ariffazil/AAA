@@ -1,5 +1,9 @@
 ---
 name: ASI-drift-watch
+id: asi-drift-watch
+version: 1.0.0
+owner: 555-ASI
+risk_tier: low
 description: Detect drift between federation source (/root/<organ>) and runtime (/opt/<organ>/app).
   The chronic arifOS blocker documented in /root/CLAUDE.md §4.4. Runs on schedule
 when_to_use: After deploy, when organ behavior surprises you, weekly health audit,
@@ -15,6 +19,7 @@ floor_scope:
 - F4
 - F7
 - F11
+autonomy_tier: T0
 ---
 # Drift Watch
 

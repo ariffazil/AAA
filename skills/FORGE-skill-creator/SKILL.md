@@ -1,7 +1,12 @@
 ---
 name: FORGE-skill-creator
+id: forge-skill-creator
+owner: A-FORGE
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: Bootstrap, design, and package new skills
 version: 1.1.0
+autonomy_tier: T1
 ---
 # skill-creator (O_Ψ Verification Layer)
 

@@ -1,6 +1,7 @@
 ---
 id: unified-skill-binding
 name: ASI-skill-binding
+autonomy_tier: T1
 version: 1.0.0
 description: Discover, bind, and compose skills across all federation organs using
   AAA_SKILL.md orthogonal axes (Trinitarian Δ/Ω/ΦΙ + Functional). Enforces

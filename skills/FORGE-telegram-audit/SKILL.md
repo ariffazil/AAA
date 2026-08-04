@@ -1,5 +1,8 @@
 ---
 name: FORGE-telegram-audit
+id: forge-telegram-audit
+version: 1.0.0
+risk_tier: low
 description: 'Automated TREE777 security checks for Telegram bot tokens, webhook isolation,
   bot permission scope, and A2A bridge security. USE WHEN: "telegram audit", "bot
   security", "webhook check", "token isolation", "TREE777 check", "telegram permissions".'
@@ -11,6 +14,7 @@ floor_scope:
 - F11
 - F12
 - F13
+autonomy_tier: T0
 ---
 # Telegram Security Audit (TREE777)
 

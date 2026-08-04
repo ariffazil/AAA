@@ -1,5 +1,8 @@
 ---
 name: AGI-hermes-system-prompt-voice
+id: agi-hermes-system-prompt-voice
+version: 1.0.0
+risk_tier: low
 description: Apply the direct Hermes system-prompt voice and its structured witness
   formatting to Hermes-bound conversational or creative-media responses
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 2 sample
@@ -21,6 +24,7 @@ tags:
 - phase-2-sample
 status: NEW (Phase 2 sample)
 owner: AAA
+autonomy_tier: T0
 ---
 # AGI · hermes-system-prompt-voice
 

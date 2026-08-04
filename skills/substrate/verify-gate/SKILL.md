@@ -1,6 +1,8 @@
 ---
 id: verify-gate
 name: verify-gate
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 version: 1.0.0
 layer: substrate
 description: 'Four gates before commitment: authority + evidence + reversibility +
@@ -9,6 +11,7 @@ owner: F13 SOVEREIGN
 status: active
 three_axis: true
 axis_version: 1.0.0
+autonomy_tier: T1
 ---
 
 # verify-gate

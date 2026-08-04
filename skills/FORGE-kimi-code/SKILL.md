@@ -1,6 +1,7 @@
 ---
 id: kimi-code-aaa
 name: FORGE-kimi-code
+autonomy_tier: T1
 version: 1.0.0
 description: Configure, audit, and align Kimi Code CLI as AAA warga FI-008 with arifOS
   kernel and A-FORGE stdio actuator.

@@ -1,6 +1,7 @@
 ---
 id: vps-docker-runbook
 name: FORGE-vps-runbook
+autonomy_tier: T1
 version: 1.0.0
 description: Concrete Docker Compose and container commands for the af-forge VPS stack
 owner: AAA

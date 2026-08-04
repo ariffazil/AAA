@@ -106,10 +106,6 @@
       "axis": "apex"
     },
     {
-      "name": "arifos-constitutional-judge",
-      "axis": "apex"
-    },
-    {
       "name": "FORGE-route-least-power",
       "axis": "meta"
     },
@@ -132,6 +128,50 @@
     {
       "name": "atlas333-cognitive-geometry",
       "axis": "meta"
+    },
+    {
+      "name": "AAA-setup-help",
+      "axis": "ops"
+    },
+    {
+      "name": "AGI-decisions-reflect",
+      "axis": "agi"
+    },
+    {
+      "name": "AGI-plan-dag",
+      "axis": "agi"
+    },
+    {
+      "name": "AGI-dream-engine",
+      "axis": "agi"
+    },
+    {
+      "name": "APEX-humility-godel",
+      "axis": "apex"
+    },
+    {
+      "name": "APEX-fff-loop-protocol",
+      "axis": "apex"
+    },
+    {
+      "name": "ASI-drift-watch",
+      "axis": "asi"
+    },
+    {
+      "name": "ASI-fabrication-prevention",
+      "axis": "asi"
+    },
+    {
+      "name": "FORGE-ephemeral-genesis",
+      "axis": "forge"
+    },
+    {
+      "name": "FORGE-secret-hygiene",
+      "axis": "ops"
+    },
+    {
+      "name": "FORGE-cross-agent-handoff",
+      "axis": "a2a"
     }
   ],
   "canonical_profile": "/root/AAA/skills/CANONICAL_SKILL_PROFILE.json",
@@ -149,12 +189,14 @@
       "RSI-recursive-improvement",
       "atlas333-cognitive-geometry",
       "arifos-constitutional-judge",
-      "arifos-constitutional-judge",
       "ASI-agent-invariants",
       "FLAME-router",
       "AGI-explorer-intelligence",
       "EUREKA777-paradox-resolution",
-      "identity-invariance"
+      "identity-invariance",
+      "AGI-decisions-reflect",
+      "APEX-humility-godel",
+      "APEX-fff-loop-protocol"
     ],
     "forge_on_demand": [
       "FORGE-verify-runtime",
@@ -162,7 +204,10 @@
       "FORGE-infra-guardian",
       "FORGE-mcp-smoke-test",
       "FORGE-vps-docker",
-      "FORGE-ci-diagnose"
+      "FORGE-ci-diagnose",
+      "AAA-setup-help",
+      "FORGE-ephemeral-genesis",
+      "FORGE-secret-hygiene"
     ],
     "github_on_demand": [
       "FORGE-github-ops",
@@ -175,7 +220,18 @@
       "know-physics",
       "know-math",
       "know-language"
+    ],
+    "agi_on_demand": [
+      "AGI-plan-dag",
+      "AGI-dream-engine"
+    ],
+    "asi_sensory": [
+      "ASI-drift-watch",
+      "ASI-fabrication-prevention"
+    ],
+    "a2a_handoff": [
+      "FORGE-cross-agent-handoff"
     ]
   },
-  "_zen_note": "2026-08-01T02:18Z: P0 closed. Fix 1/3: duplicate FORGE-vps-docker removed (now 29 skills). Fix 2/3: identity-invariance symlink created at /root/.agents/skills/identity-invariance → warga/constitutional/identity-invariance. Fix 3/3: EUREKA777 + identity-invariance verified in constitutional tier (10 skills). All refs resolved."
+  "_zen_note": "2026-08-04T02:15Z: Zen mesh forged. +11 skills registered (AGI-plan-dag, AGI-dream-engine, APEX-humility-godel, APEX-fff-loop-protocol, ASI-drift-watch, ASI-fabrication-prevention, FORGE-ephemeral-genesis, FORGE-secret-hygiene, FORGE-cross-agent-handoff). Duplicate arifos-constitutional-judge removed. New tiers: agi_on_demand, asi_sensory, a2a_handoff. 9 underscore skills renamed to dash convention. Total: 39 canonical skills. Previous: 2026-08-04T01:35Z."
 }

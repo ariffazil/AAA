@@ -1,0 +1,73 @@
+# Federation Agent-Skill Map
+# Canonical source of truth for which skills belong to which agent
+# Forged: 2026-08-04 by 333-AGI
+# See: /root/forge_work/2026-08-04/AGENT-SKILL-FLOW.md
+
+version: "1.0.0"
+doctrine: "Intelligence survives reality NOT by being right, but by knowing exactly how wrong it could be."
+
+agents:
+  opencode:
+    id: opencode
+    role: "Builder. Executor. AGI Δ MIND + FORGE primary."
+    surface: "OpenCode CLI on VPS af-forge"
+    primary_model: "deepseek/deepseek-v4-pro"
+    axis: [AGI, FORGE]
+    authority: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
+    skills_dir: /root/.arifos/agents/opencode/skills/
+    canonical_profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json
+    skill_count: 39
+
+  hermes:
+    id: hermes-prime
+    role: "Bridge. Human interface. ASI Ω CORE primary."
+    surface: "Telegram @ASI_arifos_bot → port 18001"
+    primary_model: "mimo/mimo-v2.5-pro-ultraspeed"
+    axis: [ASI, APEX]
+    authority: {T0: RELAY_ONLY, no_mutation: true}
+    skills_dir: /root/.hermes/skills/
+    canonical_profile: /root/AAA/skills/OPENCODE_SKILL_PROFILE.json  # shared
+    skill_count: 93  # 40 canonical symlinked + 53 hermes-native
+    canonical_linked: 40
+
+  openclaw:
+    id: openclaw
+    role: "Legacy sensor. Retired mechanic."
+    surface: "N/A — superseded by arifFLOW (:7073)"
+    primary_model: "minimax/MiniMax-M3 (DEAD)"
+    axis: [FORGE]  # legacy
+    authority: {OBSERVE_ONLY: true}
+    skills_dir: /root/.openclaw/skills/
+    skill_count: 1  # trading-signal only
+    archived_skills: /root/.openclaw/_archive/skills-2026-08-04/
+
+  kimi-code:
+    id: kimi-code/FI-008
+    role: "External warga. Coding agent."
+    surface: "Kimi Code CLI"
+    primary_model: "kimi/kimi-k3"
+    axis: [AGI]
+    authority: {T1: AUTO_DO, T2: ANNOUNCE, T3: 888_HOLD}
+    skills_dir: /root/AAA/agents/kimi-code/skills/
+    agent_card: /root/AAA/agents/kimi-code/agent-card.json
+
+a2a_gateway:
+  url: "http://127.0.0.1:3001"
+  agents_registered: [arifos, aforge, geox, wealth, well, arifflow, aaa-gateway]
+  external_agents: [hermes-prime, kimi-code/FI-008]
+  protocol: "A2A v1.2"
+  discovery: "/.well-known/a2a-discovery.json"
+
+arifflow:
+  port: 7073
+  role: "Metabolism — tracks execute:verify ratio"
+  current_fq: 1.41
+  current_verdict: "BALANCED"
+
+cross_agent_triggers:
+  deploy:       [hermes → aaa → arifos → opencode → arifflow → hermes]
+  research:     [hermes → FLAME → opencode → arifos → hermes]
+  incident:     [hermes → opencode → arifos → aaa]
+  seal:         [opencode → arifos → vault999 → arifflow]
+  health_check: [hermes → arifos → all_organs → hermes]
+  audit:        [opencode → arifos → hermes → arifflow]

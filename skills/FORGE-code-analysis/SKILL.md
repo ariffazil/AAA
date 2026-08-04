@@ -1,5 +1,9 @@
 ---
 name: FORGE-code-analysis
+id: forge-code-analysis
+version: 1.0.0
+owner: A-FORGE
+risk_tier: low
 license: MIT
 description: This skill should be used when the user needs to analyze Git repositories,
   compare developer commit patterns, work habits, development efficiency, code style,
@@ -15,6 +19,7 @@ floor_scope:
 - F4
 - F11
 - F13
+autonomy_tier: T1
 ---
 # Code Analysis Skill
 

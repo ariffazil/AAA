@@ -1,6 +1,8 @@
 ---
 id: APEX-humility-godel
 name: APEX-humility-godel
+owner: 888-APEX
+risk_tier: low
 version: 2.0.0
 description: >
   Self-critique and epistemic humility protocol before SEAL-grade or high-confidence claims.
@@ -11,6 +13,7 @@ cognitive_hints:
   claude: "Use <confidence-band>, <unknowns>, <meta-critique> tags. Recall prior calibration from extended context."
   codex: "Step 1: state claim. Step 2: assign confidence. Step 3: list unknowns. Step 4: attack claim. Step 5: adjust."
   hermes: "State claim. How sure? What you don't know. Attack it. Adjust. Seal or hold."
+autonomy_tier: T1
 ---
 
 # APEX-humility-godel

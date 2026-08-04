@@ -1,5 +1,8 @@
 ---
 name: FORGE-grok-profile
+id: forge-grok-profile
+version: 1.0.0
+risk_tier: low
 description: Adapt FORGE execution to Grok Build's long-context, strict-schema, worktree-isolated,
   and bounded-parallel runtime profile
 forge_of: Kimi Code (FI-008) — EUREKA ZEN Phase 3 (audit gap fill)
@@ -24,6 +27,7 @@ tags:
 - 256k-context
 status: NEW (Phase 3 gap fill)
 owner: A-FORGE
+autonomy_tier: T1
 ---
 # FORGE · grok-profile
 

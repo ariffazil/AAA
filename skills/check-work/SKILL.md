@@ -1,5 +1,8 @@
 ---
 name: check-work
+id: check-work
+version: 1.0.0
+risk_tier: low
 description: 'Check your work with a verification subagent that reviews diffs, runs
   builds and tests, and evaluates correctness. Read this file for instructions. Use
   when asked to "check work", "verify changes", "self-verify", "/check-work", "/check",
@@ -15,6 +18,7 @@ floor_scope:
 - F4
 - F7
 - F11
+autonomy_tier: T0
 ---
 # /check-work -- Self-Verification
 

@@ -1,9 +1,14 @@
 ---
 name: FORGE-infra-crons
+id: forge-infra-crons
+version: 1.0.0
+risk_tier: low
+floor_scope: [F1, F2, F4, F7]
 description: 'Infrastructure cron job management — schedule, audit, and govern VPS
   cron entries. Read-only observation of root crontab, /etc/crontab, and /etc/cron.d.
   F1 AMANAH: never mutate crontabs without 888_HOLD.'
 owner: A-FORGE
+autonomy_tier: T2
 ---
 # FORGE-infra-crons
 

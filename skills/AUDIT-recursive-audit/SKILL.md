@@ -1,6 +1,7 @@
 ---
 id: arifos-recursive-audit
 name: AUDIT-recursive-audit
+autonomy_tier: T1
 version: 1.0.0
 description: Audit all installed skills for overlap, stale docs, prompt bloat, trigger
   ambiguity, and broken references. Load when reviewing the skill portfolio or after

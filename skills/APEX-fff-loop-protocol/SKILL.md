@@ -1,6 +1,7 @@
 ---
 id: APEX-fff-loop-protocol
 name: APEX-fff-loop-protocol
+risk_tier: low
 version: 2.0.0
 description: '5-pass recursive audit sequence: Blue (diagnose) → Red (attack) → Blue
   (forge) → Yellow (verify) → Gold (seal). Emits skill artifacts + MEMORY line + drift
@@ -20,6 +21,7 @@ cognitive_hints:
     Strict chaining.'
   hermes: 5 passes. Diagnose. Attack. Forge. Verify. Seal. Run them.
 owner: AAA
+autonomy_tier: T1
 ---
 # APEX-fff-loop-protocol
 

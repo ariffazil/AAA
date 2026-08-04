@@ -462,14 +462,14 @@ HOLD on ambiguity. Ask Arif.
 > | 333-AGI | `deepseek/deepseek-v4-pro` | MiniMax M3 → Qwen Individual → Kimi K3 → Ollama |
 > | 555-ASI | `qwen-token-plan/qwen3.6-flash` | Qwen Individual → DS Flash → Kimi HighSpeed |
 > | 555-ASI-VISION | `qwen-token-plan-individual/qwen3.7-plus` | Qwen Responses → PAYG |
-> | 888-APEX | `deepseek/deepseek-v4-pro` | Qwen TP → Qwen Individual → Kimi K3 → Ollama |
+> | 888-APEX | `minimax/MiniMax-M3` | DeepSeek V4 Pro → Qwen TP → Qwen Individual → Kimi K3 → Ollama |
 > | image-analyzer | `qwen-responses/qwen3.7-plus` | Qwen Individual → PAYG |
 > | dispatch | `kimi/kimi-for-coding-highspeed` | Qwen TP Flash → DS Flash |
 > | image-prompt-architect | `kimi/kimi-k3` | OpenCode Go → TokenRouter → OpenCode Go |
 >
-> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` may serve 666_JUDGE and 999_SEAL roles. MiniMax M3 is DEAD (API key invalid — 2049). 888-APEX primary moved to `deepseek/deepseek-v4-pro` (Pool A shared). 16 models forbidden from judgment.
+> **Constitutional rule:** Only `deepseek/deepseek-v4-pro` and `minimax/MiniMax-M3` may serve 666_JUDGE and 999_SEAL roles. Both are LIVE (Arif confirmed 2026-08-04). 888-APEX primary: `minimax/MiniMax-M3`. 16 models forbidden from judgment.
 >
-> **Provider pools (6 alive, 3 dead):** deepseek · minimax · qwen-token-plan · qwen-individual · qwen-responses · kimi · ollama · bailian-payg. DEAD: opencode-go (401), tokenrouter-arifos (503), mulerouter (-0.75 credits).
+> **Provider pools (8 alive, 3 dead):** deepseek · minimax · qwen-token-plan · qwen-individual · qwen-responses · kimi · ollama · bailian-payg. DEAD: opencode-go (401), tokenrouter-arifos (503), mulerouter (-0.75 credits).
 >
 > To load live: `python3 -c "import json; d=json.load(open('/root/AAA/registries/models/AGENT_MODEL_MAP.json')); [print(f'{a[\"agent_id\"]}: {a[\"primary_model\"]}') for a in d['agents']]"`
 

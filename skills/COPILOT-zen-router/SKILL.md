@@ -1,5 +1,8 @@
 ---
 name: COPILOT_ZEN_ROUTER
+id: copilot_zen_router
+owner: AAA
+floor_scope: [F1, F2, F4, F7]
 description: >
   META-MESA: Orthogonal skill taxonomy + intent→skill router for Copilot CLI.
   THE single skill that tells Copilot which domain skill to load based on task context.
@@ -22,6 +25,7 @@ risk_tier: LOW
 autonomy: T1
 forged: 2026-07-28
 version: 1.0.0
+autonomy_tier: T1
 ---
 
 # 🎯 COPILOT ZEN ROUTER — The Meta-Mesa

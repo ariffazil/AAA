@@ -1,6 +1,7 @@
 ---
 id: docker-entropy-ops
 name: FORGE-docker-entropy
+autonomy_tier: T1
 version: 1.0.0
 description: Thermodynamic reasoning lens for container fleet health, resource pressure,
   and safe/dangerous intervention boundaries.
