@@ -912,7 +912,7 @@ FQ = Σ(cost_execute) / Σ(cost_verify + cost_preceding_verify)
 
 **HARD CONSTRAINT:** When FQ < 0.5, ALL agents HOLD. When FQ rises, ALL agents forge. No hero worship. No "I'll execute first, verify later."
 
-**FQ source:** `/root/AAA/state/flow_state.json` — read by Hermes before output, written by OpenClaw each cycle, respected by OpenCode before every MUTATE/EXECUTE action.
+**FQ source (2026-08-04):** LIVE arifFlow `http://127.0.0.1:7073/health` → `.fq`. Cache `/root/AAA/state/flow_state.json` (TTL 5 min) mirrored by `arifflow-fq-mirror.timer`. OpenCode/Hermes/OpenClaw must not SEAL on stale cache alone. See AAA-ZEN-ALIGNMENT.md §E.
 
 ### 17.3 Three Agents, Three Roles
 
