@@ -16,7 +16,7 @@
     "deprecation": "Weekly sweep with decay metrics. KEEP, MERGE, DEPRECATE, HOLD, VOID. Broken + no owner >30d \u2192 VOID.",
     "no_pretending": "The registry declares intended topology. Runtime is truth. Never confuse them."
   },
-  "total_canonical": 130,
+  "total_canonical": 131,
   "untiered_on_disk": 13,
   "zen_note": "2026-08-04T07:30Z: TRUTH AUDIT FIX \u2014 32 archived skills moved to archived_cold_storage tier. Profile now truthful: active tiers only contain loadable skills. 2026-08-04T07:15Z: SKILL_RUNTIME_GOVERNANCE forged. 2026-08-04T06:00Z: MAJOR ZEN.",
   "canonical_tiers": {
@@ -53,7 +53,7 @@
     },
     "forge_on_demand": {
       "description": "Execution and infrastructure skills. Build, deploy, monitor, triage, secure, audit. The hands of the federation.",
-      "count": 24,
+      "count": 25,
       "skills": [
         "FORGE-verify-runtime",
         "FORGE-incident-triage",
@@ -78,7 +78,8 @@
         "FORGE-kimi-code",
         "FORGE-agentic-web-builder",
         "FORGE-document-intelligence",
-        "FORGE-code-analysis"
+        "FORGE-code-analysis",
+        "minimax-image-gen"
       ]
     },
     "github_on_demand": {
