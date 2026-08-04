@@ -1,7 +1,7 @@
 ---
 name: forge-document-intelligence
 id: forge-document-intelligence
-description: EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill. OCR is sensory perception for AAA citizens — image → 555-ASI-VISION (gate) → 333-AGI (reason). Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline.
+description: "EMD (Encode-Metabolize-Decode) document intelligence stack for the arifOS federation. Wraps VLM perception, forge_document_ingest provenance, and constitutional governance into one skill. OCR is sensory perception for AAA citizens - image -> 555-ASI-VISION (gate) -> 333-AGI (reason). Load when processing PDFs, images, scanned documents, or any document-to-intelligence pipeline."
 version: 2.0.0
 owner: F13 SOVEREIGN — Muhammad Arif bin Fazil (888)
 risk_tier: medium
@@ -9,7 +9,7 @@ floor_scope: [F1, F2, F4, F9, F11, F12, F13]
 autonomy_tier: T1
 tags: [document-intelligence, ocr, vlm, provenance, emd, perception, ingestion, pdf, malaysian-documents, asi-vision-gate, deepseek-ocr, optical-compression]
 forged: 2026-07-02
-updated: 2026-07-31 — DeepSeek-OCR eureka: vision tokens as compressed context, 555-ASI-VISION gate
+updated: "2026-07-31 - DeepSeek-OCR eureka: vision tokens as compressed context, 555-ASI-VISION gate"
 sources:
   - DeepSeek-OCR (arxiv:2510.18234) — Contexts Optical Compression
   - 555-ASI-VISION gate (asi_vision_gate.py)
