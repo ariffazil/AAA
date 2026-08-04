@@ -88,14 +88,16 @@ Each checked skill must receive a specific Rot Rating in the audit report:
 *   **`api-rot`:** The SDK or CLI packages that the skill coordinates (e.g. Wrangler, Agents SDK) have moved past the compatibility versions listed in the skill.
 *   **`trigger-rot`:** The skill's triggering criteria overlap semantically with other skills, leading to multiple activations or trigger failures.
 *   **`unused-rot`:** The skill is structurally valid but has not registered a telemetry execution record within the threshold window.
+*   **`archive-void-rot`:** (Added 2026-08-04) The skill has been physically moved to `.archive-20260804/` but remains discoverable by the skill loader. Physical archive without deactivation (SKILL.md → SKILL.md.VOID) creates drift between filesystem and registry. This is a new rot class discovered during the first autonomous VOID audit.
 
 ## Procedure
-1.  **Portfolio Scan:** Map all active `SKILL.md` files and resolve their frontmatter definitions.
+1.  **Portfolio Scan:** Map all active `SKILL.md` files and resolve their frontmatter definitions. Include `.archive-*` directories in the scan — archived skills still discoverable by the loader are `archive-void-rot`.
 2.  **Staleness Analysis:** Apply **Age Threshold** rules. Check all embedded documentation URLs and reference scripts against the latest system files and packages.
 3.  **Prompt Bloat Check:** Calculate the token density of each skill. Flag files where instruction length exceeds 500 lines.
 4.  **Collision Auditing:** Run semantic cross-checks on skill descriptions to flag potential trigger overlaps.
-5.  **Rot Classification tagging:** Assign rot ratings (`doc-rot`, `api-rot`, `trigger-rot`, `unused-rot`) to flagged skills.
-6.  **Report Generation:** Write a structured markdown analysis identifying critical flaws, warnings, and remediation paths.
+5.  **Rot Classification tagging:** Assign rot ratings (`doc-rot`, `api-rot`, `trigger-rot`, `unused-rot`, `archive-void-rot`) to flagged skills.
+6.  **VOID Candidate Surfacing:** Rank candidates by: zero invocations + zero outcome_delta + archive-void-rot. Surface top 3. The VOID pattern: rename SKILL.md → SKILL.md.VOID (F1-reversible), ingest as VERIFY into arifFlow, seal to VAULT999. This is the FQ predator feed — VOIDing dead skills is a VERIFY act that breaks execute-heavy skew.
+7.  **Report Generation:** Write a structured markdown analysis identifying critical flaws, warnings, and remediation paths.
 
 ## Postconditions
 1.  All skills are checked for age thresholds and direct system dependency freshness.
